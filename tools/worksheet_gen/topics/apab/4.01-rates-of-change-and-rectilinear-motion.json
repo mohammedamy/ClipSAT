@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "answer": "Compute gradient: $abla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle$. At $(1, 2)$: $abla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle$. Maximum rate of change is the gradient magnitude: $| abla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15$ The direction of maximum increase is the normalized gradient: $\\mathbf{u} = \\frac{ abla f}{| abla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle$",
-          "explanation": "Compute gradient: $abla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle$. At $(1, 2)$: $abla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle$. Maximum rate of change is the gradient magnitude: $| abla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15$ The direction of maximum increase is the normalized gradient: $\\mathbf{u} = \\frac{ abla f}{| abla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle$"
+          "explanation": "Compute gradient: $abla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle$. At $(1, 2)$: $abla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle$. Maximum rate of change is the gradient magnitude: $| abla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15$ The direction of maximum increase is the normalized gradient: $\\mathbf{u} = \\frac{ abla f}{| abla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle$",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "A continuous random variable $X$ has probability density function $f(x) = kx(2 - x)$ for $0 \\leq x \\leq 2$ and $f(x) = 0$ elsewhere. Determine: (a) the constant $k$; (b) the median of $X$; (c) the variance $\\mathrm{Var}(X)$.",
@@ -146,7 +177,38 @@
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "5.01 Extrema and the Mean Value Theorem",
           "answer": "(a) State distribution after 2 weeks is $\\mathbf{p}_2 = T^2 \\mathbf{p}_0$. With $\\mathbf{p}_0 = \\left(1 ; 0\\right)$: $T^2 = \\left(0.7, 0.2 ; 0.3, 0.8\\right)\\left(0.7, 0.2 ; 0.3, 0.8\\right) = \\left(0.49 + 0.06, 0.14 + 0.16 ; 0.21 + 0.24, 0.06 + 0.64\\right) = \\left(0.55, 0.30 ; 0.45, 0.70\\right).$ Thus $\\mathbf{p}_2 = \\left(0.55 ; 0.45\\right)$, so the probability of being with Brand B after 2 weeks is 0.45 (45%). (b) Steady-state vector $\\mathbf{s} = \\left(s_1 ; s_2\\right)$ satisfies $(T - I)\\mathbf{s} = \\mathbf{0}$: $\\left(-0.3, 0.2 ; 0.3, -0.2\\right)\\left(s_1 ; s_2\\right) = \\left(0 ; 0\\right) \\Rightarrow -0.3s_1 + 0.2s_2 = 0 \\Rightarrow s_2 = 1.5s_1.$ Normalize $s_1 + s_2 = 1 \\Rightarrow 2.5s_1 = 1 \\Rightarrow s_1 = 0.40$, so $s_2 = 0.60$. Steady state: Brand A = 40%, Brand B = 60%.",
-          "explanation": "(a) State distribution after 2 weeks is $\\mathbf{p}_2 = T^2 \\mathbf{p}_0$. With $\\mathbf{p}_0 = \\left(1 ; 0\\right)$: $T^2 = \\left(0.7, 0.2 ; 0.3, 0.8\\right)\\left(0.7, 0.2 ; 0.3, 0.8\\right) = \\left(0.49 + 0.06, 0.14 + 0.16 ; 0.21 + 0.24, 0.06 + 0.64\\right) = \\left(0.55, 0.30 ; 0.45, 0.70\\right).$ Thus $\\mathbf{p}_2 = \\left(0.55 ; 0.45\\right)$, so the probability of being with Brand B after 2 weeks is 0.45 (45%). (b) Steady-state vector $\\mathbf{s} = \\left(s_1 ; s_2\\right)$ satisfies $(T - I)\\mathbf{s} = \\mathbf{0}$: $\\left(-0.3, 0.2 ; 0.3, -0.2\\right)\\left(s_1 ; s_2\\right) = \\left(0 ; 0\\right) \\Rightarrow -0.3s_1 + 0.2s_2 = 0 \\Rightarrow s_2 = 1.5s_1.$ Normalize $s_1 + s_2 = 1 \\Rightarrow 2.5s_1 = 1 \\Rightarrow s_1 = 0.40$, so $s_2 = 0.60$. Steady state: Brand A = 40%, Brand B = 60%."
+          "explanation": "(a) State distribution after 2 weeks is $\\mathbf{p}_2 = T^2 \\mathbf{p}_0$. With $\\mathbf{p}_0 = \\left(1 ; 0\\right)$: $T^2 = \\left(0.7, 0.2 ; 0.3, 0.8\\right)\\left(0.7, 0.2 ; 0.3, 0.8\\right) = \\left(0.49 + 0.06, 0.14 + 0.16 ; 0.21 + 0.24, 0.06 + 0.64\\right) = \\left(0.55, 0.30 ; 0.45, 0.70\\right).$ Thus $\\mathbf{p}_2 = \\left(0.55 ; 0.45\\right)$, so the probability of being with Brand B after 2 weeks is 0.45 (45%). (b) Steady-state vector $\\mathbf{s} = \\left(s_1 ; s_2\\right)$ satisfies $(T - I)\\mathbf{s} = \\mathbf{0}$: $\\left(-0.3, 0.2 ; 0.3, -0.2\\right)\\left(s_1 ; s_2\\right) = \\left(0 ; 0\\right) \\Rightarrow -0.3s_1 + 0.2s_2 = 0 \\Rightarrow s_2 = 1.5s_1.$ Normalize $s_1 + s_2 = 1 \\Rightarrow 2.5s_1 = 1 \\Rightarrow s_1 = 0.40$, so $s_2 = 0.60$. Steady state: Brand A = 40%, Brand B = 60%.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "Level 2 · MediumFind the point $(x, y)$ on the parabola $y = x^2$ that is closest to the point $(0, 2)$.",

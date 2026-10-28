@@ -14,7 +14,26 @@
           "question_type": "FRQ",
           "target": "The Wronskian",
           "answer": "$y_1'=e^x$, $y_2'=2e^{2x}$. $W = e^x(2e^{2x}) - e^x(e^{2x}) = 2e^{3x}-e^{3x} = e^{3x}$.",
-          "explanation": "$y_1'=e^x$, $y_2'=2e^{2x}$. $W = e^x(2e^{2x}) - e^x(e^{2x}) = 2e^{3x}-e^{3x} = e^{3x}$."
+          "explanation": "$y_1'=e^x$, $y_2'=2e^{2x}$. $W = e^x(2e^{2x}) - e^x(e^{2x}) = 2e^{3x}-e^{3x} = e^{3x}$.",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "For $y_1=e^{3x}$, $y_2=xe^{3x}$ (solutions of a repeated-root equation), compute $W$.",
@@ -156,7 +175,38 @@
           "target": "A summary comparison",
           "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
           "answer": "(1) It works for ANY continuous forcing term $g(x)$, not just polynomials/exponentials/sines-cosines and their products — it handles $\\tan x$, $\\sec x$, $1/x$, $\\ln x$, and more. (2) It gives a single unified formula/procedure, with no need to guess a trial form or check for resonance case-by-case.",
-          "explanation": "(1) It works for ANY continuous forcing term $g(x)$, not just polynomials/exponentials/sines-cosines and their products — it handles $\\tan x$, $\\sec x$, $1/x$, $\\ln x$, and more. (2) It gives a single unified formula/procedure, with no need to guess a trial form or check for resonance case-by-case."
+          "explanation": "(1) It works for ANY continuous forcing term $g(x)$, not just polynomials/exponentials/sines-cosines and their products — it handles $\\tan x$, $\\sec x$, $1/x$, $\\ln x$, and more. (2) It gives a single unified formula/procedure, with no need to guess a trial form or check for resonance case-by-case.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "List one advantage of undetermined coefficients over variation of parameters, when it applies.",

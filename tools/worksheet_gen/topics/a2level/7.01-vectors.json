@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Vector arithmetic in three dimensions",
           "answer": "$|\\mathbf{v}|=\\sqrt{6^2+(-3)^2+2^2}=\\sqrt{49}=7$. Unit vector: $\\frac{1}{7}(6,-3,2)=\\left(\\frac{6}{7},-\\frac{3}{7},\\frac{2}{7}\\right)$.",
-          "explanation": "$|\\mathbf{v}|=\\sqrt{6^2+(-3)^2+2^2}=\\sqrt{49}=7$. Unit vector: $\\frac{1}{7}(6,-3,2)=\\left(\\frac{6}{7},-\\frac{3}{7},\\frac{2}{7}\\right)$."
+          "explanation": "$|\\mathbf{v}|=\\sqrt{6^2+(-3)^2+2^2}=\\sqrt{49}=7$. Unit vector: $\\frac{1}{7}(6,-3,2)=\\left(\\frac{6}{7},-\\frac{3}{7},\\frac{2}{7}\\right)$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Find $\\mathbf{a}\\cdot\\mathbf{b}$ for $\\mathbf{a}=(3,1,-2)$ and $\\mathbf{b}=(-1,4,2)$, and state whether $\\mathbf{a}$ and $\\mathbf{b}$ are perpendicular.",
@@ -146,7 +177,38 @@
           "target": "The equation of a plane",
           "cross_lesson": "9.01 Complex Numbers",
           "answer": "$\\vec{AB}=(-2,1,1)$, $\\vec{AC}=(-1,-1,3)$. Normal $=\\vec{AB}\\times\\vec{AC}=(1\\cdot3-1\\cdot(-1),\\ 1\\cdot(-1)-(-2)\\cdot3,\\ (-2)\\cdot(-1)-1\\cdot(-1))=(4,5,3)$. Plane: $4x+5y+3z=d$; substituting $A$: $4(2)+5(1)=13=d$. Equation: $4x+5y+3z=13$.",
-          "explanation": "$\\vec{AB}=(-2,1,1)$, $\\vec{AC}=(-1,-1,3)$. Normal $=\\vec{AB}\\times\\vec{AC}=(1\\cdot3-1\\cdot(-1),\\ 1\\cdot(-1)-(-2)\\cdot3,\\ (-2)\\cdot(-1)-1\\cdot(-1))=(4,5,3)$. Plane: $4x+5y+3z=d$; substituting $A$: $4(2)+5(1)=13=d$. Equation: $4x+5y+3z=13$."
+          "explanation": "$\\vec{AB}=(-2,1,1)$, $\\vec{AC}=(-1,-1,3)$. Normal $=\\vec{AB}\\times\\vec{AC}=(1\\cdot3-1\\cdot(-1),\\ 1\\cdot(-1)-(-2)\\cdot3,\\ (-2)\\cdot(-1)-1\\cdot(-1))=(4,5,3)$. Plane: $4x+5y+3z=d$; substituting $A$: $4(2)+5(1)=13=d$. Equation: $4x+5y+3z=13$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "Find the angle between the line with direction $(2,1,2)$ and the plane $2x-y+2z=6$, to the nearest degree.",
@@ -357,7 +419,15 @@
           ],
           "correct": 2,
           "answer": "The original points are A(1, 2), B(4, 2), and C(2, 5). The curve $y = f(x)$ is a parabola. Since A and B have the same y-coordinate, the axis of symmetry is $x = \\frac{1+4}{2} = 2.5$. The equation of the parabola can be written as $y = a(x - 2.5)^2 + k$. Substituting C(2, 5): $5 = a(2 - 2.5)^2 + k \\Rightarrow 5 = 0.25a + k$. Step 1: Reflection in the line $y=x$. This transformation swaps the x and y coordinates. A'(2, 1), B'(2, 4), C'(5, 2). Step 2: Translation by the vector $\\left(-3 ; 0\\right)$. This subtracts 3 from the x-coordinate and adds 0 to the y-coordinate. A''(2 - 3, 1 + 0) = (-1, 1) B''(2 - 3, 4 + 0) = (-1, 4) C''(5 - 3, 2 + 0) = (2, 2) Therefore, the coordinates of C'' are (2, 2).",
-          "explanation": "The original points are A(1, 2), B(4, 2), and C(2, 5). The curve $y = f(x)$ is a parabola. Since A and B have the same y-coordinate, the axis of symmetry is $x = \\frac{1+4}{2} = 2.5$. The equation of the parabola can be written as $y = a(x - 2.5)^2 + k$. Substituting C(2, 5): $5 = a(2 - 2.5)^2 + k \\Rightarrow 5 = 0.25a + k$. Step 1: Reflection in the line $y=x$. This transformation swaps the x and y coordinates. A'(2, 1), B'(2, 4), C'(5, 2). Step 2: Translation by the vector $\\left(-3 ; 0\\right)$. This subtracts 3 from the x-coordinate and adds 0 to the y-coordinate. A''(2 - 3, 1 + 0) = (-1, 1) B''(2 - 3, 4 + 0) = (-1, 4) C''(5 - 3, 2 + 0) = (2, 2) Therefore, the coordinates of C'' are (2, 2)."
+          "explanation": "The original points are A(1, 2), B(4, 2), and C(2, 5). The curve $y = f(x)$ is a parabola. Since A and B have the same y-coordinate, the axis of symmetry is $x = \\frac{1+4}{2} = 2.5$. The equation of the parabola can be written as $y = a(x - 2.5)^2 + k$. Substituting C(2, 5): $5 = a(2 - 2.5)^2 + k \\Rightarrow 5 = 0.25a + k$. Step 1: Reflection in the line $y=x$. This transformation swaps the x and y coordinates. A'(2, 1), B'(2, 4), C'(5, 2). Step 2: Translation by the vector $\\left(-3 ; 0\\right)$. This subtracts 3 from the x-coordinate and adds 0 to the y-coordinate. A''(2 - 3, 1 + 0) = (-1, 1) B''(2 - 3, 4 + 0) = (-1, 4) C''(5 - 3, 2 + 0) = (2, 2) Therefore, the coordinates of C'' are (2, 2).",
+          "figure": {
+            "type": "sinusoid",
+            "a": 4,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 4 sin(x)"
+          }
         },
         {
           "q": "Consider two vectors, $\\mathbf{u} = \\left(3 ; k\\right)$ and $\\mathbf{v} = \\left(-2 ; 4\\right)$. If $\\mathbf{u}$ is parallel to $\\mathbf{v}$, find the value of the scalar parameter $k$.",

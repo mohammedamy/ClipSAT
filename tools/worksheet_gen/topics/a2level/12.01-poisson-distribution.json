@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Conditions for a Poisson distribution",
           "answer": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent.",
-          "explanation": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent."
+          "explanation": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Explain why the number of texts a person receives in a randomly chosen hour might reasonably be modeled by a Poisson distribution, but the number of texts received right around a pre-arranged deadline might not.",
@@ -146,7 +177,38 @@
           "target": "Finding an unknown parameter",
           "cross_lesson": "14.01 Sampling & Estimation",
           "answer": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=2$, $\\lambda=4$. $P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195$.",
-          "explanation": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=2$, $\\lambda=4$. $P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195$."
+          "explanation": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=2$, $\\lambda=4$. $P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "A random variable $X\\sim\\mathrm{Po}(\\lambda)$ satisfies $P(X=1)=0.1494$, where $\\lambda$ is a whole number less than $5$. Using $P(X=1)=\\lambda e^{-\\lambda}$, determine $\\lambda$ by trial.",
@@ -357,7 +419,38 @@
           ],
           "correct": 0,
           "answer": "The unbiased estimate of the population variance, denoted $s^2$, is calculated using the formula: $s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right)$ Substitute the given values $n = 50$, $\\sum x = 450$, and $\\sum x^2 = 4295$: $s^2 = \\frac{1}{50 - 1} \\left( 4295 - \\frac{450^2}{50} \\right)$ $s^2 = \\frac{1}{49} \\left( 4295 - \\frac{202500}{50} \\right)$ $s^2 = \\frac{1}{49} (4295 - 4050) = \\frac{245}{49} = 5.0$ Why other choices fail: - $4.9$ is the biased sample variance obtained by dividing by $n = 50$ instead of $n - 1 = 49$. - $2.24$ is the unbiased estimate of the standard deviation, $\\sqrt{5.0} \\approx 2.24$. - $9.0$ is the sample mean $\\bar{x} = \\frac{450}{50}$.",
-          "explanation": "The unbiased estimate of the population variance, denoted $s^2$, is calculated using the formula: $s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right)$ Substitute the given values $n = 50$, $\\sum x = 450$, and $\\sum x^2 = 4295$: $s^2 = \\frac{1}{50 - 1} \\left( 4295 - \\frac{450^2}{50} \\right)$ $s^2 = \\frac{1}{49} \\left( 4295 - \\frac{202500}{50} \\right)$ $s^2 = \\frac{1}{49} (4295 - 4050) = \\frac{245}{49} = 5.0$ Why other choices fail: - $4.9$ is the biased sample variance obtained by dividing by $n = 50$ instead of $n - 1 = 49$. - $2.24$ is the unbiased estimate of the standard deviation, $\\sqrt{5.0} \\approx 2.24$. - $9.0$ is the sample mean $\\bar{x} = \\frac{450}{50}$."
+          "explanation": "The unbiased estimate of the population variance, denoted $s^2$, is calculated using the formula: $s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right)$ Substitute the given values $n = 50$, $\\sum x = 450$, and $\\sum x^2 = 4295$: $s^2 = \\frac{1}{50 - 1} \\left( 4295 - \\frac{450^2}{50} \\right)$ $s^2 = \\frac{1}{49} \\left( 4295 - \\frac{202500}{50} \\right)$ $s^2 = \\frac{1}{49} (4295 - 4050) = \\frac{245}{49} = 5.0$ Why other choices fail: - $4.9$ is the biased sample variance obtained by dividing by $n = 50$ instead of $n - 1 = 49$. - $2.24$ is the unbiased estimate of the standard deviation, $\\sqrt{5.0} \\approx 2.24$. - $9.0$ is the sample mean $\\bar{x} = \\frac{450}{50}$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "4*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              }
+            ]
+          }
         },
         {
           "q": "Formulate the null and alternative hypotheses for the following scenario: \"A factory claims the mean weight of a product is 250g. An inspector wants to test if it has changed (either direction).\"",

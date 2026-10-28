@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Setting up the augmented matrix",
           "answer": "Row 1: $\\langle2,1,-1,3\\rangle$. Row 2: $\\langle1,-3,2,-1\\rangle$. Row 3: $\\langle4,1,1,5\\rangle$ (each row lists the $x,y,z$ coefficients, then the right-hand side).",
-          "explanation": "Row 1: $\\langle2,1,-1,3\\rangle$. Row 2: $\\langle1,-3,2,-1\\rangle$. Row 3: $\\langle4,1,1,5\\rangle$ (each row lists the $x,y,z$ coefficients, then the right-hand side)."
+          "explanation": "Row 1: $\\langle2,1,-1,3\\rangle$. Row 2: $\\langle1,-3,2,-1\\rangle$. Row 3: $\\langle4,1,1,5\\rangle$ (each row lists the $x,y,z$ coefficients, then the right-hand side).",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Write the augmented matrix for the system $x-y=4$, $3x+2y=7$.",
@@ -146,7 +177,38 @@
           "target": "Application: mixture and rate problems",
           "cross_lesson": "3.01 Matrices & Matrix Algebra",
           "answer": "Substituting $y=x+20$ into $2x+2y=300$: $2x+2(x+20)=300 \\Rightarrow 4x+40=300 \\Rightarrow x=65$. Then $y=85$. Speeds: $65$ km/h and $85$ km/h.",
-          "explanation": "Substituting $y=x+20$ into $2x+2y=300$: $2x+2(x+20)=300 \\Rightarrow 4x+40=300 \\Rightarrow x=65$. Then $y=85$. Speeds: $65$ km/h and $85$ km/h."
+          "explanation": "Substituting $y=x+20$ into $2x+2y=300$: $2x+2(x+20)=300 \\Rightarrow 4x+40=300 \\Rightarrow x=65$. Then $y=85$. Speeds: $65$ km/h and $85$ km/h.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "A theater sells adult tickets for $12$ dollars and child tickets for $7$ dollars. On a night with $200$ tickets sold for a total of $1900$ dollars, set up and solve the system for the number of adult ($a$) and child ($c$) tickets sold.",
@@ -357,7 +419,15 @@
           ],
           "correct": 1,
           "answer": "The volume of the solid region bounded by the coordinate planes and the plane passing through $P=(6,0,0)$, $Q=(0,4,0)$, and $R=(0,0,3)$ can be calculated. The equation of the plane passing through these points is given by $\\frac{x}{6} + \\frac{y}{4} + \\frac{z}{3} = 1$. This is a tetrahedron with vertices at $(0,0,0)$, $(6,0,0)$, $(0,4,0)$, and $(0,0,3)$. The volume of such a tetrahedron is $V_{original} = \\frac{1}{6} |abc|$, where $a, b, c$ are the intercepts on the axes. Thus, $V_{original} = \\frac{1}{6} |6 \\cdot 4 \\cdot 3| = \\frac{1}{6} |72| = 12$ cubic units. The linear transformation $T$ is represented by the matrix $M$. The volume of the transformed solid object is given by $V_{transformed} = |\\det(M)| \\cdot V_{original}$. The determinant of $M$ is $\\det(M) = 1 \\cdot (1 \\cdot 2 - 0 \\cdot 0) - 0 + 0 = 2$. Therefore, $V_{transformed} = |2| \\cdot 12 = 24$ cubic units.",
-          "explanation": "The volume of the solid region bounded by the coordinate planes and the plane passing through $P=(6,0,0)$, $Q=(0,4,0)$, and $R=(0,0,3)$ can be calculated. The equation of the plane passing through these points is given by $\\frac{x}{6} + \\frac{y}{4} + \\frac{z}{3} = 1$. This is a tetrahedron with vertices at $(0,0,0)$, $(6,0,0)$, $(0,4,0)$, and $(0,0,3)$. The volume of such a tetrahedron is $V_{original} = \\frac{1}{6} |abc|$, where $a, b, c$ are the intercepts on the axes. Thus, $V_{original} = \\frac{1}{6} |6 \\cdot 4 \\cdot 3| = \\frac{1}{6} |72| = 12$ cubic units. The linear transformation $T$ is represented by the matrix $M$. The volume of the transformed solid object is given by $V_{transformed} = |\\det(M)| \\cdot V_{original}$. The determinant of $M$ is $\\det(M) = 1 \\cdot (1 \\cdot 2 - 0 \\cdot 0) - 0 + 0 = 2$. Therefore, $V_{transformed} = |2| \\cdot 12 = 24$ cubic units."
+          "explanation": "The volume of the solid region bounded by the coordinate planes and the plane passing through $P=(6,0,0)$, $Q=(0,4,0)$, and $R=(0,0,3)$ can be calculated. The equation of the plane passing through these points is given by $\\frac{x}{6} + \\frac{y}{4} + \\frac{z}{3} = 1$. This is a tetrahedron with vertices at $(0,0,0)$, $(6,0,0)$, $(0,4,0)$, and $(0,0,3)$. The volume of such a tetrahedron is $V_{original} = \\frac{1}{6} |abc|$, where $a, b, c$ are the intercepts on the axes. Thus, $V_{original} = \\frac{1}{6} |6 \\cdot 4 \\cdot 3| = \\frac{1}{6} |72| = 12$ cubic units. The linear transformation $T$ is represented by the matrix $M$. The volume of the transformed solid object is given by $V_{transformed} = |\\det(M)| \\cdot V_{original}$. The determinant of $M$ is $\\det(M) = 1 \\cdot (1 \\cdot 2 - 0 \\cdot 0) - 0 + 0 = 2$. Therefore, $V_{transformed} = |2| \\cdot 12 = 24$ cubic units.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 4,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 4 sin(x)"
+          }
         },
         {
           "q": "Consider the linear transformation $T: \\mathbb{R}^2 \\rightarrow \\mathbb{R}^2$ represented by the matrix $A = \\left(2, 0 \\ 0, 3\\right)$. What is the image of the vector $\\mathbf{v} = \\left(1 \\ 1\\right)$ under this transformation, i.e., find $T(\\mathbf{v})$?",

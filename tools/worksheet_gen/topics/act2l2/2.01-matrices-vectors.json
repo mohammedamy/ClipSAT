@@ -16,7 +16,38 @@
             "\\( \\langle 8, -13 \\rangle \\)"
           ],
           "correct": 0,
-          "answer": "To find \\( 2\\mathbf{u} + \\mathbf{v} \\), first perform the scalar multiplication on \\( \\mathbf{u} \\):\n\\[\n2\\mathbf{u} = 2\\langle 3, -4 \\rangle = \\langle 2(3), 2(-4) \\rangle = \\langle 6, -8 \\rangle\n\\]\nNext, add the corresponding components of \\( 2\\mathbf{u} \\) and \\( \\mathbf{v} \\):\n\\[\n2\\mathbf{u} + \\mathbf{v} = \\langle 6 + (-2), -8 + 5 \\rangle = \\langle 4, -3 \\rangle\n\\]\n\n- \\( \\langle 1, 1 \\rangle \\) is incorrect because it represents \\( \\mathbf{u} + \\mathbf{v} \\), omitting the scalar factor of 2.\n- \\( \\langle 4, 1 \\rangle \\) is incorrect because the scalar 2 was only distributed to the horizontal component.\n- \\( \\langle 8, -13 \\rangle \\) is incorrect because it calculates \\( 2\\mathbf{u} - \\mathbf{v} \\) instead of \\( 2\\mathbf{u} + \\mathbf{v} \\)."
+          "answer": "To find \\( 2\\mathbf{u} + \\mathbf{v} \\), first perform the scalar multiplication on \\( \\mathbf{u} \\):\n\\[\n2\\mathbf{u} = 2\\langle 3, -4 \\rangle = \\langle 2(3), 2(-4) \\rangle = \\langle 6, -8 \\rangle\n\\]\nNext, add the corresponding components of \\( 2\\mathbf{u} \\) and \\( \\mathbf{v} \\):\n\\[\n2\\mathbf{u} + \\mathbf{v} = \\langle 6 + (-2), -8 + 5 \\rangle = \\langle 4, -3 \\rangle\n\\]\n\n- \\( \\langle 1, 1 \\rangle \\) is incorrect because it represents \\( \\mathbf{u} + \\mathbf{v} \\), omitting the scalar factor of 2.\n- \\( \\langle 4, 1 \\rangle \\) is incorrect because the scalar 2 was only distributed to the horizontal component.\n- \\( \\langle 8, -13 \\rangle \\) is incorrect because it calculates \\( 2\\mathbf{u} - \\mathbf{v} \\) instead of \\( 2\\mathbf{u} + \\mathbf{v} \\).",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Matrices \\( A \\) and \\( B \\) are defined as \\( A = \\begin{bmatrix} 2 & k \\\\ -1 & 3 \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} 1 & 4 \\\\ 2 & k \\end{bmatrix} \\), where \\( k \\) is a real number. If the determinant of the matrix sum \\( A + B \\) is equal to \\( 17 \\), what is the value of \\( k \\)?\n\n(Note: The determinant of a \\( 2 \\times 2 \\) matrix \\( \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\) is defined as \\( ad - bc \\).)",
@@ -38,7 +69,15 @@
             "14"
           ],
           "correct": 1,
-          "answer": "Step 1: Perform the matrix multiplication.\nFirst, multiply the \\(1 \\times 2\\) row vector by the \\(2 \\times 2\\) matrix:\n\\[\n\\begin{bmatrix} \\cos\\theta & \\sin\\theta \\end{bmatrix} \\begin{bmatrix} 6 & 2 \\\\ 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 6\\cos\\theta + 2\\sin\\theta & 2\\cos\\theta + 3\\sin\\theta \\end{bmatrix}\n\\]\nNext, multiply this result by the \\(2 \\times 1\\) column vector:\n\\[\nk = (6\\cos\\theta + 2\\sin\\theta)\\cos\\theta + (2\\cos\\theta + 3\\sin\\theta)\\sin\\theta\n\\]\n\\[\nk = 6\\cos^2\\theta + 4\\sin\\theta\\cos\\theta + 3\\sin^2\\theta\n\\]\n\nStep 2: Express the quadratic trigonometric terms using double-angle identities.\nRecall the standard identities:\n\\[\n\\cos^2\\theta = \\frac{1 + \\cos(2\\theta)}{2}, \\quad \\sin^2\\theta = \\frac{1 - \\cos(2\\theta)}{2}, \\quad 2\\sin\\theta\\cos\\theta = \\sin(2\\theta)\n\\]\nSubstitute these into the expression for \\(k\\):\n\\[\nk = 6\\left(\\frac{1 + \\cos(2\\theta)}{2}\\right) + 3\\left(\\frac{1 - \\cos(2\\theta)}{2}\\right) + 2\\sin(2\\theta)\n\\]\n\\[\nk = 3(1 + \\cos(2\\theta)) + \\frac{3}{2}(1 - \\cos(2\\theta)) + 2\\sin(2\\theta)\n\\]\n\\[\nk = \\frac{9}{2} + \\frac{3}{2}\\cos(2\\theta) + 2\\sin(2\\theta)\n\\]\n\nStep 3: Maximize the resulting trigonometric expression.\nFor real constants \\(A\\) and \\(B\\), the maximum value of \\(A\\cos\\phi + B\\sin\\phi\\) is \\(\\sqrt{A^2 + B^2}\\). Here, \\(A = \\frac{3}{2}\\) and \\(B = 2\\):\n\\[\n\\sqrt{\\left(\\frac{3}{2}\\right)^2 + 2^2} = \\sqrt{\\frac{9}{4} + \\frac{16}{4}} = \\sqrt{\\frac{25}{4}} = \\frac{5}{2}\n\\]\nThus, the maximum value of \\(k\\) is:\n\\[\nk_{\\text{max}} = \\frac{9}{2} + \\frac{5}{2} = 7\n\\]\n\nMisconception Analysis:\n- Choice A (6) results from ignoring the cross-product term \\(4\\sin\\theta\\cos\\theta\\) and merely selecting the maximum diagonal entry.\n- Choice C (9) results from taking the trace (sum of diagonal entries) of the matrix.\n- Choice D (14) results from calculating the determinant of the matrix, \\(6(3) - 2(2) = 14\\)."
+          "answer": "Step 1: Perform the matrix multiplication.\nFirst, multiply the \\(1 \\times 2\\) row vector by the \\(2 \\times 2\\) matrix:\n\\[\n\\begin{bmatrix} \\cos\\theta & \\sin\\theta \\end{bmatrix} \\begin{bmatrix} 6 & 2 \\\\ 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 6\\cos\\theta + 2\\sin\\theta & 2\\cos\\theta + 3\\sin\\theta \\end{bmatrix}\n\\]\nNext, multiply this result by the \\(2 \\times 1\\) column vector:\n\\[\nk = (6\\cos\\theta + 2\\sin\\theta)\\cos\\theta + (2\\cos\\theta + 3\\sin\\theta)\\sin\\theta\n\\]\n\\[\nk = 6\\cos^2\\theta + 4\\sin\\theta\\cos\\theta + 3\\sin^2\\theta\n\\]\n\nStep 2: Express the quadratic trigonometric terms using double-angle identities.\nRecall the standard identities:\n\\[\n\\cos^2\\theta = \\frac{1 + \\cos(2\\theta)}{2}, \\quad \\sin^2\\theta = \\frac{1 - \\cos(2\\theta)}{2}, \\quad 2\\sin\\theta\\cos\\theta = \\sin(2\\theta)\n\\]\nSubstitute these into the expression for \\(k\\):\n\\[\nk = 6\\left(\\frac{1 + \\cos(2\\theta)}{2}\\right) + 3\\left(\\frac{1 - \\cos(2\\theta)}{2}\\right) + 2\\sin(2\\theta)\n\\]\n\\[\nk = 3(1 + \\cos(2\\theta)) + \\frac{3}{2}(1 - \\cos(2\\theta)) + 2\\sin(2\\theta)\n\\]\n\\[\nk = \\frac{9}{2} + \\frac{3}{2}\\cos(2\\theta) + 2\\sin(2\\theta)\n\\]\n\nStep 3: Maximize the resulting trigonometric expression.\nFor real constants \\(A\\) and \\(B\\), the maximum value of \\(A\\cos\\phi + B\\sin\\phi\\) is \\(\\sqrt{A^2 + B^2}\\). Here, \\(A = \\frac{3}{2}\\) and \\(B = 2\\):\n\\[\n\\sqrt{\\left(\\frac{3}{2}\\right)^2 + 2^2} = \\sqrt{\\frac{9}{4} + \\frac{16}{4}} = \\sqrt{\\frac{25}{4}} = \\frac{5}{2}\n\\]\nThus, the maximum value of \\(k\\) is:\n\\[\nk_{\\text{max}} = \\frac{9}{2} + \\frac{5}{2} = 7\n\\]\n\nMisconception Analysis:\n- Choice A (6) results from ignoring the cross-product term \\(4\\sin\\theta\\cos\\theta\\) and merely selecting the maximum diagonal entry.\n- Choice C (9) results from taking the trace (sum of diagonal entries) of the matrix.\n- Choice D (14) results from calculating the determinant of the matrix, \\(6(3) - 2(2) = 14\\).",
+          "figure": {
+            "type": "sinusoid",
+            "a": 4,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 4 sin(x)"
+          }
         },
         {
           "q": "Given the vectors \\( \\mathbf{u} = \\langle 3, -2 \\rangle \\) and \\( \\mathbf{v} = \\langle 1, 5 \\rangle \\), what is the vector \\( 2\\mathbf{u} + \\mathbf{v} \\)?",
@@ -60,7 +99,38 @@
             "6"
           ],
           "correct": 0,
-          "answer": "First, find the matrix sum \\(A + B\\) by adding corresponding entries:\n\\[\nA + B = \\begin{bmatrix} x + 1 & 2 + (-4) \\\\ -1 + 3 & 3 + x \\end{bmatrix} = \\begin{bmatrix} x + 1 & -2 \\\\ 2 & x + 3 \\end{bmatrix}\n\\]\nNext, calculate the determinant of \\(A + B\\):\n\\[\n\\det(A + B) = (x + 1)(x + 3) - (-2)(2)\n\\]\n\\[\n\\det(A + B) = (x^2 + 4x + 3) - (-4) = x^2 + 4x + 7\n\\]\nSet the determinant equal to \\(19\\) and solve for \\(x\\):\n\\[\nx^2 + 4x + 7 = 19\n\\]\n\\[\nx^2 + 4x - 12 = 0\n\\]\nFactoring the quadratic gives:\n\\[\n(x + 6)(x - 2) = 0\n\\]\nThis yields \\(x = -6\\) or \\(x = 2\\). Since we are given that \\(x > 0\\), the value is \\(x = 2\\).\n\nCommon Pitfalls:\n- Assuming \\(\\det(A + B) = \\det(A) + \\det(B)\\): \\(\\det(A) = 3x + 2\\) and \\(\\det(B) = x + 12\\), so setting \\(4x + 14 = 19\\) results in the incorrect answer \\(x = \\frac{5}{4}\\).\n- Factoring sign error: solving \\(x^2 + 4x - 12 = 0\\) as \\((x - 6)(x + 2) = 0\\) yields \\(x = 6\\)."
+          "answer": "First, find the matrix sum \\(A + B\\) by adding corresponding entries:\n\\[\nA + B = \\begin{bmatrix} x + 1 & 2 + (-4) \\\\ -1 + 3 & 3 + x \\end{bmatrix} = \\begin{bmatrix} x + 1 & -2 \\\\ 2 & x + 3 \\end{bmatrix}\n\\]\nNext, calculate the determinant of \\(A + B\\):\n\\[\n\\det(A + B) = (x + 1)(x + 3) - (-2)(2)\n\\]\n\\[\n\\det(A + B) = (x^2 + 4x + 3) - (-4) = x^2 + 4x + 7\n\\]\nSet the determinant equal to \\(19\\) and solve for \\(x\\):\n\\[\nx^2 + 4x + 7 = 19\n\\]\n\\[\nx^2 + 4x - 12 = 0\n\\]\nFactoring the quadratic gives:\n\\[\n(x + 6)(x - 2) = 0\n\\]\nThis yields \\(x = -6\\) or \\(x = 2\\). Since we are given that \\(x > 0\\), the value is \\(x = 2\\).\n\nCommon Pitfalls:\n- Assuming \\(\\det(A + B) = \\det(A) + \\det(B)\\): \\(\\det(A) = 3x + 2\\) and \\(\\det(B) = x + 12\\), so setting \\(4x + 14 = 19\\) results in the incorrect answer \\(x = \\frac{5}{4}\\).\n- Factoring sign error: solving \\(x^2 + 4x - 12 = 0\\) as \\((x - 6)(x + 2) = 0\\) yields \\(x = 6\\).",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (1))*(x - (1)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 1",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": -1,
+                "label": "(1, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Let \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) be vectors in the coordinate plane such that \\(|\\mathbf{u}| = 5\\), \\(|\\mathbf{v}| = 10\\), and the angle \\(\\theta\\) between them is obtuse (\\(90^\\circ < \\theta < 180^\\circ\\)). If the minimum value of \\(|t\\mathbf{u} + \\mathbf{v}|\\) over all real numbers \\(t\\) is equal to \\(6\\), what is the value of the dot product \\(\\mathbf{u} \\cdot \\mathbf{v}\\)?",

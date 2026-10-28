@@ -14,7 +14,26 @@
           "question_type": "FRQ",
           "target": "The auxiliary equation",
           "answer": "$r^2 - 5r + 6 = 0$.",
-          "explanation": "$r^2 - 5r + 6 = 0$."
+          "explanation": "$r^2 - 5r + 6 = 0$.",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "Write and simplify the auxiliary equation for $2y'' + 4y' - 6y = 0$.",
@@ -146,7 +165,26 @@
           "target": "Boundary value problems",
           "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor",
           "answer": "Step 1: Check regular singularity at $x_0 = 0$: $P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}.$ $p_0 = \\lim_{x\\rightarrow 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = -\\frac{5}{2}.$ Both limits are finite, confirming $x = 0$ is a regular singular point. Step 2: Indicial equation: $r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\Rightarrow 2r^2 - 3r - 5 = 0.$ Factoring: $(2r - 5)(r + 1) = 0 \\Rightarrow r_1 = \\frac{5}{2}, \\quad r_2 = -1.$ Step 3: Root difference: $r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} otin \\mathbb{Z}.$ Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: $y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 eq 0).$",
-          "explanation": "Step 1: Check regular singularity at $x_0 = 0$: $P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}.$ $p_0 = \\lim_{x\\rightarrow 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = -\\frac{5}{2}.$ Both limits are finite, confirming $x = 0$ is a regular singular point. Step 2: Indicial equation: $r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\Rightarrow 2r^2 - 3r - 5 = 0.$ Factoring: $(2r - 5)(r + 1) = 0 \\Rightarrow r_1 = \\frac{5}{2}, \\quad r_2 = -1.$ Step 3: Root difference: $r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} otin \\mathbb{Z}.$ Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: $y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 eq 0).$"
+          "explanation": "Step 1: Check regular singularity at $x_0 = 0$: $P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}.$ $p_0 = \\lim_{x\\rightarrow 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = -\\frac{5}{2}.$ Both limits are finite, confirming $x = 0$ is a regular singular point. Step 2: Indicial equation: $r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\Rightarrow 2r^2 - 3r - 5 = 0.$ Factoring: $(2r - 5)(r + 1) = 0 \\Rightarrow r_1 = \\frac{5}{2}, \\quad r_2 = -1.$ Step 3: Root difference: $r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} otin \\mathbb{Z}.$ Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: $y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 eq 0).$",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": -1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "Find the general solution of the differential equation $y'' + y = 4\\sin x + 2e^{-x}$.",
@@ -357,7 +395,26 @@
           ],
           "correct": 1,
           "answer": "Auxiliary: $r^2+2r+10=0\\Rightarrow r=\\frac{-2\\pm\\sqrt{4-40}}{2}=-1\\pm3i$ — $\\alpha=-1,\\beta=3$, so $y=e^{-x}(C_1\\cos3x+C_2\\sin3x)$. $y(0)=C_1=0$, so $y=C_2e^{-x}\\sin3x$; $y'=C_2e^{-x}(3\\cos3x-\\sin3x)$, $y'(0)=3C_2=6\\Rightarrow C_2=2$. So $y=2e^{-x}\\sin3x$, and $y(\\pi/6)=2e^{-\\pi/6}\\sin(\\pi/2)=2e^{-\\pi/6}$.",
-          "explanation": "Auxiliary: $r^2+2r+10=0\\Rightarrow r=\\frac{-2\\pm\\sqrt{4-40}}{2}=-1\\pm3i$ — $\\alpha=-1,\\beta=3$, so $y=e^{-x}(C_1\\cos3x+C_2\\sin3x)$. $y(0)=C_1=0$, so $y=C_2e^{-x}\\sin3x$; $y'=C_2e^{-x}(3\\cos3x-\\sin3x)$, $y'(0)=3C_2=6\\Rightarrow C_2=2$. So $y=2e^{-x}\\sin3x$, and $y(\\pi/6)=2e^{-\\pi/6}\\sin(\\pi/2)=2e^{-\\pi/6}$."
+          "explanation": "Auxiliary: $r^2+2r+10=0\\Rightarrow r=\\frac{-2\\pm\\sqrt{4-40}}{2}=-1\\pm3i$ — $\\alpha=-1,\\beta=3$, so $y=e^{-x}(C_1\\cos3x+C_2\\sin3x)$. $y(0)=C_1=0$, so $y=C_2e^{-x}\\sin3x$; $y'=C_2e^{-x}(3\\cos3x-\\sin3x)$, $y'(0)=3C_2=6\\Rightarrow C_2=2$. So $y=2e^{-x}\\sin3x$, and $y(\\pi/6)=2e^{-\\pi/6}\\sin(\\pi/2)=2e^{-\\pi/6}$.",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 2,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "Consider the second-order linear non-homogeneous differential equation $y'' + 4y = f(t)$, where $f(t)$ is a piecewise constant function defined as $f(t) = \\left\\{ 2,, 0 \\leq t < 1 ; 0,, t \\geq 1 \\right.$. The Laplace transform of $f(t)$ can be written in the form $F(s) = \\frac{2}{s} - \\frac{2e^{-s}}{s}$. Find the Laplace transform of the differential equation, $s^2Y(s) - sy(0) - y'(0) + 4Y(s) = F(s)$, given initial conditions $y(0) = 1$ and $y'(0) = 0$. What is the expression for $Y(s)$?",

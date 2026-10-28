@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Partial fraction decomposition: distinct linear factors",
           "answer": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$.",
-          "explanation": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$."
+          "explanation": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Evaluate $\\int\\frac{3x+5}{x^2+x-2}\\,dx$ using partial fractions (note $x^2+x-2=(x+2)(x-1)$).",
@@ -146,7 +177,38 @@
           "target": "Comparison test for improper integrals",
           "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests",
           "answer": "For $x\\geq1$: $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ converges (shown earlier, $p=2>1$), and the given integrand is smaller and positive, $\\int_1^{\\infty}\\frac{1}{x^2+1}\\,dx$ also converges by comparison.",
-          "explanation": "For $x\\geq1$: $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ converges (shown earlier, $p=2>1$), and the given integrand is smaller and positive, $\\int_1^{\\infty}\\frac{1}{x^2+1}\\,dx$ also converges by comparison."
+          "explanation": "For $x\\geq1$: $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ converges (shown earlier, $p=2>1$), and the given integrand is smaller and positive, $\\int_1^{\\infty}\\frac{1}{x^2+1}\\,dx$ also converges by comparison.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "Use a direct comparison to argue that $\\int_1^{\\infty}\\frac{2+\\sin x}{x}\\,dx$ diverges.",
@@ -357,7 +419,38 @@
           ],
           "correct": 0,
           "answer": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$.",
-          "explanation": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$."
+          "explanation": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "4*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              }
+            ]
+          }
         },
         {
           "q": "Consider the sequence defined by $a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx$. Which of the following statements about the convergence of the sequence $\\{a_n\\}_{n=1}^{\\infty}$ is true?",

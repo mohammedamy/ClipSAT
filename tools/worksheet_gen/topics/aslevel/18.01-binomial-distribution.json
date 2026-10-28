@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Conditions for a binomial distribution",
           "answer": "(1) A fixed number of trials $n$. (2) Each trial has only two outcomes (success or failure). (3) The probability of success $p$ is constant for every trial. (4) The trials are independent of each other.",
-          "explanation": "(1) A fixed number of trials $n$. (2) Each trial has only two outcomes (success or failure). (3) The probability of success $p$ is constant for every trial. (4) The trials are independent of each other."
+          "explanation": "(1) A fixed number of trials $n$. (2) Each trial has only two outcomes (success or failure). (3) The probability of success $p$ is constant for every trial. (4) The trials are independent of each other.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "A survey asks 50 people whether they support a new policy, and $X$ is the number who say yes, assuming each person's response is independent with the same probability of support. Explain why $X$ follows a binomial distribution.",
@@ -146,7 +177,15 @@
           "target": "Using the binomial distribution to model a real scenario",
           "cross_lesson": "15.01 Representation of Data",
           "answer": "$X\\sim B(5,0.8)$. $P(X=4)=\\binom{5}{4}(0.8)^4(0.2)^1=5(0.4096)(0.2)=0.4096$.",
-          "explanation": "$X\\sim B(5,0.8)$. $P(X=4)=\\binom{5}{4}(0.8)^4(0.2)^1=5(0.4096)(0.2)=0.4096$."
+          "explanation": "$X\\sim B(5,0.8)$. $P(X=4)=\\binom{5}{4}(0.8)^4(0.2)^1=5(0.4096)(0.2)=0.4096$.",
+          "figure": {
+            "type": "circle",
+            "r": 3,
+            "center": "(0,0)",
+            "chord": true,
+            "sectorAngle": 90,
+            "label": "r = 3"
+          }
         },
         {
           "q": "Explain why drawing 5 cards from a standard deck WITHOUT replacement and counting the number of aces drawn is NOT a binomial distribution, while drawing 5 cards WITH replacement would be.",
@@ -357,7 +396,38 @@
           ],
           "correct": 2,
           "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(3+3)=Po(6)$.",
-          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(3+3)=Po(6)$."
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(3+3)=Po(6)$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "4*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              }
+            ]
+          }
         },
         {
           "q": "A sample of size 6 gives values: 5, 12, 18, 11, 17, 18. Find the sample mean $\\bar{x}$.",

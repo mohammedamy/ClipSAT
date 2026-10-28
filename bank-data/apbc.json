@@ -98,7 +98,26 @@
         "Start by examining the given mathematical expression in the problem: \\(x(t) = 3t^2\\).",
         "Differentiating component-wise gives \\(x'(t) = 6t\\) and \\(y'(t)\\).",
         "Apply this step to \\(y'(t)\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "apbc-0003",
@@ -292,7 +311,38 @@
         "We are given the differential equation \\( \\frac{dQ}{dt} = kt e^{-0.5t^2} \\). To find \\( Q(t) \\), we need to integrate both sides with respect to \\( t \\). The integral of the right side requires a substitution. Let \\( u = -0.5t^2 \\), so \\( du = -t \\, dt \\) or \\( -du = t \\, dt \\). Thus, \\( kt e^{-0.5t^2} \\, dt = -k e^u \\, du \\).",
         "We are also given \\( Q(2) = 15 \\). Substituting \\( t=2 \\) into the equation for \\( Q(t) \\): \\( 15 = -k e^{-0.5(2)^2} + 5 + k \\implies 15 = -k e^{-2} + 5 + k \\).",
         "Therefore, the value of \\(k\\) is \\(\\frac{10}{1 - e^{-2}}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 2",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -429,7 +479,38 @@
         "The Taylor series expansion of a function \\( f(x) \\) around \\( x=c \\) is given by \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(c)}{n!}(x-c)^n \\). In this problem, we are given information about \\( f(0) \\), \\( f'(0) \\), and \\( f''(0) \\), which strongly suggests that the center of the Taylor expansion is \\( c=0 \\).",
         "Let's verify this. The Taylor series around \\( x=0 \\) (Maclaurin series) is \\( f(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\dots \\). We are given: \\( f(0) = 2 \\).",
         "The center of the Taylor series is \\(c=0\\) as implied by the provided derivatives at \\(x=0\\) and the form of the given series expansion. Therefore, the value of \\(b\\) is 6 and the value of \\(c\\) is 0."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 2",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "id": "apbc-0014",
@@ -616,7 +697,15 @@
         "We need to determine the limit of the sequence \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\) as \\(n \\to \\infty\\). As \\(n \\to \\infty\\), the upper limit of integration \\(1/n \\to 0\\). We examine the behavior of the integrand \\(\\frac{\\sin(x^2)}{x}\\) near \\(x=0\\). Using the Taylor series expansion for \\(\\sin(u)\\) around \\(u=0\\), which is \\(\\sin(u) = u - \\frac{u^3}{3!} + O(u^5)\\), we substitute \\(u=x^2\\): \\(\\sin(x^2) = x^2 - \\frac{(x^2)^3}{3!} + O(x^{10}) = x^2 - \\frac{x^6}{6} + O(x^{10})\\).",
         "Let \\(f(x) = \\frac{\\sin(x^2)}{x}\\). For \\(x \\in (0, 1]\\), \\(f(x)\\) is well-defined. As \\(x \\to 0^+\\), \\(f(x) \\to 0\\). We can consider a continuous extension of \\(f(x)\\) on \\([0, 1]\\) by defining \\(f(0)=0\\). The function \\(f(x)\\) is continuous on \\([0, 1]\\).",
         "Thus, the sequence converges to 0."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -805,7 +894,15 @@
         "We know the relationships between polar and Cartesian coordinates: \\( r^2 = x^2 + y^2 \\), \\( x = r \\cos(\\theta) \\), and \\( y = r \\sin(\\theta) \\).",
         "The given polar equation is \\( r = 4 \\cos(\\theta) \\). To convert this to a Cartesian equation, we can multiply both sides by \\( r \\) to get \\( r^2 = 4r \\cos(\\theta) \\).",
         "Substituting the Cartesian equivalents, we have \\(x^2 + y^2 = 4x\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "id": "apbc-0026",
@@ -994,7 +1091,26 @@
         "Start by examining the given mathematical expression in the problem: \\(x(t) = 32t^2\\).",
         "Differentiating component-wise gives \\(x'(t) = 64t\\) and \\(y'(t)\\).",
         "Apply this step to \\(y'(t)\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "apbc-0032",
@@ -1129,7 +1245,26 @@
         "The curve is given by \\( y = \\sqrt{1-x^2} \\) for \\( 0 \\le x \\le 1 \\).",
         "The surface area integral is \\( A = \\int_{0}^{1} 2\\pi y \\sqrt{1 + (y')^2} dx = \\int_{0}^{1} 2\\pi \\sqrt{1-x^2} \\cdot \\frac{1}{\\sqrt{1-x^2}} dx \\).",
         "This matches the known surface area of a hemisphere of radius 1 (which is \\(2\\pi r^2\\) for \\(r\\))."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -1267,7 +1402,38 @@
         "The Maclaurin series for \\( f(x) \\) is given by \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)! 3^{2n+1}} \\). This is the Maclaurin series for \\( \\sin(u) \\) with \\( u = \\frac{x}{3} \\). Therefore, \\( f(x) = \\sin\\left(\\frac{x}{3}\\right) \\).",
         "We are given \\( g(x) = \\int_0^x f(t) dt \\). To find \\( g''(0) \\), we first find the derivatives of \\( g(x) \\): First derivative: \\( g'(x) = \\frac{d}{dx} \\int_0^x f(t) dt = f(x) \\) by the Fundamental Theorem of Calculus.",
         "Now, evaluate \\(f'(0)\\): \\(f'(0) = \\frac{1}{3}\\cos\\left(\\frac{0}{3}\\right) = \\frac{1}{3}\\cos(0) = \\frac{1}{3} \\cdot 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "id": "apbc-0042",
@@ -1444,7 +1610,38 @@
         "To determine the convergence or divergence of an infinite series \\( \\sum_{n=1}^{\\infty} a_n \\), we can first examine the limit of its terms, \\( \\lim_{n \\to \\infty} a_n \\). If this limit is not equal to zero, then the series diverges by the Test for Divergence.",
         "For the given series, the terms are \\( a_n = \\frac{3n+1}{2n+5} \\). We evaluate the limit as \\( n \\to \\infty \\): \\( \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\frac{3n+1}{2n+5} \\).",
         "Since \\(\\lim_{n \\to \\infty} a_n = \\frac{3}{2}\\), and \\(\\frac{3}{2} eq 0\\), the series diverges by the Test for Divergence."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 4",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "id": "apbc-0048",
@@ -1683,7 +1880,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 6}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 6}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 6}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "id": "apbc-0055",
@@ -1820,7 +2025,38 @@
         "For a parametric curve, the slope of the tangent line is \\( \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} \\).",
         "Here, \\( \\frac{dy}{dt} = 2t - 4 \\) and \\( \\frac{dx}{dt} = 2e^{2t} - 2 \\).",
         "At the point where the tangent line is horizontal (\\(t = 2\\), where \\(dy/dt = 0\\) and \\(dx/dt = 2e^4 - 2 eq 0\\)), the slope \\(\\frac{dy}{dx}\\) is equal to \\(0\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -1960,7 +2196,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 16}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 16}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 16}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2100,7 +2344,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 21}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 21}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 21}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2240,7 +2492,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 26}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 26}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 26}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2380,7 +2640,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 31}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 31}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 31}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2520,7 +2788,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 36}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 36}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 36}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2660,7 +2936,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 41}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 41}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 41}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2800,7 +3084,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 46}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 46}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 46}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -2940,7 +3232,15 @@
         "Set up the initial relation: \\( \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 51}{2t} \\).",
         "At \\( t=2 \\). Set up the numerical expression: \\(\\frac{3(4) - 51}{2(2)}\\).",
         "Evaluate \\(\\frac{3(4) - 51}{2(2)}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3080,7 +3380,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{5^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 5^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3220,7 +3528,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{10^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 10^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3360,7 +3676,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{15^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 15^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3500,7 +3824,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{20^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 20^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3640,7 +3972,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{25^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 25^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3780,7 +4120,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{30^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 30^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -3920,7 +4268,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{35^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 35^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -4060,7 +4416,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{40^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 40^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -4200,7 +4564,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{45^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 45^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -4340,7 +4712,15 @@
         "Area: \\(A = \\frac{1}{2}\\int_0^{2\\pi} r^2 d\\theta\\).",
         "Substitute and simplify: \\(A = \\frac{50^2}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)d\\theta\\).",
         "Compute the final value from: \\(\\frac{3\\cdot 50^2\\pi}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -4480,7 +4860,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{6x}\\).",
         "Substitute \\(u = 6x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(6x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(6x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4620,7 +5031,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{11x}\\).",
         "Substitute \\(u = 11x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(11x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(11x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4760,7 +5202,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{16x}\\).",
         "Substitute \\(u = 16x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(16x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(16x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4900,7 +5373,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{21x}\\).",
         "Substitute \\(u = 21x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(21x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(21x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5040,7 +5544,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{26x}\\).",
         "Substitute \\(u = 26x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(26x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(26x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5180,7 +5715,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{31x}\\).",
         "Substitute \\(u = 31x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(31x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(31x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5320,7 +5886,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{36x}\\).",
         "Substitute \\(u = 36x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(36x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(36x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5460,7 +6057,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{41x}\\).",
         "Substitute \\(u = 41x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(41x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(41x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5600,7 +6228,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{46x}\\).",
         "Substitute \\(u = 46x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(46x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(46x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5740,7 +6399,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f(x) = e^{51x}\\).",
         "Substitute \\(u = 51x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(51x)^n}{n!}\\).",
         "Apply this step to \\(\\sum_{n=0}^\\infty \\frac{(51x)^n}{n!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5880,7 +6570,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-9|}{7} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-9|}{7} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-9|}{7} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 120,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",
@@ -6020,7 +6718,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-14|}{12} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-14|}{12} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-14|}{12} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 3,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 90,
+        "label": "r = 3"
+      }
     },
     {
       "type": "mcq",
@@ -6160,7 +6866,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-19|}{17} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-19|}{17} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-19|}{17} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 4,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 4"
+      }
     },
     {
       "type": "mcq",
@@ -6300,7 +7014,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-24|}{22} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-24|}{22} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-24|}{22} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 5,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 120,
+        "label": "r = 5"
+      }
     },
     {
       "type": "mcq",
@@ -6440,7 +7162,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-29|}{27} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-29|}{27} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-29|}{27} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 90,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",
@@ -6580,7 +7310,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-34|}{32} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-34|}{32} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-34|}{32} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 3,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 3"
+      }
     },
     {
       "type": "mcq",
@@ -6720,7 +7458,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-39|}{37} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-39|}{37} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-39|}{37} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 4,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 120,
+        "label": "r = 4"
+      }
     },
     {
       "type": "mcq",
@@ -6860,7 +7606,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-44|}{42} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-44|}{42} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-44|}{42} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 5,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 90,
+        "label": "r = 5"
+      }
     },
     {
       "type": "mcq",
@@ -7000,7 +7754,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-49|}{47} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-49|}{47} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-49|}{47} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",
@@ -7140,7 +7902,15 @@
         "Applying the ratio test yields: \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-54|}{52} < 1\\).",
         "Rearrange the terms in \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-54|}{52} < 1\\) to isolate \\(R\\).",
         "Compute the value of \\(R\\) and check that it satisfies \\(\\lim_{n\\to\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-54|}{52} < 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 3,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 120,
+        "label": "r = 3"
+      }
     },
     {
       "type": "mcq",
@@ -7280,7 +8050,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{13}}{(13)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{13}}{(13)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 45,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -7420,7 +8195,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{23}}{(23)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{23}}{(23)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 30,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -7560,7 +8340,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{33}}{(33)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{33}}{(33)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 150,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -7700,7 +8485,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{43}}{(43)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{43}}{(43)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 135,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -7840,7 +8630,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{53}}{(53)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{53}}{(53)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 120,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -7980,7 +8775,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{63}}{(63)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{63}}{(63)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 60,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -8120,7 +8920,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{73}}{(73)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{73}}{(73)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 45,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -8260,7 +9065,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{83}}{(83)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{83}}{(83)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 30,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -8400,7 +9210,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{93}}{(93)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{93}}{(93)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 150,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -8540,7 +9355,12 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sin(0.3)\\).",
         "The error bound is the absolute value of the next omitted term: \\(\\frac{(0.3)^{103}}{(103)!}\\).",
         "Apply this step to \\(\\frac{(0.3)^{103}}{(103)!}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 135,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -8681,7 +9501,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\int\\frac{1}{1+x^2}\\,dx=\\).",
         "Standard integral: \\(\\arctan x+C\\).",
         "Apply this step to \\(\\arctan x+C\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8821,7 +9672,12 @@
         "Set up the initial relation: \\(u=x,\\ dv=\\sin(5x)dx\\Rightarrow v=-\\tfrac15\\cos(5x)\\).",
         "Start with the expression: \\(\\int x\\sin(5x)dx\\). Rewrite and substitute: \\(\\int x\\sin(5x)dx = -\\dfrac{x}{5}\\cos(5x)+\\dfrac15\\int\\cos(5x)dx\\).",
         "Evaluate \\(-\\dfrac{x}{5}\\cos(5x)+\\dfrac15\\int\\cos(5x)dx\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 60,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -8961,7 +9817,38 @@
         "Set \\(x=6\\) in \\(1=A(x-6)+B(x-0)\\): \\(1=B(6-0)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{6-0}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{6-0}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9101,7 +9988,38 @@
         "Set \\(x=5\\) in \\(1=A(x-5)+B(x-3)\\): \\(1=B(5-3)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{5-3}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{5-3}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9241,7 +10159,38 @@
         "Set \\(x=3\\) in \\(1=A(x-3)+B(x-1)\\): \\(1=B(3-1)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{3-1}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{3-1}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9381,7 +10330,12 @@
         "Set up the initial relation: \\(u=x,\\ dv=\\cos(3x)dx\\Rightarrow v=\\tfrac13\\sin(3x)\\).",
         "Then: \\(\\int x\\cos(3x)dx\\). Rewrite and substitute: \\(\\int x\\cos(3x)dx = \\dfrac{x}{3}\\sin(3x)-\\dfrac13\\int\\sin(3x)dx\\).",
         "Evaluate \\(\\dfrac{x}{3}\\sin(3x)-\\dfrac13\\int\\sin(3x)dx\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 135,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -9521,7 +10475,12 @@
         "Set up the initial relation: \\(u=x,\\ dv=\\sin(3x)dx\\Rightarrow v=-\\tfrac13\\cos(3x)\\).",
         "Start with the expression: \\(\\int x\\sin(3x)dx\\). Rewrite and substitute: \\(\\int x\\sin(3x)dx = -\\dfrac{x}{3}\\cos(3x)+\\dfrac13\\int\\cos(3x)dx\\).",
         "Evaluate \\(-\\dfrac{x}{3}\\cos(3x)+\\dfrac13\\int\\cos(3x)dx\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 120,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -9661,7 +10620,38 @@
         "By parts, \\(u=\\ln(4x),\\,dv=dx\\Rightarrow du=\\tfrac1x dx,\\,v=x\\).",
         "Start with the expression: \\(\\int\\ln(4x)dx\\). Rewrite and substitute: \\(\\int\\ln(4x)dx = x\\ln(4x)-\\int dx\\).",
         "Evaluate \\(x\\ln(4x)-\\int dx\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9801,7 +10791,38 @@
         "By parts, \\(u=\\ln(5x),\\,dv=dx\\Rightarrow du=\\tfrac1x dx,\\,v=x\\).",
         "Start with the expression: \\(\\int\\ln(5x)dx\\). Rewrite and substitute: \\(\\int\\ln(5x)dx = x\\ln(5x)-\\int dx\\).",
         "Evaluate \\(x\\ln(5x)-\\int dx\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9941,7 +10962,38 @@
         "Set \\(x=6\\) in \\(1=A(x-6)+B(x-2)\\): \\(1=B(6-2)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{6-2}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{6-2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10083,7 +11135,38 @@
         "IBP: \\([xe^x-e^x]_0^1\\).",
         "Rewrite and substitute: \\([xe^x-e^x]_0^1 = (e-e)-(0-1)\\).",
         "Evaluate \\((e-e)-(0-1)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10223,7 +11306,38 @@
         "Set up the initial relation: \\(\\int xe^xdx=(x-1)e^x+C\\).",
         "Evaluate from 0 to 6: \\((6-1)e^{6}-(0-1)e^0\\). Rewrite and substitute: \\((6-1)e^{6}-(0-1)e^0 = (6-1)e^{6}+1\\).",
         "Evaluate \\((6-1)e^{6}+1\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10363,7 +11477,38 @@
         "Start with the expression: \\(\\int_0^b e^{-9x}dx\\).",
         "Rewrite and substitute: \\(\\int_0^b e^{-9x}dx = \\left[-\\dfrac19e^{-9x}\\right]_0^b\\). Evaluate \\(\\left[-\\dfrac19e^{-9x}\\right]_0^b\\) to obtain the final answer.",
         "Converges to \\(\\frac{1}{9}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10503,7 +11648,38 @@
         "Start with the expression: \\(\\int_0^b e^{-2x}dx\\).",
         "Rewrite and substitute: \\(\\int_0^b e^{-2x}dx = \\left[-\\dfrac12e^{-2x}\\right]_0^b\\). Evaluate \\(\\left[-\\dfrac12e^{-2x}\\right]_0^b\\) to obtain the final answer.",
         "Converges to \\(\\frac{1}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10643,7 +11819,38 @@
         "Standard form with \\(a=13\\).",
         "Rewrite and simplify to obtain: \\(\\dfrac{1}{13}\\arctan\\dfrac{x}{13}+C\\).",
         "Evaluate and simplify \\(\\dfrac{1}{13}\\arctan\\dfrac{x}{13}+C\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10783,7 +11990,38 @@
         "Partial fractions: \\(\\dfrac{1}{(x-0)(x-4)}=\\dfrac{1}{4}\\left(\\dfrac1{x-4}-\\dfrac1{x-0}\\right)\\).",
         "Integrating gives \\(\\dfrac{1}{4}\\ln\\left|\\dfrac{x-4}{x-0}\\right|+C\\).",
         "Evaluate and simplify \\(\\dfrac{1}{4}\\ln\\left|\\dfrac{x-4}{x-0}\\right|+C\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10923,7 +12161,15 @@
         "Set up the initial relation: \\(\\int x\\cos x\\,dx=x\\sin x+\\cos x+C\\).",
         "Evaluating from 0 to 3: \\(3\\sin 3+\\cos 3-1=-1 + \\cos{\\left(3 \\right)} + 3 \\sin{\\left(3 \\right)}\\).",
         "Evaluate and simplify \\(3\\sin 3+\\cos 3-1=-1 + \\cos{\\left(3 \\right)} + 3 \\sin{\\left(3 \\right)}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -11063,7 +12309,38 @@
         "Standard form with \\(a=10\\).",
         "Rewrite and simplify to obtain: \\(\\dfrac{1}{10}\\arctan\\dfrac{x}{10}+C\\).",
         "Evaluate and simplify \\(\\dfrac{1}{10}\\arctan\\dfrac{x}{10}+C\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11203,7 +12480,38 @@
         "Set up the initial relation: \\(\\int xe^xdx=(x-1)e^x+C\\).",
         "Evaluate from 0 to 2: \\((2-1)e^{2}-(0-1)e^0\\). Rewrite and substitute: \\((2-1)e^{2}-(0-1)e^0 = (2-1)e^{2}+1\\).",
         "Evaluate \\((2-1)e^{2}+1\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11343,7 +12651,38 @@
         "Set up the initial relation: \\(\\int xe^xdx=(x-1)e^x+C\\).",
         "Evaluate from 0 to 8: \\((8-1)e^{8}-(0-1)e^0\\). Rewrite and substitute: \\((8-1)e^{8}-(0-1)e^0 = (8-1)e^{8}+1\\).",
         "Evaluate \\((8-1)e^{8}+1\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11484,7 +12823,38 @@
         "This is the Gamma-function integral \\(\\Gamma(n+1)=n!\\).",
         "Repeated integration by parts gives: \\(\\int_0^\\infty x^{3}e^{-x}dx\\). Rewrite and substitute: \\(\\int_0^\\infty x^{3}e^{-x}dx = 3!\\).",
         "Evaluate \\(3!\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11624,7 +12994,38 @@
         "Multiply through by \\((x-1)^2(x-5)\\) and set \\(x=1\\): \\(1=B(1-5)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{1-5}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{1-5}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11765,7 +13166,38 @@
         "Set up the initial relation: \\(\\int_1^\\infty x^{-p}dx\\) converges iff \\(p>1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11905,7 +13337,38 @@
         "Set up the initial relation: \\(\\int_1^\\infty x^{-p}dx\\) converges iff \\(p>1\\).",
         "Here \\(p=\\frac{2}{3}\\).",
         "So it diverges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12045,7 +13508,38 @@
         "Set \\(x=2\\) in \\(1=A(x-2)(x-4)+B(x-1)(x-4)+\\cdots\\): \\(B\\).",
         "Rewrite and substitute: \\(B = \\dfrac{1}{(2-1)(2-4)}\\).",
         "Evaluate \\(\\dfrac{1}{(2-1)(2-4)}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12185,7 +13679,38 @@
         "Multiply through by \\((x-2)^2(x-5)\\) and set \\(x=2\\): \\(1=B(2-5)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{2-5}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{2-5}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12325,7 +13850,38 @@
         "Set up the initial relation: \\(\\int_1^\\infty x^{-p}dx\\) converges iff \\(p>1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12465,7 +14021,38 @@
         "Set \\(x=2\\) in \\(1=A(x-2)(x-5)+B(x-0)(x-5)+\\cdots\\): \\(B\\).",
         "Rewrite and substitute: \\(B = \\dfrac{1}{(2-0)(2-5)}\\).",
         "Evaluate \\(\\dfrac{1}{(2-0)(2-5)}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12605,7 +14192,38 @@
         "Set \\(x=1\\) in \\(1=A(x-1)(x-2)+B(x-0)(x-2)+\\cdots\\).",
         "Rewrite and simplify to obtain: \\(B = \\dfrac{1}{(1-0)(1-2)}\\).",
         "Evaluate and simplify \\(B = \\dfrac{1}{(1-0)(1-2)}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12745,7 +14363,38 @@
         "Multiply through by \\((x-1)^2(x-3)\\) and set \\(x=1\\): \\(1=B(1-3)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{1-3}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{1-3}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12885,7 +14534,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\dfrac{dP}{dt}=0.1P\\left(1-\\dfrac{P}{1000}\\right)\\).",
         "Growth rate \\(kP(1-P/M)\\) is maximized at the inflection point \\(P = M/2\\).",
         "Apply this step to \\(P = M/2\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13025,7 +14705,15 @@
         "Set up the formula/expression: \\(y_1 = y_0+h\\,f(x_0,y_0)\\).",
         "Substitute and simplify: \\(y_1 = 1+0.45(1)\\).",
         "Compute the final value from: \\(1+0.45(1)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -13165,7 +14853,38 @@
         "Set up the formula/expression: \\(y_1 = y_0+h\\,f(x_0,y_0)\\).",
         "Substitute and simplify: \\(y_1 = 1+0.1(0+1)\\).",
         "Compute the final value from: \\(1+0.1(0+1)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13305,7 +15024,15 @@
         "Set up the formula/expression: \\(y_1 = y_0+h\\,f(x_0,y_0)\\).",
         "Substitute and simplify: \\(y_1 = 1+0.25(1)\\).",
         "Compute the final value from: \\(1+0.25(1)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -13445,7 +15172,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\dfrac{dP}{dt}=0.75P\\left(1-\\dfrac{P}{90}\\right)\\).",
         "Growth rate \\(kP(1-P/M)\\) is maximized at the inflection point \\(P = M/2\\).",
         "Apply this step to \\(P = M/2\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13585,7 +15343,38 @@
         "Set up the formula/expression: \\(y_1 = y_0+h\\,f(x_0,y_0)\\).",
         "Substitute and simplify: \\(y_1 = 1+0.6(0+1)\\).",
         "Compute the final value from: \\(1+0.6(0+1)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13725,7 +15514,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\dfrac{dP}{dt}=0.25P\\left(1-\\dfrac{P}{800}\\right)\\).",
         "The logistic equation \\(\\frac{dP}{dt}=kP(1-P/M)\\) has carrying capacity \\(M=800\\), the value \\(P\\) approaches as \\(t\\to\\infty\\).",
         "Apply this step to \\(t\\to\\infty\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13865,7 +15685,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\dfrac{dP}{dt}=0.1P\\left(1-\\dfrac{P}{1000}\\right)\\).",
         "The logistic equation \\(\\frac{dP}{dt}=kP(1-P/M)\\) has carrying capacity \\(M=1000\\), the value \\(P\\) approaches as \\(t\\to\\infty\\).",
         "Apply this step to \\(t\\to\\infty\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14005,7 +15856,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\dfrac{dP}{dt}=0.2P\\left(1-\\dfrac{P}{100}\\right)\\).",
         "The logistic equation \\(\\frac{dP}{dt}=kP(1-P/M)\\) has carrying capacity \\(M=100\\), the value \\(P\\) approaches as \\(t\\to\\infty\\).",
         "Apply this step to \\(t\\to\\infty\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14145,7 +16027,38 @@
         "Growth rate \\(kP(1-P/M)\\) is maximized at the inflection point: \\(P\\).",
         "Rewrite and substitute: \\(P = M/2\\).",
         "Evaluate \\(M/2\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14285,7 +16198,38 @@
         "Substitute \\(P=40\\).",
         "Set up the numerical expression: \\(0.2\\times40\\times\\left(1-\\dfrac{40}{100}\\right)\\).",
         "Evaluate \\(0.2\\times40\\times\\left(1-\\dfrac{40}{100}\\right)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14425,7 +16369,15 @@
         "Sign of \\(1-P/M\\): \\(P=50\\),: \\(M=100\\).",
         "Rewrite in simplified form: \\(1-P/M=0.5\\). Finish solving from \\(1-P/M\\) to obtain the final answer.",
         "So the population is increasing."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -14565,7 +16517,38 @@
         "Substitute \\(P=50\\).",
         "Set up the numerical expression: \\(0.6\\times50\\times\\left(1-\\dfrac{50}{150}\\right)\\).",
         "Evaluate \\(0.6\\times50\\times\\left(1-\\dfrac{50}{150}\\right)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14705,7 +16688,38 @@
         "Substitute \\(P=200\\).",
         "Set up the numerical expression: \\(0.3\\times200\\times\\left(1-\\dfrac{200}{500}\\right)\\).",
         "Evaluate \\(0.3\\times200\\times\\left(1-\\dfrac{200}{500}\\right)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14845,7 +16859,15 @@
         "Sign of \\(1-P/M\\): \\(P=600\\),: \\(M=500\\).",
         "Rewrite in simplified form: \\(1-P/M=-0.2\\). Finish solving from \\(1-P/M\\) to obtain the final answer.",
         "So the population is decreasing."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -14985,7 +17007,38 @@
         "Substitute \\(P=100\\).",
         "Set up the numerical expression: \\(0.35\\times100\\times\\left(1-\\dfrac{100}{250}\\right)\\).",
         "Evaluate \\(0.35\\times100\\times\\left(1-\\dfrac{100}{250}\\right)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15125,7 +17178,38 @@
         "Set up the initial relation: \\(y_1 = y_0+h(y_0-x_0) = 1+0.6(1-0)\\).",
         "Set up the formula/expression: \\(y_2 = y_1+h(y_1-x_1)\\). Substitute and simplify: \\(y_2 = 1.6+0.6(1.6-0.6)\\).",
         "Compute the final value from: \\(1.6+0.6(1.6-0.6)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15265,7 +17349,38 @@
         "Substitute \\(P=600\\).",
         "Set up the numerical expression: \\(0.1\\times600\\times\\left(1-\\dfrac{600}{1000}\\right)\\).",
         "Evaluate \\(0.1\\times600\\times\\left(1-\\dfrac{600}{1000}\\right)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15405,7 +17520,38 @@
         "Carrying capacity \\(M=220\\).",
         "Growth rate is maximal at the inflection point: \\(P\\). Rewrite and substitute: \\(P = M/2\\).",
         "Evaluate \\(M/2\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15545,7 +17691,15 @@
         "Sign of \\(1-P/M\\): \\(P=100\\),: \\(M=100\\).",
         "Rewrite in simplified form: \\(1-P/M=0\\). Finish solving from \\(1-P/M\\) to obtain the final answer.",
         "So the population is at equilibrium."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -15680,7 +17834,38 @@
         "Set up the initial relation: \\(f(0,60) = 0.4\\times60\\times(1-60/300)\\).",
         "Set up the formula/expression: \\(P_1 = P_0+h f(x_0,P_0)\\). Substitute and simplify: \\(P_1 = 60+1(19.2)\\).",
         "Compute the final value from: \\(60+1(19.2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15820,7 +18005,38 @@
         "Set up the initial relation: \\(f(0,80) = 0.45\\times80\\times(1-80/400)\\).",
         "Set up the formula/expression: \\(P_1 = P_0+h f(x_0,P_0)\\). Substitute and simplify: \\(P_1 = 80+1(28.8)\\).",
         "Compute the final value from: \\(80+1(28.8)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15960,7 +18176,38 @@
         "Set up the initial relation: \\(y_1=1\\), \\(y_2=0.75\\),: \\(y_3\\).",
         "Rewrite and substitute: \\(y_3 = y_2+h(x_2-y_2)\\).",
         "Evaluate \\(y_2+h(x_2-y_2)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16100,7 +18347,38 @@
         "Stepping four times with \\(h=0.5\\): \\(y_1 = 0,\\,y_2\\).",
         "Substitute and simplify: \\(y_1 = 0.25,\\,y_3\\).",
         "Compute the final value from: \\(0.875,\\,y_4\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16240,7 +18518,38 @@
         "Set up the initial relation: \\(y_1=0.5\\), \\(y_2=0.6875\\),: \\(y_3\\).",
         "Rewrite and substitute: \\(y_3 = y_2+h(x_2-y_2)\\).",
         "Evaluate \\(y_2+h(x_2-y_2)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16380,7 +18689,15 @@
         "Euler gives \\(y_1=1.1\\).",
         "True value \\(e^{0.1}\\approx1.1052\\).",
         "Since \\(y=e^x\\) is concave up, the tangent-line step underestimates the curve."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -16520,7 +18837,38 @@
         "Start with the expression: \\(\\dfrac{dP}{dt}\\).",
         "Rewrite and substitute: \\(\\dfrac{dP}{dt} = 0.1\\times300\\times\\left(1-\\dfrac{300}{3000}\\right)\\).",
         "Evaluate \\(0.1\\times300\\times\\left(1-\\dfrac{300}{3000}\\right)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16660,7 +19008,38 @@
         "Set up the initial relation: \\(y_1=1.3\\), \\(y_2=0.9675\\),: \\(y_3\\).",
         "Rewrite and substitute: \\(y_3 = y_2+h(x_2-y_2)\\).",
         "Evaluate \\(y_2+h(x_2-y_2)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16800,7 +19179,38 @@
         "Stepping four times with \\(h=0.35\\): \\(y_1 = 0,\\,y_2\\).",
         "Substitute and simplify: \\(y_1 = 0.1225,\\,y_3\\).",
         "Compute the final value from: \\(0.410375,\\,y_4\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16940,7 +19350,38 @@
         "Set up the initial relation: \\(f(0,120) = 0.15\\times120\\times(1-120/600)\\).",
         "Set up the formula/expression: \\(P_1 = P_0+h f(x_0,P_0)\\). Substitute and simplify: \\(P_1 = 120+2(14.4)\\).",
         "Compute the final value from: \\(120+2(14.4)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17081,7 +19522,38 @@
         "Identify the core mathematical definition or theorem that governs the relationship in the prompt.",
         "Parallel vectors give \\(\\vec{0}\\) cross product.",
         "Apply this step to \\(\\vec{0}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17221,7 +19693,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=2 t,\\ \\dfrac{dy}{dt}=5 t^{4}\\).",
         "Start with the expression: \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{5 t^{4}}{2 t}\\Big|_{t=1}\\).",
         "Evaluate \\(\\dfrac{5 t^{4}}{2 t}\\Big|_{t=1}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17361,7 +19864,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=2,\\ \\dfrac{dy}{dt}=2t\\).",
         "At \\(t=2\\): \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{4}{2}\\).",
         "Evaluate \\(\\dfrac{4}{2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17501,7 +20035,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=1,\\ \\dfrac{dy}{dt}=2 t\\).",
         "Start with the expression: \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{2 t}{1}\\Big|_{t=2}\\).",
         "Evaluate \\(\\dfrac{2 t}{1}\\Big|_{t=2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17641,7 +20206,38 @@
         "Set up the initial relation: \\(x''(t) = 12t,\\ y''(t)\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle 12,8\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17781,7 +20377,38 @@
         "Set up the initial relation: \\(x''(t) = 18t,\\ y''(t)\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle 36,2\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17921,7 +20548,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=1,\\ \\dfrac{dy}{dt}=4t\\).",
         "At \\(t=1\\): \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{4}{1}\\).",
         "Evaluate \\(\\dfrac{4}{1}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18061,7 +20719,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=3 t^{2},\\ \\dfrac{dy}{dt}=4 t^{3}\\).",
         "Start with the expression: \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{4 t^{3}}{3 t^{2}}\\Big|_{t=1}\\).",
         "Evaluate \\(\\dfrac{4 t^{3}}{3 t^{2}}\\Big|_{t=1}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18201,7 +20890,38 @@
         "Set up the initial relation: \\(x''(t) = 12t,\\ y''(t)\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle 12,6\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18341,7 +21061,38 @@
         "Set up the initial relation: \\(x''(t) = 12t,\\ y''(t)\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle 36,2\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18481,7 +21232,38 @@
         "Start with the expression: \\(\\lVert\\mathbf r'(t)\\rVert\\).",
         "Rewrite and substitute: \\(\\lVert\\mathbf r'(t)\\rVert = \\sqrt{24^2+7^2}\\).",
         "Evaluate \\(\\sqrt{24^2+7^2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18621,7 +21403,38 @@
         "Start with the expression: \\(\\lVert\\mathbf r'(t)\\rVert\\).",
         "Rewrite and substitute: \\(\\lVert\\mathbf r'(t)\\rVert = \\sqrt{24^2+10^2}\\).",
         "Evaluate \\(\\sqrt{24^2+10^2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18761,7 +21574,26 @@
         "Set up the formula/expression: \\(\\text{Speed} = \\sqrt{(x')^2+(y')^2}\\).",
         "Substitute and simplify: \\(\\text{Speed} = \\sqrt{4^2+4^2}\\).",
         "Compute the final value from: \\(\\sqrt{4^2+4^2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18901,7 +21733,38 @@
         "Start with the expression: \\(\\lVert\\mathbf r'(t)\\rVert\\).",
         "Rewrite and substitute: \\(\\lVert\\mathbf r'(t)\\rVert = \\sqrt{12^2+16^2}\\).",
         "Evaluate \\(\\sqrt{12^2+16^2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19041,7 +21904,38 @@
         "Set up the initial relation: \\(x'=2 t,\\ y'=3 t^{2}\\).",
         "Start with the expression: \\(\\text{Speed}\\). Rewrite and substitute: \\(\\text{Speed} = \\sqrt{(x')^2+(y')^2}\\Big|_{t=2}\\).",
         "Evaluate \\(\\sqrt{(x')^2+(y')^2}\\Big|_{t=2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19181,7 +22075,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=2t,\\ \\dfrac{dy}{dt}=3t^2-4\\).",
         "At \\(t=1\\): \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{-1}{2}\\).",
         "Evaluate \\(\\dfrac{-1}{2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19321,7 +22246,26 @@
         "Set up the formula/expression: \\(\\text{Speed} = \\sqrt{(x')^2+(y')^2}\\).",
         "Substitute and simplify: \\(\\text{Speed} = \\sqrt{5^2+5^2}\\).",
         "Compute the final value from: \\(\\sqrt{5^2+5^2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19461,7 +22405,38 @@
         "Set up the initial relation: \\(\\dfrac{dx}{dt}=2t,\\ \\dfrac{dy}{dt}=3t^2-2\\).",
         "At \\(t=4\\): \\(\\dfrac{dy}{dx}\\). Rewrite and substitute: \\(\\dfrac{dy}{dx} = \\dfrac{46}{8}\\).",
         "Evaluate \\(\\dfrac{46}{8}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19601,7 +22576,26 @@
         "Set up the formula/expression: \\(\\text{Speed} = \\sqrt{(x')^2+(y')^2}\\).",
         "Substitute and simplify: \\(\\text{Speed} = \\sqrt{6^2+3^2}\\).",
         "Compute the final value from: \\(\\sqrt{6^2+3^2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19741,7 +22735,38 @@
         "Start with the expression: \\(\\lVert\\mathbf r'(t)\\rVert\\).",
         "Rewrite and substitute: \\(\\lVert\\mathbf r'(t)\\rVert = \\sqrt{8^2+6^2}\\).",
         "Evaluate \\(\\sqrt{8^2+6^2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19875,7 +22900,15 @@
         "Speed \\(=\\sqrt{x'^2+y'^2}=3\\) (constant).",
         "Start with the expression: \\(\\text{Distance}\\). Rewrite and substitute: \\(\\text{Distance} = 3\\times\\left(2\\pi-(0)\\right)\\).",
         "Evaluate \\(3\\times\\left(2\\pi-(0)\\right)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -20015,7 +23048,38 @@
         "Set up the initial relation: \\(x(t)=1+\\displaystyle\\int_0^t 1\\,ds=t + 1\\), \\(y(t)=0+\\displaystyle\\int_0^t 2s\\,ds=t^{2}\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle3,4\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20155,7 +23219,38 @@
         "Set up the initial relation: \\(x(t)=0+\\displaystyle\\int_0^t 2\\,ds=2 t\\), \\(y(t)=1+\\displaystyle\\int_0^t 3s\\,ds=\\frac{3 t^{2}}{2} + 1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle2,5/2\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20295,7 +23390,15 @@
         "Set up the initial relation: \\(x'=4 t,\\ y'=4 t^{2}\\).",
         "Start with the expression: \\(L\\). Rewrite and substitute: \\(L = \\displaystyle\\int_0^{3}\\sqrt{(x')^2+(y')^2}\\,dt\\).",
         "Evaluate \\(\\displaystyle\\int_0^{3}\\sqrt{(x')^2+(y')^2}\\,dt\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 5,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 90,
+        "label": "r = 5"
+      }
     },
     {
       "type": "mcq",
@@ -20435,7 +23538,15 @@
         "Speed \\(=\\sqrt{x'^2+y'^2}=1\\) (constant).",
         "Start with the expression: \\(\\text{Distance}\\). Rewrite and substitute: \\(\\text{Distance} = 1\\times\\left(2\\pi-(\\pi)\\right)\\).",
         "Evaluate \\(1\\times\\left(2\\pi-(\\pi)\\right)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -20575,7 +23686,38 @@
         "Set up the initial relation: \\(\\dfrac{dy}{dx}=\\frac{3 t^{2} - 1}{2 t}\\).",
         "Start with the expression: \\(\\dfrac{d^2y}{dx^2}\\). Rewrite and substitute: \\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{dt}\\left(\\dfrac{dy}{dx}\\right)\\Big/\\dfrac{dx}{dt}\\Big|_{t=2}\\).",
         "Evaluate \\(\\dfrac{d}{dt}\\left(\\dfrac{dy}{dx}\\right)\\Big/\\dfrac{dx}{dt}\\Big|_{t=2}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20715,7 +23857,38 @@
         "Set up the initial relation: \\(x(t)=0+\\displaystyle\\int_0^t 2\\,ds=2 t\\), \\(y(t)=0+\\displaystyle\\int_0^t 2s\\,ds=t^{2}\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle2,1\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20855,7 +24028,15 @@
         "Set up the initial relation: \\(x'=6 t,\\ y'=6 t^{2}\\).",
         "Start with the expression: \\(L\\). Rewrite and substitute: \\(L = \\displaystyle\\int_0^{1}\\sqrt{(x')^2+(y')^2}\\,dt\\).",
         "Evaluate \\(\\displaystyle\\int_0^{1}\\sqrt{(x')^2+(y')^2}\\,dt\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 5,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 5"
+      }
     },
     {
       "type": "mcq",
@@ -20995,7 +24176,38 @@
         "Set up the initial relation: \\(x(t)=0+\\displaystyle\\int_0^t 3\\,ds=3 t\\), \\(y(t)=2+\\displaystyle\\int_0^t 1s\\,ds=\\frac{t^{2}}{2} + 2\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle3,5/2\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21135,7 +24347,38 @@
         "Set up the initial relation: \\(x(t)=1+\\displaystyle\\int_0^t 1\\,ds=t + 1\\), \\(y(t)=1+\\displaystyle\\int_0^t 1s\\,ds=\\frac{t^{2}}{2} + 1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "Use the resulting form to finish: \\(\\langle2,3/2\\rangle\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21275,7 +24518,15 @@
         "Set up the formula/expression: \\(x = r\\cos\\theta\\).",
         "Substitute and simplify: \\(x = 4\\cos(\\pi/4)\\).",
         "Compute the final value from: \\(4\\cos(\\pi/4)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -21415,7 +24666,15 @@
         "Start by examining the given mathematical expression in the problem: \\(r=10\\).",
         "Rewrite and simplify to obtain: \\(r\\) means every point is a constant distance 10 from the origin — a circle of radius 10.",
         "Apply this step to \\(r\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -21555,7 +24814,15 @@
         "Set up the formula/expression: \\(r = \\sqrt{x^2+y^2}\\).",
         "Substitute and simplify: \\(r = \\sqrt{12^2+16^2}\\).",
         "Compute the final value from: \\(\\sqrt{12^2+16^2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -21695,7 +24962,15 @@
         "Start by examining the given mathematical expression in the problem: \\(r=2\\).",
         "Rewrite and simplify to obtain: \\(r\\) means every point is a constant distance 2 from the origin — a circle of radius 2.",
         "Apply this step to \\(r\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -21835,7 +25110,15 @@
         "Start by examining the given mathematical expression in the problem: \\(r=12\\).",
         "Rewrite and simplify to obtain: \\(r\\) means every point is a constant distance 12 from the origin — a circle of radius 12.",
         "Apply this step to \\(r\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -21975,7 +25258,15 @@
         "Set up the formula/expression: \\(x = r\\cos\\theta\\).",
         "Substitute and simplify: \\(x = 2\\cos(5\\pi/6)\\).",
         "Compute the final value from: \\(2\\cos(5\\pi/6)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22115,7 +25406,15 @@
         "Set up the formula/expression: \\(r = \\sqrt{x^2+y^2}\\).",
         "Substitute and simplify: \\(r = \\sqrt{5^2+12^2}\\).",
         "Compute the final value from: \\(\\sqrt{5^2+12^2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22255,7 +25554,15 @@
         "Set up the initial relation: \\(\\theta=\\pi/3\\) is the ray/line through the origin with slope.",
         "Set up the numerical expression: \\(\\tan(\\pi/3)\\).",
         "Evaluate \\(\\tan(\\pi/3)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22395,7 +25702,15 @@
         "Start by examining the given mathematical expression in the problem: \\(r=8\\).",
         "Rewrite and simplify to obtain: \\(r\\) means every point is a constant distance 8 from the origin — a circle of radius 8.",
         "Apply this step to \\(r\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22535,7 +25850,15 @@
         "Start by examining the given mathematical expression in the problem: \\(r=6\\).",
         "Rewrite and simplify to obtain: \\(r\\) means every point is a constant distance 6 from the origin — a circle of radius 6.",
         "Apply this step to \\(r\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22675,7 +25998,15 @@
         "Multiply by \\(r\\): \\(r^2=22r\\cos\\theta\\).",
         "Apply the next algebraic step: \\(x^2+y^2=22x\\). Use the simplified form: \\((x-11)^2+y^2=121\\).",
         "Radius \\(= 11\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22815,7 +26146,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{2\\pi} 1^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot1\\cdot2\\pi\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot1\\cdot2\\pi\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22955,7 +26294,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\pi/2} 7^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot49\\cdot\\pi/2\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot49\\cdot\\pi/2\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23095,7 +26442,15 @@
         "Multiply by \\(r\\): \\(r^2=14r\\cos\\theta\\).",
         "Apply the next algebraic step: \\(x^2+y^2=14x\\). Use the simplified form: \\((x-7)^2+y^2=49\\).",
         "Radius \\(= 7\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23235,7 +26590,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{2\\pi} 12^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot144\\cdot2\\pi\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot144\\cdot2\\pi\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23375,7 +26738,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\pi/6} 4^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot16\\cdot\\pi/6\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot16\\cdot\\pi/6\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23515,7 +26886,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\pi} 3^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot9\\cdot\\pi\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot9\\cdot\\pi\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23655,7 +27034,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\pi/3} 3^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot9\\cdot\\pi/3\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot9\\cdot\\pi/3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23795,7 +27182,15 @@
         "Multiply by \\(r\\): \\(r^2=32r\\cos\\theta\\).",
         "Apply the next algebraic step: \\(x^2+y^2=32x\\). Use the simplified form: \\((x-16)^2+y^2=256\\).",
         "Radius \\(= 16\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -23935,7 +27330,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{2\\pi/3} 4^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\tfrac12\\cdot16\\cdot2\\pi/3\\).",
         "Compute the final value from: \\(\\tfrac12\\cdot16\\cdot2\\pi/3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -24076,7 +27479,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\pi 10^2-\\pi 4^2\\).",
         "Substitute and simplify: \\(\\text{Area} = \\pi(10^2-4^2)\\).",
         "Compute the final value from: \\(\\pi(10^2-4^2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -24216,7 +27627,12 @@
         "Start with the expression: \\(\\text{Area}\\).",
         "Rewrite and substitute: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_{-\\frac{\\pi}{8}}^{\\frac{\\pi}{8}} [2\\cos(4\\theta)]^{2}\\,d\\theta\\).",
         "Evaluate \\(\\tfrac12\\displaystyle\\int_{-\\frac{\\pi}{8}}^{\\frac{\\pi}{8}} [2\\cos(4\\theta)]^{2}\\,d\\theta\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 30,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -24356,7 +27772,12 @@
         "Start with the expression: \\(\\text{Area}\\).",
         "Rewrite and substitute: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\frac{\\pi}{3}} [3\\sin(3\\theta)]^{2}\\,d\\theta\\).",
         "Evaluate \\(\\tfrac12\\displaystyle\\int_0^{\\frac{\\pi}{3}} [3\\sin(3\\theta)]^{2}\\,d\\theta\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 150,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -24496,7 +27917,12 @@
         "Start with the expression: \\(\\text{Area}\\).",
         "Rewrite and substitute: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\frac{\\pi}{4}} [2\\sin(4\\theta)]^{2}\\,d\\theta\\).",
         "Evaluate \\(\\tfrac12\\displaystyle\\int_0^{\\frac{\\pi}{4}} [2\\sin(4\\theta)]^{2}\\,d\\theta\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 135,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -24636,7 +28062,12 @@
         "Start with the expression: \\(\\text{Area}\\).",
         "Rewrite and substitute: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_{-\\frac{\\pi}{4}}^{\\frac{\\pi}{4}} [4\\cos(2\\theta)]^{2}\\,d\\theta\\).",
         "Evaluate \\(\\tfrac12\\displaystyle\\int_{-\\frac{\\pi}{4}}^{\\frac{\\pi}{4}} [4\\cos(2\\theta)]^{2}\\,d\\theta\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 120,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -24776,7 +28207,12 @@
         "Start with the expression: \\(\\text{Area}\\).",
         "Rewrite and substitute: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_{-\\frac{\\pi}{8}}^{\\frac{\\pi}{8}} [3\\cos(4\\theta)]^{2}\\,d\\theta\\).",
         "Evaluate \\(\\tfrac12\\displaystyle\\int_{-\\frac{\\pi}{8}}^{\\frac{\\pi}{8}} [3\\cos(4\\theta)]^{2}\\,d\\theta\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 60,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -24916,7 +28352,12 @@
         "Start with the expression: \\(\\text{Area}\\).",
         "Rewrite and substitute: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{\\frac{\\pi}{2}} [2\\sin(2\\theta)]^{2}\\,d\\theta\\).",
         "Evaluate \\(\\tfrac12\\displaystyle\\int_0^{\\frac{\\pi}{2}} [2\\sin(2\\theta)]^{2}\\,d\\theta\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 45,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -25056,7 +28497,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\pi 8^2-\\pi 3^2\\).",
         "Substitute and simplify: \\(\\text{Area} = \\pi(8^2-3^2)\\).",
         "Compute the final value from: \\(\\pi(8^2-3^2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 1 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -25196,7 +28645,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\pi 7^2-\\pi 5^2\\).",
         "Substitute and simplify: \\(\\text{Area} = \\pi(7^2-5^2)\\).",
         "Compute the final value from: \\(\\pi(7^2-5^2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -25336,7 +28793,15 @@
         "Set up the formula/expression: \\(\\text{Area} = \\tfrac12\\displaystyle\\int_0^{2\\pi}[7(1+\\cos\\theta)]^{2}\\,d\\theta\\).",
         "Substitute and simplify: \\(\\text{Area} = \\dfrac{3}{2}\\pi\\cdot49\\).",
         "Compute the final value from: \\(\\dfrac{3}{2}\\pi\\cdot49\\)."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -25478,7 +28943,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\sum ar^n\\).",
         "Convergence requires \\(|r|<1\\).",
         "Apply this step to \\(|r|<1\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25618,7 +29114,38 @@
         "Geometric series with \\(a=2\\), \\(r=\\tfrac{1}{3}\\), \\(|r|<1\\): sum: \\(\\dfrac{a}{1-r}\\).",
         "Rewrite and substitute: \\(\\dfrac{a}{1-r} = \\dfrac{2}{1-1/3}\\).",
         "Evaluate \\(\\dfrac{2}{1-1/3}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25758,7 +29285,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Here \\(p=\\frac{4}{3}\\).",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25898,7 +29456,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26038,7 +29627,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Here \\(p=10\\).",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26178,7 +29798,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26318,7 +29969,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Here \\(p=\\frac{5}{2}\\).",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26458,7 +30140,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26598,7 +30311,38 @@
         "Divide numerator and denominator by \\(n\\).",
         "Rewrite and simplify to obtain: \\(\\dfrac{5+2/n}{3+1/n}\\to\\dfrac{5}{3}=\\frac{5}{3}\\) as \\(n\\to\\infty\\).",
         "Evaluate and simplify \\(n\\to\\infty\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26738,7 +30482,38 @@
         "A \\(p\\)-series \\(\\sum 1/n^p\\) converges iff \\(p>1\\).",
         "Substitute the given parameters into the governing relation and simplify.",
         "So it converges."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26880,7 +30655,38 @@
         "Set up the initial relation: \\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{6}{n+1}\\to0\\) as \\(n\\to\\infty\\).",
         "Since \\(L=0<1\\), the series converges (for every \\(x\\)).",
         "Evaluate and simplify \\(x\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27020,7 +30826,38 @@
         "Set up the initial relation: \\(\\lim_{n\\to\\infty}\\dfrac{n}{n+12}=1 eq0\\).",
         "So by the nth-term test the series diverges.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27160,7 +30997,38 @@
         "Terms \\(1/n^{5}\\) decrease to 0 for any \\(p>0\\).",
         "So the alternating series test guarantees convergence.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27300,7 +31168,38 @@
         "Set up the initial relation: \\(\\lim_{n\\to\\infty}\\dfrac{n}{n+9}=1 eq0\\).",
         "So by the nth-term test the series diverges.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27440,7 +31339,38 @@
         "Terms \\(1/n^{8}\\) decrease to 0 for any \\(p>0\\).",
         "So the alternating series test guarantees convergence.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27580,7 +31510,38 @@
         "Set up the initial relation: \\(\\lim_{n\\to\\infty}\\dfrac{n}{n+1}=1 eq0\\).",
         "So by the nth-term test the series diverges.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27720,7 +31681,38 @@
         "Set up the initial relation: \\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{4}{n+1}\\to0\\) as \\(n\\to\\infty\\).",
         "Since \\(L=0<1\\), the series converges (for every \\(x\\)).",
         "Evaluate and simplify \\(x\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27860,7 +31852,38 @@
         "Set up the initial relation: \\(\\lim_{n\\to\\infty}\\dfrac{n}{n+7}=1 eq0\\).",
         "So by the nth-term test the series diverges.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28000,7 +32023,38 @@
         "Set up the initial relation: \\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{1}{n+1}\\to0\\) as \\(n\\to\\infty\\).",
         "Since \\(L=0<1\\), the series converges (for every \\(x\\)).",
         "Evaluate and simplify \\(x\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28140,7 +32194,38 @@
         "Set up the initial relation: \\(\\lim_{n\\to\\infty}\\dfrac{n}{n+15}=1 eq0\\).",
         "So by the nth-term test the series diverges.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28280,7 +32365,38 @@
         "Set up the initial relation: \\(\\dfrac{a_{n+1}}{a_n}=\\left(\\dfrac{n+1}{n}\\right)^{2}\\cdot\\dfrac12\\to\\dfrac12<1\\).",
         "Ratio test: converges regardless of the fixed power 2.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28416,7 +32532,37 @@
       "solution": "Using \\( W_n = W_1 + (n - 1)d \\), we have \\( W_{5} = 22 + (5 - 1)(20) = 102 \\).",
       "sympy_verified": true,
       "ans": 3,
-      "fig": null,
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      },
       "hints": [
         "Using \\( W_n = W_1 + (n - 1)d \\), we have: \\(W_{5}\\).",
         "Rewrite and substitute: \\(W_{5} = 22 + (5 - 1)(20)\\).",
@@ -28561,7 +32707,15 @@
         "Set up the initial relation: \\(\\dfrac{1}{n(n+7)}=\\dfrac{1}{7}\\left(\\dfrac1n-\\dfrac1{n+7}\\right)\\).",
         "Set up the calculation for: Telescoping leaves. Write out the unsimplified expression: \\(\\dfrac{1}{7}\\left(1+\\tfrac12+\\cdots+\\tfrac1{7}\\right)\\).",
         "Perform the arithmetic in \\(\\dfrac{1}{7}\\left(1+\\tfrac12+\\cdots+\\tfrac1{7}\\right)\\) to find the final value."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -28701,7 +32855,15 @@
         "Set up the initial relation: \\(\\dfrac{1}{n(n+3)}=\\dfrac{1}{3}\\left(\\dfrac1n-\\dfrac1{n+3}\\right)\\).",
         "Set up the calculation for: Telescoping leaves. Write out the unsimplified expression: \\(\\dfrac{1}{3}\\left(1+\\tfrac12+\\cdots+\\tfrac1{3}\\right)\\).",
         "Perform the arithmetic in \\(\\dfrac{1}{3}\\left(1+\\tfrac12+\\cdots+\\tfrac1{3}\\right)\\) to find the final value."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -28841,7 +33003,38 @@
         "Set up the initial relation: \\(\\dfrac{a_{n+1}}{a_n}=\\left(\\dfrac{n+1}{n}\\right)^{9}\\cdot\\dfrac12\\to\\dfrac12<1\\).",
         "Ratio test: converges regardless of the fixed power 9.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28981,7 +33174,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n}}{n^{\\frac{3}{2}}}\\).",
         "Rewrite and simplify to obtain: \\(\\sum 1/n^{\\frac{3}{2}}\\) converges (p>1) so original converges absolutely.",
         "Apply this step to \\(\\sum 1/n^{\\frac{3}{2}}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29121,7 +33345,15 @@
         "Set up the initial relation: \\(\\dfrac{1}{n(n+10)}=\\dfrac{1}{10}\\left(\\dfrac1n-\\dfrac1{n+10}\\right)\\).",
         "Set up the calculation for: Telescoping leaves. Write out the unsimplified expression: \\(\\dfrac{1}{10}\\left(1+\\tfrac12+\\cdots+\\tfrac1{10}\\right)\\).",
         "Perform the arithmetic in \\(\\dfrac{1}{10}\\left(1+\\tfrac12+\\cdots+\\tfrac1{10}\\right)\\) to find the final value."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -29261,7 +33493,38 @@
         "Set up the initial relation: \\(\\dfrac{a_{n+1}}{a_n}=\\left(\\dfrac{n+1}{n}\\right)^{8}\\cdot\\dfrac12\\to\\dfrac12<1\\).",
         "Ratio test: converges regardless of the fixed power 8.",
         "Apply this relationship directly to the given values in the prompt to confirm the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29401,7 +33664,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n}}{n^{\\frac{1}{3}}}\\).",
         "Rewrite and simplify to obtain: \\(\\sum 1/n^{\\frac{1}{3}}\\) diverges but the alternating series still converges: conditional.",
         "Apply this step to \\(\\sum 1/n^{\\frac{1}{3}}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29541,7 +33835,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n}}{n^{5}}\\).",
         "Rewrite and simplify to obtain: \\(\\sum 1/n^{5}\\) converges (p>1) so original converges absolutely.",
         "Apply this step to \\(\\sum 1/n^{5}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29682,7 +34007,38 @@
         "Set up the initial relation: \\(e^{2x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(2x)^n}{n!}\\).",
         "Coefficient of \\(x^{4}\\) is. Set up the numerical expression: \\(\\dfrac{2^{4}}{4!}\\).",
         "Evaluate \\(\\dfrac{2^{4}}{4!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29822,7 +34178,38 @@
         "Set up the initial relation: \\(e^{7x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(7x)^n}{n!}\\).",
         "Coefficient of \\(x^{3}\\) is. Set up the numerical expression: \\(\\dfrac{7^{3}}{3!}\\).",
         "Evaluate \\(\\dfrac{7^{3}}{3!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29962,7 +34349,38 @@
         "Set up the initial relation: \\(e^{x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(x)^n}{n!}\\).",
         "Coefficient of \\(x^{3}\\) is. Set up the numerical expression: \\(\\dfrac{1^{3}}{3!}\\).",
         "Evaluate \\(\\dfrac{1^{3}}{3!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30102,7 +34520,38 @@
         "Set up the initial relation: \\(e^{8x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(8x)^n}{n!}\\).",
         "Coefficient of \\(x^{4}\\) is. Set up the numerical expression: \\(\\dfrac{8^{4}}{4!}\\).",
         "Evaluate \\(\\dfrac{8^{4}}{4!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30242,7 +34691,15 @@
         "Start by examining the given mathematical expression in the problem: \\(\\cos x\\).",
         "The Maclaurin series for \\(\\cos x\\) has radius of convergence \\(R=\\infty\\).",
         "Apply this step to \\(R=\\infty\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -30382,7 +34839,38 @@
         "Set up the initial relation: \\(e^{3x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(3x)^n}{n!}\\).",
         "Coefficient of \\(x^{2}\\) is. Set up the numerical expression: \\(\\dfrac{3^{2}}{2!}\\).",
         "Evaluate \\(\\dfrac{3^{2}}{2!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30522,7 +35010,15 @@
         "Start by examining the given mathematical expression in the problem: \\(\\dfrac{1}{1-x}\\).",
         "The Maclaurin series for \\(\\dfrac{1}{1-x}\\) has radius of convergence \\(R\\).",
         "Apply this step to \\(R\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",
@@ -30662,7 +35158,38 @@
         "Set up the initial relation: \\(e^{7x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(7x)^n}{n!}\\).",
         "Coefficient of \\(x^{4}\\) is. Set up the numerical expression: \\(\\dfrac{7^{4}}{4!}\\).",
         "Evaluate \\(\\dfrac{7^{4}}{4!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30802,7 +35329,38 @@
         "Set up the initial relation: \\(e^{5x}=\\displaystyle\\sum_{n=0}^\\infty\\dfrac{(5x)^n}{n!}\\).",
         "Coefficient of \\(x^{3}\\) is. Set up the numerical expression: \\(\\dfrac{5^{3}}{3!}\\).",
         "Evaluate \\(\\dfrac{5^{3}}{3!}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30942,7 +35500,15 @@
         "Start by examining the given mathematical expression in the problem: \\(\\ln(1+x)\\).",
         "The Maclaurin series for \\(\\ln(1+x)\\) has radius of convergence \\(R\\).",
         "Apply this step to \\(R\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 5,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 5"
+      }
     },
     {
       "type": "mcq",
@@ -31082,7 +35648,38 @@
         "Taylor coefficient formula: \\(\\dfrac{f^{(3)}(a)}{3!}\\).",
         "Rewrite and substitute: \\(\\dfrac{f^{(3)}(a)}{3!} = \\dfrac{4}{3!}\\).",
         "Evaluate \\(\\dfrac{4}{3!}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31222,7 +35819,38 @@
         "Set up the initial relation: \\(\\dfrac{1}{1-9x}=\\displaystyle\\sum_{n=0}^\\infty(9x)^n\\).",
         "Coefficient of \\(x^{3}\\) is. Set up the numerical expression: \\(9^{3}\\).",
         "Evaluate \\(9^{3}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31362,7 +35990,12 @@
         "Set up the initial relation: \\(\\cos(2x)=\\displaystyle\\sum_{k=0}^\\infty\\dfrac{(-1)^k(2x)^{2k}}{(2k)!}\\).",
         "Start with the expression: \\(\\text{At \\) \\(2k=4\\): coefficient}. Rewrite and substitute: \\(\\text{At \\) \\(2k=4\\): coefficient} = \\dfrac{(-1)^{2}2^{4}}{4!}.",
         "Evaluate \\(\\dfrac{(-1)^{2}2^{4}}{4!}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 120,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -31502,7 +36135,38 @@
         "Set up the initial relation: \\(\\dfrac{1}{1-8x}=\\displaystyle\\sum_{n=0}^\\infty(8x)^n\\).",
         "Coefficient of \\(x^{3}\\) is. Set up the numerical expression: \\(8^{3}\\).",
         "Evaluate \\(8^{3}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31642,7 +36306,15 @@
         "Ratio test: \\(\\left|\\dfrac{x^{n+1}/11^{n+1}}{x^n/11^n}\\right|=\\dfrac{|x|}{11}<1\\Rightarrow|x|<11\\).",
         "Radius of convergence \\(R\\).",
         "Evaluate and simplify \\(R\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 90,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",
@@ -31782,7 +36454,38 @@
         "Set up the initial relation: \\(\\dfrac{1}{1-7x}=\\displaystyle\\sum_{n=0}^\\infty(7x)^n\\).",
         "Coefficient of \\(x^{3}\\) is. Set up the numerical expression: \\(7^{3}\\).",
         "Evaluate \\(7^{3}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31922,7 +36625,12 @@
         "Set up the initial relation: \\(\\sin(2x)=\\displaystyle\\sum_{k=0}^\\infty\\dfrac{(-1)^k(2x)^{2k+1}}{(2k+1)!}\\).",
         "Start with the expression: \\(\\text{At \\) \\(2k+1=5\\): coefficient}. Rewrite and substitute: \\(\\text{At \\) \\(2k+1=5\\): coefficient} = \\dfrac{(-1)^{2}2^{5}}{5!}.",
         "Evaluate \\(\\dfrac{(-1)^{2}2^{5}}{5!}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 150,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -32062,7 +36770,15 @@
         "Set up the initial relation: \\(\\cos(x)=\\displaystyle\\sum_{k=0}^\\infty\\dfrac{(-1)^k(x)^{2k}}{(2k)!}\\).",
         "Start with the expression: \\(\\text{At \\) \\(2k=4\\): coefficient}. Rewrite and substitute: \\(\\text{At \\) \\(2k=4\\): coefficient} = \\dfrac{(-1)^{2}1^{4}}{4!}.",
         "Evaluate \\(\\dfrac{(-1)^{2}1^{4}}{4!}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -32202,7 +36918,15 @@
         "Ratio test: \\(\\left|\\dfrac{x^{n+1}/9^{n+1}}{x^n/9^n}\\right|=\\dfrac{|x|}{9}<1\\Rightarrow|x|<9\\).",
         "Radius of convergence \\(R\\).",
         "Evaluate and simplify \\(R\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",
@@ -32342,7 +37066,12 @@
         "Set up the initial relation: \\(\\cos(3x)=\\displaystyle\\sum_{k=0}^\\infty\\dfrac{(-1)^k(3x)^{2k}}{(2k)!}\\).",
         "Start with the expression: \\(\\text{At \\) \\(2k=4\\): coefficient}. Rewrite and substitute: \\(\\text{At \\) \\(2k=4\\): coefficient} = \\dfrac{(-1)^{2}3^{4}}{4!}.",
         "Evaluate \\(\\dfrac{(-1)^{2}3^{4}}{4!}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "unit_circle",
+        "angle": 60,
+        "showCoords": true
+      }
     },
     {
       "type": "mcq",
@@ -32477,7 +37206,20 @@
         "Start from the given mathematical expression in the prompt: \\(|f^{(3+1)}(c)|\\leq 3\\).",
         "Write out the unsimplified expression: \\(|R_{3}(x)|\\leq\\dfrac{M|x-a|^{3+1}}{(3+1)!}\\).",
         "Perform the arithmetic in \\(|R_{3}(x)|\\leq\\dfrac{M|x-a|^{3+1}}{(3+1)!}\\) to find the final value."
-      ]
+      ],
+      "fig": {
+        "type": "numberline",
+        "min": -6,
+        "max": 6,
+        "intervals": [
+          {
+            "from": -2,
+            "to": 6,
+            "leftClosed": true,
+            "rightClosed": false
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32617,7 +37359,15 @@
         "Set up the initial relation: \\(\\displaystyle\\int\\sum(-1)^kx^{2k}dx=\\sum\\dfrac{(-1)^kx^{2k+1}}{2k+1}\\).",
         "Start with the expression: \\(\\text{At \\) \\(2k+1=15\\): coefficient}. Rewrite and substitute: \\(\\text{At \\) \\(2k+1=15\\): coefficient} = \\dfrac{(-1)^{7}}{15}.",
         "Evaluate \\(\\dfrac{(-1)^{7}}{15}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 5,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 60,
+        "label": "r = 5"
+      }
     },
     {
       "type": "mcq",
@@ -32757,7 +37507,15 @@
         "Set up the initial relation: \\(\\displaystyle\\int\\sum(-1)^kx^{2k}dx=\\sum\\dfrac{(-1)^kx^{2k+1}}{2k+1}\\).",
         "Start with the expression: \\(\\text{At \\) \\(2k+1=17\\): coefficient}. Rewrite and substitute: \\(\\text{At \\) \\(2k+1=17\\): coefficient} = \\dfrac{(-1)^{8}}{17}.",
         "Evaluate \\(\\dfrac{(-1)^{8}}{17}\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "circle",
+        "r": 6,
+        "center": "(0,0)",
+        "chord": true,
+        "sectorAngle": 120,
+        "label": "r = 6"
+      }
     },
     {
       "type": "mcq",

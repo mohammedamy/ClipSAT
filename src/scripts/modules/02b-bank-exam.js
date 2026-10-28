@@ -1352,7 +1352,175 @@
         {title:'Section B — 5-Point Olympiad & AIME-Qualifier Problems',time:'30 min',
          note:'10 questions · Diophantine SFFT, Recurrences, Ceva/Stewart & Invariants',
          domains:['Diophantine Equations, SFFT & Floor Functions','Recurrence Relations & Geometric Probability','Triangle Centers, Ceva, Menelaus & Stewart','Invariants, Monovariants, Coloring & Games'],
-         parts:[{label:'Problems 16–25',q:10,time:'30 min',calc:false,type:'mcq'}]}]}
+         parts:[{label:'Problems 16–25',q:10,time:'30 min',calc:false,type:'mcq'}]}]},
+
+    algebra: {
+      bankId:'algebra',
+      board:'Core High School Mathematics Curriculum',
+      code:'ALG-I',
+      title:'Algebra I — Comprehensive Final Examination',
+      totalTime:'90 minutes',
+      totalMarks:'40 marks (Section A: 20 marks · Section B: 20 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This examination consists of two 45-minute sections totaling 40 questions (40 marks).',
+        'Section A (Questions 1–20) assesses linear equations, inequalities, systems, and functions (No Calculator).',
+        'Section B (Questions 21–40) assesses polynomials, factoring, quadratics, exponents, radicals, and data analysis (Calculator Permitted).'
+      ],
+      sections:[
+        {title:'Section A — Linear Equations, Systems, Inequalities & Functions',time:'45 min',
+         note:'20 questions · 1 mark each · No Calculator',
+         parts:[{label:'Questions 1–20',q:20,time:'45 min',calc:false,type:'mcq'}]},
+        {title:'Section B — Quadratics, Polynomials, Exponents, Radicals & Statistics',time:'45 min',
+         note:'20 questions · 1 mark each · Scientific/Graphing Calculator Permitted',
+         parts:[{label:'Questions 21–40',q:20,time:'45 min',calc:true,type:'mcq'}]}]},
+
+    geo: {
+      bankId:'geo',
+      board:'Euclidean & Coordinate Geometry Curriculum',
+      code:'GEO-101',
+      title:'Geometry — Comprehensive Final Examination',
+      totalTime:'90 minutes',
+      totalMarks:'40 marks (Section A: 20 marks · Section B: 20 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This examination consists of two 45-minute sections totaling 40 questions (40 marks).',
+        'Section A (Questions 1–20) assesses deductive reasoning, parallel lines, triangle congruence, and similarity.',
+        'Section B (Questions 21–40) assesses right-triangle trigonometry, circle theorems, coordinate geometry, and 3D solids.'
+      ],
+      sections:[
+        {title:'Section A — Deductive Reasoning, Congruence & Triangle Similarity',time:'45 min',
+         note:'20 questions · 1 mark each · Compass & Straightedge Principles',
+         parts:[{label:'Questions 1–20',q:20,time:'45 min',calc:false,type:'mcq'}]},
+        {title:'Section B — Circle Theorems, Trigonometry, Coordinate Geometry & 3D Solids',time:'45 min',
+         note:'20 questions · 1 mark each · Scientific Calculator Permitted',
+         parts:[{label:'Questions 21–40',q:20,time:'45 min',calc:true,type:'mcq'}]}]},
+
+    alg2: {
+      bankId:'alg2',
+      board:'Advanced High School Algebra Curriculum',
+      code:'ALG-II',
+      title:'Algebra II — Comprehensive Final Examination',
+      totalTime:'90 minutes',
+      totalMarks:'40 marks (Section A: 20 marks · Section B: 20 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This examination consists of two 45-minute sections totaling 40 questions (40 marks).',
+        'Section A (Questions 1–20) assesses polynomial, rational, radical, and complex-number algebra.',
+        'Section B (Questions 21–40) assesses exponential/logarithmic functions, sequences, trigonometry, conics, and probability.'
+      ],
+      sections:[
+        {title:'Section A — Polynomial, Rational, Radical & Complex Algebra',time:'45 min',
+         note:'20 questions · 1 mark each · Non-Calculator Analytical Section',
+         parts:[{label:'Questions 1–20',q:20,time:'45 min',calc:false,type:'mcq'}]},
+        {title:'Section B — Exponentials, Logarithms, Sequences, Conics & Probability',time:'45 min',
+         note:'20 questions · 1 mark each · Graphing Calculator Permitted',
+         parts:[{label:'Questions 21–40',q:20,time:'45 min',calc:true,type:'mcq'}]}]},
+
+    precalc: {
+      bankId:'precalc',
+      board:'Honors Precalculus & Analytical Trigonometry',
+      code:'PRECALC',
+      title:'Precalculus — Comprehensive Final Examination',
+      totalTime:'100 minutes',
+      totalMarks:'40 marks (Section A: 20 marks · Section B: 20 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This examination consists of two 50-minute sections totaling 40 questions (40 marks).',
+        'Section A (Questions 1–20) assesses function analysis, polynomials, rational asymptotes, exponentials, and logarithms.',
+        'Section B (Questions 21–40) assesses analytical trigonometry, polar coordinates, complex numbers, vectors, matrices, and conics.'
+      ],
+      sections:[
+        {title:'Section A — Functions, Polynomials, Rational & Exponential/Logarithmic Analysis',time:'50 min',
+         note:'20 questions · 1 mark each · Non-Calculator',
+         parts:[{label:'Questions 1–20',q:20,time:'50 min',calc:false,type:'mcq'}]},
+        {title:'Section B — Analytical Trigonometry, Polar, Vectors, Matrices & Conics',time:'50 min',
+         note:'20 questions · 1 mark each · Graphing Calculator Permitted',
+         parts:[{label:'Questions 21–40',q:20,time:'50 min',calc:true,type:'mcq'}]}]},
+
+    calculus: {
+      bankId:'calculus',
+      board:'University Single-Variable Calculus I & II',
+      code:'CALC-101/102',
+      title:'Calculus I & II — Comprehensive University Examination',
+      totalTime:'120 minutes',
+      totalMarks:'40 marks (Part I Differential & Integral: 20 marks · Part II Techniques & Series: 20 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This university examination consists of two 60-minute sections totaling 40 questions (40 marks).',
+        'Section I (Questions 1–20) covers limits, continuity, differentiation rules, optimization, related rates, and the Fundamental Theorem of Calculus.',
+        'Section II (Questions 21–40) covers integration techniques, volumes of revolution, differential equations, Taylor series, and polar calculus.'
+      ],
+      sections:[
+        {title:'Section I — Limits, Differentiation, Optimization & Fundamental Theorem of Calculus',time:'60 min',
+         note:'20 questions · 1 mark each · Analytical Calculus I',
+         parts:[{label:'Questions 1–20',q:20,time:'60 min',calc:false,type:'mcq'}]},
+        {title:'Section II — Integration Techniques, Volumes, Differential Equations & Infinite Series',time:'60 min',
+         note:'20 questions · 1 mark each · Analytical Calculus II',
+         parts:[{label:'Questions 21–40',q:20,time:'60 min',calc:true,type:'mcq'}]}]},
+
+    linalg: {
+      bankId:'linalg',
+      board:'University Linear Algebra & Matrix Theory',
+      code:'MATH-221',
+      title:'Linear Algebra — Comprehensive University Examination',
+      totalTime:'120 minutes',
+      totalMarks:'36 marks (Part A: 18 marks · Part B: 18 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This university examination consists of two 60-minute sections totaling 36 questions (36 marks).',
+        'Part A (Questions 1–18) covers linear systems, Gaussian elimination (RREF), matrix algebra, inverses, determinants, and vector spaces.',
+        'Part B (Questions 19–36) covers the Four Fundamental Subspaces, Rank-Nullity, eigenvalues, diagonalization, Gram-Schmidt orthogonality, and least squares.'
+      ],
+      sections:[
+        {title:'Part A — Linear Systems, Row Reduction, Matrix Algebra, Determinants & Subspaces',time:'60 min',
+         note:'18 questions · 1 mark each',
+         parts:[{label:'Questions 1–18',q:18,time:'60 min',calc:false,type:'mcq'}]},
+        {title:'Part B — Linear Transformations, Eigenvalues, Diagonalization, Orthogonality & Least Squares',time:'60 min',
+         note:'18 questions · 1 mark each',
+         parts:[{label:'Questions 19–36',q:18,time:'60 min',calc:false,type:'mcq'}]}]},
+
+    mvc: {
+      bankId:'mvc',
+      board:'University Multivariable & Vector Calculus',
+      code:'MATH-231',
+      title:'Multivariable Calculus — Comprehensive University Examination',
+      totalTime:'120 minutes',
+      totalMarks:'36 marks (Part A: 18 marks · Part B: 18 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This university examination consists of two 60-minute sections totaling 36 questions (36 marks).',
+        'Part A (Questions 1–18) covers 3D vectors, partial derivatives, gradients, directional derivatives, tangent planes, and Lagrange multipliers.',
+        'Part B (Questions 19–36) covers double/triple integrals in polar/cylindrical/spherical coordinates, line/surface integrals, Green\'s, Stokes\', and Divergence theorems.'
+      ],
+      sections:[
+        {title:'Part A — Partial Derivatives, Gradients, Directional Derivatives & Lagrange Optimization',time:'60 min',
+         note:'18 questions · 1 mark each',
+         parts:[{label:'Questions 1–18',q:18,time:'60 min',calc:false,type:'mcq'}]},
+        {title:'Part B — Multiple Integrals, Vector Fields, Green\'s Theorem, Stokes\' Theorem & Divergence',time:'60 min',
+         note:'18 questions · 1 mark each',
+         parts:[{label:'Questions 19–36',q:18,time:'60 min',calc:false,type:'mcq'}]}]},
+
+    odes: {
+      bankId:'odes',
+      board:'University Ordinary Differential Equations',
+      code:'MATH-241',
+      title:'Differential Equations — Comprehensive University Examination',
+      totalTime:'120 minutes',
+      totalMarks:'36 marks (Part A: 18 marks · Part B: 18 marks)',
+      letters:['A','B','C','D'],
+      instructions:[
+        'This university examination consists of two 60-minute sections totaling 36 questions (36 marks).',
+        'Part A (Questions 1–18) covers first-order separable/linear/exact ODEs, second-order linear homogeneous ODEs, Wronskian, undetermined coefficients, and variation of parameters.',
+        'Part B (Questions 19–36) covers Laplace transforms, Dirac delta/step forcing, linear systems & phase planes, power series/Frobenius, and RK4 numerical methods.'
+      ],
+      sections:[
+        {title:'Part A — First-Order & Second-Order Linear Differential Equations & Resonance',time:'60 min',
+         note:'18 questions · 1 mark each',
+         parts:[{label:'Questions 1–18',q:18,time:'60 min',calc:false,type:'mcq'}]},
+        {title:'Part B — Laplace Transforms, Phase-Plane Systems, Power Series & Numerical Methods',time:'60 min',
+         note:'18 questions · 1 mark each',
+         parts:[{label:'Questions 19–36',q:18,time:'60 min',calc:false,type:'mcq'}]}]}
   };
 
 

@@ -181,12 +181,13 @@
     ]});
 
     R({viewId:'ibsl', name:'IB DP Mathematics SL (AA & AI)', topics:[
-      {id:'ibsl-t1',       label:'Topic 1: Number & Algebra',          tags:['sequences','binomial','logarithm','amortization','proof'],      examWeight:15, chapterId:'ibsl-t1'},
-      {id:'ibsl-t2',       label:'Topic 2: Functions',                 tags:['function','inverse','exponential','quadratic','modelling'],     examWeight:18, chapterId:'ibsl-t2'},
-      {id:'ibsl-t3',       label:'Topic 3: Geometry & Trigonometry',   tags:['circle','trig','sine-rule','cosine-rule','voronoi'],            examWeight:17, chapterId:'ibsl-t3'},
-      {id:'ibsl-t4',       label:'Topic 4: Statistics & Probability',  tags:['statistics','normal','binomial','regression','conditional'],    examWeight:20, chapterId:'ibsl-t4'},
-      {id:'ibsl-t5',       label:'Topic 5: Calculus',                  tags:['derivative','integral','kinematics','optimization','trapezoid'],examWeight:20, chapterId:'ibsl-t5'},
-      {id:'ibsl-ai',       label:'AI SL Extensions (Voronoi, Chi-Sq & t-Test)', tags:['voronoi','chi-squared','t-test','spearman'],          examWeight:10, chapterId:'ibsl-ai'}
+      {id:'ibsl-t1',       label:'Topic 1: Number & Algebra',          tags:['sequences','binomial','logarithm','amortization','proof'],      examWeight:14, chapterId:'ibsl-t1'},
+      {id:'ibsl-t2',       label:'Topic 2: Functions',                 tags:['function','inverse','exponential','quadratic','modelling'],     examWeight:16, chapterId:'ibsl-t2'},
+      {id:'ibsl-t3',       label:'Topic 3: Geometry & Trigonometry',   tags:['circle','trig','sine-rule','cosine-rule','voronoi'],            examWeight:16, chapterId:'ibsl-t3'},
+      {id:'ibsl-t4',       label:'Topic 4: Statistics & Probability',  tags:['statistics','normal','binomial','regression','conditional'],    examWeight:18, chapterId:'ibsl-t4'},
+      {id:'ibsl-t5',       label:'Topic 5: Calculus',                  tags:['derivative','integral','kinematics','optimization','trapezoid'],examWeight:18, chapterId:'ibsl-t5'},
+      {id:'ibsl-ai',       label:'AI SL Extensions (Voronoi, Chi-Sq & t-Test)', tags:['voronoi','chi-squared','t-test','spearman'],          examWeight:9,  chapterId:'ibsl-ai'},
+      {id:'ibsl-aa',       label:'AA SL Analytical Proofs, Exact Trig & Kinematics', tags:['binomial','proof','exact-trig','kinematics'],    examWeight:9,  chapterId:'ibsl-aa'}
     ]});
 
     R({viewId:'ibhl', name:'IB DP Mathematics HL (AA & AI)', topics:[
@@ -200,17 +201,23 @@
     ]});
 
     R({viewId:'appc', name:'AP Precalculus', topics:[
-      {id:'appc-u1',       label:'Polynomial & Rational Functions',  tags:['polynomial','rational','rate-of-change'],        examWeight:30, chapterId:'appc-ch-u1'},
-      {id:'appc-u2',       label:'Exponential & Logarithmic',        tags:['exponential','logarithm','half-life'],           examWeight:27, chapterId:'appc-ch-u2'},
-      {id:'appc-u3',       label:'Trigonometric & Polar',            tags:['sinusoidal','polar','trig'],                     examWeight:30, chapterId:'appc-ch-u3'},
-      {id:'appc-u4',       label:'Functions Involving Parameters',   tags:['parametric','vector','implicit'],                examWeight:13, chapterId:'appc-ch-u4'}
+      {id:'appc-u1',       label:'Polynomial & Rational Functions',  tags:['polynomial','rational','rate-of-change'],        examWeight:18, chapterId:'appc-u1'},
+      {id:'appc-u1b',      label:'Rational Asymptotes & Polynomial Inequalities', tags:['asymptote','end-behavior','inequality'], examWeight:14, chapterId:'appc-u1b'},
+      {id:'appc-u2',       label:'Exponential & Logarithmic',        tags:['exponential','logarithm','half-life'],           examWeight:16, chapterId:'appc-u2'},
+      {id:'appc-u2b',      label:'Logarithmic Modeling & Semi-Log Linearization', tags:['semi-log','residual','logistic'],   examWeight:12, chapterId:'appc-u2b'},
+      {id:'appc-u3',       label:'Trigonometric & Polar',            tags:['sinusoidal','polar','trig'],                     examWeight:16, chapterId:'appc-u3'},
+      {id:'appc-u3b',      label:'Polar Roses, Limacons & Complex Polar Form', tags:['polar-graph','de-moivre','complex'],   examWeight:12, chapterId:'appc-u3b'},
+      {id:'appc-u4',       label:'Functions Involving Parameters',   tags:['parametric','vector','implicit'],                examWeight:12, chapterId:'appc-u4'}
     ]});
 
     R({viewId:'apstats', name:'AP Statistics', topics:[
-      {id:'aps-explore',   label:'Exploring Data',             tags:['distribution','summary','graph'],                      examWeight:22, chapterId:'aps-ch-explore'},
-      {id:'aps-collect',   label:'Collecting Data',            tags:['sampling','experiment','bias'],                        examWeight:15, chapterId:'aps-ch-collect'},
-      {id:'aps-prob',      label:'Probability & Distributions',tags:['probability','normal','binomial','geometric'],         examWeight:30, chapterId:'aps-ch-prob'},
-      {id:'aps-inference', label:'Statistical Inference',      tags:['confidence','hypothesis','chi','regression'],          examWeight:33, chapterId:'aps-ch-inference'}
+      {id:'aps-explore',   label:'Exploring One- & Two-Variable Data', tags:['distribution','summary','graph'],              examWeight:16, chapterId:'aps-u1'},
+      {id:'aps-collect',   label:'Collecting Data (Sampling & Design)', tags:['sampling','experiment','bias'],               examWeight:12, chapterId:'aps-u2'},
+      {id:'aps-prob',      label:'Probability & Random Variables',   tags:['probability','normal','binomial','geometric'],   examWeight:16, chapterId:'aps-u3'},
+      {id:'aps-inference', label:'Sampling Distributions & CI',      tags:['confidence','sampling-distribution','clt'],      examWeight:14, chapterId:'aps-u4'},
+      {id:'aps-u5',        label:'Inference for Categorical Data (Proportions)', tags:['z-test','proportion','p-value'],     examWeight:14, chapterId:'aps-u5'},
+      {id:'aps-u6',        label:'Inference for Quantitative Data (Means)', tags:['t-test','paired','degrees-of-freedom'],   examWeight:14, chapterId:'aps-u6'},
+      {id:'aps-u7',        label:'Chi-Square Tests & Inference for Slopes', tags:['chi-square','slope-inference','gof'],     examWeight:14, chapterId:'aps-u7'}
     ]});
 
     R({viewId:'qudrat', name:'Qudrat (GAT — قدرات كمي)', topics:[
@@ -277,6 +284,84 @@
       {id:'ol-combo', label:'Bijective Counting, Recurrences & Probability', tags:['combinatorics','pigeonhole','recurrence','probability'], examWeight:25, chapterId:'ol-combinatorics-counting'},
       {id:'ol-geom', label:'Olympiad Circle Geometry, Ceva & Stewart', tags:['circles','power-of-point','ceva','stewart'], examWeight:25, chapterId:'ol-euclidean-circles'},
       {id:'ol-inv', label:'Invariants, Monovariants & Combinatorial Games', tags:['invariants','coloring','extremal','games'], examWeight:20, chapterId:'ol-invariants-extremal'}
+    ]});
+
+    R({viewId:'act2', name:'ACT Subject Test Math 1', topics:[
+      {id:'act2-alg', label:'Algebra, Functions & Systems', tags:['algebra','quadratic','polynomial','system'], examWeight:40, chapterId:'act2-algebra'},
+      {id:'act2-geo', label:'Plane, Coordinate & 3D Geometry', tags:['geometry','coordinate','circle','triangle'], examWeight:35, chapterId:'act2-plane-geo'},
+      {id:'act2-trig-stat', label:'Trigonometry, Statistics & Probability', tags:['trigonometry','statistics','probability'], examWeight:25, chapterId:'act2-trig'}
+    ]});
+
+    R({viewId:'act2l2', name:'ACT Subject Test Math 2', topics:[
+      {id:'act2l2-alg', label:'Complex Numbers, Matrices & Sequences', tags:['complex','matrix','vector','sequence'], examWeight:30, chapterId:'act2l2-complex'},
+      {id:'act2l2-fn-trig', label:'Advanced Functions, Trig & Polar', tags:['functions','trigonometry','polar','limits'], examWeight:35, chapterId:'act2l2-trig-polar'},
+      {id:'act2l2-conic-stat', label:'Conic Sections, 3D Geometry & Statistics', tags:['conics','3d-geometry','probability','regression'], examWeight:35, chapterId:'act2l2-conics-3d-stats'}
+    ]});
+
+    R({viewId:'est2', name:'EST II Math Level 1', topics:[
+      {id:'est2-alg', label:'Algebra & Functions', tags:['algebra','functions','polynomial','system'], examWeight:42, chapterId:'est2-algebra'},
+      {id:'est2-geo', label:'Coordinate, Plane & Solid Geometry', tags:['geometry','coordinate','solid','trig'], examWeight:36, chapterId:'est2-coord-geo'},
+      {id:'est2-stat', label:'Statistics, Counting & Probability', tags:['statistics','probability','counting'], examWeight:22, chapterId:'est2-stats'}
+    ]});
+
+    R({viewId:'est2l2', name:'EST II Math Level 2', topics:[
+      {id:'est2l2-alg', label:'Complex Numbers, Sequences & Functions', tags:['complex','sequence','functions','matrix'], examWeight:38, chapterId:'est2l2-complex'},
+      {id:'est2l2-calc-stat', label:'Limits, Probability & Normal Distribution', tags:['limits','calculus','probability','statistics'], examWeight:32, chapterId:'est2l2-calculus'},
+      {id:'est2l2-trig-conic', label:'Trigonometry, Polar & Conic Sections', tags:['trigonometry','polar','conics','vectors'], examWeight:30, chapterId:'est2l2-trig-polar-conics'}
+    ]});
+
+    R({viewId:'apab', name:'AP Calculus AB', topics:[
+      {id:'apab-lim', label:'Limits & Continuity', tags:['limits','continuity','ivt'], examWeight:12, chapterId:'ab-limits'},
+      {id:'apab-diff', label:'Differentiation & Applications', tags:['derivative','chain-rule','implicit','optimization','related-rates'], examWeight:43, chapterId:'ab-diff-fund'},
+      {id:'apab-int', label:'Integration, Differential Equations & Accumulation', tags:['integral','ftc','ode','area','volume'], examWeight:45, chapterId:'ab-integration'}
+    ]});
+
+    R({viewId:'apbc', name:'AP Calculus BC', topics:[
+      {id:'apbc-int', label:'Advanced Integration & Logistic ODEs', tags:['ibp','partial-fractions','improper','logistic','euler'], examWeight:35, chapterId:'bc-adv-int'},
+      {id:'apbc-param', label:'Parametric, Polar & Vector Calculus', tags:['parametric','polar','vector','arc-length'], examWeight:30, chapterId:'bc-param-polar'},
+      {id:'apbc-series', label:'Infinite Sequences, Taylor & Maclaurin Series', tags:['series','convergence','taylor','maclaurin','lagrange'], examWeight:35, chapterId:'bc-taylor'}
+    ]});
+
+    R({viewId:'algebra', name:'Algebra I', topics:[
+      {id:'alg1-lin', label:'Linear Equations, Inequalities & Systems', tags:['linear','inequality','system','slope'], examWeight:40, chapterId:'alg1-linear'},
+      {id:'alg1-quad', label:'Polynomials, Factoring & Quadratics', tags:['polynomial','factoring','quadratic','discriminant'], examWeight:35, chapterId:'alg1-quadratics'},
+      {id:'alg1-exp', label:'Exponents, Radicals & Data', tags:['exponent','radical','rational','statistics'], examWeight:25, chapterId:'alg1-exponents'}
+    ]});
+
+    R({viewId:'geo', name:'Euclidean & Coordinate Geometry', topics:[
+      {id:'geo-tri', label:'Congruence, Similarity & Right Triangles', tags:['triangle','congruence','similarity','pythagorean','trig'], examWeight:40, chapterId:'geo-triangles'},
+      {id:'geo-circ', label:'Polygons, Circles & Arc/Sector Measure', tags:['polygon','circle','chord','tangent','sector'], examWeight:35, chapterId:'geo-circles'},
+      {id:'geo-3d', label:'Coordinate Geometry, Transformations & 3D Solids', tags:['coordinate','transformation','volume','surface-area'], examWeight:25, chapterId:'geo-solids'}
+    ]});
+
+    R({viewId:'alg2', name:'Algebra II', topics:[
+      {id:'alg2-poly', label:'Polynomial, Rational & Radical Functions', tags:['polynomial','rational','radical','complex'], examWeight:40, chapterId:'alg2-polynomials'},
+      {id:'alg2-exp', label:'Exponential, Logarithmic & Sequences', tags:['exponential','logarithm','sequence','series'], examWeight:30, chapterId:'alg2-exp-log'},
+      {id:'alg2-trig', label:'Trigonometry, Conics, Matrices & Probability', tags:['trigonometry','conics','matrices','probability'], examWeight:30, chapterId:'alg2-trig'}
+    ]});
+
+    R({viewId:'calculus', name:'University Calculus I–II', topics:[
+      {id:'calc-diff', label:'Limits, Derivatives & Applications', tags:['limit','derivative','optimization','related-rates'], examWeight:35, chapterId:'calc-derivatives'},
+      {id:'calc-int', label:'Definite/Indefinite Integrals & Applications', tags:['integral','ftc','volume','techniques'], examWeight:35, chapterId:'calc-integrals'},
+      {id:'calc-series', label:'Infinite Series, Parametric/Polar & ODEs', tags:['series','taylor','parametric','polar','ode'], examWeight:30, chapterId:'calc-series'}
+    ]});
+
+    R({viewId:'linalg', name:'Linear Algebra', topics:[
+      {id:'la-sys', label:'Vectors, Linear Systems, RREF & Matrices', tags:['vector','rref','matrix','inverse','determinant'], examWeight:35, chapterId:'la-systems'},
+      {id:'la-sub', label:'Vector Spaces, Subspaces & Linear Transformations', tags:['subspace','basis','dimension','rank-nullity','transformation'], examWeight:30, chapterId:'la-spaces'},
+      {id:'la-eig', label:'Eigenvalues, Diagonalization, Orthogonality & SVD', tags:['eigenvalue','eigenvector','gram-schmidt','least-squares'], examWeight:35, chapterId:'la-eigen'}
+    ]});
+
+    R({viewId:'mvc', name:'Multivariable Calculus', topics:[
+      {id:'mvc-diff', label:'Partial Derivatives, Gradients & Lagrange Multipliers', tags:['partial','gradient','directional','hessian','lagrange'], examWeight:35, chapterId:'mvc-partials'},
+      {id:'mvc-mult', label:'Double & Triple Integrals (Polar, Cylindrical, Spherical)', tags:['double-integral','triple-integral','jacobian','spherical'], examWeight:30, chapterId:'mvc-double'},
+      {id:'mvc-vec', label:'Vector Fields, Line/Surface Integrals, Green, Stokes & Divergence', tags:['line-integral','greens-theorem','stokes','divergence'], examWeight:35, chapterId:'mvc-stokes'}
+    ]});
+
+    R({viewId:'odes', name:'Differential Equations', topics:[
+      {id:'ode-1st', label:'First-Order Separable, Linear & Exact ODEs', tags:['separable','integrating-factor','exact','autonomous'], examWeight:25, chapterId:'ode-first-order'},
+      {id:'ode-2nd', label:'Second-Order Linear ODEs, Resonance & Variation of Parameters', tags:['characteristic','undetermined','variation-of-parameters','wronskian'], examWeight:30, chapterId:'ode-second-order'},
+      {id:'ode-adv', label:'Laplace Transforms, Linear Systems, Series & Numerical ODEs', tags:['laplace','phase-plane','power-series','runge-kutta'], examWeight:45, chapterId:'ode-laplace'}
     ]});
   }());
 

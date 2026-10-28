@@ -16,7 +16,38 @@
             "\\( \\|\\mathbf{w}\\|_1 = 25, \\; \\|\\mathbf{w}\\|_2 = \\sqrt{325} \\)"
           ],
           "correct": 3,
-          "answer": "\\( L_1 \\) norm is the sum of absolute values: \\( |10| + |-15| = 25 \\). \\( L_2 \\) norm is the square root of sum of squares: \\( \\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325} \\)."
+          "answer": "\\( L_1 \\) norm is the sum of absolute values: \\( |10| + |-15| = 25 \\). \\( L_2 \\) norm is the square root of sum of squares: \\( \\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325} \\).",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Two document embeddings \\( \\mathbf{a} = [1, 2]^T \\) and \\( \\mathbf{b} = [2, 1]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{5} \\), calculate their exact cosine similarity.",
@@ -38,7 +69,15 @@
             "\\( 0.500 \\)"
           ],
           "correct": 2,
-          "answer": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (2)(4) + (4)(2) = 16 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 20 \\). Cosine similarity = \\( \\frac{16}{20} = 0.800 \\)."
+          "answer": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (2)(4) + (4)(2) = 16 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 20 \\). Cosine similarity = \\( \\frac{16}{20} = 0.800 \\).",
+          "figure": {
+            "type": "sinusoid",
+            "a": 4,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 4 sin(x)"
+          }
         },
         {
           "q": "Two document embeddings \\( \\mathbf{a} = [3, 6]^T \\) and \\( \\mathbf{b} = [6, 3]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{45} \\), calculate their exact cosine similarity.",
@@ -60,7 +99,15 @@
             "\\( 0.500 \\)"
           ],
           "correct": 2,
-          "answer": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (4)(8) + (8)(4) = 64 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 80 \\). Cosine similarity = \\( \\frac{64}{80} = 0.800 \\)."
+          "answer": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (4)(8) + (8)(4) = 64 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 80 \\). Cosine similarity = \\( \\frac{64}{80} = 0.800 \\).",
+          "figure": {
+            "type": "sinusoid",
+            "a": 2,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 2 sin(x)"
+          }
         },
         {
           "q": "Two document embeddings \\( \\mathbf{a} = [5, 10]^T \\) and \\( \\mathbf{b} = [10, 5]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{125} \\), calculate their exact cosine similarity.",

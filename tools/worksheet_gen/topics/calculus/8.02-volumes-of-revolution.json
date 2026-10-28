@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "The disk and washer methods",
           "answer": "$V = \\pi\\int_0^4 (\\sqrt{x})^2\\,dx = \\pi\\int_0^4 x\\,dx = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 = 8\\pi$.",
-          "explanation": "$V = \\pi\\int_0^4 (\\sqrt{x})^2\\,dx = \\pi\\int_0^4 x\\,dx = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 = 8\\pi$."
+          "explanation": "$V = \\pi\\int_0^4 (\\sqrt{x})^2\\,dx = \\pi\\int_0^4 x\\,dx = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 = 8\\pi$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "The region between $y = x^2$ and $y = 4$ is revolved about the $x$-axis. Using the washer method, set up and evaluate the volume integral.",
@@ -160,7 +191,20 @@
           "target": "Volume with the shell method, revisited",
           "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals",
           "answer": "$V=2\\pi\\int_0^2 x(4-x^2)\\,dx=2\\pi\\int_0^2(4x-x^3)\\,dx=2\\pi\\left[2x^2-\\frac{x^4}{4}\\right]_0^2=2\\pi(8-4)=8\\pi$.",
-          "explanation": "$V=2\\pi\\int_0^2 x(4-x^2)\\,dx=2\\pi\\int_0^2(4x-x^3)\\,dx=2\\pi\\left[2x^2-\\frac{x^4}{4}\\right]_0^2=2\\pi(8-4)=8\\pi$."
+          "explanation": "$V=2\\pi\\int_0^2 x(4-x^2)\\,dx=2\\pi\\int_0^2(4x-x^3)\\,dx=2\\pi\\left[2x^2-\\frac{x^4}{4}\\right]_0^2=2\\pi(8-4)=8\\pi$.",
+          "figure": {
+            "type": "numberline",
+            "min": -6,
+            "max": 6,
+            "intervals": [
+              {
+                "from": -1,
+                "to": 5,
+                "leftClosed": true,
+                "rightClosed": false
+              }
+            ]
+          }
         },
         {
           "q": "Find the volume of the solid generated when the region bounded by $y = \\sqrt{x}$, the $x$-axis, and $x = 4$ is revolved $2\\pi$ radians about the $x$-axis.",

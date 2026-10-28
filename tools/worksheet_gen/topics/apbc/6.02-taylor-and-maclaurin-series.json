@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "The Taylor series formula",
           "answer": "$f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n=f(a)+f'(a)(x-a)+\\frac{f''(a)}{2!}(x-a)^2+\\cdots$.",
-          "explanation": "$f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n=f(a)+f'(a)(x-a)+\\frac{f''(a)}{2!}(x-a)^2+\\cdots$."
+          "explanation": "$f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n=f(a)+f'(a)(x-a)+\\frac{f''(a)}{2!}(x-a)^2+\\cdots$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Find the Taylor series for $f(x)=\\ln x$ centered at $a=1$, up through the $(x-1)^3$ term.",
@@ -146,7 +177,15 @@
           "target": "Deriving new Maclaurin series from known ones",
           "cross_lesson": "4.01 Polar Curves and Derivatives",
           "answer": "$e^x=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}+\\cdots$; $e^{-x}=1-x+\\frac{x^2}{2}-\\frac{x^3}{6}+\\frac{x^4}{24}-\\cdots$. Averaging cancels odd terms: $\\cosh x=1+\\frac{x^2}{2}+\\frac{x^4}{24}+\\cdots$.",
-          "explanation": "$e^x=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}+\\cdots$; $e^{-x}=1-x+\\frac{x^2}{2}-\\frac{x^3}{6}+\\frac{x^4}{24}-\\cdots$. Averaging cancels odd terms: $\\cosh x=1+\\frac{x^2}{2}+\\frac{x^4}{24}+\\cdots$."
+          "explanation": "$e^x=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}+\\cdots$; $e^{-x}=1-x+\\frac{x^2}{2}-\\frac{x^3}{6}+\\frac{x^4}{24}-\\cdots$. Averaging cancels odd terms: $\\cosh x=1+\\frac{x^2}{2}+\\frac{x^4}{24}+\\cdots$.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 1 sin(x)"
+          }
         },
         {
           "q": "Level 3 · Advanced Let $f(x)$ be a function with $f(2) = 3$, $f'(2) = -1$, $f''(2) = 4$, and $f'''(2) = -12$. Write the third-degree Taylor polynomial $P_3(x)$ for $f$ centered at $x = 2$, and use it to approximate $f(2.1)$.",
@@ -357,7 +396,15 @@
           ],
           "correct": 2,
           "answer": "$n(n-1)/n!=1/(n-2)!\\Rightarrow x^2\\sum x^{n-2}/(n-2)!=x^2e^x$.",
-          "explanation": "$n(n-1)/n!=1/(n-2)!\\Rightarrow x^2\\sum x^{n-2}/(n-2)!=x^2e^x$."
+          "explanation": "$n(n-1)/n!=1/(n-2)!\\Rightarrow x^2\\sum x^{n-2}/(n-2)!=x^2e^x$.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 4,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 4 sin(x)"
+          }
         },
         {
           "q": "The power series $\\sum a_n x^n$ represents a function that is $C^\\infty$ (infinitely differentiable) inside its radius of convergence. This means all derivatives:",

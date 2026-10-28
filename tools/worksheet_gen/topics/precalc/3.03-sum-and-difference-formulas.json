@@ -14,7 +14,15 @@
           "question_type": "FRQ",
           "target": "Exact values with sum and difference formulas",
           "answer": "$\\cos 75° = \\cos(45° + 30°) = \\cos 45°\\cos 30° - \\sin 45°\\sin 30° = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$.",
-          "explanation": "$\\cos 75° = \\cos(45° + 30°) = \\cos 45°\\cos 30° - \\sin 45°\\sin 30° = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+          "explanation": "$\\cos 75° = \\cos(45° + 30°) = \\cos 45°\\cos 30° - \\sin 45°\\sin 30° = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 2,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 2 sin(x)"
+          }
         },
         {
           "q": "Find the exact value of $\\sin\\frac{\\pi}{12}$.",
@@ -166,7 +174,15 @@
           "target": "Solving equations using sum and difference formulas",
           "cross_lesson": "8.03 Introduction to Limits",
           "answer": "Expand: $\\sin x\\cos\\frac{\\pi}{6}+\\cos x\\sin\\frac{\\pi}{6}=\\frac{1}{2} \\Rightarrow \\frac{\\sqrt{3}}{2}\\sin x+\\frac{1}{2}\\cos x=\\frac{1}{2}$. Alternatively, recognizing $\\sin(\\theta)=\\frac{1}{2}$ directly: $x+\\frac{\\pi}{6}=\\frac{\\pi}{6}$ or $x+\\frac{\\pi}{6}=\\frac{5\\pi}{6}$, giving $x=0$ or $x=\\frac{2\\pi}{3}$.",
-          "explanation": "Expand: $\\sin x\\cos\\frac{\\pi}{6}+\\cos x\\sin\\frac{\\pi}{6}=\\frac{1}{2} \\Rightarrow \\frac{\\sqrt{3}}{2}\\sin x+\\frac{1}{2}\\cos x=\\frac{1}{2}$. Alternatively, recognizing $\\sin(\\theta)=\\frac{1}{2}$ directly: $x+\\frac{\\pi}{6}=\\frac{\\pi}{6}$ or $x+\\frac{\\pi}{6}=\\frac{5\\pi}{6}$, giving $x=0$ or $x=\\frac{2\\pi}{3}$."
+          "explanation": "Expand: $\\sin x\\cos\\frac{\\pi}{6}+\\cos x\\sin\\frac{\\pi}{6}=\\frac{1}{2} \\Rightarrow \\frac{\\sqrt{3}}{2}\\sin x+\\frac{1}{2}\\cos x=\\frac{1}{2}$. Alternatively, recognizing $\\sin(\\theta)=\\frac{1}{2}$ directly: $x+\\frac{\\pi}{6}=\\frac{\\pi}{6}$ or $x+\\frac{\\pi}{6}=\\frac{5\\pi}{6}$, giving $x=0$ or $x=\\frac{2\\pi}{3}$.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 1 sin(x)"
+          }
         },
         {
           "q": "Given that a signal is modeled by $y=\\cos\\left(3x-\\frac{\\pi}{4}\\right)$, expand it using the difference formula and identify the coefficients of $\\cos3x$ and $\\sin3x$.",
@@ -377,7 +393,38 @@
           ],
           "correct": 3,
           "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=0\\Rightarrow2(6)-3 k=0\\Rightarrow k=4$.",
-          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=0\\Rightarrow2(6)-3 k=0\\Rightarrow k=4$."
+          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=0\\Rightarrow2(6)-3 k=0\\Rightarrow k=4$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "4*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              }
+            ]
+          }
         },
         {
           "q": "Are $\\mathbf{u}=\\langle2,3\\rangle$ and $\\mathbf{v}=\\langle-3,2\\rangle$ orthogonal, parallel, or neither?",

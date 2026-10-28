@@ -14,7 +14,26 @@
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "answer": "The given system is of the form $\\mathbf{x}' = A \\mathbf{x}$, where $A = \\left(1, 2 ; 3, 0\\right)$ is the coefficient matrix. To find the eigenvalues, we solve the characteristic equation det$(A - \\lambda I) = 0$, where $I$ is the identity matrix and $\\lambda$ represents the eigenvalues. $A - \\lambda I = \\left(1, 2 ; 3, 0\\right) - \\lambda \\left(1, 0 ; 0, 1\\right) = \\left(1-\\lambda, 2 ; 3, -\\lambda\\right)$ det$(A - \\lambda I) = (1-\\lambda)(-\\lambda) - (2)(3) = -\\lambda + \\lambda^2 - 6 = \\lambda^2 - \\lambda - 6$ Setting the determinant to zero: $\\lambda^2 - \\lambda - 6 = 0$ Factoring the quadratic equation: $(\\lambda - 3)(\\lambda + 2) = 0$ Thus, the eigenvalues are $\\lambda_1 = 3$ and $\\lambda_2 = -2$.",
-          "explanation": "The given system is of the form $\\mathbf{x}' = A \\mathbf{x}$, where $A = \\left(1, 2 ; 3, 0\\right)$ is the coefficient matrix. To find the eigenvalues, we solve the characteristic equation det$(A - \\lambda I) = 0$, where $I$ is the identity matrix and $\\lambda$ represents the eigenvalues. $A - \\lambda I = \\left(1, 2 ; 3, 0\\right) - \\lambda \\left(1, 0 ; 0, 1\\right) = \\left(1-\\lambda, 2 ; 3, -\\lambda\\right)$ det$(A - \\lambda I) = (1-\\lambda)(-\\lambda) - (2)(3) = -\\lambda + \\lambda^2 - 6 = \\lambda^2 - \\lambda - 6$ Setting the determinant to zero: $\\lambda^2 - \\lambda - 6 = 0$ Factoring the quadratic equation: $(\\lambda - 3)(\\lambda + 2) = 0$ Thus, the eigenvalues are $\\lambda_1 = 3$ and $\\lambda_2 = -2$."
+          "explanation": "The given system is of the form $\\mathbf{x}' = A \\mathbf{x}$, where $A = \\left(1, 2 ; 3, 0\\right)$ is the coefficient matrix. To find the eigenvalues, we solve the characteristic equation det$(A - \\lambda I) = 0$, where $I$ is the identity matrix and $\\lambda$ represents the eigenvalues. $A - \\lambda I = \\left(1, 2 ; 3, 0\\right) - \\lambda \\left(1, 0 ; 0, 1\\right) = \\left(1-\\lambda, 2 ; 3, -\\lambda\\right)$ det$(A - \\lambda I) = (1-\\lambda)(-\\lambda) - (2)(3) = -\\lambda + \\lambda^2 - 6 = \\lambda^2 - \\lambda - 6$ Setting the determinant to zero: $\\lambda^2 - \\lambda - 6 = 0$ Factoring the quadratic equation: $(\\lambda - 3)(\\lambda + 2) = 0$ Thus, the eigenvalues are $\\lambda_1 = 3$ and $\\lambda_2 = -2$.",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "Solve the first-order linear initial value problem $x \\frac{dy}{dx} + 3y = \\frac{\\sin x}{x^2}$ for $x > 0$ with $y(\\pi) = 0$. Find $\\lim_{x\\rightarrow 0^+} y(x)$.",
@@ -146,7 +165,26 @@
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "1.01 Separable Equations",
           "answer": "Step 1: Identify Bernoulli parameters: $n = 2$. Divide by $y^2$: $y^{-2}y' + \\frac{1}{x}y^{-1} = x.$ Step 2: Substitute $v = y^{1-2} = y^{-1}$: $v' = -y^{-2}y' \\Rightarrow y^{-2}y' = -v'$. Substituting yields: $-v' + \\frac{1}{x}v = x \\Rightarrow v' - \\frac{1}{x}v = -x.$ Step 3: Integrating factor for linear equation in $v$: $\\mu(x) = \\exp\\left(\\int -\\frac{1}{x}\\,dx\\right) = e^{-\\ln x} = \\frac{1}{x}.$ Multiply through: $\\frac{d}{dx}\\left[\\frac{v}{x}\\right] = \\frac{1}{x}(-x) = -1 \\Rightarrow \\frac{v}{x} = -x + C \\Rightarrow v(x) = C x - x^2.$ Step 4: Revert to $y$: $y(x) = \\frac{1}{v(x)} = \\frac{1}{Cx - x^2}$. Apply $y(1) = -1$: $-1 = \\frac{1}{C(1) - 1^2} = \\frac{1}{C - 1} \\Rightarrow C - 1 = -1 \\Rightarrow C = 0$. Therefore: $y(x) = -\\frac{1}{x^2}.$",
-          "explanation": "Step 1: Identify Bernoulli parameters: $n = 2$. Divide by $y^2$: $y^{-2}y' + \\frac{1}{x}y^{-1} = x.$ Step 2: Substitute $v = y^{1-2} = y^{-1}$: $v' = -y^{-2}y' \\Rightarrow y^{-2}y' = -v'$. Substituting yields: $-v' + \\frac{1}{x}v = x \\Rightarrow v' - \\frac{1}{x}v = -x.$ Step 3: Integrating factor for linear equation in $v$: $\\mu(x) = \\exp\\left(\\int -\\frac{1}{x}\\,dx\\right) = e^{-\\ln x} = \\frac{1}{x}.$ Multiply through: $\\frac{d}{dx}\\left[\\frac{v}{x}\\right] = \\frac{1}{x}(-x) = -1 \\Rightarrow \\frac{v}{x} = -x + C \\Rightarrow v(x) = C x - x^2.$ Step 4: Revert to $y$: $y(x) = \\frac{1}{v(x)} = \\frac{1}{Cx - x^2}$. Apply $y(1) = -1$: $-1 = \\frac{1}{C(1) - 1^2} = \\frac{1}{C - 1} \\Rightarrow C - 1 = -1 \\Rightarrow C = 0$. Therefore: $y(x) = -\\frac{1}{x^2}.$"
+          "explanation": "Step 1: Identify Bernoulli parameters: $n = 2$. Divide by $y^2$: $y^{-2}y' + \\frac{1}{x}y^{-1} = x.$ Step 2: Substitute $v = y^{1-2} = y^{-1}$: $v' = -y^{-2}y' \\Rightarrow y^{-2}y' = -v'$. Substituting yields: $-v' + \\frac{1}{x}v = x \\Rightarrow v' - \\frac{1}{x}v = -x.$ Step 3: Integrating factor for linear equation in $v$: $\\mu(x) = \\exp\\left(\\int -\\frac{1}{x}\\,dx\\right) = e^{-\\ln x} = \\frac{1}{x}.$ Multiply through: $\\frac{d}{dx}\\left[\\frac{v}{x}\\right] = \\frac{1}{x}(-x) = -1 \\Rightarrow \\frac{v}{x} = -x + C \\Rightarrow v(x) = C x - x^2.$ Step 4: Revert to $y$: $y(x) = \\frac{1}{v(x)} = \\frac{1}{Cx - x^2}$. Apply $y(1) = -1$: $-1 = \\frac{1}{C(1) - 1^2} = \\frac{1}{C - 1} \\Rightarrow C - 1 = -1 \\Rightarrow C = 0$. Therefore: $y(x) = -\\frac{1}{x^2}.$",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": -1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "Solve the initial value problem $(x^2 + 1)\\frac{dy}{dx} + 4x y = x$ with $y(0) = 1$.",
@@ -357,7 +395,26 @@
           ],
           "correct": 1,
           "answer": "The given differential equation is in the form $\\frac{dy}{dx} + P(x)y = Q(x)$. The integrating factor (IF) is given by $e^{\\int P(x) dx}$. We are told that the integrating factor is $e^{x^2}$. Therefore, $\\int P(x) dx = x^2$, which implies $P(x) = 2x$. The general solution to a first-order linear differential equation is given by $y \\cdot \\mathrm{IF} = \\int Q(x) \\cdot \\mathrm{IF} \\, dx + C$. Substituting the IF and $Q(x)$, we get: $y e^{x^2} = \\int (2xe^{x^2}) e^{-x^2} \\, dx + C$ $y e^{x^2} = \\int 2x \\, dx + C$ $y e^{x^2} = x^2 + C$ Now, we need to find the value of $C$ using the initial condition $y(0) = 3$. Substitute $x=0$ and $y=3$ into the general solution: $3 e^{0^2} = 0^2 + C$ $3 \\cdot 1 = 0 + C$ $C = 3$. Therefore, the value of the constant $C$ is 3.",
-          "explanation": "The given differential equation is in the form $\\frac{dy}{dx} + P(x)y = Q(x)$. The integrating factor (IF) is given by $e^{\\int P(x) dx}$. We are told that the integrating factor is $e^{x^2}$. Therefore, $\\int P(x) dx = x^2$, which implies $P(x) = 2x$. The general solution to a first-order linear differential equation is given by $y \\cdot \\mathrm{IF} = \\int Q(x) \\cdot \\mathrm{IF} \\, dx + C$. Substituting the IF and $Q(x)$, we get: $y e^{x^2} = \\int (2xe^{x^2}) e^{-x^2} \\, dx + C$ $y e^{x^2} = \\int 2x \\, dx + C$ $y e^{x^2} = x^2 + C$ Now, we need to find the value of $C$ using the initial condition $y(0) = 3$. Substitute $x=0$ and $y=3$ into the general solution: $3 e^{0^2} = 0^2 + C$ $3 \\cdot 1 = 0 + C$ $C = 3$. Therefore, the value of the constant $C$ is 3."
+          "explanation": "The given differential equation is in the form $\\frac{dy}{dx} + P(x)y = Q(x)$. The integrating factor (IF) is given by $e^{\\int P(x) dx}$. We are told that the integrating factor is $e^{x^2}$. Therefore, $\\int P(x) dx = x^2$, which implies $P(x) = 2x$. The general solution to a first-order linear differential equation is given by $y \\cdot \\mathrm{IF} = \\int Q(x) \\cdot \\mathrm{IF} \\, dx + C$. Substituting the IF and $Q(x)$, we get: $y e^{x^2} = \\int (2xe^{x^2}) e^{-x^2} \\, dx + C$ $y e^{x^2} = \\int 2x \\, dx + C$ $y e^{x^2} = x^2 + C$ Now, we need to find the value of $C$ using the initial condition $y(0) = 3$. Substitute $x=0$ and $y=3$ into the general solution: $3 e^{0^2} = 0^2 + C$ $3 \\cdot 1 = 0 + C$ $C = 3$. Therefore, the value of the constant $C$ is 3.",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 2,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "An RC circuit with $R = 4\\,\\Omega$ and $C = 0.5\\mathrm{\\ F}$ is connected to $E(t) = 20\\cos t\\mathrm{\\ V}$. What is the amplitude of the steady-state charge $q_{ss}(t)$?",

@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "The ratio and comparison tests",
           "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\rightarrow\\infty}\\frac{n+1}{2n} = \\frac{1}{2} < 1$: converges.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\rightarrow\\infty}\\frac{n+1}{2n} = \\frac{1}{2} < 1$: converges."
+          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\rightarrow\\infty}\\frac{n+1}{2n} = \\frac{1}{2} < 1$: converges.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Use the ratio test on $\\sum_{n=1}^{\\infty} \\frac{n!}{n^n}$.",
@@ -166,7 +197,15 @@
           "target": "A combined convergence-test challenge",
           "cross_lesson": "7.02 Integration by Parts",
           "answer": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges.",
-          "explanation": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges."
+          "explanation": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 1 sin(x)"
+          }
         },
         {
           "q": "A student claims that since $\\lim_{n\\rightarrow\\infty}\\frac{1}{n}=0$, the series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ must converge. Explain what is wrong with this reasoning, and state the correct necessary (but not sufficient) condition that the $n$th-term test actually provides, using the harmonic series as a counterexample.",
@@ -377,7 +416,38 @@
           ],
           "correct": 3,
           "answer": "Comparison: dominated from below by divergent ⟹ diverges.",
-          "explanation": "Comparison: dominated from below by divergent ⟹ diverges."
+          "explanation": "Comparison: dominated from below by divergent ⟹ diverges.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "4*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              }
+            ]
+          }
         },
         {
           "q": "The integral $\\int_0^1e^{-x^2}dx$ (error function) — the exact value cannot be expressed in elementary functions. Using the series, approximate as $\\sum\\frac{(-1)^n}{n!(2n+1)}$. First two terms:",

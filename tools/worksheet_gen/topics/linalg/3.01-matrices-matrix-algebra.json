@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "answer": "Step 1: Standard matrix of shear $[S]$: $S(x, y) = (x + 2y, y) \\Rightarrow [S] = \\left(1, 2 ; 0, 1\\right).$ Step 2: Standard matrix of rotation $[R]$: $[R] = \\left(\\cos(45^\\circ), -\\sin(45^\\circ) ; \\sin(45^\\circ), \\cos(45^\\circ)\\right) = \\frac{\\sqrt{2}}{2} \\left(1, -1 ; 1, 1\\right).$ Step 3: Compose operators $[T] = [R] [S]$: $[T] = \\frac{\\sqrt{2}}{2} \\left(1, -1 ; 1, 1\\right) \\left(1, 2 ; 0, 1\\right) = \\frac{\\sqrt{2}}{2} \\left(1, 2 - 1 ; 1, 2 + 1\\right) = \\frac{\\sqrt{2}}{2} \\left(1, 1 ; 1, 3\\right) = \\left(\\sqrt{2}/2, \\sqrt{2}/2 ; \\sqrt{2}/2, 3\\sqrt{2}/2\\right).$",
-          "explanation": "Step 1: Standard matrix of shear $[S]$: $S(x, y) = (x + 2y, y) \\Rightarrow [S] = \\left(1, 2 ; 0, 1\\right).$ Step 2: Standard matrix of rotation $[R]$: $[R] = \\left(\\cos(45^\\circ), -\\sin(45^\\circ) ; \\sin(45^\\circ), \\cos(45^\\circ)\\right) = \\frac{\\sqrt{2}}{2} \\left(1, -1 ; 1, 1\\right).$ Step 3: Compose operators $[T] = [R] [S]$: $[T] = \\frac{\\sqrt{2}}{2} \\left(1, -1 ; 1, 1\\right) \\left(1, 2 ; 0, 1\\right) = \\frac{\\sqrt{2}}{2} \\left(1, 2 - 1 ; 1, 2 + 1\\right) = \\frac{\\sqrt{2}}{2} \\left(1, 1 ; 1, 3\\right) = \\left(\\sqrt{2}/2, \\sqrt{2}/2 ; \\sqrt{2}/2, 3\\sqrt{2}/2\\right).$"
+          "explanation": "Step 1: Standard matrix of shear $[S]$: $S(x, y) = (x + 2y, y) \\Rightarrow [S] = \\left(1, 2 ; 0, 1\\right).$ Step 2: Standard matrix of rotation $[R]$: $[R] = \\left(\\cos(45^\\circ), -\\sin(45^\\circ) ; \\sin(45^\\circ), \\cos(45^\\circ)\\right) = \\frac{\\sqrt{2}}{2} \\left(1, -1 ; 1, 1\\right).$ Step 3: Compose operators $[T] = [R] [S]$: $[T] = \\frac{\\sqrt{2}}{2} \\left(1, -1 ; 1, 1\\right) \\left(1, 2 ; 0, 1\\right) = \\frac{\\sqrt{2}}{2} \\left(1, 2 - 1 ; 1, 2 + 1\\right) = \\frac{\\sqrt{2}}{2} \\left(1, 1 ; 1, 3\\right) = \\left(\\sqrt{2}/2, \\sqrt{2}/2 ; \\sqrt{2}/2, 3\\sqrt{2}/2\\right).$",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Let $T: \\mathbb{R}^2 \\rightarrow \\mathbb{R}^2$ have standard matrix $A = \\left(4, 1 ; 2, 3\\right)$. Find the matrix representation $[T]_\\mathcal{B}$ relative to the basis $\\mathcal{B} = \\left\\{ \\left(1 ; 1\\right), \\left(-1 ; 2\\right) \\right\\}$ via similarity transformation $P^{-1} A P$.",
@@ -146,7 +177,38 @@
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
           "cross_lesson": "4.01 Determinants",
           "answer": "Step 1: Characteristic equation: Since $A$ is upper triangular, its eigenvalues are the diagonal entries: $\\det(A - \\lambda I) = (3 - \\lambda)^2 (2 - \\lambda) = 0.$ Distinct eigenvalues: $\\lambda_1 = 3$ (algebraic multiplicity $\\alpha_1 = 2$), and $\\lambda_2 = 2$ (algebraic multiplicity $\\alpha_2 = 1$). Step 2: Eigenspace for $\\lambda = 3$: $(A - 3I)\\mathbf{v} = \\left(0, 1, 0 ; 0, 0, 0 ; 0, 0, -1\\right) \\left(v_1 ; v_2 ; v_3\\right) = \\left(0 ; 0 ; 0\\right).$ We obtain $v_2 = 0$ and $-v_3 = 0 \\Rightarrow v_3 = 0$, while $v_1$ is free. Thus: $E_3 = \\mathrm{span}\\left\\{ \\left(1 ; 0 ; 0\\right) \\right\\} \\Rightarrow \\mathrm{geometric\\ multiplicity\\ } \\gamma_1 = 1.$ Step 3: Eigenspace for $\\lambda = 2$: $(A - 2I)\\mathbf{v} = \\left(1, 1, 0 ; 0, 1, 0 ; 0, 0, 0\\right) \\left(v_1 ; v_2 ; v_3\\right) = \\left(0 ; 0 ; 0\\right) \\Rightarrow v_1 = 0, \\, v_2 = 0, \\, v_3 \\mathrm{\\ free} \\Rightarrow E_2 = \\mathrm{span}\\left\\{ \\left(0 ; 0 ; 1\\right) \\right\\}.$ Conclusion: For $\\lambda = 3$, $\\gamma_1 = 1 < \\alpha_1 = 2$. Because the geometric multiplicity falls strictly below the algebraic multiplicity, $A$ is defective and NOT diagonalizable.",
-          "explanation": "Step 1: Characteristic equation: Since $A$ is upper triangular, its eigenvalues are the diagonal entries: $\\det(A - \\lambda I) = (3 - \\lambda)^2 (2 - \\lambda) = 0.$ Distinct eigenvalues: $\\lambda_1 = 3$ (algebraic multiplicity $\\alpha_1 = 2$), and $\\lambda_2 = 2$ (algebraic multiplicity $\\alpha_2 = 1$). Step 2: Eigenspace for $\\lambda = 3$: $(A - 3I)\\mathbf{v} = \\left(0, 1, 0 ; 0, 0, 0 ; 0, 0, -1\\right) \\left(v_1 ; v_2 ; v_3\\right) = \\left(0 ; 0 ; 0\\right).$ We obtain $v_2 = 0$ and $-v_3 = 0 \\Rightarrow v_3 = 0$, while $v_1$ is free. Thus: $E_3 = \\mathrm{span}\\left\\{ \\left(1 ; 0 ; 0\\right) \\right\\} \\Rightarrow \\mathrm{geometric\\ multiplicity\\ } \\gamma_1 = 1.$ Step 3: Eigenspace for $\\lambda = 2$: $(A - 2I)\\mathbf{v} = \\left(1, 1, 0 ; 0, 1, 0 ; 0, 0, 0\\right) \\left(v_1 ; v_2 ; v_3\\right) = \\left(0 ; 0 ; 0\\right) \\Rightarrow v_1 = 0, \\, v_2 = 0, \\, v_3 \\mathrm{\\ free} \\Rightarrow E_2 = \\mathrm{span}\\left\\{ \\left(0 ; 0 ; 1\\right) \\right\\}.$ Conclusion: For $\\lambda = 3$, $\\gamma_1 = 1 < \\alpha_1 = 2$. Because the geometric multiplicity falls strictly below the algebraic multiplicity, $A$ is defective and NOT diagonalizable."
+          "explanation": "Step 1: Characteristic equation: Since $A$ is upper triangular, its eigenvalues are the diagonal entries: $\\det(A - \\lambda I) = (3 - \\lambda)^2 (2 - \\lambda) = 0.$ Distinct eigenvalues: $\\lambda_1 = 3$ (algebraic multiplicity $\\alpha_1 = 2$), and $\\lambda_2 = 2$ (algebraic multiplicity $\\alpha_2 = 1$). Step 2: Eigenspace for $\\lambda = 3$: $(A - 3I)\\mathbf{v} = \\left(0, 1, 0 ; 0, 0, 0 ; 0, 0, -1\\right) \\left(v_1 ; v_2 ; v_3\\right) = \\left(0 ; 0 ; 0\\right).$ We obtain $v_2 = 0$ and $-v_3 = 0 \\Rightarrow v_3 = 0$, while $v_1$ is free. Thus: $E_3 = \\mathrm{span}\\left\\{ \\left(1 ; 0 ; 0\\right) \\right\\} \\Rightarrow \\mathrm{geometric\\ multiplicity\\ } \\gamma_1 = 1.$ Step 3: Eigenspace for $\\lambda = 2$: $(A - 2I)\\mathbf{v} = \\left(1, 1, 0 ; 0, 1, 0 ; 0, 0, 0\\right) \\left(v_1 ; v_2 ; v_3\\right) = \\left(0 ; 0 ; 0\\right) \\Rightarrow v_1 = 0, \\, v_2 = 0, \\, v_3 \\mathrm{\\ free} \\Rightarrow E_2 = \\mathrm{span}\\left\\{ \\left(0 ; 0 ; 1\\right) \\right\\}.$ Conclusion: For $\\lambda = 3$, $\\gamma_1 = 1 < \\alpha_1 = 2$. Because the geometric multiplicity falls strictly below the algebraic multiplicity, $A$ is defective and NOT diagonalizable.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "Apply the Gram–Schmidt orthogonalization process to the columns of $A$ to find its $QR$ factorization: $A = \\left(1, 2 ; 2, 1 ; -2, 2\\right).$",
@@ -357,7 +419,38 @@
           ],
           "correct": 0,
           "answer": "Rotating $[1, 0]^T$ gives $[\\cos\\theta, \\sin\\theta]^T$, and rotating $[0, 1]^T$ gives $[-\\sin\\theta, \\cos\\theta]^T$, giving $[[\\cos\\theta, -\\sin\\theta], [\\sin\\theta, \\cos\\theta]]$.",
-          "explanation": "Rotating $[1, 0]^T$ gives $[\\cos\\theta, \\sin\\theta]^T$, and rotating $[0, 1]^T$ gives $[-\\sin\\theta, \\cos\\theta]^T$, giving $[[\\cos\\theta, -\\sin\\theta], [\\sin\\theta, \\cos\\theta]]$."
+          "explanation": "Rotating $[1, 0]^T$ gives $[\\cos\\theta, \\sin\\theta]^T$, and rotating $[0, 1]^T$ gives $[-\\sin\\theta, \\cos\\theta]^T$, giving $[[\\cos\\theta, -\\sin\\theta], [\\sin\\theta, \\cos\\theta]]$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "4*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              }
+            ]
+          }
         },
         {
           "q": "What is the standard matrix for reflection across the $x$-axis in $\\mathbb{R}^2$?",

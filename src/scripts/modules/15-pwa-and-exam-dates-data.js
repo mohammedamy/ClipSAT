@@ -56,18 +56,22 @@ if('serviceWorker' in navigator){
     // ── College Board: SAT
     sat:     ['2026-08-22','2026-10-03','2026-11-07','2026-12-05',
                '2027-03-13','2027-05-01','2027-06-05'],
-    // ── ACT (same schedule for both ACT tracks)
+    // ── ACT (same schedule for all ACT tracks)
     act:     ['2026-07-11','2026-09-12','2026-10-24','2026-12-12',
                '2027-02-06','2027-04-17','2027-06-12'],
     act2:    ['2026-07-11','2026-09-12','2026-10-24','2026-12-12',
+               '2027-02-06','2027-04-17','2027-06-12'],
+    act2l2:  ['2026-07-11','2026-09-12','2026-10-24','2026-12-12',
                '2027-02-06','2027-04-17','2027-06-12'],
     // ── College Board: AP (May exam week — exact dates vary ±1 day each year)
     apab:    ['2027-05-03'],
     apbc:    ['2027-05-10'],
     appc:    ['2027-05-09'],
     apstats: ['2027-05-14'],
-    // ── Cambridge International (Oct/Nov session & next May/Jun)
+    // ── Cambridge International & Pearson Edexcel (Oct/Nov session & next May/Jun)
     igcse:   ['2026-10-28','2027-05-05','2027-11-03'],
+    edexcel: ['2026-11-04','2027-05-18','2027-11-03'],
+    addmath: ['2026-10-29','2027-05-06','2027-11-04'],
     aslevel: ['2026-10-14','2027-05-12','2027-10-13'],
     a2level: ['2026-10-14','2027-05-12','2027-10-13'],
     // ── IB (Nov session starts late Oct; May session starts late April)
@@ -76,20 +80,25 @@ if('serviceWorker' in navigator){
     // ── Saudi / Qiyas: EST (approx. — verify at qiyas.org)
     est:     ['2026-08-15','2026-11-21','2027-02-20','2027-05-15','2027-08-14'],
     est2:    ['2026-08-15','2026-11-21','2027-02-20','2027-05-15','2027-08-14'],
-    // ── Saudi / Qiyas: GAT Qudrat (approx.)
+    est2l2:  ['2026-08-15','2026-11-21','2027-02-20','2027-05-15','2027-08-14'],
+    // ── Saudi / Qiyas: GAT Qudrat & English GAT/SAAT (approx.)
     qudrat:  ['2026-07-25','2026-10-17','2027-01-16','2027-04-17','2027-07-24'],
-    // ── Saudi / Qiyas: SAAT Tahsili (approx.)
-    tahsili: ['2026-07-18','2026-10-10','2027-01-09','2027-04-10','2027-07-17']
+    tahsili: ['2026-07-18','2026-10-10','2027-01-09','2027-04-10','2027-07-17'],
+    gaten:   ['2026-11-14','2027-01-16','2027-04-17','2027-07-24'],
+    // ── Contest Math & Olympiad (AMC 10/12 November & Kangaroo March)
+    olympiad:['2026-11-05','2026-11-11','2027-03-18','2027-11-10']
   };
 
   /* Label shown beside the number */
   var LABEL = {
-    sat:'Digital SAT', act:'ACT', act2:'ACT',
+    sat:'Digital SAT', act:'ACT', act2:'ACT Subject', act2l2:'ACT Math 2',
     apab:'AP Calc AB', apbc:'AP Calc BC', appc:'AP Precalc', apstats:'AP Stats',
-    igcse:'Cambridge IGCSE', aslevel:'AS Level', a2level:'A2 Level',
+    igcse:'Cambridge IGCSE', edexcel:'Edexcel 4MA1', addmath:'Add Math 0606',
+    aslevel:'AS Level', a2level:'A2 Level',
     ibsl:'IB May/Nov', ibhl:'IB May/Nov',
-    est:'EST (approx.)', est2:'EST (approx.)',
-    qudrat:'Qudrat (approx.)', tahsili:'Tahsili (approx.)'
+    est:'EST (approx.)', est2:'EST II (approx.)', est2l2:'EST II L2 (approx.)',
+    qudrat:'Qudrat (approx.)', tahsili:'Tahsili (approx.)', gaten:'GAT/SAAT (approx.)',
+    olympiad:'AMC / Kangaroo'
   };
 
   function todayMidnight(){ var d=new Date(); d.setHours(0,0,0,0); return d; }
@@ -113,11 +122,17 @@ if('serviceWorker' in navigator){
 
     var today = todayMidnight();
 
-    document.querySelectorAll('.card[onclick]').forEach(function(card){
-      var m = card.getAttribute('onclick').match(/showView\('([^']+)'\)/);
-      if(!m) return;
-      var key = m[1];
-      if(!DATES[key]) return;
+    document.querySelectorAll('.card[onclick], .card[href]').forEach(function(card){
+      var key = null;
+      var onc = card.getAttribute('onclick') || '';
+      var m = onc.match(/showView\('([^']+)'\)/);
+      if(m) key = m[1];
+      if(!key){
+        var href = card.getAttribute('href') || '';
+        var hm = href.match(/^\/([a-z0-9]+)\/?$/i);
+        if(hm) key = hm[1].toLowerCase();
+      }
+      if(!key || !DATES[key]) return;
 
       var next = nextDate(DATES[key]);
       if(!next) return;

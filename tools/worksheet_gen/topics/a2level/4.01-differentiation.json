@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Implicit differentiation",
           "answer": "Differentiate: $3x^2+3y^2\\frac{dy}{dx}=6y+6x\\frac{dy}{dx}$. Rearranging: $\\frac{dy}{dx}(3y^2-6x)=6y-3x^2$, so $\\frac{dy}{dx}=\\frac{6y-3x^2}{3y^2-6x}=\\frac{2y-x^2}{y^2-2x}$. At $(3,3)$: $\\frac{2(3)-9}{9-2(3)}=\\frac{-3}{3}=-1$.",
-          "explanation": "Differentiate: $3x^2+3y^2\\frac{dy}{dx}=6y+6x\\frac{dy}{dx}$. Rearranging: $\\frac{dy}{dx}(3y^2-6x)=6y-3x^2$, so $\\frac{dy}{dx}=\\frac{6y-3x^2}{3y^2-6x}=\\frac{2y-x^2}{y^2-2x}$. At $(3,3)$: $\\frac{2(3)-9}{9-2(3)}=\\frac{-3}{3}=-1$."
+          "explanation": "Differentiate: $3x^2+3y^2\\frac{dy}{dx}=6y+6x\\frac{dy}{dx}$. Rearranging: $\\frac{dy}{dx}(3y^2-6x)=6y-3x^2$, so $\\frac{dy}{dx}=\\frac{6y-3x^2}{3y^2-6x}=\\frac{2y-x^2}{y^2-2x}$. At $(3,3)$: $\\frac{2(3)-9}{9-2(3)}=\\frac{-3}{3}=-1$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "Find $\\frac{dy}{dx}$ given $\\sin(xy)=x$, using implicit differentiation.",
@@ -146,7 +177,38 @@
           "target": "Differentiating trigonometric, exponential and logarithmic composites",
           "cross_lesson": "6.01 Sequences & Series",
           "answer": "Combine the logarithms on the left-hand side using the product rule: $\\log_3[x(x + 6)] = 3.$ Convert to exponential form: $x(x + 6) = 3^3 = 27 \\Rightarrow x^2 + 6x - 27 = 0.$ Factor the quadratic: $(x + 9)(x - 3) = 0 \\Rightarrow x = -9 \\mathrm{\\ or\\ } x = 3.$ Check the domain restrictions in the original equation:For $x = -9$: $\\log_3(-9)$ is undefined, so $x = -9$ is an extraneous solution.For $x = 3$: $\\log_3(9) + \\log_3(3) = 2 + 1 = 3$. Valid $\\checkmark$.Therefore, the unique solution is $x = 3$.",
-          "explanation": "Combine the logarithms on the left-hand side using the product rule: $\\log_3[x(x + 6)] = 3.$ Convert to exponential form: $x(x + 6) = 3^3 = 27 \\Rightarrow x^2 + 6x - 27 = 0.$ Factor the quadratic: $(x + 9)(x - 3) = 0 \\Rightarrow x = -9 \\mathrm{\\ or\\ } x = 3.$ Check the domain restrictions in the original equation:For $x = -9$: $\\log_3(-9)$ is undefined, so $x = -9$ is an extraneous solution.For $x = 3$: $\\log_3(9) + \\log_3(3) = 2 + 1 = 3$. Valid $\\checkmark$.Therefore, the unique solution is $x = 3$."
+          "explanation": "Combine the logarithms on the left-hand side using the product rule: $\\log_3[x(x + 6)] = 3.$ Convert to exponential form: $x(x + 6) = 3^3 = 27 \\Rightarrow x^2 + 6x - 27 = 0.$ Factor the quadratic: $(x + 9)(x - 3) = 0 \\Rightarrow x = -9 \\mathrm{\\ or\\ } x = 3.$ Check the domain restrictions in the original equation:For $x = -9$: $\\log_3(-9)$ is undefined, so $x = -9$ is an extraneous solution.For $x = 3$: $\\log_3(9) + \\log_3(3) = 2 + 1 = 3$. Valid $\\checkmark$.Therefore, the unique solution is $x = 3$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "A curve has equation $y = 2x^3 - 9x^2 + 12x + 1$. (a) Find the coordinates of both stationary points. (b) Determine the nature of each stationary point using the second derivative $\\frac{d^2y}{dx^2}$.",
@@ -357,7 +419,26 @@
           ],
           "correct": 0,
           "answer": "$\\ln y=2\\ln x+\\frac{1}{2}\\ln(x+1)-x$. Differentiate: $y'/y=2/x+1/(2(x+1))-1$.",
-          "explanation": "$\\ln y=2\\ln x+\\frac{1}{2}\\ln(x+1)-x$. Differentiate: $y'/y=2/x+1/(2(x+1))-1$."
+          "explanation": "$\\ln y=2\\ln x+\\frac{1}{2}\\ln(x+1)-x$. Differentiate: $y'/y=2/x+1/(2(x+1))-1$.",
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 2,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
         },
         {
           "q": "Logarithmic differentiation: $y=x^x$. $y'=$",

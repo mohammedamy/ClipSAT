@@ -14,7 +14,15 @@
           "question_type": "FRQ",
           "target": "Probability distributions and expected value",
           "answer": "$X=8$ (win $10$, minus the $2$ cost) with probability $0.1$; $X=-2$ (lose the $2$ cost) with probability $0.9$. Expected value: $E(X)=8(0.1)+(-2)(0.9)=0.8-1.8=-1$. On average, a player loses $1$ dollar per game.",
-          "explanation": "$X=8$ (win $10$, minus the $2$ cost) with probability $0.1$; $X=-2$ (lose the $2$ cost) with probability $0.9$. Expected value: $E(X)=8(0.1)+(-2)(0.9)=0.8-1.8=-1$. On average, a player loses $1$ dollar per game."
+          "explanation": "$X=8$ (win $10$, minus the $2$ cost) with probability $0.1$; $X=-2$ (lose the $2$ cost) with probability $0.9$. Expected value: $E(X)=8(0.1)+(-2)(0.9)=0.8-1.8=-1$. On average, a player loses $1$ dollar per game.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 2,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 2 sin(x)"
+          }
         },
         {
           "q": "Find the standard deviation of the profit $X$ from the previous problem, to two decimal places.",
@@ -166,7 +174,38 @@
           "target": "Comparing binomial scenarios",
           "cross_lesson": "1.02 Z-Scores & Linear Transformations",
           "answer": "(a) In a 2-week period, the parameter scales to $\\lambda = 1.6 \\times 2 = 3.2$: $P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}$ (b) For 1 week, $\\lambda = 1.6$. Use conditional probability: $P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}$",
-          "explanation": "(a) In a 2-week period, the parameter scales to $\\lambda = 1.6 \\times 2 = 3.2$: $P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}$ (b) For 1 week, $\\lambda = 1.6$. Use conditional probability: $P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}$"
+          "explanation": "(a) In a 2-week period, the parameter scales to $\\lambda = 1.6 \\times 2 = 3.2$: $P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}$ (b) For 1 week, $\\lambda = 1.6$. Use conditional probability: $P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}$",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "A discrete random variable $X$ follows a binomial distribution $X \\sim B(15, 0.35)$. (a) Find $P(X = 5)$. (b) Find $P(X \\geq 4)$. (c) Calculate the mean $E(X)$ and standard deviation $\\sigma$ of $X$.",

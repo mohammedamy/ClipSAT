@@ -2507,6 +2507,92 @@ const EXAM_CATALOG = [
       { specKey: 'IB Math HL (AI) — Paper 2 (GDC Extended-Response)', slug: 'ib-ai-hl-paper-2', sub: 'IB DP Mathematics: Applications and Interpretation (AI HL)', unitTitle: 'IB Math AI HL — Paper 2 (GDC Extended-Response · 2 Hr · 110 Marks)', shortTitle: 'IB Math AI HL Paper 2 (Extended-Response) — Full Exam' },
       { specKey: 'IB Math HL (AI) — Paper 3 (GDC Extended Investigation)', slug: 'ib-ai-hl-paper-3', sub: 'IB DP Mathematics: Applications and Interpretation (AI HL)', unitTitle: 'IB Math AI HL — Paper 3 (GDC Extended Investigation · 75 Min · 55 Marks)', shortTitle: 'IB Math AI HL Paper 3 (Extended Investigation) — Full Exam' }
     ]
+  },
+
+  // ── Pearson Edexcel International GCSE Mathematics A (4MA1 Higher Tier) ──
+  {
+    trackId: 'edexcel',
+    papers: [
+      { specKey: 'Edexcel IGCSE (4MA1) — Paper 1H', slug: 'edexcel-4ma1-paper-1h', sub: 'Pearson Edexcel International GCSE (4MA1 Higher)', unitTitle: 'Pearson Edexcel IGCSE (4MA1) — Paper 1H (Higher Tier · 2 hr · 100 Marks)', shortTitle: 'Edexcel IGCSE 4MA1 Paper 1H — Full Exam' },
+      { specKey: 'Edexcel IGCSE (4MA1) — Paper 2H', slug: 'edexcel-4ma1-paper-2h', sub: 'Pearson Edexcel International GCSE (4MA1 Higher)', unitTitle: 'Pearson Edexcel IGCSE (4MA1) — Paper 2H (Higher Tier · 2 hr · 100 Marks)', shortTitle: 'Edexcel IGCSE 4MA1 Paper 2H — Full Exam' }
+    ]
+  },
+
+  // ── English GAT (Quantitative) & SAAT (Mathematics) ──
+  {
+    trackId: 'gaten',
+    papers: [
+      { specKey: 'GAT Quantitative (English Medium)', slug: 'gat-quantitative-english', sub: 'Qiyas English GAT (General Aptitude Test)', unitTitle: 'Official Full Practice Exams — English GAT Quantitative (48 Questions · 50 Minutes)', shortTitle: 'English GAT Quantitative — Full Practice Exam' },
+      { specKey: 'SAAT Mathematics (English Medium)', slug: 'saat-mathematics-english', sub: 'Qiyas English SAAT (Scholastic Achievement Admission Test)', unitTitle: 'Official Full Practice Exams — English SAAT Mathematics (40 Questions · 45 Minutes)', shortTitle: 'English SAAT Mathematics — Full Practice Exam' }
+    ]
+  },
+
+  // ── Contest Math & Olympiad (AMC 10/12, Kangaroo & Mawhiba) ──
+  {
+    trackId: 'olympiad',
+    papers: [
+      { specKey: 'AMC 10/12 Mathematics Competition', slug: 'amc-10-12-competition', sub: 'MAA American Mathematics Competitions (AMC 10/12)', unitTitle: 'Official Contest Papers — AMC 10 / AMC 12 Competition (25 Questions · 75 Minutes · 150 Marks)', shortTitle: 'AMC 10/12 Mathematics Competition — Full Paper' },
+      { specKey: 'Mawhiba & Kangaroo Math Arabia (Senior)', slug: 'mawhiba-kangaroo-senior', sub: 'Kangaroo Math Arabia & Mawhiba Olympiad', unitTitle: 'Official Contest Papers — Kangaroo Math & Mawhiba Olympiad (25 Questions · 75 Minutes · 135 Marks)', shortTitle: 'Kangaroo Math & Mawhiba Olympiad — Full Paper' }
+    ]
+  },
+
+  // ── Mathematics for AI & Data Science ──
+  {
+    trackId: 'mathai',
+    papers: [
+      { specKey: 'AI Math Foundations — Part A (Linear Algebra & Geometry)', slug: 'ai-math-part-a-linalg', sub: 'Mathematics for Artificial Intelligence & Machine Learning', unitTitle: 'AI Math Foundations — Part A: Vectors, Embeddings & Neural Matrices (20 Q · 60 Min)', shortTitle: 'AI Math Part A (Linear Algebra & Neural Layers) — Full Exam' },
+      { specKey: 'AI Math Foundations — Part B (Calculus, Probability & PCA)', slug: 'ai-math-part-b-calc-prob', sub: 'Mathematics for Artificial Intelligence & Machine Learning', unitTitle: 'AI Math Foundations — Part B: Gradient Descent, Bayes, MLE & PCA (20 Q · 60 Min)', shortTitle: 'AI Math Part B (Gradients, Probability & PCA) — Full Exam' }
+    ]
+  },
+
+  // ── Core High School & University Tracks (10 Full Exams each) ──
+  {
+    trackId: 'algebra',
+    papers: [
+      { specKey: 'algebra', slug: 'algebra-1-comprehensive', unitTitle: 'Official Full Practice Exams — Algebra I Comprehensive Final (40 Questions · 90 Minutes)', shortTitle: 'Algebra I Comprehensive Final — Full Practice Exam' }
+    ]
+  },
+  {
+    trackId: 'geo',
+    papers: [
+      { specKey: 'geo', slug: 'geometry-comprehensive', unitTitle: 'Official Full Practice Exams — Euclidean & Coordinate Geometry Final (40 Questions · 90 Minutes)', shortTitle: 'Geometry Comprehensive Final — Full Practice Exam' }
+    ]
+  },
+  {
+    trackId: 'alg2',
+    papers: [
+      { specKey: 'alg2', slug: 'algebra-2-comprehensive', unitTitle: 'Official Full Practice Exams — Algebra II Comprehensive Final (40 Questions · 90 Minutes)', shortTitle: 'Algebra II Comprehensive Final — Full Practice Exam' }
+    ]
+  },
+  {
+    trackId: 'precalc',
+    papers: [
+      { specKey: 'precalc', slug: 'precalculus-comprehensive', unitTitle: 'Official Full Practice Exams — Honors Precalculus & Trigonometry Final (40 Questions · 100 Minutes)', shortTitle: 'Precalculus Comprehensive Final — Full Practice Exam' }
+    ]
+  },
+  {
+    trackId: 'calculus',
+    papers: [
+      { specKey: 'calculus', slug: 'calculus-1-2-university', unitTitle: 'Official University Exams — Calculus I & II Comprehensive Final (40 Questions · 120 Minutes)', shortTitle: 'University Calculus I & II — Full Examination' }
+    ]
+  },
+  {
+    trackId: 'linalg',
+    papers: [
+      { specKey: 'linalg', slug: 'linear-algebra-university', unitTitle: 'Official University Exams — Linear Algebra & Matrix Theory Final (36 Questions · 120 Minutes)', shortTitle: 'University Linear Algebra — Full Examination' }
+    ]
+  },
+  {
+    trackId: 'mvc',
+    papers: [
+      { specKey: 'mvc', slug: 'multivariable-calculus-university', unitTitle: 'Official University Exams — Multivariable & Vector Calculus Final (36 Questions · 120 Minutes)', shortTitle: 'University Multivariable Calculus — Full Examination' }
+    ]
+  },
+  {
+    trackId: 'odes',
+    papers: [
+      { specKey: 'odes', slug: 'differential-equations-university', unitTitle: 'Official University Exams — Ordinary Differential Equations Final (36 Questions · 120 Minutes)', shortTitle: 'University Differential Equations — Full Examination' }
+    ]
   }
 ];
 

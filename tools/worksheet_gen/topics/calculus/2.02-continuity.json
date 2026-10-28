@@ -25,7 +25,38 @@
             "Yes — both one-sided limits equal $5 = f(2)$, so $f$ is continuous at $x = 2$."
           ],
           "answer": "(a) $= 5$.; (b) $= 5$.; (c) Yes — both one-sided limits equal $5 = f(2)$, so $f$ is continuous at $x = 2$.",
-          "explanation": "(a) $= 5$.; (b) $= 5$.; (c) Yes — both one-sided limits equal $5 = f(2)$, so $f$ is continuous at $x = 2$."
+          "explanation": "(a) $= 5$.; (b) $= 5$.; (c) Yes — both one-sided limits equal $5 = f(2)$, so $f$ is continuous at $x = 2$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "The piecewise function $f(x) = kx + 1$ for $x \\leq 3$, and $f(x) = x^2 - 2$ for $x > 3$, is continuous at $x = 3$. Find the value of $k$.",
@@ -190,7 +221,15 @@
           "target": "The Extreme Value Theorem (a continuity consequence)",
           "cross_lesson": "11.01 Sequences and Series",
           "answer": "Apply the Leibniz Rule with upper limit $u(x) = x^3 \\Rightarrow u'(x) = 3x^2$ and lower limit $v(x) = \\cos x \\Rightarrow v'(x) = -\\sin x$: $\\frac{dy}{dx} = \\sqrt{1 - (x^3)^2} \\cdot (3x^2) - \\sqrt{1 - (\\cos x)^2} \\cdot (-\\sin x).$ Simplify trigonometric terms with $\\sqrt{1 - \\cos^2 x} = \\sqrt{\\sin^2 x} = |\\sin x|$: $\\frac{dy}{dx} = \\mathbf{3x^2 \\sqrt{1 - x^6} + |\\sin x|\\sin x}.$",
-          "explanation": "Apply the Leibniz Rule with upper limit $u(x) = x^3 \\Rightarrow u'(x) = 3x^2$ and lower limit $v(x) = \\cos x \\Rightarrow v'(x) = -\\sin x$: $\\frac{dy}{dx} = \\sqrt{1 - (x^3)^2} \\cdot (3x^2) - \\sqrt{1 - (\\cos x)^2} \\cdot (-\\sin x).$ Simplify trigonometric terms with $\\sqrt{1 - \\cos^2 x} = \\sqrt{\\sin^2 x} = |\\sin x|$: $\\frac{dy}{dx} = \\mathbf{3x^2 \\sqrt{1 - x^6} + |\\sin x|\\sin x}.$"
+          "explanation": "Apply the Leibniz Rule with upper limit $u(x) = x^3 \\Rightarrow u'(x) = 3x^2$ and lower limit $v(x) = \\cos x \\Rightarrow v'(x) = -\\sin x$: $\\frac{dy}{dx} = \\sqrt{1 - (x^3)^2} \\cdot (3x^2) - \\sqrt{1 - (\\cos x)^2} \\cdot (-\\sin x).$ Simplify trigonometric terms with $\\sqrt{1 - \\cos^2 x} = \\sqrt{\\sin^2 x} = |\\sin x|$: $\\frac{dy}{dx} = \\mathbf{3x^2 \\sqrt{1 - x^6} + |\\sin x|\\sin x}.$",
+          "figure": {
+            "type": "sinusoid",
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 1 sin(x)"
+          }
         },
         {
           "q": "Level 1 · FoundationsFind $h'(2)$ given the accumulation function $h(x) = \\int_0^{x^2} \\frac{t}{t + 1}\\,dt$.",

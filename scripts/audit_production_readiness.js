@@ -78,7 +78,7 @@ bankFiles.forEach(file => {
   });
 });
 
-audit(`Total question bank volume exceeds 50,000 verified items and every bank has >= 1,200 questions (Total: ${totalQuestions.toLocaleString()})`, () => {
+audit(`Total question bank volume exceeds 50,000 verified items and every bank has >= 1,200 questions and >= 240 figures (Total: ${totalQuestions.toLocaleString()})`, () => {
   assert.ok(totalQuestions >= 50000, `Expected >= 50,000 questions, got ${totalQuestions}`);
   bankFiles.forEach(file => {
     const bankName = file.replace('.json', '');
@@ -87,6 +87,8 @@ audit(`Total question bank volume exceeds 50,000 verified items and every bank h
       ? data.pool
       : (data.easy || []).concat(data.medium || []).concat(data.hard || []);
     assert.ok(pool.length >= 1200, `Bank ${bankName} must have >= 1,200 questions, found ${pool.length}`);
+    const figs = pool.filter(q => q && (q.fig || q.figure)).length;
+    assert.ok(figs >= 240, `Bank ${bankName} must have >= 240 figures, found ${figs}`);
   });
 });
 
@@ -257,6 +259,13 @@ audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chap
     const dlDir = path.join(__dirname, '..', 'public', 'downloads', t);
     const wsFiles = fs.existsSync(dlDir) ? fs.readdirSync(dlDir).filter(f => f.endsWith('-worksheet.pdf')) : [];
     assert.ok(wsFiles.length >= 8, `Track ${t} must have >= 8 printable PDF worksheets in public/downloads/${t}/, found ${wsFiles.length}`);
+    const fullExamFiles = fs.existsSync(dlDir) ? fs.readdirSync(dlDir).filter(f => f.endsWith('-exam.html')) : [];
+    assert.ok(fullExamFiles.length >= 10, `Track ${t} must have >= 10 printable full exams in public/downloads/${t}/, found ${fullExamFiles.length}`);
+    const manifestPath = path.join(dlDir, 'manifest.json');
+    assert.ok(fs.existsSync(manifestPath), `manifest.json must exist in public/downloads/${t}/`);
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    const manifestFullExams = manifest.filter(m => m && m.isFullExam).length;
+    assert.ok(manifestFullExams >= 10, `Track ${t} manifest.json must have >= 10 isFullExam entries, found ${manifestFullExams}`);
   });
   assert.ok(totalChapters >= 302, `Expected >= 302 chapters across 31 tracks, found ${totalChapters}`);
 });

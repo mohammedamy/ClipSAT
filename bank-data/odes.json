@@ -25,7 +25,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f''(x) - 39f'(x) + 350f(x) = 0\\).",
         "From \\(\\lambda^2 - 39\\lambda + 350 = 0\\), the sum of roots is \\(39\\).",
         "Apply this step to \\(39\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0002",
@@ -160,7 +191,26 @@
         "We are given the differential equation \\( y'' - xy = 0 \\) and assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\).",
         "Ewline So the equation is \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\).",
         "Ewline Thus, the recurrence relation is \\(c_{k+2} = \\frac{c_{k-1}}{(k+2)(k+1)}\\) for \\(k \\geq 1\\). Replacing \\(k\\) with \\(n\\), we get \\(c_{n+2} = \\frac{c_{n-1}}{(n+2)(n+1)}\\) for \\(n \\geq 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0007",
@@ -297,7 +347,26 @@
         "Solve \\(\\dfrac{dP}{dr} = 34r\\) over the specified interval using reference angles and quadrant symmetry.",
         "Integrating gives \\( P(r) = 17r^2 + 8 \\).",
         "Count the total number of distinct solutions that lie within the given domain."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0012",
@@ -432,7 +501,26 @@
         "The given system can be written in matrix form as \\( \\dfrac{d\\mathbf{x}}{dt} = A\\mathbf{x} \\), where \\( A = \\begin{pmatrix} -1 & 2 \\\\ 3 & -2 \\end{pmatrix} \\).",
         "To find the eigenvalues \\( \\lambda \\), we solve the characteristic equation \\( \\det(A - \\lambda I) = 0 \\). \\( \\det \\begin{pmatrix} -1-\\lambda & 2 \\\\ 3 & -2-\\lambda \\end{pmatrix} = 0 \\).",
         "Since the problem states \\(\\lambda_1 < \\lambda_2\\), we have \\(\\lambda_1 = -4\\) and \\(\\lambda_2 = 1\\). The question asks for \\(\\lambda_2\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0017",
@@ -571,7 +659,26 @@
         "Separable: \\(\\frac{dy}{y} = -3\\,dt\\).",
         "Apply the next algebraic step: \\(\\ln|y| = -3t + C\\). Use the simplified form: \\(y(t) = y(0)e^{-3t}\\).",
         "Using \\(y(0) = 50\\) yields \\(y(t) = 50e^{-3t}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -708,7 +815,26 @@
         "Evaluating at \\( (18, 8) \\) gives.",
         "Set up the numerical expression: \\(16(18) - 3(8)\\).",
         "Evaluate \\(16(18) - 3(8)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -844,7 +970,26 @@
         "The characteristic equation for the differential equation \\(y'' - 3y' + 2y = 0\\) is \\(r^2 - 3r + 2 = 0\\).",
         "Factoring this quadratic equation gives \\((r-1)(r-2) = 0\\). The roots are \\(r_1 = 1\\) and \\(r_2 = 2\\). Since the roots are real and distinct, the general solution is of the form \\(y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}\\).",
         "Substituting the roots, we get \\(y(x) = c_1 e^x + c_2 e^{2x}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0032",
@@ -979,7 +1124,26 @@
         "We are given the differential equation \\( y'' - y = \\sin x \\) and a proposed particular solution \\( y_p(x) = A \\cos x + B \\sin x \\). We need to find the derivatives of \\( y_p(x) \\) and substitute them into the differential equation.",
         "First derivative: \\( y_p'(x) = -A \\sin x + B \\cos x \\). Second derivative: \\( y_p''(x) = -A \\cos x - B \\sin x \\).",
         "Therefore, the values of the constants are \\(A = 0\\) and \\(B\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -1115,7 +1279,26 @@
         "The given differential equation is separable: \\(\\frac{dy}{y^2 - 1} = kx \\, dx\\).",
         "Integrating both sides: \\(\\int \\frac{dy}{y^2 - 1} = \\int kx \\, dx\\) Using partial fractions for the left side, \\(\\frac{1}{y^2 - 1} = \\frac{1}{2} \\left( \\frac{1}{y-1} - \\frac{1}{y+1} \\right)\\).",
         "Solve for \\(k\\): \\(k = \\frac{1}{3} \\ln\\left(\\frac{3}{2}\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -1253,7 +1436,26 @@
         "Separable: \\(y(t) = y(0)e^{kt} = 10e^{kt}\\).",
         "From \\(y(2) = 10e^{2k} = 40\\), we get \\(e^{2k} = 4 \\implies e^k\\).",
         "Therefore, \\(y(3) = 10(e^k)^3 = 10(2^3)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -1393,7 +1595,26 @@
         "Separable: \\(e^y\\,dy = x\\,dx\\).",
         "Integrating gives \\(e^y = \\frac{1}{2}x^2 + C\\). Using \\(y(0) = 0\\) yields \\(e^0 = 1 = C\\). Thus \\(e^y = \\frac{1}{2}x^2 + 1 \\implies y = \\ln\\left(\\frac{1}{2}x^2 + 1\\right)\\).",
         "At \\(x = 2\\), \\(y(2) = \\ln\\left(\\frac{1}{2}(4) + 1\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -1531,7 +1752,26 @@
         "Separable: \\(\\frac{dy}{\\sqrt{1 - y^2}} = x\\,dx\\).",
         "Integrating gives \\(\\arcsin(y) = \\frac{1}{2}x^2 + C\\). Using \\(y(0) = 0\\) gives \\(C = 0\\), so \\(y = \\sin\\left(\\frac{1}{2}x^2\\right)\\).",
         "At \\(x = \\sqrt{\\pi/3}\\), \\(\\frac{1}{2}x^2 = \\frac{\\pi}{6}\\), and \\(y = \\sin(\\pi/6)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0057",
@@ -1666,7 +1906,26 @@
         "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), where \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}\\).",
         "To find the eigenvalues \\(\\lambda\\), we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix. \\(\\det \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 2-\\lambda \\end{pmatrix} = 0\\).",
         "The eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2\\). The larger eigenvalue is 4."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0062",
@@ -1804,7 +2063,26 @@
         "Separable: \\(y\\,dy = \\frac{x}{x^2 + 1}\\,dx\\).",
         "Integrating gives \\(\\frac{1}{2}y^2 = \\frac{1}{2}\\ln(x^2 + 1) + C_1 \\implies y^2 = \\ln(x^2 + 1) + C\\). Using \\(y(0) = 2\\) yields \\(4 = \\ln(1) + C \\implies C = 4\\). Thus \\(y^2 = \\ln(x^2 + 1) + 4\\).",
         "At \\(x = \\sqrt{3}\\), \\(x^2 + 1 = 4\\), so \\(y(\\sqrt{3}) = \\sqrt{\\ln 4 + 4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0067",
@@ -1943,7 +2221,26 @@
         "Separable: \\(\\frac{dy}{\\sqrt{1 - y^2}} = \\frac{x}{1 + x^2}\\,dx\\).",
         "Integrating gives \\(\\arcsin(y) = \\frac{1}{2}\\ln(1 + x^2) + C\\). Using \\(y(0) = 0\\) gives \\(\\arcsin(0) = 0 = C\\). Thus \\(y = \\sin\\left(\\frac{1}{2}\\ln(1 + x^2)\\right)\\).",
         "At \\(x = 1\\), \\(y(1) = \\sin\\left(\\frac{1}{2}\\ln 2\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -2082,7 +2379,38 @@
         "Start by examining the given mathematical expression in the problem: \\(p''(t) - 41p'(t) + 210p(t) = 0\\).",
         "From \\(\\lambda^2 - 41\\lambda + 210 = 0\\), the sum of roots is \\(41\\).",
         "Apply this step to \\(41\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0077",
@@ -2221,7 +2549,26 @@
         "Solve \\(\\dfrac{dS}{db} = 42b\\) over the specified interval using reference angles and quadrant symmetry.",
         "Integrating gives \\( S(b) = 21b^2 + 16 \\).",
         "Count the total number of distinct solutions that lie within the given domain."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "id": "odes-0082",
@@ -2357,7 +2704,26 @@
         "Separating variables gives \\( 2y\\,dy = x^2\\,dx \\).",
         "Integrating both sides yields: \\(y^2 = \\frac{x^3}{3} + C\\). Substituting \\( (2, \\sqrt{5}) \\) gives \\(5 = \\frac{8}{3} + C \\implies C\\).",
         "Since \\(y > 0\\), \\(y = \\sqrt{\\frac{x^3}{3} + \\frac{7}{3}}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -2497,7 +2863,26 @@
         "Separable: \\(\\frac{y}{y^2 + 1}\\,dy = \\frac{1}{x^2 + 4}\\,dx\\).",
         "Integrating gives \\(\\frac{1}{2}\\ln(y^2 + 1) = \\frac{1}{2}\\arctan(x/2) + C_1 \\implies \\ln(y^2 + 1) = \\arctan(x/2) + C\\). Using \\(y(0) = 1\\) gives \\(\\ln 2 = \\arctan(0) + C \\implies C = \\ln 2\\).",
         "Thus \\(\\ln(y^2 + 1) = \\arctan(x/2) + \\ln 2 \\implies y^2 + 1 = 2e^{\\arctan(x/2)} \\implies y^2 = 2e^{\\arctan(x/2)} - 1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -2637,7 +3022,26 @@
         "Substituting \\( s = 9 \\) gives.",
         "Set up the numerical expression: \\(\\frac{70}{9 - 8}\\).",
         "Evaluate \\(\\frac{70}{9 - 8}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -2777,7 +3181,26 @@
         "Separable: \\(y^{-1/2}\\,dy = \\frac{dx}{x \\ln x}\\).",
         "Integrating gives \\(2\\sqrt{y} = \\ln(\\ln x) + C\\). Using \\(y(e) = 4\\) yields \\(2(2) = 4 = \\ln(\\ln e) + C = 0 + C \\implies C = 4\\). So \\(2\\sqrt{y} = \\ln(\\ln x) + 4 \\implies \\sqrt{y} = \\frac{1}{2}\\ln(\\ln x) + 2\\).",
         "At \\(x = e^4\\), \\(\\ln(\\ln e^4) = \\ln 4 = 2\\ln 2\\), so \\(\\sqrt{y} = \\ln 2 + 2 \\implies y = (2 + \\ln 2)^2\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -2917,7 +3340,26 @@
         "Separable: \\(3y^2\\,dy = \\sec^2 x\\,dx\\).",
         "Integrating gives \\(y^3 = \\tan x + C\\). Using \\(y(0) = 1\\) yields \\(1 = 0 + C \\implies C = 1\\). Thus \\(y^3 = \\tan x + 1\\).",
         "Setting \\(y = 2\\) gives \\(8 = \\tan x + 1 \\implies \\tan x = 7 \\implies x = \\arctan 7\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3057,7 +3499,26 @@
         "Evaluating at \\( (7, 17) \\) gives.",
         "Set up the numerical expression: \\(4(7) - 5(17)\\).",
         "Evaluate \\(4(7) - 5(17)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3197,7 +3658,26 @@
         "Separable: \\(N(t) = N_0 (1/2)^{t/5730}\\).",
         "If \\(65\\%\\) has decayed, \\(35\\%\\) remains: \\(N(t) = 0.35 N_0 = \\frac{7}{20} N_0\\). Then \\((1/2)^{t/5730} = \\frac{7}{20}\\).",
         "Taking logarithms: \\(-\\frac{t}{5730}\\ln 2 = \\ln(7/20) = -\\ln(20/7) \\implies t = 5730 \\frac{\\ln(20/7)}{\\ln 2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3337,7 +3817,26 @@
         "Solve \\(\\dfrac{du}{ds} = 10s\\) over the specified interval using reference angles and quadrant symmetry.",
         "Integrating gives \\( u(s) = 5s^2 + 25 \\).",
         "Count the total number of distinct solutions that lie within the given domain."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3477,7 +3976,26 @@
         "Solve \\(\\dfrac{dh}{du} = 24u\\) over the specified interval using reference angles and quadrant symmetry.",
         "Integrating gives \\( h(u) = 12u^2 + 21 \\).",
         "Count the total number of distinct solutions that lie within the given domain."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3617,7 +4135,26 @@
         "Substituting \\( s = 4 \\) gives.",
         "Set up the numerical expression: \\(\\frac{168}{4 - 3}\\).",
         "Evaluate \\(\\frac{168}{4 - 3}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3757,7 +4294,26 @@
         "Separable: \\(R(t) = R_0 (1/2)^{t/5730}\\).",
         "Setting \\(R(t) = 3.0\\) and \\(R_0 = 15.0\\) yields \\(\\frac{3.0}{15.0} = \\frac{1}{5} = (1/2)^{t/5730}\\).",
         "Taking logarithms: \\(-\\ln 5 = -\\frac{t}{5730}\\ln 2 \\implies t = 5730 \\frac{\\ln 5}{\\ln 2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -3897,7 +4453,26 @@
         "Separable: \\(T(t) - T_m = (25 - T_m)e^{-kt}\\).",
         "At \\(t = 1\\), \\(15 - T_m = (25 - T_m)e^{-k}\\). At \\(t = 2\\), \\(9 - T_m = (25 - T_m)e^{-2k}\\).",
         "Squaring the first ratio gives \\((15 - T_m)^2 = (25 - T_m)(9 - T_m) \\implies 225 - 30T_m + T_m^2 = 225 - 34T_m + T_m^2 \\implies 4T_m = 0\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4037,7 +4612,26 @@
         "Separable: \\(\\cosh y\\,dy = x\\,dx\\).",
         "Integrating gives \\(\\sinh y = \\frac{1}{2}x^2 + C\\). Using \\(y(0) = 0\\) yields \\(\\sinh(0) = 0 = C\\). Thus \\(\\sinh y = \\frac{1}{2}x^2\\). At \\(x = 2\\), \\(\\sinh y = 2\\).",
         "Using the identity \\(\\text{arsinh}(u) = \\ln(u + \\sqrt{u^2 + 1})\\), we find \\(y(2) = \\ln(2 + \\sqrt{4 + 1})\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4177,7 +4771,26 @@
         "Separable: \\(\\frac{dy}{1 + y^2} = \\frac{dx}{x^2 - 4} \\implies \\arctan y = \\frac{1}{4}\\ln\\left(\\frac{2 - x}{2 + x}\\right) + C\\).",
         "Blow-up \\(y \\to \\infty\\) occurs when \\(\\arctan y \\to \\frac{\\pi}{2}\\), so \\(\\frac{1}{4}\\ln\\left(\\frac{2 - x}{2 + x}\\right) + \\frac{\\pi}{4} = \\frac{\\pi}{2} \\implies \\ln\\left(\\frac{2 - x}{2 + x}\\right) = \\pi \\implies \\frac{2 - x}{2 + x} = e^\\pi\\).",
         "Solving for \\(x\\): \\(2 - x = 2e^\\pi + xe^\\pi \\implies x(1 + e^\\pi) = 2(1 - e^\\pi) \\implies x = -2\\frac{e^\\pi - 1}{e^\\pi + 1} = -2\\tanh(\\pi/2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4317,7 +4930,26 @@
         "Separable: \\(\\frac{dy}{1 + y^2} = \\frac{dx}{x(1 + \\ln^2 x)}\\).",
         "Substituting \\(u = \\ln x\\), \\(\\int \\frac{du}{1 + u^2} = \\arctan(\\ln x) + C\\). So \\(\\arctan(y) = \\arctan(\\ln x) + C\\). Using \\(y(1) = 0\\) gives \\(\\arctan(0) = \\arctan(0) + C \\implies C = 0\\). Thus \\(y = \\tan(\\arctan(\\ln x)) = \\ln x\\).",
         "At \\(x = e\\), \\(y(e) = \\ln(e)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4457,7 +5089,26 @@
         "Substituting \\( s = 25 \\) gives.",
         "Set up the numerical expression: \\(\\frac{100}{25 - 24}\\).",
         "Evaluate \\(\\frac{100}{25 - 24}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4597,7 +5248,26 @@
         "Set up the initial relation: \\(\\mu = e^{\\int 4\\,dx} = e^{4x}\\).",
         "Multiplying gives \\((y e^{4x})' = 12e^{4x} \\implies y e^{4x} = 3e^{4x} + C \\implies y(x) = 3 + C e^{-4x}\\). Using \\(y(0) = 7\\) gives \\(C = 4\\), so \\(y(x) = 3 + 4e^{-4x}\\).",
         "As \\(x \\to \\infty\\), \\(e^{-4x} \\to 0\\), so \\(\\lim_{x \\to \\infty} y(x)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4737,7 +5407,26 @@
         "Set up the initial relation: \\(\\mu = e^{\\int -\\frac{2}{x}\\,dx} = x^{-2}\\).",
         "Multiplying gives \\((x^{-2} y)' = 1\\). Integrating gives \\(x^{-2} y = x + C \\implies y = x^3 + C x^2\\). Using \\(y(1) = 2\\) gives \\(2 = 1 + C \\implies C = 1\\). Thus \\(y(x) = x^3 + x^2\\).",
         "At \\(x = 3\\), \\(y(3) = 27 + 9\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -4877,7 +5566,26 @@
         "Evaluating at \\( (8, 17) \\) gives.",
         "Set up the numerical expression: \\(18(8) - 3(17)\\).",
         "Evaluate \\(18(8) - 3(17)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5017,7 +5725,26 @@
         "Set up the initial relation: \\(\\mu = e^{\\int 2\\,dx} = e^{2x}\\).",
         "Multiplying gives \\((y e^{2x})' = 4x e^{2x}\\). Integrating by parts yields \\(y e^{2x} = 2x e^{2x} - e^{2x} + C \\implies y(x) = 2x - 1 + C e^{-2x}\\). Using \\(y(0) = 0\\) gives \\(0 = -1 + C \\implies C\\).",
         "Thus \\(y(1) = 2(1) - 1 + e^{-2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5157,7 +5884,26 @@
         "Set up the initial relation: \\(\\mu = e^{\\int -3\\,dx} = e^{-3x}\\).",
         "Multiplying gives \\((y e^{-3x})' = 1\\). Integrating gives \\(y e^{-3x} = x + C \\implies y(x) = (x + C)e^{3x}\\). Using \\(y(0) = -2\\) gives \\(C = -2\\).",
         "Thus \\(y(x) = (x - 2)e^{3x}\\), and \\(y(1) = (1 - 2)e^3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5297,7 +6043,26 @@
         "Standard form: \\(y' - \\frac{3}{x}y = x^3\\).",
         "Integrating factor: \\(\\mu = x^{-3}\\). Multiplying gives \\((x^{-3} y)' = 1\\). Integrating yields \\(x^{-3} y = x + C \\implies y = x^4 + C x^3\\). Using \\(y(1) = 2\\) gives \\(2 = 1 + C \\implies C\\).",
         "Thus \\(y(x) = x^4 + x^3\\), and \\(y(2) = 16 + 8\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5437,7 +6202,26 @@
         "Evaluating at \\( (11, 14) \\) gives.",
         "Set up the numerical expression: \\(5(11) - 1(14)\\).",
         "Evaluate \\(5(11) - 1(14)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5577,7 +6361,26 @@
         "Standard form: \\(y' - \\frac{1}{x}y = 2x^2\\).",
         "Integrating factor: \\(\\mu = x^{-1}\\). Multiplying gives \\((x^{-1} y)' = 2x\\). Integrating yields \\(x^{-1} y = x^2 + C \\implies y = x^3 + C x\\). Using \\(y(1) = 4\\) yields \\(4 = 1 + C \\implies C\\).",
         "Thus \\(y(x) = x^3 + 3x\\), so \\(y(2) = 8 + 6\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5717,7 +6520,26 @@
         "Set up the initial relation: \\(\\mu = e^{\\int 3x^2\\,dx} = e^{x^3}\\).",
         "Multiplying gives \\((y e^{x^3})' = x^2 e^{x^3}\\). Integrating yields \\(y e^{x^3} = \\frac{1}{3}e^{x^3} + C \\implies y(x) = \\frac{1}{3} + C e^{-x^3}\\). Using \\(y(0) = 1\\) yields \\(1 = \\frac{1}{3} + C \\implies C\\).",
         "As \\(x \\to \\infty\\), \\(e^{-x^3} \\to 0\\), so \\(\\lim_{x \\to \\infty} y(x)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5857,7 +6679,26 @@
         "Set up the initial relation: \\(\\mu = e^{\\int -\\cot x\\,dx} = \\csc x\\).",
         "Multiplying gives \\((\\csc x \\cdot y)' = 2x\\). Integrating yields \\(y \\csc x = x^2 + C \\implies y = (x^2 + C)\\sin x\\). Using \\(y(\\pi/2) = 0\\) gives \\(0 = (\\pi^2/4 + C)(1) \\implies C = -\\pi^2/4\\). Thus \\(y(x) = (x^2 - \\pi^2/4)\\sin x\\).",
         "At \\(x = \\pi/6\\), \\(y(\\pi/6) = (\\pi^2/36 - \\pi^2/4)(1/2) = -\\frac{8\\pi^2}{72}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -5997,7 +6838,26 @@
         "Standard form: \\(y' + \\frac{x+1}{x}y = \\frac{e^x}{x}\\).",
         "Integrating factor: \\(\\mu = e^{\\int (1 + 1/x)\\,dx} = x e^x\\). Multiplying gives \\((x e^x y)' = e^{2x}\\). Integrating yields \\(x e^x y = \\frac{1}{2}e^{2x} + C\\). Using \\(y(1) = e/2\\) gives \\(1(e)(e/2) = \\frac{1}{2}e^2 + C \\implies C = 0\\).",
         "Thus \\(y(x) = \\frac{e^x}{2x}\\), so \\(y(2) = \\frac{e^2}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6137,7 +6997,26 @@
         "Substituting values: \\(10 q' + 20 q = 50 \\implies q' + 2q\\).",
         "Integrating factor: \\(\\mu = e^{2t}\\). Solving gives \\(q(t) = 2.5 + C e^{-2t}\\). Since \\(q(0) = 0\\), \\(C = -2.5\\), so \\(q(t) = 2.5(1 - e^{-2t})\\). For \\(t = \\frac{1}{2}\\ln 5\\), \\(e^{-2t} = e^{-\\ln 5}\\).",
         "Thus \\(q = 2.5(1 - 0.2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6277,7 +7156,26 @@
         "Evaluating at \\( (16, 20) \\) gives.",
         "Set up the numerical expression: \\(13(16) - 7(20)\\).",
         "Evaluate \\(13(16) - 7(20)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6417,7 +7315,26 @@
         "Set up the initial relation: \\(\\mu = x^2 - 1\\).",
         "Multiplying gives \\(((x^2 - 1)y)' = 4x(x^2 - 1) = 4x^3 - 4x\\). Integrating gives \\((x^2 - 1)y = x^4 - 2x^2 + C\\). Using \\(y(2) = 5\\) gives \\(3(5) = 16 - 8 + C \\implies C\\).",
         "At \\(x = 3\\), \\(8 y(3) = 81 - 18 + 7 = 70 \\implies y(3) = \\frac{70}{8}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6557,7 +7474,26 @@
         "The salt mass obeys \\(S' + \\frac{6}{300}S = 6(0.1) \\implies S' + 0.02S\\).",
         "The steady-state amount of salt is \\(S_{\\infty} = \\frac{0.6}{0.02}\\).",
         "Since the volume remains \\(300\\text{ L}\\), the limiting concentration is \\(\\frac{30}{300}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6697,7 +7633,26 @@
         "Set up the initial relation: \\(i' + 4i = 20e^{-2t}\\).",
         "Rewrite and simplify to obtain: \\(\\mu = e^{4t}\\). Multiplying gives \\((i e^{4t})' = 20e^{2t} \\implies i e^{4t} = 10e^{2t} + C\\). With \\(i(0) = 0\\), \\(C = -10\\). Thus \\(i(t) = 10(e^{-2t} - e^{-4t})\\). At \\(t = \\ln 2\\), \\(e^{-2t} = 1/4\\) and \\(e^{-4t} = 1/16\\).",
         "Thus \\(i = 10(1/4 - 1/16)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6837,7 +7792,26 @@
         "Set up the initial relation: \\(\\mu = e^x\\).",
         "Multiplying gives \\((y e^x)' = x\\). Integrating yields \\(y e^x = \\frac{1}{2}x^2 + C\\). Using \\(y(0) = 1\\) yields \\(C = 1\\). Thus \\(y(x) = (\\frac{1}{2}x^2 + 1)e^{-x}\\).",
         "At \\(x = 2\\), \\(y(2) = (2 + 1)e^{-2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -6977,7 +7951,26 @@
         "Set up the initial relation: \\(\\mu = x\\).",
         "Multiplying gives \\((x y)' = 3x^{5/2}\\). Integrating yields \\(x y = \\frac{6}{7}x^{7/2} + C\\). Using \\(y(1) = 2\\) gives \\(2 = \\frac{6}{7} + C \\implies C\\).",
         "At \\(x = 4\\), \\(4 y(4) = \\frac{6}{7}(128) + \\frac{8}{7} = \\frac{776}{7}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7117,7 +8110,26 @@
         "Circuit equation: \\(10q' + 10q = 100\\cos(2t) \\implies q' + q = 10\\cos(2t)\\).",
         "Integrating factor: \\(\\mu = e^t\\). Multiplying gives \\((q e^t)' = 10e^t\\cos(2t)\\). Integrating by parts yields \\(q e^t = 2e^t(\\cos 2t + 2\\sin 2t) + C\\). Using \\(q(0) = 0\\) gives \\(0 = 2(1) + C \\implies C = -2\\). Thus \\(q(t) = 2\\cos(2t) + 4\\sin(2t) - 2e^{-t}\\).",
         "At \\(t = \\pi\\), \\(q(\\pi) = 2\\cos(2\\pi) + 4\\sin(2\\pi) - 2e^{-\\pi}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7257,7 +8269,26 @@
         "Set up the initial relation: \\(V(t) = 200 + 2t = 300 \\implies t\\).",
         "Salt equation: \\(S' + \\frac{2}{t + 100}S = 3\\). Integrating factor: \\(\\mu = (t + 100)^2\\).",
         "The concentration is \\(c = \\frac{370/3}{300}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7397,7 +8428,26 @@
         "Set up the initial relation: \\(V(t) = 100 + 2t\\).",
         "Salt equation: \\(S' + \\frac{1.5}{t + 50}S = 1.5\\). Integrating factor: \\(\\mu = (t + 50)^{3/2}\\).",
         "At \\(t = 50\\), \\(t + 50 = 100\\), so \\(S(50) = 0.6(100) - 10(50/100)^{3/2} = 60 - \\frac{10}{2\\sqrt{2}}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7537,7 +8587,26 @@
         "Set up the initial relation: \\(V(t) = 100 - 2t\\).",
         "Salt equation: \\(S' = 4(1) - 6\\frac{S}{100 - 2t} \\implies S' + \\frac{3}{50 - t}S = 4\\). Integrating factor: \\(\\mu = (50 - t)^{-3}\\).",
         "At \\(t = 25\\), \\(50 - t = 25\\), so \\(S(25) = 2(25) + C(50^3)/8 = 50 - 80/8\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7677,7 +8746,26 @@
         "Circuit equation: \\(5q' + 5q = 10t \\implies q' + q = 2t\\).",
         "Integrating factor: \\(\\mu = e^t\\). Multiplying gives \\((q e^t)' = 2t e^t\\). Integrating gives \\(q e^t = 2(t - 1)e^t + C \\implies q(t) = 2t - 2 + C e^{-t}\\). Using \\(q(0) = 1\\) yields \\(1 = -2 + C \\implies C = 3\\). Thus \\(q(t) = 2t - 2 + 3e^{-t}\\).",
         "Minimizing gives \\(q'(t) = 2 - 3e^{-t} = 0 \\implies e^{-t} = 2/3 \\implies t = \\ln(3/2)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7817,7 +8905,26 @@
         "Circuit equation: \\(5i' + 15i = 60 \\implies i' + 3i\\).",
         "Integrating factor: \\(\\mu = e^{3t}\\). Solving yields \\(i(t) = 4(1 - e^{-3t})\\). The steady-state current is \\(i_{ss} = 4\\text{ A}\\).",
         "Reaching \\(90\\%\\) means \\(i(t) = 3.6\\text{ A} \\implies 4(1 - e^{-3t}) = 3.6 \\implies e^{-3t} = 0.1 \\implies 3t = \\ln 10 \\implies t = \\frac{1}{3}\\ln 10\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -7957,7 +9064,26 @@
         "Notice \\(((x^2 + 1)y)' = 3x^2\\).",
         "Integrating yields \\((x^2 + 1)y = x^3 + C\\). Using \\(y(0) = 2\\) gives \\(C = 2\\), so \\(y(x) = \\frac{x^3 + 2}{x^2 + 1}\\). Differentiating: \\(y'(x) = \\frac{x(x - 1)(x^2 + x + 4)}{(x^2 + 1)^2}\\). The critical points are \\(x = 0\\) (local max) and \\(x = 1\\) (local min).",
         "At \\(x = 1\\), the local minimum value is \\(y(1) = \\frac{1 + 2}{1 + 1}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8097,7 +9223,26 @@
         "For \\(0 \\le t \\le 1\\), \\(i' + 3i = 6 \\implies i(t) = 2(1 - e^{-3t})\\).",
         "At \\(t = 1\\), \\(i(1) = 2(1 - e^{-3})\\). For \\(t > 1\\), \\(i' + 3i = 0 \\implies i(t) = i(1)e^{-3(t - 1)}\\).",
         "At \\(t = 2\\), \\(i(2) = 2(1 - e^{-3})e^{-3}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8237,7 +9382,26 @@
         "Standard form: \\(y' + \\frac{2}{x^2 - 1}y = \\frac{x - 1}{x + 1}\\).",
         "Integrating factor: \\(\\mu = \\frac{x - 1}{x + 1}\\). Multiplying gives \\(\\left(\\frac{x - 1}{x + 1}y\\right)' = \\left(\\frac{x - 1}{x + 1}\\right)^2 = 1 - \\frac{4}{x + 1} + \\frac{4}{(x + 1)^2}\\).",
         "Multiplying by 2 gives \\(y(3) = \\frac{8}{3} + 8\\ln\\left(\\frac{3}{4}\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8377,7 +9541,26 @@
         "Auxiliary: \\( r^2-5r+4=0\\Rightarrow(r-1)(r-4)=0\\Rightarrow r=1,4 \\), so \\( y=C_1e^{x}+C_2e^{4x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1+C_2=0 \\), \\(y'(0) = C_1+4C_2 = 3\\Rightarrow3C_2 = 3\\Rightarrow C_2 = 1,\\,C_1\\).",
         "So \\(y=e^{4x}-e^{x}\\), and \\(y(1)=e^4-e\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8517,7 +9700,26 @@
         "Auxiliary: \\( r^2-2r+5=0\\Rightarrow r=\\dfrac{2\\pm\\sqrt{4-20}}{2}=1\\pm2i \\) — \\( \\alpha=1,\\beta=2 \\), so \\( y=e^{x}(C_1\\cos2x+C_2\\sin2x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=2 \\). \\( y'=e^x[(C_1+2C_2)\\cos2x+(C_2-2C_1)\\sin2x] \\), \\( y'(0)=C_1+2C_2=1\\Rightarrow C_2=-\\tfrac12 \\).",
         "At \\(x=\\pi/2\\): \\(\\cos\\pi=-1,\\sin\\pi=0\\), so \\(y(\\pi/2) = e^{\\pi/2}\\big(2(-1)-\\tfrac12(0)\\big)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8657,7 +9859,26 @@
         "Homogeneous: \\( r^2+1=0\\Rightarrow y_c=C_1\\cos x+C_2\\sin x \\).",
         "No resonance (\\( 2 eq1 \\)): trial \\( A\\cos2x+B\\sin2x \\) gives \\( -3A\\cos2x-3B\\sin2x=3\\cos2x\\Rightarrow A=-1,B=0 \\), so \\( y_p=-\\cos2x \\). \\( y=C_1\\cos x+C_2\\sin x-\\cos2x \\). \\( y(0)=C_1-1=2\\Rightarrow C_1=3 \\). \\( y'(0)=C_2=0 \\).",
         "So \\(y=3\\cos x-\\cos2x\\), and \\(y(\\pi) = 3(-1)-1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8797,7 +10018,26 @@
         "Homogeneous: \\( r^2+4r+4=(r+2)^2=0\\Rightarrow r=-2 \\) (repeated), \\( y_c=(C_1+C_2x)e^{-2x} \\).",
         "The forcing \\( e^{-2x} \\) matches the repeated root, so the trial needs \\( x^2 \\): \\( y_p=Ax^2e^{-2x} \\). Substituting gives \\( 2Ae^{-2x}=e^{-2x}\\Rightarrow A=\\tfrac12 \\), so \\( y_p=\\tfrac12x^2e^{-2x} \\). With both conditions zero, \\( C_1=C_2=0 \\).",
         "So \\(y=\\tfrac12x^2e^{-2x}\\), and \\(y(2) = \\tfrac12(4)e^{-4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -8937,7 +10177,26 @@
         "Auxiliary equation \\( r^2-1=0 \\) has roots \\( r=-1,1 \\), so \\( y=C_1e^{-x}+C_2e^{x} \\).",
         "Solving \\( y(0)=C_1+C_2=0 \\) and \\( y'(0)=-C_1+C_2=2 \\) gives \\( C_1=-1 \\), \\( C_2=1 \\).",
         "So \\(y=-e^{-x}+e^{x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9077,7 +10336,26 @@
         "Auxiliary equation \\( r^2+r-2=0 \\) has roots \\( r=1,-2 \\), so \\( y=C_1e^{x}+C_2e^{-2x} \\).",
         "Solving \\( y(0)=C_1+C_2=0 \\) and \\( y'(0)=C_1-2C_2=6 \\) gives \\( C_1=2 \\), \\( C_2=-2 \\).",
         "So \\(y=2e^{x}-2e^{-2x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9217,7 +10495,26 @@
         "Auxiliary equation \\( r^2+r-2=0 \\) has roots \\( r=-2,1 \\), so \\( y=C_1e^{-2x}+C_2e^{x} \\).",
         "Solving \\( y(0)=C_1+C_2=3 \\) and \\( y'(0)=-2C_1+C_2=0 \\) gives \\( C_1=1 \\), \\( C_2=2 \\).",
         "So \\(y=e^{-2x}+2e^{x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9357,7 +10654,26 @@
         "Auxiliary equation \\( r^2+6r+9=0\\Rightarrow(r+3)^2=0\\Rightarrow r=-3 \\) (repeated), so \\( y=(C_1+C_2x)e^{-3x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=1 \\). \\(y'(0) = C_2-3C_1 = -2\\Rightarrow C_2\\).",
         "So \\(y=(1+x)e^{-3x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9497,7 +10813,26 @@
         "Auxiliary equation \\( r^2+4r+4=0\\Rightarrow(r+2)^2=0\\Rightarrow r=-2 \\) (repeated), so \\( y=(C_1+C_2x)e^{-2x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=3 \\). \\(y'(0) = C_2-2C_1 = -5\\Rightarrow C_2\\).",
         "So \\(y=(3+x)e^{-2x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9637,7 +10972,26 @@
         "Auxiliary equation \\( r^2+4r+4=0\\Rightarrow(r+2)^2=0\\Rightarrow r=-2 \\) (repeated), so \\( y=(C_1+C_2x)e^{-2x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-2 \\). \\(y'(0) = C_2-2C_1 = 3\\Rightarrow C_2\\).",
         "So \\(y=(-2-x)e^{-2x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9777,7 +11131,26 @@
         "Auxiliary equation \\( r^2+1=0 \\) has roots \\( r=0\\pm1i \\), so \\( y=C_1\\cos x+C_2\\sin x \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-3 \\). \\(y'(0) = C_2 = -3\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\pi\\) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -9917,7 +11290,26 @@
         "Auxiliary equation \\( r^2+9=0 \\) has roots \\( r=0\\pm3i \\), so \\( y=C_1\\cos3x+C_2\\sin3x \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=3 \\). \\(y'(0) = 3C_2 = -9\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{6}\\) (where \\(3x=\\frac{\\pi}{2}\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10057,7 +11449,26 @@
         "Auxiliary equation \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\), so \\( y=C_1\\cos2x+C_2\\sin2x \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-2 \\). \\(y'(0) = 2C_2 = 6\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{2}\\) (where \\(2x=\\pi\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10197,7 +11608,26 @@
         "Auxiliary equation \\( r^2+5r-6=0 \\) has roots \\( r=-6,1 \\), so \\( y=C_1e^{-6x}+C_2e^{x} \\).",
         "Solving \\( y(0)=C_1+C_2=0 \\) and \\( y'(0)=-6C_1+C_2=-28 \\) gives \\( C_1=4 \\), \\( C_2=-4 \\).",
         "So \\(y=4e^{-6x}-4e^{x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10337,7 +11767,26 @@
         "Auxiliary equation \\( r^2+4r+3=0 \\) has roots \\( r=-1,-3 \\), so \\( y=C_1e^{-x}+C_2e^{-3x} \\).",
         "Solving \\( y(0)=C_1+C_2=5 \\) and \\( y'(0)=-C_1-3C_2=-9 \\) gives \\( C_1=3 \\), \\( C_2=2 \\).",
         "So \\(y=3e^{-x}+2e^{-3x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10477,7 +11926,26 @@
         "Auxiliary equation \\( r^2-25=0 \\) has roots \\( r=5,-5 \\), so \\( y=C_1e^{5x}+C_2e^{-5x} \\).",
         "Solving \\( y(0)=C_1+C_2=7 \\) and \\( y'(0)=5C_1-5C_2=-5 \\) gives \\( C_1=3 \\), \\( C_2=4 \\).",
         "So \\(y=3e^{5x}+4e^{-5x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10617,7 +12085,26 @@
         "Auxiliary equation \\( r^2+5r-6=0 \\) has roots \\( r=1,-6 \\), so \\( y=C_1e^{x}+C_2e^{-6x} \\).",
         "Solving \\( y(0)=C_1+C_2=3 \\) and \\( y'(0)=C_1-6C_2=10 \\) gives \\( C_1=4 \\), \\( C_2=-1 \\).",
         "So \\(y=4e^{x}-e^{-6x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10757,7 +12244,26 @@
         "Auxiliary equation \\( r^2-6r+9=0\\Rightarrow(r-3)^2=0\\Rightarrow r=3 \\) (repeated), so \\( y=(C_1+C_2x)e^{3x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=1 \\). \\(y'(0) = C_2+3C_1 = 2\\Rightarrow C_2\\).",
         "So \\(y=(1-x)e^{3x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -10897,7 +12403,26 @@
         "Auxiliary equation \\( r^2+6r+9=0\\Rightarrow(r+3)^2=0\\Rightarrow r=-3 \\) (repeated), so \\( y=(C_1+C_2x)e^{-3x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=3 \\). \\(y'(0) = C_2-3C_1 = -7\\Rightarrow C_2\\).",
         "So \\(y=(3+2x)e^{-3x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11037,7 +12562,26 @@
         "Auxiliary equation \\( r^2+8r+16=0\\Rightarrow(r+4)^2=0\\Rightarrow r=-4 \\) (repeated), so \\( y=(C_1+C_2x)e^{-4x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-2 \\). \\(y'(0) = C_2-4C_1 = 5\\Rightarrow C_2\\).",
         "So \\(y=(-2-3x)e^{-4x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11177,7 +12721,26 @@
         "Auxiliary equation \\( r^2+2r+10=0 \\) has roots \\( r=-1\\pm3i \\), so \\( y=e^{-x}(C_1\\cos3x+C_2\\sin3x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-3 \\). \\(y'(0) = -C_1+3C_2 = -3\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{9}\\) (where \\(3x=\\frac{\\pi}{3}\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11317,7 +12880,26 @@
         "Auxiliary equation \\( r^2-4r+8=0 \\) has roots \\( r=2\\pm2i \\), so \\( y=e^{2x}(C_1\\cos2x+C_2\\sin2x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-1 \\). \\(y'(0) = 2C_1+2C_2 = 2\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{6}\\) (where \\(2x=\\frac{\\pi}{3}\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11457,7 +13039,26 @@
         "Auxiliary equation \\( r^2+2r+5=0 \\) has roots \\( r=-1\\pm2i \\), so \\( y=e^{-x}(C_1\\cos2x+C_2\\sin2x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-2 \\). \\(y'(0) = -C_1+2C_2 = 6\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{12}\\) (where \\(2x=\\frac{\\pi}{6}\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11597,7 +13198,26 @@
         "Auxiliary equation \\( r^2+2r-63=0 \\) has roots \\( r=7,-9 \\), so \\( y=C_1e^{7x}+C_2e^{-9x} \\).",
         "Solving \\( y(0)=C_1+C_2=-7 \\) and \\( y'(0)=7C_1-9C_2=-1 \\) gives \\( C_1=-4 \\), \\( C_2=-3 \\).",
         "So \\(y=-4e^{7x}-3e^{-9x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11737,7 +13357,26 @@
         "Auxiliary equation \\( r^2-14r+45=0 \\) has roots \\( r=9,5 \\), so \\( y=C_1e^{9x}+C_2e^{5x} \\).",
         "Solving \\( y(0)=C_1+C_2=1 \\) and \\( y'(0)=9C_1+5C_2=25 \\) gives \\( C_1=5 \\), \\( C_2=-4 \\).",
         "So \\(y=5e^{9x}-4e^{5x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -11877,7 +13516,26 @@
         "Auxiliary equation \\( r^2+14r+45=0 \\) has roots \\( r=-5,-9 \\), so \\( y=C_1e^{-5x}+C_2e^{-9x} \\).",
         "Solving \\( y(0)=C_1+C_2=8 \\) and \\( y'(0)=-5C_1-9C_2=-52 \\) gives \\( C_1=5 \\), \\( C_2=3 \\).",
         "So \\(y=5e^{-5x}+3e^{-9x}\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12017,7 +13675,26 @@
         "Auxiliary equation \\( r^2+10r+25=0\\Rightarrow(r+5)^2=0\\Rightarrow r=-5 \\) (repeated), so \\( y=(C_1+C_2x)e^{-5x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-4 \\). \\(y'(0) = C_2-5C_1 = 17\\Rightarrow C_2\\).",
         "So \\(y=(-4-3x)e^{-5x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12157,7 +13834,26 @@
         "Auxiliary equation \\( r^2+14r+49=0\\Rightarrow(r+7)^2=0\\Rightarrow r=-7 \\) (repeated), so \\( y=(C_1+C_2x)e^{-7x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=3 \\). \\(y'(0) = C_2-7C_1 = -17\\Rightarrow C_2\\).",
         "So \\(y=(3+4x)e^{-7x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12297,7 +13993,26 @@
         "Auxiliary equation \\( r^2-12r+36=0\\Rightarrow(r-6)^2=0\\Rightarrow r=6 \\) (repeated), so \\( y=(C_1+C_2x)e^{6x} \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=3 \\). \\(y'(0) = C_2+6C_1 = 23\\Rightarrow C_2\\).",
         "So \\(y=(3+5x)e^{6x}\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12437,7 +14152,26 @@
         "Auxiliary equation \\( r^2+4r+13=0 \\) has roots \\( r=-2\\pm3i \\), so \\( y=e^{-2x}(C_1\\cos3x+C_2\\sin3x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-3 \\). \\(y'(0) = -2C_1+3C_2 = -6\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{9}\\) (where \\(3x=\\frac{\\pi}{3}\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12577,7 +14311,26 @@
         "Auxiliary equation \\( r^2+6r+10=0 \\) has roots \\( r=-3\\pm1i \\), so \\( y=e^{-3x}(C_1\\cos x+C_2\\sin x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=3 \\). \\(y'(0) = -3C_1+C_2 = -6\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{4}\\) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12717,7 +14470,26 @@
         "Auxiliary equation \\( r^2+4r+8=0 \\) has roots \\( r=-2\\pm2i \\), so \\( y=e^{-2x}(C_1\\cos2x+C_2\\sin2x) \\).",
         "Rewrite and simplify to obtain: \\( y(0)=C_1=-4 \\). \\(y'(0) = -2C_1+2C_2 = 14\\Rightarrow C_2\\).",
         "Evaluating at \\(x=\\frac{\\pi}{6}\\) (where \\(2x=\\frac{\\pi}{3}\\)) gives the result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12857,7 +14629,26 @@
         "Homogeneous: \\( r^2+3r+2=0 \\) has roots \\( r=-1,-2 \\), so \\( y_c=C_1e^{-x}+C_2e^{-2x} \\).",
         "Forcing \\( 2 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=1 \\).",
         "With \\(C_1=1\\), \\(C_2=-2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -12997,7 +14788,26 @@
         "Homogeneous: \\( r^2-1=0 \\) has roots \\( r=-1,1 \\), so \\( y_c=C_1e^{-x}+C_2e^{x} \\).",
         "Forcing \\( -x \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=x \\).",
         "With \\(C_1=1\\), \\(C_2=-3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13137,7 +14947,26 @@
         "Homogeneous: \\( r^2-1=0 \\) has roots \\( r=1,-1 \\), so \\( y_c=C_1e^{x}+C_2e^{-x} \\).",
         "Forcing \\( -x \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=x \\).",
         "With \\(C_1=2\\), \\(C_2=-2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13277,7 +15106,26 @@
         "Homogeneous: \\( r^2-r-6=0 \\) has roots \\( r=-2,3 \\), so \\( y_c=C_1e^{-2x}+C_2e^{3x} \\).",
         "Forcing \\( 14e^{-4x} \\), and \\( -4 \\) isn't a root (no resonance): trial \\( y_p=Ae^{-4x} \\) gives \\( y_p=e^{-4x} \\).",
         "With \\(C_1=-1\\), \\(C_2=3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13417,7 +15265,26 @@
         "Homogeneous: \\( r^2-3r+2=0 \\) has roots \\( r=1,2 \\), so \\( y_c=C_1e^{x}+C_2e^{2x} \\).",
         "Forcing \\( -6e^{4x} \\), and \\( 4 \\) isn't a root (no resonance): trial \\( y_p=Ae^{4x} \\) gives \\( y_p=-e^{4x} \\).",
         "With \\(C_1=2\\), \\(C_2=1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13557,7 +15424,26 @@
         "Homogeneous: \\( r^2+r-2=0 \\) has roots \\( r=1,-2 \\), so \\( y_c=C_1e^{x}+C_2e^{-2x} \\).",
         "Forcing \\( 4e^{-3x} \\), and \\( -3 \\) isn't a root (no resonance): trial \\( y_p=Ae^{-3x} \\) gives \\( y_p=e^{-3x} \\).",
         "With \\(C_1=1\\), \\(C_2=2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13697,7 +15583,26 @@
         "Homogeneous: \\( r^2+r-6=0 \\) has roots \\( r=2,-3 \\), so \\( y_c=C_1e^{2x}+C_2e^{-3x} \\).",
         "Forcing \\( -14e^{4x} \\), and \\( 4 \\) isn't a root (no resonance): trial \\( y_p=Ae^{4x} \\) gives \\( y_p=-e^{4x} \\).",
         "With \\(C_1=1\\), \\(C_2=1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13837,7 +15742,26 @@
         "Homogeneous: \\( r^2+9=0 \\) has roots \\( r=0\\pm3i \\), so \\( y_c=C_1\\cos3x+C_2\\sin3x \\).",
         "Forcing \\( -256\\sin5x \\) at frequency \\( 5 \\), homogeneous frequency \\( 3 \\) (no resonance): trial \\( y_p=A\\cos5x+B\\sin5x \\) gives \\( y_p=16\\sin{\\left(5x\\right)} \\).",
         "With \\(C_1=-1\\), \\(C_2=3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{6})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -13977,7 +15901,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\), so \\( y_c=C_1\\cos2x+C_2\\sin2x \\).",
         "Forcing \\( 1024\\sin6x \\) at frequency \\( 6 \\), homogeneous frequency \\( 2 \\) (no resonance): trial \\( y_p=A\\cos6x+B\\sin6x \\) gives \\( y_p=-32\\sin{\\left(6x\\right)} \\).",
         "With \\(C_1=2\\), \\(C_2=-2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{2})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14117,7 +16060,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\), so \\( y_c=C_1\\cos2x+C_2\\sin2x \\).",
         "Forcing \\( 1024\\sin6x \\) at frequency \\( 6 \\), homogeneous frequency \\( 2 \\) (no resonance): trial \\( y_p=A\\cos6x+B\\sin6x \\) gives \\( y_p=-32\\sin{\\left(6x\\right)} \\).",
         "With \\(C_1=-3\\), \\(C_2=2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{4})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14257,7 +16219,26 @@
         "Homogeneous: \\( r^2-r-2=0 \\) has roots \\( r=2,-1 \\), so \\( y_c=C_1e^{2x}+C_2e^{-x} \\).",
         "Forcing \\( 8x^2 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=-4x^{2}+4x-6 \\).",
         "With \\(C_1=-1\\), \\(C_2=3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14397,7 +16378,26 @@
         "Homogeneous: \\( r^2+2r-3=0 \\) has roots \\( r=1,-3 \\), so \\( y_c=C_1e^{x}+C_2e^{-3x} \\).",
         "Forcing \\( -27x^2 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=9x^{2}+12x+14 \\).",
         "With \\(C_1=-1\\), \\(C_2=2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14537,7 +16537,26 @@
         "Homogeneous: \\( r^2-r-2=0 \\) has roots \\( r=-1,2 \\), so \\( y_c=C_1e^{-x}+C_2e^{2x} \\).",
         "Forcing \\( -8x^2 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=4x^{2}-4x+6 \\).",
         "With \\(C_1=-3\\), \\(C_2=-3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14677,7 +16696,38 @@
         "Substituting \\( s = 20 \\) gives.",
         "Set up the numerical expression: \\(\\frac{6}{20 - 19}\\).",
         "Evaluate \\(\\frac{6}{20 - 19}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14817,7 +16867,26 @@
         "Homogeneous: \\( r^2-6r+8=0 \\) has roots \\( r=2,4 \\), so \\( y_c=C_1e^{2x}+C_2e^{4x} \\).",
         "Forcing \\( 2e^{2x} \\), and \\( 2 \\) IS a root (resonance): trial \\( y_p=Axe^{2x} \\) gives \\( y_p=-xe^{2x} \\).",
         "With \\(C_1=2\\), \\(C_2=-3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -14957,7 +17026,26 @@
         "Homogeneous: \\( r^2-3r-4=0 \\) has roots \\( r=-1,4 \\), so \\( y_c=C_1e^{-x}+C_2e^{4x} \\).",
         "Forcing \\( 5e^{-x} \\), and \\( -1 \\) IS a root (resonance): trial \\( y_p=Axe^{-x} \\) gives \\( y_p=-xe^{-x} \\).",
         "With \\(C_1=-1\\), \\(C_2=-1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15097,7 +17185,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\), so \\( y_c=C_1\\cos2x+C_2\\sin2x \\).",
         "Forcing \\( -1\\cos2x \\) matches the homogeneous frequency \\( 2 \\) exactly (resonance): trial \\( y_p=x(A\\cos2x+B\\sin2x) \\) gives \\( y_p=-\\frac{x\\sin{\\left(2x\\right)}}{4} \\).",
         "With \\(C_1=1\\), \\(C_2=1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{4})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15237,7 +17344,26 @@
         "Homogeneous: \\( r^2+1=0 \\) has roots \\( r=0\\pm1i \\), so \\( y_c=C_1\\cos x+C_2\\sin x \\).",
         "Forcing \\( 2\\cos x \\) matches the homogeneous frequency \\( 1 \\) exactly (resonance): trial \\( y_p=x(A\\cos x+B\\sin x) \\) gives \\( y_p=x\\sin{\\left(x\\right)} \\).",
         "With \\(C_1=2\\), \\(C_2=1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{4})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15377,7 +17503,26 @@
         "Homogeneous: \\( r^2+16=0 \\) has roots \\( r=0\\pm4i \\), so \\( y_c=C_1\\cos4x+C_2\\sin4x \\).",
         "Forcing \\( -1\\cos4x \\) matches the homogeneous frequency \\( 4 \\) exactly (resonance): trial \\( y_p=x(A\\cos4x+B\\sin4x) \\) gives \\( y_p=-\\frac{x\\sin{\\left(4x\\right)}}{8} \\).",
         "With \\(C_1=1\\), \\(C_2=-3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{24})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15517,7 +17662,26 @@
         "Homogeneous: \\( r^2-8r+16=0\\Rightarrow(r-4)^2=0 \\) has roots \\( r=4 \\text{ (repeated)} \\), so \\( y_c=(C_1+C_2x)e^{4x} \\).",
         "Forcing \\( -1e^{4x} \\) matches the repeated root \\( r=4 \\) (double resonance): trial \\( y_p=Ax^2e^{4x} \\) gives \\( y_p=-\\frac{x^{2}e^{4x}}{2} \\).",
         "With \\(C_1=1\\), \\(C_2=-1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15657,7 +17821,26 @@
         "Homogeneous: \\( r^2+6r+9=0\\Rightarrow(r+3)^2=0 \\) has roots \\( r=-3 \\text{ (repeated)} \\), so \\( y_c=(C_1+C_2x)e^{-3x} \\).",
         "Forcing \\( 3e^{-3x} \\) matches the repeated root \\( r=-3 \\) (double resonance): trial \\( y_p=Ax^2e^{-3x} \\) gives \\( y_p=\\frac{3x^{2}e^{-3x}}{2} \\).",
         "With \\(C_1=-3\\), \\(C_2=1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15797,7 +17980,26 @@
         "Homogeneous: \\( r^2+6r+9=0\\Rightarrow(r+3)^2=0 \\) has roots \\( r=-3 \\text{ (repeated)} \\), so \\( y_c=(C_1+C_2x)e^{-3x} \\).",
         "Forcing \\( -3e^{-3x} \\) matches the repeated root \\( r=-3 \\) (double resonance): trial \\( y_p=Ax^2e^{-3x} \\) gives \\( y_p=-\\frac{3x^{2}e^{-3x}}{2} \\).",
         "With \\(C_1=2\\), \\(C_2=3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(2)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -15937,7 +18139,26 @@
         "Homogeneous: \\( r^2+1=0 \\) has roots \\( r=0\\pm1i \\), so \\( y_c=C_1\\cos x+C_2\\sin x \\).",
         "Forcing \\( -4\\cos x \\) matches the homogeneous frequency \\( 1 \\) exactly (resonance): trial \\( y_p=x(A\\cos x+B\\sin x) \\) gives \\( y_p=-2x\\sin{\\left(x\\right)} \\).",
         "With \\(C_1=1\\), \\(C_2=-3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{4})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16077,7 +18298,26 @@
         "Homogeneous: \\( r^2+1=0 \\) has roots \\( r=0\\pm1i \\), so \\( y_c=C_1\\cos x+C_2\\sin x \\).",
         "Forcing \\( 5\\cos x \\) matches the homogeneous frequency \\( 1 \\) exactly (resonance): trial \\( y_p=x(A\\cos x+B\\sin x) \\) gives \\( y_p=\\frac{5x\\sin{\\left(x\\right)}}{2} \\).",
         "With \\(C_1=-2\\), \\(C_2=1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{4})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16217,7 +18457,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\), so \\( y_c=C_1\\cos2x+C_2\\sin2x \\).",
         "Forcing \\( 3\\cos2x \\) matches the homogeneous frequency \\( 2 \\) exactly (resonance): trial \\( y_p=x(A\\cos2x+B\\sin2x) \\) gives \\( y_p=\\frac{3x\\sin{\\left(2x\\right)}}{4} \\).",
         "With \\(C_1=-3\\), \\(C_2=-2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(\\frac{\\pi}{8})\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16357,7 +18616,26 @@
         "Homogeneous: \\( r^2+3r+2=0 \\) has roots \\( r=-1,-2 \\), so \\( y_c=C_1e^{-x}+C_2e^{-2x} \\).",
         "Split the forcing (the superposition note): for \\( 20e^{3x} \\), \\( 3 \\) isn't a root, trial \\( Ae^{3x} \\). for \\( -4x \\), trial \\( Bx+C \\) (or just \\( C \\)). Adding the two pieces: \\( y_p=-2x+e^{3x}+3 \\).",
         "With \\(C_1=-3\\), \\(C_2=-2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16497,7 +18775,26 @@
         "Homogeneous: \\( r^2-r-2=0 \\) has roots \\( r=-1,2 \\), so \\( y_c=C_1e^{-x}+C_2e^{2x} \\).",
         "Split the forcing (the superposition note): for \\( -10e^{4x} \\), \\( 4 \\) isn't a root, trial \\( Ae^{4x} \\). for \\( -4x \\), trial \\( Bx+C \\) (or just \\( C \\)). Adding the two pieces: \\( y_p=2x-e^{4x}-1 \\).",
         "With \\(C_1=-2\\), \\(C_2=-3\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16637,7 +18934,26 @@
         "Homogeneous: \\( r^2-1=0 \\) has roots \\( r=-1,1 \\), so \\( y_c=C_1e^{-x}+C_2e^{x} \\).",
         "Split the forcing (the superposition note): for \\( -15e^{-4x} \\), \\( -4 \\) isn't a root, trial \\( Ae^{-4x} \\). for \\( -1 \\), trial \\( Bx+C \\) (or just \\( C \\)). Adding the two pieces: \\( y_p=1-e^{-4x} \\).",
         "With \\(C_1=1\\), \\(C_2=-1\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16777,7 +19093,26 @@
         "Set up the initial relation: \\( y_1=e^{x} \\), \\( y_2=e^{-x} \\), \\( W=-2 \\).",
         "Rewrite and simplify to obtain: \\( u_1'=-\\dfrac{y_2(2)}{W}=e^{-x}\\Rightarrow u_1=-e^{-x} \\).",
         "Use the resulting form to finish: \\(u_2'=\\dfrac{y_1(2)}{W}=-e^{x} \\implies u_2=-e^{x}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -16917,7 +19252,26 @@
         "Set up the initial relation: \\( y_1=\\cos2x \\), \\( y_2=\\sin2x \\), \\( W=2 \\).",
         "Rewrite and simplify to obtain: \\( u_1'=-\\dfrac12\\Rightarrow u_1=-\\dfrac{x}{2} \\).",
         "Use the resulting form to finish: \\(u_2'=\\dfrac12\\cot2x \\implies u_2=\\dfrac14\\ln|\\sin2x|\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17057,7 +19411,26 @@
         "Homogeneous: \\( r^2+3r-4=0 \\) has roots \\( r=-4,1 \\).",
         "So \\( y_1=e^{-4x} \\), \\( y_2=e^{x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c = -4/-4\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17197,7 +19570,26 @@
         "Homogeneous: \\( r^2-2r-8=0 \\) has roots \\( r=-2,4 \\).",
         "So \\( y_1=e^{-2x} \\), \\( y_2=e^{4x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c = 2/-8\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17337,7 +19729,26 @@
         "Homogeneous: \\( r^2-16=0 \\) has roots \\( r=-4,4 \\).",
         "So \\( y_1=e^{-4x} \\), \\( y_2=e^{4x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c = -5/-16\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17477,7 +19888,26 @@
         "Homogeneous: \\( r^2-10r+25=0 \\) has roots \\( r=5 \\text{ (repeated)} \\).",
         "So \\( y_1=e^{5x} \\), \\( y_2=xe^{5x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17617,7 +20047,26 @@
         "Homogeneous: \\( r^2+10r+25=0 \\) has roots \\( r=-5 \\text{ (repeated)} \\).",
         "So \\( y_1=e^{-5x} \\), \\( y_2=xe^{-5x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17757,7 +20206,26 @@
         "Homogeneous: \\( r^2+10r+25=0 \\) has roots \\( r=-5 \\text{ (repeated)} \\).",
         "So \\( y_1=e^{-5x} \\), \\( y_2=xe^{-5x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17897,7 +20365,26 @@
         "Homogeneous: \\( r^2+10r+25=0 \\) has roots \\( r=-5 \\text{ (repeated)} \\).",
         "So \\( y_1=e^{-5x} \\), \\( y_2=xe^{-5x} \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18037,7 +20524,26 @@
         "Homogeneous: \\( r^2-2r+2=0 \\) has roots \\( r=1\\pm1i \\).",
         "So \\( y_1=e^{x}\\cos x \\), \\( y_2=e^{x}\\sin x \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18177,7 +20683,26 @@
         "Homogeneous: \\( r^2+1=0 \\) has roots \\( r=0\\pm1i \\).",
         "So \\( y_1=\\cos x \\), \\( y_2=\\sin x \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18317,7 +20842,26 @@
         "Homogeneous: \\( r^2+9=0 \\) has roots \\( r=0\\pm3i \\).",
         "So \\( y_1=\\cos3x \\), \\( y_2=\\sin3x \\).",
         "Variation of parameters (or, equivalently, undetermined coefficients with trial \\(y_p=A\\)) gives the constant particular solution \\(y_p = k/c\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18457,7 +21001,26 @@
         "Homogeneous: \\( r^2+9=0 \\) has roots \\( r=0\\pm3i \\).",
         "So \\( y_1=\\cos3x \\), \\( y_2=\\sin3x \\), \\( W=3 \\).",
         "Solving for \\(u_1,u_2\\) and substituting back: \\(y_p=\\frac{2x\\cos{\\left(3x\\right)}}{3}-\\frac{2\\log{\\left(\\sin{\\left(3x\\right)}\\right)}\\sin{\\left(3x\\right)}}{9}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18597,7 +21160,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\).",
         "So \\( y_1=\\cos2x \\), \\( y_2=\\sin2x \\), \\( W=2 \\).",
         "Solving for \\(u_1,u_2\\) and substituting back: \\(y_p=-\\frac{x\\sin{\\left(2x\\right)}}{2}-\\frac{\\log{\\left(\\cos{\\left(2x\\right)}\\right)}\\cos{\\left(2x\\right)}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18737,7 +21319,26 @@
         "Homogeneous: \\( r^2+9=0 \\) has roots \\( r=0\\pm3i \\).",
         "So \\( y_1=\\cos3x \\), \\( y_2=\\sin3x \\), \\( W=3 \\).",
         "Solving for \\(u_1,u_2\\) and substituting back: \\(y_p=\\frac{x\\cos{\\left(3x\\right)}}{3}-\\frac{\\log{\\left(\\sin{\\left(3x\\right)}\\right)}\\sin{\\left(3x\\right)}}{9}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18877,7 +21478,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\).",
         "So \\( y_1=\\cos2x \\), \\( y_2=\\sin2x \\), \\( W=2 \\).",
         "Solving for \\(u_1,u_2\\) and substituting back: \\(y_p=-\\frac{x\\cos{\\left(2x\\right)}}{2}+\\frac{\\log{\\left(\\sin{\\left(2x\\right)}\\right)}\\sin{\\left(2x\\right)}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19017,7 +21637,26 @@
         "Homogeneous: \\( r^2-6r+8=0 \\) has roots \\( r=4,2 \\).",
         "So \\( y_1=e^{4x} \\), \\( y_2=e^{2x} \\), \\( W=-2e^{6x} \\).",
         "Unlike undetermined coefficients, no resonance check or modification is needed: \\(u_1=x\\), \\(u_2=-\\frac{e^{2x}}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19157,7 +21796,26 @@
         "Homogeneous: \\( r^2+r-6=0 \\) has roots \\( r=2,-3 \\).",
         "So \\( y_1=e^{2x} \\), \\( y_2=e^{-3x} \\), \\( W=-5e^{-x} \\).",
         "Unlike undetermined coefficients, no resonance check or modification is needed: \\(u_1=-\\frac{4x}{5}\\), \\(u_2=\\frac{4e^{5x}}{25}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19297,7 +21955,26 @@
         "Homogeneous: \\( r^2-r-2=0 \\) has roots \\( r=2,-1 \\).",
         "So \\( y_1=e^{2x} \\), \\( y_2=e^{-x} \\), \\( W=-3e^{x} \\).",
         "Unlike undetermined coefficients, no resonance check or modification is needed: \\(u_1=x\\), \\(u_2=-\\frac{e^{3x}}{3}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19437,7 +22114,26 @@
         "Homogeneous: \\( r^2-2r-3=0 \\) has roots \\( r=-1,3 \\).",
         "So \\( y_1=e^{-x} \\), \\( y_2=e^{3x} \\), \\( W=4e^{2x} \\).",
         "Unlike undetermined coefficients, no resonance check or modification is needed: \\(u_1=\\frac{3x}{4}\\), \\(u_2=\\frac{3e^{-4x}}{16}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19577,7 +22273,26 @@
         "Homogeneous: \\( r^2-4r+3=0 \\) has roots \\( r=3,1 \\).",
         "So \\( y_1=e^{3x} \\), \\( y_2=e^{x} \\), \\( W=-2e^{4x} \\).",
         "Unlike undetermined coefficients, no resonance check or modification is needed: \\(u_1=-\\frac{x}{2}\\), \\(u_2=\\frac{e^{2x}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19717,7 +22432,26 @@
         "Homogeneous: \\( r^2-6r+9=0 \\) has roots \\( r=3 \\text{ (repeated)} \\), so \\( y_1=e^{3x} \\), \\( y_2=xe^{3x} \\).",
         "Rewrite and simplify to obtain: \\( u_1=-2\\log{\\left(x\\right)} \\), \\( u_2=-\\frac{2}{x} \\).",
         "So \\(y_p=-2e^{3x}\\log{\\left(x\\right)}-2e^{3x}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19857,7 +22591,26 @@
         "Homogeneous: \\( r^2+2r+1=0 \\) has roots \\( r=-1 \\text{ (repeated)} \\), so \\( y_1=e^{-x} \\), \\( y_2=xe^{-x} \\).",
         "Rewrite and simplify to obtain: \\( u_1=-\\frac{x^{2}\\log{\\left(x\\right)}}{2}+\\frac{x^{2}}{4} \\), \\( u_2=x\\log{\\left(x\\right)}-x \\).",
         "So \\(y_p=\\frac{x^{2}e^{-x}\\log{\\left(x\\right)}}{2}-\\frac{3x^{2}e^{-x}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -19997,7 +22750,26 @@
         "Homogeneous: \\( r^2+8r+16=0 \\) has roots \\( r=-4 \\text{ (repeated)} \\), so \\( y_1=e^{-4x} \\), \\( y_2=xe^{-4x} \\).",
         "Rewrite and simplify to obtain: \\( u_1=-x \\), \\( u_2=\\log{\\left(x\\right)} \\).",
         "So \\(y_p=xe^{-4x}\\log{\\left(x\\right)}-xe^{-4x}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20137,7 +22909,26 @@
         "Homogeneous: \\( r^2-10r+25=0 \\) has roots \\( r=5 \\text{ (repeated)} \\), so \\( y_1=e^{5x} \\), \\( y_2=xe^{5x} \\).",
         "Rewrite and simplify to obtain: \\( u_1=x^{2}\\log{\\left(x\\right)}-\\frac{x^{2}}{2} \\), \\( u_2=-2x\\log{\\left(x\\right)}+2x \\).",
         "So \\(y_p=-x^{2}e^{5x}\\log{\\left(x\\right)}+\\frac{3x^{2}e^{5x}}{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20277,7 +23068,26 @@
         "Homogeneous: \\( r^2-2r+1=0 \\) has roots \\( r=1 \\text{ (repeated)} \\), so \\( y_1=e^{x} \\), \\( y_2=xe^{x} \\).",
         "Rewrite and simplify to obtain: \\( u_1=-\\frac{x^{2}\\log{\\left(x\\right)}}{2}+\\frac{x^{2}}{4} \\), \\( u_2=x\\log{\\left(x\\right)}-x \\).",
         "So \\(y_p=\\frac{x^{2}e^{x}\\log{\\left(x\\right)}}{2}-\\frac{3x^{2}e^{x}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20417,7 +23227,26 @@
         "Homogeneous: \\( r^2+2r+1=0 \\) has roots \\( r=-1 \\text{ (repeated)} \\), so \\( y_1=e^{-x} \\), \\( y_2=xe^{-x} \\).",
         "Rewrite and simplify to obtain: \\( u_1=\\frac{3x^{2}\\log{\\left(x\\right)}}{2}-\\frac{3x^{2}}{4} \\), \\( u_2=-3x\\log{\\left(x\\right)}+3x \\).",
         "So \\(y_p=-\\frac{3x^{2}e^{-x}\\log{\\left(x\\right)}}{2}+\\frac{9x^{2}e^{-x}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20557,7 +23386,26 @@
         "Homogeneous: \\( r^2+1=0 \\) has roots \\( r=0\\pm1i \\).",
         "So \\( y_1=\\cos x \\), \\( y_2=\\sin x \\), \\( W=1 \\).",
         "Solving for \\(u_1,u_2\\) and substituting back: \\(y_p=5x\\sin{\\left(x\\right)}+5\\log{\\left(\\cos{\\left(x\\right)}\\right)}\\cos{\\left(x\\right)}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20697,7 +23545,26 @@
         "Homogeneous: \\( r^2+4=0 \\) has roots \\( r=0\\pm2i \\).",
         "So \\( y_1=\\cos2x \\), \\( y_2=\\sin2x \\), \\( W=2 \\).",
         "Solving for \\(u_1,u_2\\) and substituting back: \\(y_p=\\frac{7x\\sin{\\left(2x\\right)}}{2}+\\frac{7\\log{\\left(\\cos{\\left(2x\\right)}\\right)}\\cos{\\left(2x\\right)}}{4}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20837,7 +23704,26 @@
         "Homogeneous: \\( r^2+5r+6=0 \\) has roots \\( r=-3,-2 \\).",
         "So \\( y_1=e^{-3x} \\), \\( y_2=e^{-2x} \\), \\( W=e^{-5x} \\).",
         "Unlike undetermined coefficients, no resonance check or modification is needed: \\(u_1=6x\\), \\(u_2=6e^{-x}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -20977,7 +23863,15 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{3 t + \\cos{\\left(t \\right)}\\}\\).",
         "Use the table (and linearity): \\(\\mathcal L\\{3 t + \\cos{\\left(t \\right)}\\}=\\frac{s^{3} + 3 s^{2} + 3}{s^{4} + s^{2}}\\).",
         "Apply this step to \\(\\mathcal L\\{3 t + \\cos{\\left(t \\right)}\\}=\\frac{s^{3} + 3 s^{2} + 3}{s^{4} + s^{2}}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -21117,7 +24011,38 @@
         "Start by examining the given mathematical expression in the problem: \\(f''(x) - 53f'(x) + 696f(x) = 0\\).",
         "From \\(\\lambda^2 - 53\\lambda + 696 = 0\\), the sum of roots is \\(53\\).",
         "Apply this step to \\(53\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21257,7 +24182,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{4 - 4 e^{t}\\}\\).",
         "Use the table (and linearity): \\(\\mathcal L\\{4 - 4 e^{t}\\}=- \\frac{4}{s \\left(s - 1\\right)}\\).",
         "Apply this step to \\(\\mathcal L\\{4 - 4 e^{t}\\}=- \\frac{4}{s \\left(s - 1\\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21397,7 +24353,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{e^{2 t}\\}\\).",
         "Use the table (and linearity): \\(\\mathcal L\\{e^{2 t}\\}=\\frac{1}{s - 2}\\).",
         "Apply this step to \\(\\mathcal L\\{e^{2 t}\\}=\\frac{1}{s - 2}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21537,7 +24524,26 @@
         "Solve \\(\\dfrac{dh}{du} = 6u\\) over the specified interval using reference angles and quadrant symmetry.",
         "Integrating gives \\( h(u) = 3u^2 + 8 \\).",
         "Count the total number of distinct solutions that lie within the given domain."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21677,7 +24683,26 @@
         "Start with the expression: \\(\\mathcal L\\{y''\\}\\).",
         "Rewrite and substitute: \\(\\mathcal L\\{y''\\} = s^2Y(s)-sy(0)-y'(0)\\).",
         "Evaluate \\(s^2Y(s)-sy(0)-y'(0)\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21817,7 +24842,38 @@
         "Substituting \\( s = 19 \\) gives.",
         "Set up the numerical expression: \\(\\frac{63}{19 - 18}\\).",
         "Evaluate \\(\\frac{63}{19 - 18}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -21957,7 +25013,15 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{\\cos{\\left(5 t \\right)}\\}\\).",
         "Use the table (and linearity): \\(\\mathcal L\\{\\cos{\\left(5 t \\right)}\\}=\\frac{s}{s^{2} + 25}\\).",
         "Apply this step to \\(\\mathcal L\\{\\cos{\\left(5 t \\right)}\\}=\\frac{s}{s^{2} + 25}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 2 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22097,7 +25161,15 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{\\sin{\\left(5 t \\right)}\\}\\).",
         "Use the table (and linearity): \\(\\mathcal L\\{\\sin{\\left(5 t \\right)}\\}=\\frac{5}{s^{2} + 25}\\).",
         "Apply this step to \\(\\mathcal L\\{\\sin{\\left(5 t \\right)}\\}=\\frac{5}{s^{2} + 25}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 3,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 3 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22237,7 +25309,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{e^{- 4 t}\\}\\).",
         "Use the table (and linearity): \\(\\mathcal L\\{e^{- 4 t}\\}=\\frac{1}{s + 4}\\).",
         "Apply this step to \\(\\mathcal L\\{e^{- 4 t}\\}=\\frac{1}{s + 4}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -22377,7 +25480,38 @@
         "First shifting theorem: \\( \\mathcal L\\{e^{at}f(t)\\}=F(s-a) \\) with \\( a=1 \\).",
         "So \\(\\mathcal L\\{t e^{t}\\}=\\frac{1}{\\left(s - 1\\right)^{2}}\\).",
         "Evaluate and simplify \\(\\mathcal L\\{t e^{t}\\}=\\frac{1}{\\left(s - 1\\right)^{2}}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -22517,7 +25651,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L^{-1}\\left\\{\\frac{s + 2}{\\left(s + 2\\right)^{2} + 16}\\right\\}\\).",
         "Invert term by term with the table and the shifting theorem: \\(e^{- 2 t} \\cos{\\left(4 t \\right)}\\).",
         "Apply this step to \\(e^{- 2 t} \\cos{\\left(4 t \\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -22657,7 +25822,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L\\{u(t-4)\\}\\).",
         "Rewrite and simplify to obtain: \\(\\mathcal L\\{u(t-a)\\}=\\dfrac{e^{-as}}{s}\\) with \\(a\\).",
         "Apply this step to \\(a\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -22797,7 +25993,15 @@
         "First shifting theorem: \\( \\mathcal L\\{e^{at}f(t)\\}=F(s-a) \\) with \\( a=1 \\).",
         "So \\(\\mathcal L\\{e^{t} \\sin{\\left(t \\right)}\\}=\\frac{1}{\\left(s - 1\\right)^{2} + 1}\\).",
         "Evaluate and simplify \\(\\mathcal L\\{e^{t} \\sin{\\left(t \\right)}\\}=\\frac{1}{\\left(s - 1\\right)^{2} + 1}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "sinusoid",
+        "a": 4,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "label": "y = 4 sin(x)"
+      }
     },
     {
       "type": "mcq",
@@ -22937,7 +26141,38 @@
         "Use partial fractions: \\( \\frac{2 s + 1}{\\left(s - 2\\right) \\left(s + 3\\right)}=\\frac{1}{s + 3} + \\frac{1}{s - 2} \\).",
         "Then invert term by term with the table: \\(\\left(e^{5 t} + 1\\right) e^{- 3 t}\\).",
         "Evaluate and simplify \\(\\left(e^{5 t} + 1\\right) e^{- 3 t}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23077,7 +26312,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L^{-1}\\left\\{\\frac{s - 2}{s^{2} + 4}\\right\\}\\).",
         "Invert term by term with the table: \\(\\sqrt{2} \\cos{\\left(2 t + \\frac{\\pi}{4} \\right)}\\).",
         "Apply this step to \\(\\sqrt{2} \\cos{\\left(2 t + \\frac{\\pi}{4} \\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23217,7 +26483,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L^{-1}\\left\\{\\frac{4}{s^{4}}\\right\\}\\).",
         "Invert term by term with the table: \\(\\frac{2 t^{3}}{3}\\).",
         "Apply this step to \\(\\frac{2 t^{3}}{3}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23357,7 +26654,38 @@
         "Substituting \\( s = 6 \\) gives.",
         "Set up the numerical expression: \\(\\frac{153}{6 - 5}\\).",
         "Evaluate \\(\\frac{153}{6 - 5}\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23498,7 +26826,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L^{-1}\\left\\{\\frac{5}{s^{5}}\\right\\}\\).",
         "Invert term by term with the table: \\(\\frac{5 t^{4}}{24}\\).",
         "Apply this step to \\(\\frac{5 t^{4}}{24}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23638,7 +26997,38 @@
         "First shifting theorem: \\( \\mathcal L\\{e^{at}f(t)\\}=F(s-a) \\) with \\( a=4 \\).",
         "So \\(\\mathcal L\\{t^{3} e^{4 t}\\}=\\frac{6}{\\left(s - 4\\right)^{4}}\\).",
         "Evaluate and simplify \\(\\mathcal L\\{t^{3} e^{4 t}\\}=\\frac{6}{\\left(s - 4\\right)^{4}}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23779,7 +27169,26 @@
         "Set up the initial relation: \\( sY-3+2Y=\\frac{2}{s - 1} \\).",
         "So \\(Y=\\frac{3 s - 1}{\\left(s - 1\\right) \\left(s + 2\\right)}\\).",
         "Evaluate and simplify \\(Y=\\frac{3 s - 1}{\\left(s - 1\\right) \\left(s + 2\\right)}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -23919,7 +27328,38 @@
         "Use partial fractions: \\( \\frac{2 s - 3}{\\left(s - 3\\right) \\left(s - 1\\right)}=\\frac{1}{2 \\left(s - 1\\right)} + \\frac{3}{2 \\left(s - 3\\right)} \\).",
         "Then invert term by term with the table: \\(\\frac{\\left(3 e^{2 t} + 1\\right) e^{t}}{2}\\).",
         "Evaluate and simplify \\(\\frac{\\left(3 e^{2 t} + 1\\right) e^{t}}{2}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24059,7 +27499,26 @@
         "Set up the initial relation: \\( Y=\\frac{- 3 s - 4}{s^{2} + 9} \\) inverts to \\( y=- \\frac{4 \\sin{\\left(3 t \\right)}}{3} - 3 \\cos{\\left(3 t \\right)} \\).",
         "At \\( t=\\frac{\\pi}{3} \\).",
         "Use the resulting form to finish: \\(3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24199,7 +27658,26 @@
         "Evaluating at \\( (6, 25) \\) gives.",
         "Set up the numerical expression: \\(16(6) - 3(25)\\).",
         "Evaluate \\(16(6) - 3(25)\\) step by step to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24339,7 +27817,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L^{-1}\\left\\{\\frac{s - 2}{\\left(s - 2\\right)^{2} + 9}\\right\\}\\).",
         "Invert term by term with the table and the shifting theorem: \\(e^{2 t} \\cos{\\left(3 t \\right)}\\).",
         "Apply this step to \\(e^{2 t} \\cos{\\left(3 t \\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24479,7 +27988,26 @@
         "Start from the given mathematical expression in the prompt: \\(y''+9y=0\\).",
         "Write out the unsimplified expression: \\(s^2Y-sy(0)-y'(0)+9Y\\).",
         "Perform the arithmetic in \\(s^2Y-sy(0)-y'(0)+9Y\\) to find the final value."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24619,7 +28147,26 @@
         "Start from the given mathematical expression in the prompt: \\(y''+16y=0\\).",
         "Write out the unsimplified expression: \\(s^2Y-sy(0)-y'(0)+16Y\\).",
         "Perform the arithmetic in \\(s^2Y-sy(0)-y'(0)+16Y\\) to find the final value."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24759,7 +28306,26 @@
         "Set up the initial relation: \\( Y(s)=\\frac{4 - s}{\\left(s - 2\\right) \\left(s - 1\\right)}=- \\frac{3}{s - 1} + \\frac{2}{s - 2} \\).",
         "Inverting, \\( y(t)=\\left(2 e^{t} - 3\\right) e^{t} \\).",
         "So \\(y(1)=e \\left(-3 + 2 e\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -24900,7 +28466,38 @@
         "Start by examining the given mathematical expression in the problem: \\(\\mathcal L^{-1}\\left\\{\\frac{6}{\\left(s + 1\\right)^{4}}\\right\\}\\).",
         "Invert term by term with the table: \\(t^{3} e^{- t}\\).",
         "Apply this step to \\(t^{3} e^{- t}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25041,7 +28638,38 @@
         "Use partial fractions: \\( \\frac{2 s}{\\left(s - 2\\right) \\left(s + 2\\right)}=\\frac{1}{s + 2} + \\frac{1}{s - 2} \\).",
         "Then invert term by term with the table: \\(2 \\cosh{\\left(2 t \\right)}\\).",
         "Evaluate and simplify \\(2 \\cosh{\\left(2 t \\right)}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25181,7 +28809,38 @@
         "Complex eigenvalues give spirals.",
         "The sign of the real part decides stability, and a zero real part gives a center.",
         "Here: center (stable, not asymptotically)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25321,7 +28980,26 @@
         "Set up the initial relation: \\( x_1'=x_2 \\) and: \\(x_2'\\).",
         "Rewrite and substitute: \\(x_2' = y''\\).",
         "Evaluate \\(y''\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25461,7 +29139,26 @@
         "The equations are decoupled: \\( x=3 e^{t} \\), \\( y=- 2 e^{2 t} \\).",
         "Hence \\(3 e^{2}\\).",
         "Evaluate and simplify \\(3 e^{2}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25601,7 +29298,38 @@
         "Complex eigenvalues give spirals.",
         "The sign of the real part decides stability, and a zero real part gives a center.",
         "Here: center (stable, not asymptotically)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25741,7 +29469,38 @@
         "Complex eigenvalues give spirals.",
         "The sign of the real part decides stability, and a zero real part gives a center.",
         "Here: stable spiral."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -25881,7 +29640,38 @@
         "Real eigenvalues of opposite sign give a saddle.",
         "Same sign gives a node (stable if negative).",
         "Here: saddle point (unstable)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26021,7 +29811,26 @@
         "Set up the initial relation: \\( x_1'=x_2 \\) and: \\(x_2'\\).",
         "Rewrite and substitute: \\(x_2' = y''\\).",
         "Evaluate \\(y''\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26161,7 +29970,26 @@
         "Set up the initial relation: \\( x_1'=x_2 \\) and: \\(x_2'\\).",
         "Rewrite and substitute: \\(x_2' = y''\\).",
         "Evaluate \\(y''\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26301,7 +30129,26 @@
         "Set up the initial relation: \\( x_1'=x_2 \\) and: \\(x_2'\\).",
         "Rewrite and substitute: \\(x_2' = y''\\).",
         "Evaluate \\(y''\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26441,7 +30288,26 @@
         "Set up the initial relation: \\( x_1'=x_2 \\) and: \\(x_2'\\).",
         "Rewrite and substitute: \\(x_2' = y''\\).",
         "Evaluate \\(y''\\) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26581,7 +30447,38 @@
         "Start by examining the given mathematical expression in the problem: \\(x_1'=4 x_{1},\\ x_2'=x_{2}\\).",
         "Rewrite and simplify to obtain: \\(\\det(A-\\lambda I)=\\lambda^2-(5)\\lambda+(4)\\) has roots \\(1, 4\\).",
         "Apply this step to \\(1, 4\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26721,7 +30618,38 @@
         "Start by examining the given mathematical expression in the problem: \\(x_1'=- 3 x_{1},\\ x_2'=5 x_{2}\\).",
         "Rewrite and simplify to obtain: \\(\\det(A-\\lambda I)=\\lambda^2-(2)\\lambda+(-15)\\) has roots \\(-3, 5\\).",
         "Apply this step to \\(-3, 5\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -26861,7 +30789,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=- 2 k - 2 \\).",
         "Which is negative for \\(\\left(-1, \\infty\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27001,7 +30960,38 @@
         "Start by examining the given mathematical expression in the problem: \\(x_1'=5 x_{1},\\ x_2'=2 x_{2}\\).",
         "Rewrite and simplify to obtain: \\(\\det(A-\\lambda I)=\\lambda^2-(7)\\lambda+(10)\\) has roots \\(2, 5\\).",
         "Apply this step to \\(2, 5\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27141,7 +31131,38 @@
         "Start by examining the given mathematical expression in the problem: \\(x_1'=2 x_{1},\\ x_2'=5 x_{2}\\).",
         "Rewrite and simplify to obtain: \\(\\det(A-\\lambda I)=\\lambda^2-(7)\\lambda+(10)\\) has roots \\(2, 5\\).",
         "Apply this step to \\(2, 5\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27281,7 +31302,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=- 3 k \\).",
         "Which is negative for \\(\\left(0, \\infty\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27421,7 +31473,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=3 k - 6 \\).",
         "Which is negative for \\(\\left(-\\infty, 2\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27561,7 +31644,38 @@
         "Set up the initial relation: \\(\\operatorname{tr}A = 2,\\ \\det A\\).",
         "The eigenvalues are \\( 1 + i, 1 - i \\).",
         "So the origin is a unstable spiral."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27701,7 +31815,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=4 - 3 k \\).",
         "Which is negative for \\(\\left(\\frac{4}{3}, \\infty\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27841,7 +31986,38 @@
         "Set up the initial relation: \\(\\operatorname{tr}A = 5,\\ \\det A\\).",
         "The eigenvalues are \\( 3, 2 \\).",
         "So the origin is a unstable node."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -27981,7 +32157,38 @@
         "Set up the initial relation: \\(\\operatorname{tr}A = 3,\\ \\det A\\).",
         "The eigenvalues are \\( -1, 4 \\).",
         "So the origin is a saddle point (unstable)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28121,7 +32328,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=k \\).",
         "Which is negative for \\(\\left(-\\infty, 0\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28261,7 +32499,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=2 k \\).",
         "Which is negative for \\(\\left(-\\infty, 0\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28401,7 +32670,38 @@
         "Eigenpairs: \\( \\lambda=2 \\) with \\( \\langle -2, 1 \\rangle \\), \\( \\lambda=-1 \\) with \\( \\langle 1, -1 \\rangle \\).",
         "Matching \\( \\mathbf x(0) \\) gives \\(c_1 = -2,\\ c_2\\).",
         "So \\(\\mathbf x(t)=\\langle 4 e^{2 t} + e^{- t}, - 2 e^{2 t} - e^{- t} \\rangle\\) and \\(x_2(1)=\\frac{- 2 e^{3} - 1}{e}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28541,7 +32841,38 @@
         "Set up the initial relation: \\(\\operatorname{tr}A = 0,\\ \\det A\\).",
         "The eigenvalues are \\( i, - i \\).",
         "So the origin is a center (stable, not asymptotically)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28681,7 +33012,38 @@
         "Eigenpairs: \\( \\lambda=-2 \\) with \\( \\langle -1, 0 \\rangle \\), \\( \\lambda=-1 \\) with \\( \\langle 1, -1 \\rangle \\).",
         "Matching \\( \\mathbf x(0) \\) gives \\(c_1 = -1,\\ c_2\\).",
         "So \\(\\mathbf x(t)=\\langle 2 e^{- t} + e^{- 2 t}, - 2 e^{- t} \\rangle\\) and \\(x_2(1)=- \\frac{2}{e}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28821,7 +33183,38 @@
         "A saddle occurs exactly when \\( \\det A<0 \\).",
         "Here \\( \\det A=k - 2 \\).",
         "Which is negative for \\(\\left(-\\infty, 2\\right)\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "3*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -28961,7 +33354,38 @@
         "Eigenpairs: \\( \\lambda=-2 \\) with \\( \\langle 0, 1 \\rangle \\), \\( \\lambda=2 \\) with \\( \\langle 1, -1 \\rangle \\).",
         "Matching \\( \\mathbf x(0) \\) gives \\(c_1 = 0,\\ c_2\\).",
         "So \\(\\mathbf x(t)=\\langle 2 e^{2 t}, - 2 e^{2 t} \\rangle\\) and \\(x_2(1)=- 2 e^{2}\\)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "4*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": -1,
+            "label": "V(-1, -1)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29101,7 +33525,38 @@
         "Set up the initial relation: \\(\\operatorname{tr}A = -2,\\ \\det A\\).",
         "The eigenvalues are \\( -1 + i, -1 - i \\).",
         "So the origin is a stable spiral."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "1*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": -3,
+            "label": "V(1, -3)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29241,7 +33696,38 @@
         "Set up the initial relation: \\(\\operatorname{tr}A = 0,\\ \\det A\\).",
         "The eigenvalues are \\( i, - i \\).",
         "So the origin is a center (stable, not asymptotically)."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "xrange": [
+          -5,
+          5
+        ],
+        "yrange": [
+          -5,
+          7
+        ],
+        "fns": [
+          {
+            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "2*x - 1",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": -2,
+            "label": "V(0, -2)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29381,7 +33867,26 @@
         "Dividing by \\( x^{2} - x \\) gives \\( y''+P(x)y'+Q(x)y=0 \\).",
         "The leading coefficient vanishes at \\( x=0 \\).",
         "So \\(P,Q\\) are not analytic there: it is a singular point."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29521,7 +34026,26 @@
         "The singular points are the zeros of \\( x^{2} + 4 \\).",
         "Rewrite and simplify to obtain: \\( - 2 i, 2 i \\) (complex ones count).",
         "The nearest is at distance \\(2\\) from \\(0\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29661,7 +34185,26 @@
         "Dividing by \\( x^{2} - 16 \\) gives \\( y''+P(x)y'+Q(x)y=0 \\).",
         "The leading coefficient vanishes at \\( x=4 \\).",
         "So \\(P,Q\\) are not analytic there: it is a singular point."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29801,7 +34344,26 @@
         "The singular points are the zeros of \\( x - 3 \\).",
         "Rewrite and simplify to obtain: \\( 3 \\) (complex ones count).",
         "The nearest is at distance \\(2\\) from \\(1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -29941,7 +34503,26 @@
         "Dividing by \\( x^{2} - 4 x \\) gives \\( y''+P(x)y'+Q(x)y=0 \\).",
         "Rewrite and simplify to obtain: \\( P \\) and \\( Q \\) are analytic at \\( 3 \\) iff the leading coefficient is nonzero there.",
         "Use the resulting form to finish: \\(x^{2} - 4 x\\), so it is an ordinary point."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30081,7 +34662,26 @@
         "The singular points are the zeros of \\( x + 4 \\).",
         "Rewrite and simplify to obtain: \\( -4 \\) (complex ones count).",
         "The nearest is at distance \\(3\\) from \\(-1\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30221,7 +34821,26 @@
         "Dividing by \\( x^{2} - 3 x \\) gives \\( y''+P(x)y'+Q(x)y=0 \\).",
         "Rewrite and simplify to obtain: \\( P \\) and \\( Q \\) are analytic at \\( -2 \\) iff the leading coefficient is nonzero there.",
         "Use the resulting form to finish: \\(x^{2} - 3 x\\), so it is an ordinary point."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30361,7 +34980,26 @@
         "The singular points are the zeros of \\( x^{2} + 2 \\).",
         "Rewrite and simplify to obtain: \\( - \\sqrt{2} i, \\sqrt{2} i \\) (complex ones count).",
         "The nearest is at distance \\(\\sqrt{2}\\) from \\(0\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30501,7 +35139,26 @@
         "Dividing by \\( x^{2} - 1 \\) gives \\( y''+P(x)y'+Q(x)y=0 \\).",
         "Rewrite and simplify to obtain: \\( P \\) and \\( Q \\) are analytic at \\( 4 \\) iff the leading coefficient is nonzero there.",
         "Use the resulting form to finish: \\(x^{2} - 1\\), so it is an ordinary point."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30641,7 +35298,26 @@
         "Dividing by \\( x^{2} + 2 x \\) gives \\( y''+P(x)y'+Q(x)y=0 \\).",
         "The leading coefficient vanishes at \\( x=-2 \\).",
         "So \\(P,Q\\) are not analytic there: it is a singular point."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30781,7 +35457,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=-2,\\ a_1=0 \\) the coefficients are: \\(a_0 = -2, a_1\\). Substitute and simplify: \\(a_0 = 0, a_2\\).",
         "Compute the final value from: \\(0, a_3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -30921,7 +35616,26 @@
         "Start by examining the given mathematical expression in the problem: \\(y'-2xy=0\\).",
         "Comparing with known series, the coefficients match \\(e^{x^{2}}\\) term by term (and \\(e^{x^{2}}\\) satisfies the equation and initial conditions).",
         "Apply this step to \\(e^{x^{2}}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31061,7 +35775,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=2,\\ a_1=-2 \\) the coefficients are: \\(a_0 = 2, a_1\\). Substitute and simplify: \\(a_0 = -2, a_2\\).",
         "Compute the final value from: \\(0, a_3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31201,7 +35934,26 @@
         "Start by examining the given mathematical expression in the problem: \\(y''+9y=0\\).",
         "Comparing with known series, the coefficients match \\(\\cos{\\left(3 x \\right)}\\) term by term (and \\(\\cos{\\left(3 x \\right)}\\) satisfies the equation and initial conditions).",
         "Apply this step to \\(\\cos{\\left(3 x \\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31341,7 +36093,26 @@
         "Substitute \\( y''=\\sum (n+2)(n+1)a_{n+2}x^n \\) and shift indices so every sum runs over \\( x^n \\).",
         "Setting each coefficient to zero gives \\(a_{n+2}=-\\dfrac{5\\,a_n}{(n+2)(n+1)}\\).",
         "Evaluate and simplify \\(a_{n+2}=-\\dfrac{5\\,a_n}{(n+2)(n+1)}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31481,7 +36252,26 @@
         "Start by examining the given mathematical expression in the problem: \\(y''+y=0\\).",
         "Comparing with known series, the coefficients match \\(\\sin{\\left(x \\right)}\\) term by term (and \\(\\sin{\\left(x \\right)}\\) satisfies the equation and initial conditions).",
         "Apply this step to \\(\\sin{\\left(x \\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31621,7 +36411,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=1,\\ a_1=3 \\) the coefficients are: \\(a_0 = 1, a_1\\). Substitute and simplify: \\(a_0 = 3, a_2\\).",
         "Compute the final value from: \\(-1, a_3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31761,7 +36570,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=-1,\\ a_1=-2 \\) the coefficients are: \\(a_0 = -1, a_1\\). Substitute and simplify: \\(a_0 = -2, a_2\\).",
         "Compute the final value from: \\(-2, a_2\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -31901,7 +36729,26 @@
         "Start by examining the given mathematical expression in the problem: \\(y''-16y=0\\).",
         "Comparing with known series, the coefficients match \\(\\cosh{\\left(4 x \\right)}\\) term by term (and \\(\\cosh{\\left(4 x \\right)}\\) satisfies the equation and initial conditions).",
         "Apply this step to \\(\\cosh{\\left(4 x \\right)}\\) and simplify to determine the final result."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32041,7 +36888,26 @@
         "Substitute \\( y''=\\sum (n+2)(n+1)a_{n+2}x^n \\) and shift indices so every sum runs over \\( x^n \\).",
         "Setting each coefficient to zero gives \\(a_{n+2}=-\\dfrac{3\\,a_n}{(n+2)(n+1)}\\).",
         "Evaluate and simplify \\(a_{n+2}=-\\dfrac{3\\,a_n}{(n+2)(n+1)}\\) carefully (checking signs and units) to obtain the final answer."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32181,7 +37047,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=-2,\\ a_1=1 \\) the coefficients are: \\(a_0 = -2, a_1\\). Substitute and simplify: \\(a_0 = 1, a_2\\).",
         "Compute the final value from: \\(- \\frac{1}{4}, a_5\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32321,7 +37206,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=-1,\\ a_1=-1 \\) the coefficients are: \\(a_0 = -1, a_1\\). Substitute and simplify: \\(a_0 = -1, a_2\\).",
         "Compute the final value from: \\(- \\frac{1}{6}, a_4\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32461,7 +37365,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=0,\\ a_1=2 \\) the coefficients are: \\(a_0 = 0, a_1\\). Substitute and simplify: \\(a_0 = 2, a_2\\).",
         "Compute the final value from: \\(2, a_2\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32601,7 +37524,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=-1,\\ a_1=-2 \\) the coefficients are: \\(a_0 = -1, a_1\\). Substitute and simplify: \\(a_0 = -2, a_2\\).",
         "Compute the final value from: \\(0, a_3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32741,7 +37683,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=3,\\ a_1=2 \\) the coefficients are: \\(a_0 = 3, a_1\\). Substitute and simplify: \\(a_0 = 2, a_2\\).",
         "Compute the final value from: \\(2, a_2\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -32881,7 +37842,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=3,\\ a_1=0 \\) the coefficients are: \\(a_0 = 3, a_1\\). Substitute and simplify: \\(a_0 = 0, a_2\\).",
         "Compute the final value from: \\(- \\frac{3}{2}, a_3\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 2,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -33021,7 +38001,26 @@
         "The singular points are the zeros of \\( x^{2} - 4 \\).",
         "Rewrite and simplify to obtain: \\( -2, 2 \\) (complex ones count).",
         "The nearest is at distance \\(2\\) from \\(0\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": -1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -33161,7 +38160,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=1,\\ a_1=-1 \\) the coefficients are: \\(a_0 = 1, a_1\\). Substitute and simplify: \\(a_0 = -1, a_2\\).",
         "Compute the final value from: \\(- \\frac{1}{6}, a_4\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -33301,7 +38319,26 @@
         "Substitute the series and match powers of \\( x \\) to get a recurrence.",
         "With \\( a_0=1,\\ a_1=2 \\) the coefficients are: \\(a_0 = 1, a_1\\). Substitute and simplify: \\(a_0 = 2, a_2\\).",
         "Compute the final value from: \\(- \\frac{1}{6}, a_4\\)."
-      ]
+      ],
+      "fig": {
+        "type": "slope_field",
+        "f": "x - y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "curves": [
+          {
+            "x0": 0,
+            "y0": 1,
+            "color": "var(--fig-amber)"
+          }
+        ]
+      }
     },
     {
       "type": "mcq",

@@ -14,7 +14,38 @@
           "question_type": "FRQ",
           "target": "Mean and median",
           "answer": "Mean $=\\frac{4+7+7+9+13}{5}=\\frac{40}{5}=8$. Median (middle value of the ordered list): $7$.",
-          "explanation": "Mean $=\\frac{4+7+7+9+13}{5}=\\frac{40}{5}=8$. Median (middle value of the ordered list): $7$."
+          "explanation": "Mean $=\\frac{4+7+7+9+13}{5}=\\frac{40}{5}=8$. Median (middle value of the ordered list): $7$.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-1)",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "2*x - 4",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              }
+            ]
+          }
         },
         {
           "q": "A sixth data point of $40$ is added to the set $4,7,7,9,13$. Recompute the mean and median, and explain which measure changed more.",
@@ -166,7 +197,15 @@
           "target": "Computing summary statistics from a frequency table",
           "cross_lesson": "3.02 Discrete Random Variables & Binomial Distributions",
           "answer": "The mean would be pulled dramatically upward by the erroneous $200$ value, since the mean uses every data point's exact size — it would suggest students spend far more time on homework than they actually do. The median, which only depends on the middle-ranked value(s), would be far less affected by this single extreme (and erroneous) value. Given the known data-entry error, the teacher should trust the median as a more accurate reflection of typical homework time, since it resists distortion from this kind of outlier.",
-          "explanation": "The mean would be pulled dramatically upward by the erroneous $200$ value, since the mean uses every data point's exact size — it would suggest students spend far more time on homework than they actually do. The median, which only depends on the middle-ranked value(s), would be far less affected by this single extreme (and erroneous) value. Given the known data-entry error, the teacher should trust the median as a more accurate reflection of typical homework time, since it resists distortion from this kind of outlier."
+          "explanation": "The mean would be pulled dramatically upward by the erroneous $200$ value, since the mean uses every data point's exact size — it would suggest students spend far more time on homework than they actually do. The median, which only depends on the middle-ranked value(s), would be far less affected by this single extreme (and erroneous) value. Given the known data-entry error, the teacher should trust the median as a more accurate reflection of typical homework time, since it resists distortion from this kind of outlier.",
+          "figure": {
+            "type": "sinusoid",
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 1 sin(x)"
+          }
         },
         {
           "q": "Level 2 · MediumThe heights of adult males in a region follow a normal distribution with mean $\\mu = 70$ inches and standard deviation $\\sigma = 3$ inches. What is the standardized z-score of a male who is 76 inches tall, and what proportion of adult males are taller than 76 inches?",
