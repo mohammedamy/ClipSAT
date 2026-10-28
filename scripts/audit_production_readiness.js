@@ -250,6 +250,11 @@ audit(`All 31 tracks are wired into CBT Mock Exam Simulator (17-mock-exam-mode.j
   const homeHtml = fs.readFileSync(path.join(__dirname, '..', 'src', '_includes', 'tracks', 'home.html'), 'utf8');
   const i18nEn = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '20c-i18n.js'), 'utf8');
   const i18nAr = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '20e-i18n-ar.js'), 'utf8');
+  const datesCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '15-pwa-and-exam-dates-data.js'), 'utf8');
+  const buildJs = fs.readFileSync(path.join(__dirname, '..', 'build.js'), 'utf8');
+
+  assert.ok(buildJs.includes('data-curriculum="olympiad"'), 'build.js must include olympiad formula tab');
+  assert.ok(buildJs.includes('data-curriculum="univ"'), 'build.js must include univ formula tab');
 
   all31.forEach(t => {
     assert.ok(new RegExp(`\\b${t}\\s*:\\s*\\[`).test(mockCode), `17-mock-exam-mode.js PAPERS must define ${t}`);
@@ -258,6 +263,9 @@ audit(`All 31 tracks are wired into CBT Mock Exam Simulator (17-mock-exam-mode.j
     assert.ok(new RegExp(`\\b${t}\\s*:\\s*\\{\\s*label`).test(assignCode), `22-assignments-reports-search.js VIEW_META must define ${t}`);
     assert.ok(new RegExp(`(?:'${t}'|\\b${t})\\s*:\\s*\\{\\s*name`).test(aiCode), `05a-ai-test.js examSystemPrompt must define ${t}`);
     assert.ok(new RegExp(`(?:'${t}'|\\b${t})\\s*:\\s*\\{\\s*source`).test(bpCode), `05c-exam-blueprints.js must define explicit blueprint for ${t}`);
+    assert.ok(new RegExp(`\\b${t}\\s*:\\s*\\[`).test(datesCode), `15-pwa-and-exam-dates-data.js DATES must define ${t}`);
+    assert.ok(new RegExp(`\\b${t}\\s*:\\s*'`).test(datesCode), `15-pwa-and-exam-dates-data.js LABEL must define ${t}`);
+    assert.ok(buildJs.includes(`/${t}/"`), `build.js footer must include link to /${t}/`);
     assert.ok(homeHtml.includes(`showView('${t}')`), `home.html must include catalog card for ${t}`);
     assert.ok(i18nEn.includes(`'home.cat.${t}.h3':`), `20c-i18n.js must include home.cat.${t}.h3`);
     assert.ok(i18nAr.includes(`'home.cat.${t}.h3':`), `20e-i18n-ar.js must include home.cat.${t}.h3`);
@@ -272,7 +280,7 @@ console.log('\n── Pillar 5: Curriculum Coverage & Multi-Page SSG Structure �
 const contentDir = path.join(__dirname, '..', 'content');
 const contentTracks = fs.readdirSync(contentDir).filter(f => fs.statSync(path.join(contentDir, f)).isDirectory());
 
-audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chapters per track (302 total chapters), and >= 8 PDF worksheet pairs per track`, () => {
+audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chapters per track (302 total chapters), and >= 1 PDF worksheet pair per chapter (100% manifest coverage)`, () => {
   assert.strictEqual(contentTracks.length, 31, `Expected 31 content tracks, found ${contentTracks.length}`);
   let totalChapters = 0;
   contentTracks.forEach(t => {
@@ -283,14 +291,16 @@ audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chap
     totalChapters += meta.chapterOrder.length;
     const dlDir = path.join(__dirname, '..', 'public', 'downloads', t);
     const wsFiles = fs.existsSync(dlDir) ? fs.readdirSync(dlDir).filter(f => f.endsWith('-worksheet.pdf')) : [];
-    assert.ok(wsFiles.length >= 8, `Track ${t} must have >= 8 printable PDF worksheets in public/downloads/${t}/, found ${wsFiles.length}`);
+    assert.ok(wsFiles.length >= meta.chapterOrder.length, `Track ${t} must have >= ${meta.chapterOrder.length} printable PDF worksheets in public/downloads/${t}/, found ${wsFiles.length}`);
     const fullExamFiles = fs.existsSync(dlDir) ? fs.readdirSync(dlDir).filter(f => f.endsWith('-exam.html')) : [];
     assert.ok(fullExamFiles.length >= 10, `Track ${t} must have >= 10 printable full exams in public/downloads/${t}/, found ${fullExamFiles.length}`);
     const manifestPath = path.join(dlDir, 'manifest.json');
     assert.ok(fs.existsSync(manifestPath), `manifest.json must exist in public/downloads/${t}/`);
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
     const manifestFullExams = manifest.filter(m => m && m.isFullExam).length;
+    const manifestWs = manifest.filter(m => m && !m.isFullExam && String(m.worksheet || '').endsWith('.pdf')).length;
     assert.ok(manifestFullExams >= 10, `Track ${t} manifest.json must have >= 10 isFullExam entries, found ${manifestFullExams}`);
+    assert.strictEqual(manifestWs, wsFiles.length, `Track ${t} manifest.json must list all ${wsFiles.length} PDF worksheets, found ${manifestWs}`);
   });
   assert.ok(totalChapters >= 302, `Expected >= 302 chapters across 31 tracks, found ${totalChapters}`);
 });

@@ -842,6 +842,8 @@ const baseNjk = `<!DOCTYPE html>
           <button type="button" class="formula-tab-pill" data-curriculum="alevel" onclick="window.CSFormula&&window.CSFormula.setTab('alevel', this)">🇬🇧 Cambridge A-Level (MF19) &amp; IB</button>
           <button type="button" class="formula-tab-pill" data-curriculum="qudrat" onclick="window.CSFormula&&window.CSFormula.setTab('qudrat', this)">🇸🇦 قدرات وتحصيلي (Qudrat &amp; Tahsili)</button>
           <button type="button" class="formula-tab-pill" data-curriculum="ap" onclick="window.CSFormula&&window.CSFormula.setTab('ap', this)">📊 AP Calculus &amp; Statistics</button>
+          <button type="button" class="formula-tab-pill" data-curriculum="olympiad" onclick="window.CSFormula&&window.CSFormula.setTab('olympiad', this)">🏆 Olympiad &amp; Contest Math</button>
+          <button type="button" class="formula-tab-pill" data-curriculum="univ" onclick="window.CSFormula&&window.CSFormula.setTab('univ', this)">🎓 University Math (LinAlg/MVC/ODEs)</button>
           <button type="button" class="formula-tab-pill" data-curriculum="mathai" onclick="window.CSFormula&&window.CSFormula.setTab('mathai', this)">🤖 Math for AI &amp; Data Science</button>
         </div>
       </div>
@@ -1174,21 +1176,36 @@ const baseNjk = `<!DOCTYPE html>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.explore">Explore</div>
         <a href="${BASE_PATH}/calculus/">Calculus</a> ·
+        <a href="${BASE_PATH}/precalc/">Precalculus</a> ·
         <a href="${BASE_PATH}/algebra/">Algebra</a> ·
         <a href="${BASE_PATH}/alg2/">Algebra 2</a> ·
         <a href="${BASE_PATH}/geo/">Geometry</a> ·
         <a href="${BASE_PATH}/linalg/">Linear Algebra</a> ·
         <a href="${BASE_PATH}/mvc/">Multivariable Calculus</a> ·
         <a href="${BASE_PATH}/odes/">Differential Equations</a> ·
+        <a href="${BASE_PATH}/mathai/">Math for AI &amp; Data Science</a> ·
         <a href="${BASE_PATH}/qudrat/">GAT Qudrat</a> ·
+        <a href="${BASE_PATH}/gaten/">GAT English</a> ·
         <a href="${BASE_PATH}/tahsili/">SAAT Tahsili</a> ·
         <a href="${BASE_PATH}/sat/">Digital SAT</a> ·
         <a href="${BASE_PATH}/act/">ACT Math</a> ·
+        <a href="${BASE_PATH}/act2/">ACT II Level 1</a> ·
+        <a href="${BASE_PATH}/act2l2/">ACT II Level 2</a> ·
+        <a href="${BASE_PATH}/est/">EST I</a> ·
+        <a href="${BASE_PATH}/est2/">EST II Level 1</a> ·
+        <a href="${BASE_PATH}/est2l2/">EST II Level 2</a> ·
         <a href="${BASE_PATH}/aslevel/">AS Level</a> ·
         <a href="${BASE_PATH}/a2level/">A2 Level</a> ·
+        <a href="${BASE_PATH}/igcse/">IGCSE 0580</a> ·
+        <a href="${BASE_PATH}/edexcel/">Edexcel 4MA1</a> ·
+        <a href="${BASE_PATH}/addmath/">Add Math 0606</a> ·
+        <a href="${BASE_PATH}/ibsl/">IB Math AA SL</a> ·
+        <a href="${BASE_PATH}/ibhl/">IB Math AA HL</a> ·
         <a href="${BASE_PATH}/apab/">AP Calculus AB</a> ·
         <a href="${BASE_PATH}/apbc/">AP Calculus BC</a> ·
-        <a href="${BASE_PATH}/igcse/">IGCSE 0580</a> ·
+        <a href="${BASE_PATH}/appc/">AP Precalculus</a> ·
+        <a href="${BASE_PATH}/apstats/">AP Statistics</a> ·
+        <a href="${BASE_PATH}/olympiad/">Olympiad Math</a> ·
         <a href="${BASE_PATH}/" data-i18n="foot.all-courses">All courses</a> ·
         <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
         <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> ·

@@ -86,7 +86,17 @@ if('serviceWorker' in navigator){
     tahsili: ['2026-07-18','2026-10-10','2027-01-09','2027-04-10','2027-07-17'],
     gaten:   ['2026-11-14','2027-01-16','2027-04-17','2027-07-24'],
     // ── Contest Math & Olympiad (AMC 10/12 November & Kangaroo March)
-    olympiad:['2026-11-05','2026-11-11','2027-03-18','2027-11-10']
+    olympiad:['2026-11-05','2026-11-11','2027-03-18','2027-11-10'],
+    // ── School & University Semester Finals (Fall Dec & Spring May)
+    algebra: ['2026-12-14','2027-05-24','2027-12-13'],
+    geo:     ['2026-12-15','2027-05-25','2027-12-14'],
+    alg2:    ['2026-12-16','2027-05-26','2027-12-15'],
+    precalc: ['2026-12-17','2027-05-27','2027-12-16'],
+    calculus:['2026-12-18','2027-05-28','2027-12-17'],
+    linalg:  ['2026-12-14','2027-05-17','2027-12-13'],
+    mvc:     ['2026-12-15','2027-05-18','2027-12-14'],
+    odes:    ['2026-12-16','2027-05-19','2027-12-15'],
+    mathai:  ['2026-12-17','2027-05-20','2027-12-16']
   };
 
   /* Label shown beside the number */
@@ -98,7 +108,10 @@ if('serviceWorker' in navigator){
     ibsl:'IB May/Nov', ibhl:'IB May/Nov',
     est:'EST (approx.)', est2:'EST II (approx.)', est2l2:'EST II L2 (approx.)',
     qudrat:'Qudrat (approx.)', tahsili:'Tahsili (approx.)', gaten:'GAT/SAAT (approx.)',
-    olympiad:'AMC / Kangaroo'
+    olympiad:'AMC / Kangaroo',
+    algebra:'Semester Final', geo:'Semester Final', alg2:'Semester Final',
+    precalc:'Semester Final', calculus:'Semester Final',
+    linalg:'Univ Final', mvc:'Univ Final', odes:'Univ Final', mathai:'Univ Final'
   };
 
   function todayMidnight(){ var d=new Date(); d.setHours(0,0,0,0); return d; }

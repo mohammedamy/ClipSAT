@@ -254,8 +254,15 @@ function _renderChapterTeacherMeta(chId, viewId) {
   document.querySelectorAll('.tm-chapter-panel').forEach(function(el){ el.remove(); });
   if (!document.body.classList.contains('tm-on')) return;
   var key  = (viewId||_currentView) + '/' + chId;
-  var meta = CHAPTER_META[key]; if (!meta) return;
   var chEl = document.getElementById(chId); if (!chEl) return;
+  var meta = CHAPTER_META[key];
+  if (!meta) {
+    var kEl = chEl.querySelector('.chead .k, .chead .tag');
+    var hEl = chEl.querySelector('.chead h2, .chead h1');
+    var domTxt = kEl ? kEl.textContent.replace(/[·•].*$/, '').trim() : 'Core Curriculum';
+    var topTxt = hEl ? hEl.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/, '').trim() : chId;
+    meta = { domain: domTxt || 'Core Curriculum', topic: topTxt || chId, diff: 'All' };
+  }
   var vm   = VIEW_META[viewId||_currentView] || {};
   var panel = document.createElement('div');
   panel.className = 'tm-chapter-panel';

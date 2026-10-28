@@ -118,8 +118,9 @@ window.CSAssign = {
     /* Build course options from VIEW_META — every track, independent of which
        track's question bank JSON has actually been fetched so far */
     var trackKeys=(typeof VIEW_META!=='undefined'?Object.keys(VIEW_META):[]).filter(function(k){return k!=='home';});
+    var activeTrack=window.CLIPSAT_TRACK||window._csCurrentView||'calculus';
     var courseOpts=trackKeys.length
-      ? trackKeys.map(function(k){return '<option value="'+k+'">'+(VIEW_META[k].label||k.toUpperCase())+'</option>';}).join('')
+      ? trackKeys.map(function(k){return '<option value="'+k+'"'+(k===activeTrack?' selected':'')+'>'+(VIEW_META[k].label||k.toUpperCase())+'</option>';}).join('')
       : '<option value="calculus">Calculus</option><option value="algebra">Algebra</option><option value="sat">SAT</option><option value="est">EST</option>';
     var _ar=_ttAr(), _dir=_ar?'rtl':'ltr';
     overlay.innerHTML='<div dir="'+_dir+'" style="background:#fff;border-radius:14px;padding:28px 32px;max-width:480px;width:94%;box-shadow:0 8px 40px rgba(0,0,0,.3);font-family:Calibri,Arial,sans-serif;'+(_ar?'text-align:right':'')+'">'
