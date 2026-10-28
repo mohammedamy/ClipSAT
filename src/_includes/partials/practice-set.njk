@@ -27,7 +27,7 @@
 {% import "partials/_bilingual.njk" as bl %}
 {% set LVL_CLASS = {"Basic": "b", "Intermediate": "i", "Advanced": "a"} %}
 <section class="chapter" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">{{ practiceSet.icon or '§' }}</span><h2>{{ practiceSet.heading or 'Practice set' }}</h2></div>
+  <div class="chead"><span class="cn">{{ practiceSet.icon or '§' }}</span><h2>{{ bl.text({"en": practiceSet.heading or "Practice set", "ar": "مجموعة تدريبية"}) }}</h2></div>
   {% if practiceSet.introText %}<p>{{ practiceSet.introText }}</p>{% endif %}
 
   {% if practiceSet.variant == 'compact' %}

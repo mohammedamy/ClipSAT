@@ -317,10 +317,14 @@ audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chap
 audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>=4 worked examples, >=5 bilingual practiceProblems, >=2 figures, >=1 trap/proof/table/explorer, and Chapter 1 syllabusMap)`, () => {
   contentTracks.forEach(t => {
     const meta = JSON.parse(fs.readFileSync(path.join(contentDir, t, '_meta.json'), 'utf8'));
+    const bank = JSON.parse(fs.readFileSync(path.join(bankDir, `${t}.json`), 'utf8'));
+    const pool = bank.pool || [].concat(bank.easy || [], bank.medium || [], bank.hard || []);
+    const bankDomains = new Set(pool.map(q => q.domain || q.topic));
     const chIds = meta.chapterOrder || [];
     chIds.forEach((cid, idx) => {
       const ch = JSON.parse(fs.readFileSync(path.join(contentDir, t, `${cid}.json`), 'utf8'));
       assert.ok(ch.title && ch.title.en && ch.title.ar, `${t}/${cid} must have bilingual chapter title`);
+      assert.ok(ch.quizWidget && Array.isArray(ch.quizWidget.domains) && ch.quizWidget.domains.some(d => bankDomains.has(d)), `${t}/${cid} quizWidget.domains must match bank-data/${t}.json domains`);
       const blocks = (ch.content && ch.content.blocks) || [];
       if (idx === 0) {
         assert.ok(blocks.some(b => b.kind === 'syllabusMap'), `First chapter ${cid} of track ${t} must contain a syllabusMap block`);
@@ -362,6 +366,8 @@ audit(`Every curriculum track has a 50-question _practice-set.json (1,550 total 
     assert.strictEqual(ps.items.length, 50, `Expected 50 items in content/${t}/_practice-set.json, found ${ps.items.length}`);
     let trackFigs = 0;
     ps.items.forEach((it, idx) => {
+      assert.ok(it.question && it.question.en && it.question.ar, `${t} practice item[${idx}] must have bilingual question`);
+      assert.ok(it.solution && it.solution.en && it.solution.ar, `${t} practice item[${idx}] must have bilingual solution`);
       const solClean = String((it.solution && it.solution.en) || '').replace(/<[^>]+>/g, '').trim();
       assert.ok(solClean.length >= 140, `${t} practice item[${idx}] solution too short (${solClean.length} chars)`);
       if (it.fig && typeof it.fig === 'object') {

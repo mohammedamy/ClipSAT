@@ -50,7 +50,7 @@
       </div>
     </div>{% endmacro %}
 <section class="chapter" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">↓</span><h2>Downloads{% if info.variant == 'ib' %} &amp; Resources{% endif %}</h2></div>
+  <div class="chead"><span class="cn">↓</span><h2>{% if info.variant == 'ib' %}{{ bl.text({"en": "Downloads &amp; Resources", "ar": "التنزيلات والمصادر"}) }}{% else %}{{ bl.text({"en": "Downloads", "ar": "التنزيلات"}) }}{% endif %}</h2></div>
 
   {% if info.variant == 'ib' %}
   <div class="callout note"><span class="lab">{{ bl.text(info.introLabel) }}</span>
@@ -97,10 +97,10 @@
   {% endif %}
 
   {% if info.worksheetHeadingPlain %}
-  <h3>Worksheet Library</h3>
+  <h3>{{ bl.text({"en": "Worksheet Library", "ar": "مكتبة أوراق العمل"}) }}</h3>
   <p>{{ bl.text(info.worksheetLibraryText) }}</p>
   {% else %}
-  <h3 style="margin-top:26px">Worksheet Library</h3>
+  <h3 style="margin-top:26px">{{ bl.text({"en": "Worksheet Library", "ar": "مكتبة أوراق العمل"}) }}</h3>
   <p style="font-size:.88rem;color:var(--muted)">{{ bl.text(info.worksheetLibraryText) }}</p>
   {% endif %}
   <div class="worksheet-library" data-track="{{ trackId }}"><div class="wl-loading">Loading worksheet library…</div></div>
