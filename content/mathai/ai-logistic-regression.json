@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "When the target variable is categorical (0 or 1, positive or negative), standard linear regression fails. Logistic regression maps continuous linear combinations to calibrated probabilities using the Sigmoid curve.",
-          "ar": null
+          "ar": "عندما the target المتغير is categorical (0 or 1, positive or negative), standard linear regression fails. Logistic regression maps continuous linear combinations to calibrated probabilities using the Sigmoid curve."
         }
       },
       {
@@ -38,11 +38,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 7.1 — Sigmoid & Binary Cross-Entropy",
-          "ar": null
+          "ar": "● تعريف 7.1 — Sigmoid & Binary Cross-Entropy"
         },
         "body": {
           "en": "1. <strong>Sigmoid Function:</strong> \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\).<br>Key properties: \\( \\sigma(0) = 0.5 \\), \\( \\lim_{z \\to \\infty} \\sigma(z) = 1 \\), \\( \\lim_{z \\to -\\infty} \\sigma(z) = 0 \\). Derivative: \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\).<br><br>2. <strong>Binary Cross-Entropy Loss:</strong> For true label \\( y \\in \\{0, 1\\} \\) and model prediction \\( \\hat{y} = \\sigma(\\mathbf{w}^T\\mathbf{x}) \\):<br>\\[ L(y, \\hat{y}) = -\\Big[ y \\ln\\hat{y} + (1 - y) \\ln(1 - \\hat{y}) \\Big] \\]",
-          "ar": null
+          "ar": "1. <strong>Sigmoid الدالة:</strong> \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\).<br>Key properties: \\( \\sigma(0) = 0.5 \\), \\( \\lim_{z \\to \\infty} \\sigma(z) = 1 \\), \\( \\lim_{z \\to -\\infty} \\sigma(z) = 0 \\). المشتقة: \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\).<br><br>2. <strong>Binary Cross-Entropy Loss:</strong> For true label \\( y \\in \\{0, 1\\} \\) and model prediction \\( \\hat{y} = \\sigma(\\mathbf{w}^T\\mathbf{x}) \\):<br>\\[ L(y, \\hat{y}) = -\\Big[ y \\ln\\hat{y} + (1 - y) \\ln(1 - \\hat{y}) \\Big] \\]"
         }
       },
       {
@@ -211,41 +211,41 @@
           {
             "label": {
               "en": "Odds Ratio",
-              "ar": null
+              "ar": "Odds Ratio (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
             },
             "value": {
               "en": "\\( \\text{Odds} = \\frac{p}{1-p} = e^{\\mathbf{w}^T\\mathbf{x}} \\)",
-              "ar": null
+              "ar": "\\( \\text{Odds} = \\frac{p}{1-p} = e^{\\mathbf{w}^T\\mathbf{x}} \\)"
             }
           },
           {
             "label": {
               "en": "Log-Odds (Logit)",
-              "ar": null
+              "ar": "Log-Odds (Logit) (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
             },
             "value": {
               "en": "\\( \\ln\\left(\\frac{p}{1-p}\\right) = \\mathbf{w}^T\\mathbf{x} \\)",
-              "ar": null
+              "ar": "\\( \\ln\\left(\\frac{p}{1-p}\\right) = \\mathbf{w}^T\\mathbf{x} \\)"
             }
           },
           {
             "label": {
               "en": "Decision Boundary",
-              "ar": null
+              "ar": "Decision Boundary (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
             },
             "value": {
               "en": "\\( \\hat{y} \\ge 0.5 \\iff \\mathbf{w}^T\\mathbf{x} \\ge 0 \\) (hyperplane separating classes)",
-              "ar": null
+              "ar": "\\( \\hat{y} \\ge 0.5 \\iff \\mathbf{w}^T\\mathbf{x} \\ge 0 \\) (hyperplane separating classes) (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
             }
           },
           {
             "label": {
               "en": "Loss Derivative",
-              "ar": null
+              "ar": "Loss المشتقة"
             },
             "value": {
               "en": "\\( \\frac{\\partial L}{\\partial \\mathbf{w}} = (\\hat{y} - y)\\mathbf{x} \\) (remarkably clean!)",
-              "ar": null
+              "ar": "\\( \\frac{\\partial L}{\\partial \\mathbf{w}} = (\\hat{y} - y)\\mathbf{x} \\) (remarkably clean!) (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
             }
           }
         ]
@@ -267,11 +267,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 7.A — Probability & Cross-Entropy Calculation",
-          "ar": null
+          "ar": "مثال محلول 7.A — الاحتمال & Cross-Entropy Calculation"
         },
         "body": {
           "en": "<p>A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on diameter \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) Find the predicted malignancy probability for a tumor of diameter \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), calculate the binary cross-entropy loss \\( L \\).</p><p><strong>Solution:</strong><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute probability via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% probability).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>",
-          "ar": null
+          "ar": "<p>A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on القطر \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) أوجد predicted malignancy الاحتمال for a tumor of القطر \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), احسب binary cross-entropy loss \\( L \\).</p><p><strong>Solution:</strong><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute الاحتمال via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% الاحتمال).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>"
         }
       },
       {

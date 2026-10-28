@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Real datasets frequently have hundreds or thousands of correlated features. Principal Component Analysis (PCA) identifies the orthogonal axes of maximum variance, compressing high-dimensional data while preserving essential information.",
-          "ar": null
+          "ar": "<p><strong>الشرح الرياضي (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)):</strong></p>Real datasets frequently have hundreds or thousands of correlated features. Principal Component Analysis (PCA) identifies the orthogonal axes of maximum variance, compressing high-dimensional data while preserving essential information."
         }
       },
       {
@@ -38,11 +38,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 8.1 — PCA via Spectral Decomposition",
-          "ar": null
+          "ar": "▲ مبرهنة 8.1 — PCA via Spectral Decomposition"
         },
         "body": {
           "en": "Let \\( \\mathbf{X} \\in \\mathbb{R}^{N \\times d} \\) be a zero-centered data matrix (mean \\( \\mathbf{\\bar{x}} = \\mathbf{0} \\)).<br>1. The empirical covariance matrix is \\( \\mathbf{\\Sigma} = \\frac{1}{N-1} \\mathbf{X}^T \\mathbf{X} \\in \\mathbb{R}^{d \\times d} \\).<br>2. Because \\( \\mathbf{\\Sigma} \\) is symmetric positive semi-definite, it admits an orthonormal eigen-decomposition:<br>\\[ \\mathbf{\\Sigma} \\mathbf{v}_i = \\lambda_i \\mathbf{v}_i, \\quad \\lambda_1 \\ge \\lambda_2 \\ge \\dots \\ge \\lambda_d \\ge 0 \\]<br>3. The first principal component \\( \\mathbf{v}_1 \\) is the unit eigenvector associated with the largest eigenvalue \\( \\lambda_1 \\), maximizing the variance of the projected data.",
-          "ar": null
+          "ar": "Let \\( \\mathbf{X} \\in \\mathbb{R}^{N \\times d} \\) be a zero-centered data المصفوفة (mean \\( \\mathbf{\\bar{x}} = \\mathbf{0} \\)).<br>1. The empirical covariance المصفوفة is \\( \\mathbf{\\Sigma} = \\frac{1}{N-1} \\mathbf{X}^T \\mathbf{X} \\in \\mathbb{R}^{d \\times d} \\).<br>2. Because \\( \\mathbf{\\Sigma} \\) is symmetric positive semi-definite, it admits an orthonormal eigen-decomposition:<br>\\[ \\mathbf{\\Sigma} \\mathbf{v}_i = \\lambda_i \\mathbf{v}_i, \\quad \\lambda_1 \\ge \\lambda_2 \\ge \\dots \\ge \\lambda_d \\ge 0 \\]<br>3. The first principal component \\( \\mathbf{v}_1 \\) is the unit eigenvector associated with the largest eigenvalue \\( \\lambda_1 \\), maximizing the variance of the projected data."
         }
       },
       {
@@ -224,41 +224,41 @@
           {
             "label": {
               "en": "Covariance Entry",
-              "ar": null
+              "ar": "Covariance Entry (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
             },
             "value": {
               "en": "\\( \\text{Cov}(X, Y) = \\frac{1}{N-1}\\sum (x_i - \\bar{x})(y_i - \\bar{y}) \\)",
-              "ar": null
+              "ar": "\\( \\text{Cov}(X, Y) = \\frac{1}{N-1}\\sum (x_i - \\bar{x})(y_i - \\bar{y}) \\)"
             }
           },
           {
             "label": {
               "en": "Characteristic Equation",
-              "ar": null
+              "ar": "Characteristic المعادلة"
             },
             "value": {
               "en": "\\( \\det(\\mathbf{\\Sigma} - \\lambda \\mathbf{I}) = 0 \\)",
-              "ar": null
+              "ar": "\\( \\det(\\mathbf{\\Sigma} - \\lambda \\mathbf{I}) = 0 \\)"
             }
           },
           {
             "label": {
               "en": "Explained Variance",
-              "ar": null
+              "ar": "Explained Variance (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
             },
             "value": {
               "en": "\\( \\text{Ratio}_k = \\frac{\\lambda_k}{\\sum_{j=1}^d \\lambda_j} \\)",
-              "ar": null
+              "ar": "\\( \\text{Ratio}_k = \\frac{\\lambda_k}{\\sum_{j=1}^d \\lambda_j} \\)"
             }
           },
           {
             "label": {
               "en": "Projection",
-              "ar": null
+              "ar": "Projection (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
             },
             "value": {
               "en": "\\( \\mathbf{z} = \\mathbf{V}_k^T \\mathbf{x} \\in \\mathbb{R}^k \\) (reduced representation)",
-              "ar": null
+              "ar": "\\( \\mathbf{z} = \\mathbf{V}_k^T \\mathbf{x} \\in \\mathbb{R}^k \\) (reduced representation) (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
             }
           }
         ]
@@ -280,11 +280,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 8.A — Finding Principal Components of 2D Data",
-          "ar": null
+          "ar": "مثال محلول 8.A — Finding Principal Components of 2D Data"
         },
         "body": {
           "en": "<p>A 2D centered dataset has sample covariance matrix:<br>\\[ \\mathbf{\\Sigma} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix} \\]<br>(a) Find the eigenvalues \\( \\lambda_1 \\) and \\( \\lambda_2 \\).<br>(b) Find the unit eigenvector \\( \\mathbf{v}_1 \\) corresponding to the principal component.<br>(c) What percentage of total variance is explained by the first principal component?</p><p><strong>Solution:</strong><br>(a) Characteristic equation \\( \\det(\\mathbf{\\Sigma} - \\lambda\\mathbf{I}) = 0 \\):<br>\\[ \\det \\begin{pmatrix} 4 - \\lambda & 2 \\\\ 2 & 1 - \\lambda \\end{pmatrix} = (4 - \\lambda)(1 - \\lambda) - (2)(2) = 0 \\]<br>\\[ \\lambda^2 - 5\\lambda + 4 - 4 = 0 \\implies \\lambda^2 - 5\\lambda = 0 \\implies \\lambda(\\lambda - 5) = 0 \\].<br>Eigenvalues are \\( \\lambda_1 = 5 \\) and \\( \\lambda_2 = 0 \\).<br><br>(b) For \\( \\lambda_1 = 5 \\):<br>\\[ (\\mathbf{\\Sigma} - 5\\mathbf{I})\\mathbf{v} = \\begin{pmatrix} -1 & 2 \\\\ 2 & -4 \\end{pmatrix} \\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies -v_1 + 2v_2 = 0 \\implies v_1 = 2v_2 \\].<br>A directional vector is \\( \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\). Normalizing to unit length:<br>\\[ \\|\\mathbf{v}\\| = \\sqrt{2^2 + 1^2} = \\sqrt{5} \\implies \\mathbf{v}_1 = \\frac{1}{\\sqrt{5}}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 2/\\sqrt{5} \\\\ 1/\\sqrt{5} \\end{pmatrix} \\approx \\begin{pmatrix} 0.894 \\\\ 0.447 \\end{pmatrix} \\].<br><br>(c) Total variance = \\( \\lambda_1 + \\lambda_2 = 5 + 0 = 5 \\).<br>Percentage explained = \\( \\frac{5}{5} = 100\\% \\). (The data lies perfectly along a 1D line in 2D space!).<br><strong>Answer:</strong> \\( \\lambda_1 = 5, \\, \\lambda_2 = 0 \\); \\( \\mathbf{v}_1 = [0.894, 0.447]^T \\); 100% variance explained.</p>",
-          "ar": null
+          "ar": "<p>A 2D centered dataset has sample covariance المصفوفة:<br>\\[ \\mathbf{\\Sigma} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix} \\]<br>(a) أوجد القيم الذاتية \\( \\lambda_1 \\) and \\( \\lambda_2 \\).<br>(b) أوجد unit eigenvector \\( \\mathbf{v}_1 \\) corresponding to the principal component.<br>(c) What percentage of total variance is explained by the first principal component?</p><p><strong>Solution:</strong><br>(a) Characteristic المعادلة \\( \\det(\\mathbf{\\Sigma} - \\lambda\\mathbf{I}) = 0 \\):<br>\\[ \\det \\begin{pmatrix} 4 - \\lambda & 2 \\\\ 2 & 1 - \\lambda \\end{pmatrix} = (4 - \\lambda)(1 - \\lambda) - (2)(2) = 0 \\]<br>\\[ \\lambda^2 - 5\\lambda + 4 - 4 = 0 \\implies \\lambda^2 - 5\\lambda = 0 \\implies \\lambda(\\lambda - 5) = 0 \\].<br>Eigenvalues are \\( \\lambda_1 = 5 \\) and \\( \\lambda_2 = 0 \\).<br><br>(b) For \\( \\lambda_1 = 5 \\):<br>\\[ (\\mathbf{\\Sigma} - 5\\mathbf{I})\\mathbf{v} = \\begin{pmatrix} -1 & 2 \\\\ 2 & -4 \\end{pmatrix} \\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies -v_1 + 2v_2 = 0 \\implies v_1 = 2v_2 \\].<br>A directional المتجه is \\( \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\). Normalizing to unit length:<br>\\[ \\|\\mathbf{v}\\| = \\sqrt{2^2 + 1^2} = \\sqrt{5} \\implies \\mathbf{v}_1 = \\frac{1}{\\sqrt{5}}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 2/\\sqrt{5} \\\\ 1/\\sqrt{5} \\end{pmatrix} \\approx \\begin{pmatrix} 0.894 \\\\ 0.447 \\end{pmatrix} \\].<br><br>(c) Total variance = \\( \\lambda_1 + \\lambda_2 = 5 + 0 = 5 \\).<br>Percentage explained = \\( \\frac{5}{5} = 100\\% \\). (The data lies perfectly along a 1D line in 2D space!).<br><strong>Answer:</strong> \\( \\lambda_1 = 5, \\, \\lambda_2 = 0 \\); \\( \\mathbf{v}_1 = [0.894, 0.447]^T \\); 100% variance explained.</p>"
         }
       },
       {

@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "In Artificial Intelligence and Natural Language Processing, text, images, and audio are mapped to high-dimensional numerical vectors called embeddings. We explore vector geometry, norms, and distance metrics used in modern vector databases.",
-          "ar": null
+          "ar": "In Artificial Intelligence and Natural Language Processing, text, images, and audio are mapped to high-dimensional numerical المتجهات called embeddings. We explore المتجه الهندسة, norms, and distance metrics used in modern المتجه databases."
         }
       },
       {
@@ -93,11 +93,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 1.1 — Vector Norms & Distances",
-          "ar": null
+          "ar": "● تعريف 1.1 — المتجه Norms & Distances"
         },
         "body": {
           "en": "For a vector \\( \\mathbf{x} = [x_1, x_2, \\dots, x_n]^T \\in \\mathbb{R}^n \\):<br>1. <strong>Euclidean (\\( L_2 \\)) Norm:</strong> \\( \\|\\mathbf{x}\\|_2 = \\sqrt{\\sum_{i=1}^n x_i^2} = \\sqrt{\\mathbf{x}^T\\mathbf{x}} \\). Measures straight-line geometric distance.<br>2. <strong>Manhattan (\\( L_1 \\)) Norm:</strong> \\( \\|\\mathbf{x}\\|_1 = \\sum_{i=1}^n |x_i| \\). Used in Lasso regularization (L1 sparsity).<br>3. <strong>Max (\\( L_\\infty \\)) Norm:</strong> \\( \\|\\mathbf{x}\\|_\\infty = \\max_i |x_i| \\). Used in adversarial robustness attacks (FGSM).",
-          "ar": null
+          "ar": "For a المتجه \\( \\mathbf{x} = [x_1, x_2, \\dots, x_n]^T \\in \\mathbb{R}^n \\):<br>1. <strong>Euclidean (\\( L_2 \\)) Norm:</strong> \\( \\|\\mathbf{x}\\|_2 = \\sqrt{\\sum_{i=1}^n x_i^2} = \\sqrt{\\mathbf{x}^T\\mathbf{x}} \\). Measures straight-line geometric distance.<br>2. <strong>Manhattan (\\( L_1 \\)) Norm:</strong> \\( \\|\\mathbf{x}\\|_1 = \\sum_{i=1}^n |x_i| \\). Used in Lasso regularization (L1 sparsity).<br>3. <strong>Max (\\( L_\\infty \\)) Norm:</strong> \\( \\|\\mathbf{x}\\|_\\infty = \\max_i |x_i| \\). Used in adversarial robustness attacks (FGSM)."
         }
       },
       {
@@ -303,41 +303,41 @@
           {
             "label": {
               "en": "Dot Product",
-              "ar": null
+              "ar": "Dot Product (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))"
             },
             "value": {
               "en": "\\( \\mathbf{u} \\cdot \\mathbf{v} = \\sum_{i=1}^n u_i v_i = \\mathbf{u}^T\\mathbf{v} \\)",
-              "ar": null
+              "ar": "\\( \\mathbf{u} \\cdot \\mathbf{v} = \\sum_{i=1}^n u_i v_i = \\mathbf{u}^T\\mathbf{v} \\)"
             }
           },
           {
             "label": {
               "en": "Cosine Similarity",
-              "ar": null
+              "ar": "Cosine Similarity (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))"
             },
             "value": {
               "en": "\\( \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\| \\|\\mathbf{v}\\|} \\in [-1, 1] \\)",
-              "ar": null
+              "ar": "\\( \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\| \\|\\mathbf{v}\\|} \\in [-1, 1] \\)"
             }
           },
           {
             "label": {
               "en": "Cosine Distance",
-              "ar": null
+              "ar": "Cosine Distance (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))"
             },
             "value": {
               "en": "\\( D_{\\cos}(\\mathbf{u}, \\mathbf{v}) = 1 - \\cos\\theta \\)",
-              "ar": null
+              "ar": "\\( D_{\\cos}(\\mathbf{u}, \\mathbf{v}) = 1 - \\cos\\theta \\)"
             }
           },
           {
             "label": {
               "en": "Orthogonality",
-              "ar": null
+              "ar": "Orthogonality (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))"
             },
             "value": {
               "en": "\\( \\mathbf{u} \\perp \\mathbf{v} \\iff \\mathbf{u}^T\\mathbf{v} = 0 \\implies \\cos\\theta = 0 \\)",
-              "ar": null
+              "ar": "\\( \\mathbf{u} \\perp \\mathbf{v} \\iff \\mathbf{u}^T\\mathbf{v} = 0 \\implies \\cos\\theta = 0 \\)"
             }
           }
         ]
@@ -359,11 +359,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 1.A — Cosine Similarity Between Word Embeddings",
-          "ar": null
+          "ar": "مثال محلول 1.A — Cosine Similarity Between Word Embeddings"
         },
         "body": {
           "en": "<p>In an NLP embedding model, the word vectors for <em>'king'</em> and <em>'queen'</em> in a 3-dimensional subspace are \\( \\mathbf{u} = [0.8, 0.6, 0.0]^T \\) and \\( \\mathbf{v} = [0.6, 0.8, 0.0]^T \\). An unrelated word <em>'apple'</em> has vector \\( \\mathbf{w} = [0.0, 0.1, 0.99]^T \\). Calculate the cosine similarity between 'king' and 'queen', and between 'king' and 'apple'.</p><p><strong>Solution:</strong><br>1. Norm of \\( \\mathbf{u} \\): \\( \\|\\mathbf{u}\\| = \\sqrt{0.8^2 + 0.6^2 + 0^2} = \\sqrt{0.64 + 0.36} = 1.0 \\).<br>2. Norm of \\( \\mathbf{v} \\): \\( \\|\\mathbf{v}\\| = \\sqrt{0.6^2 + 0.8^2 + 0^2} = 1.0 \\).<br>3. Dot product: \\( \\mathbf{u} \\cdot \\mathbf{v} = (0.8)(0.6) + (0.6)(0.8) + (0)(0) = 0.48 + 0.48 = 0.96 \\).<br>Cosine similarity: \\( \\cos\\theta_{uv} = \\frac{0.96}{(1.0)(1.0)} = 0.96 \\) (very high semantic similarity!).<br><br>4. Now check 'king' and 'apple':<br>\\( \\mathbf{u} \\cdot \\mathbf{w} = (0.8)(0) + (0.6)(0.1) + (0)(0.99) = 0.06 \\).<br>Norm \\( \\|\\mathbf{w}\\| = \\sqrt{0^2 + 0.01 + 0.9801} = \\sqrt{0.9901} \\approx 0.995 \\).<br>Cosine similarity: \\( \\cos\\theta_{uw} = \\frac{0.06}{(1.0)(0.995)} \\approx 0.0603 \\) (near orthogonal, no semantic relation).<br><strong>Answer:</strong> \\( \\cos\\theta_{uv} = 0.96 \\); \\( \\cos\\theta_{uw} \\approx 0.060 \\).</p>",
-          "ar": null
+          "ar": "<p>In an NLP embedding model, the word المتجهات for <em>'king'</em> and <em>'queen'</em> in a 3-dimensional subspace are \\( \\mathbf{u} = [0.8, 0.6, 0.0]^T \\) and \\( \\mathbf{v} = [0.6, 0.8, 0.0]^T \\). An unrelated word <em>'apple'</em> has المتجه \\( \\mathbf{w} = [0.0, 0.1, 0.99]^T \\). احسب cosine similarity between 'king' and 'queen', and between 'king' and 'apple'.</p><p><strong>Solution:</strong><br>1. Norm of \\( \\mathbf{u} \\): \\( \\|\\mathbf{u}\\| = \\sqrt{0.8^2 + 0.6^2 + 0^2} = \\sqrt{0.64 + 0.36} = 1.0 \\).<br>2. Norm of \\( \\mathbf{v} \\): \\( \\|\\mathbf{v}\\| = \\sqrt{0.6^2 + 0.8^2 + 0^2} = 1.0 \\).<br>3. Dot product: \\( \\mathbf{u} \\cdot \\mathbf{v} = (0.8)(0.6) + (0.6)(0.8) + (0)(0) = 0.48 + 0.48 = 0.96 \\).<br>Cosine similarity: \\( \\cos\\theta_{uv} = \\frac{0.96}{(1.0)(1.0)} = 0.96 \\) (very high semantic similarity!).<br><br>4. Now check 'king' and 'apple':<br>\\( \\mathbf{u} \\cdot \\mathbf{w} = (0.8)(0) + (0.6)(0.1) + (0)(0.99) = 0.06 \\).<br>Norm \\( \\|\\mathbf{w}\\| = \\sqrt{0^2 + 0.01 + 0.9801} = \\sqrt{0.9901} \\approx 0.995 \\).<br>Cosine similarity: \\( \\cos\\theta_{uw} = \\frac{0.06}{(1.0)(0.995)} \\approx 0.0603 \\) (near orthogonal, no semantic relation).<br><strong>Answer:</strong> \\( \\cos\\theta_{uv} = 0.96 \\); \\( \\cos\\theta_{uw} \\approx 0.060 \\).</p>"
         }
       },
       {

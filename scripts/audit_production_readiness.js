@@ -321,10 +321,30 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
     const pool = bank.pool || [].concat(bank.easy || [], bank.medium || [], bank.hard || []);
     const bankDomains = new Set(pool.map(q => q.domain || q.topic));
     const chIds = meta.chapterOrder || [];
+    const chIdSet = new Set(chIds);
+    pool.forEach((q, qIdx) => {
+      assert.ok(q.topic_id && chIdSet.has(q.topic_id), `${t} bank question[${qIdx}] (${q.id}) must have a valid topic_id in chapterOrder, found ${q.topic_id}`);
+      assert.ok(q.domain && String(q.domain).trim(), `${t} bank question[${qIdx}] (${q.id}) must have a non-empty domain`);
+      assert.ok(Array.isArray(q.hints) && q.hints.length >= 3, `${t} bank question[${qIdx}] (${q.id}) must have >= 3 hints`);
+    });
     chIds.forEach((cid, idx) => {
       const ch = JSON.parse(fs.readFileSync(path.join(contentDir, t, `${cid}.json`), 'utf8'));
       assert.ok(ch.title && ch.title.en && ch.title.ar, `${t}/${cid} must have bilingual chapter title`);
       assert.ok(ch.quizWidget && Array.isArray(ch.quizWidget.domains) && ch.quizWidget.domains.some(d => bankDomains.has(d)), `${t}/${cid} quizWidget.domains must match bank-data/${t}.json domains`);
+      (function assertAllBilingual(node, p) {
+        if (!node || typeof node !== 'object') return;
+        if (Array.isArray(node)) {
+          node.forEach((item, i) => assertAllBilingual(item, `${p}[${i}]`));
+          return;
+        }
+        if (Object.prototype.hasOwnProperty.call(node, 'en') && Object.prototype.hasOwnProperty.call(node, 'ar')) {
+          assert.ok(node.ar && String(node.ar).trim(), `${t}/${cid} ${p} must have non-empty .ar string`);
+          return;
+        }
+        for (const [k, v] of Object.entries(node)) {
+          assertAllBilingual(v, p ? `${p}.${k}` : k);
+        }
+      })(ch, '');
       const blocks = (ch.content && ch.content.blocks) || [];
       if (idx === 0) {
         assert.ok(blocks.some(b => b.kind === 'syllabusMap'), `First chapter ${cid} of track ${t} must contain a syllabusMap block`);

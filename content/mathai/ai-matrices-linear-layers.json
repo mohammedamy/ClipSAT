@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Deep neural networks are sequences of matrix multiplications alternated with non-linear activation functions. Here we formulate the algebraic forward pass of dense feedforward neural layers.",
-          "ar": null
+          "ar": "Deep neural networks are المتتاليات of المصفوفة multiplications alternated with non-linear activation الدوال. Here we formulate the algebraic forward pass of dense feedforward neural layers."
         }
       },
       {
@@ -38,11 +38,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 2.1 — Dense Neural Layer Formulation",
-          "ar": null
+          "ar": "● تعريف 2.1 — Dense Neural Layer Formulation"
         },
         "body": {
           "en": "A fully connected (dense) neural network layer with \\( n_{\\text{in}} \\) inputs and \\( n_{\\text{out}} \\) neurons computes an affine linear transformation followed by an element-wise activation \\( \\sigma \\):<br>\\[ \\mathbf{z} = \\mathbf{W}\\mathbf{x} + \\mathbf{b}, \\quad \\mathbf{a} = \\sigma(\\mathbf{z}) \\]<br>where \\( \\mathbf{W} \\in \\mathbb{R}^{n_{\\text{out}} \\times n_{\\text{in}}} \\) is the weight matrix, \\( \\mathbf{x} \\in \\mathbb{R}^{n_{\\text{in}}} \\) is the input vector, \\( \\mathbf{b} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the bias vector, and \\( \\mathbf{a} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the layer activation vector.",
-          "ar": null
+          "ar": "A fully connected (dense) neural network layer with \\( n_{\\text{in}} \\) inputs and \\( n_{\\text{out}} \\) neurons computes an affine linear transformation followed by an element-wise activation \\( \\sigma \\):<br>\\[ \\mathbf{z} = \\mathbf{W}\\mathbf{x} + \\mathbf{b}, \\quad \\mathbf{a} = \\sigma(\\mathbf{z}) \\]<br>where \\( \\mathbf{W} \\in \\mathbb{R}^{n_{\\text{out}} \\times n_{\\text{in}}} \\) is the weight المصفوفة, \\( \\mathbf{x} \\in \\mathbb{R}^{n_{\\text{in}}} \\) is the input المتجه, \\( \\mathbf{b} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the bias المتجه, and \\( \\mathbf{a} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the layer activation المتجه."
         }
       },
       {
@@ -248,41 +248,41 @@
           {
             "label": {
               "en": "ReLU",
-              "ar": null
+              "ar": "ReLU (المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط)"
             },
             "value": {
               "en": "\\( \\text{ReLU}(z) = \\max(0, z) \\)",
-              "ar": null
+              "ar": "\\( \\text{ReLU}(z) = \\max(0, z) \\)"
             }
           },
           {
             "label": {
               "en": "Sigmoid",
-              "ar": null
+              "ar": "Sigmoid (المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط)"
             },
             "value": {
               "en": "\\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\in (0, 1) \\)",
-              "ar": null
+              "ar": "\\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\in (0, 1) \\)"
             }
           },
           {
             "label": {
               "en": "Softmax",
-              "ar": null
+              "ar": "Softmax (المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط)"
             },
             "value": {
               "en": "\\( \\text{Softmax}(z_i) = \\frac{e^{z_i}}{\\sum_j e^{z_j}} \\)",
-              "ar": null
+              "ar": "\\( \\text{Softmax}(z_i) = \\frac{e^{z_i}}{\\sum_j e^{z_j}} \\)"
             }
           },
           {
             "label": {
               "en": "Matrix Dimension Rule",
-              "ar": null
+              "ar": "المصفوفة Dimension Rule"
             },
             "value": {
               "en": "\\( (m \\times k) \\cdot (k \\times n) = (m \\times n) \\)",
-              "ar": null
+              "ar": "\\( (m \\times k) \\cdot (k \\times n) = (m \\times n) \\)"
             }
           }
         ]
@@ -304,11 +304,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 2.A — Manual Feedforward Neural Layer",
-          "ar": null
+          "ar": "مثال محلول 2.A — Manual Feedforward Neural Layer"
         },
         "body": {
           "en": "<p>A neural network layer has 2 inputs and 3 neurons with weights and biases:<br>\\[ \\mathbf{W} = \\begin{pmatrix} 2 & -1 \\\\ 0.5 & 3 \\\\ -1 & 1 \\end{pmatrix}, \\quad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} \\]<br>For the input \\( \\mathbf{x} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix} \\), compute the pre-activation \\( \\mathbf{z} \\) and the activated output \\( \\mathbf{a} \\) using the ReLU function.</p><p><strong>Solution:</strong><br>Compute \\( \\mathbf{W}\\mathbf{x} \\):<br>\\[ \\mathbf{W}\\mathbf{x} = \\begin{pmatrix} 2(3) + (-1)(2) \\\\ 0.5(3) + 3(2) \\\\ -1(3) + 1(2) \\end{pmatrix} = \\begin{pmatrix} 6 - 2 \\\\ 1.5 + 6 \\\\ -3 + 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} \\]<br>Add bias vector \\( \\mathbf{b} \\):<br>\\[ \\mathbf{z} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ -0.5 \\end{pmatrix} \\]<br>Apply element-wise \\( \\text{ReLU}(z) = \\max(0, z) \\):<br>\\[ \\mathbf{a} = \\text{ReLU}(\\mathbf{z}) = \\begin{pmatrix} \\max(0, 5) \\\\ \\max(0, 5.5) \\\\ \\max(0, -0.5) \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ 0 \\end{pmatrix} \\].<br><strong>Answer:</strong> \\( \\mathbf{z} = [5, 5.5, -0.5]^T \\), \\( \\mathbf{a} = [5, 5.5, 0]^T \\).</p>",
-          "ar": null
+          "ar": "<p>A neural network layer has 2 inputs and 3 neurons with weights and biases:<br>\\[ \\mathbf{W} = \\begin{pmatrix} 2 & -1 \\\\ 0.5 & 3 \\\\ -1 & 1 \\end{pmatrix}, \\quad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} \\]<br>For the input \\( \\mathbf{x} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix} \\), compute the pre-activation \\( \\mathbf{z} \\) and the activated output \\( \\mathbf{a} \\) using the ReLU الدالة.</p><p><strong>Solution:</strong><br>Compute \\( \\mathbf{W}\\mathbf{x} \\):<br>\\[ \\mathbf{W}\\mathbf{x} = \\begin{pmatrix} 2(3) + (-1)(2) \\\\ 0.5(3) + 3(2) \\\\ -1(3) + 1(2) \\end{pmatrix} = \\begin{pmatrix} 6 - 2 \\\\ 1.5 + 6 \\\\ -3 + 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} \\]<br>Add bias المتجه \\( \\mathbf{b} \\):<br>\\[ \\mathbf{z} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ -0.5 \\end{pmatrix} \\]<br>Apply element-wise \\( \\text{ReLU}(z) = \\max(0, z) \\):<br>\\[ \\mathbf{a} = \\text{ReLU}(\\mathbf{z}) = \\begin{pmatrix} \\max(0, 5) \\\\ \\max(0, 5.5) \\\\ \\max(0, -0.5) \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ 0 \\end{pmatrix} \\].<br><strong>Answer:</strong> \\( \\mathbf{z} = [5, 5.5, -0.5]^T \\), \\( \\mathbf{a} = [5, 5.5, 0]^T \\).</p>"
         }
       },
       {

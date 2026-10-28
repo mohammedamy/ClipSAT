@@ -11,7 +11,7 @@
         "kind": "text",
         "body": {
           "en": "<p>While single integrals accumulate quantities along one-dimensional intervals, <strong>multiple integrals</strong> accumulate continuous functions over multidimensional spatial domains. A double integral measures the net volume trapped beneath a bivariate surface \\(z = f(x, y)\\), total mass across variable surface density, or planar probability distributions. Through Fubini's Theorem and the Jacobian determinant, multivariable integration transforms complex domains into computable iterated operations.</p>",
-          "ar": null
+          "ar": "<p>While single التكاملات accumulate quantities along one-dimensional intervals, <strong>multiple integrals</strong> accumulate continuous الدوال over multidimensional spatial domains. A double التكامل measures the net الحجم trapped beneath a bivariate surface \\(z = f(x, y)\\), total mass across المتغير surface density, or planar الاحتمال distributions. Through Fubini's مبرهنة and the Jacobian المحدد, multivariable integration transforms complex domains into computable iterated operations.</p>"
         }
       },
       {
@@ -19,11 +19,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 14.1 — The Double Riemann Integral",
-          "ar": null
+          "ar": "● تعريف 14.1 — The Double Riemann التكامل"
         },
         "body": {
           "en": "<p>Let \\(f: R \\subseteq \\mathbb{R}^2 \\to \\mathbb{R}\\) be bounded on a closed, bounded region \\(R\\). Partition \\(R\\) into \\(m \\times n\\) sub-rectangles \\(R_{ij}\\) of area \\(\\Delta A_{ij} = \\Delta x_i \\Delta y_j\\). Choose a sample point \\((x_{ij}^*, y_{ij}^*) \\in R_{ij}\\).</p><p>The <strong>double Riemann integral</strong> of \\(f\\) over \\(R\\) is the limit of the double Riemann sums as the partition norm \\(\\|P\\| = \\max(\\Delta x_i, \\Delta y_j) \\to 0\\):</p>\\[ \\iint_R f(x, y)\\,dA = \\lim_{\\|P\\| \\to 0} \\sum_{i=1}^m \\sum_{j=1}^n f(x_{ij}^*, y_{ij}^*)\\,\\Delta A_{ij} \\]<p>If \\(f(x, y) \\ge 0\\), the double integral represents the exact three-dimensional volume of the solid cylinder beneath the surface \\(z = f(x, y)\\) and above \\(R\\).</p>",
-          "ar": null
+          "ar": "<p>Let \\(f: R \\subseteq \\mathbb{R}^2 \\to \\mathbb{R}\\) be bounded on a closed, bounded region \\(R\\). Partition \\(R\\) into \\(m \\times n\\) sub-rectangles \\(R_{ij}\\) of المساحة \\(\\Delta A_{ij} = \\Delta x_i \\Delta y_j\\). Choose a sample point \\((x_{ij}^*, y_{ij}^*) \\in R_{ij}\\).</p><p>The <strong>double Riemann integral</strong> of \\(f\\) over \\(R\\) is the النهاية of the double Riemann sums as the partition norm \\(\\|P\\| = \\max(\\Delta x_i, \\Delta y_j) \\to 0\\):</p>\\[ \\iint_R f(x, y)\\,dA = \\lim_{\\|P\\| \\to 0} \\sum_{i=1}^m \\sum_{j=1}^n f(x_{ij}^*, y_{ij}^*)\\,\\Delta A_{ij} \\]<p>If \\(f(x, y) \\ge 0\\), the double التكامل represents the exact three-dimensional الحجم of the solid cylinder beneath the surface \\(z = f(x, y)\\) and above \\(R\\).</p>"
         }
       },
       {
@@ -67,7 +67,7 @@
         },
         "caption": {
           "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": null
+          "ar": "الإحداثي grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'."
         }
       },
       {
@@ -75,11 +75,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 14.1 — Fubini's Theorem on Rectangular Domains",
-          "ar": null
+          "ar": "▲ مبرهنة 14.1 — Fubini's مبرهنة on Rectangular Domains"
         },
         "body": {
           "en": "<p>Let \\(f(x, y)\\) be continuous on the closed rectangle \\(R = [a, b] \\times [c, d]\\). Then the double integral equals the iterated single-variable integrals in either order:</p>\\[ \\iint_R f(x, y)\\,dA = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Furthermore, if the integrand factors into single-variable components \\(f(x, y) = g(x)\\,h(y)\\), the double integral factors into the product of two independent single integrals:</p>\\[ \\iint_R g(x)h(y)\\,dA = \\left( \\int_a^b g(x)\\,dx \\right) \\left( \\int_c^d h(y)\\,dy \\right) \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Cavalieri's Principle & Slicing</strong></summary><div style=\"margin-top:6px\"><p>Let \\(V\\) be the volume beneath \\(z = f(x, y) \\ge 0\\) over \\(R = [a, b] \\times [c, d]\\). Slicing the solid by a vertical plane perpendicular to the \\(x\\)-axis at a fixed position \\(x\\) produces a planar cross-section running from \\(y = c\\) to \\(y = d\\).</p><p>By the Fundamental Theorem of Calculus for single-variable functions, the cross-sectional area is:</p>\\[ A(x) = \\int_c^d f(x, y)\\,dy \\]<p>By Cavalieri's Principle and single-variable volume accumulation, the total volume is the integral of cross-sectional area across \\([a, b]\\):</p>\\[ V = \\int_a^b A(x)\\,dx = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx \\]<p>Similarly, slicing by planes perpendicular to the \\(y\\)-axis at a fixed \\(y\\) yields cross-sectional area \\(B(y) = \\int_a^b f(x, y)\\,dx\\), and integrating over \\([c, d]\\) gives:</p>\\[ V = \\int_c^d B(y)\\,dy = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Because \\(f\\) is continuous on a compact set, it is uniformly continuous, ensuring both iterated integrals converge to the exact same double Riemann integral \\(\\iint_R f\\,dA\\) \\quad \\blacksquare \\]</div></details>",
-          "ar": null
+          "ar": "<p>Let \\(f(x, y)\\) be continuous on the closed rectangle \\(R = [a, b] \\times [c, d]\\). Then the double التكامل equals the iterated single-المتغير التكاملات in either order:</p>\\[ \\iint_R f(x, y)\\,dA = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Furthermore, if the integrand factors into single-المتغير components \\(f(x, y) = g(x)\\,h(y)\\), the double التكامل factors into the product of two independent single التكاملات:</p>\\[ \\iint_R g(x)h(y)\\,dA = \\left( \\int_a^b g(x)\\,dx \\right) \\left( \\int_c^d h(y)\\,dy \\right) \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical برهان via Cavalieri's Principle & Slicing</strong></summary><div style=\"margin-top:6px\"><p>Let \\(V\\) be the الحجم beneath \\(z = f(x, y) \\ge 0\\) over \\(R = [a, b] \\times [c, d]\\). Slicing the solid by a vertical plane perpendicular to the \\(x\\)-axis at a fixed position \\(x\\) produces a planar cross-section running from \\(y = c\\) to \\(y = d\\).</p><p>By the Fundamental مبرهنة of التفاضل والتكامل for single-المتغير الدوال, the cross-sectional المساحة is:</p>\\[ A(x) = \\int_c^d f(x, y)\\,dy \\]<p>By Cavalieri's Principle and single-المتغير الحجم accumulation, the total الحجم is the التكامل of cross-sectional المساحة across \\([a, b]\\):</p>\\[ V = \\int_a^b A(x)\\,dx = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx \\]<p>Similarly, slicing by planes perpendicular to the \\(y\\)-axis at a fixed \\(y\\) yields cross-sectional المساحة \\(B(y) = \\int_a^b f(x, y)\\,dx\\), and integrating over \\([c, d]\\) gives:</p>\\[ V = \\int_c^d B(y)\\,dy = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Because \\(f\\) is continuous on a compact set, it is uniformly continuous, ensuring both iterated التكاملات converge to the exact same double Riemann التكامل \\(\\iint_R f\\,dA\\) \\quad \\blacksquare \\]</div></details>"
         }
       },
       {
@@ -87,11 +87,11 @@
         "style": "pf",
         "label": {
           "en": "◆ Why It Works — First-Principles Derivation (Multiple Integrals)",
-          "ar": null
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (Multiple التكاملات)"
         },
         "body": {
           "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": null
+          "ar": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic المعادلات Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) حيث \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For القيم الذاتية, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace المتجه \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the المصفوفة \\(A - \\lambda I\\) is singular, yielding the characteristic كثيرة الحدود \\(\\det(A - \\lambda I) = 0\\).</p>"
         }
       },
       {
@@ -99,11 +99,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 14.1 — Foundations: Iterated Integral on a Rectangular Domain",
-          "ar": null
+          "ar": "مثال محلول 14.1 — Foundations: Iterated التكامل on a Rectangular المجال"
         },
         "body": {
           "en": "<p>Evaluate \\(\\displaystyle \\iint_R (2x + 6x^2 y)\\,dA\\) over the rectangle \\(R = [0, 2] \\times [1, 3]\\).</p><p><strong>Step 1: Set up iterated integral.</strong></p>\\[ I = \\int_0^2 \\int_1^3 (2x + 6x^2 y)\\,dy\\,dx \\]<p><strong>Step 2: Evaluate inner integral with respect to \\(y\\) (holding \\(x\\) constant).</strong></p>\\[ \\int_1^3 (2x + 6x^2 y)\\,dy = \\left[ 2xy + 3x^2 y^2 \\right]_{y=1}^{y=3} = \\big(6x + 3x^2(9)\\big) - \\big(2x + 3x^2(1)\\big) = (6x + 27x^2) - (2x + 3x^2) = 4x + 24x^2 \\]<p><strong>Step 3: Evaluate outer integral with respect to \\(x\\).</strong></p>\\[ I = \\int_0^2 (4x + 24x^2)\\,dx = \\left[ 2x^2 + 8x^3 \\right]_0^2 = 2(2^2) + 8(2^3) = 2(4) + 8(8) = 8 + 64 = 72 \\]",
-          "ar": null
+          "ar": "<p>Evaluate \\(\\displaystyle \\iint_R (2x + 6x^2 y)\\,dA\\) over the rectangle \\(R = [0, 2] \\times [1, 3]\\).</p><p><strong>Step 1: Set up iterated التكامل.</strong></p>\\[ I = \\int_0^2 \\int_1^3 (2x + 6x^2 y)\\,dy\\,dx \\]<p><strong>Step 2: احسب قيمة inner التكامل بالنسبة إلى \\(y\\) (holding \\(x\\) الثابت).</strong></p>\\[ \\int_1^3 (2x + 6x^2 y)\\,dy = \\left[ 2xy + 3x^2 y^2 \\right]_{y=1}^{y=3} = \\big(6x + 3x^2(9)\\big) - \\big(2x + 3x^2(1)\\big) = (6x + 27x^2) - (2x + 3x^2) = 4x + 24x^2 \\]<p><strong>Step 3: احسب قيمة outer التكامل بالنسبة إلى \\(x\\).</strong></p>\\[ I = \\int_0^2 (4x + 24x^2)\\,dx = \\left[ 2x^2 + 8x^3 \\right]_0^2 = 2(2^2) + 8(2^3) = 2(4) + 8(8) = 8 + 64 = 72 \\]"
         }
       },
       {
@@ -111,74 +111,74 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(B\\) — Multiple Integrals (Hard Application)",
-          "ar": null
+          "ar": "مثال محلول \\(B\\) — Multiple التكاملات (Hard Application)"
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> Consider the region \\(R\\) in the \\(xy\\)-plane bounded by the curves \\(y = x^2\\) and \\(y = 4\\). What is the area of this region?</p><p><strong>Step-by-Step Solution:</strong> The area of the region bounded by two curves \\(y = f(x)\\) and \\(y = g(x)\\) from \\(x=a\\) to \\(x=b\\), where \\(f(x) \\ge g(x)\\) on \\([a, b]\\), is given by the integral \\(\\int_a^b (f(x) - g(x)) dx\\). First, we find the intersection points of \\(y = x^2\\) and \\(y = 4\\) by setting them equal: \\(x^2 = 4\\), which gives \\(x = -2\\) and \\(x = 2\\). So, our limits of integration are \\(a=-2\\) and \\(b=2\\). On the interval \\([-2, 2]\\), the line \\(y=4\\) is above the parabola \\(y=x^2\\). Therefore, the area \\(A\\) is given by:\n\n\\(A = \\int_{-2}^{2} (4 - x^2) dx\\)\n\nNow, we evaluate the integral:\n\n\\(A = \\left[ 4x - \\frac{x^3}{3} \\right]_{-2}^{2}\\)\n\n\\(A = \\left( 4(2) - \\frac{(2)^3}{3} \\right) - \\left( 4(-2) - \\frac{(-2)^3}{3} \\right)\\)\n\n\\(A = \\left( 8 - \\frac{8}{3} \\right) - \\left( -8 - \\frac{-8}{3} \\right)\\)\n\n\\(A = \\left( 8 - \\frac{8}{3} \\right) - \\left( -8 + \\frac{8}{3} \\right)\\)\n\n\\(A = 8 - \\frac{8}{3} + 8 - \\frac{8}{3}\\)\n\n\\(A = 16 - \\frac{16}{3}\\)\n\n\\(A = \\frac{48}{3} - \\frac{16}{3}\\)\n\n\\(A = \\frac{32}{3}\\)\n\nTherefore, the area of the region is \\(\\frac{32}{3}\\).</p>",
-          "ar": null
+          "ar": "<p><strong>Problem (Hard):</strong> Consider the region \\(R\\) in the \\(xy\\)-plane bounded by the curves \\(y = x^2\\) and \\(y = 4\\). What is the المساحة of this region?</p><p><strong>Step-by-Step الحل:</strong> The المساحة of the region bounded by two curves \\(y = f(x)\\) and \\(y = g(x)\\) from \\(x=a\\) to \\(x=b\\), حيث \\(f(x) \\ge g(x)\\) on \\([a, b]\\), is المعطيات by the التكامل \\(\\int_a^b (f(x) - g(x)) dx\\). First, we أوجد التقاطع points of \\(y = x^2\\) and \\(y = 4\\) by setting them equal: \\(x^2 = 4\\), which gives \\(x = -2\\) and \\(x = 2\\). So, our النهايات of integration are \\(a=-2\\) and \\(b=2\\). On the interval \\([-2, 2]\\), the line \\(y=4\\) is above the القطع المكافئ \\(y=x^2\\). وبالتالي, the المساحة \\(A\\) is المعطيات by:\n\n\\(A = \\int_{-2}^{2} (4 - x^2) dx\\)\n\nNow, we احسب قيمة التكامل:\n\n\\(A = \\left[ 4x - \\frac{x^3}{3} \\right]_{-2}^{2}\\)\n\n\\(A = \\left( 4(2) - \\frac{(2)^3}{3} \\right) - \\left( 4(-2) - \\frac{(-2)^3}{3} \\right)\\)\n\n\\(A = \\left( 8 - \\frac{8}{3} \\right) - \\left( -8 - \\frac{-8}{3} \\right)\\)\n\n\\(A = \\left( 8 - \\frac{8}{3} \\right) - \\left( -8 + \\frac{8}{3} \\right)\\)\n\n\\(A = 8 - \\frac{8}{3} + 8 - \\frac{8}{3}\\)\n\n\\(A = 16 - \\frac{16}{3}\\)\n\n\\(A = \\frac{48}{3} - \\frac{16}{3}\\)\n\n\\(A = \\frac{32}{3}\\)\n\nوبالتالي, the المساحة of the region is \\(\\frac{32}{3}\\).</p>"
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Multiple Integrals)",
-          "ar": null
+          "ar": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Multiple التكاملات)"
         },
         "columns": [
           {
             "en": "Common Student Trap",
-            "ar": null
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
             "en": "Why It Fails Mathematically",
-            "ar": null
+            "ar": "لماذا يفشل رياضياً"
           },
           {
             "en": "Correct Exam-Board Method",
-            "ar": null
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
               "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
-              "ar": null
+              "ar": "Computing الزاوية at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)"
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": null
+              "ar": "المتجهات are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\)."
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": null
+              "ar": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\). (التكاملات الثنائية والثلاثية)"
             }
           ],
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": null
+              "ar": "Using the same المعامل \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)"
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": null
+              "ar": "Tests for a simultaneous collision at time \\(t\\) rather than geometric التقاطع of paths."
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": null
+              "ar": "Assign distinct المعاملات \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components."
             }
           ],
           [
             {
               "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
-              "ar": null
+              "ar": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\) (التكاملات الثنائية والثلاثية)"
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": null
+              "ar": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors عندما \\(AB \\ne BA\\)."
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": null
+              "ar": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\). (التكاملات الثنائية والثلاثية)"
             }
           ]
         ]
@@ -188,11 +188,11 @@
         "style": "tip",
         "label": {
           "en": "▲ Exam Pacing & Verification Strategy — Multiple Integrals",
-          "ar": null
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Multiple التكاملات"
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": null
+          "ar": "<p><strong>Fast المصفوفة &amp; المتجه Verification (University Single-المتغير & Multivariable التفاضل والتكامل):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and المحدد invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>"
         }
       },
       {
@@ -224,12 +224,12 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Double Riemann sum",
-          "ar": null
+          "ar": "⊙ مستكشف تفاعلي · Double Riemann sum"
         },
         "canvasId": "doubleCanvas",
         "ariaLabel": {
           "en": "A grid over a square region shaded by function value, approximating a double integral",
-          "ar": null
+          "ar": "A grid over a square region shaded by الدالة value, approximating a double التكامل"
         },
         "canvas3d": {
           "btnId": "double3dBtn",
@@ -238,7 +238,7 @@
           "btnLabel": "🧊 View the Riemann boxes in 3D",
           "ariaLabel": {
             "en": "Interactive 3D plot of the Riemann-sum boxes approximating the double integral over the square region, and the exact plane z = x + y they approach as the grid is refined. Drag to rotate, scroll to zoom.",
-            "ar": null
+            "ar": "Interactive 3D plot of the Riemann-sum boxes approximating the double التكامل over the square region, and the exact plane z = x + y they approach as the grid is refined. Drag to rotate, scroll to zoom."
           }
         },
         "dataPanel": {
@@ -248,16 +248,16 @@
           "rowsId": "doubleDataRows",
           "caption": {
             "en": "The grid partition and the resulting Riemann-sum approximation",
-            "ar": null
+            "ar": "توضيح رياضي: The grid partition and the resulting Riemann-sum approximation"
           },
           "columns": [
             {
               "en": "quantity",
-              "ar": null
+              "ar": "الكمية"
             },
             {
               "en": "value",
-              "ar": null
+              "ar": "القيمة"
             }
           ]
         },
@@ -266,7 +266,7 @@
             "id": "doubleN",
             "label": {
               "en": "grid <b>\\(n \\times n\\)</b>:",
-              "ar": null
+              "ar": "grid <b>\\(n \\times n\\)</b>: (التكاملات الثنائية والثلاثية)"
             },
             "min": 1,
             "max": 20,
@@ -275,7 +275,7 @@
             "valueDisplayId": "dbNlab",
             "ariaLabel": {
               "en": "Grid n × n",
-              "ar": null
+              "ar": "عنصر تفاعلي: Grid n × n"
             }
           }
         ],
@@ -284,7 +284,7 @@
             "id": "dbCells",
             "label": {
               "en": "cells",
-              "ar": null
+              "ar": "cells (التكاملات الثنائية والثلاثية)"
             },
             "value": "\\(16\\)"
           },
@@ -292,7 +292,7 @@
             "id": "dbApprox",
             "label": {
               "en": "approx ∬ \\(f\\) dA",
-              "ar": null
+              "ar": "approx ∬ \\(f\\) dA (التكاملات الثنائية والثلاثية)"
             },
             "colorClass": "indigo",
             "value": "\\(8.000\\)"
@@ -301,7 +301,7 @@
             "id": "dbExact",
             "label": {
               "en": "exact value",
-              "ar": null
+              "ar": "exact value (التكاملات الثنائية والثلاثية)"
             },
             "colorClass": "amber",
             "value": "\\(8\\)"
@@ -309,7 +309,7 @@
         ],
         "note": {
           "en": "Each cell is shaded by \\(f=x+y\\) at its midpoint over \\([0,2]^2\\). Refine the grid and the midpoint sum converges to \\(8\\).",
-          "ar": null
+          "ar": "ملاحظة تفاعلية: Each cell is shaded by \\(f=x+y\\) at its midpoint over \\([0,2]^2\\). Refine the grid and the midpoint sum converges to \\(8\\)."
         }
       },
       {
@@ -317,18 +317,18 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 14.2 — General Bounded Regions (Type I / Type II) & Order Reversal",
-          "ar": null
+          "ar": "▲ مبرهنة 14.2 — General Bounded Regions (Type I / Type II) & Order Reversal"
         },
         "body": {
           "en": "<p>When integrating over non-rectangular planar domains \\(D\\):</p><ul><li><strong>Type I (Vertically Simple):</strong> \\(D = \\{ (x, y) : a \\le x \\le b,\\; g_1(x) \\le y \\le g_2(x) \\}\\):<br>\\[ \\iint_D f(x, y)\\,dA = \\int_a^b \\left( \\int_{g_1(x)}^{g_2(x)} f(x, y)\\,dy \\right) dx \\]</li><li><strong>Type II (Horizontally Simple):</strong> \\(D = \\{ (x, y) : c \\le y \\le d,\\; h_1(y) \\le x \\le h_2(y) \\}\\):<br>\\[ \\iint_D f(x, y)\\,dA = \\int_c^d \\left( \\int_{h_1(y)}^{h_2(y)} f(x, y)\\,dx \\right) dy \\]</li></ul><p><strong>Reversing the Order of Integration:</strong> Integrands whose single-variable antiderivatives are non-elementary (such as \\(e^{x^2}\\), \\(\\frac{\\sin x}{x}\\), or \\(\\cos(y^2)\\)) can often be evaluated by sketching the region \\(D\\) and switching the slicing orientation from vertical to horizontal (or vice versa).</p>",
-          "ar": null
+          "ar": "<p>When integrating over non-rectangular planar domains \\(D\\):</p><ul><li><strong>Type I (Vertically Simple):</strong> \\(D = \\{ (x, y) : a \\le x \\le b,\\; g_1(x) \\le y \\le g_2(x) \\}\\):<br>\\[ \\iint_D f(x, y)\\,dA = \\int_a^b \\left( \\int_{g_1(x)}^{g_2(x)} f(x, y)\\,dy \\right) dx \\]</li><li><strong>Type II (Horizontally Simple):</strong> \\(D = \\{ (x, y) : c \\le y \\le d,\\; h_1(y) \\le x \\le h_2(y) \\}\\):<br>\\[ \\iint_D f(x, y)\\,dA = \\int_c^d \\left( \\int_{h_1(y)}^{h_2(y)} f(x, y)\\,dx \\right) dy \\]</li></ul><p><strong>Reversing the Order of Integration:</strong> Integrands whose single-المتغير antiderivatives are non-elementary (such as \\(e^{x^2}\\), \\(\\frac{\\sin x}{x}\\), or \\(\\cos(y^2)\\)) can often be evaluated by sketching the region \\(D\\) and switching the slicing orientation from vertical to horizontal (or vice versa).</p>"
         }
       },
       {
         "kind": "figure",
         "caption": {
           "en": "Rectangular region of integration \\(R = [0, 2] \\times [0, 1]\\) in the \\(xy\\)-plane for double integral evaluation.",
-          "ar": null
+          "ar": "Rectangular region of integration \\(R = [0, 2] \\times [0, 1]\\) in the \\(xy\\)-plane for double التكامل evaluation."
         },
         "figure": {
           "type": "rect",
@@ -370,41 +370,41 @@
           {
             "label": {
               "en": "Double Integral",
-              "ar": null
+              "ar": "Double التكامل"
             },
             "value": {
               "en": "\\( \\iint_R f(x, y)\\,dA \\)",
-              "ar": null
+              "ar": "\\( \\iint_R f(x, y)\\,dA \\)"
             }
           },
           {
             "label": {
               "en": "Type I Region",
-              "ar": null
+              "ar": "Type I Region (التكاملات الثنائية والثلاثية)"
             },
             "value": {
               "en": "\\( \\int_a^b\\int_{g_1(x)}^{g_2(x)} f\\,dy\\,dx \\)",
-              "ar": null
+              "ar": "\\( \\int_a^b\\int_{g_1(x)}^{g_2(x)} f\\,dy\\,dx \\)"
             }
           },
           {
             "label": {
               "en": "Type II Region",
-              "ar": null
+              "ar": "Type II Region (التكاملات الثنائية والثلاثية)"
             },
             "value": {
               "en": "\\( \\int_c^d\\int_{h_1(y)}^{h_2(y)} f\\,dx\\,dy \\)",
-              "ar": null
+              "ar": "\\( \\int_c^d\\int_{h_1(y)}^{h_2(y)} f\\,dx\\,dy \\)"
             }
           },
           {
             "label": {
               "en": "Polar Coordinates",
-              "ar": null
+              "ar": "Polar الإحداثيات"
             },
             "value": {
               "en": "\\( dA = r\\,dr\\,d\\theta \\)",
-              "ar": null
+              "ar": "\\( dA = r\\,dr\\,d\\theta \\)"
             }
           }
         ]
@@ -414,11 +414,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 14.2 — Medium: Reversing Order of Integration for Non-Elementary Antiderivatives",
-          "ar": null
+          "ar": "مثال محلول 14.2 — Medium: Reversing Order of Integration for Non-Elementary Antiderivatives"
         },
         "body": {
           "en": "<p>Evaluate \\(\\displaystyle \\int_0^1 \\int_y^1 e^{x^2}\\,dx\\,dy\\).</p><p><strong>Step 1: Sketch and analyze the integration domain.</strong><br>The current bounds are: inner \\(y \\le x \\le 1\\), outer \\(0 \\le y \\le 1\\).<br>This is a triangle bounded by the lines \\(x = y\\), \\(x = 1\\), and the \\(x\\)-axis \\(y = 0\\).</p><p><strong>Step 2: Re-express the domain as a Type I region.</strong><br>For each vertical slice from \\(x = 0\\) to \\(x = 1\\), \\(y\\) runs from \\(y = 0\\) (bottom) to \\(y = x\\) (top):</p>\\[ D = \\{ (x, y) : 0 \\le x \\le 1,\\; 0 \\le y \\le x \\} \\]</p><p><strong>Step 3: Setup and evaluate the reversed iterated integral.</strong></p>\\[ \\int_0^1 \\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 \\left[ y e^{x^2} \\right]_{y=0}^{y=x} dx = \\int_0^1 x e^{x^2}\\,dx \\]<p>Now substitute \\(u = x^2\\), \\(du = 2x\\,dx\\):</p>\\[ \\int_0^1 x e^{x^2}\\,dx = \\frac{1}{2} \\left[ e^{x^2} \\right]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2} \\]",
-          "ar": null
+          "ar": "<p>Evaluate \\(\\displaystyle \\int_0^1 \\int_y^1 e^{x^2}\\,dx\\,dy\\).</p><p><strong>Step 1: Sketch and analyze the integration المجال.</strong><br>The current bounds are: inner \\(y \\le x \\le 1\\), outer \\(0 \\le y \\le 1\\).<br>This is a المثلث bounded by the lines \\(x = y\\), \\(x = 1\\), and the \\(x\\)-axis \\(y = 0\\).</p><p><strong>Step 2: Re-express the المجال as a Type I region.</strong><br>For each vertical slice from \\(x = 0\\) to \\(x = 1\\), \\(y\\) runs from \\(y = 0\\) (bottom) to \\(y = x\\) (top):</p>\\[ D = \\{ (x, y) : 0 \\le x \\le 1,\\; 0 \\le y \\le x \\} \\]</p><p><strong>Step 3: Setup and احسب قيمة reversed iterated التكامل.</strong></p>\\[ \\int_0^1 \\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 \\left[ y e^{x^2} \\right]_{y=0}^{y=x} dx = \\int_0^1 x e^{x^2}\\,dx \\]<p>Now عوّض \\(u = x^2\\), \\(du = 2x\\,dx\\):</p>\\[ \\int_0^1 x e^{x^2}\\,dx = \\frac{1}{2} \\left[ e^{x^2} \\right]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2} \\]"
         }
       },
       {
@@ -451,11 +451,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 14.3 — Polar Coordinates Transformation & The Jacobian Determinant",
-          "ar": null
+          "ar": "▲ مبرهنة 14.3 — Polar الإحداثيات Transformation & The Jacobian المحدد"
         },
         "body": {
           "en": "<p>When a double integral exhibits circular symmetry (such as disks, sectors, or integrands containing \\(x^2 + y^2\\)), transform using polar coordinates \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\).</p><p>The differential area element is scaled by the <strong>Jacobian determinant</strong>:</p>\\[ J(r, \\theta) = \\frac{\\partial(x, y)}{\\partial(r, \\theta)} = \\begin{vmatrix} \\frac{\\partial x}{\\partial r} & \\frac{\\partial x}{\\partial \\theta} \\\\ \\frac{\\partial y}{\\partial r} & \\frac{\\partial y}{\\partial \\theta} \\end{vmatrix} = \\begin{vmatrix} \\cos\\theta & -r\\sin\\theta \\\\ \\sin\\theta & r\\cos\\theta \\end{vmatrix} = r\\cos^2\\theta + r\\sin^2\\theta = r \\]<p>Thus the polar area element is:</p>\\[ dA = r\\,dr\\,d\\theta \\]<p>and the transformation formula is:</p>\\[ \\iint_R f(x, y)\\,dA = \\iint_S f(r\\cos\\theta, r\\sin\\theta)\\,r\\,dr\\,d\\theta \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Application — The Gaussian Integral Evaluation</strong></summary><div style=\"margin-top:6px\"><p>Let \\(I = \\int_{-\\infty}^\\infty e^{-x^2}\\,dx\\). Squaring the integral and writing as a double integral over \\(\\mathbb{R}^2\\):</p>\\[ I^2 = \\left( \\int_{-\\infty}^\\infty e^{-x^2}\\,dx \\right) \\left( \\int_{-\\infty}^\\infty e^{-y^2}\\,dy \\right) = \\int_{-\\infty}^\\infty \\int_{-\\infty}^\\infty e^{-(x^2 + y^2)}\\,dx\\,dy \\]<p>Transforming into polar coordinates over the entire plane \\(0 \\le \\theta \\le 2\\pi\\), \\(0 \\le r < \\infty\\):</p>\\[ I^2 = \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2}\\,r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\infty r e^{-r^2}\\,dr \\right) \\]\\[ = 2\\pi \\left[ -\\frac{1}{2}e^{-r^2} \\right]_0^\\infty = 2\\pi \\left( 0 - \\left(-\\frac{1}{2}\\right) \\right) = 2\\pi \\left(\\frac{1}{2}\\right) = \\pi \\]<p>Taking the square root establishes the famous exact Gaussian value: \\(I = \\int_{-\\infty}^\\infty e^{-x^2}\\,dx = \\sqrt{\\pi}\\) \\quad \\blacksquare \\]</div></details>",
-          "ar": null
+          "ar": "<p>When a double التكامل exhibits circular symmetry (such as disks, sectors, or integrands containing \\(x^2 + y^2\\)), transform using polar الإحداثيات \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\).</p><p>The differential المساحة element is scaled by the <strong>Jacobian determinant</strong>:</p>\\[ J(r, \\theta) = \\frac{\\partial(x, y)}{\\partial(r, \\theta)} = \\begin{vmatrix} \\frac{\\partial x}{\\partial r} & \\frac{\\partial x}{\\partial \\theta} \\\\ \\frac{\\partial y}{\\partial r} & \\frac{\\partial y}{\\partial \\theta} \\end{vmatrix} = \\begin{vmatrix} \\cos\\theta & -r\\sin\\theta \\\\ \\sin\\theta & r\\cos\\theta \\end{vmatrix} = r\\cos^2\\theta + r\\sin^2\\theta = r \\]<p>Thus the polar المساحة element is:</p>\\[ dA = r\\,dr\\,d\\theta \\]<p>and the transformation الصيغة is:</p>\\[ \\iint_R f(x, y)\\,dA = \\iint_S f(r\\cos\\theta, r\\sin\\theta)\\,r\\,dr\\,d\\theta \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Application — The Gaussian التكامل Evaluation</strong></summary><div style=\"margin-top:6px\"><p>Let \\(I = \\int_{-\\infty}^\\infty e^{-x^2}\\,dx\\). Squaring the التكامل and writing as a double التكامل over \\(\\mathbb{R}^2\\):</p>\\[ I^2 = \\left( \\int_{-\\infty}^\\infty e^{-x^2}\\,dx \\right) \\left( \\int_{-\\infty}^\\infty e^{-y^2}\\,dy \\right) = \\int_{-\\infty}^\\infty \\int_{-\\infty}^\\infty e^{-(x^2 + y^2)}\\,dx\\,dy \\]<p>Transforming into polar الإحداثيات over the entire plane \\(0 \\le \\theta \\le 2\\pi\\), \\(0 \\le r < \\infty\\):</p>\\[ I^2 = \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2}\\,r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\infty r e^{-r^2}\\,dr \\right) \\]\\[ = 2\\pi \\left[ -\\frac{1}{2}e^{-r^2} \\right]_0^\\infty = 2\\pi \\left( 0 - \\left(-\\frac{1}{2}\\right) \\right) = 2\\pi \\left(\\frac{1}{2}\\right) = \\pi \\]<p>Taking the square root establishes the famous exact Gaussian value: \\(I = \\int_{-\\infty}^\\infty e^{-x^2}\\,dx = \\sqrt{\\pi}\\) \\quad \\blacksquare \\]</div></details>"
         }
       },
       {
@@ -463,11 +463,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 14.3 — Advanced: Volume Under Paraboloid via Polar Double Integral",
-          "ar": null
+          "ar": "مثال محلول 14.3 — Advanced: الحجم Under Paraboloid via Polar Double التكامل"
         },
         "body": {
           "en": "<p>Find the volume of the solid bounded above by the paraboloid \\(z = 9 - x^2 - y^2\\) and below by the \\(xy\\)-plane.</p><p><strong>Step 1: Determine the planar boundary in the \\(xy\\)-plane.</strong><br>Set \\(z = 0\\): \\(9 - x^2 - y^2 = 0 \\implies x^2 + y^2 = 9\\).<br>The base is the disk \\(D\\) of radius \\(R = 3\\) centered at the origin.</p><p><strong>Step 2: Convert to polar coordinates.</strong><br>In polar coordinates: \\(x^2 + y^2 = r^2\\), so \\(z = 9 - r^2\\).<br>Limits: \\(0 \\le r \\le 3\\), \\(0 \\le \\theta \\le 2\\pi\\).<br>Area element: \\(dA = r\\,dr\\,d\\theta\\).</p><p><strong>Step 3: Setup and evaluate the integral.</strong></p>\\[ V = \\iint_D (9 - x^2 - y^2)\\,dA = \\int_0^{2\\pi} \\int_0^3 (9 - r^2)r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^3 (9r - r^3)\\,dr \\right) \\]\\[ = 2\\pi \\left[ \\frac{9r^2}{2} - \\frac{r^4}{4} \\right]_0^3 = 2\\pi \\left( \\frac{9(9)}{2} - \\frac{81}{4} \\right) = 2\\pi \\left( \\frac{162 - 81}{4} \\right) = 2\\pi \\left( \\frac{81}{4} \\right) = \\frac{81\\pi}{2} \\]",
-          "ar": null
+          "ar": "<p>Find the الحجم of the solid bounded above by the paraboloid \\(z = 9 - x^2 - y^2\\) and below by the \\(xy\\)-plane.</p><p><strong>Step 1: حدّد planar boundary in the \\(xy\\)-plane.</strong><br>Set \\(z = 0\\): \\(9 - x^2 - y^2 = 0 \\implies x^2 + y^2 = 9\\).<br>The base is the disk \\(D\\) of نصف القطر \\(R = 3\\) centered at the origin.</p><p><strong>Step 2: Convert to polar الإحداثيات.</strong><br>In polar الإحداثيات: \\(x^2 + y^2 = r^2\\), so \\(z = 9 - r^2\\).<br>Limits: \\(0 \\le r \\le 3\\), \\(0 \\le \\theta \\le 2\\pi\\).<br>Area element: \\(dA = r\\,dr\\,d\\theta\\).</p><p><strong>Step 3: Setup and احسب قيمة التكامل.</strong></p>\\[ V = \\iint_D (9 - x^2 - y^2)\\,dA = \\int_0^{2\\pi} \\int_0^3 (9 - r^2)r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^3 (9r - r^3)\\,dr \\right) \\]\\[ = 2\\pi \\left[ \\frac{9r^2}{2} - \\frac{r^4}{4} \\right]_0^3 = 2\\pi \\left( \\frac{9(9)}{2} - \\frac{81}{4} \\right) = 2\\pi \\left( \\frac{162 - 81}{4} \\right) = 2\\pi \\left( \\frac{81}{4} \\right) = \\frac{81\\pi}{2} \\]"
         }
       },
       {
@@ -475,11 +475,11 @@
         "style": "warn",
         "label": {
           "en": "⚠ Common Traps & Exam Pitfalls",
-          "ar": null
+          "ar": "⚠ أخطاء شائعة ومصائد الاختبار"
         },
         "body": {
           "en": "<strong>Polar Area Element (Jacobian r):</strong> In polar coordinates, \\(dA = r\\,dr\\,d\\theta\\). Omitting the extra factor of \\(r\\) is the single most common error in multivariable calculus!<br><br><strong>Reversing Order of Integration:</strong> You CANNOT merely swap the integral signs and limits when the region is non-rectangular: \\(\\int_0^1 \\int_x^1 f(x,y)\\,dy\\,dx \\ne \\int_x^1 \\int_0^1 f(x,y)\\,dx\\,dy\\). You MUST sketch the 2D domain and reconstruct the bounding functions from horizontal vs vertical slices.<br><br><strong>Coordinate Transformations Jacobian:</strong> When substituting \\(x = g(u, v)\\), \\(y = h(u, v)\\), always multiply the integrand by the absolute value of the Jacobian determinant \\(|J(u, v)| = |x_u y_v - x_v y_u|\\).<br><br><strong>Polar Radius Limits:</strong> The radial coordinate \\(r\\) measures distance from the origin and is always non-negative: \\(r \\ge 0\\). Setting negative lower limits on \\(r\\) invalidates the transformation.",
-          "ar": null
+          "ar": "<strong>Polar المساحة Element (Jacobian r):</strong> In polar الإحداثيات, \\(dA = r\\,dr\\,d\\theta\\). Omitting the extra factor of \\(r\\) is the single most common error in multivariable التفاضل والتكامل!<br><br><strong>Reversing Order of Integration:</strong> You CANNOT merely swap the التكامل signs and النهايات عندما the region is non-rectangular: \\(\\int_0^1 \\int_x^1 f(x,y)\\,dy\\,dx \\ne \\int_x^1 \\int_0^1 f(x,y)\\,dx\\,dy\\). You MUST sketch the 2D المجال and reconstruct the bounding الدوال from horizontal vs vertical slices.<br><br><strong>Coordinate Transformations Jacobian:</strong> عندما substituting \\(x = g(u, v)\\), \\(y = h(u, v)\\), always multiply the integrand by the absolute value of the Jacobian المحدد \\(|J(u, v)| = |x_u y_v - x_v y_u|\\).<br><br><strong>Polar نصف القطر النهايات:</strong> The radial الإحداثي \\(r\\) measures distance from the origin and is always non-negative: \\(r \\ge 0\\). Setting negative lower النهايات on \\(r\\) invalidates the transformation."
         }
       },
       {

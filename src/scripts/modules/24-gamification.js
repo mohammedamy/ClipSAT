@@ -912,9 +912,12 @@
         return;
       }
       var allowedChapters = {
-        'reveal-precalc':    ['calculus', 'algebra', 'precalc'],
-        'cambridge-igcse':   ['algebra', 'geo', 'igcse'],
-        'collegeboard-sat':  ['algebra', 'geo', 'sat']
+        'reveal-precalc':    ['algebra', 'geo', 'alg2', 'precalc', 'calculus'],
+        'cambridge-igcse':   ['algebra', 'geo', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level'],
+        'collegeboard-sat':  ['algebra', 'geo', 'alg2', 'precalc', 'sat', 'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2', 'apab', 'apbc', 'appc', 'apstats'],
+        'ib-diploma':        ['algebra', 'geo', 'precalc', 'calculus', 'ibsl', 'ibhl'],
+        'mena-qiyas':        ['algebra', 'geo', 'qudrat', 'tahsili', 'gaten'],
+        'university-stem':   ['calculus', 'linalg', 'mvc', 'odes', 'mathai', 'olympiad']
       }[val] || [];
       railLinks.forEach(function(link) {
         var m = (link.getAttribute('onclick') || '').match(/showView\('([^']+)'\)/);

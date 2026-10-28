@@ -24,7 +24,7 @@
         "kind": "text",
         "body": {
           "en": "A matrix is both an algebraic data structure for linear equations and the concrete representation of a linear map between vector spaces. Matrix multiplication embodies the composition of linear mappings, while matrix inversion represents the exact reversal of that transformation. This chapter develops the complete algebra of matrices, elementary matrix factorizations, and the unifying Invertible Matrix Theorem.",
-          "ar": null
+          "ar": "A المصفوفة is both an algebraic data structure for المعادلات الخطية and the concrete representation of a linear map between المتجه spaces. المصفوفة multiplication embodies the composition of linear mappings, while المصفوفة inversion represents the exact reversal of that transformation. This chapter develops the complete الجبر of المصفوفات, elementary المصفوفة factorizations, and the unifying Invertible المصفوفة مبرهنة."
         }
       },
       {
@@ -32,7 +32,7 @@
         "heading": "Level 1 · Foundations — Matrix Operations, The Column Perspective & Transpose",
         "body": {
           "en": "An \\( m \\times n \\) matrix \\( A \\) consists of \\( m \\) rows and \\( n \\) columns. It can be viewed horizontally as a stack of row vectors or vertically as an array of column vectors: \\( A = [\\mathbf{a}_1 \\; \\mathbf{a}_2 \\; \\dots \\; \\mathbf{a}_n] \\).",
-          "ar": null
+          "ar": "An \\( m \\times n \\) المصفوفة \\( A \\) consists of \\( m \\) rows and \\( n \\) columns. It can be viewed horizontally as a stack of row المتجهات or vertically as an array of column المتجهات: \\( A = [\\mathbf{a}_1 \\; \\mathbf{a}_2 \\; \\dots \\; \\mathbf{a}_n] \\)."
         }
       },
       {
@@ -76,7 +76,7 @@
         },
         "caption": {
           "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": null
+          "ar": "الإحداثي grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'."
         }
       },
       {
@@ -84,11 +84,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 3.1 — Matrix Operations & The Two Perspectives of Matrix Multiplication",
-          "ar": null
+          "ar": "● تعريف 3.1 — المصفوفة Operations & The Two Perspectives of المصفوفة Multiplication"
         },
         "body": {
           "en": "<p><strong>1. Entrywise Operations:</strong> For matrices \\( A, B \\in \\mathbb{R}^{m \\times n} \\) and \\( c \\in \\mathbb{R} \\):<br>• Addition: \\( (A + B)_{ij} = a_{ij} + b_{ij} \\).<br>• Scalar Multiplication: \\( (c A)_{ij} = c a_{ij} \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Matrix-Vector Product (Column Combination Perspective):</strong> For \\( \\mathbf{x} = (x_1, \\dots, x_n)^T \\in \\mathbb{R}^n \\): \\[ A\\mathbf{x} = x_1 \\mathbf{a}_1 + x_2 \\mathbf{a}_2 + \\dots + x_n \\mathbf{a}_n. \\] The vector \\( A\\mathbf{x} \\) is a <strong>linear combination of the columns of \\( A \\)</strong> with weights from \\( \\mathbf{x} \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Matrix Multiplication:</strong> For \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( B \\in \\mathbb{R}^{n \\times p} \\):<br>• <strong>Dot Product Rule:</strong> The \\( (i, k) \\)-th entry of \\( AB \\) is: \\[ (AB)_{ik} = \\sum_{j=1}^n a_{ij} b_{jk} = \\text{Row}_i(A) \\cdot \\text{Col}_k(B). \\]<br>• <strong>Column Perspective:</strong> \\( AB = [A\\mathbf{b}_1 \\; A\\mathbf{b}_2 \\; \\dots \\; A\\mathbf{b}_p] \\). Each column of \\( AB \\) is \\( A \\) applied to a column of \\( B \\).</p>",
-          "ar": null
+          "ar": "<p><strong>1. Entrywise Operations:</strong> For المصفوفات \\( A, B \\in \\mathbb{R}^{m \\times n} \\) and \\( c \\in \\mathbb{R} \\):<br>• Addition: \\( (A + B)_{ij} = a_{ij} + b_{ij} \\).<br>• Scalar Multiplication: \\( (c A)_{ij} = c a_{ij} \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. المصفوفة-المتجه Product (Column Combination Perspective):</strong> For \\( \\mathbf{x} = (x_1, \\dots, x_n)^T \\in \\mathbb{R}^n \\): \\[ A\\mathbf{x} = x_1 \\mathbf{a}_1 + x_2 \\mathbf{a}_2 + \\dots + x_n \\mathbf{a}_n. \\] The المتجه \\( A\\mathbf{x} \\) is a <strong>linear combination of the columns of \\( A \\)</strong> with weights from \\( \\mathbf{x} \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. المصفوفة Multiplication:</strong> For \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( B \\in \\mathbb{R}^{n \\times p} \\):<br>• <strong>Dot Product Rule:</strong> The \\( (i, k) \\)-th entry of \\( AB \\) is: \\[ (AB)_{ik} = \\sum_{j=1}^n a_{ij} b_{jk} = \\text{Row}_i(A) \\cdot \\text{Col}_k(B). \\]<br>• <strong>Column Perspective:</strong> \\( AB = [A\\mathbf{b}_1 \\; A\\mathbf{b}_2 \\; \\dots \\; A\\mathbf{b}_p] \\). Each column of \\( AB \\) is \\( A \\) applied to a column of \\( B \\).</p>"
         }
       },
       {
@@ -96,11 +96,11 @@
         "style": "thm",
         "label": {
           "en": "● Theorem 3.1 & Analytical Proof · Transpose of a Matrix Product",
-          "ar": null
+          "ar": "● مبرهنة 3.1 & Analytical برهان · Transpose of a المصفوفة Product"
         },
         "body": {
           "en": "<p><strong>Theorem:</strong> For any \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( B \\in \\mathbb{R}^{n \\times p} \\): \\[ (AB)^T = B^T A^T. \\] (Notice the order of multiplication is strictly reversed).</p><p><em>Proof:</em> Let \\( C = AB \\). The \\( (i, k) \\)-th entry of \\( C^T = (AB)^T \\) is the \\( (k, i) \\)-th entry of \\( C \\): \\[ (C^T)_{ik} = C_{ki} = (AB)_{ki} = \\sum_{j=1}^n A_{kj} B_{ji}. \\] Now consider the product \\( D = B^T A^T \\). The \\( (i, k) \\)-th entry of \\( D \\) is: \\[ D_{ik} = \\sum_{j=1}^n (B^T)_{ij} (A^T)_{jk} = \\sum_{j=1}^n B_{ji} A_{kj} = \\sum_{j=1}^n A_{kj} B_{ji}. \\] Since \\( (C^T)_{ik} = D_{ik} \\) for all \\( i, k \\), it follows that \\( (AB)^T = B^T A^T \\). \\(\\blacksquare\\)</p>",
-          "ar": null
+          "ar": "<p><strong>الشرح الرياضي (المصفوفات وجبر المصفوفات والمصفوفة العكسية):</strong></p><p><strong>Theorem:</strong> For any \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( B \\in \\mathbb{R}^{n \\times p} \\): \\[ (AB)^T = B^T A^T. \\] (Notice the order of multiplication is strictly reversed).</p><p><em>Proof:</em> Let \\( C = AB \\). The \\( (i, k) \\)-th entry of \\( C^T = (AB)^T \\) is the \\( (k, i) \\)-th entry of \\( C \\): \\[ (C^T)_{ik} = C_{ki} = (AB)_{ki} = \\sum_{j=1}^n A_{kj} B_{ji}. \\] Now consider the product \\( D = B^T A^T \\). The \\( (i, k) \\)-th entry of \\( D \\) is: \\[ D_{ik} = \\sum_{j=1}^n (B^T)_{ij} (A^T)_{jk} = \\sum_{j=1}^n B_{ji} A_{kj} = \\sum_{j=1}^n A_{kj} B_{ji}. \\] Since \\( (C^T)_{ik} = D_{ik} \\) for all \\( i, k \\), it follows that \\( (AB)^T = B^T A^T \\). \\(\\blacksquare\\)</p>"
         }
       },
       {
@@ -108,11 +108,11 @@
         "style": "pf",
         "label": {
           "en": "◆ Why It Works — First-Principles Derivation (Matrices, Matrix Algebra & Inverses)",
-          "ar": null
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (المصفوفات, المصفوفة الجبر & Inverses)"
         },
         "body": {
           "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": null
+          "ar": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic المعادلات Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) حيث \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For القيم الذاتية, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace المتجه \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the المصفوفة \\(A - \\lambda I\\) is singular, yielding the characteristic كثيرة الحدود \\(\\det(A - \\lambda I) = 0\\).</p>"
         }
       },
       {
@@ -120,11 +120,11 @@
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Matrix Multiplication & Non-Commutativity",
-          "ar": null
+          "ar": "Level 1 (Foundations) — مثال محلول · المصفوفة Multiplication & Non-Commutativity"
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Let \\( A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( B = \\begin{pmatrix} 0 & -1 \\\\ 2 & 1 \\end{pmatrix} \\). Compute \\( AB \\) and \\( BA \\), verify that \\( AB \\neq BA \\), and verify that \\( (AB)^T = B^T A^T \\).</p><p><strong>Step 1 · Compute \\( AB \\):</strong> \\[ AB = \\begin{pmatrix} 1(0) + 2(2) & 1(-1) + 2(1) \\\\ 3(0) + 4(2) & 3(-1) + 4(1) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 4 & 1 \\\\ 8 & 1 \\end{pmatrix}}. \\]</p><p><strong>Step 2 · Compute \\( BA \\):</strong> \\[ BA = \\begin{pmatrix} 0(1) + (-1)(3) & 0(2) + (-1)(4) \\\\ 2(1) + 1(3) & 2(2) + 1(4) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} -3 & -4 \\\\ 5 & 8 \\end{pmatrix}}. \\] Clearly \\( AB \\neq BA \\), confirming that matrix multiplication is non-commutative.</p><p><strong>Step 3 · Verify \\( (AB)^T = B^T A^T \\):</strong> \\[ (AB)^T = \\begin{pmatrix} 4 & 8 \\\\ 1 & 1 \\end{pmatrix}. \\] \\[ B^T A^T = \\begin{pmatrix} 0 & 2 \\\\ -1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix} = \\begin{pmatrix} 0(1) + 2(2) & 0(3) + 2(4) \\\\ -1(1) + 1(2) & -1(3) + 1(4) \\end{pmatrix} = \\begin{pmatrix} 4 & 8 \\\\ 1 & 1 \\end{pmatrix}. \\quad \\checkmark \\]</p>",
-          "ar": null
+          "ar": "<p><strong>Problem:</strong> Let \\( A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( B = \\begin{pmatrix} 0 & -1 \\\\ 2 & 1 \\end{pmatrix} \\). Compute \\( AB \\) and \\( BA \\), verify that \\( AB \\neq BA \\), and verify that \\( (AB)^T = B^T A^T \\).</p><p><strong>Step 1 · Compute \\( AB \\):</strong> \\[ AB = \\begin{pmatrix} 1(0) + 2(2) & 1(-1) + 2(1) \\\\ 3(0) + 4(2) & 3(-1) + 4(1) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 4 & 1 \\\\ 8 & 1 \\end{pmatrix}}. \\]</p><p><strong>Step 2 · Compute \\( BA \\):</strong> \\[ BA = \\begin{pmatrix} 0(1) + (-1)(3) & 0(2) + (-1)(4) \\\\ 2(1) + 1(3) & 2(2) + 1(4) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} -3 & -4 \\\\ 5 & 8 \\end{pmatrix}}. \\] Clearly \\( AB \\neq BA \\), confirming that المصفوفة multiplication is non-commutative.</p><p><strong>Step 3 · Verify \\( (AB)^T = B^T A^T \\):</strong> \\[ (AB)^T = \\begin{pmatrix} 4 & 8 \\\\ 1 & 1 \\end{pmatrix}. \\] \\[ B^T A^T = \\begin{pmatrix} 0 & 2 \\\\ -1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix} = \\begin{pmatrix} 0(1) + 2(2) & 0(3) + 2(4) \\\\ -1(1) + 1(2) & -1(3) + 1(4) \\end{pmatrix} = \\begin{pmatrix} 4 & 8 \\\\ 1 & 1 \\end{pmatrix}. \\quad \\checkmark \\]</p>"
         }
       },
       {
@@ -132,74 +132,74 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(B\\) — Matrices, Matrix Algebra & Inverses (Easy Application)",
-          "ar": null
+          "ar": "مثال محلول \\(B\\) — المصفوفات, المصفوفة الجبر & Inverses (Easy Application)"
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> Consider the matrix \\( A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix} \\). If a point \\( P=(x,y) \\) is transformed by \\( A \\) to \\( P'=(x',y') \\), such that \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = A \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\), what is the image of the point \\( (3,1) \\) under this transformation?</p><p><strong>Step-by-Step Solution:</strong> The transformation is defined by the matrix multiplication \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = A \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\). We are given the point \\( (3,1) \\), so \\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} \\) and the matrix \\( A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix} \\). Performing the matrix multiplication:\n\n\\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} (2 \\times 3) + (1 \\times 1) \\\\ (1 \\times 3) + (3 \\times 1) \\end{pmatrix} = \\begin{pmatrix} 6 + 1 \\\\ 3 + 3 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 6 \\end{pmatrix} \\)\n\nTherefore, the image of the point \\( (3,1) \\) is \\( (7,6) \\).</p>",
-          "ar": null
+          "ar": "<p><strong>Problem (Easy):</strong> Consider the المصفوفة \\( A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix} \\). If a point \\( P=(x,y) \\) is transformed by \\( A \\) to \\( P'=(x',y') \\), such that \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = A \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\), what is the image of the point \\( (3,1) \\) under this transformation?</p><p><strong>Step-by-Step الحل:</strong> The transformation is defined by the المصفوفة multiplication \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = A \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\). We are المعطيات the point \\( (3,1) \\), so \\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} \\) and the المصفوفة \\( A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix} \\). Performing the المصفوفة multiplication:\n\n\\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} (2 \\times 3) + (1 \\times 1) \\\\ (1 \\times 3) + (3 \\times 1) \\end{pmatrix} = \\begin{pmatrix} 6 + 1 \\\\ 3 + 3 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 6 \\end{pmatrix} \\)\n\nوبالتالي, the image of the point \\( (3,1) \\) is \\( (7,6) \\).</p>"
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Matrices, Matrix Algebra & Inverses)",
-          "ar": null
+          "ar": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (المصفوفات, المصفوفة الجبر & Inverses)"
         },
         "columns": [
           {
             "en": "Common Student Trap",
-            "ar": null
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
             "en": "Why It Fails Mathematically",
-            "ar": null
+            "ar": "لماذا يفشل رياضياً"
           },
           {
             "en": "Correct Exam-Board Method",
-            "ar": null
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
               "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
-              "ar": null
+              "ar": "Computing الزاوية at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)"
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": null
+              "ar": "المتجهات are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\)."
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": null
+              "ar": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\). (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             }
           ],
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": null
+              "ar": "Using the same المعامل \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)"
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": null
+              "ar": "Tests for a simultaneous collision at time \\(t\\) rather than geometric التقاطع of paths."
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": null
+              "ar": "Assign distinct المعاملات \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components."
             }
           ],
           [
             {
               "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
-              "ar": null
+              "ar": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\) (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": null
+              "ar": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors عندما \\(AB \\ne BA\\)."
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": null
+              "ar": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\). (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             }
           ]
         ]
@@ -209,11 +209,11 @@
         "style": "tip",
         "label": {
           "en": "▲ Exam Pacing & Verification Strategy — Matrices, Matrix Algebra & Inverses",
-          "ar": null
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — المصفوفات, المصفوفة الجبر & Inverses"
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": null
+          "ar": "<p><strong>Fast المصفوفة &amp; المتجه Verification (University Linear الجبر & المصفوفة Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and المحدد invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>"
         }
       },
       {
@@ -246,7 +246,7 @@
         "heading": "Level 2 · Medium — Matrix Inverses, Invertibility of 2×2 Matrices & The Gauss–Jordan Algorithm",
         "body": {
           "en": "A square \\( n \\times n \\) matrix \\( A \\) is invertible (non-singular) if it represents a bijection on \\( \\mathbb{R}^n \\). Inverting \\( A \\) allows direct algebraic solution of linear systems: \\( A\\mathbf{x} = \\mathbf{b} \\iff \\mathbf{x} = A^{-1}\\mathbf{b} \\).",
-          "ar": null
+          "ar": "A square \\( n \\times n \\) المصفوفة \\( A \\) is invertible (non-singular) if it represents a bijection on \\( \\mathbb{R}^n \\). Inverting \\( A \\) allows direct algebraic الحل of linear systems: \\( A\\mathbf{x} = \\mathbf{b} \\iff \\mathbf{x} = A^{-1}\\mathbf{b} \\)."
         }
       },
       {
@@ -254,23 +254,23 @@
         "style": "thm",
         "label": {
           "en": "● Theorem 3.2 & Proof · Inversion of \\(2 \\times 2\\) Matrices & The Product Inversion Rule",
-          "ar": null
+          "ar": "● مبرهنة 3.2 & برهان · Inversion of \\(2 \\times 2\\) المصفوفات & The Product Inversion Rule"
         },
         "body": {
           "en": "<p><strong>Theorem 1 (2×2 Inversion):</strong> The matrix \\( A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\) is invertible if and only if \\( \\det(A) = ad - bc \\neq 0 \\). Its inverse is: \\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}. \\]</p><p><em>Proof:</em> Let \\( \\Delta = ad - bc \\neq 0 \\). Multiply \\( A \\) by \\( B = \\frac{1}{\\Delta}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\): \\[ AB = \\frac{1}{\\Delta} \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{\\Delta} \\begin{pmatrix} ad - bc & -ab + ba \\\\ cd - dc & -cb + da \\end{pmatrix} = \\frac{1}{\\Delta} \\begin{pmatrix} \\Delta & 0 \\\\ 0 & \\Delta \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I. \\] Similarly, computing \\( BA \\) gives \\( I \\). Thus \\( B = A^{-1} \\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem 2 (Inverse of a Product):</strong> If \\( A \\) and \\( B \\) are invertible \\( n \\times n \\) matrices, then \\( AB \\) is invertible and: \\[ (AB)^{-1} = B^{-1} A^{-1}. \\]</p><p><em>Proof:</em> Using associativity: \\[ (AB)(B^{-1} A^{-1}) = A(B B^{-1}) A^{-1} = A I A^{-1} = A A^{-1} = I. \\] \\[ (B^{-1} A^{-1})(AB) = B^{-1}(A^{-1} A) B = B^{-1} I B = B^{-1} B = I. \\] By uniqueness of inverses, \\( (AB)^{-1} = B^{-1} A^{-1} \\). \\(\\blacksquare\\)</p>",
-          "ar": null
+          "ar": "<p><strong>Theorem 1 (2×2 Inversion):</strong> The المصفوفة \\( A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\) is invertible if and only if \\( \\det(A) = ad - bc \\neq 0 \\). Its inverse is: \\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}. \\]</p><p><em>Proof:</em> Let \\( \\Delta = ad - bc \\neq 0 \\). Multiply \\( A \\) by \\( B = \\frac{1}{\\Delta}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\): \\[ AB = \\frac{1}{\\Delta} \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{\\Delta} \\begin{pmatrix} ad - bc & -ab + ba \\\\ cd - dc & -cb + da \\end{pmatrix} = \\frac{1}{\\Delta} \\begin{pmatrix} \\Delta & 0 \\\\ 0 & \\Delta \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I. \\] Similarly, computing \\( BA \\) gives \\( I \\). وعليه \\( B = A^{-1} \\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem 2 (Inverse of a Product):</strong> If \\( A \\) and \\( B \\) are invertible \\( n \\times n \\) المصفوفات, then \\( AB \\) is invertible and: \\[ (AB)^{-1} = B^{-1} A^{-1}. \\]</p><p><em>Proof:</em> Using associativity: \\[ (AB)(B^{-1} A^{-1}) = A(B B^{-1}) A^{-1} = A I A^{-1} = A A^{-1} = I. \\] \\[ (B^{-1} A^{-1})(AB) = B^{-1}(A^{-1} A) B = B^{-1} I B = B^{-1} B = I. \\] By uniqueness of inverses, \\( (AB)^{-1} = B^{-1} A^{-1} \\). \\(\\blacksquare\\)</p>"
         }
       },
       {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Matrix transformation sandbox",
-          "ar": null
+          "ar": "⊙ مستكشف تفاعلي · المصفوفة transformation sandbox"
         },
         "canvasId": "laMatCanvas",
         "ariaLabel": {
           "en": "A grid and the unit square, live-warped by a 2 by 2 matrix built from four sliders",
-          "ar": null
+          "ar": "A grid and the unit square, live-warped by a 2 by 2 المصفوفة built from four sliders"
         },
         "dataPanel": {
           "btnId": "laMatDataBtn",
@@ -279,16 +279,16 @@
           "rowsId": "laMatDataRows",
           "caption": {
             "en": "The matrix, its column images, determinant, and orientation",
-            "ar": null
+            "ar": "The المصفوفة, its column images, المحدد, and orientation"
           },
           "columns": [
             {
               "en": "quantity",
-              "ar": null
+              "ar": "الكمية"
             },
             {
               "en": "value",
-              "ar": null
+              "ar": "القيمة"
             }
           ]
         },
@@ -297,7 +297,7 @@
             "id": "laMatA",
             "label": {
               "en": "<b>\\(a\\)</b> (row 1, col 1):",
-              "ar": null
+              "ar": "<b>\\(a\\)</b> (row 1, col 1): (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             },
             "min": -2,
             "max": 2,
@@ -306,14 +306,14 @@
             "valueDisplayId": "laMatAval",
             "ariaLabel": {
               "en": "Matrix entry a",
-              "ar": null
+              "ar": "المصفوفة entry a"
             }
           },
           {
             "id": "laMatB",
             "label": {
               "en": "<b>\\(b\\)</b> (row 1, col 2):",
-              "ar": null
+              "ar": "<b>\\(b\\)</b> (row 1, col 2): (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             },
             "min": -2,
             "max": 2,
@@ -322,14 +322,14 @@
             "valueDisplayId": "laMatBval",
             "ariaLabel": {
               "en": "Matrix entry b",
-              "ar": null
+              "ar": "المصفوفة entry b"
             }
           },
           {
             "id": "laMatC",
             "label": {
               "en": "<b>\\(c\\)</b> (row 2, col 1):",
-              "ar": null
+              "ar": "<b>\\(c\\)</b> (row 2, col 1): (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             },
             "min": -2,
             "max": 2,
@@ -338,14 +338,14 @@
             "valueDisplayId": "laMatCval",
             "ariaLabel": {
               "en": "Matrix entry c",
-              "ar": null
+              "ar": "المصفوفة entry c"
             }
           },
           {
             "id": "laMatD",
             "label": {
               "en": "<b>\\(d\\)</b> (row 2, col 2):",
-              "ar": null
+              "ar": "<b>\\(d\\)</b> (row 2, col 2): (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             },
             "min": -2,
             "max": 2,
@@ -354,14 +354,14 @@
             "valueDisplayId": "laMatDval",
             "ariaLabel": {
               "en": "Matrix entry d",
-              "ar": null
+              "ar": "المصفوفة entry d"
             }
           },
           {
             "id": "laMatPreset",
             "label": {
               "en": "presets:",
-              "ar": null
+              "ar": "presets: (المصفوفات وجبر المصفوفات والمصفوفة العكسية)"
             },
             "buttons": [
               {
@@ -393,7 +393,7 @@
             "id": "laMatDet",
             "label": {
               "en": "\\(\\det (A)\\)",
-              "ar": null
+              "ar": "\\(\\det (A)\\)"
             },
             "colorClass": "indigo",
             "value": "\\(1.000\\)"
@@ -402,7 +402,7 @@
             "id": "laMatArea",
             "label": {
               "en": "area scale factor",
-              "ar": null
+              "ar": "المساحة scale factor"
             },
             "colorClass": "amber",
             "value": "\\(1.000\\)"
@@ -410,7 +410,7 @@
         ],
         "note": {
           "en": "The indigo arrow is A's first column A \\(e_{1}\\); the amber arrow is its second column A \\(e_{2}\\). The filled parallelogram represents the image of the unit square, with area equal to \\(|\\det (A)|\\). When \\(\\det (A) < 0\\), the fill switches to amber, reflecting orientation reversal.",
-          "ar": null
+          "ar": "The indigo arrow is A's first column A \\(e_{1}\\); the amber arrow is its second column A \\(e_{2}\\). The filled parallelogram represents the image of the unit square, with المساحة equal to \\(|\\det (A)|\\). عندما \\(\\det (A) < 0\\), the fill switches to amber, reflecting orientation reversal."
         },
         "canvas3d": {
           "btnId": "exAuto3dBtn_vec3_lamatrices",
@@ -419,7 +419,7 @@
           "btnLabel": "🧊 View Interactive 3D Model",
           "ariaLabel": {
             "en": "Interactive 3D visualization for Matrices, Matrix Algebra & Inverses. Drag to rotate.",
-            "ar": null
+            "ar": "تمثيل ثلاثي الأبعاد تفاعلي لـ المصفوفات, المصفوفة الجبر & Inverses. اسحب للتدوير."
           }
         }
       },
@@ -468,7 +468,7 @@
         },
         "caption": {
           "en": "Action of matrix \\( A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix} \\) on standard basis vectors \\( \\mathbf{e}_1 = \\langle 1, 0 \\rangle \\) and \\( \\mathbf{e}_2 = \\langle 0, 1 \\rangle \\). The columns of \\( A \\) define the transformed coordinate axes.",
-          "ar": null
+          "ar": "Action of المصفوفة \\( A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix} \\) on standard basis المتجهات \\( \\mathbf{e}_1 = \\langle 1, 0 \\rangle \\) and \\( \\mathbf{e}_2 = \\langle 0, 1 \\rangle \\). The columns of \\( A \\) define the transformed الإحداثي axes."
         }
       },
       {
@@ -476,11 +476,11 @@
         "style": "example",
         "label": {
           "en": "Level 2 (Medium) — Worked Example · Matrix Inversion via Gauss–Jordan [A | I] Algorithm",
-          "ar": null
+          "ar": "Level 2 (Medium) — مثال محلول · المصفوفة Inversion via Gauss–Jordan [A | I] Algorithm"
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Invert the \\( 3 \\times 3 \\) matrix \\( A = \\begin{pmatrix} 1 & 0 & 2 \\\\ 2 & -1 & 3 \\\\ 4 & 1 & 8 \\end{pmatrix} \\) using row reduction on \\( [A \\mid I] \\).</p><p><strong>Step 1 · Augment with Identity Matrix:</strong> \\[ [A \\mid I] = \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 2 & -1 & 3 & | & 0 & 1 & 0 \\\\ 4 & 1 & 8 & | & 0 & 0 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Forward Elimination:</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_3 \\leftarrow R_3 - 4R_1 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & -1 & -1 & | & -2 & 1 & 0 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\end{pmatrix}. \\] Scale \\( R_2 \\leftarrow -R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\end{pmatrix}. \\] Eliminate in row 3: \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 0 & -1 & | & -6 & 1 & 1 \\end{pmatrix} \\xrightarrow{R_3 \\leftarrow -R_3} \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Backward Elimination to RREF:</strong><br>Eliminate column 3 above row 3: \\( R_2 \\leftarrow R_2 - R_3 \\) and \\( R_1 \\leftarrow R_1 - 2R_3 \\): \\[ \\begin{pmatrix} 1 & 0 & 0 & | & 1 - 2(6) & 0 - 2(-1) & 0 - 2(-1) \\\\ 0 & 1 & 0 & | & 2 - 6 & -1 - (-1) & 0 - (-1) \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 & 0 & | & -11 & 2 & 2 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix}. \\]</p><p><strong>Conclusion:</strong> \\[ \\mathbf{A^{-1} = \\begin{pmatrix} -11 & 2 & 2 \\\\ -4 & 0 & 1 \\\\ 6 & -1 & -1 \\end{pmatrix}}. \\]</p>",
-          "ar": null
+          "ar": "<p><strong>Problem:</strong> Invert the \\( 3 \\times 3 \\) المصفوفة \\( A = \\begin{pmatrix} 1 & 0 & 2 \\\\ 2 & -1 & 3 \\\\ 4 & 1 & 8 \\end{pmatrix} \\) using row reduction on \\( [A \\mid I] \\).</p><p><strong>Step 1 · Augment with المتطابقة المصفوفة:</strong> \\[ [A \\mid I] = \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 2 & -1 & 3 & | & 0 & 1 & 0 \\\\ 4 & 1 & 8 & | & 0 & 0 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Forward Elimination:</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_3 \\leftarrow R_3 - 4R_1 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & -1 & -1 & | & -2 & 1 & 0 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\end{pmatrix}. \\] Scale \\( R_2 \\leftarrow -R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\end{pmatrix}. \\] Eliminate in row 3: \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 0 & -1 & | & -6 & 1 & 1 \\end{pmatrix} \\xrightarrow{R_3 \\leftarrow -R_3} \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Backward Elimination to RREF:</strong><br>Eliminate column 3 above row 3: \\( R_2 \\leftarrow R_2 - R_3 \\) and \\( R_1 \\leftarrow R_1 - 2R_3 \\): \\[ \\begin{pmatrix} 1 & 0 & 0 & | & 1 - 2(6) & 0 - 2(-1) & 0 - 2(-1) \\\\ 0 & 1 & 0 & | & 2 - 6 & -1 - (-1) & 0 - (-1) \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 & 0 & | & -11 & 2 & 2 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix}. \\]</p><p><strong>Conclusion:</strong> \\[ \\mathbf{A^{-1} = \\begin{pmatrix} -11 & 2 & 2 \\\\ -4 & 0 & 1 \\\\ 6 & -1 & -1 \\end{pmatrix}}. \\]</p>"
         }
       },
       {
@@ -513,7 +513,7 @@
         "heading": "Level 3 · Advanced / University Rigor — Elementary Matrices & The Invertible Matrix Theorem",
         "body": {
           "en": "Every elementary row operation corresponds to pre-multiplying by an elementary matrix \\( E \\). This establishes the profound equivalence between row reduction algorithms, matrix factorizations, and the structural properties of linear mappings.",
-          "ar": null
+          "ar": "Every elementary row operation corresponds to pre-multiplying by an elementary المصفوفة \\( E \\). This establishes the profound equivalence between row reduction algorithms, المصفوفة factorizations, and the structural properties of linear mappings."
         }
       },
       {
@@ -521,11 +521,11 @@
         "style": "thm",
         "label": {
           "en": "● Theorem 3.3 · Elementary Matrix Decomposition",
-          "ar": null
+          "ar": "● مبرهنة 3.3 · Elementary المصفوفة Decomposition"
         },
         "body": {
           "en": "<p>An <strong>elementary matrix</strong> \\( E \\) is obtained by performing a single elementary row operation on the identity matrix \\( I \\). Pre-multiplying any matrix \\( A \\) by \\( E \\) executes that exact row operation on \\( A \\): \\[ \\text{RowOp}(A) = E A. \\]</p><p>Every elementary matrix \\( E \\) is invertible, and its inverse \\( E^{-1} \\) is the elementary matrix of the same type that reverses the operation. Consequently, an \\( n \\times n \\) matrix \\( A \\) is invertible if and only if it is row equivalent to \\( I_n \\), in which case \\( A \\) can be factored as a product of elementary matrices: \\[ A = E_1 E_2 \\dots E_k. \\]</p>",
-          "ar": null
+          "ar": "<p>An <strong>elementary matrix</strong> \\( E \\) is obtained by performing a single elementary row operation on the المتطابقة المصفوفة \\( I \\). Pre-multiplying any المصفوفة \\( A \\) by \\( E \\) executes that exact row operation on \\( A \\): \\[ \\text{RowOp}(A) = E A. \\]</p><p>Every elementary المصفوفة \\( E \\) is invertible, and its inverse \\( E^{-1} \\) is the elementary المصفوفة of the same type that reverses the operation. Consequently, an \\( n \\times n \\) المصفوفة \\( A \\) is invertible if and only if it is row equivalent to \\( I_n \\), in which case \\( A \\) can be factored as a product of elementary المصفوفات: \\[ A = E_1 E_2 \\dots E_k. \\]</p>"
         }
       },
       {
@@ -533,11 +533,11 @@
         "style": "thm",
         "label": {
           "en": "● Theorem 3.4 · The Invertible Matrix Theorem (IMT)",
-          "ar": null
+          "ar": "● مبرهنة 3.4 · The Invertible المصفوفة مبرهنة (IMT)"
         },
         "body": {
           "en": "<p>Let \\( A \\) be a square \\( n \\times n \\) matrix. The following statements are mathematically equivalent (either all are true, or all are false):</p><ol><li>\\( A \\) is an invertible matrix.</li><li>\\( A \\) is row equivalent to the \\( n \\times n \\) identity matrix \\( I_n \\).</li><li>\\( A \\) has \\( n \\) pivot positions (rank \\( A = n \\)).</li><li>The equation \\( A\\mathbf{x} = \\mathbf{0} \\) has only the trivial solution \\( \\mathbf{x} = \\mathbf{0} \\).</li><li>The columns of \\( A \\) form a linearly independent set.</li><li>The linear transformation \\( T(\\mathbf{x}) = A\\mathbf{x} \\) is one-to-one (injective).</li><li>The equation \\( A\\mathbf{x} = \\mathbf{b} \\) has at least one solution for each \\( \\mathbf{b} \\in \\mathbb{R}^n \\).</li><li>The columns of \\( A \\) span \\( \\mathbb{R}^n \\).</li><li>The linear transformation \\( T(\\mathbf{x}) = A\\mathbf{x} \\) maps \\( \\mathbb{R}^n \\) onto \\( \\mathbb{R}^n \\) (surjective).</li><li>There is an \\( n \\times n \\) matrix \\( C \\) such that \\( CA = I \\).</li><li>There is an \\( n \\times n \\) matrix \\( D \\) such that \\( AD = I \\).</li><li>\\( A^T \\) is an invertible matrix.</li><li>\\( \\det(A) \\neq 0 \\).</li><li>The number \\( 0 \\) is not an eigenvalue of \\( A \\).</li><li>\\( \\operatorname{Col}(A) = \\mathbb{R}^n \\) and \\( \\operatorname{Null}(A) = \\{ \\mathbf{0} \\} \\).</li></ol>",
-          "ar": null
+          "ar": "<p>Let \\( A \\) be a square \\( n \\times n \\) المصفوفة. The following statements are mathematically equivalent (either all are true, or all are false):</p><ol><li>\\( A \\) is an invertible المصفوفة.</li><li>\\( A \\) is row equivalent to the \\( n \\times n \\) المتطابقة المصفوفة \\( I_n \\).</li><li>\\( A \\) has \\( n \\) pivot positions (rank \\( A = n \\)).</li><li>The المعادلة \\( A\\mathbf{x} = \\mathbf{0} \\) has only the trivial الحل \\( \\mathbf{x} = \\mathbf{0} \\).</li><li>The columns of \\( A \\) form a linearly independent set.</li><li>The linear transformation \\( T(\\mathbf{x}) = A\\mathbf{x} \\) is one-to-one (injective).</li><li>The المعادلة \\( A\\mathbf{x} = \\mathbf{b} \\) has at least one الحل for each \\( \\mathbf{b} \\in \\mathbb{R}^n \\).</li><li>The columns of \\( A \\) span \\( \\mathbb{R}^n \\).</li><li>The linear transformation \\( T(\\mathbf{x}) = A\\mathbf{x} \\) maps \\( \\mathbb{R}^n \\) onto \\( \\mathbb{R}^n \\) (surjective).</li><li>There is an \\( n \\times n \\) المصفوفة \\( C \\) such that \\( CA = I \\).</li><li>There is an \\( n \\times n \\) المصفوفة \\( D \\) such that \\( AD = I \\).</li><li>\\( A^T \\) is an invertible المصفوفة.</li><li>\\( \\det(A) \\neq 0 \\).</li><li>The number \\( 0 \\) is not an eigenvalue of \\( A \\).</li><li>\\( \\operatorname{Col}(A) = \\mathbb{R}^n \\) and \\( \\operatorname{Null}(A) = \\{ \\mathbf{0} \\} \\).</li></ol>"
         }
       },
       {
@@ -545,11 +545,11 @@
         "style": "warn",
         "label": {
           "en": "⚠️ Common Traps & University Pitfalls · Matrices",
-          "ar": null
+          "ar": "⚠️ أخطاء شائعة ومصائد جامعية · المصفوفات"
         },
         "body": {
           "en": "<ol><li><strong>Assuming Zero Product Property:</strong> If \\( AB = 0 \\), it does <em>NOT</em> imply \\( A = 0 \\) or \\( B = 0 \\). For example, \\( \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix} \\). Non-zero matrices can have zero products!</li><li><strong>Cancellation Fallacy:</strong> If \\( AB = AC \\) and \\( A \\neq 0 \\), you <em>CANNOT</em> cancel \\( A \\) to conclude \\( B = C \\). Cancellation is legal only if \\( A \\) is invertible (\\( \\det(A) \\neq 0 \\)).</li><li><strong>Order of Inverses and Transposes:</strong> Remembering socks and shoes: \\( (AB)^{-1} = B^{-1} A^{-1} \\) and \\( (AB)^T = B^T A^T \\). Writing \\( (AB)^{-1} = A^{-1} B^{-1} \\) is a fatal error in non-commutative matrix algebra.</li></ol>",
-          "ar": null
+          "ar": "<ol><li><strong>Assuming Zero Product Property:</strong> If \\( AB = 0 \\), it does <em>NOT</em> imply \\( A = 0 \\) or \\( B = 0 \\). For example, \\( \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix} \\). Non-zero المصفوفات can have zero products!</li><li><strong>Cancellation Fallacy:</strong> If \\( AB = AC \\) and \\( A \\neq 0 \\), you <em>CANNOT</em> cancel \\( A \\) to conclude \\( B = C \\). Cancellation is legal only if \\( A \\) is invertible (\\( \\det(A) \\neq 0 \\)).</li><li><strong>Order of Inverses and Transposes:</strong> Remembering socks and shoes: \\( (AB)^{-1} = B^{-1} A^{-1} \\) and \\( (AB)^T = B^T A^T \\). Writing \\( (AB)^{-1} = A^{-1} B^{-1} \\) is a fatal error in non-commutative المصفوفة الجبر.</li></ol>"
         }
       },
       {
@@ -557,11 +557,11 @@
         "style": "example",
         "label": {
           "en": "Level 3 (Advanced) — Worked Example · One-Sided Inverses for Square Matrices",
-          "ar": null
+          "ar": "Level 3 (Advanced) — مثال محلول · One-Sided Inverses for Square المصفوفات"
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Let \\( A \\) and \\( B \\) be \\( n \\times n \\) square matrices such that \\( AB = I \\). Prove rigorously that \\( BA = I \\) and therefore \\( B = A^{-1} \\).</p><p><strong>Step 1 · Consider the Homogeneous Equation \\( B\\mathbf{x} = \\mathbf{0} \\):</strong><br>Suppose \\( B\\mathbf{x} = \\mathbf{0} \\) for some vector \\( \\mathbf{x} \\in \\mathbb{R}^n \\). Pre-multiply by \\( A \\): \\[ A(B\\mathbf{x}) = A\\mathbf{0} \\implies (AB)\\mathbf{x} = \\mathbf{0} \\implies I\\mathbf{x} = \\mathbf{0} \\implies \\mathbf{x} = \\mathbf{0}. \\] Thus \\( B\\mathbf{x} = \\mathbf{0} \\) has only the trivial solution.</p><p><strong>Step 2 · Apply the Invertible Matrix Theorem:</strong><br>Since \\( B \\) is an \\( n \\times n \\) square matrix whose homogeneous equation has only the trivial solution, by the IMT (statement 4 \\(\\implies\\) statement 1), \\( B \\) is <strong>invertible</strong>, so \\( B^{-1} \\) exists.</p><p><strong>Step 3 · Compute \\( BA \\):</strong><br>Multiply \\( AB = I \\) on the left by \\( B^{-1} \\) and on the right by \\( B \\): \\[ B^{-1}(AB)B = B^{-1}(I)B \\implies (B^{-1}A B)B = B^{-1}B = I. \\] More directly, multiply \\( AB = I \\) on the left by \\( B \\) and on the right by \\( B^{-1} \\): \\[ B(AB)B^{-1} = B(I)B^{-1} \\implies (BA)(BB^{-1}) = BB^{-1} \\implies (BA)I = I \\implies \\mathbf{BA = I}. \\] Thus \\( B \\) is the genuine two-sided inverse of \\( A \\). \\(\\blacksquare\\)</p>",
-          "ar": null
+          "ar": "<p><strong>Problem:</strong> Let \\( A \\) and \\( B \\) be \\( n \\times n \\) square المصفوفات such that \\( AB = I \\). Prove rigorously that \\( BA = I \\) and وبالتالي \\( B = A^{-1} \\).</p><p><strong>Step 1 · Consider the Homogeneous المعادلة \\( B\\mathbf{x} = \\mathbf{0} \\):</strong><br>Suppose \\( B\\mathbf{x} = \\mathbf{0} \\) for some المتجه \\( \\mathbf{x} \\in \\mathbb{R}^n \\). Pre-multiply by \\( A \\): \\[ A(B\\mathbf{x}) = A\\mathbf{0} \\implies (AB)\\mathbf{x} = \\mathbf{0} \\implies I\\mathbf{x} = \\mathbf{0} \\implies \\mathbf{x} = \\mathbf{0}. \\] وعليه \\( B\\mathbf{x} = \\mathbf{0} \\) has only the trivial الحل.</p><p><strong>Step 2 · Apply the Invertible المصفوفة مبرهنة:</strong><br>Since \\( B \\) is an \\( n \\times n \\) square المصفوفة whose homogeneous المعادلة has only the trivial الحل, by the IMT (statement 4 \\(\\implies\\) statement 1), \\( B \\) is <strong>invertible</strong>, so \\( B^{-1} \\) exists.</p><p><strong>Step 3 · Compute \\( BA \\):</strong><br>Multiply \\( AB = I \\) on the left by \\( B^{-1} \\) and on the right by \\( B \\): \\[ B^{-1}(AB)B = B^{-1}(I)B \\implies (B^{-1}A B)B = B^{-1}B = I. \\] More directly, multiply \\( AB = I \\) on the left by \\( B \\) and on the right by \\( B^{-1} \\): \\[ B(AB)B^{-1} = B(I)B^{-1} \\implies (BA)(BB^{-1}) = BB^{-1} \\implies (BA)I = I \\implies \\mathbf{BA = I}. \\] وعليه \\( B \\) is the genuine two-sided inverse of \\( A \\). \\(\\blacksquare\\)</p>"
         }
       },
       {

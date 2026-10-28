@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Data in AI is modeled using probability distributions. Maximum Likelihood Estimation (MLE) is the statistical method used to find the model parameters that make the observed training data most probable.",
-          "ar": null
+          "ar": "Data in AI is modeled using الاحتمال distributions. Maximum Likelihood Estimation (MLE) is the statistical method used to أوجد model المعاملات that make the observed training data most probable."
         }
       },
       {
@@ -38,11 +38,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 5.1 — Maximum Likelihood Estimation (MLE)",
-          "ar": null
+          "ar": "● تعريف 5.1 — Maximum Likelihood Estimation (MLE)"
         },
         "body": {
           "en": "Given independent and identically distributed (i.i.d.) observations \\( X = \\{x_1, x_2, \\dots, x_N\\} \\) from a distribution parameterized by \\( \\theta \\):<br>1. <strong>Likelihood:</strong> \\( L(\\theta) = \\prod_{i=1}^N p(x_i | \\theta) \\).<br>2. <strong>Log-Likelihood:</strong> \\( \\ell(\\theta) = \\ln L(\\theta) = \\sum_{i=1}^N \\ln p(x_i | \\theta) \\). Taking the logarithm converts products into sums without shifting the maximizing argument.<br>3. <strong>MLE Estimator:</strong> \\( \\hat{\\theta}_{\\text{MLE}} = \\arg\\max_\\theta \\ell(\\theta) \\), solved by setting \\( \\frac{\\partial \\ell}{\\partial \\theta} = 0 \\).",
-          "ar": null
+          "ar": "المعطيات independent and identically distributed (i.i.d.) observations \\( X = \\{x_1, x_2, \\dots, x_N\\} \\) from a distribution parameterized by \\( \\theta \\):<br>1. <strong>Likelihood:</strong> \\( L(\\theta) = \\prod_{i=1}^N p(x_i | \\theta) \\).<br>2. <strong>Log-Likelihood:</strong> \\( \\ell(\\theta) = \\ln L(\\theta) = \\sum_{i=1}^N \\ln p(x_i | \\theta) \\). Taking the logarithm converts products into sums without shifting the maximizing argument.<br>3. <strong>MLE Estimator:</strong> \\( \\hat{\\theta}_{\\text{MLE}} = \\arg\\max_\\theta \\ell(\\theta) \\), solved by setting \\( \\frac{\\partial \\ell}{\\partial \\theta} = 0 \\)."
         }
       },
       {
@@ -223,41 +223,41 @@
           {
             "label": {
               "en": "Gaussian PDF",
-              "ar": null
+              "ar": "Gaussian PDF (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
             },
             "value": {
               "en": "\\( p(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}} \\)",
-              "ar": null
+              "ar": "\\( p(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}} \\)"
             }
           },
           {
             "label": {
               "en": "Gaussian Mean MLE",
-              "ar": null
+              "ar": "Gaussian Mean MLE (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
             },
             "value": {
               "en": "\\( \\hat{\\mu}_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N x_i \\) (sample mean)",
-              "ar": null
+              "ar": "\\( \\hat{\\mu}_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N x_i \\) (sample mean) (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
             }
           },
           {
             "label": {
               "en": "Gaussian Var MLE",
-              "ar": null
+              "ar": "Gaussian Var MLE (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
             },
             "value": {
               "en": "\\( \\hat{\\sigma}^2_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N (x_i - \\hat{\\mu})^2 \\)",
-              "ar": null
+              "ar": "\\( \\hat{\\sigma}^2_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N (x_i - \\hat{\\mu})^2 \\)"
             }
           },
           {
             "label": {
               "en": "Bernoulli MLE",
-              "ar": null
+              "ar": "Bernoulli MLE (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
             },
             "value": {
               "en": "\\( \\hat{p}_{\\text{MLE}} = \\frac{k}{N} \\) (fraction of positive trials)",
-              "ar": null
+              "ar": "\\( \\hat{p}_{\\text{MLE}} = \\frac{k}{N} \\) (fraction of positive trials) (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
             }
           }
         ]
@@ -279,11 +279,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 5.A — Deriving the MLE of a Bernoulli Parameter",
-          "ar": null
+          "ar": "مثال محلول 5.A — Deriving the MLE of a Bernoulli المعامل"
         },
         "body": {
           "en": "<p>Let \\( x_1, x_2, \\dots, x_N \\in \\{0, 1\\} \\) be \\( N \\) binary outcomes from a coin toss with unknown bias \\( p \\). Deriving the MLE estimator for \\( p \\).</p><p><strong>Solution:</strong><br>The probability of single outcome is \\( P(x_i) = p^{x_i}(1-p)^{1-x_i} \\).<br>The likelihood for \\( N \\) i.i.d. observations is:<br>\\[ L(p) = \\prod_{i=1}^N p^{x_i}(1-p)^{1-x_i} = p^{\\sum x_i} (1-p)^{N - \\sum x_i} \\]<br>Let \\( k = \\sum_{i=1}^N x_i \\) be the total number of successes.<br>Log-likelihood:<br>\\[ \\ell(p) = \\ln L(p) = k \\ln p + (N - k) \\ln(1 - p) \\]<br>Differentiate with respect to \\( p \\) and set to 0:<br>\\[ \\frac{d\\ell}{dp} = \\frac{k}{p} - \\frac{N - k}{1 - p} = 0 \\implies \\frac{k}{p} = \\frac{N - k}{1 - p} \\]<br>\\[ k(1 - p) = p(N - k) \\implies k - kp = Np - kp \\implies Np = k \\implies \\hat{p}_{\\text{MLE}} = \\frac{k}{N} \\].<br>Checking second derivative: \\( \\frac{d^2\\ell}{dp^2} = -\\frac{k}{p^2} - \\frac{N-k}{(1-p)^2} < 0 \\), confirming a maximum.<br><strong>Answer:</strong> \\( \\hat{p}_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N x_i \\).</p>",
-          "ar": null
+          "ar": "<p>Let \\( x_1, x_2, \\dots, x_N \\in \\{0, 1\\} \\) be \\( N \\) binary outcomes from a coin toss with unknown bias \\( p \\). Deriving the MLE estimator for \\( p \\).</p><p><strong>Solution:</strong><br>The الاحتمال of single outcome is \\( P(x_i) = p^{x_i}(1-p)^{1-x_i} \\).<br>The likelihood for \\( N \\) i.i.d. observations is:<br>\\[ L(p) = \\prod_{i=1}^N p^{x_i}(1-p)^{1-x_i} = p^{\\sum x_i} (1-p)^{N - \\sum x_i} \\]<br>Let \\( k = \\sum_{i=1}^N x_i \\) be the total number of successes.<br>Log-likelihood:<br>\\[ \\ell(p) = \\ln L(p) = k \\ln p + (N - k) \\ln(1 - p) \\]<br>Differentiate بالنسبة إلى \\( p \\) and set to 0:<br>\\[ \\frac{d\\ell}{dp} = \\frac{k}{p} - \\frac{N - k}{1 - p} = 0 \\implies \\frac{k}{p} = \\frac{N - k}{1 - p} \\]<br>\\[ k(1 - p) = p(N - k) \\implies k - kp = Np - kp \\implies Np = k \\implies \\hat{p}_{\\text{MLE}} = \\frac{k}{N} \\].<br>Checking second المشتقة: \\( \\frac{d^2\\ell}{dp^2} = -\\frac{k}{p^2} - \\frac{N-k}{(1-p)^2} < 0 \\), confirming a maximum.<br><strong>Answer:</strong> \\( \\hat{p}_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N x_i \\).</p>"
         }
       },
       {

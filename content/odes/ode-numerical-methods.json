@@ -11,7 +11,7 @@
         "kind": "text",
         "body": {
           "en": "<p>In scientific computing, weather forecasting, aerospace navigation, and chemical reactor design, nonlinear differential equations almost never possess closed-form analytical solutions. Instead, mathematicians and engineers rely on <strong>numerical integration algorithms</strong> to advance the solution forward step by step along discrete time grids. Understanding numerical ODE algorithms requires analyzing two competing forces: <strong>truncation error</strong> (the accuracy of the local Taylor polynomial approximation) and <strong>numerical stability</strong> (whether propagation errors attenuate or blow up uncontrollably). This chapter investigates <strong>Forward Euler</strong>, <strong>Heun's Predictor-Corrector (RK2)</strong>, <strong>Fourth-Order Runge–Kutta (RK4)</strong>, and the phenomenon of <strong>stiffness</strong>.</p>",
-          "ar": null
+          "ar": "<p>In scientific computing, weather forecasting, aerospace navigation, and chemical reactor design, nonlinear differential المعادلات almost never possess closed-form analytical الحلول. Instead, mathematicians and engineers rely on <strong>numerical integration algorithms</strong> to advance the الحل forward step by step along discrete time grids. Understanding numerical ODE algorithms requires analyzing two competing forces: <strong>truncation error</strong> (the accuracy of the local Taylor كثيرة الحدود approximation) and <strong>numerical stability</strong> (whether propagation errors attenuate or blow up uncontrollably). This chapter investigates <strong>Forward Euler</strong>, <strong>Heun's Predictor-Corrector (RK2)</strong>, <strong>Fourth-Order Runge–Kutta (RK4)</strong>, and the phenomenon of <strong>stiffness</strong>.</p>"
         }
       },
       {
@@ -19,11 +19,11 @@
         "style": "def",
         "label": {
           "en": "● Level 1 Foundation — Definition 9.1: Forward Euler's Method & Discrete Vector Fields",
-          "ar": null
+          "ar": "● Level 1 Foundation — تعريف 9.1: Forward Euler's Method & Discrete المتجه Fields"
         },
         "body": {
           "en": "<p>Consider the initial value problem: \\[ \\frac{dy}{dt} = f(t, y), \\qquad y(t_0) = y_0. \\] Discretize the time domain into uniform intervals of <strong>step size \\( h > 0 \\)</strong>, generating discrete grid points \\( t_n = t_0 + n h \\). <strong>Forward Euler's Method</strong> approximates the continuous solution \\( y(t_{n+1}) \\) by extrapolating along the tangent line evaluated at the beginning of the step: \\[ y_{n+1} = y_n + h f(t_n, y_n), \\qquad n = 0, 1, 2, \\dots \\]</p>",
-          "ar": null
+          "ar": "<p>Consider the initial value problem: \\[ \\frac{dy}{dt} = f(t, y), \\qquad y(t_0) = y_0. \\] Discretize the time المجال into uniform intervals of <strong>step size \\( h > 0 \\)</strong>, generating discrete grid points \\( t_n = t_0 + n h \\). <strong>Forward Euler's Method</strong> approximates the continuous الحل \\( y(t_{n+1}) \\) by extrapolating along the خط المماس evaluated at the beginning of the step: \\[ y_{n+1} = y_n + h f(t_n, y_n), \\qquad n = 0, 1, 2, \\dots \\]</p>"
         }
       },
       {
@@ -43,7 +43,7 @@
         },
         "caption": {
           "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": null
+          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
         }
       },
       {
@@ -51,11 +51,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 1 Foundation — Theorem 9.1: Local Truncation Error \\(O(h^{2})\\) vs Global Error \\(O(h)\\)",
-          "ar": null
+          "ar": "▲ Level 1 Foundation — مبرهنة 9.1: Local Truncation Error \\(O(h^{2})\\) vs Global Error \\(O(h)\\)"
         },
         "body": {
           "en": "<p><strong>1. Local Truncation Error (LTE):</strong> By Taylor's Theorem with Lagrange remainder, assuming \\( y \\in C^2 \\): \\[ y(t_n + h) = y(t_n) + h y'(t_n) + \\frac{h^2}{2}y''(\\xi_n) = y(t_n) + h f(t_n, y(t_n)) + \\frac{h^2}{2}y''(\\xi_n) \\] for some \\( \\xi_n \\in (t_n, t_{n+1}) \\). The local error committed in a single step is: \\[ e_{n+1} = y(t_{n+1}) - \\big(y(t_n) + h f(t_n, y(t_n))\\big) = \\frac{h^2}{2}y''(\\xi_n) = O(h^2). \\]</p><p><strong>2. Global Truncation Error (GTE):</strong> To integrate across a fixed interval \\( [t_0, T] \\), the total number of steps is \\( N = \\frac{T - t_0}{h} = O(h^{-1}) \\). The accumulated global error is: \\[ E(T) \\le N \\cdot O(h^2) = \\left(\\frac{T - t_0}{h}\\right) \\cdot C h^2 = O(h). \\] Forward Euler is therefore a <strong>first-order method</strong>: halving the step size \\( h \\) only halves the global error.</p>",
-          "ar": null
+          "ar": "<p><strong>1. Local Truncation Error (LTE):</strong> By Taylor's مبرهنة with Lagrange remainder, assuming \\( y \\in C^2 \\): \\[ y(t_n + h) = y(t_n) + h y'(t_n) + \\frac{h^2}{2}y''(\\xi_n) = y(t_n) + h f(t_n, y(t_n)) + \\frac{h^2}{2}y''(\\xi_n) \\] for some \\( \\xi_n \\in (t_n, t_{n+1}) \\). The local error committed in a single step is: \\[ e_{n+1} = y(t_{n+1}) - \\big(y(t_n) + h f(t_n, y(t_n))\\big) = \\frac{h^2}{2}y''(\\xi_n) = O(h^2). \\]</p><p><strong>2. Global Truncation Error (GTE):</strong> To integrate across a fixed interval \\( [t_0, T] \\), the total number of steps is \\( N = \\frac{T - t_0}{h} = O(h^{-1}) \\). The accumulated global error is: \\[ E(T) \\le N \\cdot O(h^2) = \\left(\\frac{T - t_0}{h}\\right) \\cdot C h^2 = O(h). \\] Forward Euler is وبالتالي a <strong>first-order method</strong>: halving the step size \\( h \\) only halves the global error.</p>"
         }
       },
       {
@@ -63,11 +63,11 @@
         "style": "def",
         "label": {
           "en": "● Level 2 Analytical Methods — Definition 9.2: Improved Euler (Heun / Predictor-Corrector) & RK2",
-          "ar": null
+          "ar": "● Level 2 Analytical Methods — تعريف 9.2: Improved Euler (Heun / Predictor-Corrector) & RK2"
         },
         "body": {
           "en": "<p>Forward Euler's error arises because it evaluates slope exclusively at the beginning of the interval \\( t_n \\). <strong>Improved Euler (Heun's Method)</strong> eliminates first-order bias by averaging the slope at the start with a predicted slope at the end (analogous to the Trapezoidal Rule in numerical quadrature):</p><ol><li><strong>Predictor step (Euler trial):</strong> \\[ \\tilde{y}_{n+1} = y_n + h f(t_n, y_n). \\]</li><li><strong>Corrector step (Trapezoidal average):</strong> \\[ y_{n+1} = y_n + \\frac{h}{2}\\Big[f(t_n, y_n) + f(t_{n+1}, \\tilde{y}_{n+1})\\Big]. \\]</li></ol><p>Heun's method has local truncation error \\( O(h^3) \\) and global error \\( O(h^2) \\), making it a <strong>second-order Runge–Kutta method (RK2)</strong>.</p>",
-          "ar": null
+          "ar": "<p>Forward Euler's error arises because it evaluates الميل exclusively at the beginning of the interval \\( t_n \\). <strong>Improved Euler (Heun's Method)</strong> eliminates first-order bias by averaging the الميل at the start with a predicted الميل at the end (analogous to the Trapezoidal Rule in numerical quadrature):</p><ol><li><strong>Predictor step (Euler trial):</strong> \\[ \\tilde{y}_{n+1} = y_n + h f(t_n, y_n). \\]</li><li><strong>Corrector step (Trapezoidal average):</strong> \\[ y_{n+1} = y_n + \\frac{h}{2}\\Big[f(t_n, y_n) + f(t_{n+1}, \\tilde{y}_{n+1})\\Big]. \\]</li></ol><p>Heun's method has local truncation error \\( O(h^3) \\) and global error \\( O(h^2) \\), making it a <strong>second-order Runge–Kutta method (RK2)</strong>.</p>"
         }
       },
       {
@@ -77,7 +77,7 @@
           {
             "label": {
               "en": "Forward Euler (RK1)",
-              "ar": null
+              "ar": "Forward Euler (RK1) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "value": {
               "en": "Local error \\( O(h^2) \\), Global error \\( O(h) \\). Single function evaluation per step: \\( y_{n+1} = y_n + h f_n \\)."
@@ -86,7 +86,7 @@
           {
             "label": {
               "en": "Heun's Method (RK2)",
-              "ar": null
+              "ar": "Heun's Method (RK2) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "value": {
               "en": "Local error \\( O(h^3) \\), Global error \\( O(h^2) \\). Two evaluations per step: predictor \\( \\tilde{y} \\) and average slope."
@@ -95,7 +95,7 @@
           {
             "label": {
               "en": "Classical RK4",
-              "ar": null
+              "ar": "Classical RK4 (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "value": {
               "en": "Local error \\( O(h^5) \\), Global error \\( O(h^4) \\). Four evaluations per step with Simpson-rule weighting."
@@ -104,7 +104,7 @@
           {
             "label": {
               "en": "Backward (Implicit) Euler",
-              "ar": null
+              "ar": "Backward (Implicit) Euler (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "value": {
               "en": "\\( y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}) \\). Solves implicit equation at each step; unconditionally stable for stiff systems."
@@ -117,11 +117,11 @@
         "style": "pf",
         "label": {
           "en": "◆ Why It Works — First-Principles Derivation (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-          "ar": null
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)"
         },
         "body": {
           "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
-          "ar": null
+          "ar": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts الصيغة:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product المشتقة: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>"
         }
       },
       {
@@ -129,23 +129,23 @@
         "style": "example",
         "label": {
           "en": "Worked example 9.A — Manual Step Comparison: Euler vs Heun",
-          "ar": null
+          "ar": "مثال محلول 9.A — Manual Step Comparison: Euler vs Heun"
         },
         "body": {
           "en": "<p>Apply one step of step size \\( h = 0.2 \\) to approximate \\( y(0.2) \\) for \\[ \\frac{dy}{dt} = y - t^2 + 1, \\qquad y(0) = 0.5. \\] Compare Forward Euler and Heun's method with the exact analytical solution \\( y(t) = t^2 + 2t + 1 - 0.5e^t \\) (at \\( t = 0.2 \\), \\( y(0.2) = 0.2^2 + 2(0.2) + 1 - 0.5e^{0.2} \\approx 1.44 - 0.6107 = 0.8293 \\)).</p><p><strong>Forward Euler:</strong><br>\\( f(t_0, y_0) = f(0, 0.5) = 0.5 - 0^2 + 1 = 1.5 \\).<br>\\( y_1 = y_0 + h f(0, 0.5) = 0.5 + 0.2(1.5) = 0.8000 \\).<br>Absolute error: \\( |0.8293 - 0.8000| = 0.0293 \\).</p><p><strong>Heun's Method (Improved Euler):</strong><br>Predictor: \\( \\tilde{y}_1 = 0.8000 \\).<br>Slope at endpoint: \\( f(t_1, \\tilde{y}_1) = f(0.2, 0.8) = 0.8 - (0.2)^2 + 1 = 0.8 - 0.04 + 1 = 1.76 \\).<br>Average slope: \\( \\frac{f_0 + f_1}{2} = \\frac{1.5 + 1.76}{2} = 1.63 \\).<br>Corrector: \\( y_1 = 0.5 + 0.2(1.63) = 0.5 + 0.326 = 0.8260 \\).<br>Absolute error: \\( |0.8293 - 0.8260| = 0.0033 \\).<br>Notice that Heun's method reduces the error by nearly a factor of 10 in a single step!</p>",
-          "ar": null
+          "ar": "<p>Apply one step of step size \\( h = 0.2 \\) to approximate \\( y(0.2) \\) for \\[ \\frac{dy}{dt} = y - t^2 + 1, \\qquad y(0) = 0.5. \\] Compare Forward Euler and Heun's method with the exact analytical الحل \\( y(t) = t^2 + 2t + 1 - 0.5e^t \\) (at \\( t = 0.2 \\), \\( y(0.2) = 0.2^2 + 2(0.2) + 1 - 0.5e^{0.2} \\approx 1.44 - 0.6107 = 0.8293 \\)).</p><p><strong>Forward Euler:</strong><br>\\( f(t_0, y_0) = f(0, 0.5) = 0.5 - 0^2 + 1 = 1.5 \\).<br>\\( y_1 = y_0 + h f(0, 0.5) = 0.5 + 0.2(1.5) = 0.8000 \\).<br>Absolute error: \\( |0.8293 - 0.8000| = 0.0293 \\).</p><p><strong>Heun's Method (Improved Euler):</strong><br>Predictor: \\( \\tilde{y}_1 = 0.8000 \\).<br>Slope at endpoint: \\( f(t_1, \\tilde{y}_1) = f(0.2, 0.8) = 0.8 - (0.2)^2 + 1 = 0.8 - 0.04 + 1 = 1.76 \\).<br>Average الميل: \\( \\frac{f_0 + f_1}{2} = \\frac{1.5 + 1.76}{2} = 1.63 \\).<br>Corrector: \\( y_1 = 0.5 + 0.2(1.63) = 0.5 + 0.326 = 0.8260 \\).<br>Absolute error: \\( |0.8293 - 0.8260| = 0.0033 \\).<br>Notice that Heun's method reduces the error by nearly a factor of 10 in a single step!</p>"
         }
       },
       {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Euler's method vs the exact solution",
-          "ar": null
+          "ar": "⊙ مستكشف تفاعلي · Euler's method vs the exact الحل"
         },
         "canvasId": "odeEulerCanvas",
         "ariaLabel": {
           "en": "The exact solution curve for y prime equals y minus x squared plus 1, with y of 0 equal to 0.5, alongside an Euler's-method polyline approximation with an adjustable step size and an optional improved Euler toggle",
-          "ar": null
+          "ar": "The exact الحل curve for y prime equals y minus x squared plus 1, with y of 0 equal to 0.5, alongside an Euler's-method polyline approximation with an adjustable step size and an optional improved Euler toggle"
         },
         "dataPanel": {
           "btnId": "odeEulerDataBtn",
@@ -154,20 +154,20 @@
           "rowsId": "odeEulerDataRows",
           "caption": {
             "en": "The approximation at each step, alongside the exact value",
-            "ar": null
+            "ar": "توضيح رياضي: The approximation at each step, alongside the exact value"
           },
           "columns": [
             {
               "en": "\\(x\\)",
-              "ar": null
+              "ar": "\\(x\\)"
             },
             {
               "en": "approx \\(y\\)",
-              "ar": null
+              "ar": "approx \\(y\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             {
               "en": "exact \\(y\\)",
-              "ar": null
+              "ar": "exact \\(y\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             }
           ]
         },
@@ -176,7 +176,7 @@
             "id": "odeEulerH",
             "label": {
               "en": "step size <b>\\(h\\)</b>:",
-              "ar": null
+              "ar": "step size <b>\\(h\\)</b>: (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "min": 5,
             "max": 100,
@@ -185,20 +185,20 @@
             "valueDisplayId": "odeEulerHVal",
             "ariaLabel": {
               "en": "Step size h, as a percentage of 1",
-              "ar": null
+              "ar": "عنصر تفاعلي: Step size h, as a percentage of 1"
             }
           },
           {
             "id": "odeEulerImproved",
             "label": {
               "en": "use improved Euler (Heun's method)",
-              "ar": null
+              "ar": "use improved Euler (Heun's method) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "checkbox": true,
             "checked": false,
             "ariaLabel": {
               "en": "Toggle between plain Euler and improved Euler",
-              "ar": null
+              "ar": "عنصر تفاعلي: Toggle between plain Euler and improved Euler"
             }
           }
         ],
@@ -207,7 +207,7 @@
             "id": "odeEulerApprox",
             "label": {
               "en": "approx \\(y(2)\\)",
-              "ar": null
+              "ar": "approx \\(y(2)\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "colorClass": "amber",
             "value": "\\(4.866\\)"
@@ -216,7 +216,7 @@
             "id": "odeEulerExact",
             "label": {
               "en": "exact \\(y(2)\\)",
-              "ar": null
+              "ar": "exact \\(y(2)\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "colorClass": "indigo",
             "value": "\\(5.305\\)"
@@ -225,14 +225,14 @@
             "id": "odeEulerErr",
             "label": {
               "en": "error",
-              "ar": null
+              "ar": "error (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             "value": "\\(0.440\\)"
           }
         ],
         "note": {
           "en": "The IVP is Worked examples 9.A/9.B's \\(y' = y -x^{2} + 1\\), \\(y(0) = 0.5\\), run out to \\(x = 2\\) with \\(h = 0.2 by\\) default — matching plain Euler's known error of about 0.44 at that step size. Drag \\(h\\) down toward its smallest value and watch the amber polyline hug the indigo exact curve; tick the improved-Euler checkbox at the same \\(h\\) and watch the error drop by roughly an order of magnitude, exactly as Definition 9.2 predicts.",
-          "ar": null
+          "ar": "The IVP is مثال محلولs 9.A/9.B's \\(y' = y -x^{2} + 1\\), \\(y(0) = 0.5\\), run out to \\(x = 2\\) with \\(h = 0.2 by\\) default — matching plain Euler's known error of about 0.44 at that step size. Drag \\(h\\) down toward its smallest value and watch the amber polyline hug the indigo exact curve; tick the improved-Euler checkbox at the same \\(h\\) and watch the error drop by roughly an order of magnitude, exactly as تعريف 9.2 predicts."
         }
       },
       {
@@ -240,18 +240,18 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 3 University Rigor — Theorem 9.2: Classical Fourth-Order Runge–Kutta (RK4) & Numerical Stiffness / \\(A\\)-Stability",
-          "ar": null
+          "ar": "▲ Level 3 University Rigor — مبرهنة 9.2: Classical Fourth-Order Runge–Kutta (RK4) & Numerical Stiffness / \\(A\\)-Stability"
         },
         "body": {
           "en": "<p><strong>1. Classical Fourth-Order Runge–Kutta (RK4):</strong> The gold standard explicit solver evaluates four slope samples per time step, weighted according to Simpson's Rule: \\[ k_1 = f(t_n, y_n), \\] \\[ k_2 = f\\left(t_n + \\frac{h}{2}, \\, y_n + \\frac{h}{2}k_1\\right), \\] \\[ k_3 = f\\left(t_n + \\frac{h}{2}, \\, y_n + \\frac{h}{2}k_2\\right), \\] \\[ k_4 = f(t_n + h, \\, y_n + h k_3). \\] \\[ y_{n+1} = y_n + \\frac{h}{6}\\big(k_1 + 2k_2 + 2k_3 + k_4\\big). \\] RK4 achieves local truncation error \\( O(h^5) \\) and global error \\( O(h^4) \\). Halving \\( h \\) reduces global error by a factor of \\( 2^4 = 16 \\).</p><p><strong>2. Numerical Stiffness & Dahlquist Absolute Stability:</strong> Consider Dahlquist's linear test equation: \\[ \\frac{dy}{dt} = \\lambda y, \\qquad \\operatorname{Re}(\\lambda) < 0. \\] The true solution \\( y(t) = y_0 e^{\\lambda t} \\) decays exponentially to zero as \\( t \\to \\infty \\). Applying Forward Euler: \\[ y_{n+1} = y_n + h(\\lambda y_n) = (1 + h\\lambda)y_n \\implies y_n = (1 + h\\lambda)^n y_0. \\] For numerical stability (ensuring \\( y_n \\to 0 \\)), the amplification factor must satisfy: \\[ |1 + h\\lambda| < 1 \\implies -1 < 1 + h\\lambda < 1 \\implies h < \\frac{2}{|\\lambda|}. \\] If \\( h > \\frac{2}{|\\lambda|} \\), the numerical solution <strong>diverges to infinity with alternating signs</strong>, even though the true solution is rapidly decaying! Systems possessing rapid decaying transients (large \\( |\\lambda| \\)) are termed <strong>stiff</strong>. Stiff systems require <strong>Implicit (Backward) Euler</strong>: \\[ y_{n+1} = y_n + h\\lambda y_{n+1} \\implies y_{n+1} = \\frac{1}{1 - h\\lambda}y_n. \\] Since \\( |1 - h\\lambda| > 1 \\) for all \\( h > 0 \\) whenever \\( \\operatorname{Re}(\\lambda) < 0 \\), Backward Euler is <strong>unconditionally A-stable</strong>.</p>",
-          "ar": null
+          "ar": "<p><strong>1. Classical Fourth-Order Runge–Kutta (RK4):</strong> The gold standard explicit solver evaluates four الميل samples per time step, weighted according to Simpson's Rule: \\[ k_1 = f(t_n, y_n), \\] \\[ k_2 = f\\left(t_n + \\frac{h}{2}, \\, y_n + \\frac{h}{2}k_1\\right), \\] \\[ k_3 = f\\left(t_n + \\frac{h}{2}, \\, y_n + \\frac{h}{2}k_2\\right), \\] \\[ k_4 = f(t_n + h, \\, y_n + h k_3). \\] \\[ y_{n+1} = y_n + \\frac{h}{6}\\big(k_1 + 2k_2 + 2k_3 + k_4\\big). \\] RK4 achieves local truncation error \\( O(h^5) \\) and global error \\( O(h^4) \\). Halving \\( h \\) reduces global error by a factor of \\( 2^4 = 16 \\).</p><p><strong>2. Numerical Stiffness & Dahlquist Absolute Stability:</strong> Consider Dahlquist's linear test المعادلة: \\[ \\frac{dy}{dt} = \\lambda y, \\qquad \\operatorname{Re}(\\lambda) < 0. \\] The true الحل \\( y(t) = y_0 e^{\\lambda t} \\) decays exponentially to zero as \\( t \\to \\infty \\). Applying Forward Euler: \\[ y_{n+1} = y_n + h(\\lambda y_n) = (1 + h\\lambda)y_n \\implies y_n = (1 + h\\lambda)^n y_0. \\] For numerical stability (ensuring \\( y_n \\to 0 \\)), the amplification factor must satisfy: \\[ |1 + h\\lambda| < 1 \\implies -1 < 1 + h\\lambda < 1 \\implies h < \\frac{2}{|\\lambda|}. \\] If \\( h > \\frac{2}{|\\lambda|} \\), the numerical الحل <strong>diverges to infinity with alternating signs</strong>, even though the true الحل is rapidly decaying! Systems possessing rapid decaying transients (large \\( |\\lambda| \\)) are termed <strong>stiff</strong>. Stiff systems require <strong>Implicit (Backward) Euler</strong>: \\[ y_{n+1} = y_n + h\\lambda y_{n+1} \\implies y_{n+1} = \\frac{1}{1 - h\\lambda}y_n. \\] Since \\( |1 - h\\lambda| > 1 \\) for all \\( h > 0 \\) whenever \\( \\operatorname{Re}(\\lambda) < 0 \\), Backward Euler is <strong>unconditionally A-stable</strong>.</p>"
         }
       },
       {
         "kind": "text",
         "body": {
           "en": "<p>Forward Euler creates a piecewise linear approximation that diverges from the true curve due to accumulating curvature truncation error, as compared below.</p>",
-          "ar": null
+          "ar": "<p><strong>الشرح الرياضي (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4)):</strong></p><p>Forward Euler creates a piecewise linear approximation that diverges from the true curve due to accumulating curvature truncation error, as compared below.</p>"
         }
       },
       {
@@ -304,7 +304,7 @@
         },
         "caption": {
           "en": "Tangent extrapolation in Forward Euler for \\( y' = y, y(0) = 1 \\). A single large step \\( h = 1 \\) yields \\( y(1) \\approx 2 \\) (error \\( \\approx 0.718 \\)); refining to \\( h = 0.5 \\) brings the polyline closer to the true exponential curve.",
-          "ar": null
+          "ar": "توضيح رياضي: Tangent extrapolation in Forward Euler for \\( y' = y, y(0) = 1 \\). A single large step \\( h = 1 \\) yields \\( y(1) \\approx 2 \\) (error \\( \\approx 0.718 \\)); refining to \\( h = 0.5 \\) brings the polyline closer to the true exponential curve."
         }
       },
       {
@@ -312,11 +312,11 @@
         "style": "warn",
         "label": {
           "en": "⚠️ Common Traps & University Pitfalls — Global vs. Local Error and Step Size Stiff Instability",
-          "ar": null
+          "ar": "⚠️ أخطاء شائعة ومصائد جامعية — Global vs. Local Error and Step Size Stiff Instability"
         },
         "body": {
           "en": "<p><strong>Confusing Local and Global error orders:</strong> Forward Euler has local truncation error \\( O(h^2) \\), but its global error is \\( O(h) \\). Students often confuse the two and mistakenly expect Euler's method to have second-order global accuracy.</p><p><strong>Rounding error vs. truncation error tradeoff:</strong> Reducing \\( h \\) reduces truncation error, but dramatically increases the total number of floating-point arithmetic operations \\( N \\). Eventually, machine roundoff error accumulates and overwhelms the solution if \\( h \\) is made excessively tiny.</p><p><strong>Stiff instability blowup:</strong> In systems with fast decay (e.g. \\( y' = -100y \\)), choosing \\( h = 0.05 \\) violates \\( h < 2/100 = 0.02 \\). Forward Euler produces wildly oscillating explosive numbers \\( y_n = (-4)^n \\to \\pm \\infty \\), mistaking mathematical decay for physical explosion!</p>",
-          "ar": null
+          "ar": "<p><strong>Confusing Local and Global error orders:</strong> Forward Euler has local truncation error \\( O(h^2) \\), but its global error is \\( O(h) \\). Students often confuse the two and mistakenly expect Euler's method to have second-order global accuracy.</p><p><strong>Rounding error vs. truncation error tradeoff:</strong> Reducing \\( h \\) reduces truncation error, but dramatically increases the total number of floating-point arithmetic operations \\( N \\). Eventually, machine roundoff error accumulates and overwhelms the الحل if \\( h \\) is made excessively tiny.</p><p><strong>Stiff instability blowup:</strong> In systems with fast decay (e.g. \\( y' = -100y \\)), choosing \\( h = 0.05 \\) violates \\( h < 2/100 = 0.02 \\). Forward Euler produces wildly oscillating explosive numbers \\( y_n = (-4)^n \\to \\pm \\infty \\), mistaking mathematical decay for physical explosion!</p>"
         }
       },
       {
@@ -324,11 +324,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(B\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Medium Application)",
-          "ar": null
+          "ar": "مثال محلول \\(B\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Medium Application)"
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). You are asked to approximate \\( y(0.2) \\) using Euler's method. If the step size \\( h = 0.1 \\) is used, and it is known that the exact solution at \\( x=0.2 \\) is \\( y(0.2) = 1.24 \\), determine the value of \\( k \\) such that \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).</p><p><strong>Step-by-Step Solution:</strong> Euler's method for approximating the solution to \\( \\dfrac{dy}{dx} = f(x, y) \\) with initial condition \\( y(x_0) = y_0 \\) and step size \\( h \\) is given by \\( y_{n+1} = y_n + h f(x_n, y_n) \\).\n\nIn this problem, \\( f(x, y) = x + y \\), \\( x_0 = 0 \\), \\( y_0 = 1 \\), and \\( h = 0.1 \\).\n\nWe want to approximate \\( y(0.2) \\) with \\( h=0.1 \\). This requires two steps:\n\nStep 1: From \\( x_0 = 0 \\) to \\( x_1 = 0.1 \\).\n\\( y_1 = y_0 + h f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 (0 + 1) \\)\n\\( y_1 = 1 + 0.1 (1) \\)\n\\( y_1 = 1 + 0.1 \\)\n\\( y_1 = 1.1 \\)\n\nStep 2: From \\( x_1 = 0.1 \\) to \\( x_2 = 0.2 \\).\n\\( y_2 = y_1 + h f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\n\nSo, the approximation using Euler's method is \\( y(0.2)_{\\text{Euler}} = 1.22 \\).\n\nWe are given that the exact solution is \\( y(0.2) = 1.24 \\) and \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).\nSubstituting the value of \\( y(0.2)_{\\text{Euler}} \\), we get:\n\\( 1.22 = 1.24 - k \\)\n\\( k = 1.24 - 1.22 \\)\n\\( k = 0.02 \\)\n\nTherefore, the value of \\( k \\) is 0.02.</p>",
-          "ar": null
+          "ar": "<p><strong>Problem (Medium):</strong> Consider the المعادلة التفاضلية \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). You are asked to approximate \\( y(0.2) \\) using Euler's method. If the step size \\( h = 0.1 \\) is used, and it is known that the exact الحل at \\( x=0.2 \\) is \\( y(0.2) = 1.24 \\), حدّد value of \\( k \\) such that \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).</p><p><strong>Step-by-Step الحل:</strong> Euler's method for approximating the الحل to \\( \\dfrac{dy}{dx} = f(x, y) \\) with initial condition \\( y(x_0) = y_0 \\) and step size \\( h \\) is المعطيات by \\( y_{n+1} = y_n + h f(x_n, y_n) \\).\n\nIn this problem, \\( f(x, y) = x + y \\), \\( x_0 = 0 \\), \\( y_0 = 1 \\), and \\( h = 0.1 \\).\n\nWe want to approximate \\( y(0.2) \\) with \\( h=0.1 \\). This requires two steps:\n\nالخطوة ١: From \\( x_0 = 0 \\) to \\( x_1 = 0.1 \\).\n\\( y_1 = y_0 + h f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 (0 + 1) \\)\n\\( y_1 = 1 + 0.1 (1) \\)\n\\( y_1 = 1 + 0.1 \\)\n\\( y_1 = 1.1 \\)\n\nالخطوة ٢: From \\( x_1 = 0.1 \\) to \\( x_2 = 0.2 \\).\n\\( y_2 = y_1 + h f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\n\nSo, the approximation using Euler's method is \\( y(0.2)_{\\text{Euler}} = 1.22 \\).\n\nWe are بما أن the exact الحل is \\( y(0.2) = 1.24 \\) and \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).\nSubstituting the value of \\( y(0.2)_{\\text{Euler}} \\), we get:\n\\( 1.22 = 1.24 - k \\)\n\\( k = 1.24 - 1.22 \\)\n\\( k = 0.02 \\)\n\nوبالتالي, the value of \\( k \\) is 0.02.</p>"
         }
       },
       {
@@ -336,11 +336,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(C\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Hard Application)",
-          "ar": null
+          "ar": "مثال محلول \\(C\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Hard Application)"
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> Consider the differential equation \\(\\frac{dy}{dx} = x + y\\) with the initial condition \\(y(0) = 1\\). Use the Euler method with a step size \\(h = 0.1\\) to approximate the value of \\(y(0.2)\\).</p><p><strong>Step-by-Step Solution:</strong> The Euler method approximates the solution to an initial value problem \\(\\frac{dy}{dx} = f(x, y)\\), \\(y(x_0) = y_0\\) using the iterative formula \\(y_{n+1} = y_n + h f(x_n, y_n)\\), where \\(h\\) is the step size and \\(x_{n+1} = x_n + h\\).\n\nGiven \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.1\\).\n\nFor the first step (approximating y(0.1)):\n\\(x_1 = x_0 + h = 0 + 0.1 = 0.1\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.1 (0 + 1) = 1 + 0.1(1) = 1.1\\).\n\nFor the second step (approximating y(0.2)):\n\\(x_2 = x_1 + h = 0.1 + 0.1 = 0.2\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.1 + 0.1 (0.1 + 1.1) = 1.1 + 0.1 (1.2) = 1.1 + 0.12 = 1.22\\).\n\nTherefore, the approximate value of \\(y(0.2)\\) using the Euler method is 1.22.</p>",
-          "ar": null
+          "ar": "<p><strong>Problem (Hard):</strong> Consider the المعادلة التفاضلية \\(\\frac{dy}{dx} = x + y\\) with the initial condition \\(y(0) = 1\\). Use the Euler method with a step size \\(h = 0.1\\) to approximate the value of \\(y(0.2)\\).</p><p><strong>Step-by-Step الحل:</strong> The Euler method approximates the الحل to an initial value problem \\(\\frac{dy}{dx} = f(x, y)\\), \\(y(x_0) = y_0\\) using the iterative الصيغة \\(y_{n+1} = y_n + h f(x_n, y_n)\\), حيث \\(h\\) is the step size and \\(x_{n+1} = x_n + h\\).\n\nالمعطيات \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.1\\).\n\nFor the first step (approximating y(0.1)):\n\\(x_1 = x_0 + h = 0 + 0.1 = 0.1\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.1 (0 + 1) = 1 + 0.1(1) = 1.1\\).\n\nFor the second step (approximating y(0.2)):\n\\(x_2 = x_1 + h = 0.1 + 0.1 = 0.2\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.1 + 0.1 (0.1 + 1.1) = 1.1 + 0.1 (1.2) = 1.1 + 0.12 = 1.22\\).\n\nوبالتالي, the approximate value of \\(y(0.2)\\) using the Euler method is 1.22.</p>"
         }
       },
       {
@@ -348,74 +348,74 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(D\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Easy Application)",
-          "ar": null
+          "ar": "مثال محلول \\(D\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Easy Application)"
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). Use the Euler method with a step size of \\( h = 0.1 \\) to approximate \\( y(0.2) \\).</p><p><strong>Step-by-Step Solution:</strong> Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\).</p>",
-          "ar": null
+          "ar": "<p><strong>Problem (Easy):</strong> Consider the المعادلة التفاضلية \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). Use the Euler method with a step size of \\( h = 0.1 \\) to approximate \\( y(0.2) \\).</p><p><strong>Step-by-Step الحل:</strong> Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\).</p>"
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-          "ar": null
+          "ar": "توضيح رياضي: Error Diagnosis — Common Student Traps vs. Exam-Board Method (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)"
         },
         "columns": [
           {
             "en": "Common Student Trap",
-            "ar": null
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
             "en": "Why It Fails Mathematically",
-            "ar": null
+            "ar": "لماذا يفشل رياضياً"
           },
           {
             "en": "Correct Exam-Board Method",
-            "ar": null
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
               "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
-              "ar": null
+              "ar": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             {
               "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
-              "ar": null
+              "ar": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition. (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             {
               "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
-              "ar": null
+              "ar": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and أوجد قيمة \\(A\\) using the initial condition."
             }
           ],
           [
             {
               "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
-              "ar": null
+              "ar": "Leaving original \\(x\\)-النهايات on a \\(u\\)-substituted definite التكامل"
             },
             {
               "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
-              "ar": null
+              "ar": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values. (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             {
               "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
-              "ar": null
+              "ar": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\). (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             }
           ],
           [
             {
               "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
-              "ar": null
+              "ar": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             {
               "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
-              "ar": null
+              "ar": "Cancels forward and backward motion (net displacement) instead of accumulating total path length. (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
             },
             {
               "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
-              "ar": null
+              "ar": "Split the التكامل at every root حيث \\(v(t) = 0\\) and integrate \\(|v(t)|\\)."
             }
           ]
         ]
@@ -425,11 +425,11 @@
         "style": "tip",
         "label": {
           "en": "▲ Exam Pacing & Verification Strategy — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability",
-          "ar": null
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability"
         },
         "body": {
           "en": "<p><strong>Quick Verification Trick (University Ordinary Differential Equations):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
-          "ar": null
+          "ar": "<p><strong>Quick Verification Trick (University Ordinary Differential المعادلات):</strong> For any indefinite التكامل \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your الإجابة \\(F'(x)\\) mentally—especially the المعامل \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>"
         }
       },
       {
