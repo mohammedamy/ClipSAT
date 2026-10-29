@@ -186,6 +186,126 @@ if('serviceWorker' in navigator){
 
 })();
 
+/* ══════════════════════════════════════════════════════════════════════════
+   ONE-CLICK OFFLINE TRACK STUDY PACK (window.CSOfflinePack)
+   Pre-caches the active track's notes HTML, interactive practice (js/ix/),
+   HTML5 canvas explorers (js/ex/), verified question bank (bank-data/),
+   worksheet manifest, and core simulation bundles for 100% offline study.
+══════════════════════════════════════════════════════════════════════════ */
+window.CSOfflinePack = (function(){
+  var STORAGE_KEY = 'clipsat_offline_tracks';
+  var CACHE_NAME = 'clipsat-offline-packs-v1';
+
+  function _isAr(){
+    return (document.documentElement.lang === 'ar') ||
+           (window.i18n && typeof window.i18n.getLocale === 'function' && window.i18n.getLocale() === 'ar');
+  }
+
+  function _getSavedMap(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+
+  function _setSaved(trackId){
+    var m = _getSavedMap();
+    m[trackId] = { savedAt: new Date().toISOString() };
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(m)); } catch(e){}
+  }
+
+  function isTrackSaved(trackId){
+    return Boolean(trackId && _getSavedMap()[trackId]);
+  }
+
+  function getUrlsForTrack(trackId){
+    if(!trackId || trackId === 'home') return [];
+    return [
+      '/' + trackId + '/',
+      '/' + trackId + '/index.html',
+      '/js/ix/' + trackId + '.js',
+      '/js/ex/' + trackId + '.js',
+      '/bank-data/' + trackId + '.json',
+      '/downloads/' + trackId + '/manifest.json',
+      '/js/figures.js',
+      '/js/bank-exam.js',
+      '/js/practice-quiz.js',
+      '/js/diagnostic-test.js'
+    ];
+  }
+
+  function _updateBtnUI(btn, state){
+    if(!btn) btn = document.getElementById('cs-offline-pack-btn');
+    if(!btn) return;
+    var ar = _isAr();
+    if(state === 'saving'){
+      btn.disabled = true;
+      btn.innerHTML = '<span>⏳</span><span>' + (ar ? 'جاري الحفظ دون إنترنت...' : 'Saving Offline Pack...') + '</span>';
+    } else if(state === 'saved'){
+      btn.disabled = false;
+      btn.style.background = 'rgba(22,163,74,.28)';
+      btn.style.borderColor = 'rgba(134,239,172,.6)';
+      btn.innerHTML = '<span>✓</span><span data-bilingual><span class="i18n-en"' + (ar ? ' hidden' : '') + '>Saved Offline</span><span class="i18n-ar" dir="rtl" lang="ar"' + (ar ? '' : ' hidden') + '>محفوظ دون إنترنت</span></span>';
+    }
+  }
+
+  function saveTrack(trackId, btnEl){
+    trackId = trackId || window.CLIPSAT_TRACK || 'sat';
+    if(trackId === 'home') return Promise.resolve(false);
+    _updateBtnUI(btnEl, 'saving');
+    var urls = getUrlsForTrack(trackId);
+
+    /* Notify Service Worker as well */
+    if(typeof navigator !== 'undefined' && navigator.serviceWorker && navigator.serviceWorker.controller){
+      try {
+        navigator.serviceWorker.controller.postMessage({
+          type: 'PRECACHE_TRACK',
+          trackId: trackId,
+          urls: urls
+        });
+      } catch(e){}
+    }
+
+    var cachePromise;
+    if(typeof caches !== 'undefined' && typeof caches.open === 'function'){
+      cachePromise = caches.open(CACHE_NAME).then(function(cache){
+        return Promise.all(urls.map(function(u){
+          return fetch(u).then(function(res){
+            if(res && res.ok) return cache.put(u, res);
+          }).catch(function(){});
+        }));
+      }).catch(function(){});
+    } else {
+      _setSaved(trackId);
+      _updateBtnUI(btnEl, 'saved');
+      cachePromise = Promise.resolve(true);
+    }
+
+    return cachePromise.then(function(){
+      _setSaved(trackId);
+      _updateBtnUI(btnEl, 'saved');
+      return true;
+    });
+  }
+
+  function hydrateButton(){
+    var btn = document.getElementById('cs-offline-pack-btn');
+    if(!btn) return;
+    var tr = btn.getAttribute('data-track') || window.CLIPSAT_TRACK;
+    if(isTrackSaved(tr)) _updateBtnUI(btn, 'saved');
+  }
+
+  if(typeof document !== 'undefined'){
+    if(document.readyState !== 'loading') hydrateButton();
+    else document.addEventListener('DOMContentLoaded', hydrateButton);
+  }
+
+  return {
+    getUrlsForTrack: getUrlsForTrack,
+    isTrackSaved: isTrackSaved,
+    saveTrack: saveTrack,
+    hydrateButton: hydrateButton
+  };
+})();
+
 /* ─────────────────────────────────────────────── */
 
 /* ════ ClipSAT Enhancement Features (59-67) ════ */

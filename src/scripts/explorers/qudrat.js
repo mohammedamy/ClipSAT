@@ -717,4 +717,7 @@
     });
     if(sR) sR.addEventListener("input",update);
   })();
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_qudalgebra_mainfnCanvas', dataBtnId: 'uge_qudalgebra_mainfnDataBtn', prefix: 'uge_qudalgebra_mainfn', defaultFn: 'quadratic' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

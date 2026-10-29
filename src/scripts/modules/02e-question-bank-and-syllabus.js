@@ -49,6 +49,33 @@
     window.CS_BANK_LOADED[trackId] = p;
     return p;
   };
+
+  /* Lightweight per-chapter shard loader (~50 KB vs ~2 MB full bank) for instant topic drills */
+  window.CS_SHARD_CACHE = {};
+  window.CS_loadTopicShard = function(trackId, topicId){
+    if(!trackId || trackId === 'home' || !topicId) return window.CS_loadTrackBank(trackId);
+    var full = window.fullExamBank && window.fullExamBank[trackId];
+    if(full && Array.isArray(full.pool)){
+      var filtered = full.pool.filter(function(q){ return q.topic_id === topicId; });
+      if(filtered.length) return Promise.resolve({ track: trackId, topic_id: topicId, pool: filtered });
+    }
+    var key = trackId + ':' + topicId;
+    if(window.CS_SHARD_CACHE[key]) return Promise.resolve(window.CS_SHARD_CACHE[key]);
+    var cleanTid = String(topicId).replace(/[^a-zA-Z0-9_-]/g, '');
+    return fetch('/bank-shards/' + trackId + '/' + cleanTid + '.json?v=20261029a')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(shard){
+        if(shard && Array.isArray(shard.pool) && shard.pool.length){
+          window.CS_SHARD_CACHE[key] = shard;
+          return shard;
+        }
+        return window.CS_loadTrackBank(trackId);
+      })
+      .catch(function(){
+        return window.CS_loadTrackBank(trackId);
+      });
+  };
+
   window.CS_bankReady = window.CS_loadTrackBank(window.CLIPSAT_TRACK);
 
   /* ===================== QB — Question Bank Module ===================== */

@@ -260,7 +260,8 @@
   var _MATH_FUNCS = {
     'sin':1,'cos':1,'tan':1,'csc':1,'sec':1,'cot':1,
     'arcsin':1,'arccos':1,'arctan':1,'arccsc':1,'arcsec':1,'arccot':1,
-    'sinh':1,'cosh':1,'tanh':1,'ln':1,'log':1,'exp':1,'lim':1,
+    'sinh':1,'cosh':1,'tanh':1,'csch':1,'sech':1,'coth':1,
+    'arsinh':1,'arcosh':1,'artanh':1,'ln':1,'log':1,'exp':1,'lim':1,
     'det':1,'gcd':1,'lcm':1,'min':1,'max':1,'arg':1,'Re':1,'Im':1,'mod':1,'nCr':1,'nPr':1
   };
   var _MATH_NOUN_BEFORE_A = /\b(?:coefficient|parameter|constant|base|slope|radius|side|semi-ax[ie]s|bound|point|vertex|angle|vector|matrix|Residue|event|set|line|curve|function|variable|term|factor|root|value|origin)\s*$/i;
@@ -298,8 +299,8 @@
     out = out.replace(/∛\(([^()]+)\)/g, '\\sqrt[3]{$1}');
     out = out.replace(/√([a-zA-Z0-9^{}+-]+)/g, '\\sqrt{$1}');
     out = out.replace(/\bd(\^\{2\})?([yztfuvx])\/d([xztuv])(\^\{2\})?\b/g, '\\frac{d$1$2}{d$3$4}');
-    out = out.replace(/(^|[^\\a-zA-Z_])\b(arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|csc|sec|cot|ln|log|exp|det|gcd|min|max|arg)\b/g, '$1\\$2 ');
-    out = out.replace(/(^|[^\\a-zA-Z_])\b(arccsc|arcsec|arccot|Re|Im)\b/g, '$1\\operatorname{$2}');
+    out = out.replace(/(^|[^\\a-zA-Z_])\b(arcsin|arccos|arctan|sinh|cosh|tanh|coth|sin|cos|tan|csc|sec|cot|ln|log|exp|det|gcd|min|max|arg)\b/g, '$1\\$2 ');
+    out = out.replace(/(^|[^\\a-zA-Z_])\b(arccsc|arcsec|arccot|csch|sech|arsinh|arcosh|artanh|Re|Im)\b/g, '$1\\operatorname{$2}');
     out = out.replace(/(^|[^\\a-zA-Z_])\blim\s+([a-zA-Z0-9]+)\s*(?:→|\\to)\s*([^\s,;:)]+)/g, '$1\\lim_{$2 \\to $3}');
     out = out.replace(/(^|[^\\a-zA-Z_])\blim_\{([^}]+)\}/g, '$1\\lim_{$2}');
     out = out.replace(/_([a-zA-Z]{2,})\b/g, '_{\\text{$1}}');

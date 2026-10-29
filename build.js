@@ -1505,6 +1505,66 @@ if (fs.existsSync(TOPICS_DIR)) {
 }
 console.log(`  ✓  public/worksheet-data/  (${wsCount} topic files)`);
 
+console.log('\n── Step 7: Generate per-topic question bank shards ──');
+const BANK_DATA_DIR = path.join(ROOT, 'bank-data');
+const BANK_SHARDS_DIR = path.join(ROOT, 'public', 'bank-shards');
+const CONTENT_DIR = path.join(ROOT, 'content');
+let shardCount = 0;
+if (fs.existsSync(BANK_DATA_DIR)) {
+  fs.readdirSync(BANK_DATA_DIR).forEach((fn) => {
+    if (!fn.endsWith('.json') || fn.startsWith('_')) return;
+    const track = fn.replace(/\.json$/, '');
+    const raw = JSON.parse(fs.readFileSync(path.join(BANK_DATA_DIR, fn), 'utf8'));
+    const pool = Array.isArray(raw)
+      ? raw
+      : (raw.pool || [].concat(raw.easy || [], raw.medium || [], raw.hard || []));
+    if (!pool.length) return;
+    const byTopic = {};
+    pool.forEach((q) => {
+      const tid = String(q.topic_id || 'general').replace(/[^a-zA-Z0-9_-]/g, '');
+      if (!byTopic[tid]) byTopic[tid] = [];
+      byTopic[tid].push(q);
+    });
+    // Ensure every curriculum chapter in content/<track>/*.json has a populated shard
+    const trackContentDir = path.join(CONTENT_DIR, track);
+    if (fs.existsSync(trackContentDir)) {
+      fs.readdirSync(trackContentDir).forEach((chFile) => {
+        if (!chFile.endsWith('.json') || chFile.startsWith('_')) return;
+        const ch = JSON.parse(fs.readFileSync(path.join(trackContentDir, chFile), 'utf8'));
+        const cid = String(ch.id || '').replace(/[^a-zA-Z0-9_-]/g, '');
+        if (!cid) return;
+        if (!byTopic[cid] || !byTopic[cid].length) {
+          const domains = (ch.quizWidget && Array.isArray(ch.quizWidget.domains)) ? ch.quizWidget.domains : [];
+          let matched = domains.length
+            ? pool.filter((q) => q.domain && domains.includes(q.domain))
+            : [];
+          if (!matched.length) matched = pool.slice(0, 60);
+          byTopic[cid] = matched.slice(0, 180);
+        }
+      });
+    }
+    const trackShardDir = path.join(BANK_SHARDS_DIR, track);
+    mkdirp(trackShardDir);
+    const topicSummary = {};
+    Object.keys(byTopic).forEach((tid) => {
+      const items = byTopic[tid];
+      topicSummary[tid] = items.length;
+      fs.writeFileSync(
+        path.join(trackShardDir, `${tid}.json`),
+        JSON.stringify({ track, topic_id: tid, count: items.length, pool: items }),
+        'utf8'
+      );
+      shardCount++;
+    });
+    fs.writeFileSync(
+      path.join(trackShardDir, '_index.json'),
+      JSON.stringify({ track, total: pool.length, topics: topicSummary }),
+      'utf8'
+    );
+  });
+}
+console.log(`  ✓  public/bank-shards/  (${shardCount} topic shards across 31 tracks)`);
+
 // ─── Done ─────────────────────────────────────────────────────────────────────
 console.log('\n✅  Build complete!\n');
 console.log('Next steps:');

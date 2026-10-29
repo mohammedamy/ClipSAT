@@ -956,6 +956,43 @@ window.CSCustomCart = (function(){
     }
   }
 
+  function exportDocx(){
+    if(!_cart.length){
+      alert(_ttAr() ? 'أضف سؤالًا واحدًا على الأقل إلى السلة أولًا.' : 'Please add at least 1 question to your custom cart first.');
+      return;
+    }
+    var ensure = (window._ensureCSExport ? window._ensureCSExport() : Promise.resolve());
+    ensure.then(function(){
+      var today = new Date().toISOString().slice(0, 10);
+      function optLetter(i){ return String.fromCharCode(65 + i); }
+      var rowsHtml = _cart.map(function(q, i){
+        var stem = String(q.text || q.q || q.stem || '');
+        var opts = (q.choices || q.options || []).map(function(o, j){
+          return '<div style="margin-left:14pt">' + optLetter(j) + '. ' + String(o) + '</div>';
+        }).join('');
+        var ans = typeof q.answer === 'number' ? optLetter(q.answer) : String(q.answer != null ? q.answer : '');
+        var sol = String(q.sol || q.explanation || '');
+        return '<div style="margin-bottom:14pt"><p><strong>Q' + (i + 1) + ' [' + esc((q._trackId || _currentTrack).toUpperCase()) + ' — ' + esc(q.difficulty || 'Medium') + ']:</strong> ' + esc(stem) + '</p>'
+          + opts
+          + '<p style="color:#166534;font-size:9.5pt"><em>Answer: ' + esc(ans) + (sol ? ' — ' + esc(sol) : '') + '</em></p></div>';
+      }).join('');
+      var docContent = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+        + '<head><meta charset="utf-8"><title>ClipSAT Custom Worksheet</title></head>'
+        + '<body style="font-family:Calibri,Arial,sans-serif;font-size:11pt">'
+        + '<h2>ClipSAT Custom Worksheet (' + _cart.length + ' Questions) — ' + today + '</h2><hr>'
+        + rowsHtml
+        + '</body></html>';
+      var blob = new Blob(['\ufeff', docContent], { type: 'application/msword;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'clipsat-custom-worksheet-' + _currentTrack + '-' + today + '.doc';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); }, 1000);
+    });
+  }
+
   function open(){
     var existing = document.getElementById('cs-custom-cart-modal');
     if(existing) existing.remove();
@@ -994,6 +1031,7 @@ window.CSCustomCart = (function(){
       + '<div style="display:flex;gap:8px;flex-wrap:wrap">'
       + '<button type="button" onclick="window.CSCustomCart.printCart(false)" style="padding:8px 14px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🖨️ ' + (ar ? 'طباعة ورقة العمل (PDF)' : 'Print Worksheet (PDF)') + '</button>'
       + '<button type="button" onclick="window.CSCustomCart.printCart(true)" style="padding:8px 14px;background:#166534;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🔑 ' + (ar ? 'طباعة مع مفتاح الإجابة' : 'Print with Answer Key') + '</button>'
+      + '<button type="button" onclick="window.CSCustomCart.exportDocx()" style="padding:8px 14px;background:#0284c7;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">📝 ' + (ar ? 'تصدير Word (.doc)' : 'Export Word (.doc)') + '</button>'
       + '<button type="button" onclick="window.CSCustomCart.copyAssignmentLink()" style="padding:8px 14px;background:#4f46e5;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer;margin-left:auto">🔗 ' + (ar ? 'نسخ رابط الواجب للطلاب' : 'Copy Student Assignment Link') + '</button>'
       + '</div>'
       + '</div>';
@@ -1013,6 +1051,7 @@ window.CSCustomCart = (function(){
     switchTrack: switchTrack,
     refresh: _refreshUI,
     printCart: printCart,
+    exportDocx: exportDocx,
     copyAssignmentLink: copyAssignmentLink
   };
 })();

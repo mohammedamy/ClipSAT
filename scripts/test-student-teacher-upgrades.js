@@ -178,6 +178,39 @@ test('window.CSCustomCart filters bank questions and manages cart ordering and d
   assert.strictEqual(mockWindow.CSCustomCart.getCart()[0].id, 'sat-q3', 'Second item should move to index 0');
   mockWindow.CSCustomCart.removeAt(0);
   assert.strictEqual(mockWindow.CSCustomCart.getCart().length, 1);
+  assert.strictEqual(typeof mockWindow.CSCustomCart.exportDocx, 'function', 'exportDocx should be exposed on CSCustomCart');
+});
+
+const pwaCode = fs.readFileSync(path.join(ROOT, 'src/scripts/modules/15-pwa-and-exam-dates-data.js'), 'utf8');
+new Function('window', 'document', 'localStorage', 'navigator', pwaCode)(
+  mockWindow, mockWindow.document, mockWindow.localStorage, { serviceWorker: { register: () => Promise.resolve(null) } }
+);
+
+test('window.CSOfflinePack builds complete offline URL list for a track and persists offline state', () => {
+  assert(mockWindow.CSOfflinePack, 'window.CSOfflinePack not exposed');
+  const urls = mockWindow.CSOfflinePack.getUrlsForTrack('calculus');
+  assert(urls.includes('/calculus/index.html'), 'Missing track HTML in offline pack');
+  assert(urls.includes('/js/ix/calculus.js'), 'Missing interactive practice in offline pack');
+  assert(urls.includes('/js/ex/calculus.js'), 'Missing canvas explorers in offline pack');
+  assert(urls.includes('/bank-data/calculus.json'), 'Missing question bank in offline pack');
+  assert.strictEqual(mockWindow.CSOfflinePack.isTrackSaved('calculus'), false);
+  mockWindow.CSOfflinePack.saveTrack('calculus', null);
+  assert.strictEqual(mockWindow.CSOfflinePack.isTrackSaved('calculus'), true);
+});
+
+test('public/bank-shards/ contains topic shards and _index.json for all 31 tracks', () => {
+  const shardsRoot = path.join(ROOT, 'public/bank-shards');
+  assert(fs.existsSync(shardsRoot), 'public/bank-shards directory missing');
+  const tracks = fs.readdirSync(shardsRoot).filter(d => fs.statSync(path.join(shardsRoot, d)).isDirectory());
+  assert.strictEqual(tracks.length, 31, `Expected 31 sharded tracks, found ${tracks.length}`);
+  for (const tr of tracks) {
+    const idxFile = path.join(shardsRoot, tr, '_index.json');
+    assert(fs.existsSync(idxFile), `Missing _index.json for ${tr}`);
+    const idx = JSON.parse(fs.readFileSync(idxFile, 'utf8'));
+    assert(idx.total >= 1200, `Expected >= 1200 total questions in shard index for ${tr}`);
+    const topicIds = Object.keys(idx.topics || {});
+    assert(topicIds.length >= 8, `Expected >= 8 topic shards for ${tr}, found ${topicIds.length}`);
+  }
 });
 
 console.log(`\n── Student & Teacher Upgrades Summary: ${passed} passed, ${failed} failed ──`);

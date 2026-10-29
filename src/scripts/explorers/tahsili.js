@@ -582,4 +582,12 @@
     if(sA) sA.addEventListener("input",update);
     if(sB) sB.addEventListener("input",update);
   })();
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_tahtrig_trig6Canvas', dataBtnId: 'uge_tahtrig_trig6DataBtn', prefix: 'uge_tahtrig_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_tahtrig_invtrig6Canvas', dataBtnId: 'uge_tahtrig_invtrig6DataBtn', prefix: 'uge_tahtrig_invtrig6' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_tahalgebra_mainfnCanvas', dataBtnId: 'uge_tahalgebra_mainfnDataBtn', prefix: 'uge_tahalgebra_mainfn', defaultFn: 'absolute' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_tahfunctions_mainfnCanvas', dataBtnId: 'uge_tahfunctions_mainfnDataBtn', prefix: 'uge_tahfunctions_mainfn', defaultFn: 'rational' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_tahexplog_mainfnCanvas', dataBtnId: 'uge_tahexplog_mainfnDataBtn', prefix: 'uge_tahexplog_mainfn', defaultFn: 'logarithmic' });
+  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_tahcalc1_hyperCanvas', dataBtnId: 'uge_tahcalc1_hyperDataBtn', prefix: 'uge_tahcalc1_hyper', defaultFn: 'sinh' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

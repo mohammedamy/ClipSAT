@@ -55,6 +55,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy({ "bank-data": "bank-data" });
+  eleventyConfig.addPassthroughCopy({ "public/bank-shards": "bank-shards" });
   eleventyConfig.addPassthroughCopy({ "public/downloads": "downloads" });
   // Worksheet topic JSON for the Google Forms integration's worksheet
   // fast-follow — generated from tools/worksheet_gen/topics/ by build.js's

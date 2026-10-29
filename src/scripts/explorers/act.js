@@ -334,4 +334,11 @@
     if(sb) sb.addEventListener('input',upd);
   })();
 
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_acttrig_trig6Canvas', dataBtnId: 'uge_acttrig_trig6DataBtn', prefix: 'uge_acttrig_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_acttrig_invtrig6Canvas', dataBtnId: 'uge_acttrig_invtrig6DataBtn', prefix: 'uge_acttrig_invtrig6' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_actalgebra_mainfnCanvas', dataBtnId: 'uge_actalgebra_mainfnDataBtn', prefix: 'uge_actalgebra_mainfn', defaultFn: 'cubic' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_actfunctions_mainfnCanvas', dataBtnId: 'uge_actfunctions_mainfnDataBtn', prefix: 'uge_actfunctions_mainfn', defaultFn: 'quadratic' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_actcoordgeo_mainfnCanvas', dataBtnId: 'uge_actcoordgeo_mainfnDataBtn', prefix: 'uge_actcoordgeo_mainfn', defaultFn: 'linear' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

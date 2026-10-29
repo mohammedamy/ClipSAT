@@ -285,7 +285,7 @@
 
   /* ===================== SLOPE FIELD (Calculus) ===================== */
   (function(){
-    var canvas=document.getElementById('slopeCanvas'); if(!canvas) return;
+    var canvas=document.getElementById('slopeCanvas_legacy_disabled'); if(!canvas) return;
     var fns={
       y:{f:function(x,y){return y;}, eq:'dy/dx = y', note:function(y0){return 'y = '+fmt(y0,2)+'·eˣ';}},
       x:{f:function(x,y){return x;}, eq:'dy/dx = x', note:function(y0){return 'y = x²/2 + '+fmt(y0,2);}},
@@ -2744,4 +2744,16 @@
   }
 
   _mountBespokeExplorer({"canvasId": "chtechniquesExCanvas", "mode": "usub", "square": false, "title": "Integration by Substitution (u-Sub) Area Preservation Lab", "s0Id": "chtechniquesExCanvas_s0", "s1Id": "chtechniquesExCanvas_s1", "v0Id": "chtechniquesExCanvas_v0", "v1Id": "chtechniquesExCanvas_v1", "s0Val": 1.6, "s1Val": 1.0, "s0Step": 0.1, "s1Step": 0.25, "r0Id": "chtechniquesExCanvas_r0", "r1Id": "chtechniquesExCanvas_r1", "r2Id": "chtechniquesExCanvas_r2", "dataBtnId": "chtechniquesExCanvas_dataBtn", "dataPanelId": "chtechniquesExCanvas_dataPanel", "dataDescId": "chtechniquesExCanvas_dataDesc", "dataRowsId": "chtechniquesExCanvas_dataRows", "btn3dId": "chtechniquesExCanvas_3dBtn", "wrap3dId": "chtechniquesExCanvas_3dWrap", "hint3dId": "chtechniquesExCanvas_3dHint", "btn3dLabel": "🧊 View Integration by Substitution (u-Sub) Area Preservation Lab in 3D", "mode3d": "surf", "challengePrompt": {"en": "Adjust b and k so kb² ≈ π/2 (≈ 1.57), maximizing the positive integral value.", "ar": "اضبط b وk بحيث يصبح kb² ≈ π/2 (≈ 1.57) لتعظيم قيمة التكامل الموجبة."}, "checkFn": function(a, b){ return Math.abs(b*a*a - 1.57) < 0.2; }});
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_chfoundations_trig6Canvas', dataBtnId: 'uge_chfoundations_trig6DataBtn', prefix: 'uge_chfoundations_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_chfoundations_invtrig6Canvas', dataBtnId: 'uge_chfoundations_invtrig6DataBtn', prefix: 'uge_chfoundations_invtrig6' });
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_chderivatives_trig6Canvas', dataBtnId: 'uge_chderivatives_trig6DataBtn', prefix: 'uge_chderivatives_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_chderivatives_invtrig6Canvas', dataBtnId: 'uge_chderivatives_invtrig6DataBtn', prefix: 'uge_chderivatives_invtrig6' });
+  window.CSMountSlopeFieldExplorer && window.CSMountSlopeFieldExplorer({ canvasId: 'slopeCanvas', dataBtnId: 'slopeDataBtn', prefix: 'slope', defaultFn: 'xmy' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_chfoundations_mainfnCanvas', dataBtnId: 'uge_chfoundations_mainfnDataBtn', prefix: 'uge_chfoundations_mainfn', defaultFn: 'quadratic' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_chlimits_mainfnCanvas', dataBtnId: 'uge_chlimits_mainfnDataBtn', prefix: 'uge_chlimits_mainfn', defaultFn: 'rational' });
+  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_chfoundations_hyperCanvas', dataBtnId: 'uge_chfoundations_hyperDataBtn', prefix: 'uge_chfoundations_hyper', defaultFn: 'cosh' });
+  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_chderivatives_hyperCanvas', dataBtnId: 'uge_chderivatives_hyperDataBtn', prefix: 'uge_chderivatives_hyper', defaultFn: 'tanh' });
+  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_chtechniques_hyperCanvas', dataBtnId: 'uge_chtechniques_hyperDataBtn', prefix: 'uge_chtechniques_hyper', defaultFn: 'sinh' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

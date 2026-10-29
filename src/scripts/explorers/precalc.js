@@ -1208,7 +1208,15 @@
   // Initialize precalc track explorers
   initContExplorer('pcCont');
   initSeqLimExplorer('pcSeq');
-  initSixTrigExplorer('pcTrig6');
-  initSixInvTrigExplorer('pcInvTrig6');
+  /* upgraded via CSMountSixTrigExplorer: pcTrig6 */
+  /* upgraded via CSMountSixInvTrigExplorer: pcInvTrig6 */
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'pcTrig6Canvas', dataBtnId: 'pcTrig6DataBtn', prefix: 'pcTrig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'pcInvTrig6Canvas', dataBtnId: 'pcInvTrig6DataBtn', prefix: 'pcInvTrig6' });
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_pccircles_trig6Canvas', dataBtnId: 'uge_pccircles_trig6DataBtn', prefix: 'uge_pccircles_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_pccircles_invtrig6Canvas', dataBtnId: 'uge_pccircles_invtrig6DataBtn', prefix: 'uge_pccircles_invtrig6' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_pcexp_mainfnCanvas', dataBtnId: 'uge_pcexp_mainfnDataBtn', prefix: 'uge_pcexp_mainfn', defaultFn: 'logarithmic' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_pcrational_mainfnCanvas', dataBtnId: 'uge_pcrational_mainfnDataBtn', prefix: 'uge_pcrational_mainfn', defaultFn: 'rational' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);
 

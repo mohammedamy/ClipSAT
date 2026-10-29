@@ -106,12 +106,12 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · All 6 Trigonometric Ratios (Unit Circle & Wave Graph)",
-          "ar": "⊙ مستكشف تفاعلي · All 6 Trigonometric Ratios (Unit الدائرة & Wave التمثيل البياني)"
+          "ar": "⊙ مستكشف تفاعلي · النسب المثلثية الست جميعاً (دائرة الوحدة والتمثيل الموجي)"
         },
         "canvasId": "pcTrig6Canvas",
         "ariaLabel": {
-          "en": "Interactive split-view canvas showing the unit circle geometry on the left and the Cartesian wave graph of any of the 6 trigonometric ratios (sin, cos, tan, csc, sec, cot) on the right.",
-          "ar": "Interactive split-view canvas showing the unit الدائرة الهندسة on the left and the Cartesian wave التمثيل البياني of any of the 6 trigonometric ratios (sin, cos, tan, csc, sec, cot) on the right."
+          "en": "Interactive split-view canvas showing unit circle projections on the left and the Cartesian wave graph of any of the 6 trigonometric ratios (sin, cos, tan, csc, sec, cot) on the right.",
+          "ar": "لوحة تفاعلية مزدوجة تعرض إسقاطات دائرة الوحدة يساراً والتمثيل الموجي الديكارتي لأي نسبة من النسب المثلثية الست (sin, cos, tan, csc, sec, cot) يميناً."
         },
         "dataPanel": {
           "btnId": "pcTrig6DataBtn",
@@ -120,7 +120,7 @@
           "rowsId": "pcTrig6DataRows",
           "caption": {
             "en": "All 6 trigonometric ratios evaluated across standard benchmark angles and the active angle \\(\\theta\\).",
-            "ar": "All 6 trigonometric ratios evaluated across standard benchmark angles and the active الزاوية \\(\\theta\\)."
+            "ar": "قيم النسب المثلثية الست عند الزوايا القياسية المرجعية وعند الزاوية النشطة \\(\\theta\\)."
           },
           "columns": [
             {
@@ -128,28 +128,28 @@
               "ar": "\\(\\theta\\)"
             },
             {
-              "en": "\\(\\sin \\theta\\)",
-              "ar": "\\(\\sin \\theta\\)"
+              "en": "\\(\\sin\\theta\\)",
+              "ar": "\\(\\sin\\theta\\)"
             },
             {
-              "en": "\\(\\cos \\theta\\)",
-              "ar": "\\(\\cos \\theta\\)"
+              "en": "\\(\\cos\\theta\\)",
+              "ar": "\\(\\cos\\theta\\)"
             },
             {
-              "en": "\\(\\tan \\theta\\)",
-              "ar": "\\(\\tan \\theta\\)"
+              "en": "\\(\\tan\\theta\\)",
+              "ar": "\\(\\tan\\theta\\)"
             },
             {
-              "en": "\\(\\csc \\theta\\)",
-              "ar": "\\(\\csc \\theta\\)"
+              "en": "\\(\\csc\\theta\\)",
+              "ar": "\\(\\csc\\theta\\)"
             },
             {
-              "en": "\\(\\sec \\theta\\)",
-              "ar": "\\(\\sec \\theta\\)"
+              "en": "\\(\\sec\\theta\\)",
+              "ar": "\\(\\sec\\theta\\)"
             },
             {
-              "en": "\\(\\cot \\theta\\)",
-              "ar": "\\(\\cot \\theta\\)"
+              "en": "\\(\\cot\\theta\\)",
+              "ar": "\\(\\cot\\theta\\)"
             }
           ]
         },
@@ -158,7 +158,7 @@
             "id": "pcTrig6Fn",
             "label": {
               "en": "Select trig ratio:",
-              "ar": "Select trig ratio: (حساب المثلثات وقوانين المثلثات)"
+              "ar": "اختر النسبة المثلثية:"
             },
             "value": "sin",
             "options": [
@@ -190,7 +190,7 @@
             ],
             "ariaLabel": {
               "en": "Select trigonometric function to graph",
-              "ar": "Select trigonometric الدالة to التمثيل البياني"
+              "ar": "اختر الدالة المثلثية لتمثيلها بيانياً"
             }
           },
           {
@@ -207,7 +207,41 @@
             "valueDisplay": "60°",
             "ariaLabel": {
               "en": "Angle theta in degrees",
-              "ar": "الزاوية theta in degrees"
+              "ar": "الزاوية ثيتا بالدرجات"
+            }
+          },
+          {
+            "id": "pcTrig6Amp",
+            "label": {
+              "en": "Amplitude / Scale <b>\\(A\\)</b>:",
+              "ar": "السعة / المعامل الرأسي <b>\\(A\\)</b>:"
+            },
+            "min": 0.5,
+            "max": 2.5,
+            "value": 1,
+            "step": 0.25,
+            "valueDisplayId": "pcTrig6AmpV",
+            "valueDisplay": "1.00",
+            "ariaLabel": {
+              "en": "Amplitude scale A",
+              "ar": "معامل السعة الرأسي A"
+            }
+          },
+          {
+            "id": "pcTrig6Freq",
+            "label": {
+              "en": "Frequency <b>\\(B\\)</b>:",
+              "ar": "معامل التردد <b>\\(B\\)</b>:"
+            },
+            "min": 0.5,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "pcTrig6FreqV",
+            "valueDisplay": "1.00",
+            "ariaLabel": {
+              "en": "Frequency multiplier B",
+              "ar": "معامل التردد الزاوي B"
             }
           }
         ],
@@ -215,59 +249,59 @@
           {
             "id": "pcTrig6Sin",
             "label": {
-              "en": "\\(\\sin \\theta\\)",
-              "ar": "\\(\\sin \\theta\\)"
+              "en": "\\(A\\sin(B\\theta)\\)",
+              "ar": "\\(A\\sin(B\\theta)\\)"
             },
             "colorClass": "amber",
-            "value": "\\(0.866\\)"
+            "value": "0.866"
           },
           {
             "id": "pcTrig6Cos",
             "label": {
-              "en": "\\(\\cos \\theta\\)",
-              "ar": "\\(\\cos \\theta\\)"
+              "en": "\\(A\\cos(B\\theta)\\)",
+              "ar": "\\(A\\cos(B\\theta)\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(0.500\\)"
+            "value": "0.500"
           },
           {
             "id": "pcTrig6Tan",
             "label": {
-              "en": "\\(\\tan \\theta\\)",
-              "ar": "\\(\\tan \\theta\\)"
+              "en": "\\(A\\tan(B\\theta)\\)",
+              "ar": "\\(A\\tan(B\\theta)\\)"
             },
-            "value": "\\(1.732\\)"
+            "value": "1.732"
           },
           {
             "id": "pcTrig6Csc",
             "label": {
-              "en": "\\(\\csc \\theta (1/\\sin \\theta)\\)",
-              "ar": "\\(\\csc \\theta (1/\\sin \\theta)\\)"
+              "en": "\\(A\\csc(B\\theta)\\)",
+              "ar": "\\(A\\csc(B\\theta)\\)"
             },
             "colorClass": "amber",
-            "value": "\\(1.155\\)"
+            "value": "1.155"
           },
           {
             "id": "pcTrig6Sec",
             "label": {
-              "en": "\\(\\sec \\theta (1/\\cos \\theta)\\)",
-              "ar": "\\(\\sec \\theta (1/\\cos \\theta)\\)"
+              "en": "\\(A\\sec(B\\theta)\\)",
+              "ar": "\\(A\\sec(B\\theta)\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(2.000\\)"
+            "value": "2.000"
           },
           {
             "id": "pcTrig6Cot",
             "label": {
-              "en": "\\(\\cot \\theta (\\cos \\theta /\\sin \\theta)\\)",
-              "ar": "\\(\\cot \\theta (\\cos \\theta /\\sin \\theta)\\)"
+              "en": "\\(A\\cot(B\\theta)\\)",
+              "ar": "\\(A\\cot(B\\theta)\\)"
             },
-            "value": "\\(0.577\\)"
+            "value": "0.577"
           }
         ],
         "note": {
-          "en": "Switch among all 6 trigonometric functions — \\(\\sin \\theta\\), \\(\\cos \\theta\\), \\(\\tan \\theta\\), \\(\\csc \\theta\\), \\(\\sec \\theta\\), and \\(\\cot \\theta\\) — and sweep \\(\\theta\\) from \\(-360^\\circ (-2\\pi)\\) to \\(+360^\\circ (+2\\pi)\\). Left: unit circle projections and tangent/secant/cotangent geometric segments. Right: Cartesian wave graph with vertical asymptotes where the denominator equals zero.",
-          "ar": "Switch among all 6 trigonometric الدوال — \\(\\sin \\theta\\), \\(\\cos \\theta\\), \\(\\tan \\theta\\), \\(\\csc \\theta\\), \\(\\sec \\theta\\), and \\(\\cot \\theta\\) — and sweep \\(\\theta\\) from \\(-360^\\circ (-2\\pi)\\) to \\(+360^\\circ (+2\\pi)\\). Left: unit الدائرة projections and tangent/secant/cotangent geometric segments. Right: Cartesian wave التمثيل البياني with vertical خطوط التقارب حيث the denominator equals zero."
+          "en": "Click or drag directly on either the unit circle (left) or the wave graph (right) to sweep \\(\\theta\\), switch among all 6 ratios (\\(\\sin, \\cos, \\tan, \\csc, \\sec, \\cot\\)), and observe how reciprocal curves bounce off \\(\\sin\\)/\\(\\cos\\) extrema and form vertical asymptotes at zeros.",
+          "ar": "انقر أو اسحب مباشرة على دائرة الوحدة (يساراً) أو التمثيل الموجي (يميناً) لتحريك الزاوية \\(\\theta\\)، وبدّل بين النسب المثلثية الست جميعاً لملاحظة كيف ترتد منحنيات المقلوبات عند القيم القصوى وتكوّن خطوط تقارب رأسية عند الأصفار."
         }
       },
       {
@@ -286,12 +320,12 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · All 6 Inverse Trigonometric Functions (Principal Branches & Reflection Across \\(y = x\\))",
-          "ar": "⊙ مستكشف تفاعلي · All 6 Inverse Trigonometric الدوال (Principal Branches & Reflection Across \\(y = x\\))"
+          "ar": "⊙ مستكشف تفاعلي · الدوال المثلثية العكسية الست (الفروع الأساسية والانعكاس حول \\(y = x\\))"
         },
         "canvasId": "pcInvTrig6Canvas",
         "ariaLabel": {
-          "en": "Interactive graph showing any of the 6 inverse trigonometric functions (arcsin, arccos, arctan, arccsc, arcsec, arccot) alongside the restricted principal branch of the original function and reflection line y = x.",
-          "ar": "Interactive التمثيل البياني showing any of the 6 inverse trigonometric الدوال (arcsin, arccos, arctan, arccsc, arcsec, arccot) alongside the restricted principal branch of the original الدالة and reflection line y = x."
+          "en": "Interactive graph showing any of the 6 inverse trigonometric functions (arcsin, arccos, arctan, arccsc, arcsec, arccot) alongside its restricted forward branch, mirror line y = x, and unit circle principal range arc.",
+          "ar": "تمثيل بياني تفاعلي يعرض أياً من الدوال المثلثية العكسية الست مع فرعها الأصلي المقيد ومستقيم الانعكاس y = x وقوس المدى الأساسي على دائرة الوحدة."
         },
         "dataPanel": {
           "btnId": "pcInvTrig6DataBtn",
@@ -300,24 +334,24 @@
           "rowsId": "pcInvTrig6DataRows",
           "caption": {
             "en": "Principal branch evaluations for the selected inverse trigonometric function.",
-            "ar": "Principal branch evaluations for the selected inverse trigonometric الدالة."
+            "ar": "قيم الفرع الأساسي للدالة المثلثية العكسية المختارة."
           },
           "columns": [
             {
               "en": "Input \\(x\\)",
-              "ar": "Input \\(x\\) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "المدخل \\(x\\)"
             },
             {
               "en": "\\(\\theta = f^{-1}(x)\\) (rad)",
-              "ar": "\\(\\theta = f^{-1}(x)\\) (rad) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "\\(\\theta = f^{-1}(x)\\) (راديان)"
             },
             {
               "en": "\\(\\theta = f^{-1}(x)\\) (deg)",
-              "ar": "\\(\\theta = f^{-1}(x)\\) (deg) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "\\(\\theta = f^{-1}(x)\\) (درجات)"
             },
             {
               "en": "Reflected Point on \\(f\\)",
-              "ar": "Reflected Point on \\(f\\) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "النقطة المنعكسة على \\(f\\)"
             }
           ]
         },
@@ -326,7 +360,7 @@
             "id": "pcInvTrig6Fn",
             "label": {
               "en": "Select inverse function:",
-              "ar": "Select inverse الدالة:"
+              "ar": "اختر الدالة العكسية:"
             },
             "value": "arcsin",
             "options": [
@@ -345,11 +379,11 @@
               },
               {
                 "value": "arccsc",
-                "label": "y = arccsc(x) = csc⁻¹(x)  |  Domain |x| ≥ 1, Range [−π/2, π/2] \\ {0}"
+                "label": "y = arccsc(x) = csc⁻¹(x)  |  Domain |x| ≥ 1, Range [−π/2, 0) ∪ (0, π/2]"
               },
               {
                 "value": "arcsec",
-                "label": "y = arcsec(x) = sec⁻¹(x)  |  Domain |x| ≥ 1, Range [0, π] \\ {π/2}"
+                "label": "y = arcsec(x) = sec⁻¹(x)  |  Domain |x| ≥ 1, Range [0, π/2) ∪ (π/2, π]"
               },
               {
                 "value": "arccot",
@@ -358,14 +392,14 @@
             ],
             "ariaLabel": {
               "en": "Select inverse trigonometric function",
-              "ar": "Select inverse trigonometric الدالة"
+              "ar": "اختر الدالة المثلثية العكسية"
             }
           },
           {
             "id": "pcInvTrig6X",
             "label": {
               "en": "Input value <b>\\(x\\)</b>:",
-              "ar": "Input value <b>\\(x\\)</b>: (حساب المثلثات وقوانين المثلثات)"
+              "ar": "قيمة المدخل <b>\\(x\\)</b>:"
             },
             "min": -3,
             "max": 3,
@@ -375,7 +409,7 @@
             "valueDisplay": "0.50",
             "ariaLabel": {
               "en": "Input value x for inverse trigonometric function",
-              "ar": "Input value x for inverse trigonometric الدالة"
+              "ar": "قيمة المدخل x للدالة المثلثية العكسية"
             }
           }
         ],
@@ -384,57 +418,56 @@
             "id": "pcInvTrig6XOut",
             "label": {
               "en": "Input \\(x\\)",
-              "ar": "Input \\(x\\) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "المدخل \\(x\\)"
             },
-            "value": "\\(0.500\\)"
+            "value": "0.500"
           },
           {
             "id": "pcInvTrig6RadOut",
             "label": {
               "en": "\\(\\theta = f^{-1}(x)\\) (rad)",
-              "ar": "\\(\\theta = f^{-1}(x)\\) (rad) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "\\(\\theta = f^{-1}(x)\\) (راديان)"
             },
             "colorClass": "amber",
-            "value": "\\(0.524\\text{ rad} (\\pi /6)\\)"
+            "value": "0.524 rad"
           },
           {
             "id": "pcInvTrig6DegOut",
             "label": {
               "en": "\\(\\theta = f^{-1}(x)\\) (deg)",
-              "ar": "\\(\\theta = f^{-1}(x)\\) (deg) (حساب المثلثات وقوانين المثلثات)"
+              "ar": "\\(\\theta = f^{-1}(x)\\) (درجات)"
             },
             "colorClass": "indigo",
-            "value": "\\(30.0^\\circ\\)"
+            "value": "30.0°"
           },
           {
             "id": "pcInvTrig6DomOut",
             "label": {
               "en": "Domain of \\(f^{-1}\\)",
-              "ar": "المجال of \\(f^{-1}\\)"
+              "ar": "مجال \\(f^{-1}\\)"
             },
-            "value": "\\([-1, 1]\\)"
+            "value": "[−1, 1]"
           },
           {
             "id": "pcInvTrig6RangeOut",
             "label": {
               "en": "Principal Range",
-              "ar": "Principal المدى"
+              "ar": "المدى الأساسي"
             },
-            "value": "\\([-\\pi /2, \\pi /2]\\)"
+            "value": "[−π/2, π/2] (−90° to 90°)"
           },
           {
             "id": "pcInvTrig6CheckOut",
             "label": {
               "en": "Identity Check \\(f(f^{-1}(x))\\)",
-              "ar": "المتطابقة Check \\(f(f^{-1}(x))\\)"
+              "ar": "تحقق المتطابقة \\(f(f^{-1}(x))\\)"
             },
-            "colorClass": "indigo",
-            "value": "\\(\\sin(0.524) = 0.500\\)"
+            "value": "sin(0.52) = 0.500"
           }
         ],
         "note": {
-          "en": "Select any of the 6 inverse trigonometric functions \\((\\arcsin, \\arccos, \\arctan, \\operatorname{arccsc}, \\operatorname{arcsec}, \\operatorname{arccot})\\). The dashed indigo curve is the restricted one-to-one branch of \\(f(\\theta)\\); the solid amber curve is its reflection \\(y = f^{-1}(x)\\) across the mirror line \\(y = x\\). The unit-circle inset highlights the allowed principal range quadrants.",
-          "ar": "Select any of the 6 inverse trigonometric الدوال \\((\\arcsin, \\arccos, \\arctan, \\operatorname{arccsc}, \\operatorname{arcsec}, \\operatorname{arccot})\\). The dashed indigo curve is the restricted one-to-one branch of \\(f(\\theta)\\); the solid amber curve is its reflection \\(y = f^{-1}(x)\\) across the mirror line \\(y = x\\). The unit-الدائرة inset highlights the allowed principal المدى quadrants."
+          "en": "Drag horizontally on the Cartesian plane or slide \\(x\\) to compare all 6 inverse trig functions (\\(\\arcsin, \\arccos, \\arctan, \\operatorname{arccsc}, \\operatorname{arcsec}, \\operatorname{arccot}\\)). The amber curve \\(y = f^{-1}(x)\\) reflects the dashed restricted branch across \\(y = x\\), while the right pane highlights the exact principal-angle arc on the unit circle.",
+          "ar": "اسحب أفقياً على المستوى الديكارتي أو حرّك المنزلق \\(x\\) للمقارنة بين الدوال المثلثية العكسية الست جميعاً. يمثل المنحنى الكهرماني \\(y = f^{-1}(x)\\) انعكاس الفرع المقيّد المتقطع حول \\(y = x\\)، بينما يبرز الجزء الأيمن قوس المدى الأساسي على دائرة الوحدة."
         }
       },
       {

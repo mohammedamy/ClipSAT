@@ -319,17 +319,35 @@ self.addEventListener('message', function(event) {
     self.skipWaiting();
   }
 
-  if (event.data.type === 'CACHE_COURSE') {
-    var courseId = event.data.courseId;
+  if (event.data.type === 'CACHE_COURSE' || event.data.type === 'PRECACHE_TRACK') {
+    var courseId = event.data.courseId || event.data.trackId;
     if (!courseId) return;
-    var urls = [
-      new URL('./bank-data/' + courseId + '.json', self.location.href).href,
-      new URL('./courses/' + courseId + '.json', self.location.href).href
+    var defaultRelUrls = [
+      './' + courseId + '/',
+      './' + courseId + '/index.html',
+      './js/ix/' + courseId + '.js',
+      './js/ex/' + courseId + '.js',
+      './bank-data/' + courseId + '.json',
+      './downloads/' + courseId + '/manifest.json',
+      './js/figures.js',
+      './js/bank-exam.js',
+      './js/practice-quiz.js',
+      './js/diagnostic-test.js'
     ];
+    var customUrls = Array.isArray(event.data.urls) ? event.data.urls : defaultRelUrls;
+    var urls = customUrls.map(function(u) {
+      return new URL(u, self.location.href).href;
+    });
     caches.open(CACHE.COURSES).then(function(cache) {
-      urls.forEach(function(url) {
-        fetch(url).then(function(r) { if (r.ok) cache.put(url, r); }).catch(function(){});
-      });
+      return Promise.all(urls.map(function(url) {
+        return fetch(url).then(function(r) {
+          if (r && r.ok) return cache.put(url, r);
+        }).catch(function(){});
+      }));
+    }).then(function() {
+      if (event.source && typeof event.source.postMessage === 'function') {
+        event.source.postMessage({ type: 'TRACK_PRECACHED', trackId: courseId });
+      }
     });
   }
 });

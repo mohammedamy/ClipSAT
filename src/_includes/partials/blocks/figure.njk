@@ -5,7 +5,7 @@
   Expects: block (the figure block object)
 #}
 {% import "partials/_bilingual.njk" as bl %}
-<figure class="lesson-figure"{% if block.id %} id="{{ block.id }}"{% endif %}>
+<figure class="lesson-figure"{% if block.id %} id="{{ block.id }}"{% endif %}{% if block.figure and block.figure.type == 'slope_field' %} data-cs-interactive-slopefield="1" data-sf-fn="{{ block.figure.fn or 'x - y' }}" data-sf-title="{{ block.figure.title or '' }}" data-sf-xmin="{{ block.figure.xmin if block.figure.xmin is defined else -3 }}" data-sf-xmax="{{ block.figure.xmax if block.figure.xmax is defined else 3 }}" data-sf-ymin="{{ block.figure.ymin if block.figure.ymin is defined else -3 }}" data-sf-ymax="{{ block.figure.ymax if block.figure.ymax is defined else 3 }}" data-sf-x0="{{ block.figure.solution.x0 if block.figure.solution and block.figure.solution.x0 is defined else 0 }}" data-sf-y0="{{ block.figure.solution.y0 if block.figure.solution and block.figure.solution.y0 is defined else 1 }}"{% endif %}>
   {% if block.title %}<div class="lesson-figure-title">{{ bl.text(block.title) }}</div>{% endif %}
   <div class="lesson-figure-svg">{{ block.figure | renderFig | safe }}</div>
   {% if block.caption %}<figcaption class="lesson-figure-caption">{{ bl.text(block.caption) }}</figcaption>{% endif %}

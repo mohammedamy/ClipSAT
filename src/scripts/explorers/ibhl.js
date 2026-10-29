@@ -1318,5 +1318,13 @@
     if(sDet) sDet.addEventListener('input',upd);
     upd();
   })();
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_ibhlt3_trig6Canvas', dataBtnId: 'uge_ibhlt3_trig6DataBtn', prefix: 'uge_ibhlt3_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_ibhlt3_invtrig6Canvas', dataBtnId: 'uge_ibhlt3_invtrig6DataBtn', prefix: 'uge_ibhlt3_invtrig6' });
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_ibhlaa_trig6Canvas', dataBtnId: 'uge_ibhlaa_trig6DataBtn', prefix: 'uge_ibhlaa_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_ibhlaa_invtrig6Canvas', dataBtnId: 'uge_ibhlaa_invtrig6DataBtn', prefix: 'uge_ibhlaa_invtrig6' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_ibhlt2_mainfnCanvas', dataBtnId: 'uge_ibhlt2_mainfnDataBtn', prefix: 'uge_ibhlt2_mainfn', defaultFn: 'absolute' });
+  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_ibhlt5_hyperCanvas', dataBtnId: 'uge_ibhlt5_hyperDataBtn', prefix: 'uge_ibhlt5_hyper', defaultFn: 'sinh' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);
 

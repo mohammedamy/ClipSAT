@@ -445,14 +445,21 @@ window.CSTwinProblem = (function(){
     return str;
   }
 
-  function _getBankPool(trackId){
+  function _getBankPool(trackId, chapterId){
     var b = window.fullExamBank && window.fullExamBank[trackId];
-    if(!b) return [];
-    return Array.isArray(b) ? b : (b.pool || [].concat(b.easy || [], b.medium || [], b.hard || []));
+    if(b){
+      var full = Array.isArray(b) ? b : (b.pool || [].concat(b.easy || [], b.medium || [], b.hard || []));
+      if(full.length) return full;
+    }
+    if(chapterId && window.CS_SHARD_CACHE && window.CS_SHARD_CACHE[trackId + ':' + chapterId]){
+      var sh = window.CS_SHARD_CACHE[trackId + ':' + chapterId];
+      if(sh && Array.isArray(sh.pool)) return sh.pool;
+    }
+    return [];
   }
 
   function findMatchingQuestion(trackId, chapterId, domains){
-    var pool = _getBankPool(trackId);
+    var pool = _getBankPool(trackId, chapterId);
     if(!pool.length) return null;
     var matches = [];
     if(chapterId){
@@ -582,9 +589,9 @@ window.CSTwinProblem = (function(){
       + (ar ? 'جاري تحميل مسألة مشابهة من بنك الأسئلة...' : 'Loading a matching problem from the verified bank...')
       + '</div>';
 
-    var loadPromise = (typeof window.CS_loadTrackBank === 'function')
-      ? window.CS_loadTrackBank(trackId)
-      : Promise.resolve();
+    var loadPromise = (chapterId && typeof window.CS_loadTopicShard === 'function' && !(window.fullExamBank && window.fullExamBank[trackId]))
+      ? window.CS_loadTopicShard(trackId, chapterId)
+      : ((typeof window.CS_loadTrackBank === 'function') ? window.CS_loadTrackBank(trackId) : Promise.resolve());
     loadPromise.then(function(){
       _renderTwinCard(cardEl, trackId, chapterId, domains);
     }).catch(function(){

@@ -1876,4 +1876,11 @@ function _mountBespokeExplorer(cfg){
 
   
   _mountBespokeExplorer({"canvasId": "ibslaaCanvas", "mode": "ftc_triple", "square": false, "title": "IB AA SL Non-Calculator Analytical Calculus & Area Accumulation Lab", "s0Id": "ibslaaS0", "s1Id": "ibslaaS1", "v0Id": "ibslaaS0Val", "v1Id": "ibslaaS1Val", "s0Val": 2, "s1Val": 1, "s0Step": 0.5, "s1Step": 0.5, "r0Id": "ibslaaR0", "r1Id": "ibslaaR1", "r2Id": "ibslaaR2", "dataBtnId": "ibslaaCanvas_dataBtn", "dataPanelId": "ibslaaCanvas_dataPanel", "dataDescId": "ibslaaCanvas_dataDesc", "dataRowsId": "ibslaaCanvas_dataRows", "btn3dId": "ibslaaCanvas_3dBtn", "wrap3dId": "ibslaaCanvas_3dWrap", "hint3dId": "ibslaaCanvas_3dHint", "btn3dLabel": "🧊 View AA SL — Binomial Theorem, Proof, Radian Trigonometry & Analytical Calculus in 3D", "mode3d": "surf", "challengePrompt": {"en": "Adjust the sliders to explore AA SL — Binomial Theorem, Proof, Radian Trigonometry & Analytical Calculus.", "ar": "حرّك منزلقات التحكم لاستكشاف نظرية ذات الحدين والبرهان وحساب المثلثات بالراديان والتفاضل والتكامل التحليلي."}, "checkFn": function(a, b){ return Math.abs(0.5*a*a - 1.0 + b) < 0.25; }});
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_ibslt3_trig6Canvas', dataBtnId: 'uge_ibslt3_trig6DataBtn', prefix: 'uge_ibslt3_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_ibslt3_invtrig6Canvas', dataBtnId: 'uge_ibslt3_invtrig6DataBtn', prefix: 'uge_ibslt3_invtrig6' });
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_ibslaa_trig6Canvas', dataBtnId: 'uge_ibslaa_trig6DataBtn', prefix: 'uge_ibslaa_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_ibslaa_invtrig6Canvas', dataBtnId: 'uge_ibslaa_invtrig6DataBtn', prefix: 'uge_ibslaa_invtrig6' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_ibslt2_mainfnCanvas', dataBtnId: 'uge_ibslt2_mainfnDataBtn', prefix: 'uge_ibslt2_mainfn', defaultFn: 'quadratic' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

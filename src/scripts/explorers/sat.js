@@ -1057,5 +1057,14 @@
     if(sD) sD.addEventListener('input', sync);
     sync();
   })();
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
+  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_satgeo_trig6Canvas', dataBtnId: 'uge_satgeo_trig6DataBtn', prefix: 'uge_satgeo_trig6' });
+  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_satgeo_invtrig6Canvas', dataBtnId: 'uge_satgeo_invtrig6DataBtn', prefix: 'uge_satgeo_invtrig6' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satlinear_mainfnCanvas', dataBtnId: 'uge_satlinear_mainfnDataBtn', prefix: 'uge_satlinear_mainfn', defaultFn: 'constant' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satlinfun_mainfnCanvas', dataBtnId: 'uge_satlinfun_mainfnDataBtn', prefix: 'uge_satlinfun_mainfn', defaultFn: 'linear' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satquad_mainfnCanvas', dataBtnId: 'uge_satquad_mainfnDataBtn', prefix: 'uge_satquad_mainfn', defaultFn: 'quadratic' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satexpoly_mainfnCanvas', dataBtnId: 'uge_satexpoly_mainfnDataBtn', prefix: 'uge_satexpoly_mainfn', defaultFn: 'exponential' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satfunctions_mainfnCanvas', dataBtnId: 'uge_satfunctions_mainfnDataBtn', prefix: 'uge_satfunctions_mainfn', defaultFn: 'radical' });
+  /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);
 

@@ -514,6 +514,205 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Slope Field, Particular Solution & Euler Lab",
+          "ar": "⊙ مستكشف تفاعلي · حقل الميول والحل الخاص وطريقة أويلر العددية"
+        },
+        "canvasId": "uge_a2ldiffeq_sfCanvas",
+        "ariaLabel": {
+          "en": "Interactive slope field where clicking or dragging moves the initial condition (x0, y0), plotting the exact RK4 solution curve, Euler polygonal approximation, and zero-slope nullcline.",
+          "ar": "حقل ميول تفاعلي يتيح النقر أو السحب لتحريك الشرط الابتدائي (x0, y0) ورسم منحنى الحل الدقيق وتقريب أويلر المضلع ومنحنى الميل الصفري."
+        },
+        "dataPanel": {
+          "btnId": "uge_a2ldiffeq_sfDataBtn",
+          "panelId": "uge_a2ldiffeq_sfDataPanel",
+          "descId": "uge_a2ldiffeq_sfDataDesc",
+          "rowsId": "uge_a2ldiffeq_sfDataRows",
+          "caption": {
+            "en": "Sampled points and slopes along the solution curve passing through \\((x_0, y_0)\\).",
+            "ar": "نقاط وميول مختارة على طول منحنى الحل المار بالنقطة \\((x_0, y_0)\\)."
+          },
+          "columns": [
+            {
+              "en": "\\(x\\)",
+              "ar": "\\(x\\)"
+            },
+            {
+              "en": "\\(y(x)\\) (RK4)",
+              "ar": "\\(y(x)\\) (الحل)"
+            },
+            {
+              "en": "Slope \\(f(x, y)\\)",
+              "ar": "الميل \\(f(x, y)\\)"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "uge_a2ldiffeq_sfFn",
+            "label": {
+              "en": "Differential Equation:",
+              "ar": "المعادلة التفاضلية:"
+            },
+            "value": "xmy",
+            "options": [
+              {
+                "value": "xmy",
+                "label": "dy/dx = x − y  (Linear ODE → asymptote y = x − 1)",
+                "selected": true
+              },
+              {
+                "value": "y",
+                "label": "dy/dx = y  (Exponential growth y = C·eˣ)"
+              },
+              {
+                "value": "x",
+                "label": "dy/dx = x  (Antiderivative parabolas y = ½x² + C)"
+              },
+              {
+                "value": "logistic",
+                "label": "dy/dx = 0.5y(1 − y/3)  (Logistic carrying capacity M = 3)"
+              },
+              {
+                "value": "parab",
+                "label": "dy/dx = 0.3x² − 0.6y  (Parabolic nullcline)"
+              },
+              {
+                "value": "sin",
+                "label": "dy/dx = sin(x) − 0.5y  (Driven sinusoidal ODE)"
+              },
+              {
+                "value": "circle",
+                "label": "dy/dx = −x / y  (Implicit circles x² + y² = R²)"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Select differential equation dy/dx = f(x, y)",
+              "ar": "اختر المعادلة التفاضلية dy/dx = f(x, y)"
+            }
+          },
+          {
+            "id": "uge_a2ldiffeq_sfX0",
+            "label": {
+              "en": "Initial <b>\\(x_0 =\\)</b>",
+              "ar": "الإحداثي الابتدائي <b>\\(x_0 =\\)</b>"
+            },
+            "min": -3.5,
+            "max": 3.5,
+            "value": 0,
+            "step": 0.5,
+            "valueDisplayId": "uge_a2ldiffeq_sfX0v",
+            "valueDisplay": "0.0",
+            "ariaLabel": {
+              "en": "Initial x0 coordinate",
+              "ar": "الإحداثي السيني الابتدائي x0"
+            }
+          },
+          {
+            "id": "uge_a2ldiffeq_sfY0",
+            "label": {
+              "en": "Initial <b>\\(y_0 =\\)</b>",
+              "ar": "القيمة الابتدائية <b>\\(y_0 =\\)</b>"
+            },
+            "min": -3.5,
+            "max": 3.5,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "uge_a2ldiffeq_sfY0v",
+            "valueDisplay": "1.0",
+            "ariaLabel": {
+              "en": "Initial y0 value",
+              "ar": "القيمة الابتدائية y0"
+            }
+          },
+          {
+            "id": "uge_a2ldiffeq_sfH",
+            "label": {
+              "en": "Euler step <b>\\(h =\\)</b>",
+              "ar": "خطوة أويلر <b>\\(h =\\)</b>"
+            },
+            "min": 0.1,
+            "max": 1,
+            "value": 0.5,
+            "step": 0.1,
+            "valueDisplayId": "uge_a2ldiffeq_sfHv",
+            "valueDisplay": "0.50",
+            "ariaLabel": {
+              "en": "Euler step size h",
+              "ar": "طول خطوة طريقة أويلر h"
+            }
+          },
+          {
+            "id": "uge_a2ldiffeq_sfEuler",
+            "checkbox": true,
+            "checked": true,
+            "label": {
+              "en": "Show Euler polygonal approximation",
+              "ar": "إظهار تقريب أويلر المضلع"
+            },
+            "ariaLabel": {
+              "en": "Toggle Euler approximation curve",
+              "ar": "تفعيل أو إخفاء منحنى تقريب أويلر"
+            }
+          },
+          {
+            "id": "uge_a2ldiffeq_sfNull",
+            "checkbox": true,
+            "checked": true,
+            "label": {
+              "en": "Highlight zero-slope nullcline (\\(dy/dx = 0\\))",
+              "ar": "إبراز منحنى الميل الصفري (\\(dy/dx = 0\\))"
+            },
+            "ariaLabel": {
+              "en": "Toggle zero-slope nullcline",
+              "ar": "تفعيل أو إخفاء منحنى الميل الصفري"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "uge_a2ldiffeq_sfEq",
+            "label": {
+              "en": "Active ODE",
+              "ar": "المعادلة التفاضلية"
+            },
+            "value": "dy/dx = x − y"
+          },
+          {
+            "id": "uge_a2ldiffeq_sfPt",
+            "label": {
+              "en": "Initial point &amp; slope",
+              "ar": "النقطة الابتدائية والميل"
+            },
+            "colorClass": "indigo",
+            "value": "(0.00, 1.00)  |  slope m₀ = −1.000"
+          },
+          {
+            "id": "uge_a2ldiffeq_sfNote",
+            "label": {
+              "en": "Qualitative behavior",
+              "ar": "السلوك النوعي للحل"
+            },
+            "colorClass": "amber",
+            "value": "Approaches linear asymptote y = x − 1 as x → ∞"
+          },
+          {
+            "id": "uge_a2ldiffeq_sfErr",
+            "label": {
+              "en": "RK4 vs. Euler at \\(x_0 + 1\\)",
+              "ar": "مقارنة الحل الدقيق بأويلر عند \\(x_0 + 1\\)"
+            },
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "Click or drag anywhere on the slope field to move \\((x_0, y_0)\\) in real time, and <strong>double-click</strong> to pin multiple family curves for side-by-side comparison. Decrease step \\(h\\) to watch the dashed teal Euler approximation converge to the amber solution curve.",
+          "ar": "انقر أو اسحب في أي موضع على حقل الميول لتحريك النقطة الابتدائية \\((x_0, y_0)\\) مباشرة، و<strong>انقر مرتين</strong> لتثبيت عدة منحنيات من عائلة الحلول للمقارنة. قلّل طول الخطوة \\(h\\) لملاحظة تقارب مضلع أويلر المتقطع من منحنى الحل الكهرماني الدقيق."
+        },
+        "id": "cs-uge-a2l-diffeq-sf-exp"
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {
