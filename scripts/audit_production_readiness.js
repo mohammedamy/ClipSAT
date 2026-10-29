@@ -361,6 +361,7 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
     chIds.forEach((cid, idx) => {
       const ch = JSON.parse(fs.readFileSync(path.join(contentDir, t, `${cid}.json`), 'utf8'));
       assert.ok(ch.title && ch.title.en && ch.title.ar, `${t}/${cid} must have bilingual chapter title`);
+      assert.ok(ch.chapterTag && ch.chapterTag.className, `${t}/${cid} must have a chapterTag badge`);
       assert.ok(ch.quizWidget && Array.isArray(ch.quizWidget.domains) && ch.quizWidget.domains.some(d => bankDomains.has(d)), `${t}/${cid} quizWidget.domains must match bank-data/${t}.json domains`);
       (function assertAllBilingual(node, p) {
         if (!node || typeof node !== 'object') return;
@@ -402,6 +403,7 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
       assert.ok(pf >= 1, `${t}/${cid} must have >= 1 pf derivation, found ${pf}`);
       assert.ok(tbl >= 1, `${t}/${cid} must have >= 1 table, found ${tbl}`);
       assert.ok(exp >= 1, `${t}/${cid} must have >= 1 explorer, found ${exp}`);
+      assert.ok(blocks.some(b => b.kind === 'seeAlso' && Array.isArray(b.links) && b.links.length >= 1), `${t}/${cid} must have a seeAlso cross-reference block`);
     });
   });
 });

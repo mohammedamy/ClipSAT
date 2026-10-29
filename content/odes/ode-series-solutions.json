@@ -539,11 +539,43 @@
           "en": "We are given the differential equation \\( y'' - xy = 0 \\) and assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\). \\newline Differentiating twice with respect to \\( x \\), we get: \\( y'(x) = \\sum_{n=1}^{\\infty} n c_n x^{n-1} \\) and \\( y''(x) = \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} \\). \\newline Substituting these into the differential equation: \\( \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} - x \\sum_{n=0}^{\\infty} c_n x^n = 0 \\). \\newline We can rewrite the second term as \\( \\sum_{n=0}^{\\infty} c_n x^{n+1} \\). To combine the series, we need the powers of \\( x \\) to be the same. Let \\( k = n-2 \\) in the first series, so \\( n = k+2 \\). When \\( n=2, k=0 \\). The first series becomes \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k \\). \\newline Let \\( k = n+1 \\) in the second series, so \\( n = k-1 \\). When \\( n=0, k=1 \\). The second series becomes \\( \\sum_{k=1}^{\\infty} c_{k-1} x^k \\). \\newline So the equation is \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline We can separate the \\( k=0 \\) term from the first sum: \\( 2(1)c_2 + \\sum_{k=1}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline For this equation to hold for all \\( x \\), the coefficients of each power of \\( x \\) must be zero. \\newline For \\( k=0 \\): \\( 2c_2 = 0 \\) implies \\( c_2 = 0 \\). \\newline For \\( k \\geq 1 \\): \\( (k+2)(k+1) c_{k+2} - c_{k-1} = 0 \\). \\newline Thus, the recurrence relation is \\( c_{k+2} = \\frac{c_{k-1}}{(k+2)(k+1)} \\) for \\( k \\geq 1 \\). Replacing \\( k \\) with \\( n \\), we get \\( c_{n+2} = \\frac{c_{n-1}}{(n+2)(n+1)} \\) for \\( n \\geq 1 \\).",
           "ar": "We are given the dإذا كانferential equation \\( y'' - xy = 0 \\) and assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\). \\newline Dإذا كانferentiating twice بالنسبة إلى \\( x \\), we get: \\( y'(x) = \\sum_{n=1}^{\\infty} n c_n x^{n-1} \\) and \\( y''(x) = \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} \\). \\newline Substituting these into the dإذا كانferential equation: \\( \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} - x \\sum_{n=0}^{\\infty} c_n x^n = 0 \\). \\newline We can rewrite the second term as \\( \\sum_{n=0}^{\\infty} c_n x^{n+1} \\). To combine the series, we need the powers of \\( x \\) to be the same. ليكن \\( k = n-2 \\) in the first series, so \\( n = k+2 \\). عندما \\( n=2, k=0 \\). The first series becomes \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k \\). \\newline ليكن \\( k = n+1 \\) in the second series, so \\( n = k-1 \\). عندما \\( n=0, k=1 \\). The second series becomes \\( \\sum_{k=1}^{\\infty} c_{k-1} x^k \\). \\newline So the equation is \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline We can separate the \\( k=0 \\) term from the first sum: \\( 2(1)c_2 + \\sum_{k=1}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline For this equation to hold for all \\( x \\), the coefficients of each power of \\( x \\) must be zero. \\newline For \\( k=0 \\): \\( 2c_2 = 0 \\) implies \\( c_2 = 0 \\). \\newline For \\( k \\geq 1 \\): \\( (k+2)(k+1) c_{k+2} - c_{k-1} = 0 \\). \\newline وعليه، the recurrence relation is \\( c_{k+2} = \\frac{c_{k-1}}{(k+2)(k+1)} \\) for \\( k \\geq 1 \\). Replacing \\( k \\) with \\( n \\), we get \\( c_{n+2} = \\frac{c_{n-1}}{(n+2)(n+1)} \\) for \\( n \\geq 1 \\)."
         }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability",
+            "chapterId": "ode-numerical-methods",
+            "trackId": "odes"
+          },
+          {
+            "label": "Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials",
+            "chapterId": "ode-systems",
+            "trackId": "odes"
+          },
+          {
+            "trackId": "apbc",
+            "chapterId": "apbc-beyond",
+            "label": "APBC: Beyond AB — Core BC Topics Overview"
+          }
+        ]
       }
     ]
   },
   "quizWidget": {
     "domains": [
+      "Power Series Solutions",
+      "Power Series Solutions, Ordinary Points & the Method of Frobenius"
+    ]
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Differential Equations · Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+    "weightBadge": "ODE Core · 8",
+    "topics": [
       "Power Series Solutions",
       "Power Series Solutions, Ordinary Points & the Method of Frobenius"
     ]

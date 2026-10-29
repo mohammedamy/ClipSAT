@@ -7,7 +7,7 @@
   };
 
   function renderLibrary(el, trackId, data){
-    var hasAr = (trackId === 'qudrat' || trackId === 'tahsili') && data.some(function(d){ return d.lang === 'ar'; });
+    var hasAr = data.some(function(d){ return d.lang === 'ar'; });
     var curLang = 'en';
     el.innerHTML = (hasAr
         ? '<div class="fightoggle wl-langtoggle"><span class="seg">'

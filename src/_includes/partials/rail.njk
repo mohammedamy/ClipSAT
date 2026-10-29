@@ -65,5 +65,18 @@
   {% if downloadsId %}
   <a href="#{{ downloadsId }}" data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
   {% endif %}
-  {% if railExtra %}{{ railExtra | safe }}{% endif %}
+  {% if railExtra %}{{ railExtra | safe }}{% else %}
+  <div class="mapper-wrap">
+    <span class="mapper-label">{{ bl.text({"en": "Curriculum Mapping", "ar": "توافق المنهج"}) }}</span>
+    <select class="nav-select" id="curriculum-select-{{ trackId }}" aria-label="Curriculum mapping" onchange="window.CSGamify&&window.CSGamify.mapCurriculum(this.value)">
+      <option value="default">ClipSAT Standard</option>
+      <option value="reveal-precalc">Reveal Pre-Calculus</option>
+      <option value="cambridge-igcse">Cambridge &amp; Edexcel (IGCSE / A-Level)</option>
+      <option value="collegeboard-sat">College Board &amp; ACT / EST</option>
+      <option value="ib-diploma">IB Diploma (AA &amp; AI)</option>
+      <option value="mena-qiyas">Qiyas (Qudrat / Tahsili / GAT)</option>
+      <option value="university-stem">University STEM &amp; Olympiad</option>
+    </select>
+  </div>
+  {% endif %}
 </aside>

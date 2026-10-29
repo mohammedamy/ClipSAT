@@ -561,6 +561,8 @@
   .ib-aa{display:inline-block;font-size:.68rem;font-weight:700;background:#7e22ce;color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:middle}
   .ib-ai{display:inline-block;font-size:.68rem;font-weight:700;background:#c94c0a;color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:middle} /* a11y: was #ea580c (3.56:1 with white text); darkened to 4.65:1 */
   .tier-c{display:inline-block;font-size:.68rem;font-weight:700;background:#86efac;color:#14532d;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .la-tag{font-family:var(--sans);font-size:.77rem;background:#e0e7ff;color:#1e1b4b;border:1px solid color-mix(in srgb,#4f46e5 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
+  .la-wt{display:inline-block;font-size:.68rem;font-weight:700;background:#4338ca;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
   .sat-domain-tag{font-family:var(--sans);font-size:.77rem;color:var(--indigo);background:var(--indigo-soft);border:1px solid color-mix(in srgb,var(--indigo) 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
   /* a11y: these per-course "unit / exam weight" pills (.est-tag, .act-tag,
      .ap-tag, etc. — the "📌 AP Calc BC BC-4 — Polar Coordinates" banner
@@ -581,6 +583,7 @@
   body.dark .qud-tag{background:rgba(13,148,136,.16);color:#5eead4;border-color:rgba(94,234,212,.3)}
   body.dark .ibsl-tag{background:rgba(22,163,74,.16);color:#86efac;border-color:rgba(134,239,172,.3)}
   body.dark .ibhl-tag{background:rgba(147,51,234,.16);color:#d8b4fe;border-color:rgba(216,180,254,.3)}
+  body.dark .la-tag{background:rgba(79,70,229,.16);color:#a5b4fc;border-color:rgba(165,180,252,.3)}
   .chapter > .chead{display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--ink);
     padding-bottom:10px; margin-bottom:8px}
   .chapter > .chead .cn{font-family:var(--mono); font-size:1rem; color:var(--indigo-2)}
@@ -1106,8 +1109,29 @@
   .subject-head.tahsili::after{content:"√"}
   .subject-head.sat::after{content:"ƒ"}
   .subject-head.act::after{content:"∑"}
+  .subject-head.act2::after{content:"∑"}
+  .subject-head.act2l2::after{content:"θ"}
+  .subject-head.est::after{content:"ƒ"}
+  .subject-head.est2::after{content:"∑"}
+  .subject-head.est2l2::after{content:"θ"}
+  .subject-head.gaten::after{content:"%"}
+  .subject-head.addmath::after{content:"∫"}
+  .subject-head.edexcel::after{content:"∂"}
   .subject-head.aslevel::after{content:"∂"}
   .subject-head.a2level::after{content:"∞"}
+  .subject-head.ibsl::after{content:"∫"}
+  .subject-head.ibhl::after{content:"∮"}
+  .subject-head.appc::after{content:"θ"}
+  .subject-head.apab::after{content:"∫"}
+  .subject-head.apbc::after{content:"∑"}
+  .subject-head.apstats::after{content:"σ"}
+  .subject-head.precalc::after{content:"θ"}
+  .subject-head.calculus::after{content:"∫"}
+  .subject-head.linalg::after{content:"λ"}
+  .subject-head.mvc::after{content:"∇"}
+  .subject-head.odes::after{content:"y′"}
+  .subject-head.mathai::after{content:"∇"}
+  .subject-head.olympiad::after{content:"≡"}
   .pill.new{background:var(--amber); color:#fff}
   .pill.wip{background:#fff; color:var(--amber-text); border:1px solid var(--amber)}
   body.dark .pill.wip{background:rgba(251,191,36,.14)}
@@ -4479,7 +4503,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   /* ── 15. Exam tag badges — unified subtle polish ─────────────── */
   /* All exam tags get a small quality uplift */
   .est-tag,.act-tag,.ap-tag,.a2-tag,.as-tag,.igcse-tag,.ib-tag,
-  .tah-tag,.qud-tag,.ibsl-tag,.ibhl-tag,.sat-domain-tag {
+  .tah-tag,.qud-tag,.ibsl-tag,.ibhl-tag,.la-tag,.sat-domain-tag {
     font-size:.74rem;
     letter-spacing:.02em;
     border-radius:var(--r-pill);
@@ -4490,7 +4514,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   }
   /* Soften the weight badges */
   .est-wt,.act-wt,.ap-wt,.a2-paper,.as-paper,.ib-paper,
-  .ib-aa,.ib-ai,.ib-paper,.tah-wt,.qud-wt,.tier-c,.tier-e {
+  .ib-aa,.ib-ai,.ib-paper,.tah-wt,.qud-wt,.la-wt,.tier-c,.tier-e {
     font-size:.64rem;
     border-radius:var(--r-xs);
     padding:1px 6px;

@@ -43,8 +43,8 @@
       <div class="pp-links">
         {% for link in courseMeta.officialLinks %}
         <a href="{{ link.url }}" target="_blank" rel="noopener" class="pp-link">
-          <span class="pp-label">{{ link.label.en | safe }}</span>
-          {% if link.note %}<span class="pp-note">{{ link.note.en | safe }}</span>{% endif %}
+          <span class="pp-label">{{ bl.text(link.label) }}</span>
+          {% if link.note %}<span class="pp-note">{{ bl.text(link.note) }}</span>{% endif %}
         </a>
         {% endfor %}
       </div>
