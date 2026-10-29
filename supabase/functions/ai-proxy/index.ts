@@ -19,13 +19,7 @@ const GEMINI_GENERATE_BASE = "https://generativelanguage.googleapis.com/v1beta/m
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
-const DAILY_CALL_CAP = 15;
-const WEEKLY_CALL_CAP = 50;
-const MONTHLY_CALL_CAP = 150;
-const MAX_USER_MSG_CHARS = 2500;
-const MAX_TOTAL_PROMPT_CHARS = 12000;
-const MAX_ATTACHMENT_BASE64_CHARS = 6_000_000; // ~4.5 MB binary max
-const MAX_DOCX_TEXT_CHARS = 6_000; // 1-page DOCX text limit
+const DAILY_CALL_CAP = 10;
 
 const ALLOWED_IMAGE_MIMES = new Set([
   "image/png",
@@ -42,22 +36,6 @@ interface AttachmentPayload {
   image_data?: string;
   image_mime_type?: string;
   filename?: string;
-}
-
-// Per-IP rate limiting: 25 requests per 60-second window
-const ipRateMap = new Map<string, { count: number; resetAt: number }>();
-function checkIpRateLimit(ip: string, maxReq = 25, windowMs = 60_000): boolean {
-  const now = Date.now();
-  const entry = ipRateMap.get(ip);
-  if (!entry || now > entry.resetAt) {
-    ipRateMap.set(ip, { count: 1, resetAt: now + windowMs });
-    return true;
-  }
-  if (entry.count >= maxReq) {
-    return false;
-  }
-  entry.count++;
-  return true;
 }
 
 // Basic content & injection filtering
@@ -106,21 +84,15 @@ function validateAttachment(att?: AttachmentPayload | null): string | null {
     if (typeof att.data !== "string" || !att.data.length) {
       return "Missing image data.";
     }
-    if (att.data.length > MAX_ATTACHMENT_BASE64_CHARS) {
-      return "Image file is too large (max 4 MB).";
-    }
     return null;
   }
   if (att.type === "document") {
     const mime = (att.mime_type || "").toLowerCase();
     if (mime !== "application/pdf") {
-      return "Only 1-page PDF documents are supported for direct document upload.";
+      return "Only PDF documents are supported for direct document upload.";
     }
     if (typeof att.data !== "string" || !att.data.length) {
       return "Missing PDF document data.";
-    }
-    if (att.data.length > MAX_ATTACHMENT_BASE64_CHARS) {
-      return "PDF file is too large (max 4 MB / 1 page).";
     }
     return null;
   }
@@ -129,12 +101,6 @@ function validateAttachment(att?: AttachmentPayload | null): string | null {
     const hasImg = typeof att.image_data === "string" && att.image_data.length > 0;
     if (!hasText && !hasImg) {
       return "The uploaded DOCX file appears to be empty.";
-    }
-    if (att.extracted_text && att.extracted_text.length > MAX_DOCX_TEXT_CHARS) {
-      return "DOCX content exceeds the 1-page single-question limit.";
-    }
-    if (att.image_data && att.image_data.length > MAX_ATTACHMENT_BASE64_CHARS) {
-      return "Embedded image in DOCX is too large.";
     }
     return null;
   }
@@ -203,16 +169,6 @@ function jsonError(message: string, status: number): Response {
 const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   if (req.method !== "POST") return jsonError("POST only", 405);
 
-  // Per-IP rate check
-  const clientIp = req.headers.get("cf-connecting-ip") ||
-                   req.headers.get("x-real-ip") ||
-                   req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-                   "unknown-ip";
-
-  if (!checkIpRateLimit(clientIp)) {
-    return jsonError("Too many requests from this IP. Please wait a minute before trying again.", 429);
-  }
-
   let payload: {
     messages?: Array<{ role: string; content: string }>;
     temperature?: number;
@@ -237,66 +193,13 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError(attErr, 400);
   }
 
-  // Input length limits
-  let totalChars = 0;
-  for (const m of messages) {
-    if (m.role === "user" && m.content.length > MAX_USER_MSG_CHARS) {
-      return jsonError(`User message exceeds limit of ${MAX_USER_MSG_CHARS} characters.`, 400);
-    }
-    totalChars += m.content.length;
-  }
-  if (totalChars > MAX_TOTAL_PROMPT_CHARS) {
-    return jsonError(`Total prompt exceeds limit of ${MAX_TOTAL_PROMPT_CHARS} characters.`, 400);
-  }
-
   // Content safety & prompt injection filter
   const safetyViolation = checkContentSafety(messages, attachment);
   if (safetyViolation) {
     return jsonError(safetyViolation, 400);
   }
 
-  // Check 30-day & 7-day rolling usage from public.ai_usage before atomic daily increment
-  const nowUtc = new Date();
-  const toIsoDate = (d: Date) => d.toISOString().slice(0, 10);
-  const todayIso = toIsoDate(nowUtc);
-  const sevenDaysAgo = new Date(Date.UTC(nowUtc.getUTCFullYear(), nowUtc.getUTCMonth(), nowUtc.getUTCDate() - 6));
-  const thirtyDaysAgo = new Date(Date.UTC(nowUtc.getUTCFullYear(), nowUtc.getUTCMonth(), nowUtc.getUTCDate() - 29));
-  const sevenDaysAgoIso = toIsoDate(sevenDaysAgo);
-  const thirtyDaysAgoIso = toIsoDate(thirtyDaysAgo);
-
-  const { data: usageRows, error: usageReadErr } = await ctx.supabaseAdmin
-    .from("ai_usage")
-    .select("day, calls")
-    .eq("user_id", ctx.userClaims.id)
-    .gte("day", thirtyDaysAgoIso);
-
-  if (usageReadErr) {
-    console.error("ai_usage window check failed:", usageReadErr);
-    return jsonError("Could not verify AI usage quota", 500);
-  }
-
-  let todayCalls = 0;
-  let weekCalls = 0;
-  let monthCalls = 0;
-  for (const row of usageRows || []) {
-    const c = Number((row as any).calls) || 0;
-    const dStr = String((row as any).day || "");
-    monthCalls += c;
-    if (dStr >= sevenDaysAgoIso) weekCalls += c;
-    if (dStr === todayIso) todayCalls += c;
-  }
-
-  if (todayCalls >= DAILY_CALL_CAP) {
-    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} requests per day). Try again tomorrow.`, 429);
-  }
-  if (weekCalls >= WEEKLY_CALL_CAP) {
-    return jsonError(`Weekly AI limit reached (${WEEKLY_CALL_CAP} requests per week).`, 429);
-  }
-  if (monthCalls >= MONTHLY_CALL_CAP) {
-    return jsonError(`Monthly AI limit reached (${MONTHLY_CALL_CAP} requests per month).`, 429);
-  }
-
-  // Atomic per-user check-and-increment daily quota (15/day)
+  // Atomic per-user check-and-increment daily quota: strictly 10 questions per day (only limit enforced)
   const { data: allowed, error: quotaErr } = await ctx.supabaseAdmin.rpc("try_use_ai_quota", {
     p_user_id: ctx.userClaims.id,
     p_cap: DAILY_CALL_CAP,
@@ -306,7 +209,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError("Could not verify AI usage quota", 500);
   }
   if (!allowed) {
-    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} requests per day). Try again tomorrow.`, 429);
+    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} questions per day). Try again tomorrow.`, 429);
   }
 
   // Server secret handling:

@@ -306,11 +306,13 @@
       {id:'ge-saat-calc', label:'SAAT Conics, Vectors & Calculus', tags:['conics','vectors','limits','derivatives','integrals'], examWeight:25, chapterId:'ge-saat-calculus'}
     ]});
 
-    R({viewId:'olympiad', name:'Contest Math & Olympiad', topics:[
-      {id:'ol-alg-nt', label:'Olympiad Algebra, Vieta & Number Theory', tags:['vieta','inequalities','modular','diophantine'], examWeight:30, chapterId:'ol-algebraic-techniques'},
-      {id:'ol-combo', label:'Bijective Counting, Recurrences & Probability', tags:['combinatorics','pigeonhole','recurrence','probability'], examWeight:25, chapterId:'ol-combinatorics-counting'},
-      {id:'ol-geom', label:'Olympiad Circle Geometry, Ceva & Stewart', tags:['circles','power-of-point','ceva','stewart'], examWeight:25, chapterId:'ol-euclidean-circles'},
-      {id:'ol-inv', label:'Invariants, Monovariants & Combinatorial Games', tags:['invariants','coloring','extremal','games'], examWeight:20, chapterId:'ol-invariants-extremal'}
+    R({viewId:'olympiad', name:'Contest Math & Olympiad (NSMO & KAUST)', topics:[
+      {id:'ol-alg-nt', label:'Olympiad Algebra, Vieta & Number Theory', tags:['vieta','inequalities','modular','diophantine'], examWeight:20, chapterId:'ol-algebraic-techniques'},
+      {id:'ol-combo', label:'Bijective Counting, Recurrences & Probability', tags:['combinatorics','pigeonhole','recurrence','probability'], examWeight:15, chapterId:'ol-combinatorics-counting'},
+      {id:'ol-geom', label:'Olympiad Circle Geometry, Ceva & Stewart', tags:['circles','power-of-point','ceva','stewart'], examWeight:15, chapterId:'ol-euclidean-circles'},
+      {id:'ol-inv', label:'Invariants, Monovariants & Combinatorial Games', tags:['invariants','coloring','extremal','games'], examWeight:10, chapterId:'ol-invariants-extremal'},
+      {id:'ol-nsmo', label:'NSMO of KSA (Mawhiba Stages 1–3 & IMO Pathway)', tags:['nsmo','mawhiba','lte','functional-equations'], examWeight:20, chapterId:'ol-nsmo-stage1-2'},
+      {id:'ol-kaust', label:'KAUST Mathematics Competition (KMC & Academy)', tags:['kaust','kmc','roots-of-unity','relay','markov'], examWeight:20, chapterId:'ol-kaust-kmc-qualifier'}
     ]});
 
     R({viewId:'act2', name:'ACT Subject Test Math 1', topics:[

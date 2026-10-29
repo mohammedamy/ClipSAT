@@ -132,7 +132,7 @@ document.addEventListener('click',function(e){
     'precalc':'Pre-Calculus','appc':'AP Precalculus','apstats':'AP Statistics',
     'ibsl':'IB SL Math','ibhl':'IB HL Math','linalg':'Linear Algebra','mvc':'Multivariable Calculus','odes':'Differential Equations',
     'addmath':'Additional Mathematics (0606/4PM1)','mathai':'Math for AI & Data Science',
-    'edexcel':'Pearson Edexcel IGCSE (4MA1)','gaten':'English GAT & SAAT (Qiyas)','olympiad':'Contest Math & Olympiad'
+    'edexcel':'Pearson Edexcel IGCSE (4MA1)','gaten':'English GAT & SAAT (Qiyas)','olympiad':'Olympiad Math (NSMO & KAUST)'
   };
   window.VIEW_NAMES = VIEW_NAMES;
   function _buildSearchIndex(){

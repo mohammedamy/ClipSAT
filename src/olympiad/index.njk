@@ -1,10 +1,11 @@
 ---
 layout: base.njk
 trackId: olympiad
-title: "Contest Math & Olympiad (AMC 10/12, Kangaroo & Mawhiba) · ClipSAT"
-description: "Competition Mathematics & Olympiad Problem Solving — Modular Arithmetic, Diophantine Equations, Combinatorics, Euclidean Circle Geometry & Invariants for AMC 10/12, AIME, Kangaroo Math & Mawhiba"
+title: "Mathematical Olympiad · NSMO of KSA (Mawhiba) · KAUST (KMC) · AMC/AIME · ClipSAT"
+description: "Complete Mathematical Olympiad & Gifted Competition Track — Core Olympiad Pillars (Algebra, Number Theory, Combinatorics, Euclidean Geometry, Invariants), NSMO of KSA (Mawhiba Stages 1–3 & IMO Pathway), KAUST Mathematics Competition (KMC & KAUST Academy), AMC 10/12 & AIME"
 isRtl: false
 ---
+{% import "partials/_bilingual.njk" as bl %}
 {% set olympiad = migratedContent.olympiad %}
 {% set pageHeader = olympiad.meta.meta.pageHeader %}
 <main id="view-olympiad" class="view active">
@@ -18,6 +19,24 @@ isRtl: false
     {% include "partials/rail.njk" %}
 
     <div class="content">
+      <nav class="cs-subsection-nav" aria-label="Olympiad Pathway Subsections">
+        <a href="#ol-algebraic-techniques" class="cs-subsec-card" onclick="goChapter('ol-algebraic-techniques','olympiad')">
+          <span class="cs-subsec-eyebrow">{{ bl.text({"en": "Subsection I · Chapters 1–8", "ar": "القسم الأول · الفصول 1–8"}) }}</span>
+          <span class="cs-subsec-title">{{ bl.text({"en": "🏆 Core Olympiad Pillars", "ar": "🏆 المحاور الأولمبية التأسيسية والعالمية"}) }}</span>
+          <span class="cs-subsec-desc">{{ bl.text({"en": "Vieta & Inequalities, Modular Number Theory, Diophantine SFFT, Bijective Counting, Recurrences, Circle/Triangle Geometry & Invariants.", "ar": "علاقات فييتا والمتباينات، الحساب المعياري، المعادلات الديوفانتية، التركيبات، العلاقات التكرارية، هندسة الدوائر والمثلثات، واللامتغيرات."}) }}</span>
+        </a>
+        <a href="#ol-nsmo-stage1-2" class="cs-subsec-card" onclick="goChapter('ol-nsmo-stage1-2','olympiad')">
+          <span class="cs-subsec-eyebrow">{{ bl.text({"en": "Subsection II · Chapters 9–10", "ar": "القسم الثاني · الفصول 9–10"}) }}</span>
+          <span class="cs-subsec-title">{{ bl.text({"en": "🇸🇦 NSMO of KSA (Mawhiba · نسما)", "ar": "🇸🇦 أولمبياد نسما الوطني (NSMO · موهبة)"}) }}</span>
+          <span class="cs-subsec-desc">{{ bl.text({"en": "Saudi National Science & Math Olympiad: Stage 1 Cities Screening, Stage 2 Regional Qualifiers & Stage 3 Riyadh Finals → IMO Team.", "ar": "أولمبياد العلوم والرياضيات الوطني بالمملكة: تصفيات المدن والإدارات التعليمية والتصفيات النهائية بالرياض المؤهلة للفريق الدولي IMO."}) }}</span>
+        </a>
+        <a href="#ol-kaust-kmc-qualifier" class="cs-subsec-card" onclick="goChapter('ol-kaust-kmc-qualifier','olympiad')">
+          <span class="cs-subsec-eyebrow">{{ bl.text({"en": "Subsection III · Chapters 11–12", "ar": "القسم الثالث · الفصول 11–12"}) }}</span>
+          <span class="cs-subsec-title">{{ bl.text({"en": "🏛️ KAUST Math (KMC & Academy)", "ar": "🏛️ مسابقة وأكاديمية كاوست (KAUST KMC)"}) }}</span>
+          <span class="cs-subsec-desc">{{ bl.text({"en": "KAUST Mathematics Competition Regional Round, Thuwal Campus Finals (Individual & Team) & KAUST–Cambridge Summer Camp Synthesis.", "ar": "التصفيات الإقليمية لمسابقة كاوست للرياضيات، نهائيات حرم جامعة كاوست بثول، ومسائل معسكرات أكاديمية كاوست وكامبريدج الصيفية."}) }}</span>
+        </a>
+      </nav>
+
       {% for chapter in olympiad.chapters %}
         {% include "partials/chapter.njk" %}
       {% endfor %}

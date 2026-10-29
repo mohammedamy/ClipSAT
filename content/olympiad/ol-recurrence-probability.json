@@ -1,27 +1,35 @@
 {
   "id": "ol-recurrence-probability",
   "chapterNumber": "5",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Recurrence Relations, States & Contest Probability",
-    "ar": "العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+    "en": "Combinatorics II: Recurrence Relations, Catalan Numbers & Olympiad Probability",
+    "ar": "التوافيق (2): العلاقات التراجعية وأعداد كاتالان والاحتمالات الأولمبية"
+  },
+  "railLabel": {
+    "en": "Recurrences, Catalan & Probability",
+    "ar": "العلاقات التراجعية وأعداد كاتالان"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 5 — Combinatorics II & Probability",
+    "emoji": "🔁",
+    "category": "Core Pillar 5 — Recurrences, Markov States & Geometric Probability",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
-      "Fibonacci & tiling recurrences a_n = a_{n-1} + a_{n-2}",
-      "State-transition Markov equations",
-      "Linearity of expectation E[X + Y] = E[X] + E[Y]",
-      "Geometric probability (area/length regions)",
-      "Conditional symmetry & Bayes in contests"
+      "Linear recurrences & characteristic roots",
+      "Catalan numbers C_n (Dyck paths & triangulations)",
+      "Coupled Markov parity/state recurrences",
+      "Linearity of expectation & indicator variables",
+      "Continuous geometric probability on [0, L]²"
     ]
   },
   "content": {
@@ -29,83 +37,233 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Recurrence Relations, States & Contest Probability</strong> (Olympiad Module 5 — Combinatorics II & Probability).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات</strong>."
+          "en": "Whenever direct casework explodes exponentially—tiling a \\(2 \\times n\\) strip, counting binary strings without forbidden substrings, or tracking random walks—Olympiad combinatorics conditions on the <strong>first or last step</strong> to derive a <strong>recurrence relation</strong>. Coupled with <strong>Catalan bijections</strong>, <strong>indicator linearity of expectation</strong>, and <strong>continuous area-ratio probability</strong>, these methods turn intricate stochastic and recursive systems into exact closed-form answers.",
+          "ar": "عندما يتشعّب العدّ المباشر بصورة أسية—مثل تبليط شريط \\(2 \\times n\\)، أو عدّ السلاسل الثنائية الخالية من أنماط ممنوعة، أو تتبّع المسارات العشوائية—يلجأ الفكر الأولمبي إلى التكييف على <strong>الخطوة الأولى أو الأخيرة</strong> لبناء <strong>علاقة تراجعية</strong>. وبدمجها مع <strong>أعداد كاتالان</strong> و<strong>خطية التوقع الرياضي</strong> و<strong>الاحتمال الهندسي بالمساحات</strong>، تتحول أعقد المسائل إلى صيغ مغلقة دقيقة."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.1 — Combinatorial Recurrences, State Equations & Linearity of Expectation",
-          "ar": "● تعريف 5.1 — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+          "en": "● Definition 5.1 — Linear Recurrences & The Catalan Sequence",
+          "ar": "● تعريف 5.1 — العلاقات التراجعية الخطية ومتتالية أعداد كاتالان"
         },
         "body": {
-          "en": "<p>Many AMC/AIME counting and probability problems reduce to setting up a recurrence relation \\( a_n = c_1 a_{n-1} + c_2 a_{n-2} \\) by conditioning on the first step (e.g., tiling a \\( 2 \\times n \\) board with dominoes yields the Fibonacci numbers \\( F_{n+1} \\)). For random variables \\( X_1, \\dots, X_n \\), <strong>Linearity of Expectation</strong> \\[ E[X_1 + X_2 + \\dots + X_n] = E[X_1] + E[X_2] + \\dots + E[X_n] \\] holds <em>even when the variables are dependent</em>, making indicator variables the most powerful tool for expected-value problems.</p>",
-          "ar": "<p>Many AMC/AIME counting and probability problems reduce to setting up a recurrence relation \\( a_n = c_1 a_{n-1} + c_2 a_{n-2} \\) by conditioning on the first step (e.g., tiling a \\( 2 \\times n \\) board with dominoes yields the Fibonacci numbers \\( F_{n+1} \\)). For random variables \\( X_1, \\dots, X_n \\), <strong>Linearity of Expectation</strong> \\[ E[X_1 + X_2 + \\dots + X_n] = E[X_1] + E[X_2] + \\dots + E[X_n] \\] holds <em>even when the variables are dependent</em>, making indicator variables the most powerful tool for expected-value problems.</p>"
+          "en": "<p><strong>1. Characteristic Polynomial:</strong> A homogeneous linear recurrence \\( a_n = c_1 a_{n-1} + c_2 a_{n-2} \\) has characteristic equation \\( r^2 - c_1 r - c_2 = 0 \\). If roots \\( r_1 \\ne r_2 \\) are distinct, \\( a_n = A r_1^n + B r_2^n \\); if \\( r_1 = r_2 = r \\), \\( a_n = (A + Bn)r^n \\).</p><p><strong>2. Catalan Numbers \\( C_n \\):</strong> Defined by \\( C_0 = 1 \\) and the convolution recurrence \\( C_{n+1} = \\sum_{k=0}^n C_k C_{n-k} \\), with closed form:</p>\\[ C_n = \\frac{1}{n + 1}\\binom{2n}{n} = \\binom{2n}{n} - \\binom{2n}{n+1} \\qquad (1, 1, 2, 5, 14, 42, 132, 429, \\dots). \\]<p>\\( C_n \\) counts: (i) monotonic lattice paths from \\( (0,0) \\) to \\( (n,n) \\) never rising above \\( y = x \\) (Dyck paths), (ii) valid parenthesizations of \\( n \\) pairs, (iii) triangulations of a convex \\( (n+2) \\)-gon, and (iv) non-crossing chord matchings of \\( 2n \\) points on a circle.</p>",
+          "ar": "<p><strong>1. كثيرة الحدود المميزة:</strong> العلاقة التراجعية الخطية المتجانسة \\( a_n = c_1 a_{n-1} + c_2 a_{n-2} \\) معادلتها المميزة \\( r^2 - c_1 r - c_2 = 0 \\). إذا كان الجذران مختلفين \\( r_1 \\ne r_2 \\) فإن \\( a_n = A r_1^n + B r_2^n \\)، وإذا تساويا \\( r_1 = r_2 = r \\) فإن \\( a_n = (A + Bn)r^n \\).</p><p><strong>2. أعداد كاتالان \\( C_n \\):</strong> تُعرَّف بـ \\( C_0 = 1 \\) والعلاقة \\( C_{n+1} = \\sum_{k=0}^n C_k C_{n-k} \\)، وصيغتها المغلقة:</p>\\[ C_n = \\frac{1}{n + 1}\\binom{2n}{n} = \\binom{2n}{n} - \\binom{2n}{n+1} \\qquad (1, 1, 2, 5, 14, 42, 132, 429, \\dots). \\]<p>وتحصي \\( C_n \\): (1) مسارات الشبكة الصاعدة من \\( (0,0) \\) إلى \\( (n,n) \\) التي لا تتجاوز القطر \\( y = x \\)، (2) طرق ترتيب \\( n \\) من أزواج الأقواس الصحيحة، (3) تثليثات مضلع محدب ذي \\( n+2 \\) ضلعاً، (4) توصيل \\( 2n \\) نقطة على دائرة بأوتار غير متقاطعة.</p>"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Recurrence Relations, States & Contest Probability",
-          "ar": "● الفهم المفاهيمي العميق — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+          "en": "● Theorem 5.2 — Linearity of Expectation & Continuous Geometric Probability",
+          "ar": "● مبرهنة 5.2 — خطية التوقع الرياضي والاحتمال الهندسي المتصل"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Recurrence Relations, States & Contest Probability</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p><strong>1. Linearity of Expectation (No Independence Required!):</strong> For ANY random variables \\( X_1, X_2, \\dots, X_n \\) on the same sample space—even if heavily dependent—</p>\\[ \\mathbb{E}[X_1 + X_2 + \\cdots + X_n] = \\mathbb{E}[X_1] + \\mathbb{E}[X_2] + \\cdots + \\mathbb{E}[X_n]. \\]<p>In particular, if \\( I_k \\in \\{0, 1\\} \\) is the indicator of event \\( E_k \\), then \\( \\mathbb{E}[I_k] = \\mathbb{P}(E_k) \\).</p><p><strong>2. Geometric Probability Measure:</strong> When independent real parameters \\( (X, Y) \\) are chosen uniformly over a bounded region \\( \\Omega \\subset \\mathbb{R}^2 \\) with \\( \\operatorname{Area}(\\Omega) > 0 \\), the probability of event \\( A \\subseteq \\Omega \\) is \\( \\mathbb{P}(A) = \\frac{\\operatorname{Area}(A)}{\\operatorname{Area}(\\Omega)} \\).</p>",
+          "ar": "<p><strong>1. خطية التوقع الرياضي (دون اشتراط الاستقلال!):</strong> لأي متغيرات عشوائية \\( X_1, X_2, \\dots, X_n \\) على فضاء العينة نفسه—حتى لو كانت مترابطة بشدة—فإن:</p>\\[ \\mathbb{E}[X_1 + X_2 + \\cdots + X_n] = \\mathbb{E}[X_1] + \\mathbb{E}[X_2] + \\cdots + \\mathbb{E}[X_n]. \\]<p>وعند تعريف متغير مؤشر \\( I_k \\in \\{0, 1\\} \\) للحدث \\( E_k \\)، يكون \\( \\mathbb{E}[I_k] = \\mathbb{P}(E_k) \\).</p><p><strong>2. الاحتمال الهندسي المتصل:</strong> عند اختيار نقطة \\( (X, Y) \\) بانتظام داخل منطقة محدودة \\( \\Omega \\subset \\mathbb{R}^2 \\)، فإن احتمال تحقق الحدث \\( A \\subseteq \\Omega \\) يساوي نسبة المساحتين \\( \\mathbb{P}(A) = \\frac{\\operatorname{Area}(A)}{\\operatorname{Area}(\\Omega)} \\).</p>"
         }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — André’s Reflection Proof of C_n & Indicator Proof of Expected Fixed Points",
+          "ar": "◆ البرهان الأولمبي — مبدأ انعكاس أندريه لأعداد كاتالان وتوقع النقاط الثابتة"
+        },
+        "body": {
+          "en": "<p><strong>1. André’s Reflection Method for \\( C_n \\):</strong> Total lattice paths from \\( (0,0) \\) to \\( (n,n) \\) equal \\( \\binom{2n}{n} \\). Any \"bad\" path crossing above \\( y = x \\) hits the forbidden line \\( y = x + 1 \\) at some first point \\( P \\). Reflecting the prefix of the path before \\( P \\) across \\( y = x + 1 \\) maps the start \\( (0,0) \\) to \\( (-1, 1) \\), creating an exact <strong>bijection</strong> between bad paths and all paths from \\( (-1,1) \\) to \\( (n,n) \\), of which there are \\( \\binom{(n+1)+(n-1)}{n+1} = \\binom{2n}{n+1} \\). Subtracting gives \\( C_n = \\binom{2n}{n} - \\binom{2n}{n+1} = \\frac{1}{n+1}\\binom{2n}{n} \\).</p><p><strong>2. Expected Fixed Points in a Random Permutation:</strong> For a uniform random permutation \\( \\pi \\in S_n \\), let \\( I_k = 1 \\) if \\( \\pi(k) = k \\) and \\( 0 \\) otherwise. By symmetry \\( \\mathbb{P}(\\pi(k) = k) = \\frac{1}{n} \\). Without touching derangements, linearity of expectation yields \\( \\mathbb{E}[\\text{fixed points}] = \\sum_{k=1}^n \\mathbb{E}[I_k] = n \\cdot \\frac{1}{n} = 1 \\) for every \\( n \\ge 1 \\)! \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>1. مبدأ الانعكاس لأندريه لإثبات صيغة كاتالان:</strong> إجمالي مسارات الشبكة من \\( (0,0) \\) إلى \\( (n,n) \\) يساوي \\( \\binom{2n}{n} \\). كل مسار \"مخالف\" يتجاوز القطر \\( y = x \\) لا بد أن يلمس المستقيم \\( y = x + 1 \\) لأول مرة عند نقطة \\( P \\). بعكس الجزء السابق للنقطة \\( P \\) حول المستقيم \\( y = x + 1 \\)، تنتقل نقطة البداية \\( (0,0) \\) إلى \\( (-1, 1) \\)، مما ينشئ <strong>تقابلاً تاماً</strong> بين المسارات المخالفة وجميع المسارات من \\( (-1,1) \\) إلى \\( (n,n) \\) وعددها \\( \\binom{2n}{n+1} \\). وبالطرح نحصل على \\( C_n = \\binom{2n}{n} - \\binom{2n}{n+1} = \\frac{1}{n+1}\\binom{2n}{n} \\).</p><p><strong>2. القيمة المتوقعة للنقاط الثابتة في تبديل عشوائي:</strong> لتبديل عشوائي منتظم \\( \\pi \\in S_n \\)، نعرّف المؤشر \\( I_k = 1 \\) إذا كان \\( \\pi(k) = k \\). بالتناظر \\( \\mathbb{P}(\\pi(k) = k) = \\frac{1}{n} \\)، ومن خطية التوقع مباشرةً \\( \\mathbb{E}[\\sum I_k] = n \\cdot \\frac{1}{n} = 1 \\) لكل \\( n \\ge 1 \\) دون الحاجة لحساب الاختلالات! \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Canonical Olympiad Recurrence & Expectation Archetypes",
+          "ar": "الجدول المرجعي للنماذج التراجعية والاحتمالية الأولمبية"
+        },
+        "columns": [
+          {
+            "en": "Olympiad Model",
+            "ar": "النموذج الأولمبي"
+          },
+          {
+            "en": "Recurrence / Formula",
+            "ar": "العلاقة التراجعية / الصيغة"
+          },
+          {
+            "en": "Structural Origin",
+            "ar": "التفسير البنيوي"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "\\(2 \\times n\\) Domino Tiling",
+              "ar": "تبليط مستطيل \\(2 \\times n\\) بالدومينو"
+            },
+            {
+              "en": "\\(T_n = T_{n-1} + T_{n-2},\\; T_1=1, T_2=2\\)",
+              "ar": "\\(T_n = T_{n-1} + T_{n-2},\\; T_1=1, T_2=2\\)"
+            },
+            {
+              "en": "Rightmost column is 1 vertical domino or 2 horizontal dominoes",
+              "ar": "العمود الأخير إما قطعة رأسية واحدة أو قطعتان أفقيتان"
+            }
+          ],
+          [
+            {
+              "en": "Binary Strings Without \"11\"",
+              "ar": "سلاسل ثنائية بطول \\(n\\) بلا \"11\""
+            },
+            {
+              "en": "\\(S_n = S_{n-1} + S_{n-2},\\; S_1=2, S_2=3\\)",
+              "ar": "\\(S_n = S_{n-1} + S_{n-2},\\; S_1=2, S_2=3\\)"
+            },
+            {
+              "en": "Ends in \\(0\\) (\\(S_{n-1}\\)) or ends in \\(01\\) (\\(S_{n-2}\\))",
+              "ar": "تنتهي بـ \\(0\\) (\\(S_{n-1}\\)) أو تنتهي بـ \\(01\\) (\\(S_{n-2}\\))"
+            }
+          ],
+          [
+            {
+              "en": "Tower of Hanoi / Regions of Lines",
+              "ar": "برج هانوي / تقسيم المستوى بالمستقيمات"
+            },
+            {
+              "en": "\\(H_n = 2H_{n-1}+1 = 2^n-1\\); \\(L_n = L_{n-1}+n = \\frac{n(n+1)}{2}+1\\)",
+              "ar": "\\(H_n = 2^n-1\\)؛ ومناطق المستقيمات \\(L_n = \\frac{n(n+1)}{2}+1\\)"
+            },
+            {
+              "en": "Non-homogeneous first-order telescoping recurrences",
+              "ar": "علاقات تراجعية غير متجانسة من الرتبة الأولى"
+            }
+          ],
+          [
+            {
+              "en": "Expected Inversions in \\(S_n\\)",
+              "ar": "توقع الانقلابات في تبديل عشوائي"
+            },
+            {
+              "en": "\\(\\mathbb{E}[\\text{inv}] = \\frac{1}{2}\\binom{n}{2} = \\frac{n(n-1)}{4}\\)",
+              "ar": "\\(\\mathbb{E}[\\text{inv}] = \\frac{1}{2}\\binom{n}{2} = \\frac{n(n-1)}{4}\\)"
+            },
+            {
+              "en": "Each of the \\(\\binom{n}{2}\\) pairs is inverted with probability \\(1/2\\)",
+              "ar": "كل زوج من \\(\\binom{n}{2}\\) زوجاً ينعكس ترتيبه باحتمال \\(1/2\\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Catalan Benchmarks",
+              "ar": "القيم المرجعية لأعداد كاتالان"
+            },
+            "value": {
+              "en": "\\(C_0=1,\\; C_1=1,\\; C_2=2,\\; C_3=5,\\; C_4=14,\\; C_5=42,\\; C_6=132\\)",
+              "ar": "\\(C_0=1,\\; C_1=1,\\; C_2=2,\\; C_3=5,\\; C_4=14,\\; C_5=42,\\; C_6=132\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Coupled Parity Trick",
+              "ar": "حيلة تفاضل الحالات الزوجية والفردية"
+            },
+            "value": {
+              "en": "If \\(E_n + O_n = k^n\\) and \\(E_n - O_n = d^n\\), then \\(E_n = \\frac{k^n + d^n}{2}\\)",
+              "ar": "إذا كان \\(E_n + O_n = k^n\\) و\\(E_n - O_n = d^n\\)، فإن \\(E_n = \\frac{k^n + d^n}{2}\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "First-Step Markov Conditioning",
+              "ar": "التكييف على الخطوة الأولى (ماركوف)"
+            },
+            "value": {
+              "en": "For expected hitting time \\(E\\) from state \\(s\\): \\(E_s = 1 + \\sum_t P(s \\to t) E_t\\)",
+              "ar": "لتوقع زمن الوصول من الحالة \\(s\\): \\(E_s = 1 + \\sum_t P(s \\to t) E_t\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Meeting Band Area",
+              "ar": "مساحة شريط الالتقاء الهندسي"
+            },
+            "value": {
+              "en": "In \\([0,L]^2\\), \\(\\mathbb{P}(|X-Y| \\le d) = 1 - \\left(1 - \\frac{d}{L}\\right)^2\\) for \\(0 \\le d \\le L\\)",
+              "ar": "في \\([0,L]^2\\): \\(\\mathbb{P}(|X-Y| \\le d) = 1 - \\left(1 - \\frac{d}{L}\\right)^2\\)"
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Recurrence Relations, States & Contest Probability — Coordinate Curve & Structural Analysis",
+          "title": "Geometric Probability Band |x − y| ≤ 2 inside [0, 6]² (P = 1 − (4/6)² = 5/9)",
           "xrange": [
-            -4,
+            0,
             6
           ],
           "yrange": [
-            -4,
-            8
+            0,
+            6
           ],
           "fns": [
             {
-              "fn": "(x - 1)*(x - 1) - 2",
+              "fn": "x + 2",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 1)² - 2"
+              "label": "y = x + 2"
             },
             {
-              "fn": "x + 1",
+              "fn": "x - 2",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 1"
+              "label": "y = x − 2"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -2,
-              "label": "Vertex (1, -2)"
+              "x": 0,
+              "y": 2,
+              "label": "(0, 2)"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "label": "(4, 6)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
+            },
+            {
+              "x": 6,
+              "y": 4,
+              "label": "(6, 4)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 1\\) illustrating Recurrence Relations, States & Contest Probability.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."
+          "en": "Continuous Olympiad meeting problem on \\([0,6]^2\\): two unshaded corner right triangles of leg \\(6 - 2 = 4\\) have combined area \\(2 \\cdot \\frac{1}{2}(4^2) = 16\\), so \\(\\mathbb{P}(|X - Y| \\le 2) = \\frac{36 - 16}{36} = \\frac{20}{36} = \\frac{5}{9}\\).",
+          "ar": "تمثيل مسألة الالتقاء الهندسية على المربع \\([0,6]^2\\): المثلثان القائمان في الركنين ضلع كل منهما \\(6 - 2 = 4\\) ومساحتهما معاً \\(16\\)، فيكون الاحتمال \\(\\frac{36 - 16}{36} = \\frac{5}{9}\\)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Recurrence Dynamics, Fixed Points & State Convergence Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر العلاقات التكرارية ونقاط الاتزان وتقارب الحالات"
+          "en": "⊙ Explorer · Coupled Markov Parity Recurrence & Catalan Growth Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر التراجع المزدوج للحالات (ماركوف) ونمو أعداد كاتالان"
         },
         "canvasId": "olrecurrenceprobabilityExCanvas",
         "ariaLabel": {
-          "en": "Recurrence Dynamics, Fixed Points & State Convergence Lab interactive mathematical canvas",
-          "ar": "مختبر العلاقات التكرارية ونقاط الاتزان وتقارب الحالات لوحة رياضية تفاعلية"
+          "en": "Interactive Olympiad recurrence and Markov state probability canvas tracking even/odd parity state probabilities across n steps.",
+          "ar": "لوحة تفاعلية للعلاقات التراجعية وسلاسل ماركوف تتتبع احتمالات الحالة الزوجية والفردية عبر الخطوات n."
         },
         "dataPanel": {
           "btnId": "olrecurrenceprobabilityExCanvas_dataBtn",
@@ -113,17 +271,17 @@
           "descId": "olrecurrenceprobabilityExCanvas_dataDesc",
           "rowsId": "olrecurrenceprobabilityExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Recurrence Dynamics, Fixed Points & State Convergence Lab",
-            "ar": "جدول القيم العددية لـ مختبر العلاقات التكرارية ونقاط الاتزان وتقارب الحالات"
+            "en": "Exact state probability \\(p_n\\) for \\(p_n = (1-q)p_{n-1} + q(1-p_{n-1})\\) and Catalan numbers \\(C_n\\)",
+            "ar": "احتمال الحالة الزوجية \\(p_n\\) عبر الخطوات ومقارنتها بنمو أعداد كاتالان \\(C_n\\)"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -131,33 +289,33 @@
           {
             "id": "olrecurrenceprobabilityExCanvas_s0",
             "label": {
-              "en": "Growth Parameter <b>\\(r =\\)</b>",
-              "ar": "Growth Parameter <b>\\(r =\\)</b>"
+              "en": "Steps <b>\\(n =\\)</b>",
+              "ar": "عدد الخطوات <b>\\(n =\\)</b>"
             },
             "min": 1,
-            "max": 3.5,
-            "value": 2.4,
-            "step": 0.2,
+            "max": 8,
+            "value": 5,
+            "step": 1,
             "valueDisplayId": "olrecurrenceprobabilityExCanvas_v0",
             "ariaLabel": {
-              "en": "Growth Parameter \\(r =\\)",
-              "ar": "Growth Parameter \\(r =\\)"
+              "en": "Number of steps n",
+              "ar": "عدد الخطوات n"
             }
           },
           {
             "id": "olrecurrenceprobabilityExCanvas_s1",
             "label": {
-              "en": "Initial State <b>\\(x_0 =\\)</b>",
-              "ar": "Initial State <b>\\(x_0 =\\)</b>"
+              "en": "Flip Prob <b>\\(q =\\)</b>",
+              "ar": "احتمال الانعكاس <b>\\(q =\\)</b>"
             },
-            "min": 0.2,
-            "max": 2,
-            "value": 0.8,
-            "step": 0.2,
+            "min": 0.1,
+            "max": 0.9,
+            "value": 0.25,
+            "step": 0.05,
             "valueDisplayId": "olrecurrenceprobabilityExCanvas_v1",
             "ariaLabel": {
-              "en": "Initial State \\(x_0 =\\)",
-              "ar": "Initial State \\(x_0 =\\)"
+              "en": "State transition flip probability q",
+              "ar": "احتمال تغير الزوجية في كل خطوة q"
             }
           }
         ],
@@ -165,405 +323,287 @@
           {
             "id": "olrecurrenceprobabilityExCanvas_r0",
             "label": {
-              "en": "Equilibrium State \\(x^*\\)",
-              "ar": "Equilibrium State \\(x^*\\)"
+              "en": "Even-Parity \\(\\mathbb{P}(\\text{even at } n)\\)",
+              "ar": "احتمال الزوجية \\(p_n\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(2.33\\)"
+            "value": "0.5156"
           },
           {
             "id": "olrecurrenceprobabilityExCanvas_r1",
             "label": {
-              "en": "Next State \\(x_1\\)",
-              "ar": "Next State \\(x_1\\)"
+              "en": "Eigen-Decay \\((1 - 2q)^n\\)",
+              "ar": "معامل التلاشي \\((1 - 2q)^n\\)"
             },
             "colorClass": "amber",
-            "value": "\\(1.54\\)"
+            "value": "0.0313"
           },
           {
             "id": "olrecurrenceprobabilityExCanvas_r2",
             "label": {
-              "en": "Stability",
-              "ar": "Stability"
+              "en": "Catalan Number \\(C_n\\)",
+              "ar": "عدد كاتالان \\(C_n\\)"
             },
             "colorClass": "teal",
-            "value": "Convergent Attractor"
+            "value": "C₅ = 42"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Recurrence Relations, States & Contest Probability.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."
+          "en": "Because \\(p_n - \\frac{1}{2} = (1 - 2q)(p_{n-1} - \\frac{1}{2})\\), starting at \\(p_0 = 1\\) yields \\(p_n = \\frac{1 + (1 - 2q)^n}{2}\\), converging exponentially to \\(\\frac{1}{2}\\)!",
+          "ar": "بما أن \\(p_n - \\frac{1}{2} = (1 - 2q)(p_{n-1} - \\frac{1}{2})\\) بدءاً من \\(p_0 = 1\\)، فإن \\(p_n = \\frac{1 + (1 - 2q)^n}{2}\\) ويتقارب أسياً نحو التوازن \\(\\frac{1}{2}\\)!"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
-          ],
-          "B": [
-            12,
-            0
-          ],
-          "C": [
-            12,
-            5
-          ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "18",
-            "a": "24",
-            "b": "30"
-          },
-          "rightAt": "B"
+          "type": "bar",
+          "title": "Rapid Combinatorial Growth of Catalan Numbers C₁ through C₆",
+          "data": [
+            {
+              "label": "C₁",
+              "val": 1
+            },
+            {
+              "label": "C₂",
+              "val": 2
+            },
+            {
+              "label": "C₃",
+              "val": 5
+            },
+            {
+              "label": "C₄",
+              "val": 14
+            },
+            {
+              "label": "C₅",
+              "val": 42
+            },
+            {
+              "label": "C₆",
+              "val": 132
+            }
+          ]
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((18)^2 + (24)^2 = (30)^2\\) for Recurrence Relations, States & Contest Probability.",
-          "ar": "العلاقة الهندسية المتعامدة \\((18)^2 + (24)^2 = (30)^2\\) في درس العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 5.1",
-              "ar": "القاعدة الأساسية 5.1"
-            },
-            "value": {
-              "en": "Fibonacci & tiling recurrences a_n = a_{n-1} + a_{n-2}",
-              "ar": "Fibonacci & tiling recurrences a_n = a_{n-1} + a_{n-2}"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 5.2",
-              "ar": "القاعدة الأساسية 5.2"
-            },
-            "value": {
-              "en": "State-transition Markov equations",
-              "ar": "State-transition Markov equations"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 5.3",
-              "ar": "القاعدة الأساسية 5.3"
-            },
-            "value": {
-              "en": "Linearity of expectation E[X + Y] = E[X] + E[Y]",
-              "ar": "Linearity of expectation E[X + Y] = E[X] + E[Y]"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 5.4",
-              "ar": "القاعدة الأساسية 5.4"
-            },
-            "value": {
-              "en": "Geometric probability (area/length regions)",
-              "ar": "Geometric probability (area/length regions)"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Recurrence Relations, States & Contest Probability)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+          "en": "Growth of \\(C_n = \\frac{1}{n+1}\\binom{2n}{n}\\) for \\(n = 1, \\dots, 6\\): memorizing up to \\(C_6 = 132\\) saves crucial minutes on NSMO, KAUST KMC, and AIME polygon triangulation and Dyck-path problems.",
+          "ar": "تزايد أعداد كاتالان \\(C_n = \\frac{1}{n+1}\\binom{2n}{n}\\) من \\(C_1=1\\) حتى \\(C_6=132\\): حفظ هذه القيم الست يوفر دقائق ثمينة في مسائل التثليث ومسارات الشبكة."
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 5.A — Foundational Formulation (Recurrence Relations, States & Contest Probability)",
-          "ar": "مثال محلول 5.A — تطبيق أساسي (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+          "en": "Worked Example 5.A — Coupled Parity Recurrence Over Quarternary Digits (AMC 12 / NSMO Stage 2)",
+          "ar": "مثال محلول 5.A — التراجع المزدوج للسلاسل ذات العدد الزوجي من الأصفار (AMC 12 / نسما 2)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 12x + 43 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{12}{2} = -6 \\).<br>2. Write \\( (x - 6)^2 = x^2 - 12x + 36 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 6)^2 - 36 + 43 = (x - 6)^2 + 7 \\).<br>4. Since \\( (x - 6)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 7 \\), achieved at \\( x = 6 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 6)^2 + 7 \\); minimum value \\( 7 \\) at \\( x = 6 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 12x + 43 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 6)^2 + 7 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) وتتحقق عند \\( x = 6 \\).</p>"
+          "en": "<p><strong>Problem:</strong> How many \\( 6 \\)-digit strings formed from the alphabet \\( \\{0, 1, 2, 3\\} \\) (leading zeros allowed) contain an <strong>even</strong> number of \\( 0 \\)s?</p><p><strong>Solution:</strong> Let \\( E_n \\) and \\( O_n \\) denote the number of \\( n \\)-digit strings over \\( \\{0,1,2,3\\} \\) with an even and odd number of \\( 0 \\)s, respectively.<br>1. Appending \\( 1, 2, \\) or \\( 3 \\) (\\( 3 \\) choices) preserves parity; appending \\( 0 \\) (\\( 1 \\) choice) flips parity:<br>\\[ E_n = 3E_{n-1} + O_{n-1}, \\qquad O_n = E_{n-1} + 3O_{n-1}. \\]<br>2. Add and subtract the two equations to diagonalize instantly:<br>\\[ E_n + O_n = 4(E_{n-1} + O_{n-1}) = 4^n, \\qquad E_n - O_n = 2(E_{n-1} - O_{n-1}) = 2^n. \\]<br>3. Averaging gives \\( E_n = \\frac{4^n + 2^n}{2} \\). For \\( n = 6 \\):<br>\\[ E_6 = \\frac{4^6 + 2^6}{2} = \\frac{4096 + 64}{2} = \\frac{4160}{2} = 2080. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> كم سلسلة طولها \\( 6 \\) خانات مكوّنة من الأبجدية \\( \\{0, 1, 2, 3\\} \\) (يُسمح بالصفر في اليسار) تحتوي على عدد <strong>زوجي</strong> من الرقم \\( 0 \\)؟</p><p><strong>الحل الأولمبي:</strong> ليكن \\( E_n \\) عدد السلاسل ذات العدد الزوجي من الأصفار، و\\( O_n \\) ذات العدد الفردي.<br>1. إضافة \\( 1 \\) أو \\( 2 \\) أو \\( 3 \\) (\\( 3 \\) خيارات) تحفظ الزوجية، وإضافة \\( 0 \\) (خيار واحد) تعكسها:<br>\\[ E_n = 3E_{n-1} + O_{n-1}, \\qquad O_n = E_{n-1} + 3O_{n-1}. \\]<br>2. بالجمع والطرح لفصل المتغيرات فوراً:<br>\\[ E_n + O_n = 4^n, \\qquad E_n - O_n = 2^n \\implies E_n = \\frac{4^n + 2^n}{2}. \\]<br>3. عند \\( n = 6 \\): \\( E_6 = \\frac{4096 + 64}{2} = 2080 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 5.B — Intermediate Multi-Step Synthesis (Recurrence Relations, States & Contest Probability)",
-          "ar": "مثال محلول 5.B — تطبيق متوسط متعدد الخطوات (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+          "en": "Worked Example 5.B — Non-Crossing Chords & Polygon Triangulation via Catalan (KAUST KMC)",
+          "ar": "مثال محلول 5.B — الأوتار غير المتقاطعة وتثليث المضلعات عبر أعداد كاتالان (مسابقة كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 12x + 41 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 12x + 41 = 2x + k \\implies x^2 - 14x + (41 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-14)^2 - 4(1)(41 - k) > 0 \\]<br>\\[ 196 - 164 + 4k > 0 \\implies 4k > -32 \\implies k > -8 \\]</p><p><strong>Final Answer:</strong> \\( k > -8 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 12x + 41 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -8 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Ten distinct points \\( P_1, P_2, \\dots, P_{10} \\) lie in cyclic order on a circle. In how many ways can we pair them up with \\( 5 \\) chords so that NO two chords intersect inside the circle?</p><p><strong>Solution:</strong> Label the points \\( 1, 2, \\dots, 10 \\). Point \\( 1 \\) must pair with an even-indexed point \\( 2k + 2 \\) (for \\( k = 0, 1, 2, 3, 4 \\)), because otherwise an odd number of points would be trapped on each side of chord \\( (1, j) \\), forcing a crossing! Once chord \\( (1, 2k+2) \\) is drawn, the \\( 2k \\) points on one side and \\( 8 - 2k \\) points on the other side must independently form non-crossing matchings:<br>\\[ M_5 = \\sum_{k=0}^4 M_k M_{4-k} = C_5 = \\frac{1}{5 + 1}\\binom{10}{5} = \\frac{252}{6} = 42. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> عُيّنت عشر نقاط مختلفة \\( P_1, \\dots, P_{10} \\) بترتيب دائري على محيط دائرة. بكم طريقة يمكن توصيلها بـ \\( 5 \\) أوتار مثنى مثنى بحيث لا يتقاطع أي وترين داخل الدائرة؟</p><p><strong>الحل الأولمبي:</strong> يجب أن تتصل النقطة \\( P_1 \\) بنقطة ذات رتبة زوجية \\( P_{2k+2} \\) (حيث \\( k = 0,1,2,3,4 \\)) حتى تترك عدداً زوجياً من النقاط على كل جانب دون تقاطع. وبذلك تحقق الأعداد \\( M_n \\) علاقة كاتالان التراجعية تماماً \\( M_5 = \\sum_{k=0}^4 M_k M_{4-k} = C_5 \\)، ومنه:<br>\\[ C_5 = \\frac{1}{6}\\binom{10}{5} = \\frac{252}{6} = 42. \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 5.C — Advanced Rate & Vector Application (Recurrence Relations, States & Contest Probability)",
-          "ar": "مثال محلول 5.C — تطبيق متقدم (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+          "en": "Worked Example 5.C — Expected Local Maxima via Indicator Variables (AIME / NSMO Finals)",
+          "ar": "مثال محلول 5.C — القيمة المتوقعة للقمم المحلية عبر المتغيرات المؤشرة (AIME / نهائيات نسما)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 18x^2 + 108x + 7 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 8 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 36x + 108 = 3(x - 6)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 6 \\), with \\( g(6) = 7 \\). Thus \\( (6, 7) \\) is the stationary point.<br>3. At \\( x = 8 \\), the gradient is \\( g'(8) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (6, 7) \\); gradient at \\( x = 8 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 18x^2 + 108x + 7 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 8 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 6)^2 \\)، تنعدم عند \\( (6, 7) \\)، وعند \\( x = 8 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+          "en": "<p><strong>Problem:</strong> The integers \\( 1, 2, \\dots, 12 \\) are arranged in a uniform random permutation \\( (a_1, a_2, \\dots, a_{12}) \\). An index \\( i \\) is called a <em>peak</em> if \\( a_i \\) is strictly greater than all of its immediate neighbors (note \\( a_1 \\) has only neighbor \\( a_2 \\), and \\( a_{12} \\) has only neighbor \\( a_{11} \\)). Find the expected number of peaks.</p><p><strong>Solution:</strong> Define indicator \\( I_i = 1 \\) if position \\( i \\) is a peak, and \\( 0 \\) otherwise.<br>1. At the two endpoints (\\( i = 1 \\) and \\( i = 12 \\)): \\( a_1 > a_2 \\) occurs in exactly half of all permutations by symmetry, so \\( \\mathbb{E}[I_1] = \\mathbb{E}[I_{12}] = \\frac{1}{2} \\).<br>2. At each of the \\( 10 \\) interior positions (\\( 2 \\le i \\le 11 \\)): among the three adjacent elements \\( \\{a_{i-1}, a_i, a_{i+1}\\} \\), all \\( 3! = 6 \\) relative orderings are equally likely, and \\( a_i \\) is the largest of the three in \\( 2 \\) of the \\( 6 \\) orderings (probability \\( \\frac{1}{3} \\)). Thus \\( \\mathbb{E}[I_i] = \\frac{1}{3} \\).<br>3. By Linearity of Expectation:<br>\\[ \\mathbb{E}[\\text{peaks}] = \\frac{1}{2} + 10 \\cdot \\frac{1}{3} + \\frac{1}{2} = 1 + \\frac{10}{3} = \\frac{13}{3}. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> رُتّبت الأعداد \\( 1, 2, \\dots, 12 \\) عشوائياً بانتظام في صف \\( (a_1, a_2, \\dots, a_{12}) \\). نسمي الموقع \\( i \\) <em>قمّة محلية</em> إذا كان \\( a_i \\) أكبر من جميع جيرانه المباشرين (للأطراف جارٌ واحد وللداخل جاران). أوجد القيمة المتوقعة لعدد القمم المحلية.</p><p><strong>الحل الأولمبي:</strong> نعرّف المتغير المؤشر \\( I_i \\) لكل موقع \\( i \\):<br>1. عند الطرفين \\( i = 1 \\) و\\( i = 12 \\): بالتناظر \\( \\mathbb{P}(a_1 > a_2) = \\frac{1}{2} \\)، وكذلك \\( \\mathbb{P}(a_{12} > a_{11}) = \\frac{1}{2} \\).<br>2. عند المواقع العشرة الداخلية (\\( 2 \\le i \\le 11 \\)): لأي ثلاثية متجاورة \\( \\{a_{i-1}, a_i, a_{i+1}\\} \\)، كل عنصر له نفس الفرصة لأن يكون الأكبر بين الثلاثة، أي \\( \\mathbb{E}[I_i] = \\frac{1}{3} \\).<br>3. بجمع التوقعات خطياً:<br>\\[ \\mathbb{E}[\\text{peaks}] = \\frac{1}{2} + 10 \\cdot \\frac{1}{3} + \\frac{1}{2} = \\frac{13}{3}. \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 5.D — Exam-Grade Challenge Synthesis (Recurrence Relations, States & Contest Probability)",
-          "ar": "مثال محلول 5.D — مسألة تحدي بمستوى الاختبار (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+          "en": "Worked Example 5.D — Markov Expected Waiting Time for Consecutive Heads (KAUST Finals)",
+          "ar": "مثال محلول 5.D — توقع زمن الانتظار لظهور صورتين متتاليتين عبر حالات ماركوف (نهائيات كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 6n^2 + 7n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 6(1)^2 + 7(1) = 13 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[6n^2 + 7n\\right] - \\left[6(n-1)^2 + 7(n-1)\\right] = 12n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 12 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 121 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 12n + 1 \\), \\( d = 12 \\), and \\( u_{10} = 121 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 6n^2 + 7n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 12n + 1 \\)، والأساس \\( d = 12 \\)، والحد العاشر \\( u_{10} = 121 \\).</p>"
+          "en": "<p><strong>Problem:</strong> A fair coin is tossed repeatedly until two consecutive Heads (\\( HH \\)) appear. Find the expected number of tosses required.</p><p><strong>Solution:</strong> Let \\( E_0 \\) be the expected remaining tosses from the start (or right after a Tail \\( T \\)), and let \\( E_1 \\) be the expected remaining tosses right after seeing a single Head \\( H \\).<br>1. From state \\( 0 \\): we toss once. With probability \\( \\frac{1}{2} \\) we get \\( T \\) (staying in state \\( 0 \\)), and with probability \\( \\frac{1}{2} \\) we get \\( H \\) (moving to state \\( 1 \\)):<br>\\[ E_0 = 1 + \\frac{1}{2}E_0 + \\frac{1}{2}E_1 \\implies E_0 = 2 + E_1. \\]<br>2. From state \\( 1 \\): we toss once. With probability \\( \\frac{1}{2} \\) we get \\( H \\) (done! \\( 0 \\) more tosses), and with probability \\( \\frac{1}{2} \\) we get \\( T \\) (resetting back to state \\( 0 \\)):<br>\\[ E_1 = 1 + \\frac{1}{2}(0) + \\frac{1}{2}E_0. \\]<br>3. Substitute \\( E_1 = 1 + \\frac{1}{2}E_0 \\) into \\( E_0 = 2 + E_1 \\): \\( E_0 = 3 + \\frac{1}{2}E_0 \\implies \\frac{1}{2}E_0 = 3 \\implies E_0 = 6 \\) tosses!</p>",
+          "ar": "<p><strong>المسألة:</strong> تُرمى قطعة نقد متزنة مراراً حتى تظهر صورتان متتاليتان (\\( HH \\)). أوجد العدد المتوقع للرميات اللازمة.</p><p><strong>الحل الأولمبي:</strong> ليكن \\( E_0 \\) التوقع من البداية (أو بعد ظهور كتابة \\( T \\))، و\\( E_1 \\) التوقع بعد ظهور صورة منفردة \\( H \\):<br>1. من الحالة \\( 0 \\): نرمي رمية واحدة؛ باحتمال \\( \\frac{1}{2} \\) نعود لـ \\( 0 \\)، وباحتمال \\( \\frac{1}{2} \\) ننتقل لـ \\( 1 \\):<br>\\[ E_0 = 1 + \\frac{1}{2}E_0 + \\frac{1}{2}E_1 \\implies E_0 = 2 + E_1. \\]<br>2. من الحالة \\( 1 \\): نرمي رمية واحدة؛ باحتمال \\( \\frac{1}{2} \\) تظهر \\( H \\) فينتهي الاختبار (\\( 0 \\))، وباحتمال \\( \\frac{1}{2} \\) تظهر \\( T \\) فنعود للحالة \\( 0 \\):<br>\\[ E_1 = 1 + \\frac{1}{2}E_0. \\]<br>3. بالتعويض نجد \\( E_0 = 3 + \\frac{1}{2}E_0 \\implies E_0 = 6 \\) رميات!</p>"
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Recurrence Relations, States & Contest Probability",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+          "en": "⚠ Olympiad Trap — Initial Offset Errors in Fibonacci-Type Recurrences",
+          "ar": "⚠ فخ أولمبي شائع — إزاحة الحدود الابتدائية في المتتاليات الشبيهة بفيبوناتشي"
         },
         "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+          "en": "<p>Both \\( 2 \\times n \\) domino tilings \\( T_n \\) and \\( n \\)-bit strings without \\( 11 \\) \\( S_n \\) obey \\( a_n = a_{n-1} + a_{n-2} \\), yet \\( T_1 = 1, T_2 = 2 \\) while \\( S_1 = 2, S_2 = 3 \\)! Always compute \\( a_1 \\) and \\( a_2 \\) by hand before quoting a Fibonacci number.</p>",
+          "ar": "<p>كلا مسألتَي تبليط الدومينو \\( T_n \\) والسلاسل الثنائية بلا \\( 11 \\) \\( S_n \\) يخضع للعلاقة \\( a_n = a_{n-1} + a_{n-2} \\)، ولكن \\( T_1 = 1, T_2 = 2 \\) بينما \\( S_1 = 2, S_2 = 3 \\)! احسب دائماً الحدين الأول والثاني يدوياً قبل التعويض بأعداد فيبوناتشي.</p>"
         }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Recurrence Relations, States & Contest Probability)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
       },
       {
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Recurrence Relations, States & Contest Probability",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+          "en": "▲ Contest Strategy — Spotting Catalan Disguises Instantly",
+          "ar": "▲ استراتيجية المسابقات — التعرّف الفوري على أعداد كاتالان المتنكرة"
         },
         "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+          "en": "<p>Whenever a problem asks for ways to process \\( n \\) inflows and \\( n \\) outflows so the cumulative balance never goes negative (e.g., \\( n \\) buyers with 5-riyal notes and \\( n \\) with 10-riyal notes at an empty register), the answer is immediately \\( C_n = \\frac{1}{n+1}\\binom{2n}{n} \\) (multiplied by \\( n! \\cdot n! \\) if people are distinguishable)!</p>",
+          "ar": "<p>كلما طلبت مسألة حساب طرق ترتيب \\( n \\) خطوات موجبة و\\( n \\) خطوات سالبة بحيث لا يصبح الرصيد التراكمي سالباً في أي لحظة (مسألة الصندوق وتذاكر الصرف)، فالإجابة فوراً هي عدد كاتالان \\( C_n = \\frac{1}{n+1}\\binom{2n}{n} \\)!</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(7) \\) for the quadratic function \\( f(x) = 6x^2 - 6x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(7) \\) للدالة التربيعية \\( f(x) = 6x^2 - 6x + 10 \\)."
+          "en": "<strong>[Practice 5.1 · NSMO Stage 1 / Easy]</strong> How many binary strings of length \\( 7 \\) (using digits \\( 0 \\) and \\( 1 \\)) do NOT contain two consecutive \\( 1 \\)s?",
+          "ar": "<strong>[تدريب 5.1 · نسما المرحلة 1 / سهل]</strong> كم سلسلة ثنائية طولها \\( 7 \\) (من الرقمين \\( 0 \\) و\\( 1 \\)) لا تحتوي على رقمَي \\( 1 \\) متتاليين؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 7 \\) directly into \\( f(x) = 6x^2 - 6x + 10 \\).",
-            "ar": "عوّض عن \\( x = 7 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+            "en": "Condition on the last bit: ending in \\( 0 \\) leaves \\( S_{n-1} \\) valid prefixes; ending in \\( 01 \\) leaves \\( S_{n-2} \\).",
+            "ar": "كيّف على الخانة الأخيرة: الانتهاء بـ \\( 0 \\) يعطي \\( S_{n-1} \\)، والانتهاء بـ \\( 01 \\) يعطي \\( S_{n-2} \\)."
           },
           {
-            "en": "Factor out \\( 6x(x - 1) + 10 = 6(7)(6) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 6(7)(6) + 10 \\)."
+            "en": "Verify base cases \\( S_1 = 2 \\) (\\( 0, 1 \\)) and \\( S_2 = 3 \\) (\\( 00, 01, 10 \\)).",
+            "ar": "تحقق من الحالتين الابتدائيتين \\( S_1 = 2 \\) و\\( S_2 = 3 \\)."
           },
           {
-            "en": "Compute \\( 252 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 252 + 10 \\) للحصول على النتيجة النهائية."
+            "en": "Generate \\( S_3, S_4, S_5, S_6, S_7 \\) via \\( S_n = S_{n-1} + S_{n-2} \\).",
+            "ar": "احسب الحدود المتتالية عبر \\( S_n = S_{n-1} + S_{n-2} \\) حتى \\( S_7 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 7 \\) gives \\( f(7) = 6(7)^2 - 6(7) + 10 = 294 - 42 + 10 = 262 \\).",
-          "ar": "بالتعويض عن \\( x = 7 \\) نجد \\( f(7) = 6(7)^2 - 6(7) + 10 = 262 \\)."
+          "en": "Using \\( S_1 = 2,\\; S_2 = 3 \\) and \\( S_n = S_{n-1} + S_{n-2} \\): \\( S_3 = 5,\\; S_4 = 8,\\; S_5 = 13,\\; S_6 = 21,\\; S_7 = 34 \\).",
+          "ar": "من \\( S_1 = 2,\\; S_2 = 3 \\) والعلاقة \\( S_n = S_{n-1} + S_{n-2} \\) نجد: \\( S_3 = 5,\\; S_4 = 8,\\; S_5 = 13,\\; S_6 = 21,\\; S_7 = 34 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 13x + 42 = 0 \\) that is greater than \\( 6 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 6 \\) للمعادلة \\( x^2 - 13x + 42 = 0 \\)."
+          "en": "<strong>[Practice 5.2 · KAUST KMC Regional / Easy]</strong> In how many ways can a convex octagon (\\( 8 \\)-gon) be partitioned into \\( 6 \\) triangles by non-intersecting diagonals?",
+          "ar": "<strong>[تدريب 5.2 · تصفيات كاوست / سهل]</strong> بكم طريقة يمكن تقسيم مثمّن محدب (\\( 8 \\) أضلاع) إلى \\( 6 \\) مثلثات بواسطة أقطار لا تتقاطع داخلياً؟"
         },
         "hints": [
           {
-            "en": "Look for two integers whose sum is \\( 13 \\) and whose product is \\( 42 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 13 \\) وحاصل ضربهما \\( 42 \\)."
+            "en": "Recall that triangulations of a convex \\( (n+2) \\)-gon equal the \\( n \\)-th Catalan number \\( C_n \\).",
+            "ar": "تذكّر أن عدد طرق تثليث مضلع محدب عدد أضلاعه \\( n+2 \\) يساوي عدد كاتالان \\( C_n \\)."
           },
           {
-            "en": "Factor the quadratic as \\( (x - 6)(x - 7) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 6)(x - 7) = 0 \\)."
+            "en": "For an \\( 8 \\)-gon, \\( n + 2 = 8 \\implies n = 6 \\).",
+            "ar": "للمثمّن لدينا \\( n + 2 = 8 \\implies n = 6 \\)."
           },
           {
-            "en": "Compare the two roots \\( x = 6 \\) and \\( x = 7 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 6 \\) و \\( x = 7 \\) واختر الأكبر."
+            "en": "Evaluate \\( C_6 = \\frac{1}{7}\\binom{12}{6} \\).",
+            "ar": "احسب \\( C_6 = \\frac{1}{7}\\binom{12}{6} \\)."
           }
         ],
         "solution": {
-          "en": "Factoring gives \\( (x - 6)(x - 7) = 0 \\), so the roots are \\( x = 6 \\) and \\( x = 7 \\). The root greater than \\( 6 \\) is \\( x = 7 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 6)(x - 7) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 6 \\) هو \\( x = 7 \\)."
+          "en": "For a convex \\( (n+2) \\)-gon with \\( n+2 = 8 \\), \\( n = 6 \\), giving \\( C_6 = \\frac{1}{7}\\binom{12}{6} = \\frac{924}{7} = 132 \\) triangulations.",
+          "ar": "بما أن \\( n + 2 = 8 \\) فإن \\( n = 6 \\)، وعدد التثليثات يساوي \\( C_6 = \\frac{1}{7}\\binom{12}{6} = \\frac{924}{7} = 132 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 54 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 54 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+          "en": "<strong>[Practice 5.3 · NSMO Stage 2 / Medium]</strong> Sequence \\( (a_n) \\) satisfies \\( a_0 = 2,\\; a_1 = 5 \\), and \\( a_n = 5a_{n-1} - 6a_{n-2} \\) for \\( n \\ge 2 \\). Find \\( a_5 \\).",
+          "ar": "<strong>[تدريب 5.3 · نسما المرحلة 2 / متوسط]</strong> تحقق المتتالية \\( (a_n) \\) الشرطين \\( a_0 = 2,\\; a_1 = 5 \\) والعلاقة \\( a_n = 5a_{n-1} - 6a_{n-2} \\) لكل \\( n \\ge 2 \\). أوجد قيمة \\( a_5 \\)."
         },
         "hints": [
           {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+            "en": "Solve the characteristic quadratic \\( r^2 - 5r + 6 = 0 \\).",
+            "ar": "حل المعادلة المميزة \\( r^2 - 5r + 6 = 0 \\)."
           },
           {
-            "en": "Substitute \\( a = 1, b = -2k, c = 54 \\) into \\( (-2k)^2 - 4(1)(54) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(54) = 0 \\)."
+            "en": "Fit \\( a_n = A \\cdot 2^n + B \\cdot 3^n \\) to \\( a_0 = 2 \\) and \\( a_1 = 5 \\).",
+            "ar": "أوجد الثابتين في \\( a_n = A \\cdot 2^n + B \\cdot 3^n \\) من \\( a_0 = 2 \\) و\\( a_1 = 5 \\)."
           },
           {
-            "en": "Simplify \\( 4k^2 = 216 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 216 \\) واقسم الطرفين على 4."
+            "en": "Notice \\( A = 1, B = 1 \\), so \\( a_n = 2^n + 3^n \\)!",
+            "ar": "ستجد أن \\( A = 1, B = 1 \\)، أي \\( a_n = 2^n + 3^n \\)!"
           }
         ],
         "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(54) = 4k^2 - 216 = 0 \\implies k^2 = 54 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 216 = 0 \\implies k^2 = 54 \\)."
+          "en": "The characteristic equation \\( (r - 2)(r - 3) = 0 \\) gives \\( a_n = A \\cdot 2^n + B \\cdot 3^n \\). From \\( A + B = 2 \\) and \\( 2A + 3B = 5 \\), we get \\( A = 1, B = 1 \\). Hence \\( a_5 = 2^5 + 3^5 = 32 + 243 = 275 \\).",
+          "ar": "جذرا المعادلة المميزة هما \\( 2 \\) و\\( 3 \\)، ومن الشروط الابتدائية \\( A + B = 2 \\) و\\( 2A + 3B = 5 \\) نجد \\( A = B = 1 \\)، إذن \\( a_5 = 2^5 + 3^5 = 32 + 243 = 275 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 6 \\) and common difference \\( d = 14 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 6 \\) وأساسها \\( d = 14 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+          "en": "<strong>[Practice 5.4 · AMC 12 / KAUST KMC / Hard]</strong> Two researchers arrive independently and uniformly at random between 9:00 AM and 10:00 AM at a KAUST lab. Each waits \\( 15 \\) minutes for the other before leaving. Find the exact probability they meet.",
+          "ar": "<strong>[تدريب 5.4 · AMC 12 / مسابقة كاوست / متقدم]</strong> يصل باحثان بشكل مستقل وبانتظام عشوائي بين الساعة 9:00 و10:00 صباحاً إلى مختبر في كاوست، وينتظر كل منهما الآخر مدة \\( 15 \\) دقيقة قبل المغادرة. ما الاحتمال الدقيق لالتقائهما؟"
         },
         "hints": [
           {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+            "en": "Model arrival times \\( (X, Y) \\in [0, 60]^2 \\); they meet iff \\( |X - Y| \\le 15 \\).",
+            "ar": "مثّل زمنَي الوصول بنقطة \\( (X, Y) \\in [0, 60]^2 \\)؛ يلتقيان إذا وفقط إذا كان \\( |X - Y| \\le 15 \\)."
           },
           {
-            "en": "Substitute \\( n = 10, a = 6, d = 14 \\): \\( S_{10} = 5[2(6) + 9(14)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(6) + 9(14)] \\)."
+            "en": "Compute the combined area of the two corner triangles where \\( |X - Y| > 15 \\) (each has leg \\( 60 - 15 = 45 \\)).",
+            "ar": "احسب المساحة المجمعة للمثلثين القائمين في الركنين حيث \\( |X - Y| > 15 \\) (طول ضلع كل منهما \\( 45 \\))."
           },
           {
-            "en": "Evaluate \\( 5(12 + 126) = 690 \\).",
-            "ar": "احسب الناتج \\( 5(12 + 126) = 690 \\)."
+            "en": "Use \\( 1 - \\left(1 - \\frac{15}{60}\\right)^2 = 1 - \\left(\\frac{3}{4}\\right)^2 \\).",
+            "ar": "احسب \\( 1 - \\left(1 - \\frac{15}{60}\\right)^2 = 1 - \\left(\\frac{3}{4}\\right)^2 \\)."
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(6) + 9(14)] = 5(138) = 690 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(12 + 126) = 690 \\)."
+          "en": "On \\( [0, 60]^2 \\), the complement \\( |X - Y| > 15 \\) consists of two right triangles of leg \\( 45 \\), with area fraction \\( \\left(\\frac{45}{60}\\right)^2 = \\left(\\frac{3}{4}\\right)^2 = \\frac{9}{16} \\). Thus \\( \\mathbb{P}(\\text{meet}) = 1 - \\frac{9}{16} = \\frac{7}{16} \\).",
+          "ar": "في المربع \\( [0, 60]^2 \\)، يمثل الحدث المتمم مثلثين قائمين طول ضلع كل منهما \\( 45 \\) بنصيب مساحي \\( \\left(\\frac{45}{60}\\right)^2 = \\frac{9}{16} \\)، فيكون احتمال الالتقاء \\( 1 - \\frac{9}{16} = \\frac{7}{16} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 6x^2 - 7x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 6x^2 - 7x + 7 \\) عند \\( x = 3 \\)."
+          "en": "<strong>[Practice 5.5 · NSMO National Finals / AIME]</strong> A bug starts at vertex \\( A \\) of regular tetrahedron \\( ABCD \\) and each second walks along a random edge to one of the \\( 3 \\) adjacent vertices. What is the probability it is back at \\( A \\) after \\( 4 \\) steps?",
+          "ar": "<strong>[تدريب 5.5 · نهائيات نسما / AIME]</strong> تبدأ حشرة حركتها من الرأس \\( A \\) لرباعي أوجه منتظم \\( ABCD \\)، وفي كل ثانية تنتقل عشوائياً عبر أحد الأحرف الثلاثة المتصلة بموقعها. ما احتمال وجودها عند الرأس \\( A \\) بعد \\( 4 \\) خطوات؟"
         },
         "hints": [
           {
-            "en": "Differentiate \\( y = x^3 + 6x^2 - 7x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+            "en": "By symmetry, collapse vertices \\( \\{B, C, D\\} \\) into a single \"not-\\( A \\)\" state!",
+            "ar": "بالتناظر التام، ادمج الرؤوس الثلاثة \\( \\{B, C, D\\} \\) في حالة واحدة \"خارج \\( A \\)\"!"
           },
           {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\)."
+            "en": "Let \\( p_n = \\mathbb{P}(\\text{at } A \\text{ on step } n) \\). If at \\( A \\), next step leaves \\( A \\); if not at \\( A \\), probability \\( \\frac{1}{3} \\) returns to \\( A \\): \\( p_n = \\frac{1}{3}(1 - p_{n-1}) \\).",
+            "ar": "إذا كانت خارج \\( A \\) تعود إلى \\( A \\) باحتمال \\( \\frac{1}{3} \\)، فتكون العلاقة \\( p_n = \\frac{1}{3}(1 - p_{n-1}) \\) مع \\( p_0 = 1 \\)."
           },
           {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 12(3) - 7 = 56 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 36 - 7 = 56 \\)."
+            "en": "Compute \\( p_1, p_2, p_3, p_4 \\) directly (or use \\( p_n = \\frac{1}{4} + \\frac{3}{4}(-\\frac{1}{3})^n \\)).",
+            "ar": "احسب \\( p_1, p_2, p_3, p_4 \\) خطوة بخطوة (أو عبر الصيغة \\( p_n = \\frac{1}{4} + \\frac{3}{4}(-\\frac{1}{3})^n \\))."
           }
         ],
         "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 36 - 7 = 56 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 36 - 7 = 56 \\)."
+          "en": "With \\( p_0 = 1 \\) and \\( p_n = \\frac{1 - p_{n-1}}{3} \\): \\( p_1 = 0 \\), \\( p_2 = \\frac{1}{3} \\), \\( p_3 = \\frac{2}{9} \\), and \\( p_4 = \\frac{1 - 2/9}{3} = \\frac{7}{27} \\).",
+          "ar": "من \\( p_0 = 1 \\) والعلاقة \\( p_n = \\frac{1 - p_{n-1}}{3} \\): نجد \\( p_1 = 0 \\)، \\( p_2 = \\frac{1}{3} \\)، \\( p_3 = \\frac{2}{9} \\)، ومنه \\( p_4 = \\frac{1 - 2/9}{3} = \\frac{7}{27} \\)."
         }
       },
       {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Power of a Point, Cyclic Quadrilaterals & Angle Chasing",
-            "chapterId": "ol-euclidean-circles",
-            "trackId": "olympiad"
-          },
-          {
-            "label": "Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion",
+            "label": "Combinatorics I: Bijections, PIE & Pigeonhole",
             "chapterId": "ol-combinatorics-counting",
             "trackId": "olympiad"
           },
           {
-            "trackId": "alg2",
-            "chapterId": "a2-stats",
-            "label": "ALG2: Probability &amp; Statistics"
+            "label": "Euclidean Geometry I: Circle Power & Radical Axes",
+            "chapterId": "ol-euclidean-circles",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "KAUST KMC Regional Qualifier",
+            "chapterId": "ol-kaust-kmc-qualifier",
+            "trackId": "olympiad"
           }
         ]
       }

@@ -108,7 +108,7 @@ if('serviceWorker' in navigator){
     ibsl:'IB May/Nov', ibhl:'IB May/Nov',
     est:'EST (approx.)', est2:'EST II (approx.)', est2l2:'EST II L2 (approx.)',
     qudrat:'Qudrat (approx.)', tahsili:'Tahsili (approx.)', gaten:'GAT/SAAT (approx.)',
-    olympiad:'AMC / Kangaroo',
+    olympiad:'NSMO / KAUST / AMC',
     algebra:'Semester Final', geo:'Semester Final', alg2:'Semester Final',
     precalc:'Semester Final', calculus:'Semester Final',
     linalg:'Univ Final', mvc:'Univ Final', odes:'Univ Final', mathai:'Univ Final'

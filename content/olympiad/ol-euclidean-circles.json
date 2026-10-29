@@ -1,27 +1,35 @@
 {
   "id": "ol-euclidean-circles",
   "chapterNumber": "6",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Power of a Point, Cyclic Quadrilaterals & Angle Chasing",
-    "ar": "قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا"
+    "en": "Euclidean Geometry I: Cyclic Quadrilaterals, Power of a Point, Radical Axes & Ptolemy",
+    "ar": "الهندسة الإقليدية (1): الرباعيات الدائرية وقوة النقطة والمحور الأساسي ومبرهنة بطليموس"
+  },
+  "railLabel": {
+    "en": "Circles, Power of a Point & Ptolemy",
+    "ar": "الدوائر وقوة النقطة وبطليموس"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 6 — Olympiad Geometry I",
+    "emoji": "⭕",
+    "category": "Core Pillar 6 — Olympiad Circle Geometry",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
-      "Power of a Point (secant-secant, secant-tangent, chord-chord)",
-      "Cyclic quadrilateral criteria & Ptolemy's Theorem",
-      "Inscribed angle, chord-tangent & radical axis",
-      "Homothety & spiral similarity",
-      "Shoelace formula & Pick's lattice theorem"
+      "Inscribed & tangent-chord angle chasing",
+      "Concyclic quadrilateral criteria",
+      "Power of a Point (OP² − R²) & converse",
+      "Radical axis & Radical Center of 3 circles",
+      "Ptolemy's Theorem & Brahmagupta cyclic area"
     ]
   },
   "content": {
@@ -29,83 +37,203 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Power of a Point, Cyclic Quadrilaterals & Angle Chasing</strong> (Olympiad Module 6 — Olympiad Geometry I).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا</strong>."
+          "en": "In Olympiad Euclidean geometry, <strong>hidden cyclic quadrilaterals</strong> are the primary engine of synthetic proofs. Discovering four concyclic points unlocks simultaneous angle transfers, while <strong>Power of a Point</strong>, the <strong>Radical Axis Theorem</strong>, and <strong>Ptolemy’s Theorem</strong> bridge metric lengths and collinearity/concurrency proofs without coordinate bash.",
+          "ar": "في الهندسة الإقليدية الأولمبية، تمثل <strong>الرباعيات الدائرية المخفية</strong> المحرك الرئيس للبراهين التركيبية؛ إذ يتيح إثبات وقوع أربع نقاط على دائرة واحدة نقل الزوايا فوراً، بينما تربط <strong>قوة النقطة</strong> و<strong>المحور الأساسي</strong> و<strong>مبرهنة بطليموس</strong> بين الأطوال المترية وإثبات التلاقي والاستقامة دون تعقيد الإحداثيات."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 6.1 — Power of a Point, Ptolemy's Theorem & Pick's Lattice Theorem",
-          "ar": "● تعريف 6.1 — قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا"
+          "en": "● Definition 6.1 — Concyclic Criteria & Power of a Point Pow_ω(P)",
+          "ar": "● تعريف 6.1 — شروط الرباعي الدائري وقوة النقطة بالنسبة لدائرة"
         },
         "body": {
-          "en": "<p>For a circle of center \\( O \\) and radius \\( R \\), the <strong>Power of a Point</strong> \\( P \\) is \\( |PO^2 - R^2| \\): for any line through \\( P \\) meeting the circle at \\( A, B \\), \\( PA \\cdot PB = |PO^2 - R^2| \\) (and \\( PT^2 = PA \\cdot PB \\) for a tangent \\( PT \\)). For a cyclic quadrilateral \\( ABCD \\), <strong>Ptolemy's Theorem</strong> states \\[ AC \\cdot BD = AB \\cdot CD + BC \\cdot DA. \\] For a lattice polygon with \\( I \\) interior lattice points and \\( B \\) boundary lattice points, <strong>Pick's Theorem</strong> gives area \\( A = I + \\frac{B}{2} - 1 \\).</p>",
-          "ar": "<p>For a circle of center \\( O \\) and radius \\( R \\), the <strong>Power of a Point</strong> \\( P \\) is \\( |PO^2 - R^2| \\): for any line through \\( P \\) meeting the circle at \\( A, B \\), \\( PA \\cdot PB = |PO^2 - R^2| \\) (and \\( PT^2 = PA \\cdot PB \\) for a tangent \\( PT \\)). For a cyclic quadrilateral \\( ABCD \\), <strong>Ptolemy's Theorem</strong> states \\[ AC \\cdot BD = AB \\cdot CD + BC \\cdot DA. \\] For a lattice polygon with \\( I \\) interior lattice points and \\( B \\) boundary lattice points, <strong>Pick's Theorem</strong> gives area \\( A = I + \\frac{B}{2} - 1 \\).</p>"
+          "en": "<p><strong>1. Four Equivalent Concyclic Tests for Convex \\( ABCD \\):</strong><br>(i) Opposite angles are supplementary: \\( \\angle ABC + \\angle ADC = 180^\\circ \\) (or exterior angle equals interior opposite);<br>(ii) Equal subtended angles on the same side of \\( AB \\): \\( \\angle ACB = \\angle ADB \\);<br>(iii) Intersecting diagonals \\( P = AC \\cap BD \\) satisfy \\( PA \\cdot PC = PB \\cdot PD \\);<br>(iv) Rays \\( AB \\) and \\( DC \\) meet at \\( P \\) with \\( PA \\cdot PB = PC \\cdot PD \\).</p><p><strong>2. Power of a Point:</strong> Relative to circle \\( \\omega(O, R) \\), the signed power of any point \\( P \\) is \\( \\operatorname{Pow}_\\omega(P) = OP^2 - R^2 \\). Any line through \\( P \\) meeting \\( \\omega \\) at \\( A, B \\) (and tangent \\( PT \\) when \\( OP > R \\)) satisfies:</p>\\[ \\begin{cases} PA \\cdot PB = PT^2 = OP^2 - R^2 & (P \\text{ outside } \\omega), \\\\ PA \\cdot PB = R^2 - OP^2 & (P \\text{ inside } \\omega). \\end{cases} \\]",
+          "ar": "<p><strong>1. الشروط الأربعة المتكافئة لرباعي دائري محدب \\( ABCD \\):</strong><br>(أ) تكامل الزوايا المتقابلة: \\( \\angle ABC + \\angle ADC = 180^\\circ \\) (أو تساوي الزاوية الخارجية مع المقابلة للداخلية)؛<br>(ب) تساوي زاويتين تحصران القطعة نفسها في جهة واحدة: \\( \\angle ACB = \\angle ADB \\)؛<br>(ج) تقاطع القطرين عند \\( P \\) يحقق \\( PA \\cdot PC = PB \\cdot PD \\)؛<br>(د) تلاقي امتدادَي ضلعين عند \\( P \\) يحقق \\( PA \\cdot PB = PC \\cdot PD \\).</p><p><strong>2. قوة النقطة:</strong> بالنسبة لدائرة \\( \\omega(O, R) \\)، تُعرَّف قوة النقطة \\( P \\) بالمقدار الجبري \\( \\operatorname{Pow}_\\omega(P) = OP^2 - R^2 \\)، ولأي مستقيم يمر بـ \\( P \\) ويقطع الدائرة في \\( A, B \\):</p>\\[ \\begin{cases} PA \\cdot PB = PT^2 = OP^2 - R^2 & (P \\text{ خارج الدائرة}), \\\\ PA \\cdot PB = R^2 - OP^2 & (P \\text{ داخل الدائرة}). \\end{cases} \\]"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Power of a Point, Cyclic Quadrilaterals & Angle Chasing",
-          "ar": "● الفهم المفاهيمي العميق — قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا"
+          "en": "● Theorem 6.2 — Radical Axis / Center, Ptolemy's Theorem & Brahmagupta's Formula",
+          "ar": "● مبرهنة 6.2 — المحور والمركز الأساسي ومبرهنة بطليموس وصيغة براهماغوبتا"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Power of a Point, Cyclic Quadrilaterals & Angle Chasing</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p><strong>1. Radical Axis &amp; Radical Center:</strong> For non-concentric circles \\( \\omega_1, \\omega_2 \\), the locus of points \\( \\{P : \\operatorname{Pow}_{\\omega_1}(P) = \\operatorname{Pow}_{\\omega_2}(P)\\} \\) is a straight line perpendicular to \\( O_1 O_2 \\) (passing through their intersection points if they meet). For three circles with non-collinear centers, their three pairwise radical axes concur at a unique <strong>Radical Center</strong>!</p><p><strong>2. Ptolemy's Inequality &amp; Cyclic Equality:</strong> For any quadrilateral \\( ABCD \\), \\( AC \\cdot BD \\le AB \\cdot CD + BC \\cdot AD \\), with <strong>equality if and only if \\( ABCD \\) is cyclic</strong>:</p>\\[ AC \\cdot BD = AB \\cdot CD + BC \\cdot AD. \\]<p><strong>3. Brahmagupta's Cyclic Area:</strong> If cyclic quadrilateral \\( ABCD \\) has sides \\( a, b, c, d \\) and semiperimeter \\( s = \\frac{a+b+c+d}{2} \\), its area is \\( [ABCD] = \\sqrt{(s-a)(s-b)(s-c)(s-d)} \\).</p>",
+          "ar": "<p><strong>1. المحور الأساسي والمركز الأساسي:</strong> لدائرتين غير متحدتَي المركز \\( \\omega_1, \\omega_2 \\)، المحل الهندسي للنقاط المتساوية القوة \\( \\operatorname{Pow}_{\\omega_1}(P) = \\operatorname{Pow}_{\\omega_2}(P) \\) هو مستقيم عمودي على خط المركزين \\( O_1 O_2 \\). ولثلاث دوائر مراكزها ليست على استقامة واحدة، تتلاقى محاورها الأساسية الثلاثة في نقطة وحيدة تسمى <strong>المركز الأساسي (Radical Center)</strong>!</p><p><strong>2. متباينة ومبرهنة بطليموس:</strong> لأي رباعي \\( ABCD \\) يتحقق \\( AC \\cdot BD \\le AB \\cdot CD + BC \\cdot AD \\)، وتتحقق <strong>المساواة إذا وفقط إذا كان \\( ABCD \\) رباعياً دائرياً</strong>:</p>\\[ AC \\cdot BD = AB \\cdot CD + BC \\cdot AD. \\]<p><strong>3. صيغة براهماغوبتا لمساحة الرباعي الدائري:</strong> إذا كانت أضلاعه \\( a, b, c, d \\) ونصف محيطه \\( s \\)، فإن مساحته \\( [ABCD] = \\sqrt{(s-a)(s-b)(s-c)(s-d)} \\).</p>"
         }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Similar-Triangle Construction Proof of Ptolemy's Theorem",
+          "ar": "◆ البرهان الأولمبي — البرهان الهندسي الأنيق لمبرهنة بطليموس عبر تشابه المثلثات"
+        },
+        "body": {
+          "en": "<p>Let \\( ABCD \\) be inscribed in a circle. Choose the unique point \\( K \\) on diagonal \\( AC \\) such that \\( \\angle ABK = \\angle DBC \\).<br>1. Since inscribed angles subtending arc \\( BC \\) are equal, \\( \\angle BAK = \\angle BAC = \\angle BDC \\). Thus \\( \\triangle ABK \\sim \\triangle DBC \\) (AA), giving:</p>\\[ \\frac{AK}{DC} = \\frac{AB}{BD} \\implies AK \\cdot BD = AB \\cdot CD. \\]<p>2. Adding \\( \\angle KBD \\) to \\( \\angle ABK = \\angle DBC \\) gives \\( \\angle ABD = \\angle KBC \\). Also \\( \\angle ADB = \\angle ACB = \\angle KCB \\) (subtending arc \\( AB \\)), so \\( \\triangle ABD \\sim \\triangle KBC \\) (AA), giving:</p>\\[ \\frac{KC}{AD} = \\frac{BC}{BD} \\implies KC \\cdot BD = BC \\cdot AD. \\]<p>3. Adding the two equations and using \\( AK + KC = AC \\) yields \\( (AK + KC)BD = AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\). \\( \\blacksquare \\)</p>",
+          "ar": "<p>ليكن \\( ABCD \\) رباعياً دائرياً. نختار النقطة \\( K \\) على القطر \\( AC \\) بحيث يكون \\( \\angle ABK = \\angle DBC \\).<br>1. من تساوي الزوايا المحيطية الحاصرة للقوس \\( BC \\): \\( \\angle BAK = \\angle BDC \\)، فيتشابه المثلثان \\( \\triangle ABK \\sim \\triangle DBC \\)، ومنه:</p>\\[ \\frac{AK}{DC} = \\frac{AB}{BD} \\implies AK \\cdot BD = AB \\cdot CD. \\]<p>2. بإضافة \\( \\angle KBD \\) للزاويتين المتساويتين نحصل على \\( \\angle ABD = \\angle KBC \\)، وكذلك \\( \\angle ADB = \\angle KCB \\) (لحصر القوس \\( AB \\))، فيتشابه المثلثان \\( \\triangle ABD \\sim \\triangle KBC \\)، ومنه:</p>\\[ \\frac{KC}{AD} = \\frac{BC}{BD} \\implies KC \\cdot BD = BC \\cdot AD. \\]<p>3. بجمع المعادلتين واستخدام \\( AK + KC = AC \\) نحصل فوراً على \\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\). \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Circle Angle & Metric Toolkit for Olympiad Proofs",
+          "ar": "أدوات الزوايا والعلاقات المترية للدائرة في البراهين الأولمبية"
+        },
+        "columns": [
+          {
+            "en": "Configuration",
+            "ar": "التشكيل الهندسي"
+          },
+          {
+            "en": "Exact Relation",
+            "ar": "العلاقة الدقيقة"
+          },
+          {
+            "en": "Key Consequence",
+            "ar": "الاستنتاج الأولمبي"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Tangent–Chord Angle",
+              "ar": "الزاوية المماسية–المحيطية"
+            },
+            {
+              "en": "\\(\\angle(TA, AB) = \\angle ACB = \\frac{1}{2}\\widehat{AB}\\)",
+              "ar": "\\(\\angle(TA, AB) = \\angle ACB = \\frac{1}{2}\\widehat{AB}\\)"
+            },
+            {
+              "en": "Proves line \\(TA\\) is tangent to circumcircle \\((ABC)\\)",
+              "ar": "إثبات مماسّية المستقيم \\(TA\\) للدائرة المارة برؤوس \\(\\triangle ABC\\)"
+            }
+          ],
+          [
+            {
+              "en": "Common External Tangent of \\(\\omega_1(R), \\omega_2(r)\\)",
+              "ar": "المماس الخارجي المشترك لدائرتين"
+            },
+            {
+              "en": "\\(t_{\\text{ext}} = \\sqrt{d^2 - (R - r)^2}\\); if externally tangent (\\(d=R+r\\)), \\(t = 2\\sqrt{Rr}\\)",
+              "ar": "\\(t_{\\text{ext}} = \\sqrt{d^2 - (R - r)^2}\\)؛ وعند التماس الخارجي \\(t = 2\\sqrt{Rr}\\)"
+            },
+            {
+              "en": "Instant length formula in multi-circle tangent problems",
+              "ar": "حساب فوري لأطوال المماسات المشتركة بين الدوائر المتماسة"
+            }
+          ],
+          [
+            {
+              "en": "Equilateral Triangle \\(ABC\\) + Point \\(P\\) on Arc \\(BC\\)",
+              "ar": "مثلث متطابق الأضلاع ونقطة على القوس \\(BC\\)"
+            },
+            {
+              "en": "\\(PA = PB + PC\\)",
+              "ar": "\\(PA = PB + PC\\)"
+            },
+            {
+              "en": "Direct corollary of Ptolemy on cyclic \\(ABPC\\) since \\(AB=BC=CA\\)",
+              "ar": "نتيجة فورية من مبرهنة بطليموس لأن \\(AB=BC=CA\\)"
+            }
+          ],
+          [
+            {
+              "en": "Three Pairwise Intersecting Circles",
+              "ar": "ثلاث دوائر متقاطعة مثنى مثنى"
+            },
+            {
+              "en": "Their three common chords are concurrent (or parallel)",
+              "ar": "أوتارها المشتركة الثلاثة تتلاقى في نقطة واحدة (أو تتوازى)"
+            },
+            {
+              "en": "Immediate Radical Center proof of concurrency!",
+              "ar": "إثبات فوري لتلاقي ثلاث مستقيمات عبر المركز الأساسي!"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Internal Chord Power",
+              "ar": "قوة تقاطع وترين داخلياً"
+            },
+            "value": {
+              "en": "\\(PA \\cdot PB = PC \\cdot PD = R^2 - OP^2\\)",
+              "ar": "\\(PA \\cdot PB = PC \\cdot PD = R^2 - OP^2\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Tangent–Secant Power",
+              "ar": "قوة المماس والقاطع الخارجي"
+            },
+            "value": {
+              "en": "\\(PT^2 = PA \\cdot PB = OP^2 - R^2\\) (note \\(PB = PA + AB\\)!)",
+              "ar": "\\(PT^2 = PA \\cdot PB = OP^2 - R^2\\) (انتبه: \\(PB = PA + AB\\)!)"
+            }
+          },
+          {
+            "label": {
+              "en": "Miquel's Pivot Point",
+              "ar": "نقطة ميكيل المحورية"
+            },
+            "value": {
+              "en": "For \\(D \\in BC, E \\in CA, F \\in AB\\), circles \\((AEF), (BFD), (CDE)\\) concur!",
+              "ar": "الدوائر الثلاث \\((AEF), (BFD), (CDE)\\) تتلاقى دائماً في نقطة ميكيل!"
+            }
+          },
+          {
+            "label": {
+              "en": "Simson's Line",
+              "ar": "مستقيم سيمسون"
+            },
+            "value": {
+              "en": "Feet of perpendiculars from \\(P\\) to sides of \\(\\triangle ABC\\) are collinear iff \\(P \\in (ABC)\\)",
+              "ar": "تقع مساقط \\(P\\) على أضلاع \\(\\triangle ABC\\) على استقامة واحدة \\(\\iff P \\in (ABC)\\)"
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Power of a Point, Cyclic Quadrilaterals & Angle Chasing — Coordinate Curve & Structural Analysis",
-          "xrange": [
-            -4,
-            6
+          "type": "circle_chords_similarity",
+          "labels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "P"
           ],
-          "yrange": [
-            -4,
-            8
-          ],
-          "fns": [
-            {
-              "fn": "(x - 2)*(x - 2) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 2)² - 2"
-            },
-            {
-              "fn": "x + 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 2"
-            }
-          ],
-          "points": [
-            {
-              "x": 2,
-              "y": -2,
-              "label": "Vertex (2, -2)"
-            }
-          ]
+          "sides": {
+            "pa": "4",
+            "pb": "9",
+            "pc": "3",
+            "pd": "12"
+          }
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 2)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Power of a Point, Cyclic Quadrilaterals & Angle Chasing.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا."
+          "en": "Intersecting Chords & Similar Triangles: inscribed angles \\(\\angle CAB = \\angle CDB\\) and \\(\\angle ACD = \\angle ABD\\) force \\(\\triangle PAC \\sim \\triangle PDB\\), yielding \\(PA \\cdot PB = PC \\cdot PD = 36\\).",
+          "ar": "تقاطع الأوتار وتشابه المثلثات: تساوي الزوايا المحيطية يعطي \\(\\triangle PAC \\sim \\triangle PDB\\)، ومنه \\(PA \\cdot PB = PC \\cdot PD = 36\\)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Circle Power of a Point, Chords & Cyclic Geometry Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر قوة النقطة والأوتار المتقاطعة والرباعي الدائري"
+          "en": "⊙ Explorer · Power of a Point (Secant, Chord & Tangent Invariant Lab)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر قوة النقطة (ثبات جداء القواطع والأوتار والمماس)"
         },
         "canvasId": "oleuclideancirclesExCanvas",
         "ariaLabel": {
-          "en": "Circle Power of a Point, Chords & Cyclic Geometry Lab interactive mathematical canvas",
-          "ar": "مختبر قوة النقطة والأوتار المتقاطعة والرباعي الدائري لوحة رياضية تفاعلية"
+          "en": "Interactive Circle Geometry explorer demonstrating Power of a Point Pow(P) = d^2 - R^2 across internal chords and external secants/tangents.",
+          "ar": "مستكشف تفاعلي لهندسة الدائرة يوضح ثبات قوة النقطة Pow(P) = d^2 - R^2 للأوتار المتقاطعة والقواطع والمماسات."
         },
         "dataPanel": {
           "btnId": "oleuclideancirclesExCanvas_dataBtn",
@@ -113,17 +241,17 @@
           "descId": "oleuclideancirclesExCanvas_dataDesc",
           "rowsId": "oleuclideancirclesExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Circle Power of a Point, Chords & Cyclic Geometry Lab",
-            "ar": "جدول القيم العددية لـ مختبر قوة النقطة والأوتار المتقاطعة والرباعي الدائري"
+            "en": "Live verification of \\(PA \\cdot PB = |d^2 - R^2|\\) as \\(P\\) moves from inside to outside circle \\(\\omega(O, R)\\)",
+            "ar": "تحقق حي من ثبات \\(PA \\cdot PB = |d^2 - R^2|\\) أثناء انتقال النقطة \\(P\\) من داخل الدائرة إلى خارجها"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -131,33 +259,33 @@
           {
             "id": "oleuclideancirclesExCanvas_s0",
             "label": {
-              "en": "Circle Radius <b>\\(R =\\)</b>",
-              "ar": "Circle Radius <b>\\(R =\\)</b>"
+              "en": "Distance <b>\\(d = OP =\\)</b>",
+              "ar": "البعد عن المركز <b>\\(d = OP =\\)</b>"
             },
-            "min": 1.5,
-            "max": 4.5,
-            "value": 3.5,
+            "min": 0.5,
+            "max": 9,
+            "value": 6.5,
             "step": 0.5,
             "valueDisplayId": "oleuclideancirclesExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle Radius \\(R =\\)",
-              "ar": "Circle Radius \\(R =\\)"
+              "en": "Distance d from circle center O to point P",
+              "ar": "المسافة d من مركز الدائرة O إلى النقطة P"
             }
           },
           {
             "id": "oleuclideancirclesExCanvas_s1",
             "label": {
-              "en": "Subtended Angle <b>\\(\\theta =\\)</b>",
-              "ar": "Subtended Angle <b>\\(\\theta =\\)</b>"
+              "en": "Secant Angle <b>\\(\\theta =\\)</b>",
+              "ar": "زاوية القاطع <b>\\(\\theta =\\)</b>"
             },
-            "min": 0.6,
-            "max": 2.8,
-            "value": 1.8,
-            "step": 0.2,
+            "min": -25,
+            "max": 25,
+            "value": 12,
+            "step": 1,
             "valueDisplayId": "oleuclideancirclesExCanvas_v1",
             "ariaLabel": {
-              "en": "Subtended Angle \\(\\theta =\\)",
-              "ar": "Subtended Angle \\(\\theta =\\)"
+              "en": "Secant ray angle in degrees",
+              "ar": "زاوية ميل القاطع بالدرجات"
             }
           }
         ],
@@ -165,415 +293,262 @@
           {
             "id": "oleuclideancirclesExCanvas_r0",
             "label": {
-              "en": "Chord Length \\(2R\\sin(\\theta/2)\\)",
-              "ar": "Chord Length \\(2R\\sin(\\theta/2)\\)"
+              "en": "Signed Power \\(d^2 - R^2\\)",
+              "ar": "قوة النقطة \\(d^2 - R^2\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(5.48\\)"
+            "value": "+26.25 (R=4)"
           },
           {
             "id": "oleuclideancirclesExCanvas_r1",
             "label": {
-              "en": "Inscribed Angle \\(\\theta/2\\)",
-              "ar": "Inscribed Angle \\(\\theta/2\\)"
+              "en": "Secant Product \\(PA \\cdot PB\\)",
+              "ar": "جداء القاطع \\(PA \\cdot PB\\)"
             },
             "colorClass": "amber",
-            "value": "\\(0.90\\text{ rad}\\)"
+            "value": "26.25"
           },
           {
             "id": "oleuclideancirclesExCanvas_r2",
             "label": {
-              "en": "Enclosed Segment Area",
-              "ar": "Enclosed Segment Area"
+              "en": "Tangent Length \\(PT\\)",
+              "ar": "طول المماس \\(PT\\)"
             },
             "colorClass": "teal",
-            "value": "\\(4.92\\)"
+            "value": "5.12"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Power of a Point, Cyclic Quadrilaterals & Angle Chasing.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا."
-        },
-        "canvas3d": {
-          "btnId": "oleuclideancirclesExCanvas_3dBtn",
-          "wrapId": "oleuclideancirclesExCanvas_3dWrap",
-          "hintId": "oleuclideancirclesExCanvas_3dHint",
-          "btnLabel": "🧊 View Power of a Point, Cyclic Quadrilaterals & Angle Chasing in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Power of a Point, Cyclic Quadrilaterals & Angle Chasing. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا. اسحب للتدوير."
-          }
+          "en": "Keep \\(d = OP\\) fixed and sweep \\(\\theta\\): notice the individual segments \\(PA\\) and \\(PB\\) change, yet their product \\(PA \\cdot PB\\) remains locked at \\(|d^2 - R^2|\\)!",
+          "ar": "ثبّت المسافة \\(d = OP\\) وحرّك زاوية القاطع \\(\\theta\\): ستلاحظ تغير طولَي \\(PA\\) و\\(PB\\) بينما يظل حاصل ضربهما \\(PA \\cdot PB\\) ثابتاً تماماً ويساوي \\(|d^2 - R^2|\\)!"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
-          ],
-          "B": [
-            12,
-            0
-          ],
-          "C": [
-            12,
-            5
-          ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "21",
-            "a": "28",
-            "b": "35"
-          },
-          "rightAt": "B"
+          "type": "circle_tangent_segment",
+          "tangentLabel": "PT = 12",
+          "labelR": "R = 5"
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((21)^2 + (28)^2 = (35)^2\\) for Power of a Point, Cyclic Quadrilaterals & Angle Chasing.",
-          "ar": "العلاقة الهندسية المتعامدة \\((21)^2 + (28)^2 = (35)^2\\) في درس قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 6.1",
-              "ar": "القاعدة الأساسية 6.1"
-            },
-            "value": {
-              "en": "Power of a Point (secant-secant, secant-tangent, chord-chord)",
-              "ar": "Power of a Point (secant-secant, secant-tangent, chord-chord)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 6.2",
-              "ar": "القاعدة الأساسية 6.2"
-            },
-            "value": {
-              "en": "Cyclic quadrilateral criteria & Ptolemy's Theorem",
-              "ar": "Cyclic quadrilateral criteria & Ptolemy's Theorem"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 6.3",
-              "ar": "القاعدة الأساسية 6.3"
-            },
-            "value": {
-              "en": "Inscribed angle, chord-tangent & radical axis",
-              "ar": "Inscribed angle, chord-tangent & radical axis"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 6.4",
-              "ar": "القاعدة الأساسية 6.4"
-            },
-            "value": {
-              "en": "Homothety & spiral similarity",
-              "ar": "Homothety & spiral similarity"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Power of a Point, Cyclic Quadrilaterals & Angle Chasing)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا)"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+          "en": "External Tangent–Radius Right Triangle & Power of \\(P\\): \\(OT \\perp PT\\) gives \\(OP = \\sqrt{5^2 + 12^2} = 13\\), so any secant from \\(P\\) satisfies \\(PA \\cdot PB = PT^2 = 144\\).",
+          "ar": "تعامد نصف القطر مع المماس وقوة النقطة \\(P\\): \\(OT \\perp PT\\) يعطي \\(OP = 13\\)، وكل قاطع يمر بـ \\(P\\) يحقق \\(PA \\cdot PB = PT^2 = 144\\)."
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 6.A — Foundational Formulation (Power of a Point, Cyclic Quadrilaterals & Angle Chasing)",
-          "ar": "مثال محلول 6.A — تطبيق أساسي (قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا)"
+          "en": "Worked Example 6.A — Finding Radius via Intersecting Chords + Center Distance (NSMO Stage 2)",
+          "ar": "مثال محلول 6.A — إيجاد نصف قطر الدائرة من تقاطع وترين والبعد عن المركز (نسما 2)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 14x + 57 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{14}{2} = -7 \\).<br>2. Write \\( (x - 7)^2 = x^2 - 14x + 49 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 7)^2 - 49 + 57 = (x - 7)^2 + 8 \\).<br>4. Since \\( (x - 7)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 8 \\), achieved at \\( x = 7 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 7)^2 + 8 \\); minimum value \\( 8 \\) at \\( x = 7 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 14x + 57 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 7)^2 + 8 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) وتتحقق عند \\( x = 7 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Inside circle \\( \\omega(O, R) \\), chords \\( AB \\) and \\( CD \\) intersect at \\( P \\). Given \\( PA = 6,\\; PB = 8,\\; PC = 4 \\), and \\( OP = 5 \\), find \\( PD \\) and the exact radius \\( R \\) of \\( \\omega \\).</p><p><strong>Solution:</strong><br>1. By Intersecting Chords (Power of \\( P \\)): \\( PA \\cdot PB = PC \\cdot PD \\implies 6 \\times 8 = 4 \\cdot PD \\implies PD = 12 \\).<br>2. Since \\( P \\) lies inside \\( \\omega \\), \\( R^2 - OP^2 = PA \\cdot PB = 48 \\).<br>3. Substituting \\( OP = 5 \\) gives \\( R^2 = 48 + 5^2 = 73 \\implies R = \\sqrt{73} \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> داخل الدائرة \\( \\omega(O, R) \\) يتقاطع الوتران \\( AB \\) و\\( CD \\) في النقطة \\( P \\). إذا علمت أن \\( PA = 6,\\; PB = 8,\\; PC = 4 \\) وأن \\( OP = 5 \\)، فأوجد \\( PD \\) ونصف القطر الدقيق \\( R \\).</p><p><strong>الحل الأولمبي:</strong><br>1. من قوة النقطة داخل الدائرة: \\( PA \\cdot PB = PC \\cdot PD \\implies 48 = 4 \\cdot PD \\implies PD = 12 \\).<br>2. كما أن \\( R^2 - OP^2 = PA \\cdot PB = 48 \\)، وبالتعويض عن \\( OP = 5 \\) نجد \\( R^2 = 48 + 25 = 73 \\implies R = \\sqrt{73} \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 6.B — Intermediate Multi-Step Synthesis (Power of a Point, Cyclic Quadrilaterals & Angle Chasing)",
-          "ar": "مثال محلول 6.B — تطبيق متوسط متعدد الخطوات (قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا)"
+          "en": "Worked Example 6.B — Ptolemy's Theorem on a Regular Heptagon / Equilateral Arc (KAUST KMC)",
+          "ar": "مثال محلول 6.B — تطبيق مبرهنة بطليموس على مثلث متطابق الأضلاع محاط بدائرة (مسابقة كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 14x + 54 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 14x + 54 = 2x + k \\implies x^2 - 16x + (54 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-16)^2 - 4(1)(54 - k) > 0 \\]<br>\\[ 256 - 216 + 4k > 0 \\implies 4k > -40 \\implies k > -10 \\]</p><p><strong>Final Answer:</strong> \\( k > -10 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 14x + 54 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -10 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Equilateral triangle \\( ABC \\) is inscribed in a circle \\( \\omega \\), and point \\( P \\) lies on minor arc \\( BC \\). Given \\( PB = 5 \\) and \\( PC = 9 \\), find the length of \\( PA \\).</p><p><strong>Solution:</strong> Since \\( A, B, P, C \\) lie in cyclic order on \\( \\omega \\), quadrilateral \\( ABPC \\) is cyclic with diagonals \\( AP \\) and \\( BC \\). Applying Ptolemy’s Theorem to \\( ABPC \\):<br>\\[ AP \\cdot BC = AB \\cdot PC + AC \\cdot PB. \\]<br>Because \\( \\triangle ABC \\) is equilateral, let \\( s = AB = BC = AC > 0 \\). Dividing every term by \\( s \\) cancels the unknown side length completely!<br>\\[ AP = PC + PB = 9 + 5 = 14. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> أُحيط المثلث المتطابق الأضلاع \\( ABC \\) بدائرة \\( \\omega \\)، واختيرت نقطة \\( P \\) على القوس الأصغر \\( BC \\). إذا كان \\( PB = 5 \\) و\\( PC = 9 \\)، فأوجد طول \\( PA \\).</p><p><strong>الحل الأولمبي:</strong> النقاط \\( A, B, P, C \\) تكوّن رباعياً دائرياً قطراه \\( AP \\) و\\( BC \\). بتطبيق مبرهنة بطليموس:<br>\\[ AP \\cdot BC = AB \\cdot PC + AC \\cdot PB. \\]<br>وبما أن المثلث متطابق الأضلاع \\( AB = BC = AC = s \\)، نقسم الطرفين على \\( s \\) فيختفي طول ضلع المثلث تماماً:<br>\\[ AP = PC + PB = 9 + 5 = 14. \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 6.C — Advanced Rate & Vector Application (Power of a Point, Cyclic Quadrilaterals & Angle Chasing)",
-          "ar": "مثال محلول 6.C — تطبيق متقدم (قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا)"
+          "en": "Worked Example 6.C — Common Tangents of Three Externally Tangent Circles (AIME / NSMO Finals)",
+          "ar": "مثال محلول 6.C — المماسات المشتركة للدوائر المتماسة خارجياً (AIME / نهائيات نسما)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 21x^2 + 147x + 8 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 9 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 42x + 147 = 3(x - 7)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 7 \\), with \\( g(7) = 8 \\). Thus \\( (7, 8) \\) is the stationary point.<br>3. At \\( x = 9 \\), the gradient is \\( g'(9) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (7, 8) \\); gradient at \\( x = 9 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 21x^2 + 147x + 8 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 9 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 7)^2 \\)، تنعدم عند \\( (7, 8) \\)، وعند \\( x = 9 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Circles \\( \\omega_1 \\) and \\( \\omega_2 \\) of radii \\( R_1 = 9 \\) and \\( R_2 = 4 \\) are externally tangent to each other and both tangent to line \\( \\ell \\) on the same side. Find (a) the distance between their tangency points \\( A, B \\) on \\( \\ell \\), and (b) the radius \\( r \\) of the small circle \\( \\omega_3 \\) nestled tangent to \\( \\omega_1, \\omega_2, \\) and \\( \\ell \\).</p><p><strong>Solution:</strong><br>(a) Drop perpendiculars from \\( O_1, O_2 \\) to \\( \\ell \\). In the right trapezoid \\( O_1 A B O_2 \\), hypotenuse \\( O_1 O_2 = R_1 + R_2 = 13 \\) and height difference \\( R_1 - R_2 = 5 \\), so \\( AB = \\sqrt{(R_1+R_2)^2 - (R_1-R_2)^2} = 2\\sqrt{R_1 R_2} = 2\\sqrt{36} = 12 \\).<br>(b) Applying the same formula \\( 2\\sqrt{R_i r} \\) to \\( (\\omega_1, \\omega_3) \\) and \\( (\\omega_3, \\omega_2) \\) along \\( \\ell \\), the tangency point \\( C \\) of \\( \\omega_3 \\) satisfies \\( AC + CB = AB \\):<br>\\[ 2\\sqrt{R_1 r} + 2\\sqrt{R_2 r} = 2\\sqrt{R_1 R_2} \\implies \\frac{1}{\\sqrt{r}} = \\frac{1}{\\sqrt{R_1}} + \\frac{1}{\\sqrt{R_2}} = \\frac{1}{3} + \\frac{1}{2} = \\frac{5}{6} \\implies r = \\frac{36}{25}. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> دائرتان \\( \\omega_1, \\omega_2 \\) نصفا قطريهما \\( R_1 = 9 \\) و\\( R_2 = 4 \\) متماستان خارجياً وتمسّان المستقيم \\( \\ell \\) في جهة واحدة عند \\( A, B \\). أوجد: (أ) الطول \\( AB \\)، (ب) نصف قطر الدائرة الصغيرة \\( \\omega_3 \\) المحصورة بينهما والمماسة لكلتيهما وللمستقيم \\( \\ell \\).</p><p><strong>الحل الأولمبي:</strong><br>(أ) من شبه المنحرف القائم \\( O_1 A B O_2 \\)، الوتر \\( R_1 + R_2 = 13 \\) وفرق الارتفاعين \\( R_1 - R_2 = 5 \\)، فيكون \\( AB = 2\\sqrt{R_1 R_2} = 2\\sqrt{36} = 12 \\).<br>(ب) بتطبيق القاعدة نفسها على الدائرة الوسطى \\( \\omega_3 \\) عند نقطة تماسها \\( C \\) حيث \\( AC + CB = AB \\):<br>\\[ 2\\sqrt{R_1 r} + 2\\sqrt{R_2 r} = 2\\sqrt{R_1 R_2} \\implies \\frac{1}{\\sqrt{r}} = \\frac{1}{\\sqrt{9}} + \\frac{1}{\\sqrt{4}} = \\frac{5}{6} \\implies r = \\frac{36}{25}. \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 6.D — Exam-Grade Challenge Synthesis (Power of a Point, Cyclic Quadrilaterals & Angle Chasing)",
-          "ar": "مثال محلول 6.D — مسألة تحدي بمستوى الاختبار (قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا)"
+          "en": "Worked Example 6.D — Radical Center Proof That Three Triangle Altitudes Concur (Olympiad Proof)",
+          "ar": "مثال محلول 6.D — برهان تلاقي ارتفاعات المثلث عبر المركز الأساسي وقوة النقطة"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 7n^2 + 8n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 7(1)^2 + 8(1) = 15 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[7n^2 + 8n\\right] - \\left[7(n-1)^2 + 8(n-1)\\right] = 14n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 14 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 141 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 14n + 1 \\), \\( d = 14 \\), and \\( u_{10} = 141 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 7n^2 + 8n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 14n + 1 \\)، والأساس \\( d = 14 \\)، والحد العاشر \\( u_{10} = 141 \\).</p>"
+          "en": "<p><strong>Problem:</strong> In acute \\( \\triangle ABC \\), altitudes \\( AD, BE, CF \\) have feet \\( D, E, F \\) on \\( BC, CA, AB \\). Prove using cyclic quadrilaterals and Radical Axes that \\( AD, BE, CF \\) are concurrent.</p><p><strong>Solution:</strong> Construct the three circles whose diameters are the sides of \\( \\triangle ABC \\):<br>• Circle \\( \\gamma_C \\) (diameter \\( AB \\)) passes through \\( A, B, D, E \\) because \\( \\angle ADB = \\angle AEB = 90^\\circ \\);<br>• Circle \\( \\gamma_B \\) (diameter \\( AC \\)) passes through \\( A, C, D, F \\) because \\( \\angle ADC = \\angle AFC = 90^\\circ \\);<br>• Circle \\( \\gamma_A \\) (diameter \\( BC \\)) passes through \\( B, C, E, F \\) because \\( \\angle BEC = \\angle BFC = 90^\\circ \\).<br>Now read the three pairwise radical axes (their common chords):<br>• \\( \\gamma_B \\cap \\gamma_C = \\{A, D\\} \\implies \\) radical axis is line \\( AD \\);<br>• \\( \\gamma_C \\cap \\gamma_A = \\{B, E\\} \\implies \\) radical axis is line \\( BE \\);<br>• \\( \\gamma_A \\cap \\gamma_B = \\{C, F\\} \\implies \\) radical axis is line \\( CF \\).<br>By the Radical Center Theorem, the three radical axes \\( AD, BE, CF \\) concur at a single point \\( H \\) (the orthocenter)! \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>المسألة:</strong> في المثلث الحاد الزوايا \\( \\triangle ABC \\)، لتكن \\( AD, BE, CF \\) الارتفاعات الساقطة على الأضلاع. أثبت باستخدام الدوائر والمحاور الأساسية أن الارتفاعات الثلاثة تتلاقى في نقطة واحدة.</p><p><strong>البرهان الأولمبي:</strong> نرسم الدوائر الثلاث التي أقطارها أضلاع المثلث:<br>• الدائرة \\( \\gamma_C \\) (قطرها \\( AB \\)) تمر بالنقاط \\( A, B, D, E \\) لأن \\( \\angle ADB = \\angle AEB = 90^\\circ \\)؛<br>• الدائرة \\( \\gamma_B \\) (قطرها \\( AC \\)) تمر بالنقاط \\( A, C, D, F \\)؛<br>• الدائرة \\( \\gamma_A \\) (قطرها \\( BC \\)) تمر بالنقاط \\( B, C, E, F \\).<br>والآن ننظر إلى الأوتار المشتركة (المحاور الأساسية مثنى مثنى):<br>• المحور الأساسي لـ \\( \\gamma_B, \\gamma_C \\) هو المستقيم \\( AD \\)؛<br>• المحور الأساسي لـ \\( \\gamma_C, \\gamma_A \\) هو المستقيم \\( BE \\)؛<br>• المحور الأساسي لـ \\( \\gamma_A, \\gamma_B \\) هو المستقيم \\( CF \\).<br>حسب مبرهنة المركز الأساسي، تتلاقى المحاور الأساسية الثلاثة \\( AD, BE, CF \\) في نقطة واحدة \\( H \\) هي ملتقى الارتفاعات! \\( \\blacksquare \\)</p>"
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Power of a Point, Cyclic Quadrilaterals & Angle Chasing",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا"
+          "en": "⚠ Olympiad Trap — Mixing Up Secant Segment AB with Full Secant Length PB!",
+          "ar": "⚠ فخ أولمبي شائع — الخلط بين طول الوتر الداخلي AB وطول القاطع الكلي PB!"
         },
         "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+          "en": "<p>When an external secant from \\( P \\) enters the circle at \\( A \\) and exits at \\( B \\), Power of a Point states \\( PT^2 = PA \\cdot PB \\), <strong>NOT</strong> \\( PA \\cdot AB \\)! Always compute \\( PB = PA + AB \\) first before multiplying.</p>",
+          "ar": "<p>عندما يقطع مستقيم خارجي من \\( P \\) الدائرة عند \\( A \\) ثم \\( B \\)، فإن قوة النقطة تنص على أن \\( PT^2 = PA \\cdot PB \\) <strong>وليس</strong> \\( PA \\cdot AB \\)! احرص دائماً على حساب الطول الكامل \\( PB = PA + AB \\) أولاً.</p>"
         }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Power of a Point, Cyclic Quadrilaterals & Angle Chasing)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا)"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
       },
       {
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Power of a Point, Cyclic Quadrilaterals & Angle Chasing",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا"
+          "en": "▲ Contest Strategy — Hunting the Six Classic Cyclic Quadrilaterals in Orthocenter Diagrams",
+          "ar": "▲ استراتيجية المسابقات — اكتشاف الرباعيات الدائرية الستة حول ملتقى الارتفاعات"
         },
         "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+          "en": "<p>Whenever two or three altitudes \\( AD, BE, CF \\) meet at \\( H \\), immediately mark all <strong>six</strong> cyclic quadrilaterals: three with side diameters \\( (BCEF), (CAFD), (ABDE) \\) and three with \\( AH, BH, CH \\) diameters \\( (AEHF), (BFHD), (CDHE) \\)!</p>",
+          "ar": "<p>كلما ظهرت ارتفاعات المثلث \\( AD, BE, CF \\) المتلاقية في \\( H \\)، حدّد فوراً <strong>الرباعيات الدائرية الستة</strong>: ثلاثة أقطارها أضلاع المثلث \\( (BCEF), (CAFD), (ABDE) \\)، وثلاثة أقطارها \\( AH, BH, CH \\) وهي \\( (AEHF), (BFHD), (CDHE) \\)!</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(8) \\) for the quadratic function \\( f(x) = 7x^2 - 7x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(8) \\) للدالة التربيعية \\( f(x) = 7x^2 - 7x + 10 \\)."
+          "en": "<strong>[Practice 6.1 · NSMO Stage 1 / Easy]</strong> From external point \\( P \\), tangent \\( PT \\) to circle \\( \\omega \\) has length \\( 10 \\), and a secant from \\( P \\) meets \\( \\omega \\) first at \\( A \\) with \\( PA = 5 \\) and second at \\( B \\). Find the chord length \\( AB \\).",
+          "ar": "<strong>[تدريب 6.1 · نسما المرحلة 1 / سهل]</strong> من نقطة خارجية \\( P \\)، رُسم مماس \\( PT \\) لدائرة \\( \\omega \\) طوله \\( 10 \\)، وقاطع يلاقي الدائرة أولاً في \\( A \\) حيث \\( PA = 5 \\) وثانياً في \\( B \\). أوجد طول الوتر \\( AB \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 8 \\) directly into \\( f(x) = 7x^2 - 7x + 10 \\).",
-            "ar": "عوّض عن \\( x = 8 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+            "en": "Use Tangent–Secant Power of a Point: \\( PT^2 = PA \\cdot PB \\).",
+            "ar": "طبّق علاقة المماس والقاطع: \\( PT^2 = PA \\cdot PB \\)."
           },
           {
-            "en": "Factor out \\( 7x(x - 1) + 10 = 7(8)(7) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 7(8)(7) + 10 \\)."
+            "en": "Solve \\( 10^2 = 5 \\cdot PB \\) for the full length \\( PB \\).",
+            "ar": "احسب الطول الكلي \\( PB \\) من \\( 100 = 5 \\cdot PB \\)."
           },
           {
-            "en": "Compute \\( 392 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 392 + 10 \\) للحصول على النتيجة النهائية."
+            "en": "Subtract \\( AB = PB - PA \\)!",
+            "ar": "اطرح \\( AB = PB - PA \\) لإيجاد طول الوتر!"
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 8 \\) gives \\( f(8) = 7(8)^2 - 7(8) + 10 = 448 - 56 + 10 = 402 \\).",
-          "ar": "بالتعويض عن \\( x = 8 \\) نجد \\( f(8) = 7(8)^2 - 7(8) + 10 = 402 \\)."
+          "en": "By Power of a Point, \\( PT^2 = PA \\cdot PB \\implies 100 = 5 \\cdot PB \\implies PB = 20 \\). Therefore the chord length is \\( AB = PB - PA = 20 - 5 = 15 \\).",
+          "ar": "من قوة النقطة: \\( PT^2 = PA \\cdot PB \\implies 100 = 5 \\cdot PB \\implies PB = 20 \\). وبذلك يكون طول الوتر \\( AB = PB - PA = 20 - 5 = 15 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 15x + 56 = 0 \\) that is greater than \\( 7 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 7 \\) للمعادلة \\( x^2 - 15x + 56 = 0 \\)."
+          "en": "<strong>[Practice 6.2 · KAUST KMC Regional / Easy]</strong> In cyclic quadrilateral \\( ABCD \\), \\( AD = CD \\), \\( \\angle ABC = 112^\\circ \\), and \\( \\angle BCD = 95^\\circ \\). Find \\( \\angle BAC \\) in degrees.",
+          "ar": "<strong>[تدريب 6.2 · تصفيات كاوست / سهل]</strong> في الرباعي الدائري \\( ABCD \\)، إذا كان \\( AD = CD \\)، و\\( \\angle ABC = 112^\\circ \\)، و\\( \\angle BCD = 95^\\circ \\)، فأوجد قياس الزاوية \\( \\angle BAC \\) بالدرجات."
         },
         "hints": [
           {
-            "en": "Look for two integers whose sum is \\( 15 \\) and whose product is \\( 56 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 15 \\) وحاصل ضربهما \\( 56 \\)."
+            "en": "Opposite angles in cyclic \\( ABCD \\) sum to \\( 180^\\circ \\), so find \\( \\angle ADC = 180^\\circ - \\angle ABC \\).",
+            "ar": "الزاويتان المتقابلتان في الرباعي الدائري متكاملتان، احسب \\( \\angle ADC = 180^\\circ - \\angle ABC \\)."
           },
           {
-            "en": "Factor the quadratic as \\( (x - 7)(x - 8) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 7)(x - 8) = 0 \\)."
+            "en": "Use isosceles \\( \\triangle ACD \\) (\\( AD = CD \\)) to find \\( \\angle CAD = \\angle ACD \\), and \\( \\angle BAD = 180^\\circ - \\angle BCD \\).",
+            "ar": "استخدم المثلث المتطابق الضلعين \\( \\triangle ACD \\) لإيجاد \\( \\angle CAD \\)، والزاوية \\( \\angle BAD = 180^\\circ - \\angle BCD \\)."
           },
           {
-            "en": "Compare the two roots \\( x = 7 \\) and \\( x = 8 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 7 \\) و \\( x = 8 \\) واختر الأكبر."
+            "en": "Compute \\( \\angle BAC = \\angle BAD - \\angle CAD \\).",
+            "ar": "اطرح \\( \\angle BAC = \\angle BAD - \\angle CAD \\)."
           }
         ],
         "solution": {
-          "en": "Factoring gives \\( (x - 7)(x - 8) = 0 \\), so the roots are \\( x = 7 \\) and \\( x = 8 \\). The root greater than \\( 7 \\) is \\( x = 8 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 7)(x - 8) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 7 \\) هو \\( x = 8 \\)."
+          "en": "Since \\( ABCD \\) is cyclic, \\( \\angle ADC = 180^\\circ - 112^\\circ = 68^\\circ \\). Because \\( AD = CD \\), \\( \\angle CAD = \\frac{180^\\circ - 68^\\circ}{2} = 56^\\circ \\). Also \\( \\angle BAD = 180^\\circ - \\angle BCD = 180^\\circ - 95^\\circ = 85^\\circ \\). Hence \\( \\angle BAC = 85^\\circ - 56^\\circ = 29^\\circ \\).",
+          "ar": "بما أن \\( ABCD \\) رباعي دائري، فإن \\( \\angle ADC = 180^\\circ - 112^\\circ = 68^\\circ \\). ومن \\( AD = CD \\) نجد \\( \\angle CAD = \\frac{180^\\circ - 68^\\circ}{2} = 56^\\circ \\). كما أن \\( \\angle BAD = 180^\\circ - 95^\\circ = 85^\\circ \\)، إذن \\( \\angle BAC = 85^\\circ - 56^\\circ = 29^\\circ \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 63 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 63 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+          "en": "<strong>[Practice 6.3 · NSMO Stage 2 / Medium]</strong> Cyclic quadrilateral \\( ABCD \\) has side lengths \\( AB = 4,\\; BC = 5,\\; CD = 6,\\; DA = 7 \\). Find its exact area using Brahmagupta’s formula.",
+          "ar": "<strong>[تدريب 6.3 · نسما المرحلة 2 / متوسط]</strong> رباعي دائري \\( ABCD \\) أطوال أضلاعه \\( AB = 4,\\; BC = 5,\\; CD = 6,\\; DA = 7 \\). أوجد مساحته الدقيقة باستخدام صيغة براهماغوبتا."
         },
         "hints": [
           {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+            "en": "Compute the semiperimeter \\( s = \\frac{4 + 5 + 6 + 7}{2} \\).",
+            "ar": "احسب نصف المحيط \\( s = \\frac{4 + 5 + 6 + 7}{2} \\)."
           },
           {
-            "en": "Substitute \\( a = 1, b = -2k, c = 63 \\) into \\( (-2k)^2 - 4(1)(63) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(63) = 0 \\)."
+            "en": "Evaluate \\( (s-a)(s-b)(s-c)(s-d) \\).",
+            "ar": "احسب الجداء \\( (s-a)(s-b)(s-c)(s-d) \\)."
           },
           {
-            "en": "Simplify \\( 4k^2 = 252 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 252 \\) واقسم الطرفين على 4."
+            "en": "Simplify the square root \\( \\sqrt{7 \\cdot 6 \\cdot 5 \\cdot 4} \\).",
+            "ar": "بسّط الجذر التربيعي \\( \\sqrt{7 \\cdot 6 \\cdot 5 \\cdot 4} \\)."
           }
         ],
         "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(63) = 4k^2 - 252 = 0 \\implies k^2 = 63 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 252 = 0 \\implies k^2 = 63 \\)."
+          "en": "The semiperimeter is \\( s = 11 \\), so \\( [ABCD] = \\sqrt{(11-4)(11-5)(11-6)(11-7)} = \\sqrt{7 \\cdot 6 \\cdot 5 \\cdot 4} = \\sqrt{840} = 2\\sqrt{210} \\).",
+          "ar": "نصف المحيط \\( s = 11 \\)، ومن صيغة براهماغوبتا: \\( [ABCD] = \\sqrt{7 \\cdot 6 \\cdot 5 \\cdot 4} = \\sqrt{840} = 2\\sqrt{210} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 7 \\) and common difference \\( d = 16 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 7 \\) وأساسها \\( d = 16 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+          "en": "<strong>[Practice 6.4 · AMC 12 / KAUST KMC / Hard]</strong> Isosceles trapezoid \\( ABCD \\) (\\( AB \\parallel CD \\), \\( BC = AD = 7 \\)) has bases \\( AB = 6 \\) and \\( CD = 11 \\). Find the exact length of diagonal \\( AC \\).",
+          "ar": "<strong>[تدريب 6.4 · AMC 12 / مسابقة كاوست / متقدم]</strong> شبه منحرف متطابق الساقين \\( ABCD \\) (\\( AB \\parallel CD \\)، \\( BC = AD = 7 \\)) طولا قاعدتيه \\( AB = 6 \\) و\\( CD = 11 \\). أوجد الطول الدقيق للقطر \\( AC \\)."
         },
         "hints": [
           {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+            "en": "Every isosceles trapezoid is cyclic, and by symmetry its diagonals are equal: \\( AC = BD \\)!",
+            "ar": "كل شبه منحرف متطابق الساقين هو رباعي دائري، ومن التناظر يتساوى قطراه \\( AC = BD \\)!"
           },
           {
-            "en": "Substitute \\( n = 10, a = 7, d = 16 \\): \\( S_{10} = 5[2(7) + 9(16)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(7) + 9(16)] \\)."
+            "en": "Apply Ptolemy’s Theorem: \\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\).",
+            "ar": "طبّق مبرهنة بطليموس مباشرة: \\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\)."
           },
           {
-            "en": "Evaluate \\( 5(14 + 144) = 790 \\).",
-            "ar": "احسب الناتج \\( 5(14 + 144) = 790 \\)."
+            "en": "Solve \\( AC^2 = 6(11) + 7(7) \\).",
+            "ar": "احسب \\( AC^2 = 6(11) + 7(7) \\)."
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(7) + 9(16)] = 5(158) = 790 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(14 + 144) = 790 \\)."
+          "en": "Every isosceles trapezoid is cyclic with \\( AC = BD \\). By Ptolemy’s Theorem, \\( AC^2 = AB \\cdot CD + BC \\cdot AD = 6(11) + 7(7) = 66 + 49 = 115 \\), so \\( AC = \\sqrt{115} \\).",
+          "ar": "بما أن شبه المنحرف المتطابق الساقين رباعي دائري وقطراه متساويان \\( AC = BD \\)، تعطي مبرهنة بطليموس فوراً \\( AC^2 = 6(11) + 7^2 = 115 \\implies AC = \\sqrt{115} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 7x^2 - 8x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 7x^2 - 8x + 7 \\) عند \\( x = 3 \\)."
+          "en": "<strong>[Practice 6.5 · NSMO National Finals / AIME]</strong> Circles \\( \\omega_1 \\) (radius \\( 7 \\)) and \\( \\omega_2 \\) (radius \\( 11 \\)) have centers \\( O_1 O_2 = 12 \\) apart. Their radical axis intersects segment \\( O_1 O_2 \\) at point \\( M \\). Find the exact length \\( O_1 M \\).",
+          "ar": "<strong>[تدريب 6.5 · نهائيات نسما / AIME]</strong> دائرتان \\( \\omega_1 \\) (نصف قطرها \\( 7 \\)) و\\( \\omega_2 \\) (نصف قطرها \\( 11 \\)) المسافة بين مركزيهما \\( O_1 O_2 = 12 \\). يقطع محورهما الأساسي القطعة \\( O_1 O_2 \\) عند \\( M \\). أوجد الطول الدقيق \\( O_1 M \\)."
         },
         "hints": [
           {
-            "en": "Differentiate \\( y = x^3 + 7x^2 - 8x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+            "en": "Let \\( O_1 M = x \\) and \\( O_2 M = 12 - x \\).",
+            "ar": "ضع \\( O_1 M = x \\) و\\( O_2 M = 12 - x \\)."
           },
           {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 14x - 8 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 14x - 8 \\)."
+            "en": "Equate powers on the radical axis: \\( O_1 M^2 - R_1^2 = O_2 M^2 - R_2^2 \\).",
+            "ar": "ساوِ قوّتَي النقطة \\( M \\) بالنسبة للدائرتين: \\( x^2 - 7^2 = (12 - x)^2 - 11^2 \\)."
           },
           {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 14(3) - 8 = 61 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 42 - 8 = 61 \\)."
+            "en": "Expand and solve the linear equation in \\( x \\).",
+            "ar": "فكّ التربيع وحل المعادلة الخطية الناتجة في \\( x \\)."
           }
         ],
         "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 14x - 8 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 42 - 8 = 61 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 14x - 8 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 42 - 8 = 61 \\)."
+          "en": "On the radical axis, \\( x^2 - 49 = (12 - x)^2 - 121 = 144 - 24x + x^2 - 121 \\). Cancelling \\( x^2 \\) gives \\( -49 = 23 - 24x \\implies 24x = 72 \\implies x = O_1 M = 3 \\).",
+          "ar": "تتساوى القوتان على المحور الأساسي: \\( x^2 - 49 = (12 - x)^2 - 121 \\implies -49 = 23 - 24x \\implies 24x = 72 \\implies O_1 M = 3 \\)."
         }
       },
       {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Ceva's, Menelaus', Stewart's Theorems & Triangle Centers",
+            "label": "Euclidean Geometry II: Triangle Centers, Ceva & Stewart",
             "chapterId": "ol-triangle-centers-trig",
             "trackId": "olympiad"
           },
           {
-            "label": "Recurrence Relations, States & Contest Probability",
-            "chapterId": "ol-recurrence-probability",
+            "label": "NSMO of KSA — National Finals & IMO Pathway",
+            "chapterId": "ol-nsmo-national-finals",
             "trackId": "olympiad"
           },
           {
-            "trackId": "ibhl",
-            "chapterId": "ibhl-overview",
-            "label": "IBHL: Overview"
+            "label": "KAUST Campus Finals & Advanced Synthesis",
+            "chapterId": "ol-kaust-finals-academy",
+            "trackId": "olympiad"
           }
         ]
       }

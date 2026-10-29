@@ -105,7 +105,7 @@ any client.
 ### 6. Deploying Edge Functions (`ai-proxy` & `google-token`)
 
 ClipSAT provides two secure Supabase Edge Functions in `supabase/functions/`:
-1. **`ai-proxy`**: Houses AI model keys server-side (GROQ/OpenAI), enforces user session authentication, checks daily usage quotas, applies IP rate limits (25 req/min), and filters prompt injection attacks.
+1. **`ai-proxy`**: Houses AI model keys server-side (Gemini/GROQ/OpenAI), enforces user session authentication, checks the 10 questions/day quota (with no other rate, weekly, monthly, or length limits), and filters prompt injection attacks.
 2. **`google-token`**: Handles OAuth token exchange for Google Classroom and Google Forms exports.
 
 #### Deployment Steps:

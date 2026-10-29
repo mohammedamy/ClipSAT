@@ -1,27 +1,35 @@
 {
   "id": "ol-modular-number-theory",
   "chapterNumber": "2",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Divisibility, Prime Factorization & Modular Arithmetic",
-    "ar": "قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+    "en": "Number Theory I: Divisibility, Primes, Fermat–Euler Theorems & Chinese Remainder Theorem",
+    "ar": "نظرية الأعداد (1): قابلية القسمة والأعداد الأولية ومبرهنات فيرما وأويلر والباقي الصيني"
+  },
+  "railLabel": {
+    "en": "Modular Number Theory & CRT",
+    "ar": "نظرية الأعداد والحساب المعياري"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 2 — Number Theory I",
+    "emoji": "🔢",
+    "category": "Core Pillar 2 — Olympiad Number Theory I",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
-      "Divisor count d(n) & sum of divisors σ(n)",
       "Euclidean algorithm & Bézout's identity",
-      "Modular congruences, Fermat's Little Theorem & Euler's φ(n)",
+      "Multiplicative functions τ(n), σ(n), φ(n)",
+      "Fermat's Little, Euler's Totient & Wilson's Theorems",
       "Chinese Remainder Theorem (CRT)",
-      "Legendre's formula for v_p(n!)"
+      "Legendre's formula & p-adic valuation v_p(n!)"
     ]
   },
   "content": {
@@ -29,83 +37,211 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Divisibility, Prime Factorization & Modular Arithmetic</strong> (Olympiad Module 2 — Number Theory I).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)</strong>."
+          "en": "Number theory is the signature battleground of Saudi NSMO, KAUST KMC, AIME, and the IMO. Mastering <strong>congruence arithmetic</strong> \\(\\pmod m\\), <strong>Euler’s totient theorem</strong>, the <strong>Chinese Remainder Theorem (CRT)</strong>, and <strong>\\(p\\)-adic valuation \\(v_p(n)\\)</strong> converts enormous exponential expressions and divisibility claims into crisp, finite modular deductions.",
+          "ar": "تُعدّ نظرية الأعداد الميدان الأبرز للتمييز في أولمبياد «نسما» الوطني (NSMO)، ومسابقة كاوست (KMC)، واختبار AIME، والأولمبياد الدولي IMO. إن إتقان <strong>الحساب المعياري</strong> \\(\\pmod m\\)، و<strong>مبرهنة أويلر</strong>، و<strong>مبرهنة الباقي الصيني (CRT)</strong>، و<strong>التقييم \\(p\\)-آدي \\(v_p(n)\\)</strong> يحوّل الأسس العملاقة ومسائل قابلية القسمة إلى استنتاجات منتهية فائقة الأناقة."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 2.1 — Divisor Functions, Fermat's Little Theorem & Legendre's Formula",
-          "ar": "● تعريف 2.1 — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+          "en": "● Definition 2.1 — Prime Factorization, Arithmetic Functions & p-adic Valuation",
+          "ar": "● تعريف 2.1 — التحليل الأولي والدوال الحسابية والتقييم الأسّي \\(v_p\\)"
         },
         "body": {
-          "en": "<p>If \\( n = p_1^{e_1} p_2^{e_2} \\cdot s p_k^{e_k} \\) is the canonical prime factorization of \\( n \\), then the number of positive divisors is \\[ d(n) = (e_1 + 1)(e_2 + 1)\\cdot s(e_k + 1). \\] By <strong>Fermat's Little Theorem</strong>, if \\( p \\) is prime and \\( p \\nmid a \\), then \\( a^{p-1} \\equiv 1 \\pmod{p} \\). By <strong>Legendre's Formula</strong>, the exact exponent of a prime \\( p \\) dividing \\( n! \\) is \\( \\nu_p(n!) = \\sum_{k=1}^{\\infty} \\left\\lfloor \\frac{n}{p^k} \\right\\rfloor \\).</p>",
-          "ar": "<p>If \\( n = p_1^{e_1} p_2^{e_2} \\cdot s p_k^{e_k} \\) is the canonical prime factorization of \\( n \\), then the number of positive divisors is \\[ d(n) = (e_1 + 1)(e_2 + 1)\\cdot s(e_k + 1). \\] By <strong>Fermat's Little Theorem</strong>, if \\( p \\) is prime and \\( p \\nmid a \\), then \\( a^{p-1} \\equiv 1 \\pmod{p} \\). By <strong>Legendre's Formula</strong>, the exact exponent of a prime \\( p \\) dividing \\( n! \\) is \\( \\nu_p(n!) = \\sum_{k=1}^{\\infty} \\left\\lfloor \\frac{n}{p^k} \\right\\rfloor \\).</p>"
+          "en": "<p>By the Fundamental Theorem of Arithmetic, every integer \\( n > 1 \\) factors uniquely as \\( n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\). Its key multiplicative invariants are:</p>\\[ \\tau(n) = \\prod_{i=1}^k (e_i + 1), \\qquad \\sigma(n) = \\prod_{i=1}^k \\frac{p_i^{e_i+1} - 1}{p_i - 1}, \\qquad \\varphi(n) = n \\prod_{i=1}^k \\left(1 - \\frac{1}{p_i}\\right). \\]<p>For a prime \\( p \\), the <strong>\\( p \\)-adic valuation</strong> \\( v_p(n) \\) is the largest exponent \\( e \\) such that \\( p^e \\mid n \\). <strong>Legendre's Theorem</strong> gives the exact prime power dividing \\( n! \\):</p>\\[ v_p(n!) = \\sum_{j=1}^{\\infty} \\left\\lfloor \\frac{n}{p^j} \\right\\rfloor = \\frac{n - s_p(n)}{p - 1}, \\]<p>where \\( s_p(n) \\) is the sum of the base-\\( p \\) digits of \\( n \\).</p>",
+          "ar": "<p>حسب المبرهنة الأساسية في الحساب، يتحلل كل عدد صحيح \\( n > 1 \\) بصورة وحيدة إلى عوامل أولية \\( n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\)، وتعطى دواله الضربية الأساسية بالعلاقات:</p>\\[ \\tau(n) = \\prod_{i=1}^k (e_i + 1), \\qquad \\sigma(n) = \\prod_{i=1}^k \\frac{p_i^{e_i+1} - 1}{p_i - 1}, \\qquad \\varphi(n) = n \\prod_{i=1}^k \\left(1 - \\frac{1}{p_i}\\right). \\]<p>ولأي عدد أولي \\( p \\)، يُعرَّف <strong>التقييم \\( v_p(n) \\)</strong> بأنه أكبر أس \\( e \\) يحقق \\( p^e \\mid n \\). وتعطي <strong>صيغة ليجاندر</strong> الأس الدقيق للعدد الأولي \\( p \\) في \\( n! \\):</p>\\[ v_p(n!) = \\sum_{j=1}^{\\infty} \\left\\lfloor \\frac{n}{p^j} \\right\\rfloor = \\frac{n - s_p(n)}{p - 1}, \\]<p>حيث \\( s_p(n) \\) مجموع أرقام العدد \\( n \\) مكتوباً في الأساس \\( p \\).</p>"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Divisibility, Prime Factorization & Modular Arithmetic",
-          "ar": "● الفهم المفاهيمي العميق — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+          "en": "● Theorem 2.2 — Fermat's Little, Euler's Totient, Wilson's Theorem & CRT",
+          "ar": "● مبرهنة 2.2 — مبرهنات فيرما الصغرى وأويلر وويلسون والباقي الصيني (CRT)"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Divisibility, Prime Factorization & Modular Arithmetic</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p><strong>1. Euler's &amp; Fermat's Theorems:</strong> If \\( \\gcd(a, m) = 1 \\), then \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). In particular, for prime \\( p \\nmid a \\), \\( a^{p-1} \\equiv 1 \\pmod p \\).</p><p><strong>2. Wilson's Theorem:</strong> An integer \\( p > 1 \\) is prime if and only if \\( (p - 1)! \\equiv -1 \\pmod p \\) (and \\( (p - 2)! \\equiv 1 \\pmod p \\)).</p><p><strong>3. Chinese Remainder Theorem (CRT):</strong> If \\( m_1, m_2, \\dots, m_r \\) are pairwise coprime (\\( \\gcd(m_i, m_j) = 1 \\)), then the system \\( x \\equiv c_i \\pmod{m_i} \\) has a <strong>unique solution modulo \\( M = m_1 m_2 \\cdots m_r \\)</strong>.</p>",
+          "ar": "<p><strong>1. مبرهنتا أويلر وفيرما الصغرى:</strong> إذا كان \\( \\gcd(a, m) = 1 \\)، فإن \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). وبوجه خاص لعدد أولي \\( p \\nmid a \\): \\( a^{p-1} \\equiv 1 \\pmod p \\).</p><p><strong>2. مبرهنة ويلسون:</strong> يكون العدد \\( p > 1 \\) أولياً إذا وفقط إذا كان \\( (p - 1)! \\equiv -1 \\pmod p \\) (ومنه \\( (p - 2)! \\equiv 1 \\pmod p \\)).</p><p><strong>3. مبرهنة الباقي الصيني (CRT):</strong> إذا كانت المقاسات \\( m_1, m_2, \\dots, m_r \\) أولية فيما بينها مثنى مثنى (\\( \\gcd(m_i, m_j) = 1 \\))، فإن نظام التطابقات \\( x \\equiv c_i \\pmod{m_i} \\) يمتلك <strong>حلاً وحيداً بترديد \\( M = m_1 m_2 \\cdots m_r \\)</strong>.</p>"
         }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Bijective Residue Permutation Proof of Euler's Totient Theorem",
+          "ar": "◆ البرهان الأولمبي — برهان مبرهنة أويلر عبر تبديل البواقي الأولية نسبياً"
+        },
+        "body": {
+          "en": "<p>Let \\( R = \\{r_1, r_2, \\dots, r_{\\varphi(m)}\\} \\) be a reduced residue system modulo \\( m \\) (all \\( 1 \\le r_i \\le m \\) with \\( \\gcd(r_i, m) = 1 \\)). Since \\( \\gcd(a, m) = 1 \\), multiplication by \\( a \\) is injective modulo \\( m \\): if \\( ar_i \\equiv ar_j \\pmod m \\), multiplying by \\( a^{-1} \\pmod m \\) yields \\( r_i \\equiv r_j \\pmod m \\). Moreover \\( \\gcd(ar_i, m) = 1 \\), so \\( \\{ar_1, \\dots, ar_{\\varphi(m)}\\} \\) is simply a permutation of \\( R \\) modulo \\( m \\)! Multiplying all elements together gives:</p>\\[ (ar_1)(ar_2)\\cdots(ar_{\\varphi(m)}) \\equiv r_1 r_2 \\cdots r_{\\varphi(m)} \\pmod m \\implies a^{\\varphi(m)} \\prod_{i=1}^{\\varphi(m)} r_i \\equiv \\prod_{i=1}^{\\varphi(m)} r_i \\pmod m. \\]<p>Since \\( \\gcd\\!\\left(\\prod r_i, m\\right) = 1 \\), we cancel \\( \\prod r_i \\) to obtain \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). \\( \\blacksquare \\)</p>",
+          "ar": "<p>لتكن \\( R = \\{r_1, r_2, \\dots, r_{\\varphi(m)}\\} \\) مجموعة البواقي المختزلة بترديد \\( m \\) (حيث \\( \\gcd(r_i, m) = 1 \\)). بما أن \\( \\gcd(a, m) = 1 \\)، فإن الضرب في \\( a \\) يمثل دالة تقابل على \\( R \\) بترديد \\( m \\): إذا كان \\( ar_i \\equiv ar_j \\pmod m \\) فإن الضرب في النظير الضربي \\( a^{-1} \\) يعطي \\( r_i \\equiv r_j \\pmod m \\). إذن المجموعة \\( \\{ar_1, \\dots, ar_{\\varphi(m)}\\} \\) هي مجرد تبديل لعناصر \\( R \\) بترديد \\( m \\)! بضرب جميع العناصر معاً نجد:</p>\\[ a^{\\varphi(m)} \\prod_{i=1}^{\\varphi(m)} r_i \\equiv \\prod_{i=1}^{\\varphi(m)} r_i \\pmod m. \\]<p>وبما أن \\( \\gcd\\!\\left(\\prod r_i, m\\right) = 1 \\)، نختصر الجداء من الطرفين فنحصل على \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "High-Speed Olympiad Modular & Valuation Reference Table",
+          "ar": "الجدول المرجعي السريع للتطابقات والتقييم الأسّي في المسابقات"
+        },
+        "columns": [
+          {
+            "en": "Property / Modulus",
+            "ar": "الخاصية / الترديد"
+          },
+          {
+            "en": "Key Olympiad Fact",
+            "ar": "القاعدة الأولمبية الحاسمة"
+          },
+          {
+            "en": "Application",
+            "ar": "التطبيق المباشر"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Squares \\(\\pmod 4, 8\\)",
+              "ar": "المربعات الكاملة \\(\\pmod{4, 8}\\)"
+            },
+            {
+              "en": "\\(n^2 \\equiv 0, 1 \\pmod 4\\); odd \\(n^2 \\equiv 1 \\pmod 8\\)",
+              "ar": "\\(n^2 \\equiv 0, 1 \\pmod 4\\)؛ وللفردي \\(n^2 \\equiv 1 \\pmod 8\\)"
+            },
+            {
+              "en": "Ruling out sum-of-squares Diophantine solutions",
+              "ar": "إثبات استحالة الحلول الصحيحة لمعادلات مجموع المربعات"
+            }
+          ],
+          [
+            {
+              "en": "Cubes \\(\\pmod 7, 9\\)",
+              "ar": "المكعبات الكاملة \\(\\pmod{7, 9}\\)"
+            },
+            {
+              "en": "\\(n^3 \\equiv 0, \\pm 1 \\pmod 7\\) and \\(n^3 \\equiv 0, \\pm 1 \\pmod 9\\)",
+              "ar": "\\(n^3 \\equiv 0, \\pm 1 \\pmod 7\\) وكذلك \\(\\pmod 9\\)"
+            },
+            {
+              "en": "Cubic Diophantine equations like \\(x^3+y^3+z^3 = 9k \\pm 4\\)",
+              "ar": "حسم المعادلات التكعيبية مثل استحالة \\(x^3+y^3+z^3 = 9k \\pm 4\\)"
+            }
+          ],
+          [
+            {
+              "en": "Lifting the Exponent (LTE)",
+              "ar": "رفع الأس (لمّة LTE)"
+            },
+            {
+              "en": "Odd prime \\(p \\mid x-y,\\; p \\nmid xy \\Rightarrow v_p(x^n - y^n) = v_p(x - y) + v_p(n)\\)",
+              "ar": "لأولي فردي \\(p \\mid x-y,\\; p \\nmid xy \\Rightarrow v_p(x^n - y^n) = v_p(x - y) + v_p(n)\\)"
+            },
+            {
+              "en": "Exact power of \\(p\\) dividing \\(a^n \\pm b^n\\) in NSMO/IMO",
+              "ar": "حساب أعلى قوة لعدد أولي تقسم \\(a^n \\pm b^n\\) في نهائيات نسما وIMO"
+            }
+          ],
+          [
+            {
+              "en": "Multiplicative Order \\(\\operatorname{ord}_m(a)\\)",
+              "ar": "الرتبة الضربية \\(\\operatorname{ord}_m(a)\\)"
+            },
+            {
+              "en": "\\(a^k \\equiv 1 \\pmod m \\iff \\operatorname{ord}_m(a) \\mid k\\); in particular \\(\\operatorname{ord}_m(a) \\mid \\varphi(m)\\)",
+              "ar": "\\(a^k \\equiv 1 \\pmod m \\iff \\operatorname{ord}_m(a) \\mid k\\)؛ ودائماً \\(\\operatorname{ord}_m(a) \\mid \\varphi(m)\\)"
+            },
+            {
+              "en": "Prime divisors of \\(2^p - 1\\) satisfy \\(q \\equiv 1 \\pmod p\\)",
+              "ar": "إثبات أن أي قاسم أولي \\(q\\) للعدد \\(2^p - 1\\) يحقق \\(q \\equiv 1 \\pmod p\\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Bézout's Identity",
+              "ar": "متطابقة بيزو"
+            },
+            "value": {
+              "en": "\\(\\exists x,y \\in \\mathbb{Z}: ax + by = \\gcd(a,b)\\); modular inverse exists iff \\(\\gcd(a,m)=1\\)",
+              "ar": "يوجد عددان صحيحان \\(ax + by = \\gcd(a,b)\\)؛ والنظير الضربي موجود \\(\\iff \\gcd(a,m)=1\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Divisor Product Identity",
+              "ar": "جداء جميع القواسم الموجبة"
+            },
+            "value": {
+              "en": "Product of all positive divisors of \\(n\\) is \\(n^{\\tau(n)/2}\\)",
+              "ar": "حاصل ضرب جميع القواسم الموجبة للعدد \\(n\\) يساوي \\(n^{\\tau(n)/2}\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Euclidean Polynomial Trick",
+              "ar": "خوارزمية إقليدس الجبرية"
+            },
+            "value": {
+              "en": "\\(\\gcd(n^2+1, n+1) = \\gcd((-1)^2+1, n+1) = \\gcd(2, n+1)\\)",
+              "ar": "\\(\\gcd(n^2+1, n+1) = \\gcd(2, n+1)\\) بالتعويض المباشر"
+            }
+          },
+          {
+            "label": {
+              "en": "Trailing Zeros of \\(n!\\)",
+              "ar": "الأصفار الطرفية في \\(n!\\)"
+            },
+            "value": {
+              "en": "Since \\(v_2(n!) \\ge v_5(n!)\\), trailing zeros equal \\(v_5(n!) = \\sum_{k \\ge 1} \\lfloor n/5^k \\rfloor\\)",
+              "ar": "عدد الأصفار في يمين \\(n!\\) يساوي \\(v_5(n!) = \\sum_{k \\ge 1} \\lfloor n/5^k \\rfloor\\)"
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Divisibility, Prime Factorization & Modular Arithmetic — Coordinate Curve & Structural Analysis",
-          "xrange": [
-            -4,
-            6
-          ],
-          "yrange": [
-            -4,
-            8
-          ],
-          "fns": [
-            {
-              "fn": "(x - 1)*(x - 1) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 1)² - 2"
-            },
-            {
-              "fn": "x + 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 2"
-            }
-          ],
+          "type": "numberline",
+          "min": 0,
+          "max": 35,
+          "step": 5,
           "points": [
             {
-              "x": 1,
-              "y": -2,
-              "label": "Vertex (1, -2)"
+              "x": 2,
+              "label": "x≡2 (mod 5)"
+            },
+            {
+              "x": 9,
+              "label": "9"
+            },
+            {
+              "x": 17,
+              "label": "x=17 (CRT)"
+            },
+            {
+              "x": 32,
+              "label": "32"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Divisibility, Prime Factorization & Modular Arithmetic.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."
+          "en": "Chinese Remainder Theorem intersection on the integer line: numbers \\(\\equiv 2 \\pmod 5\\) (\\(2, 7, 12, 17, 22, 27, 32\\)) meet numbers \\(\\equiv 3 \\pmod 7\\) (\\(3, 10, 17, 24, 31\\)) uniquely modulo \\(35\\) at \\(x \\equiv 17 \\pmod{35}\\).",
+          "ar": "تقاطع مبرهنة الباقي الصيني على خط الأعداد: الأعداد التي تحقق \\(x \\equiv 2 \\pmod 5\\) تتقاطع مع \\(x \\equiv 3 \\pmod 7\\) في حل وحيد بترديد \\(35\\) عند \\(x \\equiv 17 \\pmod{35}\\)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر خوارزمية إقليدس والحساب المعياري والقواسم"
+          "en": "⊙ Explorer · Euclidean GCD Tiling, Bézout Inverse & Euler Totient Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر خوارزمية إقليدس ومعاملات بيزو ودالة أويلر"
         },
         "canvasId": "olmodularnumbertheoryExCanvas",
         "ariaLabel": {
-          "en": "Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab interactive mathematical canvas",
-          "ar": "مختبر خوارزمية إقليدس والحساب المعياري والقواسم لوحة رياضية تفاعلية"
+          "en": "Interactive Number Theory lab visualizing Euclidean rectangle tiling for gcd(a, b), Bezout linear combinations, and Euler totient phi(a).",
+          "ar": "مختبر تفاعلي لنظرية الأعداد يعرض تبليط خوارزمية إقليدس لحساب القاسم المشترك الأكبر ومعاملات بيزو ودالة أويلر."
         },
         "dataPanel": {
           "btnId": "olmodularnumbertheoryExCanvas_dataBtn",
@@ -113,17 +249,17 @@
           "descId": "olmodularnumbertheoryExCanvas_dataDesc",
           "rowsId": "olmodularnumbertheoryExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab",
-            "ar": "جدول القيم العددية لـ مختبر خوارزمية إقليدس والحساب المعياري والقواسم"
+            "en": "Euclidean algorithm steps, Bézout coefficients \\((x, y)\\), and totient \\(\\varphi(a)\\)",
+            "ar": "خطوات خوارزمية إقليدس ومعاملات بيزو \\((x, y)\\) وقيمة دالة أويلر \\(\\varphi(a)\\)"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -131,33 +267,33 @@
           {
             "id": "olmodularnumbertheoryExCanvas_s0",
             "label": {
-              "en": "Dividend <b>\\(a =\\)</b>",
-              "ar": "Dividend <b>\\(a =\\)</b>"
+              "en": "Integer <b>\\(a =\\)</b>",
+              "ar": "العدد الأول <b>\\(a =\\)</b>"
             },
-            "min": 8,
-            "max": 50,
+            "min": 6,
+            "max": 48,
             "value": 42,
-            "step": 2,
+            "step": 1,
             "valueDisplayId": "olmodularnumbertheoryExCanvas_v0",
             "ariaLabel": {
-              "en": "Dividend \\(a =\\)",
-              "ar": "Dividend \\(a =\\)"
+              "en": "First positive integer a",
+              "ar": "العدد الصحيح الموجب a"
             }
           },
           {
             "id": "olmodularnumbertheoryExCanvas_s1",
             "label": {
-              "en": "Modulus <b>\\(m =\\)</b>",
-              "ar": "Modulus <b>\\(m =\\)</b>"
+              "en": "Modulus / Integer <b>\\(b =\\)</b>",
+              "ar": "العدد الثاني / المقاس <b>\\(b =\\)</b>"
             },
-            "min": 6,
-            "max": 40,
+            "min": 4,
+            "max": 48,
             "value": 18,
-            "step": 2,
+            "step": 1,
             "valueDisplayId": "olmodularnumbertheoryExCanvas_v1",
             "ariaLabel": {
-              "en": "Modulus \\(m =\\)",
-              "ar": "Modulus \\(m =\\)"
+              "en": "Second positive integer b",
+              "ar": "العدد الصحيح الموجب b"
             }
           }
         ],
@@ -165,405 +301,318 @@
           {
             "id": "olmodularnumbertheoryExCanvas_r0",
             "label": {
-              "en": "\\(\\gcd(a, m)\\)",
-              "ar": "\\(\\gcd(a, m)\\)"
+              "en": "\\(\\gcd(a, b)\\) & \\(\\operatorname{lcm}(a, b)\\)",
+              "ar": "\\(\\gcd(a, b)\\) و \\(\\operatorname{lcm}(a, b)\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(6\\)"
+            "value": "gcd = 6, lcm = 126"
           },
           {
             "id": "olmodularnumbertheoryExCanvas_r1",
             "label": {
-              "en": "Remainder \\(a \\bmod m\\)",
-              "ar": "Remainder \\(a \\bmod m\\)"
+              "en": "Bézout \\(ax + by = d\\)",
+              "ar": "متطابقة بيزو \\(ax + by = d\\)"
             },
             "colorClass": "amber",
-            "value": "\\(6\\)"
+            "value": "42(1) + 18(−2) = 6"
           },
           {
             "id": "olmodularnumbertheoryExCanvas_r2",
             "label": {
-              "en": "\\(\\text{lcm}(a, m)\\)",
-              "ar": "\\(\\text{lcm}(a, m)\\)"
+              "en": "Totient \\(\\varphi(a)\\) & \\(\\tau(a)\\)",
+              "ar": "دالة أويلر \\(\\varphi(a)\\) و \\(\\tau(a)\\)"
             },
             "colorClass": "teal",
-            "value": "\\(126\\)"
+            "value": "φ(42)=12, τ(42)=8"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Divisibility, Prime Factorization & Modular Arithmetic.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."
+          "en": "Slide \\(a\\) and \\(b\\) to watch Euclidean square-tiling peel off quotients until the final square side equals \\(\\gcd(a, b)\\). Whenever \\(\\gcd(a, b) = 1\\), the Bézout coefficient \\(x \\bmod b\\) gives the modular inverse \\(a^{-1} \\pmod b\\)!",
+          "ar": "حرّك \\(a\\) و\\(b\\) لمشاهدة التبليط الإقليدي بالمربعات حتى يظهر المربع الأصغر الذي يساوي ضلعه \\(\\gcd(a, b)\\). وعندما يكون \\(\\gcd(a, b) = 1\\)، يعطيك معامل بيزو \\(x \\bmod b\\) النظير الضربي \\(a^{-1} \\pmod b\\)!"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
+          "type": "circle",
+          "r": 1,
+          "centerLabel": "mod 7",
+          "chords": [
+            [
+              0,
+              102.8
+            ],
+            [
+              102.8,
+              205.7
+            ],
+            [
+              205.7,
+              308.5
+            ],
+            [
+              308.5,
+              51.4
+            ],
+            [
+              51.4,
+              154.3
+            ],
+            [
+              154.3,
+              257.1
+            ],
+            [
+              257.1,
+              0
+            ]
           ],
-          "B": [
-            12,
-            0
-          ],
-          "C": [
-            12,
-            5
-          ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "9",
-            "a": "12",
-            "b": "15"
-          },
-          "rightAt": "B"
+          "points": [
+            {
+              "angle": 90,
+              "label": "1"
+            },
+            {
+              "angle": 38.6,
+              "label": "3¹≡3"
+            },
+            {
+              "angle": -12.9,
+              "label": "3²≡2"
+            },
+            {
+              "angle": -64.3,
+              "label": "3³≡6"
+            },
+            {
+              "angle": -115.7,
+              "label": "3⁴≡4"
+            },
+            {
+              "angle": 192.9,
+              "label": "3⁵≡5"
+            }
+          ]
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((9)^2 + (12)^2 = (15)^2\\) for Divisibility, Prime Factorization & Modular Arithmetic.",
-          "ar": "العلاقة الهندسية المتعامدة \\((9)^2 + (12)^2 = (15)^2\\) في درس قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 2.1",
-              "ar": "القاعدة الأساسية 2.1"
-            },
-            "value": {
-              "en": "Divisor count d(n) & sum of divisors σ(n)",
-              "ar": "Divisor count d(n) & sum of divisors σ(n)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 2.2",
-              "ar": "القاعدة الأساسية 2.2"
-            },
-            "value": {
-              "en": "Euclidean algorithm & Bézout's identity",
-              "ar": "Euclidean algorithm & Bézout's identity"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 2.3",
-              "ar": "القاعدة الأساسية 2.3"
-            },
-            "value": {
-              "en": "Modular congruences, Fermat's Little Theorem & Euler's φ(n)",
-              "ar": "Modular congruences, Fermat's Little Theorem & Euler's φ(n)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 2.4",
-              "ar": "القاعدة الأساسية 2.4"
-            },
-            "value": {
-              "en": "Chinese Remainder Theorem (CRT)",
-              "ar": "Chinese Remainder Theorem (CRT)"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Divisibility, Prime Factorization & Modular Arithmetic)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+          "en": "Primitive-root star polygon modulo \\(7\\): powers of \\(3 \\pmod 7\\) cycle through all \\(\\varphi(7) = 6\\) nonzero residues \\(3 \\to 2 \\to 6 \\to 4 \\to 5 \\to 1\\), illustrating multiplicative order \\(\\operatorname{ord}_7(3) = 6\\).",
+          "ar": "المضلع النجمي للجذر البدائي بترديد \\(7\\): قوى العدد \\(3 \\pmod 7\\) تمر بجميع البواقي الستة غير الصفرية \\(3 \\to 2 \\to 6 \\to 4 \\to 5 \\to 1\\)، مما يوضح الرتبة الضربية \\(\\operatorname{ord}_7(3) = 6\\)."
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 2.A — Foundational Formulation (Divisibility, Prime Factorization & Modular Arithmetic)",
-          "ar": "مثال محلول 2.A — تطبيق أساسي (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+          "en": "Worked Example 2.A — Last Two Digits of a Power Tower via CRT + Euler (NSMO / KAUST)",
+          "ar": "مثال محلول 2.A — آخر رقمين لقوة أسية كبيرة عبر أويلر والباقي الصيني (نسما / كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 6x + 13 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{6}{2} = -3 \\).<br>2. Write \\( (x - 3)^2 = x^2 - 6x + 9 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 3)^2 - 9 + 13 = (x - 3)^2 + 4 \\).<br>4. Since \\( (x - 3)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 4 \\), achieved at \\( x = 3 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 3)^2 + 4 \\); minimum value \\( 4 \\) at \\( x = 3 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 6x + 13 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 3)^2 + 4 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 4 \\) وتتحقق عند \\( x = 3 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Find the last two decimal digits of \\( 7^{2026} \\) (i.e., compute \\( 7^{2026} \\bmod 100 \\)).</p><p><strong>Solution:</strong> Since \\( 100 = 4 \\times 25 \\) with \\( \\gcd(4, 25) = 1 \\), split modulo \\( 4 \\) and modulo \\( 25 \\) (or use \\( \\varphi(100) = 40 \\)):<br>1. Modulo \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. Modulo \\( 25 \\): \\( \\varphi(25) = 25(1 - \\frac{1}{5}) = 20 \\), or even faster notice \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)! Thus \\( 7^4 \\equiv 1 \\pmod{25} \\) (multiplicative order \\( 4 \\) modulo \\( 100 \\)!).<br>3. Write \\( 2026 = 4(506) + 2 \\):<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1^{506} \\cdot 49 = 49 \\pmod{100} \\]<br>(checking \\( 49 \\equiv 1 \\pmod 4 \\) and \\( 49 \\equiv -1 \\pmod{25} \\) — both match!). Hence the last two digits are <strong>\\( 49 \\)</strong>.</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد رقمَي الآحاد والعشرات للعدد \\( 7^{2026} \\) (أي احسب \\( 7^{2026} \\bmod 100 \\)).</p><p><strong>الحل الأولمبي:</strong> بما أن \\( 100 = 4 \\times 25 \\) و\\( \\gcd(4, 25) = 1 \\)، نفكك التطابق إلى \\( \\pmod 4 \\) و\\( \\pmod{25} \\):<br>1. بترديد \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. بترديد \\( 25 \\): نلاحظ الحيلة السريعة \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)، ومنها \\( 7^4 \\equiv 1 \\pmod{25} \\) (أي أن رتبة \\( 7 \\) بترديد \\( 100 \\) تساوي \\( 4 \\) فقط!).<br>3. بقسمة الأس على \\( 4 \\): \\( 2026 = 4(506) + 2 \\)، إذن:<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1 \\cdot 49 = 49 \\pmod{100}. \\]<br>إذن آخر رقمين هما <strong>\\( 49 \\)</strong>.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 2.B — Intermediate Multi-Step Synthesis (Divisibility, Prime Factorization & Modular Arithmetic)",
-          "ar": "مثال محلول 2.B — تطبيق متوسط متعدد الخطوات (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+          "en": "Worked Example 2.B — Wilson's Theorem Factorial Remainder (Olympiad Classic)",
+          "ar": "مثال محلول 2.B — باقي قسمة المضروب عبر مبرهنة ويلسون (كلاسيكيات الأولمبياد)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 6x + 14 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 6x + 14 = 2x + k \\implies x^2 - 8x + (14 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-8)^2 - 4(1)(14 - k) > 0 \\]<br>\\[ 64 - 56 + 4k > 0 \\implies 4k > -8 \\implies k > -2 \\]</p><p><strong>Final Answer:</strong> \\( k > -2 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 6x + 14 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -2 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Find the remainder when \\( 97! \\) is divided by \\( 101 \\).</p><p><strong>Solution:</strong> Since \\( 101 \\) is prime, Wilson's Theorem gives \\( 100! \\equiv -1 \\pmod{101} \\). Expand the top three factors modulo \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>Therefore \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>To invert \\( 6 \\pmod{101} \\), notice \\( 101 + 1 = 102 = 6 \\times 17 \\), so \\( 6 \\times 17 = 102 \\equiv 1 \\pmod{101} \\).<br>Multiplying both sides of \\( 6 \\cdot 97! \\equiv 1 \\pmod{101} \\) by \\( 17 \\) gives \\( 97! \\equiv 17 \\pmod{101} \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد باقي قسمة \\( 97! \\) على العدد الأولي \\( 101 \\).</p><p><strong>الحل الأولمبي:</strong> بما أن \\( 101 \\) عدد أولي، تعطي مبرهنة ويلسون \\( 100! \\equiv -1 \\pmod{101} \\). نفكك آخر ثلاثة عوامل بترديد \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>ومنه \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>لإيجاد النظير الضربي للعدد \\( 6 \\pmod{101} \\)، نلاحظ أن \\( 101 + 1 = 102 = 6 \\times 17 \\)، أي \\( 6 \\times 17 \\equiv 1 \\pmod{101} \\). بضرب الطرفين في \\( 17 \\) نجد الباقي \\( 97! \\equiv 17 \\pmod{101} \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 2.C — Advanced Rate & Vector Application (Divisibility, Prime Factorization & Modular Arithmetic)",
-          "ar": "مثال محلول 2.C — تطبيق متقدم (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+          "en": "Worked Example 2.C — Chinese Remainder Theorem Reconstruction (AIME / NSMO Stage 2)",
+          "ar": "مثال محلول 2.C — حل نظام تطابقات عبر مبرهنة الباقي الصيني (AIME / نسما 2)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 9x^2 + 27x + 4 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 5 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 18x + 27 = 3(x - 3)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 3 \\), with \\( g(3) = 4 \\). Thus \\( (3, 4) \\) is the stationary point.<br>3. At \\( x = 5 \\), the gradient is \\( g'(5) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (3, 4) \\); gradient at \\( x = 5 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 9x^2 + 27x + 4 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 5 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 3)^2 \\)، تنعدم عند \\( (3, 4) \\)، وعند \\( x = 5 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Find the smallest positive integer \\( N > 10 \\) that leaves remainder \\( 2 \\) when divided by \\( 5 \\), remainder \\( 4 \\) when divided by \\( 7 \\), and remainder \\( 6 \\) when divided by \\( 9 \\).</p><p><strong>Solution:</strong> Look for a structural pattern in the remainders before brute-forcing CRT! At \\( m = 5, 7, 9 \\), the differences \\( m - r \\) are \\( 5 - 2 = 3 \\), \\( 7 - 4 = 3 \\), and \\( 9 - 6 = 3 \\) — every single remainder is <strong>3 less than its modulus</strong>! That means:<br>\\[ N \\equiv -3 \\pmod 5, \\quad N \\equiv -3 \\pmod 7, \\quad N \\equiv -3 \\pmod 9. \\]<br>Since \\( 5, 7, 9 \\) are pairwise coprime with \\( \\operatorname{lcm}(5, 7, 9) = 315 \\), CRT immediately gives \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\). Thus the smallest positive solution is <strong>\\( N = 312 \\)</strong>.</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد أصغر عدد صحيح موجب \\( N > 10 \\) يترك باقياً \\( 2 \\) عند قسمته على \\( 5 \\)، وباقياً \\( 4 \\) عند قسمته على \\( 7 \\)، وباقياً \\( 6 \\) عند قسمته على \\( 9 \\).</p><p><strong>الحل الأولمبي:</strong> ابحث أولاً عن النمط البنيوي بين المقاسات والبواقي قبل الحساب التقليدي! لاحظ الفروق:<br>\\( 5 - 2 = 3 \\)، و\\( 7 - 4 = 3 \\)، و\\( 9 - 6 = 3 \\)!<br>أي أن \\( N + 3 \\) يقبل القسمة على كل من \\( 5 \\) و\\( 7 \\) و\\( 9 \\) في آنٍ واحد:<br>\\[ N \\equiv -3 \\pmod 5, \\qquad N \\equiv -3 \\pmod 7, \\qquad N \\equiv -3 \\pmod 9. \\]<br>وبما أن الأعداد \\( 5, 7, 9 \\) أولية مثنى مثنى ومضاعفها المشترك الأصغر \\( 315 \\)، فإن مبرهنة الباقي الصيني تعطي فوراً \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\)، وأصغر حل موجب هو <strong>\\( 312 \\)</strong>.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 2.D — Exam-Grade Challenge Synthesis (Divisibility, Prime Factorization & Modular Arithmetic)",
-          "ar": "مثال محلول 2.D — مسألة تحدي بمستوى الاختبار (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+          "en": "Worked Example 2.D — Legendre's Valuation & Divisor Count (KAUST Finals / IMO Shortlist)",
+          "ar": "مثال محلول 2.D — صيغة ليجاندر والتقييم الأولي لـ \\(n!\\) (نهائيات كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 3n^2 + 4n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 3(1)^2 + 4(1) = 7 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[3n^2 + 4n\\right] - \\left[3(n-1)^2 + 4(n-1)\\right] = 6n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 6 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 61 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 6n + 1 \\), \\( d = 6 \\), and \\( u_{10} = 61 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 3n^2 + 4n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 6n + 1 \\)، والأساس \\( d = 6 \\)، والحد العاشر \\( u_{10} = 61 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Find the largest integer \\( k \\) such that \\( 12^k \\) divides \\( 60! \\).</p><p><strong>Solution:</strong> Prime-factor the base first: \\( 12 = 2^2 \\cdot 3 \\), so \\( 12^k = 2^{2k} \\cdot 3^k \\). Thus \\( 12^k \\mid 60! \\iff 2k \\le v_2(60!) \\) AND \\( k \\le v_3(60!) \\), meaning \\( k = \\min\\!\\left(\\left\\lfloor \\frac{v_2(60!)}{2} \\right\\rfloor,\\; v_3(60!)\\right) \\).<br>1. Compute \\( v_3(60!) \\) by Legendre's formula:<br>\\[ v_3(60!) = \\left\\lfloor \\frac{60}{3} \\right\\rfloor + \\left\\lfloor \\frac{60}{9} \\right\\rfloor + \\left\\lfloor \\frac{60}{27} \\right\\rfloor = 20 + 6 + 2 = 28. \\]<br>2. Compute \\( v_2(60!) \\):<br>\\[ v_2(60!) = \\left\\lfloor \\frac{60}{2} \\right\\rfloor + \\left\\lfloor \\frac{60}{4} \\right\\rfloor + \\left\\lfloor \\frac{60}{8} \\right\\rfloor + \\left\\lfloor \\frac{60}{16} \\right\\rfloor + \\left\\lfloor \\frac{60}{32} \\right\\rfloor = 30 + 15 + 7 + 3 + 1 = 56. \\]<br>3. Compare constraints: \\( \\lfloor 56 / 2 \\rfloor = 28 \\) and \\( v_3(60!) = 28 \\)! Both bounds Tie at \\( 28 \\) — had you lazily assumed \\( 3 \\) is always the bottleneck without checking \\( 2^2 \\), you could miss cases like \\( 8! \\) (where \\( v_3(8!) = 2 \\) and \\( \\lfloor v_2(8!)/2 \\rfloor = \\lfloor 7/2 \\rfloor = 3 \\), vs \\( 9! \\) where \\( v_3(9!) = 4 > \\lfloor 7/2 \\rfloor = 3 \\)!). Here \\( k = \\min(28, 28) = 28 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد أكبر عدد صحيح \\( k \\) بحيث يقسم \\( 12^k \\) العدد \\( 60! \\).</p><p><strong>الحل الأولمبي:</strong> نحلل الأساس أولاً: \\( 12 = 2^2 \\cdot 3 \\)، أي \\( 12^k = 2^{2k} \\cdot 3^k \\). ولكي يتحقق \\( 12^k \\mid 60! \\) يجب أن يتحقق الشرطان \\( 2k \\le v_2(60!) \\) و\\( k \\le v_3(60!) \\) معاً، أي \\( k = \\min\\!\\left(\\lfloor v_2(60!)/2 \\rfloor,\\; v_3(60!)\\right) \\).<br>1. حساب \\( v_3(60!) \\) بصيغة ليجاندر: \\( 20 + 6 + 2 = 28 \\).<br>2. حساب \\( v_2(60!) \\): \\( 30 + 15 + 7 + 3 + 1 = 56 \\implies \\lfloor 56/2 \\rfloor = 28 \\).<br>3. بمقارنة القيدين نجد \\( k = \\min(28, 28) = 28 \\) (انتبه: في حالات مثل \\( 9! \\) يكون \\( v_3(9!) = 4 \\) بينما \\( \\lfloor v_2(9!)/2 \\rfloor = 3 \\)، لذا فحص القيدين معاً إلزامي دائماً!).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Divisibility, Prime Factorization & Modular Arithmetic",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+          "en": "⚠ Olympiad Trap — Never Reduce Exponents Modulo m Instead of φ(m)!",
+          "ar": "⚠ فخ أولمبي قاتل — إياك واختزال الأسس بترديد \\(m\\) بدلاً من \\(\\varphi(m)\\)!"
         },
         "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+          "en": "<p><strong>Exponents live modulo \\( \\varphi(m) \\), NOT modulo \\( m \\)!</strong> Moreover, \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\) requires \\( \\gcd(a, m) = 1 \\). If \\( \\gcd(a, m) > 1 \\) (for instance \\( 6^{100} \\bmod 40 \\)), split \\( 40 = 8 \\times 5 \\) into prime-power moduli via CRT: clearly \\( 6^{100} \\equiv 0 \\pmod 8 \\) (since \\( 100 \\ge 3 \\)) and \\( 6^{100} \\equiv 1^{100} = 1 \\pmod 5 \\), yielding \\( 6^{100} \\equiv 16 \\pmod{40} \\) — NOT \\( 1 \\)!</p>",
+          "ar": "<p><strong>تُختزل الأسس بترديد \\( \\varphi(m) \\) وليس بترديد \\( m \\)!</strong> والأهم من ذلك أن مبرهنة أويلر \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\) تشترط \\( \\gcd(a, m) = 1 \\). إذا لم يتحقق الشرط (مثل حساب \\( 6^{100} \\bmod 40 \\))، فكك المقاس عبر الباقي الصيني إلى قوى أولية \\( 40 = 8 \\times 5 \\): \\( 6^{100} \\equiv 0 \\pmod 8 \\) و\\( 6^{100} \\equiv 1 \\pmod 5 \\)، فيكون الناتج \\( 16 \\) وليس \\( 1 \\)!</p>"
         }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Divisibility, Prime Factorization & Modular Arithmetic)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
       },
       {
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Divisibility, Prime Factorization & Modular Arithmetic",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+          "en": "▲ Contest Strategy — Euclidean Elimination on Variable Expressions",
+          "ar": "▲ استراتيجية المسابقات — الحذف الإقليدي للعبارات الجبرية المتغيرة"
         },
         "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+          "en": "<p>Whenever asked for the maximum possible value of \\( \\gcd(A(n), B(n)) \\) as \\( n \\) varies over \\( \\mathbb{Z}^+ \\) (e.g., \\( \\gcd(3n + 7, 5n + 2) \\)), eliminate \\( n \\) linearly: \\( d \\mid 5(3n+7) - 3(5n+2) = 35 - 6 = 29 \\). Thus \\( d \\in \\{1, 29\\} \\), and checking \\( 3n + 7 \\equiv 0 \\pmod{29} \\implies n = 27 \\) confirms \\( 29 \\) is achieved!</p>",
+          "ar": "<p>عندما يُطلب أكبر قيمة ممكنة للقاسم المشترك الأكبر \\( \\gcd(A(n), B(n)) \\) مثل \\( \\gcd(3n + 7, 5n + 2) \\)، احذف \\( n \\) خطياً: أي قاسم مشترك \\( d \\) يقسم \\( 5(3n+7) - 3(5n+2) = 29 \\)، فيكون أقصى قاسم ممكن هو \\( 29 \\) (ويتحقق فعلياً عند \\( n = 27 \\)).</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(4) \\) for the quadratic function \\( f(x) = 3x^2 - 3x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(4) \\) للدالة التربيعية \\( f(x) = 3x^2 - 3x + 10 \\)."
+          "en": "<strong>[Practice 2.1 · NSMO Stage 1 / Easy]</strong> How many positive integer divisors of \\( 720 \\) are perfect squares?",
+          "ar": "<strong>[تدريب 2.1 · نسما المرحلة 1 / سهل]</strong> كم قاسماً موجباً للعدد \\( 720 \\) يمثل مربعاً كاملاً؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 4 \\) directly into \\( f(x) = 3x^2 - 3x + 10 \\).",
-            "ar": "عوّض عن \\( x = 4 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+            "en": "Write the prime factorization \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\).",
+            "ar": "حلل العدد إلى عوامله الأولية: \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\)."
           },
           {
-            "en": "Factor out \\( 3x(x - 1) + 10 = 3(4)(3) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 3(4)(3) + 10 \\)."
+            "en": "A divisor \\( 2^a 3^b 5^c \\) is a perfect square iff \\( a, b, c \\) are all even.",
+            "ar": "يكون القاسم \\( 2^a 3^b 5^c \\) مربعاً كاملاً إذا وفقط إذا كانت الأسس \\( a, b, c \\) زوجية جميعاً."
           },
           {
-            "en": "Compute \\( 36 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 36 + 10 \\) للحصول على النتيجة النهائية."
+            "en": "Count valid choices: \\( a \\in \\{0,2,4\\} \\), \\( b \\in \\{0,2\\} \\), \\( c \\in \\{0\\} \\).",
+            "ar": "احسب عدد الخيارات الممكنة: \\( a \\in \\{0,2,4\\} \\)، و\\( b \\in \\{0,2\\} \\)، و\\( c \\in \\{0\\} \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 4 \\) gives \\( f(4) = 3(4)^2 - 3(4) + 10 = 48 - 12 + 10 = 46 \\).",
-          "ar": "بالتعويض عن \\( x = 4 \\) نجد \\( f(4) = 3(4)^2 - 3(4) + 10 = 46 \\)."
+          "en": "Since \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\), even exponents allow \\( 3 \\) choices for \\( a \\) (\\(0,2,4\\)), \\( 2 \\) choices for \\( b \\) (\\(0,2\\)), and \\( 1 \\) choice for \\( c \\) (\\(0\\)), giving \\( 3 \\times 2 \\times 1 = 6 \\) square divisors.",
+          "ar": "بما أن \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\)، فاختيار الأسس الزوجية يعطي \\( 3 \\) خيارات لـ \\( a \\) وخيارين لـ \\( b \\) وخياراً واحداً لـ \\( c \\)، أي \\( 3 \\times 2 \\times 1 = 6 \\) قواسم مربعة."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 7x + 12 = 0 \\) that is greater than \\( 3 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 3 \\) للمعادلة \\( x^2 - 7x + 12 = 0 \\)."
+          "en": "<strong>[Practice 2.2 · KAUST KMC / Easy]</strong> Compute Euler totient \\( \\varphi(360) \\) — the number of integers \\( 1 \\le k \\le 360 \\) coprime to \\( 360 \\).",
+          "ar": "<strong>[تدريب 2.2 · مسابقة كاوست / سهل]</strong> احسب قيمة دالة أويلر \\( \\varphi(360) \\)، أي عدد الأعداد الصحيحة من \\( 1 \\) إلى \\( 360 \\) الأولية نسبياً مع \\( 360 \\)."
         },
         "hints": [
           {
-            "en": "Look for two integers whose sum is \\( 7 \\) and whose product is \\( 12 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 7 \\) وحاصل ضربهما \\( 12 \\)."
+            "en": "Find the distinct prime factors of \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\): primes \\( 2, 3, 5 \\).",
+            "ar": "استخرج العوامل الأولية المختلفة للعدد \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\) وهي \\( 2, 3, 5 \\)."
           },
           {
-            "en": "Factor the quadratic as \\( (x - 3)(x - 4) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 3)(x - 4) = 0 \\)."
+            "en": "Apply \\( \\varphi(360) = 360\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{1}{5}\\right) \\).",
+            "ar": "طبّق القانون \\( \\varphi(360) = 360\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{1}{5}\\right) \\)."
           },
           {
-            "en": "Compare the two roots \\( x = 3 \\) and \\( x = 4 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 3 \\) و \\( x = 4 \\) واختر الأكبر."
+            "en": "Multiply \\( 360 \\times \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{4}{5} \\).",
+            "ar": "احسب ناتج الضرب \\( 360 \\times \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{4}{5} \\)."
           }
         ],
         "solution": {
-          "en": "Factoring gives \\( (x - 3)(x - 4) = 0 \\), so the roots are \\( x = 3 \\) and \\( x = 4 \\). The root greater than \\( 3 \\) is \\( x = 4 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 3)(x - 4) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 3 \\) هو \\( x = 4 \\)."
+          "en": "Using \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\), we obtain \\( \\varphi(360) = 360 \\cdot \\frac{1}{2} \\cdot \\frac{2}{3} \\cdot \\frac{4}{5} = 96 \\).",
+          "ar": "بتطبيق صيغة أويلر على \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\) نحصل على \\( \\varphi(360) = 360 \\cdot \\frac{1}{2} \\cdot \\frac{2}{3} \\cdot \\frac{4}{5} = 96 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 27 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 27 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+          "en": "<strong>[Practice 2.3 · NSMO Stage 2 / Medium]</strong> Find the remainder when \\( 3^{2026} \\) is divided by \\( 13 \\).",
+          "ar": "<strong>[تدريب 2.3 · نسما المرحلة 2 / متوسط]</strong> أوجد باقي قسمة \\( 3^{2026} \\) على \\( 13 \\)."
         },
         "hints": [
           {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+            "en": "Test small powers of \\( 3 \\) modulo \\( 13 \\) before using \\( \\varphi(13) = 12 \\)!",
+            "ar": "اختبر القوى الصغيرة للعدد \\( 3 \\) بترديد \\( 13 \\) لاكتشاف الرتبة الضربية أولاً!"
           },
           {
-            "en": "Substitute \\( a = 1, b = -2k, c = 27 \\) into \\( (-2k)^2 - 4(1)(27) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(27) = 0 \\)."
+            "en": "Observe that \\( 3^3 = 27 = 2(13) + 1 \\equiv 1 \\pmod{13} \\)!",
+            "ar": "لاحظ أن \\( 3^3 = 27 \\equiv 1 \\pmod{13} \\)!"
           },
           {
-            "en": "Simplify \\( 4k^2 = 108 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 108 \\) واقسم الطرفين على 4."
+            "en": "Reduce the exponent \\( 2026 \\) modulo \\( 3 \\): sum of digits \\( 2+0+2+6 = 10 \\equiv 1 \\pmod 3 \\).",
+            "ar": "اختزل الأس \\( 2026 \\) بترديد \\( 3 \\): مجموع الأرقام \\( 10 \\equiv 1 \\pmod 3 \\)."
           }
         ],
         "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(27) = 4k^2 - 108 = 0 \\implies k^2 = 27 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 108 = 0 \\implies k^2 = 27 \\)."
+          "en": "Since \\( 3^3 \\equiv 1 \\pmod{13} \\) and \\( 2026 = 3(675) + 1 \\), we have \\( 3^{2026} = (3^3)^{675} \\cdot 3^1 \\equiv 1 \\cdot 3 = 3 \\pmod{13} \\).",
+          "ar": "بما أن \\( 3^3 \\equiv 1 \\pmod{13} \\) وأن \\( 2026 = 3(675) + 1 \\)، فإن \\( 3^{2026} \\equiv 3^1 = 3 \\pmod{13} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 3 \\) and common difference \\( d = 8 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 3 \\) وأساسها \\( d = 8 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+          "en": "<strong>[Practice 2.4 · AIME / KAUST KMC / Hard]</strong> Find the unique integer \\( x \\in \\{0, 1, \\dots, 104\\} \\) satisfying \\( x \\equiv 1 \\pmod 3 \\), \\( x \\equiv 2 \\pmod 5 \\), and \\( x \\equiv 3 \\pmod 7 \\).",
+          "ar": "<strong>[تدريب 2.4 · AIME / مسابقة كاوست / متقدم]</strong> أوجد العدد الصحيح الوحيد \\( x \\in \\{0, 1, \\dots, 104\\} \\) الذي يحقق \\( x \\equiv 1 \\pmod 3 \\) و\\( x \\equiv 2 \\pmod 5 \\) و\\( x \\equiv 3 \\pmod 7 \\)."
         },
         "hints": [
           {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+            "en": "Check the linear combination \\( 2x + 1 \\) against all three moduli \\( 3, 5, 7 \\)!",
+            "ar": "افحص المقدار \\( 2x + 1 \\) بترديد كل من \\( 3, 5, 7 \\)!"
           },
           {
-            "en": "Substitute \\( n = 10, a = 3, d = 8 \\): \\( S_{10} = 5[2(3) + 9(8)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(3) + 9(8)] \\)."
+            "en": "Notice \\( 2(1)+1 = 3 \\equiv 0 \\pmod 3 \\), \\( 2(2)+1 = 5 \\equiv 0 \\pmod 5 \\), and \\( 2(3)+1 = 7 \\equiv 0 \\pmod 7 \\)!",
+            "ar": "لاحظ أن \\( 2x + 1 \\) يقبل القسمة على \\( 3 \\) و\\( 5 \\) و\\( 7 \\) معاً!"
           },
           {
-            "en": "Evaluate \\( 5(6 + 72) = 390 \\).",
-            "ar": "احسب الناتج \\( 5(6 + 72) = 390 \\)."
+            "en": "Thus \\( 2x + 1 \\equiv 0 \\pmod{105} \\implies 2x = 105 - 1 = 104 \\).",
+            "ar": "إذن \\( 2x + 1 \\equiv 0 \\pmod{105} \\)، وأصغر مضاعف فردي لـ \\( 105 \\) هو \\( 105 \\) نفسه."
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(3) + 9(8)] = 5(78) = 390 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(6 + 72) = 390 \\)."
+          "en": "In all three congruences, \\( 2x + 1 \\equiv 0 \\pmod m \\) for \\( m \\in \\{3, 5, 7\\} \\). By CRT, \\( 2x + 1 \\equiv 0 \\pmod{105} \\). Taking \\( 2x + 1 = 105 \\) gives \\( x = 52 \\) (checking: \\( 52 = 17(3)+1 = 10(5)+2 = 7(7)+3 \\)).",
+          "ar": "نلاحظ أن \\( 2x + 1 \\) مضاعف مشترك لـ \\( 3, 5, 7 \\)، أي \\( 2x + 1 \\equiv 0 \\pmod{105} \\). وبوضع \\( 2x + 1 = 105 \\) نحصل فوراً على \\( x = 52 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 3x^2 - 4x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 3x^2 - 4x + 7 \\) عند \\( x = 3 \\)."
+          "en": "<strong>[Practice 2.5 · NSMO National Finals / LTE]</strong> Using Lifting-the-Exponent (LTE), find the exact 3-adic valuation \\( v_3(7^{54} - 1) \\) — i.e., the largest integer \\( k \\) such that \\( 3^k \\mid (7^{54} - 1) \\).",
+          "ar": "<strong>[تدريب 2.5 · نهائيات نسما / لمّة LTE]</strong> باستخدام لمّة رفع الأس (LTE)، أوجد قيمة \\( v_3(7^{54} - 1) \\)، أي أكبر عدد صحيح \\( k \\) يحقق \\( 3^k \\mid (7^{54} - 1) \\)."
         },
         "hints": [
           {
-            "en": "Differentiate \\( y = x^3 + 3x^2 - 4x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+            "en": "Check LTE conditions for odd prime \\( p = 3 \\): \\( x = 7, y = 1 \\), so \\( 3 \\mid (7 - 1) = 6 \\) and \\( 3 \\nmid 7 \\cdot 1 \\).",
+            "ar": "تحقق من شروط لمّة LTE للعدد الأولي الفردي \\( p = 3 \\): لدينا \\( 3 \\mid (7 - 1) = 6 \\) و\\( 3 \\nmid 7 \\)."
           },
           {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\)."
+            "en": "Apply \\( v_3(x^n - y^n) = v_3(x - y) + v_3(n) \\) with \\( x = 7, y = 1, n = 54 \\).",
+            "ar": "طبّق قانون LTE مباشرةً: \\( v_3(7^{54} - 1) = v_3(7 - 1) + v_3(54) \\)."
           },
           {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 6(3) - 4 = 41 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 18 - 4 = 41 \\)."
+            "en": "Compute \\( v_3(6) = 1 \\) and \\( v_3(54) = v_3(2 \\cdot 3^3) = 3 \\).",
+            "ar": "احسب \\( v_3(6) = 1 \\) و\\( v_3(54) = v_3(2 \\cdot 27) = 3 \\)."
           }
         ],
         "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 18 - 4 = 41 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 18 - 4 = 41 \\)."
+          "en": "Since \\( p = 3 \\) is an odd prime with \\( 3 \\mid (7 - 1) \\) and \\( 3 \\nmid 7 \\), LTE gives \\( v_3(7^{54} - 1) = v_3(6) + v_3(54) = 1 + 3 = 4 \\). Thus \\( 3^4 = 81 \\) is the highest power of \\( 3 \\) dividing \\( 7^{54} - 1 \\).",
+          "ar": "بما أن \\( p = 3 \\) أولي فردي ويحقق \\( 3 \\mid (7 - 1) \\)، تعطي لمّة LTE: \\( v_3(7^{54} - 1) = v_3(6) + v_3(54) = 1 + 3 = 4 \\)، أي أن أعلى قوة لـ \\( 3 \\) هي \\( 3^4 = 81 \\)."
         }
       },
       {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Diophantine Equations, Floor Functions & Number Bases",
+            "label": "Number Theory II: Diophantine Equations, SFFT & Vieta Jumping",
             "chapterId": "ol-diophantine-equations",
             "trackId": "olympiad"
           },
           {
-            "label": "Olympiad Algebra, Symmetric Sums & Vieta's Relations",
-            "chapterId": "ol-algebraic-techniques",
+            "label": "NSMO of KSA — National Finals & IMO Pathway",
+            "chapterId": "ol-nsmo-national-finals",
             "trackId": "olympiad"
           },
           {
-            "trackId": "addmath",
-            "chapterId": "am-functions-quadratics",
-            "label": "ADDMATH: Functions, Modulus & Quadratic Theory"
+            "label": "KAUST KMC Regional Qualifier",
+            "chapterId": "ol-kaust-kmc-qualifier",
+            "trackId": "olympiad"
           }
         ]
       }

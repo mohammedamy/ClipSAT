@@ -253,21 +253,39 @@ it('public/js/engine.js contains the compiled guardrail logic', () => {
   }
 });
 
-// ── 8. Gemini 3.8 Flash Multimodal & Graph Rendering Verification ──
-it('Supports Gemini 3.8 Flash, single-question attachments (image/PDF/DOCX/camera/handwriting), and figure_json diagrams', () => {
+// ── 8. Gemini 3.8 Flash Multimodal, Graph Rendering & Strict 10/Day Only Limit Verification ──
+it('Supports Gemini 3.8 Flash, multimodal attachments, figure_json diagrams, and enforces ONLY 10 questions/day with all other limits removed', () => {
   assert.ok(!SYSTEM.includes('Gemini 3.8'), 'SYSTEM prompt must not expose model version name in persona');
-  assert.ok(SYSTEM.includes('SINGLE-QUESTION IMAGE, CAMERA, 1-PAGE PDF, DOCX & HANDWRITING RULES'), 'SYSTEM prompt must include single-question & handwriting rules');
+  assert.ok(SYSTEM.includes('IMAGE, CAMERA, PDF, DOCX & HANDWRITING RULES'), 'SYSTEM prompt must include multimodal & handwriting rules');
+  assert.ok(!SYSTEM.includes('SINGLE QUESTION POLICY'), 'SYSTEM prompt must not enforce secondary single-question restriction');
   assert.ok(SYSTEM.includes('figure_json'), 'SYSTEM prompt must instruct bot to emit figure_json diagrams when helpful');
-  assert.ok(moduleSource.includes('processImageFile') && moduleSource.includes('processPdfFile') && moduleSource.includes('processDocxFile'), 'Module must include image, 1-page PDF, and 1-page DOCX processors');
+  assert.ok(moduleSource.includes('processImageFile') && moduleSource.includes('processPdfFile') && moduleSource.includes('processDocxFile'), 'Module must include image, PDF, and DOCX processors');
   assert.ok(moduleSource.includes('openCamera') && moduleSource.includes('snapCameraFrame'), 'Module must include camera capture handlers');
   assert.ok(moduleSource.includes('_renderChatFigures'), 'Module must render figure_json blocks inside bot answers');
+
+  // Verify client-side 10 questions/day limit and removal of secondary file/page limits
+  assert.strictEqual(moduleExports.AI_DAILY_LIMIT, 10, 'Client AI_DAILY_LIMIT must be strictly 10');
+  assert.ok(!moduleSource.includes('tooManyPages'), 'Client must not block multi-page DOCX');
+  assert.ok(!moduleSource.includes('_countPdfPages'), 'Client must not block multi-page PDF');
+  assert.ok(!moduleSource.includes('15/day, 50/week, 150/month'), 'Legacy 15/day, 50/week, 150/month hint must be removed');
 
   const proxyPath = path.join(__dirname, '..', 'supabase', 'functions', 'ai-proxy', 'index.ts');
   const proxySource = fs.readFileSync(proxyPath, 'utf8');
   assert.ok(proxySource.includes('gemini-3.8-flash'), 'Supabase ai-proxy must target gemini-3.8-flash');
   assert.ok(proxySource.includes('GEMINI_API_KEY'), 'Supabase ai-proxy must read GEMINI_API_KEY from server secrets');
   assert.ok(proxySource.includes('interactions.create'), 'Supabase ai-proxy must use Gemini Interactions API');
-  assert.ok(proxySource.includes('DAILY_CALL_CAP = 15') && proxySource.includes('WEEKLY_CALL_CAP = 50') && proxySource.includes('MONTHLY_CALL_CAP = 150'), 'Supabase ai-proxy must enforce 15/day, 50/week, and 150/month limits');
+  assert.ok(proxySource.includes('const DAILY_CALL_CAP = 10;'), 'Supabase ai-proxy must enforce DAILY_CALL_CAP = 10');
+  assert.ok(!proxySource.includes('WEEKLY_CALL_CAP'), 'Supabase ai-proxy must NOT have WEEKLY_CALL_CAP');
+  assert.ok(!proxySource.includes('MONTHLY_CALL_CAP'), 'Supabase ai-proxy must NOT have MONTHLY_CALL_CAP');
+  assert.ok(!proxySource.includes('checkIpRateLimit'), 'Supabase ai-proxy must NOT have per-minute IP rate limit');
+  assert.ok(!proxySource.includes('MAX_USER_MSG_CHARS'), 'Supabase ai-proxy must NOT have MAX_USER_MSG_CHARS limit');
+  assert.ok(!proxySource.includes('MAX_TOTAL_PROMPT_CHARS'), 'Supabase ai-proxy must NOT have MAX_TOTAL_PROMPT_CHARS limit');
+
+  const flaskPath = path.join(__dirname, '..', 'app.py');
+  const flaskSource = fs.readFileSync(flaskPath, 'utf8');
+  assert.ok(flaskSource.includes('DAILY_QUESTION_LIMIT = 10'), 'Flask proxy must enforce DAILY_QUESTION_LIMIT = 10');
+  assert.ok(!flaskSource.includes("limiter.limit('10 per minute')"), 'Flask proxy must NOT have per-minute limit');
+  assert.ok(!flaskSource.includes('MAX_MESSAGE_LENGTH'), 'Flask proxy must NOT have MAX_MESSAGE_LENGTH limit');
 });
 
 console.log(`\nResults: ${passed} passed, ${failed} failed.`);

@@ -24,6 +24,9 @@
    always {% include %}'d (not imported), which shares the calling template's
    loop context in Nunjucks. #}
 <section class="chapter{% if loop.first %} ch-active{% endif %}" id="{{ chapter.id }}">
+  {% if chapter.subsectionBanner %}
+  <div class="cs-subsection-banner">{{ bl.text(chapter.subsectionBanner) }}</div>
+  {% endif %}
   <div class="chead">
     {% if chapter.chapterNumber %}<span class="cn">{{ chapter.chapterNumber }}</span>{% endif %}
     <h2>{{ bl.text(chapter.title) }}</h2>

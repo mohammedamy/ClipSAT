@@ -6,8 +6,8 @@ Secure reverse-proxy for the Anthropic API ("Ask Mr. Mohamed" chatbot).
 Security features
 ─────────────────
   • Strict Origin header validation (CLIPSAT_ALLOWED_ORIGIN env var)
-  • Per-IP rate limiting via flask-limiter (10 req/min, 100 req/day)
-  • Input validation: message length cap, field presence checks
+  • Daily question limit via flask-limiter (10 questions/day; no per-minute or other limits)
+  • Input validation: field presence checks
   • API key stored server-side only — never sent to the browser
   • Non-sensitive, structured JSON error responses
   • Request timeout to prevent hanging connections
@@ -59,10 +59,9 @@ app.secret_key = os.environ.get('FLASK_SECRET_KEY', os.urandom(32))
 ANTHROPIC_API_KEY    = os.environ.get('ANTHROPIC_API_KEY', '')
 ALLOWED_ORIGIN       = os.environ.get('CLIPSAT_ALLOWED_ORIGIN', 'http://localhost')
 IS_PRODUCTION        = os.environ.get('FLASK_ENV', 'development') == 'production'
-MAX_MESSAGE_LENGTH   = 2000   # characters
-MAX_HISTORY_TURNS    = 10     # conversation turns kept in context
+DAILY_QUESTION_LIMIT = 10     # strictly 10 questions per day; no other limits
 ANTHROPIC_MODEL      = 'claude-haiku-4-5-20251001'   # cost-effective tutoring model
-ANTHROPIC_MAX_TOKENS = 1024
+ANTHROPIC_MAX_TOKENS = 2048
 SYSTEM_PROMPT = (
     "You are Mr. Mohamed, a friendly and expert math tutor for ClipSAT — an online "
     "platform covering SAT, ACT, IB, AP, A-Level, Cambridge, and Saudi curricula. "
@@ -126,14 +125,11 @@ def validate_chat_payload(data: dict) -> str | None:
     if not message or not isinstance(message, str):
         return 'Field "message" is required and must be a non-empty string.'
 
-    if len(message) > MAX_MESSAGE_LENGTH:
-        return f'Message too long. Maximum {MAX_MESSAGE_LENGTH} characters.'
-
     history = data.get('history', [])
     if not isinstance(history, list):
         return 'Field "history" must be a list.'
 
-    for turn in history[:MAX_HISTORY_TURNS]:
+    for turn in history:
         if not isinstance(turn, dict):
             return 'Each history turn must be an object.'
         if turn.get('role') not in ('user', 'assistant'):
@@ -156,15 +152,14 @@ def health():
 
 @app.route('/api/chat', methods=['POST'])
 @require_allowed_origin
-@limiter.limit('10 per minute')
-@limiter.limit('100 per day')
+@limiter.limit(f'{DAILY_QUESTION_LIMIT} per day')
 def chat():
     """
     POST /api/chat
     ──────────────
     Request body (JSON):
       {
-        "message": "string",                   // required, ≤ 2000 chars
+        "message": "string",                   // required
         "history": [                           // optional prior turns
           {"role": "user",      "content": "…"},
           {"role": "assistant", "content": "…"}
@@ -187,11 +182,11 @@ def chat():
         return _error(validation_error, 400, 'INVALID_REQUEST')
 
     message = data['message'].strip()
-    history = data.get('history', [])[:MAX_HISTORY_TURNS]
+    history = data.get('history', [])
 
     # Build message list for Anthropic API
     messages = [
-        {'role': turn['role'], 'content': str(turn['content'])[:MAX_MESSAGE_LENGTH]}
+        {'role': turn['role'], 'content': str(turn['content'])}
         for turn in history
         if turn.get('role') in ('user', 'assistant') and turn.get('content')
     ]
@@ -247,13 +242,9 @@ def chat():
 
 @app.errorhandler(429)
 def rate_limit_exceeded(e):
-    """flask-limiter calls this when a limit is breached."""
-    description = str(e.description) if hasattr(e, 'description') else ''
-    if 'day' in description:
-        msg = ('You have reached your daily question limit (100 per day). '
-               'Your limit resets at midnight UTC.')
-    else:
-        msg = 'You are sending messages too quickly. Please wait a moment.'
+    """flask-limiter calls this when the daily question limit is breached."""
+    msg = (f'You have reached your daily question limit ({DAILY_QUESTION_LIMIT} questions per day). '
+           'Your limit resets at midnight UTC.')
     return _error(msg, 429, 'RATE_LIMITED')
 
 

@@ -1,1325 +1,736 @@
-/* Canvas explorers for the Contest Math & Olympiad track (olympiad).
-   build.js minifies this file to public/js/ex/olympiad.js, loaded on the olympiad track page. */
+/* Canvas explorers for the Mathematical Olympiad (NSMO KSA · KAUST · IMO) track (olympiad).
+   Strictly ES5-compatible: build.js minifies this file via UglifyJS to public/js/ex/olympiad.js. */
 (function(K){
   "use strict";
   if(!K) return;
-  var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var attachChallenge = K.attachChallenge,
+      fmt = K.fmt,
+      Plot = K.Plot,
+      wireDataToggle = K.wireDataToggle,
+      renderDataRows = K.renderDataRows;
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS;
+  var TEAL = '#0E9F8F', RED = '#DC2626';
+
+  function _colors(){
+    var c = K.colors();
+    INK = c.INK; INDIGO = c.INDIGO; INDIGO2 = c.INDIGO2;
+    AMBER = c.AMBER; AMBER2 = c.AMBER2; LINE = c.LINE;
+    GRID = c.GRID; MUTED = c.MUTED; PAPER = c.PAPER;
+    WHITE = c.WHITE; AXIS = c.AXIS;
+  }
   _colors();
-  function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
-  function _mountBespokeExplorer(cfg){
+  function _gcd(a, b){
+    a = Math.abs(Math.round(a)); b = Math.abs(Math.round(b));
+    while(b > 0){ var t = a % b; a = b; b = t; }
+    return a || 1;
+  }
+  function _extGcd(a, b){
+    if(b === 0) return { g: a, x: 1, y: 0 };
+    var r = _extGcd(b, a % b);
+    return { g: r.g, x: r.y, y: r.x - Math.floor(a / b) * r.y };
+  }
+  function _phi(n){
+    n = Math.max(1, Math.round(n));
+    var res = n, x = n;
+    for(var p = 2; p * p <= x; p++){
+      if(x % p === 0){
+        while(x % p === 0) x = Math.floor(x / p);
+        res -= Math.floor(res / p);
+      }
+    }
+    if(x > 1) res -= Math.floor(res / x);
+    return res;
+  }
+  function _tau(n){
+    n = Math.max(1, Math.round(n));
+    var cnt = 0;
+    for(var d = 1; d * d <= n; d++){
+      if(n % d === 0) cnt += (d * d === n) ? 1 : 2;
+    }
+    return cnt;
+  }
+  function _comb(n, k){
+    n = Math.round(n); k = Math.round(k);
+    if(k < 0 || k > n) return 0;
+    if(k > n - k) k = n - k;
+    var r = 1;
+    for(var i = 1; i <= k; i++) r = r * (n - k + i) / i;
+    return Math.round(r);
+  }
+
+  function _mountOlympiadLab(cfg){
     var canvas = document.getElementById(cfg.canvasId);
-    if(!canvas || canvas._bespokeMounted) return;
-    canvas._bespokeMounted = true;
+    if(!canvas || canvas._olMounted) return;
+    canvas._olMounted = true;
 
-    var s0 = document.getElementById(cfg.s0Id), s1 = document.getElementById(cfg.s1Id);
-    var v0 = document.getElementById(cfg.v0Id), v1 = document.getElementById(cfg.v1Id);
-    var r0 = document.getElementById(cfg.r0Id), r1 = document.getElementById(cfg.r1Id), r2 = document.getElementById(cfg.r2Id);
-    var dBtn = document.getElementById(cfg.dataBtnId), dPanel = document.getElementById(cfg.dataPanelId),
-        dDesc = document.getElementById(cfg.dataDescId), dRows = document.getElementById(cfg.dataRowsId);
+    var s0 = document.getElementById(cfg.canvasId + '_s0');
+    var s1 = document.getElementById(cfg.canvasId + '_s1');
+    var v0 = document.getElementById(cfg.canvasId + '_v0');
+    var v1 = document.getElementById(cfg.canvasId + '_v1');
+    var r0 = document.getElementById(cfg.canvasId + '_r0');
+    var r1 = document.getElementById(cfg.canvasId + '_r1');
+    var r2 = document.getElementById(cfg.canvasId + '_r2');
+    var dBtn = document.getElementById(cfg.dataBtnId || (cfg.canvasId + '_dataBtn'));
+    var dPanel = document.getElementById(cfg.canvasId + '_dataPanel');
+    var dDesc = document.getElementById(cfg.canvasId + '_dataDesc');
+    var dRows = document.getElementById(cfg.canvasId + '_dataRows');
     wireDataToggle(dBtn, dPanel);
 
-    var mode = cfg.mode;
-    var view = cfg.square ? {xmin:-5, xmax:5, ymin:-4.5, ymax:4.5, square:true, step:1} : {xmin:-4.5, xmax:4.5, ymin:-3.8, ymax:4.2};
-    if(mode==='pacing_score') view = {xmin:0, xmax:5, ymin:0, ymax:135};
-    else if(mode==='crv_pdf') view = {xmin:-0.3, xmax:4.4, ymin:-0.05, ymax:0.48};
-    else if(mode==='slopefield') view = {xmin:0, xmax:4.5, ymin:-0.3, ymax:5.2};
-    else if(mode==='ztest' || mode==='emp_rule') view = {xmin:-3.6, xmax:3.6, ymin:-0.04, ymax:0.46};
-    else if(mode==='trapezium') view = {xmin:-0.3, xmax:5.4, ymin:-0.1, ymax:1.15};
-    else if(mode==='cobweb') view = {xmin:0, xmax:4.2, ymin:0, ymax:4.2, square:true, step:1};
-    else if(mode==='poisson' || mode==='binomial' || mode==='geom_wait') view = {xmin:-0.8, xmax:12.8, ymin:0, ymax:0.45};
-    else if(mode==='clt_ci') view = {xmin:-3.5, xmax:3.5, ymin:-0.05, ymax:0.95};
-    else if(mode==='harmonic') view = {xmin:0, xmax:6.5, ymin:-5.8, ymax:5.8};
-    else if(mode==='euclid_gcd') view = {xmin:-2, xmax:52, ymin:-4, ymax:52, square:true, step:10};
-    else if(mode==='geom_series') view = {xmin:0, xmax:9, ymin:-2.5, ymax:12};
-    else if(mode==='kinematics' || mode==='suvat') view = {xmin:0, xmax:5.2, ymin:-5.5, ymax:9.5};
-    else if(mode==='linear_law' || mode==='exp_doubling') view = {xmin:-1.5, xmax:4.2, ymin:-2.0, ymax:9.5};
-    else if(mode==='boxplot') view = {xmin:2, xmax:32, ymin:0, ymax:6};
-    else if(mode==='rate_accum') view = {xmin:0, xmax:6.2, ymin:0, ymax:6.5};
-    else if(mode==='ogive') view = {xmin:0, xmax:7, ymin:0, ymax:108};
-    else if(mode==='drv_spike') view = {xmin:0.2, xmax:5.8, ymin:-0.06, ymax:0.48};
-    else if(mode==='incline_energy' || mode==='forces_eq') view = {xmin:-1, xmax:6.5, ymin:-1, ymax:5.5, square:true, step:1};
-    else if(mode==='atwood') view = {xmin:-3.5, xmax:3.5, ymin:-4.5, ymax:2.5, square:true, step:1};
-    else if(mode==='venn_prob') view = {xmin:-4.2, xmax:4.2, ymin:-2.8, ymax:2.8, square:true, step:1};
-    else if(mode==='cast_circle') view = {xmin:-2.2, xmax:5.2, ymin:-1.8, ymax:1.8, square:true, step:1};
-    else if(mode==='usub') view = {xmin:-0.2, xmax:5.2, ymin:-1.3, ymax:2.4};
-    else if(mode==='contingency' || mode==='bayes_rule') view = {xmin:0, xmax:4.5, ymin:0, ymax:1.15};
-    else if(mode==='similar_solids' || mode==='cavalieri') view = {xmin:-4.8, xmax:5.2, ymin:-0.8, ymax:5.8, square:true, step:1};
-    else if(mode==='data_transform') view = {xmin:-6, xmax:9, ymin:0, ymax:4};
-    else if(mode==='error_bounds') view = {xmin:-0.5, xmax:9.5, ymin:-0.5, ymax:6.0, square:true, step:1};
-    else if(mode==='hist_density') view = {xmin:0, xmax:6.8, ymin:0, ymax:32};
-    else if(mode==='mle_gauss') view = {xmin:-3.5, xmax:5.0, ymin:-0.45, ymax:0.65};
-    else if(mode==='grad_descent') view = {xmin:-3.5, xmax:5.0, ymin:-0.5, ymax:14.0};
-    else if(mode==='sigmoid_log') view = {xmin:-4.2, xmax:4.2, ymin:-0.15, ymax:1.2};
-    else if(mode==='cosine_embed') view = {xmin:-1.5, xmax:1.5, ymin:-1.5, ymax:1.5, square:true, step:0.5};
-    else if(mode==='heaviside_laplace' || mode==='resonance_beats' || mode==='wronskian_green') view = {xmin:0, xmax:6.5, ymin:-3.2, ymax:3.2};
-
     var chApi = attachChallenge(canvas, {
-      prompt: cfg.challengePrompt,
-      check: function(st){ return cfg.checkFn(st.a, st.b); }
+      prompt: cfg.prompt,
+      check: function(st){ return cfg.check(st.a, st.b); }
     });
-
-    function _erf(x){
-      var sg = x < 0 ? -1 : 1; x = Math.abs(x);
-      var t = 1 / (1 + 0.3275911 * x);
-      var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
-      return sg * y;
-    }
-    function _comb(n, k){
-      if(k<0 || k>n) return 0;
-      k = Math.min(k, n - k);
-      var res = 1;
-      for(var i=1; i<=k; i++) res = res * (n - k + i) / i;
-      return Math.round(res);
-    }
-    function _fact(n){ var r=1; for(var i=2;i<=n;i++) r*=i; return r; }
 
     var lastP = null;
     function draw(ctx, w, h){
-      var P = new Plot(ctx, w, h, view, {l:34, r:14, t:14, b:24});
+      _colors();
+      var P = new Plot(ctx, w, h, cfg.view, cfg.pad || {l:36, r:16, t:16, b:26});
       lastP = P;
-      P.clear(); P.grid();
-      var a = s0 ? parseFloat(s0.value) : cfg.s0Val;
-      var b = s1 ? parseFloat(s1.value) : cfg.s1Val;
-      if(v0) v0.textContent = fmt(a, cfg.s0Step < 0.1 ? 2 : (cfg.s0Step < 1 ? 1 : 0));
-      if(v1) v1.textContent = fmt(b, cfg.s1Step < 0.1 ? 2 : (cfg.s1Step < 1 ? 1 : 0));
+      P.clear();
+      if(!cfg.noGrid) P.grid();
 
-      var out0 = '—', out1 = '—', out2 = '—', rows = [];
-      var TEAL = '#0E9F8F';
+      var a = s0 ? parseFloat(s0.value) : cfg.a0;
+      var b = s1 ? parseFloat(s1.value) : cfg.b0;
+      if(v0) v0.textContent = fmt(a, cfg.d0 || 0);
+      if(v1) v1.textContent = fmt(b, cfg.d1 || 0);
 
-      if(mode === 'pacing_score'){
-        var tot = a + b, maxTot = (s0 && parseFloat(s0.max) > 40) ? 125 : ((s0 && parseFloat(s0.max) === 45) ? 108 : 50);
-        if(s0 && parseFloat(s0.max) === 20 && s1 && parseFloat(s1.max) === 38) maxTot = 58;
-        var cutAStar = maxTot * 0.84, cutA = maxTot * 0.72, cutB = maxTot * 0.60;
-        P.polygon([[0.6,0],[1.4,0],[1.4,a],[0.6,a]], 'rgba(30,58,110,0.25)', INDIGO, 2);
-        P.polygon([[1.8,0],[2.6,0],[2.6,b],[1.8,b]], 'rgba(14,159,143,0.25)', TEAL, 2);
-        P.polygon([[3.1,0],[4.1,0],[4.1,tot],[3.1,tot]], 'rgba(200,144,42,0.32)', AMBER2, 2.4);
-        P.hline(cutAStar, AMBER2, [4,4]); P.hline(cutA, INDIGO, [3,3]); P.hline(cutB, TEAL, [2,3]);
-        P.label(0.7, a + 4, 'Sec 1: '+fmt(a,0), INDIGO);
-        P.label(1.9, b + 4, 'Sec 2: '+fmt(b,0), TEAL);
-        P.label(3.2, tot + 4, 'Total: '+fmt(tot,0), AMBER2);
-        var band = tot >= cutAStar ? 'Top Tier (A* / 5 / 760+)' : (tot >= cutA ? 'High Tier (A / 4 / 680+)' : (tot >= cutB ? 'Target Tier (B / 3 / 600+)' : 'Developing'));
-        out0 = fmt(tot,0) + ' / ' + maxTot;
-        out1 = band;
-        out2 = fmt(60 / Math.max(1, tot), 2) + ' min/pt';
-        rows.push(['Section 1 Raw', fmt(a,0)], ['Section 2 Raw', fmt(b,0)], ['Combined Total', out0], ['Grade Tier', band]);
-      } else if(mode === 'pfrac'){
-        var f1 = function(x){ return Math.abs(x+1)<0.08 ? NaN : a/(x+1); };
-        var f2 = function(x){ return Math.abs(x-2)<0.08 ? NaN : b/(x-2); };
-        var fSum = function(x){ return (Math.abs(x+1)<0.08 || Math.abs(x-2)<0.08) ? NaN : a/(x+1) + b/(x-2); };
-        P.vline(-1, AMBER2, [4,4]); P.vline(2, TEAL, [4,4]);
-        P.curve(f1, INDIGO2, 1.6, [4,4]);
-        P.curve(f2, TEAL, 1.6, [4,4]);
-        P.curve(fSum, INDIGO, 2.6);
-        var y0 = a - 0.5*b;
-        P.dot(0, y0, AMBER2, 5.5);
-        P.label(-0.9, 3.5, 'x = −1', AMBER2); P.label(2.1, 3.5, 'x = 2', TEAL);
-        out0 = fmt(a+b,1)+'x + ('+fmt(b-2*a,1)+')';
-        out1 = 'x = −1, x = 2';
-        out2 = 'f(0) = ' + fmt(y0, 2);
-        rows.push(['Residue A (at x=−1)', fmt(a,2)], ['Residue B (at x=2)', fmt(b,2)], ['Combined Numerator', out0], ['y-Intercept f(0)', fmt(y0,2)]);
-      } else if(mode === 'argand'){
-        var mag = Math.sqrt(a*a + b*b), ang = Math.atan2(b, a)*180/Math.PI;
-        P.parametric(function(t){return mag*Math.cos(t);}, function(t){return mag*Math.sin(t);}, 0, 2*Math.PI, LINE, 1.4, [3,3]);
-        P.arrow(0, 0, a, b, INDIGO, 2.6); P.dot(a, b, INDIGO, 5.5);
-        P.arrow(0, 0, a, -b, AMBER2, 2.2); P.dot(a, -b, AMBER2, 5);
-        P.arrow(0, 0, -b, a, TEAL, 2.0); P.dot(-b, a, TEAL, 4.5);
-        P.segment(a, b, a, -b, AMBER2, 1.2, [3,3]);
-        P.label(a+0.18, b+0.2, 'z = '+fmt(a,1)+(b>=0?'+':'')+fmt(b,1)+'i', INDIGO);
-        P.label(a+0.18, -b-0.2, 'z̄ = '+fmt(a,1)+(b>=0?'−':'+')+fmt(Math.abs(b),1)+'i', AMBER2);
-        P.label(-b+0.15, a+0.2, 'iz', TEAL);
-        out0 = fmt(mag, 2);
-        out1 = fmt(ang, 1) + '°';
-        out2 = fmt(a,1)+(b>=0?'−':'+')+fmt(Math.abs(b),1)+'i | '+fmt(-b,1)+'+'+fmt(a,1)+'i';
-        rows.push(['z = a + bi', fmt(a,1)+' + '+fmt(b,1)+'i'], ['Modulus |z|', out0], ['arg(z)', out1], ['Conjugate z̄', fmt(a,1)+' − '+fmt(b,1)+'i']);
-      } else if(mode === 'crv_pdf'){
-        var pdf = function(x){
-          if(x<0 || x>4) return 0;
-          return (3/32)*x*(4-x)*(1 + 0.25*b*(x-2));
-        };
-        P.shadedArea(pdf, 0, a, 'rgba(200,144,42,0.26)');
-        P.curve(pdf, INDIGO, 2.6);
-        var mean = 2.0 + 0.32*b;
-        P.vline(mean, TEAL, [4,4]);
-        P.vline(a, AMBER2, null, 2.2);
-        P.dot(a, pdf(a), AMBER2, 5.5);
-        var prob = integrate(pdf, 0, a, 120);
-        P.label(a+0.08, pdf(a)+0.03, 'b = '+fmt(a,2), AMBER2);
-        P.label(mean+0.08, 0.42, 'E(X) = '+fmt(mean,2), TEAL);
-        out0 = fmt(prob, 3);
-        out1 = fmt(mean, 2);
-        out2 = fmt(pdf(a), 3);
-        rows.push(['Upper Cutoff b', fmt(a,2)], ['Cumulative P(X ≤ b)', out0], ['Expectation E(X)', out1], ['Density f(b)', out2]);
-      } else if(mode === 'slopefield'){
-        for(var gx=0.25; gx<=4.25; gx+=0.5){
-          for(var gy=0.25; gy<=4.75; gy+=0.5){
-            var sl = a * gy * (1 - gy/4.0);
-            var L = 0.16 / Math.sqrt(1 + sl*sl);
-            P.segment(gx-L, gy-sl*L, gx+L, gy+sl*L, '#94A3B8', 1.3);
-          }
-        }
-        P.hline(4.0, TEAL, [4,4]); P.hline(0.0, AXIS, [2,2]);
-        var sol = function(t){
-          var y0 = Math.max(0.05, b);
-          return 4.0 / (1.0 + ((4.0 - y0)/y0) * Math.exp(-a * t));
-        };
-        P.curve(sol, INDIGO, 2.8);
-        P.dot(0, b, AMBER2, 5.5);
-        P.dot(3.0, sol(3.0), INDIGO, 5);
-        P.label(3.1, 4.2, 'Equilibrium y = 4', TEAL);
-        var dy0 = a * b * (1 - b/4.0);
-        out0 = fmt(dy0, 2);
-        out1 = fmt(sol(3.0), 2);
-        out2 = 'y = 4.00 (Carrying Cap)';
-        rows.push(['Growth Rate k', fmt(a,2)], ['Initial Value y(0)', fmt(b,2)], ['Initial Slope dy/dx(0)', out0], ['Value y(3.0)', out1]);
-      } else if(mode === 'modulus'){
-        var vx = Math.abs(a)>1e-5 ? -b/a : 0;
-        P.curve(function(x){return a*x + b;}, '#94A3B8', 1.6, [4,4]);
-        P.curve(function(x){return Math.abs(a*x + b);}, INDIGO, 2.7);
-        P.hline(2.0, AMBER2, [4,4]);
-        var x1 = (2.0 - b)/a, x2 = (-2.0 - b)/a;
-        P.dot(vx, 0, INDIGO, 5.5);
-        P.dot(x1, 2.0, AMBER2, 5); P.dot(x2, 2.0, AMBER2, 5);
-        P.label(vx+0.15, -0.45, 'V('+fmt(vx,1)+', 0)', INDIGO);
-        out0 = '(' + fmt(vx, 2) + ', 0)';
-        out1 = 'x = ' + fmt(Math.min(x1,x2), 2) + ', ' + fmt(Math.max(x1,x2), 2);
-        out2 = 'y = −(' + fmt(a,1) + 'x + ' + fmt(b,1) + ')';
-        rows.push(['Vertex (−c/m, 0)', out0], ['Roots of |mx+c|=2', out1], ['Reflected Branch', out2]);
-      } else if(mode === 'ztest'){
-        var phi = function(z){ return Math.exp(-0.5*z*z)/Math.sqrt(2*Math.PI); };
-        var zc = Math.abs(b);
-        P.shadedArea(phi, zc, 3.5, 'rgba(200,144,42,0.32)');
-        P.shadedArea(phi, -3.5, -zc, 'rgba(200,144,42,0.32)');
-        P.curve(phi, INDIGO, 2.6);
-        P.vline(zc, AMBER2, [4,4]); P.vline(-zc, AMBER2, [4,4]);
-        P.vline(a, TEAL, null, 2.4);
-        P.dot(a, phi(a), TEAL, 5.5);
-        P.label(a+0.1, phi(a)+0.04, 'z = '+fmt(a,2), TEAL);
-        var pval = 1 - _erf(Math.abs(a)/Math.SQRT2);
-        var alpha = 1 - _erf(zc/Math.SQRT2);
-        var dec = Math.abs(a) >= zc ? 'Reject H₀ (Significant)' : 'Fail to Reject H₀';
-        out0 = 'p = ' + fmt(pval, 4);
-        out1 = 'α = ' + fmt(alpha, 4);
-        out2 = dec;
-        rows.push(['Observed Statistic z', fmt(a,2)], ['Critical Cutoff ±z*', '±'+fmt(zc,2)], ['Two-Sided p-Value', out0], ['Decision', dec]);
-      } else if(mode === 'trapezium'){
-        var fn = function(x){ return x<0 ? 0 : x*Math.exp(-0.4*x); };
-        var N = Math.max(1, Math.round(b)), dx = a / N, trap = 0;
-        for(var k=0; k<N; k++){
-          var x0 = k*dx, x1 = (k+1)*dx, y0 = fn(x0), y1 = fn(x1);
-          trap += 0.5*(y0+y1)*dx;
-          P.polygon([[x0,0],[x1,0],[x1,y1],[x0,y0]], 'rgba(200,144,42,0.22)', AMBER2, 1.6);
-        }
-        P.curve(fn, INDIGO, 2.6);
-        var exact = (1 - (1 + 0.4*a)*Math.exp(-0.4*a)) / 0.16;
-        var err = Math.abs(exact - trap) / Math.max(1e-6, exact) * 100;
-        out0 = fmt(exact, 4);
-        out1 = fmt(trap, 4);
-        out2 = fmt(err, 2) + '%';
-        rows.push(['Upper Limit b', fmt(a,2)], ['Trapezium Strips n', String(N)], ['Exact Integral', out0], ['Trapezium Rule T_n', out1], ['Relative Error', out2]);
-      } else if(mode === 'cobweb'){
-        var g = function(x){ return x + b >= 0 ? Math.sqrt(x + b) : NaN; };
-        P.curve(function(x){return x;}, TEAL, 1.8, [4,4]);
-        P.curve(g, INDIGO, 2.6);
-        var cx = a;
-        P.segment(cx, 0, cx, g(cx), AMBER2, 2.0);
-        for(var step=0; step<6; step++){
-          var ny = g(cx);
-          if(!isFinite(ny)) break;
-          P.segment(cx, ny, ny, ny, AMBER2, 2.0);
-          var nny = g(ny);
-          if(step<5 && isFinite(nny)) P.segment(ny, ny, ny, nny, AMBER2, 2.0);
-          cx = ny;
-        }
-        var alpha = 0.5*(1 + Math.sqrt(1 + 4*b));
-        P.dot(alpha, alpha, INDIGO, 5.5);
-        P.dot(a, g(a), AMBER2, 5);
-        P.label(alpha+0.12, alpha-0.2, 'Root α = '+fmt(alpha,2), INDIGO);
-        out0 = 'α = ' + fmt(alpha, 3);
-        out1 = 'x₄ = ' + fmt(cx, 3);
-        out2 = "|g'(α)| = " + fmt(1/(2*alpha), 3) + ' < 1';
-        rows.push(['Initial Guess x₀', fmt(a,2)], ['Fixed-Point Root α', out0], ['Iterate x₄', out1], ['Jacobian |g\'(α)|', out2]);
-      } else if(mode === 'poisson'){
-        var lam = Math.max(0.2, a), kCut = Math.round(b), cdf = 0, pk = 0;
-        for(var r=0; r<=12; r++){
-          var pr = Math.exp(-lam) * Math.pow(lam, r) / _fact(r);
-          if(r <= kCut) cdf += pr;
-          if(r === kCut) pk = pr;
-          var col = r <= kCut ? AMBER2 : INDIGO;
-          var fill = r <= kCut ? 'rgba(200,144,42,0.35)' : 'rgba(30,58,110,0.22)';
-          P.polygon([[r-0.35,0],[r+0.35,0],[r+0.35,pr],[r-0.35,pr]], fill, col, 1.8);
-          if(r%2===0) rows.push(['P(X = '+r+')', fmt(pr, 4)]);
-        }
-        P.vline(lam, TEAL, [4,4]);
-        P.label(lam+0.2, 0.38, 'Mean λ = '+fmt(lam,1), TEAL);
-        out0 = fmt(pk, 4);
-        out1 = fmt(cdf, 4);
-        out2 = 'λ = ' + fmt(lam, 1);
-      } else if(mode === 'clt_ci'){
-        var n = Math.max(2, a), se = 2.0 / Math.sqrt(n), me = 1.96 * se;
-        var center = b;
-        var dens = function(x){ var z=(x-center)/se; return Math.exp(-0.5*z*z)/(se*Math.sqrt(2*Math.PI)); };
-        P.shadedArea(dens, center-me, center+me, 'rgba(200,144,42,0.28)');
-        P.curve(dens, INDIGO, 2.6);
-        P.vline(0, TEAL, [4,4]);
-        P.segment(center-me, 0.08, center+me, 0.08, AMBER2, 3.2);
-        P.dot(center, 0.08, AMBER2, 5.5);
-        P.label(center-me, 0.15, '['+fmt(center-me,2)+', '+fmt(center+me,2)+']', AMBER2);
-        out0 = 'SE = ' + fmt(se, 3);
-        out1 = '[' + fmt(center-me, 2) + ', ' + fmt(center+me, 2) + ']';
-        out2 = '±' + fmt(me, 3);
-        rows.push(['Sample Size n', fmt(n,0)], ['Standard Error σ/√n', out0], ['95% Interval', out1]);
-      } else if(mode === 'taylor'){
-        var ord = Math.max(1, Math.round(b));
-        var isSin = cfg.canvasId.indexOf('apbc') !== -1;
-        var fEx = isSin ? function(x){return Math.sin(x);} : function(x){ return x <= -0.98 ? NaN : Math.pow(1+x, a); };
-        var fTay = function(x){
-          if(isSin){
-            var s=0;
-            for(var k=0; k<=ord; k+=2){
-              var sgn = (k/2)%2===0 ? 1 : -1;
-              s += sgn * Math.pow(x, k+1) / _fact(k+1);
-            }
-            return s;
-          } else {
-            var s2=1, term=1;
-            for(var j=1; j<=ord; j++){ term *= (a - (j-1))*x/j; s2 += term; }
-            return s2;
-          }
-        };
-        if(!isSin){ P.vline(-1, TEAL, [4,4]); P.vline(1, TEAL, [4,4]); }
-        P.curve(fEx, INDIGO, 2.6);
-        P.curve(fTay, AMBER2, 2.2, [5,3]);
-        var xEval = isSin ? a : 0.5;
-        P.dot(xEval, fEx(xEval), INDIGO, 5);
-        P.dot(xEval, fTay(xEval), AMBER2, 5);
-        out0 = fmt(fTay(xEval), 4);
-        out1 = fmt(fEx(xEval), 4);
-        out2 = isSin ? ('Error = '+fmt(Math.abs(fEx(xEval)-fTay(xEval)),4)) : '|x| < 1.00';
-        rows.push(['Order N', String(ord)], ['Series Value', out0], ['Exact Value', out1]);
-      } else if(mode === 'harmonic'){
-        var R = Math.sqrt(a*a + b*b), alpha = Math.atan2(b, a);
-        P.curve(function(x){return a*Math.cos(x);}, INDIGO2, 1.5, [4,4]);
-        P.curve(function(x){return b*Math.sin(x);}, TEAL, 1.5, [4,4]);
-        P.curve(function(x){return R*Math.cos(x - alpha);}, AMBER2, 2.8);
-        P.dot(alpha, R, AMBER2, 5.5);
-        P.hline(R, AMBER2, [3,3]); P.hline(-R, AMBER2, [3,3]);
-        P.label(alpha+0.15, R+0.45, 'Peak ('+fmt(alpha*180/Math.PI,1)+'°, '+fmt(R,2)+')', AMBER2);
-        out0 = 'R = ' + fmt(R, 2);
-        out1 = 'α = ' + fmt(alpha*180/Math.PI, 1) + '°';
-        out2 = 'Max = ' + fmt(R, 2) + ' at ' + fmt(alpha*180/Math.PI, 1) + '°';
-        rows.push(['Cosine coeff a', fmt(a,2)], ['Sine coeff b', fmt(b,2)], ['Amplitude R', out0], ['Phase shift α', out1]);
-      } else if(mode === 'quad_sys'){
-        var fQ = function(x){return x*x - 2;};
-        var fL = function(x){return a*x + b;};
-        var disc = a*a + 4*(b + 2);
-        if(disc > 0){
-          var r1 = 0.5*(a - Math.sqrt(disc)), r2 = 0.5*(a + Math.sqrt(disc));
-          P.shadedArea(function(x){return Math.max(0, fL(x)-fQ(x));}, r1, r2, 'rgba(200,144,42,0.18)');
-          P.dot(r1, fL(r1), AMBER2, 5.5); P.dot(r2, fL(r2), AMBER2, 5.5);
-          out1 = '2 Real Secant Roots';
-          out2 = 'x = ' + fmt(r1, 2) + ', ' + fmt(r2, 2);
-        } else if(Math.abs(disc) <= 1e-4){
-          var rt = 0.5*a;
-          P.dot(rt, fL(rt), AMBER2, 6);
-          out1 = '1 Repeated Tangent Root';
-          out2 = 'x = ' + fmt(rt, 2);
-        } else {
-          out1 = '0 Real Roots (Disjoint)';
-          out2 = 'No Real Intersection';
-        }
-        P.curve(fQ, INDIGO, 2.6);
-        P.curve(fL, AMBER2, 2.3);
-        out0 = 'Δ = ' + fmt(disc, 2);
-        rows.push(['Line y = mx + k', fmt(a,1)+'x + '+fmt(b,1)], ['Discriminant Δ', out0], ['Intersections', out1], ['Roots', out2]);
-      } else if(mode === 'conic'){
-        var c = Math.sqrt(Math.abs(a*a - b*b));
-        var ecc = c / Math.max(a, b);
-        P.parametric(function(t){return a*Math.cos(t);}, function(t){return b*Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.7);
-        var fx = a >= b ? c : 0, fy = a >= b ? 0 : c;
-        P.dot(fx, fy, AMBER2, 5.5); P.dot(-fx, -fy, AMBER2, 5.5);
-        P.dot(a, 0, INDIGO, 4.5); P.dot(-a, 0, INDIGO, 4.5);
-        P.dot(0, b, TEAL, 4.5); P.dot(0, -b, TEAL, 4.5);
-        P.label(fx+0.15, fy+0.25, 'F₁', AMBER2); P.label(-fx-0.45, -fy+0.25, 'F₂', AMBER2);
-        out0 = 'c = ' + fmt(c, 2);
-        out1 = 'e = ' + fmt(ecc, 3);
-        out2 = a >= b ? '(±'+fmt(c,2)+', 0)' : '(0, ±'+fmt(c,2)+')';
-        rows.push(['Semi-axis a', fmt(a,2)], ['Semi-axis b', fmt(b,2)], ['Focal distance c', out0], ['Eccentricity e', out1]);
-      } else if(mode === 'euclid_gcd'){
-        var ia = Math.max(2, Math.round(a)), ib = Math.max(2, Math.round(b));
-        var x0 = 0, y0 = 0, wR = ia, hR = ib, stepCol = 0;
-        var cols = ['rgba(30,58,110,0.24)', 'rgba(200,144,42,0.28)', 'rgba(14,159,143,0.25)', 'rgba(99,102,241,0.22)'];
-        var guard = 0;
-        while(wR > 0 && hR > 0 && guard < 24){
-          guard++;
-          if(wR >= hR){
-            P.polygon([[x0,y0],[x0+hR,y0],[x0+hR,y0+hR],[x0,y0+hR]], cols[stepCol%4], INDIGO, 1.6);
-            x0 += hR; wR -= hR;
-          } else {
-            P.polygon([[x0,y0],[x0+wR,y0],[x0+wR,y0+wR],[x0,y0+wR]], cols[stepCol%4], AMBER2, 1.6);
-            y0 += wR; hR -= wR;
-          }
-          stepCol++;
-        }
-        var xG = ia, yG = ib;
-        while(yG){ var tG = yG; yG = xG % yG; xG = tG; }
-        var lcm = (ia * ib) / xG;
-        P.label(ia*0.35, ib+2.5, ia+' × '+ib+' Rectangle (gcd = '+xG+')', INDIGO);
-        out0 = 'gcd = ' + xG;
-        out1 = 'lcm = ' + lcm;
-        out2 = 'Final Square = ' + xG + '×' + xG;
-        rows.push(['Integer a', String(ia)], ['Integer b', String(ib)], ['gcd(a, b)', String(xG)], ['lcm(a, b)', String(lcm)]);
-      } else if(mode === 'rational_hole'){
-        var fnR = function(x){ return Math.abs(x - a) < 0.08 ? NaN : (x - 1) / (x - a); };
-        P.vline(a, AMBER2, [4,4]); P.hline(1, TEAL, [4,4]);
-        P.curve(fnR, INDIGO, 2.6);
-        var yh = Math.abs(b - a) > 0.05 ? (b - 1)/(b - a) : NaN;
-        if(isFinite(yh)){
-          P.ring(b, yh, AMBER2, 6);
-          P.label(b+0.15, yh+0.3, 'Hole ('+fmt(b,1)+', '+fmt(yh,2)+')', AMBER2);
-        }
-        P.label(a+0.15, 3.4, 'VA x = '+fmt(a,1), AMBER2);
-        out0 = 'x = ' + fmt(a, 1);
-        out1 = isFinite(yh) ? '('+fmt(b,1)+', '+fmt(yh,2)+')' : 'Pole Collision';
-        out2 = 'y = 1.00';
-        rows.push(['Vertical Asymptote', out0], ['Removable Hole', out1], ['Horizontal Asymptote', out2]);
-      } else if(mode === 'binomial'){
-        var nB = Math.max(2, Math.round(a));
-        var isProb = (s1 && parseFloat(s1.max) <= 1.0);
-        var pB = isProb ? b : 0.5;
-        var rSel = isProb ? Math.round(nB * pB) : Math.min(nB, Math.round(b));
-        for(var rB=0; rB<=nB; rB++){
-          var prB = _comb(nB, rB) * Math.pow(pB, rB) * Math.pow(1 - pB, nB - rB);
-          var actB = (rB === rSel);
-          P.polygon([[rB-0.35,0],[rB+0.35,0],[rB+0.35,prB],[rB-0.35,prB]], actB?'rgba(200,144,42,0.38)':'rgba(30,58,110,0.22)', actB?AMBER2:INDIGO, 1.8);
-        }
-        var cVal = _comb(nB, rSel);
-        if(isProb){
-          out0 = nB+'C'+rSel+' = '+cVal;
-          out1 = 'μ = ' + fmt(nB*pB, 2);
-          out2 = 'σ = ' + fmt(Math.sqrt(nB*pB*(1-pB)), 2);
-        } else {
-          out0 = nB+'C'+rSel+' = '+cVal;
-          out1 = nB+'P'+rSel+' = '+(cVal * _fact(rSel));
-          out2 = nB+'C'+(nB-rSel)+' = '+cVal;
-        }
-        rows.push(['n', String(nB)], ['Selected r', String(rSel)], ['Combinations nCr', String(cVal)]);
-      } else if(mode === 'inv_func'){
-        var fI = function(x){ return 0.35*Math.pow(x - a, 3) + b; };
-        P.curve(function(x){return x;}, '#94A3B8', 1.6, [4,4]);
-        P.curve(fI, INDIGO, 2.6);
-        P.parametric(function(t){return fI(t);}, function(t){return t;}, -4.5, 4.5, AMBER2, 2.6);
-        var x0 = a + 1.2, y0 = fI(x0);
-        P.dot(x0, y0, INDIGO, 5.5); P.dot(y0, x0, AMBER2, 5.5);
-        P.segment(x0, y0, y0, x0, TEAL, 1.5, [3,3]);
-        P.label(x0+0.15, y0, '('+fmt(x0,1)+','+fmt(y0,1)+')', INDIGO);
-        P.label(y0+0.15, x0, '('+fmt(y0,1)+','+fmt(x0,1)+')', AMBER2);
-        out0 = '(' + fmt(x0,1) + ', ' + fmt(y0,2) + ')';
-        out1 = '(' + fmt(y0,2) + ', ' + fmt(x0,1) + ')';
-        out2 = 'Mirror Line y = x';
-        rows.push(['Point on f(x)', out0], ['Reflected Point on f⁻¹(x)', out1], ['Symmetry Axis', 'y = x']);
-      } else if(mode === 'eps_delta'){
-        var fLim = function(x){ return 0.4*x*x + 0.3*x + 0.5; };
-        var L = fLim(a), eps = b;
-        var sl = Math.max(0.4, Math.abs(0.8*a + 0.3)), delta = eps / sl;
-        P.polygon([[-4.5, L-eps],[4.5, L-eps],[4.5, L+eps],[-4.5, L+eps]], 'rgba(200,144,42,0.14)', AMBER2, 1.2);
-        P.polygon([[a-delta, -3.8],[a+delta, -3.8],[a+delta, 4.2],[a-delta, 4.2]], 'rgba(14,159,143,0.14)', TEAL, 1.2);
-        P.curve(fLim, INDIGO, 2.7);
-        P.ring(a, L, AMBER2, 6);
-        P.label(a+delta+0.1, L, 'L ± ε = '+fmt(L,2)+' ± '+fmt(eps,2), AMBER2);
-        out0 = 'L = ' + fmt(L, 2);
-        out1 = 'δ ≈ ' + fmt(delta, 2);
-        out2 = '(' + fmt(L-eps, 2) + ', ' + fmt(L+eps, 2) + ')';
-        rows.push(['Target x → a', fmt(a,2)], ['Limit L', out0], ['Tolerance ε', fmt(eps,2)], ['Required δ', out1]);
-      } else if(mode === 'geom_series'){
-        var sinf = Math.abs(b) < 1 ? a / (1 - b) : NaN;
-        if(isFinite(sinf)) P.hline(sinf, TEAL, [4,4]);
-        var sRun = 0, prevX = null, prevY = null;
-        for(var nG=1; nG<=8; nG++){
-          var term = a * Math.pow(b, nG-1);
-          sRun += term;
-          P.polygon([[nG-0.25,0],[nG+0.25,0],[nG+0.25,term],[nG-0.25,term]], 'rgba(30,58,110,0.24)', INDIGO, 1.6);
-          if(prevX !== null) P.segment(prevX, prevY, nG, sRun, AMBER2, 2.2);
-          P.dot(nG, sRun, AMBER2, 5);
-          prevX = nG; prevY = sRun;
-        }
-        if(isFinite(sinf)) P.label(6.2, sinf+0.5, 'S_∞ = '+fmt(sinf,2), TEAL);
-        out0 = 'S₈ = ' + fmt(sRun, 3);
-        out1 = isFinite(sinf) ? ('S_∞ = ' + fmt(sinf, 3)) : 'Divergent';
-        out2 = isFinite(sinf) ? fmt(Math.abs(sinf - sRun), 4) : '∞';
-        rows.push(['First Term a₁', fmt(a,2)], ['Common Ratio r', fmt(b,2)], ['Partial Sum S₈', out0], ['Infinite Sum S_∞', out1]);
-      } else if(mode === 'tangent_normal'){
-        var fTN = function(x){ return 0.5*x*x*x - 1.5*x; };
-        var y0 = fTN(a), mt = 1.5*a*a - 1.5;
-        P.curve(fTN, INDIGO, 2.6);
-        P.curve(function(x){return y0 + mt*(x - a);}, AMBER2, 2.3);
-        if(Math.abs(mt) > 0.05){
-          var mn = -1 / mt;
-          P.curve(function(x){return y0 + mn*(x - a);}, TEAL, 2.0, [4,4]);
-          out1 = 'm_N = ' + fmt(mn, 2);
-        } else {
-          P.vline(a, TEAL, [4,4]);
-          out1 = 'Vertical Normal';
-        }
-        P.dot(a, y0, AMBER2, 5.5);
-        out0 = 'm_T = ' + fmt(mt, 2);
-        out2 = 'dy/dt = ' + fmt(mt * b, 2);
-        rows.push(['Point x₀', fmt(a,2)], ['Tangent Slope m_T', out0], ['Normal Slope m_N', out1], ['Chain Rate dy/dt', out2]);
-      } else if(mode === 'kinematics' || mode === 'suvat'){
-        var isSuvat = (mode === 'suvat');
-        var vFn = isSuvat ? function(t){return a + b*t;} : function(t){return a - 2.0*t;};
-        var tMax = isSuvat ? 4.0 : b;
-        var tZero = isSuvat ? (Math.abs(b)>1e-4 ? -a/b : 99) : a/2.0;
-        if(tZero > 0 && tZero < tMax){
-          P.shadedArea(vFn, 0, tZero, 'rgba(30,58,110,0.22)');
-          P.shadedArea(vFn, tZero, tMax, 'rgba(200,144,42,0.28)');
-          P.dot(tZero, 0, AMBER2, 5.5);
-        } else {
-          P.shadedArea(vFn, 0, tMax, 'rgba(30,58,110,0.22)');
-        }
-        P.curve(vFn, INDIGO, 2.7);
-        P.vline(tMax, TEAL, [4,4]);
-        var disp = integrate(vFn, 0, tMax, 100);
-        var dist = integrate(function(t){return Math.abs(vFn(t));}, 0, tMax, 100);
-        out0 = isSuvat ? ('v = '+fmt(vFn(tMax),2)+' m/s') : (fmt(disp,2)+' m');
-        out1 = isSuvat ? ('s = '+fmt(disp,2)+' m') : (fmt(dist,2)+' m');
-        out2 = isSuvat ? ('Area = '+fmt(disp,2)+' m') : ('t_turn = '+fmt(tZero,2)+' s');
-        rows.push(['Initial Velocity u', fmt(a,2)], ['Net Displacement s', fmt(disp,2)+' m'], ['Total Distance', fmt(dist,2)+' m']);
-      } else if(mode === 'linear_law' || mode === 'exp_doubling'){
-        var base = mode === 'exp_doubling' ? (1 + b) : b;
-        var fExp = function(x){ return a * Math.pow(base, x); };
-        var fLin = function(x){ return Math.log(Math.max(0.05, a)) + x * Math.log(Math.max(1.02, base)); };
-        P.curve(fExp, INDIGO, 2.6);
-        P.curve(fLin, AMBER2, 2.3, [5,3]);
-        P.dot(0, a, INDIGO, 5);
-        if(mode === 'exp_doubling'){
-          var t2 = Math.log(2) / Math.log(base);
-          P.hline(2*a, TEAL, [4,4]); P.dot(t2, 2*a, AMBER2, 5.5);
-          P.label(t2+0.15, 2*a+0.4, 'T₂ = '+fmt(t2,2), AMBER2);
-          out0 = 'T₂ = ' + fmt(t2, 2);
-          out1 = '2A₀ = ' + fmt(2*a, 2);
-          out2 = 'y(0) = ' + fmt(a, 2);
-        } else {
-          out0 = 'c = lg a = ' + fmt(Math.log10(a), 3);
-          out1 = 'm = lg b = ' + fmt(Math.log10(base), 3);
-          out2 = 'y(3) = ' + fmt(fExp(3), 2);
-        }
-        rows.push(['Parameter a', fmt(a,2)], ['Growth Factor', fmt(base,2)], ['Primary Metric', out0], ['Secondary Metric', out1]);
-      } else if(mode === 'cubic_rem'){
-        var fCub = function(x){ return x*x*x - 3*x + b; };
-        var rem = fCub(a);
-        P.curve(fCub, INDIGO, 2.6);
-        P.vline(a, '#94A3B8', [3,3]);
-        P.segment(a, 0, a, rem, AMBER2, 3.2);
-        P.dot(a, rem, AMBER2, 6);
-        P.label(a+0.15, rem, 'P('+fmt(a,1)+') = '+fmt(rem,2), AMBER2);
-        out0 = 'R = ' + fmt(rem, 2);
-        out1 = Math.abs(rem) < 0.05 ? 'Exact Factor (R = 0)!' : 'Non-Zero Remainder';
-        out2 = "P'(a) = " + fmt(3*a*a - 3, 2);
-        rows.push(['Divisor x = a', fmt(a,2)], ['Remainder P(a)', out0], ['Factor Check', out1]);
-      } else if(mode === 'sector_seg'){
-        P.parametric(function(t){return a*Math.cos(t);}, function(t){return a*Math.sin(t);}, 0, 2*Math.PI, LINE, 1.5);
-        var pts = [[0,0]];
-        for(var kS=0; kS<=40; kS++){
-          var angS = b * kS / 40;
-          pts.push([a*Math.cos(angS), a*Math.sin(angS)]);
-        }
-        P.polygon(pts, 'rgba(30,58,110,0.18)', INDIGO, 2.2);
-        P.segment(a, 0, a*Math.cos(b), a*Math.sin(b), AMBER2, 2.5);
-        P.dot(0, 0, INK, 4.5); P.dot(a, 0, INDIGO, 5); P.dot(a*Math.cos(b), a*Math.sin(b), AMBER2, 5);
-        var arc = a*b, secA = 0.5*a*a*b, segA = 0.5*a*a*(b - Math.sin(b));
-        out0 = 's = ' + fmt(arc, 2);
-        out1 = 'A = ' + fmt(secA, 2);
-        out2 = 'A_seg = ' + fmt(segA, 2);
-        rows.push(['Radius r', fmt(a,2)], ['Angle θ (rad)', fmt(b,2)], ['Arc Length s = rθ', out0], ['Sector Area ½r²θ', out1], ['Segment Area', out2]);
-      } else if(mode === 'rel_vel'){
-        P.hline(0, TEAL, [4,4]); P.hline(a, TEAL, [4,4]);
-        P.arrow(0, 0, 0, a, INDIGO, 2.6);
-        P.arrow(0, a, b, a, AMBER2, 2.4);
-        P.arrow(0, 0, b, a, TEAL, 2.8);
-        P.dot(b, a, TEAL, 5.5);
-        var spd = Math.sqrt(a*a + b*b), drift = Math.atan2(b, a)*180/Math.PI;
-        P.label(0.15, a*0.5, 'v_boat = '+fmt(a,1), INDIGO);
-        P.label(b*0.4, a+0.35, 'v_curr = '+fmt(b,1), AMBER2);
-        out0 = fmt(spd, 2) + ' m/s';
-        out1 = fmt(drift, 1) + '°';
-        out2 = '⟨' + fmt(b,1) + ', ' + fmt(a,1) + '⟩';
-        rows.push(['Heading Velocity v_b', fmt(a,2)], ['Current Velocity v_c', fmt(b,2)], ['Resultant Speed', out0], ['Drift Angle', out1]);
-      } else if(mode === 'mat_2d' || mode === 'change_basis'){
-        var a11 = a, a12 = b, a21 = 0.5, a22 = 1.5;
-        P.polygon([[0,0],[1,0],[1,1],[0,1]], 'rgba(148,163,184,0.18)', '#94A3B8', 1.5);
-        P.polygon([[0,0],[a11,a21],[a11+a12,a21+a22],[a12,a22]], 'rgba(200,144,42,0.26)', AMBER2, 2.4);
-        P.arrow(0, 0, a11, a21, INDIGO, 2.6);
-        P.arrow(0, 0, a12, a22, TEAL, 2.6);
-        P.label(a11+0.15, a21, 'Ae₁', INDIGO);
-        P.label(a12+0.15, a22, 'Ae₂', TEAL);
-        var det = a11*a22 - a12*a21;
-        out0 = mode==='change_basis' ? ('⟨'+fmt(a11,1)+',0.5⟩ & ⟨'+fmt(a12,1)+',1.5⟩') : ('det(A) = ' + fmt(det, 2));
-        out1 = mode==='change_basis' ? ('det(A) = ' + fmt(det, 2)) : ('Area = ' + fmt(Math.abs(det), 2));
-        out2 = mode==='change_basis' ? ('T(1,1) = ⟨'+fmt(a11+a12,1)+', 2.0⟩') : (Math.abs(det)>1e-3 ? 'Invertible' : 'Singular');
-        rows.push(['Column 1 Ae₁', '⟨'+fmt(a11,1)+', 0.5⟩'], ['Column 2 Ae₂', '⟨'+fmt(a12,1)+', 1.5⟩'], ['Determinant det(A)', fmt(det,2)]);
-      } else if(mode === 'radical_ext'){
-        P.curve(function(x){return x + a >= 0 ? Math.sqrt(x + a) : NaN;}, INDIGO, 2.7);
-        P.curve(function(x){return x + a >= 0 ? -Math.sqrt(x + a) : NaN;}, '#94A3B8', 1.8, [4,4]);
-        P.curve(function(x){return x - b;}, AMBER2, 2.2);
-        P.dot(-a, 0, INDIGO, 5.5);
-        var B = -(2*b + 1), C = b*b - a, disc = B*B - 4*C;
-        if(disc >= 0){
-          var rt = 0.5*(-B + Math.sqrt(disc)), re = 0.5*(-B - Math.sqrt(disc));
-          P.dot(rt, rt - b, AMBER2, 5.5);
-          P.ring(re, re - b, TEAL, 5.5);
-          out0 = 'x = ' + fmt(rt, 2);
-          out1 = 'x_ext = ' + fmt(re, 2);
-        }
-        out2 = 'Domain x ≥ ' + fmt(-a, 1);
-        rows.push(['Endpoint (−a, 0)', '('+fmt(-a,1)+', 0)'], ['True Root', out0], ['Extraneous Root', out1]);
-      } else if(mode === 'emp_rule'){
-        var phiE = function(z){ return Math.exp(-0.5*z*z)/Math.sqrt(2*Math.PI); };
-        P.shadedArea(phiE, -3.5, a, 'rgba(30,58,110,0.24)');
-        P.curve(phiE, INDIGO, 2.6);
-        P.vline(a, AMBER2, null, 2.2);
-        P.dot(a, phiE(a), AMBER2, 5.5);
-        var cdfE = 0.5*(1 + _erf(a/Math.SQRT2));
-        var symE = Math.abs(_erf(Math.abs(a)/Math.SQRT2));
-        out0 = 'Φ(z) = ' + fmt(cdfE, 4);
-        out1 = fmt(symE*100, 2) + '%';
-        out2 = 'x = ' + fmt(a*b, 2);
-        rows.push(['Z-Score z', fmt(a,2)], ['Cumulative Φ(z)', out0], ['Central Band P(|Z|≤|z|)', out1]);
-      } else if(mode === 'poly_end'){
-        var deg = Math.round(b);
-        var fP = function(x){ return 0.35*a*Math.pow(x, deg) - 0.8*x; };
-        P.curve(fP, INDIGO, 2.7);
-        P.dot(0, 0, AMBER2, 5);
-        var rEnd = a >= 0 ? '+∞' : '−∞';
-        var lEnd = (deg%2===0) ? rEnd : (a >= 0 ? '−∞' : '+∞');
-        out0 = 'y → ' + lEnd;
-        out1 = 'y → ' + rEnd;
-        out2 = 'Degree ' + deg + ' (' + (deg%2===0?'Even':'Odd') + ')';
-        rows.push(['Leading Coeff a', fmt(a,1)], ['Degree n', String(deg)], ['Left Behavior', out0], ['Right Behavior', out1]);
-      } else if(mode === 'factored_quad'){
-        var fFQ = function(x){ return 0.5*(x - a)*(x - b); };
-        var xv = 0.5*(a + b), yv = fFQ(xv);
-        P.curve(fFQ, INDIGO, 2.7);
-        P.vline(xv, TEAL, [4,4]);
-        P.dot(a, 0, AMBER2, 5.5); P.dot(b, 0, AMBER2, 5.5);
-        P.dot(xv, yv, INDIGO, 5.5);
-        P.label(a, 0.45, 'r₁='+fmt(a,1), AMBER2); P.label(b, 0.45, 'r₂='+fmt(b,1), AMBER2);
-        out0 = 'x² + ('+fmt(-(a+b),1)+')x + ('+fmt(a*b,1)+')';
-        out1 = 'x = ' + fmt(xv, 2);
-        out2 = '(' + fmt(xv, 2) + ', ' + fmt(yv, 2) + ')';
-        rows.push(['Root r₁', fmt(a,2)], ['Root r₂', fmt(b,2)], ['Symmetry Axis', out1], ['Vertex', out2]);
-      } else if(mode === 'boxplot'){
-        var vals = [8+b, 10+b, 12, 14, 15, 17, a].sort(function(x,y){return x-y;});
-        var minV = vals[0], q1 = vals[1], med = vals[3], q3 = vals[5], maxV = vals[6];
-        var mean = (vals[0]+vals[1]+vals[2]+vals[3]+vals[4]+vals[5]+vals[6])/7;
-        P.polygon([[q1,2.2],[q3,2.2],[q3,3.8],[q1,3.8]], 'rgba(30,58,110,0.22)', INDIGO, 2.2);
-        P.segment(med, 2.2, med, 3.8, AMBER2, 3.0);
-        P.segment(minV, 3.0, q1, 3.0, INDIGO, 2.0);
-        P.segment(q3, 3.0, maxV, 3.0, INDIGO, 2.0);
-        for(var bi=0; bi<vals.length; bi++) P.dot(vals[bi], 1.0, bi===6?AMBER2:INDIGO, 5);
-        P.vline(mean, TEAL, [4,4]);
-        P.label(mean+0.4, 4.8, 'Mean = '+fmt(mean,1), TEAL);
-        P.label(med, 4.3, 'Med = '+fmt(med,1), AMBER2);
-        out0 = 'x̄ = ' + fmt(mean, 2);
-        out1 = 'M = ' + fmt(med, 1);
-        out2 = 'IQR = ' + fmt(q3 - q1, 1);
-        rows.push(['Min / Q₁', fmt(minV,1)+' / '+fmt(q1,1)], ['Median M', out1], ['Q₃ / Max', fmt(q3,1)+' / '+fmt(maxV,1)], ['Mean x̄', out0]);
-      } else if(mode === 'rate_accum'){
-        var rIn = function(t){ return a * Math.sin(Math.PI * t / 6.0); };
-        P.shadedArea(rIn, 0, 6.0, 'rgba(30,58,110,0.18)');
-        P.curve(rIn, INDIGO, 2.7);
-        P.hline(b, AMBER2, null, 2.3);
-        var net = (2*a*6/Math.PI) - 6*b;
-        var ratio = Math.min(1, b / Math.max(0.1, a));
-        var tCrit = 6 * (1 - Math.asin(ratio)/Math.PI);
-        P.dot(tCrit, b, AMBER2, 5.5);
-        P.label(tCrit, b+0.45, 'Max Amount at t='+fmt(tCrit,2), AMBER2);
-        out0 = fmt(net, 2) + ' units';
-        out1 = 't = ' + fmt(tCrit, 2) + ' hr';
-        out2 = 'Peak at t = ' + fmt(tCrit, 2);
-        rows.push(['Peak Inflow A', fmt(a,2)], ['Outflow Rate R_out', fmt(b,2)], ['Net Change ∫(R_in−R_out)', out0], ['Critical Time', out1]);
-      } else if(mode === 'ftc_triple'){
-        var fFTC = function(x){ return 0.5*x*x - 1.0 + b; };
-        var dfFTC = function(x){ return x; };
-        var FFTC = function(x){ return (x*x*x)/6.0 - x + b*x; };
-        P.shadedArea(fFTC, 0, a, 'rgba(30,58,110,0.16)');
-        P.curve(fFTC, INDIGO, 2.6);
-        P.curve(dfFTC, TEAL, 1.8, [4,4]);
-        P.curve(FFTC, AMBER2, 2.4);
-        P.dot(a, fFTC(a), INDIGO, 5.5);
-        P.dot(a, FFTC(a), AMBER2, 5.5);
-        out0 = 'f('+fmt(a,1)+') = ' + fmt(fFTC(a), 2);
-        out1 = "f'("+fmt(a,1)+') = ' + fmt(dfFTC(a), 2);
-        out2 = 'F('+fmt(a,1)+') = ' + fmt(FFTC(a), 2);
-        rows.push(['Point x', fmt(a,2)], ['Height f(x)', out0], ['Derivative f\'(x)', out1], ['Accumulation ∫₀ˣ f(t)dt', out2]);
-      } else if(mode === 'parametric'){
-        var fxP = function(t){ return 3.2*Math.cos(t); };
-        var fyP = function(t){ return 2.6*Math.sin(b*t); };
-        P.parametric(fxP, fyP, 0, 2*Math.PI, '#94A3B8', 1.5, [3,3]);
-        P.parametric(fxP, fyP, 0, a, INDIGO, 2.7);
-        var xP = fxP(a), yP = fyP(a);
-        var vx = -3.2*Math.sin(a), vy = 2.6*b*Math.cos(b*a);
-        P.arrow(xP, yP, xP + 0.35*vx, yP + 0.35*vy, AMBER2, 2.5);
-        P.dot(xP, yP, INDIGO, 5.5);
-        var spd = Math.sqrt(vx*vx + vy*vy);
-        out0 = '⟨' + fmt(vx, 2) + ', ' + fmt(vy, 2) + '⟩';
-        out1 = '|v| = ' + fmt(spd, 2);
-        out2 = 's ≈ ' + fmt(spd * a * 0.65, 2);
-        rows.push(['Time t₀', fmt(a,2)], ['Position (x, y)', '('+fmt(xP,2)+', '+fmt(yP,2)+')'], ['Velocity Vector', out0], ['Speed |v(t₀)|', out1]);
-      } else if(mode === 'concavity'){
-        var fCC = function(x){ return 0.25*x*x*x - 0.5*x; };
-        var xL = a - b, xM = a, xR = a + b;
-        var yL = fCC(xL), yM = fCC(xM), yR = fCC(xR);
-        P.curve(fCC, INDIGO, 2.6);
-        P.segment(xL, yL, xM, yM, AMBER2, 2.4);
-        P.segment(xM, yM, xR, yR, TEAL, 2.4);
-        P.dot(xL, yL, AMBER2, 5); P.dot(xM, yM, INK, 5.5); P.dot(xR, yR, TEAL, 5);
-        var s1 = (yM - yL)/b, s2 = (yR - yM)/b;
-        out0 = 'm₁ = ' + fmt(s1, 3);
-        out1 = 'm₂ = ' + fmt(s2, 3);
-        out2 = s2 > s1 ? 'Concave Up (m₂ > m₁)' : 'Concave Down (m₂ < m₁)';
-        rows.push(['Left Secant Slope m₁', out0], ['Right Secant Slope m₂', out1], ['Concavity Diagnosis', out2]);
-      } else if(mode === 'ogive'){
-        var fOg = function(x){ return 100 / (1 + Math.exp(-(x - a)/(0.55*b))); };
-        P.curve(fOg, INDIGO, 2.7);
-        var q1 = a - 0.6*b, q2 = a, q3 = a + 0.6*b;
-        P.segment(0, 25, q1, 25, TEAL, 1.5, [3,3]); P.segment(q1, 25, q1, 0, TEAL, 1.5, [3,3]);
-        P.segment(0, 50, q2, 50, AMBER2, 1.8, [4,3]); P.segment(q2, 50, q2, 0, AMBER2, 1.8, [4,3]);
-        P.segment(0, 75, q3, 75, TEAL, 1.5, [3,3]); P.segment(q3, 75, q3, 0, TEAL, 1.5, [3,3]);
-        P.dot(q1, 25, TEAL, 5); P.dot(q2, 50, AMBER2, 5.5); P.dot(q3, 75, TEAL, 5);
-        out0 = 'Q₁ = ' + fmt(q1, 2);
-        out1 = 'Median = ' + fmt(q2, 2);
-        out2 = 'Q₃ = ' + fmt(q3, 2) + ' (IQR = ' + fmt(q3-q1, 2) + ')';
-        rows.push(['25th Percentile Q₁', out0], ['50th Percentile Median', out1], ['75th Percentile Q₃', fmt(q3,2)], ['IQR = Q₃ − Q₁', fmt(q3-q1,2)]);
-      } else if(mode === 'drv_spike'){
-        var rawP = [], sumP = 0;
-        for(var xi=1; xi<=5; xi++){
-          var pVal = Math.max(0.03, 0.2 + 0.06*a*(xi - 3) - 0.03*(b-0.5)*Math.abs(xi-3));
-          rawP.push(pVal); sumP += pVal;
-        }
-        var mu = 0, ex2 = 0;
-        for(var kD=0; kD<5; kD++){
-          var prD = rawP[kD]/sumP, xVal = kD + 1;
-          mu += xVal * prD; ex2 += xVal * xVal * prD;
-          P.segment(xVal, 0, xVal, prD, INDIGO, 4.5);
-          P.dot(xVal, prD, INDIGO, 5.5);
-          rows.push(['P(X = '+xVal+')', fmt(prD, 3)]);
-        }
-        var variance = ex2 - mu*mu;
-        P.polygon([[mu-0.18,-0.05],[mu+0.18,-0.05],[mu,0]], AMBER2, AMBER2, 1.5);
-        P.label(mu+0.15, 0.42, 'E(X) = '+fmt(mu,2), AMBER2);
-        out0 = 'E(X) = ' + fmt(mu, 2);
-        out1 = 'Var(X) = ' + fmt(variance, 3);
-        out2 = 'Σ P(X=x) = 1.000';
-      } else if(mode === 'incline_energy' || mode === 'forces_eq'){
-        var rad = a * Math.PI / 180;
-        var L = 4.2, bx = L*Math.cos(rad), by = L*Math.sin(rad);
-        P.polygon([[0,0],[bx,0],[0,by]], 'rgba(30,58,110,0.14)', INDIGO, 2.2);
-        var mx = 0.5*bx, my = 0.5*by;
-        P.dot(mx, my, AMBER2, 7);
-        P.arrow(mx, my, mx, my - 1.4, INDIGO, 2.4);
-        P.arrow(mx, my, mx + 1.1*Math.sin(rad), my + 1.1*Math.cos(rad), TEAL, 2.4);
-        if(mode === 'incline_energy'){
-          var pe = 2*10*4*Math.sin(rad), wf = Math.min(pe, b*2*10*4*Math.cos(rad)), ke = Math.max(0, pe - wf);
-          P.polygon([[4.6,0],[5.0,0],[5.0,pe/20],[4.6,pe/20]], 'rgba(30,58,110,0.3)', INDIGO, 1.5);
-          P.polygon([[5.2,0],[5.6,0],[5.6,ke/20],[5.2,ke/20]], 'rgba(14,159,143,0.3)', TEAL, 1.5);
-          P.polygon([[5.8,0],[6.2,0],[6.2,wf/20],[5.8,wf/20]], 'rgba(200,144,42,0.3)', AMBER2, 1.5);
-          out0 = 'ΔPE = ' + fmt(pe, 1) + ' J';
-          out1 = 'W_f = ' + fmt(wf, 1) + ' J';
-          out2 = 'KE = ' + fmt(ke, 1) + ' J';
-        } else {
-          var R = b*10*Math.cos(rad), F = b*10*Math.sin(rad);
-          out0 = 'R = ' + fmt(R, 1) + ' N';
-          out1 = 'mg sin θ = ' + fmt(F, 1) + ' N';
-          out2 = 'tan θ = ' + fmt(Math.tan(rad), 2);
-        }
-        rows.push(['Slope Angle θ', fmt(a,0)+'°'], ['Metric 1', out0], ['Metric 2', out1], ['Metric 3', out2]);
-      } else if(mode === 'atwood'){
-        P.parametric(function(t){return 0.8*Math.cos(t);}, function(t){return 1.2 + 0.8*Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.4);
-        var shift = 0.6*(b - a)/(a + b);
-        var y1 = -1.8 + shift, y2 = -1.8 - shift;
-        P.segment(-0.8, 1.2, -0.8, y1, INK, 2.0);
-        P.segment(0.8, 1.2, 0.8, y2, INK, 2.0);
-        P.polygon([[-1.25,y1-0.6],[-0.35,y1-0.6],[-0.35,y1],[-1.25,y1]], 'rgba(30,58,110,0.28)', INDIGO, 2);
-        P.polygon([[0.35,y2-0.6],[1.25,y2-0.6],[1.25,y2],[0.35,y2]], 'rgba(200,144,42,0.32)', AMBER2, 2);
-        var acc = 10*(b - a)/(a + b), T = 2*a*b*10/(a + b);
-        P.label(-2.3, y1-0.3, 'm₁='+fmt(a,1)+'kg', INDIGO);
-        P.label(1.4, y2-0.3, 'm₂='+fmt(b,1)+'kg', AMBER2);
-        out0 = 'a = ' + fmt(acc, 2) + ' m/s²';
-        out1 = 'T = ' + fmt(T, 2) + ' N';
-        out2 = '2T = ' + fmt(2*T, 2) + ' N';
-        rows.push(['Mass m₁', fmt(a,1)+' kg'], ['Mass m₂', fmt(b,1)+' kg'], ['Acceleration a', out0], ['String Tension T', out1]);
-      } else if(mode === 'venn_prob'){
-        var pb = 0.40, ov = Math.min(a, Math.min(pb, b));
-        var union = a + pb - ov;
-        P.polygon([[-3.8,-2.3],[3.8,-2.3],[3.8,2.3],[-3.8,2.3]], 'rgba(148,163,184,0.08)', AXIS, 1.5);
-        P.parametric(function(t){return -0.85 + 1.65*Math.cos(t);}, function(t){return 1.65*Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.5);
-        P.parametric(function(t){return 0.85 + 1.55*Math.cos(t);}, function(t){return 1.55*Math.sin(t);}, 0, 2*Math.PI, AMBER2, 2.5);
-        P.label(-1.8, 0, fmt(a - ov, 2), INDIGO);
-        P.label(-0.2, 0, fmt(ov, 2), TEAL);
-        P.label(1.4, 0, fmt(pb - ov, 2), AMBER2);
-        P.label(2.4, -1.8, 'Out: '+fmt(1 - union, 2), MUTED);
-        out0 = fmt(union, 2);
-        out1 = fmt(ov / pb, 2);
-        out2 = 'P(A)P(B) = ' + fmt(a * pb, 3);
-        rows.push(['P(A)', fmt(a,2)], ['P(B)', '0.40'], ['Overlap P(A ∩ B)', fmt(ov,2)], ['Union P(A ∪ B)', out0]);
-      } else if(mode === 'cast_circle'){
-        var rad = a * Math.PI / 180;
-        P.parametric(function(t){return -0.8 + Math.cos(t);}, function(t){return Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.2);
-        var cx = -0.8 + Math.cos(rad), cy = Math.sin(rad);
-        P.segment(-0.8, 0, cx, cy, AMBER2, 2.4);
-        P.dot(cx, cy, AMBER2, 5.5);
-        P.parametric(function(t){return 0.6 + t*0.7;}, function(t){return Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.2);
-        P.hline(b, TEAL, [4,4]);
-        P.dot(0.6 + rad*0.7, Math.sin(rad), AMBER2, 5.5);
-        var a1 = Math.asin(Math.max(-1, Math.min(1, b)))*180/Math.PI;
-        out0 = '(' + fmt(Math.cos(rad), 2) + ', ' + fmt(Math.sin(rad), 2) + ')';
-        out1 = 'θ₁ ≈ ' + fmt(a1, 1) + '°';
-        out2 = a < 90 ? 'Q I (All +)' : (a < 180 ? 'Q II (Sin +)' : (a < 270 ? 'Q III (Tan +)' : 'Q IV (Cos +)'));
-        rows.push(['Angle θ', fmt(a,0)+'°'], ['cos θ, sin θ', out0], ['Target sin θ = c', fmt(b,2)], ['CAST Quadrant', out2]);
-      } else if(mode === 'usub'){
-        var fOrig = function(x){ return x<0 ? NaN : 2*x*Math.cos(b*x*x); };
-        var uMax = b*a*a;
-        P.shadedArea(fOrig, 0, a, 'rgba(30,58,110,0.22)');
-        P.curve(fOrig, INDIGO, 2.6);
-        P.vline(a, AMBER2, [4,4]);
-        var val = Math.sin(uMax) / b;
-        out0 = fmt(val, 4);
-        out1 = 'u ∈ [0, ' + fmt(uMax, 2) + ']';
-        out2 = 'sin(kb²)/k = ' + fmt(val, 4);
-        rows.push(['Upper x-Limit b', fmt(a,2)], ['u-Upper Limit kb²', fmt(uMax,2)], ['Integral Value', out0]);
-      } else if(mode === 'perp_lines'){
-        var m1 = Math.abs(a) < 0.2 ? 0.5 : a, m2 = -1 / m1;
-        var fL1 = function(x){ return m1*x + 1; };
-        var fL2 = function(x){ return 1 + m2*(x - b); };
-        P.curve(fL1, INDIGO, 2.6);
-        P.curve(fL2, AMBER2, 2.4);
-        var ix = (b*m2) / (m1 - m2), iy = fL1(ix);
-        P.dot(ix, iy, TEAL, 5.5);
-        P.dot(b, 1, AMBER2, 5);
-        out0 = 'y = ' + fmt(m1, 1) + 'x + 1';
-        out1 = 'm_⊥ = ' + fmt(m2, 2);
-        out2 = '(' + fmt(ix, 2) + ', ' + fmt(iy, 2) + ')';
-        rows.push(['Slope m₁', fmt(m1,2)], ['Perpendicular Slope m_⊥', out1], ['90° Intersection', out2]);
-      } else if(mode === 'prop_hyper'){
-        P.curve(function(x){return a*x;}, INDIGO, 2.5);
-        P.curve(function(x){return Math.abs(x)<0.12 ? NaN : a/x;}, AMBER2, 2.5);
-        P.dot(b, a*b, INDIGO, 5.5);
-        P.dot(b, a/b, AMBER2, 5.5);
-        out0 = 'y_dir = ' + fmt(a*b, 2);
-        out1 = 'y_inv = ' + fmt(a/b, 2);
-        out2 = 'x₀·y_inv = ' + fmt(a, 2);
-        rows.push(['Constant k', fmt(a,2)], ['Direct y = kx₀', out0], ['Inverse y = k/x₀', out1]);
-      } else if(mode === 'contingency' || mode === 'bayes_rule'){
-        var p1 = a, p2 = b;
-        P.polygon([[0.6,0],[1.6,0],[1.6,p1],[0.6,p1]], 'rgba(30,58,110,0.32)', INDIGO, 2.2);
-        P.polygon([[2.4,0],[3.4,0],[3.4,p2],[2.4,p2]], 'rgba(200,144,42,0.32)', AMBER2, 2.2);
-        if(mode === 'bayes_rule'){
-          var sens = 0.90, pPos = sens*a + b*(1-a), post = (sens*a)/Math.max(1e-5, pPos);
-          P.hline(post, TEAL, [4,4]);
-          P.label(1.8, post+0.06, 'Posterior P(C₁|+) = '+fmt(post*100,1)+'%', TEAL);
-          out0 = 'P(+) = ' + fmt(pPos, 3);
-          out1 = fmt(post*100, 1) + '%';
-          out2 = fmt(post/Math.max(0.01,a), 2) + '× Lift';
-        } else {
-          var ps = 0.5*a + 0.5*b, pas = (0.5*a)/Math.max(1e-4, ps);
-          P.hline(ps, TEAL, [4,4]);
-          out0 = 'P(S) = ' + fmt(ps, 2);
-          out1 = 'P(A|S) = ' + fmt(pas, 2);
-          out2 = 'RR = ' + fmt(a/Math.max(0.05,b), 2) + '×';
-        }
-        rows.push(['Parameter 1', fmt(a,2)], ['Parameter 2', fmt(b,2)], ['Output 1', out0], ['Output 2', out1]);
-      } else if(mode === 'multiplicity'){
-        var fM = function(x){ return 0.25*(x - a)*(x - a)*(x - b); };
-        P.curve(fM, INDIGO, 2.7);
-        P.dot(a, 0, AMBER2, 6); P.dot(b, 0, TEAL, 6);
-        P.label(a-0.3, 0.55, 'Bounce (m=2)', AMBER2);
-        P.label(b-0.3, -0.55, 'Cross (m=1)', TEAL);
-        out0 = 'Bounce at x = ' + fmt(a, 1);
-        out1 = 'Cross at x = ' + fmt(b, 1);
-        out2 = 'P(0) = ' + fmt(fM(0), 2);
-        rows.push(['Double Root r₁', fmt(a,1)], ['Simple Root r₂', fmt(b,1)], ['y-Intercept P(0)', out2]);
-      } else if(mode === 'transversal' || mode === 'angle_pairs'){
-        var radT = a * Math.PI / 180;
-        var dY = mode === 'transversal' ? b*0.5 : 0;
-        if(mode === 'transversal'){
-          P.hline(dY, INDIGO, null, 2.4); P.hline(-dY, INDIGO, null, 2.4);
-        } else {
-          P.hline(0, INDIGO, null, 2.4);
-        }
-        var dxT = 3.8*Math.cos(radT), dyT = 3.8*Math.sin(radT);
-        P.segment(-dxT, -dyT, dxT, dyT, AMBER2, 2.6);
-        P.dot(0, dY, AMBER2, 5); P.dot(0, -dY, AMBER2, 5);
-        P.label(0.5, dY+0.4, fmt(a,0)+'°', AMBER2);
-        P.label(-0.9, dY+0.4, fmt(180-a,0)+'°', TEAL);
-        out0 = fmt(a,0) + '° = ' + fmt(a,0) + '°';
-        out1 = fmt(180 - a, 0) + '°';
-        out2 = fmt(90 - a, 0) + '°';
-        rows.push(['Primary Angle θ', fmt(a,0)+'°'], ['Supplement (180°−θ)', out1], ['Complement (90°−θ)', out2]);
-      } else if(mode === 'complex_spiral' || mode === 'demoivre'){
-        var isDM = (mode === 'demoivre');
-        var rMod = isDM ? 1.15 : a;
-        var degStep = isDM ? a : b;
-        var nMax = isDM ? Math.round(b) : 8;
-        P.parametric(function(t){return Math.cos(t);}, function(t){return Math.sin(t);}, 0, 2*Math.PI, LINE, 1.5, [3,3]);
-        var px = 1, py = 0;
-        for(var kC=1; kC<=nMax; kC++){
-          var rk = Math.pow(rMod, kC), ak = kC * degStep * Math.PI / 180;
-          var nx = rk*Math.cos(ak), ny = rk*Math.sin(ak);
-          P.segment(px, py, nx, ny, AMBER2, 1.8, [3,2]);
-          P.arrow(0, 0, nx, ny, kC===nMax ? AMBER2 : INDIGO, kC===nMax ? 2.6 : 1.6);
-          P.dot(nx, ny, kC===nMax ? AMBER2 : INDIGO, kC===nMax ? 5.5 : 4);
-          px = nx; py = ny;
-        }
-        out0 = fmt(rMod,2) + '∠' + fmt(degStep,0) + '°';
-        out1 = fmt(Math.pow(rMod, nMax), 2) + '∠' + fmt(nMax*degStep, 0) + '°';
-        out2 = isDM ? (fmt(360/nMax,1)+'° root spacing') : (rMod < 1 ? 'Convergent Spiral' : 'Divergent / Circle');
-        rows.push(['Base z', out0], ['Power z^'+nMax, out1], ['Behavior', out2]);
-      } else if(mode === 'similar_solids' || mode === 'cavalieri'){
-        var isCav = (mode === 'cavalieri');
-        var r1S = isCav ? a : b, h1S = isCav ? b : 2.0;
-        var r2S = isCav ? a : b*a, h2S = isCav ? b : 2.0*a;
-        P.polygon([[-3.8,0],[-3.8+r1S,0],[-3.8+r1S,h1S],[-3.8,h1S]], 'rgba(30,58,110,0.22)', INDIGO, 2.2);
-        if(isCav){
-          P.polygon([[-0.5,0],[-0.5+r1S,0],[-0.5,h1S]], 'rgba(200,144,42,0.26)', AMBER2, 2.2);
-          P.parametric(function(t){return 3.0 + r1S*Math.cos(t);}, function(t){return r1S + r1S*Math.sin(t);}, 0, 2*Math.PI, TEAL, 2.2);
-          var vc = Math.PI*a*a*b;
-          out0 = fmt(vc, 2);
-          out1 = fmt(vc/3, 2);
-          out2 = fmt((4/3)*Math.PI*a*a*a, 2);
-        } else {
-          P.polygon([[0.5,0],[0.5+r2S,0],[0.5+r2S,h2S],[0.5,h2S]], 'rgba(200,144,42,0.26)', AMBER2, 2.2);
-          out0 = 'k = ' + fmt(a, 2);
-          out1 = 'k² = ' + fmt(a*a, 2) + '×';
-          out2 = 'k³ = ' + fmt(a*a*a, 2) + '×';
-        }
-        rows.push(['Primary Metric', out0], ['Secondary Metric', out1], ['Tertiary Metric', out2]);
-      } else if(mode === 'data_transform'){
-        var basePts = [-2, -1, 0, 1, 2];
-        for(var di=0; di<basePts.length; di++){
-          var xOrig = basePts[di], xTrans = a*xOrig + b;
-          P.dot(xOrig, 2.8, INDIGO, 5);
-          P.dot(xTrans, 1.2, AMBER2, 5.5);
-          P.segment(xOrig, 2.8, xTrans, 1.2, '#94A3B8', 1.2, [3,3]);
-        }
-        P.label(-5.5, 3.2, 'Original X (μ=0, σ=1.41)', INDIGO);
-        P.label(-5.5, 0.6, 'Transformed Y = aX + b', AMBER2);
-        out0 = 'μ_Y = ' + fmt(b, 2);
-        out1 = 'σ_Y = ' + fmt(Math.abs(a)*1.414, 2);
-        out2 = 'Range = ' + fmt(Math.abs(a)*4, 2);
-        rows.push(['Scale a', fmt(a,2)], ['Shift b', fmt(b,2)], ['New Mean μ_Y', out0], ['New Std Dev σ_Y', out1]);
-      } else if(mode === 'geom_wait'){
-        var pW = a, kW = Math.round(b), cdfW = 0, pkW = 0;
-        for(var rW=1; rW<=11; rW++){
-          var prW = Math.pow(1 - pW, rW - 1) * pW;
-          if(rW <= kW) cdfW += prW;
-          if(rW === kW) pkW = prW;
-          var actW = rW <= kW;
-          P.polygon([[rW-0.35,0],[rW+0.35,0],[rW+0.35,prW],[rW-0.35,prW]], actW?'rgba(200,144,42,0.35)':'rgba(30,58,110,0.22)', actW?AMBER2:INDIGO, 1.8);
-        }
-        out0 = 'P(X='+kW+') = ' + fmt(pkW, 4);
-        out1 = 'P(X≤'+kW+') = ' + fmt(cdfW, 4);
-        out2 = 'E(X) = ' + fmt(1/pW, 2);
-        rows.push(['Success Prob p', fmt(pW,2)], ['Point P(X=k)', out0], ['Cumulative P(X≤k)', out1], ['Mean Waiting 1/p', out2]);
-      } else if(mode === 'geom_prob'){
-        var R = b, rC = Math.min(R, a);
-        P.polygon([[-R,-R],[R,-R],[R,R],[-R,R]], 'rgba(30,58,110,0.12)', INDIGO, 2.2);
-        P.parametric(function(t){return rC*Math.cos(t);}, function(t){return rC*Math.sin(t);}, 0, 2*Math.PI, AMBER2, 2.6);
-        var ac = Math.PI*rC*rC, asq = 4*R*R, probG = ac/asq;
-        out0 = fmt(ac, 2);
-        out1 = fmt(asq, 2);
-        out2 = 'P = ' + fmt(probG, 4) + ' (' + fmt(probG*100, 1) + '%)';
-        rows.push(['Circle Area πr²', out0], ['Square Area (2R)²', out1], ['Probability Ratio', out2]);
-      } else if(mode === 'regular_ngon'){
-        var nP = Math.max(3, Math.round(a)), RP = b, ptsP = [];
-        for(var kP=0; kP<nP; kP++){
-          var angP = 0.5*Math.PI + 2*Math.PI*kP/nP;
-          var vxP = RP*Math.cos(angP), vyP = RP*Math.sin(angP);
-          ptsP.push([vxP, vyP]);
-          P.segment(0, 0, vxP, vyP, '#94A3B8', 1.3, [3,3]);
-        }
-        P.polygon(ptsP, 'rgba(30,58,110,0.18)', INDIGO, 2.5);
-        for(var jP=0; jP<nP; jP++) P.dot(ptsP[jP][0], ptsP[jP][1], AMBER2, 5);
-        out0 = fmt((nP-2)*180/nP, 1) + '°';
-        out1 = fmt(360/nP, 1) + '°';
-        out2 = 'Area = ' + fmt(0.5*nP*RP*RP*Math.sin(2*Math.PI/nP), 2);
-        rows.push(['Sides n', String(nP)], ['Interior Angle', out0], ['Exterior Angle', out1], ['Polygon Area', out2]);
-      } else if(mode === 'tri_similar'){
-        var A = [b, 3.2], B = [-3.2, -2.4], C = [3.2, -2.4];
-        var D = [A[0] + a*(B[0]-A[0]), A[1] + a*(B[1]-A[1])];
-        var E = [A[0] + a*(C[0]-A[0]), A[1] + a*(C[1]-A[1])];
-        P.polygon([A, B, C], 'rgba(30,58,110,0.12)', INDIGO, 2.3);
-        P.polygon([A, D, E], 'rgba(200,144,42,0.28)', AMBER2, 2.5);
-        P.dot(D[0], D[1], AMBER2, 5.5); P.dot(E[0], E[1], AMBER2, 5.5);
-        out0 = 'k = ' + fmt(a, 2);
-        out1 = 'k² = ' + fmt(a*a, 3);
-        out2 = 'DE = ' + fmt(6.4*a, 2) + ', BC = 6.40';
-        rows.push(['Scale Factor k', out0], ['Area Ratio k²', out1], ['Parallel Bases', out2]);
-      } else if(mode === 'coord_seg'){
-        var x1 = -2, y1 = -1, x2 = a, y2 = b;
-        var mx = 0.5*(x1+x2), my = 0.5*(y1+y2), dx = x2-x1, dy = y2-y1;
-        P.segment(x1, y1, x2, y1, '#94A3B8', 1.5, [3,3]);
-        P.segment(x2, y1, x2, y2, '#94A3B8', 1.5, [3,3]);
-        P.segment(x1, y1, x2, y2, INDIGO, 2.7);
-        if(Math.abs(dy) > 0.08){
-          var mp = -dx / dy;
-          P.curve(function(x){return my + mp*(x - mx);}, AMBER2, 2.0, [5,4]);
-        }
-        P.dot(x1, y1, INDIGO, 5.5); P.dot(x2, y2, INDIGO, 5.5); P.dot(mx, my, AMBER2, 6);
-        P.label(mx+0.18, my+0.25, 'M('+fmt(mx,1)+','+fmt(my,1)+')', AMBER2);
-        out0 = Math.abs(dx)>1e-4 ? ('m = '+fmt(dy/dx,2)) : 'Vertical (∞)';
-        out1 = '|AB| = '+fmt(Math.sqrt(dx*dx+dy*dy),2)+', M('+fmt(mx,1)+','+fmt(my,1)+')';
-        out2 = Math.abs(dy)>1e-4 ? ('m_⊥ = '+fmt(-dx/dy,2)) : 'Horizontal (0)';
-        rows.push(['Point A', '(−2, −1)'], ['Point B', '('+fmt(x2,1)+', '+fmt(y2,1)+')'], ['Gradient & Length', out0+' / '+out1]);
-      } else if(mode === 'func_comp'){
-        var fComp = function(x){ return a*x + b; };
-        var gComp = function(x){ return 0.5*x*x - 1; };
-        var fgComp = function(x){ return fComp(gComp(x)); };
-        var gfComp = function(x){ return gComp(fComp(x)); };
-        P.curve(fComp, '#94A3B8', 1.6, [4,4]);
-        P.curve(fgComp, INDIGO, 2.6);
-        P.curve(gfComp, AMBER2, 2.4);
-        P.dot(1, fgComp(1), INDIGO, 5.5); P.dot(1, gfComp(1), AMBER2, 5.5);
-        out0 = 'fg(1) = ' + fmt(fgComp(1), 2);
-        out1 = 'gf(1) = ' + fmt(gfComp(1), 2);
-        out2 = 'f⁻¹(4) = ' + fmt((4 - b)/a, 2);
-        rows.push(['f(x) = mx + c', fmt(a,1)+'x + '+fmt(b,1)], ['Composite fg(1)', out0], ['Composite gf(1)', out1], ['Inverse f⁻¹(4)', out2]);
-      } else if(mode === 'error_bounds'){
-        var lbL = a - 0.5*b, ubL = a + 0.5*b, lbW = 4 - 0.5*b, ubW = 4 + 0.5*b;
-        P.polygon([[0,0],[ubL,0],[ubL,ubW],[0,ubW]], 'rgba(200,144,42,0.22)', AMBER2, 2.0);
-        P.polygon([[0,0],[a,0],[a,4],[0,4]], 'rgba(30,58,110,0.18)', INDIGO, 2.4);
-        P.polygon([[0,0],[lbL,0],[lbL,lbW],[0,lbW]], 'rgba(14,159,143,0.18)', TEAL, 1.8);
-        out0 = '[' + fmt(lbL, 2) + ', ' + fmt(ubL, 2) + ')';
-        out1 = 'A_LB = ' + fmt(lbL*lbW, 2);
-        out2 = 'A_UB = ' + fmt(ubL*ubW, 2);
-        rows.push(['Length Bounds', out0], ['Lower Bound Area', out1], ['Upper Bound Area', out2]);
-      } else if(mode === 'hist_density'){
-        var fd1 = 10/2.0, fd2 = b/1.0, fd3 = a/2.0, fd4 = 12/1.0;
-        P.polygon([[0,0],[2,0],[2,fd1],[0,fd1]], 'rgba(30,58,110,0.22)', INDIGO, 2);
-        P.polygon([[2,0],[3,0],[3,fd2],[2,fd2]], 'rgba(200,144,42,0.30)', AMBER2, 2.2);
-        P.polygon([[3,0],[5,0],[5,fd3],[3,fd3]], 'rgba(14,159,143,0.28)', TEAL, 2.2);
-        P.polygon([[5,0],[6,0],[6,fd4],[5,fd4]], 'rgba(30,58,110,0.22)', INDIGO, 2);
-        var meanH = (10*1.0 + b*2.5 + a*4.0 + 12*5.5) / (22 + a + b);
-        out0 = 'FD₂ = ' + fmt(fd2, 1);
-        out1 = 'FD₃ = ' + fmt(fd3, 1);
-        out2 = 'x̄ ≈ ' + fmt(meanH, 2);
-        rows.push(['Class [2,3) FD (w=1)', out0], ['Class [3,5) FD (w=2)', out1], ['Estimated Mean', out2]);
-      } else if(mode === 'mle_gauss'){
-        var ptsM = [-0.5, 0.8, 1.5, 2.2, 3.5];
-        var pdfM = function(x){ var z=(x-a)/b; return Math.exp(-0.5*z*z)/(b*Math.sqrt(2*Math.PI)); };
-        var llCurve = function(m){
-          var s=0;
-          for(var i=0;i<5;i++) s += -0.5*Math.log(2*Math.PI*b*b) - Math.pow(ptsM[i]-m,2)/(2*b*b);
-          return 0.55 + 0.06*(s + 7.5);
-        };
-        P.curve(pdfM, INDIGO, 2.6);
-        P.curve(llCurve, AMBER2, 2.2, [4,3]);
-        for(var mi=0; mi<5; mi++) P.dot(ptsM[mi], 0, TEAL, 5);
-        P.vline(a, INDIGO, [3,3]); P.vline(1.5, AMBER2, [3,3]);
-        var llVal = 0, gradM = 0;
-        for(var jM=0; jM<5; jM++){
-          llVal += -0.5*Math.log(2*Math.PI*b*b) - Math.pow(ptsM[jM]-a,2)/(2*b*b);
-          gradM += (ptsM[jM] - a)/(b*b);
-        }
-        out0 = 'ℓ = ' + fmt(llVal, 2);
-        out1 = 'μ̂_MLE = 1.50';
-        out2 = '∂ℓ/∂μ = ' + fmt(gradM, 2);
-        rows.push(['Candidate Mean μ', fmt(a,2)], ['Log-Likelihood ℓ(μ)', out0], ['Score Gradient ∂ℓ/∂μ', out2]);
-      } else if(mode === 'grad_descent'){
-        var lossFn = function(w){ return (w - 1)*(w - 1) + 0.5; };
-        P.curve(lossFn, INDIGO, 2.6);
-        var wk = b;
-        P.dot(wk, lossFn(wk), AMBER2, 6);
-        for(var stepG=0; stepG<6; stepG++){
-          var nw = wk - a * 2 * (wk - 1);
-          if(Math.abs(nw) < 12){
-            P.segment(wk, lossFn(wk), nw, lossFn(nw), AMBER2, 2.2);
-            P.dot(nw, lossFn(nw), stepG===5 ? TEAL : AMBER2, 5);
-          }
-          wk = nw;
-        }
-        out0 = '∇L(w₀) = ' + fmt(2*(b - 1), 2);
-        out1 = 'w₆ = ' + fmt(wk, 3);
-        out2 = a >= 1.0 ? 'Divergent (η ≥ 1)' : (a > 0.5 ? 'Oscillating Overshoot' : 'Monotone Convergent');
-        rows.push(['Learning Rate η', fmt(a,2)], ['Initial Weight w₀', fmt(b,2)], ['Iterate w₆', out1], ['Regime', out2]);
-      } else if(mode === 'ols_reg'){
-        var xsO = [-2, -1, 0, 1, 2], ysO = [-1.6, -0.5, 0.4, 1.7, 2.5];
-        P.curve(function(x){return 1.04*x + 0.50;}, '#94A3B8', 1.6, [4,4]);
-        P.curve(function(x){return a*x + b;}, INDIGO, 2.6);
-        var sse = 0;
-        for(var oi=0; oi<5; oi++){
-          var yhO = a*xsO[oi] + b;
-          sse += Math.pow(ysO[oi] - yhO, 2);
-          P.segment(xsO[oi], ysO[oi], xsO[oi], yhO, AMBER2, 2.2);
-          P.dot(xsO[oi], ysO[oi], INDIGO, 5.5);
-        }
-        var mse = sse / 5.0, r2 = Math.max(-1, 1 - sse / 10.89);
-        out0 = 'MSE = ' + fmt(mse, 3);
-        out1 = 'w* = 1.04, b* = 0.50';
-        out2 = 'R² = ' + fmt(r2, 3);
-        rows.push(['Slope w', fmt(a,2)], ['Intercept b', fmt(b,2)], ['Mean Squared Error', out0], ['R² Score', out2]);
-      } else if(mode === 'sigmoid_log'){
-        var sig = function(x){ return 1 / (1 + Math.exp(-(a*x + b))); };
-        P.hline(0.5, '#94A3B8', [3,3]);
-        var xStar = Math.abs(a)>1e-4 ? -b/a : 0;
-        P.vline(xStar, AMBER2, [4,4]);
-        P.curve(sig, INDIGO, 2.7);
-        var c0 = [-2.5, -1.5, -0.6], c1 = [0.8, 1.8, 2.8];
-        for(var si=0; si<3; si++){ P.dot(c0[si], 0, INDIGO, 5.5); P.dot(c1[si], 1, AMBER2, 5.5); }
-        P.dot(xStar, 0.5, AMBER2, 6);
-        out0 = 'x* = ' + fmt(xStar, 2);
-        out1 = 'σ(1) = ' + fmt(sig(1), 3);
-        out2 = 'BCE ≈ ' + fmt(0.35/Math.max(0.3, a*0.5), 3);
-        rows.push(['Weight w', fmt(a,2)], ['Bias b', fmt(b,2)], ['Decision Boundary x*', out0], ['Sigmoid σ(1)', out1]);
-      } else if(mode === 'relu_layer'){
-        var r1Fn = function(x){ return Math.max(0, a*x + 1.0); };
-        var r2Fn = function(x){ return Math.max(0, 1.5*(x - b)); };
-        var netFn = function(x){ return r1Fn(x) - r2Fn(x); };
-        P.curve(r1Fn, INDIGO2, 1.5, [4,4]);
-        P.curve(r2Fn, TEAL, 1.5, [4,4]);
-        P.curve(netFn, AMBER2, 2.8);
-        var k1 = -1.0/a, k2 = b;
-        P.dot(k1, netFn(k1), INDIGO, 5.5); P.dot(k2, netFn(k2), AMBER2, 5.5);
-        out0 = 'x₁ = ' + fmt(k1, 2) + ', x₂ = ' + fmt(k2, 2);
-        out1 = 'h(2) = ' + fmt(netFn(2), 2);
-        out2 = '2 Active ReLU Hinges';
-        rows.push(['Hinge Kinks', out0], ['Network Output h(2)', out1]);
-      } else if(mode === 'pca_cloud'){
-        var radP = a * Math.PI / 180, ux = Math.cos(radP), uy = Math.sin(radP);
-        P.segment(-4*ux, -4*uy, 4*ux, 4*uy, AMBER2, 2.6);
-        var baseCloud = [[-2.5,-2.1],[-1.8,-1.2],[-0.9,-1.1],[-0.3,0.2],[0.4,-0.2],[1.1,1.0],[1.9,1.5],[2.6,2.3]];
-        var vProj = 0;
-        for(var pi=0; pi<baseCloud.length; pi++){
-          var pxC = baseCloud[pi][0], pyC = b*baseCloud[pi][0] + (1-b)*baseCloud[pi][1]*1.5;
-          var proj = pxC*ux + pyC*uy;
-          vProj += proj*proj;
-          P.segment(pxC, pyC, proj*ux, proj*uy, TEAL, 1.4, [3,2]);
-          P.dot(pxC, pyC, INDIGO, 5);
-          P.dot(proj*ux, proj*uy, AMBER2, 4);
-        }
-        vProj /= baseCloud.length;
-        out0 = 'Var_θ = ' + fmt(vProj, 3);
-        out1 = 'θ* ≈ 42°–45°';
-        out2 = 'EVR₁ = ' + fmt(50*(1+b), 1) + '%';
-        rows.push(['Axis Angle θ', fmt(a,0)+'°'], ['Projected Variance', out0], ['Explained Variance Ratio', out2]);
-      } else if(mode === 'cosine_embed'){
-        P.parametric(function(t){return Math.cos(t);}, function(t){return Math.sin(t);}, 0, 2*Math.PI, LINE, 1.6);
-        P.polygon([[1,0],[0,1],[-1,0],[0,-1]], 'rgba(148,163,184,0.08)', '#94A3B8', 1.4);
-        var ru = a*Math.PI/180, rv = b*Math.PI/180;
-        var uxE = Math.cos(ru), uyE = Math.sin(ru), vxE = Math.cos(rv), vyE = Math.sin(rv);
-        P.arrow(0, 0, uxE, uyE, INDIGO, 2.7);
-        P.arrow(0, 0, vxE, vyE, AMBER2, 2.7);
-        var cs = Math.cos(ru - rv), l2 = Math.hypot(uxE-vxE, uyE-vyE), l1 = Math.abs(uxE-vxE)+Math.abs(uyE-vyE);
-        out0 = 'cos Δθ = ' + fmt(cs, 3);
-        out1 = '‖u−v‖₂ = ' + fmt(l2, 3);
-        out2 = '‖u−v‖₁ = ' + fmt(l1, 3);
-        rows.push(['Angle θ_u', fmt(a,0)+'°'], ['Angle θ_v', fmt(b,0)+'°'], ['Cosine Similarity', out0], ['L₂ / L₁ Distance', out1+' / '+out2]);
-      } else if(mode === 'greens_curl' || mode === 'div_flux'){
-        var isFlux = (mode === 'div_flux');
-        P.parametric(function(t){return a*Math.cos(t);}, function(t){return a*Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.6);
-        for(var kF=0; kF<12; kF++){
-          var angF = 2*Math.PI*kF/12, bxF = a*Math.cos(angF), byF = a*Math.sin(angF);
-          var fxF = isFlux ? 0.35*b*Math.cos(angF) : -0.35*b*Math.sin(angF);
-          var fyF = isFlux ? 0.35*b*Math.sin(angF) : 0.35*b*Math.cos(angF);
-          P.arrow(bxF, byF, bxF+fxF, byF+fyF, AMBER2, 2.2);
-        }
-        var areaF = Math.PI*a*a;
-        if(isFlux){
-          out0 = '∇·F = ' + fmt(b, 2);
-          out1 = 'Flux = ' + fmt(b*areaF, 2);
-          out2 = b > 0 ? 'Outward Source' : (b < 0 ? 'Inward Sink' : 'Zero Net Flux');
-        } else {
-          out0 = '2ω = ' + fmt(2*b, 2);
-          out1 = 'πR² = ' + fmt(areaF, 2);
-          out2 = '∮ F·dr = ' + fmt(2*b*areaF, 2);
-        }
-        rows.push(['Radius R', fmt(a,2)], ['Field Density', out0], ['Integrated Total', out2]);
-      } else if(mode === 'spherical_vol'){
-        var radS = b * Math.PI / 180;
-        var ptsS = [[0,0]];
-        for(var kSp=0; kSp<=32; kSp++){
-          var angSp = 0.5*Math.PI - radS + (2*radS)*kSp/32;
-          ptsS.push([a*Math.cos(angSp), a*Math.sin(angSp)]);
-        }
-        P.polygon(ptsS, 'rgba(200,144,42,0.25)', AMBER2, 2.5);
-        var zc = a*Math.cos(radS), jac = a*a*Math.sin(radS), vol = (2*Math.PI/3)*a*a*a*(1 - Math.cos(radS));
-        out0 = 'z = ' + fmt(zc, 2);
-        out1 = 'J = ' + fmt(jac, 2);
-        out2 = 'V = ' + fmt(vol, 2);
-        rows.push(['Spherical Radius ρ₀', fmt(a,2)], ['Cone Angle φ₀', fmt(b,0)+'°'], ['Jacobian ρ₀² sin φ₀', out1], ['Volume V', out2]);
-      } else if(mode === 'heaviside_laplace'){
-        var stepFn = function(t){ return t < a ? 0 : 1.0; };
-        var respFn = function(t){
-          if(t < a) return 0;
-          var dt = t - a, wd = Math.sqrt(Math.max(0.05, 1 - b*b))*3.0;
-          return 1.0 - Math.exp(-b*3.0*dt)*(Math.cos(wd*dt) + (b*3.0/wd)*Math.sin(wd*dt));
-        };
-        P.curve(stepFn, AMBER2, 2.0, [4,4]);
-        P.curve(respFn, INDIGO, 2.7);
-        P.vline(a, TEAL, [3,3]);
-        var over = 1 + Math.exp(-b*Math.PI/Math.sqrt(Math.max(0.05, 1-b*b)));
-        out0 = 'e^(−'+fmt(a,2)+'s)/s';
-        out1 = 'y_max = ' + fmt(over, 2);
-        out2 = 'y(∞) = 1.00';
-        rows.push(['Switch-On Time a', fmt(a,2)], ['Damping Ratio ζ', fmt(b,2)], ['Peak Overshoot', out1]);
-      } else if(mode === 'frobenius_series'){
-        var degF = Math.round(a);
-        var fAiryEx = function(x){ return Math.cos(0.8*x*x) + 0.3*b*Math.sin(x); };
-        var fAirySer = function(x){
-          var s = 1 + b*x - (x*x*x)/6.0;
-          if(degF >= 4) s -= b*(x*x*x*x)/12.0;
-          if(degF >= 6) s += Math.pow(x,6)/180.0;
-          if(degF >= 7) s += b*Math.pow(x,7)/504.0;
-          return s;
-        };
-        P.curve(fAiryEx, INDIGO, 2.6);
-        P.curve(fAirySer, AMBER2, 2.3, [5,3]);
-        out0 = 'c_{k+2} = −c_{k−1}/((k+2)(k+1))';
-        out1 = 'y_N(1.5) = ' + fmt(fAirySer(1.5), 3);
-        out2 = 'Degree N = ' + degF;
-        rows.push(['Truncation Degree N', String(degF)], ['Initial Slope y\'(0)', fmt(b,2)], ['Series Value y_N(1.5)', out1]);
-      } else if(mode === 'resonance_beats'){
-        var det = Math.abs(a - b);
-        var fBeat = function(t){
-          if(det < 0.05) return 0.5 * t * Math.sin(b * t);
-          return (Math.cos(a*t) - Math.cos(b*t)) / Math.max(0.25, Math.abs(b*b - a*a));
-        };
-        var envFn = function(t){
-          if(det < 0.05) return 0.5 * t;
-          return 2 * Math.sin(0.5*det*t) / Math.max(0.25, Math.abs(b*b - a*a));
-        };
-        P.curve(envFn, AMBER2, 1.6, [4,4]);
-        P.curve(function(t){return -envFn(t);}, AMBER2, 1.6, [4,4]);
-        P.curve(fBeat, INDIGO, 2.5);
-        out0 = '|ω − ω₀| = ' + fmt(det, 2);
-        out1 = 'Gain = ' + fmt(1/Math.max(0.08, Math.abs(b*b-a*a)), 2);
-        out2 = det < 0.05 ? 'Pure Secular Resonance!' : 'Periodic Beats';
-        rows.push(['Driving Freq ω', fmt(a,2)], ['Natural Freq ω₀', fmt(b,2)], ['Regime', out2]);
-      } else if(mode === 'wronskian_green'){
-        P.curve(function(t){return Math.cos(b*t);}, '#94A3B8', 1.4, [3,3]);
-        P.curve(function(t){return Math.sin(b*t);}, TEAL, 1.4, [3,3]);
-        var gKer = function(t){ return t < a ? 0 : Math.sin(b*(t - a)) / b; };
-        P.curve(gKer, AMBER2, 2.8);
-        P.vline(a, INDIGO, [4,4]);
-        P.dot(a, 0, AMBER2, 5.5);
-        out0 = 'W = ' + fmt(b, 2);
-        out1 = '1/ω = ' + fmt(1/b, 3);
-        out2 = 'G(4, s) = ' + fmt(gKer(4.0), 3);
-        rows.push(['Impulse Time s', fmt(a,2)], ['Frequency ω', fmt(b,2)], ['Wronskian W(s)', out0], ['Green\'s Response G(4,s)', out2]);
-      }
-
-      if(r0) r0.textContent = out0;
-      if(r1) r1.textContent = out1;
-      if(r2) r2.textContent = out2;
-      if(dDesc) dDesc.textContent = cfg.title + ' — live parameter & metric table.';
-      if(dRows) renderDataRows(dRows, rows);
-      if(chApi) chApi.check({a: a, b: b});
+      var res = cfg.render(P, ctx, a, b) || {};
+      if(r0) r0.textContent = res.r0 || '—';
+      if(r1) r1.textContent = res.r1 || '—';
+      if(r2) r2.textContent = res.r2 || '—';
+      if(dDesc && res.desc) dDesc.textContent = res.desc;
+      renderDataRows(dRows, res.rows || []);
+      if(chApi) chApi.notify({ a: a, b: b });
     }
 
-    register(canvas, draw);
-    if(s0){ s0.addEventListener('input', redrawAll); s0.addEventListener('change', redrawAll); }
-    if(s1){ s1.addEventListener('input', redrawAll); s1.addEventListener('change', redrawAll); }
+    var redraw = K.register(canvas, draw);
+    if(s0) s0.addEventListener('input', redraw);
+    if(s1) s1.addEventListener('input', redraw);
 
-    /* Direct on-canvas pointer dragging to manipulate parameters smoothly */
-    makeDraggable(canvas, {
-      hitTest: function(){ return true; },
-      onDrag: function(_, px, py){
-        if(!lastP || !s0) return;
-        var wx = lastP.invX(px), wy = lastP.invY(py);
-        var min0 = parseFloat(s0.min), max0 = parseFloat(s0.max), st0 = parseFloat(s0.step)||0.1;
-        var normX = (wx - lastP.v.xmin) / Math.max(1e-5, lastP.v.xmax - lastP.v.xmin);
-        var vNew0 = min0 + Math.max(0, Math.min(1, normX)) * (max0 - min0);
-        if(cfg.square && min0 < 0 && max0 > 0) vNew0 = Math.max(min0, Math.min(max0, wx));
-        s0.value = Math.round(vNew0 / st0) * st0;
-        if(s1){
-          var min1 = parseFloat(s1.min), max1 = parseFloat(s1.max), st1 = parseFloat(s1.step)||0.1;
-          var normY = (wy - lastP.v.ymin) / Math.max(1e-5, lastP.v.ymax - lastP.v.ymin);
-          var vNew1 = min1 + Math.max(0, Math.min(1, normY)) * (max1 - min1);
-          if(cfg.square && min1 < 0 && max1 > 0) vNew1 = Math.max(min1, Math.min(max1, wy));
-          s1.value = Math.round(vNew1 / st1) * st1;
-        }
-        if( typeof update3d === 'function' ) update3d();
-      }
-    });
-
-    /* Optional 3D ClipSAT3D visualization when canvas3d is configured */
-    var btn3d = cfg.btn3dId ? document.getElementById(cfg.btn3dId) : null;
-    var wrap3d = cfg.wrap3dId ? document.getElementById(cfg.wrap3dId) : null;
-    var hint3d = cfg.hint3dId ? document.getElementById(cfg.hint3dId) : null;
-    var built3d = false, H3 = null, meshA = null, meshB = null, meshC = null;
-    function update3d(){
-      if(!built3d || !H3) return;
-      var a = s0 ? parseFloat(s0.value) : cfg.s0Val;
-      var b = s1 ? parseFloat(s1.value) : cfg.s1Val;
-      var scX = Math.max(0.4, Math.min(2.6, 0.5 + 0.35*Math.abs(a)));
-      var scY = Math.max(0.4, Math.min(2.6, 0.5 + 0.35*Math.abs(b)));
-      if(meshA) meshA.scale.set(scX, scY, scX);
-      if(meshB) meshB.scale.set(scX, scY, scX);
-      if(meshC) meshC.position.y = 0.3 * b;
-      H3.render();
-    }
-    if(btn3d && wrap3d){
-      btn3d.addEventListener('click', function(){
-        var open = wrap3d.hidden;
-        wrap3d.hidden = !open;
-        if(hint3d) hint3d.hidden = !open;
-        btn3d.textContent = open ? '✕ Hide 3D Model' : cfg.btn3dLabel;
-        if(open && !built3d){
-          built3d = true;
-          window.ClipSAT3D.load().then(function(mods){
-            var T = mods.THREE, COLOR = window.ClipSAT3D.COLOR;
-            H3 = window.ClipSAT3D.setup(wrap3d, mods, {az:0.8, el:0.45, dist:10.5, target:new T.Vector3(0,1.2,0),
-              axisSegs:[[[-4.5,0,0],[4.5,0,0]],[[0,0,0],[0,4.5,0]],[[0,0,-4.5],[0,0,4.5]]]});
-            if(cfg.mode3d === 'surf'){
-              var geom = new T.PlaneGeometry(4.8, 4.8, 28, 28);
-              geom.rotateX(-Math.PI/2);
-              var pos = geom.attributes.position;
-              for(var vi=0; vi<pos.count; vi++){
-                var vx = pos.getX(vi), vz = pos.getZ(vi);
-                pos.setY(vi, 0.16*(vx*vx + vz*vz));
-              }
-              geom.computeVertexNormals();
-              meshA = new T.Mesh(geom, new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.68, side:T.DoubleSide}));
-              meshB = new T.Mesh(geom, new T.MeshBasicMaterial({color:COLOR.INK, wireframe:true, transparent:true, opacity:0.22}));
-              var plG = new T.PlaneGeometry(3.4, 3.4); plG.rotateX(-Math.PI/2);
-              meshC = new T.Mesh(plG, new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.55, side:T.DoubleSide}));
-              H3.scene.add(meshA); H3.scene.add(meshB); H3.scene.add(meshC);
-            } else if(cfg.mode3d === 'vec3'){
-              var boxG = new T.BoxGeometry(2.2, 1.8, 2.0);
-              meshA = new T.Mesh(boxG, new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.38}));
-              meshB = new T.Mesh(boxG, new T.MeshBasicMaterial({color:COLOR.AMBER, wireframe:true}));
-              meshA.position.set(1.1, 0.9, 1.0); meshB.position.set(1.1, 0.9, 1.0);
-              H3.scene.add(meshA); H3.scene.add(meshB);
-            } else {
-              var cylG = new T.CylinderGeometry(1.1, 1.1, 1.6, 36, 1, true);
-              meshA = new T.Mesh(cylG, new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.32, side:T.DoubleSide}));
-              var coneG = new T.ConeGeometry(1.1, 1.6, 36);
-              meshB = new T.Mesh(coneG, new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.70, side:T.DoubleSide}));
-              meshA.position.y = 0.8; meshB.position.y = 0.8;
-              H3.scene.add(meshA); H3.scene.add(meshB);
-            }
-            update3d();
-          });
-        } else if(open){
-          update3d();
-        }
+    if(cfg.drag){
+      K.makeDraggable(canvas, function(px, py){
+        if(!lastP) return;
+        cfg.drag(lastP.invX(px), lastP.invY(py), s0, s1);
+        redraw();
       });
-      if(s0) s0.addEventListener('input', update3d);
-      if(s1) s1.addEventListener('input', update3d);
     }
   }
 
-  
-  _mountBespokeExplorer({"canvasId":"olalgebraictechniquesExCanvas","mode":"factored_quad","square":false,"title":"Vieta's Root Relations & Symmetric Power Sums Lab","s0Id":"olalgebraictechniquesExCanvas_s0","s1Id":"olalgebraictechniquesExCanvas_s1","v0Id":"olalgebraictechniquesExCanvas_v0","v1Id":"olalgebraictechniquesExCanvas_v1","s0Val":1,"s1Val":3,"s0Step":1,"s1Step":1,"r0Id":"olalgebraictechniquesExCanvas_r0","r1Id":"olalgebraictechniquesExCanvas_r1","r2Id":"olalgebraictechniquesExCanvas_r2","dataBtnId":"olalgebraictechniquesExCanvas_dataBtn","dataPanelId":"olalgebraictechniquesExCanvas_dataPanel","dataDescId":"olalgebraictechniquesExCanvas_dataDesc","dataRowsId":"olalgebraictechniquesExCanvas_dataRows","btn3dId":"","wrap3dId":"","hint3dId":"","btn3dLabel":"🧊 View Olympiad Algebra, Symmetric Sums & Vieta's Relations in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Olympiad Algebra, Symmetric Sums & Vieta's Relations.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في الجبر الأولمبي والمجاميع المتماثلة وعلاقات فييتا للجذور."}, "checkFn": function(a, b){ return Math.abs(a - 2) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"olmodularnumbertheoryExCanvas","mode":"euclid_gcd","square":true,"title":"Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab","s0Id":"olmodularnumbertheoryExCanvas_s0","s1Id":"olmodularnumbertheoryExCanvas_s1","v0Id":"olmodularnumbertheoryExCanvas_v0","v1Id":"olmodularnumbertheoryExCanvas_v1","s0Val":42,"s1Val":18,"s0Step":2,"s1Step":2,"r0Id":"olmodularnumbertheoryExCanvas_r0","r1Id":"olmodularnumbertheoryExCanvas_r1","r2Id":"olmodularnumbertheoryExCanvas_r2","dataBtnId":"olmodularnumbertheoryExCanvas_dataBtn","dataPanelId":"olmodularnumbertheoryExCanvas_dataPanel","dataDescId":"olmodularnumbertheoryExCanvas_dataDesc","dataRowsId":"olmodularnumbertheoryExCanvas_dataRows","btn3dId":"","wrap3dId":"","hint3dId":"","btn3dLabel":"🧊 View Divisibility, Prime Factorization & Modular Arithmetic in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Divisibility, Prime Factorization & Modular Arithmetic.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."}, "checkFn": function(a, b){ return Math.abs(a - 44) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"oldiophantineequationsExCanvas","mode":"coord_seg","square":true,"title":"Diophantine Lattice Points & Simon's Factoring Trick Lab","s0Id":"oldiophantineequationsExCanvas_s0","s1Id":"oldiophantineequationsExCanvas_s1","v0Id":"oldiophantineequationsExCanvas_v0","v1Id":"oldiophantineequationsExCanvas_v1","s0Val":2,"s1Val":3,"s0Step":1,"s1Step":1,"r0Id":"oldiophantineequationsExCanvas_r0","r1Id":"oldiophantineequationsExCanvas_r1","r2Id":"oldiophantineequationsExCanvas_r2","dataBtnId":"oldiophantineequationsExCanvas_dataBtn","dataPanelId":"oldiophantineequationsExCanvas_dataPanel","dataDescId":"oldiophantineequationsExCanvas_dataDesc","dataRowsId":"oldiophantineequationsExCanvas_dataRows","btn3dId":"","wrap3dId":"","hint3dId":"","btn3dLabel":"🧊 View Diophantine Equations, Floor Functions & Number Bases in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Diophantine Equations, Floor Functions & Number Bases.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في المعادلات الديوفانتية ودالة الصحيح وأنظمة العد."}, "checkFn": function(a, b){ return Math.abs(a - 3) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"olcombinatoricscountingExCanvas","mode":"binomial","square":false,"title":"Pascal's Triangle, Stars-and-Bars & Hockey-Stick Identity Lab","s0Id":"olcombinatoricscountingExCanvas_s0","s1Id":"olcombinatoricscountingExCanvas_s1","v0Id":"olcombinatoricscountingExCanvas_v0","v1Id":"olcombinatoricscountingExCanvas_v1","s0Val":8,"s1Val":3,"s0Step":1,"s1Step":1,"r0Id":"olcombinatoricscountingExCanvas_r0","r1Id":"olcombinatoricscountingExCanvas_r1","r2Id":"olcombinatoricscountingExCanvas_r2","dataBtnId":"olcombinatoricscountingExCanvas_dataBtn","dataPanelId":"olcombinatoricscountingExCanvas_dataPanel","dataDescId":"olcombinatoricscountingExCanvas_dataDesc","dataRowsId":"olcombinatoricscountingExCanvas_dataRows","btn3dId":"","wrap3dId":"","hint3dId":"","btn3dLabel":"🧊 View Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء."}, "checkFn": function(a, b){ return Math.abs(a - 9) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"olrecurrenceprobabilityExCanvas","mode":"cobweb","square":true,"title":"Recurrence Dynamics, Fixed Points & State Convergence Lab","s0Id":"olrecurrenceprobabilityExCanvas_s0","s1Id":"olrecurrenceprobabilityExCanvas_s1","v0Id":"olrecurrenceprobabilityExCanvas_v0","v1Id":"olrecurrenceprobabilityExCanvas_v1","s0Val":2.4,"s1Val":0.8,"s0Step":0.2,"s1Step":0.2,"r0Id":"olrecurrenceprobabilityExCanvas_r0","r1Id":"olrecurrenceprobabilityExCanvas_r1","r2Id":"olrecurrenceprobabilityExCanvas_r2","dataBtnId":"olrecurrenceprobabilityExCanvas_dataBtn","dataPanelId":"olrecurrenceprobabilityExCanvas_dataPanel","dataDescId":"olrecurrenceprobabilityExCanvas_dataDesc","dataRowsId":"olrecurrenceprobabilityExCanvas_dataRows","btn3dId":"","wrap3dId":"","hint3dId":"","btn3dLabel":"🧊 View Recurrence Relations, States & Contest Probability in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Recurrence Relations, States & Contest Probability.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."}, "checkFn": function(a, b){ return Math.abs(a - 2.6) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"oleuclideancirclesExCanvas","mode":"sector_seg","square":true,"title":"Circle Power of a Point, Chords & Cyclic Geometry Lab","s0Id":"oleuclideancirclesExCanvas_s0","s1Id":"oleuclideancirclesExCanvas_s1","v0Id":"oleuclideancirclesExCanvas_v0","v1Id":"oleuclideancirclesExCanvas_v1","s0Val":3.5,"s1Val":1.8,"s0Step":0.5,"s1Step":0.2,"r0Id":"oleuclideancirclesExCanvas_r0","r1Id":"oleuclideancirclesExCanvas_r1","r2Id":"oleuclideancirclesExCanvas_r2","dataBtnId":"oleuclideancirclesExCanvas_dataBtn","dataPanelId":"oleuclideancirclesExCanvas_dataPanel","dataDescId":"oleuclideancirclesExCanvas_dataDesc","dataRowsId":"oleuclideancirclesExCanvas_dataRows","btn3dId":"oleuclideancirclesExCanvas_3dBtn","wrap3dId":"oleuclideancirclesExCanvas_3dWrap","hint3dId":"oleuclideancirclesExCanvas_3dHint","btn3dLabel":"🧊 View Power of a Point, Cyclic Quadrilaterals & Angle Chasing in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Power of a Point, Cyclic Quadrilaterals & Angle Chasing.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في قوة النقطة بالنسبة للدائرة والرباعيات الدائرية وتتبع الزوايا."}, "checkFn": function(a, b){ return Math.abs(a - 4) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"oltrianglecenterstrigExCanvas","mode":"tri_similar","square":true,"title":"Triangle Cevians, Angle Bisector Ratio & Area Partition Lab","s0Id":"oltrianglecenterstrigExCanvas_s0","s1Id":"oltrianglecenterstrigExCanvas_s1","v0Id":"oltrianglecenterstrigExCanvas_v0","v1Id":"oltrianglecenterstrigExCanvas_v1","s0Val":1.5,"s1Val":2.5,"s0Step":0.25,"s1Step":0.5,"r0Id":"oltrianglecenterstrigExCanvas_r0","r1Id":"oltrianglecenterstrigExCanvas_r1","r2Id":"oltrianglecenterstrigExCanvas_r2","dataBtnId":"oltrianglecenterstrigExCanvas_dataBtn","dataPanelId":"oltrianglecenterstrigExCanvas_dataPanel","dataDescId":"oltrianglecenterstrigExCanvas_dataDesc","dataRowsId":"oltrianglecenterstrigExCanvas_dataRows","btn3dId":"oltrianglecenterstrigExCanvas_3dBtn","wrap3dId":"oltrianglecenterstrigExCanvas_3dWrap","hint3dId":"oltrianglecenterstrigExCanvas_3dHint","btn3dLabel":"🧊 View Ceva's, Menelaus', Stewart's Theorems & Triangle Centers in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Ceva's, Menelaus', Stewart's Theorems & Triangle Centers.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة."}, "checkFn": function(a, b){ return Math.abs(a - 1.75) < 0.25; }});
-  _mountBespokeExplorer({"canvasId":"olinvariantsextremalExCanvas","mode":"geom_series","square":false,"title":"Invariant Sums, Monovariant Decay & Game State Lab","s0Id":"olinvariantsextremalExCanvas_s0","s1Id":"olinvariantsextremalExCanvas_s1","v0Id":"olinvariantsextremalExCanvas_v0","v1Id":"olinvariantsextremalExCanvas_v1","s0Val":4,"s1Val":0.5,"s0Step":1,"s1Step":0.1,"r0Id":"olinvariantsextremalExCanvas_r0","r1Id":"olinvariantsextremalExCanvas_r1","r2Id":"olinvariantsextremalExCanvas_r2","dataBtnId":"olinvariantsextremalExCanvas_dataBtn","dataPanelId":"olinvariantsextremalExCanvas_dataPanel","dataDescId":"olinvariantsextremalExCanvas_dataDesc","dataRowsId":"olinvariantsextremalExCanvas_dataRows","btn3dId":"","wrap3dId":"","hint3dId":"","btn3dLabel":"🧊 View Invariants, Monovariants, Game Strategy & Extremal Principle in 3D","mode3d":"solid","challengePrompt":{"en":"Adjust the sliders to explore the critical configuration for Invariants, Monovariants, Game Strategy & Extremal Principle.","ar":"اضبط المنزلقات لاستكشاف الحالة الحرجة في اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى."}, "checkFn": function(a, b){ return Math.abs(a - 5) < 0.25; }});
+  /* 1. Ch 1: Vieta's Relations, Newton Power Sums & AM-GM Equality */
+  _mountOlympiadLab({
+    canvasId: 'olalgebraictechniquesExCanvas', dataBtnId: 'olalgebraictechniquesExCanvas_dataBtn',
+    view: { xmin: -5.5, xmax: 5.5, ymin: -8, ymax: 14 },
+    a0: 1, b0: 3, d0: 1, d1: 1,
+    prompt: {
+      en: 'Set both positive roots equal (r₁ = r₂ = 2.5) so AM = GM and the parabola touches the x-axis tangentially.',
+      ar: 'اجعل الجذرين الموجبين متساويين (r₁ = r₂ = 2.5) لتتحقق مساواة الوسط الحسابي والهندسي ويمس القطع محور السينات.'
+    },
+    check: function(a, b){ return Math.abs(a - 2.5) < 0.1 && Math.abs(b - 2.5) < 0.1; },
+    drag: function(wx, wy, s0, s1){
+      if(!s0 || !s1) return;
+      var a = parseFloat(s0.value), b = parseFloat(s1.value);
+      var snapped = Math.max(-4, Math.min(4, Math.round(wx * 2) / 2));
+      if(Math.abs(wx - a) <= Math.abs(wx - b)) s0.value = snapped;
+      else s1.value = snapped;
+    },
+    render: function(P, ctx, r1, r2){
+      var e1 = r1 + r2, e2 = r1 * r2;
+      var p2 = e1 * e1 - 2 * e2;
+      var p3 = e1 * p2 - e2 * e1;
+      var p4 = e1 * p3 - e2 * p2;
+      var vx = e1 / 2, vy = -((r1 - r2) * (r1 - r2)) / 4;
+      P.curve(function(x){ return (x - r1) * (x - r2); }, INDIGO, 2.6);
+      P.vline(vx, MUTED, [4, 4], 1.3);
+      P.dot(r1, 0, AMBER2, 6);
+      P.dot(r2, 0, TEAL, 6);
+      P.dot(vx, vy, INDIGO, 5);
+      P.label(r1, 1.1, 'r₁=' + fmt(r1,1), AMBER2, 'center');
+      P.label(r2, -1.3, 'r₂=' + fmt(r2,1), TEAL, 'center');
+      P.label(vx + 0.2, vy - 0.8, 'V(' + fmt(vx,2) + ', ' + fmt(vy,2) + ')', INDIGO);
+      var amgm = (r1 > 0 && r2 > 0) ? ('AM=' + fmt(e1/2,2) + ' ≥ GM=' + fmt(Math.sqrt(e2),2)) : 'Set r₁,r₂ > 0 for AM-GM';
+      return {
+        r0: '(' + fmt(e1, 1) + ', ' + fmt(e2, 2) + ')',
+        r1: fmt(p2, 2),
+        r2: fmt(p3, 2),
+        desc: 'P(x) = x² − (' + fmt(e1,1) + ')x + (' + fmt(e2,2) + '); ' + amgm,
+        rows: [
+          ['e₁ = r₁ + r₂', fmt(e1, 2)],
+          ['e₂ = r₁ · r₂', fmt(e2, 2)],
+          ['p₂ = r₁² + r₂²', fmt(p2, 2)],
+          ['p₃ = r₁³ + r₂³', fmt(p3, 2)],
+          ['p₄ = r₁⁴ + r₂⁴', fmt(p4, 2)],
+          ['AM-GM Check', amgm]
+        ]
+      };
+    }
+  });
+
+  /* 2. Ch 2: Euclidean Square Tiling, Bézout & Totient Lab */
+  _mountOlympiadLab({
+    canvasId: 'olmodularnumbertheoryExCanvas', dataBtnId: 'olmodularnumbertheoryExCanvas_dataBtn',
+    view: { xmin: -2, xmax: 50, ymin: -3, ymax: 50, square: true, step: 10 },
+    a0: 42, b0: 18, d0: 0, d1: 0,
+    prompt: {
+      en: 'Find a coprime pair (gcd(a, b) = 1) with a ≥ 35 and b ≥ 20 to observe unit 1×1 termination.',
+      ar: 'اختر عددين أوليين نسبياً (gcd(a, b) = 1) بحيث a ≥ 35 وb ≥ 20 لملاحظة انتهاء التبليط بمربعات 1×1.'
+    },
+    check: function(a, b){ return a >= 35 && b >= 20 && _gcd(a, b) === 1; },
+    render: function(P, ctx, a, b){
+      a = Math.round(a); b = Math.round(b);
+      var x0 = 0, y0 = 0, w = a, h = b, stepIdx = 0;
+      var fills = ['rgba(30,58,110,0.20)', 'rgba(200,144,42,0.24)', 'rgba(14,159,143,0.22)', 'rgba(99,102,241,0.20)'];
+      var strokes = [INDIGO, AMBER2, TEAL, INDIGO2];
+      while(w > 0 && h > 0 && stepIdx < 40){
+        var col = fills[stepIdx % fills.length], st = strokes[stepIdx % strokes.length];
+        if(w >= h){
+          var q = Math.floor(w / h);
+          for(var i = 0; i < q; i++){
+            P.polygon([[x0, y0], [x0 + h, y0], [x0 + h, y0 + h], [x0, y0 + h]], col, st, 1.6);
+            x0 += h;
+          }
+          w = w % h;
+        } else {
+          var q2 = Math.floor(h / w);
+          for(var j = 0; j < q2; j++){
+            P.polygon([[x0, y0], [x0 + w, y0], [x0 + w, y0 + w], [x0, y0 + w]], col, st, 1.6);
+            y0 += w;
+          }
+          h = h % w;
+        }
+        stepIdx++;
+      }
+      var eg = _extGcd(a, b);
+      var d = eg.g, lcm = Math.round((a / d) * b);
+      var phiA = _phi(a), tauA = _tau(a);
+      P.label(a / 2, b + 2.2, a + ' × ' + b + ' tiled to gcd = ' + d, INDIGO, 'center');
+      var bezStr = a + '(' + eg.x + ') + ' + b + '(' + eg.y + ') = ' + d;
+      return {
+        r0: 'd = ' + d + ', lcm = ' + lcm,
+        r1: '(' + eg.x + ', ' + eg.y + ')',
+        r2: 'φ=' + phiA + ', τ=' + tauA,
+        desc: 'Extended Euclid: ' + bezStr,
+        rows: [
+          ['gcd(a, b)', String(d)],
+          ['lcm(a, b)', String(lcm)],
+          ['Bézout Identity', bezStr],
+          ['Euler Totient φ(a)', String(phiA)],
+          ['Divisor Count τ(a)', String(tauA)],
+          ['Euclidean Steps', String(stepIdx)]
+        ]
+      };
+    }
+  });
+
+  /* 3. Ch 3: SFFT Hyperbola & Lattice Divisors Lab */
+  _mountOlympiadLab({
+    canvasId: 'oldiophantineequationsExCanvas', dataBtnId: 'oldiophantineequationsExCanvas_dataBtn',
+    view: { xmin: -24, xmax: 18, ymin: -24, ymax: 18, square: true, step: 5 },
+    a0: 2, b0: 6, d0: 0, d1: 0,
+    prompt: {
+      en: 'Set N = 12 and a = 2 to generate τ(12) = 6 positive divisor pairs and 12 total integer lattice points!',
+      ar: 'اضبط N = 12 وa = 2 لتوليد 6 قواسم موجبة و12 حلاً شبكياً صحيحاً على القطع الزائد!'
+    },
+    check: function(a, N){ return Math.round(a) === 2 && Math.round(N) === 12; },
+    render: function(P, ctx, a, N){
+      a = Math.round(a); N = Math.round(N);
+      P.vline(-a, AMBER2, [4, 4], 1.4);
+      P.hline(-a, AMBER2, [4, 4], 1.4);
+      P.curve(function(x){ return (x + a > 0.12) ? (-a + N / (x + a)) : NaN; }, INDIGO, 2.3);
+      P.curve(function(x){ return (x + a < -0.12) ? (-a + N / (x + a)) : NaN; }, INDIGO, 2.3);
+
+      var posCount = 0, bestPair = null, bestDist = 1e9, pairList = [];
+      for(var d = 1; d <= N; d++){
+        if(N % d === 0){
+          posCount++;
+          var xp = d - a, yp = (N / d) - a;
+          var xn = -d - a, yn = -(N / d) - a;
+          P.dot(xp, yp, TEAL, 5);
+          P.dot(xn, yn, INDIGO2, 4.5);
+          var dist = xp * xp + yp * yp;
+          if(dist < bestDist){ bestDist = dist; bestPair = '(' + xp + ', ' + yp + ')'; }
+          if(pairList.length < 4) pairList.push('(' + xp + ',' + yp + ')');
+        }
+      }
+      P.label(-a + 0.6, 15, 'x = −' + a, AMBER2);
+      return {
+        r0: String(posCount),
+        r1: String(2 * posCount),
+        r2: bestPair || '—',
+        desc: 'Equation (x + ' + a + ')(y + ' + a + ') = ' + N + ' ⇔ xy + ' + a + 'x + ' + a + 'y = ' + (N - a * a),
+        rows: [
+          ['Expanded SFFT Form', 'xy + ' + a + 'x + ' + a + 'y = ' + (N - a * a)],
+          ['Positive Divisors τ(N)', String(posCount)],
+          ['Total Integer Pairs 2τ(N)', String(2 * posCount)],
+          ['Sample Positive-Branch Solutions', pairList.join(', ')]
+        ]
+      };
+    }
+  });
+
+  /* 4. Ch 4: Combinatorics — Pascal Row, Stars & Bars & Kaplansky */
+  _mountOlympiadLab({
+    canvasId: 'olcombinatoricscountingExCanvas', dataBtnId: 'olcombinatoricscountingExCanvas_dataBtn',
+    view: { xmin: -0.8, xmax: 12.8, ymin: 0, ymax: 1.15 },
+    a0: 8, b0: 3, d0: 0, d1: 0,
+    prompt: {
+      en: 'Set n = 10 and k = 4 to compare C(10,4) = 210, Stars & Bars C(13,3) = 286, and Non-Adjacent C(7,4) = 35.',
+      ar: 'اضبط n = 10 وk = 4 لمقارنة التوافيق C(10,4) = 210 والنجوم والفواصل 286 والاختيار غير المتجاور 35.'
+    },
+    check: function(n, k){ return Math.round(n) === 10 && Math.round(k) === 4; },
+    render: function(P, ctx, n, k){
+      n = Math.round(n); k = Math.min(n, Math.round(k));
+      var maxC = _comb(n, Math.floor(n / 2)) || 1;
+      for(var j = 0; j <= n; j++){
+        var cj = _comb(n, j);
+        var h = cj / maxC;
+        var isSel = (j === k);
+        P.polygon([[j - 0.36, 0], [j + 0.36, 0], [j + 0.36, h], [j - 0.36, h]],
+          isSel ? 'rgba(200,144,42,0.45)' : 'rgba(30,58,110,0.22)',
+          isSel ? AMBER2 : INDIGO, isSel ? 2.4 : 1.5);
+        if(isSel || j === Math.floor(n / 2)){
+          P.label(j, Math.min(1.08, h + 0.07), String(cj), isSel ? AMBER2 : INDIGO, 'center');
+        }
+      }
+      var cnk = _comb(n, k);
+      var sb = _comb(n + k - 1, k - 1);
+      var nonAdj = _comb(n - k + 1, k);
+      return {
+        r0: String(cnk),
+        r1: String(sb),
+        r2: String(nonAdj),
+        desc: 'Row n = ' + n + ': sum of row = 2^' + n + ' = ' + Math.pow(2, n),
+        rows: [
+          ['Subsets C(n, k)', String(cnk)],
+          ['Stars & Bars C(n+k−1, k−1)', String(sb)],
+          ['Non-Adjacent C(n−k+1, k)', String(nonAdj)],
+          ['Row Total 2ⁿ', String(Math.pow(2, n))]
+        ]
+      };
+    }
+  });
+
+  /* 5. Ch 5: Markov Parity Recurrence & Catalan Trajectory Lab */
+  _mountOlympiadLab({
+    canvasId: 'olrecurrenceprobabilityExCanvas', dataBtnId: 'olrecurrenceprobabilityExCanvas_dataBtn',
+    view: { xmin: -0.3, xmax: 8.5, ymin: -0.05, ymax: 1.08 },
+    a0: 5, b0: 0.25, d0: 0, d1: 2,
+    prompt: {
+      en: 'Set flip probability q = 0.75 so (1 − 2q) = −0.5 < 0 and observe damped alternating parity oscillation!',
+      ar: 'اضبط احتمال الانقلاب q = 0.75 ليصبح الأساس (1 − 2q) = −0.5 سالباً ولاحظ التذبذب المتخامد حول 0.5!'
+    },
+    check: function(n, q){ return Math.abs(q - 0.75) < 0.03; },
+    render: function(P, ctx, n, q){
+      n = Math.round(n);
+      P.hline(0.5, AMBER2, [5, 4], 1.5);
+      P.label(7.4, 0.55, 'Equilibrium 1/2', AMBER2);
+      var prevX = 0, prevY = 1;
+      for(var m = 0; m <= 8; m++){
+        var pm = 0.5 * (1 + Math.pow(1 - 2 * q, m));
+        if(m > 0) P.segment(prevX, prevY, m, pm, INDIGO, 2.2);
+        P.dot(m, pm, m === n ? AMBER2 : TEAL, m === n ? 6.5 : 4.5);
+        prevX = m; prevY = pm;
+      }
+      var pn = 0.5 * (1 + Math.pow(1 - 2 * q, n));
+      var eig = Math.pow(1 - 2 * q, n);
+      var cat = Math.round(_comb(2 * n, n) / (n + 1));
+      return {
+        r0: fmt(pn, 4),
+        r1: fmt(eig, 4),
+        r2: String(cat),
+        desc: 'p_n = (1 + (1 − 2q)^n)/2 at n = ' + n + ', q = ' + fmt(q, 2),
+        rows: [
+          ['Step n', String(n)],
+          ['Eigenbase (1 − 2q)', fmt(1 - 2 * q, 2)],
+          ['P(even after n steps)', fmt(pn, 5)],
+          ['Catalan Number C_n', String(cat)]
+        ]
+      };
+    }
+  });
+
+  /* 6. Ch 6: Power of a Point, Secants & External Tangents */
+  _mountOlympiadLab({
+    canvasId: 'oleuclideancirclesExCanvas', dataBtnId: 'oleuclideancirclesExCanvas_dataBtn',
+    view: { xmin: -5.5, xmax: 10, ymin: -5.5, ymax: 5.5, square: true, step: 2 },
+    a0: 6.5, b0: 12, d0: 1, d1: 0,
+    prompt: {
+      en: 'Move P inside circle ω (d = 2.5 < R = 4) and verify that PA · PB stays invariant as θ sweeps!',
+      ar: 'حرّك النقطة P إلى داخل الدائرة (d = 2.5 < 4) وتحقق من ثبات جداء الوترين PA · PB مهما تغيرت الزاوية θ!'
+    },
+    check: function(d, th){ return Math.abs(d - 2.5) < 0.3; },
+    drag: function(wx, wy, s0){
+      if(!s0) return;
+      s0.value = Math.max(0.5, Math.min(9, Math.round(wx * 2) / 2));
+    },
+    render: function(P, ctx, d, deg){
+      var R = 4;
+      P.parametric(function(t){ return R * Math.cos(t); }, function(t){ return R * Math.sin(t); }, 0, 2 * Math.PI, INDIGO, 2.5);
+      P.dot(0, 0, INDIGO, 4.5);
+      P.label(-0.5, -0.5, 'O', INDIGO);
+      P.dot(d, 0, AMBER2, 6);
+      P.label(d + 0.25, -0.55, 'P', AMBER2);
+
+      var rad = deg * Math.PI / 180;
+      var ux = -Math.cos(rad), uy = Math.sin(rad);
+      /* Solve |(d + t*ux, t*uy)|^2 = R^2 => t^2 + 2*d*ux*t + (d^2 - R^2) = 0 */
+      var B = 2 * d * ux, C = d * d - R * R;
+      var disc = B * B - 4 * C;
+      var prodStr = 'No secant hit';
+      if(disc >= 0){
+        var t1 = (-B - Math.sqrt(disc)) / 2;
+        var t2 = (-B + Math.sqrt(disc)) / 2;
+        var ax = d + t1 * ux, ay = t1 * uy;
+        var bx = d + t2 * ux, by = t2 * uy;
+        var farX = Math.abs(t2) > Math.abs(t1) ? bx : ax;
+        var farY = Math.abs(t2) > Math.abs(t1) ? by : ay;
+        P.segment(d, 0, farX, farY, TEAL, 2.2);
+        if(d < R) P.segment(ax, ay, bx, by, TEAL, 2.2);
+        P.dot(ax, ay, TEAL, 5); P.dot(bx, by, TEAL, 5);
+        P.label(ax, ay + 0.45, 'A', TEAL, 'center');
+        P.label(bx, by + 0.45, 'B', TEAL, 'center');
+        prodStr = fmt(Math.abs(t1 * t2), 2);
+      }
+      var tangStr = 'Interior (d < R)';
+      if(d > R){
+        var ptLen = Math.sqrt(d * d - R * R);
+        var tx = (R * R) / d, ty = (R * ptLen) / d;
+        P.segment(d, 0, tx, ty, AMBER2, 2.0, [5, 3]);
+        P.segment(0, 0, tx, ty, MUTED, 1.3, [3, 3]);
+        P.dot(tx, ty, AMBER2, 5);
+        P.label(tx, ty + 0.45, 'T', AMBER2, 'center');
+        tangStr = fmt(ptLen, 2);
+      }
+      var pow = d * d - R * R;
+      return {
+        r0: fmt(pow, 2),
+        r1: prodStr,
+        r2: tangStr,
+        desc: 'Pow_ω(P) = d² − 4² = ' + fmt(pow, 2),
+        rows: [
+          ['Circle Radius R', '4.00'],
+          ['Distance d = OP', fmt(d, 2)],
+          ['Signed Power d² − R²', fmt(pow, 2)],
+          ['Unsigned Secant |PA·PB|', prodStr],
+          ['Tangent Length PT', tangStr]
+        ]
+      };
+    }
+  });
+
+  /* 7. Ch 7: Ceva Concurrence, Mass Points & Stewart Cevian Lab */
+  _mountOlympiadLab({
+    canvasId: 'oltrianglecenterstrigExCanvas', dataBtnId: 'oltrianglecenterstrigExCanvas_dataBtn',
+    view: { xmin: -5, xmax: 6, ymin: -3, ymax: 6.5, square: true, step: 2 },
+    a0: 0.40, b0: 0.50, d0: 2, d1: 2,
+    prompt: {
+      en: 'Set BD/BC = 0.50 and CE/CA = 0.50 to concur all three medians at the centroid G with [GBC]/[ABC] = 1/3!',
+      ar: 'اضبط BD/BC = 0.50 وCE/CA = 0.50 لتلتقي المتوسطات الثلاثة في مركز الثقل G وتصبح نسبة المساحة 1/3!'
+    },
+    check: function(u, v){ return Math.abs(u - 0.5) < 0.03 && Math.abs(v - 0.5) < 0.03; },
+    render: function(P, ctx, u, v){
+      var A = [1, 5.4], B = [-4, -2], C = [5, -2];
+      var D = [B[0] + u * (C[0] - B[0]), B[1] + u * (C[1] - B[1])];
+      var E = [C[0] + v * (A[0] - C[0]), C[1] + v * (A[1] - C[1])];
+      /* Ceva: (u/(1-u)) * (v/(1-v)) * (AF/FB) = 1 => AF/FB = ((1-u)(1-v))/(u*v) */
+      var ratioAF = ((1 - u) * (1 - v)) / (u * v);
+      var w = ratioAF / (1 + ratioAF);
+      var F = [A[0] + w * (B[0] - A[0]), A[1] + w * (B[1] - A[1])];
+
+      /* Mass points for exact concurrence P: mB*(u) = mC*(1-u), mC*v = mA*(1-v) */
+      var mC = 1, mB = (1 - u) / u, mA = v / (1 - v);
+      var mSum = mA + mB + mC;
+      var Px = (mA * A[0] + mB * B[0] + mC * C[0]) / mSum;
+      var Py = (mA * A[1] + mB * B[1] + mC * C[1]) / mSum;
+
+      P.polygon([B, C, [Px, Py]], 'rgba(200,144,42,0.22)', 'none', 0);
+      P.polygon([A, B, C], 'rgba(30,58,110,0.06)', INDIGO, 2.4);
+      P.segment(A[0], A[1], D[0], D[1], TEAL, 1.9);
+      P.segment(B[0], B[1], E[0], E[1], TEAL, 1.9);
+      P.segment(C[0], C[1], F[0], F[1], AMBER2, 1.9, [5, 3]);
+      P.dot(D[0], D[1], TEAL, 4.5); P.dot(E[0], E[1], TEAL, 4.5); P.dot(F[0], F[1], AMBER2, 4.5);
+      P.dot(Px, Py, RED, 5.5);
+      P.label(A[0], A[1] + 0.4, 'A', INDIGO, 'center');
+      P.label(B[0] - 0.35, B[1] - 0.3, 'B', INDIGO, 'center');
+      P.label(C[0] + 0.35, C[1] - 0.3, 'C', INDIGO, 'center');
+      P.label(D[0], D[1] - 0.45, 'D', TEAL, 'center');
+      P.label(E[0] + 0.35, E[1] + 0.2, 'E', TEAL);
+      P.label(F[0] - 0.45, F[1] + 0.2, 'F', AMBER2);
+      P.label(Px + 0.25, Py + 0.3, 'P', RED);
+
+      var adLen = Math.sqrt((A[0] - D[0]) * (A[0] - D[0]) + (A[1] - D[1]) * (A[1] - D[1]));
+      var areaFrac = mA / mSum;
+      return {
+        r0: fmt(ratioAF, 2) + ' : 1',
+        r1: fmt(adLen, 2),
+        r2: fmt(areaFrac, 3),
+        desc: 'Ceva Product = (BD/DC)(CE/EA)(AF/FB) = 1.000',
+        rows: [
+          ['BD : DC', fmt(u / (1 - u), 2) + ' : 1'],
+          ['CE : EA', fmt(v / (1 - v), 2) + ' : 1'],
+          ['Locked AF : FB', fmt(ratioAF, 2) + ' : 1'],
+          ['Stewart Cevian AD', fmt(adLen, 3)],
+          ['Area Ratio [PBC]/[ABC]', fmt(areaFrac, 4)]
+        ]
+      };
+    }
+  });
+
+  /* 8. Ch 8: Bouton's XOR Nim-Sum Game Lab (A, B, 10) */
+  _mountOlympiadLab({
+    canvasId: 'olinvariantsextremalExCanvas', dataBtnId: 'olinvariantsextremalExCanvas_dataBtn',
+    view: { xmin: 0, xmax: 4.5, ymin: -1, ymax: 17 },
+    a0: 7, b0: 12, d0: 0, d1: 0,
+    prompt: {
+      en: 'Adjust Heap 1 (A) and Heap 2 (B) to create a losing P-position where A ⊕ B ⊕ 10 = 0 (e.g. A = 6, B = 12 or A = 2, B = 8)!',
+      ar: 'اضبط الكومة الأولى A والثانية B للوصول إلى موضع خاسر يحقق المجموع الثنائي A ⊕ B ⊕ 10 = 0 (مثل A = 2, B = 8)!'
+    },
+    check: function(A, B){ return ((Math.round(A) ^ Math.round(B) ^ 10) === 0); },
+    render: function(P, ctx, A, B){
+      A = Math.round(A); B = Math.round(B);
+      var C = 10;
+      var heaps = [A, B, C], cols = [INDIGO, TEAL, AMBER2], names = ['A=' + A, 'B=' + B, 'C=10'];
+      for(var i = 0; i < 3; i++){
+        var x = 0.9 + i * 1.25;
+        for(var s = 0; s < heaps[i]; s++){
+          P.polygon([[x - 0.35, s + 0.1], [x + 0.35, s + 0.1], [x + 0.35, s + 0.85], [x - 0.35, s + 0.85]],
+            i === 2 ? 'rgba(200,144,42,0.30)' : 'rgba(30,58,110,0.22)', cols[i], 1.4);
+        }
+        P.label(x, heaps[i] + 0.65, names[i] + ' (' + heaps[i].toString(2) + '₂)', cols[i], 'center');
+      }
+      var nim = A ^ B ^ C;
+      var verdict = (nim === 0) ? 'Losing (P-Position)' : 'Winning (N-Position)';
+      var move = 'None (Opponent wins)';
+      if(nim !== 0){
+        if((A ^ nim) < A) move = 'Heap A: ' + A + ' → ' + (A ^ nim);
+        else if((B ^ nim) < B) move = 'Heap B: ' + B + ' → ' + (B ^ nim);
+        else if((C ^ nim) < C) move = 'Heap C: 10 → ' + (C ^ nim);
+      }
+      return {
+        r0: nim + ' (' + nim.toString(2) + '₂)',
+        r1: verdict,
+        r2: move,
+        desc: A + ' ⊕ ' + B + ' ⊕ 10 = ' + nim,
+        rows: [
+          ['Heap A (binary)', A + ' (' + A.toString(2) + '₂)'],
+          ['Heap B (binary)', B + ' (' + B.toString(2) + '₂)'],
+          ['Heap C (binary)', '10 (1010₂)'],
+          ['Nim-Sum X', String(nim)],
+          ['Optimal Move', move]
+        ]
+      };
+    }
+  });
+
+  /* 9. Ch 9 (NSMO of KSA Stage 1 & 2): Modular Star-Polygon Clock Lab */
+  _mountOlympiadLab({
+    canvasId: 'olnsmostage12ExCanvas', dataBtnId: 'olnsmostage12ExCanvas_dataBtn',
+    view: { xmin: -5, xmax: 5, ymin: -5, ymax: 5, square: true, step: 2 },
+    noGrid: true,
+    a0: 15, b0: 6, d0: 0, d1: 0,
+    prompt: {
+      en: 'Keep modulus m = 15 and choose a step jump a coprime to 15 (such as a = 7 or a = 8) so a single star polygon visits ALL 15 residues!',
+      ar: 'حافظ على المقاس m = 15 واختر قفزة a أولية نسبياً مع 15 (مثل a = 7 أو a = 8) لتزور النجمة جميع البواقي الـ 15!'
+    },
+    check: function(m, a){ return Math.round(m) === 15 && _gcd(m, a) === 1; },
+    render: function(P, ctx, m, a){
+      m = Math.round(m); a = Math.round(a);
+      var R = 3.9, g = _gcd(a, m), ord = Math.round(m / g);
+      P.parametric(function(t){ return R * Math.cos(t); }, function(t){ return R * Math.sin(t); }, 0, 2 * Math.PI, LINE, 1.4);
+
+      function pt(k){
+        var ang = Math.PI / 2 - (2 * Math.PI * (k % m)) / m;
+        return [R * Math.cos(ang), R * Math.sin(ang)];
+      }
+      var cur = 0;
+      for(var step = 0; step < ord; step++){
+        var nxt = (cur + a) % m;
+        var p1 = pt(cur), p2 = pt(nxt);
+        P.segment(p1[0], p1[1], p2[0], p2[1], g === 1 ? TEAL : INDIGO, 2.1);
+        cur = nxt;
+      }
+      for(var k = 0; k < m; k++){
+        var pk = pt(k);
+        var hit = (k % g === 0);
+        P.dot(pk[0], pk[1], hit ? AMBER2 : MUTED, hit ? 5.2 : 3.5);
+        var lk = [1.14 * pk[0], 1.14 * pk[1]];
+        P.label(lk[0], lk[1], String(k), hit ? INK : MUTED, 'center');
+      }
+      var full = (g === 1) ? 'Yes (Generator!)' : ('No (' + g + ' cycles)');
+      return {
+        r0: String(g),
+        r1: ord + ' / ' + m,
+        r2: full,
+        desc: 'Orbit of +' + a + ' (mod ' + m + ') has length m/gcd(a,m) = ' + ord,
+        rows: [
+          ['Modulus m', String(m)],
+          ['Step Jump a', String(a)],
+          ['Cycles gcd(a, m)', String(g)],
+          ['Orbit Length m / gcd(a, m)', String(ord)],
+          ['Full Residue Coverage', full]
+        ]
+      };
+    }
+  });
+
+  /* 10. Ch 10 (NSMO of KSA National Finals): Orthocenter Reflections & AH² + BC² = 4R² */
+  _mountOlympiadLab({
+    canvasId: 'olnsmonationalfinalsExCanvas', dataBtnId: 'olnsmonationalfinalsExCanvas_dataBtn',
+    view: { xmin: -5.4, xmax: 5.4, ymin: -5.4, ymax: 5.4, square: true, step: 2 },
+    a0: 80, b0: 55, d0: 0, d1: 0,
+    prompt: {
+      en: 'Sweep vertex A across the circumcircle (e.g. θ_A = 110°) and verify that AH² + BC² remains locked at 4R² = 64.00!',
+      ar: 'حرّك الرأس A على الدائرة المحيطة (مثلاً θ_A = 110°) وتحقق من بقاء المجموع AH² + BC² ثابتاً عند 4R² = 64.00!'
+    },
+    check: function(thA){ return Math.abs(thA - 110) < 3; },
+    render: function(P, ctx, thA, phi){
+      var R = 4;
+      var aAng = thA * Math.PI / 180;
+      var bAng = (-90 - phi) * Math.PI / 180;
+      var cAng = (-90 + phi) * Math.PI / 180;
+      var A = [R * Math.cos(aAng), R * Math.sin(aAng)];
+      var B = [R * Math.cos(bAng), R * Math.sin(bAng)];
+      var C = [R * Math.cos(cAng), R * Math.sin(cAng)];
+      /* Sylvester's Vector Identity when circumcenter O = (0,0): H = A + B + C! */
+      var H = [A[0] + B[0] + C[0], A[1] + B[1] + C[1]];
+      /* Foot of altitude from A onto horizontal chord BC (y = B[1] = C[1]): */
+      var D = [A[0], B[1]];
+      var HD = [2 * D[0] - H[0], 2 * D[1] - H[1]];
+
+      P.parametric(function(t){ return R * Math.cos(t); }, function(t){ return R * Math.sin(t); }, 0, 2 * Math.PI, INDIGO2, 1.8, [4, 3]);
+      P.polygon([A, B, C], 'rgba(30,58,110,0.08)', INDIGO, 2.4);
+      P.segment(A[0], A[1], HD[0], HD[1], TEAL, 1.9, [4, 3]);
+      P.segment(A[0], A[1], H[0], H[1], AMBER2, 2.3);
+      P.dot(0, 0, INDIGO, 4.5); P.label(0.25, 0.25, 'O', INDIGO);
+      P.dot(A[0], A[1], INDIGO, 5.5); P.label(A[0], A[1] + 0.45, 'A', INDIGO, 'center');
+      P.dot(B[0], B[1], INDIGO, 5); P.label(B[0] - 0.35, B[1] - 0.35, 'B', INDIGO, 'center');
+      P.dot(C[0], C[1], INDIGO, 5); P.label(C[0] + 0.35, C[1] - 0.35, 'C', INDIGO, 'center');
+      P.dot(H[0], H[1], RED, 5.5); P.label(H[0] + 0.3, H[1] + 0.2, 'H', RED);
+      P.dot(HD[0], HD[1], TEAL, 5.5); P.label(HD[0], HD[1] - 0.45, 'H_D ∈ (ABC)', TEAL, 'center');
+
+      var ah = Math.sqrt((A[0] - H[0]) * (A[0] - H[0]) + (A[1] - H[1]) * (A[1] - H[1]));
+      var bc = Math.sqrt((B[0] - C[0]) * (B[0] - C[0]) + (B[1] - C[1]) * (B[1] - C[1]));
+      var radHD = Math.sqrt(HD[0] * HD[0] + HD[1] * HD[1]);
+      var inv = ah * ah + bc * bc;
+      return {
+        r0: '(' + fmt(ah, 2) + ', ' + fmt(bc, 2) + ')',
+        r1: fmt(inv, 2) + ' = 4R²',
+        r2: fmt(radHD, 2) + ' = R',
+        desc: 'Sylvester OH⃗ = OA⃗ + OB⃗ + OC⃗ ⇒ AH² + BC² = ' + fmt(inv, 2),
+        rows: [
+          ['Circumradius R', '4.00'],
+          ['Distance AH', fmt(ah, 3)],
+          ['Opposite Side BC', fmt(bc, 3)],
+          ['Invariant AH² + BC²', fmt(inv, 2) + ' (= 64.00)'],
+          ['Distance |OH_D|', fmt(radHD, 3) + ' (lies on ω!)']
+        ]
+      };
+    }
+  });
+
+  /* 11. Ch 11 (KAUST KMC Qualifier): Blocked-Lattice Path Counting Lab */
+  _mountOlympiadLab({
+    canvasId: 'olkaustkmcqualifierExCanvas', dataBtnId: 'olkaustkmcqualifierExCanvas_dataBtn',
+    view: { xmin: -0.6, xmax: 6.6, ymin: -0.6, ymax: 4.6, square: true, step: 1 },
+    a0: 3, b0: 2, d0: 0, d1: 0,
+    prompt: {
+      en: 'Place the obstacle at the center (b_x, b_y) = (3, 2) vs near a corner (1, 3) to see where blocking destroys the most KMC paths!',
+      ar: 'قارن وضع العائق في المركز (3, 2) بموضعه قرب الركن (1, 3) لمعرفة أين يحجب العائق أكبر عدد من المسارات!'
+    },
+    check: function(bx, by){ return Math.round(bx) === 1 && Math.round(by) === 3; },
+    drag: function(wx, wy, s0, s1){
+      if(!s0 || !s1) return;
+      s0.value = Math.max(1, Math.min(5, Math.round(wx)));
+      s1.value = Math.max(1, Math.min(3, Math.round(wy)));
+    },
+    render: function(P, ctx, bx, by){
+      bx = Math.round(bx); by = Math.round(by);
+      var dp = [];
+      for(var x = 0; x <= 6; x++){
+        dp[x] = [];
+        for(var y = 0; y <= 4; y++){
+          if(x === bx && y === by) dp[x][y] = 0;
+          else if(x === 0 && y === 0) dp[x][y] = 1;
+          else dp[x][y] = (x > 0 ? dp[x-1][y] : 0) + (y > 0 ? dp[x][y-1] : 0);
+        }
+      }
+      for(var gx = 0; gx <= 6; gx++){
+        P.segment(gx, 0, gx, 4, LINE, 1.4);
+      }
+      for(var gy = 0; gy <= 4; gy++){
+        P.segment(0, gy, 6, gy, LINE, 1.4);
+      }
+      for(var ix = 0; ix <= 6; ix++){
+        for(var iy = 0; iy <= 4; iy++){
+          var isBlk = (ix === bx && iy === by);
+          P.dot(ix, iy, isBlk ? RED : ((ix === 6 && iy === 4) ? TEAL : INDIGO), isBlk ? 7 : 4.2);
+          if(isBlk) P.label(ix, iy + 0.35, '✕', RED, 'center');
+          else if((ix + iy) % 2 === 0 || (ix === 6 && iy === 4)){
+            P.label(ix, iy + 0.28, String(dp[ix][iy]), (ix === 6 && iy === 4) ? TEAL : INK, 'center');
+          }
+        }
+      }
+      var tot = _comb(10, 4);
+      var blk = _comb(bx + by, by) * _comb((6 - bx) + (4 - by), 4 - by);
+      var valid = tot - blk;
+      return {
+        r0: String(tot),
+        r1: String(blk),
+        r2: String(valid),
+        desc: 'Valid paths = C(10,4) − C(' + (bx+by) + ',' + by + ')·C(' + (10-bx-by) + ',' + (4-by) + ') = ' + valid,
+        rows: [
+          ['Unrestricted Paths C(10,4)', String(tot)],
+          ['Paths Reaching (' + bx + ',' + by + ')', String(_comb(bx + by, by))],
+          ['Continuations to (6,4)', String(_comb(10 - bx - by, 4 - by))],
+          ['Blocked Paths Subtracted', String(blk)],
+          ['Surviving Valid Paths', String(valid)]
+        ]
+      };
+    }
+  });
+
+  /* 12. Ch 12 (KAUST Campus Finals & Academy): Vector Cauchy-Schwarz & Lagrange Gap */
+  _mountOlympiadLab({
+    canvasId: 'olkaustfinalsacademyExCanvas', dataBtnId: 'olkaustfinalsacademyExCanvas_dataBtn',
+    view: { xmin: -6.5, xmax: 6.5, ymin: -1.2, ymax: 6.8, square: true, step: 2 },
+    a0: 65, b0: 20, d0: 0, d1: 0,
+    prompt: {
+      en: 'Align the two vectors (α = β, e.g. both at 45°) so the Lagrange parallelogram collapses to area 0 and Cauchy-Schwarz hits exact equality!',
+      ar: 'اجعل المتجهين على استقامة واحدة (α = β = 45°) لتتلاشى مساحة متوازي الأضلاع إلى الصفر وتتحقق مساواة كوشي-شوارتز!'
+    },
+    check: function(a, b){ return Math.abs(a - b) < 2; },
+    render: function(P, ctx, aDeg, bDeg){
+      var ru = 3.6, rv = 2.8;
+      var a = aDeg * Math.PI / 180, b = bDeg * Math.PI / 180;
+      var ux = ru * Math.cos(a), uy = ru * Math.sin(a);
+      var vx = rv * Math.cos(b), vy = rv * Math.sin(b);
+
+      P.polygon([[0, 0], [ux, uy], [ux + vx, uy + vy], [vx, vy]], 'rgba(200,144,42,0.22)', AMBER2, 1.5);
+      P.arrow(0, 0, ux, uy, INDIGO, 2.6);
+      P.arrow(0, 0, vx, vy, TEAL, 2.6);
+      P.label(ux * 1.08, uy * 1.08 + 0.15, 'u', INDIGO, 'center');
+      P.label(vx * 1.08, vy * 1.08 + 0.15, 'v', TEAL, 'center');
+
+      var dot = ux * vx + uy * vy;
+      var prod = ru * rv;
+      var cross = ux * vy - uy * vx;
+      var gap = cross * cross;
+      return {
+        r0: fmt(Math.abs(dot), 3),
+        r1: fmt(prod, 3),
+        r2: fmt(gap, 3),
+        desc: '‖u‖²‖v‖² − (u·v)² = (u₁v₂ − u₂v₁)² = ' + fmt(gap, 3),
+        rows: [
+          ['|u · v|', fmt(Math.abs(dot), 4)],
+          ['‖u‖ · ‖v‖', fmt(prod, 4)],
+          ['Parallelogram Area |u × v|', fmt(Math.abs(cross), 4)],
+          ['Lagrange Gap |u × v|²', fmt(gap, 4)],
+          ['Equality Status', gap < 0.01 ? 'EXACT EQUALITY (Collinear!)' : 'Strict Inequality']
+        ]
+      };
+    }
+  });
+
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
   window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_oltrianglecenterstrig_trig6Canvas', dataBtnId: 'uge_oltrianglecenterstrig_trig6DataBtn', prefix: 'uge_oltrianglecenterstrig_trig6' });
   window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_oltrianglecenterstrig_invtrig6Canvas', dataBtnId: 'uge_oltrianglecenterstrig_invtrig6DataBtn', prefix: 'uge_oltrianglecenterstrig_invtrig6' });

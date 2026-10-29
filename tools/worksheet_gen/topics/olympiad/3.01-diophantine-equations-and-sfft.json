@@ -1,192 +1,144 @@
 {
   "track": "olympiad",
   "num": "3.01",
+  "slug": "diophantine-equations-and-sfft",
   "title": "Diophantine Equations, SFFT, Bezout & Floor Functions",
-  "sub": null,
+  "sub": "Core International Olympiad Pillars",
   "sections": [
     {
       "heading": "Diophantine Equations, SFFT, Bezout & Floor Functions Practice Exercises",
       "questions": [
         {
-          "q": "The coordinate diagram shows the parabolic curve \\( f_1(x) = x^2 - 10x + 38 \\) in the domain of Diophantine Equations, SFFT & Floor Functions. By completing the square \\( f_1(x) = (x - h)^2 + k \\), find the sum \\( k + f_1(7) \\).",
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the bilinear Diophantine equation \\[ xy + 1x + 2y = 10 \\] (corresponding to positive lattice points on the plotted hyperbola)?",
           "choices": [
-            "\\( 35 \\)",
-            "\\( 17 \\)",
-            "\\( 30 \\)",
-            "\\( 28 \\)"
+            "\\( 6 \\)",
+            "\\( 5 \\)",
+            "\\( 3 \\)",
+            "\\( 2 \\)"
           ],
           "correct": 2,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Complete the square: \\( x^2 - 10x + 38 = (x - 5)^2 - 25 + 38 = (x - 5)^2 + 13 \\), giving minimum value \\( k = 13 \\). **[M1]**\n2. Evaluate at \\( x = 7 \\): \\( f_1(7) = (2)^2 + 13 = 17 \\). **[M1]**\n3. Sum the two quantities: \\( k + f_1(7) = 13 + 17 = 30 \\). **[A1]**\n- **Final Verified Answer:** \\( 30 \\).",
-          "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
-              }
-            ]
-          }
+          "answer": "Add \\( 1\\cdot 2 = 2 \\) to both sides (SFFT): \\( (x + 2)(y + 1) = 10 + 2 = 12 \\). For \\( x, y \\ge 1 \\), we need \\( d = x + 2 \\ge 3 \\) and \\( 12/d = y + 1 \\ge 2 \\). Counting divisors \\( d \\mid 12 \\) satisfying both inequalities yields exactly \\( 3 \\) positive integer pairs."
         },
         {
-          "q": "A mathematical model in Diophantine Equations, SFFT & Floor Functions is defined by the cubic function \\( y_2(x) = 4x^3 - 5x^2 + 15x - 10 \\). Calculate the exact gradient of the tangent to the curve at the point where \\( x = 3 \\).",
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the bilinear Diophantine equation \\[ xy + 2x + 3y = 18 \\] (corresponding to positive lattice points on the plotted hyperbola)?",
           "choices": [
-            "\\( 123 \\)",
-            "\\( 78 \\)",
-            "\\( 41 \\)",
-            "\\( 93 \\)"
-          ],
-          "correct": 3,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Differentiate term by term using the power rule: \\( \\frac{\\mathrm{d}y}{\\mathrm{d}x} = 12x^2 - 10x + 15 \\). **[M1]**\n2. Substitute \\( x = 3 \\): \\( \\left.\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right|_{x=3} = 12(9) - 10(3) + 15 = 93 \\). **[M1][A1]**\n- **Final Verified Answer:** \\( 93 \\)."
-        },
-        {
-          "q": "In Diophantine Equations, SFFT & Floor Functions, two displacement vectors are given by \\( \\mathbf{u}_{3} = \\langle 5, -8 \\rangle \\) and \\( \\mathbf{v}_{3} = \\langle 9, 7 \\rangle \\). Compute the exact scalar value of \\( \\mathbf{u}_{3} \\cdot \\mathbf{v}_{3} + \\|\\mathbf{u}_{3}\\|^2 \\).",
-          "choices": [
-            "\\( 78 \\)",
-            "\\( -11 \\)",
-            "\\( 89 \\)",
-            "\\( 190 \\)"
-          ],
-          "correct": 0,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Compute the inner product: \\( \\mathbf{u}_{3} \\cdot \\mathbf{v}_{3} = (5)(9) + (-8)(7) = 45 + (-56) = -11 \\). **[M1]**\n2. Compute the squared norm: \\( \\|\\mathbf{u}_{3}\\|^2 = 5^2 + (-8)^2 = 89 \\). **[M1]**\n3. Combine: \\( -11 + 89 = 78 \\). **[A1]**\n- **Final Verified Answer:** \\( 78 \\).",
-          "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (-1))*(x - (-1)) + (1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "4*x - 5",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": -1,
-                "y": 1,
-                "label": "(-1, 1)"
-              }
-            ]
-          }
-        },
-        {
-          "q": "The linear growth profile shown in the diagram for Diophantine Equations, SFFT & Floor Functions follows an arithmetic progression with first term \\( a_1 = 6 \\) and common difference \\( d = 6 \\). Find the exact sum \\( S_{15} \\) of the first \\( 15 \\) terms.",
-          "choices": [
-            "\\( 90 \\)",
-            "\\( 720 \\)",
-            "\\( 810 \\)",
-            "\\( 1350 \\)"
+            "\\( 8 \\)",
+            "\\( 3 \\)",
+            "\\( 5 \\)",
+            "\\( 2 \\)"
           ],
           "correct": 1,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Use the sum formula for an arithmetic series: \\( S_n = \\frac{n}{2}[2a_1 + (n - 1)d] \\). **[M1]**\n2. Substitute \\( n = 15, a_1 = 6, d = 6 \\): \\( S_{15} = \\frac{15}{2}[12 + 14 \\times 6] = \\frac{15}{2} \\times 96 = 720 \\). **[M1][A1]**\n- **Final Verified Answer:** \\( 720 \\)."
+          "answer": "Add \\( 2\\cdot 3 = 6 \\) to both sides (SFFT): \\( (x + 3)(y + 2) = 18 + 6 = 24 \\). For \\( x, y \\ge 1 \\), we need \\( d = x + 3 \\ge 4 \\) and \\( 24/d = y + 2 \\ge 3 \\). Counting divisors \\( d \\mid 24 \\) satisfying both inequalities yields exactly \\( 3 \\) positive integer pairs."
         },
         {
-          "q": "In Diophantine Equations, SFFT & Floor Functions, evaluate the exact definite integral \\( I_5 = \\int_0^{2} (18x^2 + 20x)\\,\\mathrm{d}x \\).",
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the bilinear Diophantine equation \\[ xy + 1x + 3y = 17 \\] (corresponding to positive lattice points on the plotted hyperbola)?",
           "choices": [
-            "\\( 112 \\)",
-            "\\( 108 \\)",
-            "\\( 88 \\)",
-            "\\( 45 \\)"
-          ],
-          "correct": 2,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Integrate term by term: \\( \\int (18x^2 + 20x)\\,\\mathrm{d}x = \\left[6x^3 + 10x^2\\right]_0^{2} \\). **[M1]**\n2. Substitute the upper and lower limits: \\( (6(2)^3 + 10(2)^2) - 0 = 48 + 40 = 88 \\). **[M1][A1]**\n- **Final Verified Answer:** \\( 88 \\).",
-          "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
-              }
-            ]
-          }
-        },
-        {
-          "q": "In Diophantine Equations, SFFT & Floor Functions, consider the quadratic function \\( f_6(x) = x^2 - 12x + 121 \\). Express \\( f_6(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and compute the exact value of \\( k + f_6(13) \\).",
-          "choices": [
-            "\\( 225 \\)",
-            "\\( 134 \\)",
-            "\\( 212 \\)",
-            "\\( 219 \\)"
-          ],
-          "correct": 3,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Complete the square: \\( x^2 - 12x + 121 = (x - 6)^2 - 36 + 121 = (x - 6)^2 + 85 \\), giving minimum value \\( k = 85 \\). **[M1]**\n2. Evaluate at \\( x = 13 \\): \\( f_6(13) = (7)^2 + 85 = 134 \\). **[M1]**\n3. Sum the two quantities: \\( k + f_6(13) = 85 + 134 = 219 \\). **[A1]**\n- **Final Verified Answer:** \\( 219 \\)."
-        },
-        {
-          "q": "The graph illustrates the cubic model \\( y_7(x) = 4x^3 - 6x^2 + 33x - 17 \\) studied in Diophantine Equations, SFFT & Floor Functions. Find the instantaneous gradient \\( \\frac{\\mathrm{d}y}{\\mathrm{d}x} \\) of the tangent to the curve at \\( x = 8 \\).",
-          "choices": [
-            "\\( 705 \\)",
-            "\\( 801 \\)",
-            "\\( 672 \\)",
-            "\\( 117 \\)"
+            "\\( 3 \\)",
+            "\\( 6 \\)",
+            "\\( 5 \\)",
+            "\\( 2 \\)"
           ],
           "correct": 0,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Differentiate term by term using the power rule: \\( \\frac{\\mathrm{d}y}{\\mathrm{d}x} = 12x^2 - 12x + 33 \\). **[M1]**\n2. Substitute \\( x = 8 \\): \\( \\left.\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right|_{x=8} = 12(64) - 12(8) + 33 = 705 \\). **[M1][A1]**\n- **Final Verified Answer:** \\( 705 \\)."
+          "answer": "Add \\( 1\\cdot 3 = 3 \\) to both sides (SFFT): \\( (x + 3)(y + 1) = 17 + 3 = 20 \\). For \\( x, y \\ge 1 \\), we need \\( d = x + 3 \\ge 4 \\) and \\( 20/d = y + 1 \\ge 2 \\). Counting divisors \\( d \\mid 20 \\) satisfying both inequalities yields exactly \\( 3 \\) positive integer pairs."
         },
         {
-          "q": "In Diophantine Equations, SFFT & Floor Functions, two displacement vectors are given by \\( \\mathbf{u}_{8} = \\langle 6, -7 \\rangle \\) and \\( \\mathbf{v}_{8} = \\langle 8, 5 \\rangle \\). Compute the exact scalar value of \\( \\mathbf{u}_{8} \\cdot \\mathbf{v}_{8} + \\|\\mathbf{u}_{8}\\|^2 \\).",
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the bilinear Diophantine equation \\[ xy + 2x + 5y = 26 \\] (corresponding to positive lattice points on the plotted hyperbola)?",
+          "choices": [
+            "\\( 9 \\)",
+            "\\( 5 \\)",
+            "\\( 2 \\)",
+            "\\( 3 \\)"
+          ],
+          "correct": 3,
+          "answer": "Add \\( 2\\cdot 5 = 10 \\) to both sides (SFFT): \\( (x + 5)(y + 2) = 26 + 10 = 36 \\). For \\( x, y \\ge 1 \\), we need \\( d = x + 5 \\ge 6 \\) and \\( 36/d = y + 2 \\ge 3 \\). Counting divisors \\( d \\mid 36 \\) satisfying both inequalities yields exactly \\( 3 \\) positive integer pairs."
+        },
+        {
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the unit-fraction equation \\[ \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{6}? \\]",
+          "choices": [
+            "\\( 4 \\)",
+            "\\( 5 \\)",
+            "\\( 9 \\)",
+            "\\( 8 \\)"
+          ],
+          "correct": 2,
+          "answer": "Clearing denominators gives \\( 6(x + y) = xy \\iff xy - 6x - 6y = 0 \\). Adding \\( 6^2 = 36 \\) via SFFT gives \\( (x - 6)(y - 6) = 36 \\). Since \\( x, y > 6 \\) for all positive solutions, \\( x - 6 \\) ranges bijectively over all positive divisors of \\( 6^2 = 36 \\), giving \\( \\tau(36) = 9 \\) ordered pairs."
+        },
+        {
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the unit-fraction equation \\[ \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{8}? \\]",
+          "choices": [
+            "\\( 4 \\)",
+            "\\( 7 \\)",
+            "\\( 6 \\)",
+            "\\( 8 \\)"
+          ],
+          "correct": 1,
+          "answer": "Clearing denominators gives \\( 8(x + y) = xy \\iff xy - 8x - 8y = 0 \\). Adding \\( 8^2 = 64 \\) via SFFT gives \\( (x - 8)(y - 8) = 64 \\). Since \\( x, y > 8 \\) for all positive solutions, \\( x - 8 \\) ranges bijectively over all positive divisors of \\( 8^2 = 64 \\), giving \\( \\tau(64) = 7 \\) ordered pairs."
+        },
+        {
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the unit-fraction equation \\[ \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{9}? \\]",
+          "choices": [
+            "\\( 5 \\)",
+            "\\( 3 \\)",
+            "\\( 4 \\)",
+            "\\( 6 \\)"
+          ],
+          "correct": 0,
+          "answer": "Clearing denominators gives \\( 9(x + y) = xy \\iff xy - 9x - 9y = 0 \\). Adding \\( 9^2 = 81 \\) via SFFT gives \\( (x - 9)(y - 9) = 81 \\). Since \\( x, y > 9 \\) for all positive solutions, \\( x - 9 \\) ranges bijectively over all positive divisors of \\( 9^2 = 81 \\), giving \\( \\tau(81) = 5 \\) ordered pairs."
+        },
+        {
+          "q": "How many ordered pairs of POSITIVE integers \\( (x, y) \\) satisfy the unit-fraction equation \\[ \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{10}? \\]",
+          "choices": [
+            "\\( 4 \\)",
+            "\\( 5 \\)",
+            "\\( 8 \\)",
+            "\\( 9 \\)"
+          ],
+          "correct": 3,
+          "answer": "Clearing denominators gives \\( 10(x + y) = xy \\iff xy - 10x - 10y = 0 \\). Adding \\( 10^2 = 100 \\) via SFFT gives \\( (x - 10)(y - 10) = 100 \\). Since \\( x, y > 10 \\) for all positive solutions, \\( x - 10 \\) ranges bijectively over all positive divisors of \\( 10^2 = 100 \\), giving \\( \\tau(100) = 9 \\) ordered pairs."
+        },
+        {
+          "q": "Find the LARGEST positive integer \\( n \\) such that \\( n + 2 \\) divides \\( n^2 + 3n + 15 \\).",
           "choices": [
             "\\( 13 \\)",
-            "\\( 98 \\)",
-            "\\( 85 \\)",
-            "\\( 168 \\)"
+            "\\( 4 \\)",
+            "\\( 11 \\)",
+            "\\( 12 \\)"
+          ],
+          "correct": 2,
+          "answer": "Perform polynomial division by \\( n + 2 \\): \\( n^2 + 3n + 15 = (n + 2)(n + 1) + (2^2 - 3(2) + 15) = (n + 2)(n + 1) + 13 \\). Thus \\( (n + 2) \\mid (n^2 + 3n + 15) \\iff (n + 2) \\mid 13 \\). The largest divisor of \\( 13 \\) is \\( 13 \\) itself, giving \\( n + 2 = 13 \\implies n = 11 \\)."
+        },
+        {
+          "q": "Find the LARGEST positive integer \\( n \\) such that \\( n + 3 \\) divides \\( n^2 + 3n + 17 \\).",
+          "choices": [
+            "\\( 17 \\)",
+            "\\( 14 \\)",
+            "\\( 5 \\)",
+            "\\( 15 \\)"
           ],
           "correct": 1,
-          "answer": "**Mark Scheme & Examiner Solution (Diophantine Equations, SFFT & Floor Functions):**\n1. Compute the inner product: \\( \\mathbf{u}_{8} \\cdot \\mathbf{v}_{8} = (6)(8) + (-7)(5) = 48 + (-35) = 13 \\). **[M1]**\n2. Compute the squared norm: \\( \\|\\mathbf{u}_{8}\\|^2 = 6^2 + (-7)^2 = 85 \\). **[M1]**\n3. Combine: \\( 13 + 85 = 98 \\). **[A1]**\n- **Final Verified Answer:** \\( 98 \\)."
+          "answer": "Perform polynomial division by \\( n + 3 \\): \\( n^2 + 3n + 17 = (n + 3)(n + 0) + (3^2 - 3(3) + 17) = (n + 3)(n + 0) + 17 \\). Thus \\( (n + 3) \\mid (n^2 + 3n + 17) \\iff (n + 3) \\mid 17 \\). The largest divisor of \\( 17 \\) is \\( 17 \\) itself, giving \\( n + 3 = 17 \\implies n = 14 \\)."
+        },
+        {
+          "q": "Find the LARGEST positive integer \\( n \\) such that \\( n + 4 \\) divides \\( n^2 + 3n + 19 \\).",
+          "choices": [
+            "\\( 19 \\)",
+            "\\( 23 \\)",
+            "\\( 7 \\)",
+            "\\( 20 \\)"
+          ],
+          "correct": 0,
+          "answer": "Perform polynomial division by \\( n + 4 \\): \\( n^2 + 3n + 19 = (n + 4)(n + -1) + (4^2 - 3(4) + 19) = (n + 4)(n - 1) + 23 \\). Thus \\( (n + 4) \\mid (n^2 + 3n + 19) \\iff (n + 4) \\mid 23 \\). The largest divisor of \\( 23 \\) is \\( 23 \\) itself, giving \\( n + 4 = 23 \\implies n = 19 \\)."
+        },
+        {
+          "q": "Find the LARGEST positive integer \\( n \\) such that \\( n + 5 \\) divides \\( n^2 + 3n + 21 \\).",
+          "choices": [
+            "\\( 31 \\)",
+            "\\( 10 \\)",
+            "\\( 27 \\)",
+            "\\( 26 \\)"
+          ],
+          "correct": 3,
+          "answer": "Perform polynomial division by \\( n + 5 \\): \\( n^2 + 3n + 21 = (n + 5)(n + -2) + (5^2 - 3(5) + 21) = (n + 5)(n - 2) + 31 \\). Thus \\( (n + 5) \\mid (n^2 + 3n + 21) \\iff (n + 5) \\mid 31 \\). The largest divisor of \\( 31 \\) is \\( 31 \\) itself, giving \\( n + 5 = 31 \\implies n = 26 \\)."
         }
       ]
     }

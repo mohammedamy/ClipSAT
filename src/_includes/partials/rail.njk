@@ -51,11 +51,16 @@
       <span>🎯</span> <span data-i18n="diagnostic.btn">Free Diagnostic</span>
     </button>
   </div>
+  {% if not (chapters and chapters[0] and chapters[0].railGroupLabel) %}
   <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}) }}</p>
+  {% endif %}
   {% for chapter in chapters %}
-  {% if chapter.railGroupLabel %}<p class="rt" style="margin-top:16px">{{ chapter.railGroupLabel }}</p>{% endif %}
+  {% if chapter.railGroupLabel %}<p class="rt rt-sub"{% if not loop.first %} style="margin-top:16px"{% endif %}>{% if chapter.railGroupLabel.en %}{{ bl.text(chapter.railGroupLabel) }}{% else %}{{ chapter.railGroupLabel }}{% endif %}</p>{% endif %}
   <a href="#{{ chapter.id }}" data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
   {% endfor %}
+  {% if chapters and chapters[0] and chapters[0].railGroupLabel %}
+  <p class="rt rt-sub" style="margin-top:16px">{{ bl.text({"en": "Practice & Exams", "ar": "التدريب والاختبارات"}) }}</p>
+  {% endif %}
   {% if practiceSetId %}
   <a href="#{{ practiceSetId }}" data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
   {% endif %}

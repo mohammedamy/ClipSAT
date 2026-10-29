@@ -199,7 +199,9 @@
       { name: 'ETEC / Qiyas English SAAT — Mathematics Achievement CBT', minutes: 25, qCount: 24, calc: false, domains: ['SAAT Logic', 'SAAT Functions', 'SAAT Trigonometry', 'SAAT Differential'] }
     ],
     olympiad: [
-      { name: 'MAA AMC 10/12 & Kangaroo Math — Competition Simulation', minutes: 75, qCount: 25, calc: false, domains: ['Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Bijective Counting', 'Recurrence', 'Circle Geometry', 'Triangle Centers', 'Invariants'] }
+      { name: 'NSMO of KSA (Mawhiba) — National Olympiad CBT Simulation', minutes: 90, qCount: 25, calc: false, domains: ['NSMO of KSA', 'Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Circle Geometry', 'Invariants'] },
+      { name: 'KAUST Mathematics Competition (KMC) — Qualifier & Thuwal Finals CBT', minutes: 90, qCount: 25, calc: false, domains: ['KAUST', 'Olympiad Algebra', 'Recurrence', 'Bijective Counting', 'Triangle Centers'] },
+      { name: 'MAA AMC 10/12 & Kangaroo Math Arabia — Competition Simulation', minutes: 75, qCount: 25, calc: false, domains: ['Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Bijective Counting', 'Recurrence', 'Circle Geometry', 'Triangle Centers', 'Invariants'] }
     ],
     mathai: [
       { name: 'Math for AI & Data Science — Foundations Assessment (Part A: Linear Algebra & Optimization)', minutes: 60, qCount: 20, calc: true, domains: ['Vectors', 'Matrices', 'Gradient Descent'] },
@@ -1150,7 +1152,7 @@
     }
     if(trackId === 'olympiad'){
       var oScore = Math.round(p * 150);
-      return { label: 'Projected AMC / Olympiad Score', value: oScore + ' / 150', badge: oScore >= 100 ? 'AIME Qualifier' : 'Contest Ready' };
+      return { label: 'Projected NSMO / KAUST / Olympiad Score', value: oScore + ' / 150', badge: oScore >= 105 ? 'NSMO / KMC Finalist & AIME Qualifier' : 'Contest Ready' };
     }
     if(trackId === 'mathai'){
       var aiPct = Math.round(p * 100);

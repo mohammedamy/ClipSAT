@@ -1,27 +1,35 @@
 {
   "id": "ol-triangle-centers-trig",
   "chapterNumber": "7",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Ceva's, Menelaus', Stewart's Theorems & Triangle Centers",
-    "ar": "نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة"
+    "en": "Euclidean Geometry II: Triangle Centers, Ceva, Menelaus, Stewart & Olympiad Trigonometry",
+    "ar": "الهندسة الإقليدية (2): مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وحساب المثلثات الأولمبي"
+  },
+  "railLabel": {
+    "en": "Triangle Centers, Ceva & Trig",
+    "ar": "مراكز المثلث وسيفا والمثلثات"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 7 — Olympiad Geometry II",
+    "emoji": "📐",
+    "category": "Core Pillar 7 — Cevians, Triangle Centers & Trigonometry",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
-      "Stewart's Theorem man + dad = bmb + cnc",
-      "Ceva's concurrency & Menelaus' collinearity theorems",
-      "Angle Bisector Theorem & length formula",
-      "Inradius r = A/s, Circumradius R = abc/(4A) & Heron's formula",
-      "Mass points & area-ratio chasing"
+      "Centroid G, Incenter I, Circumcenter O, Orthocenter H & Euler Line",
+      "Ceva's concurrency & Menelaus's collinearity theorems",
+      "Stewart's Theorem (man + dad = bmb + cnc) & Angle Bisector length",
+      "Area relations [ABC] = rs = abc/(4R) & Euler OI² = R(R−2r)",
+      "Extended Law of Sines & All 6 Trig / 6 Inverse Trig Ratios"
     ]
   },
   "content": {
@@ -29,83 +37,217 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Ceva's, Menelaus', Stewart's Theorems & Triangle Centers</strong> (Olympiad Module 7 — Olympiad Geometry II).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة</strong>."
+          "en": "Triangle geometry sits at the heart of every national and international Mathematical Olympiad. While <strong>Ceva’s</strong> and <strong>Menelaus’s Theorems</strong> turn concurrency and collinearity into clean ratio products, <strong>Stewart’s Theorem</strong>, the <strong>Euler Line</strong>, and the <strong>Extended Law of Sines</strong> compute exact cevian lengths, center distances, and trigonometric products across NSMO, KAUST KMC, AMC/AIME, and IMO problems.",
+          "ar": "تتربع هندسة المثلث في قلب جميع الأولمبيادات الوطنية والدولية. فبينما تحوّل مبرهنتا <strong>سيفا (Ceva)</strong> و<strong>مينيلاوس (Menelaus)</strong> مسائل التلاقي والاستقامة إلى جداءات نسبية أنيقة، تتيح <strong>مبرهنة ستيوارت</strong> و<strong>مستقيم أويلر</strong> و<strong>قانون الجيوب المعمم</strong> حساب أطوال القطع الخاصة والمسافات بين المراكز والجداءات المثلثية بدقة متناهية."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 7.1 — Stewart's Theorem, Ceva's Theorem & Triangle Radii Formulas",
-          "ar": "● تعريف 7.1 — نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة"
+          "en": "● Definition 7.1 — Classical Triangle Centers, Radii & The Euler Line",
+          "ar": "● تعريف 7.1 — المراكز الكلاسيكية للمثلث وأنصاف الأقطار ومستقيم أويلر"
         },
         "body": {
-          "en": "<p>In \\( \\triangle ABC \\) with sides \\( a, b, c \\) and semiperimeter \\( s = \\frac{a+b+c}{2} \\): (1) <strong>Heron's Formula & Radii:</strong> \\( [ABC] = \\sqrt{s(s-a)(s-b)(s-c)} = rs = \\frac{abc}{4R} \\); (2) <strong>Stewart's Theorem:</strong> for a cevian of length \\( d \\) dividing side \\( a \\) into segments \\( m \\) and \\( n \\), \\[ b^2 m + c^2 n = a(d^2 + mn); \\] (3) <strong>Ceva's Theorem:</strong> cevians \\( AD, BE, CF \\) are concurrent if and only if \\( \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1 \\).</p>",
-          "ar": "<p>In \\( \\triangle ABC \\) with sides \\( a, b, c \\) and semiperimeter \\( s = \\frac{a+b+c}{2} \\): (1) <strong>Heron's Formula & Radii:</strong> \\( [ABC] = \\sqrt{s(s-a)(s-b)(s-c)} = rs = \\frac{abc}{4R} \\); (2) <strong>Stewart's Theorem:</strong> for a cevian of length \\( d \\) dividing side \\( a \\) into segments \\( m \\) and \\( n \\), \\[ b^2 m + c^2 n = a(d^2 + mn); \\] (3) <strong>Ceva's Theorem:</strong> cevians \\( AD, BE, CF \\) are concurrent if and only if \\( \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1 \\).</p>"
+          "en": "<p>In \\( \\triangle ABC \\) with side lengths \\( a, b, c \\), semiperimeter \\( s = \\frac{a+b+c}{2} \\), and area \\( \\Delta = [ABC] \\):<br>• <strong>Centroid \\( G \\)</strong> (intersection of medians): divides each median in ratio \\( AG : GM_a = 2 : 1 \\).<br>• <strong>Incenter \\( I \\)</strong> (angle bisectors): center of incircle of radius \\( r = \\frac{\\Delta}{s} \\); tangency segments from \\( A, B, C \\) have lengths \\( s-a,\\; s-b,\\; s-c \\).<br>• <strong>Circumcenter \\( O \\)</strong> (perpendicular bisectors): center of circumcircle of radius \\( R = \\frac{abc}{4\\Delta} = \\frac{a}{2\\sin A} \\).<br>• <strong>Orthocenter \\( H \\)</strong> (altitudes): \\( O, G, H \\) are collinear on the <strong>Euler Line</strong> with \\( HG = 2\\,GO \\), \\( OH^2 = 9R^2 - (a^2 + b^2 + c^2) \\), and Euler’s distance theorem \\( OI^2 = R(R - 2r) \\) (which immediately implies \\( R \\ge 2r \\)!).</p>",
+          "ar": "<p>في المثلث \\( \\triangle ABC \\) الذي أطوال أضلاعه \\( a, b, c \\) ونصف محيطه \\( s = \\frac{a+b+c}{2} \\) ومساحته \\( \\Delta = [ABC] \\):<br>• <strong>مركز الثقل \\( G \\)</strong> (ملتقى المتوسطات): يقسم كل متوسط بنسبة \\( AG : GM_a = 2 : 1 \\).<br>• <strong>مركز الدائرة الداخلية \\( I \\)</strong> (ملتقى منصفات الزوايا): نصف قطرها \\( r = \\frac{\\Delta}{s} \\)، وأطوال قطع التماس من الرؤوس هي \\( s-a,\\; s-b,\\; s-c \\).<br>• <strong>مركز الدائرة المحيطة \\( O \\)</strong> (ملتقى الأعمدة المنصفة): نصف قطرها \\( R = \\frac{abc}{4\\Delta} = \\frac{a}{2\\sin A} \\).<br>• <strong>ملتقى الارتفاعات \\( H \\)</strong>: تقع النقاط \\( O, G, H \\) على استقامة واحدة هي <strong>مستقيم أويلر</strong> بنسبة \\( HG = 2\\,GO \\)، مع \\( OH^2 = 9R^2 - (a^2 + b^2 + c^2) \\) وعلاقة أويلر \\( OI^2 = R(R - 2r) \\) (ومنه المتباينة الشهيرة \\( R \\ge 2r \\)!).</p>"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Ceva's, Menelaus', Stewart's Theorems & Triangle Centers",
-          "ar": "● الفهم المفاهيمي العميق — نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة"
+          "en": "● Theorem 7.2 — Ceva's, Menelaus's & Stewart's Theorems",
+          "ar": "● مبرهنة 7.2 — مبرهنات سيفا ومينيلاوس وستيوارت"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Ceva's, Menelaus', Stewart's Theorems & Triangle Centers</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p>Let \\( D \\in BC,\\; E \\in CA,\\; F \\in AB \\) be points on the sidelines of \\( \\triangle ABC \\):<br><strong>1. Ceva's Theorem (Concurrency):</strong> Cevians \\( AD, BE, CF \\) concur (or are parallel) if and only if (in directed lengths):</p>\\[ \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1 \\qquad \\left(\\text{Trig Ceva: } \\frac{\\sin\\angle BAD}{\\sin\\angle CAD}\\cdot\\frac{\\sin\\angle CBE}{\\sin\\angle ABE}\\cdot\\frac{\\sin\\angle ACF}{\\sin\\angle BCF} = 1\\right). \\]<p><strong>2. Menelaus's Theorem (Collinearity):</strong> Points \\( D, E, F \\) (with \\( 1 \\) or \\( 3 \\) on side extensions) are collinear if and only if (in unsigned magnitudes):</p>\\[ \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1. \\]<p><strong>3. Stewart's Theorem:</strong> If cevian \\( AD = d \\) splits \\( BC = a \\) into \\( BD = m \\) and \\( DC = n \\) (\\( m + n = a \\)), then:</p>\\[ b^2 m + c^2 n = a(d^2 + mn) \\quad \\text{(\"a man and his dad put a bomb in the sink\": } man + dad = bmb + cnc\\text{)}. \\]",
+          "ar": "<p>لتكن \\( D, E, F \\) نقاطاً على حاملات الأضلاع \\( BC, CA, AB \\) في المثلث \\( \\triangle ABC \\):<br><strong>1. مبرهنة سيفا (التلاقي):</strong> تتلاقى القطع \\( AD, BE, CF \\) في نقطة واحدة إذا وفقط إذا كان:</p>\\[ \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1. \\]<p><strong>2. مبرهنة مينيلاوس (الاستقامة):</strong> تقع النقاط \\( D, E, F \\) (إحداها أو ثلاثتها على امتدادات الأضلاع) على مستقيم واحد إذا وفقط إذا كان (بأطوال موجبة):</p>\\[ \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1. \\]<p><strong>3. مبرهنة ستيوارت:</strong> إذا قسمت القطعة \\( AD = d \\) الضلع \\( BC = a \\) إلى \\( BD = m \\) و\\( DC = n \\)، فإن:</p>\\[ b^2 m + c^2 n = a(d^2 + mn). \\]"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Law of Cosines Proof of Stewart's Theorem & Exact Angle-Bisector Length",
+          "ar": "◆ البرهان الأولمبي — اشتقاق مبرهنة ستيوارت وطول منصف الزاوية عبر قانون جيب التمام"
+        },
+        "body": {
+          "en": "<p>Let \\( \\theta = \\angle ADB \\), so \\( \\angle ADC = 180^\\circ - \\theta \\) and \\( \\cos\\angle ADC = -\\cos\\theta \\). Apply the Law of Cosines to \\( \\triangle ABD \\) and \\( \\triangle ACD \\):</p>\\[ c^2 = d^2 + m^2 - 2dm\\cos\\theta, \\qquad b^2 = d^2 + n^2 + 2dn\\cos\\theta. \\]<p>Multiply the first equation by \\( n \\) and the second by \\( m \\), then add to eliminate \\( \\cos\\theta \\):</p>\\[ b^2 m + c^2 n = (m + n)d^2 + mn(m + n) = a(d^2 + mn). \\]<p><strong>Corollary (Internal Angle Bisector):</strong> When \\( AD \\) bisects \\( \\angle A \\), the Angle Bisector Theorem gives \\( \\frac{m}{n} = \\frac{c}{b} \\iff bm = cn \\). Substituting \\( b^2 m + c^2 n = bc(n + m) = abc \\) into Stewart gives \\( abc = a(d^2 + mn) \\implies d^2 = bc - mn \\)! \\( \\blacksquare \\)</p>",
+          "ar": "<p>نضع \\( \\theta = \\angle ADB \\)، فيكون \\( \\angle ADC = 180^\\circ - \\theta \\) وبالتالي \\( \\cos\\angle ADC = -\\cos\\theta \\). بتطبيق قانون جيب التمام على المثلثين \\( \\triangle ABD \\) و\\( \\triangle ACD \\):</p>\\[ c^2 = d^2 + m^2 - 2dm\\cos\\theta, \\qquad b^2 = d^2 + n^2 + 2dn\\cos\\theta. \\]<p>بضرب الأولى في \\( n \\) والثانية في \\( m \\) والجمع لحذف \\( \\cos\\theta \\) مع ملاحظة \\( m + n = a \\):</p>\\[ b^2 m + c^2 n = (m + n)d^2 + mn(m + n) = a(d^2 + mn). \\]<p><strong>نتيجة فورية (طول المنصف الداخلي):</strong> عندما ينصّف \\( AD \\) الزاوية \\( A \\)، فإن \\( \\frac{m}{n} = \\frac{c}{b} \\iff bm = cn \\)، فيصبح الطرف الأيسر \\( bc(m+n) = abc \\)، وبالاختصار على \\( a \\) نحصل على القانون السريع \\( d^2 = bc - mn \\)! \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "High-Yield Olympiad Triangle Formulas & Special Cevian Lengths",
+          "ar": "الجدول المرجعي لأهم صيغ المثلث وأطوال القطع الخاصة في الأولمبياد"
+        },
+        "columns": [
+          {
+            "en": "Quantity",
+            "ar": "المقدار الهندسي"
+          },
+          {
+            "en": "Exact Formula",
+            "ar": "الصيغة الرياضية الدقيقة"
+          },
+          {
+            "en": "Olympiad Use Case",
+            "ar": "الاستخدام الأولمبي"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Median \\(m_a\\) (Apollonius)",
+              "ar": "طول المتوسط \\(m_a\\) (أبولونيوس)"
+            },
+            {
+              "en": "\\(m_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4}\\)",
+              "ar": "\\(m_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4}\\)"
+            },
+            {
+              "en": "Stewart special case \\(m = n = a/2\\)",
+              "ar": "حالة خاصة من ستيوارت عند منتصف الضلع"
+            }
+          ],
+          [
+            {
+              "en": "Internal Bisector \\(\\ell_a\\)",
+              "ar": "طول منصف الزاوية \\(\\ell_a\\)"
+            },
+            {
+              "en": "\\(\\ell_a^2 = bc - BD \\cdot DC = bc\\!\\left(1 - \\frac{a^2}{(b+c)^2}\\right) = \\left(\\frac{2bc\\cos(A/2)}{b+c}\\right)^2\\)",
+              "ar": "\\(\\ell_a^2 = bc - BD \\cdot DC = bc\\!\\left(1 - \\frac{a^2}{(b+c)^2}\\right)\\)"
+            },
+            {
+              "en": "Instant length once \\(BD, DC\\) are split in ratio \\(c:b\\)",
+              "ar": "حساب فوري بمجرد تقسيم القاعدة بنسبة \\(c:b\\)"
+            }
+          ],
+          [
+            {
+              "en": "\\(A\\)-Exradius \\(r_a\\)",
+              "ar": "نصف قطر الدائرة المماسة خارجاً \\(r_a\\)"
+            },
+            {
+              "en": "\\(r_a = \\frac{\\Delta}{s - a}\\), and \\(\\frac{1}{r} = \\frac{1}{r_a} + \\frac{1}{r_b} + \\frac{1}{r_c}\\)",
+              "ar": "\\(r_a = \\frac{\\Delta}{s - a}\\)، و\\(\\frac{1}{r} = \\frac{1}{r_a} + \\frac{1}{r_b} + \\frac{1}{r_c}\\)"
+            },
+            {
+              "en": "Excircle tangency from \\(A\\) to \\(BC\\)-touchpoints equals \\(s\\)!",
+              "ar": "طول المماس من الرأس \\(A\\) للدائرة الخارجية يساوي نصف المحيط \\(s\\)!"
+            }
+          ],
+          [
+            {
+              "en": "Triangle Tangent Identity",
+              "ar": "متطابقة ظل الزوايا في المثلث"
+            },
+            {
+              "en": "For \\(A+B+C=180^\\circ\\) (non-right): \\(\\tan A + \\tan B + \\tan C = \\tan A \\tan B \\tan C\\)",
+              "ar": "لكل مثلث غير قائم: \\(\\tan A + \\tan B + \\tan C = \\tan A \\tan B \\tan C\\)"
+            },
+            {
+              "en": "Classic NSMO / KAUST / AMC trigonometric eliminator",
+              "ar": "حسم مسائل المثلثات الأولمبية بخطوة واحدة"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "13–14–15 Benchmark Triangle",
+              "ar": "المثلث الأولمبي القياسي 13–14–15"
+            },
+            "value": {
+              "en": "\\(s = 21,\\; \\Delta = 84,\\; h_{14} = 12,\\; r = 4,\\; R = \\frac{65}{8}\\)",
+              "ar": "\\(s = 21,\\; \\Delta = 84,\\; h_{14} = 12,\\; r = 4,\\; R = \\frac{65}{8}\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Area-Ratio Cevian Lemma",
+              "ar": "لمّة نسب المساحات عند التلاقي"
+            },
+            "value": {
+              "en": "If cevians concur at \\(P\\), \\(\\frac{BD}{DC} = \\frac{[ABP]}{[ACP]}\\) and \\(\\frac{PD}{AD} = \\frac{[PBC]}{[ABC]}\\)",
+              "ar": "عند التلاقي في \\(P\\): \\(\\frac{BD}{DC} = \\frac{[ABP]}{[ACP]}\\) ومجموع \\(\\sum \\frac{PD}{AD} = 1\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Incenter–Excenter Fact (Fact 5)",
+              "ar": "لمّة المنصف والمركز الداخلي (المنعل/Trillium)"
+            },
+            "value": {
+              "en": "Midpoint \\(M\\) of minor arc \\(BC\\) satisfies \\(MB = MC = MI\\)!",
+              "ar": "منتصف القوس \\(BC\\) على الدائرة المحيطة يحقق دائماً \\(MB = MC = MI\\)!"
+            }
+          },
+          {
+            "label": {
+              "en": "Morrie’s Cosine Product",
+              "ar": "جداء جيوب التمام المتضاعفة"
+            },
+            "value": {
+              "en": "\\(\\cos\\theta\\cos 2\\theta\\cos 4\\theta \\cdots \\cos(2^{n-1}\\theta) = \\frac{\\sin(2^n\\theta)}{2^n\\sin\\theta}\\)",
+              "ar": "\\(\\prod_{k=0}^{n-1}\\cos(2^k\\theta) = \\frac{\\sin(2^n\\theta)}{2^n\\sin\\theta}\\)"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "angle_bisector",
+          "labels": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "sides": {
+            "ab": "8",
+            "ac": "12",
+            "bd": "4",
+            "dc": "6"
+          }
+        },
+        "caption": {
+          "en": "Internal Angle Bisector & Stewart’s Theorem in \\(\\triangle ABC\\) (\\(AB=8, AC=12, BC=10\\)): \\(BD:DC = 8:12 = 2:3 \\implies BD=4, DC=6\\), and \\(AD = \\sqrt{bc - BD \\cdot DC} = \\sqrt{96 - 24} = 6\\sqrt{2}\\).",
+          "ar": "منصف الزاوية الداخلية ومبرهنة ستيوارت في \\(\\triangle ABC\\): تقسم \\(D\\) القاعدة إلى \\(4\\) و\\(6\\)، ويكون طول المنصف \\(AD = \\sqrt{8(12) - 4(6)} = 6\\sqrt{2}\\)."
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Ceva's, Menelaus', Stewart's Theorems & Triangle Centers — Coordinate Curve & Structural Analysis",
-          "xrange": [
-            -4,
-            6
-          ],
-          "yrange": [
-            -4,
-            8
-          ],
-          "fns": [
-            {
-              "fn": "(x - 0)*(x - 0) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 0)² - 2"
-            },
-            {
-              "fn": "x + 1",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": -2,
-              "label": "Vertex (0, -2)"
-            }
-          ]
+          "type": "circle",
+          "radius": 13,
+          "center": "O",
+          "title": "Euler Theorem OI² = R(R − 2r) in a 10–24–26 Right Triangle (R = 13, r = 4, OI = √65)",
+          "showRadius": true,
+          "radiusLabel": "R = 13"
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 0)^2 - 2\\) and secant line \\(g(x) = x + 1\\) illustrating Ceva's, Menelaus', Stewart's Theorems & Triangle Centers.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة."
+          "en": "Euler’s Triangle Distance Formula \\(OI^2 = R(R - 2r)\\): for a \\(10\\text{–}24\\text{–}26\\) triangle with \\(R = 13\\) and \\(r = 4\\), \\(OI = \\sqrt{13(13 - 8)} = \\sqrt{65}\\), immediately proving Euler’s Inequality \\(R \\ge 2r\\)!",
+          "ar": "صيغة أويلر للمسافة بين مركزَي الدائرتين المحيطة والداخلية \\(OI^2 = R(R - 2r)\\): عند \\(R = 13\\) و\\(r = 4\\) يكون \\(OI = \\sqrt{65}\\)، ومنها تنتج متباينة أويلر \\(R \\ge 2r\\) مباشرةً!"
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Triangle Cevians, Angle Bisector Ratio & Area Partition Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر مستقيمات سيفا ومنصف الزاوية ونسب المساحات"
+          "en": "⊙ Explorer · Ceva Concurrency, Stewart Cevian & Triangle Centers Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر تلاقي سيفا وطول ستيوارت ومراكز المثلث"
         },
         "canvasId": "oltrianglecenterstrigExCanvas",
         "ariaLabel": {
-          "en": "Triangle Cevians, Angle Bisector Ratio & Area Partition Lab interactive mathematical canvas",
-          "ar": "مختبر مستقيمات سيفا ومنصف الزاوية ونسب المساحات لوحة رياضية تفاعلية"
+          "en": "Interactive triangle geometry explorer plotting concurrent cevians AD, BE, CF, Ceva product = 1, and Stewart cevian length AD.",
+          "ar": "مستكشف تفاعلي لهندسة المثلث يعرض القطع المتلاقية لسيفا وطول ستيوارت الدقيق للقطعة AD."
         },
         "dataPanel": {
           "btnId": "oltrianglecenterstrigExCanvas_dataBtn",
@@ -113,17 +255,17 @@
           "descId": "oltrianglecenterstrigExCanvas_dataDesc",
           "rowsId": "oltrianglecenterstrigExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Triangle Cevians, Angle Bisector Ratio & Area Partition Lab",
-            "ar": "جدول القيم العددية لـ مختبر مستقيمات سيفا ومنصف الزاوية ونسب المساحات"
+            "en": "Live Ceva ratio verification \\(\\frac{BD}{DC}\\cdot\\frac{CE}{EA}\\cdot\\frac{AF}{FB} = 1\\) and Stewart length \\(AD\\)",
+            "ar": "التحقق الحي من جداء نسب سيفا \\(= 1\\) وطول القطعة \\(AD\\) بمبرهنة ستيوارت"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -131,33 +273,33 @@
           {
             "id": "oltrianglecenterstrigExCanvas_s0",
             "label": {
-              "en": "Base Ratio <b>\\(k =\\)</b>",
-              "ar": "Base Ratio <b>\\(k =\\)</b>"
+              "en": "Ratio <b>\\(BD/BC =\\)</b>",
+              "ar": "نسبة التقسيم <b>\\(BD/BC =\\)</b>"
             },
-            "min": 0.5,
-            "max": 2.5,
-            "value": 1.5,
-            "step": 0.25,
+            "min": 0.15,
+            "max": 0.85,
+            "value": 0.4,
+            "step": 0.05,
             "valueDisplayId": "oltrianglecenterstrigExCanvas_v0",
             "ariaLabel": {
-              "en": "Base Ratio \\(k =\\)",
-              "ar": "Base Ratio \\(k =\\)"
+              "en": "Fraction t1 = BD / BC along side BC",
+              "ar": "نسبة الموقع BD / BC على القاعدة BC"
             }
           },
           {
             "id": "oltrianglecenterstrigExCanvas_s1",
             "label": {
-              "en": "Altitude Scale <b>\\(h =\\)</b>",
-              "ar": "Altitude Scale <b>\\(h =\\)</b>"
+              "en": "Ratio <b>\\(CE/CA =\\)</b>",
+              "ar": "نسبة التقسيم <b>\\(CE/CA =\\)</b>"
             },
-            "min": 1,
-            "max": 4,
-            "value": 2.5,
-            "step": 0.5,
+            "min": 0.15,
+            "max": 0.85,
+            "value": 0.5,
+            "step": 0.05,
             "valueDisplayId": "oltrianglecenterstrigExCanvas_v1",
             "ariaLabel": {
-              "en": "Altitude Scale \\(h =\\)",
-              "ar": "Altitude Scale \\(h =\\)"
+              "en": "Fraction t2 = CE / CA along side CA",
+              "ar": "نسبة الموقع CE / CA على الضلع CA"
             }
           }
         ],
@@ -165,396 +307,34 @@
           {
             "id": "oltrianglecenterstrigExCanvas_r0",
             "label": {
-              "en": "Linear Scale \\(k\\)",
-              "ar": "Linear Scale \\(k\\)"
+              "en": "Locked \\(AF : FB\\) (Ceva)",
+              "ar": "النسبة المحتومة \\(AF : FB\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(1.50\\)"
+            "value": "1.50 : 1"
           },
           {
             "id": "oltrianglecenterstrigExCanvas_r1",
             "label": {
-              "en": "Area Ratio \\(k^2\\)",
-              "ar": "Area Ratio \\(k^2\\)"
+              "en": "Stewart Length \\(AD\\)",
+              "ar": "طول ستيوارت \\(AD\\)"
             },
             "colorClass": "amber",
-            "value": "\\(2.25\\)"
+            "value": "12.17"
           },
           {
             "id": "oltrianglecenterstrigExCanvas_r2",
             "label": {
-              "en": "Perimeter Ratio",
-              "ar": "Perimeter Ratio"
+              "en": "Sub-area \\([PBC] / [ABC]\\)",
+              "ar": "نسبة المساحة \\([PBC]/[ABC]\\)"
             },
             "colorClass": "teal",
-            "value": "\\(1.50\\)"
+            "value": "0.357"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Ceva's, Menelaus', Stewart's Theorems & Triangle Centers.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة."
-        },
-        "canvas3d": {
-          "btnId": "oltrianglecenterstrigExCanvas_3dBtn",
-          "wrapId": "oltrianglecenterstrigExCanvas_3dWrap",
-          "hintId": "oltrianglecenterstrigExCanvas_3dHint",
-          "btnLabel": "🧊 View Ceva's, Menelaus', Stewart's Theorems & Triangle Centers in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Ceva's, Menelaus', Stewart's Theorems & Triangle Centers. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة. اسحب للتدوير."
-          }
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
-          ],
-          "B": [
-            12,
-            0
-          ],
-          "C": [
-            12,
-            5
-          ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "24",
-            "a": "32",
-            "b": "40"
-          },
-          "rightAt": "B"
-        },
-        "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((24)^2 + (32)^2 = (40)^2\\) for Ceva's, Menelaus', Stewart's Theorems & Triangle Centers.",
-          "ar": "العلاقة الهندسية المتعامدة \\((24)^2 + (32)^2 = (40)^2\\) في درس نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 7.1",
-              "ar": "القاعدة الأساسية 7.1"
-            },
-            "value": {
-              "en": "Stewart's Theorem man + dad = bmb + cnc",
-              "ar": "Stewart's Theorem man + dad = bmb + cnc"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 7.2",
-              "ar": "القاعدة الأساسية 7.2"
-            },
-            "value": {
-              "en": "Ceva's concurrency & Menelaus' collinearity theorems",
-              "ar": "Ceva's concurrency & Menelaus' collinearity theorems"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 7.3",
-              "ar": "القاعدة الأساسية 7.3"
-            },
-            "value": {
-              "en": "Angle Bisector Theorem & length formula",
-              "ar": "Angle Bisector Theorem & length formula"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 7.4",
-              "ar": "القاعدة الأساسية 7.4"
-            },
-            "value": {
-              "en": "Inradius r = A/s, Circumradius R = abc/(4A) & Heron's formula",
-              "ar": "Inradius r = A/s, Circumradius R = abc/(4A) & Heron's formula"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Ceva's, Menelaus', Stewart's Theorems & Triangle Centers)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة)"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example 7.A — Foundational Formulation (Ceva's, Menelaus', Stewart's Theorems & Triangle Centers)",
-          "ar": "مثال محلول 7.A — تطبيق أساسي (نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة)"
-        },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 16x + 73 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{16}{2} = -8 \\).<br>2. Write \\( (x - 8)^2 = x^2 - 16x + 64 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 8)^2 - 64 + 73 = (x - 8)^2 + 9 \\).<br>4. Since \\( (x - 8)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 9 \\), achieved at \\( x = 8 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 8)^2 + 9 \\); minimum value \\( 9 \\) at \\( x = 8 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 16x + 73 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 8)^2 + 9 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) وتتحقق عند \\( x = 8 \\).</p>"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example 7.B — Intermediate Multi-Step Synthesis (Ceva's, Menelaus', Stewart's Theorems & Triangle Centers)",
-          "ar": "مثال محلول 7.B — تطبيق متوسط متعدد الخطوات (نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة)"
-        },
-        "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 16x + 69 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 16x + 69 = 2x + k \\implies x^2 - 18x + (69 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-18)^2 - 4(1)(69 - k) > 0 \\]<br>\\[ 324 - 276 + 4k > 0 \\implies 4k > -48 \\implies k > -12 \\]</p><p><strong>Final Answer:</strong> \\( k > -12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 16x + 69 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -12 \\).</p>"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example 7.C — Advanced Rate & Vector Application (Ceva's, Menelaus', Stewart's Theorems & Triangle Centers)",
-          "ar": "مثال محلول 7.C — تطبيق متقدم (نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة)"
-        },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 24x^2 + 192x + 9 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 10 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 48x + 192 = 3(x - 8)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 8 \\), with \\( g(8) = 9 \\). Thus \\( (8, 9) \\) is the stationary point.<br>3. At \\( x = 10 \\), the gradient is \\( g'(10) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (8, 9) \\); gradient at \\( x = 10 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 24x^2 + 192x + 9 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 10 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 8)^2 \\)، تنعدم عند \\( (8, 9) \\)، وعند \\( x = 10 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example 7.D — Exam-Grade Challenge Synthesis (Ceva's, Menelaus', Stewart's Theorems & Triangle Centers)",
-          "ar": "مثال محلول 7.D — مسألة تحدي بمستوى الاختبار (نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة)"
-        },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 8n^2 + 9n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 8(1)^2 + 9(1) = 17 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[8n^2 + 9n\\right] - \\left[8(n-1)^2 + 9(n-1)\\right] = 16n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 16 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 161 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 16n + 1 \\), \\( d = 16 \\), and \\( u_{10} = 161 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 8n^2 + 9n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 16n + 1 \\)، والأساس \\( d = 16 \\)، والحد العاشر \\( u_{10} = 161 \\).</p>"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠️ Common Exam Traps — Ceva's, Menelaus', Stewart's Theorems & Triangle Centers",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة"
-        },
-        "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
-        }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Ceva's, Menelaus', Stewart's Theorems & Triangle Centers)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة)"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "tip",
-        "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Ceva's, Menelaus', Stewart's Theorems & Triangle Centers",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — نظريات سيفا ومينيلاوس وستيوارت ومراكز المثلث المتقدمة"
-        },
-        "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(9) \\) for the quadratic function \\( f(x) = 8x^2 - 8x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(9) \\) للدالة التربيعية \\( f(x) = 8x^2 - 8x + 10 \\)."
-        },
-        "hints": [
-          {
-            "en": "Substitute \\( x = 9 \\) directly into \\( f(x) = 8x^2 - 8x + 10 \\).",
-            "ar": "عوّض عن \\( x = 9 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
-          },
-          {
-            "en": "Factor out \\( 8x(x - 1) + 10 = 8(9)(8) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 8(9)(8) + 10 \\)."
-          },
-          {
-            "en": "Compute \\( 576 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 576 + 10 \\) للحصول على النتيجة النهائية."
-          }
-        ],
-        "solution": {
-          "en": "Substituting \\( x = 9 \\) gives \\( f(9) = 8(9)^2 - 8(9) + 10 = 648 - 72 + 10 = 586 \\).",
-          "ar": "بالتعويض عن \\( x = 9 \\) نجد \\( f(9) = 8(9)^2 - 8(9) + 10 = 586 \\)."
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 17x + 72 = 0 \\) that is greater than \\( 8 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 8 \\) للمعادلة \\( x^2 - 17x + 72 = 0 \\)."
-        },
-        "hints": [
-          {
-            "en": "Look for two integers whose sum is \\( 17 \\) and whose product is \\( 72 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 17 \\) وحاصل ضربهما \\( 72 \\)."
-          },
-          {
-            "en": "Factor the quadratic as \\( (x - 8)(x - 9) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 8)(x - 9) = 0 \\)."
-          },
-          {
-            "en": "Compare the two roots \\( x = 8 \\) and \\( x = 9 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 8 \\) و \\( x = 9 \\) واختر الأكبر."
-          }
-        ],
-        "solution": {
-          "en": "Factoring gives \\( (x - 8)(x - 9) = 0 \\), so the roots are \\( x = 8 \\) and \\( x = 9 \\). The root greater than \\( 8 \\) is \\( x = 9 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 8)(x - 9) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 8 \\) هو \\( x = 9 \\)."
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 72 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 72 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
-        },
-        "hints": [
-          {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
-          },
-          {
-            "en": "Substitute \\( a = 1, b = -2k, c = 72 \\) into \\( (-2k)^2 - 4(1)(72) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(72) = 0 \\)."
-          },
-          {
-            "en": "Simplify \\( 4k^2 = 288 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 288 \\) واقسم الطرفين على 4."
-          }
-        ],
-        "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(72) = 4k^2 - 288 = 0 \\implies k^2 = 72 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 288 = 0 \\implies k^2 = 72 \\)."
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 8 \\) and common difference \\( d = 18 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 8 \\) وأساسها \\( d = 18 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
-        },
-        "hints": [
-          {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
-          },
-          {
-            "en": "Substitute \\( n = 10, a = 8, d = 18 \\): \\( S_{10} = 5[2(8) + 9(18)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(8) + 9(18)] \\)."
-          },
-          {
-            "en": "Evaluate \\( 5(16 + 162) = 890 \\).",
-            "ar": "احسب الناتج \\( 5(16 + 162) = 890 \\)."
-          }
-        ],
-        "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(8) + 9(18)] = 5(178) = 890 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(16 + 162) = 890 \\)."
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 8x^2 - 9x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 8x^2 - 9x + 7 \\) عند \\( x = 3 \\)."
-        },
-        "hints": [
-          {
-            "en": "Differentiate \\( y = x^3 + 8x^2 - 9x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
-          },
-          {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 16x - 9 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 16x - 9 \\)."
-          },
-          {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 16(3) - 9 = 66 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 48 - 9 = 66 \\)."
-          }
-        ],
-        "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 16x - 9 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 48 - 9 = 66 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 16x - 9 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 48 - 9 = 66 \\)."
+          "en": "Set \\(BD/BC\\) and \\(CE/CA\\) freely on reference \\(13\\text{–}14\\text{–}15\\) triangle \\(ABC\\): Ceva’s Theorem uniquely locks \\(F \\in AB\\) so \\(AD, BE, CF\\) concur at \\(P\\), while Stewart’s formula updates \\(AD\\) instantaneously!",
+          "ar": "غيّر موقعَي \\(D\\) و\\(E\\) بحرية على المثلث المرجعي \\(13\\text{–}14\\text{–}15\\): تحدد مبرهنة سيفا موقع النقطة \\(F\\) تلقائياً ليتحقق التلاقي في \\(P\\)، بينما تحسب صيغة ستيوارت طول \\(AD\\) لحظياً!"
         }
       },
       {
@@ -942,22 +722,219 @@
         "id": "cs-uge-ol-triangle-centers-trig-invtrig6-exp"
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.A — Menelaus's Theorem & Cevian Area Extraction (NSMO Stage 2 / AIME)",
+          "ar": "مثال محلول 7.A — مبرهنة مينيلاوس واستخلاص مساحات المثلثات الجزئية (نسما 2 / AIME)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Triangle \\( ABC \\) has area \\( 120 \\). Point \\( D \\) lies on \\( BC \\) with \\( BD : DC = 1 : 2 \\), and point \\( E \\) lies on \\( AC \\) with \\( AE : EC = 3 : 1 \\). Segments \\( AD \\) and \\( BE \\) intersect at \\( P \\). Find \\( AP : PD \\) and the exact area \\( [ABP] \\).</p><p><strong>Solution:</strong> Apply <strong>Menelaus’s Theorem</strong> to \\( \\triangle ADC \\) intersected by the line \\( B - P - E \\) (note \\( B \\) lies on the extension of \\( CD \\), with \\( CB = CD + DB = 2 + 1 = 3 \\) parts):<br>\\[ \\frac{CB}{BD} \\cdot \\frac{DP}{PA} \\cdot \\frac{AE}{EC} = 1 \\implies \\frac{3}{1} \\cdot \\frac{DP}{PA} \\cdot \\frac{3}{1} = 1 \\implies \\frac{DP}{PA} = \\frac{1}{9}, \\]<br>so \\( AP : PD = 9 : 1 \\)! Now compute the area in two 5-second steps:<br>1. Since \\( BD = \\frac{1}{3}BC \\), \\( [ABD] = \\frac{1}{3}[ABC] = \\frac{120}{3} = 40 \\).<br>2. Since \\( AP = \\frac{9}{10}AD \\), \\( [ABP] = \\frac{9}{10}[ABD] = \\frac{9}{10}(40) = 36 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> مساحة المثلث \\( \\triangle ABC \\) تساوي \\( 120 \\). تقع \\( D \\) على \\( BC \\) بحيث \\( BD : DC = 1 : 2 \\)، وتقع \\( E \\) على \\( AC \\) بحيث \\( AE : EC = 3 : 1 \\). تتقاطع القطعتان \\( AD \\) و\\( BE \\) في \\( P \\). أوجد النسبة \\( AP : PD \\) والمساحة \\( [ABP] \\).</p><p><strong>الحل الأولمبي:</strong> نطبّق <strong>مبرهنة مينيلاوس</strong> على المثلث \\( \\triangle ADC \\) والقاطع \\( B - P - E \\) (لاحظ أن \\( CB = 3 \\) أجزاء و\\( BD = 1 \\)):<br>\\[ \\frac{CB}{BD} \\cdot \\frac{DP}{PA} \\cdot \\frac{AE}{EC} = 1 \\implies \\frac{3}{1} \\cdot \\frac{DP}{PA} \\cdot \\frac{3}{1} = 1 \\implies AP : PD = 9 : 1. \\]<br>والآن نحسب المساحة فوراً:<br>1. \\( [ABD] = \\frac{1}{3}[ABC] = 40 \\).<br>2. \\( [ABP] = \\frac{9}{10}[ABD] = \\frac{9}{10}(40) = 36 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.B — Euler's Distance OI in the 13–14–15 Olympiad Triangle (KAUST KMC)",
+          "ar": "مثال محلول 7.B — حساب المسافة بين مركزَي الدائرتين المحيطة والداخلية OI (مسابقة كاوست)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> In \\( \\triangle ABC \\) with \\( AB = 13,\\; BC = 14,\\; CA = 15 \\), find the inradius \\( r \\), circumradius \\( R \\), and exact distance \\( OI \\) between the circumcenter \\( O \\) and incenter \\( I \\).</p><p><strong>Solution:</strong><br>1. Semiperimeter \\( s = \\frac{13+14+15}{2} = 21 \\). By Heron’s formula, \\( \\Delta = \\sqrt{21(8)(7)(6)} = 84 \\).<br>2. Inradius: \\( r = \\frac{\\Delta}{s} = \\frac{84}{21} = 4 \\).<br>3. Circumradius: \\( R = \\frac{abc}{4\\Delta} = \\frac{13 \\cdot 14 \\cdot 15}{336} = \\frac{65}{8} \\).<br>4. By Euler’s Theorem \\( OI^2 = R(R - 2r) \\):<br>\\[ OI^2 = \\frac{65}{8}\\left(\\frac{65}{8} - 8\\right) = \\frac{65}{8} \\cdot \\frac{1}{8} = \\frac{65}{64} \\implies OI = \\frac{\\sqrt{65}}{8}. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> في المثلث \\( \\triangle ABC \\) الذي أضلاعه \\( 13, 14, 15 \\)، أوجد نصف قطر الدائرة الداخلية \\( r \\)، ونصف قطر المحيطة \\( R \\)، والمسافة الدقيقة \\( OI \\).</p><p><strong>الحل الأولمبي:</strong><br>1. نصف المحيط \\( s = 21 \\)، ومن صيغة هيرون المساحة \\( \\Delta = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = 84 \\).<br>2. \\( r = \\frac{84}{21} = 4 \\)، و\\( R = \\frac{13 \\cdot 14 \\cdot 15}{4(84)} = \\frac{65}{8} \\).<br>3. من مبرهنة أويلر \\( OI^2 = R(R - 2r) = \\frac{65}{8}\\left(\\frac{65}{8} - 8\\right) = \\frac{65}{64} \\implies OI = \\frac{\\sqrt{65}}{8} \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.C — Morrie's Telescoping Cosine Cascade (AMC 12 / NSMO Stage 1)",
+          "ar": "مثال محلول 7.C — السلسلة التلسكوبية لجداء جيوب التمام (AMC 12 / نسما 1)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate the exact non-calculator value of \\( P = \\cos 20^\\circ \\cos 40^\\circ \\cos 80^\\circ \\).</p><p><strong>Solution:</strong> Whenever angles double at each step (\\( \\theta, 2\\theta, 4\\theta \\)), multiply and divide by \\( 2^3 \\sin 20^\\circ = 8\\sin 20^\\circ \\) to trigger a chain reaction of \\( 2\\sin\\alpha\\cos\\alpha = \\sin 2\\alpha \\):<br>\\[ 8\\sin 20^\\circ \\cdot P = 4(2\\sin 20^\\circ\\cos 20^\\circ)\\cos 40^\\circ\\cos 80^\\circ = 4\\sin 40^\\circ\\cos 40^\\circ\\cos 80^\\circ \\]<br>\\[ = 2\\sin 80^\\circ\\cos 80^\\circ = \\sin 160^\\circ. \\]<br>Since \\( \\sin 160^\\circ = \\sin(180^\\circ - 20^\\circ) = \\sin 20^\\circ \\ne 0 \\), dividing by \\( 8\\sin 20^\\circ \\) yields \\( P = \\frac{1}{8} \\)!</p>",
+          "ar": "<p><strong>المسألة:</strong> احسب دون آلة حاسبة القيمة الدقيقة للجداء \\( P = \\cos 20^\\circ \\cos 40^\\circ \\cos 80^\\circ \\).</p><p><strong>الحل الأولمبي:</strong> عند تضاعف الزوايا (\\( \\theta, 2\\theta, 4\\theta \\))، نضرب ونقسم على \\( 8\\sin 20^\\circ \\) لتفعيل متطابقة ضعف الزاوية ثلاث مرات متتالية:<br>\\[ (8\\sin 20^\\circ)P = 4\\sin 40^\\circ\\cos 40^\\circ\\cos 80^\\circ = 2\\sin 80^\\circ\\cos 80^\\circ = \\sin 160^\\circ. \\]<br>وبما أن \\( \\sin 160^\\circ = \\sin 20^\\circ \\)، فإن الاختصار يعطي فوراً \\( P = \\frac{1}{8} \\)!</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.D — Stewart's Theorem on a General Cevian (KAUST Finals)",
+          "ar": "مثال محلول 7.D — حساب طول قطعة داخلية عامة بمبرهنة ستيوارت (نهائيات كاوست)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> In \\( \\triangle ABC \\), \\( AB = 13,\\; AC = 15,\\; BC = 14 \\). Point \\( D \\) lies on \\( BC \\) such that \\( BD = 5 \\) and \\( DC = 9 \\). Find the exact length of segment \\( AD \\).</p><p><strong>Solution:</strong> Apply Stewart’s Theorem \\( b^2 m + c^2 n = a(d^2 + mn) \\) with \\( a = 14,\\; b = 15,\\; c = 13,\\; m = 5,\\; n = 9 \\):<br>\\[ 15^2(5) + 13^2(9) = 14(d^2 + 5 \\cdot 9) \\implies 1125 + 1521 = 14(d^2 + 45). \\]<br>Since \\( 1125 + 1521 = 2646 \\) and \\( \\frac{2646}{14} = 189 \\), we obtain \\( d^2 + 45 = 189 \\implies d^2 = 144 \\implies AD = 12 \\)! (Notice \\( AD = 12 \\) equals the altitude \\( h_a \\), confirming \\( D \\) is the exact foot of the altitude since \\( 13^2 - 5^2 = 15^2 - 9^2 = 144 \\)!)</p>",
+          "ar": "<p><strong>المسألة:</strong> في المثلث \\( \\triangle ABC \\) حيث \\( AB = 13,\\; AC = 15,\\; BC = 14 \\)، تقع النقطة \\( D \\) على \\( BC \\) بحيث \\( BD = 5 \\) و\\( DC = 9 \\). أوجد طول \\( AD \\).</p><p><strong>الحل الأولمبي:</strong> بتطبيق مبرهنة ستيوارت \\( b^2 m + c^2 n = a(d^2 + mn) \\):<br>\\[ 225(5) + 169(9) = 14(d^2 + 45) \\implies 2646 = 14(d^2 + 45) \\implies d^2 + 45 = 189 \\implies d^2 = 144 \\implies AD = 12. \\]</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Olympiad Trap — Swapping b and c in Stewart’s Formula",
+          "ar": "⚠ فخ أولمبي شائع — عكس الأضلاع المقابلة للقطع الجزئية في صيغة ستيوارت"
+        },
+        "body": {
+          "en": "<p>In \\( b^2 m + c^2 n = a(d^2 + mn) \\), each side squared multiplies the segment on the <strong>OPPOSITE</strong> half of base \\( BC \\): \\( AC^2 \\) multiplies \\( BD = m \\), and \\( AB^2 \\) multiplies \\( DC = n \\)! Check the degenerate limit \\( m \\to 0 \\) (\\( D \\to B \\), \\( n \\to a \\)): \\( c^2 a = a d^2 \\implies d = c = AB \\), which catches a swapped sign or index immediately.</p>",
+          "ar": "<p>في صيغة ستيوارت \\( b^2 m + c^2 n = a(d^2 + mn) \\)، يُضرب مربع كل ضلع في جزء القاعدة <strong>البعيد عنه</strong>: أي \\( AC^2 \\cdot BD + AB^2 \\cdot DC \\)! اختبر النهاية الحدّية \\( m \\to 0 \\) (انطباق \\( D \\) على \\( B \\)) لتتأكد فوراً من عدم تبديل الحدين.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Contest Strategy — Choosing the Right Triangle for Menelaus",
+          "ar": "▲ استراتيجية المسابقات — اختيار المثلث الصحيح والقاطع المستقيم في مينيلاوس"
+        },
+        "body": {
+          "en": "<p>When two cevians \\( AD \\) and \\( BE \\) cross at \\( P \\), NEVER apply Menelaus to \\( \\triangle ABC \\)! Instead, view <strong>one cevian as a side of a sub-triangle</strong> (e.g., \\( \\triangle ADC \\)) and the <strong>other cevian \\( B-P-E \\) as the transversal line</strong>—that isolates \\( AP : PD \\) in a single equation.</p>",
+          "ar": "<p>عند تقاطع قطعتين داخليتين \\( AD \\) و\\( BE \\) في \\( P \\)، لا تطبّق مينيلاوس على المثلث الكبير \\( \\triangle ABC \\)! بل اعتبر <strong>إحدى القطعتين ضلعاً في مثلث جزئي</strong> (مثل \\( \\triangle ADC \\)) واعتبر <strong>القطعة الأخرى \\( B-P-E \\) هي القاطع المستقيم</strong> لتحصل على النسبة المطلوبة في معادلة واحدة.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 7.1 · NSMO Stage 1 / Easy]</strong> In \\( \\triangle ABC \\), \\( AB = 9,\\; AC = 15,\\; BC = 16 \\). The internal angle bisector of \\( \\angle A \\) meets \\( BC \\) at \\( D \\). Find \\( BD \\).",
+          "ar": "<strong>[تدريب 7.1 · نسما المرحلة 1 / سهل]</strong> في المثلث \\( \\triangle ABC \\)، \\( AB = 9,\\; AC = 15,\\; BC = 16 \\). يلتقي المنصف الداخلي للزاوية \\( \\angle A \\) بالضلع \\( BC \\) في \\( D \\). أوجد طول \\( BD \\)."
+        },
+        "hints": [
+          {
+            "en": "By the Angle Bisector Theorem, \\( BD : DC = AB : AC = 9 : 15 = 3 : 5 \\).",
+            "ar": "حسب مبرهنة منصف الزاوية: \\( BD : DC = AB : AC = 9 : 15 = 3 : 5 \\)."
+          },
+          {
+            "en": "Split the total base \\( BC = 16 \\) into \\( 3 + 5 = 8 \\) equal parts.",
+            "ar": "قسّم طول القاعدة \\( BC = 16 \\) إلى \\( 3 + 5 = 8 \\) أجزاء متساوية."
+          },
+          {
+            "en": "Multiply \\( 3 \\times \\frac{16}{8} \\).",
+            "ar": "اضرب \\( 3 \\times \\frac{16}{8} \\)."
+          }
+        ],
+        "solution": {
+          "en": "Since \\( BD : DC = 9 : 15 = 3 : 5 \\) and \\( BD + DC = 16 \\), we obtain \\( BD = \\frac{3}{8}(16) = 6 \\).",
+          "ar": "بما أن \\( BD : DC = 3 : 5 \\) ومجموعهما \\( 16 \\)، فإن \\( BD = \\frac{3}{8} \\times 16 = 6 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 7.2 · KAUST KMC Regional / Easy]</strong> In \\( \\triangle ABC \\), \\( BC = 8,\\; CA = 7,\\; AB = 9 \\). Find the exact length of median \\( AM \\) drawn to side \\( BC \\).",
+          "ar": "<strong>[تدريب 7.2 · تصفيات كاوست / سهل]</strong> في المثلث \\( \\triangle ABC \\)، \\( BC = 8,\\; CA = 7,\\; AB = 9 \\). أوجد الطول الدقيق للمتوسط \\( AM \\) المرسوم إلى الضلع \\( BC \\)."
+        },
+        "hints": [
+          {
+            "en": "Use Apollonius’s median formula \\( m_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4} \\) with \\( a = 8, b = 7, c = 9 \\).",
+            "ar": "استخدم صيغة أبولونيوس للمتوسط \\( m_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4} \\) حيث \\( a = 8, b = 7, c = 9 \\)."
+          },
+          {
+            "en": "Compute \\( 2(49) + 2(81) - 64 \\).",
+            "ar": "احسب \\( 2(49) + 2(81) - 64 \\)."
+          },
+          {
+            "en": "Divide by \\( 4 \\) and take the square root.",
+            "ar": "اقسم الناتج على \\( 4 \\) ثم خذ الجذر التربيعي."
+          }
+        ],
+        "solution": {
+          "en": "By Apollonius’s Theorem, \\( AM^2 = \\frac{2(7^2) + 2(9^2) - 8^2}{4} = \\frac{98 + 162 - 64}{4} = \\frac{196}{4} = 49 \\), so \\( AM = 7 \\).",
+          "ar": "من صيغة أبولونيوس: \\( AM^2 = \\frac{2(49) + 2(81) - 64}{4} = \\frac{196}{4} = 49 \\implies AM = 7 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 7.3 · NSMO Stage 2 / Medium]</strong> Cevians \\( AD, BE, CF \\) of \\( \\triangle ABC \\) concur at \\( P \\). Given \\( BD : DC = 2 : 3 \\) and \\( CE : EA = 9 : 4 \\), find \\( AF : FB \\) in simplest form.",
+          "ar": "<strong>[تدريب 7.3 · نسما المرحلة 2 / متوسط]</strong> تتلاقى القطع \\( AD, BE, CF \\) داخل المثلث \\( \\triangle ABC \\) في نقطة \\( P \\). إذا كان \\( BD : DC = 2 : 3 \\) و\\( CE : EA = 9 : 4 \\)، فأوجد النسبة \\( AF : FB \\) في أبسط صورة."
+        },
+        "hints": [
+          {
+            "en": "Write Ceva’s Theorem \\( \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1 \\).",
+            "ar": "اكتب علاقة سيفا \\( \\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1 \\)."
+          },
+          {
+            "en": "Substitute \\( \\frac{2}{3} \\cdot \\frac{9}{4} = \\frac{3}{2} \\).",
+            "ar": "عوّض وبسّط \\( \\frac{2}{3} \\cdot \\frac{9}{4} = \\frac{3}{2} \\)."
+          },
+          {
+            "en": "Invert \\( \\frac{3}{2} \\) to isolate \\( \\frac{AF}{FB} \\).",
+            "ar": "اقلب النسبة \\( \\frac{3}{2} \\) لإيجاد \\( \\frac{AF}{FB} \\)."
+          }
+        ],
+        "solution": {
+          "en": "By Ceva’s Theorem, \\( \\frac{2}{3} \\cdot \\frac{9}{4} \\cdot \\frac{AF}{FB} = 1 \\implies \\frac{3}{2} \\cdot \\frac{AF}{FB} = 1 \\implies AF : FB = 2 : 3 \\).",
+          "ar": "من مبرهنة سيفا: \\( \\frac{2}{3} \\cdot \\frac{9}{4} \\cdot \\frac{AF}{FB} = 1 \\implies AF : FB = 2 : 3 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 7.4 · AMC 12 / KAUST KMC / Hard]</strong> In \\( \\triangle ABC \\), \\( BC = 12 \\) and \\( \\angle BAC = 60^\\circ \\). Find the exact area of the circumcircle of \\( \\triangle ABC \\).",
+          "ar": "<strong>[تدريب 7.4 · AMC 12 / مسابقة كاوست / متقدم]</strong> في المثلث \\( \\triangle ABC \\)، \\( BC = 12 \\) وقياس الزاوية \\( \\angle BAC = 60^\\circ \\). أوجد المساحة الدقيقة للدائرة المحيطة بالمثلث \\( \\triangle ABC \\)."
+        },
+        "hints": [
+          {
+            "en": "Apply the Extended Law of Sines \\( \\frac{BC}{\\sin A} = 2R \\).",
+            "ar": "استخدم قانون الجيوب المعمم \\( \\frac{BC}{\\sin A} = 2R \\)."
+          },
+          {
+            "en": "Solve \\( 2R = \\frac{12}{\\sqrt{3}/2} = 8\\sqrt{3} \\implies R = 4\\sqrt{3} \\).",
+            "ar": "احسب نصف القطر \\( R = \\frac{12}{2\\sin 60^\\circ} = 4\\sqrt{3} \\)."
+          },
+          {
+            "en": "Compute \\( \\pi R^2 \\).",
+            "ar": "احسب مساحة الدائرة \\( \\pi R^2 \\)."
+          }
+        ],
+        "solution": {
+          "en": "By the Extended Law of Sines, \\( 2R = \\frac{12}{\\sin 60^\\circ} = \\frac{12}{\\sqrt{3}/2} = 8\\sqrt{3} \\), so \\( R = 4\\sqrt{3} \\) and the circumcircle area is \\( \\pi R^2 = 48\\pi \\).",
+          "ar": "من قانون الجيوب المعمم: \\( 2R = \\frac{12}{\\sqrt{3}/2} = 8\\sqrt{3} \\implies R = 4\\sqrt{3} \\)، فتكون مساحة الدائرة المحيطة \\( \\pi R^2 = 48\\pi \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 7.5 · NSMO National Finals / KAUST Finals]</strong> An acute triangle \\( ABC \\) has circumradius \\( R = 5 \\) and \\( AB^2 + BC^2 + CA^2 = 189 \\). Find the exact distance \\( GH \\) between its centroid \\( G \\) and orthocenter \\( H \\).",
+          "ar": "<strong>[تدريب 7.5 · نهائيات نسما وكاوست]</strong> مثلث حاد الزوايا \\( ABC \\) نصف قطر دائرته المحيطة \\( R = 5 \\) ومجموع مربعات أضلاعه \\( AB^2 + BC^2 + CA^2 = 189 \\). أوجد المسافة الدقيقة \\( GH \\) بين مركز ثقله \\( G \\) وملتقى ارتفاعاته \\( H \\)."
+        },
+        "hints": [
+          {
+            "en": "Use the Euler-line identity \\( OH^2 = 9R^2 - (a^2 + b^2 + c^2) \\).",
+            "ar": "استخدم علاقة مستقيم أويلر \\( OH^2 = 9R^2 - (a^2 + b^2 + c^2) \\)."
+          },
+          {
+            "en": "Compute \\( OH = \\sqrt{9(25) - 189} \\).",
+            "ar": "احسب \\( OH = \\sqrt{225 - 189} \\)."
+          },
+          {
+            "en": "Recall \\( G \\) divides \\( OH \\) in ratio \\( OG : GH = 1 : 2 \\), so \\( GH = \\frac{2}{3}OH \\).",
+            "ar": "تذكّر أن \\( G \\) يقسم \\( OH \\) بنسبة \\( 1 : 2 \\)، أي \\( GH = \\frac{2}{3}OH \\)."
+          }
+        ],
+        "solution": {
+          "en": "From \\( OH^2 = 9(5^2) - 189 = 225 - 189 = 36 \\), we get \\( OH = 6 \\). On the Euler line, \\( GH = \\frac{2}{3}OH = \\frac{2}{3}(6) = 4 \\).",
+          "ar": "من العلاقة \\( OH^2 = 225 - 189 = 36 \\) نجد \\( OH = 6 \\)، وعلى مستقيم أويلر \\( GH = \\frac{2}{3}OH = 4 \\)."
+        }
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Invariants, Monovariants, Game Strategy & Extremal Principle",
-            "chapterId": "ol-invariants-extremal",
-            "trackId": "olympiad"
-          },
-          {
-            "label": "Power of a Point, Cyclic Quadrilaterals & Angle Chasing",
+            "label": "Euclidean Geometry I: Circles, Power & Ptolemy",
             "chapterId": "ol-euclidean-circles",
             "trackId": "olympiad"
           },
           {
-            "trackId": "addmath",
-            "chapterId": "am-functions-quadratics",
-            "label": "ADDMATH: Functions, Modulus & Quadratic Theory"
+            "label": "NSMO National Finals & IMO Pathway",
+            "chapterId": "ol-nsmo-national-finals",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "KAUST Campus Finals & Advanced Synthesis",
+            "chapterId": "ol-kaust-finals-academy",
+            "trackId": "olympiad"
           }
         ]
       }

@@ -1,0 +1,661 @@
+{
+  "id": "ol-nsmo-national-finals",
+  "chapterNumber": "10",
+  "subsectionBanner": {
+    "en": "🇸🇦 Subsection II · NSMO of KSA — National Science & Mathematics Olympiad (Mawhiba · أولمبياد نسما الوطني)",
+    "ar": "🇸🇦 القسم الثاني · الأولمبياد الوطني للعلوم والرياضيات بالمملكة العربية السعودية NSMO («نسما» · موهبة ووزارة التعليم)"
+  },
+  "title": {
+    "en": "NSMO of KSA (Stage 3): Riyadh National Finals & Mawhiba Saudi IMO Team Pathway",
+    "ar": "أولمبياد نسما الوطني (المرحلة 3): التصفيات النهائية بالرياض ومسار المنتخب السعودي للأولمبياد الدولي IMO"
+  },
+  "railLabel": {
+    "en": "NSMO Finals & Mawhiba IMO",
+    "ar": "نهائيات نسما ومسار المنتخب IMO"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🥇",
+    "category": "Subsection II · NSMO Stage 3 Finals & Mawhiba Olympiad Camps",
+    "badges": [
+      {
+        "text": "RIYADH FINALS · IMO CAMP",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Official 0–7 point Olympiad proof grading rubric",
+      "Functional equations over Z, Q, and R (Cauchy & involutions)",
+      "Lifting the Exponent Lemma (LTE) & multiplicative order",
+      "Reflected orthocenter on circumcircle & Nine-Point Circle",
+      "Mantel–Turán extremal graph bounds"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Qualifying for <strong>NSMO Stage 3 (Riyadh National Finals)</strong> and <strong>Mawhiba’s Winter/Summer Olympiad Camps</strong> marks the transition from answer-finding to <strong>rigorous 7-point mathematical proof writing</strong>. This chapter covers the four signature pillars of Mawhiba’s IMO team selection tests (TSTs): <strong>functional equations</strong>, <strong>Lifting the Exponent (LTE) &amp; order arguments</strong>, <strong>orthocenter–circumcircle reflections</strong>, and <strong>extremal graph combinatorics</strong>—alongside the exact 7-point grading rubric used by Olympiad juries.",
+          "ar": "يمثّل التأهل إلى <strong>المرحلة الثالثة النهائية بالرياض لأولمبياد «نسما»</strong> والالتحاق بـ<strong>ملتقيات موهبة الشتوية والصيفية</strong> النقلة النوعية من إيجاد الناتج النهائي إلى <strong>كتابة البراهين الرياضية المحكمة المقيّمة من 7 درجات</strong>. يغطي هذا الفصل الركائز الأربع الأهم في اختبارات ترشيح المنتخب السعودي للأولمبياد الدولي (IMO): <strong>المعادلات الدالية</strong>، و<strong>لمّة رفع الأس (LTE) والرتبة الضربية</strong>، و<strong>انعكاسات ملتقى الارتفاعات على الدائرة المحيطة</strong>، و<strong>الرسوم البيانية التطرفية</strong>."
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Official 7-Point Olympiad Proof Grading Rubric (NSMO Finals / BMO / APMO / IMO)",
+          "ar": "سلّم التصحيح الرسمي للبراهين الأولمبية من 7 درجات (نهائيات نسما وIMO)"
+        },
+        "columns": [
+          {
+            "en": "Score",
+            "ar": "الدرجة"
+          },
+          {
+            "en": "Jury Criterion",
+            "ar": "معيار لجنة التحكيم"
+          },
+          {
+            "en": "Common Pitfall to Avoid",
+            "ar": "الخطأ الذي يهدر الدرجات"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "7 / 7",
+              "ar": "7 / 7"
+            },
+            {
+              "en": "Complete, airtight proof covering all edge cases AND proving uniqueness/sufficiency",
+              "ar": "برهان تام محكم يغطي الحالات الحدية ويثبت الضرورة والكفاية معاً"
+            },
+            {
+              "en": "None — even minor arithmetic slips only keep 6–7 if non-structural",
+              "ar": "كتابة واضحة ومنظمة خطوة بخطوة بترميز رياضي سليم"
+            }
+          ],
+          [
+            {
+              "en": "6 / 7",
+              "ar": "6 / 7"
+            },
+            {
+              "en": "Complete proof missing a boundary verification (e.g., forgetting to plug \\(f(x)\\) back into FE!)",
+              "ar": "برهان مكتمل أغفل التحقق التعويضي للدالة الناتجة أو حالة حدية مثل \\(p=2\\)"
+            },
+            {
+              "en": "Deriving \\(f(x)=cx\\) in a functional equation without checking it satisfies the original equation!",
+              "ar": "استنتاج شكل الدالة \\(f(x)\\) دون التعويض بها في المعادلة الأصلية للتحقق!"
+            }
+          ],
+          [
+            {
+              "en": "2 – 5 / 7",
+              "ar": "2 – 5 / 7"
+            },
+            {
+              "en": "Proves a major structural lemma (e.g., injectivity of \\(f\\), cyclic quad, or \\(p \\mid n\\))",
+              "ar": "إثبات لمّة جوهرية (مثل التباين في المعادلة الدالية أو رباعي دائري رئيس)"
+            },
+            {
+              "en": "Leaving lemmas unstated—always isolate claims clearly as \"Claim 1 / Lemma 1\"!",
+              "ar": "دفن الاستنتاجات وسط الحسابات؛ افصل كل خطوة بعنوان \"ادعاء 1 / لمّة 1\"!"
+            }
+          ],
+          [
+            {
+              "en": "0 – 1 / 7",
+              "ar": "0 – 1 / 7"
+            },
+            {
+              "en": "Guessing the right answer or testing small values \\(n=1,2,3\\) without general argument",
+              "ar": "تخمين الإجابة الصحيحة أو تجربة أمثلة عددية دون برهان عام"
+            },
+            {
+              "en": "Pure answer with zero justification often earns 0/7 on constructive/FE problems!",
+              "ar": "كتابة الناتج النهائي وحده بلا برهان قد تمنح 0 من 7 في أسئلة البراهين!"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 10.1 — Cauchy’s Functional Equation & Olympiad Substitution Playbook",
+          "ar": "● تعريف 10.1 — معادلة كوشي الدالية ومنهجية التعويضات الأولمبية"
+        },
+        "body": {
+          "en": "<p>A <strong>functional equation</strong> asks for ALL functions \\( f: A \\to B \\) satisfying an identity for all inputs in \\( A \\). The foundational model is <strong>Cauchy’s Additive Equation</strong> \\( f(x + y) = f(x) + f(y) \\):<br>• Over \\( \\mathbb{Q} \\) (or \\( \\mathbb{Z} \\)): every solution is \\( f(x) = cx \\) where \\( c = f(1) \\) (proved successively for \\( x = 0 \\), \\( x \\in \\mathbb{Z}^+ \\), \\( x \\in \\mathbb{Z} \\), and \\( x = p/q \\in \\mathbb{Q} \\)).<br>• Over \\( \\mathbb{R} \\): \\( f(x) = cx \\) holds if ANY regularity condition is known: monotonicity, continuity, boundedness on an interval, or \\( f(x) \\ge 0 \\) for \\( x \\ge 0 \\)!</p>",
+          "ar": "<p>تطلب <strong>المعادلة الدالية</strong> إيجاد جميع الدوال \\( f: A \\to B \\) التي تحقق علاقة معطاة لكل عناصر المجال. النموذج الأساس هو <strong>معادلة كوشي الجمعية</strong> \\( f(x + y) = f(x) + f(y) \\):<br>• على \\( \\mathbb{Q} \\) (أو \\( \\mathbb{Z} \\)): الحل الوحيد هو \\( f(x) = cx \\) حيث \\( c = f(1) \\) (تُثبت تتابعيّاً عند \\( 0 \\) ثم \\( \\mathbb{Z}^+ \\) ثم \\( \\mathbb{Z} \\) ثم الكسور \\( p/q \\)).<br>• على \\( \\mathbb{R} \\): يظل الحل الوحيد \\( f(x) = cx \\) متى توفر أي شرط انتظام إضافي مثل الرتابة، أو الاتصال، أو المحدودية، أو \\( f(x) \\ge 0 \\) لكل \\( x \\ge 0 \\)!</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 10.2 — Lifting the Exponent (LTE), Orthocenter Reflection & Mantel’s Theorem",
+          "ar": "● مبرهنة 10.2 — لمّة رفع الأس (LTE) وانعكاس ملتقى الارتفاعات ومبرهنة مانتل"
+        },
+        "body": {
+          "en": "<p><strong>1. Lifting the Exponent Lemma (LTE):</strong> Let \\( p \\) be an <strong>odd prime</strong> and \\( x, y \\in \\mathbb{Z} \\) with \\( p \\nmid x \\) and \\( p \\nmid y \\):<br>• If \\( p \\mid (x - y) \\), then for every integer \\( n \\ge 1 \\): \\( v_p(x^n - y^n) = v_p(x - y) + v_p(n) \\).<br>• If \\( p \\mid (x + y) \\) and \\( n \\) is <strong>odd</strong>: \\( v_p(x^n + y^n) = v_p(x + y) + v_p(n) \\).</p><p><strong>2. Orthocenter Reflection Lemma:</strong> In \\( \\triangle ABC \\) with orthocenter \\( H \\), circumcircle \\( \\omega \\), altitude foot \\( D \\in BC \\), and midpoint \\( M \\) of \\( BC \\):<br>(i) The reflection \\( H_D \\) of \\( H \\) across \\( BC \\) lies on \\( \\omega \\) (\\( HD = DH_D \\));<br>(ii) The reflection \\( H_M \\) of \\( H \\) across \\( M \\) ALSO lies on \\( \\omega \\), and \\( H_M = A' \\) is the <strong>antipode of \\( A \\)</strong> (diameter \\( AA' = 2R \\)), implying \\( AH^2 + BC^2 = 4R^2 \\)!</p><p><strong>3. Mantel’s Extremal Graph Theorem:</strong> Any simple graph on \\( n \\) vertices with NO triangle (\\( K_3 \\)) has at most \\( \\left\\lfloor \\frac{n^2}{4} \\right\\rfloor \\) edges, achieved uniquely by the balanced complete bipartite graph \\( K_{\\lfloor n/2 \\rfloor, \\lceil n/2 \\rceil} \\).</p>",
+          "ar": "<p><strong>1. لمّة رفع الأس (LTE):</strong> ليكن \\( p \\) عدداً <strong>أولياً فردياً</strong> و\\( p \\nmid xy \\):<br>• إذا كان \\( p \\mid (x - y) \\)، فلكل \\( n \\ge 1 \\): \\( v_p(x^n - y^n) = v_p(x - y) + v_p(n) \\).<br>• إذا كان \\( p \\mid (x + y) \\) وكان \\( n \\) <strong>فردياً</strong>: \\( v_p(x^n + y^n) = v_p(x + y) + v_p(n) \\).</p><p><strong>2. لمّة انعكاس ملتقى الارتفاعات:</strong> في \\( \\triangle ABC \\) الذي ملتقى ارتفاعاته \\( H \\) ودائرته المحيطة \\( \\omega \\):<br>(أ) انعكاس \\( H \\) حول الضلع \\( BC \\) يقع على الدائرة المحيطة \\( \\omega \\)؛<br>(ب) انعكاس \\( H \\) حول منتصف الضلع \\( M \\) يقع أيضاً على \\( \\omega \\) وينطبق على النقطة المقابلة قطرياً \\( A' \\) (أي \\( AA' = 2R \\))، ومنها العلاقة الشهيرة \\( AH^2 + BC^2 = 4R^2 \\)!</p><p><strong>3. مبرهنة مانتل للرسوم البيانية الخالية من المثلثات:</strong> أي رسم بياني بسيط على \\( n \\) رأساً لا يحوي مثلثاً يضم على الأكثر \\( \\left\\lfloor \\frac{n^2}{4} \\right\\rfloor \\) ضلعاً.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Synthetic Proof of the Orthocenter Reflection & Diameter Lemma",
+          "ar": "◆ البرهان الأولمبي — البرهان التركيبي للمّة انعكاس ملتقى الارتفاعات على الدائرة المحيطة"
+        },
+        "body": {
+          "en": "<p><strong>1. Reflection \\( H_D \\) across \\( BC \\):</strong> Assume \\( \\triangle ABC \\) is acute (obtuse is analogous). In right triangles \\( \\triangle BDH \\) and \\( \\triangle ADC \\), \\( \\angle BHD = 90^\\circ - \\angle HBD = 90^\\circ - (90^\\circ - C) = C \\), and similarly \\( \\angle CHD = B \\), so \\( \\angle BHC = 180^\\circ - A \\). Reflecting \\( H \\) across \\( BC \\) to \\( H_D \\) preserves angles: \\( \\angle BH_D C = \\angle BHC = 180^\\circ - A \\), so \\( \\angle BAC + \\angle BH_D C = 180^\\circ \\implies A, B, H_D, C \\) are concyclic!</p><p><strong>2. Reflection across midpoint \\( M \\):</strong> Let \\( A' \\) be the antipode of \\( A \\) on \\( (ABC) \\). Since \\( AA' \\) is a diameter, \\( \\angle ABA' = \\angle ACA' = 90^\\circ \\), so \\( BA' \\perp AB \\). Meanwhile \\( CH \\perp AB \\), forcing \\( BA' \\parallel CH \\)! Symmetrically \\( CA' \\parallel BH \\). Therefore \\( BHCA' \\) is a <strong>parallelogram</strong>, whose diagonals \\( BC \\) and \\( HA' \\) bisect each other at \\( M \\)! Also \\( BA' = CH \\) and in right \\( \\triangle ACA' \\) (with \\( B' \\) or \\( A'C = BH \\)), \\( BC^2 + AH^2 = BC^2 + (2OM)^2 = BC^2 + 4(R^2 - BM^2) = 4R^2 \\). \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>1. الانعكاس حول \\( BC \\):</strong> في المثلث الحاد \\( \\triangle ABC \\)، من زوايا الارتفاعات نجد \\( \\angle BHC = 180^\\circ - A \\). وبعكس \\( H \\) حول \\( BC \\) إلى \\( H_D \\) يتطابق المثلثان فيكون \\( \\angle BH_D C = \\angle BHC = 180^\\circ - A \\)، أي تتكامل مع \\( \\angle A \\)، فتقع \\( H_D \\) على الدائرة المحيطة \\( (ABC) \\)!</p><p><strong>2. الانعكاس حول المنتصف \\( M \\):</strong> لتكن \\( A' \\) النقطة المقابلة قطرياً لـ \\( A \\). بما أن \\( AA' \\) قطر، فإن \\( BA' \\perp AB \\)، وبما أن \\( CH \\perp AB \\) ينتج \\( BA' \\parallel CH \\)، وبالمثل \\( CA' \\parallel BH \\). إذن الشكل \\( BHCA' \\) <strong>متوازي أضلاع</strong> يتناصف قطراه \\( BC \\) و\\( HA' \\) عند المنتصف \\( M \\)! وبما أن \\( OM \\) قطعة متوسطة في \\( \\triangle AHA' \\) فإن \\( AH = 2OM \\)، ومن فيثاغورس \\( AH^2 + BC^2 = 4OM^2 + 4BM^2 = 4R^2 \\). \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "LTE Warning at \\(p = 2\\)",
+              "ar": "تنبيه لمّة LTE عند \\(p = 2\\)"
+            },
+            "value": {
+              "en": "For odd \\(x,y\\) and EVEN \\(n\\): \\(v_2(x^n - y^n) = v_2(x-y) + v_2(x+y) + v_2(n) - 1\\)!",
+              "ar": "عند \\(p = 2\\) وأس زوجي \\(n\\): \\(v_2(x^n - y^n) = v_2(x-y) + v_2(x+y) + v_2(n) - 1\\)!"
+            }
+          },
+          {
+            "label": {
+              "en": "Nine-Point Circle (Feuerbach)",
+              "ar": "دائرة النقاط التسع (فويرباخ)"
+            },
+            "value": {
+              "en": "Passes through 3 midpoints, 3 altitude feet & 3 Euler midpoints; radius \\(R/2\\), center midpoint of \\(OH\\)",
+              "ar": "نصف قطرها \\(R/2\\) ومركزها منتصف \\(OH\\) وتمس الدائرة الداخلية!"
+            }
+          },
+          {
+            "label": {
+              "en": "FE Involution Signature",
+              "ar": "بصمة الدالة الالتفافية في المعادلات الدالية"
+            },
+            "value": {
+              "en": "Whenever \\(f(f(x))\\) appears, prove \\(f\\) is injective or surjective FIRST!",
+              "ar": "كلما ظهر التركيب \\(f(f(x))\\)، ابدأ فوراً بإثبات التباين (Injectivity) أو الشمول!"
+            }
+          },
+          {
+            "label": {
+              "en": "Orthocenter Identity",
+              "ar": "متطابقة طول ارتفاع الرأس لملتقى الارتفاعات"
+            },
+            "value": {
+              "en": "\\(AH = 2R|\\cos A|\\) and \\(AH^2 + BC^2 = 4R^2\\)",
+              "ar": "\\(AH = 2R|\\cos A|\\) وبالتالي دائماً \\(AH^2 + BC^2 = 4R^2\\)"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "network_graph",
+          "title": "Extremal Triangle-Free Graph K_{3,3} on n = 6 Vertices (Max Edges = ⌊6²/4⌋ = 9)",
+          "nodes": [
+            {
+              "id": "L1",
+              "x": 90,
+              "y": 60,
+              "label": "u₁"
+            },
+            {
+              "id": "L2",
+              "x": 90,
+              "y": 130,
+              "label": "u₂"
+            },
+            {
+              "id": "L3",
+              "x": 90,
+              "y": 200,
+              "label": "u₃"
+            },
+            {
+              "id": "R1",
+              "x": 260,
+              "y": 60,
+              "label": "v₁"
+            },
+            {
+              "id": "R2",
+              "x": 260,
+              "y": 130,
+              "label": "v₂"
+            },
+            {
+              "id": "R3",
+              "x": 260,
+              "y": 200,
+              "label": "v₃"
+            }
+          ],
+          "edges": [
+            {
+              "from": "L1",
+              "to": "R1",
+              "highlight": true
+            },
+            {
+              "from": "L1",
+              "to": "R2"
+            },
+            {
+              "from": "L1",
+              "to": "R3"
+            },
+            {
+              "from": "L2",
+              "to": "R1"
+            },
+            {
+              "from": "L2",
+              "to": "R2",
+              "highlight": true
+            },
+            {
+              "from": "L2",
+              "to": "R3"
+            },
+            {
+              "from": "L3",
+              "to": "R1"
+            },
+            {
+              "from": "L3",
+              "to": "R2"
+            },
+            {
+              "from": "L3",
+              "to": "R3",
+              "highlight": true
+            }
+          ]
+        },
+        "caption": {
+          "en": "Mantel’s Extremal Construction for \\(n = 6\\): bipartite \\(K_{3,3}\\) achieves \\(9 = \\lfloor 36/4 \\rfloor\\) edges with zero triangles (every cycle in a bipartite graph has even length); adding a 10th edge immediately forces a triangle!",
+          "ar": "البناء التطرفي لمبرهنة مانتل عند \\(n = 6\\): الرسم الثنائي التام \\(K_{3,3}\\) يحقق الحد الأقصى \\(9\\) أضلاع دون أي مثلث، وإضافة ضلع عاشر تجبر ظهور مثلث فوراً!"
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "NSMO Stage 3 Titu Lower Bound f(x) = 1/x + 4/(3 − x) on (0, 3) (Min = 3 at x = 1)",
+          "xrange": [
+            0,
+            3
+          ],
+          "yrange": [
+            0,
+            12
+          ],
+          "fns": [
+            {
+              "fn": "1/x + 4/(3 - x)",
+              "color": "var(--fig-indigo)",
+              "domain": [
+                0.15,
+                2.85
+              ],
+              "label": "f(x) = 1/x + 4/(3−x)"
+            },
+            {
+              "fn": "3",
+              "color": "var(--fig-amber)",
+              "dash": "5,4",
+              "label": "Titu Bound = (1+2)²/3 = 3"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 3,
+              "label": "Min (1, 3)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Titu’s Lemma in Action (NSMO Riyadh Finals): on \\(x \\in (0, 3)\\), \\(\\frac{1^2}{x} + \\frac{2^2}{3-x} \\ge \\frac{(1+2)^2}{x + (3-x)} = \\frac{9}{3} = 3\\), attaining exact equality where \\(\\frac{1}{x} = \\frac{2}{3-x} \\iff x = 1\\).",
+          "ar": "تطبيق لمّة تيتو في نهائيات أولمبياد نسما: على الفترة \\((0, 3)\\) يتحقق \\(\\frac{1^2}{x} + \\frac{2^2}{3-x} \\ge \\frac{(1+2)^2}{3} = 3\\)، وتتحقق المساواة الدقيقة عند \\(x = 1\\)."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · NSMO Riyadh Finals Lab: Orthocenter Reflections on Circumcircle (ABC)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر نهائيات نسما: انعكاسات ملتقى الارتفاعات على الدائرة المحيطة"
+        },
+        "canvasId": "olnsmonationalfinalsExCanvas",
+        "ariaLabel": {
+          "en": "Interactive Olympiad synthetic geometry explorer showing triangle ABC inscribed in circumcircle (O, R), orthocenter H, side-reflection H_D, midpoint-reflection A_prime, and invariant AH^2 + BC^2 = 4R^2.",
+          "ar": "مستكشف تفاعلي للهندسة التركيبية يعرض المثلث المحاط بالدائرة وملتقى ارتفاعاته H وانعكاساته على الدائرة المحيطة وثبات العلاقة AH^2 + BC^2 = 4R^2."
+        },
+        "dataPanel": {
+          "btnId": "olnsmonationalfinalsExCanvas_dataBtn",
+          "panelId": "olnsmonationalfinalsExCanvas_dataPanel",
+          "descId": "olnsmonationalfinalsExCanvas_dataDesc",
+          "rowsId": "olnsmonationalfinalsExCanvas_dataRows",
+          "caption": {
+            "en": "Live verification of \\(H_D \\in (ABC)\\), parallelogram \\(BHCA'\\), and invariant \\(AH^2 + BC^2 = 4R^2\\)",
+            "ar": "تحقق حي من وقوع \\(H_D\\) و\\(A'\\) على الدائرة المحيطة وثبات \\(AH^2 + BC^2 = 4R^2\\)"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
+            },
+            {
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "olnsmonationalfinalsExCanvas_s0",
+            "label": {
+              "en": "Vertex \\(A\\) Angle <b>\\(\\theta_A =\\)</b>",
+              "ar": "موقع الرأس \\(A\\) <b>\\(\\theta_A =\\)</b>"
+            },
+            "min": 45,
+            "max": 135,
+            "value": 80,
+            "step": 5,
+            "valueDisplayId": "olnsmonationalfinalsExCanvas_v0",
+            "ariaLabel": {
+              "en": "Polar angle of vertex A on circumcircle",
+              "ar": "الزاوية القطبية للرأس A على الدائرة المحيطة"
+            }
+          },
+          {
+            "id": "olnsmonationalfinalsExCanvas_s1",
+            "label": {
+              "en": "Base Span <b>\\(\\phi =\\)</b>",
+              "ar": "انفراج القاعدة <b>\\(\\phi =\\)</b>"
+            },
+            "min": 35,
+            "max": 75,
+            "value": 55,
+            "step": 5,
+            "valueDisplayId": "olnsmonationalfinalsExCanvas_v1",
+            "ariaLabel": {
+              "en": "Base half-span angle for B and C",
+              "ar": "نصف زاوية قوس القاعدة BC"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "olnsmonationalfinalsExCanvas_r0",
+            "label": {
+              "en": "Lengths \\((AH, BC)\\)",
+              "ar": "الطولان \\((AH, BC)\\)"
+            },
+            "colorClass": "indigo",
+            "value": "AH=4.59, BC=6.55"
+          },
+          {
+            "id": "olnsmonationalfinalsExCanvas_r1",
+            "label": {
+              "en": "Invariant \\(AH^2 + BC^2\\)",
+              "ar": "الثابت \\(AH^2 + BC^2\\)"
+            },
+            "colorClass": "amber",
+            "value": "64.00 = 4R² (R=4)"
+          },
+          {
+            "id": "olnsmonationalfinalsExCanvas_r2",
+            "label": {
+              "en": "Reflection \\(OH_D\\) Radius",
+              "ar": "بعد الانعكاس \\(OH_D\\)"
+            },
+            "colorClass": "teal",
+            "value": "4.00 = R ✓"
+          }
+        ],
+        "note": {
+          "en": "Move vertex \\(A\\) around circumcircle \\(\\omega(O, R=4)\\): watch \\(H\\) move inside \\(\\triangle ABC\\) while its reflection \\(H_D\\) across \\(BC\\) and \\(H_M = A'\\) across midpoint \\(M\\) stay glued to \\(\\omega\\), keeping \\(AH^2 + BC^2 = 64.00\\) invariant!",
+          "ar": "حرّك الرأس \\(A\\) على الدائرة المحيطة \\(\\omega(O, R=4)\\): لاحظ كيف يظل انعكاس \\(H\\) حول الضلع \\(BC\\) وحول منتصفه \\(M\\) واقعَين تماماً على محيط الدائرة، مع بقاء \\(AH^2 + BC^2 = 64\\) ثابتاً!"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.A — Functional Equation Proof Over ℝ (NSMO Stage 3 / IMO Style)",
+          "ar": "مثال محلول 10.A — برهان معادلة دالية كامل على ℝ (نهائيات نسما / طراز IMO)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find all functions \\( f: \\mathbb{R} \\to \\mathbb{R} \\) satisfying \\( f(x^2 + f(y)) = y + (f(x))^2 \\) for all \\( x, y \\in \\mathbb{R} \\).</p><p><strong>7-Point Olympiad Proof:</strong><br><strong>Claim 1 (Injectivity &amp; Surjectivity):</strong> Setting \\( x = 0 \\) gives \\( f(f(y)) = y + c^2 \\) where \\( c = f(0) \\). If \\( f(a) = f(b) \\), then \\( a + c^2 = f(f(a)) = f(f(b)) = b + c^2 \\implies a = b \\) (injective), and every \\( z \\in \\mathbb{R} \\) equals \\( f(f(z - c^2)) \\) (surjective).<br><strong>Claim 2 (\\( f(0) = 0 \\)):</strong> By surjectivity, pick \\( u \\) with \\( f(u) = 0 \\). Plugging \\( y = u \\) into \\( f(f(y)) = y + c^2 \\) gives \\( c = f(0) = u + c^2 \\). Meanwhile setting \\( x = u, y = 0 \\) in the original equation gives \\( f(u^2 + c) = 0 + 0 = f(u) \\); by injectivity \\( u^2 + c = u \\). Adding \\( c = u + c^2 \\) and \\( u = u^2 + c \\) gives \\( u^2 + c^2 = 0 \\implies u = c = 0 \\), so \\( f(0) = 0 \\) and \\( f(f(y)) = y \\)!<br><strong>Claim 3 (Positivity &amp; Additivity):</strong> Setting \\( y = 0 \\) yields \\( f(x^2) = f(x)^2 \\ge 0 \\), so \\( f(z) \\ge 0 \\) for all \\( z \\ge 0 \\). Replacing \\( x^2 \\) by \\( t \\ge 0 \\) and \\( y \\) by \\( f(s) \\) (using \\( f(f(s)) = s \\)) yields \\( f(t + s) = f(s) + f(t) \\) for \\( t \\ge 0 \\), which extends to all \\( s, t \\in \\mathbb{R} \\) because \\( f(-x) = -f(x) \\). Additivity + \\( f(z) \\ge 0 \\) for \\( z \\ge 0 \\) implies \\( f \\) is non-decreasing, hence \\( f(x) = kx \\); testing \\( (kx)^2 = k x^2 \\) with \\( k(kx) = x \\) forces \\( k = 1 \\).<br><strong>Verification:</strong> \\( f(x) = x \\) satisfies \\( x^2 + y = y + x^2 \\) identically. Thus \\( f(x) = x \\) is the unique solution! \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد جميع الدوال \\( f: \\mathbb{R} \\to \\mathbb{R} \\) التي تحقق \\( f(x^2 + f(y)) = y + (f(x))^2 \\) لكل \\( x, y \\in \\mathbb{R} \\).</p><p><strong>البرهان الأولمبي المحكم (7/7):</strong><br><strong>ادعاء 1 (التباين والشمول):</strong> بوضع \\( x = 0 \\) نجد \\( f(f(y)) = y + c^2 \\) حيث \\( c = f(0) \\)، وهذا يثبت فوراً أن \\( f \\) متباينة وشاملة.<br><strong>ادعاء 2 (\\( f(0) = 0 \\)):</strong> بما أن \\( f \\) شاملة، يوجد \\( u \\) يحقق \\( f(u) = 0 \\). بالتعويض \\( y = u \\) نجد \\( c = u + c^2 \\)، وبوضع \\( x = u, y = 0 \\) نجد \\( f(u^2 + c) = 0 = f(u) \\implies u^2 + c = u \\). بالجمع ينتج \\( u^2 + c^2 = 0 \\implies c = f(0) = 0 \\) وبالتالي \\( f(f(y)) = y \\)!<br><strong>ادعاء 3 (الجمعية والرتابة):</strong> بوضع \\( y = 0 \\) نحصل على \\( f(x^2) = f(x)^2 \\ge 0 \\)، أي \\( f(z) \\ge 0 \\) لكل \\( z \\ge 0 \\). كما أن استبدال \\( y \\) بـ \\( f(s) \\) يعطي معادلة كوشي الجمعية \\( f(t + s) = f(t) + f(s) \\)، ومع عدم السالبية تصبح \\( f \\) دالة خطية \\( f(x) = kx \\)؛ وبالتعويض يتعين \\( k = 1 \\) حصراً.<br><strong>التحقق التعويضي:</strong> الدالة \\( f(x) = x \\) تحقق المعادلة الأصلية فعلاً، وهي الحل الوحيد! \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.B — Lifting the Exponent (LTE) Exact Prime Power (Mawhiba Camp)",
+          "ar": "مثال محلول 10.B — حساب أعلى قوة أولية عبر لمّة رفع الأس LTE (ملتقيات موهبة)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the largest integer \\( k \\) such that \\( 3^k \\) divides \\( 7^{81} - 1 \\), and determine the smallest positive integer \\( n \\) such that \\( 3^{10} \\mid (7^n - 1) \\).</p><p><strong>Solution:</strong> Since \\( p = 3 \\) is an odd prime, \\( 3 \\nmid 7 \\), and \\( 7 - 1 = 6 \\) is divisible by \\( 3 \\), the hypotheses of <strong>LTE</strong> hold cleanly for \\( x = 7,\\; y = 1 \\)!<br>1. For \\( n = 81 = 3^4 \\):<br>\\[ v_3(7^{81} - 1) = v_3(7 - 1) + v_3(81) = v_3(6) + 4 = 1 + 4 = 5 \\implies k = 5. \\]<br>2. For \\( 3^{10} \\mid (7^n - 1) \\), we need \\( v_3(7^n - 1) \\ge 10 \\iff 1 + v_3(n) \\ge 10 \\iff v_3(n) \\ge 9 \\). The smallest positive integer with \\( 3^9 \\mid n \\) is <strong>\\( n = 3^9 = 19{,}683 \\)</strong>.</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد أكبر عدد صحيح \\( k \\) بحيث يقسم \\( 3^k \\) العدد \\( 7^{81} - 1 \\)، ثم حدّد أصغر عدد صحيح موجب \\( n \\) يحقق \\( 3^{10} \\mid (7^n - 1) \\).</p><p><strong>الحل الأولمبي:</strong> بما أن \\( p = 3 \\) أولي فردي، و\\( 3 \\nmid 7 \\)، و\\( 3 \\mid (7 - 1) \\)، تتحقق شروط <strong>لمّة رفع الأس (LTE)</strong> مباشرةً:<br>1. عند \\( n = 81 = 3^4 \\): \\( v_3(7^{81} - 1) = v_3(6) + v_3(81) = 1 + 4 = 5 \\implies k = 5 \\).<br>2. لتحقيق \\( v_3(7^n - 1) \\ge 10 \\) يلزم \\( 1 + v_3(n) \\ge 10 \\iff v_3(n) \\ge 9 \\)، وأصغر عدد موجب يحقق ذلك هو <strong>\\( n = 3^9 = 19{,}683 \\)</strong>.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.C — Orthocenter Distance & Circumradius Synthesis (NSMO Finals)",
+          "ar": "مثال محلول 10.C — المسافة إلى ملتقى الارتفاعات ونصف القطر المحيط (نهائيات نسما)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> In acute \\( \\triangle ABC \\) with circumradius \\( R = 10 \\) and side \\( BC = 16 \\), let \\( H \\) be the orthocenter and \\( D \\) be the foot of the altitude from \\( A \\) to \\( BC \\). Given \\( HD = 3 \\), find the exact altitude \\( AD \\) and area \\( [ABC] \\).</p><p><strong>Solution:</strong><br>1. By the Orthocenter Diameter Lemma (Theorem 10.2), \\( AH^2 + BC^2 = 4R^2 \\):<br>\\[ AH^2 = 4(10^2) - 16^2 = 400 - 256 = 144 \\implies AH = 12. \\]<br>2. Since \\( \\triangle ABC \\) is acute, \\( H \\) lies strictly inside \\( \\triangle ABC \\) on segment \\( AD \\), so:<br>\\[ AD = AH + HD = 12 + 3 = 15. \\]<br>3. Therefore \\( [ABC] = \\frac{1}{2} \\cdot BC \\cdot AD = \\frac{1}{2}(16)(15) = 120 \\). (Notice \\( BD \\cdot DC = HD \\cdot AD = 3 \\times 15 = 45 \\) and \\( BD + DC = 16 \\implies \\{BD, DC\\} = \\{16 \\text{ split? } \\Delta = 256 - 180 = 76 > 0\\} \\), so a real acute triangle exists!)</p>",
+          "ar": "<p><strong>المسألة:</strong> في المثلث الحاد الزوايا \\( \\triangle ABC \\) الذي نصف قطر دائرته المحيطة \\( R = 10 \\) وضلع قاعدته \\( BC = 16 \\)، لتكن \\( H \\) ملتقى الارتفاعات و\\( D \\) مسقط الارتفاع من \\( A \\) على \\( BC \\). إذا كان \\( HD = 3 \\)، فأوجد الارتفاع \\( AD \\) ومساحة المثلث \\( [ABC] \\).</p><p><strong>الحل الأولمبي:</strong><br>1. من لمّة ملتقى الارتفاعات (مبرهنة 10.2): \\( AH^2 + BC^2 = 4R^2 \\implies AH^2 = 400 - 256 = 144 \\implies AH = 12 \\).<br>2. بما أن المثلث حاد الزوايا تقع \\( H \\) داخل القطعة \\( AD \\)، فيكون \\( AD = AH + HD = 12 + 3 = 15 \\).<br>3. إذن المساحة \\( [ABC] = \\frac{1}{2} \\times 16 \\times 15 = 120 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.D — Multiplicative Order Obstruction for Prime Divisors (IMO / NSMO TST)",
+          "ar": "مثال محلول 10.D — الرتبة الضربية لقواسم \\(2^p + 1\\) و\\(a^2 + 1\\) (اختبارات ترشيح المنتخب)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Prove that every odd prime divisor \\( q \\) of \\( N = n^4 + 1 \\) satisfies \\( q \\equiv 1 \\pmod 8 \\).</p><p><strong>7-Point Olympiad Proof:</strong><br>1. Suppose odd prime \\( q \\mid (n^4 + 1) \\). Then \\( q \\nmid n \\) and \\( n^4 \\equiv -1 \\pmod q \\).<br>2. Squaring gives \\( n^8 \\equiv 1 \\pmod q \\). Let \\( d = \\operatorname{ord}_q(n) \\) be the multiplicative order of \\( n \\) modulo \\( q \\).<br>3. By the fundamental property of multiplicative order, \\( n^8 \\equiv 1 \\pmod q \\implies d \\mid 8 \\), so \\( d \\in \\{1, 2, 4, 8\\} \\).<br>4. However, \\( n^4 \\equiv -1 \\not\\equiv 1 \\pmod q \\) (since \\( q \\) is odd, \\( 1 \\not\\equiv -1 \\pmod q \\)), so \\( d \\nmid 4 \\)! This eliminates \\( 1, 2, 4 \\) and forces \\( d = 8 \\).<br>5. By Fermat’s Little Theorem \\( n^{q-1} \\equiv 1 \\pmod q \\), which requires \\( d \\mid (q - 1) \\), i.e., \\( 8 \\mid (q - 1) \\iff q \\equiv 1 \\pmod 8 \\)! \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>المسألة:</strong> أثبت أن كل قاسم أولي فردي \\( q \\) للعدد \\( N = n^4 + 1 \\) يحقق \\( q \\equiv 1 \\pmod 8 \\).</p><p><strong>البرهان الأولمبي (7/7):</strong><br>1. إذا كان \\( q \\mid (n^4 + 1) \\) فإن \\( q \\nmid n \\) و\\( n^4 \\equiv -1 \\pmod q \\)، وبالتربيع \\( n^8 \\equiv 1 \\pmod q \\).<br>2. لتكن \\( d = \\operatorname{ord}_q(n) \\) الرتبة الضربية للعدد \\( n \\) بترديد \\( q \\). من \\( n^8 \\equiv 1 \\) نستنتج \\( d \\mid 8 \\).<br>3. وبما أن \\( q \\) فردي فإن \\( n^4 \\equiv -1 \\not\\equiv 1 \\pmod q \\)، أي \\( d \\nmid 4 \\)، مما يحسم \\( d = 8 \\) حصراً!<br>4. من مبرهنة فيرما الصغرى \\( n^{q-1} \\equiv 1 \\pmod q \\) فيجب أن يكون \\( 8 = d \\mid (q - 1) \\)، أي \\( q \\equiv 1 \\pmod 8 \\)! \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Finals Proof Trap — Never Apply Standard Odd-Prime LTE Directly to p = 2!",
+          "ar": "⚠ فخ قاتل في براهين النهائيات — تطبيق صيغة LTE الفردية مباشرةً عند p = 2!"
+        },
+        "body": {
+          "en": "<p>For \\( p = 2 \\) and odd \\( x, y \\) with even \\( n \\), \\( v_2(x^n - y^n) \\ne v_2(x-y) + v_2(n) \\)! Because \\( x^2 - y^2 = (x-y)(x+y) \\) picks up factors of \\( 2 \\) from BOTH \\( x - y \\) and \\( x + y \\), the correct \\( p = 2 \\) LTE formula for even \\( n \\) is \\( v_2(x^n - y^n) = v_2(x - y) + v_2(x + y) + v_2(n) - 1 \\).</p>",
+          "ar": "<p>لا تطبّق صيغة LTE الخاصة بالأعداد الأولية الفردية على \\( p = 2 \\) عندما يكون الأس \\( n \\) زوجياً! لأن \\( x^2 - y^2 = (x-y)(x+y) \\) يكتسب قوى للعدد \\( 2 \\) من العاملين معاً، والصيغة الصحيحة هي \\( v_2(x^n - y^n) = v_2(x - y) + v_2(x + y) + v_2(n) - 1 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Mawhiba IMO Camp Strategy — Always Check Simple Ansätze First in Functional Equations",
+          "ar": "▲ استراتيجية معسكرات المنتخب — اختبر الدوال المرجعية البسيطة قبل البدء بالبرهان!"
+        },
+        "body": {
+          "en": "<p>Spend your first \\( 90 \\) seconds on any functional equation testing \\( f(x) = c \\), \\( f(x) = cx \\), \\( f(x) = x + c \\), and \\( f(x) = x^2 \\). Knowing in advance whether \\( f(x) = 0 \\) or \\( f(x) = -x \\) is ALSO a valid solution prevents you from dividing by \\( f(x) \\) illegally and losing 2–3 rubric points!</p>",
+          "ar": "<p>خصّص أول دقيقة ونصف في أي معادلة دالية لاختبار الدوال البسيطة \\( f(x) = c \\)، \\( cx \\)، \\( x+c \\)، \\( x^2 \\). معرفة جميع الحلول مسبقاً تحميك من القسمة الخاطئة على مقدار قد يساوي صفراً وتضمن لك علامة الحالات الحدية الكاملة!</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 10.1 · NSMO Finals Warmup]</strong> Using Lifting the Exponent (LTE), find the exact \\( 5 \\)-adic valuation \\( v_5(11^{125} - 1) \\).",
+          "ar": "<strong>[تدريب 10.1 · تمهيد نهائيات نسما]</strong> باستخدام لمّة رفع الأس (LTE)، أوجد التقييم الدقيق \\( v_5(11^{125} - 1) \\)."
+        },
+        "hints": [
+          {
+            "en": "Verify \\( p = 5 \\) is odd, \\( 5 \\nmid 11 \\), and \\( 5 \\mid (11 - 1) = 10 \\).",
+            "ar": "تحقق من أن \\( p = 5 \\) أولي فردي و\\( 5 \\mid (11 - 1) = 10 \\)."
+          },
+          {
+            "en": "Apply \\( v_5(11^{125} - 1) = v_5(11 - 1) + v_5(125) \\).",
+            "ar": "طبّق الصيغة \\( v_5(11^{125} - 1) = v_5(10) + v_5(125) \\)."
+          },
+          {
+            "en": "Add \\( 1 + 3 \\).",
+            "ar": "اجمع \\( 1 + 3 \\)."
+          }
+        ],
+        "solution": {
+          "en": "By LTE for odd prime \\( p = 5 \\), \\( v_5(11^{125} - 1) = v_5(10) + v_5(5^3) = 1 + 3 = 4 \\).",
+          "ar": "بتطبيق لمّة LTE عند \\( p = 5 \\): \\( v_5(11^{125} - 1) = v_5(10) + v_5(125) = 1 + 3 = 4 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 10.2 · NSMO Stage 3]</strong> What is the maximum possible number of edges in a simple graph on \\( 15 \\) vertices that contains NO triangle (\\( K_3 \\))?",
+          "ar": "<strong>[تدريب 10.2 · نسما المرحلة الثالثة]</strong> ما أكبر عدد ممكن من الأضلاع في رسم بياني بسيط على \\( 15 \\) رأساً لا يحتوي على أي مثلث (\\( K_3 \\))؟"
+        },
+        "hints": [
+          {
+            "en": "Apply Mantel’s Theorem \\( e_{\\max} = \\left\\lfloor \\frac{n^2}{4} \\right\\rfloor \\).",
+            "ar": "طبّق مبرهنة مانتل \\( e_{\\max} = \\left\\lfloor \\frac{n^2}{4} \\right\\rfloor \\)."
+          },
+          {
+            "en": "Equivalently compute edges of \\( K_{7, 8} \\).",
+            "ar": "أو احسب عدد أضلاع الرسم الثنائي التام المتوازن \\( K_{7, 8} \\)."
+          },
+          {
+            "en": "Multiply \\( 7 \\times 8 \\).",
+            "ar": "اضرب \\( 7 \\times 8 \\)."
+          }
+        ],
+        "solution": {
+          "en": "By Mantel’s Theorem, the maximum edge count is \\( \\left\\lfloor \\frac{15^2}{4} \\right\\rfloor = \\left\\lfloor \\frac{225}{4} \\right\\rfloor = 56 \\), realized by \\( K_{7, 8} \\) (\\( 7 \\times 8 = 56 \\)).",
+          "ar": "حسب مبرهنة مانتل، أقصى عدد للأضلاع هو \\( \\left\\lfloor \\frac{225}{4} \\right\\rfloor = 56 \\)، ويتحقق في الرسم الثنائي التام \\( K_{7, 8} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 10.3 · NSMO Stage 3]</strong> In \\( \\triangle ABC \\), the circumradius is \\( R = 13 \\) and side \\( BC = 24 \\). Find the exact distance \\( AH \\) from vertex \\( A \\) to the orthocenter \\( H \\).",
+          "ar": "<strong>[تدريب 10.3 · نسما المرحلة الثالثة]</strong> في المثلث \\( \\triangle ABC \\)، نصف قطر الدائرة المحيطة \\( R = 13 \\) وطول الضلع \\( BC = 24 \\). أوجد المسافة الدقيقة \\( AH \\) من الرأس \\( A \\) إلى ملتقى الارتفاعات \\( H \\)."
+        },
+        "hints": [
+          {
+            "en": "Use the Orthocenter–Circumradius identity \\( AH^2 + BC^2 = 4R^2 \\).",
+            "ar": "استخدم المتطابقة \\( AH^2 + BC^2 = 4R^2 \\)."
+          },
+          {
+            "en": "Substitute \\( R = 13 \\) (\\( 2R = 26 \\)) and \\( BC = 24 \\).",
+            "ar": "عوّض بـ \\( 2R = 26 \\) و\\( BC = 24 \\)."
+          },
+          {
+            "en": "Recognize the \\( 10\\text{–}24\\text{–}26 \\) right triangle!",
+            "ar": "استحضر ثلاثية فيثاغورس \\( 10\\text{–}24\\text{–}26 \\)!"
+          }
+        ],
+        "solution": {
+          "en": "From \\( AH^2 + BC^2 = (2R)^2 \\), we get \\( AH^2 = 26^2 - 24^2 = (26 - 24)(26 + 24) = 2 \\times 50 = 100 \\implies AH = 10 \\).",
+          "ar": "من العلاقة \\( AH^2 = (2R)^2 - BC^2 = 26^2 - 24^2 = 100 \\)، نجد \\( AH = 10 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 10.4 · Mawhiba Olympiad Camp]</strong> Find the exact \\( 2 \\)-adic valuation \\( v_2(5^{24} - 1) \\) using the \\( p = 2 \\) Lifting the Exponent formula.",
+          "ar": "<strong>[تدريب 10.4 · ملتقيات موهبة الأولمبية]</strong> أوجد التقييم الدقيق \\( v_2(5^{24} - 1) \\) باستخدام صيغة لمّة رفع الأس الخاصة بـ \\( p = 2 \\)."
+        },
+        "hints": [
+          {
+            "en": "Since \\( n = 24 \\) is even and \\( 5, 1 \\) are odd, use \\( v_2(x^n - y^n) = v_2(x - y) + v_2(x + y) + v_2(n) - 1 \\).",
+            "ar": "بما أن الأس \\( 24 \\) زوجي، طبّق \\( v_2(5^{24} - 1) = v_2(5 - 1) + v_2(5 + 1) + v_2(24) - 1 \\)."
+          },
+          {
+            "en": "Compute \\( v_2(4) = 2 \\), \\( v_2(6) = 1 \\), and \\( v_2(24) = 3 \\).",
+            "ar": "احسب \\( v_2(4) = 2 \\)، و\\( v_2(6) = 1 \\)، و\\( v_2(24) = 3 \\)."
+          },
+          {
+            "en": "Evaluate \\( 2 + 1 + 3 - 1 \\).",
+            "ar": "احسب \\( 2 + 1 + 3 - 1 \\)."
+          }
+        ],
+        "solution": {
+          "en": "By the \\( p = 2 \\) LTE formula for even \\( n \\), \\( v_2(5^{24} - 1) = v_2(4) + v_2(6) + v_2(24) - 1 = 2 + 1 + 3 - 1 = 5 \\) (so \\( 2^5 = 32 \\parallel 5^{24} - 1 \\)).",
+          "ar": "بتطبيق صيغة LTE عند \\( p = 2 \\): \\( v_2(5^{24} - 1) = 2 + 1 + 3 - 1 = 5 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 10.5 · Saudi IMO TST Style]</strong> Suppose \\( f: \\mathbb{Z} \\to \\mathbb{Z} \\) satisfies \\( f(x + y) = f(x) + f(y) + 2xy \\) for all \\( x, y \\in \\mathbb{Z} \\), and \\( f(1) = 4 \\). Find \\( f(10) \\).",
+          "ar": "<strong>[تدريب 10.5 · طراز اختبارات ترشيح المنتخب IMO]</strong> لتكن \\( f: \\mathbb{Z} \\to \\mathbb{Z} \\) دالة تحقق \\( f(x + y) = f(x) + f(y) + 2xy \\) لكل \\( x, y \\in \\mathbb{Z} \\)، وكان \\( f(1) = 4 \\). أوجد قيمة \\( f(10) \\)."
+        },
+        "hints": [
+          {
+            "en": "Notice \\( (x + y)^2 = x^2 + y^2 + 2xy \\) has the EXACT same cross-term \\( +2xy \\)!",
+            "ar": "لاحظ أن \\( (x + y)^2 = x^2 + y^2 + 2xy \\) يمتلك الحد التفاعلي نفسه \\( +2xy \\)!"
+          },
+          {
+            "en": "Define the auxiliary function \\( g(x) = f(x) - x^2 \\) and check \\( g(x + y) \\).",
+            "ar": "عرّف الدالة المساعدة \\( g(x) = f(x) - x^2 \\) وتحقق من أنها تحقق معادلة كوشي \\( g(x+y) = g(x) + g(y) \\)!"
+          },
+          {
+            "en": "Since \\( g(1) = f(1) - 1 = 3 \\), deduce \\( g(x) = 3x \\implies f(x) = x^2 + 3x \\).",
+            "ar": "من \\( g(1) = 4 - 1 = 3 \\) استنتج \\( g(x) = 3x \\implies f(x) = x^2 + 3x \\)."
+          }
+        ],
+        "solution": {
+          "en": "Subtracting \\( (x+y)^2 = x^2 + y^2 + 2xy \\) shows \\( g(x) = f(x) - x^2 \\) satisfies Cauchy’s equation \\( g(x+y) = g(x) + g(y) \\) over \\( \\mathbb{Z} \\). Thus \\( g(x) = g(1)x = (4 - 1)x = 3x \\), so \\( f(x) = x^2 + 3x \\) (which checks: \\( (x+y)^2 + 3(x+y) = x^2+3x + y^2+3y + 2xy \\)). Hence \\( f(10) = 100 + 30 = 130 \\).",
+          "ar": "بطرح \\( (x+y)^2 \\) نجد أن \\( g(x) = f(x) - x^2 \\) تحقق معادلة كوشي الجمعية على \\( \\mathbb{Z} \\)، ومنه \\( g(x) = g(1)x = 3x \\)، أي \\( f(x) = x^2 + 3x \\). إذن \\( f(10) = 10^2 + 3(10) = 130 \\)."
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "NSMO of KSA: Stages 1 & 2",
+            "chapterId": "ol-nsmo-stage1-2",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "Subsection III · KAUST Mathematics Competition: Regional Qualifier",
+            "chapterId": "ol-kaust-kmc-qualifier",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "Subsection III · KAUST Campus Finals & Academy Synthesis",
+            "chapterId": "ol-kaust-finals-academy",
+            "trackId": "olympiad"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "NSMO of KSA: National Finals & Mawhiba IMO Pathway"
+    ]
+  }
+}

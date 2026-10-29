@@ -221,7 +221,14 @@
         "railLabel":     { "$ref": "#/definitions/bilingualText", "description": "Optional — the nav rail's label for this chapter, if it differs from `title` (real source cases exist where the rail link has an Arabic translation but the chapter's own <h2> doesn't, or vice versa — don't assume they match, check both). Falls back to `title` if absent." },
         "description":   { "$ref": "#/definitions/bilingualText", "description": "Optional one-line summary/tag line shown under the title." },
         "chapterTag":    { "$ref": "#/definitions/chapterTag", "description": "Optional styled pill/category tag rendered right after the chead, before the first block. Track-specific (source class names like qud-tag/tah-tag/act-tag differ per track) and English-only in every real instance found (no track has ever translated it)." },
-        "railGroupLabel": { "type": "string", "description": "WP33 (calculus) — optional. When set, rail.njk renders an extra <p class=\"rt\" style=\"margin-top:16px\">{label}</p> immediately before THIS chapter's own rail link — calculus's real rail has a second 'Multivariable · Calc III' group header before its Vectors chapter, splitting the flat chapter list into two labeled groups. Omit on every chapter of every other track (a one-off, not a general per-track grouping mechanism)." },
+        "railGroupLabel": {
+          "oneOf": [
+            { "type": "string" },
+            { "$ref": "#/definitions/bilingualText" }
+          ],
+          "description": "WP33 (calculus) & Olympiad subsections — optional. When set, rail.njk renders an extra <p class=\"rt\">{label}</p> immediately before THIS chapter's own rail link (accepting either a legacy plain string like calculus's 'Multivariable · Calc III' or a bilingualText object for multi-subsection tracks such as Olympiad's Core / NSMO of KSA / KAUST subsections)."
+        },
+        "subsectionBanner": { "$ref": "#/definitions/bilingualText", "description": "Optional bilingual subsection eyebrow banner rendered above the chapter heading to visually demarcate major curriculum subsections (e.g., NSMO of KSA, KAUST Mathematics Competition)." },
         "content":       { "$ref": "#/definitions/chapterContent" },
         "quizWidget":  {
           "type": "object",

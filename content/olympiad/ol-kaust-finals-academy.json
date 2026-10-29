@@ -1,0 +1,597 @@
+{
+  "id": "ol-kaust-finals-academy",
+  "chapterNumber": "12",
+  "subsectionBanner": {
+    "en": "🏛️ Subsection III · KAUST Mathematics Competition (KMC) & KAUST Academy Pathway",
+    "ar": "🏛️ القسم الثالث · مسابقة كاوست للرياضيات (KMC) ومسار أكاديمية كاوست للموهوبين (ثول)"
+  },
+  "title": {
+    "en": "KAUST Campus Finals & KAUST Academy Synthesis: Jensen, Roots-of-Unity Filters & Homothety",
+    "ar": "نهائيات حرم جامعة كاوست وأكاديمية كاوست: متباينة جنسن وفلاتر الجذور النونية والتحاكي الهندسي"
+  },
+  "railLabel": {
+    "en": "KAUST Finals & Academy Synthesis",
+    "ar": "نهائيات كاوست والتركيب المتقدم"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🌟",
+    "category": "Subsection III · KAUST Thuwal Finals & KAUST–Cambridge Summer Camp",
+    "badges": [
+      {
+        "text": "THUWAL FINALS · ACADEMY",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Jensen convexity inequality & weighted Cauchy–Schwarz",
+      "Generating functions & Roots-of-Unity Filter (mod 2, 3, 4)",
+      "Geometric Homothety H(O, k), Euler Nine-Point & Monge Theorem",
+      "Multi-branch synthesis (Algebra × NT × Geo × Combo)",
+      "KAUST Team & Relay Championship execution tactics"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "At the <strong>KAUST Mathematics Competition (KMC) Finals</strong> on the Red Sea campus in Thuwal—and inside <strong>KAUST Academy’s Gifted Summer Mathematics Program</strong>—problems deliberately fuse multiple Olympiad disciplines into a single cohesive challenge. Complex numbers unlock combinatorial binomial sums via the <strong>Roots-of-Unity Filter</strong>, convexity drives sharp trigonometric bounds via <strong>Jensen’s Inequality</strong>, and <strong>Homothety</strong> collapses multi-circle tangent configurations in three lines.",
+          "ar": "في <strong>النهائيات الحضورية لمسابقة كاوست (KMC)</strong> بحرم الجامعة في ثول على ساحل البحر الأحمر—وخلال <strong>البرامج الصيفية المتقدمة لأكاديمية كاوست</strong>—تندمج فروع الأولمبياد معاً في مسائل تركيبية عالية المستوى؛ حيث تحسم الأعداد المركبة المجاميع التوافيقية الدورية عبر <strong>فلتر الجذور النونية للواحد</strong>، وتضبط الدوال المحدبة المتباينات المثلثية عبر <strong>متباينة جنسن</strong>، ويختزل <strong>التحاكي الهندسي (Homothety)</strong> أعقد تشكيلات الدوائر المتماسة في أسطر معدودة."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 12.1 — Convexity & Jensen’s Inequality + Geometric Homothety H(S, k)",
+          "ar": "● تعريف 12.1 — التحدب ومتباينة جنسن والتحويل التحاكي الهندسي H(S, k)"
+        },
+        "body": {
+          "en": "<p><strong>1. Jensen’s Inequality:</strong> Let \\( f: I \\to \\mathbb{R} \\) be <strong>convex</strong> on interval \\( I \\) (\\( f''(x) \\ge 0 \\)). For any \\( x_1, \\dots, x_n \\in I \\) and weights \\( w_i > 0 \\) with \\( \\sum_{i=1}^n w_i = 1 \\):</p>\\[ \\sum_{i=1}^n w_i f(x_i) \\ge f\\!\\left(\\sum_{i=1}^n w_i x_i\\right) \\qquad \\text{(reversed if } f \\text{ is concave, } f''(x) \\le 0\\text{)}. \\]<p><strong>2. Homothety \\( \\mathcal{H}(S, k) \\):</strong> A dilation centered at \\( S \\) with nonzero scale factor \\( k \\in \\mathbb{R} \\setminus \\{0\\} \\) maps every point \\( P \\) to \\( P' \\) via \\( \\overrightarrow{SP'} = k\\,\\overrightarrow{SP} \\). Every line \\( \\ell \\) maps to a parallel line \\( \\ell' \\parallel \\ell \\), every segment scales by \\( |k| \\), every area scales by \\( k^2 \\), and any two circles of radii \\( R_1 \\ne R_2 \\) share an external homothetic center (scale \\( +R_2/R_1 \\)) and internal homothetic center (scale \\( -R_2/R_1 \\))!</p>",
+          "ar": "<p><strong>1. متباينة جنسن (Jensen’s Inequality):</strong> إذا كانت \\( f \\) دالة <strong>محدبة</strong> على فترة \\( I \\) (أي \\( f''(x) \\ge 0 \\))، فإنه لأي نقاط \\( x_1,\\dots,x_n \\in I \\) وأوزان موجبة \\( \\sum w_i = 1 \\):</p>\\[ \\sum_{i=1}^n w_i f(x_i) \\ge f\\!\\left(\\sum_{i=1}^n w_i x_i\\right) \\qquad \\text{(وتنعكس المتباينة للدالة المقعرة } f'' \\le 0\\text{)}. \\]<p><strong>2. التحاكي الهندسي \\( \\mathcal{H}(S, k) \\):</strong> تحويل مركزه \\( S \\) ونسبته \\( k \\ne 0 \\) يرسل كل نقطة \\( P \\) إلى \\( P' \\) بحيث \\( \\overrightarrow{SP'} = k\\,\\overrightarrow{SP} \\). يحول التحاكي كل مستقيم إلى مستقيم موازٍ له، ويضرب الأطوال في \\( |k| \\) والمساحات في \\( k^2 \\)، وأي دائرتين مختلفتَي نصف القطر تشتركان في مركزَي تحاكٍ خارجي وداخلي!</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 12.2 — The Roots-of-Unity Filter (Multisection of Generating Functions)",
+          "ar": "● مبرهنة 12.2 — فلتر الجذور النونية للواحد لاستخلاص المعاملات الدورية"
+        },
+        "body": {
+          "en": "<p>Let \\( F(x) = \\sum_{k=0}^N a_k x^k \\) be a polynomial or power series, and let \\( \\omega = e^{2\\pi i / m} \\) be a primitive \\( m \\)-th root of unity. Because \\( \\frac{1}{m}\\sum_{j=0}^{m-1} \\omega^{jk} = 1 \\) if \\( m \\mid k \\) and \\( 0 \\) otherwise, summing every \\( m \\)-th coefficient starting at residue \\( r \\) is given exactly by:</p>\\[ \\sum_{k \\equiv r \\pmod m} a_k = \\frac{1}{m} \\sum_{j=0}^{m-1} \\omega^{-jr} F(\\omega^j). \\]<p>In particular, for \\( F(x) = (1 + x)^n \\) with \\( m = 4 \\) (\\( \\omega = i \\)) and \\( r = 0 \\):</p>\\[ \\sum_{k \\equiv 0 \\pmod 4} \\binom{n}{k} = \\frac{2^n + (1 + i)^n + (1 - i)^n}{4} = \\frac{2^n + 2 \\cdot 2^{n/2}\\cos\\!\\left(\\frac{n\\pi}{4}\\right)}{4}! \\]",
+          "ar": "<p>لتكن \\( F(x) = \\sum_{k=0}^N a_k x^k \\) دالة مولّدة، وليكن \\( \\omega = e^{2\\pi i / m} \\) جذراً بدائياً من الرتبة \\( m \\) للواحد. بما أن \\( \\frac{1}{m}\\sum_{j=0}^{m-1} \\omega^{jk} \\) يساوي \\( 1 \\) إذا كان \\( m \\mid k \\) و\\( 0 \\) خلاف ذلك، فإن مجموع المعاملات التي توافق \\( r \\pmod m \\) يعطى بالصيغة المغلقة:</p>\\[ \\sum_{k \\equiv r \\pmod m} a_k = \\frac{1}{m} \\sum_{j=0}^{m-1} \\omega^{-jr} F(\\omega^j). \\]<p>وبوجه خاص عند \\( F(x) = (1+x)^n \\) و\\( m = 4 \\) (\\( \\omega = i \\)) و\\( r = 0 \\):</p>\\[ \\sum_{k \\equiv 0 \\pmod 4} \\binom{n}{k} = \\frac{2^n + (1 + i)^n + (1 - i)^n}{4} = \\frac{2^n + 2 \\cdot 2^{n/2}\\cos\\!\\left(\\frac{n\\pi}{4}\\right)}{4}! \\]"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Orthogonality of Roots of Unity & Polar Form of (1 ± i)^n",
+          "ar": "◆ البرهان الأولمبي — تعامد الجذور النونية للواحد والتمثيل القطبي لـ (1 ± i)^n"
+        },
+        "body": {
+          "en": "<p>1. If \\( m \\mid k \\), then \\( \\omega^k = 1 \\), so \\( \\sum_{j=0}^{m-1} (\\omega^k)^j = \\sum_{j=0}^{m-1} 1 = m \\). If \\( m \\nmid k \\), then \\( r = \\omega^k \\ne 1 \\) satisfies \\( r^m = (\\omega^m)^k = 1 \\), so the finite geometric series gives \\( \\sum_{j=0}^{m-1} r^j = \\frac{r^m - 1}{r - 1} = 0 \\)!<br>2. Exchanging the finite sums \\( \\frac{1}{m}\\sum_{j=0}^{m-1} \\sum_{k=0}^N a_k \\omega^{j(k-r)} = \\sum_{k=0}^N a_k \\left(\\frac{1}{m}\\sum_{j=0}^{m-1}\\omega^{j(k-r)}\\right) \\) kills every term with \\( k \\not\\equiv r \\pmod m \\) and keeps \\( a_k \\) with weight \\( 1 \\) whenever \\( k \\equiv r \\pmod m \\).<br>3. For \\( 1 \\pm i = \\sqrt{2}\\,e^{\\pm i\\pi/4} \\), De Moivre’s Theorem gives \\( (1+i)^n + (1-i)^n = 2^{n/2}\\left(e^{in\\pi/4} + e^{-in\\pi/4}\\right) = 2 \\cdot 2^{n/2}\\cos(n\\pi/4) \\). \\( \\blacksquare \\)</p>",
+          "ar": "<p>1. إذا كان \\( m \\mid k \\) فإن \\( \\omega^k = 1 \\) ومجموع الحدود الـ \\( m \\) يساوي \\( m \\)؛ أما إذا كان \\( m \\nmid k \\) فإن \\( r = \\omega^k \\ne 1 \\) يحقق \\( r^m = 1 \\)، فتعطي المتسلسلة الهندسية \\( \\frac{r^m - 1}{r - 1} = 0 \\)!<br>2. بتبديل ترتيبي المجموعين تختفي جميع المعاملات التي لا توافق \\( r \\pmod m \\) وتبقى المعاملات المطلوبة بمعامل \\( 1 \\).<br>3. وبكتابة \\( 1 \\pm i = \\sqrt{2}\\,e^{\\pm i\\pi/4} \\) تعطي مبرهنة ديموافر فوراً \\( (1+i)^n + (1-i)^n = 2 \\cdot 2^{n/2}\\cos(n\\pi/4) \\). \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Triangle Sine Bound (Jensen)",
+              "ar": "الحد الأعلى لمجموع جيوب المثلث"
+            },
+            "value": {
+              "en": "\\(\\sin x\\) is concave on \\([0,\\pi]\\) \\(\\implies \\sin A + \\sin B + \\sin C \\le 3\\sin 60^\\circ = \\frac{3\\sqrt{3}}{2}\\)",
+              "ar": "تقعر \\(\\sin x\\) يعطي فوراً \\(\\sin A + \\sin B + \\sin C \\le \\frac{3\\sqrt{3}}{2}\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Medial Homothety \\(\\mathcal{H}(G, -1/2)\\)",
+              "ar": "تحاكي مركز الثقل \\(\\mathcal{H}(G, -1/2)\\)"
+            },
+            "value": {
+              "en": "Maps \\(\\triangle ABC \\mapsto \\triangle M_a M_b M_c\\), \\(H \\mapsto O\\), and circumcircle \\(R \\mapsto R/2\\)",
+              "ar": "يرسل المثلث لمثلث المنتصفات، ويرسل \\(H\\) إلى \\(O\\)، والدائرة المحيطة لدائرة النقاط التسع!"
+            }
+          },
+          {
+            "label": {
+              "en": "Mod-3 Filter Identity",
+              "ar": "فلتر المعاملات بترديد 3"
+            },
+            "value": {
+              "en": "\\(1 + \\omega = -\\omega^2\\) for \\(\\omega = e^{2\\pi i/3}\\), so \\(|1+\\omega| = 1\\)!",
+              "ar": "بما أن \\(1 + \\omega + \\omega^2 = 0\\) فإن \\((1+\\omega)^n = (-\\omega^2)^n\\) دائماً مقيّد بـ \\(\\pm 1\\)!"
+            }
+          },
+          {
+            "label": {
+              "en": "Monge’s Three-Circle Theorem",
+              "ar": "مبرهنة مونج للدوائر الثلاث"
+            },
+            "value": {
+              "en": "External homothetic centers of 3 circles taken pairwise are ALWAYS collinear!",
+              "ar": "مراكز التحاكي الخارجية لثلاث دوائر مثنى مثنى تقع دائماً على استقامة واحدة!"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Jensen Convexity Gap: Convex f(x) = x² vs Secant Chord Above Curve",
+          "xrange": [
+            -0.5,
+            4.5
+          ],
+          "yrange": [
+            -1,
+            18
+          ],
+          "fns": [
+            {
+              "fn": "x^2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² (convex)"
+            },
+            {
+              "fn": "5*x - 4",
+              "color": "var(--fig-amber)",
+              "dash": "5,4",
+              "label": "Secant through (1,1) & (4,16)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "(1, 1)"
+            },
+            {
+              "x": 2.5,
+              "y": 8.5,
+              "label": "½(f(1)+f(4))=8.5"
+            },
+            {
+              "x": 2.5,
+              "y": 6.25,
+              "label": "f(2.5)=6.25"
+            },
+            {
+              "x": 4,
+              "y": 16,
+              "label": "(4, 16)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Geometric heart of Jensen’s Inequality: for convex \\(f(x) = x^2\\), the chord midpoint \\(\\frac{f(1)+f(4)}{2} = 8.5\\) lies strictly above \\(f\\!\\left(\\frac{1+4}{2}\\right) = 6.25\\), with equality iff \\(x_1 = x_2\\).",
+          "ar": "الجوهر الهندسي لمتباينة جنسن: منتصف الوتر \\(8.5\\) يقع فوق قيمة الدالة عند المنتصف \\(f(2.5) = 6.25\\) لأن المنحنى محدب لأسفل."
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "KAUST Campus Finals & 3-Seat Team Relay Reference Toolkit",
+          "ar": "الجدول المرجعي لنهائيات حرم كاوست وجولات التتابع الثلاثي"
+        },
+        "columns": [
+          {
+            "en": "KAUST Finals / Academy Pillar",
+            "ar": "محور نهائيات كاوست وأكاديمية كاوست"
+          },
+          {
+            "en": "Core Olympiad Formula / Operator",
+            "ar": "القانون أو المؤثر الأولمبي الأساسي"
+          },
+          {
+            "en": "Thuwal Individual & Relay Signature",
+            "ar": "نمط الورود في الفردي وجولة التتابع"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Roots-of-Unity Filter",
+              "ar": "مرشّح الجذور النونية للواحد"
+            },
+            {
+              "en": "\\(\\sum_{k \\equiv r \\pmod m} \\binom{n}{k} = \\frac{1}{m}\\sum_{j=0}^{m-1} \\omega^{-jr}(1+\\omega^j)^n\\)",
+              "ar": "\\(\\sum_{k \\equiv r \\pmod m} \\binom{n}{k} = \\frac{1}{m}\\sum_{j=0}^{m-1} \\omega^{-jr}(1+\\omega^j)^n\\)"
+            },
+            {
+              "en": "Mod-3 and Mod-4 binomial sub-sums in 60 seconds",
+              "ar": "المجاميع الجزئية للمعاملات الثنائية بترديد 3 أو 4"
+            }
+          ],
+          [
+            {
+              "en": "Euler & Wedge Homothety",
+              "ar": "تحاكي مركز الثقل والدوائر المتماسة"
+            },
+            {
+              "en": "\\(\\mathcal{H}(G, -\\tfrac{1}{2})\\) and \\(r_2 = \\sqrt{r_1 r_3}\\)",
+              "ar": "\\(\\mathcal{H}(G, -\\tfrac{1}{2})\\) والعلاقة الهندسية \\(r_2 = \\sqrt{r_1 r_3}\\)"
+            },
+            {
+              "en": "Nine-point circle scaling and tangent circle chains",
+              "ar": "دائرة النقاط التسع وسلاسل الدوائر المحاطة داخل زاوية"
+            }
+          ],
+          [
+            {
+              "en": "Jensen Convexity Bound",
+              "ar": "متباينة جنسن للدوال المحدبة"
+            },
+            {
+              "en": "\\(\\sum w_i f(x_i) \\ge f(\\sum w_i x_i)\\) when \\(f'(x) > 0\\)",
+              "ar": "\\(\\sum w_i f(x_i) \\ge f(\\sum w_i x_i)\\) عندما \\(f'(x) > 0\\)"
+            },
+            {
+              "en": "Trigonometric and logarithmic extrema over acute triangles",
+              "ar": "القيم القصوى المثلثية واللوغاريتمية في المثلثات الحادة"
+            }
+          ],
+          [
+            {
+              "en": "De Gua’s 3D Right-Corner Theorem",
+              "ar": "مبرهنة دي غوا لرباعي الأوجه القائم"
+            },
+            {
+              "en": "\\([ABC]^2 = [OAB]^2 + [OBC]^2 + [OCA]^2\\)",
+              "ar": "\\([ABC]^2 = [OAB]^2 + [OBC]^2 + [OCA]^2\\)"
+            },
+            {
+              "en": "3D solid geometry & KAUST 3-Seat Team Relay chains",
+              "ar": "الهندسة الفراغية ومسائل التتابع الثلاثي في ثول"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "geometry_3d",
+          "solid": "pyramid",
+          "baseLength": 6,
+          "baseWidth": 8,
+          "height": 12,
+          "title": "De Gua Right-Corner Tetrahedron OABC (Orthogonal Edges OA=6, OB=8, OC=12)"
+        },
+        "caption": {
+          "en": "De Gua’s 3D Pythagorean Theorem (KAUST Thuwal Finals): when edges \\(OA=6, OB=8, OC=12\\) are mutually orthogonal at \\(O\\), the slanted face area satisfies \\([ABC]^2 = 24^2 + 48^2 + 36^2 = 4176\\), and altitude \\(h_O = \\frac{3V}{[ABC]}\\).",
+          "ar": "مبرهنة دي غوا ثلاثية الأبعاد في نهائيات كاوست: عند تعامد الأحرف \\(OA=6, OB=8, OC=12\\) مثنى مثنى في \\(O\\)، يتحقق \\([ABC]^2 = [OAB]^2 + [OBC]^2 + [OCA]^2\\) مباشرةً!"
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · KAUST Finals Lab: Cauchy–Schwarz Vector Projection & Equality Ray",
+          "ar": "⊙ مستكشف تفاعلي · مختبر نهائيات كاوست: الإسقاط المتجهي لمتباينة كوشي-شوارتز"
+        },
+        "canvasId": "olkaustfinalsacademyExCanvas",
+        "ariaLabel": {
+          "en": "Interactive 2D vector geometry canvas demonstrating Cauchy-Schwarz inequality |u . v| <= ||u|| ||v|| and equality iff u and v are collinear.",
+          "ar": "لوحة تفاعلية للمتجهات توضح متباينة كوشي-شوارتز |u . v| <= ||u|| ||v|| وتحقق المساواة عند الاستقامة."
+        },
+        "dataPanel": {
+          "btnId": "olkaustfinalsacademyExCanvas_dataBtn",
+          "panelId": "olkaustfinalsacademyExCanvas_dataPanel",
+          "descId": "olkaustfinalsacademyExCanvas_dataDesc",
+          "rowsId": "olkaustfinalsacademyExCanvas_dataRows",
+          "caption": {
+            "en": "Comparison of \\(|\\mathbf{u} \\cdot \\mathbf{v}|^2 = (u_1 v_1 + u_2 v_2)^2\\) and \\(\\|\\mathbf{u}\\|^2 \\|\\mathbf{v}\\|^2 = (u_1^2+u_2^2)(v_1^2+v_2^2)\\) with Lagrange gap \\((u_1 v_2 - u_2 v_1)^2\\)",
+            "ar": "مقارنة مربع الضرب القياسي بحاصل ضرب مربعَي الطولين وفجوة لاغرانج \\((u_1 v_2 - u_2 v_1)^2\\)"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
+            },
+            {
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "olkaustfinalsacademyExCanvas_s0",
+            "label": {
+              "en": "Angle of \\(\\mathbf{u}\\) <b>\\(\\alpha =\\)</b>",
+              "ar": "زاوية المتجه \\(\\mathbf{u}\\) <b>\\(\\alpha =\\)</b>"
+            },
+            "min": 0,
+            "max": 180,
+            "value": 65,
+            "step": 5,
+            "valueDisplayId": "olkaustfinalsacademyExCanvas_v0",
+            "ariaLabel": {
+              "en": "Angle alpha of vector u in degrees",
+              "ar": "الزاوية ألفا للمتجه u بالدرجات"
+            }
+          },
+          {
+            "id": "olkaustfinalsacademyExCanvas_s1",
+            "label": {
+              "en": "Angle of \\(\\mathbf{v}\\) <b>\\(\\beta =\\)</b>",
+              "ar": "زاوية المتجه \\(\\mathbf{v}\\) <b>\\(\\beta =\\)</b>"
+            },
+            "min": 0,
+            "max": 180,
+            "value": 20,
+            "step": 5,
+            "valueDisplayId": "olkaustfinalsacademyExCanvas_v1",
+            "ariaLabel": {
+              "en": "Angle beta of vector v in degrees",
+              "ar": "الزاوية بيتا للمتجه v بالدرجات"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "olkaustfinalsacademyExCanvas_r0",
+            "label": {
+              "en": "LHS \\(|\\mathbf{u}\\cdot\\mathbf{v}|\\)",
+              "ar": "الطرف الأيسر \\(|\\mathbf{u}\\cdot\\mathbf{v}|\\)"
+            },
+            "colorClass": "indigo",
+            "value": "8.49"
+          },
+          {
+            "id": "olkaustfinalsacademyExCanvas_r1",
+            "label": {
+              "en": "RHS \\(\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\)",
+              "ar": "الطرف الأيمن \\(\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\)"
+            },
+            "colorClass": "amber",
+            "value": "12.00 (‖u‖=4, ‖v‖=3)"
+          },
+          {
+            "id": "olkaustfinalsacademyExCanvas_r2",
+            "label": {
+              "en": "Lagrange Gap \\(\\|\\mathbf{u}\\times\\mathbf{v}\\|^2\\)",
+              "ar": "فجوة لاغرانج المربعية"
+            },
+            "colorClass": "teal",
+            "value": "72.00 (> 0)"
+          }
+        ],
+        "note": {
+          "en": "Align \\(\\alpha = \\beta\\) to watch the Lagrange cross-term \\((u_1 v_2 - u_2 v_1)^2 = \\|\\mathbf{u}\\|^2\\|\\mathbf{v}\\|^2\\sin^2(\\alpha - \\beta)\\) collapse to \\(0\\), locking exact Cauchy–Schwarz equality!",
+          "ar": "طابق الزاويتين \\(\\alpha = \\beta\\) لتشاهد تلاشي فجوة لاغرانج \\((u_1 v_2 - u_2 v_1)^2\\) إلى الصفر وتحقق المساواة التامة في كوشي-شوارتز!"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.A — Roots-of-Unity Filter Modulo 4 (KAUST Campus Finals)",
+          "ar": "مثال محلول 12.A — حساب المجاميع التوافيقية بترديد 4 عبر فلتر الجذور النونية (نهائيات كاوست)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Compute the exact value of \\( S = \\binom{20}{0} + \\binom{20}{4} + \\binom{20}{8} + \\binom{20}{12} + \\binom{20}{16} + \\binom{20}{20} \\).</p><p><strong>Solution:</strong> Apply the \\( m = 4 \\) Roots-of-Unity Filter to \\( F(x) = (1 + x)^{20} \\) using \\( \\{1, -1, i, -i\\} \\):<br>\\[ S = \\frac{F(1) + F(-1) + F(i) + F(-i)}{4} = \\frac{2^{20} + 0 + (1 + i)^{20} + (1 - i)^{20}}{4}. \\]<br>Notice \\( (1 + i)^2 = 2i \\)! Raising both sides to the \\( 10 \\)-th power is effortless:<br>\\[ (1 + i)^{20} = (2i)^{10} = 2^{10} i^{10} = 1024(-1) = -1024, \\qquad (1 - i)^{20} = (-2i)^{10} = -1024. \\]<br>Therefore:<br>\\[ S = \\frac{2^{20} - 2048}{4} = 2^{18} - 512 = 262{,}144 - 512 = 261{,}632. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد القيمة الدقيقة للمجموع \\( S = \\binom{20}{0} + \\binom{20}{4} + \\binom{20}{8} + \\binom{20}{12} + \\binom{20}{16} + \\binom{20}{20} \\).</p><p><strong>الحل الأولمبي:</strong> نطبّق فلتر الجذور الرباعية للواحد \\( \\{1, -1, i, -i\\} \\) على \\( F(x) = (1 + x)^{20} \\):<br>\\[ S = \\frac{2^{20} + 0 + (1 + i)^{20} + (1 - i)^{20}}{4}. \\]<br>بما أن \\( (1 + i)^2 = 2i \\)، نرفع للقوة \\( 10 \\) مباشرةً:<br>\\[ (1 + i)^{20} = (2i)^{10} = 1024 i^{10} = -1024, \\qquad (1 - i)^{20} = -1024. \\]<br>إذن \\( S = \\frac{2^{20} - 2048}{4} = 2^{18} - 512 = 262{,}144 - 512 = 261{,}632 \\)!</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.B — Jensen’s Convexity Proof of Acute-Triangle Tangent Minimum",
+          "ar": "مثال محلول 12.B — إثبات الحد الأدنى لمجموع الظلال في المثلث الحاد عبر متباينة جنسن"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Prove that for every acute triangle \\( \\triangle ABC \\), \\( \\tan A + \\tan B + \\tan C \\ge 3\\sqrt{3} \\), and deduce the minimum of \\( \\tan A \\tan B \\tan C \\).</p><p><strong>Solution:</strong> Since \\( \\triangle ABC \\) is acute, \\( A, B, C \\in \\left(0, \\frac{\\pi}{2}\\right) \\). On \\( \\left(0, \\frac{\\pi}{2}\\right) \\), compute the second derivative of \\( f(x) = \\tan x \\):<br>\\[ f'(x) = \\sec^2 x \\implies f''(x) = 2\\sec^2 x \\tan x > 0. \\]<br>Thus \\( f(x) = \\tan x \\) is <strong>strictly convex</strong> on \\( \\left(0, \\frac{\\pi}{2}\\right) \\)! Applying Jensen’s Inequality with equal weights \\( \\frac{1}{3} \\):<br>\\[ \\frac{\\tan A + \\tan B + \\tan C}{3} \\ge \\tan\\!\\left(\\frac{A + B + C}{3}\\right) = \\tan\\!\\left(\\frac{\\pi}{3}\\right) = \\sqrt{3} \\implies \\tan A + \\tan B + \\tan C \\ge 3\\sqrt{3}, \\]<br>with equality iff \\( A = B = C = 60^\\circ \\). Finally, by the Triangle Tangent Identity \\( \\tan A \\tan B \\tan C = \\tan A + \\tan B + \\tan C \\), the product ALSO has exact minimum \\( 3\\sqrt{3} \\)! \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>المسألة:</strong> أثبت أنه في أي مثلث حاد الزوايا \\( \\triangle ABC \\) يتحقق \\( \\tan A + \\tan B + \\tan C \\ge 3\\sqrt{3} \\)، واستنتج أصغر قيمة للجداء \\( \\tan A \\tan B \\tan C \\).</p><p><strong>البرهان الأولمبي:</strong> على الفترة المفتوحة \\( \\left(0, \\frac{\\pi}{2}\\right) \\)، المشتقة الثانية لدالة الظل هي \\( (\\tan x)'' = 2\\sec^2 x \\tan x > 0 \\)، أي أنها <strong>محدبة تماماً</strong>! بتطبيق متباينة جنسن بأوزان متساوية \\( \\frac{1}{3} \\):<br>\\[ \\frac{\\tan A + \\tan B + \\tan C}{3} \\ge \\tan\\!\\left(\\frac{\\pi}{3}\\right) = \\sqrt{3} \\implies \\tan A + \\tan B + \\tan C \\ge 3\\sqrt{3}. \\]<br>ومن المتطابقة المثلثية \\( \\tan A \\tan B \\tan C = \\tan A + \\tan B + \\tan C \\) نستنتج فوراً أن القيمة الصغرى للجداء هي أيضاً \\( 3\\sqrt{3} \\) عند المثلث المتطابق الأضلاع! \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.C — Homothety Chain of Inscribed Tangent Circles in a Cone/Wedge (KAUST Finals)",
+          "ar": "مثال محلول 12.C — التحاكي المتتالي لسلسلة دوائر متماسة داخل زاوية (نهائيات كاوست)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Three circles \\( \\omega_1, \\omega_2, \\omega_3 \\) of radii \\( r_1 < r_2 < r_3 \\) are all tangent to the two rays of an angle with vertex \\( V \\), and \\( \\omega_1 \\) is externally tangent to \\( \\omega_2 \\) while \\( \\omega_2 \\) is externally tangent to \\( \\omega_3 \\). Given \\( r_1 = 9 \\) and \\( r_3 = 25 \\), find \\( r_2 \\) and \\( \\sin(\\theta/2) \\) where \\( \\theta = \\angle V \\).</p><p><strong>Solution:</strong> Because all three circles are inscribed in the same angle \\( V \\), a single <strong>homothety \\( \\mathcal{H}(V, k) \\)</strong> centered at \\( V \\) maps \\( \\omega_1 \\mapsto \\omega_2 \\) AND \\( \\omega_2 \\mapsto \\omega_3 \\)!<br>1. Therefore the radii form an exact <strong>geometric progression</strong> \\( \\frac{r_2}{r_1} = \\frac{r_3}{r_2} = k \\implies r_2 = \\sqrt{r_1 r_3} = \\sqrt{9 \\times 25} = 15 \\)!<br>2. In right triangle from \\( V \\) to the tangency ray, center distances from \\( V \\) are \\( VO_1 = \\frac{r_1}{\\sin(\\theta/2)} \\) and \\( VO_2 = \\frac{r_2}{\\sin(\\theta/2)} \\). External tangency gives \\( VO_2 - VO_1 = r_1 + r_2 \\):<br>\\[ \\frac{r_2 - r_1}{\\sin(\\theta/2)} = r_2 + r_1 \\implies \\sin(\\theta/2) = \\frac{r_2 - r_1}{r_2 + r_1} = \\frac{15 - 9}{15 + 9} = \\frac{6}{24} = \\frac{1}{4}. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> ثلاث دوائر \\( \\omega_1, \\omega_2, \\omega_3 \\) أنصاف أقطارها \\( r_1 < r_2 < r_3 \\) تمس جميعاً ضلعَي زاوية رأسها \\( V \\)، وتمس كل دائرة تاليتها خارجياً. إذا كان \\( r_1 = 9 \\) و\\( r_3 = 25 \\)، فأوجد \\( r_2 \\) وقيمة \\( \\sin(\\theta/2) \\).</p><p><strong>الحل الأولمبي:</strong> بما أن الدوائر الثلاث محاطة بالزاوية نفسها \\( V \\)، فإن <strong>تحاكياً واحداً مركزه \\( V \\)</strong> ونسبته \\( k \\) ينقل \\( \\omega_1 \\to \\omega_2 \\) وينقل \\( \\omega_2 \\to \\omega_3 \\)!<br>1. إذن أنصاف الأقطار في <strong>متتابعة هندسية</strong>: \\( r_2 = \\sqrt{r_1 r_3} = \\sqrt{9 \\times 25} = 15 \\).<br>2. من التماس الخارجي \\( VO_2 - VO_1 = r_1 + r_2 \\) مع \\( VO_i = \\frac{r_i}{\\sin(\\theta/2)} \\):<br>\\[ \\sin(\\theta/2) = \\frac{r_2 - r_1}{r_2 + r_1} = \\frac{15 - 9}{15 + 9} = \\frac{1}{4}. \\]</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.D — Weighted Cauchy–Schwarz / Hölder Cube-Root Inequality (Academy Camp)",
+          "ar": "مثال محلول 12.D — متباينة هولدر وكوشي-شوارتز الموزونة في معسكرات أكاديمية كاوست"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\( a, b, c > 0 \\) satisfy \\( a + b + c = 7 \\) and \\( \\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a} = \\frac{7}{5} \\). Find the exact value of \\( \\frac{c}{a+b} + \\frac{a}{b+c} + \\frac{b}{c+a} \\) (a classic KAUST Team Relay deceptive synthesis!).</p><p><strong>Solution:</strong> Resist applying inequalities—notice this asks for an <strong>exact value</strong>! Add \\( 1 \\) to each of the three target fractions so every numerator becomes \\( a + b + c = 7 \\)!<br>\\[ S + 3 = \\left(\\frac{c}{a+b} + 1\\right) + \\left(\\frac{a}{b+c} + 1\\right) + \\left(\\frac{b}{c+a} + 1\\right) \\]<br>\\[ = \\frac{a+b+c}{a+b} + \\frac{a+b+c}{b+c} + \\frac{a+b+c}{c+a} = (a+b+c)\\left(\\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a}\\right). \\]<br>Substituting \\( a+b+c = 7 \\) and the given reciprocal sum \\( \\frac{7}{5} \\):<br>\\[ S + 3 = 7 \\times \\frac{7}{5} = \\frac{49}{5} \\implies S = \\frac{49}{5} - 3 = \\frac{34}{5}! \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> إذا حققت الأعداد الموجبة \\( a, b, c > 0 \\) الشرطين \\( a + b + c = 7 \\) و\\( \\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a} = \\frac{7}{5} \\)، فأوجد القيمة الدقيقة للمقدار \\( S = \\frac{c}{a+b} + \\frac{a}{b+c} + \\frac{b}{c+a} \\).</p><p><strong>الحل الأولمبي:</strong> أضف \\( 1 \\) إلى كل كسر من الكسور الثلاثة لتوحيد البسط عند \\( a + b + c \\)!<br>\\[ S + 3 = \\frac{a+b+c}{a+b} + \\frac{a+b+c}{b+c} + \\frac{a+b+c}{c+a} = (a+b+c)\\left(\\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a}\\right). \\]<br>بالتعويض المباشر: \\( S + 3 = 7 \\times \\frac{7}{5} = \\frac{49}{5} \\implies S = \\frac{49}{5} - 3 = \\frac{34}{5} \\)!</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Finals Trap — Verifying Domain Convexity Before Quoting Jensen!",
+          "ar": "⚠ فخ النهائيات — التحقق من تحدب الدالة على كامل المجال قبل تطبيق جنسن!"
+        },
+        "body": {
+          "en": "<p>In Worked Example 12.B, \\( \\tan x \\) is convex ONLY on \\( \\left(0, \\frac{\\pi}{2}\\right) \\)—if \\( \\triangle ABC \\) is obtuse (\\( A > 90^\\circ \\)), \\( \\tan A < 0 \\) jumps across the vertical asymptote and \\( \\tan A + \\tan B + \\tan C \\) is actually NEGATIVE! Always state explicitly why every variable lies inside the convex interval \\( I \\).</p>",
+          "ar": "<p>في المثال 12.B، تكون دالة \\( \\tan x \\) محدبة فقط على الفترة الحادة \\( (0, \\pi/2) \\)؛ أما في المثلث المنفرج فتقفز الدالة عبر خط التقارب الرأسي ويصبح المجموع سالباً! اذكر دائماً مبرر وقوع جميع المتغيرات داخل فترة التحدب \\( I \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ KAUST Thuwal Team-Round Protocol — The 3-Minute Relay Sanity Check",
+          "ar": "▲ بروتوكول جولة الفرق في نهائيات ثول — فحص السلامة السريع لنواتج التتابع"
+        },
+        "body": {
+          "en": "<p>In KAUST Relay rounds where Player 2’s input \\( T \\) is Player 1’s answer, Player 2 should solve their problem symbolically in terms of \\( T \\) FIRST while waiting! The moment \\( T \\) arrives, check parity/sign plausibility and substitute in 10 seconds.</p>",
+          "ar": "<p>في جولات التتابع (Relay) التي يعتمد فيها السؤال الثاني على إجابة الزميل الأول \\( T \\)، ابدأ فوراً بحل مسألتك بدلالة الرمز \\( T \\) أثناء انتظارك! وحال استلام القيمة عوّض بها في 10 ثوانٍ فقط.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 12.1 · KAUST Finals Warmup]</strong> Evaluate \\( S = \\binom{12}{0} + \\binom{12}{4} + \\binom{12}{8} + \\binom{12}{12} \\) using the mod-4 Roots-of-Unity Filter.",
+          "ar": "<strong>[تدريب 12.1 · تمهيد نهائيات كاوست]</strong> احسب القيمة الدقيقة للمجموع \\( S = \\binom{12}{0} + \\binom{12}{4} + \\binom{12}{8} + \\binom{12}{12} \\) باستخدام فلتر الجذور النونية."
+        },
+        "hints": [
+          {
+            "en": "Use \\( S = \\frac{2^{12} + 0 + (1+i)^{12} + (1-i)^{12}}{4} \\).",
+            "ar": "استخدم الصيغة \\( S = \\frac{2^{12} + (1+i)^{12} + (1-i)^{12}}{4} \\)."
+          },
+          {
+            "en": "Compute \\( (1+i)^{12} = ((1+i)^2)^6 = (2i)^6 = -64 \\).",
+            "ar": "احسب \\( (1+i)^{12} = (2i)^6 = -64 \\) وكذلك \\( (1-i)^{12} = -64 \\)."
+          },
+          {
+            "en": "Evaluate \\( \\frac{4096 - 128}{4} \\).",
+            "ar": "احسب \\( \\frac{4096 - 128}{4} \\)."
+          }
+        ],
+        "solution": {
+          "en": "Since \\( (1 \\pm i)^{12} = (\\pm 2i)^6 = 64 i^6 = -64 \\), the mod-4 filter yields \\( S = \\frac{4096 - 64 - 64}{4} = 1024 - 32 = 992 \\).",
+          "ar": "بما أن \\( (1 \\pm i)^{12} = -64 \\)، فإن الفلتر الرباعي يعطي \\( S = \\frac{4096 - 128}{4} = 992 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 12.2 · KAUST Campus Finals]</strong> Three circles \\( \\omega_1, \\omega_2, \\omega_3 \\) inscribed in the same wedge \\( \\angle V \\) are successively externally tangent with \\( r_1 = 8 \\) and \\( r_3 = 18 \\). Find \\( r_2 \\).",
+          "ar": "<strong>[تدريب 12.2 · نهائيات حرم كاوست]</strong> ثلاث دوائر \\( \\omega_1, \\omega_2, \\omega_3 \\) محاطة داخل ضلعَي زاوية \\( \\angle V \\) ومتماسة خارجياً على التوالي. إذا كان \\( r_1 = 8 \\) و\\( r_3 = 18 \\)، فأوجد \\( r_2 \\)."
+        },
+        "hints": [
+          {
+            "en": "Homothety centered at \\( V \\) maps \\( \\omega_1 \\to \\omega_2 \\to \\omega_3 \\) with constant ratio \\( k \\).",
+            "ar": "التحاكي الذي مركزه \\( V \\) ينقل \\( \\omega_1 \\to \\omega_2 \\to \\omega_3 \\) بنسبة ثابتة \\( k \\)."
+          },
+          {
+            "en": "Thus \\( r_1, r_2, r_3 \\) form a geometric progression.",
+            "ar": "إذن أنصاف الأقطار تشكل متتابعة هندسية."
+          },
+          {
+            "en": "Compute \\( r_2 = \\sqrt{8 \\times 18} \\).",
+            "ar": "احسب \\( r_2 = \\sqrt{8 \\times 18} \\)."
+          }
+        ],
+        "solution": {
+          "en": "By homothety from vertex \\( V \\), \\( \\frac{r_2}{r_1} = \\frac{r_3}{r_2} \\implies r_2 = \\sqrt{8 \\times 18} = \\sqrt{144} = 12 \\).",
+          "ar": "بفعل التحاكي من الرأس \\( V \\)، يكون \\( r_2 = \\sqrt{r_1 r_3} = \\sqrt{144} = 12 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 12.3 · KAUST Campus Finals]</strong> In \\( \\triangle ABC \\) with area \\( [ABC] = 96 \\), what is the exact area of the triangle formed by the feet of its three medians (the medial triangle), and what is the radius of its Nine-Point Circle if \\( R = 10 \\)?",
+          "ar": "<strong>[تدريب 12.3 · نهائيات حرم كاوست]</strong> في مثلث \\( \\triangle ABC \\) مساحته \\( 96 \\) ونصف قطر دائرته المحيطة \\( R = 10 \\)، أوجد مساحة مثلث المنتصفات ونصف قطر دائرة النقاط التسع."
+        },
+        "hints": [
+          {
+            "en": "Apply the Euler homothety \\( \\mathcal{H}(G, -\\frac{1}{2}) \\) centered at centroid \\( G \\).",
+            "ar": "طبّق تحاكي مركز الثقل \\( \\mathcal{H}(G, -\\frac{1}{2}) \\)."
+          },
+          {
+            "en": "Areas scale by \\( k^2 = (-\\frac{1}{2})^2 = \\frac{1}{4} \\), and radii scale by \\( |k| = \\frac{1}{2} \\).",
+            "ar": "تُضرب المساحات في \\( k^2 = \\frac{1}{4} \\)، وتُضرب أنصاف الأقطار في \\( |k| = \\frac{1}{2} \\)."
+          },
+          {
+            "en": "Compute \\( \\frac{96}{4} \\) and \\( \\frac{10}{2} \\).",
+            "ar": "احسب \\( \\frac{96}{4} \\) و\\( \\frac{10}{2} \\)."
+          }
+        ],
+        "solution": {
+          "en": "Under \\( \\mathcal{H}(G, -\\frac{1}{2}) \\), the medial triangle has area \\( \\frac{1}{4}[ABC] = \\frac{96}{4} = 24 \\), and its circumcircle (the Nine-Point Circle) has radius \\( R_9 = \\frac{R}{2} = 5 \\).",
+          "ar": "تحت التحاكي \\( \\mathcal{H}(G, -\\frac{1}{2}) \\)، مساحة مثلث المنتصفات هي \\( \\frac{96}{4} = 24 \\)، ونصف قطر دائرة النقاط التسع يساوي \\( \\frac{R}{2} = 5 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 12.4 · KAUST Academy Camp]</strong> Evaluate \\( S = \\binom{18}{0} + \\binom{18}{3} + \\binom{18}{6} + \\binom{18}{9} + \\binom{18}{12} + \\binom{18}{15} + \\binom{18}{18} \\) using the mod-3 Roots-of-Unity Filter.",
+          "ar": "<strong>[تدريب 12.4 · معسكر أكاديمية كاوست]</strong> احسب القيمة الدقيقة للمجموع \\( S = \\sum_{j=0}^6 \\binom{18}{3j} \\) باستخدام فلتر الجذور التكعيبية للواحد."
+        },
+        "hints": [
+          {
+            "en": "Apply \\( S = \\frac{2^{18} + (1 + \\omega)^{18} + (1 + \\omega^2)^{18}}{3} \\) where \\( \\omega = e^{2\\pi i/3} \\).",
+            "ar": "طبّق الصيغة \\( S = \\frac{2^{18} + (1 + \\omega)^{18} + (1 + \\omega^2)^{18}}{3} \\)."
+          },
+          {
+            "en": "Since \\( 1 + \\omega + \\omega^2 = 0 \\), \\( 1 + \\omega = -\\omega^2 \\implies (1 + \\omega)^{18} = (-\\omega^2)^{18} = \\omega^{36} = 1 \\)!",
+            "ar": "بما أن \\( 1 + \\omega = -\\omega^2 \\) فإن \\( (1 + \\omega)^{18} = (-\\omega^2)^{18} = \\omega^{36} = 1 \\) وبالمثل للحد الثالث!"
+          },
+          {
+            "en": "Evaluate \\( \\frac{262{,}144 + 1 + 1}{3} \\).",
+            "ar": "احسب \\( \\frac{262{,}144 + 2}{3} \\)."
+          }
+        ],
+        "solution": {
+          "en": "Using \\( 1 + \\omega = -\\omega^2 \\) and \\( \\omega^3 = 1 \\), both \\( (1+\\omega)^{18} \\) and \\( (1+\\omega^2)^{18} \\) equal \\( 1 \\). Hence \\( S = \\frac{2^{18} + 2}{3} = \\frac{262{,}146}{3} = 87{,}382 \\).",
+          "ar": "بما أن \\( (1+\\omega)^{18} = (1+\\omega^2)^{18} = 1 \\)، فإن \\( S = \\frac{2^{18} + 2}{3} = \\frac{262{,}146}{3} = 87{,}382 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 12.5 · KAUST Grand Final Synthesis]</strong> Positive reals \\( a, b, c > 0 \\) satisfy \\( a + b + c = 9 \\) and \\( \\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a} = \\frac{5}{6} \\). Find the exact value of \\( \\frac{c}{a+b} + \\frac{a}{b+c} + \\frac{b}{c+a} \\).",
+          "ar": "<strong>[تدريب 12.5 · التحدي الختامي لنهائيات كاوست]</strong> تحقق الأعداد الحقيقية الموجبة \\( a, b, c > 0 \\) الشرطين \\( a + b + c = 9 \\) و\\( \\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a} = \\frac{5}{6} \\). أوجد القيمة الدقيقة للمقدار \\( \\frac{c}{a+b} + \\frac{a}{b+c} + \\frac{b}{c+a} \\)."
+        },
+        "hints": [
+          {
+            "en": "Add \\( 3 = 1 + 1 + 1 \\) to the expression to make every numerator \\( a + b + c \\).",
+            "ar": "أضف \\( 3 = 1 + 1 + 1 \\) للمقدار ليصبح كل بسط مساوياً لـ \\( a + b + c \\)."
+          },
+          {
+            "en": "Factor \\( (a + b + c)\\left(\\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a}\\right) = 9 \\times \\frac{5}{6} = \\frac{15}{2} \\).",
+            "ar": "اسحب العامل المشترك \\( 9 \\times \\frac{5}{6} = \\frac{15}{2} \\)."
+          },
+          {
+            "en": "Subtract \\( 3 \\) from \\( \\frac{15}{2} \\). (Also check feasibility: by Titu, \\( (a+b+c)\\sum \\frac{1}{a+b} = \\frac{1}{2}\\sum(a+b)\\sum\\frac{1}{a+b} \\ge \\frac{9}{2} \\), and \\( \\frac{15}{2} > \\frac{9}{2} \\), so positive reals genuinely exist!)",
+            "ar": "اطرح \\( 3 \\) من \\( \\frac{15}{2} \\) (لاحظ أن \\( \\frac{15}{2} > \\frac{9}{2} \\) فيتحقق شرط وجود حلول حقيقية موجبة!)."
+          }
+        ],
+        "solution": {
+          "en": "Adding \\( 3 \\) gives \\( S + 3 = (a+b+c)\\left(\\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a}\\right) = 9 \\cdot \\frac{5}{6} = \\frac{15}{2} \\), so \\( S = \\frac{15}{2} - 3 = \\frac{9}{2} \\).",
+          "ar": "بإضافة \\( 3 \\) للطرفين نجد \\( S + 3 = 9 \\times \\frac{5}{6} = \\frac{15}{2} \\)، ومنه \\( S = \\frac{15}{2} - 3 = \\frac{9}{2} \\)."
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "KAUST Mathematics Competition: Regional Qualifier",
+            "chapterId": "ol-kaust-kmc-qualifier",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "NSMO of KSA: Riyadh National Finals & IMO Pathway",
+            "chapterId": "ol-nsmo-national-finals",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "Olympiad Proof Strategies: Invariants, Coloring & Games",
+            "chapterId": "ol-invariants-extremal",
+            "trackId": "olympiad"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "KAUST Campus Finals & Academy Advanced Synthesis"
+    ]
+  }
+}

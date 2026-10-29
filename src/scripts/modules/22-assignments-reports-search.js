@@ -34,7 +34,7 @@ var VIEW_META = {
   apbc:{label:'AP Calculus BC',board:'College Board'},
   appc:{label:'AP Pre-Calculus',board:'College Board'},
   apstats:{label:'AP Statistics',board:'College Board'},
-  olympiad:{label:'Contest Math & Olympiad',board:'Olympiad'}
+  olympiad:{label:'Olympiad Math (NSMO & KAUST)',board:'Olympiad · NSMO · KAUST'}
 };
 window.CSViewMeta = window.VIEW_META = VIEW_META;
 
@@ -61,6 +61,18 @@ var CHAPTER_META = {
   'ibsl/ibsl-trig':      {domain:'Geometry & Trig',topic:'Unit Circle & Identities',    diff:'Hard'},
   'ibsl/ibsl-stats':     {domain:'Statistics',     topic:'Probability Distributions',   diff:'Hard'},
   'ibsl/ibsl-calculus':  {domain:'Calculus',       topic:'Differentiation & Integration',diff:'Hard'},
+  'olympiad/ol-algebraic-techniques': {domain:'Core Olympiad', topic:'Olympiad Algebra, Vieta & Classical Inequalities', diff:'Medium'},
+  'olympiad/ol-modular-number-theory':{domain:'Core Olympiad', topic:'Modular Arithmetic, Primes & Divisibility', diff:'Medium'},
+  'olympiad/ol-diophantine-equations':{domain:'Core Olympiad', topic:'Diophantine Equations, SFFT & Floor Functions', diff:'Hard'},
+  'olympiad/ol-combinatorics-counting':{domain:'Core Olympiad', topic:'Bijective Counting, Inclusion-Exclusion & Pigeonhole', diff:'Medium'},
+  'olympiad/ol-recurrence-probability':{domain:'Core Olympiad', topic:'Recurrence Relations & Geometric Probability', diff:'Hard'},
+  'olympiad/ol-euclidean-circles':    {domain:'Core Olympiad', topic:'Circle Geometry, Power of a Point & Radical Axes', diff:'Hard'},
+  'olympiad/ol-triangle-centers-trig':{domain:'Core Olympiad', topic:'Triangle Centers, Ceva, Menelaus & Stewart', diff:'Hard'},
+  'olympiad/ol-invariants-extremal':  {domain:'Core Olympiad', topic:'Invariants, Monovariants, Coloring & Games', diff:'Hard'},
+  'olympiad/ol-nsmo-stage1-2':        {domain:'NSMO of KSA',   topic:'Saudi NSMO Stage 1 Screening & Stage 2 Regional Qualifiers', diff:'Medium'},
+  'olympiad/ol-nsmo-national-finals': {domain:'NSMO of KSA',   topic:'Saudi NSMO Riyadh National Finals & Mawhiba IMO Pathway', diff:'Hard'},
+  'olympiad/ol-kaust-kmc-qualifier':  {domain:'KAUST (KMC)',   topic:'KAUST Mathematics Competition (KMC) Regional Qualifier', diff:'Medium'},
+  'olympiad/ol-kaust-finals-academy': {domain:'KAUST (KMC)',   topic:'KAUST Thuwal Campus Finals, 3-Seat Relay & Academy Synthesis', diff:'Hard'}
 };
 
 var CHAPTER_OBJECTIVES = {

@@ -1,27 +1,35 @@
 {
   "id": "ol-diophantine-equations",
   "chapterNumber": "3",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Diophantine Equations, Floor Functions & Number Bases",
-    "ar": "المعادلات الديوفانتية ودالة الصحيح وأنظمة العد"
+    "en": "Number Theory II: Diophantine Equations, SFFT, Bounding & Vieta Jumping",
+    "ar": "نظرية الأعداد (2): المعادلات الديوفانتية وتحليل سايمون (SFFT) والقفز الفييتي"
+  },
+  "railLabel": {
+    "en": "Diophantine Equations & SFFT",
+    "ar": "المعادلات الديوفانتية و SFFT"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 3 — Number Theory II",
+    "emoji": "🧩",
+    "category": "Core Pillar 3 — Olympiad Number Theory II",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
+      "Linear Diophantine equations & Chicken McNugget Theorem",
       "Simon's Favorite Factoring Trick (SFFT)",
-      "Linear Diophantine equations ax + by = c",
-      "Chicken McNugget Theorem (ab - a - b)",
-      "Floor ⌊x⌋ & fractional part {x} equations",
-      "Base-b representations & digit sums"
+      "Modular quadratic obstructions & infinite descent",
+      "Inequality bounding & discriminant tests",
+      "Vieta root flipping (IMO 1988 Q6 technique)"
     ]
   },
   "content": {
@@ -29,83 +37,238 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Diophantine Equations, Floor Functions & Number Bases</strong> (Olympiad Module 3 — Number Theory II).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>المعادلات الديوفانتية ودالة الصحيح وأنظمة العد</strong>."
+          "en": "A <strong>Diophantine equation</strong> asks for integer (or positive integer) solutions to a polynomial equation with fewer equations than unknowns. Because integers are discrete, Olympiad solvers unlock Diophantine equations using five decisive weapons: <strong>factoring into divisor pairs (SFFT)</strong>, <strong>modular contradictions</strong>, <strong>monotonic inequality bounding</strong>, <strong>Fermat infinite descent</strong>, and <strong>Vieta root flipping</strong>.",
+          "ar": "تبحث <strong>المعادلة الديوفانتية</strong> عن حلول صحيحة (أو موجبة) لمعادلة بعدد مجاهيل يفوق عدد المعادلات. ونظراً لطبيعة الأعداد الصحيحة المتقطعة، يحسم المتسابقون هذه المعادلات بخمس أدوات أولمبية قاطعة: <strong>التحليل إلى أزواج قواسم (SFFT)</strong>، و<strong>التناقضات المعيارية</strong>، و<strong>الحصر بالمتباينات</strong>، و<strong>النزول اللانهائي لفيرما</strong>، و<strong>القفز الفييتي للجذور</strong>."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 3.1 — Simon's Favorite Factoring Trick (SFFT) & Frobenius Coin Theorem",
-          "ar": "● تعريف 3.1 — المعادلات الديوفانتية ودالة الصحيح وأنظمة العد"
+          "en": "● Definition 3.1 — Linear Parameterization, Chicken McNugget & SFFT",
+          "ar": "● تعريف 3.1 — الحل العام الخطي ومبرهنة فروبينيوس وتحليل سايمون (SFFT)"
         },
         "body": {
-          "en": "<p>To solve bilinear Diophantine equations of the form \\( xy + ax + by = c \\) in integers, add \\( ab \\) to both sides (<strong>Simon's Favorite Factoring Trick</strong>): \\[ xy + ax + by + ab = c + ab \\iff (x + b)(y + a) = c + ab, \\] reducing the equation to enumerating the integer divisors of \\( c + ab \\). By the <strong>Chicken McNugget (Frobenius) Theorem</strong>, for coprime positive integers \\( a, b \\), the largest integer that cannot be expressed as \\( ax + by \\) (with \\( x, y \\ge 0 \\)) is \\( ab - a - b \\), and exactly \\( \\frac{(a-1)(b-1)}{2} \\) non-negative integers are unattainable.</p>",
-          "ar": "<p>To solve bilinear Diophantine equations of the form \\( xy + ax + by = c \\) in integers, add \\( ab \\) to both sides (<strong>Simon's Favorite Factoring Trick</strong>): \\[ xy + ax + by + ab = c + ab \\iff (x + b)(y + a) = c + ab, \\] reducing the equation to enumerating the integer divisors of \\( c + ab \\). By the <strong>Chicken McNugget (Frobenius) Theorem</strong>, for coprime positive integers \\( a, b \\), the largest integer that cannot be expressed as \\( ax + by \\) (with \\( x, y \\ge 0 \\)) is \\( ab - a - b \\), and exactly \\( \\frac{(a-1)(b-1)}{2} \\) non-negative integers are unattainable.</p>"
+          "en": "<p><strong>1. Linear Diophantine Theorem:</strong> \\( ax + by = c \\) has integer solutions iff \\( d = \\gcd(a,b) \\mid c \\). Given one particular solution \\( (x_0, y_0) \\), ALL integer solutions are parameterized by \\( t \\in \\mathbb{Z} \\):</p>\\[ x = x_0 + \\frac{b}{d}t, \\qquad y = y_0 - \\frac{a}{d}t. \\]<p><strong>2. Frobenius Coin (Chicken McNugget) Theorem:</strong> For coprime \\( a, b > 1 \\), the largest integer NOT representable as \\( ax + by \\) with \\( x, y \\in \\mathbb{Z}_{\\ge 0} \\) is \\( ab - a - b \\), and exactly \\( \\frac{(a-1)(b-1)}{2} \\) non-negative integers are non-representable.</p><p><strong>3. Simon's Favorite Factoring Trick (SFFT):</strong> Every bilinear equation \\( xy + rx + sy = c \\) factors by adding \\( rs \\) to both sides:</p>\\[ (x + s)(y + r) = c + rs. \\]",
+          "ar": "<p><strong>1. المعادلة الديوفانتية الخطية:</strong> تقبل \\( ax + by = c \\) حلولاً صحيحة إذا وفقط إذا كان \\( d = \\gcd(a,b) \\mid c \\). وبمعرفة حل خاص واحد \\( (x_0, y_0) \\)، تُعطى جميع الحلول الصحيحة بالوسيط \\( t \\in \\mathbb{Z} \\):</p>\\[ x = x_0 + \\frac{b}{d}t, \\qquad y = y_0 - \\frac{a}{d}t. \\]<p><strong>2. مبرهنة العملات لفروبينيوس:</strong> لعددين أوليين نسبياً \\( a, b > 1 \\)، أكبر عدد صحيح لا يمكن كتابته على الصورة \\( ax + by \\) مع \\( x, y \\ge 0 \\) هو \\( ab - a - b \\)، وعدد الأعداد غير القابلة للتمثيل يساوي \\( \\frac{(a-1)(b-1)}{2} \\).</p><p><strong>3. حيلة تحليل سايمون (SFFT):</strong> كل معادلة ثنائية الخطية \\( xy + rx + sy = c \\) تتحلل بإضافة \\( rs \\) إلى الطرفين:</p>\\[ (x + s)(y + r) = c + rs. \\]"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Diophantine Equations, Floor Functions & Number Bases",
-          "ar": "● الفهم المفاهيمي العميق — المعادلات الديوفانتية ودالة الصحيح وأنظمة العد"
+          "en": "● Theorem 3.2 — Pythagorean Triples, Floor Hermite Identity & Vieta Jumping",
+          "ar": "● مبرهنة 3.2 — ثلاثيات فيثاغورس ومتطابقة هيرميت لدالة الصحيح والقفز الفييتي"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Diophantine Equations, Floor Functions & Number Bases</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>المعادلات الديوفانتية ودالة الصحيح وأنظمة العد</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p><strong>1. Primitive Pythagorean Triples:</strong> Every solution to \\( x^2 + y^2 = z^2 \\) in coprime positive integers (with \\( x \\) odd, \\( y \\) even) has the form \\( x = m^2 - n^2,\\; y = 2mn,\\; z = m^2 + n^2 \\) for coprime \\( m > n \\ge 1 \\) of opposite parity.</p><p><strong>2. Hermite's Floor Identity:</strong> For any real \\( x \\) and positive integer \\( n \\), \\( \\sum_{k=0}^{n-1} \\left\\lfloor x + \\frac{k}{n} \\right\\rfloor = \\lfloor nx \\rfloor \\).</p><p><strong>3. Vieta Root Flipping (IMO 1988 Q6):</strong> When a symmetric quadratic Diophantine relation \\( x^2 - kxy + y^2 + c = 0 \\) holds, fixing \\( y \\) and viewing it as a quadratic in \\( x \\) with one integer root \\( x_1 \\) produces a second integer root \\( x_2 = ky - x_1 = \\frac{y^2 + c}{x_1} \\), jumping to a strictly smaller minimal solution unless \\( c \\) forces a fixed value of \\( k \\)!</p>",
+          "ar": "<p><strong>1. ثلاثيات فيثاغورس البدائية:</strong> كل حل للمعادلة \\( x^2 + y^2 = z^2 \\) بأعداد موجبة أولية نسبياً (مع \\( x \\) فردي و\\( y \\) زوجي) يُكتب على الصورة \\( x = m^2 - n^2,\\; y = 2mn,\\; z = m^2 + n^2 \\) حيث \\( m > n \\ge 1 \\) أوليان نسبياً ومختلفا الزوجية.</p><p><strong>2. متطابقة هيرميت لدالة الجزء الصحيح:</strong> لأي عدد حقيقي \\( x \\) وعدد صحيح موجب \\( n \\): \\( \\sum_{k=0}^{n-1} \\left\\lfloor x + \\frac{k}{n} \\right\\rfloor = \\lfloor nx \\rfloor \\).</p><p><strong>3. القفز الفييتي للجذور (مسألة IMO 1988 الشهيرة):</strong> في معادلة تربيعية متماثلة مثل \\( x^2 - kxy + y^2 + c = 0 \\)، تثبيت \\( y \\) واعتبارها معادلة في \\( x \\) يولّد جذراً صحيحاً ثانياً \\( x_2 = ky - x_1 = \\frac{y^2 + c}{x_1} \\)، مما يسمح بالنزول إلى حل أصغر حتى نصل إلى الشرط الحدي الحاسم لقيمة \\( k \\)!</p>"
         }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Classic IMO 1988 Problem 6 Core Step via Vieta Jumping",
+          "ar": "◆ البرهان الأولمبي — جوهر مسألة IMO 1988 رقم 6 عبر القفز الفييتي"
+        },
+        "body": {
+          "en": "<p>Suppose \\( a, b \\in \\mathbb{Z}^+ \\) satisfy \\( \\frac{a^2 + b^2}{ab + 1} = k \\in \\mathbb{Z}^+ \\). Assume \\( k \\) is NOT a perfect square, and among all positive integer solutions \\( (a, b) \\) for this fixed \\( k \\), choose the pair minimizing \\( a + b \\), with \\( a \\ge b \\ge 1 \\). Rewrite as a quadratic in \\( x = a \\): \\( x^2 - (kb)x + (b^2 - k) = 0 \\). One root is \\( x_1 = a \\); by Vieta, the second root satisfies:</p>\\[ x_2 = kb - a \\in \\mathbb{Z} \\qquad \\text{and} \\qquad x_2 = \\frac{b^2 - k}{a}. \\]<p>Since \\( k \\) is not a square, \\( x_2 \\ne 0 \\). If \\( x_2 < 0 \\), then \\( x_2 \\le -1 \\implies x_2^2 - kbx_2 + b^2 - k \\ge 1 + kb + b^2 - k = b^2 + k(b-1) + 1 > 0 \\), contradicting \\( x_2 \\) being a root! Thus \\( x_2 \\ge 1 \\) is a positive integer, AND \\( x_2 = \\frac{b^2 - k}{a} < \\frac{a^2}{a} = a \\), contradicting the minimality of \\( a + b \\)! Therefore \\( k \\) <strong>must be a perfect square</strong>. \\( \\blacksquare \\)</p>",
+          "ar": "<p>لنفترض أن \\( a, b \\in \\mathbb{Z}^+ \\) يحققان \\( \\frac{a^2 + b^2}{ab + 1} = k \\in \\mathbb{Z}^+ \\). نفرض جدلاً أن \\( k \\) ليس مربعاً كاملاً، ونختار الزوج \\( (a, b) \\) ذا المجموع الأصغر \\( a + b \\) مع \\( a \\ge b \\ge 1 \\). نكتب المعادلة تربيعيةً في \\( x = a \\): \\( x^2 - (kb)x + (b^2 - k) = 0 \\). جذرها الأول \\( x_1 = a \\)، ومن علاقات فييتا يحقق الجذر الثاني:</p>\\[ x_2 = kb - a \\in \\mathbb{Z} \\qquad \\text{وكذلك} \\qquad x_2 = \\frac{b^2 - k}{a}. \\]<p>بما أن \\( k \\) ليس مربعاً كاملاً فإن \\( x_2 \\ne 0 \\). ولو كان \\( x_2 < 0 \\) لكان \\( x_2 \\le -1 \\) ومنه \\( x_2^2 - kbx_2 + b^2 - k \\ge 1 + kb + b^2 - k = b^2 + k(b-1) + 1 > 0 \\)، وهذا يناقض كونه جذراً! إذن \\( x_2 \\ge 1 \\) عدد صحيح موجب، وبما أن \\( x_2 = \\frac{b^2 - k}{a} < \\frac{a^2}{a} = a \\) نحصل على حل موجب بمجموع أصغر \\( x_2 + b < a + b \\)، تناقض! وعليه لا بد أن يكون \\( k \\) <strong>مربعاً كاملاً</strong>. \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Olympiad Diophantine Diagnostic Matrix: Matching Equation Shape to Method",
+          "ar": "مصفوفة تشخيص المعادلات الديوفانتية: اختيار الطريقة الأولمبية المناسبة"
+        },
+        "columns": [
+          {
+            "en": "Equation Structure",
+            "ar": "بنية المعادلة"
+          },
+          {
+            "en": "Primary Olympiad Technique",
+            "ar": "الأداة الأولمبية الأساسية"
+          },
+          {
+            "en": "Key Reduction",
+            "ar": "التحويل الجوهري"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "\\(\\frac{1}{x} + \\frac{1}{y} = \\frac{1}{n}\\) or \\(xy + ax + by = c\\)",
+              "ar": "\\(\\frac{1}{x} + \\frac{1}{y} = \\frac{1}{n}\\) أو \\(xy + ax + by = c\\)"
+            },
+            {
+              "en": "Simon's Favorite Factoring Trick (SFFT)",
+              "ar": "حيلة تحليل سايمون (SFFT)"
+            },
+            {
+              "en": "\\((x - n)(y - n) = n^2\\) → count \\(\\tau(n^2)\\) divisors",
+              "ar": "\\((x - n)(y - n) = n^2\\) وحساب قواسم \\(\\tau(n^2)\\)"
+            }
+          ],
+          [
+            {
+              "en": "\\(x^2 - dy^2 = N\\) or \\(x^2 + y^2 = 4k + 3\\)",
+              "ar": "\\(x^2 - dy^2 = N\\) أو \\(x^2 + y^2 = 4k + 3\\)"
+            },
+            {
+              "en": "Modular Residue Obstruction",
+              "ar": "التناقض المعياري للبواقي التربيعية"
+            },
+            {
+              "en": "\\(x^2 + y^2 \\equiv 0, 1, 2 \\pmod 4\\) → never \\(3 \\pmod 4\\)!",
+              "ar": "مجموع مربعين لا يطابق \\(3 \\pmod 4\\) أبداً!"
+            }
+          ],
+          [
+            {
+              "en": "\\(\\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} = 1\\) (symmetric)",
+              "ar": "\\(\\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} = 1\\) (متماثلة)"
+            },
+            {
+              "en": "WLOG Ordering & Bounding",
+              "ar": "افترض دون إخلال بالعمومية \\(x \\le y \\le z\\)"
+            },
+            {
+              "en": "\\(1 \\le \\frac{3}{x} \\implies x \\in \\{2, 3\\}\\), reducing to 2 variables!",
+              "ar": "\\(1 \\le \\frac{3}{x} \\implies x \\in \\{2, 3\\}\\) وتتحول إلى مجهولين!"
+            }
+          ],
+          [
+            {
+              "en": "\\(2^x - 3^y = \\pm 1\\) (Exponential Diophantine)",
+              "ar": "\\(2^x - 3^y = \\pm 1\\) (معادلات أسية صحيحة)"
+            },
+            {
+              "en": "Parity / Mod \\(3, 4, 8\\) + Difference of Squares",
+              "ar": "الزوجية والترديد \\(\\pmod{3,4,8}\\) + فرق المربعين"
+            },
+            {
+              "en": "Even exponent forces \\((2^{x/2}-1)(2^{x/2}+1) = 3^y\\)",
+              "ar": "الأس الزوجي يجبر العاملين المتتاليين على قوى لـ \\(3\\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Unit-Fraction Formula",
+              "ar": "معادلة مجموع كسرين وحيدين"
+            },
+            "value": {
+              "en": "Ordered positive solutions to \\(\\frac{1}{x} + \\frac{1}{y} = \\frac{1}{n}\\) equal \\(\\tau(n^2)\\)",
+              "ar": "عدد الحلول الموجبة المرتبة لـ \\(\\frac{1}{x} + \\frac{1}{y} = \\frac{1}{n}\\) يساوي \\(\\tau(n^2)\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Consecutive Square Squeeze",
+              "ar": "الحصر بين مربعين متتاليين"
+            },
+            "value": {
+              "en": "No integer square lies strictly between \\(n^2\\) and \\((n+1)^2 = n^2+2n+1\\)!",
+              "ar": "لا يوجد أي مربع كامل محصور قطعاً بين \\(n^2\\) و\\((n+1)^2 = n^2+2n+1\\)!"
+            }
+          },
+          {
+            "label": {
+              "en": "Discriminant Integrality",
+              "ar": "شرط المميز المربع الكامل"
+            },
+            "value": {
+              "en": "If \\(ax^2+bx+c=0\\) has \\(x \\in \\mathbb{Z}\\), then \\(\\Delta = b^2 - 4ac = m^2\\) for some \\(m \\in \\mathbb{Z}_{\\ge 0}\\)",
+              "ar": "إذا كان \\(x \\in \\mathbb{Z}\\) فلا بد أن يكون المميز \\(\\Delta = b^2 - 4ac = m^2\\) مربعاً كاملاً"
+            }
+          },
+          {
+            "label": {
+              "en": "Floor Decomposition",
+              "ar": "تفكيك الجزء الصحيح والكسر"
+            },
+            "value": {
+              "en": "Always write \\(x = n + r\\) with \\(n = \\lfloor x \\rfloor \\in \\mathbb{Z}\\) and \\(0 \\le r < 1\\)",
+              "ar": "اكتب دائماً \\(x = n + r\\) حيث \\(n = \\lfloor x \\rfloor \\in \\mathbb{Z}\\) و\\(0 \\le r < 1\\)"
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Diophantine Equations, Floor Functions & Number Bases — Coordinate Curve & Structural Analysis",
+          "title": "SFFT Hyperbola (x − 2)(y − 3) = 6 and Its Lattice Solutions in ℤ²",
           "xrange": [
-            -4,
-            6
+            -5,
+            9
           ],
           "yrange": [
             -4,
-            8
+            10
           ],
           "fns": [
             {
-              "fn": "(x - 2)*(x - 2) - 2",
+              "fn": "3 + 6/(x - 2)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 2)² - 2"
-            },
-            {
-              "fn": "x + 1",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 1"
+              "label": "(x − 2)(y − 3) = 6"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": -2,
-              "label": "Vertex (2, -2)"
+              "x": 3,
+              "y": 9,
+              "label": "(3, 9)"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "label": "(4, 6)"
+            },
+            {
+              "x": 5,
+              "y": 5,
+              "label": "(5, 5)"
+            },
+            {
+              "x": 8,
+              "y": 4,
+              "label": "(8, 4)"
+            },
+            {
+              "x": 1,
+              "y": -3,
+              "label": "(1, −3)"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 2)^2 - 2\\) and secant line \\(g(x) = x + 1\\) illustrating Diophantine Equations, Floor Functions & Number Bases.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس المعادلات الديوفانتية ودالة الصحيح وأنظمة العد."
+          "en": "Geometric meaning of SFFT: \\(xy - 3x - 2y = 0 \\iff (x - 2)(y - 3) = 6\\) is a rectangular hyperbola with asymptotes \\(x = 2\\) and \\(y = 3\\); its integer lattice points correspond 1-to-1 with the \\(2\\tau(6) = 8\\) signed divisors of \\(6\\).",
+          "ar": "المعنى الهندسي لتحليل سايمون (SFFT): تمثل المعادلة \\((x - 2)(y - 3) = 6\\) قطعاً زائداً مقارباه \\(x = 2\\) و\\(y = 3\\)، وتتقابل نقاطه الصحيحة واحداً لواحد مع جميع قواسم العدد \\(6\\) الموجبة والسالبة (\\(8\\) حلول)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Diophantine Lattice Points & Simon's Factoring Trick Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النقاط الشبكية للمعادلات الديوفانتية والتحليل الجبري"
+          "en": "⊙ Explorer · SFFT Hyperbola Lattice & Divisor-Pair Solutions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الشبكة الصحيحة لتحليل سايمون (SFFT) وأزواج القواسم"
         },
         "canvasId": "oldiophantineequationsExCanvas",
         "ariaLabel": {
-          "en": "Diophantine Lattice Points & Simon's Factoring Trick Lab interactive mathematical canvas",
-          "ar": "مختبر النقاط الشبكية للمعادلات الديوفانتية والتحليل الجبري لوحة رياضية تفاعلية"
+          "en": "Interactive Diophantine explorer graphing the hyperbola (x - a)(y - a) = N and highlighting all integer lattice points.",
+          "ar": "مستكشف تفاعلي للمعادلات الديوفانتية يرسم القطع الزائد (x - a)(y - a) = N ويبرز جميع نقاط الشبكة الصحيحة."
         },
         "dataPanel": {
           "btnId": "oldiophantineequationsExCanvas_dataBtn",
@@ -113,17 +276,17 @@
           "descId": "oldiophantineequationsExCanvas_dataDesc",
           "rowsId": "oldiophantineequationsExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Diophantine Lattice Points & Simon's Factoring Trick Lab",
-            "ar": "جدول القيم العددية لـ مختبر النقاط الشبكية للمعادلات الديوفانتية والتحليل الجبري"
+            "en": "Exact integer lattice solutions to \\((x - a)(y - a) = N\\)",
+            "ar": "جميع الحلول الصحيحة للمعادلة \\((x - a)(y - a) = N\\)"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -131,8 +294,8 @@
           {
             "id": "oldiophantineequationsExCanvas_s0",
             "label": {
-              "en": "Parameter <b>\\(a =\\)</b>",
-              "ar": "Parameter <b>\\(a =\\)</b>"
+              "en": "Asymptote Shift <b>\\(a =\\)</b>",
+              "ar": "إزاحة المقارب <b>\\(a =\\)</b>"
             },
             "min": 1,
             "max": 5,
@@ -140,24 +303,24 @@
             "step": 1,
             "valueDisplayId": "oldiophantineequationsExCanvas_v0",
             "ariaLabel": {
-              "en": "Parameter \\(a =\\)",
-              "ar": "Parameter \\(a =\\)"
+              "en": "Asymptote shift parameter a",
+              "ar": "معامل إزاحة خط المقارب a"
             }
           },
           {
             "id": "oldiophantineequationsExCanvas_s1",
             "label": {
-              "en": "Parameter <b>\\(b =\\)</b>",
-              "ar": "Parameter <b>\\(b =\\)</b>"
+              "en": "Factorized Constant <b>\\(N =\\)</b>",
+              "ar": "ثابت التحليل <b>\\(N =\\)</b>"
             },
-            "min": 1,
-            "max": 5,
-            "value": 3,
+            "min": 2,
+            "max": 18,
+            "value": 6,
             "step": 1,
             "valueDisplayId": "oldiophantineequationsExCanvas_v1",
             "ariaLabel": {
-              "en": "Parameter \\(b =\\)",
-              "ar": "Parameter \\(b =\\)"
+              "en": "Right-hand constant N",
+              "ar": "الثابت الصحيح N"
             }
           }
         ],
@@ -165,405 +328,295 @@
           {
             "id": "oldiophantineequationsExCanvas_r0",
             "label": {
-              "en": "Frobenius Bound \\(ab - a - b\\)",
-              "ar": "Frobenius Bound \\(ab - a - b\\)"
+              "en": "Positive Divisors \\(\\tau(N)\\)",
+              "ar": "القواسم الموجبة \\(\\tau(N)\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(1\\)"
+            "value": "τ(6) = 4"
           },
           {
             "id": "oldiophantineequationsExCanvas_r1",
             "label": {
-              "en": "SFFT Constant \\(ab\\)",
-              "ar": "SFFT Constant \\(ab\\)"
+              "en": "Total \\(\\mathbb{Z}^2\\) Solutions \\(2\\tau(N)\\)",
+              "ar": "إجمالي حلول \\(\\mathbb{Z}^2\\)"
             },
             "colorClass": "amber",
-            "value": "\\(6\\)"
+            "value": "8 lattice pts"
           },
           {
             "id": "oldiophantineequationsExCanvas_r2",
             "label": {
-              "en": "Lattice Distance",
-              "ar": "Lattice Distance"
+              "en": "Closest Pair \\((x, y)\\)",
+              "ar": "أقرب زوج حلول \\((x, y)\\)"
             },
             "colorClass": "teal",
-            "value": "\\(3.61\\)"
+            "value": "(4, 5)"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Diophantine Equations, Floor Functions & Number Bases.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس المعادلات الديوفانتية ودالة الصحيح وأنظمة العد."
+          "en": "Vary \\(a\\) and \\(N\\) to watch the hyperbola \\((x - a)(y - a) = N\\) pass through integer grid intersections. Notice prime values of \\(N\\) yield only \\(4\\) total integer points, while highly composite \\(N = 12, 18\\) light up \\(12\\) lattice solutions!",
+          "ar": "غيّر \\(a\\) و\\(N\\) لمراقبة مرور القطع الزائد \\((x - a)(y - a) = N\\) بنقاط الشبكة الصحيحة؛ لاحظ أن القيم الأولية لـ \\(N\\) تعطي \\(4\\) نقاط فقط بينما القيم المركبة كالعدد \\(12\\) تضيء \\(12\\) نقطة صحيحة!"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
+          "type": "fn",
+          "title": "Square-Squeeze Trap: y² = x² + 3x + 5 Lies Strictly Between (x+1)² and (x+2)² for x ≥ 2",
+          "xrange": [
             0,
-            0
+            6
           ],
-          "B": [
-            12,
-            0
+          "yrange": [
+            0,
+            60
           ],
-          "C": [
-            12,
-            5
+          "fns": [
+            {
+              "fn": "(x+1)*(x+1)",
+              "color": "var(--fig-teal)",
+              "dash": "4,4",
+              "label": "(x + 1)²"
+            },
+            {
+              "fn": "x*x + 3*x + 5",
+              "color": "var(--fig-indigo)",
+              "label": "x² + 3x + 5"
+            },
+            {
+              "fn": "(x+2)*(x+2)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "(x + 2)²"
+            }
           ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "12",
-            "a": "16",
-            "b": "20"
-          },
-          "rightAt": "B"
+          "points": [
+            {
+              "x": 1,
+              "y": 9,
+              "label": "x=1: y²=9 ✓"
+            }
+          ]
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((12)^2 + (16)^2 = (20)^2\\) for Diophantine Equations, Floor Functions & Number Bases.",
-          "ar": "العلاقة الهندسية المتعامدة \\((12)^2 + (16)^2 = (20)^2\\) في درس المعادلات الديوفانتية ودالة الصحيح وأنظمة العد."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 3.1",
-              "ar": "القاعدة الأساسية 3.1"
-            },
-            "value": {
-              "en": "Simon's Favorite Factoring Trick (SFFT)",
-              "ar": "Simon's Favorite Factoring Trick (SFFT)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 3.2",
-              "ar": "القاعدة الأساسية 3.2"
-            },
-            "value": {
-              "en": "Linear Diophantine equations ax + by = c",
-              "ar": "Linear Diophantine equations ax + by = c"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 3.3",
-              "ar": "القاعدة الأساسية 3.3"
-            },
-            "value": {
-              "en": "Chicken McNugget Theorem (ab - a - b)",
-              "ar": "Chicken McNugget Theorem (ab - a - b)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 3.4",
-              "ar": "القاعدة الأساسية 3.4"
-            },
-            "value": {
-              "en": "Floor ⌊x⌋ & fractional part {x} equations",
-              "ar": "Floor ⌊x⌋ & fractional part {x} equations"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Diophantine Equations, Floor Functions & Number Bases)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (المعادلات الديوفانتية ودالة الصحيح وأنظمة العد)"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+          "en": "Consecutive-square bounding in action: for \\(x > 1\\), \\((x+1)^2 = x^2+2x+1 < x^2+3x+5 < x^2+4x+4 = (x+2)^2\\) whenever \\(x > 1\\), trapping \\(y^2\\) strictly between two consecutive squares and leaving only finite check \\(x = 1 \\implies y = \\pm 3\\)!",
+          "ar": "آلية الحصر بين مربعين متتاليين: لكل \\(x > 1\\) يتحقق \\((x+1)^2 < x^2+3x+5 < (x+2)^2\\)، مما يحبس \\(y^2\\) قطعاً بين مربعين متتاليين ويجعل الحل الموجب الوحيد عند التقاطع \\(x = 1 \\implies y = 3\\)!"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 3.A — Foundational Formulation (Diophantine Equations, Floor Functions & Number Bases)",
-          "ar": "مثال محلول 3.A — تطبيق أساسي (المعادلات الديوفانتية ودالة الصحيح وأنظمة العد)"
+          "en": "Worked Example 3.A — Counting Unit-Fraction Solutions via SFFT (AMC 10/12 & NSMO)",
+          "ar": "مثال محلول 3.A — عدّ حلول معادلة الكسور الوحيدة عبر SFFT (AMC 10/12 ونسما)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 8x + 21 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{8}{2} = -4 \\).<br>2. Write \\( (x - 4)^2 = x^2 - 8x + 16 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 4)^2 - 16 + 21 = (x - 4)^2 + 5 \\).<br>4. Since \\( (x - 4)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 5 \\), achieved at \\( x = 4 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 4)^2 + 5 \\); minimum value \\( 5 \\) at \\( x = 4 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 8x + 21 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 4)^2 + 5 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) وتتحقق عند \\( x = 4 \\).</p>"
+          "en": "<p><strong>Problem:</strong> How many ordered pairs of positive integers \\( (x, y) \\) satisfy \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{18} \\)?</p><p><strong>Solution:</strong> Clear denominators (noting \\( x, y > 18 \\) since \\( \\frac{1}{x} < \\frac{1}{18} \\)):<br>\\[ 18(x + y) = xy \\iff xy - 18x - 18y = 0. \\]<br>Add \\( (-18)(-18) = 324 \\) to both sides (SFFT):<br>\\[ (x - 18)(y - 18) = 324 = 2^2 \\cdot 3^4. \\]<br>Since \\( x, y \\ge 1 \\), we have \\( x - 18 > -18 \\) and \\( y - 18 > -18 \\). If \\( x - 18 < 0 \\), both factors are negative with product \\( 324 \\), which is impossible since \\( (-17)(-17) = 289 < 324 \\)! Thus every positive divisor \\( d \\mid 324 \\) gives a unique valid positive pair \\( x = 18 + d,\\; y = 18 + \\frac{324}{d} \\).<br>The number of ordered pairs is \\( \\tau(324) = (2 + 1)(4 + 1) = 15 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> كم زوجاً مرتباً من الأعداد الصحيحة الموجبة \\( (x, y) \\) يحقق المعادلة \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{18} \\)؟</p><p><strong>الحل الأولمبي:</strong> بضرب الطرفين في \\( 18xy \\) وترتيب الحدود:<br>\\[ xy - 18x - 18y = 0 \\iff (x - 18)(y - 18) = 18^2 = 324 = 2^2 \\cdot 3^4. \\]<br>لا يمكن أن يكون العاملان سالبين معاً لأن \\( x, y \\ge 1 \\implies x - 18 \\ge -17 \\) وأقصى جداء لعاملين سالبين هو \\( (-17)(-17) = 289 < 324 \\). إذن كل قاسم موجب \\( d \\) للعدد \\( 324 \\) يعطي حلاً موجباً وحيداً \\( (18 + d,\\; 18 + 324/d) \\)، وعدد الأزواج المرتبة يساوي \\( \\tau(324) = (2+1)(4+1) = 15 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 3.B — Intermediate Multi-Step Synthesis (Diophantine Equations, Floor Functions & Number Bases)",
-          "ar": "مثال محلول 3.B — تطبيق متوسط متعدد الخطوات (المعادلات الديوفانتية ودالة الصحيح وأنظمة العد)"
+          "en": "Worked Example 3.B — Exponential Diophantine Equation (NSMO Stage 3 / BMO)",
+          "ar": "مثال محلول 3.B — حل معادلة ديوفانتية أسية بالكامل (نهائيات نسما / BMO)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 8x + 21 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 8x + 21 = 2x + k \\implies x^2 - 10x + (21 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-10)^2 - 4(1)(21 - k) > 0 \\]<br>\\[ 100 - 84 + 4k > 0 \\implies 4k > -16 \\implies k > -4 \\]</p><p><strong>Final Answer:</strong> \\( k > -4 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 8x + 21 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -4 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Find all pairs of non-negative integers \\( (x, y) \\) satisfying \\( 3^x - 2^y = 7 \\).</p><p><strong>Solution:</strong><br>1. Check small \\( y \\) first: \\( y = 0 \\implies 3^x = 8 \\) (no); \\( y = 1 \\implies 3^x = 9 \\implies (x, y) = (2, 1) \\); \\( y = 2 \\implies 3^x = 11 \\) (no).<br>2. Now assume \\( y \\ge 3 \\), so \\( 8 \\mid 2^y \\), meaning \\( 2^y \\equiv 0 \\pmod 8 \\). Reducing the equation modulo \\( 8 \\) gives \\( 3^x = 2^y + 7 \\equiv 7 \\pmod 8 \\). However, powers of \\( 3 \\pmod 8 \\) alternate exclusively between \\( 1 \\) and \\( 3 \\) (\\( 3^{2k} \\equiv 1,\\; 3^{2k+1} \\equiv 3 \\pmod 8 \\)) and can never equal \\( 7 \\pmod 8 \\)!<br>Therefore \\( (x, y) = (2, 1) \\) is the <strong>unique solution</strong> in non-negative integers!</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد جميع أزواج الأعداد الصحيحة غير السالبة \\( (x, y) \\) التي تحقق المعادلة \\( 3^x - 2^y = 7 \\).</p><p><strong>الحل الأولمبي:</strong><br>1. نفحص القيم الصغيرة لـ \\( y \\) أولاً: عند \\( y = 0 \\implies 3^x = 8 \\) (مستحيل)؛ عند \\( y = 1 \\implies 3^x = 9 \\implies (x, y) = (2, 1) \\)؛ عند \\( y = 2 \\implies 3^x = 11 \\) (مستحيل).<br>2. نفترض الآن \\( y \\ge 3 \\)، فيكون \\( 2^y \\equiv 0 \\pmod 8 \\)، وتقتضي المعادلة \\( 3^x = 2^y + 7 \\equiv 7 \\pmod 8 \\). لكن قوى العدد \\( 3 \\) بترديد \\( 8 \\) تتناوب حصراً بين \\( 1 \\) و\\( 3 \\) (\\( 3^{2k} \\equiv 1,\\; 3^{2k+1} \\equiv 3 \\pmod 8 \\)) ولا تساوي \\( 7 \\) أبداً!<br>إذن لا توجد أي حلول أخرى، والحل الوحيد هو <strong>\\( (2, 1) \\)</strong>.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 3.C — Advanced Rate & Vector Application (Diophantine Equations, Floor Functions & Number Bases)",
-          "ar": "مثال محلول 3.C — تطبيق متقدم (المعادلات الديوفانتية ودالة الصحيح وأنظمة العد)"
+          "en": "Worked Example 3.C — Consecutive-Square Bounding in Quartic/Quadratic Equations (KAUST KMC)",
+          "ar": "مثال محلول 3.C — الحصر بين مربعين متتاليين (مسابقة كاوست للرياضيات)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 12x^2 + 48x + 5 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 6 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 24x + 48 = 3(x - 4)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 4 \\), with \\( g(4) = 5 \\). Thus \\( (4, 5) \\) is the stationary point.<br>3. At \\( x = 6 \\), the gradient is \\( g'(6) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (4, 5) \\); gradient at \\( x = 6 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 12x^2 + 48x + 5 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 6 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 4)^2 \\)، تنعدم عند \\( (4, 5) \\)، وعند \\( x = 6 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Find all positive integers \\( n \\) such that \\( n^4 + 2n^3 + 2n^2 + 2n + 1 \\) is a perfect square.</p><p><strong>Solution:</strong> Compare \\( E(n) = n^4 + 2n^3 + 2n^2 + 2n + 1 \\) with nearby squares of monic quadratics \\( (n^2 + n + c)^2 \\):<br>1. Lower square: \\( (n^2 + n)^2 = n^4 + 2n^3 + n^2 < E(n) \\) for all \\( n \\ge 1 \\) (since \\( n^2 + 2n + 1 = (n+1)^2 > 0 \\)).<br>2. Upper square: \\( (n^2 + n + 1)^2 = n^4 + 2n^3 + 3n^2 + 2n + 1 \\). Comparing with \\( E(n) \\):<br>\\[ (n^2 + n + 1)^2 - E(n) = n^2 > 0 \\quad \\text{for all } n \\ge 1. \\]<br>Hence for every positive integer \\( n \\ge 1 \\),<br>\\[ (n^2 + n)^2 < n^4 + 2n^3 + 2n^2 + 2n + 1 < (n^2 + n + 1)^2! \\]<br>Because \\( E(n) \\) is strictly trapped between two consecutive integer squares, there are <strong>zero positive integer solutions</strong>! (Algebraic confirmation: \\( E(n) = (n^2 + 1)(n + 1)^2 \\), which is a square iff \\( n^2 + 1 \\) is a square — impossible for \\( n \\ge 1 \\)!)</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد جميع الأعداد الصحيحة الموجبة \\( n \\) التي تجعل المقدار \\( n^4 + 2n^3 + 2n^2 + 2n + 1 \\) مربعاً كاملاً.</p><p><strong>الحل الأولمبي (بطريقتين):</strong><br><strong>الطريقة الأولى (الحصر بين مربعين متتاليين):</strong> لكل \\( n \\ge 1 \\) نقارن المقدار \\( E(n) \\) بمربعَي عددين متتاليين:<br>\\[ (n^2 + n)^2 = n^4 + 2n^3 + n^2 < E(n) < n^4 + 2n^3 + 3n^2 + 2n + 1 = (n^2 + n + 1)^2. \\]<br>بما أن \\( E(n) \\) محصور قطعاً بين مربعين متتاليين، فلا يمكن أن يكون مربعاً كاملاً لأي \\( n \\ge 1 \\)!<br><strong>الطريقة الثانية (التحليل الأولمبي):</strong> نلاحظ أن \\( E(n) = (n^2 + 1)(n + 1)^2 \\)، ولكي يكون مربعاً كاملاً يجب أن يكون \\( n^2 + 1 \\) مربعاً كاملاً، وهو مستحيل لكل \\( n \\ge 1 \\)! إذن <strong>لا توجد حلول موجبة</strong>.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 3.D — Exam-Grade Challenge Synthesis (Diophantine Equations, Floor Functions & Number Bases)",
-          "ar": "مثال محلول 3.D — مسألة تحدي بمستوى الاختبار (المعادلات الديوفانتية ودالة الصحيح وأنظمة العد)"
+          "en": "Worked Example 3.D — Fractional-Part Floor-Sum Jump Analysis (AIME / KAUST Finals)",
+          "ar": "مثال محلول 3.D — تحليل قفزات مجاميع دالة الجزء الصحيح (AIME / نهائيات كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 4n^2 + 5n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 4(1)^2 + 5(1) = 9 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[4n^2 + 5n\\right] - \\left[4(n-1)^2 + 5(n-1)\\right] = 8n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 8 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 81 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 8n + 1 \\), \\( d = 8 \\), and \\( u_{10} = 81 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 4n^2 + 5n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 8n + 1 \\)، والأساس \\( d = 8 \\)، والحد العاشر \\( u_{10} = 81 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Among the \\( 60 \\) integers \\( \\{0, 1, 2, \\dots, 59\\} \\), how many can NEVER be expressed in the form \\( g(x) = \\lfloor x \\rfloor + \\lfloor 2x \\rfloor + \\lfloor 3x \\rfloor \\) for any real number \\( x \\)?</p><p><strong>Solution:</strong> Write \\( x = n + r \\) where \\( n = \\lfloor x \\rfloor \\in \\mathbb{Z} \\) and \\( r = \\{x\\} \\in [0, 1) \\). Then:<br>\\[ g(x) = n + (2n + \\lfloor 2r \\rfloor) + (3n + \\lfloor 3r \\rfloor) = 6n + \\lfloor 2r \\rfloor + \\lfloor 3r \\rfloor. \\]<br>Partition \\( r \\in [0, 1) \\) at the jump thresholds \\( \\frac{1}{3}, \\frac{1}{2}, \\frac{2}{3} \\):<br>• \\( r \\in [0, \\frac{1}{3}) \\implies 0 + 0 = 0 \\)<br>• \\( r \\in [\\frac{1}{3}, \\frac{1}{2}) \\implies 0 + 1 = 1 \\)<br>• \\( r \\in [\\frac{1}{2}, \\frac{2}{3}) \\implies 1 + 1 = 2 \\)<br>• \\( r \\in [\\frac{2}{3}, 1) \\implies 1 + 2 = 3 \\).<br>Thus in every block of \\( 6 \\) consecutive integers \\( \\{6n, 6n+1, \\dots, 6n+5\\} \\), \\( g(x) \\) attains the \\( 4 \\) residues \\( 6n + \\{0, 1, 2, 3\\} \\) and strictly skips the \\( 2 \\) residues \\( 6n + 4 \\) and \\( 6n + 5 \\)! Since \\( \\{0, 1, \\dots, 59\\} \\) consists of \\( 10 \\) complete blocks of length \\( 6 \\), exactly \\( 10 \\times 2 = 20 \\) integers are skipped.</p>",
+          "ar": "<p><strong>المسألة:</strong> من بين الأعداد الصحيحة \\( \\{0, 1, 2, \\dots, 59\\} \\)، كم عدداً لا يمكن كتابته أبداً على الصورة \\( g(x) = \\lfloor x \\rfloor + \\lfloor 2x \\rfloor + \\lfloor 3x \\rfloor \\) لأي عدد حقيقي \\( x \\)؟</p><p><strong>الحل الأولمبي:</strong> نكتب \\( x = n + r \\) حيث \\( n = \\lfloor x \\rfloor \\in \\mathbb{Z} \\) والجزء الكسري \\( r \\in [0, 1) \\)، فيصبح:<br>\\[ g(x) = 6n + \\lfloor 2r \\rfloor + \\lfloor 3r \\rfloor. \\]<br>نقسّم الفترة \\( [0, 1) \\) عند نقاط القفز \\( \\frac{1}{3}, \\frac{1}{2}, \\frac{2}{3} \\):<br>• \\( r \\in [0, \\frac{1}{3}) \\implies 0 + 0 = 0 \\)<br>• \\( r \\in [\\frac{1}{3}, \\frac{1}{2}) \\implies 0 + 1 = 1 \\)<br>• \\( r \\in [\\frac{1}{2}, \\frac{2}{3}) \\implies 1 + 1 = 2 \\)<br>• \\( r \\in [\\frac{2}{3}, 1) \\implies 1 + 2 = 3 \\).<br>إذن في كل دورة طولها \\( 6 \\) أعداد \\( \\{6n, \\dots, 6n+5\\} \\)، يأخذ المقدار البواقي \\( 0, 1, 2, 3 \\) ويقفز دائماً عن العددين \\( 6n + 4 \\) و\\( 6n + 5 \\)! وبما أن \\( \\{0, \\dots, 59\\} \\) تتكون من \\( 10 \\) دورات كاملة، فإن عدد الأعداد غير القابلة للتمثيل هو \\( 10 \\times 2 = 20 \\) عدداً.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Diophantine Equations, Floor Functions & Number Bases",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — المعادلات الديوفانتية ودالة الصحيح وأنظمة العد"
+          "en": "⚠ Olympiad Trap — Forgetting Negative Divisors & Zero Edge Cases in SFFT",
+          "ar": "⚠ فخ أولمبي شائع — إغفال القواسم السالبة وحالة الصفر في تحليل SFFT"
         },
         "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+          "en": "<p>When solving \\( (x + s)(y + r) = N \\), carefully read whether the domain specifies <strong>all integers \\( \\mathbb{Z} \\)</strong>, <strong>non-negative integers \\( \\mathbb{Z}_{\\ge 0} \\)</strong>, or <strong>positive integers \\( \\mathbb{Z}^+ \\)</strong>! Over \\( \\mathbb{Z} \\), every negative divisor pair \\( (-d, -N/d) \\) is also valid, doubling the count to \\( 2\\tau(|N|) \\); over \\( \\mathbb{Z}^+ \\), you must explicitly filter out pairs that yield \\( x \\le 0 \\) or \\( y \\le 0 \\).</p>",
+          "ar": "<p>عند حل \\( (x + s)(y + r) = N \\)، انتبه بدقة لمجال المسألة: هل المطلوب <strong>جميع الأعداد الصحيحة \\( \\mathbb{Z} \\)</strong> أم <strong>الأعداد الموجبة \\( \\mathbb{Z}^+ \\)</strong>؟ في \\( \\mathbb{Z} \\) تُحتسب أزواج القواسم السالبة \\( (-d, -N/d) \\) أيضاً فيتضاعف العدد إلى \\( 2\\tau(|N|) \\)، بينما في \\( \\mathbb{Z}^+ \\) يجب استبعاد أي قاسم يعطي \\( x \\le 0 \\) أو \\( y \\le 0 \\).</p>"
         }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Diophantine Equations, Floor Functions & Number Bases)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (المعادلات الديوفانتية ودالة الصحيح وأنظمة العد)"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
       },
       {
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Diophantine Equations, Floor Functions & Number Bases",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — المعادلات الديوفانتية ودالة الصحيح وأنظمة العد"
+          "en": "▲ Contest Strategy — Coprime GCD Factoring for Powers",
+          "ar": "▲ استراتيجية المسابقات — استغلال الأولية النسبية للعوامل في المعادلات الأسية"
         },
         "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+          "en": "<p>Whenever \\( AB = z^k \\) in positive integers (such as \\( n(n+1) = z^2 \\) or \\( (x-1)(x+1) = 3^y \\)), compute \\( g = \\gcd(A, B) \\) FIRST! Since \\( \\gcd(n, n+1) = 1 \\), BOTH \\( n \\) and \\( n+1 \\) would have to be individual \\( k \\)-th powers — immediately forcing \\( n = 0 \\)!</p>",
+          "ar": "<p>كلما ظهر جداء يساوي قوة كاملة \\( AB = z^k \\) (مثل \\( n(n+1) = z^2 \\) أو \\( (x-1)(x+1) = 3^y \\))، احسب \\( g = \\gcd(A, B) \\) أولاً! فإذا كان العاملان أوليين نسبياً (\\( g = 1 \\))، وجب أن يكون كل عامل بمفرده قوة كاملة من الدرجة \\( k \\)!</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(5) \\) for the quadratic function \\( f(x) = 4x^2 - 4x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(5) \\) للدالة التربيعية \\( f(x) = 4x^2 - 4x + 10 \\)."
+          "en": "<strong>[Practice 3.1 · NSMO Stage 1 / Easy]</strong> What is the largest positive integer that CANNOT be written in the form \\( 7a + 11b \\) for non-negative integers \\( a, b \\ge 0 \\)?",
+          "ar": "<strong>[تدريب 3.1 · نسما المرحلة 1 / سهل]</strong> ما أكبر عدد صحيح موجب لا يمكن كتابته على الصورة \\( 7a + 11b \\) حيث \\( a, b \\ge 0 \\) عددان صحيحان غير سالبين؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 5 \\) directly into \\( f(x) = 4x^2 - 4x + 10 \\).",
-            "ar": "عوّض عن \\( x = 5 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+            "en": "Check that \\( \\gcd(7, 11) = 1 \\), so the Frobenius Coin (Chicken McNugget) theorem applies.",
+            "ar": "بما أن \\( \\gcd(7, 11) = 1 \\)، تنطبق مبرهنة العملات لفروبينيوس مباشرةً."
           },
           {
-            "en": "Factor out \\( 4x(x - 1) + 10 = 4(5)(4) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 4(5)(4) + 10 \\)."
+            "en": "Recall the formula \\( ab - a - b \\) for non-negative coefficients.",
+            "ar": "استخدم الصيغة \\( ab - a - b \\) للمعاملات غير السالبة."
           },
           {
-            "en": "Compute \\( 80 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 80 + 10 \\) للحصول على النتيجة النهائية."
+            "en": "Compute \\( 7 \\times 11 - 7 - 11 \\).",
+            "ar": "احسب \\( 77 - 7 - 11 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 5 \\) gives \\( f(5) = 4(5)^2 - 4(5) + 10 = 100 - 20 + 10 = 90 \\).",
-          "ar": "بالتعويض عن \\( x = 5 \\) نجد \\( f(5) = 4(5)^2 - 4(5) + 10 = 90 \\)."
+          "en": "By the Chicken McNugget Theorem for coprime \\( 7 \\) and \\( 11 \\), the largest non-representable integer is \\( 7(11) - 7 - 11 = 77 - 18 = 59 \\).",
+          "ar": "حسب مبرهنة فروبينيوس للعددين الأوليين نسبياً \\( 7 \\) و\\( 11 \\)، أكبر عدد لا يمكن تمثيله هو \\( 7(11) - 7 - 11 = 59 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 9x + 20 = 0 \\) that is greater than \\( 4 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 4 \\) للمعادلة \\( x^2 - 9x + 20 = 0 \\)."
+          "en": "<strong>[Practice 3.2 · KAUST KMC / Easy]</strong> Find the sum \\( x + y \\) for the unique pair of positive integers \\( (x, y) \\) with \\( x \\le y \\) satisfying \\( xy + 3x + 5y = 62 \\).",
+          "ar": "<strong>[تدريب 3.2 · مسابقة كاوست / سهل]</strong> أوجد المجموع \\( x + y \\) للزوج الوحيد من الأعداد الصحيحة الموجبة \\( (x, y) \\) مع \\( x \\le y \\) الذي يحقق المعادلة \\( xy + 3x + 5y = 62 \\)."
         },
         "hints": [
           {
-            "en": "Look for two integers whose sum is \\( 9 \\) and whose product is \\( 20 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 9 \\) وحاصل ضربهما \\( 20 \\)."
+            "en": "Add \\( 3 \\times 5 = 15 \\) to both sides to factor via SFFT.",
+            "ar": "أضف \\( 3 \\times 5 = 15 \\) إلى الطرفين لتطبيق تحليل SFFT."
           },
           {
-            "en": "Factor the quadratic as \\( (x - 4)(x - 5) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 4)(x - 5) = 0 \\)."
+            "en": "Rewrite as \\( (x + 5)(y + 3) = 62 + 15 = 77 = 7 \\times 11 \\).",
+            "ar": "تصبح المعادلة \\( (x + 5)(y + 3) = 77 = 7 \\times 11 \\)."
           },
           {
-            "en": "Compare the two roots \\( x = 4 \\) and \\( x = 5 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 4 \\) و \\( x = 5 \\) واختر الأكبر."
+            "en": "Since \\( x \\ge 1 \\implies x + 5 \\ge 6 \\) and \\( y \\ge 1 \\implies y + 3 \\ge 4 \\), match \\( (7, 11) \\) or \\( (11, 7) \\) with \\( x \\le y \\).",
+            "ar": "بما أن \\( x + 5 \\ge 6 \\) و\\( y + 3 \\ge 4 \\)، قارن بين \\( (7, 11) \\) و\\( (11, 7) \\) مع شرط \\( x \\le y \\)."
           }
         ],
         "solution": {
-          "en": "Factoring gives \\( (x - 4)(x - 5) = 0 \\), so the roots are \\( x = 4 \\) and \\( x = 5 \\). The root greater than \\( 4 \\) is \\( x = 5 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 4)(x - 5) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 4 \\) هو \\( x = 5 \\)."
+          "en": "Adding \\( 15 \\) to both sides yields \\( (x + 5)(y + 3) = 77 \\). Since \\( x + 5 \\ge 6 \\) and \\( y + 3 \\ge 4 \\), the factor pairs of \\( 77 \\) are \\( (7, 11) \\implies (x, y) = (2, 8) \\) and \\( (11, 7) \\implies (x, y) = (6, 4) \\). With \\( x \\le y \\), \\( (x, y) = (2, 8) \\) and \\( x + y = 10 \\).",
+          "ar": "بإضافة \\( 15 \\) للطرفين نحصل على \\( (x + 5)(y + 3) = 77 \\). وبما أن \\( x + 5 \\ge 6 \\) و\\( y + 3 \\ge 4 \\)، فإن الزوج الموافق لشرط \\( x \\le y \\) هو \\( x + 5 = 7,\\; y + 3 = 11 \\implies (x, y) = (2, 8) \\)، ومنه \\( x + y = 10 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 36 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 36 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+          "en": "<strong>[Practice 3.3 · NSMO Stage 2 / Medium]</strong> How many pairs of integers \\( (x, y) \\in \\mathbb{Z}^2 \\) satisfy \\( x^2 - 4y^2 = 2026 \\)?",
+          "ar": "<strong>[تدريب 3.3 · نسما المرحلة 2 / متوسط]</strong> كم زوجاً من الأعداد الصحيحة \\( (x, y) \\in \\mathbb{Z}^2 \\) يحقق المعادلة \\( x^2 - 4y^2 = 2026 \\)؟"
         },
         "hints": [
           {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+            "en": "Reduce the entire equation modulo \\( 4 \\)!",
+            "ar": "اختزل المعادلة بأكملها بترديد \\( 4 \\)!"
           },
           {
-            "en": "Substitute \\( a = 1, b = -2k, c = 36 \\) into \\( (-2k)^2 - 4(1)(36) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(36) = 0 \\)."
+            "en": "Notice \\( -4y^2 \\equiv 0 \\pmod 4 \\), while \\( 2026 = 4(506) + 2 \\equiv 2 \\pmod 4 \\).",
+            "ar": "لاحظ أن \\( -4y^2 \\equiv 0 \\pmod 4 \\) بينما \\( 2026 \\equiv 2 \\pmod 4 \\)."
           },
           {
-            "en": "Simplify \\( 4k^2 = 144 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 144 \\) واقسم الطرفين على 4."
+            "en": "What are the possible residues of \\( x^2 \\pmod 4 \\)?",
+            "ar": "ما البواقي الممكنة لأي مربع كامل \\( x^2 \\pmod 4 \\)؟"
           }
         ],
         "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(36) = 4k^2 - 144 = 0 \\implies k^2 = 36 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 144 = 0 \\implies k^2 = 36 \\)."
+          "en": "Reducing modulo \\( 4 \\) gives \\( x^2 \\equiv 2026 \\equiv 2 \\pmod 4 \\). However, every integer square satisfies \\( x^2 \\equiv 0 \\) or \\( 1 \\pmod 4 \\), never \\( 2 \\pmod 4 \\). Hence there are \\( 0 \\) integer solutions.",
+          "ar": "بأخذ الترديد \\( \\pmod 4 \\) نجد \\( x^2 \\equiv 2026 \\equiv 2 \\pmod 4 \\)، ولكن أي مربع كامل يطابق \\( 0 \\) أو \\( 1 \\pmod 4 \\) فقط، ومن ثم فإن عدد الحلول يساوي \\( 0 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 4 \\) and common difference \\( d = 10 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 4 \\) وأساسها \\( d = 10 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+          "en": "<strong>[Practice 3.4 · AIME / KAUST KMC / Hard]</strong> Find all ordered triples of positive integers \\( (x, y, z) \\) with \\( x \\le y \\le z \\) satisfying \\( \\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} = 1 \\), and compute the largest possible value of \\( z \\).",
+          "ar": "<strong>[تدريب 3.4 · AIME / مسابقة كاوست / متقدم]</strong> أوجد جميع الثلاثيات المرتبة من الأعداد الصحيحة الموجبة \\( x \\le y \\le z \\) التي تحقق \\( \\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} = 1 \\)، وحدد أكبر قيمة ممكنة للعدد \\( z \\)."
         },
         "hints": [
           {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+            "en": "Since \\( x \\le y \\le z \\), \\( 1 = \\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} \\le \\frac{3}{x} \\implies x \\in \\{2, 3\\} \\) (since \\( x = 1 \\) leaves \\( 0 \\)).",
+            "ar": "بما أن \\( x \\le y \\le z \\)، فإن \\( 1 \\le \\frac{3}{x} \\implies x \\in \\{2, 3\\} \\)."
           },
           {
-            "en": "Substitute \\( n = 10, a = 4, d = 10 \\): \\( S_{10} = 5[2(4) + 9(10)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(4) + 9(10)] \\)."
+            "en": "For \\( x = 3 \\), \\( \\frac{1}{y} + \\frac{1}{z} = \\frac{2}{3} \\le \\frac{2}{y} \\implies y = 3, z = 3 \\).",
+            "ar": "عند \\( x = 3 \\) نجد \\( y = z = 3 \\)."
           },
           {
-            "en": "Evaluate \\( 5(8 + 90) = 490 \\).",
-            "ar": "احسب الناتج \\( 5(8 + 90) = 490 \\)."
+            "en": "For \\( x = 2 \\), solve \\( \\frac{1}{y} + \\frac{1}{z} = \\frac{1}{2} \\iff (y - 2)(z - 2) = 4 \\) for \\( 2 \\le y \\le z \\).",
+            "ar": "عند \\( x = 2 \\) حل \\( (y - 2)(z - 2) = 4 \\) مع \\( y \\le z \\)."
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(4) + 9(10)] = 5(98) = 490 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(8 + 90) = 490 \\)."
+          "en": "For \\( x = 2 \\), \\( (y - 2)(z - 2) = 4 \\) gives \\( (y-2, z-2) \\in \\{(1,4), (2,2)\\} \\), yielding \\( (2, 3, 6) \\) and \\( (2, 4, 4) \\). Together with \\( (3, 3, 3) \\), there are three ordered solutions and the largest \\( z \\) is \\( 6 \\).",
+          "ar": "عند \\( x = 2 \\) تعطي \\( (y - 2)(z - 2) = 4 \\) الحلين \\( (2, 3, 6) \\) و\\( (2, 4, 4) \\)، ومع \\( (3, 3, 3) \\) تكون أكبر قيمة ممكنة لـ \\( z \\) هي \\( 6 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 4x^2 - 5x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 4x^2 - 5x + 7 \\) عند \\( x = 3 \\)."
+          "en": "<strong>[Practice 3.5 · NSMO National Finals / Vieta Jumping]</strong> Suppose positive integers \\( a, b \\) satisfy \\( \\frac{a^2 + b^2}{ab - 1} = k \\) for a positive integer \\( k \\). Find the sum of ALL possible integer values of \\( k \\).",
+          "ar": "<strong>[تدريب 3.5 · نهائيات نسما / القفز الفييتي]</strong> إذا كان \\( a, b \\) عددين صحيحين موجبين يحققان \\( \\frac{a^2 + b^2}{ab - 1} = k \\) لعدد صحيح موجب \\( k \\)، فأوجد مجموع جميع القيم الصحيحة الممكنة للعدد \\( k \\)."
         },
         "hints": [
           {
-            "en": "Differentiate \\( y = x^3 + 4x^2 - 5x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+            "en": "Apply Vieta root flipping on a minimal pair \\( a \\ge b \\ge 1 \\) for \\( x^2 - kbx + (b^2 + k) = 0 \\).",
+            "ar": "طبّق القفز الفييتي على الزوج الأصغر \\( a \\ge b \\ge 1 \\) في المعادلة \\( x^2 - kbx + (b^2 + k) = 0 \\)."
           },
           {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 8x - 5 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 8x - 5 \\)."
+            "en": "Here \\( x_2 = \\frac{b^2 + k}{a} > 0 \\) is ALWAYS positive! Minimality forces \\( x_2 \\ge a \\implies b^2 + k \\ge a^2 \\), or check small base pairs \\( (a, b) = (2, 1) \\) and \\( (3, 2) \\)!",
+            "ar": "لاحظ أن \\( x_2 = \\frac{b^2 + k}{a} > 0 \\) موجب دائماً! اختبر الحالات الأساسية عندما يتساوى أو يصغر الجذر مثل \\( b = 1 \\) أو \\( b = 2 \\)."
           },
           {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 8(3) - 5 = 46 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 24 - 5 = 46 \\)."
+            "en": "At \\( (a, b) = (2, 1) \\) and \\( (3, 1) \\), \\( k = \\frac{4 + 1}{2 - 1} = \\frac{9 + 1}{3 - 1} = 5 \\)! Check that \\( a = b \\) gives \\( (a^2 - 1) \\mid 2 \\) (impossible for \\( ab > 1 \\)) and Vieta descent reduces any \\( a > b \\ge 2 \\) down to \\( b = 1 \\).",
+            "ar": "عند \\( (2, 1) \\) نجد \\( k = 5 \\)، وعند \\( (3, 1) \\) نجد \\( k = 5 \\) أيضاً! وإذا كان \\( a > b \\ge 2 \\) فإن النزول الفييتي يصل حتماً إلى \\( b = 1 \\)، حيث \\( a - 1 \\mid a^2 + 1 = (a-1)(a+1) + 2 \\implies a - 1 \\in \\{1, 2\\} \\implies a \\in \\{2, 3\\} \\)!"
           }
         ],
         "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 8x - 5 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 24 - 5 = 46 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 8x - 5 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 24 - 5 = 46 \\)."
+          "en": "By Vieta jumping on minimal \\( (a, b) \\) with \\( a > b \\) (since \\( a = b \\ge 2 \\implies a^2 - 1 \\mid 2 \\), impossible), if \\( b \\ge 2 \\) and \\( x_2 \\ge a \\), careful descent shows every solution reduces to \\( b = 1 \\), where \\( k = \\frac{a^2 + 1}{a - 1} = a + 1 + \\frac{2}{a - 1} \\). Thus \\( (a - 1) \\mid 2 \\implies a \\in \\{2, 3\\} \\), both giving \\( k = 5 \\)! Hence \\( k = 5 \\) is the ONLY possible integer value.",
+          "ar": "ينزل القفز الفييتي بأي حل موجب \\( a > b \\) حتى نصل إلى الحالة الحدية \\( b = 1 \\)، وعندها \\( k = \\frac{a^2 + 1}{a - 1} = a + 1 + \\frac{2}{a - 1} \\). إذن \\( (a - 1) \\mid 2 \\implies a \\in \\{2, 3\\} \\)، وفي الحالتين معاً \\( k = 5 \\) فقط! إذن القيمة الوحيدة الممكنة هي \\( 5 \\)."
         }
       },
       {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion",
-            "chapterId": "ol-combinatorics-counting",
-            "trackId": "olympiad"
-          },
-          {
-            "label": "Divisibility, Prime Factorization & Modular Arithmetic",
+            "label": "Number Theory I: Divisibility, Fermat–Euler & CRT",
             "chapterId": "ol-modular-number-theory",
             "trackId": "olympiad"
           },
           {
-            "trackId": "addmath",
-            "chapterId": "am-functions-quadratics",
-            "label": "ADDMATH: Functions, Modulus & Quadratic Theory"
+            "label": "Combinatorics I: Bijective Counting, Stars & Bars & PIE",
+            "chapterId": "ol-combinatorics-counting",
+            "trackId": "olympiad"
+          },
+          {
+            "label": "NSMO of KSA — National Finals & Mawhiba IMO Pathway",
+            "chapterId": "ol-nsmo-national-finals",
+            "trackId": "olympiad"
           }
         ]
       }

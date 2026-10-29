@@ -1,27 +1,35 @@
 {
   "id": "ol-invariants-extremal",
   "chapterNumber": "8",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Invariants, Monovariants, Game Strategy & Extremal Principle",
-    "ar": "اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى"
+    "en": "Olympiad Proof Strategies: Invariants, Monovariants, Coloring, Pick’s Theorem & Nim Games",
+    "ar": "استراتيجيات البرهان الأولمبي: اللامتغيرات وشبه اللامتغيرات والتلوين ومبرهنة بيك وألعاب نيم"
+  },
+  "railLabel": {
+    "en": "Invariants, Coloring & Games",
+    "ar": "اللامتغيرات والتلوين ونظرية الألعاب"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 8 — Olympiad Strategy",
+    "emoji": "♟️",
+    "category": "Core Pillar 8 — Invariants, Extremal Principle & Combinatorial Games",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
-      "Parity & modular invariants in board operations",
-      "Chessboard coloring proofs (domino/tetromino tilings)",
-      "Monovariants & termination proofs",
-      "Winning vs losing positions in impartial games (Nim/symmetry)",
-      "The Extremal Principle"
+      "Parity, modular & algebraic invariants",
+      "Monovariants & process termination bounds",
+      "Chessboard / modular colorings & Extremal Principle",
+      "Pick's Theorem A = I + B/2 − 1 on Z²",
+      "Combinatorial Game Theory & Bouton's Nim XOR Theorem"
     ]
   },
   "content": {
@@ -29,83 +37,274 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Invariants, Monovariants, Game Strategy & Extremal Principle</strong> (Olympiad Module 8 — Olympiad Strategy).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى</strong>."
+          "en": "The most memorable problems on the IMO, Saudi NSMO Stage 3, and KAUST Campus Finals ask whether a multi-step process can reach a target state, whether a board can be tiled, or which player has a forced win. None of these yield to routine calculation—they fall to <strong>invariants</strong>, <strong>monovariants</strong>, <strong>coloring obstructions</strong>, the <strong>Extremal Principle</strong>, and <strong>Nim-sum XOR game theory</strong>.",
+          "ar": "تتميز أجمل مسائل الأولمبياد الدولي IMO، والمرحلة النهائية لأولمبياد «نسما»، ونهائيات جامعة كاوست بأسئلة حول إمكانية الوصول إلى حالة مستهدفة عبر عمليات متكررة، أو إمكانية تبليط رقعة، أو تحديد اللاعب صاحب الاستراتيجية الفائزة حتماً. وهذه المسائل تُحسم بأدوات البرهان الأولمبي الخالصة: <strong>اللامتغيرات</strong>، و<strong>شبه اللامتغيرات</strong>، و<strong>التلوين المعياري</strong>، و<strong>المبدأ التطرفي</strong>، و<strong>نظرية ألعاب نيم (XOR)</strong>."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 8.1 — Invariants, Coloring Proofs & Game-Theoretic Winning Strategies",
-          "ar": "● تعريف 8.1 — اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى"
+          "en": "● Definition 8.1 — Invariants, Monovariants & The Extremal Principle",
+          "ar": "● تعريف 8.1 — اللامتغيرات وشبه اللامتغيرات والمبدأ التطرفي"
         },
         "body": {
-          "en": "<p>An <strong>invariant</strong> is a quantity (such as parity \\( \\bmod 2 \\), remainder \\( \\bmod k \\), algebraic product, or alternating color sum) that remains unchanged under every legal operation. If the initial state and target state have different values of the invariant, the target state is provably unreachable. In two-player impartial games, a position is <strong>winning (N-position)</strong> if at least one legal move leads to a <strong>losing (P-position)</strong>, and losing if every legal move leads to a winning position; symmetry and invariant-pairing strategies force the opponent into P-positions.</p>",
-          "ar": "<p>An <strong>invariant</strong> is a quantity (such as parity \\( \\bmod 2 \\), remainder \\( \\bmod k \\), algebraic product, or alternating color sum) that remains unchanged under every legal operation. If the initial state and target state have different values of the invariant, the target state is provably unreachable. In two-player impartial games, a position is <strong>winning (N-position)</strong> if at least one legal move leads to a <strong>losing (P-position)</strong>, and losing if every legal move leads to a winning position; symmetry and invariant-pairing strategies force the opponent into P-positions.</p>"
+          "en": "<p><strong>1. Invariant:</strong> A function \\( \\Phi(S) \\) of the system state \\( S \\) such that every legal move \\( S \\to S' \\) satisfies \\( \\Phi(S') = \\Phi(S) \\). If \\( \\Phi(S_{\\text{start}}) \\ne \\Phi(S_{\\text{target}}) \\), then \\( S_{\\text{target}} \\) is <strong>strictly unreachable</strong>!</p><p><strong>2. Monovariant:</strong> A discrete-valued function \\( M(S) \\) bounded below (e.g., \\( M(S) \\in \\mathbb{Z}_{\\ge 0} \\)) that strictly decreases \\( M(S') \\le M(S) - 1 \\) on every move. This guarantees the process <strong>must terminate in at most \\( M(S_0) \\) steps</strong>.</p><p><strong>3. Extremal Principle:</strong> Among all configurations (or putative counterexamples), select the one minimizing or maximizing a well-founded quantity (e.g., minimum perimeter, minimum sum, shortest distance) to force an immediate local contradiction or constructive step.</p>",
+          "ar": "<p><strong>1. اللامتغير (Invariant):</strong> دالة \\( \\Phi(S) \\) على حالات النظام تظل ثابتة تماماً تحت أي خطوة مسموحة \\( \\Phi(S') = \\Phi(S) \\). فإذا كان \\( \\Phi(S_{\\text{البداية}}) \\ne \\Phi(S_{\\text{الهدف}}) \\)، استحال الوصول إلى الهدف قطعياً!</p><p><strong>2. شبه اللامتغير (Monovariant):</strong> مقدار متقطع محدود من الأدنى (مثلاً عدد صحيح غير سالب) يتناقص فعلياً في كل خطوة \\( M(S') \\le M(S) - 1 \\)، مما يبرهن حتمية <strong>انتهاء العملية في عدد خطوات لا يتجاوز \\( M(S_0) \\)</strong>.</p><p><strong>3. المبدأ التطرفي (Extremal Principle):</strong> اختيار العنصر أو التشكيل ذي القيمة الصغرى أو العظمى (أصغر محيط، أقصر مسافة، أصغر مثال مضاد) لاستنتاج تناقض فوري أو بناء مباشر.</p>"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Invariants, Monovariants, Game Strategy & Extremal Principle",
-          "ar": "● الفهم المفاهيمي العميق — اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى"
+          "en": "● Theorem 8.2 — Pick's Lattice Area Theorem & Bouton's Nim-Sum XOR Theorem",
+          "ar": "● مبرهنة 8.2 — مبرهنة بيك لمساحة مضلعات الشبكة ومبرهنة بوتون للعبة نيم"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Invariants, Monovariants, Game Strategy & Extremal Principle</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p><strong>1. Pick's Theorem:</strong> Every simple polygon \\( \\mathcal{P} \\) whose vertices lie on the integer lattice \\( \\mathbb{Z}^2 \\) with \\( I \\) strictly interior lattice points and \\( B \\) boundary lattice points has exact area:</p>\\[ \\operatorname{Area}(\\mathcal{P}) = I + \\frac{B}{2} - 1. \\]<p><strong>2. Bouton's Theorem for Normal-Play Nim:</strong> In Nim with heap sizes \\( (a_1, a_2, \\dots, a_k) \\) where each turn removes \\( \\ge 1 \\) stone from a single heap and the player taking the last stone wins, define the bitwise XOR <strong>Nim-sum</strong> \\( X = a_1 \\oplus a_2 \\oplus \\cdots \\oplus a_k \\). A state is a <strong>losing P-position</strong> (second player wins) iff \\( X = 0 \\), and a <strong>winning N-position</strong> (first player wins) iff \\( X \\ne 0 \\)!</p>",
+          "ar": "<p><strong>1. مبرهنة بيك (Pick’s Theorem):</strong> لأي مضلع بسيط \\( \\mathcal{P} \\) تقع رؤوسه على شبكة الأعداد الصحيحة \\( \\mathbb{Z}^2 \\)، إذا حوى \\( I \\) نقطة شبكية داخلية تماماً و\\( B \\) نقطة شبكية على محيطه، فإن مساحته الدقيقة هي:</p>\\[ \\operatorname{Area}(\\mathcal{P}) = I + \\frac{B}{2} - 1. \\]<p><strong>2. مبرهنة بوتون للعبة نيم (Nim XOR):</strong> في لعبة نيم بأكوام أحجار \\( (a_1, a_2, \\dots, a_k) \\) حيث يسحب اللاعب حجراً أو أكثر من كومة واحدة ويفوز من يأخذ الحجر الأخير، نعرّف المجموع الثنائي \\( X = a_1 \\oplus a_2 \\oplus \\cdots \\oplus a_k \\). تكون الوضعية <strong>خاسرة للمبادر (P-position)</strong> إذا وفقط إذا كان \\( X = 0 \\)، و<strong>رابحة للمبادر (N-position)</strong> إذا وفقط إذا كان \\( X \\ne 0 \\)!</p>"
         }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Invariant / Non-Invariant Proof of Bouton's Nim Theorem",
+          "ar": "◆ البرهان الأولمبي — إثبات مبرهنة بوتون عبر ثنائية الحالات (P / N)"
+        },
+        "body": {
+          "en": "<p>Partition all Nim states into \\( \\mathcal{Z} = \\{S : X = 0\\} \\) and \\( \\mathcal{N} = \\{S : X \\ne 0\\} \\).<br>1. <strong>Terminal state:</strong> \\( (0, 0, \\dots, 0) \\) has \\( X = 0 \\in \\mathcal{Z} \\).<br>2. <strong>Every move from \\( \\mathcal{Z} \\) lands in \\( \\mathcal{N} \\):</strong> Changing a single heap \\( a_i \\to a_i' < a_i \\) changes at least one binary bit of \\( a_i \\) while all other \\( a_j \\) stay fixed, so \\( X' = X \\oplus a_i \\oplus a_i' = a_i \\oplus a_i' \\ne 0 \\)!<br>3. <strong>From any state in \\( \\mathcal{N} \\), there exists a move into \\( \\mathcal{Z} \\):</strong> Let \\( 2^d \\) be the highest-value \\( 1 \\)-bit of \\( X \\ne 0 \\). At least one heap \\( a_i \\) must have bit \\( 2^d \\) equal to \\( 1 \\). Set \\( a_i' = a_i \\oplus X \\): since \\( a_i \\) and \\( a_i' \\) agree above \\( 2^d \\) while bit \\( 2^d \\) flips \\( 1 \\to 0 \\), strictly \\( a_i' < a_i \\), and the new Nim-sum is \\( X \\oplus a_i \\oplus (a_i \\oplus X) = 0 \\)! Thus Player 1 maintains \\( X = 0 \\) after every turn until taking the final stone. \\( \\blacksquare \\)</p>",
+          "ar": "<p>نقسّم جميع وضعيات نيم إلى \\( \\mathcal{Z} = \\{X = 0\\} \\) و\\( \\mathcal{N} = \\{X \\ne 0\\} \\):<br>1. <strong>النهاية:</strong> \\( (0,\\dots,0) \\) تحقق \\( X = 0 \\in \\mathcal{Z} \\).<br>2. <strong>أي نقلة من \\( \\mathcal{Z} \\) تخرج حتماً إلى \\( \\mathcal{N} \\):</strong> لأن إنقاص كومة واحدة \\( a_i \\to a_i' < a_i \\) يغيّر خانة ثنائية واحدة على الأقل، فيصبح \\( X' = a_i \\oplus a_i' \\ne 0 \\).<br>3. <strong>من أي وضعية في \\( \\mathcal{N} \\) توجد نقلة تعيد \\( X \\) إلى الصفر:</strong> لتكن \\( 2^d \\) أعلى خانة ثنائية قيمتها \\( 1 \\) في \\( X \\)؛ لا بد أن تمتلك إحدى الأكوام \\( a_i \\) الرقم \\( 1 \\) في الخانة \\( 2^d \\). باستبدال \\( a_i \\) بـ \\( a_i' = a_i \\oplus X \\) تنقلب الخانة \\( 2^d \\) من \\( 1 \\) إلى \\( 0 \\) فيتحقق \\( a_i' < a_i \\) ويصبح المجموع الجديد \\( 0 \\)! وهكذا يحافظ اللاعب الفائز على \\( X = 0 \\) حتى النهاية. \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Signature Olympiad Invariants & Coloring Patterns",
+          "ar": "الجدول المرجعي لأشهر أنماط اللامتغيرات والتلوين الأولمبي"
+        },
+        "columns": [
+          {
+            "en": "Operation / Problem Type",
+            "ar": "نوع المسألة / العملية"
+          },
+          {
+            "en": "Canonical Invariant / Coloring",
+            "ar": "اللامتغير / التلوين الحاسم"
+          },
+          {
+            "en": "Why It Works",
+            "ar": "سر الفعالية"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Replace \\((a,b)\\) with \\(|a - b|\\)",
+              "ar": "استبدال \\((a,b)\\) بـ \\(|a - b|\\)"
+            },
+            {
+              "en": "Sum modulo \\(2\\): \\(\\sum x_i \\pmod 2\\)",
+              "ar": "زوجية المجموع الكلي \\(\\sum x_i \\pmod 2\\)"
+            },
+            {
+              "en": "\\(a + b \\equiv a - b \\equiv |a - b| \\pmod 2\\)",
+              "ar": "لأن \\(a+b\\) و\\(|a-b|\\) لهما الزوجية نفسها دائماً"
+            }
+          ],
+          [
+            {
+              "en": "Replace \\((a,b)\\) with \\(ab + a + b\\)",
+              "ar": "استبدال \\((a,b)\\) بـ \\(ab + a + b\\)"
+            },
+            {
+              "en": "Shifted product \\(\\prod (x_i + 1)\\)",
+              "ar": "الجداء المزاح \\(\\prod (x_i + 1)\\)"
+            },
+            {
+              "en": "\\((ab+a+b) + 1 = (a+1)(b+1)\\)!",
+              "ar": "لأن \\(ab+a+b+1 = (a+1)(b+1)\\) تماماً!"
+            }
+          ],
+          [
+            {
+              "en": "Domino tiling of mutilated chessboard",
+              "ar": "تبليط رقعة شطرنج مقطوعة بالدومينو"
+            },
+            {
+              "en": "2-coloring \\((i+j) \\bmod 2\\) (Black vs White)",
+              "ar": "تلوين الشطرنج الثنائي \\((i+j) \\bmod 2\\)"
+            },
+            {
+              "en": "Every \\(1 \\times 2\\) domino covers 1 black + 1 white cell",
+              "ar": "كل قطعة دومينو تغطي مربعاً أسود ومربعاً أبيض"
+            }
+          ],
+          [
+            {
+              "en": "\\(1 \\times k\\) straight tile on \\(m \\times n\\) grid",
+              "ar": "تبليط بشرائط مستقيمة \\(1 \\times k\\)"
+            },
+            {
+              "en": "Cyclic coloring \\((i + j) \\bmod k\\)",
+              "ar": "التلوين الدوري \\((i + j) \\bmod k\\)"
+            },
+            {
+              "en": "Every \\(1 \\times k\\) bar covers one cell of each residue \\(0,\\dots,k-1\\)",
+              "ar": "كل شريط يغطي خلية واحدة من كل لون من الألوان \\(k\\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Boundary Lattice Points on Segment",
+              "ar": "النقاط الشبكية على قطعة مستقيمة"
+            },
+            "value": {
+              "en": "Segment from \\((x_1,y_1)\\) to \\((x_2,y_2)\\) contains \\(\\gcd(|\\Delta x|, |\\Delta y|) + 1\\) lattice points",
+              "ar": "تحوي القطعة \\(\\gcd(|x_2-x_1|, |y_2-y_1|) + 1\\) نقطة شبكية"
+            }
+          },
+          {
+            "label": {
+              "en": "Subtraction Game \\(\\{1, 2, \\dots, k\\}\\)",
+              "ar": "لعبة الطرح المقيّد \\(\\{1,\\dots,k\\}\\)"
+            },
+            "value": {
+              "en": "Removing \\(1\\dots k\\) stones from \\(N\\): P-positions are \\(N \\equiv 0 \\pmod{k+1}\\)!",
+              "ar": "مواضع الخسارة للمبادر هي مضاعفات \\(k + 1\\) فقط!"
+            }
+          },
+          {
+            "label": {
+              "en": "Symmetry-Stealing Strategy",
+              "ar": "استراتيجية محاكاة التناظر"
+            },
+            "value": {
+              "en": "Place first coin at exact center of symmetric table, then mirror opponent across center!",
+              "ar": "ضع القطعة الأولى في مركز التناظر تماماً، ثم اعكس كل حركة لخصمك!"
+            }
+          },
+          {
+            "label": {
+              "en": "Chomp Strategy-Stealing Proof",
+              "ar": "برهان سرقة الاستراتيجية (وجودي)"
+            },
+            "value": {
+              "en": "Player 1 wins Chomp on any \\(m \\times n\\) bar (\\(mn > 1\\)) by top-right corner contradiction!",
+              "ar": "اللاعب الأول يملك استراتيجية فوز دائماً على أي لوح أكبر من \\(1 \\times 1\\)"
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Invariants, Monovariants, Game Strategy & Extremal Principle — Coordinate Curve & Structural Analysis",
-          "xrange": [
-            -4,
-            6
-          ],
-          "yrange": [
-            -4,
-            8
-          ],
-          "fns": [
+          "type": "network_graph",
+          "title": "Subtraction Game States (Remove 1 or 2 Stones · Losing P-States mod 3 = 0)",
+          "directed": true,
+          "nodes": [
             {
-              "fn": "(x - 1)*(x - 1) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 1)² - 2"
+              "id": "6",
+              "x": 40,
+              "y": 125,
+              "label": "6 (P)"
             },
             {
-              "fn": "x + 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 2"
+              "id": "5",
+              "x": 95,
+              "y": 70,
+              "label": "5 (N)"
+            },
+            {
+              "id": "4",
+              "x": 150,
+              "y": 180,
+              "label": "4 (N)"
+            },
+            {
+              "id": "3",
+              "x": 205,
+              "y": 125,
+              "label": "3 (P)"
+            },
+            {
+              "id": "2",
+              "x": 260,
+              "y": 70,
+              "label": "2 (N)"
+            },
+            {
+              "id": "1",
+              "x": 260,
+              "y": 180,
+              "label": "1 (N)"
+            },
+            {
+              "id": "0",
+              "x": 318,
+              "y": 125,
+              "label": "0 (P)"
             }
           ],
-          "points": [
+          "edges": [
             {
-              "x": 1,
-              "y": -2,
-              "label": "Vertex (1, -2)"
+              "from": "6",
+              "to": "5"
+            },
+            {
+              "from": "6",
+              "to": "4"
+            },
+            {
+              "from": "5",
+              "to": "3",
+              "highlight": true
+            },
+            {
+              "from": "4",
+              "to": "3",
+              "highlight": true
+            },
+            {
+              "from": "3",
+              "to": "2"
+            },
+            {
+              "from": "3",
+              "to": "1"
+            },
+            {
+              "from": "2",
+              "to": "0",
+              "highlight": true
+            },
+            {
+              "from": "1",
+              "to": "0",
+              "highlight": true
             }
           ]
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Invariants, Monovariants, Game Strategy & Extremal Principle.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى."
+          "en": "Directed game DAG for removing \\(1\\) or \\(2\\) stones: amber arrows show winning moves from \\(N\\)-states (\\(n \\not\\equiv 0 \\pmod 3\\)) into \\(P\\)-states (\\(n \\equiv 0 \\pmod 3\\)), while every move out of \\(6\\) or \\(3\\) hands an \\(N\\)-state to the opponent.",
+          "ar": "مخطط الحالات الموجه للعبة سحب \\(1\\) أو \\(2\\) حجر: الأسهم الكهرمانية تمثل النقلات الرابحة من مواضع \\(N\\) إلى مواضع \\(P\\) (مضاعفات \\(3\\))."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Invariant Sums, Monovariant Decay & Game State Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر اللامتغيرات الرياضية وتناقص الدوال الرتيبة"
+          "en": "⊙ Explorer · 3-Heap Nim XOR Binary Engine & Winning Move Finder",
+          "ar": "⊙ مستكشف تفاعلي · محرك لعبة نيم الثنائي (XOR) واكتشاف النقلة الرابحة"
         },
         "canvasId": "olinvariantsextremalExCanvas",
         "ariaLabel": {
-          "en": "Invariant Sums, Monovariant Decay & Game State Lab interactive mathematical canvas",
-          "ar": "مختبر اللامتغيرات الرياضية وتناقص الدوال الرتيبة لوحة رياضية تفاعلية"
+          "en": "Interactive 3-heap Nim game explorer showing binary bit decomposition and bitwise XOR Nim-sum.",
+          "ar": "مستكشف تفاعلي للعبة نيم بثلاث أكوام يعرض التمثيل الثنائي ومجموع XOR والنقلة الرابحة."
         },
         "dataPanel": {
           "btnId": "olinvariantsextremalExCanvas_dataBtn",
@@ -113,17 +312,17 @@
           "descId": "olinvariantsextremalExCanvas_dataDesc",
           "rowsId": "olinvariantsextremalExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Invariant Sums, Monovariant Decay & Game State Lab",
-            "ar": "جدول القيم العددية لـ مختبر اللامتغيرات الرياضية وتناقص الدوال الرتيبة"
+            "en": "Bitwise binary decomposition of heaps \\((A, B, C = 10)\\) and live Nim-sum \\(A \\oplus B \\oplus C\\)",
+            "ar": "التحليل الثنائي لأكوام الأحجار \\((A, B, C=10)\\) وحساب مجموع XOR الحي"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -131,33 +330,33 @@
           {
             "id": "olinvariantsextremalExCanvas_s0",
             "label": {
-              "en": "Initial Invariant <b>\\(I_0 =\\)</b>",
-              "ar": "Initial Invariant <b>\\(I_0 =\\)</b>"
+              "en": "Heap 1 <b>\\(A =\\)</b>",
+              "ar": "الكومة الأولى <b>\\(A =\\)</b>"
             },
-            "min": 2,
-            "max": 8,
-            "value": 4,
+            "min": 1,
+            "max": 15,
+            "value": 7,
             "step": 1,
             "valueDisplayId": "olinvariantsextremalExCanvas_v0",
             "ariaLabel": {
-              "en": "Initial Invariant \\(I_0 =\\)",
-              "ar": "Initial Invariant \\(I_0 =\\)"
+              "en": "First Nim heap size A",
+              "ar": "حجم الكومة الأولى A"
             }
           },
           {
             "id": "olinvariantsextremalExCanvas_s1",
             "label": {
-              "en": "Step Contraction <b>\\(r =\\)</b>",
-              "ar": "Step Contraction <b>\\(r =\\)</b>"
+              "en": "Heap 2 <b>\\(B =\\)</b>",
+              "ar": "الكومة الثانية <b>\\(B =\\)</b>"
             },
-            "min": 0.2,
-            "max": 0.8,
-            "value": 0.5,
-            "step": 0.1,
+            "min": 1,
+            "max": 15,
+            "value": 12,
+            "step": 1,
             "valueDisplayId": "olinvariantsextremalExCanvas_v1",
             "ariaLabel": {
-              "en": "Step Contraction \\(r =\\)",
-              "ar": "Step Contraction \\(r =\\)"
+              "en": "Second Nim heap size B",
+              "ar": "حجم الكومة الثانية B"
             }
           }
         ],
@@ -165,405 +364,291 @@
           {
             "id": "olinvariantsextremalExCanvas_r0",
             "label": {
-              "en": "Asymptotic Limit \\(I_0/(1-r)\\)",
-              "ar": "Asymptotic Limit \\(I_0/(1-r)\\)"
+              "en": "Nim-Sum \\(A \\oplus B \\oplus 10\\)",
+              "ar": "مجموع XOR لـ \\((A, B, 10)\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(8.00\\)"
+            "value": "7 ⊕ 12 ⊕ 10 = 1"
           },
           {
             "id": "olinvariantsextremalExCanvas_r1",
             "label": {
-              "en": "Partial State \\(S_5\\)",
-              "ar": "Partial State \\(S_5\\)"
+              "en": "Position Verdict",
+              "ar": "حكم الوضعية"
             },
             "colorClass": "amber",
-            "value": "\\(7.75\\)"
+            "value": "N-Position (1st Wins)"
           },
           {
             "id": "olinvariantsextremalExCanvas_r2",
             "label": {
-              "en": "Monovariant Remainder",
-              "ar": "Monovariant Remainder"
+              "en": "Winning Move",
+              "ar": "النقلة الرابحة الفورية"
             },
             "colorClass": "teal",
-            "value": "\\(0.25\\)"
+            "value": "Heap A: 7 → 6"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Invariants, Monovariants, Game Strategy & Extremal Principle.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى."
+          "en": "Heap \\(C = 10 = 1010_2\\) is fixed. Adjust \\(A\\) and \\(B\\) to see when every binary column has an EVEN number of 1-bits (\\(X = 0\\), P-position, e.g. \\(A=6, B=12, C=10\\))!",
+          "ar": "الكومة الثالثة مثبتة عند \\(C = 10 = 1010_2\\). حرّك \\(A\\) و\\(B\\) لترى متى يصبح عدد الآحاد زوجياً في كل عمود ثنائي (\\(X = 0\\)، مثل \\(A=6, B=12, C=10\\))!"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
+          "type": "polygon",
+          "title": "Pick's Theorem on Lattice Polygon (I = 5, B = 6 ⇒ Area = 5 + 3 − 1 = 7)",
+          "vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              0,
+              2
+            ]
           ],
-          "B": [
-            12,
-            0
+          "labels": [
+            "(0,0)",
+            "(4,0)",
+            "(3,2)",
+            "(0,2)"
           ],
-          "C": [
-            12,
-            5
-          ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "27",
-            "a": "36",
-            "b": "45"
-          },
-          "rightAt": "B"
+          "sides": [
+            "4",
+            "√5",
+            "3",
+            "2"
+          ]
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((27)^2 + (36)^2 = (45)^2\\) for Invariants, Monovariants, Game Strategy & Extremal Principle.",
-          "ar": "العلاقة الهندسية المتعامدة \\((27)^2 + (36)^2 = (45)^2\\) في درس اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 8.1",
-              "ar": "القاعدة الأساسية 8.1"
-            },
-            "value": {
-              "en": "Parity & modular invariants in board operations",
-              "ar": "Parity & modular invariants in board operations"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 8.2",
-              "ar": "القاعدة الأساسية 8.2"
-            },
-            "value": {
-              "en": "Chessboard coloring proofs (domino/tetromino tilings)",
-              "ar": "Chessboard coloring proofs (domino/tetromino tilings)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 8.3",
-              "ar": "القاعدة الأساسية 8.3"
-            },
-            "value": {
-              "en": "Monovariants & termination proofs",
-              "ar": "Monovariants & termination proofs"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 8.4",
-              "ar": "القاعدة الأساسية 8.4"
-            },
-            "value": {
-              "en": "Winning vs losing positions in impartial games (Nim/symmetry)",
-              "ar": "Winning vs losing positions in impartial games (Nim/symmetry)"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Invariants, Monovariants, Game Strategy & Extremal Principle)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى)"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+          "en": "Right trapezoid with vertices \\((0,0), (4,0), (3,2), (0,2)\\) on \\(\\mathbb{Z}^2\\): boundary points \\(B = 4 + 1 + 3 + 2 = 10\\) and interior points \\(I = 3\\) give \\(A = 3 + \\frac{10}{2} - 1 = 7\\), matching \\(\\frac{4+3}{2} \\times 2 = 7\\)!",
+          "ar": "شبه منحرف قائم رؤوسه على الشبكة الصحيحة \\((0,0), (4,0), (3,2), (0,2)\\): عدد نقاط المحيط \\(B = 10\\) والنقاط الداخلية \\(I = 3\\)، فتعطي صيغة بيك \\(A = 3 + 5 - 1 = 7\\) تماماً!"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 8.A — Foundational Formulation (Invariants, Monovariants, Game Strategy & Extremal Principle)",
-          "ar": "مثال محلول 8.A — تطبيق أساسي (اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى)"
+          "en": "Worked Example 8.A — Blackboard Algebraic Invariant (NSMO Stage 2 / KAUST KMC)",
+          "ar": "مثال محلول 8.A — اللامتغير الجبري لمسألة السبورة (نسما 2 / مسابقة كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 18x + 91 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{18}{2} = -9 \\).<br>2. Write \\( (x - 9)^2 = x^2 - 18x + 81 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 9)^2 - 81 + 91 = (x - 9)^2 + 10 \\).<br>4. Since \\( (x - 9)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 10 \\), achieved at \\( x = 9 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 9)^2 + 10 \\); minimum value \\( 10 \\) at \\( x = 9 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 18x + 91 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 9)^2 + 10 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 10 \\) وتتحقق عند \\( x = 9 \\).</p>"
+          "en": "<p><strong>Problem:</strong> The numbers \\( 1, 2, 3, 4, 5 \\) are written on a whiteboard. Repeatedly, a student erases any two numbers \\( a, b \\) and writes \\( ab + a + b \\) in their place until a single number remains. Prove that the final number is independent of the sequence of choices, and find its exact value.</p><p><strong>Solution:</strong> Notice the shifted factorization \\( (ab + a + b) + 1 = (a + 1)(b + 1) \\)! Define the state function \\( \\Phi(x_1, \\dots, x_k) = \\prod_{i=1}^k (x_i + 1) \\). Replacing \\( a, b \\) with \\( c = ab + a + b \\) replaces the factors \\( (a+1)(b+1) \\) with \\( c + 1 = (a+1)(b+1) \\), leaving \\( \\Phi \\) <strong>strictly invariant</strong>!<br>Initially, \\( \\Phi_{\\text{start}} = (1+1)(2+1)(3+1)(4+1)(5+1) = 2 \\cdot 3 \\cdot 4 \\cdot 5 \\cdot 6 = 720 \\).<br>When a single number \\( F \\) remains, \\( F + 1 = \\Phi_{\\text{final}} = 720 \\implies F = 719 \\) regardless of move order!</p>",
+          "ar": "<p><strong>المسألة:</strong> كُتبت الأعداد \\( 1, 2, 3, 4, 5 \\) على سبورة. في كل خطوة يمسح الطالب أي عددين \\( a, b \\) ويكتب مكانهما \\( ab + a + b \\) حتى يتبقى عدد واحد فقط. أثبت أن العدد النهائي ثابت لا يعتمد على ترتيب الاختيارات، وأوجد قيمته.</p><p><strong>الحل الأولمبي:</strong> نلاحظ التحليل \\( (ab + a + b) + 1 = (a + 1)(b + 1) \\)! نعرّف الدالة \\( \\Phi = \\prod (x_i + 1) \\)؛ في كل خطوة يُستبدل العاملان \\( (a+1)(b+1) \\) بالعامل المساوي لهما \\( c + 1 \\)، فيظل \\( \\Phi \\) <strong>لامتغيراً تاماً</strong>!<br>في البداية \\( \\Phi = 2 \\times 3 \\times 4 \\times 5 \\times 6 = 720 \\)، وعند بقاء عدد وحيد \\( F \\) يكون \\( F + 1 = 720 \\implies F = 719 \\) دائماً!</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 8.B — Intermediate Multi-Step Synthesis (Invariants, Monovariants, Game Strategy & Extremal Principle)",
-          "ar": "مثال محلول 8.B — تطبيق متوسط متعدد الخطوات (اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى)"
+          "en": "Worked Example 8.B — 4-Color Modular Obstruction on a 10×10 Board (NSMO Finals / IMO Style)",
+          "ar": "مثال محلول 8.B — استحالة التبليط عبر التلوين الرباعي المعياري للوحة 10×10 (نهائيات نسما)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 18x + 86 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 18x + 86 = 2x + k \\implies x^2 - 20x + (86 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-20)^2 - 4(1)(86 - k) > 0 \\]<br>\\[ 400 - 344 + 4k > 0 \\implies 4k > -56 \\implies k > -14 \\]</p><p><strong>Final Answer:</strong> \\( k > -14 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 18x + 86 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -14 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Prove that a \\( 10 \\times 10 \\) grid of \\( 100 \\) unit squares CANNOT be tiled by \\( 25 \\) straight \\( 1 \\times 4 \\) tetrominoes (even though \\( 25 \\times 4 = 100 \\)).</p><p><strong>Solution:</strong> Assign each cell \\( (i, j) \\) (\\( 0 \\le i, j \\le 9 \\)) the color \\( c(i, j) = (i + j) \\bmod 4 \\in \\{0, 1, 2, 3\\} \\).<br>1. Any horizontal or vertical \\( 1 \\times 4 \\) tile covers \\( 4 \\) consecutive sums \\( s, s+1, s+2, s+3 \\), hence <strong>exactly one cell of each color \\( 0, 1, 2, 3 \\)</strong>. Thus \\( 25 \\) tiles would cover \\( (25, 25, 25, 25) \\) cells of the four colors.<br>2. Count color \\( 2 \\) on the \\( 10 \\times 10 \\) board! In row \\( 0 \\), colors are \\( 0,1,2,3,0,1,2,3,0,1 \\) (three \\( 0 \\)s, three \\( 1 \\)s, two \\( 2 \\)s, two \\( 3 \\)s). Across the \\( 10 \\) rows (two full \\( 4 \\)-row blocks + rows \\( 8, 9 \\)), the exact counts of colors \\( (0, 1, 2, 3) \\) are \\( (25, 26, 25, 24) \\)!<br>Since \\( 26 \\ne 25 \\), no tiling can exist! \\( \\blacksquare \\)</p>",
+          "ar": "<p><strong>المسألة:</strong> أثبت استحالة تبليط رقعة \\( 10 \\times 10 \\) باستخدام \\( 25 \\) قطعة مستقيمة من مقاس \\( 1 \\times 4 \\) (رغم أن المساحة الكلية \\( 25 \\times 4 = 100 \\)).</p><p><strong>البرهان الأولمبي:</strong> نلوّن كل خلية \\( (i, j) \\) باللون الدوري \\( (i + j) \\bmod 4 \\in \\{0, 1, 2, 3\\} \\).<br>1. أي قطعة مستقيمة \\( 1 \\times 4 \\) (أفقية أو رأسية) تغطي أربع خلايا متتالية المجموع، أي خلية واحدة بالضبط من كل لون؛ فلو أمكن التبليط لتساوى عدد خلايا كل لون عند \\( 25 \\).<br>2. بحساب أعداد الألوان \\( (0, 1, 2, 3) \\) فعلياً على لوحة \\( 10 \\times 10 \\) نجدها \\( (25, 26, 25, 24) \\)! وبما أن \\( 26 \\ne 25 \\)، فالتبليط مستحيل قطعاً! \\( \\blacksquare \\)</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 8.C — Advanced Rate & Vector Application (Invariants, Monovariants, Game Strategy & Extremal Principle)",
-          "ar": "مثال محلول 8.C — تطبيق متقدم (اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى)"
+          "en": "Worked Example 8.C — Pick's Theorem for a Tilted Lattice Triangle (AMC 12 / KAUST KMC)",
+          "ar": "مثال محلول 8.C — حساب النقاط الشبكية الداخلية لمثلث مائل بمبرهنة بيك (AMC 12 / كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 27x^2 + 243x + 10 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 11 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 54x + 243 = 3(x - 9)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 9 \\), with \\( g(9) = 10 \\). Thus \\( (9, 10) \\) is the stationary point.<br>3. At \\( x = 11 \\), the gradient is \\( g'(11) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (9, 10) \\); gradient at \\( x = 11 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 27x^2 + 243x + 10 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 11 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 9)^2 \\)، تنعدم عند \\( (9, 10) \\)، وعند \\( x = 11 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Triangle \\( OAB \\) has vertices \\( O(0,0),\\; A(6, 4), \\) and \\( B(2, 8) \\). How many integer lattice points \\( (x, y) \\in \\mathbb{Z}^2 \\) lie <strong>strictly inside</strong> \\( \\triangle OAB \\)?</p><p><strong>Solution:</strong><br>1. <strong>Exact Area via Shoelace / Determinant:</strong> \\( \\operatorname{Area}(OAB) = \\frac{1}{2}|6(8) - 4(2)| = \\frac{1}{2}(48 - 8) = 20 \\).<br>2. <strong>Boundary Lattice Points \\( B \\):</strong> On each side, interior edge points equal \\( \\gcd(|\\Delta x|, |\\Delta y|) - 1 \\), so summing \\( \\gcd(|\\Delta x|, |\\Delta y|) \\) over all three edges counts every boundary point once:<br>\\[ B = \\gcd(6, 4) + \\gcd(4, 4) + \\gcd(2, 8) = 2 + 4 + 2 = 8. \\]<br>3. <strong>Pick’s Theorem \\( A = I + \\frac{B}{2} - 1 \\):</strong><br>\\[ 20 = I + \\frac{8}{2} - 1 = I + 3 \\implies I = 17 \\text{ strictly interior lattice points!} \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> رؤوس المثلث \\( OAB \\) هي \\( O(0,0),\\; A(6, 4),\\; B(2, 8) \\). كم نقطة شبكية صحيحة \\( (x, y) \\in \\mathbb{Z}^2 \\) تقع <strong>داخل</strong> المثلث تماماً (دون الأضلاع)؟</p><p><strong>الحل الأولمبي:</strong><br>1. <strong>المساحة بالمحدد:</strong> \\( \\operatorname{Area}(OAB) = \\frac{1}{2}|6(8) - 4(2)| = 20 \\).<br>2. <strong>نقاط المحيط \\( B \\):</strong> مجموع القواسم المشتركة لفروق الإحداثيات للأضلاع الثلاثة:<br>\\[ B = \\gcd(6, 4) + \\gcd(4, 4) + \\gcd(2, 8) = 2 + 4 + 2 = 8. \\]<br>3. <strong>بتطبيق مبرهنة بيك \\( A = I + \\frac{B}{2} - 1 \\):</strong> \\( 20 = I + 4 - 1 \\implies I = 17 \\) نقطة داخلية!</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 8.D — Exam-Grade Challenge Synthesis (Invariants, Monovariants, Game Strategy & Extremal Principle)",
-          "ar": "مثال محلول 8.D — مسألة تحدي بمستوى الاختبار (اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى)"
+          "en": "Worked Example 8.D — Finding All Winning First Moves in 3-Heap Nim (Olympiad Games)",
+          "ar": "مثال محلول 8.D — تحديد جميع النقلات الافتتاحية الرابحة في لعبة نيم (ألعاب الأولمبياد)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 9n^2 + 10n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 9(1)^2 + 10(1) = 19 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[9n^2 + 10n\\right] - \\left[9(n-1)^2 + 10(n-1)\\right] = 18n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 18 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 181 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 18n + 1 \\), \\( d = 18 \\), and \\( u_{10} = 181 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 9n^2 + 10n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 18n + 1 \\)، والأساس \\( d = 18 \\)، والحد العاشر \\( u_{10} = 181 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Three heaps of stones contain \\( (9, 12, 15) \\) stones in standard Nim. Determine which player has a winning strategy, and find the exact winning first move(s).</p><p><strong>Solution:</strong> Convert each heap to 4-bit binary and compute the bitwise XOR \\( X = 9 \\oplus 12 \\oplus 15 \\):<br>• \\( 9 = 1001_2 \\)<br>• \\( 12 = 1100_2 \\)<br>• \\( 15 = 1111_2 \\)<br>Adding mod 2 column-by-column: \\( X = 1010_2 = 10 \\ne 0 \\). Thus the <strong>first player wins</strong>!<br>The highest \\( 1 \\)-bit of \\( X = 1010_2 \\) is \\( 2^3 = 8 \\). Which heaps have bit \\( 2^3 \\) set to \\( 1 \\)? All three (\\( 9, 12, 15 \\))! Compute \\( a_i' = a_i \\oplus 10 \\) for each:<br>• Heap 1: \\( 9 \\oplus 10 = 1001_2 \\oplus 1010_2 = 0011_2 = 3 < 9 \\) (valid: remove \\( 6 \\) from \\( 9 \\));<br>• Heap 2: \\( 12 \\oplus 10 = 1100_2 \\oplus 1010_2 = 0110_2 = 6 < 12 \\) (valid: remove \\( 6 \\) from \\( 12 \\));<br>• Heap 3: \\( 15 \\oplus 10 = 1111_2 \\oplus 1010_2 = 0101_2 = 5 < 15 \\) (valid: remove \\( 10 \\) from \\( 15 \\)).<br>All <strong>3</strong> moves leave a zero-XOR state (\\( (3,12,15),\\; (9,6,15), \\) or \\( (9,12,5) \\))!</p>",
+          "ar": "<p><strong>المسألة:</strong> ثلاث أكوام في لعبة نيم تحوي \\( (9, 12, 15) \\) حجراً. حدد اللاعب الفائز بملعب مثالي، وأوجد جميع النقلات الأولى الرابحة.</p><p><strong>الحل الأولمبي:</strong> نحسب المجموع الثنائي \\( X = 9 \\oplus 12 \\oplus 15 \\):<br>\\( 9 = 1001_2 \\)، \\( 12 = 1100_2 \\)، \\( 15 = 1111_2 \\implies X = 1010_2 = 10 \\ne 0 \\)، إذن <strong>اللاعب الأول يفوز</strong>!<br>نحسب القيمة المستهدفة \\( a_i \\oplus 10 \\) لكل كومة:<br>• الكومة الأولى: \\( 9 \\oplus 10 = 3 < 9 \\) (إنقاصها إلى \\( 3 \\))؛<br>• الكومة الثانية: \\( 12 \\oplus 10 = 6 < 12 \\) (إنقاصها إلى \\( 6 \\))؛<br>• الكومة الثالثة: \\( 15 \\oplus 10 = 5 < 15 \\) (إنقاصها إلى \\( 5 \\)).<br>توجد إذن <strong>3 نقلات افتتاحية رابحة</strong> تجعل مجموع XOR مساوياً للصفر!</p>"
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Invariants, Monovariants, Game Strategy & Extremal Principle",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى"
+          "en": "⚠ Olympiad Trap — Necessary Invariant Match Does NOT Prove Reachability by Itself!",
+          "ar": "⚠ فخ أولمبي شائع — تطابق اللامتغير شرط ضروري وليس كافياً بمفرده!"
         },
         "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+          "en": "<p>An invariant mismatch \\( \\Phi(S_0) \\ne \\Phi(S_{\\text{target}}) \\) is a <strong>100% proof of impossibility</strong>. However, if \\( \\Phi(S_0) = \\Phi(S_{\\text{target}}) \\), you MUST still exhibit an explicit sequence of moves (or inductive construction) to prove \\( S_{\\text{target}} \\) is reachable!</p>",
+          "ar": "<p>اختلاف قيمة اللامتغير \\( \\Phi(S_0) \\ne \\Phi(S_{\\text{الهدف}}) \\) برهان قاطع على الاستحالة؛ أما تساويهما فهو <strong>شرط ضروري فقط</strong>، ولا يكتمل إثبات الإمكانية إلا ببناء صريح لخطوات الوصول!</p>"
         }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Invariants, Monovariants, Game Strategy & Extremal Principle)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى)"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
       },
       {
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Invariants, Monovariants, Game Strategy & Extremal Principle",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — اللامتغيرات واستراتيجيات الألعاب الرياضية ومبدأ القيم القصوى"
+          "en": "▲ Contest Strategy — Spotting Monovariants When Numbers Split or Merge",
+          "ar": "▲ استراتيجية المسابقات — كيف تبني شبه لامتغير لعمليات التقسيم والدمج؟"
         },
         "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+          "en": "<p>When an operation splits an integer \\( n = a + b \\) and records \\( ab \\), test the quadratic potential \\( \\Phi = \\sum x_i^2 \\): since \\( (a+b)^2 - (a^2 + b^2) = 2ab \\), the sum of all recorded products across ANY sequence of splits down to \\( 1 \\)s is <strong>always</strong> \\( \\frac{N^2 - N}{2} = \\binom{N}{2} \\)!</p>",
+          "ar": "<p>عند تقسيم عدد \\( n = a + b \\) وتسجيل حاصل الضرب \\( ab \\)، اختبر مجموع المربعات \\( \\sum x_i^2 \\): بما أن \\( (a+b)^2 - (a^2+b^2) = 2ab \\)، فإن مجموع جميع الجداءات المسجلة حتى الوصول للواحدات يساوي دائماً \\( \\binom{N}{2} \\) مهما كانت طريقة التقسيم!</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(10) \\) for the quadratic function \\( f(x) = 9x^2 - 9x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(10) \\) للدالة التربيعية \\( f(x) = 9x^2 - 9x + 10 \\)."
+          "en": "<strong>[Practice 8.1 · NSMO Stage 1 / Easy]</strong> A pile starts with \\( 100 \\) stones. Players alternate removing \\( 1, 2, 3, \\) or \\( 4 \\) stones; whoever takes the last stone wins. How many stones must Player 1 remove on the very first turn to guarantee victory?",
+          "ar": "<strong>[تدريب 8.1 · نسما المرحلة 1 / سهل]</strong> كومة فيها \\( 100 \\) حجر، يتناوب لاعبان على سحب \\( 1 \\) أو \\( 2 \\) أو \\( 3 \\) أو \\( 4 \\) أحجار، ويفوز من يأخذ الحجر الأخير. كم حجراً يجب أن يسحب اللاعب الأول في الدور الأول ليضمن الفوز؟ (إن كانت الوضعية خاسرة فاكتب 0)"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 10 \\) directly into \\( f(x) = 9x^2 - 9x + 10 \\).",
-            "ar": "عوّض عن \\( x = 10 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+            "en": "In subtraction game \\( \\{1, 2, 3, 4\\} \\), the losing P-positions are multiples of \\( 4 + 1 = 5 \\).",
+            "ar": "في لعبة سحب \\( 1\\dots 4 \\)، مواضع الخسارة للمبادر هي مضاعفات \\( 4 + 1 = 5 \\)."
           },
           {
-            "en": "Factor out \\( 9x(x - 1) + 10 = 9(10)(9) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 9(10)(9) + 10 \\)."
+            "en": "Check whether \\( 100 \\) is already divisible by \\( 5 \\)!",
+            "ar": "اختبر هل \\( 100 \\) يقبل القسمة على \\( 5 \\)!"
           },
           {
-            "en": "Compute \\( 810 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 810 + 10 \\) للحصول على النتيجة النهائية."
+            "en": "What happens if Player 1 removes \\( m \\in \\{1,2,3,4\\} \\) stones from \\( 100 \\)? Player 2 replies with \\( 5 - m \\)!",
+            "ar": "إذا سحب الأول \\( m \\) حجراً، يسحب الثاني \\( 5 - m \\) في كل دور!"
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 10 \\) gives \\( f(10) = 9(10)^2 - 9(10) + 10 = 900 - 90 + 10 = 820 \\).",
-          "ar": "بالتعويض عن \\( x = 10 \\) نجد \\( f(10) = 9(10)^2 - 9(10) + 10 = 820 \\)."
+          "en": "Since \\( 100 \\equiv 0 \\pmod 5 \\), \\( 100 \\) is ALREADY a losing P-position! Whatever \\( m \\in \\{1,2,3,4\\} \\) Player 1 removes, Player 2 removes \\( 5 - m \\) stones to maintain multiples of \\( 5 \\) down to \\( 0 \\). Thus Player 2 wins (Player 1 has \\( 0 \\) winning moves).",
+          "ar": "بما أن \\( 100 \\) من مضاعفات \\( 5 \\)، فإن الوضعية الابتدائية \\( P \\)-position خاسرة للمبادر! مهما سحب الأول \\( m \\in \\{1,2,3,4\\} \\) سيرد الثاني بسحب \\( 5 - m \\) حتى يأخذ الحجر الأخير (عدد النقلات الرابحة للأول = \\( 0 \\))."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 19x + 90 = 0 \\) that is greater than \\( 9 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 9 \\) للمعادلة \\( x^2 - 19x + 90 = 0 \\)."
+          "en": "<strong>[Practice 8.2 · KAUST KMC Regional / Easy]</strong> Start with a single pile of \\( 15 \\) coins. At each step you split any pile of size \\( > 1 \\) into two smaller piles \\( a \\) and \\( b \\) and add \\( ab \\) points to your score, stopping when \\( 15 \\) piles of size \\( 1 \\) remain. What is your final score?",
+          "ar": "<strong>[تدريب 8.2 · تصفيات كاوست / سهل]</strong> تبدأ بكومة واحدة من \\( 15 \\) قطعة نقدية. في كل خطوة تقسم أي كومة حجمها \\( > 1 \\) إلى كومتين \\( a \\) و\\( b \\) وتضيف \\( ab \\) نقطة إلى رصيدك حتى تصبح جميع الأكوام من قطعة واحدة. كم يكون مجموع نقاطك النهائي؟"
         },
         "hints": [
           {
-            "en": "Look for two integers whose sum is \\( 19 \\) and whose product is \\( 90 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 19 \\) وحاصل ضربهما \\( 90 \\)."
+            "en": "Track the invariant \\( \\text{Score} + \\frac{1}{2}\\sum x_i^2 \\)!",
+            "ar": "تتبّع اللامتغير \\( \\text{الرصيد} + \\frac{1}{2}\\sum x_i^2 \\)!"
           },
           {
-            "en": "Factor the quadratic as \\( (x - 9)(x - 10) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 9)(x - 10) = 0 \\)."
+            "en": "Check one split \\( (a+b) \\to a, b \\): \\( ab + \\frac{a^2+b^2}{2} = \\frac{(a+b)^2}{2} \\).",
+            "ar": "لاحظ أن \\( ab + \\frac{a^2+b^2}{2} = \\frac{(a+b)^2}{2} \\) ثابت لا يتغير!"
           },
           {
-            "en": "Compare the two roots \\( x = 9 \\) and \\( x = 10 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 9 \\) و \\( x = 10 \\) واختر الأكبر."
+            "en": "Equate initial \\( 0 + \\frac{15^2}{2} \\) to final \\( S + 15 \\cdot \\frac{1^2}{2} \\) (equivalently \\( \\binom{15}{2} \\)).",
+            "ar": "ساوِ البداية بالنهاية: \\( S = \\frac{15^2 - 15}{2} = \\binom{15}{2} \\)."
           }
         ],
         "solution": {
-          "en": "Factoring gives \\( (x - 9)(x - 10) = 0 \\), so the roots are \\( x = 9 \\) and \\( x = 10 \\). The root greater than \\( 9 \\) is \\( x = 10 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 9)(x - 10) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 9 \\) هو \\( x = 10 \\)."
+          "en": "Every pair of coins is separated on exactly one split (or via the invariant \\( S + \\frac{1}{2}\\sum x_i^2 = \\frac{15^2}{2} \\)), so the final score is always \\( \\binom{15}{2} = \\frac{15 \\times 14}{2} = 105 \\).",
+          "ar": "بما أن كل زوج من القطع ينفصل في خطوة واحدة بالضبط (أو من اللامتغير \\( S + \\frac{1}{2}\\sum x_i^2 \\))، فإن المجموع النهائي ثابت ويساوي \\( \\binom{15}{2} = 105 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 81 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 81 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+          "en": "<strong>[Practice 8.3 · NSMO Stage 2 / Medium]</strong> A lattice polygon has area \\( 29 \\) and exactly \\( 12 \\) lattice points on its boundary. How many lattice points lie strictly in its interior?",
+          "ar": "<strong>[تدريب 8.3 · نسما المرحلة 2 / متوسط]</strong> مضلع بسيط رؤوسه شبكية مساحته \\( 29 \\) ويقع على محيطه \\( 12 \\) نقطة شبكية بالضبط. كم نقطة شبكية تقع داخله تماماً؟"
         },
         "hints": [
           {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+            "en": "Apply Pick’s Theorem \\( A = I + \\frac{B}{2} - 1 \\).",
+            "ar": "طبّق مبرهنة بيك \\( A = I + \\frac{B}{2} - 1 \\)."
           },
           {
-            "en": "Substitute \\( a = 1, b = -2k, c = 81 \\) into \\( (-2k)^2 - 4(1)(81) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(81) = 0 \\)."
+            "en": "Substitute \\( A = 29 \\) and \\( B = 12 \\).",
+            "ar": "عوّض بـ \\( A = 29 \\) و\\( B = 12 \\)."
           },
           {
-            "en": "Simplify \\( 4k^2 = 324 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 324 \\) واقسم الطرفين على 4."
+            "en": "Solve \\( 29 = I + 6 - 1 \\) for \\( I \\).",
+            "ar": "احسب \\( I \\) من المعادلة \\( 29 = I + 5 \\)."
           }
         ],
         "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(81) = 4k^2 - 324 = 0 \\implies k^2 = 81 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 324 = 0 \\implies k^2 = 81 \\)."
+          "en": "By Pick’s Theorem, \\( 29 = I + \\frac{12}{2} - 1 = I + 5 \\implies I = 24 \\) interior lattice points.",
+          "ar": "من مبرهنة بيك: \\( 29 = I + 6 - 1 = I + 5 \\implies I = 24 \\) نقطة شبكية داخلية."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 9 \\) and common difference \\( d = 20 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 9 \\) وأساسها \\( d = 20 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+          "en": "<strong>[Practice 8.4 · AMC 12 / KAUST KMC / Hard]</strong> In 3-heap Nim with initial heaps \\( (6, 11, 14) \\), how many stones must Player 1 remove, and from which heap, to guarantee a win?",
+          "ar": "<strong>[تدريب 8.4 · AMC 12 / مسابقة كاوست / متقدم]</strong> في لعبة نيم بثلاث أكوام أحجامها \\( (6, 11, 14) \\)، كم حجراً يجب أن يسحب اللاعب الأول ومن أي كومة ليضمن الفوز؟"
         },
         "hints": [
           {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+            "en": "Compute \\( X = 6 \\oplus 11 \\oplus 14 \\) in 4-bit binary (\\( 0110_2 \\oplus 1011_2 \\oplus 1110_2 \\)).",
+            "ar": "احسب \\( X = 6 \\oplus 11 \\oplus 14 \\) بالتمثيل الثنائي \\( 0110_2 \\oplus 1011_2 \\oplus 1110_2 \\)."
           },
           {
-            "en": "Substitute \\( n = 10, a = 9, d = 20 \\): \\( S_{10} = 5[2(9) + 9(20)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(9) + 9(20)] \\)."
+            "en": "Find \\( X = 0011_2 = 3 \\), whose highest \\( 1 \\)-bit is \\( 2^1 = 2 \\).",
+            "ar": "ستجد \\( X = 0011_2 = 3 \\)، وأعلى خانة فيها \\( 1 \\) هي \\( 2^1 = 2 \\)."
           },
           {
-            "en": "Evaluate \\( 5(18 + 180) = 990 \\).",
-            "ar": "احسب الناتج \\( 5(18 + 180) = 990 \\)."
+            "en": "Compute \\( a_i \\oplus 3 \\) for each heap and pick the unique one with \\( a_i \\oplus 3 < a_i \\)? Check all three: \\( 6 \\oplus 3 = 5 < 6 \\), \\( 11 \\oplus 3 = 8 < 11 \\), \\( 14 \\oplus 3 = 13 < 14 \\)! All three have bit \\( 2^1 \\) set!",
+            "ar": "جميع الأكوام الثلاث تحوي الخانة \\( 2^1 = 1 \\)! احسب \\( 6 \\oplus 3 = 5 \\)، و\\( 11 \\oplus 3 = 8 \\)، و\\( 14 \\oplus 3 = 13 \\)."
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(9) + 9(20)] = 5(198) = 990 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(18 + 180) = 990 \\)."
+          "en": "Here \\( X = 0110_2 \\oplus 1011_2 \\oplus 1110_2 = 0011_2 = 3 \\). Since bit \\( 2^1 \\) is \\( 1 \\) in all three heaps, Player 1 has three winning options: remove \\( 1 \\) from \\( 6 \\) (leaving \\( 5,11,14 \\)), remove \\( 3 \\) from \\( 11 \\) (leaving \\( 6,8,14 \\)), or remove \\( 1 \\) from \\( 14 \\) (leaving \\( 6,11,13 \\)).",
+          "ar": "بما أن \\( X = 6 \\oplus 11 \\oplus 14 = 3 \\)، والخانة \\( 2^1 \\) موجودة في الأكوام الثلاث، يملك اللاعب الأول ثلاث نقلات رابحة: سحب \\( 1 \\) من \\( 6 \\) (لتصبح \\( 5 \\))، أو سحب \\( 3 \\) من \\( 11 \\) (لتصبح \\( 8 \\))، أو سحب \\( 1 \\) من \\( 14 \\) (لتصبح \\( 13 \\))."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 9x^2 - 10x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 9x^2 - 10x + 7 \\) عند \\( x = 3 \\)."
+          "en": "<strong>[Practice 8.5 · NSMO National Finals / IMO Classic]</strong> A chameleon island has \\( 13 \\) red, \\( 15 \\) green, and \\( 17 \\) blue chameleons. Whenever two chameleons of DIFFERENT colors meet, both change to the third color. Can all \\( 45 \\) chameleons ever become the same color?",
+          "ar": "<strong>[تدريب 8.5 · نهائيات نسما / كلاسيكيات IMO]</strong> جزيرة عليها \\( 13 \\) حرباء حمراء، و\\( 15 \\) خضراء، و\\( 17 \\) زرقاء. كلما التقت حرباءان من لونين مختلفين تحولتا معاً إلى اللون الثالث. هل يمكن أن تصبح جميع الحرابي الـ \\( 45 \\) بلون واحد؟"
         },
         "hints": [
           {
-            "en": "Differentiate \\( y = x^3 + 9x^2 - 10x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+            "en": "Track the pairwise differences \\( (R - G, G - B, B - R) \\) modulo \\( 3 \\)!",
+            "ar": "تتبّع فروق الأعداد مثنى مثنى بترديد \\( 3 \\)!"
           },
           {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\)."
+            "en": "On a meeting of Red + Green \\( \\to 2 \\) Blue: \\( (R, G, B) \\to (R-1, G-1, B+2) \\). How does \\( G - R \\pmod 3 \\) or \\( B - G \\pmod 3 \\) change?",
+            "ar": "عند تحول \\( (R, G, B) \\to (R-1, G-1, B+2) \\)، يتغير \\( B - G \\) بمقدار \\( +3 \\equiv 0 \\pmod 3 \\)!"
           },
           {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 18(3) - 10 = 71 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 54 - 10 = 71 \\)."
+            "en": "Compare initial residues \\( (13, 15, 17) \\equiv (1, 0, 2) \\pmod 3 \\) with monochromatic \\( (45, 0, 0) \\equiv (0, 0, 0) \\pmod 3 \\).",
+            "ar": "قارن البواقي الابتدائية \\( (1, 0, 2) \\pmod 3 \\) بالحالة وحيدة اللون \\( (0, 0, 0) \\pmod 3 \\)."
           }
         ],
         "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 54 - 10 = 71 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 54 - 10 = 71 \\)."
+          "en": "Every meeting shifts \\( (R, G, B) \\) by a permutation of \\( (-1, -1, +2) \\), so all pairwise differences \\( R - G,\\; G - B,\\; B - R \\pmod 3 \\) are <strong>strictly invariant</strong>! Initially \\( (13, 15, 17) \\equiv (1, 0, 2) \\pmod 3 \\) (no two counts are congruent mod 3), whereas a monochromatic state \\( (45, 0, 0) \\) has two equal counts \\( 0 \\equiv 0 \\pmod 3 \\). Contradiction—so it is <strong>impossible</strong>!",
+          "ar": "كل لقاء يغيّر الأعداد بمقدار \\( (-1, -1, +2) \\)، فتظل الفروق \\( R - G \\) و\\( G - B \\) بترديد \\( 3 \\) <strong>ثابتة تماماً</strong>! في البداية البواقي \\( (1, 0, 2) \\pmod 3 \\) مختلفة مثنى مثنى، بينما توحيد اللون يتطلب \\( (0, 0) \\) بترديد \\( 3 \\) للونين المختفيين، وهذا مستحيل!"
         }
       },
       {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Ceva's, Menelaus', Stewart's Theorems & Triangle Centers",
-            "chapterId": "ol-triangle-centers-trig",
+            "label": "Subsection II · NSMO of KSA: Screening & Regional Qualifiers",
+            "chapterId": "ol-nsmo-stage1-2",
             "trackId": "olympiad"
           },
           {
-            "label": "Divisibility, Prime Factorization & Modular Arithmetic",
-            "chapterId": "ol-modular-number-theory",
+            "label": "Subsection II · NSMO National Finals & IMO Pathway",
+            "chapterId": "ol-nsmo-national-finals",
             "trackId": "olympiad"
           },
           {
-            "trackId": "addmath",
-            "chapterId": "am-functions-quadratics",
-            "label": "ADDMATH: Functions, Modulus & Quadratic Theory"
+            "label": "Subsection III · KAUST Campus Finals & Academy Synthesis",
+            "chapterId": "ol-kaust-finals-academy",
+            "trackId": "olympiad"
           }
         ]
       }

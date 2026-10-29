@@ -288,6 +288,8 @@ def rich(text, color=INK, size=10, rtl=False):
         math_specs.append("$" + m.group(1) + "$")
         return chr(_PLACEHOLDER_BASE + len(math_specs) - 1)
 
+    text = re.sub(r"\\\((.*?)\\\)", _stash, text, flags=re.S)
+    text = re.sub(r"\\\[(.*?)\\\]", _stash, text, flags=re.S)
     text = re.sub(r"\$([^$]+)\$", _stash, text)
     if rtl:
         text = shape_ar(text)

@@ -138,7 +138,9 @@ it('Blueprints exist for English GAT, SAAT, and Competition Math', () => {
     'GAT Quantitative (English Medium)',
     'SAAT Mathematics (English Medium)',
     'Mawhiba & Kangaroo Math Arabia (Senior)',
-    'AMC 10/12 Mathematics Competition'
+    'AMC 10/12 Mathematics Competition',
+    'NSMO of KSA — National Mathematical Olympiad',
+    'KAUST Mathematics Competition (KMC)'
   ];
   menaExams.forEach(e => {
     const bp = window.ClipSATBlueprints.get(e);
@@ -191,6 +193,8 @@ it('window.examSpecs defines complete metadata, timing, and sections for all new
     'SAAT Mathematics (English Medium)',
     'Mawhiba & Kangaroo Math Arabia (Senior)',
     'AMC 10/12 Mathematics Competition',
+    'NSMO of KSA — National Mathematical Olympiad',
+    'KAUST Mathematics Competition (KMC)',
     'addmath',
     'Cambridge IGCSE 0606 — Paper 1',
     'Cambridge IGCSE 0606 — Paper 2',

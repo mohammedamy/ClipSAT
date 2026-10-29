@@ -1,27 +1,35 @@
 {
   "id": "ol-combinatorics-counting",
   "chapterNumber": "4",
+  "subsectionBanner": {
+    "en": "🏆 Subsection I · Core International Olympiad Pillars (Chapters 1–8)",
+    "ar": "🏆 القسم الأول · المحاور الأولمبية العالمية التأسيسية (الفصول 1–8)"
+  },
   "title": {
-    "en": "Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion",
-    "ar": "العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء"
+    "en": "Combinatorics I: Bijective Counting, Stars & Bars, Inclusion–Exclusion & Pigeonhole",
+    "ar": "التركيبات (1): العد التقابلي والنجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام"
+  },
+  "railLabel": {
+    "en": "Bijective Counting, PIE & Pigeonhole",
+    "ar": "التركيبات والشمول والإقصاء وبرج الحمام"
   },
   "chapterTag": {
     "variant": "category",
     "className": "igcse-tag",
-    "emoji": "🏆",
-    "category": "Olympiad Module 4 — Combinatorics I",
+    "emoji": "🎲",
+    "category": "Core Pillar 4 — Olympiad Combinatorics I",
     "badges": [
       {
-        "text": "Core Mastery",
+        "text": "IMO · NSMO · KAUST KMC",
         "className": "tier-e"
       }
     ],
     "topics": [
-      "Stars and Bars (balls in urns)",
-      "Generalized Pigeonhole Principle",
-      "Principle of Inclusion-Exclusion (PIE)",
-      "Derangements & lattice paths with obstacles",
-      "Vandermonde's & hockey-stick identities"
+      "Bijective mappings & double counting",
+      "Stars and Bars with lower/upper constraints",
+      "Hockey-Stick & Vandermonde identities",
+      "Principle of Inclusion–Exclusion (PIE) & Derangements",
+      "Generalized Pigeonhole Principle & graph degrees"
     ]
   },
   "content": {
@@ -29,83 +37,197 @@
       {
         "kind": "text",
         "body": {
-          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion</strong> (Olympiad Module 4 — Combinatorics I).",
-          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء</strong>."
+          "en": "Olympiad combinatorics replaces messy casework with <strong>structural bijections</strong>: instead of counting a complicated set \\( A \\) directly, construct a 1-to-1 correspondence \\( f: A \\to B \\) onto a clean set \\( B \\) of binary strings, lattice paths, or subset choices. Paired with <strong>Stars and Bars</strong>, the <strong>Principle of Inclusion–Exclusion (PIE)</strong>, and Dirichlet’s <strong>Pigeonhole Principle</strong>, these tools form the backbone of NSMO, KAUST KMC, AMC/AIME, and IMO combinatorics.",
+          "ar": "تستبدل التركيبات الأولمبية تقسيم الحالات المرهق بـ<strong>التقابلات البنيوية (Bijections)</strong>: فبدلاً من عدّ مجموعة معقدة \\( A \\) مباشرةً، ننشئ تقابلاً واحداً لواحد \\( f: A \\to B \\) مع مجموعة واضحة من المتتابعات الثنائية أو مسارات الشبكة. وبالاقتران مع <strong>النجوم والفواصل</strong> و<strong>مبدأ الشمول والإقصاء (PIE)</strong> و<strong>مبدأ برج الحمام لديريخليه</strong>، تتشكل الركيزة الأساسية لمسائل التركيبات في نسما وكاوست وAIME وIMO."
         }
       },
       {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 4.1 — Stars and Bars, Hockey-Stick Identity & Generalized Pigeonhole",
-          "ar": "● تعريف 4.1 — العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء"
+          "en": "● Definition 4.1 — Stars & Bars, Hockey-Stick & Vandermonde Convolution",
+          "ar": "● تعريف 4.1 — النجوم والفواصل ومتطابقتا عصا الهوكي وفاندرموند"
         },
         "body": {
-          "en": "<p>By <strong>Stars and Bars</strong>, the number of non-negative integer solutions to \\( x_1 + x_2 + \\dots + x_k = n \\) is \\( \\binom{n + k - 1}{k - 1} \\), and the number of positive integer solutions (\\( x_i \\ge 1 \\)) is \\( \\binom{n - 1}{k - 1} \\). The <strong>Hockey-Stick Identity</strong> states that \\( \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n+1}{r+1} \\). By the <strong>Generalized Pigeonhole Principle</strong>, if \\( N \\) objects are placed into \\( k \\) boxes, at least one box contains at least \\( \\lceil N/k \\rceil \\) objects.</p>",
-          "ar": "<p>By <strong>Stars and Bars</strong>, the number of non-negative integer solutions to \\( x_1 + x_2 + \\dots + x_k = n \\) is \\( \\binom{n + k - 1}{k - 1} \\), and the number of positive integer solutions (\\( x_i \\ge 1 \\)) is \\( \\binom{n - 1}{k - 1} \\). The <strong>Hockey-Stick Identity</strong> states that \\( \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n+1}{r+1} \\). By the <strong>Generalized Pigeonhole Principle</strong>, if \\( N \\) objects are placed into \\( k \\) boxes, at least one box contains at least \\( \\lceil N/k \\rceil \\) objects.</p>"
+          "en": "<p><strong>1. Stars and Bars:</strong> The number of solutions to \\( x_1 + x_2 + \\cdots + x_k = n \\) is:</p>\\[ \\binom{n - 1}{k - 1} \\text{ in positive integers } (x_i \\ge 1), \\qquad \\binom{n + k - 1}{k - 1} \\text{ in non-negative integers } (x_i \\ge 0). \\]<p><strong>2. Hockey-Stick &amp; Vandermonde Identities:</strong></p>\\[ \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1}, \\qquad \\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k - j} = \\binom{m + n}{k}, \\qquad \\sum_{j=0}^{n} \\binom{n}{j}^2 = \\binom{2n}{n}. \\]",
+          "ar": "<p><strong>1. النجوم والفواصل (Stars and Bars):</strong> عدد حلول المعادلة \\( x_1 + x_2 + \\cdots + x_k = n \\) يساوي:</p>\\[ \\binom{n - 1}{k - 1} \\text{ في الأعداد الموجبة } (x_i \\ge 1), \\qquad \\binom{n + k - 1}{k - 1} \\text{ في الأعداد غير السالبة } (x_i \\ge 0). \\]<p><strong>2. متطابقتا عصا الهوكي وفاندرموند:</strong></p>\\[ \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1}, \\qquad \\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k - j} = \\binom{m + n}{k}, \\qquad \\sum_{j=0}^{n} \\binom{n}{j}^2 = \\binom{2n}{n}. \\]"
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Deep Conceptual Intuition — Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion",
-          "ar": "● الفهم المفاهيمي العميق — العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء"
+          "en": "● Theorem 4.2 — Principle of Inclusion–Exclusion (PIE), Derangements & Pigeonhole",
+          "ar": "● مبرهنة 4.2 — مبدأ الشمول والإقصاء والتبديلات الخالية ومبدأ برج الحمام"
         },
         "body": {
-          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
-          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+          "en": "<p><strong>1. Principle of Inclusion–Exclusion (PIE):</strong> For finite subsets \\( A_1, \\dots, A_m \\subseteq U \\), the number of elements in NONE of the \\( A_i \\) is:</p>\\[ \\left|U \\setminus \\bigcup_{i=1}^m A_i\\right| = |U| - \\sum_{i} |A_i| + \\sum_{i<j} |A_i \\cap A_j| - \\cdots + (-1)^m |A_1 \\cap \\cdots \\cap A_m|. \\]<p>In particular, the number of <strong>derangements</strong> \\( D_n \\) (permutations of \\( \\{1,\\dots,n\\} \\) with \\( \\pi(i) \\ne i \\) for all \\( i \\)) is \\( D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!} \\) (\\( D_1=0, D_2=1, D_3=2, D_4=9, D_5=44 \\)).</p><p><strong>2. Generalized Pigeonhole Principle:</strong> Placing \\( N \\) objects into \\( k \\) boxes forces at least one box to contain at least \\( \\lceil N / k \\rceil \\) objects.</p>",
+          "ar": "<p><strong>1. مبدأ الشمول والإقصاء (PIE):</strong> لمجموعات جزئية منتهية \\( A_1, \\dots, A_m \\subseteq U \\)، عدد عناصر \\( U \\) التي لا تنتمي إلى أيٍّ من \\( A_i \\) يعطى بالصيغة:</p>\\[ \\left|U \\setminus \\bigcup_{i=1}^m A_i\\right| = |U| - \\sum_{i} |A_i| + \\sum_{i<j} |A_i \\cap A_j| - \\cdots + (-1)^m |A_1 \\cap \\cdots \\cap A_m|. \\]<p>وبوجه خاص، عدد <strong>التبديلات الخالية من النقاط الثابتة (Derangements)</strong> يساوي \\( D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!} \\) (حيث \\( D_1=0,\\; D_2=1,\\; D_3=2,\\; D_4=9,\\; D_5=44 \\)).</p><p><strong>2. مبدأ برج الحمام المعمم:</strong> عند توزيع \\( N \\) عنصراً على \\( k \\) صناديق، لا بد من وجود صندوق واحد على الأقل يحوي \\( \\lceil N / k \\rceil \\) عنصراً على الأقل.</p>"
         }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Proof — Combinatorial Proof of the Hockey-Stick Identity by Last Element",
+          "ar": "◆ البرهان الأولمبي — البرهان التوافقي لمتطابقة عصا الهوكي عبر العنصر الأكبر"
+        },
+        "body": {
+          "en": "<p>How many \\( (r + 1) \\)-element subsets can be chosen from \\( S = \\{1, 2, \\dots, n + 1\\} \\)? On the right-hand side, by definition, there are \\( \\binom{n+1}{r+1} \\) such subsets. On the left-hand side, partition those subsets according to their <strong>largest element</strong> \\( m = i + 1 \\), which must satisfy \\( r + 1 \\le i + 1 \\le n + 1 \\) (so \\( r \\le i \\le n \\)). Once the largest element \\( i + 1 \\) is fixed, the remaining \\( r \\) elements can be chosen freely from \\( \\{1, 2, \\dots, i\\} \\) in \\( \\binom{i}{r} \\) ways. Summing over disjoint cases \\( i = r, r+1, \\dots, n \\) yields \\( \\sum_{i=r}^n \\binom{i}{r} = \\binom{n+1}{r+1} \\). \\( \\blacksquare \\)</p>",
+          "ar": "<p>بكم طريقة يمكن اختيار مجموعة جزئية مكوّنة من \\( r + 1 \\) عنصراً من المجموعة \\( S = \\{1, 2, \\dots, n + 1\\} \\)؟ الطرف الأيمن يعدّها مباشرةً بـ \\( \\binom{n+1}{r+1} \\). أما الطرف الأيسر فيصنّف هذه المجموعات الجزئية بحسب <strong>أكبر عنصر فيها</strong> وليكن \\( i + 1 \\) حيث \\( r \\le i \\le n \\)؛ فبعد تثبيت العنصر الأكبر \\( i + 1 \\)، نختار العناصر الـ \\( r \\) المتبقية من المجموعة \\( \\{1, 2, \\dots, i\\} \\) بعدد طرق قدره \\( \\binom{i}{r} \\). وبجمع هذه الحالات المتنافية من \\( i = r \\) إلى \\( n \\) يثبت أن \\( \\sum_{i=r}^n \\binom{i}{r} = \\binom{n+1}{r+1} \\). \\( \\blacksquare \\)</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Classic Olympiad Bijections & Double-Counting Blueprints",
+          "ar": "خريطة التقابلات الأولمبية الشهيرة ونماذج العد المزدوج"
+        },
+        "columns": [
+          {
+            "en": "Contest Problem Type",
+            "ar": "نوع مسألة المسابقات"
+          },
+          {
+            "en": "Bijective Transformation",
+            "ar": "التحويل التقابلي الحاسم"
+          },
+          {
+            "en": "Exact Formula",
+            "ar": "الصيغة النهائية"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Choose \\(k\\) non-adjacent items from \\(\\{1,\\dots,n\\}\\)",
+              "ar": "اختيار \\(k\\) عناصر غير متجاورة من \\(\\{1,\\dots,n\\}\\)"
+            },
+            {
+              "en": "Insert \\(k\\) chosen balls into the \\(n-k+1\\) gaps around \\(n-k\\) unchosen balls",
+              "ar": "إدراج \\(k\\) عناصر مختارة في الفجوات الـ \\(n-k+1\\) حول العناصر غير المختارة"
+            },
+            {
+              "en": "\\(\\binom{n - k + 1}{k}\\)",
+              "ar": "\\(\\binom{n - k + 1}{k}\\)"
+            }
+          ],
+          [
+            {
+              "en": "Non-decreasing sequences \\(1 \\le a_1 \\le a_2 \\le \\dots \\le a_k \\le m\\)",
+              "ar": "متتابعات غير متناقصة \\(1 \\le a_1 \\le \\dots \\le a_k \\le m\\)"
+            },
+            {
+              "en": "Shift \\(b_i = a_i + (i - 1)\\) to get strictly increasing \\(1 \\le b_1 < \\dots < b_k \\le m+k-1\\)",
+              "ar": "الإزاحة \\(b_i = a_i + (i - 1)\\) لتحويلها إلى متزايدة قطعاً"
+            },
+            {
+              "en": "\\(\\binom{m + k - 1}{k}\\)",
+              "ar": "\\(\\binom{m + k - 1}{k}\\)"
+            }
+          ],
+          [
+            {
+              "en": "Surjective functions \\(f: \\{1,\\dots,n\\} \\to \\{1,\\dots,k\\}\\)",
+              "ar": "الدوال الشاملة (الغامرة) من مجموعة حجمها \\(n\\) إلى \\(k\\)"
+            },
+            {
+              "en": "PIE on \\(A_i = \\{\\text{functions missing output } i\\}\\)",
+              "ar": "مبدأ الشمول والإقصاء على المخرجات المفقودة"
+            },
+            {
+              "en": "\\(\\sum_{j=0}^k (-1)^j \\binom{k}{j} (k - j)^n\\)",
+              "ar": "\\(\\sum_{j=0}^k (-1)^j \\binom{k}{j} (k - j)^n\\)"
+            }
+          ],
+          [
+            {
+              "en": "Diagonal intersections inside convex \\(n\\)-gon (no 3 concurrent)",
+              "ar": "نقاط تقاطع أقطار مضلع محدب ذي \\(n\\) رؤوس بالداخل"
+            },
+            {
+              "en": "Every 4 vertices determine a unique interior diagonal intersection!",
+              "ar": "كل \\(4\\) رؤوس تحدد نقطة تقاطع داخلية وحيدة لقطرين!"
+            },
+            {
+              "en": "\\(\\binom{n}{4}\\)",
+              "ar": "\\(\\binom{n}{4}\\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Handshaking Lemma",
+              "ar": "لمّة المصافحات في الرسوم البيانية"
+            },
+            "value": {
+              "en": "\\(\\sum_{v \\in V} \\deg(v) = 2|E|\\); the number of odd-degree vertices is ALWAYS even!",
+              "ar": "\\(\\sum_{v \\in V} \\deg(v) = 2|E|\\)؛ عدد الرؤوس ذات الدرجة الفردية زوجي دائماً!"
+            }
+          },
+          {
+            "label": {
+              "en": "Derangement Recurrence",
+              "ar": "العلاقة التكرارية للتبديلات الخالية"
+            },
+            "value": {
+              "en": "\\(D_n = (n-1)(D_{n-1} + D_{n-2})\\) and \\(D_n = n D_{n-1} + (-1)^n\\)",
+              "ar": "\\(D_n = (n-1)(D_{n-1} + D_{n-2})\\) وكذلك \\(D_n = n D_{n-1} + (-1)^n\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Upper-Bound Stars & Bars",
+              "ar": "النجوم والفواصل مع قيد علوي"
+            },
+            "value": {
+              "en": "Combine Stars & Bars with PIE on variables exceeding \\(x_i \\ge U + 1\\)",
+              "ar": "ادمج النجوم والفواصل مع الشمول والإقصاء بطرح حالات \\(x_i \\ge U + 1\\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Subset-of-Subsets Count",
+              "ar": "الأزواج المرتبة من المجموعات الجزئية"
+            },
+            "value": {
+              "en": "Pairs \\((A, B)\\) with \\(A \\subseteq B \\subseteq \\{1,\\dots,n\\}\\) equal \\(3^n\\) (3 states per element)",
+              "ar": "عدد الأزواج \\((A, B)\\) التي تحقق \\(A \\subseteq B \\subseteq \\{1,\\dots,n\\}\\) يساوي \\(3^n\\)"
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion — Coordinate Curve & Structural Analysis",
-          "xrange": [
-            -4,
-            6
-          ],
-          "yrange": [
-            -4,
-            8
-          ],
-          "fns": [
-            {
-              "fn": "(x - 0)*(x - 0) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 0)² - 2"
-            },
-            {
-              "fn": "x + 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x + 2"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": -2,
-              "label": "Vertex (0, -2)"
-            }
-          ]
+          "type": "venn_populated",
+          "title": "PIE Partition on {1, …, 100}: Divisible by 2 (Set A = 50) and by 5 (Set B = 20)",
+          "setA": "Div by 2",
+          "setB": "Div by 5",
+          "onlyA": "40",
+          "both": "10",
+          "onlyB": "10",
+          "neither": "Coprime to 10: 40"
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 0)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء."
+          "en": "Principle of Inclusion–Exclusion on \\(\\{1,\\dots,100\\}\\): \\(|A \\cup B| = 50 + 20 - 10 = 60\\), leaving \\(100 - 60 = 40 = \\varphi(100)\\) integers coprime to \\(10\\).",
+          "ar": "مبدأ الشمول والإقصاء على \\(\\{1,\\dots,100\\}\\): \\(|A \\cup B| = 50 + 20 - 10 = 60\\)، فيتبقى \\(100 - 60 = 40 = \\varphi(100)\\) عدداً أولياً نسبياً مع \\(10\\)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Pascal's Triangle, Stars-and-Bars & Hockey-Stick Identity Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر مثلث باسكال وطريقة النجوم والفواصل والتوافيق"
+          "en": "⊙ Explorer · Pascal Binomial Distribution, Stars & Bars & Hockey-Stick Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر معاملات باسكال والنجوم والفواصل وعصا الهوكي"
         },
         "canvasId": "olcombinatoricscountingExCanvas",
         "ariaLabel": {
-          "en": "Pascal's Triangle, Stars-and-Bars & Hockey-Stick Identity Lab interactive mathematical canvas",
-          "ar": "مختبر مثلث باسكال وطريقة النجوم والفواصل والتوافيق لوحة رياضية تفاعلية"
+          "en": "Interactive Combinatorics canvas plotting binomial coefficients C(n, k), cumulative Hockey-Stick sums, and Stars-and-Bars counts.",
+          "ar": "لوحة تفاعلية للتركيبات تعرض المعاملات الثنائية ومجاميع عصا الهوكي وعدد حلول النجوم والفواصل."
         },
         "dataPanel": {
           "btnId": "olcombinatoricscountingExCanvas_dataBtn",
@@ -113,17 +235,17 @@
           "descId": "olcombinatoricscountingExCanvas_dataDesc",
           "rowsId": "olcombinatoricscountingExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Pascal's Triangle, Stars-and-Bars & Hockey-Stick Identity Lab",
-            "ar": "جدول القيم العددية لـ مختبر مثلث باسكال وطريقة النجوم والفواصل والتوافيق"
+            "en": "Exact binomial coefficients \\(\\binom{n}{k}\\), Stars & Bars, and derangement counts",
+            "ar": "جدول قيم المعاملات التوافقية \\(\\binom{n}{k}\\) والنجوم والفواصل والتبديلات الخالية"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المتغير / المعيار"
+              "en": "Parameter / Invariant",
+              "ar": "المتغير / الثابت الأولمبي"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Computed Value",
+              "ar": "القيمة المحسوبة"
             }
           ]
         },
@@ -132,32 +254,32 @@
             "id": "olcombinatoricscountingExCanvas_s0",
             "label": {
               "en": "Total Items <b>\\(n =\\)</b>",
-              "ar": "Total Items <b>\\(n =\\)</b>"
+              "ar": "إجمالي العناصر <b>\\(n =\\)</b>"
             },
             "min": 4,
-            "max": 10,
+            "max": 12,
             "value": 8,
             "step": 1,
             "valueDisplayId": "olcombinatoricscountingExCanvas_v0",
             "ariaLabel": {
-              "en": "Total Items \\(n =\\)",
-              "ar": "Total Items \\(n =\\)"
+              "en": "Total items n",
+              "ar": "العدد الكلي n"
             }
           },
           {
             "id": "olcombinatoricscountingExCanvas_s1",
             "label": {
-              "en": "Chosen Subset <b>\\(k =\\)</b>",
-              "ar": "Chosen Subset <b>\\(k =\\)</b>"
+              "en": "Chosen / Bins <b>\\(k =\\)</b>",
+              "ar": "العناصر المختارة / الخانات <b>\\(k =\\)</b>"
             },
             "min": 1,
-            "max": 6,
+            "max": 8,
             "value": 3,
             "step": 1,
             "valueDisplayId": "olcombinatoricscountingExCanvas_v1",
             "ariaLabel": {
-              "en": "Chosen Subset \\(k =\\)",
-              "ar": "Chosen Subset \\(k =\\)"
+              "en": "Chosen count k",
+              "ar": "العدد المختار k"
             }
           }
         ],
@@ -166,404 +288,332 @@
             "id": "olcombinatoricscountingExCanvas_r0",
             "label": {
               "en": "Binomial \\(\\binom{n}{k}\\)",
-              "ar": "Binomial \\(\\binom{n}{k}\\)"
+              "ar": "التوافيق \\(\\binom{n}{k}\\)"
             },
             "colorClass": "indigo",
-            "value": "\\(56\\)"
+            "value": "C(8, 3) = 56"
           },
           {
             "id": "olcombinatoricscountingExCanvas_r1",
             "label": {
-              "en": "Row Sum \\(2^n\\)",
-              "ar": "Row Sum \\(2^n\\)"
+              "en": "Stars & Bars \\(\\binom{n+k-1}{k-1}\\)",
+              "ar": "النجوم والفواصل \\(\\binom{n+k-1}{k-1}\\)"
             },
             "colorClass": "amber",
-            "value": "\\(256\\)"
+            "value": "C(10, 2) = 45"
           },
           {
             "id": "olcombinatoricscountingExCanvas_r2",
             "label": {
-              "en": "Symmetry \\(\\binom{n}{n-k}\\)",
-              "ar": "Symmetry \\(\\binom{n}{n-k}\\)"
+              "en": "Non-Adjacent \\(\\binom{n-k+1}{k}\\)",
+              "ar": "غير متجاورة \\(\\binom{n-k+1}{k}\\)"
             },
             "colorClass": "teal",
-            "value": "\\(56\\)"
+            "value": "C(6, 3) = 20"
           }
         ],
         "note": {
-          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion.",
-          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء."
+          "en": "Vary \\(n\\) and \\(k\\) to compare standard subset choices \\(\\binom{n}{k}\\), weak compositions \\(\\binom{n+k-1}{k-1}\\), and non-adjacent selections \\(\\binom{n-k+1}{k}\\).",
+          "ar": "حرّك \\(n\\) و\\(k\\) للمقارنة المباشرة بين التوافيق العادية \\(\\binom{n}{k}\\)، وحلول النجوم والفواصل \\(\\binom{n+k-1}{k-1}\\)، والاختيارات غير المتجاورة \\(\\binom{n-k+1}{k}\\)."
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
+          "type": "network_graph",
+          "title": "Ramsey K₆ Graph: Any 2-Coloring of C(6,2)=15 Edges Forces a Monochromatic Triangle",
+          "nodes": [
+            {
+              "id": "1",
+              "x": 50,
+              "y": 12,
+              "label": "v₁"
+            },
+            {
+              "id": "2",
+              "x": 85,
+              "y": 31,
+              "label": "v₂"
+            },
+            {
+              "id": "3",
+              "x": 85,
+              "y": 69,
+              "label": "v₃"
+            },
+            {
+              "id": "4",
+              "x": 50,
+              "y": 88,
+              "label": "v₄"
+            },
+            {
+              "id": "5",
+              "x": 15,
+              "y": 69,
+              "label": "v₅"
+            },
+            {
+              "id": "6",
+              "x": 15,
+              "y": 31,
+              "label": "v₆"
+            }
           ],
-          "B": [
-            12,
-            0
-          ],
-          "C": [
-            12,
-            5
-          ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "15",
-            "a": "20",
-            "b": "25"
-          },
-          "rightAt": "B"
+          "edges": [
+            {
+              "from": "1",
+              "to": "2"
+            },
+            {
+              "from": "1",
+              "to": "3"
+            },
+            {
+              "from": "1",
+              "to": "4"
+            },
+            {
+              "from": "1",
+              "to": "5"
+            },
+            {
+              "from": "1",
+              "to": "6"
+            },
+            {
+              "from": "2",
+              "to": "3"
+            },
+            {
+              "from": "3",
+              "to": "4"
+            },
+            {
+              "from": "2",
+              "to": "4"
+            }
+          ]
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((15)^2 + (20)^2 = (25)^2\\) for Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion.",
-          "ar": "العلاقة الهندسية المتعامدة \\((15)^2 + (20)^2 = (25)^2\\) في درس العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء."
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Key Principle 4.1",
-              "ar": "القاعدة الأساسية 4.1"
-            },
-            "value": {
-              "en": "Stars and Bars (balls in urns)",
-              "ar": "Stars and Bars (balls in urns)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 4.2",
-              "ar": "القاعدة الأساسية 4.2"
-            },
-            "value": {
-              "en": "Generalized Pigeonhole Principle",
-              "ar": "Generalized Pigeonhole Principle"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 4.3",
-              "ar": "القاعدة الأساسية 4.3"
-            },
-            "value": {
-              "en": "Principle of Inclusion-Exclusion (PIE)",
-              "ar": "Principle of Inclusion-Exclusion (PIE)"
-            }
-          },
-          {
-            "label": {
-              "en": "Key Principle 4.4",
-              "ar": "القاعدة الأساسية 4.4"
-            },
-            "value": {
-              "en": "Derangements & lattice paths with obstacles",
-              "ar": "Derangements & lattice paths with obstacles"
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء)"
-        },
-        "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
-          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+          "en": "Ramsey number \\(R(3,3) = 6\\) via Pigeonhole: vertex \\(v_1\\) has \\(5\\) incident edges in \\(2\\) colors, so by Pigeonhole \\(\\lceil 5/2 \\rceil = 3\\) edges share a color (say to \\(v_2, v_3, v_4\\)); either one edge among \\(\\{v_2,v_3,v_4\\}\\) matches that color (triangle with \\(v_1\\)) or all \\(3\\) have the opposite color (triangle \\(v_2 v_3 v_4\\))!",
+          "ar": "مبرهنة رامزي \\(R(3,3) = 6\\) عبر برج الحمام: ينطلق من الرأس \\(v_1\\) خمسة أضلاع بلونين، فلا بد من \\(\\lceil 5/2 \\rceil = 3\\) أضلاع من لون واحد نحو \\(v_2, v_3, v_4\\)؛ فإما يظهر ضلع بنفس اللون بينها فيكتمل مثلث مع \\(v_1\\)، أو تتلون الأضلاع الثلاثة جميعاً باللون الآخر فتكوّن المثلث \\(v_2 v_3 v_4\\)!"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 4.A — Foundational Formulation (Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion)",
-          "ar": "مثال محلول 4.A — تطبيق أساسي (العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء)"
+          "en": "Worked Example 4.A — Stars and Bars with Parity & Lower Bounds (AMC 10/12 & NSMO)",
+          "ar": "مثال محلول 4.A — النجوم والفواصل مع قيود الزوجية والحدود الدنيا (AMC 10/12 ونسما)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 10x + 31 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{10}{2} = -5 \\).<br>2. Write \\( (x - 5)^2 = x^2 - 10x + 25 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 5)^2 - 25 + 31 = (x - 5)^2 + 6 \\).<br>4. Since \\( (x - 5)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 6 \\), achieved at \\( x = 5 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 5)^2 + 6 \\); minimum value \\( 6 \\) at \\( x = 5 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 10x + 31 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 5)^2 + 6 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) وتتحقق عند \\( x = 5 \\).</p>"
+          "en": "<p><strong>Problem:</strong> How many ordered quadruples \\( (w, x, y, z) \\) of positive ODD integers satisfy \\( w + x + y + z = 24 \\)?</p><p><strong>Solution:</strong> Parameterize every positive odd integer cleanly as \\( 2a + 1 \\) with non-negative integer \\( a \\ge 0 \\):<br>Set \\( w = 2a + 1,\\; x = 2b + 1,\\; y = 2c + 1,\\; z = 2d + 1 \\) where \\( a, b, c, d \\in \\mathbb{Z}_{\\ge 0} \\). Substituting into the sum:<br>\\[ (2a + 1) + (2b + 1) + (2c + 1) + (2d + 1) = 24 \\iff 2(a + b + c + d) = 20 \\iff a + b + c + d = 10. \\]<br>Now apply non-negative Stars and Bars with \\( n = 10 \\) stars and \\( k = 4 \\) variables:<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = \\frac{13 \\times 12 \\times 11}{6} = 286. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> كم رباعية مرتبة \\( (w, x, y, z) \\) من الأعداد الصحيحة الموجبة الفردية تحقق المعادلة \\( w + x + y + z = 24 \\)؟</p><p><strong>الحل الأولمبي:</strong> نمثّل كل عدد موجب فردي بالصورة \\( 2a + 1 \\) حيث \\( a \\ge 0 \\) عدد صحيح غير سالب:<br>نضع \\( w = 2a+1,\\; x = 2b+1,\\; y = 2c+1,\\; z = 2d+1 \\). وبالتعويض في المعادلة:<br>\\[ 2(a + b + c + d) + 4 = 24 \\iff a + b + c + d = 10 \\quad (a,b,c,d \\ge 0). \\]<br>بتطبيق قانون النجوم والفواصل لـ \\( n = 10 \\) و\\( k = 4 \\):<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = 286. \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 4.B — Intermediate Multi-Step Synthesis (Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion)",
-          "ar": "مثال محلول 4.B — تطبيق متوسط متعدد الخطوات (العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء)"
+          "en": "Worked Example 4.B — Stars and Bars + PIE for Upper Bounds (AIME / KAUST KMC)",
+          "ar": "مثال محلول 4.B — دمج النجوم والفواصل مع الشمول والإقصاء للقيود العليا (AIME / كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 10x + 30 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 10x + 30 = 2x + k \\implies x^2 - 12x + (30 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-12)^2 - 4(1)(30 - k) > 0 \\]<br>\\[ 144 - 120 + 4k > 0 \\implies 4k > -24 \\implies k > -6 \\]</p><p><strong>Final Answer:</strong> \\( k > -6 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 10x + 30 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -6 \\).</p>"
+          "en": "<p><strong>Problem:</strong> How many integers between \\( 0 \\) and \\( 9999 \\) inclusive have a sum of decimal digits equal to \\( 14 \\)?</p><p><strong>Solution:</strong> Write a 4-digit padded string \\( d_1 d_2 d_3 d_4 \\) with \\( 0 \\le d_i \\le 9 \\) and \\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. Unrestricted non-negative solutions (\\( d_i \\ge 0 \\)): \\( \\binom{14 + 4 - 1}{3} = \\binom{17}{3} = 680 \\).<br>2. Let \\( A_i \\) be the bad set where \\( d_i \\ge 10 \\). Since \\( 10 + 10 = 20 > 14 \\), <strong>at most ONE digit can be \\( \\ge 10 \\)</strong> (all pairwise intersections \\( A_i \\cap A_j = \\emptyset \\)!).<br>3. For \\( A_1 \\), set \\( d_1' = d_1 - 10 \\ge 0 \\), giving \\( d_1' + d_2 + d_3 + d_4 = 4 \\), which has \\( \\binom{4 + 4 - 1}{3} = \\binom{7}{3} = 35 \\) solutions.<br>4. By PIE across the \\( 4 \\) digits:<br>\\[ 680 - \\binom{4}{1} \\cdot 35 = 680 - 140 = 540. \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> كم عدداً صحيحاً من \\( 0 \\) إلى \\( 9999 \\) يساوي مجموع أرقامه العشرية \\( 14 \\)؟</p><p><strong>الحل الأولمبي:</strong> نمثّل كل عدد بأربع خانات \\( d_1 d_2 d_3 d_4 \\) تحقق \\( 0 \\le d_i \\le 9 \\) و\\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. عدد الحلول غير المقيدة بحد علوي (\\( d_i \\ge 0 \\)): \\( \\binom{17}{3} = 680 \\).<br>2. لتكن \\( A_i \\) مجموعة الحلول المرفوضة التي فيها \\( d_i \\ge 10 \\). بما أن \\( 10 + 10 = 20 > 14 \\)، يستحيل أن يتجاوز رقمان معاً الحد \\( 9 \\) (\\( A_i \\cap A_j = \\emptyset \\))!<br>3. لحساب \\( |A_1| \\) نضع \\( d_1' = d_1 - 10 \\ge 0 \\) فنحصل على \\( d_1' + d_2 + d_3 + d_4 = 4 \\)، وعدد حلولها \\( \\binom{7}{3} = 35 \\).<br>4. بتطبيق مبدأ الشمول والإقصاء على الخانات الأربع: \\( 680 - 4(35) = 540 \\) عدداً.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 4.C — Advanced Rate & Vector Application (Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion)",
-          "ar": "مثال محلول 4.C — تطبيق متقدم (العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء)"
+          "en": "Worked Example 4.C — Geometric Pigeonhole on Lattice Midpoints & Unit Squares (NSMO)",
+          "ar": "مثال محلول 4.C — برج الحمام الهندسي على منتصفات الشبكة والمربعات (نسما)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 15x^2 + 75x + 6 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 7 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 30x + 75 = 3(x - 5)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 5 \\), with \\( g(5) = 6 \\). Thus \\( (5, 6) \\) is the stationary point.<br>3. At \\( x = 7 \\), the gradient is \\( g'(7) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (5, 6) \\); gradient at \\( x = 7 \\) is \\( 12 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 15x^2 + 75x + 6 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 7 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 5)^2 \\)، تنعدم عند \\( (5, 6) \\)، وعند \\( x = 7 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+          "en": "<p><strong>Problem:</strong> (a) What is the minimum number of lattice points \\( (x_i, y_i) \\in \\mathbb{Z}^3 \\) in 3D space that MUST be chosen to guarantee at least two chosen points have a midpoint that is ALSO an integer lattice point? (b) If \\( 10 \\) points are placed inside a \\( 3 \\times 3 \\) square, prove two lie at distance \\( \\le \\sqrt{2} \\).</p><p><strong>Solution:</strong><br><strong>(a)</strong> The midpoint \\( \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}, \\frac{z_1+z_2}{2}\\right) \\) is in \\( \\mathbb{Z}^3 \\) iff \\( x_1 \\equiv x_2 \\), \\( y_1 \\equiv y_2 \\), and \\( z_1 \\equiv z_2 \\pmod 2 \\). Each coordinate has \\( 2 \\) parities (Even/Odd), creating \\( 2^3 = 8 \\) parity classes (pigeonholes). Choosing \\( 8 \\) points can place one in each parity class, whereas choosing <strong>\\( 8 + 1 = 9 \\) points</strong> guarantees by Pigeonhole that two share identical parity in all three coordinates!<br><strong>(b)</strong> Partition the \\( 3 \\times 3 \\) square into \\( 9 \\) unit \\( 1 \\times 1 \\) subsquares. With \\( 10 \\) points in \\( 9 \\) boxes, one \\( 1 \\times 1 \\) box contains at least \\( 2 \\) points, and the maximum distance inside a \\( 1 \\times 1 \\) square is its diagonal \\( \\sqrt{1^2 + 1^2} = \\sqrt{2} \\)!</p>",
+          "ar": "<p><strong>المسألة:</strong> (أ) ما أقل عدد من النقاط الصحيحة \\( (x_i, y_i, z_i) \\in \\mathbb{Z}^3 \\) في الفضاء ثلاثي الأبعاد يجب اختياره لضمان وجود نقطتين منتصفهما نقطة صحيحة أيضاً؟ (ب) برهن أنه عند وضع \\( 10 \\) نقاط داخل مربع \\( 3 \\times 3 \\)، توجد نقطتان المسافة بينهما لا تتجاوز \\( \\sqrt{2} \\).</p><p><strong>الحل الأولمبي:</strong><br><strong>(أ)</strong> يكون المنتصف صحيحاً إذا وفقط إذا تطابقت زوجية الإحداثيات الثلاثة \\( \\pmod 2 \\). هناك \\( 2^3 = 8 \\) أصناف زوجية ممكنة (صناديق)؛ لذا فاختيار <strong>\\( 8 + 1 = 9 \\) نقاط</strong> يضمن بمبدأ برج الحمام وقوع نقطتين في الصنف نفسه!<br><strong>(ب)</strong> نقسّم المربع \\( 3 \\times 3 \\) إلى \\( 9 \\) مربعات وحدة \\( 1 \\times 1 \\). بوجود \\( 10 \\) نقاط في \\( 9 \\) مربعات، يضم أحد المربعات نقطتين على الأقل، وأقصى مسافة داخل مربع الوحدة هي طول قطره \\( \\sqrt{2} \\)!</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example 4.D — Exam-Grade Challenge Synthesis (Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion)",
-          "ar": "مثال محلول 4.D — مسألة تحدي بمستوى الاختبار (العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء)"
+          "en": "Worked Example 4.D — Partial Derangements (KAUST Finals / Olympiad Classic)",
+          "ar": "مثال محلول 4.D — التبديلات الجزئية الخالية من النقاط الثابتة (نهائيات كاوست)"
         },
         "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 5n^2 + 6n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 5(1)^2 + 6(1) = 11 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[5n^2 + 6n\\right] - \\left[5(n-1)^2 + 6(n-1)\\right] = 10n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 10 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 101 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 10n + 1 \\), \\( d = 10 \\), and \\( u_{10} = 101 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 5n^2 + 6n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 10n + 1 \\)، والأساس \\( d = 10 \\)، والحد العاشر \\( u_{10} = 101 \\).</p>"
+          "en": "<p><strong>Problem:</strong> Six research fellows at KAUST submit 6 distinct lab notebooks for blind peer review. How many ways can the 6 notebooks be redistributed so that <strong>exactly 2</strong> fellows receive their own notebook and the remaining 4 fellows each receive someone else's notebook?</p><p><strong>Solution:</strong> Decompose into two independent decisions:<br>1. Choose WHICH \\( 2 \\) of the \\( 6 \\) fellows are fixed points: \\( \\binom{6}{2} = 15 \\) ways.<br>2. Derange the remaining \\( 4 \\) notebooks so NONE of those \\( 4 \\) fellows receives their own notebook: the number of derangements of \\( 4 \\) items is:<br>\\[ D_4 = 4!\\left(1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 - 24 + 12 - 4 + 1 = 9. \\]<br>By the multiplication rule, total valid redistributions \\( = 15 \\times 9 = 135 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> قدّم \\( 6 \\) باحثين في كاوست \\( 6 \\) دفاتر أبحاث متمايزة للمراجعة المعمّاة. بكم طريقة يمكن إعادة توزيع الدفاتر الستة بحيث يحصل <strong>باحثان اثنان بالضبط</strong> على دفتريهما الأصليين بينما يحصل كل من الأربعة الباقين على دفتر زميل آخر؟</p><p><strong>الحل الأولمبي:</strong> نفكك العملية إلى خطوتين مستقلتين:<br>1. اختيار الباحثَين اللذين يمثلان نقطتين ثابتتين: \\( \\binom{6}{2} = 15 \\) طريقة.<br>2. تبديل دفاتر الباحثين الأربعة الباقين تبديلاً خالياً تماماً من النقاط الثابتة (\\( D_4 \\)):<br>\\[ D_4 = 4!\\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 12 - 4 + 1 = 9. \\]<br>بمبدأ العد الأساسي، عدد الطرق الكلي \\( = 15 \\times 9 = 135 \\) طريقة.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء"
+          "en": "⚠ Olympiad Trap — Overcounting Indistinguishable Groups & Fake Sequential Multiplication",
+          "ar": "⚠ فخ أولمبي قاتل — العدّ المكرر عند الضرب المتتابع بدون مبدأ الشمول والإقصاء"
         },
         "body": {
-          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
-          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+          "en": "<p><strong>Never count \"at least one from each category\" by picking 1 from each first and multiplying by the rest!</strong> For example, choosing \\( 5 \\) balls from \\( 3 \\) distinct colors so every color appears is NOT \\( \\binom{n_1}{1}\\binom{n_2}{1}\\binom{n_3}{1}\\binom{N-3}{2} \\) — that counts a configuration with \\( 3 \\) red balls three separate times! Always use <strong>PIE</strong> (total minus missing \\( \\ge 1 \\) color plus missing \\( \\ge 2 \\) colors).</p>",
+          "ar": "<p><strong>إياك وعدّ شرط «واحد على الأقل من كل فئة» باختيار عنصر من كل فئة أولاً ثم ضرب الباقي اعتباطياً!</strong> فهذه الخدعة الخاطئة تعدّ التشكيلات المتعددة مراراً وتكراراً. الأداة السليمة الوحيدة هنا هي <strong>مبدأ الشمول والإقصاء (PIE)</strong> بطرح الحالات التي تغيب فيها فئة أو أكثر.</p>"
         }
-      },
-      {
-        "kind": "table",
-        "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء)"
-        },
-        "columns": [
-          {
-            "en": "Common Student Trap",
-            "ar": "الخطأ الشائع للطالب"
-          },
-          {
-            "en": "Why It Fails Mathematically",
-            "ar": "السبب الرياضي للخطأ"
-          },
-          {
-            "en": "Correct Exam-Board Method",
-            "ar": "الطريقة الصحيحة المعتمدة"
-          }
-        ],
-        "rows": [
-          [
-            {
-              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
-              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
-            },
-            {
-              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
-              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
-            },
-            {
-              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
-              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
-            }
-          ],
-          [
-            {
-              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
-              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
-            },
-            {
-              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
-              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
-            },
-            {
-              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
-              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
-            }
-          ],
-          [
-            {
-              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
-              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
-            },
-            {
-              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
-              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
-            },
-            {
-              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
-              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
-            }
-          ]
-        ]
       },
       {
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Bijective Counting, Pigeonhole Principle & Inclusion-Exclusion",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — العد التقابلي ومبدأ برج الحمام ومبدأ الشمول والإقصاء"
+          "en": "▲ Contest Strategy — Small-n Sanity Verification on Combinatorial Formulas",
+          "ar": "▲ استراتيجية المسابقات — اختبار الصيغ التوافقية عند قيم صغيرة لـ \\(n\\)"
         },
         "body": {
-          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
-          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+          "en": "<p>Before committing to a combinatorial expression like \\( \\binom{n-k+1}{k} \\) vs \\( \\binom{n-k}{k} \\), plug in \\( n = 4, k = 2 \\) by hand in 5 seconds! For non-adjacent pairs from \\( \\{1,2,3,4\\} \\), the valid pairs are \\( \\{1,3\\}, \\{1,4\\}, \\{2,4\\} \\) (\\( 3 \\) ways), immediately confirming \\( \\binom{4-2+1}{2} = \\binom{3}{2} = 3 \\) rather than \\( \\binom{2}{2} = 1 \\)!</p>",
+          "ar": "<p>قبل اعتماد أي صيغة توافقية مثل \\( \\binom{n-k+1}{k} \\) مقابل \\( \\binom{n-k}{k} \\)، جرّب حالة يدوية صغيرة مثل \\( n = 4, k = 2 \\) خلال 5 ثوانٍ! للأزواج غير المتجاورة من \\( \\{1,2,3,4\\} \\) نجد \\( \\{1,3\\}, \\{1,4\\}, \\{2,4\\} \\) أي \\( 3 \\) طرق، ما يؤكد فوراً صحة \\( \\binom{3}{2} = 3 \\)!</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(6) \\) for the quadratic function \\( f(x) = 5x^2 - 5x + 10 \\).",
-          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(6) \\) للدالة التربيعية \\( f(x) = 5x^2 - 5x + 10 \\)."
+          "en": "<strong>[Practice 4.1 · NSMO Stage 1 / Easy]</strong> In how many ways can 4 books be chosen from a shelf of 11 distinct books arranged in a row so that NO two chosen books were adjacent on the shelf?",
+          "ar": "<strong>[تدريب 4.1 · نسما المرحلة 1 / سهل]</strong> بكم طريقة يمكن اختيار 4 كتب من رف يضم 11 كتاباً مختلفاً مرتبة في صف واحد بحيث لا يكون أي كتابين مختارين متجاورين على الرف؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 6 \\) directly into \\( f(x) = 5x^2 - 5x + 10 \\).",
-            "ar": "عوّض عن \\( x = 6 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+            "en": "There are \\( 11 - 4 = 7 \\) unchosen books remaining on the shelf.",
+            "ar": "يتبقى على الرف \\( 11 - 4 = 7 \\) كتب غير مختارة."
           },
           {
-            "en": "Factor out \\( 5x(x - 1) + 10 = 5(6)(5) + 10 \\).",
-            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 5(6)(5) + 10 \\)."
+            "en": "Those 7 unchosen books create \\( 7 + 1 = 8 \\) gaps (including the two ends).",
+            "ar": "تُحدث هذه الكتب السبعة \\( 7 + 1 = 8 \\) فجوات (بما فيها الطرفان)."
           },
           {
-            "en": "Compute \\( 150 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\( 150 + 10 \\) للحصول على النتيجة النهائية."
+            "en": "Choose \\( 4 \\) of those \\( 8 \\) gaps to place the chosen books: \\( \\binom{8}{4} \\).",
+            "ar": "اختر \\( 4 \\) فجوات من أصل \\( 8 \\): \\( \\binom{8}{4} \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 6 \\) gives \\( f(6) = 5(6)^2 - 5(6) + 10 = 180 - 30 + 10 = 160 \\).",
-          "ar": "بالتعويض عن \\( x = 6 \\) نجد \\( f(6) = 5(6)^2 - 5(6) + 10 = 160 \\)."
+          "en": "Using the gap bijection \\( \\binom{n - k + 1}{k} \\) with \\( n = 11, k = 4 \\), we obtain \\( \\binom{11 - 4 + 1}{4} = \\binom{8}{4} = \\frac{8 \\times 7 \\times 6 \\times 5}{24} = 70 \\) ways.",
+          "ar": "بتطبيق تقابل الفجوات \\( \\binom{n - k + 1}{k} \\) عند \\( n = 11, k = 4 \\)، نحصل على \\( \\binom{8}{4} = 70 \\) طريقة."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 11x + 30 = 0 \\) that is greater than \\( 5 \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 5 \\) للمعادلة \\( x^2 - 11x + 30 = 0 \\)."
+          "en": "<strong>[Practice 4.2 · KAUST KMC / Easy]</strong> Evaluate the Hockey-Stick sum \\( \\binom{3}{3} + \\binom{4}{3} + \\binom{5}{3} + \\cdots + \\binom{10}{3} \\).",
+          "ar": "<strong>[تدريب 4.2 · مسابقة كاوست / سهل]</strong> احسب قيمة المجموع التوافقي \\( \\binom{3}{3} + \\binom{4}{3} + \\binom{5}{3} + \\cdots + \\binom{10}{3} \\)."
         },
         "hints": [
           {
-            "en": "Look for two integers whose sum is \\( 11 \\) and whose product is \\( 30 \\).",
-            "ar": "ابحث عن عددين مجموعهما \\( 11 \\) وحاصل ضربهما \\( 30 \\)."
+            "en": "Recall the Hockey-Stick Identity \\( \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1} \\).",
+            "ar": "طبّق متطابقة عصا الهوكي \\( \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1} \\)."
           },
           {
-            "en": "Factor the quadratic as \\( (x - 5)(x - 6) = 0 \\).",
-            "ar": "حلل المعادلة إلى \\( (x - 5)(x - 6) = 0 \\)."
+            "en": "Substitute \\( r = 3 \\) and \\( n = 10 \\) to obtain \\( \\binom{11}{4} \\).",
+            "ar": "عوّض بـ \\( r = 3 \\) و\\( n = 10 \\) لتحصل على \\( \\binom{11}{4} \\)."
           },
           {
-            "en": "Compare the two roots \\( x = 5 \\) and \\( x = 6 \\) and select the larger root.",
-            "ar": "قارن بين الجذرين \\( x = 5 \\) و \\( x = 6 \\) واختر الأكبر."
+            "en": "Compute \\( \\frac{11 \\times 10 \\times 9 \\times 8}{24} \\).",
+            "ar": "احسب \\( \\frac{11 \\times 10 \\times 9 \\times 8}{24} \\)."
           }
         ],
         "solution": {
-          "en": "Factoring gives \\( (x - 5)(x - 6) = 0 \\), so the roots are \\( x = 5 \\) and \\( x = 6 \\). The root greater than \\( 5 \\) is \\( x = 6 \\).",
-          "ar": "بالتحليل نحصل على \\( (x - 5)(x - 6) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 5 \\) هو \\( x = 6 \\)."
+          "en": "By the Hockey-Stick Identity, \\( \\sum_{i=3}^{10} \\binom{i}{3} = \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{24} = 330 \\).",
+          "ar": "حسب متطابقة عصا الهوكي: \\( \\sum_{i=3}^{10} \\binom{i}{3} = \\binom{11}{4} = 330 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 45 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 45 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+          "en": "<strong>[Practice 4.3 · NSMO Stage 2 / Medium]</strong> How many integers in \\( \\{1, 2, \\dots, 1000\\} \\) are divisible by NONE of \\( 2, 3, \\) or \\( 5 \\)?",
+          "ar": "<strong>[تدريب 4.3 · نسما المرحلة 2 / متوسط]</strong> كم عدداً صحيحاً في المجموعة \\( \\{1, 2, \\dots, 1000\\} \\) لا يقبل القسمة على أيٍّ من \\( 2 \\) أو \\( 3 \\) أو \\( 5 \\)؟"
         },
         "hints": [
           {
-            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
-            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+            "en": "Apply 3-set PIE on \\( A_2, A_3, A_5 \\subseteq \\{1,\\dots,1000\\} \\), or group into blocks of \\( \\operatorname{lcm}(2,3,5) = 30 \\)!",
+            "ar": "طبّق مبدأ الشمول والإقصاء لثلاث مجموعات، أو قسّم الأعداد إلى دورات طولها \\( 30 \\)!"
           },
           {
-            "en": "Substitute \\( a = 1, b = -2k, c = 45 \\) into \\( (-2k)^2 - 4(1)(45) = 0 \\).",
-            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(45) = 0 \\)."
+            "en": "Using blocks of 30: \\( 990 = 33 \\times 30 \\) gives \\( 33 \\times \\varphi(30) = 33 \\times 8 = 264 \\) integers in \\( \\{1,\\dots,990\\} \\).",
+            "ar": "في أول \\( 990 = 33 \\times 30 \\) عدداً يوجد \\( 33 \\times \\varphi(30) = 33 \\times 8 = 264 \\) عدداً."
           },
           {
-            "en": "Simplify \\( 4k^2 = 180 \\) and divide both sides by 4.",
-            "ar": "بسّط المعادلة \\( 4k^2 = 180 \\) واقسم الطرفين على 4."
+            "en": "Check the remaining \\( 10 \\) integers \\( \\{991, 992, \\dots, 1000\\} \\) (which mirror \\( \\{1,\\dots,10\\} \\): only \\( 991 \\) and \\( 997 \\) are coprime to \\( 30 \\)).",
+            "ar": "افحص الأعداد العشرة المتبقية \\( \\{991,\\dots,1000\\} \\) فتجد العددين \\( 991 \\) و\\( 997 \\) فقط."
           }
         ],
         "solution": {
-          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(45) = 4k^2 - 180 = 0 \\implies k^2 = 45 \\).",
-          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 180 = 0 \\implies k^2 = 45 \\)."
+          "en": "By 3-set PIE: \\( 1000 - (500 + 333 + 200) + (166 + 100 + 66) - 33 = 1000 - 1033 + 332 - 33 = 266 \\).",
+          "ar": "بمبدأ الشمول والإقصاء: \\( 1000 - (500 + 333 + 200) + (166 + 100 + 66) - 33 = 266 \\) عدداً."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 5 \\) and common difference \\( d = 12 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 5 \\) وأساسها \\( d = 12 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+          "en": "<strong>[Practice 4.4 · AIME / KAUST KMC / Hard]</strong> How many ordered pairs of subsets \\( (A, B) \\) of \\( S = \\{1, 2, 3, 4, 5\\} \\) satisfy \\( A \\cap B = \\emptyset \\) and \\( A \\cup B \\ne S \\)?",
+          "ar": "<strong>[تدريب 4.4 · AIME / مسابقة كاوست / متقدم]</strong> كم زوجاً مرتباً من المجموعات الجزئية \\( (A, B) \\) للمجموعة \\( S = \\{1, 2, 3, 4, 5\\} \\) يحقق \\( A \\cap B = \\emptyset \\) و\\( A \\cup B \\ne S \\)؟"
         },
         "hints": [
           {
-            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
-            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+            "en": "For \\( A \\cap B = \\emptyset \\), each element \\( x \\in S \\) has independently \\( 3 \\) valid states: \\( x \\in A \\) only, \\( x \\in B \\) only, or \\( x \\notin A \\cup B \\).",
+            "ar": "لتحقيق \\( A \\cap B = \\emptyset \\)، يملك كل عنصر من العناصر الخمسة \\( 3 \\) حالات مستقلة: في \\( A \\) فقط، أو في \\( B \\) فقط، أو خارج \\( A \\cup B \\)."
           },
           {
-            "en": "Substitute \\( n = 10, a = 5, d = 12 \\): \\( S_{10} = 5[2(5) + 9(12)] \\).",
-            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(5) + 9(12)] \\)."
+            "en": "Thus there are \\( 3^5 = 243 \\) disjoint pairs \\( (A, B) \\) in total.",
+            "ar": "إذن إجمالي الأزواج المنفصلة يساوي \\( 3^5 = 243 \\)."
           },
           {
-            "en": "Evaluate \\( 5(10 + 108) = 590 \\).",
-            "ar": "احسب الناتج \\( 5(10 + 108) = 590 \\)."
+            "en": "Subtract the pairs where \\( A \\cup B = S \\) (each element has only \\( 2 \\) states: \\( x \\in A \\) or \\( x \\in B \\), giving \\( 2^5 = 32 \\)).",
+            "ar": "اطرح الأزواج التي تحقق \\( A \\cup B = S \\) (حيث لكل عنصر حالتان فقط: في \\( A \\) أو في \\( B \\)، أي \\( 2^5 = 32 \\))."
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(5) + 9(12)] = 5(118) = 590 \\).",
-          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(10 + 108) = 590 \\)."
+          "en": "Each element of \\( S \\) has \\( 3 \\) disjoint-subset states, giving \\( 3^5 = 243 \\) pairs with \\( A \\cap B = \\emptyset \\). Subtracting the \\( 2^5 = 32 \\) partitions where \\( A \\cup B = S \\) leaves \\( 243 - 32 = 211 \\).",
+          "ar": "عدد الأزواج التي تحقق \\( A \\cap B = \\emptyset \\) هو \\( 3^5 = 243 \\)، وبطرح الأزواج التي تحقق \\( A \\cup B = S \\) وعددها \\( 2^5 = 32 \\) يتبقى \\( 243 - 32 = 211 \\) زوجاً."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 5x^2 - 6x + 7 \\) at \\( x = 3 \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 5x^2 - 6x + 7 \\) عند \\( x = 3 \\)."
+          "en": "<strong>[Practice 4.5 · NSMO National Finals / Pigeonhole]</strong> What is the minimum number of distinct integers that must be selected from \\( \\{1, 2, \\dots, 50\\} \\) to guarantee that at least two selected integers sum to \\( 51 \\)?",
+          "ar": "<strong>[تدريب 4.5 · نهائيات نسما / برج الحمام]</strong> ما أقل عدد من الأعداد الصحيحة المختلفة يجب اختياره من المجموعة \\( \\{1, 2, \\dots, 50\\} \\) لضمان وجود عددين مختارين مجموعهما \\( 51 \\)؟"
         },
         "hints": [
           {
-            "en": "Differentiate \\( y = x^3 + 5x^2 - 6x + 7 \\) term by term with respect to \\( x \\).",
-            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+            "en": "Pair up the elements of \\( \\{1, \\dots, 50\\} \\) into disjoint boxes that sum to \\( 51 \\): \\( \\{1,50\\}, \\{2,49\\}, \\dots, \\{25,26\\} \\).",
+            "ar": "قسّم عناصر \\( \\{1, \\dots, 50\\} \\) إلى أزواج منفصلة مجموع كل منها \\( 51 \\): \\( \\{1,50\\}, \\{2,49\\}, \\dots, \\{25,26\\} \\)."
           },
           {
-            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 10x - 6 \\).",
-            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 10x - 6 \\)."
+            "en": "How many such two-element pigeonholes are formed?",
+            "ar": "كم صندوقاً ثنائياً تكوّن لديك؟"
           },
           {
-            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 10(3) - 6 = 51 \\).",
-            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 30 - 6 = 51 \\)."
+            "en": "With \\( 25 \\) boxes, \\( 25 \\) numbers could take \\( \\{1, 2, \\dots, 25\\} \\) with no sum \\( 51 \\); adding \\( 1 \\) more triggers Pigeonhole!",
+            "ar": "بوجود \\( 25 \\) صندوقاً، يمكن اختيار \\( \\{1,\\dots,25\\} \\) دون مجموع \\( 51 \\)، أما العنصر التالي فيحسم البرهان!"
           }
         ],
         "solution": {
-          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 10x - 6 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 30 - 6 = 51 \\).",
-          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 10x - 6 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 30 - 6 = 51 \\)."
+          "en": "Partition \\( \\{1, \\dots, 50\\} \\) into \\( 25 \\) pairs \\( \\{k, 51 - k\\} \\) for \\( k = 1, \\dots, 25 \\). Choosing \\( 25 \\) integers (e.g., \\( 1, 2, \\dots, 25 \\)) avoids any pair, whereas by the Pigeonhole Principle, selecting \\( 25 + 1 = 26 \\) integers forces two to fall into the same pair \\( \\{k, 51-k\\} \\) and sum to \\( 51 \\).",
+          "ar": "بتقسيم المجموعة إلى \\( 25 \\) زوجاً \\( \\{k, 51 - k\\} \\) حيث \\( 1 \\le k \\le 25 \\)، يمكن اختيار \\( 25 \\) عدداً دون تكوين المجموع \\( 51 \\)، ولكن اختيار \\( 25 + 1 = 26 \\) عدداً يجبر بمبدأ برج الحمام عددين على الوقوع في الزوج نفسه فيكون مجموعهما \\( 51 \\)."
         }
       },
       {
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Recurrence Relations, States & Contest Probability",
+            "label": "Combinatorics II: Recurrence Relations & Olympiad Probability",
             "chapterId": "ol-recurrence-probability",
             "trackId": "olympiad"
           },
           {
-            "label": "Diophantine Equations, Floor Functions & Number Bases",
-            "chapterId": "ol-diophantine-equations",
+            "label": "Olympiad Proof Strategies: Invariants, Coloring & Games",
+            "chapterId": "ol-invariants-extremal",
             "trackId": "olympiad"
           },
           {
-            "trackId": "addmath",
-            "chapterId": "am-functions-quadratics",
-            "label": "ADDMATH: Functions, Modulus & Quadratic Theory"
+            "label": "KAUST KMC Regional Qualifier",
+            "chapterId": "ol-kaust-kmc-qualifier",
+            "trackId": "olympiad"
           }
         ]
       }

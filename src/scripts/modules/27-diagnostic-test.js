@@ -34,7 +34,7 @@
     ibhl: 'IB Math HL (AA/AI)', ibsl: 'IB Math SL (AA/AI)',
     igcse: 'IGCSE 0580 & 4MA1', linalg: 'Linear Algebra',
     mathai: 'Math for AI & Data Science', mvc: 'Multivariable Calculus',
-    odes: 'Differential Equations', olympiad: 'Contest Math & Olympiad',
+    odes: 'Differential Equations', olympiad: 'Olympiad Math (NSMO · KAUST · AMC)',
     precalc: 'Pre-Calculus', qudrat: 'GAT Qudrat (قدرات)', sat: 'Digital SAT Math',
     tahsili: 'SAAT Tahsili (تحصيلي)'
   };
@@ -52,7 +52,7 @@
     ibsl: 'رياضيات البكالوريا الدولية المستوى القياسي IB SL', igcse: 'كامبريدج IGCSE 0580',
     linalg: 'الجبر الخطي والمصفوفات', mathai: 'رياضيات الذكاء الاصطناعي وعلوم البيانات',
     mvc: 'حساب التفاضل والتكامل متعدد المتغيرات', odes: 'المعادلات التفاضلية',
-    olympiad: 'رياضيات المسابقات والأولمبياد (AMC / موهبة)',
+    olympiad: 'أولمبياد الرياضيات (نسما NSMO · مسابقة كاوست KMC · AMC)',
     precalc: 'الرياضيات التمهيدية والتحليلية', qudrat: 'اختبار القدرات العامة (قياس)', sat: 'السات الرقمي Digital SAT Math',
     tahsili: 'اختبار التحصيلي (قياس)'
   };
@@ -111,9 +111,11 @@
       { domain: /trig|conic|vector|calc|limit|deriv|integ/i, title: 'SAAT Trig, Conics & Calculus', titleAr: 'المثلثات والقطوع والتفاضل والتكامل (SAAT)', url: '/gaten/?ch=gaten-saat-calc', ix: 'Conics & Calculus Explorer' }
     ],
     olympiad: [
-      { domain: /algebra|vieta|inequal|diophant|modular|prime/i, title: 'Olympiad Algebra & Number Theory', titleAr: 'جبر الأولمبياد ونظرية الأعداد', url: '/olympiad/?ch=oly-alg', ix: 'Modular & Vieta Explorer' },
-      { domain: /count|pigeon|recurrence|prob|invariant|game/i, title: 'Combinatorics, Recurrences & Invariants', titleAr: 'التوافيق والعلاقات التكرارية والثوابت', url: '/olympiad/?ch=oly-combo', ix: 'Combinatorics Explorer' },
-      { domain: /circle|power|triangle|ceva|menelaus/i, title: 'Olympiad Circle & Triangle Geometry', titleAr: 'هندسة الدوائر والمثلثات الأولمبية', url: '/olympiad/?ch=oly-geo-circles', ix: 'Power of a Point Explorer' }
+      { domain: /nsmo|mawhiba|lte|screening/i, title: 'NSMO of KSA (Mawhiba Stages 1–3)', titleAr: 'الأولمبياد الوطني نسما (موهبة 1–3)', url: '/olympiad/?ch=ol-nsmo-stage1-2', ix: 'NSMO Pacing & LTE Lab' },
+      { domain: /kaust|kmc|relay|academy/i, title: 'KAUST Mathematics Competition (KMC)', titleAr: 'مسابقة كاوست للرياضيات وأكاديمية كاوست', url: '/olympiad/?ch=ol-kaust-kmc-qualifier', ix: 'KAUST Roots & Relay Simulator' },
+      { domain: /algebra|vieta|inequal|diophant|modular|prime/i, title: 'Olympiad Algebra & Number Theory', titleAr: 'جبر الأولمبياد ونظرية الأعداد', url: '/olympiad/?ch=ol-algebraic-techniques', ix: 'Vieta & Modular Explorer' },
+      { domain: /count|pigeon|recurrence|prob|invariant|game/i, title: 'Combinatorics, Recurrences & Invariants', titleAr: 'التوافيق والعلاقات التكرارية والثوابت', url: '/olympiad/?ch=ol-combinatorics-counting', ix: 'Stars & Bars / Nim Lab' },
+      { domain: /circle|power|triangle|ceva|menelaus|stewart/i, title: 'Olympiad Circle & Triangle Geometry', titleAr: 'هندسة الدوائر والمثلثات الأولمبية', url: '/olympiad/?ch=ol-euclidean-circles', ix: 'Power of a Point & Ceva Lab' }
     ],
     addmath: [
       { domain: /func|quad|poly|binomial|log|exp/i, title: 'Functions, Quadratics, Polynomials & Logs', titleAr: 'الدوال والتربيعيات واللوغاريتمات', url: '/addmath/?ch=addmath-functions', ix: 'Composite & Log Explorer' },

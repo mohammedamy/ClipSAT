@@ -201,9 +201,9 @@
       ]
     },
     'olympiad': {
-      title: 'Olympiad & Competition Mathematics Reference (AMC / AIME / BMO / IMO)',
-      titleAr: 'مرجع قوانين ونظريات أولمبياد الرياضيات والمسابقات العالمية',
-      desc: 'Core identities and theorems in Number Theory, Algebraic Inequalities, Combinatorics, and Classical Euclidean Geometry.',
+      title: 'Olympiad Mathematics Reference (Core Olympiad · NSMO of KSA · KAUST KMC)',
+      titleAr: 'مرجع قوانين ونظريات أولمبياد الرياضيات (نسما الوطني NSMO · مسابقة كاوست KMC · IMO)',
+      desc: 'Core identities and theorems across Number Theory, Algebraic Inequalities, Combinatorics, Euclidean Geometry, Saudi NSMO (Mawhiba), and KAUST KMC.',
       cards: [
         {
           title: 'Number Theory & Modular Arithmetic',
@@ -224,6 +224,16 @@
           title: 'Olympiad Triangle & Circle Geometry',
           titleAr: 'هندسة المثلث والدائرة في الأولمبياد',
           body: 'Area formulas: \\([ABC] = rs = \\frac{abc}{4R} = \\sqrt{s(s-a)(s-b)(s-c)}\\)<br>Stewart\'s Theorem: \\(man + dad = bmb + cnc\\)<br>Ceva\'s Theorem: \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1\\) · Menelaus: product \\(= 1\\)<br>Ptolemy\'s Theorem (cyclic quad): \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot AD\\)'
+        },
+        {
+          title: 'NSMO of KSA (Mawhiba): LTE & Functional Equations',
+          titleAr: 'أولمبياد نسما الوطني (موهبة): مبرهنة رفع الأس والمعادلات الدالية',
+          body: 'Legendre\'s Formula: \\(v_p(n!) = \\sum_{k \\ge 1} \\lfloor n/p^k \\rfloor = \\frac{n - s_p(n)}{p - 1}\\)<br>Lifting the Exponent (LTE, odd prime \\(p \\mid x-y\\), \\(p \\nmid xy\\)): \\(v_p(x^n - y^n) = v_p(x - y) + v_p(n)\\)<br>Simon\'s Favorite Factoring Trick (SFFT): \\(xy + ax + by = c \\iff (x+b)(y+a) = c + ab\\)'
+        },
+        {
+          title: 'KAUST KMC & Academy: Roots Filter, Pick & 3D De Gua',
+          titleAr: 'مسابقة كاوست (KMC) وأكاديمية كاوست: مرشح الجذور ومبرهنة بيك ودي غوا',
+          body: 'Roots-of-Unity Filter (\\(\\omega = e^{2\\pi i/m}\\)): \\(\\sum_{k \\equiv r \\pmod m} \\binom{n}{k} = \\frac{1}{m} \\sum_{j=0}^{m-1} \\omega^{-jr}(1+\\omega^j)^n\\)<br>Pick\'s Lattice Theorem: \\([\\mathcal{P}] = I + \\frac{B}{2} - 1\\)<br>De Gua\'s Right-Corner Tetrahedron Theorem: \\([ABC]^2 = [OAB]^2 + [OBC]^2 + [OCA]^2\\)'
         }
       ]
     },

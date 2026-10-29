@@ -271,6 +271,10 @@ function processTrack(trackDef) {
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   if (!fs.existsSync(topicsTrackDir)) fs.mkdirSync(topicsTrackDir, { recursive: true });
 
+  // Clean existing PDFs and topic JSONs for this track so renamed/expanded units leave zero stale files
+  fs.readdirSync(outDir).filter(f => f.endsWith('.pdf')).forEach(f => fs.unlinkSync(path.join(outDir, f)));
+  fs.readdirSync(topicsTrackDir).filter(f => f.endsWith('.json')).forEach(f => fs.unlinkSync(path.join(topicsTrackDir, f)));
+
   const manifestPath = path.join(outDir, 'manifest.json');
   let fullExamEntries = [];
   if (fs.existsSync(manifestPath)) {
@@ -284,17 +288,28 @@ function processTrack(trackDef) {
   const manifest = [...fullExamEntries];
 
   trackDef.units.forEach(u => {
-    // Select questions matching domain
+    // Select questions matching domain (balanced across easy/medium/hard when available)
     let matched = pool.filter(q => q.domain === u.domain);
     if (!matched.length) {
-      matched = pool.slice(0, 8);
+      matched = pool.slice(0, 12);
     }
-    const qSubset = matched.slice(0, 8).map(q => ({
+    const perWorksheet = trackDef.id === 'olympiad' ? 12 : 8;
+    const easyM = matched.filter(q => (q.difficulty || '').toLowerCase() === 'easy');
+    const medM = matched.filter(q => (q.difficulty || '').toLowerCase() === 'medium');
+    const hardM = matched.filter(q => (q.difficulty || '').toLowerCase() === 'hard');
+    let picked = [];
+    if (easyM.length && medM.length && hardM.length) {
+      const third = Math.floor(perWorksheet / 3);
+      picked = easyM.slice(0, third).concat(medM.slice(0, third)).concat(hardM.slice(0, perWorksheet - 2 * third));
+    } else {
+      picked = matched.slice(0, perWorksheet);
+    }
+    const qSubset = picked.map(q => ({
       text: q.text || q.q || '',
       choices: q.choices || [],
       answer: q.answer !== undefined ? q.answer : (q.correct !== undefined ? q.correct : 0),
       sol: q.sol || ''
-    })); // 8 questions per worksheet
+    }));
 
     const wsFilename = `${u.num}-${u.slug}-worksheet.pdf`;
     const akFilename = `${u.num}-${u.slug}-answerkey.pdf`;
@@ -311,8 +326,9 @@ function processTrack(trackDef) {
     const topicJson = {
       track: trackDef.id,
       num: u.num,
+      slug: u.slug,
       title: u.title,
-      sub: null,
+      sub: u.sub || null,
       sections: [
         {
           heading: `${u.title} Practice Exercises`,
@@ -332,7 +348,7 @@ function processTrack(trackDef) {
       num: u.num,
       lang: 'en',
       title: u.title,
-      sub: null,
+      sub: u.sub || null,
       worksheet: wsFilename,
       answerkey: akFilename
     });
@@ -374,16 +390,20 @@ const GATEN_TRACK = {
 
 const OLYMPIAD_TRACK = {
   id: 'olympiad',
-  name: 'Contest Math & Olympiad (AMC 10/12, Kangaroo & Mawhiba)',
+  name: 'Olympiad Mathematics (Core Olympiad · NSMO of KSA · KAUST KMC)',
   units: [
-    { unit: 1, num: '1.01', slug: 'olympiad-algebra-vieta-and-inequalities', title: 'Olympiad Algebraic Manipulation, Vieta & Inequalities', domain: 'Olympiad Algebra, Vieta & Inequalities' },
-    { unit: 2, num: '2.01', slug: 'modular-arithmetic-primes-and-totient', title: 'Modular Arithmetic, Divisibility, Primes & Euler Totient', domain: 'Modular Arithmetic, Primes & Divisibility' },
-    { unit: 3, num: '3.01', slug: 'diophantine-equations-and-sfft', title: 'Diophantine Equations, SFFT, Bezout & Floor Functions', domain: 'Diophantine Equations, SFFT & Floor Functions' },
-    { unit: 4, num: '4.01', slug: 'bijective-counting-and-pigeonhole', title: 'Bijective Counting, Stars & Bars, PIE & Pigeonhole', domain: 'Bijective Counting, Inclusion-Exclusion & Pigeonhole' },
-    { unit: 5, num: '5.01', slug: 'recurrence-relations-and-geometric-probability', title: 'Recurrence Relations, Markov Chains & Geometric Probability', domain: 'Recurrence Relations & Geometric Probability' },
-    { unit: 6, num: '6.01', slug: 'circle-geometry-and-power-of-a-point', title: 'Olympiad Circle Geometry, Power of a Point & Radical Axes', domain: 'Circle Geometry, Power of a Point & Radical Axes' },
-    { unit: 7, num: '7.01', slug: 'triangle-centers-ceva-menelaus-and-stewart', title: 'Triangle Centers, Ceva, Menelaus & Stewart Theorem', domain: 'Triangle Centers, Ceva, Menelaus & Stewart' },
-    { unit: 8, num: '8.01', slug: 'invariants-monovariants-and-combinatorial-games', title: 'Invariants, Monovariants, Coloring & Combinatorial Games', domain: 'Invariants, Monovariants, Coloring & Games' }
+    { unit: 1, num: '1.01', slug: 'olympiad-algebra-vieta-and-inequalities', title: 'Olympiad Algebraic Manipulation, Vieta & Inequalities', sub: 'Core International Olympiad Pillars', domain: 'Olympiad Algebra, Vieta & Inequalities' },
+    { unit: 2, num: '2.01', slug: 'modular-arithmetic-primes-and-totient', title: 'Modular Arithmetic, Divisibility, Primes & Euler Totient', sub: 'Core International Olympiad Pillars', domain: 'Modular Arithmetic, Primes & Divisibility' },
+    { unit: 3, num: '3.01', slug: 'diophantine-equations-and-sfft', title: 'Diophantine Equations, SFFT, Bezout & Floor Functions', sub: 'Core International Olympiad Pillars', domain: 'Diophantine Equations, SFFT & Floor Functions' },
+    { unit: 4, num: '4.01', slug: 'bijective-counting-and-pigeonhole', title: 'Bijective Counting, Stars & Bars, PIE & Pigeonhole', sub: 'Core International Olympiad Pillars', domain: 'Bijective Counting, Inclusion-Exclusion & Pigeonhole' },
+    { unit: 5, num: '5.01', slug: 'recurrence-relations-and-geometric-probability', title: 'Recurrence Relations, Markov Chains & Geometric Probability', sub: 'Core International Olympiad Pillars', domain: 'Recurrence Relations & Geometric Probability' },
+    { unit: 6, num: '6.01', slug: 'circle-geometry-and-power-of-a-point', title: 'Olympiad Circle Geometry, Power of a Point & Radical Axes', sub: 'Core International Olympiad Pillars', domain: 'Circle Geometry, Power of a Point & Radical Axes' },
+    { unit: 7, num: '7.01', slug: 'triangle-centers-ceva-menelaus-and-stewart', title: 'Triangle Centers, Ceva, Menelaus & Stewart Theorem', sub: 'Core International Olympiad Pillars', domain: 'Triangle Centers, Ceva, Menelaus & Stewart' },
+    { unit: 8, num: '8.01', slug: 'invariants-monovariants-and-combinatorial-games', title: 'Invariants, Monovariants, Coloring & Combinatorial Games', sub: 'Core International Olympiad Pillars', domain: 'Invariants, Monovariants, Coloring & Games' },
+    { unit: 9, num: '9.01', slug: 'nsmo-of-ksa-screening-and-regional-qualifiers', title: 'NSMO of KSA: Stage 1 Screening & Stage 2 Regional Qualifiers', sub: 'NSMO of KSA (أولمبياد نسما الوطني — Mawhiba)', domain: 'NSMO of KSA: Screening & Regional Qualifiers' },
+    { unit: 10, num: '10.01', slug: 'nsmo-of-ksa-national-finals-and-imo-pathway', title: 'NSMO of KSA: Stage 3 Riyadh Finals & Mawhiba IMO Pathway', sub: 'NSMO of KSA (أولمبياد نسما الوطني — Mawhiba)', domain: 'NSMO of KSA: National Finals & Mawhiba IMO Pathway' },
+    { unit: 11, num: '11.01', slug: 'kaust-mathematics-competition-regional-qualifier', title: 'KAUST Mathematics Competition (KMC): Regional Qualifier', sub: 'KAUST (مسابقة كاوست للرياضيات وأكاديمية كاوست)', domain: 'KAUST Mathematics Competition: Regional Qualifier' },
+    { unit: 12, num: '12.01', slug: 'kaust-campus-finals-relay-and-academy-synthesis', title: 'KAUST Thuwal Campus Finals, 3-Seat Relay & Academy Synthesis', sub: 'KAUST (مسابقة كاوست للرياضيات وأكاديمية كاوست)', domain: 'KAUST Campus Finals & Academy Advanced Synthesis' }
   ]
 };
 
@@ -478,15 +498,22 @@ const IBSL_TRACK = {
   ]
 };
 
-processTrack(ADDMATH_TRACK);
-processTrack(MATHAI_TRACK);
-processTrack(EDEXCEL_TRACK);
-processTrack(GATEN_TRACK);
-processTrack(OLYMPIAD_TRACK);
-processTrack(LINALG_TRACK);
-processTrack(MVC_TRACK);
-processTrack(ODES_TRACK);
-processTrack(ACT2L2_TRACK);
-processTrack(EST2L2_TRACK);
-processTrack(IBSL_TRACK);
-console.log('All missing worksheets successfully built and validated!');
+const ALL_MISSING_TRACKS = [
+  ADDMATH_TRACK,
+  MATHAI_TRACK,
+  EDEXCEL_TRACK,
+  GATEN_TRACK,
+  OLYMPIAD_TRACK,
+  LINALG_TRACK,
+  MVC_TRACK,
+  ODES_TRACK,
+  ACT2L2_TRACK,
+  EST2L2_TRACK,
+  IBSL_TRACK
+];
+const onlyArg = process.argv.find(a => a.startsWith('--only='));
+const onlyTrack = onlyArg ? onlyArg.split('=')[1].trim() : null;
+ALL_MISSING_TRACKS.forEach(t => {
+  if (!onlyTrack || t.id === onlyTrack) processTrack(t);
+});
+console.log('All requested worksheets successfully built and validated!');

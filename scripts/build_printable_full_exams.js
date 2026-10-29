@@ -2527,12 +2527,14 @@ const EXAM_CATALOG = [
     ]
   },
 
-  // ── Contest Math & Olympiad (AMC 10/12, Kangaroo & Mawhiba) ──
+  // ── Contest Math & Olympiad (NSMO of KSA, KAUST KMC, AMC 10/12 & Mawhiba Kangaroo) ──
   {
     trackId: 'olympiad',
     papers: [
+      { specKey: 'NSMO of KSA — National Mathematical Olympiad', slug: 'nsmo-ksa-national-olympiad', sub: 'Saudi NSMO National Olympiad (Mawhiba Stages 1–3)', unitTitle: 'Official Contest Papers — NSMO of KSA National Mathematical Olympiad (25 Questions · 90 Minutes)', shortTitle: 'NSMO of KSA National Olympiad — Full Paper' },
+      { specKey: 'KAUST Mathematics Competition (KMC)', slug: 'kaust-kmc-competition', sub: 'KAUST Mathematics Competition (KMC & KAUST Academy)', unitTitle: 'Official Contest Papers — KAUST Mathematics Competition (KMC Qualifier & Thuwal Finals · 25 Q · 90 Min)', shortTitle: 'KAUST Mathematics Competition (KMC) — Full Paper' },
       { specKey: 'AMC 10/12 Mathematics Competition', slug: 'amc-10-12-competition', sub: 'MAA American Mathematics Competitions (AMC 10/12)', unitTitle: 'Official Contest Papers — AMC 10 / AMC 12 Competition (25 Questions · 75 Minutes · 150 Marks)', shortTitle: 'AMC 10/12 Mathematics Competition — Full Paper' },
-      { specKey: 'Mawhiba & Kangaroo Math Arabia (Senior)', slug: 'mawhiba-kangaroo-senior', sub: 'Kangaroo Math Arabia & Mawhiba Olympiad', unitTitle: 'Official Contest Papers — Kangaroo Math & Mawhiba Olympiad (25 Questions · 75 Minutes · 135 Marks)', shortTitle: 'Kangaroo Math & Mawhiba Olympiad — Full Paper' }
+      { specKey: 'Mawhiba & Kangaroo Math Arabia (Senior)', slug: 'mawhiba-kangaroo-senior', sub: 'Kangaroo Math Arabia & Mawhiba Olympiad', unitTitle: 'Official Contest Papers — Kangaroo Math & Mawhiba Olympiad (30 Questions · 75 Minutes · 120 Marks)', shortTitle: 'Kangaroo Math & Mawhiba Olympiad — Full Paper' }
     ]
   },
 
