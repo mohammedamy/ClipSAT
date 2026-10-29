@@ -470,10 +470,10 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
       var fig=(typeof window._renderFig==='function'?window._renderFig(_aiFig):'')||(typeof renderMathFigure==='function'?renderMathFigure(_aiFig):'');
       if(fig){
         html+='<div class="mfig">'+fig+'</div>';
-      } else if((_aiFig.type==='table'||_aiFig.headers||_aiFig.rows||_aiFig.data)&&(_aiFig.rows||_aiFig.data)){
+      } else if((_aiFig.type==='table'||Array.isArray(_aiFig.headers)||Array.isArray(_aiFig.rows))&&(Array.isArray(_aiFig.rows)||Array.isArray(_aiFig.data))){
         html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
-          (_aiFig.headers||[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row</span></th>';}).join('')+'</tr></thead><tbody>'+
-          (_aiFig.rows||_aiFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+_maths(String(c!=null?c:''))+'</td>';}).join(''):'<td>'+_maths(String(row))+'</td>')+'</tr>';}).join('')+
+          (Array.isArray(_aiFig.headers)?_aiFig.headers:[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row</span></th>';}).join('')+'</tr></thead><tbody>'+
+          (Array.isArray(_aiFig.rows)?_aiFig.rows:(Array.isArray(_aiFig.data)?_aiFig.data:[])).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+_maths(String(c!=null?c:''))+'</td>';}).join(''):'<td>'+_maths(String(row))+'</td>')+'</tr>';}).join('')+
           '</tbody></table></div>';
       }
     }
@@ -1139,10 +1139,10 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           var pfig = '';
           if(typeof _pFig === 'string') pfig = _pFig;
           else pfig = (typeof window._renderFig === 'function' ? window._renderFig(_pFig) : '') || (typeof renderMathFigure === 'function' ? renderMathFigure(_pFig) : '');
-          if(!pfig && (_pFig.type === 'table' || _pFig.headers || _pFig.rows || _pFig.data)){
+          if(!pfig && (_pFig.type === 'table' || Array.isArray(_pFig.headers) || Array.isArray(_pFig.rows))){
             pfig = '<table class="exam-table"><thead><tr>'+
-              (_pFig.headers||[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
-              (_pFig.rows||_pFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+_maths(String(c!=null?c:''))+'</td>';}).join(''):'<td>'+_maths(String(row))+'</td>')+'</tr>';}).join('')+
+              (Array.isArray(_pFig.headers)?_pFig.headers:[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
+              (Array.isArray(_pFig.rows)?_pFig.rows:(Array.isArray(_pFig.data)?_pFig.data:[])).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+_maths(String(c!=null?c:''))+'</td>';}).join(''):'<td>'+_maths(String(row))+'</td>')+'</tr>';}).join('')+
               '</tbody></table>';
           }
           if(pfig) html+='<div class="mfig fep-figure">'+pfig+'</div>';

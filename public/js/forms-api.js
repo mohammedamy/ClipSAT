@@ -228,13 +228,15 @@
       }
       var block = s.slice(kIdx, endIdx);
       var annMatch = block.match(/<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/i);
-      if (annMatch) {
-        var tex = annMatch[1]
-          .replace(/&amp;/g, '&')
+      var dtMatch = !annMatch && block.match(/\bdata-tex=(?:"([^"]*)"|'([^']*)')/i);
+      var rawTex = annMatch ? annMatch[1] : (dtMatch ? (dtMatch[1] !== undefined ? dtMatch[1] : dtMatch[2]) : null);
+      if (rawTex !== null) {
+        var tex = rawTex
           .replace(/&lt;/g, '<')
           .replace(/&gt;/g, '>')
           .replace(/&quot;/g, '"')
-          .replace(/&#39;/g, "'");
+          .replace(/&#39;/g, "'")
+          .replace(/&amp;/g, '&');
         out += isDisplay ? (' \\[' + tex + '\\] ') : (' \\(' + tex + '\\) ');
       }
       idx = endIdx;

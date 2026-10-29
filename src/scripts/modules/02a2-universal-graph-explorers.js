@@ -594,14 +594,16 @@
     function sync(){
       if(sFn){
         var newFn = sFn.value;
-        if((newFn === 'arccsc' || newFn === 'arcsec') && Math.abs(xVal) < 1){
-          xVal = xVal >= 0 ? 1.5 : -1.5;
-          if(sX) sX.value = xVal;
-        } else if((newFn === 'arcsin' || newFn === 'arccos') && Math.abs(xVal) > 1){
-          xVal = xVal >= 0 ? 0.5 : -0.5;
-          if(sX) sX.value = xVal;
+        if(newFn !== fnKey){
+          if((newFn === 'arccsc' || newFn === 'arcsec') && Math.abs(xVal) < 1){
+            xVal = xVal >= 0 ? 1.5 : -1.5;
+            if(sX) sX.value = xVal;
+          } else if((newFn === 'arcsin' || newFn === 'arccos') && Math.abs(xVal) > 1){
+            xVal = xVal >= 0 ? 0.5 : -0.5;
+            if(sX) sX.value = xVal;
+          }
+          fnKey = newFn;
         }
-        fnKey = newFn;
       }
       if(sX) xVal = parseFloat(sX.value);
       updateDataView();
@@ -1610,10 +1612,12 @@
     function sync(){
       if(sFn && HYPER_SPECS[sFn.value]){
         var nf = sFn.value;
-        if(nf === 'arcosh' && x0 < 1){ x0 = 1.5; if(sX) sX.value = x0; }
-        if(nf === 'artanh' && Math.abs(x0) >= 1){ x0 = 0.5; if(sX) sX.value = x0; }
-        if((nf === 'csch' || nf === 'coth') && Math.abs(x0) < 0.1){ x0 = 1.0; if(sX) sX.value = x0; }
-        fnKey = nf;
+        if(nf !== fnKey){
+          if(nf === 'arcosh' && x0 < 1){ x0 = 1.5; if(sX) sX.value = x0; }
+          if(nf === 'artanh' && Math.abs(x0) >= 1){ x0 = 0.5; if(sX) sX.value = x0; }
+          if((nf === 'csch' || nf === 'coth') && Math.abs(x0) < 0.1){ x0 = 1.0; if(sX) sX.value = x0; }
+          fnKey = nf;
+        }
       }
       if(sA) aScale = parseFloat(sA.value);
       if(sX) x0 = parseFloat(sX.value);

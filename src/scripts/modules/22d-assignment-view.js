@@ -66,9 +66,10 @@ function render(){
       if(_f){
         if(typeof _f === 'string'){
           h+='<div class="cq-figure">'+_f+'</div>';
-        } else if(_f.type === 'table' || _f.headers || _f.rows){
-          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+M(th!=null?String(th):'')+'</th>';}).join('');
-          var _rws=(_f.rows||_f.data||[]).map(function(r){
+        } else if(_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)){
+          var _hdrs=(Array.isArray(_f.headers)?_f.headers:[]).map(function(th){return '<th>'+M(th!=null?String(th):'')+'</th>';}).join('');
+          var _rawRows=Array.isArray(_f.rows)?_f.rows:(Array.isArray(_f.data)?_f.data:[]);
+          var _rws=_rawRows.map(function(r){
             return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+M(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+M(r!=null?String(r):'')+'</td>')+'</tr>';
           }).join('');
           h+='<div class="cq-figure"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
@@ -115,9 +116,10 @@ function render(){
       window._ensureFigures().then(function(){
         paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
           var _fItem = figs[+el.getAttribute('data-fig')];
-          if(_fItem && (_fItem.type === 'table' || _fItem.headers || _fItem.rows)){
-            var _hdrs=(_fItem.headers||[]).map(function(th){return '<th>'+M(th!=null?String(th):'')+'</th>';}).join('');
-            var _rws=(_fItem.rows||_fItem.data||[]).map(function(r){
+          if(_fItem && (_fItem.type === 'table' || Array.isArray(_fItem.headers) || Array.isArray(_fItem.rows))){
+            var _hdrs=(Array.isArray(_fItem.headers)?_fItem.headers:[]).map(function(th){return '<th>'+M(th!=null?String(th):'')+'</th>';}).join('');
+            var _rawRows=Array.isArray(_fItem.rows)?_fItem.rows:(Array.isArray(_fItem.data)?_fItem.data:[]);
+            var _rws=_rawRows.map(function(r){
               return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+M(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+M(r!=null?String(r):'')+'</td>')+'</tr>';
             }).join('');
             el.innerHTML='<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';

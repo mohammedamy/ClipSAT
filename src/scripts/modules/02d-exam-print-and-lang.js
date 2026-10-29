@@ -110,6 +110,7 @@
       '@page:first{margin-top:18mm}',
       '*,*::before,*::after{box-sizing:border-box}',
       'body{margin:0;padding:0;background:#fff;font-family:Georgia,"Times New Roman",serif;color:#111;font-size:10.5pt;line-height:1.55}',
+      '.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}',
       '#print-brand{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;gap:7pt;justify-content:space-between;background:#fff;border-bottom:1.5pt solid #1a1a2e;padding:3pt 18pt;font-family:sans-serif;font-size:8pt;color:#1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '#print-brand .pb-left{display:flex;align-items:center;gap:7pt}',
       '.pb-logo-img{height:16pt;width:auto;object-fit:contain}',

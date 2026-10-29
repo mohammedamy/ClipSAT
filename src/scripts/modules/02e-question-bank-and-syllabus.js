@@ -401,7 +401,7 @@
     if(_figuresPromise) return _figuresPromise;
     _figuresPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/figures.js?v=20261023a';
+      s.src='/js/figures.js';
       s.onload=function(){ window._renderFig&&window.renderMathFigure?resolve():reject(new Error('figures.js did not register')); };
       s.onerror=function(){ _figuresPromise=null; reject(new Error('The figures could not load. Check your connection and try again.')); };
       document.head.appendChild(s);
@@ -446,7 +446,7 @@
     if(_bankExamPromise) return _bankExamPromise;
     _bankExamPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/bank-exam.js?v=20261028a';
+      s.src='/js/bank-exam.js';
       s.onload=function(){ window.CSBankExam?resolve():reject(new Error('bank-exam.js did not register')); };
       s.onerror=function(){ _bankExamPromise=null; reject(new Error('The exam generator could not load. Check your connection and try again.')); };
       document.head.appendChild(s);

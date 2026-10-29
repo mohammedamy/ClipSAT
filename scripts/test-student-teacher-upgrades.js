@@ -216,3 +216,4 @@ test('public/bank-shards/ contains topic shards and _index.json for all 31 track
 console.log(`\n── Student & Teacher Upgrades Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) process.exit(1);
 console.log('✅ All Student & Teacher pedagogical upgrade unit tests passed!');
+process.exit(0);

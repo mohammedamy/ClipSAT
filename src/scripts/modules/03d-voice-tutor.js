@@ -553,16 +553,17 @@
       }
     }
 
-    /* Replace KaTeX spans with their original <annotation encoding="application/x-tex"> LaTeX */
+    /* Replace KaTeX spans with their original <annotation encoding="application/x-tex"> or data-tex LaTeX */
     clone.querySelectorAll('.katex-display, .katex').forEach(function(kEl){
       if(!kEl.parentNode) return;
       var ann = kEl.querySelector('annotation[encoding="application/x-tex"]');
-      var tex = ann ? ann.textContent : '';
+      var innerK = kEl.classList.contains('katex') ? kEl : kEl.querySelector('.katex');
+      var tex = ann ? ann.textContent : ((innerK && innerK.getAttribute('data-tex')) || kEl.getAttribute('data-tex') || '');
       if(tex){
         var txtNode = document.createTextNode(' \\(' + tex + '\\) ');
         kEl.parentNode.replaceChild(txtNode, kEl);
       } else {
-        /* Fallback: strip .katex-html so .katex-mathml isn't read twice */
+        /* Fallback: strip .katex-html so .katex-mathml / .sr-only isn't read twice */
         kEl.querySelectorAll('.katex-html').forEach(function(h){ h.remove(); });
       }
     });

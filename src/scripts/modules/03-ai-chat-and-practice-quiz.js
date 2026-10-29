@@ -705,7 +705,6 @@ window.launchPracticeQuiz=function(mistake){
         out.innerHTML='<p class="cq-msg">No question bank available for this course yet.</p>';
         return;
       }
-      if(window._ensureFigures){ window._ensureFigures().catch(function(){}); }
 
       /* ── Chapter keyword extraction — heading + definitions + example titles ── */
       var chEl=btn.closest('.chapter');
@@ -738,7 +737,7 @@ window.launchPracticeQuiz=function(mistake){
       /* ── build full valid course pool ── */
       var coursePool=[];
       if(bank.pool && bank.pool.length){
-        var mcq=bank.pool.filter(function(q){return q.type==='mcq'&&q.choices&&q.choices.length;});
+        var mcq=bank.pool.filter(function(q){return (!q.type||q.type==='mcq')&&q.choices&&q.choices.length;});
         coursePool = mcq.length ? mcq : bank.pool.filter(function(q){return q.choices&&q.choices.length;});
       } else {
         var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',hints:q.hints,domain:q.domain||'',tags:q.tags,level:lbl};});};
@@ -824,7 +823,7 @@ window.launchPracticeQuiz=function(mistake){
         if(typeof f === 'string') return f.slice(0, 80);
         try {
           var t = f.type || (f.headers ? 'table' : (f.solid ? 'geometry_3d' : 'fig'));
-          if(t === 'table') return 'tbl:' + (f.headers||[]).join(',') + ':' + ((f.rows||f.data||[])[0]||[]).slice(0,2).join(',');
+          if(t === 'table') return 'tbl:' + (Array.isArray(f.headers)?f.headers:[]).join(',') + ':' + ((Array.isArray(f.rows)?f.rows:(Array.isArray(f.data)?f.data:[]))[0]||[]).slice(0,2).join(',');
           if(t === 'fn' || t === 'axes') return 'fn:' + (f.fns||[]).map(function(fn){return fn.fn||fn;}).join(';') + ':' + (f.points||[]).map(function(p){return p.x+','+p.y;}).join(';');
           if(t === 'triangle') return 'tri:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
           if(t === 'circle') return 'circ:' + (f.radius||'') + ':' + (f.center||'');
@@ -892,18 +891,18 @@ window.launchPracticeQuiz=function(mistake){
         _tryPick(primary, true, targetFigs);
       }
 
-      // Pass 4: If still under n, pull from the broader course pool with strict redundancy checking
-      if(pick.length < n && coursePool.length > pick.length){
+      // Pass 4: If chapter explicitly declared data-quiz-domains, stay strictly within chPool;
+      // otherwise pull from the broader course pool with strict redundancy checking.
+      if(!_qd.length && pick.length < n && coursePool.length > pick.length){
         _tryPick(coursePool, true, targetFigs);
       }
 
-      // Pass 5: If still under n, retry remaining unseen coursePool items with strict redundancy checking
-      if(pick.length < n && coursePool.length > pick.length){
+      // Pass 5: If still under n (and no explicit domain lock), retry remaining coursePool items
+      if(!_qd.length && pick.length < n && coursePool.length > pick.length){
         _tryPick(coursePool, true, 0);
       }
 
-      // Emergency Pass 6: ONLY if the entire course pool has fewer unique templates than n,
-      // backfill with distinct question stems, never repeating the exact same stem
+      // Pass 6: Backfill with distinct question stems from chPool/skipped (never repeating exact stem)
       if(pick.length < n && skipped.length){
         for(var sk=0; sk<skipped.length && pick.length<n; sk++){
           var qsk = skipped[sk];
@@ -911,6 +910,16 @@ window.launchPracticeQuiz=function(mistake){
           if(!pickedKeys.has(ksk)){
             pick.push(qsk);
             pickedKeys.add(ksk);
+          }
+        }
+      }
+      if(pick.length < n && chPool.length > pick.length){
+        for(var cpIdx=0; cpIdx<chPool.length && pick.length<n; cpIdx++){
+          var qcp = chPool[cpIdx];
+          var kcp = _qKey(qcp);
+          if(!pickedKeys.has(kcp)){
+            pick.push(qcp);
+            pickedKeys.add(kcp);
           }
         }
       }
@@ -939,9 +948,10 @@ window.launchPracticeQuiz=function(mistake){
       if(_f){
         if(typeof _f === 'string'){
           _fHtml = _f;
-        } else if(_f.type === 'table' || _f.headers || _f.rows){
-          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
-          var _rws=(_f.rows||_f.data||[]).map(function(r){
+        } else if(_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)){
+          var _hdrs=(Array.isArray(_f.headers)?_f.headers:[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
+          var _rawRows=Array.isArray(_f.rows)?_f.rows:(Array.isArray(_f.data)?_f.data:[]);
+          var _rws=_rawRows.map(function(r){
             return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
           }).join('');
           _fHtml = '<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';
@@ -989,9 +999,10 @@ window.launchPracticeQuiz=function(mistake){
         _paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
           var _fItem = _figs[+el.getAttribute('data-fig')];
           var _rendered = '';
-          if(_fItem && (_fItem.type === 'table' || _fItem.headers || _fItem.rows)){
-            var _hdrs=(_fItem.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
-            var _rws=(_fItem.rows||_fItem.data||[]).map(function(r){
+          if(_fItem && (_fItem.type === 'table' || Array.isArray(_fItem.headers) || Array.isArray(_fItem.rows))){
+            var _hdrs=(Array.isArray(_fItem.headers)?_fItem.headers:[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
+            var _rawRows=Array.isArray(_fItem.rows)?_fItem.rows:(Array.isArray(_fItem.data)?_fItem.data:[]);
+            var _rws=_rawRows.map(function(r){
               return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
             }).join('');
             _rendered = '<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';
@@ -1022,18 +1033,19 @@ window.launchPracticeQuiz=function(mistake){
     document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genChapterQuiz',title:(chTitle||'Chapter Quiz'),trackId:viewId,questions:_csCaptureQ,outEl:out}}));
     }
 
-    var loadBank = (window.fullExamBank && window.fullExamBank[viewId])
-      ? Promise.resolve(window.fullExamBank[viewId])
-      : (window.CS_loadTrackBank && viewId ? window.CS_loadTrackBank(viewId) : Promise.resolve(null));
-
-    var loadFigs = (typeof window._ensureFigures === 'function')
-      ? window._ensureFigures().catch(function(){})
-      : Promise.resolve();
+    if(window.fullExamBank && window.fullExamBank[viewId]){
+      _execute(window.fullExamBank[viewId]);
+      return;
+    }
 
     out.innerHTML='<p class="cq-msg" style="opacity:0.7">Loading questions…</p>';
 
-    Promise.all([loadBank, loadFigs]).then(function(res){
-      var bank = res[0] || (window.fullExamBank && window.fullExamBank[viewId]);
+    var loadBank = (window.CS_loadTrackBank && viewId)
+      ? window.CS_loadTrackBank(viewId)
+      : Promise.resolve(null);
+
+    loadBank.then(function(res){
+      var bank = res || (window.fullExamBank && window.fullExamBank[viewId]);
       if(!bank){
         out.innerHTML='<p class="cq-msg">No question bank available for this course yet.</p>';
         return;

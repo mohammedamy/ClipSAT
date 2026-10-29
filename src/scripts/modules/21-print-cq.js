@@ -110,6 +110,7 @@ window.printCQ = function(btn) {
     '<style>' +
     '@page{margin:18mm 18mm 22mm 18mm}' +
     'body{margin:0;padding:0;font-family:Georgia,"Times New Roman",serif;font-size:11pt;line-height:1.6;color:#000;background:#fff}' +
+    '.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}' +
     'body[dir="rtl"]{direction:rtl;text-align:right;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}' +
     'body[dir="rtl"] .ph{direction:rtl}' +
     'body[dir="rtl"] .ph-meta{text-align:left}' +

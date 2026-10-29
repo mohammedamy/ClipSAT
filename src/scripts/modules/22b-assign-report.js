@@ -188,9 +188,10 @@ window.CSAssign = {
       if(_f){
         if(typeof _f === 'string'){
           figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">'+_f+'</div>';
-        } else if(_f.type === 'table' || _f.headers || _f.rows){
-          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+_mesc(th!=null?String(th):'')+'</th>';}).join('');
-          var _rws=(_f.rows||_f.data||[]).map(function(r){
+        } else if(_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)){
+          var _hdrs=(Array.isArray(_f.headers)?_f.headers:[]).map(function(th){return '<th>'+_mesc(th!=null?String(th):'')+'</th>';}).join('');
+          var _rawRows=Array.isArray(_f.rows)?_f.rows:(Array.isArray(_f.data)?_f.data:[]);
+          var _rws=_rawRows.map(function(r){
             return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_mesc(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_mesc(r!=null?String(r):'')+'</td>')+'</tr>';
           }).join('');
           figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';

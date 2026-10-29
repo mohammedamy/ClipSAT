@@ -604,8 +604,8 @@ test.describe('site-wide: chapter quiz relevance', () => {
   // Tracks whose chapters list their quiz domains, and how many chapters each has.
   const DOMAIN_TRACKS = {
     precalc: 8, calculus: 16, alg2: 11, geo: 11, sat: 11, act2: 9,
-    a2level: 16, act: 9, act2l2: 6, algebra: 11, apab: 11, apbc: 9, appc: 5, apstats: 5,
-    aslevel: 20, est: 9, ibsl: 7, ibhl: 8, est2: 9, est2l2: 6, igcse: 10, linalg: 8, mvc: 8, odes: 9, qudrat: 9, tahsili: 10,
+    a2level: 16, act: 9, act2l2: 8, algebra: 11, apab: 11, apbc: 9, appc: 8, apstats: 8,
+    aslevel: 20, est: 9, ibsl: 8, ibhl: 8, est2: 9, est2l2: 8, igcse: 10, linalg: 8, mvc: 8, odes: 9, qudrat: 9, tahsili: 10,
   };
   for (const [track, chapters] of Object.entries(DOMAIN_TRACKS)) {
     test(`${track} chapter quizzes draw only from each chapter's own bank domains`, async ({ page }) => {
@@ -679,7 +679,7 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
 
     // Track pages (including act2l2) load their own ix data
     await page.goto('/act2l2/');
-    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(7);
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(8);
     expect(seen).toEqual(['act2l2']);
   });
 

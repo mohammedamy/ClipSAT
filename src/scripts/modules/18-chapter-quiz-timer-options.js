@@ -104,7 +104,7 @@
   var _origGenCQ = window.genChapterQuiz;
   window.genChapterQuiz = function(btn){
     clearCqTimer(); /* cancel any running timer */
-    _origGenCQ(btn);
+    var res = _origGenCQ ? _origGenCQ(btn) : undefined;
     /* read timer value */
     var bar = btn.closest('.ch-quiz-bar');
     var sel = bar && bar.querySelector('.cq-timer-sel');
@@ -117,6 +117,7 @@
         setTimeout(function(){ startCqTimer(out, secs); }, 600);
       }
     }
+    return res;
   };
 
   /* Ensure Chapter Quiz is always positioned at the very end of each lesson */

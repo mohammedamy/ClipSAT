@@ -66,7 +66,7 @@ function _renderQFig(q){
   var f = q.figure || q.fig || q.table;
   if(!f) return '';
   if(typeof f === 'string') return f;
-  if(f.type === 'table' || f.headers || f.rows){
+  if(f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)){
     var hdrs = (Array.isArray(f.headers)?f.headers:[]).map(function(th){
       return '<th>' + (typeof window._autoMath === 'function' ? window._autoMath(th != null ? String(th) : '') : th) + '</th>';
     }).join('');

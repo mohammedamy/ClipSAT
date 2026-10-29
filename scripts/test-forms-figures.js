@@ -109,6 +109,9 @@ assert(quizCaptureUiCode.includes('clipsat-cbt-payload') && quizCaptureUiCode.in
 const ptKatexHtml = formsApi.mathToPlainText('Evaluate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\\frac{x^2}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true">x2/3</span></span> now.');
 assert.strictEqual(ptKatexHtml, 'Evaluate x²/3 now.', 'mathToPlainText must extract original LaTeX from pre-rendered KaTeX HTML without duplicating MathML/HTML text');
 
+const ptKatexSsrHtmlOnly = formsApi.mathToPlainText('Evaluate <span class="katex" data-tex="\\frac{x^2}{3}"><span class="sr-only">\\frac{x^2}{3}</span><span class="katex-html" aria-hidden="true">x2/3</span></span> now.');
+assert.strictEqual(ptKatexSsrHtmlOnly, 'Evaluate x²/3 now.', 'mathToPlainText must extract original LaTeX from HTML-only SSR KaTeX (data-tex + .sr-only) without duplicating text');
+
 const ptBinom = formsApi.mathToPlainText('Find \\(\\binom{n}{2}\\) and \\(\\$50\\).');
 assert.strictEqual(ptBinom, 'Find C(n, 2) and $50.', 'mathToPlainText must convert \\binom and preserve escaped \\$');
 

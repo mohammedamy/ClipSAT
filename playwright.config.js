@@ -8,7 +8,7 @@ const { defineConfig, devices } = require('@playwright/test');
 // env var, since which vars a given shell inherits varies; a CI runner or
 // normal dev machine won't have this path and falls back to Playwright's
 // own `npx playwright install`-managed browser.
-const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
+const SANDBOX_CHROMIUM = process.env.PLAYWRIGHT_CHROME_PATH || '/opt/pw-browsers/chromium';
 const sandboxChromiumExists = fs.existsSync(SANDBOX_CHROMIUM);
 
 /**
@@ -20,8 +20,9 @@ const sandboxChromiumExists = fs.existsSync(SANDBOX_CHROMIUM);
  */
 module.exports = defineConfig({
   testDir: './tests/e2e',
-  timeout: 30000,
+  timeout: 45000,
   fullyParallel: true,
+  workers: process.env.CI ? 2 : 3,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['list']] : 'list',

@@ -607,6 +607,7 @@
                || p.classList.contains('katex-display')
                || p.classList.contains('katex-mathml')
                || p.classList.contains('katex-html')
+               || p.classList.contains('sr-only')
              ))
              || p.getAttribute('class')==='MathJax'
              || (p.tagName && p.tagName.startsWith('MJX'))) return NodeFilter.FILTER_REJECT;

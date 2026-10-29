@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/css": "css" });
   eleventyConfig.addPassthroughCopy({ "public/js": "js" });
   eleventyConfig.addPassthroughCopy({ "public/vendor": "vendor" });
+  eleventyConfig.addPassthroughCopy({ "public/data": "data" });
 
   // ── Build-time KaTeX pre-rendering (all 21 tracks) ────────────────────────
   // See scripts/katex-ssr.js for the full scoping rationale. Runs as a

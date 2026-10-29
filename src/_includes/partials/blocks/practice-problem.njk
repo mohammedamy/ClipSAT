@@ -13,8 +13,8 @@
   <div class="problem-hints" style="padding:0 16px 10px;display:flex;flex-direction:column;gap:6px">
     {% for h in block.hints %}
     <details class="hint-tier" style="background:var(--panel,#f8fafc);border:1px dashed var(--line,#cbd5e1);border-radius:6px;padding:6px 12px;font-size:.85rem">
-      <summary style="cursor:pointer;font-weight:600;color:var(--indigo,#4338ca);display:flex;align-items:center;justify-content:space-between;gap:8px"><span>💡 Hint {{ loop.index }} of {{ block.hints.length }}</span><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakTier(this,event)" title="Listen to this hint" aria-label="Listen to Hint {{ loop.index }}"><span>🔊</span></button></summary>
-      <div class="cs-hint-body" style="margin-top:6px;color:var(--ink,#1e293b);line-height:1.5">{{ bl.text(h, 'div') }}</div>
+      <summary style="cursor:pointer;font-weight:600;color:var(--indigo,#4338ca)"><span>💡 Hint {{ loop.index }} of {{ block.hints.length }}</span></summary>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:6px"><div class="cs-hint-body" style="color:var(--ink,#1e293b);line-height:1.5;flex:1">{{ bl.text(h, 'div') }}</div><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakTier(this,event)" title="Listen to this hint" aria-label="Listen to Hint {{ loop.index }}"><span>🔊</span></button></div>
     </details>
     {% endfor %}
   </div>

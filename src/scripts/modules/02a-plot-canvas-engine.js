@@ -629,13 +629,15 @@
     var wd={canvas:canvas, draw:drawFn, seen:false};
     canvas._cswd=wd;
     widgets.push(wd);
-    if(!_io){ drawWidget(wd); return; }
+    var redrawOne = function(){ drawWidget(wd); };
+    if(!_io){ drawWidget(wd); return redrawOne; }
     var rect=canvas.getBoundingClientRect();
     if(rect.top<window.innerHeight && rect.bottom>0 && canvas.offsetParent!==null){
       drawWidget(wd);
     } else {
       _io.observe(canvas);
     }
+    return redrawOne;
   }
   function redrawAll(){
     widgets.forEach(function(wd){

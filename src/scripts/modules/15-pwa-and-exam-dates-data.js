@@ -221,6 +221,9 @@ window.CSOfflinePack = (function(){
     return [
       '/' + trackId + '/',
       '/' + trackId + '/index.html',
+      '/js/study-hub-extras.js',
+      '/js/ix-engine.js',
+      '/js/universal-graph-explorers.js',
       '/js/ix/' + trackId + '.js',
       '/js/ex/' + trackId + '.js',
       '/bank-data/' + trackId + '.json',
@@ -228,7 +231,9 @@ window.CSOfflinePack = (function(){
       '/js/figures.js',
       '/js/bank-exam.js',
       '/js/practice-quiz.js',
-      '/js/diagnostic-test.js'
+      '/js/diagnostic-test.js',
+      '/js/mock-exam.js',
+      '/js/formula-modal.js'
     ];
   }
 

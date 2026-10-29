@@ -55,7 +55,7 @@ function _renderDailyGoal(){
     +'<div class="dg-track"><div class="dg-fill" style="width:'+pct+'%"></div></div>'
     +(done>=_dgGoal?'<span style="color:#16a34a;font-weight:700">&#x2713; '+(isAr?'اكتمل الهدف!':'Goal met!')+'</span>':'')
     +'<span class="dg-streak">'+(streak>0?'&#128293; '+streak+(isAr?' يوم متواصل':' day streak'):'')+'</span>'
-    +'<button type="button" onclick="window.CSDailyPlan&&window.CSDailyPlan.open()" style="margin-left:auto;background:var(--indigo,#4f46e5);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-weight:700;cursor:pointer">&#128197; '+(isAr?'خطة ١٥ دقيقة':'15-Min Plan')+'</button>'
+    +'<button type="button" onclick="window.CSDailyPlan&&window.CSDailyPlan.open()" style="margin-left:auto;background:#1d4ed8;color:#ffffff;border:none;border-radius:6px;padding:3px 10px;font-weight:700;cursor:pointer">&#128197; '+(isAr?'خطة ١٥ دقيقة':'15-Min Plan')+'</button>'
     +'<button type="button" onclick="setDailyGoal()">'+(isAr?'الهدف: ':'Goal: ')+_dgGoal+'</button>'
     +'<button type="button" onclick="dismissDailyGoal()" title="Dismiss" style="padding:2px 7px;font-size:.85rem;background:transparent;border:1px solid var(--line);border-radius:5px;cursor:pointer;color:var(--muted)">&#x2715;</button>';
 }
@@ -742,9 +742,9 @@ window.CSExampleGrapher = (function(){
   function extractExpressions(containerEl){
     if(!containerEl) return ['y = x^2'];
     var candidates = [];
-    /* 1. Check KaTeX MathML annotations or data-latex attributes */
-    containerEl.querySelectorAll('annotation[encoding="application/x-tex"], [data-latex]').forEach(function(el){
-      var tex = el.getAttribute('data-latex') || el.textContent || '';
+    /* 1. Check KaTeX MathML annotations, SSR data-tex, or data-latex attributes */
+    containerEl.querySelectorAll('annotation[encoding="application/x-tex"], [data-latex], [data-tex]').forEach(function(el){
+      var tex = el.getAttribute('data-latex') || el.getAttribute('data-tex') || el.textContent || '';
       if(tex) candidates.push(tex);
     });
     /* 2. Also scan plain text of the example */

@@ -260,11 +260,12 @@
     var f = q.figure || q.fig || q.table;
     if(!f) return '';
     if(typeof f === 'string') return f;
-    if(f.type === 'table' || f.headers || f.rows){
-      var hdrs = (f.headers||[]).map(function(th){
+    if(f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)){
+      var hdrs = (Array.isArray(f.headers)?f.headers:[]).map(function(th){
         return '<th>' + (typeof window._autoMath === 'function' ? window._autoMath(th != null ? String(th) : '') : th) + '</th>';
       }).join('');
-      var rws = (f.rows || f.data || []).map(function(r){
+      var rawRows = Array.isArray(f.rows) ? f.rows : (Array.isArray(f.data) ? f.data : []);
+      var rws = rawRows.map(function(r){
         return '<tr>' + (Array.isArray(r) ? r.map(function(c){
           return '<td>' + (typeof window._autoMath === 'function' ? window._autoMath(c != null ? String(c) : '') : c) + '</td>';
         }).join('') : '<td>' + String(r) + '</td>') + '</tr>';
@@ -1393,5 +1394,6 @@
       window.CSGamify.toggleWhiteboard();
     }
   };
+  window.closeMockExam = window.exitMockExam;
 
 })();

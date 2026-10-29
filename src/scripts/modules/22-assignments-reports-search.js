@@ -641,9 +641,24 @@ function _boot(){
   } else {
     document.body.classList.add('view-home');
   }
-  // Observe future DOM additions (dynamically generated content)
-  new MutationObserver(function(){ _injectObjectives(); _upgradeDifficultyControls(); })
-    .observe(document.body, {childList:true, subtree:true});
+  // Observe future DOM additions (dynamically generated content), debounced
+  var _bootMoTimer = null;
+  new MutationObserver(function(muts){
+    var relevant = false;
+    for (var i = 0; i < muts.length; i++) {
+      var added = muts[i].addedNodes;
+      for (var j = 0; j < added.length; j++) {
+        var nd = added[j];
+        if (nd.nodeType === 1 && (nd.tagName === 'SECTION' || (nd.classList && (nd.classList.contains('chapter') || nd.classList.contains('ch-quiz-wrap'))) || (nd.querySelector && nd.querySelector('section.chapter, .ch-quiz-wrap')))) {
+          relevant = true; break;
+        }
+      }
+      if (relevant) break;
+    }
+    if (!relevant) return;
+    if (_bootMoTimer) clearTimeout(_bootMoTimer);
+    _bootMoTimer = setTimeout(function(){ _bootMoTimer = null; _injectObjectives(); _upgradeDifficultyControls(); }, 80);
+  }).observe(document.body, {childList:true, subtree:true});
 }
 
 if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',_boot);

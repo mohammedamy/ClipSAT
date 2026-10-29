@@ -122,16 +122,15 @@ const ixTracks = fs.existsSync(IX_DATA_DIR)
   ? fs.readdirSync(IX_DATA_DIR).filter((f) => f.endsWith('.js')).map((f) => f.replace(/\.js$/, '')).sort()
   : [];
 const IX_PLACEHOLDER = '/*@IX_TRACKS@*/[]';
+const MINIFY_OPTS = { compress: { toplevel: false }, mangle: { toplevel: false } };
+let ixInjected = false;
 const engineJs = moduleManifest
   .map((name) => fs.readFileSync(path.join(MODULES_DIR, name), 'utf8'))
   .join('')
   .trim()
-  .replace(IX_PLACEHOLDER, () => JSON.stringify(ixTracks));
-if (ixTracks.length && !engineJs.includes(JSON.stringify(ixTracks))) {
-  throw new Error(`IX_TRACKS placeholder ${IX_PLACEHOLDER} not found in the engine modules`);
-}
+  .replace(IX_PLACEHOLDER, () => { ixInjected = true; return JSON.stringify(ixTracks); });
 console.log(`  ${moduleManifest.length} modules concatenated`);
-const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
+const jsMinified = UglifyJS.minify(engineJs, MINIFY_OPTS);
 
 // ─── 2a. Deferred modules (Plan 5, Phase 5.015) ────────────────────────────
 // Modules listed in modules/deferred-manifest.json are real feature code
@@ -145,9 +144,12 @@ const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false })
 const deferredManifest = JSON.parse(fs.readFileSync(path.join(MODULES_DIR, 'deferred-manifest.json'), 'utf8'));
 // An entry may list several modules as "sources"; they ship concatenated, in order, as one file.
 deferredManifest.forEach(({ source, sources, output }) => {
-  const src = (sources || [source]).map((f) => fs.readFileSync(path.join(MODULES_DIR, f), 'utf8').trim()).join('\n');
+  let src = (sources || [source]).map((f) => fs.readFileSync(path.join(MODULES_DIR, f), 'utf8').trim()).join('\n');
+  if (src.includes(IX_PLACEHOLDER)) {
+    src = src.replace(IX_PLACEHOLDER, () => { ixInjected = true; return JSON.stringify(ixTracks); });
+  }
   source = (sources || [source]).join(' + ');
-  const minified = UglifyJS.minify(src, { compress: false, mangle: false });
+  const minified = UglifyJS.minify(src, MINIFY_OPTS);
   const outPath = path.join(ROOT, 'public', 'js', output);
   if (minified.error) {
     console.error(`  ⚠  ${source} minification failed, shipping unminified:`, minified.error.message);
@@ -157,6 +159,9 @@ deferredManifest.forEach(({ source, sources, output }) => {
     write(outPath, minified.code);
   }
 });
+if (ixTracks.length && !ixInjected) {
+  throw new Error(`IX_TRACKS placeholder ${IX_PLACEHOLDER} not found in engine or deferred modules`);
+}
 
 // ─── 2a-ix. Per-track Interactive Practice data (ADR 0033) ─────────────────
 {
@@ -450,7 +455,7 @@ const baseNjk = `<!DOCTYPE html>
         {left:'\\\\[', right:'\\\\]', display:true},
         {left:'\\\\(', right:'\\\\)', display:false}
       ],
-      ignoredClasses: ['katex', 'katex-display', 'katex-html', 'katex-mathml'],
+      ignoredClasses: ['katex', 'katex-display', 'katex-html', 'katex-mathml', 'sr-only'],
       throwOnError: false
     };
     function decodeEntities(s){
@@ -489,6 +494,7 @@ const baseNjk = `<!DOCTYPE html>
       var list = el.querySelectorAll('.katex-display');
       for(var i=0;i<list.length;i++){
         var d=list[i];
+        if(!d.offsetParent) continue;
         if(d.scrollWidth>d.clientWidth+1){
           if(!d.hasAttribute('tabindex')) d.setAttribute('tabindex','0');
           if(!d.hasAttribute('role')) d.setAttribute('role','region');
@@ -496,8 +502,12 @@ const baseNjk = `<!DOCTYPE html>
         }
       }
     }
+    function defaultScope(){
+      var els = Array.prototype.slice.call(document.querySelectorAll('.chapter.ch-active, .hero, #view-home, .deep-card, .cq-paper, .fep-body, .ix-section, .ix-sec, #pq-overlay'));
+      return els.length ? els : (document.body ? [document.body] : []);
+    }
     function renderEls(elements){
-      (elements || [document.body]).forEach(function(el){
+      (elements || defaultScope()).forEach(function(el){
         if(!el || el.nodeType !== 1) return;
         try { window.renderMathInElement(el, KATEX_OPTS); } catch(e){}
         markScrollableMath(el);
@@ -509,8 +519,9 @@ const baseNjk = `<!DOCTYPE html>
       else { setTimeout(function(){ whenReady(fn); }, 60); }
     }
     function typesetLike(elements, cb){
-      (elements || [document.body]).forEach(function(el){ if(el) markScrollableMath(el); });
-      whenReady(function(){ renderEls(elements); if(cb) cb(); });
+      var targets = elements || defaultScope();
+      targets.forEach(function(el){ if(el) markScrollableMath(el); });
+      whenReady(function(){ renderEls(targets); if(cb) cb(); });
     }
     window.MathJax = {
       typesetPromise: function(elements){
@@ -534,7 +545,8 @@ const baseNjk = `<!DOCTYPE html>
     }
     function queueNode(n){
       if(!n || n.nodeType !== 1) return;
-      if(n.classList && (n.classList.contains('katex') || n.classList.contains('katex-display'))) return;
+      if(n === document.body || n === document.documentElement || n.tagName === 'MAIN') return;
+      if(n.classList && (n.classList.contains('katex') || n.classList.contains('katex-display') || n.classList.contains('sr-only'))) return;
       if(!hasRawMath(n.textContent)) return;
       if(pendingNodes.indexOf(n) === -1) pendingNodes.push(n);
       if(!moTimer) moTimer = setTimeout(flushPending, 30);
@@ -548,7 +560,9 @@ const baseNjk = `<!DOCTYPE html>
           for(var i=0;i<muts.length;i++){
             var m = muts[i];
             if(m.type === 'attributes'){
-              queueNode(m.target);
+              if(m.target && m.target.classList && m.target.classList.contains('chapter') && m.target.classList.contains('ch-active')){
+                queueNode(m.target);
+              }
             } else if(m.addedNodes){
               for(var j=0;j<m.addedNodes.length;j++){
                 var ad = m.addedNodes[j];
@@ -564,7 +578,9 @@ const baseNjk = `<!DOCTYPE html>
     var resizeTimer;
     window.addEventListener('resize', function(){
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function(){ markScrollableMath(document.body); }, 200);
+      resizeTimer = setTimeout(function(){
+        defaultScope().forEach(function(el){ markScrollableMath(el); });
+      }, 200);
     });
   })();
   </script>
@@ -712,7 +728,7 @@ const baseNjk = `<!DOCTYPE html>
             <div class="nav-more-divider"></div>
             <div class="nav-more-section">
               <div class="nav-more-heading">Teacher &amp; Classroom</div>
-              <button type="button" class="nav-more-item" id="teacherModeBtn" onclick="window._ensureTeacherMode?window._ensureTeacherMode().then(function(){window.TeacherMode.toggle();window.closeNavMorePanel&&window.closeNavMorePanel()}):null" title="Teacher Mode">
+              <button type="button" class="nav-more-item" id="teacherModeBtn" onclick="window._ensureTeacherMode?window._ensureTeacherMode().then(function(){window.TeacherMode.toggle()}):null" title="Teacher Mode">
                 <span class="nav-more-item-icon">📐</span>
                 <span class="nav-more-item-text" data-i18n="nav.teacher">Teacher Mode</span>
               </button>
@@ -836,15 +852,15 @@ const baseNjk = `<!DOCTYPE html>
       </div>
       <div class="formula-tabs-wrap">
         <div class="formula-tabs" role="tablist">
-          <button type="button" class="formula-tab-pill active" data-curriculum="sat" onclick="window.CSFormula&&window.CSFormula.setTab('sat', this)">🇺🇸 Digital SAT &amp; ACT</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="cambridge" onclick="window.CSFormula&&window.CSFormula.setTab('cambridge', this)">🇬🇧 Cambridge IGCSE 0580</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="addmath" onclick="window.CSFormula&&window.CSFormula.setTab('addmath', this)">🇬🇧 Additional Maths (0606/4PM1)</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="alevel" onclick="window.CSFormula&&window.CSFormula.setTab('alevel', this)">🇬🇧 Cambridge A-Level (MF19) &amp; IB</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="qudrat" onclick="window.CSFormula&&window.CSFormula.setTab('qudrat', this)">🇸🇦 قدرات وتحصيلي (Qudrat &amp; Tahsili)</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="ap" onclick="window.CSFormula&&window.CSFormula.setTab('ap', this)">📊 AP Calculus &amp; Statistics</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="olympiad" onclick="window.CSFormula&&window.CSFormula.setTab('olympiad', this)">🏆 Olympiad &amp; Contest Math</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="univ" onclick="window.CSFormula&&window.CSFormula.setTab('univ', this)">🎓 University Math (LinAlg/MVC/ODEs)</button>
-          <button type="button" class="formula-tab-pill" data-curriculum="mathai" onclick="window.CSFormula&&window.CSFormula.setTab('mathai', this)">🤖 Math for AI &amp; Data Science</button>
+          <button type="button" role="tab" aria-selected="true" class="formula-tab-pill active" data-curriculum="sat" onclick="window.CSFormula&&window.CSFormula.setTab('sat', this)">🇺🇸 Digital SAT &amp; ACT</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="cambridge" onclick="window.CSFormula&&window.CSFormula.setTab('cambridge', this)">🇬🇧 Cambridge IGCSE 0580</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="addmath" onclick="window.CSFormula&&window.CSFormula.setTab('addmath', this)">🇬🇧 Additional Maths (0606/4PM1)</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="alevel" onclick="window.CSFormula&&window.CSFormula.setTab('alevel', this)">🇬🇧 Cambridge A-Level (MF19) &amp; IB</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="qudrat" onclick="window.CSFormula&&window.CSFormula.setTab('qudrat', this)">🇸🇦 قدرات وتحصيلي (Qudrat &amp; Tahsili)</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="ap" onclick="window.CSFormula&&window.CSFormula.setTab('ap', this)">📊 AP Calculus &amp; Statistics</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="olympiad" onclick="window.CSFormula&&window.CSFormula.setTab('olympiad', this)">🏆 Olympiad &amp; Contest Math</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="univ" onclick="window.CSFormula&&window.CSFormula.setTab('univ', this)">🎓 University Math (LinAlg/MVC/ODEs)</button>
+          <button type="button" role="tab" aria-selected="false" class="formula-tab-pill" data-curriculum="mathai" onclick="window.CSFormula&&window.CSFormula.setTab('mathai', this)">🤖 Math for AI &amp; Data Science</button>
         </div>
       </div>
       <div id="formulaBody" class="formula-body"></div>
@@ -1360,12 +1376,13 @@ const baseNjk = `<!DOCTYPE html>
   <script defer src="${BASE_PATH}/js/forms-api.js"></script>
   <script defer src="${BASE_PATH}/js/quiz-capture-ui.js"></script>
 
-  <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
-  <script src="${BASE_PATH}/js/engine.js?v=20261026b"></script>
-  <!-- This track's canvas explorers (src/scripts/explorers/{track}.js, ADR 0039): loaded only
-       where they are used, right after engine.js so they register before init() runs.
+  <!-- Engine JS (src/scripts/engine.js — the site's core application logic) -->
+  <script src="${BASE_PATH}/js/engine.js"></script>
+  <script src="${BASE_PATH}/js/study-hub-extras.js"></script>
+  <!-- Interactive activities, universal graph explorers, and per-track canvas explorers (ADR 0039):
+       loaded only where they are used, right after engine.js so they register before init() runs.
        The dev content preview renders every track, so it loads them all. -->
-  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js?v=20261026b"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js?v=20261026b"></script>{% endif %}
+  {% if trackId == 'dev-content-preview' %}<script src="${BASE_PATH}/js/ix-engine.js"></script><script src="${BASE_PATH}/js/universal-graph-explorers.js"></script>{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js"></script>{% endfor %}{% elif trackId in explorerTracks %}{% if trackId != 'home' %}<script src="${BASE_PATH}/js/ix-engine.js"></script><script src="${BASE_PATH}/js/universal-graph-explorers.js"></script>{% endif %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js"></script>{% endif %}
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):

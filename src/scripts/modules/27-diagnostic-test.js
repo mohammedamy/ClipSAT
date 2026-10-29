@@ -329,9 +329,10 @@
     var f = q.figure || q.fig || q.table;
     if (!f) return '';
     if (typeof f === 'string') return '<div class="cs-diag-figure">' + f + '</div>';
-    if (f.type === 'table' || f.headers || f.rows) {
-      var hdrs = (f.headers || []).map(function(th) { return '<th>' + formatMath(th != null ? String(th) : '') + '</th>'; }).join('');
-      var rws = (f.rows || f.data || []).map(function(r) {
+    if (f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)) {
+      var hdrs = (Array.isArray(f.headers) ? f.headers : []).map(function(th) { return '<th>' + formatMath(th != null ? String(th) : '') + '</th>'; }).join('');
+      var rawRows = Array.isArray(f.rows) ? f.rows : (Array.isArray(f.data) ? f.data : []);
+      var rws = rawRows.map(function(r) {
         return '<tr>' + (Array.isArray(r) ? r.map(function(c) { return '<td>' + formatMath(c != null ? String(c) : '') + '</td>'; }).join('') : '<td>' + formatMath(r != null ? String(r) : '') + '</td>') + '</tr>';
       }).join('');
       return '<div class="cs-diag-figure"><table class="exam-table">' + (hdrs ? '<thead><tr>' + hdrs + '</tr></thead>' : '') + '<tbody>' + rws + '</tbody></table></div>';

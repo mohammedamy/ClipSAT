@@ -11,11 +11,11 @@
 (function(){
   var MARK='data-scroll-focus';
   function sync(root){
-    var nodes=(root||document).querySelectorAll('.katex-display');
+    var nodes=(root||document).querySelectorAll('.katex-display, .readout .v, .readrow .v, .table-wrap');
     for(var i=0;i<nodes.length;i++){
       var el=nodes[i];
       if(el.offsetParent===null) continue; // hidden: its width is unknown until shown
-      var overflows=el.scrollWidth>el.clientWidth+1;
+      var overflows=(el.scrollWidth>el.clientWidth)||(el.scrollHeight>el.clientHeight);
       if(overflows && !el.hasAttribute('tabindex')){
         el.setAttribute('tabindex','0'); el.setAttribute(MARK,'1');
       } else if(!overflows && el.getAttribute(MARK)==='1'){

@@ -88,7 +88,8 @@
     clone.querySelectorAll('.katex-display, .katex').forEach(function(kEl){
       if(!kEl.parentNode) return;
       var ann = kEl.querySelector('annotation[encoding="application/x-tex"]');
-      var tex = ann ? ann.textContent : '';
+      var innerK = kEl.classList.contains('katex') ? kEl : kEl.querySelector('.katex');
+      var tex = ann ? ann.textContent : ((innerK && innerK.getAttribute('data-tex')) || kEl.getAttribute('data-tex') || '');
       if(tex){
         var isDisp = kEl.classList.contains('katex-display');
         var node = document.createTextNode(isDisp ? (' \\[' + tex + '\\] ') : (' \\(' + tex + '\\) '));
@@ -263,8 +264,8 @@
     /* 1. Check all .katex spans inside card for accidental currency-pair prose rendering */
     card.querySelectorAll('.katex').forEach(function(kEl){
       var ann = kEl.querySelector('annotation[encoding="application/x-tex"]');
-      if(!ann) return;
-      var tex = ann.textContent || '';
+      var tex = ann ? (ann.textContent || '') : (kEl.getAttribute('data-tex') || '');
+      if(!tex) return;
       var stripped = tex.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, ' ');
       /* Detect currency span like "2,400. If adult tickets cost " or 3+ English prose words without \text */
       if(/^\d[\d,]*(?:\.\d+)?\s*(?:[.,;:!?)%]|\s+[a-zA-Z]{2,})/.test(tex) && /[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped)){
@@ -363,8 +364,8 @@
     var hasBrokenKatex = false;
     card.querySelectorAll('.katex').forEach(function(kEl){
       var ann = kEl.querySelector('annotation[encoding="application/x-tex"]');
-      if(!ann) return;
-      var tex = ann.textContent || '';
+      var tex = ann ? (ann.textContent || '') : (kEl.getAttribute('data-tex') || '');
+      if(!tex) return;
       var stripped = tex.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, ' ');
       if(/^\d[\d,]*(?:\.\d+)?\s*(?:[.,;:!?)%]|\s+[a-zA-Z]{2,})/.test(tex) && /[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped)){
         hasBrokenKatex = true;

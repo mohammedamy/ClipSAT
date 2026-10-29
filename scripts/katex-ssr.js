@@ -56,6 +56,15 @@ function decodeHtmlEntities(s) {
     .replace(/&amp;/g, '&');
 }
 
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function renderChunkMath(text, warn) {
   if (!text || (text.indexOf('\\(') === -1 && text.indexOf('\\[') === -1)) return text;
   return text.replace(MATH_RE, (rawDelimited, inlineSrc, displaySrc) => {
@@ -72,9 +81,21 @@ function renderChunkMath(text, warn) {
       };
       let rendered;
       try {
-        rendered = katex.renderToString(src, { displayMode: isDisplay, throwOnError: false, strict: false });
+        rendered = katex.renderToString(src, {
+          displayMode: isDisplay,
+          output: 'html',
+          throwOnError: false,
+          strict: false
+        });
       } finally {
         console.warn = origWarn;
+      }
+      if (rendered.indexOf('<span class="katex">') !== -1) {
+        const escSrc = escapeHtml(src);
+        rendered = rendered.replace(
+          '<span class="katex">',
+          () => `<span class="katex" data-tex="${escSrc}"><span class="sr-only">${escSrc}</span>`
+        );
       }
       RENDER_CACHE.set(cacheKey, rendered);
       return rendered;

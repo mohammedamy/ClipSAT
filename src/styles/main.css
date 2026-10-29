@@ -49,7 +49,7 @@
       fully custom-styled below; iOS Safari's picker doesn't have this gap, which is
       why the low-contrast text only showed up on Windows). */
     --paper:#FAF7F2; --paper-2:#F2ECE1; --panel:#FFFFFF;
-    --ink:#111622; --muted:#4B5668; --faint:#64748B;
+    --ink:#111622; --ink-2:#334155; --muted:#4B5668; --faint:#64748B;
     --line:#DFD7CB; --grid:#E8E1D5;
     --indigo:#132746; --indigo-2:#1E3E70; --indigo-soft:rgba(19,39,70,.06);
     --amber:#9E6515; --amber-2:#B8781B; --amber-soft:rgba(158,101,21,.10);
@@ -110,7 +110,7 @@
     --border:#1C2436; --border-strong:#2A3650;
     --line:#1C2436; --grid:#171E2D;
     --text-1:#EEF2F6; --text-2:#94A3B8; --text-3:#8292AA; /* a11y: clears 4.5:1 on both dark surfaces */
-    --ink:#EEF2F6; --muted:#94A3B8; --faint:#8292AA;
+    --ink:#EEF2F6; --ink-2:#E2E8F0; --muted:#94A3B8; --faint:#8292AA;
     --indigo:#7DA4E8; --indigo-2:#93B8FA;
     --indigo-50:rgba(125,164,232,.14); --indigo-soft:rgba(125,164,232,.14);
     --amber:#F59E0B; --amber-2:#FBBF24; --amber-text:#FBBF24;
@@ -708,7 +708,7 @@
   .readrow.indigo{background:var(--indigo-soft); color:var(--indigo)}
   .readrow.amber{background:var(--amber-soft); color:var(--amber-text)}
   .readrow>span:first-child{flex:0 1 auto}
-  .readrow .v{font-weight:650; flex:0 1 auto; margin-left:auto; text-align:right; max-width:100%; overflow-x:auto; white-space:nowrap}
+  .readrow .v{font-weight:650; flex:0 1 auto; margin-left:auto; text-align:right; max-width:100%; overflow-x:auto; overflow-y:hidden; white-space:nowrap}
   .chk{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.84rem; color:var(--muted); cursor:pointer}
   .chk input{width:16px; height:16px; accent-color:var(--amber)}
 
@@ -1971,7 +1971,7 @@ body.dark .cq-score-bar{background:#1E3A6E;}
   @media print{.pp-card{display:none;}}
 
 /* ===== DARK MODE ===== */
-body.dark{color-scheme:dark;--paper:#0B0E14;--paper-2:#101622;--panel:#141B29;--ink:#ECEFE8;--muted:#94A3B8;--faint:#8494AD;--line:#1E273A;--grid:#151D2C;--indigo:#60A5FA;--indigo-2:#93C5FD;--indigo-soft:rgba(96,165,250,.15);--amber:#FBBF24;--amber-2:#FDE68A;--amber-soft:rgba(251,191,36,.15);--amber-text:#FBBF24;--ok:#4ADE80;--teal:#2DD4BF;--fig-bg:var(--paper);--fig-border:var(--line);--fig-ink:var(--ink);--fig-muted:var(--muted);--fig-grid:var(--grid);--fig-indigo:var(--indigo);--fig-indigo-2:var(--indigo-2);--fig-indigo-soft:var(--indigo-soft);--fig-indigo-fill2:rgba(96,165,250,.22);--fig-amber:var(--amber);--fig-amber-text:var(--amber-text);--fig-amber-soft:var(--amber-soft);--fig-teal:var(--teal);--fig-purple:#A78BFA;--fig-rose:#FB7185;--shadow:0 1px 3px rgba(0,0,0,.6),0 8px 28px rgba(0,0,0,.45);--bg-page:#0B0E14;--bg-surface:#141B29;--bg-subtle:#172030;background:var(--paper);color:var(--ink);}
+body.dark{color-scheme:dark;--paper:#0B0E14;--paper-2:#101622;--panel:#141B29;--ink:#ECEFE8;--ink-2:#E2E8F0;--muted:#94A3B8;--faint:#8494AD;--line:#1E273A;--grid:#151D2C;--indigo:#60A5FA;--indigo-2:#93C5FD;--indigo-soft:rgba(96,165,250,.15);--amber:#FBBF24;--amber-2:#FDE68A;--amber-soft:rgba(251,191,36,.15);--amber-text:#FBBF24;--ok:#4ADE80;--teal:#2DD4BF;--fig-bg:var(--paper);--fig-border:var(--line);--fig-ink:var(--ink);--fig-muted:var(--muted);--fig-grid:var(--grid);--fig-indigo:var(--indigo);--fig-indigo-2:var(--indigo-2);--fig-indigo-soft:var(--indigo-soft);--fig-indigo-fill2:rgba(96,165,250,.22);--fig-amber:var(--amber);--fig-amber-text:var(--amber-text);--fig-amber-soft:var(--amber-soft);--fig-teal:var(--teal);--fig-purple:#A78BFA;--fig-rose:#FB7185;--shadow:0 1px 3px rgba(0,0,0,.6),0 8px 28px rgba(0,0,0,.45);--bg-page:#0B0E14;--bg-surface:#141B29;--bg-subtle:#172030;background:var(--paper);color:var(--ink);}
 body.dark .site{background:rgba(11,14,20,.88);border-bottom:1px solid #1E273A;}
 body.dark .hero{background:var(--paper);}
 body.dark .hero p.lede{color:var(--muted);}
@@ -2749,9 +2749,9 @@ body.dark .m-quiz-btn:hover{background:rgba(34,197,94,.26)}
   justify-content: flex-start;
 }
 .ix-mp-toggle-btn {
-  background: rgba(47, 111, 196, 0.08);
-  border: 1px solid rgba(47, 111, 196, 0.2);
-  color: var(--accent, #2f6fc4);
+  background: rgba(29, 78, 216, 0.08);
+  border: 1px solid rgba(29, 78, 216, 0.22);
+  color: #1d4ed8;
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
@@ -6501,10 +6501,11 @@ body.cbt-open .wb-toolbar,
 /* ── Cookie & Advertising Consent Banner ─────────────────────────────────── */
 .cookie-consent-bar {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  max-width: 460px;
-  width: calc(100% - 40px);
+  bottom: 16px;
+  right: 92px;
+  left: auto;
+  max-width: 440px;
+  width: calc(100% - 112px);
   background: var(--paper-2, #1e293b);
   border: 1.5px solid var(--line, #334155);
   border-radius: 12px;
@@ -6514,6 +6515,10 @@ body.cbt-open .wb-toolbar,
   font-family: var(--sans);
   color: var(--ink);
   transition: transform .25s ease-out, opacity .25s ease-out;
+}
+body.rtl .cookie-consent-bar {
+  right: auto;
+  left: 92px;
 }
 .cookie-consent-inner {
   display: flex;

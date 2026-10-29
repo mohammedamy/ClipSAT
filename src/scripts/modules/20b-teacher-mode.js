@@ -52,11 +52,11 @@
           +' <button onclick="window.TeacherMode.exportPDF()">'+_tt('tmPrintChapterPdf')+'</button>'
           +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
           +' <button onclick="window.TeacherMode.downloadChapterDocx()">'+_tt('tmChapterDocx')+'</button>'
-          +' <button onclick="window.TeacherMode.openAssignment()">'+_tt('tmAssignment')+'</button>'
+          +' <button onclick="window.CSAssign?window.CSAssign.open():window.TeacherMode.openAssignment()">'+_tt('tmAssignment')+'</button>'
           +' <button onclick="window.TeacherMode.openCustomCart()">🧰 '+(_ttAr()?'مصمم أوراق العمل':'Custom Builder')+'</button>'
           +' <button onclick="window.TeacherMode.openGradebook()">📊 '+(_ttAr()?'سجل الدرجات':'Gradebook')+'</button>'
-          +' <button onclick="window.TeacherMode.openWhiteboard()">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
-          +' <button onclick="window.TeacherMode.generateProgressReport()">'+_tt('tmProgressReport')+'</button>'
+          +' <button id="teacherWhiteboardBtn" onclick="window.TeacherMode.openWhiteboard()">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
+          +' <button onclick="window.CSReport?window.CSReport.generate():window.TeacherMode.generateProgressReport()">'+_tt('tmProgressReport')+'</button>'
           +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
         document.body.appendChild(bar);
 

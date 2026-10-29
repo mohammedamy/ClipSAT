@@ -34,9 +34,36 @@ window.CSExport=(function(){
     s=s.replace(/[{}]/g,'').replace(/\\\\/g,' ').replace(/\\([A-Za-z]+)/g,'$1');
     return s.replace(/[ \t]+/g,' ').replace(/ *\n */g,'\n').trim();
   }
+  function _restoreKatexTex(html){
+    if(!html||html.indexOf('katex')===-1) return html||'';
+    var s=String(html), out='', idx=0;
+    while(idx<s.length){
+      var kIdx=s.indexOf('<span class="katex',idx);
+      if(kIdx===-1){ out+=s.slice(idx); break; }
+      out+=s.slice(idx,kIdx);
+      var isDisplay=s.slice(kIdx,kIdx+35).indexOf('katex-display')!==-1;
+      var depth=0, tagRe=/<\/?span\b[^>]*>/gi, m, endIdx=-1;
+      tagRe.lastIndex=kIdx;
+      while((m=tagRe.exec(s))!==null){
+        if(m[0].charAt(1)==='/'){ depth--; if(depth===0){ endIdx=tagRe.lastIndex; break; } }
+        else depth++;
+      }
+      if(endIdx===-1){ out+=s.slice(kIdx); break; }
+      var block=s.slice(kIdx,endIdx);
+      var ann=block.match(/<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/i);
+      var dt=!ann&&block.match(/\bdata-tex=(?:"([^"]*)"|'([^']*)')/i);
+      var raw=ann?ann[1]:(dt?(dt[1]!==undefined?dt[1]:dt[2]):null);
+      if(raw!==null){
+        var tex=raw.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&');
+        out+=isDisplay?(' \\['+tex+'\\] '):(' \\('+tex+'\\) ');
+      }
+      idx=endIdx;
+    }
+    return out;
+  }
   function htmlToText(html){
     if(!html) return '';
-    var t=html.replace(/<\s*br\s*\/?>/gi,'\n').replace(/<\/(p|div|li)>/gi,'\n').replace(/<[^>]+>/g,'');
+    var t=_restoreKatexTex(html).replace(/<\s*br\s*\/?>/gi,'\n').replace(/<\/(p|div|li)>/gi,'\n').replace(/<[^>]+>/g,'');
     var ta=document.createElement('textarea'); ta.innerHTML=t; return ta.value;
   }
   function clean(el){ if(!el) return ''; var raw=el.getAttribute('data-raw'); if(raw==null) raw=el.innerHTML; return texToUnicode(htmlToText(raw)).replace(/\n{3,}/g,'\n\n').trim(); }

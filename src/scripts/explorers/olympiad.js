@@ -104,9 +104,9 @@
       if(chApi) chApi.notify({ a: a, b: b });
     }
 
-    var redraw = K.register(canvas, draw);
-    if(s0) s0.addEventListener('input', redraw);
-    if(s1) s1.addEventListener('input', redraw);
+    var redraw = K.register(canvas, draw) || function(){ K.redrawAll(); };
+    if(s0){ s0.addEventListener('input', redraw); s0.addEventListener('change', redraw); }
+    if(s1){ s1.addEventListener('input', redraw); s1.addEventListener('change', redraw); }
 
     if(cfg.drag){
       K.makeDraggable(canvas, function(px, py){
@@ -616,13 +616,14 @@
         r0: '(' + fmt(ah, 2) + ', ' + fmt(bc, 2) + ')',
         r1: fmt(inv, 2) + ' = 4R²',
         r2: fmt(radHD, 2) + ' = R',
-        desc: 'Sylvester OH⃗ = OA⃗ + OB⃗ + OC⃗ ⇒ AH² + BC² = ' + fmt(inv, 2),
+        desc: 'At θ_A = ' + fmt(thA, 0) + '°, A = (' + fmt(A[0], 2) + ', ' + fmt(A[1], 2) + ') and H = (' + fmt(H[0], 2) + ', ' + fmt(H[1], 2) + ') | Sylvester OH⃗ = OA⃗ + OB⃗ + OC⃗ ⇒ AH² + BC² = ' + fmt(inv, 2),
         rows: [
-          ['Circumradius R', '4.00'],
+          ['Vertex A (θ_A = ' + fmt(thA, 0) + '°)', '(' + fmt(A[0], 2) + ', ' + fmt(A[1], 2) + ')'],
+          ['Orthocenter H', '(' + fmt(H[0], 2) + ', ' + fmt(H[1], 2) + ')'],
           ['Distance AH', fmt(ah, 3)],
           ['Opposite Side BC', fmt(bc, 3)],
-          ['Invariant AH² + BC²', fmt(inv, 2) + ' (= 64.00)'],
-          ['Distance |OH_D|', fmt(radHD, 3) + ' (lies on ω!)']
+          ['Invariant AH² + BC²', fmt(inv, 2) + ' (= 4R² = 64.00)'],
+          ['Reflected H_D on ω (|OH_D|)', '(' + fmt(HD[0], 2) + ', ' + fmt(HD[1], 2) + ')  [R = ' + fmt(radHD, 2) + ']']
         ]
       };
     }
