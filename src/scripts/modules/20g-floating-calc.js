@@ -63,6 +63,26 @@
   var _apiCalc = null;
   var _apiMode = null;
   var _themeObserver = null;
+  var _pendingExpressions = [];
+
+  function _flushPendingExpressions(){
+    if(!_apiCalc || typeof _apiCalc.setExpression !== 'function' || !_pendingExpressions.length) return;
+    var queue = _pendingExpressions.slice();
+    _pendingExpressions = [];
+    queue.forEach(function(item){
+      if(item && item.clear && typeof _apiCalc.setBlank === 'function'){
+        try { _apiCalc.setBlank(); } catch(e){}
+      } else if(item && item.latex){
+        try {
+          _apiCalc.setExpression({
+            id: item.id || ('expr_' + Date.now() + '_' + Math.random().toString(36).slice(2,6)),
+            latex: item.latex,
+            color: item.color || '#2563eb'
+          });
+        } catch(e){}
+      }
+    });
+  }
 
   var MODES = {
     graphing: {
@@ -564,6 +584,7 @@
 
       if(_apiCalc && _apiMode === mode){
         if(typeof _apiCalc.resize === 'function') _apiCalc.resize();
+        _flushPendingExpressions();
         return;
       }
 
@@ -607,6 +628,7 @@
       }
       _apiMode = mode;
       _setupThemeObserver();
+      _flushPendingExpressions();
       setTimeout(function(){
         if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
       }, 50);
@@ -824,19 +846,20 @@
       _showCalcLockedToast(_calcLockReason);
       return;
     }
+    _pendingExpressions.push({
+      id: id || ('expr_' + Date.now() + '_' + Math.random().toString(36).slice(2,6)),
+      latex: latex,
+      color: color || '#2563eb'
+    });
     window.openFloatingCalc('graphing');
-    if(_apiCalc && typeof _apiCalc.setExpression === 'function'){
-      _apiCalc.setExpression({
-        id: id || ('expr_' + Date.now()),
-        latex: latex,
-        color: color || '#2563eb'
-      });
-    }
+    _flushPendingExpressions();
   };
 
   window.clearFloatingCalc = function(){
     if(_apiCalc && typeof _apiCalc.setBlank === 'function'){
       _apiCalc.setBlank();
+    } else {
+      _pendingExpressions.push({ clear: true });
     }
   };
 

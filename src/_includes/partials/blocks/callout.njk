@@ -15,11 +15,27 @@
 <div class="example">
   {% if block.label %}<span class="xt">{{ bl.text(block.label) }}</span>{% endif %}
   <p>{{ bl.text(block.body, 'span') }}</p>
+  <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
+    <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
+      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+    </button>
+    <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
+      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+    </button>
+  </div>
 </div>
 {% elif block.style == 'example-card' %}
 <div class="fcard">
   {% if block.label %}<div class="ft">{{ bl.text(block.label) }}</div>{% endif %}
   <p>{{ bl.text(block.body, 'span') }}</p>
+  <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
+    <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
+      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+    </button>
+    <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
+      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+    </button>
+  </div>
 </div>
 {% elif block.style == 'example-grid' %}
 <div class="example">
@@ -28,6 +44,14 @@
       <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; {{ bl.text(block.label) }}</p>
       {{ bl.text(block.body, 'span') }}
     </div>
+  </div>
+  <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
+    <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
+      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+    </button>
+    <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
+      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+    </button>
   </div>
 </div>
 {% elif block.style == 'warn' %}
@@ -61,5 +85,15 @@
 <div class="callout {{ block.style }}">
   {% if block.label %}<span class="lab">{{ bl.text(block.label) }}{% if block.copyLatex %} <button class="copy-eq-btn" type="button" data-latex="{{ block.copyLatex }}">📋 Copy LaTeX</button>{% endif %}</span>{% endif %}
   {{ bl.text(block.body, 'div') }}
+  {% if block.style == 'ex' %}
+  <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
+    <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
+      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+    </button>
+    <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
+      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+    </button>
+  </div>
+  {% endif %}
 </div>
 {% endif %}

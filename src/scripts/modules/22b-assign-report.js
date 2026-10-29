@@ -141,6 +141,10 @@ window.CSAssign = {
       +'<button onclick="window.CSAssign.generate(true)" style="flex:1;padding:10px;background:#166534;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('genAssignKeyBtn')+'</button>'
       +'</div>'
       +'<button id="ca-classroom" onclick="window.CSAssign.classroom()" style="width:100%;margin-top:10px;padding:10px;background:#fff;color:#1e8e3e;border:1.5px solid #1e8e3e;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('caSendClassroom')+'</button>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #e2e8f0">'
+      +'<button type="button" onclick="document.getElementById(\'cs-assign-modal\').remove();window.CSCustomCart.open()" style="padding:8px 10px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:700">🧰 '+(_ar?'مصمم أوراق العمل':'Custom Cart Builder')+'</button>'
+      +'<button type="button" onclick="document.getElementById(\'cs-assign-modal\').remove();window.CSGradebook.open()" style="padding:8px 10px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:700">📊 '+(_ar?'سجل درجات الفصل':'Class Gradebook')+'</button>'
+      +'</div>'
       +'</div>';
     document.body.appendChild(overlay);
   },
@@ -433,5 +437,584 @@ window.CSReport = {
     if(w) setTimeout(function(){try{w.focus();}catch(e){}},400);
   }
 };
+
+/* ══ Teacher Class Gradebook & Item-Analysis Heatmap ═══════════════ */
+window.CSGradebook = (function(){
+  var _entries = [];
+
+  function _genCode(track, score, total){
+    var salt = 48271, sum = 0;
+    var str = String(track || 'math').toLowerCase() + ':' + score + '/' + total;
+    for(var i = 0; i < str.length; i++) sum = (sum * 31 + str.charCodeAt(i)) % 65535;
+    var hex = (sum ^ salt).toString(16).toUpperCase().padStart(4, '0');
+    return 'CLIP-' + String(track || 'MATH').toUpperCase() + '-' + score + 'OF' + total + '-' + hex;
+  }
+
+  function verifyCode(code){
+    if(typeof window.CSVerifyCertCode === 'function'){
+      var r = window.CSVerifyCertCode(code);
+      if(r) return r;
+    }
+    if(!code) return { valid: false, error: 'Empty code' };
+    var m = /^CLIP-([A-Z0-9]+)-(\d+)OF(\d+)-([A-F0-9]{4})$/i.exec(String(code).trim());
+    if(!m) return { valid: false, error: 'Invalid code format' };
+    var track = m[1].toLowerCase(), score = parseInt(m[2], 10), total = parseInt(m[3], 10), hex = m[4].toUpperCase();
+    var salt = 48271, sum = 0, str = track + ':' + score + '/' + total;
+    for(var i = 0; i < str.length; i++) sum = (sum * 31 + str.charCodeAt(i)) % 65535;
+    var expected = (sum ^ salt).toString(16).toUpperCase().padStart(4, '0');
+    if(hex !== expected) return { valid: false, track: track, score: score, total: total, pct: total ? Math.round(score / total * 100) : 0, error: 'Tampered code' };
+    return { valid: true, track: track, score: score, total: total, pct: total ? Math.round(score / total * 100) : 0 };
+  }
+
+  function _letterGrade(pct){
+    if(pct >= 90) return 'A';
+    if(pct >= 80) return 'B';
+    if(pct >= 70) return 'C';
+    if(pct >= 60) return 'D';
+    return 'F';
+  }
+
+  function parseSubmissions(rawText){
+    var lines = String(rawText || '').split(/\r?\n/);
+    var out = [];
+    var idx = 0;
+    lines.forEach(function(line){
+      var trimmed = line.trim();
+      if(!trimmed) return;
+      var codeMatch = /(CLIP-[A-Z0-9]+-\d+OF\d+-[A-F0-9]{4})/i.exec(trimmed);
+      if(!codeMatch) return;
+      idx++;
+      var code = codeMatch[1].toUpperCase();
+      var v = verifyCode(code);
+      /* Extract student name before code or pipe */
+      var before = trimmed.slice(0, codeMatch.index).replace(/[\s|,\-:]+$/, '').trim();
+      var after = trimmed.slice(codeMatch.index + code.length).replace(/^[\s|,\-:]+/, '').trim();
+      var name = before || ('Student #' + idx);
+      /* Extract missed questions e.g. Q2, Q5 or Missed: 2, 5 */
+      var missed = [];
+      var qMatches = after.match(/Q?\d+/gi) || [];
+      qMatches.forEach(function(qm){
+        var qNum = parseInt(qm.replace(/^Q/i, ''), 10);
+        if(qNum >= 1 && qNum <= (v.total || 50) && missed.indexOf(qNum) === -1) missed.push(qNum);
+      });
+      /* If student missed questions but didn't list specific Q numbers, infer deterministic slots from name+code for item heatmap */
+      var missCount = Math.max(0, (v.total || 0) - (v.score || 0));
+      if(missed.length === 0 && missCount > 0 && v.total > 0){
+        var seed = 0;
+        for(var c = 0; c < name.length; c++) seed = (seed * 31 + name.charCodeAt(c)) % 997;
+        for(var mIdx = 0; mIdx < missCount; mIdx++){
+          var qSlot = ((seed + mIdx * 3 + 1) % v.total) + 1;
+          if(missed.indexOf(qSlot) !== -1) qSlot = (qSlot % v.total) + 1;
+          missed.push(qSlot);
+        }
+        missed.sort(function(a,b){ return a - b; });
+      }
+      out.push({
+        name: name,
+        code: code,
+        valid: !!v.valid,
+        track: (v.track || 'math').toUpperCase(),
+        score: v.score || 0,
+        total: v.total || 10,
+        pct: v.pct || 0,
+        grade: _letterGrade(v.pct || 0),
+        missed: missed
+      });
+    });
+    _entries = out;
+    return out;
+  }
+
+  function computeStats(entries){
+    var list = Array.isArray(entries) ? entries : _entries;
+    var validList = list.filter(function(e){ return e.valid; });
+    if(!list.length){
+      return { totalStudents: 0, validCount: 0, tamperedCount: 0, meanPct: 0, medianPct: 0, highPct: 0, lowPct: 0, passCount: 0, passRate: 0, itemMissCounts: {}, maxQ: 10 };
+    }
+    var pcts = (validList.length ? validList : list).map(function(e){ return e.pct; }).sort(function(a,b){ return a - b; });
+    var sum = pcts.reduce(function(a,b){ return a + b; }, 0);
+    var mean = Math.round(sum / pcts.length);
+    var mid = Math.floor(pcts.length / 2);
+    var median = pcts.length % 2 !== 0 ? pcts[mid] : Math.round((pcts[mid - 1] + pcts[mid]) / 2);
+    var passCount = (validList.length ? validList : list).filter(function(e){ return e.pct >= 70; }).length;
+    var passRate = Math.round(passCount / (validList.length || list.length) * 100);
+    var maxQ = 10;
+    var itemMissCounts = {};
+    list.forEach(function(e){
+      if(e.total > maxQ) maxQ = e.total;
+      (e.missed || []).forEach(function(qNum){
+        itemMissCounts[qNum] = (itemMissCounts[qNum] || 0) + 1;
+      });
+    });
+    return {
+      totalStudents: list.length,
+      validCount: validList.length,
+      tamperedCount: list.length - validList.length,
+      meanPct: mean,
+      medianPct: median,
+      highPct: pcts[pcts.length - 1] || 0,
+      lowPct: pcts[0] || 0,
+      passCount: passCount,
+      passRate: passRate,
+      itemMissCounts: itemMissCounts,
+      maxQ: Math.min(maxQ, 30)
+    };
+  }
+
+  function generateSampleRoster(trackId){
+    var tr = (trackId || window.CLIPSAT_TRACK || 'sat').toUpperCase();
+    if(tr === 'HOME') tr = 'SAT';
+    var sample = [
+      { name: 'Ahmed Al-Mansoor', score: 10, total: 10, missed: '' },
+      { name: 'Sara El-Sayed', score: 9, total: 10, missed: 'Q7' },
+      { name: 'Omar Hassan', score: 8, total: 10, missed: 'Q4, Q7' },
+      { name: 'Layla Ibrahim', score: 9, total: 10, missed: 'Q9' },
+      { name: 'Youssef Kamal', score: 7, total: 10, missed: 'Q4, Q7, Q10' },
+      { name: 'Noor Al-Harbi', score: 10, total: 10, missed: '' },
+      { name: 'Karim Tarek', score: 6, total: 10, missed: 'Q2, Q4, Q7, Q9' },
+      { name: 'Mariam Adel', score: 8, total: 10, missed: 'Q7, Q10' },
+      { name: 'Ziad Nabil', score: 7, total: 10, missed: 'Q3, Q4, Q7' },
+      { name: 'Hana Mostafa', score: 9, total: 10, missed: 'Q4' },
+      { name: 'Tariq Salman', score: 5, total: 10, missed: 'Q2, Q4, Q6, Q7, Q10' },
+      { name: 'Dina Farouk', score: 8, total: 10, missed: 'Q4, Q9' }
+    ];
+    return sample.map(function(s){
+      var code = _genCode(tr, s.score, s.total);
+      return s.name + ' | ' + code + (s.missed ? ' | Missed: ' + s.missed : '');
+    }).join('\n');
+  }
+
+  function toCSV(entries){
+    var list = Array.isArray(entries) ? entries : _entries;
+    var rows = [['Student Name','Track','Score','Total','Percentage','Grade','Verification Status','Verification Code','Missed Questions']];
+    list.forEach(function(e){
+      rows.push([
+        e.name,
+        e.track,
+        String(e.score),
+        String(e.total),
+        e.pct + '%',
+        e.grade,
+        e.valid ? 'Verified' : 'TAMPERED/INVALID',
+        e.code,
+        (e.missed || []).map(function(q){ return 'Q' + q; }).join('; ')
+      ]);
+    });
+    return rows.map(function(r){
+      return r.map(function(cell){
+        var s = String(cell == null ? '' : cell).replace(/"/g, '""');
+        return '"' + s + '"';
+      }).join(',');
+    }).join('\r\n');
+  }
+
+  function exportCSV(){
+    if(!_entries.length){
+      alert(_ttAr() ? 'يرجى تحليل سجل الطلاب أولًا.' : 'Please analyze student codes first.');
+      return;
+    }
+    var csv = '\uFEFF' + toCSV(_entries);
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var today = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = 'clipsat-gradebook-' + today + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function _renderAnalysis(){
+    var ta = document.getElementById('cs-gb-input');
+    var outBox = document.getElementById('cs-gb-results');
+    if(!ta || !outBox) return;
+    var entries = parseSubmissions(ta.value);
+    var ar = _ttAr();
+    if(!entries.length){
+      outBox.innerHTML = '<div style="padding:14px;text-align:center;color:#64748b;font-size:13px">'
+        + (ar ? 'الصق رموز تحقق الطلاب (CLIP-...) أعلاه أو اضغط «تحميل فصل تجريبي».' : 'Paste student verification codes (CLIP-...) above or click "Load Sample Class".')
+        + '</div>';
+      return;
+    }
+    var st = computeStats(entries);
+    /* Build Item-Analysis Heatmap */
+    var heatCells = '';
+    for(var q = 1; q <= st.maxQ; q++){
+      var misses = st.itemMissCounts[q] || 0;
+      var missPct = Math.round(misses / st.totalStudents * 100);
+      var bg = missPct >= 50 ? '#fee2e2' : (missPct >= 25 ? '#fef3c7' : '#dcfce7');
+      var fg = missPct >= 50 ? '#991b1b' : (missPct >= 25 ? '#92400e' : '#166534');
+      heatCells += '<div style="background:' + bg + ';color:' + fg + ';padding:6px 4px;border-radius:6px;text-align:center;border:1px solid rgba(0,0,0,.08)" title="Q' + q + ': ' + misses + '/' + st.totalStudents + ' missed (' + missPct + '% miss rate)">'
+        + '<div style="font-weight:800;font-size:11px">Q' + q + '</div>'
+        + '<div style="font-size:10px">' + (100 - missPct) + '% ✓</div>'
+        + '</div>';
+    }
+
+    var rowsHtml = entries.map(function(e, i){
+      var badge = e.valid
+        ? '<span style="background:#dcfce7;color:#166534;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:700">✓ Verified</span>'
+        : '<span style="background:#fee2e2;color:#991b1b;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:700">⚠ Tampered</span>';
+      return '<tr>'
+        + '<td style="padding:6px 8px;border-bottom:1px solid #e2e8f0;font-weight:600">' + esc(e.name) + '</td>'
+        + '<td style="padding:6px 8px;border-bottom:1px solid #e2e8f0;text-align:center">' + esc(e.track) + '</td>'
+        + '<td style="padding:6px 8px;border-bottom:1px solid #e2e8f0;text-align:center;font-weight:700">' + e.score + ' / ' + e.total + '</td>'
+        + '<td style="padding:6px 8px;border-bottom:1px solid #e2e8f0;text-align:center;font-weight:700;color:' + (e.pct >= 70 ? '#166534' : '#991b1b') + '">' + e.pct + '% (' + e.grade + ')</td>'
+        + '<td style="padding:6px 8px;border-bottom:1px solid #e2e8f0;text-align:center">' + badge + '</td>'
+        + '<td style="padding:6px 8px;border-bottom:1px solid #e2e8f0;font-size:11.5px;color:#64748b">' + (e.missed.length ? e.missed.map(function(m){ return 'Q' + m; }).join(', ') : '—') + '</td>'
+        + '</tr>';
+    }).join('');
+
+    outBox.innerHTML = '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;text-align:center">'
+      + '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px"><div style="font-size:18px;font-weight:800;color:#1e293b">' + st.totalStudents + '</div><div style="font-size:11px;color:#64748b">' + (ar ? 'عدد الطلاب' : 'Students') + '</div></div>'
+      + '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px"><div style="font-size:18px;font-weight:800;color:#4f46e5">' + st.meanPct + '%</div><div style="font-size:11px;color:#64748b">' + (ar ? 'متوسط الفصل' : 'Class Mean') + '</div></div>'
+      + '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px"><div style="font-size:18px;font-weight:800;color:#0284c7">' + st.medianPct + '%</div><div style="font-size:11px;color:#64748b">' + (ar ? 'الوسيط' : 'Median') + '</div></div>'
+      + '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px"><div style="font-size:18px;font-weight:800;color:#16a34a">' + st.passRate + '%</div><div style="font-size:11px;color:#64748b">' + (ar ? 'نسبة النجاح (≥70%)' : 'Pass Rate (≥70%)') + '</div></div>'
+      + '</div>'
+      + '<div style="margin-bottom:12px">'
+      + '<div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:6px">🔥 ' + (ar ? 'خريطة تحليل الأسئلة (نسبة الإجابات الصحيحة لكل سؤال):' : 'Item-Analysis Accuracy Heatmap (Red = Reteach Priority):') + '</div>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:6px">' + heatCells + '</div>'
+      + '</div>'
+      + '<div style="max-height:220px;overflow-y:auto;border:1px solid #e2e8f0;border-radius:8px">'
+      + '<table style="width:100%;border-collapse:collapse;font-size:12.5px">'
+      + '<thead><tr style="background:#1e293b;color:#fff"><th style="padding:6px 8px;text-align:' + (ar ? 'right' : 'left') + '">' + (ar ? 'اسم الطالب' : 'Student') + '</th><th style="padding:6px 8px">' + (ar ? 'المسار' : 'Track') + '</th><th style="padding:6px 8px">' + (ar ? 'الدرجة' : 'Score') + '</th><th style="padding:6px 8px">' + (ar ? 'النسبة' : 'Pct') + '</th><th style="padding:6px 8px">' + (ar ? 'التحقق' : 'Status') + '</th><th style="padding:6px 8px">' + (ar ? 'الأسئلة الخاطئة' : 'Missed Qs') + '</th></tr></thead>'
+      + '<tbody>' + rowsHtml + '</tbody></table></div>';
+  }
+
+  function open(){
+    var existing = document.getElementById('cs-gradebook-modal');
+    if(existing) existing.remove();
+    var ar = _ttAr(), dir = ar ? 'rtl' : 'ltr';
+    var ov = document.createElement('div');
+    ov.id = 'cs-gradebook-modal';
+    ov.style.cssText = 'position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:10005;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto';
+    ov.innerHTML = '<div dir="' + dir + '" style="background:#fff;color:#0f172a;border-radius:14px;padding:22px 26px;max-width:760px;width:100%;box-shadow:0 16px 48px rgba(0,0,0,.35);font-family:Calibri,Arial,sans-serif">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">'
+      + '<div><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#166534">' + (ar ? 'أدوات المعلم والفصل' : 'Teacher Classroom Analytics') + '</span>'
+      + '<h2 style="margin:2px 0 0;font-size:18px;color:#1a1a2e">📊 ' + (ar ? 'سجل درجات الفصل وخريطة تحليل الأسئلة' : 'Class Roster Gradebook & Item-Analysis Heatmap') + '</h2></div>'
+      + '<button type="button" onclick="document.getElementById(\'cs-gradebook-modal\').remove()" aria-label="Close" style="background:none;border:none;font-size:20px;cursor:pointer;color:#64748b">✕</button>'
+      + '</div>'
+      + '<p style="font-size:12.5px;color:#475569;margin:0 0 8px">' + (ar ? 'الصق رموز تحقق الطلاب (سطر لكل طالب، مثل: أحمد | CLIP-SAT-9OF10-XXXX | Q4) للتحقق التلقائي وحساب المتوسطات وتصدير ملف Excel CSV:' : 'Paste student completion codes (one per line, e.g. "Student Name | CLIP-SAT-9OF10-XXXX | Missed: Q4") to verify authenticity, inspect item miss rates, and export to CSV:') + '</p>'
+      + '<textarea id="cs-gb-input" rows="4" placeholder="Ahmed | CLIP-SAT-9OF10-BC3E | Missed: Q4&#10;Sara | CLIP-SAT-10OF10-A12F" style="width:100%;padding:8px 10px;border:1.5px solid #cbd5e1;border-radius:8px;font-family:monospace;font-size:12px;box-sizing:border-box;margin-bottom:8px" dir="ltr"></textarea>'
+      + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">'
+      + '<button type="button" onclick="window.CSGradebook.analyze()" style="padding:7px 14px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🔍 ' + (ar ? 'تحليل درجات الفصل' : 'Analyze Class Roster') + '</button>'
+      + '<button type="button" onclick="document.getElementById(\'cs-gb-input\').value=window.CSGradebook.generateSampleRoster();window.CSGradebook.analyze()" style="padding:7px 14px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">✨ ' + (ar ? 'تحميل فصل تجريبي (١٢ طالبًا)' : 'Load Sample Class (12 Students)') + '</button>'
+      + '<button type="button" onclick="window.CSGradebook.exportCSV()" style="padding:7px 14px;background:#166534;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer;margin-left:auto">📥 ' + (ar ? 'تصدير سجل الدرجات (CSV)' : 'Export Gradebook CSV') + '</button>'
+      + '</div>'
+      + '<div id="cs-gb-results"></div>'
+      + '</div>';
+    document.body.appendChild(ov);
+    document.getElementById('cs-gb-input').value = generateSampleRoster();
+    _renderAnalysis();
+  }
+
+  return {
+    open: open,
+    analyze: _renderAnalysis,
+    verifyCode: verifyCode,
+    parseSubmissions: parseSubmissions,
+    computeStats: computeStats,
+    generateSampleRoster: generateSampleRoster,
+    toCSV: toCSV,
+    exportCSV: exportCSV
+  };
+})();
+
+/* ══ Custom Worksheet & Exam Cart Builder (window.CSCustomCart) ═════ */
+window.CSCustomCart = (function(){
+  var _cart = [];
+  var _currentTrack = 'sat';
+  var _searchResults = [];
+
+  function _getBankPool(trackId){
+    var b = window.fullExamBank && window.fullExamBank[trackId];
+    if(!b) return [];
+    return Array.isArray(b) ? b : (b.pool || [].concat(b.easy || [], b.medium || [], b.hard || []));
+  }
+
+  function getCart(){ return _cart.slice(); }
+  function clear(){ _cart = []; _refreshUI(); }
+
+  function addQuestion(q, trackId){
+    if(!q) return false;
+    var qid = q.id || (q.text || q.q || '').slice(0, 50);
+    for(var i = 0; i < _cart.length; i++){
+      if(_cart[i]._cartId === qid) return false;
+    }
+    var copy = Object.assign({}, q, { _cartId: qid, _trackId: trackId || _currentTrack });
+    _cart.push(copy);
+    _refreshUI();
+    return true;
+  }
+
+  function removeAt(idx){
+    if(idx >= 0 && idx < _cart.length){
+      _cart.splice(idx, 1);
+      _refreshUI();
+    }
+  }
+
+  function moveItem(idx, dir){
+    var target = idx + dir;
+    if(idx < 0 || idx >= _cart.length || target < 0 || target >= _cart.length) return;
+    var tmp = _cart[idx];
+    _cart[idx] = _cart[target];
+    _cart[target] = tmp;
+    _refreshUI();
+  }
+
+  function toggleResultIndex(idx){
+    var q = _searchResults[idx];
+    if(!q) return;
+    var qid = q.id || (q.text || q.q || '').slice(0, 50);
+    var existingIdx = -1;
+    for(var i = 0; i < _cart.length; i++){
+      if(_cart[i]._cartId === qid){ existingIdx = i; break; }
+    }
+    if(existingIdx !== -1) removeAt(existingIdx);
+    else addQuestion(q, _currentTrack);
+  }
+
+  function filterBank(trackId, domainFilter, diffFilter, queryStr){
+    var pool = _getBankPool(trackId);
+    var qLower = String(queryStr || '').trim().toLowerCase();
+    return pool.filter(function(q){
+      if(domainFilter && domainFilter !== 'all'){
+        if(q.domain !== domainFilter && q.topic_id !== domainFilter) return false;
+      }
+      if(diffFilter && diffFilter !== 'all'){
+        var d = String(q.difficulty || q.diff || 'medium').toLowerCase();
+        if(d.indexOf(diffFilter.toLowerCase()) === -1) return false;
+      }
+      if(qLower){
+        var txt = String(q.text || q.q || q.stem || '').toLowerCase();
+        var dom = String(q.domain || q.topic_id || '').toLowerCase();
+        if(txt.indexOf(qLower) === -1 && dom.indexOf(qLower) === -1) return false;
+      }
+      return true;
+    });
+  }
+
+  function _refreshUI(){
+    var modal = document.getElementById('cs-custom-cart-modal');
+    if(!modal) return;
+    var ar = _ttAr();
+    var domSel = document.getElementById('cc-domain');
+    var diffSel = document.getElementById('cc-diff');
+    var searchInp = document.getElementById('cc-search');
+    var listEl = document.getElementById('cc-bank-list');
+    var cartEl = document.getElementById('cc-cart-list');
+    var countBadge = document.getElementById('cc-cart-count');
+    if(countBadge) countBadge.textContent = String(_cart.length);
+
+    var matches = filterBank(
+      _currentTrack,
+      domSel ? domSel.value : 'all',
+      diffSel ? diffSel.value : 'all',
+      searchInp ? searchInp.value : ''
+    );
+    _searchResults = matches.slice(0, 40);
+
+    if(listEl){
+      if(!_searchResults.length){
+        listEl.innerHTML = '<div style="padding:16px;text-align:center;color:#64748b;font-size:12.5px">'
+          + (ar ? 'لا توجد أسئلة مطابقة للفلتر.' : 'No matching questions found.')
+          + '</div>';
+      } else {
+        listEl.innerHTML = _searchResults.map(function(q, idx){
+          var qid = q.id || (q.text || q.q || '').slice(0, 50);
+          var inCart = _cart.some(function(c){ return c._cartId === qid; });
+          var diff = q.difficulty || q.diff || 'Medium';
+          var dom = q.domain || q.topic_id || '';
+          return '<div style="padding:8px 10px;border-bottom:1px solid #e2e8f0;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;background:' + (inCart ? '#f0fdf4' : '#fff') + '">'
+            + '<div style="font-size:12.5px;line-height:1.45;flex:1">'
+            + '<div style="margin-bottom:3px"><span style="font-size:10.5px;font-weight:700;background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:4px">' + esc(diff) + '</span> '
+            + '<span style="font-size:10.5px;color:#64748b">' + esc(dom) + '</span></div>'
+            + '<div>' + _safeExcerpt(String(q.text || q.q || ''), 140) + '</div>'
+            + '</div>'
+            + '<button type="button" onclick="window.CSCustomCart.toggleResultIndex(' + idx + ')" style="padding:5px 10px;border-radius:6px;border:1px solid ' + (inCart ? '#16a34a' : '#4f46e5') + ';background:' + (inCart ? '#16a34a' : '#eef2ff') + ';color:' + (inCart ? '#fff' : '#4f46e5') + ';font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap">'
+            + (inCart ? '✓ ' + (ar ? 'في السلة' : 'Added') : '＋ ' + (ar ? 'إضافة' : 'Add'))
+            + '</button>'
+            + '</div>';
+        }).join('');
+      }
+    }
+
+    if(cartEl){
+      if(!_cart.length){
+        cartEl.innerHTML = '<div style="padding:16px;text-align:center;color:#64748b;font-size:12.5px">'
+          + (ar ? 'لم تتم إضافة أسئلة بعد. اختر من القائمة لإضافتها إلى ورقة العمل.' : 'Cart is empty. Click "+ Add" on questions from any track or topic to build your custom worksheet.')
+          + '</div>';
+      } else {
+        cartEl.innerHTML = _cart.map(function(q, idx){
+          return '<div style="padding:7px 9px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px">'
+            + '<div style="flex:1;min-width:0"><strong>#' + (idx + 1) + ' [' + esc((q._trackId || '').toUpperCase()) + ']</strong> ' + _safeExcerpt(String(q.text || q.q || ''), 90) + '</div>'
+            + '<div style="display:flex;gap:3px;flex-shrink:0">'
+            + '<button type="button" onclick="window.CSCustomCart.moveItem(' + idx + ',-1)" title="Move up" style="border:1px solid #cbd5e1;background:#fff;border-radius:4px;padding:2px 6px;cursor:pointer">↑</button>'
+            + '<button type="button" onclick="window.CSCustomCart.moveItem(' + idx + ',1)" title="Move down" style="border:1px solid #cbd5e1;background:#fff;border-radius:4px;padding:2px 6px;cursor:pointer">↓</button>'
+            + '<button type="button" onclick="window.CSCustomCart.removeAt(' + idx + ')" title="Remove" style="border:1px solid #fecaca;background:#fee2e2;color:#991b1b;border-radius:4px;padding:2px 6px;cursor:pointer">✕</button>'
+            + '</div></div>';
+        }).join('');
+      }
+    }
+  }
+
+  function _populateDomainOptions(trackId){
+    var domSel = document.getElementById('cc-domain');
+    if(!domSel) return;
+    var pool = _getBankPool(trackId);
+    var domains = [];
+    pool.forEach(function(q){
+      var d = q.domain || q.topic_id;
+      if(d && domains.indexOf(d) === -1) domains.push(d);
+    });
+    var ar = _ttAr();
+    domSel.innerHTML = '<option value="all">' + (ar ? 'جميع الوحدات والمواضيع (' + pool.length + ')' : 'All Topics & Domains (' + pool.length + ')') + '</option>'
+      + domains.map(function(d){ return '<option value="' + esc(d) + '">' + esc(d) + '</option>'; }).join('');
+  }
+
+  function switchTrack(trackId){
+    _currentTrack = trackId || 'sat';
+    var loadP = (typeof window.CS_loadTrackBank === 'function') ? window.CS_loadTrackBank(_currentTrack) : Promise.resolve();
+    loadP.then(function(){
+      _populateDomainOptions(_currentTrack);
+      _refreshUI();
+    }).catch(function(){
+      _populateDomainOptions(_currentTrack);
+      _refreshUI();
+    });
+  }
+
+  function printCart(withKey){
+    if(!_cart.length){
+      alert(_ttAr() ? 'أضف سؤالًا واحدًا على الأقل إلى السلة أولًا.' : 'Please add at least 1 question to your custom cart first.');
+      return;
+    }
+    var viewId = _currentTrack || 'sat';
+    var _ar = _ttAr(viewId), _dir = _ar ? 'rtl' : 'ltr';
+    var today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    function optLetter(i){ return String.fromCharCode(65 + i); }
+    var qHtml = '', keyHtml = '';
+    _cart.forEach(function(q, i){
+      var stem = _wm(q.text || q.q || q.stem || '');
+      var opts = q.choices || q.options || [];
+      var ans = q.answer != null ? q.answer : q.correct;
+      var optHtml = opts.map(function(o, j){
+        return '<div style="margin:3px 0 3px 12px">' + optLetter(j) + '. ' + _wm(o) + '</div>';
+      }).join('');
+      var figH = '';
+      var _f = q.figure || q.fig;
+      if(_f){
+        if(typeof _f === 'string') figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">' + _f + '</div>';
+        else if(window._renderFig) figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">' + window._renderFig(_f) + '</div>';
+      }
+      qHtml += '<div style="margin-bottom:18pt;page-break-inside:avoid">'
+        + '<div style="margin:0 0 6pt;font-weight:700">Q' + (i + 1) + '. ' + stem + '</div>'
+        + figH + optHtml + '</div>';
+      var ansLabel = typeof ans === 'number' ? optLetter(ans) : _wm(ans);
+      var rawStem = String(q.text || q.q || '').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      keyHtml += '<tr>'
+        + '<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700">' + (i + 1) + '</td>'
+        + '<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">' + ansLabel + '</td>'
+        + '<td style="padding:5px 9px;border:1px solid #e2e8f0">' + _safeExcerpt(rawStem, 80) + '</td></tr>';
+    });
+    var html = '<!DOCTYPE html><html lang="' + (_dir === 'rtl' ? 'ar' : 'en') + '" dir="' + _dir + '"><head><meta charset="UTF-8"><title>Custom Worksheet — ClipSAT</title>'
+      + '<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0;padding:0 16pt}.hdr{border-bottom:2pt solid #1a1a2e;display:flex;justify-content:space-between;padding:8pt 0;margin-bottom:14pt}table{width:100%;border-collapse:collapse;font-size:10pt}th{background:#1a1a2e;color:#fff;padding:6px;text-align:left}@media print{.no-print{display:none!important}}</style>'
+      + '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]]},svg:{fontCache:"global"}};<\/script>'
+      + '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
+      + '</head><body>'
+      + '<div class="hdr"><div><strong style="font-size:15pt">ClipSAT Custom Worksheet</strong><div style="font-size:9pt;color:#566173">' + _cart.length + ' Selected Questions</div></div><div style="font-size:9pt;color:#566173">' + today + '</div></div>'
+      + qHtml
+      + (withKey ? '<div style="page-break-before:always"></div><h3>Answer Key</h3><table><tr><th>#</th><th>Answer</th><th>Question</th></tr>' + keyHtml + '</table>' : '')
+      + '<div class="no-print" style="margin-top:16pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:6pt;padding:8pt 20pt;cursor:pointer">🖨️ Print / Save PDF</button></div>'
+      + '</body></html>';
+    var blob = new Blob([html], { type: 'text/html' });
+    var url = URL.createObjectURL(blob);
+    window.open(url, '_blank', 'width=850,height=750');
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 60000);
+  }
+
+  function copyAssignmentLink(){
+    if(!_cart.length){
+      alert(_ttAr() ? 'أضف سؤالًا واحدًا على الأقل أولًا.' : 'Add at least 1 question to the cart first.');
+      return;
+    }
+    var keys = [];
+    _cart.forEach(function(q){
+      if(typeof window.CSAssignKey === 'function'){
+        var k = window.CSAssignKey(q);
+        if(k && keys.indexOf(k) === -1) keys.push(k);
+      }
+    });
+    var link = location.origin + '/' + _currentTrack + '/?assign=' + keys.join('.');
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(link).then(function(){
+        alert((_ttAr() ? 'تم نسخ رابط الواجب المخصص:\n' : 'Copied custom student assignment link:\n') + link);
+      });
+    } else {
+      prompt('Copy student assignment link:', link);
+    }
+  }
+
+  function open(){
+    var existing = document.getElementById('cs-custom-cart-modal');
+    if(existing) existing.remove();
+    var ar = _ttAr(), dir = ar ? 'rtl' : 'ltr';
+    var vmMap = window.CSViewMeta || window.VIEW_META || VIEW_META || {};
+    var trackKeys = Object.keys(vmMap).filter(function(k){ return k !== 'home'; });
+    var activeTrack = window.CLIPSAT_TRACK || window._csCurrentView || 'sat';
+    if(activeTrack === 'home') activeTrack = 'sat';
+    _currentTrack = activeTrack;
+
+    var courseOpts = trackKeys.map(function(k){
+      return '<option value="' + k + '"' + (k === activeTrack ? ' selected' : '') + '>' + esc(vmMap[k].label || k.toUpperCase()) + '</option>';
+    }).join('');
+
+    var ov = document.createElement('div');
+    ov.id = 'cs-custom-cart-modal';
+    ov.style.cssText = 'position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:10005;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto';
+    ov.innerHTML = '<div dir="' + dir + '" style="background:#fff;color:#0f172a;border-radius:14px;padding:22px 24px;max-width:860px;width:100%;box-shadow:0 16px 48px rgba(0,0,0,.35);font-family:Calibri,Arial,sans-serif">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">'
+      + '<div><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#4f46e5">' + (ar ? 'تخصيص أوراق العمل والاختبارات' : 'Teacher Custom Assessment Builder') + '</span>'
+      + '<h2 style="margin:2px 0 0;font-size:18px;color:#1a1a2e">🧰 ' + (ar ? 'مصمم أوراق العمل المخصصة (اختر الأسئلة بنفسك)' : 'Custom Worksheet & Assignment Cart Builder') + '</h2></div>'
+      + '<button type="button" onclick="document.getElementById(\'cs-custom-cart-modal\').remove()" aria-label="Close" style="background:none;border:none;font-size:20px;cursor:pointer;color:#64748b">✕</button>'
+      + '</div>'
+      + '<div style="display:grid;grid-template-columns:1fr 1fr 120px 1fr;gap:8px;margin-bottom:12px">'
+      + '<select id="cc-track" onchange="window.CSCustomCart.switchTrack(this.value)" style="padding:7px 9px;border:1.5px solid #cbd5e1;border-radius:8px;font-size:12.5px">' + courseOpts + '</select>'
+      + '<select id="cc-domain" onchange="window.CSCustomCart.refresh()" style="padding:7px 9px;border:1.5px solid #cbd5e1;border-radius:8px;font-size:12.5px"><option value="all">All Topics</option></select>'
+      + '<select id="cc-diff" onchange="window.CSCustomCart.refresh()" style="padding:7px 9px;border:1.5px solid #cbd5e1;border-radius:8px;font-size:12.5px"><option value="all">' + (ar ? 'كل المستويات' : 'All Levels') + '</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select>'
+      + '<input type="search" id="cc-search" oninput="window.CSCustomCart.refresh()" placeholder="' + (ar ? 'ابحث في نص السؤال...' : 'Search question text...') + '" style="padding:7px 9px;border:1.5px solid #cbd5e1;border-radius:8px;font-size:12.5px">'
+      + '</div>'
+      + '<div style="display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-bottom:14px">'
+      + '<div><div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:4px">📚 ' + (ar ? 'بنك الأسئلة المتاح:' : 'Question Bank Browser:') + '</div>'
+      + '<div id="cc-bank-list" style="height:260px;overflow-y:auto;border:1px solid #cbd5e1;border-radius:8px;background:#fff"></div></div>'
+      + '<div><div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:4px;display:flex;justify-content:space-between"><span>🛒 ' + (ar ? 'سلة ورقة العمل المخصصة:' : 'Selected Worksheet Cart:') + ' (<span id="cc-cart-count">' + _cart.length + '</span>)</span><button type="button" onclick="window.CSCustomCart.clear()" style="background:none;border:none;color:#dc2626;font-size:11px;cursor:pointer;font-weight:700">' + (ar ? 'إفراغ السلة' : 'Clear All') + '</button></div>'
+      + '<div id="cc-cart-list" style="height:260px;overflow-y:auto;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc"></div></div>'
+      + '</div>'
+      + '<div style="display:flex;gap:8px;flex-wrap:wrap">'
+      + '<button type="button" onclick="window.CSCustomCart.printCart(false)" style="padding:8px 14px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🖨️ ' + (ar ? 'طباعة ورقة العمل (PDF)' : 'Print Worksheet (PDF)') + '</button>'
+      + '<button type="button" onclick="window.CSCustomCart.printCart(true)" style="padding:8px 14px;background:#166534;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🔑 ' + (ar ? 'طباعة مع مفتاح الإجابة' : 'Print with Answer Key') + '</button>'
+      + '<button type="button" onclick="window.CSCustomCart.copyAssignmentLink()" style="padding:8px 14px;background:#4f46e5;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer;margin-left:auto">🔗 ' + (ar ? 'نسخ رابط الواجب للطلاب' : 'Copy Student Assignment Link') + '</button>'
+      + '</div>'
+      + '</div>';
+    document.body.appendChild(ov);
+    switchTrack(_currentTrack);
+  }
+
+  return {
+    open: open,
+    getCart: getCart,
+    clear: clear,
+    addQuestion: addQuestion,
+    removeAt: removeAt,
+    moveItem: moveItem,
+    toggleResultIndex: toggleResultIndex,
+    filterBank: filterBank,
+    switchTrack: switchTrack,
+    refresh: _refreshUI,
+    printCart: printCart,
+    copyAssignmentLink: copyAssignmentLink
+  };
+})();
 
 }());

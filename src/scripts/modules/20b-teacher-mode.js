@@ -53,6 +53,8 @@
           +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
           +' <button onclick="window.TeacherMode.downloadChapterDocx()">'+_tt('tmChapterDocx')+'</button>'
           +' <button onclick="window.TeacherMode.openAssignment()">'+_tt('tmAssignment')+'</button>'
+          +' <button onclick="window.TeacherMode.openCustomCart()">🧰 '+(_ttAr()?'مصمم أوراق العمل':'Custom Builder')+'</button>'
+          +' <button onclick="window.TeacherMode.openGradebook()">📊 '+(_ttAr()?'سجل الدرجات':'Gradebook')+'</button>'
           +' <button onclick="window.TeacherMode.openWhiteboard()">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
           +' <button onclick="window.TeacherMode.generateProgressReport()">'+_tt('tmProgressReport')+'</button>'
           +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
@@ -592,6 +594,24 @@
       });
     }
 
+    function openGradebook(){
+      var ensure = (window._ensureTeacherMode ? window._ensureTeacherMode() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSGradebook && window.CSGradebook.open){
+          window.CSGradebook.open();
+        }
+      });
+    }
+
+    function openCustomCart(){
+      var ensure = (window._ensureTeacherMode ? window._ensureTeacherMode() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSCustomCart && window.CSCustomCart.open){
+          window.CSCustomCart.open();
+        }
+      });
+    }
+
     _injectCSS();
     return {
       toggle: toggle,
@@ -600,6 +620,8 @@
       printLessonPlan: printLessonPlan,
       downloadChapterDocx: downloadChapterDocx,
       openAssignment: openAssignment,
+      openGradebook: openGradebook,
+      openCustomCart: openCustomCart,
       openWhiteboard: openWhiteboard,
       generateProgressReport: generateProgressReport,
       isActive: function(){ return _active; }
