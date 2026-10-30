@@ -59,7 +59,7 @@ app.secret_key = os.environ.get('FLASK_SECRET_KEY', os.urandom(32))
 ANTHROPIC_API_KEY    = os.environ.get('ANTHROPIC_API_KEY', '')
 ALLOWED_ORIGIN       = os.environ.get('CLIPSAT_ALLOWED_ORIGIN', 'http://localhost')
 IS_PRODUCTION        = os.environ.get('FLASK_ENV', 'development') == 'production'
-DAILY_QUESTION_LIMIT = 10     # strictly 10 questions per day; no other limits
+DAILY_QUESTION_LIMIT = 20     # 20 questions per day (legacy fallback proxy; the Supabase ai-proxy is authoritative); no other limits
 ANTHROPIC_MODEL      = 'claude-haiku-4-5-20251001'   # cost-effective tutoring model
 ANTHROPIC_MAX_TOKENS = 2048
 SYSTEM_PROMPT = (

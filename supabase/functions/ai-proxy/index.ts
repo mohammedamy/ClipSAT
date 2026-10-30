@@ -19,7 +19,12 @@ const GEMINI_GENERATE_BASE = "https://generativelanguage.googleapis.com/v1beta/m
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
-const DAILY_CALL_CAP = 10;
+// Daily CREDITS (the only limit): a text question costs 1, a photo/PDF/camera/DOCX question costs 2,
+// so a free user gets 20 text questions OR 10 attachment questions OR any mix. Paid plans get 10x.
+const DAILY_CREDIT_CAP = 20;
+const TEXT_CREDIT_COST = 1;
+const ATTACHMENT_CREDIT_COST = 2;
+const PAID_MULTIPLIER = 10;
 
 const ALLOWED_IMAGE_MIMES = new Set([
   "image/png",
@@ -199,17 +204,29 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError(safetyViolation, 400);
   }
 
-  // Atomic per-user check-and-increment daily quota: strictly 10 questions per day (only limit enforced)
-  const { data: allowed, error: quotaErr } = await ctx.supabaseAdmin.rpc("try_use_ai_quota", {
+  // Atomic per-user check-and-spend of daily credits (see supabase/migrations/20261030_*).
+  // Paid subscribers (public.ai_plans) automatically get PAID_MULTIPLIER x the free allowance.
+  const cost = attachment ? ATTACHMENT_CREDIT_COST : TEXT_CREDIT_COST;
+  const { data: quotaRows, error: quotaErr } = await ctx.supabaseAdmin.rpc("use_ai_quota", {
     p_user_id: ctx.userClaims.id,
-    p_cap: DAILY_CALL_CAP,
+    p_base_cap: DAILY_CREDIT_CAP,
+    p_cost: cost,
+    p_paid_multiplier: PAID_MULTIPLIER,
   });
-  if (quotaErr) {
+  const q = Array.isArray(quotaRows) ? quotaRows[0] : quotaRows;
+  if (quotaErr || !q) {
     console.error("quota check failed:", quotaErr);
     return jsonError("Could not verify AI usage quota", 500);
   }
-  if (!allowed) {
-    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} questions per day). Try again tomorrow.`, 429);
+  const quota = { used: q.used, cap: q.cap, paid: !!q.paid, cost };
+  if (!q.allowed) {
+    return Response.json(
+      {
+        error: `Daily AI limit reached (${q.cap} credits: a question costs 1, a photo/PDF costs 2). Try again tomorrow.`,
+        quota,
+      },
+      { status: 429 },
+    );
   }
 
   // Server secret handling:
@@ -324,7 +341,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
           const interaction = await gemRes.json();
           const content = extractGeminiInteractionText(interaction);
           if (content) {
-            return Response.json({ content, model: modelCandidate });
+            return Response.json({ quota, content, model: modelCandidate });
           }
         } else {
           const errData = await gemRes.json().catch(() => ({}));
@@ -383,7 +400,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
         const gcData = await gcRes.json();
         const content = extractGeminiInteractionText(gcData);
         if (content) {
-          return Response.json({ content, model: "gemini-flash-latest" });
+          return Response.json({ quota, content, model: "gemini-flash-latest" });
         }
       } else {
         const errData = await gcRes.json().catch(() => ({}));
@@ -493,7 +510,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
 
   const data = await upstream.json();
   const content = data?.choices?.[0]?.message?.content || "";
-  return Response.json({ content, model: targetModel });
+  return Response.json({ quota, content, model: targetModel });
 });
 
 export default {

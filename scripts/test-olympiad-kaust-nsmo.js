@@ -37,9 +37,9 @@ console.log('   End-to-End Verification: Olympiad (NSMO & KAUST) + 10/Day AI Bot
 console.log('═══════════════════════════════════════════════════════════════════════════════\n');
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PART 1: AI BOT LIMIT = 10 QUESTIONS/DAY & ALL OTHER LIMITS REMOVED
+// PART 1: AI BOT LIMIT = 20 CREDITS/DAY (text=1, photo/PDF/cam=2; paid x10) & ALL OTHER LIMITS REMOVED
 // ─────────────────────────────────────────────────────────────────────────────
-console.log('── Part 1: AI Bot Quota (10 Questions/Day Only, Zero Other Limits) ──');
+console.log('── Part 1: AI Bot Quota (20 credits/day: 20 text OR 10 photo/PDF OR a mix; paid x10; zero other limits) ──');
 
 const clientAiSrc = fs.readFileSync(path.join(ROOT, 'src/scripts/modules/03-ai-chat-and-practice-quiz.js'), 'utf8');
 const edgeProxySrc = fs.readFileSync(path.join(ROOT, 'supabase/functions/ai-proxy/index.ts'), 'utf8');
@@ -47,14 +47,16 @@ const flaskAppSrc = fs.readFileSync(path.join(ROOT, 'app.py'), 'utf8');
 const baseNjkSrc = fs.readFileSync(path.join(ROOT, 'src/_includes/base.njk'), 'utf8');
 const pricingSrc = fs.readFileSync(path.join(ROOT, 'src/pricing/index.njk'), 'utf8');
 
-check('Client AI Tutor enforces AI_DAILY_LIMIT = 10 and removes weekly/monthly/length/history/page caps', () => {
-  assert.ok(/AI_DAILY_LIMIT\s*=\s*10\b/.test(clientAiSrc), 'Client must set AI_DAILY_LIMIT = 10');
+check('Client AI Tutor enforces AI_DAILY_LIMIT = 20 credits and removes weekly/monthly/length/history/page caps', () => {
+  assert.ok(/AI_DAILY_LIMIT\s*=\s*20\b/.test(clientAiSrc), 'Client must set AI_DAILY_LIMIT = 20');
+  assert.ok(/AI_ATTACH_COST\s*=\s*2\b/.test(clientAiSrc), 'Client attachment cost must be 2 credits');
+  assert.ok(/AI_PAID_MULTIPLIER\s*=\s*10\b/.test(clientAiSrc), 'Client paid multiplier must be 10');
   assert.ok(!/AI_WEEKLY_LIMIT|AI_MONTHLY_LIMIT/.test(clientAiSrc), 'Client must not have weekly or monthly limits');
   assert.ok(!/history\.slice\(\s*-\d+\s*\)/.test(clientAiSrc), 'Client must not truncate conversation history turns');
   assert.ok(!/MAX_FILE_BYTES|single-page PDF|1 page max/i.test(clientAiSrc), 'Client must not enforce file-size or 1-page PDF restrictions');
 });
 
-check('Client AI Quota functional simulation allows questions 1..10 and blocks #11 on the same day', () => {
+check('Client AI Quota simulation: 20 text OR 10 photo/PDF OR a mix; paid x10 via server sync', () => {
   global.window = global.window || {};
   const store = {};
   global.localStorage = {
@@ -69,33 +71,62 @@ check('Client AI Quota functional simulation allows questions 1..10 and blocks #
   };
   delete require.cache[require.resolve(path.join(ROOT, 'src/scripts/modules/03-ai-chat-and-practice-quiz.js'))];
   const aiMod = require(path.join(ROOT, 'src/scripts/modules/03-ai-chat-and-practice-quiz.js'));
-  assert.strictEqual(aiMod.AI_DAILY_LIMIT, 10, 'Exported AI_DAILY_LIMIT must equal 10');
-  assert.strictEqual(aiMod._getAiDailyUsed(), 0, 'Fresh UTC day must start with 0 questions used');
-  for (let i = 1; i <= 10; i++) {
-    const usedBefore = aiMod._getAiDailyUsed();
-    assert.ok(usedBefore < aiMod.AI_DAILY_LIMIT, `Question #${i} should be allowed (used=${usedBefore} < 10)`);
-    const usedAfter = aiMod._incAiDailyUsed();
-    assert.strictEqual(usedAfter, i, `After question #${i}, daily counter must equal ${i}`);
+  const reset = () => { Object.keys(store).forEach((k) => delete store[k]); };
+  assert.strictEqual(aiMod.AI_DAILY_LIMIT, 20, 'Exported AI_DAILY_LIMIT must equal 20');
+  assert.strictEqual(aiMod.AI_ATTACH_COST, 2, 'Attachment questions cost 2 credits');
+  assert.strictEqual(aiMod._getAiDailyUsed(), 0, 'Fresh UTC day must start at 0');
+  assert.strictEqual(aiMod._getAiCap(), 20, 'Free cap is 20 credits');
+
+  // 20 text questions allowed, #21 blocked
+  for (let i = 1; i <= 20; i++) {
+    assert.ok(aiMod._getAiDailyUsed() + 1 <= aiMod._getAiCap(), 'text question #' + i + ' allowed');
+    assert.strictEqual(aiMod._incAiDailyUsed(1), i);
   }
-  assert.ok(aiMod._getAiDailyUsed() >= aiMod.AI_DAILY_LIMIT, 'Question #11 on the same UTC day must be blocked (used=10 >= 10)');
-  assert.ok(/_getAiDailyUsed\(\)\s*>=\s*AI_DAILY_LIMIT/.test(clientAiSrc), 'Daily quota gate _getAiDailyUsed() >= AI_DAILY_LIMIT must exist in send handler');
+  assert.ok(aiMod._getAiDailyUsed() + 1 > aiMod._getAiCap(), 'text question #21 blocked');
+
+  // 10 attachment questions allowed, #11 blocked
+  reset();
+  for (let i = 1; i <= 10; i++) {
+    assert.ok(aiMod._getAiDailyUsed() + 2 <= aiMod._getAiCap(), 'attachment question #' + i + ' allowed');
+    aiMod._incAiDailyUsed(2);
+  }
+  assert.ok(aiMod._getAiDailyUsed() + 2 > aiMod._getAiCap(), 'attachment question #11 blocked');
+
+  // mix: 10 text + 5 attachments = 20 credits, then nothing more fits
+  reset();
+  for (let i = 0; i < 10; i++) aiMod._incAiDailyUsed(1);
+  for (let i = 0; i < 5; i++) aiMod._incAiDailyUsed(2);
+  assert.strictEqual(aiMod._getAiDailyUsed(), 20, 'mix uses exactly 20 credits');
+  assert.ok(aiMod._getAiDailyUsed() + 1 > aiMod._getAiCap(), 'mix exhausts the day');
+
+  // paid: server reports cap 200; local counter syncs to server, and the next local increment is skipped once
+  reset();
+  aiMod._applyServerQuota({ used: 37, cap: 200, paid: true });
+  assert.strictEqual(aiMod._getAiCap(), 200, 'paid cap = 10 x 20 = 200');
+  assert.strictEqual(aiMod._getAiDailyUsed(), 37, 'local counter syncs to the server count');
+  assert.strictEqual(aiMod._incAiDailyUsed(2), 37, 'server already counted this call: no double count');
+  assert.strictEqual(aiMod._incAiDailyUsed(2), 39, 'following calls count locally again until the next sync');
+  assert.ok(/_getAiDailyUsed\(\)\s*\+\s*_aiCost\(att\)\s*>\s*_getAiCap\(\)/.test(clientAiSrc), 'send handler gates on used + cost > cap');
 });
 
-check('Supabase Edge Function ai-proxy enforces DAILY_CALL_CAP = 10 and removes per-minute/weekly/monthly/prompt caps', () => {
-  assert.ok(/DAILY_CALL_CAP\s*=\s*10\b/.test(edgeProxySrc), 'Edge Function must set DAILY_CALL_CAP = 10');
+check('Supabase Edge Function ai-proxy enforces credit quota (20/day, attachment=2, paid x10) and removes per-minute/weekly/monthly/prompt caps', () => {
+  assert.ok(/DAILY_CREDIT_CAP\s*=\s*20\b/.test(edgeProxySrc), 'Edge Function must set DAILY_CREDIT_CAP = 20');
+  assert.ok(/ATTACHMENT_CREDIT_COST\s*=\s*2\b/.test(edgeProxySrc) && /TEXT_CREDIT_COST\s*=\s*1\b/.test(edgeProxySrc), 'text costs 1, attachment costs 2');
+  assert.ok(/PAID_MULTIPLIER\s*=\s*10\b/.test(edgeProxySrc), 'paid plans get 10x');
+  assert.ok(edgeProxySrc.includes('use_ai_quota'), 'Edge Function must spend credits atomically via use_ai_quota');
   assert.ok(!/PER_MINUTE_CAP|WEEKLY_CALL_CAP|MONTHLY_CALL_CAP/.test(edgeProxySrc), 'Edge Function must have zero per-minute/weekly/monthly caps');
   assert.ok(!/MAX_PROMPT_CHARS|MAX_MESSAGES\s*=|status:\s*413/.test(edgeProxySrc), 'Edge Function must not reject long prompts or message arrays with 413');
 });
 
-check('Flask fallback proxy app.py enforces DAILY_QUESTION_LIMIT = 10 and removes IP rate/size/message caps', () => {
-  assert.ok(/DAILY_QUESTION_LIMIT\s*=\s*10\b/.test(flaskAppSrc), 'Flask app.py must set DAILY_QUESTION_LIMIT = 10');
+check('Flask fallback proxy app.py enforces DAILY_QUESTION_LIMIT = 20 and removes IP rate/size/message caps', () => {
+  assert.ok(/DAILY_QUESTION_LIMIT\s*=\s*20\b/.test(flaskAppSrc), 'Flask app.py must set DAILY_QUESTION_LIMIT = 20');
   assert.ok(!/RATE_LIMIT_MAX|MAX_MESSAGE_LENGTH|MAX_MESSAGES\s*=|MAX_CONTENT_LENGTH/.test(flaskAppSrc), 'Flask app.py must have zero per-minute, message-count, or payload-length caps');
 });
 
-check('UI templates (base.njk & pricing/index.njk) reflect 10 questions/day and preserve compliance notice', () => {
+check('UI templates (base.njk & pricing/index.njk) reflect 20 questions or 10 photo/PDF per day and preserve compliance notice', () => {
   assert.ok(baseNjkSrc.includes('AI-generated; may contain errors; not a substitute for teacher guidance.'), 'Compliance notice must remain intact in base.njk');
   assert.ok(!/50\/week|100\/month|1-page PDF/i.test(baseNjkSrc), 'base.njk must not mention old 50/week, 100/month, or 1-page PDF limits');
-  assert.ok(/10/.test(pricingSrc) && !/50 questions\/week|100\/month/i.test(pricingSrc), 'pricing/index.njk must reflect 10 daily questions without old weekly/monthly limits');
+  assert.ok(/20 questions or 10 photo\/PDF/.test(pricingSrc) && !/50 questions\/week|100\/month/i.test(pricingSrc), 'pricing/index.njk must reflect 20 questions or 10 photo/PDF per day without old weekly/monthly limits');
 });
 
 // ─────────────────────────────────────────────────────────────────────────────

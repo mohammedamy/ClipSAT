@@ -32,7 +32,14 @@
 
   var history=[], busy=false, greeted=false;
   var pendingAttachment=null, camStream=null, camFacingMode='environment';
-  var AI_DAILY_LIMIT=10;
+  /* Daily CREDITS (the only limit): text question = 1 credit, photo/PDF/camera/DOCX question = 2,
+     so a free user gets 20 text questions OR 10 attachment questions OR any mix. Paid plans get 10x;
+     the server is authoritative and reports the real cap/used with every answer (see ai-proxy). */
+  var AI_DAILY_LIMIT=20;
+  var AI_ATTACH_COST=2;
+  var AI_PAID_MULTIPLIER=10;
+  var AI_CAP_STORAGE_KEY='clipsat_ai_cap_v1';
+  var _aiServerSynced=false;
   var AI_DAILY_STORAGE_KEY='clipsat_ai_daily_q_v1';
 
   function _getAiTodayUtc(){
@@ -60,13 +67,40 @@
       localStorage.setItem(AI_DAILY_STORAGE_KEY, JSON.stringify(store));
     }catch(e){}
   }
+  function _getAiCap(){
+    try{
+      var raw=localStorage.getItem(AI_CAP_STORAGE_KEY);
+      var o=raw?JSON.parse(raw):null;
+      if(o && o.user===_getAiUserKey() && Number(o.cap)>0) return Number(o.cap);
+    }catch(e){}
+    return AI_DAILY_LIMIT;
+  }
+  function _aiCost(att){ return att ? AI_ATTACH_COST : 1; }
+  /* Called with the {used,cap,paid} the proxy returns on every answer / 429. */
+  function _applyServerQuota(q){
+    if(!q || typeof q!=='object') return;
+    var cap=Number(q.cap), used=Number(q.used);
+    if(!(cap>0) || isNaN(used)) return;
+    try{ localStorage.setItem(AI_CAP_STORAGE_KEY, JSON.stringify({user:_getAiUserKey(), cap:cap, paid:!!q.paid})); }catch(e){}
+    var store=_readAiDailyStore();
+    var cleaned={}, today=_getAiTodayUtc();
+    for(var k in store){ if(Object.prototype.hasOwnProperty.call(store,k) && k.indexOf(today+':')===0) cleaned[k]=Number(store[k])||0; }
+    cleaned[today+':'+_getAiUserKey()]=used;
+    _writeAiDailyStore(cleaned);
+    _aiServerSynced=true;
+    _updateAiQuotaUI();
+  }
+  window._csApplyAiQuota=_applyServerQuota;
   function _getAiDailyUsed(){
     var store=_readAiDailyStore();
     var today=_getAiTodayUtc();
     var key=today+':'+_getAiUserKey();
     return Number(store[key])||0;
   }
-  function _incAiDailyUsed(){
+  function _incAiDailyUsed(cost){
+    /* the server already counted this call and synced the exact number */
+    if(_aiServerSynced){ _aiServerSynced=false; return _getAiDailyUsed(); }
+    cost=Number(cost)>0?Number(cost):1;
     var store=_readAiDailyStore();
     var today=_getAiTodayUtc();
     var cleaned={};
@@ -76,7 +110,7 @@
       }
     }
     var key=today+':'+_getAiUserKey();
-    cleaned[key]=(cleaned[key]||0)+1;
+    cleaned[key]=(cleaned[key]||0)+cost;
     _writeAiDailyStore(cleaned);
     _updateAiQuotaUI();
     return cleaned[key];
@@ -85,18 +119,26 @@
     var store=_readAiDailyStore();
     var today=_getAiTodayUtc();
     var key=today+':'+_getAiUserKey();
-    store[key]=AI_DAILY_LIMIT;
+    store[key]=_getAiCap();
     _writeAiDailyStore(store);
     _updateAiQuotaUI();
+  }
+  function _aiLimitSummary(isAr){
+    var cap=_getAiCap();
+    var att=Math.floor(cap/AI_ATTACH_COST);
+    return isAr
+      ? ('\u062D\u062F\u0643 \u0627\u0644\u064A\u0648\u0645\u064A '+cap+' \u0633\u0624\u0627\u0644\u0627\u064B \u0646\u0635\u064A\u0627\u064B \u0623\u0648 '+att+' \u0633\u0624\u0627\u0644\u0627\u064B \u0628\u0635\u0648\u0631\u0629/PDF \u0623\u0648 \u0645\u0632\u064A\u062C\u0627\u064B \u0645\u0646\u0647\u0645\u0627')
+      : ('Daily allowance: '+cap+' text questions, or '+att+' photo/PDF questions, or a mix');
   }
   function _updateAiQuotaUI(){
     if(!_chatUIReady || !panel) return;
     var used=_getAiDailyUsed();
-    var left=Math.max(0, AI_DAILY_LIMIT - used);
+    var cap=_getAiCap();
+    var left=Math.max(0, cap - used);
     var subEl=panel.querySelector ? panel.querySelector('.chat-title .chat-sub') : null;
-    if(subEl) subEl.textContent='AI math assistant \u00B7 '+left+'/'+AI_DAILY_LIMIT+' questions left today';
+    if(subEl) subEl.textContent='AI math assistant \u00B7 '+left+'/'+cap+' credits left today (photo/PDF = '+AI_ATTACH_COST+')';
     var footEl=panel.querySelector ? panel.querySelector('.chat-foot') : null;
-    if(footEl) footEl.textContent='AI-generated; may contain errors; not a substitute for teacher guidance. Free with ClipSAT Account ('+AI_DAILY_LIMIT+' questions/day).';
+    if(footEl) footEl.textContent='AI-generated; may contain errors; not a substitute for teacher guidance. '+_aiLimitSummary(false)+'.';
   }
 
   /* ── Hardened Mathematics Exclusivity System Prompt ── */
@@ -346,7 +388,7 @@
   }
   function greet(){
     if(greeted) return; greeted=true;
-    addMsg('bot',"Hi, I'm the **ClipSAT AI Tutor** \u2014 your interactive AI math assistant (" + AI_DAILY_LIMIT + " questions per day). Ask me about any problem, or attach/snap a photo, PDF, or DOCX question and I'll walk you through it step by step.\n\n_Notice: AI-generated; may contain errors; not a substitute for teacher instruction._");
+    addMsg('bot',"Hi, I'm the **ClipSAT AI Tutor** \u2014 your interactive AI math assistant (" + _aiLimitSummary(false).toLowerCase() + "). Ask me about any problem, or attach/snap a photo, PDF, or DOCX question and I'll walk you through it step by step.\n\n_Notice: AI-generated; may contain errors; not a substitute for teacher instruction._");
     var chips=document.createElement('div'); chips.className='chat-chips';
     ["Solve x\u00B2 \u2212 5x + 6 = 0","Explain the chain rule","How do I find a line of best fit?"].forEach(function(q){
       var c=document.createElement('button'); c.type='button'; c.className='chat-chip'; c.textContent=q;
@@ -452,6 +494,7 @@
         body:JSON.stringify(body)
       }).then(function(r){
         return r.json().catch(function(){ return {}; }).then(function(d){
+          if(d && d.quota && window._csApplyAiQuota) window._csApplyAiQuota(d.quota);
           if(!r.ok) throw new Error(d.error||('HTTP '+r.status));
           return d.content||'';
         });
@@ -1408,15 +1451,15 @@ window.launchPracticeQuiz=function(mistake){
     var q = rawQ || ('Please read the math question in this attached ' + (att.type==='image' ? 'image (printed or handwritten)' : (att.type==='document' ? 'PDF' : 'DOCX')) + ' and solve it step by step. Include a graph or geometric diagram if helpful.');
     var shownUserText = rawQ || ('Solve attached question: ' + (att.filename || 'question'));
 
-    /* Enforce strictly 10 questions per day (only limit on AI bot) */
-    if(_getAiDailyUsed() >= AI_DAILY_LIMIT){
+    /* Daily credits are the only limit on the AI bot (text = 1, photo/PDF/camera = 2; paid = 10x) */
+    if(_getAiDailyUsed() + _aiCost(att) > _getAiCap()){
       addMsg('user', shownUserText, att);
       input.value=''; input.style.height='auto';
       clearAttachment();
       var isArLimit = /[\u0600-\u06FF]/.test(q);
       var limitMsg = isArLimit
-        ? '⏳ تم الوصول إلى الحد اليومي لمعلم ClipSAT الذكي (**' + AI_DAILY_LIMIT + ' أسئلة يومياً**). سيتجدد رصيدك غداً لطرح ' + AI_DAILY_LIMIT + ' أسئلة جديدة!'
-        : '⏳ Daily limit reached (**' + AI_DAILY_LIMIT + ' questions per day**). Your allowance resets tomorrow for ' + AI_DAILY_LIMIT + ' fresh questions!';
+        ? '⏳ تم الوصول إلى الحد اليومي لمعلم ClipSAT الذكي (**' + _aiLimitSummary(true) + '**). سيتجدد رصيدك غداً!'
+        : '⏳ Daily limit reached (**' + _aiLimitSummary(false) + '**). Your allowance resets tomorrow!';
       addMsg('bot', limitMsg);
       input.focus();
       return;
@@ -1454,7 +1497,7 @@ window.launchPracticeQuiz=function(mistake){
     askAI(outboundAtt).then(function(text){
       typing.remove();
       if(text){
-        _incAiDailyUsed();
+        _incAiDailyUsed(_aiCost(att));
         addMsg('bot',text);
         history.push({role:'assistant',content:text});
       }
@@ -1477,7 +1520,7 @@ window.launchPracticeQuiz=function(mistake){
         var hint;
         if(em.indexOf('429')>-1 || em.indexOf('limit reached')>-1){
           _setAiDailyMaxed();
-          hint=' — daily limit reached (' + AI_DAILY_LIMIT + ' questions per day). Try again tomorrow.';
+          hint=' — daily limit reached (' + _aiLimitSummary(false) + '). Try again tomorrow.';
         } else if(em==='Failed to fetch'||em.indexOf('abort')>-1){
           hint=' — request timed out or network error. Please check your connection and retry.';
         } else if(em.indexOf('401')>-1 || em.indexOf('NO_KEY')>-1){
@@ -1668,6 +1711,10 @@ window.launchPracticeQuiz=function(mistake){
       AI_DAILY_LIMIT: AI_DAILY_LIMIT,
       _getAiDailyUsed: _getAiDailyUsed,
       _incAiDailyUsed: _incAiDailyUsed,
+      _applyServerQuota: _applyServerQuota,
+      _getAiCap: _getAiCap,
+      AI_ATTACH_COST: AI_ATTACH_COST,
+      AI_PAID_MULTIPLIER: AI_PAID_MULTIPLIER,
       _setAiDailyMaxed: _setAiDailyMaxed
     };
   }

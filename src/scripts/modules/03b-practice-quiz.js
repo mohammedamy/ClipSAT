@@ -82,7 +82,7 @@ window.launchPracticeQuiz = function(mistake){
       extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();window.openCloudAuthModal&&window.openCloudAuthModal()" '
         + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">☁️ Sign in</button>';
     } else if(msg.indexOf('429') > -1 || msg.indexOf('limit reached') > -1){
-      hint = '⏳ Daily AI limit reached (10 questions per day). Please try again tomorrow, or review your previous mistakes!';
+      hint = '⏳ Daily AI limit reached (20 credits per day; a photo/PDF costs 2). Please try again tomorrow, or review your previous mistakes!';
     } else {
       hint = 'Could not generate quiz. ' + escHtml(msg);
     }

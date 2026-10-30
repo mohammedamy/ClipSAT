@@ -254,7 +254,7 @@ it('public/js/engine.js contains the compiled guardrail logic', () => {
 });
 
 // ── 8. Gemini 3.8 Flash Multimodal, Graph Rendering & Strict 10/Day Only Limit Verification ──
-it('Supports Gemini 3.8 Flash, multimodal attachments, figure_json diagrams, and enforces ONLY 10 questions/day with all other limits removed', () => {
+it('Supports Gemini 3.8 Flash, multimodal attachments, figure_json diagrams, and enforces ONLY the daily credit limit (20 text or 10 photo/PDF; paid x10) with all other limits removed', () => {
   assert.ok(!SYSTEM.includes('Gemini 3.8'), 'SYSTEM prompt must not expose model version name in persona');
   assert.ok(SYSTEM.includes('IMAGE, CAMERA, PDF, DOCX & HANDWRITING RULES'), 'SYSTEM prompt must include multimodal & handwriting rules');
   assert.ok(!SYSTEM.includes('SINGLE QUESTION POLICY'), 'SYSTEM prompt must not enforce secondary single-question restriction');
@@ -264,7 +264,8 @@ it('Supports Gemini 3.8 Flash, multimodal attachments, figure_json diagrams, and
   assert.ok(moduleSource.includes('_renderChatFigures'), 'Module must render figure_json blocks inside bot answers');
 
   // Verify client-side 10 questions/day limit and removal of secondary file/page limits
-  assert.strictEqual(moduleExports.AI_DAILY_LIMIT, 10, 'Client AI_DAILY_LIMIT must be strictly 10');
+  assert.strictEqual(moduleExports.AI_DAILY_LIMIT, 20, 'Client AI_DAILY_LIMIT must be 20 credits');
+  assert.strictEqual(moduleExports.AI_ATTACH_COST, 2, 'Attachment questions cost 2 credits');
   assert.ok(!moduleSource.includes('tooManyPages'), 'Client must not block multi-page DOCX');
   assert.ok(!moduleSource.includes('_countPdfPages'), 'Client must not block multi-page PDF');
   assert.ok(!moduleSource.includes('15/day, 50/week, 150/month'), 'Legacy 15/day, 50/week, 150/month hint must be removed');
@@ -274,7 +275,8 @@ it('Supports Gemini 3.8 Flash, multimodal attachments, figure_json diagrams, and
   assert.ok(proxySource.includes('gemini-3.8-flash'), 'Supabase ai-proxy must target gemini-3.8-flash');
   assert.ok(proxySource.includes('GEMINI_API_KEY'), 'Supabase ai-proxy must read GEMINI_API_KEY from server secrets');
   assert.ok(proxySource.includes('interactions.create'), 'Supabase ai-proxy must use Gemini Interactions API');
-  assert.ok(proxySource.includes('const DAILY_CALL_CAP = 10;'), 'Supabase ai-proxy must enforce DAILY_CALL_CAP = 10');
+  assert.ok(proxySource.includes('const DAILY_CREDIT_CAP = 20;'), 'Supabase ai-proxy must enforce DAILY_CREDIT_CAP = 20');
+  assert.ok(proxySource.includes('const ATTACHMENT_CREDIT_COST = 2;') && proxySource.includes('const PAID_MULTIPLIER = 10;'), 'attachment costs 2 and paid plans get 10x');
   assert.ok(!proxySource.includes('WEEKLY_CALL_CAP'), 'Supabase ai-proxy must NOT have WEEKLY_CALL_CAP');
   assert.ok(!proxySource.includes('MONTHLY_CALL_CAP'), 'Supabase ai-proxy must NOT have MONTHLY_CALL_CAP');
   assert.ok(!proxySource.includes('checkIpRateLimit'), 'Supabase ai-proxy must NOT have per-minute IP rate limit');
@@ -283,7 +285,7 @@ it('Supports Gemini 3.8 Flash, multimodal attachments, figure_json diagrams, and
 
   const flaskPath = path.join(__dirname, '..', 'app.py');
   const flaskSource = fs.readFileSync(flaskPath, 'utf8');
-  assert.ok(flaskSource.includes('DAILY_QUESTION_LIMIT = 10'), 'Flask proxy must enforce DAILY_QUESTION_LIMIT = 10');
+  assert.ok(flaskSource.includes('DAILY_QUESTION_LIMIT = 20'), 'Flask proxy must enforce DAILY_QUESTION_LIMIT = 20');
   assert.ok(!flaskSource.includes("limiter.limit('10 per minute')"), 'Flask proxy must NOT have per-minute limit');
   assert.ok(!flaskSource.includes('MAX_MESSAGE_LENGTH'), 'Flask proxy must NOT have MAX_MESSAGE_LENGTH limit');
 });
