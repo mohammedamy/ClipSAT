@@ -128,169 +128,189 @@ D["a2-functions"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Functions &amp; Their Graphs)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Composite Order & Inverse Domain (Functions & Their Graphs)",
+    "ti_ar": "اكتشف الخطأ: ترتيب تركيب الدوال ومجال المعكوس (الدوال وتمثيلاتها البيانية)",
+    "q": "Let \\(f(x) = 4x + 1\\) and \\(g(x) = x^2 + 1\\). A student evaluates \\((f \\circ g)(4)\\). Which step is wrong?",
+    "q_ar": "لتكن \\(f(x) = 4x + 1\\) و\\(g(x) = x^2 + 1\\). يحسب طالب \\((f \\circ g)(4)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
-      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+      "Write \\((f \\circ g)(4) = g(f(4))\\) by applying \\(f\\) first instead of \\(g\\).",
+      "Compute \\(f(4) = 17\\).",
+      "Square and add \\(1\\) to get \\(290\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
-      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
-      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Functions &amp; Their Graphs)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
-      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+      "كتابة \\((f \\circ g)(4) = g(f(4))\\) بتطبيق \\(f\\) أولاً بدلاً من \\(g\\).",
+      "حساب \\(f(4) = 17\\).",
+      "التربيع وإضافة \\(1\\) للحصول على \\(290\\)."
+    ],
+    "errorStep": 1,
+    "reasons": [
+      "By definition \\((f \\circ g)(x) = f(g(x))\\): evaluate the inner function \\(g(4) = 17\\) first, then \\(f(17) = 69\\).",
+      "Function composition is always commutative.",
+      "You must multiply \\(f(4)\\) by \\(g(4)\\)."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "حسب التعريف \\((f \\circ g)(x) = f(g(x))\\): نحسب الدالة الداخلية أولاً \\(g(4) = 17\\) ثم \\(f(17) = 69\\).",
+      "تركيب الدوال عملية إبدالية دائماً.",
+      "يجب ضرب \\(f(4)\\) في \\(g(4)\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Functions &amp; Their Graphs)",
-    "q": "Let \\(f(x) = x^2 - 10x + 28\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: One-to-One Domain Restriction & Inverse (Functions & Their Graphs)",
+    "ti_ar": "وضع المصحح: تقييد المجال وإيجاد الدالة العكسية (الدوال وتمثيلاتها البيانية)",
+    "q": "Let \\(h(x) = (x - 4)^2 + 1\\) for \\(x \\ge 4\\). (a) State the range of \\(h\\) and explain why \\(h^{-1}\\) exists on \\(x \\ge 4\\). (b) Find \\(h^{-1}(x)\\) and state its domain.",
+    "q_ar": "لتكن \\(h(x) = (x - 4)^2 + 1\\) حيث \\(x \\ge 4\\). (أ) اذكر مدى \\(h\\) وفسّر سبب وجود معكوس لها. (ب) أوجد \\(h^{-1}(x)\\) وحدد مجالها.",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Range & Injectivity",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Range of \\(h\\) is \\([ 1, \\infty )\\) since \\((x - 4)^2 \\ge 0\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "For \\(x \\ge 4\\), \\(h\\) is strictly increasing (one-to-one / passes horizontal line test)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Formula & Domain",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 28 = (x - 5)^2 + 3\\)."
+            "text": "Solve \\(y = (x - 4)^2 + 1 \\implies x = 4 + \\sqrt{y - 1}\\) (choosing \\(+\\) branch for \\(x \\ge 4\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+            "text": "\\(h^{-1}(x) = 4 + \\sqrt{x - 1}\\) with domain \\(x \\ge 1\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — المدى وشرط التباين (واحد لواحد)",
+        "marks": 2,
         "rubric": [
           {
-            "code": "M1",
+            "code": "B1",
             "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 3 \\implies (x - 5)^2 = y - 3\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 3}\\)."
+            "text": "مدى الدالة \\(h\\) هو \\([ 1, \\infty )\\) لأن \\((x - 4)^2 \\ge 0\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+            "text": "على الفترة \\(x \\ge 4\\) الدالة متزايدة تماماً (واحد لواحد)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — قاعدة المعكوس ومجاله",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حل المعادلة بدلالة \\(x\\) مع اختيار الفرع الموجب: \\(x = 4 + \\sqrt{y - 1}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(h^{-1}(x) = 4 + \\sqrt{x - 1}\\) ومجالها \\(x \\ge 1\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Functions &amp; Their Graphs)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 3}\\) لأن \\(x \\ge 5\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Functions &amp; Their Graphs)",
+    "ti": "Step Builder: Composite & Inverse Function Evaluation (Functions & Their Graphs)",
+    "ti_ar": "بناء الخطوات: حساب التركيب والمعكوس (الدوال وتمثيلاتها البيانية)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 10x + 28\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "5",
-        "h": "Take half of 10."
+        "l": "For \\(f(x) = 4x + 1\\) and \\(g(x) = x^2 + 1\\), find \\(g(4) =\\)",
+        "a": "17",
+        "h": "Compute 4² + 1."
       },
       {
-        "l": "Compute the minimum value \\(k = 28 - 5^2 =\\)",
+        "l": "Now evaluate \\(f(g(4)) = f(17) =\\)",
+        "a": "69",
+        "h": "Compute 4×17 + 1."
+      },
+      {
+        "l": "Evaluate \\(f^{-1}(13) =\\)",
         "a": "3",
-        "h": "Subtract 25 from 28."
-      },
-      {
-        "l": "Evaluate \\(y\\) when \\(x = 7\\): \\(y =\\)",
-        "a": "7",
-        "h": "Compute \\((2)^2 + 3\\)."
+        "h": "Solve 4x + 1 = 13."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Functions &amp; Their Graphs)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 10x + 28\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "5",
-        "h": "اقسم معامل x وهو 10 على 2."
+        "l": "للدالتين \\(f(x) = 4x + 1\\) و\\(g(x) = x^2 + 1\\)، أوجد \\(g(4) =\\)",
+        "a": "17",
+        "h": "احسب 4² + 1."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 28 - 5^2 =\\)",
+        "l": "الآن احسب \\(f(g(4)) = f(17) =\\)",
+        "a": "69",
+        "h": "احسب 4×17 + 1."
+      },
+      {
+        "l": "أوجد قيمة المعكوس \\(f^{-1}(13) =\\)",
         "a": "3",
-        "h": "اطرح 25 من 28."
-      },
-      {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 7\\):",
-        "a": "7",
-        "h": "احسب \\(4 + 3\\)."
+        "h": "حل المعادلة 4x + 1 = 13."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Functions &amp; Their Graphs)",
+    "ti": "Matching: Function Transformations & Inverse Rules (Functions & Their Graphs)",
+    "ti_ar": "مطابقة: تحويلات الدوال وقواعد المعكوس (الدوال وتمثيلاتها البيانية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Graph of \\(y = f^{-1}(x)\\)",
+        "r": "Reflection of \\(y = f(x)\\) across \\(y = x\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Domain of \\(f^{-1}\\)",
+        "r": "Exact range of \\(f\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Transformation \\(y = f(x - 4) + 1\\)",
+        "r": "Shift right \\(4\\) units and up \\(1\\) units"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Modulus graph \\(y = |f(x)|\\)",
+        "r": "Reflects portions where \\(f(x) < 0\\) above the \\(x\\)-axis"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Functions &amp; Their Graphs)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "منحنى المعكوس \\(y = f^{-1}(x)\\)",
+        "r": "انعكاس منحنى \\(y = f(x)\\) حول المستقيم \\(y = x\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "مجال الدالة العكسية \\(f^{-1}\\)",
+        "r": "يساوي مدى الدالة الأصلية \\(f\\) تماماً"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "التحويل \\(y = f(x - 4) + 1\\)",
+        "r": "إزاحة لليمين \\(4\\) وحدات ولأعلى \\(1\\) وحدات"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "منحنى القيمة المطلقة \\(y = |f(x)|\\)",
+        "r": "يعكس الأجزاء السالبة \\(f(x) < 0\\) فوق محور السينات"
       }
     ]
   }
 ];
-
 D["a2-quadratics"] = [
   {
     "t": "mt",
@@ -429,150 +449,170 @@ D["a2-quadratics"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Quadratics &amp; Complex Numbers)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Vieta's Sum of Squares Identity (Quadratics & Complex Numbers)",
+    "ti_ar": "اكتشف الخطأ: متطابقة فييت لمجموع مربعي الجذرين (المعادلات التربيعية والأعداد المركبة)",
+    "q": "For \\(x^2 - 10x + 24 = 0\\) with roots \\(\\alpha, \\beta\\), a student computes \\(\\alpha^2 + \\beta^2\\). Where is the error?",
+    "q_ar": "للمعادلة \\(x^2 - 10x + 24 = 0\\) ذات الجذرين \\(\\alpha, \\beta\\)، يحسب طالب \\(\\alpha^2 + \\beta^2\\). أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
-      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+      "Read Vieta's relations: \\(\\alpha + \\beta = 10\\) and \\(\\alpha\\beta = 24\\).",
+      "Claim \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 = 100\\), omitting \\(-2\\alpha\\beta\\).",
+      "State \\(100\\) as the value of \\(\\alpha^2 + \\beta^2\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
-      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
-      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Quadratics &amp; Complex Numbers)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
-      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+      "استخراج علاقات فييت: \\(\\alpha + \\beta = 10\\) و\\(\\alpha\\beta = 24\\).",
+      "الادعاء بأن \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 = 100\\) وإغفال الحد \\(-2\\alpha\\beta\\).",
+      "اعتماد \\(100\\) قيمة نهائية."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Because \\((\\alpha + \\beta)^2 = \\alpha^2 + 2\\alpha\\beta + \\beta^2\\), the exact identity is \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = 100 - 48 = 52\\).",
+      "Vieta gives \\(\\alpha + \\beta = -10\\).",
+      "\\(\\alpha\\beta\\) must be squared before subtracting."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن \\((\\alpha + \\beta)^2 = \\alpha^2 + 2\\alpha\\beta + \\beta^2\\)، فالمتطابقة الصحيحة هي \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = 52\\).",
+      "مجموع الجذرين يساوي \\(-10\\).",
+      "يجب تربيع \\(\\alpha\\beta\\) قبل الطرح."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Quadratics &amp; Complex Numbers)",
-    "q": "Let \\(f(x) = x^2 - 4x + 3\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Discriminant, Vieta & Factor Theorem (Quadratics & Complex Numbers)",
+    "ti_ar": "وضع المصحح: المميز وعلاقات فييت ونظرية العامل (المعادلات التربيعية والأعداد المركبة)",
+    "q": "Consider \\(P(x) = x^2 - 10x + 24\\) with roots \\(\\alpha, \\beta\\). (a) Compute the discriminant \\(\\Delta\\) and verify \\(P(4) = 0\\). (b) Evaluate \\(\\alpha^2 + \\beta^2\\) using symmetric sums.",
+    "q_ar": "لتكن \\(P(x) = x^2 - 10x + 24\\) وجذراها \\(\\alpha, \\beta\\). (أ) احسب المميز \\(\\Delta\\) وتحقق أن \\(P(4) = 0\\). (ب) أوجد قيمة \\(\\alpha^2 + \\beta^2\\) باستعمال المجاميع المتماثلة.",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Discriminant & Factor Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 3 = (x - 2)^2 + -1\\)."
+            "text": "\\(\\Delta = (-10)^2 - 4(1)(24) = 4 > 0\\) (two distinct real roots)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge -1\\) (or \\([-1, \\infty)\\))."
+            "text": "\\(P(4) = 16 - 40 + 24 = 0\\), confirming \\((x - 4)\\) is a factor."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Symmetric Sum of Squares",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + -1 \\implies (x - 2)^2 = y - -1\\)."
+            "text": "\\(\\alpha + \\beta = 10,\\; \\alpha\\beta = 24\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - -1}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge -1\\) (matching the range of \\(f\\))."
+            "text": "\\(\\alpha^2 + \\beta^2 = 10^2 - 2(24) = 52\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - -1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Quadratics &amp; Complex Numbers)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 3\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - -1}\\) لأن \\(x \\ge 2\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المميز والتحقق من العامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\Delta = (-10)^2 - 4(1)(24) = 4 > 0\\) (جذران حقيقيان مختلفان)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(P(4) = 0\\)، مما يؤكد أن \\((x - 4)\\) عامل لكثيرة الحدود."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — مجموع مربعي الجذرين",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\alpha + \\beta = 10,\\; \\alpha\\beta = 24\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\alpha^2 + \\beta^2 = 10^2 - 2(24) = 52\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Quadratics &amp; Complex Numbers)",
+    "ti": "Step Builder: Vieta Relations & Remainder Theorem (Quadratics & Complex Numbers)",
+    "ti_ar": "بناء الخطوات: علاقات فييت ونظرية الباقي (المعادلات التربيعية والأعداد المركبة)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 4x + 3\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "2",
-        "h": "Take half of 4."
+        "l": "For \\(x^2 - 10x + 24 = 0\\), find \\(\\alpha + \\beta =\\)",
+        "a": "10",
+        "h": "Use −b/a."
       },
       {
-        "l": "Compute the minimum value \\(k = 3 - 2^2 =\\)",
-        "a": "-1",
-        "h": "Subtract 4 from 3."
+        "l": "Find the product of roots \\(\\alpha\\beta =\\)",
+        "a": "24",
+        "h": "Use c/a."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 4\\): \\(y =\\)",
-        "a": "3",
-        "h": "Compute (2)^2 + -1."
+        "l": "Compute \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta =\\)",
+        "a": "52",
+        "h": "Compute 100 − 48."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Quadratics &amp; Complex Numbers)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 4x + 3\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "2",
-        "h": "اقسم معامل x وهو 4 على 2."
+        "l": "للمعادلة \\(x^2 - 10x + 24 = 0\\)، أوجد \\(\\alpha + \\beta =\\)",
+        "a": "10",
+        "h": "استعمل −b/a."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 3 - 2^2 =\\)",
-        "a": "-1",
-        "h": "اطرح 4 من 3."
+        "l": "أوجد حاصل ضرب الجذرين \\(\\alpha\\beta =\\)",
+        "a": "24",
+        "h": "استعمل c/a."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 4\\):",
-        "a": "3",
-        "h": "احسب 4 + -1."
+        "l": "احسب \\(\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta =\\)",
+        "a": "52",
+        "h": "احسب 100 − 48."
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Quadratics &amp; Complex Numbers)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Quadratics &amp; Complex Numbers)",
-    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 6 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Remainder Theorem Direct Evaluation (Quadratics & Complex Numbers)",
+    "ti_ar": "فحص سريع: تطبيق نظرية الباقي (المعادلات التربيعية والأعداد المركبة)",
+    "q": "What is the remainder when \\(P(x) = x^3 - 2x + 4\\) is divided by \\((x - 2)\\)?",
+    "q_ar": "ما باقي قسمة \\(P(x) = x^3 - 2x + 4\\) على \\((x - 2)\\)؟",
     "o": [
-      "\\( 6 \\)",
-      "\\( 4 \\)",
-      "\\( -4 \\)",
-      "\\( 22 \\)"
+      "\\(8\\)",
+      "\\(4\\)",
+      "\\(12\\)",
+      "\\(0\\)"
     ],
     "o_ar": [
-      "\\( 6 \\)",
-      "\\( 4 \\)",
-      "\\( -4 \\)",
-      "\\( 22 \\)"
+      "\\(8\\)",
+      "\\(4\\)",
+      "\\(12\\)",
+      "\\(0\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 4 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 4 \\)."
+    "ex": "By the Remainder Theorem, \\(P(2) = 8 - 4 + 4 = 8\\).",
+    "ex_ar": "بنظرية الباقي نعوّض \\(x = 2\\): \\(P(2) = 8 - 4 + 4 = 8\\)."
   }
 ];
-
 D["a2-polynomials"] = [
   {
     "t": "tf",
@@ -659,191 +699,211 @@ D["a2-polynomials"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Improper Rational Decomposition (Polynomial Functions)",
-    "q": "A student attempts to decompose \\(\\dfrac{x^2 + 6x + 7}{(x + 5)(x + 1)}\\) into partial fractions. Which step contains the first mathematical flaw?",
+    "ti": "Spot the Error: Composite Order & Inverse Domain (Polynomial Functions)",
+    "ti_ar": "اكتشف الخطأ: ترتيب تركيب الدوال ومجال المعكوس (الدوال كثيرة الحدود وجذورها)",
+    "q": "Let \\(f(x) = 2x + 3\\) and \\(g(x) = x^2 + 1\\). A student evaluates \\((f \\circ g)(3)\\). Which step is wrong?",
+    "q_ar": "لتكن \\(f(x) = 2x + 3\\) و\\(g(x) = x^2 + 1\\). يحسب طالب \\((f \\circ g)(3)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Expand the denominator: \\((x + 5)(x + 1) = x^2 + 6x + 5\\).",
-      "Write the partial fraction template directly as \\(\\dfrac{x^2 + 6x + 7}{(x + 5)(x + 1)} \\equiv \\dfrac{A}{x + 5} + \\dfrac{B}{x + 1}\\).",
-      "Multiply both sides by \\((x + 5)(x + 1)\\) to get \\(x^2 + 6x + 7 = A(x + 1) + B(x + 5)\\).",
-      "Substitute \\(x = -5\\) and \\(x = -1\\) to solve for \\(A\\) and \\(B\\)."
+      "Write \\((f \\circ g)(3) = g(f(3))\\) by applying \\(f\\) first instead of \\(g\\).",
+      "Compute \\(f(3) = 9\\).",
+      "Square and add \\(1\\) to get \\(82\\)."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "Because \\(\\deg(\\text{numerator}) = \\deg(\\text{denominator}) = 2\\), the fraction is improper and requires a leading quotient constant \\(1 + \\dfrac{A}{x+5} + \\dfrac{B}{x+1}\\).",
-      "Because the denominator has two distinct linear factors, it requires a quadratic numerator \\(Ax + B\\).",
-      "Because polynomial multiplication is only valid when \\(x > 0\\)."
-    ],
-    "correctReason": 0,
-    "h": "Compare the degree of the numerator (\\(2\\)) with the degree of the denominator (\\(2\\)).",
-    "sol": "Because both numerator and denominator have degree 2, divide first: \\(\\dfrac{x^2 + 6x + 7}{x^2 + 6x + 5} = 1 + \\dfrac{2}{(x + 5)(x + 1)}\\).",
-    "ti_ar": "اكتشف الخطأ: تفكيك الكسور الجبرية غير الفعلية (Polynomial Functions)",
-    "q_ar": "حاول طالب تفكيك الكسر \\(\\dfrac{x^2 + 6x + 7}{(x + 5)(x + 1)}\\) إلى كسور جزئية. أي خطوة تحتوي على الخطأ الرياضي الأول؟",
     "steps_ar": [
-      "فك المقام: \\((x + 5)(x + 1) = x^2 + 6x + 5\\).",
-      "كتابة قالب الكسور الجزئية مباشرةً: \\(\\dfrac{x^2 + 6x + 7}{(x + 5)(x + 1)} \\equiv \\dfrac{A}{x + 5} + \\dfrac{B}{x + 1}\\).",
-      "ضرب الطرفين في المقام المشترك للحصول على \\(x^2 + 6x + 7 = A(x + 1) + B(x + 5)\\).",
-      "التعويض عن \\(x = -5\\) و \\(x = -1\\) لإيجاد \\(A, B\\)."
+      "كتابة \\((f \\circ g)(3) = g(f(3))\\) بتطبيق \\(f\\) أولاً بدلاً من \\(g\\).",
+      "حساب \\(f(3) = 9\\).",
+      "التربيع وإضافة \\(1\\) للحصول على \\(82\\)."
+    ],
+    "errorStep": 1,
+    "reasons": [
+      "By definition \\((f \\circ g)(x) = f(g(x))\\): evaluate the inner function \\(g(3) = 10\\) first, then \\(f(10) = 23\\).",
+      "Function composition is always commutative.",
+      "You must multiply \\(f(3)\\) by \\(g(3)\\)."
     ],
     "reasons_ar": [
-      "لأن درجة البسط تساوي درجة المقام (2)، فالكسر غير فعلي ويجب إضافة ثابت القسمة \\(1 + \\dfrac{A}{x+5} + \\dfrac{B}{x+1}\\).",
-      "لأن المقام يتطلب بسطاً تربيعياً.",
-      "لأن الضرب في المقام غير جائز جبرياً."
+      "حسب التعريف \\((f \\circ g)(x) = f(g(x))\\): نحسب الدالة الداخلية أولاً \\(g(3) = 10\\) ثم \\(f(10) = 23\\).",
+      "تركيب الدوال عملية إبدالية دائماً.",
+      "يجب ضرب \\(f(3)\\) في \\(g(3)\\)."
     ],
-    "h_ar": "قارن بين درجة البسط (2) ودرجة المقام (2).",
-    "sol_ar": "بما أن درجة البسط تساوي درجة المقام، نقسم أولاً فنحصل على \\(1 + \\dfrac{2}{(x + 5)(x + 1)}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Remainder Theorem & Partial Fractions (Polynomial Functions)",
-    "q": "Let \\(P(x) = 2x^3 - 5x^2 + kx + 6\\). Given that \\((x - 2)\\) is a factor of \\(P(x)\\): (a) Show that \\(k = -1\\). (b) Express \\(\\dfrac{3x + 1}{(x - 1)(x + 2)}\\) in partial fractions.",
+    "ti": "Examiner Mode: One-to-One Domain Restriction & Inverse (Polynomial Functions)",
+    "ti_ar": "وضع المصحح: تقييد المجال وإيجاد الدالة العكسية (الدوال كثيرة الحدود وجذورها)",
+    "q": "Let \\(h(x) = (x - 2)^2 + 3\\) for \\(x \\ge 2\\). (a) State the range of \\(h\\) and explain why \\(h^{-1}\\) exists on \\(x \\ge 2\\). (b) Find \\(h^{-1}(x)\\) and state its domain.",
+    "q_ar": "لتكن \\(h(x) = (x - 2)^2 + 3\\) حيث \\(x \\ge 2\\). (أ) اذكر مدى \\(h\\) وفسّر سبب وجود معكوس لها. (ب) أوجد \\(h^{-1}(x)\\) وحدد مجالها.",
     "parts": [
       {
-        "label": "Part (a) — Factor Theorem Application",
+        "label": "Part (a) — Range & Injectivity",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Range of \\(h\\) is \\([ 3, \\infty )\\) since \\((x - 2)^2 \\ge 0\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "For \\(x \\ge 2\\), \\(h\\) is strictly increasing (one-to-one / passes horizontal line test)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Formula & Domain",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Apply Factor Theorem \\(P(2) = 0 \\implies 2(2)^3 - 5(2)^2 + 2k + 6 = 0\\)."
+            "text": "Solve \\(y = (x - 2)^2 + 3 \\implies x = 2 + \\sqrt{y - 3}\\) (choosing \\(+\\) branch for \\(x \\ge 2\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Simplify \\(16 - 20 + 2k + 6 = 0 \\implies 2k = -2 \\implies k = -1\\)."
+            "text": "\\(h^{-1}(x) = 2 + \\sqrt{x - 3}\\) with domain \\(x \\ge 3\\)."
+          }
+        ]
+      }
+    ],
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المدى وشرط التباين (واحد لواحد)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "مدى الدالة \\(h\\) هو \\([ 3, \\infty )\\) لأن \\((x - 2)^2 \\ge 0\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "على الفترة \\(x \\ge 2\\) الدالة متزايدة تماماً (واحد لواحد)."
           }
         ]
       },
       {
-        "label": "Part (b) — Partial Fraction Decomposition",
-        "marks": 3,
+        "label": "الجزء (ب) — قاعدة المعكوس ومجاله",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up identity \\(3x + 1 \\equiv A(x + 2) + B(x - 1)\\)."
+            "text": "حل المعادلة بدلالة \\(x\\) مع اختيار الفرع الموجب: \\(x = 2 + \\sqrt{y - 3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Substitute \\(x = 1 \\implies 4 = 3A \\implies A = \\tfrac{4}{3}\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Substitute \\(x = -2 \\implies -5 = -3B \\implies B = \\tfrac{5}{3}\\), giving \\(\\dfrac{4}{3(x-1)} + \\dfrac{5}{3(x+2)}\\)."
+            "text": "\\(h^{-1}(x) = 2 + \\sqrt{x - 3}\\) ومجالها \\(x \\ge 3\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Candidates frequently substitute \\(x = -2\\) instead of \\(x = 2\\) when testing the factor \\((x - 2)\\). Always solve \\(\\text{divisor} = 0\\) first.",
-    "ti_ar": "وضع المصحح: نظرية العوامل والكسور الجزئية (Polynomial Functions)",
-    "q_ar": "لتكن \\(P(x) = 2x^3 - 5x^2 + kx + 6\\). إذا كان \\((x - 2)\\) عاملاً لـ \\(P(x)\\): (أ) أثبت أن \\(k = -1\\). (ب) فكك \\(\\dfrac{3x + 1}{(x - 1)(x + 2)}\\) إلى كسور جزئية.",
-    "examinerTip_ar": "تأكد دائماً من مساواة المقسوم عليه بالصفر \\(x - 2 = 0 \\implies x = 2\\) قبل التعويض في كثيرة الحدود."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Remainder Theorem Evaluation (Polynomial Functions)",
+    "ti": "Step Builder: Composite & Inverse Function Evaluation (Polynomial Functions)",
+    "ti_ar": "بناء الخطوات: حساب التركيب والمعكوس (الدوال كثيرة الحدود وجذورها)",
     "steps": [
       {
-        "l": "To find the remainder when \\(f(x) = x^3 + 5x - 1\\) is divided by \\((x - 2)\\), set \\(x =\\)",
-        "a": "2",
-        "h": "Solve x - 2 = 0."
+        "l": "For \\(f(x) = 2x + 3\\) and \\(g(x) = x^2 + 1\\), find \\(g(3) =\\)",
+        "a": "10",
+        "h": "Compute 3² + 1."
       },
       {
-        "l": "Evaluate the cubic term \\(2^3 =\\)",
-        "a": "8",
-        "h": "Compute 2 * 2 * 2."
+        "l": "Now evaluate \\(f(g(3)) = f(10) =\\)",
+        "a": "23",
+        "h": "Compute 2×10 + 3."
       },
       {
-        "l": "Compute the exact remainder \\(f(2) = 8 + 10 - 1 =\\)",
-        "a": "17",
-        "h": "Add 8 + 10 and subtract 1."
+        "l": "Evaluate \\(f^{-1}(9) =\\)",
+        "a": "3",
+        "h": "Solve 2x + 3 = 9."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب الباقي بنظرية الباقي (Polynomial Functions)",
     "steps_ar": [
       {
-        "l": "لإيجاد باقي قسمة \\(f(x) = x^3 + 5x - 1\\) على \\((x - 2)\\)، نعوض عن \\(x =\\)",
-        "a": "2",
-        "h": "حل المعادلة x - 2 = 0."
+        "l": "للدالتين \\(f(x) = 2x + 3\\) و\\(g(x) = x^2 + 1\\)، أوجد \\(g(3) =\\)",
+        "a": "10",
+        "h": "احسب 3² + 1."
       },
       {
-        "l": "احسب الحد التكعيبي \\(2^3 =\\)",
-        "a": "8",
-        "h": "احسب 2 × 2 × 2."
+        "l": "الآن احسب \\(f(g(3)) = f(10) =\\)",
+        "a": "23",
+        "h": "احسب 2×10 + 3."
       },
       {
-        "l": "احسب الباقي \\(f(2) = 8 + 10 - 1 =\\)",
-        "a": "17",
-        "h": "اجمع 8 + 10 ثم اطرح 1."
+        "l": "أوجد قيمة المعكوس \\(f^{-1}(9) =\\)",
+        "a": "3",
+        "h": "حل المعادلة 2x + 3 = 9."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Polynomial & Rational Structure (Polynomial Functions)",
+    "ti": "Matching: Function Transformations & Inverse Rules (Polynomial Functions)",
+    "ti_ar": "مطابقة: تحويلات الدوال وقواعد المعكوس (الدوال كثيرة الحدود وجذورها)",
     "p": [
       {
-        "l": "\\(P(a) = 0\\)",
-        "r": "\\((x - a)\\) is a linear factor of \\(P(x)\\)"
+        "l": "Graph of \\(y = f^{-1}(x)\\)",
+        "r": "Reflection of \\(y = f(x)\\) across \\(y = x\\)"
       },
       {
-        "l": "\\(\\deg P(x) \\ge \\deg Q(x)\\)",
-        "r": "Improper rational fraction: perform long division first"
+        "l": "Domain of \\(f^{-1}\\)",
+        "r": "Exact range of \\(f\\)"
       },
       {
-        "l": "\\(\\dfrac{px+q}{(x-a)^2}\\)",
-        "r": "Decomposes as \\(\\dfrac{A}{x-a} + \\dfrac{B}{(x-a)^2}\\)"
+        "l": "Transformation \\(y = f(x - 2) + 3\\)",
+        "r": "Shift right \\(2\\) units and up \\(3\\) units"
       },
       {
-        "l": "\\(\\dfrac{px+q}{(x-a)(x^2+c)}\\)",
-        "r": "Decomposes as \\(\\dfrac{A}{x-a} + \\dfrac{Bx+C}{x^2+c}\\)"
+        "l": "Modulus graph \\(y = |f(x)|\\)",
+        "r": "Reflects portions where \\(f(x) < 0\\) above the \\(x\\)-axis"
       }
     ],
-    "ti_ar": "مطابقة: كثيرات الحدود والكسور الجزئية (Polynomial Functions)",
     "p_ar": [
       {
-        "l": "\\(P(a) = 0\\)",
-        "r": "المقدار \\((x - a)\\) عامل خطي لكثيرة الحدود \\(P(x)\\)"
+        "l": "منحنى المعكوس \\(y = f^{-1}(x)\\)",
+        "r": "انعكاس منحنى \\(y = f(x)\\) حول المستقيم \\(y = x\\)"
       },
       {
-        "l": "\\(\\deg P(x) \\ge \\deg Q(x)\\)",
-        "r": "كسر غير فعلي: يجب إجراء القسمة المطولة أولاً"
+        "l": "مجال الدالة العكسية \\(f^{-1}\\)",
+        "r": "يساوي مدى الدالة الأصلية \\(f\\) تماماً"
       },
       {
-        "l": "\\(\\dfrac{px+q}{(x-a)^2}\\)",
-        "r": "يتفكك على الصورة \\(\\dfrac{A}{x-a} + \\dfrac{B}{(x-a)^2}\\)"
+        "l": "التحويل \\(y = f(x - 2) + 3\\)",
+        "r": "إزاحة لليمين \\(2\\) وحدات ولأعلى \\(3\\) وحدات"
       },
       {
-        "l": "\\(\\dfrac{px+q}{(x-a)(x^2+c)}\\)",
-        "r": "يتفكك على الصورة \\(\\dfrac{A}{x-a} + \\dfrac{Bx+C}{x^2+c}\\)"
+        "l": "منحنى القيمة المطلقة \\(y = |f(x)|\\)",
+        "r": "يعكس الأجزاء السالبة \\(f(x) < 0\\) فوق محور السينات"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Polynomial Functions)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Polynomial Functions)",
-    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Horizontal Shift Direction (Polynomial Functions)",
+    "ti_ar": "فحص سريع: اتجاه الإزاحة الأفقية للدالة (الدوال كثيرة الحدود وجذورها)",
+    "q": "How is the graph of \\(y = f(x + 2) - 3\\) obtained from \\(y = f(x)\\)?",
+    "q_ar": "كيف ينتج منحنى \\(y = f(x + 2) - 3\\) من منحنى \\(y = f(x)\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "Shift \\(2\\) units left and \\(3\\) units down",
+      "Shift \\(2\\) units right and \\(3\\) units down",
+      "Shift \\(2\\) units left and \\(3\\) units up",
+      "Stretch horizontally by factor \\(2\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "إزاحة \\(2\\) وحدات لليسار و\\(3\\) وحدات لأسفل",
+      "إزاحة \\(2\\) وحدات لليمين و\\(3\\) وحدات لأسفل",
+      "إزاحة \\(2\\) وحدات لليسار و\\(3\\) وحدات لأعلى",
+      "تمدد أفقي بمعامل \\(2\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
+    "ex": "Replacing \\(x\\) with \\(x + 2\\) shifts left by \\(2\\); subtracting \\(3\\) shifts down by \\(3\\).",
+    "ex_ar": "استبدال \\(x\\) بـ \\(x + 2\\) يزيح لليسار بمقدار \\(2\\)، وطرح \\(3\\) يزيح لأسفل."
   }
 ];
-
 D["a2-rational"] = [
   {
     "t": "num",
@@ -931,191 +991,213 @@ D["a2-rational"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Rational Expressions)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Rational Cancelling & Asymptote Check (Rational Expressions)",
+    "ti_ar": "اكتشف الخطأ: اختصار العبارات النسبية وخطوط التقارب (العبارات والمعادلات النسبية)",
+    "q": "A student simplifies \\(R(x) = \\dfrac{x^2 - 4}{x - 2}\\) and describes its graph. Which step contains a flaw?",
+    "q_ar": "يبسّط طالب الدالة النسبية \\(R(x) = \\dfrac{x^2 - 4}{x - 2}\\) ويصف تمثيلها البياني. أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
-      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+      "Note denominator restriction \\(x \\neq 2\\).",
+      "Factor numerator as difference of squares: \\((x - 2)(x + 2)\\).",
+      "Cancel \\((x - 2)\\) for \\(x \\neq 2\\) to get \\(y = x + 2\\).",
+      "Conclude the graph has a vertical asymptote at \\(x = 2\\) rather than a removable hole at \\((2, 4)\\)."
+    ],
+    "steps_ar": [
+      "تحديد شرط المقام \\(x \\neq 2\\).",
+      "تحليل البسط كفرق بين مربعين \\((x - 2)(x + 2)\\).",
+      "اختصار \\((x - 2)\\) بشرط \\(x \\neq 2\\) للحصول على \\(y = x + 2\\).",
+      "الاستنتاج بوجود خط تقارب رأسي عند \\(x = 2\\) بدلاً من فجوة قابلة للإزالة عند \\((2, 4)\\)."
     ],
     "errorStep": 4,
     "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
-      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
-      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Rational Expressions)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
-    "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
-      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+      "Because the factor \\((x - 2)\\) cancels completely from the denominator, \\(x = 2\\) is a removable point discontinuity (hole) at \\((2, 4)\\), NOT a vertical asymptote.",
+      "You cannot factor \\(x^2 - 4\\).",
+      "The domain includes \\(x = 2\\)."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن العامل \\((x - 2)\\) اختُصر بالكامل من المقام، فإن \\(x = 2\\) تمثل فجوة عند \\((2, 4)\\) وليست خط تقارب رأسي.",
+      "لا يمكن تحليل \\(x^2 - 4\\).",
+      "المجال يشمل \\(x = 2\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Rational Expressions)",
-    "q": "Let \\(f(x) = x^2 - 10x + 26\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Partial Fractions Cover-Up Decomposition (Rational Expressions)",
+    "ti_ar": "وضع المصحح: تجزئة الكسور الجزئية (العبارات والمعادلات النسبية)",
+    "q": "Express \\(\\dfrac{5x + 14}{(x - 2)(x + 4)}\\) in partial fractions \\(\\dfrac{A}{x - 2} + \\dfrac{B}{x + 4}\\). (a) Set up the polynomial identity. (b) Determine \\(A\\) and \\(B\\) by substitution.",
+    "q_ar": "عبّر عن \\(\\dfrac{5x + 14}{(x - 2)(x + 4)}\\) في صورة كسور جزئية \\(\\dfrac{A}{x - 2} + \\dfrac{B}{x + 4}\\). (أ) اكتب المتطابقة المكافئة للبسط. (ب) أوجد قيمتي \\(A\\) و\\(B\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Clearing Denominators",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 26 = (x - 5)^2 + 1\\)."
+            "text": "Multiply through by \\((x - 2)(x + 4)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "Identity: \\(5x + 14 \\equiv A(x + 4) + B(x - 2)\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Root Substitution",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Set \\(x = 2\\): \\(24 = A(6) \\implies A = 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Set \\(x = -4\\): \\(-6 = B(-6) \\implies B = 1\\)."
+          }
+        ]
+      }
+    ],
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — توحيد المقامات وكتابة المتطابقة",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 1 \\implies (x - 5)^2 = y - 1\\)."
+            "text": "الضرب في \\((x - 2)(x + 4)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 1}\\)."
+            "text": "المتطابقة: \\(5x + 14 \\equiv A(x + 4) + B(x - 2)\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — التعويض بأصفار المقام",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "بوضع \\(x = 2\\): نجد \\(A = 4\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "بوضع \\(x = -4\\): نجد \\(B = 1\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Rational Expressions)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 26\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 1}\\) لأن \\(x \\ge 5\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Rational Expressions)",
+    "ti": "Step Builder: Partial Fractions & Radical Exponents (Rational Expressions)",
+    "ti_ar": "بناء الخطوات: الكسور الجزئية والأسس الكسرية (العبارات والمعادلات النسبية)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 10x + 26\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "5",
-        "h": "Take half of 10."
+        "l": "In \\(5x + 14 \\equiv A(x + 4) + B(x - 2)\\), substitute \\(x = 2\\) to find \\(A =\\)",
+        "a": "4",
+        "h": "Divide (24) by (6)."
       },
       {
-        "l": "Compute the minimum value \\(k = 26 - 5^2 =\\)",
+        "l": "Substitute \\(x = -4\\) to find \\(B =\\)",
         "a": "1",
-        "h": "Subtract 25 from 26."
+        "h": "Divide (-6) by (−6)."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 7\\): \\(y =\\)",
-        "a": "5",
-        "h": "Compute \\((2)^2 + 1\\)."
+        "l": "Evaluate the rational exponent \\(8^{2/3} =\\)",
+        "a": "4",
+        "h": "(cube root of 8)² = 2²."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Rational Expressions)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 10x + 26\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "5",
-        "h": "اقسم معامل x وهو 10 على 2."
+        "l": "في المتطابقة \\(5x + 14 \\equiv A(x + 4) + B(x - 2)\\)، عوّض \\(x = 2\\) لإيجاد \\(A =\\)",
+        "a": "4",
+        "h": "اقسم 24 على 6."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 26 - 5^2 =\\)",
+        "l": "عوّض \\(x = -4\\) لإيجاد \\(B =\\)",
         "a": "1",
-        "h": "اطرح 25 من 26."
+        "h": "اقسم -6 على (−6)."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 7\\):",
-        "a": "5",
-        "h": "احسب \\(4 + 1\\)."
+        "l": "احسب قيمة الأس الكسري \\(8^{2/3} =\\)",
+        "a": "4",
+        "h": "(الجذر التكعيبي للعدد 8)² = 2²."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Rational Expressions)",
+    "ti": "Matching: Rational Asymptotes & Exponent Laws (Rational Expressions)",
+    "ti_ar": "مطابقة: خطوط التقارب وقوانين الأسس والجذور (العبارات والمعادلات النسبية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Horizontal asymptote of \\(\\frac{5x^2 + 1}{x^2 - 2}\\)",
+        "r": "\\(y = 5\\) (ratio of leading coefficients)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Vertical asymptote of \\(\\frac{1}{x - 2}\\)",
+        "r": "\\(x = 2\\) (non-cancelled denominator zero)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Fractional power \\(x^{m/n}\\)",
+        "r": "\\((\\sqrt[n]{x})^m\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Improper rational \\(\\deg(P) \\ge \\deg(Q)\\)",
+        "r": "Perform polynomial long division before partial fractions"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Rational Expressions)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "خط التقارب الأفقي للدالة \\(\\frac{5x^2 + 1}{x^2 - 2}\\)",
+        "r": "\\(y = 5\\) (نسبة المعاملين الرئيسين)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "خط التقارب الرأسي للدالة \\(\\frac{1}{x - 2}\\)",
+        "r": "\\(x = 2\\) (صفر المقام غير المختصر)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الأس الكسري \\(x^{m/n}\\)",
+        "r": "\\((\\sqrt[n]{x})^m\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "كسر غير فعلي \\(\\deg(P) \\ge \\deg(Q)\\)",
+        "r": "إجراء القسمة المطولة قبل تجزئة الكسور"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Rational Expressions)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Rational Expressions)",
-    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Horizontal Asymptote Degree Test (Rational Expressions)",
+    "ti_ar": "فحص سريع: اختبار درجة البسط والمقام لخط التقارب الأفقي (العبارات والمعادلات النسبية)",
+    "q": "What is the horizontal asymptote of \\(f(x) = \\dfrac{6x^2 - 5}{2x^2 + 4}\\) as \\(x \\to \\pm\\infty\\)?",
+    "q_ar": "ما معادلة خط التقارب الأفقي للدالة \\(f(x) = \\dfrac{6x^2 - 5}{2x^2 + 4}\\) عندما \\(x \\to \\pm\\infty\\)؟",
     "o": [
-      "\\( 8 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 44 \\)"
+      "\\(y = \\frac{6}{2}\\)",
+      "\\(y = 0\\)",
+      "\\(x = \\frac{6}{2}\\)",
+      "No horizontal asymptote"
     ],
     "o_ar": [
-      "\\( 8 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 44 \\)"
+      "\\(y = \\frac{6}{2}\\)",
+      "\\(y = 0\\)",
+      "\\(x = \\frac{6}{2}\\)",
+      "لا يوجد خط تقارب أفقي"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
+    "ex": "Equal degrees in numerator and denominator give horizontal asymptote \\(y = \\frac{6}{2}\\).",
+    "ex_ar": "تساوي درجتي البسط والمقام يعطي خط تقارب أفقي \\(y = \\frac{6}{2}\\)."
   }
 ];
-
 D["a2-exponential"] = [
   {
     "t": "sb",
@@ -1225,152 +1307,174 @@ D["a2-exponential"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Exponential &amp; Logarithmic Functions)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Logarithm Law Misapplication (Exponential & Logarithmic Functions)",
+    "ti_ar": "اكتشف الخطأ: التطبيق الخاطئ لقوانين اللوغاريتمات (الدوال الأسية واللوغاريتمية)",
+    "q": "A student attempts to solve \\(\\log_{2}(x) + \\log_{2}(2) = 3\\). Which step introduces an invalid rule?",
+    "q_ar": "يحاول طالب حل المعادلة \\(\\log_{2}(x) + \\log_{2}(2) = 3\\). أي خطوة تتضمن قانوناً خاطئاً؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
-      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+      "Note the domain requirement \\(x > 0\\).",
+      "Combine the sum of logarithms as \\(\\log_{2}(x + 2) = 3\\) instead of multiplying arguments.",
+      "Exponentiate base \\(2\\) to write \\(x + 2 = 8\\).",
+      "Subtract \\(2\\) to report \\(x = 6\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
-      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
-      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Exponential &amp; Logarithmic Functions)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
-      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+      "تحديد شرط مجال اللوغاريتم \\(x > 0\\).",
+      "دمج مجموع اللوغاريتمين في صورة \\(\\log_{2}(x + 2) = 3\\) بدلاً من ضرب ما بداخل اللوغاريتم.",
+      "التحويل للصورة الأسية: \\(x + 2 = 8\\).",
+      "طرح \\(2\\) للوصول إلى الناتج."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "The product rule states \\(\\log_b(M) + \\log_b(N) = \\log_b(MN)\\), NOT \\(\\log_b(M + N)\\); thus \\(\\log_{2}(2x) = 3 \\implies x = 4\\).",
+      "The domain of \\(\\log(x)\\) is all real numbers.",
+      "\\(\\log_{2}(2) = 0\\)."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "قاعدة الضرب تنص على أن \\(\\log_b(M) + \\log_b(N) = \\log_b(MN)\\) وليس جمع المداخل؛ ومنه \\(x = 4\\).",
+      "مجال الدالة اللوغاريتمية هو جميع الأعداد الحقيقية.",
+      "قيمة \\(\\log_{2}(2) = 0\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Exponential &amp; Logarithmic Functions)",
-    "q": "Let \\(f(x) = x^2 - 8x + 23\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Logarithmic Equation & Continuous Growth (Exponential & Logarithmic Functions)",
+    "ti_ar": "وضع المصحح: المعادلات اللوغاريتمية والنمو الأسي (الدوال الأسية واللوغاريتمية)",
+    "q": "(a) Solve \\(\\log_{2}(x - 3) = 2\\), stating the domain restriction. (b) A culture grows via \\(P(t) = P_0 e^{rt}\\); find the exact doubling time \\(T_d\\) in terms of \\(r\\).",
+    "q_ar": "(أ) حل المعادلة \\(\\log_{2}(x - 3) = 2\\) مع ذكر شرط المجال. (ب) تنمو عينة وفق \\(P(t) = P_0 e^{rt}\\)؛ أوجد زمن التضاعف \\(T_d\\) بدلالة \\(r\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Domain & Exponential Conversion",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 23 = (x - 4)^2 + 7\\)."
+            "text": "Domain \\(x > 3\\); convert to \\(x - 3 = 2^{2} = 4\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 7\\) (or \\([7, \\infty)\\))."
+            "text": "\\(x = 7\\) (valid since \\(7 > 3\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Exact Doubling Time",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 7 \\implies (x - 4)^2 = y - 7\\)."
+            "text": "Set \\(2P_0 = P_0 e^{r T_d} \\implies e^{r T_d} = 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 7}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 7\\) (matching the range of \\(f\\))."
+            "text": "Take natural logs: \\(T_d = \\dfrac{\\ln 2}{r}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 7}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Exponential &amp; Logarithmic Functions)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 23\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 7}\\) لأن \\(x \\ge 4\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — شرط المجال والتحويل للصورة الأسية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المجال \\(x > 3\\)؛ والتحويل يعطي \\(x - 3 = 2^{2} = 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(x = 7\\) (يحقق شرط المجال)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — زمن التضاعف الدقيق",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "وضع \\(2P_0 = P_0 e^{r T_d} \\implies e^{r T_d} = 2\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "بأخذ اللوغاريتم الطبيعي: \\(T_d = \\dfrac{\\ln 2}{r}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Exponential &amp; Logarithmic Functions)",
+    "ti": "Matching: Logarithm Laws & Asymptotes (Exponential & Logarithmic Functions)",
+    "ti_ar": "مطابقة: قوانين اللوغاريتمات وخطوط التقارب (الدوال الأسية واللوغاريتمية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "\\(\\log_b(MN)\\)",
+        "r": "\\(\\log_b M + \\log_b N\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(\\log_b(M^k)\\)",
+        "r": "\\(k \\log_b M\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Change of base \\(\\log_a x\\)",
+        "r": "\\(\\dfrac{\\ln x}{\\ln a}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Vertical asymptote of \\(\\ln(x - 3)\\)",
+        "r": "\\(x = 3\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Exponential &amp; Logarithmic Functions)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "\\(\\log_b(MN)\\)",
+        "r": "\\(\\log_b M + \\log_b N\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(\\log_b(M^k)\\)",
+        "r": "\\(k \\log_b M\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "تغيير الأساس \\(\\log_a x\\)",
+        "r": "\\(\\dfrac{\\ln x}{\\ln a}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "خط التقارب الرأسي للدالة \\(\\ln(x - 3)\\)",
+        "r": "\\(x = 3\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Exponential &amp; Logarithmic Functions)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Exponential &amp; Logarithmic Functions)",
-    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Domain of a Shifted Logarithm (Exponential & Logarithmic Functions)",
+    "ti_ar": "فحص سريع: مجال الدالة اللوغاريتمية المزاحة (الدوال الأسية واللوغاريتمية)",
+    "q": "What is the maximal real domain of \\(f(x) = \\ln(2x - 6)\\)?",
+    "q_ar": "ما أوسع مجال حقيقي للدالة \\(f(x) = \\ln(2x - 6)\\)؟",
     "o": [
-      "\\( 9 \\)",
-      "\\( 7 \\)",
-      "\\( -7 \\)",
-      "\\( 58 \\)"
+      "\\(x > 3\\)",
+      "\\(x \\ge 3\\)",
+      "\\(x > 0\\)",
+      "\\(x \\neq 3\\)"
     ],
     "o_ar": [
-      "\\( 9 \\)",
-      "\\( 7 \\)",
-      "\\( -7 \\)",
-      "\\( 58 \\)"
+      "\\(x > 3\\)",
+      "\\(x \\ge 3\\)",
+      "\\(x > 0\\)",
+      "\\(x \\neq 3\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
+    "ex": "Require strict positivity: \\(2x - 6 > 0 \\implies x > 3\\).",
+    "ex_ar": "يشترط أن يكون ما داخل اللوغاريتم موجباً تماماً: \\(x > 3\\)."
   }
 ];
-
 D["a2-radical"] = [
   {
     "t": "num",
@@ -1488,169 +1592,191 @@ D["a2-radical"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Radicals &amp; Rational Exponents)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Rational Cancelling & Asymptote Check (Radicals & Rational Exponents)",
+    "ti_ar": "اكتشف الخطأ: اختصار العبارات النسبية وخطوط التقارب (الجذور والأسس النسبية)",
+    "q": "A student simplifies \\(R(x) = \\dfrac{x^2 - 16}{x - 4}\\) and describes its graph. Which step contains a flaw?",
+    "q_ar": "يبسّط طالب الدالة النسبية \\(R(x) = \\dfrac{x^2 - 16}{x - 4}\\) ويصف تمثيلها البياني. أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
-      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+      "Note denominator restriction \\(x \\neq 4\\).",
+      "Factor numerator as difference of squares: \\((x - 4)(x + 4)\\).",
+      "Cancel \\((x - 4)\\) for \\(x \\neq 4\\) to get \\(y = x + 4\\).",
+      "Conclude the graph has a vertical asymptote at \\(x = 4\\) rather than a removable hole at \\((4, 8)\\)."
+    ],
+    "steps_ar": [
+      "تحديد شرط المقام \\(x \\neq 4\\).",
+      "تحليل البسط كفرق بين مربعين \\((x - 4)(x + 4)\\).",
+      "اختصار \\((x - 4)\\) بشرط \\(x \\neq 4\\) للحصول على \\(y = x + 4\\).",
+      "الاستنتاج بوجود خط تقارب رأسي عند \\(x = 4\\) بدلاً من فجوة قابلة للإزالة عند \\((4, 8)\\)."
     ],
     "errorStep": 4,
     "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
-      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
-      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Radicals &amp; Rational Exponents)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
-    "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
-      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+      "Because the factor \\((x - 4)\\) cancels completely from the denominator, \\(x = 4\\) is a removable point discontinuity (hole) at \\((4, 8)\\), NOT a vertical asymptote.",
+      "You cannot factor \\(x^2 - 16\\).",
+      "The domain includes \\(x = 4\\)."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن العامل \\((x - 4)\\) اختُصر بالكامل من المقام، فإن \\(x = 4\\) تمثل فجوة عند \\((4, 8)\\) وليست خط تقارب رأسي.",
+      "لا يمكن تحليل \\(x^2 - 16\\).",
+      "المجال يشمل \\(x = 4\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Radicals &amp; Rational Exponents)",
-    "q": "Let \\(f(x) = x^2 - 10x + 26\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Partial Fractions Cover-Up Decomposition (Radicals & Rational Exponents)",
+    "ti_ar": "وضع المصحح: تجزئة الكسور الجزئية (الجذور والأسس النسبية)",
+    "q": "Express \\(\\dfrac{6x + 6}{(x - 4)(x + 6)}\\) in partial fractions \\(\\dfrac{A}{x - 4} + \\dfrac{B}{x + 6}\\). (a) Set up the polynomial identity. (b) Determine \\(A\\) and \\(B\\) by substitution.",
+    "q_ar": "عبّر عن \\(\\dfrac{6x + 6}{(x - 4)(x + 6)}\\) في صورة كسور جزئية \\(\\dfrac{A}{x - 4} + \\dfrac{B}{x + 6}\\). (أ) اكتب المتطابقة المكافئة للبسط. (ب) أوجد قيمتي \\(A\\) و\\(B\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Clearing Denominators",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 26 = (x - 5)^2 + 1\\)."
+            "text": "Multiply through by \\((x - 4)(x + 6)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "Identity: \\(6x + 6 \\equiv A(x + 6) + B(x - 4)\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Root Substitution",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Set \\(x = 4\\): \\(30 = A(10) \\implies A = 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Set \\(x = -6\\): \\(-30 = B(-10) \\implies B = 3\\)."
+          }
+        ]
+      }
+    ],
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — توحيد المقامات وكتابة المتطابقة",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 1 \\implies (x - 5)^2 = y - 1\\)."
+            "text": "الضرب في \\((x - 4)(x + 6)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 1}\\)."
+            "text": "المتطابقة: \\(6x + 6 \\equiv A(x + 6) + B(x - 4)\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — التعويض بأصفار المقام",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "بوضع \\(x = 4\\): نجد \\(A = 3\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "بوضع \\(x = -6\\): نجد \\(B = 3\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Radicals &amp; Rational Exponents)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 26\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 1}\\) لأن \\(x \\ge 5\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Radicals &amp; Rational Exponents)",
+    "ti": "Step Builder: Partial Fractions & Radical Exponents (Radicals & Rational Exponents)",
+    "ti_ar": "بناء الخطوات: الكسور الجزئية والأسس الكسرية (الجذور والأسس النسبية)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 10x + 26\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "5",
-        "h": "Take half of 10."
+        "l": "In \\(6x + 6 \\equiv A(x + 6) + B(x - 4)\\), substitute \\(x = 4\\) to find \\(A =\\)",
+        "a": "3",
+        "h": "Divide (30) by (10)."
       },
       {
-        "l": "Compute the minimum value \\(k = 26 - 5^2 =\\)",
-        "a": "1",
-        "h": "Subtract 25 from 26."
+        "l": "Substitute \\(x = -6\\) to find \\(B =\\)",
+        "a": "3",
+        "h": "Divide (-30) by (−10)."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 7\\): \\(y =\\)",
-        "a": "5",
-        "h": "Compute \\((2)^2 + 1\\)."
+        "l": "Evaluate the rational exponent \\(8^{2/3} =\\)",
+        "a": "4",
+        "h": "(cube root of 8)² = 2²."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Radicals &amp; Rational Exponents)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 10x + 26\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "5",
-        "h": "اقسم معامل x وهو 10 على 2."
+        "l": "في المتطابقة \\(6x + 6 \\equiv A(x + 6) + B(x - 4)\\)، عوّض \\(x = 4\\) لإيجاد \\(A =\\)",
+        "a": "3",
+        "h": "اقسم 30 على 10."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 26 - 5^2 =\\)",
-        "a": "1",
-        "h": "اطرح 25 من 26."
+        "l": "عوّض \\(x = -6\\) لإيجاد \\(B =\\)",
+        "a": "3",
+        "h": "اقسم -30 على (−10)."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 7\\):",
-        "a": "5",
-        "h": "احسب \\(4 + 1\\)."
+        "l": "احسب قيمة الأس الكسري \\(8^{2/3} =\\)",
+        "a": "4",
+        "h": "(الجذر التكعيبي للعدد 8)² = 2²."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Radicals &amp; Rational Exponents)",
+    "ti": "Matching: Rational Asymptotes & Exponent Laws (Radicals & Rational Exponents)",
+    "ti_ar": "مطابقة: خطوط التقارب وقوانين الأسس والجذور (الجذور والأسس النسبية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Horizontal asymptote of \\(\\frac{6x^2 + 1}{x^2 - 4}\\)",
+        "r": "\\(y = 6\\) (ratio of leading coefficients)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Vertical asymptote of \\(\\frac{1}{x - 4}\\)",
+        "r": "\\(x = 4\\) (non-cancelled denominator zero)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Fractional power \\(x^{m/n}\\)",
+        "r": "\\((\\sqrt[n]{x})^m\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Improper rational \\(\\deg(P) \\ge \\deg(Q)\\)",
+        "r": "Perform polynomial long division before partial fractions"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Radicals &amp; Rational Exponents)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "خط التقارب الأفقي للدالة \\(\\frac{6x^2 + 1}{x^2 - 4}\\)",
+        "r": "\\(y = 6\\) (نسبة المعاملين الرئيسين)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "خط التقارب الرأسي للدالة \\(\\frac{1}{x - 4}\\)",
+        "r": "\\(x = 4\\) (صفر المقام غير المختصر)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الأس الكسري \\(x^{m/n}\\)",
+        "r": "\\((\\sqrt[n]{x})^m\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "كسر غير فعلي \\(\\deg(P) \\ge \\deg(Q)\\)",
+        "r": "إجراء القسمة المطولة قبل تجزئة الكسور"
       }
     ]
   }
 ];
-
 D["a2-sequences"] = [
   {
     "t": "num",
@@ -1780,169 +1906,189 @@ D["a2-sequences"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Sequences &amp; Series)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Infinite Geometric Series Convergence Check (Sequences & Series)",
+    "ti_ar": "اكتشف الخطأ: شرط تقارب المتسلسلة الهندسية اللانهائية (المتتابعات والمتسلسلات)",
+    "q": "A student applies \\(S_\\infty = \\dfrac{a}{1 - r}\\) to \\(12 + 24 + 48 + \\cdots\\). Where does the reasoning fail?",
+    "q_ar": "يطبّق طالب صيغة \\(S_\\infty = \\dfrac{a}{1 - r}\\) على المتسلسلة \\(12 + 24 + 48 + \\cdots\\). أين موضع الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
-      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+      "Identify first term \\(a = 12\\) and common ratio \\(r = 2\\).",
+      "Substitute directly into \\(S_\\infty = \\frac{12}{1 - 2} = -12\\).",
+      "Conclude the sum of positive growing terms equals \\(-12\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
-      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
-      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Sequences &amp; Series)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
-      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+      "تحديد الحد الأول \\(a = 12\\) والأساس \\(r = 2\\).",
+      "التعويض المباشر في القانون \\(S_\\infty = \\frac{12}{1 - 2} = -12\\).",
+      "استنتاج أن مجموع حدود موجبة متزايدة يساوي \\(-12\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "The sum-to-infinity formula \\(S_\\infty = \\frac{a}{1 - r}\\) is valid ONLY when \\(|r| < 1\\); since \\(|2| \\ge 1\\), the series diverges to \\(+\\infty\\).",
+      "The formula should be \\(\\frac{a}{r - 1}\\).",
+      "\\(r\\) equals \\(\\frac{1}{2}\\) here."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "صيغة المجموع إلى اللانهاية صالحة فقط عندما \\(|r| < 1\\)؛ وبما أن \\(|2| \\ge 1\\) فالمتسلسلة متباعدة إلى \\(+\\infty\\).",
+      "القانون الصحيح هو \\(\\frac{a}{r - 1}\\).",
+      "قيمة الأساس هنا \\(\\frac{1}{2}\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Sequences &amp; Series)",
-    "q": "Let \\(f(x) = x^2 - 4x + 5\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Convergent Geometric & Arithmetic Series (Sequences & Series)",
+    "ti_ar": "وضع المصحح: المتتاليات الحسابية والهندسية المتقاربة (المتتابعات والمتسلسلات)",
+    "q": "(a) A geometric series has first term \\(a = 12\\) and common ratio \\(r = \\frac{1}{3}\\). Verify convergence and find \\(S_\\infty\\). (b) An arithmetic progression has \\(u_1 = 12\\) and common difference \\(d = 3\\); find \\(u_{10}\\).",
+    "q_ar": "(أ) متسلسلة هندسية حدها الأول \\(a = 12\\) وأساسها \\(r = \\frac{1}{3}\\). تحقق من التقارب وأوجد \\(S_\\infty\\). (ب) متتالية حسابية حدها الأول \\(12\\) وأساسها \\(d = 3\\)؛ أوجد الحد العاشر \\(u_{10}\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Convergence Criterion & Sum to Infinity",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Since \\(|r| = \\frac{1}{3} < 1\\), the infinite geometric series converges."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(S_\\infty = \\dfrac{12}{1 - 1/3} = \\dfrac{12}{2/3} = 18\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — 10th Arithmetic Term",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 5 = (x - 2)^2 + 1\\)."
+            "text": "Use \\(u_n = u_1 + (n - 1)d\\) with \\(n = 10\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "\\(u_{10} = 12 + 9(3) = 39\\)."
+          }
+        ]
+      }
+    ],
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — شرط التقارب والمجموع إلى ما لا نهاية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "بما أن \\(|r| = \\frac{1}{3} < 1\\)، فالمتسلسلة الهندسية متقاربة."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(S_\\infty = \\dfrac{12}{1 - 1/3} = 18\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (ب) — الحد العاشر في المتتالية الحسابية",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 1 \\implies (x - 2)^2 = y - 1\\)."
+            "text": "بتطبيق القانون \\(u_n = u_1 + (n - 1)d\\) عند \\(n = 10\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 1}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "\\(u_{10} = 12 + 9(3) = 39\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Sequences &amp; Series)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 5\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 1}\\) لأن \\(x \\ge 2\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Sequences &amp; Series)",
+    "ti": "Step Builder: Geometric Sum to Infinity & AP Term (Sequences & Series)",
+    "ti_ar": "بناء الخطوات: مجموع اللانهاية والحد النوني (المتتابعات والمتسلسلات)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 4x + 5\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "2",
-        "h": "Take half of 4."
+        "l": "For \\(a = 12\\) and \\(r = \\frac{1}{3}\\), compute the second term \\(a r =\\)",
+        "a": "4",
+        "h": "Divide 12 by 3."
       },
       {
-        "l": "Compute the minimum value \\(k = 5 - 2^2 =\\)",
-        "a": "1",
-        "h": "Subtract 4 from 5."
+        "l": "Compute the sum to infinity \\(S_\\infty = \\frac{12}{1 - 1/3} =\\)",
+        "a": "18",
+        "h": "Multiply 12 by 3/2."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 4\\): \\(y =\\)",
-        "a": "5",
-        "h": "Compute \\((2)^2 + 1\\)."
+        "l": "In the AP with \\(u_1 = 12,\\; d = 3\\), find \\(u_{10} =\\)",
+        "a": "39",
+        "h": "Compute 12 + 9×3."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Sequences &amp; Series)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 4x + 5\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "2",
-        "h": "اقسم معامل x وهو 4 على 2."
+        "l": "لمتتالية هندسية فيها \\(a = 12\\) و\\(r = \\frac{1}{3}\\)، احسب الحد الثاني \\(ar =\\)",
+        "a": "4",
+        "h": "اقسم 12 على 3."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 5 - 2^2 =\\)",
-        "a": "1",
-        "h": "اطرح 4 من 5."
+        "l": "احسب المجموع إلى اللانهاية \\(S_\\infty = \\frac{12}{1 - 1/3} =\\)",
+        "a": "18",
+        "h": "اضرب 12 في 3/2."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 4\\):",
-        "a": "5",
-        "h": "احسب \\(4 + 1\\)."
+        "l": "في المتتالية الحسابية \\(u_1 = 12,\\; d = 3\\)، أوجد \\(u_{10} =\\)",
+        "a": "39",
+        "h": "احسب 12 + 9×3."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Sequences &amp; Series)",
+    "ti": "Matching: Sequence, Series & Expansion Formulas (Sequences & Series)",
+    "ti_ar": "مطابقة: صيغ المتتاليات والمتسلسلات وذي الحدين (المتتابعات والمتسلسلات)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Arithmetic sum \\(S_n\\)",
+        "r": "\\(\\frac{n}{2}[2a + (n - 1)d]\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Convergent GP sum \\(S_\\infty\\) (\\(|r| < 1\\))",
+        "r": "\\(\\dfrac{a}{1 - r}\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Binomial general term in \\((a + b)^n\\)",
+        "r": "\\(\\binom{n}{r} a^{n - r} b^r\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "\\(p\\)-series \\(\\sum_{n=1}^{\\infty} n^{-p}\\) convergence",
+        "r": "Converges iff \\(p > 1\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Sequences &amp; Series)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "مجموع المتتالية الحسابية \\(S_n\\)",
+        "r": "\\(\\frac{n}{2}[2a + (n - 1)d]\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "مجموع المتسلسلة الهندسية اللانهائية (\\(|r| < 1\\))",
+        "r": "\\(\\dfrac{a}{1 - r}\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الحد العام في مفكوك ذي الحدين \\((a + b)^n\\)",
+        "r": "\\(\\binom{n}{r} a^{n - r} b^r\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "تقارب متسلسلة القوى \\(\\sum_{n=1}^{\\infty} n^{-p}\\)",
+        "r": "تتقارب إذا وفقط إذا كان \\(p > 1\\)"
       }
     ]
   }
 ];
-
 D["a2-conics"] = [
   {
     "t": "num",
@@ -2046,191 +2192,211 @@ D["a2-conics"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Conic Sections)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Area & Volume Similarity Scaling (Conic Sections)",
+    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (القطوع المخروطية)",
+    "q": "Two similar solids have linear scale factor \\(k = 2\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
+    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 2\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
-      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+      "Identify the linear ratio of corresponding edges as \\(1 : 2\\).",
+      "Multiply the surface area directly by \\(2\\) instead of \\(2^2\\): \\(A_{\\text{large}} = 10 \\times 2 = 20\\text{ cm}^2\\).",
+      "Report \\(20\\text{ cm}^2\\) as the larger surface area."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
-      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
-      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Conic Sections)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
-      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 2\\).",
+      "ضرب المساحة السطحية في \\(2\\) مباشرة بدلاً من \\(2^2\\): \\(A = 20\\text{ cm}^2\\).",
+      "اعتماد الناتج كمساحة للمجسم الأكبر."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Areas of similar figures scale by \\(k^2 = 4\\) (giving \\(40\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 8\\).",
+      "Areas scale by \\(\\sqrt{k}\\).",
+      "Similar solids always have equal surface areas."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 4\\) (أي \\(40\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 8\\).",
+      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
+      "المجسمات المتشابهة متساوية المساحة دائماً."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Conic Sections)",
-    "q": "Let \\(f(x) = x^2 - 8x + 17\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Conic Sections)",
+    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (القطوع المخروطية)",
+    "q": "A circle has equation \\((x - 2)^2 + (y + 2)^2 = 36\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
+    "q_ar": "دائرة معادلتها \\((x - 2)^2 + (y + 2)^2 = 36\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Circle Center & Radius",
         "marks": 2,
         "rubric": [
           {
-            "code": "M1",
+            "code": "B1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 17 = (x - 4)^2 + 1\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 1 \\implies (x - 4)^2 = y - 1\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 1}\\)."
+            "text": "Center \\((h, k) = (2, -2)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "Radius \\(r = \\sqrt{36} = 6\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Arc length \\(s = r\\theta = 6 \\cdot \\frac{\\pi}{2} = 3\\pi\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(36)\\frac{\\pi}{2} = 9\\pi\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Conic Sections)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 17\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 1}\\) لأن \\(x \\ge 4\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "المركز \\((2, -2)\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "نصف القطر \\(r = \\sqrt{36} = 6\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "طول القوس \\(s = r\\theta = 3\\pi\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 9\\pi\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Conic Sections)",
+    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Conic Sections)",
+    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (القطوع المخروطية)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 8x + 17\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "4",
-        "h": "Take half of 8."
+        "l": "From \\((x - 2)^2 + (y + 2)^2 = 36\\), find the radius \\(r =\\)",
+        "a": "6",
+        "h": "Take the square root of 36."
       },
       {
-        "l": "Compute the minimum value \\(k = 17 - 4^2 =\\)",
-        "a": "1",
-        "h": "Subtract 16 from 17."
+        "l": "With linear similarity ratio \\(1 : 2\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
+        "a": "8",
+        "h": "Cube 2."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
-        "a": "5",
-        "h": "Compute \\((2)^2 + 1\\)."
+        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
+        "a": "60",
+        "h": "Compute 360 / 6."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Conic Sections)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 8x + 17\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "4",
-        "h": "اقسم معامل x وهو 8 على 2."
+        "l": "من المعادلة \\((x - 2)^2 + (y + 2)^2 = 36\\)، أوجد نصف القطر \\(r =\\)",
+        "a": "6",
+        "h": "خذ الجذر التربيعي للعدد 36."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 17 - 4^2 =\\)",
-        "a": "1",
-        "h": "اطرح 16 من 17."
+        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 2\\)، فإن نسبة الحجوم \\(k^3 =\\)",
+        "a": "8",
+        "h": "احسب مكعب 2."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
-        "a": "5",
-        "h": "احسب \\(4 + 1\\)."
+        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
+        "a": "60",
+        "h": "احسب 360 ÷ 6."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Conic Sections)",
+    "ti": "Matching: Circle Theorems & Solid Mensuration (Conic Sections)",
+    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (القطوع المخروطية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Inscribed angle in a semicircle",
+        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Opposite angles of a cyclic quadrilateral",
+        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Power of a Point (intersecting chords)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Conic Sections)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
+        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
+        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Conic Sections)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Conic Sections)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Central vs. Inscribed Angle (Conic Sections)",
+    "ti_ar": "فحص سريع: الزاوية المركزية والمحيطية (القطوع المخروطية)",
+    "q": "An inscribed angle \\(\\angle APB\\) subtends the same minor arc as central angle \\(\\angle AOB = 100^\\circ\\). What is \\(\\angle APB\\)?",
+    "q_ar": "زاوية محيطية \\(\\angle APB\\) تشترك في نفس القوس الأصغر مع زاوية مركزية قياسها \\(100^\\circ\\). ما قياس \\(\\angle APB\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(50^\\circ\\)",
+      "\\(100^\\circ\\)",
+      "\\(80^\\circ\\)",
+      "\\(200^\\circ\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(50^\\circ\\)",
+      "\\(100^\\circ\\)",
+      "\\(80^\\circ\\)",
+      "\\(200^\\circ\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
+    "ex": "The inscribed angle is half the central angle subtending the same arc.",
+    "ex_ar": "الزاوية المحيطية تساوي نصف قياس الزاوية المركزية المشتركة معها في القوس."
   }
 ];
-
 D["a2-trig"] = [
   {
     "t": "num",
@@ -2353,169 +2519,189 @@ D["a2-trig"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Trigonometric Functions)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Quadrant Sign & Dividing by \\(\\sin\\theta\\) (Trigonometric Functions)",
+    "ti_ar": "اكتشف الخطأ: إشارة الربع والقسمة على \\(\\sin\\theta\\) (الدوال والمتطابقات المثلثية)",
+    "q": "Solve \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\) for \\(0 \\le \\theta < 2\\pi\\). Which step loses valid roots?",
+    "q_ar": "عند حل المعادلة \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\) على الفترة \\(0 \\le \\theta < 2\\pi\\)، أي خطوة تضيع حلولاً صحيحة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
-      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+      "Divide both sides by \\(\\sin\\theta\\) without checking \\(\\sin\\theta = 0\\), obtaining \\(2\\cos\\theta = 1\\).",
+      "Solve \\(\\cos\\theta = \\frac{1}{2}\\) to find \\(\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\).",
+      "State \\(\\left\\{\\frac{\\pi}{3}, \\frac{5\\pi}{3}\\right\\}\\) as the complete solution set."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
-      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
-      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Trigonometric Functions)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
-      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+      "قسمة الطرفين على \\(\\sin\\theta\\) دون فحص حالة \\(\\sin\\theta = 0\\) للحصول على \\(2\\cos\\theta = 1\\).",
+      "حل \\(\\cos\\theta = \\frac{1}{2}\\) لإيجاد \\(\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\).",
+      "كتابة هاتين الزاويتين فقط كمجموعة حل كاملة."
+    ],
+    "errorStep": 1,
+    "reasons": [
+      "Dividing by \\(\\sin\\theta\\) discards the roots where \\(\\sin\\theta = 0\\) (\\(\\theta = 0, \\pi\\)); instead factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+      "\\(\\cos\\theta = \\frac{1}{2}\\) has no solutions in Quadrant IV.",
+      "\\(\\sin\\theta\\) can never equal zero."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "القسمة على \\(\\sin\\theta\\) تحذف الجذور التي تجعل \\(\\sin\\theta = 0\\) (وهي \\(0, \\pi\\))؛ الصواب نقل الحدود والتحليل \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+      "لا يوجد حل لمعادلة \\(\\cos\\theta = \\frac{1}{2}\\) في الربع الرابع.",
+      "لا يمكن أن يساوي \\(\\sin\\theta\\) صفراً."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Trigonometric Functions)",
-    "q": "Let \\(f(x) = x^2 - 8x + 16\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Quadrant Identities & Cosine Rule (Trigonometric Functions)",
+    "ti_ar": "وضع المصحح: المتطابقات المثلثية وقانون جيب التمام (الدوال والمتطابقات المثلثية)",
+    "q": "Suppose \\(\\sin\\theta = \\dfrac{5}{13}\\) with \\(\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\) (Quadrant II). (a) Find exact values of \\(\\cos\\theta\\) and \\(\\tan\\theta\\). (b) Evaluate \\(\\sin(2\\theta)\\).",
+    "q_ar": "إذا كان \\(\\sin\\theta = \\dfrac{5}{13}\\) حيث \\(\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\) (الربع الثاني). (أ) أوجد القيمة الدقيقة لكل من \\(\\cos\\theta\\) و\\(\\tan\\theta\\). (ب) احسب \\(\\sin(2\\theta)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Quadrant II Cosine & Tangent",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 16 = (x - 4)^2 + 0\\)."
+            "text": "\\(\\cos^2\\theta = 1 - \\frac{25}{169} = \\frac{144}{169}\\), negative in QII \\(\\implies \\cos\\theta = -\\frac{12}{13}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 0\\) (or \\([0, \\infty)\\))."
+            "text": "\\(\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = -\\frac{5}{12}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Double-Angle Sine",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 0 \\implies (x - 4)^2 = y - 0\\)."
+            "text": "Apply \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 0}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 0\\) (matching the range of \\(f\\))."
+            "text": "\\(\\sin(2\\theta) = 2\\left(\\frac{5}{13}\\right)\\left(-\\frac{12}{13}\\right) = -\\frac{120}{169}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 0}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Trigonometric Functions)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 16\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 0}\\) لأن \\(x \\ge 4\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — جيب التمام والظل في الربع الثاني",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "في الربع الثاني \\(\\cos\\theta < 0\\) ومن متطابقة فيثاغورس \\(\\cos\\theta = -\\frac{12}{13}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\tan\\theta = -\\frac{5}{12}\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — جيب ضعف الزاوية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "تطبيق المتطابقة \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sin(2\\theta) = -\\frac{120}{169}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Trigonometric Functions)",
+    "ti": "Step Builder: Sinusoidal Amplitude, Period & Exact Ratios (Trigonometric Functions)",
+    "ti_ar": "بناء الخطوات: السعة والدورة والنسب المثلثية (الدوال والمتطابقات المثلثية)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 8x + 16\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "4",
-        "h": "Take half of 8."
+        "l": "State the amplitude of \\(y = -5\\cos(3x)\\):",
+        "a": "5",
+        "h": "Amplitude is |A| > 0."
       },
       {
-        "l": "Compute the minimum value \\(k = 16 - 4^2 =\\)",
-        "a": "0",
-        "h": "Subtract 16 from 16."
+        "l": "If \\(\\tan\\theta = \\frac{5}{12}\\) for acute \\(\\theta\\), find \\(\\sec\\theta\\) numerator over \\(12\\):",
+        "a": "13",
+        "h": "Hypotenuse of (5, 12) right triangle."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
-        "a": "4",
-        "h": "Compute \\((2)^2 + 0\\)."
+        "l": "Convert \\(\\pi / 3\\) radians into degrees:",
+        "a": "60",
+        "h": "Multiply 180 by 1/3."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Trigonometric Functions)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 8x + 16\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "4",
-        "h": "اقسم معامل x وهو 8 على 2."
+        "l": "اذكر سعة الدالة \\(y = -5\\cos(3x)\\):",
+        "a": "5",
+        "h": "السعة تساوي القيمة المطلقة |A|."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 16 - 4^2 =\\)",
-        "a": "0",
-        "h": "اطرح 16 من 16."
+        "l": "إذا كان \\(\\tan\\theta = \\frac{5}{12}\\) لزاوية حادة، فما بسط \\(\\sec\\theta\\) المقامه \\(12\\)؟",
+        "a": "13",
+        "h": "وتر المثلث القائم ذي الضلعين 5 و12."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
-        "a": "4",
-        "h": "احسب \\(4 + 0\\)."
+        "l": "حوّل \\(\\pi / 3\\) راديان إلى درجات:",
+        "a": "60",
+        "h": "احسب 180 ÷ 3."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Trigonometric Functions)",
+    "ti": "Matching: Trigonometric & Inverse-Trig Identities (Trigonometric Functions)",
+    "ti_ar": "مطابقة: المتطابقات المثلثية والفروع العكسية (الدوال والمتطابقات المثلثية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "\\(1 + \\tan^2\\theta\\)",
+        "r": "\\(\\sec^2\\theta\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Cosine Rule for side \\(c\\)",
+        "r": "\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Principal range of \\(\\arccos x\\)",
+        "r": "\\([0, \\pi]\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Period of \\(5\\sin(3x)\\)",
+        "r": "\\(\\dfrac{2\\pi}{3}\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Trigonometric Functions)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "\\(1 + \\tan^2\\theta\\)",
+        "r": "\\(\\sec^2\\theta\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "قانون جيب التمام للضلع \\(c\\)",
+        "r": "\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "المدى الرئيسي للدالة \\(\\arccos x\\)",
+        "r": "\\([0, \\pi]\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "دورة الدالة \\(5\\sin(3x)\\)",
+        "r": "\\(\\dfrac{2\\pi}{3}\\)"
       }
     ]
   }
 ];
-
 D["a2-matrices"] = [
   {
     "t": "num",
@@ -2587,191 +2773,213 @@ D["a2-matrices"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Matrices &amp; Systems)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Matrix Inverse & Non-Commutative Product (Matrices & Systems)",
+    "ti_ar": "اكتشف الخطأ: معكوس المصفوفة وضرب المصفوفات (المصفوفات وأنظمة المعادلات)",
+    "q": "A student inverts \\(A = \\begin{pmatrix} 5 & 1 \\\\ 2 & 5 \\end{pmatrix}\\). Which step contains an error?",
+    "q_ar": "يحسب طالب معكوس المصفوفة \\(A = \\begin{pmatrix} 5 & 1 \\\\ 2 & 5 \\end{pmatrix}\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
-      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+      "Compute \\(\\det(A) = (5)(5) - (1)(2) = 23 \\neq 0\\).",
+      "Swap main diagonal entries \\(5\\) and \\(5\\).",
+      "Leave off-diagonal entries \\(1\\) and \\(2\\) with unchanged positive signs instead of negating them.",
+      "Divide by \\(23\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
-      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
-      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Matrices &amp; Systems)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
-      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+      "حساب المحدد \\(\\det(A) = (5)(5) - 2 = 23 \\neq 0\\).",
+      "تبديل عنصري القطر الرئيس \\(5\\) و\\(5\\).",
+      "ترك عنصري القطر الثانوي \\(1\\) و\\(2\\) بنفس إشارتهما دون تغيير الإشارة.",
+      "القسمة على المحدد \\(23\\)."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "For \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\), the adjugate requires swapping \\(a, d\\) AND negating \\(b, c\\): \\(A^{-1} = \\frac{1}{ad-bc}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\\).",
+      "You should divide by the trace \\(a + d\\) instead of \\(\\det(A)\\).",
+      "\\(\\det(A)\\) is \\(ad + bc\\)."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "معكوس المصفوفة \\(2 \\times 2\\) يتطلب تبديل القطر الرئيس وتغيير إشارة القطر الثانوي: \\(\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\\).",
+      "يجب القسمة على الأثر \\(a + d\\) بدلاً من المحدد.",
+      "المحدد يساوي \\(ad + bc\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Matrices &amp; Systems)",
-    "q": "Let \\(f(x) = x^2 - 8x + 21\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Dot Product Orthogonality, Determinant & Eigenvalues (Matrices & Systems)",
+    "ti_ar": "وضع المصحح: تعامد المتجهات والمحددات والقيم الذاتية (المصفوفات وأنظمة المعادلات)",
+    "q": "Let \\(A = \\begin{pmatrix} 5 & 1 \\\\ 2 & 5 \\end{pmatrix}\\) and vectors \\(\\mathbf{u} = \\langle 4, -3 \\rangle,\\; \\mathbf{v} = \\langle 3, k \\rangle\\). (a) Find \\(k\\) so \\(\\mathbf{u} \\perp \\mathbf{v}\\). (b) Compute \\(\\text{tr}(A)\\), \\(\\det(A)\\), and write the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).",
+    "q_ar": "لتكن \\(A = \\begin{pmatrix} 5 & 1 \\\\ 2 & 5 \\end{pmatrix}\\) والمتجهان \\(\\mathbf{u} = \\langle 4, -3 \\rangle,\\; \\mathbf{v} = \\langle 3, k \\rangle\\). (أ) أوجد \\(k\\) بحيث يتعامد المتجهان. (ب) احسب الأثر والمحدد واكتب المعادلة المميزة.",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Orthogonality via Dot Product",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 21 = (x - 4)^2 + 5\\)."
+            "text": "Set \\(\\mathbf{u} \\cdot \\mathbf{v} = 12 - 3k = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "\\(k = 4\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Trace, Determinant & Characteristic Equation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\text{tr}(A) = 10\\) and \\(\\det(A) = 23\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Characteristic polynomial: \\(\\lambda^2 - 10\\lambda + 23 = 0\\)."
+          }
+        ]
+      }
+    ],
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — شرط التعامد بالضرب القياسي",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 5 \\implies (x - 4)^2 = y - 5\\)."
+            "text": "وضع \\(\\mathbf{u} \\cdot \\mathbf{v} = 12 - 3k = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 5}\\)."
+            "text": "\\(k = 4\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الأثر والمحدد والمعادلة المميزة",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الأثر \\(\\text{tr}(A) = 10\\) والمحدد \\(\\det(A) = 23\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "المعادلة المميزة: \\(\\lambda^2 - 10\\lambda + 23 = 0\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Matrices &amp; Systems)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 21\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 5}\\) لأن \\(x \\ge 4\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Matrices &amp; Systems)",
+    "ti": "Step Builder: Determinant, Trace & Orthogonality (Matrices & Systems)",
+    "ti_ar": "بناء الخطوات: المحدد والأثر والتعامد (المصفوفات وأنظمة المعادلات)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 8x + 21\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "4",
-        "h": "Take half of 8."
+        "l": "Compute \\(\\det\\begin{pmatrix} 5 & 1 \\\\ 2 & 5 \\end{pmatrix} =\\)",
+        "a": "23",
+        "h": "Compute 5×5 − 2."
       },
       {
-        "l": "Compute the minimum value \\(k = 21 - 4^2 =\\)",
-        "a": "5",
-        "h": "Subtract 16 from 21."
+        "l": "Compute the trace \\(\\text{tr}(A) = a + d =\\)",
+        "a": "10",
+        "h": "Add diagonal entries 5 + 5."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
-        "a": "9",
-        "h": "Compute \\((2)^2 + 5\\)."
+        "l": "Compute the dot product \\(\\langle 4, -3 \\rangle \\cdot \\langle 3, 4 \\rangle =\\)",
+        "a": "0",
+        "h": "12 + (−12)."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Matrices &amp; Systems)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 8x + 21\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "4",
-        "h": "اقسم معامل x وهو 8 على 2."
+        "l": "احسب المحدد \\(\\det\\begin{pmatrix} 5 & 1 \\\\ 2 & 5 \\end{pmatrix} =\\)",
+        "a": "23",
+        "h": "احسب 5×5 − 2."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 21 - 4^2 =\\)",
-        "a": "5",
-        "h": "اطرح 16 من 21."
+        "l": "احسب أثر المصفوفة \\(\\text{tr}(A) =\\)",
+        "a": "10",
+        "h": "اجمع عنصري القطر الرئيس 5 + 5."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
-        "a": "9",
-        "h": "احسب \\(4 + 5\\)."
+        "l": "احسب الضرب القياسي \\(\\langle 4, -3 \\rangle \\cdot \\langle 3, 4 \\rangle =\\)",
+        "a": "0",
+        "h": "12 − 12."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Matrices &amp; Systems)",
+    "ti": "Matching: Vector & Linear Algebra Invariants (Matrices & Systems)",
+    "ti_ar": "مطابقة: أساسيات المتجهات والجبر الخطي (المصفوفات وأنظمة المعادلات)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Orthogonal non-zero vectors \\(\\mathbf{u}, \\mathbf{v}\\)",
+        "r": "Dot product \\(\\mathbf{u} \\cdot \\mathbf{v} = 0\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Singular (non-invertible) matrix \\(A\\)",
+        "r": "\\(\\det(A) = 0\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Sum of eigenvalues \\(\\sum \\lambda_i\\)",
+        "r": "\\(\\text{tr}(A) = 10\\) for \\(A\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Rank–Nullity Theorem (\\(m \\times n\\))",
+        "r": "\\(\\text{rank}(A) + \\dim(\\ker A) = n\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Matrices &amp; Systems)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "تعامد متجهين غير صفريين \\(\\mathbf{u}, \\mathbf{v}\\)",
+        "r": "الضرب القياسي \\(\\mathbf{u} \\cdot \\mathbf{v} = 0\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "مصفوفة منفردة (غير قابلة للعكس)",
+        "r": "المحدد \\(\\det(A) = 0\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "مجموع القيم الذاتية \\(\\sum \\lambda_i\\)",
+        "r": "يساوي الأثر \\(\\text{tr}(A) = 10\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "مبرهنة الرتبة والبطلان (\\(m \\times n\\))",
+        "r": "\\(\\text{rank}(A) + \\dim(\\ker A) = n\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Matrices &amp; Systems)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Matrices &amp; Systems)",
-    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 9 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Singular Matrix Parameter (Matrices & Systems)",
+    "ti_ar": "فحص سريع: شرط انعدام محدد المصفوفة (المصفوفات وأنظمة المعادلات)",
+    "q": "For what value of \\(k\\) is the matrix \\(\\begin{pmatrix} 5 & 10 \\\\ 3 & k \\end{pmatrix}\\) singular (non-invertible)?",
+    "q_ar": "ما قيمة \\(k\\) التي تجعل المصفوفة \\(\\begin{pmatrix} 5 & 10 \\\\ 3 & k \\end{pmatrix}\\) منفردة (غير قابلة للعكس)؟",
     "o": [
-      "\\( 9 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 34 \\)"
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(5\\)",
+      "\\(0\\)"
     ],
     "o_ar": [
-      "\\( 9 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 34 \\)"
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(5\\)",
+      "\\(0\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 5 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 5 \\)."
+    "ex": "\\(\\det = 5k - 3(10) = 0 \\implies k = 6\\).",
+    "ex_ar": "ينعدم المحدد عندما \\(5k - 30 = 0 \\implies k = 6\\)."
   }
 ];
-
 D["a2-stats"] = [
   {
     "t": "num",
@@ -2864,188 +3072,209 @@ D["a2-stats"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Probability &amp; Statistics)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Probability & Statistics)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الاحتمالات والإحصاء التطبيقي)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 4\\) and \\(\\operatorname{Var}(Y) = 3\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 4\\) و\\(\\operatorname{Var}(Y) = 3\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
-      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
-      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 4 - 3 = 1\\).",
+      "Take square root for standard deviation."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
-      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
-      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Probability &amp; Statistics)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
-      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
-      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 4 - 3 = 1\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 4 + 3 = 7\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Probability &amp; Statistics)",
-    "q": "Let \\(f(x) = x^2 - 6x + 10\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Probability & Statistics)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الاحتمالات والإحصاء التطبيقي)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 8\\). For a simple random sample of size \\(n = 16\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 8\\). لعينة عشوائية حجمها \\(n = 16\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{16}} = \\dfrac{8}{4} = 2\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 10 = (x - 3)^2 + 1\\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "\\(4(4) + 3 = 19\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 3)^2 + 1 \\implies (x - 3)^2 = y - 1\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 1}\\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{8}{\\sqrt{16}} = 2\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(4) + 3 = 19\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Probability &amp; Statistics)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 10\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 1}\\) لأن \\(x \\ge 3\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Probability &amp; Statistics)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Probability & Statistics)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الاحتمالات والإحصاء التطبيقي)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 6x + 10\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "3",
-        "h": "Take half of 6."
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 16\\):",
+        "a": "4",
+        "h": "Square root of 16."
       },
       {
-        "l": "Compute the minimum value \\(k = 10 - 3^2 =\\)",
-        "a": "1",
-        "h": "Subtract 9 from 10."
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 8\\):",
+        "a": "2",
+        "h": "Divide 8 by 4."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 5\\): \\(y =\\)",
-        "a": "5",
-        "h": "Compute \\((2)^2 + 1\\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "7",
+        "h": "Add 4 + 3."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Probability &amp; Statistics)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 6x + 10\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "3",
-        "h": "اقسم معامل x وهو 6 على 2."
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 16\\):",
+        "a": "4",
+        "h": "الجذر التربيعي للعدد 16."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 10 - 3^2 =\\)",
-        "a": "1",
-        "h": "اطرح 9 من 10."
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 8\\):",
+        "a": "2",
+        "h": "اقسم 8 على 4."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 5\\):",
-        "a": "5",
-        "h": "احسب \\(4 + 1\\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "7",
+        "h": "اجمع 4 + 3."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Probability &amp; Statistics)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Probability & Statistics)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الاحتمالات والإحصاء التطبيقي)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Probability &amp; Statistics)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Probability &amp; Statistics)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Probability &amp; Statistics)",
-    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Histogram Frequency Density (Probability & Statistics)",
+    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الاحتمالات والإحصاء التطبيقي)",
+    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(15\\). What bar height (frequency density) should be plotted?",
+    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(15\\). ما كثافة التكرار (ارتفاع العمود)؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 41 \\)"
+      "\\(3\\)",
+      "\\(15\\)",
+      "\\(75\\)",
+      "\\(1\\)"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 41 \\)"
+      "\\(3\\)",
+      "\\(15\\)",
+      "\\(75\\)",
+      "\\(1\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 6 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 6 \\)."
+    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 15 \\div 5 = 3\\).",
+    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
   }
 ];
 });

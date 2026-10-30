@@ -146,150 +146,172 @@ D["apab-overview"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (AP Calculus AB Exam Format & Units Overview)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 4xy + y^2 = 25\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Exam Pacing & Time Allocation (AP Calculus AB Exam Format & Units Overview)",
+    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدرجات (نظرة عامة على نظام اختبار AP Calculus AB والوحدات)",
+    "q": "A student plans their timing for a 30-question, 45-minute section in APAB. Which step in their strategy introduces a flaw?",
+    "q_ar": "يخطط طالب لتوزيع وقته في قسم مكوّن من 30 سؤالاً خلال 45 دقيقة. أي خطوة تتضمن خللاً منهجياً؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(4xy\\) with respect to \\(x\\) as \\(4\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(25\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Compute average time budget per question: \\(\\frac{45\\times 60}{30} = 90\\) seconds.",
+      "Complete a first pass of straightforward items in roughly \\(63\\) seconds each to bank time.",
+      "Spend \\(9\\) minutes stuck on a single hard item before reading the remaining 15 questions.",
+      "Reserve the final \\(4\\) minutes to verify flagged items and ensure no unanswered blanks remain."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(4xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(4y + 4x\\dfrac{dy}{dx}\\), not \\(4\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(25\\) remains \\(25\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(4xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(4xy\\) gives \\(4y + 4x\\dfrac{dy}{dx}\\). Thus \\(2x + 4y + (4x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (AP Calculus AB Exam Format & Units Overview)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 4xy + y^2 = 25\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(4xy\\) بالنسبة إلى \\(x\\) على أنه \\(4\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "حساب متوسط الزمن لكل سؤال: \\(\\frac{45\\times 60}{30} = 90\\) ثانية.",
+      "إنجاز الجولة الأولى للأسئلة المباشرة خلال نحو \\(63\\) ثانية للسؤال لتوفير الوقت.",
+      "قضاء \\(9\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (15 سؤالاً).",
+      "تخصيص آخر \\(4\\) دقائق لمراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي إجابة فارغة."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "Sinking 9 minutes into one question sacrifices 5–6 solvable equal-weight items later in the section; hard items should be flagged for Pass 2.",
+      "Average time per question should be computed by multiplying minutes by questions.",
+      "You should leave unanswered blanks when there is no guessing penalty."
     ],
     "reasons_ar": [
-      "الحد \\(4xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(4y + 4x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "استنزاف 9 دقائق في سؤال واحد يضيع 5–6 أسئلة قابلة للحل بنفس الوزن لاحقاً؛ يجب تعليم السؤال الصعب والعودة إليه في الجولة الثانية.",
+      "يُحسب متوسط الزمن بضرب الدقائق في عدد الأسئلة.",
+      "يفضّل ترك الأسئلة الصعبة فارغة حتى عند عدم وجود خصم على التخمين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(4xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(4xy\\) نحصل على \\(4y + 4x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (AP Calculus AB Exam Format & Units Overview)",
-    "q": "Consider the curve \\(y = 4x^3 - 5x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Pacing Audit & Target Score Plan (AP Calculus AB Exam Format & Units Overview)",
+    "ti_ar": "وضع المصحح: خطة إدارة الوقت والدرجة المستهدفة (نظرة عامة على نظام اختبار AP Calculus AB والوحدات)",
+    "q": "A practice section has \\(30\\) equal-weight questions in \\(45\\) minutes with no penalty for wrong guesses. A student answers \\(25\\) correctly on Pass 1–2. (a) Find the exact seconds-per-question budget and accuracy percentage. (b) State the optimal triage rule for the remaining \\(5\\) flagged questions.",
+    "q_ar": "يتكون قسم تدريبي من \\(30\\) سؤالاً متساوية الوزن في \\(45\\) دقيقة دون خصم على الإجابات الخاطئة. أجاب طالب عن \\(25\\) سؤالاً بشكل صحيح. (أ) أوجد الزمن المخصص لكل سؤال بالثواني ونسبة الدقة المئوية. (ب) اذكر قاعدة الفرز المثلى للأسئلة المتبقية وعددها \\(5\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 12x^2 - 10x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 2\\): \\(m = 12(2)^2 - 10(2)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 38\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Time Budget & Raw Accuracy",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(12x - 10) = 0\\)."
+            "text": "Time per item: \\(\\frac{2700}{30} = 90\\text{ s}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{10}{12}\\)."
+            "text": "Raw score percentage: \\(\\frac{25}{30} \\times 100\\% \\approx 83\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Elimination & Zero-Blank Rule",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Eliminate clearly invalid distractors using dimensional/sign/boundary checks."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select the best remaining option on all \\(5\\) items before time expires (expected gain \\(> 0\\) with no guessing penalty)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (AP Calculus AB Exam Format & Units Overview)",
-    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - 5x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — ميزانية الوقت ونسبة الدقة",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "الزمن لكل سؤال: \\(\\frac{2700}{30} = 90\\) ثانية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "النسبة المئوية للدرجة الخام: \\(\\frac{25}{30} \\times 100\\% \\approx 83\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — استبعاد البدائل وعدم ترك فراغات",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "استبعاد الخيارات المستحيلة عبر فحص الإشارة أو القيم الحدية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "اختيار أفضل إجابة لجميع الأسئلة المتبقية (5) قبل انتهاء الوقت لعدم وجود خصم."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (AP Calculus AB Exam Format & Units Overview)",
+    "ti": "Step Builder: Exam Time & Score Budget (AP Calculus AB Exam Format & Units Overview)",
+    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والدرجة (نظرة عامة على نظام اختبار AP Calculus AB والوحدات)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 4x^2 + 5x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
-        "a": "8",
-        "h": "Multiply power 2 by 4."
+        "l": "Convert \\(45\\) minutes into total seconds:",
+        "a": "2700",
+        "h": "Multiply 45 by 60."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
+        "l": "Divide by \\(30\\) questions to get seconds per question:",
+        "a": "90",
+        "h": "Compute 2700 / 30."
+      },
+      {
+        "l": "If you answer \\(25\\) out of \\(30\\) correctly, how many items remain for review?",
         "a": "5",
-        "h": "The derivative of 5x is 5."
-      },
-      {
-        "l": "Evaluate the instantaneous rate of change \\(f'(2) =\\)",
-        "a": "21",
-        "h": "Compute 8(2) + 5."
+        "h": "Subtract 25 from 30."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (AP Calculus AB Exam Format & Units Overview)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 4x^2 + 5x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
-        "a": "8",
-        "h": "اضرب الأس 2 في 4."
+        "l": "حوّل \\(45\\) دقيقة إلى إجمالي الثواني:",
+        "a": "2700",
+        "h": "اضرب 45 في 60."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
+        "l": "اقسم على \\(30\\) سؤالاً لإيجاد عدد الثواني لكل سؤال:",
+        "a": "90",
+        "h": "احسب 2700 ÷ 30."
+      },
+      {
+        "l": "إذا حللت \\(25\\) من أصل \\(30\\)، فكم سؤالاً يتبقى للمراجعة؟",
         "a": "5",
-        "h": "مشتقة 5x هي 5."
-      },
-      {
-        "l": "احسب قيمة المشتقة \\(f'(2) =\\)",
-        "a": "21",
-        "h": "احسب 8(2) + 5."
+        "h": "اطرح 25 من 30."
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (AP Calculus AB Exam Format & Units Overview)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (AP Calculus AB Exam Format & Units Overview)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Two-Pass Exam Triage (AP Calculus AB Exam Format & Units Overview)",
+    "ti_ar": "فحص سريع: استراتيجية الجولتين في الاختبار (نظرة عامة على نظام اختبار AP Calculus AB والوحدات)",
+    "q": "On a timed 30-question section (45 minutes, no guessing penalty), what is the highest-yield action when an item still resists solution after 120 seconds?",
+    "q_ar": "في قسم موقوت من 30 سؤالاً (45 دقيقة دون خصم على التخمين)، ما الإجراء الأعلى كفاءة إذا استغرق سؤال أكثر من 120 ثانية دون حل؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 14 \\)"
+      "Record a tentative answer, flag the item for Pass 2, and advance immediately to secure easier marks",
+      "Leave the answer blank and spend another 5 minutes deriving from scratch",
+      "Restart the entire section from Question 1",
+      "Skip reading all remaining word problems"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 14 \\)"
+      "تسجيل إجابة مبدئية وتعليم السؤال للجولة الثانية والانتقال فوراً لحصد الدرجات الأسهل",
+      "ترك السؤال فارغاً وقضاء 5 دقائق إضافية في اشتقاق مطوّل",
+      "إعادة قراءة القسم من السؤال الأول",
+      "تجاهل جميع المسائل اللفظية المتبقية دون قراءتها"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
+    "ex": "Two-pass triage protects your 90 s/item pace while ensuring a tentative answer is always banked.",
+    "ex_ar": "فرز الجولتين يحمي معدل 90 ثانية للسؤال ويضمن عدم ترك أي إجابة فارغة."
   }
 ];
-
 D["apab-exam"] = [
   {
     "t": "qc",
@@ -421,169 +443,191 @@ D["apab-exam"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (AP Calculus AB Exam Pacing & Scoring Strategy)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 3xy + y^2 = 30\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Exam Pacing & Time Allocation (AP Calculus AB Exam Pacing & Scoring Strategy)",
+    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدرجات (إدارة الوقت واستراتيجية التصحيح في اختبار AP Calculus AB)",
+    "q": "A student plans their timing for a 40-question, 60-minute section in APAB. Which step in their strategy introduces a flaw?",
+    "q_ar": "يخطط طالب لتوزيع وقته في قسم مكوّن من 40 سؤالاً خلال 60 دقيقة. أي خطوة تتضمن خللاً منهجياً؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(3xy\\) with respect to \\(x\\) as \\(3\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(30\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Compute average time budget per question: \\(\\frac{60\\times 60}{40} = 90\\) seconds.",
+      "Complete a first pass of straightforward items in roughly \\(63\\) seconds each to bank time.",
+      "Spend \\(9\\) minutes stuck on a single hard item before reading the remaining 20 questions.",
+      "Reserve the final \\(4\\) minutes to verify flagged items and ensure no unanswered blanks remain."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(3xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(3y + 3x\\dfrac{dy}{dx}\\), not \\(3\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(30\\) remains \\(30\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(3xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(3xy\\) gives \\(3y + 3x\\dfrac{dy}{dx}\\). Thus \\(2x + 3y + (3x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 3y}{3x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (AP Calculus AB Exam Pacing & Scoring Strategy)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 3xy + y^2 = 30\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(3xy\\) بالنسبة إلى \\(x\\) على أنه \\(3\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "حساب متوسط الزمن لكل سؤال: \\(\\frac{60\\times 60}{40} = 90\\) ثانية.",
+      "إنجاز الجولة الأولى للأسئلة المباشرة خلال نحو \\(63\\) ثانية للسؤال لتوفير الوقت.",
+      "قضاء \\(9\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (20 سؤالاً).",
+      "تخصيص آخر \\(4\\) دقائق لمراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي إجابة فارغة."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "Sinking 9 minutes into one question sacrifices 5–6 solvable equal-weight items later in the section; hard items should be flagged for Pass 2.",
+      "Average time per question should be computed by multiplying minutes by questions.",
+      "You should leave unanswered blanks when there is no guessing penalty."
     ],
     "reasons_ar": [
-      "الحد \\(3xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(3y + 3x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "استنزاف 9 دقائق في سؤال واحد يضيع 5–6 أسئلة قابلة للحل بنفس الوزن لاحقاً؛ يجب تعليم السؤال الصعب والعودة إليه في الجولة الثانية.",
+      "يُحسب متوسط الزمن بضرب الدقائق في عدد الأسئلة.",
+      "يفضّل ترك الأسئلة الصعبة فارغة حتى عند عدم وجود خصم على التخمين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(3xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(3xy\\) نحصل على \\(3y + 3x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 3y}{3x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (AP Calculus AB Exam Pacing & Scoring Strategy)",
-    "q": "Consider the curve \\(y = 3x^3 - 6x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 4\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Pacing Audit & Target Score Plan (AP Calculus AB Exam Pacing & Scoring Strategy)",
+    "ti_ar": "وضع المصحح: خطة إدارة الوقت والدرجة المستهدفة (إدارة الوقت واستراتيجية التصحيح في اختبار AP Calculus AB)",
+    "q": "A practice section has \\(40\\) equal-weight questions in \\(60\\) minutes with no penalty for wrong guesses. A student answers \\(36\\) correctly on Pass 1–2. (a) Find the exact seconds-per-question budget and accuracy percentage. (b) State the optimal triage rule for the remaining \\(4\\) flagged questions.",
+    "q_ar": "يتكون قسم تدريبي من \\(40\\) سؤالاً متساوية الوزن في \\(60\\) دقيقة دون خصم على الإجابات الخاطئة. أجاب طالب عن \\(36\\) سؤالاً بشكل صحيح. (أ) أوجد الزمن المخصص لكل سؤال بالثواني ونسبة الدقة المئوية. (ب) اذكر قاعدة الفرز المثلى للأسئلة المتبقية وعددها \\(4\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 9x^2 - 12x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 4\\): \\(m = 9(4)^2 - 12(4)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 132\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Time Budget & Raw Accuracy",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(9x - 12) = 0\\)."
+            "text": "Time per item: \\(\\frac{3600}{40} = 90\\text{ s}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{12}{9}\\)."
+            "text": "Raw score percentage: \\(\\frac{36}{40} \\times 100\\% \\approx 90\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Elimination & Zero-Blank Rule",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Eliminate clearly invalid distractors using dimensional/sign/boundary checks."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select the best remaining option on all \\(4\\) items before time expires (expected gain \\(> 0\\) with no guessing penalty)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (AP Calculus AB Exam Pacing & Scoring Strategy)",
-    "q_ar": "لمنحنى الدالة \\(y = 3x^3 - 6x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 4\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — ميزانية الوقت ونسبة الدقة",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "الزمن لكل سؤال: \\(\\frac{3600}{40} = 90\\) ثانية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "النسبة المئوية للدرجة الخام: \\(\\frac{36}{40} \\times 100\\% \\approx 90\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — استبعاد البدائل وعدم ترك فراغات",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "استبعاد الخيارات المستحيلة عبر فحص الإشارة أو القيم الحدية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "اختيار أفضل إجابة لجميع الأسئلة المتبقية (4) قبل انتهاء الوقت لعدم وجود خصم."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (AP Calculus AB Exam Pacing & Scoring Strategy)",
+    "ti": "Step Builder: Exam Time & Score Budget (AP Calculus AB Exam Pacing & Scoring Strategy)",
+    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والدرجة (إدارة الوقت واستراتيجية التصحيح في اختبار AP Calculus AB)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 3x^2 + 6x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
-        "a": "6",
-        "h": "Multiply power 2 by 3."
+        "l": "Convert \\(60\\) minutes into total seconds:",
+        "a": "3600",
+        "h": "Multiply 60 by 60."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
-        "a": "6",
-        "h": "The derivative of 6x is 6."
+        "l": "Divide by \\(40\\) questions to get seconds per question:",
+        "a": "90",
+        "h": "Compute 3600 / 40."
       },
       {
-        "l": "Evaluate the instantaneous rate of change \\(f'(4) =\\)",
-        "a": "30",
-        "h": "Compute 6(4) + 6."
+        "l": "If you answer \\(36\\) out of \\(40\\) correctly, how many items remain for review?",
+        "a": "4",
+        "h": "Subtract 36 from 40."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (AP Calculus AB Exam Pacing & Scoring Strategy)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 3x^2 + 6x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
-        "a": "6",
-        "h": "اضرب الأس 2 في 3."
+        "l": "حوّل \\(60\\) دقيقة إلى إجمالي الثواني:",
+        "a": "3600",
+        "h": "اضرب 60 في 60."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
-        "a": "6",
-        "h": "مشتقة 6x هي 6."
+        "l": "اقسم على \\(40\\) سؤالاً لإيجاد عدد الثواني لكل سؤال:",
+        "a": "90",
+        "h": "احسب 3600 ÷ 40."
       },
       {
-        "l": "احسب قيمة المشتقة \\(f'(4) =\\)",
-        "a": "30",
-        "h": "احسب 6(4) + 6."
+        "l": "إذا حللت \\(36\\) من أصل \\(40\\)، فكم سؤالاً يتبقى للمراجعة؟",
+        "a": "4",
+        "h": "اطرح 36 من 40."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (AP Calculus AB Exam Pacing & Scoring Strategy)",
+    "ti": "Matching: High-Yield Exam Tactics (AP Calculus AB Exam Pacing & Scoring Strategy)",
+    "ti_ar": "مطابقة: تكتيكات الحل السريع والتحقق (إدارة الوقت واستراتيجية التصحيح في اختبار AP Calculus AB)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Pass 1 (63 s/item)",
+        "r": "Solve direct items immediately to bank guaranteed marks"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Boundary / Sign Sanity Check",
+        "r": "Eliminate options with impossible signs, units, or limiting values"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Back-Solving from Choices",
+        "r": "Substitute middle option first when algebraic setup is slow"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Final 3-Minute Sweep",
+        "r": "Verify flagged items and confirm zero unanswered questions"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (AP Calculus AB Exam Pacing & Scoring Strategy)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "الجولة الأولى (63 ث/سؤال)",
+        "r": "حل الأسئلة المباشرة فوراً لتأمين الدرجات المضمونة"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "فحص الإشارة والقيم الحدية",
+        "r": "استبعاد الخيارات ذات الإشارات أو الوحدات المستحيلة رياضياً"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "التجريب العكسي للخيارات",
+        "r": "تعويض الخيار الأوسط أولاً عندما يكون البناء الجبري طويلاً"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "مراجعة الدقائق الثلاث الأخيرة",
+        "r": "مراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي فراغ"
       }
     ]
   }
 ];
-
 D["apab-frq"] = [
   {
     "t": "sr",
@@ -699,169 +743,191 @@ D["apab-frq"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (AP Calculus AB Free-Response Questions (FRQs))",
-    "q": "A student differentiates the implicit curve \\(x^2 + 4xy + y^2 = 10\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Exam Pacing & Time Allocation (AP Calculus AB Free-Response Questions (FRQs))",
+    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدرجات (الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus AB)",
+    "q": "A student plans their timing for a 45-question, 68-minute section in APAB. Which step in their strategy introduces a flaw?",
+    "q_ar": "يخطط طالب لتوزيع وقته في قسم مكوّن من 45 سؤالاً خلال 68 دقيقة. أي خطوة تتضمن خللاً منهجياً؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(4xy\\) with respect to \\(x\\) as \\(4\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(10\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Compute average time budget per question: \\(\\frac{68\\times 60}{45} = 91\\) seconds.",
+      "Complete a first pass of straightforward items in roughly \\(64\\) seconds each to bank time.",
+      "Spend \\(9\\) minutes stuck on a single hard item before reading the remaining 23 questions.",
+      "Reserve the final \\(4\\) minutes to verify flagged items and ensure no unanswered blanks remain."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(4xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(4y + 4x\\dfrac{dy}{dx}\\), not \\(4\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(10\\) remains \\(10\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(4xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(4xy\\) gives \\(4y + 4x\\dfrac{dy}{dx}\\). Thus \\(2x + 4y + (4x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (AP Calculus AB Free-Response Questions (FRQs))",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 4xy + y^2 = 10\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(4xy\\) بالنسبة إلى \\(x\\) على أنه \\(4\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "حساب متوسط الزمن لكل سؤال: \\(\\frac{68\\times 60}{45} = 91\\) ثانية.",
+      "إنجاز الجولة الأولى للأسئلة المباشرة خلال نحو \\(64\\) ثانية للسؤال لتوفير الوقت.",
+      "قضاء \\(9\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (23 سؤالاً).",
+      "تخصيص آخر \\(4\\) دقائق لمراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي إجابة فارغة."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "Sinking 9 minutes into one question sacrifices 5–6 solvable equal-weight items later in the section; hard items should be flagged for Pass 2.",
+      "Average time per question should be computed by multiplying minutes by questions.",
+      "You should leave unanswered blanks when there is no guessing penalty."
     ],
     "reasons_ar": [
-      "الحد \\(4xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(4y + 4x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "استنزاف 9 دقائق في سؤال واحد يضيع 5–6 أسئلة قابلة للحل بنفس الوزن لاحقاً؛ يجب تعليم السؤال الصعب والعودة إليه في الجولة الثانية.",
+      "يُحسب متوسط الزمن بضرب الدقائق في عدد الأسئلة.",
+      "يفضّل ترك الأسئلة الصعبة فارغة حتى عند عدم وجود خصم على التخمين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(4xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(4xy\\) نحصل على \\(4y + 4x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (AP Calculus AB Free-Response Questions (FRQs))",
-    "q": "Consider the curve \\(y = 4x^3 - 2x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 0\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Pacing Audit & Target Score Plan (AP Calculus AB Free-Response Questions (FRQs))",
+    "ti_ar": "وضع المصحح: خطة إدارة الوقت والدرجة المستهدفة (الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus AB)",
+    "q": "A practice section has \\(45\\) equal-weight questions in \\(68\\) minutes with no penalty for wrong guesses. A student answers \\(40\\) correctly on Pass 1–2. (a) Find the exact seconds-per-question budget and accuracy percentage. (b) State the optimal triage rule for the remaining \\(5\\) flagged questions.",
+    "q_ar": "يتكون قسم تدريبي من \\(45\\) سؤالاً متساوية الوزن في \\(68\\) دقيقة دون خصم على الإجابات الخاطئة. أجاب طالب عن \\(40\\) سؤالاً بشكل صحيح. (أ) أوجد الزمن المخصص لكل سؤال بالثواني ونسبة الدقة المئوية. (ب) اذكر قاعدة الفرز المثلى للأسئلة المتبقية وعددها \\(5\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 12x^2 - 4x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 0\\): \\(m = 12(0)^2 - 4(0)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = -4\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Time Budget & Raw Accuracy",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(12x - 4) = 0\\)."
+            "text": "Time per item: \\(\\frac{4080}{45} = 91\\text{ s}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{4}{12}\\)."
+            "text": "Raw score percentage: \\(\\frac{40}{45} \\times 100\\% \\approx 89\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Elimination & Zero-Blank Rule",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Eliminate clearly invalid distractors using dimensional/sign/boundary checks."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select the best remaining option on all \\(5\\) items before time expires (expected gain \\(> 0\\) with no guessing penalty)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (AP Calculus AB Free-Response Questions (FRQs))",
-    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - 2x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 0\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — ميزانية الوقت ونسبة الدقة",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "الزمن لكل سؤال: \\(\\frac{4080}{45} = 91\\) ثانية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "النسبة المئوية للدرجة الخام: \\(\\frac{40}{45} \\times 100\\% \\approx 89\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — استبعاد البدائل وعدم ترك فراغات",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "استبعاد الخيارات المستحيلة عبر فحص الإشارة أو القيم الحدية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "اختيار أفضل إجابة لجميع الأسئلة المتبقية (5) قبل انتهاء الوقت لعدم وجود خصم."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (AP Calculus AB Free-Response Questions (FRQs))",
+    "ti": "Step Builder: Exam Time & Score Budget (AP Calculus AB Free-Response Questions (FRQs))",
+    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والدرجة (الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus AB)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 4x^2 + 2x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
-        "a": "8",
-        "h": "Multiply power 2 by 4."
+        "l": "Convert \\(68\\) minutes into total seconds:",
+        "a": "4080",
+        "h": "Multiply 68 by 60."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
-        "a": "2",
-        "h": "The derivative of 2x is 2."
+        "l": "Divide by \\(45\\) questions to get seconds per question:",
+        "a": "91",
+        "h": "Compute 4080 / 45."
       },
       {
-        "l": "Evaluate the instantaneous rate of change \\(f'(0) =\\)",
-        "a": "2",
-        "h": "Compute 8(0) + 2."
+        "l": "If you answer \\(40\\) out of \\(45\\) correctly, how many items remain for review?",
+        "a": "5",
+        "h": "Subtract 40 from 45."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (AP Calculus AB Free-Response Questions (FRQs))",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 4x^2 + 2x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
-        "a": "8",
-        "h": "اضرب الأس 2 في 4."
+        "l": "حوّل \\(68\\) دقيقة إلى إجمالي الثواني:",
+        "a": "4080",
+        "h": "اضرب 68 في 60."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
-        "a": "2",
-        "h": "مشتقة 2x هي 2."
+        "l": "اقسم على \\(45\\) سؤالاً لإيجاد عدد الثواني لكل سؤال:",
+        "a": "91",
+        "h": "احسب 4080 ÷ 45."
       },
       {
-        "l": "احسب قيمة المشتقة \\(f'(0) =\\)",
-        "a": "2",
-        "h": "احسب 8(0) + 2."
+        "l": "إذا حللت \\(40\\) من أصل \\(45\\)، فكم سؤالاً يتبقى للمراجعة؟",
+        "a": "5",
+        "h": "اطرح 40 من 45."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (AP Calculus AB Free-Response Questions (FRQs))",
+    "ti": "Matching: High-Yield Exam Tactics (AP Calculus AB Free-Response Questions (FRQs))",
+    "ti_ar": "مطابقة: تكتيكات الحل السريع والتحقق (الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus AB)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Pass 1 (64 s/item)",
+        "r": "Solve direct items immediately to bank guaranteed marks"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Boundary / Sign Sanity Check",
+        "r": "Eliminate options with impossible signs, units, or limiting values"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Back-Solving from Choices",
+        "r": "Substitute middle option first when algebraic setup is slow"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Final 3-Minute Sweep",
+        "r": "Verify flagged items and confirm zero unanswered questions"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (AP Calculus AB Free-Response Questions (FRQs))",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "الجولة الأولى (64 ث/سؤال)",
+        "r": "حل الأسئلة المباشرة فوراً لتأمين الدرجات المضمونة"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "فحص الإشارة والقيم الحدية",
+        "r": "استبعاد الخيارات ذات الإشارات أو الوحدات المستحيلة رياضياً"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "التجريب العكسي للخيارات",
+        "r": "تعويض الخيار الأوسط أولاً عندما يكون البناء الجبري طويلاً"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "مراجعة الدقائق الثلاث الأخيرة",
+        "r": "مراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي فراغ"
       }
     ]
   }
 ];
-
 D["apab-u1"] = [
   {
     "t": "qc",
@@ -977,169 +1043,189 @@ D["apab-u1"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (Unit 1 · Limits & Continuity)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 3xy + y^2 = 5\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Unit 1 · Limits & Continuity)",
+    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (الوحدة ١ · النهايات والاتصال)",
+    "q": "A student differentiates \\(f(x) = x^2 e^{5x}\\). Which step omits a required calculus rule?",
+    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{5x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(3xy\\) with respect to \\(x\\) as \\(3\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(5\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{5x}\\).",
+      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 5 e^{5x}\\) via the Chain Rule.",
+      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 10x e^{5x}\\) instead of \\(u'v + uv'\\)."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(3xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(3y + 3x\\dfrac{dy}{dx}\\), not \\(3\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(5\\) remains \\(5\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(3xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(3xy\\) gives \\(3y + 3x\\dfrac{dy}{dx}\\). Thus \\(2x + 3y + (3x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 3y}{3x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (Unit 1 · Limits & Continuity)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 3xy + y^2 = 5\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(3xy\\) بالنسبة إلى \\(x\\) على أنه \\(3\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{5x}\\).",
+      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 5 e^{5x}\\) بقاعدة السلسلة.",
+      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{5x} + 5x^2 e^{5x} = x(2 + 5x)e^{5x}\\).",
+      "The derivative of \\(e^{5x}\\) is \\(e^{5x}\\) without factor \\(5\\).",
+      "\\((uv)' = u'v - uv'\\)."
     ],
     "reasons_ar": [
-      "الحد \\(3xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(3y + 3x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 5x)e^{5x}\\).",
+      "مشتقة \\(e^{5x}\\) لا تُضرب في \\(5\\).",
+      "قاعدة الضرب تتضمن طرح الحدين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(3xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(3xy\\) نحصل على \\(3y + 3x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 3y}{3x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 1 · Limits & Continuity)",
-    "q": "Consider the curve \\(y = 3x^3 - x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Unit 1 · Limits & Continuity)",
+    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الوحدة ١ · النهايات والاتصال)",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 5} \\dfrac{x^2 - 25}{x - 5}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 10x\\) at \\(x = 2\\).",
+    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 5} \\dfrac{x^2 - 25}{x - 5}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 10x\\) عند \\(x = 2\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 9x^2 - 2x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 2\\): \\(m = 9(2)^2 - 2(2)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 34\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Resolving 0/0 Limit",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(9x - 2) = 0\\)."
+            "text": "Factor \\(\\dfrac{(x - 5)(x + 5)}{x - 5} = x + 5\\) for \\(x \\neq 5\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{2}{9}\\)."
+            "text": "Evaluate limit as \\(x \\to 5\\): \\(10\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Derivative & Tangent Equation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 10 \\implies g'(2) = 22\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "With \\(g(2) = 28\\), tangent is \\(y - 28 = 22(x - 2)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 1 · Limits & Continuity)",
-    "q_ar": "لمنحنى الدالة \\(y = 3x^3 - x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل والاختصار \\(\\dfrac{(x - 5)(x + 5)}{x - 5} = x + 5\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "قيمة النهاية عند \\(x \\to 5\\) تساوي \\(10\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 10 \\implies g'(2) = 22\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "معادلة المماس: \\(y - 28 = 22(x - 2)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (Unit 1 · Limits & Continuity)",
+    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Unit 1 · Limits & Continuity)",
+    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (الوحدة ١ · النهايات والاتصال)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 3x^2 + x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
-        "a": "6",
-        "h": "Multiply power 2 by 3."
+        "l": "Evaluate \\(\\lim_{x \\to 5} \\frac{x^2 - 25}{x - 5} =\\)",
+        "a": "10",
+        "h": "Factor as (x − 5)(x + 5) and substitute x = 5."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
-        "a": "1",
-        "h": "The derivative of x is 1."
+        "l": "For \\(g(x) = x^3 + 10x\\), evaluate \\(g(2) =\\)",
+        "a": "28",
+        "h": "Compute 8 + 20."
       },
       {
-        "l": "Evaluate the instantaneous rate of change \\(f'(2) =\\)",
-        "a": "13",
-        "h": "Compute 6(2) + 1."
+        "l": "Evaluate instantaneous slope \\(g'(2) = 3(2)^2 + 10 =\\)",
+        "a": "22",
+        "h": "Compute 12 + 10."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 1 · Limits & Continuity)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 3x^2 + x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
-        "a": "6",
-        "h": "اضرب الأس 2 في 3."
+        "l": "احسب النهاية \\(\\lim_{x \\to 5} \\frac{x^2 - 25}{x - 5} =\\)",
+        "a": "10",
+        "h": "حلّل البسط واختصر ثم عوّض x = 5."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
-        "a": "1",
-        "h": "مشتقة x هي 1."
+        "l": "للدالة \\(g(x) = x^3 + 10x\\)، احسب \\(g(2) =\\)",
+        "a": "28",
+        "h": "احسب 8 + 20."
       },
       {
-        "l": "احسب قيمة المشتقة \\(f'(2) =\\)",
-        "a": "13",
-        "h": "احسب 6(2) + 1."
+        "l": "احسب ميل المماس \\(g'(2) = 3(2)^2 + 10 =\\)",
+        "a": "22",
+        "h": "احسب 12 + 10."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (Unit 1 · Limits & Continuity)",
+    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Unit 1 · Limits & Continuity)",
+    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (الوحدة ١ · النهايات والاتصال)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Continuity of \\(f\\) at \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Strict local minimum test",
+        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Newton–Raphson step",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (Unit 1 · Limits & Continuity)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "اختبار النهاية الصغرى المحلية",
+        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "تكرار نيوتن–رافسون العددي",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ]
   }
 ];
-
 D["apab-u2"] = [
   {
     "t": "mt",
@@ -1279,150 +1365,170 @@ D["apab-u2"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 4xy + y^2 = 5\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (الوحدة ٢ · التفاضل: التعريف والخصائص الأساسية)",
+    "q": "A student differentiates \\(f(x) = x^2 e^{6x}\\). Which step omits a required calculus rule?",
+    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{6x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(4xy\\) with respect to \\(x\\) as \\(4\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(5\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{6x}\\).",
+      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 6 e^{6x}\\) via the Chain Rule.",
+      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 12x e^{6x}\\) instead of \\(u'v + uv'\\)."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(4xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(4y + 4x\\dfrac{dy}{dx}\\), not \\(4\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(5\\) remains \\(5\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(4xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(4xy\\) gives \\(4y + 4x\\dfrac{dy}{dx}\\). Thus \\(2x + 4y + (4x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 4xy + y^2 = 5\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(4xy\\) بالنسبة إلى \\(x\\) على أنه \\(4\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{6x}\\).",
+      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 6 e^{6x}\\) بقاعدة السلسلة.",
+      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{6x} + 6x^2 e^{6x} = x(2 + 6x)e^{6x}\\).",
+      "The derivative of \\(e^{6x}\\) is \\(e^{6x}\\) without factor \\(6\\).",
+      "\\((uv)' = u'v - uv'\\)."
     ],
     "reasons_ar": [
-      "الحد \\(4xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(4y + 4x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 6x)e^{6x}\\).",
+      "مشتقة \\(e^{6x}\\) لا تُضرب في \\(6\\).",
+      "قاعدة الضرب تتضمن طرح الحدين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(4xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(4xy\\) نحصل على \\(4y + 4x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q": "Consider the curve \\(y = 4x^3 - x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الوحدة ٢ · التفاضل: التعريف والخصائص الأساسية)",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 6} \\dfrac{x^2 - 36}{x - 6}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 12x\\) at \\(x = 3\\).",
+    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 6} \\dfrac{x^2 - 36}{x - 6}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 12x\\) عند \\(x = 3\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 12x^2 - 2x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 2\\): \\(m = 12(2)^2 - 2(2)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 46\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Resolving 0/0 Limit",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(12x - 2) = 0\\)."
+            "text": "Factor \\(\\dfrac{(x - 6)(x + 6)}{x - 6} = x + 6\\) for \\(x \\neq 6\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{2}{12}\\)."
+            "text": "Evaluate limit as \\(x \\to 6\\): \\(12\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Derivative & Tangent Equation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 12 \\implies g'(3) = 39\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "With \\(g(3) = 63\\), tangent is \\(y - 63 = 39(x - 3)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل والاختصار \\(\\dfrac{(x - 6)(x + 6)}{x - 6} = x + 6\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "قيمة النهاية عند \\(x \\to 6\\) تساوي \\(12\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 12 \\implies g'(3) = 39\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "معادلة المماس: \\(y - 63 = 39(x - 3)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (الوحدة ٢ · التفاضل: التعريف والخصائص الأساسية)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 4x^2 + x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
-        "a": "8",
-        "h": "Multiply power 2 by 4."
+        "l": "Evaluate \\(\\lim_{x \\to 6} \\frac{x^2 - 36}{x - 6} =\\)",
+        "a": "12",
+        "h": "Factor as (x − 6)(x + 6) and substitute x = 6."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
-        "a": "1",
-        "h": "The derivative of x is 1."
+        "l": "For \\(g(x) = x^3 + 12x\\), evaluate \\(g(3) =\\)",
+        "a": "63",
+        "h": "Compute 27 + 36."
       },
       {
-        "l": "Evaluate the instantaneous rate of change \\(f'(2) =\\)",
-        "a": "17",
-        "h": "Compute 8(2) + 1."
+        "l": "Evaluate instantaneous slope \\(g'(3) = 3(3)^2 + 12 =\\)",
+        "a": "39",
+        "h": "Compute 27 + 12."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 2 · Differentiation — Definition and Fundamental Properties)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 4x^2 + x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
-        "a": "8",
-        "h": "اضرب الأس 2 في 4."
+        "l": "احسب النهاية \\(\\lim_{x \\to 6} \\frac{x^2 - 36}{x - 6} =\\)",
+        "a": "12",
+        "h": "حلّل البسط واختصر ثم عوّض x = 6."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
-        "a": "1",
-        "h": "مشتقة x هي 1."
+        "l": "للدالة \\(g(x) = x^3 + 12x\\)، احسب \\(g(3) =\\)",
+        "a": "63",
+        "h": "احسب 27 + 36."
       },
       {
-        "l": "احسب قيمة المشتقة \\(f'(2) =\\)",
-        "a": "17",
-        "h": "احسب 8(2) + 1."
+        "l": "احسب ميل المماس \\(g'(3) = 3(3)^2 + 12 =\\)",
+        "a": "39",
+        "h": "احسب 27 + 12."
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Standard Trigonometric Limit (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "ti_ar": "فحص سريع: النهاية المثلثية القياسية (الوحدة ٢ · التفاضل: التعريف والخصائص الأساسية)",
+    "q": "What is \\(\\lim_{x \\to 0} \\dfrac{\\sin(6x)}{x}\\)?",
+    "q_ar": "ما قيمة النهاية \\(\\lim_{x \\to 0} \\dfrac{\\sin(6x)}{x}\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "\\(6\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(\\dfrac{1}{6}\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "\\(6\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(\\dfrac{1}{6}\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
+    "ex": "Rewrite as \\(6 \\cdot \\frac{\\sin(6x)}{6x} \\to 6 \\cdot 1 = 6\\).",
+    "ex_ar": "نكتبها \\(6 \\cdot \\frac{\\sin(6x)}{6x} \\to 6\\)."
   }
 ];
-
 D["apab-u3"] = [
   {
     "t": "tf",
@@ -1547,169 +1653,189 @@ D["apab-u3"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 2xy + y^2 = -5\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
+    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
+    "q": "A student differentiates \\(f(x) = x^2 e^{2x}\\). Which step omits a required calculus rule?",
+    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{2x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(2xy\\) with respect to \\(x\\) as \\(2\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(-5\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{2x}\\).",
+      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 2 e^{2x}\\) via the Chain Rule.",
+      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 4x e^{2x}\\) instead of \\(u'v + uv'\\)."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(2xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(2y + 2x\\dfrac{dy}{dx}\\), not \\(2\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(-5\\) remains \\(-5\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(2xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(2xy\\) gives \\(2y + 2x\\dfrac{dy}{dx}\\). Thus \\(2x + 2y + (2x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 2y}{2x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 2xy + y^2 = -5\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(2xy\\) بالنسبة إلى \\(x\\) على أنه \\(2\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{2x}\\).",
+      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 2 e^{2x}\\) بقاعدة السلسلة.",
+      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{2x} + 2x^2 e^{2x} = x(2 + 2x)e^{2x}\\).",
+      "The derivative of \\(e^{2x}\\) is \\(e^{2x}\\) without factor \\(2\\).",
+      "\\((uv)' = u'v - uv'\\)."
     ],
     "reasons_ar": [
-      "الحد \\(2xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(2y + 2x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 2x)e^{2x}\\).",
+      "مشتقة \\(e^{2x}\\) لا تُضرب في \\(2\\).",
+      "قاعدة الضرب تتضمن طرح الحدين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(2xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(2xy\\) نحصل على \\(2y + 2x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 2y}{2x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "q": "Consider the curve \\(y = 2x^3 + x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 0\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
+    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 4x\\) at \\(x = 1\\).",
+    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 4x\\) عند \\(x = 1\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 6x^2 - -2x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 0\\): \\(m = 6(0)^2 - -2(0)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 2\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Resolving 0/0 Limit",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(6x - -2) = 0\\)."
+            "text": "Factor \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\) for \\(x \\neq 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{-2}{6}\\)."
+            "text": "Evaluate limit as \\(x \\to 2\\): \\(4\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Derivative & Tangent Equation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(1) = 7\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "With \\(g(1) = 5\\), tangent is \\(y - 5 = 7(x - 1)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "q_ar": "لمنحنى الدالة \\(y = 2x^3 + x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 0\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل والاختصار \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "قيمة النهاية عند \\(x \\to 2\\) تساوي \\(4\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(1) = 7\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "معادلة المماس: \\(y - 5 = 7(x - 1)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
+    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
+    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 2x^2 - x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
+        "l": "Evaluate \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
         "a": "4",
-        "h": "Multiply power 2 by 2."
+        "h": "Factor as (x − 2)(x + 2) and substitute x = 2."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
-        "a": "-1",
-        "h": "The derivative of -x is -1."
+        "l": "For \\(g(x) = x^3 + 4x\\), evaluate \\(g(1) =\\)",
+        "a": "5",
+        "h": "Compute 1 + 4."
       },
       {
-        "l": "Evaluate the instantaneous rate of change \\(f'(0) =\\)",
-        "a": "-1",
-        "h": "Compute 4(0) + -1."
+        "l": "Evaluate instantaneous slope \\(g'(1) = 3(1)^2 + 4 =\\)",
+        "a": "7",
+        "h": "Compute 3 + 4."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 2x^2 - x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
+        "l": "احسب النهاية \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
         "a": "4",
-        "h": "اضرب الأس 2 في 2."
+        "h": "حلّل البسط واختصر ثم عوّض x = 2."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
-        "a": "-1",
-        "h": "مشتقة -x هي -1."
+        "l": "للدالة \\(g(x) = x^3 + 4x\\)، احسب \\(g(1) =\\)",
+        "a": "5",
+        "h": "احسب 1 + 4."
       },
       {
-        "l": "احسب قيمة المشتقة \\(f'(0) =\\)",
-        "a": "-1",
-        "h": "احسب 4(0) + -1."
+        "l": "احسب ميل المماس \\(g'(1) = 3(1)^2 + 4 =\\)",
+        "a": "7",
+        "h": "احسب 3 + 4."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
+    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
+    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Continuity of \\(f\\) at \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Strict local minimum test",
+        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Newton–Raphson step",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "اختبار النهاية الصغرى المحلية",
+        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "تكرار نيوتن–رافسون العددي",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ]
   }
 ];
-
 D["apab-u4"] = [
   {
     "t": "sb",
@@ -1830,152 +1956,172 @@ D["apab-u4"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (Unit 4 · Contextual Applications of Differentiation)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 4xy + y^2 = 15\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Unit 4 · Contextual Applications of Differentiation)",
+    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (الوحدة ٤ · التطبيقات السياقية والفيزيائية للاشتقاق)",
+    "q": "A student differentiates \\(f(x) = x^2 e^{3x}\\). Which step omits a required calculus rule?",
+    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{3x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(4xy\\) with respect to \\(x\\) as \\(4\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(15\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{3x}\\).",
+      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 3 e^{3x}\\) via the Chain Rule.",
+      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 6x e^{3x}\\) instead of \\(u'v + uv'\\)."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(4xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(4y + 4x\\dfrac{dy}{dx}\\), not \\(4\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(15\\) remains \\(15\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(4xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(4xy\\) gives \\(4y + 4x\\dfrac{dy}{dx}\\). Thus \\(2x + 4y + (4x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (Unit 4 · Contextual Applications of Differentiation)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 4xy + y^2 = 15\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(4xy\\) بالنسبة إلى \\(x\\) على أنه \\(4\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{3x}\\).",
+      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 3 e^{3x}\\) بقاعدة السلسلة.",
+      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{3x} + 3x^2 e^{3x} = x(2 + 3x)e^{3x}\\).",
+      "The derivative of \\(e^{3x}\\) is \\(e^{3x}\\) without factor \\(3\\).",
+      "\\((uv)' = u'v - uv'\\)."
     ],
     "reasons_ar": [
-      "الحد \\(4xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(4y + 4x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 3x)e^{3x}\\).",
+      "مشتقة \\(e^{3x}\\) لا تُضرب في \\(3\\).",
+      "قاعدة الضرب تتضمن طرح الحدين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(4xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(4xy\\) نحصل على \\(4y + 4x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 4 · Contextual Applications of Differentiation)",
-    "q": "Consider the curve \\(y = 4x^3 - 3x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 4\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Unit 4 · Contextual Applications of Differentiation)",
+    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الوحدة ٤ · التطبيقات السياقية والفيزيائية للاشتقاق)",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x - 3}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 6x\\) at \\(x = 2\\).",
+    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x - 3}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 6x\\) عند \\(x = 2\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 12x^2 - 6x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 4\\): \\(m = 12(4)^2 - 6(4)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 186\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Resolving 0/0 Limit",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(12x - 6) = 0\\)."
+            "text": "Factor \\(\\dfrac{(x - 3)(x + 3)}{x - 3} = x + 3\\) for \\(x \\neq 3\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{6}{12}\\)."
+            "text": "Evaluate limit as \\(x \\to 3\\): \\(6\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Derivative & Tangent Equation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 6 \\implies g'(2) = 18\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "With \\(g(2) = 20\\), tangent is \\(y - 20 = 18(x - 2)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 4 · Contextual Applications of Differentiation)",
-    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - 3x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 4\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل والاختصار \\(\\dfrac{(x - 3)(x + 3)}{x - 3} = x + 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "قيمة النهاية عند \\(x \\to 3\\) تساوي \\(6\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 6 \\implies g'(2) = 18\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "معادلة المماس: \\(y - 20 = 18(x - 2)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (Unit 4 · Contextual Applications of Differentiation)",
+    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Unit 4 · Contextual Applications of Differentiation)",
+    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (الوحدة ٤ · التطبيقات السياقية والفيزيائية للاشتقاق)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Continuity of \\(f\\) at \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Strict local minimum test",
+        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Newton–Raphson step",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (Unit 4 · Contextual Applications of Differentiation)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "اختبار النهاية الصغرى المحلية",
+        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "تكرار نيوتن–رافسون العددي",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 4 · Contextual Applications of Differentiation)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit 4 · Contextual Applications of Differentiation)",
-    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Standard Trigonometric Limit (Unit 4 · Contextual Applications of Differentiation)",
+    "ti_ar": "فحص سريع: النهاية المثلثية القياسية (الوحدة ٤ · التطبيقات السياقية والفيزيائية للاشتقاق)",
+    "q": "What is \\(\\lim_{x \\to 0} \\dfrac{\\sin(3x)}{x}\\)?",
+    "q_ar": "ما قيمة النهاية \\(\\lim_{x \\to 0} \\dfrac{\\sin(3x)}{x}\\)؟",
     "o": [
-      "\\( 9 \\)",
-      "\\( 7 \\)",
-      "\\( -7 \\)",
-      "\\( 58 \\)"
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(\\dfrac{1}{3}\\)"
     ],
     "o_ar": [
-      "\\( 9 \\)",
-      "\\( 7 \\)",
-      "\\( -7 \\)",
-      "\\( 58 \\)"
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(\\dfrac{1}{3}\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
+    "ex": "Rewrite as \\(3 \\cdot \\frac{\\sin(3x)}{3x} \\to 3 \\cdot 1 = 3\\).",
+    "ex_ar": "نكتبها \\(3 \\cdot \\frac{\\sin(3x)}{3x} \\to 3\\)."
   }
 ];
-
 D["apab-u5"] = [
   {
     "t": "ord",
@@ -2089,169 +2235,189 @@ D["apab-u5"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (Unit 5 · Analytical Applications of Differentiation)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 2xy + y^2 = 25\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Unit 5 · Analytical Applications of Differentiation)",
+    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (الوحدة ٥ · التطبيقات التحليلية للاشتقاق والقيم القصوى)",
+    "q": "A student differentiates \\(f(x) = x^2 e^{4x}\\). Which step omits a required calculus rule?",
+    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{4x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(2xy\\) with respect to \\(x\\) as \\(2\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(25\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{4x}\\).",
+      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 4 e^{4x}\\) via the Chain Rule.",
+      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 8x e^{4x}\\) instead of \\(u'v + uv'\\)."
     ],
-    "errorStep": 2,
-    "reasons": [
-      "The term \\(2xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(2y + 2x\\dfrac{dy}{dx}\\), not \\(2\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(25\\) remains \\(25\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(2xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(2xy\\) gives \\(2y + 2x\\dfrac{dy}{dx}\\). Thus \\(2x + 2y + (2x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 2y}{2x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (Unit 5 · Analytical Applications of Differentiation)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 2xy + y^2 = 25\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
     "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(2xy\\) بالنسبة إلى \\(x\\) على أنه \\(2\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{4x}\\).",
+      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 4 e^{4x}\\) بقاعدة السلسلة.",
+      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{4x} + 4x^2 e^{4x} = x(2 + 4x)e^{4x}\\).",
+      "The derivative of \\(e^{4x}\\) is \\(e^{4x}\\) without factor \\(4\\).",
+      "\\((uv)' = u'v - uv'\\)."
     ],
     "reasons_ar": [
-      "الحد \\(2xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(2y + 2x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 4x)e^{4x}\\).",
+      "مشتقة \\(e^{4x}\\) لا تُضرب في \\(4\\).",
+      "قاعدة الضرب تتضمن طرح الحدين."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(2xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(2xy\\) نحصل على \\(2y + 2x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 2y}{2x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 5 · Analytical Applications of Differentiation)",
-    "q": "Consider the curve \\(y = 2x^3 - 5x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Unit 5 · Analytical Applications of Differentiation)",
+    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الوحدة ٥ · التطبيقات التحليلية للاشتقاق والقيم القصوى)",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 4} \\dfrac{x^2 - 16}{x - 4}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 8x\\) at \\(x = 3\\).",
+    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 4} \\dfrac{x^2 - 16}{x - 4}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 8x\\) عند \\(x = 3\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 6x^2 - 10x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 2\\): \\(m = 6(2)^2 - 10(2)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 14\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Resolving 0/0 Limit",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(6x - 10) = 0\\)."
+            "text": "Factor \\(\\dfrac{(x - 4)(x + 4)}{x - 4} = x + 4\\) for \\(x \\neq 4\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{10}{6}\\)."
+            "text": "Evaluate limit as \\(x \\to 4\\): \\(8\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Derivative & Tangent Equation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 8 \\implies g'(3) = 35\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "With \\(g(3) = 51\\), tangent is \\(y - 51 = 35(x - 3)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 5 · Analytical Applications of Differentiation)",
-    "q_ar": "لمنحنى الدالة \\(y = 2x^3 - 5x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل والاختصار \\(\\dfrac{(x - 4)(x + 4)}{x - 4} = x + 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "قيمة النهاية عند \\(x \\to 4\\) تساوي \\(8\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 8 \\implies g'(3) = 35\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "معادلة المماس: \\(y - 51 = 35(x - 3)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Instantaneous Rate of Change (Unit 5 · Analytical Applications of Differentiation)",
+    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Unit 5 · Analytical Applications of Differentiation)",
+    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (الوحدة ٥ · التطبيقات التحليلية للاشتقاق والقيم القصوى)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 2x^2 + 5x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
-        "a": "4",
-        "h": "Multiply power 2 by 2."
+        "l": "Evaluate \\(\\lim_{x \\to 4} \\frac{x^2 - 16}{x - 4} =\\)",
+        "a": "8",
+        "h": "Factor as (x − 4)(x + 4) and substitute x = 4."
       },
       {
-        "l": "Find the constant term in \\(f'(x)\\):",
-        "a": "5",
-        "h": "The derivative of 5x is 5."
+        "l": "For \\(g(x) = x^3 + 8x\\), evaluate \\(g(3) =\\)",
+        "a": "51",
+        "h": "Compute 27 + 24."
       },
       {
-        "l": "Evaluate the instantaneous rate of change \\(f'(2) =\\)",
-        "a": "13",
-        "h": "Compute 4(2) + 5."
+        "l": "Evaluate instantaneous slope \\(g'(3) = 3(3)^2 + 8 =\\)",
+        "a": "35",
+        "h": "Compute 27 + 8."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 5 · Analytical Applications of Differentiation)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 2x^2 + 5x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
-        "a": "4",
-        "h": "اضرب الأس 2 في 2."
+        "l": "احسب النهاية \\(\\lim_{x \\to 4} \\frac{x^2 - 16}{x - 4} =\\)",
+        "a": "8",
+        "h": "حلّل البسط واختصر ثم عوّض x = 4."
       },
       {
-        "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
-        "a": "5",
-        "h": "مشتقة 5x هي 5."
+        "l": "للدالة \\(g(x) = x^3 + 8x\\)، احسب \\(g(3) =\\)",
+        "a": "51",
+        "h": "احسب 27 + 24."
       },
       {
-        "l": "احسب قيمة المشتقة \\(f'(2) =\\)",
-        "a": "13",
-        "h": "احسب 4(2) + 5."
+        "l": "احسب ميل المماس \\(g'(3) = 3(3)^2 + 8 =\\)",
+        "a": "35",
+        "h": "احسب 27 + 8."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (Unit 5 · Analytical Applications of Differentiation)",
+    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Unit 5 · Analytical Applications of Differentiation)",
+    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (الوحدة ٥ · التطبيقات التحليلية للاشتقاق والقيم القصوى)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Continuity of \\(f\\) at \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Strict local minimum test",
+        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Newton–Raphson step",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (Unit 5 · Analytical Applications of Differentiation)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "اختبار النهاية الصغرى المحلية",
+        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "تكرار نيوتن–رافسون العددي",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ]
   }
 ];
-
 D["apab-u6"] = [
   {
     "t": "num",
@@ -2365,164 +2531,189 @@ D["apab-u6"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Unit 6 · Integration and Accumulation of Change)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 4xy\\) with \\(y(0) = 6\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Unit 6 · Integration and Accumulation of Change)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (الوحدة ٦ · التكامل وتراكم التغير)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 5\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 5\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 4x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{4}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{4x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 6\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 5\\) to write \\(y = e^{x^2} + 4\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{4}{2}x^2 + C\\) yields \\(y = e^{\\frac{4}{2}x^2 + C} = Ae^{4x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{4x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{4x^2/2 + C} = e^C e^{4x^2/2} \\implies y = Ae^{4x^2/2}\\). Using \\(y(0) = 6\\) gives \\(A = 6\\), so \\(y = 6e^{4x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Unit 6 · Integration and Accumulation of Change)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 4xy\\) مع الشرط \\(y(0) = 6\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 4x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{4}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{4x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 6\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 5\\) لكتابة \\(y = e^{x^2} + 4\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 5\\) gives multiplicative \\(y = 5 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{4}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{4}{2}x^2 + C} = Ae^{4x^2/2}\\) وليس \\(e^{4x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 5\\) نجد \\(y = 5 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{4x^2/2}\\)، وبالتعويض عن \\(y(0)=6\\) نجد \\(y = 6e^{4x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Unit 6 · Integration and Accumulation of Change)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 8x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 2\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Unit 6 · Integration and Accumulation of Change)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (الوحدة ٦ · التكامل وتراكم التغير)",
+    "q": "(a) Evaluate \\(\\int_0^{2} (3x^2 + 6x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 5\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{2} (3x^2 + 6x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 5\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{2} (3x^2 + 8x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 3x^2]_0^{2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 4x^2\\right]_0^{2}\\)."
+            "text": "Evaluate bounds: \\(8 + 12 - 0 = 20\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((2^3 + 4(2)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(24\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 5\\) yields \\(y = 5 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Unit 6 · Integration and Accumulation of Change)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 8x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 2\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 3x^2]_0^{2}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(20\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 5 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Definite Integral via FTC (Unit 6 · Integration and Accumulation of Change)",
+    "ti": "Step Builder: Definite Integral & Carrying Capacity (Unit 6 · Integration and Accumulation of Change)",
+    "ti_ar": "بناء الخطوات: التكامل المحدود والسعة الاستيعابية (الوحدة ٦ · التكامل وتراكم التغير)",
     "steps": [
       {
-        "l": "Find the antiderivative \\(F(x)\\) of \\(f(x) = 2x + 4\\) with \\(F(0) = 0\\): \\(F(x) =\\)",
-        "a": "x^2 + 4x",
-        "h": "Integrate 2x to x^2 and 4 to 4x."
+        "l": "Evaluate \\([x^3]_0^{2} =\\)",
+        "a": "8",
+        "h": "Compute 2³."
       },
       {
-        "l": "Evaluate at the upper bound \\(F(2) =\\)",
-        "a": "12",
-        "h": "Compute \\((2)^2 + 4\\)(2)."
+        "l": "Evaluate \\(\\int_0^{2} (3x^2 + 6x)\\,dx =\\)",
+        "a": "20",
+        "h": "Add 8 + 12."
       },
       {
-        "l": "Hence state \\(\\int_0^{2} (2x + 4)\\,dx =\\)",
-        "a": "12",
-        "h": "Compute F(2) - F(0)."
+        "l": "In logistic ODE \\(\\frac{dP}{dt} = 0.4 P(1 - P/500)\\), state the inflection population \\(M/2 =\\)",
+        "a": "250",
+        "h": "Half of carrying capacity 500."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب التكامل المحدد (Unit 6 · Integration and Accumulation of Change)",
     "steps_ar": [
       {
-        "l": "أوجد الدالة الأصلية \\(F(x)\\) للدالة \\(2x + 4\\) بحيث \\(F(0)=0\\):",
-        "a": "x^2 + 4x",
-        "h": "كامل 2x إلى x^2 و 4 إلى 4x."
+        "l": "احسب \\([x^3]_0^{2} =\\)",
+        "a": "8",
+        "h": "احسب 2³."
       },
       {
-        "l": "احسب القيمة عند الحد العلوي \\(F(2) =\\)",
-        "a": "12",
-        "h": "احسب (2)^2 + 4(2)."
+        "l": "احسب التكامل \\(\\int_0^{2} (3x^2 + 6x)\\,dx =\\)",
+        "a": "20",
+        "h": "اجمع 8 + 12."
       },
       {
-        "l": "إذن قيمة التكامل \\(\\int_0^{2} (2x + 4)\\,dx =\\)",
-        "a": "12",
-        "h": "اطرح F(2) - F(0)."
+        "l": "في المعادلة اللوجستية \\(\\frac{dP}{dt} = 0.4 P(1 - P/500)\\)، أوجد قيمة نقطة الانعطاف \\(M/2 =\\)",
+        "a": "250",
+        "h": "نصف السعة الاستيعابية 500."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Standard Antiderivatives & ODE Forms (Unit 6 · Integration and Accumulation of Change)",
+    "ti": "Matching: Integration Techniques & Differential Equations (Unit 6 · Integration and Accumulation of Change)",
+    "ti_ar": "مطابقة: طرائق التكامل والمعادلات التفاضلية (الوحدة ٦ · التكامل وتراكم التغير)",
     "p": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "Integration by Parts",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (Integration by Parts)"
+        "l": "Integrating factor for \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "Multiply by integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "Solid of revolution disk volume",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ],
-    "ti_ar": "مطابقة: التكاملات القياسية والمعادلات التفاضلية (Unit 6 · Integration and Accumulation of Change)",
     "p_ar": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "النظرية الأساسية (الجزء 1): \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "التكامل بالتجزيء",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (التكامل بالتجزيء)"
+        "l": "عامل التكامل للمعادلة الخطية \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "الضرب في عامل التكامل \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "حجم المجسم الدوراني بطريقة الأقراص",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ]
   }
 ];
-
 D["apab-u7"] = [
   {
     "t": "fn",
@@ -2673,164 +2864,189 @@ D["apab-u7"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Unit 7 · Differential Equations)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 5xy\\) with \\(y(0) = 3\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Unit 7 · Differential Equations)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (الوحدة ٧ · المعادلات التفاضلية وحقول الميل)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 6\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 6\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 5x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{5}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{5x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 3\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 6\\) to write \\(y = e^{x^2} + 5\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{5}{2}x^2 + C\\) yields \\(y = e^{\\frac{5}{2}x^2 + C} = Ae^{5x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{5x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{5x^2/2 + C} = e^C e^{5x^2/2} \\implies y = Ae^{5x^2/2}\\). Using \\(y(0) = 3\\) gives \\(A = 3\\), so \\(y = 3e^{5x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Unit 7 · Differential Equations)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 5xy\\) مع الشرط \\(y(0) = 3\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 5x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{5}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{5x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 3\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 6\\) لكتابة \\(y = e^{x^2} + 5\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 6\\) gives multiplicative \\(y = 6 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{5}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{5}{2}x^2 + C} = Ae^{5x^2/2}\\) وليس \\(e^{5x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 6\\) نجد \\(y = 6 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{5x^2/2}\\)، وبالتعويض عن \\(y(0)=3\\) نجد \\(y = 3e^{5x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Unit 7 · Differential Equations)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 10x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 0\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Unit 7 · Differential Equations)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (الوحدة ٧ · المعادلات التفاضلية وحقول الميل)",
+    "q": "(a) Evaluate \\(\\int_0^{3} (3x^2 + 8x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 6\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{3} (3x^2 + 8x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 6\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{0} (3x^2 + 10x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 4x^2]_0^{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 5x^2\\right]_0^{0}\\)."
+            "text": "Evaluate bounds: \\(27 + 36 - 0 = 63\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((0^3 + 5(0)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(0\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 6\\) yields \\(y = 6 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Unit 7 · Differential Equations)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 10x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 0\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 4x^2]_0^{3}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(63\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 6 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Definite Integral via FTC (Unit 7 · Differential Equations)",
+    "ti": "Step Builder: Definite Integral & Carrying Capacity (Unit 7 · Differential Equations)",
+    "ti_ar": "بناء الخطوات: التكامل المحدود والسعة الاستيعابية (الوحدة ٧ · المعادلات التفاضلية وحقول الميل)",
     "steps": [
       {
-        "l": "Find the antiderivative \\(F(x)\\) of \\(f(x) = 2x + 5\\) with \\(F(0) = 0\\): \\(F(x) =\\)",
-        "a": "x^2 + 5x",
-        "h": "Integrate 2x to x^2 and 5 to 5x."
+        "l": "Evaluate \\([x^3]_0^{3} =\\)",
+        "a": "27",
+        "h": "Compute 3³."
       },
       {
-        "l": "Evaluate at the upper bound \\(F(0) =\\)",
-        "a": "0",
-        "h": "Compute \\((0)^2 + 5\\)(0)."
+        "l": "Evaluate \\(\\int_0^{3} (3x^2 + 8x)\\,dx =\\)",
+        "a": "63",
+        "h": "Add 27 + 36."
       },
       {
-        "l": "Hence state \\(\\int_0^{0} (2x + 5)\\,dx =\\)",
-        "a": "0",
-        "h": "Compute F(0) - F(0)."
+        "l": "In logistic ODE \\(\\frac{dP}{dt} = 0.4 P(1 - P/600)\\), state the inflection population \\(M/2 =\\)",
+        "a": "300",
+        "h": "Half of carrying capacity 600."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب التكامل المحدد (Unit 7 · Differential Equations)",
     "steps_ar": [
       {
-        "l": "أوجد الدالة الأصلية \\(F(x)\\) للدالة \\(2x + 5\\) بحيث \\(F(0)=0\\):",
-        "a": "x^2 + 5x",
-        "h": "كامل 2x إلى x^2 و 5 إلى 5x."
+        "l": "احسب \\([x^3]_0^{3} =\\)",
+        "a": "27",
+        "h": "احسب 3³."
       },
       {
-        "l": "احسب القيمة عند الحد العلوي \\(F(0) =\\)",
-        "a": "0",
-        "h": "احسب (0)^2 + 5(0)."
+        "l": "احسب التكامل \\(\\int_0^{3} (3x^2 + 8x)\\,dx =\\)",
+        "a": "63",
+        "h": "اجمع 27 + 36."
       },
       {
-        "l": "إذن قيمة التكامل \\(\\int_0^{0} (2x + 5)\\,dx =\\)",
-        "a": "0",
-        "h": "اطرح F(0) - F(0)."
+        "l": "في المعادلة اللوجستية \\(\\frac{dP}{dt} = 0.4 P(1 - P/600)\\)، أوجد قيمة نقطة الانعطاف \\(M/2 =\\)",
+        "a": "300",
+        "h": "نصف السعة الاستيعابية 600."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Standard Antiderivatives & ODE Forms (Unit 7 · Differential Equations)",
+    "ti": "Matching: Integration Techniques & Differential Equations (Unit 7 · Differential Equations)",
+    "ti_ar": "مطابقة: طرائق التكامل والمعادلات التفاضلية (الوحدة ٧ · المعادلات التفاضلية وحقول الميل)",
     "p": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "Integration by Parts",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (Integration by Parts)"
+        "l": "Integrating factor for \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "Multiply by integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "Solid of revolution disk volume",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ],
-    "ti_ar": "مطابقة: التكاملات القياسية والمعادلات التفاضلية (Unit 7 · Differential Equations)",
     "p_ar": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "النظرية الأساسية (الجزء 1): \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "التكامل بالتجزيء",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (التكامل بالتجزيء)"
+        "l": "عامل التكامل للمعادلة الخطية \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "الضرب في عامل التكامل \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "حجم المجسم الدوراني بطريقة الأقراص",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ]
   }
 ];
-
 D["apab-u8"] = [
   {
     "t": "fn",
@@ -2979,159 +3195,185 @@ D["apab-u8"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Unit 8 · Applications of Integration)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 3xy\\) with \\(y(0) = 3\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Unit 8 · Applications of Integration)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (الوحدة ٨ · تطبيقات التكامل (المساحات والحجوم))",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 2\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 2\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{3x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 3\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 2\\) to write \\(y = e^{x^2} + 1\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) yields \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{3x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{3x^2/2 + C} = e^C e^{3x^2/2} \\implies y = Ae^{3x^2/2}\\). Using \\(y(0) = 3\\) gives \\(A = 3\\), so \\(y = 3e^{3x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Unit 8 · Applications of Integration)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 3xy\\) مع الشرط \\(y(0) = 3\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{3x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 3\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 2\\) لكتابة \\(y = e^{x^2} + 1\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 2\\) gives multiplicative \\(y = 2 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) وليس \\(e^{3x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 2\\) نجد \\(y = 2 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{3x^2/2}\\)، وبالتعويض عن \\(y(0)=3\\) نجد \\(y = 3e^{3x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Unit 8 · Applications of Integration)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 6x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 1\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Unit 8 · Applications of Integration)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (الوحدة ٨ · تطبيقات التكامل (المساحات والحجوم))",
+    "q": "(a) Evaluate \\(\\int_0^{4} (3x^2 + 2x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 2\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{4} (3x^2 + 2x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 2\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{1} (3x^2 + 6x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 1x^2]_0^{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 3x^2\\right]_0^{1}\\)."
+            "text": "Evaluate bounds: \\(64 + 16 - 0 = 80\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((1^3 + 3(1)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(4\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 2\\) yields \\(y = 2 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Unit 8 · Applications of Integration)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 1x^2]_0^{4}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(80\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 2 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Definite Integral via FTC (Unit 8 · Applications of Integration)",
+    "ti": "Step Builder: Definite Integral & Carrying Capacity (Unit 8 · Applications of Integration)",
+    "ti_ar": "بناء الخطوات: التكامل المحدود والسعة الاستيعابية (الوحدة ٨ · تطبيقات التكامل (المساحات والحجوم))",
     "steps": [
       {
-        "l": "Find the antiderivative \\(F(x)\\) of \\(f(x) = 2x + 3\\) with \\(F(0) = 0\\): \\(F(x) =\\)",
-        "a": "x^2 + 3x",
-        "h": "Integrate 2x to x^2 and 3 to 3x."
+        "l": "Evaluate \\([x^3]_0^{4} =\\)",
+        "a": "64",
+        "h": "Compute 4³."
       },
       {
-        "l": "Evaluate at the upper bound \\(F(1) =\\)",
-        "a": "4",
-        "h": "Compute \\((1)^2 + 3\\)(1)."
+        "l": "Evaluate \\(\\int_0^{4} (3x^2 + 2x)\\,dx =\\)",
+        "a": "80",
+        "h": "Add 64 + 16."
       },
       {
-        "l": "Hence state \\(\\int_0^{1} (2x + 3)\\,dx =\\)",
-        "a": "4",
-        "h": "Compute F(1) - F(0)."
+        "l": "In logistic ODE \\(\\frac{dP}{dt} = 0.4 P(1 - P/200)\\), state the inflection population \\(M/2 =\\)",
+        "a": "100",
+        "h": "Half of carrying capacity 200."
       }
     ],
-    "ti_ar": "بناء الخطوات: حساب التكامل المحدد (Unit 8 · Applications of Integration)",
     "steps_ar": [
       {
-        "l": "أوجد الدالة الأصلية \\(F(x)\\) للدالة \\(2x + 3\\) بحيث \\(F(0)=0\\):",
-        "a": "x^2 + 3x",
-        "h": "كامل 2x إلى x^2 و 3 إلى 3x."
+        "l": "احسب \\([x^3]_0^{4} =\\)",
+        "a": "64",
+        "h": "احسب 4³."
       },
       {
-        "l": "احسب القيمة عند الحد العلوي \\(F(1) =\\)",
-        "a": "4",
-        "h": "احسب (1)^2 + 3(1)."
+        "l": "احسب التكامل \\(\\int_0^{4} (3x^2 + 2x)\\,dx =\\)",
+        "a": "80",
+        "h": "اجمع 64 + 16."
       },
       {
-        "l": "إذن قيمة التكامل \\(\\int_0^{1} (2x + 3)\\,dx =\\)",
-        "a": "4",
-        "h": "اطرح F(1) - F(0)."
+        "l": "في المعادلة اللوجستية \\(\\frac{dP}{dt} = 0.4 P(1 - P/200)\\)، أوجد قيمة نقطة الانعطاف \\(M/2 =\\)",
+        "a": "100",
+        "h": "نصف السعة الاستيعابية 200."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Standard Antiderivatives & ODE Forms (Unit 8 · Applications of Integration)",
+    "ti": "Matching: Integration Techniques & Differential Equations (Unit 8 · Applications of Integration)",
+    "ti_ar": "مطابقة: طرائق التكامل والمعادلات التفاضلية (الوحدة ٨ · تطبيقات التكامل (المساحات والحجوم))",
     "p": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "Integration by Parts",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (Integration by Parts)"
+        "l": "Integrating factor for \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "Multiply by integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "Solid of revolution disk volume",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ],
-    "ti_ar": "مطابقة: التكاملات القياسية والمعادلات التفاضلية (Unit 8 · Applications of Integration)",
     "p_ar": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "النظرية الأساسية (الجزء 1): \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "التكامل بالتجزيء",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (التكامل بالتجزيء)"
+        "l": "عامل التكامل للمعادلة الخطية \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "الضرب في عامل التكامل \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "حجم المجسم الدوراني بطريقة الأقراص",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ]
   }

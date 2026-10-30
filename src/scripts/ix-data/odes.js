@@ -153,147 +153,172 @@ D["ode-separable"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 3xy\\) with \\(y(0) = 7\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (First-Order Differential Equations, Separable Equations & Existence Theory)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (المعادلات التفاضلية من الرتبة الأولى والمعادلات القابلة للفصل ونظرية الوجود)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 4\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 4\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{3x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 7\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 4\\) to write \\(y = e^{x^2} + 3\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) yields \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{3x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{3x^2/2 + C} = e^C e^{3x^2/2} \\implies y = Ae^{3x^2/2}\\). Using \\(y(0) = 7\\) gives \\(A = 7\\), so \\(y = 7e^{3x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 3xy\\) مع الشرط \\(y(0) = 7\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{3x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 7\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 4\\) لكتابة \\(y = e^{x^2} + 3\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 4\\) gives multiplicative \\(y = 4 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) وليس \\(e^{3x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 4\\) نجد \\(y = 4 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{3x^2/2}\\)، وبالتعويض عن \\(y(0)=7\\) نجد \\(y = 7e^{3x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 6x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 4\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (First-Order Differential Equations, Separable Equations & Existence Theory)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (المعادلات التفاضلية من الرتبة الأولى والمعادلات القابلة للفصل ونظرية الوجود)",
+    "q": "(a) Evaluate \\(\\int_0^{3} (3x^2 + 8x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 4\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{3} (3x^2 + 8x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 4\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{4} (3x^2 + 6x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 4x^2]_0^{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 3x^2\\right]_0^{4}\\)."
+            "text": "Evaluate bounds: \\(27 + 36 - 0 = 63\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((4^3 + 3(4)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(112\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 4\\) yields \\(y = 4 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 4\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 4x^2]_0^{3}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(63\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 4 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Standard Antiderivatives & ODE Forms (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
+    "ti": "Matching: Integration Techniques & Differential Equations (First-Order Differential Equations, Separable Equations & Existence Theory)",
+    "ti_ar": "مطابقة: طرائق التكامل والمعادلات التفاضلية (المعادلات التفاضلية من الرتبة الأولى والمعادلات القابلة للفصل ونظرية الوجود)",
     "p": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "Integration by Parts",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (Integration by Parts)"
+        "l": "Integrating factor for \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "Multiply by integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "Solid of revolution disk volume",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ],
-    "ti_ar": "مطابقة: التكاملات القياسية والمعادلات التفاضلية (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
     "p_ar": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "النظرية الأساسية (الجزء 1): \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "التكامل بالتجزيء",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (التكامل بالتجزيء)"
+        "l": "عامل التكامل للمعادلة الخطية \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "الضرب في عامل التكامل \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "حجم المجسم الدوراني بطريقة الأقراص",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (First-Order Differential Equations, Separable Equations & Existence Theory)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات التفاضلية من الرتبة الأولى والمعادلات القابلة للفصل ونظرية الوجود)",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 14 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 14 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-linear"] = [
   {
     "t": "sb",
@@ -494,106 +519,131 @@ D["ode-linear"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 3xy\\) with \\(y(0) = 3\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Linear First-Order Equations, Integrating Factors & Nonlinear Reductions)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (المعادلات الخطية من الرتبة الأولى وعوامل التكامل ومعادلات برنولي)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 5\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 5\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{3x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 3\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 5\\) to write \\(y = e^{x^2} + 4\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) yields \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{3x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{3x^2/2 + C} = e^C e^{3x^2/2} \\implies y = Ae^{3x^2/2}\\). Using \\(y(0) = 3\\) gives \\(A = 3\\), so \\(y = 3e^{3x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 3xy\\) مع الشرط \\(y(0) = 3\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{3x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 3\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 5\\) لكتابة \\(y = e^{x^2} + 4\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 5\\) gives multiplicative \\(y = 5 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) وليس \\(e^{3x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 5\\) نجد \\(y = 5 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{3x^2/2}\\)، وبالتعويض عن \\(y(0)=3\\) نجد \\(y = 3e^{3x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 6x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 2\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Linear First-Order Equations, Integrating Factors & Nonlinear Reductions)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (المعادلات الخطية من الرتبة الأولى وعوامل التكامل ومعادلات برنولي)",
+    "q": "(a) Evaluate \\(\\int_0^{4} (3x^2 + 2x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 5\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{4} (3x^2 + 2x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 5\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{2} (3x^2 + 6x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 1x^2]_0^{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 3x^2\\right]_0^{2}\\)."
+            "text": "Evaluate bounds: \\(64 + 16 - 0 = 80\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((2^3 + 3(2)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(20\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 5\\) yields \\(y = 5 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 2\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 1x^2]_0^{4}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(80\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 5 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
-    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 6 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (Linear First-Order Equations, Integrating Factors & Nonlinear Reductions)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات الخطية من الرتبة الأولى وعوامل التكامل ومعادلات برنولي)",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 6 \\)",
-      "\\( 4 \\)",
-      "\\( -4 \\)",
-      "\\( 22 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 6 \\)",
-      "\\( 4 \\)",
-      "\\( -4 \\)",
-      "\\( 22 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 4 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 4 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-second-order"] = [
   {
     "t": "sb",
@@ -786,106 +836,131 @@ D["ode-second-order"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 3xy\\) with \\(y(0) = 7\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 6\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 6\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{3x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 7\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 6\\) to write \\(y = e^{x^2} + 5\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) yields \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{3x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{3x^2/2 + C} = e^C e^{3x^2/2} \\implies y = Ae^{3x^2/2}\\). Using \\(y(0) = 7\\) gives \\(A = 7\\), so \\(y = 7e^{3x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 3xy\\) مع الشرط \\(y(0) = 7\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{3x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 7\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 6\\) لكتابة \\(y = e^{x^2} + 5\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 6\\) gives multiplicative \\(y = 6 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) وليس \\(e^{3x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 6\\) نجد \\(y = 6 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{3x^2/2}\\)، وبالتعويض عن \\(y(0)=7\\) نجد \\(y = 7e^{3x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 6x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 3\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي)",
+    "q": "(a) Evaluate \\(\\int_0^{2} (3x^2 + 4x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 6\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{2} (3x^2 + 4x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 6\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{3} (3x^2 + 6x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 2x^2]_0^{2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 3x^2\\right]_0^{3}\\)."
+            "text": "Evaluate bounds: \\(8 + 8 - 0 = 16\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((3^3 + 3(3)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(54\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 6\\) yields \\(y = 6 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 3\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 2x^2]_0^{2}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(16\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 6 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
-    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي)",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-undetermined-coefficients"] = [
   {
     "t": "sb",
@@ -1066,106 +1141,131 @@ D["ode-undetermined-coefficients"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 2xy\\) with \\(y(0) = 3\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Nonhomogeneous Equations, Undetermined Coefficients & Resonance)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 2\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 2\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{2x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 3\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 2\\) to write \\(y = e^{x^2} + 1\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) yields \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{2x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{2x^2/2 + C} = e^C e^{2x^2/2} \\implies y = Ae^{2x^2/2}\\). Using \\(y(0) = 3\\) gives \\(A = 3\\), so \\(y = 3e^{2x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 2xy\\) مع الشرط \\(y(0) = 3\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{2x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 3\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 2\\) لكتابة \\(y = e^{x^2} + 1\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 2\\) gives multiplicative \\(y = 2 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) وليس \\(e^{2x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 2\\) نجد \\(y = 2 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{2x^2/2}\\)، وبالتعويض عن \\(y(0)=3\\) نجد \\(y = 3e^{2x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 4x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 2\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Nonhomogeneous Equations, Undetermined Coefficients & Resonance)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين)",
+    "q": "(a) Evaluate \\(\\int_0^{3} (3x^2 + 6x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 2\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{3} (3x^2 + 6x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 2\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{2} (3x^2 + 4x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 3x^2]_0^{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 2x^2\\right]_0^{2}\\)."
+            "text": "Evaluate bounds: \\(27 + 27 - 0 = 54\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((2^3 + 2(2)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(16\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 2\\) yields \\(y = 2 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 2\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 3x^2]_0^{3}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(54\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 2 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
-    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (Nonhomogeneous Equations, Undetermined Coefficients & Resonance)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين)",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 8 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 44 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 8 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 44 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-variation-of-parameters"] = [
   {
     "t": "sb",
@@ -1205,11 +1305,13 @@ D["ode-variation-of-parameters"] = [
     "items_ar": [
       {
         "s": "تنطبق طريقة تغير الثوابت على أي دالة محركة g(x) يمكن حساب تكاملاتها (مثل tan x و sec x).",
-        "ex": "على عكس طريقة المعاملات غير المحددة (المقتصرة على كثيرات الحدود والدوال الأسية والجيبية)، تعمل طريقة تغير الثوابت مع أي دالة متصلة g(x)."
+        "ex": "على عكس طريقة المعاملات غير المحددة (المقتصرة على كثيرات الحدود والدوال الأسية والجيبية)، تعمل طريقة تغير الثوابت مع أي دالة متصلة g(x).",
+        "a": true
       },
       {
         "s": "يمكن لمحدد فرونسكي لحلين مستقلين خطياً لمعادلة تفاضلية خطية متجانسة أن يغير إشارته.",
-        "ex": "وفقاً لمبرهنة آبل، إما أن يكون محدد فرونسكي صفراً في كل مكان أو لا يساوي صفراً أبداً على أي فترة متصلة."
+        "ex": "وفقاً لمبرهنة آبل، إما أن يكون محدد فرونسكي صفراً في كل مكان أو لا يساوي صفراً أبداً على أي فترة متصلة.",
+        "a": false
       }
     ]
   },
@@ -1332,125 +1434,150 @@ D["ode-variation-of-parameters"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Variation of Parameters, Wronskian Systems &amp; Green's Kernel)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 2xy\\) with \\(y(0) = 5\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Variation of Parameters, Wronskian Systems & Green's Kernel)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (طريقة تغيير البارامترات وأنظمة فرونسكي ونواة غرين)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 3\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 3\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{2x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 5\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 3\\) to write \\(y = e^{x^2} + 2\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) yields \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{2x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{2x^2/2 + C} = e^C e^{2x^2/2} \\implies y = Ae^{2x^2/2}\\). Using \\(y(0) = 5\\) gives \\(A = 5\\), so \\(y = 5e^{2x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Variation of Parameters, Wronskian Systems &amp; Green's Kernel)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 2xy\\) مع الشرط \\(y(0) = 5\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{2x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 5\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 3\\) لكتابة \\(y = e^{x^2} + 2\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 3\\) gives multiplicative \\(y = 3 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) وليس \\(e^{2x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 3\\) نجد \\(y = 3 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{2x^2/2}\\)، وبالتعويض عن \\(y(0)=5\\) نجد \\(y = 5e^{2x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Variation of Parameters, Wronskian Systems &amp; Green's Kernel)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 4x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 4\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Variation of Parameters, Wronskian Systems & Green's Kernel)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (طريقة تغيير البارامترات وأنظمة فرونسكي ونواة غرين)",
+    "q": "(a) Evaluate \\(\\int_0^{4} (3x^2 + 8x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 3\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{4} (3x^2 + 8x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 3\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{4} (3x^2 + 4x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 4x^2]_0^{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 2x^2\\right]_0^{4}\\)."
+            "text": "Evaluate bounds: \\(64 + 64 - 0 = 128\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((4^3 + 2(4)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(96\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 3\\) yields \\(y = 3 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Variation of Parameters, Wronskian Systems &amp; Green's Kernel)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 4\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 4x^2]_0^{4}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(128\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 3 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Standard Antiderivatives & ODE Forms (Variation of Parameters, Wronskian Systems &amp; Green's Kernel)",
+    "ti": "Matching: Integration Techniques & Differential Equations (Variation of Parameters, Wronskian Systems & Green's Kernel)",
+    "ti_ar": "مطابقة: طرائق التكامل والمعادلات التفاضلية (طريقة تغيير البارامترات وأنظمة فرونسكي ونواة غرين)",
     "p": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "Integration by Parts",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (Integration by Parts)"
+        "l": "Integrating factor for \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "Multiply by integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "Solid of revolution disk volume",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ],
-    "ti_ar": "مطابقة: التكاملات القياسية والمعادلات التفاضلية (Variation of Parameters, Wronskian Systems &amp; Green's Kernel)",
     "p_ar": [
       {
-        "l": "\\(\\int e^{kx}\\,dx\\)",
-        "r": "\\(\\dfrac{1}{k}e^{kx} + C\\)"
+        "l": "النظرية الأساسية (الجزء 1): \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
+        "r": "\\(f(x)\\)"
       },
       {
-        "l": "\\(\\int \\dfrac{f'(x)}{f(x)}\\,dx\\)",
-        "r": "\\(\\ln|f(x)| + C\\)"
+        "l": "التكامل بالتجزيء",
+        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
       },
       {
-        "l": "\\(\\int u\\,dv\\)",
-        "r": "\\(uv - \\int v\\,du\\) (التكامل بالتجزيء)"
+        "l": "عامل التكامل للمعادلة الخطية \\(y' + P(x)y = Q(x)\\)",
+        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       },
       {
-        "l": "\\(y' + P(x)y = Q(x)\\)",
-        "r": "الضرب في عامل التكامل \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "حجم المجسم الدوراني بطريقة الأقراص",
+        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
       }
     ]
   }
 ];
-
 D["ode-laplace-transforms"] = [
   {
     "t": "mt",
@@ -1633,106 +1760,131 @@ D["ode-laplace-transforms"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 2xy\\) with \\(y(0) = 2\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (The Laplace Transform, Discontinuous Forcing & Convolution Theory)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 4\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 4\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{2x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 2\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 4\\) to write \\(y = e^{x^2} + 3\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) yields \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{2x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{2x^2/2 + C} = e^C e^{2x^2/2} \\implies y = Ae^{2x^2/2}\\). Using \\(y(0) = 2\\) gives \\(A = 2\\), so \\(y = 2e^{2x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 2xy\\) مع الشرط \\(y(0) = 2\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{2x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 2\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 4\\) لكتابة \\(y = e^{x^2} + 3\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 4\\) gives multiplicative \\(y = 4 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) وليس \\(e^{2x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 4\\) نجد \\(y = 4 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{2x^2/2}\\)، وبالتعويض عن \\(y(0)=2\\) نجد \\(y = 2e^{2x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 4x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 1\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (The Laplace Transform, Discontinuous Forcing & Convolution Theory)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))",
+    "q": "(a) Evaluate \\(\\int_0^{2} (3x^2 + 2x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 4\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{2} (3x^2 + 2x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 4\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{1} (3x^2 + 4x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 1x^2]_0^{2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 2x^2\\right]_0^{1}\\)."
+            "text": "Evaluate bounds: \\(8 + 4 - 0 = 12\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((1^3 + 2(1)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(3\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 4\\) yields \\(y = 4 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 1x^2]_0^{2}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(12\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 4 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
-    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (The Laplace Transform, Discontinuous Forcing & Convolution Theory)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 8 \\)",
-      "\\( -8 \\)",
-      "\\( 69 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 8 \\)",
-      "\\( -8 \\)",
-      "\\( 69 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-systems"] = [
   {
     "t": "sb",
@@ -1925,106 +2077,131 @@ D["ode-systems"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 3xy\\) with \\(y(0) = 4\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 5\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 5\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{3x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 4\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 5\\) to write \\(y = e^{x^2} + 4\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) yields \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{3x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{3x^2/2 + C} = e^C e^{3x^2/2} \\implies y = Ae^{3x^2/2}\\). Using \\(y(0) = 4\\) gives \\(A = 4\\), so \\(y = 4e^{3x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 3xy\\) مع الشرط \\(y(0) = 4\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 3x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{3}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{3x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 4\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 5\\) لكتابة \\(y = e^{x^2} + 4\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 5\\) gives multiplicative \\(y = 5 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{3}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{3}{2}x^2 + C} = Ae^{3x^2/2}\\) وليس \\(e^{3x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 5\\) نجد \\(y = 5 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{3x^2/2}\\)، وبالتعويض عن \\(y(0)=4\\) نجد \\(y = 4e^{3x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 6x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 4\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس)",
+    "q": "(a) Evaluate \\(\\int_0^{3} (3x^2 + 4x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 5\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{3} (3x^2 + 4x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 5\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{4} (3x^2 + 6x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 2x^2]_0^{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 3x^2\\right]_0^{4}\\)."
+            "text": "Evaluate bounds: \\(27 + 18 - 0 = 45\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((4^3 + 3(4)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(112\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 5\\) yields \\(y = 5 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 4\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 2x^2]_0^{3}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(45\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 5 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
-    "q": "What is the minimum value of \\( f(x) = (x - 9)^2 + 6 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 9)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس)",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 6 \\)",
-      "\\( 9 \\)",
-      "\\( -9 \\)",
-      "\\( 87 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 6 \\)",
-      "\\( 9 \\)",
-      "\\( -9 \\)",
-      "\\( 87 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 9)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 9 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 9 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-series-solutions"] = [
   {
     "t": "sb",
@@ -2207,106 +2384,131 @@ D["ode-series-solutions"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 2xy\\) with \\(y(0) = -1\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Power Series Solutions, Ordinary Points & the Method of Frobenius)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس)",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 6\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 6\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{2x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = -1\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 6\\) to write \\(y = e^{x^2} + 5\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) yields \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{2x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{2x^2/2 + C} = e^C e^{2x^2/2} \\implies y = Ae^{2x^2/2}\\). Using \\(y(0) = -1\\) gives \\(A = -1\\), so \\(y = -1e^{2x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 2xy\\) مع الشرط \\(y(0) = -1\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{2}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{2x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = -1\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 6\\) لكتابة \\(y = e^{x^2} + 5\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 6\\) gives multiplicative \\(y = 6 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{2}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{2}{2}x^2 + C} = Ae^{2x^2/2}\\) وليس \\(e^{2x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 6\\) نجد \\(y = 6 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{2x^2/2}\\)، وبالتعويض عن \\(y(0)=-1\\) نجد \\(y = -1e^{2x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 4x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 1\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Power Series Solutions, Ordinary Points & the Method of Frobenius)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس)",
+    "q": "(a) Evaluate \\(\\int_0^{4} (3x^2 + 6x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 6\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{4} (3x^2 + 6x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 6\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{1} (3x^2 + 4x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 3x^2]_0^{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 2x^2\\right]_0^{1}\\)."
+            "text": "Evaluate bounds: \\(64 + 48 - 0 = 112\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((1^3 + 2(1)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(3\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 6\\) yields \\(y = 6 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 3x^2]_0^{4}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(112\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 6 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (Power Series Solutions, Ordinary Points & the Method of Frobenius)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس)",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
-
 D["ode-numerical-methods"] = [
   {
     "t": "sb",
@@ -2507,103 +2709,129 @@ D["ode-numerical-methods"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable Differential Equation & Constant of Integration (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-    "q": "A student solves the initial value problem \\(\\dfrac{dy}{dx} = 5xy\\) with \\(y(0) = 3\\). Which step contains the mathematical flaw?",
+    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability)",
+    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))",
+    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 2\\). Which step mishandles the constant of integration?",
+    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 2\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
     "steps": [
-      "Separate variables: \\(\\int \\dfrac{1}{y}\\,dy = \\int 5x\\,dx\\).",
-      "Integrate both sides: \\(\\ln|y| = \\dfrac{5}{2}x^2 + C\\).",
-      "Exponentiate both sides to write \\(y = e^{5x^2/2} + C\\).",
-      "Substitute \\(x = 0, y = 3\\) to solve for \\(C\\)."
+      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
+      "Apply \\(y(0) = 2\\) to write \\(y = e^{x^2} + 1\\)."
     ],
-    "errorStep": 3,
-    "reasons": [
-      "Exponentiating \\(\\ln|y| = \\tfrac{5}{2}x^2 + C\\) yields \\(y = e^{\\frac{5}{2}x^2 + C} = Ae^{5x^2/2}\\) (where \\(A = \\pm e^C\\)), NOT \\(e^{5x^2/2} + C\\).",
-      "The integral of \\(1/y\\) is \\(y^{-2}\\), not \\(\\ln|y|\\).",
-      "Variables cannot be separated when \\(x\\) and \\(y\\) are multiplied."
-    ],
-    "correctReason": 0,
-    "h": "Check how the exponent law \\(e^{a + C} = e^a \\cdot e^C\\) behaves in Step 3.",
-    "sol": "By index laws, \\(|y| = e^{5x^2/2 + C} = e^C e^{5x^2/2} \\implies y = Ae^{5x^2/2}\\). Using \\(y(0) = 3\\) gives \\(A = 3\\), so \\(y = 3e^{5x^2/2}\\).",
-    "ti_ar": "اكتشف الخطأ: حل المعادلات التفاضلية وثابت التكامل (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-    "q_ar": "يحل طالب مسألة القيمة الابتدائية \\(\\dfrac{dy}{dx} = 5xy\\) مع الشرط \\(y(0) = 3\\). أي خطوة تتضمن الخطأ الرياضي؟",
     "steps_ar": [
-      "فصل المتغيرات: \\(\\int \\dfrac{1}{y}\\,dy = \\int 5x\\,dx\\).",
-      "تكامل الطرفين: \\(\\ln|y| = \\dfrac{5}{2}x^2 + C\\).",
-      "أخذ الدالة الأسية للطرفين لكتابة \\(y = e^{5x^2/2} + C\\).",
-      "التعويض عن \\(x = 0, y = 3\\) لإيجاد \\(C\\)."
+      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
+      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
+      "التعويض بالشرط \\(y(0) = 2\\) لكتابة \\(y = e^{x^2} + 1\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 2\\) gives multiplicative \\(y = 2 e^{x^2}\\).",
+      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
+      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
     ],
     "reasons_ar": [
-      "أخذ الدالة الأسية للعلاقة \\(\\ln|y| = \\tfrac{5}{2}x^2 + C\\) يعطي \\(y = e^{\\frac{5}{2}x^2 + C} = Ae^{5x^2/2}\\) وليس \\(e^{5x^2/2} + C\\).",
-      "تكامل \\(1/y\\) يساوي \\(-1/y^2\\).",
-      "لا يمكن فصل المتغيرات في حالة الضرب."
+      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 2\\) نجد \\(y = 2 e^{x^2}\\).",
+      "لا يمكن فصل المتغيرات في هذه المعادلة.",
+      "تكامل \\(2x\\) يساوي \\(2\\)."
     ],
-    "h_ar": "تذكّر أن \\(e^{u+C} = e^C \\cdot e^u = Ae^u\\).",
-    "sol_ar": "الصورة الصحيحة بعد أخذ الدالة الأسية هي \\(y = Ae^{5x^2/2}\\)، وبالتعويض عن \\(y(0)=3\\) نجد \\(y = 3e^{5x^2/2}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integration & Area Under a Curve (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-    "q": "Evaluate the exact area bounded by \\(y = 3x^2 + 10x\\), the \\(x\\)-axis, \\(x = 0\\), and \\(x = 1\\).",
+    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability)",
+    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))",
+    "q": "(a) Evaluate \\(\\int_0^{2} (3x^2 + 8x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 2\\).",
+    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{2} (3x^2 + 8x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 2\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative Construction",
+        "label": "Part (a) — Antiderivative & FTC Evaluation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set up definite integral \\(A = \\int_0^{1} (3x^2 + 10x)\\,dx\\)."
+            "text": "Antiderivative: \\([x^3 + 4x^2]_0^{2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Find correct antiderivative \\(\\left[x^3 + 5x^2\\right]_0^{1}\\)."
+            "text": "Evaluate bounds: \\(8 + 16 - 0 = 24\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Fundamental Theorem Evaluation",
+        "label": "Part (b) — Separable Particular Solution",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Substitute upper and lower limits: \\((1^3 + 5(1)^2) - (0)\\)."
+            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Obtain exact area \\(6\\)."
+            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 2\\) yields \\(y = 2 e^{x^2}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "When a question says \"Hence find the exact area,\" calculator-only decimal answers with no antiderivative working shown receive 0/4 marks.",
-    "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-    "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 10x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
-    "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المشتقة العكسية: \\([x^3 + 4x^2]_0^{2}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "التعويض بالحدين: \\(24\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\ln|y| = x^2 + C\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(y = 2 e^{x^2}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
-    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 8 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Derivative of an Accumulation Function (Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability)",
+    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))",
+    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
+    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
     "o": [
-      "\\( 8 \\)",
-      "\\( 4 \\)",
-      "\\( -4 \\)",
-      "\\( 24 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "o_ar": [
-      "\\( 8 \\)",
-      "\\( 4 \\)",
-      "\\( -4 \\)",
-      "\\( 24 \\)"
+      "\\(2x \\cos(x^2)\\)",
+      "\\(\\cos(x^2)\\)",
+      "\\(\\sin(x^2)\\)",
+      "\\(-2x \\sin(x^2)\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 4 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 4 \\)."
+    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
+    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
   }
 ];
 });

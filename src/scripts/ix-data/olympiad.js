@@ -1,7 +1,8 @@
 /* Interactive Practice data for /olympiad/ - one entry per chapter section id.
-   Ground-up Olympiad, NSMO of KSA (Mawhiba), and KAUST (KMC & Academy) interactive suite.
-   Shipped as public/js/ix/olympiad.js and loaded on /olympiad/ by
-   src/scripts/modules/19-interactive-activities-engine-v1.js. */
+   Shipped as public/js/ix/olympiad.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat/gp/se/ms) are
+   documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D["ol-algebraic-techniques"] = [
   {
@@ -61,42 +62,42 @@ D["ol-algebraic-techniques"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Vieta, Newton Sums & Inequalities)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (فييتا ومجاميع نيوتن والمتباينات)",
+    "ti": "Matching: Polynomial & Quadratic Theorems (Olympiad Algebra: Symmetric Polynomials, Vieta's Relations & Classical Inequalities)",
+    "ti_ar": "مطابقة: نظريات المعادلات التربيعية وكثيرات الحدود (الجبر الأولمبي: كثيرات الحدود المتماثلة وعلاقات فييتا والمتباينات الكلاسيكية)",
     "p": [
       {
-        "l": "\\( a^3 + b^3 + c^3 - 3abc \\)",
-        "r": "\\( (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca) \\)"
+        "l": "Remainder when \\(P(x)\\) is divided by \\((x - 1)\\)",
+        "r": "\\(P(1)\\)"
       },
       {
-        "l": "\\( a^4 + 4b^4 \\)",
-        "r": "Sophie Germain quartic factorization"
+        "l": "Tangent line–parabola condition",
+        "r": "System discriminant \\(\\Delta = b^2 - 4ac = 0\\)"
       },
       {
-        "l": "\\( \\sum \\frac{a_i^2}{b_i} \\ge \\frac{(\\sum a_i)^2}{\\sum b_i} \\)",
-        "r": "Titu's Lemma (Engel Cauchy-Schwarz)"
+        "l": "Sum & product in \\(x^2 - 5x + 4 = 0\\)",
+        "r": "\\(\\alpha + \\beta = 5,\\; \\alpha\\beta = 4\\)"
       },
       {
-        "l": "\\( \\frac{1}{k(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k} - \\frac{1}{k+2}\\right) \\)",
-        "r": "Two-step telescoping partial fraction"
+        "l": "Axis of symmetry of \\(ax^2 + bx + c\\)",
+        "r": "\\(x = -\\frac{b}{2a}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( a^3 + b^3 + c^3 - 3abc \\)",
-        "r": "\\( (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca) \\)"
+        "l": "باقي قسمة \\(P(x)\\) على \\((x - 1)\\)",
+        "r": "\\(P(1)\\)"
       },
       {
-        "l": "\\( a^4 + 4b^4 \\)",
-        "r": "تحليل صوفي جيرمان من الدرجة الرابعة"
+        "l": "شرط تماس مستقيم مع قطع مكافئ",
+        "r": "مميز النظام المشترك \\(\\Delta = b^2 - 4ac = 0\\)"
       },
       {
-        "l": "\\( \\sum \\frac{a_i^2}{b_i} \\ge \\frac{(\\sum a_i)^2}{\\sum b_i} \\)",
-        "r": "توطئة تيتو (صورة إنجل لكوشي-شوارتز)"
+        "l": "مجموع وضرب جذري \\(x^2 - 5x + 4 = 0\\)",
+        "r": "\\(\\alpha + \\beta = 5,\\; \\alpha\\beta = 4\\)"
       },
       {
-        "l": "\\( \\frac{1}{k(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k} - \\frac{1}{k+2}\\right) \\)",
-        "r": "تفكيك كسري متداخل بخطوتين"
+        "l": "معادلة محور التماثل لـ \\(ax^2 + bx + c\\)",
+        "r": "\\(x = -\\frac{b}{2a}\\)"
       }
     ]
   },
@@ -395,42 +396,42 @@ D["ol-modular-number-theory"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Fermat, Euler, CRT & LTE)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (فيرما وأويلر والباقي الصيني وLTE)",
+    "ti": "Matching: Number Theory Theorems & Valuations (Number Theory I: Divisibility, Primes, Fermat–Euler Theorems & Chinese Remainder Theorem)",
+    "ti_ar": "مطابقة: نظريات الأعداد والحساب المعياري (نظرية الأعداد (1): قابلية القسمة والأعداد الأولية ومبرهنات فيرما وأويلر والباقي الصيني)",
     "p": [
       {
-        "l": "\\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\)",
-        "r": "Euler's Totient Theorem (\\( \\gcd(a,m)=1 \\))"
+        "l": "Fermat's Little Theorem (\\(\\gcd(a,11)=1\\))",
+        "r": "\\(a^{10} \\equiv 1 \\pmod{11}\\)"
       },
       {
-        "l": "\\( (p - 1)! \\equiv -1 \\pmod p \\)",
-        "r": "Wilson's Primality Criterion"
+        "l": "Legendre's Formula \\(v_p(n!)\\)",
+        "r": "\\(\\sum_{k \\ge 1} \\lfloor n / p^k \\rfloor\\)"
       },
       {
-        "l": "\\( v_p(n!) = \\frac{n - s_p(n)}{p - 1} \\)",
-        "r": "Legendre's base-p digit-sum identity"
+        "l": "Simon’s Favorite Factoring Trick",
+        "r": "\\(xy + ux + vy + uv = (x + v)(y + u)\\)"
       },
       {
-        "l": "\\( \\text{ord}_m(a) \\mid k \\iff a^k \\equiv 1 \\pmod m \\)",
-        "r": "Multiplicative Order Divisibility Law"
+        "l": "Bézout Solvability of \\(ax + by = c\\)",
+        "r": "Integer solutions exist iff \\(\\gcd(a,b) \\mid c\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\)",
-        "r": "مبرهنة أويلر (بشرط \\( \\gcd(a,m)=1 \\))"
+        "l": "مبرهنة فيرما الصغرى (\\(\\gcd(a,11)=1\\))",
+        "r": "\\(a^{10} \\equiv 1 \\pmod{11}\\)"
       },
       {
-        "l": "\\( (p - 1)! \\equiv -1 \\pmod p \\)",
-        "r": "معيار ويلسون للأعداد الأولية"
+        "l": "صيغة ليجاندر \\(v_p(n!)\\)",
+        "r": "\\(\\sum_{k \\ge 1} \\lfloor n / p^k \\rfloor\\)"
       },
       {
-        "l": "\\( v_p(n!) = \\frac{n - s_p(n)}{p - 1} \\)",
-        "r": "صيغة ليجاندر بدلالة مجموع خانات الأساس p"
+        "l": "تحليل سايمون للمعادلات الديوفانتية",
+        "r": "\\(xy + ux + vy + uv = (x + v)(y + u)\\)"
       },
       {
-        "l": "\\( \\text{ord}_m(a) \\mid k \\iff a^k \\equiv 1 \\pmod m \\)",
-        "r": "قانون قابلية القسمة للرتبة الضربية"
+        "l": "شرط بيزو لحل \\(ax + by = c\\)",
+        "r": "توجد حلول صحيحة إذا وفقط إذا كان \\(\\gcd(a,b) \\mid c\\)"
       }
     ]
   },
@@ -729,42 +730,42 @@ D["ol-diophantine-equations"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (SFFT, Bounding, Vieta Jumping & Floors)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (تحليل SFFT والحصر والقفز الفييتي ودالة الصحيح)",
+    "ti": "Matching: Number Theory Theorems & Valuations (Number Theory II: Diophantine Equations, SFFT, Bounding & Vieta Jumping)",
+    "ti_ar": "مطابقة: نظريات الأعداد والحساب المعياري (نظرية الأعداد (2): المعادلات الديوفانتية وتحليل سايمون (SFFT) والقفز الفييتي)",
     "p": [
       {
-        "l": "\\( xy + rx + sy = N \\iff (x+s)(y+r) = N+rs \\)",
-        "r": "Simon's Favorite Factoring Trick (SFFT)"
+        "l": "Fermat's Little Theorem (\\(\\gcd(a,13)=1\\))",
+        "r": "\\(a^{12} \\equiv 1 \\pmod{13}\\)"
       },
       {
-        "l": "\\( \\sum_{k=0}^{n-1} \\lfloor x + k/n \\rfloor = \\lfloor nx \\rfloor \\)",
-        "r": "Hermite's Floor Identity"
+        "l": "Legendre's Formula \\(v_p(n!)\\)",
+        "r": "\\(\\sum_{k \\ge 1} \\lfloor n / p^k \\rfloor\\)"
       },
       {
-        "l": "\\( ab - a - b \\) for \\( \\gcd(a,b)=1 \\)",
-        "r": "Frobenius Coin / Chicken McNugget Number"
+        "l": "Simon’s Favorite Factoring Trick",
+        "r": "\\(xy + ux + vy + uv = (x + v)(y + u)\\)"
       },
       {
-        "l": "\\( (n^2)^2 < n^4 + n^2 + 1 < (n^2 + 1)^2 \\)",
-        "r": "Consecutive-square bounding trap (for \\( n \\ge 1 \\))"
+        "l": "Bézout Solvability of \\(ax + by = c\\)",
+        "r": "Integer solutions exist iff \\(\\gcd(a,b) \\mid c\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( xy + rx + sy = N \\iff (x+s)(y+r) = N+rs \\)",
-        "r": "خدعة التحليل المفضلة لسايمون (SFFT)"
+        "l": "مبرهنة فيرما الصغرى (\\(\\gcd(a,13)=1\\))",
+        "r": "\\(a^{12} \\equiv 1 \\pmod{13}\\)"
       },
       {
-        "l": "\\( \\sum_{k=0}^{n-1} \\lfloor x + k/n \\rfloor = \\lfloor nx \\rfloor \\)",
-        "r": "متطابقة هيرميت لدالة الجزء الصحيح"
+        "l": "صيغة ليجاندر \\(v_p(n!)\\)",
+        "r": "\\(\\sum_{k \\ge 1} \\lfloor n / p^k \\rfloor\\)"
       },
       {
-        "l": "\\( ab - a - b \\) for \\( \\gcd(a,b)=1 \\)",
-        "r": "عدد فروبينيوس للعملات الأولية نسبياً"
+        "l": "تحليل سايمون للمعادلات الديوفانتية",
+        "r": "\\(xy + ux + vy + uv = (x + v)(y + u)\\)"
       },
       {
-        "l": "\\( (n^2)^2 < n^4 + n^2 + 1 < (n^2 + 1)^2 \\)",
-        "r": "الحصر بين مربعين متتاليين (لكل \\( n \\ge 1 \\))"
+        "l": "شرط بيزو لحل \\(ax + by = c\\)",
+        "r": "توجد حلول صحيحة إذا وفقط إذا كان \\(\\gcd(a,b) \\mid c\\)"
       }
     ]
   },
@@ -1063,42 +1064,42 @@ D["ol-combinatorics-counting"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Bijections, PIE & Pigeonhole)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (التقابلات والشمول والإقصاء وبرج الحمام)",
+    "ti": "Matching: Counting Principles & Combinatorial Models (Combinatorics I: Bijective Counting, Stars & Bars, Inclusion–Exclusion & Pigeonhole)",
+    "ti_ar": "مطابقة: مبادئ العد والنماذج التوافقية (التركيبات (1): العد التقابلي والنجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
     "p": [
       {
-        "l": "\\( \\binom{n + k - 1}{k - 1} \\)",
-        "r": "Stars & Bars (non-negative solutions to \\( x_1+\\dots+x_k=n \\))"
+        "l": "Ordered \\(3\\)-arrangements from \\(9\\)",
+        "r": "\\({}^{9}P_{3} = 504\\)"
       },
       {
-        "l": "\\( \\sum_{k=0}^{r} \\binom{m}{k}\\binom{n}{r-k} = \\binom{m+n}{r} \\)",
-        "r": "Vandermonde's Convolution Identity"
+        "l": "Unordered \\(3\\)-subsets from \\(9\\)",
+        "r": "\\(\\binom{9}{3} = 84\\)"
       },
       {
-        "l": "\\( D_n = n! \\sum_{j=0}^{n} \\frac{(-1)^j}{j!} \\)",
-        "r": "Derangement Count via PIE"
+        "l": "Stars & Bars (\\(x_1 + \\dots + x_k = m,\\; x_i \\ge 0\\))",
+        "r": "\\(\\binom{m + k - 1}{k - 1}\\)"
       },
       {
-        "l": "\\( \\lceil N / k \\rceil \\)",
-        "r": "Generalized Pigeonhole Threshold"
+        "l": "Circular arrangements of \\(n\\) distinct items",
+        "r": "\\((n - 1)!\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\binom{n + k - 1}{k - 1} \\)",
-        "r": "النجوم والفواصل (حلول غير سالبة لـ \\( x_1+\\dots+x_k=n \\))"
+        "l": "تراتيب مرتبة طولها \\(3\\) من \\(9\\)",
+        "r": "\\({}^{9}P_{3} = 504\\)"
       },
       {
-        "l": "\\( \\sum_{k=0}^{r} \\binom{m}{k}\\binom{n}{r-k} = \\binom{m+n}{r} \\)",
-        "r": "متطابقة فاندرموند التوافقية"
+        "l": "مجموعات جزئية حجمها \\(3\\) من \\(9\\)",
+        "r": "\\(\\binom{9}{3} = 84\\)"
       },
       {
-        "l": "\\( D_n = n! \\sum_{j=0}^{n} \\frac{(-1)^j}{j!} \\)",
-        "r": "عدّ التبديلات الكاملة الإزاحة عبر PIE"
+        "l": "النجوم والفواصل (\\(x_1 + \\dots + x_k = m,\\; x_i \\ge 0\\))",
+        "r": "\\(\\binom{m + k - 1}{k - 1}\\)"
       },
       {
-        "l": "\\( \\lceil N / k \\rceil \\)",
-        "r": "عتبة مبدأ برج الحمام المعمم"
+        "l": "تباديل دائرية لـ \\(n\\) عناصر مختلفة",
+        "r": "\\((n - 1)!\\)"
       }
     ]
   },
@@ -1397,42 +1398,42 @@ D["ol-recurrence-probability"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Recurrences, Markov States & Catalan)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (العلاقات التكرارية وسلاسل ماركوف وكاتالان)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Combinatorics II: Recurrence Relations, Catalan Numbers & Olympiad Probability)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (التوافيق (2): العلاقات التراجعية وأعداد كاتالان والاحتمالات الأولمبية)",
     "p": [
       {
-        "l": "\\( a_n = (c_1 + c_2 n) r^n \\)",
-        "r": "Repeated characteristic root \\( (x - r)^2 = 0 \\)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( C_n = \\frac{1}{n+1}\\binom{2n}{n} \\)",
-        "r": "Catalan number (Dyck paths & parenthesizations)"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( \\mathbb{E}[\\text{fixed points}] = n \\cdot \\frac{1}{n} = 1 \\)",
-        "r": "Indicator expectation on a random permutation"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( P = \\frac{\\text{Area}(\\mathcal{F})}{\\text{Area}(\\Omega)} \\)",
-        "r": "Continuous Geometric Probability measure"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( a_n = (c_1 + c_2 n) r^n \\)",
-        "r": "حالة الجذر المميز المكرر \\( (x - r)^2 = 0 \\)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( C_n = \\frac{1}{n+1}\\binom{2n}{n} \\)",
-        "r": "عدد كاتالان (مسارات دايك والأقواس المتوازنة)"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( \\mathbb{E}[\\text{fixed points}] = n \\cdot \\frac{1}{n} = 1 \\)",
-        "r": "توقع النقاط الثابتة في تبديل عشوائي بالمؤشرات"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( P = \\frac{\\text{Area}(\\mathcal{F})}{\\text{Area}(\\Omega)} \\)",
-        "r": "قانون الاحتمال الهندسي المتصل بالمساحات"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   },
@@ -1731,42 +1732,42 @@ D["ol-euclidean-circles"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Cyclic Quads, Power of a Point & Radical Axis)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (الرباعيات الدائرية وقوة النقطة والمحور الأساسي)",
+    "ti": "Matching: Circle Theorems & Solid Mensuration (Euclidean Geometry I: Cyclic Quadrilaterals, Power of a Point, Radical Axes & Ptolemy)",
+    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (الهندسة الإقليدية (1): الرباعيات الدائرية وقوة النقطة والمحور الأساسي ومبرهنة بطليموس)",
     "p": [
       {
-        "l": "\\( PA \\cdot PB = PT^2 = d^2 - R^2 \\)",
-        "r": "External Tangent-Secant Power of a Point"
+        "l": "Inscribed angle in a semicircle",
+        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
       },
       {
-        "l": "\\( \\angle BAC = \\angle BDC \\) (same side of \\( BC \\))",
-        "r": "Bowtie Concyclicity Criterion"
+        "l": "Opposite angles of a cyclic quadrilateral",
+        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
       },
       {
-        "l": "\\( AC \\cdot BD = AB \\cdot CD + AD \\cdot BC \\)",
-        "r": "Ptolemy's Cyclic Quadrilateral Theorem"
+        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "Collinear feet of perpendiculars from \\( P \\in (ABC) \\)",
-        "r": "Simson–Wallace Line Theorem"
+        "l": "Power of a Point (intersecting chords)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( PA \\cdot PB = PT^2 = d^2 - R^2 \\)",
-        "r": "قوة النقطة الخارجية (المماس والقاطع)"
+        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
+        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
       },
       {
-        "l": "\\( \\angle BAC = \\angle BDC \\) (same side of \\( BC \\))",
-        "r": "شرط الرباعي الدائري (تساوي زاويتين على قاعدة واحدة)"
+        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
+        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
       },
       {
-        "l": "\\( AC \\cdot BD = AB \\cdot CD + AD \\cdot BC \\)",
-        "r": "مبرهنة بطليموس للرباعي الدائري"
+        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "Collinear feet of perpendiculars from \\( P \\in (ABC) \\)",
-        "r": "مبرهنة مستقيم سيمسون-والاس"
+        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ]
   },
@@ -2055,42 +2056,42 @@ D["ol-triangle-centers-trig"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Ceva, Menelaus, Stewart & Euler Line)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (تشيفا ومينيلاوس وستيوارت وخط أويلر)",
+    "ti": "Matching: Trigonometric & Inverse-Trig Identities (Euclidean Geometry II: Triangle Centers, Ceva, Menelaus, Stewart & Olympiad Trigonometry)",
+    "ti_ar": "مطابقة: المتطابقات المثلثية والفروع العكسية (الهندسة الإقليدية (2): مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وحساب المثلثات الأولمبي)",
     "p": [
       {
-        "l": "\\( \\frac{BD}{DC}\\cdot\\frac{CE}{EA}\\cdot\\frac{AF}{FB} = 1 \\)",
-        "r": "Ceva's Concurrency Theorem"
+        "l": "\\(1 + \\tan^2\\theta\\)",
+        "r": "\\(\\sec^2\\theta\\)"
       },
       {
-        "l": "\\( b^2 m + c^2 n = a(d^2 + mn) \\)",
-        "r": "Stewart's Cevian Length Theorem"
+        "l": "Cosine Rule for side \\(c\\)",
+        "r": "\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)"
       },
       {
-        "l": "\\( OI^2 = R(R - 2r) \\implies R \\ge 2r \\)",
-        "r": "Euler's Triangle Inequality & Distance"
+        "l": "Principal range of \\(\\arccos x\\)",
+        "r": "\\([0, \\pi]\\)"
       },
       {
-        "l": "\\( R_9 = \\frac{1}{2}R \\) (center \\( N \\) at midpoint of \\( OH \\))",
-        "r": "Nine-Point Circle Radius & Center"
+        "l": "Period of \\(4\\sin(3x)\\)",
+        "r": "\\(\\dfrac{2\\pi}{3}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\frac{BD}{DC}\\cdot\\frac{CE}{EA}\\cdot\\frac{AF}{FB} = 1 \\)",
-        "r": "مبرهنة تشيفا لتلاقي المستقيمات"
+        "l": "\\(1 + \\tan^2\\theta\\)",
+        "r": "\\(\\sec^2\\theta\\)"
       },
       {
-        "l": "\\( b^2 m + c^2 n = a(d^2 + mn) \\)",
-        "r": "مبرهنة ستيوارت لطول المستقيم التشيفاني"
+        "l": "قانون جيب التمام للضلع \\(c\\)",
+        "r": "\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)"
       },
       {
-        "l": "\\( OI^2 = R(R - 2r) \\implies R \\ge 2r \\)",
-        "r": "علاقة ومتباينة أويلر في المثلث"
+        "l": "المدى الرئيسي للدالة \\(\\arccos x\\)",
+        "r": "\\([0, \\pi]\\)"
       },
       {
-        "l": "\\( R_9 = \\frac{1}{2}R \\) (center \\( N \\) at midpoint of \\( OH \\))",
-        "r": "نصف قطر ومركز دائرة النقاط التسع"
+        "l": "دورة الدالة \\(4\\sin(3x)\\)",
+        "r": "\\(\\dfrac{2\\pi}{3}\\)"
       }
     ]
   },
@@ -2389,42 +2390,42 @@ D["ol-invariants-extremal"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (Invariants, Coloring, Extremal & Nim)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (اللامتغيرات والتلوين ومبدأ التطرف ونيم)",
+    "ti": "Matching: Logical Equivalence, Induction & Invariants (Olympiad Proof Strategies: Invariants, Monovariants, Coloring, Pick’s Theorem & Nim Games)",
+    "ti_ar": "مطابقة: التكافؤ المنطقي والاستقراء والمتغيرات الثابتة (استراتيجيات البرهان الأولمبي: اللامتغيرات وشبه اللامتغيرات والتلوين ومبرهنة بيك وألعاب نيم)",
     "p": [
       {
-        "l": "\\( I(S') = I(S) \\) while \\( I(S_{\\text{target}}) \\neq I(S_0) \\)",
-        "r": "Invariant Impossibility Proof"
+        "l": "Contrapositive of \\(P \\implies Q\\)",
+        "r": "\\(\\neg Q \\implies \\neg P\\) (logically equivalent)"
       },
       {
-        "l": "\\( M(S_{k+1}) < M(S_k) \\in \\mathbb{Z}_{\\ge 0} \\)",
-        "r": "Monovariant Termination Proof"
+        "l": "Negation of \\(P \\implies Q\\)",
+        "r": "\\(P \\land \\neg Q\\)"
       },
       {
-        "l": "Pick configuration minimizing perimeter / distance",
-        "r": "Extremal Principle"
+        "l": "Pick’s Lattice Polygon Area",
+        "r": "\\(A = I + \\frac{B}{2} - 1\\)"
       },
       {
-        "l": "\\( n_1 \\oplus n_2 \\oplus \\dots \\oplus n_k = 0 \\)",
-        "r": "Bouton's P-position Criterion in Nim"
+        "l": "2-Heap Nim \\((6, 5)\\) Nim-sum",
+        "r": "\\(6 \\oplus 5 = 3\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( I(S') = I(S) \\) while \\( I(S_{\\text{target}}) \\neq I(S_0) \\)",
-        "r": "برهان الاستحالة باللامتغير"
+        "l": "المعاكس الإيجابي للعبارة \\(P \\implies Q\\)",
+        "r": "\\(\\neg Q \\implies \\neg P\\) (مكافئ منطقياً)"
       },
       {
-        "l": "\\( M(S_{k+1}) < M(S_k) \\in \\mathbb{Z}_{\\ge 0} \\)",
-        "r": "برهان التوقف بشبه اللامتغير"
+        "l": "نفي العبارة الشرطية \\(P \\implies Q\\)",
+        "r": "\\(P \\land \\neg Q\\)"
       },
       {
-        "l": "Pick configuration minimizing perimeter / distance",
-        "r": "مبدأ التطرف (اختيار الحالة الحدية)"
+        "l": "صيغة بيك لمساحة مضلع شبكي",
+        "r": "\\(A = I + \\frac{B}{2} - 1\\)"
       },
       {
-        "l": "\\( n_1 \\oplus n_2 \\oplus \\dots \\oplus n_k = 0 \\)",
-        "r": "شرط بوتون للموضع الخاسر P-position في نيم"
+        "l": "مجموع نيم الثنائي للكومتين \\((6, 5)\\)",
+        "r": "\\(6 \\oplus 5 = 3\\)"
       }
     ]
   },
@@ -2723,42 +2724,42 @@ D["ol-nsmo-stage1-2"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (NSMO KSA Stage 1 & Stage 2)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (نسما السعودية — المرحلتان 1 و2)",
+    "ti": "Matching: Circle Theorems & Solid Mensuration (NSMO of KSA (Stages 1 & 2): Mawhiba Screening & Regional Directorate Qualifiers)",
+    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (أولمبياد نسما الوطني (المرحلتان 1 و2): اختبارات الترشيح الأولي وتصفيات الإدارات التعليمية (موهبة))",
     "p": [
       {
-        "l": "\\( \\frac{1}{\\sqrt{k} + \\sqrt{k+1}} = \\sqrt{k+1} - \\sqrt{k} \\)",
-        "r": "Conjugate Radical Telescoping (NSMO Algebra)"
+        "l": "Inscribed angle in a semicircle",
+        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
       },
       {
-        "l": "\\( \\tau(n) = \\prod (e_i + 1) \\) is odd \\( \\iff n = m^2 \\)",
-        "r": "Divisor Parity / Light-Bulb Criterion"
+        "l": "Opposite angles of a cyclic quadrilateral",
+        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
       },
       {
-        "l": "\\( \\operatorname{lcm}(a, b) \\cdot \\gcd(a, b) = ab \\)",
-        "r": "Prime-Exponent Min/Max Duality"
+        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "Area scaling of medial triangle \\( = \\frac{1}{4}[ABC] \\)",
-        "r": "Homothety Ratio \\( k = 1/2 \\implies k^2 = 1/4 \\)"
+        "l": "Power of a Point (intersecting chords)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\frac{1}{\\sqrt{k} + \\sqrt{k+1}} = \\sqrt{k+1} - \\sqrt{k} \\)",
-        "r": "التلسكوب بإنطاق المقام الجذري (جبر نسما)"
+        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
+        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
       },
       {
-        "l": "\\( \\tau(n) = \\prod (e_i + 1) \\) is odd \\( \\iff n = m^2 \\)",
-        "r": "فردية عدد القواسم تميز المربعات الكاملة"
+        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
+        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
       },
       {
-        "l": "\\( \\operatorname{lcm}(a, b) \\cdot \\gcd(a, b) = ab \\)",
-        "r": "ثنائية القاسم المشترك الأكبر والمضاعف الأصغر"
+        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "Area scaling of medial triangle \\( = \\frac{1}{4}[ABC] \\)",
-        "r": "نسبة التحاكي \\( 1/2 \\) تعطي ربع المساحة"
+        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ]
   },
@@ -3057,42 +3058,42 @@ D["ol-nsmo-national-finals"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (NSMO Riyadh Finals & IMO Proofs)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (نهائيات نسما بالرياض وبراهين IMO)",
+    "ti": "Matching: Circle Theorems & Solid Mensuration (NSMO of KSA (Stage 3): Riyadh National Finals & Mawhiba Saudi IMO Team Pathway)",
+    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (أولمبياد نسما الوطني (المرحلة 3): التصفيات النهائية بالرياض ومسار المنتخب السعودي للأولمبياد الدولي IMO)",
     "p": [
       {
-        "l": "\\( AH^2 + BC^2 = 4R^2 \\) (with \\( AH = 2\\,OM_A \\))",
-        "r": "Orthocenter-Antipode Parallelogram Identity"
+        "l": "Inscribed angle in a semicircle",
+        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
       },
       {
-        "l": "Substitute \\( y = -f(x) \\) or prove injectivity/surjectivity",
-        "r": "Olympiad Functional Equation Strategy"
+        "l": "Opposite angles of a cyclic quadrilateral",
+        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
       },
       {
-        "l": "Fix total degree \\( 3 \\) by multiplying \\( abc = 1 \\) constraints",
-        "r": "Homogenization of Conditional Inequalities"
+        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "Bound \\( \\sum d_i = 2|E| \\) and \\( \\sum \\binom{d_i}{2} \\le \\binom{n}{2} \\)",
-        "r": "Kővári–Sós–Turán Double Counting"
+        "l": "Power of a Point (intersecting chords)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( AH^2 + BC^2 = 4R^2 \\) (with \\( AH = 2\\,OM_A \\))",
-        "r": "متطابقة ملتقى الارتفاعات والنقطة القطرية المقابلة"
+        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
+        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
       },
       {
-        "l": "Substitute \\( y = -f(x) \\) or prove injectivity/surjectivity",
-        "r": "استراتيجية المعادلات الدالية الأولمبية"
+        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
+        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
       },
       {
-        "l": "Fix total degree \\( 3 \\) by multiplying \\( abc = 1 \\) constraints",
-        "r": "تجانس الدرجات في المتباينات المشروطة"
+        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
+        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
       },
       {
-        "l": "Bound \\( \\sum d_i = 2|E| \\) and \\( \\sum \\binom{d_i}{2} \\le \\binom{n}{2} \\)",
-        "r": "العد المزدوج لكوفاري-شوش-توران في المخططات"
+        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
+        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
       }
     ]
   },
@@ -3391,42 +3392,42 @@ D["ol-kaust-kmc-qualifier"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (KAUST KMC Qualifier)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (تصفيات مسابقة كاوست KMC)",
+    "ti": "Matching: Polynomial & Quadratic Theorems (KAUST Mathematics Competition (KMC): Regional Qualifier Speed & Problem-Solving Mastery)",
+    "ti_ar": "مطابقة: نظريات المعادلات التربيعية وكثيرات الحدود (مسابقة كاوست للرياضيات (KMC): إتقان التصفيات الإقليمية ومهارات الحل السريع المبتكر)",
     "p": [
       {
-        "l": "\\( P(x) - 2x = (x-1)(x-2)(x-3) \\)",
-        "r": "Auxiliary Polynomial Root Trick (KMC Algebra)"
+        "l": "Remainder when \\(P(x)\\) is divided by \\((x - 3)\\)",
+        "r": "\\(P(3)\\)"
       },
       {
-        "l": "\\( dp(x, y) = dp(x-1, y) + dp(x, y-1) \\) (0 on blocked cells)",
-        "r": "KAUST Blocked-Grid Lattice Path DP"
+        "l": "Tangent line–parabola condition",
+        "r": "System discriminant \\(\\Delta = b^2 - 4ac = 0\\)"
       },
       {
-        "l": "\\( [x - y] < t \\iff \\text{hexagonal strip in } [0, T]^2 \\)",
-        "r": "Rendezvous / Meeting-Window Geometric Probability"
+        "l": "Sum & product in \\(x^2 - 10x + 21 = 0\\)",
+        "r": "\\(\\alpha + \\beta = 10,\\; \\alpha\\beta = 21\\)"
       },
       {
-        "l": "\\( \\sum_{k=m^2}^{m^2+2m} \\lfloor \\sqrt{k} \\rfloor = m(2m + 1) \\)",
-        "r": "Square-Interval Floor Grouping"
+        "l": "Axis of symmetry of \\(ax^2 + bx + c\\)",
+        "r": "\\(x = -\\frac{b}{2a}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( P(x) - 2x = (x-1)(x-2)(x-3) \\)",
-        "r": "خدعة كثيرة الحدود المساعدة (جبر كاوست)"
+        "l": "باقي قسمة \\(P(x)\\) على \\((x - 3)\\)",
+        "r": "\\(P(3)\\)"
       },
       {
-        "l": "\\( dp(x, y) = dp(x-1, y) + dp(x, y-1) \\) (0 on blocked cells)",
-        "r": "البرمجة الديناميكية لمسارات الشبكة المحظورة"
+        "l": "شرط تماس مستقيم مع قطع مكافئ",
+        "r": "مميز النظام المشترك \\(\\Delta = b^2 - 4ac = 0\\)"
       },
       {
-        "l": "\\( [x - y] < t \\iff \\text{hexagonal strip in } [0, T]^2 \\)",
-        "r": "الاحتمال الهندسي لمسألة اللقاء الزمني"
+        "l": "مجموع وضرب جذري \\(x^2 - 10x + 21 = 0\\)",
+        "r": "\\(\\alpha + \\beta = 10,\\; \\alpha\\beta = 21\\)"
       },
       {
-        "l": "\\( \\sum_{k=m^2}^{m^2+2m} \\lfloor \\sqrt{k} \\rfloor = m(2m + 1) \\)",
-        "r": "تجميع دالة الجزء الصحيح بين المربعات المتتالية"
+        "l": "معادلة محور التماثل لـ \\(ax^2 + bx + c\\)",
+        "r": "\\(x = -\\frac{b}{2a}\\)"
       }
     ]
   },
@@ -3725,42 +3726,42 @@ D["ol-kaust-finals-academy"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Olympiad Tools & Identities (KAUST Thuwal Finals & Academy)",
-    "ti_ar": "مطابقة: الأدوات والمتطابقات الأولمبية (نهائيات كاوست بثول والأكاديمية)",
+    "ti": "Matching: Polynomial & Quadratic Theorems (KAUST Campus Finals & KAUST Academy Synthesis: Jensen, Roots-of-Unity Filters & Homothety)",
+    "ti_ar": "مطابقة: نظريات المعادلات التربيعية وكثيرات الحدود (نهائيات حرم جامعة كاوست وأكاديمية كاوست: متباينة جنسن وفلاتر الجذور النونية والتحاكي الهندسي)",
     "p": [
       {
-        "l": "\\( \\frac{1}{m}\\sum_{j=0}^{m-1} \\zeta^{-jr} P(\\zeta^j) \\)",
-        "r": "Roots of Unity Coefficient Filter (mod m)"
+        "l": "Remainder when \\(P(x)\\) is divided by \\((x - 4)\\)",
+        "r": "\\(P(4)\\)"
       },
       {
-        "l": "\\( [x^N](1 - x)^{-m} = \\binom{N + m - 1}{m - 1} \\)",
-        "r": "Generalized Negative Binomial Generating Function"
+        "l": "Tangent line–parabola condition",
+        "r": "System discriminant \\(\\Delta = b^2 - 4ac = 0\\)"
       },
       {
-        "l": "\\( \\prod_{k=1}^{n-1}(1 - \\zeta^k) = n \\)",
-        "r": "Cyclotomic Derivative Product Identity at z = 1"
+        "l": "Sum & product in \\(x^2 - 10x + 24 = 0\\)",
+        "r": "\\(\\alpha + \\beta = 10,\\; \\alpha\\beta = 24\\)"
       },
       {
-        "l": "Pre-solve \\( T_3 = g(T_2) \\) symbolically before \\( T_2 \\) arrives",
-        "r": "KAUST Finals Relay Parameterization Tactic"
+        "l": "Axis of symmetry of \\(ax^2 + bx + c\\)",
+        "r": "\\(x = -\\frac{b}{2a}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\frac{1}{m}\\sum_{j=0}^{m-1} \\zeta^{-jr} P(\\zeta^j) \\)",
-        "r": "مرشح جذور الواحد لعزل المعاملات بترديد m"
+        "l": "باقي قسمة \\(P(x)\\) على \\((x - 4)\\)",
+        "r": "\\(P(4)\\)"
       },
       {
-        "l": "\\( [x^N](1 - x)^{-m} = \\binom{N + m - 1}{m - 1} \\)",
-        "r": "الدالة المولدة لذات الحدين بالأس السالب"
+        "l": "شرط تماس مستقيم مع قطع مكافئ",
+        "r": "مميز النظام المشترك \\(\\Delta = b^2 - 4ac = 0\\)"
       },
       {
-        "l": "\\( \\prod_{k=1}^{n-1}(1 - \\zeta^k) = n \\)",
-        "r": "متطابقة جداء فروق جذور الواحد عند z = 1"
+        "l": "مجموع وضرب جذري \\(x^2 - 10x + 24 = 0\\)",
+        "r": "\\(\\alpha + \\beta = 10,\\; \\alpha\\beta = 24\\)"
       },
       {
-        "l": "Pre-solve \\( T_3 = g(T_2) \\) symbolically before \\( T_2 \\) arrives",
-        "r": "تكتيك الحل الرمزي المسبق في جولة التتابع بكاوست"
+        "l": "معادلة محور التماثل لـ \\(ax^2 + bx + c\\)",
+        "r": "\\(x = -\\frac{b}{2a}\\)"
       }
     ]
   },

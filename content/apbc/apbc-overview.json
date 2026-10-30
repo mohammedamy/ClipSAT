@@ -110,100 +110,160 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Logistic Differential Equation dP/\\(dt\\) = kP\\((1 - P/M)\\) & Inflection",
-          "ar": "⊙ مستكشف تفاعلي · Logistic المعادلة التفاضلية dP/\\(dt\\) = kP\\((1 - P/M)\\) & Inflection"
+          "en": "⊙ Explorer · AB Subscore Foundation: Continuity & Discontinuity Classification",
+          "ar": "⊙ مستكشف تفاعلي · أساسيات درجة AB الفرعية: الاتصال وتصنيف نقاط عدم الاتصال"
         },
-        "canvasId": "apbcoverviewExCanvas",
+        "canvasId": "apbcContCanvas",
         "ariaLabel": {
-          "en": "Logistic Differential Equation dP/dt = kP(1 − P/M) & Inflection interactive mathematical canvas",
-          "ar": "Logistic المعادلة التفاضلية dP/dt = kP(1 − P/M) & Inflection لوحة رياضية تفاعلية"
+          "en": "Interactive graph visualizing all six cases of continuity and discontinuity with adjustable input probe x",
+          "ar": "Interactive التمثيل البياني visualizing all six cases of continuity and discontinuity with adjustable input probe x"
         },
         "dataPanel": {
-          "btnId": "apbcoverviewExCanvas_dataBtn",
-          "panelId": "apbcoverviewExCanvas_dataPanel",
-          "descId": "apbcoverviewExCanvas_dataDesc",
-          "rowsId": "apbcoverviewExCanvas_dataRows",
+          "btnId": "apbcContDataBtn",
+          "panelId": "apbcContDataPanel",
+          "descId": "apbcContDataDesc",
+          "rowsId": "apbcContDataRows",
           "caption": {
-            "en": "Live numerical table for Logistic Differential Equation dP/\\(dt\\) = kP\\((1 - P/M)\\) & Inflection",
-            "ar": "جدول القيم العددية المباشر لـ Logistic المعادلة التفاضلية dP/\\(dt\\) = kP\\((1 - P/M)\\) & Inflection"
+            "en": "Continuity test checklist and values across sampled inputs",
+            "ar": "توضيح رياضي: Continuity test checklist and values across sampled inputs"
           },
           "columns": [
             {
-              "en": "Parameter / Metric",
-              "ar": "المعامل / المقياس"
+              "en": "\\(x\\)",
+              "ar": "\\(x\\)"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "\\(f(x)\\)",
+              "ar": "\\(f(x)\\)"
+            },
+            {
+              "en": "Left \\(\\lim_{x \\to 1^{-}}\\)",
+              "ar": "Left \\(\\lim_{x \\to 1^{-}}\\) (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
+            },
+            {
+              "en": "Right \\(\\lim_{x \\to 1^{+}}\\)",
+              "ar": "Right \\(\\lim_{x \\to 1^{+}}\\) (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
+            },
+            {
+              "en": "Continuity evaluation",
+              "ar": "Continuity evaluation (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
             }
           ]
         },
         "controls": [
           {
-            "id": "apbcoverviewExCanvas_s0",
+            "id": "apbcContX",
             "label": {
-              "en": "Growth Rate <b>\\(k =\\)</b>",
-              "ar": "Growth Rate <b>\\(k =\\)</b> (نظرة عامة على نظام اختبار AP Calculus BC والوحدات)"
+              "en": "Probe input \\(x\\) toward \\(c = 1\\):",
+              "ar": "Probe input \\(x\\) toward \\(c = 1\\): (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
             },
-            "min": 0.3,
-            "max": 1.5,
-            "value": 0.9,
-            "step": 0.1,
-            "valueDisplayId": "apbcoverviewExCanvas_v0",
+            "min": -20,
+            "max": 20,
+            "value": -10,
+            "step": 1,
+            "valueDisplayId": "apbcContXV",
             "ariaLabel": {
-              "en": "Growth Rate k =",
-              "ar": "عنصر تفاعلي: Growth Rate k ="
+              "en": "Move x toward c = 1",
+              "ar": "عنصر تفاعلي: Move x toward c = 1"
             }
           },
           {
-            "id": "apbcoverviewExCanvas_s1",
+            "id": "apbcContCase",
             "label": {
-              "en": "Initial Population <b>\\(P(0) =\\)</b>",
-              "ar": "Initial Population <b>\\(P(0) =\\)</b> (نظرة عامة على نظام اختبار AP Calculus BC والوحدات)"
+              "en": "Select continuity case:",
+              "ar": "Select continuity case: (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
             },
-            "min": 0.2,
-            "max": 4.8,
-            "value": 0.5,
-            "step": 0.2,
-            "valueDisplayId": "apbcoverviewExCanvas_v1",
+            "value": "cont",
+            "options": [
+              {
+                "value": "cont",
+                "label": "Case 1 · Continuous everywhere at c = 1",
+                "selected": true
+              },
+              {
+                "value": "hole",
+                "label": "Case 2 · Removable: Hole (f(c) undefined)"
+              },
+              {
+                "value": "pt",
+                "label": "Case 3 · Removable: Point displaced (f(c) ≠ lim)"
+              },
+              {
+                "value": "jump",
+                "label": "Case 4 · Jump discontinuity (Left lim ≠ Right lim)"
+              },
+              {
+                "value": "inf",
+                "label": "Case 5 · Infinite discontinuity (Vertical asymptote)"
+              },
+              {
+                "value": "osc",
+                "label": "Case 6 · Oscillating discontinuity (sin(2/(x-1)))"
+              }
+            ],
             "ariaLabel": {
-              "en": "Initial Population P(0) =",
-              "ar": "عنصر تفاعلي: Initial Population P(0) ="
+              "en": "Select continuity case",
+              "ar": "عنصر تفاعلي: Select continuity case"
             }
           }
         ],
         "readouts": [
           {
-            "id": "apbcoverviewExCanvas_r0",
+            "id": "apbcContXOut",
             "label": {
-              "en": "Initial Growth Rate dP/\\(dt\\)",
-              "ar": "Initial Growth Rate dP/\\(dt\\) (نظرة عامة على نظام اختبار AP Calculus BC والوحدات)"
+              "en": "input \\(x\\)",
+              "ar": "input \\(x\\) (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
+            },
+            "value": "\\(0.525\\)"
+          },
+          {
+            "id": "apbcContFxOut",
+            "label": {
+              "en": "output \\(f(x)\\)",
+              "ar": "output \\(f(x)\\) (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
             },
             "colorClass": "indigo",
-            "value": "\\(0.39\\)"
+            "value": "\\(1.613\\)"
           },
           {
-            "id": "apbcoverviewExCanvas_r1",
+            "id": "apbcContLeftLim",
             "label": {
-              "en": "Population \\(P(3)\\)",
-              "ar": "Population \\(P(3)\\) (نظرة عامة على نظام اختبار AP Calculus BC والوحدات)"
+              "en": "\\(\\lim_{x \\to 1^{-}}\\)",
+              "ar": "\\(\\lim_{x \\to 1^{-}}\\)"
+            },
+            "value": "\\(1.500\\)"
+          },
+          {
+            "id": "apbcContRightLim",
+            "label": {
+              "en": "\\(\\lim_{x \\to 1^{+}}\\)",
+              "ar": "\\(\\lim_{x \\to 1^{+}}\\)"
+            },
+            "value": "\\(1.500\\)"
+          },
+          {
+            "id": "apbcContStatus",
+            "label": {
+              "en": "Continuity test",
+              "ar": "Continuity test (الوحدة 6BC · طرق التكامل المتقدمة والتكاملات المعتلة)"
             },
             "colorClass": "amber",
-            "value": "\\(2.72\\)"
-          },
-          {
-            "id": "apbcoverviewExCanvas_r2",
-            "label": {
-              "en": "Fastest Growth at \\(P = M / 2 = 2.0\\)",
-              "ar": "Fastest Growth at \\(P = M / 2 = 2.0\\) (نظرة عامة على نظام اختبار AP Calculus BC والوحدات)"
-            },
-            "colorClass": "teal",
-            "value": "\\(y = 4.00\\) (Stable)"
+            "value": "Continuous at \\(c = 1\\) ✔"
           }
         ],
         "note": {
-          "en": "Explore the BC logistic model dP/\\(dt\\) = kP\\((1 - P/4)\\). Notice that the steepest slope (inflection point) always occurs at half carrying capacity \\(P = 2\\).",
-          "ar": "Explore the BC logistic model dP/\\(dt\\) = kP\\((1 - P/4)\\). Notice that the steepest الميل (نقطة الانعطاف) always occurs at half carrying capacity \\(P = 2\\)."
+          "en": "Switch between all 6 continuity graph cases and move \\(x\\) to inspect how the 3-part continuity checklist (\\(f(c)\\) defined, \\(\\lim_{x \\to c}\\) exists, lim = \\(f(c)\\)) succeeds or fails.",
+          "ar": "Switch between all 6 continuity التمثيل البياني cases and move \\(x\\) to inspect how the 3-part continuity checklist (\\(f(c)\\) defined, \\(\\lim_{x \\to c}\\) exists, lim = \\(f(c)\\)) succeeds or fails."
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_surf_apbcc1",
+          "wrapId": "exAuto3dWrap_apbcc1",
+          "hintId": "exAuto3dHint_apbcc1",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Unit 6BC · Advanced Integration Techniques. Drag to rotate.",
+            "ar": "تمثيل ثلاثي الأبعاد تفاعلي لـ Unit 6BC · Advanced Integration Techniques. اسحب للتدوير."
+          }
         }
       },
       {
@@ -635,8 +695,8 @@
         "kind": "explorer",
         "id": "cs-uge-apbc-overview-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Interactive Main Functions & Transformations Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر الدوال الأم التسع والتحويلات الهندسية"
+          "en": "⊙ Explorer · Quadratic Vertex Form & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر صيغة الرأس التربيعية وعائلات الدوال الأم"
         },
         "canvasId": "uge_apbcoverview_mainfnCanvas",
         "ariaLabel": {
@@ -686,7 +746,8 @@
               },
               {
                 "value": "quadratic",
-                "label": "Quadratic:  f(x) = a(x − h)² + k"
+                "label": "Quadratic:  f(x) = a(x − h)² + k",
+                "selected": true
               },
               {
                 "value": "cubic",
@@ -706,8 +767,7 @@
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
@@ -829,8 +889,8 @@
           }
         ],
         "note": {
-          "en": "Switch freely among all 9 main function families and drag directly on the coordinate plane to relocate \\((h, k)\\). Dashed rose/teal lines mark vertical (\\(x = h\\)) and horizontal (\\(y = k\\)) asymptotes for rational, exponential, and logarithmic functions.",
-          "ar": "بدّل بحرية بين عائلات الدوال الأم التسع جميعاً واسحب مباشرة على المستوى الإحداثي لتحريك النقطة المحورية \\((h, k)\\). توضح الخطوط المتقطعة خطوط التقارب الرأسية (\\(x = h\\)) والأفقية (\\(y = k\\)) للدوال النسبية والأسية واللوغاريتمية."
+          "en": "Starts on the <strong>quadratic family</strong> \\(f(x) = a(x - h)^2 + k\\) with vertex \\((h, k)\\)—explore opening, stretch, and roots, or compare all 9 parent functions. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
+          "ar": "يبدأ على <strong>الدالة التربيعية</strong> \\(f(x) = a(x - h)^2 + k\\) ذات الرأس \\((h, k)\\) — استكشف التمدد والجذور أو قارن الدوال الأم التسع. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
         }
       },
       {

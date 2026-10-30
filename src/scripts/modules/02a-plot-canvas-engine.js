@@ -625,10 +625,64 @@
       if(wd && !wd.seen) drawWidget(wd);
     });
   }, {rootMargin:'200px 0px'}) : null;
+  function _isArDoc(){
+    return (document.documentElement && document.documentElement.lang === 'ar') ||
+           (document.body && document.body.classList && document.body.classList.contains('rtl'));
+  }
+  function _wireExplorerReset(canvas){
+    if(!canvas || !canvas.closest) return;
+    var ex = canvas.closest('.explorer');
+    if(!ex || ex._csResetWired) return;
+    var ctrlsWrap = ex.querySelector('.ex-controls');
+    if(!ctrlsWrap) return;
+    var inputs = Array.prototype.slice.call(ctrlsWrap.querySelectorAll('input, select'));
+    var radioGroups = Array.prototype.slice.call(ctrlsWrap.querySelectorAll('.radios'));
+    if(!inputs.length && !radioGroups.length) return;
+    ex._csResetWired = true;
+    var snapInputs = inputs.map(function(el){
+      return { el: el, val: el.value, chk: !!el.checked };
+    });
+    var snapRadios = radioGroups.map(function(rg){
+      var btns = Array.prototype.slice.call(rg.querySelectorAll('button'));
+      var activeIdx = 0;
+      btns.forEach(function(b, idx){ if(b.classList.contains('on')) activeIdx = idx; });
+      return { btns: btns, activeIdx: activeIdx };
+    });
+    var topBar = ex.querySelector('.ex-top');
+    var actRow = topBar && topBar.querySelector('div');
+    if(!actRow) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ex-reset-btn no-print';
+    function syncLbl(){
+      var ar = _isArDoc();
+      btn.textContent = ar ? '↺ إعادة' : '↺ Reset';
+      btn.setAttribute('aria-label', ar ? 'إعادة ضبط أدوات المستكشف' : 'Reset explorer controls');
+      btn.title = ar ? 'إعادة القيم الافتراضية' : 'Reset controls to default values';
+    }
+    syncLbl();
+    btn._csSyncLbl = syncLbl;
+    btn.addEventListener('click', function(){
+      snapInputs.forEach(function(s){
+        if(s.el.type === 'checkbox') s.el.checked = s.chk;
+        else s.el.value = s.val;
+        try {
+          s.el.dispatchEvent(new Event('input', { bubbles: true }));
+          s.el.dispatchEvent(new Event('change', { bubbles: true }));
+        } catch(_){}
+      });
+      snapRadios.forEach(function(g){
+        if(g.btns[g.activeIdx]) g.btns[g.activeIdx].click();
+      });
+      redrawAll();
+    });
+    actRow.insertBefore(btn, actRow.firstChild);
+  }
   function register(canvas, drawFn){
     var wd={canvas:canvas, draw:drawFn, seen:false};
     canvas._cswd=wd;
     widgets.push(wd);
+    _wireExplorerReset(canvas);
     var redrawOne = function(){ drawWidget(wd); };
     if(!_io){ drawWidget(wd); return redrawOne; }
     var rect=canvas.getBoundingClientRect();
@@ -640,11 +694,29 @@
     return redrawOne;
   }
   function redrawAll(){
+    refreshPlotColors();
     widgets.forEach(function(wd){
       drawWidget(wd);
     });
   }
   var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(redrawAll,120); });
+  if(typeof MutationObserver !== 'undefined' && typeof document !== 'undefined'){
+    var _themeTimer;
+    var _themeObs = new MutationObserver(function(){
+      clearTimeout(_themeTimer);
+      _themeTimer = setTimeout(function(){
+        Array.prototype.forEach.call(document.querySelectorAll('.ex-reset-btn'), function(b){
+          if(b._csSyncLbl) b._csSyncLbl();
+        });
+        redrawAll();
+      }, 40);
+    });
+    if(document.documentElement) _themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'lang', 'dir'] });
+    if(document.body) _themeObs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    else document.addEventListener('DOMContentLoaded', function(){
+      if(document.body) _themeObs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
 
   if(typeof document !== 'undefined' && document.addEventListener){
     var _exEvtHandler = function(e){

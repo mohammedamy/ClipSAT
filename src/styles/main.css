@@ -7512,3 +7512,396 @@ body.dark .cs-voice-btn.is-speaking {
   0%, 100% { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18); }
   50% { box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.06); }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Interactive Explorers & Practice Activities — Responsive, RTL & UX Polish
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ex-top {
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.ex-top > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ex-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid #cbd5e1;
+  background: #f1f5f9;
+  color: #1e293b;
+  font-family: var(--sans, system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.ex-reset-btn:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+.ex-reset-btn:focus-visible {
+  outline: 2px solid var(--accent, #2f6fc4);
+  outline-offset: 2px;
+}
+body.dark .ex-reset-btn {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+body.dark .ex-reset-btn:hover {
+  background: #334155;
+  border-color: #64748b;
+  color: #ffffff;
+}
+
+.ctrl select {
+  max-width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
+}
+.ex-data-panel {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Keep Cartesian/polar coordinate canvases strictly LTR inside RTL layouts,
+   and mirror the desktop divider border when .ex-body flips right-to-left */
+body.rtl .ex-canvas,
+body.rtl .canvas-wrap,
+body.rtl .ix-fn-wrap,
+body.rtl .ix-gp-wrap {
+  direction: ltr;
+}
+@media (min-width: 921px) {
+  body.rtl .ex-canvas {
+    border-right: 0;
+    border-left: 1px solid var(--border, var(--line));
+  }
+}
+
+/* Interactive Practice Section Header + Live Completion Bar */
+.ix-head {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-bottom: 1.1rem;
+}
+.ix-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+}
+.ix-head-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ix-prog-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  background: #e0f2fe;
+  color: #075985;
+  border: 1px solid #bae6fd;
+  transition: all 0.2s ease;
+}
+.ix-prog-pill.is-complete {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+body.dark .ix-prog-pill {
+  background: rgba(2, 132, 199, 0.18);
+  color: #7dd3fc;
+  border-color: rgba(14, 165, 233, 0.35);
+}
+body.dark .ix-prog-pill.is-complete {
+  background: rgba(22, 163, 74, 0.18);
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.35);
+}
+.ix-prog-track {
+  height: 5px;
+  width: 100%;
+  border-radius: 999px;
+  background: var(--line, #e2e8f0);
+  overflow: hidden;
+}
+body.dark .ix-prog-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ix-prog-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent, #2f6fc4), #10b981);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Clean Top Row inside .ix-box (Badge + Voice + Report Flag) */
+.ix-box-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+.ix-box-top .ix-badge {
+  margin-bottom: 0;
+}
+.ix-box-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ix-box.ix-done {
+  border-inline-start: 3.5px solid #16a34a;
+}
+body.dark .ix-box.ix-done {
+  border-inline-start: 3.5px solid #34d399;
+}
+.ix-retry-btn {
+  margin-top: 0.45rem;
+}
+.ix-sb-ctrls .ix-retry-btn,
+.ix-num-row .ix-retry-btn {
+  margin-top: 0;
+}
+
+/* Dark-mode polish for newer interactive activity states (ord, cat, gp, se, ms) */
+body.dark .ix-ord-item,
+body.dark .ix-cat-item,
+body.dark .ix-se-step,
+body.dark .ix-se-reasons-wrap,
+body.dark .ix-ms-rubric,
+body.dark .ix-gp-wrap {
+  background: var(--bg-subtle);
+  border-color: var(--border);
+  color: var(--text-1);
+}
+body.dark .ix-ord-btn,
+body.dark .ix-cat-pill:not(.sel),
+body.dark .ix-gp-btn-clear,
+body.dark .ix-se-reason-btn:not(.sel),
+body.dark .ix-ms-btn-toggle,
+body.dark .ix-ms-score-card,
+body.dark .ix-ms-part,
+body.dark .ix-ms-mark-btn:not(.earned) {
+  background: var(--panel);
+  border-color: var(--border);
+  color: var(--text-1);
+}
+body.dark .ix-se-step:hover:not(:disabled),
+body.dark .ix-se-reason-btn:hover:not(:disabled),
+body.dark .ix-ms-btn-toggle:hover,
+body.dark .ix-ms-mark-btn:hover:not(.earned) {
+  background: rgba(96, 165, 250, 0.14);
+  border-color: var(--indigo-400);
+}
+body.dark .ix-ord-item.ok,
+body.dark .ix-cat-item.ok,
+body.dark .ix-se-step.ok,
+body.dark .ix-ms-item.ok {
+  background: rgba(22, 163, 74, 0.15) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+  color: var(--text-1) !important;
+}
+body.dark .ix-ord-item.bad,
+body.dark .ix-cat-item.bad,
+body.dark .ix-se-step.err {
+  background: rgba(220, 38, 38, 0.15) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  color: #fecaca !important;
+}
+body.dark .ix-se-step.bad {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(251, 191, 36, 0.4) !important;
+  color: #fde68a !important;
+}
+body.dark .ix-ms-total-chip {
+  background: #1e293b;
+  color: #cbd5e1;
+  border-color: #475569;
+}
+body.dark .ix-ms-tip-box {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(251, 191, 36, 0.35);
+  color: #fde68a;
+}
+
+/* RTL alignment for Spot-the-Error & Virtual Math Keypad */
+body.rtl .ix-se-step,
+body.rtl .ix-se-reason-btn {
+  text-align: right;
+}
+body.rtl .ix-mp-header {
+  flex-direction: row-reverse;
+}
+body.rtl .ix-mp-footer {
+  justify-content: flex-start;
+}
+body.rtl .ix-mp-preview-bar {
+  flex-direction: row-reverse;
+}
+
+/* Prevent off-canvas closed drawers from widening narrow mobile viewports */
+html,
+body {
+  overflow-x: clip;
+}
+#formula-sidebar:not(.open),
+#flashcards-sidebar:not(.open) {
+  visibility: hidden;
+  pointer-events: none;
+  border-width: 0;
+}
+
+/* Overflow-safe math & flex children inside interactive boxes & explorer readouts */
+.ix-section,
+.ix-box,
+.explorer,
+.cs-live-slopefield {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+.ix-sb-body,
+.ix-sr-body,
+.ix-ord-body,
+.ix-se-step-body {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.ix-cat-stmt,
+.ix-cat-pill,
+.ix-tf-stmt,
+.ix-opt,
+.ix-qc-opt,
+.ix-mt-item,
+.ix-se-reason-btn,
+.explorer .ctrl,
+.explorer .readout,
+.explorer .readrow {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.ix-ord-ctrls,
+.ix-se-step-badge,
+.ix-se-status {
+  flex-shrink: 0;
+}
+.ix-box .katex-display,
+.explorer .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Responsive mobile polish (320px–640px) */
+@media (max-width: 640px) {
+  .ix-box .katex,
+  .explorer .ex-controls .katex,
+  .explorer .et .katex,
+  .explorer .ex-note .katex {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 560px) {
+  .ex-top {
+    padding: 10px 12px;
+  }
+  .ex-controls {
+    padding: 14px;
+    gap: 14px;
+  }
+  .ex-canvas .canvas-wrap.ex-dual-pane {
+    aspect-ratio: 10 / 13;
+    min-height: 360px;
+  }
+  .radios button,
+  .ix-tf-btn,
+  .ix-cat-pill,
+  .ix-ord-btn,
+  .ix-ms-mark-btn {
+    min-height: 36px;
+  }
+  .ix-box {
+    padding: 0.95rem 1rem;
+  }
+  .ix-box .katex-html,
+  .explorer .ex-controls .katex-html,
+  .explorer .et .katex-html,
+  .explorer .ex-note .katex-html {
+    white-space: normal;
+  }
+  .ix-box .katex .base,
+  .explorer .ex-controls .katex .base {
+    white-space: nowrap;
+  }
+  .ix-tf-row,
+  .ix-ms-part-head,
+  .ix-ms-score-header {
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .ix-sb-inp {
+    max-width: 100%;
+  }
+  .ix-mt-cols {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .ix-mt-col {
+    min-width: 0;
+    width: 100%;
+  }
+  .ix-mt-col + .ix-mt-col {
+    padding-top: 0.55rem;
+    border-top: 1px dashed var(--line, #cbd5e1);
+  }
+  .ix-gp-canvas {
+    height: 250px;
+  }
+  .ix-fn-canvas {
+    height: 210px;
+  }
+  .ix-ms-item {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .ix-mp-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}

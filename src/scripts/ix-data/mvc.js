@@ -163,152 +163,172 @@ D["mvc-partials"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 4xy + y^2 = 20\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(4xy\\) with respect to \\(x\\) as \\(4\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(20\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+    ],
+    "steps_ar": [
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "The term \\(4xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(4y + 4x\\dfrac{dy}{dx}\\), not \\(4\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(20\\) remains \\(20\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(4xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(4xy\\) gives \\(4y + 4x\\dfrac{dy}{dx}\\). Thus \\(2x + 4y + (4x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 4xy + y^2 = 20\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
-    "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(4xy\\) بالنسبة إلى \\(x\\) على أنه \\(4\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "الحد \\(4xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(4y + 4x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(4xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(4xy\\) نحصل على \\(4y + 4x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 4y}{4x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "q": "Consider the curve \\(y = 4x^3 - 4x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 3\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
+    "q": "Let \\(f(x, y) = 4x^2 + 4xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 4x^2 + 4xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 12x^2 - 8x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 3\\): \\(m = 12(3)^2 - 8(3)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 100\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(12x - 8) = 0\\)."
+            "text": "\\(f_x = 8x + 4y,\\quad f_y = 4x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{8}{12}\\)."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 16, 8 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 8,\\; f_{yy} = 2,\\; f_{xy} = 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = (8)(2) - 4^2 = 0\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - 4x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 3\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 8x + 4y,\\quad f_y = 4x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 16, 8 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 8,\\; f_{yy} = 2,\\; f_{xy} = 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = 0\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "ti": "Matching: Multivariable & Vector Integral Theorems (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Green's Theorem (circulation)",
+        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Spherical volume element \\(dV\\)",
+        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Divergence Theorem (outward flux)",
+        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "مبرهنة غرين للدوران",
+        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
+        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "مبرهنة التباعد للتدفق السطحي",
+        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
+    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
+    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 14 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 14 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
+    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
+    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
   }
 ];
-
 D["mvc-chain-rule"] = [
   {
     "t": "sb",
@@ -373,15 +393,18 @@ D["mvc-chain-rule"] = [
     "items_ar": [
       {
         "s": "يشير متجه التدرج \\(\\nabla f(x,y)\\) دائماً إلى اتجاه أقصى صعود.",
-        "ex": "يحدث أقصى معدل للتغير عندما يكون متجه اتجاه الوحدة \\(\\mathbf{u}\\) موازياً لـ \\(\\nabla f\\)."
+        "ex": "يحدث أقصى معدل للتغير عندما يكون متجه اتجاه الوحدة \\(\\mathbf{u}\\) موازياً لـ \\(\\nabla f\\).",
+        "a": true
       },
       {
         "s": "المشتقة الاتجاهية في اتجاه مماس لمنحنى المستوى تساوي صفراً.",
-        "ex": "على طول منحنى المستوى \\(f(x,y) = c\\)، القيمة ثابتة، وبالتالي \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u} = 0\\)."
+        "ex": "على طول منحنى المستوى \\(f(x,y) = c\\)، القيمة ثابتة، وبالتالي \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u} = 0\\).",
+        "a": true
       },
       {
         "s": "متجه التدرج \\(\\nabla f(x_0, y_0)\\) مماس لمنحنى المستوى المار بالنقطة \\((x_0, y_0)\\).",
-        "ex": "متجه التدرج عمودي تماماً على منحنى المستوى."
+        "ex": "متجه التدرج عمودي تماماً على منحنى المستوى.",
+        "a": false
       }
     ]
   },
@@ -506,130 +529,150 @@ D["mvc-chain-rule"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Implicit Differentiation & Product Rule (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
-    "q": "A student differentiates the implicit curve \\(x^2 + 3xy + y^2 = 25\\) with respect to \\(x\\). Identify the step with the mathematical flaw:",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Differentiate \\(x^2\\) with respect to \\(x\\) to obtain \\(2x\\).",
-      "Differentiate the middle term \\(3xy\\) with respect to \\(x\\) as \\(3\\dfrac{dy}{dx}\\).",
-      "Differentiate \\(y^2\\) using the Chain Rule as \\(2y\\dfrac{dy}{dx}\\) and the constant \\(25\\) as \\(0\\).",
-      "Collect \\(\\dfrac{dy}{dx}\\) terms and divide to isolate \\(\\dfrac{dy}{dx}\\)."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+    ],
+    "steps_ar": [
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "The term \\(3xy\\) is a product of two functions of \\(x\\); by the Product Rule its derivative is \\(3y + 3x\\dfrac{dy}{dx}\\), not \\(3\\dfrac{dy}{dx}\\).",
-      "The derivative of \\(y^2\\) with respect to \\(x\\) is simply \\(2y\\) without \\(\\dfrac{dy}{dx}\\).",
-      "The constant \\(25\\) remains \\(25\\) after differentiation."
-    ],
-    "correctReason": 0,
-    "h": "Look closely at how the product \\(3xy\\) was differentiated in Step 2.",
-    "sol": "Applying the Product Rule to \\(3xy\\) gives \\(3y + 3x\\dfrac{dy}{dx}\\). Thus \\(2x + 3y + (3x + 2y)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{2x + 3y}{3x + 2y}\\).",
-    "ti_ar": "اكتشف الخطأ: الاشتقاق الضمني وقاعدة الضرب (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
-    "q_ar": "يقوم طالب باشتقاق العلاقة الضمنية \\(x^2 + 3xy + y^2 = 25\\) بالنسبة إلى \\(x\\). حدد الخطوة الخاطئة:",
-    "steps_ar": [
-      "اشتقاق \\(x^2\\) بالنسبة إلى \\(x\\) ليعطي \\(2x\\).",
-      "اشتقاق الحد الأوسط \\(3xy\\) بالنسبة إلى \\(x\\) على أنه \\(3\\dfrac{dy}{dx}\\).",
-      "اشتقاق \\(y^2\\) بقاعدة السلسلة ليعطي \\(2y\\dfrac{dy}{dx}\\) ومشتقة الثابت \\(0\\).",
-      "تجميع حدود \\(\\dfrac{dy}{dx}\\) وقسمة الطرفين لعزل المشتقة."
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "الحد \\(3xy\\) حاصل ضرب دالتين في \\(x\\)؛ وبقاعدة الضرب مشتقته هي \\(3y + 3x\\dfrac{dy}{dx}\\).",
-      "مشتقة \\(y^2\\) هي \\(2y\\) فقط دون \\(\\dfrac{dy}{dx}\\).",
-      "مشتقة الثابت تبقى كما هي."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "راجع كيفية اشتقاق حاصل الضرب \\(3xy\\) في الخطوة الثانية.",
-    "sol_ar": "بتطبيق قاعدة الضرب على \\(3xy\\) نحصل على \\(3y + 3x\\dfrac{dy}{dx}\\)، ومنه \\(\\dfrac{dy}{dx} = -\\dfrac{2x + 3y}{3x + 2y}\\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tangent, Normal & Stationary Points (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
-    "q": "Consider the curve \\(y = 3x^3 - 5x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج)",
+    "q": "Let \\(f(x, y) = 2x^2 + 1xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 2x^2 + 1xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — First Derivative & Tangent Gradient",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Differentiate term by term using the power rule: \\(\\dfrac{dy}{dx} = 9x^2 - 10x\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Substitute \\(x = 2\\): \\(m = 9(2)^2 - 10(2)\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Obtain exact tangent gradient \\(m = 26\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Stationary Points Condition",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(\\dfrac{dy}{dx} = 0 \\implies x(9x - 10) = 0\\)."
+            "text": "\\(f_x = 4x + 1y,\\quad f_y = 1x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State both stationary \\(x\\)-coordinates: \\(x = 0\\) and \\(x = \\dfrac{10}{9}\\)."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 6, 5 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 4,\\; f_{yy} = 2,\\; f_{xy} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = (4)(2) - 1^2 = 7\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
-    "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
-    "q_ar": "لمنحنى الدالة \\(y = 3x^3 - 5x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
-    "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 4x + 1y,\\quad f_y = 1x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 6, 5 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 4,\\; f_{yy} = 2,\\; f_{xy} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = 7\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Differentiation Rules & Analytic Criteria (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
+    "ti": "Matching: Multivariable & Vector Integral Theorems (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
+    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج)",
     "p": [
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) < 0\\)",
-        "r": "Strict local maximum at \\(x = c\\)"
+        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
       },
       {
-        "l": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)",
-        "r": "Strict local minimum at \\(x = c\\)"
+        "l": "Green's Theorem (circulation)",
+        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (Product Rule)"
+        "l": "Spherical volume element \\(dV\\)",
+        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (Chain Rule)"
+        "l": "Divergence Theorem (outward flux)",
+        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
       }
     ],
-    "ti_ar": "مطابقة: قواعد الاشتقاق ومعايير القيم القصوى (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
     "p_ar": [
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) < 0\\)",
-        "r": "نقطة عظمى محلية عند \\(x = c\\)"
+        "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
       },
       {
-        "l": "\\(f'(c) = 0\\) و \\(f''(c) > 0\\)",
-        "r": "نقطة صغرى محلية عند \\(x = c\\)"
+        "l": "مبرهنة غرين للدوران",
+        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[u(x)v(x)]\\)",
-        "r": "\\(u'(x)v(x) + u(x)v'(x)\\) (قاعدة الضرب)"
+        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
+        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
       },
       {
-        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
+        "l": "مبرهنة التباعد للتدفق السطحي",
+        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
       }
     ]
   }
 ];
-
 D["mvc-optimization"] = [
   {
     "t": "sb",
@@ -820,111 +863,131 @@ D["mvc-optimization"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
-      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
-      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
-      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
-      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "q": "Let \\(f(x) = x^2 - 10x + 30\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج)",
+    "q": "Let \\(f(x, y) = 3x^2 + 2xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 3x^2 + 2xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 30 = (x - 5)^2 + 5\\)."
+            "text": "\\(f_x = 6x + 2y,\\quad f_y = 2x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 10, 6 \\rangle\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 5 \\implies (x - 5)^2 = y - 5\\)."
+            "text": "\\(f_{xx} = 6,\\; f_{yy} = 2,\\; f_{xy} = 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 5}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "\\(D = (6)(2) - 2^2 = 8\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 30\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 5}\\) لأن \\(x \\ge 5\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 6x + 2y,\\quad f_y = 2x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 10, 6 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 6,\\; f_{yy} = 2,\\; f_{xy} = 2\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = 8\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
+    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج)",
+    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
+    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 5 \\)",
-      "\\( -5 \\)",
-      "\\( 32 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
+    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
+    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
   }
 ];
-
 D["mvc-double-integrals"] = [
   {
     "t": "sb",
@@ -1115,111 +1178,131 @@ D["mvc-double-integrals"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التكاملات الثنائية ونظرية فوبيني والإحداثيات القطبية والجاكوبيان)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
-      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
-      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
-      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
-      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
-    "q": "Let \\(f(x) = x^2 - 4x + 4\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (التكاملات الثنائية ونظرية فوبيني والإحداثيات القطبية والجاكوبيان)",
+    "q": "Let \\(f(x, y) = 4x^2 + 3xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 4x^2 + 3xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 4 = (x - 2)^2 + 0\\)."
+            "text": "\\(f_x = 8x + 3y,\\quad f_y = 3x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 0\\) (or \\([0, \\infty)\\))."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 14, 7 \\rangle\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 0 \\implies (x - 2)^2 = y - 0\\)."
+            "text": "\\(f_{xx} = 8,\\; f_{yy} = 2,\\; f_{xy} = 3\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 0}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 0\\) (matching the range of \\(f\\))."
+            "text": "\\(D = (8)(2) - 3^2 = 7\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 0}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 4\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 0}\\) لأن \\(x \\ge 2\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 8x + 3y,\\quad f_y = 3x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 14, 7 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 8,\\; f_{yy} = 2,\\; f_{xy} = 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = 7\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
-    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
+    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التكاملات الثنائية ونظرية فوبيني والإحداثيات القطبية والجاكوبيان)",
+    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
+    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
     "o": [
-      "\\( 8 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 44 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "o_ar": [
-      "\\( 8 \\)",
-      "\\( 6 \\)",
-      "\\( -6 \\)",
-      "\\( 44 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
+    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
+    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
   }
 ];
-
 D["mvc-triple-integrals"] = [
   {
     "t": "mt",
@@ -1420,111 +1503,131 @@ D["mvc-triple-integrals"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Triple Integrals & Cylindrical/Spherical Coordinates)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التكاملات الثلاثية والإحداثيات الأسطوانية والكروية)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
-      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
-      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
-      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
-      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
-      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
-      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "q": "Let \\(f(x) = x^2 - 6x + 14\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Triple Integrals & Cylindrical/Spherical Coordinates)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (التكاملات الثلاثية والإحداثيات الأسطوانية والكروية)",
+    "q": "Let \\(f(x, y) = 2x^2 + 4xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 2x^2 + 4xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 14 = (x - 3)^2 + 5\\)."
+            "text": "\\(f_x = 4x + 4y,\\quad f_y = 4x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 12, 8 \\rangle\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 3)^2 + 5 \\implies (x - 3)^2 = y - 5\\)."
+            "text": "\\(f_{xx} = 4,\\; f_{yy} = 2,\\; f_{xy} = 4\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 5}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "\\(D = (4)(2) - 4^2 = -8\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 14\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 5}\\) لأن \\(x \\ge 3\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 4x + 4y,\\quad f_y = 4x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 12, 8 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 4,\\; f_{yy} = 2,\\; f_{xy} = 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = -8\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Triple Integrals & Cylindrical/Spherical Coordinates)",
+    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التكاملات الثلاثية والإحداثيات الأسطوانية والكروية)",
+    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
+    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
     "o": [
-      "\\( 9 \\)",
-      "\\( 7 \\)",
-      "\\( -7 \\)",
-      "\\( 58 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "o_ar": [
-      "\\( 9 \\)",
-      "\\( 7 \\)",
-      "\\( -7 \\)",
-      "\\( 58 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
+    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
+    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
   }
 ];
-
 D["mvc-vector-fields"] = [
   {
     "t": "sb",
@@ -1725,111 +1828,131 @@ D["mvc-vector-fields"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Vector Fields & Line Integrals)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Vector Fields & Line Integrals)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (الحقول المتجهة والتكاملات الخطية والحقول المحافظة)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
-      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
-      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
-      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Vector Fields & Line Integrals)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
-      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Vector Fields & Line Integrals)",
-    "q": "Let \\(f(x) = x^2 - 8x + 20\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Vector Fields & Line Integrals)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (الحقول المتجهة والتكاملات الخطية والحقول المحافظة)",
+    "q": "Let \\(f(x, y) = 3x^2 + 1xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 3x^2 + 1xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 20 = (x - 4)^2 + 4\\)."
+            "text": "\\(f_x = 6x + 1y,\\quad f_y = 1x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 4\\) (or \\([4, \\infty)\\))."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 8, 5 \\rangle\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 4 \\implies (x - 4)^2 = y - 4\\)."
+            "text": "\\(f_{xx} = 6,\\; f_{yy} = 2,\\; f_{xy} = 1\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 4}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 4\\) (matching the range of \\(f\\))."
+            "text": "\\(D = (6)(2) - 1^2 = 11\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 4}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Vector Fields & Line Integrals)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 20\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 4}\\) لأن \\(x \\ge 4\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 6x + 1y,\\quad f_y = 1x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 8, 5 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 6,\\; f_{yy} = 2,\\; f_{xy} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = 11\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Vector Fields & Line Integrals)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Vector Fields & Line Integrals)",
-    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Vector Fields & Line Integrals)",
+    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (الحقول المتجهة والتكاملات الخطية والحقول المحافظة)",
+    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
+    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 8 \\)",
-      "\\( -8 \\)",
-      "\\( 69 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 8 \\)",
-      "\\( -8 \\)",
-      "\\( 69 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
+    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
+    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
   }
 ];
-
 D["mvc-greens-theorem"] = [
   {
     "t": "sb",
@@ -1889,11 +2012,13 @@ D["mvc-greens-theorem"] = [
     "items_ar": [
       {
         "s": "تتطلب مبرهنة غرين أن يكون منحنى الحدود C موجّهًا في الاتجاه الموجب (عكس اتجاه عقارب الساعة).",
-        "ex": "يضمن الاتجاه المعاكس لعقارب الساعة أن تكون المنطقة الداخلية D واقعة على يسار المنحنى أثناء السير عليه."
+        "ex": "يضمن الاتجاه المعاكس لعقارب الساعة أن تكون المنطقة الداخلية D واقعة على يسار المنحنى أثناء السير عليه.",
+        "a": true
       },
       {
         "s": "يمكن استخدام مبرهنة غرين لحساب مساحة منطقة ما باستخدام الصيغة \\(\\text{Area} = \\frac{1}{2}oint_C (x,dy - y,dx)\\).",
-        "ex": "هنا \\(partial Q/partial x - partial P/partial y = 1/2(1 - (-1)) = 1\\)، والتي عند مكاملتها تعطي المساحة بالضبط."
+        "ex": "هنا \\(partial Q/partial x - partial P/partial y = 1/2(1 - (-1)) = 1\\)، والتي عند مكاملتها تعطي المساحة بالضبط.",
+        "a": true
       }
     ]
   },
@@ -2016,130 +2141,150 @@ D["mvc-greens-theorem"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Green's Theorem)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Green's Theorem)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (نظرية غرين (Green's Theorem) في المستوى)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
-      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
-      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
-      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
-      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Green's Theorem)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
-      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
-      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Green's Theorem)",
-    "q": "Let \\(f(x) = x^2 - 6x + 10\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Green's Theorem)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (نظرية غرين (Green's Theorem) في المستوى)",
+    "q": "Let \\(f(x, y) = 4x^2 + 2xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 4x^2 + 2xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 10 = (x - 3)^2 + 1\\)."
+            "text": "\\(f_x = 8x + 2y,\\quad f_y = 2x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 12, 6 \\rangle\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 3)^2 + 1 \\implies (x - 3)^2 = y - 1\\)."
+            "text": "\\(f_{xx} = 8,\\; f_{yy} = 2,\\; f_{xy} = 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 1}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "\\(D = (8)(2) - 2^2 = 12\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Green's Theorem)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 10\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 1}\\) لأن \\(x \\ge 3\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 8x + 2y,\\quad f_y = 2x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 12, 6 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 8,\\; f_{yy} = 2,\\; f_{xy} = 2\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = 12\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Green's Theorem)",
+    "ti": "Matching: Multivariable & Vector Integral Theorems (Green's Theorem)",
+    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (نظرية غرين (Green's Theorem) في المستوى)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Green's Theorem (circulation)",
+        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Spherical volume element \\(dV\\)",
+        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Divergence Theorem (outward flux)",
+        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Green's Theorem)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "مبرهنة غرين للدوران",
+        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
+        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "مبرهنة التباعد للتدفق السطحي",
+        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
       }
     ]
   }
 ];
-
 D["mvc-surface-divergence-stokes"] = [
   {
     "t": "mt",
@@ -2340,108 +2485,129 @@ D["mvc-surface-divergence-stokes"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس)",
+    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
+    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
-      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
+      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
+      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
-      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
-      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
-      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
+      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
+      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
+      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
+      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
+      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
+      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "q": "Let \\(f(x) = x^2 - 10x + 28\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Gradient Vector & Hessian Classification (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+    "ti_ar": "وضع المصحح: متجه التدرج ومصفوفة هيس (التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس)",
+    "q": "Let \\(f(x, y) = 2x^2 + 3xy + y^2\\). (a) Compute \\(\\nabla f(1, 2)\\). (b) Compute the Hessian determinant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
+    "q_ar": "لتكن \\(f(x, y) = 2x^2 + 3xy + y^2\\). (أ) احسب متجه التدرج \\(\\nabla f(1, 2)\\). (ب) احسب محدد هيس \\(D = f_{xx}f_{yy} - (f_{xy})^2\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Partial Derivatives & Gradient",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 28 = (x - 5)^2 + 3\\)."
+            "text": "\\(f_x = 4x + 3y,\\quad f_y = 3x + 2y\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+            "text": "At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 10, 7 \\rangle\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Second-Derivative Discriminant",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 3 \\implies (x - 5)^2 = y - 3\\)."
+            "text": "\\(f_{xx} = 4,\\; f_{yy} = 2,\\; f_{xy} = 3\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 3}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+            "text": "\\(D = (4)(2) - 3^2 = -1\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 3}\\) لأن \\(x \\ge 5\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المشتقات الجزئية ومتجه التدرج",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_x = 4x + 3y,\\quad f_y = 3x + 2y\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "عند \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 10, 7 \\rangle\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — محدد المشتقات الجزئية الثانية (هيس)",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(f_{xx} = 4,\\; f_{yy} = 2,\\; f_{xy} = 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(D = -1\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس)",
+    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
+    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
+      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
+      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
+      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
+    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
+    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
   }
 ];
 });

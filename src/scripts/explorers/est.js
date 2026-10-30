@@ -165,9 +165,9 @@
     if(!canvas || canvas._bespokeMounted) return;
     canvas._bespokeMounted = true;
 
-    var s0 = document.getElementById(cfg.s0Id), s1 = document.getElementById(cfg.s1Id);
-    var v0 = document.getElementById(cfg.v0Id), v1 = document.getElementById(cfg.v1Id);
-    var r0 = document.getElementById(cfg.r0Id), r1 = document.getElementById(cfg.r1Id), r2 = document.getElementById(cfg.r2Id);
+    var _elS0 = document.getElementById(cfg.s0Id), _elS1 = document.getElementById(cfg.s1Id);
+    var _elV0 = document.getElementById(cfg.v0Id), _elV1 = document.getElementById(cfg.v1Id);
+    var _elR0 = document.getElementById(cfg.r0Id), _elR1 = document.getElementById(cfg.r1Id), _elR2 = document.getElementById(cfg.r2Id);
     var dBtn = document.getElementById(cfg.dataBtnId), dPanel = document.getElementById(cfg.dataPanelId),
         dDesc = document.getElementById(cfg.dataDescId), dRows = document.getElementById(cfg.dataRowsId);
     wireDataToggle(dBtn, dPanel);
@@ -232,17 +232,17 @@
       var P = new Plot(ctx, w, h, view, {l:34, r:14, t:14, b:24});
       lastP = P;
       P.clear(); P.grid();
-      var a = s0 ? parseFloat(s0.value) : cfg.s0Val;
-      var b = s1 ? parseFloat(s1.value) : cfg.s1Val;
-      if(v0) v0.textContent = fmt(a, cfg.s0Step < 0.1 ? 2 : (cfg.s0Step < 1 ? 1 : 0));
-      if(v1) v1.textContent = fmt(b, cfg.s1Step < 0.1 ? 2 : (cfg.s1Step < 1 ? 1 : 0));
+      var a = _elS0 ? parseFloat(_elS0.value) : cfg.s0Val;
+      var b = _elS1 ? parseFloat(_elS1.value) : cfg.s1Val;
+      if(_elV0) _elV0.textContent = fmt(a, cfg.s0Step < 0.1 ? 2 : (cfg.s0Step < 1 ? 1 : 0));
+      if(_elV1) _elV1.textContent = fmt(b, cfg.s1Step < 0.1 ? 2 : (cfg.s1Step < 1 ? 1 : 0));
 
       var out0 = '—', out1 = '—', out2 = '—', rows = [];
       var TEAL = '#0E9F8F';
 
       if(mode === 'pacing_score'){
-        var tot = a + b, maxTot = (s0 && parseFloat(s0.max) > 40) ? 125 : ((s0 && parseFloat(s0.max) === 45) ? 108 : 50);
-        if(s0 && parseFloat(s0.max) === 20 && s1 && parseFloat(s1.max) === 38) maxTot = 58;
+        var tot = a + b, maxTot = (_elS0 && parseFloat(_elS0.max) > 40) ? 125 : ((_elS0 && parseFloat(_elS0.max) === 45) ? 108 : 50);
+        if(_elS0 && parseFloat(_elS0.max) === 20 && _elS1 && parseFloat(_elS1.max) === 38) maxTot = 58;
         var cutAStar = maxTot * 0.84, cutA = maxTot * 0.72, cutB = maxTot * 0.60;
         P.polygon([[0.6,0],[1.4,0],[1.4,a],[0.6,a]], 'rgba(30,58,110,0.25)', INDIGO, 2);
         P.polygon([[1.8,0],[2.6,0],[2.6,b],[1.8,b]], 'rgba(14,159,143,0.25)', TEAL, 2);
@@ -538,7 +538,7 @@
         rows.push(['Vertical Asymptote', out0], ['Removable Hole', out1], ['Horizontal Asymptote', out2]);
       } else if(mode === 'binomial'){
         var nB = Math.max(2, Math.round(a));
-        var isProb = (s1 && parseFloat(s1.max) <= 1.0);
+        var isProb = (_elS1 && parseFloat(_elS1.max) <= 1.0);
         var pB = isProb ? b : 0.5;
         var rSel = isProb ? Math.round(nB * pB) : Math.min(nB, Math.round(b));
         for(var rB=0; rB<=nB; rB++){
@@ -1361,35 +1361,35 @@
         rows.push(['Impulse Time s', fmt(a,2)], ['Frequency ω', fmt(b,2)], ['Wronskian W(s)', out0], ['Green\'s Response G(4,s)', out2]);
       }
 
-      if(r0) r0.textContent = out0;
-      if(r1) r1.textContent = out1;
-      if(r2) r2.textContent = out2;
+      if(_elR0) _elR0.textContent = out0;
+      if(_elR1) _elR1.textContent = out1;
+      if(_elR2) _elR2.textContent = out2;
       if(dDesc) dDesc.textContent = cfg.title + ' — live parameter & metric table.';
       if(dRows) renderDataRows(dRows, rows);
       if(chApi) chApi.check({a: a, b: b});
     }
 
     register(canvas, draw);
-    if(s0){ s0.addEventListener('input', redrawAll); s0.addEventListener('change', redrawAll); }
-    if(s1){ s1.addEventListener('input', redrawAll); s1.addEventListener('change', redrawAll); }
+    if(_elS0){ _elS0.addEventListener('input', redrawAll); _elS0.addEventListener('change', redrawAll); }
+    if(_elS1){ _elS1.addEventListener('input', redrawAll); _elS1.addEventListener('change', redrawAll); }
 
     /* Direct on-canvas pointer dragging to manipulate parameters smoothly */
     makeDraggable(canvas, {
       hitTest: function(){ return true; },
       onDrag: function(_, px, py){
-        if(!lastP || !s0) return;
+        if(!lastP || !_elS0) return;
         var wx = lastP.invX(px), wy = lastP.invY(py);
-        var min0 = parseFloat(s0.min), max0 = parseFloat(s0.max), st0 = parseFloat(s0.step)||0.1;
+        var min0 = parseFloat(_elS0.min), max0 = parseFloat(_elS0.max), st0 = parseFloat(_elS0.step)||0.1;
         var normX = (wx - lastP.v.xmin) / Math.max(1e-5, lastP.v.xmax - lastP.v.xmin);
         var vNew0 = min0 + Math.max(0, Math.min(1, normX)) * (max0 - min0);
         if(cfg.square && min0 < 0 && max0 > 0) vNew0 = Math.max(min0, Math.min(max0, wx));
-        s0.value = Math.round(vNew0 / st0) * st0;
-        if(s1){
-          var min1 = parseFloat(s1.min), max1 = parseFloat(s1.max), st1 = parseFloat(s1.step)||0.1;
+        _elS0.value = Math.round(vNew0 / st0) * st0;
+        if(_elS1){
+          var min1 = parseFloat(_elS1.min), max1 = parseFloat(_elS1.max), st1 = parseFloat(_elS1.step)||0.1;
           var normY = (wy - lastP.v.ymin) / Math.max(1e-5, lastP.v.ymax - lastP.v.ymin);
           var vNew1 = min1 + Math.max(0, Math.min(1, normY)) * (max1 - min1);
           if(cfg.square && min1 < 0 && max1 > 0) vNew1 = Math.max(min1, Math.min(max1, wy));
-          s1.value = Math.round(vNew1 / st1) * st1;
+          _elS1.value = Math.round(vNew1 / st1) * st1;
         }
         if( typeof update3d === 'function' ) update3d();
       }
@@ -1402,8 +1402,8 @@
     var built3d = false, H3 = null, meshA = null, meshB = null, meshC = null;
     function update3d(){
       if(!built3d || !H3) return;
-      var a = s0 ? parseFloat(s0.value) : cfg.s0Val;
-      var b = s1 ? parseFloat(s1.value) : cfg.s1Val;
+      var a = _elS0 ? parseFloat(_elS0.value) : cfg.s0Val;
+      var b = _elS1 ? parseFloat(_elS1.value) : cfg.s1Val;
       var scX = Math.max(0.4, Math.min(2.6, 0.5 + 0.35*Math.abs(a)));
       var scY = Math.max(0.4, Math.min(2.6, 0.5 + 0.35*Math.abs(b)));
       if(meshA) meshA.scale.set(scX, scY, scX);
@@ -1457,8 +1457,8 @@
           update3d();
         }
       });
-      if(s0) s0.addEventListener('input', update3d);
-      if(s1) s1.addEventListener('input', update3d);
+      if(_elS0) _elS0.addEventListener('input', update3d);
+      if(_elS1) _elS1.addEventListener('input', update3d);
     }
   }
 

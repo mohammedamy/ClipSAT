@@ -29,197 +29,226 @@ D["ge-arithmetic-shortcuts"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
+    "ti": "True / False: Number, Bounds & Set Principles (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "صح أم خطأ: قوانين الأعداد والحدود والمجموعات (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
     "items": [
       {
-        "s": "The units digit of \\( 7^n \\) repeats in a 4-cycle \\( (7, 9, 3, 1) \\), so \\( 7^{100} \\) ends in \\( 1 \\).",
-        "a": true
+        "s": "Upper bound of \\(a / b\\) (positive) corresponds to \\(a_{\\text{upper}} / b_{\\text{lower}}\\).",
+        "a": true,
+        "ex": "Verified identity: \\(a_{\\text{upper}} / b_{\\text{lower}}\\)."
       },
       {
-        "s": "In telescoping products, \\( \\left(1 + \\frac{1}{2}\\right)\\left(1 + \\frac{1}{3}\\right)\\cdots\\left(1 + \\frac{1}{9}\\right) = \\frac{10}{2} = 5 \\).",
-        "a": true
+        "s": "Inclusion–Exclusion \\(|A \\cup B|\\) corresponds to \\(\\frac{2 v_1 v_2}{v_1 + v_2} = 72\\) for \\(60, 90\\).",
+        "a": false,
+        "ex": "Actually, Inclusion–Exclusion \\(|A \\cup B|\\) corresponds to \\(|A| + |B| - |A \\cap B|\\)."
       },
       {
-        "s": "\\( \\sqrt{36 + 64} = \\sqrt{36} + \\sqrt{64} = 6 + 8 = 14 \\).",
-        "a": false
+        "s": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\) corresponds to Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\).",
+        "a": true,
+        "ex": "Correct: Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)."
       }
     ],
     "items_ar": [
       {
-        "s": "رقم آحاد \\( 7^n \\) يتكرر في دورة رباعية \\( (7, 9, 3, 1) \\)، وبالتالي \\( 7^{100} \\) آحاده \\( 1 \\).",
-        "a": true
+        "s": "الحد الأعلى للقسمة \\(a / b\\) (موجبة) يكافئ \\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\).",
+        "a": true,
+        "ex": "علاقة صحيحة: \\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)."
       },
       {
-        "s": "في الضرب التلسكوبي: \\( \\left(1 + \\frac{1}{2}\\right)\\left(1 + \\frac{1}{3}\\right)\\cdots\\left(1 + \\frac{1}{9}\\right) = \\frac{10}{2} = 5 \\).",
-        "a": true
+        "s": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\) يكافئ \\(\\frac{2 v_1 v_2}{v_1 + v_2} = 72\\) للسرعتين \\(60, 90\\).",
+        "a": false,
+        "ex": "الصواب أن مبدأ الشمول والإقصاء \\(|A \\cup B|\\) يكافئ \\(|A| + |B| - |A \\cap B|\\)."
       },
       {
-        "s": "قيمة \\( \\sqrt{36 + 64} \\) تساوي \\( 6 + 8 = 14 \\).",
-        "a": false
+        "s": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\) يكافئ الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً.",
+        "a": true,
+        "ex": "صحيح: الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
+    "ti": "Matching: Number, Bounds & Set Principles (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "مطابقة: قوانين الأعداد والحدود والمجموعات (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
     "p": [
       {
-        "l": "\\( a^2 - b^2 \\)",
-        "r": "\\( (a - b)(a + b) \\) (Instant mental factoring)"
+        "l": "Upper bound of \\(a / b\\) (positive)",
+        "r": "\\(a_{\\text{upper}} / b_{\\text{lower}}\\)"
       },
       {
-        "l": "Units digit of \\( 3^{4k+2} \\)",
-        "r": "Always \\( 9 \\) (since \\( 3^2 = 9 \\) in the 4-cycle)"
+        "l": "Inclusion–Exclusion \\(|A \\cup B|\\)",
+        "r": "\\(|A| + |B| - |A \\cap B|\\)"
       },
       {
-        "l": "\\( 2^x + 2^x + 2^x + 2^x \\)",
-        "r": "\\( 4 \\cdot 2^x = 2^{x+2} \\) (Factoring equal powers)"
+        "l": "Equal-distance round-trip speed",
+        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 72\\) for \\(60, 90\\)"
       },
       {
-        "l": "Divisibility by \\( 9 \\)",
-        "r": "Sum of the digits is a multiple of \\( 9 \\)"
+        "l": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
+        "r": "Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( a^2 - b^2 \\)",
-        "r": "\\( (a - b)(a + b) \\) (تحليل فرق المربعين السريع)"
+        "l": "الحد الأعلى للقسمة \\(a / b\\) (موجبة)",
+        "r": "\\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)"
       },
       {
-        "l": "Units digit of \\( 3^{4k+2} \\)",
-        "r": "دائماً \\( 9 \\) (من دورة قوى العدد 3)"
+        "l": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\)",
+        "r": "\\(|A| + |B| - |A \\cap B|\\)"
       },
       {
-        "l": "\\( 2^x + 2^x + 2^x + 2^x \\)",
-        "r": "\\( 4 \\cdot 2^x = 2^{x+2} \\) (جمع القوى المتماثلة)"
+        "l": "السرعة المتوسطة ذهاباً وإياباً",
+        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 72\\) للسرعتين \\(60, 90\\)"
       },
       {
-        "l": "Divisibility by \\( 9 \\)",
-        "r": "مجموع أرقام العدد يقبل القسمة على \\( 9 \\)"
+        "l": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
+        "r": "الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
-    "q": "A student solves \\( \\sqrt{2x + 8} = x - 2 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 8} = x - 2 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Successive Percentage Multipliers (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "اكتشف الخطأ: النسب المئوية المتتالية (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
+    "q": "An item priced at \\(300\\) rises by \\(40\\%\\) and is then discounted by \\(40\\%\\). Which step in the calculation is wrong?",
+    "q_ar": "سلعة سعرها \\(300\\) زاد سعرها بنسبة \\(40\\%\\) ثم خُفِّض بنسبة \\(40\\%\\). أي خطوة تحتوي على خطأ؟",
     "steps": [
-      "Square both sides: \\( 2x + 8 = (x - 2)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 8 = x^2 - 4x + 4 \\).",
-      "Rearrange and factor: \\( x^2 - 6x - 4 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 2 \\ge 0 \\)."
+      "Apply the \\(40\\%\\) increase multiplier: \\(300 \\times 1.40 = 420\\).",
+      "Recognize that the \\(40\\%\\) discount applies to the new price \\(420\\).",
+      "Add the percentage changes directly: \\(+40\\% - 40\\% = 0\\%\\), claiming the final price returns to \\(300\\).",
+      "Verify final price via product of multipliers."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 8 = (x - 2)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 8 = x^2 - 4x + 4 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 6x - 4 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 2 \\ge 0 \\)."
+      "تطبيق معامل الزيادة \\(40\\%\\): \\(300 \\times 1.40 = 420\\).",
+      "ملاحظة أن خصم \\(40\\%\\) يُطبَّق على السعر الجديد \\(420\\).",
+      "جمع النسبتين مباشرة \\(+40\\% - 40\\% = 0\\%\\) والادعاء بأن السعر النهائي يعود إلى \\(300\\).",
+      "التحقق من السعر النهائي بضرب المعاملات."
     ],
-    "errorStep": 4,
+    "errorStep": 3,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 2 \\ge 0 \\iff x \\ge 2 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 2)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "Successive percentages multiply rather than add: \\(420 \\times 0.60 = 252\\) (a net \\(16\\%\\) decrease).",
+      "The final price is actually greater than \\(300\\).",
+      "Discounts must be divided rather than multiplied."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 2 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "النسب المتتالية تُضرب كمعاملات ولا تُجمع: \\(420 \\times 0.60 = 252\\) (بانخفاض صافي قدره \\(16\\%\\)).",
+      "السعر النهائي أكبر من \\(300\\).",
+      "الخصم يُحسب بالقسمة لا بالضرب."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 2 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 2 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 2 < 0 \\). Only the root satisfying \\( x \\ge 2 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 2 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
-    "q": "Consider \\( f(x) = x^2 - 4x + 8 \\) for \\( x \\ge 2 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 4x + 8 \\) حيث \\( x \\ge 2 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
+    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(60\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(90\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 17\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
+    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(60\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(90\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 17\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Harmonic Average Speed",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 2)^2 + 4 \\)."
+            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{60} + \\frac{d}{90}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "Average speed \\(= \\frac{2 \\cdot 60 \\cdot 90}{60 + 90} = 72\\text{ km/h}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Error Interval Bounds",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 2)^2 + 4 \\implies (x - 2)^2 = y - 4 \\)."
+            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 2 \\)): \\( f^{-1}(x) = 2 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "Error interval: \\(16.5 \\le L < 17.5\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 2 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 2 \\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{60} + \\frac{d}{90}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 60 \\cdot 90}{60 + 90} = 72\\text{ km/h}\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "فترة القيمة الحقيقية: \\(16.5 \\le L < 17.5\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
+    "ti": "Step Builder: Successive Multipliers & Net Change (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "بناء الخطوات: المعاملات المتتالية وصافي التغير (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 4x + 9 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "2",
-        "h": "Divide 4 by 2."
+        "l": "Increase \\(300\\) by \\(40\\%\\): new value \\(=\\)",
+        "a": "420",
+        "h": "Compute 300 × 1.40."
       },
       {
-        "l": "Find the minimum value \\( k = 9 - 2^2 = \\)",
-        "a": "5",
-        "h": "Subtract 4 from 9."
+        "l": "Now discount \\(420\\) by \\(40\\%\\): final value \\(=\\)",
+        "a": "252",
+        "h": "Compute 420 × 0.60."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 5 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "Find the net decrease \\(300 - 252 =\\)",
+        "a": "48",
+        "h": "Subtract 252 from 300."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 4x + 9 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "2",
-        "h": "اقسم 4 على 2."
+        "l": "زد العدد \\(300\\) بنسبة \\(40\\%\\): القيمة الجديدة \\(=\\)",
+        "a": "420",
+        "h": "احسب 300 × 1.40."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 9 - 2^2 = \\)",
-        "a": "5",
-        "h": "اطرح 4 من 9."
+        "l": "طبّق خصم \\(40\\%\\) على \\(420\\): القيمة النهائية \\(=\\)",
+        "a": "252",
+        "h": "احسب 420 × 0.60."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 5 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "أوجد مقدار النقصان الصافي \\(300 - 252 =\\)",
+        "a": "48",
+        "h": "اطرح 252 من 300."
       }
     ]
   },
@@ -237,66 +266,77 @@ D["ge-arithmetic-shortcuts"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 4x + 8 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 4x + 8 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Converting Recurring Decimal to Fraction (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "ترتيب الخطوات: تحويل الكسر العشري الدوري إلى اعتيادي (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
+    "prompt": "Order the algebraic steps to convert \\(x = 0.\\overline{15}\\) into a simplified fraction:",
+    "prompt_ar": "رتّب الخطوات الجبرية لتحويل الكسر الدوري \\(x = 0.\\overline{15}\\) إلى كسر اعتيادي:",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 4x + 8 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 6x + (8 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-6)^2 - 4(1)(8 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "Let \\(x = 0.\\overline{15}\\) and note the repeating block has 2 digits.",
+      "Multiply both sides by \\(10^2 = 100\\) so \\(100x = 15.\\overline{15}\\).",
+      "Subtract the original equation to cancel the infinite tail: \\(99x = 15\\).",
+      "Divide by \\(99\\) and reduce by \\(\\gcd(15, 99)\\)."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 4x + 8 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 6x + (8 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-6)^2 - 4(8 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "نفرض \\(x = 0.\\overline{15}\\) ونلاحظ أن طول الدورة رقمان.",
+      "نضرب الطرفين في \\(10^2 = 100\\) فنحصل على \\(100x = 15.\\overline{15}\\).",
+      "نطرح المعادلة الأصلية لحذف الجزء الدوري اللانهائي: \\(99x = 15\\).",
+      "نقسم على \\(99\\) ونبسّط الكسر بالقسمة على القاسم المشترك الأكبر."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Align the repeating block by multiplying by \\(10^k\\), subtract to eliminate the tail, and simplify.",
+    "ex_ar": "نضرب في \\(10^k\\) لمحاذاة الدورة ثم نطرح لحذف الجزء الدوري ونبسّط."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (GAT Mental Arithmetic, Divisibility, Cyclicity & Surds)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (الحساب الذهني السريع وقابلية القسمة ودورية الآحاد والجذور (GAT))",
+    "ti": "Categorize: Rational vs. Irrational Real Numbers (GAT Arithmetic, Number Sense & High-Speed Shortcuts)",
+    "ti_ar": "تصنيف: الأعداد النسبية مقابل غير النسبية (الحساب الذهني والحس العددي واستراتيجيات الحل السريع (GAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Rational (\\(\\mathbb{Q}\\))",
+      "Irrational (\\(\\mathbb{R} \\setminus \\mathbb{Q}\\))"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "عدد نسبي (\\(\\mathbb{Q}\\))",
+      "عدد غير نسبي (\\(\\mathbb{R} \\setminus \\mathbb{Q}\\))"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 4x + 4 = 0 \\)",
-        "s_ar": "\\( x^2 - 4x + 4 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 5x + 2 = 0 \\)",
-        "s_ar": "\\( x^2 - 5x + 2 = 0 \\)",
+        "s": "\\(0.\\overline{17}\\)",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 2x + 7 = 0 \\)",
-        "s_ar": "\\( x^2 + 2x + 7 = 0 \\)",
-        "cat": 2
+        "s": "\\(\\sqrt{49}\\)",
+        "cat": 0
       },
       {
-        "s": "\\( 4x^2 - 8x + 4 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 8x + 4 = 0 \\)",
+        "s": "\\(\\sqrt{7}\\)",
+        "cat": 1
+      },
+      {
+        "s": "\\(\\pi + 3\\)",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "\\(0.\\overline{17}\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(\\sqrt{49}\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(\\sqrt{7}\\)",
+        "cat": 1
+      },
+      {
+        "s": "\\(\\pi + 3\\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Repeating decimals and perfect-square roots lie in \\(\\mathbb{Q}\\); non-square prime surds and \\(\\pi\\) shifts are irrational.",
+    "ex_ar": "الكسور الدورية وجذور المربعات الكاملة نسبية، بينما الجذور الصماء ومضاعفات \\(\\pi\\) غير نسبية."
   }
 ];
-
 D["ge-ratios-rates-word"] = [
   {
     "t": "qc",
@@ -322,197 +362,226 @@ D["ge-ratios-rates-word"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
+    "ti": "True / False: Number, Bounds & Set Principles (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "صح أم خطأ: قوانين الأعداد والحدود والمجموعات (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
     "items": [
       {
-        "s": "A \\( 20\\% \\) price increase followed by a \\( 20\\% \\) discount results in a net \\( 4\\% \\) decrease (\\( 1.2 \\times 0.8 = 0.96 \\)).",
-        "a": true
+        "s": "Upper bound of \\(a / b\\) (positive) corresponds to \\(a_{\\text{upper}} / b_{\\text{lower}}\\).",
+        "a": true,
+        "ex": "Verified identity: \\(a_{\\text{upper}} / b_{\\text{lower}}\\)."
       },
       {
-        "s": "If Worker A takes 3 hours and Worker B takes 6 hours, together they finish in \\( \\frac{3 \\times 6}{3 + 6} = 2 \\) hours.",
-        "a": true
+        "s": "Inclusion–Exclusion \\(|A \\cup B|\\) corresponds to \\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) for \\(80, 120\\).",
+        "a": false,
+        "ex": "Actually, Inclusion–Exclusion \\(|A \\cup B|\\) corresponds to \\(|A| + |B| - |A \\cap B|\\)."
       },
       {
-        "s": "When two trains move in opposite directions toward each other, their relative closing speed is the difference of their speeds.",
-        "a": false
+        "s": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\) corresponds to Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\).",
+        "a": true,
+        "ex": "Correct: Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)."
       }
     ],
     "items_ar": [
       {
-        "s": "زيادة السعر بنسبة \\( 20\\% \\) ثم تخفيضه بنسبة \\( 20\\% \\) يؤدي إلى نقصان صافي قدره \\( 4\\% \\).",
-        "a": true
+        "s": "الحد الأعلى للقسمة \\(a / b\\) (موجبة) يكافئ \\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\).",
+        "a": true,
+        "ex": "علاقة صحيحة: \\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)."
       },
       {
-        "s": "إذا أنجز الأول العمل في 3 ساعات والثاني في 6 ساعات، فإنهما ينجزانه معاً في \\( \\frac{3 \\times 6}{3 + 6} = 2 \\) ساعة.",
-        "a": true
+        "s": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\) يكافئ \\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) للسرعتين \\(80, 120\\).",
+        "a": false,
+        "ex": "الصواب أن مبدأ الشمول والإقصاء \\(|A \\cup B|\\) يكافئ \\(|A| + |B| - |A \\cap B|\\)."
       },
       {
-        "s": "عندما يتحرك قطاران في اتجاهين متعاكسين، فإن سرعتهما النسبية هي الفرق بين سرعتيهما.",
-        "a": false
+        "s": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\) يكافئ الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً.",
+        "a": true,
+        "ex": "صحيح: الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
+    "ti": "Matching: Number, Bounds & Set Principles (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "مطابقة: قوانين الأعداد والحدود والمجموعات (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
     "p": [
       {
-        "l": "\\( \\frac{2v_1 v_2}{v_1 + v_2} \\)",
-        "r": "Average speed over equal-distance round trip"
+        "l": "Upper bound of \\(a / b\\) (positive)",
+        "r": "\\(a_{\\text{upper}} / b_{\\text{lower}}\\)"
       },
       {
-        "l": "\\( \\frac{t_1 t_2}{t_1 + t_2} \\)",
-        "r": "Combined time for two workers acting together"
+        "l": "Inclusion–Exclusion \\(|A \\cup B|\\)",
+        "r": "\\(|A| + |B| - |A \\cap B|\\)"
       },
       {
-        "l": "\\( x + y + \\frac{xy}{100} \\)",
-        "r": "Net percentage change after \\( x\\% \\) and \\( y\\% \\)"
+        "l": "Equal-distance round-trip speed",
+        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) for \\(80, 120\\)"
       },
       {
-        "l": "\\( v_1 + v_2 \\)",
-        "r": "Relative speed for opposite-direction motion"
+        "l": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
+        "r": "Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\frac{2v_1 v_2}{v_1 + v_2} \\)",
-        "r": "السرعة المتوسطة لرحلة ذهاب وإياب متساوية المسافة"
+        "l": "الحد الأعلى للقسمة \\(a / b\\) (موجبة)",
+        "r": "\\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)"
       },
       {
-        "l": "\\( \\frac{t_1 t_2}{t_1 + t_2} \\)",
-        "r": "الزمن المشترك لإنجاز عمل معاً"
+        "l": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\)",
+        "r": "\\(|A| + |B| - |A \\cap B|\\)"
       },
       {
-        "l": "\\( x + y + \\frac{xy}{100} \\)",
-        "r": "النسبة المئوية الصافية للتغير المتتالي"
+        "l": "السرعة المتوسطة ذهاباً وإياباً",
+        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) للسرعتين \\(80, 120\\)"
       },
       {
-        "l": "\\( v_1 + v_2 \\)",
-        "r": "السرعة النسبية للحركة في اتجاهين متعاكسين"
+        "l": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
+        "r": "الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
-    "q": "A student solves \\( \\sqrt{2x + 18} = x - 3 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 18} = x - 3 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Successive Percentage Multipliers (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "اكتشف الخطأ: النسب المئوية المتتالية (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
+    "q": "An item priced at \\(350\\) rises by \\(50\\%\\) and is then discounted by \\(50\\%\\). Which step in the calculation is wrong?",
+    "q_ar": "سلعة سعرها \\(350\\) زاد سعرها بنسبة \\(50\\%\\) ثم خُفِّض بنسبة \\(50\\%\\). أي خطوة تحتوي على خطأ؟",
     "steps": [
-      "Square both sides: \\( 2x + 18 = (x - 3)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 18 = x^2 - 6x + 9 \\).",
-      "Rearrange and factor: \\( x^2 - 8x - 9 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 3 \\ge 0 \\)."
+      "Apply the \\(50\\%\\) increase multiplier: \\(350 \\times 1.50 = 525\\).",
+      "Recognize that the \\(50\\%\\) discount applies to the new price \\(525\\).",
+      "Add the percentage changes directly: \\(+50\\% - 50\\% = 0\\%\\), claiming the final price returns to \\(350\\).",
+      "Verify final price via product of multipliers."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 18 = (x - 3)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 18 = x^2 - 6x + 9 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 8x - 9 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 3 \\ge 0 \\)."
+      "تطبيق معامل الزيادة \\(50\\%\\): \\(350 \\times 1.50 = 525\\).",
+      "ملاحظة أن خصم \\(50\\%\\) يُطبَّق على السعر الجديد \\(525\\).",
+      "جمع النسبتين مباشرة \\(+50\\% - 50\\% = 0\\%\\) والادعاء بأن السعر النهائي يعود إلى \\(350\\).",
+      "التحقق من السعر النهائي بضرب المعاملات."
     ],
-    "errorStep": 4,
+    "errorStep": 3,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 3 \\ge 0 \\iff x \\ge 3 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 3)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "Successive percentages multiply rather than add: \\(525 \\times 0.50 = 263\\) (a net \\(25\\%\\) decrease).",
+      "The final price is actually greater than \\(350\\).",
+      "Discounts must be divided rather than multiplied."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 3 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "النسب المتتالية تُضرب كمعاملات ولا تُجمع: \\(525 \\times 0.50 = 263\\) (بانخفاض صافي قدره \\(25\\%\\)).",
+      "السعر النهائي أكبر من \\(350\\).",
+      "الخصم يُحسب بالقسمة لا بالضرب."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 3 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 3 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 3 < 0 \\). Only the root satisfying \\( x \\ge 3 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 3 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
-    "q": "Consider \\( f(x) = x^2 - 6x + 13 \\) for \\( x \\ge 3 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 6x + 13 \\) حيث \\( x \\ge 3 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
+    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(80\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(120\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 18\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
+    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(80\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(120\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 18\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Harmonic Average Speed",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 3)^2 + 4 \\)."
+            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "Average speed \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Error Interval Bounds",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 3)^2 + 4 \\implies (x - 3)^2 = y - 4 \\)."
+            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 3 \\)): \\( f^{-1}(x) = 3 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "Error interval: \\(17.5 \\le L < 18.5\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 3 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 3 \\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "فترة القيمة الحقيقية: \\(17.5 \\le L < 18.5\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
+    "ti": "Step Builder: Successive Multipliers & Net Change (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "بناء الخطوات: المعاملات المتتالية وصافي التغير (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 6x + 14 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "3",
-        "h": "Divide 6 by 2."
+        "l": "Increase \\(350\\) by \\(50\\%\\): new value \\(=\\)",
+        "a": "525",
+        "h": "Compute 350 × 1.50."
       },
       {
-        "l": "Find the minimum value \\( k = 14 - 3^2 = \\)",
-        "a": "5",
-        "h": "Subtract 9 from 14."
+        "l": "Now discount \\(525\\) by \\(50\\%\\): final value \\(=\\)",
+        "a": "263",
+        "h": "Compute 525 × 0.50."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 6 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "Find the net decrease \\(350 - 263 =\\)",
+        "a": "87",
+        "h": "Subtract 263 from 350."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 6x + 14 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "3",
-        "h": "اقسم 6 على 2."
+        "l": "زد العدد \\(350\\) بنسبة \\(50\\%\\): القيمة الجديدة \\(=\\)",
+        "a": "525",
+        "h": "احسب 350 × 1.50."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 14 - 3^2 = \\)",
-        "a": "5",
-        "h": "اطرح 9 من 14."
+        "l": "طبّق خصم \\(50\\%\\) على \\(525\\): القيمة النهائية \\(=\\)",
+        "a": "263",
+        "h": "احسب 525 × 0.50."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 6 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "أوجد مقدار النقصان الصافي \\(350 - 263 =\\)",
+        "a": "87",
+        "h": "اطرح 263 من 350."
       }
     ]
   },
@@ -530,66 +599,77 @@ D["ge-ratios-rates-word"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 6x + 13 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 6x + 13 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Converting Recurring Decimal to Fraction (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "ترتيب الخطوات: تحويل الكسر العشري الدوري إلى اعتيادي (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
+    "prompt": "Order the algebraic steps to convert \\(x = 0.\\overline{16}\\) into a simplified fraction:",
+    "prompt_ar": "رتّب الخطوات الجبرية لتحويل الكسر الدوري \\(x = 0.\\overline{16}\\) إلى كسر اعتيادي:",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 6x + 13 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 8x + (13 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-8)^2 - 4(1)(13 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "Let \\(x = 0.\\overline{16}\\) and note the repeating block has 2 digits.",
+      "Multiply both sides by \\(10^2 = 100\\) so \\(100x = 16.\\overline{16}\\).",
+      "Subtract the original equation to cancel the infinite tail: \\(99x = 16\\).",
+      "Divide by \\(99\\) and reduce by \\(\\gcd(16, 99)\\)."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 6x + 13 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 8x + (13 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-8)^2 - 4(13 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "نفرض \\(x = 0.\\overline{16}\\) ونلاحظ أن طول الدورة رقمان.",
+      "نضرب الطرفين في \\(10^2 = 100\\) فنحصل على \\(100x = 16.\\overline{16}\\).",
+      "نطرح المعادلة الأصلية لحذف الجزء الدوري اللانهائي: \\(99x = 16\\).",
+      "نقسم على \\(99\\) ونبسّط الكسر بالقسمة على القاسم المشترك الأكبر."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Align the repeating block by multiplying by \\(10^k\\), subtract to eliminate the tail, and simplify.",
+    "ex_ar": "نضرب في \\(10^k\\) لمحاذاة الدورة ثم نطرح لحذف الجزء الدوري ونبسّط."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (GAT Ratios, Percentages, Mixtures, Work & Motion Problems)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (النسب المئوية والتناسب والخلطات ومسائل العمل والحركة (GAT))",
+    "ti": "Categorize: Rational vs. Irrational Real Numbers (GAT Ratios, Percentages, Speed & Work-Rate Models)",
+    "ti_ar": "تصنيف: الأعداد النسبية مقابل غير النسبية (النسب المئوية والتناسب ومسائل السرعة والعمل المشترك (GAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Rational (\\(\\mathbb{Q}\\))",
+      "Irrational (\\(\\mathbb{R} \\setminus \\mathbb{Q}\\))"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "عدد نسبي (\\(\\mathbb{Q}\\))",
+      "عدد غير نسبي (\\(\\mathbb{R} \\setminus \\mathbb{Q}\\))"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 6x + 9 = 0 \\)",
-        "s_ar": "\\( x^2 - 6x + 9 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 7x + 3 = 0 \\)",
-        "s_ar": "\\( x^2 - 7x + 3 = 0 \\)",
+        "s": "\\(0.\\overline{18}\\)",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 3x + 12 = 0 \\)",
-        "s_ar": "\\( x^2 + 3x + 12 = 0 \\)",
-        "cat": 2
+        "s": "\\(\\sqrt{64}\\)",
+        "cat": 0
       },
       {
-        "s": "\\( 4x^2 - 12x + 9 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "s": "\\(\\sqrt{11}\\)",
+        "cat": 1
+      },
+      {
+        "s": "\\(\\pi + 4\\)",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "\\(0.\\overline{18}\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(\\sqrt{64}\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(\\sqrt{11}\\)",
+        "cat": 1
+      },
+      {
+        "s": "\\(\\pi + 4\\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Repeating decimals and perfect-square roots lie in \\(\\mathbb{Q}\\); non-square prime surds and \\(\\pi\\) shifts are irrational.",
+    "ex_ar": "الكسور الدورية وجذور المربعات الكاملة نسبية، بينما الجذور الصماء ومضاعفات \\(\\pi\\) غير نسبية."
   }
 ];
-
 D["ge-quant-comparisons"] = [
   {
     "t": "qc",
@@ -615,197 +695,226 @@ D["ge-quant-comparisons"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
+    "ti": "True / False: Quantitative Comparison Choices A/B/C/D (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "صح أم خطأ: خيارات المقارنة الكمية (أ / ب / ج / د) (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
     "items": [
       {
-        "s": "For any real number \\( x \\in (0, 1) \\), \\( x > x^2 > x^3 \\).",
-        "a": true
+        "s": "Choice A corresponds to Column A is strictly greater in every valid case.",
+        "a": true,
+        "ex": "Verified identity: Column A is strictly greater in every valid case."
       },
       {
-        "s": "At \\( 4{:}20 \\), the acute angle between the hour and minute hands of a clock is \\( |30(4) - 5.5(20)| = 10^\\circ \\).",
-        "a": true
+        "s": "Choice B corresponds to Both columns are equal for all permissible values.",
+        "a": false,
+        "ex": "Actually, Choice B corresponds to Column B is strictly greater in every valid case."
       },
       {
-        "s": "If a square is inscribed in a circle of radius \\( r \\), its area is \\( 4r^2 \\).",
-        "a": false
+        "s": "Choice D corresponds to Different valid test values flip the comparison sign.",
+        "a": true,
+        "ex": "Correct: Different valid test values flip the comparison sign."
       }
     ],
     "items_ar": [
       {
-        "s": "لأي عدد حقيقي كسري موجب \\( x \\in (0, 1) \\) يتحقق \\( x > x^2 > x^3 \\).",
-        "a": true
+        "s": "الخيار (أ) يكافئ القيمة الأولى أكبر دائماً في جميع الحالات المسموحة.",
+        "a": true,
+        "ex": "علاقة صحيحة: القيمة الأولى أكبر دائماً في جميع الحالات المسموحة."
       },
       {
-        "s": "عند الساعة \\( 4{:}20 \\)، الزاوية بين عقربي الساعة والدقائق هي \\( |30(4) - 5.5(20)| = 10^\\circ \\).",
-        "a": true
+        "s": "الخيار (ب) يكافئ القيمتان متساويتان دائماً لجميع القيم المسموحة.",
+        "a": false,
+        "ex": "الصواب أن الخيار (ب) يكافئ القيمة الثانية أكبر دائماً في جميع الحالات المسموحة."
       },
       {
-        "s": "إذا رُسم مربع داخل دائرة نصف قطرها \\( r \\)، فإن مساحته تساوي \\( 4r^2 \\).",
-        "a": false
+        "s": "الخيار (د) يكافئ المعطيات غير كافية (يتغير اتجاه المقارنة بتغير الأعداد).",
+        "a": true,
+        "ex": "صحيح: المعطيات غير كافية (يتغير اتجاه المقارنة بتغير الأعداد)."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
+    "ti": "Matching: Quantitative Comparison Choices A/B/C/D (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "مطابقة: خيارات المقارنة الكمية (أ / ب / ج / د) (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
     "p": [
       {
-        "l": "\\( |30H - 5.5M| \\)",
-        "r": "Angle between clock hands at \\( H{:}M \\)"
+        "l": "Choice A",
+        "r": "Column A is strictly greater in every valid case"
       },
       {
-        "l": "Square inscribed in circle of radius \\( r \\)",
-        "r": "Diagonal \\( 2r \\), area \\( 2r^2 \\)"
+        "l": "Choice B",
+        "r": "Column B is strictly greater in every valid case"
       },
       {
-        "l": "Test \\( x \\in \\{-1, 0, \\frac{1}{2}, 2\\} \\)",
-        "r": "Four-zone test to detect Choice D traps"
+        "l": "Choice C",
+        "r": "Both columns are equal for all permissible values"
       },
       {
-        "l": "Exterior angle of a triangle",
-        "r": "Sum of the two remote interior angles"
+        "l": "Choice D",
+        "r": "Different valid test values flip the comparison sign"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( |30H - 5.5M| \\)",
-        "r": "الزاوية بين عقربي الساعة عند \\( H{:}M \\)"
+        "l": "الخيار (أ)",
+        "r": "القيمة الأولى أكبر دائماً في جميع الحالات المسموحة"
       },
       {
-        "l": "Square inscribed in circle of radius \\( r \\)",
-        "r": "القطر \\( 2r \\) والمساحة \\( 2r^2 \\)"
+        "l": "الخيار (ب)",
+        "r": "القيمة الثانية أكبر دائماً في جميع الحالات المسموحة"
       },
       {
-        "l": "Test \\( x \\in \\{-1, 0, \\frac{1}{2}, 2\\} \\)",
-        "r": "اختبار المناطق الأربع لكشف فخ الخيار (د)"
+        "l": "الخيار (ج)",
+        "r": "القيمتان متساويتان دائماً لجميع القيم المسموحة"
       },
       {
-        "l": "Exterior angle of a triangle",
-        "r": "مجموع الزاويتين الداخليتين البعيدتين"
+        "l": "الخيار (د)",
+        "r": "المعطيات غير كافية (يتغير اتجاه المقارنة بتغير الأعداد)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
-    "q": "A student solves \\( \\sqrt{2x + 32} = x - 4 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 32} = x - 4 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Quantitative Comparison Case Testing (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "اكتشف الخطأ: فحص حالات المقارنة الكمية (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
+    "q": "Given \\(x \\neq 0\\), compare Column A \\(= x^2\\) and Column B \\(= 2x\\). Where does the student err?",
+    "q_ar": "إذا علمت أن \\(x \\neq 0\\)، قارن بين القيمة الأولى \\(x^2\\) والقيمة الثانية \\(2x\\). أين أخطأ الطالب؟",
     "steps": [
-      "Square both sides: \\( 2x + 32 = (x - 4)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 32 = x^2 - 8x + 16 \\).",
-      "Rearrange and factor: \\( x^2 - 10x - 16 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 4 \\ge 0 \\)."
+      "Test \\(x = 3\\): Column A \\(= 9\\) and Column B \\(= 6\\), so A > B.",
+      "Divide both columns by \\(x\\) to simplify the comparison to \\(x\\) vs \\(2\\).",
+      "Test \\(x = 4\\) only and see \\(x > 2\\).",
+      "Conclude Choice A (Column A is always greater) without testing \\(0 < x < 2\\) or negative \\(x\\)."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 32 = (x - 4)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 32 = x^2 - 8x + 16 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 10x - 16 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 4 \\ge 0 \\)."
+      "تجريب \\(x = 3\\): القيمة الأولى \\(9\\) والثانية \\(6\\)، إذن الأولى أكبر.",
+      "قسمة الطرفين على المتغير \\(x\\) لتبسيط المقارنة إلى \\(x\\) مقابل \\(2\\).",
+      "الاكتفاء بتجريب \\(x = 4\\) وملاحظة أن \\(x > 2\\).",
+      "اختيار (أ) أي أن القيمة الأولى أكبر دائماً دون تجريب \\(0 < x < 2\\)."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 4 \\ge 0 \\iff x \\ge 4 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 4)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "Dividing an inequality/comparison by \\(x\\) without knowing the sign of \\(x\\) is invalid, and for \\(x = 1\\) Column A \\(= 1 < 2 =\\) Column B, making the relationship indeterminate (Choice D).",
+      "\\(x^2\\) is always negative when \\(x < 0\\).",
+      "Column B is always greater for every real \\(x\\)."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 4 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "القسمة على متغير مجهول الإشارة \\(x\\) غير جائزة، وعند \\(x = 1\\) تكون القيمة الأولى \\(1\\) أصغر من \\(2\\)، لذا المعطيات غير كافية (الخيار د).",
+      "المقدار \\(x^2\\) يكون سالباً عندما \\(x < 0\\).",
+      "القيمة الثانية أكبر دائماً لجميع قيم \\(x\\)."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 4 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 4 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 4 < 0 \\). Only the root satisfying \\( x \\ge 4 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 4 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
-    "q": "Consider \\( f(x) = x^2 - 8x + 20 \\) for \\( x \\ge 4 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 8x + 20 \\) حيث \\( x \\ge 4 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Quantitative Comparison Boundary Proof (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "وضع المصحح: إثبات المقارنة الكمية بالقيم الحدية (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
+    "q": "Suppose \\(0 < a < 1\\). Compare Quantity A \\(= a^{2}\\) and Quantity B \\(= \\sqrt{a}\\). (a) Evaluate both at \\(a = \\frac{1}{4}\\). (b) Prove which quantity is strictly greater on all of \\((0, 1)\\).",
+    "q_ar": "إذا كان \\(0 < a < 1\\)، قارن بين القيمة الأولى \\(a^{2}\\) والقيمة الثانية \\(\\sqrt{a}\\). (أ) احسب القيمتين عند \\(a = \\frac{1}{4}\\). (ب) أثبت أيهما أكبر على الفترة \\((0, 1)\\) كاملة.",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Fractional Test Point",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 4)^2 + 4 \\)."
+            "text": "At \\(a = \\frac{1}{4}\\): Quantity B \\(= \\sqrt{1/4} = \\frac{1}{2}\\), while Quantity A \\(= (1/4)^{2} = \\frac{1}{16}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "Observe \\(\\frac{1}{2} > \\frac{1}{16}\\), so Quantity B > Quantity A at \\(a = 1/4\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Exponent Monotonicity on (0, 1)",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 4)^2 + 4 \\implies (x - 4)^2 = y - 4 \\)."
+            "text": "For base \\(0 < a < 1\\), smaller exponents produce strictly larger values since \\(\\frac{1}{2} < 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 4 \\)): \\( f^{-1}(x) = 4 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "Conclude Quantity B is strictly greater (Choice B) for every \\(a \\in (0, 1)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 4 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 4 \\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — التعويض بكسر موجب",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "عند \\(a = \\frac{1}{4}\\): القيمة الثانية \\(\\sqrt{1/4} = \\frac{1}{2}\\)، بينما الأولى \\((1/4)^{2} = \\frac{1}{16}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "يتضح أن \\(\\frac{1}{2} > \\frac{1}{16}\\)، فالقيمة الثانية أكبر."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — رتابة الأسس للكسور بين 0 و1",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "للأساس \\(0 < a < 1\\)، كلما صغر الأس كبرت القيمة، وبما أن \\(\\frac{1}{2} < 2\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "إذن القيمة الثانية أكبر دائماً (الخيار ب) لكل \\(a \\in (0, 1)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
+    "ti": "Step Builder: Quantitative Comparison Evaluation (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "بناء الخطوات: حساب قيم المقارنة الكمية (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 8x + 21 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "4",
-        "h": "Divide 8 by 2."
+        "l": "Evaluate Column A \\(= 2^{4} =\\)",
+        "a": "16",
+        "h": "Multiply 2 by itself 4 times."
       },
       {
-        "l": "Find the minimum value \\( k = 21 - 4^2 = \\)",
-        "a": "5",
-        "h": "Subtract 16 from 21."
+        "l": "Evaluate Column B \\(= 4^2 =\\)",
+        "a": "16",
+        "h": "Square 4."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 7 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "Enter \\(1\\) if Column A > Column B, \\(2\\) if B > A, or \\(3\\) if equal:",
+        "a": "3",
+        "h": "Compare 16 with 16."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 8x + 21 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "4",
-        "h": "اقسم 8 على 2."
+        "l": "احسب القيمة الأولى \\(= 2^{4} =\\)",
+        "a": "16",
+        "h": "اضرب 2 في نفسه 4 مرات."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 21 - 4^2 = \\)",
-        "a": "5",
-        "h": "اطرح 16 من 21."
+        "l": "احسب القيمة الثانية \\(= 4^2 =\\)",
+        "a": "16",
+        "h": "ربّع العدد 4."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 7 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "أدخل \\(1\\) إذا كانت الأولى أكبر، أو \\(2\\) إذا كانت الثانية أكبر، أو \\(3\\) إذا تساوتا:",
+        "a": "3",
+        "h": "قارن العددين."
       }
     ]
   },
@@ -823,66 +932,59 @@ D["ge-quant-comparisons"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 8x + 20 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 8x + 20 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Quantitative Comparison Evaluation (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "ترتيب الخطوات: حساب قيم المقارنة الكمية (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
+    "prompt": "Arrange the sequential calculation steps in logical order:",
+    "prompt_ar": "رتّب خطوات الحل المتسلسلة ترتيباً منطقياً:",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 8x + 20 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 10x + (20 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-10)^2 - 4(1)(20 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "Evaluate Column A \\(= 2^{4} =\\) \\(16\\).",
+      "Evaluate Column B \\(= 4^2 =\\) \\(16\\).",
+      "Enter \\(1\\) if Column A > Column B, \\(2\\) if B > A, or \\(3\\) if equal: \\(3\\)."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 8x + 20 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 10x + (20 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-10)^2 - 4(20 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "احسب القيمة الأولى \\(= 2^{4} =\\) \\(16\\).",
+      "احسب القيمة الثانية \\(= 4^2 =\\) \\(16\\).",
+      "أدخل \\(1\\) إذا كانت الأولى أكبر، أو \\(2\\) إذا كانت الثانية أكبر، أو \\(3\\) إذا تساوتا: \\(3\\)."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Execute each intermediate stage sequentially to reach the final verified result.",
+    "ex_ar": "نفّذ كل مرحلة بالترتيب للوصول إلى النتيجة النهائية."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (GAT Quantitative Comparisons (Choices A/B/C/D) & Fast Geometry)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (المقارنات الكمية (الخيارات أ/ب/ج/د) والهندسة السريعة (GAT))",
+    "ti": "Categorize: Quantitative Comparison Choices A/B/C/D (GAT Quantitative Comparisons & Shaded Geometry)",
+    "ti_ar": "تصنيف: خيارات المقارنة الكمية (أ / ب / ج / د) (المقارنات الكمية ومساحات المناطق المظللة والهندسة (GAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Choice A",
+      "Choice B"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "الخيار (أ)",
+      "الخيار (ب)"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 8x + 16 = 0 \\)",
-        "s_ar": "\\( x^2 - 8x + 16 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 9x + 4 = 0 \\)",
-        "s_ar": "\\( x^2 - 9x + 4 = 0 \\)",
+        "s": "Column A is strictly greater in every valid case",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 4x + 19 = 0 \\)",
-        "s_ar": "\\( x^2 + 4x + 19 = 0 \\)",
-        "cat": 2
-      },
-      {
-        "s": "\\( 4x^2 - 16x + 16 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 16x + 16 = 0 \\)",
+        "s": "Column B is strictly greater in every valid case",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "القيمة الأولى أكبر دائماً في جميع الحالات المسموحة",
+        "cat": 0
+      },
+      {
+        "s": "القيمة الثانية أكبر دائماً في جميع الحالات المسموحة",
+        "cat": 1
+      }
+    ],
+    "ex": "Choice A → Column A is strictly greater in every valid case; Choice B → Column B is strictly greater in every valid case.",
+    "ex_ar": "الخيار (أ) ← القيمة الأولى أكبر دائماً في جميع الحالات المسموحة."
   }
 ];
-
 D["ge-data-stats-prob"] = [
   {
     "t": "qc",
@@ -908,197 +1010,224 @@ D["ge-data-stats-prob"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
+    "ti": "True / False: Statistical Measures & Outlier Robustness (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
     "items": [
       {
-        "s": "In a pie chart, a sector of central angle \\( 72^\\circ \\) represents \\( \\frac{72}{360} = 20\\% \\) of the total.",
-        "a": true
+        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "a": true,
+        "ex": "Order statistics depend on middle ranks, not extreme tail values."
       },
       {
-        "s": "The number of handshakes among \\( n \\) people where everyone shakes hands once is \\( \\binom{n}{2} = \\frac{n(n-1)}{2} \\).",
-        "a": true
+        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "a": false,
+        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
       },
       {
-        "s": "The number of ways to seat \\( n \\) people around a circular table is \\( n! \\).",
-        "a": false
+        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "a": true,
+        "ex": "Equal mean and variance is a defining property of the Poisson model."
       }
     ],
     "items_ar": [
       {
-        "s": "في القطاعات الدائرية، القطاع الذي زاويته المركزية \\( 72^\\circ \\) يمثل \\( 20\\% \\) من الإجمالي.",
-        "a": true
+        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "a": true,
+        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
       },
       {
-        "s": "عدد المصافحات بين \\( n \\) أشخاص يصافح كل منهم الآخر مرة واحدة هو \\( \\frac{n(n-1)}{2} \\).",
-        "a": true
+        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "a": false,
+        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
       },
       {
-        "s": "عدد طرق جلوس \\( n \\) أشخاص حول طاولة دائرية هو \\( n! \\).",
-        "a": false
+        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "a": true,
+        "ex": "خاصية أساسية لتوزيع بواسون."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
+    "ti": "Matching: Probability, Distributions & Inference Rules (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
     "p": [
       {
-        "l": "\\( \\frac{\\theta}{360^\\circ} \\times \\text{Total} \\)",
-        "r": "Value of a pie-chart sector with angle \\( \\theta \\)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( (n - 1)! \\)",
-        "r": "Circular permutations of \\( n \\) distinct people"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( \\frac{\\text{First} + \\text{Last}}{2} \\)",
-        "r": "Mean and median of any arithmetic sequence"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( \\frac{n(n-1)}{2} \\)",
-        "r": "Number of handshakes or segments among \\( n \\) points"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\frac{\\theta}{360^\\circ} \\times \\text{Total} \\)",
-        "r": "قيمة قطاع دائري زاويته المركزية \\( \\theta \\)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( (n - 1)! \\)",
-        "r": "التباديل الدائرية لعدد \\( n \\) من الأشخاص"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( \\frac{\\text{First} + \\text{Last}}{2} \\)",
-        "r": "المتوسط والوسيط لأي متتابعة حسابية"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( \\frac{n(n-1)}{2} \\)",
-        "r": "عدد المصافحات أو القطع المستقيمة بين \\( n \\) نقاط"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
-    "q": "A student solves \\( \\sqrt{2x + 50} = x - 5 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 50} = x - 5 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 4\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 4\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides: \\( 2x + 50 = (x - 5)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 50 = x^2 - 10x + 25 \\).",
-      "Rearrange and factor: \\( x^2 - 12x - 25 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 5 \\ge 0 \\)."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
+      "Take square root for standard deviation."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 50 = (x - 5)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 50 = x^2 - 10x + 25 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 12x - 25 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 5 \\ge 0 \\)."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 5 \\ge 0 \\iff x \\ge 5 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 5)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 4 = 9\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 5 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 9\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 5 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 5 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 5 < 0 \\). Only the root satisfying \\( x \\ge 5 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 5 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
-    "q": "Consider \\( f(x) = x^2 - 10x + 29 \\) for \\( x \\ge 5 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 10x + 29 \\) حيث \\( x \\ge 5 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
+    "q": "(a) A population has standard deviation \\(\\sigma = 18\\). For a simple random sample of size \\(n = 36\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 18\\). لعينة عشوائية حجمها \\(n = 36\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{18}{\\sqrt{36}} = \\dfrac{18}{6} = 3\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 5)^2 + 4 \\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "\\(4(5) + 4 = 24\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Write \\( y = (x - 5)^2 + 4 \\implies (x - 5)^2 = y - 4 \\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 5 \\)): \\( f^{-1}(x) = 5 + \\sqrt{x - 4} \\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{18}{\\sqrt{36}} = 3\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(5) + 4 = 24\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 5 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 5 \\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
+    "ti": "Step Builder: Standard Error & Independent Variance (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 10x + 30 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "5",
-        "h": "Divide 10 by 2."
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 36\\):",
+        "a": "6",
+        "h": "Square root of 36."
       },
       {
-        "l": "Find the minimum value \\( k = 30 - 5^2 = \\)",
-        "a": "5",
-        "h": "Subtract 25 from 30."
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 18\\):",
+        "a": "3",
+        "h": "Divide 18 by 6."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 8 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "9",
+        "h": "Add 5 + 4."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 10x + 30 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "5",
-        "h": "اقسم 10 على 2."
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 36\\):",
+        "a": "6",
+        "h": "الجذر التربيعي للعدد 36."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 30 - 5^2 = \\)",
-        "a": "5",
-        "h": "اطرح 25 من 30."
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 18\\):",
+        "a": "3",
+        "h": "اقسم 18 على 6."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 8 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "9",
+        "h": "اجمع 5 + 4."
       }
     ]
   },
@@ -1116,66 +1245,77 @@ D["ge-data-stats-prob"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 10x + 29 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 10x + 29 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Significance Hypothesis Test (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "ترتيب الخطوات: إجراء اختبار الفروض الإحصائية (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
+    "prompt": "Place the four standard stages of a statistical significance test in logical order:",
+    "prompt_ar": "رتّب المراحل الأربع لاختبار الدلالة الإحصائية ترتيباً منطقياً:",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 10x + 29 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 12x + (29 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-12)^2 - 4(1)(29 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "State null \\(H_0\\) and alternative \\(H_a\\) hypotheses in terms of the population parameter.",
+      "Verify random sampling and large-sample / normality conditions.",
+      "Compute the test statistic and corresponding tail \\(p\\)-value.",
+      "Compare \\(p\\)-value against \\(\\alpha\\) and state the conclusion in context."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 10x + 29 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 12x + (29 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-12)^2 - 4(29 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "صياغة فرض العدم \\(H_0\\) والفرض البديل \\(H_a\\) بدلالة معلمة المجتمع.",
+      "التحقق من العشوائية وشروط حجم العينة والاعتدالية.",
+      "حساب إحصائية الاختبار والقيمة الاحتمالية \\(p\\)-value.",
+      "مقارنة \\(p\\)-value بمستوى الدلالة \\(\\alpha\\) وكتابة القرار في سياق المسألة."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Hypotheses → conditions → test statistic & p-value → decision in context.",
+    "ex_ar": "صياغة الفروض ← التحقق من الشروط ← إحصائية الاختبار ← القرار الإحصائي."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (GAT Data Interpretation, Weighted Averages & Counting)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (تحليل البيانات والرسوم البيانية والمتوسطات ومبدأ العد (GAT))",
+    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (GAT & SAAT Data Interpretation, Counting & Probability)",
+    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (تحليل البيانات والرسوم البيانية ومبدأ العد والاحتمالات (GAT & SAAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Resistant to Outliers",
+      "Sensitive to Outliers"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "مقاوم للقيم المتطرفة",
+      "حساس للقيم المتطرفة"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 10x + 25 = 0 \\)",
-        "s_ar": "\\( x^2 - 10x + 25 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 11x + 5 = 0 \\)",
-        "s_ar": "\\( x^2 - 11x + 5 = 0 \\)",
+        "s": "Sample Median",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 5x + 28 = 0 \\)",
-        "s_ar": "\\( x^2 + 5x + 28 = 0 \\)",
-        "cat": 2
+        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
       },
       {
-        "s": "\\( 4x^2 - 20x + 25 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 20x + 25 = 0 \\)",
+        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "Sample Standard Deviation (\\(s\\))",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "الوسيط الحسابي",
+        "cat": 0
+      },
+      {
+        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
+      },
+      {
+        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "cat": 1
+      }
+    ],
+    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
+    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
   }
 ];
-
 D["ge-saat-algebra-matrices"] = [
   {
     "t": "qc",
@@ -1201,197 +1341,224 @@ D["ge-saat-algebra-matrices"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
+    "ti": "True / False: Complex Conjugates, Powers & Roots (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "صح أم خطأ: خواص المرافق والقوى المركبة (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
     "items": [
       {
-        "s": "The contrapositive \\( \\neg q \\to \\neg p \\) is always logically equivalent to the conditional statement \\( p \\to q \\).",
-        "a": true
+        "s": "For real-coefficient polynomials, non-real roots occur in conjugate pairs \\(a \\pm bi\\).",
+        "a": true,
+        "ex": "Complex Conjugate Root Theorem."
       },
       {
-        "s": "Since \\( i^4 = 1 \\), the complex power \\( i^{2026} = i^{2} = -1 \\).",
-        "a": true
+        "s": "\\(i^{4k+2} = -1\\) for every integer \\(k\\).",
+        "a": true,
+        "ex": "\\(i^{4k} \\cdot i^2 = 1 \\cdot (-1) = -1\\)."
       },
       {
-        "s": "By Remainder Theorem, the remainder when \\( P(x) \\) is divided by \\( (x - c) \\) is \\( P(-c) \\).",
-        "a": false
+        "s": "The principal argument \\(\\arg(-1 + i)\\) equals \\(-\\pi/4\\).",
+        "a": false,
+        "ex": "\\(-1 + i\\) lies in Quadrant II, so \\(\\arg(-1 + i) = \\frac{3\\pi}{4}\\)."
       }
     ],
     "items_ar": [
       {
-        "s": "المعاكس الإيجابي \\( \\neg q \\to \\neg p \\) يكافئ منطقياً دائماً العبارة الشرطية \\( p \\to q \\).",
-        "a": true
+        "s": "في كثيرات الحدود ذات المعاملات الحقيقية، تظهر الجذور المركبة في أزواج مترافقة \\(a \\pm bi\\).",
+        "a": true,
+        "ex": "مبرهنة الجذور المترافقة."
       },
       {
-        "s": "بما أن \\( i^4 = 1 \\)، فإن \\( i^{2026} = i^2 = -1 \\).",
-        "a": true
+        "s": "\\(i^{4k+2} = -1\\) لكل عدد صحيح \\(k\\).",
+        "a": true,
+        "ex": "\\(i^{4k} \\cdot i^2 = 1 \\cdot (-1) = -1\\)."
       },
       {
-        "s": "حسب نظرية الباقي، باقي قسمة \\( P(x) \\) على \\( (x - c) \\) هو \\( P(-c) \\).",
-        "a": false
+        "s": "السعة الرئيسية للعدد \\(-1 + i\\) تساوي \\(-\\pi/4\\).",
+        "a": false,
+        "ex": "النقطة في الربع الثاني، لذا السعة تساوي \\(3\\pi/4\\)."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
+    "ti": "Matching: Argand Loci & Complex Identities (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "مطابقة: المحال الهندسية في مستوى أرجاند والأعداد المركبة (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
     "p": [
       {
-        "l": "\\( \\neg q \\to \\neg p \\)",
-        "r": "Contrapositive (logically equivalent to \\( p \\to q \\))"
+        "l": "\\(z \\bar{z}\\) for \\(z = 6 + 8i\\)",
+        "r": "\\(|z|^2 = 100\\)"
       },
       {
-        "l": "\\( ad - bc = 0 \\)",
-        "r": "\\( 2 \\times 2 \\) matrix has no multiplicative inverse"
+        "l": "Argand locus \\(|z - z_0| = R\\)",
+        "r": "Circle centered at \\(z_0\\) with radius \\(R\\)"
       },
       {
-        "l": "\\( (a + bi)(a - bi) \\)",
-        "r": "\\( a^2 + b^2 \\) (product of complex conjugates)"
+        "l": "Argand locus \\(|z - z_1| = |z - z_2|\\)",
+        "r": "Perpendicular bisector of segment \\(z_1 z_2\\)"
       },
       {
-        "l": "\\( P(c) = 0 \\)",
-        "r": "\\( (x - c) \\) is a linear factor of polynomial \\( P(x) \\)"
+        "l": "Multiplication by \\(i\\)",
+        "r": "Counterclockwise rotation by \\(90^\\circ\\) (\\(\\pi/2\\) rad)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\neg q \\to \\neg p \\)",
-        "r": "المعاكس الإيجابي (مكافئ منطقياً لـ \\( p \\to q \\))"
+        "l": "\\(z \\bar{z}\\) للعدد \\(z = 6 + 8i\\)",
+        "r": "\\(|z|^2 = 100\\)"
       },
       {
-        "l": "\\( ad - bc = 0 \\)",
-        "r": "المصفوفة \\( 2 \\times 2 \\) ليس لها نظير ضربي"
+        "l": "المحل الهندسي \\(|z - z_0| = R\\)",
+        "r": "دائرة مركزها \\(z_0\\) ونصف قطرها \\(R\\)"
       },
       {
-        "l": "\\( (a + bi)(a - bi) \\)",
-        "r": "\\( a^2 + b^2 \\) (حاصل ضرب العددين المركبين المترافقين)"
+        "l": "المحل الهندسي \\(|z - z_1| = |z - z_2|\\)",
+        "r": "العمود المنصّف للقطعة الواصلة بين \\(z_1\\) و\\(z_2\\)"
       },
       {
-        "l": "\\( P(c) = 0 \\)",
-        "r": "\\( (x - c) \\) عامل خطي لكثيرة الحدود \\( P(x) \\)"
+        "l": "الضرب في الوحدة التخيلية \\(i\\)",
+        "r": "دوران عكس عقارب الساعة بزاوية \\(90^\\circ\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
-    "q": "A student solves \\( \\sqrt{2x + 72} = x - 6 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 72} = x - 6 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Complex Conjugate Division & \\(i^2\\) Sign (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "اكتشف الخطأ: قسمة الأعداد المركبة وإشارة \\(i^2\\) (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
+    "q": "A student simplifies \\(\\dfrac{100}{6 - 8i}\\). Which step introduces an algebraic error?",
+    "q_ar": "يبسّط طالب الكسر المركب \\(\\dfrac{100}{6 - 8i}\\). أي خطوة تتضمن خطأ جبرياً؟",
     "steps": [
-      "Square both sides: \\( 2x + 72 = (x - 6)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 72 = x^2 - 12x + 36 \\).",
-      "Rearrange and factor: \\( x^2 - 14x - 36 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 6 \\ge 0 \\)."
+      "Multiply numerator and denominator by the conjugate \\(6 + 8i\\).",
+      "Expand the denominator as \\((6)^2 - (8)^2 = -28\\) instead of \\(a^2 - b^2 i^2 = a^2 + b^2 = 100\\).",
+      "Divide numerator by the wrong denominator."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 72 = (x - 6)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 72 = x^2 - 12x + 36 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 14x - 36 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 6 \\ge 0 \\)."
+      "ضرب البسط والمقام في المرافق \\(6 + 8i\\).",
+      "فك المقام في صورة \\((6)^2 - (8)^2 = -28\\) بدلاً من \\(a^2 + b^2 = 100\\).",
+      "قسمة البسط على المقام الخاطئ."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 6 \\ge 0 \\iff x \\ge 6 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 6)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "Because \\(i^2 = -1\\), \\((a - bi)(a + bi) = a^2 - b^2 i^2 = a^2 + b^2 = 100\\), giving \\(6 + 8i\\).",
+      "You should multiply by \\(6 - 8i\\) instead of the conjugate.",
+      "\\(i^2\\) equals \\(+1\\)."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 6 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "لأن \\(i^2 = -1\\)، فإن \\((a - bi)(a + bi) = a^2 + b^2 = 100\\)، والناتج الصحيح هو \\(6 + 8i\\).",
+      "يجب الضرب في \\(6 - 8i\\) بدلاً من المرافق.",
+      "قيمة \\(i^2\\) تساوي \\(+1\\)."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 6 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 6 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 6 < 0 \\). Only the root satisfying \\( x \\ge 6 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 6 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
-    "q": "Consider \\( f(x) = x^2 - 12x + 40 \\) for \\( x \\ge 6 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 12x + 40 \\) حيث \\( x \\ge 6 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Modulus, Conjugate Division & De Moivre (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "وضع المصحح: المقياس والمرافق ومبرهنة دي موافر (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
+    "q": "Let \\(z = 6 - 8i\\). (a) Find \\(|z|\\), \\(\\bar{z}\\), and express \\(\\dfrac{100}{z}\\) in \\(x + yi\\) form. (b) Use De Moivre’s theorem to evaluate \\((2 e^{i\\pi/6})^3\\) in Cartesian form.",
+    "q_ar": "ليكن \\(z = 6 - 8i\\). (أ) أوجد \\(|z|\\) و\\(\\bar{z}\\) وعبّر عن \\(\\dfrac{100}{z}\\) بالصورة \\(x + yi\\). (ب) استعمل مبرهنة دي موافر لحساب \\((2 e^{i\\pi/6})^3\\) بالصورة الديكارتية.",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Modulus & Conjugate Division",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 6)^2 + 4 \\)."
+            "text": "\\(|z| = \\sqrt{6^2 + (-8)^2} = 10\\), \\(\\bar{z} = 6 + 8i\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "\\(\\dfrac{100}{z} = \\dfrac{100\\bar{z}}{|z|^2} = 6 + 8i\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — De Moivre Evaluation",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 6)^2 + 4 \\implies (x - 6)^2 = y - 4 \\)."
+            "text": "\\((2 e^{i\\pi/6})^3 = 2^3 e^{i(3\\pi/6)} = 8 e^{i\\pi/2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 6 \\)): \\( f^{-1}(x) = 6 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "\\(8(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}) = 8i\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 6 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 6 \\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — المقياس والقسمة بالمرافق",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(|z| = 10\\) والمرافق \\(\\bar{z} = 6 + 8i\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\dfrac{100}{z} = 6 + 8i\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تطبيق مبرهنة دي موافر",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\((2 e^{i\\pi/6})^3 = 8 e^{i\\pi/2}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "بالصورة الديكارتية: \\(8(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}) = 8i\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
+    "ti": "Step Builder: Complex Modulus & Powers of i (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "بناء الخطوات: مقياس العدد المركب وقوى i (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 12x + 41 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "6",
-        "h": "Divide 12 by 2."
+        "l": "Compute \\(|6 - 8i| =\\)",
+        "a": "10",
+        "h": "Compute √(36 + 64)."
       },
       {
-        "l": "Find the minimum value \\( k = 41 - 6^2 = \\)",
-        "a": "5",
-        "h": "Subtract 36 from 41."
+        "l": "Compute \\((6 - 8i)(6 + 8i) =\\)",
+        "a": "100",
+        "h": "Use a² + b²."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 9 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "Evaluate \\(i^{12} =\\)",
+        "a": "1",
+        "h": "12 is a multiple of 4."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 12x + 41 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "6",
-        "h": "اقسم 12 على 2."
+        "l": "احسب المقياس \\(|6 - 8i| =\\)",
+        "a": "10",
+        "h": "احسب √(36 + 64)."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 41 - 6^2 = \\)",
-        "a": "5",
-        "h": "اطرح 36 من 41."
+        "l": "احسب حاصل الضرب في المرافق \\((6 - 8i)(6 + 8i) =\\)",
+        "a": "100",
+        "h": "استعمل a² + b²."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 9 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "احسب قيمة \\(i^{12} =\\)",
+        "a": "1",
+        "h": "الأس 12 من مضاعفات 4."
       }
     ]
   },
@@ -1409,66 +1576,59 @@ D["ge-saat-algebra-matrices"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 12x + 40 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 12x + 40 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Complex Modulus & Powers of i (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "ترتيب الخطوات: مقياس العدد المركب وقوى i (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
+    "prompt": "Arrange the sequential calculation steps in logical order:",
+    "prompt_ar": "رتّب خطوات الحل المتسلسلة ترتيباً منطقياً:",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 12x + 40 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 14x + (40 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-14)^2 - 4(1)(40 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "Compute \\(|6 - 8i| =\\) \\(10\\).",
+      "Compute \\((6 - 8i)(6 + 8i) =\\) \\(100\\).",
+      "Evaluate \\(i^{12} =\\) \\(1\\)."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 12x + 40 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 14x + (40 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-14)^2 - 4(40 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "احسب المقياس \\(|6 - 8i| =\\) \\(10\\).",
+      "احسب حاصل الضرب في المرافق \\((6 - 8i)(6 + 8i) =\\) \\(100\\).",
+      "احسب قيمة \\(i^{12} =\\) \\(1\\)."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Execute each intermediate stage sequentially to reach the final verified result.",
+    "ex_ar": "نفّذ كل مرحلة بالترتيب للوصول إلى النتيجة النهائية."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (SAAT Mathematical Logic, Matrices, Determinants & Complex Numbers)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (المنطق الرياضي والمصفوفات والمحددات والأعداد المركبة (SAAT))",
+    "ti": "Categorize: Argand Loci & Complex Identities (SAAT Logic, Polynomials, Matrices & Complex Numbers)",
+    "ti_ar": "تصنيف: المحال الهندسية في مستوى أرجاند والأعداد المركبة (المنطق الرياضي وكثيرات الحدود والمصفوفات والأعداد المركبة (SAAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "\\(z \\bar{z}\\) for \\(z = 6 + 8i\\)",
+      "Argand locus \\(|z - z_0| = R\\)"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "\\(z \\bar{z}\\) للعدد \\(z = 6 + 8i\\)",
+      "المحل الهندسي \\(|z - z_0| = R\\)"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 12x + 36 = 0 \\)",
-        "s_ar": "\\( x^2 - 12x + 36 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 13x + 6 = 0 \\)",
-        "s_ar": "\\( x^2 - 13x + 6 = 0 \\)",
+        "s": "\\(|z|^2 = 100\\)",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 6x + 39 = 0 \\)",
-        "s_ar": "\\( x^2 + 6x + 39 = 0 \\)",
-        "cat": 2
-      },
-      {
-        "s": "\\( 4x^2 - 24x + 36 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 24x + 36 = 0 \\)",
+        "s": "Circle centered at \\(z_0\\) with radius \\(R\\)",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "\\(|z|^2 = 100\\)",
+        "cat": 0
+      },
+      {
+        "s": "دائرة مركزها \\(z_0\\) ونصف قطرها \\(R\\)",
+        "cat": 1
+      }
+    ],
+    "ex": "\\(z \\bar{z}\\) for \\(z = 6 + 8i\\) → \\(|z|^2 = 100\\); Argand locus \\(|z - z_0| = R\\) → Circle centered at \\(z_0\\) with radius \\(R\\).",
+    "ex_ar": "\\(z \\bar{z}\\) للعدد \\(z = 6 + 8i\\) ← \\(|z|^2 = 100\\)."
   }
 ];
-
 D["ge-saat-functions-logs"] = [
   {
     "t": "qc",
@@ -1494,197 +1654,224 @@ D["ge-saat-functions-logs"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "ti": "True / False: Sequence, Series & Expansion Formulas (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "صح أم خطأ: صيغ المتتاليات والمتسلسلات وذي الحدين (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
     "items": [
       {
-        "s": "An infinite geometric series with first term \\( a_1 \\) and common ratio \\( r \\) converges if and only if \\( |r| < 1 \\), with sum \\( S_\\infty = \\frac{a_1}{1 - r} \\).",
-        "a": true
+        "s": "Arithmetic sum \\(S_n\\) corresponds to \\(\\frac{n}{2}[2a + (n - 1)d]\\).",
+        "a": true,
+        "ex": "Verified identity: \\(\\frac{n}{2}[2a + (n - 1)d]\\)."
       },
       {
-        "s": "For any base \\( b > 0, b \\neq 1 \\), \\( \\log_b(xy) = \\log_b x + \\log_b y \\) for positive \\( x, y \\).",
-        "a": true
+        "s": "Convergent GP sum \\(S_\\infty\\) (\\(|r| < 1\\)) corresponds to \\(\\binom{n}{r} a^{n - r} b^r\\).",
+        "a": false,
+        "ex": "Actually, Convergent GP sum \\(S_\\infty\\) (\\(|r| < 1\\)) corresponds to \\(\\dfrac{a}{1 - r}\\)."
       },
       {
-        "s": "A rational function \\( \\frac{(x - 2)(x + 3)}{x - 2} \\) has a vertical asymptote at \\( x = 2 \\).",
-        "a": false
+        "s": "\\(p\\)-series \\(\\sum_{n=1}^{\\infty} n^{-p}\\) convergence corresponds to Converges iff \\(p > 1\\).",
+        "a": true,
+        "ex": "Correct: Converges iff \\(p > 1\\)."
       }
     ],
     "items_ar": [
       {
-        "s": "تتقارب المتسلسلة الهندسية اللانهائية إذا وفقط إذا كان \\( |r| < 1 \\) ومجموعها \\( S_\\infty = \\frac{a_1}{1 - r} \\).",
-        "a": true
+        "s": "مجموع المتتالية الحسابية \\(S_n\\) يكافئ \\(\\frac{n}{2}[2a + (n - 1)d]\\).",
+        "a": true,
+        "ex": "علاقة صحيحة: \\(\\frac{n}{2}[2a + (n - 1)d]\\)."
       },
       {
-        "s": "لأي أساس صالح \\( b \\)، يتحقق \\( \\log_b(xy) = \\log_b x + \\log_b y \\) لكل \\( x, y > 0 \\).",
-        "a": true
+        "s": "مجموع المتسلسلة الهندسية اللانهائية (\\(|r| < 1\\)) يكافئ \\(\\binom{n}{r} a^{n - r} b^r\\).",
+        "a": false,
+        "ex": "الصواب أن مجموع المتسلسلة الهندسية اللانهائية (\\(|r| < 1\\)) يكافئ \\(\\dfrac{a}{1 - r}\\)."
       },
       {
-        "s": "الدالة النسبية \\( \\frac{(x - 2)(x + 3)}{x - 2} \\) لها خط تقارب رأسي عند \\( x = 2 \\).",
-        "a": false
+        "s": "تقارب متسلسلة القوى \\(\\sum_{n=1}^{\\infty} n^{-p}\\) يكافئ تتقارب إذا وفقط إذا كان \\(p > 1\\).",
+        "a": true,
+        "ex": "صحيح: تتقارب إذا وفقط إذا كان \\(p > 1\\)."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "ti": "Matching: Sequence, Series & Expansion Formulas (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "مطابقة: صيغ المتتاليات والمتسلسلات وذي الحدين (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
     "p": [
       {
-        "l": "\\( \\text{deg}(P) < \\text{deg}(Q) \\)",
-        "r": "Horizontal asymptote is \\( y = 0 \\)"
+        "l": "Arithmetic sum \\(S_n\\)",
+        "r": "\\(\\frac{n}{2}[2a + (n - 1)d]\\)"
       },
       {
-        "l": "Common factor \\( (x - c) \\) in \\( P/Q \\)",
-        "r": "Point discontinuity (removable hole) at \\( x = c \\)"
+        "l": "Convergent GP sum \\(S_\\infty\\) (\\(|r| < 1\\))",
+        "r": "\\(\\dfrac{a}{1 - r}\\)"
       },
       {
-        "l": "\\( S_\\infty = \\frac{a_1}{1 - r} \\)",
-        "r": "Sum of a convergent infinite geometric series (\\( |r| < 1 \\))"
+        "l": "Binomial general term in \\((a + b)^n\\)",
+        "r": "\\(\\binom{n}{r} a^{n - r} b^r\\)"
       },
       {
-        "l": "\\( \\log_b(a) = c \\)",
-        "r": "Equivalent exponential statement \\( b^c = a \\)"
+        "l": "\\(p\\)-series \\(\\sum_{n=1}^{\\infty} n^{-p}\\) convergence",
+        "r": "Converges iff \\(p > 1\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\text{deg}(P) < \\text{deg}(Q) \\)",
-        "r": "خط التقارب الأفقي هو \\( y = 0 \\)"
+        "l": "مجموع المتتالية الحسابية \\(S_n\\)",
+        "r": "\\(\\frac{n}{2}[2a + (n - 1)d]\\)"
       },
       {
-        "l": "Common factor \\( (x - c) \\) in \\( P/Q \\)",
-        "r": "نقطة انفصال (فجوة قابلة للإزالة) عند \\( x = c \\)"
+        "l": "مجموع المتسلسلة الهندسية اللانهائية (\\(|r| < 1\\))",
+        "r": "\\(\\dfrac{a}{1 - r}\\)"
       },
       {
-        "l": "\\( S_\\infty = \\frac{a_1}{1 - r} \\)",
-        "r": "مجموع المتسلسلة الهندسية اللانهائية المتقاربة"
+        "l": "الحد العام في مفكوك ذي الحدين \\((a + b)^n\\)",
+        "r": "\\(\\binom{n}{r} a^{n - r} b^r\\)"
       },
       {
-        "l": "\\( \\log_b(a) = c \\)",
-        "r": "الصورة الأسية المكافئة \\( b^c = a \\)"
+        "l": "تقارب متسلسلة القوى \\(\\sum_{n=1}^{\\infty} n^{-p}\\)",
+        "r": "تتقارب إذا وفقط إذا كان \\(p > 1\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
-    "q": "A student solves \\( \\sqrt{2x + 98} = x - 7 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 98} = x - 7 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Infinite Geometric Series Convergence Check (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "اكتشف الخطأ: شرط تقارب المتسلسلة الهندسية اللانهائية (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "q": "A student applies \\(S_\\infty = \\dfrac{a}{1 - r}\\) to \\(24 + 48 + 96 + \\cdots\\). Where does the reasoning fail?",
+    "q_ar": "يطبّق طالب صيغة \\(S_\\infty = \\dfrac{a}{1 - r}\\) على المتسلسلة \\(24 + 48 + 96 + \\cdots\\). أين موضع الخطأ؟",
     "steps": [
-      "Square both sides: \\( 2x + 98 = (x - 7)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 98 = x^2 - 14x + 49 \\).",
-      "Rearrange and factor: \\( x^2 - 16x - 49 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 7 \\ge 0 \\)."
+      "Identify first term \\(a = 24\\) and common ratio \\(r = 2\\).",
+      "Substitute directly into \\(S_\\infty = \\frac{24}{1 - 2} = -24\\).",
+      "Conclude the sum of positive growing terms equals \\(-24\\)."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 98 = (x - 7)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 98 = x^2 - 14x + 49 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 16x - 49 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 7 \\ge 0 \\)."
+      "تحديد الحد الأول \\(a = 24\\) والأساس \\(r = 2\\).",
+      "التعويض المباشر في القانون \\(S_\\infty = \\frac{24}{1 - 2} = -24\\).",
+      "استنتاج أن مجموع حدود موجبة متزايدة يساوي \\(-24\\)."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 7 \\ge 0 \\iff x \\ge 7 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 7)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "The sum-to-infinity formula \\(S_\\infty = \\frac{a}{1 - r}\\) is valid ONLY when \\(|r| < 1\\); since \\(|2| \\ge 1\\), the series diverges to \\(+\\infty\\).",
+      "The formula should be \\(\\frac{a}{r - 1}\\).",
+      "\\(r\\) equals \\(\\frac{1}{2}\\) here."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 7 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "صيغة المجموع إلى اللانهاية صالحة فقط عندما \\(|r| < 1\\)؛ وبما أن \\(|2| \\ge 1\\) فالمتسلسلة متباعدة إلى \\(+\\infty\\).",
+      "القانون الصحيح هو \\(\\frac{a}{r - 1}\\).",
+      "قيمة الأساس هنا \\(\\frac{1}{2}\\)."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 7 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 7 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 7 < 0 \\). Only the root satisfying \\( x \\ge 7 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 7 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
-    "q": "Consider \\( f(x) = x^2 - 14x + 53 \\) for \\( x \\ge 7 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 14x + 53 \\) حيث \\( x \\ge 7 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Convergent Geometric & Arithmetic Series (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "وضع المصحح: المتتاليات الحسابية والهندسية المتقاربة (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "q": "(a) A geometric series has first term \\(a = 24\\) and common ratio \\(r = \\frac{1}{3}\\). Verify convergence and find \\(S_\\infty\\). (b) An arithmetic progression has \\(u_1 = 24\\) and common difference \\(d = 6\\); find \\(u_{10}\\).",
+    "q_ar": "(أ) متسلسلة هندسية حدها الأول \\(a = 24\\) وأساسها \\(r = \\frac{1}{3}\\). تحقق من التقارب وأوجد \\(S_\\infty\\). (ب) متتالية حسابية حدها الأول \\(24\\) وأساسها \\(d = 6\\)؛ أوجد الحد العاشر \\(u_{10}\\).",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Convergence Criterion & Sum to Infinity",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Since \\(|r| = \\frac{1}{3} < 1\\), the infinite geometric series converges."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(S_\\infty = \\dfrac{24}{1 - 1/3} = \\dfrac{24}{2/3} = 36\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — 10th Arithmetic Term",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 7)^2 + 4 \\)."
+            "text": "Use \\(u_n = u_1 + (n - 1)d\\) with \\(n = 10\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "\\(u_{10} = 24 + 9(6) = 78\\)."
+          }
+        ]
+      }
+    ],
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — شرط التقارب والمجموع إلى ما لا نهاية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "بما أن \\(|r| = \\frac{1}{3} < 1\\)، فالمتسلسلة الهندسية متقاربة."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(S_\\infty = \\dfrac{24}{1 - 1/3} = 36\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (ب) — الحد العاشر في المتتالية الحسابية",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 7)^2 + 4 \\implies (x - 7)^2 = y - 4 \\)."
+            "text": "بتطبيق القانون \\(u_n = u_1 + (n - 1)d\\) عند \\(n = 10\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 7 \\)): \\( f^{-1}(x) = 7 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "\\(u_{10} = 24 + 9(6) = 78\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 7 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 7 \\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "ti": "Step Builder: Geometric Sum to Infinity & AP Term (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "بناء الخطوات: مجموع اللانهاية والحد النوني (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 14x + 54 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "7",
-        "h": "Divide 14 by 2."
+        "l": "For \\(a = 24\\) and \\(r = \\frac{1}{3}\\), compute the second term \\(a r =\\)",
+        "a": "8",
+        "h": "Divide 24 by 3."
       },
       {
-        "l": "Find the minimum value \\( k = 54 - 7^2 = \\)",
-        "a": "5",
-        "h": "Subtract 49 from 54."
+        "l": "Compute the sum to infinity \\(S_\\infty = \\frac{24}{1 - 1/3} =\\)",
+        "a": "36",
+        "h": "Multiply 24 by 3/2."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 10 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "In the AP with \\(u_1 = 24,\\; d = 6\\), find \\(u_{10} =\\)",
+        "a": "78",
+        "h": "Compute 24 + 9×6."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 14x + 54 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "7",
-        "h": "اقسم 14 على 2."
+        "l": "لمتتالية هندسية فيها \\(a = 24\\) و\\(r = \\frac{1}{3}\\)، احسب الحد الثاني \\(ar =\\)",
+        "a": "8",
+        "h": "اقسم 24 على 3."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 54 - 7^2 = \\)",
-        "a": "5",
-        "h": "اطرح 49 من 54."
+        "l": "احسب المجموع إلى اللانهاية \\(S_\\infty = \\frac{24}{1 - 1/3} =\\)",
+        "a": "36",
+        "h": "اضرب 24 في 3/2."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 10 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "في المتتالية الحسابية \\(u_1 = 24,\\; d = 6\\)، أوجد \\(u_{10} =\\)",
+        "a": "78",
+        "h": "احسب 24 + 9×6."
       }
     ]
   },
@@ -1702,66 +1889,59 @@ D["ge-saat-functions-logs"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 14x + 53 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 14x + 53 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Geometric Sum to Infinity & AP Term (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "ترتيب الخطوات: مجموع اللانهاية والحد النوني (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "prompt": "Arrange the sequential calculation steps in logical order:",
+    "prompt_ar": "رتّب خطوات الحل المتسلسلة ترتيباً منطقياً:",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 14x + 53 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 16x + (53 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-16)^2 - 4(1)(53 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "For \\(a = 24\\) and \\(r = \\frac{1}{3}\\), compute the second term \\(a r =\\) \\(8\\).",
+      "Compute the sum to infinity \\(S_\\infty = \\frac{24}{1 - 1/3} =\\) \\(36\\).",
+      "In the AP with \\(u_1 = 24,\\; d = 6\\), find \\(u_{10} =\\) \\(78\\)."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 14x + 53 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 16x + (53 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-16)^2 - 4(53 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "لمتتالية هندسية فيها \\(a = 24\\) و\\(r = \\frac{1}{3}\\)، احسب الحد الثاني \\(ar =\\) \\(8\\).",
+      "احسب المجموع إلى اللانهاية \\(S_\\infty = \\frac{24}{1 - 1/3} =\\) \\(36\\).",
+      "في المتتالية الحسابية \\(u_1 = 24,\\; d = 6\\)، أوجد \\(u_{10} =\\) \\(78\\)."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Execute each intermediate stage sequentially to reach the final verified result.",
+    "ex_ar": "نفّذ كل مرحلة بالترتيب للوصول إلى النتيجة النهائية."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (SAAT Rational Functions, Sequences, Series & Logarithms)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
+    "ti": "Categorize: Sequence, Series & Expansion Formulas (SAAT Functions, Sequences, Exponentials & Logarithms)",
+    "ti_ar": "تصنيف: صيغ المتتاليات والمتسلسلات وذي الحدين (الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Arithmetic sum \\(S_n\\)",
+      "Convergent GP sum \\(S_\\infty\\) (\\(|r| < 1\\))"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "مجموع المتتالية الحسابية \\(S_n\\)",
+      "مجموع المتسلسلة الهندسية اللانهائية (\\(|r| < 1\\))"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 14x + 49 = 0 \\)",
-        "s_ar": "\\( x^2 - 14x + 49 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 15x + 7 = 0 \\)",
-        "s_ar": "\\( x^2 - 15x + 7 = 0 \\)",
+        "s": "\\(\\frac{n}{2}[2a + (n - 1)d]\\)",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 7x + 52 = 0 \\)",
-        "s_ar": "\\( x^2 + 7x + 52 = 0 \\)",
-        "cat": 2
-      },
-      {
-        "s": "\\( 4x^2 - 28x + 49 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 28x + 49 = 0 \\)",
+        "s": "\\(\\dfrac{a}{1 - r}\\)",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "\\(\\frac{n}{2}[2a + (n - 1)d]\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(\\dfrac{a}{1 - r}\\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Arithmetic sum \\(S_n\\) → \\(\\frac{n}{2}[2a + (n - 1)d]\\); Convergent GP sum \\(S_\\infty\\) (\\(|r| < 1\\)) → \\(\\dfrac{a}{1 - r}\\).",
+    "ex_ar": "مجموع المتتالية الحسابية \\(S_n\\) ← \\(\\frac{n}{2}[2a + (n - 1)d]\\)."
   }
 ];
-
 D["ge-saat-trig-conics"] = [
   {
     "t": "qc",
@@ -1787,197 +1967,224 @@ D["ge-saat-trig-conics"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "ti": "True / False: Trigonometric & Inverse-Trig Identities (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "صح أم خطأ: المتطابقات المثلثية والفروع العكسية (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
     "items": [
       {
-        "s": "Two 3D vectors \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\) are orthogonal (perpendicular) if and only if their dot product \\( \\mathbf{u} \\cdot \\mathbf{v} = 0 \\).",
-        "a": true
+        "s": "\\(1 + \\tan^2\\theta\\) corresponds to \\(\\sec^2\\theta\\).",
+        "a": true,
+        "ex": "Verified identity: \\(\\sec^2\\theta\\)."
       },
       {
-        "s": "For any hyperbola, the focal distance satisfies \\( c^2 = a^2 + b^2 \\) and the eccentricity satisfies \\( e > 1 \\).",
-        "a": true
+        "s": "Cosine Rule for side \\(c\\) corresponds to \\([0, \\pi]\\).",
+        "a": false,
+        "ex": "Actually, Cosine Rule for side \\(c\\) corresponds to \\(c^2 = a^2 + b^2 - 2ab\\cos C\\)."
       },
       {
-        "s": "By the double-angle identity, \\( \\sin(2\\theta) = 2\\sin\\theta \\) for all real angles \\( \\theta \\).",
-        "a": false
+        "s": "Period of \\(6\\sin(3x)\\) corresponds to \\(\\dfrac{2\\pi}{3}\\).",
+        "a": true,
+        "ex": "Correct: \\(\\dfrac{2\\pi}{3}\\)."
       }
     ],
     "items_ar": [
       {
-        "s": "يتعامد متجهان في الفضاء إذا وفقط إذا كان حاصل ضربهما الداخلي \\( \\mathbf{u} \\cdot \\mathbf{v} = 0 \\).",
-        "a": true
+        "s": "\\(1 + \\tan^2\\theta\\) يكافئ \\(\\sec^2\\theta\\).",
+        "a": true,
+        "ex": "علاقة صحيحة: \\(\\sec^2\\theta\\)."
       },
       {
-        "s": "في أي قطع زائد يتحقق \\( c^2 = a^2 + b^2 \\) ويكون الاختلاف المركزي \\( e > 1 \\).",
-        "a": true
+        "s": "قانون جيب التمام للضلع \\(c\\) يكافئ \\([0, \\pi]\\).",
+        "a": false,
+        "ex": "الصواب أن قانون جيب التمام للضلع \\(c\\) يكافئ \\(c^2 = a^2 + b^2 - 2ab\\cos C\\)."
       },
       {
-        "s": "من متطابقة ضعف الزاوية: \\( \\sin(2\\theta) = 2\\sin\\theta \\) لجميع الزوايا.",
-        "a": false
+        "s": "دورة الدالة \\(6\\sin(3x)\\) يكافئ \\(\\dfrac{2\\pi}{3}\\).",
+        "a": true,
+        "ex": "صحيح: \\(\\dfrac{2\\pi}{3}\\)."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "ti": "Matching: Trigonometric & Inverse-Trig Identities (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "مطابقة: المتطابقات المثلثية والفروع العكسية (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
     "p": [
       {
-        "l": "\\( c^2 = a^2 - b^2 \\) (\\( 0 < e < 1 \\))",
-        "r": "Ellipse focal parameter relation"
+        "l": "\\(1 + \\tan^2\\theta\\)",
+        "r": "\\(\\sec^2\\theta\\)"
       },
       {
-        "l": "\\( c^2 = a^2 + b^2 \\) (\\( e > 1 \\))",
-        "r": "Hyperbola focal parameter relation"
+        "l": "Cosine Rule for side \\(c\\)",
+        "r": "\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)"
       },
       {
-        "l": "\\( \\mathbf{u} \\cdot \\mathbf{v} = 0 \\)",
-        "r": "Orthogonal (perpendicular) vectors in \\( \\mathbb{R}^3 \\)"
+        "l": "Principal range of \\(\\arccos x\\)",
+        "r": "\\([0, \\pi]\\)"
       },
       {
-        "l": "\\( \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta \\)",
-        "r": "Double-angle cosine identity"
+        "l": "Period of \\(6\\sin(3x)\\)",
+        "r": "\\(\\dfrac{2\\pi}{3}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( c^2 = a^2 - b^2 \\) (\\( 0 < e < 1 \\))",
-        "r": "العلاقة البؤرية في القطع الناقص"
+        "l": "\\(1 + \\tan^2\\theta\\)",
+        "r": "\\(\\sec^2\\theta\\)"
       },
       {
-        "l": "\\( c^2 = a^2 + b^2 \\) (\\( e > 1 \\))",
-        "r": "العلاقة البؤرية في القطع الزائد"
+        "l": "قانون جيب التمام للضلع \\(c\\)",
+        "r": "\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)"
       },
       {
-        "l": "\\( \\mathbf{u} \\cdot \\mathbf{v} = 0 \\)",
-        "r": "متجهان متعامدان في الفضاء الثلاثي"
+        "l": "المدى الرئيسي للدالة \\(\\arccos x\\)",
+        "r": "\\([0, \\pi]\\)"
       },
       {
-        "l": "\\( \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta \\)",
-        "r": "متطابقة جيب تمام ضعف الزاوية"
+        "l": "دورة الدالة \\(6\\sin(3x)\\)",
+        "r": "\\(\\dfrac{2\\pi}{3}\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
-    "q": "A student solves \\( \\sqrt{2x + 128} = x - 8 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 128} = x - 8 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Quadrant Sign & Dividing by \\(\\sin\\theta\\) (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "اكتشف الخطأ: إشارة الربع والقسمة على \\(\\sin\\theta\\) (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "q": "Solve \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\) for \\(0 \\le \\theta < 2\\pi\\). Which step loses valid roots?",
+    "q_ar": "عند حل المعادلة \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\) على الفترة \\(0 \\le \\theta < 2\\pi\\)، أي خطوة تضيع حلولاً صحيحة؟",
     "steps": [
-      "Square both sides: \\( 2x + 128 = (x - 8)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 128 = x^2 - 16x + 64 \\).",
-      "Rearrange and factor: \\( x^2 - 18x - 64 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 8 \\ge 0 \\)."
+      "Divide both sides by \\(\\sin\\theta\\) without checking \\(\\sin\\theta = 0\\), obtaining \\(2\\cos\\theta = 1\\).",
+      "Solve \\(\\cos\\theta = \\frac{1}{2}\\) to find \\(\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\).",
+      "State \\(\\left\\{\\frac{\\pi}{3}, \\frac{5\\pi}{3}\\right\\}\\) as the complete solution set."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 128 = (x - 8)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 128 = x^2 - 16x + 64 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 18x - 64 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 8 \\ge 0 \\)."
+      "قسمة الطرفين على \\(\\sin\\theta\\) دون فحص حالة \\(\\sin\\theta = 0\\) للحصول على \\(2\\cos\\theta = 1\\).",
+      "حل \\(\\cos\\theta = \\frac{1}{2}\\) لإيجاد \\(\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\).",
+      "كتابة هاتين الزاويتين فقط كمجموعة حل كاملة."
     ],
-    "errorStep": 4,
+    "errorStep": 1,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 8 \\ge 0 \\iff x \\ge 8 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 8)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "Dividing by \\(\\sin\\theta\\) discards the roots where \\(\\sin\\theta = 0\\) (\\(\\theta = 0, \\pi\\)); instead factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+      "\\(\\cos\\theta = \\frac{1}{2}\\) has no solutions in Quadrant IV.",
+      "\\(\\sin\\theta\\) can never equal zero."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 8 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "القسمة على \\(\\sin\\theta\\) تحذف الجذور التي تجعل \\(\\sin\\theta = 0\\) (وهي \\(0, \\pi\\))؛ الصواب نقل الحدود والتحليل \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+      "لا يوجد حل لمعادلة \\(\\cos\\theta = \\frac{1}{2}\\) في الربع الرابع.",
+      "لا يمكن أن يساوي \\(\\sin\\theta\\) صفراً."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 8 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 8 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 8 < 0 \\). Only the root satisfying \\( x \\ge 8 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 8 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
-    "q": "Consider \\( f(x) = x^2 - 16x + 68 \\) for \\( x \\ge 8 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 16x + 68 \\) حيث \\( x \\ge 8 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Quadrant Identities & Cosine Rule (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "وضع المصحح: المتطابقات المثلثية وقانون جيب التمام (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "q": "Suppose \\(\\sin\\theta = \\dfrac{5}{13}\\) with \\(\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\) (Quadrant II). (a) Find exact values of \\(\\cos\\theta\\) and \\(\\tan\\theta\\). (b) Evaluate \\(\\sin(2\\theta)\\).",
+    "q_ar": "إذا كان \\(\\sin\\theta = \\dfrac{5}{13}\\) حيث \\(\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\) (الربع الثاني). (أ) أوجد القيمة الدقيقة لكل من \\(\\cos\\theta\\) و\\(\\tan\\theta\\). (ب) احسب \\(\\sin(2\\theta)\\).",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Quadrant II Cosine & Tangent",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 8)^2 + 4 \\)."
+            "text": "\\(\\cos^2\\theta = 1 - \\frac{25}{169} = \\frac{144}{169}\\), negative in QII \\(\\implies \\cos\\theta = -\\frac{12}{13}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "\\(\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = -\\frac{5}{12}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Double-Angle Sine",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 8)^2 + 4 \\implies (x - 8)^2 = y - 4 \\)."
+            "text": "Apply \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 8 \\)): \\( f^{-1}(x) = 8 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "\\(\\sin(2\\theta) = 2\\left(\\frac{5}{13}\\right)\\left(-\\frac{12}{13}\\right) = -\\frac{120}{169}\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 8 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 8 \\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — جيب التمام والظل في الربع الثاني",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "في الربع الثاني \\(\\cos\\theta < 0\\) ومن متطابقة فيثاغورس \\(\\cos\\theta = -\\frac{12}{13}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\tan\\theta = -\\frac{5}{12}\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — جيب ضعف الزاوية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "تطبيق المتطابقة \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sin(2\\theta) = -\\frac{120}{169}\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "ti": "Step Builder: Sinusoidal Amplitude, Period & Exact Ratios (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "بناء الخطوات: السعة والدورة والنسب المثلثية (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 16x + 69 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "8",
-        "h": "Divide 16 by 2."
+        "l": "State the amplitude of \\(y = -6\\cos(3x)\\):",
+        "a": "6",
+        "h": "Amplitude is |A| > 0."
       },
       {
-        "l": "Find the minimum value \\( k = 69 - 8^2 = \\)",
-        "a": "5",
-        "h": "Subtract 64 from 69."
+        "l": "If \\(\\tan\\theta = \\frac{5}{12}\\) for acute \\(\\theta\\), find \\(\\sec\\theta\\) numerator over \\(12\\):",
+        "a": "13",
+        "h": "Hypotenuse of (5, 12) right triangle."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 11 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "Convert \\(\\pi / 3\\) radians into degrees:",
+        "a": "60",
+        "h": "Multiply 180 by 1/3."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 16x + 69 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "8",
-        "h": "اقسم 16 على 2."
+        "l": "اذكر سعة الدالة \\(y = -6\\cos(3x)\\):",
+        "a": "6",
+        "h": "السعة تساوي القيمة المطلقة |A|."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 69 - 8^2 = \\)",
-        "a": "5",
-        "h": "اطرح 64 من 69."
+        "l": "إذا كان \\(\\tan\\theta = \\frac{5}{12}\\) لزاوية حادة، فما بسط \\(\\sec\\theta\\) المقامه \\(12\\)؟",
+        "a": "13",
+        "h": "وتر المثلث القائم ذي الضلعين 5 و12."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 11 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "حوّل \\(\\pi / 3\\) راديان إلى درجات:",
+        "a": "60",
+        "h": "احسب 180 ÷ 3."
       }
     ]
   },
@@ -1995,66 +2202,69 @@ D["ge-saat-trig-conics"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 16x + 68 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 16x + 68 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Solving a Triangle via Cosine & Sine Rules (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "ترتيب الخطوات: حل مثلث بقانوني جيب التمام والجيب (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "prompt": "Given SAS data (sides \\(a, b\\) and included angle \\(C\\)), order the steps to solve \\(\\triangle ABC\\):",
+    "prompt_ar": "بمعلومية ضلعين والزاوية المحصورة \\((a, b, C)\\)، رتّب خطوات حل المثلث \\(\\triangle ABC\\):",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 16x + 68 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 18x + (68 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-18)^2 - 4(1)(68 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "Compute \\(c^2 = a^2 + b^2 - 2ab\\cos C\\) using the Cosine Rule.",
+      "Take the positive square root \\(c = \\sqrt{c^2}\\).",
+      "Apply the Sine Rule (or Cosine Rule) to find the smaller remaining angle first (avoiding obtuse ambiguity).",
+      "Subtract the two known angles from \\(180^\\circ\\) to obtain the third angle."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 16x + 68 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 18x + (68 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-18)^2 - 4(68 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "حساب \\(c^2 = a^2 + b^2 - 2ab\\cos C\\) بقانون جيب التمام.",
+      "أخذ الجذر الموجب لإيجاد الضلع الثالث \\(c\\).",
+      "استعمال قانون الجيب لإيجاد الزاوية المقابلة للضلع الأصغر لتجنب التباس الزاوية المنفرجة.",
+      "طرح مجموع الزاويتين من \\(180^\\circ\\) لإيجاد الزاوية الثالثة."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Cosine Rule for third side → smaller angle via Sine Rule → angle sum 180°.",
+    "ex_ar": "قانون جيب التمام للضلع الثالث ← الزاوية الصغرى بقانون الجيب ← مجموع زوايا المثلث 180°."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (SAAT Trigonometry, Conic Sections & 3D Vectors)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
+    "ti": "Categorize: Sign of Trigonometric Ratios in Quadrant II (SAAT Trigonometry, Conic Sections & 3D Vectors)",
+    "ti_ar": "تصنيف: إشارة النسب المثلثية في الربع الثاني (حساب المثلثات والقطوع المخروطية والمتجهات في الفضاء (SAAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Positive in Quadrant II",
+      "Negative in Quadrant II"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "موجبة في الربع الثاني",
+      "سالبة في الربع الثاني"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 16x + 64 = 0 \\)",
-        "s_ar": "\\( x^2 - 16x + 64 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 17x + 8 = 0 \\)",
-        "s_ar": "\\( x^2 - 17x + 8 = 0 \\)",
+        "s": "\\(\\sin\\theta\\) and \\(\\csc\\theta\\)",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 8x + 67 = 0 \\)",
-        "s_ar": "\\( x^2 + 8x + 67 = 0 \\)",
-        "cat": 2
+        "s": "\\(\\cos\\theta\\) and \\(\\sec\\theta\\)",
+        "cat": 1
       },
       {
-        "s": "\\( 4x^2 - 32x + 64 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 32x + 64 = 0 \\)",
+        "s": "\\(\\tan\\theta\\) and \\(\\cot\\theta\\)",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "\\(\\sin\\theta\\) و\\(\\csc\\theta\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(\\cos\\theta\\) و\\(\\sec\\theta\\)",
+        "cat": 1
+      },
+      {
+        "s": "\\(\\tan\\theta\\) و\\(\\cot\\theta\\)",
+        "cat": 1
+      }
+    ],
+    "ex": "In Quadrant II (\\(x < 0, y > 0\\)), only \\(\\sin\\theta\\) and \\(\\csc\\theta\\) are positive.",
+    "ex_ar": "في الربع الثاني (\\(x < 0, y > 0\\)) يكون الجيب وقاطع التمام فقط موجبين."
   }
 ];
-
 D["ge-saat-calculus"] = [
   {
     "t": "qc",
@@ -2080,197 +2290,224 @@ D["ge-saat-calculus"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Theorems (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "صح / خطأ: النظريات الأساسية (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "ti": "True / False: Continuity, Derivatives & Concavity Criteria (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "صح أم خطأ: شروط الاتصال والاشتقاق والتقعر (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
     "items": [
       {
-        "s": "By the Fundamental Theorem of Calculus, \\( \\int_a^b f(x)\\,dx = F(b) - F(a) \\) where \\( F'(x) = f(x) \\).",
-        "a": true
+        "s": "Continuity of \\(f\\) at \\(x = a\\) corresponds to \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\).",
+        "a": true,
+        "ex": "Verified identity: \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)."
       },
       {
-        "s": "If \\( f(x) \\) is a polynomial, the slope of the tangent line at \\( x = a \\) is \\( f'(a) \\).",
-        "a": true
+        "s": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\) corresponds to \\(f'(c) = 0\\) and \\(f''(c) > 0\\).",
+        "a": false,
+        "ex": "Actually, Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\) corresponds to \\(f'(g(x)) \\cdot g'(x)\\)."
       },
       {
-        "s": "\\( \\lim_{x \\to \\infty} \\frac{4x^2 + 1}{2x^3 - 5} = 2 \\).",
-        "a": false
+        "s": "Newton–Raphson step corresponds to \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\).",
+        "a": true,
+        "ex": "Correct: \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)."
       }
     ],
     "items_ar": [
       {
-        "s": "حسب النظرية الأساسية للتفاضل والتكامل، \\( \\int_a^b f(x)\\,dx = F(b) - F(a) \\) حيث \\( F'(x) = f(x) \\).",
-        "a": true
+        "s": "شرط اتصال \\(f\\) عند \\(x = a\\) يكافئ \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\).",
+        "a": true,
+        "ex": "علاقة صحيحة: \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)."
       },
       {
-        "s": "ميل المماس لمنحنى الدالة \\( f(x) \\) عند \\( x = a \\) يساوي \\( f'(a) \\).",
-        "a": true
+        "s": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\) يكافئ \\(f'(c) = 0\\) و\\(f''(c) > 0\\).",
+        "a": false,
+        "ex": "الصواب أن قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\) يكافئ \\(f'(g(x)) \\cdot g'(x)\\)."
       },
       {
-        "s": "قيمة النهاية \\( \\lim_{x \\to \\infty} \\frac{4x^2 + 1}{2x^3 - 5} \\) تساوي \\( 2 \\).",
-        "a": false
+        "s": "تكرار نيوتن–رافسون العددي يكافئ \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\).",
+        "a": true,
+        "ex": "صحيح: \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Identities & Principles (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "مطابقة: القوانين والمفاهيم (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
     "p": [
       {
-        "l": "\\( \\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a} \\)",
-        "r": "Limit definition of the derivative \\( f'(a) \\)"
+        "l": "Continuity of \\(f\\) at \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\( \\int x^n\\,dx \\) (\\( n \\neq -1 \\))",
-        "r": "\\( \\frac{x^{n+1}}{n+1} + C \\) (Power rule of integration)"
+        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\( f'(c) = 0 \\)",
-        "r": "Critical point (candidate for local extremum)"
+        "l": "Strict local minimum test",
+        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
       },
       {
-        "l": "\\( \\int_a^b v(t)\\,dt \\)",
-        "r": "Net displacement of a particle from \\( t = a \\) to \\( t = b \\)"
+        "l": "Newton–Raphson step",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( \\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a} \\)",
-        "r": "تعريف المشتقة \\( f'(a) \\) باستخدام النهايات"
+        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
+        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
       },
       {
-        "l": "\\( \\int x^n\\,dx \\) (\\( n \\neq -1 \\))",
-        "r": "\\( \\frac{x^{n+1}}{n+1} + C \\) (قاعدة القوى في التكامل)"
+        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "\\( f'(c) = 0 \\)",
-        "r": "نقطة حرجة (مرشحة لقيمة قصوى محلية)"
+        "l": "اختبار النهاية الصغرى المحلية",
+        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
       },
       {
-        "l": "\\( \\int_a^b v(t)\\,dt \\)",
-        "r": "الإزاحة الصافية للجسيم في الفترة \\( [a, b] \\)"
+        "l": "تكرار نيوتن–رافسون العددي",
+        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
-    "q": "A student solves \\( \\sqrt{2x + 162} = x - 9 \\) step by step. Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 162} = x - 9 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "q": "A student differentiates \\(f(x) = x^2 e^{2x}\\). Which step omits a required calculus rule?",
+    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{2x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
     "steps": [
-      "Square both sides: \\( 2x + 162 = (x - 9)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 162 = x^2 - 18x + 81 \\).",
-      "Rearrange and factor: \\( x^2 - 20x - 81 = 0 \\).",
-      "Accept both roots without checking the non-negativity condition \\( x - 9 \\ge 0 \\)."
+      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{2x}\\).",
+      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 2 e^{2x}\\) via the Chain Rule.",
+      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 4x e^{2x}\\) instead of \\(u'v + uv'\\)."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 162 = (x - 9)^2 \\).",
-      "فك المربع الكامل: \\( 2x + 162 = x^2 - 18x + 81 \\).",
-      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 20x - 81 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 9 \\ge 0 \\)."
+      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{2x}\\).",
+      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 2 e^{2x}\\) بقاعدة السلسلة.",
+      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
     ],
-    "errorStep": 4,
+    "errorStep": 3,
     "reasons": [
-      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 9 \\ge 0 \\iff x \\ge 9 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 9)^2 \\) should not have a middle term.",
-      "Squaring both sides is never allowed for radical equations."
+      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{2x} + 2x^2 e^{2x} = x(2 + 2x)e^{2x}\\).",
+      "The derivative of \\(e^{2x}\\) is \\(e^{2x}\\) without factor \\(2\\).",
+      "\\((uv)' = u'v - uv'\\)."
     ],
     "reasons_ar": [
-      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 9 \\) واستبعاد الجذر الدخيل السالب.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين مطلقاً."
+      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 2x)e^{2x}\\).",
+      "مشتقة \\(e^{2x}\\) لا تُضرب في \\(2\\).",
+      "قاعدة الضرب تتضمن طرح الحدين."
     ],
-    "correctReason": 0,
-    "h": "Check the sign of the right-hand side \\( x - 9 \\) for the negative root.",
-    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 9 \\) عند التعويض بالجذر السالب.",
-    "sol": "Squaring introduces an extraneous root whenever \\( x - 9 < 0 \\). Only the root satisfying \\( x \\ge 9 \\) is valid.",
-    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 9 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
-    "q": "Consider \\( f(x) = x^2 - 18x + 85 \\) for \\( x \\ge 9 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 18x + 85 \\) حيث \\( x \\ge 9 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 4x\\) at \\(x = 3\\).",
+    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 4x\\) عند \\(x = 3\\).",
     "parts": [
       {
-        "label": "Part (a) — Completed Square & Range",
+        "label": "Part (a) — Resolving 0/0 Limit",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 9)^2 + 4 \\)."
+            "text": "Factor \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\) for \\(x \\neq 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+            "text": "Evaluate limit as \\(x \\to 2\\): \\(4\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Derivative & Tangent Equation",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Write \\( y = (x - 9)^2 + 4 \\implies (x - 9)^2 = y - 4 \\)."
+            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(3) = 31\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive root (since \\( x \\ge 9 \\)): \\( f^{-1}(x) = 9 + \\sqrt{x - 4} \\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "With \\(g(3) = 39\\), tangent is \\(y - 39 = 31(x - 3)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 9 \\) to select the positive branch of the square root.",
-    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 9 \\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل والاختصار \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "قيمة النهاية عند \\(x \\to 2\\) تساوي \\(4\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(3) = 31\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "معادلة المماس: \\(y - 39 = 31(x - 3)\\)."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 18x + 86 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
-        "a": "9",
-        "h": "Divide 18 by 2."
+        "l": "Evaluate \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
+        "a": "4",
+        "h": "Factor as (x − 2)(x + 2) and substitute x = 2."
       },
       {
-        "l": "Find the minimum value \\( k = 86 - 9^2 = \\)",
-        "a": "5",
-        "h": "Subtract 81 from 86."
+        "l": "For \\(g(x) = x^3 + 4x\\), evaluate \\(g(3) =\\)",
+        "a": "39",
+        "h": "Compute 27 + 12."
       },
       {
-        "l": "Evaluate \\( y \\) when \\( x = 12 \\): \\( y = \\)",
-        "a": "14",
-        "h": "Calculate \\( 3^2 + 5 \\)."
+        "l": "Evaluate instantaneous slope \\(g'(3) = 3(3)^2 + 4 =\\)",
+        "a": "31",
+        "h": "Compute 27 + 4."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 18x + 86 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
-        "a": "9",
-        "h": "اقسم 18 على 2."
+        "l": "احسب النهاية \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
+        "a": "4",
+        "h": "حلّل البسط واختصر ثم عوّض x = 2."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = 86 - 9^2 = \\)",
-        "a": "5",
-        "h": "اطرح 81 من 86."
+        "l": "للدالة \\(g(x) = x^3 + 4x\\)، احسب \\(g(3) =\\)",
+        "a": "39",
+        "h": "احسب 27 + 12."
       },
       {
-        "l": "احسب قيمة \\( y \\) عندما \\( x = 12 \\):",
-        "a": "14",
-        "h": "احسب \\( 3^2 + 5 \\)."
+        "l": "احسب ميل المماس \\(g'(3) = 3(3)^2 + 4 =\\)",
+        "a": "31",
+        "h": "احسب 27 + 4."
       }
     ]
   },
@@ -2288,63 +2525,69 @@ D["ge-saat-calculus"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Solution (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
-    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 18x + 85 \\) and \\( y = 2x + k \\):",
-    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 18x + 85 \\) والمستقيم \\( y = 2x + k \\):",
+    "ti": "Order the Steps: Classifying Stationary Points (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "ترتيب الخطوات: تحديد وتصنيف النقاط الحرجة (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "prompt": "Order the analytical steps to find and classify local extrema of \\(y = f(x)\\):",
+    "prompt_ar": "رتّب الخطوات التحليلية لإيجاد وتصنيف القيم القصوى المحلية للدالة \\(y = f(x)\\):",
     "items": [
-      "Equate the curve and line equations: \\( x^2 - 18x + 85 = 2x + k \\).",
-      "Rearrange into standard quadratic form: \\( x^2 - 20x + (85 - k) = 0 \\).",
-      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-20)^2 - 4(1)(85 - k) = 0 \\) for tangency.",
-      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+      "Differentiate \\(f(x)\\) to obtain the first derivative \\(f'(x)\\).",
+      "Solve \\(f'(x) = 0\\) (and check points where \\(f'\\) is undefined) to locate critical numbers \\(c\\).",
+      "Evaluate \\(f''(c)\\) (or sign change of \\(f'\\)) to classify each critical point as max, min, or inflection.",
+      "Substitute \\(x = c\\) back into the original \\(f(x)\\) to state exact coordinates \\((c, f(c))\\)."
     ],
     "items_ar": [
-      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 18x + 85 = 2x + k \\).",
-      "أعد الترتيب في الصورة القياسية: \\( x^2 - 20x + (85 - k) = 0 \\).",
-      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-20)^2 - 4(85 - k) = 0 \\).",
-      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+      "اشتقاق الدالة لإيجاد المشتقة الأولى \\(f'(x)\\).",
+      "حل المعادلة \\(f'(x) = 0\\) لتحديد القيم الحرجة \\(c\\).",
+      "اختبار إشارة المشتقة الثانية \\(f''(c)\\) لتصنيف النقطة إلى عظمى أو صغرى.",
+      "التعويض في الدالة الأصلية \\(f(c)\\) لكتابة إحداثيات النقطة الكاملة."
     ],
-    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
-    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+    "ex": "Find \\(f'\\) → solve \\(f'=0\\) → apply second-derivative/sign test → compute \\(f(c)\\).",
+    "ex_ar": "إيجاد المشتقة الأولى ← مساواتها بالصفر ← اختبار المشتقة الثانية ← حساب الإحداثي الصادي."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Mathematical Classification (SAAT Limits, Derivatives, Definite Integrals & Area)",
-    "ti_ar": "تصنيف: التصنيف الرياضي (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
+    "ti": "Categorize: Derivative & Second-Derivative Sign Meaning (SAAT Limits, Derivatives, Definite Integrals & Area)",
+    "ti_ar": "تصنيف: دلالة إشارة المشتقتين الأولى والثانية (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Local Minimum",
+      "Local Maximum",
+      "Concave Up & Increasing"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "قيمة صغرى محلية",
+      "قيمة عظمى محلية",
+      "متزايدة ومقعرة لأعلى"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 18x + 81 = 0 \\)",
-        "s_ar": "\\( x^2 - 18x + 81 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 19x + 9 = 0 \\)",
-        "s_ar": "\\( x^2 - 19x + 9 = 0 \\)",
+        "s": "\\(f'(c) = 0\\) and \\(f''(c) = +4 > 0\\)",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 9x + 84 = 0 \\)",
-        "s_ar": "\\( x^2 + 9x + 84 = 0 \\)",
-        "cat": 2
+        "s": "\\(f'(c) = 0\\) and \\(f''(c) = -4 < 0\\)",
+        "cat": 1
       },
       {
-        "s": "\\( 4x^2 - 36x + 81 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 36x + 81 = 0 \\)",
-        "cat": 1
+        "s": "\\(f'(x) > 0\\) and \\(f''(x) > 0\\)",
+        "cat": 2
       }
     ],
-    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "\\(f'(c) = 0\\) و\\(f''(c) = +4 > 0\\)",
+        "cat": 0
+      },
+      {
+        "s": "\\(f'(c) = 0\\) و\\(f''(c) = -4 < 0\\)",
+        "cat": 1
+      },
+      {
+        "s": "\\(f'(x) > 0\\) و\\(f''(x) > 0\\)",
+        "cat": 2
+      }
+    ],
+    "ex": "Zero slope + positive curvature is a local minimum; negative curvature is a local maximum.",
+    "ex_ar": "انعدام الميل مع تقعر موجب يعطي صغرى محلية، ومع تقعر سالب يعطي عظمى محلية."
   }
 ];
 });

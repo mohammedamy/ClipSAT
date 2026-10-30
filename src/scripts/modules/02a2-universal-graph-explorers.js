@@ -60,6 +60,7 @@
     var canvas = document.getElementById(cfg.canvasId || (pfx + 'Canvas'));
     if(!canvas || canvas._csMountedTrig6) return;
     canvas._csMountedTrig6 = true;
+    if(canvas.parentNode && canvas.parentNode.classList) canvas.parentNode.classList.add('ex-dual-pane');
 
     var sFn = document.getElementById(pfx + 'Fn');
     var sTheta = document.getElementById(pfx + 'Theta');
@@ -76,7 +77,7 @@
     var amp = sAmp ? parseFloat(sAmp.value) : 1;
     var freq = sFreq ? parseFloat(sFreq.value) : 1;
     var TEAL = '#0d9488', ROSE = '#e11d48';
-    var lastSplitX = 220, lastPuc = null, lastPw = null;
+    var lastSplitX = 220, lastSplitY = 160, lastStacked = false, lastPuc = null, lastPw = null;
 
     var chApi = K.attachChallenge(canvas, {
       prompt: cfg.challengePrompt || {
@@ -134,11 +135,17 @@
     function draw(ctx, w, h){
       var C = K.colors();
       ctx.clearRect(0, 0, w, h);
+      var stacked = w < 520;
+      lastStacked = stacked;
       var splitX = Math.round(w * 0.38);
+      var splitY = Math.round(h * 0.44);
       lastSplitX = splitX;
+      lastSplitY = splitY;
 
-      /* LEFT PANE: UNIT CIRCLE GEOMETRY */
-      var padL = {l: 16, r: Math.max(12, w - splitX + 6), t: 22, b: 24};
+      /* LEFT / TOP PANE: UNIT CIRCLE GEOMETRY */
+      var padL = stacked
+        ? {l: 14, r: 14, t: 20, b: Math.max(12, h - splitY + 6)}
+        : {l: 16, r: Math.max(12, w - splitX + 6), t: 22, b: 24};
       var viewUC = K._fitView(-1.55, 1.55, -1.55, 1.55, w, h, padL);
       var Puc = new K.Plot(ctx, w, h, viewUC, padL);
       lastPuc = Puc;
@@ -195,19 +202,26 @@
       ctx.fillStyle = C.MUTED;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      ctx.fillText('Unit Circle (drag θ)', padL.l + 2, 4);
+      ctx.fillText(w < 380 ? 'Unit Circle (θ)' : 'Unit Circle (drag θ)', padL.l + 2, 4);
 
       ctx.save();
       ctx.strokeStyle = C.LINE;
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(splitX, 8);
-      ctx.lineTo(splitX, h - 8);
+      if(stacked){
+        ctx.moveTo(10, splitY);
+        ctx.lineTo(w - 10, splitY);
+      } else {
+        ctx.moveTo(splitX, 8);
+        ctx.lineTo(splitX, h - 8);
+      }
       ctx.stroke();
       ctx.restore();
 
-      /* RIGHT PANE: CARTESIAN WAVE GRAPH y = A * f(B * theta) */
-      var padR = {l: splitX + 30, r: 14, t: 22, b: 24};
+      /* RIGHT / BOTTOM PANE: CARTESIAN WAVE GRAPH y = A * f(B * theta) */
+      var padR = stacked
+        ? {l: 28, r: 12, t: splitY + 22, b: 22}
+        : {l: splitX + 30, r: 14, t: 22, b: 24};
       var ymaxW = Math.max(3.5, Math.abs(amp) * 2.2);
       var viewW = {xmin: -2 * Math.PI, xmax: 2 * Math.PI, ymin: -ymaxW, ymax: ymaxW};
       var Pw = new K.Plot(ctx, w, h, viewW, padR);
@@ -284,7 +298,10 @@
       var perStr = (fnKey === 'tan' || fnKey === 'cot')
         ? (freq === 1 ? 'π' : K.fmt(Math.PI / Math.abs(freq), 2))
         : (freq === 1 ? '2π' : K.fmt(2 * Math.PI / Math.abs(freq), 2));
-      ctx.fillText('y = ' + aStr + fnKey + '(' + bStr + ')  [Period ' + perStr + ']', padR.l, 4);
+      var waveHdrTxt = w < 400
+        ? ('y = ' + aStr + fnKey + '(' + bStr + ') · T=' + perStr)
+        : ('y = ' + aStr + fnKey + '(' + bStr + ')  [Period ' + perStr + ']');
+      ctx.fillText(waveHdrTxt, padR.l, stacked ? (splitY + 5) : 4);
 
       K._set(pfx + 'ThetaV', thetaDeg + '°');
       if(sAmp) K._set(pfx + 'AmpV', K.fmt(amp, 2));
@@ -315,7 +332,8 @@
     if(sFreq){ sFreq.addEventListener('input', sync); sFreq.addEventListener('change', sync); }
 
     bindCssDrag(canvas, function(px, py){
-      if(px < lastSplitX && lastPuc){
+      var inUC = lastStacked ? (py < lastSplitY) : (px < lastSplitX);
+      if(inUC && lastPuc){
         var wx = lastPuc.invX(px), wy = lastPuc.invY(py);
         var deg = Math.round((Math.atan2(wy, wx) * 180 / Math.PI) / 5) * 5;
         thetaDeg = Math.max(-360, Math.min(360, deg));
@@ -341,6 +359,7 @@
     var canvas = document.getElementById(cfg.canvasId || (pfx + 'Canvas'));
     if(!canvas || canvas._csMountedInvTrig6) return;
     canvas._csMountedInvTrig6 = true;
+    if(canvas.parentNode && canvas.parentNode.classList) canvas.parentNode.classList.add('ex-dual-pane');
 
     var sFn = document.getElementById(pfx + 'Fn');
     var sX = document.getElementById(pfx + 'X');
@@ -353,7 +372,7 @@
     var fnKey = (sFn && sFn.value) || cfg.defaultFn || 'arcsin';
     var xVal = sX ? parseFloat(sX.value) : 0.5;
     var TEAL = '#0d9488', ROSE = '#e11d48';
-    var lastSplitX = 320, lastPg = null;
+    var lastSplitX = 320, lastSplitY = 190, lastStacked = false, lastPg = null;
 
     var chApi = K.attachChallenge(canvas, {
       prompt: cfg.challengePrompt || {
@@ -457,10 +476,16 @@
       var C = K.colors();
       ctx.clearRect(0, 0, w, h);
       var S = SPECS[fnKey] || SPECS.arcsin;
+      var stacked = w < 520;
+      lastStacked = stacked;
       var splitX = Math.round(w * 0.64);
+      var splitY = Math.round(h * 0.56);
       lastSplitX = splitX;
+      lastSplitY = splitY;
 
-      var padL = {l: 30, r: Math.max(14, w - splitX + 8), t: 22, b: 24};
+      var padL = stacked
+        ? {l: 28, r: 14, t: 20, b: Math.max(14, h - splitY + 8)}
+        : {l: 30, r: Math.max(14, w - splitX + 8), t: 22, b: 24};
       var viewG = K._fitView(-3.4, 3.4, -3.4, 3.4, w, h, padL);
       var Pg = new K.Plot(ctx, w, h, viewG, padL);
       lastPg = Pg;
@@ -492,7 +517,7 @@
         Pg.hline(Math.PI / 2, ROSE, [4, 4]);
       }
 
-      Pg.curve(S.evalFwd, 'rgba(30,58,110,0.45)', 2.0, [4, 3]);
+      Pg.curve(S.evalFwd, C.INDIGO2 || 'rgba(30,58,110,0.6)', 1.9, [4, 3]);
 
       if(fnKey === 'arccsc' || fnKey === 'arcsec'){
         Pg.curve(function(x){ return x <= -1 ? S.evalInv(x) : NaN; }, C.AMBER2, 2.8);
@@ -515,19 +540,29 @@
       ctx.fillStyle = C.INDIGO;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      ctx.fillText('Amber: y = ' + S.name + '  |  Dashed: restricted ' + S.fwdName, padL.l, 4);
+      var invTopTxt = w < 460
+        ? ('y = ' + fnKey + '(x)  |  dashed: ' + S.fwdName)
+        : ('Amber: y = ' + S.name + '  |  Dashed: restricted ' + S.fwdName);
+      ctx.fillText(invTopTxt, padL.l, 4);
 
       ctx.save();
       ctx.strokeStyle = C.LINE;
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(splitX, 8);
-      ctx.lineTo(splitX, h - 8);
+      if(stacked){
+        ctx.moveTo(10, splitY);
+        ctx.lineTo(w - 10, splitY);
+      } else {
+        ctx.moveTo(splitX, 8);
+        ctx.lineTo(splitX, h - 8);
+      }
       ctx.stroke();
       ctx.restore();
 
-      /* RIGHT PANE: UNIT CIRCLE PRINCIPAL RANGE ARC */
-      var padR = {l: splitX + 12, r: 12, t: 24, b: 24};
+      /* RIGHT / BOTTOM PANE: UNIT CIRCLE PRINCIPAL RANGE ARC */
+      var padR = stacked
+        ? {l: 14, r: 14, t: splitY + 20, b: 22}
+        : {l: splitX + 12, r: 12, t: 24, b: 24};
       var viewUC = K._fitView(-1.35, 1.35, -1.35, 1.35, w, h, padR);
       var Puc = new K.Plot(ctx, w, h, viewUC, padR);
 
@@ -542,7 +577,7 @@
       }
       ctx.closePath();
       ctx.lineWidth = 1.3;
-      ctx.strokeStyle = '#cbd5e1';
+      ctx.strokeStyle = '#94a3b8';
       ctx.stroke();
 
       var aStart = (S.arcType.indexOf('right') === 0) ? -Math.PI / 2 : 0;
@@ -566,13 +601,14 @@
         Puc.dot(rcx, rcy, C.AMBER2, 5.2);
       }
 
+      var ucMidX = stacked ? (w / 2) : ((splitX + w) / 2);
       ctx.font = C.FONT;
       ctx.fillStyle = C.MUTED;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText('Principal Range Arc', (splitX + w) / 2, 4);
+      ctx.fillText('Principal Range Arc', ucMidX, stacked ? (splitY + 4) : 4);
       ctx.fillStyle = ok ? C.INDIGO : ROSE;
-      ctx.fillText(ok ? ('θ = ' + K.fmt(yVal * 180 / Math.PI, 1) + '°') : 'Outside Domain ' + S.domTxt, (splitX + w) / 2, h - 20);
+      ctx.fillText(ok ? ('θ = ' + K.fmt(yVal * 180 / Math.PI, 1) + '°') : 'Outside Domain ' + S.domTxt, ucMidX, h - 18);
 
       var dVal = S.derivFn(xVal);
       K._set(pfx + 'XV', K.fmt(xVal, 2));
@@ -612,8 +648,9 @@
     if(sFn) sFn.addEventListener('change', sync);
     if(sX){ sX.addEventListener('input', sync); sX.addEventListener('change', sync); }
 
-    bindCssDrag(canvas, function(px){
-      if(px < lastSplitX && lastPg){
+    bindCssDrag(canvas, function(px, py){
+      var inGraph = lastStacked ? (py < lastSplitY) : (px < lastSplitX);
+      if(inGraph && lastPg){
         var wx = lastPg.invX(px);
         var snapped = Math.round(Math.max(-3, Math.min(3, wx)) * 20) / 20;
         xVal = snapped;
@@ -950,11 +987,11 @@
         wrap.style.cssText = 'border:1px solid var(--line,#D6DCE6);border-radius:10px;background:var(--paper,#fff);overflow:hidden;margin:4px 0';
 
         wrap.innerHTML =
-          '<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line,#D6DCE6);font-size:.82rem;background:var(--panel,#f8fafc)">' +
-            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">' +
+          '<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line,#D6DCE6);font-size:.82rem;background:var(--panel,#f8fafc);color:var(--ink,#0f172a)">' +
+            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">' +
               '<span class="badge" style="font-size:.72rem">interactive slope field</span>' +
               '<label for="' + uid + '_sel" style="font-weight:600">dy/dx =</label>' +
-              '<select id="' + uid + '_sel" aria-label="Select differential equation" style="padding:3px 7px;border:1px solid var(--line,#cbd5e1);border-radius:6px;background:var(--paper,#fff);color:var(--ink,#0f172a);font-size:.8rem">' +
+              '<select id="' + uid + '_sel" aria-label="Select differential equation" style="padding:4px 8px;max-width:100%;border:1px solid var(--line,#cbd5e1);border-radius:6px;background:var(--paper,#fff);color:var(--ink,#0f172a);font-size:.8rem">' +
                 '<option value="custom" selected>' + escHtml(origExpr) + ' (chapter ODE)</option>' +
                 '<option value="xmy">x − y</option>' +
                 '<option value="y">y (exponential)</option>' +
@@ -964,13 +1001,13 @@
               '</select>' +
               '<label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" id="' + uid + '_eu"> Euler (h=0.5)</label>' +
             '</div>' +
-            '<div style="display:flex;align-items:center;gap:8px">' +
-              '<span id="' + uid + '_readout" class="mono" style="font-size:.79rem;color:var(--indigo,#1E3A6E)"></span>' +
-              '<button type="button" id="' + uid + '_pin" style="padding:2px 8px;border:1px solid var(--line,#cbd5e1);border-radius:6px;background:var(--paper,#fff);cursor:pointer;font-size:.76rem">+ Pin</button>' +
-              '<button type="button" id="' + uid + '_clr" style="padding:2px 8px;border:1px solid var(--line,#cbd5e1);border-radius:6px;background:var(--paper,#fff);cursor:pointer;font-size:.76rem">Reset</button>' +
+            '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">' +
+              '<span id="' + uid + '_readout" class="mono" style="font-size:.79rem;color:var(--indigo-2,var(--indigo,#1E3A6E))"></span>' +
+              '<button type="button" id="' + uid + '_pin" style="padding:3px 9px;border:1px solid var(--line,#cbd5e1);border-radius:6px;background:var(--paper,#fff);color:var(--ink,#0f172a);cursor:pointer;font-size:.76rem">+ Pin</button>' +
+              '<button type="button" id="' + uid + '_clr" style="padding:3px 9px;border:1px solid var(--line,#cbd5e1);border-radius:6px;background:var(--paper,#fff);color:var(--ink,#0f172a);cursor:pointer;font-size:.76rem">↺ Reset</button>' +
             '</div>' +
           '</div>' +
-          '<div class="canvas-wrap" style="aspect-ratio:16/9;max-height:310px;width:100%"><canvas id="' + uid + '_cv" aria-label="Interactive slope field — click or drag to move initial condition"></canvas></div>' +
+          '<div class="canvas-wrap" style="aspect-ratio:16/9;max-height:310px;min-height:210px;width:100%"><canvas id="' + uid + '_cv" aria-label="Interactive slope field — click or drag to move initial condition"></canvas></div>' +
           '<div style="padding:5px 12px;font-size:.75rem;color:var(--muted,#566173);border-top:1px solid var(--line,#D6DCE6)">Click or drag anywhere on the field to move initial point (x₀, y₀) and trace its RK4 solution curve live.</div>';
 
         svgHolder.appendChild(wrap);
@@ -1050,6 +1087,7 @@
         });
         clrBtn.addEventListener('click', function(){
           pinned = []; x0 = origX0; y0 = origY0; modeKey = 'custom'; selEl.value = 'custom';
+          showEuler = false; if(euEl) euEl.checked = false;
           K.redrawAll();
         });
         bindCssDrag(cv, function(px, py){

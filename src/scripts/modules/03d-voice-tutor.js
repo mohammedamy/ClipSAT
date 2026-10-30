@@ -1,13 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   03d-voice-tutor.js — Zero-API Client-Side AI Voice Tutor (window.CSVoiceTutor)
+   03d-voice-tutor.js — AI Voice Tutor (window.CSVoiceTutor)
    Provides natural spoken math (LaTeX-to-Speech in English & Arabic) and
    interactive voice narration across:
      1. 3-Tier Progressive Hints (.cs-hint-wrap & <details class="hint-tier">)
      2. Worked Solutions (.problem .solution, .cq-sol-box, .fep-sol-block, #mdeck-after)
      3. Interactive Practice Activities (.ix-box, Worked Examples, Step Builders)
      4. Interactive Canvas Explorers (.explorer live parameter & readout narrator)
-   Uses the browser's built-in Web Speech API (window.speechSynthesis) with zero
-   network latency, zero API keys, and zero cost.
+   Speaks with OpenRouter fish-audio/s2.1-pro-free:free through the Supabase tts-proxy
+   edge function (key kept server-side) and automatically falls back to the browser's
+   built-in Web Speech API (window.speechSynthesis — zero latency, zero cost) whenever
+   the cloud voice fails, is rate-limited, or the user is signed out.
    ═══════════════════════════════════════════════════════════════════════════ */
 (function(){
   "use strict";
@@ -613,9 +615,113 @@
     }
   }
 
+  /* ═══════════════════════════════════════════════════════════════════════════
+     Cloud voice (OpenRouter fish-audio/s2.1-pro-free:free via the Supabase
+     "tts-proxy" edge function) with automatic fallback to the browser's Web
+     Speech voice. The OpenRouter key never reaches the browser — it lives in
+     the Supabase secret OPENROUTER_API_KEY. ANY failure (not signed in, quota /
+     rate limit 429, credits 402, outage, timeout, autoplay block, missing
+     secret) silently falls back to the browser voice below, and after a
+     quota-style failure cloud voice is paused for a while so the next click
+     starts the browser voice instantly. Opt out: localStorage
+     clipsat_cloud_voice = '0'.
+     ═══════════════════════════════════════════════════════════════════════════ */
+  var TTS_PROXY_URL = 'https://ynnqrxeprxhtdimzwxwx.supabase.co/functions/v1/tts-proxy';
+  var CLOUD_CHUNK_MAX = 600;
+  var CLOUD_FETCH_TIMEOUT_MS = 15000;
+  var CLOUD_CACHE_MAX = 40;
+  var _playToken = 0;
+  var _cloudAudio = null;
+  var _cloudPausedUntilMem = 0;
+  var _cloudCache = {};
+  var _cloudCacheOrder = [];
+
+  function _cloudPausedUntil(){
+    var stored = 0;
+    try { stored = parseInt(sessionStorage.getItem('clipsat_tts_pause') || '0', 10) || 0; } catch(e){}
+    return Math.max(_cloudPausedUntilMem, stored);
+  }
+  function _pauseCloud(ms){
+    _cloudPausedUntilMem = Date.now() + ms;
+    try { sessionStorage.setItem('clipsat_tts_pause', String(_cloudPausedUntilMem)); } catch(e){}
+  }
+  function _cloudAvailable(){
+    try { if(localStorage.getItem('clipsat_cloud_voice') === '0') return false; } catch(e){}
+    if(typeof window.fetch !== 'function' || typeof window.Audio !== 'function') return false;
+    if(typeof window.URL === 'undefined' || typeof window.URL.createObjectURL !== 'function') return false;
+    var cloud = window.ClipSATCloud;
+    if(!cloud || !cloud.configured) return false;
+    return Date.now() > _cloudPausedUntil();
+  }
+
+  function _fetchCloudAudio(text, lang){
+    var key = lang + '|' + text;
+    if(_cloudCache[key]) return Promise.resolve(_cloudCache[key]);
+    var cloud = window.ClipSATCloud;
+    return Promise.resolve(cloud && cloud.ready).then(function(){
+      var client = cloud.getClient && cloud.getClient();
+      if(!client) throw new Error('NOT_SIGNED_IN');
+      return client.auth.getSession();
+    }).then(function(r){
+      var session = r && r.data && r.data.session;
+      if(!session || !session.access_token) throw new Error('NOT_SIGNED_IN');
+      var cfg = window.CLIPSAT_CLOUD_CONFIG || {};
+      var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, CLOUD_FETCH_TIMEOUT_MS) : null;
+      return fetch(TTS_PROXY_URL, {
+        method: 'POST', mode: 'cors',
+        signal: ctrl ? ctrl.signal : undefined,
+        headers: {
+          'Authorization': 'Bearer ' + session.access_token,
+          'apikey': cfg.anonKey || '',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: text, lang: lang })
+      }).then(function(res){
+        if(timer) clearTimeout(timer);
+        if(!res.ok){
+          var err = new Error('TTS_HTTP_' + res.status);
+          err.status = res.status;
+          throw err;
+        }
+        return res.blob();
+      }, function(e){
+        if(timer) clearTimeout(timer);
+        throw e;
+      });
+    }).then(function(blob){
+      if(!blob || !blob.size || (blob.type && blob.type.indexOf('audio') !== 0 && blob.type.indexOf('octet-stream') === -1)){
+        throw new Error('TTS_BAD_AUDIO');
+      }
+      var url = URL.createObjectURL(blob);
+      _cloudCache[key] = url;
+      _cloudCacheOrder.push(key);
+      while(_cloudCacheOrder.length > CLOUD_CACHE_MAX){
+        var old = _cloudCacheOrder.shift();
+        try { URL.revokeObjectURL(_cloudCache[old]); } catch(e){}
+        delete _cloudCache[old];
+      }
+      return url;
+    }).catch(function(e){
+      var st = e && e.status;
+      if(st === 429 || st === 402 || st === 503) _pauseCloud(30 * 60 * 1000);
+      else if(e && e.message !== 'NOT_SIGNED_IN') _pauseCloud(2 * 60 * 1000);
+      throw e;
+    });
+  }
+
   function stop(){
+    _playToken++;
     _utteranceQueue = [];
     _isSpeaking = false;
+    if(_cloudAudio){
+      try {
+        _cloudAudio.onended = null;
+        _cloudAudio.onerror = null;
+        _cloudAudio.pause();
+      } catch(e){}
+      _cloudAudio = null;
+    }
     if(_hasSpeechSupport()){
       try { window.speechSynthesis.cancel(); } catch(e){}
     }
@@ -625,8 +731,9 @@
     }
   }
 
-  /* Split long text into natural sentence chunks (< 220 chars) so Chrome Web Speech never times out */
-  function _chunkSentences(text){
+  /* Split long text into natural sentence chunks (< max chars; default 210 so Chrome Web Speech never times out) */
+  function _chunkSentences(text, max){
+    max = max || 210;
     var clean = String(text || '').replace(/\s+/g, ' ').trim();
     if(!clean) return [];
     var rawParts = clean.split(/(?<=[.!?؛،:])\s+/);
@@ -635,18 +742,18 @@
     for(var i = 0; i < rawParts.length; i++){
       var part = rawParts[i].trim();
       if(!part) continue;
-      if((current + ' ' + part).trim().length <= 210){
+      if((current + ' ' + part).trim().length <= max){
         current = (current ? (current + ' ' + part) : part);
       } else {
         if(current) chunks.push(current);
-        if(part.length <= 210){
+        if(part.length <= max){
           current = part;
         } else {
           /* Split very long clause on commas */
           var sub = part.split(/,\s+/);
           current = '';
           for(var j = 0; j < sub.length; j++){
-            if((current + ', ' + sub[j]).trim().length <= 210){
+            if((current + ', ' + sub[j]).trim().length <= max){
               current = current ? (current + ', ' + sub[j]) : sub[j];
             } else {
               if(current) chunks.push(current);
@@ -658,6 +765,110 @@
     }
     if(current) chunks.push(current);
     return chunks.length ? chunks : [clean];
+  }
+
+  function _finishPlayback(token, opts){
+    if(token !== _playToken) return;
+    var finishedBtn = _activeBtn;
+    _isSpeaking = false;
+    _activeBtn = null;
+    _cloudAudio = null;
+    if(finishedBtn) _setBtnState(finishedBtn, false);
+    if(typeof opts.onEnd === 'function') opts.onEnd();
+  }
+
+  /* Browser Web Speech voice (the original, always-available method). */
+  function _speakBrowser(spokenText, lang, opts, token){
+    if(token !== _playToken) return;
+    if(!_hasSpeechSupport()){
+      _finishPlayback(token, opts);
+      return;
+    }
+    var voice = _pickBestVoice(lang);
+    var chunks = _chunkSentences(spokenText);
+    if(!chunks.length){
+      _finishPlayback(token, opts);
+      return;
+    }
+    var idx = 0;
+    function speakNextChunk(){
+      if(token !== _playToken) return;
+      if(!_isSpeaking || idx >= chunks.length){
+        _finishPlayback(token, opts);
+        return;
+      }
+      var u = new window.SpeechSynthesisUtterance(chunks[idx]);
+      u.lang = (lang === 'ar') ? 'ar-SA' : 'en-US';
+      if(voice){
+        u.voice = voice;
+        if(voice.lang) u.lang = voice.lang;
+      }
+      u.rate = opts.rate || _speechRate || 0.98;
+      u.pitch = 1.0;
+      u.onend = function(){
+        idx++;
+        speakNextChunk();
+      };
+      u.onerror = function(){
+        if(token !== _playToken) return;
+        var errBtn = _activeBtn;
+        _isSpeaking = false;
+        _activeBtn = null;
+        if(errBtn) _setBtnState(errBtn, false);
+      };
+      _utteranceQueue.push(u);
+      try {
+        window.speechSynthesis.speak(u);
+      } catch(e){
+        stop();
+      }
+    }
+    speakNextChunk();
+  }
+
+  /* Cloud voice: chunk -> fetch -> play, prefetching the next chunk while the
+     current one plays. Any failure hands the REMAINING text to the browser voice. */
+  function _speakCloud(spokenText, lang, opts, token){
+    var chunks = _chunkSentences(spokenText, CLOUD_CHUNK_MAX);
+    if(!chunks.length){
+      _finishPlayback(token, opts);
+      return;
+    }
+    function fallbackFrom(i){
+      if(token !== _playToken) return;
+      _speakBrowser(chunks.slice(i).join(' '), lang, opts, token);
+    }
+    function playChunk(i, urlPromise){
+      urlPromise.then(function(url){
+        if(token !== _playToken) return;
+        var nextPromise = null;
+        if(i + 1 < chunks.length){
+          nextPromise = _fetchCloudAudio(chunks[i + 1], lang);
+          nextPromise.catch(function(){});
+        }
+        var a = new window.Audio(url);
+        var rate = opts.rate || _speechRate || 1;
+        a.playbackRate = Math.min(1.5, Math.max(0.7, rate));
+        _cloudAudio = a;
+        a.onended = function(){
+          if(token !== _playToken) return;
+          if(nextPromise) playChunk(i + 1, nextPromise);
+          else _finishPlayback(token, opts);
+        };
+        a.onerror = function(){
+          _pauseCloud(2 * 60 * 1000);
+          fallbackFrom(i);
+        };
+        var p = a.play();
+        if(p && typeof p.catch === 'function'){
+          /* e.g. autoplay blocked after the network wait -> browser voice */
+          p.catch(function(){ fallbackFrom(i); });
+        }
+      }, function(){
+        fallbackFrom(i);
+      });
+    }
+    playChunk(0, _fetchCloudAudio(chunks[0], lang));
   }
 
   function speak(text, opts){
@@ -674,57 +885,21 @@
 
     stop();
 
-    if(!_hasSpeechSupport()){
+    var useCloud = _cloudAvailable();
+    if(!useCloud && !_hasSpeechSupport()){
       return false;
     }
 
-    var voice = _pickBestVoice(lang);
-    var chunks = _chunkSentences(spokenText);
-    if(!chunks.length) return false;
-
+    var token = _playToken;
     _activeBtn = opts.btn || null;
     _isSpeaking = true;
     if(_activeBtn) _setBtnState(_activeBtn, true);
 
-    var idx = 0;
-    function speakNextChunk(){
-      if(!_isSpeaking || idx >= chunks.length){
-        var finishedBtn = _activeBtn;
-        _isSpeaking = false;
-        _activeBtn = null;
-        if(finishedBtn) _setBtnState(finishedBtn, false);
-        if(typeof opts.onEnd === 'function') opts.onEnd();
-        return;
-      }
-      var u = new window.SpeechSynthesisUtterance(chunks[idx]);
-      u.lang = (lang === 'ar') ? 'ar-SA' : 'en-US';
-      if(voice){
-        u.voice = voice;
-        if(voice.lang) u.lang = voice.lang;
-      }
-      u.rate = opts.rate || _speechRate || 0.98;
-      u.pitch = 1.0;
-      u.onend = function(){
-        idx++;
-        speakNextChunk();
-      };
-      u.onerror = function(){
-        var errBtn = _activeBtn;
-        _isSpeaking = false;
-        _activeBtn = null;
-        if(errBtn) _setBtnState(errBtn, false);
-      };
-      _utteranceQueue.push(u);
-      try {
-        window.speechSynthesis.speak(u);
-      } catch(e){
-        stop();
-      }
-    }
-
-    speakNextChunk();
+    if(useCloud) _speakCloud(spokenText, lang, opts, token);
+    else _speakBrowser(spokenText, lang, opts, token);
     return true;
   }
+
 
   function toggleSpeak(btn, targetElOrText, lang){
     if(_isSpeaking && btn && _activeBtn === btn){

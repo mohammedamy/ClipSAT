@@ -27,3 +27,11 @@ entrypoint = "./functions/google-token/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/google-token/*.html" ]
+
+[functions.tts-proxy]
+enabled = true
+# Same reasoning as ai-proxy: require a validly-signed Supabase JWT up front;
+# index.ts (withSupabase auth:"user") additionally requires a real signed-in user.
+verify_jwt = true
+import_map = "./functions/tts-proxy/deno.json"
+entrypoint = "./functions/tts-proxy/index.ts"

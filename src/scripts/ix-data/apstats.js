@@ -137,169 +137,191 @@ D["aps-overview"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (AP Statistics Exam Format & Study Design)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Exam Pacing & Time Allocation (AP Statistics Exam Format & Study Design)",
+    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدرجات (نظام اختبار AP Statistics وتصميم الدراسات الإحصائية)",
+    "q": "A student plans their timing for a 30-question, 45-minute section in APSTATS. Which step in their strategy introduces a flaw?",
+    "q_ar": "يخطط طالب لتوزيع وقته في قسم مكوّن من 30 سؤالاً خلال 45 دقيقة. أي خطوة تتضمن خللاً منهجياً؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
-      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+      "Compute average time budget per question: \\(\\frac{45\\times 60}{30} = 90\\) seconds.",
+      "Complete a first pass of straightforward items in roughly \\(63\\) seconds each to bank time.",
+      "Spend \\(9\\) minutes stuck on a single hard item before reading the remaining 15 questions.",
+      "Reserve the final \\(4\\) minutes to verify flagged items and ensure no unanswered blanks remain."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
-      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
-      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (AP Statistics Exam Format & Study Design)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
-      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+      "حساب متوسط الزمن لكل سؤال: \\(\\frac{45\\times 60}{30} = 90\\) ثانية.",
+      "إنجاز الجولة الأولى للأسئلة المباشرة خلال نحو \\(63\\) ثانية للسؤال لتوفير الوقت.",
+      "قضاء \\(9\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (15 سؤالاً).",
+      "تخصيص آخر \\(4\\) دقائق لمراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي إجابة فارغة."
+    ],
+    "errorStep": 3,
+    "reasons": [
+      "Sinking 9 minutes into one question sacrifices 5–6 solvable equal-weight items later in the section; hard items should be flagged for Pass 2.",
+      "Average time per question should be computed by multiplying minutes by questions.",
+      "You should leave unanswered blanks when there is no guessing penalty."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "استنزاف 9 دقائق في سؤال واحد يضيع 5–6 أسئلة قابلة للحل بنفس الوزن لاحقاً؛ يجب تعليم السؤال الصعب والعودة إليه في الجولة الثانية.",
+      "يُحسب متوسط الزمن بضرب الدقائق في عدد الأسئلة.",
+      "يفضّل ترك الأسئلة الصعبة فارغة حتى عند عدم وجود خصم على التخمين."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (AP Statistics Exam Format & Study Design)",
-    "q": "Let \\(f(x) = x^2 - 4x + 10\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Pacing Audit & Target Score Plan (AP Statistics Exam Format & Study Design)",
+    "ti_ar": "وضع المصحح: خطة إدارة الوقت والدرجة المستهدفة (نظام اختبار AP Statistics وتصميم الدراسات الإحصائية)",
+    "q": "A practice section has \\(30\\) equal-weight questions in \\(45\\) minutes with no penalty for wrong guesses. A student answers \\(27\\) correctly on Pass 1–2. (a) Find the exact seconds-per-question budget and accuracy percentage. (b) State the optimal triage rule for the remaining \\(3\\) flagged questions.",
+    "q_ar": "يتكون قسم تدريبي من \\(30\\) سؤالاً متساوية الوزن في \\(45\\) دقيقة دون خصم على الإجابات الخاطئة. أجاب طالب عن \\(27\\) سؤالاً بشكل صحيح. (أ) أوجد الزمن المخصص لكل سؤال بالثواني ونسبة الدقة المئوية. (ب) اذكر قاعدة الفرز المثلى للأسئلة المتبقية وعددها \\(3\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Time Budget & Raw Accuracy",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 10 = (x - 2)^2 + 6\\)."
+            "text": "Time per item: \\(\\frac{2700}{30} = 90\\text{ s}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 6\\) (or \\([6, \\infty)\\))."
+            "text": "Raw score percentage: \\(\\frac{27}{30} \\times 100\\% \\approx 90\\%\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Elimination & Zero-Blank Rule",
+        "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 6 \\implies (x - 2)^2 = y - 6\\)."
+            "text": "Eliminate clearly invalid distractors using dimensional/sign/boundary checks."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 6}\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 6\\) (matching the range of \\(f\\))."
+            "text": "Select the best remaining option on all \\(3\\) items before time expires (expected gain \\(> 0\\) with no guessing penalty)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 6}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (AP Statistics Exam Format & Study Design)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 10\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 6}\\) لأن \\(x \\ge 2\\)."
+    "parts_ar": [
+      {
+        "label": "الجزء (أ) — ميزانية الوقت ونسبة الدقة",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "الزمن لكل سؤال: \\(\\frac{2700}{30} = 90\\) ثانية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "النسبة المئوية للدرجة الخام: \\(\\frac{27}{30} \\times 100\\% \\approx 90\\%\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — استبعاد البدائل وعدم ترك فراغات",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "استبعاد الخيارات المستحيلة عبر فحص الإشارة أو القيم الحدية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "اختيار أفضل إجابة لجميع الأسئلة المتبقية (3) قبل انتهاء الوقت لعدم وجود خصم."
+          }
+        ]
+      }
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (AP Statistics Exam Format & Study Design)",
+    "ti": "Step Builder: Exam Time & Score Budget (AP Statistics Exam Format & Study Design)",
+    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والدرجة (نظام اختبار AP Statistics وتصميم الدراسات الإحصائية)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 4x + 10\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "2",
-        "h": "Take half of 4."
+        "l": "Convert \\(45\\) minutes into total seconds:",
+        "a": "2700",
+        "h": "Multiply 45 by 60."
       },
       {
-        "l": "Compute the minimum value \\(k = 10 - 2^2 =\\)",
-        "a": "6",
-        "h": "Subtract 4 from 10."
+        "l": "Divide by \\(30\\) questions to get seconds per question:",
+        "a": "90",
+        "h": "Compute 2700 / 30."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 4\\): \\(y =\\)",
-        "a": "10",
-        "h": "Compute \\((2)^2 + 6\\)."
+        "l": "If you answer \\(27\\) out of \\(30\\) correctly, how many items remain for review?",
+        "a": "3",
+        "h": "Subtract 27 from 30."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (AP Statistics Exam Format & Study Design)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 4x + 10\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "2",
-        "h": "اقسم معامل x وهو 4 على 2."
+        "l": "حوّل \\(45\\) دقيقة إلى إجمالي الثواني:",
+        "a": "2700",
+        "h": "اضرب 45 في 60."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 10 - 2^2 =\\)",
-        "a": "6",
-        "h": "اطرح 4 من 10."
+        "l": "اقسم على \\(30\\) سؤالاً لإيجاد عدد الثواني لكل سؤال:",
+        "a": "90",
+        "h": "احسب 2700 ÷ 30."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 4\\):",
-        "a": "10",
-        "h": "احسب \\(4 + 6\\)."
+        "l": "إذا حللت \\(27\\) من أصل \\(30\\)، فكم سؤالاً يتبقى للمراجعة؟",
+        "a": "3",
+        "h": "اطرح 27 من 30."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (AP Statistics Exam Format & Study Design)",
+    "ti": "Matching: High-Yield Exam Tactics (AP Statistics Exam Format & Study Design)",
+    "ti_ar": "مطابقة: تكتيكات الحل السريع والتحقق (نظام اختبار AP Statistics وتصميم الدراسات الإحصائية)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Pass 1 (63 s/item)",
+        "r": "Solve direct items immediately to bank guaranteed marks"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Boundary / Sign Sanity Check",
+        "r": "Eliminate options with impossible signs, units, or limiting values"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Back-Solving from Choices",
+        "r": "Substitute middle option first when algebraic setup is slow"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Final 3-Minute Sweep",
+        "r": "Verify flagged items and confirm zero unanswered questions"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (AP Statistics Exam Format & Study Design)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الجولة الأولى (63 ث/سؤال)",
+        "r": "حل الأسئلة المباشرة فوراً لتأمين الدرجات المضمونة"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "فحص الإشارة والقيم الحدية",
+        "r": "استبعاد الخيارات ذات الإشارات أو الوحدات المستحيلة رياضياً"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "التجريب العكسي للخيارات",
+        "r": "تعويض الخيار الأوسط أولاً عندما يكون البناء الجبري طويلاً"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "مراجعة الدقائق الثلاث الأخيرة",
+        "r": "مراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي فراغ"
       }
     ]
   }
 ];
-
 D["aps-u1"] = [
   {
     "t": "qc",
@@ -421,169 +443,189 @@ D["aps-u1"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 4\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 4\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
-      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
+      "Take square root for standard deviation."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
-      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
-      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
-      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
-      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 4 = 9\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 9\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "q": "Let \\(f(x) = x^2 - 10x + 32\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 24\\). For a simple random sample of size \\(n = 36\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 24\\). لعينة عشوائية حجمها \\(n = 36\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{24}{\\sqrt{36}} = \\dfrac{24}{6} = 4\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 32 = (x - 5)^2 + 7\\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 7\\) (or \\([7, \\infty)\\))."
+            "text": "\\(4(5) + 4 = 24\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 7 \\implies (x - 5)^2 = y - 7\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 7}\\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{24}{\\sqrt{36}} = 4\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 7\\) (matching the range of \\(f\\))."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(5) + 4 = 24\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 7}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 32\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 7}\\) لأن \\(x \\ge 5\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 10x + 32\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "5",
-        "h": "Take half of 10."
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 36\\):",
+        "a": "6",
+        "h": "Square root of 36."
       },
       {
-        "l": "Compute the minimum value \\(k = 32 - 5^2 =\\)",
-        "a": "7",
-        "h": "Subtract 25 from 32."
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 24\\):",
+        "a": "4",
+        "h": "Divide 24 by 6."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 7\\): \\(y =\\)",
-        "a": "11",
-        "h": "Compute \\((2)^2 + 7\\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "9",
+        "h": "Add 5 + 4."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Unit 1 · Exploring One-Variable & Two-Variable Data)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 10x + 32\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "5",
-        "h": "اقسم معامل x وهو 10 على 2."
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 36\\):",
+        "a": "6",
+        "h": "الجذر التربيعي للعدد 36."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 32 - 5^2 =\\)",
-        "a": "7",
-        "h": "اطرح 25 من 32."
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 24\\):",
+        "a": "4",
+        "h": "اقسم 24 على 6."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 7\\):",
-        "a": "11",
-        "h": "احسب \\(4 + 7\\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "9",
+        "h": "اجمع 5 + 4."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Unit 1 · Exploring One-Variable & Two-Variable Data)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   }
 ];
-
 D["aps-u2"] = [
   {
     "t": "qc",
@@ -703,169 +745,189 @@ D["aps-u2"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 2 · Collecting Data, Sampling & Experimental Design)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 6\\) and \\(\\operatorname{Var}(Y) = 5\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 6\\) و\\(\\operatorname{Var}(Y) = 5\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
-      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 6 - 5 = 1\\).",
+      "Take square root for standard deviation."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
-      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
-      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
-      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 6 - 5 = 1\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 6 + 5 = 11\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 11\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "q": "Let \\(f(x) = x^2 - 4x + 9\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 2 · Collecting Data, Sampling & Experimental Design)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 16\\). For a simple random sample of size \\(n = 64\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 16\\). لعينة عشوائية حجمها \\(n = 64\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{16}{\\sqrt{64}} = \\dfrac{16}{8} = 2\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 9 = (x - 2)^2 + 5\\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "\\(4(6) + 5 = 29\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 5 \\implies (x - 2)^2 = y - 5\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 5}\\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{16}{\\sqrt{64}} = 2\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(6) + 5 = 29\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 9\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 5}\\) لأن \\(x \\ge 2\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Unit 2 · Collecting Data, Sampling & Experimental Design)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 2 · Collecting Data, Sampling & Experimental Design)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 4x + 9\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 64\\):",
+        "a": "8",
+        "h": "Square root of 64."
+      },
+      {
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 16\\):",
         "a": "2",
-        "h": "Take half of 4."
+        "h": "Divide 16 by 8."
       },
       {
-        "l": "Compute the minimum value \\(k = 9 - 2^2 =\\)",
-        "a": "5",
-        "h": "Subtract 4 from 9."
-      },
-      {
-        "l": "Evaluate \\(y\\) when \\(x = 4\\): \\(y =\\)",
-        "a": "9",
-        "h": "Compute \\((2)^2 + 5\\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "11",
+        "h": "Add 6 + 5."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Unit 2 · Collecting Data, Sampling & Experimental Design)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 4x + 9\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 64\\):",
+        "a": "8",
+        "h": "الجذر التربيعي للعدد 64."
+      },
+      {
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 16\\):",
         "a": "2",
-        "h": "اقسم معامل x وهو 4 على 2."
+        "h": "اقسم 16 على 8."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 9 - 2^2 =\\)",
-        "a": "5",
-        "h": "اطرح 4 من 9."
-      },
-      {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 4\\):",
-        "a": "9",
-        "h": "احسب \\(4 + 5\\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "11",
+        "h": "اجمع 6 + 5."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Unit 2 · Collecting Data, Sampling & Experimental Design)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 2 · Collecting Data, Sampling & Experimental Design)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Unit 2 · Collecting Data, Sampling & Experimental Design)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   }
 ];
-
 D["aps-u3"] = [
   {
     "t": "tf",
@@ -1019,169 +1081,189 @@ D["aps-u3"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Unit 3 · Probability, Random Variables & Distributions)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 3 · Probability, Random Variables & Distributions)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة ٣ · الاحتمالات والمتغيرات العشوائية والتوزيعات)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 7\\) and \\(\\operatorname{Var}(Y) = 6\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 7\\) و\\(\\operatorname{Var}(Y) = 6\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
-      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 7 - 6 = 1\\).",
+      "Take square root for standard deviation."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
-      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
-      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Unit 3 · Probability, Random Variables & Distributions)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
-      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
-      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 7 - 6 = 1\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7 + 6 = 13\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 13\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Unit 3 · Probability, Random Variables & Distributions)",
-    "q": "Let \\(f(x) = x^2 - 4x + 5\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 3 · Probability, Random Variables & Distributions)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة ٣ · الاحتمالات والمتغيرات العشوائية والتوزيعات)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 30\\). For a simple random sample of size \\(n = 100\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 30\\). لعينة عشوائية حجمها \\(n = 100\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{30}{\\sqrt{100}} = \\dfrac{30}{10} = 3\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 5 = (x - 2)^2 + 1\\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "\\(4(7) + 6 = 34\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 1 \\implies (x - 2)^2 = y - 1\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 1}\\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{30}{\\sqrt{100}} = 3\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(7) + 6 = 34\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Unit 3 · Probability, Random Variables & Distributions)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 5\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 1}\\) لأن \\(x \\ge 2\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Unit 3 · Probability, Random Variables & Distributions)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 3 · Probability, Random Variables & Distributions)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة ٣ · الاحتمالات والمتغيرات العشوائية والتوزيعات)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 4x + 5\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
-        "a": "2",
-        "h": "Take half of 4."
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 100\\):",
+        "a": "10",
+        "h": "Square root of 100."
       },
       {
-        "l": "Compute the minimum value \\(k = 5 - 2^2 =\\)",
-        "a": "1",
-        "h": "Subtract 4 from 5."
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 30\\):",
+        "a": "3",
+        "h": "Divide 30 by 10."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 4\\): \\(y =\\)",
-        "a": "5",
-        "h": "Compute \\((2)^2 + 1\\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "13",
+        "h": "Add 7 + 6."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Unit 3 · Probability, Random Variables & Distributions)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 4x + 5\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
-        "a": "2",
-        "h": "اقسم معامل x وهو 4 على 2."
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 100\\):",
+        "a": "10",
+        "h": "الجذر التربيعي للعدد 100."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 5 - 2^2 =\\)",
-        "a": "1",
-        "h": "اطرح 4 من 5."
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 30\\):",
+        "a": "3",
+        "h": "اقسم 30 على 10."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 4\\):",
-        "a": "5",
-        "h": "احسب \\(4 + 1\\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "13",
+        "h": "اجمع 7 + 6."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Unit 3 · Probability, Random Variables & Distributions)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 3 · Probability, Random Variables & Distributions)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة ٣ · الاحتمالات والمتغيرات العشوائية والتوزيعات)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Unit 3 · Probability, Random Variables & Distributions)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   }
 ];
-
 D["aps-u4"] = [
   {
     "t": "qc",
@@ -1296,1043 +1378,1172 @@ D["aps-u4"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Algebraic & Domain Verification (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
-    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة ٤ · الاستدلال الإحصائي للنسب والمتوسطات والانحدار)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 8\\) and \\(\\operatorname{Var}(Y) = 3\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 8\\) و\\(\\operatorname{Var}(Y) = 3\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
-      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 8 - 3 = 5\\).",
+      "Take square root for standard deviation."
     ],
-    "errorStep": 4,
-    "reasons": [
-      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
-      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
-      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
-    ],
-    "correctReason": 0,
-    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
-    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
-    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
-    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps_ar": [
-      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
-      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
-      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
-      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 8 - 3 = 5\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+    ],
+    "errorStep": 2,
+    "reasons": [
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 8 + 3 = 11\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
-      "فك التربيع غير صحيح.",
-      "التحليل بإخراج العامل المشترك غير صحيح."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 11\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
-    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
-    "q": "Let \\(f(x) = x^2 - 8x + 19\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة ٤ · الاستدلال الإحصائي للنسب والمتوسطات والانحدار)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 16\\). For a simple random sample of size \\(n = 16\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 8,\\; \\operatorname{Var}(Y) = 3\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 16\\). لعينة عشوائية حجمها \\(n = 16\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 8,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{16}{\\sqrt{16}} = \\dfrac{16}{4} = 4\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 19 = (x - 4)^2 + 3\\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+            "text": "\\(4(8) + 3 = 35\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 3 \\implies (x - 4)^2 = y - 3\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 3}\\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{16}{\\sqrt{16}} = 4\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(8) + 3 = 35\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 19\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 3}\\) لأن \\(x \\ge 4\\)."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Completing the Square & Vertex Analysis (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة ٤ · الاستدلال الإحصائي للنسب والمتوسطات والانحدار)",
     "steps": [
       {
-        "l": "In \\(y = x^2 - 8x + 19\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 16\\):",
         "a": "4",
-        "h": "Take half of 8."
+        "h": "Square root of 16."
       },
       {
-        "l": "Compute the minimum value \\(k = 19 - 4^2 =\\)",
-        "a": "3",
-        "h": "Subtract 16 from 19."
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 16\\):",
+        "a": "4",
+        "h": "Divide 16 by 4."
       },
       {
-        "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
-        "a": "7",
-        "h": "Compute \\((2)^2 + 3\\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 8,\\; \\operatorname{Var}(Y) = 3\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "11",
+        "h": "Add 8 + 3."
       }
     ],
-    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
     "steps_ar": [
       {
-        "l": "في الدالة \\(y = x^2 - 8x + 19\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 16\\):",
         "a": "4",
-        "h": "اقسم معامل x وهو 8 على 2."
+        "h": "الجذر التربيعي للعدد 16."
       },
       {
-        "l": "احسب القيمة الصغرى \\(k = 19 - 4^2 =\\)",
-        "a": "3",
-        "h": "اطرح 16 من 19."
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 16\\):",
+        "a": "4",
+        "h": "اقسم 16 على 4."
       },
       {
-        "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
-        "a": "7",
-        "h": "احسب \\(4 + 3\\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 8,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "11",
+        "h": "اجمع 8 + 3."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Core Algebraic & Analytic Principles (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة ٤ · الاستدلال الإحصائي للنسب والمتوسطات والانحدار)",
     "p": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "Vieta's root-coefficient relations"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
-    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (Unit 4 · Statistical Inference: Proportions, Means & Slopes)",
     "p_ar": [
       {
-        "l": "\\(b^2 - 4ac = 0\\)",
-        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
-        "r": "علاقات فييت بين الجذور والمعاملات"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   }
 ];
-
 D["aps-u5"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Histogram Frequency Density (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(15\\). What bar height (frequency density) should be plotted?",
+    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(15\\). ما كثافة التكرار (ارتفاع العمود)؟",
     "o": [
-      "\\( 5 \\)",
-      "\\( 8 \\)",
-      "\\( -8 \\)",
-      "\\( 69 \\)"
+      "\\(3\\)",
+      "\\(15\\)",
+      "\\(75\\)",
+      "\\(1\\)"
     ],
     "o_ar": [
-      "\\( 5 \\)",
-      "\\( 8 \\)",
-      "\\( -8 \\)",
-      "\\( 69 \\)"
+      "\\(3\\)",
+      "\\(15\\)",
+      "\\(75\\)",
+      "\\(1\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
+    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 15 \\div 5 = 3\\).",
+    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Mathematical Properties (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "ti": "True / False: Statistical Measures & Outlier Robustness (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
     "items": [
       {
-        "s": "The quadratic \\( (x - 8)^2 + 2 \\) attains its minimum value \\( 2 \\) at \\( x = 8 \\).",
-        "a": true
+        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "a": true,
+        "ex": "Order statistics depend on middle ranks, not extreme tail values."
       },
       {
-        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
-        "a": true
+        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "a": false,
+        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
       },
       {
-        "s": "The derivative of \\( x^3 - 24x \\) at \\( x = 8 \\) is zero.",
-        "a": false
+        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "a": true,
+        "ex": "Equal mean and variance is a defining property of the Poisson model."
       }
     ],
     "items_ar": [
       {
-        "s": "المقدار التربيعي \\( (x - 8)^2 + 2 \\) يبلغ قيمته الصغرى \\( 2 \\) عند \\( x = 8 \\).",
-        "a": true
+        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "a": true,
+        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
       },
       {
-        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
-        "a": true
+        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "a": false,
+        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
       },
       {
-        "s": "مشتقة \\( x^3 - 24x \\) عند \\( x = 8 \\) تساوي صفراً.",
-        "a": false
+        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "a": true,
+        "ex": "خاصية أساسية لتوزيع بواسون."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Algebraic & Analytical Identities (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
     "p": [
       {
-        "l": "\\( (x - 8)^2 + 2 \\)",
-        "r": "Turning point at \\( (8, 2) \\)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac > 0 \\)",
-        "r": "Two distinct real roots / intersections"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( b^2 - 4ac = 0 \\)",
-        "r": "One repeated tangent root"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac < 0 \\)",
-        "r": "No real roots (strictly separated)"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( (x - 8)^2 + 2 \\)",
-        "r": "نقطة الرأس عند \\( (8, 2) \\)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac > 0 \\)",
-        "r": "جذران حقيقيان متمايزان"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( b^2 - 4ac = 0 \\)",
-        "r": "جذر حقيقي مكرر (حالة التماس)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac < 0 \\)",
-        "r": "لا توجد جذور حقيقية"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   },
   {
     "t": "num",
-    "ti": "Numeric Entry: Exact Evaluation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "إدخال رقمي: الحساب الدقيق (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "q": "Evaluate \\( f(11) \\) given \\( f(x) = (x - 8)^2 + 2 \\).",
-    "q_ar": "احسب قيمة \\( f(11) \\) إذا علمت أن \\( f(x) = (x - 8)^2 + 2 \\).",
-    "a": 11,
-    "h": "Substitute \\( x = 11 \\) so \\( x - 8 = 3 \\).",
-    "h_ar": "عوّض عن \\( x = 11 \\) بحيث يصبح \\( x - 8 = 3 \\).",
-    "sol": "\\( f(11) = 3^2 + 2 = 11 \\).",
-    "sol_ar": "\\( f(11) = 3^2 + 2 = 11 \\)."
+    "ti": "Numeric Entry: Sampling Standard Error (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "إدخال رقمي: حساب الخطأ المعياري للمتوسط (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "A population has \\(\\sigma = 12\\). Compute the standard error \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) for sample size \\(n = 36\\).",
+    "q_ar": "مجتمع انحرافه المعياري \\(\\sigma = 12\\). احسب الخطأ المعياري \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) لعينة حجمها \\(n = 36\\).",
+    "a": "2",
+    "ex": "\\(\\sigma_{\\bar{x}} = 12 / 6 = 2\\).",
+    "ex_ar": "\\(\\sigma_{\\bar{x}} = 12 / 6 = 2\\)."
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Derivation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 16x + 66 \\):",
-    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 16x + 66 \\):",
+    "ti": "Order the Steps: Significance Hypothesis Test (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "ترتيب الخطوات: إجراء اختبار الفروض الإحصائية (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "prompt": "Place the four standard stages of a statistical significance test in logical order:",
+    "prompt_ar": "رتّب المراحل الأربع لاختبار الدلالة الإحصائية ترتيباً منطقياً:",
     "items": [
-      "Identify the coefficient of \\( x \\) as \\( -16 \\) and halve it to get \\( -8 \\).",
-      "Write the squared binomial \\( (x - 8)^2 = x^2 - 16x + 64 \\).",
-      "Adjust the constant term: \\( f(x) = (x - 8)^2 - 64 + 66 = (x - 8)^2 + 2 \\).",
-      "Conclude that the minimum value is \\( 2 \\), attained when \\( x = 8 \\)."
+      "State null \\(H_0\\) and alternative \\(H_a\\) hypotheses in terms of the population parameter.",
+      "Verify random sampling and large-sample / normality conditions.",
+      "Compute the test statistic and corresponding tail \\(p\\)-value.",
+      "Compare \\(p\\)-value against \\(\\alpha\\) and state the conclusion in context."
     ],
     "items_ar": [
-      "حدد معامل \\( x \\) وهو \\( -16 \\) واقسمه على 2 لتحصل على \\( -8 \\).",
-      "اكتب المربع الكامل \\( (x - 8)^2 = x^2 - 16x + 64 \\).",
-      "عدّل الحد الثابت: \\( f(x) = (x - 8)^2 + 2 \\).",
-      "استنتج أن القيمة الصغرى هي \\( 2 \\) وتتحقق عند \\( x = 8 \\)."
+      "صياغة فرض العدم \\(H_0\\) والفرض البديل \\(H_a\\) بدلالة معلمة المجتمع.",
+      "التحقق من العشوائية وشروط حجم العينة والاعتدالية.",
+      "حساب إحصائية الاختبار والقيمة الاحتمالية \\(p\\)-value.",
+      "مقارنة \\(p\\)-value بمستوى الدلالة \\(\\alpha\\) وكتابة القرار في سياق المسألة."
     ],
-    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
-    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+    "ex": "Hypotheses → conditions → test statistic & p-value → decision in context.",
+    "ex_ar": "صياغة الفروض ← التحقق من الشروط ← إحصائية الاختبار ← القرار الإحصائي."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Discriminant Classification (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Resistant to Outliers",
+      "Sensitive to Outliers"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "مقاوم للقيم المتطرفة",
+      "حساس للقيم المتطرفة"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 16x + 64 = 0 \\)",
-        "s_ar": "\\( x^2 - 16x + 64 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 17x + 8 = 0 \\)",
-        "s_ar": "\\( x^2 - 17x + 8 = 0 \\)",
+        "s": "Sample Median",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 8x + 68 = 0 \\)",
-        "s_ar": "\\( x^2 + 8x + 68 = 0 \\)",
-        "cat": 2
+        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
       },
       {
-        "s": "\\( 4x^2 - 32x + 64 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 32x + 64 = 0 \\)",
+        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "Sample Standard Deviation (\\(s\\))",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "الوسيط الحسابي",
+        "cat": 0
+      },
+      {
+        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
+      },
+      {
+        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "cat": 1
+      }
+    ],
+    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
+    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Extraneous Root Check (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "q": "A student solves \\( \\sqrt{2x + 128} = x - 8 \\). Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 128} = x - 8 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 4\\) and \\(\\operatorname{Var}(Y) = 4\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 4\\) و\\(\\operatorname{Var}(Y) = 4\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides: \\( 2x + 128 = (x - 8)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 128 = x^2 - 16x + 64 \\).",
-      "Rearrange into standard form: \\( x^2 - 18x - 64 = 0 \\).",
-      "Accept both algebraic roots without checking \\( x - 8 \\ge 0 \\)."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 4 - 4 = 0\\).",
+      "Take square root for standard deviation."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 128 = (x - 8)^2 \\).",
-      "فك التربيع: \\( 2x + 128 = x^2 - 16x + 64 \\).",
-      "إعادة الترتيب: \\( x^2 - 18x - 64 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 8 \\ge 0 \\)."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 4 - 4 = 0\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 8 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 8)^2 \\) should omit the middle term.",
-      "Squaring both sides is never valid."
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 4 + 4 = 8\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 8 \\) ويُرفض الجذر السالب الدخيل.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 8\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "correctReason": 0,
-    "h": "Test whether \\( x - 8 \\ge 0 \\) holds for both roots.",
-    "h_ar": "تحقق من شرط \\( x - 8 \\ge 0 \\) لكلا الجذرين.",
-    "sol": "Only the root satisfying \\( x \\ge 8 \\) is a valid solution to the radical equation.",
-    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 8 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Rubric Problem (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "q": "Let \\( f(x) = x^2 - 16x + 66 \\) for \\( x \\ge 8 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 16x + 66 \\) حيث \\( x \\ge 8 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 12\\). For a simple random sample of size \\(n = 36\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 4\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 12\\). لعينة عشوائية حجمها \\(n = 36\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 8)^2 + 2 \\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State range: \\( f(x) \\ge 2 \\)."
+            "text": "\\(4(4) + 4 = 20\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\( y = (x - 8)^2 + 2 \\implies (x - 8)^2 = y - 2 \\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Choose positive root: \\( f^{-1}(x) = 8 + \\sqrt{x - 2} \\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{12}{\\sqrt{36}} = 2\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 2 \\)."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(4) + 4 = 20\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Use the domain restriction \\( x \\ge 8 \\) to select the positive square root branch.",
-    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 8 \\) لاختيار الفرع الموجب للجذر التربيعي."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "بناء الخطوات: حساب موجه (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 16x + 66 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
-        "a": "8",
-        "h": "Divide 16 by 2."
-      },
-      {
-        "l": "Find the minimum value \\( k = 66 - 8^2 = \\)",
-        "a": "2",
-        "h": "Subtract 64 from 66."
-      },
-      {
-        "l": "Evaluate \\( y \\) at \\( x = 10 \\):",
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 36\\):",
         "a": "6",
-        "h": "Compute \\( 2^2 + 2 \\)."
+        "h": "Square root of 36."
+      },
+      {
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 12\\):",
+        "a": "2",
+        "h": "Divide 12 by 6."
+      },
+      {
+        "l": "For independent \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 4\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "8",
+        "h": "Add 4 + 4."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 16x + 66 \\)، أوجد قيمة \\( h \\):",
-        "a": "8",
-        "h": "اقسم 16 على 2."
-      },
-      {
-        "l": "أوجد القيمة الصغرى \\( k = \\)",
-        "a": "2",
-        "h": "اطرح 64 من 66."
-      },
-      {
-        "l": "احسب قيمة \\( y \\) عند \\( x = 10 \\):",
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 36\\):",
         "a": "6",
-        "h": "احسب \\( 2^2 + 2 \\)."
+        "h": "الجذر التربيعي للعدد 36."
+      },
+      {
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 12\\):",
+        "a": "2",
+        "h": "اقسم 12 على 6."
+      },
+      {
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "8",
+        "h": "اجمع 4 + 4."
       }
     ]
   }
 ];
-
 D["aps-u6"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "What is the minimum value of \\( f(x) = (x - 9)^2 + 6 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 9)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Histogram Frequency Density (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(20\\). What bar height (frequency density) should be plotted?",
+    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(20\\). ما كثافة التكرار (ارتفاع العمود)؟",
     "o": [
-      "\\( 6 \\)",
-      "\\( 9 \\)",
-      "\\( -9 \\)",
-      "\\( 87 \\)"
+      "\\(4\\)",
+      "\\(20\\)",
+      "\\(100\\)",
+      "\\(1\\)"
     ],
     "o_ar": [
-      "\\( 6 \\)",
-      "\\( 9 \\)",
-      "\\( -9 \\)",
-      "\\( 87 \\)"
+      "\\(4\\)",
+      "\\(20\\)",
+      "\\(100\\)",
+      "\\(1\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 9)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 9 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 9 \\)."
+    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 20 \\div 5 = 4\\).",
+    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Mathematical Properties (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "ti": "True / False: Statistical Measures & Outlier Robustness (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
     "items": [
       {
-        "s": "The quadratic \\( (x - 9)^2 + 3 \\) attains its minimum value \\( 3 \\) at \\( x = 9 \\).",
-        "a": true
+        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "a": true,
+        "ex": "Order statistics depend on middle ranks, not extreme tail values."
       },
       {
-        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
-        "a": true
+        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "a": false,
+        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
       },
       {
-        "s": "The derivative of \\( x^3 - 27x \\) at \\( x = 9 \\) is zero.",
-        "a": false
+        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "a": true,
+        "ex": "Equal mean and variance is a defining property of the Poisson model."
       }
     ],
     "items_ar": [
       {
-        "s": "المقدار التربيعي \\( (x - 9)^2 + 3 \\) يبلغ قيمته الصغرى \\( 3 \\) عند \\( x = 9 \\).",
-        "a": true
+        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "a": true,
+        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
       },
       {
-        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
-        "a": true
+        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "a": false,
+        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
       },
       {
-        "s": "مشتقة \\( x^3 - 27x \\) عند \\( x = 9 \\) تساوي صفراً.",
-        "a": false
+        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "a": true,
+        "ex": "خاصية أساسية لتوزيع بواسون."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Algebraic & Analytical Identities (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
     "p": [
       {
-        "l": "\\( (x - 9)^2 + 3 \\)",
-        "r": "Turning point at \\( (9, 3) \\)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac > 0 \\)",
-        "r": "Two distinct real roots / intersections"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( b^2 - 4ac = 0 \\)",
-        "r": "One repeated tangent root"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac < 0 \\)",
-        "r": "No real roots (strictly separated)"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( (x - 9)^2 + 3 \\)",
-        "r": "نقطة الرأس عند \\( (9, 3) \\)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac > 0 \\)",
-        "r": "جذران حقيقيان متمايزان"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( b^2 - 4ac = 0 \\)",
-        "r": "جذر حقيقي مكرر (حالة التماس)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac < 0 \\)",
-        "r": "لا توجد جذور حقيقية"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   },
   {
     "t": "num",
-    "ti": "Numeric Entry: Exact Evaluation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "إدخال رقمي: الحساب الدقيق (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "Evaluate \\( f(12) \\) given \\( f(x) = (x - 9)^2 + 3 \\).",
-    "q_ar": "احسب قيمة \\( f(12) \\) إذا علمت أن \\( f(x) = (x - 9)^2 + 3 \\).",
-    "a": 12,
-    "h": "Substitute \\( x = 12 \\) so \\( x - 9 = 3 \\).",
-    "h_ar": "عوّض عن \\( x = 12 \\) بحيث يصبح \\( x - 9 = 3 \\).",
-    "sol": "\\( f(12) = 3^2 + 3 = 12 \\).",
-    "sol_ar": "\\( f(12) = 3^2 + 3 = 12 \\)."
+    "ti": "Numeric Entry: Sampling Standard Error (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "إدخال رقمي: حساب الخطأ المعياري للمتوسط (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "A population has \\(\\sigma = 24\\). Compute the standard error \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) for sample size \\(n = 64\\).",
+    "q_ar": "مجتمع انحرافه المعياري \\(\\sigma = 24\\). احسب الخطأ المعياري \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) لعينة حجمها \\(n = 64\\).",
+    "a": "3",
+    "ex": "\\(\\sigma_{\\bar{x}} = 24 / 8 = 3\\).",
+    "ex_ar": "\\(\\sigma_{\\bar{x}} = 24 / 8 = 3\\)."
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Derivation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 18x + 84 \\):",
-    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 18x + 84 \\):",
+    "ti": "Order the Steps: Significance Hypothesis Test (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "ترتيب الخطوات: إجراء اختبار الفروض الإحصائية (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "prompt": "Place the four standard stages of a statistical significance test in logical order:",
+    "prompt_ar": "رتّب المراحل الأربع لاختبار الدلالة الإحصائية ترتيباً منطقياً:",
     "items": [
-      "Identify the coefficient of \\( x \\) as \\( -18 \\) and halve it to get \\( -9 \\).",
-      "Write the squared binomial \\( (x - 9)^2 = x^2 - 18x + 81 \\).",
-      "Adjust the constant term: \\( f(x) = (x - 9)^2 - 81 + 84 = (x - 9)^2 + 3 \\).",
-      "Conclude that the minimum value is \\( 3 \\), attained when \\( x = 9 \\)."
+      "State null \\(H_0\\) and alternative \\(H_a\\) hypotheses in terms of the population parameter.",
+      "Verify random sampling and large-sample / normality conditions.",
+      "Compute the test statistic and corresponding tail \\(p\\)-value.",
+      "Compare \\(p\\)-value against \\(\\alpha\\) and state the conclusion in context."
     ],
     "items_ar": [
-      "حدد معامل \\( x \\) وهو \\( -18 \\) واقسمه على 2 لتحصل على \\( -9 \\).",
-      "اكتب المربع الكامل \\( (x - 9)^2 = x^2 - 18x + 81 \\).",
-      "عدّل الحد الثابت: \\( f(x) = (x - 9)^2 + 3 \\).",
-      "استنتج أن القيمة الصغرى هي \\( 3 \\) وتتحقق عند \\( x = 9 \\)."
+      "صياغة فرض العدم \\(H_0\\) والفرض البديل \\(H_a\\) بدلالة معلمة المجتمع.",
+      "التحقق من العشوائية وشروط حجم العينة والاعتدالية.",
+      "حساب إحصائية الاختبار والقيمة الاحتمالية \\(p\\)-value.",
+      "مقارنة \\(p\\)-value بمستوى الدلالة \\(\\alpha\\) وكتابة القرار في سياق المسألة."
     ],
-    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
-    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+    "ex": "Hypotheses → conditions → test statistic & p-value → decision in context.",
+    "ex_ar": "صياغة الفروض ← التحقق من الشروط ← إحصائية الاختبار ← القرار الإحصائي."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Discriminant Classification (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Resistant to Outliers",
+      "Sensitive to Outliers"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "مقاوم للقيم المتطرفة",
+      "حساس للقيم المتطرفة"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 18x + 81 = 0 \\)",
-        "s_ar": "\\( x^2 - 18x + 81 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 19x + 9 = 0 \\)",
-        "s_ar": "\\( x^2 - 19x + 9 = 0 \\)",
+        "s": "Sample Median",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 9x + 85 = 0 \\)",
-        "s_ar": "\\( x^2 + 9x + 85 = 0 \\)",
-        "cat": 2
+        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
       },
       {
-        "s": "\\( 4x^2 - 36x + 81 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 36x + 81 = 0 \\)",
+        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "Sample Standard Deviation (\\(s\\))",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "الوسيط الحسابي",
+        "cat": 0
+      },
+      {
+        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
+      },
+      {
+        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "cat": 1
+      }
+    ],
+    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
+    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Extraneous Root Check (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "A student solves \\( \\sqrt{2x + 162} = x - 9 \\). Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 162} = x - 9 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 5\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 5\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides: \\( 2x + 162 = (x - 9)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 162 = x^2 - 18x + 81 \\).",
-      "Rearrange into standard form: \\( x^2 - 20x - 81 = 0 \\).",
-      "Accept both algebraic roots without checking \\( x - 9 \\ge 0 \\)."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 5 = 0\\).",
+      "Take square root for standard deviation."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 162 = (x - 9)^2 \\).",
-      "فك التربيع: \\( 2x + 162 = x^2 - 18x + 81 \\).",
-      "إعادة الترتيب: \\( x^2 - 20x - 81 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 9 \\ge 0 \\)."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 5 = 0\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 9 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 9)^2 \\) should omit the middle term.",
-      "Squaring both sides is never valid."
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 5 = 10\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 9 \\) ويُرفض الجذر السالب الدخيل.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 10\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "correctReason": 0,
-    "h": "Test whether \\( x - 9 \\ge 0 \\) holds for both roots.",
-    "h_ar": "تحقق من شرط \\( x - 9 \\ge 0 \\) لكلا الجذرين.",
-    "sol": "Only the root satisfying \\( x \\ge 9 \\) is a valid solution to the radical equation.",
-    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 9 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Rubric Problem (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "Let \\( f(x) = x^2 - 18x + 84 \\) for \\( x \\ge 9 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 18x + 84 \\) حيث \\( x \\ge 9 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 24\\). For a simple random sample of size \\(n = 64\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 24\\). لعينة عشوائية حجمها \\(n = 64\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{24}{\\sqrt{64}} = \\dfrac{24}{8} = 3\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 9)^2 + 3 \\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State range: \\( f(x) \\ge 3 \\)."
+            "text": "\\(4(5) + 5 = 25\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\( y = (x - 9)^2 + 3 \\implies (x - 9)^2 = y - 3 \\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Choose positive root: \\( f^{-1}(x) = 9 + \\sqrt{x - 3} \\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{24}{\\sqrt{64}} = 3\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 3 \\)."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(5) + 5 = 25\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Use the domain restriction \\( x \\ge 9 \\) to select the positive square root branch.",
-    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 9 \\) لاختيار الفرع الموجب للجذر التربيعي."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "بناء الخطوات: حساب موجه (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 18x + 84 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
-        "a": "9",
-        "h": "Divide 18 by 2."
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 64\\):",
+        "a": "8",
+        "h": "Square root of 64."
       },
       {
-        "l": "Find the minimum value \\( k = 84 - 9^2 = \\)",
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 24\\):",
         "a": "3",
-        "h": "Subtract 81 from 84."
+        "h": "Divide 24 by 8."
       },
       {
-        "l": "Evaluate \\( y \\) at \\( x = 11 \\):",
-        "a": "7",
-        "h": "Compute \\( 2^2 + 3 \\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "10",
+        "h": "Add 5 + 5."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 18x + 84 \\)، أوجد قيمة \\( h \\):",
-        "a": "9",
-        "h": "اقسم 18 على 2."
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 64\\):",
+        "a": "8",
+        "h": "الجذر التربيعي للعدد 64."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = \\)",
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 24\\):",
         "a": "3",
-        "h": "اطرح 81 من 84."
+        "h": "اقسم 24 على 8."
       },
       {
-        "l": "احسب قيمة \\( y \\) عند \\( x = 11 \\):",
-        "a": "7",
-        "h": "احسب \\( 2^2 + 3 \\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "10",
+        "h": "اجمع 5 + 5."
       }
     ]
   }
 ];
-
 D["aps-u7"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
-    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "ti": "Quick Check: Histogram Frequency Density (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(25\\). What bar height (frequency density) should be plotted?",
+    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(25\\). ما كثافة التكرار (ارتفاع العمود)؟",
     "o": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(5\\)",
+      "\\(25\\)",
+      "\\(125\\)",
+      "\\(1\\)"
     ],
     "o_ar": [
-      "\\( 7 \\)",
-      "\\( 3 \\)",
-      "\\( -3 \\)",
-      "\\( 16 \\)"
+      "\\(5\\)",
+      "\\(25\\)",
+      "\\(125\\)",
+      "\\(1\\)"
     ],
     "a": 0,
-    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
-    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
+    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 25 \\div 5 = 5\\).",
+    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
   },
   {
     "t": "tf",
-    "ti": "True / False: Core Mathematical Properties (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "ti": "True / False: Statistical Measures & Outlier Robustness (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
     "items": [
       {
-        "s": "The quadratic \\( (x - 3)^2 + 4 \\) attains its minimum value \\( 4 \\) at \\( x = 3 \\).",
-        "a": true
+        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "a": true,
+        "ex": "Order statistics depend on middle ranks, not extreme tail values."
       },
       {
-        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
-        "a": true
+        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "a": false,
+        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
       },
       {
-        "s": "The derivative of \\( x^3 - 9x \\) at \\( x = 3 \\) is zero.",
-        "a": false
+        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "a": true,
+        "ex": "Equal mean and variance is a defining property of the Poisson model."
       }
     ],
     "items_ar": [
       {
-        "s": "المقدار التربيعي \\( (x - 3)^2 + 4 \\) يبلغ قيمته الصغرى \\( 4 \\) عند \\( x = 3 \\).",
-        "a": true
+        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "a": true,
+        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
       },
       {
-        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
-        "a": true
+        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "a": false,
+        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
       },
       {
-        "s": "مشتقة \\( x^3 - 9x \\) عند \\( x = 3 \\) تساوي صفراً.",
-        "a": false
+        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "a": true,
+        "ex": "خاصية أساسية لتوزيع بواسون."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Algebraic & Analytical Identities (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
     "p": [
       {
-        "l": "\\( (x - 3)^2 + 4 \\)",
-        "r": "Turning point at \\( (3, 4) \\)"
+        "l": "Conditional probability \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac > 0 \\)",
-        "r": "Two distinct real roots / intersections"
+        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( b^2 - 4ac = 0 \\)",
-        "r": "One repeated tangent root"
+        "l": "Standard \\(z\\)-score of observation \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac < 0 \\)",
-        "r": "No real roots (strictly separated)"
+        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
+        "r": "When \\(p\\text{-value} < \\alpha\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\( (x - 3)^2 + 4 \\)",
-        "r": "نقطة الرأس عند \\( (3, 4) \\)"
+        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac > 0 \\)",
-        "r": "جذران حقيقيان متمايزان"
+        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
+        "r": "\\(np(1 - p)\\)"
       },
       {
-        "l": "\\( b^2 - 4ac = 0 \\)",
-        "r": "جذر حقيقي مكرر (حالة التماس)"
+        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
+        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
       },
       {
-        "l": "\\( b^2 - 4ac < 0 \\)",
-        "r": "لا توجد جذور حقيقية"
+        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
+        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
       }
     ]
   },
   {
     "t": "num",
-    "ti": "Numeric Entry: Exact Evaluation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "إدخال رقمي: الحساب الدقيق (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "Evaluate \\( f(6) \\) given \\( f(x) = (x - 3)^2 + 4 \\).",
-    "q_ar": "احسب قيمة \\( f(6) \\) إذا علمت أن \\( f(x) = (x - 3)^2 + 4 \\).",
-    "a": 13,
-    "h": "Substitute \\( x = 6 \\) so \\( x - 3 = 3 \\).",
-    "h_ar": "عوّض عن \\( x = 6 \\) بحيث يصبح \\( x - 3 = 3 \\).",
-    "sol": "\\( f(6) = 3^2 + 4 = 13 \\).",
-    "sol_ar": "\\( f(6) = 3^2 + 4 = 13 \\)."
+    "ti": "Numeric Entry: Sampling Standard Error (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "إدخال رقمي: حساب الخطأ المعياري للمتوسط (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "A population has \\(\\sigma = 40\\). Compute the standard error \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) for sample size \\(n = 100\\).",
+    "q_ar": "مجتمع انحرافه المعياري \\(\\sigma = 40\\). احسب الخطأ المعياري \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) لعينة حجمها \\(n = 100\\).",
+    "a": "4",
+    "ex": "\\(\\sigma_{\\bar{x}} = 40 / 10 = 4\\).",
+    "ex_ar": "\\(\\sigma_{\\bar{x}} = 40 / 10 = 4\\)."
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Systematic Derivation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 6x + 13 \\):",
-    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 6x + 13 \\):",
+    "ti": "Order the Steps: Significance Hypothesis Test (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "ترتيب الخطوات: إجراء اختبار الفروض الإحصائية (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "prompt": "Place the four standard stages of a statistical significance test in logical order:",
+    "prompt_ar": "رتّب المراحل الأربع لاختبار الدلالة الإحصائية ترتيباً منطقياً:",
     "items": [
-      "Identify the coefficient of \\( x \\) as \\( -6 \\) and halve it to get \\( -3 \\).",
-      "Write the squared binomial \\( (x - 3)^2 = x^2 - 6x + 9 \\).",
-      "Adjust the constant term: \\( f(x) = (x - 3)^2 - 9 + 13 = (x - 3)^2 + 4 \\).",
-      "Conclude that the minimum value is \\( 4 \\), attained when \\( x = 3 \\)."
+      "State null \\(H_0\\) and alternative \\(H_a\\) hypotheses in terms of the population parameter.",
+      "Verify random sampling and large-sample / normality conditions.",
+      "Compute the test statistic and corresponding tail \\(p\\)-value.",
+      "Compare \\(p\\)-value against \\(\\alpha\\) and state the conclusion in context."
     ],
     "items_ar": [
-      "حدد معامل \\( x \\) وهو \\( -6 \\) واقسمه على 2 لتحصل على \\( -3 \\).",
-      "اكتب المربع الكامل \\( (x - 3)^2 = x^2 - 6x + 9 \\).",
-      "عدّل الحد الثابت: \\( f(x) = (x - 3)^2 + 4 \\).",
-      "استنتج أن القيمة الصغرى هي \\( 4 \\) وتتحقق عند \\( x = 3 \\)."
+      "صياغة فرض العدم \\(H_0\\) والفرض البديل \\(H_a\\) بدلالة معلمة المجتمع.",
+      "التحقق من العشوائية وشروط حجم العينة والاعتدالية.",
+      "حساب إحصائية الاختبار والقيمة الاحتمالية \\(p\\)-value.",
+      "مقارنة \\(p\\)-value بمستوى الدلالة \\(\\alpha\\) وكتابة القرار في سياق المسألة."
     ],
-    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
-    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+    "ex": "Hypotheses → conditions → test statistic & p-value → decision in context.",
+    "ex_ar": "صياغة الفروض ← التحقق من الشروط ← إحصائية الاختبار ← القرار الإحصائي."
   },
   {
     "t": "cat",
-    "ti": "Categorize: Discriminant Classification (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
     "categories": [
-      "Two Distinct Real Roots (Δ > 0)",
-      "One Repeated Tangent Root (Δ = 0)",
-      "No Real Roots (Δ < 0)"
+      "Resistant to Outliers",
+      "Sensitive to Outliers"
     ],
     "categories_ar": [
-      "جذران حقيقيان متمايزان (Δ > 0)",
-      "جذر حقيقي مكرر / تماس (Δ = 0)",
-      "لا توجد جذور حقيقية (Δ < 0)"
+      "مقاوم للقيم المتطرفة",
+      "حساس للقيم المتطرفة"
     ],
     "items": [
       {
-        "s": "\\( x^2 - 6x + 9 = 0 \\)",
-        "s_ar": "\\( x^2 - 6x + 9 = 0 \\)",
-        "cat": 1
-      },
-      {
-        "s": "\\( x^2 - 7x + 3 = 0 \\)",
-        "s_ar": "\\( x^2 - 7x + 3 = 0 \\)",
+        "s": "Sample Median",
         "cat": 0
       },
       {
-        "s": "\\( x^2 + 3x + 13 = 0 \\)",
-        "s_ar": "\\( x^2 + 3x + 13 = 0 \\)",
-        "cat": 2
+        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
       },
       {
-        "s": "\\( 4x^2 - 12x + 9 = 0 \\)",
-        "s_ar": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "Sample Standard Deviation (\\(s\\))",
         "cat": 1
       }
     ],
-    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
-    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+    "items_ar": [
+      {
+        "s": "الوسيط الحسابي",
+        "cat": 0
+      },
+      {
+        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "cat": 0
+      },
+      {
+        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "cat": 1
+      },
+      {
+        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "cat": 1
+      }
+    ],
+    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
+    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Extraneous Root Check (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "A student solves \\( \\sqrt{2x + 18} = x - 3 \\). Which step introduces an invalid conclusion?",
-    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 18} = x - 3 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 6\\) and \\(\\operatorname{Var}(Y) = 6\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
+    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 6\\) و\\(\\operatorname{Var}(Y) = 6\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
     "steps": [
-      "Square both sides: \\( 2x + 18 = (x - 3)^2 \\).",
-      "Expand the right-hand side: \\( 2x + 18 = x^2 - 6x + 9 \\).",
-      "Rearrange into standard form: \\( x^2 - 8x - 9 = 0 \\).",
-      "Accept both algebraic roots without checking \\( x - 3 \\ge 0 \\)."
+      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
+      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 6 - 6 = 0\\).",
+      "Take square root for standard deviation."
     ],
     "steps_ar": [
-      "تربيع الطرفين: \\( 2x + 18 = (x - 3)^2 \\).",
-      "فك التربيع: \\( 2x + 18 = x^2 - 6x + 9 \\).",
-      "إعادة الترتيب: \\( x^2 - 8x - 9 = 0 \\).",
-      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 3 \\ge 0 \\)."
+      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
+      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 6 - 6 = 0\\).",
+      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
     ],
-    "errorStep": 4,
+    "errorStep": 2,
     "reasons": [
-      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 3 \\); the negative root is extraneous.",
-      "Expanding \\( (x - 3)^2 \\) should omit the middle term.",
-      "Squaring both sides is never valid."
+      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 6 + 6 = 12\\) — independent variances ALWAYS add.",
+      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
+      "Expected values cannot be subtracted."
     ],
     "reasons_ar": [
-      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 3 \\) ويُرفض الجذر السالب الدخيل.",
-      "فك المربع الكامل غير صحيح.",
-      "لا يجوز تربيع الطرفين."
+      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 12\\) — التباينات المستقلة تُجمع دائماً.",
+      "التباين يساوي حاصل ضرب التباينين.",
+      "لا يجوز طرح التوقعات الرياضية."
     ],
-    "correctReason": 0,
-    "h": "Test whether \\( x - 3 \\ge 0 \\) holds for both roots.",
-    "h_ar": "تحقق من شرط \\( x - 3 \\ge 0 \\) لكلا الجذرين.",
-    "sol": "Only the root satisfying \\( x \\ge 3 \\) is a valid solution to the radical equation.",
-    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 3 \\)."
+    "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Rubric Problem (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "Let \\( f(x) = x^2 - 6x + 13 \\) for \\( x \\ge 3 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
-    "q_ar": "لتكن \\( f(x) = x^2 - 6x + 13 \\) حيث \\( x \\ge 3 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "(a) A population has standard deviation \\(\\sigma = 40\\). For a simple random sample of size \\(n = 100\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
+    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 40\\). لعينة عشوائية حجمها \\(n = 100\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Sampling Distribution Standard Error",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{40}{\\sqrt{100}} = \\dfrac{40}{10} = 4\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Linear Combination Variance",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Complete the square: \\( f(x) = (x - 3)^2 + 4 \\)."
+            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "State range: \\( f(x) \\ge 4 \\)."
+            "text": "\\(4(6) + 6 = 30\\)."
           }
         ]
-      },
+      }
+    ],
+    "parts_ar": [
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\( y = (x - 3)^2 + 4 \\implies (x - 3)^2 = y - 4 \\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Choose positive root: \\( f^{-1}(x) = 3 + \\sqrt{x - 4} \\)."
+            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{40}{\\sqrt{100}} = 4\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الناتج: \\(4(6) + 6 = 30\\)."
           }
         ]
       }
-    ],
-    "examinerTip": "Use the domain restriction \\( x \\ge 3 \\) to select the positive square root branch.",
-    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 3 \\) لاختيار الفرع الموجب للجذر التربيعي."
+    ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Guided Calculation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "بناء الخطوات: حساب موجه (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "ti": "Step Builder: Standard Error & Independent Variance (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
     "steps": [
       {
-        "l": "In \\( y = x^2 - 6x + 13 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
-        "a": "3",
-        "h": "Divide 6 by 2."
+        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 100\\):",
+        "a": "10",
+        "h": "Square root of 100."
       },
       {
-        "l": "Find the minimum value \\( k = 13 - 3^2 = \\)",
+        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 40\\):",
         "a": "4",
-        "h": "Subtract 9 from 13."
+        "h": "Divide 40 by 10."
       },
       {
-        "l": "Evaluate \\( y \\) at \\( x = 5 \\):",
-        "a": "8",
-        "h": "Compute \\( 2^2 + 4 \\)."
+        "l": "For independent \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\), find \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "12",
+        "h": "Add 6 + 6."
       }
     ],
     "steps_ar": [
       {
-        "l": "في الدالة \\( y = x^2 - 6x + 13 \\)، أوجد قيمة \\( h \\):",
-        "a": "3",
-        "h": "اقسم 6 على 2."
+        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 100\\):",
+        "a": "10",
+        "h": "الجذر التربيعي للعدد 100."
       },
       {
-        "l": "أوجد القيمة الصغرى \\( k = \\)",
+        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 40\\):",
         "a": "4",
-        "h": "اطرح 9 من 13."
+        "h": "اقسم 40 على 10."
       },
       {
-        "l": "احسب قيمة \\( y \\) عند \\( x = 5 \\):",
-        "a": "8",
-        "h": "احسب \\( 2^2 + 4 \\)."
+        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
+        "a": "12",
+        "h": "اجمع 6 + 6."
       }
     ]
   }

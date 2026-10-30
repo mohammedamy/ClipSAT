@@ -641,7 +641,12 @@ window.launchPracticeQuiz=function(mistake){
       return s;
     }
     if(s.indexOf('\\')!==-1) return '\\(' + s + '\\)';
-    if(/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)){
+    /* Prose (e.g. "Step Builder: A & B (Unit 1 · Limits)") must not be swallowed whole by math mode just because it
+       contains a symbol such as · or ×: that squashes the spaces and makes KaTeX throw on a bare &. */
+    var _fnWords = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, arcsin:1, arccos:1, arctan:1, arccsc:1, arcsec:1, arccot:1, sinh:1, cosh:1, tanh:1, log:1, ln:1, lim:1, exp:1, det:1, deg:1, rad:1, mod:1, gcd:1, lcm:1, max:1, min:1, or:1, and:1};
+    var _proseWords = s.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, ' ').replace(/\\[a-zA-Z]+/g, ' ').match(/[a-zA-Z]{2,}/g) || [];
+    var _isProse = _proseWords.some(function(w){ return !_fnWords[w.toLowerCase()]; });
+    if(!_isProse && /[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)){
       return '\\(' + s + '\\)';
     }
     // Pure numbers, decimals, negatives, percents: "4", "-2", "0", "3.14", "25%"
