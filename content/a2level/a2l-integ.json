@@ -55,21 +55,45 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Integration — Slope Field & Particular Solution Trajectory",
-          "fn": "0.5*x - 0.5*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 1.5
-          }
+          "type": "fn",
+          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -1,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 4 − x²/4"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = 0"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 4,
+              "label": "a = 0"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "b = 4"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
+          "ar": "منحنى المكامل غير السالب \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) على الفترة \\([0, 4]\\) لحساب المساحة المتراكمة في التكامل وطرق التكامل المتقدمة."
         }
       },
       {
@@ -169,16 +193,6 @@
         "note": {
           "en": "Compare the exact integral \\(\\int_0^b x e^{-0.4x}\\,dx\\) (found via integration by parts) with the \\(n\\)-strip trapezium rule approximation.",
           "ar": "Compare the exact التكامل \\(\\int_0^b x e^{-0.4x}\\,dx\\) (found via integration by parts) with the \\(n\\)-strip trapezium rule approximation."
-        },
-        "canvas3d": {
-          "btnId": "a2lintegExCanvas_3dBtn",
-          "wrapId": "a2lintegExCanvas_3dWrap",
-          "hintId": "a2lintegExCanvas_3dHint",
-          "btnLabel": "🧊 View Integration by Parts & Trapezium Rule Approximator in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Integration by Parts & Trapezium Rule Approximator. Drag to rotate.",
-            "ar": "تمثيل ثلاثي الأبعاد تفاعلي لـ Integration by Parts & Trapezium Rule Approximator. اسحب للتدوير."
-          }
         }
       },
       {
@@ -421,7 +435,7 @@
         },
         "caption": {
           "en": "Parabola \\(y = x^2\\), with the shaded area under the curve from \\(x = 0\\) to \\(x = 3\\) evaluating to 9 square units.",
-          "ar": "القطع المكافئ \\(y = x^2\\), with the shaded المساحة under the curve from \\(x = 0\\) to \\(x = 3\\) evaluating to 9 square units."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التكامل وطرق التكامل المتقدمة."
         }
       },
       {

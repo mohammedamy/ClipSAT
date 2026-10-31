@@ -55,7 +55,8 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:24,r:12,t:12,b:20});
           var py0 = P.Y(b), px0 = P.X(0);
           if(Math.hypot(px - px0, py - py0) < 18) return 'b';
           var px1 = P.X(2), py1 = P.Y(2*m + b);
@@ -63,7 +64,8 @@
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:24,r:12,t:12,b:20});
           if(target === 'b'){
             var newB = Math.round(P.invY(py) * 2) / 2;
             newB = Math.max(-5, Math.min(5, newB));
@@ -126,7 +128,8 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:24,r:12,t:12,b:20});
           var pxProbe = P.X(8), pyProbe = P.Y(my + s * (8 - mx));
           if(Math.hypot(px - pxProbe, py - pyProbe) < 22) return 'handle';
           var lineY = P.Y(my + s * (P.invX(px) - mx));
@@ -134,7 +137,8 @@
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:24,r:12,t:12,b:20});
           var curX = P.invX(px);
           var curY = P.invY(py);
           var dx = curX - mx;
@@ -315,13 +319,15 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:20,r:12,t:12,b:26});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:20,r:12,t:12,b:26});
           var dotX = P.X(outlier), dotY = P.Y(0.35);
           if(Math.hypot(px - dotX, py - dotY) < 22) return 'outlier';
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:20,r:12,t:12,b:26});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:20,r:12,t:12,b:26});
           var newOutlier = Math.round(P.invX(px));
           newOutlier = Math.max(30, Math.min(130, newOutlier));
           outlier = newOutlier;
@@ -1060,11 +1066,11 @@
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
   window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_satgeo_trig6Canvas', dataBtnId: 'uge_satgeo_trig6DataBtn', prefix: 'uge_satgeo_trig6' });
   window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_satgeo_invtrig6Canvas', dataBtnId: 'uge_satgeo_invtrig6DataBtn', prefix: 'uge_satgeo_invtrig6' });
-  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satlinear_mainfnCanvas', dataBtnId: 'uge_satlinear_mainfnDataBtn', prefix: 'uge_satlinear_mainfn', defaultFn: 'constant' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satlinear_mainfnCanvas', dataBtnId: 'uge_satlinear_mainfnDataBtn', prefix: 'uge_satlinear_mainfn', defaultFn: 'linear' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satlinfun_mainfnCanvas', dataBtnId: 'uge_satlinfun_mainfnDataBtn', prefix: 'uge_satlinfun_mainfn', defaultFn: 'linear' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satquad_mainfnCanvas', dataBtnId: 'uge_satquad_mainfnDataBtn', prefix: 'uge_satquad_mainfn', defaultFn: 'quadratic' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satexpoly_mainfnCanvas', dataBtnId: 'uge_satexpoly_mainfnDataBtn', prefix: 'uge_satexpoly_mainfn', defaultFn: 'exponential' });
-  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satfunctions_mainfnCanvas', dataBtnId: 'uge_satfunctions_mainfnDataBtn', prefix: 'uge_satfunctions_mainfn', defaultFn: 'radical' });
+  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_satfunctions_mainfnCanvas', dataBtnId: 'uge_satfunctions_mainfnDataBtn', prefix: 'uge_satfunctions_mainfn', defaultFn: 'quadratic' });
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);
 

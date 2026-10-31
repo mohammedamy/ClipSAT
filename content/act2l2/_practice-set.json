@@ -51,10 +51,12 @@
         "ar": "<p><strong>الخطوة ١: احسب modulus \\(r\\):</strong><br>\\[r = \\sqrt{(-2\\sqrt{3})^2 + 2^2} = \\sqrt{12 + 4} = \\sqrt{16} = 4.\\]</p><p><strong>الخطوة ٢: حدّد argument \\(\\theta\\):</strong><br>Since \\(a = -2\\sqrt{3} \\lt 0\\) و \\(b = 2 \\gt 0\\), \\(z\\) lies in Quadrant II.<br>Reference angle: \\(\\tan\\alpha = \\left|\\frac{2}{-2\\sqrt{3}}\\right| = \\frac{1}{\\sqrt{3}} \\implies \\alpha = \\frac{\\pi}{6}\\) (or \\(30^\\circ\\)).<br>Quadrant II angle: \\(\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\) (or \\(150^\\circ\\)).</p><p><strong>الخطوة ٣: Write polar form:</strong><br>\\[z = \\mathbf{4\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)}.\\]</p>"
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 120,
-        "showTriangle": true
+        "type": "sinusoid",
+        "title": "Periodic Trigonometric Wave",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "sin"
       }
     },
     {
@@ -217,36 +219,49 @@
         "ar": "<p><strong>الخطوة ١: احسب rows of \\(A\\) dot columns of \\(B\\):</strong><br>\\[(AB)_{11} = (1)(2) + (3)(5) = 2 + 15 = 17\\]<br>\\[(AB)_{12} = (1)(0) + (3)(-1) = 0 - 3 = -3\\]<br>\\[(AB)_{21} = (-2)(2) + (4)(5) = -4 + 20 = 16\\]<br>\\[(AB)_{22} = (-2)(0) + (4)(-1) = 0 - 4 = -4\\]</p><p><strong>Conclusion:</strong> \\[AB = \\mathbf{\\begin{pmatrix} 17 & -3 \\\\ 16 & -4 \\end{pmatrix}}.\\]</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.5*x",
-            "label": "Span(v1)"
-          },
-          {
-            "fn": "-2*x",
-            "label": "Span(v2)"
-          }
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "points": [
-          {
-            "x": 2,
-            "y": 1,
-            "label": "v1"
-          },
-          {
-            "x": -1,
-            "y": 2,
-            "label": "v2"
-          }
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "xrange": [
-          -4,
-          4
-        ],
-        "yrange": [
-          -4,
-          4
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -320,36 +335,49 @@
         "ar": "<p><strong>الخطوة ١: احسب determinant:</strong><br>\\[\\det(A) = (4)(2) - (7)(1) = 8 - 7 = 1.\\]</p><p><strong>الخطوة ٢: Apply the inverse formula:</strong><br>\\[A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{1} \\begin{pmatrix} 2 & -7 \\\\ -1 & 4 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 2 & -7 \\\\ -1 & 4 \\end{pmatrix}}.\\]</p><p>Check: \\(A A^{-1} = \\begin{pmatrix} 8-7 & -28+28 \\\\ 2-2 & -7+8 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I\\) ✓.</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.5*x",
-            "label": "Span(v1)"
-          },
-          {
-            "fn": "-2*x",
-            "label": "Span(v2)"
-          }
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "points": [
-          {
-            "x": 2,
-            "y": 1,
-            "label": "v1"
-          },
-          {
-            "x": -1,
-            "y": 2,
-            "label": "v2"
-          }
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "xrange": [
-          -4,
-          4
-        ],
-        "yrange": [
-          -4,
-          4
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -436,23 +464,19 @@
       },
       "fig": {
         "type": "transformation_grid",
-        "title": "Linear Transformation in R²",
+        "title": "Vector Components & Span in Coordinate Space",
         "object": [
           [
             0,
             0
           ],
           [
-            2,
-            0
-          ],
-          [
-            2,
+            3,
             1
           ],
           [
-            0,
-            1
+            1,
+            3
           ]
         ],
         "image": [
@@ -461,23 +485,18 @@
             0
           ],
           [
-            2,
-            1
-          ],
-          [
-            3,
-            3
+            4,
+            4
           ],
           [
             1,
-            2
+            3
           ]
         ],
         "objectLabels": [
           "O",
-          "A",
-          "B",
-          "C"
+          "u",
+          "v"
         ]
       }
     },
@@ -506,23 +525,19 @@
       },
       "fig": {
         "type": "transformation_grid",
-        "title": "Linear Transformation in R²",
+        "title": "Vector Components & Span in Coordinate Space",
         "object": [
           [
             0,
             0
           ],
           [
-            2,
-            0
-          ],
-          [
-            2,
+            3,
             1
           ],
           [
-            0,
-            1
+            1,
+            3
           ]
         ],
         "image": [
@@ -531,23 +546,18 @@
             0
           ],
           [
-            2,
-            1
-          ],
-          [
-            3,
-            3
+            4,
+            4
           ],
           [
             1,
-            2
+            3
           ]
         ],
         "objectLabels": [
           "O",
-          "A",
-          "B",
-          "C"
+          "u",
+          "v"
         ]
       }
     },
@@ -603,40 +613,32 @@
       "number": 24,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate the sum of the convergent infinite series: \\[24 - 12 + 6 - 3 + \\cdot s\\]",
-        "ar": "احسب قيمة the sum of the convergent infinite series: \\[24 - 12 + 6 - 3 + \\cdot s\\]"
+        "en": "Evaluate the sum of the convergent infinite series: \\[24 - 12 + 6 - 3 + \\cdots\\]",
+        "ar": "احسب قيمة the sum of the convergent infinite series: \\[24 - 12 + 6 - 3 + \\cdots\\]"
       },
       "solution": {
         "en": "<p><strong>Step 1: Identify parameters:</strong><br>\\(a_1 = 24\\), \\(r = \\frac{-12}{24} = -\\frac{1}{2}\\).<br>Since \\(|r| = \\frac{1}{2} \\lt 1\\), the series converges.</p><p><strong>Step 2: Apply infinite sum formula:</strong><br>\\[S_\\infty = \\frac{a_1}{1 - r} = \\frac{24}{1 - (-1/2)} = \\frac{24}{3/2} = 24 \\times \\frac{2}{3} = \\mathbf{16}.\\]</p>",
         "ar": "<p><strong>الخطوة ١: Identإذا كانy parameters:</strong><br>\\(a_1 = 24\\), \\(r = \\frac{-12}{24} = -\\frac{1}{2}\\).<br>Since \\(|r| = \\frac{1}{2} \\lt 1\\), the series converges.</p><p><strong>الخطوة ٢: Apply infinite sum formula:</strong><br>\\[S_\\infty = \\frac{a_1}{1 - r} = \\frac{24}{1 - (-1/2)} = \\frac{24}{3/2} = 24 \\times \\frac{2}{3} = \\mathbf{16}.\\]</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
-        ],
-        "rows": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
+            "label": "T₁",
+            "val": 8
           },
           {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "label": "T₂",
+            "val": 11
+          },
+          {
+            "label": "T₃",
+            "val": 15
+          },
+          {
+            "label": "T₄",
+            "val": 20
           }
         ]
       }

@@ -68,33 +68,19 @@
         "طبّق القاعدة على \\(\\sim q \\to \\sim p\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(\\sim q \\to \\sim p\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -716,33 +702,19 @@
         "عُدّ جميع الحلول المختلفة التي تقع ضمن الفترة المطلوبة.<br><span class=\"en-trans\">Count the total number of distinct solutions that lie within the given domain.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -956,32 +928,12 @@
       "solution": "عندما يقطع قاطع مستقيمين متوازيين، فإن الزوايا الداخلية المتحالفة تكون متكاملة، أي أن مجموع قياساتها يساوي 180 درجة. في هذه الحالة، الزاويتان \\( \\alpha \\) و \\( \\beta \\) هما زاويتان داخليتان متحالفتان.\n<br><span class=\"en-trans\">When a transversal intersects two parallel lines, consecutive interior angles are supplementary, meaning their sum is 180 degrees. In this case, angles \\( \\alpha \\) and \\( \\beta \\) are consecutive interior angles.\n</span>\n\n\\( \\alpha + \\beta = 180^\\circ \\)\n<br><span class=\"en-trans\">\n\\( \\alpha + \\beta = 180^\\circ \\)\n</span>\n\nوبما أن \\( \\alpha = 60^\\circ \\)، فإن:\n<br><span class=\"en-trans\">\nSince \\( \\alpha = 60^\\circ \\), then:\n</span>\n\n\\( 60^\\circ + \\beta = 180^\\circ \\)\n<br><span class=\"en-trans\">\n\\( 60^\\circ + \\beta = 180^\\circ \\)\n</span>\n\n\\( \\beta = 180^\\circ - 60^\\circ \\)\n<br><span class=\"en-trans\">\n\\( \\beta = 180^\\circ - 60^\\circ \\)\n</span>\n\n\\( \\beta = 120^\\circ \\)\n<br><span class=\"en-trans\">\n\\( \\beta = 120^\\circ \\)\n</span>\n\nإذن، قياس الزاوية \\( \\beta \\) هو \\( 120^\\circ \\).",
       "sympy_verified": true,
       "fig": {
-        "type": "fn",
-        "fns": [
-          "y = 0",
-          "y = 1",
-          "y = tan(x - pi/2) * 0 + 90"
-        ],
-        "xlim": [
-          -1,
-          5
-        ],
-        "ylim": [
-          -1,
-          5
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": 0,
-            "label": "α=60°"
-          },
-          {
-            "x": 3,
-            "y": 0,
-            "label": "β"
-          }
-        ]
+        "type": "transversal",
+        "angle": 65,
+        "labels": {
+          "1": "115°",
+          "5": "θ"
+        }
       },
       "ans": 2,
       "hints": [
@@ -1263,32 +1215,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
           }
         ]
       }
@@ -1729,34 +1669,49 @@
         "طبّق القاعدة على \\(2A\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(2A\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -2715,33 +2670,19 @@
         "احسب القيمة النهائية من المقدار: \\(\\dfrac{6 - 2i}{2}\\).<br><span class=\"en-trans\">Compute the final value from: \\(\\dfrac{6 - 2i}{2}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -2824,24 +2765,49 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "fns": [
-          "1.0*x^2 + (2.0)*x + (3.0)"
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "xlim": [
-          -5,
-          5
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "ylim": [
-          -8,
-          10
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 3,
-            "label": "(0,3.0)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       },
       "hints": [
@@ -3107,32 +3073,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
           }
         ]
       }
@@ -3690,33 +3644,24 @@
         "احسب ناتج المقدار \\(3^{7\\times3}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(3^{7\\times3}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 6
           },
           {
-            "fn": "2*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 9
+          },
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "label": "T₃",
+            "val": 13
+          },
+          {
+            "label": "T₄",
+            "val": 18
           }
         ]
       }
@@ -4032,33 +3977,24 @@
         "استنتج قيمة \\(x\\) من \\(x + 2 = 27\\).<br><span class=\"en-trans\">Solve \\(x + 2 = 27\\) to find \\(x\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "1*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "Item II",
+            "val": 19
+          },
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
         ]
       }
@@ -4328,34 +4264,49 @@
         "احسب قيمة \\(x\\) وتأكد من تحقيقها للمعادلة \\((4-7)x=21-(-12)\\).<br><span class=\"en-trans\">Compute the value of \\(x\\) and check that it satisfies \\((4-7)x=21-(-12)\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -4634,32 +4585,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
           }
         ]
       }
@@ -4944,34 +4883,49 @@
         "أكمل الحل انطلاقاً من \\(A^n\\).<br><span class=\"en-trans\">Finish solving from \\(A^n\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -5295,34 +5249,49 @@
         "احسب ناتج المقدار \\(1(-2) - 8\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(1(-2) - 8\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -5629,33 +5598,19 @@
         "احسب القيمة النهائية من المقدار: \\((13)^2-4(2)(14)\\).<br><span class=\"en-trans\">Compute the final value from: \\((13)^2-4(2)(14)\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -5983,34 +5938,49 @@
         "احسب ناتج المقدار \\(4(6) - 2\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(4(6) - 2\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -6293,34 +6263,49 @@
         "احسب ناتج المقدار \\(1(9) + 12\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(1(9) + 12\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -6605,32 +6590,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
           }
         ]
       }
@@ -6912,33 +6885,19 @@
         "احسب قيمة \\(f(10)\\) وتأكد من تحقيقها للمعادلة \\(g(-3)=10\\).<br><span class=\"en-trans\">Compute the value of \\(f(10)\\) and check that it satisfies \\(g(-3)=10\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -7531,34 +7490,49 @@
         "طبّق هذه القاعدة على القيم المعطاة في المسألة للوصول إلى الناتج النهائي.<br><span class=\"en-trans\">Apply this rule to the specific parameters in the question to reach the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -8783,34 +8757,49 @@
         "احسب ناتج المقدار \\(\\frac{1(2^7-1)}{2-1}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(\\frac{1(2^7-1)}{2-1}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -9403,32 +9392,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
           }
         ]
       }
@@ -10021,33 +9998,24 @@
         "طبّق القاعدة على \\(2\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(2\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 7
           },
           {
-            "fn": "3*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 10
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "T₃",
+            "val": 14
+          },
+          {
+            "label": "T₄",
+            "val": 19
           }
         ]
       }
@@ -10963,33 +10931,24 @@
         "احسب القيمة النهائية من المقدار: \\(\\dfrac{24}{2}\\).<br><span class=\"en-trans\">Compute the final value from: \\(\\dfrac{24}{2}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 6
           },
           {
-            "fn": "2*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 9
+          },
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "T₃",
+            "val": 13
+          },
+          {
+            "label": "T₄",
+            "val": 18
           }
         ]
       }
@@ -11274,34 +11233,49 @@
         "احسب القيمة النهائية من المقدار: \\(\\dfrac{1/3}{2/3}\\).<br><span class=\"en-trans\">Compute the final value from: \\(\\dfrac{1/3}{2/3}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -11870,33 +11844,24 @@
         "احسب ناتج المقدار \\(\\dfrac{45}{99}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(\\dfrac{45}{99}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 8
           },
           {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 11
+          },
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "T₃",
+            "val": 15
+          },
+          {
+            "label": "T₄",
+            "val": 20
           }
         ]
       }
@@ -12180,33 +12145,19 @@
         "احسب القيمة النهائية من المقدار: \\(10 (4x^2) (-1)\\).<br><span class=\"en-trans\">Compute the final value from: \\(10 (4x^2) (-1)\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -13067,33 +13018,24 @@
         "احسب ناتج المقدار \\(1 - \\dfrac{1}{100}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(1 - \\dfrac{1}{100}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 8
           },
           {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 11
+          },
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "label": "T₃",
+            "val": 15
+          },
+          {
+            "label": "T₄",
+            "val": 20
           }
         ]
       }
@@ -13375,34 +13317,49 @@
         "احسب القيمة النهائية من المقدار: \\(\\dfrac{4+2\\sqrt{3}}{2}\\).<br><span class=\"en-trans\">Compute the final value from: \\(\\dfrac{4+2\\sqrt{3}}{2}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -13686,33 +13643,19 @@
         "استخدم الصورة المبسطة لإيجاد الحل: \\(a_1 = \\dfrac{27}{9}\\).<br><span class=\"en-trans\">Use the simplified form: \\(a_1 = \\dfrac{27}{9}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -13997,34 +13940,49 @@
         "طبّق هذه القاعدة على القيم المعطاة في المسألة للوصول إلى الناتج النهائي.<br><span class=\"en-trans\">Apply this rule to the specific parameters in the question to reach the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -14308,33 +14266,24 @@
         "أكمل الحل انطلاقاً من \\(a_1 - 2a_2 + a_3\\).<br><span class=\"en-trans\">Finish solving from \\(a_1 - 2a_2 + a_3\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 8
           },
           {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 11
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "T₃",
+            "val": 15
+          },
+          {
+            "label": "T₄",
+            "val": 20
           }
         ]
       }
@@ -15020,34 +14969,49 @@
         "احسب قيمة \\(f'(5)\\) وتأكد من تحقيقها للمعادلة \\(f'(x)=12x^{2} + 10x + 1\\).<br><span class=\"en-trans\">Compute the value of \\(f'(5)\\) and check that it satisfies \\(f'(x)=12x^{2} + 10x + 1\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -15331,34 +15295,49 @@
         "أجرِ العمليات الحسابية في \\(\\text{direct substitution: } f(-1)\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\text{direct substitution: } f(-1)\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -15672,34 +15651,49 @@
         "عند \\(x\\): أدنية محلية."
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -16027,33 +16021,19 @@
         "احسب ناتج المقدار \\(x - 1\\to-1 - 1\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(x - 1\\to-1 - 1\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -17623,33 +17603,19 @@
         "أجرِ العمليات الحسابية في \\(\\text{direct substitution: } f(-5)\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\text{direct substitution: } f(-5)\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -17931,33 +17897,24 @@
         "احسب ناتج المقدار \\(2 + 4 + 6 + 8\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(2 + 4 + 6 + 8\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 8
           },
           {
-            "fn": "4*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 11
+          },
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "label": "T₃",
+            "val": 15
+          },
+          {
+            "label": "T₄",
+            "val": 20
           }
         ]
       }
@@ -18815,33 +18772,19 @@
         "احسب قيمة \\(f'(6)\\) وتأكد من تحقيقها للمعادلة \\(f'(x)=40x^{4} + 18x^{2} - 14x\\).<br><span class=\"en-trans\">Compute the value of \\(f'(6)\\) and check that it satisfies \\(f'(x)=40x^{4} + 18x^{2} - 14x\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -19126,33 +19069,19 @@
         "احسب ناتج المقدار \\(2(7+4)\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(2(7+4)\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -19524,25 +19453,37 @@
       "sympy_verified": true,
       "ans": 1,
       "fig": {
-        "type": "fn",
-        "fns": [
-          "2.5*x^2 + (2.0)*x + (1.0)"
+        "type": "triangle",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            3
+          ]
         ],
-        "xlim": [
-          -5,
-          5
+        "labels": [
+          "A",
+          "B",
+          "C"
         ],
-        "ylim": [
-          -8,
-          10
+        "sides": [
+          "a",
+          "c",
+          "b"
         ],
-        "points": [
-          {
-            "x": 0,
-            "y": 1,
-            "label": "(0,1.0)"
-          }
-        ]
+        "angles": [
+          "",
+          "θ",
+          "90°"
+        ],
+        "right": 0
       },
       "hints": [
         "اكتب العلاقة الأساسية: \\(A\\).<br><span class=\"en-trans\">Start with the expression: \\(A\\).</span>",
@@ -20127,33 +20068,19 @@
         "أجرِ العمليات الحسابية في \\(\\text{direct substitution: } f(2)\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\text{direct substitution: } f(2)\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -20532,26 +20459,49 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "points": [
-          {
-            "x": 0,
-            "y": 0,
-            "label": "O(0,0)"
-          },
-          {
-            "x": 3,
-            "y": 4,
-            "label": "v(3,4)"
-          }
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "xrange": [
-          -2,
-          5
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "yrange": [
-          -2,
-          6
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       },
       "hints": [
@@ -20812,33 +20762,19 @@
         "أجرِ العمليات الحسابية في \\(\\text{direct substitution: } f(-1)\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\text{direct substitution: } f(-1)\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -21120,33 +21056,19 @@
         "احسب ناتج المقدار \\(0-(-350)\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(0-(-350)\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -21818,40 +21740,50 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -2,
-          3
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -2,
-          4
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "points": [
-          {
-            "x": 0,
-            "y": 0,
-            "label": "O",
-            "r": 3
-          },
-          {
-            "x": 1,
-            "y": 2,
-            "label": "(1,2)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "fns": [
-          {
-            "fn": "(2/1)*x",
-            "label": "v",
-            "color": "#1E3A6E",
-            "lx": 0.5,
-            "ly": 1
-          }
-        ],
-        "w": 220,
-        "h": 180
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
+        ]
       },
       "hints": [
         "استخدم القانون: \\(v = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\).<br><span class=\"en-trans\">Set up the formula/expression: \\(v = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\).</span>",
@@ -21966,26 +21898,20 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
+        "type": "numberline",
+        "range": [
+          -5,
+          7
+        ],
         "points": [
           {
-            "x": 0,
-            "y": 0,
-            "label": "A(0,0)"
+            "x": -2,
+            "label": "P"
           },
           {
             "x": 4,
-            "y": 0,
-            "label": "B(4,0)"
+            "label": "Q"
           }
-        ],
-        "xrange": [
-          -2,
-          6
-        ],
-        "yrange": [
-          -2,
-          2
         ]
       },
       "hints": [
@@ -22190,33 +22116,19 @@
         "طبّق القاعدة على \\(\\Rightarrow 7x^{3} + 4x^{2}+C\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(\\Rightarrow 7x^{3} + 4x^{2}+C\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -22497,34 +22409,49 @@
       "sympy_verified": true,
       "ans": 2,
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       },
       "hints": [
@@ -22833,24 +22760,49 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "fns": [
-          "1.5*x^2 + (3.0)*x + (5.0)"
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "xlim": [
-          -5,
-          5
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "ylim": [
-          -8,
-          10
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 5,
-            "label": "(0,5.0)"
-          }
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       },
       "hints": [
@@ -23188,27 +23140,14 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "points": [
-          {
-            "x": 2,
-            "y": 3,
-            "label": "A(2,3)"
-          },
-          {
-            "x": 8,
-            "y": 11,
-            "label": "B(8,11)"
-          }
-        ],
-        "xrange": [
-          0,
-          10
-        ],
-        "yrange": [
-          1,
-          13
-        ]
+        "type": "circle",
+        "center": "O",
+        "radius": "r",
+        "sector": {
+          "start_deg": 0,
+          "end_deg": 60,
+          "label": "θ"
+        }
       },
       "hints": [
         "المركز هو منتصف AB: \\( (5, 7) \\).<br><span class=\"en-trans\">المركز هو منتصف AB: \\( (5, 7) \\).</span>",
@@ -23483,24 +23422,40 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "fns": [
-          "3^(x) + (2.2)"
+        "type": "transformation_grid",
+        "title": "Vector Components & Span in Coordinate Space",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "xlim": [
-          -3,
-          3
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "ylim": [
-          1.2,
-          11.2
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 3.2,
-            "label": "(0, 3.2)"
-          }
+        "objectLabels": [
+          "O",
+          "u",
+          "v"
         ]
       },
       "hints": [
@@ -23966,32 +23921,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
           }
         ]
       }
@@ -24332,33 +24275,19 @@
         "طبّق القاعدة على \\(\\Rightarrow -8x + 8x^{2} - 2x^{5}+C\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(\\Rightarrow -8x + 8x^{2} - 2x^{5}+C\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -24641,32 +24570,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
           }
         ]
       }
@@ -24941,32 +24858,20 @@
       "ans": 3,
       "fig": {
         "type": "fn",
+        "title": "Non-Negative Integrand Curve y = f(x)",
         "xrange": [
-          -5,
-          5
+          -1,
+          4
         ],
         "yrange": [
-          -5,
-          7
+          -0.5,
+          6
         ],
         "fns": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "fn": "0.35*x*x + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
           }
         ]
       },
@@ -25689,33 +25594,24 @@
         "اعزل المتغير \\(x\\) من \\(2x = 3\\) لإيجاد القيمة النهائية.<br><span class=\"en-trans\">Solve \\(2x = 3\\) for \\(x\\) and verify your answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "1*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "Item II",
+            "val": 19
+          },
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
         ]
       }
@@ -26081,33 +25977,19 @@
         "استخدم الصورة المبسطة لإيجاد الحل: \\(x < -1\\).<br><span class=\"en-trans\">Use the simplified form: \\(x < -1\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -26813,33 +26695,19 @@
         "أجرِ العمليات الحسابية في \\(\\dfrac{1}{2 + 2}\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\dfrac{1}{2 + 2}\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -27149,33 +27017,24 @@
         "بما أن الأساس \\(x > 0\\) و \\(x e 1\\)، فإن \\(x\\).<br><span class=\"en-trans\">بما أن الأساس \\(x > 0\\) و \\(x e 1\\)، فإن \\(x\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "3*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "Item II",
+            "val": 19
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
         ]
       }
@@ -27484,33 +27343,19 @@
         "احسب ناتج المقدار \\(-648-(0)\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(-648-(0)\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -27784,26 +27629,40 @@
       "sympy_verified": true,
       "ans": 2,
       "fig": {
-        "type": "fn",
-        "points": [
-          {
-            "x": -2,
-            "y": -1,
-            "label": "A(-2,-1)"
-          },
-          {
-            "x": 3,
-            "y": 5,
-            "label": "B(3,5)"
-          }
+        "type": "transformation_grid",
+        "title": "Vector Components & Span in Coordinate Space",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "xrange": [
-          -4,
-          5
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "yrange": [
-          -3,
-          7
+        "objectLabels": [
+          "O",
+          "u",
+          "v"
         ]
       },
       "hints": [
@@ -27840,34 +27699,40 @@
         "احسب القيمة النهائية للمقدار: \\(\\vec{u} = \\frac{\\vec{v}}{||\\vec{v}||}\\).<br><span class=\"en-trans\">Evaluate the simplified expression: \\(\\vec{u} = \\frac{\\vec{v}}{||\\vec{v}||}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
+        "type": "transformation_grid",
+        "title": "Vector Components & Span in Coordinate Space",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "yrange": [
-          -5,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
-          }
+        "objectLabels": [
+          "O",
+          "u",
+          "v"
         ]
       }
     },
@@ -28373,32 +28238,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Cubic Polynomial Turning Points",
         "xrange": [
-          -5,
-          5
+          -3,
+          3
         ],
         "yrange": [
-          -5,
-          7
+          -4,
+          4
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "0.5*x*x*x - 1.5*x + 0.5",
             "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "y = P(x)"
           }
         ]
       }
@@ -29522,33 +29375,19 @@
         "احسب ناتج المقدار \\(2x^2-4x+3x-6\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(2x^2-4x+3x-6\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -29833,33 +29672,19 @@
         "احسب ناتج المقدار \\(\\left(\\dfrac{-7+11}{2},\\dfrac{-5+1}{2}\\right)\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(\\left(\\dfrac{-7+11}{2},\\dfrac{-5+1}{2}\\right)\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -30135,32 +29960,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Cubic Polynomial Turning Points",
         "xrange": [
-          -5,
-          5
+          -3,
+          3
         ],
         "yrange": [
-          -5,
-          7
+          -4,
+          4
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "0.5*x*x*x - 1.5*x + 0.5",
             "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "y = P(x)"
           }
         ]
       }
@@ -30457,33 +30270,24 @@
         "استخدم الصورة المبسطة لإيجاد الحل to determine \\(2^x\\).<br><span class=\"en-trans\">Use the simplified form to determine \\(2^x\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "4*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "Item II",
+            "val": 19
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
         ]
       }
@@ -30754,32 +30558,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Cubic Polynomial Turning Points",
         "xrange": [
-          -5,
-          5
+          -3,
+          3
         ],
         "yrange": [
-          -5,
-          7
+          -4,
+          4
         ],
         "fns": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
+            "fn": "0.5*x*x*x - 1.5*x + 0.5",
             "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "y = P(x)"
           }
         ]
       }
@@ -31053,32 +30845,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
           }
         ]
       }
@@ -31352,32 +31132,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Exponential Growth / Decay Profile",
         "xrange": [
-          -5,
-          5
+          -3,
+          4
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          9
         ],
         "fns": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "fn": "Math.pow(2, x)",
             "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "y = 2ˣ"
           }
         ]
       }
@@ -31728,33 +31496,24 @@
         "أجرِ العمليات الحسابية في \\(\\text{direct substitution: } f(2)\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\text{direct substitution: } f(2)\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 6
           },
           {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 9
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "T₃",
+            "val": 13
+          },
+          {
+            "label": "T₄",
+            "val": 18
           }
         ]
       }
@@ -32448,33 +32207,19 @@
         "أكمل الحل انطلاقاً من \\(C\\).<br><span class=\"en-trans\">Finish solving from \\(C\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -32860,33 +32605,19 @@
         "طبّق القاعدة على \\(\\ln(e^{-1})\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(\\ln(e^{-1})\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -33354,23 +33085,20 @@
       "sol": "يقطع المنحنى محور \\(x\\) عند \\(x=-3\\) و\\(x=3\\).<br><span class=\"en-trans\">The curve crosses the \\(x\\)-axis at \\(x=-3\\) and \\(x=3\\).</span>",
       "fig": {
         "type": "fn",
-        "fns": [
-          "-0.75*(x - (-1.5))^2 + (-1.5)",
-          "-0.6*x + (-2.7)"
-        ],
-        "xlim": [
-          -5,
+        "title": "Linear Coordinate Graph",
+        "xrange": [
+          -4,
           5
         ],
-        "ylim": [
-          -5,
+        "yrange": [
+          -4,
           6
         ],
-        "points": [
+        "fns": [
           {
-            "x": -1.5,
-            "y": -1.5,
-            "label": "\\((-1.5,-1.5)\\)"
+            "fn": "0.75*x + 1.5",
+            "color": "var(--fig-indigo)",
+            "label": "Line"
           }
         ]
       },
@@ -33401,23 +33129,20 @@
       "sol": "عند \\(x=0\\)، يقطع المنحنى محور \\(y\\) عند \\(y=-9\\).<br><span class=\"en-trans\">At \\(x=0\\), the curve crosses the \\(y\\)-axis at \\(y=-9\\).</span>",
       "fig": {
         "type": "fn",
-        "fns": [
-          "0.3*(x - (-1.5))^2 + (0.0)",
-          "1.4*x + (1.2)"
-        ],
-        "xlim": [
-          -5,
+        "title": "Linear Coordinate Graph",
+        "xrange": [
+          -4,
           5
         ],
-        "ylim": [
-          -5,
+        "yrange": [
+          -4,
           6
         ],
-        "points": [
+        "fns": [
           {
-            "x": -1.5,
-            "y": 0,
-            "label": "\\((-1.5,0)\\)"
+            "fn": "0.75*x + 1.5",
+            "color": "var(--fig-indigo)",
+            "label": "Line"
           }
         ]
       },
@@ -33538,33 +33263,19 @@
         "أجرِ العمليات الحسابية في \\(\\text{direct substitution: } f(1)\\) لإيجاد الناتج النهائي.<br><span class=\"en-trans\">Perform the arithmetic in \\(\\text{direct substitution: } f(1)\\) to find the final value.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -34420,32 +34131,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Modulus V-Graph Reflection",
         "xrange": [
-          -5,
-          5
+          -4,
+          6
         ],
         "yrange": [
-          -5,
-          7
+          -2,
+          6
         ],
         "fns": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
+            "fn": "Math.abs(x - 1)",
             "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "y = |x − h|"
           }
         ]
       }
@@ -34708,33 +34407,19 @@
         "الجذر الموجب هو \\(w\\).<br><span class=\"en-trans\">The positive root is the value of \\(w\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -35007,33 +34692,24 @@
         "كلا الحلين يعطي قيمة موجبة داخل اللوغاريتم.<br><span class=\"en-trans\">كلا الحلين يعطي قيمة موجبة داخل اللوغاريتم.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "Item II",
+            "val": 19
+          },
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
         ]
       }
@@ -35308,33 +34984,19 @@
         "طبّق القاعدة على \\(f^{-1}(x) = \\log_3 x\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(f^{-1}(x) = \\log_3 x\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -35610,33 +35272,24 @@
         "نرفض \\(x\\) لأنه يجعل ما بداخل اللوغاريتم سالبًا.<br><span class=\"en-trans\">نرفض \\(x\\) لأنه يجعل ما بداخل اللوغاريتم سالبًا.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "Item II",
+            "val": 19
+          },
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
         ]
       }
@@ -36196,33 +35849,19 @@
         "اعزل المتغير \\(x\\) من \\(2x=-4\\) لإيجاد القيمة النهائية.<br><span class=\"en-trans\">Solve \\(2x=-4\\) for \\(x\\) and verify your answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -36496,32 +36135,20 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -5,
+          -3,
           5
         ],
         "yrange": [
-          -5,
-          7
+          -1,
+          8
         ],
         "fns": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "fn": "(x - 1)*(x - 1) + 1",
             "color": "var(--fig-indigo)",
             "label": "y = f(x)"
-          },
-          {
-            "fn": "3*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
           }
         ]
       }
@@ -36789,33 +36416,24 @@
         "استخدم الصورة المبسطة لإيجاد الحل to determine \\(t\\).<br><span class=\"en-trans\">Use the simplified form to determine \\(t\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 5
           },
           {
-            "fn": "1*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 8
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "T₃",
+            "val": 12
+          },
+          {
+            "label": "T₄",
+            "val": 17
           }
         ]
       }
@@ -37178,33 +36796,19 @@
         "احسب قيمة \\(x\\) وتأكد من تحقيقها للمعادلة \\(2x-1=3x-6\\).<br><span class=\"en-trans\">Compute the value of \\(x\\) and check that it satisfies \\(2x-1=3x-6\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -37480,33 +37084,19 @@
         "احسب ناتج المقدار \\(\\dfrac{-3}{2}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(\\dfrac{-3}{2}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -38633,35 +38223,20 @@
         "الاحتمال: \\(\\dfrac{3}{8}\\).<br><span class=\"en-trans\">الاحتمال: \\(\\dfrac{3}{8}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "dots",
+        "title": "Random Draw Sample Space",
+        "total": 12,
+        "groups": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "n": 7,
+            "label": "Group R"
           },
           {
-            "fn": "4*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
+            "n": 5,
+            "label": "Group B"
           }
         ],
-        "points": [
-          {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
-          }
-        ]
+        "bag": true
       }
     },
     {
@@ -38944,33 +38519,24 @@
         "طبّق هذه القاعدة على القيم المعطاة في المسألة للوصول إلى الناتج النهائي.<br><span class=\"en-trans\">Apply this rule to the specific parameters in the question to reach the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 6
           },
           {
-            "fn": "2*x - 3",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 9
+          },
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "T₃",
+            "val": 13
+          },
+          {
+            "label": "T₄",
+            "val": 18
           }
         ]
       }
@@ -39278,33 +38844,19 @@
         "احسب ناتج المقدار \\(\\dfrac{10}{28}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(\\dfrac{10}{28}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "1*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -39585,33 +39137,24 @@
         "احسب القيمة النهائية من المقدار: \\(\\dfrac{1}{6} + \\dfrac{1}{6}\\).<br><span class=\"en-trans\">Compute the final value from: \\(\\dfrac{1}{6} + \\dfrac{1}{6}\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 7
           },
           {
-            "fn": "3*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 10
+          },
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "label": "T₃",
+            "val": 14
+          },
+          {
+            "label": "T₄",
+            "val": 19
           }
         ]
       }
@@ -39939,33 +39482,24 @@
         "طبّق القاعدة على \\(\\dfrac{68\\%}{2} = 34\\%\\) وبسّط الناتج للوصول إلى الحل النهائي.<br><span class=\"en-trans\">Apply this step to \\(\\dfrac{68\\%}{2} = 34\\%\\) and simplify to determine the final result.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 6
           },
           {
-            "fn": "2*x - 4",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 9
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "T₃",
+            "val": 13
+          },
+          {
+            "label": "T₄",
+            "val": 18
           }
         ]
       }
@@ -40560,33 +40094,24 @@
         "احسب ناتج المقدار \\(\\dfrac{141}{9}\\) لإيجاد الإجابة النهائية.<br><span class=\"en-trans\">Evaluate \\(\\dfrac{141}{9}\\) to obtain the final answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "T₁",
+            "val": 7
           },
           {
-            "fn": "3*x - 2",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
+            "label": "T₂",
+            "val": 10
+          },
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "label": "T₃",
+            "val": 14
+          },
+          {
+            "label": "T₄",
+            "val": 19
           }
         ]
       }
@@ -40898,33 +40423,19 @@
         "احسب قيمة \\(\\text{median}\\) وتأكد من تحقيقها للمعادلة \\(\\text{sorted: } 14, 18, 19, 21, 22, 32, 53, 54\\).<br><span class=\"en-trans\">Compute the value of \\(\\text{median}\\) and check that it satisfies \\(\\text{sorted: } 14, 18, 19, 21, 22, 32, 53, 54\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -41197,33 +40708,19 @@
         "حسب مبدأ العد: \\(6 \\times 10\\).<br><span class=\"en-trans\">حسب مبدأ العد: \\(6 \\times 10\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
-          -5,
-          7
-        ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
         ]
       }
@@ -41251,23 +40748,24 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "fns": [
-          "2.5*x^2 + (6.0)*x + (6.0)"
-        ],
-        "xlim": [
-          -5,
-          5
-        ],
-        "ylim": [
-          -8,
-          10
-        ],
-        "points": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "x": 0,
-            "y": 6,
-            "label": "(0,6.0)"
+            "label": "T₁",
+            "val": 5
+          },
+          {
+            "label": "T₂",
+            "val": 8
+          },
+          {
+            "label": "T₃",
+            "val": 12
+          },
+          {
+            "label": "T₄",
+            "val": 17
           }
         ]
       },
@@ -41588,33 +41086,19 @@
         "تباين العينة: \\(s^2 = \\dfrac{40}{5-1} = \\dfrac{40}{4} = 10\\).<br><span class=\"en-trans\">تباين العينة: \\(s^2 = \\dfrac{40}{5-1} = \\dfrac{40}{4} = 10\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (-1))*(x - (-1)) + (-1)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": -1,
-            "y": -1,
-            "label": "V(-1, -1)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -41899,33 +41383,19 @@
         "احسب القيمة النهائية من المقدار: \\(-0.6 + 0 + 0.8\\).<br><span class=\"en-trans\">Compute the final value from: \\(-0.6 + 0 + 0.8\\).</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (0))*(x - (0)) + (-2)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "2*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 0,
-            "y": -2,
-            "label": "V(0, -2)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -42201,33 +41671,19 @@
         "اعزل المتغير \\(E\\) من \\(6 - E + 8 = 2\\) لإيجاد القيمة النهائية.<br><span class=\"en-trans\">Solve \\(6 - E + 8 = 2\\) for \\(E\\) and verify your answer.</span>"
       ],
       "fig": {
-        "type": "fn",
-        "xrange": [
-          -5,
-          5
-        ],
-        "yrange": [
+        "type": "numberline",
+        "range": [
           -5,
           7
         ],
-        "fns": [
-          {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "4*x - 1",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
         "points": [
           {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "x": -2,
+            "label": "P"
+          },
+          {
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -42787,32 +42243,26 @@
       ],
       "fig": {
         "type": "fn",
+        "title": "Smooth Curve & Local Linearization",
         "xrange": [
-          -5,
+          -2,
           5
         ],
         "yrange": [
-          -5,
+          -1,
           7
         ],
         "fns": [
           {
-            "fn": "(x - (1))*(x - (1)) + (-3)",
+            "fn": "0.5*x*x - x + 1.5",
             "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "label": "Curve C"
           },
           {
-            "fn": "1*x - 4",
+            "fn": "x - 0.5",
             "color": "var(--fig-amber)",
             "dash": "4,4",
-            "label": "y = g(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": -3,
-            "label": "V(1, -3)"
+            "label": "Tangent"
           }
         ]
       }
@@ -42909,26 +42359,40 @@
       "answer": 2,
       "sol": "الصورة الإحداثية = \\( \\langle x_2 - x_1, y_2 - y_1 \\rangle = \\langle 5 - (2), 7 - (3) \\rangle = \\langle 3, 4 \\rangle \\). / Component form = \\( \\langle x_2 - x_1, y_2 - y_1 \\rangle = \\langle 3, 4 \\rangle \\).",
       "figure": {
-        "type": "fn",
-        "points": [
-          {
-            "x": 2,
-            "y": 3,
-            "label": "A(2,3)"
-          },
-          {
-            "x": 5,
-            "y": 7,
-            "label": "B(5,7)"
-          }
+        "type": "transformation_grid",
+        "title": "Vector Components & Span in Coordinate Space",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "xrange": [
-          0,
-          7
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "yrange": [
-          1,
-          9
+        "objectLabels": [
+          "O",
+          "u",
+          "v"
         ]
       },
       "id": "tahsili-1381",
@@ -43013,26 +42477,40 @@
       "answer": 2,
       "sol": "الصورة الإحداثية = \\( \\langle x_2 - x_1, y_2 - y_1 \\rangle = \\langle 4 - (-1), 6 - (2) \\rangle = \\langle 5, 4 \\rangle \\). / Component form = \\( \\langle x_2 - x_1, y_2 - y_1 \\rangle = \\langle 5, 4 \\rangle \\).",
       "figure": {
-        "type": "fn",
-        "points": [
-          {
-            "x": -1,
-            "y": 2,
-            "label": "A(-1,2)"
-          },
-          {
-            "x": 4,
-            "y": 6,
-            "label": "B(4,6)"
-          }
+        "type": "transformation_grid",
+        "title": "Vector Components & Span in Coordinate Space",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "xrange": [
-          -3,
-          6
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            1,
+            3
+          ]
         ],
-        "yrange": [
-          0,
-          8
+        "objectLabels": [
+          "O",
+          "u",
+          "v"
         ]
       },
       "id": "tahsili-1384",
@@ -43287,27 +42765,12 @@
       "sympy_verified": true,
       "ans": 0,
       "fig": {
-        "type": "fn",
-        "points": [
-          {
-            "x": 0,
-            "y": 0,
-            "label": "O(0,0)"
-          },
-          {
-            "x": 6,
-            "y": 8,
-            "label": "v(6,8)"
-          }
-        ],
-        "xrange": [
-          -2,
-          8
-        ],
-        "yrange": [
-          -2,
-          10
-        ]
+        "type": "conic_section",
+        "subtype": "ellipse",
+        "a": 4,
+        "b": 3,
+        "p": 1.5,
+        "title": "Conic Section Focal Geometry"
       },
       "hints": [
         "طول المتجه = \\(||\\vec{v}|| = \\sqrt{x^2 + y^2} = \\sqrt{(6)^2 + (8)^2} = \\sqrt{100}\\).<br><span class=\"en-trans\">طول المتجه = \\(||\\vec{v}|| = \\sqrt{x^2 + y^2} = \\sqrt{(6)^2 + (8)^2} = \\sqrt{100}\\).</span>",
@@ -43407,26 +42870,20 @@
       "answer": 0,
       "sol": "طول المتجه = \\( ||\\vec{v}|| = \\sqrt{x^2 + y^2} = \\sqrt{(-3)^2 + (4)^2} = \\sqrt{25} = 5 \\). / Vector magnitude = \\( ||\\vec{v}|| = \\sqrt{x^2 + y^2} = \\sqrt{(-3)^2 + (4)^2} = 5 \\).",
       "figure": {
-        "type": "fn",
+        "type": "argand",
+        "title": "Complex Argand Plane",
         "points": [
           {
-            "x": 0,
-            "y": 0,
-            "label": "O(0,0)"
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
           },
           {
-            "x": -3,
-            "y": 4,
-            "label": "v(-3,4)"
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
           }
-        ],
-        "xrange": [
-          -5,
-          2
-        ],
-        "yrange": [
-          -2,
-          6
         ]
       },
       "id": "tahsili-1396",

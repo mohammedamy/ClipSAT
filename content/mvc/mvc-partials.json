@@ -72,45 +72,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Functions of Several Variables, Limits, Partial Derivatives & Differentiability — Linear Transformation & Basis Action",
-          "original": [
-            [
-              1,
-              1
-            ],
-            [
-              3,
-              3
-            ],
-            [
-              1,
-              4
-            ]
+          "type": "fn",
+          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
+          "xrange": [
+            -4,
+            4
           ],
-          "transformed": [
-            [
-              1,
-              -1
-            ],
-            [
-              3,
-              -3
-            ],
-            [
-              1,
-              -4
-            ]
+          "yrange": [
+            -3,
+            3
           ],
-          "labels": [
-            "A",
-            "B",
-            "C"
+          "fns": [
+            {
+              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
+              "color": "var(--fig-indigo)",
+              "label": "c = 4"
+            },
+            {
+              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
+              "color": "var(--fig-indigo)"
+            },
+            {
+              "fn": "2*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Normal ∇f"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1.22,
+              "label": "P"
+            }
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "الإحداثي grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'."
+          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
+          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق."
         }
       },
       {
@@ -419,7 +418,7 @@
         },
         "caption": {
           "en": "Coordinate slices (traces) through the elliptic paraboloid \\( z = 4 - x^2 - y^2 \\). Holding \\( y = 0 \\) yields the parabolic curve \\( z = 4 - x^2 \\) with slope \\( \\partial z / \\partial x = -2x \\), showing how partial derivatives measure slope along cross sections parallel to coordinate axes.",
-          "ar": "الإحداثي slices (traces) through the elliptic paraboloid \\( z = 4 - x^2 - y^2 \\). Holding \\( y = 0 \\) yields the parabolic curve \\( z = 4 - x^2 \\) with الميل \\( \\partial z / \\partial x = -2x \\), showing how partial المشتقات measure الميل along cross sections parallel to الإحداثي axes."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق."
         }
       },
       {
@@ -974,8 +973,8 @@
           }
         ],
         "note": {
-          "en": "Holding \\(y = y_0\\) constant reduces a multivariable surface \\(z = f(x, y)\\) to a single-variable cross-section trace \\(g(x) = f(x, y_0)\\) whose slope is \\(f_x(x, y_0)\\). Explore all 9 single-variable trace families and their \\(a, h, k\\) parameters.",
-          "ar": "عند تثبيت \\(y = y_0\\) يتحول السطح متعدد المتغيرات \\(z = f(x, y)\\) إلى أثر مقطعي بمتغير واحد \\(g(x) = f(x, y_0)\\) ميله هو المشتقة الجزئية \\(f_x(x, y_0)\\). استكشف عائلات الآثار التسع."
+          "en": "Starts on the <strong>quadratic family</strong> \\(f(x) = a(x - h)^2 + k\\) with vertex \\((h, k)\\) and axis of symmetry \\(x = h\\). Drag the vertex on the graph or compare across all 9 parent families.",
+          "ar": "يبدأ على <strong>الدالة التربيعية</strong> \\(f(x) = a(x - h)^2 + k\\) برأس \\((h, k)\\) ومحور تماثل \\(x = h\\). اسحب الرأس مباشرةً على الرسم أو قارن بين عائلات الدوال الأم التسع."
         }
       },
       {

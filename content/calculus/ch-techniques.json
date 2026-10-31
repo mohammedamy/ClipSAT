@@ -29,21 +29,45 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Techniques of Integration — Slope Field & Particular Solution Trajectory",
-          "fn": "0.8 - 0.4*y - 0.2*x",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 0
-          }
+          "type": "fn",
+          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -1,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 4 − x²/4"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = 0"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 4,
+              "label": "a = 0"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "b = 4"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
+          "ar": "منحنى المكامل غير السالب \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) على الفترة \\([0, 4]\\) لحساب المساحة المتراكمة في طرق وتقنيات التكامل المتقدمة."
         }
       },
       {
@@ -143,16 +167,6 @@
         "note": {
           "en": "Watch how substituting \\(u = kx^{2}\\) (\\(du = 2\\)kx \\(dx\\)) transforms the oscillatory \\(x\\)-domain integral into a simple sine area over [0, \\(kb^{2}\\)] with identical net value.",
           "ar": "Watch how substituting \\(u = kx^{2}\\) (\\(du = 2\\)kx \\(dx\\)) transforms the oscillatory \\(x\\)-المجال التكامل into a simple sine المساحة over [0, \\(kb^{2}\\)] with identical net value."
-        },
-        "canvas3d": {
-          "btnId": "chtechniquesExCanvas_3dBtn",
-          "wrapId": "chtechniquesExCanvas_3dWrap",
-          "hintId": "chtechniquesExCanvas_3dHint",
-          "btnLabel": "🧊 View Integration by Substitution (u-Sub) Area Preservation Lab in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Integration by Substitution (u-Sub) Area Preservation Lab. Drag to rotate.",
-            "ar": "تمثيل ثلاثي الأبعاد تفاعلي لـ Integration by Substitution (u-Sub) المساحة Preservation Lab. اسحب للتدوير."
-          }
         }
       },
       {
@@ -378,7 +392,7 @@
         "kind": "figure",
         "caption": {
           "en": "Graph of integrand \\(f(x) = x e^{-x}\\), highlighting the weighting factor in integration by parts \\(\\int x e^{-x}\\,dx\\).",
-          "ar": "التمثيل البياني of integrand \\(f(x) = x e^{-x}\\), highlighting the weighting factor in integration by parts \\(\\int x e^{-x}\\,dx\\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في طرق وتقنيات التكامل المتقدمة."
         },
         "figure": {
           "type": "fn",

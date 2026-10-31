@@ -18,33 +18,24 @@
           "correct": 1,
           "answer": "To find the 20th term of the arithmetic sequence, first identify the initial term and the common difference:\n\n1. The first term is \\( a_1 = 5 \\).\n2. The common difference \\( d \\) is found by subtracting consecutive terms: \\( d = 12 - 5 = 7 \\).\n\nThe general formula for the \\( n \\)th term of an arithmetic sequence is:\n\\[ a_n = a_1 + (n - 1)d \\]\n\nSubstitute \\( n = 20 \\), \\( a_1 = 5 \\), and \\( d = 7 \\):\n\\[ a_{20} = 5 + (20 - 1)(7) = 5 + 19(7) = 5 + 133 = 138 \\]\n\nCommon misconceptions:\n- Using \\( n \\) instead of \\( n - 1 \\) yields \\( 5 + 20(7) = 145 \\).\n- Calculating \\( 20 \\times 7 = 140 \\) overlooks the starting value \\( a_1 = 5 \\).\n- Using \\( n - 2 \\) steps yields \\( 5 + 18(7) = 131 \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "bar",
+            "title": "Discrete Term / Magnitude Comparison",
+            "data": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "label": "T₁",
+                "val": 6
               },
               {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
+                "label": "T₂",
+                "val": 9
+              },
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "label": "T₃",
+                "val": 13
+              },
+              {
+                "label": "T₄",
+                "val": 18
               }
             ]
           }
@@ -72,32 +63,20 @@
           "answer": "Let \\( a_1 = b_1 = a \\), let \\( d \\) be the common difference of \\( (a_n) \\), and let \\( r \\) be the common ratio of \\( (b_n) \\).\n\n1. Express the given terms:\n\\[ a_5 = a + 4d = b_2 = ar \\]\n\\[ a_6 = a + 5d = b_3 = ar^2 \\]\n\nSubtracting the first equation from the second gives:\n\\[ d = a_6 - a_5 = ar^2 - ar = ar(r - 1) \\]\n\nSubstitute \\( d \\) back into \\( a + 4d = ar \\):\n\\[ a + 4ar(r - 1) = ar \\]\n\nSince the terms of the sequence are non-zero, \\( a \\neq 0 \\). Dividing by \\( a \\):\n\\[ 1 + 4r(r - 1) = r \\implies 4r^2 - 5r + 1 = 0 \\]\n\\[ (4r - 1)(r - 1) = 0 \\]\n\nSince \\( b_2 \\neq b_1 \\), \\( r \\neq 1 \\). Therefore, \\( r = \\frac{1}{4} \\).\n\n2. Determine \\( d \\) in terms of \\( a \\):\n\\[ d = ar(r - 1) = a\\left(\\frac{1}{4}\\right)\\left(-\\frac{3}{4}\\right) = -\\frac{3}{16}a \\]\n\n3. Optimize the partial sum \\( S_N \\):\nFor \\( S_N \\) to achieve a finite maximum, the common difference must be negative, so \\( d < 0 \\implies a > 0 \\).\nThe \\( n \\)-th term of the arithmetic sequence is:\n\\[ a_n = a + (n - 1)\\left(-\\frac{3}{16}a\\right) = \\frac{a}{16}\\left(19 - 3n\\right) \\]\n\nEvaluating the sign of \\( a_n \\):\n- For \\( n \\le 6 \\), \\( 19 - 3n > 0 \\implies a_n > 0 \\)\n- For \\( n \\ge 7 \\), \\( 19 - 3n < 0 \\implies a_n < 0 \\)\n\nBecause terms are added until they become negative, \\( S_N \\) attains its unique maximum at \\( N = 6 \\).\n\n4. Solve for \\( a \\):\n\\[ S_6 = \\frac{6}{2}(a_1 + a_6) = 3\\left(a + \\frac{a}{16}\\right) = 3 \\cdot \\frac{17a}{16} = \\frac{51a}{16} \\]\nGiven \\( S_6 = 153 \\):\n\\[ \\frac{51a}{16} = 153 \\implies a = 153 \\cdot \\frac{16}{51} = 3 \\cdot 16 = 48 \\]\n\n5. Sum of the infinite geometric series:\nSince \\( |r| = \\frac{1}{4} < 1 \\), the infinite series converges to:\n\\[ \\sum_{n=1}^\\infty b_n = \\frac{b_1}{1 - r} = \\frac{48}{1 - \\frac{1}{4}} = \\frac{48}{\\frac{3}{4}} = 64 \\]",
           "figure": {
             "type": "fn",
+            "title": "Quadratic Parabola y = f(x)",
             "xrange": [
-              -5,
+              -3,
               5
             ],
             "yrange": [
-              -5,
-              7
+              -1,
+              8
             ],
             "fns": [
               {
-                "fn": "(x - (-1))*(x - (-1)) + (1)",
+                "fn": "(x - 1)*(x - 1) + 1",
                 "color": "var(--fig-indigo)",
                 "label": "y = f(x)"
-              },
-              {
-                "fn": "4*x - 5",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": -1,
-                "y": 1,
-                "label": "(-1, 1)"
               }
             ]
           }
@@ -124,33 +103,24 @@
           "correct": 2,
           "answer": "Step 1: Set up the ratio property for consecutive terms of a geometric sequence.\nSince the sequence is geometric, the common ratio \\(r\\) satisfies:\n\\[\nr = \\frac{a_2}{a_1} = \\frac{a_3}{a_2} \\implies \\frac{k + 2}{k - 1} = \\frac{3k}{k + 2}\n\\]\n\nStep 2: Solve the quadratic equation for \\(k\\).\nCross-multiplying gives:\n\\[\n(k + 2)^2 = 3k(k - 1)\n\\]\n\\[\nk^2 + 4k + 4 = 3k^2 - 3k\n\\]\n\\[\n2k^2 - 7k - 4 = 0\n\\]\nFactoring the quadratic:\n\\[\n(2k + 1)(k - 4) = 0\n\\]\nThus, \\(k = -\\frac{1}{2}\\) or \\(k = 4\\).\n\nStep 3: Discard the extraneous solution.\nThe problem states that all terms in the sequence are positive real numbers. If \\(k = -\\frac{1}{2}\\), the first term is \\(k - 1 = -\\frac{3}{2} < 0\\), which contradicts the condition. Therefore, \\(k = 4\\).\n\nStep 4: Find the first term and common ratio.\n- First term: \\(a_1 = 4 - 1 = 3\\)\n- Second term: \\(a_2 = 4 + 2 = 6\\)\n- Common ratio: \\(r = \\frac{6}{3} = 2\\)\n\nStep 5: Compute the 6th term.\nUsing the formula for the \\(n\\)th term of a geometric sequence, \\(a_n = a_1 r^{n-1}\\):\n\\[\na_6 = 3 \\cdot 2^{6 - 1} = 3 \\cdot 2^5 = 3 \\cdot 32 = 96\n\\]\n\nMisconception Traps:\n- Choice A (24) is the 4th term (\\(3 \\cdot 2^3\\)).\n- Choice B (48) is the 5th term (\\(3 \\cdot 2^4\\)), resulting from an off-by-one exponent error.\n- Choice D (192) incorrectly uses \\(a_n = a_1 r^n\\) giving \\(3 \\cdot 2^6 = 192\\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "bar",
+            "title": "Discrete Term / Magnitude Comparison",
+            "data": [
               {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "label": "T₁",
+                "val": 6
               },
               {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
+                "label": "T₂",
+                "val": 9
+              },
               {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
+                "label": "T₃",
+                "val": 13
+              },
+              {
+                "label": "T₄",
+                "val": 18
               }
             ]
           }

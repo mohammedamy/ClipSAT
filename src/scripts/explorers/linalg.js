@@ -411,6 +411,8 @@
       });
       var s=sse();
       document.getElementById('laLSQSSE').textContent=fmt(s,3);
+      var optEl=document.getElementById('laLSQOpt');
+      if(optEl) optEl.textContent=(Math.abs(m-1.6)<0.05 && Math.abs(b+0.5)<0.05) ? '✓ At optimum (m = 1.6, b = −0.5)' : 'm = 1.6, b = −0.5 (SSE = 0.200)';
       updateDataView();
     }
     register(canvas,draw);
@@ -422,6 +424,33 @@
       redrawAll();
     }
     sM.addEventListener('input',upd); sB2.addEventListener('input',upd); upd();
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(px, py){
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:28,r:12,t:12,b:24});
+          if(Math.hypot(px - P.X(0), py - P.Y(b)) < 22) return 'b';
+          if(Math.abs(py - P.Y(m * P.invX(px) + b)) < 20) return 'm';
+          return null;
+        },
+        onDrag: function(target, px, py){
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:28,r:12,t:12,b:24});
+          if(target === 'b'){
+            b = Math.max(-2, Math.min(3, Math.round(P.invY(py) * 10) / 10));
+            if(sB2) sB2.value = Math.round(b * 10);
+            document.getElementById('laLSQbVal').textContent = fmt(b, 1);
+          } else {
+            var wx = P.invX(px);
+            if(Math.abs(wx) > 0.3){
+              m = Math.max(-1, Math.min(3, Math.round(((P.invY(py) - b) / wx) * 10) / 10));
+              if(sM) sM.value = Math.round(m * 10);
+              document.getElementById('laLSQmVal').textContent = fmt(m, 1);
+            }
+          }
+        }
+      });
+    }
   })();
 
 

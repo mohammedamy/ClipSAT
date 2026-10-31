@@ -43,6 +43,7 @@
       P.curve(f,INDIGO,2.8);
       P.dot(0,b,AMBER2,5.5);
       if(Math.abs(m)>1e-6) P.dot(-b/m,0,AMBER2,5.5);
+      P.dot(2,2*m+b,INDIGO2,5);
       var bs2=(b>=0?'+ '+fmt(b,2):'− '+fmt(Math.abs(b),2));
       document.getElementById('lineEq').textContent='y = '+fmt(m,2)+'x '+bs2;
       document.getElementById('lineMv').textContent=fmt(m,1);
@@ -59,22 +60,25 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:30,r:12,t:14,b:26});
           var py0 = P.Y(b), px0 = P.X(0);
-          if(Math.hypot(px - px0, py - py0) < 22) return 'intercept';
-          var px1 = P.X(2), py1 = P.Y(2*m + b);
-          if(Math.hypot(px - px1, py - py1) < 22) return 'slope';
+          if(Math.hypot(px - px0, py - py0) < 26) return 'intercept';
+          var xData = P.invX(px), yOnLine = P.Y(m * xData + b);
+          if(Math.abs(py - yOnLine) < 26) return Math.abs(xData) < 0.45 ? 'intercept' : 'slope';
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:30,r:12,t:14,b:26});
           if(target === 'intercept'){
             var newB = Math.round(P.invY(py) * 2) / 2;
             newB = Math.max(-5, Math.min(5, newB));
             b = newB; if(bs) bs.value = b;
           } else if(target === 'slope'){
-            var curY = P.invY(py);
-            var newM = Math.round(((curY - b) / 2) * 2) / 2;
+            var curX = P.invX(px), curY = P.invY(py);
+            var denom = Math.abs(curX) < 0.4 ? (curX < 0 ? -0.4 : 0.4) : curX;
+            var newM = Math.round(((curY - b) / denom) * 2) / 2;
             newM = Math.max(-4, Math.min(4, newM));
             m = newM; if(ms) ms.value = m;
           }
@@ -204,13 +208,15 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:30,r:12,t:14,b:26});
           var pxH = P.X(h), pyK = P.Y(k);
           if(Math.hypot(px - pxH, py - pyK) < 22) return 'keypoint';
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:30,r:12,t:14,b:26});
           var newH = Math.round(P.invX(px) * 2) / 2;
           var newK = Math.round(P.invY(py) * 2) / 2;
           newH = Math.max(-5, Math.min(5, newH));

@@ -37,60 +37,88 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 2 · Exponential and Logarithmic Functions — Function Curve & Symmetry Analysis",
+          "title": "Inverse Reflection: y = 2ˣ, y = log₂(x), and y = x",
           "xrange": [
             -3,
             6
           ],
           "yrange": [
-            -4,
-            7
+            -3,
+            6
           ],
           "fns": [
             {
-              "fn": "(x - 2)*(x - 2) - 3",
+              "fn": "Math.pow(2, x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x − 2)² − 3"
+              "label": "y = 2ˣ"
             },
             {
-              "fn": "0.5*x - 1",
+              "fn": "Math.log(x)/Math.LN2",
+              "color": "var(--fig-teal)",
+              "label": "y = log₂(x)"
+            },
+            {
+              "fn": "x",
               "color": "var(--fig-amber)",
-              "label": "g(x) = 0.5x − 1"
+              "dash": "4,4",
+              "label": "y = x"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": -3,
-              "label": "Vertex (2, −3)"
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 1)^{2} - 3\\) with vertex at \\((1, -3)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 1)^{2} - 3\\) with الرأس at \\((1, -3)\\) and symmetry reference line \\(y = x\\)."
+          "en": "Symmetric reflection of \\(y = 2^x\\) and its inverse \\(y = \\log_2(x)\\) across the line \\(y = x\\).",
+          "ar": "التناظر الانعكاسي بين الدالة الأسية \\(y = 2^x\\) ودالتها العكسية \\(y = \\log_2(x)\\) حول المستقيم \\(y = x\\) في الوحدة ٢ · الدوال الأسية واللوغاريتمية."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
+          "title": "Exponential Growth y = 2ˣ vs Decay y = (1/2)ˣ",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -0.5,
+            8
+          ],
           "fns": [
-            "2**x"
+            {
+              "fn": "Math.pow(2, x)",
+              "color": "var(--fig-indigo)",
+              "label": "Growth 2ˣ"
+            },
+            {
+              "fn": "Math.pow(0.5, x)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Decay (1/2)ˣ"
+            }
           ],
-          "xlim": [
-            -2,
-            5
-          ],
-          "ylim": [
-            -1,
-            10
-          ],
-          "points": []
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            }
+          ]
         },
         "caption": {
-          "en": "Unit 2 · Exponential and Logarithmic Functions — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 2 · Exponential and Logarithmic Functions.",
-          "ar": "Unit 2 · Exponential and Logarithmic الدوال — Mathematical المخطط (2) — illustrating key geometric and analytical relationships in Unit 2 · Exponential and Logarithmic الدوال."
+          "en": "Comparison of exponential growth \\(y = 2^x\\) and exponential decay \\(y = (1/2)^x\\) sharing y-intercept \\((0, 1)\\) and asymptote \\(y = 0\\).",
+          "ar": "مقارنة منحنى النمو الأسي \\(y = 2^x\\) والاضمحلال الأسي \\(y = (1/2)^x\\) المشتركين في المقطع \\((0, 1)\\) وخط التقارب \\(y = 0\\)."
         }
       },
       {
@@ -712,7 +740,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = 2ˣ"
           },
           {
             "id": "uge_appcu2_mainfnDom",
@@ -729,7 +757,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(0, ∞)"
           },
           {
             "id": "uge_appcu2_mainfnKey",
@@ -737,7 +765,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "HA: y = 0 · Anchor (0, 1)"
           },
           {
             "id": "uge_appcu2_mainfnInt",
@@ -745,12 +773,12 @@
               "en": "Intercepts",
               "ar": "نقاط التقاطع مع المحورين"
             },
-            "value": "y-int: (0, 0) · x-int: (0, 0)"
+            "value": "y-int: (0, 1) · x-int: none"
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) with horizontal asymptote \\(y = k\\) and anchor \\((h, a + k)\\). Drag \\((h, k)\\) or switch to its logarithmic inverse.",
+          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) بخط تقارب أفقي \\(y = k\\) ونقطة مرجعية \\((h, a + k)\\). اسحب \\((h, k)\\) أو انتقل إلى الدالة اللوغاريتمية العكسية."
         }
       },
       {

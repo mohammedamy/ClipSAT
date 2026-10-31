@@ -60,50 +60,34 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Polynomials, Remainder Theorem & Binomial Theorem — Rational Asymptotes & Component Curves",
-          "xrange": [
-            -5,
-            5
-          ],
-          "yrange": [
-            -6,
-            6
-          ],
-          "fns": [
+          "type": "bar",
+          "title": "Discrete Probability Mass Function P(X = k)",
+          "data": [
             {
-              "fn": "2/(x + 4) + 1/(x - 3)",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = 2/(x+4) + 1/(x-3)"
+              "label": "k=0",
+              "val": 12
             },
             {
-              "fn": "2/(x + 4)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 2/(x+4)"
-            }
-          ],
-          "vlines": [
-            {
-              "x": -4,
-              "label": "x = -4"
+              "label": "k=1",
+              "val": 27
             },
             {
-              "x": 3,
-              "label": "x = 3"
-            }
-          ],
-          "points": [
+              "label": "k=2",
+              "val": 31
+            },
             {
-              "x": 0,
-              "y": 0.17,
-              "label": "y-int (0, 0.17)"
+              "label": "k=3",
+              "val": 20
+            },
+            {
+              "label": "k=4",
+              "val": 10
             }
           ]
         },
         "caption": {
-          "en": "Rational curve \\(f(x) = 2 / (x+4) + 1 / (x-3)\\) showing vertical asymptotes at \\(x = -4\\) and \\(x = 3\\).",
-          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس كثيرات الحدود ونظرية الباقي ونظرية ذات الحدين."
+          "en": "Discrete probability mass bars \\(P(X = k)\\) summing to \\(100\\%\\) across integer counts \\(k\\).",
+          "ar": "أعمدة دالة الكتلة الاحتمالية المنفصلة \\(P(X = k)\\) عبر القيم الصحيحة \\(k\\) في كثيرات الحدود ونظرية الباقي ونظرية ذات الحدين."
         }
       },
       {
@@ -208,19 +192,46 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "numberline",
-          "min": 0,
-          "max": 59,
-          "marks": [
-            12,
-            27,
-            42,
-            57
+          "type": "tree_diagram",
+          "title": "Sequential Bernoulli Trial Branches",
+          "branches": [
+            {
+              "label": "Success (p)",
+              "prob": "p",
+              "branches": [
+                {
+                  "label": "Success",
+                  "prob": "p",
+                  "outcome": "p²"
+                },
+                {
+                  "label": "Failure",
+                  "prob": "1−p",
+                  "outcome": "p(1−p)"
+                }
+              ]
+            },
+            {
+              "label": "Failure (1−p)",
+              "prob": "1−p",
+              "branches": [
+                {
+                  "label": "Success",
+                  "prob": "p",
+                  "outcome": "(1−p)p"
+                },
+                {
+                  "label": "Failure",
+                  "prob": "1−p",
+                  "outcome": "(1−p)²"
+                }
+              ]
+            }
           ]
         },
         "caption": {
-          "en": "Polynomials, Remainder Theorem & Binomial Theorem — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Polynomials, Remainder Theorem & Binomial Theorem.",
-          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس كثيرات الحدود ونظرية الباقي ونظرية ذات الحدين."
+          "en": "Two-trial probability tree illustrating independent multiplication of branch probabilities.",
+          "ar": "شجرة الاحتمالات لتجربتين مستقلتين وتطبيق قاعدة ضرب احتمالات الفروع في كثيرات الحدود ونظرية الباقي ونظرية ذات الحدين."
         }
       },
       {
@@ -559,8 +570,8 @@
         "kind": "explorer",
         "id": "cs-uge-am-polynomials-binomial-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Cubic, Polynomial & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة التكعيبية وكثيرات الحدود والدوال الأم"
+          "en": "⊙ Explorer · Cubic Inflection & Polynomial Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة التكعيبية ونقطة الانعطاف والدوال الأم"
         },
         "canvasId": "uge_ampolynomialsbinomial_mainfnCanvas",
         "ariaLabel": {
@@ -716,7 +727,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = x³"
           },
           {
             "id": "uge_ampolynomialsbinomial_mainfnDom",
@@ -733,7 +744,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_ampolynomialsbinomial_mainfnKey",
@@ -741,7 +752,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "Inflection point (0, 0)"
           },
           {
             "id": "uge_ampolynomialsbinomial_mainfnInt",
@@ -753,8 +764,8 @@
           }
         ],
         "note": {
-          "en": "Starts on the <strong>cubic inflection family</strong> \\(f(x) = a(x - h)^3 + k\\)—inspect end behavior and inflection symmetry alongside all 9 parent functions. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة التكعيبية</strong> \\(f(x) = a(x - h)^3 + k\\) — افحص سلوك الطرفين وتماثل نقطة الانعطاف مع الدوال الأم التسع. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>cubic polynomial family</strong> \\(f(x) = a(x - h)^3 + k\\) centered at its inflection point \\((h, k)\\). Explore end behavior, zero multiplicity, and transformations across all 9 parent functions.",
+          "ar": "يبدأ على <strong>الدالة التكعيبية</strong> \\(f(x) = a(x - h)^3 + k\\) المتمركزة عند نقطة الانعطاف \\((h, k)\\). استكشف سلوك الطرفين والأصفار والتحويلات الهندسية عبر الدوال الأم التسع."
         }
       },
       {

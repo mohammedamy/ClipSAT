@@ -2752,7 +2752,6 @@
   window.CSMountSlopeFieldExplorer && window.CSMountSlopeFieldExplorer({ canvasId: 'slopeCanvas', dataBtnId: 'slopeDataBtn', prefix: 'slope', defaultFn: 'xmy' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_chfoundations_mainfnCanvas', dataBtnId: 'uge_chfoundations_mainfnDataBtn', prefix: 'uge_chfoundations_mainfn', defaultFn: 'quadratic' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_chlimits_mainfnCanvas', dataBtnId: 'uge_chlimits_mainfnDataBtn', prefix: 'uge_chlimits_mainfn', defaultFn: 'rational' });
-  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_chfoundations_hyperCanvas', dataBtnId: 'uge_chfoundations_hyperDataBtn', prefix: 'uge_chfoundations_hyper', defaultFn: 'cosh' });
   window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_chderivatives_hyperCanvas', dataBtnId: 'uge_chderivatives_hyperDataBtn', prefix: 'uge_chderivatives_hyper', defaultFn: 'tanh' });
   window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_chtechniques_hyperCanvas', dataBtnId: 'uge_chtechniques_hyperDataBtn', prefix: 'uge_chtechniques_hyper', defaultFn: 'sinh' });
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */

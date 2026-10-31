@@ -29,45 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers — Linear Transformation & Basis Action",
-          "original": [
-            [
-              2,
-              1
-            ],
-            [
-              4,
-              1
-            ],
-            [
-              4,
-              3
-            ]
+          "type": "fn",
+          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
+          "xrange": [
+            -4,
+            4
           ],
-          "transformed": [
-            [
-              -2,
-              -1
-            ],
-            [
-              -4,
-              -1
-            ],
-            [
-              -4,
-              -3
-            ]
+          "yrange": [
+            -3,
+            3
           ],
-          "labels": [
-            "P",
-            "Q",
-            "R"
+          "fns": [
+            {
+              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
+              "color": "var(--fig-indigo)",
+              "label": "c = 4"
+            },
+            {
+              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
+              "color": "var(--fig-indigo)"
+            },
+            {
+              "fn": "2*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Normal ∇f"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1.22,
+              "label": "P"
+            }
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "الإحداثي grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'."
+          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
+          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج."
         }
       },
       {
@@ -317,7 +316,7 @@
         },
         "caption": {
           "en": "Lagrange multiplier geometric condition: the maximum of \\( f(x, y) = x + y \\) on the constraint circle \\( g(x, y) = x^2 + y^2 = 4 \\) occurs at \\( (\\sqrt{2}, \\sqrt{2}) \\), where the level line of \\( f \\) is tangent to the constraint curve, meaning \\( \\nabla f = \\lambda \\nabla g \\).",
-          "ar": "Lagrange multiplier geometric condition: the maximum of \\( f(x, y) = x + y \\) on the constraint الدائرة \\( g(x, y) = x^2 + y^2 = 4 \\) occurs at \\( (\\sqrt{2}, \\sqrt{2}) \\), حيث the level line of \\( f \\) is tangent to the constraint curve, meaning \\( \\nabla f = \\lambda \\nabla g \\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج."
         }
       },
       {

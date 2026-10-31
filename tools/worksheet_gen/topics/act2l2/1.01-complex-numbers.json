@@ -18,33 +18,19 @@
           "correct": 0,
           "answer": "To subtract complex numbers, distribute the negative sign across the second term and combine like terms (real parts with real parts, and imaginary parts with imaginary parts):\n\n\\((5 - 3i) - (2 - 7i) = 5 - 3i - 2 + 7i\\)\n\nGroup the real and imaginary components:\n- Real part: \\(5 - 2 = 3\\)\n- Imaginary part: \\(-3i + 7i = 4i\\)\n\nCombining these gives \\(3 + 4i\\).\n\nCommon misconception checks:\n- Choice B (\\(3 - 10i\\)) occurs if the negative sign is not distributed to the imaginary term, mistakenly calculating \\(-3i - 7i = -10i\\).\n- Choice C (\\(7 + 4i\\)) results from accidentally adding the real parts (\\(5 + 2 = 7\\)) while subtracting the imaginary parts.\n- Choice D (\\(3 - 4i\\)) results from a sign error when computing \\(-3 - (-7)\\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
+            "type": "argand",
+            "title": "Complex Argand Plane",
             "points": [
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "re": 3,
+                "im": 2,
+                "label": "z₁",
+                "arcLabel": "θ"
+              },
+              {
+                "re": -2,
+                "im": 3,
+                "label": "z₂"
               }
             ]
           }
@@ -71,33 +57,19 @@
           "correct": 0,
           "answer": "1. **Identify the geometric locus:**\n   The equation \\( |z - 12| + |z + 12| = 26 \\) represents an ellipse in the complex plane with foci at \\( z_1 = 12 \\) and \\( z_2 = -12 \\) along the real axis.\n   - The focal distance is \\( 2c = 24 \\implies c = 12 \\).\n   - The major axis length is \\( 2a = 26 \\implies a = 13 \\).\n   - The semi-minor axis length is \\( b = \\sqrt{a^2 - c^2} = \\sqrt{13^2 - 12^2} = \\sqrt{25} = 5 \\).\n\n   In Cartesian coordinates \\( z = x + iy \\), the equation of this ellipse is:\n   \\[ \\frac{x^2}{13^2} + \\frac{y^2}{5^2} = 1, \\quad \\text{with } -13 \\le x \\le 13 \\text{ and } -5 \\le y \\le 5. \\]\n\n2. **Express the distance function:**\n   We want to maximize the distance from \\( z \\) to the point \\( 5i = (0, 5) \\):\n   \\[ D^2 = |z - 5i|^2 = x^2 + (y - 5)^2. \\]\n   From the ellipse equation, \\( x^2 = 169 \\left(1 - \\frac{y^2}{25}\\right) = 169 - \\frac{169}{25}y^2 \\).\n   Substituting \\( x^2 \\) into \\( D^2 \\):\n   \\[ D^2(y) = 169 - \\frac{169}{25}y^2 + y^2 - 10y + 25 = -\\frac{144}{25}y^2 - 10y + 194. \\]\n\n3. **Optimize the quadratic over \\( [-5, 5] \\):**\n   Since the coefficient of \\( y^2 \\) is negative, \\( D^2(y) \\) is a downward-opening parabola.\n   The vertex occurs at:\n   \\[ y = -\\frac{-10}{2\\left(-\\frac{144}{25}\\right)} = -\\frac{10 \\times 25}{288} = -\\frac{125}{144}. \\]\n   Because \\( -5 \\le -\\frac{125}{144} \\le 5 \\), this critical point lies within the domain.\n\n4. **Calculate the maximum value:**\n   \\[ D^2\\left(-\\frac{125}{144}\\right) = -\\frac{144}{25}\\left(-\\frac{125}{144}\\right)^2 - 10\\left(-\\frac{125}{144}\\right) + 194 \\]\n   \\[ = -\\frac{625}{144} + \\frac{1250}{144} + 194 = \\frac{625}{144} + 194 = \\frac{625 + 27936}{144} = \\frac{28561}{144}. \\]\n   Taking the square root:\n   \\[ D = \\sqrt{\\frac{28561}{144}} = \\frac{\\sqrt{13^4}}{12} = \\frac{169}{12}. \\]\n\n**Common Misconceptions:**\n- **Choice B (\\( \\sqrt{194} \\)):** Evaluates the distance at the major axis vertices \\( z = \\pm 13 \\), giving \\( \\sqrt{13^2 + 5^2} = \\sqrt{194} \\approx 13.93 \\), failing to find the true off-axis global maximum \\( \\frac{169}{12} \\approx 14.08 \\).\n- **Choice C (\\( 18 \\)):** Naively applies the triangle inequality \\( |z - 5i| \\le |z| + 5 \\le 13 + 5 = 18 \\), which cannot be achieved because the phases of \\( z \\) and \\( -5i \\) cannot align on the ellipse.\n- **Choice D (\\( 10 \\)):** Evaluates at the opposite minor axis vertex \\( z = -5i \\), yielding \\( |-5i - 5i| = 10 \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (-1))*(x - (-1)) + (1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "4*x - 5",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
+            "type": "argand",
+            "title": "Complex Argand Plane",
             "points": [
               {
-                "x": -1,
-                "y": 1,
-                "label": "(-1, 1)"
+                "re": 3,
+                "im": 2,
+                "label": "z₁",
+                "arcLabel": "θ"
+              },
+              {
+                "re": -2,
+                "im": 3,
+                "label": "z₂"
               }
             ]
           }
@@ -124,33 +96,19 @@
           "correct": 0,
           "answer": "To simplify the quotient of two complex numbers, multiply the numerator and denominator by the complex conjugate of the denominator, \\(3 + 2i\\):\n\n\\[\n\\frac{k + 6i}{3 - 2i} = \\frac{(k + 6i)(3 + 2i)}{(3 - 2i)(3 + 2i)}\n\\]\n\nExpand the denominator:\n\\[\n(3 - 2i)(3 + 2i) = 3^2 - (2i)^2 = 9 - 4(-1) = 9 + 4 = 13\n\\]\n\nExpand the numerator:\n\\[\n(k + 6i)(3 + 2i) = 3k + 2ki + 18i + 12i^2 = 3k + 12(-1) + (2k + 18)i = (3k - 12) + (2k + 18)i\n\\]\n\nThus, the expression can be written in standard form \\(a + bi\\) as:\n\\[\n\\frac{3k - 12}{13} + \\frac{2k + 18}{13}i\n\\]\n\nFor this expression to be a real number, its imaginary part must be zero:\n\\[\n\\frac{2k + 18}{13} = 0 \\implies 2k + 18 = 0 \\implies 2k = -18 \\implies k = -9\n\\]\n\nCommon Misconceptions:\n- Setting the real part to zero (confusing \"real number\" with \"purely imaginary\") gives \\(3k - 12 = 0 \\implies k = 4\\).\n- Making a sign error when multiplying by the conjugate leads to \\(-2k + 18 = 0 \\implies k = 9\\) or \\(3k + 12 = 0 \\implies k = -4\\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
+            "type": "argand",
+            "title": "Complex Argand Plane",
             "points": [
               {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
+                "re": 3,
+                "im": 2,
+                "label": "z₁",
+                "arcLabel": "θ"
+              },
+              {
+                "re": -2,
+                "im": 3,
+                "label": "z₂"
               }
             ]
           }

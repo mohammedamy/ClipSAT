@@ -55,38 +55,32 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Radicals &amp; Rational Exponents — Function Curve & Symmetry Analysis",
+          "title": "Rational Hyperbola y = 2/(x − 1) + 1 & Asymptotes",
           "xrange": [
-            -2,
-            6
+            -5,
+            7
           ],
           "yrange": [
-            -2,
-            11
+            -5,
+            7
           ],
           "fns": [
             {
-              "fn": "2*x + 3",
+              "fn": "2/(x - 1) + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = 2x + 3"
+              "label": "f(x) = 2/(x−1) + 1"
             },
             {
-              "fn": "-0.5*x + 8",
+              "fn": "1",
               "color": "var(--fig-amber)",
-              "label": "y = −0.5x + 8"
-            }
-          ],
-          "points": [
-            {
-              "x": 2,
-              "y": 7,
-              "label": "(2, 7)"
+              "dash": "4,4",
+              "label": "HA: y = 1"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 2)^{2} - 5\\) with vertex at \\((2, -5)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 2)^{2} - 5\\) with الرأس at \\((2, -5)\\) and symmetry reference line \\(y = x\\)."
+          "en": "Rational curve \\(f(x) = \\dfrac{2}{x - 1} + 1\\) with vertical asymptote \\(x = 1\\) and horizontal asymptote \\(y = 1\\).",
+          "ar": "منحنى الدالة النسبية \\(f(x) = \\dfrac{2}{x - 1} + 1\\) مع خط التقارب الرأسي \\(x = 1\\) والأفقي \\(y = 1\\) في الجذور والأسس النسبية."
         }
       },
       {
@@ -294,7 +288,7 @@
         },
         "caption": {
           "en": "Square root function \\(y = \\sqrt{x+3} - 1\\) starting at endpoint \\((-3, -1)\\) with natural domain \\(x \\ge -3\\) and range \\(y \\ge -1\\).",
-          "ar": "Square root الدالة \\(y = \\sqrt{x+3} - 1\\) starting at endpoint \\((-3, -1)\\) with natural المجال \\(x \\ge -3\\) and المدى \\(y \\ge -1\\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الجذور والأسس النسبية."
         }
       },
       {
@@ -552,8 +546,8 @@
         "kind": "explorer",
         "id": "cs-uge-a2-radical-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Exponential Growth/Decay & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النمو والاضمحلال الأسي وتحويلات الدوال الأم"
+          "en": "⊙ Explorer · Radical (Square-Root) Domain & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة الجذرية ومجالها وتحويلات الدوال الأم"
         },
         "canvasId": "uge_a2radical_mainfnCanvas",
         "ariaLabel": {
@@ -615,7 +609,8 @@
               },
               {
                 "value": "radical",
-                "label": "Radical (Square Root):  f(x) = a√(x − h) + k"
+                "label": "Radical (Square Root):  f(x) = a√(x − h) + k",
+                "selected": true
               },
               {
                 "value": "rational",
@@ -623,8 +618,7 @@
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
@@ -709,7 +703,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = √x"
           },
           {
             "id": "uge_a2radical_mainfnDom",
@@ -717,7 +711,7 @@
               "en": "Domain",
               "ar": "المجال"
             },
-            "value": "(−∞, ∞)"
+            "value": "[0, ∞)"
           },
           {
             "id": "uge_a2radical_mainfnRng",
@@ -734,7 +728,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "Endpoint (0, 0)"
           },
           {
             "id": "uge_a2radical_mainfnInt",
@@ -746,8 +740,8 @@
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>square-root radical family</strong> \\(f(x) = a\\sqrt{x - h} + k\\) with domain \\([h, \\infty)\\) and endpoint \\((h, k)\\). Drag \\((h, k)\\) to see how shifts restrict domain and range.",
+          "ar": "يبدأ على <strong>الدالة الجذرية</strong> \\(f(x) = a\\sqrt{x - h} + k\\) ذات المجال \\([h, \\infty)\\) ونقطة البداية \\((h, k)\\). اسحب \\((h, k)\\) لملاحظة أثر الإزاحات على المجال والمدى."
         }
       },
       {

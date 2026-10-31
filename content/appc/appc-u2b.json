@@ -49,39 +49,49 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions — Coordinate Curve & Structural Analysis",
+          "title": "Inverse Reflection: y = 2ˣ, y = log₂(x), and y = x",
           "xrange": [
-            -4,
+            -3,
             6
           ],
           "yrange": [
-            -4,
-            8
+            -3,
+            6
           ],
           "fns": [
             {
-              "fn": "(x - 1)*(x - 1) - 2",
+              "fn": "Math.pow(2, x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 1)² - 2"
+              "label": "y = 2ˣ"
             },
             {
-              "fn": "x + 2",
+              "fn": "Math.log(x)/Math.LN2",
+              "color": "var(--fig-teal)",
+              "label": "y = log₂(x)"
+            },
+            {
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "g(x) = x + 2"
+              "label": "y = x"
             }
           ],
           "points": [
             {
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            },
+            {
               "x": 1,
-              "y": -2,
-              "label": "Vertex (1, -2)"
+              "y": 0,
+              "label": "(1, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
+          "en": "Symmetric reflection of \\(y = 2^x\\) and its inverse \\(y = \\log_2(x)\\) across the line \\(y = x\\).",
+          "ar": "التناظر الانعكاسي بين الدالة الأسية \\(y = 2^x\\) ودالتها العكسية \\(y = \\log_2(x)\\) حول المستقيم \\(y = x\\) في الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
         }
       },
       {
@@ -538,8 +548,8 @@
         "kind": "explorer",
         "id": "cs-uge-appc-u2b-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Logarithmic Domain, Asymptotes & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة اللوغاريتمية ومجالها والدوال الأم"
+          "en": "⊙ Explorer · Logarithmic Domain, Vertical Asymptote & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة اللوغاريتمية وخط التقارب الرأسي والدوال الأم"
         },
         "canvasId": "uge_appcu2b_mainfnCanvas",
         "ariaLabel": {
@@ -695,7 +705,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = ln(x)"
           },
           {
             "id": "uge_appcu2b_mainfnDom",
@@ -703,7 +713,7 @@
               "en": "Domain",
               "ar": "المجال"
             },
-            "value": "(−∞, ∞)"
+            "value": "(0, ∞)"
           },
           {
             "id": "uge_appcu2b_mainfnRng",
@@ -712,7 +722,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_appcu2b_mainfnKey",
@@ -720,7 +730,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "VA: x = 0 · Anchor (1, 0)"
           },
           {
             "id": "uge_appcu2b_mainfnInt",
@@ -728,12 +738,126 @@
               "en": "Intercepts",
               "ar": "نقاط التقاطع مع المحورين"
             },
-            "value": "y-int: (0, 0) · x-int: (0, 0)"
+            "value": "y-int: none · x-int: (1, 0)"
           }
         ],
         "note": {
-          "en": "Starts on the <strong>logarithmic family</strong> \\(f(x) = a\\ln(x - h) + k\\) on \\((h, \\infty)\\)—observe vertical asymptote \\(x = h\\) and compare with its exponential inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة اللوغاريتمية</strong> \\(f(x) = a\\ln(x - h) + k\\) على \\((h, \\infty)\\) — راقب خط التقارب الرأسي \\(x = h\\) وقارنه بمعكوسه الأسي. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>logarithmic family</strong> \\(f(x) = a\\ln(x - h) + k\\) with domain \\((h, \\infty)\\), vertical asymptote \\(x = h\\), and anchor \\((h + 1, k)\\). Drag \\((h, k)\\) to inspect domain shifts.",
+          "ar": "يبدأ على <strong>الدالة اللوغاريتمية</strong> \\(f(x) = a\\ln(x - h) + k\\) بمجال \\((h, \\infty)\\) وخط تقارب رأسي \\(x = h\\) ونقطة مرجعية \\((h + 1, k)\\). اسحب \\((h, k)\\) لفحص إزاحة المجال."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Inverse Function Symmetry Across \\(y = x\\)",
+          "ar": "⊙ مستكشف تفاعلي · تناظر الدالة العكسية حول المستقيم \\(y = x\\)"
+        },
+        "canvasId": "appcInvCanvas",
+        "ariaLabel": {
+          "en": "Interactive coordinate explorer comparing f(x) and its inverse f⁻¹(x) reflected across the line y = x",
+          "ar": "مستكشف إحداثي تفاعلي يقارن الدالة f(x) ودالتها العكسية f⁻¹(x) بالانعكاس حول المستقيم y = x"
+        },
+        "dataPanel": {
+          "btnId": "appcInvDataBtn",
+          "panelId": "appcInvDataPanel",
+          "descId": "appcInvDataDesc",
+          "rowsId": "appcInvDataRows",
+          "caption": {
+            "en": "Point reflection coordinates between \\(f(x)\\) and \\(f^{-1}(x)\\) across \\(y = x\\)",
+            "ar": "Point reflection الإحداثيات between \\(f(x)\\) and \\(f^{-1}(x)\\) across \\(y = x\\)"
+          },
+          "columns": [
+            {
+              "en": "\\(x\\)",
+              "ar": "\\(x\\)"
+            },
+            {
+              "en": "\\(f(x)\\)",
+              "ar": "\\(f(x)\\)"
+            },
+            {
+              "en": "Reflected \\((f(x), x)\\)",
+              "ar": "Reflected \\((f(x), x)\\) (الوحدة ٤ · المعادلات البارامترية والمتجهات والمصفوفات)"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcInvF",
+            "label": {
+              "en": "Function <b>\\(f(x)\\)</b>:",
+              "ar": "الدالة <b>\\(f(x)\\)</b>:"
+            },
+            "ariaLabel": {
+              "en": "Select function f(x)",
+              "ar": "Select الدالة f(x)"
+            },
+            "value": "rat",
+            "options": [
+              {
+                "value": "rat",
+                "label": "f(x) = (3x − 1)/(x + 2)",
+                "selected": true
+              },
+              {
+                "value": "exp",
+                "label": "f(x) = 2^x (Inverse: log₂ x)"
+              },
+              {
+                "value": "cub",
+                "label": "f(x) = x³/4 + 1 (Inverse: ∛(4(x − 1)))"
+              }
+            ]
+          },
+          {
+            "id": "appcInvA",
+            "valueDisplayId": "appcInvAV",
+            "label": {
+              "en": "Probe input <b>\\(a\\)</b>:",
+              "ar": "قيمة المدخل <b>\\(a\\)</b>:"
+            },
+            "ariaLabel": {
+              "en": "Input value a",
+              "ar": "قيمة المدخل a"
+            },
+            "min": -5,
+            "max": 5,
+            "value": 1,
+            "step": 0.5
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcInvFa",
+            "label": {
+              "en": "\\((a, f(a))\\)",
+              "ar": "\\((a, f(a))\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\((1.0, 0.667)\\)"
+          },
+          {
+            "id": "appcInvRef",
+            "label": {
+              "en": "\\((f(a), a)\\)",
+              "ar": "\\((f(a), a)\\)"
+            },
+            "colorClass": "amber",
+            "value": "\\((0.667, 1.0)\\)"
+          },
+          {
+            "id": "appcInvFormula",
+            "label": {
+              "en": "\\(f^{-1}(x)\\)",
+              "ar": "\\(f^{-1}(x)\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\((2x + 1)/(3 - x)\\)"
+          }
+        ],
+        "note": {
+          "en": "An invertible function \\(f\\) (indigo) and its inverse \\(f^{-1}\\) (amber) reflect symmetrically across the dashed line \\(y = x\\): every point \\((a, f(a))\\) maps to \\((f(a), a)\\).",
+          "ar": "تنعكس الدالة القابلة للعكس \\(f\\) (باللون النيلي) ودالتها العكسية \\(f^{-1}\\) (باللون الكهرماني) بتناظر تام حول المستقيم المتقطع \\(y = x\\)؛ إذ تنتقل كل نقطة \\((a, f(a))\\) إلى \\((f(a), a)\\)."
         }
       },
       {

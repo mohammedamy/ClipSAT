@@ -29,21 +29,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory — Slope Field & Particular Solution Trajectory",
-          "fn": "0.4*x - 0.7*y + 0.4",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 1.6
-          }
+          "type": "fn",
+          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "xrange": [
+            0,
+            8
+          ],
+          "yrange": [
+            -2,
+            2.5
+          ],
+          "fns": [
+            {
+              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
+              "color": "var(--fig-indigo)",
+              "label": "Underdamped y(t)"
+            },
+            {
+              "fn": "2*Math.exp(-0.35*x)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Envelope ±2e^(−0.35t)"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
+          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي."
         }
       },
       {
@@ -328,7 +340,7 @@
         },
         "caption": {
           "en": "Underdamped harmonic oscillator \\( y(x) = 2e^{-0.7x}\\cos(3x) \\). The solution oscillates with quasi-frequency \\( \\omega_d = 3 \\text{ rad/s} \\) strictly bounded within the exponential envelope \\( \\pm 2e^{-0.7x} \\).",
-          "ar": "Underdamped harmonic oscillator \\( y(x) = 2e^{-0.7x}\\cos(3x) \\). The الحل oscillates with quasi-frequency \\( \\omega_d = 3 \\text{ rad/s} \\) strictly bounded within the exponential envelope \\( \\pm 2e^{-0.7x} \\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي."
         }
       },
       {

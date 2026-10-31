@@ -184,30 +184,29 @@
           "answer": "Given the function $f(x) = \\sqrt{ax+b}$, and it passes through the points $(1, 3)$ and $(5, 5)$. We can set up a system of equations: 1. For point $(1, 3)$: $3 = \\sqrt{a(1)+b} \\Rightarrow 3 = \\sqrt{a+b}$. Squaring both sides gives $9 = a+b$. (Equation 1) 2. For point $(5, 5)$: $5 = \\sqrt{a(5)+b} \\Rightarrow 5 = \\sqrt{5a+b}$. Squaring both sides gives $25 = 5a+b$. (Equation 2) Now we solve the system of linear equations: Equation 2 - Equation 1: $(5a+b) - (a+b) = 25 - 9$ $4a = 16$ $a = 4$ Substitute the value of $a$ into Equation 1: $9 = 4+b$ $b = 9 - 4$ $b = 5$ Thus, $a=4$ and $b=5$.",
           "explanation": "Given the function $f(x) = \\sqrt{ax+b}$, and it passes through the points $(1, 3)$ and $(5, 5)$. We can set up a system of equations: 1. For point $(1, 3)$: $3 = \\sqrt{a(1)+b} \\Rightarrow 3 = \\sqrt{a+b}$. Squaring both sides gives $9 = a+b$. (Equation 1) 2. For point $(5, 5)$: $5 = \\sqrt{a(5)+b} \\Rightarrow 5 = \\sqrt{5a+b}$. Squaring both sides gives $25 = 5a+b$. (Equation 2) Now we solve the system of linear equations: Equation 2 - Equation 1: $(5a+b) - (a+b) = 25 - 9$ $4a = 16$ $a = 4$ Substitute the value of $a$ into Equation 1: $9 = 4+b$ $b = 9 - 4$ $b = 5$ Thus, $a=4$ and $b=5$.",
           "figure": {
-            "type": "plot",
+            "type": "fn",
+            "title": "Rational Branches & Horizontal Asymptote",
+            "xrange": [
+              -5,
+              7
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
             "fns": [
-              "1 + 1.5/(x - (2))"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "asymptotes": {
-              "x": [
-                2
-              ],
-              "y": [
-                1
-              ]
-            },
-            "point_labels": [
               {
-                "x": 3,
-                "y": 2.5,
-                "label": "$(3, 2.5)$"
+                "fn": "2/(x - 1) + 1",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              },
+              {
+                "fn": "1",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "Asymptote"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {

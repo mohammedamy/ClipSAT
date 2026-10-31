@@ -18,33 +18,19 @@
           "correct": 0,
           "answer": "To simplify the quotient of two complex numbers, multiply both the numerator and the denominator by the complex conjugate of the denominator, which is \\( 2 + i \\):\n\n\\[\n\\frac{7 + 4i}{2 - i} = \\frac{(7 + 4i)(2 + i)}{(2 - i)(2 + i)}\n\\]\n\nExpand the numerator using the distributive property (FOIL):\n\\[\n(7 + 4i)(2 + i) = 14 + 7i + 8i + 4i^2\n\\]\nSince \\( i^2 = -1 \\):\n\\[\n14 + 15i + 4(-1) = 14 - 4 + 15i = 10 + 15i\n\\]\n\nExpand the denominator using the difference of squares:\n\\[\n(2 - i)(2 + i) = 2^2 - i^2 = 4 - (-1) = 5\n\\]\n\nNow, divide each term in the numerator by the denominator:\n\\[\n\\frac{10 + 15i}{5} = \\frac{10}{5} + \\frac{15i}{5} = 2 + 3i\n\\]\n\nCommon Misconceptions:\n- Choice B occurs from an arithmetic sign error in the imaginary term.\n- Choice C occurs if the student mistakenly calculates the denominator as \\( 2^2 - 1^2 = 3 \\) by forgetting that \\( -i^2 = -(-1) = +1 \\).\n- Choice D occurs if the student takes \\( i^2 = 1 \\), yielding \\( 14 + 4 = 18 \\) in the numerator.",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
+            "type": "argand",
+            "title": "Complex Argand Plane",
             "points": [
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "re": 3,
+                "im": 2,
+                "label": "z₁",
+                "arcLabel": "θ"
+              },
+              {
+                "re": -2,
+                "im": 3,
+                "label": "z₂"
               }
             ]
           }
@@ -124,35 +110,20 @@
           "correct": 0,
           "answer": "The total number of marbles in the bag is the sum of red and blue marbles: \\( 12 + 8 = 20 \\) marbles. The number of favorable outcomes (drawing a red marble) is 12. The probability of an event is calculated as the ratio of the number of favorable outcomes to the total number of possible outcomes. Therefore, the probability of drawing a red marble is \\( P(\\text{red}) = \\frac{\\text{Number of red marbles}}{\\text{Total number of marbles}} = \\frac{12}{20} \\). This fraction can be simplified by dividing both the numerator and the denominator by their greatest common divisor, which is 4: \\( \\frac{12 \\div 4}{20 \\div 4} = \\frac{3}{5} \\). Thus, the probability of drawing a red marble is \\( \\frac{3}{5} \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "dots",
+            "title": "Random Draw Sample Space",
+            "total": 12,
+            "groups": [
               {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "n": 7,
+                "label": "Group R"
               },
               {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
+                "n": 5,
+                "label": "Group B"
               }
             ],
-            "points": [
-              {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
-              }
-            ]
+            "bag": true
           }
         },
         {

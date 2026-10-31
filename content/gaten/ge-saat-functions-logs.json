@@ -61,39 +61,49 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "SAAT Functions, Sequences, Exponentials & Logarithms — Coordinate Curve & Structural Analysis",
+          "title": "Inverse Reflection: y = 2ˣ, y = log₂(x), and y = x",
           "xrange": [
-            -4,
+            -3,
             6
           ],
           "yrange": [
-            -4,
-            8
+            -3,
+            6
           ],
           "fns": [
             {
-              "fn": "(x - 2)*(x - 2) - 2",
+              "fn": "Math.pow(2, x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x - 2)² - 2"
+              "label": "y = 2ˣ"
             },
             {
-              "fn": "x + 2",
+              "fn": "Math.log(x)/Math.LN2",
+              "color": "var(--fig-teal)",
+              "label": "y = log₂(x)"
+            },
+            {
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "g(x) = x + 2"
+              "label": "y = x"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": -2,
-              "label": "Vertex (2, -2)"
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate representation of \\(f(x) = (x - 2)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating SAAT Functions, Sequences, Exponentials & Logarithms.",
-          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT)."
+          "en": "Symmetric reflection of \\(y = 2^x\\) and its inverse \\(y = \\log_2(x)\\) across the line \\(y = x\\).",
+          "ar": "التناظر الانعكاسي بين الدالة الأسية \\(y = 2^x\\) ودالتها العكسية \\(y = \\log_2(x)\\) حول المستقيم \\(y = x\\) في الدوال الكسرية والمتتابعات والأسس واللوغاريتمات (SAAT)."
         }
       },
       {
@@ -564,8 +574,8 @@
         "kind": "explorer",
         "id": "cs-uge-ge-saat-functions-logs-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Exponential Growth/Decay & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النمو والاضمحلال الأسي وتحويلات الدوال الأم"
+          "en": "⊙ Explorer · Logarithmic Domain, Vertical Asymptote & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة اللوغاريتمية وخط التقارب الرأسي والدوال الأم"
         },
         "canvasId": "uge_gesaatfunctionslogs_mainfnCanvas",
         "ariaLabel": {
@@ -635,12 +645,12 @@
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
-                "label": "Logarithmic:  f(x) = a · ln(x − h) + k"
+                "label": "Logarithmic:  f(x) = a · ln(x − h) + k",
+                "selected": true
               }
             ],
             "ariaLabel": {
@@ -721,7 +731,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = ln(x)"
           },
           {
             "id": "uge_gesaatfunctionslogs_mainfnDom",
@@ -729,7 +739,7 @@
               "en": "Domain",
               "ar": "المجال"
             },
-            "value": "(−∞, ∞)"
+            "value": "(0, ∞)"
           },
           {
             "id": "uge_gesaatfunctionslogs_mainfnRng",
@@ -738,7 +748,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_gesaatfunctionslogs_mainfnKey",
@@ -746,7 +756,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "VA: x = 0 · Anchor (1, 0)"
           },
           {
             "id": "uge_gesaatfunctionslogs_mainfnInt",
@@ -754,12 +764,12 @@
               "en": "Intercepts",
               "ar": "نقاط التقاطع مع المحورين"
             },
-            "value": "y-int: (0, 0) · x-int: (0, 0)"
+            "value": "y-int: none · x-int: (1, 0)"
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>logarithmic family</strong> \\(f(x) = a\\ln(x - h) + k\\) with domain \\((h, \\infty)\\), vertical asymptote \\(x = h\\), and anchor \\((h + 1, k)\\). Drag \\((h, k)\\) to inspect domain shifts.",
+          "ar": "يبدأ على <strong>الدالة اللوغاريتمية</strong> \\(f(x) = a\\ln(x - h) + k\\) بمجال \\((h, \\infty)\\) وخط تقارب رأسي \\(x = h\\) ونقطة مرجعية \\((h + 1, k)\\). اسحب \\((h, k)\\) لفحص إزاحة المجال."
         }
       },
       {

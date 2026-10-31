@@ -70,13 +70,15 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:22,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:22,r:12,t:12,b:20});
           var Pp = pt(Bdeg + (0.05 + 0.90 * frac) * 220);
           if(Math.hypot(px - P.X(Pp.x), py - P.Y(Pp.y)) < 24) return 'P';
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:22,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:22,r:12,t:12,b:20});
           var mx = P.invX(px), my = P.invY(py);
           var ang = Math.atan2(my, mx) * 180 / Math.PI;
           if(ang < 0) ang += 360;
@@ -148,13 +150,15 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:22,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:22,r:12,t:12,b:20});
           var r = deg * Math.PI / 180, adj = H * Math.cos(r), opp = H * Math.sin(r);
           if(Math.hypot(px - P.X(adj), py - P.Y(opp)) < 24) return 'hypTip';
           return null;
         },
         onDrag: function(target, px, py){
-          var P = new Plot(null, canvas.width, canvas.height, view, {l:22,r:12,t:12,b:20});
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:22,r:12,t:12,b:20});
           var mx = P.invX(px), my = P.invY(py);
           if(mx > 0.2 && my > 0.2){
             var angleDeg = Math.round(Math.atan2(my, mx) * 180 / Math.PI);

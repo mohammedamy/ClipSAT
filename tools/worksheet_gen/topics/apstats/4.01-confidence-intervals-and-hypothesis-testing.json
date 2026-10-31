@@ -66,37 +66,24 @@
           "answer": "$H_0:\\mu=1000$. $H_a:\\mu<1000$. Test statistic: $z=\\frac{\\bar{x}-\\mu_0}{s/\\sqrt{n}}=\\frac{985-1000}{45/\\sqrt{40}}=\\frac{-15}{7.115}\\approx-2.11$.",
           "explanation": "$H_0:\\mu=1000$. $H_a:\\mu<1000$. Test statistic: $z=\\frac{\\bar{x}-\\mu_0}{s/\\sqrt{n}}=\\frac{985-1000}{45/\\sqrt{40}}=\\frac{-15}{7.115}\\approx-2.11$.",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "3.6*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.3,
-            "ymax": 4.5,
-            "shade": {
-              "fn1": "3.6*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
-            "point_labels": [
+            "type": "bar",
+            "title": "Discrete Term / Magnitude Comparison",
+            "data": [
               {
-                "x": 1.96,
-                "y": 0.53,
-                "label": "$z=1.96$"
-              }
-            ],
-            "width": 230,
-            "xrange": [
-              -5.25,
-              5.5
-            ],
-            "points": [
+                "label": "T₁",
+                "val": 7
+              },
               {
-                "x": 2,
-                "y": -2,
-                "label": "$P_{6}$"
+                "label": "T₂",
+                "val": 10
+              },
+              {
+                "label": "T₃",
+                "val": 14
+              },
+              {
+                "label": "T₄",
+                "val": 19
               }
             ]
           }
@@ -434,38 +421,13 @@
           "answer": "Under the null hypothesis $H_0: \\mu = 50$, the sample mean of $n = 36$ independent observations follows a normal distribution: $\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right) = N\\left(50, \\frac{2.4^2}{36}\\right)$ The standard error of the mean is: $\\mathrm{SE} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{2.4}{\\sqrt{36}} = \\frac{2.4}{6} = 0.4$ The standardized test statistic $z$ is calculated as: $z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}} = \\frac{50.8 - 50}{0.4} = \\frac{0.8}{0.4} = 2.0$ Common errors include: - Omitting the sample size factor $\\sqrt{n}$, which produces $\\frac{50.8 - 50}{2.4} \\approx 0.33$. - Inverting the ratio, yielding $\\frac{0.4}{0.8} = 0.5$.",
           "explanation": "Under the null hypothesis $H_0: \\mu = 50$, the sample mean of $n = 36$ independent observations follows a normal distribution: $\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right) = N\\left(50, \\frac{2.4^2}{36}\\right)$ The standard error of the mean is: $\\mathrm{SE} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{2.4}{\\sqrt{36}} = \\frac{2.4}{6} = 0.4$ The standardized test statistic $z$ is calculated as: $z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}} = \\frac{50.8 - 50}{0.4} = \\frac{0.8}{0.4} = 2.0$ Common errors include: - Omitting the sample size factor $\\sqrt{n}$, which produces $\\frac{50.8 - 50}{2.4} \\approx 0.33$. - Inverting the ratio, yielding $\\frac{0.4}{0.8} = 0.5$.",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "3.8*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.3,
-            "ymax": 4.5,
-            "shade": {
-              "fn1": "3.8*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.5,
-              "x1": 1.5
-            },
-            "point_labels": [
-              {
-                "x": 1.5,
-                "y": 1.23,
-                "label": "$z=1.5$"
-              }
-            ],
-            "width": 230,
-            "xrange": [
-              -5.75,
-              5.5
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": 2,
-                "label": "$P_{33}$"
-              }
+            "type": "normal_curve",
+            "title": "Gaussian Density Profile",
+            "mean": 0,
+            "sd": 1,
+            "shade": [
+              -1.2,
+              1.2
             ]
           }
         },

@@ -229,7 +229,7 @@ test('Calculus ch-diffeq slopeCanvas is upgraded to interactive RK4/Euler lab an
     const calcHtml = fs.readFileSync(calcHtmlPath, 'utf8');
     assert.ok(calcHtml.includes('data-cs-interactive-slopefield="1"'), '_site/calculus/index.html must emit interactive slope field figure attributes');
     assert.ok(calcHtml.includes('id="slopeX0"'), '_site/calculus/index.html must render upgraded slopeX0 slider');
-    assert.ok(calcHtml.includes('uge_chfoundations_hyperCanvas'), '_site/calculus/index.html must render Hyperbolic explorer canvas');
+    assert.ok(calcHtml.includes('uge_chderivatives_hyperCanvas'), '_site/calculus/index.html must render Hyperbolic explorer canvas');
     assert.ok(calcHtml.includes('uge_chfoundations_trig6Canvas'), '_site/calculus/index.html must render 6-Trig explorer canvas');
     assert.ok(calcHtml.includes('uge_chfoundations_invtrig6Canvas'), '_site/calculus/index.html must render 6-Inverse-Trig explorer canvas');
   }

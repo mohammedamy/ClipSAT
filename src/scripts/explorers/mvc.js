@@ -427,13 +427,33 @@
       var uLen=1.3;
       arrow(c,P.X(ax),P.Y(ay),P.X(ax+Math.cos(theta)*uLen),P.Y(ay+Math.sin(theta)*uLen),INDIGO2,2.6);
       arrow(c,P.X(ax),P.Y(ay),P.X(ax+gx),P.Y(ay+gy),AMBER2,2.8);
+      var maxRate=Math.sqrt(gx*gx+gy*gy);
       document.getElementById('mvcGradDu').textContent=fmt(du(theta),3);
+      var mrEl=document.getElementById('mvcGradMaxRate');
+      if(mrEl) mrEl.textContent='√17 ≈ '+fmt(maxRate,3)+(Math.abs(du(theta)-maxRate)<0.02?' (attained!)':'');
       updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('mvcGradTheta');
     function upd(){ theta=parseInt(s.value,10)*Math.PI/180; document.getElementById('mvcGradThetaVal').textContent=s.value+'°'; redrawAll(); }
     s.addEventListener('input',upd); upd();
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(){ return 'dir'; },
+        onDrag: function(_, px, py){
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 240;
+          var P = new Plot(null, cw, ch, view, {l:30,r:12,t:14,b:26});
+          var dx = P.invX(px) - ax, dy = P.invY(py) - ay;
+          if(Math.hypot(dx, dy) > 0.15){
+            var deg = Math.round(Math.atan2(dy, dx) * 180 / Math.PI);
+            if(deg < 0) deg += 360;
+            theta = deg * Math.PI / 180;
+            if(s) s.value = deg;
+            document.getElementById('mvcGradThetaVal').textContent = deg + '°';
+          }
+        }
+      });
+    }
   })();
 
   /* MVC CH 3 — classifying critical points (2nd derivative test), 2D.

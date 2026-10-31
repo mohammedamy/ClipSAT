@@ -1362,39 +1362,39 @@ D["appc-u4"] = [
   },
   {
     "t": "fn",
-    "ti": "Explorer: Parameters \\(a\\cdot\\sin(x)+c\\)",
-    "ti_ar": "مستكشف: المعلمات \\(a\\cdot\\sin(x)+c\\)",
+    "ti": "Explorer: Parametric Projectile Trajectory \\(x(t)=u t,\\; y(t)=v t - 0.5 t^2\\)",
+    "ti_ar": "مستكشف: المسار الوسيطي للمقذوف \\(x(t)=u t,\\; y(t)=v t - 0.5 t^2\\)",
     "fns": [
       {
-        "expr": "a*sin(x)+c",
+        "expr": "(v/u)*x - 0.5*(x/u)^2",
         "color": "#1E3A6E",
-        "label": "a·sin(x)+c"
+        "label": "y(x) trajectory"
       }
     ],
     "xrange": [
-      -6.3,
-      6.3
+      0,
+      20
     ],
     "yrange": [
-      -4,
-      4
+      -2,
+      20
     ],
     "params": [
       {
-        "name": "a",
-        "label": "Amplitude a",
-        "min": 0.5,
-        "max": 2,
+        "name": "u",
+        "label": "Horizontal speed u",
+        "min": 1,
+        "max": 4,
         "step": 0.5,
-        "default": 1
+        "default": 2
       },
       {
-        "name": "c",
-        "label": "Vertical shift c",
-        "min": -2,
-        "max": 2,
+        "name": "v",
+        "label": "Vertical launch v",
+        "min": 2,
+        "max": 6,
         "step": 0.5,
-        "default": 0
+        "default": 4
       }
     ]
   },

@@ -101,7 +101,7 @@
       if(r2) r2.textContent = res.r2 || '—';
       if(dDesc && res.desc) dDesc.textContent = res.desc;
       renderDataRows(dRows, res.rows || []);
-      if(chApi) chApi.notify({ a: a, b: b });
+      if(chApi) chApi.check({ a: a, b: b });
     }
 
     var redraw = K.register(canvas, draw) || function(){ K.redrawAll(); };
@@ -109,10 +109,13 @@
     if(s1){ s1.addEventListener('input', redraw); s1.addEventListener('change', redraw); }
 
     if(cfg.drag){
-      K.makeDraggable(canvas, function(px, py){
-        if(!lastP) return;
-        cfg.drag(lastP.invX(px), lastP.invY(py), s0, s1);
-        redraw();
+      K.makeDraggable(canvas, {
+        hitTest: function(){ return lastP ? 'pt' : null; },
+        onDrag: function(_, px, py){
+          if(!lastP) return;
+          cfg.drag(lastP.invX(px), lastP.invY(py), s0, s1);
+          redraw();
+        }
       });
     }
   }

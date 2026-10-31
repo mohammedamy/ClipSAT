@@ -24,31 +24,57 @@
           "answer": "$\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2$. Parabola through origin, scaled by 3.",
           "explanation": "$\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2$. Parabola through origin, scaled by 3.",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "2**(0.4*x) + (-1)",
-              "log(x - (-2)) + 0.5"
-            ],
-            "xmin": -1.9,
-            "xmax": 4.5,
-            "ymin": -2.5,
-            "ymax": 7,
-            "asymptotes": {
-              "x": [
-                -2
-              ],
-              "y": [
-                -1
-              ]
-            },
-            "point_labels": [
+            "type": "network_graph",
+            "title": "Weighted State / Network Graph",
+            "nodes": [
               {
-                "x": 0,
-                "y": 0,
-                "label": "$(0, 0)$"
+                "id": "A",
+                "x": 65,
+                "y": 125
+              },
+              {
+                "id": "B",
+                "x": 175,
+                "y": 55
+              },
+              {
+                "id": "C",
+                "x": 175,
+                "y": 195
+              },
+              {
+                "id": "D",
+                "x": 285,
+                "y": 125
               }
             ],
-            "width": 230
+            "edges": [
+              {
+                "from": "A",
+                "to": "B",
+                "weight": "w₁"
+              },
+              {
+                "from": "A",
+                "to": "C",
+                "weight": "w₂"
+              },
+              {
+                "from": "B",
+                "to": "C",
+                "weight": "w₃"
+              },
+              {
+                "from": "B",
+                "to": "D",
+                "weight": "w₄"
+              },
+              {
+                "from": "C",
+                "to": "D",
+                "weight": "w₅"
+              }
+            ]
           }
         },
         {

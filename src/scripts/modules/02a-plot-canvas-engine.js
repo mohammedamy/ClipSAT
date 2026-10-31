@@ -792,14 +792,20 @@
   /* Pointer direct-drag interaction helper for interactive canvas explorers */
   function makeDraggable(canvas, opts){
     if(!canvas) return;
+    if(typeof opts === 'function'){
+      var dragCb = opts;
+      opts = {
+        hitTest: function(){ return 'canvas'; },
+        onDrag: function(_, px, py){ dragCb(px, py); }
+      };
+    }
     opts = opts || {};
     var dragging = null;
     function getPos(e){
       var rect = canvas.getBoundingClientRect();
-      var clientX = e.clientX, clientY = e.clientY;
       return {
-        x: (clientX - rect.left) * (canvas.width / (rect.width || 1)),
-        y: (clientY - rect.top) * (canvas.height / (rect.height || 1))
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
       };
     }
     canvas.style.touchAction = 'none';
@@ -808,8 +814,10 @@
       if(typeof opts.hitTest === 'function'){
         dragging = opts.hitTest(pos.x, pos.y);
         if(dragging){
-          canvas.setPointerCapture(e.pointerId);
+          try{ canvas.setPointerCapture(e.pointerId); }catch(_){}
+          canvas.style.cursor = 'grabbing';
           if(opts.onStart) opts.onStart(dragging, pos.x, pos.y);
+          if(opts.onDrag) opts.onDrag(dragging, pos.x, pos.y);
           redrawAll();
         }
       }
@@ -829,7 +837,8 @@
         if(opts.onEnd) opts.onEnd(dragging);
         dragging = null;
         try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
-        canvas.style.cursor = 'default';
+        var pos = getPos(e);
+        canvas.style.cursor = (typeof opts.hitTest === 'function' && opts.hitTest(pos.x, pos.y)) ? 'grab' : 'default';
         redrawAll();
       }
     }
@@ -903,7 +912,8 @@
           statusEl.textContent = statusWaiting;
         }
         try { localStorage.removeItem(storageKey); } catch(_) {}
-      }
+      },
+      notify: function(state){ return api.check(state); }
     };
     card._challengeApi = api;
     return api;

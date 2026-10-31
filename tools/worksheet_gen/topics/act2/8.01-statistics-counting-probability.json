@@ -16,33 +16,40 @@
           "answer": "Method 1 (Sequential Conditional Probability): Total balls = $5 + 3 = 8$. 1st ball red: $5/8$ 2nd ball red: $4/7$ 3rd ball red: $3/6 = 1/2$ $P = \\frac{5}{8} \\times \\frac{4}{7} \\times \\frac{3}{6} = \\frac{60}{336} = \\mathbf{\\frac{5}{28}} \\approx 0.1786$ Method 2 (Combinations): $P = \\frac{\\binom{5}{3}}{\\binom{8}{3}} = \\frac{10}{56} = \\mathbf{\\frac{5}{28}}$",
           "explanation": "Method 1 (Sequential Conditional Probability): Total balls = $5 + 3 = 8$. 1st ball red: $5/8$ 2nd ball red: $4/7$ 3rd ball red: $3/6 = 1/2$ $P = \\frac{5}{8} \\times \\frac{4}{7} \\times \\frac{3}{6} = \\frac{60}{336} = \\mathbf{\\frac{5}{28}} \\approx 0.1786$ Method 2 (Combinations): $P = \\frac{\\binom{5}{3}}{\\binom{8}{3}} = \\frac{10}{56} = \\mathbf{\\frac{5}{28}}$",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "tree_diagram",
+            "title": "Two-Stage Conditional Probability Tree",
+            "branches": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "label": "E₁",
+                "prob": "p₁",
+                "branches": [
+                  {
+                    "label": "B | E₁",
+                    "prob": "q₁",
+                    "outcome": "E₁ ∩ B"
+                  },
+                  {
+                    "label": "B' | E₁",
+                    "prob": "1−q₁",
+                    "outcome": "E₁ ∩ B'"
+                  }
+                ]
               },
               {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "label": "E₂",
+                "prob": "p₂",
+                "branches": [
+                  {
+                    "label": "B | E₂",
+                    "prob": "q₂",
+                    "outcome": "E₂ ∩ B"
+                  },
+                  {
+                    "label": "B' | E₂",
+                    "prob": "1−q₂",
+                    "outcome": "E₂ ∩ B'"
+                  }
+                ]
               }
             ]
           }

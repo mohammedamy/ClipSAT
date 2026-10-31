@@ -29,21 +29,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance — Slope Field & Particular Solution Trajectory",
-          "fn": "0.4*(x + 1) - 0.6*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 1.2
-          }
+          "type": "fn",
+          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "xrange": [
+            0,
+            8
+          ],
+          "yrange": [
+            -2,
+            2.5
+          ],
+          "fns": [
+            {
+              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
+              "color": "var(--fig-indigo)",
+              "label": "Underdamped y(t)"
+            },
+            {
+              "fn": "2*Math.exp(-0.35*x)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Envelope ±2e^(−0.35t)"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
+          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين."
         }
       },
       {
@@ -382,7 +394,7 @@
         },
         "caption": {
           "en": "Pure resonance in \\( y'' + 4y = 4\\cos(2t) \\). The particular solution \\( y_p(t) = t\\sin(2t) \\) displays an amplitude expanding proportionally to \\( t \\), bounded by the linear envelopes \\( \\pm t \\).",
-          "ar": "Pure resonance in \\( y'' + 4y = 4\\cos(2t) \\). The particular الحل \\( y_p(t) = t\\sin(2t) \\) displays an amplitude expanding proportionally to \\( t \\), bounded by the linear envelopes \\( \\pm t \\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين."
         }
       },
       {

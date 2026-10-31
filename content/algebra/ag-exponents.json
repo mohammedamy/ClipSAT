@@ -42,53 +42,43 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Exponents &amp; Polynomials — Rational Asymptotes & Component Curves",
+          "title": "Cubic Polynomial f(x) = 0.5(x + 2)(x − 1)(x − 3)",
           "xrange": [
-            -4,
-            4
+            -3.5,
+            4.5
           ],
           "yrange": [
-            -3,
-            7
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "0.5*(x + 2)*(x - 1)*(x - 3)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² − 2"
-            },
-            {
-              "fn": "x",
-              "color": "var(--fig-amber)",
-              "label": "g(x) = x"
-            }
-          ],
-          "vlines": [
-            {
-              "x": -4,
-              "label": "x = -4"
-            },
-            {
-              "x": 3,
-              "label": "x = 3"
+              "label": "P(x)"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": 2,
-              "label": "(2, 2)"
+              "x": -2,
+              "y": 0,
+              "label": "−2"
             },
             {
-              "x": -1,
-              "y": -1,
-              "label": "(−1, −1)"
+              "x": 1,
+              "y": 0,
+              "label": "1"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "label": "3"
             }
           ]
         },
         "caption": {
-          "en": "Rational curve \\(f(x) = 2 / (x+4) + 1 / (x-3)\\) showing vertical asymptotes at \\(x = -4\\) and \\(x = 3\\).",
-          "ar": "Rational curve \\(f(x) = 2 / (x+4) + 1 / (x-3)\\) showing vertical خطوط التقارب at \\(x = -4\\) and \\(x = 3\\)."
+          "en": "Cubic polynomial \\(P(x) = \\tfrac{1}{2}(x + 2)(x - 1)(x - 3)\\) showing real zeros and opposite end behavior.",
+          "ar": "منحنى كثيرة الحدود التكعيبية \\(P(x) = \\tfrac{1}{2}(x + 2)(x - 1)(x - 3)\\) وأصفارها الحقيقية وسلوك طرفيها في الأسس وكثيرات الحدود."
         }
       },
       {
@@ -240,7 +230,7 @@
         },
         "caption": {
           "en": "Graphs of even power \\( y = x^2 \\) (symmetric about the \\( y \\)-axis) and odd power \\( y = x^3 \\) (origin symmetry). Both pass through the common points \\( (0,0) \\) and \\( (1,1) \\).",
-          "ar": "توضيح رياضي: Graphs of even power \\( y = x^2 \\) (symmetric about the \\( y \\)-axis) and odd power \\( y = x^3 \\) (origin symmetry). Both pass through the common points \\( (0,0) \\) and \\( (1,1) \\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الأسس وكثيرات الحدود."
         }
       },
       {
@@ -570,8 +560,8 @@
         "kind": "explorer",
         "id": "cs-uge-ag-exponents-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Exponential Growth/Decay & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النمو والاضمحلال الأسي وتحويلات الدوال الأم"
+          "en": "⊙ Explorer · Cubic Inflection & Polynomial Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة التكعيبية ونقطة الانعطاف والدوال الأم"
         },
         "canvasId": "uge_agexponents_mainfnCanvas",
         "ariaLabel": {
@@ -625,7 +615,8 @@
               },
               {
                 "value": "cubic",
-                "label": "Cubic:  f(x) = a(x − h)³ + k"
+                "label": "Cubic:  f(x) = a(x − h)³ + k",
+                "selected": true
               },
               {
                 "value": "absolute",
@@ -641,8 +632,7 @@
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
@@ -727,7 +717,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = x³"
           },
           {
             "id": "uge_agexponents_mainfnDom",
@@ -744,7 +734,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_agexponents_mainfnKey",
@@ -752,7 +742,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "Inflection point (0, 0)"
           },
           {
             "id": "uge_agexponents_mainfnInt",
@@ -764,8 +754,8 @@
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>cubic polynomial family</strong> \\(f(x) = a(x - h)^3 + k\\) centered at its inflection point \\((h, k)\\). Explore end behavior, zero multiplicity, and transformations across all 9 parent functions.",
+          "ar": "يبدأ على <strong>الدالة التكعيبية</strong> \\(f(x) = a(x - h)^3 + k\\) المتمركزة عند نقطة الانعطاف \\((h, k)\\). استكشف سلوك الطرفين والأصفار والتحويلات الهندسية عبر الدوال الأم التسع."
         }
       },
       {

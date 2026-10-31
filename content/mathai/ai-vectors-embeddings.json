@@ -153,7 +153,7 @@
         },
         "caption": {
           "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)."
+          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)."
         }
       },
       {
@@ -268,33 +268,40 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "scatter",
-          "points": [
-            [
-              1,
-              16
-            ],
-            [
-              2,
-              23
-            ],
-            [
-              3,
-              30
-            ],
-            [
-              4,
-              37
-            ]
+          "type": "fn",
+          "title": "Parametric Trajectory & Velocity Tangent Vector",
+          "xrange": [
+            -1,
+            7
           ],
-          "line": {
-            "m": 7,
-            "b": 9
-          }
+          "yrange": [
+            -1,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*(x - 3)*(x - 3)",
+              "color": "var(--fig-indigo)",
+              "label": "r(t) path"
+            },
+            {
+              "fn": "0.5*x + 2.25",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "r'(t) tangent"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 3.75,
+              "label": "P(t₀)"
+            }
+          ]
         },
         "caption": {
-          "en": "Vectors, Norms & High-Dimensional Embeddings — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Vectors, Norms & High-Dimensional Embeddings.",
-          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)."
+          "en": "Planar parametric trajectory \\(\\mathbf{r}(t)\\) with instantaneous velocity tangent vector \\(\\mathbf{r}'(t_0)\\).",
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)."
         }
       },
       {

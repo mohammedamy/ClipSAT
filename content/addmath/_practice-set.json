@@ -16,31 +16,27 @@
       },
       "fig": {
         "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
-          },
-          {
-            "x": 2,
-            "y": 1,
-            "label": "B"
-          }
-        ],
+        "title": "Smooth Curve & Local Linearization",
         "xrange": [
-          -1.5,
-          3.5
+          -2,
+          5
         ],
         "yrange": [
           -1,
-          4
+          7
+        ],
+        "fns": [
+          {
+            "fn": "0.5*x*x - x + 1.5",
+            "color": "var(--fig-indigo)",
+            "label": "Curve C"
+          },
+          {
+            "fn": "x - 0.5",
+            "color": "var(--fig-amber)",
+            "dash": "4,4",
+            "label": "Tangent"
+          }
         ]
       }
     },
@@ -109,24 +105,25 @@
         "ar": "<p>Take natural logs of both sides: \\((x + 2)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 2\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 2\\ln 2 \\implies x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2}\\).</p><p><strong>الإجابة النهائية:</strong> \\(x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2}\\)</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "4 - x*x",
-            "label": "y = f(x)"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "fn": "x + 2",
-            "label": "y = g(x)"
+            "label": "Item II",
+            "val": 19
+          },
+          {
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
-        ],
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -2,
-          5
         ]
       }
     },
@@ -234,31 +231,21 @@
       },
       "fig": {
         "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
-          },
-          {
-            "x": 2,
-            "y": 1,
-            "label": "B"
-          }
-        ],
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -1.5,
-          3.5
+          -3,
+          5
         ],
         "yrange": [
           -1,
-          4
+          8
+        ],
+        "fns": [
+          {
+            "fn": "(x - 1)*(x - 1) + 1",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          }
         ]
       }
     },
@@ -331,32 +318,21 @@
         "ar": "<p>الخطوة ١: Use the حلّل Theorem for the حلّل \\(x - 2\\).<br>Since \\(x - 2\\) is a حلّل, \\(P(2) = 0\\):<br>\\[P(2) = 2(2)^3 + a(2)^2 + b(2) - 6 = 0\\]<br>\\[16 + 4a + 2b - 6 = 0 \\implies 4a + 2b = -10 \\implies 2a + b = -5 \\quad \\text{--- (1)}\\]</p><p>الخطوة ٢: Use the Remainder Theorem for division by \\(x + 1\\).<br>Since the remainder is \\(-24\\), \\(P(-1) = -24\\):<br>\\[P(-1) = 2(-1)^3 + a(-1)^2 + b(-1) - 6 = -24\\]<br>\\[-2 + a - b - 6 = -24 \\implies a - b - 8 = -24 \\implies a - b = -16 \\quad \\text{--- (2)}\\]</p><p>الخطوة ٣: حل the simultaneous equations.<br>Adding (1) و (2):<br>\\[(2a + b) + (a - b) = -5 + (-16)\\]<br>\\[3a = -21 \\implies a = -7\\]<br>عوّض \\(a = -7\\) into (2):<br>\\[-7 - b = -16 \\implies b = 9\\]<br>وعليه، the polynomial is:<br>\\[P(x) = 2x^3 - 7x^2 + 9x - 6\\]</p><p>الخطوة ٤: أوجد باقي القسمة عندما \\(P(x)\\) يُقسم على \\(x - 3\\).<br>بتطبيق نظرية الباقي, the remainder is \\(P(3)\\):<br>\\[P(3) = 2(3)^3 - 7(3)^2 + 9(3) - 6 = 2(27) - 7(9) + 27 - 6 = 54 - 63 + 27 - 6 = 12\\]</p><p>Common Pitfalls:<br>- Evaluating \\(P(-3)\\) instead of \\(P(3)\\) yields \\(-150\\).<br>- Using incorrect signs عندما بالتعويض عن into the حلّل/Remainder Theorems (e.g., testing \\(P(-2) = 0\\) و \\(P(1) = -24\\)) leads to \\(-30\\).<br>- A sign error setting the remainder to \\(+24\\) leads to \\(60\\).</p><p><strong>الإجابة النهائية:</strong> \\(12\\)</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
+        "type": "fn",
+        "title": "Cubic Polynomial Turning Points",
+        "xrange": [
+          -3,
+          3
         ],
-        "rows": [
+        "yrange": [
+          -4,
+          4
+        ],
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "0.5*x*x*x - 1.5*x + 0.5",
+            "color": "var(--fig-indigo)",
+            "label": "y = P(x)"
           }
         ]
       }
@@ -463,32 +439,21 @@
         "ar": "<p>To أوجد points of intersection of the line و the curve, set their equations equal:<br>\\[x^2 + 3x + k = mx - 1\\]<br>Rearranging into stوard quadratic form \\(ax^2 + bx + c = 0\\):<br>\\[x^2 + (3 - m)x + (k + 1) = 0\\]<br>For the line و curve to intersect at two distinct points, the discriminant بالنسبة إلى \\(x\\), denoted \\(\\Delta_x\\), must be strictly positive:<br>\\[\\Delta_x = (3 - m)^2 - 4(1)(k + 1)  \\gt  0\\]<br>فكّ المقدارing و بسّطing:<br>\\[\\Delta_x = m^2 - 6m + 9 - 4k - 4 = m^2 - 6m + (5 - 4k)  \\gt  0\\]<br>We are إذا علمت أن this inequality holds for <strong>all</strong> real values of \\(m\\).</p><p>لتكن لدينا quadratic function in \\(m\\):<br>\\[g(m) = m^2 - 6m + (5 - 4k)\\]<br>The coefficient of \\(m^2\\) is \\(1 \\gt 0\\), so the parabola opens upward. For \\(g(m) \\gt 0\\) for all \\(m \\in \\mathbb{R}\\), the graph of \\(g(m)\\) must lie entirely above the \\(m\\)-axis, which means it must have no real roots. وبالتالي، the discriminant of \\(g(m)\\), denoted \\(\\Delta_m\\), must be strictly negative:<br>\\[\\Delta_m = (-6)^2 - 4(1)(5 - 4k)  \\lt  0\\]<br>\\[36 - 20 + 16k  \\lt  0\\]<br>\\[16 + 16k  \\lt  0 \\implies 16k  \\lt  -16 \\implies k  \\lt  -1\\]</p><p>A common algebraic trap is to set \\(\\Delta_m \\gt 0\\) (confusing \"two distinct points of intersection\" with the condition for \\(g(m) \\gt 0\\)), which erroneously yields \\(k \\gt -1\\).</p><p><strong>الإجابة النهائية:</strong> \\(k \\lt -1\\)</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
+        "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
+        "xrange": [
+          -3,
+          5
         ],
-        "rows": [
+        "yrange": [
+          -1,
+          8
+        ],
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "(x - 1)*(x - 1) + 1",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
           }
         ]
       }
@@ -629,32 +594,25 @@
         "ar": "<p>1. Apply the logarithm quotient law \\(\\log_a(A) - \\log_a(B) = \\log_a\\left(\\frac{A}{B}\\right)\\):<br>\\[\\log_2\\left(\\frac{5x + 6}{x}\\right) = 3\\]</p><p>2. Convert the equation from logarithmic to exponential form:<br>\\[\\frac{5x + 6}{x} = 2^3 = 8\\]</p><p>3. Multiply through by \\(x\\) (noting \\(x \\gt 0\\)):<br>\\[5x + 6 = 8x \\implies 3x = 6 \\implies x = 2\\]</p><p>4. Checking the domain:<br>Both \\(5(2) + 6 = 16 \\gt 0\\) و \\(2 \\gt 0\\), so \\(x = 2\\) is a valid solution.</p><p>Common misconceptions:<br>- Calculating \\(2^3 = 6\\) instead of \\(8\\) yields \\(5x + 6 = 6x \\implies x = 6\\).<br>- Incorrectly subtracting the arguments directly as \\(\\log_2((5x+6) - x) = 3\\) leads to \\(4x + 6 = 8 \\implies x = \\frac{1}{2}\\).<br>- Forgetting to exponentiate the base و equating \\(\\frac{5x+6}{x} = 3\\) yields \\(x = -3\\), which also violates the logarithm domain.</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
+        "type": "bar",
+        "title": "Quantitative Reference Profile",
+        "data": [
           {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
+            "label": "Item I",
+            "val": 13
           },
           {
-            "x": 2,
-            "y": 1,
-            "label": "B"
+            "label": "Item II",
+            "val": 19
+          },
+          {
+            "label": "Item III",
+            "val": 23
+          },
+          {
+            "label": "Item IV",
+            "val": 17
           }
-        ],
-        "xrange": [
-          -1.5,
-          3.5
-        ],
-        "yrange": [
-          -1,
-          4
         ]
       }
     },
@@ -682,32 +640,21 @@
         "ar": "<p>بتطبيق نظرية الباقي, عندما a polynomial \\(f(x)\\) يُقسم على a linear حلّل of the form \\(ax - b\\), the remainder is \\(f\\left(\\frac{b}{a}\\right)\\).</p><p>Here, the divisor is \\(2x - 1\\), so we set \\(2x - 1 = 0 \\implies x = \\frac{1}{2}\\).</p><p>عوّض \\(x = \\frac{1}{2}\\) into \\(f(x)\\):<br>\\[f\\left(\\frac{1}{2}\\right) = 4\\left(\\frac{1}{2}\\right)^3 - 6\\left(\\frac{1}{2}\\right)^2 + 3\\left(\\frac{1}{2}\\right) - 1\\]<br>\\[= 4\\left(\\frac{1}{8}\\right) - 6\\left(\\frac{1}{4}\\right) + \\frac{3}{2} - 1\\]<br>\\[= \\frac{1}{2} - \\frac{3}{2} + \\frac{3}{2} - 1 = -\\frac{1}{2}\\]</p><p>وبالتالي، the remainder is \\(-\\frac{1}{2}\\).</p><p>Common misconceptions:<br>- Solving \\(2x - 1 = 0\\) incorrectly as \\(x = -\\frac{1}{2}\\) gives \\(f\\left(-\\frac{1}{2}\\right) = -\\frac{9}{2}\\).<br>- Arithmetic sign errors عندما بسّطing the terms often lead to \\(\\frac{1}{2}\\) or \\(0\\).</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
+        "type": "fn",
+        "title": "Cubic Polynomial Turning Points",
+        "xrange": [
+          -3,
+          3
         ],
-        "rows": [
+        "yrange": [
+          -4,
+          4
+        ],
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "0.5*x*x*x - 1.5*x + 0.5",
+            "color": "var(--fig-indigo)",
+            "label": "y = P(x)"
           }
         ]
       }

@@ -15,37 +15,19 @@
         "ar": "<p><strong>الخطوة 1 (علاقات فييتا):</strong> من المعادلة التربيعية \\( x^2 - 7x + 3 = 0 \\)، نحصل على المجموعين المتماثلين الأساسيين \\( r + s = 7 \\) و\\( rs = 3 \\).</p><p><strong>الخطوة 2 (مجموع المكعبين بصيغة نيوتن):</strong> بتطبيق المتطابقة \\( r^3 + s^3 = (r + s)^3 - 3rs(r + s) \\):<br>\\[ r^3 + s^3 = 7^3 - 3(3)(7) = 343 - 63 = 280. \\]</p><p><strong>الخطوة 3 (توحيد المقامات في المقدار الكسري):</strong> نوحّد المقامات على \\( rs \\):<br>\\[ \\frac{r^2}{s} + \\frac{s^2}{r} = \\frac{r^3 + s^3}{rs} = \\frac{280}{3}. \\]<br><strong>الإجابة النهائية:</strong> \\( r^3 + s^3 = 280 \\) و\\( \\frac{r^2}{s} + \\frac{s^2}{r} = \\frac{280}{3} \\).</p>"
       },
       "fig": {
-        "type": "fn",
-        "title": "Quadratic P(x) = x² − 7x + 3 and Symmetric Roots r, s",
-        "xrange": [
-          -1,
-          8
-        ],
-        "yrange": [
-          -11,
-          12
-        ],
-        "fns": [
-          {
-            "fn": "x*x - 7*x + 3",
-            "label": "y = x² − 7x + 3"
-          }
+        "type": "numberline",
+        "range": [
+          -5,
+          7
         ],
         "points": [
           {
-            "x": 0.4586,
-            "y": 0,
-            "label": "r"
+            "x": -2,
+            "label": "P"
           },
           {
-            "x": 6.5414,
-            "y": 0,
-            "label": "s"
-          },
-          {
-            "x": 3.5,
-            "y": -9.25,
-            "label": "Vertex (3.5, −9.25)"
+            "x": 4,
+            "label": "Q"
           }
         ]
       }
@@ -777,33 +759,12 @@
         "ar": "<p><strong>الخطوة 1 (متتالية ضعف الزاوية لحساب \\( P \\)):</strong> نضرب \\( P \\) في \\( 8\\sin 20^\\circ \\neq 0 \\) ونطبّق \\( 2\\sin\\theta\\cos\\theta = \\sin 2\\theta \\) ثلاث مرات متتالية:<br>\\[ 8\\sin 20^\\circ \\cdot P = 4\\sin 40^\\circ \\cos 40^\\circ \\cos 80^\\circ = 2\\sin 80^\\circ \\cos 80^\\circ = \\sin 160^\\circ = \\sin 20^\\circ. \\]<br>بقسمة الطرفين على \\( 8\\sin 20^\\circ \\) نجد \\( P = \\frac{1}{8} \\)!</p><p><strong>الخطوة 2 (متطابقة ثلاثة أمثال الزاوية لحساب \\( Q \\)):</strong> نلاحظ أن \\( \\sin(60^\\circ - \\theta)\\sin(60^\\circ + \\theta) = \\sin^2 60^\\circ - \\sin^2\\theta = \\frac{3}{4} - \\sin^2\\theta \\)، وبضرب الطرفين في \\( 4\\sin\\theta \\) نحصل على:<br>\\[ 4\\sin\\theta \\sin(60^\\circ - \\theta)\\sin(60^\\circ + \\theta) = 3\\sin\\theta - 4\\sin^3\\theta = \\sin(3\\theta). \\]</p><p><strong>الخطوة 3 (التعويض عند \\( \\theta = 20^\\circ \\)):</strong> نجد \\( 4Q = \\sin 60^\\circ = \\frac{\\sqrt{3}}{2} \\implies Q = \\frac{\\sqrt{3}}{8} \\).<br><strong>الإجابة النهائية:</strong> \\( P = \\frac{1}{8} \\) و\\( Q = \\frac{\\sqrt{3}}{8} \\).</p>"
       },
       "fig": {
-        "type": "fn",
-        "title": "Triple-Angle Wave sin(3x) = 4 sin(x) sin(π/3 − x) sin(π/3 + x)",
-        "xrange": [
-          0,
-          3.2
-        ],
-        "yrange": [
-          -1.2,
-          1.2
-        ],
-        "fns": [
-          {
-            "fn": "Math.sin(3*x)",
-            "label": "y = sin(3x)"
-          },
-          {
-            "fn": "Math.sin(x)",
-            "label": "y = sin(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0.3491,
-            "y": 0.866,
-            "label": "x = 20°"
-          }
-        ]
+        "type": "sinusoid",
+        "title": "Periodic Trigonometric Wave",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "sin"
       }
     },
     {

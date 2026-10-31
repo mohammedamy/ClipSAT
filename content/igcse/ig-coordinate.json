@@ -63,17 +63,40 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "conic_section",
-          "conic": "ellipse",
-          "title": "Coordinate Geometry — Analytic Locus & Focal Geometry",
-          "h": 1,
-          "k": -1,
-          "a": 5,
-          "b": 3
+          "type": "fn",
+          "title": "Perpendicular Lines, Midpoint & Distance in the Plane",
+          "xrange": [
+            -3,
+            7
+          ],
+          "yrange": [
+            -2,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "0.5*x + 1",
+              "color": "var(--fig-indigo)",
+              "label": "m₁ = 1/2"
+            },
+            {
+              "fn": "-2*x + 6",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "m₂ = −2"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 2,
+              "label": "M(2, 2)"
+            }
+          ]
         },
         "caption": {
-          "en": "Analytic ellipse \\(x^{2} / 16 + y^{2} / 9 = 1\\) showing semi-major axis \\(a = 4\\), semi-minor axis \\(b = 3\\), and foci \\(F_{1}\\), \\(F_{2}\\).",
-          "ar": "Analytic القطع الناقص \\(x^{2} / 16 + y^{2} / 9 = 1\\) showing semi-major axis \\(a = 4\\), semi-minor axis \\(b = 3\\), and foci \\(F_{1}\\), \\(F_{2}\\)."
+          "en": "Orthogonal lines with negative-reciprocal slopes \\(m_1 m_2 = -1\\) intersecting at \\(M(2, 2)\\).",
+          "ar": "مستقيمان متعامدان يحقق ميلهما \\(m_1 m_2 = -1\\) ويتقاطعان عند النقطة \\(M(2, 2)\\) في الهندسة الإحداثية ومعادلات المستقيم."
         }
       },
       {
@@ -173,16 +196,6 @@
         "note": {
           "en": "With Point \\(A\\) fixed at \\((-2, -1)\\), move Point \\(B(x_{2}, y_{2})\\) on the square grid to see the rise/run triangle, midpoint \\(M\\), distance |AB|, and perpendicular bisector (amber dashed).",
           "ar": "With Point \\(A\\) fixed at \\((-2, -1)\\), move Point \\(B(x_{2}, y_{2})\\) on the square grid to see the rise/run المثلث, midpoint \\(M\\), distance |AB|, and perpendicular bisector (amber dashed)."
-        },
-        "canvas3d": {
-          "btnId": "igcoordinateExCanvas_3dBtn",
-          "wrapId": "igcoordinateExCanvas_3dWrap",
-          "hintId": "igcoordinateExCanvas_3dHint",
-          "btnLabel": "🧊 View Coordinate Geometry in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Coordinate Geometry: Gradient m, Midpoint M, Length & Bisector. Drag to rotate.",
-            "ar": "تمثيل ثلاثي الأبعاد تفاعلي لـ الإحداثي الهندسة: Gradient m, Midpoint M, Length & Bisector. اسحب للتدوير."
-          }
         }
       },
       {
@@ -453,7 +466,7 @@
         },
         "caption": {
           "en": "Linear graph \\(y = 2x - 1\\) with gradient \\(m = 2\\) and y-intercept \\((0, -1)\\).",
-          "ar": "Linear التمثيل البياني \\(y = 2x - 1\\) with gradient \\(m = 2\\) and y-المقطع \\((0, -1)\\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الهندسة الإحداثية ومعادلات المستقيم."
         }
       },
       {
@@ -585,8 +598,8 @@
         "kind": "explorer",
         "id": "cs-uge-ig-coordinate-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Linear & Parent Functions Transformation Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر الدوال الخطية وتحويلات الدوال الأم التسع"
+          "en": "⊙ Explorer · Linear Slope-Shift & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة الخطية والميل وتحويلات الدوال الأم"
         },
         "canvasId": "uge_igcoordinate_mainfnCanvas",
         "ariaLabel": {
@@ -742,7 +755,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = x"
           },
           {
             "id": "uge_igcoordinate_mainfnDom",
@@ -759,7 +772,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_igcoordinate_mainfnKey",
@@ -767,7 +780,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "Anchor (0, 0), Slope m = 1"
           },
           {
             "id": "uge_igcoordinate_mainfnInt",
@@ -779,8 +792,8 @@
           }
         ],
         "note": {
-          "en": "Starts on the <strong>linear family</strong> \\(f(x) = a(x - h) + k\\) for this lesson—compare its constant slope against all 9 parent families using \\(a, h, k\\). Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الخطية</strong> \\(f(x) = a(x - h) + k\\) الخاصة بهذا الدرس — قارن ميلها الثابت بجميع عائلات الدوال الأم التسع عبر \\(a, h, k\\). اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>linear family</strong> \\(f(x) = a(x - h) + k\\) with slope \\(a\\) and anchor point \\((h, k)\\). Drag \\((h, k)\\) directly on the coordinate plane or switch to any of the 9 parent families.",
+          "ar": "يبدأ على <strong>الدالة الخطية</strong> \\(f(x) = a(x - h) + k\\) بميل \\(a\\) ونقطة ارتكاز \\((h, k)\\). اسحب النقطة \\((h, k)\\) مباشرةً على المستوى الإحداثي أو بدّل بين عائلات الدوال الأم التسع."
         }
       },
       {

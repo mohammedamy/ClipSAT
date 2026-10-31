@@ -16,33 +16,55 @@
           "answer": "Final Answer: $\\mathrm{Yes}$. Working through this vectors step: $\\mathrm{Check\\ if\\ }\\mathbf{w}=k\\mathbf{u}\\mathrm{\\ for\\ a\\ scalar\\ }k\\mathrm{:\\ }k=3.5\\mathrm{\\ works,\\ so\\ they\\ are\\ parallel.}$",
           "explanation": "Working through this vectors step: $\\mathrm{Check\\ if\\ }\\mathbf{w}=k\\mathbf{u}\\mathrm{\\ for\\ a\\ scalar\\ }k\\mathrm{:\\ }k=3.5\\mathrm{\\ works,\\ so\\ they\\ are\\ parallel.}$",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "network_graph",
+            "title": "Weighted State / Network Graph",
+            "nodes": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "id": "A",
+                "x": 65,
+                "y": 125
               },
               {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
+                "id": "B",
+                "x": 175,
+                "y": 55
+              },
+              {
+                "id": "C",
+                "x": 175,
+                "y": 195
+              },
+              {
+                "id": "D",
+                "x": 285,
+                "y": 125
               }
             ],
-            "points": [
+            "edges": [
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "from": "A",
+                "to": "B",
+                "weight": "w₁"
+              },
+              {
+                "from": "A",
+                "to": "C",
+                "weight": "w₂"
+              },
+              {
+                "from": "B",
+                "to": "C",
+                "weight": "w₃"
+              },
+              {
+                "from": "B",
+                "to": "D",
+                "weight": "w₄"
+              },
+              {
+                "from": "C",
+                "to": "D",
+                "weight": "w₅"
               }
             ]
           }
@@ -179,33 +201,55 @@
           "answer": "Final Answer: 0.9084. $P(X\\geq 2)=1-P(0)-P(1)=1-e^{-4}-4e^{-4}=1-5e^{-4}\\approx 0.9084$ [M1] [A1]",
           "explanation": "$P(X\\geq 2)=1-P(0)-P(1)=1-e^{-4}-4e^{-4}=1-5e^{-4}\\approx 0.9084$ [M1] [A1]",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "network_graph",
+            "title": "Weighted State / Network Graph",
+            "nodes": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-2)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "id": "A",
+                "x": 65,
+                "y": 125
               },
               {
-                "fn": "1*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
+                "id": "B",
+                "x": 175,
+                "y": 55
+              },
+              {
+                "id": "C",
+                "x": 175,
+                "y": 195
+              },
+              {
+                "id": "D",
+                "x": 285,
+                "y": 125
               }
             ],
-            "points": [
+            "edges": [
               {
-                "x": 0,
-                "y": -2,
-                "label": "(0, -2)"
+                "from": "A",
+                "to": "B",
+                "weight": "w₁"
+              },
+              {
+                "from": "A",
+                "to": "C",
+                "weight": "w₂"
+              },
+              {
+                "from": "B",
+                "to": "C",
+                "weight": "w₃"
+              },
+              {
+                "from": "B",
+                "to": "D",
+                "weight": "w₄"
+              },
+              {
+                "from": "C",
+                "to": "D",
+                "weight": "w₅"
               }
             ]
           }

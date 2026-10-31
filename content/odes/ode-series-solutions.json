@@ -29,21 +29,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius — Slope Field & Particular Solution Trajectory",
-          "fn": "0.3*(2 - y) + 0.2*x",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 0.4
-          }
+          "type": "fn",
+          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "xrange": [
+            0,
+            8
+          ],
+          "yrange": [
+            -2,
+            2.5
+          ],
+          "fns": [
+            {
+              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
+              "color": "var(--fig-indigo)",
+              "label": "Underdamped y(t)"
+            },
+            {
+              "fn": "2*Math.exp(-0.35*x)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Envelope ±2e^(−0.35t)"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
+          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس."
         }
       },
       {
@@ -299,7 +311,7 @@
         },
         "caption": {
           "en": "Progressive convergence of Taylor polynomials \\( P_2(x), P_4(x), P_6(x) \\) to \\( y(x) = \\cos(x) \\). Each higher degree extends the interval of high-fidelity agreement.",
-          "ar": "توضيح رياضي: Progressive convergence of Taylor polynomials \\( P_2(x), P_4(x), P_6(x) \\) to \\( y(x) = \\cos(x) \\). Each higher degree extends the interval of high-fidelity agreement."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس."
         }
       },
       {

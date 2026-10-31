@@ -1632,6 +1632,5 @@
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_a2lfunctions_mainfnCanvas', dataBtnId: 'uge_a2lfunctions_mainfnDataBtn', prefix: 'uge_a2lfunctions_mainfn', defaultFn: 'absolute' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_a2lexplog_mainfnCanvas', dataBtnId: 'uge_a2lexplog_mainfnDataBtn', prefix: 'uge_a2lexplog_mainfn', defaultFn: 'exponential' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_a2lalgebra_mainfnCanvas', dataBtnId: 'uge_a2lalgebra_mainfnDataBtn', prefix: 'uge_a2lalgebra_mainfn', defaultFn: 'rational' });
-  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_a2lexplog_hyperCanvas', dataBtnId: 'uge_a2lexplog_hyperDataBtn', prefix: 'uge_a2lexplog_hyper', defaultFn: 'cosh' });
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

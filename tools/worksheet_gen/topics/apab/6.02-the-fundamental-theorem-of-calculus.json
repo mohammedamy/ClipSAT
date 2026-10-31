@@ -167,35 +167,12 @@
           "answer": "(a) For 1 minute, $X \\sim \\mathrm{Po}(3)$: $P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.$ (b) For 2 minutes, the rate scales linearly: $\\lambda = 3 \\times 2 = 6$, so $Y \\sim \\mathrm{Po}(6)$: $P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.$",
           "explanation": "(a) For 1 minute, $X \\sim \\mathrm{Po}(3)$: $P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.$ (b) For 2 minutes, the rate scales linearly: $\\lambda = 3 \\times 2 = 6$, so $Y \\sim \\mathrm{Po}(6)$: $P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.$",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-2)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "1*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -2,
-                "label": "(0, -2)"
-              }
-            ]
+            "type": "sinusoid",
+            "title": "Periodic Trigonometric Wave",
+            "amp": 2,
+            "period": 6.28,
+            "midline": 0,
+            "fnType": "sin"
           }
         },
         {

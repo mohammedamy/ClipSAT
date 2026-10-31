@@ -1319,8 +1319,6 @@
     upd();
   })();
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
-  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_ibhlt3_trig6Canvas', dataBtnId: 'uge_ibhlt3_trig6DataBtn', prefix: 'uge_ibhlt3_trig6' });
-  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_ibhlt3_invtrig6Canvas', dataBtnId: 'uge_ibhlt3_invtrig6DataBtn', prefix: 'uge_ibhlt3_invtrig6' });
   window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_ibhlaa_trig6Canvas', dataBtnId: 'uge_ibhlaa_trig6DataBtn', prefix: 'uge_ibhlaa_trig6' });
   window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_ibhlaa_invtrig6Canvas', dataBtnId: 'uge_ibhlaa_invtrig6DataBtn', prefix: 'uge_ibhlaa_invtrig6' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_ibhlt2_mainfnCanvas', dataBtnId: 'uge_ibhlt2_mainfnDataBtn', prefix: 'uge_ibhlt2_mainfn', defaultFn: 'absolute' });

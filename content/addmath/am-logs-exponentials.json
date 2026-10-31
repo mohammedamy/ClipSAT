@@ -93,20 +93,25 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Logarithms, Exponentials & Straight-Line Reduction — Function Curve & Symmetry Analysis",
+          "title": "Inverse Reflection: y = 2ˣ, y = log₂(x), and y = x",
           "xrange": [
-            -4,
+            -3,
             6
           ],
           "yrange": [
-            -4,
+            -3,
             6
           ],
           "fns": [
             {
-              "fn": "(x - 1)*(x - 1) - 3",
+              "fn": "Math.pow(2, x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x-1)² - 3"
+              "label": "y = 2ˣ"
+            },
+            {
+              "fn": "Math.log(x)/Math.LN2",
+              "color": "var(--fig-teal)",
+              "label": "y = log₂(x)"
             },
             {
               "fn": "x",
@@ -117,15 +122,20 @@
           ],
           "points": [
             {
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            },
+            {
               "x": 1,
-              "y": -3,
-              "label": "Vertex (1, -3)"
+              "y": 0,
+              "label": "(1, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 1)^{2} - 3\\) with vertex at \\((1, -3)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم."
+          "en": "Symmetric reflection of \\(y = 2^x\\) and its inverse \\(y = \\log_2(x)\\) across the line \\(y = x\\).",
+          "ar": "التناظر الانعكاسي بين الدالة الأسية \\(y = 2^x\\) ودالتها العكسية \\(y = \\log_2(x)\\) حول المستقيم \\(y = x\\) في اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم."
         }
       },
       {
@@ -231,23 +241,39 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
+          "title": "Exponential Growth y = 2ˣ vs Decay y = (1/2)ˣ",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -0.5,
+            8
+          ],
           "fns": [
             {
-              "fn": "-x^2 + 4*x - 2"
+              "fn": "Math.pow(2, x)",
+              "color": "var(--fig-indigo)",
+              "label": "Growth 2ˣ"
+            },
+            {
+              "fn": "Math.pow(0.5, x)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Decay (1/2)ˣ"
             }
           ],
-          "xlim": [
-            0,
-            4
-          ],
-          "ylim": [
-            -4,
-            5
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            }
           ]
         },
         "caption": {
-          "en": "Logarithms, Exponentials & Straight-Line Reduction — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Logarithms, Exponentials & Straight-Line Reduction.",
-          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم."
+          "en": "Comparison of exponential growth \\(y = 2^x\\) and exponential decay \\(y = (1/2)^x\\) sharing y-intercept \\((0, 1)\\) and asymptote \\(y = 0\\).",
+          "ar": "مقارنة منحنى النمو الأسي \\(y = 2^x\\) والاضمحلال الأسي \\(y = (1/2)^x\\) المشتركين في المقطع \\((0, 1)\\) وخط التقارب \\(y = 0\\)."
         }
       },
       {
@@ -553,8 +579,8 @@
         "kind": "explorer",
         "id": "cs-uge-am-logs-exponentials-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Exponential Growth/Decay & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النمو والاضمحلال الأسي وتحويلات الدوال الأم"
+          "en": "⊙ Explorer · Logarithmic Domain, Vertical Asymptote & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة اللوغاريتمية وخط التقارب الرأسي والدوال الأم"
         },
         "canvasId": "uge_amlogsexponentials_mainfnCanvas",
         "ariaLabel": {
@@ -624,12 +650,12 @@
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
-                "label": "Logarithmic:  f(x) = a · ln(x − h) + k"
+                "label": "Logarithmic:  f(x) = a · ln(x − h) + k",
+                "selected": true
               }
             ],
             "ariaLabel": {
@@ -710,7 +736,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = ln(x)"
           },
           {
             "id": "uge_amlogsexponentials_mainfnDom",
@@ -718,7 +744,7 @@
               "en": "Domain",
               "ar": "المجال"
             },
-            "value": "(−∞, ∞)"
+            "value": "(0, ∞)"
           },
           {
             "id": "uge_amlogsexponentials_mainfnRng",
@@ -727,7 +753,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_amlogsexponentials_mainfnKey",
@@ -735,7 +761,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "VA: x = 0 · Anchor (1, 0)"
           },
           {
             "id": "uge_amlogsexponentials_mainfnInt",
@@ -743,12 +769,12 @@
               "en": "Intercepts",
               "ar": "نقاط التقاطع مع المحورين"
             },
-            "value": "y-int: (0, 0) · x-int: (0, 0)"
+            "value": "y-int: none · x-int: (1, 0)"
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>logarithmic family</strong> \\(f(x) = a\\ln(x - h) + k\\) with domain \\((h, \\infty)\\), vertical asymptote \\(x = h\\), and anchor \\((h + 1, k)\\). Drag \\((h, k)\\) to inspect domain shifts.",
+          "ar": "يبدأ على <strong>الدالة اللوغاريتمية</strong> \\(f(x) = a\\ln(x - h) + k\\) بمجال \\((h, \\infty)\\) وخط تقارب رأسي \\(x = h\\) ونقطة مرجعية \\((h + 1, k)\\). اسحب \\((h, k)\\) لفحص إزاحة المجال."
         }
       },
       {

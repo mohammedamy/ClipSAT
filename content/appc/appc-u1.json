@@ -36,38 +36,32 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 1 · Polynomial and Rational Functions — Function Curve & Symmetry Analysis",
+          "title": "Rational Hyperbola y = 2/(x − 1) + 1 & Asymptotes",
           "xrange": [
-            -3,
-            5
+            -5,
+            7
           ],
           "yrange": [
-            -4,
+            -5,
             7
           ],
           "fns": [
             {
-              "fn": "(x + 1)*(x + 1) - 2",
+              "fn": "2/(x - 1) + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x + 1)² − 2"
+              "label": "f(x) = 2/(x−1) + 1"
             },
             {
-              "fn": "x + 1",
+              "fn": "1",
               "color": "var(--fig-amber)",
-              "label": "g(x) = x + 1"
-            }
-          ],
-          "points": [
-            {
-              "x": -1,
-              "y": -2,
-              "label": "Vertex (−1, −2)"
+              "dash": "4,4",
+              "label": "HA: y = 1"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 3)^{2} - 4\\) with vertex at \\((3, -4)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 3)^{2} - 4\\) with الرأس at \\((3, -4)\\) and symmetry reference line \\(y = x\\)."
+          "en": "Rational curve \\(f(x) = \\dfrac{2}{x - 1} + 1\\) with vertical asymptote \\(x = 1\\) and horizontal asymptote \\(y = 1\\).",
+          "ar": "منحنى الدالة النسبية \\(f(x) = \\dfrac{2}{x - 1} + 1\\) مع خط التقارب الرأسي \\(x = 1\\) والأفقي \\(y = 1\\) في الوحدة ١ · الدوال كثيرة الحدود والدوال النسبية."
         }
       },
       {
@@ -320,7 +314,7 @@
         },
         "caption": {
           "en": "Graph of \\( f(x) = \\frac{x^3}{3} - x \\). On \\( (-\\infty, 0) \\), the average rate of change is decreasing (\\( f \\) is concave down). At \\( (0,0) \\), concavity switches. On \\( (0, \\infty) \\), the average rate of change is increasing (\\( f \\) is concave up).",
-          "ar": "التمثيل البياني of \\( f(x) = \\frac{x^3}{3} - x \\). On \\( (-\\infty, 0) \\), the average rate of change is decreasing (\\( f \\) is concave down). At \\( (0,0) \\), concavity switches. On \\( (0, \\infty) \\), the average rate of change is increasing (\\( f \\) is concave up)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الوحدة ١ · الدوال كثيرة الحدود والدوال النسبية."
         }
       },
       {
@@ -755,8 +749,8 @@
         "kind": "explorer",
         "id": "cs-uge-appc-u1-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Rational Asymptotes & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة النسبية وخطوط التقارب والدوال الأم"
+          "en": "⊙ Explorer · Cubic Inflection & Polynomial Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة التكعيبية ونقطة الانعطاف والدوال الأم"
         },
         "canvasId": "uge_appcu1_mainfnCanvas",
         "ariaLabel": {
@@ -810,7 +804,8 @@
               },
               {
                 "value": "cubic",
-                "label": "Cubic:  f(x) = a(x − h)³ + k"
+                "label": "Cubic:  f(x) = a(x − h)³ + k",
+                "selected": true
               },
               {
                 "value": "absolute",
@@ -822,8 +817,7 @@
               },
               {
                 "value": "rational",
-                "label": "Rational (Reciprocal):  f(x) = a/(x − h) + k",
-                "selected": true
+                "label": "Rational (Reciprocal):  f(x) = a/(x − h) + k"
               },
               {
                 "value": "exponential",
@@ -912,7 +906,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = x³"
           },
           {
             "id": "uge_appcu1_mainfnDom",
@@ -929,7 +923,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, ∞)"
           },
           {
             "id": "uge_appcu1_mainfnKey",
@@ -937,7 +931,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "Inflection point (0, 0)"
           },
           {
             "id": "uge_appcu1_mainfnInt",
@@ -949,8 +943,8 @@
           }
         ],
         "note": {
-          "en": "Starts on the <strong>rational reciprocal family</strong> \\(f(x) = \\frac{a}{x - h} + k\\)—track vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = k\\) across all 9 parent functions. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة النسبية</strong> \\(f(x) = \\frac{a}{x - h} + k\\) — تتبّع خط التقارب الرأسي \\(x = h\\) والأفقي \\(y = k\\) وقارن الدوال الأم التسع. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>cubic polynomial family</strong> \\(f(x) = a(x - h)^3 + k\\) centered at its inflection point \\((h, k)\\). Explore end behavior, zero multiplicity, and transformations across all 9 parent functions.",
+          "ar": "يبدأ على <strong>الدالة التكعيبية</strong> \\(f(x) = a(x - h)^3 + k\\) المتمركزة عند نقطة الانعطاف \\((h, k)\\). استكشف سلوك الطرفين والأصفار والتحويلات الهندسية عبر الدوال الأم التسع."
         }
       },
       {

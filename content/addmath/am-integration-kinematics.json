@@ -93,21 +93,45 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Integration, Areas & Kinematics — Slope Field & Particular Solution Trajectory",
-          "fn": "1 - 0.5*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -2,
-            "y0": 0.5
-          }
+          "type": "fn",
+          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -1,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 4 − x²/4"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = 0"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 4,
+              "label": "a = 0"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "b = 4"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)."
+          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
+          "ar": "منحنى المكامل غير السالب \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) على الفترة \\([0, 4]\\) لحساب المساحة المتراكمة في التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)."
         }
       },
       {
@@ -207,39 +231,50 @@
         "note": {
           "en": "Positive velocity area above the \\(t\\)-axis adds forward displacement; negative velocity area below the \\(t\\)-axis reverses displacement but adds to total distance travelled.",
           "ar": "المساحة الموجبة فوق محور الزمن تمثل الإزاحة للأمام، والمساحة السالبة تحت المحور تعكس الإزاحة ولكنها تُضاف إلى المسافة الكلية المقطوعة."
-        },
-        "canvas3d": {
-          "btnId": "amintegrationkinematicsExCanvas_3dBtn",
-          "wrapId": "amintegrationkinematicsExCanvas_3dWrap",
-          "hintId": "amintegrationkinematicsExCanvas_3dHint",
-          "btnLabel": "🧊 View Kinematics Velocity v(t), Displacement & Total Distance in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Kinematics Velocity v(t), Displacement & Total Distance. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لـ ⊙ مستكشف تفاعلي · الحركة في خط مستقيم: السرعة v(t) والإزاحة والمسافة الكلية. اسحب للتدوير."
-          }
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
+          "title": "Area Enclosed Between Intersecting Curves f(x) and g(x)",
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -1,
+            7
+          ],
           "fns": [
             {
-              "fn": "10*x + 16*x^2"
+              "fn": "4*x - 0.8*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "Upper f(x)"
+            },
+            {
+              "fn": "0.8*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Lower g(x)"
             }
           ],
-          "xlim": [
-            0,
-            10
-          ],
-          "ylim": [
-            0,
-            1391
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 4,
+              "y": 3.2,
+              "label": "(4, 3.2)"
+            }
           ]
         },
         "caption": {
-          "en": "Integration, Areas & Kinematics — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Integration, Areas & Kinematics.",
-          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)."
+          "en": "Region bounded between upper curve \\(f(x)\\) and lower line \\(g(x)\\) from \\(x = 0\\) to \\(x = 4\\).",
+          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x)\\) والمستقيم السفلي \\(g(x)\\) من \\(x = 0\\) إلى \\(x = 4\\) في التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)."
         }
       },
       {

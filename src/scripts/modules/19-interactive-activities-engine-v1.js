@@ -1487,17 +1487,22 @@ function _buildFN(cfg,box){
   updateAriaLabel();
 
   function redraw(){_drawFnPlot(canvas,cfg,params);}
+  redraw();
+  if(window.ResizeObserver){
+    var fnRo=new ResizeObserver(function(){redraw();});
+    fnRo.observe(wrap);
+  }
   if(window.IntersectionObserver){
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){if(e.isIntersecting)redraw();});
-    },{threshold:0.05});
+    },{threshold:0.01});
     obs.observe(canvas);
   } else {
     setTimeout(redraw,50);
   }
-  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(redraw,150);});
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(redraw,120);});
 
-  if(window.MutationObserver){
+  if(window.MutationObserver&&document.body&&document.body.nodeType===1){
     var themeObs=new MutationObserver(function(mutations){
       for(var i=0;i<mutations.length;i++){
         if(mutations[i].attributeName==='class'){redraw();break;}
@@ -1683,11 +1688,13 @@ function _buildGP(cfg,box){
       ctx.fillStyle=col;ctx.fill();
       ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
 
-      // Coordinate text
+      // Coordinate text (clamped inside canvas so edge points never clip)
       ctx.font='600 11px system-ui, -apple-system, sans-serif';
       ctx.fillStyle=col;ctx.textAlign='center';ctx.textBaseline='bottom';
       var lbl=(pt.label?(pt.label+' '):'')+'('+pt.x+','+pt.y+')';
-      ctx.fillText(lbl,px,py-9);
+      var lblX=Math.max(pad.l+22,Math.min(w-pad.r-22,px));
+      var lblY=(py-22<pad.t)?(py+18):(py-9);
+      ctx.fillText(lbl,lblX,lblY);
     });
   }
 
@@ -1696,16 +1703,23 @@ function _buildGP(cfg,box){
     return Math.round(val/step)*step;
   }
 
+  canvas.style.touchAction='manipulation';
+  var _lastPtrTouch=false;
+  canvas.addEventListener('pointerdown',function(e){_lastPtrTouch=(e.pointerType==='touch');});
+
   canvas.addEventListener('click',function(e){
     if(isFinished)return;
     var rect=canvas.getBoundingClientRect();
-    var dpr=window.devicePixelRatio||1;
+    if(rect.width<2||rect.height<2)return;
     var mx=e.clientX-rect.left,my=e.clientY-rect.top;
     var w=rect.width,h=rect.height,pad={l:38,r:20,t:20,b:26};
+    if(mx<pad.l-12||mx>w-pad.r+12||my<pad.t-12||my>h-pad.b+12)return;
     var vb=_viewBounds(w,h,pad);
     var xmin=vb.xmin,xmax=vb.xmax,ymin=vb.ymin,ymax=vb.ymax;
     var rawX=xmin+((mx-pad.l)/(w-pad.l-pad.r))*(xmax-xmin);
     var rawY=ymin+((h-pad.b-my)/(h-pad.t-pad.b))*(ymax-ymin);
+    var hitRad=_lastPtrTouch?22:14;
+    var snapRad=_lastPtrTouch?24:16;
 
     // Check if clicked close to an existing point to remove it
     var removeIdx=-1;
@@ -1714,7 +1728,7 @@ function _buildGP(cfg,box){
       var px=pad.l+(pt.x-xmin)/(xmax-xmin)*(w-pad.l-pad.r);
       var py=h-pad.b-(pt.y-ymin)/(ymax-ymin)*(h-pad.t-pad.b);
       var rdx=mx-px,rdy=my-py;
-      if(Math.sqrt(rdx*rdx+rdy*rdy)<=14){removeIdx=i;break;}
+      if(Math.sqrt(rdx*rdx+rdy*rdy)<=hitRad){removeIdx=i;break;}
     }
     if(removeIdx>=0){
       placedPoints.splice(removeIdx,1);
@@ -1730,11 +1744,32 @@ function _buildGP(cfg,box){
     var sdx=mx-(pad.l+(snapX-xmin)/(xmax-xmin)*(w-pad.l-pad.r));
     var sdy=my-(h-pad.b-(snapY-ymin)/(ymax-ymin)*(h-pad.t-pad.b));
     var distPixel=Math.sqrt(sdx*sdx+sdy*sdy);
-    var finalX=distPixel<16?snapX:Number(rawX.toFixed(1));
-    var finalY=distPixel<16?snapY:Number(rawY.toFixed(1));
+    var finalX=distPixel<snapRad?snapX:Number(rawX.toFixed(1));
+    var finalY=distPixel<snapRad?snapY:Number(rawY.toFixed(1));
 
     placedPoints.push({x:finalX,y:finalY});
     redraw();
+  });
+
+  // Keyboard accessible point cursor (Arrow keys move cursor, Enter/Space toggles point)
+  var kbCursor=[0,0];
+  canvas.addEventListener('keydown',function(e){
+    if(isFinished)return;
+    var step=e.shiftKey?0.5:1;
+    if(e.key==='ArrowRight'){kbCursor[0]=Math.min(xrange[1],kbCursor[0]+step);e.preventDefault();hud.textContent='(x: '+kbCursor[0].toFixed(1)+', y: '+kbCursor[1].toFixed(1)+')';}
+    else if(e.key==='ArrowLeft'){kbCursor[0]=Math.max(xrange[0],kbCursor[0]-step);e.preventDefault();hud.textContent='(x: '+kbCursor[0].toFixed(1)+', y: '+kbCursor[1].toFixed(1)+')';}
+    else if(e.key==='ArrowUp'){kbCursor[1]=Math.min(yrange[1],kbCursor[1]+step);e.preventDefault();hud.textContent='(x: '+kbCursor[0].toFixed(1)+', y: '+kbCursor[1].toFixed(1)+')';}
+    else if(e.key==='ArrowDown'){kbCursor[1]=Math.max(yrange[0],kbCursor[1]-step);e.preventDefault();hud.textContent='(x: '+kbCursor[0].toFixed(1)+', y: '+kbCursor[1].toFixed(1)+')';}
+    else if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      var exIdx=-1;
+      for(var ki=0;ki<placedPoints.length;ki++){
+        if(Math.abs(placedPoints[ki].x-kbCursor[0])<0.05&&Math.abs(placedPoints[ki].y-kbCursor[1])<0.05){exIdx=ki;break;}
+      }
+      if(exIdx>=0)placedPoints.splice(exIdx,1);
+      else if(placedPoints.length<targets.length+2)placedPoints.push({x:kbCursor[0],y:kbCursor[1]});
+      redraw();
+    }
   });
 
   function _updateGpHud(e){
@@ -1821,9 +1856,19 @@ function _buildGP(cfg,box){
 
   redraw();
   setTimeout(redraw,60);
+  if(window.ResizeObserver){
+    var gpRo=new ResizeObserver(function(){redraw();});
+    gpRo.observe(wrap);
+  }
+  if(window.IntersectionObserver){
+    var gpIo=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting)redraw();});
+    },{threshold:0.01});
+    gpIo.observe(canvas);
+  }
   if(typeof window.addEventListener==='function'){
     var gpRt;
-    window.addEventListener('resize',function(){clearTimeout(gpRt);gpRt=setTimeout(redraw,150);});
+    window.addEventListener('resize',function(){clearTimeout(gpRt);gpRt=setTimeout(redraw,120);});
   }
   if(window.MutationObserver&&document.body&&document.body.nodeType===1){
     var gpThemeObs=new MutationObserver(function(mutations){

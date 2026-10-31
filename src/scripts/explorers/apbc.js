@@ -1883,6 +1883,5 @@
   window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_apbcc1_invtrig6Canvas', dataBtnId: 'uge_apbcc1_invtrig6DataBtn', prefix: 'uge_apbcc1_invtrig6' });
   window.CSMountSlopeFieldExplorer && window.CSMountSlopeFieldExplorer({ canvasId: 'uge_apbcc2_sfCanvas', dataBtnId: 'uge_apbcc2_sfDataBtn', prefix: 'uge_apbcc2_sf', defaultFn: 'logistic' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_apbcoverview_mainfnCanvas', dataBtnId: 'uge_apbcoverview_mainfnDataBtn', prefix: 'uge_apbcoverview_mainfn', defaultFn: 'exponential' });
-  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_apbcc1_hyperCanvas', dataBtnId: 'uge_apbcc1_hyperDataBtn', prefix: 'uge_apbcc1_hyper', defaultFn: 'cosh' });
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

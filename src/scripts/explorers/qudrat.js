@@ -128,16 +128,18 @@
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
         hitTest: function(pxPos, pyPos){
-          var y = canvas.height / 2;
-          var curA = px(2 * x, canvas.width);
-          var curB = px(x + 3, canvas.width);
+          var cw = canvas.clientWidth || 360, ch = canvas.clientHeight || 200;
+          var y = ch / 2;
+          var curA = px(2 * x, cw);
+          var curB = px(x + 3, cw);
           if(Math.hypot(pxPos - curA, pyPos - (y + 24)) < 24) return 'A';
           if(Math.hypot(pxPos - curB, pyPos - (y - 16)) < 24) return 'B';
           if(Math.abs(pyPos - y) < 30) return 'axis';
           return null;
         },
         onDrag: function(target, pxPos, pyPos){
-          var val = xmin + (pxPos - 24) / (canvas.width - 38) * (xmax - xmin);
+          var cw = canvas.clientWidth || 360;
+          var val = xmin + (pxPos - 24) / Math.max(1, cw - 38) * (xmax - xmin);
           if(target === 'A') val = val / 2;
           else if(target === 'B') val = val - 3;
           var newX = Math.round(Math.max(-8, Math.min(10, val)));

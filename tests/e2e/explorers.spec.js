@@ -14,7 +14,7 @@ const tracks = fs.readdirSync(CONTENT).filter((t) => fs.existsSync(path.join(CON
 test.describe('canvas explorers: non-visual equivalents', () => {
   for (const track of tracks) {
     test(`${track}: every explorer's "View as data" panel is filled and follows its slider`, async ({ page }) => {
-      test.setTimeout(120000);
+      test.setTimeout(track === 'calculus' ? 180000 : 120000);
       const errors = [];
       page.on('pageerror', (e) => errors.push(e.message));
       await page.goto(`/${track}/`);

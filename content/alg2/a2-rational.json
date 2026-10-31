@@ -44,38 +44,32 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Rational Expressions — Function Curve & Symmetry Analysis",
+          "title": "Rational Hyperbola y = 2/(x − 1) + 1 & Asymptotes",
           "xrange": [
-            -3,
-            6
+            -5,
+            7
           ],
           "yrange": [
-            -3,
-            9
+            -5,
+            7
           ],
           "fns": [
             {
-              "fn": "1.5*x + 1",
+              "fn": "2/(x - 1) + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = 1.5x + 1"
+              "label": "f(x) = 2/(x−1) + 1"
             },
             {
-              "fn": "-0.5*x + 5",
+              "fn": "1",
               "color": "var(--fig-amber)",
-              "label": "y = −0.5x + 5"
-            }
-          ],
-          "points": [
-            {
-              "x": 2,
-              "y": 4,
-              "label": "(2, 4)"
+              "dash": "4,4",
+              "label": "HA: y = 1"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 2)^{2} - 5\\) with vertex at \\((2, -5)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 2)^{2} - 5\\) with الرأس at \\((2, -5)\\) and symmetry reference line \\(y = x\\)."
+          "en": "Rational curve \\(f(x) = \\dfrac{2}{x - 1} + 1\\) with vertical asymptote \\(x = 1\\) and horizontal asymptote \\(y = 1\\).",
+          "ar": "منحنى الدالة النسبية \\(f(x) = \\dfrac{2}{x - 1} + 1\\) مع خط التقارب الرأسي \\(x = 1\\) والأفقي \\(y = 1\\) في العبارات والمعادلات النسبية."
         }
       },
       {
@@ -307,7 +301,7 @@
         },
         "caption": {
           "en": "Hyperbolic branches of \\(y = \\frac{2x+1}{x-3}\\) with vertical asymptote at \\(x = 3\\) and horizontal asymptote at \\(y = 2\\).",
-          "ar": "Hyperbolic branches of \\(y = \\frac{2x+1}{x-3}\\) with vertical خط التقارب at \\(x = 3\\) and horizontal خط التقارب at \\(y = 2\\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في العبارات والمعادلات النسبية."
         }
       },
       {
@@ -553,8 +547,8 @@
         "kind": "explorer",
         "id": "cs-uge-a2-rational-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Exponential Growth/Decay & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النمو والاضمحلال الأسي وتحويلات الدوال الأم"
+          "en": "⊙ Explorer · Rational Hyperbola, Asymptotes & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة النسبية وخطوط التقارب والدوال الأم"
         },
         "canvasId": "uge_a2rational_mainfnCanvas",
         "ariaLabel": {
@@ -620,12 +614,12 @@
               },
               {
                 "value": "rational",
-                "label": "Rational (Reciprocal):  f(x) = a/(x − h) + k"
+                "label": "Rational (Reciprocal):  f(x) = a/(x − h) + k",
+                "selected": true
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
@@ -710,7 +704,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = 1/x"
           },
           {
             "id": "uge_a2rational_mainfnDom",
@@ -718,7 +712,7 @@
               "en": "Domain",
               "ar": "المجال"
             },
-            "value": "(−∞, ∞)"
+            "value": "(−∞, 0) ∪ (0, ∞)"
           },
           {
             "id": "uge_a2rational_mainfnRng",
@@ -727,7 +721,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(−∞, 0) ∪ (0, ∞)"
           },
           {
             "id": "uge_a2rational_mainfnKey",
@@ -735,7 +729,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "VA: x = 0 · HA: y = 0"
           },
           {
             "id": "uge_a2rational_mainfnInt",
@@ -743,12 +737,12 @@
               "en": "Intercepts",
               "ar": "نقاط التقاطع مع المحورين"
             },
-            "value": "y-int: (0, 0) · x-int: (0, 0)"
+            "value": "y-int: none · x-int: none"
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>rational reciprocal family</strong> \\(f(x) = \\dfrac{a}{x - h} + k\\) with vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = k\\). Drag \\((h, k)\\) to move the asymptote crosshairs live.",
+          "ar": "يبدأ على <strong>الدالة النسبية (المقلوب)</strong> \\(f(x) = \\dfrac{a}{x - h} + k\\) بخط تقارب رأسي \\(x = h\\) وخط تقارب أفقي \\(y = k\\). اسحب المركز \\((h, k)\\) لتحريك خطي التقارب مباشرةً."
         }
       },
       {

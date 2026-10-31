@@ -56,20 +56,25 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Exponentials &amp; Logarithms — Function Curve & Symmetry Analysis",
+          "title": "Inverse Reflection: y = 2ˣ, y = log₂(x), and y = x",
           "xrange": [
-            -4,
+            -3,
             6
           ],
           "yrange": [
-            -4,
+            -3,
             6
           ],
           "fns": [
             {
-              "fn": "(x - 4)*(x - 4) - 2",
+              "fn": "Math.pow(2, x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x-4)² - 2"
+              "label": "y = 2ˣ"
+            },
+            {
+              "fn": "Math.log(x)/Math.LN2",
+              "color": "var(--fig-teal)",
+              "label": "y = log₂(x)"
             },
             {
               "fn": "x",
@@ -80,15 +85,20 @@
           ],
           "points": [
             {
-              "x": 4,
-              "y": -2,
-              "label": "Vertex (4, -2)"
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 4)^{2} - 2\\) with vertex at \\((4, -2)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 4)^{2} - 2\\) with الرأس at \\((4, -2)\\) and symmetry reference line \\(y = x\\)."
+          "en": "Symmetric reflection of \\(y = 2^x\\) and its inverse \\(y = \\log_2(x)\\) across the line \\(y = x\\).",
+          "ar": "التناظر الانعكاسي بين الدالة الأسية \\(y = 2^x\\) ودالتها العكسية \\(y = \\log_2(x)\\) حول المستقيم \\(y = x\\) في الدوال الأسية واللوغاريتمية."
         }
       },
       {
@@ -411,7 +421,7 @@
         },
         "caption": {
           "en": "Straight-line graph obtained by taking natural logarithms of the power relationship \\(y = a x^b\\), with vertical intercept \\(\\ln(a)\\) and gradient \\(b\\).",
-          "ar": "Straight-line التمثيل البياني obtained by taking natural logarithms of the power relationship \\(y = a x^b\\), with vertical المقطع \\(\\ln(a)\\) and gradient \\(b\\)."
+          "ar": "مخطط الانتشار ومستقيم الانحدار لتمثيل العلاقة بين متغيرين في الدوال الأسية واللوغاريتمية."
         }
       },
       {
@@ -700,7 +710,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = 2ˣ"
           },
           {
             "id": "uge_a2lexplog_mainfnDom",
@@ -717,7 +727,7 @@
               "ar": "المدى"
             },
             "colorClass": "amber",
-            "value": "[0, ∞)"
+            "value": "(0, ∞)"
           },
           {
             "id": "uge_a2lexplog_mainfnKey",
@@ -725,7 +735,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "HA: y = 0 · Anchor (0, 1)"
           },
           {
             "id": "uge_a2lexplog_mainfnInt",
@@ -733,12 +743,12 @@
               "en": "Intercepts",
               "ar": "نقاط التقاطع مع المحورين"
             },
-            "value": "y-int: (0, 0) · x-int: (0, 0)"
+            "value": "y-int: (0, 1) · x-int: none"
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) with horizontal asymptote \\(y = k\\) and anchor \\((h, a + k)\\). Drag \\((h, k)\\) or switch to its logarithmic inverse.",
+          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) بخط تقارب أفقي \\(y = k\\) ونقطة مرجعية \\((h, a + k)\\). اسحب \\((h, k)\\) أو انتقل إلى الدالة اللوغاريتمية العكسية."
         }
       },
       {
@@ -752,191 +762,6 @@
         "body": {
           "en": "<p>Just as circular trigonometric functions parameterize the unit circle \\(x^2 + y^2 = 1\\), the <strong>six hyperbolic functions</strong> parameterize the right branch of the unit hyperbola \\(x^2 - y^2 = 1\\) using combinations of \\(e^x\\) and \\(e^{-x}\\):</p>\\[ \\sinh x = \\frac{e^x - e^{-x}}{2}, \\qquad \\cosh x = \\frac{e^x + e^{-x}}{2}, \\qquad \\tanh x = \\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}} \\]\\[ \\operatorname{csch} x = \\frac{1}{\\sinh x}\\;(x\\neq 0), \\qquad \\operatorname{sech} x = \\frac{1}{\\cosh x}, \\qquad \\coth x = \\frac{\\cosh x}{\\sinh x}\\;(x\\neq 0) \\]<table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>Function</th><th>Domain &amp; Range</th><th>Derivative \\(\\frac{d}{dx}\\)</th><th>Logarithmic Inverse &amp; Derivative</th></tr></thead><tbody><tr><td>\\(\\sinh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\(\\mathbb{R}\\)</td><td>\\(\\cosh x\\)</td><td>\\(\\operatorname{arsinh} x = \\ln\\!\\big(x + \\sqrt{x^2+1}\\big)\\), \\(\\frac{1}{\\sqrt{x^2+1}}\\)</td></tr><tr><td>\\(\\cosh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\([1, \\infty)\\)</td><td>\\(\\sinh x\\)</td><td>\\(\\operatorname{arcosh} x = \\ln\\!\\big(x + \\sqrt{x^2-1}\\big)\\;(x\\ge 1)\\), \\(\\frac{1}{\\sqrt{x^2-1}}\\)</td></tr><tr><td>\\(\\tanh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\((-1, 1)\\)</td><td>\\(\\operatorname{sech}^2 x\\)</td><td>\\(\\operatorname{artanh} x = \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right)\\;(|x|<1)\\), \\(\\frac{1}{1-x^2}\\)</td></tr><tr><td>\\(\\operatorname{csch} x\\)</td><td>Dom \\(x\\neq 0\\), Rng \\(y\\neq 0\\)</td><td>\\(-\\operatorname{csch} x\\coth x\\)</td><td>Odd reciprocal of \\(\\sinh x\\)</td></tr><tr><td>\\(\\operatorname{sech} x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\((0, 1]\\)</td><td>\\(-\\operatorname{sech} x\\tanh x\\)</td><td>Bell-shaped reciprocal of \\(\\cosh x\\)</td></tr><tr><td>\\(\\coth x\\)</td><td>Dom \\(x\\neq 0\\), Rng \\(|y|>1\\)</td><td>\\(-\\operatorname{csch}^2 x\\)</td><td>Horizontal asymptotes \\(y = \\pm 1\\)</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Fundamental Hyperbolic Identity:</strong> \\(\\cosh^2 x - \\sinh^2 x = 1\\), \\(1 - \\tanh^2 x = \\operatorname{sech}^2 x\\), and \\(\\sinh(2x) = 2\\sinh x\\cosh x\\). Physically, a flexible uniform cable hanging under gravity forms the catenary curve \\(y = a\\cosh(x/a)\\).</p>",
           "ar": "<p>كما تُمثّل الدوال المثلثية الدائرية دائرة الوحدة \\(x^2 + y^2 = 1\\)، فإن <strong>الدوال الزائدية الست</strong> تُوسِّط الفرع الأيمن للقطع الزائد الواحدي \\(x^2 - y^2 = 1\\) بدلالة الدالتين الأسيتين \\(e^x\\) و\\(e^{-x}\\):</p>\\[ \\sinh x = \\frac{e^x - e^{-x}}{2}, \\qquad \\cosh x = \\frac{e^x + e^{-x}}{2}, \\qquad \\tanh x = \\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}} \\]\\[ \\operatorname{csch} x = \\frac{1}{\\sinh x}\\;(x\\neq 0), \\qquad \\operatorname{sech} x = \\frac{1}{\\cosh x}, \\qquad \\coth x = \\frac{\\cosh x}{\\sinh x}\\;(x\\neq 0) \\]<table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>الدالة</th><th>المجال والمدى</th><th>المشتقة \\(\\frac{d}{dx}\\)</th><th>الصيغة اللوغاريتمية للعكس ومشتقتها</th></tr></thead><tbody><tr><td>\\(\\sinh x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\(\\mathbb{R}\\)</td><td>\\(\\cosh x\\)</td><td>\\(\\operatorname{arsinh} x = \\ln\\!\\big(x + \\sqrt{x^2+1}\\big)\\)، \\(\\frac{1}{\\sqrt{x^2+1}}\\)</td></tr><tr><td>\\(\\cosh x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\([1, \\infty)\\)</td><td>\\(\\sinh x\\)</td><td>\\(\\operatorname{arcosh} x = \\ln\\!\\big(x + \\sqrt{x^2-1}\\big)\\;(x\\ge 1)\\)، \\(\\frac{1}{\\sqrt{x^2-1}}\\)</td></tr><tr><td>\\(\\tanh x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\((-1, 1)\\)</td><td>\\(\\operatorname{sech}^2 x\\)</td><td>\\(\\operatorname{artanh} x = \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right)\\;(|x|<1)\\)، \\(\\frac{1}{1-x^2}\\)</td></tr><tr><td>\\(\\operatorname{csch} x\\)</td><td>المجال \\(x\\neq 0\\)، المدى \\(y\\neq 0\\)</td><td>\\(-\\operatorname{csch} x\\coth x\\)</td><td>دالة فردية مقلوبة لـ \\(\\sinh x\\)</td></tr><tr><td>\\(\\operatorname{sech} x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\((0, 1]\\)</td><td>\\(-\\operatorname{sech} x\\tanh x\\)</td><td>منحنى جرسي متماثل مقلوب لـ \\(\\cosh x\\)</td></tr><tr><td>\\(\\coth x\\)</td><td>المجال \\(x\\neq 0\\)، المدى \\(|y|>1\\)</td><td>\\(-\\operatorname{csch}^2 x\\)</td><td>خطا تقارب أفقيان \\(y = \\pm 1\\)</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>المتطابقة الزائدية الأساسية:</strong> \\(\\cosh^2 x - \\sinh^2 x = 1\\)، و\\(1 - \\tanh^2 x = \\operatorname{sech}^2 x\\)، و\\(\\sinh(2x) = 2\\sinh x\\cosh x\\). فيزيائياً، يتخذ الكابل المتجانس المعلّق تحت تأثير الجاذبية شكل منحنى السلسلة \\(y = a\\cosh(x/a)\\).</p>"
-        }
-      },
-      {
-        "kind": "explorer",
-        "id": "cs-uge-a2l-explog-hyper-exp",
-        "title": {
-          "en": "⊙ Explorer · Hyperbolic & Inverse Hyperbolic Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر الدوال الزائدية والدوال الزائدية العكسية"
-        },
-        "canvasId": "uge_a2lexplog_hyperCanvas",
-        "ariaLabel": {
-          "en": "Interactive calculus grapher for all 6 hyperbolic functions (sinh, cosh, tanh, csch, sech, coth) and 3 inverse hyperbolic functions (arsinh, arcosh, artanh) showing exponential components, asymptotes, and tangent derivative line.",
-          "ar": "مستكشف تفاضلي تفاعلي للدوال الزائدية الست وعكسها يعرض المركّبات الأسية وخطوط التقارب ومستقيم المماس المشتق."
-        },
-        "dataPanel": {
-          "btnId": "uge_a2lexplog_hyperDataBtn",
-          "panelId": "uge_a2lexplog_hyperDataPanel",
-          "descId": "uge_a2lexplog_hyperDataDesc",
-          "rowsId": "uge_a2lexplog_hyperDataRows",
-          "caption": {
-            "en": "Function values and calculus derivatives across sample inputs \\(x\\).",
-            "ar": "قيم الدالة الزائدية ومشتقتها عند قيم مختارة للمتغير \\(x\\)."
-          },
-          "columns": [
-            {
-              "en": "\\(x\\)",
-              "ar": "\\(x\\)"
-            },
-            {
-              "en": "\\(a \\cdot f(x)\\)",
-              "ar": "\\(a \\cdot f(x)\\)"
-            },
-            {
-              "en": "Derivative \\(a \\cdot f'(x)\\)",
-              "ar": "المشتقة \\(a \\cdot f'(x)\\)"
-            }
-          ]
-        },
-        "controls": [
-          {
-            "id": "uge_a2lexplog_hyperFn",
-            "label": {
-              "en": "Hyperbolic Function:",
-              "ar": "اختر الدالة الزائدية:"
-            },
-            "value": "cosh",
-            "options": [
-              {
-                "value": "sinh",
-                "label": "sinh(x) = ½(eˣ − e⁻ˣ)  |  Odd, d/dx = cosh(x)"
-              },
-              {
-                "value": "cosh",
-                "label": "cosh(x) = ½(eˣ + e⁻ˣ)  |  Catenary, d/dx = sinh(x)",
-                "selected": true
-              },
-              {
-                "value": "tanh",
-                "label": "tanh(x) = sinh(x)/cosh(x)  |  Asymptotes y = ±a"
-              },
-              {
-                "value": "csch",
-                "label": "csch(x) = 1/sinh(x)  |  Reciprocal, x ≠ 0"
-              },
-              {
-                "value": "sech",
-                "label": "sech(x) = 1/cosh(x)  |  Bell curve, Range (0, a]"
-              },
-              {
-                "value": "coth",
-                "label": "coth(x) = cosh(x)/sinh(x)  |  |y| > a, x ≠ 0"
-              },
-              {
-                "value": "arsinh",
-                "label": "arsinh(x) = ln(x + √(x² + 1))  |  Inverse sinh"
-              },
-              {
-                "value": "arcosh",
-                "label": "arcosh(x) = ln(x + √(x² − 1))  |  Domain x ≥ 1"
-              },
-              {
-                "value": "artanh",
-                "label": "artanh(x) = ½ ln((1+x)/(1−x))  |  Domain |x| < 1"
-              }
-            ],
-            "ariaLabel": {
-              "en": "Select hyperbolic or inverse hyperbolic function",
-              "ar": "اختر الدالة الزائدية أو العكسية"
-            }
-          },
-          {
-            "id": "uge_a2lexplog_hyperA",
-            "label": {
-              "en": "Scale <b>\\(a =\\)</b>",
-              "ar": "معامل التمدد <b>\\(a =\\)</b>"
-            },
-            "min": 0.5,
-            "max": 2.5,
-            "value": 1,
-            "step": 0.25,
-            "valueDisplayId": "uge_a2lexplog_hyperAV",
-            "valueDisplay": "1.00",
-            "ariaLabel": {
-              "en": "Vertical scale factor a",
-              "ar": "معامل التمدد الرأسي a"
-            }
-          },
-          {
-            "id": "uge_a2lexplog_hyperX",
-            "label": {
-              "en": "Tangent probe <b>\\(x_0 =\\)</b>",
-              "ar": "نقطة التماس <b>\\(x_0 =\\)</b>"
-            },
-            "min": -3,
-            "max": 3,
-            "value": 1,
-            "step": 0.1,
-            "valueDisplayId": "uge_a2lexplog_hyperXV",
-            "valueDisplay": "1.00",
-            "ariaLabel": {
-              "en": "Probe coordinate x0",
-              "ar": "الإحداثي السيني لنقطة التماس x0"
-            }
-          },
-          {
-            "id": "uge_a2lexplog_hyperDecomp",
-            "checkbox": true,
-            "checked": true,
-            "label": {
-              "en": "Show \\(\\frac{1}{2}e^x, \\pm\\frac{1}{2}e^{-x}\\) decomposition &amp; tangent line",
-              "ar": "إظهار التحليل الأسي \\(\\frac{1}{2}e^x, \\pm\\frac{1}{2}e^{-x}\\) ومستقيم المماس"
-            },
-            "ariaLabel": {
-              "en": "Toggle exponential components and tangent line",
-              "ar": "إظهار أو إخفاء المركبات الأسية ومستقيم المماس"
-            }
-          }
-        ],
-        "readouts": [
-          {
-            "id": "uge_a2lexplog_hyperEq",
-            "label": {
-              "en": "Definition &amp; Derivative",
-              "ar": "التعريف والمشتقة"
-            },
-            "colorClass": "indigo",
-            "value": "cosh(x) = ½(eˣ + e⁻ˣ)  |  d/dx[cosh x] = sinh x"
-          },
-          {
-            "id": "uge_a2lexplog_hyperVal",
-            "label": {
-              "en": "Value &amp; Slope at \\(x_0\\)",
-              "ar": "القيمة والميل عند \\(x_0\\)"
-            },
-            "colorClass": "amber",
-            "value": "f(1.00) = 1.543  ·  f'(1.00) = 1.175"
-          },
-          {
-            "id": "uge_a2lexplog_hyperDomRng",
-            "label": {
-              "en": "Domain &amp; Range",
-              "ar": "المجال والمدى"
-            },
-            "value": "Domain (−∞, ∞), Range [1.00, ∞)"
-          },
-          {
-            "id": "uge_a2lexplog_hyperAsym",
-            "label": {
-              "en": "Asymptotes &amp; Symmetry",
-              "ar": "خطوط التقارب والتماثل"
-            },
-            "value": "Minimum (0, 1.00) · Even symmetry"
-          },
-          {
-            "id": "uge_a2lexplog_hyperIdent",
-            "label": {
-              "en": "Hyperbolic Identity Check",
-              "ar": "تحقق المتطابقة الزائدية"
-            },
-            "value": "cosh²(1.00) − sinh²(1.00) = 1.000"
-          }
-        ],
-        "note": {
-          "en": "Drag horizontally on the graph to slide \\(x_0\\). For \\(\\sinh x\\) and \\(\\cosh x\\), observe how the curve sums the growing \\(\\frac{1}{2}e^x\\) (teal) and decaying \\(\\pm\\frac{1}{2}e^{-x}\\) (slate) exponentials, while \\(\\cosh^2 x - \\sinh^2 x = 1\\) holds identically everywhere.",
-          "ar": "اسحب أفقياً على الرسم لتحريك \\(x_0\\). لاحظ في حالتي \\(\\sinh x\\) و\\(\\cosh x\\) كيف ينتج المنحنى من جمع المركّبة الأسية المتزايدة \\(\\frac{1}{2}e^x\\) والمتناقصة \\(\\pm\\frac{1}{2}e^{-x}\\)، مع بقاء المتطابقة \\(\\cosh^2 x - \\sinh^2 x = 1\\) محققة دائماً."
         }
       },
       {

@@ -1418,8 +1418,6 @@
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
   window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_astrig_trig6Canvas', dataBtnId: 'uge_astrig_trig6DataBtn', prefix: 'uge_astrig_trig6' });
   window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_astrig_invtrig6Canvas', dataBtnId: 'uge_astrig_invtrig6DataBtn', prefix: 'uge_astrig_invtrig6' });
-  window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_asradians_trig6Canvas', dataBtnId: 'uge_asradians_trig6DataBtn', prefix: 'uge_asradians_trig6' });
-  window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_asradians_invtrig6Canvas', dataBtnId: 'uge_asradians_invtrig6DataBtn', prefix: 'uge_asradians_invtrig6' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_asalgebra_mainfnCanvas', dataBtnId: 'uge_asalgebra_mainfnDataBtn', prefix: 'uge_asalgebra_mainfn', defaultFn: 'radical' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_asfunctions_mainfnCanvas', dataBtnId: 'uge_asfunctions_mainfnDataBtn', prefix: 'uge_asfunctions_mainfn', defaultFn: 'quadratic' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_ascoordgeo_mainfnCanvas', dataBtnId: 'uge_ascoordgeo_mainfnDataBtn', prefix: 'uge_ascoordgeo_mainfn', defaultFn: 'linear' });

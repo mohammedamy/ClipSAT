@@ -16,33 +16,19 @@
           "answer": "To find $a$, we first express $z$ in Cartesian form $x + \\mathrm{i}y$ by multiplying the numerator and denominator by the complex conjugate of the denominator, $2 - a\\mathrm{i}$: $z = \\frac{(a + 3\\mathrm{i})(2 - a\\mathrm{i})}{(2 + a\\mathrm{i})(2 - a\\mathrm{i})} = \\frac{2a - a^2\\mathrm{i} + 6\\mathrm{i} - 3a\\mathrm{i}^2}{4 + a^2} = \\frac{5a + (6 - a^2)\\mathrm{i}}{4 + a^2}$ Thus, the real and imaginary parts are: $\\mathrm{Re}(z) = \\frac{5a}{4 + a^2}, \\qquad \\mathrm{Im}(z) = \\frac{6 - a^2}{4 + a^2}$ For $\\arg(z) = \\frac{\\pi}{4}$, the complex number $z$ must lie on the half-line in the first quadrant where the real and imaginary parts are equal and strictly positive: 1. $\\mathrm{Re}(z) > 0 \\Rightarrow 5a > 0 \\Rightarrow a > 0$ 2. $\\mathrm{Im}(z) > 0 \\Rightarrow 6 - a^2 > 0$ 3. $\\mathrm{Re}(z) = \\mathrm{Im}(z) \\Rightarrow 5a = 6 - a^2$ Rearranging the equality gives the quadratic equation: $a^2 + 5a - 6 = 0 \\Rightarrow (a + 6)(a - 1) = 0$ which yields $a = 1$ or $a = -6$. Checking the values: - If $a = 1$: $\\mathrm{Re}(z) = 1 > 0$ and $\\mathrm{Im}(z) = 1 > 0$, so $\\arg(z) = \\frac{\\pi}{4}$. - If $a = -6$: $\\mathrm{Re}(z) = -\\frac{3}{4} < 0$ and $\\mathrm{Im}(z) = -\\frac{3}{4} < 0$, so $z$ lies in the third quadrant with $\\arg(z) = -\\frac{3\\pi}{4}$. Therefore, $a = -6$ is an extraneous solution resulting from the equation $\\tan(\\arg z) = 1$, and the only valid solution is $a = 1$.",
           "explanation": "To find $a$, we first express $z$ in Cartesian form $x + \\mathrm{i}y$ by multiplying the numerator and denominator by the complex conjugate of the denominator, $2 - a\\mathrm{i}$: $z = \\frac{(a + 3\\mathrm{i})(2 - a\\mathrm{i})}{(2 + a\\mathrm{i})(2 - a\\mathrm{i})} = \\frac{2a - a^2\\mathrm{i} + 6\\mathrm{i} - 3a\\mathrm{i}^2}{4 + a^2} = \\frac{5a + (6 - a^2)\\mathrm{i}}{4 + a^2}$ Thus, the real and imaginary parts are: $\\mathrm{Re}(z) = \\frac{5a}{4 + a^2}, \\qquad \\mathrm{Im}(z) = \\frac{6 - a^2}{4 + a^2}$ For $\\arg(z) = \\frac{\\pi}{4}$, the complex number $z$ must lie on the half-line in the first quadrant where the real and imaginary parts are equal and strictly positive: 1. $\\mathrm{Re}(z) > 0 \\Rightarrow 5a > 0 \\Rightarrow a > 0$ 2. $\\mathrm{Im}(z) > 0 \\Rightarrow 6 - a^2 > 0$ 3. $\\mathrm{Re}(z) = \\mathrm{Im}(z) \\Rightarrow 5a = 6 - a^2$ Rearranging the equality gives the quadratic equation: $a^2 + 5a - 6 = 0 \\Rightarrow (a + 6)(a - 1) = 0$ which yields $a = 1$ or $a = -6$. Checking the values: - If $a = 1$: $\\mathrm{Re}(z) = 1 > 0$ and $\\mathrm{Im}(z) = 1 > 0$, so $\\arg(z) = \\frac{\\pi}{4}$. - If $a = -6$: $\\mathrm{Re}(z) = -\\frac{3}{4} < 0$ and $\\mathrm{Im}(z) = -\\frac{3}{4} < 0$, so $z$ lies in the third quadrant with $\\arg(z) = -\\frac{3\\pi}{4}$. Therefore, $a = -6$ is an extraneous solution resulting from the equation $\\tan(\\arg z) = 1$, and the only valid solution is $a = 1$.",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
+            "type": "argand",
+            "title": "Complex Argand Plane",
             "points": [
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "re": 3,
+                "im": 2,
+                "label": "z₁",
+                "arcLabel": "θ"
+              },
+              {
+                "re": -2,
+                "im": 3,
+                "label": "z₂"
               }
             ]
           }
@@ -87,21 +73,14 @@
           "answer": "Under the null hypothesis $H_0: \\mu = 50$, the sample mean of $n = 36$ independent observations follows a normal distribution: $\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right) = N\\left(50, \\frac{2.4^2}{36}\\right)$ The standard error of the mean is: $\\mathrm{SE} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{2.4}{\\sqrt{36}} = \\frac{2.4}{6} = 0.4$ The standardized test statistic $z$ is calculated as: $z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}} = \\frac{50.8 - 50}{0.4} = \\frac{0.8}{0.4} = 2.0$ Common errors include: - Omitting the sample size factor $\\sqrt{n}$, which produces $\\frac{50.8 - 50}{2.4} \\approx 0.33$. - Inverting the ratio, yielding $\\frac{0.4}{0.8} = 0.5$.",
           "explanation": "Under the null hypothesis $H_0: \\mu = 50$, the sample mean of $n = 36$ independent observations follows a normal distribution: $\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right) = N\\left(50, \\frac{2.4^2}{36}\\right)$ The standard error of the mean is: $\\mathrm{SE} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{2.4}{\\sqrt{36}} = \\frac{2.4}{6} = 0.4$ The standardized test statistic $z$ is calculated as: $z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}} = \\frac{50.8 - 50}{0.4} = \\frac{0.8}{0.4} = 2.0$ Common errors include: - Omitting the sample size factor $\\sqrt{n}$, which produces $\\frac{50.8 - 50}{2.4} \\approx 0.33$. - Inverting the ratio, yielding $\\frac{0.4}{0.8} = 0.5$.",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "4 * exp(-0.5 * ((x - (0.0)) / (1.0))**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.5,
-            "ymax": 4.8,
-            "shade": {
-              "fn1": "4 * exp(-0.5 * ((x - (0.0)) / (1.0))**2)",
-              "fn2": "0",
-              "x0": -1,
-              "x1": 1.5
-            },
-            "width": 235
+            "type": "normal_curve",
+            "title": "Gaussian Density Profile",
+            "mean": 0,
+            "sd": 1,
+            "shade": [
+              -1.2,
+              1.2
+            ]
           }
         },
         {

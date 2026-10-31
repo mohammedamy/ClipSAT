@@ -18,33 +18,24 @@
           "correct": 0,
           "answer": "Using the algebraic definitions of permutations and combinations:\n\\[ {}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n - 3)!} = n(n - 1)(n - 2) \\]\n\\[ {}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n - 2)!} = \\frac{n(n - 1)}{2} \\]\n\nSubstitute these into the given equation:\n\\[ n(n - 1)(n - 2) = 10 \\times \\frac{n(n - 1)}{2} \\]\n\\[ n(n - 1)(n - 2) = 5n(n - 1) \\]\n\nSince \\( n \\ge 3 \\), we have \\( n(n - 1) \\ne 0 \\). Dividing both sides by \\( n(n - 1) \\) gives:\n\\[ n - 2 = 5 \\implies n = 7 \\]\n\nCommon misconceptions:\n- Forgetting the \\( 2! \\) denominator in \\( {}^{n}\\mathrm{C}_{2} \\) (treating it as \\( {}^{n}\\mathrm{P}_{2} \\)) gives \\( n - 2 = 10 \\implies n = 12 \\).\n- Dividing by \\( n(n - 1) \\) and erroneously writing \\( n = 5 \\) instead of \\( n - 2 = 5 \\) gives \\( n = 5 \\).\n- Confusing the factorial simplification to set \\( n - 3 = 5 \\) leads to \\( n = 8 \\). [M1][A1]",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "bar",
+            "title": "Discrete Term / Magnitude Comparison",
+            "data": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "label": "T₁",
+                "val": 6
               },
               {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
+                "label": "T₂",
+                "val": 9
+              },
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "label": "T₃",
+                "val": 13
+              },
+              {
+                "label": "T₄",
+                "val": 18
               }
             ]
           }
@@ -102,32 +93,20 @@
           "answer": "We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method.\n\n**Method 1: Complementary Counting**\n1. The total number of unrestricted arrangements of the \\( n \\) students in a straight line is \\( n! \\).\n2. Consider the arrangements in which Ali and Priya *do* stand next to each other:\n   - Treat Ali and Priya as a single block. There are now \\( (n - 1) \\) entities to arrange, which can be done in \\( (n - 1)! \\) ways.\n   - Within the block, Ali and Priya can arrange themselves in \\( 2! = 2 \\) ways.\n   - So, the number of arrangements where they are together is \\( 2(n - 1)! \\).\n3. Subtracting this from the total gives the number of arrangements where they are separated:\n   \\[\n   n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!\n   \\]\n\n**Method 2: Gap Method**\n1. Arrange the other \\( n - 2 \\) students first, which gives \\( (n - 2)! \\) ways.\n2. This creates \\( (n - 2) + 1 = n - 1 \\) available spaces (including the ends).\n3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: \\( {}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2) \\) ways.\n4. Total arrangements: \\( (n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)! \\).\n\nEquating this to \\( 3600 \\):\n\\[\n(n - 2)(n - 1)! = 3600\n\\]\nTesting integer values for \\( n \\ge 3 \\):\n- For \\( n = 6 \\): \\( (6 - 2)(5!) = 4 \\times 120 = 480 \\)\n- For \\( n = 7 \\): \\( (7 - 2)(6!) = 5 \\times 720 = 3600 \\)\n- For \\( n = 8 \\): \\( (8 - 2)(7!) = 6 \\times 5040 = 30240 \\)\n\nThus, \\( n = 7 \\).\n\n*Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives \\( n! - (n - 1)! = (n - 1)(n - 1)! \\), which fails to produce an integer solution among the options. [M1][A1]",
           "figure": {
             "type": "fn",
+            "title": "Linear Coordinate Graph",
             "xrange": [
-              -5,
+              -4,
               5
             ],
             "yrange": [
-              -5,
-              7
+              -4,
+              6
             ],
             "fns": [
               {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
+                "fn": "0.75*x + 1.5",
                 "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
+                "label": "Line"
               }
             ]
           }

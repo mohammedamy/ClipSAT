@@ -47,10 +47,23 @@
         "ar": "<p><strong>Theorem (Area Bounded by a Polar Curve):</strong> The area \\(A\\) enclosed by a continuous polar function \\(r(\\theta)\\) on the interval \\([\\alpha, \\beta]\\) is given by: \\[A = \\frac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta.\\]</p><p><strong>Step 1 · Establish domain of integration:</strong><br>The equation \\(r = 2\\) describes a circle of constant radius \\(R = 2\\) centered at the origin (pole). A compليكنe revolution traces the circle exactly once over \\(\\theta \\in [0, 2\\pi]\\).</p><p><strong>Step 2 · Set up و احسب قيمة the definite polar integral:</strong> \\[A = \\frac{1}{2}\\int_0^{2\\pi} (2)^2\\,d\\theta = \\frac{1}{2}\\int_0^{2\\pi} 4\\,d\\theta = 2\\int_0^{2\\pi} 1\\,d\\theta = 2 \\Big[ \\theta \\Big]_0^{2\\pi} = 2(2\\pi - 0) = \\mathbf{4\\pi}.\\]</p><p><em>Verإذا كانication:</em> By Euclidean geometry, the area of a circle with radius \\(R = 2\\) is \\(A = \\pi R^2 = \\pi(2)^2 = 4\\pi\\), in exact agreement.</p>"
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 60,
-        "showTriangle": true
+        "type": "fn",
+        "title": "Quadratic Parabola y = f(x)",
+        "xrange": [
+          -3,
+          5
+        ],
+        "yrange": [
+          -1,
+          8
+        ],
+        "fns": [
+          {
+            "fn": "(x - 1)*(x - 1) + 1",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          }
+        ]
       }
     },
     {
@@ -66,32 +79,20 @@
         "ar": "<p><strong>Theorem (Fundamental Theorem of Calculus, Part 2):</strong> إذا كان \\(f\\) is continuous on \\([a, b]\\) و \\(F\\) is any antiderivative of \\(f\\) such that \\(F'(x) = f(x)\\), then: \\[\\int_a^b f(x)\\,dx = F(b) - F(a) = \\Big[ F(x) \\Big]_a^b.\\]</p><p><strong>Step 1 · أوجد indefinite antiderivative \\(F(x)\\):</strong><br>Using the power rule of integration \\(\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C\\): \\[F(x) = \\int 6x^2\\,dx = 6 \\cdot \\frac{x^3}{3} = 2x^3.\\]</p><p><strong>Step 2 · احسب قيمة at the upper و lower limits:</strong> \\[\\int_0^2 6x^2\\,dx = \\Big[ 2x^3 \\Big]_0^2 = 2(2)^3 - 2(0)^3 = 2(8) - 0 = \\mathbf{16}.\\]</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
+        "type": "numberline",
+        "range": [
+          -5,
+          7
         ],
         "points": [
           {
-            "x": 0,
-            "y": 2,
-            "label": "A"
+            "x": -2,
+            "label": "P"
           },
           {
-            "x": 2,
-            "y": 1,
-            "label": "B"
+            "x": 4,
+            "label": "Q"
           }
-        ],
-        "xrange": [
-          -1.5,
-          3.5
-        ],
-        "yrange": [
-          -1,
-          4
         ]
       }
     },
@@ -166,10 +167,12 @@
         "ar": "<p><strong>Method · Integration by Parts (LIATE Selection):</strong></p><p><strong>Step 1 · Assign \\(u\\) و \\(dv\\):</strong><br>Algebraic (\\(x\\)) precedes Trigonometric (\\(\\sin x\\)), so set: \\[u = x \\implies du = dx, \\quad dv = \\sin x\\,dx \\implies v = -\\cos x.\\]</p><p><strong>Step 2 · Apply \\(\\int u\\,dv = uv - \\int v\\,du\\):</strong> \\[\\int x\\sin x\\,dx = x(-\\cos x) - \\int (-\\cos x)\\,dx = -x\\cos x + \\int \\cos x\\,dx.\\]</p><p><strong>Step 3 · Integrate:</strong> \\[-x\\cos x + \\sin x + C = \\mathbf{\\sin x - x\\cos x + C}.\\]</p>"
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 60,
-        "showTriangle": true
+        "type": "sinusoid",
+        "title": "Periodic Trigonometric Wave",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "sin"
       }
     },
     {
@@ -315,10 +318,12 @@
         "ar": "<p><strong>Theorem (Maclaurin Series for Sine):</strong> The sine function is odd, so its Maclaurin series contains exclusively odd powers of \\(x\\) with alternating signs.</p><p><strong>Step 1 · احسب successive derivatives at \\(x = 0\\):</strong><br>\\(f(x) = \\sin x \\implies f(0) = 0\\)<br>\\(f'(x) = \\cos x \\implies f'(0) = 1\\)<br>\\(f''(x) = -\\sin x \\implies f''(0) = 0\\)<br>\\(f'''(x) = -\\cos x \\implies f'''(0) = -1\\)<br>\\(f^{(4)}(x) = \\sin x \\implies f^{(4)}(0) = 0\\)<br>\\(f^{(5)}(x) = \\cos x \\implies f^{(5)}(0) = 1\\)</p><p><strong>Step 2 · Form the first three nonzero terms:</strong> \\[\\frac{f'(0)}{1!}x + \\frac{f'''(0)}{3!}x^3 + \\frac{f^{(5)}(0)}{5!}x^5 = \\mathbf{x - \\frac{x^3}{3!} + \\frac{x^5}{5!}} = \\mathbf{x - \\frac{x^3}{6} + \\frac{x^5}{120}}.\\]</p>"
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 120,
-        "showTriangle": true
+        "type": "sinusoid",
+        "title": "Periodic Trigonometric Wave",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "sin"
       }
     },
     {
@@ -334,10 +339,12 @@
         "ar": "<p><strong>خطوات الحل التفصيلية:</strong></p><p><strong>Theorem (Maclaurin Series for Cosine):</strong> The cosine function is even, so its Maclaurin series consists exclusively of even powers of \\(x\\) with alternating signs.</p><p><strong>Step 1 · General Maclaurin formula for \\(\\cos x\\):</strong> \\[\\cos x = \\sum_{n=0}^{\\infty} (-1)^n \\frac{x^{2n}}{(2n)!}.\\]</p><p><strong>Step 2 · Write out the terms for \\(n = 0, 1, 2\\):</strong><br>\\(n = 0 \\implies (-1)^0 \\frac{x^0}{0!} = 1\\)<br>\\(n = 1 \\implies (-1)^1 \\frac{x^2}{2!} = -\\frac{x^2}{2}\\)<br>\\(n = 2 \\implies (-1)^2 \\frac{x^4}{4!} = +\\frac{x^4}{24}\\)</p><p><strong>Conclusion:</strong> The first three terms are: \\[\\mathbf{1 - \\frac{x^2}{2!} + \\frac{x^4}{4!}} = \\mathbf{1 - \\frac{x^2}{2} + \\frac{x^4}{24}}.\\]</p>"
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 135,
-        "showTriangle": true
+        "type": "sinusoid",
+        "title": "Periodic Trigonometric Wave",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "sin"
       }
     },
     {

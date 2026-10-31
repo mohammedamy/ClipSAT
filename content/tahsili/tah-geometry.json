@@ -566,6 +566,104 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Mathematical Logic & Conditionals Truth Lab (مختبر المنطق الرياضي والعبارات الشرطية)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر المنطق الرياضي والعبارات الشرطية المترابطة (رياضيات ١)"
+        },
+        "canvasId": "tahLogicCanvas",
+        "ariaLabel": {
+          "en": "Interactive truth table explorer for conditional, converse, inverse, and contrapositive statements",
+          "ar": "مستكشف تفاعلي لقيم الصواب للعبارة الشرطية والعكس والمعكوس والمعاكس الإيجابي"
+        },
+        "dataPanel": {
+          "btnId": "tahLogDataBtn",
+          "panelId": "tahLogDataPanel",
+          "descId": "tahLogDataDesc",
+          "rowsId": "tahLogDataRows",
+          "caption": {
+            "en": "Logical equivalence between Conditional \\(p \\to q\\) and Contrapositive \\(\\sim q \\to \\sim p\\), and between Converse \\(q \\to p\\) and Inverse \\(\\sim p \\to \\sim q\\).",
+            "ar": "التكافؤ المنطقي بين العبارة الشرطية \\(p \\to q\\) والمعاكس الإيجابي \\(\\sim q \\to \\sim p\\)، وبين العكس \\(q \\to p\\) والمعكوس \\(\\sim p \\to \\sim q\\)."
+          },
+          "columns": [
+            {
+              "en": "Statement Type",
+              "ar": "نوع العبارة المنطقية"
+            },
+            {
+              "en": "Truth Value",
+              "ar": "قيمة الصواب"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "tahLogP",
+            "valueDisplayId": "tahLogPV",
+            "label": {
+              "en": "Hypothesis <b>\\(p (0/1) =\\)</b>",
+              "ar": "الفرض <b>p (0/1) =</b>"
+            },
+            "ariaLabel": {
+              "en": "Truth value of hypothesis p",
+              "ar": "قيمة صواب الفرض p"
+            },
+            "min": 0,
+            "max": 1,
+            "value": 1,
+            "step": 1
+          },
+          {
+            "id": "tahLogQ",
+            "valueDisplayId": "tahLogQV",
+            "label": {
+              "en": "Conclusion <b>\\(q (0/1) =\\)</b>",
+              "ar": "النتيجة <b>q (0/1) =</b>"
+            },
+            "ariaLabel": {
+              "en": "Truth value of conclusion q",
+              "ar": "قيمة صواب النتيجة q"
+            },
+            "min": 0,
+            "max": 1,
+            "value": 0,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "tahLogCond",
+            "label": {
+              "en": "Conditional \\(p \\to q\\)",
+              "ar": "العبارة الشرطية \\(p \\to q\\)"
+            },
+            "colorClass": "indigo",
+            "value": "F (خاطئة)"
+          },
+          {
+            "id": "tahLogCont",
+            "label": {
+              "en": "Contrapositive \\(\\sim q \\to \\sim p\\)",
+              "ar": "المعاكس الإيجابي \\(\\sim q \\to \\sim p\\)"
+            },
+            "colorClass": "amber",
+            "value": "F (خاطئة)"
+          },
+          {
+            "id": "tahLogConv",
+            "label": {
+              "en": "Converse \\(q \\to p\\) ≡ Inverse",
+              "ar": "العكس \\(q \\to p\\) ≡ المعكوس"
+            },
+            "value": "T (صائبة)"
+          }
+        ],
+        "note": {
+          "en": "High-Frequency Tahsili Rule (Year 1 Reasoning & Proof): A conditional \\(p \\to q\\) is FALSE only when hypothesis \\(p\\) is True and conclusion \\(q\\) is False. A conditional \\(p \\to q\\) and its contrapositive \\(\\sim q \\to \\sim p\\) always share identical truth values.",
+          "ar": "قاعدة متكررة جداً في التحصيلي (التبرير والبرهان — أول ثانوي): العبارة الشرطية \\(p \\to q\\) تكون خاطئة في حالة واحدة فقط هي عندما يكون الفرض \\(p\\) صائباً والنتيجة \\(q\\) خاطئة، وتكافئ منطقياً معاكسها الإيجابي \\(\\sim q \\to \\sim p\\) دائماً."
+        }
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

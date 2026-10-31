@@ -16,33 +16,24 @@
           "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{(n+1)/2^{n+1}}{n/2^n}=\\lim_{n\\rightarrow\\infty}\\frac{n+1}{2n}=\\frac{1}{2}<1$. Converges by the Ratio Test.",
           "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{(n+1)/2^{n+1}}{n/2^n}=\\lim_{n\\rightarrow\\infty}\\frac{n+1}{2n}=\\frac{1}{2}<1$. Converges by the Ratio Test.",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
+            "type": "bar",
+            "title": "Discrete Term / Magnitude Comparison",
+            "data": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "label": "T₁",
+                "val": 6
               },
               {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
+                "label": "T₂",
+                "val": 9
+              },
               {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
+                "label": "T₃",
+                "val": 13
+              },
+              {
+                "label": "T₄",
+                "val": 18
               }
             ]
           }
@@ -191,32 +182,20 @@
           "explanation": "Rewrite with limit notation: $\\lim_{b \\rightarrow \\infty} \\int_0^b x e^{-2x}\\,dx.$ Use integration by parts: $u = x \\Rightarrow du = dx$, $dv = e^{-2x}\\,dx \\Rightarrow v = -\\frac{1}{2}e^{-2x}$. $\\int x e^{-2x}\\,dx = -\\frac{1}{2}x e^{-2x} - \\int \\left(-\\frac{1}{2}e^{-2x}\\right)dx = -\\frac{1}{2}x e^{-2x} - \\frac{1}{4}e^{-2x}.$ Evaluate from 0 to $b$: $\\lim_{b \\rightarrow \\infty} \\left[ -\\frac{1}{2}b e^{-2b} - \\frac{1}{4}e^{-2b} - \\left(0 - \\frac{1}{4}e^0\\right) \\right].$ By L'Hôpital's Rule, $\\lim_{b\\rightarrow\\infty} \\frac{b}{e^{2b}} = \\lim_{b\\rightarrow\\infty} \\frac{1}{2e^{2b}} = 0$, and $\\lim_{b\\rightarrow\\infty} e^{-2b} = 0$. Therefore: $0 - 0 - \\left(-\\frac{1}{4}\\right) = \\mathbf{\\frac{1}{4}}.$ The improper integral converges to $\\frac{1}{4}$.",
           "figure": {
             "type": "fn",
+            "title": "Exponential Growth / Decay Profile",
             "xrange": [
-              -5,
-              5
+              -3,
+              4
             ],
             "yrange": [
-              -5,
-              7
+              -1,
+              9
             ],
             "fns": [
               {
-                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "fn": "Math.pow(2, x)",
                 "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "1*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -2,
-                "label": "(0, -2)"
+                "label": "y = 2ˣ"
               }
             ]
           }

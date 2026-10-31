@@ -108,36 +108,49 @@
         "ar": "<p>To أوجد \\(2A - B\\), first احسب scalar multiple \\(2A\\) by multiplying every entry of \\(A\\) by \\(2\\):<br>\\[2A = 2 \\begin{pmatrix} 3 & -2 \\\\ 1 & 4 \\end{pmatrix} = \\begin{pmatrix} 2(3) & 2(-2) \\\\ 2(1) & 2(4) \\end{pmatrix} = \\begin{pmatrix} 6 & -4 \\\\ 2 & 8 \\end{pmatrix}\\]</p><p>Next, subtract matrix \\(B\\) from \\(2A\\) entry by entry:<br>\\[2A - B = \\begin{pmatrix} 6 - (-5) & -4 - 2 \\\\ 2 - 0 & 8 - (-3) \\end{pmatrix} = \\begin{pmatrix} 6 + 5 & -6 \\\\ 2 & 8 + 3 \\end{pmatrix} = \\begin{pmatrix} 11 & -6 \\\\ 2 & 11 \\end{pmatrix}\\]</p><p>Common errors:<br>- Adding the matrices instead of subtracting gives \\(2A + B = \\begin{pmatrix} 1 & -2 \\\\ 2 & 5 \\end{pmatrix}\\).<br>- Forgetting to multiply \\(A\\) by the scalar \\(2\\) results in \\(A - B = \\begin{pmatrix} 8 & -4 \\\\ 1 & 7 \\end{pmatrix}\\).<br>- Sign errors during subtraction of negatives lead to incorrect entries such as \\(-4 - 2 = -2\\) or \\(8 - (-3) = 5\\).</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.5*x",
-            "label": "Span(v1)"
-          },
-          {
-            "fn": "-2*x",
-            "label": "Span(v2)"
-          }
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ],
-        "points": [
-          {
-            "x": 2,
-            "y": 1,
-            "label": "v1"
-          },
-          {
-            "x": -1,
-            "y": 2,
-            "label": "v2"
-          }
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
         ],
-        "xrange": [
-          -4,
-          4
-        ],
-        "yrange": [
-          -4,
-          4
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },
@@ -275,32 +288,24 @@
         "ar": "<p>ليكن \\(a_1\\) be the first term و \\(r\\) be the common ratio of the geometric sequence. Since all terms are positive real numbers, \\(a_1 \\gt 0\\) و \\(r \\gt 0\\).</p><p>The sum of the first two terms is:<br>\\[S_2 = a_1 + a_1 r = a_1(1 + r) = 18\\]</p><p>The sum of the first four terms is:<br>\\[S_4 = a_1 + a_1 r + a_1 r^2 + a_1 r^3 = a_1(1 + r)(1 + r^2) = 90\\]</p><p>بالتعويض عن \\(a_1(1 + r) = 18\\) into the equation for \\(S_4\\):<br>\\[18(1 + r^2) = 90\\]<br>\\[1 + r^2 = 5 \\implies r^2 = 4\\]</p><p>Since \\(r \\gt 0\\), we have \\(r = 2\\).</p><p>Now عوّض \\(r = 2\\) back to أوجد قيمة \\(a_1\\):<br>\\[a_1(1 + 2) = 18 \\implies 3a_1 = 18 \\implies a_1 = 6\\]</p><p>The \\(n\\)-th term of a geometric sequence is given by \\(a_n = a_1 r^{n-1}\\). For the fإذا كانth term (\\(n = 5\\)):<br>\\[a_5 = a_1 r^4 = 6 \\cdot 2^4 = 6 \\cdot 16 = 96\\]</p><p>Common traps:<br>- أوجدing \\(a_4 = 6 \\cdot 2^3 = 48\\) instead of \\(a_5\\).<br>- Using an incorrect exponent \\(a_1 r^5 = 6 \\cdot 32 = 192\\) by forgetting to subtract \\(1\\) from \\(n\\).</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
-        ],
-        "rows": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
+            "label": "T₁",
+            "val": 5
           },
           {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "label": "T₂",
+            "val": 8
+          },
+          {
+            "label": "T₃",
+            "val": 12
+          },
+          {
+            "label": "T₄",
+            "val": 17
           }
         ]
       }
@@ -399,31 +404,21 @@
       },
       "fig": {
         "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
-          },
-          {
-            "x": 2,
-            "y": 1,
-            "label": "B"
-          }
-        ],
+        "title": "Exponential Growth / Decay Profile",
         "xrange": [
-          -1.5,
-          3.5
+          -3,
+          4
         ],
         "yrange": [
           -1,
-          4
+          9
+        ],
+        "fns": [
+          {
+            "fn": "Math.pow(2, x)",
+            "color": "var(--fig-indigo)",
+            "label": "y = 2ˣ"
+          }
         ]
       }
     },

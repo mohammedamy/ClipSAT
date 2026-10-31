@@ -18,35 +18,32 @@
           "correct": 3,
           "answer": "PCA projection onto \\( k \\) eigenvectors transforms each sample vector from \\( \\mathbb{R}^D \\) to \\( \\mathbb{R}^k \\). Here \\( k = 6 \\), so the reduced dimension is \\( 6 \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "scatter",
+            "title": "Bivariate Feature Cloud & Linear Fit",
+            "pts": [
+              [
+                1,
+                2.2
+              ],
+              [
+                2,
+                3.6
+              ],
+              [
+                3,
+                5.1
+              ],
+              [
+                4,
+                6.4
+              ],
+              [
+                5,
+                8.1
+              ]
             ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
-              }
-            ]
+            "xlabel": "Predictor x",
+            "ylabel": "Response y"
           }
         },
         {
@@ -71,34 +68,49 @@
           "correct": 0,
           "answer": "Total variance is \\( \\sum \\lambda_i = 64 + 23 + 13 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{64}{100} = 64.0\\% \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "transformation_grid",
+            "title": "Matrix Action on Basis Vectors in R²",
+            "object": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ]
             ],
-            "yrange": [
-              -5,
-              7
+            "image": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                1,
+                2
+              ]
             ],
-            "fns": [
-              {
-                "fn": "(x - (-1))*(x - (-1)) + (1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "4*x - 5",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": -1,
-                "y": 1,
-                "label": "(-1, 1)"
-              }
+            "objectLabels": [
+              "O",
+              "e₁",
+              "e₁+e₂",
+              "e₂"
             ]
           }
         },
@@ -124,34 +136,49 @@
           "correct": 0,
           "answer": "Total variance is \\( \\sum \\lambda_i = 68 + 21 + 11 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{68}{100} = 68.0\\% \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "transformation_grid",
+            "title": "Matrix Action on Basis Vectors in R²",
+            "object": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ]
             ],
-            "yrange": [
-              -5,
-              7
+            "image": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                1,
+                2
+              ]
             ],
-            "fns": [
-              {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
-              }
+            "objectLabels": [
+              "O",
+              "e₁",
+              "e₁+e₂",
+              "e₂"
             ]
           }
         },

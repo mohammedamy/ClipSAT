@@ -198,48 +198,45 @@
         "note": {
           "en": "See how a hidden layer combining piecewise-linear ReLU activations \\(\\max(0, w_i \\cdot x + b_i)\\) creates hinged bends capable of approximating nonlinear functions.",
           "ar": "شاهد كيف تشكل وحدات تفعيل ReLU المتعددة انكسارات خطية قادرة على تقريب الدوال غير الخطية."
-        },
-        "canvas3d": {
-          "btnId": "aimatriceslinearlayersExCanvas_3dBtn",
-          "wrapId": "aimatriceslinearlayersExCanvas_3dWrap",
-          "hintId": "aimatriceslinearlayersExCanvas_3dHint",
-          "btnLabel": "🧊 View Dense Layer & Two-Neuron ReLU Universal Function Approximator in 3D",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Dense Layer & Two-Neuron ReLU Universal Function Approximator. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لـ ⊙ مستكشف تفاعلي · الطبقات الخطية الكثيفة وتقريب الدوال بتفعيل ReLU. اسحب للتدوير."
-          }
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "scatter",
-          "points": [
-            [
-              1,
-              35
-            ],
-            [
-              2,
-              57
-            ],
-            [
-              3,
-              79
-            ],
-            [
-              4,
-              101
-            ]
+          "type": "fn",
+          "title": "Parametric Trajectory & Velocity Tangent Vector",
+          "xrange": [
+            -1,
+            7
           ],
-          "line": {
-            "m": 22,
-            "b": 13
-          }
+          "yrange": [
+            -1,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*(x - 3)*(x - 3)",
+              "color": "var(--fig-indigo)",
+              "label": "r(t) path"
+            },
+            {
+              "fn": "0.5*x + 2.25",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "r'(t) tangent"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 3.75,
+              "label": "P(t₀)"
+            }
+          ]
         },
         "caption": {
-          "en": "Matrices, Linear Layers & Activation Functions — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Matrices, Linear Layers & Activation Functions.",
-          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط."
+          "en": "Planar parametric trajectory \\(\\mathbf{r}(t)\\) with instantaneous velocity tangent vector \\(\\mathbf{r}'(t_0)\\).",
+          "ar": "المسار الوسيطي المستوي \\(\\mathbf{r}(t)\\) ومتجه السرعة المماسي اللحظي \\(\\mathbf{r}'(t_0)\\) في المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط."
         }
       },
       {

@@ -13,32 +13,20 @@
         "ar": "<p>ليكن \\(u=x^2+9\\), \\(du=2x\\,dx\\). \\(\\int u^{4}du=\\dfrac{u^{5}}{5}\\). At \\(x=3\\): \\(u=18\\), giving \\(1889568\\). At \\(x=0\\): \\(u=9\\), giving \\(59049\\). Result: \\(\\dfrac{1889568-59049}{5}=\\dfrac{1830519}{5}\\).</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
+        "type": "numberline",
+        "range": [
+          -5,
+          7
         ],
         "points": [
           {
-            "x": 0,
-            "y": 2,
-            "label": "A"
+            "x": -2,
+            "label": "P"
           },
           {
-            "x": 2,
-            "y": 1,
-            "label": "B"
+            "x": 4,
+            "label": "Q"
           }
-        ],
-        "xrange": [
-          -1.5,
-          3.5
-        ],
-        "yrange": [
-          -1,
-          4
         ]
       }
     },
@@ -66,32 +54,21 @@
         "ar": "<p>For \\(f(x)\\) to be a valid probability density function, the total area under the curve must equal 1:<br>\\[\\int_{-\\infty}^{\\infty} f(x) \\, dx = 1\\]</p><p>عوّض the non-zero definition of \\(f(x)\\):<br>\\[\\int_0^2 k(4 - x^2) \\, dx = 1\\]</p><p>حلّل out the constant \\(k\\) و integrate term by term:<br>\\[k \\left[ 4x - \\frac{x^3}{3} \\right]_0^2 = 1\\]</p><p>احسب قيمة at the upper و lower limits:<br>\\[k \\left( \\left( 4(2) - \\frac{2^3}{3} \\right) - 0 \\right) = 1\\]<br>\\[k \\left( 8 - \\frac{8}{3} \\right) = 1\\]<br>\\[k \\left( \\frac{16}{3} \\right) = 1 \\implies k = \\frac{3}{16}\\]</p><p>Common errors include:<br>- Integrating \\(x^2\\) as \\(x^2\\) or بالقسمة على 2 instead of 3, leading to \\(k = \\frac{1}{4}\\).<br>- Integrating over \\([-2, 2]\\) instead of \\([0, 2]\\), which gives double the integral و results in \\(k = \\frac{3}{8}\\).<br>- Evaluating the integral correctly as \\(\\frac{16}{3}\\) but forgetting to invert to أوجد قيمة \\(k\\), yielding \\(\\frac{16}{3}\\).</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
+        "type": "fn",
+        "title": "Non-Negative Integrand Curve y = f(x)",
+        "xrange": [
+          -1,
+          4
         ],
-        "rows": [
+        "yrange": [
+          -0.5,
+          6
+        ],
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "0.35*x*x + 1",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
           }
         ]
       }
@@ -109,31 +86,21 @@
       },
       "fig": {
         "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
-          },
-          {
-            "x": 2,
-            "y": 1,
-            "label": "B"
-          }
-        ],
+        "title": "Logarithmic Curve & Domain (x > 0)",
         "xrange": [
-          -1.5,
-          3.5
+          -1,
+          7
         ],
         "yrange": [
-          -1,
+          -3,
           4
+        ],
+        "fns": [
+          {
+            "fn": "Math.log(x)",
+            "color": "var(--fig-indigo)",
+            "label": "y = ln(x)"
+          }
         ]
       }
     },
@@ -173,32 +140,20 @@
         "ar": "<p>To حل the modulus equation \\(|3x - 2| = 2|x + 1|\\), we can either لتكن لدينا linear cases or square both sides.</p><p><strong>Method 1: Considering linear cases</strong><br>The equation \\(|A| = |B|\\) (حيث \\(B = 2(x+1)\\)) is equivalent to \\(A = B\\) or \\(A = -B\\):<br>- Case 1:<br>\\[3x - 2 = 2(x + 1) \\implies 3x - 2 = 2x + 2 \\implies x = 4\\]<br>- Case 2:<br>\\[3x - 2 = -2(x + 1) \\implies 3x - 2 = -2x - 2 \\implies 5x = 0 \\implies x = 0\\]</p><p><strong>Method 2: Squaring both sides</strong><br>Since both sides are non-negative, we can square both sides:<br>\\[(3x - 2)^2 = [2(x + 1)]^2\\]<br>\\[9x^2 - 12x + 4 = 4(x^2 + 2x + 1)\\]<br>\\[9x^2 - 12x + 4 = 4x^2 + 8x + 4\\]<br>Subtracting \\(4x^2 + 8x + 4\\) from both sides gives:<br>\\[5x^2 - 20x = 0 \\implies 5x(x - 4) = 0\\]<br>وعليه، \\(x = 0\\) or \\(x = 4\\).</p><p><strong>Misconceptions:</strong></p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
+        "type": "numberline",
+        "range": [
+          -5,
+          7
         ],
         "points": [
           {
-            "x": 0,
-            "y": 2,
-            "label": "A"
+            "x": -2,
+            "label": "P"
           },
           {
-            "x": 2,
-            "y": 1,
-            "label": "B"
+            "x": 4,
+            "label": "Q"
           }
-        ],
-        "xrange": [
-          -1.5,
-          3.5
-        ],
-        "yrange": [
-          -1,
-          4
         ]
       }
     },
@@ -236,32 +191,21 @@
         "ar": "<p>To احسب قيمة التكامل المحدود:</p><p>1. أوجد antiderivative using the stوard stوard result \\(\\int \\mathrm{e}^{kx} \\, \\mathrm{d}x = \\frac{1}{k}\\mathrm{e}^{kx} + C\\):<br>\\[\\int \\mathrm{e}^{2x} \\, \\mathrm{d}x = \\frac{1}{2}\\mathrm{e}^{2x}\\]</p><p>2. Apply the limits from \\(x = 0\\) to \\(x = \\ln 2\\):<br>\\[\\left[ \\frac{1}{2}\\mathrm{e}^{2x} \\right]_{0}^{\\ln 2} = \\frac{1}{2}\\mathrm{e}^{2\\ln 2} - \\frac{1}{2}\\mathrm{e}^{2(0)}\\]</p><p>3. بسّط the exponential terms using the power law of logarithms, \\(2\\ln 2 = \\ln(2^2) = \\ln 4\\):<br>\\[\\mathrm{e}^{2\\ln 2} = \\mathrm{e}^{\\ln 4} = 4\\]<br>و<br>\\[\\mathrm{e}^{0} = 1\\]</p><p>4. احسب final value:<br>\\[\\frac{1}{2}(4) - \\frac{1}{2}(1) = 2 - \\frac{1}{2} = \\frac{3}{2}\\]</p><p>Common Errors:<br>- Omitting the حلّل of \\(\\frac{1}{2}\\) gives \\(4 - 1 = 3\\) (Choice B).<br>- Forgetting that \\(2\\ln 2 = \\ln 4\\) و incorrectly setting \\(\\mathrm{e}^{2\\ln 2} = 2\\) gives \\(\\frac{1}{2}(2 - 1) = \\frac{1}{2}\\) (Choice C).</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
+        "type": "fn",
+        "title": "Logarithmic Curve & Domain (x > 0)",
+        "xrange": [
+          -1,
+          7
         ],
-        "rows": [
+        "yrange": [
+          -3,
+          4
+        ],
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "Math.log(x)",
+            "color": "var(--fig-indigo)",
+            "label": "y = ln(x)"
           }
         ]
       }
@@ -364,32 +308,25 @@
         "ar": "<p>The \\(n\\)th term of a geometric progression is given by \\(u_n = ar^{n-1}\\), حيث \\(a\\) is the first term و \\(r\\) is the common ratio.</p><p>Given \\(a = 16\\) و the fourth term \\(u_4 = 2\\):<br>\\[ar^3 = 2 \\implies 16r^3 = 2 \\implies r^3 = \\frac{2}{16} = \\frac{1}{8} \\implies r = \\frac{1}{2}\\]</p><p>Since \\(|r| \\lt 1\\), the sum to infinity exists و is given by:<br>\\[S_\\infty = \\frac{a}{1 - r} = \\frac{16}{1 - \\frac{1}{2}} = \\frac{16}{\\frac{1}{2}} = 32\\]</p><p>Common errors include setting \\(u_4 = ar^4\\) which yields \\(r^4 = \\frac{1}{8}\\), or miscalculating the denominator \\(1 - r\\).</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
+        "type": "bar",
+        "title": "Discrete Term / Magnitude Comparison",
+        "data": [
           {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
+            "label": "T₁",
+            "val": 5
           },
           {
-            "x": 2,
-            "y": 1,
-            "label": "B"
+            "label": "T₂",
+            "val": 8
+          },
+          {
+            "label": "T₃",
+            "val": 12
+          },
+          {
+            "label": "T₄",
+            "val": 17
           }
-        ],
-        "xrange": [
-          -1.5,
-          3.5
-        ],
-        "yrange": [
-          -1,
-          4
         ]
       }
     },
@@ -435,10 +372,21 @@
         "ar": "<p>To أوجد \\(a\\), we first express \\(z\\) in Cartesian form \\(x + \\mathrm{i}y\\) by multiplying the numerator و denominator by the complex conjugate of the denominator, \\(2 - a\\mathrm{i}\\):<br>\\[z = \\frac{(a + 3\\mathrm{i})(2 - a\\mathrm{i})}{(2 + a\\mathrm{i})(2 - a\\mathrm{i})} = \\frac{2a - a^2\\mathrm{i} + 6\\mathrm{i} - 3a\\mathrm{i}^2}{4 + a^2} = \\frac{5a + (6 - a^2)\\mathrm{i}}{4 + a^2}\\]</p><p>وعليه، the real و imaginary parts are:<br>\\[\\operatorname{Re}(z) = \\frac{5a}{4 + a^2}, \\qquad \\operatorname{Im}(z) = \\frac{6 - a^2}{4 + a^2}\\]</p><p>For \\(\\arg(z) = \\frac{\\pi}{4}\\), the complex number \\(z\\) must lie on the half-line in the first quadrant حيث the real و imaginary parts are equal و strictly positive:<br>1. \\(\\operatorname{Re}(z) \\gt 0 \\implies 5a \\gt 0 \\implies a \\gt 0\\)<br>2. \\(\\operatorname{Im}(z) \\gt 0 \\implies 6 - a^2 \\gt 0\\)<br>3. \\(\\operatorname{Re}(z) = \\operatorname{Im}(z) \\implies 5a = 6 - a^2\\)</p><p>Rearranging the equality gives the quadratic equation:<br>\\[a^2 + 5a - 6 = 0 \\implies (a + 6)(a - 1) = 0\\]<br>which yields \\(a = 1\\) or \\(a = -6\\).</p><p>Checking the values:<br>- إذا كان \\(a = 1\\): \\(\\operatorname{Re}(z) = 1 \\gt 0\\) و \\(\\operatorname{Im}(z) = 1 \\gt 0\\), so \\(\\arg(z) = \\frac{\\pi}{4}\\).<br>- إذا كان \\(a = -6\\): \\(\\operatorname{Re}(z) = -\\frac{3}{4} \\lt 0\\) و \\(\\operatorname{Im}(z) = -\\frac{3}{4} \\lt 0\\), so \\(z\\) lies in the third quadrant with \\(\\arg(z) = -\\frac{3\\pi}{4}\\).</p><p>وبالتالي، \\(a = -6\\) is an extraneous solution resulting from the equation \\(\\tan(\\arg z) = 1\\), و the only valid solution is \\(a = 1\\).</p>"
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 120,
-        "showTriangle": true
+        "type": "argand",
+        "title": "Complex Argand Plane",
+        "points": [
+          {
+            "re": 3,
+            "im": 2,
+            "label": "z₁",
+            "arcLabel": "θ"
+          },
+          {
+            "re": -2,
+            "im": 3,
+            "label": "z₂"
+          }
+        ]
       }
     },
     {
@@ -597,32 +545,21 @@
         "ar": "<p>To احسب قيمة التكامل المحدود \\(\\int_0^4 \\frac{1}{2x + 1} \\, \\mathrm{d}x\\):<br>1. Use the stوard integration rule \\(\\int \\frac{1}{ax + b} \\, \\mathrm{d}x = \\frac{1}{a} \\ln |ax + b| + C\\).<br>Here, \\(a = 2\\) و \\(b = 1\\), giving the antiderivative:<br>\\[\\int \\frac{1}{2x + 1} \\, \\mathrm{d}x = \\frac{1}{2} \\ln |2x + 1|\\]<br>2. احسب قيمة between the limits \\(x = 0\\) و \\(x = 4\\):<br>\\[\\left[ \\frac{1}{2} \\ln |2x + 1| \\right]_0^4 = \\frac{1}{2} \\ln(2(4) + 1) - \\frac{1}{2} \\ln(2(0) + 1) = \\frac{1}{2} \\ln 9 - \\frac{1}{2} \\ln 1\\]<br>3. Using the properties of logarithms, \\(\\ln 1 = 0\\) و \\(\\ln 9 = \\ln(3^2) = 2 \\ln 3\\):<br>\\[\\frac{1}{2} \\ln 9 = \\frac{1}{2} (2 \\ln 3) = \\ln 3\\]</p><p>Common errors:<br>- Omitting the حلّل of \\(\\frac{1}{2}\\) from the chain rule leads to \\(\\ln 9\\).<br>- Evaluating \\(2(4)\\) without adding 1 leads to \\(\\frac{1}{2} \\ln 8\\).<br>- بالقسمة على the upper limit 4 instead of the coefficient 2 leads to \\(\\frac{1}{4} \\ln 9\\).</p>"
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
+        "type": "fn",
+        "title": "Non-Negative Integrand Curve y = f(x)",
+        "xrange": [
+          -1,
+          4
         ],
-        "rows": [
+        "yrange": [
+          -0.5,
+          6
+        ],
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "0.35*x*x + 1",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
           }
         ]
       }

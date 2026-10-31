@@ -42,43 +42,33 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Radicals &amp; Exponents — Function Curve & Symmetry Analysis",
+          "title": "Square-Root Radical Function y = √(x + 2) − 1",
           "xrange": [
             -3,
-            5
+            8
           ],
           "yrange": [
-            -1,
-            9
+            -2,
+            4
           ],
           "fns": [
             {
-              "fn": "Math.pow(2, x)",
+              "fn": "Math.sqrt(x + 2) - 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = 2ˣ"
-            },
-            {
-              "fn": "x + 3",
-              "color": "var(--fig-amber)",
-              "label": "g(x) = x + 3"
+              "label": "f(x) = √(x+2) − 1"
             }
           ],
           "points": [
             {
-              "x": 0,
-              "y": 1,
-              "label": "(0, 1)"
-            },
-            {
-              "x": 2,
-              "y": 4,
-              "label": "(2, 4)"
+              "x": -2,
+              "y": -1,
+              "label": "Endpoint (−2, −1)"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 2)^{2} - 5\\) with vertex at \\((2, -5)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 2)^{2} - 5\\) with الرأس at \\((2, -5)\\) and symmetry reference line \\(y = x\\)."
+          "en": "Translated square-root function \\(f(x) = \\sqrt{x + 2} - 1\\) starting at domain endpoint \\((-2, -1)\\).",
+          "ar": "منحنى الدالة الجذرية المزاحة \\(f(x) = \\sqrt{x + 2} - 1\\) ابتداءً من نقطة طرف المجال \\((-2, -1)\\) في الجذور والأسس الكسرية."
         }
       },
       {
@@ -185,7 +175,7 @@
         "id": "fig-radical-function",
         "title": {
           "en": "Square Root Function Graph",
-          "ar": "Square Root الدالة التمثيل البياني"
+          "ar": "الجذور والأسس الكسرية"
         },
         "figure": {
           "type": "fn",
@@ -223,7 +213,7 @@
         },
         "caption": {
           "en": "The square root function \\(y = \\sqrt{x}\\) is defined only for \\(x \\ge 0\\) (domain) and produces only non-negative outputs \\(y \\ge 0\\) (range).",
-          "ar": "The square root الدالة \\(y = \\sqrt{x}\\) is defined only for \\(x \\ge 0\\) (المجال) and produces only non-negative outputs \\(y \\ge 0\\) (المدى)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الجذور والأسس الكسرية."
         }
       },
       {
@@ -562,8 +552,8 @@
         "kind": "explorer",
         "id": "cs-uge-ag-radicals-mainfn-exp",
         "title": {
-          "en": "⊙ Explorer · Exponential Growth/Decay & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر النمو والاضمحلال الأسي وتحويلات الدوال الأم"
+          "en": "⊙ Explorer · Radical (Square-Root) Domain & Parent Functions Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدالة الجذرية ومجالها وتحويلات الدوال الأم"
         },
         "canvasId": "uge_agradicals_mainfnCanvas",
         "ariaLabel": {
@@ -625,7 +615,8 @@
               },
               {
                 "value": "radical",
-                "label": "Radical (Square Root):  f(x) = a√(x − h) + k"
+                "label": "Radical (Square Root):  f(x) = a√(x − h) + k",
+                "selected": true
               },
               {
                 "value": "rational",
@@ -633,8 +624,7 @@
               },
               {
                 "value": "exponential",
-                "label": "Exponential:  f(x) = a · 2^(x − h) + k",
-                "selected": true
+                "label": "Exponential:  f(x) = a · 2^(x − h) + k"
               },
               {
                 "value": "logarithmic",
@@ -719,7 +709,7 @@
               "ar": "المعادلة النشطة"
             },
             "colorClass": "indigo",
-            "value": "f(x) = x²"
+            "value": "f(x) = √x"
           },
           {
             "id": "uge_agradicals_mainfnDom",
@@ -727,7 +717,7 @@
               "en": "Domain",
               "ar": "المجال"
             },
-            "value": "(−∞, ∞)"
+            "value": "[0, ∞)"
           },
           {
             "id": "uge_agradicals_mainfnRng",
@@ -744,7 +734,7 @@
               "en": "Vertex / Asymptotes",
               "ar": "الرأس / خطوط التقارب"
             },
-            "value": "Vertex (0, 0), Axis x = 0"
+            "value": "Endpoint (0, 0)"
           },
           {
             "id": "uge_agradicals_mainfnInt",
@@ -756,8 +746,8 @@
           }
         ],
         "note": {
-          "en": "Starts on the <strong>exponential family</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\)—track horizontal asymptote \\(y = k\\) and anchor \\((h, a+k)\\), or switch to logarithmic inverse. Drag horizontally on the graph to inspect \\(x_0\\), \\(f(x_0)\\), and instantaneous slope \\(f'(x_0)\\).",
-          "ar": "يبدأ على <strong>الدالة الأسية</strong> \\(f(x) = a\\cdot 2^{x - h} + k\\) — تتبّع خط التقارب الأفقي \\(y = k\\) والنقطة المرجعية \\((h, a+k)\\) أو انتقل للدالة اللوغاريتمية. اسحب أفقياً على الرسم لفحص \\(x_0\\) و\\(f(x_0)\\) والميل اللحظي \\(f'(x_0)\\)."
+          "en": "Starts on the <strong>square-root radical family</strong> \\(f(x) = a\\sqrt{x - h} + k\\) with domain \\([h, \\infty)\\) and endpoint \\((h, k)\\). Drag \\((h, k)\\) to see how shifts restrict domain and range.",
+          "ar": "يبدأ على <strong>الدالة الجذرية</strong> \\(f(x) = a\\sqrt{x - h} + k\\) ذات المجال \\([h, \\infty)\\) ونقطة البداية \\((h, k)\\). اسحب \\((h, k)\\) لملاحظة أثر الإزاحات على المجال والمدى."
         }
       },
       {

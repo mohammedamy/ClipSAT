@@ -29,21 +29,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory — Slope Field & Particular Solution Trajectory",
-          "fn": "-0.3*x*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": 0,
-            "y0": 2.2
-          }
+          "type": "fn",
+          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "xrange": [
+            0,
+            8
+          ],
+          "yrange": [
+            -2,
+            2.5
+          ],
+          "fns": [
+            {
+              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
+              "color": "var(--fig-indigo)",
+              "label": "Underdamped y(t)"
+            },
+            {
+              "fn": "2*Math.exp(-0.35*x)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Envelope ±2e^(−0.35t)"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution)."
         }
       },
       {
@@ -335,7 +347,7 @@
         },
         "caption": {
           "en": "Exponential decay of the Laplace kernel \\( e^{-st} \\) for \\( s = 1, 2, 3 \\). Higher values of \\( s \\) induce faster damping, guaranteeing absolute convergence for all functions of exponential order \\( c < s \\).",
-          "ar": "Exponential decay of the Laplace kernel \\( e^{-st} \\) for \\( s = 1, 2, 3 \\). Higher values of \\( s \\) induce faster damping, guaranteeing absolute convergence for all الدوال of exponential order \\( c < s \\)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution)."
         }
       },
       {

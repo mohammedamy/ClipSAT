@@ -1323,7 +1323,6 @@
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */
   window.CSMountSixTrigExplorer && window.CSMountSixTrigExplorer({ canvasId: 'uge_edxtrig3dvectors_trig6Canvas', dataBtnId: 'uge_edxtrig3dvectors_trig6DataBtn', prefix: 'uge_edxtrig3dvectors_trig6' });
   window.CSMountSixInvTrigExplorer && window.CSMountSixInvTrigExplorer({ canvasId: 'uge_edxtrig3dvectors_invtrig6Canvas', dataBtnId: 'uge_edxtrig3dvectors_invtrig6DataBtn', prefix: 'uge_edxtrig3dvectors_invtrig6' });
-  window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_edxnumbersurdssets_mainfnCanvas', dataBtnId: 'uge_edxnumbersurdssets_mainfnDataBtn', prefix: 'uge_edxnumbersurdssets_mainfn', defaultFn: 'radical' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_edxalgebraquadratics_mainfnCanvas', dataBtnId: 'uge_edxalgebraquadratics_mainfnDataBtn', prefix: 'uge_edxalgebraquadratics_mainfn', defaultFn: 'quadratic' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_edxfunctionssequences_mainfnCanvas', dataBtnId: 'uge_edxfunctionssequences_mainfnDataBtn', prefix: 'uge_edxfunctionssequences_mainfn', defaultFn: 'cubic' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_edxcoordgeometry_mainfnCanvas', dataBtnId: 'uge_edxcoordgeometry_mainfnDataBtn', prefix: 'uge_edxcoordgeometry_mainfn', defaultFn: 'linear' });

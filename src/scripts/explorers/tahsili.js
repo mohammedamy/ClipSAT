@@ -546,6 +546,83 @@
   })();
 
   /* 3D Double-Napped Cone & Conic Slicing Plane (Tahsili Conic Sections) */
+  /* ===================== TAHSILI · WEIGHTED ADMISSION COMPOSITE & PACING LAB ===================== */
+  (function(){
+    var canvas=document.getElementById('tahScoreCanvas'); if(!canvas) return;
+    var gpa=95, qud=88, tah=90;
+    var sg=document.getElementById('tahScoreGpa'), sq=document.getElementById('tahScoreQud'), st=document.getElementById('tahScoreTah');
+    var dataBtn=document.getElementById('tahScoreDataBtn'), dataPanel=document.getElementById('tahScoreDataPanel'),
+        dataDesc=document.getElementById('tahScoreDataDesc'), dataRows=document.getElementById('tahScoreDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    var chScore = attachChallenge('tahScoreCanvas', {
+      prompt: {
+        en: 'Adjust your Tahsili target score until the Weighted University Composite (30% GPA + 30% Qudrat + 40% Tahsili) reaches at least 92.0%.',
+        ar: 'اضبط درجتك المستهدفة في التحصيلي حتى تصل النسبة الموزونة للقبول الجامعي (٣٠٪ ثانوية + ٣٠٪ قدرات + ٤٠٪ تحصيلي) إلى ٩٢٫٠٪ على الأقل.'
+      },
+      check: function(s){ return s.comp >= 92.0; }
+    });
+    function draw(ctx,w,h){
+      var view={xmin:0,xmax:10,ymin:0,ymax:110};
+      var P=new Plot(ctx,w,h,view,{l:34,r:16,t:20,b:28}); P.clear();
+      var comp = 0.30*gpa + 0.30*qud + 0.40*tah;
+      var cG = 0.30*gpa, cQ = 0.30*qud, cT = 0.40*tah;
+      /* Horizontal grid lines */
+      [25,50,75,90,100].forEach(function(yv){
+        P.segment(0.4,yv,9.6,yv,yv===90?AMBER2:GRID,yv===90?1.3:1,yv===90?[5,4]:null);
+        ctx.fillStyle=MUTED; ctx.font='10px ui-monospace, monospace'; ctx.textAlign='right';
+        ctx.fillText(yv+'%', P.X(0.35), P.Y(yv)+3);
+      });
+      var bars=[
+        {x:1.6, val:gpa, col:'#64748b', lbl:'GPA (30%)'},
+        {x:3.9, val:qud, col:INDIGO2||'#3b82f6', lbl:'Qudrat (30%)'},
+        {x:6.2, val:tah, col:INDIGO, lbl:'Tahsili (40%)'},
+        {x:8.5, val:comp, col:AMBER2, lbl:'Composite'}
+      ];
+      bars.forEach(function(b){
+        P.polygon([[b.x-0.65,0],[b.x+0.65,0],[b.x+0.65,b.val],[b.x-0.65,b.val]], b.col, b.col, 1.2);
+        ctx.fillStyle=INK; ctx.font='700 11px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='center';
+        ctx.fillText(b.val.toFixed(1)+'%', P.X(b.x), P.Y(b.val)-6);
+        ctx.fillStyle=MUTED; ctx.font='600 10px ui-sans-serif, system-ui, sans-serif';
+        ctx.fillText(b.lbl, P.X(b.x), P.Y(0)+15);
+      });
+      _set('tahScoreComp', comp.toFixed(2)+'%');
+      _set('tahScoreTahPts', cT.toFixed(2)+' / 40');
+      _set('tahScoreTier', comp>=92?'Top STEM / Medicine Tier':(comp>=85?'Competitive Engineering Tier':'Foundation Tier'));
+      if(chScore) chScore.check({comp: comp});
+      if(dataDesc){
+        dataDesc.textContent='Weighted Admission Formula: 0.30('+gpa+') + 0.30('+qud+') + 0.40('+tah+') = '+comp.toFixed(2)+'%. Tahsili carries the single largest weight (40%).';
+        renderDataRows(dataRows,[
+          ['High School GPA (× 0.30)', cG.toFixed(2)+' pts'],
+          ['GAT Qudrat (× 0.30)', cQ.toFixed(2)+' pts'],
+          ['SAAT Tahsili (× 0.40)', cT.toFixed(2)+' pts'],
+          ['Weighted Composite Total', comp.toFixed(2)+'%']
+        ]);
+      }
+    }
+    function upd(){
+      if(sg){ gpa=parseInt(sg.value,10)||95; _set('tahScoreGpaV', gpa); }
+      if(sq){ qud=parseInt(sq.value,10)||88; _set('tahScoreQudV', qud); }
+      if(st){ tah=parseInt(st.value,10)||90; _set('tahScoreTahV', tah); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sg) sg.addEventListener('input',upd);
+    if(sq) sq.addEventListener('input',upd);
+    if(st) st.addEventListener('input',upd);
+    if(makeDraggable){
+      makeDraggable(canvas, {
+        hitTest: function(){ return 'bar'; },
+        onDrag: function(_, px, py){
+          var cw=canvas.clientWidth||360, ch=canvas.clientHeight||240;
+          var P=new Plot(null,cw,ch,{xmin:0,xmax:10,ymin:0,ymax:110},{l:34,r:16,t:20,b:28});
+          var wx=P.invX(px), wy=Math.max(50,Math.min(100,Math.round(P.invY(py))));
+          if(wx<2.8 && sg){ gpa=wy; sg.value=wy; _set('tahScoreGpaV',wy); }
+          else if(wx<5.1 && sq){ qud=wy; sq.value=wy; _set('tahScoreQudV',wy); }
+          else if(st){ tah=wy; st.value=wy; _set('tahScoreTahV',wy); }
+        }
+      });
+    }
+  })();
   (function(){
     var btn=document.getElementById("tahConic3dBtn"), wrap=document.getElementById("tahConic3dWrap"), hint=document.getElementById("tahConic3dHint");
     if(!btn||!wrap) return;
@@ -588,6 +665,5 @@
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_tahalgebra_mainfnCanvas', dataBtnId: 'uge_tahalgebra_mainfnDataBtn', prefix: 'uge_tahalgebra_mainfn', defaultFn: 'absolute' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_tahfunctions_mainfnCanvas', dataBtnId: 'uge_tahfunctions_mainfnDataBtn', prefix: 'uge_tahfunctions_mainfn', defaultFn: 'rational' });
   window.CSMountMainFunctionsExplorer && window.CSMountMainFunctionsExplorer({ canvasId: 'uge_tahexplog_mainfnCanvas', dataBtnId: 'uge_tahexplog_mainfnDataBtn', prefix: 'uge_tahexplog_mainfn', defaultFn: 'logarithmic' });
-  window.CSMountHyperbolicExplorer && window.CSMountHyperbolicExplorer({ canvasId: 'uge_tahcalc1_hyperCanvas', dataBtnId: 'uge_tahcalc1_hyperDataBtn', prefix: 'uge_tahcalc1_hyper', defaultFn: 'sinh' });
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-END === */
 })(window.CSExplorerKit);

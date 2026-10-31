@@ -18,34 +18,49 @@
           "correct": 0,
           "answer": "The components of a vector \\( \\mathbf{v} \\) represented by a directed line segment from point \\( P(x_1, y_1) \\) to point \\( Q(x_2, y_2) \\) are given by \\( \\mathbf{v} = [x_2 - x_1, y_2 - y_1] \\). In this case, \\( P = (1, 2) \\) and \\( Q = (4, 6) \\). Therefore, the components of \\( \\mathbf{v} \\) are \\( [4 - 1, 6 - 2] = [3, 4] \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "transformation_grid",
+            "title": "Matrix Action on Basis Vectors in R²",
+            "object": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ]
             ],
-            "yrange": [
-              -5,
-              7
+            "image": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                1,
+                2
+              ]
             ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
-              }
+            "objectLabels": [
+              "O",
+              "e₁",
+              "e₁+e₂",
+              "e₂"
             ]
           }
         },
@@ -71,34 +86,49 @@
           "correct": 0,
           "answer": "Let the linear transformation matrix be \\( M = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\). \n\nThe transformation of a point \\( \\mathbf{x} \\) to \\( \\mathbf{x'} \\) is given by \\( M\\mathbf{x} = \\mathbf{x'} \\). \n\nFor point \\( P(1, 2) \\) mapped to \\( P'(4, 9) \\): \n\\[ \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 9 \\end{pmatrix} \\] \nThis yields the equations: \n1) \\( a + 2b = 4 \\) \n2) \\( c + 2d = 9 \\)\n\nFor point \\( Q(3, 1) \\) mapped to \\( Q'(7, 12) \\): \n\\[ \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 12 \\end{pmatrix} \\] \nThis yields the equations: \n3) \\( 3a + b = 7 \\) \n4) \\( 3c + d = 12 \\)\n\nWe need to solve these two systems of linear equations for \\( a, b, c, \\) and \\( d \\). \n\nSolving for \\( a \\) and \\( b \\) using equations (1) and (3):\nFrom equation (3), \\( b = 7 - 3a \\). Substitute this into equation (1):\n\\( a + 2(7 - 3a) = 4 \\)\n\\( a + 14 - 6a = 4 \\)\n\\( -5a = 4 - 14 \\)\n\\( -5a = -10 \\)\n\\( a = 2 \\)\n\nNow substitute the value of \\( a \\) back into the expression for \\( b \\):\n\\( b = 7 - 3(2) = 7 - 6 = 1 \\)\n\nSolving for \\( c \\) and \\( d \\) using equations (2) and (4):\nFrom equation (4), \\( d = 12 - 3c \\). Substitute this into equation (2):\n\\( c + 2(12 - 3c) = 9 \\)\n\\( c + 24 - 6c = 9 \\)\n\\( -5c = 9 - 24 \\)\n\\( -5c = -15 \\)\n\\( c = 3 \\)\n\nNow substitute the value of \\( c \\) back into the expression for \\( d \\):\n\\( d = 12 - 3(3) = 12 - 9 = 3 \\)\n\nSo, the transformation matrix is \\( M = \\begin{pmatrix} 2 & 1 \\\\ 3 & 3 \\end{pmatrix} \\). \n\nThe sum of the elements of the transformation matrix is \\( a + b + c + d = 2 + 1 + 3 + 3 = 9 \\). \n\nCommon misconceptions might arise from errors in solving the systems of equations, such as sign errors or algebraic mistakes when isolating variables. For instance, incorrectly solving for \\( b \\) or \\( d \\) could lead to a wrong sum. Alternatively, a student might forget to sum all four elements and only sum the elements of one row or column.",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "transformation_grid",
+            "title": "Matrix Action on Basis Vectors in R²",
+            "object": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ]
             ],
-            "yrange": [
-              -5,
-              7
+            "image": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                1,
+                2
+              ]
             ],
-            "fns": [
-              {
-                "fn": "(x - (-1))*(x - (-1)) + (1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "4*x - 5",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": -1,
-                "y": 1,
-                "label": "(-1, 1)"
-              }
+            "objectLabels": [
+              "O",
+              "e₁",
+              "e₁+e₂",
+              "e₂"
             ]
           }
         },
@@ -124,34 +154,49 @@
           "correct": 0,
           "answer": "The matrix multiplication is given by:\n\\[ \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2x \\\\ 3y \\end{pmatrix} \\]\nWe are given that this result is \\( \\begin{pmatrix} 6 \\\\ 9 \\end{pmatrix} \\). Therefore, we have the system of equations:\n\\[ 2x = 6 \\]\n\\[ 3y = 9 \\]\nSolving for \\( x \\) and \\( y \\):\n\\[ x = \\frac{6}{2} = 3 \\]\n\\[ y = \\frac{9}{3} = 3 \\]\nSo, the original vector \\( \\mathbf{v} \\) is \\( \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix} \\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "transformation_grid",
+            "title": "Matrix Action on Basis Vectors in R²",
+            "object": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ]
             ],
-            "yrange": [
-              -5,
-              7
+            "image": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                1,
+                2
+              ]
             ],
-            "fns": [
-              {
-                "fn": "(x - (1))*(x - (1)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 1",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": -1,
-                "label": "(1, -1)"
-              }
+            "objectLabels": [
+              "O",
+              "e₁",
+              "e₁+e₂",
+              "e₂"
             ]
           }
         },

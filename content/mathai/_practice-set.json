@@ -66,31 +66,31 @@
       },
       "fig": {
         "type": "scatter",
-        "title": "Bivariate Data & Trend",
+        "title": "Bivariate Feature Cloud & Linear Fit",
         "pts": [
           [
             1,
-            2.1
+            2.2
           ],
           [
             2,
-            3.8
+            3.6
           ],
           [
             3,
-            5.2
+            5.1
           ],
           [
             4,
-            6.9
+            6.4
           ],
           [
             5,
-            8.4
+            8.1
           ]
         ],
-        "xlabel": "Predictor (x)",
-        "ylabel": "Response (y)"
+        "xlabel": "Predictor x",
+        "ylabel": "Response y"
       }
     },
     {
@@ -128,31 +128,21 @@
       },
       "fig": {
         "type": "fn",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 2,
-            "label": "A"
-          },
-          {
-            "x": 2,
-            "y": 1,
-            "label": "B"
-          }
-        ],
+        "title": "Quadratic Parabola y = f(x)",
         "xrange": [
-          -1.5,
-          3.5
+          -3,
+          5
         ],
         "yrange": [
           -1,
-          4
+          8
+        ],
+        "fns": [
+          {
+            "fn": "(x - 1)*(x - 1) + 1",
+            "color": "var(--fig-indigo)",
+            "label": "y = f(x)"
+          }
         ]
       }
     },
@@ -319,13 +309,50 @@
         "ar": "<p>Total variance is \\(\\sum \\lambda_i = 62 + 24 + 14 = 100\\). The proportion explained by \\(PC_1\\) is \\(\\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{62}{100} = 62.0\\%\\).</p><p><strong>الإجابة النهائية:</strong> \\(62.0\\%\\)</p>"
       },
       "fig": {
-        "type": "box_plot",
-        "title": "Five-Number Summary Distribution",
-        "min": 12,
-        "q1": 24,
-        "med": 35,
-        "q3": 48,
-        "max": 64
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
+        ]
       }
     },
     {
@@ -340,25 +367,48 @@
         "ar": "<p>Dot product \\(\\mathbf{a} \\cdot \\mathbf{b} = (5)(10) + (10)(5) = 100\\). Product of norms \\(\\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 125\\). Cosine similarity = \\(\\frac{100}{125} = 0.800\\).</p><p><strong>الإجابة النهائية:</strong> \\(0.800\\)</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "4 - x*x",
-            "label": "y = f(x)"
-          },
-          {
-            "fn": "x + 2",
-            "label": "y = g(x)"
-          }
+        "type": "similar",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            2.5,
+            4
+          ]
         ],
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -2,
-          5
-        ]
+        "ratio": 0.65,
+        "left": {
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "sides": [
+            "6",
+            "5",
+            "5"
+          ],
+          "caption": "△ABC"
+        },
+        "right": {
+          "labels": [
+            "D",
+            "E",
+            "F"
+          ],
+          "sides": [
+            "9",
+            "s",
+            "t"
+          ],
+          "caption": "△DEF"
+        }
       }
     },
     {
@@ -463,13 +513,49 @@
         "ar": "<p>The total variance in the dataset is the sum of all eigenvalues: \\(\\sum_{i=1}^p \\lambda_i = 10.5 + 5.2 + 2.1 + 0.8 + 0.4 = 19.0\\).</p><p>We need to أوجد minimum \\(k\\) such that \\(\\frac{\\sum_{i=1}^k \\lambda_i}{\\sum_{i=1}^p \\lambda_i} \\ge 0.90\\).</p><p>ليكن's check for dإذا كانferent values of \\(k\\):</p><p>For \\(k=1\\): The variance retained is \\(\\frac{10.5}{19.0} \\approx 0.553\\), which is less than 0.90.</p><p>For \\(k=2\\): The variance retained is \\(\\frac{10.5 + 5.2}{19.0} = \\frac{15.7}{19.0} \\approx 0.826\\), which is less than 0.90.</p><p>For \\(k=3\\): The variance retained is \\(\\frac{10.5 + 5.2 + 2.1}{19.0} = \\frac{17.8}{19.0} \\approx 0.937\\), which is greater than or equal to 0.90.</p><p>وبالتالي، a minimum of 3 principal components are required to retain at least 90% of the total variance.</p>"
       },
       "fig": {
-        "type": "normal_curve",
-        "title": "Normal Distribution Model",
-        "mean": 0,
-        "sd": 1,
-        "shade": [
-          -1,
-          1.5
+        "type": "transformation_grid",
+        "title": "Matrix Action on Basis Vectors in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ]
       }
     },

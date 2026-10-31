@@ -170,21 +170,12 @@
         "ar": "<p><strong>الخطوة ١: Auxiliary roots:</strong> \\[r^2 - 7r + 10 = (r - 2)(r - 5) = 0 \\implies r_1 = 2, \\quad r_2 = 5.\\] General solution: \\(y(x) = C_1 e^{2x} + C_2 e^{5x}\\).<br><strong>الخطوة ٢: Derivative:</strong> \\(y'(x) = 2C_1 e^{2x} + 5C_2 e^{5x}\\).<br><strong>الخطوة ٣: Apply initial conditions:</strong> \\[\\begin{cases} C_1 + C_2 = 1 \\\\ 2C_1 + 5C_2 = -1 \\end{cases}\\] From first: \\(C_1 = 1 - C_2\\). عوّض: \\(2(1 - C_2) + 5C_2 = 2 + 3C_2 = -1 \\implies 3C_2 = -3 \\implies C_2 = -1, \\, C_1 = 2\\).<br><strong>الخطوة ٤: Particular solution:</strong> \\[y(x) = 2e^{2x} - e^{5x}, \\qquad y(1) = 2e^2 - e^5.\\]</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Autonomous Phase Slope Field",
-        "fn": "y*(2 - y)",
-        "xrange": [
-          -2,
-          4
-        ],
-        "yrange": [
-          -1,
-          3
-        ],
-        "solution": {
-          "x0": 0,
-          "y0": 0.5
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -199,21 +190,12 @@
         "ar": "<p><strong>الخطوة ١: Characteristic roots:</strong> \\(r^2 + 4r + 4 = (r + 2)^2 = 0 \\implies r = -2\\) (repeated).<br>General solution: \\(y(t) = (C_1 + C_2 t)e^{-2t}\\).<br><strong>الخطوة ٢: Initial conditions:</strong> \\(y(0) = C_1 = 2\\).<br>\\(y'(t) = C_2 e^{-2t} - 2(C_1 + C_2 t)e^{-2t} = \\big((C_2 - 2C_1) - 2C_2 t\\big)e^{-2t}\\).<br>\\(y'(0) = C_2 - 2(2) = 1 \\implies C_2 = 5\\).<br>Particular solution: \\[y(t) = (2 + 5t)e^{-2t}.\\]<br><strong>الخطوة ٣: أوجد maximum:</strong> Set \\(y'(t) = 0\\): \\[\\big((5 - 4) - 10t\\big)e^{-2t} = (1 - 10t)e^{-2t} = 0 \\implies 1 - 10t = 0 \\implies t_{\\max} = \\frac{1}{10} = 0.1.\\]<br>Maximum value: \\(y(0.1) = (2 + 0.5)e^{-0.2} = 2.5e^{-0.2} \\approx 2.0468\\).</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Linear First-Order Direction Field",
-        "fn": "-0.5*y + x",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": -2,
-          "y0": 2
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -257,21 +239,12 @@
         "ar": "<p><strong>الخطوة ١: Homogeneous:</strong> \\(r^2 - 4r + 3 = (r - 1)(r - 3) = 0 \\implies y_c = C_1 e^x + C_2 e^{3x}\\).<br><strong>الخطوة ٢: Particular trial form:</strong> Neither \\(2x\\) nor \\(e^{2x}\\) is in \\(y_c\\), so trial is \\(y_p = (Ax + B) + C e^{2x}\\).<br><strong>الخطوة ٣: Match polynomial coefficients:</strong> \\(y_{p1} = Ax + B \\implies y_{p1}' = A, y_{p1}'' = 0\\). \\[0 - 4A + 3(Ax + B) = 3Ax + (3B - 4A) = 2x \\implies 3A = 2 \\implies A = 2/3,\\] \\[3B - 4(2/3) = 0 \\implies 3B = 8/3 \\implies B = 8/9.\\] <strong>الخطوة ٤: Match exponential:</strong> \\(y_{p2} = C e^{2x} \\implies y_{p2}'' - 4y_{p2}' + 3y_{p2} = (4 - 8 + 3)C e^{2x} = -C e^{2x} = e^{2x} \\implies C = -1\\).<br><strong>Step 5: General solution:</strong> \\[y(x) = C_1 e^x + C_2 e^{3x} + \\frac{2}{3}x + \\frac{8}{9} - e^{2x}.\\]</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Direction Field & Integral Curve",
-        "fn": "x - y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": 0,
-          "y0": 1
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -286,21 +259,12 @@
         "ar": "<p><strong>الخطوة ١: Homogeneous:</strong> \\(r^2 + 9 = 0 \\implies y_c = C_1 \\cos 3t + C_2 \\sin 3t\\).<br><strong>الخطوة ٢: Trial with resonance:</strong> Forcing \\(6\\cos 3t\\) matches \\(y_c\\) (multiplicity \\(s=1\\)). Trial: \\[y_p(t) = t(A\\cos 3t + B\\sin 3t).\\] Dإذا كانferentiating و بالتعويض عن: \\[y_p'' + 9y_p = -6A\\sin 3t + 6B\\cos 3t = 6\\cos 3t \\implies B = 1, \\quad A = 0.\\] Thus \\(y_p(t) = t\\sin(3t)\\).<br><strong>الخطوة ٣: Apply initial conditions:</strong> \\(y(t) = C_1 \\cos 3t + C_2 \\sin 3t + t\\sin 3t\\).<br>\\(y(0) = C_1 = 0\\).<br>\\(y'(t) = 3C_2 \\cos 3t + \\sin 3t + 3t\\cos 3t \\implies y'(0) = 3C_2 = 1 \\implies C_2 = 1/3\\).<br><strong>الخطوة ٤: Particular solution:</strong> \\[y(t) = \\frac{1}{3}\\sin(3t) + t\\sin(3t).\\] The term \\(t\\sin(3t)\\) is the secular growth term whose amplitude increases linearly with \\(t\\).</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Autonomous Phase Slope Field",
-        "fn": "y*(2 - y)",
-        "xrange": [
-          -2,
-          4
-        ],
-        "yrange": [
-          -1,
-          3
-        ],
-        "solution": {
-          "x0": 0,
-          "y0": 0.5
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -315,21 +279,12 @@
         "ar": "<p><strong>الخطوة ١: Homogeneous:</strong> \\(r^2 - 6r + 9 = (r - 3)^2 = 0 \\implies y_c(t) = (C_1 + C_2 t)e^{3t}\\).<br><strong>الخطوة ٢: Resonance multiplication:</strong> Both \\(e^{3t}\\) و \\(t e^{3t}\\) are in \\(y_c\\) (multiplicity \\(s = 2\\)). Multiply trial by \\(t^2\\): \\[y_p(t) = A t^2 e^{3t}.\\] Using operator \\((D - 3)^2[A t^2 e^{3t}] = e^{3t} D^2[A t^2] = e^{3t}(2A) = 4e^{3t} \\implies 2A = 4 \\implies A = 2\\).<br>Thus \\(y_p(t) = 2t^2 e^{3t}\\).<br><strong>الخطوة ٣: Initial conditions:</strong> \\(y(t) = (C_1 + C_2 t + 2t^2)e^{3t}\\).<br>\\(y(0) = C_1 = 1\\).<br>\\(y'(t) = (C_2 + 4t)e^{3t} + 3(1 + C_2 t + 2t^2)e^{3t} \\implies y'(0) = C_2 + 3 = 3 \\implies C_2 = 0\\).<br>Particular solution: \\[y(t) = (1 + 2t^2)e^{3t}.\\]</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Linear First-Order Direction Field",
-        "fn": "-0.5*y + x",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": -2,
-          "y0": 2
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -344,21 +299,12 @@
         "ar": "<p><strong>الخطوة ١: Basis & Wronskian:</strong> \\(y_1 = \\cos 2x, \\, y_2 = \\sin 2x\\).<br>\\(W = \\cos 2x(2\\cos 2x) - (-2\\sin 2x)\\sin 2x = 2\\).<br><strong>الخطوة ٢: Parameter integrals:</strong> \\[u_1'(x) = -\\frac{y_2(x)g(x)}{W} = -\\frac{\\sin 2x \\sec 2x}{2} = -\\frac{1}{2}\\tan 2x \\implies u_1(x) = \\frac{1}{4}\\ln|\\cos 2x|.\\] \\[u_2'(x) = \\frac{y_1(x)g(x)}{W} = \\frac{\\cos 2x \\sec 2x}{2} = \\frac{1}{2} \\implies u_2(x) = \\frac{x}{2}.\\] <strong>الخطوة ٣: Particular solution:</strong> \\[y_p(x) = u_1 y_1 + u_2 y_2 = \\frac{1}{4}\\cos(2x)\\ln|\\cos 2x| + \\frac{x}{2}\\sin(2x).\\]</p>"
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "Math.exp(-0.4*x)*Math.cos(2*x)",
-            "label": "y(t)"
-          }
-        ],
-        "xrange": [
-          0,
-          8
-        ],
-        "yrange": [
-          -1.2,
-          1.2
-        ]
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -402,21 +348,12 @@
         "ar": "<p><strong>الخطوة ١: Basis & Wronskian:</strong> \\(y_1(x) = e^x, \\, y_2(x) = e^{-x}\\). \\(W(t) = e^t(-e^{-t}) - e^t(e^{-t}) = -2\\).<br><strong>الخطوة ٢: Green's kernel:</strong> \\[G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t e^{-x} - e^x e^{-t}}{-2} = \\frac{e^{x - t} - e^{-(x - t)}}{2} = \\sinh(x - t).\\] <strong>الخطوة ٣: Integral representation:</strong> \\[y(x) = \\int_0^x \\sinh(x - t) \\cdot \\frac{1}{e^t + 1}\\,dt.\\] Verإذا كانying: \\(G(t, t) = \\sinh(0) = 0\\), و \\(\\left.\\frac{\\partial G}{\\partial x}\\right|_{x=t} = \\cosh(0) = 1\\), satisfying the universal Cauchy impulse properties.</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Direction Field & Integral Curve",
-        "fn": "x - y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": 0,
-          "y0": 1
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {
@@ -431,21 +368,12 @@
         "ar": "<p><strong>الخطوة ١: Transform equation:</strong> \\[(s^2 + 4)Y(s) = \\frac{8e^{-2s}}{s} \\implies Y(s) = 8e^{-2s} \\cdot \\frac{1}{s(s^2 + 4)}.\\] <strong>الخطوة ٢: Partial fractions on transfer حلّل:</strong> \\[\\frac{1}{s(s^2 + 4)} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4} \\implies \\mathcal{L}^{-1}\\left\\{\\frac{8}{s(s^2 + 4)}\\right\\} = 2 - 2\\cos(2t).\\] <strong>الخطوة ٣: Apply Second Shإذا كانt Theorem:</strong> \\[y(t) = u(t - 2)\\big(2 - 2\\cos(2(t - 2))\\big).\\]</p>"
       },
       "fig": {
-        "type": "slope_field",
-        "title": "Direction Field & Integral Curve",
-        "fn": "x - y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": 0,
-          "y0": 1
-        }
+        "type": "sinusoid",
+        "title": "Oscillatory Differential Response",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "cos"
       }
     },
     {

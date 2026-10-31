@@ -39,43 +39,89 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Unit 8 · Applications of Integration — Slope Field & Particular Solution Trajectory",
-          "fn": "cos(x) - 0.5*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 0.5
-          }
+          "type": "fn",
+          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -1,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 4 − x²/4"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = 0"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 4,
+              "label": "a = 0"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "b = 4"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
+          "ar": "منحنى المكامل غير السالب \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) على الفترة \\([0, 4]\\) لحساب المساحة المتراكمة في الوحدة ٨ · تطبيقات التكامل (المساحات والحجوم)."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "fns": [
-            "x**2 + 2"
-          ],
-          "xlim": [
+          "title": "Area Enclosed Between Intersecting Curves f(x) and g(x)",
+          "xrange": [
             -1,
-            4
+            5
           ],
-          "ylim": [
-            0,
-            12
+          "yrange": [
+            -1,
+            7
           ],
-          "points": []
+          "fns": [
+            {
+              "fn": "4*x - 0.8*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "Upper f(x)"
+            },
+            {
+              "fn": "0.8*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Lower g(x)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 4,
+              "y": 3.2,
+              "label": "(4, 3.2)"
+            }
+          ]
         },
         "caption": {
-          "en": "Unit 8 · Applications of Integration — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 8 · Applications of Integration.",
-          "ar": "Unit 8 · Applications of Integration — Mathematical المخطط (2) — illustrating key geometric and analytical relationships in Unit 8 · Applications of Integration."
+          "en": "Region bounded between upper curve \\(f(x)\\) and lower line \\(g(x)\\) from \\(x = 0\\) to \\(x = 4\\).",
+          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x)\\) والمستقيم السفلي \\(g(x)\\) من \\(x = 0\\) إلى \\(x = 4\\) في الوحدة ٨ · تطبيقات التكامل (المساحات والحجوم)."
         }
       },
       {

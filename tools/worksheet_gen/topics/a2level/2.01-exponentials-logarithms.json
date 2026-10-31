@@ -55,31 +55,23 @@
           "answer": "$\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2$. Parabola through origin, scaled by 3.",
           "explanation": "$\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2$. Parabola through origin, scaled by 3.",
           "figure": {
-            "type": "plot",
+            "type": "fn",
+            "title": "Logarithmic Curve & Domain (x > 0)",
+            "xrange": [
+              -1,
+              7
+            ],
+            "yrange": [
+              -3,
+              4
+            ],
             "fns": [
-              "2**(0.52*x) + (-1)",
-              "log(x - (-4)) + 0.5"
-            ],
-            "xmin": -3.9,
-            "xmax": 4.5,
-            "ymin": -2.5,
-            "ymax": 7,
-            "asymptotes": {
-              "x": [
-                -4
-              ],
-              "y": [
-                -1
-              ]
-            },
-            "point_labels": [
               {
-                "x": 0,
-                "y": 0,
-                "label": "$(0, 0)$"
+                "fn": "Math.log(x)",
+                "color": "var(--fig-indigo)",
+                "label": "y = ln(x)"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
@@ -206,33 +198,19 @@
           "answer": "Multiply by conjugate: $\\frac{(3+4i)(1+2i)}{(1-2i)(1+2i)}=\\frac{3+6i+4i-8}{1+4}=\\frac{-5+10i}{5}=-1+2i$.",
           "explanation": "Multiply by conjugate: $\\frac{(3+4i)(1+2i)}{(1-2i)(1+2i)}=\\frac{3+6i+4i-8}{1+4}=\\frac{-5+10i}{5}=-1+2i$.",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
-            ],
-            "yrange": [
-              -5,
-              7
-            ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-2)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "1*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
+            "type": "argand",
+            "title": "Complex Argand Plane",
             "points": [
               {
-                "x": 0,
-                "y": -2,
-                "label": "(0, -2)"
+                "re": 3,
+                "im": 2,
+                "label": "z₁",
+                "arcLabel": "θ"
+              },
+              {
+                "re": -2,
+                "im": 3,
+                "label": "z₂"
               }
             ]
           }

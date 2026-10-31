@@ -733,27 +733,53 @@ D["tah-functions"] = [
   },
   {
     "t": "fn",
-    "ti": "Explorer: Exponential and Logarithm \\(y=2^x\\) & \\(y=\\log_2x\\)",
-    "ti_ar": "مستكشف: الدالة الأسية واللوغاريتمية \\(y=2^x\\) و\\(y=\\log_2x\\)",
+    "ti": "Explorer: Rational Function & Asymptotes \\(f(x)=\\dfrac{a}{x-h}+k\\)",
+    "ti_ar": "مستكشف: الدالة النسبية وخطوط التقارب \\(f(x)=\\dfrac{a}{x-h}+k\\)",
     "fns": [
       {
-        "expr": "2^x",
+        "expr": "a/(x-h)+k",
         "color": "#1E3A6E",
-        "label": "2^x"
+        "label": "a/(x-h)+k"
       },
       {
-        "expr": "ln(x)/ln(2)",
+        "expr": "k",
         "color": "#B8801F",
-        "label": "log2(x)"
+        "label": "y = k"
       }
     ],
     "xrange": [
-      -4,
+      -6,
       6
     ],
     "yrange": [
-      -4,
-      8
+      -6,
+      6
+    ],
+    "params": [
+      {
+        "name": "a",
+        "label": "Numerator scale a",
+        "min": -3,
+        "max": 3,
+        "step": 0.5,
+        "default": 2
+      },
+      {
+        "name": "h",
+        "label": "Vertical asymptote h",
+        "min": -3,
+        "max": 3,
+        "step": 1,
+        "default": 1
+      },
+      {
+        "name": "k",
+        "label": "Horizontal asymptote k",
+        "min": -3,
+        "max": 3,
+        "step": 1,
+        "default": 1
+      }
     ]
   },
   {

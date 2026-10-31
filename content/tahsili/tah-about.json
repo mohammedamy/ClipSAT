@@ -169,113 +169,144 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "conic_section",
-          "subtype": "ellipse",
-          "a": 5,
-          "b": 3,
-          "title": "SAAT Tahsili Pathways Focus (50% Year 3 · 30% Year 2 · 20% Year 1)"
+          "type": "bar",
+          "title": "Syllabus Topic Weight Distribution (%)",
+          "data": [
+            {
+              "label": "Core I",
+              "val": 30
+            },
+            {
+              "label": "Core II",
+              "val": 28
+            },
+            {
+              "label": "Applied III",
+              "val": 24
+            },
+            {
+              "label": "Synthesis IV",
+              "val": 18
+            }
+          ]
         },
         "caption": {
-          "en": "Year 3 Secondary topics (Conic Sections, Vectors, Polar Coordinates, Normal Distribution & Calculus) represent 50% of the SAAT Tahsili exam.",
-          "ar": "تمثل موضوعات الصف الثالث الثانوي (القطوع المخروطية، المتجهات، الإحداثيات القطبية، التوزيع الطبيعي، والتفاضل والتكامل) ٥٠٪ من أسئلة الاختبار التحصيلي."
+          "en": "Relative exam domain weightings across core syllabus units in Test format & strategy.",
+          "ar": "التوزيع النسبي لأوزان وحدات المنهج الأساسية في شكل الاختبار والاستراتيجية."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Mathematical Logic & Conditionals Truth Lab (مختبر المنطق الرياضي والعبارات الشرطية)",
-          "ar": "⊙ مستكشف تفاعلي · مختبر المنطق الرياضي والعبارات الشرطية المترابطة (رياضيات ١)"
+          "en": "⊙ Explorer · SAAT Tahsili Weighted Admission Composite Lab (30% GPA · 30% Qudrat · 40% Tahsili)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر النسبة الموزونة للقبول الجامعي (٣٠٪ ثانوي · ٣٠٪ قدرات · ٤٠٪ تحصيلي)"
         },
-        "canvasId": "tahLogicCanvas",
+        "canvasId": "tahScoreCanvas",
         "ariaLabel": {
-          "en": "Interactive truth table explorer for conditional, converse, inverse, and contrapositive statements",
-          "ar": "مستكشف تفاعلي لقيم الصواب للعبارة الشرطية والعكس والمعكوس والمعاكس الإيجابي"
+          "en": "Interactive bar chart and slider calculator for the Saudi university weighted admission composite: 30% High School GPA, 30% GAT Qudrat, and 40% SAAT Tahsili",
+          "ar": "رسم بياني وحاسبة تفاعلية للنسبة الموزونة للقبول الجامعي: ٣٠٪ المعدل التراكمي للثانوية، ٣٠٪ القدرات العامة، و٤٠٪ الاختبار التحصيلي"
         },
         "dataPanel": {
-          "btnId": "tahLogDataBtn",
-          "panelId": "tahLogDataPanel",
-          "descId": "tahLogDataDesc",
-          "rowsId": "tahLogDataRows",
+          "btnId": "tahScoreDataBtn",
+          "panelId": "tahScoreDataPanel",
+          "descId": "tahScoreDataDesc",
+          "rowsId": "tahScoreDataRows",
           "caption": {
-            "en": "Logical equivalence between Conditional (\\(p \\to q\\)) and Contrapositive (~q → ~p), and between Converse (\\(q \\to p\\)) and Inverse (~p → ~q)",
-            "ar": "التكافؤ المنطقي بين الشرطية (p → q) والمعاكس الإيجابي (~q → ~p)، وبين العكس (q → p) والمعكوس (~p → ~q)"
+            "en": "Weighted contribution of High School GPA (30%), GAT Qudrat (30%), and SAAT Tahsili (40%) toward the university admission composite.",
+            "ar": "مساهمة كل من معدل الثانوية العامة (٣٠٪) والقدرات العامة (٣٠٪) والاختبار التحصيلي (٤٠٪) في النسبة الموزونة للقبول الجامعي."
           },
           "columns": [
             {
-              "en": "Statement Type",
-              "ar": "نوع العبارة المنطقية"
+              "en": "Admission Component",
+              "ar": "مكوّن القبول"
             },
             {
-              "en": "Truth Value",
-              "ar": "قيمة الصواب"
+              "en": "Weighted Points",
+              "ar": "النقاط الموزونة"
             }
           ]
         },
         "controls": [
           {
-            "id": "tahLogP",
-            "valueDisplayId": "tahLogPV",
+            "id": "tahScoreGpa",
+            "valueDisplayId": "tahScoreGpaV",
             "label": {
-              "en": "Hypothesis <b>\\(p (0/1) =\\)</b>",
-              "ar": "الفرض <b>p (0/1) =</b>"
+              "en": "High School GPA (30%) =",
+              "ar": "معدل الثانوية العامة (٣٠٪) ="
             },
             "ariaLabel": {
-              "en": "Truth value of hypothesis p",
-              "ar": "قيمة صواب الفرض p"
+              "en": "High School GPA percentage from 50 to 100",
+              "ar": "نسبة الثانوية العامة من 50 إلى 100"
             },
-            "min": 0,
-            "max": 1,
-            "value": 1,
+            "min": 50,
+            "max": 100,
+            "value": 95,
             "step": 1
           },
           {
-            "id": "tahLogQ",
-            "valueDisplayId": "tahLogQV",
+            "id": "tahScoreQud",
+            "valueDisplayId": "tahScoreQudV",
             "label": {
-              "en": "Conclusion <b>\\(q (0/1) =\\)</b>",
-              "ar": "النتيجة <b>q (0/1) =</b>"
+              "en": "GAT Qudrat Score (30%) =",
+              "ar": "درجة القدرات العامة (٣٠٪) ="
             },
             "ariaLabel": {
-              "en": "Truth value of conclusion q",
-              "ar": "قيمة صواب النتيجة q"
+              "en": "GAT Qudrat score from 50 to 100",
+              "ar": "درجة اختبار القدرات العامة من 50 إلى 100"
             },
-            "min": 0,
-            "max": 1,
-            "value": 0,
+            "min": 50,
+            "max": 100,
+            "value": 88,
+            "step": 1
+          },
+          {
+            "id": "tahScoreTah",
+            "valueDisplayId": "tahScoreTahV",
+            "label": {
+              "en": "SAAT Tahsili Score (40%) =",
+              "ar": "درجة الاختبار التحصيلي (٤٠٪) ="
+            },
+            "ariaLabel": {
+              "en": "SAAT Tahsili score from 50 to 100",
+              "ar": "درجة الاختبار التحصيلي من 50 إلى 100"
+            },
+            "min": 50,
+            "max": 100,
+            "value": 90,
             "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "tahLogCond",
+            "id": "tahScoreComp",
             "label": {
-              "en": "Conditional (\\(p \\to q\\))",
-              "ar": "العبارة الشرطية (p → q)"
+              "en": "Weighted Composite",
+              "ar": "النسبة الموزونة الكلية"
             },
             "colorClass": "indigo",
-            "value": "\\(F\\) (خاطئة)"
+            "value": "90.90%"
           },
           {
-            "id": "tahLogCont",
+            "id": "tahScoreTahPts",
             "label": {
-              "en": "Contrapositive (~q → ~p)",
-              "ar": "المعاكس الإيجابي (~q → ~p)"
+              "en": "Tahsili Share (40%)",
+              "ar": "نصيب التحصيلي (٤٠٪)"
             },
             "colorClass": "amber",
-            "value": "\\(F\\) (خاطئة)"
+            "value": "36.00 / 40"
           },
           {
-            "id": "tahLogConv",
+            "id": "tahScoreTier",
             "label": {
-              "en": "Converse (\\(q \\to p\\)) ≡ Inverse",
-              "ar": "العكس (q → p) ≡ المعكوس"
+              "en": "Admission Competitiveness",
+              "ar": "مستوى التنافسية"
             },
-            "value": "\\(T\\) (صائبة)"
+            "value": "Competitive Engineering Tier"
           }
         ],
         "note": {
-          "en": "High-Frequency Tahsili Rule (Year 1): A conditional (\\(p o q\\)) is FALSE only when (\\(p\\)) is True and (\\(q\\)) is False. The Conditional (\\(p o q\\)) and its Contrapositive (sim \\(q o\\) sim \\(p\\)) are always logically equivalent.",
-          "ar": "قاعدة متكررة جداً في التحصيلي (أول ثانوي): العبارة الشرطية (p \to q) تكون خاطئة في حالة واحدة فقط هي عندما يكون الفرض (p) صائباً والنتيجة (q) خاطئة. والعبارة الشرطية (p \to q) تكافئ منطقياً معاكسها الإيجابي (sim q \to sim p) دائماً."
+          "en": "In standard Saudi STEM & Medical university admissions, SAAT Tahsili carries the single largest weight (\\(40\\%\\)): raising your Tahsili score by \\(10\\) points boosts your overall composite by \\(+4.0\\%\\). Drag the bars directly or adjust the sliders to test target scenarios.",
+          "ar": "في معادلة القبول الجامعي للتخصصات العلمية والصحية والهندسية، يمتلك الاختبار التحصيلي الوزن الأكبر منفرداً (\\(40\\%\\)): فرفع درجة التحصيلي بمقدار \\(10\\) درجات يرفع النسبة الموزونة الكلية بمقدار \\(+4.0\\%\\). اسحب الأعمدة مباشرةً أو حرّك المنزلقات لتجربة أهدافك."
         }
       },
       {

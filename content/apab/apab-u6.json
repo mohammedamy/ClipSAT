@@ -40,42 +40,89 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "slope_field",
-          "title": "Unit 6 · Integration and Accumulation of Change — Slope Field & Particular Solution Trajectory",
-          "fn": "x*x/4 - 0.5*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "solution": {
-            "x0": -1,
-            "y0": 1
-          }
+          "type": "fn",
+          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -1,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "4 - 0.25*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 4 − x²/4"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = 0"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 4,
+              "label": "a = 0"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "b = 4"
+            }
+          ]
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "الميل field for \\(\\frac{dy}{dx} = x -y\\) with the التكامل curve passing through initial condition \\((0, 1)\\)."
+          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
+          "ar": "منحنى المكامل غير السالب \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) على الفترة \\([0, 4]\\) لحساب المساحة المتراكمة في الوحدة ٦ · التكامل وتراكم التغير."
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "numberline",
-          "min": 0,
-          "max": 7,
-          "marks": [
-            3,
-            6
+          "type": "fn",
+          "title": "Area Enclosed Between Intersecting Curves f(x) and g(x)",
+          "xrange": [
+            -1,
+            5
           ],
-          "range": [
-            3,
-            6
+          "yrange": [
+            -1,
+            7
           ],
-          "closed": true
+          "fns": [
+            {
+              "fn": "4*x - 0.8*x*x",
+              "color": "var(--fig-indigo)",
+              "label": "Upper f(x)"
+            },
+            {
+              "fn": "0.8*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Lower g(x)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 4,
+              "y": 3.2,
+              "label": "(4, 3.2)"
+            }
+          ]
         },
         "caption": {
-          "en": "Unit 6 · Integration and Accumulation of Change — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 6 · Integration and Accumulation of Change.",
-          "ar": "Unit 6 · Integration and Accumulation of Change — Mathematical المخطط (2) — illustrating key geometric and analytical relationships in Unit 6 · Integration and Accumulation of Change."
+          "en": "Region bounded between upper curve \\(f(x)\\) and lower line \\(g(x)\\) from \\(x = 0\\) to \\(x = 4\\).",
+          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x)\\) والمستقيم السفلي \\(g(x)\\) من \\(x = 0\\) إلى \\(x = 4\\) في الوحدة ٦ · التكامل وتراكم التغير."
         }
       },
       {
@@ -370,16 +417,6 @@
         "note": {
           "en": "As \\(n\\) increases, the Riemann sum converges toward the exact definite integral. For an increasing function, Left sums underestimate while Right sums overestimate.",
           "ar": "As \\(n\\) increases, the Riemann sum converges toward the exact definite التكامل. For an increasing الدالة, Left sums underestimate while Right sums overestimate."
-        },
-        "canvas3d": {
-          "btnId": "exAuto3dBtn_surf_apabu6",
-          "wrapId": "exAuto3dWrap_apabu6",
-          "hintId": "exAuto3dHint_apabu6",
-          "btnLabel": "🧊 View Interactive 3D Model",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Unit 6 · Integration and Accumulation of Change. Drag to rotate.",
-            "ar": "تمثيل ثلاثي الأبعاد تفاعلي لـ Unit 6 · Integration and Accumulation of Change. اسحب للتدوير."
-          }
         }
       },
       {
