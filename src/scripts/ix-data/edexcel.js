@@ -1975,183 +1975,184 @@ D["edx-calculus-kinematics"] = [
   },
   {
     "t": "tf",
-    "ti": "True / False: Continuity, Derivatives & Concavity Criteria (Differentiation, Turning Points & Kinematics)",
-    "ti_ar": "صح أم خطأ: شروط الاتصال والاشتقاق والتقعر (التفاضل والنقاط الحرجة وتطبيقات الحركة المستقيمة)",
+    "ti": "True / False: Power-Rule Differentiation, Turning Points & Kinematics",
+    "ti_ar": "صح أم خطأ: اشتقاق قوى x والنقاط الحرجة والحركة المستقيمة",
     "items": [
       {
-        "s": "Continuity of \\(f\\) at \\(x = a\\) corresponds to \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\).",
+        "s": "To differentiate \\(y = \\dfrac{4}{x^2}\\), rewrite as \\(4x^{-2}\\) so \\(\\dfrac{dy}{dx} = -8x^{-3}\\).",
+        "s_ar": "لاشتقاق \\(y = \\dfrac{4}{x^2}\\) نكتبها \\(4x^{-2}\\) فتكون المشتقة \\(-8x^{-3}\\).",
         "a": true,
-        "ex": "Verified identity: \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)."
+        "ex": "Multiply by power \\(-2\\) and subtract \\(1\\) from the exponent: \\(-2 \\to -3\\).",
+        "ex_ar": "نضرب في الأس \\(-2\\) ونطرح \\(1\\) من الأس ليصبح \\(-3\\)."
       },
       {
-        "s": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\) corresponds to \\(f'(c) = 0\\) and \\(f''(c) > 0\\).",
+        "s": "A particle with displacement \\(s(t)\\) is instantaneously at rest whenever acceleration \\(a(t) = 0\\).",
+        "s_ar": "يسكن الجسيم لحظياً عندما ينعدم التسارع \\(a(t) = 0\\).",
         "a": false,
-        "ex": "Actually, Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\) corresponds to \\(f'(g(x)) \\cdot g'(x)\\)."
+        "ex": "Instantaneous rest occurs when velocity \\(v(t) = ds/dt = 0\\), not when \\(a(t) = 0\\).",
+        "ex_ar": "يحدث السكون اللحظي عند انعدام السرعة \\(v(t) = ds/dt = 0\\) وليس عند انعدام التسارع."
       },
       {
-        "s": "Newton–Raphson step corresponds to \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\).",
+        "s": "At a local maximum turning point, \\(\\dfrac{dy}{dx} = 0\\) and the gradient changes from positive to negative.",
+        "s_ar": "عند نقطة النهاية العظمى المحلية يكون \\(\\dfrac{dy}{dx} = 0\\) ويتغير الميل من موجب إلى سالب.",
         "a": true,
-        "ex": "Correct: \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)."
-      }
-    ],
-    "items_ar": [
-      {
-        "s": "شرط اتصال \\(f\\) عند \\(x = a\\) يكافئ \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\).",
-        "a": true,
-        "ex": "علاقة صحيحة: \\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)."
-      },
-      {
-        "s": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\) يكافئ \\(f'(c) = 0\\) و\\(f''(c) > 0\\).",
-        "a": false,
-        "ex": "الصواب أن قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\) يكافئ \\(f'(g(x)) \\cdot g'(x)\\)."
-      },
-      {
-        "s": "تكرار نيوتن–رافسون العددي يكافئ \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\).",
-        "a": true,
-        "ex": "صحيح: \\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)."
+        "ex": "Rising then stationary then falling characterizes a local maximum.",
+        "ex_ar": "تزايد الدالة ثم سكونها ثم تناقصها يحدد النهاية العظمى المحلية."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Differentiation, Turning Points & Kinematics)",
-    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (التفاضل والنقاط الحرجة وتطبيقات الحركة المستقيمة)",
+    "ti": "Matching: IGCSE Differentiation & Kinematics Relationships",
+    "ti_ar": "مطابقة: قواعد التفاضل وعلاقات الحركة المستقيمة (IGCSE)",
     "p": [
       {
-        "l": "Continuity of \\(f\\) at \\(x = a\\)",
-        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
+        "l": "Derivative of \\(y = ax^n\\)",
+        "r": "\\(\\dfrac{dy}{dx} = anx^{n-1}\\)"
       },
       {
-        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
+        "l": "Stationary turning point condition",
+        "r": "\\(\\dfrac{dy}{dx} = 0\\)"
       },
       {
-        "l": "Strict local minimum test",
-        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
+        "l": "Velocity \\(v(t)\\) from displacement \\(s(t)\\)",
+        "r": "\\(v = \\dfrac{ds}{dt}\\)"
       },
       {
-        "l": "Newton–Raphson step",
-        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
+        "l": "Acceleration \\(a(t)\\) from velocity \\(v(t)\\)",
+        "r": "\\(a = \\dfrac{dv}{dt}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
-        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
+        "l": "مشتقة \\(y = ax^n\\)",
+        "r": "\\(\\dfrac{dy}{dx} = anx^{n-1}\\)"
       },
       {
-        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
+        "l": "شرط النقطة الحرجة (نقطة التحول)",
+        "r": "\\(\\dfrac{dy}{dx} = 0\\)"
       },
       {
-        "l": "اختبار النهاية الصغرى المحلية",
-        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
+        "l": "السرعة \\(v(t)\\) من دالة الإزاحة \\(s(t)\\)",
+        "r": "\\(v = \\dfrac{ds}{dt}\\)"
       },
       {
-        "l": "تكرار نيوتن–رافسون العددي",
-        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
+        "l": "التسارع \\(a(t)\\) من دالة السرعة \\(v(t)\\)",
+        "r": "\\(a = \\dfrac{dv}{dt}\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Differentiation, Turning Points & Kinematics)",
-    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (التفاضل والنقاط الحرجة وتطبيقات الحركة المستقيمة)",
-    "q": "A student differentiates \\(f(x) = x^2 e^{2x}\\). Which step omits a required calculus rule?",
-    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{2x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
+    "ti": "Spot the Error: Differentiating Negative Powers of x",
+    "ti_ar": "اكتشف الخطأ: اشتقاق القوى السالبة لـ x",
+    "q": "A student differentiates \\(y = 3x^2 - \\dfrac{6}{x}\\). Which step contains an error?",
+    "q_ar": "يشتق طالب الدالة \\(y = 3x^2 - \\dfrac{6}{x}\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{2x}\\).",
-      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 2 e^{2x}\\) via the Chain Rule.",
-      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 4x e^{2x}\\) instead of \\(u'v + uv'\\)."
+      "Rewrite \\(-\\dfrac{6}{x}\\) in index form as \\(-6x^{-1}\\).",
+      "Differentiate \\(3x^2\\) to obtain \\(6x\\).",
+      "Differentiate \\(-6x^{-1}\\) by multiplying \\((-6)(-1) = +6\\) and changing exponent \\(-1\\) to \\(0\\), writing \\(+6x^0 = 6\\).",
+      "Combine terms as \\(\\dfrac{dy}{dx} = 6x + 6\\)."
     ],
     "steps_ar": [
-      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{2x}\\).",
-      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 2 e^{2x}\\) بقاعدة السلسلة.",
-      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+      "إعادة كتابة \\(-\\dfrac{6}{x}\\) بالصورة الأسية \\(-6x^{-1}\\).",
+      "اشتقاق \\(3x^2\\) للحصول على \\(6x\\).",
+      "اشتقاق \\(-6x^{-1}\\) بضرب المعاملات وزيادة الأس من \\(-1\\) إلى \\(0\\) ليكتب \\(+6\\).",
+      "كتابة الناتج \\(\\dfrac{dy}{dx} = 6x + 6\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{2x} + 2x^2 e^{2x} = x(2 + 2x)e^{2x}\\).",
-      "The derivative of \\(e^{2x}\\) is \\(e^{2x}\\) without factor \\(2\\).",
-      "\\((uv)' = u'v - uv'\\)."
+      "Subtracting \\(1\\) from exponent \\(-1\\) gives \\(-1 - 1 = -2\\), so \\(\\frac{d}{dx}(-6x^{-1}) = +6x^{-2} = \\frac{6}{x^2}\\).",
+      "\\(-\\dfrac{6}{x}\\) rewrites as \\(-6x^{+1}\\).",
+      "The derivative of \\(3x^2\\) is \\(3x\\)."
     ],
     "reasons_ar": [
-      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 2x)e^{2x}\\).",
-      "مشتقة \\(e^{2x}\\) لا تُضرب في \\(2\\).",
-      "قاعدة الضرب تتضمن طرح الحدين."
+      "طرح \\(1\\) من الأس \\(-1\\) يعطي \\(-2\\)، لذا فالمشتقة هي \\(+6x^{-2} = \\frac{6}{x^2}\\).",
+      "تُكتب \\(-\\dfrac{6}{x}\\) على الصورة \\(-6x^{+1}\\).",
+      "مشتقة \\(3x^2\\) هي \\(3x\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Differentiation, Turning Points & Kinematics)",
-    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (التفاضل والنقاط الحرجة وتطبيقات الحركة المستقيمة)",
-    "q": "(a) Evaluate \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 4x\\) at \\(x = 1\\).",
-    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 4x\\) عند \\(x = 1\\).",
+    "ti": "Examiner Mode: Stationary Turning Points & Particle Kinematics",
+    "ti_ar": "وضع المصحح: النقاط الحرجة وحركة الجسيم على خط مستقيم",
+    "q": "A particle moves along a straight line with displacement \\(s = t^3 - 6t^2 + 9t + 4\\) metres at \\(t \\ge 0\\) seconds. (a) Find the times when the particle is instantaneously at rest. (b) Find the acceleration at \\(t = 4\\text{ s}\\).",
+    "q_ar": "يتحرك جسيم بحيث إزاحته \\(s = t^3 - 6t^2 + 9t + 4\\) متر عند \\(t \\ge 0\\). (أ) أوجد اللحظتين اللتين يسكن فيهما الجسيم لحظياً. (ب) أوجد التسارع عند \\(t = 4\\).",
     "parts": [
       {
-        "label": "Part (a) — Resolving 0/0 Limit",
-        "marks": 2,
+        "label": "Part (a) — Velocity v = ds/dt = 0",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Factor \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\) for \\(x \\neq 2\\)."
+            "text": "Differentiate: \\(v = \\dfrac{ds}{dt} = 3t^2 - 12t + 9\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(3(t - 1)(t - 3) = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Evaluate limit as \\(x \\to 2\\): \\(4\\)."
+            "text": "\\(t = 1\\text{ s}\\) and \\(t = 3\\text{ s}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Derivative & Tangent Equation",
+        "label": "Part (b) — Acceleration a = dv/dt",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(1) = 7\\)."
+            "text": "Differentiate velocity: \\(a = \\dfrac{dv}{dt} = 6t - 12\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "With \\(g(1) = 5\\), tangent is \\(y - 5 = 7(x - 1)\\)."
+            "text": "At \\(t = 4\\), \\(a = 24 - 12 = 12\\text{ m/s}^2\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
-        "marks": 2,
+        "label": "الجزء (أ) — انعدام السرعة v = ds/dt = 0",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "التحليل والاختصار \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\)."
+            "text": "الاشتقاق: \\(v = 3t^2 - 12t + 9\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "التحليل: \\(3(t - 1)(t - 3) = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "قيمة النهاية عند \\(x \\to 2\\) تساوي \\(4\\)."
+            "text": "\\(t = 1\\text{ s}\\) و\\(t = 3\\text{ s}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "label": "الجزء (ب) — حساب التسارع a = dv/dt",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(1) = 7\\)."
+            "text": "اشتقاق السرعة: \\(a = 6t - 12\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "معادلة المماس: \\(y - 5 = 7(x - 1)\\)."
+            "text": "عند \\(t = 4\\) يكون التسارع \\(12\\text{ m/s}^2\\)."
           }
         ]
       }
@@ -2159,40 +2160,40 @@ D["edx-calculus-kinematics"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Differentiation, Turning Points & Kinematics)",
-    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (التفاضل والنقاط الحرجة وتطبيقات الحركة المستقيمة)",
+    "ti": "Step Builder: Gradient & Tangent Equation to a Cubic Curve",
+    "ti_ar": "بناء الخطوات: ميل المماس ومعادلته لمنحنى تكعيبي",
     "steps": [
       {
-        "l": "Evaluate \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
-        "a": "4",
-        "h": "Factor as (x − 2)(x + 2) and substitute x = 2."
+        "l": "For \\(y = x^3 - 4x + 1\\), evaluate \\(\\dfrac{dy}{dx} = 3x^2 - 4\\) at \\(x = 2\\):",
+        "a": "8",
+        "h": "\\(3(4) - 4 = 8\\)"
       },
       {
-        "l": "For \\(g(x) = x^3 + 4x\\), evaluate \\(g(1) =\\)",
-        "a": "5",
-        "h": "Compute 1 + 4."
+        "l": "Find the \\(y\\)-coordinate on the curve at \\(x = 2\\):",
+        "a": "1",
+        "h": "\\(8 - 8 + 1 = 1\\)"
       },
       {
-        "l": "Evaluate instantaneous slope \\(g'(1) = 3(1)^2 + 4 =\\)",
-        "a": "7",
-        "h": "Compute 3 + 4."
+        "l": "Find \\(c\\) in the tangent line \\(y = 8x + c\\) through \\((2, 1)\\):",
+        "a": "-15",
+        "h": "\\(1 = 16 + c \\implies c = -15\\)"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب النهاية \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
-        "a": "4",
-        "h": "حلّل البسط واختصر ثم عوّض x = 2."
+        "l": "للمنحنى \\(y = x^3 - 4x + 1\\)، احسب الميل \\(3x^2 - 4\\) عند \\(x = 2\\):",
+        "a": "8",
+        "h": "\\(3(4) - 4 = 8\\)"
       },
       {
-        "l": "للدالة \\(g(x) = x^3 + 4x\\)، احسب \\(g(1) =\\)",
-        "a": "5",
-        "h": "احسب 1 + 4."
+        "l": "أوجد الإحداثي \\(y\\) عند \\(x = 2\\):",
+        "a": "1",
+        "h": "\\(8 - 8 + 1 = 1\\)"
       },
       {
-        "l": "احسب ميل المماس \\(g'(1) = 3(1)^2 + 4 =\\)",
-        "a": "7",
-        "h": "احسب 3 + 4."
+        "l": "أوجد المقطع \\(c\\) لمعادلة المماس \\(y = 8x + c\\) المار بـ \\((2, 1)\\):",
+        "a": "-15",
+        "h": "\\(1 - 16 = -15\\)"
       }
     ]
   },
@@ -2339,144 +2340,156 @@ D["edx-stats-probability"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Histograms, Cumulative Frequency & Tree Diagrams)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (المدرجات التكرارية والتكرار المتجمع الصاعد وشجرة الاحتمالات)",
+    "ti": "Matching: Center, Spread, Skewness & Rescaling Laws",
+    "ti_ar": "مطابقة: مقاييس النزعة والتشتت والالتواء والتحويل الخطي",
     "p": [
       {
-        "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "Right-skewed distribution relationship",
+        "r": "Mean is pulled above the median (\\(\\bar{x} > \\text{median}\\))"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Tukey outlier criterion",
+        "r": "Below \\(Q_1 - 1.5\\,\\text{IQR}\\) or above \\(Q_3 + 1.5\\,\\text{IQR}\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "Effect of \\(y = ax + b\\) on standard deviation",
+        "r": "\\(s_y = |a|\\, s_x\\) (shift \\(b\\) cancels out)"
       },
       {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Histogram with unequal class widths",
+        "r": "Bar height plots Frequency Density \\(= \\text{Frequency} / \\text{Class Width}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "التوزيع الملتوي لليمين (موجب الالتواء)",
+        "r": "ينجذب المتوسط فوق الوسيط (\\(\\bar{x} > \\text{الوسيط}\\))"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "قاعدة القيم المتطرفة الربيعية",
+        "r": "أقل من \\(Q_1 - 1.5\\,\\text{IQR}\\) أو أكبر من \\(Q_3 + 1.5\\,\\text{IQR}\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "أثر التحويل \\(y = ax + b\\) على الانحراف المعياري",
+        "r": "\\(s_y = |a|\\, s_x\\) (لا يتأثر بالإزاحة \\(b\\))"
       },
       {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "المدرج التكراري غير متساوي الفئات",
+        "r": "يمثل الارتفاع كثافة التكرار \\(= \\text{التكرار} \\div \\text{طول الفئة}\\)"
       }
     ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Histograms, Cumulative Frequency & Tree Diagrams)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (المدرجات التكرارية والتكرار المتجمع الصاعد وشجرة الاحتمالات)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 6\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 6\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 6 = -1\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 6 = -1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 6 = 11\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 11\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Histograms, Cumulative Frequency & Tree Diagrams)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (المدرجات التكرارية والتكرار المتجمع الصاعد وشجرة الاحتمالات)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 30\\). For a simple random sample of size \\(n = 100\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 6\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 30\\). لعينة عشوائية حجمها \\(n = 100\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{30}{\\sqrt{100}} = \\dfrac{30}{10} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(5) + 6 = 26\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{30}{\\sqrt{100}} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(5) + 6 = 26\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -2484,40 +2497,40 @@ D["edx-stats-probability"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Histograms, Cumulative Frequency & Tree Diagrams)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (المدرجات التكرارية والتكرار المتجمع الصاعد وشجرة الاحتمالات)",
+    "ti": "Step Builder: Addition Rule, Conditional Probability & Complement Trick",
+    "ti_ar": "بناء الخطوات: قاعدة الجمع والاحتمال الشرطي ومتممة «واحد على الأقل»",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 100\\):",
-        "a": "10",
-        "h": "Square root of 100."
+        "l": "If \\(P(A) = 0.45\\), \\(P(B) = 0.35\\), and \\(P(A \\cap B) = 0.14\\), then \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 30\\):",
-        "a": "3",
-        "h": "Divide 30 by 10."
+        "l": "Using the same probabilities, conditional probability \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} =\\)",
+        "a": "0.4",
+        "h": "0.14 / 0.35 = 0.4"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 6\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "11",
-        "h": "Add 5 + 6."
+        "l": "A fair coin is tossed \\(3\\) times; \\(P(\\text{at least one Head}) = 1 - (0.5)^3 =\\)",
+        "a": "0.875",
+        "h": "1 - 0.125 = 0.875"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 100\\):",
-        "a": "10",
-        "h": "الجذر التربيعي للعدد 100."
+        "l": "إذا كان \\(P(A) = 0.45\\) و\\(P(B) = 0.35\\) و\\(P(A \\cap B) = 0.14\\)، فإن \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 30\\):",
-        "a": "3",
-        "h": "اقسم 30 على 10."
+        "l": "الاحتمال الشرطي \\(P(A \\mid B) = \\dfrac{0.14}{0.35} =\\)",
+        "a": "0.4",
+        "h": "0.14 ÷ 0.35"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "11",
-        "h": "اجمع 5 + 6."
+        "l": "عند رمي قطعة نقد متزنة \\(3\\) مرات، \\(P(\\text{صورة واحدة على الأقل}) =\\)",
+        "a": "0.875",
+        "h": "1 - 1/8 = 0.875"
       }
     ]
   },
@@ -2535,24 +2548,22 @@ D["edx-stats-probability"] = [
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Significance Hypothesis Test (Histograms, Cumulative Frequency & Tree Diagrams)",
-    "ti_ar": "ترتيب الخطوات: إجراء اختبار الفروض الإحصائية (المدرجات التكرارية والتكرار المتجمع الصاعد وشجرة الاحتمالات)",
-    "prompt": "Place the four standard stages of a statistical significance test in logical order:",
-    "prompt_ar": "رتّب المراحل الأربع لاختبار الدلالة الإحصائية ترتيباً منطقياً:",
+    "ti": "Order the Steps: Estimating Interquartile Range from a Cumulative Frequency Curve",
+    "ti_ar": "رتّب الخطوات: تقدير المدى الربيعي من منحنى التكرار المتجمع الصاعد",
+    "q": "Arrange the steps in order to construct a cumulative frequency graph for \\(N = 80\\) observations and read the IQR:",
+    "q_ar": "رتّب الخطوات لرسم منحنى التكرار المتجمع الصاعد لـ \\(N = 80\\) مفردة واستخراج المدى الربيعي:",
     "items": [
-      "State null \\(H_0\\) and alternative \\(H_a\\) hypotheses in terms of the population parameter.",
-      "Verify random sampling and large-sample / normality conditions.",
-      "Compute the test statistic and corresponding tail \\(p\\)-value.",
-      "Compare \\(p\\)-value against \\(\\alpha\\) and state the conclusion in context."
+      "Accumulate running totals of class frequencies up to \\(N = 80\\).",
+      "Plot cumulative frequencies against the UPPER class boundaries (not midpoints) and join smoothly.",
+      "Read horizontally from \\(0.25 N = 20\\) and \\(0.75 N = 60\\) to the curve and drop vertically to read \\(Q_1\\) and \\(Q_3\\).",
+      "Subtract \\(\\text{IQR} = Q_3 - Q_1\\)."
     ],
     "items_ar": [
-      "صياغة فرض العدم \\(H_0\\) والفرض البديل \\(H_a\\) بدلالة معلمة المجتمع.",
-      "التحقق من العشوائية وشروط حجم العينة والاعتدالية.",
-      "حساب إحصائية الاختبار والقيمة الاحتمالية \\(p\\)-value.",
-      "مقارنة \\(p\\)-value بمستوى الدلالة \\(\\alpha\\) وكتابة القرار في سياق المسألة."
-    ],
-    "ex": "Hypotheses → conditions → test statistic & p-value → decision in context.",
-    "ex_ar": "صياغة الفروض ← التحقق من الشروط ← إحصائية الاختبار ← القرار الإحصائي."
+      "حساب التكرار المتجمع الصاعد للفئات المتتالية وصولاً إلى \\(N = 80\\).",
+      "تمثيل التكرار المتجمع مقابل الحدود الفعلية العليا للفئات (وليس مراكز الفئات).",
+      "تحديد الموضعين \\(0.25 N = 20\\) و\\(0.75 N = 60\\) على المحور الرأسي وإسقاطهما لقراءة \\(Q_1\\) و\\(Q_3\\).",
+      "طرح \\(\\text{IQR} = Q_3 - Q_1\\)."
+    ]
   },
   {
     "t": "cat",

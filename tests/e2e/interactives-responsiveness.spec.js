@@ -133,6 +133,72 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
     expect(errors).toEqual([]);
   });
 
+  test('IBHL 3D Cross Product canvas, SAT form sliders, Edexcel kinematics, Geo angle pairs & AP Continuity endpoint all respond dynamically', async ({ page }) => {
+    test.setTimeout(90000);
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+
+    // 1. IBHL Topic 3: ibhlCrossCanvas visible + dynamic sliders + Data Table toggle
+    await page.goto('/ibhl/', { waitUntil: 'load' });
+    await page.locator('aside.rail a[data-target="ibhl-t3"]').click();
+    await page.waitForTimeout(250);
+    const crossCanvas = page.locator('#ibhlCrossCanvas');
+    await expect(crossCanvas).toBeVisible();
+    const crossBefore = await page.locator('#ibhlW').textContent();
+    await page.evaluate(() => {
+      const sl = document.getElementById('ibhlV1');
+      sl.value = '-3';
+      sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    const crossAfter = await page.locator('#ibhlW').textContent();
+    expect(crossAfter).not.toEqual(crossBefore);
+
+    // 2. SAT Linear / Quadratic / Exponential secondary sliders auto-switch mode & update readouts
+    await page.goto('/sat/', { waitUntil: 'load' });
+    await page.locator('aside.rail a[data-target="sat-linfun"]').click();
+    await page.waitForTimeout(200);
+    const satLinBefore = await page.locator('#satLinFormsActiveEq').textContent();
+    await page.evaluate(() => {
+      const sl = document.getElementById('satLinFormsP3');
+      sl.value = '10';
+      sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(await page.locator('#satLinFormsActiveEq').textContent()).not.toEqual(satLinBefore);
+
+    await page.locator('aside.rail a[data-target="sat-expoly"]').click();
+    await page.waitForTimeout(200);
+    const satExpBefore = await page.locator('#satExpFormsActiveEq').textContent();
+    await page.evaluate(() => {
+      const sl = document.getElementById('satExpFormsD');
+      sl.value = '3';
+      sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(await page.locator('#satExpFormsActiveEq').textContent()).not.toEqual(satExpBefore);
+
+    // 3. Edexcel Kinematics s1 slider & Geo Foundations s1 slider update canvas & readouts
+    await page.goto('/edexcel/', { waitUntil: 'load' });
+    await page.locator('aside.rail a[data-target="edx-calculus-kinematics"]').click();
+    await page.waitForTimeout(200);
+    const edxBefore = await page.locator('#edxcalculuskinematicsExCanvas_r0').textContent();
+    await page.evaluate(() => {
+      const sl = document.getElementById('edxcalculuskinematicsExCanvas_s1');
+      sl.value = '4.5';
+      sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(await page.locator('#edxcalculuskinematicsExCanvas_r0').textContent()).not.toEqual(edxBefore);
+
+    await page.goto('/geo/', { waitUntil: 'load' });
+    const geoBefore = await page.locator('#geofoundationsExCanvas_r0').textContent();
+    await page.evaluate(() => {
+      const sl = document.getElementById('geofoundationsExCanvas_s1');
+      sl.value = '35';
+      sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(await page.locator('#geofoundationsExCanvas_r0').textContent()).not.toEqual(geoBefore);
+
+    expect(errors).toEqual([]);
+  });
+
   test('Nested KaTeX click inside .ia-match-item delegates properly and mobile 360px layout has 0 overflow', async ({ browser }) => {
     const context = await browser.newContext({
       viewport: { width: 360, height: 800 },

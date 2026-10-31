@@ -298,25 +298,25 @@ D["ode-separable"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (First-Order Differential Equations, Separable Equations & Existence Theory)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات التفاضلية من الرتبة الأولى والمعادلات القابلة للفصل ونظرية الوجود)",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Picard–Lindelöf Existence & Uniqueness Theorem",
+    "ti_ar": "فحص سريع: مبرهنة الوجود والوحدانية لبيكار-ليندلوف",
+    "q": "For the IVP \\(y' = y^{1/3},\\; y(0) = 0\\), why can two distinct solutions (\\(y \\equiv 0\\) and \\(y = (\\frac{2}{3}x)^{3/2}\\) for \\(x \\ge 0\\)) pass through \\((0,0)\\)?",
+    "q_ar": "لمسألة القيمة الابتدائية \\(y' = y^{1/3},\\; y(0) = 0\\)، لماذا يمر حلان مختلفان بالنقطة \\((0,0)\\)؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(\\dfrac{\\partial f}{\\partial y} = \\dfrac{1}{3}y^{-2/3}\\) fails to be continuous (blows up) at \\(y = 0\\)",
+      "\\(f(x, y) = y^{1/3}\\) is discontinuous at \\(y = 0\\)",
+      "Separable equations never have unique solutions",
+      "\\(y(0) = 0\\) is an improper boundary condition"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "المشتقة الجزئية \\(\\dfrac{\\partial f}{\\partial y} = \\dfrac{1}{3}y^{-2/3}\\) غير متصلة عند \\(y = 0\\)",
+      "الدالة \\(y^{1/3}\\) غير متصلة عند \\(y = 0\\)",
+      "المعادلات القابلة للفصل ليس لها حلول وحيدة أبداً",
+      "الشرط \\(y(0) = 0\\) شرط حدي غير صالح"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Uniqueness requires \\(\\partial f/\\partial y\\) to be continuous (Lipschitz in \\(y\\)) near \\((x_0, y_0)\\); here \\(\\frac{1}{3}y^{-2/3} \\to \\infty\\) as \\(y \\to 0\\).",
+    "ex_ar": "تشترط وحدانية الحل اتصال \\(\\partial f/\\partial y\\) حول النقطة الابتدائية، وهنا تنفجر المشتقة عند \\(y = 0\\)."
   }
 ];
 D["ode-linear"] = [
@@ -623,25 +623,25 @@ D["ode-linear"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (Linear First-Order Equations, Integrating Factors & Nonlinear Reductions)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات الخطية من الرتبة الأولى وعوامل التكامل ومعادلات برنولي)",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Integrating Factor for First-Order Linear ODEs",
+    "ti_ar": "فحص سريع: عامل التكامل للمعادلة الخطية من الرتبة الأولى",
+    "q": "What is the integrating factor \\(\\mu(x)\\) after putting \\(x y' + 2y = 4x^3\\) (\\(x > 0\\)) into standard form?",
+    "q_ar": "ما عامل التكامل \\(\\mu(x)\\) بعد وضع \\(x y' + 2y = 4x^3\\) (\\(x > 0\\)) في الصورة القياسية؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(\\mu(x) = x^2\\)",
+      "\\(\\mu(x) = e^{2x}\\)",
+      "\\(\\mu(x) = 2\\ln x\\)",
+      "\\(\\mu(x) = x\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(\\mu(x) = x^2\\)",
+      "\\(\\mu(x) = e^{2x}\\)",
+      "\\(\\mu(x) = 2\\ln x\\)",
+      "\\(\\mu(x) = x\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Divide by \\(x\\): \\(y' + \\frac{2}{x}y = 4x^2\\), so \\(P(x) = \\frac{2}{x}\\) and \\(\\mu(x) = e^{\\int (2/x)dx} = e^{2\\ln x} = x^2\\).",
+    "ex_ar": "بالقسمة على \\(x\\) تصبح \\(P(x) = 2/x\\)، فيكون عامل التكامل \\(\\mu(x) = e^{2\\ln x} = x^2\\)."
   }
 ];
 D["ode-second-order"] = [
@@ -940,25 +940,25 @@ D["ode-second-order"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي)",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Repeated Characteristic Root Solution Form",
+    "ti_ar": "فحص سريع: صورة الحل عند تكرر جذر المعادلة المميزة",
+    "q": "What is the general solution to \\(y'' - 6y' + 9y = 0\\)?",
+    "q_ar": "ما الحل العام للمعادلة المتجانسة \\(y'' - 6y' + 9y = 0\\)؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(y(x) = (C_1 + C_2 x)e^{3x}\\)",
+      "\\(y(x) = C_1 e^{3x} + C_2 e^{-3x}\\)",
+      "\\(y(x) = C_1 e^{3x}\\cos(3x)\\)",
+      "\\(y(x) = (C_1 + C_2)e^{3x}\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(y(x) = (C_1 + C_2 x)e^{3x}\\)",
+      "\\(y(x) = C_1 e^{3x} + C_2 e^{-3x}\\)",
+      "\\(y(x) = C_1 e^{3x}\\cos(3x)\\)",
+      "\\(y(x) = (C_1 + C_2)e^{3x}\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Auxiliary equation \\((r - 3)^2 = 0\\) has double root \\(r = 3\\), yielding independent basis \\(\\{e^{3x}, x e^{3x}\\}\\).",
+    "ex_ar": "للمعادلة المميزة \\((r - 3)^2 = 0\\) جذر مكرر \\(r = 3\\)، فيكون الحل العام \\((C_1 + C_2 x)e^{3x}\\)."
   }
 ];
 D["ode-undetermined-coefficients"] = [
@@ -1245,25 +1245,25 @@ D["ode-undetermined-coefficients"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (Nonhomogeneous Equations, Undetermined Coefficients & Resonance)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين)",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Secular Resonance Trial Form",
+    "ti_ar": "فحص سريع: تعديل الحل الخاص في حالة الرنين",
+    "q": "For \\(y'' + 4y = \\cos(2t)\\), what is the correct undetermined-coefficients trial form \\(y_p(t)\\)?",
+    "q_ar": "للمعادلة \\(y'' + 4y = \\cos(2t)\\)، ما الصورة التجريبية الصحيحة للحل الخاص \\(y_p(t)\\)؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(t(A\\cos 2t + B\\sin 2t)\\)",
+      "\\(A\\cos 2t + B\\sin 2t\\)",
+      "\\(A t\\cos 2t\\)",
+      "\\(t^2 e^{2t}\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(t(A\\cos 2t + B\\sin 2t)\\)",
+      "\\(A\\cos 2t + B\\sin 2t\\)",
+      "\\(A t\\cos 2t\\)",
+      "\\(t^2 e^{2t}\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Since \\(y_h = c_1\\cos 2t + c_2\\sin 2t\\) duplicates the forcing frequency \\(\\omega = 2\\), multiply the full harmonic pair by \\(t\\).",
+    "ex_ar": "بما أن التردد الدافع \\(\\omega = 2\\) يطابق التردد الطبيعي للحل المتجانس، نضرب زوج الجيب وجيب التمام كاملاً في \\(t\\)."
   }
 ];
 D["ode-variation-of-parameters"] = [
@@ -1581,8 +1581,8 @@ D["ode-variation-of-parameters"] = [
 D["ode-laplace-transforms"] = [
   {
     "t": "mt",
-    "ti": "Matching Lab: Standard Laplace Transforms \\(mathcal{L}\\{f(t)\\}\\)",
-    "ti_ar": "معمل المطابقة: تحويلات لابلاس القياسية \\(mathcal{L}\\{f(t)\\}\\)",
+    "ti": "Matching Lab: Standard Laplace Transforms \\(\\mathcal{L}\\{f(t)\\}\\)",
+    "ti_ar": "معمل المطابقة: تحويلات لابلاس القياسية \\(\\mathcal{L}\\{f(t)\\}\\)",
     "p": [
       {
         "l": "L{1}",
@@ -1626,14 +1626,14 @@ D["ode-laplace-transforms"] = [
     "ti_ar": "بناء خطوات المعمل: خاصية تحويل المشتقة",
     "steps": [
       {
-        "l": "Recall \\(mathcal{L}\\{y'(t)\\} = s Y(s) - y(0)\\). If \\(y(0) = 4\\), the transform of \\(y'\\) is \\(s Y(s) -\\)",
+        "l": "Recall \\(\\mathcal{L}\\{y'(t)\\} = s Y(s) - y(0)\\). If \\(y(0) = 4\\), the transform of \\(y'\\) is \\(s Y(s) -\\)",
         "a": "4",
         "h": "Substituted y(0) = 4"
       }
     ],
     "steps_ar": [
       {
-        "l": "تذكر أن \\(mathcal{L}\\{y'(t)\\} = s Y(s) - y(0)\\). إذا كان \\(y(0) = 4\\)، فإن تحويل \\(y'\\) هو \\(s Y(s) -\\)",
+        "l": "تذكر أن \\(\\mathcal{L}\\{y'(t)\\} = s Y(s) - y(0)\\). إذا كان \\(y(0) = 4\\)، فإن تحويل \\(y'\\) هو \\(s Y(s) -\\)",
         "a": "4",
         "h": "بالتعويض عن y(0) = 4"
       }
@@ -1643,8 +1643,8 @@ D["ode-laplace-transforms"] = [
     "t": "qc",
     "ti": "Quick Check: First Shift Theorem",
     "ti_ar": "فحص سريع: نظرية الإزاحة الأولى",
-    "q": "If \\(mathcal{L}\\{f(t)\\} = F(s)\\), what is \\(mathcal{L}\\{e^{at}f(t)\\}\\)?",
-    "q_ar": "إذا كان \\(mathcal{L}\\{f(t)\\} = F(s)\\)، فما هو \\(mathcal{L}\\{e^{at}f(t)\\}\\)؟",
+    "q": "If \\(\\mathcal{L}\\{f(t)\\} = F(s)\\), what is \\(\\mathcal{L}\\{e^{at}f(t)\\}\\)?",
+    "q_ar": "إذا كان \\(\\mathcal{L}\\{f(t)\\} = F(s)\\)، فما هو \\(\\mathcal{L}\\{e^{at}f(t)\\}\\)؟",
     "o": [
       "\\(F(s - a)\\)",
       "\\(F(s + a)\\)",
@@ -1864,25 +1864,25 @@ D["ode-laplace-transforms"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (The Laplace Transform, Discontinuous Forcing & Convolution Theory)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Laplace Transform of a Second Derivative",
+    "ti_ar": "فحص سريع: تحويل لابلاس للمشتقة الثانية",
+    "q": "If \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\), which identity gives \\(\\mathcal{L}\\{y''(t)\\}\\)?",
+    "q_ar": "إذا كان \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\)، فما صيغة \\(\\mathcal{L}\\{y''(t)\\}\\)؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(s^2 Y(s) - s y(0) - y'(0)\\)",
+      "\\(s^2 Y(s) - y(0) - s y'(0)\\)",
+      "\\(s^2 Y(s)\\)",
+      "\\(s^2 Y(s) + s y(0) + y'(0)\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(s^2 Y(s) - s y(0) - y'(0)\\)",
+      "\\(s^2 Y(s) - y(0) - s y'(0)\\)",
+      "\\(s^2 Y(s)\\)",
+      "\\(s^2 Y(s) + s y(0) + y'(0)\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Integrating by parts twice incorporates both initial conditions: \\(\\mathcal{L}\\{y''\\} = s^2 Y(s) - s y(0) - y'(0)\\).",
+    "ex_ar": "المكاملة بالتجزئة مرتين تدخل الشرطين الابتدائيين: \\(s^2 Y(s) - s y(0) - y'(0)\\)."
   }
 ];
 D["ode-systems"] = [
@@ -2181,25 +2181,25 @@ D["ode-systems"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس)",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Saddle Point Criterion for 2×2 Linear Systems",
+    "ti_ar": "فحص سريع: شرط النقطة السرجية لنظام خطي 2×2",
+    "q": "For \\(\\mathbf{x}' = A\\mathbf{x}\\), which condition on \\(\\det(A)\\) guarantees the origin is a hyperbolic saddle point?",
+    "q_ar": "للنظام \\(\\mathbf{x}' = A\\mathbf{x}\\)، أي شرط على المحدد \\(\\det(A)\\) يضمن أن نقطة الأصل نقطة سرجية؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(\\det(A) < 0\\)",
+      "\\(\\det(A) > 0\\) and \\(\\operatorname{tr}(A) < 0\\)",
+      "\\(\\det(A) = 0\\)",
+      "\\(\\operatorname{tr}(A) = 0\\) and \\(\\det(A) > 0\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(\\det(A) < 0\\)",
+      "\\(\\det(A) > 0\\) و\\(\\operatorname{tr}(A) < 0\\)",
+      "\\(\\det(A) = 0\\)",
+      "\\(\\operatorname{tr}(A) = 0\\) و\\(\\det(A) > 0\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Since \\(\\det(A) = \\lambda_1 \\lambda_2\\), \\(\\det(A) < 0\\) forces one positive real eigenvalue and one negative real eigenvalue — a saddle point.",
+    "ex_ar": "بما أن \\(\\det(A) = \\lambda_1 \\lambda_2\\)، فإن \\(\\det(A) < 0\\) يعني قيمتين ذاتيتين حقيقيتين متعاكستين في الإشارة (نقطة سرجية)."
   }
 ];
 D["ode-series-solutions"] = [
@@ -2209,14 +2209,14 @@ D["ode-series-solutions"] = [
     "ti_ar": "بناء خطوات المعمل: إزاحة دليل متسلسلات القوى",
     "steps": [
       {
-        "l": "If \\(y = \\sum_{n=0}^\\infty c_n x^n\\), then \\(y' = \\sum_{n=1}^\\infty n c_n x^{n-1}\\). Shift index by letting \\(k = n-1\\): the sum becomes \\(sum_{k=0}^\\infty (k+1) c_{k+1} x^k\\). The coefficient of \\(x^0\\) is:",
+        "l": "If \\(y = \\sum_{n=0}^\\infty c_n x^n\\), then \\(y' = \\sum_{n=1}^\\infty n c_n x^{n-1}\\). Shift index by letting \\(k = n-1\\): the sum becomes \\(\\sum_{k=0}^\\infty (k+1) c_{k+1} x^k\\). The coefficient of \\(x^0\\) is:",
         "a": "c_1",
         "h": "For k=0, (0+1)c_1 = c_1"
       }
     ],
     "steps_ar": [
       {
-        "l": "إذا كانت \\(y = \\sum_{n=0}^\\infty c_n x^n\\)، فإن \\(y' = \\sum_{n=1}^\\infty n c_n x^{n-1}\\). بإزاحة الدليل بوضع \\(k = n-1\\): يصبح المجموع \\(sum_{k=0}^\\infty (k+1) c_{k+1} x^k\\). معامل \\(x^0\\) هو:",
+        "l": "إذا كانت \\(y = \\sum_{n=0}^\\infty c_n x^n\\)، فإن \\(y' = \\sum_{n=1}^\\infty n c_n x^{n-1}\\). بإزاحة الدليل بوضع \\(k = n-1\\): يصبح المجموع \\(\\sum_{k=0}^\\infty (k+1) c_{k+1} x^k\\). معامل \\(x^0\\) هو:",
         "a": "c_1",
         "h": "لـ k=0، نجد (0+1)c_1 = c_1"
       }
@@ -2488,25 +2488,25 @@ D["ode-series-solutions"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (Power Series Solutions, Ordinary Points & the Method of Frobenius)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس)",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Minimum Radius of Convergence About an Ordinary Point",
+    "ti_ar": "فحص سريع: نصف قطر التقارب الأدنى حول نقطة عادية",
+    "q": "What is the guaranteed minimum radius of convergence \\(R\\) of power series solutions to \\((x^2 + 9)y'' + xy' + y = 0\\) centered at \\(x_0 = 0\\)?",
+    "q_ar": "ما نصف قطر التقارب الأدنى المضمون لمتسلسلة القوى حول \\(x_0 = 0\\) للمعادلة \\((x^2 + 9)y'' + xy' + y = 0\\)؟",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(R = 3\\) (distance in \\(\\mathbb{C}\\) from \\(0\\) to singularities \\(\\pm 3i\\))",
+      "\\(R = \\infty\\) because \\(x^2 + 9 \\neq 0\\) on \\(\\mathbb{R}\\)",
+      "\\(R = 9\\)",
+      "\\(R = 1\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "\\(R = 3\\) (المسافة في المستوى المركب إلى النقطتين الشاذتين \\(\\pm 3i\\))",
+      "\\(R = \\infty\\) لأن \\(x^2 + 9 \\neq 0\\) على \\(\\mathbb{R}\\)",
+      "\\(R = 9\\)",
+      "\\(R = 1\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "Fuchs’ theorem measures distance in the complex plane \\(\\mathbb{C}\\) to the nearest singular points \\(x = \\pm 3i\\), giving \\(|0 - 3i| = 3\\).",
+    "ex_ar": "تقاس المسافة في المستوى المركب \\(\\mathbb{C}\\) إلى أقرب نقاط شاذة \\(x = \\pm 3i\\)، فيكون \\(R = |3i| = 3\\)."
   }
 ];
 D["ode-numerical-methods"] = [
@@ -2813,25 +2813,25 @@ D["ode-numerical-methods"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Derivative of an Accumulation Function (Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability)",
-    "ti_ar": "فحص سريع: مشتقة دالة التراكم التكاملية (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))",
-    "q": "By the Fundamental Theorem of Calculus + Chain Rule, what is \\(\\dfrac{d}{dx} \\int_1^{x^2} \\cos(t)\\,dt\\)?",
-    "q_ar": "باستعمال النظرية الأساسية للتفاضل والتكامل وقاعدة السلسلة، ما مشتقة \\(\\int_1^{x^2} \\cos(t)\\,dt\\)؟",
+    "ti": "Quick Check: Step-Size Halving in Classical RK4",
+    "ti_ar": "فحص سريع: أثر تنصيف خطوة الشبكة في خوارزمية RK4",
+    "q": "Because classical Runge–Kutta (RK4) has global truncation error \\(O(h^4)\\), halving the step size \\(h \\to h/2\\) reduces the global error by approximately:",
+    "q_ar": "لأن الخطأ الشامل لخوارزمية RK4 من الرتبة \\(O(h^4)\\)، فإن تنصيف طول الخطوة \\(h \\to h/2\\) يقلل الخطأ بمعامل يقارب:",
     "o": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "A factor of \\(2^4 = 16\\)",
+      "A factor of \\(2\\)",
+      "A factor of \\(4\\)",
+      "A factor of \\(8\\)"
     ],
     "o_ar": [
-      "\\(2x \\cos(x^2)\\)",
-      "\\(\\cos(x^2)\\)",
-      "\\(\\sin(x^2)\\)",
-      "\\(-2x \\sin(x^2)\\)"
+      "معامل \\(2^4 = 16\\)",
+      "معامل \\(2\\)",
+      "معامل \\(4\\)",
+      "معامل \\(8\\)"
     ],
     "a": 0,
-    "ex": "Evaluate integrand at upper limit \\(x^2\\) and multiply by \\(\\frac{d}{dx}(x^2) = 2x\\).",
-    "ex_ar": "نعوّض بالحد العلوي \\(x^2\\) ونضرب في مشتقته \\(2x\\)."
+    "ex": "For a fourth-order method, \\((h/2)^4 = h^4 / 16\\), cutting global error by roughly \\(16\\times\\).",
+    "ex_ar": "لطريقة من الرتبة الرابعة يكون \\((h/2)^4 = h^4 / 16\\)، مما يخفض الخطأ الشامل بنحو \\(16\\) مرة."
   }
 ];
 });

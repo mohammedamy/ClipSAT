@@ -719,22 +719,41 @@
         out2 = isFinite(sinf) ? fmt(Math.abs(sinf - sRun), 4) : '∞';
         rows.push(['First Term a₁', fmt(a,2)], ['Common Ratio r', fmt(b,2)], ['Partial Sum S₈', out0], ['Infinite Sum S_∞', out1]);
       } else if(mode === 'tangent_normal'){
-        var fTN = function(x){ return 0.5*x*x*x - 1.5*x; };
-        var y0 = fTN(a), mt = 1.5*a*a - 1.5;
+        var isEdxTN = (cfg.canvasId === 'edxcalculuskinematicsExCanvas');
+        var kParam = isEdxTN ? Math.max(0.25, b) : 1.5;
+        var fTN = function(x){ return 0.5*x*x*x - kParam*x; };
+        var y0 = fTN(a), mt = 1.5*a*a - kParam;
         P.curve(fTN, INDIGO, 2.6);
+        if(isEdxTN){
+          var xTurn = Math.sqrt(2*kParam/3);
+          P.dot(-xTurn, fTN(-xTurn), INDIGO, 4.2);
+          P.dot(xTurn, fTN(xTurn), INDIGO, 4.2);
+        } else {
+          var vScale = 0.28 * b;
+          P.arrow(a, y0, a + vScale, y0, INDIGO, 1.8);
+          if(Math.abs(mt * vScale) > 0.03) P.arrow(a + vScale, y0, a + vScale, y0 + mt*vScale, AMBER2, 1.8);
+        }
         P.curve(function(x){return y0 + mt*(x - a);}, AMBER2, 2.3);
+        var mnStr = 'Vertical';
         if(Math.abs(mt) > 0.05){
           var mn = -1 / mt;
           P.curve(function(x){return y0 + mn*(x - a);}, TEAL, 2.0, [4,4]);
-          out1 = 'm_N = ' + fmt(mn, 2);
+          mnStr = 'm_N = ' + fmt(mn, 2);
         } else {
           P.vline(a, TEAL, [4,4]);
-          out1 = 'Vertical Normal';
         }
         P.dot(a, y0, AMBER2, 5.5);
-        out0 = 'm_T = ' + fmt(mt, 2);
-        out2 = 'dy/dt = ' + fmt(mt * b, 2);
-        rows.push(['Point x₀', fmt(a,2)], ['Tangent Slope m_T', out0], ['Normal Slope m_N', out1], ['Chain Rate dy/dt', out2]);
+        if(isEdxTN){
+          out0 = fmt(mt, 2);
+          out1 = Math.abs(mt) <= 0.05 ? (a >= 0 ? 'Local Min Turning Pt' : 'Local Max Turning Pt') : (mt > 0 ? 'Increasing (dy/dx > 0)' : 'Decreasing (dy/dx < 0)');
+          out2 = Math.abs(mt) > 0.05 ? fmt(-1/mt, 2) : 'Vertical (x = '+fmt(a,1)+')';
+          rows.push(['Point x₀', fmt(a,2)], ['Curve Parameter k', fmt(kParam,2)], ['Tangent dy/dx', out0], ['Point Nature', out1], ['Normal Gradient', out2]);
+        } else {
+          out0 = 'm_T = ' + fmt(mt, 2);
+          out1 = mnStr;
+          out2 = 'dy/dt = ' + fmt(mt * b, 2);
+          rows.push(['Point x₀', fmt(a,2)], ['Input Rate dx/dt', fmt(b,2)], ['Tangent Slope m_T', out0], ['Normal Slope m_N', out1], ['Chain Rate dy/dt', out2]);
+        }
       } else if(mode === 'kinematics' || mode === 'suvat'){
         var isSuvat = (mode === 'suvat');
         var vFn = isSuvat ? function(t){return a + b*t;} : function(t){return a - 2.0*t;};
@@ -1110,22 +1129,32 @@
         out2 = 'P(0) = ' + fmt(fM(0), 2);
         rows.push(['Double Root r₁', fmt(a,1)], ['Simple Root r₂', fmt(b,1)], ['y-Intercept P(0)', out2]);
       } else if(mode === 'transversal' || mode === 'angle_pairs'){
-        var radT = a * Math.PI / 180;
+        var phiDeg = mode === 'angle_pairs' ? b : 0;
+        var radBase = phiDeg * Math.PI / 180;
+        var radT = (a + phiDeg) * Math.PI / 180;
         var dY = mode === 'transversal' ? b*0.5 : 0;
         if(mode === 'transversal'){
           P.hline(dY, INDIGO, null, 2.4); P.hline(-dY, INDIGO, null, 2.4);
+          var dxT0 = 3.8*Math.cos(radT), dyT0 = 3.8*Math.sin(radT);
+          P.segment(-dxT0, -dyT0, dxT0, dyT0, AMBER2, 2.6);
+          P.dot(0, dY, AMBER2, 5); P.dot(0, -dY, AMBER2, 5);
+          P.label(0.5, dY+0.4, fmt(a,0)+'°', AMBER2);
+          P.label(-0.9, dY+0.4, fmt(180-a,0)+'°', TEAL);
         } else {
-          P.hline(0, INDIGO, null, 2.4);
+          var dxB = 3.8*Math.cos(radBase), dyB = 3.8*Math.sin(radBase);
+          var dxR = 3.8*Math.cos(radT), dyR = 3.8*Math.sin(radT);
+          P.segment(-dxB, -dyB, dxB, dyB, INDIGO, 2.5);
+          P.segment(-dxR, -dyR, dxR, dyR, AMBER2, 2.6);
+          P.dot(0, 0, AMBER2, 5.5);
+          var mid1 = radBase + 0.5*a*Math.PI/180, mid2 = radBase + (a + 0.5*(180-a))*Math.PI/180;
+          P.label(1.15*Math.cos(mid1), 1.15*Math.sin(mid1), fmt(a,0)+'°', AMBER2);
+          P.label(-1.15*Math.cos(mid1), -1.15*Math.sin(mid1), fmt(a,0)+'°', AMBER2);
+          P.label(1.15*Math.cos(mid2), 1.15*Math.sin(mid2), fmt(180-a,0)+'°', TEAL);
         }
-        var dxT = 3.8*Math.cos(radT), dyT = 3.8*Math.sin(radT);
-        P.segment(-dxT, -dyT, dxT, dyT, AMBER2, 2.6);
-        P.dot(0, dY, AMBER2, 5); P.dot(0, -dY, AMBER2, 5);
-        P.label(0.5, dY+0.4, fmt(a,0)+'°', AMBER2);
-        P.label(-0.9, dY+0.4, fmt(180-a,0)+'°', TEAL);
-        out0 = fmt(a,0) + '° = ' + fmt(a,0) + '°';
+        out0 = fmt(a,0) + '° = ' + fmt(a,0) + '°' + (mode === 'angle_pairs' && Math.abs(phiDeg) > 0.1 ? ' (φ='+(phiDeg>0?'+':'')+fmt(phiDeg,0)+'°)' : '');
         out1 = fmt(180 - a, 0) + '°';
         out2 = fmt(90 - a, 0) + '°';
-        rows.push(['Primary Angle θ', fmt(a,0)+'°'], ['Supplement (180°−θ)', out1], ['Complement (90°−θ)', out2]);
+        rows.push(['Primary Angle θ', fmt(a,0)+'°'], ['Rotation / Offset', fmt(b,1)], ['Supplement (180°−θ)', out1], ['Complement (90°−θ)', out2]);
       } else if(mode === 'complex_spiral' || mode === 'demoivre'){
         var isDM = (mode === 'demoivre');
         var rMod = isDM ? 1.15 : a;

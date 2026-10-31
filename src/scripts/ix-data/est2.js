@@ -1424,74 +1424,84 @@ D["est2-geometry"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Lines, Triangles & Polygons)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (المستقيمات والمثلثات والمضلعات)",
-    "q": "A circle has equation \\((x - 2)^2 + (y + 2)^2 = 36\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 2)^2 + (y + 2)^2 = 36\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Regular Polygon Angles, Rhombus Diagonals & Trapezoid Midsegment",
+    "ti_ar": "وضع المصحح: زوايا المضلعات المنتظمة وأقطار المعين والقطعة المتوسطة لشبه المنحرف",
+    "q": "(a) Each interior angle of a regular \\(n\\)-gon is \\(156^\\circ\\); find \\(n\\). (b) A rhombus has diagonals of lengths \\(10\\) and \\(24\\), and a trapezoid with bases \\(14\\) and \\(26\\) has midsegment \\(m\\); find the perimeter of the rhombus and \\(m\\).",
+    "q_ar": "(أ) قياس كل زاوية داخلية لمضلع منتظم عدد أضلاعه \\(n\\) هو \\(156^\\circ\\)؛ أوجد \\(n\\). (ب) معين طولا قطريه \\(10\\) و\\(24\\)، وشبه منحرف قاعدتاه \\(14\\) و\\(26\\)؛ أوجد محيط المعين وطول القطعة المتوسطة \\(m\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
+        "label": "Part (a) — Exterior Angle Shortcut for Regular n-gon",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (2, -2)\\)."
+            "text": "Each exterior angle is \\(180^\\circ - 156^\\circ = 24^\\circ\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{36} = 6\\)."
+            "text": "Compute \\(n = \\dfrac{360^\\circ}{24^\\circ} = 15\\) sides."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
-        "marks": 2,
+        "label": "Part (b) — Rhombus Right Triangles & Trapezoid Midsegment",
+        "marks": 3,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 6 \\cdot \\frac{\\pi}{2} = 3\\pi\\)."
+            "text": "Rhombus diagonals bisect perpendicularly into legs \\(5\\) and \\(12\\), giving side \\(s = \\sqrt{5^2 + 12^2} = 13\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(36)\\frac{\\pi}{2} = 9\\pi\\)."
+            "text": "Rhombus perimeter \\(= 4(13) = 52\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Trapezoid midsegment \\(m = \\dfrac{14 + 26}{2} = 20\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
+        "label": "الجزء (أ) — طريقة الزاوية الخارجية للمضلع المنتظم",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((2, -2)\\)."
+            "text": "قياس كل زاوية خارجية \\(180^\\circ - 156^\\circ = 24^\\circ\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{36} = 6\\)."
+            "text": "عدد الأضلاع \\(n = \\dfrac{360^\\circ}{24^\\circ} = 15\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
-        "marks": 2,
+        "label": "الجزء (ب) — محيط المعين والقطعة المتوسطة لشبه المنحرف",
+        "marks": 3,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 3\\pi\\)."
+            "text": "قطرا المعين متعامدان وينصف كل منهما الآخر إلى \\(5\\) و\\(12\\)، فطول الضلع \\(s = 13\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 9\\pi\\)."
+            "text": "محيط المعين \\(= 4 \\times 13 = 52\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "القطعة المتوسطة لشبه المنحرف \\(m = \\dfrac{14 + 26}{2} = 20\\)."
           }
         ]
       }
@@ -1499,81 +1509,81 @@ D["est2-geometry"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Lines, Triangles & Polygons)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (المستقيمات والمثلثات والمضلعات)",
+    "ti": "Step Builder: Isosceles Angles, Midsegment & Centroid Ratio",
+    "ti_ar": "بناء الخطوات: المثلث المتطابق الضلعين والقطعة المنصفة ومركز الثقل",
     "steps": [
       {
-        "l": "From \\((x - 2)^2 + (y + 2)^2 = 36\\), find the radius \\(r =\\)",
-        "a": "6",
-        "h": "Take the square root of 36."
+        "l": "An isosceles triangle has vertex angle \\(48^\\circ\\); each base angle measures (degrees)",
+        "a": "66",
+        "h": "(180 - 48) / 2"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 2\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "8",
-        "h": "Cube 2."
+        "l": "If base \\(BC = 26\\), the midsegment parallel to \\(BC\\) has length",
+        "a": "13",
+        "h": "Midsegment = 1/2 * base"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Median \\(AM = 18\\); distance from vertex \\(A\\) to centroid \\(G\\) is \\(AG =\\)",
+        "a": "12",
+        "h": "Centroid divides median in 2:1 ratio => (2/3)*18"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 2)^2 + (y + 2)^2 = 36\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "6",
-        "h": "خذ الجذر التربيعي للعدد 36."
+        "l": "مثلث متطابق الضلعين زاوية رأسه \\(48^\\circ\\)؛ قياس كل زاوية قاعدة (بالدرجات)",
+        "a": "66",
+        "h": "(180 - 48) ÷ 2"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 2\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "8",
-        "h": "احسب مكعب 2."
+        "l": "إذا كان طول القاعدة \\(BC = 26\\)، فطول القطعة المنصفة الموازية لها يساوي",
+        "a": "13",
+        "h": "نصف طول القاعدة"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "إذا كان طول المتوسط \\(AM = 18\\)، فالبعد من الرأس \\(A\\) إلى مركز الثقل \\(G\\) هو",
+        "a": "12",
+        "h": "(2/3) × 18"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Lines, Triangles & Polygons)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (المستقيمات والمثلثات والمضلعات)",
+    "ti": "Matching: Polygon Angle Sums & Special Quadrilateral Theorems",
+    "ti_ar": "مطابقة: زوايا المضلعات وخصائص الأشكال الرباعية الخاصة",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Convex \\(n\\)-gon interior angle sum",
+        "r": "\\((n - 2)\\cdot 180^\\circ\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "Sum of exterior angles of any convex polygon",
+        "r": "\\(360^\\circ\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "Rhombus diagonal property",
+        "r": "Diagonals are perpendicular and bisect vertex angles"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Trapezoid midsegment length",
+        "r": "\\(\\dfrac{b_1 + b_2}{2}\\) parallel to both bases"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "مجموع الزوايا الداخلية لمضلع محدب عدد أضلاعه \\(n\\)",
+        "r": "\\((n - 2)\\cdot 180^\\circ\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "مجموع الزوايا الخارجية لأي مضلع محدب",
+        "r": "\\(360^\\circ\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "خاصية قطري المعين",
+        "r": "القطران متعامدان وينصفان زوايا الرؤوس"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "طول القطعة المتوسطة لشبه المنحرف",
+        "r": "\\(\\dfrac{b_1 + b_2}{2}\\) وموازية للقاعدتين"
       }
     ]
   }

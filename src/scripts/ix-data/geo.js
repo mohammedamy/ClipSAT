@@ -124,103 +124,115 @@ D["geo-foundations"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Foundations & Reasoning)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (الأسس الهندسية والاستدلال المنطقي والبراهين)",
-    "q": "Two similar solids have linear scale factor \\(k = 2\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 2\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Converse vs. Contrapositive Logical Equivalence",
+    "ti_ar": "اكتشف الخطأ: الفرق بين العكس والمعاكس الإيجابي",
+    "q": "Given the true conditional \\(p \\to q\\): \"If two angles form a linear pair, then they are supplementary.\" Which step in the student’s logical deduction is invalid?",
+    "q_ar": "إذا كانت العبارة الشرطية \\(p \\to q\\): «إذا كوّنت زاويتان زوجاً خطياً فإنهما متكاملتان» صحيحة، فأي خطوة في استنتاج الطالب غير صحيحة؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 2\\).",
-      "Multiply the surface area directly by \\(2\\) instead of \\(2^2\\): \\(A_{\\text{large}} = 10 \\times 2 = 20\\text{ cm}^2\\).",
-      "Report \\(20\\text{ cm}^2\\) as the larger surface area."
+      "Identify hypothesis \\(p\\): \"two angles form a linear pair\" and conclusion \\(q\\): \"they are supplementary.\"",
+      "Write the contrapositive \\(\\neg q \\to \\neg p\\): \"If two angles are not supplementary, they do not form a linear pair.\"",
+      "Claim that the converse \\(q \\to p\\) is automatically logically equivalent to \\(p \\to q\\), so any two supplementary angles must form a linear pair.",
+      "Apply this claim to two non-adjacent \\(100^\\circ\\) and \\(80^\\circ\\) angles."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 2\\).",
-      "ضرب المساحة السطحية في \\(2\\) مباشرة بدلاً من \\(2^2\\): \\(A = 20\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تحديد الفرض \\(p\\): «زاويتان تكوّنان زوجاً خطياً» والنتيجة \\(q\\): «زاويتان متكاملتان».",
+      "كتابة المعاكس الإيجابي \\(\\neg q \\to \\neg p\\): «إذا لم تكن الزاويتان متكاملتين فإنهما لا تكوّنان زوجاً خطياً».",
+      "الادعاء بأن العكس \\(q \\to p\\) مكافئ منطقياً دائماً لـ \\(p \\to q\\)، أي أن كل زاويتين متكاملتين تشكلان زوجاً خطياً.",
+      "تطبيق الادعاء على زاويتين غير متجاورتين قياسهما \\(100^\\circ\\) و\\(80^\\circ\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 4\\) (giving \\(40\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 8\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "A conditional \\(p \\to q\\) is logically equivalent to its contrapositive \\(\\neg q \\to \\neg p\\), NOT its converse \\(q \\to p\\); non-adjacent angles summing to \\(180^\\circ\\) are supplementary without forming a linear pair.",
+      "Linear pairs sum to \\(90^\\circ\\) rather than \\(180^\\circ\\).",
+      "The contrapositive reverses the order without negating the statements."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 4\\) (أي \\(40\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 8\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "العبارة الشرطية تكافئ منطقياً معاكسها الإيجابي \\(\\neg q \\to \\neg p\\) وليس عكسها \\(q \\to p\\)؛ فالزاويتان غير المتجاورتين اللتان مجموعهما \\(180^\\circ\\) متكاملتان دون أن تكوّنا زوجاً خطياً.",
+      "مجموع الزوج الخطي يساوي \\(90^\\circ\\) وليس \\(180^\\circ\\).",
+      "المعاكس الإيجابي يبدل الفرض والنتيجة دون نفيهما."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Foundations & Reasoning)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (الأسس الهندسية والاستدلال المنطقي والبراهين)",
-    "q": "A circle has equation \\((x - 3)^2 + (y + 2)^2 = 64\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 3)^2 + (y + 2)^2 = 64\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Segment Midpoint, Distance Formula & Angle Bisectors",
+    "ti_ar": "وضع المصحح: نقطة المنتصف وصيغة المسافة ومنصف الزاوية",
+    "q": "(a) Segment \\(AB\\) has endpoint \\(A(-2, 5)\\) and midpoint \\(M(3, 1)\\). Find the coordinates of \\(B\\) and length \\(AB\\). (b) Ray \\(BD\\) bisects \\(\\angle ABC\\) with \\(m\\angle ABD = (4x - 6)^\\circ\\) and \\(m\\angle DBC = (2x + 18)^\\circ\\); find \\(m\\angle ABC\\).",
+    "q_ar": "(أ) للقطعة \\(AB\\) طرف \\(A(-2, 5)\\) ونقطة منتصف \\(M(3, 1)\\). أوجد إحداثيي \\(B\\) وطول \\(AB\\). (ب) ينصف الشعاع \\(BD\\) الزاوية \\(\\angle ABC\\) حيث \\(m\\angle ABD = (4x - 6)^\\circ\\) و\\(m\\angle DBC = (2x + 18)^\\circ\\)؛ أوجد \\(m\\angle ABC\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
-        "marks": 2,
+        "label": "Part (a) — Endpoint from Midpoint & Euclidean Distance",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (3, -2)\\)."
+            "text": "Solve \\(\\dfrac{-2 + x_B}{2} = 3\\) and \\(\\dfrac{5 + y_B}{2} = 1\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{64} = 8\\)."
+            "text": "Obtain \\(B(8, -3)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Compute \\(AB = \\sqrt{(8 - (-2))^2 + (-3 - 5)^2} = \\sqrt{100 + 64} = \\sqrt{164} = 2\\sqrt{41}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Angle Bisector & Angle Addition",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 8 \\cdot \\frac{\\pi}{2} = 4\\pi\\)."
+            "text": "Equate bisected halves: \\(4x - 6 = 2x + 18 \\implies 2x = 24 \\implies x = 12\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(64)\\frac{\\pi}{2} = 16\\pi\\)."
+            "text": "Evaluate \\(m\\angle ABD = 42^\\circ\\) and \\(m\\angle ABC = 2(42^\\circ) = 84^\\circ\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
-        "marks": 2,
+        "label": "الجزء (أ) — إيجاد الطرف من المنتصف وطول القطعة",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((3, -2)\\)."
+            "text": "حل \\(\\dfrac{-2 + x_B}{2} = 3\\) و\\(\\dfrac{5 + y_B}{2} = 1\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{64} = 8\\)."
+            "text": "إيجاد \\(B(8, -3)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "حساب \\(AB = \\sqrt{10^2 + (-8)^2} = \\sqrt{164} = 2\\sqrt{41}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — منصف الزاوية ومسلمة جمع الزوايا",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 4\\pi\\)."
+            "text": "مساواة نصفي الزاوية: \\(4x - 6 = 2x + 18 \\implies x = 12\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 16\\pi\\)."
+            "text": "حساب \\(m\\angle ABD = 42^\\circ\\) ومنه \\(m\\angle ABC = 84^\\circ\\)."
           }
         ]
       }
@@ -228,81 +240,91 @@ D["geo-foundations"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Foundations & Reasoning)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (الأسس الهندسية والاستدلال المنطقي والبراهين)",
+    "ti": "Step Builder: Midpoint, Distance & Vertical Angles",
+    "ti_ar": "بناء الخطوات: نقطة المنتصف والمسافة والزوايا المتقابلة بالرأس",
     "steps": [
       {
-        "l": "From \\((x - 3)^2 + (y + 2)^2 = 64\\), find the radius \\(r =\\)",
-        "a": "8",
-        "h": "Take the square root of 64."
+        "l": "Distance between \\(P(1, 2)\\) and \\(Q(7, 10)\\) is \\(PQ =\\)",
+        "a": "10",
+        "h": "sqrt((7-1)^2 + (10-2)^2) = sqrt(36 + 64)"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 2\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "8",
-        "h": "Cube 2."
+        "l": "Midpoint \\(x\\)-coordinate of \\(P(1, 2)\\) and \\(Q(7, 10)\\) is",
+        "a": "4",
+        "h": "(1 + 7) / 2"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Vertical angles \\((3k + 10)^\\circ\\) and \\((5k - 20)^\\circ\\) give \\(k =\\)",
+        "a": "15",
+        "h": "Solve 3k + 10 = 5k - 20"
+      },
+      {
+        "l": "The supplement of that \\(55^\\circ\\) angle measures (in degrees)",
+        "a": "125",
+        "h": "180 - 55"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 3)^2 + (y + 2)^2 = 64\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "8",
-        "h": "خذ الجذر التربيعي للعدد 64."
+        "l": "المسافة بين \\(P(1, 2)\\) و\\(Q(7, 10)\\) تساوي \\(PQ =\\)",
+        "a": "10",
+        "h": "جذر (36 + 64)"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 2\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "8",
-        "h": "احسب مكعب 2."
+        "l": "الإحداثي السيني لمنتصف \\(PQ\\) يساوي",
+        "a": "4",
+        "h": "(1 + 7) ÷ 2"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "الزاويتان المتقابلتان بالرأس \\((3k + 10)^\\circ\\) و\\((5k - 20)^\\circ\\) تعطيان \\(k =\\)",
+        "a": "15",
+        "h": "حل 3k + 10 = 5k - 20"
+      },
+      {
+        "l": "مكملة الزاوية \\(55^\\circ\\) تساوي (بالدرجات)",
+        "a": "125",
+        "h": "180 - 55"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Foundations & Reasoning)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (الأسس الهندسية والاستدلال المنطقي والبراهين)",
+    "ti": "Matching: Coordinate Geometry, Angle Pairs & Conditional Logic",
+    "ti_ar": "مطابقة: الهندسة الإحداثية وأزواج الزوايا والمنطق الشرطي",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Midpoint of \\((x_1, y_1)\\) and \\((x_2, y_2)\\)",
+        "r": "\\(\\left(\\dfrac{x_1+x_2}{2},\\; \\dfrac{y_1+y_2}{2}\\right)\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "Contrapositive of \\(p \\to q\\) (logically equivalent)",
+        "r": "\\(\\neg q \\to \\neg p\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "Linear pair postulate",
+        "r": "Adjacent angles on a straight line sum to \\(180^\\circ\\)"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Vertical angles theorem",
+        "r": "Opposite angles formed by intersecting lines are congruent"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "نقطة منتصف \\((x_1, y_1)\\) و\\((x_2, y_2)\\)",
+        "r": "\\(\\left(\\dfrac{x_1+x_2}{2},\\; \\dfrac{y_1+y_2}{2}\\right)\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "المعاكس الإيجابي للعبارة \\(p \\to q\\)",
+        "r": "\\(\\neg q \\to \\neg p\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "مسلمة الزوج الخطي",
+        "r": "الزاويتان المتجاورتان على مستقيم واحد مجموعهما \\(180^\\circ\\)"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "نظرية الزوايا المتقابلة بالرأس",
+        "r": "الزوايا المتقابلة الناتجة عن تقاطع مستقيمين متطابقة"
       }
     ]
   }
@@ -439,103 +461,115 @@ D["geo-lines"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Lines & Angles)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (المستقيمات المتوازية والقواطع والزوايا)",
-    "q": "Two similar solids have linear scale factor \\(k = 3\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 3\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Consecutive Interior Angles on Parallel Lines",
+    "ti_ar": "اكتشف الخطأ: الزوايا المتحالفة بين مستقيمين متوازيين",
+    "q": "Parallel lines \\(\\ell \\parallel m\\) are cut by a transversal, forming consecutive (same-side) interior angles \\((3x + 15)^\\circ\\) and \\((2x - 5)^\\circ\\). Which step is invalid?",
+    "q_ar": "يقطع قاطع مستقيمين متوازيين \\(\\ell \\parallel m\\) مكوناً زاويتين داخليتين متحالفتين \\((3x + 15)^\\circ\\) و\\((2x - 5)^\\circ\\). أي خطوة غير صحيحة؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 3\\).",
-      "Multiply the surface area directly by \\(3\\) instead of \\(3^2\\): \\(A_{\\text{large}} = 10 \\times 3 = 30\\text{ cm}^2\\).",
-      "Report \\(30\\text{ cm}^2\\) as the larger surface area."
+      "Identify both angles as interior angles on the same side of the transversal between \\(\\ell \\parallel m\\).",
+      "Set the two consecutive interior angles equal: \\(3x + 15 = 2x - 5\\).",
+      "Solve the linear equation to get \\(x = -20\\).",
+      "Substitute \\(x\\) back to evaluate the angle measures."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 3\\).",
-      "ضرب المساحة السطحية في \\(3\\) مباشرة بدلاً من \\(3^2\\): \\(A = 30\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تحديد الزاويتين كزاويتين داخليتين في جهة واحدة من القاطع بين \\(\\ell \\parallel m\\).",
+      "مساواة الزاويتين المتحالفتين: \\(3x + 15 = 2x - 5\\).",
+      "حل المعادلة للحصول على \\(x = -20\\).",
+      "التعويض بقيمة \\(x\\) لحساب قياس الزاويتين."
     ],
     "errorStep": 2,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 9\\) (giving \\(90\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 27\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "Consecutive (co-interior) angles between parallel lines are supplementary, not congruent: \\((3x + 15) + (2x - 5) = 180 \\implies 5x = 170 \\implies x = 34\\).",
+      "Consecutive interior angles always sum to \\(90^\\circ\\).",
+      "Alternate interior angles sum to \\(180^\\circ\\) whereas co-interior angles are equal."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 9\\) (أي \\(90\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 27\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "الزاويتان الداخليتان المتحالفتان متكاملتان وليستا متطابقتين: \\((3x + 15) + (2x - 5) = 180 \\implies x = 34\\).",
+      "مجموع الزاويتين المتحالفتين يساوي \\(90^\\circ\\) دائماً.",
+      "الزوايا المتبادلة داخلياً متكاملة بينما المتحالفة متساوية."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Lines & Angles)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (المستقيمات المتوازية والقواطع والزوايا)",
-    "q": "A circle has equation \\((x - 4)^2 + (y + 3)^2 = 100\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 4)^2 + (y + 3)^2 = 100\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Parallel Transversals & Perpendicular Line Equations",
+    "ti_ar": "وضع المصحح: القواطع المتوازية ومعادلات المستقيمات المتعامدة",
+    "q": "(a) Find the equation of the line perpendicular to \\(2x - 6y = 12\\) passing through \\((4, -1)\\). (b) Parallel lines \\(p \\parallel q\\) have alternate exterior angles \\((5x - 12)^\\circ\\) and \\((3x + 26)^\\circ\\); find the acute co-interior supplement.",
+    "q_ar": "(أ) أوجد معادلة المستقيم العمودي على \\(2x - 6y = 12\\) والمار بالنقطة \\((4, -1)\\). (ب) للمستقيمين المتوازيين \\(p \\parallel q\\) زاويتان متبادلتان خارجياً \\((5x - 12)^\\circ\\) و\\((3x + 26)^\\circ\\)؛ أوجد الزاوية المكملة الحادة.",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
-        "marks": 2,
+        "label": "Part (a) — Negative Reciprocal Slope & Line Equation",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (4, -3)\\)."
+            "text": "Rewrite \\(2x - 6y = 12 \\implies y = \\dfrac{1}{3}x - 2\\), identifying slope \\(m_1 = \\dfrac{1}{3}\\)."
           },
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{100} = 10\\)."
+            "text": "Take negative reciprocal slope \\(m_\\perp = -3\\) and apply point-slope at \\((4, -1)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Obtain \\(y + 1 = -3(x - 4) \\implies y = -3x + 11\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Alternate Exterior Congruence & Supplement",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 10 \\cdot \\frac{\\pi}{2} = 5\\pi\\)."
+            "text": "Set \\(5x - 12 = 3x + 26 \\implies 2x = 38 \\implies x = 19\\), giving obtuse angle \\(83^\\circ\\) or supplement."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(100)\\frac{\\pi}{2} = 25\\pi\\)."
+            "text": "Evaluate \\(5(19) - 12 = 83^\\circ\\) and supplementary angle \\(180^\\circ - 83^\\circ = 97^\\circ\\) (acute angle is \\(83^\\circ\\))."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
-        "marks": 2,
+        "label": "الجزء (أ) — ميل العمودي ومعادلة المستقيم",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((4, -3)\\)."
+            "text": "كتابة \\(y = \\dfrac{1}{3}x - 2\\) وتحديد الميل \\(m_1 = \\dfrac{1}{3}\\)."
           },
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{100} = 10\\)."
+            "text": "إيجاد ميل العمودي \\(m_\\perp = -3\\) والتعويض بالنقطة \\((4, -1)\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الحصول على \\(y = -3x + 11\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — تطابق التبادل الخارجي والزاوية المكملة",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 5\\pi\\)."
+            "text": "حل \\(5x - 12 = 3x + 26 \\implies x = 19\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 25\\pi\\)."
+            "text": "حساب الزاوية \\(83^\\circ\\) ومكملتها \\(97^\\circ\\)."
           }
         ]
       }
@@ -543,64 +577,64 @@ D["geo-lines"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Lines & Angles)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (المستقيمات المتوازية والقواطع والزوايا)",
+    "ti": "Step Builder: Parallel & Perpendicular Slopes and Transversal Angles",
+    "ti_ar": "بناء الخطوات: ميول التوازي والتعامد وزوايا القاطع",
     "steps": [
       {
-        "l": "From \\((x - 4)^2 + (y + 3)^2 = 100\\), find the radius \\(r =\\)",
-        "a": "10",
-        "h": "Take the square root of 100."
+        "l": "Slope of the line passing through \\((-1, 2)\\) and \\((3, 10)\\) is \\(m =\\)",
+        "a": "2",
+        "h": "(10 - 2) / (3 - (-1))"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 3\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "27",
-        "h": "Cube 3."
+        "l": "Slope of any line perpendicular to slope \\(m = 2\\) is",
+        "a": "-0.5",
+        "h": "-1 / 2 = -0.5"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Co-interior angles \\((2x)^\\circ\\) and \\((3x - 10)^\\circ\\) between parallel lines give \\(x =\\)",
+        "a": "38",
+        "h": "5x - 10 = 180 => 5x = 190"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 4)^2 + (y + 3)^2 = 100\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "10",
-        "h": "خذ الجذر التربيعي للعدد 100."
+        "l": "ميل المستقيم المار بالنقطتين \\((-1, 2)\\) و\\((3, 10)\\) هو \\(m =\\)",
+        "a": "2",
+        "h": "(10 - 2) ÷ 4"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 3\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "27",
-        "h": "احسب مكعب 3."
+        "l": "ميل المستقيم العمودي على مستقيم ميله \\(2\\) يساوي",
+        "a": "-0.5",
+        "h": "-1 ÷ 2 = -0.5"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "الزاويتان المتحالفتان \\((2x)^\\circ\\) و\\((3x - 10)^\\circ\\) تعطيان \\(x =\\)",
+        "a": "38",
+        "h": "5x - 10 = 180"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Central vs. Inscribed Angle (Lines & Angles)",
-    "ti_ar": "فحص سريع: الزاوية المركزية والمحيطية (المستقيمات المتوازية والقواطع والزوايا)",
-    "q": "An inscribed angle \\(\\angle APB\\) subtends the same minor arc as central angle \\(\\angle AOB = 100^\\circ\\). What is \\(\\angle APB\\)?",
-    "q_ar": "زاوية محيطية \\(\\angle APB\\) تشترك في نفس القوس الأصغر مع زاوية مركزية قياسها \\(100^\\circ\\). ما قياس \\(\\angle APB\\)؟",
+    "ti": "Quick Check: Perpendicular Bisector Slope Criterion",
+    "ti_ar": "فحص سريع: شرط تعامد المستقيمين بالميل",
+    "q": "If non-vertical lines \\(\\ell_1\\) and \\(\\ell_2\\) are perpendicular with slopes \\(m_1 = \\dfrac{4}{7}\\) and \\(m_2\\), what is \\(m_2\\)?",
+    "q_ar": "إذا تعامد مستقيمان غير رأسيين وكان ميل الأول \\(m_1 = \\dfrac{4}{7}\\)، فما ميل الثاني \\(m_2\\)؟",
     "o": [
-      "\\(50^\\circ\\)",
-      "\\(100^\\circ\\)",
-      "\\(80^\\circ\\)",
-      "\\(200^\\circ\\)"
+      "\\(-\\dfrac{7}{4}\\)",
+      "\\(\\dfrac{7}{4}\\)",
+      "\\(-\\dfrac{4}{7}\\)",
+      "\\(\\dfrac{3}{7}\\)"
     ],
     "o_ar": [
-      "\\(50^\\circ\\)",
-      "\\(100^\\circ\\)",
-      "\\(80^\\circ\\)",
-      "\\(200^\\circ\\)"
+      "\\(-\\dfrac{7}{4}\\)",
+      "\\(\\dfrac{7}{4}\\)",
+      "\\(-\\dfrac{4}{7}\\)",
+      "\\(\\dfrac{3}{7}\\)"
     ],
     "a": 0,
-    "ex": "The inscribed angle is half the central angle subtending the same arc.",
-    "ex_ar": "الزاوية المحيطية تساوي نصف قياس الزاوية المركزية المشتركة معها في القوس."
+    "ex": "Perpendicular lines satisfy \\(m_1 \\cdot m_2 = -1\\), so \\(m_2 = -\\dfrac{1}{m_1} = -\\dfrac{7}{4}\\).",
+    "ex_ar": "المستقيمان المتعامدان يحققان \\(m_1 \\cdot m_2 = -1\\)، لذا \\(m_2 = -\\dfrac{7}{4}\\)."
   }
 ];
 D["geo-triangles"] = [
@@ -730,103 +764,115 @@ D["geo-triangles"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Triangles & Congruence)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (المثلثات ونظريات التطابق)",
-    "q": "Two similar solids have linear scale factor \\(k = 4\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 4\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: The Invalid SSA (\"Assumed Congruence\") Trap",
+    "ti_ar": "اكتشف الخطأ: فخ حالة ضلعين وزاوية غير محصورة (SSA)",
+    "q": "A student attempts to prove \\(\\triangle ABC \\cong \\triangle DEF\\) given \\(AB = DE = 10\\), \\(BC = EF = 7\\), and \\(\\angle A = \\angle D = 35^\\circ\\). Which step is invalid?",
+    "q_ar": "يحاول طالب إثبات تطابق \\(\\triangle ABC \\cong \\triangle DEF\\) بمعرفة \\(AB = DE = 10\\) و\\(BC = EF = 7\\) و\\(\\angle A = \\angle D = 35^\\circ\\). أي خطوة غير صحيحة؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 4\\).",
-      "Multiply the surface area directly by \\(4\\) instead of \\(4^2\\): \\(A_{\\text{large}} = 10 \\times 4 = 40\\text{ cm}^2\\).",
-      "Report \\(40\\text{ cm}^2\\) as the larger surface area."
+      "List the congruent parts: side \\(AB \\cong DE\\), side \\(BC \\cong EF\\), and angle \\(\\angle A \\cong \\angle D\\).",
+      "Check the position of \\(\\angle A\\): it lies opposite \\(BC\\), not included between \\(AB\\) and \\(BC\\).",
+      "Invoke SAS Congruence to conclude \\(\\triangle ABC \\cong \\triangle DEF\\).",
+      "Deduce corresponding sides \\(AC\\) and \\(DF\\) are congruent by CPCTC."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 4\\).",
-      "ضرب المساحة السطحية في \\(4\\) مباشرة بدلاً من \\(4^2\\): \\(A = 40\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "حصر العناصر المتطابقة: \\(AB \\cong DE\\) و\\(BC \\cong EF\\) و\\(\\angle A \\cong \\angle D\\).",
+      "ملاحظة موقع الزاوية \\(\\angle A\\): تقابل الضلع \\(BC\\) وليست محصورة بين \\(AB\\) و\\(BC\\).",
+      "استخدام مسلمة SAS لاستنتاج تطابق المثلثين \\(\\triangle ABC \\cong \\triangle DEF\\).",
+      "استنتاج تطابق \\(AC\\) و\\(DF\\) من تطابق العناصر المتناظرة."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 16\\) (giving \\(160\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 64\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "SAS requires the congruent angle to be INCLUDED between the two sides (\\(\\angle B \\cong \\angle E\\)); SSA is the ambiguous case and can produce two non-congruent triangles.",
+      "Two triangles with two equal sides are always congruent regardless of angles.",
+      "HL applies to any acute triangle with SSA."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 16\\) (أي \\(160\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 64\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "تشترط مسلمة SAS أن تكون الزاوية محصورة بين الضلعين المتطابقين (\\(\\angle B \\cong \\angle E\\))؛ أما SSA فهي الحالة المبهمة ولا تثبت التطابق.",
+      "أي مثلثين يشتركان في ضلعين يكونان متطابقين دائماً.",
+      "مسلمة الوتر والساق HL تنطبق على جميع المثلثات الحادة."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Triangles & Congruence)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (المثلثات ونظريات التطابق)",
-    "q": "A circle has equation \\((x - 1)^2 + (y + 4)^2 = 16\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 1)^2 + (y + 4)^2 = 16\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Exterior Angle Theorem, Isosceles Base Angles & Triangle Inequality",
+    "ti_ar": "وضع المصحح: نظرية الزاوية الخارجية والمثلث المتطابق الضلعين ومتباينة المثلث",
+    "q": "(a) In \\(\\triangle PQR\\), exterior angle at \\(R\\) is \\((7x - 10)^\\circ\\) while remote interior angles are \\((3x + 5)^\\circ\\) and \\(55^\\circ\\). Find \\(x\\) and \\(m\\angle PRQ\\). (b) State the strict integer range for the third side \\(s\\) of a triangle with sides \\(6\\) and \\(11\\).",
+    "q_ar": "(أ) في \\(\\triangle PQR\\)، الزاوية الخارجية عند \\(R\\) هي \\((7x - 10)^\\circ\\) والزاويتان الداخليتان البعيدتان \\((3x + 5)^\\circ\\) و\\(55^\\circ\\). أوجد \\(x\\) و\\(m\\angle PRQ\\). (ب) حدد مدى القيم الصحيحة الممكنة للضلع الثالث \\(s\\) لمثلث طولا ضلعيه \\(6\\) و\\(11\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
-        "marks": 2,
+        "label": "Part (a) — Exterior Angle Theorem",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (1, -4)\\)."
+            "text": "Apply Exterior Angle Theorem: \\(7x - 10 = (3x + 5) + 55\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{16} = 4\\)."
+            "text": "Solve \\(4x = 70 \\implies x = 17.5\\) and exterior angle \\(= 112.5^\\circ\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Interior angle \\(m\\angle PRQ = 180^\\circ - 112.5^\\circ = 67.5^\\circ\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Triangle Inequality Bounds",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 4 \\cdot \\frac{\\pi}{2} = 2\\pi\\)."
+            "text": "Apply \\(|11 - 6| < s < 11 + 6 \\implies 5 < s < 17\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(16)\\frac{\\pi}{2} = 4\\pi\\)."
+            "text": "Integer values satisfy \\(6 \\le s \\le 16\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
-        "marks": 2,
+        "label": "الجزء (أ) — نظرية الزاوية الخارجية للمثلث",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((1, -4)\\)."
+            "text": "تطبيق نظرية الزاوية الخارجية: \\(7x - 10 = (3x + 5) + 55\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{16} = 4\\)."
+            "text": "حل المعادلة \\(4x = 70 \\implies x = 17.5\\) والزاوية الخارجية \\(112.5^\\circ\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الزاوية الداخلية \\(m\\angle PRQ = 180^\\circ - 112.5^\\circ = 67.5^\\circ\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — متباينة المثلث",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 2\\pi\\)."
+            "text": "تطبيق \\(|11 - 6| < s < 11 + 6 \\implies 5 < s < 17\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 4\\pi\\)."
+            "text": "القيم الصحيحة الممكنة تحقق \\(6 \\le s \\le 16\\)."
           }
         ]
       }
@@ -834,64 +880,64 @@ D["geo-triangles"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Triangles & Congruence)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (المثلثات ونظريات التطابق)",
+    "ti": "Step Builder: Isosceles Angles, Midsegment & Centroid Ratio",
+    "ti_ar": "بناء الخطوات: المثلث المتطابق الضلعين والقطعة المنصفة ومركز الثقل",
     "steps": [
       {
-        "l": "From \\((x - 1)^2 + (y + 4)^2 = 16\\), find the radius \\(r =\\)",
-        "a": "4",
-        "h": "Take the square root of 16."
+        "l": "An isosceles triangle has vertex angle \\(48^\\circ\\); each base angle measures (degrees)",
+        "a": "66",
+        "h": "(180 - 48) / 2"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 4\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "64",
-        "h": "Cube 4."
+        "l": "If base \\(BC = 26\\), the midsegment parallel to \\(BC\\) has length",
+        "a": "13",
+        "h": "Midsegment = 1/2 * base"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Median \\(AM = 18\\); distance from vertex \\(A\\) to centroid \\(G\\) is \\(AG =\\)",
+        "a": "12",
+        "h": "Centroid divides median in 2:1 ratio => (2/3)*18"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 1)^2 + (y + 4)^2 = 16\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "4",
-        "h": "خذ الجذر التربيعي للعدد 16."
+        "l": "مثلث متطابق الضلعين زاوية رأسه \\(48^\\circ\\)؛ قياس كل زاوية قاعدة (بالدرجات)",
+        "a": "66",
+        "h": "(180 - 48) ÷ 2"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 4\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "64",
-        "h": "احسب مكعب 4."
+        "l": "إذا كان طول القاعدة \\(BC = 26\\)، فطول القطعة المنصفة الموازية لها يساوي",
+        "a": "13",
+        "h": "نصف طول القاعدة"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "إذا كان طول المتوسط \\(AM = 18\\)، فالبعد من الرأس \\(A\\) إلى مركز الثقل \\(G\\) هو",
+        "a": "12",
+        "h": "(2/3) × 18"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Central vs. Inscribed Angle (Triangles & Congruence)",
-    "ti_ar": "فحص سريع: الزاوية المركزية والمحيطية (المثلثات ونظريات التطابق)",
-    "q": "An inscribed angle \\(\\angle APB\\) subtends the same minor arc as central angle \\(\\angle AOB = 110^\\circ\\). What is \\(\\angle APB\\)?",
-    "q_ar": "زاوية محيطية \\(\\angle APB\\) تشترك في نفس القوس الأصغر مع زاوية مركزية قياسها \\(110^\\circ\\). ما قياس \\(\\angle APB\\)؟",
+    "ti": "Quick Check: Triangle Circumcenter vs. Incenter Equidistance",
+    "ti_ar": "فحص سريع: مركز الدائرة المحيطة مقابل مركز الدائرة الداخلية",
+    "q": "Which triangle concurrency point is equidistant from all three SIDES of the triangle (the center of the inscribed circle)?",
+    "q_ar": "أي نقطة تلاقٍ في المثلث تكون على أبعاد متساوية من أضلاعه الثلاثة (مركز الدائرة الداخلية)؟",
     "o": [
-      "\\(55^\\circ\\)",
-      "\\(110^\\circ\\)",
-      "\\(70^\\circ\\)",
-      "\\(220^\\circ\\)"
+      "Incenter (intersection of angle bisectors)",
+      "Circumcenter (intersection of perpendicular bisectors)",
+      "Centroid (intersection of medians)",
+      "Orthocenter (intersection of altitudes)"
     ],
     "o_ar": [
-      "\\(55^\\circ\\)",
-      "\\(110^\\circ\\)",
-      "\\(70^\\circ\\)",
-      "\\(220^\\circ\\)"
+      "مركز الدائرة الداخلية (تقاطع منصفات الزوايا)",
+      "مركز الدائرة المحيطة (تقاطع الأعمدة المنصفة للأضلاع)",
+      "مركز الثقل (تقاطع المتوسطات)",
+      "ملتقى الارتفاعات"
     ],
     "a": 0,
-    "ex": "The inscribed angle is half the central angle subtending the same arc.",
-    "ex_ar": "الزاوية المحيطية تساوي نصف قياس الزاوية المركزية المشتركة معها في القوس."
+    "ex": "Every point on an angle bisector is equidistant from the two sides of the angle, so the intersection of all three angle bisectors (the incenter) is equidistant from all three sides.",
+    "ex_ar": "كل نقطة على منصف الزاوية تبعد البعد نفسه عن ضلعيها، لذا فتقاطع منصفات الزوايا الثلاث (مركز الدائرة الداخلية) متساوي البعد عن الأضلاع الثلاثة."
   }
 ];
 D["geo-similarity"] = [
@@ -1043,74 +1089,84 @@ D["geo-similarity"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Similarity & Proportional Reasoning)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (التشابه والتناسب الهندسي)",
-    "q": "A circle has equation \\((x - 2)^2 + (y + 2)^2 = 36\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 2)^2 + (y + 2)^2 = 36\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Side-Splitter Proportionality, Angle Bisector Theorem & Area/Volume Scale",
+    "ti_ar": "وضع المصحح: التناسب في المثلثات ونظرية منصف الزاوية ومعامل التشابه",
+    "q": "(a) In \\(\\triangle ABC\\), \\(DE \\parallel BC\\) with \\(AD = 4\\), \\(DB = 6\\), and \\(BC = 15\\). Find \\(DE\\). (b) Two similar solids have surface areas \\(36\\text{ cm}^2\\) and \\(100\\text{ cm}^2\\); if the smaller solid has volume \\(54\\text{ cm}^3\\), find the larger volume.",
+    "q_ar": "(أ) في \\(\\triangle ABC\\)، \\(DE \\parallel BC\\) مع \\(AD = 4\\) و\\(DB = 6\\) و\\(BC = 15\\). أوجد \\(DE\\). (ب) مجسمان متشابهان مساحتاهما السطحيتان \\(36\\) و\\(100\\text{ سم}^2\\)؛ إذا كان حجم الأصغر \\(54\\text{ سم}^3\\)، فأوجد حجم الأكبر.",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
+        "label": "Part (a) — Whole-Side Ratio vs. Segment Ratio",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (2, -2)\\)."
+            "text": "Use full side \\(AB = 4 + 6 = 10\\) in \\(\\triangle ADE \\sim \\triangle ABC\\): \\(\\dfrac{DE}{15} = \\dfrac{4}{10}\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{36} = 6\\)."
+            "text": "Solve \\(DE = 15 \\times \\dfrac{2}{5} = 6\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
-        "marks": 2,
+        "label": "Part (b) — Linear Scale k from k² to Volume k³",
+        "marks": 3,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 6 \\cdot \\frac{\\pi}{2} = 3\\pi\\)."
+            "text": "Extract linear ratio from areas: \\(k = \\sqrt{\\dfrac{100}{36}} = \\dfrac{10}{6} = \\dfrac{5}{3}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Cube linear scale factor: \\(k^3 = \\left(\\dfrac{5}{3}\\right)^3 = \\dfrac{125}{27}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(36)\\frac{\\pi}{2} = 9\\pi\\)."
+            "text": "Compute \\(V_2 = 54 \\times \\dfrac{125}{27} = 250\\text{ cm}^3\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
+        "label": "الجزء (أ) — نسبة الضلع الكامل في المثلثين المتشابهين",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((2, -2)\\)."
+            "text": "حساب الضلع الكامل \\(AB = 10\\) وكتابة \\(\\dfrac{DE}{15} = \\dfrac{4}{10}\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{36} = 6\\)."
+            "text": "إيجاد \\(DE = 6\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
-        "marks": 2,
+        "label": "الجزء (ب) — استخراج النسبة الخطية k وحساب الحجم k³",
+        "marks": 3,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 3\\pi\\)."
+            "text": "استخراج معامل التشابه الخطي \\(k = \\sqrt{\\dfrac{100}{36}} = \\dfrac{5}{3}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "تكعيب المعامل للنسبة الحجمية \\(k^3 = \\dfrac{125}{27}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 9\\pi\\)."
+            "text": "حساب \\(V_2 = 54 \\times \\dfrac{125}{27} = 250\\text{ سم}^3\\)."
           }
         ]
       }
@@ -1118,81 +1174,81 @@ D["geo-similarity"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Similarity & Proportional Reasoning)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (التشابه والتناسب الهندسي)",
+    "ti": "Step Builder: Geometric Mean Altitude & Triangle Angle Bisector Theorem",
+    "ti_ar": "بناء الخطوات: المتوسط الهندسي للارتفاع ونظرية منصف زاوية المثلث",
     "steps": [
       {
-        "l": "From \\((x - 2)^2 + (y + 2)^2 = 36\\), find the radius \\(r =\\)",
+        "l": "Altitude \\(h\\) to hypotenuse splits it into segments \\(4\\) and \\(9\\); \\(h =\\)",
         "a": "6",
-        "h": "Take the square root of 36."
+        "h": "h = sqrt(4 * 9)"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 2\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "8",
-        "h": "Cube 2."
+        "l": "In \\(\\triangle ABC\\) with \\(AB = 8\\), \\(AC = 12\\), angle bisector \\(AD\\) splits \\(BC\\) with \\(BD = 6\\); \\(DC =\\)",
+        "a": "9",
+        "h": "BD / DC = AB / AC => 6 / DC = 8 / 12"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Similar triangles with perimeter ratio \\(3:5\\) have area ratio \\(9:\\,\\)",
+        "a": "25",
+        "h": "Square the linear ratio: 5^2"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 2)^2 + (y + 2)^2 = 36\\)، أوجد نصف القطر \\(r =\\)",
+        "l": "الارتفاع \\(h\\) على الوتر يقسمه إلى \\(4\\) و\\(9\\)؛ طول \\(h =\\)",
         "a": "6",
-        "h": "خذ الجذر التربيعي للعدد 36."
+        "h": "جذر (4 × 9)"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 2\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "8",
-        "h": "احسب مكعب 2."
+        "l": "في \\(\\triangle ABC\\) حيث \\(AB = 8, AC = 12\\)، المنصف \\(AD\\) يعطي \\(BD = 6\\)؛ طول \\(DC =\\)",
+        "a": "9",
+        "h": "6 / DC = 8 / 12"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "مثلثان متشابهان نسبة محيطيهما \\(3:5\\) تكون نسبة مساحتيهما \\(9:\\,\\)",
+        "a": "25",
+        "h": "تربيع النسبة الخطية 5²"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Similarity & Proportional Reasoning)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (التشابه والتناسب الهندسي)",
+    "ti": "Matching: Similarity Postulates, Side-Splitter & Geometric Mean Theorems",
+    "ti_ar": "مطابقة: مسلمات التشابه والتناسب والمتوسط الهندسي",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "AA Similarity Postulate",
+        "r": "Two pairs of congruent interior angles guarantee \\(\\triangle ABC \\sim \\triangle DEF\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "Triangle Angle Bisector Theorem",
+        "r": "Splits opposite side in the ratio of the adjacent sides \\(AB : AC\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "Right-triangle altitude geometric mean",
+        "r": "\\(h^2 = p \\cdot q\\) where \\(p, q\\) are hypotenuse segments"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Area & volume scaling under linear factor \\(k\\)",
+        "r": "Areas scale by \\(k^2\\); volumes scale by \\(k^3\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "مسلمة التشابه بزاويتين AA",
+        "r": "تطابق زاويتين في مثلث مع نظيرتيهما يضمن التشابه"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "نظرية منصف زاوية المثلث",
+        "r": "يقسم الضلع المقابل بنسبة الضلعين المجاورين \\(AB : AC\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "نظرية المتوسط الهندسي للارتفاع",
+        "r": "\\(h^2 = p \\cdot q\\) حيث \\(p, q\\) جزآ الوتر"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "نسب المساحة والحجم بمعامل خطي \\(k\\)",
+        "r": "المساحات بمعامل \\(k^2\\) والحجوم بمعامل \\(k^3\\)"
       }
     ]
   }
@@ -1610,103 +1666,115 @@ D["geo-quads"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Polygons & Quadrilaterals)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (المضلعات والأشكال الرباعية وخصائصها)",
-    "q": "Two similar solids have linear scale factor \\(k = 4\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 4\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Diagonal Properties of Parallelograms vs. Rectangles",
+    "ti_ar": "اكتشف الخطأ: خصائص أقطار متوازي الأضلاع مقابل المستطيل",
+    "q": "A student solves for \\(x\\) in a general (non-rectangular) parallelogram \\(ABCD\\) with diagonals \\(AC = 4x - 2\\) and \\(BD = 2x + 10\\) intersecting at \\(E\\). Which step is invalid?",
+    "q_ar": "يوجد طالب قيمة \\(x\\) في متوازي أضلاع عام (غير مستطيل) \\(ABCD\\) قطراه \\(AC = 4x - 2\\) و\\(BD = 2x + 10\\) يتقاطعان في \\(E\\). أي خطوة غير صحيحة؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 4\\).",
-      "Multiply the surface area directly by \\(4\\) instead of \\(4^2\\): \\(A_{\\text{large}} = 10 \\times 4 = 40\\text{ cm}^2\\).",
-      "Report \\(40\\text{ cm}^2\\) as the larger surface area."
+      "Recall that opposite sides of parallelogram \\(ABCD\\) are parallel and congruent.",
+      "Recall that diagonals \\(AC\\) and \\(BD\\) bisect each other at \\(E\\) (\\(AE = EC\\) and \\(BE = ED\\)).",
+      "Assume diagonals of every parallelogram have equal total length and set \\(4x - 2 = 2x + 10\\).",
+      "Solve to obtain \\(x = 6\\)."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 4\\).",
-      "ضرب المساحة السطحية في \\(4\\) مباشرة بدلاً من \\(4^2\\): \\(A = 40\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تذكر أن كل ضلعين متقابلين في متوازي الأضلاع متوازيان ومتطابقان.",
+      "تذكر أن القطرين ينصف كل منهما الآخر عند \\(E\\) (\\(AE = EC\\) و\\(BE = ED\\)).",
+      "افتراض أن قطري أي متوازي أضلاع متطابقان في الطول ومساواة \\(4x - 2 = 2x + 10\\).",
+      "حل المعادلة للحصول على \\(x = 6\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 16\\) (giving \\(160\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 64\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "Diagonals of a general parallelogram bisect each other, NOT equal each other; congruent diagonals (\\(AC = BD\\)) hold if and only if the parallelogram is a rectangle.",
+      "Diagonals of every parallelogram are perpendicular.",
+      "Opposite angles in a parallelogram are supplementary rather than congruent."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 16\\) (أي \\(160\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 64\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "قطرا متوازي الأضلاع العام ينصف كل منهما الآخر لكنهما غير متساويين في الطول إلا إذا كان الشكل مستطيلاً.",
+      "قطرا كل متوازي أضلاع متعامدان دائماً.",
+      "الزوايا المتقابلة في متوازي الأضلاع متكاملة وليست متطابقة."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Polygons & Quadrilaterals)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (المضلعات والأشكال الرباعية وخصائصها)",
-    "q": "A circle has equation \\((x - 4)^2 + (y + 4)^2 = 100\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 4)^2 + (y + 4)^2 = 100\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Regular Polygon Angles, Rhombus Diagonals & Trapezoid Midsegment",
+    "ti_ar": "وضع المصحح: زوايا المضلعات المنتظمة وأقطار المعين والقطعة المتوسطة لشبه المنحرف",
+    "q": "(a) Each interior angle of a regular \\(n\\)-gon is \\(156^\\circ\\); find \\(n\\). (b) A rhombus has diagonals of lengths \\(10\\) and \\(24\\), and a trapezoid with bases \\(14\\) and \\(26\\) has midsegment \\(m\\); find the perimeter of the rhombus and \\(m\\).",
+    "q_ar": "(أ) قياس كل زاوية داخلية لمضلع منتظم عدد أضلاعه \\(n\\) هو \\(156^\\circ\\)؛ أوجد \\(n\\). (ب) معين طولا قطريه \\(10\\) و\\(24\\)، وشبه منحرف قاعدتاه \\(14\\) و\\(26\\)؛ أوجد محيط المعين وطول القطعة المتوسطة \\(m\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
+        "label": "Part (a) — Exterior Angle Shortcut for Regular n-gon",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (4, -4)\\)."
+            "text": "Each exterior angle is \\(180^\\circ - 156^\\circ = 24^\\circ\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{100} = 10\\)."
+            "text": "Compute \\(n = \\dfrac{360^\\circ}{24^\\circ} = 15\\) sides."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
-        "marks": 2,
+        "label": "Part (b) — Rhombus Right Triangles & Trapezoid Midsegment",
+        "marks": 3,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 10 \\cdot \\frac{\\pi}{2} = 5\\pi\\)."
+            "text": "Rhombus diagonals bisect perpendicularly into legs \\(5\\) and \\(12\\), giving side \\(s = \\sqrt{5^2 + 12^2} = 13\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(100)\\frac{\\pi}{2} = 25\\pi\\)."
+            "text": "Rhombus perimeter \\(= 4(13) = 52\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "Trapezoid midsegment \\(m = \\dfrac{14 + 26}{2} = 20\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
+        "label": "الجزء (أ) — طريقة الزاوية الخارجية للمضلع المنتظم",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((4, -4)\\)."
+            "text": "قياس كل زاوية خارجية \\(180^\\circ - 156^\\circ = 24^\\circ\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{100} = 10\\)."
+            "text": "عدد الأضلاع \\(n = \\dfrac{360^\\circ}{24^\\circ} = 15\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
-        "marks": 2,
+        "label": "الجزء (ب) — محيط المعين والقطعة المتوسطة لشبه المنحرف",
+        "marks": 3,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 5\\pi\\)."
+            "text": "قطرا المعين متعامدان وينصف كل منهما الآخر إلى \\(5\\) و\\(12\\)، فطول الضلع \\(s = 13\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 25\\pi\\)."
+            "text": "محيط المعين \\(= 4 \\times 13 = 52\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "القطعة المتوسطة لشبه المنحرف \\(m = \\dfrac{14 + 26}{2} = 20\\)."
           }
         ]
       }
@@ -1714,81 +1782,91 @@ D["geo-quads"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Polygons & Quadrilaterals)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (المضلعات والأشكال الرباعية وخصائصها)",
+    "ti": "Step Builder: Polygon Interior Sums, Rhombus Area & Trapezoid Midsegment",
+    "ti_ar": "بناء الخطوات: مجموع زوايا المضلع ومساحة المعين وشبه المنحرف",
     "steps": [
       {
-        "l": "From \\((x - 4)^2 + (y + 4)^2 = 100\\), find the radius \\(r =\\)",
-        "a": "10",
-        "h": "Take the square root of 100."
+        "l": "Sum of interior angles of a convex decagon (\\(n = 10\\)) in degrees is",
+        "a": "1440",
+        "h": "(10 - 2) * 180"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 4\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "64",
-        "h": "Cube 4."
+        "l": "Exterior angle of a regular 12-gon in degrees is",
+        "a": "30",
+        "h": "360 / 12"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
+        "l": "Area of a rhombus/kite with diagonals \\(d_1 = 8\\) and \\(d_2 = 15\\) is",
         "a": "60",
-        "h": "Compute 360 / 6."
+        "h": "(1/2) * 8 * 15"
+      },
+      {
+        "l": "A trapezoid has base \\(b_1 = 9\\) and midsegment \\(m = 14\\); the other base \\(b_2 =\\)",
+        "a": "19",
+        "h": "(9 + b2)/2 = 14 => 9 + b2 = 28"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 4)^2 + (y + 4)^2 = 100\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "10",
-        "h": "خذ الجذر التربيعي للعدد 100."
+        "l": "مجموع الزوايا الداخلية لمضلع عشاري محدب (\\(n = 10\\)) بالدرجات هو",
+        "a": "1440",
+        "h": "(10 - 2) × 180"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 4\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "64",
-        "h": "احسب مكعب 4."
+        "l": "قياس الزاوية الخارجية لمضلع منتظم ذي 12 ضلعاً يساوي",
+        "a": "30",
+        "h": "360 ÷ 12"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
+        "l": "مساحة معين قطراه \\(d_1 = 8\\) و\\(d_2 = 15\\) تساوي",
         "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "h": "0.5 × 8 × 15"
+      },
+      {
+        "l": "شبه منحرف قاعدته الصغرى \\(9\\) وقطعته المتوسطة \\(14\\)؛ قاعدته الكبرى \\(b_2 =\\)",
+        "a": "19",
+        "h": "2 × 14 - 9"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Polygons & Quadrilaterals)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (المضلعات والأشكال الرباعية وخصائصها)",
+    "ti": "Matching: Polygon Angle Sums & Special Quadrilateral Theorems",
+    "ti_ar": "مطابقة: زوايا المضلعات وخصائص الأشكال الرباعية الخاصة",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Convex \\(n\\)-gon interior angle sum",
+        "r": "\\((n - 2)\\cdot 180^\\circ\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "Sum of exterior angles of any convex polygon",
+        "r": "\\(360^\\circ\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "Rhombus diagonal property",
+        "r": "Diagonals are perpendicular and bisect vertex angles"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Trapezoid midsegment length",
+        "r": "\\(\\dfrac{b_1 + b_2}{2}\\) parallel to both bases"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "مجموع الزوايا الداخلية لمضلع محدب عدد أضلاعه \\(n\\)",
+        "r": "\\((n - 2)\\cdot 180^\\circ\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "مجموع الزوايا الخارجية لأي مضلع محدب",
+        "r": "\\(360^\\circ\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "خاصية قطري المعين",
+        "r": "القطران متعامدان وينصفان زوايا الرؤوس"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "طول القطعة المتوسطة لشبه المنحرف",
+        "r": "\\(\\dfrac{b_1 + b_2}{2}\\) وموازية للقاعدتين"
       }
     ]
   }
@@ -2249,74 +2327,84 @@ D["geo-solids"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Area, Surface Area & Volume)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (المساحة والمساحة السطحية والحجوم للمجسمات)",
-    "q": "A circle has equation \\((x - 2)^2 + (y + 3)^2 = 36\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 2)^2 + (y + 3)^2 = 36\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Cone Slant Height, Total Surface Area & Cavalieri Volume",
+    "ti_ar": "وضع المصحح: الارتفاع الجانبي للمخروط والمساحة الكلية وحجم المجسمات",
+    "q": "(a) A right circular cone has radius \\(r = 6\\text{ cm}\\) and vertical height \\(h = 8\\text{ cm}\\). Find its exact volume and total surface area in terms of \\(\\pi\\). (b) A solid metal sphere of radius \\(3\\text{ cm}\\) is melted into a cylinder of radius \\(2\\text{ cm}\\); find the cylinder height.",
+    "q_ar": "(أ) مخروط دائري قائم نصف قطره \\(6\\text{ سم}\\) وارتفاعه \\(8\\text{ سم}\\). أوجد حجمه ومساحته الكلية بدلالة \\(\\pi\\). (ب) صُهرت كرة معدنية نصف قطرها \\(3\\text{ سم}\\) وشُكّلت أسطوانة نصف قطرها \\(2\\text{ سم}\\)؛ أوجد ارتفاع الأسطوانة.",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
-        "marks": 2,
+        "label": "Part (a) — Cone Volume & Total Surface Area",
+        "marks": 3,
         "rubric": [
           {
             "code": "B1",
             "marks": 1,
-            "text": "Center \\((h, k) = (2, -3)\\)."
+            "text": "Volume \\(V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi(36)(8) = 96\\pi\\text{ cm}^3\\)."
           },
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{36} = 6\\)."
+            "text": "Find slant height \\(\\ell = \\sqrt{6^2 + 8^2} = 10\\text{ cm}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Total surface area \\(= \\pi r^2 + \\pi r \\ell = 36\\pi + 60\\pi = 96\\pi\\text{ cm}^2\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Conservation of Volume (Sphere to Cylinder)",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 6 \\cdot \\frac{\\pi}{2} = 3\\pi\\)."
+            "text": "Equate volumes: \\(\\dfrac{4}{3}\\pi(3)^3 = \\pi(2)^2 h \\implies 36\\pi = 4\\pi h\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(36)\\frac{\\pi}{2} = 9\\pi\\)."
+            "text": "Solve \\(h = 9\\text{ cm}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
-        "marks": 2,
+        "label": "الجزء (أ) — حجم المخروط ومساحته الكلية",
+        "marks": 3,
         "rubric": [
           {
             "code": "B1",
             "marks": 1,
-            "text": "المركز \\((2, -3)\\)."
+            "text": "الحجم \\(V = \\dfrac{1}{3}\\pi(36)(8) = 96\\pi\\text{ سم}^3\\)."
           },
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{36} = 6\\)."
+            "text": "حساب الارتفاع الجانبي \\(\\ell = \\sqrt{6^2 + 8^2} = 10\\text{ سم}\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "المساحة الكلية \\(= \\pi r^2 + \\pi r \\ell = 36\\pi + 60\\pi = 96\\pi\\text{ سم}^2\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — حفظ الحجم عند إعادة التشكيل",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 3\\pi\\)."
+            "text": "مساواة الحجمين: \\(\\dfrac{4}{3}\\pi(3)^3 = \\pi(2)^2 h \\implies 36\\pi = 4\\pi h\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 9\\pi\\)."
+            "text": "إيجاد الارتفاع \\(h = 9\\text{ سم}\\)."
           }
         ]
       }
@@ -2324,40 +2412,40 @@ D["geo-solids"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Area, Surface Area & Volume)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (المساحة والمساحة السطحية والحجوم للمجسمات)",
+    "ti": "Step Builder: Pyramid Volume, Sphere Surface Area & Prism Diagonal",
+    "ti_ar": "بناء الخطوات: حجم الهرم ومساحة الكرة وقطر متوازي المستطيلات",
     "steps": [
       {
-        "l": "From \\((x - 2)^2 + (y + 3)^2 = 36\\), find the radius \\(r =\\)",
-        "a": "6",
-        "h": "Take the square root of 36."
+        "l": "Volume of a square pyramid with base edge \\(6\\) and height \\(10\\) is",
+        "a": "120",
+        "h": "(1/3) * 6^2 * 10"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 3\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "27",
-        "h": "Cube 3."
+        "l": "Surface area of a sphere of radius \\(5\\) is \\(k\\pi\\), where \\(k =\\)",
+        "a": "100",
+        "h": "4 * pi * r^2 = 4 * 25 * pi"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Space diagonal of a \\(3 \\times 4 \\times 12\\) rectangular prism has length",
+        "a": "13",
+        "h": "sqrt(3^2 + 4^2 + 12^2) = sqrt(169)"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 2)^2 + (y + 3)^2 = 36\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "6",
-        "h": "خذ الجذر التربيعي للعدد 36."
+        "l": "حجم هرم رباعي طول ضلع قاعدته \\(6\\) وارتفاعه \\(10\\) يساوي",
+        "a": "120",
+        "h": "(1/3) × 36 × 10"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 3\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "27",
-        "h": "احسب مكعب 3."
+        "l": "مساحة سطح كرة نصف قطرها \\(5\\) تساوي \\(k\\pi\\)، حيث \\(k =\\)",
+        "a": "100",
+        "h": "4 × 5²"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "طول القطر الفراغي لمتوازي مستطيلات أبعاده \\(3 \\times 4 \\times 12\\) يساوي",
+        "a": "13",
+        "h": "جذر (9 + 16 + 144)"
       }
     ]
   },
@@ -2519,103 +2607,105 @@ D["geo-transform"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Transformations & Symmetry)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (التحويلات الهندسية والتماثل)",
-    "q": "Two similar solids have linear scale factor \\(k = 4\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 4\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Center-Offset Dilation / Enlargement Formula",
+    "ti_ar": "اكتشف الخطأ: التمدد (التكبير) حول مركز غير نقطة الأصل",
+    "q": "A student dilates \\(P(5, 4)\\) by scale factor \\(k = 3\\) about center \\(C(1, 2)\\). Which step contains an error?",
+    "q_ar": "يجري طالب تمدداً للنقطة \\(P(5, 4)\\) بمعامل \\(k = 3\\) حول المركز \\(C(1, 2)\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 4\\).",
-      "Multiply the surface area directly by \\(4\\) instead of \\(4^2\\): \\(A_{\\text{large}} = 10 \\times 4 = 40\\text{ cm}^2\\).",
-      "Report \\(40\\text{ cm}^2\\) as the larger surface area."
+      "Identify center of dilation \\(C(1, 2)\\), point \\(P(5, 4)\\), and scale factor \\(k = 3\\).",
+      "Multiply \\(P\\)’s coordinates directly by \\(k = 3\\) as if centered at \\((0, 0)\\) to get \\((15, 12)\\).",
+      "Add center \\(C(1, 2)\\) afterward to claim \\(P' = (16, 14)\\).",
+      "Plot \\(P'(16, 14)\\) as the image."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 4\\).",
-      "ضرب المساحة السطحية في \\(4\\) مباشرة بدلاً من \\(4^2\\): \\(A = 40\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تحديد مركز التمدد \\(C(1, 2)\\) والنقطة \\(P(5, 4)\\) والمعامل \\(k = 3\\).",
+      "ضرب إحداثيي \\(P\\) مباشرة في \\(3\\) كما لو كان المركز \\((0, 0)\\) للحصول على \\((15, 12)\\).",
+      "إضافة المركز \\(C(1, 2)\\) بعد ذلك للادعاء بأن \\(P' = (16, 14)\\).",
+      "تمثيل الصورة عند \\(P'(16, 14)\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 16\\) (giving \\(160\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 64\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "You must scale the displacement vector from the center \\(\\overrightarrow{CP} = (5-1, 4-2) = (4, 2)\\): \\(P' = C + 3\\overrightarrow{CP} = (1 + 12, 2 + 6) = (13, 8)\\).",
+      "Dilation by \\(k = 3\\) divides coordinates by \\(3\\).",
+      "The center of dilation always moves to \\((3, 6)\\)."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 16\\) (أي \\(160\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 64\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "يجب ضرب متجه الإزاحة من المركز \\(\\overrightarrow{CP} = (4, 2)\\) في المعامل ثم إضافته للمركز: \\(P' = (1, 2) + 3(4, 2) = (13, 8)\\).",
+      "التمدد بمعامل \\(3\\) يقسم الإحداثيات على \\(3\\).",
+      "يتحرك مركز التمدد نفسه إلى \\((3, 6)\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Transformations & Symmetry)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (التحويلات الهندسية والتماثل)",
-    "q": "A circle has equation \\((x - 3)^2 + (y + 4)^2 = 64\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 3)^2 + (y + 4)^2 = 64\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Coordinate Rotations, Reflections & Enlargement Vectors",
+    "ti_ar": "وضع المصحح: الدوران والانعكاس ومتجهات التكبير في المستوى الإحداثي",
+    "q": "(a) Point \\(A(3, -5)\\) is rotated \\(90^\\circ\\) counterclockwise about the origin to \\(A_1\\), then reflected across \\(y = x\\) to \\(A_2\\). Find \\(A_1\\) and \\(A_2\\). (b) Enlarge \\(B(4, 1)\\) by scale factor \\(k = -2\\) from center \\(C(2, 3)\\).",
+    "q_ar": "(أ) أُديرت النقطة \\(A(3, -5)\\) بزاوية \\(90^\\circ\\) عكس عقارب الساعة حول الأصل إلى \\(A_1\\)، ثم انعكست حول \\(y = x\\) إلى \\(A_2\\). أوجد \\(A_1\\) و\\(A_2\\). (ب) كبّر \\(B(4, 1)\\) بمعامل \\(k = -2\\) من المركز \\(C(2, 3)\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
+        "label": "Part (a) — 90° CCW Rotation Followed by Reflection in y = x",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Center \\((h, k) = (3, -4)\\)."
+            "text": "Apply \\(R_{90^\\circ}(x, y) = (-y, x)\\) to \\((3, -5)\\) to get \\(A_1(5, 3)\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{64} = 8\\)."
+            "text": "Reflect \\(A_1(5, 3)\\) across \\(y = x\\) by swapping coordinates: \\(A_2(3, 5)\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Negative Scale-Factor Enlargement from Center C(2, 3)",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 8 \\cdot \\frac{\\pi}{2} = 4\\pi\\)."
+            "text": "Displacement \\(\\overrightarrow{CB} = (4 - 2, 1 - 3) = (2, -2)\\); multiply by \\(k = -2\\) to get \\((-4, 4)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(64)\\frac{\\pi}{2} = 16\\pi\\)."
+            "text": "Add to center \\(C(2, 3)\\): \\(B' = (2 - 4, 3 + 4) = (-2, 7)\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
+        "label": "الجزء (أ) — دوران 90° عكس عقارب الساعة ثم انعكاس حول y = x",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "المركز \\((3, -4)\\)."
+            "text": "تطبيق \\(R_{90^\\circ}(x, y) = (-y, x)\\) على \\((3, -5)\\) لإيجاد \\(A_1(5, 3)\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{64} = 8\\)."
+            "text": "الانعكاس حول \\(y = x\\) بتبديل الإحداثيين: \\(A_2(3, 5)\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — تكبير بمعامل سالب k = -2 حول المركز C(2, 3)",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 4\\pi\\)."
+            "text": "متجه الإزاحة \\(\\overrightarrow{CB} = (2, -2)\\)؛ وبالضرب في \\(-2\\) نحصل على \\((-4, 4)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 16\\pi\\)."
+            "text": "الجمع مع المركز \\(C(2, 3)\\): \\(B' = (-2, 7)\\)."
           }
         ]
       }
@@ -2623,81 +2713,81 @@ D["geo-transform"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Transformations & Symmetry)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (التحويلات الهندسية والتماثل)",
+    "ti": "Step Builder: Reflections, Rotations & Translation Vectors",
+    "ti_ar": "بناء الخطوات: الانعكاس والدوران ومتجهات الإزاحة",
     "steps": [
       {
-        "l": "From \\((x - 3)^2 + (y + 4)^2 = 64\\), find the radius \\(r =\\)",
-        "a": "8",
-        "h": "Take the square root of 64."
+        "l": "Reflecting \\((6, -2)\\) across the line \\(y = x\\) gives \\(x\\)-coordinate",
+        "a": "-2",
+        "h": "Swap (x, y) -> (y, x)"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 4\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "64",
-        "h": "Cube 4."
+        "l": "Rotating \\((4, 7)\\) by \\(180^\\circ\\) about \\((0, 0)\\) gives \\(y\\)-coordinate",
+        "a": "-7",
+        "h": "(x, y) -> (-x, -y)"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Translating \\((-3, 5)\\) by vector \\(\\langle 8, -2 \\rangle\\) gives \\(x\\)-coordinate",
+        "a": "5",
+        "h": "-3 + 8"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 3)^2 + (y + 4)^2 = 64\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "8",
-        "h": "خذ الجذر التربيعي للعدد 64."
+        "l": "انعكاس النقطة \\((6, -2)\\) حول المستقيم \\(y = x\\) يعطي الإحداثي السيني",
+        "a": "-2",
+        "h": "بدّل الإحداثيين (x, y) -> (y, x)"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 4\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "64",
-        "h": "احسب مكعب 4."
+        "l": "دوران النقطة \\((4, 7)\\) بزاوية \\(180^\\circ\\) حول الأصل يعطي الإحداثي الصادي",
+        "a": "-7",
+        "h": "(x, y) -> (-x, -y)"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "إزاحة \\((-3, 5)\\) بالمتجه \\(\\langle 8, -2 \\rangle\\) تعطي الإحداثي السيني",
+        "a": "5",
+        "h": "-3 + 8"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Transformations & Symmetry)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (التحويلات الهندسية والتماثل)",
+    "ti": "Matching: Coordinate Plane Transformation Rules",
+    "ti_ar": "مطابقة: قواعد التحويلات الهندسية في المستوى الإحداثي",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Reflection across the line \\(y = x\\)",
+        "r": "\\((x, y) \\mapsto (y, x)\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "\\(90^\\circ\\) counterclockwise rotation about \\((0, 0)\\)",
+        "r": "\\((x, y) \\mapsto (-y, x)\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "\\(90^\\circ\\) clockwise rotation about \\((0, 0)\\)",
+        "r": "\\((x, y) \\mapsto (y, -x)\\)"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Dilation from center \\((a, b)\\) by factor \\(k\\)",
+        "r": "\\((x, y) \\mapsto (a + k(x-a),\\; b + k(y-b))\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "انعكاس حول المستقيم \\(y = x\\)",
+        "r": "\\((x, y) \\mapsto (y, x)\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "دوران \\(90^\\circ\\) عكس عقارب الساعة حول الأصل",
+        "r": "\\((x, y) \\mapsto (-y, x)\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "دوران \\(90^\\circ\\) مع عقارب الساعة حول الأصل",
+        "r": "\\((x, y) \\mapsto (y, -x)\\)"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "تمدد من المركز \\((a, b)\\) بمعامل \\(k\\)",
+        "r": "\\((x, y) \\mapsto (a + k(x-a),\\; b + k(y-b))\\)"
       }
     ]
   }
@@ -3148,103 +3238,115 @@ D["geo-prob"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Probability)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الاحتمالات الهندسية والشرطية)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 3\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 3\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 3 = 2\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 3 = 2\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 3 = 8\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 8\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Probability)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الاحتمالات الهندسية والشرطية)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 12\\). For a simple random sample of size \\(n = 16\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 3\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 12\\). لعينة عشوائية حجمها \\(n = 16\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{16}} = \\dfrac{12}{4} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(5) + 3 = 23\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{12}{\\sqrt{16}} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(5) + 3 = 23\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -3252,81 +3354,81 @@ D["geo-prob"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Probability)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الاحتمالات الهندسية والشرطية)",
+    "ti": "Step Builder: Addition Rule, Conditional Probability & Complement Trick",
+    "ti_ar": "بناء الخطوات: قاعدة الجمع والاحتمال الشرطي ومتممة «واحد على الأقل»",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 16\\):",
-        "a": "4",
-        "h": "Square root of 16."
+        "l": "If \\(P(A) = 0.45\\), \\(P(B) = 0.35\\), and \\(P(A \\cap B) = 0.14\\), then \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 12\\):",
-        "a": "3",
-        "h": "Divide 12 by 4."
+        "l": "Using the same probabilities, conditional probability \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} =\\)",
+        "a": "0.4",
+        "h": "0.14 / 0.35 = 0.4"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 3\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "8",
-        "h": "Add 5 + 3."
+        "l": "A fair coin is tossed \\(3\\) times; \\(P(\\text{at least one Head}) = 1 - (0.5)^3 =\\)",
+        "a": "0.875",
+        "h": "1 - 0.125 = 0.875"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 16\\):",
-        "a": "4",
-        "h": "الجذر التربيعي للعدد 16."
+        "l": "إذا كان \\(P(A) = 0.45\\) و\\(P(B) = 0.35\\) و\\(P(A \\cap B) = 0.14\\)، فإن \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 12\\):",
-        "a": "3",
-        "h": "اقسم 12 على 4."
+        "l": "الاحتمال الشرطي \\(P(A \\mid B) = \\dfrac{0.14}{0.35} =\\)",
+        "a": "0.4",
+        "h": "0.14 ÷ 0.35"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "8",
-        "h": "اجمع 5 + 3."
+        "l": "عند رمي قطعة نقد متزنة \\(3\\) مرات، \\(P(\\text{صورة واحدة على الأقل}) =\\)",
+        "a": "0.875",
+        "h": "1 - 1/8 = 0.875"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Probability)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الاحتمالات الهندسية والشرطية)",
+    "ti": "Matching: Addition Rule, Conditional Probability, Independence & Counting",
+    "ti_ar": "مطابقة: قواعد الجمع والاحتمال الشرطي والاستقلال وطرق العد",
     "p": [
       {
+        "l": "General Addition Rule for \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) for \\(P(B) > 0\\)"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Criterion for independent events \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Probability of \"at least one success\"",
+        "r": "\\(1 - P(\\text{zero successes})\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "قاعدة الجمع العامة \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) بشرط \\(P(B) > 0\\)"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "شرط استقلال الحدثين \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "احتمال نجاح واحد على الأقل",
+        "r": "\\(1 - P(\\text{عدم تحقق أي نجاح})\\)"
       }
     ]
   }

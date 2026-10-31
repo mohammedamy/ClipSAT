@@ -203,34 +203,49 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
+          "type": "fn",
+          "title": "Displacement s(t) = t³ - 3t² + 2 vs Velocity v(t) = 3t² - 6t",
+          "xrange": [
+            -0.5,
+            3.5
           ],
-          "B": [
-            12,
-            0
-          ],
-          "C": [
-            12,
+          "yrange": [
+            -4,
             5
           ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "24",
-            "a": "32",
-            "b": "40"
-          },
-          "rightAt": "B"
+          "fns": [
+            {
+              "fn": "x*x*x - 3*x*x + 2",
+              "color": "var(--fig-indigo)",
+              "label": "s(t) = t³ - 3t² + 2"
+            },
+            {
+              "fn": "3*x*x - 6*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "v(t) = 3t² - 6t"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 2,
+              "label": "Turn t=0 (s=2)"
+            },
+            {
+              "x": 2,
+              "y": -2,
+              "label": "Turn t=2 (s=-2)"
+            }
+          ]
         },
         "caption": {
-          "en": "Orthogonal components and Euclidean distance relationship \\((24)^2 + (32)^2 = (40)^2\\) for Differentiation, Turning Points & Kinematics.",
-          "ar": "العلاقة الهندسية المتعامدة \\((24)^2 + (32)^2 = (40)^2\\) في درس التفاضل والنقاط الحرجة وتطبيقات الحركة المستقيمة."
+          "en": "Particle displacement \\(s(t) = t^3 - 3t^2 + 2\\) reaches stationary turning points instantaneously at rest (\\(v(t) = 3t^2 - 6t = 0\\)) when \\(t = 0\\) and \\(t = 2\\).",
+          "ar": "إزاحة الجسيم \\(s(t) = t^3 - 3t^2 + 2\\) تبلغ نقاط التوقف اللحظي (حيث تنعدم السرعة \\(v(t) = 3t^2 - 6t = 0\\)) عند اللحظتين \\(t = 0\\) و\\(t = 2\\)."
+        },
+        "title": {
+          "en": "Kinematics Displacement s(t) & Instantaneous Velocity v(t) = ds/dt",
+          "ar": "منحنى الإزاحة s(t) والسرعة اللحظية v(t) = ds/dt ونقاط التوقف"
         }
       },
       {

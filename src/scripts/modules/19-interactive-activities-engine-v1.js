@@ -583,9 +583,17 @@ function _attachMathPalette(container, getTargetInp, opts){
       var isNav=(k.act==='left'||k.act==='right');
       btn.className='ix-mp-key'+(isAct?' ix-mp-act':(isNav?' ix-mp-nav':''));
       btn.textContent=k.l;btn.title=k.t;btn.setAttribute('aria-label',k.t);
+      var _pd=false;
+      btn.addEventListener('pointerdown',function(e){
+        _pd=true;e.preventDefault();handleKey(k);
+      });
       btn.addEventListener('mousedown',function(e){
-        e.preventDefault();
-        handleKey(k);
+        if(_pd){_pd=false;return;}
+        e.preventDefault();handleKey(k);
+      });
+      btn.addEventListener('click',function(e){
+        _pd=false;
+        if(e.detail===0){e.preventDefault();handleKey(k);}
       });
       g.appendChild(btn);
     });
@@ -1073,10 +1081,29 @@ function _buildORD(cfg,box){
   res.setAttribute('role','status');res.setAttribute('aria-live','polite');
   box.appendChild(res);
 
+  var dragIdx=-1;
   function renderList(){
     list.innerHTML='';
     items.forEach(function(item,idx){
       var li=document.createElement('li');li.className='ix-ord-item';li.dataset.origIdx=item.origIdx;
+      li.draggable=!isFinished;
+      li.addEventListener('dragstart',function(e){
+        if(isFinished)return;
+        dragIdx=idx;li.classList.add('dragging');
+        if(e.dataTransfer){e.dataTransfer.effectAllowed='move';try{e.dataTransfer.setData('text/plain',String(idx));}catch(_){}}
+      });
+      li.addEventListener('dragover',function(e){
+        if(isFinished||dragIdx<0||dragIdx===idx)return;
+        e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='move';
+      });
+      li.addEventListener('drop',function(e){
+        if(isFinished||dragIdx<0||dragIdx===idx)return;
+        e.preventDefault();
+        var moved=items.splice(dragIdx,1)[0];
+        items.splice(idx,0,moved);
+        dragIdx=-1;renderList();
+      });
+      li.addEventListener('dragend',function(){dragIdx=-1;li.classList.remove('dragging');});
       var handle=document.createElement('span');handle.className='ix-ord-handle';
       handle.setAttribute('aria-hidden','true');handle.textContent='⠿';
 
@@ -1178,7 +1205,7 @@ function _buildCAT(cfg,box){
     p.innerHTML=_loc(cfg,cfg.q?'q':'prompt');box.appendChild(p);
   }
 
-  var cats=_loc(cfg,'categories')||[];
+  var cats=_loc(cfg,'categories')||_loc(cfg,'cats')||[];
   var rawItems=_loc(cfg,'items')||[];
   var items=rawItems.map(function(it){
     var catIdx=typeof it.cat==='number'?it.cat:cats.indexOf(it.cat);
@@ -1296,6 +1323,7 @@ function _buildCAT(cfg,box){
    Plot/register/evalFn (those live inside a *different* top-level IIFE and
    aren't reachable from here) — keeps this new feature isolated so it can't
    regress the 58 existing canvas explorers. ── */
+var _FNM={sin:Math.sin,cos:Math.cos,tan:Math.tan,asin:Math.asin,acos:Math.acos,atan:Math.atan,arcsin:Math.asin,arccos:Math.acos,arctan:Math.atan,sec:function(v){return 1/Math.cos(v);},csc:function(v){return 1/Math.sin(v);},cot:function(v){return 1/Math.tan(v);},sqrt:Math.sqrt,cbrt:Math.cbrt||function(v){return v<0?-Math.pow(-v,1/3):Math.pow(v,1/3);},abs:Math.abs,ln:Math.log,log:Math.log10||function(v){return Math.log(v)/Math.LN10;},log10:Math.log10||function(v){return Math.log(v)/Math.LN10;},exp:Math.exp};
 function _fnEval(expr,x,params){
   try{
     var e=String(expr);
@@ -1303,11 +1331,10 @@ function _fnEval(expr,x,params){
       e=e.replace(new RegExp('\\b'+k+'\\b','g'),'('+params[k]+')');
     });
     e=e.replace(/\^/g,'**')
-      .replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(')
-      .replace(/sqrt\(/g,'Math.sqrt(').replace(/abs\(/g,'Math.abs(').replace(/ln\(/g,'Math.log(')
-      .replace(/exp\(/g,'Math.exp(').replace(/\bpi\b/g,'Math.PI');
+      .replace(/\b(arcsin|arccos|arctan|asin|acos|atan|sin|cos|tan|sec|csc|cot|sqrt|cbrt|abs|ln|log10|log|exp)\s*\(/g,'M.$1(')
+      .replace(/\bpi\b/gi,'Math.PI').replace(/\be\b/g,'Math.E');
     /* eslint-disable no-new-func */
-    return (new Function('x','return ('+e+')'))(x);
+    return (new Function('x','M','return ('+e+')'))(x,_FNM);
   }catch(err){return NaN;}
 }
 
@@ -2334,7 +2361,7 @@ function _loadTrackData(){
   var m=/(?:^|\s)track-([\w-]+)/.exec(document.body.className||'');
   if(!m||IX_TRACKS.indexOf(m[1])<0)return;
   var sc=document.createElement('script');
-  sc.src='/js/ix/'+m[1]+'.js?v=20261026b';
+  sc.src='/js/ix/'+m[1]+'.js?v=20261031a';
   sc.async=true;
   document.head.appendChild(sc);
 }

@@ -692,30 +692,32 @@ D["ai-gradient-descent"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Loss Functions, Gradients & Optimization)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Gradient Descent Sign & Learning-Rate Update",
+    "ti_ar": "اكتشف الخطأ: إشارة تحديث الانحدار التدريجي ومعدل التعلم",
+    "q": "A student minimizes \\(L(w) = (w - 3)^2\\) starting from \\(w_0 = 5\\) with learning rate \\(\\eta = 0.25\\). Which step moves uphill instead of downhill?",
+    "q_ar": "يصغّر طالب دالة الخسارة \\(L(w) = (w - 3)^2\\) بدءاً من \\(w_0 = 5\\) بمعدل تعلم \\(\\eta = 0.25\\). أي خطوة تتضمن خطأ في اتجاه التحديث؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Differentiate loss: \\(\\nabla_w L(w) = 2(w - 3)\\).",
+      "Evaluate gradient at \\(w_0 = 5\\): \\(\\nabla_w L(5) = 2(5 - 3) = 4\\).",
+      "Update parameter via \\(w_1 = w_0 + \\eta \\nabla_w L(w_0) = 5 + 0.25(4) = 6\\).",
+      "Check new loss \\(L(6) = (6 - 3)^2 = 9\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "اشتقاق الخسارة: \\(\\nabla_w L(w) = 2(w - 3)\\).",
+      "حساب التدرج عند \\(w_0 = 5\\): \\(\\nabla_w L(5) = 4\\).",
+      "تحديث المعلمة بجمع التدرج \\(w_1 = w_0 + \\eta \\nabla_w L(w_0) = 5 + 1 = 6\\).",
+      "حساب الخسارة الجديدة \\(L(6) = 9\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "Gradient descent SUBTRACTS the scaled gradient: \\(w_1 = w_0 - \\eta \\nabla_w L(w_0) = 5 - 0.25(4) = 4\\) (reducing loss from \\(4\\) to \\(1\\)); adding performs gradient ascent.",
+      "The derivative of \\((w - 3)^2\\) is \\(w - 3\\) without the factor of 2.",
+      "Learning rate \\(\\eta\\) must always be greater than 1."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "الانحدار التدريجي يطرح التدرج: \\(w_1 = w_0 - \\eta \\nabla L = 5 - 1 = 4\\) لتقليل الخسارة؛ أما الجمع فيصعد نحو زيادة الخسارة.",
+      "مشتقة \\((w - 3)^2\\) هي \\(w - 3\\) دون الضرب في 2.",
+      "يجب أن يكون معدل التعلم \\(\\eta > 1\\) دائماً."
     ],
     "correctReason": 0
   },
@@ -835,42 +837,42 @@ D["ai-gradient-descent"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Multivariable & Vector Integral Theorems (Loss Functions, Gradients & Optimization)",
-    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)",
+    "ti": "Matching: Optimization Concepts in Machine Learning",
+    "ti_ar": "مطابقة: مفاهيم التحسين والانحدار التدريجي في تعلم الآلة",
     "p": [
       {
-        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
+        "l": "Gradient descent update rule",
+        "r": "\\(\\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t)\\)"
       },
       {
-        "l": "Green's Theorem (circulation)",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
+        "l": "Convex loss function (PSD Hessian \\(H \\succeq 0\\))",
+        "r": "Every local minimum is a global minimum"
       },
       {
-        "l": "Spherical volume element \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
+        "l": "Saddle point in parameter space",
+        "r": "\\(\\nabla L = \\mathbf{0}\\) with both positive & negative Hessian eigenvalues"
       },
       {
-        "l": "Divergence Theorem (outward flux)",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "l": "L2 (Ridge) weight decay penalty \\(\\frac{\\lambda}{2}\\|\\mathbf{w}\\|_2^2\\)",
+        "r": "Adds \\(\\lambda \\mathbf{w}\\) to the gradient, shrinking weights smoothly"
       }
     ],
     "p_ar": [
       {
-        "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
+        "l": "قاعدة تحديث الانحدار التدريجي",
+        "r": "\\(\\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t)\\)"
       },
       {
-        "l": "مبرهنة غرين للدوران",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
+        "l": "دالة خسارة محدبة (\\(H \\succeq 0\\))",
+        "r": "كل نهاية صغرى محلية هي نهاية صغرى شاملة"
       },
       {
-        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
+        "l": "نقطة سرجية في فضاء المعلمات",
+        "r": "\\(\\nabla L = \\mathbf{0}\\) مع قيم ذاتية موجبة وسالبة لهيسيان"
       },
       {
-        "l": "مبرهنة التباعد للتدفق السطحي",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "l": "انتظام L2 (Ridge) \\(\\frac{\\lambda}{2}\\|\\mathbf{w}\\|_2^2\\)",
+        "r": "يضيف \\(\\lambda \\mathbf{w}\\) للتدرج لتقليص الأوزان بسلاسة"
       }
     ]
   },
@@ -1946,103 +1948,105 @@ D["ai-logistic-regression"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Separable ODE Constant & u-Substitution Bounds (Logistic Regression & Classification Boundaries)",
-    "ti_ar": "اكتشف الخطأ: ثابت التكامل في المعادلات التفاضلية (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
-    "q": "A student solves \\(\\dfrac{dy}{dx} = 2xy\\) with initial condition \\(y(0) = 4\\). Which step mishandles the constant of integration?",
-    "q_ar": "يحل طالب المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) بالشرط الابتدائي \\(y(0) = 4\\). أي خطوة تخطئ في التعامل مع ثابت التكامل؟",
+    "ti": "Spot the Error: Binary Cross-Entropy & Sigmoid Threshold",
+    "ti_ar": "اكتشف الخطأ: خسارة الانتروبيا المتقاطعة وعتبة السيجمويد",
+    "q": "For logit \\(z = \\mathbf{w}^\\top \\mathbf{x} + b = 0\\) and true label \\(y = 1\\), a student computes the predicted probability and Binary Cross-Entropy loss. Which step is wrong?",
+    "q_ar": "لقيمة \\(z = 0\\) والتصنيف الحقيقي \\(y = 1\\)، يحسب طالب احتمال السيجمويد وخسارة الانتروبيا المتقاطعة. أي خطوة خاطئة؟",
     "steps": [
-      "Separate variables for \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "Integrate without \\(+C\\), then tack \\(+C\\) onto the end after exponentiating: \\(y = e^{x^2} + C\\).",
-      "Apply \\(y(0) = 4\\) to write \\(y = e^{x^2} + 3\\)."
+      "Evaluate sigmoid \\(\\hat{p} = \\sigma(0) = \\dfrac{1}{1 + e^0} = \\dfrac{1}{2} = 0.5\\).",
+      "Write Binary Cross-Entropy for \\(y = 1\\): \\(\\mathcal{L} = -\\ln(\\hat{p})\\).",
+      "Substitute \\(\\hat{p} = 0.5\\) and claim \\(-\\ln(0.5) = 0\\) because the point lies on the decision boundary.",
+      "Compute gradient wrt logit \\(z\\): \\(\\dfrac{\\partial \\mathcal{L}}{\\partial z} = \\hat{p} - y = -0.5\\)."
     ],
     "steps_ar": [
-      "فصل المتغيرات لقيم \\(y > 0\\): \\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx\\).",
-      "التكامل دون \\(+C\\) ثم إضافة \\(+C\\) جمعاً بعد أخذ الدالة الأسية: \\(y = e^{x^2} + C\\).",
-      "التعويض بالشرط \\(y(0) = 4\\) لكتابة \\(y = e^{x^2} + 3\\)."
+      "حساب السيجمويد \\(\\hat{p} = \\sigma(0) = 0.5\\).",
+      "كتابة خسارة الانتروبيا المتقاطعة عند \\(y = 1\\): \\(\\mathcal{L} = -\\ln(\\hat{p})\\).",
+      "التعويض بـ \\(\\hat{p} = 0.5\\) والادعاء أن \\(-\\ln(0.5) = 0\\).",
+      "حساب مشتقة الخسارة بالنسبة لـ \\(z\\): \\(\\hat{p} - y = -0.5\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Add \\(+C\\) immediately upon integrating: \\(\\ln y = x^2 + C \\implies y = e^{x^2 + C} = A e^{x^2}\\), so \\(y(0) = 4\\) gives multiplicative \\(y = 4 e^{x^2}\\).",
-      "Variables cannot be separated in \\(dy/dx = 2xy\\).",
-      "\\(\\int 2x\\,dx\\) equals \\(2\\)."
+      "\\(-\\ln(0.5) = \\ln(2) \\approx 0.693 > 0\\); cross-entropy loss approaches \\(0\\) only as \\(\\hat{p} \\to 1\\), not at \\(\\hat{p} = 0.5\\).",
+      "\\(\\sigma(0)\\) equals \\(0\\), not \\(0.5\\).",
+      "The gradient \\(\\partial \\mathcal{L}/\\partial z\\) is \\(y + \\hat{p}\\)."
     ],
     "reasons_ar": [
-      "يُضاف \\(+C\\) فور التكامل: \\(\\ln y = x^2 + C \\implies y = A e^{x^2}\\)، وبالتعويض عن \\(y(0) = 4\\) نجد \\(y = 4 e^{x^2}\\).",
-      "لا يمكن فصل المتغيرات في هذه المعادلة.",
-      "تكامل \\(2x\\) يساوي \\(2\\)."
+      "قيمة \\(-\\ln(0.5) = \\ln(2) \\approx 0.693 > 0\\)؛ تقترب الخسارة من الصفر فقط عندما \\(\\hat{p} \\to 1\\).",
+      "قيمة \\(\\sigma(0)\\) تساوي \\(0\\) وليس \\(0.5\\).",
+      "مشتقة الخسارة بالنسبة لـ \\(z\\) تساوي \\(y + \\hat{p}\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Definite Integral via FTC & Initial-Value ODE (Logistic Regression & Classification Boundaries)",
-    "ti_ar": "وضع المصحح: التكامل المحدود ومسألة القيمة الابتدائية (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
-    "q": "(a) Evaluate \\(\\int_0^{2} (3x^2 + 4x)\\,dx\\) exactly. (b) Solve \\(\\dfrac{dy}{dx} = 2xy\\) given \\(y(0) = 4\\).",
-    "q_ar": "(أ) احسب التكامل المحدود \\(\\int_0^{2} (3x^2 + 4x)\\,dx\\). (ب) حل المعادلة التفاضلية \\(\\dfrac{dy}{dx} = 2xy\\) علماً بأن \\(y(0) = 4\\).",
+    "ti": "Examiner Mode: Sigmoid Derivative, Log-Odds & Decision Boundary",
+    "ti_ar": "وضع المصحح: مشتقة السيجمويد ونسبة الأرجحية اللوغاريتمية وحد القرار",
+    "q": "Let \\(\\hat{p} = \\sigma(z) = \\dfrac{1}{1 + e^{-z}}\\) where \\(z = 2x_1 - x_2 - 4\\). (a) Show that \\(\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))\\). (b) Find the linear decision boundary where \\(\\hat{p} = 0.5\\) and classify \\((3, 1)\\).",
+    "q_ar": "لتكن \\(\\hat{p} = \\sigma(z) = \\dfrac{1}{1 + e^{-z}}\\) حيث \\(z = 2x_1 - x_2 - 4\\). (أ) أثبت أن \\(\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))\\). (ب) أوجد حد القرار عند \\(\\hat{p} = 0.5\\) وصنّف النقطة \\((3, 1)\\).",
     "parts": [
       {
-        "label": "Part (a) — Antiderivative & FTC Evaluation",
+        "label": "Part (a) — Self-Referential Sigmoid Derivative",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Antiderivative: \\([x^3 + 2x^2]_0^{2}\\)."
+            "text": "Differentiate \\((1 + e^{-z})^{-1}\\) via chain rule: \\(\\sigma'(z) = \\dfrac{e^{-z}}{(1 + e^{-z})^2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Evaluate bounds: \\(8 + 8 - 0 = 16\\)."
+            "text": "Factor as \\(\\dfrac{1}{1+e^{-z}}\\cdot\\dfrac{e^{-z}}{1+e^{-z}} = \\sigma(z)(1 - \\sigma(z))\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Separable Particular Solution",
+        "label": "Part (b) — Decision Boundary & Classification",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\int \\frac{1}{y}\\,dy = \\int 2x\\,dx \\implies \\ln|y| = x^2 + C\\)."
+            "text": "\\(\\hat{p} = 0.5 \\iff z = 0 \\implies 2x_1 - x_2 - 4 = 0\\) (or \\(x_2 = 2x_1 - 4\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(y = A e^{x^2}\\); applying \\(y(0) = 4\\) yields \\(y = 4 e^{x^2}\\)."
+            "text": "At \\((3, 1)\\), \\(z = 6 - 1 - 4 = 1 > 0 \\implies \\hat{p} > 0.5\\) (Class 1)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — المشتقة العكسية والنظرية الأساسية للتفاضل والتكامل",
+        "label": "الجزء (أ) — اشتقاق دالة السيجمويد",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المشتقة العكسية: \\([x^3 + 2x^2]_0^{2}\\)."
+            "text": "الاشتقاق بقاعدة السلسلة: \\(\\sigma'(z) = \\dfrac{e^{-z}}{(1 + e^{-z})^2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "التعويض بالحدين: \\(16\\)."
+            "text": "التبسيط إلى \\(\\sigma(z)(1 - \\sigma(z))\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — الحل الخاص للمعادلة القابلة للفصل",
+        "label": "الجزء (ب) — معادلة حد القرار والتصنيف",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\ln|y| = x^2 + C\\)."
+            "text": "\\(\\hat{p} = 0.5 \\iff z = 0 \\implies 2x_1 - x_2 - 4 = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(y = 4 e^{x^2}\\)."
+            "text": "عند \\((3, 1)\\) نجد \\(z = 1 > 0\\) فتُصنف الفئة الموجبة 1."
           }
         ]
       }
@@ -2050,81 +2054,81 @@ D["ai-logistic-regression"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Definite Integral & Carrying Capacity (Logistic Regression & Classification Boundaries)",
-    "ti_ar": "بناء الخطوات: التكامل المحدود والسعة الاستيعابية (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
+    "ti": "Step Builder: Logit, Odds Ratio & Sigmoid Output",
+    "ti_ar": "بناء الخطوات: اللوجيت والأرجحية ومخرج السيجمويد",
     "steps": [
       {
-        "l": "Evaluate \\([x^3]_0^{2} =\\)",
-        "a": "8",
-        "h": "Compute 2³."
+        "l": "For weights \\(\\mathbf{w} = \\langle 2, -1 \\rangle\\), bias \\(b = 0\\), and input \\(\\mathbf{x} = \\langle 1, 2 \\rangle\\), compute logit \\(z = \\mathbf{w}\\cdot\\mathbf{x} + b =\\)",
+        "a": "0",
+        "h": "\\(2(1) + (-1)(2) + 0 = 0\\)"
       },
       {
-        "l": "Evaluate \\(\\int_0^{2} (3x^2 + 4x)\\,dx =\\)",
-        "a": "16",
-        "h": "Add 8 + 8."
+        "l": "Compute odds \\(e^z\\) at \\(z = 0\\):",
+        "a": "1",
+        "h": "\\(e^0 = 1\\)"
       },
       {
-        "l": "In logistic ODE \\(\\frac{dP}{dt} = 0.4 P(1 - P/400)\\), state the inflection population \\(M/2 =\\)",
-        "a": "200",
-        "h": "Half of carrying capacity 400."
+        "l": "Compute predicted probability \\(\\sigma(0) = \\dfrac{1}{1 + e^0}\\) as a decimal:",
+        "a": "0.5",
+        "h": "\\(1 / (1 + 1) = 0.5\\)"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\([x^3]_0^{2} =\\)",
-        "a": "8",
-        "h": "احسب 2³."
+        "l": "للأوزان \\(\\langle 2, -1 \\rangle\\) والانحياز \\(b = 0\\) والمدخل \\(\\langle 1, 2 \\rangle\\)، احسب \\(z =\\)",
+        "a": "0",
+        "h": "\\(2 - 2 = 0\\)"
       },
       {
-        "l": "احسب التكامل \\(\\int_0^{2} (3x^2 + 4x)\\,dx =\\)",
-        "a": "16",
-        "h": "اجمع 8 + 8."
+        "l": "احسب نسبة الأرجحية \\(e^z\\) عند \\(z = 0\\):",
+        "a": "1",
+        "h": "\\(e^0 = 1\\)"
       },
       {
-        "l": "في المعادلة اللوجستية \\(\\frac{dP}{dt} = 0.4 P(1 - P/400)\\)، أوجد قيمة نقطة الانعطاف \\(M/2 =\\)",
-        "a": "200",
-        "h": "نصف السعة الاستيعابية 400."
+        "l": "احسب الاحتمال المتوقع \\(\\sigma(0)\\) كعدد عشري:",
+        "a": "0.5",
+        "h": "\\(1 / 2 = 0.5\\)"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Integration Techniques & Differential Equations (Logistic Regression & Classification Boundaries)",
-    "ti_ar": "مطابقة: طرائق التكامل والمعادلات التفاضلية (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
+    "ti": "Matching: Logistic Regression & Softmax Classification Formulas",
+    "ti_ar": "مطابقة: صيغ الانحدار اللوجستي وتصنيف Softmax",
     "p": [
       {
-        "l": "FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
-        "r": "\\(f(x)\\)"
+        "l": "Sigmoid function \\(\\sigma(z)\\)",
+        "r": "\\(\\dfrac{1}{1 + e^{-z}} \\in (0, 1)\\)"
       },
       {
-        "l": "Integration by Parts",
-        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
+        "l": "Log-odds (logit) inverse \\(\\sigma^{-1}(p)\\)",
+        "r": "\\(\\ln\\!\\left(\\dfrac{p}{1 - p}\\right) = \\mathbf{w}^\\top \\mathbf{x} + b\\)"
       },
       {
-        "l": "Integrating factor for \\(y' + P(x)y = Q(x)\\)",
-        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "Binary Cross-Entropy loss \\(\\mathcal{L}(y, \\hat{p})\\)",
+        "r": "\\(-[y\\ln\\hat{p} + (1 - y)\\ln(1 - \\hat{p})]\\)"
       },
       {
-        "l": "Solid of revolution disk volume",
-        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
+        "l": "Multiclass Softmax probability \\(P(y = k \\mid \\mathbf{z})\\)",
+        "r": "\\(\\dfrac{e^{z_k}}{\\sum_{j=1}^K e^{z_j}}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "النظرية الأساسية (الجزء 1): \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt\\)",
-        "r": "\\(f(x)\\)"
+        "l": "دالة السيجمويد \\(\\sigma(z)\\)",
+        "r": "\\(\\dfrac{1}{1 + e^{-z}} \\in (0, 1)\\)"
       },
       {
-        "l": "التكامل بالتجزيء",
-        "r": "\\(\\int u\\,dv = uv - \\int v\\,du\\)"
+        "l": "اللوغاريتم العكسي للأرجحية (Logit)",
+        "r": "\\(\\ln\\!\\left(\\dfrac{p}{1 - p}\\right) = \\mathbf{w}^\\top \\mathbf{x} + b\\)"
       },
       {
-        "l": "عامل التكامل للمعادلة الخطية \\(y' + P(x)y = Q(x)\\)",
-        "r": "\\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
+        "l": "خسارة الانتروبيا المتقاطعة الثنائية",
+        "r": "\\(-[y\\ln\\hat{p} + (1 - y)\\ln(1 - \\hat{p})]\\)"
       },
       {
-        "l": "حجم المجسم الدوراني بطريقة الأقراص",
-        "r": "\\(\\pi \\int_a^b [R(x)]^2\\,dx\\)"
+        "l": "احتمال Softmax متعدد الفئات",
+        "r": "\\(\\dfrac{e^{z_k}}{\\sum_{j=1}^K e^{z_j}}\\)"
       }
     ]
   },

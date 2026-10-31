@@ -99,27 +99,27 @@ D["ig-number"] = [
     "items_ar": [
       {
         "s": "\\(\\sqrt{16}\\)",
-        "cat": "Rational"
+        "cat": "عدد نسبي"
       },
       {
         "s": "\\(\\sqrt{7}\\)",
-        "cat": "Irrational"
+        "cat": "عدد غير نسبي"
       },
       {
         "s": "\\(\\pi\\)",
-        "cat": "Irrational"
+        "cat": "عدد غير نسبي"
       },
       {
         "s": "\\(0.375\\)",
-        "cat": "Rational"
+        "cat": "عدد نسبي"
       },
       {
         "s": "\\(2\\frac{1}{3}\\)",
-        "cat": "Rational"
+        "cat": "عدد نسبي"
       },
       {
         "s": "\\(\\sqrt{18}\\)",
-        "cat": "Irrational"
+        "cat": "عدد غير نسبي"
       }
     ],
     "ex": "Fractions, terminating and recurring decimals are rational; non-repeating non-terminating decimals and surds are irrational.",
@@ -439,23 +439,23 @@ D["ig-algebra"] = [
     "items_ar": [
       {
         "s": "\\(y = 3x - 5\\)",
-        "cat": "Linear"
+        "cat": "خطي (مستقيم)"
       },
       {
         "s": "\\(y = 2x^2 - 4x + 1\\)",
-        "cat": "Quadratic Parabola"
+        "cat": "قطع مكافئ تربيعي"
       },
       {
         "s": "\\(y = x^3 - 2x\\)",
-        "cat": "Cubic S-Curve"
+        "cat": "منحنى تكعيبي"
       },
       {
         "s": "\\(y = \\frac{6}{x}\\)",
-        "cat": "Reciprocal Hyperbola"
+        "cat": "قطع زائد نسبي (دالة المقلوب)"
       },
       {
         "s": "\\(y = 4 - x^2\\)",
-        "cat": "Quadratic Parabola"
+        "cat": "قطع مكافئ تربيعي"
       }
     ],
     "ex": "Degree 1 is linear, degree 2 is quadratic, degree 3 is cubic, and inverse x is reciprocal.",
@@ -784,23 +784,23 @@ D["ig-geometry"] = [
     "items_ar": [
       {
         "s": "SSS (تطابق الأضلاع الثلاثة المتناظرة)",
-        "cat": "Congruence Criterion"
+        "cat": "معيار تطابق"
       },
       {
         "s": "AAA (تساوي الزوايا الثلاث المتناظرة)",
-        "cat": "Similarity Criterion"
+        "cat": "معيار تشابه"
       },
       {
         "s": "RHS (تطابق وتر وضلع وقائمة في المثلث القائم)",
-        "cat": "Congruence Criterion"
+        "cat": "معيار تطابق"
       },
       {
         "s": "SSA (ضلعان وزاوية غير محصورة)",
-        "cat": "Neither (Insufficient)"
+        "cat": "ليس أياً منهما (غير كافٍ)"
       },
       {
         "s": "SAS بأضلاع متناسبة وزاوية محصورة متساوية",
-        "cat": "Similarity Criterion"
+        "cat": "معيار تشابه"
       }
     ],
     "ex": "SSS, SAS, ASA, RHS prove congruence; AAA and proportional sides prove similarity; SSA is ambiguous.",
@@ -1114,23 +1114,23 @@ D["ig-trig"] = [
     "items_ar": [
       {
         "s": "معرفة ضلعين وزاوية محصورة لإيجاد الضلع الثالث",
-        "cat": "Cosine Rule"
+        "cat": "قانون جيب التمام (Cosine Rule)"
       },
       {
         "s": "معرفة زاويتين وضلع لإيجاد ضلع آخر",
-        "cat": "Sine Rule"
+        "cat": "قانون الجيب (Sine Rule)"
       },
       {
         "s": "\\(\\frac{1}{2}ab\\sin C\\)",
-        "cat": "Area of Triangle Formula"
+        "cat": "صيغة مساحة المثلث"
       },
       {
         "s": "معرفة الأضلاع الثلاثة لإيجاد قياس زاوية",
-        "cat": "Cosine Rule"
+        "cat": "قانون جيب التمام (Cosine Rule)"
       },
       {
         "s": "معرفة ضلعين وزاوية غير محصورة لإيجاد زاوية ثانية",
-        "cat": "Sine Rule"
+        "cat": "قانون الجيب (Sine Rule)"
       }
     ],
     "ex": "Cosine rule handles SAS and SSS; Sine rule handles AAS and SSA; 1/2 ab sin C computes area.",
@@ -1392,23 +1392,23 @@ D["ig-coordinate"] = [
     "items_ar": [
       {
         "s": "\\(y = 3x + 2\\)",
-        "cat": "Positive Gradient"
+        "cat": "ميل موجب"
       },
       {
         "s": "\\(y = -2x + 7\\)",
-        "cat": "Negative Gradient"
+        "cat": "ميل سالب"
       },
       {
         "s": "\\(y = 5\\)",
-        "cat": "Zero Gradient (Horizontal)"
+        "cat": "ميل صفري (أفقي)"
       },
       {
         "s": "\\(x = -3\\)",
-        "cat": "Undefined Gradient (Vertical)"
+        "cat": "ميل غير معرّف (رأسي)"
       },
       {
         "s": "مستقيم صاعد من اليسار إلى اليمين",
-        "cat": "Positive Gradient"
+        "cat": "ميل موجب"
       }
     ],
     "ex": "Horizontal lines have m = 0; vertical lines have undefined m; rising lines have m > 0; falling lines have m < 0.",
@@ -1748,27 +1748,27 @@ D["ig-mensuration"] = [
     "items_ar": [
       {
         "s": "\\(2\\pi r\\)",
-        "cat": "Length / Perimeter"
+        "cat": "طول / محيط"
       },
       {
         "s": "\\(\\pi r^2\\)",
-        "cat": "Area"
+        "cat": "مساحة"
       },
       {
         "s": "\\(\\frac{4}{3}\\pi r^3\\)",
-        "cat": "Volume"
+        "cat": "حجم"
       },
       {
         "s": "\\(\\pi r^2 h\\)",
-        "cat": "Volume"
+        "cat": "حجم"
       },
       {
         "s": "\\(\\frac{\\theta}{360} \\times 2\\pi r\\)",
-        "cat": "Length / Perimeter"
+        "cat": "طول / محيط"
       },
       {
         "s": "\\(\\frac{1}{2}(a+b)h\\)",
-        "cat": "Area"
+        "cat": "مساحة"
       }
     ],
     "ex": "Single linear power represents length/perimeter, square represents area, and cube represents volume.",
@@ -2065,23 +2065,23 @@ D["ig-transform"] = [
     "items_ar": [
       {
         "s": "الانسحاب (الإزاحة) بمتجه",
-        "cat": "Preserves Both Size and Shape (Congruent)"
+        "cat": "يحافظ على القياس والشكل (تطابق)"
       },
       {
         "s": "الدوران حول نقطة المركز",
-        "cat": "Preserves Both Size and Shape (Congruent)"
+        "cat": "يحافظ على القياس والشكل (تطابق)"
       },
       {
         "s": "الانعكاس في مستقيم (محور المرآة)",
-        "cat": "Preserves Both Size and Shape (Congruent)"
+        "cat": "يحافظ على القياس والشكل (تطابق)"
       },
       {
         "s": "تكبير (تمدد) بمعامل قياس k = 2",
-        "cat": "Changes Size but Preserves Shape (Similar)"
+        "cat": "يغير القياس مع الحفاظ على الشكل (تشابه)"
       },
       {
         "s": "تكبير (تمدد) بمعامل قياس k = 0.5",
-        "cat": "Changes Size but Preserves Shape (Similar)"
+        "cat": "يغير القياس مع الحفاظ على الشكل (تشابه)"
       }
     ],
     "ex": "Isometric transformations (translation, rotation, reflection) preserve congruence; enlargement changes size.",
@@ -2126,103 +2126,105 @@ D["ig-transform"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Transformations & Vectors)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (التحويلات الهندسية والمتجهات والمصفوفات)",
-    "q": "Two similar solids have linear scale factor \\(k = 2\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 2\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Center-Offset Dilation / Enlargement Formula",
+    "ti_ar": "اكتشف الخطأ: التمدد (التكبير) حول مركز غير نقطة الأصل",
+    "q": "A student dilates \\(P(5, 4)\\) by scale factor \\(k = 3\\) about center \\(C(1, 2)\\). Which step contains an error?",
+    "q_ar": "يجري طالب تمدداً للنقطة \\(P(5, 4)\\) بمعامل \\(k = 3\\) حول المركز \\(C(1, 2)\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 2\\).",
-      "Multiply the surface area directly by \\(2\\) instead of \\(2^2\\): \\(A_{\\text{large}} = 10 \\times 2 = 20\\text{ cm}^2\\).",
-      "Report \\(20\\text{ cm}^2\\) as the larger surface area."
+      "Identify center of dilation \\(C(1, 2)\\), point \\(P(5, 4)\\), and scale factor \\(k = 3\\).",
+      "Multiply \\(P\\)’s coordinates directly by \\(k = 3\\) as if centered at \\((0, 0)\\) to get \\((15, 12)\\).",
+      "Add center \\(C(1, 2)\\) afterward to claim \\(P' = (16, 14)\\).",
+      "Plot \\(P'(16, 14)\\) as the image."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 2\\).",
-      "ضرب المساحة السطحية في \\(2\\) مباشرة بدلاً من \\(2^2\\): \\(A = 20\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تحديد مركز التمدد \\(C(1, 2)\\) والنقطة \\(P(5, 4)\\) والمعامل \\(k = 3\\).",
+      "ضرب إحداثيي \\(P\\) مباشرة في \\(3\\) كما لو كان المركز \\((0, 0)\\) للحصول على \\((15, 12)\\).",
+      "إضافة المركز \\(C(1, 2)\\) بعد ذلك للادعاء بأن \\(P' = (16, 14)\\).",
+      "تمثيل الصورة عند \\(P'(16, 14)\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 4\\) (giving \\(40\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 8\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "You must scale the displacement vector from the center \\(\\overrightarrow{CP} = (5-1, 4-2) = (4, 2)\\): \\(P' = C + 3\\overrightarrow{CP} = (1 + 12, 2 + 6) = (13, 8)\\).",
+      "Dilation by \\(k = 3\\) divides coordinates by \\(3\\).",
+      "The center of dilation always moves to \\((3, 6)\\)."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 4\\) (أي \\(40\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 8\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "يجب ضرب متجه الإزاحة من المركز \\(\\overrightarrow{CP} = (4, 2)\\) في المعامل ثم إضافته للمركز: \\(P' = (1, 2) + 3(4, 2) = (13, 8)\\).",
+      "التمدد بمعامل \\(3\\) يقسم الإحداثيات على \\(3\\).",
+      "يتحرك مركز التمدد نفسه إلى \\((3, 6)\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Transformations & Vectors)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (التحويلات الهندسية والمتجهات والمصفوفات)",
-    "q": "A circle has equation \\((x - 4)^2 + (y + 2)^2 = 100\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 4)^2 + (y + 2)^2 = 100\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Coordinate Rotations, Reflections & Enlargement Vectors",
+    "ti_ar": "وضع المصحح: الدوران والانعكاس ومتجهات التكبير في المستوى الإحداثي",
+    "q": "(a) Point \\(A(3, -5)\\) is rotated \\(90^\\circ\\) counterclockwise about the origin to \\(A_1\\), then reflected across \\(y = x\\) to \\(A_2\\). Find \\(A_1\\) and \\(A_2\\). (b) Enlarge \\(B(4, 1)\\) by scale factor \\(k = -2\\) from center \\(C(2, 3)\\).",
+    "q_ar": "(أ) أُديرت النقطة \\(A(3, -5)\\) بزاوية \\(90^\\circ\\) عكس عقارب الساعة حول الأصل إلى \\(A_1\\)، ثم انعكست حول \\(y = x\\) إلى \\(A_2\\). أوجد \\(A_1\\) و\\(A_2\\). (ب) كبّر \\(B(4, 1)\\) بمعامل \\(k = -2\\) من المركز \\(C(2, 3)\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
+        "label": "Part (a) — 90° CCW Rotation Followed by Reflection in y = x",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Center \\((h, k) = (4, -2)\\)."
+            "text": "Apply \\(R_{90^\\circ}(x, y) = (-y, x)\\) to \\((3, -5)\\) to get \\(A_1(5, 3)\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{100} = 10\\)."
+            "text": "Reflect \\(A_1(5, 3)\\) across \\(y = x\\) by swapping coordinates: \\(A_2(3, 5)\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Negative Scale-Factor Enlargement from Center C(2, 3)",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 10 \\cdot \\frac{\\pi}{2} = 5\\pi\\)."
+            "text": "Displacement \\(\\overrightarrow{CB} = (4 - 2, 1 - 3) = (2, -2)\\); multiply by \\(k = -2\\) to get \\((-4, 4)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(100)\\frac{\\pi}{2} = 25\\pi\\)."
+            "text": "Add to center \\(C(2, 3)\\): \\(B' = (2 - 4, 3 + 4) = (-2, 7)\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
+        "label": "الجزء (أ) — دوران 90° عكس عقارب الساعة ثم انعكاس حول y = x",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "المركز \\((4, -2)\\)."
+            "text": "تطبيق \\(R_{90^\\circ}(x, y) = (-y, x)\\) على \\((3, -5)\\) لإيجاد \\(A_1(5, 3)\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{100} = 10\\)."
+            "text": "الانعكاس حول \\(y = x\\) بتبديل الإحداثيين: \\(A_2(3, 5)\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — تكبير بمعامل سالب k = -2 حول المركز C(2, 3)",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "M1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 5\\pi\\)."
+            "text": "متجه الإزاحة \\(\\overrightarrow{CB} = (2, -2)\\)؛ وبالضرب في \\(-2\\) نحصل على \\((-4, 4)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 25\\pi\\)."
+            "text": "الجمع مع المركز \\(C(2, 3)\\): \\(B' = (-2, 7)\\)."
           }
         ]
       }
@@ -2230,81 +2232,81 @@ D["ig-transform"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Transformations & Vectors)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (التحويلات الهندسية والمتجهات والمصفوفات)",
+    "ti": "Step Builder: Reflections, Rotations & Translation Vectors",
+    "ti_ar": "بناء الخطوات: الانعكاس والدوران ومتجهات الإزاحة",
     "steps": [
       {
-        "l": "From \\((x - 4)^2 + (y + 2)^2 = 100\\), find the radius \\(r =\\)",
-        "a": "10",
-        "h": "Take the square root of 100."
+        "l": "Reflecting \\((6, -2)\\) across the line \\(y = x\\) gives \\(x\\)-coordinate",
+        "a": "-2",
+        "h": "Swap (x, y) -> (y, x)"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 2\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "8",
-        "h": "Cube 2."
+        "l": "Rotating \\((4, 7)\\) by \\(180^\\circ\\) about \\((0, 0)\\) gives \\(y\\)-coordinate",
+        "a": "-7",
+        "h": "(x, y) -> (-x, -y)"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "Translating \\((-3, 5)\\) by vector \\(\\langle 8, -2 \\rangle\\) gives \\(x\\)-coordinate",
+        "a": "5",
+        "h": "-3 + 8"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 4)^2 + (y + 2)^2 = 100\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "10",
-        "h": "خذ الجذر التربيعي للعدد 100."
+        "l": "انعكاس النقطة \\((6, -2)\\) حول المستقيم \\(y = x\\) يعطي الإحداثي السيني",
+        "a": "-2",
+        "h": "بدّل الإحداثيين (x, y) -> (y, x)"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 2\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "8",
-        "h": "احسب مكعب 2."
+        "l": "دوران النقطة \\((4, 7)\\) بزاوية \\(180^\\circ\\) حول الأصل يعطي الإحداثي الصادي",
+        "a": "-7",
+        "h": "(x, y) -> (-x, -y)"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "إزاحة \\((-3, 5)\\) بالمتجه \\(\\langle 8, -2 \\rangle\\) تعطي الإحداثي السيني",
+        "a": "5",
+        "h": "-3 + 8"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Transformations & Vectors)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (التحويلات الهندسية والمتجهات والمصفوفات)",
+    "ti": "Matching: Coordinate Plane Transformation Rules",
+    "ti_ar": "مطابقة: قواعد التحويلات الهندسية في المستوى الإحداثي",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Reflection across the line \\(y = x\\)",
+        "r": "\\((x, y) \\mapsto (y, x)\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "\\(90^\\circ\\) counterclockwise rotation about \\((0, 0)\\)",
+        "r": "\\((x, y) \\mapsto (-y, x)\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "\\(90^\\circ\\) clockwise rotation about \\((0, 0)\\)",
+        "r": "\\((x, y) \\mapsto (y, -x)\\)"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Dilation from center \\((a, b)\\) by factor \\(k\\)",
+        "r": "\\((x, y) \\mapsto (a + k(x-a),\\; b + k(y-b))\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "انعكاس حول المستقيم \\(y = x\\)",
+        "r": "\\((x, y) \\mapsto (y, x)\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "دوران \\(90^\\circ\\) عكس عقارب الساعة حول الأصل",
+        "r": "\\((x, y) \\mapsto (-y, x)\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "دوران \\(90^\\circ\\) مع عقارب الساعة حول الأصل",
+        "r": "\\((x, y) \\mapsto (y, -x)\\)"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "تمدد من المركز \\((a, b)\\) بمعامل \\(k\\)",
+        "r": "\\((x, y) \\mapsto (a + k(x-a),\\; b + k(y-b))\\)"
       }
     ]
   }
@@ -2380,23 +2382,23 @@ D["ig-stats"] = [
     "items_ar": [
       {
         "s": "عدد السيارات في موقف السيارات",
-        "cat": "Discrete Numerical"
+        "cat": "كمية منفصلة (متقطعة)"
       },
       {
         "s": "طول قامة الطلاب بالسنتيمتر",
-        "cat": "Continuous Numerical"
+        "cat": "كمية متصلة (مستمرة)"
       },
       {
         "s": "اللون المفضل للسيارة",
-        "cat": "Categorical (Qualitative)"
+        "cat": "نوعية (وصفية)"
       },
       {
         "s": "الزمن المستغرق لقطع مسافة 100 متر",
-        "cat": "Continuous Numerical"
+        "cat": "كمية متصلة (مستمرة)"
       },
       {
         "s": "مقاسات الأحذية (مثل 7، 8، 9)",
-        "cat": "Discrete Numerical"
+        "cat": "كمية منفصلة (متقطعة)"
       }
     ],
     "ex": "Countable quantities are discrete; measurable quantities on a continuous scale are continuous; labels are categorical.",
@@ -2441,103 +2443,115 @@ D["ig-stats"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Probability & Statistics)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الاحتمالات والإحصاء وتمثيل البيانات)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 4\\) and \\(\\operatorname{Var}(Y) = 3\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 4\\) و\\(\\operatorname{Var}(Y) = 3\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 4 - 3 = 1\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 4 - 3 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 4 + 3 = 7\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Probability & Statistics)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الاحتمالات والإحصاء وتمثيل البيانات)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 12\\). For a simple random sample of size \\(n = 16\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 12\\). لعينة عشوائية حجمها \\(n = 16\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{16}} = \\dfrac{12}{4} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(4) + 3 = 19\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{12}{\\sqrt{16}} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(4) + 3 = 19\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -2545,81 +2559,81 @@ D["ig-stats"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Probability & Statistics)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الاحتمالات والإحصاء وتمثيل البيانات)",
+    "ti": "Step Builder: Addition Rule, Conditional Probability & Complement Trick",
+    "ti_ar": "بناء الخطوات: قاعدة الجمع والاحتمال الشرطي ومتممة «واحد على الأقل»",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 16\\):",
-        "a": "4",
-        "h": "Square root of 16."
+        "l": "If \\(P(A) = 0.45\\), \\(P(B) = 0.35\\), and \\(P(A \\cap B) = 0.14\\), then \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 12\\):",
-        "a": "3",
-        "h": "Divide 12 by 4."
+        "l": "Using the same probabilities, conditional probability \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} =\\)",
+        "a": "0.4",
+        "h": "0.14 / 0.35 = 0.4"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "7",
-        "h": "Add 4 + 3."
+        "l": "A fair coin is tossed \\(3\\) times; \\(P(\\text{at least one Head}) = 1 - (0.5)^3 =\\)",
+        "a": "0.875",
+        "h": "1 - 0.125 = 0.875"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 16\\):",
-        "a": "4",
-        "h": "الجذر التربيعي للعدد 16."
+        "l": "إذا كان \\(P(A) = 0.45\\) و\\(P(B) = 0.35\\) و\\(P(A \\cap B) = 0.14\\)، فإن \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 12\\):",
-        "a": "3",
-        "h": "اقسم 12 على 4."
+        "l": "الاحتمال الشرطي \\(P(A \\mid B) = \\dfrac{0.14}{0.35} =\\)",
+        "a": "0.4",
+        "h": "0.14 ÷ 0.35"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "7",
-        "h": "اجمع 4 + 3."
+        "l": "عند رمي قطعة نقد متزنة \\(3\\) مرات، \\(P(\\text{صورة واحدة على الأقل}) =\\)",
+        "a": "0.875",
+        "h": "1 - 1/8 = 0.875"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Probability & Statistics)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الاحتمالات والإحصاء وتمثيل البيانات)",
+    "ti": "Matching: Addition Rule, Conditional Probability, Independence & Counting",
+    "ti_ar": "مطابقة: قواعد الجمع والاحتمال الشرطي والاستقلال وطرق العد",
     "p": [
       {
+        "l": "General Addition Rule for \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) for \\(P(B) > 0\\)"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Criterion for independent events \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Probability of \"at least one success\"",
+        "r": "\\(1 - P(\\text{zero successes})\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "قاعدة الجمع العامة \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) بشرط \\(P(B) > 0\\)"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "شرط استقلال الحدثين \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "احتمال نجاح واحد على الأقل",
+        "r": "\\(1 - P(\\text{عدم تحقق أي نجاح})\\)"
       }
     ]
   }
@@ -2693,19 +2707,19 @@ D["ig-functions"] = [
     "items_ar": [
       {
         "s": "مجموعة كل قيم المدخلات الممكنة x",
-        "cat": "Domain"
+        "cat": "المجال (Domain)"
       },
       {
         "s": "مجموعة كل قيم المخرجات الناتجة f(x)",
-        "cat": "Range"
+        "cat": "المدى (Range)"
       },
       {
         "s": "العملية التي تعكس تأثير الدالة f(x)",
-        "cat": "Inverse Function"
+        "cat": "الدالة العكسية (Inverse Function)"
       },
       {
         "s": "تطبيق دالة على مخرجات دالة أخرى",
-        "cat": "Composite Function"
+        "cat": "الدالة المركبة (Composite Function)"
       }
     ],
     "ex": "Inputs are domain, outputs are range, reversing is inverse, and combining is composite.",
@@ -3027,19 +3041,19 @@ D["ig-sets"] = [
     "items_ar": [
       {
         "s": "العناصر التي تنتمي إلى A أو B أو كليهما",
-        "cat": "Union (A ∪ B)"
+        "cat": "الاتحاد (A ∪ B)"
       },
       {
         "s": "العناصر المشتركة التي تنتمي إلى A و B معاً بدقة",
-        "cat": "Intersection (A ∩ B)"
+        "cat": "التقاطع (A ∩ B)"
       },
       {
         "s": "عناصر المجموعة الشاملة التي لا تنتمي إلى A",
-        "cat": "Complement (A')"
+        "cat": "المتممة (A')"
       },
       {
         "s": "كل عنصر في A هو أيضاً عنصر في B",
-        "cat": "Subset (A ⊆ B)"
+        "cat": "المجموعة الجزئية (A ⊆ B)"
       }
     ],
     "ex": "Union combines, intersection takes common elements, complement takes outside elements, subset means contained within.",
@@ -3084,105 +3098,115 @@ D["ig-sets"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Successive Percentage Multipliers (Sets & Venn Diagrams)",
-    "ti_ar": "اكتشف الخطأ: النسب المئوية المتتالية (المجموعات وأشكال فن (Venn Diagrams))",
-    "q": "An item priced at \\(100\\) rises by \\(40\\%\\) and is then discounted by \\(40\\%\\). Which step in the calculation is wrong?",
-    "q_ar": "سلعة سعرها \\(100\\) زاد سعرها بنسبة \\(40\\%\\) ثم خُفِّض بنسبة \\(40\\%\\). أي خطوة تحتوي على خطأ؟",
+    "ti": "Spot the Error: Double-Counting Intersection in a Two-Set Venn Diagram",
+    "ti_ar": "اكتشف الخطأ: تكرار عدّ التقاطع في مخطط فن لمجموعتين",
+    "q": "In a class of \\(40\\) students, \\(n(F) = 22\\) study French, \\(n(S) = 18\\) study Spanish, and \\(n(F \\cap S) = 7\\) study both. How many study NEITHER? Which step is wrong?",
+    "q_ar": "في صف من \\(40\\) طالباً، \\(n(F) = 22\\) و\\(n(S) = 18\\) و\\(n(F \\cap S) = 7\\) يدرسون اللغتين معاً. كم طالباً لا يدرس أياً منهما؟ أي خطوة خاطئة؟",
     "steps": [
-      "Apply the \\(40\\%\\) increase multiplier: \\(100 \\times 1.40 = 140\\).",
-      "Recognize that the \\(40\\%\\) discount applies to the new price \\(140\\).",
-      "Add the percentage changes directly: \\(+40\\% - 40\\% = 0\\%\\), claiming the final price returns to \\(100\\).",
-      "Verify final price via product of multipliers."
+      "List given cardinalities: \\(n(\\mathscr{E}) = 40\\), \\(n(F) = 22\\), \\(n(S) = 18\\), and \\(n(F \\cap S) = 7\\).",
+      "Compute \\(n(F \\cup S)\\) by adding \\(22 + 18 = 40\\) without subtracting the overlap \\(n(F \\cap S) = 7\\).",
+      "Subtract from universal set \\(40 - 40 = 0\\).",
+      "Conclude that \\(0\\) students study neither language."
     ],
     "steps_ar": [
-      "تطبيق معامل الزيادة \\(40\\%\\): \\(100 \\times 1.40 = 140\\).",
-      "ملاحظة أن خصم \\(40\\%\\) يُطبَّق على السعر الجديد \\(140\\).",
-      "جمع النسبتين مباشرة \\(+40\\% - 40\\% = 0\\%\\) والادعاء بأن السعر النهائي يعود إلى \\(100\\).",
-      "التحقق من السعر النهائي بضرب المعاملات."
+      "تسجيل المعطيات: \\(n(\\mathscr{E}) = 40\\) و\\(n(F) = 22\\) و\\(n(S) = 18\\) و\\(n(F \\cap S) = 7\\).",
+      "حساب \\(n(F \\cup S)\\) بجمع \\(22 + 18 = 40\\) دون طرح التقاطع المشترك \\(7\\).",
+      "الطرح من المجموعة الشاملة \\(40 - 40 = 0\\).",
+      "الاستنتاج بأن \\(0\\) من الطلاب لا يدرسون أياً من اللغتين."
     ],
-    "errorStep": 3,
+    "errorStep": 2,
     "reasons": [
-      "Successive percentages multiply rather than add: \\(140 \\times 0.60 = 84\\) (a net \\(16\\%\\) decrease).",
-      "The final price is actually greater than \\(100\\).",
-      "Discounts must be divided rather than multiplied."
+      "By Inclusion–Exclusion, \\(n(F \\cup S) = 22 + 18 - 7 = 33\\), so \\(n((F \\cup S)') = 40 - 33 = 7\\) students study neither.",
+      "You must ADD \\(7\\) to \\(22 + 18\\) when finding \\(n(F \\cup S)\\).",
+      "\\(F \\cap S\\) represents students outside both circles."
     ],
     "reasons_ar": [
-      "النسب المتتالية تُضرب كمعاملات ولا تُجمع: \\(140 \\times 0.60 = 84\\) (بانخفاض صافي قدره \\(16\\%\\)).",
-      "السعر النهائي أكبر من \\(100\\).",
-      "الخصم يُحسب بالقسمة لا بالضرب."
+      "بحسب مبدأ التضمين والإقصاء \\(n(F \\cup S) = 22 + 18 - 7 = 33\\)، فيكون عدد الذين لا يدرسون أياً منهما \\(40 - 33 = 7\\).",
+      "يجب جمع \\(7\\) مع \\(22 + 18\\) لإيجاد الاتحاد.",
+      "التقاطع \\(F \\cap S\\) يمثل العناصر خارج الدائرتين."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Sets & Venn Diagrams)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (المجموعات وأشكال فن (Venn Diagrams))",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(40\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(60\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 16\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(40\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(60\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 16\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Two-Set Algebraic Venn Equations & De Morgan’s Laws",
+    "ti_ar": "وضع المصحح: معادلات مخططات فن الجبرية وقانونا دي مورغان",
+    "q": "(a) Given \\(n(\\mathscr{E}) = 50\\), \\(n(A) = 28\\), \\(n(B) = 25\\), and \\(n((A \\cup B)') = 6\\), find \\(n(A \\cap B)\\) and \\(n(A \\cap B')\\). (b) If \\(|P| = 5\\), how many proper subsets does \\(P\\) have?",
+    "q_ar": "(أ) إذا كان \\(n(\\mathscr{E}) = 50\\) و\\(n(A) = 28\\) و\\(n(B) = 25\\) و\\(n((A \\cup B)') = 6\\)، فأوجد \\(n(A \\cap B)\\) و\\(n(A \\cap B')\\). (ب) إذا كان \\(|P| = 5\\)، فكم مجموعة جزئية فعلية للمجموعة \\(P\\)؟",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Inclusion–Exclusion & \"A Only\" Region",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{40} + \\frac{d}{60}\\)."
+            "text": "Find union size: \\(n(A \\cup B) = 50 - 6 = 44\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 40 \\cdot 60}{40 + 60} = 48\\text{ km/h}\\)."
+            "text": "Solve \\(44 = 28 + 25 - n(A \\cap B) \\implies n(A \\cap B) = 9\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Find \"A only\": \\(n(A \\cap B') = 28 - 9 = 19\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Total Subsets vs. Proper Subsets",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Total subsets of a 5-element set \\(= 2^5 = 32\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(15.5 \\le L < 16.5\\)."
+            "text": "Exclude \\(P\\) itself: \\(32 - 1 = 31\\) proper subsets."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — مبدأ التضمين والإقصاء ومنطقة A فقط",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{40} + \\frac{d}{60}\\)."
+            "text": "حساب عدد عناصر الاتحاد: \\(n(A \\cup B) = 50 - 6 = 44\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 40 \\cdot 60}{40 + 60} = 48\\text{ km/h}\\)."
+            "text": "حل \\(44 = 28 + 25 - n(A \\cap B) \\implies n(A \\cap B) = 9\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "حساب عناصر \\(A\\) فقط: \\(n(A \\cap B') = 28 - 9 = 19\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — عدد المجموعات الجزئية الفعلية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "إجمالي المجموعات الجزئية \\(= 2^5 = 32\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(15.5 \\le L < 16.5\\)."
+            "text": "استثناء المجموعة نفسها: \\(32 - 1 = 31\\) مجموعة جزئية فعلية."
           }
         ]
       }
@@ -3190,81 +3214,91 @@ D["ig-sets"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Successive Multipliers & Net Change (Sets & Venn Diagrams)",
-    "ti_ar": "بناء الخطوات: المعاملات المتتالية وصافي التغير (المجموعات وأشكال فن (Venn Diagrams))",
+    "ti": "Step Builder: Venn Cardinalities & De Morgan Complement Regions",
+    "ti_ar": "بناء الخطوات: حساب أعداد عناصر مخطط فن ومتممات دي مورغان",
     "steps": [
       {
-        "l": "Increase \\(100\\) by \\(40\\%\\): new value \\(=\\)",
-        "a": "140",
-        "h": "Compute 100 × 1.40."
+        "l": "If \\(n(A) = 19\\), \\(n(B) = 14\\), and \\(n(A \\cap B) = 6\\), then \\(n(A \\cup B) =\\)",
+        "a": "27",
+        "h": "19 + 14 - 6"
       },
       {
-        "l": "Now discount \\(140\\) by \\(40\\%\\): final value \\(=\\)",
-        "a": "84",
-        "h": "Compute 140 × 0.60."
+        "l": "In a universal set of \\(35\\), \\(n(A' \\cap B') = n((A \\cup B)') =\\)",
+        "a": "8",
+        "h": "35 - 27"
       },
       {
-        "l": "Find the net decrease \\(100 - 84 =\\)",
+        "l": "Number of elements in \\(A\\) but NOT in \\(B\\), \\(n(A \\cap B') =\\)",
+        "a": "13",
+        "h": "19 - 6"
+      },
+      {
+        "l": "Total subsets of a set with \\(4\\) elements \\((2^4)\\) equals",
         "a": "16",
-        "h": "Subtract 84 from 100."
+        "h": "2^4"
       }
     ],
     "steps_ar": [
       {
-        "l": "زد العدد \\(100\\) بنسبة \\(40\\%\\): القيمة الجديدة \\(=\\)",
-        "a": "140",
-        "h": "احسب 100 × 1.40."
+        "l": "إذا كان \\(n(A) = 19\\) و\\(n(B) = 14\\) و\\(n(A \\cap B) = 6\\)، فإن \\(n(A \\cup B) =\\)",
+        "a": "27",
+        "h": "19 + 14 - 6"
       },
       {
-        "l": "طبّق خصم \\(40\\%\\) على \\(140\\): القيمة النهائية \\(=\\)",
-        "a": "84",
-        "h": "احسب 140 × 0.60."
+        "l": "في مجموعة شاملة من \\(35\\) عنصراً، \\(n(A' \\cap B') =\\)",
+        "a": "8",
+        "h": "35 - 27"
       },
       {
-        "l": "أوجد مقدار النقصان الصافي \\(100 - 84 =\\)",
+        "l": "عدد العناصر في \\(A\\) فقط \\(n(A \\cap B') =\\)",
+        "a": "13",
+        "h": "19 - 6"
+      },
+      {
+        "l": "عدد المجموعات الجزئية لمجموعة مكونة من \\(4\\) عناصر يساوي",
         "a": "16",
-        "h": "اطرح 84 من 100."
+        "h": "2^4"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Number, Bounds & Set Principles (Sets & Venn Diagrams)",
-    "ti_ar": "مطابقة: قوانين الأعداد والحدود والمجموعات (المجموعات وأشكال فن (Venn Diagrams))",
+    "ti": "Matching: Set Identities, De Morgan’s Laws & Subset Counting",
+    "ti_ar": "مطابقة: متطابقات المجموعات وقانونا دي مورغان وعدّ المجموعات الجزئية",
     "p": [
       {
-        "l": "Upper bound of \\(a / b\\) (positive)",
-        "r": "\\(a_{\\text{upper}} / b_{\\text{lower}}\\)"
+        "l": "Inclusion–Exclusion Principle",
+        "r": "\\(n(A \\cup B) = n(A) + n(B) - n(A \\cap B)\\)"
       },
       {
-        "l": "Inclusion–Exclusion \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "De Morgan’s First Law",
+        "r": "\\((A \\cup B)' = A' \\cap B'\\)"
       },
       {
-        "l": "Equal-distance round-trip speed",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 48\\) for \\(40, 60\\)"
+        "l": "De Morgan’s Second Law",
+        "r": "\\((A \\cap B)' = A' \\cup B'\\)"
       },
       {
-        "l": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)"
+        "l": "Power-set cardinality for \\(n(A) = k\\)",
+        "r": "\\(2^k\\) total subsets"
       }
     ],
     "p_ar": [
       {
-        "l": "الحد الأعلى للقسمة \\(a / b\\) (موجبة)",
-        "r": "\\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)"
+        "l": "مبدأ التضمين والإقصاء",
+        "r": "\\(n(A \\cup B) = n(A) + n(B) - n(A \\cap B)\\)"
       },
       {
-        "l": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "قانون دي مورغان الأول",
+        "r": "\\((A \\cup B)' = A' \\cap B'\\)"
       },
       {
-        "l": "السرعة المتوسطة ذهاباً وإياباً",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 48\\) للسرعتين \\(40, 60\\)"
+        "l": "قانون دي مورغان الثاني",
+        "r": "\\((A \\cap B)' = A' \\cup B'\\)"
       },
       {
-        "l": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً"
+        "l": "عدد المجموعات الجزئية عندما \\(n(A) = k\\)",
+        "r": "\\(2^k\\) مجموعة جزئية"
       }
     ]
   }

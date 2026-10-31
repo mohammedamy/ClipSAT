@@ -1682,74 +1682,74 @@ D["apab-u3"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
-    "q": "(a) Evaluate \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 4x\\) at \\(x = 1\\).",
-    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 4x\\) عند \\(x = 1\\).",
+    "ti": "Examiner Mode: Implicit Differentiation & Inverse Function Derivative",
+    "ti_ar": "وضع المصحح: الاشتقاق الضمني ومشتقة الدالة العكسية",
+    "q": "(a) Find \\(\\dfrac{dy}{dx}\\) for \\(x^2 + xy + y^2 = 7\\) at \\((2, 1)\\). (b) If \\(g = f^{-1}\\), \\(f(3) = 5\\), and \\(f'(3) = 4\\), evaluate \\(g'(5)\\).",
+    "q_ar": "(أ) أوجد \\(\\dfrac{dy}{dx}\\) للمنحنى \\(x^2 + xy + y^2 = 7\\) عند \\((2, 1)\\). (ب) إذا كانت \\(g = f^{-1}\\) و\\(f(3) = 5\\) و\\(f'(3) = 4\\)، احسب \\(g'(5)\\).",
     "parts": [
       {
-        "label": "Part (a) — Resolving 0/0 Limit",
+        "label": "Part (a) — Product & Chain Rule in Implicit Form",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Factor \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\) for \\(x \\neq 2\\)."
+            "text": "Differentiate wrt \\(x\\): \\(2x + y + x\\dfrac{dy}{dx} + 2y\\dfrac{dy}{dx} = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Evaluate limit as \\(x \\to 2\\): \\(4\\)."
+            "text": "At \\((2, 1)\\): \\(4 + 1 + (2 + 2)\\dfrac{dy}{dx} = 0 \\implies \\dfrac{dy}{dx} = -\\dfrac{5}{4}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Derivative & Tangent Equation",
+        "label": "Part (b) — Derivative of an Inverse Function",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(1) = 7\\)."
+            "text": "Identify \\(g(5) = 3\\) and apply \\(g'(5) = \\dfrac{1}{f'(g(5))}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "With \\(g(1) = 5\\), tangent is \\(y - 5 = 7(x - 1)\\)."
+            "text": "\\(g'(5) = \\dfrac{1}{f'(3)} = \\dfrac{1}{4} = 0.25\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "label": "الجزء (أ) — الاشتقاق الضمني بقاعدتي الضرب والسلسلة",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "التحليل والاختصار \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\)."
+            "text": "الاشتقاق بالنسبة لـ \\(x\\): \\(2x + y + x y' + 2y y' = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "قيمة النهاية عند \\(x \\to 2\\) تساوي \\(4\\)."
+            "text": "عند \\((2, 1)\\): \\(\\dfrac{dy}{dx} = -\\dfrac{5}{4}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "label": "الجزء (ب) — مشتقة الدالة العكسية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(1) = 7\\)."
+            "text": "تحديد \\(g(5) = 3\\) وتطبيق \\(g'(5) = \\dfrac{1}{f'(g(5))}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "معادلة المماس: \\(y - 5 = 7(x - 1)\\)."
+            "text": "\\(g'(5) = \\dfrac{1}{4} = 0.25\\)."
           }
         ]
       }
@@ -1757,81 +1757,71 @@ D["apab-u3"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
+    "ti": "Step Builder: Inverse Derivative & Implicit Circle Slope",
+    "ti_ar": "بناء الخطوات: مشتقة الدالة العكسية وميل المماس الضمني",
     "steps": [
       {
-        "l": "Evaluate \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
-        "a": "4",
-        "h": "Factor as (x − 2)(x + 2) and substitute x = 2."
+        "l": "Given \\(f(2) = 9\\) and \\(f'(2) = 5\\), evaluate \\((f^{-1})'(9)\\) as a decimal:",
+        "a": "0.2",
+        "h": "\\(1 / f'(2) = 1 / 5 = 0.2\\)"
       },
       {
-        "l": "For \\(g(x) = x^3 + 4x\\), evaluate \\(g(1) =\\)",
-        "a": "5",
-        "h": "Compute 1 + 4."
-      },
-      {
-        "l": "Evaluate instantaneous slope \\(g'(1) = 3(1)^2 + 4 =\\)",
-        "a": "7",
-        "h": "Compute 3 + 4."
+        "l": "For \\(x^2 + y^2 = 25\\), evaluate \\(\\dfrac{dy}{dx} = -\\dfrac{x}{y}\\) at \\((3, -4)\\) as a decimal:",
+        "a": "0.75",
+        "h": "\\(-3 / (-4) = 0.75\\)"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب النهاية \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
-        "a": "4",
-        "h": "حلّل البسط واختصر ثم عوّض x = 2."
+        "l": "إذا كان \\(f(2) = 9\\) و\\(f'(2) = 5\\)، احسب \\((f^{-1})'(9)\\) كعدد عشري:",
+        "a": "0.2",
+        "h": "\\(1 / 5 = 0.2\\)"
       },
       {
-        "l": "للدالة \\(g(x) = x^3 + 4x\\)، احسب \\(g(1) =\\)",
-        "a": "5",
-        "h": "احسب 1 + 4."
-      },
-      {
-        "l": "احسب ميل المماس \\(g'(1) = 3(1)^2 + 4 =\\)",
-        "a": "7",
-        "h": "احسب 3 + 4."
+        "l": "للدائرة \\(x^2 + y^2 = 25\\)، احسب \\(\\dfrac{dy}{dx} = -\\dfrac{x}{y}\\) عند \\((3, -4)\\) كعدد عشري:",
+        "a": "0.75",
+        "h": "\\(-3 / (-4) = 0.75\\)"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (الوحدة ٣ · اشتقاق الدوال المركبة والضمنية والعكسية)",
+    "ti": "Matching: Chain, Implicit & Inverse Derivative Rules",
+    "ti_ar": "مطابقة: قواعد السلسلة والاشتقاق الضمني والدوال العكسية",
     "p": [
       {
-        "l": "Continuity of \\(f\\) at \\(x = a\\)",
-        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
-      },
-      {
-        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
         "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "Strict local minimum test",
-        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
+        "l": "\\((f^{-1})'(b)\\) where \\(f(a) = b\\)",
+        "r": "\\(\\dfrac{1}{f'(a)}\\)"
       },
       {
-        "l": "Newton–Raphson step",
-        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
+        "l": "\\(\\dfrac{d}{dx}(\\arcsin x)\\)",
+        "r": "\\(\\dfrac{1}{\\sqrt{1 - x^2}}\\)"
+      },
+      {
+        "l": "\\(\\dfrac{d}{dx}(\\arctan x)\\)",
+        "r": "\\(\\dfrac{1}{1 + x^2}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
-        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
-      },
-      {
-        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
+        "l": "\\(\\dfrac{d}{dx}[f(g(x))]\\)",
         "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
       },
       {
-        "l": "اختبار النهاية الصغرى المحلية",
-        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
+        "l": "\\((f^{-1})'(b)\\) حيث \\(f(a) = b\\)",
+        "r": "\\(\\dfrac{1}{f'(a)}\\)"
       },
       {
-        "l": "تكرار نيوتن–رافسون العددي",
-        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
+        "l": "\\(\\dfrac{d}{dx}(\\arcsin x)\\)",
+        "r": "\\(\\dfrac{1}{\\sqrt{1 - x^2}}\\)"
+      },
+      {
+        "l": "\\(\\dfrac{d}{dx}(\\arctan x)\\)",
+        "r": "\\(\\dfrac{1}{1 + x^2}\\)"
       }
     ]
   }

@@ -443,103 +443,115 @@ D["aps-u1"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 4\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 4\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Mean vs. Median Sensitivity & Linear Rescaling of Spread",
+    "ti_ar": "اكتشف الخطأ: حساسية المتوسط والوسيط وأثر التحويل الخطي على التشتت",
+    "q": "Every score \\(x_i\\) in a dataset with mean \\(\\bar{x} = 20\\) and standard deviation \\(s_x = 4\\) is transformed to \\(y_i = 3x_i + 10\\). Which step is wrong?",
+    "q_ar": "تم تحويل كل قيمة \\(x_i\\) في مجموعة بيانات متوسطها \\(\\bar{x} = 20\\) وانحرافها المعياري \\(s_x = 4\\) وفق \\(y_i = 3x_i + 10\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
-      "Take square root for standard deviation."
+      "Compute the new mean using linearity of center: \\(\\bar{y} = 3(20) + 10 = 70\\).",
+      "Note that multiplying every value by \\(3\\) stretches distances from the mean by \\(3\\).",
+      "Add the shift \\(+10\\) to the rescaled standard deviation as well: \\(s_y = 3(4) + 10 = 22\\).",
+      "Report the transformed summary as \\(\\bar{y} = 70,\\; s_y = 22\\)."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب المتوسط الجديد بخاصية الخطية: \\(\\bar{y} = 3(20) + 10 = 70\\).",
+      "ملاحظة أن الضرب في \\(3\\) يضاعف فروق القيم عن المتوسط بمعامل \\(3\\).",
+      "إضافة الإزاحة الثابتة \\(+10\\) إلى الانحراف المعياري أيضاً: \\(s_y = 3(4) + 10 = 22\\).",
+      "كتابة ملخص البيانات المحولة \\(\\bar{y} = 70,\\; s_y = 22\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 4 = 9\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Adding a constant \\(+10\\) shifts every data point equally without changing spread, so \\(s_y = |3| s_x = 12\\) (and \\(\\text{IQR}_y = 3\\,\\text{IQR}_x\\)).",
+      "Multiplying by \\(3\\) leaves the standard deviation unchanged at \\(4\\).",
+      "Adding \\(+10\\) does not change the mean \\(\\bar{x}\\)."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 9\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "إضافة ثابت \\(+10\\) تزيح جميع القيم بنفس المقدار فلا تغير التشتت، لذا \\(s_y = |3| s_x = 12\\) فقط.",
+      "الضرب في \\(3\\) لا يغير الانحراف المعياري.",
+      "إضافة ثابت لا تغير المتوسط الحسابي."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 24\\). For a simple random sample of size \\(n = 36\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 24\\). لعينة عشوائية حجمها \\(n = 36\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Five-Number Summary, Tukey Outlier Fences & Coded Mean/SD",
+    "ti_ar": "وضع المصحح: الملخص الخماسي وحدود القيم المتطرفة والانحراف المعياري",
+    "q": "(a) A dataset has \\(Q_1 = 32\\), median \\(= 41\\), \\(Q_3 = 52\\), minimum \\(= 12\\), and maximum \\(= 86\\). Test both extremes for outliers using the \\(1.5 \\times \\text{IQR}\\) rule. (b) For \\(n = 10\\) values, \\(\\sum x = 150\\) and \\(\\sum x^2 = 2410\\); find the population variance \\(\\sigma^2\\) and \\(\\sigma\\).",
+    "q_ar": "(أ) لمجموعة بيانات \\(Q_1 = 32\\) والوسيط \\(= 41\\) و\\(Q_3 = 52\\) والحد الأدنى \\(= 12\\) والأقصى \\(= 86\\). اختبر القيم المتطرفة بقاعدة \\(1.5 \\times \\text{IQR}\\). (ب) لـ \\(n = 10\\) قيم حيث \\(\\sum x = 150\\) و\\(\\sum x^2 = 2410\\)، أوجد \\(\\sigma^2\\) و\\(\\sigma\\).",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — IQR & Tukey Lower/Upper Fences",
+        "marks": 3,
         "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{24}{\\sqrt{36}} = \\dfrac{24}{6} = 4\\)."
-          },
           {
             "code": "B1",
             "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Compute \\(\\text{IQR} = Q_3 - Q_1 = 52 - 32 = 20\\) and \\(1.5 \\times \\text{IQR} = 30\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Lower fence \\(= 32 - 30 = 2\\); upper fence \\(= 52 + 30 = 82\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Min \\(12 \\ge 2\\) (not an outlier), while Max \\(86 > 82\\) IS a high outlier."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Variance from Summary Totals",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Compute \\(\\bar{x} = \\dfrac{150}{10} = 15\\) and \\(\\sigma^2 = \\dfrac{2410}{10} - 15^2 = 241 - 225 = 16\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(5) + 4 = 24\\)."
+            "text": "Standard deviation \\(\\sigma = \\sqrt{16} = 4\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — المدى الربيعي وحدود القيم المتطرفة",
+        "marks": 3,
         "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{24}{\\sqrt{36}} = 4\\)."
-          },
           {
             "code": "B1",
             "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "حساب \\(\\text{IQR} = 52 - 32 = 20\\) ومنه \\(1.5 \\times \\text{IQR} = 30\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "الحد الأدنى \\(= 32 - 30 = 2\\) والحد الأعلى \\(= 52 + 30 = 82\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "القيمة \\(12\\) ليست متطرفة، بينما \\(86 > 82\\) قيمة متطرفة عليا."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — التباين والانحراف المعياري من المجاميع",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(\\bar{x} = 15\\) و\\(\\sigma^2 = \\dfrac{2410}{10} - 15^2 = 16\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(5) + 4 = 24\\)."
+            "text": "الانحراف المعياري \\(\\sigma = \\sqrt{16} = 4\\)."
           }
         ]
       }
@@ -547,81 +559,81 @@ D["aps-u1"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
+    "ti": "Step Builder: Quartiles, Outlier Fence & Combined Group Mean",
+    "ti_ar": "بناء الخطوات: الربيعيات وحد التطرف والمتوسط المدمج لمجموعتين",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 36\\):",
-        "a": "6",
-        "h": "Square root of 36."
+        "l": "For \\(Q_1 = 18\\) and \\(Q_3 = 30\\), the interquartile range \\(\\text{IQR} =\\)",
+        "a": "12",
+        "h": "30 - 18"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 24\\):",
-        "a": "4",
-        "h": "Divide 24 by 6."
+        "l": "The upper outlier fence \\(Q_3 + 1.5(\\text{IQR})\\) equals",
+        "a": "48",
+        "h": "30 + 1.5 * 12"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "9",
-        "h": "Add 5 + 4."
+        "l": "Class A (\\(20\\) students, mean \\(75\\)) and Class B (\\(30\\) students, mean \\(85\\)) have combined mean",
+        "a": "81",
+        "h": "(20*75 + 30*85) / 50 = 4050 / 50"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 36\\):",
-        "a": "6",
-        "h": "الجذر التربيعي للعدد 36."
+        "l": "إذا كان \\(Q_1 = 18\\) و\\(Q_3 = 30\\)، فالمدى الربيعي \\(\\text{IQR} =\\)",
+        "a": "12",
+        "h": "30 - 18"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 24\\):",
-        "a": "4",
-        "h": "اقسم 24 على 6."
+        "l": "حد التطرف الأعلى \\(Q_3 + 1.5(\\text{IQR})\\) يساوي",
+        "a": "48",
+        "h": "30 + 18"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "9",
-        "h": "اجمع 5 + 4."
+        "l": "المتوسط المدمج لصف A (\\(20\\) طالباً بمتوسط \\(75\\)) وصف B (\\(30\\) طالباً بمتوسط \\(85\\)) هو",
+        "a": "81",
+        "h": "(1500 + 2550) ÷ 50"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة ١ · استكشاف البيانات وحيدة وثنائية المتغير)",
+    "ti": "Matching: Center, Spread, Skewness & Rescaling Laws",
+    "ti_ar": "مطابقة: مقاييس النزعة والتشتت والالتواء والتحويل الخطي",
     "p": [
       {
-        "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "Right-skewed distribution relationship",
+        "r": "Mean is pulled above the median (\\(\\bar{x} > \\text{median}\\))"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Tukey outlier criterion",
+        "r": "Below \\(Q_1 - 1.5\\,\\text{IQR}\\) or above \\(Q_3 + 1.5\\,\\text{IQR}\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "Effect of \\(y = ax + b\\) on standard deviation",
+        "r": "\\(s_y = |a|\\, s_x\\) (shift \\(b\\) cancels out)"
       },
       {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Histogram with unequal class widths",
+        "r": "Bar height plots Frequency Density \\(= \\text{Frequency} / \\text{Class Width}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "التوزيع الملتوي لليمين (موجب الالتواء)",
+        "r": "ينجذب المتوسط فوق الوسيط (\\(\\bar{x} > \\text{الوسيط}\\))"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "قاعدة القيم المتطرفة الربيعية",
+        "r": "أقل من \\(Q_1 - 1.5\\,\\text{IQR}\\) أو أكبر من \\(Q_3 + 1.5\\,\\text{IQR}\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "أثر التحويل \\(y = ax + b\\) على الانحراف المعياري",
+        "r": "\\(s_y = |a|\\, s_x\\) (لا يتأثر بالإزاحة \\(b\\))"
       },
       {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "المدرج التكراري غير متساوي الفئات",
+        "r": "يمثل الارتفاع كثافة التكرار \\(= \\text{التكرار} \\div \\text{طول الفئة}\\)"
       }
     ]
   }
@@ -745,103 +757,105 @@ D["aps-u2"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 6\\) and \\(\\operatorname{Var}(Y) = 5\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 6\\) و\\(\\operatorname{Var}(Y) = 5\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Causal Claim from an Observational Voluntary Survey",
+    "ti_ar": "اكتشف الخطأ: ادعاء السببية من دراسة رصدية تطوعية",
+    "q": "A wellness blog posts an online poll asking readers whether they drink green tea daily and rates their sleep quality, then headlines: \"Drinking green tea CAUSES better sleep for all adults.\" Which step is flawed?",
+    "q_ar": "نشرت مدونة صحية استطلاعاً إلكترونياً للقراء حول شرب الشاي الأخضر وجودة النوم ثم أعلنت: «الشاي الأخضر يسبب تحسن النوم لجميع البالغين». أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 6 - 5 = 1\\).",
-      "Take square root for standard deviation."
+      "Record each respondent’s self-reported tea habit and sleep rating.",
+      "Observe a positive association between tea drinking and higher sleep scores in the poll.",
+      "Conclude both population generalization (all adults) AND cause-and-effect from this observational voluntary-response poll.",
+      "Publish the headline without random sampling or random assignment."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 6 - 5 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "تسجيل إجابات المشاركين حول شرب الشاي الأخضر وجودة النوم.",
+      "ملاحظة ارتباط موجب بين شرب الشاي الأخضر وارتفاع تقييم النوم.",
+      "استنتاج التعميم على جميع البالغين وعلاقة السبب والنتيجة من هذا الاستطلاع الرصدي التطوعي.",
+      "نشر الاستنتاج دون عينة عشوائية أو توزيع عشوائي للمعالجات."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 6 + 5 = 11\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Voluntary response prevents generalizing to all adults, and lack of random assignment to treatments prevents claiming causation due to confounding variables.",
+      "Observational studies establish causation whenever \\(n > 100\\).",
+      "Stratified sampling replaces the need for random assignment in proving causation."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 11\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "العينة التطوعية تمنع التعميم على المجتمع، وغياب التوزيع العشوائي للمعالجات يمنع استنتاج السببية لوجود متغيرات مربكة.",
+      "الدراسات الرصدية تثبت السببية بمجرد زيادة حجم العينة عن \\(100\\).",
+      "العينة الطبقية تغني عن التوزيع العشوائي في إثبات السببية."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 16\\). For a simple random sample of size \\(n = 64\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 16\\). لعينة عشوائية حجمها \\(n = 64\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Stratified vs. Cluster Sampling & Randomized Block Design",
+    "ti_ar": "وضع المصحح: العينة الطبقية مقابل العنقودية وتصميم القطاعات العشوائية",
+    "q": "(a) A high school has \\(4\\) grade levels (9th–12th), each split into \\(15\\) homerooms. Contrast how to select a stratified random sample vs. a cluster sample of students. (b) Explain why blocking by initial fitness level improves an experiment comparing two running-shoe designs.",
+    "q_ar": "(أ) مدرسة ثانوية بها \\(4\\) مراحل دراسية وفي كل مرحلة \\(15\\) فصلاً. قارن بين اختيار عينة طبقية عشوائية وعينة عنقودية. (ب) فسّر لماذا يحسّن التقسيم إلى قطاعات حسب اللياقة الأولية تجربة مقارنة حذاءين للجري.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
+        "label": "Part (a) — Stratified Sample vs. Cluster Sample",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "B1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{16}{\\sqrt{64}} = \\dfrac{16}{8} = 2\\)."
+            "text": "Stratified: take a separate SRS of students from WITHIN EVERY grade level (homogeneous strata)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Cluster: randomly select a few whole homerooms and survey ALL students inside those chosen homerooms."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Purpose of Blocking & Random Assignment",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Group runners into homogeneous fitness blocks first, then randomly assign shoes A and B within each block."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(6) + 5 = 29\\)."
+            "text": "Reduces unexplained within-treatment variability from baseline fitness, making treatment differences easier to detect."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "label": "الجزء (أ) — مقارنة العينة الطبقية بالعينة العنقودية",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "B1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{16}{\\sqrt{64}} = 2\\)."
+            "text": "الطبقية: سحب عينة عشوائية بسيطة من داخل كل مرحلة دراسية على حدة."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "العنقودية: اختيار عدد من الفصول عشوائياً وشمل جميع طلاب الفصول المختارة."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الهدف من القطاعات (Blocking) والتوزيع العشوائي",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "تجميع العدائين حسب مستوى اللياقة أولاً ثم توزيع الحذاءين عشوائياً داخل كل قطاع."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(6) + 5 = 29\\)."
+            "text": "تقليل التباين العشوائي الناتج عن اختلاف اللياقة الأولية لزيادة دقة المقارنة."
           }
         ]
       }
@@ -849,81 +863,81 @@ D["aps-u2"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
+    "ti": "Step Builder: Proportional Stratified Sample & Systematic Interval",
+    "ti_ar": "بناء الخطوات: التخصيص التناسبي للعينة الطبقية والفترة المنتظمة",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 64\\):",
-        "a": "8",
-        "h": "Square root of 64."
+        "l": "Population of \\(800\\) employees has \\(240\\) engineers; in a proportional stratified sample of \\(n = 50\\), select engineers \\(=\\)",
+        "a": "15",
+        "h": "(240 / 800) * 50"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 16\\):",
-        "a": "2",
-        "h": "Divide 16 by 8."
+        "l": "For a systematic sample of \\(n = 40\\) from a list of \\(N = 1200\\), step interval \\(k = N/n =\\)",
+        "a": "30",
+        "h": "1200 / 40"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "11",
-        "h": "Add 6 + 5."
+        "l": "In a \\(3 \\times 2\\) factorial experiment (3 temperatures, 2 catalysts), total treatment combinations \\(=\\)",
+        "a": "6",
+        "h": "3 * 2"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 64\\):",
-        "a": "8",
-        "h": "الجذر التربيعي للعدد 64."
+        "l": "مجتمع من \\(800\\) موظف بينهم \\(240\\) مهندساً؛ في عينة طبقية تناسبية حجمها \\(50\\) نختار من المهندسين",
+        "a": "15",
+        "h": "(240 ÷ 800) × 50"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 16\\):",
-        "a": "2",
-        "h": "اقسم 16 على 8."
+        "l": "لعينة منتظمة حجمها \\(40\\) من قائمة طولها \\(1200\\)، طول الفترة \\(k =\\)",
+        "a": "30",
+        "h": "1200 ÷ 40"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "11",
-        "h": "اجمع 6 + 5."
+        "l": "في تجربة عاملية \\(3 \\times 2\\) (3 درجات حرارة و2 محفز)، عدد المعالجات الكلي يساوي",
+        "a": "6",
+        "h": "3 × 2"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Unit 2 · Collecting Data, Sampling & Experimental Design)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الوحدة ٢ · جمع البيانات والمعاينة وتصميم التجارب)",
+    "ti": "Matching: Sampling Methods, Bias Types & Principles of Experimental Design",
+    "ti_ar": "مطابقة: طرق المعاينة وأنواع التحيز ومبادئ تصميم التجارب",
     "p": [
       {
-        "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "Random assignment of units to treatments",
+        "r": "Balances confounding variables to justify cause-and-effect"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Random selection of subjects from population",
+        "r": "Justifies generalizing conclusions to the target population"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "Matched-pairs design",
+        "r": "Special block design of size 2 (or each subject receives both treatments in random order)"
       },
       {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Undercoverage bias",
+        "r": "Sampling frame systematically excludes a segment of the population"
       }
     ],
     "p_ar": [
       {
-        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "التوزيع العشوائي للوحدات على المعالجات",
+        "r": "يوازن المتغيرات المربكة ويسمح باستنتاج السببية"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "الاختيار العشوائي لأفراد العينة من المجتمع",
+        "r": "يسمح بتعميم النتائج على المجتمع المستهدف"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "تصميم الأزواج المتطابقة (Matched Pairs)",
+        "r": "قطاعات ثنائية متجانسة أو خضوع كل فرد للمعالجتين بترتيب عشوائي"
       },
       {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "تحيز نقص التغطية (Undercoverage)",
+        "r": "إطار المعاينة يستبعد شريحة من المجتمع بصورة منهجية"
       }
     ]
   }
@@ -1564,62 +1578,62 @@ D["aps-u4"] = [
 D["aps-u5"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Histogram Frequency Density (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(15\\). What bar height (frequency density) should be plotted?",
-    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(15\\). ما كثافة التكرار (ارتفاع العمود)؟",
+    "ti": "Quick Check: Large Counts Condition & Sampling Distribution of \\(\\hat{p}\\)",
+    "ti_ar": "فحص سريع: شرط الأعداد الكبيرة لتوزيع معاينة النسبة \\(\\hat{p}\\)",
+    "q": "For a simple random sample of size \\(n\\) from a large population with proportion \\(p\\), which condition justifies approximating the sampling distribution of \\(\\hat{p}\\) by a Normal distribution?",
+    "q_ar": "لعينة عشوائية بسيطة حجمها \\(n\\) من مجتمع كبير نسبته \\(p\\)، أي شرط يبرر تقريب توزيع المعاينة لـ \\(\\hat{p}\\) بالتوزيع الطبيعي؟",
     "o": [
-      "\\(3\\)",
-      "\\(15\\)",
-      "\\(75\\)",
-      "\\(1\\)"
+      "\\(np \\ge 10\\) and \\(n(1 - p) \\ge 10\\)",
+      "\\(n \\ge 30\\) regardless of \\(p\\)",
+      "Population size \\(N \\ge 100\\)",
+      "\\(\\hat{p} = 0.50\\) exactly"
     ],
     "o_ar": [
-      "\\(3\\)",
-      "\\(15\\)",
-      "\\(75\\)",
-      "\\(1\\)"
+      "\\(np \\ge 10\\) و\\(n(1 - p) \\ge 10\\)",
+      "\\(n \\ge 30\\) بغض النظر عن قيمة \\(p\\)",
+      "حجم المجتمع \\(N \\ge 100\\)",
+      "\\(\\hat{p} = 0.50\\) تماماً"
     ],
     "a": 0,
-    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 15 \\div 5 = 3\\).",
-    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
+    "ex": "Normal approximation for sample proportions requires the Large Counts condition: at least \\(10\\) expected successes (\\(np \\ge 10\\)) and \\(10\\) expected failures (\\(n(1-p) \\ge 10\\)).",
+    "ex_ar": "يتطلب التقريب الطبيعي لنسبة العينة تحقق شرط الأعداد الكبيرة: \\(np \\ge 10\\) و\\(n(1 - p) \\ge 10\\)."
   },
   {
     "t": "tf",
-    "ti": "True / False: Statistical Measures & Outlier Robustness (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "ti": "True / False: Central Limit Theorem, Unbiased Estimators & Sample Size Quadrupling",
+    "ti_ar": "صح أم خطأ: نظرية النهاية المركزية والمقدرات غير المتحيزة",
     "items": [
       {
-        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "s": "Quadrupling the sample size \\(n \\to 4n\\) cuts the standard deviation of \\(\\bar{x}\\) (\\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\)) in half.",
         "a": true,
-        "ex": "Order statistics depend on middle ranks, not extreme tail values."
+        "ex": "\\(\\sigma / \\sqrt{4n} = \\frac{1}{2}(\\sigma / \\sqrt{n})\\)."
       },
       {
-        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "s": "If a population distribution is strongly right-skewed, increasing \\(n\\) makes the POPULATION itself become Normal.",
         "a": false,
-        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
+        "ex": "The Central Limit Theorem makes the SAMPLING DISTRIBUTION of \\(\\bar{x}\\) approximately Normal for large \\(n\\); the underlying population remains skewed."
       },
       {
-        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "s": "The 10% condition (\\(n < 0.10 N\\)) allows using standard error formulas when sampling without replacement.",
         "a": true,
-        "ex": "Equal mean and variance is a defining property of the Poisson model."
+        "ex": "When \\(n < 0.10 N\\), sampling without replacement introduces negligible dependence."
       }
     ],
     "items_ar": [
       {
-        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "s": "مضاعفة حجم العينة أربع مرات \\(n \\to 4n\\) تخفض الانحراف المعياري لمتوسط العينة إلى النصف.",
         "a": true,
-        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
+        "ex": "\\(\\sigma / \\sqrt{4n} = \\frac{1}{2}(\\sigma / \\sqrt{n})\\)."
       },
       {
-        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "s": "إذا كان المجتمع ملتويًا بشدة، فإن زيادة حجم العينة \\(n\\) تجعل توزيع المجتمع نفسه طبيعياً.",
         "a": false,
-        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
+        "ex": "نظرية النهاية المركزية تجعل توزيع المعاينة لـ \\(\\bar{x}\\) قريباً من الطبيعي عند كبر \\(n\\)، بينما يبقى توزيع المجتمع كما هو."
       },
       {
-        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "s": "شرط \\(10\\%\\) (\\(n < 0.10 N\\)) يبرر استخدام صيغ الخطأ المعياري عند المعاينة بدون إرجاع.",
         "a": true,
-        "ex": "خاصية أساسية لتوزيع بواسون."
+        "ex": "عندما لا تتجاوز العينة \\(10\\%\\) من المجتمع يكون أثر عدم الإرجاع مهملاً."
       }
     ]
   },
@@ -1697,54 +1711,52 @@ D["aps-u5"] = [
   },
   {
     "t": "cat",
-    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
-    "categories": [
-      "Resistant to Outliers",
-      "Sensitive to Outliers"
-    ],
-    "categories_ar": [
-      "مقاوم للقيم المتطرفة",
-      "حساس للقيم المتطرفة"
-    ],
+    "ti": "Categorize: Sampling Distribution of \\(\\hat{p}\\) vs. Sampling Distribution of \\(\\bar{x}\\)",
+    "ti_ar": "صنّف: شروط وصيغ توزيع المعاينة للنسبة \\(\\hat{p}\\) مقابل المتوسط \\(\\bar{x}\\)",
     "items": [
       {
-        "s": "Sample Median",
+        "s": "Normality checked via Large Counts: \\(np \\ge 10\\) and \\(n(1-p) \\ge 10\\)",
         "cat": 0
       },
       {
-        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
-        "cat": 0
-      },
-      {
-        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "s": "Normality justified by Normal population OR Central Limit Theorem (\\(n \\ge 30\\))",
         "cat": 1
       },
       {
-        "s": "Sample Standard Deviation (\\(s\\))",
+        "s": "Standard deviation of statistic equals \\(\\sqrt{\\dfrac{p(1-p)}{n}}\\)",
+        "cat": 0
+      },
+      {
+        "s": "Standard deviation of statistic equals \\(\\dfrac{\\sigma}{\\sqrt{n}}\\)",
         "cat": 1
       }
     ],
     "items_ar": [
       {
-        "s": "الوسيط الحسابي",
+        "s": "يتحقق التقريب الطبيعي بشرط \\(np \\ge 10\\) و\\(n(1-p) \\ge 10\\)",
         "cat": 0
       },
       {
-        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
-        "cat": 0
-      },
-      {
-        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "s": "يتحقق التقريب الطبيعي إذا كان المجتمع طبيعياً أو \\(n \\ge 30\\) (CLT)",
         "cat": 1
       },
       {
-        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "s": "الانحراف المعياري للإحصاءة يساوي \\(\\sqrt{\\dfrac{p(1-p)}{n}}\\)",
+        "cat": 0
+      },
+      {
+        "s": "الانحراف المعياري للإحصاءة يساوي \\(\\dfrac{\\sigma}{\\sqrt{n}}\\)",
         "cat": 1
       }
     ],
-    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
-    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
+    "categories": [
+      "Sample Proportion \\(\\hat{p}\\)",
+      "Sample Mean \\(\\bar{x}\\)"
+    ],
+    "categories_ar": [
+      "نسبة العينة \\(\\hat{p}\\)",
+      "متوسط العينة \\(\\bar{x}\\)"
+    ]
   },
   {
     "t": "se",
@@ -1893,62 +1905,62 @@ D["aps-u5"] = [
 D["aps-u6"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Histogram Frequency Density (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(20\\). What bar height (frequency density) should be plotted?",
-    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(20\\). ما كثافة التكرار (ارتفاع العمود)؟",
+    "ti": "Quick Check: Degrees of Freedom & Expected Counts in a Chi-Square Test",
+    "ti_ar": "فحص سريع: درجات الحرية والتكرارات المتوقعة في اختبار مربع كاي",
+    "q": "A chi-square test of independence is conducted on a \\(3 \\times 4\\) two-way contingency table. What are the degrees of freedom \\(\\text{df}\\)?",
+    "q_ar": "أُجري اختبار مربع كاي للاستقلال على جدول توافقي من \\(3\\) صفوف و\\(4\\) أعمدة. ما عدد درجات الحرية \\(\\text{df}\\)؟",
     "o": [
-      "\\(4\\)",
-      "\\(20\\)",
-      "\\(100\\)",
-      "\\(1\\)"
+      "\\(\\text{df} = 6\\)",
+      "\\(\\text{df} = 12\\)",
+      "\\(\\text{df} = 11\\)",
+      "\\(\\text{df} = 7\\)"
     ],
     "o_ar": [
-      "\\(4\\)",
-      "\\(20\\)",
-      "\\(100\\)",
-      "\\(1\\)"
+      "\\(\\text{df} = 6\\)",
+      "\\(\\text{df} = 12\\)",
+      "\\(\\text{df} = 11\\)",
+      "\\(\\text{df} = 7\\)"
     ],
     "a": 0,
-    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 20 \\div 5 = 4\\).",
-    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
+    "ex": "For an \\(r \\times c\\) two-way table, \\(\\text{df} = (r - 1)(c - 1) = (3 - 1)(4 - 1) = 2 \\times 3 = 6\\).",
+    "ex_ar": "لجدول توافقي أبعاده \\(r \\times c\\) تكون درجات الحرية \\(\\text{df} = (r - 1)(c - 1) = 2 \\times 3 = 6\\)."
   },
   {
     "t": "tf",
-    "ti": "True / False: Statistical Measures & Outlier Robustness (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "ti": "True / False: Proportion z-Tests, Pooled \\(\\hat{p}_c\\) & Chi-Square Conditions",
+    "ti_ar": "صح أم خطأ: اختبارات النسبة المجمعة وشروط مربع كاي",
     "items": [
       {
-        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "s": "In a one-proportion \\(z\\)-test of \\(H_0: p = p_0\\), the test statistic uses \\(p_0\\) (not \\(\\hat{p}\\)) in the standard error \\(\\sqrt{p_0(1 - p_0)/n}\\).",
         "a": true,
-        "ex": "Order statistics depend on middle ranks, not extreme tail values."
+        "ex": "Hypothesis tests assume \\(H_0\\) is true when computing the null sampling distribution spread."
       },
       {
-        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "s": "The Large Counts condition for a chi-square test requires every OBSERVED cell count to be at least \\(5\\).",
         "a": false,
-        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
+        "ex": "Chi-square tests require all EXPECTED cell counts to be at least \\(5\\); observed counts may be smaller."
       },
       {
-        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "s": "A two-sample \\(z\\)-test for \\(H_0: p_1 - p_2 = 0\\) uses the pooled proportion \\(\\hat{p}_c = \\dfrac{x_1 + x_2}{n_1 + n_2}\\) in its standard error.",
         "a": true,
-        "ex": "Equal mean and variance is a defining property of the Poisson model."
+        "ex": "Under \\(H_0: p_1 = p_2\\), both samples estimate the same common proportion \\(p\\), requiring pooling."
       }
     ],
     "items_ar": [
       {
-        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "s": "في اختبار \\(z\\) لنسبة واحدة \\(H_0: p = p_0\\)، نستخدم \\(p_0\\) وليس \\(\\hat{p}\\) تحت الجذر في المقام.",
         "a": true,
-        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
+        "ex": "يحسب إحصاء الاختبار تحت افتراض صحة فرض العدم \\(H_0: p = p_0\\)."
       },
       {
-        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "s": "يشترط اختبار مربع كاي أن تكون جميع التكرارات المشاهدة (Observed) لا تقل عن \\(5\\).",
         "a": false,
-        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
+        "ex": "الشرط ينطبق على التكرارات المتوقعة (Expected counts \\(\\ge 5\\)) وليس المشاهدة."
       },
       {
-        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "s": "يستخدم اختبار \\(z\\) لفرق نسبتين عند \\(H_0: p_1 = p_2\\) النسبة المجمعة \\(\\hat{p}_c\\).",
         "a": true,
-        "ex": "خاصية أساسية لتوزيع بواسون."
+        "ex": "لأن فرض العدم يفترض تساوي النسبتين في المجتمعين."
       }
     ]
   },
@@ -1995,13 +2007,14 @@ D["aps-u6"] = [
   },
   {
     "t": "num",
-    "ti": "Numeric Entry: Sampling Standard Error (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "إدخال رقمي: حساب الخطأ المعياري للمتوسط (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "A population has \\(\\sigma = 24\\). Compute the standard error \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) for sample size \\(n = 64\\).",
-    "q_ar": "مجتمع انحرافه المعياري \\(\\sigma = 24\\). احسب الخطأ المعياري \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) لعينة حجمها \\(n = 64\\).",
-    "a": "3",
-    "ex": "\\(\\sigma_{\\bar{x}} = 24 / 8 = 3\\).",
-    "ex_ar": "\\(\\sigma_{\\bar{x}} = 24 / 8 = 3\\)."
+    "ti": "Numeric Entry: Chi-Square Expected Cell Count & Contribution",
+    "ti_ar": "إدخال رقمي: التكرار المتوقع ومساهمة الخلية في مربع كاي",
+    "q": "In a two-way table with grand total \\(N = 200\\), Row 1 has total \\(80\\) and Column 2 has total \\(50\\). If the observed count in cell \\((1, 2)\\) is \\(O = 26\\), compute its chi-square component \\(\\dfrac{(O - E)^2}{E}\\).",
+    "q_ar": "في جدول توافقي مجموعه الكلي \\(200\\)، مجموع الصف الأول \\(80\\) ومجموع العمود الثاني \\(50\\). إذا كان المشاهد في الخلية \\(O = 26\\)، فاحسب \\(\\dfrac{(O - E)^2}{E}\\).",
+    "a": 1.8,
+    "tol": 0.01,
+    "ex": "Expected count \\(E = \\dfrac{80 \\times 50}{200} = 20\\). Chi-square contribution \\(= \\dfrac{(26 - 20)^2}{20} = \\dfrac{36}{20} = 1.8\\).",
+    "ex_ar": "المتوقع \\(E = \\dfrac{80 \\times 50}{200} = 20\\)، والمساهمة \\(= \\dfrac{(26 - 20)^2}{20} = 1.8\\)."
   },
   {
     "t": "ord",
@@ -2026,154 +2039,164 @@ D["aps-u6"] = [
   },
   {
     "t": "cat",
-    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "categories": [
-      "Resistant to Outliers",
-      "Sensitive to Outliers"
-    ],
-    "categories_ar": [
-      "مقاوم للقيم المتطرفة",
-      "حساس للقيم المتطرفة"
-    ],
+    "ti": "Categorize: Chi-Square Goodness-of-Fit vs. Homogeneity vs. Independence",
+    "ti_ar": "صنّف: حسن المطابقة مقابل التجانس مقابل الاستقلال في مربع كاي",
     "items": [
       {
-        "s": "Sample Median",
+        "s": "One random sample, one categorical variable compared against claimed percentages",
         "cat": 0
       },
       {
-        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "s": "Degrees of freedom equal \\(k - 1\\) (number of categories minus 1)",
         "cat": 0
       },
       {
-        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "s": "Separate random samples from two populations compared across one categorical variable",
         "cat": 1
       },
       {
-        "s": "Sample Standard Deviation (\\(s\\))",
+        "s": "One random sample classified on two categorical variables with \\(\\text{df} = (r-1)(c-1)\\)",
         "cat": 1
       }
     ],
     "items_ar": [
       {
-        "s": "الوسيط الحسابي",
+        "s": "عينة عشوائية واحدة ومتغير فئوي واحد يُقارن بنسب مفترضة",
         "cat": 0
       },
       {
-        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
+        "s": "درجات الحرية تساوي \\(k - 1\\)",
         "cat": 0
       },
       {
-        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "s": "عينات عشوائية مستقلة من مجتمعين لمقارنة توزيع متغير فئوي",
         "cat": 1
       },
       {
-        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "s": "عينة واحدة مصنفة وفق متغيرين فئويين بدرجات حرية \\((r-1)(c-1)\\)",
         "cat": 1
       }
     ],
-    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
-    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
+    "categories": [
+      "Goodness-of-Fit",
+      "Homogeneity / Independence (2-Way)"
+    ],
+    "categories_ar": [
+      "حسن المطابقة (Goodness-of-Fit)",
+      "التجانس أو الاستقلال (جدول ثنائي)"
+    ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 5\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 5\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Using \\(\\hat{p}\\) Instead of \\(p_0\\) in a One-Proportion z-Test",
+    "ti_ar": "اكتشف الخطأ: استخدام \\(\\hat{p}\\) بدلاً من \\(p_0\\) في مقام اختبار النسبة",
+    "q": "A student tests \\(H_0: p = 0.50\\) vs. \\(H_a: p > 0.50\\) when \\(x = 64\\) out of \\(n = 100\\) (\\(\\hat{p} = 0.64\\)). Which step has a formula error?",
+    "q_ar": "يختبر طالب \\(H_0: p = 0.50\\) مقابل \\(H_a: p > 0.50\\) لعينة \\(n = 100\\) و\\(\\hat{p} = 0.64\\). أي خطوة تتضمن خطأ في القانون؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 5 = 0\\).",
-      "Take square root for standard deviation."
+      "Verify Random, 10%, and Large Counts using \\(np_0 = 50 \\ge 10\\) and \\(n(1 - p_0) = 50 \\ge 10\\).",
+      "Substitute \\(\\hat{p} = 0.64\\) into the denominator instead of \\(p_0 = 0.50\\): \\(\\text{SE} = \\sqrt{\\dfrac{0.64(0.36)}{100}} = 0.048\\).",
+      "Compute \\(z = \\dfrac{0.64 - 0.50}{0.048} = 2.92\\).",
+      "Find the upper-tail \\(p\\)-value from the standard Normal table."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 5 = 0\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "التحقق من العشوائية وشرط 10% والأعداد الكبيرة \\(np_0 = 50 \\ge 10\\).",
+      "تعويض \\(\\hat{p} = 0.64\\) في المقام بدلاً من \\(p_0 = 0.50\\): \\(\\sqrt{0.64(0.36)/100} = 0.048\\).",
+      "حساب \\(z = \\dfrac{0.64 - 0.50}{0.048} = 2.92\\).",
+      "إيجاد القيمة الاحتمالية للذيل الأيمن من جدول التوزيع الطبيعي."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 5 = 10\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "A significance test assumes \\(H_0: p = p_0\\) is true, so the null standard deviation MUST use \\(p_0 = 0.50\\): \\(\\sqrt{0.50(0.50)/100} = 0.050\\) and \\(z = 2.80\\) (\\(\\hat{p}\\) in SE is for confidence intervals).",
+      "You should use a \\(t\\)-distribution with \\(\\text{df} = 99\\) for sample proportions.",
+      "The numerator should be \\(p_0 - \\hat{p}\\)."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 10\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "اختبار الفروض يفترض صحة \\(H_0: p = p_0\\)، فيجب استخدام \\(p_0 = 0.50\\) في المقام: \\(\\sqrt{0.25/100} = 0.05\\) و\\(z = 2.80\\).",
+      "يجب استخدام توزيع \\(t\\) بدرجات حرية \\(99\\) للنسب.",
+      "البسط يجب أن يكون \\(p_0 - \\hat{p}\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 24\\). For a simple random sample of size \\(n = 64\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 24\\). لعينة عشوائية حجمها \\(n = 64\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: 95% One-Proportion z-Interval & Minimum Sample Size for Margin of Error",
+    "ti_ar": "وضع المصحح: فترة الثقة لنسبة مجتمع وتحديد أقل حجم عينة لهامش خطأ",
+    "q": "(a) In an SRS of \\(n = 400\\) voters, \\(240\\) support a ballot measure. Construct and interpret a \\(95\\%\\) confidence interval for \\(p\\) (\\(z^* = 1.96\\)). (b) Find the conservative minimum sample size \\(n\\) to guarantee margin of error \\(\\text{ME} \\le 0.04\\) at \\(95\\%\\) confidence.",
+    "q_ar": "(أ) في عينة عشوائية من \\(400\\) ناخب، أيد \\(240\\) منهم مقترحاً. أنشئ فترة ثقة \\(95\\%\\) للنسبة \\(p\\) (\\(z^* = 1.96\\)). (ب) أوجد أقل حجم عينة متحفظ \\(n\\) لضمان هامش خطأ \\(\\text{ME} \\le 0.04\\).",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — 95% One-Proportion z-Interval",
+        "marks": 3,
         "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{24}{\\sqrt{64}} = \\dfrac{24}{8} = 3\\)."
-          },
           {
             "code": "B1",
             "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Compute \\(\\hat{p} = \\dfrac{240}{400} = 0.60\\) and check \\(240 \\ge 10,\\; 160 \\ge 10\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(\\text{SE} = \\sqrt{\\dfrac{0.60(0.40)}{400}} = \\sqrt{0.0006} \\approx 0.0245\\) and \\(\\text{ME} = 1.96(0.0245) \\approx 0.048\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Report interval \\(0.60 \\pm 0.048 = (0.552,\\; 0.648)\\) in context."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conservative Sample Size (p* = 0.50)",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Use worst-case \\(p^* = 0.50\\): \\(1.96\\sqrt{\\dfrac{0.25}{n}} \\le 0.04 \\implies \\sqrt{n} \\ge \\dfrac{0.98}{0.04} = 24.5\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(5) + 5 = 25\\)."
+            "text": "Square and ALWAYS round UP: \\(n \\ge 600.25 \\implies n = 601\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — فترة الثقة 95% لنسبة المجتمع",
+        "marks": 3,
         "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{24}{\\sqrt{64}} = 3\\)."
-          },
           {
             "code": "B1",
             "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "حساب \\(\\hat{p} = 0.60\\) والتحقق من شرط الأعداد الكبيرة \\(240 \\ge 10, 160 \\ge 10\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب الخطأ المعياري \\(\\text{SE} \\approx 0.0245\\) وهامش الخطأ \\(1.96(0.0245) \\approx 0.048\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "الفترة \\((0.552,\\; 0.648)\\) مع التفسير في السياق."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الحجم الأدنى للعينة باستخدام p* = 0.50",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "التعويض بـ \\(p^* = 0.50\\): \\(\\sqrt{n} \\ge \\dfrac{1.96 \\times 0.5}{0.04} = 24.5\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(5) + 5 = 25\\)."
+            "text": "التربيع والتقريب للأعلى دائماً: \\(n \\ge 600.25 \\implies n = 601\\)."
           }
         ]
       }
@@ -2181,40 +2204,40 @@ D["aps-u6"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "ti": "Step Builder: One-Proportion z-Statistic & Chi-Square Degrees of Freedom",
+    "ti_ar": "بناء الخطوات: إحصاء اختبار النسبة ودرجات حرية مربع كاي",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 64\\):",
-        "a": "8",
-        "h": "Square root of 64."
+        "l": "Null SE for \\(H_0: p = 0.20\\) with \\(n = 100\\) is \\(\\sqrt{0.20(0.80)/100} =\\)",
+        "a": "0.04",
+        "h": "sqrt(0.16 / 100) = 0.4 / 10"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 24\\):",
-        "a": "3",
-        "h": "Divide 24 by 8."
+        "l": "If \\(\\hat{p} = 0.28\\), the standardized test statistic \\(z = \\dfrac{0.28 - 0.20}{0.04} =\\)",
+        "a": "2",
+        "h": "0.08 / 0.04"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "10",
-        "h": "Add 5 + 5."
+        "l": "Degrees of freedom for a \\(4 \\times 3\\) chi-square table equal",
+        "a": "6",
+        "h": "(4 - 1) * (3 - 1)"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 64\\):",
-        "a": "8",
-        "h": "الجذر التربيعي للعدد 64."
+        "l": "الانحراف المعياري الصفري عند \\(H_0: p = 0.20\\) و\\(n = 100\\) يساوي",
+        "a": "0.04",
+        "h": "جذر (0.16 ÷ 100)"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 24\\):",
-        "a": "3",
-        "h": "اقسم 24 على 8."
+        "l": "إذا كانت \\(\\hat{p} = 0.28\\)، فإحصاء الاختبار \\(z = \\dfrac{0.28 - 0.20}{0.04} =\\)",
+        "a": "2",
+        "h": "0.08 ÷ 0.04"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 5\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "10",
-        "h": "اجمع 5 + 5."
+        "l": "درجات الحرية لجدول مربع كاي \\(4 \\times 3\\) تساوي",
+        "a": "6",
+        "h": "(4 - 1) × (3 - 1)"
       }
     ]
   }
@@ -2222,62 +2245,62 @@ D["aps-u6"] = [
 D["aps-u7"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Histogram Frequency Density (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(25\\). What bar height (frequency density) should be plotted?",
-    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(25\\). ما كثافة التكرار (ارتفاع العمود)؟",
+    "ti": "Quick Check: Degrees of Freedom for Linear Regression Slope Inference",
+    "ti_ar": "فحص سريع: درجات الحرية لاختبار ميل الانحدار الخطي",
+    "q": "A researcher fits a least-squares line to \\(n = 24\\) bivariate data pairs \\((x_i, y_i)\\) and tests \\(H_0: \\beta = 0\\) using \\(t = \\dfrac{b_1}{\\text{SE}_{b_1}}\\). What are the degrees of freedom?",
+    "q_ar": "يلائم باحث خط انحدار لـ \\(n = 24\\) زوجاً من البيانات \\((x_i, y_i)\\) ويختبر \\(H_0: \\beta = 0\\). ما عدد درجات الحرية لتوزيع \\(t\\)؟",
     "o": [
-      "\\(5\\)",
-      "\\(25\\)",
-      "\\(125\\)",
-      "\\(1\\)"
+      "\\(\\text{df} = n - 2 = 22\\)",
+      "\\(\\text{df} = n - 1 = 23\\)",
+      "\\(\\text{df} = n = 24\\)",
+      "\\(\\text{df} = 2\\)"
     ],
     "o_ar": [
-      "\\(5\\)",
-      "\\(25\\)",
-      "\\(125\\)",
-      "\\(1\\)"
+      "\\(\\text{df} = n - 2 = 22\\)",
+      "\\(\\text{df} = n - 1 = 23\\)",
+      "\\(\\text{df} = n = 24\\)",
+      "\\(\\text{df} = 2\\)"
     ],
     "a": 0,
-    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 25 \\div 5 = 5\\).",
-    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
+    "ex": "Simple linear regression estimates two parameters (intercept \\(\\alpha\\) and slope \\(\\beta\\)), leaving \\(\\text{df} = n - 2 = 22\\).",
+    "ex_ar": "يُقدّر الانحدار الخطي البسيط معلمتين (المقطع والميل)، فتكون درجات الحرية \\(\\text{df} = n - 2 = 22\\)."
   },
   {
     "t": "tf",
-    "ti": "True / False: Statistical Measures & Outlier Robustness (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "صح أم خطأ: المقاييس الإحصائية ومقاومة القيم المتطرفة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "ti": "True / False: Student’s t-Distribution, Paired t-Tests & Regression Conditions",
+    "ti_ar": "صح أم خطأ: توزيع t واختبار العينات المترابطة وشروط الانحدار",
     "items": [
       {
-        "s": "The median and IQR are resistant to extreme outliers, whereas the mean and standard deviation are sensitive.",
+        "s": "Student’s \\(t\\)-distribution has heavier tails than \\(N(0, 1)\\) to account for extra variability from estimating \\(\\sigma\\) with sample \\(s\\), and approaches \\(N(0, 1)\\) as \\(\\text{df} \\to \\infty\\).",
         "a": true,
-        "ex": "Order statistics depend on middle ranks, not extreme tail values."
+        "ex": "Replacing unknown \\(\\sigma\\) with random \\(s\\) widens the tails; as \\(n\\) grows, \\(s \\to \\sigma\\)."
       },
       {
-        "s": "If events \\(A\\) and \\(B\\) are mutually exclusive with positive probabilities, they are independent.",
+        "s": "When each of \\(15\\) athletes is timed before and after a training program, you should run an independent two-sample \\(t\\)-test on the two columns.",
         "a": false,
-        "ex": "Mutually exclusive means \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\), so they are strongly dependent."
+        "ex": "Before/after measurements on the SAME subjects are dependent pairs and require a paired \\(t\\)-procedure on the within-subject differences \\(d_i\\) (\\(\\text{df} = 14\\))."
       },
       {
-        "s": "For a Poisson distribution \\(X \\sim \\text{Po}(\\lambda)\\), \\(E[X] = \\operatorname{Var}(X) = \\lambda\\).",
+        "s": "In AP Statistics, you NEVER pool sample variances in a two-sample \\(t\\)-test for \\(\\mu_1 - \\mu_2\\) unless explicitly told equal variances.",
         "a": true,
-        "ex": "Equal mean and variance is a defining property of the Poisson model."
+        "ex": "Unpooled Welch two-sample \\(t\\) with \\(\\text{SE} = \\sqrt{s_1^2/n_1 + s_2^2/n_2}\\) is standard."
       }
     ],
     "items_ar": [
       {
-        "s": "الوسيط والمدى الربيعي يقاومان القيم المتطرفة، بينما يتأثر المتوسط والانحراف المعياري بها.",
+        "s": "لتوزيع \\(t\\) ذيول أثقل من التوزيع الطبيعي المعياري لتعويض تقدير \\(\\sigma\\) بالانحراف العيني \\(s\\)، ويقترب من \\(N(0,1)\\) كلما زادت درجات الحرية.",
         "a": true,
-        "ex": "المقاييس الترتيبية لا تتأثر بالقيم البعيدة في الأطراف."
+        "ex": "تقدير \\(\\sigma\\) بـ \\(s\\) يزيد التشتت عند صغر العينة."
       },
       {
-        "s": "إذا كان الحدثان \\(A, B\\) متنافيين باحتمال موجب فإنهما مستقلان.",
+        "s": "عند قياس زمن \\(15\\) لاعباً قبل وبعد برنامج تدريبي، نطبق اختبار \\(t\\) لعينتين مستقلتين.",
         "a": false,
-        "ex": "التنافي يعني \\(P(A \\cap B) = 0 \\neq P(A)P(B)\\)، فهما غير مستقلين."
+        "ex": "القياسات القبلية والبعدية لنفس الأفراد مترابطة وتتطلب اختبار \\(t\\) للفروق المزدوجة \\(d_i\\) بدرجات حرية \\(14\\)."
       },
       {
-        "s": "في توزيع بواسون \\(\\text{Po}(\\lambda)\\)، يتساوى التوقع والتباين ويساويان \\(\\lambda\\).",
+        "s": "في اختبار \\(t\\) لفرق متوسطين مستقلين نستخدم الخطأ المعياري غير المجمع \\(\\sqrt{s_1^2/n_1 + s_2^2/n_2}\\).",
         "a": true,
-        "ex": "خاصية أساسية لتوزيع بواسون."
+        "ex": "لا نجمع التباينين العينيين افتراضياً في اختبارات المتوسطين."
       }
     ]
   },
@@ -2324,13 +2347,14 @@ D["aps-u7"] = [
   },
   {
     "t": "num",
-    "ti": "Numeric Entry: Sampling Standard Error (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "إدخال رقمي: حساب الخطأ المعياري للمتوسط (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "A population has \\(\\sigma = 40\\). Compute the standard error \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) for sample size \\(n = 100\\).",
-    "q_ar": "مجتمع انحرافه المعياري \\(\\sigma = 40\\). احسب الخطأ المعياري \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) لعينة حجمها \\(n = 100\\).",
-    "a": "4",
-    "ex": "\\(\\sigma_{\\bar{x}} = 40 / 10 = 4\\).",
-    "ex_ar": "\\(\\sigma_{\\bar{x}} = 40 / 10 = 4\\)."
+    "ti": "Numeric Entry: One-Sample t-Test Statistic for a Mean",
+    "ti_ar": "إدخال رقمي: قيمة إحصاء اختبار t لمتوسط مجتمع",
+    "q": "To test \\(H_0: \\mu = 50\\), an SRS of \\(n = 25\\) observations yields \\(\\bar{x} = 53.6\\) and sample standard deviation \\(s = 6.0\\). Compute the test statistic \\(t\\).",
+    "q_ar": "لاختبار \\(H_0: \\mu = 50\\)، أعطت عينة عشوائية بحجم \\(n = 25\\) متوسطاً \\(\\bar{x} = 53.6\\) وانحرافاً معيارياً \\(s = 6.0\\). احسب إحصاء الاختبار \\(t\\).",
+    "a": 3,
+    "tol": 0.01,
+    "ex": "\\(\\text{SE} = \\dfrac{s}{\\sqrt{n}} = \\dfrac{6.0}{5} = 1.2\\), so \\(t = \\dfrac{53.6 - 50}{1.2} = 3.0\\) (with \\(\\text{df} = 24\\)).",
+    "ex_ar": "\\(\\text{SE} = 6.0 / 5 = 1.2\\)، ومنه \\(t = (53.6 - 50) / 1.2 = 3.0\\)."
   },
   {
     "t": "ord",
@@ -2355,154 +2379,164 @@ D["aps-u7"] = [
   },
   {
     "t": "cat",
-    "ti": "Categorize: Resistant vs. Non-Resistant Summary Statistics (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "تصنيف: المقاييس المقاومة مقابل الحساسة للقيم المتطرفة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "categories": [
-      "Resistant to Outliers",
-      "Sensitive to Outliers"
-    ],
-    "categories_ar": [
-      "مقاوم للقيم المتطرفة",
-      "حساس للقيم المتطرفة"
-    ],
+    "ti": "Categorize: Matched-Pairs t-Procedure vs. Two-Sample t-Procedure",
+    "ti_ar": "صنّف: اختبار t للأزواج المترابطة مقابل عينتين مستقلتين",
     "items": [
       {
-        "s": "Sample Median",
+        "s": "20 twin pairs where one twin gets Drug A and the other gets Placebo at random",
         "cat": 0
       },
       {
-        "s": "Interquartile Range (\\(\\text{IQR} = Q_3 - Q_1\\))",
-        "cat": 0
-      },
-      {
-        "s": "Sample Mean (\\(\\bar{x}\\))",
+        "s": "SRS of 35 batteries from Factory X compared with independent SRS of 40 from Factory Y",
         "cat": 1
       },
       {
-        "s": "Sample Standard Deviation (\\(s\\))",
+        "s": "Each car tests Mileage with Fuel A and Fuel B in randomized order",
+        "cat": 0
+      },
+      {
+        "s": "40 volunteers randomly split into 20 in Group 1 and 20 in Group 2 with no pairing",
         "cat": 1
       }
     ],
     "items_ar": [
       {
-        "s": "الوسيط الحسابي",
+        "s": "20 زوجاً من التوائم يُعطى أحدهم الدواء A والآخر الدواء الوهمي عشوائياً",
         "cat": 0
       },
       {
-        "s": "المدى الربيعي (\\(\\text{IQR} = Q_3 - Q_1\\))",
-        "cat": 0
-      },
-      {
-        "s": "المتوسط الحسابي (\\(\\bar{x}\\))",
+        "s": "عينة عشوائية من 35 بطارية من المصنع X تقارن بعينة مستقلة من 40 بطارية من المصنع Y",
         "cat": 1
       },
       {
-        "s": "الانحراف المعياري للعينة (\\(s\\))",
+        "s": "تجربة كل سيارة بنوعي الوقود A وB بترتيب عشوائي وحساب الفرق لكل سيارة",
+        "cat": 0
+      },
+      {
+        "s": "تقسيم 40 متطوعاً عشوائياً إلى مجموعتين مستقلتين من 20 و20 دون مزاوجة",
         "cat": 1
       }
     ],
-    "ex": "Rank-based summaries (median, IQR) resist extreme tail values; moment-based summaries (mean, SD) shift strongly.",
-    "ex_ar": "الوسيط والمدى الربيعي يعتمدان على الرتب فيقاومان التطرف، بعكس المتوسط والانحراف المعياري."
+    "categories": [
+      "Matched-Pairs \\(t\\) (1 sample of \\(d_i\\))",
+      "Two-Sample \\(t\\) (\\(\\bar{x}_1 - \\bar{x}_2\\))"
+    ],
+    "categories_ar": [
+      "اختبار \\(t\\) للأزواج المترابطة",
+      "اختبار \\(t\\) لعينتين مستقلتين"
+    ]
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 6\\) and \\(\\operatorname{Var}(Y) = 6\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 6\\) و\\(\\operatorname{Var}(Y) = 6\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Confusing Sample Statistic \\(\\bar{x}\\) with Parameter \\(\\mu\\) in Hypotheses",
+    "ti_ar": "اكتشف الخطأ: كتابة إحصاءة العينة \\(\\bar{x}\\) بدلاً من معلمة المجتمع \\(\\mu\\) في الفروض",
+    "q": "A student writes a one-sample \\(t\\)-test to check whether mean battery life differs from \\(500\\) hours after observing \\(\\bar{x} = 488,\\; s = 20,\\; n = 16\\). Which step is wrong?",
+    "q_ar": "يجري طالب اختبار \\(t\\) لعينة واحدة للتحقق مما إذا كان متوسط عمر البطارية يختلف عن \\(500\\) ساعة بعد رصد \\(\\bar{x} = 488, s = 20, n = 16\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 6 - 6 = 0\\).",
-      "Take square root for standard deviation."
+      "State hypotheses using the sample mean symbol: \\(H_0: \\bar{x} = 500\\) vs. \\(H_a: \\bar{x} \\neq 500\\).",
+      "Verify Random, 10%, and Normal/Large Sample conditions (no strong skew or outliers for \\(n = 16\\)).",
+      "Compute \\(t = \\dfrac{488 - 500}{20 / \\sqrt{16}} = \\dfrac{-12}{5} = -2.40\\) with \\(\\text{df} = 15\\).",
+      "Double the one-tail probability \\(P(t_{15} \\le -2.40)\\) for the two-sided \\(p\\)-value."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 6 - 6 = 0\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "صياغة الفرضين باستخدام رمز متوسط العينة: \\(H_0: \\bar{x} = 500\\) مقابل \\(H_a: \\bar{x} \\neq 500\\).",
+      "التحقق من العشوائية وشرط 10% وعدم وجود التواء شديد أو قيم متطرفة عند \\(n = 16\\).",
+      "حساب \\(t = \\dfrac{488 - 500}{20 / 4} = -2.40\\) بدرجات حرية \\(\\text{df} = 15\\).",
+      "ضرب احتمال الذيل الواحد في \\(2\\) لأن الاختبار ذو طرفين."
     ],
-    "errorStep": 2,
+    "errorStep": 1,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 6 + 6 = 12\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Hypotheses are ALWAYS statements about unknown POPULATION parameters (\\(H_0: \\mu = 500\\) vs. \\(H_a: \\mu \\neq 500\\)), never known sample statistics like \\(\\bar{x}\\).",
+      "Degrees of freedom for \\(n = 16\\) should be \\(\\text{df} = 16\\).",
+      "You should divide by \\(n = 16\\) rather than \\(\\sqrt{16}\\)."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 12\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "تُصاغ الفروض الإحصائية دائماً حول معلمة المجتمع المجهولة \\(\\mu\\) (\\(H_0: \\mu = 500\\)) وليس حول إحصاءة العينة المعلومة \\(\\bar{x}\\).",
+      "درجات الحرية لعينة حجمها \\(16\\) هي \\(16\\).",
+      "يجب القسمة على \\(16\\) بدلاً من \\(\\sqrt{16}\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 40\\). For a simple random sample of size \\(n = 100\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 40\\). لعينة عشوائية حجمها \\(n = 100\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Paired t-Interval & Regression Computer Output Slope Test",
+    "ti_ar": "وضع المصحح: فترة الثقة للفروق المزدوجة واختبار ميل الانحدار من مخرجات الحاسوب",
+    "q": "(a) For \\(n = 16\\) paired differences, \\(\\bar{d} = 4.5\\) and \\(s_d = 3.0\\). Construct a \\(95\\%\\) confidence interval for \\(\\mu_d\\) given \\(t^*_{15} = 2.131\\). (b) Regression output on \\(n = 22\\) points gives \\(b_1 = 1.84\\) and \\(\\text{SE}_{b_1} = 0.46\\); compute \\(t\\) and \\(\\text{df}\\) for \\(H_0: \\beta = 0\\).",
+    "q_ar": "(أ) لـ \\(n = 16\\) فرقاً مزدوجاً حيث \\(\\bar{d} = 4.5\\) و\\(s_d = 3.0\\)، أنشئ فترة ثقة \\(95\\%\\) لـ \\(\\mu_d\\) علماً بأن \\(t^*_{15} = 2.131\\). (ب) من مخرجات انحدار لـ \\(n = 22\\) نقطة حيث \\(b_1 = 1.84\\) و\\(\\text{SE}_{b_1} = 0.46\\)، احسب \\(t\\) و\\(\\text{df}\\).",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
-        "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{40}{\\sqrt{100}} = \\dfrac{40}{10} = 4\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Linear Combination Variance",
-        "marks": 2,
+        "label": "Part (a) — 95% Paired t-Interval (df = 15)",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Compute \\(\\text{SE}_{\\bar{d}} = \\dfrac{3.0}{\\sqrt{16}} = 0.75\\) with \\(\\text{df} = 15\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Margin of error \\(= 2.131 \\times 0.75 \\approx 1.598\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(6) + 6 = 30\\)."
+            "text": "Interval \\(4.5 \\pm 1.598 = (2.902,\\; 6.098)\\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Slope t-Statistic & Regression df",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Compute \\(t = \\dfrac{b_1 - 0}{\\text{SE}_{b_1}} = \\dfrac{1.84}{0.46} = 4.00\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State degrees of freedom \\(\\text{df} = n - 2 = 20\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
-        "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{40}{\\sqrt{100}} = 4\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
-          }
-        ]
-      },
-      {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
-        "marks": 2,
+        "label": "الجزء (أ) — فترة الثقة 95% لمتوسط الفروق المزدوجة",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(\\text{SE}_{\\bar{d}} = 3.0 / 4 = 0.75\\) بدرجات حرية \\(\\text{df} = 15\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "هامش الخطأ \\(= 2.131 \\times 0.75 \\approx 1.598\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(6) + 6 = 30\\)."
+            "text": "الفترة \\((2.902,\\; 6.098)\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — إحصاء اختبار ميل الانحدار ودرجات الحرية",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "حساب \\(t = \\dfrac{1.84}{0.46} = 4.00\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "درجات الحرية \\(\\text{df} = n - 2 = 20\\)."
           }
         ]
       }
@@ -2510,40 +2544,40 @@ D["aps-u7"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "ti": "Step Builder: Paired t-Statistic & Regression Slope Inference",
+    "ti_ar": "بناء الخطوات: إحصاء اختبار الفروق المزدوجة وميل الانحدار",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 100\\):",
-        "a": "10",
-        "h": "Square root of 100."
+        "l": "For \\(n = 9\\) pairs with \\(\\bar{d} = 6\\) and \\(s_d = 4.5\\), \\(\\text{SE}_{\\bar{d}} = s_d / \\sqrt{9} =\\)",
+        "a": "1.5",
+        "h": "4.5 / 3 = 1.5"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 40\\):",
+        "l": "Test statistic \\(t = \\bar{d} / \\text{SE}_{\\bar{d}}\\) for \\(H_0: \\mu_d = 0\\) equals",
         "a": "4",
-        "h": "Divide 40 by 10."
+        "h": "6 / 1.5 = 4"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "12",
-        "h": "Add 6 + 6."
+        "l": "For linear regression on \\(n = 18\\) bivariate points, slope \\(t\\)-inference uses \\(\\text{df} =\\)",
+        "a": "16",
+        "h": "n - 2 = 18 - 2"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 100\\):",
-        "a": "10",
-        "h": "الجذر التربيعي للعدد 100."
+        "l": "لـ \\(n = 9\\) أزواج حيث \\(\\bar{d} = 6\\) و\\(s_d = 4.5\\)، الخطأ المعياري \\(\\text{SE}_{\\bar{d}} =\\)",
+        "a": "1.5",
+        "h": "4.5 ÷ 3"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 40\\):",
+        "l": "إحصاء الاختبار \\(t = \\bar{d} / \\text{SE}_{\\bar{d}}\\) عند \\(H_0: \\mu_d = 0\\) يساوي",
         "a": "4",
-        "h": "اقسم 40 على 10."
+        "h": "6 ÷ 1.5"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "12",
-        "h": "اجمع 6 + 6."
+        "l": "للانحدار الخطي على \\(n = 18\\) نقطة ثنائية، درجات الحرية \\(\\text{df} =\\)",
+        "a": "16",
+        "h": "18 - 2"
       }
     ]
   }

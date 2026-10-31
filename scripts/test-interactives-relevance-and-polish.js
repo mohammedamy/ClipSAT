@@ -69,7 +69,11 @@ for (const track of tracks) {
     (function collectBlocks(node) {
       if (!node || typeof node !== 'object') return;
       if (Array.isArray(node)) { node.forEach(collectBlocks); return; }
-      if ((node.kind === 'explorer' || node.type === 'explorer') && node.canvasId) { allBlocks.push(node); return; }
+      if ((node.kind === 'explorer' || node.type === 'explorer')) {
+        assert.ok(node.canvasId, `Explorer block missing canvasId in ${track}/${ch.id}`);
+        allBlocks.push(node);
+        return;
+      }
       if (node.kind === 'figure' && node.figure) { figBlocks.push(node); return; }
       for (const v of Object.values(node)) {
         if (v && typeof v === 'object') collectBlocks(v);
@@ -139,6 +143,13 @@ for (const track of tracks) {
       );
       const capAr = (blk.caption && blk.caption.ar) || '';
       assert.ok(capAr.length > 0, `Missing Arabic figure caption in ${track}/${ch.id}`);
+      assert.ok(
+        !/تمثيل رياضي وهندسي توضيحي|شكل هندسي لمثلث يوضح العلاقة بين أضلاعه وزواياه/.test(capAr),
+        `Generic boilerplate Arabic caption in ${track}/${ch.id}: ${capAr}`
+      );
+      if (blk.figure.type === 'triangle' && !/trig|triang|geo|pythag|mensur|circle|similar|right|vector|force|complex|quant-comparisons|bearing|angle|congruen|solid|qud|sat|act|est|tah|olymp|ol-|ig-|edx-trigonometry|edx-geometry|ge-geometry/i.test(ch.id)) {
+        assert.fail(`Boilerplate triangle static figure in non-geometric chapter ${track}/${ch.id}`);
+      }
       const strippedAr = capAr
         .replace(/\\\([\s\S]*?\\\)/g, '')
         .replace(/\\\[[\s\S]*?\\\]/g, '')
@@ -235,6 +246,41 @@ for (const track of tracks) {
 
       const blob = JSON.stringify(act);
       assert.ok(!LEGACY_BOILERPLATE_RE.test(blob), `Off-topic legacy boilerplate found in ${track}/${chId} (${act.t})`);
+      assert.ok(!/(^|[^\\])mathcal\{/.test(blob), `Unslashed mathcal found in ${track}/${chId}: ${act.ti}`);
+
+      if (['appc', 'precalc', 'alg2', 'algebra', 'geo'].includes(track)) {
+        assert.ok(
+          !/Spot the Error: Implicit Differentiation|Spot the Error: Fundamental Theorem|Taylor|Maclaurin|Integrating Factor/i.test(act.ti),
+          `Out-of-syllabus calculus IX activity in ${track}/${chId}: ${act.ti}`
+        );
+      }
+      if (['a2-conics', 'pc-conics', 'geo-foundations', 'geo-lines', 'geo-triangles', 'geo-quads', 'geo-transform', 'ig-transform'].includes(chId)) {
+        assert.ok(
+          !/Circle Theorems, Sectors|Central vs\. Inscribed|Area & Volume Similarity Scaling/i.test(act.ti),
+          `Misplaced circle/similarity IX activity in ${track}/${chId}: ${act.ti}`
+        );
+      }
+      if (['ag-stats', 'aps-u1', 'aps-u2', 'geo-prob', 'qud-data', 'as-datarepresent', 'ge-data-stats-prob'].includes(chId)) {
+        assert.ok(
+          !/Variance of Difference of Independent|Standard Error, Variance|Significance Hypothesis Test/i.test(act.ti),
+          `Out-of-chapter inference IX activity in ${track}/${chId}: ${act.ti}`
+        );
+      }
+      if (['sat-data', 'act-numbers', 'est-data', 'ge-arithmetic-shortcuts', 'ge-ratios-rates-word', 'ig-sets', 'ibsl-t1'].includes(chId)) {
+        assert.ok(
+          !/Harmonic Round-Trip Speed & Bounds|Number, Bounds & Set Principles/i.test(act.ti),
+          `Misplaced GCSE error-bounds IX activity in ${track}/${chId}: ${act.ti}`
+        );
+      }
+
+      if (act.t === 'cat' && Array.isArray(act.categories_ar) && Array.isArray(act.items_ar)) {
+        for (const elem of act.items_ar) {
+          const validArCat = typeof elem.cat === 'number'
+            ? (elem.cat >= 0 && elem.cat < act.categories_ar.length)
+            : act.categories_ar.includes(elem.cat);
+          assert.ok(validArCat, `Arabic cat item has unmapped category ${JSON.stringify(elem.cat)} in ${track}/${chId}`);
+        }
+      }
 
       if (act.t === 'tf') {
         assert.ok(Array.isArray(act.items) && act.items.length > 0, `Missing tf items in ${track}/${chId}`);
@@ -281,6 +327,9 @@ assert.ok(ixEngineSrc.includes('ix-prog-pill') && ixEngineSrc.includes('ix-prog-
 assert.ok(ixEngineSrc.includes('ix-box-top') && ixEngineSrc.includes('_decorateIxBox'), '19-interactive-activities-engine-v1.js must wrap badge + action buttons in .ix-box-top');
 assert.ok(ixEngineSrc.includes('_makeRetryBtn'), '19-interactive-activities-engine-v1.js must wire retry buttons on multi-step activities');
 assert.ok(ixEngineSrc.includes('ResizeObserver') && ixEngineSrc.includes('IntersectionObserver'), '19-interactive-activities-engine-v1.js must observe hidden-chapter _buildFN & _buildGP canvases');
+assert.ok(ixEngineSrc.includes("addEventListener('pointerdown'") && ixEngineSrc.includes('e.detail===0'), '19-interactive-activities-engine-v1.js math palette must support pointerdown and keyboard click');
+assert.ok(ixEngineSrc.includes('li.draggable=!isFinished'), '19-interactive-activities-engine-v1.js _buildORD must support HTML5 drag-and-drop reordering');
+assert.ok(ixEngineSrc.includes('var _FNM=') && ixEngineSrc.includes('arcsin|arccos|arctan'), '19-interactive-activities-engine-v1.js _fnEval must safely evaluate inverse/reciprocal trig & logs');
 
 const ixCsSrc = fs.readFileSync(path.join(ROOT, 'src', 'scripts', 'modules', '23-interactive-activities-cs.js'), 'utf8');
 assert.ok(ixCsSrc.includes("closest('.ia-match-item')"), '23-interactive-activities-cs.js must delegate nested KaTeX clicks via .closest(".ia-match-item")');

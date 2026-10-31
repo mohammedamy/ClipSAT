@@ -1955,74 +1955,84 @@ D["sat-data"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Ratios, Rates, Proportions, Percentages & Scatterplots)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (النسب والمعدلات والتناسب والنسب المئوية ومخططات الانتشار)",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(40\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(60\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 13\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(40\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(60\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 13\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed, Combined Work Rate & Ratio Partition",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية ومعدل العمل المشترك وتقسيم النسب",
+    "q": "(a) A car drives from A to B at \\(60\\text{ km/h}\\) and returns along the same route at \\(40\\text{ km/h}\\). Find the average speed for the entire round trip. (b) Pump A fills a tank in \\(6\\text{ h}\\) and Pump B fills it in \\(12\\text{ h}\\); how long do they take working together?",
+    "q_ar": "(أ) تسير سيارة من A إلى B بسرعة \\(60\\text{ كم/س}\\) وتعود على نفس الطريق بسرعة \\(40\\text{ كم/س}\\). أوجد السرعة المتوسطة للرحلة كاملة. (ب) تملأ المضخة A خزاناً في \\(6\\) ساعات وتملؤه B في \\(12\\) ساعة؛ كم تستغرقان معاً؟",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Equal-Distance Harmonic Mean Speed",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{40} + \\frac{d}{60}\\)."
+            "text": "Let one-way distance be \\(d\\); total time is \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{5d}{120} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Divide total distance \\(2d\\) by total time (or apply \\(\\dfrac{2 v_1 v_2}{v_1 + v_2}\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 40 \\cdot 60}{40 + 60} = 48\\text{ km/h}\\)."
+            "text": "Obtain \\(v_{\\text{avg}} = \\dfrac{2(60)(40)}{60 + 40} = 48\\text{ km/h}\\) (not \\(50\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Reciprocal Combined Work Rate",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Add hourly rates: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{3}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(12.5 \\le L < 13.5\\)."
+            "text": "Invert combined rate: \\(T = 4\\text{ hours}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — الوسط التوافقي للسرعة المتوسطة ذهاباً وإياباً",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{40} + \\frac{d}{60}\\)."
+            "text": "الزمن الكلي لمسافة \\(d\\) هو \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "قسمة المسافة الكلية \\(2d\\) على الزمن الكلي أو تطبيق \\(\\dfrac{2v_1v_2}{v_1+v_2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 40 \\cdot 60}{40 + 60} = 48\\text{ km/h}\\)."
+            "text": "السرعة المتوسطة \\(= 48\\text{ كم/س}\\) (وليست \\(50\\))."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — جمع معدلات العمل المتوازية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "جمع المعدلين: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(12.5 \\le L < 13.5\\)."
+            "text": "الزمن المشترك \\(T = 4\\) ساعات."
           }
         ]
       }
@@ -2030,42 +2040,42 @@ D["sat-data"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Number, Bounds & Set Principles (Ratios, Rates, Proportions, Percentages & Scatterplots)",
-    "ti_ar": "مطابقة: قوانين الأعداد والحدود والمجموعات (النسب والمعدلات والتناسب والنسب المئوية ومخططات الانتشار)",
+    "ti": "Matching: Percentages, Proportions, Harmonic Speed & Work-Rate Models",
+    "ti_ar": "مطابقة: النسب المئوية والتناسب والسرعة التوافقية ومعدلات العمل",
     "p": [
       {
-        "l": "Upper bound of \\(a / b\\) (positive)",
-        "r": "\\(a_{\\text{upper}} / b_{\\text{lower}}\\)"
+        "l": "\\(+25\\%\\) increase followed by \\(-20\\%\\) decrease",
+        "r": "Net multiplier \\(1.25 \\times 0.80 = 1.00\\) (\\(0\\%\\) net change)"
       },
       {
-        "l": "Inclusion–Exclusion \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "Equal-distance round-trip average speed",
+        "r": "\\(v_{\\text{avg}} = \\dfrac{2 v_1 v_2}{v_1 + v_2}\\)"
       },
       {
-        "l": "Equal-distance round-trip speed",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 48\\) for \\(40, 60\\)"
+        "l": "Combined time \\(T\\) for workers taking \\(t_1\\) and \\(t_2\\)",
+        "r": "\\(T = \\dfrac{t_1 t_2}{t_1 + t_2}\\)"
       },
       {
-        "l": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)"
+        "l": "Inverse proportion between speed \\(v\\) and travel time \\(t\\)",
+        "r": "\\(v_1 t_1 = v_2 t_2\\) (fixed distance)"
       }
     ],
     "p_ar": [
       {
-        "l": "الحد الأعلى للقسمة \\(a / b\\) (موجبة)",
-        "r": "\\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)"
+        "l": "زيادة \\(25\\%\\) متبوعة بخصم \\(20\\%\\)",
+        "r": "المعامل الصافي \\(1.25 \\times 0.80 = 1.00\\) (تغير \\(0\\%\\))"
       },
       {
-        "l": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "السرعة المتوسطة لرحلة ذهاب وإياب متساوية المسافة",
+        "r": "\\(v_{\\text{avg}} = \\dfrac{2 v_1 v_2}{v_1 + v_2}\\)"
       },
       {
-        "l": "السرعة المتوسطة ذهاباً وإياباً",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 48\\) للسرعتين \\(40, 60\\)"
+        "l": "الزمن المشترك لعاملين يستغرقان \\(t_1\\) و\\(t_2\\)",
+        "r": "\\(T = \\dfrac{t_1 t_2}{t_1 + t_2}\\)"
       },
       {
-        "l": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً"
+        "l": "التناسب العكسي بين السرعة \\(v\\) والزمن \\(t\\)",
+        "r": "\\(v_1 t_1 = v_2 t_2\\) عند ثبات المسافة"
       }
     ]
   }
@@ -3602,103 +3612,115 @@ D["sat-condprob"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Probability, Conditional Probability & Two-Way Tables)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الاحتمالات والاحتمال الشرطي والجداول المزدوجة)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 7\\) and \\(\\operatorname{Var}(Y) = 4\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 7\\) و\\(\\operatorname{Var}(Y) = 4\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 7 - 4 = 3\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 7 - 4 = 3\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7 + 4 = 11\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 11\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Probability, Conditional Probability & Two-Way Tables)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الاحتمالات والاحتمال الشرطي والجداول المزدوجة)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 24\\). For a simple random sample of size \\(n = 36\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 4\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 24\\). لعينة عشوائية حجمها \\(n = 36\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{24}{\\sqrt{36}} = \\dfrac{24}{6} = 4\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(7) + 4 = 32\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{24}{\\sqrt{36}} = 4\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(7) + 4 = 32\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -3706,42 +3728,42 @@ D["sat-condprob"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Probability, Conditional Probability & Two-Way Tables)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الاحتمالات والاحتمال الشرطي والجداول المزدوجة)",
+    "ti": "Matching: Addition Rule, Conditional Probability, Independence & Counting",
+    "ti_ar": "مطابقة: قواعد الجمع والاحتمال الشرطي والاستقلال وطرق العد",
     "p": [
       {
+        "l": "General Addition Rule for \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) for \\(P(B) > 0\\)"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Criterion for independent events \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Probability of \"at least one success\"",
+        "r": "\\(1 - P(\\text{zero successes})\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "قاعدة الجمع العامة \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) بشرط \\(P(B) > 0\\)"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "شرط استقلال الحدثين \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "احتمال نجاح واحد على الأقل",
+        "r": "\\(1 - P(\\text{عدم تحقق أي نجاح})\\)"
       }
     ]
   }

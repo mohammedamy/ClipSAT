@@ -5203,103 +5203,115 @@ D["as-datarepresent"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Representation of Data)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (تمثيل البيانات الإحصائية ومقاييس النزعة والتشتت)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 7\\) and \\(\\operatorname{Var}(Y) = 6\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 7\\) و\\(\\operatorname{Var}(Y) = 6\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Mean vs. Median Sensitivity & Linear Rescaling of Spread",
+    "ti_ar": "اكتشف الخطأ: حساسية المتوسط والوسيط وأثر التحويل الخطي على التشتت",
+    "q": "Every score \\(x_i\\) in a dataset with mean \\(\\bar{x} = 20\\) and standard deviation \\(s_x = 4\\) is transformed to \\(y_i = 3x_i + 10\\). Which step is wrong?",
+    "q_ar": "تم تحويل كل قيمة \\(x_i\\) في مجموعة بيانات متوسطها \\(\\bar{x} = 20\\) وانحرافها المعياري \\(s_x = 4\\) وفق \\(y_i = 3x_i + 10\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 7 - 6 = 1\\).",
-      "Take square root for standard deviation."
+      "Compute the new mean using linearity of center: \\(\\bar{y} = 3(20) + 10 = 70\\).",
+      "Note that multiplying every value by \\(3\\) stretches distances from the mean by \\(3\\).",
+      "Add the shift \\(+10\\) to the rescaled standard deviation as well: \\(s_y = 3(4) + 10 = 22\\).",
+      "Report the transformed summary as \\(\\bar{y} = 70,\\; s_y = 22\\)."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 7 - 6 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب المتوسط الجديد بخاصية الخطية: \\(\\bar{y} = 3(20) + 10 = 70\\).",
+      "ملاحظة أن الضرب في \\(3\\) يضاعف فروق القيم عن المتوسط بمعامل \\(3\\).",
+      "إضافة الإزاحة الثابتة \\(+10\\) إلى الانحراف المعياري أيضاً: \\(s_y = 3(4) + 10 = 22\\).",
+      "كتابة ملخص البيانات المحولة \\(\\bar{y} = 70,\\; s_y = 22\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7 + 6 = 13\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Adding a constant \\(+10\\) shifts every data point equally without changing spread, so \\(s_y = |3| s_x = 12\\) (and \\(\\text{IQR}_y = 3\\,\\text{IQR}_x\\)).",
+      "Multiplying by \\(3\\) leaves the standard deviation unchanged at \\(4\\).",
+      "Adding \\(+10\\) does not change the mean \\(\\bar{x}\\)."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 13\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "إضافة ثابت \\(+10\\) تزيح جميع القيم بنفس المقدار فلا تغير التشتت، لذا \\(s_y = |3| s_x = 12\\) فقط.",
+      "الضرب في \\(3\\) لا يغير الانحراف المعياري.",
+      "إضافة ثابت لا تغير المتوسط الحسابي."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Representation of Data)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (تمثيل البيانات الإحصائية ومقاييس النزعة والتشتت)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 20\\). For a simple random sample of size \\(n = 100\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 20\\). لعينة عشوائية حجمها \\(n = 100\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Five-Number Summary, Tukey Outlier Fences & Coded Mean/SD",
+    "ti_ar": "وضع المصحح: الملخص الخماسي وحدود القيم المتطرفة والانحراف المعياري",
+    "q": "(a) A dataset has \\(Q_1 = 32\\), median \\(= 41\\), \\(Q_3 = 52\\), minimum \\(= 12\\), and maximum \\(= 86\\). Test both extremes for outliers using the \\(1.5 \\times \\text{IQR}\\) rule. (b) For \\(n = 10\\) values, \\(\\sum x = 150\\) and \\(\\sum x^2 = 2410\\); find the population variance \\(\\sigma^2\\) and \\(\\sigma\\).",
+    "q_ar": "(أ) لمجموعة بيانات \\(Q_1 = 32\\) والوسيط \\(= 41\\) و\\(Q_3 = 52\\) والحد الأدنى \\(= 12\\) والأقصى \\(= 86\\). اختبر القيم المتطرفة بقاعدة \\(1.5 \\times \\text{IQR}\\). (ب) لـ \\(n = 10\\) قيم حيث \\(\\sum x = 150\\) و\\(\\sum x^2 = 2410\\)، أوجد \\(\\sigma^2\\) و\\(\\sigma\\).",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — IQR & Tukey Lower/Upper Fences",
+        "marks": 3,
         "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2\\)."
-          },
           {
             "code": "B1",
             "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Compute \\(\\text{IQR} = Q_3 - Q_1 = 52 - 32 = 20\\) and \\(1.5 \\times \\text{IQR} = 30\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Lower fence \\(= 32 - 30 = 2\\); upper fence \\(= 52 + 30 = 82\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Min \\(12 \\ge 2\\) (not an outlier), while Max \\(86 > 82\\) IS a high outlier."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Variance from Summary Totals",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Compute \\(\\bar{x} = \\dfrac{150}{10} = 15\\) and \\(\\sigma^2 = \\dfrac{2410}{10} - 15^2 = 241 - 225 = 16\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(7) + 6 = 34\\)."
+            "text": "Standard deviation \\(\\sigma = \\sqrt{16} = 4\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — المدى الربيعي وحدود القيم المتطرفة",
+        "marks": 3,
         "rubric": [
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{20}{\\sqrt{100}} = 2\\)."
-          },
           {
             "code": "B1",
             "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "حساب \\(\\text{IQR} = 52 - 32 = 20\\) ومنه \\(1.5 \\times \\text{IQR} = 30\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "الحد الأدنى \\(= 32 - 30 = 2\\) والحد الأعلى \\(= 52 + 30 = 82\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "القيمة \\(12\\) ليست متطرفة، بينما \\(86 > 82\\) قيمة متطرفة عليا."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — التباين والانحراف المعياري من المجاميع",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(\\bar{x} = 15\\) و\\(\\sigma^2 = \\dfrac{2410}{10} - 15^2 = 16\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(7) + 6 = 34\\)."
+            "text": "الانحراف المعياري \\(\\sigma = \\sqrt{16} = 4\\)."
           }
         ]
       }
@@ -5307,81 +5319,81 @@ D["as-datarepresent"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Representation of Data)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (تمثيل البيانات الإحصائية ومقاييس النزعة والتشتت)",
+    "ti": "Step Builder: Quartiles, Outlier Fence & Combined Group Mean",
+    "ti_ar": "بناء الخطوات: الربيعيات وحد التطرف والمتوسط المدمج لمجموعتين",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 100\\):",
-        "a": "10",
-        "h": "Square root of 100."
+        "l": "For \\(Q_1 = 18\\) and \\(Q_3 = 30\\), the interquartile range \\(\\text{IQR} =\\)",
+        "a": "12",
+        "h": "30 - 18"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 20\\):",
-        "a": "2",
-        "h": "Divide 20 by 10."
+        "l": "The upper outlier fence \\(Q_3 + 1.5(\\text{IQR})\\) equals",
+        "a": "48",
+        "h": "30 + 1.5 * 12"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "13",
-        "h": "Add 7 + 6."
+        "l": "Class A (\\(20\\) students, mean \\(75\\)) and Class B (\\(30\\) students, mean \\(85\\)) have combined mean",
+        "a": "81",
+        "h": "(20*75 + 30*85) / 50 = 4050 / 50"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 100\\):",
-        "a": "10",
-        "h": "الجذر التربيعي للعدد 100."
+        "l": "إذا كان \\(Q_1 = 18\\) و\\(Q_3 = 30\\)، فالمدى الربيعي \\(\\text{IQR} =\\)",
+        "a": "12",
+        "h": "30 - 18"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 20\\):",
-        "a": "2",
-        "h": "اقسم 20 على 10."
+        "l": "حد التطرف الأعلى \\(Q_3 + 1.5(\\text{IQR})\\) يساوي",
+        "a": "48",
+        "h": "30 + 18"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "13",
-        "h": "اجمع 7 + 6."
+        "l": "المتوسط المدمج لصف A (\\(20\\) طالباً بمتوسط \\(75\\)) وصف B (\\(30\\) طالباً بمتوسط \\(85\\)) هو",
+        "a": "81",
+        "h": "(1500 + 2550) ÷ 50"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Representation of Data)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (تمثيل البيانات الإحصائية ومقاييس النزعة والتشتت)",
+    "ti": "Matching: Center, Spread, Skewness & Rescaling Laws",
+    "ti_ar": "مطابقة: مقاييس النزعة والتشتت والالتواء والتحويل الخطي",
     "p": [
       {
-        "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "Right-skewed distribution relationship",
+        "r": "Mean is pulled above the median (\\(\\bar{x} > \\text{median}\\))"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Tukey outlier criterion",
+        "r": "Below \\(Q_1 - 1.5\\,\\text{IQR}\\) or above \\(Q_3 + 1.5\\,\\text{IQR}\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "Effect of \\(y = ax + b\\) on standard deviation",
+        "r": "\\(s_y = |a|\\, s_x\\) (shift \\(b\\) cancels out)"
       },
       {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Histogram with unequal class widths",
+        "r": "Bar height plots Frequency Density \\(= \\text{Frequency} / \\text{Class Width}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "التوزيع الملتوي لليمين (موجب الالتواء)",
+        "r": "ينجذب المتوسط فوق الوسيط (\\(\\bar{x} > \\text{الوسيط}\\))"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "قاعدة القيم المتطرفة الربيعية",
+        "r": "أقل من \\(Q_1 - 1.5\\,\\text{IQR}\\) أو أكبر من \\(Q_3 + 1.5\\,\\text{IQR}\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "أثر التحويل \\(y = ax + b\\) على الانحراف المعياري",
+        "r": "\\(s_y = |a|\\, s_x\\) (لا يتأثر بالإزاحة \\(b\\))"
       },
       {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "المدرج التكراري غير متساوي الفئات",
+        "r": "يمثل الارتفاع كثافة التكرار \\(= \\text{التكرار} \\div \\text{طول الفئة}\\)"
       }
     ]
   }

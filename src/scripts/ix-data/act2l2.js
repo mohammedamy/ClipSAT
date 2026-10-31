@@ -1745,30 +1745,32 @@ D["act2l2-trig-polar"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Parametric Second Derivative & Polar Area (Trigonometry & Polar Coordinates)",
-    "ti_ar": "اكتشف الخطأ: المشتقة البارامترية ومساحة القطاع القطبي (حساب المثلثات والإحداثيات القطبية)",
-    "q": "For \\(x(t) = t^2,\\; y(t) = t^3\\), a student computes \\(\\dfrac{d^2y}{dx^2}\\). Which step is invalid?",
-    "q_ar": "للمنحنى البارامتري \\(x(t) = t^2,\\; y(t) = t^3\\)، يحسب طالب \\(\\dfrac{d^2y}{dx^2}\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Polar-to-Rectangular Conversion & Quadrant Angle",
+    "ti_ar": "اكتشف الخطأ: التحويل من الإحداثيات القطبية إلى الديكارتية وزاوية الربع",
+    "q": "A student converts the rectangular point \\((-3, 3)\\) (Quadrant II) into polar coordinates \\((r, \\theta)\\) with \\(r > 0\\) and \\(0 \\le \\theta < 2\\pi\\). Which step is invalid?",
+    "q_ar": "يحوّل طالب النقطة الديكارتية \\((-3, 3)\\) (الربع الثاني) إلى إحداثيات قطبية \\((r, \\theta)\\) مع \\(r > 0\\) و\\(0 \\le \\theta < 2\\pi\\). أي خطوة غير صحيحة؟",
     "steps": [
-      "Compute \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) for \\(t \\neq 0\\).",
-      "Differentiate \\(\\frac{dy}{dx}\\) with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{3}{2}t\\right) = \\frac{3}{2}\\).",
-      "Claim \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = \\frac{6t}{2} = 3t\\) instead of dividing \\(\\frac{d}{dt}(dy/dx)\\) by \\(\\frac{dx}{dt}\\)."
+      "Compute the radial distance \\(r = \\sqrt{(-3)^2 + 3^2} = \\sqrt{18} = 3\\sqrt{2}\\).",
+      "Compute \\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{3}{-3} = -1\\).",
+      "Conclude directly from \\(\\arctan(-1)\\) that \\(\\theta = -\\dfrac{\\pi}{4}\\), which is coterminal with \\(\\dfrac{7\\pi}{4}\\).",
+      "Write the polar coordinates as \\(\\left(3\\sqrt{2}, \\dfrac{7\\pi}{4}\\right)\\)."
     ],
     "steps_ar": [
-      "حساب المشتقة الأولى \\(\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) حيث \\(t \\neq 0\\).",
-      "اشتقاق \\(\\frac{dy}{dx}\\) بالنسبة إلى \\(t\\): الناتج \\(\\frac{3}{2}\\).",
-      "الادعاء بأن \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = 3t\\) بدلاً من قسمة \\(\\frac{d}{dt}(dy/dx)\\) على \\(\\frac{dx}{dt}\\)."
+      "حساب البعد القطبي \\(r = \\sqrt{(-3)^2 + 3^2} = 3\\sqrt{2}\\).",
+      "حساب \\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{3}{-3} = -1\\).",
+      "الاستنتاج مباشرة من \\(\\arctan(-1)\\) أن \\(\\theta = -\\dfrac{\\pi}{4}\\) المكافئة لـ \\(\\dfrac{7\\pi}{4}\\).",
+      "كتابة الإحداثيات القطبية \\(\\left(3\\sqrt{2}, \\dfrac{7\\pi}{4}\\right)\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "By the Chain Rule, \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3/2}{2t} = \\frac{3}{4t}\\), NOT \\(\\frac{y''(t)}{x''(t)}\\).",
-      "\\(\\frac{dy}{dx}\\) equals \\(dx/dt\\) divided by \\(dy/dt\\).",
-      "Parametric curves do not have second derivatives."
+      "Since \\(x = -3 < 0\\) and \\(y = 3 > 0\\), the point lies in Quadrant II, so \\(\\theta = \\pi + \\arctan(-1) = \\dfrac{3\\pi}{4}\\), not \\(\\dfrac{7\\pi}{4}\\) (Quadrant IV).",
+      "The radius \\(r\\) should be negative whenever \\(x < 0\\).",
+      "\\(\\tan\\theta\\) is defined as \\(x / y\\) rather than \\(y / x\\)."
     ],
     "reasons_ar": [
-      "بقاعدة السلسلة \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3}{4t}\\) وليس خارج قسمة \\(y''(t)\\) على \\(x''(t)\\).",
-      "المشتقة الأولى تساوي \\(dx/dt\\) مقسوماً على \\(dy/dt\\).",
-      "المنحنيات البارامترية ليس لها مشتقة ثانية."
+      "بما أن \\(x < 0\\) و\\(y > 0\\) تقع النقطة في الربع الثاني، لذا \\(\\theta = \\pi - \\dfrac{\\pi}{4} = \\dfrac{3\\pi}{4}\\) وليس \\(\\dfrac{7\\pi}{4}\\).",
+      "يجب أن يكون نصف القطر \\(r\\) سالباً دائماً عندما تكون \\(x < 0\\).",
+      "تعريف \\(\\tan\\theta\\) هو \\(x / y\\) وليس \\(y / x\\)."
     ],
     "correctReason": 0
   },
@@ -1888,25 +1890,25 @@ D["act2l2-trig-polar"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Parametric & Polar Formulas (Trigonometry & Polar Coordinates)",
-    "ti_ar": "فحص سريع: قوانين المعادلات البارامترية والقطبية (حساب المثلثات والإحداثيات القطبية)",
-    "q": "Which expression or condition accurately characterizes Parametric slope \\(dy/dx\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: ميل المماس البارامتري \\(dy/dx\\)؟",
+    "ti": "Quick Check: Polar Conics & Sinusoidal Phase Shift",
+    "ti_ar": "فحص سريع: القطوع القطبية وإزاحة الطور الجيبية",
+    "q": "For the sinusoidal model \\(f(t) = 4\\sin\\!\\big(2t - \\tfrac{\\pi}{3}\\big) + 5\\), what are its period and horizontal phase shift?",
+    "q_ar": "للنموذج الجيبي \\(f(t) = 4\\sin\\!\\big(2t - \\tfrac{\\pi}{3}\\big) + 5\\)، ما طول دورته ومقدار إزاحة الطور الأفقية؟",
     "o": [
-      "\\(\\dfrac{dy/dt}{dx/dt}\\)",
-      "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)",
-      "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)",
-      "Circle of diameter \\(8\\) centered at \\((4, 0)\\)"
+      "Period \\(\\pi\\), phase shift \\(\\dfrac{\\pi}{6}\\) to the right",
+      "Period \\(2\\pi\\), phase shift \\(\\dfrac{\\pi}{3}\\) to the right",
+      "Period \\(\\pi\\), phase shift \\(\\dfrac{\\pi}{3}\\) to the left",
+      "Period \\(4\\pi\\), phase shift \\(\\dfrac{\\pi}{6}\\) to the left"
     ],
     "o_ar": [
-      "\\(\\dfrac{dy/dt}{dx/dt}\\)",
-      "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)",
-      "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)",
-      "دائرة قطرها \\(8\\) ومركزها \\((4, 0)\\)"
+      "الدورة \\(\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{6}\\) لليمين",
+      "الدورة \\(2\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{3}\\) لليمين",
+      "الدورة \\(\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{3}\\) لليسار",
+      "الدورة \\(4\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{6}\\) لليسار"
     ],
     "a": 0,
-    "ex": "Parametric slope \\(dy/dx\\) matches \\(\\dfrac{dy/dt}{dx/dt}\\).",
-    "ex_ar": "ميل المماس البارامتري \\(dy/dx\\) يطابق \\(\\dfrac{dy/dt}{dx/dt}\\)."
+    "ex": "Factor \\(2t - \\frac{\\pi}{3} = 2\\big(t - \\frac{\\pi}{6}\\big)\\): period \\(T = \\frac{2\\pi}{2} = \\pi\\) and phase shift is \\(+\\frac{\\pi}{6}\\) (right).",
+    "ex_ar": "بإخراج العامل المشترك \\(2\\big(t - \\frac{\\pi}{6}\\big)\\) تكون الدورة \\(T = \\frac{2\\pi}{2} = \\pi\\) وإزاحة الطور \\(\\frac{\\pi}{6}\\) لليمين."
   }
 ];
 D["act2l2-limits"] = [
@@ -2036,103 +2038,105 @@ D["act2l2-limits"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Limits)",
-    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (النهايات والاتصال والمقاربات)",
-    "q": "A student differentiates \\(f(x) = x^2 e^{2x}\\). Which step omits a required calculus rule?",
-    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{2x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
+    "ti": "Spot the Error: Conjugate Rationalization of an Indeterminate Limit",
+    "ti_ar": "اكتشف الخطأ: ضرب المرافق لحساب نهاية غير معينة",
+    "q": "A student evaluates \\(\\lim_{x \\to 9} \\dfrac{\\sqrt{x} - 3}{x - 9}\\). Which step contains an algebraic error?",
+    "q_ar": "يحسب طالب النهاية \\(\\lim_{x \\to 9} \\dfrac{\\sqrt{x} - 3}{x - 9}\\). أي خطوة تتضمن خطأ جبرياً؟",
     "steps": [
-      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{2x}\\).",
-      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 2 e^{2x}\\) via the Chain Rule.",
-      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 4x e^{2x}\\) instead of \\(u'v + uv'\\)."
+      "Verify direct substitution gives the indeterminate form \\(0 / 0\\).",
+      "Multiply numerator and denominator by conjugate \\(\\sqrt{x} + 3\\): \\(\\dfrac{x - 9}{(x - 9)(\\sqrt{x} + 3)}\\).",
+      "Cancel \\((x - 9)\\) for \\(x \\neq 9\\) to obtain \\(\\sqrt{x} + 3\\) in the numerator instead of \\(\\dfrac{1}{\\sqrt{x} + 3}\\).",
+      "Substitute \\(x = 9\\) to conclude the limit is \\(6\\)."
     ],
     "steps_ar": [
-      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{2x}\\).",
-      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 2 e^{2x}\\) بقاعدة السلسلة.",
-      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+      "التحقق من أن التعويض المباشر يعطي الصيغة غير المعينة \\(0 / 0\\).",
+      "ضرب البسط والمقام في المرافق \\(\\sqrt{x} + 3\\): \\(\\dfrac{x - 9}{(x - 9)(\\sqrt{x} + 3)}\\).",
+      "اختصار \\((x - 9)\\) وكتابة الناتج \\(\\sqrt{x} + 3\\) في البسط بدلاً من \\(\\dfrac{1}{\\sqrt{x} + 3}\\).",
+      "التعويض بـ \\(x = 9\\) واستنتاج أن النهاية تساوي \\(6\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{2x} + 2x^2 e^{2x} = x(2 + 2x)e^{2x}\\).",
-      "The derivative of \\(e^{2x}\\) is \\(e^{2x}\\) without factor \\(2\\).",
-      "\\((uv)' = u'v - uv'\\)."
+      "Canceling \\((x - 9)\\) leaves \\(1\\) in the numerator: \\(\\lim_{x \\to 9}\\frac{1}{\\sqrt{x}+3} = \\frac{1}{6}\\), not \\(6\\).",
+      "The conjugate of \\(\\sqrt{x} - 3\\) is \\(\\sqrt{x} - 3\\).",
+      "The limit does not exist because \\(x = 9\\) makes the denominator zero."
     ],
     "reasons_ar": [
-      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 2x)e^{2x}\\).",
-      "مشتقة \\(e^{2x}\\) لا تُضرب في \\(2\\).",
-      "قاعدة الضرب تتضمن طرح الحدين."
+      "اختصار \\((x - 9)\\) يترك \\(1\\) في البسط فيكون الناتج \\(\\frac{1}{\\sqrt{9}+3} = \\frac{1}{6}\\) وليس \\(6\\).",
+      "مرافق \\(\\sqrt{x} - 3\\) هو \\(\\sqrt{x} - 3\\).",
+      "النهاية غير موجودة لأن المقام ينعدم عند \\(x = 9\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Limits)",
-    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (النهايات والاتصال والمقاربات)",
-    "q": "(a) Evaluate \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 4x\\) at \\(x = 2\\).",
-    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 4x\\) عند \\(x = 2\\).",
+    "ti": "Examiner Mode: Algebraic Limits at a Point & End Behavior at Infinity",
+    "ti_ar": "وضع المصحح: حساب النهايات الجبرية ونهايات اللانهاية",
+    "q": "(a) Evaluate \\(\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x^2 - x - 6}\\). (b) Evaluate \\(\\lim_{x \\to \\infty} \\dfrac{4x^2 - 5x + 1}{2x^2 + 7}\\).",
+    "q_ar": "(أ) احسب \\(\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x^2 - x - 6}\\). (ب) احسب \\(\\lim_{x \\to \\infty} \\dfrac{4x^2 - 5x + 1}{2x^2 + 7}\\).",
     "parts": [
       {
-        "label": "Part (a) — Resolving 0/0 Limit",
+        "label": "Part (a) — Factoring 0/0 Indeterminate Form",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Factor \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\) for \\(x \\neq 2\\)."
+            "text": "Factor as \\(\\dfrac{(x-3)(x+3)}{(x-3)(x+2)}\\) and cancel \\((x-3)\\) for \\(x \\neq 3\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Evaluate limit as \\(x \\to 2\\): \\(4\\)."
+            "text": "Substitute \\(x = 3\\) to obtain \\(\\dfrac{6}{5} = 1.2\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Derivative & Tangent Equation",
+        "label": "Part (b) — Rational Limit at Infinity",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(2) = 16\\)."
+            "text": "Divide numerator and denominator by highest power \\(x^2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "With \\(g(2) = 16\\), tangent is \\(y - 16 = 16(x - 2)\\)."
+            "text": "Obtain ratio of leading coefficients \\(\\dfrac{4}{2} = 2\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "label": "الجزء (أ) — تحليل الصيغة غير المعينة 0/0",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "التحليل والاختصار \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\)."
+            "text": "التحليل إلى \\(\\dfrac{(x-3)(x+3)}{(x-3)(x+2)}\\) واختصار \\((x-3)\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "قيمة النهاية عند \\(x \\to 2\\) تساوي \\(4\\)."
+            "text": "التعويض بـ \\(x = 3\\) للحصول على \\(\\dfrac{6}{5} = 1.2\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "label": "الجزء (ب) — نهاية دالة نسبية عند المالانهاية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(2) = 16\\)."
+            "text": "قسمة البسط والمقام على أعلى قوة \\(x^2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "معادلة المماس: \\(y - 16 = 16(x - 2)\\)."
+            "text": "إيجاد نسبة المعاملين الرئيسيين \\(\\dfrac{4}{2} = 2\\)."
           }
         ]
       }
@@ -2205,25 +2209,25 @@ D["act2l2-limits"] = [
 D["act2l2-conics-3d-stats"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Histogram Frequency Density (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
-    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(20\\). What bar height (frequency density) should be plotted?",
-    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(20\\). ما كثافة التكرار (ارتفاع العمود)؟",
+    "ti": "Quick Check: 3D Space Distance & Sphere Equation",
+    "ti_ar": "فحص سريع: المسافة في الفضاء ثلاثي الأبعاد ومعادلة الكرة",
+    "q": "What is the distance in \\(\\mathbb{R}^3\\) between \\(A(1, -2, 4)\\) and \\(B(3, 4, -2)\\)?",
+    "q_ar": "ما المسافة في الفضاء ثلاثي الأبعاد بين النقطتين \\(A(1, -2, 4)\\) و\\(B(3, 4, -2)\\)؟",
     "o": [
-      "\\(4\\)",
-      "\\(20\\)",
-      "\\(100\\)",
-      "\\(1\\)"
+      "\\(2\\sqrt{19}\\)",
+      "\\(\\sqrt{40} = 2\\sqrt{10}\\)",
+      "\\(14\\)",
+      "\\(6\\)"
     ],
     "o_ar": [
-      "\\(4\\)",
-      "\\(20\\)",
-      "\\(100\\)",
-      "\\(1\\)"
+      "\\(2\\sqrt{19}\\)",
+      "\\(2\\sqrt{10}\\)",
+      "\\(14\\)",
+      "\\(6\\)"
     ],
     "a": 0,
-    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 20 \\div 5 = 4\\).",
-    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
+    "ex": "\\(d = \\sqrt{(3-1)^2 + (4-(-2))^2 + (-2-4)^2} = \\sqrt{4 + 36 + 36} = \\sqrt{76} = 2\\sqrt{19}\\).",
+    "ex_ar": "\\(d = \\sqrt{2^2 + 6^2 + (-6)^2} = \\sqrt{4 + 36 + 36} = \\sqrt{76} = 2\\sqrt{19}\\)."
   },
   {
     "t": "tf",
@@ -2266,75 +2270,74 @@ D["act2l2-conics-3d-stats"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
+    "ti": "Matching: Conics, 3D Space Geometry & Combinatorics",
+    "ti_ar": "مطابقة: القطوع المخروطية والهندسة الفراغية والتوافيق",
     "p": [
       {
-        "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "Sphere with center \\((h, k, \\ell)\\) and radius \\(r\\)",
+        "r": "\\((x-h)^2 + (y-k)^2 + (z-\\ell)^2 = r^2\\)"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Ellipse eccentricity \\(e = c / a\\)",
+        "r": "\\(0 < e < 1\\) with \\(c^2 = a^2 - b^2\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "Unordered committees of \\(r\\) from \\(n\\)",
+        "r": "\\(\\binom{n}{r} = \\dfrac{n!}{r!(n - r)!}\\)"
       },
       {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Ordered arrangements of \\(r\\) from \\(n\\)",
+        "r": "\\({}_n P_r = \\dfrac{n!}{(n - r)!}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "معادلة كرة مركزها \\((h, k, \\ell)\\) ونصف قطرها \\(r\\)",
+        "r": "\\((x-h)^2 + (y-k)^2 + (z-\\ell)^2 = r^2\\)"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "الاختلاف المركزي للقطع الناقص \\(e = c / a\\)",
+        "r": "\\(0 < e < 1\\) حيث \\(c^2 = a^2 - b^2\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "اختيار مجموعة غير مرتبة من \\(r\\) عنصر من أصل \\(n\\)",
+        "r": "\\(\\binom{n}{r} = \\dfrac{n!}{r!(n - r)!}\\)"
       },
       {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "ترتيب \\(r\\) عنصر من أصل \\(n\\) مع مراعاة الترتيب",
+        "r": "\\({}_n P_r = \\dfrac{n!}{(n - r)!}\\)"
       }
     ]
   },
   {
     "t": "num",
-    "ti": "Numeric Entry: Sampling Standard Error (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "إدخال رقمي: حساب الخطأ المعياري للمتوسط (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
-    "q": "A population has \\(\\sigma = 24\\). Compute the standard error \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) for sample size \\(n = 36\\).",
-    "q_ar": "مجتمع انحرافه المعياري \\(\\sigma = 24\\). احسب الخطأ المعياري \\(\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}\\) لعينة حجمها \\(n = 36\\).",
-    "a": "4",
-    "ex": "\\(\\sigma_{\\bar{x}} = 24 / 6 = 4\\).",
-    "ex_ar": "\\(\\sigma_{\\bar{x}} = 24 / 6 = 4\\)."
+    "ti": "Numeric Entry: Restricted Committee Combinations",
+    "ti_ar": "إدخال رقمي: عدد اللجان المشروطة بالتوافيق",
+    "q": "From \\(6\\) mathematicians and \\(5\\) physicists, how many \\(4\\)-person committees contain EXACTLY \\(2\\) mathematicians and \\(2\\) physicists?",
+    "q_ar": "من بين \\(6\\) رياضيين و\\(5\\) فيزيائيين، بكم طريقة يمكن تكوين لجنة رباعية تضم رياضيين اثنين وفيزيائيين اثنين بالضبط؟",
+    "a": 150,
+    "tol": 0.01,
+    "ex": "\\(\\binom{6}{2} \\times \\binom{5}{2} = 15 \\times 10 = 150\\).",
+    "ex_ar": "\\(\\binom{6}{2} \\times \\binom{5}{2} = 15 \\times 10 = 150\\)."
   },
   {
     "t": "ord",
-    "ti": "Order the Steps: Significance Hypothesis Test (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "ترتيب الخطوات: إجراء اختبار الفروض الإحصائية (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
-    "prompt": "Place the four standard stages of a statistical significance test in logical order:",
-    "prompt_ar": "رتّب المراحل الأربع لاختبار الدلالة الإحصائية ترتيباً منطقياً:",
+    "ti": "Order the Steps: Finding Center & Radius of a Sphere by Completing the Square",
+    "ti_ar": "رتّب الخطوات: إيجاد مركز ونصف قطر كرة بإكمال المربع",
+    "q": "Arrange the steps to find the center and radius of \\(x^2 + y^2 + z^2 - 4x + 6y - 2z - 11 = 0\\):",
+    "q_ar": "رتّب الخطوات لإيجاد مركز ونصف قطر الكرة \\(x^2 + y^2 + z^2 - 4x + 6y - 2z - 11 = 0\\):",
     "items": [
-      "State null \\(H_0\\) and alternative \\(H_a\\) hypotheses in terms of the population parameter.",
-      "Verify random sampling and large-sample / normality conditions.",
-      "Compute the test statistic and corresponding tail \\(p\\)-value.",
-      "Compare \\(p\\)-value against \\(\\alpha\\) and state the conclusion in context."
+      "Move the constant to the right and group coordinates: \\((x^2 - 4x) + (y^2 + 6y) + (z^2 - 2z) = 11\\).",
+      "Add half-coefficient squares \\(4 + 9 + 1 = 14\\) to both sides of the equation.",
+      "Factor into standard form: \\((x - 2)^2 + (y + 3)^2 + (z - 1)^2 = 25\\).",
+      "Read center \\((2, -3, 1)\\) and radius \\(r = \\sqrt{25} = 5\\)."
     ],
     "items_ar": [
-      "صياغة فرض العدم \\(H_0\\) والفرض البديل \\(H_a\\) بدلالة معلمة المجتمع.",
-      "التحقق من العشوائية وشروط حجم العينة والاعتدالية.",
-      "حساب إحصائية الاختبار والقيمة الاحتمالية \\(p\\)-value.",
-      "مقارنة \\(p\\)-value بمستوى الدلالة \\(\\alpha\\) وكتابة القرار في سياق المسألة."
-    ],
-    "ex": "Hypotheses → conditions → test statistic & p-value → decision in context.",
-    "ex_ar": "صياغة الفروض ← التحقق من الشروط ← إحصائية الاختبار ← القرار الإحصائي."
+      "نقل الحد الثابت وتجميع المتغيرات: \\((x^2 - 4x) + (y^2 + 6y) + (z^2 - 2z) = 11\\).",
+      "إضافة مربعات أنصاف المعاملات \\(4 + 9 + 1 = 14\\) إلى الطرفين.",
+      "التحليل إلى الصورة القياسية: \\((x - 2)^2 + (y + 3)^2 + (z - 1)^2 = 25\\).",
+      "استخراج المركز \\((2, -3, 1)\\) ونصف القطر \\(r = 5\\)."
+    ]
   },
   {
     "t": "cat",
@@ -2389,103 +2392,115 @@ D["act2l2-conics-3d-stats"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 5\\) and \\(\\operatorname{Var}(Y) = 4\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 5\\) و\\(\\operatorname{Var}(Y) = 4\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 5 - 4 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 5 + 4 = 9\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 9\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
-    "q": "(a) A population has standard deviation \\(\\sigma = 24\\). For a simple random sample of size \\(n = 36\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 24\\). لعينة عشوائية حجمها \\(n = 36\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{24}{\\sqrt{36}} = \\dfrac{24}{6} = 4\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(5) + 4 = 24\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{24}{\\sqrt{36}} = 4\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(5) + 4 = 24\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -2493,40 +2508,40 @@ D["act2l2-conics-3d-stats"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Conic Sections, 3D Coordinate Geometry, Combinatorics & Probability)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (القطوع المخروطية والهندسة ثلاثية الأبعاد والتوافيق والاحتمالات (ACT II L2))",
+    "ti": "Step Builder: Addition Rule, Conditional Probability & Complement Trick",
+    "ti_ar": "بناء الخطوات: قاعدة الجمع والاحتمال الشرطي ومتممة «واحد على الأقل»",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 36\\):",
-        "a": "6",
-        "h": "Square root of 36."
+        "l": "If \\(P(A) = 0.45\\), \\(P(B) = 0.35\\), and \\(P(A \\cap B) = 0.14\\), then \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 24\\):",
-        "a": "4",
-        "h": "Divide 24 by 6."
+        "l": "Using the same probabilities, conditional probability \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} =\\)",
+        "a": "0.4",
+        "h": "0.14 / 0.35 = 0.4"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "9",
-        "h": "Add 5 + 4."
+        "l": "A fair coin is tossed \\(3\\) times; \\(P(\\text{at least one Head}) = 1 - (0.5)^3 =\\)",
+        "a": "0.875",
+        "h": "1 - 0.125 = 0.875"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 36\\):",
-        "a": "6",
-        "h": "الجذر التربيعي للعدد 36."
+        "l": "إذا كان \\(P(A) = 0.45\\) و\\(P(B) = 0.35\\) و\\(P(A \\cap B) = 0.14\\)، فإن \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 24\\):",
-        "a": "4",
-        "h": "اقسم 24 على 6."
+        "l": "الاحتمال الشرطي \\(P(A \\mid B) = \\dfrac{0.14}{0.35} =\\)",
+        "a": "0.4",
+        "h": "0.14 ÷ 0.35"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 5,\\; \\operatorname{Var}(Y) = 4\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "9",
-        "h": "اجمع 5 + 4."
+        "l": "عند رمي قطعة نقد متزنة \\(3\\) مرات، \\(P(\\text{صورة واحدة على الأقل}) =\\)",
+        "a": "0.875",
+        "h": "1 - 1/8 = 0.875"
       }
     ]
   }

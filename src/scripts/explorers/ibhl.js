@@ -17,9 +17,10 @@
      one). Same shared Plot/register/redrawAll/fmt/ClipSAT3D helpers.
      ══════════════════════════════════════════════════════════════════ */
 
-  /* IB HL TOPIC 3 — cross product in 3D, u fixed, v's z-component slides */
+  /* IB HL TOPIC 3 — cross product in 3D, u fixed, v's x and z components slide */
   (function(){
-    var btn=document.getElementById('ibhlCrossBtn'); if(!btn) return;
+    var canvas=document.getElementById('ibhlCrossCanvas');
+    var btn=document.getElementById('ibhlCrossBtn'); if(!btn && !canvas) return;
     var wrap=document.getElementById('ibhlCrossWrap');
     var hint=document.getElementById('ibhlCrossHint');
     var slider=document.getElementById('ibhlV3');
@@ -34,6 +35,53 @@
     function mag(vec){ return Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]); }
     function vlab(vec,dp){ return '⟨'+fmt(vec[0],dp)+', '+fmt(vec[1],dp)+', '+fmt(vec[2],dp)+'⟩'; }
 
+    function proj2d(p){
+      /* Clean isometric projection (x forward-left, y right, z up) */
+      return [0.82*p[1] - 0.62*p[0], 0.88*p[2] - 0.28*p[0] - 0.24*p[1]];
+    }
+
+    function draw2d(ctx, cw, ch){
+      var v=[v1,-1,v3], w=cross(u,v);
+      /* Scale w gently on 2D canvas so extreme magnitudes stay inside viewport while preserving direction & monotonic length */
+      var wMag=mag(w);
+      var wDrawScale = wMag > 6 ? (6 + 0.32*(wMag - 6)) / wMag : 1;
+      var wVis=[w[0]*wDrawScale, w[1]*wDrawScale, w[2]*wDrawScale];
+      var pad={l:20, r:20, t:24, b:20};
+      var view=_fitView(-8.5, 8.5, -7.0, 7.5, cw, ch, pad);
+      var P=new Plot(ctx, cw, ch, view, pad);
+      P.clear();
+
+      var o=proj2d([0,0,0]);
+      var axX=proj2d([6.5,0,0]), axY=proj2d([0,6.5,0]), axZ=proj2d([0,0,6.5]);
+      var nxX=proj2d([-5.5,0,0]), nxY=proj2d([0,-5.5,0]), nxZ=proj2d([0,0,-5.5]);
+      P.segment(nxX[0],nxX[1],axX[0],axX[1],GRID,1.2,[3,3]);
+      P.segment(nxY[0],nxY[1],axY[0],axY[1],GRID,1.2,[3,3]);
+      P.segment(nxZ[0],nxZ[1],axZ[0],axZ[1],GRID,1.2,[3,3]);
+      P.arrow(o[0],o[1],axX[0],axX[1],AXIS,1.4); P.label(axX[0]-0.4,axX[1]-0.3,'x',MUTED);
+      P.arrow(o[0],o[1],axY[0],axY[1],AXIS,1.4); P.label(axY[0]+0.2,axY[1]-0.2,'y',MUTED);
+      P.arrow(o[0],o[1],axZ[0],axZ[1],AXIS,1.4); P.label(axZ[0]+0.2,axZ[1]+0.2,'z',MUTED);
+
+      var pu=proj2d(u), pv=proj2d(v), puv=proj2d([u[0]+v[0],u[1]+v[1],u[2]+v[2]]), pw=proj2d(wVis);
+      /* Spanned parallelogram (area = |u x v|) */
+      P.polygon([o, pu, puv, pv], 'rgba(200,144,42,0.16)', 'rgba(200,144,42,0.45)', 1.3);
+
+      var GREEN='#16a34a';
+      P.arrow(o[0],o[1],pu[0],pu[1],INDIGO,2.8);
+      P.arrow(o[0],o[1],pv[0],pv[1],AMBER2,2.8);
+      if(wMag > 1e-4){
+        P.arrow(o[0],o[1],pw[0],pw[1],GREEN,3.0);
+        P.label(pw[0]+0.25,pw[1]+0.25,'u × v = '+vlab(w,1),GREEN);
+      }
+      P.label(pu[0]+0.2,pu[1]+0.25,'u = ⟨1,2,3⟩',INDIGO);
+      P.label(pv[0]+0.2,pv[1]-0.3,'v = '+vlab(v,1),AMBER2);
+      P.dot(o[0],o[1],INK,3.5);
+
+      ctx.font=FONT; ctx.fillStyle=INDIGO; ctx.textAlign='left'; ctx.textBaseline='top';
+      ctx.fillText('Parallelogram Area |u × v| = '+fmt(wMag,3)+'   |   u · (u × v) = 0,  v · (u × v) = 0', pad.l, 4);
+    }
+
+    if(canvas) register(canvas, draw2d);
+
     function mkArrow(T,vec,color){
       var len=Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]);
       if(len<1e-6) return null;
@@ -41,25 +89,22 @@
       return new T.ArrowHelper(dir, new T.Vector3(0,0,0), len, color, Math.min(0.8,len*0.18), Math.min(0.45,len*0.12));
     }
 
-    /* Non-visual equivalent (Pillar 4 scale): this explorer is 3D-only —
-       no 2D canvas fallback exists to describe — so the data view is wired
-       directly to the same refreshReadout() the slider already calls,
-       rather than a register()/draw() cycle like every other explorer. */
     function updateDataView(v,w){
       if(!dataDesc) return;
       dataDesc.textContent='u = '+vlab(u,0)+' (fixed). v = '+vlab(v,1)+'. u × v = '+vlab(w,2)+', magnitude '+fmt(mag(w),3)+'. The cross product is perpendicular to both u and v.';
       renderDataRows(dataRows,[
-        ['u',vlab(u,0),fmt(mag(u),3)],
-        ['v',vlab(v,1),fmt(mag(v),3)],
-        ['u × v',vlab(w,2),fmt(mag(w),3)]
+        ['u',fmt(u[0],0),fmt(u[1],0),fmt(u[2],0),fmt(mag(u),3)],
+        ['v',fmt(v[0],1),fmt(v[1],1),fmt(v[2],1),fmt(mag(v),3)],
+        ['u × v',fmt(w[0],1),fmt(w[1],1),fmt(w[2],1),fmt(mag(w),3)]
       ]);
     }
 
     function refreshReadout(){
       var v=[v1,-1,v3], w=cross(u,v);
-      _set('ibhlW', '⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩');
+      _set('ibhlW', '⟨'+fmt(w[0],1)+', '+fmt(w[1],1)+', '+fmt(w[2],1)+'⟩');
       _set('ibhlWmag', fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3));
       updateDataView(v,w);
+      if(canvas) redrawAll();
     }
 
     function updateScene(){
@@ -106,15 +151,17 @@
       btn.textContent='🧊 View u × v in 3D';
     }
 
-    btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
-    slider.addEventListener('input',function(){
-      var raw=parseFloat(slider.value);
-      v3=Math.abs(raw)>5 ? raw/10 : raw;
-      _set('ibhlV3lab', fmt(v3,1));
-      _set('ibhlV3Val', fmt(v3,1));
-      refreshReadout();
-      if(built){ updateScene(); H.render(); }
-    });
+    if(btn) btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
+    if(slider){
+      slider.addEventListener('input',function(){
+        var raw=parseFloat(slider.value);
+        v3=Math.abs(raw)>5 ? raw/10 : raw;
+        _set('ibhlV3lab', fmt(v3,1));
+        _set('ibhlV3Val', fmt(v3,1));
+        refreshReadout();
+        if(built){ updateScene(); H.render(); }
+      });
+    }
     if(slider1){
       slider1.addEventListener('input',function(){
         var raw1=parseFloat(slider1.value);
@@ -1073,7 +1120,12 @@
     }
 
     if(sX){ sX.addEventListener('input', syncState); sX.addEventListener('change', syncState); }
-    if(sCase){ sCase.addEventListener('change', syncState); }
+    if(sCase){
+      sCase.addEventListener('change', function(){
+        if(sCase.value === 'endpoint' && sX && parseFloat(sX.value) < 0){ sX.value = 10; }
+        syncState();
+      });
+    }
     syncState();
   }
 

@@ -1154,30 +1154,32 @@ D["appc-u3"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Parametric Second Derivative & Polar Area (Unit 3 · Trigonometric and Polar Functions)",
-    "ti_ar": "اكتشف الخطأ: المشتقة البارامترية ومساحة القطاع القطبي (الوحدة ٣ · الدوال المثلثية والدوال القطبية)",
-    "q": "For \\(x(t) = t^2,\\; y(t) = t^3\\), a student computes \\(\\dfrac{d^2y}{dx^2}\\). Which step is invalid?",
-    "q_ar": "للمنحنى البارامتري \\(x(t) = t^2,\\; y(t) = t^3\\)، يحسب طالب \\(\\dfrac{d^2y}{dx^2}\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Polar-to-Rectangular Conversion & Quadrant Angle",
+    "ti_ar": "اكتشف الخطأ: التحويل من الإحداثيات القطبية إلى الديكارتية وزاوية الربع",
+    "q": "A student converts the rectangular point \\((-3, 3)\\) (Quadrant II) into polar coordinates \\((r, \\theta)\\) with \\(r > 0\\) and \\(0 \\le \\theta < 2\\pi\\). Which step is invalid?",
+    "q_ar": "يحوّل طالب النقطة الديكارتية \\((-3, 3)\\) (الربع الثاني) إلى إحداثيات قطبية \\((r, \\theta)\\) مع \\(r > 0\\) و\\(0 \\le \\theta < 2\\pi\\). أي خطوة غير صحيحة؟",
     "steps": [
-      "Compute \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) for \\(t \\neq 0\\).",
-      "Differentiate \\(\\frac{dy}{dx}\\) with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{3}{2}t\\right) = \\frac{3}{2}\\).",
-      "Claim \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = \\frac{6t}{2} = 3t\\) instead of dividing \\(\\frac{d}{dt}(dy/dx)\\) by \\(\\frac{dx}{dt}\\)."
+      "Compute the radial distance \\(r = \\sqrt{(-3)^2 + 3^2} = \\sqrt{18} = 3\\sqrt{2}\\).",
+      "Compute \\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{3}{-3} = -1\\).",
+      "Conclude directly from \\(\\arctan(-1)\\) that \\(\\theta = -\\dfrac{\\pi}{4}\\), which is coterminal with \\(\\dfrac{7\\pi}{4}\\).",
+      "Write the polar coordinates as \\(\\left(3\\sqrt{2}, \\dfrac{7\\pi}{4}\\right)\\)."
     ],
     "steps_ar": [
-      "حساب المشتقة الأولى \\(\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) حيث \\(t \\neq 0\\).",
-      "اشتقاق \\(\\frac{dy}{dx}\\) بالنسبة إلى \\(t\\): الناتج \\(\\frac{3}{2}\\).",
-      "الادعاء بأن \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = 3t\\) بدلاً من قسمة \\(\\frac{d}{dt}(dy/dx)\\) على \\(\\frac{dx}{dt}\\)."
+      "حساب البعد القطبي \\(r = \\sqrt{(-3)^2 + 3^2} = 3\\sqrt{2}\\).",
+      "حساب \\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{3}{-3} = -1\\).",
+      "الاستنتاج مباشرة من \\(\\arctan(-1)\\) أن \\(\\theta = -\\dfrac{\\pi}{4}\\) المكافئة لـ \\(\\dfrac{7\\pi}{4}\\).",
+      "كتابة الإحداثيات القطبية \\(\\left(3\\sqrt{2}, \\dfrac{7\\pi}{4}\\right)\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "By the Chain Rule, \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3/2}{2t} = \\frac{3}{4t}\\), NOT \\(\\frac{y''(t)}{x''(t)}\\).",
-      "\\(\\frac{dy}{dx}\\) equals \\(dx/dt\\) divided by \\(dy/dt\\).",
-      "Parametric curves do not have second derivatives."
+      "Since \\(x = -3 < 0\\) and \\(y = 3 > 0\\), the point lies in Quadrant II, so \\(\\theta = \\pi + \\arctan(-1) = \\dfrac{3\\pi}{4}\\), not \\(\\dfrac{7\\pi}{4}\\) (Quadrant IV).",
+      "The radius \\(r\\) should be negative whenever \\(x < 0\\).",
+      "\\(\\tan\\theta\\) is defined as \\(x / y\\) rather than \\(y / x\\)."
     ],
     "reasons_ar": [
-      "بقاعدة السلسلة \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3}{4t}\\) وليس خارج قسمة \\(y''(t)\\) على \\(x''(t)\\).",
-      "المشتقة الأولى تساوي \\(dx/dt\\) مقسوماً على \\(dy/dt\\).",
-      "المنحنيات البارامترية ليس لها مشتقة ثانية."
+      "بما أن \\(x < 0\\) و\\(y > 0\\) تقع النقطة في الربع الثاني، لذا \\(\\theta = \\pi - \\dfrac{\\pi}{4} = \\dfrac{3\\pi}{4}\\) وليس \\(\\dfrac{7\\pi}{4}\\).",
+      "يجب أن يكون نصف القطر \\(r\\) سالباً دائماً عندما تكون \\(x < 0\\).",
+      "تعريف \\(\\tan\\theta\\) هو \\(x / y\\) وليس \\(y / x\\)."
     ],
     "correctReason": 0
   },
@@ -1297,42 +1299,42 @@ D["appc-u3"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Parametric & Polar Formulas (Unit 3 · Trigonometric and Polar Functions)",
-    "ti_ar": "مطابقة: قوانين المعادلات البارامترية والقطبية (الوحدة ٣ · الدوال المثلثية والدوال القطبية)",
+    "ti": "Matching: Polar Coordinates & Trigonometric Identities",
+    "ti_ar": "مطابقة: الإحداثيات القطبية والمتطابقات المثلثية",
     "p": [
       {
-        "l": "Parametric slope \\(dy/dx\\)",
-        "r": "\\(\\dfrac{dy/dt}{dx/dt}\\)"
+        "l": "Polar-to-rectangular coordinates",
+        "r": "\\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\)"
       },
       {
-        "l": "Parametric speed \\(\\|\\mathbf{v}(t)\\|\\)",
-        "r": "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)"
+        "l": "Polar circle symmetric about the polar axis",
+        "r": "\\(r = 2a\\cos\\theta\\)"
       },
       {
-        "l": "Polar region area",
-        "r": "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)"
+        "l": "Sinusoidal period of \\(y = A\\sin(Bx - C) + D\\)",
+        "r": "\\(T = \\dfrac{2\\pi}{|B|}\\)"
       },
       {
-        "l": "Polar circle \\(r = 8\\cos\\theta\\)",
-        "r": "Circle of diameter \\(8\\) centered at \\((4, 0)\\)"
+        "l": "Double-angle identity for \\(\\cos(2\\theta)\\)",
+        "r": "\\(\\cos^2\\theta - \\sin^2\\theta = 1 - 2\\sin^2\\theta\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "ميل المماس البارامتري \\(dy/dx\\)",
-        "r": "\\(\\dfrac{dy/dt}{dx/dt}\\)"
+        "l": "التحويل من القطبي إلى الديكارتي",
+        "r": "\\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\)"
       },
       {
-        "l": "مقدار السرعة البارامترية \\(\\|\\mathbf{v}(t)\\|\\)",
-        "r": "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)"
+        "l": "دائرة قطبية متماثلة حول المحور القطبي",
+        "r": "\\(r = 2a\\cos\\theta\\)"
       },
       {
-        "l": "المساحة في الإحداثيات القطبية",
-        "r": "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)"
+        "l": "طول الدورة للدالة \\(y = A\\sin(Bx - C) + D\\)",
+        "r": "\\(T = \\dfrac{2\\pi}{|B|}\\)"
       },
       {
-        "l": "المنحنى القطبي \\(r = 8\\cos\\theta\\)",
-        "r": "دائرة قطرها \\(8\\) ومركزها \\((4, 0)\\)"
+        "l": "متطابقة ضعف الزاوية \\(\\cos(2\\theta)\\)",
+        "r": "\\(\\cos^2\\theta - \\sin^2\\theta = 1 - 2\\sin^2\\theta\\)"
       }
     ]
   }
@@ -1492,30 +1494,32 @@ D["appc-u4"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Parametric Second Derivative & Polar Area (Unit 4 · Parameters, Vectors, and Matrices)",
-    "ti_ar": "اكتشف الخطأ: المشتقة البارامترية ومساحة القطاع القطبي (الوحدة ٤ · المعادلات البارامترية والمتجهات والمصفوفات)",
-    "q": "For \\(x(t) = t^2,\\; y(t) = t^3\\), a student computes \\(\\dfrac{d^2y}{dx^2}\\). Which step is invalid?",
-    "q_ar": "للمنحنى البارامتري \\(x(t) = t^2,\\; y(t) = t^3\\)، يحسب طالب \\(\\dfrac{d^2y}{dx^2}\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Eliminating the Parameter & Matrix Multiplication",
+    "ti_ar": "اكتشف الخطأ: حذف الوسيط البارامتري وضرب المصفوفات",
+    "q": "Given parametric curve \\(x(t) = 2\\cos t,\\; y(t) = 3\\sin t\\) for \\(0 \\le t \\le \\pi\\), a student eliminates \\(t\\). Which step loses domain information or makes an algebraic error?",
+    "q_ar": "للمنحنى الوسيطي \\(x(t) = 2\\cos t,\\; y(t) = 3\\sin t\\) حيث \\(0 \\le t \\le \\pi\\)، يحذف طالب الوسيط \\(t\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Compute \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) for \\(t \\neq 0\\).",
-      "Differentiate \\(\\frac{dy}{dx}\\) with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{3}{2}t\\right) = \\frac{3}{2}\\).",
-      "Claim \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = \\frac{6t}{2} = 3t\\) instead of dividing \\(\\frac{d}{dt}(dy/dx)\\) by \\(\\frac{dx}{dt}\\)."
+      "Isolate trig ratios: \\(\\cos t = \\dfrac{x}{2}\\) and \\(\\sin t = \\dfrac{y}{3}\\).",
+      "Apply the Pythagorean identity \\(\\cos^2 t + \\sin^2 t = 1\\) to get \\(\\dfrac{x^2}{4} + \\dfrac{y^2}{9} = 1\\).",
+      "State that for \\(0 \\le t \\le \\pi\\), the curve traces the entire closed ellipse including negative \\(y\\)-values.",
+      "Identify vertices at \\((2, 0)\\) for \\(t = 0\\) and \\((-2, 0)\\) for \\(t = \\pi\\)."
     ],
     "steps_ar": [
-      "حساب المشتقة الأولى \\(\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) حيث \\(t \\neq 0\\).",
-      "اشتقاق \\(\\frac{dy}{dx}\\) بالنسبة إلى \\(t\\): الناتج \\(\\frac{3}{2}\\).",
-      "الادعاء بأن \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = 3t\\) بدلاً من قسمة \\(\\frac{d}{dt}(dy/dx)\\) على \\(\\frac{dx}{dt}\\)."
+      "عزل النسب المثلثية: \\(\\cos t = \\dfrac{x}{2}\\) و\\(\\sin t = \\dfrac{y}{3}\\).",
+      "تطبيق متطابقة فيثاغورس للحصول على \\(\\dfrac{x^2}{4} + \\dfrac{y^2}{9} = 1\\).",
+      "استنتاج أن المنحنى يرسم القطع الناقص المغلق كاملاً شاملاً قيم \\(y\\) السالبة على الفترة \\(0 \\le t \\le \\pi\\).",
+      "تحديد نقطتي البداية والنهاية \\((2, 0)\\) عند \\(t = 0\\) و\\((-2, 0)\\) عند \\(t = \\pi\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "By the Chain Rule, \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3/2}{2t} = \\frac{3}{4t}\\), NOT \\(\\frac{y''(t)}{x''(t)}\\).",
-      "\\(\\frac{dy}{dx}\\) equals \\(dx/dt\\) divided by \\(dy/dt\\).",
-      "Parametric curves do not have second derivatives."
+      "On \\(0 \\le t \\le \\pi\\), \\(\\sin t \\ge 0\\), so \\(y = 3\\sin t \\ge 0\\) traces ONLY the upper semi-ellipse counter-clockwise from \\((2,0)\\) to \\((-2,0)\\).",
+      "Squaring \\(x/2\\) gives \\(x^2/2\\), not \\(x^2/4\\).",
+      "\\(\\cos^2 t + \\sin^2 t\\) equals \\(-1\\) on \\([0, \\pi]\\)."
     ],
     "reasons_ar": [
-      "بقاعدة السلسلة \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3}{4t}\\) وليس خارج قسمة \\(y''(t)\\) على \\(x''(t)\\).",
-      "المشتقة الأولى تساوي \\(dx/dt\\) مقسوماً على \\(dy/dt\\).",
-      "المنحنيات البارامترية ليس لها مشتقة ثانية."
+      "على الفترة \\(0 \\le t \\le \\pi\\) يكون \\(\\sin t \\ge 0\\)، لذا \\(y \\ge 0\\) ويرسم المنحنى النصف العلوي فقط من القطع الناقص.",
+      "تربيع \\(x/2\\) يعطي \\(x^2/2\\) وليس \\(x^2/4\\).",
+      "مجموع \\(\\cos^2 t + \\sin^2 t\\) يساوي \\(-1\\)."
     ],
     "correctReason": 0
   },
@@ -1635,42 +1639,42 @@ D["appc-u4"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Parametric & Polar Formulas (Unit 4 · Parameters, Vectors, and Matrices)",
-    "ti_ar": "مطابقة: قوانين المعادلات البارامترية والقطبية (الوحدة ٤ · المعادلات البارامترية والمتجهات والمصفوفات)",
+    "ti": "Matching: Parametric Curves, Vectors & Linear Transformations",
+    "ti_ar": "مطابقة: المنحنيات الوسيطية والمتجهات والتحويلات المصفوفية",
     "p": [
       {
-        "l": "Parametric slope \\(dy/dx\\)",
-        "r": "\\(\\dfrac{dy/dt}{dx/dt}\\)"
+        "l": "Parametric circle of radius \\(R\\) centered at \\((h, k)\\)",
+        "r": "\\(x(t) = h + R\\cos t,\\; y(t) = k + R\\sin t\\)"
       },
       {
-        "l": "Parametric speed \\(\\|\\mathbf{v}(t)\\|\\)",
-        "r": "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)"
+        "l": "Dot product \\(\\mathbf{u} \\cdot \\mathbf{v}\\) of orthogonal vectors",
+        "r": "Equals \\(0\\) when \\(\\theta = 90^\\circ\\)"
       },
       {
-        "l": "Polar region area",
-        "r": "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)"
+        "l": "Determinant \\(\\det(A)\\) of \\(2 \\times 2\\) matrix \\(\\begin{pmatrix}a & b\\\\c & d\\end{pmatrix}\\)",
+        "r": "Signed area scale factor \\(ad - bc\\)"
       },
       {
-        "l": "Polar circle \\(r = 2\\cos\\theta\\)",
-        "r": "Circle of diameter \\(2\\) centered at \\((1, 0)\\)"
+        "l": "Counter-clockwise rotation matrix by \\(90^\\circ\\)",
+        "r": "\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "ميل المماس البارامتري \\(dy/dx\\)",
-        "r": "\\(\\dfrac{dy/dt}{dx/dt}\\)"
+        "l": "معادلة دائرة وسيطية نصف قطرها \\(R\\) ومركزها \\((h, k)\\)",
+        "r": "\\(x(t) = h + R\\cos t,\\; y(t) = k + R\\sin t\\)"
       },
       {
-        "l": "مقدار السرعة البارامترية \\(\\|\\mathbf{v}(t)\\|\\)",
-        "r": "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)"
+        "l": "الضرب القياسي \\(\\mathbf{u} \\cdot \\mathbf{v}\\) لمتجهين متعامدين",
+        "r": "يساوي \\(0\\) عند \\(\\theta = 90^\\circ\\)"
       },
       {
-        "l": "المساحة في الإحداثيات القطبية",
-        "r": "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)"
+        "l": "محدد مصفوفة \\(2 \\times 2\\)",
+        "r": "معامل مقياس المساحة الموجه \\(ad - bc\\)"
       },
       {
-        "l": "المنحنى القطبي \\(r = 2\\cos\\theta\\)",
-        "r": "دائرة قطرها \\(2\\) ومركزها \\((1, 0)\\)"
+        "l": "مصفوفة الدوران بزاوية \\(90^\\circ\\) عكس عقارب الساعة",
+        "r": "\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)"
       }
     ]
   }
@@ -2322,103 +2326,92 @@ D["appc-u2b"] = [
 D["appc-u3b"] = [
   {
     "t": "qc",
-    "ti": "Quick Check: Parametric & Polar Formulas (Unit 3B · Sinusoidal Regression, Inverse Trig, Tangent & Polar Conics)",
-    "ti_ar": "فحص سريع: قوانين المعادلات البارامترية والقطبية (الوحدة 3B · الانحدار الجيبي والدوال المثلثية العكسية والدوال القطبية)",
-    "q": "Which expression or condition accurately characterizes Parametric slope \\(dy/dx\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: ميل المماس البارامتري \\(dy/dx\\)؟",
+    "ti": "Quick Check: Polar Conics & Sinusoidal Phase Shift",
+    "ti_ar": "فحص سريع: القطوع القطبية وإزاحة الطور الجيبية",
+    "q": "For the sinusoidal model \\(f(t) = 4\\sin\\!\\big(2t - \\tfrac{\\pi}{3}\\big) + 5\\), what are its period and horizontal phase shift?",
+    "q_ar": "للنموذج الجيبي \\(f(t) = 4\\sin\\!\\big(2t - \\tfrac{\\pi}{3}\\big) + 5\\)، ما طول دورته ومقدار إزاحة الطور الأفقية؟",
     "o": [
-      "\\(\\dfrac{dy/dt}{dx/dt}\\)",
-      "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)",
-      "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)",
-      "Circle of diameter \\(8\\) centered at \\((4, 0)\\)"
+      "Period \\(\\pi\\), phase shift \\(\\dfrac{\\pi}{6}\\) to the right",
+      "Period \\(2\\pi\\), phase shift \\(\\dfrac{\\pi}{3}\\) to the right",
+      "Period \\(\\pi\\), phase shift \\(\\dfrac{\\pi}{3}\\) to the left",
+      "Period \\(4\\pi\\), phase shift \\(\\dfrac{\\pi}{6}\\) to the left"
     ],
     "o_ar": [
-      "\\(\\dfrac{dy/dt}{dx/dt}\\)",
-      "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)",
-      "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)",
-      "دائرة قطرها \\(8\\) ومركزها \\((4, 0)\\)"
+      "الدورة \\(\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{6}\\) لليمين",
+      "الدورة \\(2\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{3}\\) لليمين",
+      "الدورة \\(\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{3}\\) لليسار",
+      "الدورة \\(4\\pi\\)، وإزاحة الطور \\(\\dfrac{\\pi}{6}\\) لليسار"
     ],
     "a": 0,
-    "ex": "Parametric slope \\(dy/dx\\) matches \\(\\dfrac{dy/dt}{dx/dt}\\).",
-    "ex_ar": "ميل المماس البارامتري \\(dy/dx\\) يطابق \\(\\dfrac{dy/dt}{dx/dt}\\)."
+    "ex": "Factor \\(2t - \\frac{\\pi}{3} = 2\\big(t - \\frac{\\pi}{6}\\big)\\): period \\(T = \\frac{2\\pi}{2} = \\pi\\) and phase shift is \\(+\\frac{\\pi}{6}\\) (right).",
+    "ex_ar": "بإخراج العامل المشترك \\(2\\big(t - \\frac{\\pi}{6}\\big)\\) تكون الدورة \\(T = \\frac{2\\pi}{2} = \\pi\\) وإزاحة الطور \\(\\frac{\\pi}{6}\\) لليمين."
   },
   {
     "t": "tf",
-    "ti": "True / False: Parametric & Polar Formulas (Unit 3B · Sinusoidal Regression, Inverse Trig, Tangent & Polar Conics)",
-    "ti_ar": "صح أم خطأ: قوانين المعادلات البارامترية والقطبية (الوحدة 3B · الانحدار الجيبي والدوال المثلثية العكسية والدوال القطبية)",
+    "ti": "True / False: Inverse Trig Domains & Polar Conics",
+    "ti_ar": "صح أم خطأ: نطاقات الدوال المثلثية العكسية والقطوع القطبية",
     "items": [
       {
-        "s": "Parametric slope \\(dy/dx\\) corresponds to \\(\\dfrac{dy/dt}{dx/dt}\\).",
+        "s": "The principal range of \\(y = \\arccos(x)\\) is \\([0, \\pi]\\), whereas the range of \\(y = \\arcsin(x)\\) is \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\).",
+        "s_ar": "المدى الرئيسي للدالة \\(y = \\arccos(x)\\) هو \\([0, \\pi]\\)، بينما مدى \\(y = \\arcsin(x)\\) هو \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\).",
         "a": true,
-        "ex": "Verified identity: \\(\\dfrac{dy/dt}{dx/dt}\\)."
+        "ex": "Restricting cosine to \\([0, \\pi]\\) and sine to \\([-\\pi/2, \\pi/2]\\) makes each one-to-one across \\([-1, 1]\\).",
+        "ex_ar": "تقييد جيب التمام على \\([0, \\pi]\\) والجيب على \\([-\\pi/2, \\pi/2]\\) يجعل كل دالة متباينة وتغطي \\([-1, 1]\\)."
       },
       {
-        "s": "Parametric speed \\(\\|\\mathbf{v}(t)\\|\\) corresponds to \\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\).",
+        "s": "The function \\(y = \\tan(2x)\\) has period \\(\\pi\\) because \\(\\tan(x)\\) has base period \\(2\\pi\\).",
+        "s_ar": "للدالة \\(y = \\tan(2x)\\) دورة طولها \\(\\pi\\) لأن دورة الظل الأساسية \\(2\\pi\\).",
         "a": false,
-        "ex": "Actually, Parametric speed \\(\\|\\mathbf{v}(t)\\|\\) corresponds to \\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)."
+        "ex": "Tangent has base period \\(\\pi\\), so \\(\\tan(2x)\\) has period \\(\\pi / 2\\).",
+        "ex_ar": "الدورة الأساسية لدالة الظل هي \\(\\pi\\)، لذا فإن دورة \\(\\tan(2x)\\) هي \\(\\pi / 2\\)."
       },
       {
-        "s": "Polar circle \\(r = 8\\cos\\theta\\) corresponds to Circle of diameter \\(8\\) centered at \\((4, 0)\\).",
+        "s": "A polar conic \\(r = \\dfrac{ep}{1 + e\\cos\\theta}\\) represents an ellipse when \\(0 < e < 1\\) and a hyperbola when \\(e > 1\\).",
+        "s_ar": "تمثل المعادلة القطبية \\(r = \\dfrac{ep}{1 + e\\cos\\theta}\\) قطعاً ناقصاً عندما \\(0 < e < 1\\) وقطعاً زائداً عندما \\(e > 1\\).",
         "a": true,
-        "ex": "Correct: Circle of diameter \\(8\\) centered at \\((4, 0)\\)."
-      }
-    ],
-    "items_ar": [
-      {
-        "s": "ميل المماس البارامتري \\(dy/dx\\) يكافئ \\(\\dfrac{dy/dt}{dx/dt}\\).",
-        "a": true,
-        "ex": "علاقة صحيحة: \\(\\dfrac{dy/dt}{dx/dt}\\)."
-      },
-      {
-        "s": "مقدار السرعة البارامترية \\(\\|\\mathbf{v}(t)\\|\\) يكافئ \\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\).",
-        "a": false,
-        "ex": "الصواب أن مقدار السرعة البارامترية \\(\\|\\mathbf{v}(t)\\|\\) يكافئ \\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)."
-      },
-      {
-        "s": "المنحنى القطبي \\(r = 8\\cos\\theta\\) يكافئ دائرة قطرها \\(8\\) ومركزها \\((4, 0)\\).",
-        "a": true,
-        "ex": "صحيح: دائرة قطرها \\(8\\) ومركزها \\((4, 0)\\)."
+        "ex": "Eccentricity \\(e\\) classifies all non-degenerate conics: \\(0 < e < 1\\) ellipse, \\(e = 1\\) parabola, \\(e > 1\\) hyperbola.",
+        "ex_ar": "يصنف الاختلاف المركزي \\(e\\) القطوع المخروطية: \\(0 < e < 1\\) ناقص، \\(e = 1\\) مكافئ، \\(e > 1\\) زائد."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Parametric & Polar Formulas (Unit 3B · Sinusoidal Regression, Inverse Trig, Tangent & Polar Conics)",
-    "ti_ar": "مطابقة: قوانين المعادلات البارامترية والقطبية (الوحدة 3B · الانحدار الجيبي والدوال المثلثية العكسية والدوال القطبية)",
+    "ti": "Matching: Polar Coordinates & Trigonometric Identities",
+    "ti_ar": "مطابقة: الإحداثيات القطبية والمتطابقات المثلثية",
     "p": [
       {
-        "l": "Parametric slope \\(dy/dx\\)",
-        "r": "\\(\\dfrac{dy/dt}{dx/dt}\\)"
+        "l": "Polar-to-rectangular coordinates",
+        "r": "\\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\)"
       },
       {
-        "l": "Parametric speed \\(\\|\\mathbf{v}(t)\\|\\)",
-        "r": "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)"
+        "l": "Polar circle symmetric about the polar axis",
+        "r": "\\(r = 2a\\cos\\theta\\)"
       },
       {
-        "l": "Polar region area",
-        "r": "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)"
+        "l": "Sinusoidal period of \\(y = A\\sin(Bx - C) + D\\)",
+        "r": "\\(T = \\dfrac{2\\pi}{|B|}\\)"
       },
       {
-        "l": "Polar circle \\(r = 8\\cos\\theta\\)",
-        "r": "Circle of diameter \\(8\\) centered at \\((4, 0)\\)"
+        "l": "Double-angle identity for \\(\\cos(2\\theta)\\)",
+        "r": "\\(\\cos^2\\theta - \\sin^2\\theta = 1 - 2\\sin^2\\theta\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "ميل المماس البارامتري \\(dy/dx\\)",
-        "r": "\\(\\dfrac{dy/dt}{dx/dt}\\)"
+        "l": "التحويل من القطبي إلى الديكارتي",
+        "r": "\\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\)"
       },
       {
-        "l": "مقدار السرعة البارامترية \\(\\|\\mathbf{v}(t)\\|\\)",
-        "r": "\\(\\sqrt{(dx/dt)^2 + (dy/dt)^2}\\)"
+        "l": "دائرة قطبية متماثلة حول المحور القطبي",
+        "r": "\\(r = 2a\\cos\\theta\\)"
       },
       {
-        "l": "المساحة في الإحداثيات القطبية",
-        "r": "\\(\\dfrac{1}{2}\\int_{\\alpha}^{\\beta} [r(\\theta)]^2\\,d\\theta\\)"
+        "l": "طول الدورة للدالة \\(y = A\\sin(Bx - C) + D\\)",
+        "r": "\\(T = \\dfrac{2\\pi}{|B|}\\)"
       },
       {
-        "l": "المنحنى القطبي \\(r = 8\\cos\\theta\\)",
-        "r": "دائرة قطرها \\(8\\) ومركزها \\((4, 0)\\)"
+        "l": "متطابقة ضعف الزاوية \\(\\cos(2\\theta)\\)",
+        "r": "\\(\\cos^2\\theta - \\sin^2\\theta = 1 - 2\\sin^2\\theta\\)"
       }
     ]
   },
@@ -2500,30 +2493,32 @@ D["appc-u3b"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Parametric Second Derivative & Polar Area (Unit 3B · Sinusoidal Regression, Inverse Trig, Tangent & Polar Conics)",
-    "ti_ar": "اكتشف الخطأ: المشتقة البارامترية ومساحة القطاع القطبي (الوحدة 3B · الانحدار الجيبي والدوال المثلثية العكسية والدوال القطبية)",
-    "q": "For \\(x(t) = t^2,\\; y(t) = t^3\\), a student computes \\(\\dfrac{d^2y}{dx^2}\\). Which step is invalid?",
-    "q_ar": "للمنحنى البارامتري \\(x(t) = t^2,\\; y(t) = t^3\\)، يحسب طالب \\(\\dfrac{d^2y}{dx^2}\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Polar-to-Rectangular Conversion & Quadrant Angle",
+    "ti_ar": "اكتشف الخطأ: التحويل من الإحداثيات القطبية إلى الديكارتية وزاوية الربع",
+    "q": "A student converts the rectangular point \\((-3, 3)\\) (Quadrant II) into polar coordinates \\((r, \\theta)\\) with \\(r > 0\\) and \\(0 \\le \\theta < 2\\pi\\). Which step is invalid?",
+    "q_ar": "يحوّل طالب النقطة الديكارتية \\((-3, 3)\\) (الربع الثاني) إلى إحداثيات قطبية \\((r, \\theta)\\) مع \\(r > 0\\) و\\(0 \\le \\theta < 2\\pi\\). أي خطوة غير صحيحة؟",
     "steps": [
-      "Compute \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) for \\(t \\neq 0\\).",
-      "Differentiate \\(\\frac{dy}{dx}\\) with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{3}{2}t\\right) = \\frac{3}{2}\\).",
-      "Claim \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = \\frac{6t}{2} = 3t\\) instead of dividing \\(\\frac{d}{dt}(dy/dx)\\) by \\(\\frac{dx}{dt}\\)."
+      "Compute the radial distance \\(r = \\sqrt{(-3)^2 + 3^2} = \\sqrt{18} = 3\\sqrt{2}\\).",
+      "Compute \\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{3}{-3} = -1\\).",
+      "Conclude directly from \\(\\arctan(-1)\\) that \\(\\theta = -\\dfrac{\\pi}{4}\\), which is coterminal with \\(\\dfrac{7\\pi}{4}\\).",
+      "Write the polar coordinates as \\(\\left(3\\sqrt{2}, \\dfrac{7\\pi}{4}\\right)\\)."
     ],
     "steps_ar": [
-      "حساب المشتقة الأولى \\(\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2}t\\) حيث \\(t \\neq 0\\).",
-      "اشتقاق \\(\\frac{dy}{dx}\\) بالنسبة إلى \\(t\\): الناتج \\(\\frac{3}{2}\\).",
-      "الادعاء بأن \\(\\frac{d^2y}{dx^2} = \\frac{y''(t)}{x''(t)} = 3t\\) بدلاً من قسمة \\(\\frac{d}{dt}(dy/dx)\\) على \\(\\frac{dx}{dt}\\)."
+      "حساب البعد القطبي \\(r = \\sqrt{(-3)^2 + 3^2} = 3\\sqrt{2}\\).",
+      "حساب \\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{3}{-3} = -1\\).",
+      "الاستنتاج مباشرة من \\(\\arctan(-1)\\) أن \\(\\theta = -\\dfrac{\\pi}{4}\\) المكافئة لـ \\(\\dfrac{7\\pi}{4}\\).",
+      "كتابة الإحداثيات القطبية \\(\\left(3\\sqrt{2}, \\dfrac{7\\pi}{4}\\right)\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "By the Chain Rule, \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3/2}{2t} = \\frac{3}{4t}\\), NOT \\(\\frac{y''(t)}{x''(t)}\\).",
-      "\\(\\frac{dy}{dx}\\) equals \\(dx/dt\\) divided by \\(dy/dt\\).",
-      "Parametric curves do not have second derivatives."
+      "Since \\(x = -3 < 0\\) and \\(y = 3 > 0\\), the point lies in Quadrant II, so \\(\\theta = \\pi + \\arctan(-1) = \\dfrac{3\\pi}{4}\\), not \\(\\dfrac{7\\pi}{4}\\) (Quadrant IV).",
+      "The radius \\(r\\) should be negative whenever \\(x < 0\\).",
+      "\\(\\tan\\theta\\) is defined as \\(x / y\\) rather than \\(y / x\\)."
     ],
     "reasons_ar": [
-      "بقاعدة السلسلة \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{3}{4t}\\) وليس خارج قسمة \\(y''(t)\\) على \\(x''(t)\\).",
-      "المشتقة الأولى تساوي \\(dx/dt\\) مقسوماً على \\(dy/dt\\).",
-      "المنحنيات البارامترية ليس لها مشتقة ثانية."
+      "بما أن \\(x < 0\\) و\\(y > 0\\) تقع النقطة في الربع الثاني، لذا \\(\\theta = \\pi - \\dfrac{\\pi}{4} = \\dfrac{3\\pi}{4}\\) وليس \\(\\dfrac{7\\pi}{4}\\).",
+      "يجب أن يكون نصف القطر \\(r\\) سالباً دائماً عندما تكون \\(x < 0\\).",
+      "تعريف \\(\\tan\\theta\\) هو \\(x / y\\) وليس \\(y / x\\)."
     ],
     "correctReason": 0
   },

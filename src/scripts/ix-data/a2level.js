@@ -3464,103 +3464,105 @@ D["a2l-numerical"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Chain Rule & Product Rule Differentiation (Numerical Methods)",
-    "ti_ar": "اكتشف الخطأ: قاعدتا السلسلة والضرب في الاشتقاق (الطرق العددية وإيجاد الجذور بالتكرار)",
-    "q": "A student differentiates \\(f(x) = x^2 e^{2x}\\). Which step omits a required calculus rule?",
-    "q_ar": "يشتق طالب الدالة \\(f(x) = x^2 e^{2x}\\). أي خطوة تغفل قاعدة أساسية في الاشتقاق؟",
+    "ti": "Spot the Error: Sign-Change Root Test on a Discontinuous Function",
+    "ti_ar": "اكتشف الخطأ: اختبار تغير الإشارة مع دالة غير متصلة",
+    "q": "A student tests \\(f(x) = \\dfrac{1}{x - 2}\\) on \\([1, 3]\\) to claim a root lies in \\((1, 3)\\). Which step contains the fatal flaw?",
+    "q_ar": "يختبر طالب الدالة \\(f(x) = \\dfrac{1}{x - 2}\\) على الفترة \\([1, 3]\\) لإثبات وجود جذر في \\((1, 3)\\). أي خطوة تتضمن الخطأ الجوهري؟",
     "steps": [
-      "Identify the product of \\(u(x) = x^2\\) and \\(v(x) = e^{2x}\\).",
-      "Compute \\(u'(x) = 2x\\) and \\(v'(x) = 2 e^{2x}\\) via the Chain Rule.",
-      "Multiply the derivatives directly as \\(f'(x) = u'(x) v'(x) = 4x e^{2x}\\) instead of \\(u'v + uv'\\)."
+      "Evaluate \\(f(1) = -1 < 0\\).",
+      "Evaluate \\(f(3) = +1 > 0\\).",
+      "Observe that \\(f(1)\\) and \\(f(3)\\) have opposite signs.",
+      "Conclude immediately that \\(f(x) = 0\\) has at least one root in \\((1, 3)\\) without checking continuity."
     ],
     "steps_ar": [
-      "تحديد حاصل ضرب الدالتين \\(u(x) = x^2\\) و\\(v(x) = e^{2x}\\).",
-      "حساب \\(u'(x) = 2x\\) و\\(v'(x) = 2 e^{2x}\\) بقاعدة السلسلة.",
-      "ضرب المشتقتين مباشرة \\(f'(x) = u'(x)v'(x)\\) بدلاً من تطبيق قاعدة الضرب \\(u'v + uv'\\)."
+      "حساب \\(f(1) = -1 < 0\\).",
+      "حساب \\(f(3) = +1 > 0\\).",
+      "ملاحظة اختلاف الإشارة بين \\(f(1)\\) و\\(f(3)\\).",
+      "الاستنتاج فوراً بوجود جذر في \\((1, 3)\\) دون التحقق من اتصال الدالة."
     ],
-    "errorStep": 3,
+    "errorStep": 4,
     "reasons": [
-      "By the Product Rule, \\((uv)' = u'v + uv' = 2x e^{2x} + 2x^2 e^{2x} = x(2 + 2x)e^{2x}\\).",
-      "The derivative of \\(e^{2x}\\) is \\(e^{2x}\\) without factor \\(2\\).",
-      "\\((uv)' = u'v - uv'\\)."
+      "The Intermediate Value / sign-change theorem requires \\(f\\) to be continuous on \\([1, 3]\\); here \\(f\\) has a vertical asymptote at \\(x = 2\\) and no root.",
+      "\\(f(1)\\) equals \\(+1\\) rather than \\(-1\\).",
+      "Sign-change tests only work when \\(|b - a| < 1\\)."
     ],
     "reasons_ar": [
-      "حسب قاعدة الضرب \\((uv)' = u'v + uv' = x(2 + 2x)e^{2x}\\).",
-      "مشتقة \\(e^{2x}\\) لا تُضرب في \\(2\\).",
-      "قاعدة الضرب تتضمن طرح الحدين."
+      "يشترط اختبار تغير الإشارة اتصال الدالة على \\([1, 3]\\)؛ وهنا يوجد خط تقارب رأسي عند \\(x = 2\\) ولا يوجد جذر.",
+      "قيمة \\(f(1)\\) تساوي \\(+1\\) وليس \\(-1\\).",
+      "لا يعمل اختبار تغير الإشارة إلا إذا كان طول الفترة أقل من 1."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Indeterminate Limit & Tangent Line (Numerical Methods)",
-    "ti_ar": "وضع المصحح: النهايات غير المعينة ومعادلة المماس (الطرق العددية وإيجاد الجذور بالتكرار)",
-    "q": "(a) Evaluate \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (b) Find the gradient and tangent line to \\(g(x) = x^3 + 4x\\) at \\(x = 2\\).",
-    "q_ar": "(أ) احسب النهاية \\(\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}\\). (ب) أوجد ميل ومعادلة المماس للدالة \\(g(x) = x^3 + 4x\\) عند \\(x = 2\\).",
+    "ti": "Examiner Mode: Change-of-Sign Verification & Fixed-Point Iteration",
+    "ti_ar": "وضع المصحح: إثبات وجود الجذر بتغير الإشارة والتكرار بالنقطة الثابتة",
+    "q": "Let \\(f(x) = x^3 - x - 5\\). (a) Show that \\(f(x) = 0\\) has a root \\(\\alpha \\in (1.8, 1.9)\\). (b) Using \\(x_{n+1} = (x_n + 5)^{1/3}\\) with \\(x_0 = 1.85\\), find \\(x_1\\) and \\(x_2\\) to 4 decimal places.",
+    "q_ar": "لتكن \\(f(x) = x^3 - x - 5\\). (أ) أثبت وجود جذر \\(\\alpha \\in (1.8, 1.9)\\). (ب) باستخدام \\(x_{n+1} = (x_n + 5)^{1/3}\\) و\\(x_0 = 1.85\\)، أوجد \\(x_1\\) و\\(x_2\\).",
     "parts": [
       {
-        "label": "Part (a) — Resolving 0/0 Limit",
+        "label": "Part (a) — Continuity & Sign Change",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Factor \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\) for \\(x \\neq 2\\)."
+            "text": "Compute \\(f(1.8) = -0.968 < 0\\) and \\(f(1.9) = +0.959 > 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Evaluate limit as \\(x \\to 2\\): \\(4\\)."
+            "text": "State explicitly: since \\(f\\) is continuous and changes sign, a root lies in \\((1.8, 1.9)\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Derivative & Tangent Equation",
+        "label": "Part (b) — Convergent Iteration Values",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(2) = 16\\)."
+            "text": "\\(x_1 = (6.85)^{1/3} = 1.8992\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "With \\(g(2) = 16\\), tangent is \\(y - 16 = 16(x - 2)\\)."
+            "text": "\\(x_2 = (6.8992)^{1/3} = 1.9037\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — إزالة عدم التعيين 0/0",
+        "label": "الجزء (أ) — الاتصال وتغير الإشارة",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "التحليل والاختصار \\(\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2\\)."
+            "text": "حساب \\(f(1.8) = -0.968 < 0\\) و\\(f(1.9) = +0.959 > 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "قيمة النهاية عند \\(x \\to 2\\) تساوي \\(4\\)."
+            "text": "ذكر اتصال الدالة وتغير الإشارة لإثبات وجود الجذر في \\((1.8, 1.9)\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — المشتقة ومعادلة المماس",
+        "label": "الجزء (ب) — قيم التكرار المتقاربة",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(g'(x) = 3x^2 + 4 \\implies g'(2) = 16\\)."
+            "text": "\\(x_1 = (6.85)^{1/3} = 1.8992\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "معادلة المماس: \\(y - 16 = 16(x - 2)\\)."
+            "text": "\\(x_2 = (6.8992)^{1/3} = 1.9037\\)."
           }
         ]
       }
@@ -3568,81 +3570,81 @@ D["a2l-numerical"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Limit Evaluation & Instantaneous Slope (Numerical Methods)",
-    "ti_ar": "بناء الخطوات: حساب النهايات والميل اللحظي (الطرق العددية وإيجاد الجذور بالتكرار)",
+    "ti": "Step Builder: Newton–Raphson Single Iteration",
+    "ti_ar": "بناء الخطوات: خطوة واحدة بطريقة نيوتن-رافسون",
     "steps": [
       {
-        "l": "Evaluate \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
-        "a": "4",
-        "h": "Factor as (x − 2)(x + 2) and substitute x = 2."
+        "l": "For \\(f(x) = x^2 - 7\\), evaluate \\(f(3) =\\)",
+        "a": "2",
+        "h": "\\(3^2 - 7 = 2\\)"
       },
       {
-        "l": "For \\(g(x) = x^3 + 4x\\), evaluate \\(g(2) =\\)",
-        "a": "16",
-        "h": "Compute 8 + 8."
+        "l": "Evaluate derivative \\(f'(3)\\) where \\(f'(x) = 2x\\):",
+        "a": "6",
+        "h": "\\(2(3) = 6\\)"
       },
       {
-        "l": "Evaluate instantaneous slope \\(g'(2) = 3(2)^2 + 4 =\\)",
-        "a": "16",
-        "h": "Compute 12 + 4."
+        "l": "Compute \\(x_1 = 3 - \\dfrac{f(3)}{f'(3)}\\) as a simplified fraction \\(p/q\\):",
+        "a": "8/3",
+        "h": "\\(3 - 2/6 = 3 - 1/3 = 8/3\\)"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب النهاية \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} =\\)",
-        "a": "4",
-        "h": "حلّل البسط واختصر ثم عوّض x = 2."
+        "l": "للدالة \\(f(x) = x^2 - 7\\)، احسب \\(f(3) =\\)",
+        "a": "2",
+        "h": "\\(3^2 - 7 = 2\\)"
       },
       {
-        "l": "للدالة \\(g(x) = x^3 + 4x\\)، احسب \\(g(2) =\\)",
-        "a": "16",
-        "h": "احسب 8 + 8."
+        "l": "احسب المشتقة \\(f'(3)\\) حيث \\(f'(x) = 2x\\):",
+        "a": "6",
+        "h": "\\(2(3) = 6\\)"
       },
       {
-        "l": "احسب ميل المماس \\(g'(2) = 3(2)^2 + 4 =\\)",
-        "a": "16",
-        "h": "احسب 12 + 4."
+        "l": "احسب التقريب \\(x_1 = 3 - \\dfrac{f(3)}{f'(3)}\\) ككسر مبسط:",
+        "a": "8/3",
+        "h": "\\(3 - 1/3 = 8/3\\)"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Continuity, Derivatives & Concavity Criteria (Numerical Methods)",
-    "ti_ar": "مطابقة: شروط الاتصال والاشتقاق والتقعر (الطرق العددية وإيجاد الجذور بالتكرار)",
+    "ti": "Matching: Numerical Root-Finding & Integration Diagnostics",
+    "ti_ar": "مطابقة: تشخيص طرق إيجاد الجذور والتكامل العددي",
     "p": [
       {
-        "l": "Continuity of \\(f\\) at \\(x = a\\)",
-        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
+        "l": "\\(0 < g'(\\alpha) < 1\\)",
+        "r": "Monotonic staircase convergence to \\(\\alpha\\)"
       },
       {
-        "l": "Chain Rule \\(\\frac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
+        "l": "\\(-1 < g'(\\alpha) < 0\\)",
+        "r": "Alternating cobweb convergence to \\(\\alpha\\)"
       },
       {
-        "l": "Strict local minimum test",
-        "r": "\\(f'(c) = 0\\) and \\(f''(c) > 0\\)"
+        "l": "\\(|g'(\\alpha)| > 1\\)",
+        "r": "Iteration diverges away from root \\(\\alpha\\)"
       },
       {
-        "l": "Newton–Raphson step",
-        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
+        "l": "Trapezium rule on concave-up curve (\\(f''(x) > 0\\))",
+        "r": "Chords lie above curve (overestimate)"
       }
     ],
     "p_ar": [
       {
-        "l": "شرط اتصال \\(f\\) عند \\(x = a\\)",
-        "r": "\\(\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)\\)"
+        "l": "\\(0 < g'(\\alpha) < 1\\)",
+        "r": "تقارب سُلّمي رتيب نحو الجذر \\(\\alpha\\)"
       },
       {
-        "l": "قاعدة السلسلة \\(\\frac{d}{dx}[f(g(x))]\\)",
-        "r": "\\(f'(g(x)) \\cdot g'(x)\\)"
+        "l": "\\(-1 < g'(\\alpha) < 0\\)",
+        "r": "تقارب شبكي متناوب نحو الجذر \\(\\alpha\\)"
       },
       {
-        "l": "اختبار النهاية الصغرى المحلية",
-        "r": "\\(f'(c) = 0\\) و\\(f''(c) > 0\\)"
+        "l": "\\(|g'(\\alpha)| > 1\\)",
+        "r": "تباعد التكرار بعيداً عن الجذر \\(\\alpha\\)"
       },
       {
-        "l": "تكرار نيوتن–رافسون العددي",
-        "r": "\\(x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}\\)"
+        "l": "قاعدة شبه المنحرف لمنحنى مقعر لأعلى (\\(f''(x) > 0\\))",
+        "r": "تقدير بالزيادة لأن الأوتار تقع فوق المنحنى"
       }
     ]
   }

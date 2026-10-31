@@ -3774,7 +3774,7 @@ D["ch-series"] = [
 D["ch-convergence"] = [
   {
     "t": "num",
-    "ti": "Numeric Entry: Smallest Convergent p-Value",
+    "ti": "Numeric Entry: Smallest Integer Exponent p for a Convergent p-Series",
     "q": "For a p-series \\(\\sum \\frac{1}{n^p}\\), what is the smallest integer value of p for which the series converges?",
     "a": 2,
     "ex": "A p-series converges if and only if \\(p > 1\\). The smallest integer satisfying \\(p > 1\\) is 2.",
@@ -4555,30 +4555,32 @@ D["ch-partial"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Partial Derivatives & the Gradient)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (المشتقات الجزئية ومتجه التدرج (Gradient))",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Partial Differentiation Treating the Other Variable as Constant",
+    "ti_ar": "اكتشف الخطأ: الاشتقاق الجزئي بتثبيت المتغير الآخر",
+    "q": "A student computes \\(f_x(x, y)\\) for \\(f(x, y) = x^2 y^3 + \\sin(y)\\). Which step contains an error?",
+    "q_ar": "يحسب طالب المشتقة الجزئية \\(f_x(x, y)\\) للدالة \\(f(x, y) = x^2 y^3 + \\sin(y)\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Hold \\(y\\) constant while differentiating with respect to \\(x\\).",
+      "Differentiate \\(x^2 y^3\\) wrt \\(x\\) to obtain \\(2x y^3\\).",
+      "Differentiate \\(\\sin(y)\\) wrt \\(x\\) to obtain \\(\\cos(y)\\).",
+      "Write \\(f_x(x, y) = 2x y^3 + \\cos(y)\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "تثبيت المتغير \\(y\\) كثابت أثناء الاشتقاق بالنسبة لـ \\(x\\).",
+      "اشتقاق \\(x^2 y^3\\) بالنسبة لـ \\(x\\) للحصول على \\(2x y^3\\).",
+      "اشتقاق \\(\\sin(y)\\) بالنسبة لـ \\(x\\) وكتابته \\(\\cos(y)\\).",
+      "كتابة الناتج \\(f_x(x, y) = 2x y^3 + \\cos(y)\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "When \\(y\\) is held constant, \\(\\sin(y)\\) is a pure constant with respect to \\(x\\), so \\(\\frac{\\partial}{\\partial x}[\\sin(y)] = 0\\) and \\(f_x = 2xy^3\\).",
+      "\\(x^2 y^3\\) requires the product rule giving \\(2xy^3 + 3x^2y^2\\).",
+      "\\(\\frac{\\partial}{\\partial x}[\\sin(y)] = -\\cos(y)\\)."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "عند تثبيت \\(y\\) تكون \\(\\sin(y)\\) ثابتاً بالنسبة لـ \\(x\\)، لذا مشتقتها الجزئية تساوي \\(0\\) ويكون \\(f_x = 2xy^3\\).",
+      "اشتقاق \\(x^2 y^3\\) يتطلب قاعدة الضرب.",
+      "مشتقة \\(\\sin(y)\\) بالنسبة لـ \\(x\\) تساوي \\(-\\cos(y)\\)."
     ],
     "correctReason": 0
   },
@@ -4698,42 +4700,42 @@ D["ch-partial"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Multivariable & Vector Integral Theorems (Partial Derivatives & the Gradient)",
-    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (المشتقات الجزئية ومتجه التدرج (Gradient))",
+    "ti": "Matching: Partial Derivatives, Tangent Planes & Gradient Geometry",
+    "ti_ar": "مطابقة: المشتقات الجزئية والمستوى المماس وهندسة التدرج",
     "p": [
       {
-        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
+        "l": "Gradient vector \\(\\nabla f(x, y)\\)",
+        "r": "\\(\\langle f_x(x, y),\\; f_y(x, y) \\rangle\\), orthogonal to level curves"
       },
       {
-        "l": "Green's Theorem (circulation)",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
+        "l": "Tangent plane to \\(z = f(x, y)\\) at \\((a, b)\\)",
+        "r": "\\(z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)\\)"
       },
       {
-        "l": "Spherical volume element \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
+        "l": "Clairaut’s theorem for \\(C^2\\) functions",
+        "r": "Mixed partials commute: \\(f_{xy} = f_{yx}\\)"
       },
       {
-        "l": "Divergence Theorem (outward flux)",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\) (unit \\(\\mathbf{u}\\))",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "متجه التدرج \\(\\nabla f(x, y)\\)",
+        "r": "\\(\\langle f_x, f_y \\rangle\\) عمودي على منحنيات المستوى"
+      },
+      {
+        "l": "المستوى المماس للسطح \\(z = f(x, y)\\)",
+        "r": "\\(z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)\\)"
+      },
+      {
+        "l": "مبرهنة كليرو للدوال المتصلة \\(C^2\\)",
+        "r": "تساوي المشتقات المختلطة \\(f_{xy} = f_{yx}\\)"
+      },
+      {
         "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
-      },
-      {
-        "l": "مبرهنة غرين للدوران",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
-      },
-      {
-        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
-      },
-      {
-        "l": "مبرهنة التباعد للتدفق السطحي",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "r": "\\(\\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta\\)"
       }
     ]
   }

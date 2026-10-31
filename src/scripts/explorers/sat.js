@@ -716,7 +716,13 @@
     if(sMode) sMode.addEventListener('change', sync);
     if(sP1) sP1.addEventListener('input', sync);
     if(sP2) sP2.addEventListener('input', sync);
-    if(sP3) sP3.addEventListener('input', sync);
+    if(sP3) sP3.addEventListener('input', function(){
+      if(mode !== 'gen'){
+        mode = 'gen';
+        if(sMode) sMode.value = 'gen';
+      }
+      sync();
+    });
     sync();
   })();
 
@@ -916,7 +922,16 @@
     if(sA) sA.addEventListener('input', sync);
     if(sP1) sP1.addEventListener('input', sync);
     if(sP2) sP2.addEventListener('input', sync);
-    if(sP3) sP3.addEventListener('input', sync);
+    if(sP3) sP3.addEventListener('input', function(){
+      if(mode !== 'chd'){
+        mode = 'chd';
+        if(sMode) sMode.value = 'chd';
+        p1 = 1; p2 = 5;
+        if(sP1) sP1.value = p1;
+        if(sP2) sP2.value = p2;
+      }
+      sync();
+    });
     sync();
   })();
 
@@ -1059,8 +1074,24 @@
     if(sMode) sMode.addEventListener('change', sync);
     if(sA) sA.addEventListener('input', sync);
     if(sB) sB.addEventListener('input', sync);
-    if(sKH) sKH.addEventListener('input', sync);
-    if(sD) sD.addEventListener('input', sync);
+    if(sKH) sKH.addEventListener('input', function(){
+      var nextKH = parseFloat(sKH.value);
+      if(mode === 'std' || mode === 'rate'){
+        mode = nextKH >= 0.5 ? 'period' : 'shift';
+        if(sMode) sMode.value = mode;
+      } else if(mode === 'period' && nextKH < 0.5){
+        mode = 'shift';
+        if(sMode) sMode.value = 'shift';
+      }
+      sync();
+    });
+    if(sD) sD.addEventListener('input', function(){
+      if(mode !== 'shift'){
+        mode = 'shift';
+        if(sMode) sMode.value = 'shift';
+      }
+      sync();
+    });
     sync();
   })();
   /* === AUTO-UNIVERSAL-GRAPH-EXPLORERS-START === */

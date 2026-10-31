@@ -577,74 +577,84 @@ D["qud-arithmetic"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Arithmetic & Number Sense)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (الحساب والحس العددي)",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(60\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(90\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 17\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(60\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(90\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 17\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed, Combined Work Rate & Ratio Partition",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية ومعدل العمل المشترك وتقسيم النسب",
+    "q": "(a) A car drives from A to B at \\(60\\text{ km/h}\\) and returns along the same route at \\(40\\text{ km/h}\\). Find the average speed for the entire round trip. (b) Pump A fills a tank in \\(6\\text{ h}\\) and Pump B fills it in \\(12\\text{ h}\\); how long do they take working together?",
+    "q_ar": "(أ) تسير سيارة من A إلى B بسرعة \\(60\\text{ كم/س}\\) وتعود على نفس الطريق بسرعة \\(40\\text{ كم/س}\\). أوجد السرعة المتوسطة للرحلة كاملة. (ب) تملأ المضخة A خزاناً في \\(6\\) ساعات وتملؤه B في \\(12\\) ساعة؛ كم تستغرقان معاً؟",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Equal-Distance Harmonic Mean Speed",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{60} + \\frac{d}{90}\\)."
+            "text": "Let one-way distance be \\(d\\); total time is \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{5d}{120} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Divide total distance \\(2d\\) by total time (or apply \\(\\dfrac{2 v_1 v_2}{v_1 + v_2}\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 60 \\cdot 90}{60 + 90} = 72\\text{ km/h}\\)."
+            "text": "Obtain \\(v_{\\text{avg}} = \\dfrac{2(60)(40)}{60 + 40} = 48\\text{ km/h}\\) (not \\(50\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Reciprocal Combined Work Rate",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Add hourly rates: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{3}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(16.5 \\le L < 17.5\\)."
+            "text": "Invert combined rate: \\(T = 4\\text{ hours}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — الوسط التوافقي للسرعة المتوسطة ذهاباً وإياباً",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{60} + \\frac{d}{90}\\)."
+            "text": "الزمن الكلي لمسافة \\(d\\) هو \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "قسمة المسافة الكلية \\(2d\\) على الزمن الكلي أو تطبيق \\(\\dfrac{2v_1v_2}{v_1+v_2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 60 \\cdot 90}{60 + 90} = 72\\text{ km/h}\\)."
+            "text": "السرعة المتوسطة \\(= 48\\text{ كم/س}\\) (وليست \\(50\\))."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — جمع معدلات العمل المتوازية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "جمع المعدلين: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(16.5 \\le L < 17.5\\)."
+            "text": "الزمن المشترك \\(T = 4\\) ساعات."
           }
         ]
       }
@@ -925,74 +935,84 @@ D["qud-ratio"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Ratios, Proportion & Percentages)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (النسب والتناسب والمئويات)",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(80\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(120\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 18\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(80\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(120\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 18\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed, Combined Work Rate & Ratio Partition",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية ومعدل العمل المشترك وتقسيم النسب",
+    "q": "(a) A car drives from A to B at \\(60\\text{ km/h}\\) and returns along the same route at \\(40\\text{ km/h}\\). Find the average speed for the entire round trip. (b) Pump A fills a tank in \\(6\\text{ h}\\) and Pump B fills it in \\(12\\text{ h}\\); how long do they take working together?",
+    "q_ar": "(أ) تسير سيارة من A إلى B بسرعة \\(60\\text{ كم/س}\\) وتعود على نفس الطريق بسرعة \\(40\\text{ كم/س}\\). أوجد السرعة المتوسطة للرحلة كاملة. (ب) تملأ المضخة A خزاناً في \\(6\\) ساعات وتملؤه B في \\(12\\) ساعة؛ كم تستغرقان معاً؟",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Equal-Distance Harmonic Mean Speed",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "Let one-way distance be \\(d\\); total time is \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{5d}{120} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Divide total distance \\(2d\\) by total time (or apply \\(\\dfrac{2 v_1 v_2}{v_1 + v_2}\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "Obtain \\(v_{\\text{avg}} = \\dfrac{2(60)(40)}{60 + 40} = 48\\text{ km/h}\\) (not \\(50\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Reciprocal Combined Work Rate",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Add hourly rates: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{3}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(17.5 \\le L < 18.5\\)."
+            "text": "Invert combined rate: \\(T = 4\\text{ hours}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — الوسط التوافقي للسرعة المتوسطة ذهاباً وإياباً",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "الزمن الكلي لمسافة \\(d\\) هو \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "قسمة المسافة الكلية \\(2d\\) على الزمن الكلي أو تطبيق \\(\\dfrac{2v_1v_2}{v_1+v_2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "السرعة المتوسطة \\(= 48\\text{ كم/س}\\) (وليست \\(50\\))."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — جمع معدلات العمل المتوازية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "جمع المعدلين: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(17.5 \\le L < 18.5\\)."
+            "text": "الزمن المشترك \\(T = 4\\) ساعات."
           }
         ]
       }
@@ -2590,103 +2610,115 @@ D["qud-data"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Data Analysis & Probability)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (تحليل البيانات والاحتمالات)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 7\\) and \\(\\operatorname{Var}(Y) = 6\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 7\\) و\\(\\operatorname{Var}(Y) = 6\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 7 - 6 = 1\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 7 - 6 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7 + 6 = 13\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 13\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Data Analysis & Probability)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (تحليل البيانات والاحتمالات)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 30\\). For a simple random sample of size \\(n = 100\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 30\\). لعينة عشوائية حجمها \\(n = 100\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{30}{\\sqrt{100}} = \\dfrac{30}{10} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(7) + 6 = 34\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{30}{\\sqrt{100}} = 3\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(7) + 6 = 34\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -2694,40 +2726,40 @@ D["qud-data"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Data Analysis & Probability)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (تحليل البيانات والاحتمالات)",
+    "ti": "Step Builder: Quartiles, Outlier Fence & Combined Group Mean",
+    "ti_ar": "بناء الخطوات: الربيعيات وحد التطرف والمتوسط المدمج لمجموعتين",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 100\\):",
-        "a": "10",
-        "h": "Square root of 100."
+        "l": "For \\(Q_1 = 18\\) and \\(Q_3 = 30\\), the interquartile range \\(\\text{IQR} =\\)",
+        "a": "12",
+        "h": "30 - 18"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 30\\):",
-        "a": "3",
-        "h": "Divide 30 by 10."
+        "l": "The upper outlier fence \\(Q_3 + 1.5(\\text{IQR})\\) equals",
+        "a": "48",
+        "h": "30 + 1.5 * 12"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "13",
-        "h": "Add 7 + 6."
+        "l": "Class A (\\(20\\) students, mean \\(75\\)) and Class B (\\(30\\) students, mean \\(85\\)) have combined mean",
+        "a": "81",
+        "h": "(20*75 + 30*85) / 50 = 4050 / 50"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 100\\):",
-        "a": "10",
-        "h": "الجذر التربيعي للعدد 100."
+        "l": "إذا كان \\(Q_1 = 18\\) و\\(Q_3 = 30\\)، فالمدى الربيعي \\(\\text{IQR} =\\)",
+        "a": "12",
+        "h": "30 - 18"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 30\\):",
-        "a": "3",
-        "h": "اقسم 30 على 10."
+        "l": "حد التطرف الأعلى \\(Q_3 + 1.5(\\text{IQR})\\) يساوي",
+        "a": "48",
+        "h": "30 + 18"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 7,\\; \\operatorname{Var}(Y) = 6\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "13",
-        "h": "اجمع 7 + 6."
+        "l": "المتوسط المدمج لصف A (\\(20\\) طالباً بمتوسط \\(75\\)) وصف B (\\(30\\) طالباً بمتوسط \\(85\\)) هو",
+        "a": "81",
+        "h": "(1500 + 2550) ÷ 50"
       }
     ]
   }
@@ -2980,74 +3012,84 @@ D["qud-word"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Word Problems & Reasoning)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (المسائل اللفظية والاستدلال)",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(80\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(120\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 15\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(80\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(120\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 15\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed, Combined Work Rate & Ratio Partition",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية ومعدل العمل المشترك وتقسيم النسب",
+    "q": "(a) A car drives from A to B at \\(60\\text{ km/h}\\) and returns along the same route at \\(40\\text{ km/h}\\). Find the average speed for the entire round trip. (b) Pump A fills a tank in \\(6\\text{ h}\\) and Pump B fills it in \\(12\\text{ h}\\); how long do they take working together?",
+    "q_ar": "(أ) تسير سيارة من A إلى B بسرعة \\(60\\text{ كم/س}\\) وتعود على نفس الطريق بسرعة \\(40\\text{ كم/س}\\). أوجد السرعة المتوسطة للرحلة كاملة. (ب) تملأ المضخة A خزاناً في \\(6\\) ساعات وتملؤه B في \\(12\\) ساعة؛ كم تستغرقان معاً؟",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Equal-Distance Harmonic Mean Speed",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "Let one-way distance be \\(d\\); total time is \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{5d}{120} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Divide total distance \\(2d\\) by total time (or apply \\(\\dfrac{2 v_1 v_2}{v_1 + v_2}\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "Obtain \\(v_{\\text{avg}} = \\dfrac{2(60)(40)}{60 + 40} = 48\\text{ km/h}\\) (not \\(50\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Reciprocal Combined Work Rate",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Add hourly rates: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{3}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(14.5 \\le L < 15.5\\)."
+            "text": "Invert combined rate: \\(T = 4\\text{ hours}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — الوسط التوافقي للسرعة المتوسطة ذهاباً وإياباً",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "الزمن الكلي لمسافة \\(d\\) هو \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "قسمة المسافة الكلية \\(2d\\) على الزمن الكلي أو تطبيق \\(\\dfrac{2v_1v_2}{v_1+v_2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "السرعة المتوسطة \\(= 48\\text{ كم/س}\\) (وليست \\(50\\))."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — جمع معدلات العمل المتوازية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "جمع المعدلين: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(14.5 \\le L < 15.5\\)."
+            "text": "الزمن المشترك \\(T = 4\\) ساعات."
           }
         ]
       }

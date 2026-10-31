@@ -454,105 +454,115 @@ D["ibsl-t1"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Successive Percentage Multipliers (Number & Algebra)",
-    "ti_ar": "اكتشف الخطأ: النسب المئوية المتتالية (الموضوع ١ · الأعداد والجبر والمتسلسلات)",
-    "q": "An item priced at \\(200\\) rises by \\(40\\%\\) and is then discounted by \\(40\\%\\). Which step in the calculation is wrong?",
-    "q_ar": "سلعة سعرها \\(200\\) زاد سعرها بنسبة \\(40\\%\\) ثم خُفِّض بنسبة \\(40\\%\\). أي خطوة تحتوي على خطأ؟",
+    "ti": "Spot the Error: Sign & Coefficient Power in a Binomial Expansion Term",
+    "ti_ar": "اكتشف الخطأ: الإشارة وقوة المعامل في مفكوك ذات الحدين",
+    "q": "A student finds the \\(x^3\\) term in the expansion of \\((2x - 3)^5\\). Which step contains an error?",
+    "q_ar": "يوجد طالب حد \\(x^3\\) في مفكوك \\((2x - 3)^5\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Apply the \\(40\\%\\) increase multiplier: \\(200 \\times 1.40 = 280\\).",
-      "Recognize that the \\(40\\%\\) discount applies to the new price \\(280\\).",
-      "Add the percentage changes directly: \\(+40\\% - 40\\% = 0\\%\\), claiming the final price returns to \\(200\\).",
-      "Verify final price via product of multipliers."
+      "Write the general term \\(T_{r+1} = \\binom{5}{r}(2x)^{5-r}(-3)^r\\) and set \\(5 - r = 3 \\implies r = 2\\).",
+      "Evaluate the binomial coefficient \\(\\binom{5}{2} = 10\\).",
+      "Write \\((2x)^3 = 2x^3\\) instead of cubing the numerical coefficient \\(2^3 = 8\\), and compute \\((-3)^2 = 9\\).",
+      "Multiply \\(10 \\times 2x^3 \\times 9 = 180x^3\\)."
     ],
     "steps_ar": [
-      "تطبيق معامل الزيادة \\(40\\%\\): \\(200 \\times 1.40 = 280\\).",
-      "ملاحظة أن خصم \\(40\\%\\) يُطبَّق على السعر الجديد \\(280\\).",
-      "جمع النسبتين مباشرة \\(+40\\% - 40\\% = 0\\%\\) والادعاء بأن السعر النهائي يعود إلى \\(200\\).",
-      "التحقق من السعر النهائي بضرب المعاملات."
+      "كتابة الحد العام \\(T_{r+1} = \\binom{5}{r}(2x)^{5-r}(-3)^r\\) ووضع \\(5 - r = 3 \\implies r = 2\\).",
+      "حساب التوفيقة \\(\\binom{5}{2} = 10\\).",
+      "كتابة \\((2x)^3 = 2x^3\\) دون تكعيب المعامل \\(2^3 = 8\\)، وحساب \\((-3)^2 = 9\\).",
+      "ضرب \\(10 \\times 2x^3 \\times 9 = 180x^3\\)."
     ],
     "errorStep": 3,
     "reasons": [
-      "Successive percentages multiply rather than add: \\(280 \\times 0.60 = 168\\) (a net \\(16\\%\\) decrease).",
-      "The final price is actually greater than \\(200\\).",
-      "Discounts must be divided rather than multiplied."
+      "The exponent applies to the entire factor \\((2x)^3 = 2^3 x^3 = 8x^3\\), giving \\(10 \\times 8x^3 \\times 9 = 720x^3\\).",
+      "\\((-3)^2\\) equals \\(-9\\) rather than \\(+9\\).",
+      "For \\(x^3\\) in degree \\(5\\), \\(r\\) should be \\(3\\)."
     ],
     "reasons_ar": [
-      "النسب المتتالية تُضرب كمعاملات ولا تُجمع: \\(280 \\times 0.60 = 168\\) (بانخفاض صافي قدره \\(16\\%\\)).",
-      "السعر النهائي أكبر من \\(200\\).",
-      "الخصم يُحسب بالقسمة لا بالضرب."
+      "الأس يتوزع على المعامل والمتغير معاً: \\((2x)^3 = 8x^3\\)، فيكون الحد الصحيح \\(10 \\times 8 \\times 9 x^3 = 720x^3\\).",
+      "قيمة \\((-3)^2\\) تساوي \\(-9\\) وليست \\(+9\\).",
+      "للحصول على \\(x^3\\) يجب وضع \\(r = 3\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Number & Algebra)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (الموضوع ١ · الأعداد والجبر والمتسلسلات)",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(80\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(120\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 18\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(80\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(120\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 18\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Infinite Geometric Series, Arithmetic Sums & Change of Base",
+    "ti_ar": "وضع المصحح: المتسلسلة الهندسية اللانهائية والمتتابعة الحسابية وتغيير أساس اللوغاريتم",
+    "q": "(a) A convergent geometric series has \\(u_1 = 18\\) and \\(S_\\infty = 27\\). Find common ratio \\(r\\) and \\(u_4\\). (b) Solve \\(\\log_2(x) + \\log_2(x - 6) = 4\\) over \\(x > 6\\).",
+    "q_ar": "(أ) متسلسلة هندسية متقاربة حدها الأول \\(u_1 = 18\\) ومجموعها اللانهائي \\(S_\\infty = 27\\). أوجد الأساس \\(r\\) والحد الرابع \\(u_4\\). (ب) حل المعادلة \\(\\log_2(x) + \\log_2(x - 6) = 4\\) حيث \\(x > 6\\).",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Infinite Sum Formula & 4th Term",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "Use \\(S_\\infty = \\dfrac{u_1}{1 - r}\\): \\(27 = \\dfrac{18}{1 - r} \\implies 1 - r = \\dfrac{2}{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "Obtain \\(r = \\dfrac{1}{3}\\) (confirming \\(|r| < 1\\))."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Compute \\(u_4 = u_1 r^3 = 18\\left(\\dfrac{1}{27}\\right) = \\dfrac{2}{3}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Logarithm Product Rule & Domain Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Combine logs: \\(\\log_2(x(x - 6)) = 4 \\implies x^2 - 6x - 16 = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(17.5 \\le L < 18.5\\)."
+            "text": "Factor \\((x - 8)(x + 2) = 0\\) and reject \\(x = -2\\) by domain \\(x > 6\\), giving \\(x = 8\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — مجموع اللانهاية والحد الرابع",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "تطبيق \\(27 = \\dfrac{18}{1 - r} \\implies 1 - r = \\dfrac{2}{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "إيجاد \\(r = \\dfrac{1}{3}\\) (حيث \\(|r| < 1\\))."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "حساب \\(u_4 = 18 \\times \\dfrac{1}{27} = \\dfrac{2}{3}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — قانون ضرب اللوغاريتمات وفحص المجال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "دمج اللوغاريتمين: \\(x(x - 6) = 2^4 = 16 \\implies x^2 - 6x - 16 = 0\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(17.5 \\le L < 18.5\\)."
+            "text": "التحليل \\((x - 8)(x + 2) = 0\\) ورفض \\(-2\\) ليكون الحل \\(x = 8\\)."
           }
         ]
       }
@@ -560,81 +570,81 @@ D["ibsl-t1"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Successive Multipliers & Net Change (Number & Algebra)",
-    "ti_ar": "بناء الخطوات: المعاملات المتتالية وصافي التغير (الموضوع ١ · الأعداد والجبر والمتسلسلات)",
+    "ti": "Step Builder: Binomial Constant Term & Logarithmic Change of Base",
+    "ti_ar": "بناء الخطوات: الحد الخالي من x وتغيير أساس اللوغاريتم",
     "steps": [
       {
-        "l": "Increase \\(200\\) by \\(40\\%\\): new value \\(=\\)",
-        "a": "280",
-        "h": "Compute 200 × 1.40."
+        "l": "In \\(\\left(x^2 + \\dfrac{1}{x}\\right)^6\\), exponent of \\(x\\) in \\(\\binom{6}{r}(x^2)^{6-r}x^{-r}\\) is \\(12 - 3r = 0\\), so \\(r =\\)",
+        "a": "4",
+        "h": "Solve 12 - 3r = 0"
       },
       {
-        "l": "Now discount \\(280\\) by \\(40\\%\\): final value \\(=\\)",
-        "a": "168",
-        "h": "Compute 280 × 0.60."
+        "l": "Hence the constant term \\(\\binom{6}{4}\\) equals",
+        "a": "15",
+        "h": "6! / (4! 2!) = 15"
       },
       {
-        "l": "Find the net decrease \\(200 - 168 =\\)",
-        "a": "32",
-        "h": "Subtract 168 from 200."
+        "l": "Using change of base, \\(\\log_4(8) = \\dfrac{\\log_2 8}{\\log_2 4}\\) equals",
+        "a": "1.5",
+        "h": "3 / 2 = 1.5"
       }
     ],
     "steps_ar": [
       {
-        "l": "زد العدد \\(200\\) بنسبة \\(40\\%\\): القيمة الجديدة \\(=\\)",
-        "a": "280",
-        "h": "احسب 200 × 1.40."
+        "l": "في مفكوك \\(\\left(x^2 + \\dfrac{1}{x}\\right)^6\\)، ينعدم أس \\(x\\) عندما \\(12 - 3r = 0\\)، أي \\(r =\\)",
+        "a": "4",
+        "h": "12 ÷ 3"
       },
       {
-        "l": "طبّق خصم \\(40\\%\\) على \\(280\\): القيمة النهائية \\(=\\)",
-        "a": "168",
-        "h": "احسب 280 × 0.60."
+        "l": "وعليه فإن الحد الثابت \\(\\binom{6}{4}\\) يساوي",
+        "a": "15",
+        "h": "6×5 ÷ 2"
       },
       {
-        "l": "أوجد مقدار النقصان الصافي \\(200 - 168 =\\)",
-        "a": "32",
-        "h": "اطرح 168 من 200."
+        "l": "بتغيير الأساس، قيمة \\(\\log_4(8) = \\dfrac{\\log_2 8}{\\log_2 4}\\) تساوي",
+        "a": "1.5",
+        "h": "3 ÷ 2 = 1.5"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Number, Bounds & Set Principles (Number & Algebra)",
-    "ti_ar": "مطابقة: قوانين الأعداد والحدود والمجموعات (الموضوع ١ · الأعداد والجبر والمتسلسلات)",
+    "ti": "Matching: IB Topic 1 Sequences, Logarithms & Binomial Formulas",
+    "ti_ar": "مطابقة: قوانين المتتابعات واللوغاريتمات وذات الحدين",
     "p": [
       {
-        "l": "Upper bound of \\(a / b\\) (positive)",
-        "r": "\\(a_{\\text{upper}} / b_{\\text{lower}}\\)"
+        "l": "Arithmetic series sum of \\(n\\) terms",
+        "r": "\\(S_n = \\dfrac{n}{2}\\big(2u_1 + (n - 1)d\\big)\\)"
       },
       {
-        "l": "Inclusion–Exclusion \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "Convergent infinite geometric series (\\(|r| < 1\\))",
+        "r": "\\(S_\\infty = \\dfrac{u_1}{1 - r}\\)"
       },
       {
-        "l": "Equal-distance round-trip speed",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) for \\(80, 120\\)"
+        "l": "Logarithm change-of-base identity",
+        "r": "\\(\\log_a b = \\dfrac{\\ln b}{\\ln a}\\)"
       },
       {
-        "l": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)"
+        "l": "General term in \\((a + b)^n\\)",
+        "r": "\\(T_{r+1} = \\binom{n}{r} a^{n-r} b^r\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الحد الأعلى للقسمة \\(a / b\\) (موجبة)",
-        "r": "\\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)"
+        "l": "مجموع \\(n\\) حداً من متتابعة حسابية",
+        "r": "\\(S_n = \\dfrac{n}{2}\\big(2u_1 + (n - 1)d\\big)\\)"
       },
       {
-        "l": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "مجموع متسلسلة هندسية لانهائية متقاربة (\\(|r| < 1\\))",
+        "r": "\\(S_\\infty = \\dfrac{u_1}{1 - r}\\)"
       },
       {
-        "l": "السرعة المتوسطة ذهاباً وإياباً",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) للسرعتين \\(80, 120\\)"
+        "l": "قاعدة تغيير أساس اللوغاريتم",
+        "r": "\\(\\log_a b = \\dfrac{\\ln b}{\\ln a}\\)"
       },
       {
-        "l": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً"
+        "l": "الحد العام في مفكوك \\((a + b)^n\\)",
+        "r": "\\(T_{r+1} = \\binom{n}{r} a^{n-r} b^r\\)"
       }
     ]
   }

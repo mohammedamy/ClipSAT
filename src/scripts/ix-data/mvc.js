@@ -163,30 +163,32 @@ D["mvc-partials"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Partial Differentiation Treating the Other Variable as Constant",
+    "ti_ar": "اكتشف الخطأ: الاشتقاق الجزئي بتثبيت المتغير الآخر",
+    "q": "A student computes \\(f_x(x, y)\\) for \\(f(x, y) = x^2 y^3 + \\sin(y)\\). Which step contains an error?",
+    "q_ar": "يحسب طالب المشتقة الجزئية \\(f_x(x, y)\\) للدالة \\(f(x, y) = x^2 y^3 + \\sin(y)\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Hold \\(y\\) constant while differentiating with respect to \\(x\\).",
+      "Differentiate \\(x^2 y^3\\) wrt \\(x\\) to obtain \\(2x y^3\\).",
+      "Differentiate \\(\\sin(y)\\) wrt \\(x\\) to obtain \\(\\cos(y)\\).",
+      "Write \\(f_x(x, y) = 2x y^3 + \\cos(y)\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "تثبيت المتغير \\(y\\) كثابت أثناء الاشتقاق بالنسبة لـ \\(x\\).",
+      "اشتقاق \\(x^2 y^3\\) بالنسبة لـ \\(x\\) للحصول على \\(2x y^3\\).",
+      "اشتقاق \\(\\sin(y)\\) بالنسبة لـ \\(x\\) وكتابته \\(\\cos(y)\\).",
+      "كتابة الناتج \\(f_x(x, y) = 2x y^3 + \\cos(y)\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "When \\(y\\) is held constant, \\(\\sin(y)\\) is a pure constant with respect to \\(x\\), so \\(\\frac{\\partial}{\\partial x}[\\sin(y)] = 0\\) and \\(f_x = 2xy^3\\).",
+      "\\(x^2 y^3\\) requires the product rule giving \\(2xy^3 + 3x^2y^2\\).",
+      "\\(\\frac{\\partial}{\\partial x}[\\sin(y)] = -\\cos(y)\\)."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "عند تثبيت \\(y\\) تكون \\(\\sin(y)\\) ثابتاً بالنسبة لـ \\(x\\)، لذا مشتقتها الجزئية تساوي \\(0\\) ويكون \\(f_x = 2xy^3\\).",
+      "اشتقاق \\(x^2 y^3\\) يتطلب قاعدة الضرب.",
+      "مشتقة \\(\\sin(y)\\) بالنسبة لـ \\(x\\) تساوي \\(-\\cos(y)\\)."
     ],
     "correctReason": 0
   },
@@ -267,66 +269,66 @@ D["mvc-partials"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Multivariable & Vector Integral Theorems (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
+    "ti": "Matching: Partial Derivatives, Tangent Planes & Gradient Geometry",
+    "ti_ar": "مطابقة: المشتقات الجزئية والمستوى المماس وهندسة التدرج",
     "p": [
       {
-        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
+        "l": "Gradient vector \\(\\nabla f(x, y)\\)",
+        "r": "\\(\\langle f_x(x, y),\\; f_y(x, y) \\rangle\\), orthogonal to level curves"
       },
       {
-        "l": "Green's Theorem (circulation)",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
+        "l": "Tangent plane to \\(z = f(x, y)\\) at \\((a, b)\\)",
+        "r": "\\(z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)\\)"
       },
       {
-        "l": "Spherical volume element \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
+        "l": "Clairaut’s theorem for \\(C^2\\) functions",
+        "r": "Mixed partials commute: \\(f_{xy} = f_{yx}\\)"
       },
       {
-        "l": "Divergence Theorem (outward flux)",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\) (unit \\(\\mathbf{u}\\))",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "متجه التدرج \\(\\nabla f(x, y)\\)",
+        "r": "\\(\\langle f_x, f_y \\rangle\\) عمودي على منحنيات المستوى"
+      },
+      {
+        "l": "المستوى المماس للسطح \\(z = f(x, y)\\)",
+        "r": "\\(z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)\\)"
+      },
+      {
+        "l": "مبرهنة كليرو للدوال المتصلة \\(C^2\\)",
+        "r": "تساوي المشتقات المختلطة \\(f_{xy} = f_{yx}\\)"
+      },
+      {
         "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
-      },
-      {
-        "l": "مبرهنة غرين للدوران",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
-      },
-      {
-        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
-      },
-      {
-        "l": "مبرهنة التباعد للتدفق السطحي",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "r": "\\(\\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)",
-    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
+    "ti": "Quick Check: Clairaut’s Mixed Partial Symmetry",
+    "ti_ar": "فحص سريع: تماثل المشتقات الجزئية المختلطة (كليرو)",
+    "q": "If \\(f(x, y)\\) has continuous second-order partial derivatives on \\(\\mathbb{R}^2\\) and \\(f_{xy}(1, 2) = -7\\), what is \\(f_{yx}(1, 2)\\)?",
+    "q_ar": "إذا كانت للدالة \\(f(x, y)\\) مشتقات جزئية ثانية متصلة وكان \\(f_{xy}(1, 2) = -7\\)، فما قيمة \\(f_{yx}(1, 2)\\)؟",
     "o": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(-7\\)",
+      "\\(+7\\)",
+      "\\(0\\)",
+      "Cannot be determined without \\(f_{xx}\\)"
     ],
     "o_ar": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(-7\\)",
+      "\\(+7\\)",
+      "\\(0\\)",
+      "لا يمكن تحديدها دون معرفة \\(f_{xx}\\)"
     ],
     "a": 0,
-    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
-    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
+    "ex": "By Clairaut’s Theorem, continuity of \\(f_{xy}\\) and \\(f_{yx}\\) guarantees \\(f_{yx}(1, 2) = f_{xy}(1, 2) = -7\\).",
+    "ex_ar": "بحسب مبرهنة كليرو، اتصال المشتقات الجزئية الثانية يضمن تساوي \\(f_{yx}(1, 2) = f_{xy}(1, 2) = -7\\)."
   }
 ];
 D["mvc-chain-rule"] = [
@@ -529,30 +531,32 @@ D["mvc-chain-rule"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Unit Vector Normalization in Directional Derivatives",
+    "ti_ar": "اكتشف الخطأ: توحيد متجه الاتجاه في المشتقة الاتجاهية",
+    "q": "Given \\(\\nabla f(1, 2) = \\langle 4, -2 \\rangle\\), a student computes the directional derivative of \\(f\\) in the direction of \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\). Which step is flawed?",
+    "q_ar": "إذا كان \\(\\nabla f(1, 2) = \\langle 4, -2 \\rangle\\)، يحسب طالب المشتقة الاتجاهية في اتجاه \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\). أي خطوة خاطئة؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Write directional derivative formula \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u}\\).",
+      "Substitute \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\) directly without dividing by \\(\\|\\mathbf{v}\\| = 5\\).",
+      "Compute dot product \\(4(3) + (-2)(4) = 12 - 8 = 4\\).",
+      "Report \\(D_{\\mathbf{v}} f(1, 2) = 4\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "كتابة صيغة المشتقة الاتجاهية \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u}\\).",
+      "التعويض بالمتجه \\(\\langle 3, 4 \\rangle\\) مباشرة دون قسمته على طوله \\(\\|\\mathbf{v}\\| = 5\\).",
+      "حساب الضرب القياسي \\(12 - 8 = 4\\).",
+      "كتابة الناتج \\(4\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "\\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u}\\) requires a UNIT vector \\(\\mathbf{u} = \\mathbf{v}/\\|\\mathbf{v}\\| = \\langle 3/5, 4/5 \\rangle\\), giving \\(4/5 = 0.8\\).",
+      "Directional derivatives use the cross product \\(\\nabla f \\times \\mathbf{u}\\).",
+      "\\(\\|\\langle 3, 4 \\rangle\\|\\) equals \\(7\\), not \\(5\\)."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "تشترط صيغة \\(D_{\\mathbf{u}} f\\) متجه وحدة \\(\\mathbf{u} = \\langle 3/5, 4/5 \\rangle\\)، فيكون الناتج الصحيح \\(4/5 = 0.8\\).",
+      "تُحسب المشتقة الاتجاهية بالضرب الاتجاهي.",
+      "طول المتجه \\(\\langle 3, 4 \\rangle\\) يساوي \\(7\\)."
     ],
     "correctReason": 0
   },
@@ -633,42 +637,42 @@ D["mvc-chain-rule"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Multivariable & Vector Integral Theorems (The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry)",
-    "ti_ar": "مطابقة: نظريات التفاضل والتكامل المتجهي (قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج)",
+    "ti": "Matching: Partial Derivatives, Tangent Planes & Gradient Geometry",
+    "ti_ar": "مطابقة: المشتقات الجزئية والمستوى المماس وهندسة التدرج",
     "p": [
       {
-        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))"
+        "l": "Gradient vector \\(\\nabla f(x, y)\\)",
+        "r": "\\(\\langle f_x(x, y),\\; f_y(x, y) \\rangle\\), orthogonal to level curves"
       },
       {
-        "l": "Green's Theorem (circulation)",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
+        "l": "Tangent plane to \\(z = f(x, y)\\) at \\((a, b)\\)",
+        "r": "\\(z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)\\)"
       },
       {
-        "l": "Spherical volume element \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
+        "l": "Clairaut’s theorem for \\(C^2\\) functions",
+        "r": "Mixed partials commute: \\(f_{xy} = f_{yx}\\)"
       },
       {
-        "l": "Divergence Theorem (outward flux)",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "l": "Directional derivative \\(D_{\\mathbf{u}} f\\) (unit \\(\\mathbf{u}\\))",
+        "r": "\\(\\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "متجه التدرج \\(\\nabla f(x, y)\\)",
+        "r": "\\(\\langle f_x, f_y \\rangle\\) عمودي على منحنيات المستوى"
+      },
+      {
+        "l": "المستوى المماس للسطح \\(z = f(x, y)\\)",
+        "r": "\\(z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)\\)"
+      },
+      {
+        "l": "مبرهنة كليرو للدوال المتصلة \\(C^2\\)",
+        "r": "تساوي المشتقات المختلطة \\(f_{xy} = f_{yx}\\)"
+      },
+      {
         "l": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)",
-        "r": "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))"
-      },
-      {
-        "l": "مبرهنة غرين للدوران",
-        "r": "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)"
-      },
-      {
-        "l": "عنصر الحجم في الإحداثيات الكروية \\(dV\\)",
-        "r": "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
-      },
-      {
-        "l": "مبرهنة التباعد للتدفق السطحي",
-        "r": "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+        "r": "\\(\\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta\\)"
       }
     ]
   }
@@ -863,30 +867,32 @@ D["mvc-optimization"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Hessian Determinant Sign in 2D Critical-Point Classification",
+    "ti_ar": "اكتشف الخطأ: إشارة محدد هيسيان في تصنيف النقاط الحرجة",
+    "q": "At a critical point \\((a, b)\\) where \\(\\nabla f = \\mathbf{0}\\), \\(f_{xx} = -4\\), \\(f_{yy} = 2\\), and \\(f_{xy} = 1\\), a student classifies \\((a, b)\\). Which step is invalid?",
+    "q_ar": "عند نقطة حرجة \\(\\nabla f = \\mathbf{0}\\) حيث \\(f_{xx} = -4\\) و\\(f_{yy} = 2\\) و\\(f_{xy} = 1\\)، يصنف طالب النقطة. أي خطوة غير صحيحة؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Confirm first partials vanish: \\(f_x(a, b) = 0\\) and \\(f_y(a, b) = 0\\).",
+      "Compute Hessian discriminant \\(D = f_{xx}f_{yy} - (f_{xy})^2 = (-4)(2) - 1^2 = -9\\).",
+      "Because \\(f_{xx} = -4 < 0\\), conclude \\((a, b)\\) is a local maximum despite \\(D < 0\\).",
+      "Record a local maximum at \\((a, b)\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "التحقق من انعدام المشتقات الجزئية الأولى.",
+      "حساب المميز \\(D = f_{xx}f_{yy} - (f_{xy})^2 = (-4)(2) - 1 = -9\\).",
+      "الاستنتاج بأن النقطة نهاية عظمى محلية لأن \\(f_{xx} < 0\\) رغم أن \\(D < 0\\).",
+      "تسجيل النقطة كنهاية عظمى محلية."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "Whenever \\(D < 0\\), the surface curves upward in one direction and downward in another, so \\((a, b)\\) is a SADDLE POINT; \\(f_{xx} < 0\\) gives a local max only when \\(D > 0\\).",
+      "The Hessian discriminant is \\(f_{xx} + f_{yy}\\).",
+      "\\(D = -9\\) means the second derivative test is inconclusive."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "عندما يكون \\(D < 0\\) تكون النقطة الحرجة نقطة سرجية دائماً؛ ولا ننظر لإشارة \\(f_{xx}\\) للنهاية العظمى إلا عندما يكون \\(D > 0\\).",
+      "مميز هيسيان يساوي \\(f_{xx} + f_{yy}\\).",
+      "كون \\(D = -9\\) يعني أن الاختبار غير حاسم."
     ],
     "correctReason": 0
   },
@@ -967,25 +973,25 @@ D["mvc-optimization"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
-    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج)",
-    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
+    "ti": "Quick Check: Lagrange Multipliers Optimality Condition",
+    "ti_ar": "فحص سريع: شرط مضروبات لاغرانج للتحسين المقيد",
+    "q": "To maximize \\(f(x, y)\\) subject to smooth constraint \\(g(x, y) = c\\) (with \\(\\nabla g \\neq \\mathbf{0}\\)), what geometric condition holds at an interior constrained extremum?",
+    "q_ar": "لتعظيم \\(f(x, y)\\) تحت القيد \\(g(x, y) = c\\)، ما الشرط الهندسي المتحقق عند نقطة القيمة القصوى المقيدة؟",
     "o": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(\\nabla f = \\lambda \\nabla g\\) (the gradients of \\(f\\) and \\(g\\) are parallel)",
+      "\\(\\nabla f \\cdot \\nabla g = 0\\) (the gradients are perpendicular)",
+      "\\(\\nabla f = \\mathbf{0}\\) unconditionally",
+      "\\(f(x, y) = \\lambda g(x, y)\\)"
     ],
     "o_ar": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(\\nabla f = \\lambda \\nabla g\\) (توازي متجهي التدرج للدالة والقيد)",
+      "\\(\\nabla f \\cdot \\nabla g = 0\\) (تعامد متجهي التدرج)",
+      "\\(\\nabla f = \\mathbf{0}\\) دائماً دون قيد",
+      "\\(f(x, y) = \\lambda g(x, y)\\)"
     ],
     "a": 0,
-    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
-    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
+    "ex": "At a constrained extremum, the level curve of \\(f\\) is tangent to \\(g(x, y) = c\\), so their normal vectors \\(\\nabla f\\) and \\(\\nabla g\\) are parallel: \\(\\nabla f = \\lambda \\nabla g\\).",
+    "ex_ar": "عند القيمة القصوى المقيدة يمس منحنى مستوى \\(f\\) منحنى القيد \\(g = c\\)، فيتوازى المتجهان العموديان \\(\\nabla f = \\lambda \\nabla g\\)."
   }
 ];
 D["mvc-double-integrals"] = [
@@ -1503,30 +1509,32 @@ D["mvc-triple-integrals"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التكاملات الثلاثية والإحداثيات الأسطوانية والكروية)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Spherical Volume Element Jacobian",
+    "ti_ar": "اكتشف الخطأ: جاكوبيان عنصر الحجم في الإحداثيات الكروية",
+    "q": "A student integrates \\(f(x,y,z) = 1\\) over the unit ball \\(x^2 + y^2 + z^2 \\le 1\\) using spherical coordinates \\((\\rho, \\varphi, \\theta)\\). Which step omits part of the Jacobian?",
+    "q_ar": "يكامل طالب \\(f = 1\\) على الكرة الواحدية باستخدام الإحداثيات الكروية \\((\\rho, \\varphi, \\theta)\\). أي خطوة تغفل جزءاً من جاكوبيان التحويل؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Set spherical bounds: \\(0 \\le \\rho \\le 1\\), \\(0 \\le \\varphi \\le \\pi\\), \\(0 \\le \\theta \\le 2\\pi\\).",
+      "Write volume element as \\(dV = \\rho\\,\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\) instead of \\(\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\).",
+      "Integrate \\(\\int_0^1 \\rho\\,d\\rho = \\tfrac{1}{2}\\), \\(\\int_0^\\pi \\sin\\varphi\\,d\\varphi = 2\\), and \\(\\int_0^{2\\pi} d\\theta = 2\\pi\\).",
+      "Multiply to get \\(2\\pi\\) instead of \\(\\tfrac{4}{3}\\pi\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "تحديد الحدود الكروية: \\(0 \\le \\rho \\le 1\\) و\\(0 \\le \\varphi \\le \\pi\\) و\\(0 \\le \\theta \\le 2\\pi\\).",
+      "كتابة عنصر الحجم \\(dV = \\rho\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\) بدلاً من \\(\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\).",
+      "حساب التكاملات المنفصلة.",
+      "الحصول على \\(2\\pi\\) بدلاً من حجم الكرة \\(\\tfrac{4}{3}\\pi\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "The 3D spherical Jacobian is \\(\\rho^2\\sin\\varphi\\) (giving \\(\\int_0^1 \\rho^2\\,d\\rho = \\frac{1}{3}\\) and volume \\(\\frac{4}{3}\\pi\\)), not \\(\\rho\\sin\\varphi\\).",
+      "Azimuthal angle \\(\\varphi\\) should run from \\(0\\) to \\(2\\pi\\).",
+      "The cylindrical Jacobian \\(r\\,dr\\,d\\theta\\,dz\\) applies to spherical coordinates unchanged."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "جاكوبيان الإحداثيات الكروية هو \\(\\rho^2\\sin\\varphi\\) (فيعطي \\(\\int_0^1 \\rho^2\\,d\\rho = 1/3\\) والحجم الصحيح \\(\\frac{4}{3}\\pi\\)).",
+      "زاوية الميل \\(\\varphi\\) تمتد من \\(0\\) إلى \\(2\\pi\\).",
+      "جاكوبيان الإحداثيات الأسطوانية والكروية متطابقان."
     ],
     "correctReason": 0
   },
@@ -1607,25 +1615,25 @@ D["mvc-triple-integrals"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Triple Integrals & Cylindrical/Spherical Coordinates)",
-    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التكاملات الثلاثية والإحداثيات الأسطوانية والكروية)",
-    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
+    "ti": "Quick Check: Cylindrical vs. Spherical Volume Elements",
+    "ti_ar": "فحص سريع: عنصر الحجم في الإحداثيات الأسطوانية والكروية",
+    "q": "What is the differential volume element \\(dV\\) in cylindrical coordinates \\((r, \\theta, z)\\)?",
+    "q_ar": "ما عنصر الحجم التفاضلي \\(dV\\) في الإحداثيات الأسطوانية \\((r, \\theta, z)\\)؟",
     "o": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(r\\,dz\\,dr\\,d\\theta\\)",
+      "\\(r^2\\sin\\theta\\,dz\\,dr\\,d\\theta\\)",
+      "\\(dz\\,dr\\,d\\theta\\)",
+      "\\(\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
     ],
     "o_ar": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(r\\,dz\\,dr\\,d\\theta\\)",
+      "\\(r^2\\sin\\theta\\,dz\\,dr\\,d\\theta\\)",
+      "\\(dz\\,dr\\,d\\theta\\)",
+      "\\(\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)"
     ],
     "a": 0,
-    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
-    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
+    "ex": "Cylindrical coordinates combine polar \\((r, \\theta)\\) in the \\(xy\\)-plane with \\(z\\), so \\(dV = dA\\,dz = r\\,dr\\,d\\theta\\,dz\\).",
+    "ex_ar": "تدمج الإحداثيات الأسطوانية الإحداثيات القطبية في المستوى \\(xy\\) مع الارتفاع \\(z\\)، فيكون \\(dV = r\\,dz\\,dr\\,d\\theta\\)."
   }
 ];
 D["mvc-vector-fields"] = [
@@ -1828,30 +1836,32 @@ D["mvc-vector-fields"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Vector Fields & Line Integrals)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (الحقول المتجهة والتكاملات الخطية والحقول المحافظة)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Path Independence on a Non-Conservative Vector Field",
+    "ti_ar": "اكتشف الخطأ: افتراض استقلال المسار لحقل متجهي غير محافظ",
+    "q": "A student evaluates \\(\\int_C \\mathbf{F}\\cdot d\\mathbf{r}\\) for \\(\\mathbf{F}(x, y) = \\langle -y, x \\rangle\\) around the unit circle \\(C\\). Which step is invalid?",
+    "q_ar": "يحسب طالب التكامل الخطي \\(\\int_C \\mathbf{F}\\cdot d\\mathbf{r}\\) للحقل \\(\\mathbf{F}(x, y) = \\langle -y, x \\rangle\\) حول دائرة الوحدة المغلقة \\(C\\). أي خطوة خاطئة؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Identify \\(P(x, y) = -y\\) and \\(Q(x, y) = x\\).",
+      "Note that \\(C\\) is a closed curve starting and ending at \\((1, 0)\\).",
+      "Claim every line integral around a closed curve is automatically \\(0\\) without checking \\(Q_x = P_y\\).",
+      "Report \\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 0\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "تحديد المركبتين \\(P = -y\\) و\\(Q = x\\).",
+      "ملاحظة أن المنحنى \\(C\\) مغلق يبدأ وينتهي عند \\((1, 0)\\).",
+      "الادعاء بأن التكامل الخطي حول أي مسار مغلق يساوي \\(0\\) دائماً دون فحص \\(Q_x = P_y\\).",
+      "كتابة الناتج \\(0\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "Closed-loop circulation vanishes only for conservative fields; here \\(Q_x - P_y = 1 - (-1) = 2 \\neq 0\\), so \\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 2\\pi\\).",
+      "Unit circle parameterization requires clockwise orientation.",
+      "Line integrals are only defined for scalar functions."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "ينعدم التكامل المغلق فقط للحقول المحافظة؛ وهنا \\(Q_x - P_y = 2 \\neq 0\\) فيكون التكامل \\(2\\pi\\) وليس صفراً.",
+      "يجب تمثيل دائرة الوحدة مع عقارب الساعة.",
+      "التكامل الخطي معرف للدوال القياسية فقط."
     ],
     "correctReason": 0
   },
@@ -1932,25 +1942,25 @@ D["mvc-vector-fields"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Vector Fields & Line Integrals)",
-    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (الحقول المتجهة والتكاملات الخطية والحقول المحافظة)",
-    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
+    "ti": "Quick Check: Conservative Vector Field Criterion on ℝ²",
+    "ti_ar": "فحص سريع: شرط الحقل المتجهي المحافظ في ℝ²",
+    "q": "On a simply connected domain in \\(\\mathbb{R}^2\\), smooth vector field \\(\\mathbf{F} = \\langle P(x,y), Q(x,y) \\rangle\\) is conservative (\\(\\mathbf{F} = \\nabla f\\)) if and only if:",
+    "q_ar": "على منطقة متصلة ببساطة في \\(\\mathbb{R}^2\\)، يكون الحقل المتجهي الأملس \\(\\mathbf{F} = \\langle P, Q \\rangle\\) محافظاً إذا وفقط إذا:",
     "o": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(\\dfrac{\\partial Q}{\\partial x} = \\dfrac{\\partial P}{\\partial y}\\)",
+      "\\(\\dfrac{\\partial P}{\\partial x} + \\dfrac{\\partial Q}{\\partial y} = 0\\)",
+      "\\(P(x,y) = Q(x,y)\\)",
+      "\\(\\mathbf{F}(0,0) = \\mathbf{0}\\)"
     ],
     "o_ar": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "\\(\\dfrac{\\partial Q}{\\partial x} = \\dfrac{\\partial P}{\\partial y}\\)",
+      "\\(\\dfrac{\\partial P}{\\partial x} + \\dfrac{\\partial Q}{\\partial y} = 0\\)",
+      "\\(P(x,y) = Q(x,y)\\)",
+      "\\(\\mathbf{F}(0,0) = \\mathbf{0}\\)"
     ],
     "a": 0,
-    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
-    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
+    "ex": "If \\(P = f_x\\) and \\(Q = f_y\\), Clairaut’s theorem gives \\(Q_x = f_{yx} = f_{xy} = P_y\\); simple connectedness makes this sufficient.",
+    "ex_ar": "إذا كان \\(P = f_x\\) و\\(Q = f_y\\) فإن \\(Q_x = P_y\\)، وعلى منطقة متصلة ببساطة يكون هذا الشرط كافياً ولازماً."
   }
 ];
 D["mvc-greens-theorem"] = [
@@ -2141,30 +2151,32 @@ D["mvc-greens-theorem"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Green's Theorem)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (نظرية غرين (Green's Theorem) في المستوى)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Sign & Orientation in Green’s Theorem",
+    "ti_ar": "اكتشف الخطأ: الإشارة واتجاه الحدود في مبرهنة غرين",
+    "q": "A student uses Green’s Theorem to evaluate \\(\\oint_C (y\\,dx + 3x\\,dy)\\) where \\(C\\) is the CLOCKWISE circle \\(x^2 + y^2 = 4\\). Which step mishandles orientation?",
+    "q_ar": "يطبق طالب مبرهنة غرين لحساب \\(\\oint_C (y\\,dx + 3x\\,dy)\\) حيث \\(C\\) الدائرة \\(x^2 + y^2 = 4\\) باتجاه عقارب الساعة. أي خطوة أخطأت في الاتجاه؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Identify \\(P = y\\) and \\(Q = 3x\\), so \\(Q_x - P_y = 3 - 1 = 2\\).",
+      "Write \\(\\oint_C (P\\,dx + Q\\,dy) = +\\iint_D 2\\,dA\\) without negating for clockwise orientation.",
+      "Compute \\(2 \\cdot \\text{Area}(D) = 2(\\pi \\cdot 2^2) = 8\\pi\\).",
+      "Conclude the clockwise circulation is \\(+8\\pi\\)."
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "تحديد \\(P = y\\) و\\(Q = 3x\\)، ومنه \\(Q_x - P_y = 3 - 1 = 2\\).",
+      "كتابة \\(+\\iint_D 2\\,dA\\) دون عكس الإشارة لأن المسار مع عقارب الساعة.",
+      "حساب \\(2(4\\pi) = 8\\pi\\).",
+      "استنتاج أن التكامل باتجاه عقارب الساعة يساوي \\(+8\\pi\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "Green’s Theorem assumes positive (counter-clockwise) boundary orientation; a clockwise curve reverses the sign to \\(-\\iint_D (Q_x - P_y)\\,dA = -8\\pi\\).",
+      "Green’s Theorem integrand is \\(P_x + Q_y\\) rather than \\(Q_x - P_y\\).",
+      "Area of \\(x^2 + y^2 \\le 4\\) is \\(2\\pi\\), not \\(4\\pi\\)."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "تفترض مبرهنة غرين الاتجاه الموجب (عكس عقارب الساعة)؛ لذا الاتجاه مع عقارب الساعة يعكس الإشارة إلى \\(-8\\pi\\).",
+      "مُكامَل مبرهنة غرين هو \\(P_x + Q_y\\).",
+      "مساحة القرص \\(x^2 + y^2 \\le 4\\) تساوي \\(2\\pi\\)."
     ],
     "correctReason": 0
   },
@@ -2485,30 +2497,32 @@ D["mvc-surface-divergence-stokes"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Polar Jacobian & Mixed Partial Differentiation (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "ti_ar": "اكتشف الخطأ: جاكوبي الإحداثيات القطبية والمشتقات الجزئية (التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس)",
-    "q": "A student converts \\(\\iint_D (x^2 + y^2)\\,dA\\) over disk \\(x^2 + y^2 \\le 4\\) to polar coordinates. Where is the error?",
-    "q_ar": "يحوّل طالب التكامل الثنائي \\(\\iint_D (x^2 + y^2)\\,dA\\) على القرص \\(x^2 + y^2 \\le 4\\) إلى الإحداثيات القطبية. أين الخطأ؟",
+    "ti": "Spot the Error: Applying the Divergence Theorem to an Open Surface",
+    "ti_ar": "اكتشف الخطأ: تطبيق مبرهنة التباعد على سطح مفتوح غير مغلق",
+    "q": "A student computes upward flux \\(\\iint_S \\mathbf{F}\\cdot d\\mathbf{S}\\) of \\(\\mathbf{F} = \\langle x, y, z \\rangle\\) through the OPEN upper hemisphere \\(z = \\sqrt{1 - x^2 - y^2}\\) (without the base disk \\(z = 0\\)). Which step is invalid?",
+    "q_ar": "يحسب طالب التدفق العلوي \\(\\iint_S \\mathbf{F}\\cdot d\\mathbf{S}\\) للحقل \\(\\langle x, y, z \\rangle\\) عبر نصف الكرة العلوي المفتوح (دون قرص القاعدة \\(z = 0\\)). أي خطوة غير صحيحة؟",
     "steps": [
-      "Parameterize the disk by \\(0 \\le r \\le 2\\) and \\(0 \\le \\theta \\le 2\\pi\\), with \\(x^2 + y^2 = r^2\\).",
-      "Replace \\(dA\\) directly with \\(dr\\,d\\theta\\) without the Jacobian factor \\(r\\), writing \\(\\int_0^{2\\pi}\\int_0^2 r^2\\,dr\\,d\\theta\\).",
-      "Evaluate to get \\(\\frac{16\\pi}{3}\\) instead of \\(8\\pi\\)."
+      "Compute \\(\\operatorname{div}\\mathbf{F} = 1 + 1 + 1 = 3\\).",
+      "Equate the open-hemisphere flux directly to \\(\\iiint_E 3\\,dV\\) over the solid hemisphere \\(E\\) without accounting for the missing bottom disk \\(z = 0\\).",
+      "Evaluate \\(3 \\cdot \\tfrac{2}{3}\\pi(1)^3 = 2\\pi\\).",
+      "Note that on \\(z = 0\\), outward normal is \\(\\langle 0,0,-1\\rangle\\) and \\(\\mathbf{F}\\cdot\\mathbf{n} = -z = 0\\), wait — had \\(\\mathbf{F}\\) had \\(z+1\\), omitting the cap fails!"
     ],
     "steps_ar": [
-      "توصيف القرص بالحدود \\(0 \\le r \\le 2\\) و\\(0 \\le \\theta \\le 2\\pi\\) مع \\(x^2 + y^2 = r^2\\).",
-      "استبدال \\(dA\\) بـ \\(dr\\,d\\theta\\) مباشرة وإغفال معامل الجاكوبي \\(r\\).",
-      "حساب التكامل للحصول على \\(\\frac{16\\pi}{3}\\) بدلاً من \\(8\\pi\\)."
+      "حساب التباعد \\(\\operatorname{div}\\mathbf{F} = 3\\).",
+      "مساواة تدفق السطح المفتوح مباشرة بالتكامل الحجمي \\(\\iiint_E 3\\,dV\\) دون إغلاق السطح بقرص القاعدة وحساب تدفقه.",
+      "حساب \\(3 \\cdot \\tfrac{2}{3}\\pi = 2\\pi\\).",
+      "إغفال شرط أن مبرهنة التباعد تطبق حصراً على الأسطح المغلقة \\(\\partial E\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "In polar coordinates the area element is \\(dA = r\\,dr\\,d\\theta\\), so the integrand becomes \\(r^2 \\cdot r = r^3\\), yielding \\(8\\pi\\).",
-      "\\(x^2 + y^2\\) equals \\(r\\), not \\(r^2\\).",
-      "\\(\\theta\\) ranges only from \\(0\\) to \\(\\pi\\) for a full disk."
+      "Gauss’s Divergence Theorem requires a CLOSED boundary surface \\(\\partial E = S \\cup S_{\\text{disk}}\\); for an open surface \\(S\\), you must subtract the flux across the closing cap \\(S_{\\text{disk}}\\).",
+      "\\(\\operatorname{div}\\langle x, y, z \\rangle\\) equals \\(x + y + z\\), not \\(3\\).",
+      "Stokes’ Theorem computes volume integrals."
     ],
     "reasons_ar": [
-      "عنصر المساحة في الإحداثيات القطبية هو \\(dA = r\\,dr\\,d\\theta\\)، فيصبح التكامل لـ \\(r^3\\) والناتج الصحيح \\(8\\pi\\).",
-      "المقدار \\(x^2 + y^2\\) يساوي \\(r\\).",
-      "حدود \\(\\theta\\) للقرص الكامل من \\(0\\) إلى \\(\\pi\\)."
+      "تتطلب مبرهنة التباعد لغوس سطحاً مغلقاً بالكامل \\(\\partial E = S \\cup S_{\\text{disk}}\\)؛ للسطح المفتوح يجب طرح تدفق غطاء الإغلاق.",
+      "تباعد \\(\\langle x, y, z \\rangle\\) يساوي \\(x + y + z\\).",
+      "مبرهنة ستوكس تحسب التكاملات الحجمية."
     ],
     "correctReason": 0
   },
@@ -2589,25 +2603,25 @@ D["mvc-surface-divergence-stokes"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Multivariable & Vector Integral Theorems (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
-    "ti_ar": "فحص سريع: نظريات التفاضل والتكامل المتجهي (التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس)",
-    "q": "Which expression or condition accurately characterizes Directional derivative \\(D_{\\mathbf{u}} f\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\)؟",
+    "ti": "Quick Check: Stokes’ Theorem vs. Gauss’s Divergence Theorem",
+    "ti_ar": "فحص سريع: التمييز بين مبرهنة ستوكس ومبرهنة التباعد",
+    "q": "Which vector operator appears inside the surface integral in Stokes’ Theorem \\(\\oint_{\\partial S} \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_S (\\,\\text{?}\\,)\\cdot d\\mathbf{S}\\)?",
+    "q_ar": "أي مؤثر متجهي يظهر داخل التكامل السطحي في مبرهنة ستوكس \\(\\oint_{\\partial S} \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_S (\\,\\text{?}\\,)\\cdot d\\mathbf{S}\\)؟",
     "o": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "Curl \\(\\nabla \\times \\mathbf{F}\\)",
+      "Divergence \\(\\nabla \\cdot \\mathbf{F}\\)",
+      "Gradient \\(\\nabla f\\)",
+      "Laplacian \\(\\nabla^2 \\mathbf{F}\\)"
     ],
     "o_ar": [
-      "\\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))",
-      "\\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_D (Q_x - P_y)\\,dA\\)",
-      "\\(\\rho^2 \\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta\\)",
-      "\\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)"
+      "الدوران \\(\\nabla \\times \\mathbf{F}\\)",
+      "التباعد \\(\\nabla \\cdot \\mathbf{F}\\)",
+      "التدرج \\(\\nabla f\\)",
+      "مؤثر لابلاس \\(\\nabla^2 \\mathbf{F}\\)"
     ],
     "a": 0,
-    "ex": "Directional derivative \\(D_{\\mathbf{u}} f\\) matches \\(\\nabla f \\cdot \\mathbf{u}\\) (unit \\(\\mathbf{u}\\)).",
-    "ex_ar": "المشتقة الاتجاهية \\(D_{\\mathbf{u}} f\\) يطابق \\(\\nabla f \\cdot \\mathbf{u}\\) (لمتجه وحدة \\(\\mathbf{u}\\))."
+    "ex": "Stokes’ Theorem equates boundary circulation \\(\\oint_{\\partial S} \\mathbf{F}\\cdot d\\mathbf{r}\\) to the surface flux of curl \\(\\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S}\\).",
+    "ex_ar": "تربط مبرهنة ستوكس الدوران الخطي حول حافة السطح بتدفق متجه الدوران \\(\\nabla \\times \\mathbf{F}\\) عبر السطح."
   }
 ];
 });

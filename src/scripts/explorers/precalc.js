@@ -612,7 +612,12 @@
     }
 
     if(sX){ sX.addEventListener('input', syncState); sX.addEventListener('change', syncState); }
-    if(sCase){ sCase.addEventListener('change', syncState); }
+    if(sCase){
+      sCase.addEventListener('change', function(){
+        if(sCase.value === 'endpoint' && sX && parseFloat(sX.value) < 0){ sX.value = 10; }
+        syncState();
+      });
+    }
     syncState();
   }
 

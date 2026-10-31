@@ -1021,103 +1021,115 @@ D["pc-conics"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Conic Sections & Analytic Geometry)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (القطوع المخروطية والهندسة التحليلية)",
-    "q": "Two similar solids have linear scale factor \\(k = 2\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 2\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Focal Distance of a Hyperbola vs. an Ellipse",
+    "ti_ar": "اكتشف الخطأ: البعد البؤري للقطع الزائد مقابل القطع الناقص",
+    "q": "A student finds the foci of the hyperbola \\(\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1\\). Which step contains an error?",
+    "q_ar": "يحسب طالب بؤرتي القطع الزائد \\(\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 2\\).",
-      "Multiply the surface area directly by \\(2\\) instead of \\(2^2\\): \\(A_{\\text{large}} = 10 \\times 2 = 20\\text{ cm}^2\\).",
-      "Report \\(20\\text{ cm}^2\\) as the larger surface area."
+      "Identify center \\((0, 0)\\) and transverse axis along the \\(x\\)-axis since the \\(x^2\\) term is positive.",
+      "Read \\(a^2 = 16 \\implies a = 4\\) and \\(b^2 = 9 \\implies b = 3\\).",
+      "Compute the focal distance using \\(c^2 = a^2 - b^2 = 16 - 9 = 7\\), so \\(c = \\sqrt{7}\\).",
+      "Write the foci at \\((\\pm \\sqrt{7}, 0)\\)."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 2\\).",
-      "ضرب المساحة السطحية في \\(2\\) مباشرة بدلاً من \\(2^2\\): \\(A = 20\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تحديد المركز \\((0, 0)\\) والمحور القاطع على المحور \\(x\\) لأن حد \\(x^2\\) موجب.",
+      "قراءة \\(a^2 = 16 \\implies a = 4\\) و\\(b^2 = 9 \\implies b = 3\\).",
+      "حساب البعد البؤري من العلاقة \\(c^2 = a^2 - b^2 = 16 - 9 = 7\\) أي \\(c = \\sqrt{7}\\).",
+      "كتابة البؤرتين عند \\((\\pm \\sqrt{7}, 0)\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 4\\) (giving \\(40\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 8\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "For a hyperbola, \\(c^2 = a^2 + b^2 = 16 + 9 = 25\\), so \\(c = 5\\) and the foci lie at \\((\\pm 5, 0)\\) outside the vertices.",
+      "The transverse axis of \\(x^2/16 - y^2/9 = 1\\) is vertical along the \\(y\\)-axis.",
+      "For a hyperbola, \\(a\\) is always the smaller denominator regardless of sign."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 4\\) (أي \\(40\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 8\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "في القطع الزائد العلاقة البؤرية هي \\(c^2 = a^2 + b^2 = 25\\)، لذا \\(c = 5\\) وتقع البؤرتان عند \\((\\pm 5, 0)\\).",
+      "المحور القاطع للمعادلة عمودي على المحور \\(y\\).",
+      "في القطع الزائد يكون \\(a\\) دائماً المقام الأصغر بغض النظر عن الإشارة."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Conic Sections & Analytic Geometry)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (القطوع المخروطية والهندسة التحليلية)",
-    "q": "A circle has equation \\((x - 3)^2 + (y + 2)^2 = 64\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 3)^2 + (y + 2)^2 = 64\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Completing the Square, Foci & Asymptotes of Conic Sections",
+    "ti_ar": "وضع المصحح: إكمال المربع والبؤر وخطوط التقارب للقطوع المخروطية",
+    "q": "(a) Put \\(4x^2 + 9y^2 - 8x - 32 = 0\\) into standard ellipse form and state its center and major-axis length. (b) Find the asymptotes and eccentricity of \\(\\dfrac{y^2}{9} - \\dfrac{x^2}{16} = 1\\).",
+    "q_ar": "(أ) ضع \\(4x^2 + 9y^2 - 8x - 32 = 0\\) في الصورة القياسية للقطع الناقص وحدد مركزه وطول محوره الأكبر. (ب) أوجد خطي التقارب والاختلاف المركزي للقطع الزائد \\(\\dfrac{y^2}{9} - \\dfrac{x^2}{16} = 1\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
-        "marks": 2,
+        "label": "Part (a) — Standard Ellipse Form & Geometry",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (3, -2)\\)."
+            "text": "Complete the square in \\(x\\): \\(4(x^2 - 2x + 1) + 9y^2 = 32 + 4 = 36\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{64} = 8\\)."
+            "text": "Divide by \\(36\\): \\(\\dfrac{(x - 1)^2}{9} + \\dfrac{y^2}{4} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State center \\((1, 0)\\) and major-axis length \\(2a = 2(3) = 6\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Vertical Hyperbola Asymptotes & Eccentricity",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "B1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 8 \\cdot \\frac{\\pi}{2} = 4\\pi\\)."
+            "text": "Vertical hyperbola has \\(a = 3, b = 4\\) and asymptotes \\(y = \\pm \\dfrac{a}{b}x = \\pm \\dfrac{3}{4}x\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(64)\\frac{\\pi}{2} = 16\\pi\\)."
+            "text": "Compute \\(c = \\sqrt{9 + 16} = 5\\) and eccentricity \\(e = \\dfrac{c}{a} = \\dfrac{5}{3}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
-        "marks": 2,
+        "label": "الجزء (أ) — الصورة القياسية للقطع الناقص وخصائصه",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((3, -2)\\)."
+            "text": "إكمال المربع في \\(x\\): \\(4(x - 1)^2 + 9y^2 = 32 + 4 = 36\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{64} = 8\\)."
+            "text": "القسمة على \\(36\\): \\(\\dfrac{(x - 1)^2}{9} + \\dfrac{y^2}{4} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "المركز \\((1, 0)\\) وطول المحور الأكبر \\(2a = 6\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — خطا التقارب والاختلاف المركزي للقطع الزائد الرأسي",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "B1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 4\\pi\\)."
+            "text": "تحديد \\(a = 3, b = 4\\) ومعادلتي خطي التقارب \\(y = \\pm \\dfrac{3}{4}x\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 16\\pi\\)."
+            "text": "حساب \\(c = 5\\) والاختلاف المركزي \\(e = \\dfrac{c}{a} = \\dfrac{5}{3}\\)."
           }
         ]
       }
@@ -1125,66 +1137,66 @@ D["pc-conics"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Conic Sections & Analytic Geometry)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (القطوع المخروطية والهندسة التحليلية)",
+    "ti": "Matching: Conic Section Equations, Foci & Eccentricity",
+    "ti_ar": "مطابقة: معادلات القطوع المخروطية والبؤر والاختلاف المركزي",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Ellipse focal relation (\\(0 < e < 1\\))",
+        "r": "\\(c^2 = a^2 - b^2\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "Hyperbola focal relation (\\(e > 1\\))",
+        "r": "\\(c^2 = a^2 + b^2\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "Vertical parabola opening upward",
+        "r": "\\((x - h)^2 = 4p(y - k),\\; p > 0\\)"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Horizontal hyperbola asymptotes through \\((h, k)\\)",
+        "r": "\\(y - k = \\pm\\dfrac{b}{a}(x - h)\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "العلاقة البؤرية للقطع الناقص (\\(0 < e < 1\\))",
+        "r": "\\(c^2 = a^2 - b^2\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "العلاقة البؤرية للقطع الزائد (\\(e > 1\\))",
+        "r": "\\(c^2 = a^2 + b^2\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "قطع مكافئ رأسي يفتح للأعلى",
+        "r": "\\((x - h)^2 = 4p(y - k),\\; p > 0\\)"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "خطا تقارب قطع زائد أفقي مركزه \\((h, k)\\)",
+        "r": "\\(y - k = \\pm\\dfrac{b}{a}(x - h)\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Central vs. Inscribed Angle (Conic Sections & Analytic Geometry)",
-    "ti_ar": "فحص سريع: الزاوية المركزية والمحيطية (القطوع المخروطية والهندسة التحليلية)",
-    "q": "An inscribed angle \\(\\angle APB\\) subtends the same minor arc as central angle \\(\\angle AOB = 80^\\circ\\). What is \\(\\angle APB\\)?",
-    "q_ar": "زاوية محيطية \\(\\angle APB\\) تشترك في نفس القوس الأصغر مع زاوية مركزية قياسها \\(80^\\circ\\). ما قياس \\(\\angle APB\\)؟",
+    "ti": "Quick Check: Eccentricity & Directrix of an Ellipse",
+    "ti_ar": "فحص سريع: الاختلاف المركزي للقطع الناقص",
+    "q": "What is the eccentricity \\(e = \\dfrac{c}{a}\\) of the ellipse \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1\\)?",
+    "q_ar": "ما قيمة الاختلاف المركزي \\(e = \\dfrac{c}{a}\\) للقطع الناقص \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1\\)؟",
     "o": [
-      "\\(40^\\circ\\)",
-      "\\(80^\\circ\\)",
-      "\\(100^\\circ\\)",
-      "\\(160^\\circ\\)"
+      "\\(\\dfrac{3}{5}\\)",
+      "\\(\\dfrac{4}{5}\\)",
+      "\\(\\dfrac{\\sqrt{41}}{5}\\)",
+      "\\(\\dfrac{9}{25}\\)"
     ],
     "o_ar": [
-      "\\(40^\\circ\\)",
-      "\\(80^\\circ\\)",
-      "\\(100^\\circ\\)",
-      "\\(160^\\circ\\)"
+      "\\(\\dfrac{3}{5}\\)",
+      "\\(\\dfrac{4}{5}\\)",
+      "\\(\\dfrac{\\sqrt{41}}{5}\\)",
+      "\\(\\dfrac{9}{25}\\)"
     ],
     "a": 0,
-    "ex": "The inscribed angle is half the central angle subtending the same arc.",
-    "ex_ar": "الزاوية المحيطية تساوي نصف قياس الزاوية المركزية المشتركة معها في القوس."
+    "ex": "Here \\(a = 5\\) and \\(b = 4\\), so \\(c = \\sqrt{25 - 16} = 3\\) and \\(e = \\dfrac{c}{a} = \\dfrac{3}{5}\\).",
+    "ex_ar": "هنا \\(a = 5\\) و\\(b = 4\\)، ومنه \\(c = \\sqrt{25 - 16} = 3\\) فيكون الاختلاف المركزي \\(e = \\dfrac{3}{5}\\)."
   }
 ];
 D["pc-vectors"] = [

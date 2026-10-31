@@ -2192,103 +2192,115 @@ D["a2-conics"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Area & Volume Similarity Scaling (Conic Sections)",
-    "ti_ar": "اكتشف الخطأ: معامل تشابه المساحات والحجوم (القطوع المخروطية)",
-    "q": "Two similar solids have linear scale factor \\(k = 2\\). The smaller solid has surface area \\(10\\text{ cm}^2\\). Where is the error?",
-    "q_ar": "مجسمان متشابهان معامل التشابه الخطي بينهما \\(k = 2\\)، ومساحة سطح الأصغر \\(10\\text{ cm}^2\\). أين الخطأ؟",
+    "ti": "Spot the Error: Focal Distance of a Hyperbola vs. an Ellipse",
+    "ti_ar": "اكتشف الخطأ: البعد البؤري للقطع الزائد مقابل القطع الناقص",
+    "q": "A student finds the foci of the hyperbola \\(\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1\\). Which step contains an error?",
+    "q_ar": "يحسب طالب بؤرتي القطع الزائد \\(\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1\\). أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Identify the linear ratio of corresponding edges as \\(1 : 2\\).",
-      "Multiply the surface area directly by \\(2\\) instead of \\(2^2\\): \\(A_{\\text{large}} = 10 \\times 2 = 20\\text{ cm}^2\\).",
-      "Report \\(20\\text{ cm}^2\\) as the larger surface area."
+      "Identify center \\((0, 0)\\) and transverse axis along the \\(x\\)-axis since the \\(x^2\\) term is positive.",
+      "Read \\(a^2 = 16 \\implies a = 4\\) and \\(b^2 = 9 \\implies b = 3\\).",
+      "Compute the focal distance using \\(c^2 = a^2 - b^2 = 16 - 9 = 7\\), so \\(c = \\sqrt{7}\\).",
+      "Write the foci at \\((\\pm \\sqrt{7}, 0)\\)."
     ],
     "steps_ar": [
-      "تحديد نسبة التشابه الخطي للأضلاع المتناظرة \\(1 : 2\\).",
-      "ضرب المساحة السطحية في \\(2\\) مباشرة بدلاً من \\(2^2\\): \\(A = 20\\text{ cm}^2\\).",
-      "اعتماد الناتج كمساحة للمجسم الأكبر."
+      "تحديد المركز \\((0, 0)\\) والمحور القاطع على المحور \\(x\\) لأن حد \\(x^2\\) موجب.",
+      "قراءة \\(a^2 = 16 \\implies a = 4\\) و\\(b^2 = 9 \\implies b = 3\\).",
+      "حساب البعد البؤري من العلاقة \\(c^2 = a^2 - b^2 = 16 - 9 = 7\\) أي \\(c = \\sqrt{7}\\).",
+      "كتابة البؤرتين عند \\((\\pm \\sqrt{7}, 0)\\)."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Areas of similar figures scale by \\(k^2 = 4\\) (giving \\(40\\text{ cm}^2\\)), and volumes scale by \\(k^3 = 8\\).",
-      "Areas scale by \\(\\sqrt{k}\\).",
-      "Similar solids always have equal surface areas."
+      "For a hyperbola, \\(c^2 = a^2 + b^2 = 16 + 9 = 25\\), so \\(c = 5\\) and the foci lie at \\((\\pm 5, 0)\\) outside the vertices.",
+      "The transverse axis of \\(x^2/16 - y^2/9 = 1\\) is vertical along the \\(y\\)-axis.",
+      "For a hyperbola, \\(a\\) is always the smaller denominator regardless of sign."
     ],
     "reasons_ar": [
-      "نسبة المساحات تساوي مربع معامل التشابه \\(k^2 = 4\\) (أي \\(40\\text{ cm}^2\\))، ونسبة الحجوم \\(k^3 = 8\\).",
-      "المساحات تتناسب مع \\(\\sqrt{k}\\).",
-      "المجسمات المتشابهة متساوية المساحة دائماً."
+      "في القطع الزائد العلاقة البؤرية هي \\(c^2 = a^2 + b^2 = 25\\)، لذا \\(c = 5\\) وتقع البؤرتان عند \\((\\pm 5, 0)\\).",
+      "المحور القاطع للمعادلة عمودي على المحور \\(y\\).",
+      "في القطع الزائد يكون \\(a\\) دائماً المقام الأصغر بغض النظر عن الإشارة."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Circle Theorems, Sectors & Similarity (Conic Sections)",
-    "ti_ar": "وضع المصحح: نظريات الدائرة والقطاعات والتشابه (القطوع المخروطية)",
-    "q": "A circle has equation \\((x - 2)^2 + (y + 2)^2 = 36\\). (a) State its center and radius \\(r\\). (b) A sector of this circle subtends \\(\\theta = \\frac{\\pi}{2}\\) radians; find exact arc length and sector area in terms of \\(\\pi\\).",
-    "q_ar": "دائرة معادلتها \\((x - 2)^2 + (y + 2)^2 = 36\\). (أ) اذكر المركز ونصف القطر \\(r\\). (ب) قطاع في هذه الدائرة زاويته المركزية \\(\\theta = \\frac{\\pi}{2}\\) راديان؛ أوجد طول القوس ومساحة القطاع بدلالة \\(\\pi\\).",
+    "ti": "Examiner Mode: Completing the Square, Foci & Asymptotes of Conic Sections",
+    "ti_ar": "وضع المصحح: إكمال المربع والبؤر وخطوط التقارب للقطوع المخروطية",
+    "q": "(a) Put \\(4x^2 + 9y^2 - 8x - 32 = 0\\) into standard ellipse form and state its center and major-axis length. (b) Find the asymptotes and eccentricity of \\(\\dfrac{y^2}{9} - \\dfrac{x^2}{16} = 1\\).",
+    "q_ar": "(أ) ضع \\(4x^2 + 9y^2 - 8x - 32 = 0\\) في الصورة القياسية للقطع الناقص وحدد مركزه وطول محوره الأكبر. (ب) أوجد خطي التقارب والاختلاف المركزي للقطع الزائد \\(\\dfrac{y^2}{9} - \\dfrac{x^2}{16} = 1\\).",
     "parts": [
       {
-        "label": "Part (a) — Circle Center & Radius",
-        "marks": 2,
+        "label": "Part (a) — Standard Ellipse Form & Geometry",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Center \\((h, k) = (2, -2)\\)."
+            "text": "Complete the square in \\(x\\): \\(4(x^2 - 2x + 1) + 9y^2 = 32 + 4 = 36\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "Radius \\(r = \\sqrt{36} = 6\\)."
+            "text": "Divide by \\(36\\): \\(\\dfrac{(x - 1)^2}{9} + \\dfrac{y^2}{4} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State center \\((1, 0)\\) and major-axis length \\(2a = 2(3) = 6\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Radian Arc Length & Sector Area",
+        "label": "Part (b) — Vertical Hyperbola Asymptotes & Eccentricity",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "B1",
             "marks": 1,
-            "text": "Arc length \\(s = r\\theta = 6 \\cdot \\frac{\\pi}{2} = 3\\pi\\)."
+            "text": "Vertical hyperbola has \\(a = 3, b = 4\\) and asymptotes \\(y = \\pm \\dfrac{a}{b}x = \\pm \\dfrac{3}{4}x\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Sector area \\(A = \\frac{1}{2} r^2 \\theta = \\frac{1}{2}(36)\\frac{\\pi}{2} = 9\\pi\\)."
+            "text": "Compute \\(c = \\sqrt{9 + 16} = 5\\) and eccentricity \\(e = \\dfrac{c}{a} = \\dfrac{5}{3}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — مركز الدائرة ونصف قطرها",
-        "marks": 2,
+        "label": "الجزء (أ) — الصورة القياسية للقطع الناقص وخصائصه",
+        "marks": 3,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "المركز \\((2, -2)\\)."
+            "text": "إكمال المربع في \\(x\\): \\(4(x - 1)^2 + 9y^2 = 32 + 4 = 36\\)."
           },
           {
-            "code": "B1",
+            "code": "A1",
             "marks": 1,
-            "text": "نصف القطر \\(r = \\sqrt{36} = 6\\)."
+            "text": "القسمة على \\(36\\): \\(\\dfrac{(x - 1)^2}{9} + \\dfrac{y^2}{4} = 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "المركز \\((1, 0)\\) وطول المحور الأكبر \\(2a = 6\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — طول القوس ومساحة القطاع بالراديان",
+        "label": "الجزء (ب) — خطا التقارب والاختلاف المركزي للقطع الزائد الرأسي",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
+            "code": "B1",
             "marks": 1,
-            "text": "طول القوس \\(s = r\\theta = 3\\pi\\)."
+            "text": "تحديد \\(a = 3, b = 4\\) ومعادلتي خطي التقارب \\(y = \\pm \\dfrac{3}{4}x\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "مساحة القطاع \\(A = \\frac{1}{2} r^2 \\theta = 9\\pi\\)."
+            "text": "حساب \\(c = 5\\) والاختلاف المركزي \\(e = \\dfrac{c}{a} = \\dfrac{5}{3}\\)."
           }
         ]
       }
@@ -2296,105 +2308,115 @@ D["a2-conics"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Circle Radius, Polygon Angles & Similarity (Conic Sections)",
-    "ti_ar": "بناء الخطوات: الدائرة وزوايا المضلعات والتشابه (القطوع المخروطية)",
+    "ti": "Step Builder: Focus, Directrix & Latus Rectum of \\((x - 2)^2 = 12(y + 1)\\)",
+    "ti_ar": "بناء الخطوات: بؤرة ودليل وطول الوتر البؤري للقطع المكافئ \\((x - 2)^2 = 12(y + 1)\\)",
     "steps": [
       {
-        "l": "From \\((x - 2)^2 + (y + 2)^2 = 36\\), find the radius \\(r =\\)",
-        "a": "6",
-        "h": "Take the square root of 36."
+        "l": "From \\((x - h)^2 = 4p(y - k)\\), the vertex \\(k\\)-coordinate is \\(k =\\)",
+        "a": "-1",
+        "h": "Compare y + 1 with y - k"
       },
       {
-        "l": "With linear similarity ratio \\(1 : 2\\), find the volume ratio \\(1 : k^3\\) where \\(k^3 =\\)",
-        "a": "8",
-        "h": "Cube 2."
+        "l": "Solve \\(4p = 12\\) for the directed focal length \\(p =\\)",
+        "a": "3",
+        "h": "12 / 4"
       },
       {
-        "l": "Find one exterior angle (in degrees) of a regular \\(6\\)-sided hexagon:",
-        "a": "60",
-        "h": "Compute 360 / 6."
+        "l": "The focus lies at \\((2, k + p)\\), so its \\(y\\)-coordinate is",
+        "a": "2",
+        "h": "-1 + 3"
+      },
+      {
+        "l": "The horizontal directrix \\(y = k - p\\) is at \\(y =\\)",
+        "a": "-4",
+        "h": "-1 - 3"
       }
     ],
     "steps_ar": [
       {
-        "l": "من المعادلة \\((x - 2)^2 + (y + 2)^2 = 36\\)، أوجد نصف القطر \\(r =\\)",
-        "a": "6",
-        "h": "خذ الجذر التربيعي للعدد 36."
+        "l": "بالمقارنة مع \\((x - h)^2 = 4p(y - k)\\)، الإحداثي الصادي للرأس \\(k =\\)",
+        "a": "-1",
+        "h": "قارن y + 1 مع y - k"
       },
       {
-        "l": "إذا كانت نسبة التشابه الخطي \\(1 : 2\\)، فإن نسبة الحجوم \\(k^3 =\\)",
-        "a": "8",
-        "h": "احسب مكعب 2."
+        "l": "من \\(4p = 12\\) يكون البعد البؤري الموجه \\(p =\\)",
+        "a": "3",
+        "h": "12 ÷ 4"
       },
       {
-        "l": "أوجد قياس الزاوية الخارجية بالدرجات لمضلع سداسي منتظم:",
-        "a": "60",
-        "h": "احسب 360 ÷ 6."
+        "l": "تقع البؤرة عند \\((2, k + p)\\)، فإحداثيها الصادي يساوي",
+        "a": "2",
+        "h": "-1 + 3"
+      },
+      {
+        "l": "معادلة الدليل الأفقي \\(y = k - p\\) هي \\(y =\\)",
+        "a": "-4",
+        "h": "-1 - 3"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Circle Theorems & Solid Mensuration (Conic Sections)",
-    "ti_ar": "مطابقة: نظريات الدائرة وقوانين القياس الهندسي (القطوع المخروطية)",
+    "ti": "Matching: Conic Section Equations, Foci & Eccentricity",
+    "ti_ar": "مطابقة: معادلات القطوع المخروطية والبؤر والاختلاف المركزي",
     "p": [
       {
-        "l": "Inscribed angle in a semicircle",
-        "r": "Always \\(90^\\circ\\) (Thales’ theorem)"
+        "l": "Ellipse focal relation (\\(0 < e < 1\\))",
+        "r": "\\(c^2 = a^2 - b^2\\)"
       },
       {
-        "l": "Opposite angles of a cyclic quadrilateral",
-        "r": "Supplementary (\\(\\alpha + \\gamma = 180^\\circ\\))"
+        "l": "Hyperbola focal relation (\\(e > 1\\))",
+        "r": "\\(c^2 = a^2 + b^2\\)"
       },
       {
-        "l": "Cone volume vs. Cylinder volume (same \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "Vertical parabola opening upward",
+        "r": "\\((x - h)^2 = 4p(y - k),\\; p > 0\\)"
       },
       {
-        "l": "Power of a Point (intersecting chords)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "Horizontal hyperbola asymptotes through \\((h, k)\\)",
+        "r": "\\(y - k = \\pm\\dfrac{b}{a}(x - h)\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الزاوية المحيطية المرسومة في نصف دائرة",
-        "r": "تساوي دائماً \\(90^\\circ\\) (مبرهنة طاليس)"
+        "l": "العلاقة البؤرية للقطع الناقص (\\(0 < e < 1\\))",
+        "r": "\\(c^2 = a^2 - b^2\\)"
       },
       {
-        "l": "الزاويتان المتقابلتان في الرباعي الدائري",
-        "r": "متكاملتان ومجموعهما \\(180^\\circ\\)"
+        "l": "العلاقة البؤرية للقطع الزائد (\\(e > 1\\))",
+        "r": "\\(c^2 = a^2 + b^2\\)"
       },
       {
-        "l": "حجم المخروط مقارنة بالأسطوانة (لنفس \\(r, h\\))",
-        "r": "\\(V_{\\text{cone}} = \\frac{1}{3} \\pi r^2 h\\)"
+        "l": "قطع مكافئ رأسي يفتح للأعلى",
+        "r": "\\((x - h)^2 = 4p(y - k),\\; p > 0\\)"
       },
       {
-        "l": "قوة نقطة بالنسبة لدائرة (الأوتار المتقاطعة)",
-        "r": "\\(PA \\cdot PB = PC \\cdot PD\\)"
+        "l": "خطا تقارب قطع زائد أفقي مركزه \\((h, k)\\)",
+        "r": "\\(y - k = \\pm\\dfrac{b}{a}(x - h)\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Central vs. Inscribed Angle (Conic Sections)",
-    "ti_ar": "فحص سريع: الزاوية المركزية والمحيطية (القطوع المخروطية)",
-    "q": "An inscribed angle \\(\\angle APB\\) subtends the same minor arc as central angle \\(\\angle AOB = 100^\\circ\\). What is \\(\\angle APB\\)?",
-    "q_ar": "زاوية محيطية \\(\\angle APB\\) تشترك في نفس القوس الأصغر مع زاوية مركزية قياسها \\(100^\\circ\\). ما قياس \\(\\angle APB\\)؟",
+    "ti": "Quick Check: Eccentricity & Directrix of an Ellipse",
+    "ti_ar": "فحص سريع: الاختلاف المركزي للقطع الناقص",
+    "q": "What is the eccentricity \\(e = \\dfrac{c}{a}\\) of the ellipse \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1\\)?",
+    "q_ar": "ما قيمة الاختلاف المركزي \\(e = \\dfrac{c}{a}\\) للقطع الناقص \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1\\)؟",
     "o": [
-      "\\(50^\\circ\\)",
-      "\\(100^\\circ\\)",
-      "\\(80^\\circ\\)",
-      "\\(200^\\circ\\)"
+      "\\(\\dfrac{3}{5}\\)",
+      "\\(\\dfrac{4}{5}\\)",
+      "\\(\\dfrac{\\sqrt{41}}{5}\\)",
+      "\\(\\dfrac{9}{25}\\)"
     ],
     "o_ar": [
-      "\\(50^\\circ\\)",
-      "\\(100^\\circ\\)",
-      "\\(80^\\circ\\)",
-      "\\(200^\\circ\\)"
+      "\\(\\dfrac{3}{5}\\)",
+      "\\(\\dfrac{4}{5}\\)",
+      "\\(\\dfrac{\\sqrt{41}}{5}\\)",
+      "\\(\\dfrac{9}{25}\\)"
     ],
     "a": 0,
-    "ex": "The inscribed angle is half the central angle subtending the same arc.",
-    "ex_ar": "الزاوية المحيطية تساوي نصف قياس الزاوية المركزية المشتركة معها في القوس."
+    "ex": "Here \\(a = 5\\) and \\(b = 4\\), so \\(c = \\sqrt{25 - 16} = 3\\) and \\(e = \\dfrac{c}{a} = \\dfrac{3}{5}\\).",
+    "ex_ar": "هنا \\(a = 5\\) و\\(b = 4\\)، ومنه \\(c = \\sqrt{25 - 16} = 3\\) فيكون الاختلاف المركزي \\(e = \\dfrac{3}{5}\\)."
   }
 ];
 D["a2-trig"] = [
@@ -3072,103 +3094,115 @@ D["a2-stats"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (Probability & Statistics)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (الاحتمالات والإحصاء التطبيقي)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 4\\) and \\(\\operatorname{Var}(Y) = 3\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 4\\) و\\(\\operatorname{Var}(Y) = 3\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
+    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
+    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
+    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 4 - 3 = 1\\).",
-      "Take square root for standard deviation."
+      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 4 - 3 = 1\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
+      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
+      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
+      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
     ],
     "errorStep": 2,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 4 + 3 = 7\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
+      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 7\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
+      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
+      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (Probability & Statistics)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (الاحتمالات والإحصاء التطبيقي)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 8\\). For a simple random sample of size \\(n = 16\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 8\\). لعينة عشوائية حجمها \\(n = 16\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
+    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
+    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
+    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
-        "marks": 2,
+        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{16}} = \\dfrac{8}{4} = 2\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Conditional Probability & Independence Check",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(4) + 3 = 19\\)."
+            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
-        "marks": 2,
+        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
+        "marks": 3,
         "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
+          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{8}{\\sqrt{16}} = 2\\)."
-          },
-          {
-            "code": "B1",
-            "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(4) + 3 = 19\\)."
+            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
           }
         ]
       }
@@ -3176,105 +3210,105 @@ D["a2-stats"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (Probability & Statistics)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (الاحتمالات والإحصاء التطبيقي)",
+    "ti": "Step Builder: Addition Rule, Conditional Probability & Complement Trick",
+    "ti_ar": "بناء الخطوات: قاعدة الجمع والاحتمال الشرطي ومتممة «واحد على الأقل»",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 16\\):",
-        "a": "4",
-        "h": "Square root of 16."
+        "l": "If \\(P(A) = 0.45\\), \\(P(B) = 0.35\\), and \\(P(A \\cap B) = 0.14\\), then \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 8\\):",
-        "a": "2",
-        "h": "Divide 8 by 4."
+        "l": "Using the same probabilities, conditional probability \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} =\\)",
+        "a": "0.4",
+        "h": "0.14 / 0.35 = 0.4"
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "7",
-        "h": "Add 4 + 3."
+        "l": "A fair coin is tossed \\(3\\) times; \\(P(\\text{at least one Head}) = 1 - (0.5)^3 =\\)",
+        "a": "0.875",
+        "h": "1 - 0.125 = 0.875"
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 16\\):",
-        "a": "4",
-        "h": "الجذر التربيعي للعدد 16."
+        "l": "إذا كان \\(P(A) = 0.45\\) و\\(P(B) = 0.35\\) و\\(P(A \\cap B) = 0.14\\)، فإن \\(P(A \\cup B) =\\)",
+        "a": "0.66",
+        "h": "0.45 + 0.35 - 0.14"
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 8\\):",
-        "a": "2",
-        "h": "اقسم 8 على 4."
+        "l": "الاحتمال الشرطي \\(P(A \\mid B) = \\dfrac{0.14}{0.35} =\\)",
+        "a": "0.4",
+        "h": "0.14 ÷ 0.35"
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 4,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "7",
-        "h": "اجمع 4 + 3."
+        "l": "عند رمي قطعة نقد متزنة \\(3\\) مرات، \\(P(\\text{صورة واحدة على الأقل}) =\\)",
+        "a": "0.875",
+        "h": "1 - 1/8 = 0.875"
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (Probability & Statistics)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (الاحتمالات والإحصاء التطبيقي)",
+    "ti": "Matching: Addition Rule, Conditional Probability, Independence & Counting",
+    "ti_ar": "مطابقة: قواعد الجمع والاحتمال الشرطي والاستقلال وطرق العد",
     "p": [
       {
+        "l": "General Addition Rule for \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) for \\(P(B) > 0\\)"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Criterion for independent events \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Probability of \"at least one success\"",
+        "r": "\\(1 - P(\\text{zero successes})\\)"
       }
     ],
     "p_ar": [
       {
+        "l": "قاعدة الجمع العامة \\(P(A \\cup B)\\)",
+        "r": "\\(P(A) + P(B) - P(A \\cap B)\\)"
+      },
+      {
         "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\) بشرط \\(P(B) > 0\\)"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "شرط استقلال الحدثين \\(A, B\\)",
+        "r": "\\(P(A \\cap B) = P(A)\\cdot P(B)\\)"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
-      },
-      {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "احتمال نجاح واحد على الأقل",
+        "r": "\\(1 - P(\\text{عدم تحقق أي نجاح})\\)"
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Histogram Frequency Density (Probability & Statistics)",
-    "ti_ar": "فحص سريع: كثافة التكرار في المدرج التكراري (الاحتمالات والإحصاء التطبيقي)",
-    "q": "In an unequal-width histogram, a class of width \\(5\\) has frequency \\(15\\). What bar height (frequency density) should be plotted?",
-    "q_ar": "في مدرج تكراري غير متساوي الفئات، فئة طولها \\(5\\) وتكرارها \\(15\\). ما كثافة التكرار (ارتفاع العمود)؟",
+    "ti": "Quick Check: Normal Empirical Rule (68–95–99.7%) & Binomial Trials",
+    "ti_ar": "فحص سريع: القاعدة التجريبية للتوزيع الطبيعي وتجارب ذات الحدين",
+    "q": "Test scores are approximately normal with mean \\(\\mu = 500\\) and standard deviation \\(\\sigma = 100\\). By the 68–95–99.7% rule, approximately what percentage of scores lie above \\(700\\)?",
+    "q_ar": "تتبع درجات اختبار توزيعاً طبيعياً بمتوسط \\(\\mu = 500\\) وانحراف معياري \\(\\sigma = 100\\). بحسب قاعدة 68–95–99.7%، ما النسبة التقريبية للدرجات الأعلى من \\(700\\)؟",
     "o": [
-      "\\(3\\)",
-      "\\(15\\)",
-      "\\(75\\)",
-      "\\(1\\)"
+      "\\(2.5\\%\\)",
+      "\\(5\\%\\)",
+      "\\(16\\%\\)",
+      "\\(0.15\\%\\)"
     ],
     "o_ar": [
-      "\\(3\\)",
-      "\\(15\\)",
-      "\\(75\\)",
-      "\\(1\\)"
+      "\\(2.5\\%\\)",
+      "\\(5\\%\\)",
+      "\\(16\\%\\)",
+      "\\(0.15\\%\\)"
     ],
     "a": 0,
-    "ex": "Frequency density \\(= \\text{frequency} \\div \\text{class width} = 15 \\div 5 = 3\\).",
-    "ex_ar": "كثافة التكرار تساوي التكرار مقسوماً على طول الفئة."
+    "ex": "\\(700 = \\mu + 2\\sigma\\). Since \\(95\\%\\) of normal data lies within \\(\\mu \\pm 2\\sigma\\), the remaining \\(5\\%\\) is split symmetrically between the two tails, leaving \\(2.5\\%\\) above \\(700\\).",
+    "ex_ar": "الدرجة \\(700 = \\mu + 2\\sigma\\). بما أن \\(95\\%\\) تقع ضمن \\(\\pm 2\\sigma\\)، تتوزع \\(5\\%\\) بالتساوي على الذيلين، فيقع \\(2.5\\%\\) فوق \\(700\\)."
   }
 ];
 });

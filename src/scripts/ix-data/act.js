@@ -570,74 +570,84 @@ D["act-numbers"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Harmonic Round-Trip Speed & Bounds (Numbers, Percents & Ratios)",
-    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية والحدود (الأعداد والنسب المئوية والتناسب)",
-    "q": "A vehicle travels a fixed distance \\(d\\) outbound at \\(80\\text{ km/h}\\) and returns the same distance \\(d\\) at \\(120\\text{ km/h}\\). (a) Express total time in terms of \\(d\\) and find the exact round-trip average speed. (b) If a length \\(L = 18\\text{ cm}\\) is rounded to the nearest \\(1\\text{ cm}\\), state its lower and upper bounds.",
-    "q_ar": "تقطع مركبة مسافة \\(d\\) ذهاباً بسرعة \\(80\\text{ km/h}\\) وتعود المسافة نفسها بسرعة \\(120\\text{ km/h}\\). (أ) عبّر عن الزمن الكلي بدلالة \\(d\\) وأوجد السرعة المتوسطة للرحلة كاملة. (ب) إذا قُرِّب الطول \\(L = 18\\text{ cm}\\) لأقرب \\(1\\text{ cm}\\)، فاكتب الحد الأدنى والحد الأعلى.",
+    "ti": "Examiner Mode: Harmonic Round-Trip Speed, Combined Work Rate & Ratio Partition",
+    "ti_ar": "وضع المصحح: السرعة المتوسطة التوافقية ومعدل العمل المشترك وتقسيم النسب",
+    "q": "(a) A car drives from A to B at \\(60\\text{ km/h}\\) and returns along the same route at \\(40\\text{ km/h}\\). Find the average speed for the entire round trip. (b) Pump A fills a tank in \\(6\\text{ h}\\) and Pump B fills it in \\(12\\text{ h}\\); how long do they take working together?",
+    "q_ar": "(أ) تسير سيارة من A إلى B بسرعة \\(60\\text{ كم/س}\\) وتعود على نفس الطريق بسرعة \\(40\\text{ كم/س}\\). أوجد السرعة المتوسطة للرحلة كاملة. (ب) تملأ المضخة A خزاناً في \\(6\\) ساعات وتملؤه B في \\(12\\) ساعة؛ كم تستغرقان معاً؟",
     "parts": [
       {
-        "label": "Part (a) — Harmonic Average Speed",
-        "marks": 2,
+        "label": "Part (a) — Equal-Distance Harmonic Mean Speed",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Total distance \\(= 2d\\), total time \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "Let one-way distance be \\(d\\); total time is \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{5d}{120} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Divide total distance \\(2d\\) by total time (or apply \\(\\dfrac{2 v_1 v_2}{v_1 + v_2}\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Average speed \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "Obtain \\(v_{\\text{avg}} = \\dfrac{2(60)(40)}{60 + 40} = 48\\text{ km/h}\\) (not \\(50\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Error Interval Bounds",
+        "label": "Part (b) — Reciprocal Combined Work Rate",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Half-unit tolerance \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "Add hourly rates: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{3}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Error interval: \\(17.5 \\le L < 18.5\\)."
+            "text": "Invert combined rate: \\(T = 4\\text{ hours}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — السرعة المتوسطة التوافقية",
-        "marks": 2,
+        "label": "الجزء (أ) — الوسط التوافقي للسرعة المتوسطة ذهاباً وإياباً",
+        "marks": 3,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المسافة الكلية \\(= 2d\\)، والزمن الكلي \\(= \\frac{d}{80} + \\frac{d}{120}\\)."
+            "text": "الزمن الكلي لمسافة \\(d\\) هو \\(\\dfrac{d}{60} + \\dfrac{d}{40} = \\dfrac{d}{24}\\)."
+          },
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "قسمة المسافة الكلية \\(2d\\) على الزمن الكلي أو تطبيق \\(\\dfrac{2v_1v_2}{v_1+v_2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "السرعة المتوسطة \\(= \\frac{2 \\cdot 80 \\cdot 120}{80 + 120} = 96\\text{ km/h}\\)."
+            "text": "السرعة المتوسطة \\(= 48\\text{ كم/س}\\) (وليست \\(50\\))."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — فترة الخطأ والحدود",
+        "label": "الجزء (ب) — جمع معدلات العمل المتوازية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "نصف وحدة الدقة يساوي \\(\\pm 0.5\\text{ cm}\\)."
+            "text": "جمع المعدلين: \\(\\dfrac{1}{T} = \\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{1}{4}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "فترة القيمة الحقيقية: \\(17.5 \\le L < 18.5\\)."
+            "text": "الزمن المشترك \\(T = 4\\) ساعات."
           }
         ]
       }
@@ -684,42 +694,42 @@ D["act-numbers"] = [
   },
   {
     "t": "mt",
-    "ti": "Matching: Number, Bounds & Set Principles (Numbers, Percents & Ratios)",
-    "ti_ar": "مطابقة: قوانين الأعداد والحدود والمجموعات (الأعداد والنسب المئوية والتناسب)",
+    "ti": "Matching: Percentages, Proportions, Harmonic Speed & Work-Rate Models",
+    "ti_ar": "مطابقة: النسب المئوية والتناسب والسرعة التوافقية ومعدلات العمل",
     "p": [
       {
-        "l": "Upper bound of \\(a / b\\) (positive)",
-        "r": "\\(a_{\\text{upper}} / b_{\\text{lower}}\\)"
+        "l": "\\(+25\\%\\) increase followed by \\(-20\\%\\) decrease",
+        "r": "Net multiplier \\(1.25 \\times 0.80 = 1.00\\) (\\(0\\%\\) net change)"
       },
       {
-        "l": "Inclusion–Exclusion \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "Equal-distance round-trip average speed",
+        "r": "\\(v_{\\text{avg}} = \\dfrac{2 v_1 v_2}{v_1 + v_2}\\)"
       },
       {
-        "l": "Equal-distance round-trip speed",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) for \\(80, 120\\)"
+        "l": "Combined time \\(T\\) for workers taking \\(t_1\\) and \\(t_2\\)",
+        "r": "\\(T = \\dfrac{t_1 t_2}{t_1 + t_2}\\)"
       },
       {
-        "l": "Rationalising \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "Multiply numerator & denominator by \\(\\sqrt{a} + \\sqrt{b}\\)"
+        "l": "Inverse proportion between speed \\(v\\) and travel time \\(t\\)",
+        "r": "\\(v_1 t_1 = v_2 t_2\\) (fixed distance)"
       }
     ],
     "p_ar": [
       {
-        "l": "الحد الأعلى للقسمة \\(a / b\\) (موجبة)",
-        "r": "\\(a_{\\text{الأعلى}} / b_{\\text{الأدنى}}\\)"
+        "l": "زيادة \\(25\\%\\) متبوعة بخصم \\(20\\%\\)",
+        "r": "المعامل الصافي \\(1.25 \\times 0.80 = 1.00\\) (تغير \\(0\\%\\))"
       },
       {
-        "l": "مبدأ الشمول والإقصاء \\(|A \\cup B|\\)",
-        "r": "\\(|A| + |B| - |A \\cap B|\\)"
+        "l": "السرعة المتوسطة لرحلة ذهاب وإياب متساوية المسافة",
+        "r": "\\(v_{\\text{avg}} = \\dfrac{2 v_1 v_2}{v_1 + v_2}\\)"
       },
       {
-        "l": "السرعة المتوسطة ذهاباً وإياباً",
-        "r": "\\(\\frac{2 v_1 v_2}{v_1 + v_2} = 96\\) للسرعتين \\(80, 120\\)"
+        "l": "الزمن المشترك لعاملين يستغرقان \\(t_1\\) و\\(t_2\\)",
+        "r": "\\(T = \\dfrac{t_1 t_2}{t_1 + t_2}\\)"
       },
       {
-        "l": "إنطاق مقام \\(\\frac{1}{\\sqrt{a} - \\sqrt{b}}\\)",
-        "r": "الضرب في المرافق \\(\\sqrt{a} + \\sqrt{b}\\) بسطاً ومقاماً"
+        "l": "التناسب العكسي بين السرعة \\(v\\) والزمن \\(t\\)",
+        "r": "\\(v_1 t_1 = v_2 t_2\\) عند ثبات المسافة"
       }
     ]
   }

@@ -51,41 +51,49 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "vertices": [
-            [
-              0,
-              0
-            ],
-            [
-              8,
-              0
-            ],
-            [
-              8,
-              6
-            ]
+          "type": "fn",
+          "title": "Polar Radius Functions r(θ) = 2 + 2cos(θ) vs r = 2",
+          "xrange": [
+            0,
+            6.28
           ],
-          "labels": [
-            "A",
-            "C",
-            "B"
+          "yrange": [
+            -0.5,
+            4.5
           ],
-          "sides": [
-            "8",
-            "6",
-            "10"
+          "fns": [
+            {
+              "fn": "2 + 2*Math.cos(x)",
+              "color": "var(--fig-indigo)",
+              "label": "r = 2 + 2cos(θ)"
+            },
+            {
+              "fn": "2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "r = 2"
+            }
           ],
-          "angles": [
-            "θ",
-            "",
-            ""
-          ],
-          "right": 1
+          "points": [
+            {
+              "x": 1.57,
+              "y": 2,
+              "label": "(π/2, 2)"
+            },
+            {
+              "x": 4.71,
+              "y": 2,
+              "label": "(3π/2, 2)"
+            }
+          ]
         },
         "caption": {
-          "en": "Right-triangle Pythagorean geometry (\\(5 - 12 - 13\\)) illustrating Unit 9 · Polar Coordinates & Polar Area.",
-          "ar": "شكل هندسي لمثلث يوضح العلاقات بين الأضلاع والزوايا في الوحدة ٩ · الإحداثيات القطبية والمساحات القطبية."
+          "en": "Radius profile \\(r(\\theta) = 2 + 2\\cos\\theta\\) versus \\(r = 2\\) over \\([0, 2\\pi]\\), intersecting at \\(\\theta = \\pi/2\\) and \\(3\\pi/2\\) for polar area \\(A = \\tfrac{1}{2}\\int (r_{\\text{outer}}^2 - r_{\\text{inner}}^2)\\,d\\theta\\).",
+          "ar": "منحنى نصف القطر القطبي \\(r(\\theta) = 2 + 2\\cos\\theta\\) مقارنةً بـ \\(r = 2\\) على الفترة \\([0, 2\\pi]\\)، وتقاطعهما عند \\(\\theta = \\pi/2\\) و\\(3\\pi/2\\) لتحديد حدود تكامل المساحة القطبية."
+        },
+        "title": {
+          "en": "Polar Rose & Circle Intersection Bounding Polar Area",
+          "ar": "تقاطع المنحنيات القطبية وحساب المساحة بالقطاع التفاضلي"
         }
       },
       {

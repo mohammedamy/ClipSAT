@@ -196,34 +196,54 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "triangle",
-          "A": [
-            0,
-            0
+          "type": "fn",
+          "title": "Inverse Pair: y = 2^x and y = log₂(x)",
+          "xrange": [
+            -3,
+            6
           ],
-          "B": [
-            12,
-            0
+          "yrange": [
+            -3,
+            6
           ],
-          "C": [
-            12,
-            5
+          "fns": [
+            {
+              "fn": "Math.pow(2, x)",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 2^x"
+            },
+            {
+              "fn": "x > 0.05 ? Math.log2(x) : NaN",
+              "color": "var(--fig-amber)",
+              "label": "f⁻¹(x) = log₂(x)"
+            },
+            {
+              "fn": "x",
+              "color": "#64748b",
+              "dash": "4,4",
+              "label": "y = x"
+            }
           ],
-          "labels": {
-            "A": "A",
-            "B": "C",
-            "C": "B"
-          },
-          "sides": {
-            "c": "9",
-            "a": "12",
-            "b": "15"
-          },
-          "rightAt": "B"
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            }
+          ]
         },
         "caption": {
-          "en": "Orthogonal vector decomposition \\((9)^2 + (12)^2 = (15)^2\\) for Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions.",
-          "ar": "التحليل المتعامد \\((9)^2 + (12)^2 = (15)^2\\) في الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
+          "en": "Inverse reflection between exponential growth \\(f(x) = 2^x\\) and logarithmic model \\(f^{-1}(x) = \\log_2(x)\\) across the line \\(y = x\\).",
+          "ar": "انعكاس الدالة الأسية \\(f(x) = 2^x\\) والدالة اللوغاريتمية العكسية \\(f^{-1}(x) = \\log_2(x)\\) حول محور التماثل \\(y = x\\)."
+        },
+        "title": {
+          "en": "Exponential & Logarithmic Inverse Symmetry Across y = x",
+          "ar": "التماثل العكسي بين الدالة الأسية واللوغاريتمية حول المستقيم y = x"
         }
       },
       {
