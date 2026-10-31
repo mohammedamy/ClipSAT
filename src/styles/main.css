@@ -708,7 +708,7 @@
   .readrow.indigo{background:var(--indigo-soft); color:var(--indigo)}
   .readrow.amber{background:var(--amber-soft); color:var(--amber-text)}
   .readrow>span:first-child{flex:0 1 auto}
-  .readrow .v{font-weight:650; flex:0 1 auto; margin-left:auto; text-align:right; max-width:100%; overflow-x:auto; overflow-y:hidden; white-space:nowrap}
+  .readrow .v{font-weight:650; flex:0 1 auto; margin-left:auto; text-align:right; max-width:100%; white-space:normal; overflow-wrap:anywhere}
   .chk{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.84rem; color:var(--muted); cursor:pointer}
   .chk input{width:16px; height:16px; accent-color:var(--amber)}
 
@@ -753,10 +753,10 @@
     border: 1px solid var(--line, #cbd5e1);
   }
   .ex-ch-status.solved {
-    background: #10b981;
+    background: #047857;
     color: #fff;
-    border-color: #10b981;
-    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.28);
+    border-color: #047857;
+    box-shadow: 0 1px 3px rgba(4, 120, 87, 0.28);
   }
   .ex-ch-prompt {
     margin: 0;
@@ -1924,7 +1924,7 @@
 .problem .pq{min-width:0;}.ex-canvas{min-width:0;}.ex-controls{min-width:0;}
 .fep-ctext{flex:1;min-width:0;}
 .fep-cletter{flex-shrink:0;}
-.readrow>span:last-child{flex:0 1 auto;margin-left:auto;text-align:right;max-width:100%;overflow-x:auto;white-space:nowrap;}
+.readrow>span:last-child{flex:0 1 auto;margin-left:auto;text-align:right;max-width:100%;white-space:normal;overflow-wrap:anywhere;}
 .chk>span:last-child{flex:1;min-width:0;}
 .theme-btn>span:last-child{flex:1;min-width:0;}
 .chat-msg{min-width:0;word-break:break-word;}
@@ -4686,8 +4686,8 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
      see renderAll() below) — darkened in light mode to clear 4.5:1 against
      the badge's near-white background; the original brighter hues return
      in dark mode where the badge background is dark. */
-  :root { --cd-red:#B91C1C; --cd-orange:#9A3412; --cd-yellow:#7A5310; --cd-green:#1D4D37; }
-  body.dark { --cd-red:#FCA5A5; --cd-orange:#FDBA74; --cd-yellow:#FDE68A; --cd-green:#86EFAC; }
+  :root { --cd-red:#B91C1C; --cd-orange:#9A3412; --cd-yellow:#7A5310; --cd-green:#1D4D37; --emerald:#065f46; --crimson:#b91c1c; }
+  body.dark { --cd-red:#FCA5A5; --cd-orange:#FDBA74; --cd-yellow:#FDE68A; --cd-green:#86EFAC; --emerald:#6ee7b7; --crimson:#fca5a5; }
 
   /* a11y: several rules above this line are *redeclarations* of selectors that
      already had accessible dark-mode colors earlier in the file (via --indigo,
@@ -7904,4 +7904,8 @@ body {
   .ix-mp-grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
+}
+
+body.dark .katex-error {
+  color: #fca5a5 !important;
 }

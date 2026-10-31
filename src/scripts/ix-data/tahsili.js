@@ -165,134 +165,170 @@ D["tah-about"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Converse Fallacy in Conditional Logic (Test format & strategy)",
-    "ti_ar": "اكتشف الخطأ: مغالطة عكس العبارة الشرطية (شكل الاختبار والاستراتيجية)",
-    "q": "Given the true implication \"If \\(n\\) is divisible by \\(4\\), then \\(n\\) is even\", examine the student’s deduction for \\(n = 6\\):",
-    "q_ar": "اعتماداً على العبارة الصحيحة: «إذا كان \\(n\\) يقبل القسمة على \\(4\\) فإن \\(n\\) عدد زوجي»، افحص استنتاج الطالب للعدد \\(n = 6\\):",
+    "ti": "Spot the Error: Tahsili Pacing & Curriculum Weighting (Test format & strategy)",
+    "ti_ar": "اكتشف الخطأ: إدارة الوقت وأوزان الصفوف في التحصيلي (شكل الاختبار والاستراتيجية)",
+    "q": "A student prepares a study and test-day plan for a 22-question, 25-minute Tahsili section. Which step introduces a major strategic flaw?",
+    "q_ar": "يضع طالب خطة للمذاكرة وإدارة الوقت لقسم مكوّن من 22 سؤالاً في 25 دقيقة باختبار التحصيلي. أي خطوة تتضمن خللاً استراتيجياً؟",
     "steps": [
-      "Identify hypothesis \\(P\\): \"\\(4 \\mid n\\)\" and conclusion \\(Q\\): \"\\(n\\) is even\".",
-      "Verify that \\(Q\\) holds for \\(n = 6\\) since \\(6\\) is even.",
-      "Assume \\(Q \\implies P\\) is equivalent to \\(P \\implies Q\\) and deduce \\(4 \\mid 6\\).",
-      "Reach a contradiction with arithmetic."
+      "Prioritize Grade 12 (3rd year) topics (~50% weight) alongside Grade 11 (~30%) and Grade 10 (~20%).",
+      "Budget roughly \\(\\frac{1500}{22} \\approx 68\\) seconds per item on average without a calculator.",
+      "Spend \\(8\\) minutes on a single multi-step integral before answering the remaining \\(15\\) direct science and math questions.",
+      "Verify bubble alignment and answer every item before time expires since there is no guessing penalty."
     ],
     "steps_ar": [
-      "تحديد الفرض \\(P\\): «\\(n\\) يقبل القسمة على 4» والنتيجة \\(Q\\): «\\(n\\) زوجي».",
-      "التحقق من تحقق \\(Q\\) عند \\(n = 6\\) لأن \\(6\\) عدد زوجي.",
-      "افتراض أن العكس \\(Q \\implies P\\) مكافئ للعبارة الأصلية واستنتاج أن \\(6\\) يقبل القسمة على \\(4\\).",
-      "الوصول إلى تناقض حسابي."
+      "إعطاء الأولوية لمقررات الصف الثالث ثانوي (~50%) ثم الثاني ثانوي (~30%) والأول ثانوي (~20%).",
+      "تخصيص متوسط يقارب \\(\\frac{1500}{22} \\approx 68\\) ثانية لكل سؤال دون استخدام الآلة الحاسبة.",
+      "قضاء \\(8\\) دقائق متواصلة في مسألة تكامل واحدة قبل قراءة \\(15\\) سؤالاً مباشراً متبقياً في القسم.",
+      "مراجعة تطابق أرقام التظليل والإجابة عن جميع الأسئلة قبل انتهاء الوقت لعدم وجود خصم على الخطأ."
     ],
     "errorStep": 3,
     "reasons": [
-      "The converse \\(Q \\implies P\\) is NOT logically equivalent to \\(P \\implies Q\\); only the contrapositive \\(\\neg Q \\implies \\neg P\\) is equivalent.",
-      "Every even integer is divisible by 4.",
-      "\\(P \\implies Q\\) is false for multiples of 4."
+      "Spending 8 minutes on one question sacrifices 7–8 equal-weight recall and calculation items; lengthy problems must be flagged for Pass 2.",
+      "Grade 10 content carries 80% of the Tahsili exam weight.",
+      "Unanswered blanks earn bonus points on the Tahsili exam."
     ],
     "reasons_ar": [
-      "عكس العبارة الشرطية \\(Q \\implies P\\) لا يكافئ \\(P \\implies Q\\)؛ بل المعاكس الإيجابي \\(\\neg Q \\implies \\neg P\\) هو المكافئ فقط.",
-      "كل عدد زوجي يقبل القسمة على 4.",
-      "العبارة الأصلية خاطئة لمضاعفات 4."
+      "استنزاف 8 دقائق في سؤال واحد يضيع 7–8 أسئلة متساوية الوزن؛ يجب تعليم السؤال الطويل والعودة إليه في الجولة الثانية.",
+      "مقررات الصف الأول ثانوي تمثل 80% من أسئلة التحصيلي.",
+      "ترك الأسئلة فارغة يمنح درجات إضافية في التحصيلي."
     ],
     "correctReason": 0
   },
   {
-    "t": "sb",
-    "ti": "Step Builder: Pick’s Theorem & Parity Invariant (Test format & strategy)",
-    "ti_ar": "بناء الخطوات: مبرهنة بيك وثابت الزوجية (شكل الاختبار والاستراتيجية)",
-    "steps": [
+    "t": "ms",
+    "ti": "Examiner Mode: Tahsili Pacing Audit & Weighted Admission Score (Test format & strategy)",
+    "ti_ar": "وضع المصحح: ميزانية الوقت والنسبة الموزونة للقبول الجامعي (شكل الاختبار والاستراتيجية)",
+    "q": "A Tahsili practice section has \\(22\\) equal-weight questions in \\(25\\) minutes with no guessing penalty. (a) Compute the average seconds-per-question budget and expected Grade 12 item share (~50%). (b) Evaluate a student's university composite score for \\(30\\%\\) GPA (\\(96\\)), \\(30\\%\\) Qudrat (\\(90\\)), and \\(40\\%\\) Tahsili (\\(85\\)).",
+    "q_ar": "يتكون قسم تدريبي في التحصيلي من \\(22\\) سؤالاً متساوية الوزن في \\(25\\) دقيقة دون خصم على التخمين. (أ) احسب متوسط الزمن لكل سؤال بالثواني وحصة الصف الثالث ثانوي (~50%). (ب) احسب النسبة الموزونة لطالب معدله الثانوي \\(96\\) (وزن \\(30\\%\\)) ودرجته في القدرات \\(90\\) (\\(30\\%\\)) وفي التحصيلي \\(85\\) (\\(40\\%\\)).",
+    "parts": [
       {
-        "l": "A lattice polygon has \\(I = 4\\) interior points and \\(B = 8\\) boundary points. Compute \\(B / 2 =\\)",
-        "a": "4",
-        "h": "Divide 8 by 2."
+        "label": "Part (a) — Section Time Budget & Grade 12 Weight",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Average time budget: \\(\\frac{25 \\times 60}{22} = \\frac{1500}{22} \\approx 68\\text{ s}\\) per question."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Grade 12 (~50%) accounts for roughly \\(0.50 \\times 22 = 11\\) questions per section."
+          }
+        ]
       },
       {
-        "l": "Apply Pick’s formula \\(A = I + B/2 - 1\\) to find the exact area \\(A =\\)",
-        "a": "7",
-        "h": "Compute 4 + 4 − 1."
-      },
-      {
-        "l": "Compute the Nim XOR \\(4 \\oplus 4 =\\)",
-        "a": "0",
-        "h": "Any integer XOR itself equals 0."
+        "label": "Part (b) — Weighted University Composite Calculation",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set up weighted sum: \\(0.30(96) + 0.30(90) + 0.40(85) = 28.8 + 27 + 34\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Total composite admission score \\(= 89.8\\%\\) (showing Tahsili carries the largest 40% share)."
+          }
+        ]
       }
     ],
-    "steps_ar": [
+    "parts_ar": [
       {
-        "l": "مضلع شبكي فيه \\(I = 4\\) نقاط داخلية و\\(B = 8\\) نقاط حدودية. احسب \\(B / 2 =\\)",
-        "a": "4",
-        "h": "اقسم 8 على 2."
+        "label": "الجزء (أ) — ميزانية زمن القسم وحصة ثالث ثانوي",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "متوسط الزمن لكل سؤال: \\(\\frac{25 \\times 60}{22} = \\frac{1500}{22} \\approx 68\\) ثانية."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "حصة الصف الثالث ثانوي (~50%) تقارب \\(0.50 \\times 22 = 11\\) سؤالاً في القسم."
+          }
+        ]
       },
       {
-        "l": "طبّق صيغة بيك \\(A = I + B/2 - 1\\) لإيجاد المساحة \\(A =\\)",
-        "a": "7",
-        "h": "احسب 4 + 4 − 1."
-      },
-      {
-        "l": "احسب مجموع XOR المتماثل \\(4 \\oplus 4 =\\)",
-        "a": "0",
-        "h": "أي عدد مع نفسه بعملية XOR يساوي 0."
+        "label": "الجزء (ب) — حساب النسبة الموزونة للقبول الجامعي",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "تكوين المجموع الموزون: \\(0.30(96) + 0.30(90) + 0.40(85) = 28.8 + 27 + 34\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "النسبة الموزونة الكلية \\(= 89.8\\%\\) (حيث يمثل التحصيلي النصيب الأكبر بنسبة 40%)."
+          }
+        ]
       }
     ]
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Pick’s Theorem & Parity Invariant (Test format & strategy) · II",
-    "ti_ar": "بناء الخطوات: مبرهنة بيك وثابت الزوجية (شكل الاختبار والاستراتيجية) · ٢",
+    "ti": "Step Builder: Tahsili Weighted Score & Time Budget (Test format & strategy)",
+    "ti_ar": "بناء الخطوات: حساب النسبة الموزونة وميزانية الوقت (شكل الاختبار والاستراتيجية)",
     "steps": [
       {
-        "l": "A lattice polygon has \\(I = 4\\) interior points and \\(B = 8\\) boundary points. Compute \\(B / 2 =\\)",
-        "a": "4",
-        "h": "Divide 8 by 2."
+        "l": "Out of \\(110\\) total questions, Grade 12 (~50%) contributes approximately how many items?",
+        "a": "55",
+        "h": "Compute 50% of 110."
       },
       {
-        "l": "Apply Pick’s formula \\(A = I + B/2 - 1\\) to find the exact area \\(A =\\)",
-        "a": "7",
-        "h": "Compute 4 + 4 − 1."
+        "l": "If Pass 1 answers \\(14\\) direct recall items in \\(30\\) seconds each, total seconds spent \\(=\\)",
+        "a": "420",
+        "h": "Multiply 14 by 30."
       },
       {
-        "l": "Compute the Nim XOR \\(4 \\oplus 4 =\\)",
-        "a": "0",
-        "h": "Any integer XOR itself equals 0."
+        "l": "Subtracting \\(420\\) s from a \\(1500\\)-second section leaves how many seconds for the remaining \\(8\\) math/physics problems?",
+        "a": "1080",
+        "h": "Compute 1500 − 420."
       }
     ],
     "steps_ar": [
       {
-        "l": "مضلع شبكي فيه \\(I = 4\\) نقاط داخلية و\\(B = 8\\) نقاط حدودية. احسب \\(B / 2 =\\)",
-        "a": "4",
-        "h": "اقسم 8 على 2."
+        "l": "من إجمالي \\(110\\) أسئلة، كم سؤالاً تقريباً يغطي مقررات الصف الثالث ثانوي (~50%)؟",
+        "a": "55",
+        "h": "احسب 50% من 110."
       },
       {
-        "l": "طبّق صيغة بيك \\(A = I + B/2 - 1\\) لإيجاد المساحة \\(A =\\)",
-        "a": "7",
-        "h": "احسب 4 + 4 − 1."
+        "l": "إذا أنهيت \\(14\\) سؤالاً مباشراً في الجولة الأولى بمعدل \\(30\\) ثانية للسؤال، فإجمالي الثواني المستهلكة \\(=\\)",
+        "a": "420",
+        "h": "اضرب 14 في 30."
       },
       {
-        "l": "احسب مجموع XOR المتماثل \\(4 \\oplus 4 =\\)",
-        "a": "0",
-        "h": "أي عدد مع نفسه بعملية XOR يساوي 0."
+        "l": "بطرح \\(420\\) ثانية من زمن القسم (\\(1500\\) ثانية)، كم ثانية تتبقى لحل المسائل الـ \\(8\\) المتبقية؟",
+        "a": "1080",
+        "h": "احسب 1500 − 420."
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Logical Equivalence, Induction & Invariants (Test format & strategy)",
-    "ti_ar": "فحص سريع: التكافؤ المنطقي والاستقراء والمتغيرات الثابتة (شكل الاختبار والاستراتيجية)",
-    "q": "Which expression or condition accurately characterizes Contrapositive of \\(P \\implies Q\\)?",
-    "q_ar": "أي عبارة أو شرط يصف بدقة: المعاكس الإيجابي للعبارة \\(P \\implies Q\\)؟",
+    "ti": "Quick Check: Two-Pass Tahsili Exam Triage (Test format & strategy)",
+    "ti_ar": "فحص سريع: استراتيجية الجولتين في اختبار التحصيلي (شكل الاختبار والاستراتيجية)",
+    "q": "Why should you complete direct Biology and Chemistry concept items in 25–35 seconds on Pass 1 of a mixed Tahsili section?",
+    "q_ar": "لماذا يُنصح بإنجاز أسئلة المفاهيم المباشرة في الأحياء والكيمياء خلال 25–35 ثانية في الجولة الأولى من قسم التحصيلي؟",
     "o": [
-      "\\(\\neg Q \\implies \\neg P\\) (logically equivalent)",
-      "\\(P \\land \\neg Q\\)",
-      "\\(A = I + \\frac{B}{2} - 1\\)",
-      "\\(4 \\oplus 5 = 1\\)"
+      "All questions carry equal weight, so banking time on instant-recall items gives 90–120 seconds each for multi-step Mathematics and Physics problems on Pass 2",
+      "Biology and Chemistry questions are worth triple the marks of Mathematics questions",
+      "Calculators are unlocked only during the final 10 minutes of the section",
+      "Wrong answers in Mathematics deduct two marks whereas Science items have no penalty"
     ],
     "o_ar": [
-      "\\(\\neg Q \\implies \\neg P\\) (مكافئ منطقياً)",
-      "\\(P \\land \\neg Q\\)",
-      "\\(A = I + \\frac{B}{2} - 1\\)",
-      "\\(4 \\oplus 5 = 1\\)"
+      "لأن جميع الأسئلة متساوية الوزن، فتوفير الوقت في الأسئلة المباشرة يمنحك 90–120 ثانية لكل مسألة رياضيات أو فيزياء متعددة الخطوات في الجولة الثانية",
+      "لأن أسئلة الأحياء والكيمياء تعادل ثلاثة أضعاف درجة أسئلة الرياضيات",
+      "لأنه يُسمح باستخدام الآلة الحاسبة في آخر 10 دقائق فقط من القسم",
+      "لأن الإجابة الخاطئة في الرياضيات تخصم درجتين بعكس المواد العلمية"
     ],
     "a": 0,
-    "ex": "Contrapositive of \\(P \\implies Q\\) matches \\(\\neg Q \\implies \\neg P\\) (logically equivalent).",
-    "ex_ar": "المعاكس الإيجابي للعبارة \\(P \\implies Q\\) يطابق \\(\\neg Q \\implies \\neg P\\) (مكافئ منطقياً)."
+    "ex": "Every Tahsili item carries equal weight and calculators are never permitted, so banking time on rapid conceptual items funds multi-step hand calculations.",
+    "ex_ar": "جميع أسئلة التحصيلي متساوية الوزن والآلة الحاسبة ممنوعة، لذا فإن توفير الوقت في الأسئلة المفاهيمية السريعة يمنحك وقتاً كافياً للعمليات الحسابية اليدوية."
   }
 ];
 D["tah-algebra"] = [

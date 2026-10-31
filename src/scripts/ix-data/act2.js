@@ -501,41 +501,77 @@ D["act2-numbers"] = [
     ]
   },
   {
-    "t": "sb",
-    "ti": "Step Builder: Fermat's Little Theorem Reduction (Advanced Number Theory) · II",
-    "ti_ar": "بناء الخطوات: الاختزال بمبرهنة فيرما الصغرى (نظرية الأعداد المتقدمة والخصائص الحسابية) · ٢",
-    "steps": [
+    "t": "ms",
+    "ti": "Examiner Mode: GCD–LCM Product Identity & Factorial Valuation (Advanced Number Theory)",
+    "ti_ar": "وضع المصحح: علاقة القاسم والمضاعف وأسس العوامل في المضروب (نظرية الأعداد المتقدمة والخصائص الحسابية)",
+    "q": "(a) Two positive integers satisfy \\(\\gcd(a, b) = 14\\) and \\(\\operatorname{lcm}(a, b) = 210\\). If \\(a = 42\\), find \\(b\\). (b) Use Legendre's formula to find the exact number of trailing zeros of \\(100!\\).",
+    "q_ar": "(أ) عددان صحيحان موجبان يحققان \\(\\gcd(a, b) = 14\\) و\\(\\operatorname{lcm}(a, b) = 210\\). إذا كان \\(a = 42\\)، فأوجد قيمة \\(b\\). (ب) استعمل صيغة ليجاندر لإيجاد عدد الأصفار في يمين العدد \\(100!\\).",
+    "parts": [
       {
-        "l": "For prime \\(p = 13\\) and \\(a = 4\\), Fermat gives \\(4^{k} \\equiv 1 \\pmod{13}\\) for \\(k =\\)",
-        "a": "12",
-        "h": "Use p − 1."
+        "label": "Part (a) — GCD–LCM Product Identity",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Apply \\(a \\cdot b = \\gcd(a,b) \\cdot \\operatorname{lcm}(a,b) = 14 \\times 210 = 2940\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Divide by \\(a = 42\\): \\(b = \\frac{2940}{42} = 70\\)."
+          }
+        ]
       },
       {
-        "l": "Reduce the exponent \\(38\\) modulo \\(12\\): remainder \\(=\\)",
-        "a": "2",
-        "h": "38 = 3×12 + 2."
-      },
-      {
-        "l": "Find the least non-negative residue of \\(4^{38} \\equiv 4^2 \\pmod{13}\\):",
-        "a": "3",
-        "h": "Compute 16 mod 13."
+        "label": "Part (b) — 5-adic Valuation of 100!",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Trailing zeros equal \\(v_5(100!) = \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor + \\lfloor 100/125 \\rfloor\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Evaluate \\(20 + 4 + 0 = 24\\) trailing zeros."
+          }
+        ]
       }
     ],
-    "steps_ar": [
+    "parts_ar": [
       {
-        "l": "للعدد الأولي \\(p = 13\\) والأساس \\(a = 4\\)، تعطي فيرما \\(4^k \\equiv 1 \\pmod{13}\\) عند \\(k =\\)",
-        "a": "12",
-        "h": "استعمل p − 1."
+        "label": "الجزء (أ) — متطابقة حاصل ضرب القاسم والمضاعف",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "تطبيق \\(a \\cdot b = \\gcd(a,b) \\cdot \\operatorname{lcm}(a,b) = 14 \\times 210 = 2940\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "القسمة على \\(a = 42\\): \\(b = \\frac{2940}{42} = 70\\)."
+          }
+        ]
       },
       {
-        "l": "اختزل الأس \\(38\\) قياس \\(12\\): الباقي \\(=\\)",
-        "a": "2",
-        "h": "38 = 3×12 + 2."
-      },
-      {
-        "l": "أوجد أصغر باقٍ غير سالب للمقدار \\(4^{38} \\equiv 4^2 \\pmod{13}\\):",
-        "a": "3",
-        "h": "احسب باقي قسمة 16 على 13."
+        "label": "الجزء (ب) — أس العامل 5 في المضروب 100!",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "عدد الأصفار يساوي \\(v_5(100!) = \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor + \\lfloor 100/125 \\rfloor\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "حساب المجموع \\(20 + 4 + 0 = 24\\) صفراً في يمين العدد."
+          }
+        ]
       }
     ]
   },

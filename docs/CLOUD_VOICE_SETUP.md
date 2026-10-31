@@ -35,7 +35,7 @@ Optional secrets (defaults already match your request):
 | Secret | Default | Purpose |
 |---|---|---|
 | `TTS_MODEL` | `fish-audio/s2.1-pro-free:free` | switch to `fish-audio/s2.1-pro` later without a redeploy of code |
-| `TTS_VOICE` | *(unset)* | only set if OpenRouter asks for a `voice` for this model |
+| `TTS_VOICE` | `default` | override with a custom Fish Audio voice id if desired (or `none` to omit) |
 
 ## 3. Deploy the function
 ```bash

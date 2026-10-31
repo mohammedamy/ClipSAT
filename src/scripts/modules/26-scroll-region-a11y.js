@@ -40,7 +40,7 @@
     new MutationObserver(function(muts){
       for(var i=0;i<muts.length;i++){
         var t=muts[i].target;
-        if(t.classList && (t.classList.contains('chapter')||t.classList.contains('view'))){ schedule(); return; }
+        if(t===document.body||(t.classList && (t.classList.contains('chapter')||t.classList.contains('view')))){ schedule(); return; }
       }
     }).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class']});
   }

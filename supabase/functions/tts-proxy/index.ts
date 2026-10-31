@@ -61,8 +61,8 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, _ctx) => {
     input: text,
     response_format: "mp3",
   };
-  const voice = Deno.env.get("TTS_VOICE");
-  if (voice) body.voice = voice;
+  const voice = Deno.env.get("TTS_VOICE") || "default";
+  if (voice !== "none") body.voice = voice;
 
   let upstream: Response;
   try {

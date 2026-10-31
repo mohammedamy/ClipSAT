@@ -135,6 +135,10 @@ for (const track of tracks) {
       totalIxActivities++;
       assert.ok(act.ti && act.ti_ar, `Missing bilingual title in ${track}/${chId} (${act.t})`);
       assert.ok(!ENTITY_RE.test(act.ti) && !ENTITY_RE.test(act.ti_ar), `Raw HTML entity in IX title in ${track}/${chId}: ${act.ti}`);
+      assert.ok(!act.ti.includes('· II') && !act.ti_ar.includes('· ٢'), `Duplicate · II activity remaining in ${track}/${chId}: ${act.ti}`);
+      if (/(?:-about|-overview)$/.test(chId)) {
+        assert.ok(!/Pick’s Theorem|Converse Fallacy/i.test(act.ti), `Off-topic proof_logic item in overview chapter ${track}/${chId}: ${act.ti}`);
+      }
 
       const blob = JSON.stringify(act);
       assert.ok(!LEGACY_BOILERPLATE_RE.test(blob), `Off-topic legacy boilerplate found in ${track}/${chId} (${act.t})`);
