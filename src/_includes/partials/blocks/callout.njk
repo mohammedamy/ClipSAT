@@ -14,7 +14,7 @@
 {% if block.style == 'example' %}
 <div class="example">
   {% if block.label %}<span class="xt">{{ bl.text(block.label) }}</span>{% endif %}
-  <p>{{ bl.text(block.body, 'span') }}</p>
+  <div style="margin:1rem 0;color:var(--text-1)">{{ bl.text(block.body, 'div') }}</div>
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
     <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
       <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
@@ -27,7 +27,7 @@
 {% elif block.style == 'example-card' %}
 <div class="fcard">
   {% if block.label %}<div class="ft">{{ bl.text(block.label) }}</div>{% endif %}
-  <p>{{ bl.text(block.body, 'span') }}</p>
+  <div style="margin:1rem 0;color:var(--text-1)">{{ bl.text(block.body, 'div') }}</div>
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
     <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
       <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
@@ -42,7 +42,7 @@
   <div class="ex-body" style="grid-template-columns:1fr">
     <div>
       <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; {{ bl.text(block.label) }}</p>
-      {{ bl.text(block.body, 'span') }}
+      {{ bl.text(block.body, 'div') }}
     </div>
   </div>
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">

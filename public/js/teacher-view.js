@@ -52,7 +52,21 @@
     return !!(window.ClipSATCloud && window.ClipSATCloud.configured && window.ClipSATCloud.isSignedIn() && getClient());
   }
 
-  function escT(s) { return s ? String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') : ''; }
+  function escT(s) {
+    return s != null && s !== ''
+      ? String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+      : '';
+  }
+
+  function safeId(id) {
+    return String(id == null ? '' : id).replace(/[^a-zA-Z0-9_-]/g, '');
+  }
+
+  function safeCsvCell(cell) {
+    var s = String(cell == null ? '' : cell);
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
 
   function setStatus(id, msg, isError) {
     var el = document.getElementById(id);
@@ -98,19 +112,39 @@
   }
 
   // Track id -> display label, for the "assign to this class" track picker.
-  // Keep in sync with content/*/_meta.json's meta.title.en — 23 tracks as
-  // of this writing (a newly-launched track needs a line added here too;
-  // nothing breaks if one's missing, the picker just shows the raw id).
+  // Synchronized with all 31 curriculum tracks in content/*/_meta.json.
   var TRACK_LABELS = {
-    a2level: 'A2 Level Mathematics', act: 'ACT Math', act2: 'ACT Math 2',
-    alg2: 'Algebra 2', algebra: 'Algebra', apab: 'AP Calculus AB',
-    apbc: 'AP Calculus BC', appc: 'AP Precalculus', apstats: 'AP Statistics',
-    aslevel: 'AS Level Mathematics', calculus: 'Calculus', est: 'EST Math',
-    est2: 'EST 2 Math', geo: 'Geometry', ibhl: 'IB Math HL (AA/AI)',
-    ibsl: 'IB Math SL (AA/AI)', igcse: 'IGCSE 0580', linalg: 'Linear Algebra',
-    mvc: 'Multivariable Calculus', odes: 'Differential Equations',
-    precalc: 'Pre-Calculus', qudrat: 'GAT Qudrat', sat: 'Digital SAT Math',
-    tahsili: 'SAAT Tahsili'
+    a2level: 'A2 Level Mathematics',
+    act: 'ACT Math',
+    act2: 'ACT Math Level 1',
+    act2l2: 'ACT Math Level 2',
+    addmath: 'IGCSE Additional Mathematics (0606)',
+    alg2: 'Algebra 2',
+    algebra: 'Algebra 1',
+    apab: 'AP Calculus AB',
+    apbc: 'AP Calculus BC',
+    appc: 'AP Precalculus',
+    apstats: 'AP Statistics',
+    aslevel: 'AS Level Mathematics',
+    calculus: 'Calculus',
+    edexcel: 'Edexcel International GCSE (4MA1)',
+    est: 'EST I Literacy & Math',
+    est2: 'EST II Math Level 1',
+    est2l2: 'EST II Math Level 2',
+    gaten: 'GAT Quantitative (English)',
+    geo: 'Geometry',
+    ibhl: 'IB Math HL (AA/AI)',
+    ibsl: 'IB Math SL (AA/AI)',
+    igcse: 'Cambridge IGCSE (0580)',
+    linalg: 'Linear Algebra',
+    mathai: 'Mathematics for AI & Machine Learning',
+    mvc: 'Multivariable Calculus',
+    odes: 'Differential Equations',
+    olympiad: 'Math Olympiad & Competition Math',
+    precalc: 'Pre-Calculus',
+    qudrat: 'GAT Qudrat (قدرات)',
+    sat: 'Digital SAT Math',
+    tahsili: 'SAAT Tahsili (تحصيلي)'
   };
 
   function trackOptionsHtml() {
@@ -206,22 +240,23 @@
         if (!r.data.length) { out.innerHTML = '<p class="tv-empty">You don’t own any classes yet — create one above.</p>'; return; }
         (r.data || []).forEach(function (c) { _classesById[c.id] = c; });
         out.innerHTML = r.data.map(function (c) {
+          var cid = safeId(c.id);
           return '<div class="tv-class-card">'
             + '<div class="tv-class-head"><b>' + escT(c.name) + '</b>'
             + '<span class="tv-code" title="Share this code with students">' + escT(c.code) + '</span>'
             + '<div class="tv-class-actions">'
-            + '<button type="button" class="tv-export-btn" onclick="window.tvExportCSV(\'' + c.id + '\')" title="Export roster to CSV" aria-label="Export CSV">📄 CSV</button>'
-            + '<button type="button" class="tv-export-btn" onclick="window.tvExportExcel(\'' + c.id + '\')" title="Export roster to Excel" aria-label="Export Excel">📊 Excel</button>'
-            + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + c.id + '\')" title="Delete class" aria-label="Delete class">🗑</button>'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvExportCSV(\'' + cid + '\')" title="Export roster to CSV" aria-label="Export CSV">📄 CSV</button>'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvExportExcel(\'' + cid + '\')" title="Export roster to Excel" aria-label="Export Excel">📊 Excel</button>'
+            + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + cid + '\')" title="Delete class" aria-label="Delete class">🗑</button>'
             + '</div></div>'
-            + '<div class="tv-roster" id="tv-roster-' + c.id + '">Loading roster…</div>'
+            + '<div class="tv-roster" id="tv-roster-' + cid + '">Loading roster…</div>'
             + '<div class="tv-assign-section"><h5>Assignments</h5>'
-            + '<div id="tv-assign-' + c.id + '">Loading…</div>'
+            + '<div id="tv-assign-' + cid + '">Loading…</div>'
             + '<div class="tv-assign-form">'
-            + '<select id="tv-assign-track-' + c.id + '">' + trackOptionsHtml() + '</select>'
-            + '<input type="text" id="tv-assign-label-' + c.id + '" placeholder="e.g. Chapter 3: Derivatives">'
-            + '<input type="date" id="tv-assign-due-' + c.id + '" title="Due date (optional)">'
-            + '<button type="button" class="tv-assign-btn" onclick="window.tvCreateAssignment(\'' + c.id + '\')">Assign</button>'
+            + '<select id="tv-assign-track-' + cid + '">' + trackOptionsHtml() + '</select>'
+            + '<input type="text" id="tv-assign-label-' + cid + '" placeholder="e.g. Chapter 3: Derivatives">'
+            + '<input type="date" id="tv-assign-due-' + cid + '" title="Due date (optional)">'
+            + '<button type="button" class="tv-assign-btn" onclick="window.tvCreateAssignment(\'' + cid + '\')">Assign</button>'
             + '</div></div>'
             + '</div>';
         }).join('');
@@ -384,10 +419,7 @@
     });
 
     var csvContent = rows.map(function (row) {
-      return row.map(function (cell) {
-        var s = String(cell == null ? '' : cell).replace(/"/g, '""');
-        return '"' + s + '"';
-      }).join(',');
+      return row.map(safeCsvCell).join(',');
     }).join('\r\n');
 
     var blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -433,7 +465,9 @@
     roster.members.forEach(function (m, i) {
       var agg = roster.byUser[m.student_id] || { c: 0, t: 0 };
       var pct = agg.t ? Math.round(agg.c / agg.t * 100) : null;
-      var label = m.display_name ? escT(m.display_name) : ('Student ' + (i + 1));
+      var rawName = m.display_name ? String(m.display_name) : '';
+      if (/^[=+\-@\t\r]/.test(rawName)) rawName = "'" + rawName;
+      var label = rawName ? escT(rawName) : ('Student ' + (i + 1));
       var lastMs = roster.lastActiveByUser[m.student_id];
       var lastStr = lastMs ? timeAgo(lastMs) : '—';
       var visited = (roster.visitsByUser[m.student_id] || []).map(function (v) {
@@ -494,12 +528,14 @@
         .then(function (cr) {
           var doneCount = {};
           (cr.data || []).forEach(function (row) { doneCount[row.assignment_id] = (doneCount[row.assignment_id] || 0) + 1; });
+          var cid = safeId(classId);
           el.innerHTML = '<ul class="tv-assign-list">' + assignments.map(function (a) {
+            var aid = safeId(a.id);
             var n = doneCount[a.id] || 0;
             var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
             return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
               + escT(a.label) + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>'
-              + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + a.id + '\',\'' + classId + '\')" title="Delete assignment" aria-label="Delete assignment">🗑</button></li>';
+              + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + aid + '\',\'' + cid + '\')" title="Delete assignment" aria-label="Delete assignment">🗑</button></li>';
           }).join('') + '</ul>';
         });
     });
@@ -552,15 +588,16 @@
             var assigns = (m.classes && m.classes.assignments) || [];
             var assignHtml = assigns.length
               ? '<ul class="tv-assign-list">' + assigns.map(function (a) {
+                  var aid = safeId(a.id);
                   var done = !!doneSet[a.id];
                   var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
                   return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
                     + escT(a.label) + due
-                    + '<button type="button" class="' + (done ? 'tv-done tv-done-yes' : 'tv-done') + '" onclick="window.tvToggleCompletion(\'' + a.id + '\',' + (!done) + ',this)">' + (done ? '✓ Done' : 'Mark done') + '</button></li>';
+                    + '<button type="button" class="' + (done ? 'tv-done tv-done-yes' : 'tv-done') + '" onclick="window.tvToggleCompletion(\'' + aid + '\',' + (!done) + ',this)">' + (done ? '✓ Done' : 'Mark done') + '</button></li>';
                 }).join('') + '</ul>'
               : '';
             return '<div class="tv-joined-row"><span>' + escT(cname) + '</span>'
-              + '<button class="tv-leave" onclick="window.tvLeaveClass(\'' + m.class_id + '\')">Leave</button></div>' + assignHtml;
+              + '<button class="tv-leave" onclick="window.tvLeaveClass(\'' + safeId(m.class_id) + '\')">Leave</button></div>' + assignHtml;
           }).join('');
         });
       });

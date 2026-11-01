@@ -11,7 +11,7 @@
         "kind": "text",
         "body": {
           "en": "<p>A scalar-valued function of several variables \\( f: D \\subseteq \\mathbb{R}^n \\to \\mathbb{R} \\) maps geometric coordinate points to real numbers — modeling physical quantities such as gravitational potential, atmospheric temperature fields, or economic utility landscapes. While single-variable calculus considers motion along a one-dimensional line, multivariable calculus reveals how a multidimensional surface tilts, curves, and deforms in every conceivable direction. The foundational building blocks of this domain are <strong>coordinate traces</strong>, <strong>multivariable limits</strong>, <strong>partial derivatives</strong>, and the rigorous standard of <strong>Fréchet differentiability</strong>.</p>",
-          "ar": "<p>A scalar-valued الدالة of several المتغيرات \\( f: D \\subseteq \\mathbb{R}^n \\to \\mathbb{R} \\) maps geometric الإحداثي points to real numbers — modeling physical quantities such as gravitational potential, atmospheric temperature fields, or economic utility landscapes. While single-المتغير التفاضل والتكامل considers motion along a one-dimensional line, multivariable التفاضل والتكامل reveals how a multidimensional surface tilts, curves, and deforms in every conceivable direction. The foundational building blocks of this المجال are <strong>coordinate traces</strong>, <strong>multivariable limits</strong>, <strong>partial derivatives</strong>, and the rigorous standard of <strong>Fréchet differentiability</strong>.</p>"
+          "ar": null
         }
       },
       {
@@ -62,11 +62,11 @@
         "style": "def",
         "label": {
           "en": "● Level 1 Foundation — Definition 1.1: Functions, Domains & Limits along Paths",
-          "ar": "● Level 1 Foundation — تعريف 1.1: الدوال, Domains & النهايات along Paths"
+          "ar": null
         },
         "body": {
           "en": "<p>A function \\( f: D \\to \\mathbb{R} \\) with domain \\( D \\subseteq \\mathbb{R}^2 \\) assigns a unique real number \\( f(x, y) \\) to each ordered pair in \\( D \\). Its <strong>graph</strong> is the surface \\( S = \\{ (x, y, z) \\in \\mathbb{R}^3 : z = f(x, y), (x, y) \\in D \\} \\).</p><p><strong>The Two-Path Test for Non-Existence of Limits:</strong> We write \\( \\lim_{(x,y) \\to (a,b)} f(x,y) = L \\) if for every \\( \\varepsilon > 0 \\), there exists \\( \\delta > 0 \\) such that \\( 0 < \\sqrt{(x-a)^2 + (y-b)^2} < \\delta \\implies |f(x,y) - L| < \\varepsilon \\). Unlike single-variable limits where \\( x \\) can only approach \\( a \\) from two directions (left and right), in \\( \\mathbb{R}^2 \\) there are infinitely many trajectories approaching \\( (a, b) \\).</p><p><strong>Theorem (Two-Path Test):</strong> If \\( f(x, y) \\) approaches two different values along two distinct paths approaching \\( (a, b) \\), or if the limit along any single path depends on a direction parameter (such as slope \\( m \\)), then: \\[ \\lim_{(x,y) \\to (a,b)} f(x,y) \\quad \\text{does not exist (DNE)}. \\]</p>",
-          "ar": "<p>A الدالة \\( f: D \\to \\mathbb{R} \\) with المجال \\( D \\subseteq \\mathbb{R}^2 \\) assigns a unique real number \\( f(x, y) \\) to each ordered pair in \\( D \\). Its <strong>graph</strong> is the surface \\( S = \\{ (x, y, z) \\in \\mathbb{R}^3 : z = f(x, y), (x, y) \\in D \\} \\).</p><p><strong>The Two-Path Test for Non-Existence of النهايات:</strong> We write \\( \\lim_{(x,y) \\to (a,b)} f(x,y) = L \\) if for every \\( \\varepsilon > 0 \\), there exists \\( \\delta > 0 \\) such that \\( 0 < \\sqrt{(x-a)^2 + (y-b)^2} < \\delta \\implies |f(x,y) - L| < \\varepsilon \\). Unlike single-المتغير النهايات حيث \\( x \\) can only approach \\( a \\) from two directions (left and right), in \\( \\mathbb{R}^2 \\) there are infinitely many trajectories approaching \\( (a, b) \\).</p><p><strong>Theorem (Two-Path Test):</strong> If \\( f(x, y) \\) approaches two different values along two distinct paths approaching \\( (a, b) \\), or if the النهاية along any single path depends on a direction المعامل (such as الميل \\( m \\)), then: \\[ \\lim_{(x,y) \\to (a,b)} f(x,y) \\quad \\text{does not exist (DNE)}. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -121,7 +121,7 @@
         },
         "body": {
           "en": "<p>Fixing \\( y = b \\) restricts the surface \\( z = f(x, y) \\) to the vertical plane \\( y = b \\), generating the 1D trace curve \\( C_1: z = f(x, b) \\). The slope of the tangent line to \\( C_1 \\) at \\( x = a \\) is the <strong>partial derivative with respect to \\( x \\)</strong>:</p>\\[ f_x(a, b) = \\frac{\\partial f}{\\partial x}(a, b) = \\lim_{h \\to 0} \\frac{f(a+h, b) - f(a, b)}{h}. \\]<p>Similarly, fixing \\( x = a \\) yields the trace curve \\( C_2: z = f(a, y) \\) in the plane \\( x = a \\), whose slope at \\( y = b \\) is the <strong>partial derivative with respect to \\( y \\)</strong>:</p>\\[ f_y(a, b) = \\frac{\\partial f}{\\partial y}(a, b) = \\lim_{k \\to 0} \\frac{f(a, b+k) - f(a, b)}{k}. \\]<p><strong>Operational Rule:</strong> To compute \\( \\frac{\\partial f}{\\partial x} \\), treat \\( y \\) as a constant and differentiate with respect to \\( x \\) using standard single-variable calculus rules. To compute \\( \\frac{\\partial f}{\\partial y} \\), treat \\( x \\) as a constant.</p>",
-          "ar": "<p>Fixing \\( y = b \\) restricts the surface \\( z = f(x, y) \\) to the vertical plane \\( y = b \\), generating the 1D trace curve \\( C_1: z = f(x, b) \\). The الميل of the خط المماس to \\( C_1 \\) at \\( x = a \\) is the <strong>partial المشتقة بالنسبة إلى \\( x \\)</strong>:</p>\\[ f_x(a, b) = \\frac{\\partial f}{\\partial x}(a, b) = \\lim_{h \\to 0} \\frac{f(a+h, b) - f(a, b)}{h}. \\]<p>Similarly, fixing \\( x = a \\) yields the trace curve \\( C_2: z = f(a, y) \\) in the plane \\( x = a \\), whose الميل at \\( y = b \\) is the <strong>partial المشتقة بالنسبة إلى \\( y \\)</strong>:</p>\\[ f_y(a, b) = \\frac{\\partial f}{\\partial y}(a, b) = \\lim_{k \\to 0} \\frac{f(a, b+k) - f(a, b)}{k}. \\]<p><strong>Operational Rule:</strong> To compute \\( \\frac{\\partial f}{\\partial x} \\), treat \\( y \\) as a الثابت and differentiate بالنسبة إلى \\( x \\) using standard single-المتغير التفاضل والتكامل rules. To compute \\( \\frac{\\partial f}{\\partial y} \\), treat \\( x \\) as a الثابت.</p>"
+          "ar": null
         }
       },
       {
@@ -133,7 +133,7 @@
         "canvasId": "mvcSliceCanvas",
         "ariaLabel": {
           "en": "A slice of a surface at fixed y, with the tangent line showing the partial derivative",
-          "ar": "A slice of a surface at fixed y, with the خط المماس showing the partial المشتقة"
+          "ar": null
         },
         "canvas3d": {
           "btnId": "mvcSlice3dBtn",
@@ -142,7 +142,7 @@
           "btnLabel": "🧊 View the full surface in 3D",
           "ariaLabel": {
             "en": "Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate.",
-            "ar": "Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the خط المماس at the marked point. اسحب للتدوير."
+            "ar": null
           }
         },
         "dataPanel": {
@@ -152,7 +152,7 @@
           "rowsId": "mvcSliceDataRows",
           "caption": {
             "en": "Sampled points on the slice \\(g(x) = f(x, c)\\) and the tangent line at \\(x_{0}\\)",
-            "ar": "Sampled points on the slice \\(g(x) = f(x, c)\\) and the خط المماس at \\(x_{0}\\)"
+            "ar": null
           },
           "columns": [
             {
@@ -209,7 +209,7 @@
         ],
         "note": {
           "en": "\\(f(x, y) = 5 - 0\\).\\(3x^{2} - 0\\).\\(2y^{2} + 0.1xy\\). Fixing \\(y = c\\) gives the trace \\(g(x) = f(x, c)\\) from Definition 1.1; its slope at \\(x = 1\\) is the partial \\(f_{x}(1, c)\\) from Definition 1.2, and it shifts as \\(c\\) moves.",
-          "ar": "\\(f(x, y) = 5 - 0\\).\\(3x^{2} - 0\\).\\(2y^{2} + 0.1xy\\). Fixing \\(y = c\\) gives the trace \\(g(x) = f(x, c)\\) from تعريف 1.1; its الميل at \\(x = 1\\) is the partial \\(f_{x}(1, c)\\) from تعريف 1.2, and it shifts as \\(c\\) moves."
+          "ar": null
         }
       },
       {
@@ -221,7 +221,7 @@
         },
         "body": {
           "en": "<p>Evaluate \\( \\lim_{(x,y) \\to (0,0)} \\frac{2x^2 y}{x^4 + y^2} \\) or prove that it does not exist.</p><p><strong>Step 1: Test straight lines \\( y = mx \\):</strong> \\[ \\lim_{x \\to 0} \\frac{2x^2(mx)}{x^4 + (mx)^2} = \\lim_{x \\to 0} \\frac{2mx^3}{x^2(x^2 + m^2)} = \\lim_{x \\to 0} \\frac{2mx}{x^2 + m^2} = \\frac{0}{m^2} = 0 \\quad (\\text{for } m \\neq 0). \\] Along the coordinate axes \\( x = 0 \\) and \\( y = 0 \\), the value is also identically 0. A student might prematurely conclude the limit is 0!</p><p><strong>Step 2: Test parabolic paths \\( y = kx^2 \\):</strong><br>Notice that in the denominator, \\( x^4 \\) and \\( y^2 \\) have matching degree when \\( y \\propto x^2 \\). Choose the path \\( y = kx^2 \\): \\[ \\lim_{x \\to 0} \\frac{2x^2(kx^2)}{x^4 + (kx^2)^2} = \\lim_{x \\to 0} \\frac{2kx^4}{x^4(1 + k^2)} = \\frac{2k}{1 + k^2}. \\] Along \\( y = x^2 \\) (\\( k = 1 \\)), the limit is \\( \\frac{2}{2} = 1 \\). Along \\( y = -x^2 \\) (\\( k = -1 \\)), the limit is \\( \\frac{-2}{2} = -1 \\).</p><p><strong>Conclusion:</strong> Because the limit depends on the choice of path \\( k \\), by the Two-Path Test, the limit <strong>does not exist (DNE)</strong>.</p>",
-          "ar": "<p>Evaluate \\( \\lim_{(x,y) \\to (0,0)} \\frac{2x^2 y}{x^4 + y^2} \\) or prove that it does not exist.</p><p><strong>Step 1: Test straight lines \\( y = mx \\):</strong> \\[ \\lim_{x \\to 0} \\frac{2x^2(mx)}{x^4 + (mx)^2} = \\lim_{x \\to 0} \\frac{2mx^3}{x^2(x^2 + m^2)} = \\lim_{x \\to 0} \\frac{2mx}{x^2 + m^2} = \\frac{0}{m^2} = 0 \\quad (\\text{for } m \\neq 0). \\] Along the الإحداثي axes \\( x = 0 \\) and \\( y = 0 \\), the value is also identically 0. A student might prematurely conclude the النهاية is 0!</p><p><strong>Step 2: Test parabolic paths \\( y = kx^2 \\):</strong><br>Notice that in the denominator, \\( x^4 \\) and \\( y^2 \\) have matching degree عندما \\( y \\propto x^2 \\). Choose the path \\( y = kx^2 \\): \\[ \\lim_{x \\to 0} \\frac{2x^2(kx^2)}{x^4 + (kx^2)^2} = \\lim_{x \\to 0} \\frac{2kx^4}{x^4(1 + k^2)} = \\frac{2k}{1 + k^2}. \\] Along \\( y = x^2 \\) (\\( k = 1 \\)), the النهاية is \\( \\frac{2}{2} = 1 \\). Along \\( y = -x^2 \\) (\\( k = -1 \\)), the النهاية is \\( \\frac{-2}{2} = -1 \\).</p><p><strong>Conclusion:</strong> Because the النهاية depends on the choice of path \\( k \\), by the Two-Path Test, the النهاية <strong>does not exist (DNE)</strong>.</p>"
+          "ar": null
         }
       },
       {
@@ -229,11 +229,11 @@
         "style": "def",
         "label": {
           "en": "● Level 2 Analytical Application — Definition 1.3: Tangent Planes & Total Differentials",
-          "ar": "● Level 2 Analytical Application — تعريف 1.3: Tangent Planes & Total Differentials"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Tangent Plane to a Surface:</strong> Let \\( z = f(x, y) \\) have continuous partial derivatives at \\( (x_0, y_0) \\). The tangent vectors to the coordinate traces at \\( P_0(x_0, y_0, z_0) \\) (where \\( z_0 = f(x_0, y_0) \\)) are \\( \\mathbf{T}_x = \\langle 1, 0, f_x(x_0, y_0) \\rangle \\) and \\( \\mathbf{T}_y = \\langle 0, 1, f_y(x_0, y_0) \\rangle \\). Their cross product produces the normal vector:</p>\\[ \\mathbf{n} = \\mathbf{T}_x \\times \\mathbf{T}_y = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 1 & 0 & f_x \\\\ 0 & 1 & f_y \\end{vmatrix} = \\langle -f_x(x_0, y_0), -f_y(x_0, y_0), 1 \\rangle. \\]<p>The equation of the <strong>tangent plane</strong> to \\( z = f(x, y) \\) at \\( (x_0, y_0, z_0) \\) is: \\[ z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0). \\]</p><p><strong>The Linear Approximation & Total Differential:</strong> The linear approximation (tangent plane function) is \\( L(x, y) = f(x_0, y_0) + f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\). For infinitesimal increments \\( dx = \\Delta x \\) and \\( dy = \\Delta y \\), the <strong>total differential</strong> is: \\[ dz = f_x(x, y) dx + f_y(x, y) dy. \\]</p>",
-          "ar": "<p><strong>Tangent Plane to a Surface:</strong> Let \\( z = f(x, y) \\) have continuous partial المشتقات at \\( (x_0, y_0) \\). The tangent المتجهات to the الإحداثي traces at \\( P_0(x_0, y_0, z_0) \\) (حيث \\( z_0 = f(x_0, y_0) \\)) are \\( \\mathbf{T}_x = \\langle 1, 0, f_x(x_0, y_0) \\rangle \\) and \\( \\mathbf{T}_y = \\langle 0, 1, f_y(x_0, y_0) \\rangle \\). Their cross product produces the normal المتجه:</p>\\[ \\mathbf{n} = \\mathbf{T}_x \\times \\mathbf{T}_y = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 1 & 0 & f_x \\\\ 0 & 1 & f_y \\end{vmatrix} = \\langle -f_x(x_0, y_0), -f_y(x_0, y_0), 1 \\rangle. \\]<p>The المعادلة of the <strong>tangent plane</strong> to \\( z = f(x, y) \\) at \\( (x_0, y_0, z_0) \\) is: \\[ z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0). \\]</p><p><strong>The Linear Approximation & Total Differential:</strong> The linear approximation (المستوى المماس الدالة) is \\( L(x, y) = f(x_0, y_0) + f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\). For infinitesimal increments \\( dx = \\Delta x \\) and \\( dy = \\Delta y \\), the <strong>total differential</strong> is: \\[ dz = f_x(x, y) dx + f_y(x, y) dy. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -241,11 +241,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 2 Analytical Application — Theorem 1.1: Clairaut's Theorem (Schwarz's Theorem)",
-          "ar": "▲ Level 2 Analytical Application — مبرهنة 1.1: Clairaut's مبرهنة (Schwarz's مبرهنة)"
+          "ar": null
         },
         "body": {
           "en": "<p>Let \\( f: D \\to \\mathbb{R} \\) with open domain \\( D \\subseteq \\mathbb{R}^2 \\). If the mixed second-order partial derivatives \\( f_{xy} = \\frac{\\partial^2 f}{\\partial y \\partial x} \\) and \\( f_{yx} = \\frac{\\partial^2 f}{\\partial x \\partial y} \\) both exist on \\( D \\) and are <strong>continuous</strong> at \\( (a, b) \\in D \\), then: \\[ f_{xy}(a, b) = f_{yx}(a, b). \\]</p>",
-          "ar": "<p>Let \\( f: D \\to \\mathbb{R} \\) with open المجال \\( D \\subseteq \\mathbb{R}^2 \\). If the mixed second-order partial المشتقات \\( f_{xy} = \\frac{\\partial^2 f}{\\partial y \\partial x} \\) and \\( f_{yx} = \\frac{\\partial^2 f}{\\partial x \\partial y} \\) both exist on \\( D \\) and are <strong>continuous</strong> at \\( (a, b) \\in D \\), then: \\[ f_{xy}(a, b) = f_{yx}(a, b). \\]</p>"
+          "ar": null
         }
       },
       {
@@ -257,7 +257,7 @@
         },
         "body": {
           "en": "<p>Fix \\( (a, b) \\in D \\). For small nonzero increments \\( h, k \\) such that the rectangle \\( [a, a+h] \\times [b, b+k] \\subset D \\), define the second-order difference quotient: \\[ \\Delta(h, k) = f(a+h, b+k) - f(a+h, b) - f(a, b+k) + f(a, b). \\]</p><p><strong>Perspective 1 (\\( x \\) then \\( y \\)):</strong> Define the auxiliary single-variable function \\( g(t) = f(t, b+k) - f(t, b) \\). Then: \\[ \\Delta(h, k) = g(a+h) - g(a). \\] Since \\( f_x \\) exists, \\( g \\) is differentiable with derivative \\( g'(t) = f_x(t, b+k) - f_x(t, b) \\). By the Mean Value Theorem on \\( [a, a+h] \\), there exists \\( c_1 \\in (a, a+h) \\) such that: \\[ \\Delta(h, k) = h \\, g'(c_1) = h \\left[ f_x(c_1, b+k) - f_x(c_1, b) \\right]. \\] Now define \\( \\phi(s) = f_x(c_1, s) \\). Applying the Mean Value Theorem to \\( \\phi \\) on \\( [b, b+k] \\), there exists \\( d_1 \\in (b, b+k) \\) such that: \\[ f_x(c_1, b+k) - f_x(c_1, b) = k \\, \\phi'(d_1) = k \\, f_{xy}(c_1, d_1). \\] Substituting back: \\[ \\Delta(h, k) = h k \\, f_{xy}(c_1, d_1) \\implies \\frac{\\Delta(h, k)}{h k} = f_{xy}(c_1, d_1). \\]</p><p><strong>Perspective 2 (\\( y \\) then \\( x \\)):</strong> Symmetrically, define \\( G(s) = f(a+h, s) - f(a, s) \\). Then \\( \\Delta(h, k) = G(b+k) - G(b) \\). Applying the Mean Value Theorem first to \\( G \\) on \\( [b, b+k] \\) (yielding \\( d_2 \\in (b, b+k) \\)) and then to \\( t \\mapsto f_y(t, d_2) \\) on \\( [a, a+h] \\) (yielding \\( c_2 \\in (a, a+h) \\)): \\[ \\Delta(h, k) = h k \\, f_{yx}(c_2, d_2) \\implies \\frac{\\Delta(h, k)}{h k} = f_{yx}(c_2, d_2). \\]</p><p><strong>Equating perspectives and taking limits:</strong> Since both expressions equal \\( \\frac{\\Delta(h, k)}{h k} \\): \\[ f_{xy}(c_1, d_1) = f_{yx}(c_2, d_2). \\] As \\( (h, k) \\to (0, 0) \\), \\( (c_1, d_1) \\to (a, b) \\) and \\( (c_2, d_2) \\to (a, b) \\). By continuity of \\( f_{xy} \\) and \\( f_{yx} \\) at \\( (a, b) \\): \\[ f_{xy}(a, b) = \\lim_{(h,k) \\to (0,0)} f_{xy}(c_1, d_1) = \\lim_{(h,k) \\to (0,0)} f_{yx}(c_2, d_2) = f_{yx}(a, b). \\quad \\blacksquare \\]</p>",
-          "ar": "<p>Fix \\( (a, b) \\in D \\). For small nonzero increments \\( h, k \\) such that the rectangle \\( [a, a+h] \\times [b, b+k] \\subset D \\), define the second-order difference quotient: \\[ \\Delta(h, k) = f(a+h, b+k) - f(a+h, b) - f(a, b+k) + f(a, b). \\]</p><p><strong>Perspective 1 (\\( x \\) then \\( y \\)):</strong> Define the auxiliary single-المتغير الدالة \\( g(t) = f(t, b+k) - f(t, b) \\). Then: \\[ \\Delta(h, k) = g(a+h) - g(a). \\] Since \\( f_x \\) exists, \\( g \\) is differentiable with المشتقة \\( g'(t) = f_x(t, b+k) - f_x(t, b) \\). By the Mean Value مبرهنة on \\( [a, a+h] \\), there exists \\( c_1 \\in (a, a+h) \\) such that: \\[ \\Delta(h, k) = h \\, g'(c_1) = h \\left[ f_x(c_1, b+k) - f_x(c_1, b) \\right]. \\] Now define \\( \\phi(s) = f_x(c_1, s) \\). Applying the Mean Value مبرهنة to \\( \\phi \\) on \\( [b, b+k] \\), there exists \\( d_1 \\in (b, b+k) \\) such that: \\[ f_x(c_1, b+k) - f_x(c_1, b) = k \\, \\phi'(d_1) = k \\, f_{xy}(c_1, d_1). \\] Substituting back: \\[ \\Delta(h, k) = h k \\, f_{xy}(c_1, d_1) \\implies \\frac{\\Delta(h, k)}{h k} = f_{xy}(c_1, d_1). \\]</p><p><strong>Perspective 2 (\\( y \\) then \\( x \\)):</strong> Symmetrically, define \\( G(s) = f(a+h, s) - f(a, s) \\). Then \\( \\Delta(h, k) = G(b+k) - G(b) \\). Applying the Mean Value مبرهنة first to \\( G \\) on \\( [b, b+k] \\) (yielding \\( d_2 \\in (b, b+k) \\)) and then to \\( t \\mapsto f_y(t, d_2) \\) on \\( [a, a+h] \\) (yielding \\( c_2 \\in (a, a+h) \\)): \\[ \\Delta(h, k) = h k \\, f_{yx}(c_2, d_2) \\implies \\frac{\\Delta(h, k)}{h k} = f_{yx}(c_2, d_2). \\]</p><p><strong>Equating perspectives and taking النهايات:</strong> Since both expressions equal \\( \\frac{\\Delta(h, k)}{h k} \\): \\[ f_{xy}(c_1, d_1) = f_{yx}(c_2, d_2). \\] As \\( (h, k) \\to (0, 0) \\), \\( (c_1, d_1) \\to (a, b) \\) and \\( (c_2, d_2) \\to (a, b) \\). By continuity of \\( f_{xy} \\) and \\( f_{yx} \\) at \\( (a, b) \\): \\[ f_{xy}(a, b) = \\lim_{(h,k) \\to (0,0)} f_{xy}(c_1, d_1) = \\lim_{(h,k) \\to (0,0)} f_{yx}(c_2, d_2) = f_{yx}(a, b). \\quad \\blacksquare \\]</p>"
+          "ar": null
         }
       },
       {
@@ -265,11 +265,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 1.B (Level 2) — Tangent Plane & Error Propagation via Differentials",
-          "ar": "مثال محلول 1.B (Level 2) — المستوى المماس & Error Propagation via Differentials"
+          "ar": null
         },
         "body": {
           "en": "<p>A closed cylindrical storage tank has nominal measured radius \\( r = 2.0 \\text{ m} \\) and height \\( h = 5.0 \\text{ m} \\). The measurement errors are bounded by \\( |\\Delta r| \\le 0.02 \\text{ m} \\) and \\( |\\Delta h| \\le 0.05 \\text{ m} \\).</p><ol><li>Find the tangent plane linear approximation for the volume \\( V(r, h) = \\pi r^2 h \\) at \\( (2, 5) \\).</li><li>Use the total differential \\( dV \\) to estimate the maximum propagated error in the calculated volume, and compute the relative percentage error.</li></ol><p><strong>Step 1: Compute partial derivatives and nominal volume:</strong> \\[ V_0 = V(2, 5) = \\pi (2^2)(5) = 20\\pi \\approx 62.832 \\text{ m}^3. \\] \\[ \\frac{\\partial V}{\\partial r} = 2\\pi r h \\implies \\frac{\\partial V}{\\partial r}(2, 5) = 2\\pi(2)(5) = 20\\pi. \\] \\[ \\frac{\\partial V}{\\partial h} = \\pi r^2 \\implies \\frac{\\partial V}{\\partial h}(2, 5) = \\pi(2^2) = 4\\pi. \\] Tangent plane: \\( V - 20\\pi = 20\\pi(r - 2) + 4\\pi(h - 5) \\).</p><p><strong>Step 2: Total differential & maximum error bound:</strong> \\[ dV = \\frac{\\partial V}{\\partial r} dr + \\frac{\\partial V}{\\partial h} dh = (20\\pi) dr + (4\\pi) dh. \\] Applying the triangle inequality for worst-case error: \\[ |\\Delta V| \\approx |dV| \\le 20\\pi |\\Delta r| + 4\\pi |\\Delta h| = 20\\pi(0.02) + 4\\pi(0.05) = 0.4\\pi + 0.2\\pi = 0.6\\pi \\approx 1.885 \\text{ m}^3. \\]</p><p><strong>Step 3: Relative and percentage error:</strong> \\[ \\frac{|dV|}{V_0} = \\frac{0.6\\pi}{20\\pi} = \\frac{0.6}{20} = 0.03 = \\mathbf{3\\%}. \\] (Notice that radius error contributes twice as heavily as height error due to the quadratic exponent \\( r^2 \\)!)</p>",
-          "ar": "<p>A closed cylindrical storage tank has nominal measured نصف القطر \\( r = 2.0 \\text{ m} \\) and height \\( h = 5.0 \\text{ m} \\). The measurement errors are bounded by \\( |\\Delta r| \\le 0.02 \\text{ m} \\) and \\( |\\Delta h| \\le 0.05 \\text{ m} \\).</p><ol><li>Find the المستوى المماس linear approximation for the الحجم \\( V(r, h) = \\pi r^2 h \\) at \\( (2, 5) \\).</li><li>Use the total differential \\( dV \\) to estimate the maximum propagated error in the calculated الحجم, and compute the relative percentage error.</li></ol><p><strong>Step 1: Compute partial المشتقات and nominal الحجم:</strong> \\[ V_0 = V(2, 5) = \\pi (2^2)(5) = 20\\pi \\approx 62.832 \\text{ m}^3. \\] \\[ \\frac{\\partial V}{\\partial r} = 2\\pi r h \\implies \\frac{\\partial V}{\\partial r}(2, 5) = 2\\pi(2)(5) = 20\\pi. \\] \\[ \\frac{\\partial V}{\\partial h} = \\pi r^2 \\implies \\frac{\\partial V}{\\partial h}(2, 5) = \\pi(2^2) = 4\\pi. \\] المستوى المماس: \\( V - 20\\pi = 20\\pi(r - 2) + 4\\pi(h - 5) \\).</p><p><strong>Step 2: Total differential & maximum error bound:</strong> \\[ dV = \\frac{\\partial V}{\\partial r} dr + \\frac{\\partial V}{\\partial h} dh = (20\\pi) dr + (4\\pi) dh. \\] Applying the المثلث المتباينة for worst-case error: \\[ |\\Delta V| \\approx |dV| \\le 20\\pi |\\Delta r| + 4\\pi |\\Delta h| = 20\\pi(0.02) + 4\\pi(0.05) = 0.4\\pi + 0.2\\pi = 0.6\\pi \\approx 1.885 \\text{ m}^3. \\]</p><p><strong>Step 3: Relative and percentage error:</strong> \\[ \\frac{|dV|}{V_0} = \\frac{0.6\\pi}{20\\pi} = \\frac{0.6}{20} = 0.03 = \\mathbf{3\\%}. \\] (Notice that نصف القطر error contributes twice as heavily as height error due to the quadratic exponent \\( r^2 \\)!)</p>"
+          "ar": null
         }
       },
       {
@@ -277,11 +277,11 @@
         "style": "def",
         "label": {
           "en": "● Level 3 University Rigor — Definition 1.4: Fréchet Differentiability in ℝⁿ",
-          "ar": "● Level 3 University Rigor — تعريف 1.4: Fréchet Differentiability in ℝⁿ"
+          "ar": null
         },
         "body": {
           "en": "<p>In single-variable calculus, existence of \\( f'(x) \\) is equivalent to differentiability. In multivariable calculus, <strong>the existence of all partial derivatives does NOT imply that a function is differentiable</strong> (or even continuous)!</p><p><strong>Definition (Differentiability):</strong> Let \\( f: D \\subseteq \\mathbb{R}^2 \\to \\mathbb{R} \\) and let \\( (a, b) \\) be an interior point of \\( D \\). We say \\( f \\) is <strong>differentiable at \\( (a, b) \\)</strong> if both partial derivatives \\( f_x(a, b) \\) and \\( f_y(a, b) \\) exist, and: \\[ \\lim_{(\\Delta x, \\Delta y) \\to (0, 0)} \\frac{f(a+\\Delta x, b+\\Delta y) - f(a, b) - \\left[ f_x(a, b)\\Delta x + f_y(a, b)\\Delta y \\right]}{\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}} = 0. \\] Equivalently, the error \\( E(\\Delta x, \\Delta y) = f(a+\\Delta x, b+\\Delta y) - L(a+\\Delta x, b+\\Delta y) \\) satisfies \\( E(\\Delta x, \\Delta y) = o(\\|\\Delta\\mathbf{x}\\|) \\) as \\( \\|\\Delta\\mathbf{x}\\| \\to 0 \\).</p>",
-          "ar": "<p>In single-المتغير التفاضل والتكامل, existence of \\( f'(x) \\) is equivalent to differentiability. In multivariable التفاضل والتكامل, <strong>the existence of all partial المشتقات does NOT imply that a الدالة is differentiable</strong> (or even continuous)!</p><p><strong>Definition (Differentiability):</strong> Let \\( f: D \\subseteq \\mathbb{R}^2 \\to \\mathbb{R} \\) and let \\( (a, b) \\) be an interior point of \\( D \\). We say \\( f \\) is <strong>differentiable at \\( (a, b) \\)</strong> if both partial المشتقات \\( f_x(a, b) \\) and \\( f_y(a, b) \\) exist, and: \\[ \\lim_{(\\Delta x, \\Delta y) \\to (0, 0)} \\frac{f(a+\\Delta x, b+\\Delta y) - f(a, b) - \\left[ f_x(a, b)\\Delta x + f_y(a, b)\\Delta y \\right]}{\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}} = 0. \\] Equivalently, the error \\( E(\\Delta x, \\Delta y) = f(a+\\Delta x, b+\\Delta y) - L(a+\\Delta x, b+\\Delta y) \\) satisfies \\( E(\\Delta x, \\Delta y) = o(\\|\\Delta\\mathbf{x}\\|) \\) as \\( \\|\\Delta\\mathbf{x}\\| \\to 0 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -289,11 +289,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 3 University Rigor — Theorem 1.2: The \\(C^{1}\\) Differentiability Criterion",
-          "ar": "▲ Level 3 University Rigor — مبرهنة 1.2: The \\(C^{1}\\) Differentiability Criterion"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Theorem:</strong> If the first-order partial derivatives \\( f_x \\) and \\( f_y \\) exist in an open neighborhood of \\( (a, b) \\) and are <strong>continuous at \\( (a, b) \\)</strong> (i.e., \\( f \\in C^1 \\)), then \\( f \\) is <strong>differentiable</strong> at \\( (a, b) \\).</p><p><strong>Hierarchy of Smoothness:</strong> \\[ C^1 \\implies \\text{Differentiable} \\implies \\text{Continuous} \\implies \\text{Partial Derivatives Exist (False! Partials do not imply continuity)}. \\]</p>",
-          "ar": "<p><strong>Theorem:</strong> If the first-order partial المشتقات \\( f_x \\) and \\( f_y \\) exist in an open neighborhood of \\( (a, b) \\) and are <strong>continuous at \\( (a, b) \\)</strong> (i.e., \\( f \\in C^1 \\)), then \\( f \\) is <strong>differentiable</strong> at \\( (a, b) \\).</p><p><strong>Hierarchy of Smoothness:</strong> \\[ C^1 \\implies \\text{Differentiable} \\implies \\text{Continuous} \\implies \\text{Partial Derivatives Exist (False! Partials do not imply continuity)}. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -301,11 +301,11 @@
         "style": "pf",
         "label": {
           "en": "Proof of the \\(C^{1}\\) Differentiability Criterion",
-          "ar": "برهان of the \\(C^{1}\\) Differentiability Criterion"
+          "ar": null
         },
         "body": {
           "en": "<p>Let \\( \\Delta z = f(a+\\Delta x, b+\\Delta y) - f(a, b) \\). Decompose this increment into two single-variable steps: \\[ \\Delta z = \\left[ f(a+\\Delta x, b+\\Delta y) - f(a, b+\\Delta y) \\right] + \\left[ f(a, b+\\Delta y) - f(a, b) \\right]. \\] Applying the single-variable Mean Value Theorem to each bracketed difference:</p><ol><li>To \\( x \\mapsto f(x, b+\\Delta y) \\) on \\( [a, a+\\Delta x] \\): there exists \\( c_1 \\in (a, a+\\Delta x) \\) such that: \\[ f(a+\\Delta x, b+\\Delta y) - f(a, b+\\Delta y) = f_x(c_1, b+\\Delta y) \\Delta x. \\]</li><li>To \\( y \\mapsto f(a, y) \\) on \\( [b, b+\\Delta y] \\): there exists \\( c_2 \\in (b, b+\\Delta y) \\) such that: \\[ f(a, b+\\Delta y) - f(a, b) = f_y(a, c_2) \\Delta y. \\]</li></ol><p>Now rewrite: \\[ \\Delta z = f_x(a, b)\\Delta x + f_y(a, b)\\Delta y + \\varepsilon_1 \\Delta x + \\varepsilon_2 \\Delta y, \\] where \\( \\varepsilon_1 = f_x(c_1, b+\\Delta y) - f_x(a, b) \\) and \\( \\varepsilon_2 = f_y(a, c_2) - f_y(a, b) \\).</p><p>As \\( (\\Delta x, \\Delta y) \\to (0, 0) \\), \\( (c_1, b+\\Delta y) \\to (a, b) \\) and \\( (a, c_2) \\to (a, b) \\). Because \\( f_x \\) and \\( f_y \\) are continuous at \\( (a, b) \\), \\( \\lim_{(\\Delta x, \\Delta y) \\to (0, 0)} \\varepsilon_1 = 0 \\) and \\( \\lim_{(\\Delta x, \\Delta y) \\to (0, 0)} \\varepsilon_2 = 0 \\).</p><p>Dividing by \\( \\|(\\Delta x, \\Delta y)\\| = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\): \\[ \\left| \\frac{\\varepsilon_1 \\Delta x + \\varepsilon_2 \\Delta y}{\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}} \\right| \\le |\\varepsilon_1| \\frac{|\\Delta x|}{\\|\\Delta\\mathbf{x}\\|} + |\\varepsilon_2| \\frac{|\\Delta y|}{\\|\\Delta\\mathbf{x}\\|} \\le |\\varepsilon_1|(1) + |\\varepsilon_2|(1) \\to 0. \\] Thus the Fréchet differentiability limit is zero, proving \\( f \\) is differentiable at \\( (a, b) \\). \\( \\blacksquare \\)</p>",
-          "ar": "<p>Let \\( \\Delta z = f(a+\\Delta x, b+\\Delta y) - f(a, b) \\). Decompose this increment into two single-المتغير steps: \\[ \\Delta z = \\left[ f(a+\\Delta x, b+\\Delta y) - f(a, b+\\Delta y) \\right] + \\left[ f(a, b+\\Delta y) - f(a, b) \\right]. \\] Applying the single-المتغير Mean Value مبرهنة to each bracketed difference:</p><ol><li>To \\( x \\mapsto f(x, b+\\Delta y) \\) on \\( [a, a+\\Delta x] \\): there exists \\( c_1 \\in (a, a+\\Delta x) \\) such that: \\[ f(a+\\Delta x, b+\\Delta y) - f(a, b+\\Delta y) = f_x(c_1, b+\\Delta y) \\Delta x. \\]</li><li>To \\( y \\mapsto f(a, y) \\) on \\( [b, b+\\Delta y] \\): there exists \\( c_2 \\in (b, b+\\Delta y) \\) such that: \\[ f(a, b+\\Delta y) - f(a, b) = f_y(a, c_2) \\Delta y. \\]</li></ol><p>Now rewrite: \\[ \\Delta z = f_x(a, b)\\Delta x + f_y(a, b)\\Delta y + \\varepsilon_1 \\Delta x + \\varepsilon_2 \\Delta y, \\] حيث \\( \\varepsilon_1 = f_x(c_1, b+\\Delta y) - f_x(a, b) \\) and \\( \\varepsilon_2 = f_y(a, c_2) - f_y(a, b) \\).</p><p>As \\( (\\Delta x, \\Delta y) \\to (0, 0) \\), \\( (c_1, b+\\Delta y) \\to (a, b) \\) and \\( (a, c_2) \\to (a, b) \\). Because \\( f_x \\) and \\( f_y \\) are continuous at \\( (a, b) \\), \\( \\lim_{(\\Delta x, \\Delta y) \\to (0, 0)} \\varepsilon_1 = 0 \\) and \\( \\lim_{(\\Delta x, \\Delta y) \\to (0, 0)} \\varepsilon_2 = 0 \\).</p><p>Dividing by \\( \\|(\\Delta x, \\Delta y)\\| = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\): \\[ \\left| \\frac{\\varepsilon_1 \\Delta x + \\varepsilon_2 \\Delta y}{\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}} \\right| \\le |\\varepsilon_1| \\frac{|\\Delta x|}{\\|\\Delta\\mathbf{x}\\|} + |\\varepsilon_2| \\frac{|\\Delta y|}{\\|\\Delta\\mathbf{x}\\|} \\le |\\varepsilon_1|(1) + |\\varepsilon_2|(1) \\to 0. \\] وعليه the Fréchet differentiability النهاية is zero, proving \\( f \\) is differentiable at \\( (a, b) \\). \\( \\blacksquare \\)</p>"
+          "ar": null
         }
       },
       {
@@ -313,11 +313,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 1.C (Level 3) — Canonical Counterexample: Partials Exist, Yet Discontinuous",
-          "ar": "مثال محلول 1.C (Level 3) — Canonical Counterexample: Partials Exist, Yet Discontinuous"
+          "ar": null
         },
         "body": {
           "en": "<p>Consider the classic pathological function: \\[ f(x, y) = \\begin{cases} \\dfrac{xy}{x^2 + y^2}, & (x, y) \\neq (0, 0) \\\\ 0, & (x, y) = (0, 0). \\end{cases} \\]</p><ol><li>Compute the partial derivatives \\( f_x(0, 0) \\) and \\( f_y(0, 0) \\) directly from Definition 1.2.</li><li>Prove that \\( f \\) is discontinuous at \\( (0, 0) \\) and therefore <strong>not differentiable</strong> at the origin.</li></ol><p><strong>Step 1: Compute partials from the limit definition:</strong> \\[ f_x(0, 0) = \\lim_{h \\to 0} \\frac{f(h, 0) - f(0, 0)}{h} = \\lim_{h \\to 0} \\frac{\\frac{(h)(0)}{h^2 + 0^2} - 0}{h} = \\lim_{h \\to 0} \\frac{0}{h} = 0. \\] By symmetry: \\[ f_y(0, 0) = \\lim_{k \\to 0} \\frac{f(0, k) - f(0, 0)}{k} = \\lim_{k \\to 0} \\frac{0}{k} = 0. \\] Both partial derivatives exist cleanly and equal 0 at the origin!</p><p><strong>Step 2: Test continuity at the origin:</strong><br>Approach along the line \\( y = mx \\): \\[ \\lim_{x \\to 0} f(x, mx) = \\lim_{x \\to 0} \\frac{x(mx)}{x^2 + m^2 x^2} = \\frac{m}{1 + m^2}. \\] Along \\( y = x \\) (\\( m = 1 \\)), \\( f(x, x) = 1/2 \\). Along \\( y = -x \\) (\\( m = -1 \\)), \\( f(x, -x) = -1/2 \\). Along the axes, \\( f = 0 \\).<br>Since \\( \\lim_{(x,y) \\to (0,0)} f(x, y) \\) does not exist, \\( f \\) is <strong>discontinuous</strong> at \\( (0, 0) \\). Because differentiability implies continuity, \\( f \\) is <strong>not differentiable at the origin</strong> despite having well-defined partial derivatives there! (Why does this not violate Theorem 1.2? Because \\( f_x(x, y) \\) and \\( f_y(x, y) \\) are discontinuous at \\( (0, 0) \\).)</p>",
-          "ar": "<p>Consider the classic pathological الدالة: \\[ f(x, y) = \\begin{cases} \\dfrac{xy}{x^2 + y^2}, & (x, y) \\neq (0, 0) \\\\ 0, & (x, y) = (0, 0). \\end{cases} \\]</p><ol><li>Compute the partial المشتقات \\( f_x(0, 0) \\) and \\( f_y(0, 0) \\) directly from تعريف 1.2.</li><li>Prove that \\( f \\) is discontinuous at \\( (0, 0) \\) and وبالتالي <strong>not differentiable</strong> at the origin.</li></ol><p><strong>Step 1: Compute partials from the النهاية definition:</strong> \\[ f_x(0, 0) = \\lim_{h \\to 0} \\frac{f(h, 0) - f(0, 0)}{h} = \\lim_{h \\to 0} \\frac{\\frac{(h)(0)}{h^2 + 0^2} - 0}{h} = \\lim_{h \\to 0} \\frac{0}{h} = 0. \\] By symmetry: \\[ f_y(0, 0) = \\lim_{k \\to 0} \\frac{f(0, k) - f(0, 0)}{k} = \\lim_{k \\to 0} \\frac{0}{k} = 0. \\] Both partial المشتقات exist cleanly and equal 0 at the origin!</p><p><strong>Step 2: Test continuity at the origin:</strong><br>Approach along the line \\( y = mx \\): \\[ \\lim_{x \\to 0} f(x, mx) = \\lim_{x \\to 0} \\frac{x(mx)}{x^2 + m^2 x^2} = \\frac{m}{1 + m^2}. \\] Along \\( y = x \\) (\\( m = 1 \\)), \\( f(x, x) = 1/2 \\). Along \\( y = -x \\) (\\( m = -1 \\)), \\( f(x, -x) = -1/2 \\). Along the axes, \\( f = 0 \\).<br>Since \\( \\lim_{(x,y) \\to (0,0)} f(x, y) \\) does not exist, \\( f \\) is <strong>discontinuous</strong> at \\( (0, 0) \\). Because differentiability implies continuity, \\( f \\) is <strong>not differentiable at the origin</strong> despite having well-defined partial المشتقات there! (Why does this not violate مبرهنة 1.2? Because \\( f_x(x, y) \\) and \\( f_y(x, y) \\) are discontinuous at \\( (0, 0) \\).)</p>"
+          "ar": null
         }
       },
       {
@@ -329,7 +329,7 @@
         },
         "body": {
           "en": "<ul class=\"space-y-2\"><li><strong>The Straight-Line Limit Trap:</strong> Showing that \\( \\lim_{(x,y)\\to(0,0)} f(x,y) = L \\) along every straight line \\( y = mx \\) does <em>NOT</em> prove the limit exists! You must test degree-matching polynomial curves (such as parabolas \\( y = kx^2 \\)) or prove the limit rigorously using the Squeeze Theorem or polar coordinates (\\( x = r\\cos\\theta, y = r\\sin\\theta \\) with \\( r \\to 0 \\)).</li><li><strong>Existence of Partials ≠ Continuity:</strong> As shown in Worked Example 1.C, having both \\( f_x \\) and \\( f_y \\) defined at a point does NOT guarantee that the surface is continuous or smooth there. Differentiability requires the tangent plane to approximate the surface to first-order in <em>all</em> radial directions simultaneously.</li><li><strong>Treating Inactive Variables as Zero:</strong> When computing \\( \\frac{\\partial}{\\partial x}(3x^2 y^3) \\), novice students mistakenly substitute \\( y = 0 \\). The factor \\( y^3 \\) is a constant multiplier; the derivative is \\( 6x y^3 \\), never 0.</li><li><strong>Tangent Plane Normal Vector Sign:</strong> For \\( z = f(x, y) \\), the upward normal vector is \\( \\langle -f_x, -f_y, 1 \\rangle \\) and the downward normal is \\( \\langle f_x, f_y, -1 \\rangle \\). Writing \\( \\langle f_x, f_y, 1 \\rangle \\) has the wrong signs for both coordinate slopes.</li></ul>",
-          "ar": "<ul class=\"space-y-2\"><li><strong>The Straight-Line النهاية Trap:</strong> Showing that \\( \\lim_{(x,y)\\to(0,0)} f(x,y) = L \\) along every straight line \\( y = mx \\) does <em>NOT</em> prove the النهاية exists! You must test degree-matching كثيرة الحدود curves (such as parabolas \\( y = kx^2 \\)) or prove the النهاية rigorously using the Squeeze مبرهنة or polar الإحداثيات (\\( x = r\\cos\\theta, y = r\\sin\\theta \\) with \\( r \\to 0 \\)).</li><li><strong>Existence of Partials ≠ Continuity:</strong> As shown in مثال محلول 1.C, having both \\( f_x \\) and \\( f_y \\) defined at a point does NOT guarantee that the surface is continuous or smooth there. Differentiability requires the المستوى المماس to approximate the surface to first-order in <em>all</em> radial directions simultaneously.</li><li><strong>Treating Inactive المتغيرات as Zero:</strong> عندما computing \\( \\frac{\\partial}{\\partial x}(3x^2 y^3) \\), novice students mistakenly عوّض \\( y = 0 \\). The factor \\( y^3 \\) is a الثابت multiplier; the المشتقة is \\( 6x y^3 \\), never 0.</li><li><strong>Tangent Plane Normal المتجه Sign:</strong> For \\( z = f(x, y) \\), the upward normal المتجه is \\( \\langle -f_x, -f_y, 1 \\rangle \\) and the downward normal is \\( \\langle f_x, f_y, -1 \\rangle \\). Writing \\( \\langle f_x, f_y, 1 \\rangle \\) has the wrong signs for both الإحداثي slopes.</li></ul>"
+          "ar": null
         }
       },
       {
@@ -373,7 +373,7 @@
             },
             "value": {
               "en": "\\( f_{xy} = f_{yx} \\) whenever mixed partials are continuous",
-              "ar": "\\( f_{xy} = f_{yx} \\) whenever mixed partials are continuous (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)"
+              "ar": null
             }
           }
         ]
@@ -426,7 +426,7 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(D\\) — Functions of Several Variables, Limits, Partial Derivatives & Differentiability (Medium Application)",
-          "ar": "مثال محلول \\(D\\) — الدوال of Several المتغيرات, النهايات, Partial المشتقات & Differentiability (Medium Application)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\).</p><p><strong>Step-by-Step Solution:</strong> \\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>",
@@ -437,7 +437,7 @@
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
-          "ar": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (الدوال of Several المتغيرات, النهايات, Partial المشتقات & Differentiability)"
+          "ar": null
         },
         "columns": [
           {
@@ -461,7 +461,7 @@
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": "المتجهات are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\)."
+              "ar": null
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
@@ -471,15 +471,15 @@
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": "Using the same المعامل \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)"
+              "ar": null
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": "Tests for a simultaneous collision at time \\(t\\) rather than geometric التقاطع of paths."
+              "ar": null
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": "Assign distinct المعاملات \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components."
+              "ar": null
             }
           ],
           [
@@ -489,7 +489,7 @@
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors عندما \\(AB \\ne BA\\)."
+              "ar": null
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
@@ -507,27 +507,27 @@
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": "<p><strong>Fast المصفوفة &amp; المتجه Verification (University Multivariable & المتجه التفاضل والتكامل):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and المحدد invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "Given the multivariable function \\( f(x, y) = x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2 \\), find the first-order partial derivatives \\( f_x(x, y) \\) and \\( f_y(x, y) \\), and evaluate \\( f_x(1, 2) \\).",
-          "ar": "Given the multivariable function \\( f(x, y) = x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2 \\), أوجد first-order partial derivatives \\( f_x(x, y) \\) and \\( f_y(x, y) \\), and احسب قيمة \\( f_x(1, 2) \\)."
+          "ar": null
         },
         "solution": {
           "en": "<p><strong>Step 1: Differentiate with respect to \\( x \\) (holding \\( y \\) constant):</strong> \\[ f_x(x, y) = \\frac{\\partial}{\\partial x}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 3x^2 y^2 - 4y^3 + 10x. \\]</p><p><strong>Step 2: Differentiate with respect to \\( y \\) (holding \\( x \\) constant):</strong> \\[ f_y(x, y) = \\frac{\\partial}{\\partial y}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 2x^3 y - 12xy^2 - 7. \\]</p><p><strong>Step 3: Evaluate \\( f_x(1, 2) \\):</strong> \\[ f_x(1, 2) = 3(1)^2(2)^2 - 4(2)^3 + 10(1) = 3(4) - 4(8) + 10 = 12 - 32 + 10 = -10. \\]</p>",
-          "ar": "<p><strong>Step 1: Dإذا كانferentiate بالنسبة إلى \\( x \\) (holding \\( y \\) constant):</strong> \\[ f_x(x, y) = \\frac{\\partial}{\\partial x}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 3x^2 y^2 - 4y^3 + 10x. \\]</p><p><strong>Step 2: Dإذا كانferentiate بالنسبة إلى \\( y \\) (holding \\( x \\) constant):</strong> \\[ f_y(x, y) = \\frac{\\partial}{\\partial y}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 2x^3 y - 12xy^2 - 7. \\]</p><p><strong>Step 3: احسب قيمة \\( f_x(1, 2) \\):</strong> \\[ f_x(1, 2) = 3(1)^2(2)^2 - 4(2)^3 + 10(1) = 3(4) - 4(8) + 10 = 12 - 32 + 10 = -10. \\]</p>"
+          "ar": null
         },
         "hints": [
           {
             "en": "<strong>Differentiate with respect to \\( x \\) (holding \\( y \\) constant):</strong> \\(f_x(x, y) = \\frac{\\partial}{\\partial x}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 3x^2 y^2 - 4y^3 + 10x\\).",
-            "ar": "<strong>Dإذا كانferentiate بالنسبة إلى \\( x \\) (holding \\( y \\) constant):</strong> \\(f_x(x, y) = \\frac{\\partial}{\\partial x}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 3x^2 y^2 - 4y^3 + 10x\\)."
+            "ar": null
           },
           {
             "en": "<strong>Differentiate with respect to \\( y \\) (holding \\( x \\) constant):</strong> \\(f_y(x, y) = \\frac{\\partial}{\\partial y}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 2x^3 y - 12xy^2 - 7\\).",
-            "ar": "<strong>Dإذا كانferentiate بالنسبة إلى \\( y \\) (holding \\( x \\) constant):</strong> \\(f_y(x, y) = \\frac{\\partial}{\\partial y}\\left(x^3 y^2 - 4xy^3 + 5x^2 - 7y + 2\\right) = 2x^3 y - 12xy^2 - 7\\)."
+            "ar": null
           },
           {
             "en": "<strong>Evaluate \\(f_x(1, 2)\\):</strong> \\(f_x(1, 2) = 3(1)^2(2)^2 - 4(2)^3 + 10(1) = 3(4) - 4(8) + 10 = 12 - 32 + 10\\).",
@@ -666,11 +666,11 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Find an equation of the tangent plane to the surface \\( z = x^2 + 3y^2 - 2x + 4y \\) at the point \\( P(2, 1, 9) \\).",
-          "ar": "أوجد an equation of the tangent plane to the surface \\( z = x^2 + 3y^2 - 2x + 4y \\) عند النقطة \\( P(2, 1, 9) \\)."
+          "ar": null
         },
         "solution": {
           "en": "<p><strong>Step 1: Compute partial derivatives:</strong> \\[ f_x(x, y) = 2x - 2, \\qquad f_y(x, y) = 6y + 4. \\]</p><p><strong>Step 2: Evaluate at \\( (x_0, y_0) = (2, 1) \\):</strong> \\[ f_x(2, 1) = 2(2) - 2 = 2, \\qquad f_y(2, 1) = 6(1) + 4 = 10. \\]</p><p><strong>Step 3: Apply the tangent plane formula:</strong> \\[ z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\] \\[ z - 9 = 2(x - 2) + 10(y - 1) \\] \\[ z - 9 = 2x - 4 + 10y - 10 \\implies 2x + 10y - z = 5. \\]</p>",
-          "ar": "<p><strong>Step 1: Compute partial derivatives:</strong> \\[ f_x(x, y) = 2x - 2, \\qquad f_y(x, y) = 6y + 4. \\]</p><p><strong>Step 2: احسب قيمة at \\( (x_0, y_0) = (2, 1) \\):</strong> \\[ f_x(2, 1) = 2(2) - 2 = 2, \\qquad f_y(2, 1) = 6(1) + 4 = 10. \\]</p><p><strong>Step 3: Apply the tangent plane formula:</strong> \\[ z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\] \\[ z - 9 = 2(x - 2) + 10(y - 1) \\] \\[ z - 9 = 2x - 4 + 10y - 10 \\implies 2x + 10y - z = 5. \\]</p>"
+          "ar": null
         },
         "hints": [
           {
@@ -679,7 +679,7 @@
           },
           {
             "en": "<strong>Evaluate at \\( (x_0, y_0) = (2, 1) \\):</strong> \\(f_x(2, 1) = 2(2) - 2 = 2, \\qquad f_y(2, 1) = 6(1) + 4 = 10\\) <strong>Apply the tangent plane formula:</strong> \\(z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)\\) \\(z - 9 = 2(x - 2) + 10(y - 1)\\).",
-            "ar": "<strong>احسب قيمة at \\( (x_0, y_0) = (2, 1) \\):</strong> \\(f_x(2, 1) = 2(2) - 2 = 2, \\qquad f_y(2, 1) = 6(1) + 4 = 10\\) <strong>Apply the tangent plane formula:</strong> \\(z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)\\) \\(z - 9 = 2(x - 2) + 10(y - 1)\\)."
+            "ar": null
           },
           {
             "en": "Use the resulting form to finish: \\(z - 9 = 2x - 4 + 10y - 10 \\implies 2x + 10y - z = 5\\).",
@@ -691,16 +691,16 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Hard]</strong> Consider the function \\( f(x, y) = 5x^3 - 2y^2 + 7 \\). Compute the value of the partial derivative \\( f_y(2, -3) \\).",
-          "ar": "<strong>[Practice 3 · Hard]</strong> Consider the function \\( f(x, y) = 5x^3 - 2y^2 + 7 \\). احسب قيمة the partial derivative \\( f_y(2, -3) \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "To find the partial derivative of \\( f(x, y) \\) with respect to \\( y \\), we treat \\( x \\) as a constant.",
-            "ar": "To أوجد partial derivative of \\( f(x, y) \\) بالنسبة إلى \\( y \\), we treat \\( x \\) as a constant."
+            "ar": null
           },
           {
             "en": "Given \\( f(x, y) = 5x^3 - 2y^2 + 7 \\). The partial derivative with respect to \\( y \\) is denoted by \\( f_y \\).",
-            "ar": "Given \\( f(x, y) = 5x^3 - 2y^2 + 7 \\). The partial derivative بالنسبة إلى \\( y \\) is denoted by \\( f_y \\)."
+            "ar": null
           },
           {
             "en": "Use the resulting form to finish: \\(f_y(2, -3)\\).",
@@ -709,14 +709,14 @@
         ],
         "solution": {
           "en": "To find the partial derivative of \\( f(x, y) \\) with respect to \\( y \\), we treat \\( x \\) as a constant.\n\nGiven \\( f(x, y) = 5x^3 - 2y^2 + 7 \\).\n\nThe partial derivative with respect to \\( y \\) is denoted by \\( f_y \\).\n\n\\( f_y = \\frac{\\partial}{\\partial y} (5x^3 - 2y^2 + 7) \\)\n\nApplying the power rule and noting that \\( 5x^3 \\) and \\( 7 \\) are constants with respect to \\( y \\):\n\n\\( f_y = 0 - 2(2y) + 0 \\)\n\\( f_y = -4y \\)\n\nNow, we need to evaluate \\( f_y \\) at the point \\( (2, -3) \\):\n\n\\( f_y(2, -3) = -4(-3) \\)\n\\( f_y(2, -3) = 12 \\)",
-          "ar": "To أوجد partial derivative of \\( f(x, y) \\) بالنسبة إلى \\( y \\), we treat \\( x \\) as a constant.\n\nGiven \\( f(x, y) = 5x^3 - 2y^2 + 7 \\).\n\nThe partial derivative بالنسبة إلى \\( y \\) is denoted by \\( f_y \\).\n\n\\( f_y = \\frac{\\partial}{\\partial y} (5x^3 - 2y^2 + 7) \\)\n\nApplying the power rule and noting that \\( 5x^3 \\) and \\( 7 \\) are constants بالنسبة إلى \\( y \\):\n\n\\( f_y = 0 - 2(2y) + 0 \\)\n\\( f_y = -4y \\)\n\nNow, we need to احسب قيمة \\( f_y \\) عند النقطة \\( (2, -3) \\):\n\n\\( f_y(2, -3) = -4(-3) \\)\n\\( f_y(2, -3) = 12 \\)"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Easy]</strong> Let the linear scalar potential be \\( h(u, y) = 15u + 8y - 16 \\). Compute the squared gradient norm \\( \\|\\nabla h\\|^2 \\).",
-          "ar": "<strong>[Practice 4 · Easy]</strong> ليكن the linear scalar potential be \\( h(u, y) = 15u + 8y - 16 \\). Compute the squared gradient norm \\( \\|\\nabla h\\|^2 \\)."
+          "ar": null
         },
         "hints": [
           {
@@ -759,7 +759,7 @@
         ],
         "solution": {
           "en": "Applying Partial Derivatives principles, \\( f_y=8 y \\), so \\( f_y(-3,1)=8(1)=8 \\). Therefore, the verified correct option is 8.",
-          "ar": "Applying Partial Derivatives principles, \\( f_y=8 y \\), so \\( f_y(-3,1)=8(1)=8 \\). وبالتالي، the verإذا كانied correct option is 8."
+          "ar": null
         }
       },
       {

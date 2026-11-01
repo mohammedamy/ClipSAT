@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Linear regression is the foundational predictive model in data science. We explore both algebraic least-squares minimization and the closed-form matrix Normal Equation used across analytics libraries.",
-          "ar": "Linear regression is the foundational predictive model in data science. We explore both algebraic least-squares minimization and the closed-form المصفوفة Normal المعادلة used across analytics libraries."
+          "ar": null
         }
       },
       {
@@ -42,7 +42,7 @@
         },
         "body": {
           "en": "For a linear model \\( \\mathbf{y} = \\mathbf{X}\\mathbf{w} \\) where \\( \\mathbf{X} \\in \\mathbb{R}^{N \\times (d+1)} \\) is the design matrix (including a column of ones for intercept), the weight vector \\( \\mathbf{w} \\) that minimizes the sum of squared errors \\( \\|\\mathbf{y} - \\mathbf{X}\\mathbf{w}\\|^2 \\) satisfies:<br>\\[ \\mathbf{X}^T \\mathbf{X} \\mathbf{w} = \\mathbf{X}^T \\mathbf{y} \\implies \\mathbf{w} = (\\mathbf{X}^T \\mathbf{X})^{-1} \\mathbf{X}^T \\mathbf{y} \\]<br>provided \\( \\mathbf{X}^T \\mathbf{X} \\) is invertible (non-singular).",
-          "ar": "For a linear model \\( \\mathbf{y} = \\mathbf{X}\\mathbf{w} \\) حيث \\( \\mathbf{X} \\in \\mathbb{R}^{N \\times (d+1)} \\) is the design المصفوفة (including a column of ones for المقطع), the weight المتجه \\( \\mathbf{w} \\) that minimizes the sum of squared errors \\( \\|\\mathbf{y} - \\mathbf{X}\\mathbf{w}\\|^2 \\) satisfies:<br>\\[ \\mathbf{X}^T \\mathbf{X} \\mathbf{w} = \\mathbf{X}^T \\mathbf{y} \\implies \\mathbf{w} = (\\mathbf{X}^T \\mathbf{X})^{-1} \\mathbf{X}^T \\mathbf{y} \\]<br>provided \\( \\mathbf{X}^T \\mathbf{X} \\) is invertible (non-singular)."
+          "ar": null
         }
       },
       {
@@ -131,7 +131,7 @@
             "id": "ailinearregressionExCanvas_s0",
             "label": {
               "en": "Candidate Weight (Slope) <b>\\(w =\\)</b>",
-              "ar": "Candidate Weight (Slope) <b>w =</b>"
+              "ar": null
             },
             "min": -0.5,
             "max": 2.5,
@@ -140,14 +140,14 @@
             "valueDisplayId": "ailinearregressionExCanvas_v0",
             "ariaLabel": {
               "en": "Candidate Weight (Slope) w =",
-              "ar": "Candidate Weight (Slope) w ="
+              "ar": null
             }
           },
           {
             "id": "ailinearregressionExCanvas_s1",
             "label": {
               "en": "Candidate Bias (Intercept) <b>\\(b =\\)</b>",
-              "ar": "Candidate Bias (Intercept) <b>b =</b>"
+              "ar": null
             },
             "min": -2,
             "max": 3,
@@ -156,7 +156,7 @@
             "valueDisplayId": "ailinearregressionExCanvas_v1",
             "ariaLabel": {
               "en": "Candidate Bias (Intercept) b =",
-              "ar": "Candidate Bias (Intercept) b ="
+              "ar": null
             }
           }
         ],
@@ -165,7 +165,7 @@
             "id": "ailinearregressionExCanvas_r0",
             "label": {
               "en": "Mean Squared Error MSE\\((w, b)\\)",
-              "ar": "Mean Squared Error MSE(w, b)"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "MSE = 0.124"
@@ -174,7 +174,7 @@
             "id": "ailinearregressionExCanvas_r1",
             "label": {
               "en": "Optimal Normal-Eq \\((w*, b*)\\)",
-              "ar": "Optimal Normal-Eq (w*, b*)"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(w* = 1.04, b* = 0.50\\)"
@@ -183,7 +183,7 @@
             "id": "ailinearregressionExCanvas_r2",
             "label": {
               "en": "Coefficient of Determination \\(R^{2}\\)",
-              "ar": "Coefficient of Determination R²"
+              "ar": null
             },
             "colorClass": "teal",
             "value": "\\(R^{2} = 0.943\\)"
@@ -292,7 +292,7 @@
         },
         "body": {
           "en": "<p>Fit a line \\( y = w_1 x + w_0 \\) to three points: \\( (1, 2) \\), \\( (2, 3) \\), and \\( (3, 5) \\) using the Normal Equation.</p><p><strong>Solution:</strong><br>1. Set up design matrix \\( \\mathbf{X} \\) (with bias column) and target \\( \\mathbf{y} \\):<br>\\[ \\mathbf{X} = \\begin{pmatrix} 1 & 1 \\\\ 2 & 1 \\\\ 3 & 1 \\end{pmatrix}, \\quad \\mathbf{y} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} \\]<br>2. Compute \\( \\mathbf{X}^T \\mathbf{X} \\):<br>\\[ \\mathbf{X}^T \\mathbf{X} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 2 & 1 \\\\ 3 & 1 \\end{pmatrix} = \\begin{pmatrix} 1+4+9 & 1+2+3 \\\\ 1+2+3 & 1+1+1 \\end{pmatrix} = \\begin{pmatrix} 14 & 6 \\\\ 6 & 3 \\end{pmatrix} \\]<br>3. Invert \\( \\mathbf{X}^T \\mathbf{X} \\):<br>\\( \\det = (14)(3) - (6)(6) = 42 - 36 = 6 \\).<br>\\[ (\\mathbf{X}^T \\mathbf{X})^{-1} = \\frac{1}{6} \\begin{pmatrix} 3 & -6 \\\\ -6 & 14 \\end{pmatrix} \\]<br>4. Compute \\( \\mathbf{X}^T \\mathbf{y} \\):<br>\\[ \\mathbf{X}^T \\mathbf{y} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} = \\begin{pmatrix} 2 + 6 + 15 \\\\ 2 + 3 + 5 \\end{pmatrix} = \\begin{pmatrix} 23 \\\\ 10 \\end{pmatrix} \\]<br>5. Compute \\( \\mathbf{w} = (\\mathbf{X}^T \\mathbf{X})^{-1} (\\mathbf{X}^T \\mathbf{y}) \\):<br>\\[ \\mathbf{w} = \\frac{1}{6} \\begin{pmatrix} 3(23) - 6(10) \\\\ -6(23) + 14(10) \\end{pmatrix} = \\frac{1}{6} \\begin{pmatrix} 69 - 60 \\\\ -138 + 140 \\end{pmatrix} = \\frac{1}{6} \\begin{pmatrix} 9 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 1.5 \\\\ 0.333 \\end{pmatrix} \\]<br>Line equation: \\( \\hat{y} = 1.5x + \\frac{1}{3} \\).<br><strong>Answer:</strong> Slope \\( w_1 = 1.5 \\), Intercept \\( w_0 = \\frac{1}{3} \\).</p>",
-          "ar": "<p>Fit a line \\( y = w_1 x + w_0 \\) to three points: \\( (1, 2) \\), \\( (2, 3) \\), and \\( (3, 5) \\) using the Normal المعادلة.</p><p><strong>Solution:</strong><br>1. Set up design المصفوفة \\( \\mathbf{X} \\) (with bias column) and target \\( \\mathbf{y} \\):<br>\\[ \\mathbf{X} = \\begin{pmatrix} 1 & 1 \\\\ 2 & 1 \\\\ 3 & 1 \\end{pmatrix}, \\quad \\mathbf{y} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} \\]<br>2. Compute \\( \\mathbf{X}^T \\mathbf{X} \\):<br>\\[ \\mathbf{X}^T \\mathbf{X} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 2 & 1 \\\\ 3 & 1 \\end{pmatrix} = \\begin{pmatrix} 1+4+9 & 1+2+3 \\\\ 1+2+3 & 1+1+1 \\end{pmatrix} = \\begin{pmatrix} 14 & 6 \\\\ 6 & 3 \\end{pmatrix} \\]<br>3. Invert \\( \\mathbf{X}^T \\mathbf{X} \\):<br>\\( \\det = (14)(3) - (6)(6) = 42 - 36 = 6 \\).<br>\\[ (\\mathbf{X}^T \\mathbf{X})^{-1} = \\frac{1}{6} \\begin{pmatrix} 3 & -6 \\\\ -6 & 14 \\end{pmatrix} \\]<br>4. Compute \\( \\mathbf{X}^T \\mathbf{y} \\):<br>\\[ \\mathbf{X}^T \\mathbf{y} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} = \\begin{pmatrix} 2 + 6 + 15 \\\\ 2 + 3 + 5 \\end{pmatrix} = \\begin{pmatrix} 23 \\\\ 10 \\end{pmatrix} \\]<br>5. Compute \\( \\mathbf{w} = (\\mathbf{X}^T \\mathbf{X})^{-1} (\\mathbf{X}^T \\mathbf{y}) \\):<br>\\[ \\mathbf{w} = \\frac{1}{6} \\begin{pmatrix} 3(23) - 6(10) \\\\ -6(23) + 14(10) \\end{pmatrix} = \\frac{1}{6} \\begin{pmatrix} 69 - 60 \\\\ -138 + 140 \\end{pmatrix} = \\frac{1}{6} \\begin{pmatrix} 9 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 1.5 \\\\ 0.333 \\end{pmatrix} \\]<br>Line المعادلة: \\( \\hat{y} = 1.5x + \\frac{1}{3} \\).<br><strong>Answer:</strong> الميل \\( w_1 = 1.5 \\), المقطع \\( w_0 = \\frac{1}{3} \\).</p>"
+          "ar": null
         }
       },
       {
@@ -304,7 +304,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> A simple linear regression model has been fitted to a dataset. The model equation is given by \\( \\hat{y} = ax + b \\). The regression line passes through the points \\( (2, 10) \\) and \\( (5, 22) \\) in the feature-target space. Determine the value of the intercept \\( b \\).</p><p><strong>Step-by-Step Solution:</strong> The problem states that the linear regression line \\( \\hat{y} = ax + b \\) passes through two points: \\( (x_1, y_1) = (2, 10) \\) and \\( (x_2, y_2) = (5, 22) \\).\n\nWe can use these two points to form a system of linear equations to solve for the unknown parameters \\( a \\) (the slope) and \\( b \\) (the intercept).\n\nSubstituting the first point \\( (2, 10) \\) into the equation \\( \\hat{y} = ax + b \\) gives:\n\\( 10 = a(2) + b \\)  (Equation 1)\n\nSubstituting the second point \\( (5, 22) \\) into the equation \\( \\hat{y} = ax + b \\) gives:\n\\( 22 = a(5) + b \\)  (Equation 2)\n\nTo find the slope \\( a \\), we can subtract Equation 1 from Equation 2:\n\\( (22 - 10) = (5a - 2a) + (b - b) \\)\n\\( 12 = 3a \\)\n\\( a = \\frac{12}{3} = 4 \\)\n\nNow that we have the value of \\( a \\), we can substitute it back into either Equation 1 or Equation 2 to solve for \\( b \\). Let's use Equation 1:\n\\( 10 = 4(2) + b \\)\n\\( 10 = 8 + b \\)\n\\( b = 10 - 8 \\)\n\\( b = 2 \\)\n\nLet's verify with Equation 2:\n\\( 22 = 4(5) + b \\)\n\\( 22 = 20 + b \\)\n\\( b = 22 - 20 \\)\n\\( b = 2 \\)\n\nBoth equations yield \\( b = 2 \\). Therefore, the intercept \\( b \\) is 2.\n\nCommon algebraic traps include incorrectly calculating the slope or making sign errors when substituting values back into the equations. For instance, if one incorrectly calculated the slope as \\( \\frac{3}{12} \\) or made a sign error in \\( 10 - 8 \\), they might arrive at an incorrect intercept.</p>",
-          "ar": "<p><strong>مسألة (Hard):</strong> A simple linear regression model has been fitted to a dataset. The model equation is given by \\( \\hat{y} = ax + b \\). The regression line passes through the points \\( (2, 10) \\) and \\( (5, 22) \\) in the feature-target space. Determine the value of the intercept \\( b \\).</p><p><strong>الحل خطوة بخطوة:</strong> The problem states that the linear regression line \\( \\hat{y} = ax + b \\) passes through two points: \\( (x_1, y_1) = (2, 10) \\) and \\( (x_2, y_2) = (5, 22) \\).\n\nWe can use these two points to form a system of linear equations to solve for the unknown parameters \\( a \\) (the slope) and \\( b \\) (the intercept).\n\nSubstituting the first point \\( (2, 10) \\) into the equation \\( \\hat{y} = ax + b \\) gives:\n\\( 10 = a(2) + b \\)  (Equation 1)\n\nSubstituting the second point \\( (5, 22) \\) into the equation \\( \\hat{y} = ax + b \\) gives:\n\\( 22 = a(5) + b \\)  (Equation 2)\n\nTo find the slope \\( a \\), we can subtract Equation 1 from Equation 2:\n\\( (22 - 10) = (5a - 2a) + (b - b) \\)\n\\( 12 = 3a \\)\n\\( a = \\frac{12}{3} = 4 \\)\n\nNow that we have the value of \\( a \\), we can substitute it back into either Equation 1 or Equation 2 to solve for \\( b \\). Let's use Equation 1:\n\\( 10 = 4(2) + b \\)\n\\( 10 = 8 + b \\)\n\\( b = 10 - 8 \\)\n\\( b = 2 \\)\n\nLet's verify with Equation 2:\n\\( 22 = 4(5) + b \\)\n\\( 22 = 20 + b \\)\n\\( b = 22 - 20 \\)\n\\( b = 2 \\)\n\nBoth equations yield \\( b = 2 \\). Therefore, the intercept \\( b \\) is 2.\n\nCommon algebraic traps include incorrectly calculating the slope or making sign errors when substituting values back into the equations. For instance, if one incorrectly calculated the slope as \\( \\frac{3}{12} \\) or made a sign error in \\( 10 - 8 \\), they might arrive at an incorrect intercept.</p>"
+          "ar": null
         }
       },
       {
@@ -316,7 +316,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> In gradient descent on loss \\( f(x) \\), parameter \\( x_0 = 30 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla f(x_0) = 20 \\). Determine the updated parameter \\( x_1 = x_0 - \\eta \\nabla f(x_0) \\).</p><p><strong>Step-by-Step Solution:</strong> Computing \\( x_1 = 30 - 0.1(20) = 28 \\).</p>",
-          "ar": "<p><strong>مسألة (Easy):</strong> In gradient descent on loss \\( f(x) \\), parameter \\( x_0 = 30 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla f(x_0) = 20 \\). Determine the updated parameter \\( x_1 = x_0 - \\eta \\nabla f(x_0) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Computing \\( x_1 = 30 - 0.1(20) = 28 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -328,7 +328,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> Consider a simple linear regression model where the predicted value \\( \\hat{y} \\) is related to the independent variable \\( x \\) by the equation \\( \\hat{y} = mx + c \\). If the line of best fit passes through the points \\( (1, 5) \\) and \\( (3, 11) \\), what is the slope \\( m \\) of this line?</p><p><strong>Step-by-Step Solution:</strong> The slope \\( m \\) of a line passing through two points \\( (x_1, y_1) \\) and \\( (x_2, y_2) \\) is given by the formula \\( m = \\frac{y_2 - y_1}{x_2 - x_1} \\). Given the points \\( (1, 5) \\) and \\( (3, 11) \\), we have \\( x_1 = 1 \\), \\( y_1 = 5 \\), \\( x_2 = 3 \\), and \\( y_2 = 11 \\). Plugging these values into the formula, we get \\( m = \\frac{11 - 5}{3 - 1} = \\frac{6}{2} = 3 \\). Therefore, the slope of the line of best fit is 3.</p>",
-          "ar": "<p><strong>مسألة (Medium):</strong> Consider a simple linear regression model where the predicted value \\( \\hat{y} \\) is related to the independent variable \\( x \\) by the equation \\( \\hat{y} = mx + c \\). If the line of best fit passes through the points \\( (1, 5) \\) and \\( (3, 11) \\), what is the slope \\( m \\) of this line?</p><p><strong>الحل خطوة بخطوة:</strong> The slope \\( m \\) of a line passing through two points \\( (x_1, y_1) \\) and \\( (x_2, y_2) \\) is given by the formula \\( m = \\frac{y_2 - y_1}{x_2 - x_1} \\). Given the points \\( (1, 5) \\) and \\( (3, 11) \\), we have \\( x_1 = 1 \\), \\( y_1 = 5 \\), \\( x_2 = 3 \\), and \\( y_2 = 11 \\). Plugging these values into the formula, we get \\( m = \\frac{11 - 5}{3 - 1} = \\frac{6}{2} = 3 \\). Therefore, the slope of the line of best fit is 3.</p>"
+          "ar": null
         }
       },
       {
@@ -424,125 +424,125 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 1 · Hard]</strong> A 2D loss surface is defined as \\( L(w_1, w_2) = 4w_1^2 + 7w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
-          "ar": "<strong>[تدريب 1 · Hard]</strong> A 2D loss surface is defined as \\( L(w_1, w_2) = 4w_1^2 + 7w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2)\\).",
-            "ar": "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2)\\)."
+            "ar": null
           },
           {
             "en": "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1)\\).",
-            "ar": "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1)\\)."
+            "ar": null
           },
           {
             "en": "Therefore, \\(\\nabla L = [16, -14]^T\\).",
-            "ar": "Therefore, \\(\\nabla L = [16, -14]^T\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2) = 16 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1) = -14 \\). Therefore, \\(\n\\nabla L = [16, -14]^T \\).",
-          "ar": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2) = 16 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1) = -14 \\). Therefore, \\(\n\\nabla L = [16, -14]^T \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2 · Easy]</strong> A fully-connected dense layer maps an input \\( \\mathbf{x} \\in \\mathbb{R}^{50} \\) to \\( \\mathbf{y} \\in \\mathbb{R}^{25} \\) using \\( \\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b} \\). How many total learnable parameters are in this layer?",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> A fully-connected dense layer maps an input \\( \\mathbf{x} \\in \\mathbb{R}^{50} \\) to \\( \\mathbf{y} \\in \\mathbb{R}^{25} \\) using \\( \\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b} \\). How many total learnable parameters are in this layer?"
+          "ar": null
         },
         "hints": [
           {
             "en": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 25 \\times 50 \\), giving \\( 1250 \\) weights.",
-            "ar": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 25 \\times 50 \\), giving \\( 1250 \\) weights."
+            "ar": null
           },
           {
             "en": "The bias vector \\( \\mathbf{b} \\) has \\( 25 \\) parameters.",
-            "ar": "The bias vector \\( \\mathbf{b} \\) has \\( 25 \\) parameters."
+            "ar": null
           },
           {
             "en": "Substitute the result from the previous step into the governing relation and verify the problem condition to find the final answer.",
-            "ar": "Substitute the result from the previous step into the governing relation and verify the problem condition to find the final answer."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 25 \\times 50 \\), giving \\( 1250 \\) weights. The bias vector \\( \\mathbf{b} \\) has \\( 25 \\) parameters. Total = \\( 1250 + 25 = 1275 \\).",
-          "ar": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 25 \\times 50 \\), giving \\( 1250 \\) weights. The bias vector \\( \\mathbf{b} \\) has \\( 25 \\) parameters. Total = \\( 1250 + 25 = 1275 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Easy]</strong> In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.10 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
-          "ar": "<strong>[تدريب 3 · Easy]</strong> In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.10 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "By the complement rule of probability: \\(P( eg C_1) = 1 - P(C_1)\\).",
-            "ar": "By the complement rule of probability: \\(P( eg C_1) = 1 - P(C_1)\\)."
+            "ar": null
           },
           {
             "en": "Substitute and simplify: \\(P( eg C_1) = 1 - 0.10\\).",
-            "ar": "Substitute and simplify: \\(P( eg C_1) = 1 - 0.10\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(1 - 0.10\\).",
-            "ar": "Compute the final value from: \\(1 - 0.10\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "By the complement rule of probability: \\( P(\neg C_1) = 1 - P(C_1) = 1 - 0.10 = 0.90 \\).",
-          "ar": "By the complement rule of probability: \\( P(\neg C_1) = 1 - P(C_1) = 1 - 0.10 = 0.90 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> Consider a simple linear regression model where a dependent variable \\( y \\) is predicted from an independent variable \\( x \\). The model is given by the equation \\( y = \\beta_0 + \\beta_1 x + \\epsilon \\), where \\( \\epsilon \\) is the error term.  Suppose we have estimated the regression line to be \\( \\hat{y} = 3 + 2x \\). If we observe an independent variable value of \\( x=4 \\), what is the predicted value \\( \\hat{y} \\) for the dependent variable?",
-          "ar": "<strong>[تدريب 4 · Medium]</strong> Consider a simple linear regression model where a dependent variable \\( y \\) is predicted from an independent variable \\( x \\). The model is given by the equation \\( y = \\beta_0 + \\beta_1 x + \\epsilon \\), where \\( \\epsilon \\) is the error term.  Suppose we have estimated the regression line to be \\( \\hat{y} = 3 + 2x \\). If we observe an independent variable value of \\( x=4 \\), what is the predicted value \\( \\hat{y} \\) for the dependent variable?"
+          "ar": null
         },
         "hints": [
           {
             "en": "The problem asks for the predicted value \\( \\hat{y} \\) given an independent variable value \\( x=4 \\) and a linear regression equation \\( \\hat{y} = 3 + 2x \\). We substitute the value of \\( x \\) into the equation: \\( \\hat{y} = 3 + 2(4) \\).",
-            "ar": "The problem asks for the predicted value \\( \\hat{y} \\) given an independent variable value \\( x=4 \\) and a linear regression equation \\( \\hat{y} = 3 + 2x \\). We substitute the value of \\( x \\) into the equation: \\( \\hat{y} = 3 + 2(4) \\)."
+            "ar": null
           },
           {
             "en": "Rewrite and simplify to obtain: \\( \\hat{y} = 3 + 8 \\) \\( \\hat{y} = 11 \\).",
-            "ar": "Rewrite and simplify to obtain: \\( \\hat{y} = 3 + 8 \\) \\( \\hat{y} = 11 \\)."
+            "ar": null
           },
           {
             "en": "Therefore, the predicted value for the dependent variable is 11.",
-            "ar": "Therefore, the predicted value for the dependent variable is 11."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The problem asks for the predicted value \\( \\hat{y} \\) given an independent variable value \\( x=4 \\) and a linear regression equation \\( \\hat{y} = 3 + 2x \\). We substitute the value of \\( x \\) into the equation:\n\n\\( \\hat{y} = 3 + 2(4) \\)\n\\( \\hat{y} = 3 + 8 \\)\n\\( \\hat{y} = 11 \\)\n\nTherefore, the predicted value for the dependent variable is 11. Common errors might involve incorrectly multiplying 2 by 4 or incorrectly adding 3 to 8.",
-          "ar": "The problem asks for the predicted value \\( \\hat{y} \\) given an independent variable value \\( x=4 \\) and a linear regression equation \\( \\hat{y} = 3 + 2x \\). We substitute the value of \\( x \\) into the equation:\n\n\\( \\hat{y} = 3 + 2(4) \\)\n\\( \\hat{y} = 3 + 8 \\)\n\\( \\hat{y} = 11 \\)\n\nTherefore, the predicted value for the dependent variable is 11. Common errors might involve incorrectly multiplying 2 by 4 or incorrectly adding 3 to 8."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 5 · Hard]</strong> In anomaly detection, anomaly prior \\( P(A) = 0.10 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> In anomaly detection, anomaly prior \\( P(A) = 0.10 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?"
+          "ar": null
         },
         "hints": [
           {
             "en": "By Bayes' Rule: \\(P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+| eg A)P( eg A)}\\).",
-            "ar": "By Bayes' Rule: \\(P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+| eg A)P( eg A)}\\)."
+            "ar": null
           },
           {
             "en": "Substitute and simplify: \\(P(A|+) = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)}\\).",
-            "ar": "Substitute and simplify: \\(P(A|+) = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)}\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(\\frac{0.0950}{0.1400}\\).",
-            "ar": "Compute the final value from: \\(\\frac{0.0950}{0.1400}\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\neg A)P(\neg A)} = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)} = \\frac{0.0950}{0.1400} = 0.679 \\).",
-          "ar": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\neg A)P(\neg A)} = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)} = \\frac{0.0950}{0.1400} = 0.679 \\)."
+          "ar": null
         }
       },
       {

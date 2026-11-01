@@ -1173,6 +1173,9 @@
     if(typeof window.setFloatingCalcLocked === 'function'){
       window.setFloatingCalcLocked(false);
     }
+    if(typeof window.closeFloatingCalc === 'function'){
+      window.closeFloatingCalc();
+    }
 
     var body = document.getElementById('mock-exam-body');
     if(!body) return;
@@ -1385,6 +1388,9 @@
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
     if(typeof window.setFloatingCalcLocked === 'function'){
       window.setFloatingCalcLocked(false);
+    }
+    if(typeof window.closeFloatingCalc === 'function'){
+      window.closeFloatingCalc();
     }
     var overlay = document.getElementById('mock-exam-overlay');
     if(overlay) overlay.classList.remove('show');

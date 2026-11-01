@@ -116,7 +116,7 @@
       throwOnError: false
     };
     function decodeEntities(s){
-      return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&#(d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&amp;/g,'&');
+      return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&#(\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&amp;/g,'&');
     }
     window.CSRenderMathString = function(str){
       if(!str || typeof str !== 'string') return str;
@@ -1007,8 +1007,9 @@
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress
        system — see SUPABASE_SETUP.md). cloud-config.js is a public, safe-to-commit
        project URL + anon key; cloud-sync.js no-ops entirely until it's filled in. -->
-  <script src="/js/cloud-config.js"></script>
-  <script defer src="/js/cloud-sync.js"></script>
+  <script src="/js/cloud-config.js?v=20261101b"></script>
+  <script defer src="/vendor/supabase/supabase.min.js?v=20261101b"></script>
+  <script defer src="/js/cloud-sync.js?v=20261101b"></script>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="/js/teacher-view.js"></script>
@@ -1069,6 +1070,7 @@
     // preserving the in-page showView chain when activating CURRENT.
     var _origShowView = window.showView;
     window.showView = function(name){
+      if(typeof window.closeFloatingCalc === 'function') window.closeFloatingCalc();
       if(name === CURRENT){
         if(_origShowView) _origShowView(name);
         return;
@@ -1107,8 +1109,11 @@
     // chapter so content is visible immediately.
     if(CURRENT !== 'home' && window.goChapter) {
       var requestedCh = new URLSearchParams(window.location.search).get('ch');
-      var targetLink = requestedCh
-        ? document.querySelector('#view-' + CURRENT + ' .rail a[data-target="' + requestedCh + '"]')
+      var safeCh = requestedCh
+        ? ((window.CSS && typeof window.CSS.escape === 'function') ? window.CSS.escape(requestedCh) : String(requestedCh).replace(/[^a-zA-Z0-9_-]/g, ''))
+        : '';
+      var targetLink = safeCh
+        ? document.querySelector('#view-' + CURRENT + ' .rail a[data-target="' + safeCh + '"]')
         : null;
       var openLink = targetLink || document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
       if(openLink) window.goChapter(openLink.getAttribute('data-target'), CURRENT);

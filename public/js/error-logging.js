@@ -77,7 +77,7 @@
         p_line: fields.line,
         p_col: fields.col,
         p_stack: fields.stack,
-        p_page_url: location.href,
+        p_page_url: location.origin + location.pathname,
         p_user_agent: navigator.userAgent
       }).then(
         function (res) { if (res && res.error) log('RPC error: ' + res.error.message); },

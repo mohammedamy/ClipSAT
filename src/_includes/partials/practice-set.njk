@@ -34,7 +34,7 @@
     {% for item in practiceSet.items %}
     <div class="problem"{% if item.id %} id="{{ item.id }}"{% endif %}>
       <div class="prow"><span class="pn">{{ item.number }}</span><span class="lvl">{{ item.difficulty }}</span>
-        <p class="qt">{{ bl.text(item.question) }}</p>
+        <div class="qt">{{ bl.text(item.question, 'div') }}</div>
       </div>
       {% if item.fig %}<div class="lesson-figure-svg">{{ item.fig | renderFig | safe }}</div>{% endif %}
       <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -50,7 +50,7 @@
     <div class="problem">
       <div class="ph">
         <span class="pn">{{ item.number }}</span>
-        <p class="pq">{{ bl.text(item.question) }}</p>
+        <div class="pq">{{ bl.text(item.question, 'div') }}</div>
         <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.levelLabel or item.difficulty }}</span>
       </div>
       {% if item.fig %}<div class="lesson-figure-svg">{{ item.fig | renderFig | safe }}</div>{% endif %}

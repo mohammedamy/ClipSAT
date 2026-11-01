@@ -11,7 +11,7 @@
         "kind": "text",
         "body": {
           "en": "A triple integral \\( \\iiint_E f(x,y,z)\\,dV \\) extends multivariable integration to three-dimensional solid regions \\( E \\subset \\mathbb{R}^3 \\). When the integrand is the unit function \\( f \\equiv 1 \\), the integral computes the geometric volume \\( \\mathrm{Vol}(E) \\); when \\( f = \\delta(x,y,z) \\) represents density, it yields the total mass \\( M \\), centroid coordinates \\( (\\bar{x},\\bar{y},\\bar{z}) \\), and moments of inertia \\( I_x, I_y, I_z \\). As in double integrals, Fubini's Theorem reduces the volume integral to iterated single-variable integrals. Mastery of this domain requires navigating coordinate transformations—principally cylindrical and spherical coordinate systems—governed by the 3D Jacobian determinant.",
-          "ar": "A triple التكامل \\( \\iiint_E f(x,y,z)\\,dV \\) extends multivariable integration to three-dimensional solid regions \\( E \\subset \\mathbb{R}^3 \\). عندما the integrand is the unit الدالة \\( f \\equiv 1 \\), the التكامل computes the geometric الحجم \\( \\mathrm{Vol}(E) \\); عندما \\( f = \\delta(x,y,z) \\) represents density, it yields the total mass \\( M \\), centroid الإحداثيات \\( (\\bar{x},\\bar{y},\\bar{z}) \\), and moments of inertia \\( I_x, I_y, I_z \\). As in double التكاملات, Fubini's مبرهنة reduces the الحجم التكامل to iterated single-المتغير التكاملات. Mastery of this المجال requires navigating الإحداثي transformations—principally cylindrical and spherical الإحداثي systems—governed by the 3D Jacobian المحدد."
+          "ar": null
         }
       },
       {
@@ -19,11 +19,11 @@
         "style": "note",
         "label": {
           "en": "Curriculum Progression & University Rigor",
-          "ar": "Curriculum Progression & University Rigor (التكاملات الثلاثية والإحداثيات الأسطوانية والكروية)"
+          "ar": null
         },
         "body": {
           "en": "<p>This chapter develops through three instructional tiers:</p><ul><li><strong>Level 1 (Foundations):</strong> Riemann sums over spatial rectangular boxes, Fubini's Theorem in \\( \\mathbb{R}^3 \\), classification of elementary solids (Types I, II, III), and standard Cartesian bounds setup.</li><li><strong>Level 2 (Medium / Analytical Application):</strong> Cylindrical and spherical coordinate transformations, geometric derivations of differential volume elements \\( dV = r\\,dz\\,dr\\,d\\theta \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\), center of mass, and rotational inertia.</li><li><strong>Level 3 (Advanced / University Rigor):</strong> The General 3D Change of Variables Theorem via the \\( 3\\times 3 \\) Jacobian determinant, formal derivation of \\( \\det J = \\rho^2\\sin\\phi \\), Newton's Shell Theorem for gravitational potential, and inertia tensor derivations.</li></ul>",
-          "ar": "<p>This chapter develops through three instructional tiers:</p><ul><li><strong>Level 1 (Foundations):</strong> Riemann sums over spatial rectangular boxes, Fubini's مبرهنة in \\( \\mathbb{R}^3 \\), classification of elementary solids (Types I, II, III), and standard Cartesian bounds setup.</li><li><strong>Level 2 (Medium / Analytical Application):</strong> Cylindrical and spherical الإحداثي transformations, geometric derivations of differential الحجم elements \\( dV = r\\,dz\\,dr\\,d\\theta \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\), center of mass, and rotational inertia.</li><li><strong>Level 3 (Advanced / University Rigor):</strong> The General 3D Change of المتغيرات مبرهنة via the \\( 3\\times 3 \\) Jacobian المحدد, formal derivation of \\( \\det J = \\rho^2\\sin\\phi \\), Newton's Shell مبرهنة for gravitational potential, and inertia tensor derivations.</li></ul>"
+          "ar": null
         }
       },
       {
@@ -165,7 +165,7 @@
         ],
         "note": {
           "en": "Visualize the meridional \\((r, z)\\) cross-section of a spherical ice-cream cone \\(0 \\le \\rho \\le \\rho_{0}\\), \\(0 \\le \\varphi \\le \\varphi_{0}\\), whose triple integral uses dV = \\(\\rho^{2} \\sin \\varphi\\) d\\(\\rho\\) d\\(\\varphi\\) d\\(\\theta\\).",
-          "ar": "Visualize the meridional \\((r, z)\\) cross-section of a spherical ice-cream cone \\(0 \\le \\rho \\le \\rho_{0}\\), \\(0 \\le \\varphi \\le \\varphi_{0}\\), whose triple التكامل uses dV = \\(\\rho^{2} \\sin \\varphi\\) d\\(\\rho\\) d\\(\\varphi\\) d\\(\\theta\\)."
+          "ar": null
         },
         "canvas3d": {
           "btnId": "mvctripleintegralsExCanvas_3dBtn",
@@ -187,7 +187,7 @@
         },
         "body": {
           "en": "<p>Let \\( B = [a,b] \\times [c,d] \\times [p,q] = \\{ (x,y,z) \\in \\mathbb{R}^3 \\mid a \\le x \\le b, \\, c \\le y \\le d, \\, p \\le z \\le q \\} \\). Partition each interval into subintervals of widths \\( \\Delta x = (b-a)/\\ell \\), \\( \\Delta y = (d-c)/m \\), and \\( \\Delta z = (q-p)/n \\). The sub-box volume is \\( \\Delta V = \\Delta x \\Delta y \\Delta z \\). For any continuous scalar field \\( f: B \\to \\mathbb{R} \\), the triple integral is defined as the limit of the triple Riemann sum: \\[ \\iiint_B f(x,y,z)\\,dV = \\lim_{\\ell,m,n \\to \\infty} \\sum_{i=1}^\\ell \\sum_{j=1}^m \\sum_{k=1}^n f(x_i^*, y_j^*, z_k^*) \\,\\Delta V, \\] provided this limit exists independently of the choice of sample points \\( (x_i^*, y_j^*, z_k^*) \\in B_{ijk} \\).</p>",
-          "ar": "<p>Let \\( B = [a,b] \\times [c,d] \\times [p,q] = \\{ (x,y,z) \\in \\mathbb{R}^3 \\mid a \\le x \\le b, \\, c \\le y \\le d, \\, p \\le z \\le q \\} \\). Partition each interval into subintervals of widths \\( \\Delta x = (b-a)/\\ell \\), \\( \\Delta y = (d-c)/m \\), and \\( \\Delta z = (q-p)/n \\). The sub-box الحجم is \\( \\Delta V = \\Delta x \\Delta y \\Delta z \\). For any continuous scalar field \\( f: B \\to \\mathbb{R} \\), the triple التكامل is defined as the النهاية of the triple Riemann sum: \\[ \\iiint_B f(x,y,z)\\,dV = \\lim_{\\ell,m,n \\to \\infty} \\sum_{i=1}^\\ell \\sum_{j=1}^m \\sum_{k=1}^n f(x_i^*, y_j^*, z_k^*) \\,\\Delta V, \\] provided this النهاية exists independently of the choice of sample points \\( (x_i^*, y_j^*, z_k^*) \\in B_{ijk} \\).</p>"
+          "ar": null
         }
       },
       {
@@ -199,7 +199,7 @@
         },
         "body": {
           "en": "<p><strong>Statement:</strong> If \\( f(x,y,z) \\) is continuous on the rectangular box \\( B = [a,b] \\times [c,d] \\times [p,q] \\), then the triple integral is equal to the iterated integral evaluated in any of the \\( 3! = 6 \\) possible integration orders: \\[ \\iiint_B f(x,y,z)\\,dV = \\int_a^b \\int_c^d \\int_p^q f(x,y,z)\\,dz\\,dy\\,dx = \\int_p^q \\int_c^d \\int_a^b f(x,y,z)\\,dx\\,dy\\,dz = \\dots \\] For a general bounded solid \\( E \\subset \\mathbb{R}^3 \\) of <em>Type I</em> (projectable onto a region \\( D \\subset \\mathbb{R}^2 \\) in the \\( xy \\)-plane between surfaces \\( z = u_1(x,y) \\) and \\( z = u_2(x,y) \\)): \\[ \\iiint_E f(x,y,z)\\,dV = \\iint_D \\left[ \\int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z)\\,dz \\right] dA. \\]</p>",
-          "ar": "<p><strong>Statement:</strong> If \\( f(x,y,z) \\) is continuous on the rectangular box \\( B = [a,b] \\times [c,d] \\times [p,q] \\), then the triple التكامل is equal to the iterated التكامل evaluated in any of the \\( 3! = 6 \\) possible integration orders: \\[ \\iiint_B f(x,y,z)\\,dV = \\int_a^b \\int_c^d \\int_p^q f(x,y,z)\\,dz\\,dy\\,dx = \\int_p^q \\int_c^d \\int_a^b f(x,y,z)\\,dx\\,dy\\,dz = \\dots \\] For a general bounded solid \\( E \\subset \\mathbb{R}^3 \\) of <em>Type I</em> (projectable onto a region \\( D \\subset \\mathbb{R}^2 \\) in the \\( xy \\)-plane between surfaces \\( z = u_1(x,y) \\) and \\( z = u_2(x,y) \\)): \\[ \\iiint_E f(x,y,z)\\,dV = \\iint_D \\left[ \\int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z)\\,dz \\right] dA. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -207,11 +207,11 @@
         "style": "pf",
         "label": {
           "en": "◆ Why It Works — First-Principles Derivation (Triple Integrals & Cylindrical/Spherical Coordinates)",
-          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (Triple التكاملات & Cylindrical/Spherical الإحداثيات)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic المعادلات Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) حيث \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For القيم الذاتية, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace المتجه \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the المصفوفة \\(A - \\lambda I\\) is singular, yielding the characteristic كثيرة الحدود \\(\\det(A - \\lambda I) = 0\\).</p>"
+          "ar": null
         }
       },
       {
@@ -223,7 +223,7 @@
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Evaluate \\( \\iiint_E z\\,dV \\), where \\( E \\) is the solid tetrahedron bounded by the coordinate planes \\( x=0, y=0, z=0 \\) and the plane \\( x + y + z = 1 \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Determine the bounding surfaces:</strong> In the vertical \\( z \\)-direction, \\( E \\) is bounded below by \\( z = 0 \\) and above by \\( z = 1 - x - y \\).</li><li><strong>Project onto the \\( xy \\)-plane:</strong> Setting \\( z = 0 \\) yields the planar triangle \\( D = \\{ (x,y) \\mid 0 \\le x \\le 1, \\, 0 \\le y \\le 1 - x \\} \\).</li><li><strong>Set up the iterated integral:</strong> \\[ \\iiint_E z\\,dV = \\int_0^1 \\int_0^{1-x} \\int_0^{1-x-y} z\\,dz\\,dy\\,dx. \\]</li><li><strong>Evaluate the innermost integral:</strong> \\[ \\int_0^{1-x-y} z\\,dz = \\left[ \\frac{z^2}{2} \\right]_0^{1-x-y} = \\frac{1}{2}(1 - x - y)^2. \\]</li><li><strong>Integrate with respect to \\( y \\):</strong> Using substitution \\( u = 1 - x - y \\), \\( du = -dy \\): \\[ \\int_0^{1-x} \\frac{1}{2}(1 - x - y)^2\\,dy = \\left[ -\\frac{1}{6}(1 - x - y)^3 \\right]_0^{1-x} = 0 - \\left( -\\frac{1}{6}(1-x)^3 \\right) = \\frac{1}{6}(1-x)^3. \\]</li><li><strong>Integrate with respect to \\( x \\):</strong> \\[ \\int_0^1 \\frac{1}{6}(1-x)^3\\,dx = \\left[ -\\frac{1}{24}(1-x)^4 \\right]_0^1 = 0 - \\left( -\\frac{1}{24} \\right) = \\frac{1}{24}. \\]</li></ol><p>Thus, \\( \\iiint_E z\\,dV = \\frac{1}{24} \\).</p>",
-          "ar": "<p><strong>Problem:</strong> احسب قيمة \\( \\iiint_E z\\,dV \\), حيث \\( E \\) is the solid tetrahedron bounded by the الإحداثي planes \\( x=0, y=0, z=0 \\) and the plane \\( x + y + z = 1 \\).</p><p><strong>Analytical الحل:</strong></p><ol><li><strong>Determine the bounding surfaces:</strong> In the vertical \\( z \\)-direction, \\( E \\) is bounded below by \\( z = 0 \\) and above by \\( z = 1 - x - y \\).</li><li><strong>Project onto the \\( xy \\)-plane:</strong> Setting \\( z = 0 \\) yields the planar المثلث \\( D = \\{ (x,y) \\mid 0 \\le x \\le 1, \\, 0 \\le y \\le 1 - x \\} \\).</li><li><strong>Set up the iterated التكامل:</strong> \\[ \\iiint_E z\\,dV = \\int_0^1 \\int_0^{1-x} \\int_0^{1-x-y} z\\,dz\\,dy\\,dx. \\]</li><li><strong>Evaluate the innermost التكامل:</strong> \\[ \\int_0^{1-x-y} z\\,dz = \\left[ \\frac{z^2}{2} \\right]_0^{1-x-y} = \\frac{1}{2}(1 - x - y)^2. \\]</li><li><strong>Integrate بالنسبة إلى \\( y \\):</strong> Using substitution \\( u = 1 - x - y \\), \\( du = -dy \\): \\[ \\int_0^{1-x} \\frac{1}{2}(1 - x - y)^2\\,dy = \\left[ -\\frac{1}{6}(1 - x - y)^3 \\right]_0^{1-x} = 0 - \\left( -\\frac{1}{6}(1-x)^3 \\right) = \\frac{1}{6}(1-x)^3. \\]</li><li><strong>Integrate بالنسبة إلى \\( x \\):</strong> \\[ \\int_0^1 \\frac{1}{6}(1-x)^3\\,dx = \\left[ -\\frac{1}{24}(1-x)^4 \\right]_0^1 = 0 - \\left( -\\frac{1}{24} \\right) = \\frac{1}{24}. \\]</li></ol><p>Thus, \\( \\iiint_E z\\,dV = \\frac{1}{24} \\).</p>"
+          "ar": null
         }
       },
       {
@@ -235,7 +235,7 @@
         },
         "body": {
           "en": "<p>Cylindrical coordinates represent a point \\( P(x,y,z) \\in \\mathbb{R}^3 \\) by \\( (r, \\theta, z) \\), where \\( (r,\\theta) \\) are polar coordinates of the orthogonal projection of \\( P \\) onto the \\( xy \\)-plane, and \\( z \\) is the directed vertical height: \\[ x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad z = z, \\qquad (r \\ge 0, \\; 0 \\le \\theta < 2\\pi). \\] The differential volume element represents a small cylindrical wedge of radial thickness \\( dr \\), angular width \\( d\\theta \\) (arc length \\( r\\,d\\theta \\)), and height \\( dz \\): \\[ dV = r\\,dz\\,dr\\,d\\theta. \\] Cylindrical coordinates are natural whenever the boundary surfaces exhibit rotational symmetry about the \\( z \\)-axis (cylinders \\( r = a \\), vertical cones \\( z = c r \\), paraboloids \\( z = c r^2 \\)).</p>",
-          "ar": "<p>Cylindrical الإحداثيات represent a point \\( P(x,y,z) \\in \\mathbb{R}^3 \\) by \\( (r, \\theta, z) \\), حيث \\( (r,\\theta) \\) are polar الإحداثيات of the orthogonal projection of \\( P \\) onto the \\( xy \\)-plane, and \\( z \\) is the directed vertical height: \\[ x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad z = z, \\qquad (r \\ge 0, \\; 0 \\le \\theta < 2\\pi). \\] The differential الحجم element represents a small cylindrical wedge of radial thickness \\( dr \\), angular width \\( d\\theta \\) (arc length \\( r\\,d\\theta \\)), and height \\( dz \\): \\[ dV = r\\,dz\\,dr\\,d\\theta. \\] Cylindrical الإحداثيات are natural whenever the boundary surfaces exhibit rotational symmetry about the \\( z \\)-axis (cylinders \\( r = a \\), vertical cones \\( z = c r \\), paraboloids \\( z = c r^2 \\)).</p>"
+          "ar": null
         }
       },
       {
@@ -247,7 +247,7 @@
         },
         "body": {
           "en": "<p>Spherical coordinates locate \\( P(x,y,z) \\) by \\( (\\rho, \\phi, \\theta) \\), where: <ul><li>\\( \\rho = \\sqrt{x^2+y^2+z^2} \\ge 0 \\) is the radial distance from the origin.</li><li>\\( \\phi \\in [0, \\pi] \\) is the <em>colatitude</em> (zenith angle) measured downward from the positive \\( z \\)-axis.</li><li>\\( \\theta \\in [0, 2\\pi) \\) is the <em>azimuthal angle</em> in the \\( xy \\)-plane from the positive \\( x \\)-axis.</li></ul> The transformation equations are: \\[ x = \\rho\\sin\\phi\\cos\\theta, \\quad y = \\rho\\sin\\phi\\sin\\theta, \\quad z = \\rho\\cos\\phi. \\] Note that the distance from the \\( z \\)-axis is \\( r = \\rho\\sin\\phi \\). A spherical wedge has radial length \\( d\\rho \\), meridian arc length \\( \\rho\\,d\\phi \\), and latitude arc length \\( (\\rho\\sin\\phi)\\,d\\theta \\). Multiplying the three mutually orthogonal edge lengths yields: \\[ dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta. \\]</p>",
-          "ar": "<p>Spherical الإحداثيات locate \\( P(x,y,z) \\) by \\( (\\rho, \\phi, \\theta) \\), حيث: <ul><li>\\( \\rho = \\sqrt{x^2+y^2+z^2} \\ge 0 \\) is the radial distance from the origin.</li><li>\\( \\phi \\in [0, \\pi] \\) is the <em>colatitude</em> (zenith الزاوية) measured downward from the positive \\( z \\)-axis.</li><li>\\( \\theta \\in [0, 2\\pi) \\) is the <em>azimuthal angle</em> in the \\( xy \\)-plane from the positive \\( x \\)-axis.</li></ul> The transformation المعادلات are: \\[ x = \\rho\\sin\\phi\\cos\\theta, \\quad y = \\rho\\sin\\phi\\sin\\theta, \\quad z = \\rho\\cos\\phi. \\] Note that the distance from the \\( z \\)-axis is \\( r = \\rho\\sin\\phi \\). A spherical wedge has radial length \\( d\\rho \\), meridian arc length \\( \\rho\\,d\\phi \\), and latitude arc length \\( (\\rho\\sin\\phi)\\,d\\theta \\). Multiplying the three mutually orthogonal edge lengths yields: \\[ dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -255,11 +255,11 @@
         "style": "thm",
         "label": {
           "en": "● Theorem 5.2 — Level 3: Derivation of the Spherical Volume Element via the 3D Jacobian",
-          "ar": "● مبرهنة 5.2 — Level 3: اشتقاق of the Spherical الحجم Element via the 3D Jacobian"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Theorem:</strong> Under the transformation \\( T: (\\rho, \\phi, \\theta) \\mapsto (x,y,z) \\), the volume element scales by the absolute value of the Jacobian determinant: \\[ dV = |\\det J| \\, d\\rho\\,d\\phi\\,d\\theta = \\left| \\frac{\\partial(x,y,z)}{\\partial(\\rho,\\phi,\\theta)} \\right| d\\rho\\,d\\phi\\,d\\theta = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta. \\]</p><p><strong>Rigorous Proof:</strong> The Jacobian matrix of partial derivatives is: \\[ J = \\begin{pmatrix} \\frac{\\partial x}{\\partial\\rho} & \\frac{\\partial x}{\\partial\\phi} & \\frac{\\partial x}{\\partial\\theta} \\\\[6pt] \\frac{\\partial y}{\\partial\\rho} & \\frac{\\partial y}{\\partial\\phi} & \\frac{\\partial y}{\\partial\\theta} \\\\[6pt] \\frac{\\partial z}{\\partial\\rho} & \\frac{\\partial z}{\\partial\\phi} & \\frac{\\partial z}{\\partial\\theta} \\end{pmatrix} = \\begin{pmatrix} \\sin\\phi\\cos\\theta & \\rho\\cos\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\[6pt] \\sin\\phi\\sin\\theta & \\rho\\cos\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\\\[6pt] \\cos\\phi & -\\rho\\sin\\phi & 0 \\end{pmatrix}. \\] Expanding along the third row (which contains a zero entry): \\[ \\det J = \\cos\\phi \\begin{vmatrix} \\rho\\cos\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\ \\rho\\cos\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\end{vmatrix} - (-\\rho\\sin\\phi) \\begin{vmatrix} \\sin\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\ \\sin\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\end{vmatrix} + 0. \\] Evaluate the first \\( 2\\times 2 \\) minor: \\[ M_1 = (\\rho\\cos\\phi\\cos\\theta)(\\rho\\sin\\phi\\cos\\theta) - (-\\rho\\sin\\phi\\sin\\theta)(\\rho\\cos\\phi\\sin\\theta) = \\rho^2\\sin\\phi\\cos\\phi(\\cos^2\\theta + \\sin^2\\theta) = \\rho^2\\sin\\phi\\cos\\phi. \\] Evaluate the second \\( 2\\times 2 \\) minor: \\[ M_2 = (\\sin\\phi\\cos\\theta)(\\rho\\sin\\phi\\cos\\theta) - (-\\rho\\sin\\phi\\sin\\theta)(\\sin\\phi\\sin\\theta) = \\rho\\sin^2\\phi(\\cos^2\\theta + \\sin^2\\theta) = \\rho\\sin^2\\phi. \\] Substituting both minors into the cofactor expansion: \\[ \\det J = \\cos\\phi (\\rho^2\\sin\\phi\\cos\\phi) + \\rho\\sin\\phi (\\rho\\sin^2\\phi) = \\rho^2\\sin\\phi \\cos^2\\phi + \\rho^2\\sin\\phi \\sin^2\\phi = \\rho^2\\sin\\phi (\\cos^2\\phi + \\sin^2\\phi) = \\rho^2\\sin\\phi. \\] Since \\( \\phi \\in [0, \\pi] \\), \\( \\sin\\phi \\ge 0 \\), and \\( \\rho \\ge 0 \\), \\( |\\det J| = \\rho^2\\sin\\phi \\). \\( \\blacksquare \\)</p>",
-          "ar": "<p><strong>Theorem:</strong> Under the transformation \\( T: (\\rho, \\phi, \\theta) \\mapsto (x,y,z) \\), the الحجم element scales by the absolute value of the Jacobian المحدد: \\[ dV = |\\det J| \\, d\\rho\\,d\\phi\\,d\\theta = \\left| \\frac{\\partial(x,y,z)}{\\partial(\\rho,\\phi,\\theta)} \\right| d\\rho\\,d\\phi\\,d\\theta = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta. \\]</p><p><strong>Rigorous برهان:</strong> The Jacobian المصفوفة of partial المشتقات is: \\[ J = \\begin{pmatrix} \\frac{\\partial x}{\\partial\\rho} & \\frac{\\partial x}{\\partial\\phi} & \\frac{\\partial x}{\\partial\\theta} \\\\[6pt] \\frac{\\partial y}{\\partial\\rho} & \\frac{\\partial y}{\\partial\\phi} & \\frac{\\partial y}{\\partial\\theta} \\\\[6pt] \\frac{\\partial z}{\\partial\\rho} & \\frac{\\partial z}{\\partial\\phi} & \\frac{\\partial z}{\\partial\\theta} \\end{pmatrix} = \\begin{pmatrix} \\sin\\phi\\cos\\theta & \\rho\\cos\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\[6pt] \\sin\\phi\\sin\\theta & \\rho\\cos\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\\\[6pt] \\cos\\phi & -\\rho\\sin\\phi & 0 \\end{pmatrix}. \\] Expanding along the third row (which contains a zero entry): \\[ \\det J = \\cos\\phi \\begin{vmatrix} \\rho\\cos\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\ \\rho\\cos\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\end{vmatrix} - (-\\rho\\sin\\phi) \\begin{vmatrix} \\sin\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\ \\sin\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\end{vmatrix} + 0. \\] احسب قيمة first \\( 2\\times 2 \\) minor: \\[ M_1 = (\\rho\\cos\\phi\\cos\\theta)(\\rho\\sin\\phi\\cos\\theta) - (-\\rho\\sin\\phi\\sin\\theta)(\\rho\\cos\\phi\\sin\\theta) = \\rho^2\\sin\\phi\\cos\\phi(\\cos^2\\theta + \\sin^2\\theta) = \\rho^2\\sin\\phi\\cos\\phi. \\] احسب قيمة second \\( 2\\times 2 \\) minor: \\[ M_2 = (\\sin\\phi\\cos\\theta)(\\rho\\sin\\phi\\cos\\theta) - (-\\rho\\sin\\phi\\sin\\theta)(\\sin\\phi\\sin\\theta) = \\rho\\sin^2\\phi(\\cos^2\\theta + \\sin^2\\theta) = \\rho\\sin^2\\phi. \\] Substituting both minors into the cofactor expansion: \\[ \\det J = \\cos\\phi (\\rho^2\\sin\\phi\\cos\\phi) + \\rho\\sin\\phi (\\rho\\sin^2\\phi) = \\rho^2\\sin\\phi \\cos^2\\phi + \\rho^2\\sin\\phi \\sin^2\\phi = \\rho^2\\sin\\phi (\\cos^2\\phi + \\sin^2\\phi) = \\rho^2\\sin\\phi. \\] Since \\( \\phi \\in [0, \\pi] \\), \\( \\sin\\phi \\ge 0 \\), and \\( \\rho \\ge 0 \\), \\( |\\det J| = \\rho^2\\sin\\phi \\). \\( \\blacksquare \\)</p>"
+          "ar": null
         }
       },
       {
@@ -267,11 +267,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 5.2 — Level 2: Volume of an Ice-Cream Cone via Spherical Coordinates",
-          "ar": "مثال محلول 5.2 — Level 2: الحجم of an Ice-Cream Cone via Spherical الإحداثيات"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Find the volume of the solid \\( E \\) bounded above by the sphere \\( x^2+y^2+z^2 = 4 \\) and below by the cone \\( z = \\sqrt{x^2+y^2} \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Express the bounding surfaces in spherical coordinates:</strong><ul><li>The sphere \\( x^2+y^2+z^2 = 4 \\) becomes \\( \\rho^2 = 4 \\implies \\rho = 2 \\).</li><li>The cone \\( z = \\sqrt{x^2+y^2} \\implies \\rho\\cos\\phi = \\rho\\sin\\phi \\implies \\tan\\phi = 1 \\implies \\phi = \\frac{\\pi}{4} \\).</li></ul></li><li><strong>Identify the parameter limits:</strong> The solid is described by: \\[ 0 \\le \\rho \\le 2, \\quad 0 \\le \\phi \\le \\frac{\\pi}{4}, \\quad 0 \\le \\theta \\le 2\\pi. \\]</li><li><strong>Set up and evaluate the triple integral:</strong> Since the bounds are constants and the integrand separates: \\[ V = \\iiint_E 1\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^{\\pi/4} \\!\\! \\int_0^2 \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^2 \\rho^2\\,d\\rho \\right). \\]</li><li><strong>Calculate the individual factors:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi = \\Big[-\\cos\\phi\\Big]_0^{\\pi/4} = 1 - \\frac{\\sqrt{2}}{2}, \\qquad \\int_0^2 \\rho^2\\,d\\rho = \\left[ \\frac{\\rho^3}{3} \\right]_0^2 = \\frac{8}{3}. \\]</li><li><strong>Multiply results:</strong> \\[ V = (2\\pi) \\left( 1 - \\frac{\\sqrt{2}}{2} \\right) \\left( \\frac{8}{3} \\right) = \\frac{16\\pi}{3}\\left( 1 - \\frac{\\sqrt{2}}{2} \\right) = \\frac{8\\pi(2-\\sqrt{2})}{3}. \\]</li></ol>",
-          "ar": "<p><strong>Problem:</strong> أوجد حجم the solid \\( E \\) bounded above by the sphere \\( x^2+y^2+z^2 = 4 \\) and below by the cone \\( z = \\sqrt{x^2+y^2} \\).</p><p><strong>Analytical الحل:</strong></p><ol><li><strong>Express the bounding surfaces in spherical الإحداثيات:</strong><ul><li>The sphere \\( x^2+y^2+z^2 = 4 \\) becomes \\( \\rho^2 = 4 \\implies \\rho = 2 \\).</li><li>The cone \\( z = \\sqrt{x^2+y^2} \\implies \\rho\\cos\\phi = \\rho\\sin\\phi \\implies \\tan\\phi = 1 \\implies \\phi = \\frac{\\pi}{4} \\).</li></ul></li><li><strong>Identify the المعامل النهايات:</strong> The solid is described by: \\[ 0 \\le \\rho \\le 2, \\quad 0 \\le \\phi \\le \\frac{\\pi}{4}, \\quad 0 \\le \\theta \\le 2\\pi. \\]</li><li><strong>Set up and احسب قيمة triple التكامل:</strong> Since the bounds are constants and the integrand separates: \\[ V = \\iiint_E 1\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^{\\pi/4} \\!\\! \\int_0^2 \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^2 \\rho^2\\,d\\rho \\right). \\]</li><li><strong>Calculate the individual factors:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi = \\Big[-\\cos\\phi\\Big]_0^{\\pi/4} = 1 - \\frac{\\sqrt{2}}{2}, \\qquad \\int_0^2 \\rho^2\\,d\\rho = \\left[ \\frac{\\rho^3}{3} \\right]_0^2 = \\frac{8}{3}. \\]</li><li><strong>Multiply results:</strong> \\[ V = (2\\pi) \\left( 1 - \\frac{\\sqrt{2}}{2} \\right) \\left( \\frac{8}{3} \\right) = \\frac{16\\pi}{3}\\left( 1 - \\frac{\\sqrt{2}}{2} \\right) = \\frac{8\\pi(2-\\sqrt{2})}{3}. \\]</li></ol>"
+          "ar": null
         }
       },
       {
@@ -279,11 +279,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 5.3 — Level 3: Rotational Inertia of a Solid Homogeneous Ball",
-          "ar": "مثال محلول 5.3 — Level 3: Rotational Inertia of a Solid Homogeneous Ball"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Problem:</strong> A solid ball \\( B \\) of radius \\( R \\) has uniform mass density \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\). Derive from first principles the moment of inertia about the \\( z \\)-axis: \\[ I_z = \\iiint_B (x^2+y^2)\\,\\delta_0\\,dV. \\]</p><p><strong>Analytical Derivation:</strong></p><ol><li><strong>Convert the integrand to spherical coordinates:</strong> The distance squared from the \\( z \\)-axis is: \\[ x^2+y^2 = (\\rho\\sin\\phi\\cos\\theta)^2 + (\\rho\\sin\\phi\\sin\\theta)^2 = \\rho^2\\sin^2\\phi. \\]</li><li><strong>Set up the integral:</strong> \\[ I_z = \\delta_0 \\int_0^{2\\pi} \\!\\! \\int_0^\\pi \\!\\! \\int_0^R (\\rho^2\\sin^2\\phi) (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\delta_0 \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin^3\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^4\\,d\\rho \\right). \\]</li><li><strong>Compute the \\( \\rho \\) and \\( \\theta \\) integrals:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^R \\rho^4\\,d\\rho = \\frac{R^5}{5}. \\]</li><li><strong>Evaluate the \\( \\phi \\) integral using \\( \\sin^3\\phi = \\sin\\phi(1-\\cos^2\\phi) \\):</strong> Let \\( u = \\cos\\phi \\), \\( du = -\\sin\\phi\\,d\\phi \\): \\[ \\int_0^\\pi \\sin^3\\phi\\,d\\phi = \\int_1^{-1} -(1-u^2)\\,du = \\int_{-1}^1 (1-u^2)\\,du = \\left[ u - \\frac{u^3}{3} \\right]_{-1}^1 = \\left(1-\\frac{1}{3}\\right) - \\left(-1+\\frac{1}{3}\\right) = \\frac{4}{3}. \\]</li><li><strong>Assemble the product:</strong> \\[ I_z = \\delta_0 \\cdot (2\\pi) \\cdot \\frac{4}{3} \\cdot \\frac{R^5}{5} = \\delta_0 \\cdot \\frac{8\\pi R^5}{15}. \\]</li><li><strong>Substitute \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\):</strong> \\[ I_z = \\left( \\frac{3M}{4\\pi R^3} \\right) \\left( \\frac{8\\pi R^5}{15} \\right) = \\frac{3 \\times 8}{4 \\times 15} M R^2 = \\frac{2}{5} M R^2. \\]</li></ol><p>This yields the classical university physics result \\( I_z = \\frac{2}{5}MR^2 \\) purely via multivariable integration.</p>",
-          "ar": "<p><strong>Problem:</strong> A solid ball \\( B \\) of نصف القطر \\( R \\) has uniform mass density \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\). Derive from first principles the moment of inertia about the \\( z \\)-axis: \\[ I_z = \\iiint_B (x^2+y^2)\\,\\delta_0\\,dV. \\]</p><p><strong>Analytical اشتقاق:</strong></p><ol><li><strong>Convert the integrand to spherical الإحداثيات:</strong> The distance squared from the \\( z \\)-axis is: \\[ x^2+y^2 = (\\rho\\sin\\phi\\cos\\theta)^2 + (\\rho\\sin\\phi\\sin\\theta)^2 = \\rho^2\\sin^2\\phi. \\]</li><li><strong>Set up the التكامل:</strong> \\[ I_z = \\delta_0 \\int_0^{2\\pi} \\!\\! \\int_0^\\pi \\!\\! \\int_0^R (\\rho^2\\sin^2\\phi) (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\delta_0 \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin^3\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^4\\,d\\rho \\right). \\]</li><li><strong>Compute the \\( \\rho \\) and \\( \\theta \\) التكاملات:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^R \\rho^4\\,d\\rho = \\frac{R^5}{5}. \\]</li><li><strong>Evaluate the \\( \\phi \\) التكامل using \\( \\sin^3\\phi = \\sin\\phi(1-\\cos^2\\phi) \\):</strong> Let \\( u = \\cos\\phi \\), \\( du = -\\sin\\phi\\,d\\phi \\): \\[ \\int_0^\\pi \\sin^3\\phi\\,d\\phi = \\int_1^{-1} -(1-u^2)\\,du = \\int_{-1}^1 (1-u^2)\\,du = \\left[ u - \\frac{u^3}{3} \\right]_{-1}^1 = \\left(1-\\frac{1}{3}\\right) - \\left(-1+\\frac{1}{3}\\right) = \\frac{4}{3}. \\]</li><li><strong>Assemble the product:</strong> \\[ I_z = \\delta_0 \\cdot (2\\pi) \\cdot \\frac{4}{3} \\cdot \\frac{R^5}{5} = \\delta_0 \\cdot \\frac{8\\pi R^5}{15}. \\]</li><li><strong>Substitute \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\):</strong> \\[ I_z = \\left( \\frac{3M}{4\\pi R^3} \\right) \\left( \\frac{8\\pi R^5}{15} \\right) = \\frac{3 \\times 8}{4 \\times 15} M R^2 = \\frac{2}{5} M R^2. \\]</li></ol><p>This yields the classical university physics result \\( I_z = \\frac{2}{5}MR^2 \\) purely via multivariable integration.</p>"
+          "ar": null
         }
       },
       {
@@ -388,7 +388,7 @@
         },
         "body": {
           "en": "<p><strong>1. Missing the Differential Metric Factors:</strong> Never write \\( dV = dr\\,d\\theta\\,dz \\) or \\( dV = d\\rho\\,d\\phi\\,d\\theta \\). The Jacobian determinants dictate that \\( dV = r\\,dz\\,dr\\,d\\theta \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). Omitting \\( r \\) or \\( \\rho^2\\sin\\phi \\) invalidates dimensional analysis and gives incorrect answers.</p><p><strong>2. Colatitude \\( \\phi \\) vs. Azimuth \\( \\theta \\) Domain Restrictions:</strong> The angle \\( \\phi \\) measures deviation from the zenith (North pole) and satisfies \\( 0 \\le \\phi \\le \\pi \\). Integrating \\( \\phi \\) over \\( [0, 2\\pi] \\) double-covers the sphere and produces zero due to \\( \\int_0^{2\\pi} \\sin\\phi\\,d\\phi = 0 \\).</p><p><strong>3. Variable Dependency in Limits:</strong> In an iterated integral \\( \\int_a^b \\int_{g_1(x)}^{g_2(x)} \\int_{u_1(x,y)}^{u_2(x,y)} f\\,dz\\,dy\\,dx \\), the limits for \\( z \\) can depend on \\( x \\) and \\( y \\); the limits for \\( y \\) can depend only on \\( x \\); the outer limits must be constants. Outer limits containing inner variables indicate an inverted integration setup.</p><p><strong>4. Shifted Spheres:</strong> For a sphere tangent to the \\( xy \\)-plane \\( x^2+y^2+(z-a)^2 = a^2 \\iff x^2+y^2+z^2 = 2az \\), the spherical equation is \\( \\rho^2 = 2a\\rho\\cos\\phi \\implies \\rho = 2a\\cos\\phi \\). The domain is restricted to \\( 0 \\le \\phi \\le \\frac{\\pi}{2} \\) (the upper hemisphere), since \\( z \\ge 0 \\implies \\cos\\phi \\ge 0 \\).</p>",
-          "ar": "<p><strong>1. Missing the Differential Metric Factors:</strong> Never write \\( dV = dr\\,d\\theta\\,dz \\) or \\( dV = d\\rho\\,d\\phi\\,d\\theta \\). The Jacobian determinants dictate that \\( dV = r\\,dz\\,dr\\,d\\theta \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). Omitting \\( r \\) or \\( \\rho^2\\sin\\phi \\) invalidates dimensional analysis and gives incorrect answers.</p><p><strong>2. Colatitude \\( \\phi \\) vs. Azimuth \\( \\theta \\) المجال Restrictions:</strong> The الزاوية \\( \\phi \\) measures deviation from the zenith (North pole) and satisfies \\( 0 \\le \\phi \\le \\pi \\). Integrating \\( \\phi \\) over \\( [0, 2\\pi] \\) double-covers the sphere and produces zero due to \\( \\int_0^{2\\pi} \\sin\\phi\\,d\\phi = 0 \\).</p><p><strong>3. المتغير Dependency in النهايات:</strong> In an iterated التكامل \\( \\int_a^b \\int_{g_1(x)}^{g_2(x)} \\int_{u_1(x,y)}^{u_2(x,y)} f\\,dz\\,dy\\,dx \\), the النهايات for \\( z \\) can depend on \\( x \\) and \\( y \\); the النهايات for \\( y \\) can depend only on \\( x \\); the outer النهايات must be constants. Outer النهايات containing inner المتغيرات indicate an inverted integration setup.</p><p><strong>4. Shifted Spheres:</strong> For a sphere tangent to the \\( xy \\)-plane \\( x^2+y^2+(z-a)^2 = a^2 \\iff x^2+y^2+z^2 = 2az \\), the spherical المعادلة is \\( \\rho^2 = 2a\\rho\\cos\\phi \\implies \\rho = 2a\\cos\\phi \\). The المجال is restricted to \\( 0 \\le \\phi \\le \\frac{\\pi}{2} \\) (the upper hemisphere), since \\( z \\ge 0 \\implies \\cos\\phi \\ge 0 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -396,18 +396,18 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(D\\) — Triple Integrals & Cylindrical/Spherical Coordinates (Easy Application)",
-          "ar": "مثال محلول \\(D\\) — Triple التكاملات & Cylindrical/Spherical الإحداثيات (Easy Application)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> Consider the solid region \\(E\\) in the first octant bounded by the coordinate planes and the surface \\(z = 4 - x^2 - y^2\\). The volume of this region is given by the triple integral \\( V = \\iiint_E dV \\). We are given that the volume can also be expressed in cylindrical coordinates as \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Find the value of the parameter \\(a\\).</p><p><strong>Step-by-Step Solution:</strong> The solid region \\(E\\) is in the first octant and is bounded by \\(z = 0\\), \\(x = 0\\), \\(y = 0\\) and \\(z = 4 - x^2 - y^2\\). In cylindrical coordinates, \\(x^2 + y^2 = r^2\\), so the surface is \\(z = 4 - r^2\\). Since the region is in the first octant, \\(0 \\le \\theta \\le \\pi/2\\). The lower bound for \\(z\\) is \\(z = 0\\). The upper bound for \\(z\\) is \\(4 - r^2\\). \\\\\nTo determine the bounds for \\(r\\), we look at the projection of the solid onto the \\(xy\\)-plane. This projection is determined by the intersection of \\(z = 4 - x^2 - y^2\\) with the \\(xy\\)-plane (i.e., \\(z=0\\)). This gives \\(0 = 4 - x^2 - y^2\\), or \\(x^2 + y^2 = 4\\). In the first quadrant of the \\(xy\\)-plane, this is a quarter circle of radius 2. Thus, \\(0 \\le r \\le 2\\). \\\\\nThe given integral in cylindrical coordinates is \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Comparing the limits for \\(r\\), we have \\( \\sqrt{a} = 2 \\). Squaring both sides, we get \\( a = 4 \\).</p>",
-          "ar": "<p><strong>Problem (Easy):</strong> Consider the solid region \\(E\\) in the first octant bounded by the الإحداثي planes and the surface \\(z = 4 - x^2 - y^2\\). The الحجم of this region is المعطيات by the triple التكامل \\( V = \\iiint_E dV \\). We are بما أن the الحجم can also be expressed in cylindrical الإحداثيات as \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). أوجد قيمة the المعامل \\(a\\).</p><p><strong>Step-by-Step الحل:</strong> The solid region \\(E\\) is in the first octant and is bounded by \\(z = 0\\), \\(x = 0\\), \\(y = 0\\) and \\(z = 4 - x^2 - y^2\\). In cylindrical الإحداثيات, \\(x^2 + y^2 = r^2\\), so the surface is \\(z = 4 - r^2\\). Since the region is in the first octant, \\(0 \\le \\theta \\le \\pi/2\\). The lower bound for \\(z\\) is \\(z = 0\\). The upper bound for \\(z\\) is \\(4 - r^2\\). \\\\\nTo حدّد bounds for \\(r\\), we look at the projection of the solid onto the \\(xy\\)-plane. This projection is determined by the التقاطع of \\(z = 4 - x^2 - y^2\\) with the \\(xy\\)-plane (i.e., \\(z=0\\)). This gives \\(0 = 4 - x^2 - y^2\\), or \\(x^2 + y^2 = 4\\). In the first quadrant of the \\(xy\\)-plane, this is a quarter الدائرة of نصف القطر 2. وعليه, \\(0 \\le r \\le 2\\). \\\\\nThe المعطيات التكامل in cylindrical الإحداثيات is \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Comparing the النهايات for \\(r\\), we have \\( \\sqrt{a} = 2 \\). Squaring both sides, we get \\( a = 4 \\).</p>"
+          "ar": null
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Triple Integrals & Cylindrical/Spherical Coordinates)",
-          "ar": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Triple التكاملات & Cylindrical/Spherical الإحداثيات)"
+          "ar": null
         },
         "columns": [
           {
@@ -431,7 +431,7 @@
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": "المتجهات are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\)."
+              "ar": null
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
@@ -441,15 +441,15 @@
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": "Using the same المعامل \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)"
+              "ar": null
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": "Tests for a simultaneous collision at time \\(t\\) rather than geometric التقاطع of paths."
+              "ar": null
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": "Assign distinct المعاملات \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components."
+              "ar": null
             }
           ],
           [
@@ -459,7 +459,7 @@
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors عندما \\(AB \\ne BA\\)."
+              "ar": null
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
@@ -477,7 +477,7 @@
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": "<p><strong>Fast المصفوفة &amp; المتجه Verification (University Multivariable & المتجه التفاضل والتكامل):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and المحدد invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>"
+          "ar": null
         }
       },
       {
@@ -488,7 +488,7 @@
         },
         "solution": {
           "en": "<p>In spherical coordinates, \\( x^2+y^2+z^2 = \\rho^2 \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). The ball \\( E \\) is defined by \\( 0 \\le \\rho \\le a \\), \\( 0 \\le \\phi \\le \\pi \\), \\( 0 \\le \\theta \\le 2\\pi \\). \\[ \\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right). \\] Evaluating each integral: \\[ 2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}. \\]</p>",
-          "ar": "خطوات الحل التفصيلية: <p>In spherical coordinates, \\( x^2+y^2+z^2 = \\rho^2 \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). The ball \\( E \\) is defined by \\( 0 \\le \\rho \\le a \\), \\( 0 \\le \\phi \\le \\pi \\), \\( 0 \\le \\theta \\le 2\\pi \\). \\[ \\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right). \\] Evaluating each integral: \\[ 2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}. \\]</p>"
+          "ar": null
         },
         "hints": [
           {
@@ -509,11 +509,11 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice Problem 2:</strong> Find the mass of a solid right circular cylinder of radius \\( R \\) and height \\( h \\) whose density at any point is proportional to its distance from the axis of symmetry, \\( \\delta(r,\\theta,z) = k r \\) for constant \\( k > 0 \\).",
-          "ar": "<strong>Practice Problem 2:</strong> أوجد mass of a solid right circular cylinder of radius \\( R \\) and height \\( h \\) whose density at any point is proportional to its distance from the axis of symmetry, \\( \\delta(r,\\theta,z) = k r \\) for constant \\( k > 0 \\)."
+          "ar": null
         },
         "solution": {
           "en": "<p>Using cylindrical coordinates, the cylinder \\( E \\) is bounded by \\( 0 \\le r \\le R \\), \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le z \\le h \\). The differential volume is \\( dV = r\\,dz\\,dr\\,d\\theta \\). The total mass is: \\[ M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right). \\] \\[ M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right) = \\frac{2\\pi k h R^3}{3}. \\]</p>",
-          "ar": "<p>Using cylindrical coordinates, the cylinder \\( E \\) is bounded by \\( 0 \\le r \\le R \\), \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le z \\le h \\). The dإذا كانferential volume is \\( dV = r\\,dz\\,dr\\,d\\theta \\). The total mass is: \\[ M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right). \\] \\[ M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right) = \\frac{2\\pi k h R^3}{3}. \\]</p>"
+          "ar": null
         },
         "hints": [
           {
@@ -522,7 +522,7 @@
           },
           {
             "en": "The differential volume is \\( dV = r\\,dz\\,dr\\,d\\theta \\). The total mass is: \\(M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right)\\).",
-            "ar": "The dإذا كانferential volume is \\( dV = r\\,dz\\,dr\\,d\\theta \\). The total mass is: \\(M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right)\\)."
+            "ar": null
           },
           {
             "en": "Use the resulting form to finish: \\(M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right)\\).",
@@ -534,7 +534,7 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> Consider the solid region \\( E \\) bounded below by the cone \\( z = \\sqrt{x^2 + y^2} \\) and above by the sphere \\( x^2 + y^2 + z^2 = 16 \\). The volume of \\( E \\) is given by the triple integral \\( V = \\iiint_E dV \\). If \\( E \\) is expressed in spherical coordinates, the integral becomes \\( \\int_{\\alpha}^{\\beta} \\int_{\\gamma}^{\\delta} \\int_{\\rho_1}^{\\rho_2} \\rho^2 \\sin{\\phi} \\, d\\rho \\, d\\phi \\, d\\theta \\). Determine the value of \\( \\alpha \\), the lower limit of integration for \\( \\theta \\).",
-          "ar": "<strong>[Practice 3 · Medium]</strong> Consider the solid region \\( E \\) bounded below بتطبيق cone \\( z = \\sqrt{x^2 + y^2} \\) and above بتطبيق sphere \\( x^2 + y^2 + z^2 = 16 \\). The volume of \\( E \\) is given بتطبيق triple integral \\( V = \\iiint_E dV \\). إذا كان \\( E \\) is expressed in spherical coordinates, the integral becomes \\( \\int_{\\alpha}^{\\beta} \\int_{\\gamma}^{\\delta} \\int_{\\rho_1}^{\\rho_2} \\rho^2 \\sin{\\phi} \\, d\\rho \\, d\\phi \\, d\\theta \\). حدّد value of \\( \\alpha \\), the lower limit of integration for \\( \\theta \\)."
+          "ar": null
         },
         "hints": [
           {
@@ -552,14 +552,14 @@
         ],
         "solution": {
           "en": "The region \\( E \\) is a spherical cone. The upper bound is a sphere of radius 4 centered at the origin, so \\( \\rho \\) ranges from 0 to 4. The lower bound is the cone \\( z = \\sqrt{x^2 + y^2} \\). In spherical coordinates, \\( z = \\rho \\cos{\\phi} \\) and \\( \\sqrt{x^2 + y^2} = \\rho \\sin{\\phi} \\). Thus, the cone equation becomes \\( \\rho \\cos{\\phi} = \\rho \\sin{\\phi} \\). For \\( \\rho\neq 0 \\), this simplifies to \\( \\cos{\\phi} = \\sin{\\phi} \\), which means \\( \\tan{\\phi} = 1 \\). In the range \\( 0 \\le \\phi \\le \\pi \\), this occurs at \\( \\phi = \\frac{\\pi}{4} \\). Therefore, \\( \\phi \\) ranges from 0 to \\( \\frac{\\pi}{4} \\). Since the solid region is symmetric about the z-axis and covers the entire 'spiky' part of the cone and sphere, \\( \\theta \\) ranges from 0 to \\( 2\\pi \\). Thus, \\( \\alpha = 0 \\), \\( \\beta = 2\\pi \\), \\( \\gamma = 0 \\), \\( \\delta = \\frac{\\pi}{4} \\), and \\( \\rho_1 = 0 \\), \\( \\rho_2 = 4 \\). The lower limit of integration for \\( \\theta \\) is \\( \\alpha = 0 \\).",
-          "ar": "The region \\( E \\) is a spherical cone. The upper bound is a sphere of radius 4 centered at the origin, so \\( \\rho \\) ranges from 0 to 4. The lower bound is the cone \\( z = \\sqrt{x^2 + y^2} \\). In spherical coordinates, \\( z = \\rho \\cos{\\phi} \\) and \\( \\sqrt{x^2 + y^2} = \\rho \\sin{\\phi} \\). وعليه، the cone equation becomes \\( \\rho \\cos{\\phi} = \\rho \\sin{\\phi} \\). For \\( \\rho\neq 0 \\), this simplإذا كانies to \\( \\cos{\\phi} = \\sin{\\phi} \\), which means \\( \\tan{\\phi} = 1 \\). In the range \\( 0 \\le \\phi \\le \\pi \\), this occurs at \\( \\phi = \\frac{\\pi}{4} \\). وبالتالي، \\( \\phi \\) ranges from 0 to \\( \\frac{\\pi}{4} \\). Since the solid region is symmetric about the z-axis and covers the entire 'spiky' part of the cone and sphere, \\( \\theta \\) ranges from 0 to \\( 2\\pi \\). وعليه، \\( \\alpha = 0 \\), \\( \\beta = 2\\pi \\), \\( \\gamma = 0 \\), \\( \\delta = \\frac{\\pi}{4} \\), and \\( \\rho_1 = 0 \\), \\( \\rho_2 = 4 \\). The lower limit of integration for \\( \\theta \\) is \\( \\alpha = 0 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Hard]</strong> A solid region \\(E\\) is defined by the inequalities \\(x^2 + y^2 \\leq 16\\), \\(0 \\leq z \\leq 5\\). The volume of this region can be computed using a triple integral. In cylindrical coordinates, the region \\(E\\) is described by \\(0 \\leq r \\leq R\\), \\(0 \\leq \\theta \\leq 2\\pi\\), and \\(0 \\leq z \\leq H\\). What is the value of \\(R\\)?",
-          "ar": "<strong>[Practice 4 · Hard]</strong> A solid region \\(E\\) is defined بتطبيق inequalities \\(x^2 + y^2 \\leq 16\\), \\(0 \\leq z \\leq 5\\). The volume of this region can be computed using a triple integral. In cylindrical coordinates, the region \\(E\\) is described by \\(0 \\leq r \\leq R\\), \\(0 \\leq \\theta \\leq 2\\pi\\), and \\(0 \\leq z \\leq H\\). ما قيمة \\(R\\)?"
+          "ar": null
         },
         "hints": [
           {
@@ -568,7 +568,7 @@
           },
           {
             "en": "The inequality \\(x^2 + y^2 \\leq 16\\) describes a circle of radius 4 centered at the origin in the \\(xy\\)-plane. When converting to cylindrical coordinates, \\(x^2 + y^2\\) becomes \\(r^2\\).",
-            "ar": "The inequality \\(x^2 + y^2 \\leq 16\\) describes a circle of radius 4 centered at the origin in the \\(xy\\)-plane. عندما converting to cylindrical coordinates, \\(x^2 + y^2\\) becomes \\(r^2\\)."
+            "ar": null
           },
           {
             "en": "The limits for \\(\\theta\\) are \\(0 \\leq \\theta \\leq 2\\pi\\) as the region is a full circle.",
@@ -577,27 +577,27 @@
         ],
         "solution": {
           "en": "The given region is a cylinder with radius \\(R_{cyl}\\) and height \\(H_{cyl}\\). The inequality \\(x^2 + y^2 \\leq 16\\) describes a circle of radius 4 centered at the origin in the \\(xy\\)-plane. When converting to cylindrical coordinates, \\(x^2 + y^2\\) becomes \\(r^2\\). Thus, the inequality \\(r^2 \\leq 16\\) implies \\(r \\leq 4\\). Therefore, in cylindrical coordinates, the radial component of the region is described by \\(0 \\leq r \\leq 4\\). The question states that the region is described by \\(0 \\leq r \\leq R\\), so \\(R=4\\). The inequality \\(0 \\leq z \\leq 5\\) defines the height of the cylinder, which is \\(H=5\\). The limits for \\(\\theta\\) are \\(0 \\leq \\theta \\leq 2\\pi\\) as the region is a full circle.",
-          "ar": "The given region is a cylinder with radius \\(R_{cyl}\\) and height \\(H_{cyl}\\). The inequality \\(x^2 + y^2 \\leq 16\\) describes a circle of radius 4 centered at the origin in the \\(xy\\)-plane. عندما converting to cylindrical coordinates, \\(x^2 + y^2\\) becomes \\(r^2\\). وعليه، the inequality \\(r^2 \\leq 16\\) implies \\(r \\leq 4\\). وبالتالي، in cylindrical coordinates, the radial component of the region is described by \\(0 \\leq r \\leq 4\\). The question states that the region is described by \\(0 \\leq r \\leq R\\), so \\(R=4\\). The inequality \\(0 \\leq z \\leq 5\\) defines the height of the cylinder, which is \\(H=5\\). The limits for \\(\\theta\\) are \\(0 \\leq \\theta \\leq 2\\pi\\) as the region is a full circle."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "Consider the vector field \\( \\mathbf{u}(s, y, z) = \\langle 22s,\\, 7y,\\, 7z \\rangle \\) on \\( \\mathbb{R}^3 \\). Compute the scalar divergence \\( \\nabla \\cdot \\mathbf{u} \\).",
-          "ar": "حل المسألة التالية في (Triple Integrals & Cylindrical/Spherical Coordinates): Consider the vector field \\( \\mathbf{u}(s, y, z) = \\langle 22s,\\, 7y,\\, 7z \\rangle \\) on \\( \\mathbb{R}^3 \\). Compute the scalar divergence \\( \\nabla \\cdot \\mathbf{u} \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Set up the calculation for: The divergence is.",
-            "ar": "تلميح للحل: استخدم العلاقة Set up the calculation for: The divergence is. لتبسيط الخطوة."
+            "ar": null
           },
           {
             "en": "Write out the unsimplified expression: \\(22 + 7 + 7\\).",
-            "ar": "Write out the unsimplإذا كانied expression: \\(22 + 7 + 7\\)."
+            "ar": null
           },
           {
             "en": "Perform the arithmetic in \\(22 + 7 + 7\\) to find the final value.",
-            "ar": "Perform the arithmetic in \\(22 + 7 + 7\\) to أوجد final value."
+            "ar": null
           }
         ],
         "solution": {

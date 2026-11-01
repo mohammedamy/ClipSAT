@@ -1,5 +1,10 @@
 (function(){
-  var _esc = (typeof escHtml === 'function') ? escHtml : function(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; };
+  var _esc = function(s){
+    return s != null && s !== ''
+      ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')
+      : '';
+  };
+  var _safeSlug = function(s){ return String(s || '').replace(/[^a-zA-Z0-9._/-]/g, ''); };
 
   var WL_I18N = {
     en: {searchPh:'Search worksheets & full exams…', of:' of ', topics:' items', unit:'Unit ', ws:'Worksheet', ak:'Answer Key', exam:'Full Exam', examAk:'Answer Key & Solutions', cbt:'💻 Solve in CBT', none:'No worksheets or exams match "'},
@@ -51,17 +56,21 @@
         var uHeader = g.unitTitle ? _esc(g.unitTitle) : (t.unit + g.unit);
         html += '<div class="wl-unit"><div class="wl-unit-title">' + uHeader + '</div>';
         g.items.forEach(function(d){
-          var base = '/downloads/' + trackId + '/';
+          var safeTrack = _safeSlug(trackId);
+          var safeWs = _safeSlug(d.worksheet);
+          var safeAk = _safeSlug(d.answerkey);
+          var safeLang = (d.lang === 'ar') ? 'ar' : 'en';
+          var base = '/downloads/' + safeTrack + '/';
           var isExam = Boolean(d.isFullExam);
           var wsLabel = d.wsLabel || (isExam ? t.exam : t.ws);
           var akLabel = d.akLabel || (isExam ? t.examAk : t.ak);
           var cbtBtn = isExam
-            ? '<button type="button" class="wl-link cbt" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(\'' + trackId + '\',\'' + _esc(d.worksheet) + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\',\'' + (d.lang||'en') + '\')">' + _esc(t.cbt) + '</button>'
+            ? '<button type="button" class="wl-link cbt" data-track="' + _esc(safeTrack) + '" data-ws="' + _esc(safeWs) + '" data-title="' + _esc(d.title) + '" data-lang="' + safeLang + '" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(this.dataset.track,this.dataset.ws,this.dataset.title,this.dataset.lang)">' + _esc(t.cbt) + '</button>'
             : '';
-          var gformBtn = '<button type="button" class="wl-link gform" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(\'' + trackId + '\',\'' + _esc(d.num) + '\',\'' + (d.lang||'en') + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\',\'' + _esc(d.worksheet || '') + '\')" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
+          var gformBtn = '<button type="button" class="wl-link gform" data-track="' + _esc(safeTrack) + '" data-num="' + _esc(d.num) + '" data-lang="' + safeLang + '" data-title="' + _esc(d.title) + '" data-ws="' + _esc(safeWs) + '" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(this.dataset.track,this.dataset.num,this.dataset.lang,this.dataset.title,this.dataset.ws)" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
           html += '<div class="wl-row' + (isExam ? ' wl-row-exam' : '') + '"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
-            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">' + _esc(wsLabel) + '</a>'
-            + '<a class="wl-link ak" href="' + base + d.answerkey + '" target="_blank" rel="noopener">' + _esc(akLabel) + '</a>'
+            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + _esc(base + safeWs) + '" target="_blank" rel="noopener">' + _esc(wsLabel) + '</a>'
+            + '<a class="wl-link ak" href="' + _esc(base + safeAk) + '" target="_blank" rel="noopener">' + _esc(akLabel) + '</a>'
             + gformBtn + '</span></div>';
         });
         html += '</div>';
@@ -124,6 +133,7 @@ window.setCookieConsent = function(choice){
   try { localStorage.setItem(CONSENT_KEY, choice); } catch(e){}
   var banner = document.getElementById('cookieConsentBanner');
   if(banner) banner.style.display = 'none';
+  if(document.body) document.body.classList.remove('cookie-banner-open');
   if(choice === 'accepted'){
     window.loadConsentedScripts && window.loadConsentedScripts();
   }
@@ -134,6 +144,7 @@ window.openCookieConsent = function(){
   var banner = document.getElementById('cookieConsentBanner');
   if(banner){
     banner.style.display = 'block';
+    if(document.body) document.body.classList.add('cookie-banner-open');
     var acceptBtn = document.getElementById('cookieAcceptAll');
     if(acceptBtn) acceptBtn.focus();
   }
@@ -142,10 +153,14 @@ window.openCookieConsent = function(){
 window.loadConsentedScripts = function(){
   if(window.getCookieConsent() !== 'accepted') return;
   if(window._adSenseClientId && !document.getElementById('google-adsense-script')){
+    window.adsbygoogle = window.adsbygoogle || [];
+    window.adsbygoogle.requestNonPersonalizedAds = 1;
     var s = document.createElement('script');
     s.id = 'google-adsense-script';
     s.async = true;
     s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(window._adSenseClientId);
+    s.setAttribute('data-tag-for-child-directed-treatment', '1');
+    s.setAttribute('data-npa', '1');
     s.crossOrigin = 'anonymous';
     document.head.appendChild(s);
   }
@@ -158,7 +173,10 @@ function initCookieConsent(){
   var consent = window.getCookieConsent();
   if(!consent){
     var banner = document.getElementById('cookieConsentBanner');
-    if(banner) banner.style.display = 'block';
+    if(banner){
+      banner.style.display = 'block';
+      if(document.body) document.body.classList.add('cookie-banner-open');
+    }
   } else if(consent === 'accepted'){
     window.loadConsentedScripts();
   }

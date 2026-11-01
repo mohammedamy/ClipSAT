@@ -151,7 +151,9 @@ async function pullRemoteSupabaseFlags() {
     const keyMatch = cfgTxt.match(/anonKey:\s*['"]([^'"]+)['"]/);
     if (!urlMatch || !keyMatch) return [];
     const sbUrl = process.env.SUPABASE_URL || urlMatch[1];
-    const sbKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || keyMatch[1];
+    // question_error_flags is restricted to service_role only (never anonKey).
+    const sbKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!sbKey) return [];
 
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 2500);
@@ -196,7 +198,9 @@ async function markRemoteFlagsResolved(flagIds, buildVersion) {
     const keyMatch = cfgTxt.match(/anonKey:\s*['"]([^'"]+)['"]/);
     if (!urlMatch || !keyMatch) return;
     const sbUrl = process.env.SUPABASE_URL || urlMatch[1];
-    const sbKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || keyMatch[1];
+    // question_error_flags is restricted to service_role only (never anonKey).
+    const sbKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!sbKey) return [];
 
     for (const fid of flagIds) {
       const ctrl = new AbortController();
@@ -368,26 +372,36 @@ async function main() {
 
   if (!Array.isArray(flagsData.resolvedFlags)) flagsData.resolvedFlags = [];
 
+  const remainingOpenFlags = [];
+
   for (const fl of openFlagPrompts) {
-    newlyResolvedIds.push(fl.flagId);
-    if (fl.itemId) newlyResolvedItemIds.push(fl.itemId);
-    flagsData.resolvedFlags.unshift({
-      flagId: fl.flagId,
-      track: fl.track || 'home',
-      topicId: fl.topicId || '',
-      sourceType: fl.sourceType || 'question',
-      itemId: fl.itemId || '',
-      category: fl.category || 'other',
-      note: fl.note || '',
-      status: 'resolved',
-      resolvedAt: nowIso,
-      resolvedInBuild: buildVersion
-    });
+    // SAFETY GATE (WP-01): Never auto-resolve or bury a student/teacher flag unless
+    // it was actually fixed in the repository AND explicitly verified by a human.
+    if (fl._fixedInRepo === true && fl.verifiedByHuman === true) {
+      newlyResolvedIds.push(fl.flagId);
+      if (fl.itemId) newlyResolvedItemIds.push(fl.itemId);
+      flagsData.resolvedFlags.unshift({
+        flagId: fl.flagId,
+        track: fl.track || 'home',
+        topicId: fl.topicId || '',
+        sourceType: fl.sourceType || 'question',
+        itemId: fl.itemId || '',
+        category: fl.category || 'other',
+        note: fl.note || '',
+        status: 'resolved',
+        resolvedAt: nowIso,
+        resolvedInBuild: buildVersion
+      });
+    } else {
+      const cleanCopy = Object.assign({}, fl);
+      delete cleanCopy.normPrompt;
+      remainingOpenFlags.push(cleanCopy);
+    }
   }
 
-  // Keep resolvedFlags history bounded to 200 entries and clear openFlags
+  // Keep resolvedFlags history bounded to 200 entries and preserve unverified openFlags
   flagsData.resolvedFlags = flagsData.resolvedFlags.slice(0, 200);
-  flagsData.openFlags = [];
+  flagsData.openFlags = remainingOpenFlags;
   const hadChanges = newlyResolvedIds.length > 0 || stats.filesUpdated > 0 || !fs.existsSync(FLAGS_FILE) || !fs.existsSync(RESOLVED_PUBLIC_FILE);
   if (hadChanges) {
     flagsData.lastRevisedAt = nowIso;

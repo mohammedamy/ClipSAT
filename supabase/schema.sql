@@ -185,23 +185,27 @@ returns table(class_id uuid, class_name text) as $$
 declare
   v_class_id uuid;
   v_name     text;
+  v_code     text;
 begin
-  select id, name into v_class_id, v_name from public.classes where code = upper(trim(p_code));
+  if auth.uid() is null then
+    raise exception 'Authentication required';
+  end if;
+  v_code := upper(trim(coalesce(p_code, '')));
+  if length(v_code) < 4 or length(v_code) > 12 then
+    raise exception 'Invalid class code';
+  end if;
+  select id, name into v_class_id, v_name from public.classes where code = v_code;
   if v_class_id is null then
     raise exception 'Invalid class code';
   end if;
-  -- Note: ON CONFLICT (class_id, student_id) would raise "column reference
-  -- class_id is ambiguous" here, because ON CONFLICT's target list is parsed
-  -- as expressions (to support expression indexes) rather than plain column
-  -- names, so it collides with this function's own RETURNS TABLE output
-  -- column of the same name. Referencing the primary key by name sidesteps
-  -- that entirely.
   insert into public.class_members(class_id, student_id, display_name)
-    values (v_class_id, auth.uid(), nullif(trim(p_display_name), ''))
+    values (v_class_id, auth.uid(), left(nullif(trim(p_display_name), ''), 80))
     on conflict on constraint class_members_pkey do update set display_name = excluded.display_name;
   return query select v_class_id, v_name;
 end;
 $$ language plpgsql security definer set search_path = public;
+revoke all on function public.join_class_by_code(text, text) from public, anon;
+grant execute on function public.join_class_by_code(text, text) to authenticated, service_role;
 
 -- Additive, read-only: a teacher can read (never write) a roster member's
 -- rows in the tables the mastery dashboard already reads from. Each
@@ -331,20 +335,54 @@ alter table public.ai_usage enable row level security;
 -- zero rows, RETURNING yields nothing, and v_calls stays null → false.
 -- The very first call of the day always succeeds (plain INSERT, cap check
 -- doesn't apply there) since 1 is always <= any sane cap.
-create or replace function public.try_use_ai_quota(p_user_id uuid, p_cap integer)
-returns boolean as $$
+-- Legacy try_use_ai_quota was superseded by use_ai_quota (migrations/20261030_*)
+-- and is explicitly dropped + revoked so clients can never invoke it via RPC.
+drop function if exists public.try_use_ai_quota(uuid, integer);
+
+create table if not exists public.ai_plans (
+  user_id    uuid primary key references auth.users(id) on delete cascade,
+  tier       text not null default 'free' check (tier in ('free', 'paid')),
+  paid_until timestamptz,
+  updated_at timestamptz not null default now()
+);
+alter table public.ai_plans enable row level security;
+
+create or replace function public.use_ai_quota(
+  p_user_id uuid,
+  p_base_cap integer,
+  p_cost integer,
+  p_paid_multiplier integer
+) returns table (allowed boolean, used integer, cap integer, paid boolean) as $$
 declare
-  v_calls integer;
+  v_paid boolean;
+  v_cap  integer;
+  v_used integer;
 begin
+  select exists (
+    select 1 from public.ai_plans
+    where user_id = p_user_id and tier = 'paid' and (paid_until is null or paid_until > now())
+  ) into v_paid;
+
+  v_cap := p_base_cap * case when v_paid then p_paid_multiplier else 1 end;
+
   insert into public.ai_usage (user_id, day, calls)
-    values (p_user_id, current_date, 1)
+    values (p_user_id, current_date, p_cost)
     on conflict (user_id, day) do update
-      set calls = public.ai_usage.calls + 1, updated_at = now()
-      where public.ai_usage.calls < p_cap
-    returning calls into v_calls;
-  return v_calls is not null;
+      set calls = public.ai_usage.calls + p_cost, updated_at = now()
+      where public.ai_usage.calls + p_cost <= v_cap
+    returning calls into v_used;
+
+  if v_used is not null then
+    return query select true, v_used, v_cap, v_paid;
+  else
+    select calls into v_used from public.ai_usage where user_id = p_user_id and day = current_date;
+    return query select false, coalesce(v_used, 0), v_cap, v_paid;
+  end if;
 end;
 $$ language plpgsql security definer set search_path = public;
+
+revoke all on function public.use_ai_quota(uuid, integer, integer, integer) from public, anon, authenticated;
+grant execute on function public.use_ai_quota(uuid, integer, integer, integer) to service_role;
 
 -- ── google_oauth_tokens: lets one "Sign in with Google" also cover Forms/
 -- Drive access, instead of a second separate Google connect step.
@@ -513,9 +551,10 @@ create table if not exists public.question_error_flags (
 
 alter table public.question_error_flags enable row level security;
 
+-- Deliberately NO public/authenticated SELECT policy on question_error_flags:
+-- error reports may contain free-text notes and snapshots and are read only
+-- server-side via service_role.
 drop policy if exists "anyone reads question error flags" on public.question_error_flags;
-create policy "anyone reads question error flags" on public.question_error_flags
-  for select using (true);
 
 create or replace function public.report_question_error(
   p_flag_id           text,
@@ -529,9 +568,15 @@ create or replace function public.report_question_error(
   p_content_signature text default null
 )
 returns void as $$
+declare
+  v_snap jsonb;
 begin
   if p_flag_id is null or length(trim(p_flag_id)) = 0 then
     return;
+  end if;
+  v_snap := coalesce(p_question_snapshot, '{}'::jsonb);
+  if octet_length(v_snap::text) > 16384 then
+    v_snap := jsonb_build_object('truncated', true);
   end if;
   insert into public.question_error_flags (
     flag_id, track, topic_id, source_type, item_id, category, note,
@@ -545,7 +590,7 @@ begin
     left(coalesce(p_item_id, ''), 120),
     left(coalesce(p_category, 'other'), 40),
     left(p_note, 1000),
-    coalesce(p_question_snapshot, '{}'::jsonb),
+    v_snap,
     left(p_content_signature, 64),
     'open',
     1,
@@ -553,14 +598,8 @@ begin
     now()
   )
   on conflict (flag_id) do update set
-    category          = excluded.category,
-    note              = coalesce(nullif(excluded.note, ''), public.question_error_flags.note),
-    question_snapshot = excluded.question_snapshot,
-    content_signature = excluded.content_signature,
-    status            = 'open',
-    report_count      = public.question_error_flags.report_count + 1,
-    updated_at        = now(),
-    resolved_at       = null;
+    report_count = least(public.question_error_flags.report_count + 1, 10000),
+    updated_at   = now();
 end;
 $$ language plpgsql security definer set search_path = public;
 
@@ -578,4 +617,24 @@ begin
    where flag_id = p_flag_id or item_id = p_flag_id;
 end;
 $$ language plpgsql security definer set search_path = public;
+
+revoke all on function public.resolve_question_error(text, text) from public, anon, authenticated;
+grant execute on function public.resolve_question_error(text, text) to service_role;
+
+-- Self-service account deletion (Saudi PDPL & GDPR Right to Erasure).
+-- Deletes the caller's auth.users row; ON DELETE CASCADE wipes profiles,
+-- progress, accuracy, mistakes, srs_state, custom_cards, chapter_visits,
+-- class_members, classes, ai_usage, ai_plans, and google_oauth_tokens.
+create or replace function public.delete_my_account()
+returns void as $$
+begin
+  if auth.uid() is null then
+    raise exception 'Authentication required';
+  end if;
+  delete from auth.users where id = auth.uid();
+end;
+$$ language plpgsql security definer set search_path = public, auth;
+
+revoke all on function public.delete_my_account() from public, anon;
+grant execute on function public.delete_my_account() to authenticated, service_role;
 

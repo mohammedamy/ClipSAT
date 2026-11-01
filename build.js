@@ -459,7 +459,7 @@ const baseNjk = `<!DOCTYPE html>
       throwOnError: false
     };
     function decodeEntities(s){
-      return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&#(\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&amp;/g,'&');
+      return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&#(\\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&amp;/g,'&');
     }
     window.CSRenderMathString = function(str){
       if(!str || typeof str !== 'string') return str;
@@ -1350,8 +1350,9 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress
        system — see SUPABASE_SETUP.md). cloud-config.js is a public, safe-to-commit
        project URL + anon key; cloud-sync.js no-ops entirely until it's filled in. -->
-  <script src="${BASE_PATH}/js/cloud-config.js"></script>
-  <script defer src="${BASE_PATH}/js/cloud-sync.js"></script>
+  <script src="${BASE_PATH}/js/cloud-config.js?v=20261101b"></script>
+  <script defer src="${BASE_PATH}/vendor/supabase/supabase.min.js?v=20261101b"></script>
+  <script defer src="${BASE_PATH}/js/cloud-sync.js?v=20261101b"></script>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>
@@ -1412,6 +1413,7 @@ const baseNjk = `<!DOCTYPE html>
     // preserving the in-page showView chain when activating CURRENT.
     var _origShowView = window.showView;
     window.showView = function(name){
+      if(typeof window.closeFloatingCalc === 'function') window.closeFloatingCalc();
       if(name === CURRENT){
         if(_origShowView) _origShowView(name);
         return;
@@ -1450,8 +1452,11 @@ const baseNjk = `<!DOCTYPE html>
     // chapter so content is visible immediately.
     if(CURRENT !== 'home' && window.goChapter) {
       var requestedCh = new URLSearchParams(window.location.search).get('ch');
-      var targetLink = requestedCh
-        ? document.querySelector('#view-' + CURRENT + ' .rail a[data-target="' + requestedCh + '"]')
+      var safeCh = requestedCh
+        ? ((window.CSS && typeof window.CSS.escape === 'function') ? window.CSS.escape(requestedCh) : String(requestedCh).replace(/[^a-zA-Z0-9_-]/g, ''))
+        : '';
+      var targetLink = safeCh
+        ? document.querySelector('#view-' + CURRENT + ' .rail a[data-target="' + safeCh + '"]')
         : null;
       var openLink = targetLink || document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
       if(openLink) window.goChapter(openLink.getAttribute('data-target'), CURRENT);
@@ -1472,16 +1477,48 @@ const redirectHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Redirecting… – ClipSAT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found · ClipSAT</title>
   <script>
-    // Redirect old hash-based URLs to clean paths
-    // e.g. /#view-calculus → /calculus/
-    var hash = window.location.hash.replace('#','').replace('view-','');
-    if(hash){ window.location.replace('/' + hash + '/'); }
-    else { window.location.replace('/'); }
+    (function(){
+      // Redirect legacy hash-based track URLs (e.g. /#view-calculus → /calculus/) using a strict allowlist
+      var ALLOW = {
+        calculus:1,algebra:1,apab:1,apbc:1,igcse:1,alg2:1,geo:1,qudrat:1,tahsili:1,
+        sat:1,act:1,aslevel:1,a2level:1,est:1,est2:1,est2l2:1,act2:1,act2l2:1,precalc:1,
+        appc:1,apstats:1,ibsl:1,ibhl:1,linalg:1,mvc:1,odes:1,addmath:1,mathai:1,
+        edexcel:1,gaten:1,olympiad:1,pricing:1,calculator:1,about:1,trust:1,privacy:1,terms:1,cookies:1
+      };
+      var raw = (window.location.hash || '').replace(/^#/, '').replace(/^view-/, '').toLowerCase();
+      if (raw && Object.prototype.hasOwnProperty.call(ALLOW, raw)) {
+        window.location.replace('/' + raw + '/');
+      } else if (raw === 'home') {
+        window.location.replace('/');
+      }
+    })();
   </script>
+  <style>
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0f172a;color:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;box-sizing:border-box}
+    .card{max-width:480px;width:100%;background:#1e293b;border:1px solid #334155;border-radius:16px;padding:32px 28px;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.35)}
+    .code{font-size:3rem;font-weight:900;color:#818cf8;line-height:1;margin-bottom:8px}
+    h1{margin:0 0 10px;font-size:1.35rem}
+    p{margin:0 0 22px;color:#94a3b8;font-size:.94rem;line-height:1.6}
+    .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    a.btn{display:inline-block;padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none}
+    a.primary{background:#4f46e5;color:#fff}
+    a.secondary{background:#0f172a;color:#e2e8f0;border:1px solid #334155}
+  </style>
 </head>
-<body>Redirecting…</body>
+<body>
+  <main class="card">
+    <div class="code">404</div>
+    <h1>Page not found · الصفحة غير موجودة</h1>
+    <p>The page you requested could not be found, or its link may have moved to one of ClipSAT's 31 curriculum tracks.</p>
+    <div class="actions">
+      <a class="btn primary" href="/">ClipSAT Home · الرئيسية</a>
+      <a class="btn secondary" href="/calculator/">Calculator · الحاسبة</a>
+    </div>
+  </main>
+</body>
 </html>`;
 write(path.join(SRC_DIR, '404.html'), redirectHtml);
 

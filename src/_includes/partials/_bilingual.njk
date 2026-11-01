@@ -15,7 +15,7 @@
   `tag` picks the wrapper element (default span — use a block tag like 'div' or 'p' if the
   field's content itself contains block-level HTML, e.g. a <details> practice-problem body).
 #}
-{% macro text(field, tag='span') %}<{{ tag }} data-bilingual><{{ tag }} class="i18n-en">{{ field.en | safe }}</{{ tag }}>{% if field.ar %}<{{ tag }} class="i18n-ar" dir="rtl" hidden>{{ field.ar | safe }}</{{ tag }}>{% endif %}</{{ tag }}>{% endmacro %}
+{% macro text(field, tag='span') %}{% set _en = (field.en or '') | string %}{% set _ar = (field.ar or '') | string %}{% set _combo = (_en ~ ' ' ~ _ar) | lower %}{% set _hasBlock = ('<p>' in _combo) or ('<p ' in _combo) or ('<div' in _combo) or ('<ul' in _combo) or ('<ol' in _combo) or ('<table' in _combo) or ('<details' in _combo) or ('<blockquote' in _combo) or ('<pre' in _combo) or ('<h3' in _combo) or ('<h4' in _combo) %}{% set _tag = 'div' if (tag == 'span' and _hasBlock) else tag %}<{{ _tag }} data-bilingual><{{ _tag }} class="i18n-en">{{ field.en | safe }}</{{ _tag }}>{% if field.ar %}<{{ _tag }} class="i18n-ar" dir="rtl" hidden>{{ field.ar | safe }}</{{ _tag }}>{% endif %}</{{ _tag }}>{% endmacro %}
 
 {#
   attr(attrName, field): renders data-{attrName}-en / -ar values for the companion

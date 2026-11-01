@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "This chapter covers the applied mathematical structures exclusive to <strong>Applications and Interpretation HL</strong>: matrix algebra, Markov chain stochastic modeling, graph algorithms (Kruskal, Prim, Dijkstra), eigenvalue diagonalization, and coupled differential equation phase plane topology.",
-          "ar": "This chapter covers the applied mathematical structures exclusive to <strong>Applications and Interpretation HL</strong>: المصفوفة الجبر, Markov chain stochastic modeling, التمثيل البياني algorithms (Kruskal, Prim, Dijkstra), eigenvalue diagonalization, and coupled المعادلة التفاضلية phase plane topology."
+          "ar": null
         }
       },
       {
@@ -42,7 +42,7 @@
         },
         "body": {
           "en": "<p><strong>Matrix Operations &amp; Inversion:</strong> For a \\(2 \\times 2\\) matrix \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\):</p>\\[ \\det A = ad - bc. \\quad \\text{If } \\det A \\neq 0, \\quad A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}. \\]<p>To solve the linear system \\(A\\mathbf{x} = \\mathbf{b}\\), premultiply by \\(A^{-1}\\): \\[ \\mathbf{x} = A^{-1}\\mathbf{b}. \\]</p><p><strong>Graph Theory (Networks) Fundamentals:</strong></p><ul><li>A <strong>graph</strong> \\(G = (V, E)\\) consists of a non-empty set of vertices \\(V\\) and a set of edges \\(E\\). The <strong>degree</strong> \\(\\deg(v)\\) is the number of edges incident to \\(v\\).</li><li><strong>Euler's Handshaking Lemma:</strong> The sum of the degrees of all vertices equals twice the number of edges: \\[ \\sum_{v \\in V} \\deg(v) = 2|E|. \\] Consequently, the number of vertices with odd degree is always even.</li><li><strong>Adjacency Matrix \\(A\\):</strong> A matrix where entry \\(a_{ij}\\) represents the number of edges between vertex \\(i\\) and vertex \\(j\\). The entry \\((A^k)_{ij}\\) in the \\(k\\)-th matrix power gives the exact number of walks of length \\(k\\) from vertex \\(i\\) to vertex \\(j\\).</li><li><strong>Eulerian Circuits &amp; Trails:</strong> An <em>Eulerian trail</em> (visits every edge once) exists \\(\\iff\\) exactly 0 or 2 vertices have odd degree. An <em>Eulerian circuit</em> (closed loop) exists \\(\\iff\\) all vertices have even degree.</li><li><strong>Hamiltonian Cycles:</strong> A closed loop visiting every <em>vertex</em> exactly once.</li></ul>",
-          "ar": "<p><strong>Matrix Operations &amp; Inversion:</strong> For a \\(2 \\times 2\\) المصفوفة \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\):</p>\\[ \\det A = ad - bc. \\quad \\text{If } \\det A \\neq 0, \\quad A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}. \\]<p>To solve the linear system \\(A\\mathbf{x} = \\mathbf{b}\\), premultiply by \\(A^{-1}\\): \\[ \\mathbf{x} = A^{-1}\\mathbf{b}. \\]</p><p><strong>Graph Theory (Networks) Fundamentals:</strong></p><ul><li>A <strong>graph</strong> \\(G = (V, E)\\) consists of a non-empty set of vertices \\(V\\) and a set of edges \\(E\\). The <strong>degree</strong> \\(\\deg(v)\\) is the number of edges incident to \\(v\\).</li><li><strong>Euler's Handshaking تمهيدية:</strong> The sum of the degrees of all vertices equals twice the number of edges: \\[ \\sum_{v \\in V} \\deg(v) = 2|E|. \\] Consequently, the number of vertices with odd degree is always even.</li><li><strong>Adjacency المصفوفة \\(A\\):</strong> A المصفوفة حيث entry \\(a_{ij}\\) represents the number of edges between الرأس \\(i\\) and الرأس \\(j\\). The entry \\((A^k)_{ij}\\) in the \\(k\\)-th المصفوفة power gives the exact number of walks of length \\(k\\) from الرأس \\(i\\) to الرأس \\(j\\).</li><li><strong>Eulerian Circuits &amp; Trails:</strong> An <em>Eulerian trail</em> (visits every edge once) exists \\(\\iff\\) exactly 0 or 2 vertices have odd degree. An <em>Eulerian circuit</em> (closed loop) exists \\(\\iff\\) all vertices have even degree.</li><li><strong>Hamiltonian Cycles:</strong> A closed loop visiting every <em>vertex</em> exactly once.</li></ul>"
+          "ar": null
         }
       },
       {
@@ -151,23 +151,23 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 2 Analytical Tools — Markov Chains, Steady States &amp; MST Algorithms",
-          "ar": "▲ Level 2 Analytical Tools — Markov Chains, Steady States &amp; MST Algorithms (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Markov Chains &amp; Transition Matrices:</strong> A Markov chain is a discrete-time stochastic process with state space \\(\\{S_1, S_2, \\dots, S_m\\}\\). In the IB AI HL convention, the <strong>transition matrix \\(T\\) is column-stochastic</strong>:</p>\\[ T_{ij} = P(\\text{State } i \\text{ at step } n+1 \\mid \\text{State } j \\text{ at step } n), \\quad \\sum_{i=1}^m T_{ij} = 1. \\]<p>The probability distribution vector \\(\\mathbf{p}_n\\) evolves according to: \\[ \\mathbf{p}_{n+1} = T \\mathbf{p}_n \\implies \\mathbf{p}_n = T^n \\mathbf{p}_0. \\] <strong>Steady-State Distribution Vector \\(\\mathbf{s}\\):</strong> A probability vector satisfying \\(T\\mathbf{s} = \\mathbf{s}\\) with \\(\\sum s_i = 1\\). Thus \\(\\mathbf{s}\\) is an eigenvector of \\(T\\) corresponding to eigenvalue \\(\\lambda = 1\\), found by solving \\((T - I)\\mathbf{s} = \\mathbf{0}\\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Minimum Spanning Tree (MST) &amp; Shortest Path Algorithms:</strong> For a connected weighted graph on \\(V\\) vertices, a spanning tree connects all \\(V\\) vertices using exactly \\(V - 1\\) edges with minimum total edge weight:</p><ul><li><strong>Kruskal's Algorithm:</strong> Sort all edges in non-decreasing order of weight. Greedily add the cheapest edge that does not form a cycle, stopping when \\(V - 1\\) edges are selected.</li><li><strong>Prim's Algorithm:</strong> Start at any arbitrary vertex. At each step, add the minimum-weight edge connecting a vertex in the growing tree to a vertex not yet in the tree.</li><li><strong>Dijkstra's Algorithm:</strong> Determines the shortest path from a starting source vertex to all other vertices using permanent and temporary distance labels.</li></ul>",
-          "ar": "<p><strong>Markov Chains &amp; Transition المصفوفات:</strong> A Markov chain is a discrete-time stochastic process with state space \\(\\{S_1, S_2, \\dots, S_m\\}\\). In the IB AI HL convention, the <strong>transition المصفوفة \\(T\\) is column-stochastic</strong>:</p>\\[ T_{ij} = P(\\text{State } i \\text{ at step } n+1 \\mid \\text{State } j \\text{ at step } n), \\quad \\sum_{i=1}^m T_{ij} = 1. \\]<p>The الاحتمال distribution المتجه \\(\\mathbf{p}_n\\) evolves according to: \\[ \\mathbf{p}_{n+1} = T \\mathbf{p}_n \\implies \\mathbf{p}_n = T^n \\mathbf{p}_0. \\] <strong>Steady-State Distribution المتجه \\(\\mathbf{s}\\):</strong> A الاحتمال المتجه satisfying \\(T\\mathbf{s} = \\mathbf{s}\\) with \\(\\sum s_i = 1\\). وعليه \\(\\mathbf{s}\\) is an eigenvector of \\(T\\) corresponding to eigenvalue \\(\\lambda = 1\\), found by solving \\((T - I)\\mathbf{s} = \\mathbf{0}\\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Minimum Spanning Tree (MST) &amp; Shortest Path Algorithms:</strong> For a connected weighted التمثيل البياني on \\(V\\) vertices, a spanning tree connects all \\(V\\) vertices using exactly \\(V - 1\\) edges with minimum total edge weight:</p><ul><li><strong>Kruskal's Algorithm:</strong> Sort all edges in non-decreasing order of weight. Greedily add the cheapest edge that does not form a cycle, stopping عندما \\(V - 1\\) edges are selected.</li><li><strong>Prim's Algorithm:</strong> Start at any arbitrary الرأس. At each step, add the minimum-weight edge connecting a الرأس in the growing tree to a الرأس not yet in the tree.</li><li><strong>Dijkstra's Algorithm:</strong> Determines the shortest path from a starting source الرأس to all other vertices using permanent and temporary distance labels.</li></ul>"
+          "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Markov chain — approach to steady state",
-          "ar": "⊙ مستكشف تفاعلي · Markov chain — approach to steady state"
+          "ar": null
         },
         "canvasId": "ibhlMarkovCanvas",
         "ariaLabel": {
           "en": "A line chart of P(state A) over 15 steps of a two-state Markov chain, converging toward a dashed steady-state line",
-          "ar": "عنصر تفاعلي: A line chart of P(state A) over 15 steps of a two-state Markov chain, converging toward a dashed steady-state line"
+          "ar": null
         },
         "dataPanel": {
           "btnId": "ibhlMarkovDataBtn",
@@ -261,7 +261,7 @@
         ],
         "note": {
           "en": "The transition matrix is \\(T\\) = [\\([P(A \\to A), 1-P(B \\to B)]\\), \\([1-P(A \\to A), P(B \\to B)]\\)]. For a regular chain (not both \\(P(A \\to A)\\) and \\(P(B \\to B)\\) at the same extreme), whatever starting \\(P(A)\\) you choose, the curve settles onto the dashed steady-state line \\(\\pi\\)A = \\((1-P(B \\to B))\\) / [\\((1-P(A \\to A)) + (1-P(B \\to B))\\)] — an eigenvector of \\(T\\) for eigenvalue 1, exactly as defined above. Try starting \\(P(A) = 0\\) vs 1 with the same \\(P(A \\to A)\\), \\(P(B \\to B)\\): different paths, same destination. Push both sliders to the same edge and that regularity breaks: at \\(P(A \\to A) = P(B \\to B) = 1\\) every state is absorbing, so the chain never moves at all and 'steady state' is just wherever you started; at \\(P(A \\to A) = P(B \\to B) = 0\\) the chain swaps states every single step and never settles — it oscillates between \\(P(A)\\) and \\(1 - P(A)\\) forever.",
-          "ar": "The transition المصفوفة is \\(T\\) = [\\([P(A \\to A), 1-P(B \\to B)]\\), \\([1-P(A \\to A), P(B \\to B)]\\)]. For a regular chain (not both \\(P(A \\to A)\\) and \\(P(B \\to B)\\) at the same extreme), whatever starting \\(P(A)\\) you choose, the curve settles onto the dashed steady-state line \\(\\pi\\)A = \\((1-P(B \\to B))\\) / [\\((1-P(A \\to A)) + (1-P(B \\to B))\\)] — an eigenvector of \\(T\\) for eigenvalue 1, exactly as defined above. Try starting \\(P(A) = 0\\) vs 1 with the same \\(P(A \\to A)\\), \\(P(B \\to B)\\): different paths, same destination. Push both sliders to the same edge and that regularity breaks: at \\(P(A \\to A) = P(B \\to B) = 1\\) every state is absorbing, so the chain never moves at all and 'steady state' is just wherever you started; at \\(P(A \\to A) = P(B \\to B) = 0\\) the chain swaps states every single step and never settles — it oscillates between \\(P(A)\\) and \\(1 - P(A)\\) forever."
+          "ar": null
         }
       },
       {
@@ -273,7 +273,7 @@
         "canvasId": "ibhlKruskalCanvas",
         "ariaLabel": {
           "en": "A 5-vertex weighted graph with a step slider revealing Kruskal's minimum spanning tree algorithm one sorted edge at a time — added edges highlighted, cycle-forming edges shown skipped",
-          "ar": "A 5-الرأس weighted التمثيل البياني with a step slider revealing Kruskal's minimum spanning tree algorithm one sorted edge at a time — added edges highlighted, cycle-forming edges shown skipped"
+          "ar": null
         },
         "dataPanel": {
           "btnId": "ibhlKruskalDataBtn",
@@ -282,7 +282,7 @@
           "rowsId": "ibhlKruskalDataRows",
           "caption": {
             "en": "Each edge in sorted order, and whether Kruskal's algorithm added or skipped it",
-            "ar": "توضيح رياضي: Each edge in sorted order, and whether Kruskal's algorithm added or skipped it"
+            "ar": null
           },
           "columns": [
             {
@@ -313,7 +313,7 @@
             "valueDisplayId": "ibhlKruskalStepVal",
             "ariaLabel": {
               "en": "Number of sorted edges considered so far",
-              "ar": "عنصر تفاعلي: Number of sorted edges considered so far"
+              "ar": null
             }
           }
         ],
@@ -339,7 +339,7 @@
         ],
         "note": {
           "en": "This is exactly the graph from the Practice Problem below (AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8), sorted by weight: DE, BC, AB, CD, BD, CE, AC, AD. Drag the slider to the right one step at a time — green solid edges were added (they connected two previously-separate pieces of the tree), grey dashed edges were skipped (both endpoints were already connected, so adding one would create a cycle). A spanning tree on 5 vertices always needs exactly 4 edges — once the count reaches 4, every later edge in the list is necessarily skipped, whatever weight it has.",
-          "ar": "This is exactly the التمثيل البياني from the Practice Problem below (AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8), sorted by weight: DE, BC, AB, CD, BD, CE, AC, AD. Drag the slider to the right one step at a time — green solid edges were added (they connected two previously-separate pieces of the tree), grey dashed edges were skipped (both endpoints were already connected, so adding one would create a cycle). A spanning tree on 5 vertices always needs exactly 4 edges — once the count reaches 4, every later edge in the list is necessarily skipped, whatever weight it has."
+          "ar": null
         }
       },
       {
@@ -347,11 +347,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 3 University Rigor — Theorem: Eigen-Decomposition &amp; Coupled Linear Systems",
-          "ar": "▲ Level 3 University Rigor — مبرهنة: Eigen-Decomposition &amp; Coupled Linear Systems"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Eigenvalues &amp; Eigenvectors:</strong> A scalar \\(\\lambda \\in \\mathbb{C}\\) and non-zero vector \\(\\mathbf{v}\\) satisfy \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) if and only if: \\[ \\det(A - \\lambda I) = 0 \\quad (\\text{the characteristic equation}). \\] For each eigenvalue \\(\\lambda_i\\), the corresponding eigenvector \\(\\mathbf{v}_i\\) spans the nullspace \\(\\ker(A - \\lambda_i I)\\).</p><p><strong>Matrix Diagonalization:</strong> If \\(A\\) possesses \\(n\\) linearly independent eigenvectors \\(\\mathbf{v}_1, \\dots, \\mathbf{v}_n\\), then: \\[ A = PDP^{-1}, \\quad \\text{where } P = [\\mathbf{v}_1 \\; \\dots \\; \\mathbf{v}_n], \\quad D = \\operatorname{diag}(\\lambda_1, \\dots, \\lambda_n). \\] Matrix powers are evaluated directly in diagonal coordinates: \\[ A^k = P D^k P^{-1} = P \\begin{pmatrix} \\lambda_1^k & 0 \\\\ 0 & \\lambda_2^k \\end{pmatrix} P^{-1}. \\]</p><p><strong>Coupled Systems of Differential Equations:</strong> Consider the linear system: \\[ \\frac{d\\mathbf{x}}{dt} = A\\mathbf{x}, \\quad \\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}. \\] If \\(A\\) has distinct eigenvalues \\(\\lambda_1, \\lambda_2\\) with eigenvectors \\(\\mathbf{v}_1, \\mathbf{v}_2\\), the general solution is: \\[ \\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2. \\] <strong>Phase Plane Topological Classification:</strong></p><ul><li>\\(\\lambda_1, \\lambda_2 < 0\\): <strong>Stable Node (Sink)</strong> — all trajectories approach the origin as \\(t \\to \\infty\\).</li><li>\\(\\lambda_1, \\lambda_2 > 0\\): <strong>Unstable Node (Source)</strong> — trajectories diverge away from origin.</li><li>\\(\\lambda_1 < 0 < \\lambda_2\\): <strong>Saddle Point (Unstable)</strong> — trajectories approach along \\(\\mathbf{v}_1\\) and escape along \\(\\mathbf{v}_2\\).</li><li>\\(\\lambda = \\alpha \\pm i\\beta\\): <strong>Spiral / Focus</strong> — trajectories spiral inward if \\(\\alpha < 0\\), outward if \\(\\alpha > 0\\), and form closed elliptical orbits (<strong>Center</strong>) if \\(\\alpha = 0\\).</li></ul>",
-          "ar": "<p><strong>Eigenvalues &amp; المتجهات الذاتية:</strong> A scalar \\(\\lambda \\in \\mathbb{C}\\) and non-zero المتجه \\(\\mathbf{v}\\) satisfy \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) if and only if: \\[ \\det(A - \\lambda I) = 0 \\quad (\\text{the characteristic equation}). \\] For each eigenvalue \\(\\lambda_i\\), the corresponding eigenvector \\(\\mathbf{v}_i\\) spans the nullspace \\(\\ker(A - \\lambda_i I)\\).</p><p><strong>Matrix Diagonalization:</strong> If \\(A\\) possesses \\(n\\) linearly independent المتجهات الذاتية \\(\\mathbf{v}_1, \\dots, \\mathbf{v}_n\\), then: \\[ A = PDP^{-1}, \\quad \\text{where } P = [\\mathbf{v}_1 \\; \\dots \\; \\mathbf{v}_n], \\quad D = \\operatorname{diag}(\\lambda_1, \\dots, \\lambda_n). \\] المصفوفة powers are evaluated directly in diagonal الإحداثيات: \\[ A^k = P D^k P^{-1} = P \\begin{pmatrix} \\lambda_1^k & 0 \\\\ 0 & \\lambda_2^k \\end{pmatrix} P^{-1}. \\]</p><p><strong>Coupled Systems of Differential المعادلات:</strong> Consider the linear system: \\[ \\frac{d\\mathbf{x}}{dt} = A\\mathbf{x}, \\quad \\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}. \\] If \\(A\\) has distinct القيم الذاتية \\(\\lambda_1, \\lambda_2\\) with المتجهات الذاتية \\(\\mathbf{v}_1, \\mathbf{v}_2\\), the general الحل is: \\[ \\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2. \\] <strong>Phase Plane Topological Classification:</strong></p><ul><li>\\(\\lambda_1, \\lambda_2 < 0\\): <strong>Stable Node (Sink)</strong> — all trajectories approach the origin as \\(t \\to \\infty\\).</li><li>\\(\\lambda_1, \\lambda_2 > 0\\): <strong>Unstable Node (Source)</strong> — trajectories diverge away from origin.</li><li>\\(\\lambda_1 < 0 < \\lambda_2\\): <strong>Saddle Point (Unstable)</strong> — trajectories approach along \\(\\mathbf{v}_1\\) and escape along \\(\\mathbf{v}_2\\).</li><li>\\(\\lambda = \\alpha \\pm i\\beta\\): <strong>Spiral / Focus</strong> — trajectories spiral inward if \\(\\alpha < 0\\), outward if \\(\\alpha > 0\\), and form closed elliptical orbits (<strong>Center</strong>) if \\(\\alpha = 0\\).</li></ul>"
+          "ar": null
         }
       },
       {
@@ -363,7 +363,7 @@
         },
         "body": {
           "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": "<p><strong>الشرح الرياضي (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة):</strong></p><p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>"
+          "ar": null
         }
       },
       {
@@ -374,11 +374,11 @@
         },
         "problem": {
           "en": "Solve the linear system using matrix inversion: \\[ 2x + 3y = 7, \\qquad x - y = 1. \\]",
-          "ar": "Solve the linear system using المصفوفة inversion: \\[ 2x + 3y = 7, \\qquad x - y = 1. \\]"
+          "ar": null
         },
         "solution": {
           "en": "<p>1. Formulate in matrix vector form \\(A\\mathbf{x} = \\mathbf{b}\\): \\[ \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 1 \\end{pmatrix}. \\] 2. Calculate the determinant: \\[ \\det A = 2(-1) - 3(1) = -2 - 3 = -5 \\neq 0. \\] 3. Find the inverse matrix \\(A^{-1}\\): \\[ A^{-1} = \\frac{1}{-5} \\begin{pmatrix} -1 & -3 \\\\ -1 & 2 \\end{pmatrix} = \\begin{pmatrix} 0.2 & 0.6 \\\\ 0.2 & -0.4 \\end{pmatrix}. \\] 4. Multiply \\(\\mathbf{x} = A^{-1}\\mathbf{b}\\): \\[ \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0.2 & 0.6 \\\\ 0.2 & -0.4 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 0.2(7) + 0.6(1) \\\\ 0.2(7) - 0.4(1) \\end{pmatrix} = \\begin{pmatrix} 1.4 + 0.6 \\\\ 1.4 - 0.4 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Solution:</strong> \\(x = 2, \\; y = 1\\).</p>",
-          "ar": "<p>1. Formulate in المصفوفة المتجه form \\(A\\mathbf{x} = \\mathbf{b}\\): \\[ \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 1 \\end{pmatrix}. \\] 2. احسب المحدد: \\[ \\det A = 2(-1) - 3(1) = -2 - 3 = -5 \\neq 0. \\] 3. أوجد inverse المصفوفة \\(A^{-1}\\): \\[ A^{-1} = \\frac{1}{-5} \\begin{pmatrix} -1 & -3 \\\\ -1 & 2 \\end{pmatrix} = \\begin{pmatrix} 0.2 & 0.6 \\\\ 0.2 & -0.4 \\end{pmatrix}. \\] 4. Multiply \\(\\mathbf{x} = A^{-1}\\mathbf{b}\\): \\[ \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0.2 & 0.6 \\\\ 0.2 & -0.4 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 0.2(7) + 0.6(1) \\\\ 0.2(7) - 0.4(1) \\end{pmatrix} = \\begin{pmatrix} 1.4 + 0.6 \\\\ 1.4 - 0.4 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Solution:</strong> \\(x = 2, \\; y = 1\\).</p>"
+          "ar": null
         }
       },
       {
@@ -389,11 +389,11 @@
         },
         "problem": {
           "en": "A market contains two competing internet providers, A and B. Each year, 80% of customers with A remain with A, while 20% switch to B. For provider B, 70% remain with B while 30% switch to A. (a) Write down the transition matrix \\(T\\). (b) Determine the long-term steady-state market share for both providers.",
-          "ar": "A market contains two competing internet providers, A and B. Each year, 80% of customers with A remain with A, while 20% switch to B. For provider B, 70% remain with B while 30% switch to A. (a) Write down the transition المصفوفة \\(T\\). (b) حدّد long-term steady-state market share for both providers."
+          "ar": null
         },
         "solution": {
           "en": "<p><strong>(a) Transition matrix \\(T\\):</strong><br>Column 1 represents transitions from A: \\[ P(A\\to A) = 0.8, \\quad P(B\\to A) = 0.2. \\] Column 2 represents transitions from B: \\[ P(A\\to B) = 0.3, \\quad P(B\\to B) = 0.7. \\] Thus the column-stochastic transition matrix is: \\[ T = \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix}. \\]</p><p><strong>(b) Long-term steady state \\(\\mathbf{s} = \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix}\\):</strong><br>Solve \\(T\\mathbf{s} = \\mathbf{s}\\) subject to \\(s_A + s_B = 1\\): \\[ \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix} \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix} = \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix} \\implies 0.8 s_A + 0.3 s_B = s_A \\implies -0.2 s_A + 0.3 s_B = 0. \\] Thus: \\[ 0.2 s_A = 0.3 s_B \\implies s_A = 1.5 s_B. \\] Substitute into the probability normalization constraint \\(s_A + s_B = 1\\): \\[ 1.5 s_B + s_B = 1 \\implies 2.5 s_B = 1 \\implies s_B = \\frac{1}{2.5} = 0.40. \\] Then \\(s_A = 1 - 0.40 = 0.60\\).</p><p><strong>Conclusion:</strong> In the steady state, Provider A holds <strong>60%</strong> of the market and Provider B holds <strong>40%</strong>.</p>",
-          "ar": "<p><strong>(a) Transition المصفوفة \\(T\\):</strong><br>Column 1 represents transitions from A: \\[ P(A\\to A) = 0.8, \\quad P(B\\to A) = 0.2. \\] Column 2 represents transitions from B: \\[ P(A\\to B) = 0.3, \\quad P(B\\to B) = 0.7. \\] وعليه the column-stochastic transition المصفوفة is: \\[ T = \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix}. \\]</p><p><strong>(b) Long-term steady state \\(\\mathbf{s} = \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix}\\):</strong><br>Solve \\(T\\mathbf{s} = \\mathbf{s}\\) subject to \\(s_A + s_B = 1\\): \\[ \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix} \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix} = \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix} \\implies 0.8 s_A + 0.3 s_B = s_A \\implies -0.2 s_A + 0.3 s_B = 0. \\] وعليه: \\[ 0.2 s_A = 0.3 s_B \\implies s_A = 1.5 s_B. \\] عوّض into the الاحتمال normalization constraint \\(s_A + s_B = 1\\): \\[ 1.5 s_B + s_B = 1 \\implies 2.5 s_B = 1 \\implies s_B = \\frac{1}{2.5} = 0.40. \\] Then \\(s_A = 1 - 0.40 = 0.60\\).</p><p><strong>Conclusion:</strong> In the steady state, Provider A holds <strong>60%</strong> of the market and Provider B holds <strong>40%</strong>.</p>"
+          "ar": null
         }
       },
       {
@@ -408,7 +408,7 @@
         },
         "solution": {
           "en": "<p>1. Characteristic equation \\(\\det(A - \\lambda I) = 0\\): \\[ \\det\\begin{pmatrix} 4-\\lambda & 1 \\\\ 2 & 3-\\lambda \\end{pmatrix} = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 12 - 2 = \\lambda^2 - 7\\lambda + 10 = 0. \\] Factor: \\((\\lambda - 5)(\\lambda - 2) = 0 \\implies \\lambda_1 = 5, \\; \\lambda_2 = 2\\).</p><p>2. Eigenvector for \\(\\lambda_1 = 5\\): \\[ (A - 5I)\\mathbf{v}_1 = \\begin{pmatrix} -1 & 1 \\\\ 2 & -2 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies -x + y = 0 \\implies y = x. \\quad \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}. \\] 3. Eigenvector for \\(\\lambda_2 = 2\\): \\[ (A - 2I)\\mathbf{v}_2 = \\begin{pmatrix} 2 & 1 \\\\ 2 & 1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies 2x + y = 0 \\implies y = -2x. \\quad \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}. \\]</p><p>4. Form \\(P\\) and \\(D\\): \\[ P = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix}, \\quad \\det P = -2 - 1 = -3, \\quad P^{-1} = -\\frac{1}{3}\\begin{pmatrix} -2 & -1 \\\\ -1 & 1 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix}. \\] 5. Calculate \\(A^n = P D^n P^{-1}\\): \\[ A^n = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix} \\begin{pmatrix} 5^n & 0 \\\\ 0 & 2^n \\end{pmatrix} \\left[ \\frac{1}{3}\\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix} \\right] = \\frac{1}{3} \\begin{pmatrix} 2\\cdot 5^n + 2^n & 5^n - 2^n \\\\ 2\\cdot 5^n - 2\\cdot 2^n & 5^n + 2\\cdot 2^n \\end{pmatrix}. \\]</p>",
-          "ar": "<p>1. Characteristic المعادلة \\(\\det(A - \\lambda I) = 0\\): \\[ \\det\\begin{pmatrix} 4-\\lambda & 1 \\\\ 2 & 3-\\lambda \\end{pmatrix} = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 12 - 2 = \\lambda^2 - 7\\lambda + 10 = 0. \\] Factor: \\((\\lambda - 5)(\\lambda - 2) = 0 \\implies \\lambda_1 = 5, \\; \\lambda_2 = 2\\).</p><p>2. Eigenvector for \\(\\lambda_1 = 5\\): \\[ (A - 5I)\\mathbf{v}_1 = \\begin{pmatrix} -1 & 1 \\\\ 2 & -2 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies -x + y = 0 \\implies y = x. \\quad \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}. \\] 3. Eigenvector for \\(\\lambda_2 = 2\\): \\[ (A - 2I)\\mathbf{v}_2 = \\begin{pmatrix} 2 & 1 \\\\ 2 & 1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies 2x + y = 0 \\implies y = -2x. \\quad \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}. \\]</p><p>4. Form \\(P\\) and \\(D\\): \\[ P = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix}, \\quad \\det P = -2 - 1 = -3, \\quad P^{-1} = -\\frac{1}{3}\\begin{pmatrix} -2 & -1 \\\\ -1 & 1 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix}. \\] 5. احسب \\(A^n = P D^n P^{-1}\\): \\[ A^n = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix} \\begin{pmatrix} 5^n & 0 \\\\ 0 & 2^n \\end{pmatrix} \\left[ \\frac{1}{3}\\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix} \\right] = \\frac{1}{3} \\begin{pmatrix} 2\\cdot 5^n + 2^n & 5^n - 2^n \\\\ 2\\cdot 5^n - 2\\cdot 2^n & 5^n + 2\\cdot 2^n \\end{pmatrix}. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -451,7 +451,7 @@
             },
             "value": {
               "en": "A tree on \\( V \\) vertices always contains exactly \\( V - 1 \\) edges",
-              "ar": "A tree on \\( V \\) vertices always contains exactly \\( V - 1 \\) edges (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             }
           }
         ]
@@ -500,11 +500,11 @@
         "style": "warn",
         "label": {
           "en": "⚠ Topic AI HL Exam Traps: Transition Matrices &amp; Graph Algorithms",
-          "ar": "⚠ Topic AI HL Exam Traps: Transition المصفوفات &amp; التمثيل البياني Algorithms"
+          "ar": null
         },
         "body": {
           "en": "<strong>Column-Stochastic vs Row-Stochastic:</strong> The IB AI HL syllabus uses column-stochastic transition matrices where each column sums to 1: entry \\(T_{ij}\\) represents the probability of moving from state \\(j\\) to state \\(i\\). Multiplying \\(T \\mathbf{p}_n = \\mathbf{p}_{n+1}\\) requires a column vector. If you set up rows summing to 1 by mistake, standard matrix multiplications produce wrong states.<br><br><strong>Cycle Detection in Kruskal's:</strong> In Kruskal's algorithm, check for cycles across the <em>entire connected subgraph</em>, not just whether both vertices have been visited. If two visited vertices already belong to the same component, connecting them creates a cycle and the edge must be rejected.<br><br><strong>Eulerian Graph Conditions:</strong> An Eulerian trail (open path visiting every edge once) requires <em>exactly two</em> vertices of odd degree. An Eulerian circuit (closed loop returning to the start) requires <em>all</em> vertices to have even degree.",
-          "ar": "<strong>Column-Stochastic vs Row-Stochastic:</strong> The IB AI HL syllabus uses column-stochastic transition المصفوفات حيث each column sums to 1: entry \\(T_{ij}\\) represents the الاحتمال of moving from state \\(j\\) to state \\(i\\). Multiplying \\(T \\mathbf{p}_n = \\mathbf{p}_{n+1}\\) requires a column المتجه. If you set up rows summing to 1 by mistake, standard المصفوفة multiplications produce wrong states.<br><br><strong>Cycle Detection in Kruskal's:</strong> In Kruskal's algorithm, check for cycles across the <em>entire connected subgraph</em>, not just whether both vertices have been visited. If two visited vertices already belong to the same component, connecting them creates a cycle and the edge must be rejected.<br><br><strong>Eulerian التمثيل البياني Conditions:</strong> An Eulerian trail (open path visiting every edge once) requires <em>exactly two</em> vertices of odd degree. An Eulerian circuit (closed loop returning to the start) requires <em>all</em> vertices to have even degree."
+          "ar": null
         }
       },
       {
@@ -512,18 +512,18 @@
         "style": "example",
         "label": {
           "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — AI HL (Matrices, Coupled ODEs & Graph Theory)",
-          "ar": "Past-Paper Idea المصفوفة & Official Markscheme مثال محلول — AI HL (المصفوفات, Coupled ODEs & التمثيل البياني Theory)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>High-Frequency IB AI HL Past-Paper Ideas (Topics 1, 3, 4, 5):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>AI HL Domain</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>AHL 1.9 Matrices, Eigenvalues &amp; Markov Chains</strong></td><td>Finding characteristic polynomial \\(\\det(\\mathbf{A} - \\lambda\\mathbf{I}) = 0\\), diagonalizing \\(\\mathbf{A}^n = \\mathbf{P}\\mathbf{D}^n\\mathbf{P}^{-1}\\), and solving \\(\\mathbf{T}\\mathbf{p} = \\mathbf{p}\\) with \\(\\sum p_i = 1\\) for steady-state probabilities.</td><td>In IB AI HL, Markov transition matrices \\(\\mathbf{T}\\) have columns summing to \\(1\\) (\\(T_{ij} = P(j \\to i)\\)) and act on column state vectors \\(\\mathbf{x}_{n+1} = \\mathbf{T}\\mathbf{x}_n\\).</td></tr>\n<tr><td><strong>AHL 3.9–3.13 Graph Theory (MST, CPP, TSP)</strong></td><td>Adjacency matrix \\(\\mathbf{A}^k\\) counting walks of length \\(k\\); Kruskal/Prim MST; Chinese Postman Problem (pairing odd-degree vertices); TSP upper bound (Nearest Neighbour) &amp; lower bound (Deleted Vertex MST + 2 shortest edges).</td><td>In the Deleted Vertex TSP lower bound, you must delete vertex \\(V\\) <em>first</em>, find the MST of the remaining \\(n-1\\) vertices, and then add the <strong>two</strong> shortest edges from \\(V\\).</td></tr>\n<tr><td><strong>AHL 5.17 Coupled Linear ODEs &amp; Phase Portraits</strong></td><td>Solving \\(\\dot{\\mathbf{x}} = \\mathbf{A}\\mathbf{x}\\) via \\(\\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2\\); classifying origin as saddle (\\(\\lambda_1 < 0 < \\lambda_2\\)), stable/unstable node, spiral, or centre.</td><td>Confusing clockwise vs anticlockwise spiral direction — always test the velocity vector \\(\\dot{\\mathbf{x}} = \\mathbf{A}\\binom{1}{0}\\) at \\((1, 0)\\)!</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AI HL Paper 2 — 9 marks):</strong><br>\nA coupled predator-prey deviation model satisfies \\(\\begin{pmatrix}\\dot{x}\\\\\\dot{y}\\end{pmatrix} = \\begin{pmatrix}1 & 2\\\\2 & 1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}\\) with initial state \\(x(0) = 4, y(0) = 2\\).<br>\n(a) Find the eigenvalues and corresponding eigenvectors of \\(\\mathbf{A} = \\begin{pmatrix}1 & 2\\\\2 & 1\\end{pmatrix}\\). <strong>[4]</strong><br>\n(b) State the nature of the equilibrium point at \\((0, 0)\\) and find the particular solution for \\(x(t)\\) and \\(y(t)\\). <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) \\(\\det(\\mathbf{A} - \\lambda\\mathbf{I}) = (1-\\lambda)^2 - 4 = \\lambda^2 - 2\\lambda - 3 = (\\lambda - 3)(\\lambda + 1) = 0 \\implies \\lambda_1 = 3, \\lambda_2 = -1\\) <strong>[M1] [A1]</strong><br>\nFor \\(\\lambda_1 = 3\\): \\(-2x + 2y = 0 \\implies \\mathbf{v}_1 = \\binom{1}{1}\\) <strong>[A1]</strong>; for \\(\\lambda_2 = -1\\): \\(2x + 2y = 0 \\implies \\mathbf{v}_2 = \\binom{1}{-1}\\) <strong>[A1]</strong><br>\n(b) Since \\(\\lambda_1 = 3 > 0\\) and \\(\\lambda_2 = -1 < 0\\) have opposite signs, \\((0, 0)\\) is an unstable <strong>saddle point</strong> <strong>[R1]</strong><br>\nGeneral solution: \\(\\binom{x}{y} = c_1 e^{3t}\\binom{1}{1} + c_2 e^{-t}\\binom{1}{-1}\\) <strong>[M1]</strong><br>\nAt \\(t = 0\\): \\(c_1 + c_2 = 4\\) and \\(c_1 - c_2 = 2 \\implies c_1 = 3, c_2 = 1\\) <strong>[M1] [A1]</strong><br>\nHence \\(x(t) = 3e^{3t} + e^{-t}\\) and \\(y(t) = 3e^{3t} - e^{-t}\\) <strong>[A1]</strong></p>",
-          "ar": "<p><strong>High-Frequency IB AI HL Past-Paper Ideas (Topics 1, 3, 4, 5):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>AI HL Domain</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>AHL 1.9 المصفوفات, القيم الذاتية &amp; Markov Chains</strong></td><td>Finding characteristic كثيرة الحدود \\(\\det(\\mathbf{A} - \\lambda\\mathbf{I}) = 0\\), diagonalizing \\(\\mathbf{A}^n = \\mathbf{P}\\mathbf{D}^n\\mathbf{P}^{-1}\\), and solving \\(\\mathbf{T}\\mathbf{p} = \\mathbf{p}\\) with \\(\\sum p_i = 1\\) for steady-state probabilities.</td><td>In IB AI HL, Markov transition المصفوفات \\(\\mathbf{T}\\) have columns summing to \\(1\\) (\\(T_{ij} = P(j \\to i)\\)) and act on column state المتجهات \\(\\mathbf{x}_{n+1} = \\mathbf{T}\\mathbf{x}_n\\).</td></tr>\n<tr><td><strong>AHL 3.9–3.13 التمثيل البياني Theory (MST, CPP, TSP)</strong></td><td>Adjacency المصفوفة \\(\\mathbf{A}^k\\) counting walks of length \\(k\\); Kruskal/Prim MST; Chinese Postman Problem (pairing odd-degree vertices); TSP upper bound (Nearest Neighbour) &amp; lower bound (Deleted الرأس MST + 2 shortest edges).</td><td>In the Deleted الرأس TSP lower bound, you must delete الرأس \\(V\\) <em>first</em>, أوجد MST of the remaining \\(n-1\\) vertices, and then add the <strong>two</strong> shortest edges from \\(V\\).</td></tr>\n<tr><td><strong>AHL 5.17 Coupled Linear ODEs &amp; Phase Portraits</strong></td><td>Solving \\(\\dot{\\mathbf{x}} = \\mathbf{A}\\mathbf{x}\\) via \\(\\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2\\); classifying origin as saddle (\\(\\lambda_1 < 0 < \\lambda_2\\)), stable/unstable node, spiral, or centre.</td><td>Confusing clockwise vs anticlockwise spiral direction — always test the velocity المتجه \\(\\dot{\\mathbf{x}} = \\mathbf{A}\\binom{1}{0}\\) at \\((1, 0)\\)!</td></tr>\n</tbody></table>\n<p><strong>مثال محلول (AI HL Paper 2 — 9 marks):</strong><br>\nA coupled predator-prey deviation model satisfies \\(\\begin{pmatrix}\\dot{x}\\\\\\dot{y}\\end{pmatrix} = \\begin{pmatrix}1 & 2\\\\2 & 1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}\\) with initial state \\(x(0) = 4, y(0) = 2\\).<br>\n(a) أوجد القيم الذاتية and corresponding المتجهات الذاتية of \\(\\mathbf{A} = \\begin{pmatrix}1 & 2\\\\2 & 1\\end{pmatrix}\\). <strong>[4]</strong><br>\n(b) State the nature of the التوازن point at \\((0, 0)\\) and أوجد particular الحل for \\(x(t)\\) and \\(y(t)\\). <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme الحل:</strong><br>\n(a) \\(\\det(\\mathbf{A} - \\lambda\\mathbf{I}) = (1-\\lambda)^2 - 4 = \\lambda^2 - 2\\lambda - 3 = (\\lambda - 3)(\\lambda + 1) = 0 \\implies \\lambda_1 = 3, \\lambda_2 = -1\\) <strong>[M1] [A1]</strong><br>\nFor \\(\\lambda_1 = 3\\): \\(-2x + 2y = 0 \\implies \\mathbf{v}_1 = \\binom{1}{1}\\) <strong>[A1]</strong>; for \\(\\lambda_2 = -1\\): \\(2x + 2y = 0 \\implies \\mathbf{v}_2 = \\binom{1}{-1}\\) <strong>[A1]</strong><br>\n(b) Since \\(\\lambda_1 = 3 > 0\\) and \\(\\lambda_2 = -1 < 0\\) have opposite signs, \\((0, 0)\\) is an unstable <strong>saddle point</strong> <strong>[R1]</strong><br>\nGeneral الحل: \\(\\binom{x}{y} = c_1 e^{3t}\\binom{1}{1} + c_2 e^{-t}\\binom{1}{-1}\\) <strong>[M1]</strong><br>\nAt \\(t = 0\\): \\(c_1 + c_2 = 4\\) and \\(c_1 - c_2 = 2 \\implies c_1 = 3, c_2 = 1\\) <strong>[M1] [A1]</strong><br>\nومنه \\(x(t) = 3e^{3t} + e^{-t}\\) and \\(y(t) = 3e^{3t} - e^{-t}\\) <strong>[A1]</strong></p>"
+          "ar": null
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (AI HL — Additional Topics)",
-          "ar": "توضيح رياضي: Error Diagnosis — Common Student Traps vs. Exam-Board Method (AI HL — Additional Topics)"
+          "ar": null
         },
         "columns": [
           {
@@ -547,11 +547,11 @@
             },
             {
               "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
-              "ar": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\). (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             },
             {
               "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
-              "ar": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease). (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             }
           ],
           [
@@ -561,25 +561,25 @@
             },
             {
               "en": "Dividing by a negative number reverses order on the real number line.",
-              "ar": "Dividing by a negative number reverses order on the real number line. (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             },
             {
               "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
-              "ar": "Flip the المتباينة symbol whenever multiplying or dividing by a negative: \\(x < -4\\)."
+              "ar": null
             }
           ],
           [
             {
               "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
-              "ar": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\) (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             },
             {
               "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
-              "ar": "Time spent at the slower speed is longer than time spent at the faster speed. (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             },
             {
               "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
-              "ar": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\). (مسار التطبيقات والتفسير (AI HL) — الموضوعات المتقدمة)"
+              "ar": null
             }
           ]
         ]
@@ -593,27 +593,27 @@
         },
         "body": {
           "en": "<p><strong>High-Speed Exam Shortcut (IB Diploma Mathematics: AA / AI Higher Level (Papers 1, 2 & 3)):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
-          "ar": "<p><strong>High-Speed Exam Shortcut (IB Diploma Mathematics: AA / AI Higher Level (Papers 1, 2 & 3)):</strong> عندما a linear system asks for a combined العبارة الجبرية like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two المعادلات directly before isolating either المتغير—this often yields the target العبارة الجبرية in a single step.</p>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "A weighted network has edges: DE = 1, BC = 2, AB = 3, CD = 4, BD = 5, CE = 6, AC = 7, AD = 8. Use Kruskal's algorithm to determine the minimum spanning tree and compute its total weight.",
-          "ar": "A weighted network has edges: DE = 1, BC = 2, AB = 3, CD = 4, BD = 5, CE = 6, AC = 7, AD = 8. Use Kruskal's algorithm to حدّد minimum spanning tree and compute its total weight."
+          "ar": null
         },
         "solution": {
           "en": "1. Sort all edges in non-decreasing order of weight:<br>DE (1), BC (2), AB (3), CD (4), BD (5), CE (6), AC (7), AD (8).<br>2. Select edges avoiding cycles:<br>- Add DE (weight 1) [Vertices connected: {D, E}]<br>- Add BC (weight 2) [Vertices connected: {D, E}, {B, C}]<br>- Add AB (weight 3) [Vertices connected: {D, E}, {A, B, C}]<br>- Add CD (weight 4) [Merges components: {A, B, C, D, E} - all 5 vertices connected!]<br>3. Check edge count: \\(V - 1 = 5 - 1 = 4\\) edges selected.<br>4. Total MST Weight: \\[ 1 + 2 + 3 + 4 = 10. \\]",
-          "ar": "خطوات الحل التفصيلية: 1. Sort all edges in non-decreasing order of weight:<br>DE (1), BC (2), AB (3), CD (4), BD (5), CE (6), AC (7), AD (8).<br>2. Select edges avoiding cycles:<br>- Add DE (weight 1) [Vertices connected: {D, E}]<br>- Add BC (weight 2) [Vertices connected: {D, E}, {B, C}]<br>- Add AB (weight 3) [Vertices connected: {D, E}, {A, B, C}]<br>- Add CD (weight 4) [Merges components: {A, B, C, D, E} - all 5 vertices connected!]<br>3. Check edge count: \\(V - 1 = 5 - 1 = 4\\) edges selected.<br>4. Total MST Weight: \\[ 1 + 2 + 3 + 4 = 10. \\]"
+          "ar": null
         },
         "hints": [
           {
             "en": "Sort all edges in non-decreasing order of weight: DE (1), BC (2), AB (3), CD (4), BD (5), CE (6), AC (7), AD (8).",
-            "ar": "تلميح للحل: استخدم العلاقة Sort all edges in non-decreasing order of weight: DE (1), BC (2), AB (3), CD (4), BD (5), CE (6), AC (7), AD (8). لتبسيط الخطوة."
+            "ar": null
           },
           {
             "en": "Select edges avoiding cycles: - Add DE (weight 1) [Vertices connected: {D, E}] - Add BC (weight 2) [Vertices connected: {D, E}, {B, C}] - Add AB (weight 3) [Vertices connected: {D, E}, {A, B, C}] - Add CD (weight 4) [Merges components: {A, B, C, D, E} - all 5 vertices connected!].",
-            "ar": "تلميح للحل: استخدم العلاقة Select edges avoiding cycles: - Add DE (weight 1) [Vertices connected: {D, E}] - Add BC (weight 2) [Vertices connected: {D, E}, {B, C}] - Add AB (weight 3) [Vertices connected: {D, E}, {A, B, C}] - Add CD (weight 4) [Merges components: {A, B, C, D, E} - all 5 vertices connected!]. لتبسيط الخطوة."
+            "ar": null
           },
           {
             "en": "Check edge count: \\(V - 1 = 5 - 1\\) edges selected.",
@@ -625,24 +625,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "A network has weighted adjacency matrix \\(W\\). Explain how the minimum spanning tree algorithm (Kruskal's) differs from Dijkstra's algorithm.",
-          "ar": "A network has weighted adjacency matrix \\(W\\). Explain how the minimum spanning tree algorithm (Kruskal's) dإذا كانfers from Dijkstra's algorithm."
+          "ar": null
         },
         "solution": {
           "en": "Kruskal's algorithm finds a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex. Dijkstra's algorithm finds the shortest path routes from a designated single source vertex to all other individual vertices. A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices.",
-          "ar": "Kruskal's algorithm أوجدs a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex. Dijkstra's algorithm أوجدs the shortest path routes from a designated single source vertex to all other individual vertices. A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices."
+          "ar": null
         },
         "hints": [
           {
             "en": "Kruskal's algorithm finds a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex.",
-            "ar": "Kruskal's algorithm أوجدs a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex."
+            "ar": null
           },
           {
             "en": "Dijkstra's algorithm finds the shortest path routes from a designated single source vertex to all other individual vertices.",
-            "ar": "Dijkstra's algorithm أوجدs the shortest path routes from a designated single source vertex to all other individual vertices."
+            "ar": null
           },
           {
             "en": "A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices.",
-            "ar": "تلميح للحل: استخدم العلاقة A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices. لتبسيط الخطوة."
+            "ar": null
           }
         ]
       },
@@ -650,12 +650,12 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> Consider the function \\( f(x) = ax^2 + bx + c \\). The graph of \\( f(x) \\) is a parabola that passes through the points \\((-1, 12)\\), \\((1, 2)\\), and \\((2, 9)\\). Find the value of the parameter \\( b \\).",
-          "ar": "<strong>[Practice 3 · Medium]</strong> Consider the function \\( f(x) = ax^2 + bx + c \\). The graph of \\( f(x) \\) is a parabola that يمر بالنقطة the points \\((-1, 12)\\), \\((1, 2)\\), and \\((2, 9)\\). أوجد قيمة the parameter \\( b \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Let the function be \\( f(x) = ax^2 + bx + c \\). We are given three points that lie on the graph of \\( f(x) \\): \\((-1, 12)\\), \\((1, 2)\\), and \\((2, 9)\\).",
-            "ar": "ليكن the function be \\( f(x) = ax^2 + bx + c \\). We are given three points that lie on the graph of \\( f(x) \\): \\((-1, 12)\\), \\((1, 2)\\), and \\((2, 9)\\)."
+            "ar": null
           },
           {
             "en": "Substituting these points into the function, we get a system of three linear equations with three unknowns \\( a, b, \\) and \\( c \\): 1. For \\((-1, 12)\\): \\( a(-1)^2 + b(-1) + c = 12 \\Rightarrow a - b + c = 12 \\) For \\((1, 2)\\): \\(a(1)^2 + b(1) + c = 2 \\Rightarrow a + b + c\\).",
@@ -668,14 +668,14 @@
         ],
         "solution": {
           "en": "Let the function be \\( f(x) = ax^2 + bx + c \\). We are given three points that lie on the graph of \\( f(x) \\): \\((-1, 12)\\), \\((1, 2)\\), and \\((2, 9)\\).\n\nSubstituting these points into the function, we get a system of three linear equations with three unknowns \\( a, b, \\) and \\( c \\):\n\n1. For \\((-1, 12)\\): \\( a(-1)^2 + b(-1) + c = 12 \\Rightarrow a - b + c = 12 \\)\n2. For \\((1, 2)\\): \\( a(1)^2 + b(1) + c = 2 \\Rightarrow a + b + c = 2 \\)\n3. For \\((2, 9)\\): \\( a(2)^2 + b(2) + c = 9 \\Rightarrow 4a + 2b + c = 9 \\)\n\nWe can solve this system of equations. Subtract equation (1) from equation (2):\n\\((a + b + c) - (a - b + c) = 2 - 12\\)\n\\(2b = -10\\)\n\\(b = -5\\)\n\nNow we can substitute \\( b = -5 \\) back into equations (1) and (2):\n1. \\( a - (-5) + c = 12 \\Rightarrow a + 5 + c = 12 \\Rightarrow a + c = 7 \\)\n2. \\( a + (-5) + c = 2 \\Rightarrow a - 5 + c = 2 \\Rightarrow a + c = 7 \\)\nThese two equations are consistent. Now substitute \\( b = -5 \\) into equation (3):\n\\(4a + 2(-5) + c = 9\\)\n\\(4a - 10 + c = 9\\)\n\\(4a + c = 19\\)\n\nWe now have a system of two equations with \\( a \\) and \\( c \\):\n(i) \\( a + c = 7 \\)\n(ii) \\( 4a + c = 19 \\)\n\nSubtract equation (i) from equation (ii):\n\\((4a + c) - (a + c) = 19 - 7\\)\n\\(3a = 12\\)\n\\(a = 4\\)\n\nSubstitute \\( a = 4 \\) into equation (i):\n\\(4 + c = 7\\)\n\\(c = 3\\)\n\nSo, the function is \\( f(x) = 4x^2 - 5x + 3 \\). The question asks for the value of the parameter \\( b \\), which we found to be \\(-5\\). <strong></strong>",
-          "ar": "ليكن the function be \\( f(x) = ax^2 + bx + c \\). We are given three points that lie on the graph of \\( f(x) \\): \\((-1, 12)\\), \\((1, 2)\\), and \\((2, 9)\\).\n\nSubstituting these points into the function, we get a system of three linear equations with three unknowns \\( a, b, \\) and \\( c \\):\n\n1. For \\((-1, 12)\\): \\( a(-1)^2 + b(-1) + c = 12 \\Rightarrow a - b + c = 12 \\)\n2. For \\((1, 2)\\): \\( a(1)^2 + b(1) + c = 2 \\Rightarrow a + b + c = 2 \\)\n3. For \\((2, 9)\\): \\( a(2)^2 + b(2) + c = 9 \\Rightarrow 4a + 2b + c = 9 \\)\n\nWe can حل this system of equations. Subtract equation (1) from equation (2):\n\\((a + b + c) - (a - b + c) = 2 - 12\\)\n\\(2b = -10\\)\n\\(b = -5\\)\n\nNow we can عوّض \\( b = -5 \\) back into equations (1) and (2):\n1. \\( a - (-5) + c = 12 \\Rightarrow a + 5 + c = 12 \\Rightarrow a + c = 7 \\)\n2. \\( a + (-5) + c = 2 \\Rightarrow a - 5 + c = 2 \\Rightarrow a + c = 7 \\)\nThese two equations are consistent. Now عوّض \\( b = -5 \\) into equation (3):\n\\(4a + 2(-5) + c = 9\\)\n\\(4a - 10 + c = 9\\)\n\\(4a + c = 19\\)\n\nWe now have a system of two equations with \\( a \\) and \\( c \\):\n(i) \\( a + c = 7 \\)\n(ii) \\( 4a + c = 19 \\)\n\nSubtract equation (i) from equation (ii):\n\\((4a + c) - (a + c) = 19 - 7\\)\n\\(3a = 12\\)\n\\(a = 4\\)\n\nعوّض \\( a = 4 \\) into equation (i):\n\\(4 + c = 7\\)\n\\(c = 3\\)\n\nSo, the function is \\( f(x) = 4x^2 - 5x + 3 \\). The question asks for the value of the parameter \\( b \\), which we found to be \\(-5\\). <strong></strong>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> The diagram shows the graph of the function \\( f(x) = x^2 - 6x + k \\). The vertex of the parabola is at the point \\((h, -1)\\). Determine the value of \\( k \\).",
-          "ar": "<strong>[Practice 4 · Medium]</strong> The diagram shows the graph of the function \\( f(x) = x^2 - 6x + k \\). The vertex of the parabola is عند النقطة \\((h, -1)\\). حدّد value of \\( k \\)."
+          "ar": null
         },
         "hints": [
           {
@@ -693,14 +693,14 @@
         ],
         "solution": {
           "en": "The given function is \\( f(x) = x^2 - 6x + k \\). The x-coordinate of the vertex of a parabola in the form \\( ax^2 + bx + c \\) is given by \\( h = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -6 \\), so \\( h = -\\frac{-6}{2(1)} = 3 \\). The vertex is given as \\((h, -1)\\), so we know \\( h = 3 \\). To find \\( k \\), we substitute the coordinates of the vertex into the function: \\( f(3) = -1 \\). \\( (3)^2 - 6(3) + k = -1 \\) \\( 9 - 18 + k = -1 \\) \\( -9 + k = -1 \\) \\( k = -1 + 9 \\) \\( k = 8 \\). Therefore, the value of \\( k \\) is 8. <strong></strong>",
-          "ar": "The given function is \\( f(x) = x^2 - 6x + k \\). The x-coordinate of the vertex of a parabola in the form \\( ax^2 + bx + c \\) is given by \\( h = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -6 \\), so \\( h = -\\frac{-6}{2(1)} = 3 \\). The vertex is given as \\((h, -1)\\), so we know \\( h = 3 \\). To أوجد \\( k \\), we عوّض the coordinates of the vertex into the function: \\( f(3) = -1 \\). \\( (3)^2 - 6(3) + k = -1 \\) \\( 9 - 18 + k = -1 \\) \\( -9 + k = -1 \\) \\( k = -1 + 9 \\) \\( k = 8 \\). وبالتالي، the value of \\( k \\) is 8. <strong></strong>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "Consider the quadratic function \\( f(x) = x^2 - 4x + 3 \\) and the linear function \\( g(x) = x - 1 \\). The points of intersection are given by their solutions. What is the y-coordinate of the point of intersection where x = 1?",
-          "ar": "Consider the quadratic function \\( f(x) = x^2 - 4x + 3 \\) and the linear function \\( g(x) = x - 1 \\). The points of intersection are given بتطبيقir solutions. What is the y-coordinate of the point of intersection حيث x = 1?"
+          "ar": null
         },
         "hints": [
           {
@@ -718,7 +718,7 @@
         ],
         "solution": {
           "en": "To find the points of intersection, we set \\( f(x) = g(x) \\): \\( x^2 - 4x + 3 = x - 1 \\). \\( x^2 - 5x + 4 = 0 \\). \\( (x - 1)(x - 4) = 0 \\). The x-coordinates of the intersection points are \\( x = 1 \\) and \\( x = 4 \\). We are asked for the y-coordinate when \\( x = 1 \\). We can use either function to find this y-coordinate. Using \\( g(x) = x - 1 \\), when \\( x = 1 \\), \\( g(1) = 1 - 1 = 0 \\). Therefore, the y-coordinate is 0. <strong>[M1] [A1]</strong>",
-          "ar": "To أوجد points of intersection, we set \\( f(x) = g(x) \\): \\( x^2 - 4x + 3 = x - 1 \\). \\( x^2 - 5x + 4 = 0 \\). \\( (x - 1)(x - 4) = 0 \\). The x-coordinates of the intersection points are \\( x = 1 \\) and \\( x = 4 \\). We are asked for the y-coordinate عندما \\( x = 1 \\). We can use either function to أوجد this y-coordinate. Using \\( g(x) = x - 1 \\), عندما \\( x = 1 \\), \\( g(1) = 1 - 1 = 0 \\). وبالتالي، the y-coordinate is 0. <strong>[M1] [A1]</strong>"
+          "ar": null
         }
       },
       {

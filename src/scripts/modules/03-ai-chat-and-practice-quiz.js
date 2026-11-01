@@ -468,6 +468,7 @@
     var cloud=window.ClipSATCloud;
     if(!cloud||!cloud.configured) return Promise.reject(new Error('NOT_SIGNED_IN'));
     return Promise.resolve(cloud.ready).then(function(){
+      if(typeof cloud.getSession === 'function') return cloud.getSession();
       var client=cloud.getClient&&cloud.getClient();
       if(!client) throw new Error('NOT_SIGNED_IN');
       return client.auth.getSession();
@@ -484,7 +485,9 @@
       if(opts.attachment){
         body.attachment = opts.attachment;
       }
-      return fetch(AI_PROXY_URL,{
+      var targetUrl = (typeof cloud.getFunctionUrl === 'function') ? cloud.getFunctionUrl('ai-proxy') : AI_PROXY_URL;
+      var doFetch = cloud.fetch || fetch;
+      return doFetch(targetUrl,{
         method:'POST', mode:'cors',
         headers:{
           'Authorization':'Bearer '+session.access_token,
@@ -627,9 +630,15 @@ window.launchPracticeQuiz=function(mistake){
           if(ALIGN_ENVS.some(function(v){return en2.indexOf(v)!==-1;})&&alignDepth>0) alignDepth--;
         }
       }
-      /* ── pass HTML tags through outside math ── */
+      /* ── pass ONLY allowlisted attribute-free formatting tags through outside math ── */
       if(!inMath && s[i]==='<' && i+1<L && (s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){
-        var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}
+        var tj=s.indexOf('>',i);
+        if(tj!==-1 && tj-i<=64){
+          var _tg=s.slice(i,tj+1);
+          if((window._isSafeFormattingTag && window._isSafeFormattingTag(_tg)) || /^<\/?(?:br|b|strong|i|em|u|sub|sup|code|p|ul|ol|li|table|thead|tbody|tr|th|td|hr)\s*\/?>$/i.test(_tg) || /^(?:<\/span\s*>|<span\s+class=(?:"[a-zA-Z0-9 _-]+"|'[a-zA-Z0-9 _-]+')\s*>)$/i.test(_tg)){
+            out+=_tg;i=tj+1;continue;
+          }
+        }
       }
       /* ── outside math: unescape LaTeX-escaped percent and dollar so raw backslashes do not show ── */
       if(!inMath && s[i]==='\\' && i+1<L && (s[i+1]==='%' || s[i+1]==='$')){

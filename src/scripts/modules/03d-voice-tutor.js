@@ -659,6 +659,7 @@
     if(_cloudCache[key]) return Promise.resolve(_cloudCache[key]);
     var cloud = window.ClipSATCloud;
     return Promise.resolve(cloud && cloud.ready).then(function(){
+      if(cloud && typeof cloud.getSession === 'function') return cloud.getSession();
       var client = cloud.getClient && cloud.getClient();
       if(!client) throw new Error('NOT_SIGNED_IN');
       return client.auth.getSession();
@@ -668,7 +669,9 @@
       var cfg = window.CLIPSAT_CLOUD_CONFIG || {};
       var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
       var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, CLOUD_FETCH_TIMEOUT_MS) : null;
-      return fetch(TTS_PROXY_URL, {
+      var targetUrl = (cloud && typeof cloud.getFunctionUrl === 'function') ? cloud.getFunctionUrl('tts-proxy') : TTS_PROXY_URL;
+      var doFetch = (cloud && cloud.fetch) ? cloud.fetch : fetch;
+      return doFetch(targetUrl, {
         method: 'POST', mode: 'cors',
         signal: ctrl ? ctrl.signal : undefined,
         headers: {

@@ -314,7 +314,7 @@
         'privacy.h3-counter':'Visitor counter & cookieless analytics',
         'privacy.counter':'The home page displays a live visit count stored in our Supabase backend. Each browser tab increments the shared counter at most once per session using session storage. Infrastructure providers process IP addresses strictly for operational routing, rate limiting, and security.',
         'privacy.h3-ads':'Advertising &amp; cookies',
-        'privacy.ads':'ClipSAT may show ads served by Google and other third-party vendors. These vendors, including Google, use cookies to serve ads based on prior visits. You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.',
+        'privacy.ads':'ClipSAT may show student-safe, non-personalized ads (TFCD=1, NPA=1) served by Google AdSense after opt-in consent. You may manage advertising settings at <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.',
         'privacy.h3-forms':'Google Forms integration',
         'privacy.forms-intro':'Teachers can optionally connect a Google account to turn a ClipSAT-generated quiz into a Google Form. This is entirely opt-in:',
         'privacy.forms-li1':'ClipSAT requests only minimal permissions to create a Form and save question diagrams to a teacher\'s Google Drive (scoped strictly to files ClipSAT itself creates).',
@@ -328,20 +328,21 @@
         'privacy.h3-contact':'Contact',
         'privacy.contact-p':'Questions about this policy can be sent via email to <a href="mailto:support@clipsat.org">support@clipsat.org</a>, or via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.',
         'terms.h2':'Terms of Service',
-        'terms.updated':'Last updated October 16, 2026',
-        'terms.intro':'By using ClipSAT you agree to the following terms.',
-        'terms.h3-content':'Use of content',
-        'terms.content':'Notes, explorers, and practice questions are provided for personal study and non-commercial classroom instruction. Downloaded packets may be used for review; please don\'t resell them.',
-        'terms.h3-guarantee':'No guarantee of results',
-        'terms.guarantee':'ClipSAT is a study aid, not a guarantee of any particular exam score. Always check official curriculum documents for the authoritative syllabus.',
-        'terms.h3-ai':'ClipSAT AI Tutor',
-        'terms.ai':'The "ClipSAT AI Tutor" is an AI assistant, not Mr. Mohamed Abdallah himself. Explanations are AI-generated, may contain errors, and are not a substitute for teacher guidance. Double-check important steps and final answers yourself.',
-        'terms.h3-paid':'ClipSAT Plus & 14-day refund policy',
-        'terms.paid':'ClipSAT Plus is an optional convenience tier. If you are not satisfied, you may request a full refund within 14 days of purchase by contacting support@clipsat.org.',
-        'terms.h3-contact':'Contact',
+        'terms.updated':'Last updated November 1, 2026',
+        'terms.intro':'By accessing or using ClipSAT ("the Platform"), you agree to these Terms of Service. If you do not agree, please do not use the Platform.',
+        'terms.free':'ClipSAT provides free access to foundational mathematics lessons, proofs, formula sheets, question banks, and interactive visualizers across all 31 curriculum tracks. Under our Free-Tier Promise, content that is free today will remain free and will never be moved behind a paywall.',
+        'terms.h3-content':'4. Acceptable Use of Content & Copyright',
+        'terms.content':'Study notes, dynamic explorers, and practice problems are provided for personal academic use and classroom teaching. Downloaded packets and worksheets may be printed for personal study or non-commercial classroom distribution; commercial resale or unauthorized redistribution is strictly prohibited.',
+        'terms.h3-guarantee':'5. Educational Study Aid & No Guarantee of Scores',
+        'terms.guarantee':'ClipSAT is an educational study aid designed to reinforce mathematical understanding. Use of the platform does not guarantee any specific examination score or percentile. Users should consult official exam bodies (Cambridge International, College Board, ACT, IB, or Qiyas) for authoritative syllabi and regulations.',
+        'terms.h3-ai':'3. ClipSAT AI Tutor Disclaimer',
+        'terms.ai':'The "ClipSAT AI Tutor" is an automated artificial intelligence assistant, not Mr. Mohamed Abdallah or a licensed human tutor. AI-generated explanations and math solutions may occasionally contain inaccuracies or omissions. The AI tutor is provided solely as a supplementary learning tool; you should independently verify important derivation steps, formulas, and final answers.',
+        'terms.h3-paid':'2. ClipSAT Plus Subscriptions, Billing & 14-Day Refund Policy',
+        'terms.paid':'ClipSAT Plus is an optional convenience tier offering cross-device cloud synchronization, expanded spaced-repetition synchronization, and a 10× expanded daily AI Tutor allowance (200 daily credits vs. 20 free daily credits).',
+        'terms.h3-contact':'6. Contact & Support',
         'terms.contact-p':'Questions can be sent via email to <a href="mailto:support@clipsat.org">support@clipsat.org</a>, or via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.',
         'cookies.h2':'Cookie Policy',
-        'cookies.updated':'Last updated October 16, 2026',
+        'cookies.updated':'Last updated November 1, 2026',
         'cookies.intro':'ClipSAT uses essential browser local storage for your learning progress, and with your consent, may load advertising or analytics cookies. This page explains what is stored, why, and how to manage your preferences.',
         'cookies.h3-stores':'Essential storage',
         'cookies.stores':'Your progress, streaks, mistake log, flashcard review schedule, and dark-mode preference are saved using your browser\'s local storage. This data stays on your device and can be cleared at any time from your browser settings.',
@@ -537,7 +538,7 @@
        matters for the Unicode Bidi Algorithm on real Arabic text runs, not
        just visual alignment. Deliberately NOT html/body-level — the rest of
        each track's chapter content is untranslated English and must stay LTR. */
-    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content, #qud-compare .i18n-content, #view-contact, #view-privacy, #view-terms, #view-cookies, #view-calculator, #view-home';
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content, #qud-compare .i18n-content, #view-contact, #view-privacy, #view-terms, #view-cookies, #view-calculator, #view-pricing, #view-trust, #view-about, #view-home';
 
     function setLocale(loc){
       _locale = loc;
@@ -567,31 +568,38 @@
 
     function getLocale(){ return _locale; }
 
-    function _applyToDOM(){
-      document.querySelectorAll('[data-i18n]').forEach(function(el){
-        el.textContent = t(el.getAttribute('data-i18n'));
+    function _hasKey(loc, key){
+      return !!(_strings[loc] && Object.prototype.hasOwnProperty.call(_strings[loc], key));
+    }
+
+    function _applyToDOM(scopeRoot){
+      var root = (scopeRoot && scopeRoot.querySelectorAll) ? scopeRoot : document;
+      root.querySelectorAll('[data-i18n]').forEach(function(el){
+        var key = el.getAttribute('data-i18n');
+        if(el._i18nOrigHtml === undefined) el._i18nOrigHtml = el.innerHTML;
+        if(_hasKey(_locale, key)){
+          el.textContent = t(key);
+        } else if(_locale === 'en'){
+          el.innerHTML = el._i18nOrigHtml;
+        }
       });
-      /* data-i18n-html: same as data-i18n but the English source string itself
-         contains a styled child element (e.g. the hero H1's <span class="q1">),
-         so it needs an innerHTML swap instead of a plain textContent one. */
-      document.querySelectorAll('[data-i18n-html]').forEach(function(el){
-        var raw = t(el.getAttribute('data-i18n-html'));
-        el.innerHTML = typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(raw) : raw;
+      root.querySelectorAll('[data-i18n-html]').forEach(function(el){
+        var key = el.getAttribute('data-i18n-html');
+        if(el._i18nOrigHtml === undefined) el._i18nOrigHtml = el.innerHTML;
+        if(_hasKey(_locale, key)){
+          var raw = t(key);
+          el.innerHTML = typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(raw) : raw;
+        } else if(_locale === 'en'){
+          el.innerHTML = el._i18nOrigHtml;
+        }
       });
-      /* data-i18n-attr="attrName:key" — translates a single named attribute
-         (placeholders, titles) instead of the element's own content. */
-      document.querySelectorAll('[data-i18n-attr]').forEach(function(el){
+      root.querySelectorAll('[data-i18n-attr]').forEach(function(el){
         var spec=el.getAttribute('data-i18n-attr').split(':');
-        el.setAttribute(spec[0], t(spec[1]));
+        if(_hasKey(_locale, spec[1]) || _hasKey('en', spec[1])){
+          el.setAttribute(spec[0], t(spec[1]));
+        }
       });
-      /* data-bilingual: content migrated to content/{track}/*.json (docs/CONTENT_MODEL.md)
-         embeds BOTH languages directly as two child elements (.i18n-en / .i18n-ar) instead
-         of a dictionary-key lookup — there is no key, so nothing above applies to it. Toggle
-         which child is visible; if there's no .i18n-ar (the source string's "ar" was null,
-         i.e. not yet translated), the English one just stays visible regardless of locale.
-         Purely additive: pages with no [data-bilingual] elements (everything before this was
-         written) are unaffected — the querySelectorAll below simply returns nothing. */
-      document.querySelectorAll('[data-bilingual]').forEach(function(el){
+      root.querySelectorAll('[data-bilingual]').forEach(function(el){
         var en = el.querySelector(':scope > .i18n-en');
         var ar = el.querySelector(':scope > .i18n-ar');
         if(!en) return;
@@ -599,11 +607,7 @@
         en.hidden = showAr;
         if(ar) ar.hidden = !showAr;
       });
-      /* data-bilingual-attrs="attr1,attr2": companion to data-bilingual above, for values
-         that must be plain attributes (aria-label, etc.) rather than visible content, so the
-         dual-span trick doesn't apply. Reads data-{attr}-en / data-{attr}-ar and sets attr to
-         whichever matches the current locale (falls back to -en if no -ar exists). */
-      document.querySelectorAll('[data-bilingual-attrs]').forEach(function(el){
+      root.querySelectorAll('[data-bilingual-attrs]').forEach(function(el){
         el.getAttribute('data-bilingual-attrs').split(',').forEach(function(attr){
           var en = el.getAttribute('data-'+attr+'-en');
           var ar = el.getAttribute('data-'+attr+'-ar');
@@ -611,18 +615,18 @@
           if(val != null) el.setAttribute(attr, val);
         });
       });
+      try {
+        document.dispatchEvent(new CustomEvent('clipsat:locale-changed', { detail: { locale: _locale } }));
+      } catch(e){}
     }
 
-    /* Apply on load — always through setLocale() so the toggle-button label,
-       lang/dir attributes, and body.rtl class all end up consistent
-       regardless of whether the script runs before or after DOMContentLoaded. */
     if(document.readyState==='loading'){
       document.addEventListener('DOMContentLoaded', function(){ setLocale(_locale); });
     } else {
       setLocale(_locale);
     }
 
-    return {t:t, setLocale:setLocale, getLocale:getLocale, _addStrings:_addStrings};
+    return {t:t, setLocale:setLocale, getLocale:getLocale, _addStrings:_addStrings, _applyToDOM:_applyToDOM};
   }());
 
 

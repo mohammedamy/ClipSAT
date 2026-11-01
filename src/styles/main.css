@@ -6510,7 +6510,7 @@ body.cbt-open .wb-toolbar,
   border: 1.5px solid var(--line, #334155);
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.32);
-  z-index: 150;
+  z-index: 10020;
   padding: 14px 18px;
   font-family: var(--sans);
   color: var(--ink);
@@ -6607,6 +6607,10 @@ body.dark .cookie-consent-accept:hover {
     width: calc(100% - 24px);
     max-width: none;
     padding: 12px 14px;
+  }
+  body.cookie-banner-open .chat-fab,
+  body:has(#cookieConsentBanner[style*="block"]) .chat-fab {
+    bottom: 168px;
   }
 }
 

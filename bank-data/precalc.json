@@ -154,7 +154,7 @@
       "ans": 1,
       "hints": [
         "The function is given by \\( f(x) = \\dfrac{x^2 - 9}{x - 3} \\).",
-        "We can factor the numerator as a difference of squares: \\( x^2 - 9 = (x-3)(x+3) \\). Thus, for \\( x eq 3 \\), we can simplify the function to \\( f(x) = \\dfrac{(x-3)(x+3)}{x - 3} = x + 3 \\).",
+        "We can factor the numerator as a difference of squares: \\( x^2 - 9 = (x-3)(x+3) \\). Thus, for \\( x \\neq 3 \\), we can simplify the function to \\( f(x) = \\dfrac{(x-3)(x+3)}{x - 3} = x + 3 \\).",
         "Therefore, as \\(x\\) approaches 3, \\(f(x)\\) approaches 6."
       ]
     },
@@ -481,12 +481,12 @@
         "-3/4",
         "-4/3"
       ],
-      "answer": 1,
-      "correct": 1,
+      "answer": 0,
+      "correct": 0,
       "sol": "Two vectors \\( \\vec{u} \\) and \\( \\vec{v} \\) are orthogonal if and only if their dot product is zero. The dot product of \\( \\vec{u} = u_1\\hat{i} + u_2\\hat{j} \\) and \\( \\vec{v} = v_1\\hat{i} + v_2\\hat{j} \\) is given by \\( \\vec{u} \\cdot \\vec{v} = u_1v_1 + u_2v_2 \\). \nGiven \\( \\vec{u} = 3\\hat{i} + k\\hat{j} \\) and \\( \\vec{v} = -\\hat{i} + 4\\hat{j} \\), their dot product is: \n\\( \\vec{u} \\cdot \\vec{v} = (3)(-1) + (k)(4) \\)\n\\( \\vec{u} \\cdot \\vec{v} = -3 + 4k \\)\nFor the vectors to be orthogonal, their dot product must be zero: \n\\( -3 + 4k = 0 \\)\n\\( 4k = 3 \\)\n\\( k = \\frac{3}{4} \\)",
       "solution": "Two vectors \\( \\vec{u} \\) and \\( \\vec{v} \\) are orthogonal if and only if their dot product is zero. The dot product of \\( \\vec{u} = u_1\\hat{i} + u_2\\hat{j} \\) and \\( \\vec{v} = v_1\\hat{i} + v_2\\hat{j} \\) is given by \\( \\vec{u} \\cdot \\vec{v} = u_1v_1 + u_2v_2 \\). \nGiven \\( \\vec{u} = 3\\hat{i} + k\\hat{j} \\) and \\( \\vec{v} = -\\hat{i} + 4\\hat{j} \\), their dot product is: \n\\( \\vec{u} \\cdot \\vec{v} = (3)(-1) + (k)(4) \\)\n\\( \\vec{u} \\cdot \\vec{v} = -3 + 4k \\)\nFor the vectors to be orthogonal, their dot product must be zero: \n\\( -3 + 4k = 0 \\)\n\\( 4k = 3 \\)\n\\( k = \\frac{3}{4} \\)",
       "sympy_verified": true,
-      "ans": 1,
+      "ans": 0,
       "hints": [
         "Two vectors \\( \\vec{u} \\) and \\( \\vec{v} \\) are orthogonal if and only if their dot product is zero. The dot product of \\( \\vec{u} = u_1\\hat{i} + u_2\\hat{j} \\) and \\( \\vec{v} = v_1\\hat{i} + v_2\\hat{j} \\) is given by \\( \\vec{u} \\cdot \\vec{v} = u_1v_1 + u_2v_2 \\).",
         "Given \\( \\vec{u} = 3\\hat{i} + k\\hat{j} \\) and \\( \\vec{v} = -\\hat{i} + 4\\hat{j} \\), their dot product is: \\( \\vec{u} \\cdot \\vec{v} = (3)(-1) + (k)(4) \\) \\( \\vec{u} \\cdot \\vec{v} = -3 + 4k \\).",
@@ -716,7 +716,7 @@
       "hints": [
         "Let \\(\\angle BAD = \\angle CAD = \\alpha\\). In triangle \\(ABD\\), by the Sine Rule, we have \\( \\frac{m}{\\sin \\alpha} = \\frac{c}{\\sin \\angle ADB} \\). Therefore, \\( m = \\frac{c \\sin \\alpha}{\\sin \\angle ADB} \\).",
         "Since \\(\\angle ADB\\) and \\(\\angle ADC\\) are supplementary angles, \\( \\sin \\angle ADB = \\sin (180^{\\circ} - \\angle ADC) = \\sin \\angle ADC \\).",
-        "Since \\(\\sin \\angle ADB = \\sin \\angle ADC\\) and \\(\\sin \\alpha eq 0\\) (as \\(\\alpha\\) is an angle in a triangle), we can cancel these terms, yielding \\(\\frac{m}{n} = \\frac{c}{b}\\). This proves the statement."
+        "Since \\(\\sin \\angle ADB = \\sin \\angle ADC\\) and \\(\\sin \\alpha \\neq 0\\) (as \\(\\alpha\\) is an angle in a triangle), we can cancel these terms, yielding \\(\\frac{m}{n} = \\frac{c}{b}\\). This proves the statement."
       ],
       "fig": {
         "type": "sinusoid",
@@ -1387,7 +1387,7 @@
       "ans": 0,
       "hints": [
         "For a rational function where the degree of the numerator is equal to the degree of the denominator, the limit as \\(x \\to \\infty\\) is the ratio of the leading coefficients. Therefore, \\(\\lim_{x \\to \\infty} f(x) = \\frac{a}{d}\\). We are given that this limit is \\(\\frac{1}{2}\\), so \\(\\frac{a}{d} = \\frac{1}{2}\\).",
-        "The condition \\(\\lim_{x \\to -1} f(x) = \\infty\\) implies that \\(x=-1\\) is a vertical asymptote. This means that the denominator is zero when \\(x=-1\\), and the numerator is non-zero when \\(x=-1\\). So, \\(d(-1)^2 + e(-1) + f = 0\\), which means \\(d - e + f = 0\\). Also, \\(a(-1)^2 + b(-1) + c eq 0\\), so \\(a - b + c eq 0\\).",
+        "The condition \\(\\lim_{x \\to -1} f(x) = \\infty\\) implies that \\(x=-1\\) is a vertical asymptote. This means that the denominator is zero when \\(x=-1\\), and the numerator is non-zero when \\(x=-1\\). So, \\(d(-1)^2 + e(-1) + f = 0\\), which means \\(d - e + f = 0\\). Also, \\(a(-1)^2 + b(-1) + c \\neq 0\\), so \\(a - b + c \\neq 0\\).",
         "The value of \\(\\frac{a}{d}\\) is directly given by the limit at infinity."
       ]
     },
@@ -2348,8 +2348,8 @@
       "ans": 3,
       "hints": [
         "Start by examining the given mathematical expression in the problem: \\(f(x)=\\dfrac{1}{x-4}\\).",
-        "The denominator cannot be zero: \\(x eq 4\\).",
-        "Apply this step to \\(x eq 4\\) and simplify to determine the final result."
+        "The denominator cannot be zero: \\(x \\neq 4\\).",
+        "Apply this step to \\(x \\neq 4\\) and simplify to determine the final result."
       ]
     },
     {
@@ -19439,10 +19439,10 @@
       "subskill_id": "pc-circles-2",
       "educational_aim": "Apply properties and theorems of Unit Circle & Trigonometric Identities in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Unit Circle & Trigonometric Identities — Multi-Step Application & Parameter Solve",
-      "correct": 2,
+      "correct": 0,
       "solution": "Isolating the trig function and using the unit circle, the solutions in \\([0,2\\pi)\\) are \\(x=\\frac{2\\pi}{3}\\) and \\(x=\\frac{4\\pi}{3}\\).",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 0,
       "hints": [
         "Start by examining the given mathematical expression in the problem: \\(f(x) = 2x^2 - 9x + 10\\).",
         "Isolating the trig function and using the unit circle, the solutions in \\([0,2\\pi)\\) are \\(x=\\frac{2\\pi}{3}\\) and \\(x\\).",
@@ -54760,10 +54760,10 @@
       "subskill_id": "pc-circles-2",
       "educational_aim": "Apply properties and theorems of Unit Circle & Trigonometric Identities in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Unit Circle & Trigonometric Identities — Multi-Step Application & Parameter Solve",
-      "correct": 1,
+      "correct": 0,
       "solution": "Using \\(\\lim_{u\\to0}\\frac{\\sin u}{u}=1\\) with \\(u=5x\\): \\(\\dfrac{\\sin(5x)}{x}=5\\cdot\\dfrac{\\sin(5x)}{5x}\\to 5\\cdot1=5\\).",
       "sympy_verified": true,
-      "ans": 1,
+      "ans": 0,
       "hints": [
         "Using \\(\\lim_{u\\to0}\\frac{\\sin u}{u}=1\\) with \\(u=5x\\): \\(\\dfrac{\\sin(5x)}{x}\\).",
         "Rewrite and substitute: \\(\\dfrac{\\sin(5x)}{x} = 5\\cdot\\dfrac{\\sin(5x)}{5x}\\to 5\\cdot1\\).",

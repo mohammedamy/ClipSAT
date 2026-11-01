@@ -11,7 +11,7 @@
         "kind": "text",
         "body": {
           "en": "<p>A series \\(\\sum a_n\\) converges when its partial sums \\(S_N = \\sum_{n=1}^N a_n\\) approach a finite limit. Because closed-form summation formulas rarely exist for arbitrary series, mathematical analysis provides a hierarchy of rigorous convergence tests based on term asymptotics, comparative decay rates, and functional analogs. Furthermore, power series extend polynomials into infinite functional representations whose domains are governed by a characteristic radius of convergence.</p>",
-          "ar": "<p>A المتسلسلة \\(\\sum a_n\\) converges عندما its partial sums \\(S_N = \\sum_{n=1}^N a_n\\) approach a finite النهاية. Because closed-form summation الصيغ rarely exist for arbitrary المتسلسلة, mathematical analysis provides a hierarchy of rigorous convergence tests based on term asymptotics, comparative decay rates, and functional analogs. Furthermore, power المتسلسلة extend polynomials into infinite functional representations whose domains are governed by a characteristic نصف القطر of convergence.</p>"
+          "ar": null
         }
       },
       {
@@ -23,7 +23,7 @@
         },
         "body": {
           "en": "<p>A sequence \\(\\{a_n\\}\\) converges to a real limit \\(L\\), written \\(\\displaystyle\\lim_{n \\to \\infty} a_n = L\\), if and only if for every \\(\\varepsilon > 0\\), there exists an integer \\(N \\in \\mathbb{N}\\) such that:</p>\\[ n > N \\implies |a_n - L| < \\varepsilon. \\]<p><strong>Geometric Meaning:</strong> No matter how narrow an error corridor \\((L - \\varepsilon, L + \\varepsilon)\\) is chosen around \\(L\\), there is a cutoff index \\(N\\) beyond which <em>all subsequent terms</em> \\(a_{N+1}, a_{N+2}, \\dots\\) are trapped permanently inside the corridor.</p>",
-          "ar": "<p>A المتتالية \\(\\{a_n\\}\\) converges to a real النهاية \\(L\\), written \\(\\displaystyle\\lim_{n \\to \\infty} a_n = L\\), if and only if for every \\(\\varepsilon > 0\\), there exists an integer \\(N \\in \\mathbb{N}\\) such that:</p>\\[ n > N \\implies |a_n - L| < \\varepsilon. \\]<p><strong>Geometric Meaning:</strong> No matter how narrow an error corridor \\((L - \\varepsilon, L + \\varepsilon)\\) is chosen around \\(L\\), there is a cutoff index \\(N\\) beyond which <em>all subsequent terms</em> \\(a_{N+1}, a_{N+2}, \\dots\\) are trapped permanently inside the corridor.</p>"
+          "ar": null
         }
       },
       {
@@ -64,11 +64,11 @@
         "style": "pf",
         "label": {
           "en": "◆ Why It Works — First-Principles Derivation (Convergence Tests &amp; Power Series)",
-          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (Convergence Tests &amp; Power المتسلسلة)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
-          "ar": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the النهاية as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, عندما differentiating an implicit relation \\(F(x, y) = c\\) بالنسبة إلى \\(x\\), \\(y = y(x)\\) is an inner الدالة of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>"
+          "ar": null
         }
       },
       {
@@ -80,7 +80,7 @@
         },
         "body": {
           "en": "<p><strong>Example 1:</strong> Prove using the \\(\\varepsilon\\text{--}N\\) definition that \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\).</p><p><em>Proof:</em> Let \\(\\varepsilon > 0\\) be given. By the Archimedean Property of the real numbers, choose an integer \\(N \\in \\mathbb{N}\\) such that \\(N \\ge \\lceil 1/\\varepsilon \\rceil > 0\\). For any integer \\(n > N\\): \\[ \\left|\\frac{1}{n} - 0\\right| = \\frac{1}{n} < \\frac{1}{N} \\le \\varepsilon. \\] Thus \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Example 2:</strong> Prove that \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\).</p><p><em>1. Scratchwork:</em> We examine the error: \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\left|\\frac{2(3n - 1) - 3(2n + 5)}{2(2n + 5)}\\right| = \\left|\\frac{6n - 2 - 6n - 15}{4n + 10}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n}. \\] We want \\(\\frac{17}{4n} < \\varepsilon \\iff 4n > \\frac{17}{\\varepsilon} \\iff n > \\frac{17}{4\\varepsilon}\\). Choose \\(N = \\lceil \\frac{17}{4\\varepsilon} \\rceil\\).</p><p><em>2. Formal Proof:</em> Let \\(\\varepsilon > 0\\) be arbitrary. Select \\(N = \\max\\left(1, \\left\\lceil \\frac{17}{4\\varepsilon} \\right\\rceil\\right)\\). For any \\(n > N\\): \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n} < \\frac{17}{4N} \\le \\varepsilon. \\] Hence \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\). \\(\\blacksquare\\)</p>",
-          "ar": "<p><strong>Example 1:</strong> Prove using the \\(\\varepsilon\\text{--}N\\) definition that \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\).</p><p><em>Proof:</em> Let \\(\\varepsilon > 0\\) be المعطيات. By the Archimedean Property of the real numbers, choose an integer \\(N \\in \\mathbb{N}\\) such that \\(N \\ge \\lceil 1/\\varepsilon \\rceil > 0\\). For any integer \\(n > N\\): \\[ \\left|\\frac{1}{n} - 0\\right| = \\frac{1}{n} < \\frac{1}{N} \\le \\varepsilon. \\] وعليه \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Example 2:</strong> Prove that \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\).</p><p><em>1. Scratchwork:</em> We examine the error: \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\left|\\frac{2(3n - 1) - 3(2n + 5)}{2(2n + 5)}\\right| = \\left|\\frac{6n - 2 - 6n - 15}{4n + 10}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n}. \\] We want \\(\\frac{17}{4n} < \\varepsilon \\iff 4n > \\frac{17}{\\varepsilon} \\iff n > \\frac{17}{4\\varepsilon}\\). Choose \\(N = \\lceil \\frac{17}{4\\varepsilon} \\rceil\\).</p><p><em>2. Formal برهان:</em> Let \\(\\varepsilon > 0\\) be arbitrary. Select \\(N = \\max\\left(1, \\left\\lceil \\frac{17}{4\\varepsilon} \\right\\rceil\\right)\\). For any \\(n > N\\): \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n} < \\frac{17}{4N} \\le \\varepsilon. \\] ومنه \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\). \\(\\blacksquare\\)</p>"
+          "ar": null
         }
       },
       {
@@ -92,7 +92,7 @@
         "canvasId": "calcSeqCanvas",
         "ariaLabel": {
           "en": "Interactive visualization of sequence convergence showing epsilon corridor around limit and cutoff index N",
-          "ar": "Interactive visualization of المتتالية convergence showing epsilon corridor around النهاية and cutoff index N"
+          "ar": null
         },
         "dataPanel": {
           "btnId": "calcSeqDataBtn",
@@ -101,7 +101,7 @@
           "rowsId": "calcSeqDataRows",
           "caption": {
             "en": "Sequence values and tolerance check for \\(n\\) around cutoff \\(N\\)",
-            "ar": "المتتالية values and tolerance check for \\(n\\) around cutoff \\(N\\)"
+            "ar": null
           },
           "columns": [
             {
@@ -177,7 +177,7 @@
         ],
         "note": {
           "en": "A sequence converges to \\(L = 1.5\\) if for every \\(\\varepsilon > 0\\), there exists \\(N\\) such that all terms past \\(N\\) lie within \\(L \\pm \\varepsilon\\). Green dots show terms \\(n > N\\) that obey the bound; red dots show terms that escape.",
-          "ar": "A المتتالية converges to \\(L = 1.5\\) if for every \\(\\varepsilon > 0\\), there exists \\(N\\) such that all terms past \\(N\\) lie within \\(L \\pm \\varepsilon\\). Green dots show terms \\(n > N\\) that obey the bound; red dots show terms that escape."
+          "ar": null
         }
       },
       {
@@ -189,7 +189,7 @@
         },
         "body": {
           "en": "<p>If the series \\(\\sum_{n=1}^\\infty a_n\\) converges, then \\(\\displaystyle\\lim_{n \\to \\infty} a_n = 0\\).</p><p>Equivalently (by contrapositive): If \\(\\lim_{n \\to \\infty} a_n \\ne 0\\) or fails to exist, then \\(\\sum_{n=1}^\\infty a_n\\) <strong>diverges</strong>.</p><p><em>Critical Warning:</em> The converse is FALSE! The condition \\(\\lim_{n\\to\\infty} a_n = 0\\) is necessary but NOT sufficient for convergence (e.g. the harmonic series \\(\\sum 1/n\\) diverges even though \\(1/n \\to 0\\)).</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Let \\(S_n = \\sum_{k=1}^n a_k\\) denote the sequence of partial sums. If the series converges to a finite sum \\(S\\), then \\(\\lim_{n \\to \\infty} S_n = S\\) and \\(\\lim_{n \\to \\infty} S_{n-1} = S\\).</p><p>For \\(n \\ge 2\\), the \\(n\\)-th term is the difference of successive partial sums: \\(a_n = S_n - S_{n-1}\\).</p><p>Taking the limit of both sides as \\(n \\to \\infty\\):</p>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} (S_n - S_{n-1}) = \\lim_{n \\to \\infty} S_n - \\lim_{n \\to \\infty} S_{n-1} = S - S = 0 \\quad \\blacksquare \\]</div></details>",
-          "ar": "<p>If the المتسلسلة \\(\\sum_{n=1}^\\infty a_n\\) converges, then \\(\\displaystyle\\lim_{n \\to \\infty} a_n = 0\\).</p><p>Equivalently (by contrapositive): If \\(\\lim_{n \\to \\infty} a_n \\ne 0\\) or fails to exist, then \\(\\sum_{n=1}^\\infty a_n\\) <strong>diverges</strong>.</p><p><em>Critical Warning:</em> The converse is FALSE! The condition \\(\\lim_{n\\to\\infty} a_n = 0\\) is necessary but NOT sufficient for convergence (e.g. the harmonic المتسلسلة \\(\\sum 1/n\\) diverges even though \\(1/n \\to 0\\)).</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Let \\(S_n = \\sum_{k=1}^n a_k\\) denote the المتتالية of partial sums. If the المتسلسلة converges to a finite sum \\(S\\), then \\(\\lim_{n \\to \\infty} S_n = S\\) and \\(\\lim_{n \\to \\infty} S_{n-1} = S\\).</p><p>For \\(n \\ge 2\\), the \\(n\\)-th term is the difference of successive partial sums: \\(a_n = S_n - S_{n-1}\\).</p><p>Taking the النهاية of both sides as \\(n \\to \\infty\\):</p>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} (S_n - S_{n-1}) = \\lim_{n \\to \\infty} S_n - \\lim_{n \\to \\infty} S_{n-1} = S - S = 0 \\quad \\blacksquare \\]</div></details>"
+          "ar": null
         }
       },
       {
@@ -197,18 +197,18 @@
         "style": "example",
         "label": {
           "en": "Worked Example 11.1 — Foundations: Divergence Test Application",
-          "ar": "مثال محلول 11.1 — Foundations: Divergence Test Application"
+          "ar": null
         },
         "body": {
           "en": "<p>Determine whether the series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{3n^2 + 5}{7n^2 - 2n + 1}\\) converges or diverges.</p><p><strong>Step 1: Evaluate the limit of the nth term as \\(n \\to \\infty\\).</strong></p>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\frac{3n^2 + 5}{7n^2 - 2n + 1} = \\lim_{n \\to \\infty} \\frac{3 + 5/n^2}{7 - 2/n + 1/n^2} = \\frac{3 + 0}{7 - 0 + 0} = \\frac{3}{7} \\]<p><strong>Step 2: Apply the Divergence Test.</strong><br>Since \\(\\lim_{n \\to \\infty} a_n = \\frac{3}{7} \\ne 0\\), by Theorem 11.1 the series <strong>diverges</strong>.</p>",
-          "ar": "<p>Determine whether the المتسلسلة \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{3n^2 + 5}{7n^2 - 2n + 1}\\) converges or diverges.</p><p><strong>Step 1: احسب قيمة النهاية of the nth term as \\(n \\to \\infty\\).</strong></p>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\frac{3n^2 + 5}{7n^2 - 2n + 1} = \\lim_{n \\to \\infty} \\frac{3 + 5/n^2}{7 - 2/n + 1/n^2} = \\frac{3 + 0}{7 - 0 + 0} = \\frac{3}{7} \\]<p><strong>Step 2: Apply the Divergence Test.</strong><br>Since \\(\\lim_{n \\to \\infty} a_n = \\frac{3}{7} \\ne 0\\), by مبرهنة 11.1 the المتسلسلة <strong>diverges</strong>.</p>"
+          "ar": null
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Convergence Tests &amp; Power Series)",
-          "ar": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Convergence Tests &amp; Power المتسلسلة)"
+          "ar": null
         },
         "columns": [
           {
@@ -228,15 +228,15 @@
           [
             {
               "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
-              "ar": "Assuming \\(f'(c) = 0\\) guarantees a local extremum (اختبارات التقارب ومتسلسلات القوى وتايلور)"
+              "ar": null
             },
             {
               "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
-              "ar": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign. (اختبارات التقارب ومتسلسلات القوى وتايلور)"
+              "ar": null
             },
             {
               "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
-              "ar": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)). (اختبارات التقارب ومتسلسلات القوى وتايلور)"
+              "ar": null
             }
           ],
           [
@@ -256,7 +256,7 @@
           [
             {
               "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
-              "ar": "Forgetting product rule on \\(xy\\) in implicit differentiation (اختبارات التقارب ومتسلسلات القوى وتايلور)"
+              "ar": null
             },
             {
               "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
@@ -278,18 +278,18 @@
         },
         "body": {
           "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
-          "ar": "<p><strong>Exam Justification Rule (University Single-المتغير & Multivariable التفاضل والتكامل):</strong> عندما justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the التمثيل البياني.\"</p>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Use the Divergence Test to determine whether \\(\\displaystyle \\sum_{n=1}^\\infty \\cos\\left(\\frac{1}{n}\\right)\\) converges or diverges.",
-          "ar": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Use the Divergence Test to حدّد whether \\(\\displaystyle \\sum_{n=1}^\\infty \\cos\\left(\\frac{1}{n}\\right)\\) converges or diverges."
+          "ar": null
         },
         "solution": {
           "en": "Compute the limit of the general term as \\(n \\to \\infty\\):<br>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\to\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1 \\]<br>Because \\(\\lim_{n \\to \\infty} a_n = 1\ne 0\\), the series <strong>diverges</strong> by the Divergence Test.",
-          "ar": "Compute the limit of the general term as \\(n \\to \\infty\\):<br>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\to\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1 \\]<br>Because \\(\\lim_{n \\to \\infty} a_n = 1\ne 0\\), the series <strong>diverges</strong> بتطبيق Divergence Test."
+          "ar": null
         },
         "hints": [
           {
@@ -302,7 +302,7 @@
           },
           {
             "en": "Because \\(\\lim_{n \\to \\infty} a_n = 1 e 0\\), the series <strong>diverges</strong> by the Divergence Test.",
-            "ar": "Because \\(\\lim_{n \\to \\infty} a_n = 1 e 0\\), the series <strong>diverges</strong> بتطبيق Divergence Test."
+            "ar": null
           }
         ]
       },
@@ -315,7 +315,7 @@
         },
         "body": {
           "en": "<p>Let \\(f(x)\\) be continuous, positive, and decreasing on \\([1, \\infty)\\), with \\(a_n = f(n)\\). Then:</p>\\[ \\sum_{n=1}^\\infty a_n \\text{ converges} \\iff \\int_1^\\infty f(x)\\,dx \\text{ converges} \\]<p><strong>The \\(p\\)-Series Theorem:</strong> The series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{1}{n^p}\\) converges if and only if \\(p > 1\\). For \\(p \\le 1\\), it diverges.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Riemann Partition Bounds</strong></summary><div style=\"margin-top:6px\"><p>Because \\(f(x)\\) is decreasing on each interval \\([i, i+1]\\), the function satisfies \\(f(i+1) \\le f(x) \\le f(i)\\) for all \\(x \\in [i, i+1]\\).</p><p>Integrating over \\([i, i+1]\\):</p>\\[ a_{i+1} = f(i+1) \\le \\int_i^{i+1} f(x)\\,dx \\le f(i) = a_i \\]<p>Summing from \\(i = 1\\) to \\(N-1\\):</p>\\[ \\sum_{i=1}^{N-1} a_{i+1} \\le \\int_1^N f(x)\\,dx \\le \\sum_{i=1}^{N-1} a_i \\implies S_N - a_1 \\le \\int_1^N f(x)\\,dx \\le S_{N-1} \\]<p>This establishes two crucial bounds:</p><ul><li>If \\(\\int_1^\\infty f(x)\\,dx\\) converges to \\(I\\), then \\(S_N \\le a_1 + I\\). The sequence \\(S_N\\) is strictly increasing and bounded above, hence by the Monotone Convergence Theorem, \\(\\sum a_n\\) converges.</li><li>If \\(\\int_1^\\infty f(x)\\,dx\\) diverges, then \\(S_N \\ge \\int_1^N f(x)\\,dx \\to \\infty\\), so \\(\\sum a_n\\) diverges \\quad \\blacksquare \\]</div></details>",
-          "ar": "<p>Let \\(f(x)\\) be continuous, positive, and decreasing on \\([1, \\infty)\\), with \\(a_n = f(n)\\). Then:</p>\\[ \\sum_{n=1}^\\infty a_n \\text{ converges} \\iff \\int_1^\\infty f(x)\\,dx \\text{ converges} \\]<p><strong>The \\(p\\)-المتسلسلة مبرهنة:</strong> The المتسلسلة \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{1}{n^p}\\) converges if and only if \\(p > 1\\). For \\(p \\le 1\\), it diverges.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical برهان via Riemann Partition Bounds</strong></summary><div style=\"margin-top:6px\"><p>Because \\(f(x)\\) is decreasing on each interval \\([i, i+1]\\), the الدالة satisfies \\(f(i+1) \\le f(x) \\le f(i)\\) for all \\(x \\in [i, i+1]\\).</p><p>Integrating over \\([i, i+1]\\):</p>\\[ a_{i+1} = f(i+1) \\le \\int_i^{i+1} f(x)\\,dx \\le f(i) = a_i \\]<p>Summing from \\(i = 1\\) to \\(N-1\\):</p>\\[ \\sum_{i=1}^{N-1} a_{i+1} \\le \\int_1^N f(x)\\,dx \\le \\sum_{i=1}^{N-1} a_i \\implies S_N - a_1 \\le \\int_1^N f(x)\\,dx \\le S_{N-1} \\]<p>This establishes two crucial bounds:</p><ul><li>If \\(\\int_1^\\infty f(x)\\,dx\\) converges to \\(I\\), then \\(S_N \\le a_1 + I\\). The المتتالية \\(S_N\\) is strictly increasing and bounded above, ومنه by the Monotone Convergence مبرهنة, \\(\\sum a_n\\) converges.</li><li>If \\(\\int_1^\\infty f(x)\\,dx\\) diverges, then \\(S_N \\ge \\int_1^N f(x)\\,dx \\to \\infty\\), so \\(\\sum a_n\\) diverges \\quad \\blacksquare \\]</div></details>"
+          "ar": null
         }
       },
       {
@@ -327,7 +327,7 @@
         "canvasId": "seriesCanvas",
         "ariaLabel": {
           "en": "Partial sums of the geometric series one half to the n approaching one",
-          "ar": "Partial sums of the geometric المتسلسلة one half to the n approaching one"
+          "ar": null
         },
         "dataPanel": {
           "btnId": "seriesDataBtn",
@@ -396,7 +396,7 @@
         ],
         "note": {
           "en": "The geometric series \\(\\sum (\\tfrac12)^n\\) sums to \\(1\\). Each new term halves the remaining gap — visible convergence.",
-          "ar": "The geometric المتسلسلة \\(\\sum (\\tfrac12)^n\\) sums to \\(1\\). Each new term halves the remaining gap — visible convergence."
+          "ar": null
         }
       },
       {
@@ -408,7 +408,7 @@
         },
         "body": {
           "en": "<p><strong>The Ratio Test:</strong> Let \\(\\sum a_n\\) be a series with nonzero terms, and let \\(L = \\lim_{n \\to \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|\\):</p><ul><li>If \\(L < 1\\), the series converges <strong>absolutely</strong>.</li><li>If \\(L > 1\\) (or \\(L = \\infty\\)), the series <strong>diverges</strong>.</li><li>If \\(L = 1\\), the test is <strong>inconclusive</strong> (use comparison or integral tests).</li></ul><p><strong>The Alternating Series Test (Leibniz's Theorem):</strong> The alternating series \\(\\sum_{n=1}^\\infty (-1)^{n-1} b_n\\) (where \\(b_n > 0\\)) converges if:</p><ol><li>\\(b_{n+1} \\le b_n\\) for all \\(n\\) (monotonic non-increasing), and</li><li>\\(\\lim_{n \\to \\infty} b_n = 0\\).</li></ol><p>Moreover, the remainder error is bounded by the first omitted term: \\(|S - S_N| \\le b_{N+1}\\).</p>",
-          "ar": "<p><strong>The Ratio Test:</strong> Let \\(\\sum a_n\\) be a المتسلسلة with nonzero terms, and let \\(L = \\lim_{n \\to \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|\\):</p><ul><li>If \\(L < 1\\), the المتسلسلة converges <strong>absolutely</strong>.</li><li>If \\(L > 1\\) (or \\(L = \\infty\\)), the المتسلسلة <strong>diverges</strong>.</li><li>If \\(L = 1\\), the test is <strong>inconclusive</strong> (use comparison or التكامل tests).</li></ul><p><strong>The Alternating المتسلسلة Test (Leibniz's مبرهنة):</strong> The alternating المتسلسلة \\(\\sum_{n=1}^\\infty (-1)^{n-1} b_n\\) (حيث \\(b_n > 0\\)) converges if:</p><ol><li>\\(b_{n+1} \\le b_n\\) for all \\(n\\) (monotonic non-increasing), and</li><li>\\(\\lim_{n \\to \\infty} b_n = 0\\).</li></ol><p>Moreover, the remainder error is bounded by the first omitted term: \\(|S - S_N| \\le b_{N+1}\\).</p>"
+          "ar": null
         }
       },
       {
@@ -462,11 +462,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 11.2 — Medium: Ratio Test on Factorials and Exponentials",
-          "ar": "مثال محلول 11.2 — Medium: Ratio Test on Factorials and Exponentials"
+          "ar": null
         },
         "body": {
           "en": "<p>Test \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{n!}{4^n}\\) for convergence.</p><p><strong>Step 1: Compute ratio \\(\\left| \\frac{a_{n+1}}{a_n} \\right|\\).</strong></p>\\[ \\left| \\frac{a_{n+1}}{a_n} \\right| = \\frac{(n+1)!}{4^{n+1}} \\cdot \\frac{4^n}{n!} = \\frac{(n+1)n!}{4 \\cdot 4^n} \\cdot \\frac{4^n}{n!} = \\frac{n+1}{4} \\]</p><p><strong>Step 2: Evaluate limit \\(L\\).</strong></p>\\[ L = \\lim_{n \\to \\infty} \\frac{n+1}{4} = \\infty > 1 \\]<p>Since \\(L = \\infty > 1\\), the series <strong>diverges</strong> by the Ratio Test.</p>",
-          "ar": "<p>Test \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{n!}{4^n}\\) for convergence.</p><p><strong>Step 1: Compute ratio \\(\\left| \\frac{a_{n+1}}{a_n} \\right|\\).</strong></p>\\[ \\left| \\frac{a_{n+1}}{a_n} \\right| = \\frac{(n+1)!}{4^{n+1}} \\cdot \\frac{4^n}{n!} = \\frac{(n+1)n!}{4 \\cdot 4^n} \\cdot \\frac{4^n}{n!} = \\frac{n+1}{4} \\]</p><p><strong>Step 2: احسب قيمة النهاية \\(L\\).</strong></p>\\[ L = \\lim_{n \\to \\infty} \\frac{n+1}{4} = \\infty > 1 \\]<p>Since \\(L = \\infty > 1\\), the المتسلسلة <strong>diverges</strong> by the Ratio Test.</p>"
+          "ar": null
         }
       },
       {
@@ -510,11 +510,11 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Determine whether the series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges.",
-          "ar": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>حدّد whether the series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges."
+          "ar": null
         },
         "solution": {
           "en": "<strong>Step 1: Test for absolute convergence.</strong><br>Consider \\(\\sum |a_n| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}\\).<br>This is a \\(p\\)-series with \\(p = 1/2 \\le 1\\), which diverges. Hence the series does NOT converge absolutely.<br><strong>Step 2: Apply Alternating Series Test.</strong><br>Here \\(b_n = \\frac{1}{\\sqrt{n}} > 0\\).<br>1. Monotonicity: \\(n+1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}\\), so \\(b_{n+1} \\le b_n\\).<br>2. Limit: \\(\\lim_{n\\to\\infty} \\frac{1}{\\sqrt{n}} = 0\\).<br>Both conditions hold, so \\(\\sum a_n\\) converges.<br>Conclusion: The series is <strong>conditionally convergent</strong>.",
-          "ar": "خطوات الحل التفصيلية: <strong>Step 1: Test for absolute convergence.</strong><br>Consider \\(\\sum |a_n| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}\\).<br>This is a \\(p\\)-series with \\(p = 1/2 \\le 1\\), which diverges. Hence the series does NOT converge absolutely.<br><strong>Step 2: Apply Alternating Series Test.</strong><br>Here \\(b_n = \\frac{1}{\\sqrt{n}} > 0\\).<br>1. Monotonicity: \\(n+1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}\\), so \\(b_{n+1} \\le b_n\\).<br>2. Limit: \\(\\lim_{n\\to\\infty} \\frac{1}{\\sqrt{n}} = 0\\).<br>Both conditions hold, so \\(\\sum a_n\\) converges.<br>Conclusion: The series is <strong>conditionally convergent</strong>."
+          "ar": null
         },
         "hints": [
           {
@@ -536,11 +536,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 11.4 — Power Series Convergence & Interval of Convergence",
-          "ar": "▲ مبرهنة 11.4 — Power المتسلسلة Convergence & Interval of Convergence"
+          "ar": null
         },
         "body": {
           "en": "<p>For any power series \\(\\displaystyle \\sum_{n=0}^\\infty c_n(x - a)^n\\) centered at \\(a\\), exactly one of the following holds:</p><ol><li>The series converges only at \\(x = a\\) (radius \\(R = 0\\)).</li><li>The series converges absolutely for all \\(x \\in \\mathbb{R}\\) (radius \\(R = \\infty\\)).</li><li>There exists a finite real number \\(R > 0\\) such that the series converges absolutely for \\(|x - a| < R\\) and diverges for \\(|x - a| > R\\).</li></ol><p><strong>Endpoint Testing:</strong> At the boundary endpoints \\(x = a - R\\) and \\(x = a + R\\), convergence cannot be determined by the Ratio Test (which always yields \\(L = 1\\)) and must be evaluated individually using other convergence tests.</p>",
-          "ar": "<p>For any power المتسلسلة \\(\\displaystyle \\sum_{n=0}^\\infty c_n(x - a)^n\\) centered at \\(a\\), exactly one of the following holds:</p><ol><li>The المتسلسلة converges only at \\(x = a\\) (نصف القطر \\(R = 0\\)).</li><li>The المتسلسلة converges absolutely for all \\(x \\in \\mathbb{R}\\) (نصف القطر \\(R = \\infty\\)).</li><li>There exists a finite real number \\(R > 0\\) such that the المتسلسلة converges absolutely for \\(|x - a| < R\\) and diverges for \\(|x - a| > R\\).</li></ol><p><strong>Endpoint Testing:</strong> At the boundary endpoints \\(x = a - R\\) and \\(x = a + R\\), convergence cannot be determined by the Ratio Test (which always yields \\(L = 1\\)) and must be evaluated individually using other convergence tests.</p>"
+          "ar": null
         }
       },
       {
@@ -548,11 +548,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 11.3 — Advanced: Finding Full Interval of Convergence with Endpoint Analysis",
-          "ar": "مثال محلول 11.3 — Advanced: Finding Full Interval of Convergence with Endpoint Analysis"
+          "ar": null
         },
         "body": {
           "en": "<p>Find the radius of convergence \\(R\\) and the full interval of convergence \\(I\\) for \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}\\).</p><p><strong>Step 1: Apply Ratio Test to determine radius \\(R\\).</strong></p>\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(x - 2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(x - 2)^n} \\right| = \\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x - 2|}{3} = 1 \\cdot \\frac{|x - 2|}{3} = \\frac{|x - 2|}{3} \\]<p>For absolute convergence, require \\(L < 1\\):</p>\\[ \\frac{|x - 2|}{3} < 1 \\implies |x - 2| < 3 \\implies -3 < x - 2 < 3 \\implies -1 < x < 5 \\]<p>Thus the radius of convergence is \\(R = 3\\).</p><p><strong>Step 2: Test left endpoint \\(x = -1\\).</strong><br>Substitute \\(x = -1\\):</p>\\[ \\sum_{n=1}^\\infty \\frac{(-1 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n 3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n} \\]<p>This is the alternating harmonic series, which converges by the Alternating Series Test.</p><p><strong>Step 3: Test right endpoint \\(x = 5\\).</strong><br>Substitute \\(x = 5\\):</p>\\[ \\sum_{n=1}^\\infty \\frac{(5 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{1}{n} \\]<p>This is the divergent harmonic \\(p\\)-series (\\(p = 1\\)).</p><p><strong>Conclusion:</strong> Radius \\(R = 3\\), Interval of Convergence \\(I = [-1, 5)\\).</p>",
-          "ar": "<p>Find the نصف القطر of convergence \\(R\\) and the full interval of convergence \\(I\\) for \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}\\).</p><p><strong>Step 1: Apply Ratio Test to determine نصف القطر \\(R\\).</strong></p>\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(x - 2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(x - 2)^n} \\right| = \\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x - 2|}{3} = 1 \\cdot \\frac{|x - 2|}{3} = \\frac{|x - 2|}{3} \\]<p>For absolute convergence, require \\(L < 1\\):</p>\\[ \\frac{|x - 2|}{3} < 1 \\implies |x - 2| < 3 \\implies -3 < x - 2 < 3 \\implies -1 < x < 5 \\]<p>Thus the نصف القطر of convergence is \\(R = 3\\).</p><p><strong>Step 2: Test left endpoint \\(x = -1\\).</strong><br>Substitute \\(x = -1\\):</p>\\[ \\sum_{n=1}^\\infty \\frac{(-1 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n 3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n} \\]<p>This is the alternating harmonic المتسلسلة, which converges by the Alternating المتسلسلة Test.</p><p><strong>Step 3: Test right endpoint \\(x = 5\\).</strong><br>Substitute \\(x = 5\\):</p>\\[ \\sum_{n=1}^\\infty \\frac{(5 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{1}{n} \\]<p>This is the divergent harmonic \\(p\\)-المتسلسلة (\\(p = 1\\)).</p><p><strong>Conclusion:</strong> نصف القطر \\(R = 3\\), Interval of Convergence \\(I = [-1, 5)\\).</p>"
+          "ar": null
         }
       },
       {
@@ -564,18 +564,18 @@
         },
         "body": {
           "en": "<strong>Ratio Test Inconclusiveness (L = 1):</strong> If \\(L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1\\), the Ratio Test gives NO conclusion whatsoever. In particular, the Ratio Test ALWAYS gives \\(L = 1\\) for any p-series or rational fraction in \\(n\\); use the Comparison Test or Integral Test instead!<br><br><strong>Testing Endpoints for Interval of Convergence:</strong> Finding the radius of convergence \\(R\\) determines an open interval \\((a - R, a + R)\\). You MUST test each endpoint \\(x = a - R\\) and \\(x = a + R\\) separately, as convergence at boundaries varies (e.g. one end might be conditionally convergent via Alternating Series while the other diverges).<br><br><strong>Absolute vs Conditional Convergence:</strong> A series \\(\\sum a_n\\) is conditionally convergent if \\(\\sum a_n\\) converges, but \\(\\sum |a_n|\\) diverges (classic example: \\(\\sum \\frac{(-1)^{n+1}}{n}\\)).<br><br><strong>Geometric Series Initial Index:</strong> Verify whether a geometric series begins at \\(n = 0\\) or \\(n = 1\\). The sum formula is always \\(S = \\frac{\\text{First Term}}{1 - r}\\); blindly writing \\(\\frac{a}{1 - r}\\) when \\(n\\) starts at \\(1\\) or \\(2\\) results in an incorrect numerator.",
-          "ar": "<strong>Ratio Test Inconclusiveness (L = 1):</strong> If \\(L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1\\), the Ratio Test gives NO conclusion whatsoever. In particular, the Ratio Test ALWAYS gives \\(L = 1\\) for any p-المتسلسلة or rational fraction in \\(n\\); use the Comparison Test or التكامل Test instead!<br><br><strong>Testing Endpoints for Interval of Convergence:</strong> Finding the نصف القطر of convergence \\(R\\) determines an open interval \\((a - R, a + R)\\). You MUST test each endpoint \\(x = a - R\\) and \\(x = a + R\\) separately, as convergence at boundaries varies (e.g. one end might be conditionally convergent via Alternating المتسلسلة while the other diverges).<br><br><strong>Absolute vs Conditional Convergence:</strong> A المتسلسلة \\(\\sum a_n\\) is conditionally convergent if \\(\\sum a_n\\) converges, but \\(\\sum |a_n|\\) diverges (classic example: \\(\\sum \\frac{(-1)^{n+1}}{n}\\)).<br><br><strong>Geometric المتسلسلة Initial Index:</strong> Verify whether a geometric المتسلسلة begins at \\(n = 0\\) or \\(n = 1\\). The sum الصيغة is always \\(S = \\frac{\\text{First Term}}{1 - r}\\); blindly writing \\(\\frac{a}{1 - r}\\) عندما \\(n\\) starts at \\(1\\) or \\(2\\) results in an incorrect numerator."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>Find the full interval of convergence (including endpoint behavior) for the power series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(2x - 1)^n}{n^2 \\cdot 4^n}\\).",
-          "ar": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>أوجد full interval of convergence (including endpoint behavior) for the power series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(2x - 1)^n}{n^2 \\cdot 4^n}\\)."
+          "ar": null
         },
         "solution": {
           "en": "Apply the Ratio Test:<br>\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(2x - 1)^{n+1}}{(n+1)^2 4^{n+1}} \\cdot \\frac{n^2 4^n}{(2x - 1)^n} \\right| = \\lim_{n \\to \\infty} \\left(\\frac{n}{n+1}\\right)^2 \\cdot \\frac{|2x - 1|}{4} = \\frac{|2x - 1|}{4} \\]<br>Require \\(L < 1\\):<br>\\[ \\frac{|2x - 1|}{4} < 1 \\implies |2x - 1| < 4 \\implies -4 < 2x - 1 < 4 \\implies -3 < 2x < 5 \\implies -\\frac{3}{2} < x < \\frac{5}{2} \\]<br>The center is \\(x = 1/2\\) and radius is \\(R = 2\\).<br><strong>Endpoint \\(x = 5/2\\):</strong> \\(2x - 1 = 4\\), giving \\(\\sum_{n=1}^\\infty \\frac{4^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{1}{n^2}\\), which converges by the \\(p\\)-series test (\\(p = 2 > 1\\)).<br><strong>Endpoint \\(x = -3/2\\):</strong> \\(2x - 1 = -4\\), giving \\(\\sum_{n=1}^\\infty \\frac{(-4)^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\), which converges absolutely (since \\(\\sum 1/n^2\\) converges).<br>Therefore, the interval of convergence is \\(\\left[ -\\frac{3}{2}, \\frac{5}{2} \\right]\\).",
-          "ar": "Apply the Ratio Test:<br>\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(2x - 1)^{n+1}}{(n+1)^2 4^{n+1}} \\cdot \\frac{n^2 4^n}{(2x - 1)^n} \\right| = \\lim_{n \\to \\infty} \\left(\\frac{n}{n+1}\\right)^2 \\cdot \\frac{|2x - 1|}{4} = \\frac{|2x - 1|}{4} \\]<br>Require \\(L < 1\\):<br>\\[ \\frac{|2x - 1|}{4} < 1 \\implies |2x - 1| < 4 \\implies -4 < 2x - 1 < 4 \\implies -3 < 2x < 5 \\implies -\\frac{3}{2} < x < \\frac{5}{2} \\]<br>The center is \\(x = 1/2\\) and radius is \\(R = 2\\).<br><strong>Endpoint \\(x = 5/2\\):</strong> \\(2x - 1 = 4\\), giving \\(\\sum_{n=1}^\\infty \\frac{4^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{1}{n^2}\\), which converges بتطبيق \\(p\\)-series test (\\(p = 2 > 1\\)).<br><strong>Endpoint \\(x = -3/2\\):</strong> \\(2x - 1 = -4\\), giving \\(\\sum_{n=1}^\\infty \\frac{(-4)^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\), which converges absolutely (since \\(\\sum 1/n^2\\) converges).<br>وبالتالي، the interval of convergence is \\(\\left[ -\\frac{3}{2}, \\frac{5}{2} \\right]\\)."
+          "ar": null
         },
         "hints": [
           {
@@ -596,12 +596,12 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Easy]</strong> Consider the function \\( f(x) = \\frac{1}{x^2 + 1} \\). Which of the following statements describes the behavior of the function as \\( x \\) approaches infinity?",
-          "ar": "حل المسألة التالية في (Convergence Tests &amp; Power Series): <strong>[Practice 4 · Easy]</strong> Consider the function \\( f(x) = \\frac{1}{x^2 + 1} \\). Which of the following statements describes the behavior of the function as \\( x \\) approaches infinity?"
+          "ar": null
         },
         "hints": [
           {
             "en": "To determine the behavior of the function \\( f(x) = \\frac{1}{x^2 + 1} \\) as \\( x \\) approaches infinity, we consider the limit: \\(\\lim_{x \\to \\infty} f(x) = \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1}\\).",
-            "ar": "To حدّد behavior of the function \\( f(x) = \\frac{1}{x^2 + 1} \\) as \\( x \\) approaches infinity, we consider the limit: \\(\\lim_{x \\to \\infty} f(x) = \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1}\\)."
+            "ar": null
           },
           {
             "en": "Thus, \\( \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1} = 0 \\).",
@@ -609,37 +609,37 @@
           },
           {
             "en": "Therefore, the function approaches 0 as \\(x\\) approaches infinity.",
-            "ar": "وبالتالي، the function approaches 0 as \\(x\\) approaches infinity."
+            "ar": null
           }
         ],
         "solution": {
           "en": "To determine the behavior of the function \\( f(x) = \\frac{1}{x^2 + 1} \\) as \\( x \\) approaches infinity, we consider the limit: \\[ \\lim_{x \\to \\infty} f(x) = \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1} \\]\nAs \\( x \\) becomes very large, \\( x^2 \\) also becomes very large. Therefore, the denominator \\( x^2 + 1 \\) becomes very large. When the denominator of a fraction becomes infinitely large while the numerator remains constant (in this case, 1), the value of the fraction approaches 0.\nThus, \\( \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1} = 0 \\).\nTherefore, the function approaches 0 as \\( x \\) approaches infinity.",
-          "ar": "To حدّد behavior of the function \\( f(x) = \\frac{1}{x^2 + 1} \\) as \\( x \\) approaches infinity, we consider the limit: \\[ \\lim_{x \\to \\infty} f(x) = \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1} \\]\nAs \\( x \\) becomes very large, \\( x^2 \\) also becomes very large. وبالتالي، the denominator \\( x^2 + 1 \\) becomes very large. عندما the denominator of a fraction becomes infinitely large while the numerator remains constant (in this case, 1), the value of the fraction approaches 0.\nوعليه، \\( \\lim_{x \\to \\infty} \\frac{1}{x^2 + 1} = 0 \\).\nوبالتالي، the function approaches 0 as \\( x \\) approaches infinity."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(2x-1)^n}{n \\cdot 3^n}\\). For what values of \\(x\\) does this series converge conditionally?",
-          "ar": "حل المسألة التالية في (Convergence Tests &amp; Power Series): Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(2x-1)^n}{n \\cdot 3^n}\\). For what values of \\(x\\) does this series converge conditionally?"
+          "ar": null
         },
         "hints": [
           {
             "en": "Let the given power series be \\(\\sum_{n=1}^{\\infty} a_n\\), where \\(a_n = \\frac{(2x-1)^n}{n \\cdot 3^n}\\). We will use the Ratio Test to find the interval of convergence.",
-            "ar": "ليكن the given power series be \\(\\sum_{n=1}^{\\infty} a_n\\), حيث \\(a_n = \\frac{(2x-1)^n}{n \\cdot 3^n}\\). We will use the Ratio Test to أوجد interval of convergence."
+            "ar": null
           },
           {
             "en": "Now, we must check the endpoints of this interval for conditional convergence.",
-            "ar": "تلميح للحل: استخدم العلاقة Now, we must check the endpoints of this interval for conditional convergence. لتبسيط الخطوة."
+            "ar": null
           },
           {
             "en": "Thus, the series converges for \\(-1 \\le x < 2\\). For conditional convergence, we exclude the endpoint \\(x=2\\) where the series diverges, and include \\(x=-1\\) where it converges conditionally. So, the interval of conditional convergence is \\(-1 \\le x < 2\\).",
-            "ar": "وعليه، the series converges for \\(-1 \\le x < 2\\). For conditional convergence, we exclude the endpoint \\(x=2\\) حيث the series diverges, and include \\(x=-1\\) حيث it converges conditionally. So, the interval of conditional convergence is \\(-1 \\le x < 2\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Let the given power series be \\(\\sum_{n=1}^{\\infty} a_n\\), where \\(a_n = \\frac{(2x-1)^n}{n \\cdot 3^n}\\). We will use the Ratio Test to find the interval of convergence.\n\n\\(\\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\to\\infty} \\left| \\frac{(2x-1)^{n+1}}{(n+1) \\cdot 3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(2x-1)^n} \\right|\\)\n\n\\(= \\lim_{n\\to\\infty} \\left| \\frac{(2x-1) \\cdot n}{(n+1) \\cdot 3} \\right| = \\left| \\frac{2x-1}{3} \\right| \\lim_{n\\to\\infty} \\frac{n}{n+1} = \\left| \\frac{2x-1}{3} \\right| \\cdot 1\\)\n\nFor convergence, we require this limit to be less than 1:\n\n\\(\\left| \\frac{2x-1}{3} \\right| < 1\\)\n\n\\(-1 < \\frac{2x-1}{3} < 1\\)\n\n\\(-3 < 2x-1 < 3\\)\n\n\\(-2 < 2x < 4\\)\n\n\\(-1 < x < 2\\)\n\nNow, we must check the endpoints of this interval for conditional convergence.\n\nCase 1: \\(x = -1\\)\n\nThe series becomes \\(\\sum_{n=1}^{\\infty} \\frac{(2(-1)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}\\).\n\nThis is the alternating harmonic series, which converges conditionally by the Alternating Series Test (the terms \\(\\frac{1}{n}\\) are positive, decreasing, and tend to 0). Therefore, \\(x=-1\\) is a point of conditional convergence.\n\nCase 2: \\(x = 2\\)\n\nThe series becomes \\(\\sum_{n=1}^{\\infty} \\frac{(2(2)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{1}{n}\\).\n\nThis is the harmonic series, which diverges.\n\nThus, the series converges for \\(-1 \\le x < 2\\). For conditional convergence, we exclude the endpoint \\(x=2\\) where the series diverges, and include \\(x=-1\\) where it converges conditionally. So, the interval of conditional convergence is \\(-1 \\le x < 2\\).\n\nCommon Pitfall: Forgetting to test the endpoints for convergence, or misapplying convergence tests at the endpoints. Students might incorrectly assume convergence at \\(x=2\\) or miss conditional convergence at \\(x=-1\\).",
-          "ar": "ليكن the given power series be \\(\\sum_{n=1}^{\\infty} a_n\\), حيث \\(a_n = \\frac{(2x-1)^n}{n \\cdot 3^n}\\). We will use the Ratio Test to أوجد interval of convergence.\n\n\\(\\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\to\\infty} \\left| \\frac{(2x-1)^{n+1}}{(n+1) \\cdot 3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(2x-1)^n} \\right|\\)\n\n\\(= \\lim_{n\\to\\infty} \\left| \\frac{(2x-1) \\cdot n}{(n+1) \\cdot 3} \\right| = \\left| \\frac{2x-1}{3} \\right| \\lim_{n\\to\\infty} \\frac{n}{n+1} = \\left| \\frac{2x-1}{3} \\right| \\cdot 1\\)\n\nFor convergence, we require this limit to be less than 1:\n\n\\(\\left| \\frac{2x-1}{3} \\right| < 1\\)\n\n\\(-1 < \\frac{2x-1}{3} < 1\\)\n\n\\(-3 < 2x-1 < 3\\)\n\n\\(-2 < 2x < 4\\)\n\n\\(-1 < x < 2\\)\n\nNow, we must check the endpoints of this interval for conditional convergence.\n\nCase 1: \\(x = -1\\)\n\nThe series becomes \\(\\sum_{n=1}^{\\infty} \\frac{(2(-1)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}\\).\n\nThis is the alternating harmonic series, which converges conditionally بتطبيق Alternating Series Test (the terms \\(\\frac{1}{n}\\) are positive, decreasing, and tend to 0). وبالتالي، \\(x=-1\\) is a point of conditional convergence.\n\nCase 2: \\(x = 2\\)\n\nThe series becomes \\(\\sum_{n=1}^{\\infty} \\frac{(2(2)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{1}{n}\\).\n\nThis is the harmonic series, which diverges.\n\nوعليه، the series converges for \\(-1 \\le x < 2\\). For conditional convergence, we exclude the endpoint \\(x=2\\) حيث the series diverges, and include \\(x=-1\\) حيث it converges conditionally. So, the interval of conditional convergence is \\(-1 \\le x < 2\\).\n\nCommon Pitfall: Forgetting to test the endpoints for convergence, or misapplying convergence tests at the endpoints. Students might incorrectly assume convergence at \\(x=2\\) or miss conditional convergence at \\(x=-1\\)."
+          "ar": null
         }
       },
       {

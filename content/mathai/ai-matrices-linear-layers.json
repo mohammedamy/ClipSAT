@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Deep neural networks are sequences of matrix multiplications alternated with non-linear activation functions. Here we formulate the algebraic forward pass of dense feedforward neural layers.",
-          "ar": "Deep neural networks are المتتاليات of المصفوفة multiplications alternated with non-linear activation الدوال. Here we formulate the algebraic forward pass of dense feedforward neural layers."
+          "ar": null
         }
       },
       {
@@ -42,7 +42,7 @@
         },
         "body": {
           "en": "A fully connected (dense) neural network layer with \\( n_{\\text{in}} \\) inputs and \\( n_{\\text{out}} \\) neurons computes an affine linear transformation followed by an element-wise activation \\( \\sigma \\):<br>\\[ \\mathbf{z} = \\mathbf{W}\\mathbf{x} + \\mathbf{b}, \\quad \\mathbf{a} = \\sigma(\\mathbf{z}) \\]<br>where \\( \\mathbf{W} \\in \\mathbb{R}^{n_{\\text{out}} \\times n_{\\text{in}}} \\) is the weight matrix, \\( \\mathbf{x} \\in \\mathbb{R}^{n_{\\text{in}}} \\) is the input vector, \\( \\mathbf{b} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the bias vector, and \\( \\mathbf{a} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the layer activation vector.",
-          "ar": "A fully connected (dense) neural network layer with \\( n_{\\text{in}} \\) inputs and \\( n_{\\text{out}} \\) neurons computes an affine linear transformation followed by an element-wise activation \\( \\sigma \\):<br>\\[ \\mathbf{z} = \\mathbf{W}\\mathbf{x} + \\mathbf{b}, \\quad \\mathbf{a} = \\sigma(\\mathbf{z}) \\]<br>where \\( \\mathbf{W} \\in \\mathbb{R}^{n_{\\text{out}} \\times n_{\\text{in}}} \\) is the weight المصفوفة, \\( \\mathbf{x} \\in \\mathbb{R}^{n_{\\text{in}}} \\) is the input المتجه, \\( \\mathbf{b} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the bias المتجه, and \\( \\mathbf{a} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the layer activation المتجه."
+          "ar": null
         }
       },
       {
@@ -137,7 +137,7 @@
             "id": "aimatriceslinearlayersExCanvas_s0",
             "label": {
               "en": "Neuron 1 Slope <b>\\(w_{1} =\\)</b>",
-              "ar": "Neuron 1 Slope <b>w₁ =</b>"
+              "ar": null
             },
             "min": 0.5,
             "max": 3,
@@ -146,14 +146,14 @@
             "valueDisplayId": "aimatriceslinearlayersExCanvas_v0",
             "ariaLabel": {
               "en": "Neuron 1 Slope w₁ =",
-              "ar": "Neuron 1 Slope w₁ ="
+              "ar": null
             }
           },
           {
             "id": "aimatriceslinearlayersExCanvas_s1",
             "label": {
               "en": "Neuron 2 Hinge Shift <b>\\(b_{2} =\\)</b>",
-              "ar": "Neuron 2 Hinge Shift <b>b₂ =</b>"
+              "ar": null
             },
             "min": -2.5,
             "max": 2.5,
@@ -162,7 +162,7 @@
             "valueDisplayId": "aimatriceslinearlayersExCanvas_v1",
             "ariaLabel": {
               "en": "Neuron 2 Hinge Shift b₂ =",
-              "ar": "Neuron 2 Hinge Shift b₂ ="
+              "ar": null
             }
           }
         ],
@@ -171,7 +171,7 @@
             "id": "aimatriceslinearlayersExCanvas_r0",
             "label": {
               "en": "Hinge Activation Kinks",
-              "ar": "Hinge Activation Kinks"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(x_{1} = -0.67, x_{2} = 1.00\\)"
@@ -180,7 +180,7 @@
             "id": "aimatriceslinearlayersExCanvas_r1",
             "label": {
               "en": "Output \\(h(2)\\) = ReLU\\((z_{1})\\) − ReLU\\((z_{2})\\)",
-              "ar": "Output h(2) = ReLU(z₁) − ReLU(z₂)"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(h(2) = 2.50\\)"
@@ -189,7 +189,7 @@
             "id": "aimatriceslinearlayersExCanvas_r2",
             "label": {
               "en": "Active Linear Regime",
-              "ar": "Active Linear Regime"
+              "ar": null
             },
             "colorClass": "teal",
             "value": "2 Active Hinges"
@@ -305,7 +305,7 @@
         },
         "body": {
           "en": "<p>A neural network layer has 2 inputs and 3 neurons with weights and biases:<br>\\[ \\mathbf{W} = \\begin{pmatrix} 2 & -1 \\\\ 0.5 & 3 \\\\ -1 & 1 \\end{pmatrix}, \\quad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} \\]<br>For the input \\( \\mathbf{x} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix} \\), compute the pre-activation \\( \\mathbf{z} \\) and the activated output \\( \\mathbf{a} \\) using the ReLU function.</p><p><strong>Solution:</strong><br>Compute \\( \\mathbf{W}\\mathbf{x} \\):<br>\\[ \\mathbf{W}\\mathbf{x} = \\begin{pmatrix} 2(3) + (-1)(2) \\\\ 0.5(3) + 3(2) \\\\ -1(3) + 1(2) \\end{pmatrix} = \\begin{pmatrix} 6 - 2 \\\\ 1.5 + 6 \\\\ -3 + 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} \\]<br>Add bias vector \\( \\mathbf{b} \\):<br>\\[ \\mathbf{z} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ -0.5 \\end{pmatrix} \\]<br>Apply element-wise \\( \\text{ReLU}(z) = \\max(0, z) \\):<br>\\[ \\mathbf{a} = \\text{ReLU}(\\mathbf{z}) = \\begin{pmatrix} \\max(0, 5) \\\\ \\max(0, 5.5) \\\\ \\max(0, -0.5) \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ 0 \\end{pmatrix} \\].<br><strong>Answer:</strong> \\( \\mathbf{z} = [5, 5.5, -0.5]^T \\), \\( \\mathbf{a} = [5, 5.5, 0]^T \\).</p>",
-          "ar": "<p>A neural network layer has 2 inputs and 3 neurons with weights and biases:<br>\\[ \\mathbf{W} = \\begin{pmatrix} 2 & -1 \\\\ 0.5 & 3 \\\\ -1 & 1 \\end{pmatrix}, \\quad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} \\]<br>For the input \\( \\mathbf{x} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix} \\), compute the pre-activation \\( \\mathbf{z} \\) and the activated output \\( \\mathbf{a} \\) using the ReLU الدالة.</p><p><strong>Solution:</strong><br>Compute \\( \\mathbf{W}\\mathbf{x} \\):<br>\\[ \\mathbf{W}\\mathbf{x} = \\begin{pmatrix} 2(3) + (-1)(2) \\\\ 0.5(3) + 3(2) \\\\ -1(3) + 1(2) \\end{pmatrix} = \\begin{pmatrix} 6 - 2 \\\\ 1.5 + 6 \\\\ -3 + 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} \\]<br>Add bias المتجه \\( \\mathbf{b} \\):<br>\\[ \\mathbf{z} = \\begin{pmatrix} 4 \\\\ 7.5 \\\\ -1 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ -0.5 \\end{pmatrix} \\]<br>Apply element-wise \\( \\text{ReLU}(z) = \\max(0, z) \\):<br>\\[ \\mathbf{a} = \\text{ReLU}(\\mathbf{z}) = \\begin{pmatrix} \\max(0, 5) \\\\ \\max(0, 5.5) \\\\ \\max(0, -0.5) \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5.5 \\\\ 0 \\end{pmatrix} \\].<br><strong>Answer:</strong> \\( \\mathbf{z} = [5, 5.5, -0.5]^T \\), \\( \\mathbf{a} = [5, 5.5, 0]^T \\).</p>"
+          "ar": null
         }
       },
       {
@@ -317,7 +317,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> In a multiple linear regression model, the Sum of Squared Errors is \\( \\text{SSE} = 100 \\) and the Total Sum of Squares is \\( \\text{SST} = 500 \\). What is the coefficient of determination \\( R^2 \\)?</p><p><strong>Step-by-Step Solution:</strong> The coefficient of determination measures the proportion of variance explained: \\( R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{100}{500} = 1 - 0.20 = 0.80 \\).</p>",
-          "ar": "<p><strong>مسألة (Medium):</strong> In a multiple linear regression model, the Sum of Squared Errors is \\( \\text{SSE} = 100 \\) and the Total Sum of Squares is \\( \\text{SST} = 500 \\). What is the coefficient of determination \\( R^2 \\)?</p><p><strong>الحل خطوة بخطوة:</strong> The coefficient of determination measures the proportion of variance explained: \\( R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{100}{500} = 1 - 0.20 = 0.80 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -329,7 +329,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> A centered feature matrix \\( \\mathbf{X} \\) has shape \\( N \\times 38 \\). What is the size and symmetry property of the sample covariance matrix \\( \\mathbf{\\Sigma} = \\frac{1}{N-1}\\mathbf{X}^T\\mathbf{X} \\)?</p><p><strong>Step-by-Step Solution:</strong> Since \\( \\mathbf{X} \\) has \\( 38 \\) columns, \\( \\mathbf{X}^T \\) is \\( 38 \\times N \\) and \\( \\mathbf{X}^T\\mathbf{X} \\) is \\( 38 \\times 38 \\). Furthermore, \\( (\\mathbf{X}^T\\mathbf{X})^T = \\mathbf{X}^T(\\mathbf{X}^T)^T = \\mathbf{X}^T\\mathbf{X} \\), proving it is always symmetric.</p>",
-          "ar": "<p><strong>مسألة (Hard):</strong> A centered feature matrix \\( \\mathbf{X} \\) has shape \\( N \\times 38 \\). What is the size and symmetry property of the sample covariance matrix \\( \\mathbf{\\Sigma} = \\frac{1}{N-1}\\mathbf{X}^T\\mathbf{X} \\)?</p><p><strong>الحل خطوة بخطوة:</strong> Since \\( \\mathbf{X} \\) has \\( 38 \\) columns, \\( \\mathbf{X}^T \\) is \\( 38 \\times N \\) and \\( \\mathbf{X}^T\\mathbf{X} \\) is \\( 38 \\times 38 \\). Furthermore, \\( (\\mathbf{X}^T\\mathbf{X})^T = \\mathbf{X}^T(\\mathbf{X}^T)^T = \\mathbf{X}^T\\mathbf{X} \\), proving it is always symmetric.</p>"
+          "ar": null
         }
       },
       {
@@ -341,7 +341,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> Consider a linear layer with a weight matrix \\( W \\) and an input vector \\( \\mathbf{x} \\). If \\( W = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( \\mathbf{x} = \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix} \\), compute the output vector \\( \\mathbf{y} = W\\mathbf{x} \\).</p><p><strong>Step-by-Step Solution:</strong> The output vector \\( \\mathbf{y} \\) is computed by multiplying the weight matrix \\( W \\) by the input vector \\( \\mathbf{x} \\). This is a standard matrix-vector multiplication. \\\\ \\\\ \\( \\mathbf{y} = W\\mathbf{x} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix} \\)\\\\\\ \\\\ To compute the first element of \\( \\mathbf{y} \\), we take the dot product of the first row of \\( W \\) with \\( \\mathbf{x} \\): \\( (1)(5) + (2)(6) = 5 + 12 = 17 \\).\\\\ \\\\ To compute the second element of \\( \\mathbf{y} \\), we take the dot product of the second row of \\( W \\) with \\( \\mathbf{x} \\): \\( (3)(5) + (4)(6) = 15 + 24 = 39 \\).\\\\ \\\\ Therefore, the output vector is \\( \\mathbf{y} = \\begin{pmatrix} 17 \\\\ 39 \\end{pmatrix} \\).</p>",
-          "ar": "<p><strong>مسألة (Easy):</strong> Consider a linear layer with a weight matrix \\( W \\) and an input vector \\( \\mathbf{x} \\). If \\( W = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( \\mathbf{x} = \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix} \\), compute the output vector \\( \\mathbf{y} = W\\mathbf{x} \\).</p><p><strong>الحل خطوة بخطوة:</strong> The output vector \\( \\mathbf{y} \\) is computed by multiplying the weight matrix \\( W \\) by the input vector \\( \\mathbf{x} \\). This is a standard matrix-vector multiplication. \\\\ \\\\ \\( \\mathbf{y} = W\\mathbf{x} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix} \\)\\\\\\ \\\\ To compute the first element of \\( \\mathbf{y} \\), we take the dot product of the first row of \\( W \\) with \\( \\mathbf{x} \\): \\( (1)(5) + (2)(6) = 5 + 12 = 17 \\).\\\\ \\\\ To compute the second element of \\( \\mathbf{y} \\), we take the dot product of the second row of \\( W \\) with \\( \\mathbf{x} \\): \\( (3)(5) + (4)(6) = 15 + 24 = 39 \\).\\\\ \\\\ Therefore, the output vector is \\( \\mathbf{y} = \\begin{pmatrix} 17 \\\\ 39 \\end{pmatrix} \\).</p>"
+          "ar": null
         }
       },
       {
@@ -437,62 +437,62 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 1 · Medium]</strong> A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 62 \\), \\( \\lambda_2 = 24 \\), and \\( \\lambda_3 = 14 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
-          "ar": "<strong>[تدريب 1 · Medium]</strong> A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 62 \\), \\( \\lambda_2 = 24 \\), and \\( \\lambda_3 = 14 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "Total variance is \\(\\sum \\lambda_i = 62 + 24 + 14\\).",
-            "ar": "Total variance is \\(\\sum \\lambda_i = 62 + 24 + 14\\)."
+            "ar": null
           },
           {
             "en": "The proportion explained by \\( PC_1 \\) is: \\(\\frac{\\lambda_1}{\\sum \\lambda_i}\\). Rewrite and substitute: \\(\\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{62}{100}\\).",
-            "ar": "The proportion explained by \\( PC_1 \\) is: \\(\\frac{\\lambda_1}{\\sum \\lambda_i}\\). Rewrite and substitute: \\(\\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{62}{100}\\)."
+            "ar": null
           },
           {
             "en": "Evaluate \\(\\frac{62}{100}\\) to obtain the final answer.",
-            "ar": "Evaluate \\(\\frac{62}{100}\\) to obtain the final answer."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Total variance is \\( \\sum \\lambda_i = 62 + 24 + 14 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{62}{100} = 62.0\\% \\).",
-          "ar": "Total variance is \\( \\sum \\lambda_i = 62 + 24 + 14 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{62}{100} = 62.0\\% \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2 · Hard]</strong> Consider a dataset with two features, \\( X_1 \\) and \\( X_2 \\). The covariance matrix for this dataset is given by:\n\\[\n\\Sigma = \\begin{pmatrix} \n10 & 5 \\\\ \n5 & 20 \n\\end{pmatrix}\n\\]\nWhat is the variance of the first feature, \\( X_1 \\)?",
-          "ar": "<strong>[تدريب 2 · Hard]</strong> Consider a dataset with two features, \\( X_1 \\) and \\( X_2 \\). The covariance matrix for this dataset is given by:\n\\[\n\\Sigma = \\begin{pmatrix} \n10 & 5 \\\\ \n5 & 20 \n\\end{pmatrix}\n\\]\nWhat is the variance of the first feature, \\( X_1 \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "The covariance matrix \\( \\Sigma \\) for a dataset with two features \\( X_1 \\) and \\( X_2 \\) is structured as follows: \\(\\Sigma = \\begin{pmatrix} Cov(X_1, X_1) & Cov(X_1, X_2) \\\\ Cov(X_2, X_1) & Cov(X_2, X_2) \\end{pmatrix}\\).",
-            "ar": "The covariance matrix \\( \\Sigma \\) for a dataset with two features \\( X_1 \\) and \\( X_2 \\) is structured as follows: \\(\\Sigma = \\begin{pmatrix} Cov(X_1, X_1) & Cov(X_1, X_2) \\\\ Cov(X_2, X_1) & Cov(X_2, X_2) \\end{pmatrix}\\)."
+            "ar": null
           },
           {
             "en": "By definition, the variance of a random variable is the covariance of the variable with itself. Therefore, \\( Var(X_1) = Cov(X_1, X_1) \\) and \\( Var(X_2) = Cov(X_2, X_2) \\). In the given covariance matrix: \\(\\Sigma = \\begin{pmatrix} 10 & 5 \\\\ 5 & 20 \\end{pmatrix}\\).",
-            "ar": "By definition, the variance of a random variable is the covariance of the variable with itself. Therefore, \\( Var(X_1) = Cov(X_1, X_1) \\) and \\( Var(X_2) = Cov(X_2, X_2) \\). In the given covariance matrix: \\(\\Sigma = \\begin{pmatrix} 10 & 5 \\\\ 5 & 20 \\end{pmatrix}\\)."
+            "ar": null
           },
           {
             "en": "Thus, the variance of \\(X_1\\) is 10. The covariance between \\(X_1\\) and \\(X_2\\) is 5, and the variance of \\(X_2\\) is 20.",
-            "ar": "Thus, the variance of \\(X_1\\) is 10. The covariance between \\(X_1\\) and \\(X_2\\) is 5, and the variance of \\(X_2\\) is 20."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The covariance matrix \\( \\Sigma \\) for a dataset with two features \\( X_1 \\) and \\( X_2 \\) is structured as follows:\n\\[\n\\Sigma = \\begin{pmatrix} \nCov(X_1, X_1) & Cov(X_1, X_2) \\\\ \nCov(X_2, X_1) & Cov(X_2, X_2) \n\\end{pmatrix}\n\\]\nBy definition, the variance of a random variable is the covariance of the variable with itself. Therefore, \\( Var(X_1) = Cov(X_1, X_1) \\) and \\( Var(X_2) = Cov(X_2, X_2) \\).\n\nIn the given covariance matrix:\n\\[\n\\Sigma = \\begin{pmatrix} \n10 & 5 \\\\ \n5 & 20 \n\\end{pmatrix}\n\\]\nThe element in the first row and first column represents \\( Cov(X_1, X_1) \\), which is the variance of \\( X_1 \\).\n\nThus, the variance of \\( X_1 \\) is 10. The covariance between \\( X_1 \\) and \\( X_2 \\) is 5, and the variance of \\( X_2 \\) is 20.",
-          "ar": "The covariance matrix \\( \\Sigma \\) for a dataset with two features \\( X_1 \\) and \\( X_2 \\) is structured as follows:\n\\[\n\\Sigma = \\begin{pmatrix} \nCov(X_1, X_1) & Cov(X_1, X_2) \\\\ \nCov(X_2, X_1) & Cov(X_2, X_2) \n\\end{pmatrix}\n\\]\nBy definition, the variance of a random variable is the covariance of the variable with itself. Therefore, \\( Var(X_1) = Cov(X_1, X_1) \\) and \\( Var(X_2) = Cov(X_2, X_2) \\).\n\nIn the given covariance matrix:\n\\[\n\\Sigma = \\begin{pmatrix} \n10 & 5 \\\\ \n5 & 20 \n\\end{pmatrix}\n\\]\nThe element in the first row and first column represents \\( Cov(X_1, X_1) \\), which is the variance of \\( X_1 \\).\n\nThus, the variance of \\( X_1 \\) is 10. The covariance between \\( X_1 \\) and \\( X_2 \\) is 5, and the variance of \\( X_2 \\) is 20."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Easy]</strong> Principal Component Analysis (PCA) projects a dataset from \\( \\mathbb{R}^{50} \\) onto its top \\( 6 \\) principal components. What is the dimension of each transformed data point?",
-          "ar": "<strong>[تدريب 3 · Easy]</strong> Principal Component Analysis (PCA) projects a dataset from \\( \\mathbb{R}^{50} \\) onto its top \\( 6 \\) principal components. What is the dimension of each transformed data point?"
+          "ar": null
         },
         "hints": [
           {
             "en": "PCA projection onto \\( k \\) eigenvectors transforms each sample vector from \\( \\mathbb{R}^D \\) to \\( \\mathbb{R}^k \\).",
-            "ar": "PCA projection onto \\( k \\) eigenvectors transforms each sample vector from \\( \\mathbb{R}^D \\) to \\( \\mathbb{R}^k \\)."
+            "ar": null
           },
           {
             "en": "Here \\( k = 6 \\).",
@@ -500,62 +500,62 @@
           },
           {
             "en": "So the reduced dimension is \\(6\\).",
-            "ar": "So the reduced dimension is \\(6\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "PCA projection onto \\( k \\) eigenvectors transforms each sample vector from \\( \\mathbb{R}^D \\) to \\( \\mathbb{R}^k \\). Here \\( k = 6 \\), so the reduced dimension is \\( 6 \\).",
-          "ar": "PCA projection onto \\( k \\) eigenvectors transforms each sample vector from \\( \\mathbb{R}^D \\) to \\( \\mathbb{R}^k \\). Here \\( k = 6 \\), so the reduced dimension is \\( 6 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> A vector \\( \\mathbf{v} \\) is transformed into a new vector \\( \\mathbf{v}' \\) by a linear transformation represented by the matrix \\( \\mathbf{M} \\).  We are given that \\( \\mathbf{v} = \\begin{pmatrix} 2 \\ 3 \\end{pmatrix} \\) and \\( \\mathbf{v}' = \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} \\).  The transformation matrix is of the form \\( \\mathbf{M} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\). Determine the value of \\( a \\) and \\( b \\).",
-          "ar": "<strong>[تدريب 4 · Medium]</strong> A vector \\( \\mathbf{v} \\) is transformed into a new vector \\( \\mathbf{v}' \\) by a linear transformation represented by the matrix \\( \\mathbf{M} \\).  We are given that \\( \\mathbf{v} = \\begin{pmatrix} 2 \\ 3 \\end{pmatrix} \\) and \\( \\mathbf{v}' = \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} \\).  The transformation matrix is of the form \\( \\mathbf{M} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\). Determine the value of \\( a \\) and \\( b \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "The transformation is defined by \\( \\mathbf{v}' = \\mathbf{M}\\mathbf{v} \\). Substituting the given vectors and matrix form: \\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\ 3 \\end{pmatrix} \\).",
-            "ar": "The transformation is defined by \\( \\mathbf{v}' = \\mathbf{M}\\mathbf{v} \\). Substituting the given vectors and matrix form: \\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\ 3 \\end{pmatrix} \\)."
+            "ar": null
           },
           {
             "en": "Performing the matrix multiplication: \\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\ 8 + 3b \\end{pmatrix} \\) Equating the corresponding components, we get a system of two linear equations: 1) \\( 2a + 3 = 7 \\).",
-            "ar": "Performing the matrix multiplication: \\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\ 8 + 3b \\end{pmatrix} \\) Equating the corresponding components, we get a system of two linear equations: 1) \\( 2a + 3 = 7 \\)."
+            "ar": null
           },
           {
             "en": "Solving the second equation for \\(b\\): \\(3b = 11 - 8\\).",
-            "ar": "Solving the second equation for \\(b\\): \\(3b = 11 - 8\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The transformation is defined by \\( \\mathbf{v}' = \\mathbf{M}\\mathbf{v} \\). Substituting the given vectors and matrix form:\n\n\\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\ 3 \\end{pmatrix} \\)\n\nPerforming the matrix multiplication:\n\n\\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\ 8 + 3b \\end{pmatrix} \\)\n\nEquating the corresponding components, we get a system of two linear equations:\n\n1) \\( 2a + 3 = 7 \\)\n2) \\( 8 + 3b = 11 \\)\n\nSolving the first equation for \\( a \\):\n\n\\( 2a = 7 - 3 \\)\n\\( 2a = 4 \\)\n\\( a = 2 \\)\n\nSolving the second equation for \\( b \\):\n\n\\( 3b = 11 - 8 \\)\n\\( 3b = 3 \\)\n\\( b = 1 \\)\n\nThus, \\( a = 2 \\) and \\( b = 1 \\).",
-          "ar": "The transformation is defined by \\( \\mathbf{v}' = \\mathbf{M}\\mathbf{v} \\). Substituting the given vectors and matrix form:\n\n\\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\ 3 \\end{pmatrix} \\)\n\nPerforming the matrix multiplication:\n\n\\( \\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\ 8 + 3b \\end{pmatrix} \\)\n\nEquating the corresponding components, we get a system of two linear equations:\n\n1) \\( 2a + 3 = 7 \\)\n2) \\( 8 + 3b = 11 \\)\n\nSolving the first equation for \\( a \\):\n\n\\( 2a = 7 - 3 \\)\n\\( 2a = 4 \\)\n\\( a = 2 \\)\n\nSolving the second equation for \\( b \\):\n\n\\( 3b = 11 - 8 \\)\n\\( 3b = 3 \\)\n\\( b = 1 \\)\n\nThus, \\( a = 2 \\) and \\( b = 1 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 5 · Hard]</strong> A medical test for a rare disease has a 99\\% accuracy rate in detecting the disease when it is present (True Positive Rate) and a 95\\% accuracy rate in identifying individuals without the disease (True Negative Rate). If the prevalence of the disease in the population is 0.5\\%, what is the probability that a person who tests positive actually has the disease?",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> A medical test for a rare disease has a 99\\% accuracy rate in detecting the disease when it is present (True Positive Rate) and a 95\\% accuracy rate in identifying individuals without the disease (True Negative Rate). If the prevalence of the disease in the population is 0.5\\%, what is the probability that a person who tests positive actually has the disease?"
+          "ar": null
         },
         "hints": [
           {
             "en": "Let D be the event that a person has the disease, and P be the event that the person tests positive.",
-            "ar": "Let D be the event that a person has the disease, and P be the event that the person tests positive."
+            "ar": null
           },
           {
             "en": "We are given: P(P|D) = 0.99 (True Positive Rate) P(not P|not D) = 0.95 (True Negative Rate), which means P(P|not D) = 1 - 0.95 = 0.05 (False Positive Rate).",
-            "ar": "We are given: P(P|D) = 0.99 (True Positive Rate) P(not P|not D) = 0.95 (True Negative Rate), which means P(P|not D) = 1 - 0.95 = 0.05 (False Positive Rate)."
+            "ar": null
           },
           {
             "en": "Converting to a percentage, this is approximately 9.05\\%, which rounds to 9.1\\%.",
-            "ar": "Converting to a percentage, this is approximately 9.05\\%, which rounds to 9.1\\%."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Let D be the event that a person has the disease, and P be the event that the person tests positive.\nWe are given:\nP(P|D) = 0.99 (True Positive Rate)\nP(not P|not D) = 0.95 (True Negative Rate), which means P(P|not D) = 1 - 0.95 = 0.05 (False Positive Rate)\nP(D) = 0.005 (Prevalence of the disease)\nFrom P(D), we know P(not D) = 1 - P(D) = 1 - 0.005 = 0.995.\nWe want to find P(D|P), the probability that a person has the disease given a positive test result.\nUsing Bayes' Theorem:\nP(D|P) = [P(P|D) * P(D)] / P(P)\nTo find P(P), we use the law of total probability:\nP(P) = P(P|D) * P(D) + P(P|not D) * P(not D)\nP(P) = (0.99 * 0.005) + (0.05 * 0.995)\nP(P) = 0.00495 + 0.04975\nP(P) = 0.0547\nNow, substitute this back into Bayes' Theorem:\nP(D|P) = (0.99 * 0.005) / 0.0547\nP(D|P) = 0.00495 / 0.0547\nP(D|P) \\approx 0.09049\nConverting to a percentage, this is approximately 9.05\\%, which rounds to 9.1\\%.",
-          "ar": "Let D be the event that a person has the disease, and P be the event that the person tests positive.\nWe are given:\nP(P|D) = 0.99 (True Positive Rate)\nP(not P|not D) = 0.95 (True Negative Rate), which means P(P|not D) = 1 - 0.95 = 0.05 (False Positive Rate)\nP(D) = 0.005 (Prevalence of the disease)\nFrom P(D), we know P(not D) = 1 - P(D) = 1 - 0.005 = 0.995.\nWe want to find P(D|P), the probability that a person has the disease given a positive test result.\nUsing Bayes' Theorem:\nP(D|P) = [P(P|D) * P(D)] / P(P)\nTo find P(P), we use the law of total probability:\nP(P) = P(P|D) * P(D) + P(P|not D) * P(not D)\nP(P) = (0.99 * 0.005) + (0.05 * 0.995)\nP(P) = 0.00495 + 0.04975\nP(P) = 0.0547\nNow, substitute this back into Bayes' Theorem:\nP(D|P) = (0.99 * 0.005) / 0.0547\nP(D|P) = 0.00495 / 0.0547\nP(D|P) \\approx 0.09049\nConverting to a percentage, this is approximately 9.05\\%, which rounds to 9.1\\%."
+          "ar": null
         }
       },
       {

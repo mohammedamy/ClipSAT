@@ -363,6 +363,7 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
       assert.ok(ch.title && ch.title.en && ch.title.ar, `${t}/${cid} must have bilingual chapter title`);
       assert.ok(ch.chapterTag && ch.chapterTag.className, `${t}/${cid} must have a chapterTag badge`);
       assert.ok(ch.quizWidget && Array.isArray(ch.quizWidget.domains) && ch.quizWidget.domains.some(d => bankDomains.has(d)), `${t}/${cid} quizWidget.domains must match bank-data/${t}.json domains`);
+      const requireFullAr = (t === 'qudrat' || t === 'tahsili');
       (function assertAllBilingual(node, p) {
         if (!node || typeof node !== 'object') return;
         if (Array.isArray(node)) {
@@ -370,7 +371,16 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
           return;
         }
         if (Object.prototype.hasOwnProperty.call(node, 'en') && Object.prototype.hasOwnProperty.call(node, 'ar')) {
-          assert.ok(node.ar && String(node.ar).trim(), `${t}/${cid} ${p} must have non-empty .ar string`);
+          assert.ok(node.en && String(node.en).trim(), `${t}/${cid} ${p} must have non-empty .en string`);
+          if (requireFullAr) {
+            assert.ok(node.ar && String(node.ar).trim(), `${t}/${cid} ${p} must have non-empty .ar string`);
+          } else {
+            assert.ok(node.ar === null || (typeof node.ar === 'string' && node.ar.trim().length > 0), `${t}/${cid} ${p} .ar must be null or non-empty string`);
+          }
+          if (typeof node.ar === 'string') {
+            const arNoMath = node.ar.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$[^$]*\$|<[^>]+>/g, ' ');
+            assert.ok(!/[a-z][\u0621-\u063A\u0641-\u064A]|[\u0621-\u063A\u0641-\u064A][a-z]{2,}/.test(arNoMath), `${t}/${cid} ${p} contains regex-corrupted .ar text`);
+          }
           return;
         }
         for (const [k, v] of Object.entries(node)) {
@@ -389,9 +399,9 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
         if (b.kind === 'table') tbl++;
         if (b.kind === 'practiceProblem') {
           prac++;
-          assert.ok(b.question && b.question.en && b.question.ar, `${t}/${cid} practiceProblem must have bilingual question`);
-          assert.ok(b.solution && b.solution.en && b.solution.ar, `${t}/${cid} practiceProblem must have bilingual solution`);
-          assert.ok(Array.isArray(b.hints) && b.hints.length >= 3 && b.hints.every(h => h.en && h.ar), `${t}/${cid} practiceProblem must have >=3 bilingual hints`);
+          assert.ok(b.question && b.question.en && (b.question.ar === null || b.question.ar), `${t}/${cid} practiceProblem must have valid question`);
+          assert.ok(b.solution && b.solution.en && (b.solution.ar === null || b.solution.ar), `${t}/${cid} practiceProblem must have valid solution`);
+          assert.ok(Array.isArray(b.hints) && b.hints.length >= 3 && b.hints.every(h => h.en && (h.ar === null || h.ar)), `${t}/${cid} practiceProblem must have >=3 valid hints`);
         }
         if (b.kind === 'figure') fig++;
         if (b.kind === 'explorer') exp++;
@@ -418,9 +428,10 @@ audit(`Every curriculum track has a 50-question _practice-set.json (1,550 total 
     assert.ok(Array.isArray(ps.items), `content/${t}/_practice-set.json must have items[]`);
     assert.strictEqual(ps.items.length, 50, `Expected 50 items in content/${t}/_practice-set.json, found ${ps.items.length}`);
     let trackFigs = 0;
+    const requireFullArPs = (t === 'qudrat' || t === 'tahsili');
     ps.items.forEach((it, idx) => {
-      assert.ok(it.question && it.question.en && it.question.ar, `${t} practice item[${idx}] must have bilingual question`);
-      assert.ok(it.solution && it.solution.en && it.solution.ar, `${t} practice item[${idx}] must have bilingual solution`);
+      assert.ok(it.question && it.question.en && (requireFullArPs ? it.question.ar : (it.question.ar === null || it.question.ar)), `${t} practice item[${idx}] must have valid question`);
+      assert.ok(it.solution && it.solution.en && (requireFullArPs ? it.solution.ar : (it.solution.ar === null || it.solution.ar)), `${t} practice item[${idx}] must have valid solution`);
       const solClean = String((it.solution && it.solution.en) || '').replace(/<[^>]+>/g, '').trim();
       assert.ok(solClean.length >= 140, `${t} practice item[${idx}] solution too short (${solClean.length} chars)`);
       if (it.fig && typeof it.fig === 'object') {

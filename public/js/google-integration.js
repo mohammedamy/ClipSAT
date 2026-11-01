@@ -89,19 +89,22 @@
     if (!cloud || !cloud.configured) return Promise.resolve(null);
     return Promise.resolve(cloud.ready).then(function () {
       if (!cloud.isSignedIn() || cloud.currentProvider() !== 'google') return null;
-      var client = cloud.getClient && cloud.getClient();
-      if (!client) return null;
-      return client.auth.getSession().then(function (r) {
+      var getSess = cloud.getSession
+        ? cloud.getSession.bind(cloud)
+        : function () {
+            var client = cloud.getClient && cloud.getClient();
+            return client ? client.auth.getSession() : Promise.resolve(null);
+          };
+      return getSess().then(function (r) {
         var session = r && r.data && r.data.session;
         if (!session) return null;
         var cfg = window.CLIPSAT_CLOUD_CONFIG || {};
-        return fetch(GOOGLE_TOKEN_FN_URL, {
+        var fnUrl = cloud.getFunctionUrl ? cloud.getFunctionUrl('google-token') : GOOGLE_TOKEN_FN_URL;
+        var doFetch = cloud.fetch || fetch;
+        return doFetch(fnUrl, {
           method: 'POST', mode: 'cors',
           headers: { 'Authorization': 'Bearer ' + session.access_token, 'apikey': cfg.anonKey || '' }
         }).then(function (r2) {
-          // A 404 here just means no Google account is linked to this
-          // session (signed in with email, or linked before this feature
-          // existed) — not an error, the caller falls back to GIS below.
           if (!r2.ok) return null;
           return r2.json();
         });
@@ -115,13 +118,8 @@
     }).catch(function (err) { log('Supabase-Google token fetch failed: ' + (err && err.message)); return null; });
   }
 
-  // Populate _token in the background as soon as possible after load, so a
-  // caller that checks isSignedIn() synchronously (see quiz-capture-ui.js)
-  // — without first awaiting ensureScopes() — still sees a Supabase-Google
-  // session reflected. If this hasn't resolved yet by the time isSignedIn()
-  // is checked, that one caller falls back to showing the connect modal
-  // once, which itself calls ensureScopes() and self-corrects.
-  trySupabaseGoogleToken();
+  // Deferred on-demand inside ensureScopes() rather than firing a guaranteed
+  // 404 POST /functions/v1/google-token on every page load.
 
   function loadGIS() {
     if (_gisReady) return _gisReady;

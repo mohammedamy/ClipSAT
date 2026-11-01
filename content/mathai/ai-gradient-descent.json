@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Machine learning models learn by minimizing a loss function via gradient descent. Calculus provides the directional derivative pointing toward the steepest descent in parameter space.",
-          "ar": "Machine learning models learn by minimizing a loss الدالة via gradient descent. التفاضل والتكامل provides the directional المشتقة pointing toward the steepest descent in المعامل space."
+          "ar": null
         }
       },
       {
@@ -42,7 +42,7 @@
         },
         "body": {
           "en": "Let \\( L(\\mathbf{w}) \\) be a differentiable loss function over weight parameters \\( \\mathbf{w} \\). The gradient \\( \\nabla L(\\mathbf{w}) = \\left[ \\frac{\\partial L}{\\partial w_1}, \\dots, \\frac{\\partial L}{\\partial w_d} \\right]^T \\) points in the direction of greatest rate of increase.<br>To minimize loss, parameter updates step in the <strong>opposite</strong> direction scaled by learning rate \\( \\eta > 0 \\):<br>\\[ \\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t) \\]",
-          "ar": "Let \\( L(\\mathbf{w}) \\) be a differentiable loss الدالة over weight المعاملات \\( \\mathbf{w} \\). The gradient \\( \\nabla L(\\mathbf{w}) = \\left[ \\frac{\\partial L}{\\partial w_1}, \\dots, \\frac{\\partial L}{\\partial w_d} \\right]^T \\) points in the direction of greatest rate of increase.<br>To minimize loss, المعامل updates step in the <strong>opposite</strong> direction scaled by learning rate \\( \\eta > 0 \\):<br>\\[ \\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t) \\]"
+          "ar": null
         }
       },
       {
@@ -132,7 +132,7 @@
             "id": "aigradientdescentExCanvas_s0",
             "label": {
               "en": "Learning Rate <b>\\(\\eta =\\)</b>",
-              "ar": "Learning Rate <b>η =</b>"
+              "ar": null
             },
             "min": 0.05,
             "max": 1.05,
@@ -141,14 +141,14 @@
             "valueDisplayId": "aigradientdescentExCanvas_v0",
             "ariaLabel": {
               "en": "Learning Rate η =",
-              "ar": "Learning Rate η ="
+              "ar": null
             }
           },
           {
             "id": "aigradientdescentExCanvas_s1",
             "label": {
               "en": "Initial Weight <b>\\(w_{0} =\\)</b>",
-              "ar": "Initial Weight <b>w₀ =</b>"
+              "ar": null
             },
             "min": -3,
             "max": 4.5,
@@ -157,7 +157,7 @@
             "valueDisplayId": "aigradientdescentExCanvas_v1",
             "ariaLabel": {
               "en": "Initial Weight w₀ =",
-              "ar": "Initial Weight w₀ ="
+              "ar": null
             }
           }
         ],
@@ -166,7 +166,7 @@
             "id": "aigradientdescentExCanvas_r0",
             "label": {
               "en": "Initial Gradient ∇\\(L(w_{0})\\)",
-              "ar": "Initial Gradient ∇L(w₀)"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(∇L(w_{0}) = -7.00\\)"
@@ -175,7 +175,7 @@
             "id": "aigradientdescentExCanvas_r1",
             "label": {
               "en": "Weight \\(w_{6}\\) after 6 Steps",
-              "ar": "Weight w₆ after 6 Steps"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(w_{6} = 0.997\\)"
@@ -184,7 +184,7 @@
             "id": "aigradientdescentExCanvas_r2",
             "label": {
               "en": "Convergence Regime",
-              "ar": "Convergence Regime"
+              "ar": null
             },
             "colorClass": "teal",
             "value": "Monotone Convergent"
@@ -264,7 +264,7 @@
             },
             "value": {
               "en": "Too high: divergence/oscillation. Too low: slow convergence.",
-              "ar": "Too high: divergence/oscillation. Too low: slow convergence. (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)"
+              "ar": null
             }
           },
           {
@@ -274,7 +274,7 @@
             },
             "value": {
               "en": "Updates weights on mini-batches of size \\( B \\ll N \\).",
-              "ar": "Updates weights on mini-batches of size \\( B \\ll N \\). (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)"
+              "ar": null
             }
           }
         ]
@@ -300,7 +300,7 @@
         },
         "body": {
           "en": "<p>Consider a simple linear model \\( \\hat{y} = wx \\) with squared loss for a single data point \\( (x, y) = (2, 8) \\):<br>\\[ L(w) = (y - wx)^2 = (8 - 2w)^2 \\]<br>If the current weight is \\( w_0 = 1.0 \\) and the learning rate is \\( \\eta = 0.05 \\), compute the gradient \\( \\frac{dL}{dw} \\) and the updated weight \\( w_1 \\).</p><p><strong>Solution:</strong><br>Apply the chain rule to differentiate \\( L(w) \\):<br>\\[ \\frac{dL}{dw} = 2(8 - 2w) \\cdot (-2) = -4(8 - 2w) = -32 + 8w \\]<br>Evaluate at \\( w_0 = 1.0 \\):<br>\\[ \\left.\\frac{dL}{dw}\\right|_{w=1.0} = -32 + 8(1) = -24 \\]<br>Apply gradient descent update:<br>\\[ w_1 = w_0 - \\eta \\left(\\frac{dL}{dw}\\right) = 1.0 - (0.05)(-24) = 1.0 + 1.2 = 2.2 \\].<br>Notice that with \\( w_0 = 1.0 \\), prediction \\( \\hat{y} = 2 \\) was too low (target was 8). The gradient step increased \\( w \\) to 2.2, giving \\( \\hat{y} = 4.4 \\), moving closer to 8.<br><strong>Answer:</strong> Gradient = \\( -24 \\); updated weight \\( w_1 = 2.2 \\).</p>",
-          "ar": "<p><strong>الشرح الرياضي (دوال الخسارة والانحدار التدريجي والتحسين الرياضي):</strong></p><p>Consider a simple linear model \\( \\hat{y} = wx \\) with squared loss for a single data point \\( (x, y) = (2, 8) \\):<br>\\[ L(w) = (y - wx)^2 = (8 - 2w)^2 \\]<br>If the current weight is \\( w_0 = 1.0 \\) and the learning rate is \\( \\eta = 0.05 \\), compute the gradient \\( \\frac{dL}{dw} \\) and the updated weight \\( w_1 \\).</p><p><strong>Solution:</strong><br>Apply the chain rule to differentiate \\( L(w) \\):<br>\\[ \\frac{dL}{dw} = 2(8 - 2w) \\cdot (-2) = -4(8 - 2w) = -32 + 8w \\]<br>Evaluate at \\( w_0 = 1.0 \\):<br>\\[ \\left.\\frac{dL}{dw}\\right|_{w=1.0} = -32 + 8(1) = -24 \\]<br>Apply gradient descent update:<br>\\[ w_1 = w_0 - \\eta \\left(\\frac{dL}{dw}\\right) = 1.0 - (0.05)(-24) = 1.0 + 1.2 = 2.2 \\].<br>Notice that with \\( w_0 = 1.0 \\), prediction \\( \\hat{y} = 2 \\) was too low (target was 8). The gradient step increased \\( w \\) to 2.2, giving \\( \\hat{y} = 4.4 \\), moving closer to 8.<br><strong>Answer:</strong> Gradient = \\( -24 \\); updated weight \\( w_1 = 2.2 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -312,7 +312,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?</p><p><strong>Step-by-Step Solution:</strong> The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).</p>",
-          "ar": "<p><strong>مسألة (Medium):</strong> Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?</p><p><strong>الحل خطوة بخطوة:</strong> The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -324,7 +324,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> Consider the following quadratic loss function for a regression problem: \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). If the predicted value \\( \\hat{y} = 5 \\) and the true value \\( y = 3 \\), what is the value of the loss function?</p><p><strong>Step-by-Step Solution:</strong> The quadratic loss function is defined as \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). Given the true value \\( y = 3 \\) and the predicted value \\( \\hat{y} = 5 \\), we substitute these values into the loss function:\n\n \\( L(3, 5) = (3 - 5)^2 \\)\n\n \\( L(3, 5) = (-2)^2 \\)\n\n \\( L(3, 5) = 4 \\)\n\nTherefore, the value of the loss function is 4.</p>",
-          "ar": "<p><strong>مسألة (Hard):</strong> Consider the following quadratic loss function for a regression problem: \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). If the predicted value \\( \\hat{y} = 5 \\) and the true value \\( y = 3 \\), what is the value of the loss function?</p><p><strong>الحل خطوة بخطوة:</strong> The quadratic loss function is defined as \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). Given the true value \\( y = 3 \\) and the predicted value \\( \\hat{y} = 5 \\), we substitute these values into the loss function:\n\n \\( L(3, 5) = (3 - 5)^2 \\)\n\n \\( L(3, 5) = (-2)^2 \\)\n\n \\( L(3, 5) = 4 \\)\n\nTherefore, the value of the loss function is 4.</p>"
+          "ar": null
         }
       },
       {
@@ -336,7 +336,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> Consider the quadratic loss function \\( L(w) = w^2 - 4w + 3 \\). Find the value of \\( w \\) where the function reaches its minimum.</p><p><strong>Step-by-Step Solution:</strong> The given loss function is a quadratic function \\( L(w) = w^2 - 4w + 3 \\). This represents a parabola opening upwards. The minimum value of a quadratic function of the form \\( aw^2 + bw + c \\) occurs at \\( w = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -4 \\). Therefore, the minimum occurs at \\( w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2 \\). Alternatively, we can find the minimum by taking the derivative and setting it to zero: \\( L'(w) = 2w - 4 \\). Setting \\( L'(w) = 0 \\) gives \\( 2w - 4 = 0 \\), which implies \\( 2w = 4 \\), so \\( w = 2 \\).</p>",
-          "ar": "<p><strong>مسألة (Easy):</strong> Consider the quadratic loss function \\( L(w) = w^2 - 4w + 3 \\). Find the value of \\( w \\) where the function reaches its minimum.</p><p><strong>الحل خطوة بخطوة:</strong> The given loss function is a quadratic function \\( L(w) = w^2 - 4w + 3 \\). This represents a parabola opening upwards. The minimum value of a quadratic function of the form \\( aw^2 + bw + c \\) occurs at \\( w = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -4 \\). Therefore, the minimum occurs at \\( w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2 \\). Alternatively, we can find the minimum by taking the derivative and setting it to zero: \\( L'(w) = 2w - 4 \\). Setting \\( L'(w) = 0 \\) gives \\( 2w - 4 = 0 \\), which implies \\( 2w = 4 \\), so \\( w = 2 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -432,125 +432,125 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 1 · Medium]</strong> Consider the following quadratic loss function: \\( L(w) = 3w^2 - 12w + 10 \\).  What is the value of \\( w \\) that minimizes this loss function?",
-          "ar": "<strong>[تدريب 1 · Medium]</strong> Consider the following quadratic loss function: \\( L(w) = 3w^2 - 12w + 10 \\).  What is the value of \\( w \\) that minimizes this loss function?"
+          "ar": null
         },
         "hints": [
           {
             "en": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero.",
-            "ar": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero."
+            "ar": null
           },
           {
             "en": "The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\).",
-            "ar": "The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\)."
+            "ar": null
           },
           {
             "en": "The second derivative is \\(\\frac{d^2L}{dw^2} = 6\\), which is positive, confirming that \\(w\\) corresponds to a minimum.",
-            "ar": "The second derivative is \\(\\frac{d^2L}{dw^2} = 6\\), which is positive, confirming that \\(w\\) corresponds to a minimum."
+            "ar": null
           }
         ],
         "solution": {
           "en": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero. The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\).  The second derivative is \\( \\frac{d^2L}{dw^2} = 6 \\), which is positive, confirming that \\( w=2 \\) corresponds to a minimum.",
-          "ar": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero. The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\).  The second derivative is \\( \\frac{d^2L}{dw^2} = 6 \\), which is positive, confirming that \\( w=2 \\) corresponds to a minimum."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2 · Hard]</strong> Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -4 \\) and \\( z_2 = 6 \\).",
-          "ar": "<strong>[تدريب 2 · Hard]</strong> Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -4 \\) and \\( z_2 = 6 \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\).",
-            "ar": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\)."
+            "ar": null
           },
           {
             "en": "And \\( 0 \\) if \\( z \\le 0 \\).",
-            "ar": "And \\( 0 \\) if \\( z \\le 0 \\)."
+            "ar": null
           },
           {
             "en": "Thus \\(f(-4) = 0\\) and \\(f(6)\\).",
-            "ar": "Thus \\(f(-4) = 0\\) and \\(f(6)\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-4) = 0 \\) and \\( f(6) = 6 \\).",
-          "ar": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-4) = 0 \\) and \\( f(6) = 6 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Easy]</strong> In gradient descent, a weight currently has value \\( w = 60 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 24 \\) and the learning rate is \\( \\eta = 0.6 \\), find the updated weight \\( w' \\).",
-          "ar": "<strong>[تدريب 3 · Easy]</strong> In gradient descent, a weight currently has value \\( w = 60 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 24 \\) and the learning rate is \\( \\eta = 0.6 \\), find the updated weight \\( w' \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Using the gradient descent update rule: \\(w' = w - \\eta \\frac{\\partial L}{\\partial w}\\).",
-            "ar": "Using the gradient descent update rule: \\(w' = w - \\eta \\frac{\\partial L}{\\partial w}\\)."
+            "ar": null
           },
           {
             "en": "Substitute and simplify: \\(w' = 60 - (0.6)(24)\\).",
-            "ar": "Substitute and simplify: \\(w' = 60 - (0.6)(24)\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(60 - 14.40\\).",
-            "ar": "Compute the final value from: \\(60 - 14.40\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\).",
-          "ar": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> Consider the scalar loss function \\( L(w) = 5w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 8 \\).",
-          "ar": "<strong>[تدريب 4 · Medium]</strong> Consider the scalar loss function \\( L(w) = 5w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 8 \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\).",
-            "ar": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\)."
+            "ar": null
           },
           {
             "en": "At \\( w = 8 \\): \\(\\nabla L = 10(8) - 8\\). Substitute and simplify: \\(\\nabla L = 80 - 8\\).",
-            "ar": "At \\( w = 8 \\): \\(\\nabla L = 10(8) - 8\\). Substitute and simplify: \\(\\nabla L = 80 - 8\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(80 - 8\\).",
-            "ar": "Compute the final value from: \\(80 - 8\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\). At \\( w = 8 \\): \\(\n\\nabla L = 10(8) - 8 = 80 - 8 = 72 \\).",
-          "ar": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\). At \\( w = 8 \\): \\(\n\\nabla L = 10(8) - 8 = 80 - 8 = 72 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 5 · Hard]</strong> Two document embeddings \\( \\mathbf{a} = [6, 12]^T \\) and \\( \\mathbf{b} = [12, 6]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{180} \\), calculate their exact cosine similarity.",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> Two document embeddings \\( \\mathbf{a} = [6, 12]^T \\) and \\( \\mathbf{b} = [12, 6]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{180} \\), calculate their exact cosine similarity."
+          "ar": null
         },
         "hints": [
           {
             "en": "Dot product \\(\\mathbf{a} \\cdot \\mathbf{b} = (6)(12) + (12)(6)\\).",
-            "ar": "Dot product \\(\\mathbf{a} \\cdot \\mathbf{b} = (6)(12) + (12)(6)\\)."
+            "ar": null
           },
           {
             "en": "Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 180 \\).",
-            "ar": "Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 180 \\)."
+            "ar": null
           },
           {
             "en": "Cosine similarity = \\(\\frac{144}{180}\\).",
-            "ar": "Cosine similarity = \\(\\frac{144}{180}\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (6)(12) + (12)(6) = 144 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 180 \\). Cosine similarity = \\( \\frac{144}{180} = 0.800 \\).",
-          "ar": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (6)(12) + (12)(6) = 144 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 180 \\). Cosine similarity = \\( \\frac{144}{180} = 0.800 \\)."
+          "ar": null
         }
       },
       {

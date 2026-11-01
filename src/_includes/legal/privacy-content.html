@@ -1,6 +1,5 @@
-<!-- TODO: lawyer review -->
 <h2 data-i18n="privacy.h2">Privacy Policy</h2>
-<p class="lu" data-i18n="privacy.updated">Last updated October 16, 2026</p>
+<p class="lu" data-i18n="privacy.updated">Last updated November 1, 2026</p>
 <p data-i18n="privacy.intro">ClipSAT is an educational mathematics platform founded by Mr. Mohamed Abdallah, serving students preparing for Saudi national examinations (GAT Qudrat, SAAT Tahsili) and international curricula (AP, Cambridge IGCSE/A-Level, IB, SAT, ACT, and university mathematics). We believe in privacy by design, minimal data collection, and full transparency. This policy explains what data exists, how it is processed, and your rights, in compliance with applicable standards including the Saudi Personal Data Protection Law (PDPL) and international data privacy best practices.</p>
 
 <h3 data-i18n="privacy.h3-device">1. What's Stored Locally on Your Device</h3>
@@ -15,13 +14,13 @@
   <li data-i18n="privacy.cloud-li1"><strong>Authentication:</strong> Sign-in uses passwordless email magic links or one-time verification codes, or Google OAuth sign-in. We do not store plaintext passwords.</li>
   <li data-i18n="privacy.cloud-li2"><strong>Database &amp; Row Level Security:</strong> Synchronized study records (such as completed lessons, mistake items, and spaced repetition schedules) are stored in a managed PostgreSQL database hosted by Supabase. Access is governed by strict database Row Level Security (RLS) policies, ensuring only your authenticated session can access or modify your personal records.</li>
   <li data-i18n="privacy.cloud-li3"><strong>Infrastructure &amp; IP Logging:</strong> When your device connects to our cloud infrastructure or APIs (such as Supabase or Cloudflare), servers process your device's IP address and standard HTTP request headers as an inherent technical requirement of internet routing. These logs are maintained by our hosting processors strictly for security auditing, DDoS mitigation, and rate limiting, and are routinely purged after operational retention periods (typically up to 30 days). ClipSAT does not sell or cross-track IP logs.</li>
-  <li data-i18n="privacy.cloud-li4"><strong>Account &amp; Data Deletion:</strong> You can request full deletion of your cloud account and all associated synchronized records at any time by emailing <a href="mailto:support@clipsat.org">support@clipsat.org</a>. Deletion requests are fulfilled within 30 days.</li>
+  <li data-i18n="privacy.cloud-li4"><strong>Account &amp; Data Deletion:</strong> Signed-in users can permanently delete their cloud account and all synchronized records immediately from the Cloud Sync menu, or by emailing <a href="mailto:support@clipsat.org">support@clipsat.org</a>. Deletion requests are fulfilled immediately via self-service or within 30 days by email.</li>
 </ul>
 
 <h3 data-i18n="privacy.h3-ai">3. ClipSAT AI Tutor &amp; Practice Generation</h3>
 <p data-i18n="privacy.ai-intro">When you interact with the ClipSAT AI Tutor or generate AI practice questions:</p>
 <ul>
-  <li data-i18n="privacy.ai-li1"><strong>Server-Side Proxy:</strong> All requests route through a secure server proxy (Supabase Edge Functions). Model provider API keys (Groq / OpenAI) are secured server-side and never exposed to the client.</li>
+  <li data-i18n="privacy.ai-li1"><strong>Server-Side Proxy:</strong> All requests route through a secure server proxy (Supabase Edge Functions). Model provider API keys (Google Gemini, Groq, OpenAI, and OpenRouter for optional cloud voice narration) are secured server-side and never exposed to the client.</li>
   <li data-i18n="privacy.ai-li2"><strong>Data Protection &amp; Rate Limits:</strong> Requests are gated behind authenticated user sessions, with server-side quotas, per-IP rate limiting, character length limits, and automated content safety filters to prevent abuse and protect student safety.</li>
   <li data-i18n="privacy.ai-li3"><strong>Pedagogical Purpose Limitation:</strong> Prompts and math questions are processed solely to generate pedagogical explanations and tailored practice exercises. Your questions are not used to train public foundation models without consent.</li>
   <li data-i18n="privacy.ai-li4"><strong>AI Disclaimer:</strong> Explanations are AI-generated and may occasionally contain inaccuracies. The AI Tutor is a supplemental study aid, not a human tutor or a substitute for teacher instruction.</li>
@@ -39,7 +38,7 @@
 <h3 data-i18n="privacy.h3-cookies">5. Advertising, Analytics &amp; Cookie Consent</h3>
 <p data-i18n-html="privacy.cookies-body">ClipSAT uses essential browser storage to save your learning progress. With your permission via our cookie consent banner, third-party advertising cookies (such as Google Ads) or analytics scripts may be loaded to support free access to our curriculum:</p>
 <ul>
-  <li data-i18n="privacy.cookies-li1"><strong>Opt-In Consent:</strong> Non-essential advertising and tracking scripts are blocked until you click "Accept All" on the cookie consent banner. If you choose "Essential Only", only necessary local storage is utilized.</li>
+  <li data-i18n="privacy.cookies-li1"><strong>Opt-In &amp; Student-Safe Advertising:</strong> Non-essential advertising and analytics scripts are blocked until you click "Accept All" on the cookie consent banner. When enabled, Google AdSense is configured with child-directed treatment (<code>TFCD=1</code>) and non-personalized ads (<code>NPA=1</code>) to protect K-12 learners. If you choose "Essential Only", only necessary local storage is utilized.</li>
   <li data-i18n="privacy.cookies-li2"><strong>Changing Consent:</strong> You can change or revoke your cookie choices at any time by clicking <button type="button" class="cookie-link-inline" onclick="window.openCookieConsent&&window.openCookieConsent()" style="background:none;border:none;color:var(--indigo);text-decoration:underline;cursor:pointer;font-size:inherit;padding:0">Cookie Settings</button> in the site footer.</li>
   <li data-i18n-html="privacy.cookies-li3">You may also manage personalized advertising preferences directly at <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.</li>
 </ul>

@@ -1324,17 +1324,38 @@ function _buildCAT(cfg,box){
    aren't reachable from here) — keeps this new feature isolated so it can't
    regress the 58 existing canvas explorers. ── */
 var _FNM={sin:Math.sin,cos:Math.cos,tan:Math.tan,asin:Math.asin,acos:Math.acos,atan:Math.atan,arcsin:Math.asin,arccos:Math.acos,arctan:Math.atan,sec:function(v){return 1/Math.cos(v);},csc:function(v){return 1/Math.sin(v);},cot:function(v){return 1/Math.tan(v);},sqrt:Math.sqrt,cbrt:Math.cbrt||function(v){return v<0?-Math.pow(-v,1/3):Math.pow(v,1/3);},abs:Math.abs,ln:Math.log,log:Math.log10||function(v){return Math.log(v)/Math.LN10;},log10:Math.log10||function(v){return Math.log(v)/Math.LN10;},exp:Math.exp};
+function _ixParseMath(exprStr,vars){
+  if(typeof window!=='undefined'&&typeof window.CSMathEval==='function') return window.CSMathEval(exprStr,vars,{logBase10:true});
+  var s=String(exprStr==null?'':exprStr).trim(),pos=0,L=s.length;
+  function ws(){while(pos<L&&s.charCodeAt(pos)<=32)pos++;}
+  function eat(c){ws();if(s.slice(pos,pos+c.length)===c){pos+=c.length;return true;}return false;}
+  function pAdd(){var l=pMul();while(true){ws();if(pos<L&&s[pos]==='+'){pos++;l+=pMul();}else if(pos<L&&s[pos]==='-'){pos++;l-=pMul();}else break;}return l;}
+  function pMul(){var l=pUn();while(true){ws();if(pos<L&&s[pos]==='*'&&s[pos+1]!=='*'){pos++;l*=pUn();}else if(pos<L&&s[pos]==='/'){pos++;l/=pUn();}else if(pos<L&&(s[pos]==='('||/[a-zA-Z_]/.test(s[pos]))){l*=pPow();}else break;}return l;}
+  function pUn(){ws();if(pos<L&&s[pos]==='+'){pos++;return +pUn();}if(pos<L&&s[pos]==='-'){pos++;return -pUn();}return pPow();}
+  function pPow(){var b=pPri();ws();if(eat('**')||eat('^'))return Math.pow(b,pUn());return b;}
+  function pPri(){
+    ws();if(pos>=L)throw 1;
+    if(s[pos]==='('){pos++;var v=pAdd();if(!eat(')'))throw 1;return v;}
+    var nm=/^(?:\d+\.?\d*|\.\d+)(?:[eE][+\-]?\d+)?/.exec(s.slice(pos));
+    if(nm){pos+=nm[0].length;return parseFloat(nm[0]);}
+    var id=/^[a-zA-Z_][a-zA-Z0-9_]*/.exec(s.slice(pos));
+    if(id){
+      var k=id[0];pos+=k.length;ws();
+      if(eat('(')){var a=pAdd();if(!eat(')'))throw 1;var fn=_FNM[k.toLowerCase()];return fn?fn(a):NaN;}
+      if(vars&&Object.prototype.hasOwnProperty.call(vars,k))return vars[k];
+      if(k.toLowerCase()==='pi')return Math.PI;
+      if(k==='e'||k==='E')return Math.E;
+      return NaN;
+    }
+    throw 1;
+  }
+  try{var r=pAdd();ws();return pos===L?r:NaN;}catch(_){return NaN;}
+}
 function _fnEval(expr,x,params){
   try{
-    var e=String(expr);
-    Object.keys(params||{}).forEach(function(k){
-      e=e.replace(new RegExp('\\b'+k+'\\b','g'),'('+params[k]+')');
-    });
-    e=e.replace(/\^/g,'**')
-      .replace(/\b(arcsin|arccos|arctan|asin|acos|atan|sin|cos|tan|sec|csc|cot|sqrt|cbrt|abs|ln|log10|log|exp)\s*\(/g,'M.$1(')
-      .replace(/\bpi\b/gi,'Math.PI').replace(/\be\b/g,'Math.E');
-    /* eslint-disable no-new-func */
-    return (new Function('x','M','return ('+e+')'))(x,_FNM);
+    var vars={x:x};
+    Object.keys(params||{}).forEach(function(k){ vars[k]=Number(params[k]); });
+    return _ixParseMath(expr,vars);
   }catch(err){return NaN;}
 }
 

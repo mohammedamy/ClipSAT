@@ -344,6 +344,239 @@
   }
   window._figA11yLabel = _figA11yLabel;
 
+  /* Pure recursive-descent mathematical expression evaluator (zero eval / new Function; CSP-safe) */
+  var _CS_MATH_FNS = {
+    sin: Math.sin, cos: Math.cos, tan: Math.tan,
+    asin: Math.asin, acos: Math.acos, atan: Math.atan,
+    arcsin: Math.asin, arccos: Math.acos, arctan: Math.atan,
+    sec: function(v){ return 1 / Math.cos(v); },
+    csc: function(v){ return 1 / Math.sin(v); },
+    cot: function(v){ return 1 / Math.tan(v); },
+    sinh: Math.sinh || function(v){ return (Math.exp(v) - Math.exp(-v)) / 2; },
+    cosh: Math.cosh || function(v){ return (Math.exp(v) + Math.exp(-v)) / 2; },
+    tanh: Math.tanh || function(v){ var a = Math.exp(v), b = Math.exp(-v); return (a - b) / (a + b); },
+    sqrt: Math.sqrt,
+    cbrt: Math.cbrt || function(v){ return v < 0 ? -Math.pow(-v, 1 / 3) : Math.pow(v, 1 / 3); },
+    abs: Math.abs, fabs: Math.abs,
+    ln: Math.log,
+    log2: Math.log2 || function(v){ return Math.log(v) / Math.LN2; },
+    log10: Math.log10 || function(v){ return Math.log(v) / Math.LN10; },
+    exp: Math.exp, floor: Math.floor, ceil: Math.ceil, round: Math.round,
+    sign: Math.sign || function(v){ return v > 0 ? 1 : (v < 0 ? -1 : 0); },
+    trunc: Math.trunc || function(v){ return v < 0 ? Math.ceil(v) : Math.floor(v); },
+    integer: function(v){ return Math.trunc ? Math.trunc(v) : (v | 0); },
+    atan2: Math.atan2, pow: Math.pow,
+    hypot: Math.hypot || function(a, b){ return Math.sqrt(a * a + b * b); },
+    min: Math.min, max: Math.max,
+    rational: function(a, b){ return a / b; },
+    piecewise: function(arr){
+      var pairs = (arguments.length === 1 && Array.isArray(arr) && Array.isArray(arr[0]))
+        ? arr
+        : Array.prototype.slice.call(arguments);
+      for(var i = 0; i < pairs.length; i++){
+        if(Array.isArray(pairs[i]) && pairs[i][1]) return pairs[i][0];
+      }
+      return NaN;
+    }
+  };
+
+  function _csEvalMath(exprStr, vars, opts){
+    if(exprStr == null) return NaN;
+    var s = String(exprStr).trim();
+    if(!s || s.length > 2048) return NaN;
+    s = s.replace(/\b(?:sp|np|math|Math|M)\./g, '');
+    var env = vars || {};
+    var logIs10 = !!(opts && opts.logBase10);
+    var pos = 0, L = s.length;
+
+    function skipWS(){ while(pos < L && s.charCodeAt(pos) <= 32) pos++; }
+    function peek(str){ skipWS(); return s.slice(pos, pos + str.length) === str; }
+    function consume(str){ if(peek(str)){ pos += str.length; return true; } return false; }
+
+    function parseExpr(){ return parseTernary(); }
+    function parseTernary(){
+      var c = parseOr();
+      skipWS();
+      if(pos < L && s[pos] === '?'){
+        pos++;
+        var tVal = parseTernary();
+        if(!consume(':')) throw 1;
+        var fVal = parseTernary();
+        return c ? tVal : fVal;
+      }
+      return c;
+    }
+    function parseOr(){
+      var left = parseAnd();
+      while(consume('||')){ var r = parseAnd(); left = (left || r) ? 1 : 0; }
+      return left;
+    }
+    function parseAnd(){
+      var left = parseCmp();
+      while(consume('&&')){ var r = parseCmp(); left = (left && r) ? 1 : 0; }
+      return left;
+    }
+    function parseCmp(){
+      var left = parseAdd();
+      skipWS();
+      var ops = ['===', '!==', '<=', '>=', '==', '!=', '<', '>'];
+      for(var oi = 0; oi < ops.length; oi++){
+        var op = ops[oi];
+        if(s.slice(pos, pos + op.length) === op){
+          pos += op.length;
+          var right = parseAdd();
+          if(op === '<=') return left <= right ? 1 : 0;
+          if(op === '>=') return left >= right ? 1 : 0;
+          if(op === '<') return left < right ? 1 : 0;
+          if(op === '>') return left > right ? 1 : 0;
+          if(op === '==' || op === '===') return left === right ? 1 : 0;
+          if(op === '!=' || op === '!==') return left !== right ? 1 : 0;
+        }
+      }
+      return left;
+    }
+    function parseAdd(){
+      var left = parseMul();
+      while(true){
+        skipWS();
+        if(pos < L && s[pos] === '+'){ pos++; left = left + parseMul(); }
+        else if(pos < L && s[pos] === '-'){ pos++; left = left - parseMul(); }
+        else break;
+      }
+      return left;
+    }
+    function canImplicitMul(){
+      skipWS();
+      if(pos >= L) return false;
+      var ch = s[pos];
+      if(ch === '(') return true;
+      if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch === '_'){
+        var tail = s.slice(pos);
+        if(/^(?:and|or)\b/i.test(tail)) return false;
+        return true;
+      }
+      return false;
+    }
+    function parseMul(){
+      var left = parseUnary();
+      while(true){
+        skipWS();
+        if(pos < L && s[pos] === '*' && s[pos + 1] !== '*'){ pos++; left = left * parseUnary(); }
+        else if(pos < L && s[pos] === '/'){ pos++; left = left / parseUnary(); }
+        else if(pos < L && s[pos] === '%'){ pos++; left = left % parseUnary(); }
+        else if(canImplicitMul()){ left = left * parsePower(); }
+        else break;
+      }
+      return left;
+    }
+    function parseUnary(){
+      skipWS();
+      if(pos < L && s[pos] === '+'){ pos++; return +parseUnary(); }
+      if(pos < L && s[pos] === '-'){ pos++; return -parseUnary(); }
+      if(pos < L && s[pos] === '!' && s[pos + 1] !== '='){ pos++; return parseUnary() ? 0 : 1; }
+      return parsePower();
+    }
+    function parsePower(){
+      var base = parsePrimary();
+      skipWS();
+      if(consume('**') || consume('^')){
+        var exp = parseUnary();
+        return Math.pow(base, exp);
+      }
+      return base;
+    }
+    function parsePrimary(){
+      skipWS();
+      if(pos >= L) throw 1;
+      var ch = s[pos];
+      if(ch === '('){
+        pos++;
+        var v = parseExpr();
+        if(!consume(')')) throw 1;
+        return v;
+      }
+      if(ch === '['){
+        pos++;
+        var arr = [];
+        skipWS();
+        if(!consume(']')){
+          while(true){
+            arr.push(parseExpr());
+            if(consume(',')) continue;
+            if(consume(']')) break;
+            throw 1;
+          }
+        }
+        return arr;
+      }
+      if((ch >= '0' && ch <= '9') || (ch === '.' && pos + 1 < L && s[pos + 1] >= '0' && s[pos + 1] <= '9')){
+        var numMatch = /^(?:\d+\.?\d*|\.\d+)(?:[eE][+\-]?\d+)?/.exec(s.slice(pos));
+        if(!numMatch) throw 1;
+        pos += numMatch[0].length;
+        return parseFloat(numMatch[0]);
+      }
+      if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch === '_'){
+        var idMatch = /^[a-zA-Z_][a-zA-Z0-9_]*/.exec(s.slice(pos));
+        if(!idMatch) throw 1;
+        var ident = idMatch[0];
+        pos += ident.length;
+        skipWS();
+        if(pos < L && s[pos] === '('){
+          pos++;
+          var args = [];
+          skipWS();
+          if(!consume(')')){
+            while(true){
+              args.push(parseExpr());
+              if(consume(',')) continue;
+              if(consume(')')) break;
+              throw 1;
+            }
+          }
+          var fnKey = ident.toLowerCase();
+          if(fnKey === 'log'){
+            if(args.length === 2) return Math.log(args[0]) / Math.log(args[1]);
+            return logIs10 ? (Math.log(args[0]) / Math.LN10) : Math.log(args[0]);
+          }
+          var fn = _CS_MATH_FNS[fnKey];
+          if(!fn) return NaN;
+          return fn.apply(null, args);
+        }
+        if(Object.prototype.hasOwnProperty.call(env, ident)) return env[ident];
+        var low = ident.toLowerCase();
+        if(low === 'pi') return Math.PI;
+        if(ident === 'e' || ident === 'E') return Math.E;
+        if(low === 'true') return 1;
+        if(low === 'false') return 0;
+        if(low === 'nan' || low === 'none' || low === 'null') return NaN;
+        if(low === 'inf' || low === 'infinity' || low === 'oo') return Infinity;
+        return NaN;
+      }
+      throw 1;
+    }
+
+    try {
+      var res = parseExpr();
+      skipWS();
+      if(pos !== L) return NaN;
+      return typeof res === 'number' ? res : NaN;
+    } catch(_e){
+      return NaN;
+    }
+  }
+  window.CSMathEval = _csEvalMath;
+
+  function _sanitizeSvgString(svgStr){
+    if(typeof svgStr !== 'string' || !svgStr) return '';
+    return svgStr
+      .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+      .replace(/<foreignObject\b[\s\S]*?<\/foreignObject>/gi, '')
+      .replace(/<(?:iframe|object|embed)\b[\s\S]*?(?:<\/(?:iframe|object|embed)>|\/>|>)/gi, '')
+      .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+      .replace(/\b(?:href|xlink:href)\s*=\s*(?:"\s*(?:javascript|data):[^"]*"|'\s*(?:javascript|data):[^']*'|(?:\s*(?:javascript|data):[^\s>]+))/gi, '');
+  }
+  window._sanitizeSvgString = _sanitizeSvgString;
+
   function _safeEval(exprInput, xVal){
     try {
       var raw = (exprInput && typeof exprInput === 'object') ? exprInput.fn : exprInput;
@@ -352,7 +585,7 @@
       var domMatch = e.match(/^(.*?)\s+for\s+[a-zA-Z]\s+in\s+([\[\(])\s*([^,\]\)]+)(?:\s*,\s*[^,\]\)]+)*\s*,\s*([^,\]\)]+)\s*([\]\)])$/i);
       if(domMatch){
         e = domMatch[1].trim();
-        var dMin = parseFloat(domMatch[3]), dMax = parseFloat(domMatch[4]);
+        var dMin = _csEvalMath(domMatch[3], { x: xVal }), dMax = _csEvalMath(domMatch[4], { x: xVal });
         if(isFinite(dMin) && (domMatch[2] === '(' ? xVal <= dMin : xVal < dMin)) return NaN;
         if(isFinite(dMax) && (domMatch[5] === ')' ? xVal >= dMax : xVal > dMax)) return NaN;
       }
@@ -370,29 +603,8 @@
         }
       }
       e = e.replace(/\band\b/g, '&&').replace(/\bor\b/g, '||');
-      e = e.replace(/\b(?:sp|np|math|Math)\.Integer\s*\(\s*([^)]+)\s*\)/g, '($1)');
-      e = e.replace(/\b(?:sp|np|math|Math)\.Rational\s*\(\s*([^,]+)\s*,\s*([^)]+)\s*\)/g, '(($1)/($2))');
-      e = e.replace(/\b(?:sp|np|math|Math)\.log\s*\(\s*([^,()]+)\s*,\s*([^,()]+)\s*\)/g, '(Math.log($1)/Math.log($2))');
-      e = e.replace(/\b(?:sp|np|math|Math)\./g, '');
-      e = e.replace(/(^|[+\-*/^,(]\s*)\(\s*(-?\d+(?:\.\d+)?)\s*\)/g, '$1$2');
-      e = e.replace(/-\s*-/g, '+ ');
-      e = e.replace(/\+\s*-/g, '- ');
-      e = e.replace(/\*\*/g, '^');
-      e = e.replace(/(^|[^a-zA-Z0-9_])(\d+(?:\.\d+)?)\s*([xtw]\b|\(|(?:sin|cos|tan|asin|acos|atan|sqrt|cbrt|abs|ln|log|log2|log10|exp|pi|PI)\b)/g, '$1$2*$3');
-      e = e.replace(/\)\s*(\(|[xtw]\b|\d)/g, ')*$1');
-      for(var mi = 0; mi < 3; mi++){
-        e = e.replace(/(^|[^a-zA-Z0-9_\.])ln\s*\(/g, '$1Math.log(');
-        e = e.replace(/(^|[^a-zA-Z0-9_\.])(sin|cos|tan|asin|acos|atan|atan2|sinh|cosh|tanh|sqrt|cbrt|abs|log|log2|log10|exp|floor|ceil|round|min|max|pow|sign|hypot|trunc)\s*\(/g, '$1Math.$2(');
-      }
-      e = e.replace(/(^|[^a-zA-Z0-9_\.])(?:pi|PI)([^a-zA-Z0-9_]|$)/g, '$1Math.PI$2');
-      e = e.replace(/(^|[^a-zA-Z0-9_\.])e([^a-zA-Z0-9_]|$)/g, '$1Math.E$2');
-      for(var pi = 0; pi < 6; pi++){
-        var prevE = e;
-        e = e.replace(/(\((?:[^()]|\([^()]*\))*\)|[a-zA-Z0-9_\.]+)\s*\^\s*(-?\s*\((?:[^()]|\([^()]*\))*\)|-?\s*[a-zA-Z0-9_\.]+)/g, 'Math.pow($1, $2)');
-        if(e === prevE) break;
-      }
-      e = e.replace(/\^/g, '**');
-      var val = (new Function('x', 'Math', 'var t=x,w=x,a=1,b=1,c=0,C=0,k=1,y=0,True=true,False=false,piecewise=function(arr){for(var i=0;i<arr.length;i++){if(arr[i][1])return arr[i][0];}return NaN;}; try { return (' + e + '); } catch(err){ return NaN; }'))(xVal, Math);
+      e = e.replace(/-\s*-/g, '+ ').replace(/\+\s*-/g, '- ');
+      var val = _csEvalMath(e, { x: xVal, t: xVal, w: xVal, a: 1, b: 1, c: 0, C: 0, k: 1, y: 0 });
       return (typeof val === 'number' && isFinite(val)) ? val : NaN;
     } catch(err){ return NaN; }
   }
@@ -774,7 +986,7 @@
   window._renderFig=function(fig){
     try{
     if(!fig) return '';
-    if(typeof fig==='string') return fig;
+    if(typeof fig==='string') return _sanitizeSvgString(fig);
     fig = _normalizeFigSpec(fig);
     /* one shared entry point: figures authored in the richer renderMathFigure schema
        (function_graph / geometry_2d / geometry_3d / bar_chart / pie / number_line / table /
@@ -3436,8 +3648,8 @@ function renderUnitCircle(s){
   if(s.angle!=null){
     if(typeof s.angle==='string'){
       if(s.angle.indexOf('pi')!==-1){
-        var radExpr=s.angle.replace('pi','Math.PI').replace(/\s+/g,'');
-        try{ deg = (new Function('return ('+radExpr+')*180/Math.PI'))(); }catch(e){ deg=30; }
+        var radVal = window.CSMathEval(s.angle, {});
+        deg = isFinite(radVal) ? (radVal * 180 / Math.PI) : 30;
       } else { deg=parseFloat(s.angle)||30; }
     } else { deg=s.angle; }
   }
@@ -3515,11 +3727,8 @@ function renderSinusoid(s){
   function parseMathVal(v, dflt){
     if(typeof v==='number' && isFinite(v)) return v;
     if(typeof v==='string'){
-      var st=v.replace(/pi/gi, String(Math.PI));
-      try {
-        var r=(new Function('return ('+st+')'))();
-        if(typeof r==='number' && isFinite(r)) return r;
-      } catch(e){}
+      var r = window.CSMathEval(v, {});
+      if(typeof r==='number' && isFinite(r)) return r;
     }
     return dflt;
   }
@@ -3664,15 +3873,8 @@ function renderSlopeField(s){
   function sy(y){ return mt+ph-((y-yr[0])/((yr[1]-yr[0])||1))*ph; }
 
   function slopeEval(x, y){
-    try {
-      var e=String(expr).replace(/\^/g,'**')
-        .replace(/(\d)([xy])/g,'$1*$2')
-        .replace(/\bx\b/g, '('+x+')').replace(/\by\b/g, '('+y+')')
-        .replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(')
-        .replace(/exp\(/g,'Math.exp(').replace(/sqrt\(/g,'Math.sqrt(');
-      var res = (new Function('return ('+e+')'))();
-      return isFinite(res) ? res : NaN;
-    } catch(err){ return NaN; }
+    var res = window.CSMathEval(expr, { x: x, y: y, k: 1, a: 1, b: 1, c: 0 });
+    return (typeof res === 'number' && isFinite(res)) ? res : NaN;
   }
 
   var a11y=_figA11yLabel(s);

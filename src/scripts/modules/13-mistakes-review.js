@@ -16,25 +16,57 @@ function clearMistakes(){
   openMistakes();
 }
 
-/* Tag-aware escape — preserves real HTML markup (<br>, <strong>, <em>) while escaping bare math < and > */
+/* Strict HTML entity escape — escapes &, <, >, ", and ' with zero raw tag passthrough */
 function escHtml(s){
-  if(!s) return '';
+  if(s == null || s === '') return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+window.escHtml = escHtml;
+
+/* Attribute-free formatting tag allowlist for math/solution renderers (blocks <script>, <img>, <svg>, on*=, etc.) */
+function _isSafeFormattingTag(tagStr){
+  if(!tagStr || tagStr.length > 64) return false;
+  if(/^<\/?(?:br|b|strong|i|em|u|sub|sup|code|p|ul|ol|li|table|thead|tbody|tr|th|td|hr)\s*\/?>$/i.test(tagStr)) return true;
+  if(/^(?:<\/span\s*>|<span\s+class=(?:"[a-zA-Z0-9 _-]+"|'[a-zA-Z0-9 _-]+')\s*>)$/i.test(tagStr)) return true;
+  return false;
+}
+window._isSafeFormattingTag = _isSafeFormattingTag;
+
+function sanitizeSafeInlineHtml(s){
+  if(s == null || s === '') return '';
   s = String(s);
-  var out='', i=0, L=s.length;
-  while(i<L){
-    if(s[i]==='<' && i+1<L && (s[i+1]==='/' || /[a-zA-Z]/.test(s[i+1]))){
-      var tj=s.indexOf('>', i);
-      if(tj!==-1){ out+=s.slice(i, tj+1); i=tj+1; continue; }
+  var out = '', i = 0, L = s.length;
+  while(i < L){
+    if(s[i] === '<' && i + 1 < L && (s[i + 1] === '/' || /[a-zA-Z]/.test(s[i + 1]))){
+      var tj = s.indexOf('>', i);
+      if(tj !== -1 && tj - i <= 64){
+        var cand = s.slice(i, tj + 1);
+        if(_isSafeFormattingTag(cand)){ out += cand; i = tj + 1; continue; }
+      }
     }
-    var c=s[i];
-    if(c==='&') out+='&amp;';
-    else if(c==='<') out+='&lt;';
-    else if(c==='>') out+='&gt;';
-    else out+=c;
+    var c = s[i];
+    if(c === '&'){
+      var semi = s.indexOf(';', i + 1);
+      if(semi !== -1 && semi - i <= 8 && /^&[a-zA-Z#0-9]+;$/.test(s.slice(i, semi + 1))){
+        out += s.slice(i, semi + 1); i = semi + 1; continue;
+      }
+      out += '&amp;';
+    }
+    else if(c === '<') out += '&lt;';
+    else if(c === '>') out += '&gt;';
+    else if(c === '"') out += '&quot;';
+    else if(c === "'") out += '&#39;';
+    else out += c;
     i++;
   }
   return out;
 }
+window.sanitizeSafeInlineHtml = sanitizeSafeInlineHtml;
 
 /* Reconstruct 4 multiple-choice options for active-recall re-testing of a saved mistake */
 function _buildDeckChoices(m){
@@ -275,7 +307,7 @@ function reviewMistakes(){
 
 // Update button count on load
 (function(){
-  var all = (window.ML && typeof window.ML.getAll === 'function') ? window.ML.getAll() : _mistakes;
+  var all = (window.ML && typeof window.ML.getAll === 'function') ? window.ML.getAll() : (typeof _mistakes !== 'undefined' ? _mistakes : []);
   var badge = document.getElementById('mistakeBadge');
   if(badge && all.length > 0) badge.textContent = ' (' + all.length + ')';
   var btn = document.getElementById('mistakeBtn');

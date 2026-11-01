@@ -11,7 +11,7 @@
         "kind": "text",
         "body": {
           "en": "<p>For a multivariable surface \\(z = f(x, y)\\), rate of change is inherently multidirectional. Slicing the surface along coordinate planes isolates single-variable rates known as <strong>partial derivatives</strong>. Unifying these rates gives the <strong>gradient vector</strong> \\(\\nabla f\\), which governs directional derivatives, establishes tangent planes, dictates the trajectory of steepest ascent, and underpins the Second Derivative Test for spatial extrema.</p>",
-          "ar": "<p>For a multivariable surface \\(z = f(x, y)\\), rate of change is inherently multidirectional. Slicing the surface along الإحداثي planes isolates single-المتغير rates known as <strong>partial derivatives</strong>. Unifying these rates gives the <strong>gradient vector</strong> \\(\\nabla f\\), which governs directional المشتقات, establishes tangent planes, dictates the trajectory of steepest ascent, and underpins the Second المشتقة Test for spatial extrema.</p>"
+          "ar": null
         }
       },
       {
@@ -23,7 +23,7 @@
         },
         "body": {
           "en": "<p>Let \\(f: D \\subseteq \\mathbb{R}^2 \\to \\mathbb{R}\\). The <strong>partial derivative</strong> of \\(f\\) with respect to \\(x\\) at \\((x_0, y_0)\\) is the limit:</p>\\[ \\frac{\\partial f}{\\partial x}(x_0, y_0) = f_x(x_0, y_0) = \\lim_{h \\to 0} \\frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h} \\]<p>and the partial derivative with respect to \\(y\\) is:</p>\\[ \\frac{\\partial f}{\\partial y}(x_0, y_0) = f_y(x_0, y_0) = \\lim_{k \\to 0} \\frac{f(x_0, y_0 + k) - f(x_0, y_0)}{k} \\]<p>Geometrically, \\(f_x(x_0, y_0)\\) is the tangent slope of the trace curve formed by intersecting the surface \\(z = f(x, y)\\) with the vertical plane \\(y = y_0\\); \\(f_y(x_0, y_0)\\) is the tangent slope along the trace in the vertical plane \\(x = x_0\\).</p>",
-          "ar": "<p>Let \\(f: D \\subseteq \\mathbb{R}^2 \\to \\mathbb{R}\\). The <strong>partial derivative</strong> of \\(f\\) بالنسبة إلى \\(x\\) at \\((x_0, y_0)\\) is the النهاية:</p>\\[ \\frac{\\partial f}{\\partial x}(x_0, y_0) = f_x(x_0, y_0) = \\lim_{h \\to 0} \\frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h} \\]<p>and the partial المشتقة بالنسبة إلى \\(y\\) is:</p>\\[ \\frac{\\partial f}{\\partial y}(x_0, y_0) = f_y(x_0, y_0) = \\lim_{k \\to 0} \\frac{f(x_0, y_0 + k) - f(x_0, y_0)}{k} \\]<p>Geometrically, \\(f_x(x_0, y_0)\\) is the tangent الميل of the trace curve formed by intersecting the surface \\(z = f(x, y)\\) with the vertical plane \\(y = y_0\\); \\(f_y(x_0, y_0)\\) is the tangent الميل along the trace in the vertical plane \\(x = x_0\\).</p>"
+          "ar": null
         }
       },
       {
@@ -75,11 +75,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 13.1 — Clairaut's Theorem (Equality of Mixed Partials)",
-          "ar": "▲ مبرهنة 13.1 — Clairaut's مبرهنة (Equality of Mixed Partials)"
+          "ar": null
         },
         "body": {
           "en": "<p>Let \\(f(x, y)\\) be defined on an open disk \\(D\\) containing \\((a, b)\\). If the mixed second-order partial derivatives \\(f_{xy} = \\frac{\\partial^2 f}{\\partial y \\partial x}\\) and \\(f_{yx} = \\frac{\\partial^2 f}{\\partial x \\partial y}\\) are continuous throughout \\(D\\), then:</p>\\[ f_{xy}(a, b) = f_{yx}(a, b) \\]<p>Consequently, the order of differentiation across independent spatial variables can be interchanged freely for all smooth functions.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Double Mean Value Theorem</strong></summary><div style=\"margin-top:6px\"><p>Choose small non-zero \\(h, k\\) such that the rectangle with vertices \\((a, b)\\), \\((a+h, b)\\), \\((a, b+k)\\), and \\((a+h, b+k)\\) lies inside \\(D\\). Define the double-difference quantity:</p>\\[ \\Delta(h, k) = f(a+h, b+k) - f(a+h, b) - f(a, b+k) + f(a, b) \\]<p>Define the single-variable auxiliary function \\(g(t) = f(t, b+k) - f(t, b)\\). Then \\(\\Delta(h, k) = g(a+h) - g(a)\\).</p><p>By the single-variable Mean Value Theorem, there exists \\(c_1\\) between \\(a\\) and \\(a+h\\) such that:</p>\\[ \\Delta(h, k) = h g'(c_1) = h\\big[ f_x(c_1, b+k) - f_x(c_1, b) \\big] \\]<p>Applying the Mean Value Theorem again to the function \\(y \\mapsto f_x(c_1, y)\\) on \\([b, b+k]\\), there exists \\(c_2\\) between \\(b\\) and \\(b+k\\) such that:</p>\\[ f_x(c_1, b+k) - f_x(c_1, b) = k f_{xy}(c_1, c_2) \\implies \\frac{\\Delta(h, k)}{hk} = f_{xy}(c_1, c_2) \\]<p>By exact symmetry, defining \\(w(s) = f(a+h, s) - f(a, s)\\) and repeating the argument yields numbers \\(d_1\\) between \\(a\\) and \\(a+h\\) and \\(d_2\\) between \\(b\\) and \\(b+k\\) such that:</p>\\[ \\frac{\\Delta(h, k)}{hk} = f_{yx}(d_1, d_2) \\]<p>Equating both expressions gives \\(f_{xy}(c_1, c_2) = f_{yx}(d_1, d_2)\\). Taking the limit as \\((h, k) \\to (0, 0)\\), \\((c_1, c_2) \\to (a, b)\\) and \\((d_1, d_2) \\to (a, b)\\). By the continuity of \\(f_{xy}\\) and \\(f_{yx}\\):</p>\\[ f_{xy}(a, b) = f_{yx}(a, b) \\quad \\blacksquare \\]</div></details>",
-          "ar": "<p>Let \\(f(x, y)\\) be defined on an open disk \\(D\\) containing \\((a, b)\\). If the mixed second-order partial المشتقات \\(f_{xy} = \\frac{\\partial^2 f}{\\partial y \\partial x}\\) and \\(f_{yx} = \\frac{\\partial^2 f}{\\partial x \\partial y}\\) are continuous throughout \\(D\\), then:</p>\\[ f_{xy}(a, b) = f_{yx}(a, b) \\]<p>Consequently, the order of differentiation across independent spatial المتغيرات can be interchanged freely for all smooth الدوال.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical برهان via Double Mean Value Theorem</strong></summary><div style=\"margin-top:6px\"><p>Choose small non-zero \\(h, k\\) such that the rectangle with vertices \\((a, b)\\), \\((a+h, b)\\), \\((a, b+k)\\), and \\((a+h, b+k)\\) lies inside \\(D\\). Define the double-difference quantity:</p>\\[ \\Delta(h, k) = f(a+h, b+k) - f(a+h, b) - f(a, b+k) + f(a, b) \\]<p>Define the single-المتغير auxiliary الدالة \\(g(t) = f(t, b+k) - f(t, b)\\). Then \\(\\Delta(h, k) = g(a+h) - g(a)\\).</p><p>By the single-المتغير Mean Value مبرهنة, there exists \\(c_1\\) between \\(a\\) and \\(a+h\\) such that:</p>\\[ \\Delta(h, k) = h g'(c_1) = h\\big[ f_x(c_1, b+k) - f_x(c_1, b) \\big] \\]<p>Applying the Mean Value مبرهنة again to the الدالة \\(y \\mapsto f_x(c_1, y)\\) on \\([b, b+k]\\), there exists \\(c_2\\) between \\(b\\) and \\(b+k\\) such that:</p>\\[ f_x(c_1, b+k) - f_x(c_1, b) = k f_{xy}(c_1, c_2) \\implies \\frac{\\Delta(h, k)}{hk} = f_{xy}(c_1, c_2) \\]<p>By exact symmetry, defining \\(w(s) = f(a+h, s) - f(a, s)\\) and repeating the argument yields numbers \\(d_1\\) between \\(a\\) and \\(a+h\\) and \\(d_2\\) between \\(b\\) and \\(b+k\\) such that:</p>\\[ \\frac{\\Delta(h, k)}{hk} = f_{yx}(d_1, d_2) \\]<p>Equating both expressions gives \\(f_{xy}(c_1, c_2) = f_{yx}(d_1, d_2)\\). Taking the النهاية as \\((h, k) \\to (0, 0)\\), \\((c_1, c_2) \\to (a, b)\\) and \\((d_1, d_2) \\to (a, b)\\). By the continuity of \\(f_{xy}\\) and \\(f_{yx}\\):</p>\\[ f_{xy}(a, b) = f_{yx}(a, b) \\quad \\blacksquare \\]</div></details>"
+          "ar": null
         }
       },
       {
@@ -87,11 +87,11 @@
         "style": "pf",
         "label": {
           "en": "◆ Why It Works — First-Principles Derivation (Partial Derivatives &amp; the Gradient)",
-          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (Partial المشتقات &amp; the Gradient)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic المعادلات Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) حيث \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For القيم الذاتية, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace المتجه \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the المصفوفة \\(A - \\lambda I\\) is singular, yielding the characteristic كثيرة الحدود \\(\\det(A - \\lambda I) = 0\\).</p>"
+          "ar": null
         }
       },
       {
@@ -99,11 +99,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 13.1 — Foundations: Computing Partials & Verifying Clairaut's Symmetry",
-          "ar": "مثال محلول 13.1 — Foundations: Computing Partials & Verifying Clairaut's Symmetry"
+          "ar": null
         },
         "body": {
           "en": "<p>For \\(f(x, y) = x^3 y^2 + e^{2x}\\sin y\\), compute \\(f_x, f_y, f_{xy}\\), and \\(f_{yx}\\), and verify Clairaut's Theorem.</p><p><strong>Step 1: Compute first-order partials.</strong><br>Holding \\(y\\) constant: \\(f_x = 3x^2 y^2 + 2e^{2x}\\sin y\\)<br>Holding \\(x\\) constant: \\(f_y = 2x^3 y + e^{2x}\\cos y\\)</p><p><strong>Step 2: Compute mixed second-order partials.</strong><br>Differentiate \\(f_x\\) with respect to \\(y\\):</p>\\[ f_{xy} = \\frac{\\partial}{\\partial y}\\big(3x^2 y^2 + 2e^{2x}\\sin y\\big) = 6x^2 y + 2e^{2x}\\cos y \\]<p>Differentiate \\(f_y\\) with respect to \\(x\\):</p>\\[ f_{yx} = \\frac{\\partial}{\\partial x}\\big(2x^3 y + e^{2x}\\cos y\\big) = 6x^2 y + 2e^{2x}\\cos y \\]<p>Both expressions are identical: \\(f_{xy} = f_{yx} = 6x^2 y + 2e^{2x}\\cos y\\), verifying Clairaut's Theorem.</p>",
-          "ar": "<p>For \\(f(x, y) = x^3 y^2 + e^{2x}\\sin y\\), compute \\(f_x, f_y, f_{xy}\\), and \\(f_{yx}\\), and verify Clairaut's مبرهنة.</p><p><strong>Step 1: Compute first-order partials.</strong><br>Holding \\(y\\) الثابت: \\(f_x = 3x^2 y^2 + 2e^{2x}\\sin y\\)<br>Holding \\(x\\) الثابت: \\(f_y = 2x^3 y + e^{2x}\\cos y\\)</p><p><strong>Step 2: Compute mixed second-order partials.</strong><br>Differentiate \\(f_x\\) بالنسبة إلى \\(y\\):</p>\\[ f_{xy} = \\frac{\\partial}{\\partial y}\\big(3x^2 y^2 + 2e^{2x}\\sin y\\big) = 6x^2 y + 2e^{2x}\\cos y \\]<p>Differentiate \\(f_y\\) بالنسبة إلى \\(x\\):</p>\\[ f_{yx} = \\frac{\\partial}{\\partial x}\\big(2x^3 y + e^{2x}\\cos y\\big) = 6x^2 y + 2e^{2x}\\cos y \\]<p>Both expressions are identical: \\(f_{xy} = f_{yx} = 6x^2 y + 2e^{2x}\\cos y\\), verifying Clairaut's مبرهنة.</p>"
+          "ar": null
         }
       },
       {
@@ -111,18 +111,18 @@
         "style": "example",
         "label": {
           "en": "Worked Example \\(B\\) — Partial Derivatives &amp; the Gradient (Medium Application)",
-          "ar": "مثال محلول \\(B\\) — Partial المشتقات &amp; the Gradient (Medium Application)"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> A piecewise function is defined by \\( u(s) = 22s + 6 \\) for \\( s < 19 \\) and \\( u(s) = s^2 + v \\) for \\( s \\ge 19 \\). Determine the parameter \\( v \\) that makes \\( u(s) \\) continuous at \\( s = 19 \\).</p><p><strong>Step-by-Step Solution:</strong> Continuity at \\( s = 19 \\) requires \\( 22(19) + 6 = 19^2 + v \\implies v = 63 \\).</p>",
-          "ar": "<p><strong>Problem (Medium):</strong> A piecewise الدالة is defined by \\( u(s) = 22s + 6 \\) for \\( s < 19 \\) and \\( u(s) = s^2 + v \\) for \\( s \\ge 19 \\). حدّد المعامل \\( v \\) that makes \\( u(s) \\) continuous at \\( s = 19 \\).</p><p><strong>Step-by-Step الحل:</strong> Continuity at \\( s = 19 \\) requires \\( 22(19) + 6 = 19^2 + v \\implies v = 63 \\).</p>"
+          "ar": null
         }
       },
       {
         "kind": "table",
         "caption": {
           "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Partial Derivatives &amp; the Gradient)",
-          "ar": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Partial المشتقات &amp; the Gradient)"
+          "ar": null
         },
         "columns": [
           {
@@ -146,25 +146,25 @@
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": "المتجهات are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\)."
+              "ar": null
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\). (المشتقات الجزئية ومتجه التدرج (Gradient))"
+              "ar": null
             }
           ],
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": "Using the same المعامل \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)"
+              "ar": null
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": "Tests for a simultaneous collision at time \\(t\\) rather than geometric التقاطع of paths."
+              "ar": null
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": "Assign distinct المعاملات \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components."
+              "ar": null
             }
           ],
           [
@@ -174,11 +174,11 @@
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors عندما \\(AB \\ne BA\\)."
+              "ar": null
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\). (المشتقات الجزئية ومتجه التدرج (Gradient))"
+              "ar": null
             }
           ]
         ]
@@ -192,18 +192,18 @@
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": "<p><strong>Fast المصفوفة &amp; المتجه Verification (University Single-المتغير & Multivariable التفاضل والتكامل):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and المحدد invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Find \\(f_x(2, 1)\\) and \\(f_y(2, 1)\\) for the function \\(f(x, y) = \\ln(x^2 + 3y^2)\\).",
-          "ar": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>أوجد \\(f_x(2, 1)\\) and \\(f_y(2, 1)\\) for the function \\(f(x, y) = \\ln(x^2 + 3y^2)\\)."
+          "ar": null
         },
         "solution": {
           "en": "Compute partial derivatives via Chain Rule:<br>\\[ f_x = \\frac{2x}{x^2 + 3y^2}, \\qquad f_y = \\frac{6y}{x^2 + 3y^2} \\]<br>Substitute \\(x = 2\\) and \\(y = 1\\):<br>\\[ x^2 + 3y^2 = 2^2 + 3(1^2) = 4 + 3 = 7 \\]\\[ f_x(2, 1) = \\frac{2(2)}{7} = \\frac{4}{7}, \\qquad f_y(2, 1) = \\frac{6(1)}{7} = \\frac{6}{7} \\]",
-          "ar": "Compute partial derivatives via Chain Rule:<br>\\[ f_x = \\frac{2x}{x^2 + 3y^2}, \\qquad f_y = \\frac{6y}{x^2 + 3y^2} \\]<br>عوّض \\(x = 2\\) and \\(y = 1\\):<br>\\[ x^2 + 3y^2 = 2^2 + 3(1^2) = 4 + 3 = 7 \\]\\[ f_x(2, 1) = \\frac{2(2)}{7} = \\frac{4}{7}, \\qquad f_y(2, 1) = \\frac{6(1)}{7} = \\frac{6}{7} \\]"
+          "ar": null
         },
         "hints": [
           {
@@ -229,7 +229,7 @@
         "canvasId": "partialCanvas",
         "ariaLabel": {
           "en": "A slice of a surface at fixed y, with the tangent line showing the partial derivative",
-          "ar": "A slice of a surface at fixed y, with the خط المماس showing the partial المشتقة"
+          "ar": null
         },
         "canvas3d": {
           "btnId": "partial3dBtn",
@@ -238,7 +238,7 @@
           "btnLabel": "🧊 View the full surface in 3D",
           "ariaLabel": {
             "en": "Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate.",
-            "ar": "Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the خط المماس at the marked point. اسحب للتدوير."
+            "ar": null
           }
         },
         "dataPanel": {
@@ -248,7 +248,7 @@
           "rowsId": "partialDataRows",
           "caption": {
             "en": "Sampled points on the slice \\(g(x) = f(x, c)\\) and the tangent line at \\(x_{0}\\)",
-            "ar": "Sampled points on the slice \\(g(x) = f(x, c)\\) and the خط المماس at \\(x_{0}\\)"
+            "ar": null
           },
           "columns": [
             {
@@ -305,7 +305,7 @@
         ],
         "note": {
           "en": "Fixing \\(y=c\\) gives the curve \\(g(x)=f(x,c)\\). Its slope at \\(x=1\\) is the partial \\(f_x(1,c)\\) — and it shifts as \\(c\\) moves.",
-          "ar": "Fixing \\(y=c\\) gives the curve \\(g(x)=f(x,c)\\). Its الميل at \\(x=1\\) is the partial \\(f_x(1,c)\\) — and it shifts as \\(c\\) moves."
+          "ar": null
         }
       },
       {
@@ -313,11 +313,11 @@
         "style": "thm",
         "label": {
           "en": "▲ Theorem 13.2 — Tangent Planes, Linear Approximations & The Gradient",
-          "ar": "▲ مبرهنة 13.2 — Tangent Planes, Linear Approximations & The Gradient"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Tangent Plane:</strong> If \\(f_x\\) and \\(f_y\\) are continuous at \\((a, b)\\), the tangent plane to \\(z = f(x, y)\\) at \\(P(a, b, f(a, b))\\) has normal vector \\(\\mathbf{n} = \\langle f_x(a, b), f_y(a, b), -1 \\rangle\\) and scalar equation:</p>\\[ z - f(a, b) = f_x(a, b)(x - a) + f_y(a, b)(y - b) \\]<p><strong>The Gradient Vector:</strong> \\(\\nabla f(x, y) = \\langle f_x, f_y \\rangle\\). For any unit vector \\(\\mathbf{u} = \\langle u_1, u_2 \\rangle\\), the <strong>directional derivative</strong> is:</p>\\[ D_\\mathbf{u}f(x, y) = \\nabla f(x, y) \\cdot \\mathbf{u} = |\\nabla f|\\,|\\mathbf{u}|\\cos\\theta = |\\nabla f|\\cos\\theta \\]<p><strong>Fundamental Properties of \\(\\nabla f\\):</strong></p><ul><li><strong>Steepest Ascent:</strong> \\(D_\\mathbf{u}f\\) attains its global maximum \\(|\\nabla f|\\) when \\(\\mathbf{u}\\) points in the direction of \\(\\nabla f\\) (\\(\\theta = 0\\)).</li><li><strong>Steepest Descent:</strong> \\(D_\\mathbf{u}f\\) attains its minimum \\(-|\\nabla f|\\) in the opposite direction \\(-\\nabla f\\) (\\(\\theta = \\pi\\)).</li><li><strong>Orthogonality to Level Curves:</strong> \\(\\nabla f(a, b)\\) is strictly orthogonal (perpendicular) to the level curve \\(f(x, y) = c\\) passing through \\((a, b)\\).</li></ul>",
-          "ar": "<p><strong>Tangent Plane:</strong> If \\(f_x\\) and \\(f_y\\) are continuous at \\((a, b)\\), the المستوى المماس to \\(z = f(x, y)\\) at \\(P(a, b, f(a, b))\\) has normal المتجه \\(\\mathbf{n} = \\langle f_x(a, b), f_y(a, b), -1 \\rangle\\) and scalar المعادلة:</p>\\[ z - f(a, b) = f_x(a, b)(x - a) + f_y(a, b)(y - b) \\]<p><strong>The Gradient المتجه:</strong> \\(\\nabla f(x, y) = \\langle f_x, f_y \\rangle\\). For any unit المتجه \\(\\mathbf{u} = \\langle u_1, u_2 \\rangle\\), the <strong>directional derivative</strong> is:</p>\\[ D_\\mathbf{u}f(x, y) = \\nabla f(x, y) \\cdot \\mathbf{u} = |\\nabla f|\\,|\\mathbf{u}|\\cos\\theta = |\\nabla f|\\cos\\theta \\]<p><strong>Fundamental Properties of \\(\\nabla f\\):</strong></p><ul><li><strong>Steepest Ascent:</strong> \\(D_\\mathbf{u}f\\) attains its global maximum \\(|\\nabla f|\\) عندما \\(\\mathbf{u}\\) points in the direction of \\(\\nabla f\\) (\\(\\theta = 0\\)).</li><li><strong>Steepest Descent:</strong> \\(D_\\mathbf{u}f\\) attains its minimum \\(-|\\nabla f|\\) in the opposite direction \\(-\\nabla f\\) (\\(\\theta = \\pi\\)).</li><li><strong>Orthogonality to Level Curves:</strong> \\(\\nabla f(a, b)\\) is strictly orthogonal (perpendicular) to the level curve \\(f(x, y) = c\\) passing through \\((a, b)\\).</li></ul>"
+          "ar": null
         }
       },
       {
@@ -391,18 +391,18 @@
         },
         "body": {
           "en": "<p>For \\(f(x, y) = 4x^2 + y^2\\):</p><p><strong>(a) Find the equation of the tangent plane at \\((1, 2)\\).</strong><br>\\(z_0 = f(1, 2) = 4(1)^2 + 2^2 = 8\\).<br>\\(f_x = 8x \\implies f_x(1, 2) = 8\\)<br>\\(f_y = 2y \\implies f_y(1, 2) = 4\\)<br>Tangent plane: \\(z - 8 = 8(x - 1) + 4(y - 2) \\implies 8x + 4y - z = 8\\).</p><p><strong>(b) Find the directional derivative at \\((1, 2)\\) toward \\(Q(4, 6)\\).</strong><br>Direction vector: \\(\\mathbf{v} = \\vec{PQ} = \\langle 4 - 1, 6 - 2 \\rangle = \\langle 3, 4 \\rangle\\).<br>Magnitude: \\(|\\mathbf{v}| = \\sqrt{3^2 + 4^2} = 5\\).<br>Unit vector: \\(\\mathbf{u} = \\langle 3/5, 4/5 \\rangle\\).<br>Gradient: \\(\\nabla f(1, 2) = \\langle 8, 4 \\rangle\\).<br>\\[ D_\\mathbf{u}f(1, 2) = \\nabla f \\cdot \\mathbf{u} = 8\\left(\\frac{3}{5}\\right) + 4\\left(\\frac{4}{5}\\right) = \\frac{24 + 16}{5} = \\frac{40}{5} = 8 \\]",
-          "ar": "<p>For \\(f(x, y) = 4x^2 + y^2\\):</p><p><strong>(a) أوجد معادلة the المستوى المماس at \\((1, 2)\\).</strong><br>\\(z_0 = f(1, 2) = 4(1)^2 + 2^2 = 8\\).<br>\\(f_x = 8x \\implies f_x(1, 2) = 8\\)<br>\\(f_y = 2y \\implies f_y(1, 2) = 4\\)<br>Tangent plane: \\(z - 8 = 8(x - 1) + 4(y - 2) \\implies 8x + 4y - z = 8\\).</p><p><strong>(b) أوجد directional المشتقة at \\((1, 2)\\) toward \\(Q(4, 6)\\).</strong><br>Direction المتجه: \\(\\mathbf{v} = \\vec{PQ} = \\langle 4 - 1, 6 - 2 \\rangle = \\langle 3, 4 \\rangle\\).<br>Magnitude: \\(|\\mathbf{v}| = \\sqrt{3^2 + 4^2} = 5\\).<br>Unit المتجه: \\(\\mathbf{u} = \\langle 3/5, 4/5 \\rangle\\).<br>Gradient: \\(\\nabla f(1, 2) = \\langle 8, 4 \\rangle\\).<br>\\[ D_\\mathbf{u}f(1, 2) = \\nabla f \\cdot \\mathbf{u} = 8\\left(\\frac{3}{5}\\right) + 4\\left(\\frac{4}{5}\\right) = \\frac{24 + 16}{5} = \\frac{40}{5} = 8 \\]"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Find the maximum rate of change of \\(f(x, y) = 3x^2y - y^3\\) at the point \\((1, 2)\\), and determine the unit vector in which it occurs.",
-          "ar": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>أوجد maximum rate of change of \\(f(x, y) = 3x^2y - y^3\\) عند النقطة \\((1, 2)\\), and حدّد unit vector in which it occurs."
+          "ar": null
         },
         "solution": {
           "en": "Compute gradient: \\(\n\\nabla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle\\).<br>At \\((1, 2)\\): \\(\n\\nabla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle\\).<br>Maximum rate of change is the gradient magnitude:<br>\\[ |\n\\nabla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15 \\]<br>The direction of maximum increase is the normalized gradient:<br>\\[ \\mathbf{u} = \\frac{\n\\nabla f}{|\n\\nabla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle \\]",
-          "ar": "خطوات الحل التفصيلية: Compute gradient: \\(\n\\nabla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle\\).<br>At \\((1, 2)\\): \\(\n\\nabla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle\\).<br>Maximum rate of change is the gradient magnitude:<br>\\[ |\n\\nabla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15 \\]<br>The direction of maximum increase is the normalized gradient:<br>\\[ \\mathbf{u} = \\frac{\n\\nabla f}{|\n\\nabla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle \\]"
+          "ar": null
         },
         "hints": [
           {
@@ -428,7 +428,7 @@
         },
         "body": {
           "en": "<p>A point \\((a, b)\\) in the domain of \\(f\\) is a <strong>critical point</strong> if \\(\\nabla f(a, b) = \\langle 0, 0 \\rangle\\) or if either partial derivative fails to exist.</p><p>Let \\(f\\) have continuous second partial derivatives on a disk centered at critical point \\((a, b)\\) where \\(\\nabla f(a, b) = \\mathbf{0}\\). Define the <strong>Hessian discriminant</strong>:</p>\\[ D = D(a, b) = f_{xx}(a, b)f_{yy}(a, b) - \\big[f_{xy}(a, b)\\big]^2 = \\begin{vmatrix} f_{xx} & f_{xy} \\\\ f_{yx} & f_{yy} \\end{vmatrix} \\]<p><strong>Classification Criteria:</strong></p><ul><li>If \\(D > 0\\) and \\(f_{xx}(a, b) > 0\\), then \\(f(a, b)\\) is a <strong>local minimum</strong>.</li><li>If \\(D > 0\\) and \\(f_{xx}(a, b) < 0\\), then \\(f(a, b)\\) is a <strong>local maximum</strong>.</li><li>If \\(D < 0\\), then \\((a, b, f(a, b))\\) is a <strong>saddle point</strong>.</li><li>If \\(D = 0\\), the test is <strong>inconclusive</strong>.</li></ul>",
-          "ar": "<p>A point \\((a, b)\\) in the المجال of \\(f\\) is a <strong>critical point</strong> if \\(\\nabla f(a, b) = \\langle 0, 0 \\rangle\\) or if either partial المشتقة fails to exist.</p><p>Let \\(f\\) have continuous second partial المشتقات on a disk centered at critical point \\((a, b)\\) حيث \\(\\nabla f(a, b) = \\mathbf{0}\\). Define the <strong>Hessian discriminant</strong>:</p>\\[ D = D(a, b) = f_{xx}(a, b)f_{yy}(a, b) - \\big[f_{xy}(a, b)\\big]^2 = \\begin{vmatrix} f_{xx} & f_{xy} \\\\ f_{yx} & f_{yy} \\end{vmatrix} \\]<p><strong>Classification Criteria:</strong></p><ul><li>If \\(D > 0\\) and \\(f_{xx}(a, b) > 0\\), then \\(f(a, b)\\) is a <strong>local minimum</strong>.</li><li>If \\(D > 0\\) and \\(f_{xx}(a, b) < 0\\), then \\(f(a, b)\\) is a <strong>local maximum</strong>.</li><li>If \\(D < 0\\), then \\((a, b, f(a, b))\\) is a <strong>saddle point</strong>.</li><li>If \\(D = 0\\), the test is <strong>inconclusive</strong>.</li></ul>"
+          "ar": null
         }
       },
       {
@@ -436,11 +436,11 @@
         "style": "example",
         "label": {
           "en": "Worked Example 13.3 — Advanced: Classifying Multivariable Critical Points & Saddle Surfaces",
-          "ar": "مثال محلول 13.3 — Advanced: Classifying Multivariable النقاط الحرجة & Saddle Surfaces"
+          "ar": null
         },
         "body": {
           "en": "<p>Find and classify all local extrema and saddle points of \\(f(x, y) = x^3 + y^3 - 3xy\\).</p><p><strong>Step 1: Find critical points by setting \\(\\nabla f = \\langle 0, 0 \\rangle\\).</strong><br>\\(f_x = 3x^2 - 3y = 0 \\implies y = x^2\\)<br>\\(f_y = 3y^2 - 3x = 0 \\implies x = y^2\\)<br>Substitute \\(y = x^2\\) into the second equation: \\(x = (x^2)^2 = x^4 \\implies x^4 - x = 0 \\implies x(x^3 - 1) = 0\\).<br>Real roots: \\(x = 0\\) (giving \\(y = 0\\)) and \\(x = 1\\) (giving \\(y = 1\\)).<br>The two critical points are \\((0, 0)\\) and \\((1, 1)\\).</p><p><strong>Step 2: Compute second partial derivatives and discriminant \\(D\\).</strong><br>\\(f_{xx} = 6x\\), \\(f_{yy} = 6y\\), \\(f_{xy} = -3\\)<br>\\[ D(x, y) = f_{xx}f_{yy} - (f_{xy})^2 = (6x)(6y) - (-3)^2 = 36xy - 9 \\]</p><p><strong>Step 3: Classify each critical point.</strong><br>&bull; At \\((0, 0)\\): \\(D(0, 0) = 36(0) - 9 = -9 < 0\\). Thus \\((0, 0, 0)\\) is a <strong>saddle point</strong>.<br>&bull; At \\((1, 1)\\): \\(D(1, 1) = 36(1)(1) - 9 = 27 > 0\\) and \\(f_{xx}(1, 1) = 6(1) = 6 > 0\\). Thus \\(f(1, 1) = 1 + 1 - 3 = -1\\) is a <strong>local minimum</strong>.</p>",
-          "ar": "<p>Find and classify all local extrema and saddle points of \\(f(x, y) = x^3 + y^3 - 3xy\\).</p><p><strong>Step 1: Find النقاط الحرجة by setting \\(\\nabla f = \\langle 0, 0 \\rangle\\).</strong><br>\\(f_x = 3x^2 - 3y = 0 \\implies y = x^2\\)<br>\\(f_y = 3y^2 - 3x = 0 \\implies x = y^2\\)<br>Substitute \\(y = x^2\\) into the second المعادلة: \\(x = (x^2)^2 = x^4 \\implies x^4 - x = 0 \\implies x(x^3 - 1) = 0\\).<br>Real roots: \\(x = 0\\) (giving \\(y = 0\\)) and \\(x = 1\\) (giving \\(y = 1\\)).<br>The two النقاط الحرجة are \\((0, 0)\\) and \\((1, 1)\\).</p><p><strong>Step 2: Compute second partial المشتقات and discriminant \\(D\\).</strong><br>\\(f_{xx} = 6x\\), \\(f_{yy} = 6y\\), \\(f_{xy} = -3\\)<br>\\[ D(x, y) = f_{xx}f_{yy} - (f_{xy})^2 = (6x)(6y) - (-3)^2 = 36xy - 9 \\]</p><p><strong>Step 3: Classify each critical point.</strong><br>&bull; At \\((0, 0)\\): \\(D(0, 0) = 36(0) - 9 = -9 < 0\\). وعليه \\((0, 0, 0)\\) is a <strong>saddle point</strong>.<br>&bull; At \\((1, 1)\\): \\(D(1, 1) = 36(1)(1) - 9 = 27 > 0\\) and \\(f_{xx}(1, 1) = 6(1) = 6 > 0\\). وعليه \\(f(1, 1) = 1 + 1 - 3 = -1\\) is a <strong>local minimum</strong>.</p>"
+          "ar": null
         }
       },
       {
@@ -452,18 +452,18 @@
         },
         "body": {
           "en": "<strong>Directional Derivative Requires a Unit Vector:</strong> The formula is \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u}\\). If given an arbitrary direction \\(\\mathbf{v}\\), you MUST normalize: \\(\\mathbf{u} = \\frac{\\mathbf{v}}{|\\mathbf{v}|}\\). Forgetting to normalize scales the directional derivative by \\(|\\mathbf{v}|\\) and produces an incorrect rate.<br><br><strong>Gradient Geometric Meaning:</strong> \\(\\nabla f(a, b)\\) points in the direction of <em>maximum rate of increase</em>, and its magnitude \\(|\\nabla f|\\) is that maximum rate. Crucially, the gradient vector is ALWAYS orthogonal (perpendicular) to the level curve \\(f(x, y) = c\\) at that point.<br><br><strong>Second Derivative Test Discriminant:</strong> \\(D = f_{xx}f_{yy} - (f_{xy})^2\\). If \\(D < 0\\), the point is a <strong>saddle point</strong> regardless of the sign of \\(f_{xx}\\). Do not check \\(f_{xx}\\) unless \\(D > 0\\) has already been established!",
-          "ar": "<strong>Directional المشتقة Requires a Unit المتجه:</strong> The الصيغة is \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u}\\). If المعطيات an arbitrary direction \\(\\mathbf{v}\\), you MUST normalize: \\(\\mathbf{u} = \\frac{\\mathbf{v}}{|\\mathbf{v}|}\\). Forgetting to normalize scales the directional المشتقة by \\(|\\mathbf{v}|\\) and produces an incorrect rate.<br><br><strong>Gradient Geometric Meaning:</strong> \\(\\nabla f(a, b)\\) points in the direction of <em>maximum rate of increase</em>, and its magnitude \\(|\\nabla f|\\) is that maximum rate. Crucially, the gradient المتجه is ALWAYS orthogonal (perpendicular) to the level curve \\(f(x, y) = c\\) at that point.<br><br><strong>Second المشتقة Test Discriminant:</strong> \\(D = f_{xx}f_{yy} - (f_{xy})^2\\). If \\(D < 0\\), the point is a <strong>saddle point</strong> regardless of the sign of \\(f_{xx}\\). Do not check \\(f_{xx}\\) unless \\(D > 0\\) has already been established!"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>Find the extreme values of \\(f(x, y) = x^2 + 2y^2\\) on the circle constraint \\(g(x, y) = x^2 + y^2 = 1\\) using the Method of Lagrange Multipliers.",
-          "ar": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>أوجد extreme values of \\(f(x, y) = x^2 + 2y^2\\) on the circle constraint \\(g(x, y) = x^2 + y^2 = 1\\) باستخدام Method of Lagrange Multipliers."
+          "ar": null
         },
         "solution": {
           "en": "Set up Lagrange system \\(\n\\nabla f = \\lambda\n\\nabla g\\):<br>\\(\n\\nabla f = \\langle 2x, 4y \\rangle\\), \\(\n\\nabla g = \\langle 2x, 2y \\rangle\\).<br>1) \\(2x = 2\\lambda x \\implies 2x(1 - \\lambda) = 0\\)<br>2) \\(4y = 2\\lambda y \\implies 2y(2 - \\lambda) = 0\\)<br>3) \\(x^2 + y^2 = 1\\)<br>From (1), either \\(x = 0\\) or \\(\\lambda = 1\\):<br>&bull; If \\(x = 0\\): from constraint (3), \\(y^2 = 1 \\implies y = \\pm 1\\). Points: \\((0, 1)\\) and \\((0, -1)\\).<br>Value: \\(f(0, \\pm 1) = 0 + 2(1)^2 = 2\\).<br>&bull; If \\(\\lambda = 1\\): from (2), \\(2y(2 - 1) = 2y = 0 \\implies y = 0\\).<br>From constraint (3), \\(x^2 = 1 \\implies x = \\pm 1\\). Points: \\((1, 0)\\) and \\((-1, 0)\\).<br>Value: \\(f(\\pm 1, 0) = (\\pm 1)^2 + 0 = 1\\).<br>Conclusion:<br>The <strong>maximum value</strong> is \\(2\\) at \\((0, \\pm 1)\\), and the <strong>minimum value</strong> is \\(1\\) at \\((\\pm 1, 0)\\).",
-          "ar": "Set up Lagrange system \\(\n\\nabla f = \\lambda\n\\nabla g\\):<br>\\(\n\\nabla f = \\langle 2x, 4y \\rangle\\), \\(\n\\nabla g = \\langle 2x, 2y \\rangle\\).<br>1) \\(2x = 2\\lambda x \\implies 2x(1 - \\lambda) = 0\\)<br>2) \\(4y = 2\\lambda y \\implies 2y(2 - \\lambda) = 0\\)<br>3) \\(x^2 + y^2 = 1\\)<br>From (1), either \\(x = 0\\) or \\(\\lambda = 1\\):<br>&bull; إذا كان \\(x = 0\\): from constraint (3), \\(y^2 = 1 \\implies y = \\pm 1\\). Points: \\((0, 1)\\) and \\((0, -1)\\).<br>Value: \\(f(0, \\pm 1) = 0 + 2(1)^2 = 2\\).<br>&bull; إذا كان \\(\\lambda = 1\\): from (2), \\(2y(2 - 1) = 2y = 0 \\implies y = 0\\).<br>From constraint (3), \\(x^2 = 1 \\implies x = \\pm 1\\). Points: \\((1, 0)\\) and \\((-1, 0)\\).<br>Value: \\(f(\\pm 1, 0) = (\\pm 1)^2 + 0 = 1\\).<br>Conclusion:<br>The <strong>maximum value</strong> is \\(2\\) at \\((0, \\pm 1)\\), and the <strong>minimum value</strong> is \\(1\\) at \\((\\pm 1, 0)\\)."
+          "ar": null
         },
         "hints": [
           {
@@ -484,12 +484,12 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Hard]</strong> The number \\(e\\) to 3 decimal places is approximately:",
-          "ar": "<strong>[Practice 4 · Hard]</strong> The number \\(e\\) to 3 منازل عشرية is approximately:"
+          "ar": null
         },
         "hints": [
           {
             "en": "Identify the core mathematical definition or theorem that governs the relationship in the prompt.",
-            "ar": "Identإذا كانy the core mathematical definition or theorem that governs the relationship in the prompt."
+            "ar": null
           },
           {
             "en": "Rewrite and simplify to obtain: \\(e\\).",
@@ -497,7 +497,7 @@
           },
           {
             "en": "Apply this step to \\(e\\) and simplify to determine the final result.",
-            "ar": "Apply this step to \\(e\\) and بسّط العبارة to حدّد final result."
+            "ar": null
           }
         ],
         "solution": {
@@ -509,12 +509,12 @@
         "kind": "practiceProblem",
         "question": {
           "en": "One-sided limit: \\(f(x)=|x|/x\\). \\(\\lim_{x\\to0^-}f(x)=\\)",
-          "ar": "حل المسألة التالية في (Partial Derivatives &amp; the Gradient): One-sided limit: \\(f(x)=|x|/x\\). \\(\\lim_{x\\to0^-}f(x)=\\)"
+          "ar": null
         },
         "hints": [
           {
             "en": "Identify the governing mathematical relationship for the given quantities.",
-            "ar": "Identإذا كانy the governing mathematical relationship for the given quantities."
+            "ar": null
           },
           {
             "en": "Set up the numerical expression: \\(|x|/x\\).",
@@ -522,12 +522,12 @@
           },
           {
             "en": "Evaluate \\(|x|/x\\) step by step to obtain the final answer.",
-            "ar": "احسب قيمة \\(|x|/x\\) step by step to obtain the final answer."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Applying Limits and Continuity principles, For \\(x<0\\), \\(|x|/x=-1\\). Therefore, the verified correct option is \\(-1\\).",
-          "ar": "Applying Limits and Continuity principles, For \\(x<0\\), \\(|x|/x=-1\\). وبالتالي، the verإذا كانied correct option is \\(-1\\)."
+          "ar": null
         }
       },
       {

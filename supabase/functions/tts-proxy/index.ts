@@ -1,40 +1,45 @@
-// ClipSAT text-to-speech proxy
+// ClipSAT text-to-speech proxy (Wave 0 Hardened)
 // ════════════════════════════════════════════════════════════════════════
 // Turns a short hint / explanation into spoken audio using OpenRouter's
-// OpenAI-compatible speech endpoint (default model:
-// fish-audio/s2.1-pro-free:free). The OpenRouter key lives ONLY in the
-// Supabase secret OPENROUTER_API_KEY — never in the browser bundle,
-// localStorage, or git.
-//
-// The browser (src/scripts/modules/03d-voice-tutor.js) treats ANY non-200
-// answer from here as "use the built-in browser voice instead", so rate
-// limits (429), exhausted credits (402), outages (5xx) or a missing secret
-// (503) never leave the learner without audio.
+// OpenAI-compatible speech endpoint. Enforces allowlisted Origin CORS,
+// POST-only, 1,200-char chunk limit, and per-user daily spend cap via
+// use_ai_quota so compromised tokens cannot drain OpenRouter credits.
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 
 const OPENROUTER_SPEECH_URL = "https://openrouter.ai/api/v1/audio/speech";
 const DEFAULT_MODEL = "fish-audio/s2.1-pro-free:free";
-// One request = one short chunk (the client splits long explanations).
 const MAX_INPUT_CHARS = 1200;
+const DAILY_TTS_BASE_CAP = 60;
+const PAID_MULTIPLIER = 10;
 
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-};
+const ALLOWED_ORIGINS = new Set([
+  "https://clipsat.org",
+  "https://www.clipsat.org",
+]);
 
-function withCors(res: Response): Response {
-  const headers = new Headers(res.headers);
-  for (const [k, v] of Object.entries(CORS_HEADERS)) headers.set(k, v);
-  return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+function resolveAllowedOrigin(req: Request): string {
+  const origin = (req.headers.get("origin") || "").trim();
+  if (!origin) return "https://clipsat.org";
+  if (ALLOWED_ORIGINS.has(origin)) return origin;
+  if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin)) return origin;
+  return "";
+}
+
+function buildCorsHeaders(origin: string): Record<string, string> {
+  return {
+    "Access-Control-Allow-Origin": origin || "https://clipsat.org",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Vary": "Origin",
+  };
 }
 
 function jsonError(message: string, status: number): Response {
   return Response.json({ error: message }, { status });
 }
 
-const ttsHandler = withSupabase({ auth: "user" }, async (req, _ctx) => {
+const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   if (req.method !== "POST") return jsonError("POST only", 405);
 
   const apiKey = Deno.env.get("OPENROUTER_API_KEY");
@@ -54,6 +59,22 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, _ctx) => {
   if (!text) return jsonError("\"text\" must be a non-empty string", 400);
   if (text.length > MAX_INPUT_CHARS) {
     return jsonError(`"text" is too long (max ${MAX_INPUT_CHARS} characters per request)`, 413);
+  }
+
+  // Enforce daily quota cap per authenticated user to bound upstream TTS spend
+  const { data: quotaRows, error: quotaErr } = await ctx.supabaseAdmin.rpc("use_ai_quota", {
+    p_user_id: ctx.userClaims.id,
+    p_base_cap: DAILY_TTS_BASE_CAP,
+    p_cost: 1,
+    p_paid_multiplier: PAID_MULTIPLIER,
+  });
+  const q = Array.isArray(quotaRows) ? quotaRows[0] : quotaRows;
+  if (quotaErr || !q) {
+    console.error("TTS quota check failed:", quotaErr);
+    return jsonError("Could not verify TTS usage quota", 500);
+  }
+  if (!q.allowed) {
+    return jsonError("Daily cloud voice limit reached; falling back to device voice.", 429);
   }
 
   const body: Record<string, unknown> = {
@@ -84,8 +105,6 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, _ctx) => {
     const errBody = await upstream.json().catch(() => ({}));
     const message = (errBody as any)?.error?.message || `Upstream HTTP ${upstream.status}`;
     console.error("OpenRouter TTS error:", upstream.status, message);
-    // Preserve 402/429 so the client can pause cloud voice for a while;
-    // everything else upstream is reported as 502.
     const status = upstream.status === 429 || upstream.status === 402 ? upstream.status : 502;
     return jsonError(message, status);
   }
@@ -102,8 +121,15 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, _ctx) => {
 
 export default {
   fetch: async (req: Request): Promise<Response> => {
-    if (req.method === "OPTIONS") return new Response("ok", { headers: CORS_HEADERS });
+    const allowedOrigin = resolveAllowedOrigin(req);
+    if (!allowedOrigin) {
+      return Response.json({ error: "Origin not allowed" }, { status: 403 });
+    }
+    const cors = buildCorsHeaders(allowedOrigin);
+    if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
     const res = await ttsHandler(req);
-    return withCors(res);
+    const headers = new Headers(res.headers);
+    for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+    return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
   },
 };

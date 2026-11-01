@@ -1626,7 +1626,7 @@
         if(inM&&s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;aD=0;continue;}
         if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&AENV.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}
         if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&AENV.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}
-        if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}
+        if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1&&tj-i<=64){var _tg=s.slice(i,tj+1);if((window._isSafeFormattingTag&&window._isSafeFormattingTag(_tg))||/^<\/?(?:br|b|strong|i|em|u|sub|sup|code|p|ul|ol|li|table|thead|tbody|tr|th|td|hr)\s*\/?>$/i.test(_tg)||/^(?:<\/span\s*>|<span\s+class=(?:"[a-zA-Z0-9 _-]+"|'[a-zA-Z0-9 _-]+')\s*>)$/i.test(_tg)){out+=_tg;i=tj+1;continue;}}
         }
         if(!inM&&s[i]==='\\'&&i+1<L&&(s[i+1]==='%'||s[i+1]==='$')){out+=s[i+1];i+=2;continue;}
         var c=s[i];

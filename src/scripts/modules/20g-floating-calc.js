@@ -8,12 +8,20 @@
      responsive drag/resize, expand/restore, and dark-mode sync.
      ═══════════════════════════════════════════════════════════════════ */
 
-  var DESMOS_API_URL = 'https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
   var _desmosLoadPromise = null;
+
+  function _getDesmosApiKey(){
+    var k = typeof window.CLIPSAT_DESMOS_API_KEY === 'string' ? window.CLIPSAT_DESMOS_API_KEY.trim() : '';
+    return k || '';
+  }
 
   function _ensureDesmosAPI(){
     if(window.Desmos && typeof window.Desmos.GraphingCalculator === 'function'){
       return Promise.resolve(window.Desmos);
+    }
+    var apiKey = _getDesmosApiKey();
+    if(!apiKey){
+      return Promise.reject(new Error('No commercial Desmos API key configured; using keyless official embed'));
     }
     if(_desmosLoadPromise) return _desmosLoadPromise;
     _desmosLoadPromise = new Promise(function(resolve, reject){
@@ -33,7 +41,7 @@
         return;
       }
       var s = document.createElement('script');
-      s.src = DESMOS_API_URL;
+      s.src = 'https://www.desmos.com/api/v1.11/calculator.js?apiKey=' + encodeURIComponent(apiKey);
       s.async = true;
       s.onload = function(){
         if(window.Desmos && typeof window.Desmos.GraphingCalculator === 'function'){
@@ -253,11 +261,43 @@
     return _calcEl;
   }
 
+  function _copyExprFallback(exprList){
+    if(!exprList || !exprList.length) return;
+    var txt = exprList.join('\n');
+    if(navigator.clipboard && typeof navigator.clipboard.writeText === 'function'){
+      navigator.clipboard.writeText(txt).catch(function(){});
+    }
+    var existing = document.getElementById('cs-fcalc-copy-toast');
+    if(existing) existing.remove();
+    var t = document.createElement('div');
+    t.id = 'cs-fcalc-copy-toast';
+    t.style.cssText = 'position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:6px 12px;border-radius:8px;font-size:.75rem;font-weight:600;z-index:10000;box-shadow:0 4px 14px rgba(0,0,0,.25);pointer-events:none;white-space:nowrap';
+    t.textContent = (document.documentElement.lang === 'ar')
+      ? '📋 تم نسخ المعادلة — اضغط Ctrl+V داخل الحاسبة'
+      : '📋 Copied — click inside Desmos & press Ctrl+V / ⌘V';
+    var body = _calcEl && _calcEl.querySelector('#cs-fcalc-body');
+    if(body){
+      body.appendChild(t);
+      setTimeout(function(){ if(t && t.parentElement) t.remove(); }, 3200);
+    }
+  }
+
   function _applyFloatingPreset(preset){
     if(_activeMode !== 'graphing'){
       _switchMode('graphing');
     }
-    if(!_apiCalc || typeof _apiCalc.setExpression !== 'function') return;
+    if(!_apiCalc || typeof _apiCalc.setExpression !== 'function'){
+      var map = {
+        linear: ['y = 2x + 1'],
+        quadratic: ['y = x^2 - 4x + 3', '(2, -1)'],
+        system: ['y = 2x - 1', 'y = -x + 5', '(2, 3)'],
+        trig: ['y = \\sin(x)', 'y = \\cos(x)'],
+        circle: ['(x - 2)^2 + (y + 1)^2 = 16', '(2, -1)'],
+        regression: ['y_1 \\sim m x_1 + b']
+      };
+      if(map[preset]) _copyExprFallback(map[preset]);
+      return;
+    }
     if(preset === 'clear'){
       _apiCalc.setBlank();
       return;
@@ -852,7 +892,11 @@
       color: color || '#2563eb'
     });
     window.openFloatingCalc('graphing');
-    _flushPendingExpressions();
+    if(_apiCalc && typeof _apiCalc.setExpression === 'function'){
+      _flushPendingExpressions();
+    } else if(latex){
+      _copyExprFallback([latex]);
+    }
   };
 
   window.clearFloatingCalc = function(){

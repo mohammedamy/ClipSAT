@@ -751,7 +751,47 @@
         "(a) When revolving the region \\(R\\) about the line \\( y = -2 \\), the outer radius \\( R(x) \\) is the distance from \\( y = -2 \\) to the upper boundary of the region \\( y = e^{-x^2} \\), which is \\( R(x) = e^{-x^2} - (-2) = e^{-x^2} + 2 \\). The inner radius \\( r(x) \\) is the distance from \\( y = -2 \\) to the lower boundary of the region (the x-axis, \\( y=0 \\)), which is \\(r(x) = 0 - (-2)\\).",
         "(c) For the solid with square cross-sections perpendicular to the x-axis, the side length of each square is the height of the region \\(R\\) at \\(x\\), which is \\( s(x) = e^{-x^2} - 0 = e^{-x^2} \\). The area of a square cross-section is \\( A(x) = (s(x))^2 = (e^{-x^2})^2 = e^{-2x^2} \\). The volume is the integral of these areas from \\( x=0 \\) to \\( x=1 \\), so \\( V = \\int_{0}^{1} e^{-2x^2} dx \\).",
         "(d) The integral expression \\(\\int_{0}^{1} e^{-2x^2} dx\\) represents the volume of the solid because it is the sum of the volumes of infinitesimally thin square slices. Each slice has an area \\(A(x) = e^{-2x^2}\\) and a thickness \\(dx\\). By integrating this area function from \\(x = 0\\) to \\(x\\), we are accumulating the volumes of all such slices to obtain the total volume of the solid."
-      ]
+      ],
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "exp(-x^2)"
+        ],
+        "xlim": [
+          -0.5,
+          2
+        ],
+        "ylim": [
+          -2.5,
+          1.5
+        ],
+        "vlines": [
+          {
+            "x": 1,
+            "label": "x = 1"
+          }
+        ],
+        "hlines": [
+          {
+            "y": -2,
+            "label": "y = -2"
+          }
+        ],
+        "shade": [
+          {
+            "fn": "exp(-x^2)",
+            "from": 0,
+            "to": 1
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 1,
+            "label": "(0, 1)"
+          }
+        ]
+      }
     },
     {
       "id": "apbc-0022",
@@ -1588,7 +1628,7 @@
       "hints": [
         "To determine the convergence or divergence of an infinite series \\( \\sum_{n=1}^{\\infty} a_n \\), we can first examine the limit of its terms, \\( \\lim_{n \\to \\infty} a_n \\). If this limit is not equal to zero, then the series diverges by the Test for Divergence.",
         "For the given series, the terms are \\( a_n = \\frac{3n+1}{2n+5} \\). We evaluate the limit as \\( n \\to \\infty \\): \\( \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\frac{3n+1}{2n+5} \\).",
-        "Since \\(\\lim_{n \\to \\infty} a_n = \\frac{3}{2}\\), and \\(\\frac{3}{2} eq 0\\), the series diverges by the Test for Divergence."
+        "Since \\(\\lim_{n \\to \\infty} a_n = \\frac{3}{2}\\), and \\(\\frac{3}{2} \\neq 0\\), the series diverges by the Test for Divergence."
       ],
       "fig": {
         "type": "bar",
@@ -1994,7 +2034,7 @@
       "hints": [
         "For a parametric curve, the slope of the tangent line is \\( \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} \\).",
         "Here, \\( \\frac{dy}{dt} = 2t - 4 \\) and \\( \\frac{dx}{dt} = 2e^{2t} - 2 \\).",
-        "At the point where the tangent line is horizontal (\\(t = 2\\), where \\(dy/dt = 0\\) and \\(dx/dt = 2e^4 - 2 eq 0\\)), the slope \\(\\frac{dy}{dx}\\) is equal to \\(0\\)."
+        "At the point where the tangent line is horizontal (\\(t = 2\\), where \\(dy/dt = 0\\) and \\(dx/dt = 2e^4 - 2 \\neq 0\\)), the slope \\(\\frac{dy}{dx}\\) is equal to \\(0\\)."
       ],
       "fig": {
         "type": "fn",
@@ -9583,18 +9623,18 @@
         "\\(- \\frac{1}{3}\\)",
         "\\(\\frac{2}{3}\\)"
       ],
-      "answer": 2,
-      "sol": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-1)\\): \\(1=B(4-1)\\Rightarrow B=\\dfrac{1}{4-1}=- \\frac{1}{3}.\\)",
+      "answer": 0,
+      "sol": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-1)\\): \\(1=B(4-1)\\Rightarrow B=\\dfrac{1}{4-1}=\\frac{1}{3}.\\)",
       "difficulty": "medium",
       "id": "apbc-0312",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c4-3",
       "educational_aim": "Synthesize Polar Coordinates & Polar Area with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Polar Coordinates & Polar Area — Non-Routine Synthesis & Past-Paper Challenge",
-      "correct": 2,
-      "solution": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-1)\\): \\(1=B(4-1)\\Rightarrow B=\\dfrac{1}{4-1}=- \\frac{1}{3}.\\)",
+      "correct": 0,
+      "solution": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-1)\\): \\(1=B(4-1)\\Rightarrow B=\\dfrac{1}{4-1}=\\frac{1}{3}.\\)",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 0,
       "hints": [
         "Set \\(x=4\\) in \\(1=A(x-4)+B(x-1)\\): \\(1=B(4-1)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{4-1}\\).",
@@ -9611,18 +9651,18 @@
         "\\(\\frac{1}{2}\\)",
         "\\(\\frac{1}{4}\\)"
       ],
-      "answer": 1,
-      "sol": "Set \\(x=7\\) in \\(1=A(x-7)+B(x-3)\\): \\(1=B(7-3)\\Rightarrow B=\\dfrac{1}{7-3}=- \\frac{1}{4}.\\)",
+      "answer": 3,
+      "sol": "Set \\(x=7\\) in \\(1=A(x-7)+B(x-3)\\): \\(1=B(7-3)\\Rightarrow B=\\dfrac{1}{7-3}=\\frac{1}{4}.\\)",
       "difficulty": "easy",
       "id": "apbc-0313",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c5-3",
       "educational_aim": "Synthesize Infinite Sequences & Series — Convergence Tests with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Infinite Sequences & Series — Convergence Tests — Non-Routine Synthesis & Past-Paper Challenge",
-      "correct": 1,
-      "solution": "Set \\(x=7\\) in \\(1=A(x-7)+B(x-3)\\): \\(1=B(7-3)\\Rightarrow B=\\dfrac{1}{7-3}=- \\frac{1}{4}.\\)",
+      "correct": 3,
+      "solution": "Set \\(x=7\\) in \\(1=A(x-7)+B(x-3)\\): \\(1=B(7-3)\\Rightarrow B=\\dfrac{1}{7-3}=\\frac{1}{4}.\\)",
       "sympy_verified": true,
-      "ans": 1,
+      "ans": 3,
       "hints": [
         "Set \\(x=7\\) in \\(1=A(x-7)+B(x-3)\\): \\(1=B(7-3)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{7-3}\\).",
@@ -9639,45 +9679,23 @@
         "\\(- \\frac{1}{6}\\)",
         "\\(\\frac{1}{6}\\)"
       ],
-      "answer": 2,
-      "sol": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-0)\\): \\(1=B(6-0)\\Rightarrow B=\\dfrac{1}{6-0}=- \\frac{1}{6}.\\)",
+      "answer": 3,
+      "sol": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-0)\\): \\(1=B(6-0)\\Rightarrow B=\\dfrac{1}{6-0}=\\frac{1}{6}.\\)",
       "difficulty": "easy",
       "id": "apbc-0314",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c6-3",
       "educational_aim": "Synthesize Power Series, Taylor & Maclaurin Series with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Power Series, Taylor & Maclaurin Series — Non-Routine Synthesis & Past-Paper Challenge",
-      "correct": 2,
-      "solution": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-0)\\): \\(1=B(6-0)\\Rightarrow B=\\dfrac{1}{6-0}=- \\frac{1}{6}.\\)",
+      "correct": 3,
+      "solution": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-0)\\): \\(1=B(6-0)\\Rightarrow B=\\dfrac{1}{6-0}=\\frac{1}{6}.\\)",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 3,
       "hints": [
         "Set \\(x=6\\) in \\(1=A(x-6)+B(x-0)\\): \\(1=B(6-0)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{6-0}\\).",
         "Evaluate the simplified expression: \\(B = \\dfrac{1}{6-0}\\)."
-      ],
-      "fig": {
-        "type": "bar",
-        "title": "Discrete Term / Magnitude Comparison",
-        "data": [
-          {
-            "label": "T₁",
-            "val": 6
-          },
-          {
-            "label": "T₂",
-            "val": 9
-          },
-          {
-            "label": "T₃",
-            "val": 13
-          },
-          {
-            "label": "T₄",
-            "val": 18
-          }
-        ]
-      }
+      ]
     },
     {
       "type": "mcq",
@@ -9773,18 +9791,18 @@
         "\\(\\frac{1}{2}\\)",
         "\\(- \\frac{1}{2}\\)"
       ],
-      "answer": 3,
-      "sol": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-2)\\): \\(1=B(4-2)\\Rightarrow B=\\dfrac{1}{4-2}=- \\frac{1}{2}.\\)",
+      "answer": 2,
+      "sol": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-2)\\): \\(1=B(4-2)\\Rightarrow B=\\dfrac{1}{4-2}=\\frac{1}{2}.\\)",
       "difficulty": "easy",
       "id": "apbc-0318",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c3-1",
       "educational_aim": "Demonstrate foundational mastery of Parametric Equations & Vector-Valued Functions by solving direct algebraic, graphical, or geometric formulations tested on APBC past papers.",
       "exam_archetype": "Parametric Equations & Vector-Valued Functions — Direct Concept & Representation",
-      "correct": 3,
-      "solution": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-2)\\): \\(1=B(4-2)\\Rightarrow B=\\dfrac{1}{4-2}=- \\frac{1}{2}.\\)",
+      "correct": 2,
+      "solution": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-2)\\): \\(1=B(4-2)\\Rightarrow B=\\dfrac{1}{4-2}=\\frac{1}{2}.\\)",
       "sympy_verified": true,
-      "ans": 3,
+      "ans": 2,
       "hints": [
         "Set \\(x=4\\) in \\(1=A(x-4)+B(x-2)\\): \\(1=B(4-2)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{4-2}\\).",
@@ -9801,18 +9819,18 @@
         "\\(- \\frac{1}{2}\\)",
         "1"
       ],
-      "answer": 2,
-      "sol": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-3)\\): \\(1=B(5-3)\\Rightarrow B=\\dfrac{1}{5-3}=- \\frac{1}{2}.\\)",
+      "answer": 1,
+      "sol": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-3)\\): \\(1=B(5-3)\\Rightarrow B=\\dfrac{1}{5-3}=\\frac{1}{2}.\\)",
       "difficulty": "easy",
       "id": "apbc-0319",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c4-1",
       "educational_aim": "Demonstrate foundational mastery of Polar Coordinates & Polar Area by solving direct algebraic, graphical, or geometric formulations tested on APBC past papers.",
       "exam_archetype": "Polar Coordinates & Polar Area — Direct Concept & Representation",
-      "correct": 2,
-      "solution": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-3)\\): \\(1=B(5-3)\\Rightarrow B=\\dfrac{1}{5-3}=- \\frac{1}{2}.\\)",
+      "correct": 1,
+      "solution": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-3)\\): \\(1=B(5-3)\\Rightarrow B=\\dfrac{1}{5-3}=\\frac{1}{2}.\\)",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 1,
       "hints": [
         "Set \\(x=5\\) in \\(1=A(x-5)+B(x-3)\\): \\(1=B(5-3)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{5-3}\\).",
@@ -9963,18 +9981,18 @@
         "\\(- \\frac{1}{2}\\)",
         "-1"
       ],
-      "answer": 2,
-      "sol": "Set \\(x=3\\) in \\(1=A(x-3)+B(x-1)\\): \\(1=B(3-1)\\Rightarrow B=\\dfrac{1}{3-1}=- \\frac{1}{2}.\\)",
+      "answer": 1,
+      "sol": "Set \\(x=3\\) in \\(1=A(x-3)+B(x-1)\\): \\(1=B(3-1)\\Rightarrow B=\\dfrac{1}{3-1}=\\frac{1}{2}.\\)",
       "difficulty": "easy",
       "id": "apbc-0324",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c2-2",
       "educational_aim": "Apply properties and theorems of Logistic Models & Euler's Method in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Logistic Models & Euler's Method — Multi-Step Application & Parameter Solve",
-      "correct": 2,
-      "solution": "Set \\(x=3\\) in \\(1=A(x-3)+B(x-1)\\): \\(1=B(3-1)\\Rightarrow B=\\dfrac{1}{3-1}=- \\frac{1}{2}.\\)",
+      "correct": 1,
+      "solution": "Set \\(x=3\\) in \\(1=A(x-3)+B(x-1)\\): \\(1=B(3-1)\\Rightarrow B=\\dfrac{1}{3-1}=\\frac{1}{2}.\\)",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 1,
       "hints": [
         "Set \\(x=3\\) in \\(1=A(x-3)+B(x-1)\\): \\(1=B(3-1)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{3-1}\\).",
@@ -10013,18 +10031,18 @@
         "\\(- \\frac{1}{5}\\)",
         "\\(- \\frac{2}{5}\\)"
       ],
-      "answer": 2,
-      "sol": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-1)\\): \\(1=B(6-1)\\Rightarrow B=\\dfrac{1}{6-1}=- \\frac{1}{5}.\\)",
+      "answer": 0,
+      "sol": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-1)\\): \\(1=B(6-1)\\Rightarrow B=\\dfrac{1}{6-1}=\\frac{1}{5}.\\)",
       "difficulty": "easy",
       "id": "apbc-0325",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c3-2",
       "educational_aim": "Apply properties and theorems of Parametric Equations & Vector-Valued Functions in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Parametric Equations & Vector-Valued Functions — Multi-Step Application & Parameter Solve",
-      "correct": 2,
-      "solution": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-1)\\): \\(1=B(6-1)\\Rightarrow B=\\dfrac{1}{6-1}=- \\frac{1}{5}.\\)",
+      "correct": 0,
+      "solution": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-1)\\): \\(1=B(6-1)\\Rightarrow B=\\dfrac{1}{6-1}=\\frac{1}{5}.\\)",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 0,
       "hints": [
         "Set \\(x=6\\) in \\(1=A(x-6)+B(x-1)\\): \\(1=B(6-1)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{6-1}\\).",
@@ -10303,18 +10321,18 @@
         "\\(- \\frac{2}{3}\\)",
         "\\(\\frac{1}{3}\\)"
       ],
-      "answer": 1,
-      "sol": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-2)\\): \\(1=B(5-2)\\Rightarrow B=\\dfrac{1}{5-2}=- \\frac{1}{3}.\\)",
+      "answer": 3,
+      "sol": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-2)\\): \\(1=B(5-2)\\Rightarrow B=\\dfrac{1}{5-2}=\\frac{1}{3}.\\)",
       "difficulty": "easy",
       "id": "apbc-0335",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c6-3",
       "educational_aim": "Synthesize Power Series, Taylor & Maclaurin Series with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Power Series, Taylor & Maclaurin Series — Non-Routine Synthesis & Past-Paper Challenge",
-      "correct": 1,
-      "solution": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-2)\\): \\(1=B(5-2)\\Rightarrow B=\\dfrac{1}{5-2}=- \\frac{1}{3}.\\)",
+      "correct": 3,
+      "solution": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-2)\\): \\(1=B(5-2)\\Rightarrow B=\\dfrac{1}{5-2}=\\frac{1}{3}.\\)",
       "sympy_verified": true,
-      "ans": 1,
+      "ans": 3,
       "hints": [
         "Set \\(x=5\\) in \\(1=A(x-5)+B(x-2)\\): \\(1=B(5-2)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{5-2}\\).",
@@ -10387,18 +10405,18 @@
         "\\(\\frac{1}{4}\\)",
         "\\(\\frac{1}{2}\\)"
       ],
-      "answer": 1,
-      "sol": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-0)\\): \\(1=B(4-0)\\Rightarrow B=\\dfrac{1}{4-0}=- \\frac{1}{4}.\\)",
+      "answer": 2,
+      "sol": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-0)\\): \\(1=B(4-0)\\Rightarrow B=\\dfrac{1}{4-0}=\\frac{1}{4}.\\)",
       "difficulty": "easy",
       "id": "apbc-0338",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c2-1",
       "educational_aim": "Demonstrate foundational mastery of Logistic Models & Euler's Method by solving direct algebraic, graphical, or geometric formulations tested on APBC past papers.",
       "exam_archetype": "Logistic Models & Euler's Method — Direct Concept & Representation",
-      "correct": 1,
-      "solution": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-0)\\): \\(1=B(4-0)\\Rightarrow B=\\dfrac{1}{4-0}=- \\frac{1}{4}.\\)",
+      "correct": 2,
+      "solution": "Set \\(x=4\\) in \\(1=A(x-4)+B(x-0)\\): \\(1=B(4-0)\\Rightarrow B=\\dfrac{1}{4-0}=\\frac{1}{4}.\\)",
       "sympy_verified": true,
-      "ans": 1,
+      "ans": 2,
       "hints": [
         "Set \\(x=4\\) in \\(1=A(x-4)+B(x-0)\\): \\(1=B(4-0)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{4-0}\\).",
@@ -10655,18 +10673,18 @@
         "\\(\\frac{1}{2}\\)",
         "\\(- \\frac{1}{2}\\)"
       ],
-      "answer": 1,
-      "sol": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-1)\\): \\(1=B(5-1)\\Rightarrow B=\\dfrac{1}{5-1}=- \\frac{1}{4}.\\)",
+      "answer": 0,
+      "sol": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-1)\\): \\(1=B(5-1)\\Rightarrow B=\\dfrac{1}{5-1}=\\frac{1}{4}.\\)",
       "difficulty": "easy",
       "id": "apbc-0346",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c3-2",
       "educational_aim": "Apply properties and theorems of Parametric Equations & Vector-Valued Functions in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Parametric Equations & Vector-Valued Functions — Multi-Step Application & Parameter Solve",
-      "correct": 1,
-      "solution": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-1)\\): \\(1=B(5-1)\\Rightarrow B=\\dfrac{1}{5-1}=- \\frac{1}{4}.\\)",
+      "correct": 0,
+      "solution": "Set \\(x=5\\) in \\(1=A(x-5)+B(x-1)\\): \\(1=B(5-1)\\Rightarrow B=\\dfrac{1}{5-1}=\\frac{1}{4}.\\)",
       "sympy_verified": true,
-      "ans": 1,
+      "ans": 0,
       "hints": [
         "Set \\(x=5\\) in \\(1=A(x-5)+B(x-1)\\): \\(1=B(5-1)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{5-1}\\).",
@@ -10739,18 +10757,18 @@
         "\\(\\frac{1}{2}\\)",
         "\\(- \\frac{1}{2}\\)"
       ],
-      "answer": 0,
-      "sol": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-2)\\): \\(1=B(6-2)\\Rightarrow B=\\dfrac{1}{6-2}=- \\frac{1}{4}.\\)",
+      "answer": 1,
+      "sol": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-2)\\): \\(1=B(6-2)\\Rightarrow B=\\dfrac{1}{6-2}=\\frac{1}{4}.\\)",
       "difficulty": "easy",
       "id": "apbc-0349",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-c6-2",
       "educational_aim": "Apply properties and theorems of Power Series, Taylor & Maclaurin Series in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Power Series, Taylor & Maclaurin Series — Multi-Step Application & Parameter Solve",
-      "correct": 0,
-      "solution": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-2)\\): \\(1=B(6-2)\\Rightarrow B=\\dfrac{1}{6-2}=- \\frac{1}{4}.\\)",
+      "correct": 1,
+      "solution": "Set \\(x=6\\) in \\(1=A(x-6)+B(x-2)\\): \\(1=B(6-2)\\Rightarrow B=\\dfrac{1}{6-2}=\\frac{1}{4}.\\)",
       "sympy_verified": true,
-      "ans": 0,
+      "ans": 1,
       "hints": [
         "Set \\(x=6\\) in \\(1=A(x-6)+B(x-2)\\): \\(1=B(6-2)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{6-2}\\).",
@@ -10789,18 +10807,18 @@
         "\\(- \\frac{1}{2}\\)",
         "1"
       ],
-      "answer": 2,
-      "sol": "Set \\(x=2\\) in \\(1=A(x-2)+B(x-0)\\): \\(1=B(2-0)\\Rightarrow B=\\dfrac{1}{2-0}=- \\frac{1}{2}.\\)",
+      "answer": 1,
+      "sol": "Set \\(x=2\\) in \\(1=A(x-2)+B(x-0)\\): \\(1=B(2-0)\\Rightarrow B=\\dfrac{1}{2-0}=\\frac{1}{2}.\\)",
       "difficulty": "easy",
       "id": "apbc-0350",
       "topic_id": "apbc-c1",
       "subskill_id": "apbc-frq-2",
       "educational_aim": "Apply properties and theorems of AP Calculus BC Free-Response Questions (FRQs) in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "AP Calculus BC Free-Response Questions (FRQs) — Multi-Step Application & Parameter Solve",
-      "correct": 2,
-      "solution": "Set \\(x=2\\) in \\(1=A(x-2)+B(x-0)\\): \\(1=B(2-0)\\Rightarrow B=\\dfrac{1}{2-0}=- \\frac{1}{2}.\\)",
+      "correct": 1,
+      "solution": "Set \\(x=2\\) in \\(1=A(x-2)+B(x-0)\\): \\(1=B(2-0)\\Rightarrow B=\\dfrac{1}{2-0}=\\frac{1}{2}.\\)",
       "sympy_verified": true,
-      "ans": 2,
+      "ans": 1,
       "hints": [
         "Set \\(x=2\\) in \\(1=A(x-2)+B(x-0)\\): \\(1=B(2-0)\\).",
         "Substitute and simplify: \\(B = \\dfrac{1}{2-0}\\).",

@@ -113,9 +113,6 @@ var CDN_ORIGINS = [
  * so that part worked — this just makes it available from install, not just
  * after a first live fetch). */
 var CDN_PRECACHE = [
-  'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
 ];
 
@@ -182,6 +179,13 @@ self.addEventListener('fetch', function(event) {
   /* Course and Question Bank JSON → stale-while-revalidate */
   if ((url.pathname.includes('/bank-data/') || url.pathname.includes('/worksheet-data/') || url.pathname.includes('/courses/')) && url.pathname.endsWith('.json')) {
     event.respondWith(staleWhileRevalidate(request, CACHE.COURSES));
+    return;
+  }
+
+  /* HTML navigations → network-first (falls back to CACHE.SHELL offline) so deploys
+   * and OAuth callback redirects always load the latest HTML & auth scripts immediately */
+  if (request.mode === 'navigate' || url.pathname === '/' || url.pathname.endsWith('.html') || url.pathname.endsWith('/')) {
+    event.respondWith(networkFirst(request, CACHE.SHELL));
     return;
   }
 
@@ -320,7 +324,8 @@ self.addEventListener('message', function(event) {
   }
 
   if (event.data.type === 'CACHE_COURSE' || event.data.type === 'PRECACHE_TRACK') {
-    var courseId = event.data.courseId || event.data.trackId;
+    var rawCourseId = String(event.data.courseId || event.data.trackId || '');
+    var courseId = rawCourseId.replace(/[^a-zA-Z0-9_-]/g, '');
     if (!courseId) return;
     var defaultRelUrls = [
       './' + courseId + '/',
@@ -334,9 +339,13 @@ self.addEventListener('message', function(event) {
       './js/practice-quiz.js',
       './js/diagnostic-test.js'
     ];
-    var customUrls = Array.isArray(event.data.urls) ? event.data.urls : defaultRelUrls;
-    var urls = customUrls.map(function(u) {
-      return new URL(u, self.location.href).href;
+    var customUrls = Array.isArray(event.data.urls) ? event.data.urls.slice(0, 32) : defaultRelUrls;
+    var urls = [];
+    customUrls.forEach(function(u) {
+      try {
+        var resolved = new URL(String(u), self.location.href);
+        if (resolved.origin === self.location.origin) urls.push(resolved.href);
+      } catch(e) {}
     });
     caches.open(CACHE.COURSES).then(function(cache) {
       return Promise.all(urls.map(function(url) {

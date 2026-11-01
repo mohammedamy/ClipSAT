@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "When the target variable is categorical (0 or 1, positive or negative), standard linear regression fails. Logistic regression maps continuous linear combinations to calibrated probabilities using the Sigmoid curve.",
-          "ar": "عندما the target المتغير is categorical (0 or 1, positive or negative), standard linear regression fails. Logistic regression maps continuous linear combinations to calibrated probabilities using the Sigmoid curve."
+          "ar": null
         }
       },
       {
@@ -42,7 +42,7 @@
         },
         "body": {
           "en": "1. <strong>Sigmoid Function:</strong> \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\).<br>Key properties: \\( \\sigma(0) = 0.5 \\), \\( \\lim_{z \\to \\infty} \\sigma(z) = 1 \\), \\( \\lim_{z \\to -\\infty} \\sigma(z) = 0 \\). Derivative: \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\).<br><br>2. <strong>Binary Cross-Entropy Loss:</strong> For true label \\( y \\in \\{0, 1\\} \\) and model prediction \\( \\hat{y} = \\sigma(\\mathbf{w}^T\\mathbf{x}) \\):<br>\\[ L(y, \\hat{y}) = -\\Big[ y \\ln\\hat{y} + (1 - y) \\ln(1 - \\hat{y}) \\Big] \\]",
-          "ar": "1. <strong>Sigmoid الدالة:</strong> \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\).<br>Key properties: \\( \\sigma(0) = 0.5 \\), \\( \\lim_{z \\to \\infty} \\sigma(z) = 1 \\), \\( \\lim_{z \\to -\\infty} \\sigma(z) = 0 \\). المشتقة: \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\).<br><br>2. <strong>Binary Cross-Entropy Loss:</strong> For true label \\( y \\in \\{0, 1\\} \\) and model prediction \\( \\hat{y} = \\sigma(\\mathbf{w}^T\\mathbf{x}) \\):<br>\\[ L(y, \\hat{y}) = -\\Big[ y \\ln\\hat{y} + (1 - y) \\ln(1 - \\hat{y}) \\Big] \\]"
+          "ar": null
         }
       },
       {
@@ -132,7 +132,7 @@
             "id": "ailogisticregressionExCanvas_s0",
             "label": {
               "en": "Weight Steepness <b>\\(w =\\)</b>",
-              "ar": "Weight Steepness <b>w =</b>"
+              "ar": null
             },
             "min": 0.5,
             "max": 4,
@@ -141,14 +141,14 @@
             "valueDisplayId": "ailogisticregressionExCanvas_v0",
             "ariaLabel": {
               "en": "Weight Steepness w =",
-              "ar": "Weight Steepness w ="
+              "ar": null
             }
           },
           {
             "id": "ailogisticregressionExCanvas_s1",
             "label": {
               "en": "Bias Shift <b>\\(b =\\)</b>",
-              "ar": "Bias Shift <b>b =</b>"
+              "ar": null
             },
             "min": -3,
             "max": 3,
@@ -157,7 +157,7 @@
             "valueDisplayId": "ailogisticregressionExCanvas_v1",
             "ariaLabel": {
               "en": "Bias Shift b =",
-              "ar": "Bias Shift b ="
+              "ar": null
             }
           }
         ],
@@ -166,7 +166,7 @@
             "id": "ailogisticregressionExCanvas_r0",
             "label": {
               "en": "Decision Boundary x* = \\(-b / w\\)",
-              "ar": "Decision Boundary x* = −b/w"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(x* = 0.50\\)"
@@ -175,7 +175,7 @@
             "id": "ailogisticregressionExCanvas_r1",
             "label": {
               "en": "Probability \\(\\sigma (w \\cdot 1 + b)\\)",
-              "ar": "Probability σ(w·1 + b)"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(\\sigma (z) = 0.711\\)"
@@ -184,7 +184,7 @@
             "id": "ailogisticregressionExCanvas_r2",
             "label": {
               "en": "Binary Cross-Entropy Loss",
-              "ar": "Binary Cross-Entropy Loss"
+              "ar": null
             },
             "colorClass": "teal",
             "value": "BCE ≈ 0.389"
@@ -290,7 +290,7 @@
         },
         "body": {
           "en": "<p>A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on diameter \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) Find the predicted malignancy probability for a tumor of diameter \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), calculate the binary cross-entropy loss \\( L \\).</p><p><strong>Solution:</strong><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute probability via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% probability).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>",
-          "ar": "<p>A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on القطر \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) أوجد predicted malignancy الاحتمال for a tumor of القطر \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), احسب binary cross-entropy loss \\( L \\).</p><p><strong>Solution:</strong><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute الاحتمال via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% الاحتمال).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -302,7 +302,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> Consider a binary classification problem where the decision boundary is defined by the logistic function \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\), which represents the probability of a data point \\( \\mathbf{x} = (x_1, x_2) \\) belonging to class 1. The estimated model parameters are \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\). We are interested in the geometric shape of the classification boundary. The classification boundary occurs where \\( p(x) = 0.5 \\). Find the equation of this boundary in the \\( x_1x_2 \\)-plane.</p><p><strong>Step-by-Step Solution:</strong> The logistic regression model gives the probability of belonging to class 1 as \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\). The classification boundary is the set of points where \\( p(x) = 0.5 \\).\n\nSetting \\( p(x) = 0.5 \\), we have:\n\\( 0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\)\n\nThis implies:\n\\( 1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2 \\)\n\nTherefore:\n\\( e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1 \\)\n\nTaking the natural logarithm of both sides:\n\\( -(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1) \\)\n\nSince \\( \\ln(1) = 0 \\), we get:\n\\( \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0 \\)\n\nThis is the equation of the linear decision boundary.\n\nSubstitute the given parameter values: \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\).\n\n\\( -3 + x_1 + (-2) \\cdot x_2 = 0 \\)\n\n\\( -3 + x_1 - 2x_2 = 0 \\)\n\nWe need to express this in the form \\( x_2 = f(x_1) \\).\n\n\\( 2x_2 = x_1 - 3 \\)\n\n\\( x_2 = \\frac{1}{2} x_1 - \\frac{3}{2} \\)\n\nThis matches choice A.</p>",
-          "ar": "<p><strong>مسألة (Hard):</strong> Consider a binary classification problem where the decision boundary is defined by the logistic function \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\), which represents the probability of a data point \\( \\mathbf{x} = (x_1, x_2) \\) belonging to class 1. The estimated model parameters are \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\). We are interested in the geometric shape of the classification boundary. The classification boundary occurs where \\( p(x) = 0.5 \\). Find the equation of this boundary in the \\( x_1x_2 \\)-plane.</p><p><strong>الحل خطوة بخطوة:</strong> The logistic regression model gives the probability of belonging to class 1 as \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\). The classification boundary is the set of points where \\( p(x) = 0.5 \\).\n\nSetting \\( p(x) = 0.5 \\), we have:\n\\( 0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\)\n\nThis implies:\n\\( 1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2 \\)\n\nTherefore:\n\\( e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1 \\)\n\nTaking the natural logarithm of both sides:\n\\( -(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1) \\)\n\nSince \\( \\ln(1) = 0 \\), we get:\n\\( \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0 \\)\n\nThis is the equation of the linear decision boundary.\n\nSubstitute the given parameter values: \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\).\n\n\\( -3 + x_1 + (-2) \\cdot x_2 = 0 \\)\n\n\\( -3 + x_1 - 2x_2 = 0 \\)\n\nWe need to express this in the form \\( x_2 = f(x_1) \\).\n\n\\( 2x_2 = x_1 - 3 \\)\n\n\\( x_2 = \\frac{1}{2} x_1 - \\frac{3}{2} \\)\n\nThis matches choice A.</p>"
+          "ar": null
         }
       },
       {
@@ -314,7 +314,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> Consider a simple logistic regression model where the decision boundary is defined by the linear equation \\(w_1x_1 + w_2x_2 + b = 0\\). If the weights are \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias is \\(b = -7\\), what is the equation of the decision boundary?</p><p><strong>Step-by-Step Solution:</strong> The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p>",
-          "ar": "<p><strong>مسألة (Easy):</strong> Consider a simple logistic regression model where the decision boundary is defined by the linear equation \\(w_1x_1 + w_2x_2 + b = 0\\). If the weights are \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias is \\(b = -7\\), what is the equation of the decision boundary?</p><p><strong>الحل خطوة بخطوة:</strong> The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p>"
+          "ar": null
         }
       },
       {
@@ -326,7 +326,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> Consider a simple logistic regression model where the decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). For a data point \\( (x_1, x_2) \\), if \\( -1.5x_1 + 2x_2 + 5 < 0 \\), it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?</p><p><strong>Step-by-Step Solution:</strong> The decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point \\( (-1, 1) \\): \\( -1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5 \\), which is not 0. For point \\( (2, -2) \\): \\( -1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2 \\), which is not 0. For point \\( (0, -2.5) \\): \\( -1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0 \\). This point lies on the boundary. For point \\( (3, 0.5) \\): \\( -1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5 \\), which is not 0. Therefore, the point \\( (0, -2.5) \\) lies on the decision boundary.</p>",
-          "ar": "<p><strong>مسألة (Medium):</strong> Consider a simple logistic regression model where the decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). For a data point \\( (x_1, x_2) \\), if \\( -1.5x_1 + 2x_2 + 5 < 0 \\), it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?</p><p><strong>الحل خطوة بخطوة:</strong> The decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point \\( (-1, 1) \\): \\( -1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5 \\), which is not 0. For point \\( (2, -2) \\): \\( -1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2 \\), which is not 0. For point \\( (0, -2.5) \\): \\( -1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0 \\). This point lies on the boundary. For point \\( (3, 0.5) \\): \\( -1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5 \\), which is not 0. Therefore, the point \\( (0, -2.5) \\) lies on the decision boundary.</p>"
+          "ar": null
         }
       },
       {
@@ -422,125 +422,125 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 1 · Hard]</strong> The sigmoid activation function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). If \\( \\sigma(z_0) = 0.40 \\), what is the value of the derivative \\( \\sigma'(z_0) \\)?",
-          "ar": "<strong>[تدريب 1 · Hard]</strong> The sigmoid activation function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). If \\( \\sigma(z_0) = 0.40 \\), what is the value of the derivative \\( \\sigma'(z_0) \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\).",
-            "ar": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\)."
+            "ar": null
           },
           {
             "en": "Substituting \\( \\sigma(z_0) = 0.40 \\): \\(\\sigma'(z_0) = (0.40)(1 - 0.40)\\). Substitute and simplify: \\(\\sigma'(z_0) = (0.40)(0.60)\\).",
-            "ar": "Substituting \\( \\sigma(z_0) = 0.40 \\): \\(\\sigma'(z_0) = (0.40)(1 - 0.40)\\). Substitute and simplify: \\(\\sigma'(z_0) = (0.40)(0.60)\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\((0.40)(0.60)\\).",
-            "ar": "Compute the final value from: \\((0.40)(0.60)\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\). Substituting \\( \\sigma(z_0) = 0.40 \\): \\( \\sigma'(z_0) = (0.40)(1 - 0.40) = (0.40)(0.60) = 0.2400 \\).",
-          "ar": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\). Substituting \\( \\sigma(z_0) = 0.40 \\): \\( \\sigma'(z_0) = (0.40)(1 - 0.40) = (0.40)(0.60) = 0.2400 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2 · Easy]</strong> A fitted simple linear regression model is \\( \\hat{y} = 7x + 18 \\). What is the predicted target value \\( \\hat{y} \\) when the input feature is \\( x = 4 \\)?",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> A fitted simple linear regression model is \\( \\hat{y} = 7x + 18 \\). What is the predicted target value \\( \\hat{y} \\) when the input feature is \\( x = 4 \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "Substitute \\( x = 4 \\) into the regression equation: \\(\\hat{y} = 7(4) + 18\\).",
-            "ar": "Substitute \\( x = 4 \\) into the regression equation: \\(\\hat{y} = 7(4) + 18\\)."
+            "ar": null
           },
           {
             "en": "Substitute and simplify: \\(\\hat{y} = 28 + 18\\).",
-            "ar": "Substitute and simplify: \\(\\hat{y} = 28 + 18\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(28 + 18\\).",
-            "ar": "Compute the final value from: \\(28 + 18\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Substitute \\( x = 4 \\) into the regression equation: \\( \\hat{y} = 7(4) + 18 = 28 + 18 = 46 \\).",
-          "ar": "Substitute \\( x = 4 \\) into the regression equation: \\( \\hat{y} = 7(4) + 18 = 28 + 18 = 46 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> A binary classification model uses a logistic sigmoid function \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is defined by \\( \\sigma(z) = 0.5 \\), where \\( z = w_1 x_1 + w_0 \\). For a dataset with two features \\( x_1 \\) and \\( x_2 \\), the model's linear component is \\( z = 2x_1 - x_2 + b \\). If the classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\), what is the value of the bias \\( b \\)?",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> A binary classification model uses a logistic sigmoid function \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is defined by \\( \\sigma(z) = 0.5 \\), where \\( z = w_1 x_1 + w_0 \\). For a dataset with two features \\( x_1 \\) and \\( x_2 \\), the model's linear component is \\( z = 2x_1 - x_2 + b \\). If the classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\), what is the value of the bias \\( b \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "The logistic sigmoid function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is where \\( \\sigma(z) = 0.5 \\). Setting \\( \\sigma(z) = 0.5 \\) gives \\( \\frac{1}{1 + e^{-z}} = 0.5 \\), which implies \\( 1 = 0.5(1 + e^{-z}) \\), so \\( 2 = 1 + e^{-z} \\), and \\( e^{-z} = 1 \\). This occurs when \\( -z = 0 \\), or \\( z = 0 \\). Therefore, the decision boundary is defined by \\( z = 0 \\).",
-            "ar": "The logistic sigmoid function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is where \\( \\sigma(z) = 0.5 \\). Setting \\( \\sigma(z) = 0.5 \\) gives \\( \\frac{1}{1 + e^{-z}} = 0.5 \\), which implies \\( 1 = 0.5(1 + e^{-z}) \\), so \\( 2 = 1 + e^{-z} \\), and \\( e^{-z} = 1 \\). This occurs when \\( -z = 0 \\), or \\( z = 0 \\). Therefore, the decision boundary is defined by \\( z = 0 \\)."
+            "ar": null
           },
           {
             "en": "The linear component of the model is given by \\( z = w_1 x_1 + w_2 x_2 + b \\). In this problem, \\( z = 2x_1 - x_2 + b \\). Since the decision boundary is \\( z = 0 \\), we have \\( 2x_1 - x_2 + b = 0 \\).",
-            "ar": "The linear component of the model is given by \\( z = w_1 x_1 + w_2 x_2 + b \\). In this problem, \\( z = 2x_1 - x_2 + b \\). Since the decision boundary is \\( z = 0 \\), we have \\( 2x_1 - x_2 + b = 0 \\)."
+            "ar": null
           },
           {
             "en": "Use the resulting form to finish: \\(5 + b\\).",
-            "ar": "Use the resulting form to finish: \\(5 + b\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The logistic sigmoid function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is where \\( \\sigma(z) = 0.5 \\). Setting \\( \\sigma(z) = 0.5 \\) gives \\( \\frac{1}{1 + e^{-z}} = 0.5 \\), which implies \\( 1 = 0.5(1 + e^{-z}) \\), so \\( 2 = 1 + e^{-z} \\), and \\( e^{-z} = 1 \\). This occurs when \\( -z = 0 \\), or \\( z = 0 \\). Therefore, the decision boundary is defined by \\( z = 0 \\).\n\nThe linear component of the model is given by \\( z = w_1 x_1 + w_2 x_2 + b \\). In this problem, \\( z = 2x_1 - x_2 + b \\).\n\nSince the decision boundary is \\( z = 0 \\), we have \\( 2x_1 - x_2 + b = 0 \\).\n\nThe classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\). Substituting these values into the equation for the decision boundary:\n\\( 2(3) - 1 + b = 0 \\)\n\\( 6 - 1 + b = 0 \\)\n\\( 5 + b = 0 \\)\n\\( b = -5 \\)",
-          "ar": "The logistic sigmoid function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is where \\( \\sigma(z) = 0.5 \\). Setting \\( \\sigma(z) = 0.5 \\) gives \\( \\frac{1}{1 + e^{-z}} = 0.5 \\), which implies \\( 1 = 0.5(1 + e^{-z}) \\), so \\( 2 = 1 + e^{-z} \\), and \\( e^{-z} = 1 \\). This occurs when \\( -z = 0 \\), or \\( z = 0 \\). Therefore, the decision boundary is defined by \\( z = 0 \\).\n\nThe linear component of the model is given by \\( z = w_1 x_1 + w_2 x_2 + b \\). In this problem, \\( z = 2x_1 - x_2 + b \\).\n\nSince the decision boundary is \\( z = 0 \\), we have \\( 2x_1 - x_2 + b = 0 \\).\n\nThe classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\). Substituting these values into the equation for the decision boundary:\n\\( 2(3) - 1 + b = 0 \\)\n\\( 6 - 1 + b = 0 \\)\n\\( 5 + b = 0 \\)\n\\( b = -5 \\)"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Hard]</strong> For a bivariate feature dataset, \\( \\text{Cov}(x, y) = 24 \\), \\( \\text{Var}(x) = 8 \\), \\( \\bar{x} = 5 \\), and \\( \\bar{y} = 30 \\). Compute the OLS regression slope \\( \\hat{\\beta}_1 \\) and intercept \\( \\hat{\\beta}_0 \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> For a bivariate feature dataset, \\( \\text{Cov}(x, y) = 24 \\), \\( \\text{Var}(x) = 8 \\), \\( \\bar{x} = 5 \\), and \\( \\bar{y} = 30 \\). Compute the OLS regression slope \\( \\hat{\\beta}_1 \\) and intercept \\( \\hat{\\beta}_0 \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "The OLS slope is \\(\\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{24}{8}\\).",
-            "ar": "The OLS slope is \\(\\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{24}{8}\\)."
+            "ar": null
           },
           {
             "en": "The intercept is: \\(\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x}\\). Substitute and simplify: \\(\\hat{\\beta}_0 = 30 - (3)(5)\\).",
-            "ar": "The intercept is: \\(\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x}\\). Substitute and simplify: \\(\\hat{\\beta}_0 = 30 - (3)(5)\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(30 - 15\\).",
-            "ar": "Compute the final value from: \\(30 - 15\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The OLS slope is \\( \\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{24}{8} = 3 \\). The intercept is \\( \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 30 - (3)(5) = 30 - 15 = 15 \\).",
-          "ar": "The OLS slope is \\( \\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{24}{8} = 3 \\). The intercept is \\( \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 30 - (3)(5) = 30 - 15 = 15 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 5 · Easy]</strong> In evaluating a binary classifier, the confusion matrix shows \\( TP = 45 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
-          "ar": "<strong>[تدريب 5 · Easy]</strong> In evaluating a binary classifier, the confusion matrix shows \\( TP = 45 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy."
+          "ar": null
         },
         "hints": [
           {
             "en": "Accuracy is the ratio of correct predictions to total samples: \\(\\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN}\\).",
-            "ar": "Accuracy is the ratio of correct predictions to total samples: \\(\\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN}\\)."
+            "ar": null
           },
           {
             "en": "Substitute and simplify: \\(\\text{Accuracy} = \\frac{45 + 40}{105}\\).",
-            "ar": "Substitute and simplify: \\(\\text{Accuracy} = \\frac{45 + 40}{105}\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(\\frac{45 + 40}{105}\\).",
-            "ar": "Compute the final value from: \\(\\frac{45 + 40}{105}\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\% \\).",
-          "ar": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\% \\)."
+          "ar": null
         }
       },
       {

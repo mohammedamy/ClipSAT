@@ -206,9 +206,13 @@
 
       function textOf(htmlOrStr) {
         if (!htmlOrStr) return '';
-        var d = document.createElement('div');
-        d.innerHTML = htmlOrStr;
-        return (d.textContent || d.innerText || '').trim();
+        if (typeof DOMParser !== 'undefined') {
+          try {
+            var doc = new DOMParser().parseFromString(String(htmlOrStr), 'text/html');
+            return (doc.body && (doc.body.textContent || doc.body.innerText) || '').trim();
+          } catch (e) {}
+        }
+        return String(htmlOrStr).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
       }
 
       function addCard(front, back, tag, chEl, isCustom, customId) {
@@ -406,17 +410,22 @@
       var allLabel = isAr ? '🌐 جميع دروس المسار' : '🌐 All Lessons in Course';
       var starLabel = isAr ? '⭐ المميزة بنجمة' : '⭐ Starred Cards';
 
+      var _fcEsc = function(s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      };
       var html = '';
-      html += '<option value="__current__"' + (this.scope === 'chapter' && !this.selectedChapterId ? ' selected' : '') + '>' + currLabel + '</option>';
-      html += '<option value="__all__"' + (this.scope === 'all' ? ' selected' : '') + '>' + allLabel + '</option>';
-      html += '<option value="__starred__"' + (this.scope === 'starred' ? ' selected' : '') + '>' + starLabel + '</option>';
+      html += '<option value="__current__"' + (this.scope === 'chapter' && !this.selectedChapterId ? ' selected' : '') + '>' + _fcEsc(currLabel) + '</option>';
+      html += '<option value="__all__"' + (this.scope === 'all' ? ' selected' : '') + '>' + _fcEsc(allLabel) + '</option>';
+      html += '<option value="__starred__"' + (this.scope === 'starred' ? ' selected' : '') + '>' + _fcEsc(starLabel) + '</option>';
 
       if (chapters.length) {
-        html += '<optgroup label="' + (isAr ? 'دروس المسار' : 'Course Lessons') + '">';
+        html += '<optgroup label="' + _fcEsc(isAr ? 'دروس المسار' : 'Course Lessons') + '">';
         var self = this;
         chapters.forEach(function(ch, idx) {
           var isSel = (self.scope === 'chapter' && self.selectedChapterId === ch.id);
-          html += '<option value="' + ch.id + '"' + (isSel ? ' selected' : '') + '>' + (idx + 1) + '. ' + ch.title + '</option>';
+          html += '<option value="' + _fcEsc(ch.id) + '"' + (isSel ? ' selected' : '') + '>' + (idx + 1) + '. ' + _fcEsc(ch.title) + '</option>';
         });
         html += '</optgroup>';
       }
@@ -642,16 +651,29 @@
                  : 'قانون';
       }
 
+      var _safeCardFace = function(htmlStr, isCustomCard) {
+        if (!htmlStr) return '';
+        if (isCustomCard) {
+          if (typeof window.sanitizeSafeInlineHtml === 'function') return window.sanitizeSafeInlineHtml(htmlStr);
+          return String(htmlStr).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+        return String(htmlStr)
+          .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+          .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '');
+      };
+      var safeF = _safeCardFace(c.f, c.custom);
+      var safeB = _safeCardFace(c.b, c.custom);
+
       if (this.reverseMode) {
         if (tagEl) tagEl.textContent = isAr ? 'عكسي: استذكر المفهوم' : 'REVERSE: RECALL CONCEPT';
         if (backTagEl) backTagEl.textContent = tagLabel.toUpperCase();
-        if (frontEl) frontEl.innerHTML = c.b;
-        if (backEl) backEl.innerHTML = c.f;
+        if (frontEl) frontEl.innerHTML = safeB;
+        if (backEl) backEl.innerHTML = safeF;
       } else {
         if (tagEl) tagEl.textContent = tagLabel.toUpperCase();
         if (backTagEl) backTagEl.textContent = isAr ? 'الإجابة / القانون' : 'ANSWER / RECALL';
-        if (frontEl) frontEl.innerHTML = c.f;
-        if (backEl) backEl.innerHTML = c.b;
+        if (frontEl) frontEl.innerHTML = safeF;
+        if (backEl) backEl.innerHTML = safeB;
       }
 
       if (chEl) chEl.textContent = c.chapterTitle || '';

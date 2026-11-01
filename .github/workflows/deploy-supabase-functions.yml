@@ -67,8 +67,8 @@ jobs:
           FUNCTIONS: ${{ steps.pick.outputs.functions }}
         run: |
           if [ -z "$SUPABASE_ACCESS_TOKEN" ]; then
-            echo "::warning::SUPABASE_ACCESS_TOKEN secret is not set, so nothing was deployed. Add it under Settings → Secrets and variables → Actions, then re-run this workflow."
-            exit 0
+            echo "::error::SUPABASE_ACCESS_TOKEN secret is not set — Supabase Edge Functions were NOT deployed. Add SUPABASE_ACCESS_TOKEN under Settings → Secrets and variables → Actions, then re-run this workflow."
+            exit 1
           fi
           for fn in $FUNCTIONS; do
             echo "::group::Deploy $fn"

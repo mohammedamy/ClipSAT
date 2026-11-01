@@ -2,6 +2,11 @@ const { renderChapterMath } = require("./scripts/katex-ssr.js");
 const { stampSwVersion } = require("./scripts/stamp-sw-version.js");
 
 module.exports = function (eleventyConfig) {
+  // Exclude internal developer preview page from production builds unless explicitly opted in
+  if (process.env.CLIPSAT_INCLUDE_DEV_PREVIEW !== "1") {
+    eleventyConfig.ignores.add("src/dev-content-preview/**");
+  }
+
   // ── Static assets: copy public/css → _site/css, public/js → _site/js ──────
   eleventyConfig.addPassthroughCopy({ "public/css": "css" });
   eleventyConfig.addPassthroughCopy({ "public/js": "js" });
@@ -90,9 +95,14 @@ module.exports = function (eleventyConfig) {
   let _renderFigFn = null;
   if (fs.existsSync(figuresPath)) {
     try {
+      const vm = require("vm");
       const code = fs.readFileSync(figuresPath, "utf8");
       const figWindow = {};
-      new Function("window", code)(figWindow);
+      vm.runInNewContext(code, {
+        window: figWindow,
+        Math, Object, Array, Number, String, Boolean, RegExp, Date, JSON,
+        parseFloat, parseInt, isNaN, isFinite, console
+      });
       _renderFigFn = figWindow._renderFig || null;
     } catch (e) {
       console.warn("Could not load figures.js for SSR:", e.message);

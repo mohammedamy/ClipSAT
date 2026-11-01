@@ -279,7 +279,7 @@
         }
       } else if(/\b[a-zA-Z]{3,}\s+[a-zA-Z]{2,}\s+[a-zA-Z]{2,}\b/.test(stripped)){
         /* Unwrapped English sentence inside math mode */
-        var cleanProse = tex
+        var cleanProse = _esc(tex)
           .replace(/(-?\d+(?:\.\d+)?|\\frac\{[^}]+\}\{[^}]+\}|[a-zA-Z]_\d+|[a-zA-Z]\^\d+)/g, '\\($1\\)');
         var span = document.createElement('span');
         span.innerHTML = cleanProse;
@@ -411,7 +411,7 @@
         p_line: 0,
         p_col: 0,
         p_stack: JSON.stringify(flagRecord).slice(0, 3900),
-        p_page_url: location.href,
+        p_page_url: location.origin + location.pathname,
         p_user_agent: navigator.userAgent
       }).then(function(){}, function(){});
     }, function(){});

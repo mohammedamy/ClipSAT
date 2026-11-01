@@ -59,6 +59,8 @@ app.secret_key = os.environ.get('FLASK_SECRET_KEY', os.urandom(32))
 ANTHROPIC_API_KEY    = os.environ.get('ANTHROPIC_API_KEY', '')
 ALLOWED_ORIGIN       = os.environ.get('CLIPSAT_ALLOWED_ORIGIN', 'http://localhost')
 IS_PRODUCTION        = os.environ.get('FLASK_ENV', 'development') == 'production'
+LEGACY_PROXY_ENABLED = os.environ.get('CLIPSAT_LEGACY_PROXY_ENABLED', '0') == '1'
+LEGACY_PROXY_TOKEN   = os.environ.get('CLIPSAT_LEGACY_PROXY_TOKEN', '')
 DAILY_QUESTION_LIMIT = 20     # 20 questions per day (legacy fallback proxy; the Supabase ai-proxy is authoritative); no other limits
 ANTHROPIC_MODEL      = 'claude-haiku-4-5-20251001'   # cost-effective tutoring model
 ANTHROPIC_MAX_TOKENS = 2048
@@ -104,14 +106,22 @@ def get_client() -> anthropic.Anthropic:
 # ═════════════════════════════════════════════════════════════════════════════
 
 def require_allowed_origin(f):
-    """Decorator: reject requests whose Origin does not match ALLOWED_ORIGIN."""
+    """Decorator: reject requests unless legacy proxy is enabled and Origin matches ALLOWED_ORIGIN."""
     @wraps(f)
     def decorated(*args, **kwargs):
-        if IS_PRODUCTION:
-            origin = request.headers.get('Origin', '')
-            if origin.rstrip('/') != ALLOWED_ORIGIN.rstrip('/'):
-                log.warning("Blocked request from disallowed origin: %s", origin)
-                return _error('Forbidden', 403)
+        if not LEGACY_PROXY_ENABLED:
+            return _error('Legacy Flask proxy is disabled; use Supabase ai-proxy.', 403, 'LEGACY_DISABLED')
+        origin = request.headers.get('Origin', '')
+        allowed_set = {ALLOWED_ORIGIN.rstrip('/'), 'https://clipsat.org', 'https://www.clipsat.org'}
+        if not IS_PRODUCTION:
+            allowed_set.update({'http://localhost', 'http://localhost:8080', 'http://127.0.0.1:8080'})
+        if not origin or origin.rstrip('/') not in allowed_set:
+            log.warning("Blocked request from disallowed origin: %s", origin)
+            return _error('Forbidden', 403)
+        if LEGACY_PROXY_TOKEN:
+            auth_hdr = request.headers.get('Authorization', '')
+            if auth_hdr != f'Bearer {LEGACY_PROXY_TOKEN}':
+                return _error('Unauthorized', 401)
         return f(*args, **kwargs)
     return decorated
 
@@ -124,18 +134,23 @@ def validate_chat_payload(data: dict) -> str | None:
     message = data.get('message', '')
     if not message or not isinstance(message, str):
         return 'Field "message" is required and must be a non-empty string.'
+    if len(message) > 8000:
+        return 'Field "message" exceeds 8,000 characters.'
 
     history = data.get('history', [])
     if not isinstance(history, list):
         return 'Field "history" must be a list.'
+    if len(history) > 20:
+        return 'Field "history" exceeds 20 turns.'
 
     for turn in history:
         if not isinstance(turn, dict):
             return 'Each history turn must be an object.'
         if turn.get('role') not in ('user', 'assistant'):
             return 'History turn role must be "user" or "assistant".'
-        if not isinstance(turn.get('content', ''), str):
-            return 'History turn content must be a string.'
+        content = turn.get('content', '')
+        if not isinstance(content, str) or len(content) > 8000:
+            return 'History turn content must be a string up to 8,000 characters.'
 
     return None  # valid
 
@@ -262,7 +277,8 @@ def _error(message: str, status: int, code: str = 'ERROR'):
 # ═════════════════════════════════════════════════════════════════════════════
 
 if __name__ == '__main__':
-    debug = not IS_PRODUCTION
+    debug = False
+    host  = os.environ.get('HOST', '127.0.0.1')
     port  = int(os.environ.get('PORT', 5000))
-    log.info("Starting ClipSAT proxy on port %d (debug=%s)", port, debug)
-    app.run(host='0.0.0.0', port=port, debug=debug)
+    log.info("Starting ClipSAT proxy on %s:%d (debug=%s)", host, port, debug)
+    app.run(host=host, port=port, debug=debug)

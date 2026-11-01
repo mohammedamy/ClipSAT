@@ -1,53 +1,35 @@
 /**
- * ClipSAT Cloud Sync  v1.0
+ * ClipSAT Cloud Sync  v2.0 — Anti-Tracking Resilient Edition
  * ════════════════════════════════════════════════════════════════════════
  * Adds OPTIONAL cross-device accounts on top of ClipSAT's existing
  * localStorage-only progress system — without touching engine.js.
  *
- * How it works
- * ────────────
- *   ClipSAT already keeps every bit of a student's progress in a handful
- *   of known localStorage keys: the mistake log (clipsat_mistakes_v2),
- *   SRS flashcard schedule (clipsat_srs_state), chapter visit counts
- *   (clipsat_visited), XP/streak, daily-goal tracking, and the exam date.
- *   This module treats those keys as the single source of truth on-device
- *   and mirrors them to Supabase:
- *
- *     - On sign-in: pull the cloud copy and MERGE it into localStorage
- *       (newest-record-wins per entry, union of ids/keys), so anything
- *       already on this device survives untouched.
- *     - On every write to a watched key: debounce ~4s, then push the
- *       current value up to Supabase.
- *
- *   Every existing ClipSAT function (ML.add, CSGamify, the daily-goal
- *   bar, …) keeps reading/writing localStorage exactly as it does today —
- *   this module only listens in from the outside. If cloud-config.js is
- *   left at its placeholder values, this whole file no-ops on load and
- *   ClipSAT behaves exactly as it does right now.
- *
- * Setup (see SUPABASE_SETUP.md for the full walkthrough)
- * ─────
- *   1. Create a free Supabase project.
- *   2. Run supabase/schema.sql once, in that project's SQL editor.
- *   3. Fill in public/js/cloud-config.js with the project URL + anon key.
- *
- * Public API — window.ClipSATCloud
- * ─────────────────────────────────
- *   .configured               → bool, false until cloud-config.js is filled in
- *   .signInWithEmail(email)   → emails a one-time code, returns a Promise
- *   .verifyEmailCode(email,code) → verifies that code and signs in, returns a Promise
- *   .signOut()
- *   .isSignedIn()             → bool
- *   .currentEmail()           → string | null
- *   .syncNow()                → force an immediate push (normally automatic)
+ * Chrome + AVG AntiTrack / Privacy-Extension Hardening (5 Layers)
+ * ─────────────────────────────────────────────────────────────────
+ *   1. Self-hosted first-party SDK (/vendor/supabase/supabase.min.js) so
+ *      third-party CDN blockers never prevent Supabase client startup, with
+ *      guaranteed ClipSATCloud.ready settlement on any load failure.
+ *   2. Custom in-memory timed mutex (never touches navigator.locks, which
+ *      deadlocks when AVG AntiTrack's Chrome content script hooks page async
+ *      APIs) + 6.5s AbortController fetch wrapper so dropped packets to
+ *      *.supabase.co never permanently wedge GoTrue's internal lock queue,
+ *      plus zero reentrant sb.auth.getUser() calls inside onAuthStateChange.
+ *   3. Synchronous OAuth fragment capture (in cloud-config.js) + zero-XHR
+ *      local JWT claim validation & session hydration fallback when AVG
+ *      AntiTrack blocks GoTrue's post-redirect GET /auth/v1/user XHR, AND
+ *      non-destructive localStorage session persistence across reloads.
+ *   4. Direct top-level navigation to /auth/v1/authorize for Google Sign-In
+ *      (zero pre-redirect XHR, zero lock wait, no synthetic popup canary).
+ *   5. Automatic same-origin reverse-proxy failover (/api/supabase/*) when
+ *      *.supabase.co XHRs are blocked by anti-tracking extensions, plus
+ *      actionable anti-tracking recovery controls in #cloud-auth-health-warning.
  */
 (function () {
   'use strict';
 
   var CFG = window.CLIPSAT_CLOUD_CONFIG;
   if (!CFG || !CFG.url || !CFG.anonKey || CFG.url.indexOf('YOUR-PROJECT') !== -1) {
-    // Not configured yet — fail silent. ClipSAT works exactly as before.
-    window.ClipSATCloud = { configured: false };
+    window.ClipSATCloud = { configured: false, ready: Promise.resolve() };
     return;
   }
 
@@ -56,229 +38,571 @@
     'clipsat_xp', 'clipsat_streak', 'clipsat_exam_date',
     'clipsat_daily_goal', 'clipsat_dg_today', 'clipsat_dg_streak', 'clipsat_dg_last'
   ];
+  var DELETED_MISTAKES_KEY = 'clipsat_mistakes_deleted_v1';
+  var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
+
+  var DIRECT_URL = String(CFG.url).replace(/\/+$/, '');
+  var PROJECT_REF = (function () {
+    var m = /^https?:\/\/([a-z0-9-]+)\.supabase\.co$/i.exec(DIRECT_URL);
+    return m ? m[1] : 'clipsat';
+  })();
+  var AUTH_STORAGE_KEY = 'sb-' + PROJECT_REF + '-auth-token';
+  var PROXY_BASE_URL = (function () {
+    try {
+      if (!CFG.proxyPath || typeof window.location === 'undefined' || !/^https?:$/i.test(window.location.protocol)) {
+        return '';
+      }
+      return window.location.origin + String(CFG.proxyPath).replace(/\/+$/, '');
+    } catch (e) {
+      return '';
+    }
+  })();
 
   var sb = null;
   var pushTimer = null;
   var _cachedUser = null;
-  // Resolves once the initial getSession() check below has settled (signed
-  // in or not) — exposed on window.ClipSATCloud.ready so callers made in the
-  // first instant after page load (e.g. engine.js's AI proxy call) can wait
-  // on it instead of racing isSignedIn()/getClient() while the SDK is still
-  // loading from its CDN <script> tag.
+  var _cachedSession = null;
+  var _useFirstPartyProxy = false;
+  var _proxyAvailability = null; // null = untested, true = working, false = unavailable (e.g. raw GitHub Pages 404/405)
+  var _antiTrackDetected = false;
+  var _healthNotice = null;
+  var _explicitSignOut = false;
+
+  var _readySettled = false;
   var _readyResolve;
-  var _readyPromise = new Promise(function (resolve) { _readyResolve = resolve; });
+  var _readyPromise = new Promise(function (resolve) {
+    _readyResolve = function () {
+      if (!_readySettled) {
+        _readySettled = true;
+        resolve();
+      }
+    };
+  });
 
-  function log(msg) { if (window.CLIPSAT_CLOUD_DEBUG) { try { console.log('[ClipSATCloud]', msg); } catch (e) {} } }
+  function log(msg) {
+    if (window.CLIPSAT_CLOUD_DEBUG) {
+      try { console.log('[ClipSATCloud]', msg); } catch (e) {}
+    }
+  }
 
+  function noop() {}
+
+  function safeSetItem(origSet, key, val) {
+    try {
+      (origSet || localStorage.setItem.bind(localStorage))(key, val);
+      return true;
+    } catch (e) {
+      log('localStorage.setItem failed for ' + key + ': ' + (e && e.message));
+      return false;
+    }
+  }
+
+  function safeParse(key, fallback) {
+    try {
+      var raw = localStorage.getItem(key);
+      if (!raw) return fallback;
+      var v = JSON.parse(raw);
+      return v === null ? fallback : v;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function objectValues(obj) {
+    return Object.keys(obj).map(function (k) { return obj[k]; });
+  }
+
+  /* ── Layer 2A: Non-navigator.locks In-Memory Timed Mutex ─────────────────
+   * Replaces GoTrue's default navigator.locks.request(), which hangs forever
+   * in Chrome when AVG AntiTrack or privacy extensions hook page locks/storage
+   * or when a reentrant auth listener triggers an inner lock acquisition. */
+  var _lockQueues = {};
+  function inMemoryTimedLock(name, acquireTimeout, fn) {
+    var prev = _lockQueues[name] || Promise.resolve();
+    var releaseNext;
+    var gate = new Promise(function (resolve) { releaseNext = resolve; });
+    _lockQueues[name] = prev.then(function () { return gate; }, function () { return gate; });
+
+    var waitMs = (typeof acquireTimeout === 'number' && acquireTimeout > 0) ? Math.min(acquireTimeout, 5000) : 5000;
+    var waitRace = Promise.race([
+      prev,
+      new Promise(function (resolve) { setTimeout(resolve, waitMs); })
+    ]);
+
+    return waitRace.then(function () {
+      var safetyTimer = setTimeout(releaseNext, 6000);
+      return Promise.resolve().then(fn).then(
+        function (res) { clearTimeout(safetyTimer); releaseNext(); return res; },
+        function (err) { clearTimeout(safetyTimer); releaseNext(); throw err; }
+      );
+    });
+  }
+
+  /* ── Layer 2B & Layer 5: Abortable Fetch + Automatic First-Party Proxy Failover ── */
+  var FETCH_TIMEOUT_MS = 6500;
+
+  function fetchWithTimeout(url, options, timeoutMs) {
+    var ms = timeoutMs || FETCH_TIMEOUT_MS;
+    var opts = Object.assign({}, options || {});
+    var ctrl = (!opts.signal && typeof AbortController === 'function') ? new AbortController() : null;
+    if (ctrl) opts.signal = ctrl.signal;
+
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      var timer = setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        if (ctrl) { try { ctrl.abort(); } catch (e) {} }
+        reject(new TypeError('Failed to fetch (request timed out after ' + ms + 'ms)'));
+      }, ms);
+
+      try {
+        fetch(url, opts).then(
+          function (res) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timer);
+            resolve(res);
+          },
+          function (err) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timer);
+            reject(err);
+          }
+        );
+      } catch (syncErr) {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timer);
+          reject(syncErr);
+        }
+      }
+    });
+  }
+
+  function rewriteToProxy(targetUrl) {
+    if (!PROXY_BASE_URL) return null;
+    var s = String(targetUrl || '');
+    if (s.indexOf(DIRECT_URL) === 0) {
+      return PROXY_BASE_URL + s.slice(DIRECT_URL.length);
+    }
+    return null;
+  }
+
+  function resilientSupabaseFetch(input, initOpts) {
+    var rawUrl = (typeof input === 'string') ? input : (input && input.url ? input.url : String(input));
+    var proxiedUrl = rewriteToProxy(rawUrl);
+
+    if (_useFirstPartyProxy && proxiedUrl) {
+      return fetchWithTimeout(proxiedUrl, initOpts, FETCH_TIMEOUT_MS);
+    }
+
+    return fetchWithTimeout(rawUrl, initOpts, FETCH_TIMEOUT_MS)['catch'](function (err) {
+      // Network TypeError ("Failed to fetch") or AbortError when calling *.supabase.co
+      // is the exact signature of AVG AntiTrack / tracker-blocking extensions in Chrome.
+      if (rawUrl.indexOf(DIRECT_URL) === 0) {
+        _antiTrackDetected = true;
+        log('Direct request to *.supabase.co blocked/timed out (' + (err && err.message) + ')');
+        if (proxiedUrl && _proxyAvailability !== false) {
+          return fetchWithTimeout(proxiedUrl, initOpts, FETCH_TIMEOUT_MS).then(function (proxyRes) {
+            // Static hosts without Cloudflare Functions return 404 or 405 on /api/supabase/*
+            if (proxyRes.status === 404 || proxyRes.status === 405) {
+              _proxyAvailability = false;
+              throw err;
+            }
+            _proxyAvailability = true;
+            _useFirstPartyProxy = true;
+            _antiTrackDetected = false;
+            log('Switched seamlessly to first-party /api/supabase proxy');
+            return proxyRes;
+          });
+        }
+      }
+      throw err;
+    });
+  }
+
+  /* ── Layer 3: Local JWT Validation & Zero-XHR OAuth Hydration ──────────── */
+  function decodeJwtPayload(jwt) {
+    try {
+      var parts = String(jwt || '').split('.');
+      if (parts.length !== 3) return null;
+      var b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4 !== 0) b64 += '=';
+      var bin = atob(b64);
+      var bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      var jsonStr = (typeof TextDecoder === 'function')
+        ? new TextDecoder('utf-8').decode(bytes)
+        : decodeURIComponent(escape(bin));
+      return JSON.parse(jsonStr);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function isValidUuid(s) {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(s || ''));
+  }
+
+  function buildSessionFromOAuthTokens(oauth) {
+    if (!oauth || !oauth.access_token || !oauth.refresh_token) return null;
+    var claims = decodeJwtPayload(oauth.access_token);
+    if (!claims || !isValidUuid(claims.sub)) return null;
+
+    var nowSec = Math.floor(Date.now() / 1000);
+    if (claims.exp && claims.exp <= nowSec) return null;
+    if (claims.iss && String(claims.iss).indexOf(DIRECT_URL + '/auth/v1') !== 0) return null;
+    if (claims.aud && claims.aud !== 'authenticated') return null;
+
+    var expSec = claims.exp || (nowSec + (oauth.expires_in || 3600));
+    var appMeta = (claims.app_metadata && typeof claims.app_metadata === 'object')
+      ? claims.app_metadata
+      : { provider: 'google', providers: ['google'] };
+    var userMeta = (claims.user_metadata && typeof claims.user_metadata === 'object')
+      ? claims.user_metadata
+      : {};
+    var providerName = appMeta.provider || 'google';
+    var email = claims.email || userMeta.email || '';
+
+    var user = {
+      id: claims.sub,
+      aud: claims.aud || 'authenticated',
+      role: claims.role || 'authenticated',
+      email: email,
+      email_confirmed_at: new Date().toISOString(),
+      phone: claims.phone || '',
+      app_metadata: appMeta,
+      user_metadata: userMeta,
+      identities: [{ provider: providerName, id: claims.sub, user_id: claims.sub }]
+    };
+
+    var session = {
+      access_token: oauth.access_token,
+      refresh_token: oauth.refresh_token,
+      token_type: oauth.token_type || 'bearer',
+      expires_in: Math.max(60, expSec - nowSec),
+      expires_at: expSec,
+      user: user
+    };
+    if (oauth.provider_token) session.provider_token = oauth.provider_token;
+    if (oauth.provider_refresh_token) session.provider_refresh_token = oauth.provider_refresh_token;
+    return session;
+  }
+
+  function persistLocalSession(session) {
+    if (!session || !session.access_token || !session.user) return;
+    _cachedSession = session;
+    _cachedUser = session.user;
+    safeSetItem(null, AUTH_STORAGE_KEY, JSON.stringify(session));
+  }
+
+  function readPersistedSessionFallback() {
+    try {
+      var raw = localStorage.getItem(AUTH_STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      // Unparseable JSON falls into catch below; valid shape check:
+      var sess = (parsed && parsed.currentSession) ? parsed.currentSession : parsed;
+      if (!sess || typeof sess !== 'object' || !sess.access_token || !sess.user || !isValidUuid(sess.user.id)) {
+        // Truly malformed legacy entry — remove only this broken key
+        localStorage.removeItem(AUTH_STORAGE_KEY);
+        _healthNotice = 'corrupted';
+        return null;
+      }
+      var claims = decodeJwtPayload(sess.access_token);
+      var nowSec = Math.floor(Date.now() / 1000);
+      var exp = (claims && claims.exp) || sess.expires_at || 0;
+      // Keep session if token is still valid (with 30s clock-skew grace)
+      if (exp > 0 && exp + 30 < nowSec) {
+        return null; // Expired token; requires online refresh
+      }
+      return sess;
+    } catch (e) {
+      // Corrupted JSON in AUTH_STORAGE_KEY — clean up so SDK doesn't crash
+      try { localStorage.removeItem(AUTH_STORAGE_KEY); } catch (_) {}
+      _healthNotice = 'corrupted';
+      return null;
+    }
+  }
+
+  /* ── Layer 1: Self-Hosted First-Party SDK Loader with CDN Fallback ─────── */
   function loadSDK(cb) {
-    if (window.supabase) { cb(); return; }
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+      cb();
+      return;
+    }
+    var localScript = document.createElement('script');
+    localScript.src = '/vendor/supabase/supabase.min.js';
+    localScript.onload = function () {
+      if (window.supabase && typeof window.supabase.createClient === 'function') {
+        cb();
+      } else {
+        loadCdnFallback(cb);
+      }
+    };
+    localScript.onerror = function () {
+      loadCdnFallback(cb);
+    };
+    document.head.appendChild(localScript);
+  }
+
+  function loadCdnFallback(cb) {
     var s = document.createElement('script');
-    // Pinned, NOT floating "@2" — floating always serves whatever the
-    // newest 2.x release happens to be, which silently broke Google
-    // sign-in here: the OAuth round-trip completed successfully (Supabase's
-    // own Auth Logs showed a clean Login event, no errors) and the tokens
-    // genuinely landed in the URL on return, but detectSessionInUrl() never
-    // turned them into a session — confirmed live, including with a
-    // freshly-constructed client mid-page, ruling out any timing/init-order
-    // issue on ClipSAT's own side. 2.112.4 (pulled by "@2" as of 2026-08-28)
-    // shipped two auth-lock/refresh-coordination fixes 4 days prior
-    // (supabase/supabase-js #2616, #2627) touching exactly this code path.
-    // Pinned to 2.112.3 (2026-08-11), the last release before those,
-    // instead of chasing the exact regression in a 212KB minified bundle.
-    // If Google sign-in is confirmed working again, this can very likely
-    // move forward past 2.112.4 too — re-test before assuming it's still
-    // broken there.
     s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.min.js';
     s.crossOrigin = 'anonymous';
     s.onload = cb;
-    s.onerror = function () { log('failed to load Supabase SDK from CDN — staying local-only'); };
+    s.onerror = function () {
+      log('failed to load Supabase SDK — activating zero-SDK local OAuth fallback');
+      var captured = (typeof window.__CLIPSAT_CONSUME_OAUTH_HASH__ === 'function')
+        ? window.__CLIPSAT_CONSUME_OAUTH_HASH__()
+        : null;
+      var localSess = (captured && buildSessionFromOAuthTokens(captured)) || readPersistedSessionFallback();
+      if (localSess) {
+        persistLocalSession(localSess);
+        restorePostSignInHash();
+      }
+      renderAuthUI();
+      _readyResolve();
+    };
     document.head.appendChild(s);
   }
 
-  // ── "Only works in incognito" root cause ───────────────────────────────
-  // Two real, confirmed failure modes both land here, and neither ever
-  // showed up in incognito (a fresh profile has no extensions running by
-  // default, and no leftover localStorage from before the SDK pin above):
-  //
-  //  1. A browser extension silently drops requests to *.supabase.co (or
-  //     otherwise interferes with the page) in the user's normal profile —
-  //     confirmed live not to require an ad blocker specifically: a plain
-  //     Chrome profile with zero ad blockers still failed until every
-  //     extension was disabled, narrowing it to *some* other extension
-  //     (password manager / privacy-VPN / shopping-coupon tools are the
-  //     common culprits — anything injecting a content script into every
-  //     page). getSession() then never resolves OR rejects; it just
-  //     hangs forever. Nothing downstream ever ran: _readyResolve() never
-  //     fired (so anything awaiting window.ClipSATCloud.ready — e.g. the
-  //     AI proxy call — hung too), and renderAuthUI() never ran, so the
-  //     sign-in button's own click handler might not even be wired up yet
-  //     depending on timing. Fixed by racing getSession() against a
-  //     timeout below, so the module always finishes initializing either
-  //     way and the user sees an actionable warning instead of nothing.
-  //
-  //  2. A leftover, unparseable session object sits in this browser's
-  //     localStorage from before the SDK pin at the top of this file
-  //     (the floating "@2" that broke detectSessionInUrl() — see that
-  //     comment) — supabase-js's storage layer can throw synchronously
-  //     while trying to read/parse it, rejecting getSession() outright.
-  //     Recovered below by clearing just the Supabase auth storage keys
-  //     and retrying once — the user ends up signed out (same as a fresh
-  //     incognito session) instead of permanently stuck.
-  var GETSESSION_TIMEOUT_MS = 8000;
-  var _healthNotice = null; // set if init() had to recover from #1/#2 above — surfaced next time the sign-in modal opens
-
-  function clearStaleAuthStorage() {
-    try {
-      Object.keys(localStorage).forEach(function (k) {
-        // supabase-js's own storage key shape: sb-<project-ref>-auth-token
-        if (k.indexOf('sb-') === 0 && k.indexOf('-auth-token') !== -1) localStorage.removeItem(k);
-      });
-    } catch (e) {}
-  }
-
-  function getSessionWithRecovery() {
-    var timedOut = false;
-    return Promise.race([
-      sb.auth.getSession(),
-      new Promise(function (resolve) {
-        setTimeout(function () { timedOut = true; resolve({ data: { session: null } }); }, GETSESSION_TIMEOUT_MS);
-      })
-    ]).then(function (r) {
-      if (timedOut) {
-        log('getSession() did not respond within ' + GETSESSION_TIMEOUT_MS + 'ms — treating as signed-out (likely a blocked request)');
-        _healthNotice = 'stalled';
-      }
-      return r;
-    })['catch'](function (err) {
-      log('getSession() threw (' + (err && err.message) + ') — clearing local auth storage and retrying once');
-      _healthNotice = 'corrupted';
-      clearStaleAuthStorage();
-      return sb.auth.getSession()['catch'](function () { return { data: { session: null } }; });
-    });
+  function hydrateSignedInSession(session, isFreshOAuth) {
+    if (!session || !session.user) return;
+    _cachedSession = session;
+    _cachedUser = session.user;
+    renderAuthUI();
+    if (isFreshOAuth) {
+      maybeStoreGoogleRefreshToken(session);
+      restorePostSignInHash();
+    }
+    // Defer pullAndMerge to a clean macrotask — NEVER run Supabase queries synchronously
+    // inside onAuthStateChange or lock callbacks (prevents GoTrue v2 lock reentrancy).
+    setTimeout(pullAndMerge, 0);
   }
 
   function init() {
-    sb = window.supabase.createClient(CFG.url, CFG.anonKey);
+    var capturedOAuth = (typeof window.__CLIPSAT_CONSUME_OAUTH_HASH__ === 'function')
+      ? window.__CLIPSAT_CONSUME_OAUTH_HASH__()
+      : null;
 
-    getSessionWithRecovery().then(function (r) {
-      if (r.data && r.data.session) onSignedIn();
-      else renderAuthUI();
-      _readyResolve();
+    // Validate any existing persisted storage before creating the client so
+    // malformed pre-v2 JSON never causes supabase-js to throw on startup.
+    var persistedBeforeInit = readPersistedSessionFallback();
+
+    sb = window.supabase.createClient(DIRECT_URL, CFG.anonKey, {
+      auth: {
+        storageKey: AUTH_STORAGE_KEY,
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: false, // Handled deterministically below so AVG AntiTrack cannot drop tokens!
+        lock: inMemoryTimedLock
+      },
+      realtime: {
+        // Guard against privacy suites / hardened WebViews that strip window.WebSocket:
+        // @supabase/realtime-js@2.112+ throws synchronously in createClient() if transport is missing.
+        transport: (typeof WebSocket === 'function')
+          ? WebSocket
+          : function NoopWebSocket() { this.readyState = 3; this.close = function () {}; }
+      },
+      global: {
+        fetch: resilientSupabaseFetch
+      }
     });
 
     sb.auth.onAuthStateChange(function (event, session) {
-      if (event === 'SIGNED_IN' && session) { onSignedIn(); maybeStoreGoogleRefreshToken(session); restorePostSignInHash(); }
-      if (event === 'SIGNED_OUT') { _cachedUser = null; log('signed out — local progress untouched'); renderAuthUI(); }
+      if ((event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') && session && session.user) {
+        _cachedSession = session;
+        _cachedUser = session.user;
+        renderAuthUI();
+        if (event === 'SIGNED_IN') {
+          setTimeout(function () {
+            maybeStoreGoogleRefreshToken(session);
+            restorePostSignInHash();
+            pullAndMerge();
+          }, 0);
+        }
+      } else if (event === 'SIGNED_OUT') {
+        if (!_explicitSignOut && _cachedSession && _cachedUser) {
+          var chkClaims = decodeJwtPayload(_cachedSession.access_token);
+          var chkNow = Math.floor(Date.now() / 1000);
+          if (!chkClaims || !chkClaims.exp || chkClaims.exp + 30 > chkNow) {
+            // Spurious internal GoTrue SIGNED_OUT caused by a blocked refresh XHR —
+            // keep the verified local session alive!
+            persistLocalSession(_cachedSession);
+            return;
+          }
+        }
+        _cachedSession = null;
+        _cachedUser = null;
+        log('signed out — local progress untouched');
+        renderAuthUI();
+      }
     });
 
     watchLocalStorage();
     renderAuthUI();
-  }
 
-  // ── Sign-in flow: a one-time code, typed in rather than a clickable
-  // link. ClipSAT never sees or stores a password.
-  //
-  // Why a code instead of a link: Supabase magic links are single-use, and
-  // email security scanners (Outlook Safe Links, some corporate/Gmail mail
-  // filters) silently "pre-visit" links in incoming mail to check them for
-  // safety — that pre-visit consumes the one-time token before the user
-  // ever clicks it, so the real click always fails with otp_expired even
-  // seconds after the email arrives. A code the user has to type by hand
-  // can't be consumed that way. Same underlying Supabase call either way —
-  // signInWithOtp() emails both a link and a code by default; this flow
-  // just asks the user to act on the code. See SUPABASE_SETUP.md for the
-  // one-time email-template change needed so the code actually appears
-  // in the email (Supabase's default template only shows the link).
-  function signInWithEmail(email) {
-    return sb.auth.signInWithOtp({ email: email });
-  }
-  function verifyEmailCode(email, token) {
-    return sb.auth.verifyOtp({ email: email, token: token, type: 'email' });
-  }
-
-  // ── Sign-in flow: Google (one click, no code to type) ─────────────────
-  // Redirects the whole page to Google's consent screen and back — not a
-  // popup, since Supabase's own OAuth helper is redirect-based.
-  //
-  // Deliberately requests ONLY basic identity scopes here, not Forms/Drive.
-  // Earlier this sign-in also requested the Forms/Drive scopes up front
-  // (one click covers everything). The problem: Google treats Forms/Drive
-  // as sensitive/restricted scopes, and for an unverified app requesting
-  // them, Google refuses to show consent-screen branding at all — every
-  // user saw a scary "ynnqrxeprxhtdimzwxwx.supabase.co wants access to
-  // your Google Account" screen (raw project URL, no ClipSAT name/logo)
-  // on every sign-in, confirmed live in the browser. Proper OAuth
-  // verification for those scopes is a separate, slower fix (Google
-  // review). Splitting the scopes fixes it for everyone immediately: this
-  // flow now only ever asks for email/profile, which Google always
-  // branding-shows cleanly, no verification required. Forms/Drive access
-  // is requested incrementally, only when actually needed, via
-  // google-integration.js's ensureScopes() — see its own GIS popup flow
-  // and trySupabaseGoogleToken() (now just a no-op fallback here since
-  // maybeStoreGoogleRefreshToken() below never gets a refresh token to
-  // store without offline+consent, and that's fine).
-  var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
-  function signInWithGoogle() {
-    // ClipSAT's own view router uses a URL hash (#view/...) for
-    // navigation. Google's OAuth redirect ALSO delivers its result via a
-    // URL hash (#access_token=...) appended to whatever redirectTo was
-    // given — confirmed live: redirecting back to a page that already had
-    // its own hash produced one malformed fragment
-    // ("#view/est/est-about#access_token=...") that supabase-js's
-    // OAuth-callback detector doesn't recognize at all, so the session
-    // silently never got established despite the token clearly being
-    // present in the URL. Strip the hash before redirecting (so
-    // Supabase's own callback-hash lands clean) and save it here to
-    // restore the user's place afterward — see the SIGNED_IN handler.
-    try { sessionStorage.setItem(POST_SIGNIN_HASH_KEY, window.location.hash || ''); } catch (e) {}
-    return sb.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        scopes: 'email profile',
-        redirectTo: window.location.href.split('#')[0]
+    // Case A: Returning from Google OAuth redirect with #access_token=...
+    if (capturedOAuth && capturedOAuth.access_token) {
+      var localHydrated = buildSessionFromOAuthTokens(capturedOAuth);
+      if (localHydrated) {
+        // Hydrate at 0ms so Google Sign-In succeeds instantaneously even when
+        // AVG AntiTrack hangs or drops *.supabase.co background XHRs!
+        persistLocalSession(localHydrated);
+        hydrateSignedInSession(localHydrated, true);
+        _readyResolve();
       }
+      Promise.race([
+        sb.auth.setSession({
+          access_token: capturedOAuth.access_token,
+          refresh_token: capturedOAuth.refresh_token
+        }),
+        new Promise(function (resolve) {
+          setTimeout(function () { resolve({ data: { session: null }, error: new Error('SET_SESSION_TIMEOUT') }); }, 4500);
+        })
+      ]).then(function (res) {
+        if (res && res.data && res.data.session && res.data.session.user) {
+          persistLocalSession(res.data.session);
+          hydrateSignedInSession(res.data.session, !localHydrated);
+        } else if (!localHydrated) {
+          _healthNotice = 'error';
+          renderAuthUI();
+        }
+        _readyResolve();
+      })['catch'](function () {
+        if (!localHydrated) {
+          _healthNotice = 'error';
+          renderAuthUI();
+        }
+        _readyResolve();
+      });
+      return;
+    }
+
+    if (capturedOAuth && (capturedOAuth.error || capturedOAuth.error_description)) {
+      log('OAuth callback returned error: ' + (capturedOAuth.error_description || capturedOAuth.error));
+      _healthNotice = 'error';
+    }
+
+    // Case B: Normal page load — hydrate valid persisted session at 0ms, then refresh in background
+    if (persistedBeforeInit && persistedBeforeInit.user) {
+      hydrateSignedInSession(persistedBeforeInit, false);
+    }
+    Promise.race([
+      sb.auth.getSession(),
+      new Promise(function (resolve) {
+        setTimeout(function () { resolve({ _timedOut: true, data: { session: null } }); }, 5000);
+      })
+    ]).then(function (r) {
+      var liveSession = r && r.data && r.data.session;
+      if (liveSession && liveSession.user) {
+        hydrateSignedInSession(liveSession, false);
+      } else if (persistedBeforeInit && persistedBeforeInit.user) {
+        // Network refresh was blocked by AVG AntiTrack, but stored JWT is still valid!
+        // Keep the user signed in rather than wiping their session.
+        log('Preserved valid persisted session while network refresh was blocked');
+        hydrateSignedInSession(persistedBeforeInit, false);
+      } else {
+        if (r && r._timedOut) {
+          _antiTrackDetected = true;
+          _healthNotice = 'stalled';
+        }
+        renderAuthUI();
+      }
+      _readyResolve();
+    })['catch'](function () {
+      if (persistedBeforeInit && persistedBeforeInit.user) {
+        hydrateSignedInSession(persistedBeforeInit, false);
+      } else {
+        renderAuthUI();
+      }
+      _readyResolve();
     });
   }
 
-  // Restores the pre-sign-in hash-route saved above. Safe to call
-  // unconditionally on every SIGNED_IN event (including plain email
-  // sign-in, which never redirects at all) — sessionStorage simply won't
-  // have this key set in that case, so it's a no-op.
+  /* ── Sign-in Flows ─────────────────────────────────────────────────────── */
+  function signInWithEmail(email) {
+    if (!sb) return Promise.reject(new Error('Auth SDK unavailable'));
+    return sb.auth.signInWithOtp({ email: email });
+  }
+
+  function verifyEmailCode(email, token) {
+    if (!sb) return Promise.reject(new Error('Auth SDK unavailable'));
+    return sb.auth.verifyOtp({ email: email, token: token, type: 'email' });
+  }
+
+  /* ── Layer 4: Direct Top-Level Google OAuth Navigation ───────────────────
+   * Navigates straight to Supabase GoTrue's /auth/v1/authorize endpoint on
+   * the top-level window without acquiring any SDK lock, making any background
+   * XHR, or opening any synthetic popup canary. AVG AntiTrack never blocks
+   * user-initiated top-level OAuth navigations, and Layer 3 hydrates the
+   * returned #access_token fragment on return even if XHRs remain blocked. */
+  function signInWithGoogle() {
+    try { sessionStorage.setItem(POST_SIGNIN_HASH_KEY, window.location.hash || ''); } catch (e) {}
+    var redirectTo = window.location.href.split('#')[0];
+    var authBase = (_useFirstPartyProxy && PROXY_BASE_URL) ? PROXY_BASE_URL : DIRECT_URL;
+    var authorizeUrl = authBase + '/auth/v1/authorize'
+      + '?provider=google'
+      + '&scopes=' + encodeURIComponent('email profile')
+      + '&redirect_to=' + encodeURIComponent(redirectTo);
+
+    window.location.assign(authorizeUrl);
+    return Promise.resolve({ data: { provider: 'google', url: authorizeUrl }, error: null });
+  }
+
   function restorePostSignInHash() {
     var saved;
-    try { saved = sessionStorage.getItem(POST_SIGNIN_HASH_KEY); sessionStorage.removeItem(POST_SIGNIN_HASH_KEY); } catch (e) { saved = null; }
-    if (!saved) return;
+    try {
+      saved = sessionStorage.getItem(POST_SIGNIN_HASH_KEY);
+      sessionStorage.removeItem(POST_SIGNIN_HASH_KEY);
+    } catch (e) { saved = null; }
+    if (!saved || saved.indexOf('access_token=') !== -1) return;
     try { history.replaceState(null, '', window.location.pathname + window.location.search + saved); }
     catch (e) { window.location.hash = saved; }
   }
 
-  // Captures Google's OAuth refresh token the moment it's handed to us, IF
-  // one is present, and stores it via supabase/functions/google-token's
-  // backing table, so google-integration.js can get fresh Forms/Drive
-  // access tokens later without ever prompting the user again. Since
-  // signInWithGoogle() above no longer requests access_type:'offline' +
-  // prompt:'consent' (see its comment), Google no longer hands back a
-  // refresh token here at all — session.provider_refresh_token is always
-  // absent now, so this is currently a permanent no-op. Left in place
-  // rather than removed: harmless, and would spring back to life on its
-  // own if those query params are ever restored (e.g. once/if the app
-  // completes Google's OAuth verification for Forms/Drive and it becomes
-  // safe to request them up front again). Fire-and-forget either way: on
-  // failure the user just falls back to google-integration.js's own GIS
-  // popup when they try to use Forms — not fatal to sign-in itself.
   function maybeStoreGoogleRefreshToken(session) {
-    if (!session.provider_refresh_token) return;
+    if (!sb || !session || !session.provider_refresh_token || !session.user) return;
     sb.from('google_oauth_tokens')
-      .upsert({ user_id: session.user.id, refresh_token: session.provider_refresh_token, updated_at: new Date().toISOString() })
-      .then(function (r) { log(r.error ? ('failed to store Google refresh token: ' + r.error.message) : 'Google refresh token stored'); });
+      .upsert({
+        user_id: session.user.id,
+        refresh_token: session.provider_refresh_token,
+        updated_at: new Date().toISOString()
+      })
+      .then(function (r) {
+        log(r && r.error ? ('failed to store Google refresh token: ' + r.error.message) : 'Google refresh token stored');
+      }, noop);
   }
 
-  function signOut() { return sb.auth.signOut(); }
+  function signOut() {
+    _explicitSignOut = true;
+    _cachedSession = null;
+    _cachedUser = null;
+    try { localStorage.removeItem(AUTH_STORAGE_KEY); } catch (e) {}
+    renderAuthUI();
+    if (!sb) {
+      _explicitSignOut = false;
+      return Promise.resolve({ error: null });
+    }
+    return sb.auth.signOut().then(
+      function (r) { _explicitSignOut = false; return r; },
+      function () { _explicitSignOut = false; return { error: null }; }
+    );
+  }
+
+  function deleteMyAccount() {
+    if (!sb || !_cachedUser) return Promise.reject(new Error('NOT_SIGNED_IN'));
+    return sb.rpc('delete_my_account').then(function (res) {
+      if (res && res.error) throw new Error(res.error.message);
+      return signOut();
+    });
+  }
+
   function currentEmail() { return _cachedUser ? _cachedUser.email : null; }
-  // 'google' | 'email' | null — which provider the CURRENT session came
-  // through. google-integration.js uses this to decide whether it's worth
-  // even trying supabase/functions/google-token before falling back to its
-  // own popup flow.
+
   function currentProvider() {
     if (!_cachedUser) return null;
     var identities = _cachedUser.identities || [];
@@ -286,18 +610,40 @@
     return hasGoogle ? 'google' : (_cachedUser.app_metadata && _cachedUser.app_metadata.provider) || 'email';
   }
 
-  function onSignedIn() {
-    sb.auth.getUser().then(function (r) {
-      _cachedUser = r.data ? r.data.user : null;
-      renderAuthUI();
-      pullAndMerge();
-    });
+  function getActiveSession() {
+    if (sb) {
+      return Promise.race([
+        sb.auth.getSession(),
+        new Promise(function (resolve) { setTimeout(function () { resolve(null); }, 2500); })
+      ]).then(function (r) {
+        if (r && r.data && r.data.session && r.data.session.access_token) {
+          _cachedSession = r.data.session;
+          if (r.data.session.user) _cachedUser = r.data.session.user;
+          return { data: { session: r.data.session }, error: null };
+        }
+        var fallback = _cachedSession || readPersistedSessionFallback();
+        return { data: { session: fallback || null }, error: null };
+      })['catch'](function () {
+        var fallback = _cachedSession || readPersistedSessionFallback();
+        return { data: { session: fallback || null }, error: null };
+      });
+    }
+    var local = _cachedSession || readPersistedSessionFallback();
+    return Promise.resolve({ data: { session: local || null }, error: null });
   }
 
-  // ── Pull cloud data and merge into localStorage (newest wins, nothing dropped) ──
+  function getFunctionUrl(fnName) {
+    var clean = String(fnName || '').replace(/^\/+/, '');
+    if (_useFirstPartyProxy && PROXY_BASE_URL) {
+      return PROXY_BASE_URL + '/functions/v1/' + clean;
+    }
+    return DIRECT_URL + '/functions/v1/' + clean;
+  }
+
+  /* ── Pull Cloud Data & Merge into localStorage (Tombstone-Aware) ───────── */
   function pullAndMerge() {
     var uid = _cachedUser && _cachedUser.id;
-    if (!uid) return;
+    if (!uid || !sb) return;
 
     Promise.all([
       sb.from('profiles').select('*').eq('user_id', uid).maybeSingle(),
@@ -318,28 +664,32 @@
   function mergeProfile(row) {
     if (!row) return;
     var localXp = parseInt(localStorage.getItem('clipsat_xp') || '0', 10);
-    if (typeof row.xp === 'number' && row.xp > localXp) localStorage.setItem('clipsat_xp', String(row.xp));
+    if (typeof row.xp === 'number' && row.xp > localXp) safeSetItem(null, 'clipsat_xp', String(row.xp));
 
     var localStreak = parseInt(localStorage.getItem('clipsat_streak') || '0', 10);
-    if (typeof row.streak === 'number' && row.streak > localStreak) localStorage.setItem('clipsat_streak', String(row.streak));
+    if (typeof row.streak === 'number' && row.streak > localStreak) safeSetItem(null, 'clipsat_streak', String(row.streak));
 
     if (row.exam_date && !localStorage.getItem('clipsat_exam_date')) {
-      localStorage.setItem('clipsat_exam_date', row.exam_date);
+      safeSetItem(null, 'clipsat_exam_date', row.exam_date);
     }
-    if (row.daily_goal) localStorage.setItem('clipsat_daily_goal', String(row.daily_goal));
+    if (row.daily_goal) safeSetItem(null, 'clipsat_daily_goal', String(row.daily_goal));
 
     var localDgStreak = parseInt(localStorage.getItem('clipsat_dg_streak') || '0', 10);
     if (typeof row.dg_streak === 'number' && row.dg_streak > localDgStreak) {
-      localStorage.setItem('clipsat_dg_streak', String(row.dg_streak));
+      safeSetItem(null, 'clipsat_dg_streak', String(row.dg_streak));
     }
   }
 
   function mergeMistakes(rows) {
     if (!rows.length) return;
+    var deletedMap = safeParse(DELETED_MISTAKES_KEY, {});
     var local = safeParse('clipsat_mistakes_v2', []);
     var byId = {};
-    local.forEach(function (m) { byId[m.id] = m; });
+    local.forEach(function (m) { if (m && m.id) byId[m.id] = m; });
     rows.forEach(function (r) {
+      if (!r || !r.id || r.deleted_at) return;
+      var deletedAt = deletedMap[r.id] || 0;
+      if (deletedAt && deletedAt >= (r.ts || 0)) return; // Respect local deletion tombstone!
       var existing = byId[r.id];
       if (!existing || r.ts > existing.ts) {
         byId[r.id] = {
@@ -350,7 +700,7 @@
         };
       }
     });
-    localStorage.setItem('clipsat_mistakes_v2', JSON.stringify(objectValues(byId)));
+    safeSetItem(null, 'clipsat_mistakes_v2', JSON.stringify(objectValues(byId)));
   }
 
   function mergeSrsState(rows) {
@@ -362,20 +712,16 @@
         local[r.card_id] = { due: r.due, interval: r.interval_days };
       }
     });
-    localStorage.setItem('clipsat_srs_state', JSON.stringify(local));
+    safeSetItem(null, 'clipsat_srs_state', JSON.stringify(local));
   }
 
   function mergeVisits(rows) {
     if (!rows.length) return;
     var local = safeParse('clipsat_visited', {});
     rows.forEach(function (r) { local[r.track] = Math.max(local[r.track] || 0, r.count || 0); });
-    localStorage.setItem('clipsat_visited', JSON.stringify(local));
+    safeSetItem(null, 'clipsat_visited', JSON.stringify(local));
   }
 
-  // Same "max wins" merge strategy as mergeVisits above — a rare same-day,
-  // two-device race can under-count by a few attempts, which is an
-  // acceptable trade-off for a progress heatmap (matches the rest of this
-  // file's precedent; no bucket-level timestamp exists to do better).
   function mergeAccuracy(rows) {
     if (!rows.length) return;
     var local = safeParse('clipsat_accuracy_v1', {});
@@ -388,26 +734,59 @@
         t: Math.max(existing.t, r.total || 0)
       };
     });
-    localStorage.setItem('clipsat_accuracy_v1', JSON.stringify(local));
+    safeSetItem(null, 'clipsat_accuracy_v1', JSON.stringify(local));
   }
 
-  // ── Push on change: wrap localStorage.setItem for the keys we care about ──
+  /* ── Watch localStorage & Record Mistake Tombstones ────────────────────── */
   function watchLocalStorage() {
     var origSetItem = localStorage.setItem.bind(localStorage);
+    var origRemoveItem = localStorage.removeItem.bind(localStorage);
+
+    function recordMistakeRemovals(prevArr, nextArr) {
+      if (!Array.isArray(prevArr) || !prevArr.length) return;
+      var nextIds = {};
+      (nextArr || []).forEach(function (m) { if (m && m.id) nextIds[m.id] = true; });
+      var deletedMap = safeParse(DELETED_MISTAKES_KEY, {});
+      var nowMs = Date.now();
+      var changed = false;
+      prevArr.forEach(function (m) {
+        if (m && m.id && !nextIds[m.id]) {
+          deletedMap[m.id] = nowMs;
+          changed = true;
+        }
+      });
+      if (changed) safeSetItem(origSetItem, DELETED_MISTAKES_KEY, JSON.stringify(deletedMap));
+    }
+
     localStorage.setItem = function (key, value) {
+      if (key === 'clipsat_mistakes_v2') {
+        var prevMistakes = safeParse('clipsat_mistakes_v2', []);
+        var nextMistakes = [];
+        try { nextMistakes = JSON.parse(value || '[]') || []; } catch (e) {}
+        recordMistakeRemovals(prevMistakes, nextMistakes);
+      }
       origSetItem(key, value);
+      if (WATCHED_KEYS.indexOf(key) !== -1) schedulePush();
+    };
+
+    localStorage.removeItem = function (key) {
+      if (key === 'clipsat_mistakes_v2') {
+        var prevMistakes = safeParse('clipsat_mistakes_v2', []);
+        recordMistakeRemovals(prevMistakes, []);
+      }
+      origRemoveItem(key);
       if (WATCHED_KEYS.indexOf(key) !== -1) schedulePush();
     };
   }
 
   function schedulePush() {
     clearTimeout(pushTimer);
-    pushTimer = setTimeout(pushAll, 4000); // debounce rapid writes (e.g. answering several quiz questions in a row)
+    pushTimer = setTimeout(pushAll, 4000);
   }
 
   function pushAll() {
     var uid = _cachedUser && _cachedUser.id;
-    if (!uid) return; // not signed in — stay local-only, nothing to push
+    if (!uid || !sb) return;
 
     var nowIso = new Date().toISOString();
     var dgToday = safeParse('clipsat_dg_today', {});
@@ -434,6 +813,26 @@
           interval_days: m.interval, next_review: m.nextReview, updated_at: nowIso
         };
       })).then(noop, function (e) { log('mistakes push failed: ' + (e && e.message)); });
+    }
+
+    // Propagate local mistake deletions/clears to Supabase so cleared items never resurrect
+    var deletedMap = safeParse(DELETED_MISTAKES_KEY, {});
+    var currentIds = {};
+    mistakes.forEach(function (m) { if (m && m.id) currentIds[m.id] = true; });
+    var idsToDelete = Object.keys(deletedMap).filter(function (id) { return !currentIds[id]; });
+    if (idsToDelete.length) {
+      sb.from('mistakes').delete().eq('user_id', uid)['in']('id', idsToDelete.slice(0, 200))
+        .then(function (res) {
+          if (!res || !res.error) {
+            // Prune tombstones older than 30 days once synced
+            var cutoff = Date.now() - 30 * 86400000;
+            var nextDeleted = {};
+            Object.keys(deletedMap).forEach(function (id) {
+              if (deletedMap[id] > cutoff && !currentIds[id]) nextDeleted[id] = deletedMap[id];
+            });
+            safeSetItem(null, DELETED_MISTAKES_KEY, JSON.stringify(nextDeleted));
+          }
+        }, function (e) { log('mistakes delete sync failed: ' + (e && e.message)); });
     }
 
     var srs = safeParse('clipsat_srs_state', {});
@@ -463,30 +862,12 @@
     log('pushed to cloud');
   }
 
-  function noop() {}
-  function safeParse(key, fallback) {
-    try { var v = JSON.parse(localStorage.getItem(key) || 'null'); return v === null ? fallback : v; }
-    catch (e) { return fallback; }
-  }
-  function objectValues(obj) { return Object.keys(obj).map(function (k) { return obj[k]; }); }
-
-  // ── Auth UI hook — button + modal markup live in base.njk (build.js) ──────
+  /* ── Auth UI Hook ──────────────────────────────────────────────────────── */
   function renderAuthUI() {
     var btn = document.getElementById('cloudSignInBtn');
-    // Mobile header copy (base.njk) — icon-only, always visible at the very
-    // left of the header below the 760px breakpoint instead of hidden inside
-    // the hamburger panel with the rest of .nav-links. Mirrors this same
-    // signed-in/out state so a phone user isn't shown a "Sign in" icon while
-    // actually signed in.
     var mobileBtn = document.getElementById('cloudSignInBtnMobile');
     if (!btn && !mobileBtn) return;
     if (btn) {
-      // Built via DOM nodes (not innerHTML/textContent-of-the-whole-button) for two
-      // reasons: it avoids ever needing to HTML-escape the user's own email, and it
-      // keeps the label in its own <span> so the header's icon-only responsive CSS
-      // (#cloudSignInBtn span{display:none} below ~1350px) can hide just the text
-      // and leave the ☁️ icon — a plain textContent assignment here would silently
-      // wipe that span back out on every auth-state change and undo the CSS rule.
       btn.textContent = '';
       btn.appendChild(document.createTextNode('☁️ '));
       var label = document.createElement('span');
@@ -519,11 +900,7 @@
     }
   }
 
-  // ── Browser health check — storage, cookies, pop-ups ────────────────────
-  // Returns an array of issue codes (empty = all clear). Run at modal-open
-  // time (cheap, no popup) and again right when the Google button is
-  // clicked (adds the popup test, which needs a user gesture to be
-  // trustworthy — see checkPopups() below).
+  /* ── Browser Health Check (No Synthetic Popup Canary on Google Sign-In) ── */
   function checkStorage() {
     try {
       var k = '__clipsat_health_check__';
@@ -533,131 +910,94 @@
       return ok;
     } catch (e) { return false; }
   }
-  function checkPopups() {
-    // Opens and immediately closes a 1x1 "canary" window in the same
-    // synchronous tick as the user's click — same technique used across
-    // the web to detect a pop-up blocker without actually showing the
-    // user anything (closing before the next paint means it typically
-    // never becomes visible at all in Chrome/Firefox/Edge/Safari).
-    // window.open() returns null outright when blocked; some blockers
-    // instead return a window that's already .closed, or a
-    // window whose own properties throw on access (COOP/sandboxing) —
-    // all three are treated as "blocked".
-    try {
-      var w = window.open('', '', 'width=1,height=1,left=-2000,top=-2000');
-      if (!w) return false;
-      var blocked = false;
-      try { blocked = w.closed; } catch (e) { blocked = true; }
-      try { w.close(); } catch (e) {}
-      return !blocked;
-    } catch (e) { return false; }
-  }
-  function checkBrowserHealth(includePopupTest) {
+
+  function checkBrowserHealth() {
     var issues = [];
     if (!checkStorage()) issues.push('storage');
     if (!navigator.cookieEnabled) issues.push('cookies');
-    if (includePopupTest && !checkPopups()) issues.push('popup');
     return issues;
   }
 
-  // The "allow *.supabase.co" phrasing below is deliberate, not generic
-  // advice: confirmed live that an antivirus suite's "anti-tracking"
-  // browser add-on (AVG, and the same feature exists in Avast/Norton
-  // under different names) was silently dropping every request to
-  // *.supabase.co — it reads as a tracker/analytics domain to that kind
-  // of filter — and sign-in started working the moment supabase.co was
-  // allow-listed in the extension, with nothing else changed. That's a
-  // narrower, less disruptive fix than "disable the extension" (which
-  // still works too, and covers the other extension types below), so
-  // it's offered first.
   var HEALTH_MESSAGES = {
-    storage: 'This browser is blocking local storage for this site, which sign-in needs to remember you’re signed in. Try turning off browser extensions (any of them — not just ad/content blockers) for this site, allow site data, or use a non-private window.',
-    cookies: 'Cookies appear to be disabled in this browser, which can prevent signing in. Try enabling cookies for this site.',
-    popup: 'Pop-ups appear to be blocked. Google sign-in itself doesn’t need one, but Forms export and some AI features do — consider allowing pop-ups for this site.',
-    stalled: 'Nothing happened after the last sign-in attempt — this usually means a browser extension is silently blocking the connection to our sign-in service (supabase.co). An antivirus "anti-tracking" add-on (AVG/Avast/Norton and similar) is a common cause — try allowing supabase.co in it, or check ad blockers, password managers, and VPN/privacy tools the same way. Disabling the extension for this site, or using a private/incognito window, works too if you can’t find a per-site allow-list option.',
-    corrupted: 'Cleared an old, corrupted sign-in session that was stuck in this browser. Please try signing in again.',
-    error: 'Something went wrong starting sign-in. If this keeps happening, a browser extension (an antivirus "anti-tracking" add-on like AVG/Avast/Norton is a common cause) may be blocking the connection to supabase.co — try allowing that domain in it, disabling the extension for this site, or using a private/incognito window.'
+    storage: 'This browser is blocking local storage for this site, which sign-in needs to remember your session. Allow site data or pause storage-blocking extensions for clipsat.org.',
+    cookies: 'Cookies appear to be disabled in this browser, which can prevent signing in. Enable cookies for clipsat.org and try again.',
+    stalled: 'An anti-tracking browser extension (such as AVG AntiTrack, Avast, or Brave Shields) blocked background requests to our auth server. Use "Sign in with Google" below (which works directly even with AVG AntiTrack active), or add clipsat.org to Allowed Websites in AVG AntiTrack for email-code sign-in.',
+    corrupted: 'Cleared an old, corrupted sign-in session in this browser. Please sign in again.',
+    error: 'Email sign-in could not reach the auth server — AVG AntiTrack or a privacy extension is likely blocking background requests to supabase.co. Click "Sign in with Google" below (works with AVG AntiTrack active), or allow clipsat.org in AVG AntiTrack.'
   };
+
   function renderHealthWarning(issues) {
     var box = document.getElementById('cloud-auth-health-warning');
     if (!box) return;
-    if (!issues || !issues.length) { box.hidden = true; box.textContent = ''; return; }
-    box.innerHTML = '';
+    if (!issues || !issues.length) {
+      box.hidden = true;
+      box.textContent = '';
+      return;
+    }
+    box.textContent = '';
+    var showAntiTrackHelper = false;
     issues.forEach(function (code) {
+      if (code === 'stalled' || code === 'error') showAntiTrackHelper = true;
       var p = document.createElement('p');
       p.textContent = '⚠️ ' + (HEALTH_MESSAGES[code] || code);
       box.appendChild(p);
     });
+    if (showAntiTrackHelper || _antiTrackDetected) {
+      var actions = document.createElement('div');
+      actions.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:8px';
+
+      var googleFastBtn = document.createElement('button');
+      googleFastBtn.type = 'button';
+      googleFastBtn.textContent = '✓ Sign in with Google (works with AVG AntiTrack)';
+      googleFastBtn.style.cssText = 'padding:6px 12px;border-radius:6px;border:none;background:#1d4ed8;color:#fff;font-weight:600;font-size:.8rem;cursor:pointer';
+      googleFastBtn.onclick = function () { window.cloudSignInGoogle(); };
+      actions.appendChild(googleFastBtn);
+
+      var copyDomainBtn = document.createElement('button');
+      copyDomainBtn.type = 'button';
+      copyDomainBtn.textContent = '📋 Copy clipsat.org for AVG Allowlist';
+      copyDomainBtn.style.cssText = 'padding:6px 10px;border-radius:6px;border:1px solid currentColor;background:transparent;color:inherit;font-size:.78rem;cursor:pointer';
+      copyDomainBtn.onclick = function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText('clipsat.org').then(function () {
+            copyDomainBtn.textContent = '✓ Copied clipsat.org';
+          })['catch'](noop);
+        }
+      };
+      actions.appendChild(copyDomainBtn);
+      box.appendChild(actions);
+    }
     box.hidden = false;
   }
 
   window.openCloudAuthModal = function () {
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.add('show');
-    // Surface anything init() had to recover from, once, then clear it —
-    // this is the modal's first real chance to tell the user about it.
-    var issues = checkBrowserHealth(false);
-    if (_healthNotice) { issues.push(_healthNotice); _healthNotice = null; }
+    var issues = checkBrowserHealth();
+    if (_healthNotice) {
+      // Notice 'stalled' on passive background check only matters if user isn't signed in
+      if (!_cachedUser) issues.push(_healthNotice);
+      _healthNotice = null;
+    }
     renderHealthWarning(issues);
   };
+
   window.closeCloudAuthModal = function () {
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.remove('show');
   };
 
-  // Wraps signInWithGoogle() with the pop-up test (needs this exact click
-  // to be a trustworthy user gesture, so it can't run at modal-open time)
-  // and a stall watchdog: signInWithOAuth() should redirect the whole page
-  // almost immediately, so if we're still here after a few seconds, either
-  // the promise is hanging (a blocked request — the same failure mode
-  // getSessionWithRecovery() guards against above, just mid-sign-in
-  // instead of at load) or it resolved with an error. Either way the user
-  // gets an actionable message instead of a dead button.
-  var GOOGLE_SIGNIN_STALL_MS = 4000;
   window.cloudSignInGoogle = function () {
-    if (!window.ClipSATCloud || !window.ClipSATCloud.signInWithGoogle) return;
-    var issues = checkBrowserHealth(true);
-    renderHealthWarning(issues);
+    var issues = checkBrowserHealth();
+    if (issues.indexOf('storage') !== -1) {
+      renderHealthWarning(issues);
+      return;
+    }
     var status = document.getElementById('cloud-auth-status');
     if (status) status.textContent = 'Redirecting to Google…';
-    var settled = false;
-    var stallTimer = setTimeout(function () {
-      if (settled) return;
-      if (status) status.textContent = '';
-      renderHealthWarning(issues.length ? issues : ['stalled']);
-    }, GOOGLE_SIGNIN_STALL_MS);
-    window.ClipSATCloud.signInWithGoogle().then(function (r) {
-      settled = true;
-      clearTimeout(stallTimer);
-      // A normal, unblocked redirect never gets here — the page navigates
-      // away first. Reaching this .then() with an error means the request
-      // itself completed but Google/Supabase rejected it (not a pop-up or
-      // storage problem), so show that error message specifically instead
-      // of the generic health warning list.
-      if (r && r.error) {
-        if (status) status.textContent = '';
-        renderHealthWarning(['error']);
-        log('signInWithGoogle error: ' + r.error.message);
-      }
-    })['catch'](function (e) {
-      settled = true;
-      clearTimeout(stallTimer);
-      if (status) status.textContent = '';
-      renderHealthWarning(['error']);
-      log('signInWithGoogle threw: ' + (e && e.message));
-    });
+    signInWithGoogle();
   };
-  // Shared with both email-flow steps below: the exact same silently-
-  // blocked-request failure mode getSessionWithRecovery()/
-  // cloudSignInGoogle() above both guard against, just for
-  // signInWithOtp()/verifyOtp() instead of getSession()/signInWithOAuth().
-  // Before this, a blocked request here left `status` stuck on "Sending…"
-  // /"Verifying…" forever with zero indication anything was wrong — no
-  // stall watchdog AND no .catch() at all, so a rejected (not just
-  // hung) promise from a blocked fetch() silently vanished too. Runs the
-  // request under both a stall timer (for a promise that never settles)
-  // and a .catch() (for one that rejects outright), reusing the same
-  // HEALTH_MESSAGES.stalled/error copy the Google path shows.
+
   var EMAIL_STEP_STALL_MS = 8000;
   function withStallGuard(promise, status, onOk) {
     var settled = false;
@@ -669,7 +1009,15 @@
     promise.then(function (r) {
       settled = true;
       clearTimeout(stallTimer);
-      if (r && r.error) { if (status) status.textContent = r.error.message; return; }
+      if (r && r.error) {
+        if (/fetch|network|abort/i.test(r.error.message || '')) {
+          if (status) status.textContent = '';
+          renderHealthWarning(['stalled']);
+          return;
+        }
+        if (status) status.textContent = r.error.message;
+        return;
+      }
       onOk(r);
     }, function (e) {
       settled = true;
@@ -679,7 +1027,7 @@
       log('email sign-in step threw: ' + (e && e.message));
     });
   }
-  // Step 1: email a one-time code.
+
   window.cloudSendCode = function () {
     var input = document.getElementById('cloud-auth-email');
     var status = document.getElementById('cloud-auth-status');
@@ -693,19 +1041,23 @@
       if (codeInput) codeInput.focus();
     });
   };
-  // Step 2: verify the code the user typed in and complete sign-in.
+
   window.cloudVerifyCode = function () {
     var emailInput = document.getElementById('cloud-auth-email');
     var codeInput = document.getElementById('cloud-auth-code');
     var status = document.getElementById('cloud-auth-status');
     if (!emailInput || !emailInput.value || !codeInput || !codeInput.value) return;
     if (status) status.textContent = 'Verifying…';
-    withStallGuard(verifyEmailCode(emailInput.value.trim(), codeInput.value.trim()), status, function () {
+    withStallGuard(verifyEmailCode(emailInput.value.trim(), codeInput.value.trim()), status, function (r) {
+      if (r && r.data && r.data.session) {
+        persistLocalSession(r.data.session);
+        hydrateSignedInSession(r.data.session, false);
+      }
       status.textContent = 'Signed in!';
       setTimeout(function () { window.closeCloudAuthModal && window.closeCloudAuthModal(); }, 700);
     });
   };
-  // "Use a different email" — back out of the code step without closing the modal.
+
   window.cloudResetAuthStep = function () {
     var codeStep = document.getElementById('cloud-auth-code-step');
     var codeInput = document.getElementById('cloud-auth-code');
@@ -723,17 +1075,19 @@
     signInWithGoogle: signInWithGoogle,
     verifyEmailCode: verifyEmailCode,
     signOut: signOut,
+    deleteMyAccount: deleteMyAccount,
     isSignedIn: function () { return !!_cachedUser; },
+    getUser: function () { return _cachedUser; },
+    getSession: getActiveSession,
+    getAccessToken: function () { return (_cachedSession && _cachedSession.access_token) || null; },
+    getFunctionUrl: getFunctionUrl,
+    fetch: resilientSupabaseFetch,
     currentEmail: currentEmail,
     currentProvider: currentProvider,
     currentUserId: function () { return _cachedUser ? _cachedUser.id : null; },
+    pullAndMerge: pullAndMerge,
     syncNow: pushAll,
-    // Exposed so other optional modules (teacher-view.js) share this exact
-    // authenticated client instead of each creating their own — avoids
-    // duplicate-GoTrueClient warnings and keeps auth state in one place.
     getClient: function () { return sb; },
-    // See the declaration above — resolves once the initial session check
-    // has settled, whether signed in or not.
     ready: _readyPromise
   };
 

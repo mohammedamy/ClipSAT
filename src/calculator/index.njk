@@ -141,7 +141,18 @@ isRtl: false
      in Desmos's own light UI regardless of ClipSAT's dark mode (a plain
      iframe can't be handed our --theme), where Exam Mode's JS-API instance
      still respects it via invertedColors. -->
-<script defer src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+(function () {
+  'use strict';
+  var _desmosKey = (typeof window.CLIPSAT_DESMOS_API_KEY === 'string') ? window.CLIPSAT_DESMOS_API_KEY.trim() : '';
+  if (_desmosKey) {
+    var _ds = document.createElement('script');
+    _ds.defer = true;
+    _ds.src = 'https://www.desmos.com/api/v1.11/calculator.js?apiKey=' + encodeURIComponent(_desmosKey);
+    document.head.appendChild(_ds);
+  }
+})();
+</script>
 <script>
 (function () {
   'use strict';
@@ -188,7 +199,8 @@ isRtl: false
     threeD:     'https://www.desmos.com/3d?embed',
     geometry:   'https://www.desmos.com/geometry?embed',
     graphing:   'https://www.desmos.com/calculator?embed',
-    scientific: 'https://www.desmos.com/scientific?embed'
+    scientific: 'https://www.desmos.com/scientific?embed',
+    exam:       'https://www.desmos.com/calculator?embed'
   };
 
   var container = document.getElementById('calc-container');
@@ -229,17 +241,28 @@ isRtl: false
   }
 
   function mountApiCalculator(modeKey, token, savedState) {
+    var hasApiKey = !!(typeof window.CLIPSAT_DESMOS_API_KEY === 'string' && window.CLIPSAT_DESMOS_API_KEY.trim());
+    if (!hasApiKey && (!window.Desmos || typeof window.Desmos.GraphingCalculator !== 'function')) {
+      mountIframe(modeKey);
+      return;
+    }
     if (!window.Desmos || typeof window.Desmos.GraphingCalculator !== 'function') {
       destroyApiInstance();
       container.innerHTML = '<div class="calc-loading">' +
         ((window.i18n && window.i18n.t) ? window.i18n.t('calc.loading') : 'Loading Desmos calculator…') +
         '</div>';
       if (externalLink) externalLink.hidden = true;
+      mountApiCalculator._waits = (mountApiCalculator._waits || 0) + 1;
+      if (mountApiCalculator._waits > 60) {
+        mountIframe(modeKey);
+        return;
+      }
       setTimeout(function () {
         if (token === mountToken) mount(modeKey, savedState);
       }, 50);
       return;
     }
+    mountApiCalculator._waits = 0;
 
     if (token !== mountToken) return;
     destroyApiInstance();

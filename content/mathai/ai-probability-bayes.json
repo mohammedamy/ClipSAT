@@ -30,7 +30,7 @@
         "kind": "text",
         "body": {
           "en": "Uncertainty is omnipresent in real-world data. Bayes' Theorem provides the mathematical framework for updating beliefs when observing new evidence, forming the core of Bayesian machine learning and Naive Bayes classifiers.",
-          "ar": "Uncertainty is omnipresent in real-world data. Bayes' مبرهنة provides the mathematical framework for updating beliefs عندما observing new evidence, forming the core of Bayesian machine learning and Naive Bayes classifiers."
+          "ar": null
         }
       },
       {
@@ -42,7 +42,7 @@
         },
         "body": {
           "en": "For hypothesis (class) \\( C \\) and observed evidence (features) \\( \\mathbf{x} \\):<br>\\[ P(C | \\mathbf{x}) = \\frac{P(\\mathbf{x} | C) P(C)}{P(\\mathbf{x})} \\]<br>Where:<br>• \\( P(C) \\) is the <strong>Prior probability</strong> of class \\( C \\).<br>• \\( P(\\mathbf{x} | C) \\) is the <strong>Likelihood</strong> of observing features \\( \\mathbf{x} \\) given class \\( C \\).<br>• \\( P(\\mathbf{x}) = \\sum_k P(\\mathbf{x}|C_k)P(C_k) \\) is the <strong>Marginal probability (Evidence)</strong>.<br>• \\( P(C | \\mathbf{x}) \\) is the <strong>Posterior probability</strong>.",
-          "ar": "For hypothesis (class) \\( C \\) and observed evidence (features) \\( \\mathbf{x} \\):<br>\\[ P(C | \\mathbf{x}) = \\frac{P(\\mathbf{x} | C) P(C)}{P(\\mathbf{x})} \\]<br>Where:<br>• \\( P(C) \\) is the <strong>Prior probability</strong> of class \\( C \\).<br>• \\( P(\\mathbf{x} | C) \\) is the <strong>Likelihood</strong> of observing features \\( \\mathbf{x} \\) المعطيات class \\( C \\).<br>• \\( P(\\mathbf{x}) = \\sum_k P(\\mathbf{x}|C_k)P(C_k) \\) is the <strong>Marginal الاحتمال (Evidence)</strong>.<br>• \\( P(C | \\mathbf{x}) \\) is the <strong>Posterior probability</strong>."
+          "ar": null
         }
       },
       {
@@ -109,7 +109,7 @@
             "id": "aiprobabilitybayesExCanvas_s0",
             "label": {
               "en": "Prior Base Rate <b>\\(P(C_{1}) =\\)</b>",
-              "ar": "Prior Base Rate <b>P(C₁) =</b>"
+              "ar": null
             },
             "min": 0.05,
             "max": 0.8,
@@ -118,14 +118,14 @@
             "valueDisplayId": "aiprobabilitybayesExCanvas_v0",
             "ariaLabel": {
               "en": "Prior Base Rate P(C₁) =",
-              "ar": "Prior Base Rate P(C₁) ="
+              "ar": null
             }
           },
           {
             "id": "aiprobabilitybayesExCanvas_s1",
             "label": {
               "en": "False Positive Rate <b>\\(P(+ | C_{0}) =\\)</b>",
-              "ar": "False Positive Rate <b>P(+ | C₀) =</b>"
+              "ar": null
             },
             "min": 0.05,
             "max": 0.4,
@@ -134,7 +134,7 @@
             "valueDisplayId": "aiprobabilitybayesExCanvas_v1",
             "ariaLabel": {
               "en": "False Positive Rate P(+ | C₀) =",
-              "ar": "False Positive Rate P(+ | C₀) ="
+              "ar": null
             }
           }
         ],
@@ -143,7 +143,7 @@
             "id": "aiprobabilitybayesExCanvas_r0",
             "label": {
               "en": "Evidence Marginal \\(P(+)\\)",
-              "ar": "Evidence Marginal P(+)"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(P(+) = 0.300\\)"
@@ -152,7 +152,7 @@
             "id": "aiprobabilitybayesExCanvas_r1",
             "label": {
               "en": "Posterior Precision \\(P(C_{1} | +)\\)",
-              "ar": "Posterior Precision P(C₁ | +)"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(P(C_{1}|+) = 60.0\\%\\)"
@@ -161,7 +161,7 @@
             "id": "aiprobabilitybayesExCanvas_r2",
             "label": {
               "en": "Bayes Lift \\(P(C_{1}|+) / P(C_{1})\\)",
-              "ar": "Bayes Lift P(C₁|+) / P(C₁)"
+              "ar": null
             },
             "colorClass": "teal",
             "value": "3.00× Lift"
@@ -262,7 +262,7 @@
         },
         "body": {
           "en": "<p>An email filter processes emails where \\( 20\\% \\) are spam (\\( P(S) = 0.20 \\)) and \\( 80\\% \\) are legitimate (\\( P(L) = 0.80 \\)). The word <em>'lottery'</em> appears in \\( 60\\% \\) of spam emails (\\( P(W|S) = 0.60 \\)) and in \\( 1\\% \\) of legitimate emails (\\( P(W|L) = 0.01 \\)). If an incoming email contains the word 'lottery', what is the probability that it is spam?</p><p><strong>Solution:</strong><br>By Bayes' Theorem:<br>\\[ P(S|W) = \\frac{P(W|S)P(S)}{P(W)} \\]<br>Calculate total probability \\( P(W) \\):<br>\\[ P(W) = P(W|S)P(S) + P(W|L)P(L) = (0.60)(0.20) + (0.01)(0.80) = 0.12 + 0.008 = 0.128 \\]<br>Compute posterior:<br>\\[ P(S|W) = \\frac{0.12}{0.128} = \\frac{120}{128} = \\frac{15}{16} = 0.9375 \\].<br>Despite only 20% of all emails being spam initially, observing the word 'lottery' raises the probability to \\( 93.75\\% \\).<br><strong>Answer:</strong> \\( 93.75\\% \\) (or \\( 0.938 \\)).</p>",
-          "ar": "<p>An email filter processes emails حيث \\( 20\\% \\) are spam (\\( P(S) = 0.20 \\)) and \\( 80\\% \\) are legitimate (\\( P(L) = 0.80 \\)). The word <em>'lottery'</em> appears in \\( 60\\% \\) of spam emails (\\( P(W|S) = 0.60 \\)) and in \\( 1\\% \\) of legitimate emails (\\( P(W|L) = 0.01 \\)). If an incoming email contains the word 'lottery', what is the الاحتمال that it is spam?</p><p><strong>Solution:</strong><br>By Bayes' مبرهنة:<br>\\[ P(S|W) = \\frac{P(W|S)P(S)}{P(W)} \\]<br>Calculate total الاحتمال \\( P(W) \\):<br>\\[ P(W) = P(W|S)P(S) + P(W|L)P(L) = (0.60)(0.20) + (0.01)(0.80) = 0.12 + 0.008 = 0.128 \\]<br>Compute posterior:<br>\\[ P(S|W) = \\frac{0.12}{0.128} = \\frac{120}{128} = \\frac{15}{16} = 0.9375 \\].<br>Despite only 20% of all emails being spam initially, observing the word 'lottery' raises the الاحتمال to \\( 93.75\\% \\).<br><strong>Answer:</strong> \\( 93.75\\% \\) (or \\( 0.938 \\)).</p>"
+          "ar": null
         }
       },
       {
@@ -274,7 +274,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Medium):</strong> Given \\( n = 4 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{4} x_i = 12 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?</p><p><strong>Step-by-Step Solution:</strong> The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3 \\).</p>",
-          "ar": "<p><strong>مسألة (Medium):</strong> Given \\( n = 4 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{4} x_i = 12 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?</p><p><strong>الحل خطوة بخطوة:</strong> The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -286,7 +286,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Hard):</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.40 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\).</p><p><strong>Step-by-Step Solution:</strong> Odds are \\( \\frac{p}{1-p} = \\frac{0.40}{0.60} = 0.6667 \\). Taking natural logarithm: \\( \\ln(0.6667) = -0.405 \\).</p>",
-          "ar": "<p><strong>مسألة (Hard):</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.40 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Odds are \\( \\frac{p}{1-p} = \\frac{0.40}{0.60} = 0.6667 \\). Taking natural logarithm: \\( \\ln(0.6667) = -0.405 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -298,7 +298,7 @@
         },
         "body": {
           "en": "<p><strong>Problem (Easy):</strong> A medical diagnostic test for a rare disease is designed to be highly sensitive and specific. The disease affects \\( 1 \\) in every \\( 1000 \\) individuals in the population. The test has a sensitivity of \\( 99 \\)\\% (meaning it correctly identifies \\( 99 \\)\\% of individuals who have the disease) and a specificity of \\( 95 \\)\\% (meaning it correctly identifies \\( 95 \\)\\% of individuals who do not have the disease). If a randomly selected individual from the population tests positive, what is the probability that they actually have the disease?</p><p><strong>Step-by-Step Solution:</strong> Let D be the event that an individual has the disease, and P be the event that the individual tests positive.\nWe are given the following probabilities:\n- Prior probability of having the disease: \\(P(D) = \\frac{1}{1000} = 0.001\\)\n- Prior probability of not having the disease: \\(P(D^c) = 1 - P(D) = 1 - 0.001 = 0.999\\)\n- Sensitivity (true positive rate): \\(P(P|D) = 0.99\\)\n- Specificity (true negative rate): \\(P(P^c|D^c) = 0.95\\)\nFrom specificity, we can derive the false positive rate: \\(P(P|D^c) = 1 - P(P^c|D^c) = 1 - 0.95 = 0.05\\).\n\nWe want to find the probability that an individual actually has the disease given a positive test result, which is \\(P(D|P)\\). We can use Bayes' Theorem:\n\n\\[P(D|P) = \\frac{P(P|D) P(D)}{P(P)}\\]\n\nTo find \\(P(P)\\), the overall probability of testing positive, we can use the law of total probability:\n\n\\[P(P) = P(P|D) P(D) + P(P|D^c) P(D^c)\\]\n\nSubstitute the given values:\n\n\\[P(P) = (0.99)(0.001) + (0.05)(0.999)\\]\n\\[P(P) = 0.00099 + 0.04995\\]\n\\[P(P) = 0.05094\\]\n\nNow, substitute \\(P(P)\\) back into Bayes' Theorem:\n\n\\[P(D|P) = \\frac{(0.99)(0.001)}{0.05094}\\]\n\\[P(D|P) = \\frac{0.00099}{0.05094}\\]\n\\[P(D|P) \\approx 0.0194346\\]\n\nTherefore, the probability that a person who tests positive actually has the disease is approximately \\( 0.0194 \\), which is closest to \\( 0.019 \\).</p>",
-          "ar": "<p><strong>مسألة (Easy):</strong> A medical diagnostic test for a rare disease is designed to be highly sensitive and specific. The disease affects \\( 1 \\) in every \\( 1000 \\) individuals in the population. The test has a sensitivity of \\( 99 \\)\\% (meaning it correctly identifies \\( 99 \\)\\% of individuals who have the disease) and a specificity of \\( 95 \\)\\% (meaning it correctly identifies \\( 95 \\)\\% of individuals who do not have the disease). If a randomly selected individual from the population tests positive, what is the probability that they actually have the disease?</p><p><strong>الحل خطوة بخطوة:</strong> Let D be the event that an individual has the disease, and P be the event that the individual tests positive.\nWe are given the following probabilities:\n- Prior probability of having the disease: \\(P(D) = \\frac{1}{1000} = 0.001\\)\n- Prior probability of not having the disease: \\(P(D^c) = 1 - P(D) = 1 - 0.001 = 0.999\\)\n- Sensitivity (true positive rate): \\(P(P|D) = 0.99\\)\n- Specificity (true negative rate): \\(P(P^c|D^c) = 0.95\\)\nFrom specificity, we can derive the false positive rate: \\(P(P|D^c) = 1 - P(P^c|D^c) = 1 - 0.95 = 0.05\\).\n\nWe want to find the probability that an individual actually has the disease given a positive test result, which is \\(P(D|P)\\). We can use Bayes' Theorem:\n\n\\[P(D|P) = \\frac{P(P|D) P(D)}{P(P)}\\]\n\nTo find \\(P(P)\\), the overall probability of testing positive, we can use the law of total probability:\n\n\\[P(P) = P(P|D) P(D) + P(P|D^c) P(D^c)\\]\n\nSubstitute the given values:\n\n\\[P(P) = (0.99)(0.001) + (0.05)(0.999)\\]\n\\[P(P) = 0.00099 + 0.04995\\]\n\\[P(P) = 0.05094\\]\n\nNow, substitute \\(P(P)\\) back into Bayes' Theorem:\n\n\\[P(D|P) = \\frac{(0.99)(0.001)}{0.05094}\\]\n\\[P(D|P) = \\frac{0.00099}{0.05094}\\]\n\\[P(D|P) \\approx 0.0194346\\]\n\nTherefore, the probability that a person who tests positive actually has the disease is approximately \\( 0.0194 \\), which is closest to \\( 0.019 \\).</p>"
+          "ar": null
         }
       },
       {
@@ -394,125 +394,125 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 1 · Medium]</strong> A spam classification model identifies \\( TP = 30 \\) genuine spam emails and \\( FP = 10 \\) legitimate emails falsely flagged as spam. What is the precision of this model?",
-          "ar": "<strong>[تدريب 1 · Medium]</strong> A spam classification model identifies \\( TP = 30 \\) genuine spam emails and \\( FP = 10 \\) legitimate emails falsely flagged as spam. What is the precision of this model?"
+          "ar": null
         },
         "hints": [
           {
             "en": "Precision is the fraction of predicted positive instances that are truly positive: \\(\\text{Precision} = \\frac{TP}{TP + FP}\\).",
-            "ar": "Precision is the fraction of predicted positive instances that are truly positive: \\(\\text{Precision} = \\frac{TP}{TP + FP}\\)."
+            "ar": null
           },
           {
             "en": "Substitute and simplify: \\(\\text{Precision} = \\frac{30}{30 + 10}\\).",
-            "ar": "Substitute and simplify: \\(\\text{Precision} = \\frac{30}{30 + 10}\\)."
+            "ar": null
           },
           {
             "en": "Compute the final value from: \\(\\frac{30}{30 + 10}\\).",
-            "ar": "Compute the final value from: \\(\\frac{30}{30 + 10}\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Precision is the fraction of predicted positive instances that are truly positive: \\( \\text{Precision} = \\frac{TP}{TP + FP} = \\frac{30}{30 + 10} = \\frac{30}{40} = 75.0\\% \\).",
-          "ar": "Precision is the fraction of predicted positive instances that are truly positive: \\( \\text{Precision} = \\frac{TP}{TP + FP} = \\frac{30}{30 + 10} = \\frac{30}{40} = 75.0\\% \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2 · Hard]</strong> Compute the Manhattan (\\( L_1 \\)) norm and Euclidean (\\( L_2 \\)) norm of the word vector \\( \\mathbf{w} = [10, -15]^T \\).",
-          "ar": "<strong>[تدريب 2 · Hard]</strong> Compute the Manhattan (\\( L_1 \\)) norm and Euclidean (\\( L_2 \\)) norm of the word vector \\( \\mathbf{w} = [10, -15]^T \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Set up the initial relation: \\( L_1 \\) norm is the sum of absolute values: \\( |10| + |-15| = 25 \\).",
-            "ar": "Set up the initial relation: \\( L_1 \\) norm is the sum of absolute values: \\( |10| + |-15| = 25 \\)."
+            "ar": null
           },
           {
             "en": "Rewrite and simplify to obtain: \\( L_2 \\) norm is the square root of sum of squares: \\(\\sqrt{(10)^2 + (-15)^2}\\). Rewrite and substitute: \\(\\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225}\\).",
-            "ar": "Rewrite and simplify to obtain: \\( L_2 \\) norm is the square root of sum of squares: \\(\\sqrt{(10)^2 + (-15)^2}\\). Rewrite and substitute: \\(\\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225}\\)."
+            "ar": null
           },
           {
             "en": "Evaluate \\(\\sqrt{100 + 225}\\) to obtain the final answer.",
-            "ar": "Evaluate \\(\\sqrt{100 + 225}\\) to obtain the final answer."
+            "ar": null
           }
         ],
         "solution": {
           "en": "\\( L_1 \\) norm is the sum of absolute values: \\( |10| + |-15| = 25 \\). \\( L_2 \\) norm is the square root of sum of squares: \\( \\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325} \\).",
-          "ar": "\\( L_1 \\) norm is the sum of absolute values: \\( |10| + |-15| = 25 \\). \\( L_2 \\) norm is the square root of sum of squares: \\( \\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325} \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Easy]</strong> Consider two vectors, \\( \\mathbf{u} = \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix} \\) and \\( \\mathbf{v} = \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} \\). What is the vector representing \\( 2\\mathbf{u} - \\mathbf{v} \\)?",
-          "ar": "<strong>[تدريب 3 · Easy]</strong> Consider two vectors, \\( \\mathbf{u} = \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix} \\) and \\( \\mathbf{v} = \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} \\). What is the vector representing \\( 2\\mathbf{u} - \\mathbf{v} \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "To find the vector \\( 2\\mathbf{u} - \\mathbf{v} \\), we first compute \\( 2\\mathbf{u} \\) and then subtract \\( \\mathbf{v} \\) from the result.",
-            "ar": "To find the vector \\( 2\\mathbf{u} - \\mathbf{v} \\), we first compute \\( 2\\mathbf{u} \\) and then subtract \\( \\mathbf{v} \\) from the result."
+            "ar": null
           },
           {
             "en": "Now, we subtract \\( \\mathbf{v} \\) from \\( 2\\mathbf{u} \\): \\(2\\mathbf{u} - \\mathbf{v} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} - \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} = \\begin{bmatrix} 6 - 1 \\\\ 8 - (-2) \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 8 + 2 \\end{bmatrix}\\).",
-            "ar": "Now, we subtract \\( \\mathbf{v} \\) from \\( 2\\mathbf{u} \\): \\(2\\mathbf{u} - \\mathbf{v} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} - \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} = \\begin{bmatrix} 6 - 1 \\\\ 8 - (-2) \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 8 + 2 \\end{bmatrix}\\)."
+            "ar": null
           },
           {
             "en": "Therefore, the resulting vector is \\(\\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix}\\).",
-            "ar": "Therefore, the resulting vector is \\(\\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix}\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "To find the vector \\( 2\\mathbf{u} - \\mathbf{v} \\), we first compute \\( 2\\mathbf{u} \\) and then subtract \\( \\mathbf{v} \\) from the result.\n\n\\( 2\\mathbf{u} = 2 \\times \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix} = \\begin{bmatrix} 2 \\times 3 \\\\ 2 \\times 4 \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} \\).\n\nNow, we subtract \\( \\mathbf{v} \\) from \\( 2\\mathbf{u} \\):\n\n\\( 2\\mathbf{u} - \\mathbf{v} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} - \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} = \\begin{bmatrix} 6 - 1 \\\\ 8 - (-2) \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 8 + 2 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix} \\).\n\nTherefore, the resulting vector is \\( \\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix} \\).",
-          "ar": "To find the vector \\( 2\\mathbf{u} - \\mathbf{v} \\), we first compute \\( 2\\mathbf{u} \\) and then subtract \\( \\mathbf{v} \\) from the result.\n\n\\( 2\\mathbf{u} = 2 \\times \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix} = \\begin{bmatrix} 2 \\times 3 \\\\ 2 \\times 4 \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} \\).\n\nNow, we subtract \\( \\mathbf{v} \\) from \\( 2\\mathbf{u} \\):\n\n\\( 2\\mathbf{u} - \\mathbf{v} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} - \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} = \\begin{bmatrix} 6 - 1 \\\\ 8 - (-2) \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 8 + 2 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix} \\).\n\nTherefore, the resulting vector is \\( \\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix} \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> Consider a dataset of \\( n \\) observations \\( (x_i, y_i) \\) for \\( i = 1, \\dots, n \\), where \\( x_i \\) are scalar predictor variables and \\( y_i \\) are scalar response variables. The ordinary least squares (OLS) estimates for the intercept \\( \\beta_0 \\) and the slope \\( \\beta_1 \\) of the linear model \\( y = \\beta_0 + \\beta_1 x + \\epsilon \\) are given by \\( \\hat{\\beta}_1 = \\frac{\\sum_{i=1}^n (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum_{i=1}^n (x_i - \\bar{x})^2} \\) and \\( \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} \\). Suppose we have a dataset where \\( n = 5 \\), \\( \\sum x_i = 15 \\), \\( \\sum y_i = 30 \\), \\( \\sum x_i^2 = 55 \\), \\( \\sum y_i^2 = 210 \\), and \\( \\sum x_i y_i = 105 \\). A new data point \\( (x_6, y_6) \\) is added to the dataset. If the new regression line that minimizes the sum of squared errors for the \\( n+1 = 6 \\) points is parallel to the original regression line (i.e., \\( \\hat{\\beta}_1^{\\text{new}} = \\hat{\\beta}_1^{\\text{old}} \\)), what is the value of \\( y_6 \\) in terms of \\( x_6 \\)?",
-          "ar": "<strong>[تدريب 4 · Medium]</strong> Consider a dataset of \\( n \\) observations \\( (x_i, y_i) \\) for \\( i = 1, \\dots, n \\), where \\( x_i \\) are scalar predictor variables and \\( y_i \\) are scalar response variables. The ordinary least squares (OLS) estimates for the intercept \\( \\beta_0 \\) and the slope \\( \\beta_1 \\) of the linear model \\( y = \\beta_0 + \\beta_1 x + \\epsilon \\) are given by \\( \\hat{\\beta}_1 = \\frac{\\sum_{i=1}^n (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum_{i=1}^n (x_i - \\bar{x})^2} \\) and \\( \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} \\). Suppose we have a dataset where \\( n = 5 \\), \\( \\sum x_i = 15 \\), \\( \\sum y_i = 30 \\), \\( \\sum x_i^2 = 55 \\), \\( \\sum y_i^2 = 210 \\), and \\( \\sum x_i y_i = 105 \\). A new data point \\( (x_6, y_6) \\) is added to the dataset. If the new regression line that minimizes the sum of squared errors for the \\( n+1 = 6 \\) points is parallel to the original regression line (i.e., \\( \\hat{\\beta}_1^{\\text{new}} = \\hat{\\beta}_1^{\\text{old}} \\)), what is the value of \\( y_6 \\) in terms of \\( x_6 \\)?"
+          "ar": null
         },
         "hints": [
           {
             "en": "For the original \\( n = 5 \\) observations, \\( \\bar{x} = \\frac{15}{5} = 3 \\) and \\(\\bar{y} = \\frac{30}{5}\\).",
-            "ar": "For the original \\( n = 5 \\) observations, \\( \\bar{x} = \\frac{15}{5} = 3 \\) and \\(\\bar{y} = \\frac{30}{5}\\)."
+            "ar": null
           },
           {
             "en": "The sums of squares are \\( S_{xx} = 55 - 5(3^2) = 10 \\) and \\( S_{xy} = 105 - 5(3)(6) = 15 \\), giving slope \\( \\hat{\\beta}_1 = \\frac{15}{10} = 1.5 \\) and intercept \\(\\hat{\\beta}_0 = 6 - 1.5(3)\\).",
-            "ar": "The sums of squares are \\( S_{xx} = 55 - 5(3^2) = 10 \\) and \\( S_{xy} = 105 - 5(3)(6) = 15 \\), giving slope \\( \\hat{\\beta}_1 = \\frac{15}{10} = 1.5 \\) and intercept \\(\\hat{\\beta}_0 = 6 - 1.5(3)\\)."
+            "ar": null
           },
           {
             "en": "When a 6th point \\((x_6, y_6)\\) lying on the existing regression line \\(y_6 = 1.5x_6 + 1.5\\) is added, the residual is zero and the OLS slope remains unchanged at \\(1.5\\).",
-            "ar": "When a 6th point \\((x_6, y_6)\\) lying on the existing regression line \\(y_6 = 1.5x_6 + 1.5\\) is added, the residual is zero and the OLS slope remains unchanged at \\(1.5\\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "For the original \\( n = 5 \\) observations, \\( \\bar{x} = \\frac{15}{5} = 3 \\) and \\( \\bar{y} = \\frac{30}{5} = 6 \\). The sums of squares are \\( S_{xx} = 55 - 5(3^2) = 10 \\) and \\( S_{xy} = 105 - 5(3)(6) = 15 \\), giving slope \\( \\hat{\\beta}_1 = \\frac{15}{10} = 1.5 \\) and intercept \\( \\hat{\\beta}_0 = 6 - 1.5(3) = 1.5 \\). When a 6th point \\( (x_6, y_6) \\) lying on the existing regression line \\( y_6 = 1.5x_6 + 1.5 \\) is added, the residual is zero and the OLS slope remains unchanged at \\( 1.5 \\).",
-          "ar": "For the original \\( n = 5 \\) observations, \\( \\bar{x} = \\frac{15}{5} = 3 \\) and \\( \\bar{y} = \\frac{30}{5} = 6 \\). The sums of squares are \\( S_{xx} = 55 - 5(3^2) = 10 \\) and \\( S_{xy} = 105 - 5(3)(6) = 15 \\), giving slope \\( \\hat{\\beta}_1 = \\frac{15}{10} = 1.5 \\) and intercept \\( \\hat{\\beta}_0 = 6 - 1.5(3) = 1.5 \\). When a 6th point \\( (x_6, y_6) \\) lying on the existing regression line \\( y_6 = 1.5x_6 + 1.5 \\) is added, the residual is zero and the OLS slope remains unchanged at \\( 1.5 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 5 · Hard]</strong> Consider a dataset of \\( n \\) data points, where each data point is a vector in \\( \\mathbb{R}^{D} \\). A non-linear dimensionality reduction technique maps these data points to a lower-dimensional space \\( \\mathbb{R}^{d} \\). The mapping function for a single data point \\( \\mathbf{x} \\in \\mathbb{R}^{D} \\) is given by \\( f(\\mathbf{x}) = \\phi(\\mathbf{x}) \\), where \\( \\phi: \\mathbb{R}^{D} \\to \\mathbb{R}^{d} \\) is a function designed to preserve local neighborhood structures. Suppose the mapping \\( \\phi \\) is defined by an explicit feature map \\( \\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T \\) where the vector \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\) and \\( d \\) is the dimension of the embedded space. If the goal is to embed these points into a space such that pairwise Euclidean distances are preserved as closely as possible under a specific distortion, and it is found that \\( d=15 \\) yields optimal results for this mapping under a certain constraint, determine the effective rank of the feature map's image space.",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> Consider a dataset of \\( n \\) data points, where each data point is a vector in \\( \\mathbb{R}^{D} \\). A non-linear dimensionality reduction technique maps these data points to a lower-dimensional space \\( \\mathbb{R}^{d} \\). The mapping function for a single data point \\( \\mathbf{x} \\in \\mathbb{R}^{D} \\) is given by \\( f(\\mathbf{x}) = \\phi(\\mathbf{x}) \\), where \\( \\phi: \\mathbb{R}^{D} \\to \\mathbb{R}^{d} \\) is a function designed to preserve local neighborhood structures. Suppose the mapping \\( \\phi \\) is defined by an explicit feature map \\( \\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T \\) where the vector \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\) and \\( d \\) is the dimension of the embedded space. If the goal is to embed these points into a space such that pairwise Euclidean distances are preserved as closely as possible under a specific distortion, and it is found that \\( d=15 \\) yields optimal results for this mapping under a certain constraint, determine the effective rank of the feature map's image space."
+          "ar": null
         },
         "hints": [
           {
             "en": "The feature map is defined as \\( \\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T \\), where \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\).",
-            "ar": "The feature map is defined as \\( \\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T \\), where \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\)."
+            "ar": null
           },
           {
             "en": "The term \\( \\mathbf{x}^T \\mathbf{x} \\) is the squared Euclidean norm of \\( \\mathbf{x} \\), denoted as \\( \\|\\mathbf{x}\\|^2 \\). This is a scalar value.",
-            "ar": "The term \\( \\mathbf{x}^T \\mathbf{x} \\) is the squared Euclidean norm of \\( \\mathbf{x} \\), denoted as \\( \\|\\mathbf{x}\\|^2 \\). This is a scalar value."
+            "ar": null
           },
           {
             "en": "The problem states that \\(d\\), but the effective rank of the image of this specific feature map is always 1, as all output vectors lie on a single line passing through the origin.",
-            "ar": "The problem states that \\(d\\), but the effective rank of the image of this specific feature map is always 1, as all output vectors lie on a single line passing through the origin."
+            "ar": null
           }
         ],
         "solution": {
           "en": "The feature map is defined as \\( \\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T \\), where \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\). The term \\( \\mathbf{x}^T \\mathbf{x} \\) is the squared Euclidean norm of \\( \\mathbf{x} \\), denoted as \\( \\|\\mathbf{x}\\|^2 \\). This is a scalar value. Thus, the mapping \\( \\phi \\) produces a vector where each component is the same scalar value, \\( \\|\\mathbf{x}\\|^2 \\). Let \\( k = \\|\\mathbf{x}\\|^2 \\). Then \\( \\phi(\\mathbf{x}) = [k, k, \\dots, k]^T \\) in \\( \\mathbb{R}^{d} \\). This means that the image of the mapping \\( \\phi \\) is a subspace spanned by a single vector. For example, if \\( d=15 \\), then \\( \\phi(\\mathbf{x}) = [k, k, \\dots, k]^T \\) which can be written as \\( k \\cdot [1, 1, \\dots, 1]^T \\). The vector \\( [1, 1, \\dots, 1]^T \\) forms a basis for the image space. Therefore, the dimension of the image space, which is equivalent to its rank, is 1, regardless of the value of \\( d \\) (as long as \\( d \\ge 1 \\)). The problem states that \\( d=15 \\), but the effective rank of the image of this specific feature map is always 1, as all output vectors lie on a single line passing through the origin.",
-          "ar": "The feature map is defined as \\( \\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T \\), where \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\). The term \\( \\mathbf{x}^T \\mathbf{x} \\) is the squared Euclidean norm of \\( \\mathbf{x} \\), denoted as \\( \\|\\mathbf{x}\\|^2 \\). This is a scalar value. Thus, the mapping \\( \\phi \\) produces a vector where each component is the same scalar value, \\( \\|\\mathbf{x}\\|^2 \\). Let \\( k = \\|\\mathbf{x}\\|^2 \\). Then \\( \\phi(\\mathbf{x}) = [k, k, \\dots, k]^T \\) in \\( \\mathbb{R}^{d} \\). This means that the image of the mapping \\( \\phi \\) is a subspace spanned by a single vector. For example, if \\( d=15 \\), then \\( \\phi(\\mathbf{x}) = [k, k, \\dots, k]^T \\) which can be written as \\( k \\cdot [1, 1, \\dots, 1]^T \\). The vector \\( [1, 1, \\dots, 1]^T \\) forms a basis for the image space. Therefore, the dimension of the image space, which is equivalent to its rank, is 1, regardless of the value of \\( d \\) (as long as \\( d \\ge 1 \\)). The problem states that \\( d=15 \\), but the effective rank of the image of this specific feature map is always 1, as all output vectors lie on a single line passing through the origin."
+          "ar": null
         }
       },
       {

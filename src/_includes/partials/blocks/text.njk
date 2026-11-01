@@ -7,4 +7,4 @@
 #}
 {% import "partials/_bilingual.njk" as bl %}
 {% if block.heading %}<h3>{{ block.heading }}</h3>{% endif %}
-{% if block.body %}<p>{{ bl.text(block.body) }}</p>{% endif %}
+{% if block.body %}{% set _bCombo = ((block.body.en or '') ~ ' ' ~ (block.body.ar or '')) | lower %}{% if ('<p>' in _bCombo) or ('<p ' in _bCombo) or ('<div' in _bCombo) or ('<ul' in _bCombo) or ('<ol' in _bCombo) or ('<table' in _bCombo) or ('<details' in _bCombo) %}<div class="prose-block" style="margin:1rem 0;color:var(--text-1)">{{ bl.text(block.body, 'div') }}</div>{% else %}<p>{{ bl.text(block.body) }}</p>{% endif %}{% endif %}

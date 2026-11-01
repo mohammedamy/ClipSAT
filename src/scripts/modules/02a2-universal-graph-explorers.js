@@ -932,6 +932,30 @@
   /* ═══════════════════════════════════════════════════════════════════════
      4. AUTO-INTERACTIVE ENHANCER FOR ALL STATIC slope_field <figure> BLOCKS
      ═══════════════════════════════════════════════════════════════════════ */
+  function _evalSlopeAst(s, x, y){
+    if(typeof window !== 'undefined' && typeof window.CSMathEval === 'function'){
+      return window.CSMathEval(s, { x: x, X: x, y: y, Y: y, k: 0.5 });
+    }
+    var pos = 0, L = s.length;
+    function ws(){ while(pos < L && s.charCodeAt(pos) <= 32) pos++; }
+    function eat(c){ ws(); if(s.slice(pos, pos + c.length) === c){ pos += c.length; return true; } return false; }
+    function pAdd(){ var l = pMul(); while(true){ ws(); if(pos < L && s[pos] === '+'){ pos++; l += pMul(); } else if(pos < L && s[pos] === '-'){ pos++; l -= pMul(); } else break; } return l; }
+    function pMul(){ var l = pUn(); while(true){ ws(); if(pos < L && s[pos] === '*' && s[pos + 1] !== '*'){ pos++; l *= pUn(); } else if(pos < L && s[pos] === '/'){ pos++; l /= pUn(); } else if(pos < L && (s[pos] === '(' || /[xXyY]/.test(s[pos]))){ l *= pPow(); } else break; } return l; }
+    function pUn(){ ws(); if(pos < L && s[pos] === '+'){ pos++; return +pUn(); } if(pos < L && s[pos] === '-'){ pos++; return -pUn(); } return pPow(); }
+    function pPow(){ var b = pPri(); ws(); if(eat('**') || eat('^')) return Math.pow(b, pUn()); return b; }
+    function pPri(){
+      ws(); if(pos >= L) throw 1;
+      if(s[pos] === '('){ pos++; var v = pAdd(); if(!eat(')')) throw 1; return v; }
+      var nm = /^(?:\d+\.?\d*|\.\d+)/.exec(s.slice(pos));
+      if(nm){ pos += nm[0].length; return parseFloat(nm[0]); }
+      var ch = s[pos];
+      if(ch === 'x' || ch === 'X'){ pos++; return x; }
+      if(ch === 'y' || ch === 'Y'){ pos++; return y; }
+      throw 1;
+    }
+    try { var r = pAdd(); ws(); return pos === L ? r : NaN; } catch(_){ return NaN; }
+  }
+
   function compileSafeSlopeExpr(expr){
     var raw = String(expr || 'x - y').trim();
     if(raw === 'x - y' || raw === 'x-y') return function(x,y){ return x - y; };
@@ -939,12 +963,10 @@
     if(raw === '(x+1)/y') return function(x,y){ return Math.abs(y) < 0.08 ? NaN : (x + 1) / y; };
     if(raw === 'x - 0.5*y' || raw === 'x - y/2') return function(x,y){ return x - 0.5*y; };
     if(raw === '0.5*y' || raw === 'k*y' || raw === 'y') return function(x,y){ return 0.5*y; };
-    try {
-      var safe = raw.replace(/[^0-9xXyY+\-*/().\s]/g, '');
-      var fn = new Function('x', 'y', 'return (' + safe + ');');
-      var test = fn(1, 1);
-      if(typeof test === 'number') return fn;
-    } catch(_){}
+    var test = _evalSlopeAst(raw, 1, 1);
+    if(typeof test === 'number' && !isNaN(test)){
+      return function(x, y){ return _evalSlopeAst(raw, x, y); };
+    }
     return function(x,y){ return x - y; };
   }
 

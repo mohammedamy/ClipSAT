@@ -23,9 +23,14 @@ function _wm(s){
     if(!inM && str.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;continue;}
     if(inM && str.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;continue;}
     if(inM && str.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;continue;}
-    if(str[i]==='<' && i+1<L && (str[i+1]==='/' || /[a-zA-Z]/.test(str[i+1]))){
+    if(!inM && str[i]==='<' && i+1<L && (str[i+1]==='/' || /[a-zA-Z]/.test(str[i+1]))){
       var tj=str.indexOf('>', i);
-      if(tj!==-1){ out+=str.slice(i, tj+1); i=tj+1; continue; }
+      if(tj!==-1 && tj-i<=64){
+        var _tg=str.slice(i, tj+1);
+        if((window._isSafeFormattingTag && window._isSafeFormattingTag(_tg)) || /^<\/?(?:br|b|strong|i|em|u|sub|sup|code)\s*\/?>$/i.test(_tg)){
+          out+=_tg; i=tj+1; continue;
+        }
+      }
     }
     if(!inM && str[i]==='\\' && i+1<L && (str[i+1]==='%' || str[i+1]==='$')){
       out+=str[i+1]; i+=2; continue;
