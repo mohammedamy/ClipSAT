@@ -1350,9 +1350,9 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress
        system — see SUPABASE_SETUP.md). cloud-config.js is a public, safe-to-commit
        project URL + anon key; cloud-sync.js no-ops entirely until it's filled in. -->
-  <script src="${BASE_PATH}/js/cloud-config.js?v=20261101b"></script>
-  <script defer src="${BASE_PATH}/vendor/supabase/supabase.min.js?v=20261101b"></script>
-  <script defer src="${BASE_PATH}/js/cloud-sync.js?v=20261101b"></script>
+  <script src="${BASE_PATH}/js/cloud-config.js?v=20261101c"></script>
+  <script defer src="${BASE_PATH}/vendor/supabase/supabase.min.js?v=20261101c"></script>
+  <script defer src="${BASE_PATH}/js/cloud-sync.js?v=20261101c"></script>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>

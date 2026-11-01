@@ -213,6 +213,144 @@ async function testAvgAntiTrackAuthFlow() {
   assert(loc._assigned && loc._assigned.includes('/auth/v1/authorize?provider=google'), 'signInWithGoogle must navigate directly to /auth/v1/authorize');
 }
 
+async function testAiTutorWorkerFetchAndLongTimeout() {
+  const cloudCfgCode = fs.readFileSync(path.join(ROOT, 'public/js/cloud-config.js'), 'utf8');
+  const supabaseUmdCode = fs.readFileSync(path.join(ROOT, 'public/vendor/supabase/supabase.min.js'), 'utf8');
+  const cloudSyncCode = fs.readFileSync(path.join(ROOT, 'public/js/cloud-sync.js'), 'utf8');
+
+  // Verify cloud-sync.js configures 90,000ms for ai-proxy (not 6500ms!)
+  assert(cloudSyncCode.includes('AI_PROXY_TIMEOUT_MS = 90000'), 'cloud-sync.js must allocate 90,000ms timeout for /functions/v1/ai-proxy');
+  assert(!cloudSyncCode.includes('var FETCH_TIMEOUT_MS = 6500;'), 'cloud-sync.js must not hardcode 6500ms timeout across AI Edge Functions');
+
+  // Simulate Chrome + AVG AntiTrack where main-world window.fetch hangs forever (never resolves or rejects!),
+  // while Dedicated blob: Web Worker runs unhooked native self.fetch!
+  const workerBlobs = new Map();
+  let blobId = 0;
+
+  class MockDedicatedWorker {
+    constructor(blobUrl) {
+      this.onmessage = null;
+      this.onerror = null;
+      const src = workerBlobs.get(blobUrl) || '';
+      const selfRef = this;
+      const workerScope = {
+        AbortController,
+        fetch: async (url, opts) => {
+          if (String(url).includes('/rest/v1/') && opts && opts.method === 'POST') {
+            // Simulate PostgREST 204 No Content to verify null-body Response safety!
+            return new Response(null, { status: 204, statusText: 'No Content' });
+          }
+          if (String(url).includes('/functions/v1/ai-proxy')) {
+            return new Response(JSON.stringify({ content: 'Step 1: \\(x = 4\\)', quota: { used: 1, cap: 20, paid: false } }), {
+              status: 200,
+              headers: { 'content-type': 'application/json' }
+            });
+          }
+          return new Response(JSON.stringify({ ok: true }), { status: 200, headers: { 'content-type': 'application/json' } });
+        },
+        postMessage(data) {
+          setImmediate(() => {
+            if (typeof selfRef.onmessage === 'function') {
+              selfRef.onmessage({ data });
+            }
+          });
+        }
+      };
+      workerScope.self = workerScope;
+      vm.runInNewContext(src, workerScope, { filename: 'blob-worker.js' });
+      this._scope = workerScope;
+    }
+    postMessage(data) {
+      setImmediate(() => {
+        if (this._scope && typeof this._scope.onmessage === 'function') {
+          this._scope.onmessage({ data });
+        }
+      });
+    }
+    terminate() {}
+  }
+
+  class MockBlob {
+    constructor(parts, opts) {
+      this._text = (parts || []).join('');
+      this.type = (opts && opts.type) || '';
+    }
+  }
+
+  const MockURL = Object.assign(function(u, b) { return new URL(u, b); }, {
+    createObjectURL(blob) {
+      const u = 'blob:https://clipsat.org/mock-' + (++blobId);
+      workerBlobs.set(u, blob._text || '');
+      return u;
+    },
+    revokeObjectURL(u) { workerBlobs.delete(u); }
+  });
+
+  const store = {};
+  const storage = {
+    getItem: (k) => (Object.prototype.hasOwnProperty.call(store, k) ? store[k] : null),
+    setItem: (k, v) => { store[k] = String(v); },
+    removeItem: (k) => { delete store[k]; }
+  };
+  const mockEl = () => ({ style: {}, classList: { add() {}, remove() {}, contains: () => false }, setAttribute() {}, appendChild() {}, querySelector: () => null, querySelectorAll: () => [] });
+
+  let mainWorldFetchCalls = 0;
+  const sandbox = {
+    console, setTimeout, clearTimeout, setInterval, clearInterval,
+    Date, Math, JSON, Object, Array, String, Number, Boolean, RegExp, Error, TypeError, Promise,
+    Uint8Array, ArrayBuffer, TextEncoder, TextDecoder, Headers, Response, AbortController, URLSearchParams,
+    Blob: MockBlob,
+    Worker: MockDedicatedWorker,
+    URL: MockURL,
+    atob: (s) => Buffer.from(s, 'base64').toString('binary'),
+    btoa: (s) => Buffer.from(s, 'binary').toString('base64'),
+    encodeURIComponent, decodeURIComponent,
+    localStorage: storage, sessionStorage: storage,
+    // Poisoned main-world window.fetch: hangs forever just like AVG AntiTrack's content script!
+    fetch: () => { mainWorldFetchCalls++; return new Promise(() => {}); },
+    location: { protocol: 'https:', origin: 'https://clipsat.org', host: 'clipsat.org', pathname: '/', search: '', hash: '', href: 'https://clipsat.org/', assign() {} },
+    history: { replaceState() {} },
+    navigator: { cookieEnabled: true, userAgent: 'Mozilla/5.0 Chrome/131.0', locks: { request: () => new Promise(() => {}) } },
+    document: {
+      readyState: 'complete',
+      documentElement: { lang: 'en', getAttribute: () => 'light', classList: { contains: () => false } },
+      head: mockEl(), body: mockEl(), createElement: () => mockEl(), getElementById: () => null,
+      querySelector: () => null, querySelectorAll: () => [], addEventListener() {}, removeEventListener() {}, dispatchEvent() {}
+    }
+  };
+  sandbox.window = sandbox;
+  sandbox.self = sandbox;
+  sandbox.globalThis = sandbox;
+  sandbox.window.addEventListener = () => {};
+  sandbox.window.removeEventListener = () => {};
+
+  const ctx = vm.createContext(sandbox);
+  vm.runInContext(cloudCfgCode, ctx);
+  vm.runInContext(supabaseUmdCode, ctx);
+  vm.runInContext(cloudSyncCode, ctx);
+
+  // 1. Call ai-proxy while main-world window.fetch is hung forever -> must succeed via Dedicated Worker!
+  const aiRes = await sandbox.ClipSATCloud.fetch('https://ynnqrxeprxhtdimzwxwx.supabase.co/functions/v1/ai-proxy', {
+    method: 'POST',
+    mode: 'cors',
+    timeoutMs: 90000,
+    headers: new Headers({ 'Authorization': 'Bearer test-jwt', 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ messages: [{ role: 'user', content: 'Solve 2x = 8' }] })
+  });
+  assert.strictEqual(aiRes.status, 200, 'Worker fetch must return HTTP 200 for ai-proxy');
+  const aiJson = await aiRes.json();
+  assert.strictEqual(aiJson.content, 'Step 1: \\(x = 4\\)', 'Worker fetch must parse JSON body from ai-proxy');
+  assert.strictEqual(mainWorldFetchCalls, 0, 'Worker fetch must completely bypass poisoned main-world window.fetch');
+
+  // 2. Verify HTTP 204 No Content response does not throw in native Response constructor
+  const noContentRes = await sandbox.ClipSATCloud.fetch('https://ynnqrxeprxhtdimzwxwx.supabase.co/rest/v1/profiles', {
+    method: 'POST',
+    headers: { 'apikey': 'anon' },
+    body: '{}'
+  });
+  assert.strictEqual(noContentRes.status, 204, 'Worker fetch must safely handle HTTP 204 No Content');
+}
+
 function testXssAndMathEval() {
   // 1. Ensure ZERO eval( or new Function( in src/scripts/ and public/js/
   function scanDir(dir) {
@@ -336,6 +474,8 @@ function testConfigsPoliciesAndBanks() {
 (async function main() {
   await testAvgAntiTrackAuthFlow();
   console.log('  ✓ Chrome + AVG AntiTrack OAuth & deadlock-free session recovery passed');
+  await testAiTutorWorkerFetchAndLongTimeout();
+  console.log('  ✓ AI Tutor 90s timeout & unhooked Dedicated Web Worker fetch bypass passed');
   testXssAndMathEval();
   console.log('  ✓ Strict escHtml, sanitizeSafeInlineHtml, SVG sanitizer & zero-eval CSMathEval passed');
   testConfigsPoliciesAndBanks();

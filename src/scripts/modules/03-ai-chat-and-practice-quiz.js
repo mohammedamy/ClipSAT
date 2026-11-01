@@ -489,6 +489,7 @@
       var doFetch = cloud.fetch || fetch;
       return doFetch(targetUrl,{
         method:'POST', mode:'cors',
+        timeoutMs: opts.timeoutMs || (opts.json ? 120000 : 90000),
         headers:{
           'Authorization':'Bearer '+session.access_token,
           'apikey': cfg.anonKey||'',
@@ -1513,11 +1514,7 @@ window.launchPracticeQuiz=function(mistake){
       else { addMsg('bot',"Hmm, I didn't quite catch that — could you rephrase the question or upload a clearer photo?"); }
     }).catch(function(e){
       typing.remove();
-      /* addMsg() routes text through fmt(), which escapes all HTML (only
-         bold, code, and newlines are supported as markdown) — a literal
-         <button>/<a> tag passed to addMsg renders as visible escaped text,
-         not a real clickable element. Build these two messages as raw DOM
-         instead, same pattern greet() already uses for its suggestion chips. */
+      /* Build clickable/formatted error blocks via raw DOM (fmt() escapes HTML). */
       if(e&&e.message==='NOT_SIGNED_IN'){
         var signInMsg=addMsg('bot','🔒 Sign in to use ClipSAT AI Tutor — it\'s free and only takes an email code.');
         var signInExtra=document.createElement('div');
@@ -1527,10 +1524,13 @@ window.launchPracticeQuiz=function(mistake){
       } else {
         var em=e&&e.message?e.message:'unknown';
         var hint;
+        var antiTrackBlocked = em.indexOf('anti-tracking')>-1 || (window.ClipSATCloud && window.ClipSATCloud.isAntiTrackDetected && window.ClipSATCloud.isAntiTrackDetected() && /failed to fetch|timed out|network/i.test(em));
         if(em.indexOf('429')>-1 || em.indexOf('limit reached')>-1){
           _setAiDailyMaxed();
           hint=' — daily limit reached (' + _aiLimitSummary(false) + '). Try again tomorrow.';
-        } else if(em==='Failed to fetch'||em.indexOf('abort')>-1){
+        } else if(antiTrackBlocked){
+          hint=' — blocked by a browser privacy/anti-tracking filter (e.g. AVG AntiTrack). Click the AVG AntiTrack icon in Chrome\'s toolbar on clipsat.org → "Pause tracker protection" or "Use lighter protection for this site", then send again.';
+        } else if(/failed to fetch|timed out|abort|network/i.test(em)){
           hint=' — request timed out or network error. Please check your connection and retry.';
         } else if(em.indexOf('401')>-1 || em.indexOf('NO_KEY')>-1){
           hint=' — session expired or AI service temporarily unavailable. Please sign in again.';

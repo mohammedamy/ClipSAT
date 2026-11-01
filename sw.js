@@ -19,7 +19,7 @@
 // returning visitors. It used to be bumped by hand; it was missed from v2.0.30 on, and
 // returning visitors kept a stale engine.js. Don't edit the hash. Change the 'v2.1' part only
 // to force a new version with no file change.
-const SW_VERSION = 'v2.6';
+const SW_VERSION = 'v2.7';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -175,6 +175,9 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(cdnFirst(request));
     return;
   }
+
+  /* Never intercept cross-origin APIs (e.g. *.supabase.co, *.googleapis.com) */
+  if (url.origin !== self.location.origin) return;
 
   /* Course and Question Bank JSON → stale-while-revalidate */
   if ((url.pathname.includes('/bank-data/') || url.pathname.includes('/worksheet-data/') || url.pathname.includes('/courses/')) && url.pathname.endsWith('.json')) {

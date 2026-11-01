@@ -1,28 +1,28 @@
 /**
- * ClipSAT Cloud Sync  v2.0 — Anti-Tracking Resilient Edition
+ * ClipSAT Cloud Sync  v2.1 — Anti-Tracking Resilient Edition
  * ════════════════════════════════════════════════════════════════════════
  * Adds OPTIONAL cross-device accounts on top of ClipSAT's existing
  * localStorage-only progress system — without touching engine.js.
  *
- * Chrome + AVG AntiTrack / Privacy-Extension Hardening (5 Layers)
+ * Chrome + AVG AntiTrack / Privacy-Extension Hardening (6 Layers)
  * ─────────────────────────────────────────────────────────────────
  *   1. Self-hosted first-party SDK (/vendor/supabase/supabase.min.js) so
  *      third-party CDN blockers never prevent Supabase client startup, with
  *      guaranteed ClipSATCloud.ready settlement on any load failure.
  *   2. Custom in-memory timed mutex (never touches navigator.locks, which
  *      deadlocks when AVG AntiTrack's Chrome content script hooks page async
- *      APIs) + 6.5s AbortController fetch wrapper so dropped packets to
- *      *.supabase.co never permanently wedge GoTrue's internal lock queue,
- *      plus zero reentrant sb.auth.getUser() calls inside onAuthStateChange.
- *   3. Synchronous OAuth fragment capture (in cloud-config.js) + zero-XHR
- *      local JWT claim validation & session hydration fallback when AVG
- *      AntiTrack blocks GoTrue's post-redirect GET /auth/v1/user XHR, AND
- *      non-destructive localStorage session persistence across reloads.
- *   4. Direct top-level navigation to /auth/v1/authorize for Google Sign-In
+ *      APIs) + endpoint-aware AbortController timeouts (90s–120s for ai-proxy,
+ *      30s for tts-proxy, 8s for auth/REST) with zero reentrant getUser() calls.
+ *   3. Dedicated blob: Web Worker self.fetch + XMLHttpRequest transport chain:
+ *      Chrome never injects extension content scripts into Dedicated Workers,
+ *      bypassing AVG AntiTrack's main-world window.fetch / ATTray IPC hooks.
+ *   4. Synchronous OAuth fragment capture (in cloud-config.js) + zero-XHR
+ *      local JWT claim validation & session hydration fallback, plus 0ms
+ *      in-memory getActiveSession() fast path for fresh tokens.
+ *   5. Direct top-level navigation to /auth/v1/authorize for Google Sign-In
  *      (zero pre-redirect XHR, zero lock wait, no synthetic popup canary).
- *   5. Automatic same-origin reverse-proxy failover (/api/supabase/*) when
- *      *.supabase.co XHRs are blocked by anti-tracking extensions, plus
- *      actionable anti-tracking recovery controls in #cloud-auth-health-warning.
+ *   6. Parallel 5.5s reachability detector on initial long-running AI calls +
+ *      automatic same-origin /api/supabase/* failover and anti-tracking UI tips.
  */
 (function () {
   'use strict';
@@ -64,6 +64,7 @@
   var _cachedSession = null;
   var _useFirstPartyProxy = false;
   var _proxyAvailability = null; // null = untested, true = working, false = unavailable (e.g. raw GitHub Pages 404/405)
+  var _directReachable = false;
   var _antiTrackDetected = false;
   var _healthNotice = null;
   var _explicitSignOut = false;
@@ -130,7 +131,7 @@
     ]);
 
     return waitRace.then(function () {
-      var safetyTimer = setTimeout(releaseNext, 6000);
+      var safetyTimer = setTimeout(releaseNext, 9500);
       return Promise.resolve().then(fn).then(
         function (res) { clearTimeout(safetyTimer); releaseNext(); return res; },
         function (err) { clearTimeout(safetyTimer); releaseNext(); throw err; }
@@ -138,12 +139,395 @@
     });
   }
 
-  /* ── Layer 2B & Layer 5: Abortable Fetch + Automatic First-Party Proxy Failover ── */
-  var FETCH_TIMEOUT_MS = 6500;
+  /* ── Layer 2B, 3 & 6: Unhooked Worker/XHR Fetch + Endpoint-Aware Timeouts + Proxy Failover ── */
+  var DEFAULT_FETCH_TIMEOUT_MS = 8000;
+  var AI_PROXY_TIMEOUT_MS = 90000;
+  var TTS_PROXY_TIMEOUT_MS = 30000;
+  var EDGE_FN_TIMEOUT_MS = 25000;
+  var REACHABILITY_PROBE_TIMEOUT_MS = 4500;
 
-  function fetchWithTimeout(url, options, timeoutMs) {
-    var ms = timeoutMs || FETCH_TIMEOUT_MS;
+  var _fetchWorker = null;
+  var _workerDisabled = false;
+  var _workerSeq = 0;
+  var _workerPending = {};
+
+  var WORKER_SOURCE = [
+    'var ctrls = {};',
+    'self.onmessage = function(ev) {',
+    '  var m = ev.data || {};',
+    '  if (m.type === "abort") {',
+    '    var c = ctrls[m.id];',
+    '    if (c) { delete ctrls[m.id]; try { c.abort(); } catch (e) {} }',
+    '    return;',
+    '  }',
+    '  if (m.type !== "fetch") return;',
+    '  var id = m.id;',
+    '  var ctrl = typeof AbortController === "function" ? new AbortController() : null;',
+    '  if (ctrl) ctrls[id] = ctrl;',
+    '  var fo = { method: m.method || "GET", headers: m.headers || {} };',
+    '  if (m.mode) fo.mode = m.mode;',
+    '  if (m.credentials) fo.credentials = m.credentials;',
+    '  if (m.redirect) fo.redirect = m.redirect;',
+    '  if (m.body !== undefined && m.body !== null) fo.body = m.body;',
+    '  if (ctrl) fo.signal = ctrl.signal;',
+    '  self.fetch(m.url, fo).then(function(res) {',
+    '    var hdrs = [];',
+    '    if (res.headers && typeof res.headers.forEach === "function") {',
+    '      res.headers.forEach(function(v, k) { hdrs.push([k, v]); });',
+    '    }',
+    '    return res.arrayBuffer().then(function(buf) {',
+    '      delete ctrls[id];',
+    '      self.postMessage({ id: id, ok: true, status: res.status, statusText: res.statusText || "", headers: hdrs, body: buf }, [buf]);',
+    '    });',
+    '  })["catch"](function(err) {',
+    '    delete ctrls[id];',
+    '    self.postMessage({ id: id, ok: false, name: (err && err.name) || "TypeError", message: (err && err.message) || "Failed to fetch" });',
+    '  });',
+    '};'
+  ].join('\n');
+
+  function extractUrl(input) {
+    if (typeof input === 'string') return input;
+    if (input && typeof input.url === 'string') return input.url;
+    if (input && typeof input.href === 'string') return input.href;
+    return String(input || '');
+  }
+
+  function resolveAbsoluteUrl(rawUrl) {
+    var s = String(rawUrl || '');
+    if (/^https?:\/\//i.test(s)) return s;
+    try {
+      if (typeof window !== 'undefined' && window.location && window.location.href) {
+        return new URL(s, window.location.href).href;
+      }
+    } catch (e) {}
+    return s;
+  }
+
+  function resolveTimeoutMs(rawUrl, opts) {
+    if (opts && typeof opts.timeoutMs === 'number' && opts.timeoutMs > 0) {
+      return opts.timeoutMs;
+    }
+    var u = String(rawUrl || '');
+    if (u.indexOf('/functions/v1/ai-proxy') !== -1) return AI_PROXY_TIMEOUT_MS;
+    if (u.indexOf('/functions/v1/tts-proxy') !== -1) return TTS_PROXY_TIMEOUT_MS;
+    if (u.indexOf('/functions/v1/') !== -1) return EDGE_FN_TIMEOUT_MS;
+    return DEFAULT_FETCH_TIMEOUT_MS;
+  }
+
+  function serializeHeaders(hdrs) {
+    var out = {};
+    if (!hdrs) return out;
+    if (typeof hdrs.forEach === 'function' && !Array.isArray(hdrs)) {
+      hdrs.forEach(function (v, k) {
+        if (v !== undefined) out[String(k)] = String(v);
+      });
+      return out;
+    }
+    if (Array.isArray(hdrs)) {
+      for (var i = 0; i < hdrs.length; i++) {
+        var pair = hdrs[i];
+        if (pair && pair.length >= 2 && pair[1] !== undefined) {
+          out[String(pair[0])] = String(pair[1]);
+        }
+      }
+      return out;
+    }
+    if (typeof hdrs === 'object') {
+      var keys = Object.keys(hdrs);
+      for (var j = 0; j < keys.length; j++) {
+        var k = keys[j];
+        if (hdrs[k] !== undefined) out[k] = String(hdrs[k]);
+      }
+    }
+    return out;
+  }
+
+  function normalizeFetchOptions(input, initOpts) {
+    var base = {};
+    if (input && typeof input === 'object' && typeof input.url === 'string') {
+      if (input.method) base.method = input.method;
+      if (input.mode) base.mode = input.mode;
+      if (input.credentials) base.credentials = input.credentials;
+      if (input.redirect) base.redirect = input.redirect;
+      if (input.headers) base.headers = serializeHeaders(input.headers);
+    }
+    var extra = initOpts || {};
+    var mergedHeaders = Object.assign({}, base.headers || {}, serializeHeaders(extra.headers));
+    var out = Object.assign(base, extra);
+    out.headers = mergedHeaders;
+    delete out.timeoutMs;
+    if (typeof URLSearchParams === 'function' && out.body instanceof URLSearchParams) {
+      out.body = out.body.toString();
+      if (!out.headers['Content-Type'] && !out.headers['content-type']) {
+        out.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+      }
+    }
+    return out;
+  }
+
+  function isCloneableBody(body) {
+    if (body === undefined || body === null || typeof body === 'string') return true;
+    if (typeof ArrayBuffer === 'function' && (body instanceof ArrayBuffer || ArrayBuffer.isView(body))) return true;
+    if (typeof Blob === 'function' && body instanceof Blob) return true;
+    return false;
+  }
+
+  function isNullBodyStatus(status) {
+    return status === 101 || status === 204 || status === 205 || status === 304;
+  }
+
+  function buildFetchResponse(status, statusText, headersList, arrayBuf) {
+    var safeStatus = status || 200;
+    var bodyArg = isNullBodyStatus(safeStatus) ? null : (arrayBuf || new ArrayBuffer(0));
+    if (typeof Response === 'function') {
+      return new Response(bodyArg, {
+        status: safeStatus,
+        statusText: statusText || '',
+        headers: headersList || []
+      });
+    }
+    var textVal = '';
+    try {
+      if (bodyArg && typeof TextDecoder === 'function') {
+        textVal = new TextDecoder('utf-8').decode(new Uint8Array(bodyArg));
+      }
+    } catch (e) {}
+    var hdrMap = {};
+    (headersList || []).forEach(function (pair) {
+      if (pair && pair[0]) hdrMap[String(pair[0]).toLowerCase()] = String(pair[1] || '');
+    });
+    return {
+      ok: safeStatus >= 200 && safeStatus < 300,
+      status: safeStatus,
+      statusText: statusText || '',
+      headers: {
+        get: function (k) { return hdrMap[String(k || '').toLowerCase()] || null; },
+        forEach: function (fn) { Object.keys(hdrMap).forEach(function (k) { fn(hdrMap[k], k); }); }
+      },
+      text: function () { return Promise.resolve(textVal); },
+      json: function () {
+        try { return Promise.resolve(textVal ? JSON.parse(textVal) : {}); }
+        catch (err) { return Promise.reject(err); }
+      },
+      arrayBuffer: function () { return Promise.resolve(bodyArg || new ArrayBuffer(0)); },
+      blob: function () {
+        return typeof Blob === 'function'
+          ? Promise.resolve(new Blob([bodyArg || new ArrayBuffer(0)], { type: hdrMap['content-type'] || '' }))
+          : Promise.reject(new Error('Blob unavailable'));
+      },
+      clone: function () { return buildFetchResponse(safeStatus, statusText, headersList, arrayBuf); }
+    };
+  }
+
+  function createAbortError() {
+    var e = new Error('The operation was aborted.');
+    e.name = 'AbortError';
+    return e;
+  }
+
+  function canUseWorkerFetch(opts) {
+    if (_workerDisabled) return false;
+    if (typeof window !== 'undefined' && window.__CLIPSAT_DISABLE_WORKER_FETCH__) return false;
+    if (typeof Worker !== 'function' || typeof Blob !== 'function' || typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function') {
+      return false;
+    }
+    return isCloneableBody(opts && opts.body);
+  }
+
+  function getFetchWorker() {
+    if (_fetchWorker) return _fetchWorker;
+    try {
+      var blob = new Blob([WORKER_SOURCE], { type: 'application/javascript' });
+      var blobUrl = URL.createObjectURL(blob);
+      var w = new Worker(blobUrl);
+      setTimeout(function () {
+        try { URL.revokeObjectURL(blobUrl); } catch (e) {}
+      }, 5000);
+      w.onmessage = function (ev) {
+        var d = ev && ev.data;
+        if (!d || !d.id) return;
+        var entry = _workerPending[d.id];
+        if (!entry) return;
+        delete _workerPending[d.id];
+        entry.cleanup();
+        if (d.ok) {
+          entry.resolve(buildFetchResponse(d.status, d.statusText, d.headers, d.body));
+        } else {
+          var err = (d.name === 'AbortError') ? createAbortError() : new TypeError(d.message || 'Failed to fetch');
+          entry.reject(err);
+        }
+      };
+      w.onerror = function (ev) {
+        if (ev && typeof ev.preventDefault === 'function') ev.preventDefault();
+        _workerDisabled = true;
+        try { w.terminate(); } catch (e) {}
+        _fetchWorker = null;
+        var ids = Object.keys(_workerPending);
+        for (var i = 0; i < ids.length; i++) {
+          var pending = _workerPending[ids[i]];
+          delete _workerPending[ids[i]];
+          pending.cleanup();
+          var wErr = new Error('Worker fetch unavailable');
+          wErr._workerFailed = true;
+          pending.reject(wErr);
+        }
+      };
+      _fetchWorker = w;
+      return w;
+    } catch (e) {
+      _workerDisabled = true;
+      return null;
+    }
+  }
+
+  function workerFetch(url, opts, timeoutMs) {
+    var ms = timeoutMs || DEFAULT_FETCH_TIMEOUT_MS;
+    var extSignal = opts && opts.signal;
+    if (extSignal && extSignal.aborted) {
+      return Promise.reject(createAbortError());
+    }
+    var w = getFetchWorker();
+    if (!w) {
+      var initErr = new Error('Worker fetch unavailable');
+      initErr._workerFailed = true;
+      return Promise.reject(initErr);
+    }
+
+    var id = ++_workerSeq;
+    var absUrl = resolveAbsoluteUrl(url);
+
+    return new Promise(function (resolve, reject) {
+      var onExtAbort = null;
+      var timer = setTimeout(function () {
+        if (!_workerPending[id]) return;
+        delete _workerPending[id];
+        cleanup();
+        try { w.postMessage({ type: 'abort', id: id }); } catch (e) {}
+        reject(new TypeError('Failed to fetch (request timed out after ' + ms + 'ms)'));
+      }, ms);
+
+      function cleanup() {
+        clearTimeout(timer);
+        if (extSignal && onExtAbort && typeof extSignal.removeEventListener === 'function') {
+          try { extSignal.removeEventListener('abort', onExtAbort); } catch (e) {}
+        }
+      }
+
+      if (extSignal && typeof extSignal.addEventListener === 'function') {
+        onExtAbort = function () {
+          if (!_workerPending[id]) return;
+          delete _workerPending[id];
+          cleanup();
+          try { w.postMessage({ type: 'abort', id: id }); } catch (e) {}
+          reject(createAbortError());
+        };
+        extSignal.addEventListener('abort', onExtAbort);
+      }
+
+      _workerPending[id] = { resolve: resolve, reject: reject, cleanup: cleanup };
+
+      try {
+        w.postMessage({
+          type: 'fetch',
+          id: id,
+          url: absUrl,
+          method: (opts && opts.method) || 'GET',
+          mode: (opts && opts.mode) || 'cors',
+          credentials: opts && opts.credentials,
+          redirect: opts && opts.redirect,
+          headers: (opts && opts.headers) || {},
+          body: (opts && opts.body !== undefined) ? opts.body : null
+        });
+      } catch (postErr) {
+        delete _workerPending[id];
+        cleanup();
+        postErr._workerFailed = true;
+        reject(postErr);
+      }
+    });
+  }
+
+  function xhrFetch(url, opts, timeoutMs) {
+    var ms = timeoutMs || DEFAULT_FETCH_TIMEOUT_MS;
+    var extSignal = opts && opts.signal;
+    if (extSignal && extSignal.aborted) {
+      return Promise.reject(createAbortError());
+    }
+    if (typeof XMLHttpRequest !== 'function') {
+      var noXhr = new Error('XMLHttpRequest unavailable');
+      noXhr._xhrUnavailable = true;
+      return Promise.reject(noXhr);
+    }
+
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      var xhr = new XMLHttpRequest();
+      var onExtAbort = null;
+
+      function finish(fn, arg) {
+        if (settled) return;
+        settled = true;
+        if (extSignal && onExtAbort && typeof extSignal.removeEventListener === 'function') {
+          try { extSignal.removeEventListener('abort', onExtAbort); } catch (e) {}
+        }
+        fn(arg);
+      }
+
+      try {
+        xhr.open((opts && opts.method) || 'GET', resolveAbsoluteUrl(url), true);
+        xhr.responseType = 'arraybuffer';
+        xhr.timeout = ms;
+        if (opts && opts.credentials === 'include') xhr.withCredentials = true;
+
+        var hdrs = (opts && opts.headers) || {};
+        var hKeys = Object.keys(hdrs);
+        for (var i = 0; i < hKeys.length; i++) {
+          var hk = hKeys[i];
+          var low = hk.toLowerCase();
+          if (low === 'host' || low === 'origin' || low === 'content-length') continue;
+          try { xhr.setRequestHeader(hk, hdrs[hk]); } catch (e) {}
+        }
+
+        if (extSignal && typeof extSignal.addEventListener === 'function') {
+          onExtAbort = function () {
+            try { xhr.abort(); } catch (e) {}
+            finish(reject, createAbortError());
+          };
+          extSignal.addEventListener('abort', onExtAbort);
+        }
+
+        xhr.onload = function () {
+          var rawHdrs = xhr.getAllResponseHeaders() || '';
+          var parsedHdrs = [];
+          rawHdrs.trim().split(/[\r\n]+/).forEach(function (line) {
+            var idx = line.indexOf(':');
+            if (idx > 0) {
+              parsedHdrs.push([line.slice(0, idx).trim(), line.slice(idx + 1).trim()]);
+            }
+          });
+          finish(resolve, buildFetchResponse(xhr.status, xhr.statusText, parsedHdrs, xhr.response));
+        };
+        xhr.onerror = function () {
+          finish(reject, new TypeError('Failed to fetch'));
+        };
+        xhr.ontimeout = function () {
+          finish(reject, new TypeError('Failed to fetch (request timed out after ' + ms + 'ms)'));
+        };
+        xhr.onabort = function () {
+          finish(reject, createAbortError());
+        };
+        xhr.send((opts && opts.body !== undefined) ? opts.body : null);
+      } catch (syncErr) {
+        finish(reject, syncErr);
+      }
+    });
+  }
+
+  function nativeFetchWithTimeout(url, options, timeoutMs) {
+    var ms = timeoutMs || DEFAULT_FETCH_TIMEOUT_MS;
     var opts = Object.assign({}, options || {});
+    delete opts.timeoutMs;
     var ctrl = (!opts.signal && typeof AbortController === 'function') ? new AbortController() : null;
     if (ctrl) opts.signal = ctrl.signal;
 
@@ -181,6 +565,32 @@
     });
   }
 
+  function transportFetch(url, opts, timeoutMs) {
+    if (canUseWorkerFetch(opts)) {
+      var startedAt = Date.now();
+      return workerFetch(url, opts, timeoutMs)['catch'](function (err) {
+        if (err && err.name === 'AbortError') throw err;
+        // Immediate fallback if Worker couldn't boot or failed rapidly (< 3s) while XHR is available
+        if (err && (err._workerFailed || (Date.now() - startedAt < 3000))) {
+          if (typeof XMLHttpRequest === 'function' && isCloneableBody(opts && opts.body)) {
+            return xhrFetch(url, opts, timeoutMs)['catch'](function () {
+              return nativeFetchWithTimeout(url, opts, timeoutMs);
+            });
+          }
+          return nativeFetchWithTimeout(url, opts, timeoutMs);
+        }
+        throw err;
+      });
+    }
+    if (typeof XMLHttpRequest === 'function' && isCloneableBody(opts && opts.body) && !(typeof window !== 'undefined' && window.__CLIPSAT_DISABLE_XHR_FETCH__)) {
+      return xhrFetch(url, opts, timeoutMs)['catch'](function (xhrErr) {
+        if (xhrErr && xhrErr.name === 'AbortError') throw xhrErr;
+        return nativeFetchWithTimeout(url, opts, timeoutMs);
+      });
+    }
+    return nativeFetchWithTimeout(url, opts, timeoutMs);
+  }
+
   function rewriteToProxy(targetUrl) {
     if (!PROXY_BASE_URL) return null;
     var s = String(targetUrl || '');
@@ -190,23 +600,89 @@
     return null;
   }
 
+  function probeDirectReachability() {
+    if (_directReachable) return Promise.resolve(true);
+    return transportFetch(
+      DIRECT_URL + '/auth/v1/settings',
+      { method: 'GET', mode: 'cors', headers: { apikey: CFG.anonKey } },
+      REACHABILITY_PROBE_TIMEOUT_MS
+    ).then(function () {
+      _directReachable = true;
+      _antiTrackDetected = false;
+      return true;
+    })['catch'](function () {
+      return false;
+    });
+  }
+
+  function fetchDirectWithStallGuard(rawUrl, normOpts, timeoutMs) {
+    var canProbe = (typeof Worker === 'function' || typeof XMLHttpRequest === 'function');
+    if (_directReachable || timeoutMs <= 12000 || !canProbe) {
+      return transportFetch(rawUrl, normOpts, timeoutMs).then(function (res) {
+        _directReachable = true;
+        _antiTrackDetected = false;
+        return res;
+      });
+    }
+
+    // For long-running AI calls (> 12s) when direct reachability hasn't been confirmed yet:
+    // keep the full 90s–120s budget if *.supabase.co responds to a lightweight 4.5s health
+    // ping, OR fail fast (~6s) if AVG AntiTrack's socket filter is stalling all traffic.
+    var localAbort = (typeof AbortController === 'function' && !normOpts.signal) ? new AbortController() : null;
+    var guardedOpts = localAbort ? Object.assign({}, normOpts, { signal: localAbort.signal }) : normOpts;
+
+    return new Promise(function (resolve, reject) {
+      var done = false;
+      var probeDelay = setTimeout(function () {
+        if (done || _directReachable) return;
+        probeDirectReachability().then(function (reachable) {
+          if (done || reachable) return;
+          done = true;
+          if (localAbort) { try { localAbort.abort(); } catch (e) {} }
+          reject(new TypeError('Failed to fetch (blocked by browser anti-tracking extension)'));
+        });
+      }, 1500);
+
+      transportFetch(rawUrl, guardedOpts, timeoutMs).then(
+        function (res) {
+          if (done) return;
+          done = true;
+          clearTimeout(probeDelay);
+          _directReachable = true;
+          _antiTrackDetected = false;
+          resolve(res);
+        },
+        function (err) {
+          if (done) return;
+          done = true;
+          clearTimeout(probeDelay);
+          reject(err);
+        }
+      );
+    });
+  }
+
   function resilientSupabaseFetch(input, initOpts) {
-    var rawUrl = (typeof input === 'string') ? input : (input && input.url ? input.url : String(input));
+    var rawUrl = extractUrl(input);
+    var timeoutMs = resolveTimeoutMs(rawUrl, initOpts);
+    var normOpts = normalizeFetchOptions(input, initOpts);
     var proxiedUrl = rewriteToProxy(rawUrl);
 
     if (_useFirstPartyProxy && proxiedUrl) {
-      return fetchWithTimeout(proxiedUrl, initOpts, FETCH_TIMEOUT_MS);
+      return transportFetch(proxiedUrl, normOpts, timeoutMs);
     }
 
-    return fetchWithTimeout(rawUrl, initOpts, FETCH_TIMEOUT_MS)['catch'](function (err) {
-      // Network TypeError ("Failed to fetch") or AbortError when calling *.supabase.co
-      // is the exact signature of AVG AntiTrack / tracker-blocking extensions in Chrome.
-      if (rawUrl.indexOf(DIRECT_URL) === 0) {
+    var primaryPromise = (rawUrl.indexOf(DIRECT_URL) === 0)
+      ? fetchDirectWithStallGuard(rawUrl, normOpts, timeoutMs)
+      : transportFetch(rawUrl, normOpts, timeoutMs);
+
+    return primaryPromise['catch'](function (err) {
+      if (rawUrl.indexOf(DIRECT_URL) === 0 && (!err || err.name !== 'AbortError')) {
         _antiTrackDetected = true;
         log('Direct request to *.supabase.co blocked/timed out (' + (err && err.message) + ')');
         if (proxiedUrl && _proxyAvailability !== false) {
-          return fetchWithTimeout(proxiedUrl, initOpts, FETCH_TIMEOUT_MS).then(function (proxyRes) {
-            // Static hosts without Cloudflare Functions return 404 or 405 on /api/supabase/*
+          var proxyTimeout = (_proxyAvailability === true) ? timeoutMs : Math.min(timeoutMs, 6500);
+          return transportFetch(proxiedUrl, normOpts, proxyTimeout).then(function (proxyRes) {
             if (proxyRes.status === 404 || proxyRes.status === 405) {
               _proxyAvailability = false;
               throw err;
@@ -216,6 +692,8 @@
             _antiTrackDetected = false;
             log('Switched seamlessly to first-party /api/supabase proxy');
             return proxyRes;
+          })['catch'](function () {
+            throw err;
           });
         }
       }
@@ -611,6 +1089,14 @@
   }
 
   function getActiveSession() {
+    if (_cachedSession && _cachedSession.access_token && _cachedUser) {
+      var claims = decodeJwtPayload(_cachedSession.access_token);
+      var nowSec = Math.floor(Date.now() / 1000);
+      var exp = (claims && claims.exp) || _cachedSession.expires_at || 0;
+      if (exp > nowSec + 90) {
+        return Promise.resolve({ data: { session: _cachedSession }, error: null });
+      }
+    }
     if (sb) {
       return Promise.race([
         sb.auth.getSession(),
@@ -1082,6 +1568,7 @@
     getAccessToken: function () { return (_cachedSession && _cachedSession.access_token) || null; },
     getFunctionUrl: getFunctionUrl,
     fetch: resilientSupabaseFetch,
+    isAntiTrackDetected: function () { return !!_antiTrackDetected; },
     currentEmail: currentEmail,
     currentProvider: currentProvider,
     currentUserId: function () { return _cachedUser ? _cachedUser.id : null; },
