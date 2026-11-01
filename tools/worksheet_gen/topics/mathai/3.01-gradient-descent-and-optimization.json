@@ -16,24 +16,7 @@
             "\\( 19.80 \\)"
           ],
           "correct": 2,
-          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 20 - (0.2)(8) = 20 - 1.60 = 18.40 \\).",
-          "figure": {
-            "type": "numberline",
-            "range": [
-              -5,
-              7
-            ],
-            "points": [
-              {
-                "x": -2,
-                "label": "P"
-              },
-              {
-                "x": 4,
-                "label": "Q"
-              }
-            ]
-          }
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 20 - (0.2)(8) = 20 - 1.60 = 18.40 \\)."
         },
         {
           "q": "In gradient descent, a weight currently has value \\( w = 30 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 12 \\) and the learning rate is \\( \\eta = 0.3 \\), find the updated weight \\( w' \\).",
@@ -55,24 +38,7 @@
             "\\( 59.40 \\)"
           ],
           "correct": 2,
-          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\).",
-          "figure": {
-            "type": "numberline",
-            "range": [
-              -5,
-              7
-            ],
-            "points": [
-              {
-                "x": -2,
-                "label": "P"
-              },
-              {
-                "x": 4,
-                "label": "Q"
-              }
-            ]
-          }
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\)."
         },
         {
           "q": "Consider the scalar loss function \\( L(w) = 2w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 2 \\).",
@@ -94,26 +60,7 @@
             "\\( \\nabla L(4) = 4 \\)"
           ],
           "correct": 0,
-          "answer": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(3)w - 8 = 6w - 8 \\). At \\( w = 4 \\): \\( \\nabla L = 6(4) - 8 = 24 - 8 = 16 \\).",
-          "figure": {
-            "type": "fn",
-            "title": "Quadratic Parabola y = f(x)",
-            "xrange": [
-              -3,
-              5
-            ],
-            "yrange": [
-              -1,
-              8
-            ],
-            "fns": [
-              {
-                "fn": "(x - 1)*(x - 1) + 1",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              }
-            ]
-          }
+          "answer": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(3)w - 8 = 6w - 8 \\). At \\( w = 4 \\): \\( \\nabla L = 6(4) - 8 = 24 - 8 = 16 \\)."
         },
         {
           "q": "Consider the scalar loss function \\( L(w) = 4w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 6 \\).",
@@ -147,6 +94,223 @@
           ],
           "correct": 0,
           "answer": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(6)w - 8 = 12w - 8 \\). At \\( w = 10 \\): \\( \\nabla L = 12(10) - 8 = 120 - 8 = 112 \\)."
+        },
+        {
+          "q": "Consider the quadratic loss function \\( L(w) = w^2 - 4w + 3 \\). Find the value of \\( w \\) where the function reaches its minimum.",
+          "answer": "The given loss function is a quadratic function \\( L(w) = w^2 - 4w + 3 \\). This represents a parabola opening upwards. The minimum value of a quadratic function of the form \\( aw^2 + bw + c \\) occurs at \\( w = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -4 \\). Therefore, the minimum occurs at \\( w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2 \\). Alternatively, we can find the minimum by taking the derivative and setting it to zero: \\( L'(w) = 2w - 4 \\). Setting \\( L'(w) = 0 \\) gives \\( 2w - 4 = 0 \\), which implies \\( 2w = 4 \\), so \\( w = 2 \\).",
+          "choices": [
+            "\\( w = 3 \\)",
+            "\\( w = 2 \\)",
+            "\\( w = 4 \\)",
+            "\\( w = 1 \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?",
+          "answer": "The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).",
+          "choices": [
+            "\\( 3 \\)",
+            "\\( 4 \\)",
+            "\\( 6 \\)",
+            "\\( 5 \\)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "fn",
+            "title": "Vector Position in Coordinate Plane",
+            "xrange": [
+              -7,
+              7
+            ],
+            "yrange": [
+              -7,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "2.5*x for x in [0, 2]",
+                "color": "var(--fig-indigo)"
+              }
+            ],
+            "points": [
+              {
+                "x": 2,
+                "y": 5,
+                "label": "(2, 5)"
+              },
+              {
+                "x": 0,
+                "y": 0,
+                "label": "O"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Considering gradient descent, a weight currently has value \\( w = 30 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 12 \\) and the learning rate is \\( \\eta = 0.3 \\), find the updated weight \\( w' \\).",
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 30 - (0.3)(12) = 30 - 3.60 = 26.40 \\).",
+          "choices": [
+            "\\( 18.00 \\)",
+            "\\( 33.60 \\)",
+            "\\( 29.70 \\)",
+            "\\( 26.40 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Examining gradient descent, a weight currently has value \\( w = 60 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 24 \\) and the learning rate is \\( \\eta = 0.6 \\), find the updated weight \\( w' \\).",
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\).",
+          "choices": [
+            "\\( 59.40 \\)",
+            "\\( 36.00 \\)",
+            "\\( 45.60 \\)",
+            "\\( 74.40 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Consider the following quadratic loss function for a regression problem: \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). If the predicted value \\( \\hat{y} = 5 \\) and the true value \\( y = 3 \\), what is the value of the loss function?",
+          "answer": "The quadratic loss function is defined as \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). Given the true value \\( y = 3 \\) and the predicted value \\( \\hat{y} = 5 \\), we substitute these values into the loss function:\n\n \\( L(3, 5) = (3 - 5)^2 \\)\n\n \\( L(3, 5) = (-2)^2 \\)\n\n \\( L(3, 5) = 4 \\)\n\nTherefore, the value of the loss function is 4.",
+          "choices": [
+            "\\( -2 \\)",
+            "\\( 9 \\)",
+            "\\( 4 \\)",
+            "\\( 2 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "An Ordinary Least Squares linear model \\( \\hat{f}(x) = 23x + 14 \\) is evaluated at \\( x = 19 \\). Determine the predicted response \\( \\hat{f}(19) \\).",
+          "answer": "Evaluating \\( 23(19) + 14 = 451 \\).",
+          "choices": [
+            "451",
+            "455",
+            "474",
+            "437"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Consider the following quadratic loss function: \\( L(w) = 3w^2 - 12w + 10 \\).  What is the value of \\( w \\) that minimizes this loss function?",
+          "answer": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero. The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\).  The second derivative is \\( \\frac{d^2L}{dw^2} = 6 \\), which is positive, confirming that \\( w=2 \\) corresponds to a minimum.",
+          "choices": [
+            "2",
+            "12",
+            "1",
+            "4"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Consider the scalar loss function \\( L(w) = 7w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 12 \\).",
+          "answer": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(7)w - 8 = 14w - 8 \\). At \\( w = 12 \\): \\( \\nabla L = 14(12) - 8 = 168 - 8 = 160 \\).",
+          "choices": [
+            "\\( \\nabla L(12) = 168 \\)",
+            "\\( \\nabla L(12) = 176 \\)",
+            "\\( \\nabla L(12) = 160 \\)",
+            "\\( \\nabla L(12) = 76 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "A 2D loss surface is defined as \\( L(w_1, w_2) = 2w_1^2 + 3w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
+          "answer": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6 \\). Therefore, \\( \\nabla L = [8, -6]^T \\).",
+          "choices": [
+            "\\( \\nabla L = [10, -8]^T \\)",
+            "\\( \\nabla L = [8, 6]^T \\)",
+            "\\( \\nabla L = [8, -6]^T \\)",
+            "\\( \\nabla L = [4, -3]^T \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "A 2D loss surface is defined as \\( L(w_1, w_2) = 3w_1^2 + 5w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
+          "answer": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(3)w_1 = 6(2) = 12 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(5)w_2 = 10(-1) = -10 \\). Therefore, \\( \\nabla L = [12, -10]^T \\).",
+          "choices": [
+            "\\( \\nabla L = [14, -12]^T \\)",
+            "\\( \\nabla L = [12, 10]^T \\)",
+            "\\( \\nabla L = [6, -5]^T \\)",
+            "\\( \\nabla L = [12, -10]^T \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "In an applied problem, a 2D loss surface is defined as \\( L(w_1, w_2) = 4w_1^2 + 7w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
+          "answer": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2) = 16 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1) = -14 \\). Therefore, \\( \\nabla L = [16, -14]^T \\).",
+          "choices": [
+            "\\( \\nabla L = [18, -16]^T \\)",
+            "\\( \\nabla L = [16, -14]^T \\)",
+            "\\( \\nabla L = [16, 14]^T \\)",
+            "\\( \\nabla L = [8, -7]^T \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Suppose a 2D loss surface is defined as \\( L(w_1, w_2) = 5w_1^2 + 9w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
+          "answer": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(5)w_1 = 10(2) = 20 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(9)w_2 = 18(-1) = -18 \\). Therefore, \\( \\nabla L = [20, -18]^T \\).",
+          "choices": [
+            "\\( \\nabla L = [20, -18]^T \\)",
+            "\\( \\nabla L = [22, -20]^T \\)",
+            "\\( \\nabla L = [20, 18]^T \\)",
+            "\\( \\nabla L = [10, -9]^T \\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "An observed 2D loss surface is defined as \\( L(w_1, w_2) = 6w_1^2 + 11w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
+          "answer": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(6)w_1 = 12(2) = 24 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(11)w_2 = 22(-1) = -22 \\). Therefore, \\( \\nabla L = [24, -22]^T \\).",
+          "choices": [
+            "\\( \\nabla L = [26, -24]^T \\)",
+            "\\( \\nabla L = [24, -22]^T \\)",
+            "\\( \\nabla L = [24, 22]^T \\)",
+            "\\( \\nabla L = [12, -11]^T \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Consider a 2D loss surface is defined as \\( L(w_1, w_2) = 7w_1^2 + 13w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).",
+          "answer": "Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(7)w_1 = 14(2) = 28 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(13)w_2 = 26(-1) = -26 \\). Therefore, \\( \\nabla L = [28, -26]^T \\).",
+          "choices": [
+            "\\( \\nabla L = [30, -28]^T \\)",
+            "\\( \\nabla L = [28, 26]^T \\)",
+            "\\( \\nabla L = [28, -26]^T \\)",
+            "\\( \\nabla L = [14, -13]^T \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Consider minimizing the convex loss \\(L(w) = (w + 3)^2\\) (Run #1) using gradient descent with learning rate \\(\\eta = 0.25\\) starting at \\(w_0 = -1\\). Compute \\(w_1 = w_0 - \\eta L'(w_0)\\).",
+          "answer": "Here \\(L'(w) = 2(w - (-3))\\), so \\(L'(-1) = 4\\). Updating gives \\(w_1 = -1 - 0.25(4) = -2\\).",
+          "choices": [
+            "\\(-3.50\\)",
+            "\\(0.00\\)",
+            "\\(-2\\)",
+            "\\(4\\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Consider minimizing the convex loss \\(L(w) = 2(w + 2)^2\\) (Run #2) using gradient descent with learning rate \\(\\eta = 0.25\\) starting at \\(w_0 = 1\\). Compute \\(w_1 = w_0 - \\eta L'(w_0)\\).",
+          "answer": "Here \\(L'(w) = 4(w - (-2))\\), so \\(L'(1) = 12\\). Updating gives \\(w_1 = 1 - 0.25(12) = -2\\).",
+          "choices": [
+            "\\(-2\\)",
+            "\\(-3.50\\)",
+            "\\(4.00\\)",
+            "\\(12\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Consider minimizing the convex loss \\(L(w) = 3(w + 1)^2\\) (Run #3) using gradient descent with learning rate \\(\\eta = 0.25\\) starting at \\(w_0 = 3\\). Compute \\(w_1 = w_0 - \\eta L'(w_0)\\).",
+          "answer": "Here \\(L'(w) = 6(w - (-1))\\), so \\(L'(3) = 24\\). Updating gives \\(w_1 = 3 - 0.25(24) = -3\\).",
+          "choices": [
+            "\\(-3\\)",
+            "\\(9.00\\)",
+            "\\(24\\)",
+            "\\(-4.50\\)"
+          ],
+          "correct": 0
         }
       ]
     }

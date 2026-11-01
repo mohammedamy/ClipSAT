@@ -66,8 +66,8 @@
       ansText = String(q.choices[q.answer]);
     } else if(q.right != null){
       ansText = String(q.right);
-    } else if(q.ans != null){
-      ansText = String(q.ans);
+    } else if((q.sprAnswer != null ? q.sprAnswer : (q.finalAnswer != null ? q.finalAnswer : q.ans)) != null){
+      ansText = String(q.sprAnswer != null ? q.sprAnswer : (q.finalAnswer != null ? q.finalAnswer : q.ans));
     }
 
     var isAr = _isArabicText(stem) && !/[a-zA-Z]{4,}/.test(stem.replace(/<[^>]+>/g, ''));

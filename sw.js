@@ -19,7 +19,7 @@
 // returning visitors. It used to be bumped by hand; it was missed from v2.0.30 on, and
 // returning visitors kept a stale engine.js. Don't edit the hash. Change the 'v2.1' part only
 // to force a new version with no file change.
-const SW_VERSION = 'v2.7';
+const SW_VERSION = 'v2.9';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -94,27 +94,14 @@ var INSTALL_PRECACHE = [
   './icon-192.png',
 ];
 
-/* ── CDN origins whose assets should be cached ── */
+/* ── CDN origins whose assets should be cached (only used if optional embeds load) ── */
 var CDN_ORIGINS = [
-  'cdn.jsdelivr.net',
-  'cdnjs.cloudflare.com',
-  'unpkg.com',
   'api.desmos.com',
 ];
 
-/* ── KaTeX assets to pre-cache — must match what base.njk (build.js's
- * baseNjk) actually requests: cdnjs.cloudflare.com, KaTeX 0.16.11. This
- * previously listed cdn.jsdelivr.net katex@0.16.10 + a MathJax bundle —
- * neither URL is ever requested by a real page (the site's KaTeX shim
- * replaced MathJax outright, see base.njk's own comment on that), so this
- * pre-cache step was fetching and caching assets nothing ever reads, while
- * the real 0.16.11 CSS/JS/fonts only got cached lazily on first real use via
- * the cdnFirst handler below (CDN_ORIGINS already covers cdnjs.cloudflare.com,
- * so that part worked — this just makes it available from install, not just
- * after a first live fetch). */
-var CDN_PRECACHE = [
-  'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
-];
+/* ── Zero cross-origin pre-cache on install (all fonts, KaTeX, JSZip, DOMPurify,
+ * and Supabase SDK are 100% self-hosted under /vendor/ for PDPL/GDPR privacy). ── */
+var CDN_PRECACHE = [];
 
 /* ═══════════════════════════════════════════════════════════════════════════
  * INSTALL
@@ -179,8 +166,8 @@ self.addEventListener('fetch', function(event) {
   /* Never intercept cross-origin APIs (e.g. *.supabase.co, *.googleapis.com) */
   if (url.origin !== self.location.origin) return;
 
-  /* Course and Question Bank JSON → stale-while-revalidate */
-  if ((url.pathname.includes('/bank-data/') || url.pathname.includes('/worksheet-data/') || url.pathname.includes('/courses/')) && url.pathname.endsWith('.json')) {
+  /* Course, Topic Shard, and Question Bank JSON → stale-while-revalidate */
+  if ((url.pathname.includes('/bank-shards/') || url.pathname.includes('/bank-data/') || url.pathname.includes('/worksheet-data/') || url.pathname.includes('/courses/')) && url.pathname.endsWith('.json')) {
     event.respondWith(staleWhileRevalidate(request, CACHE.COURSES));
     return;
   }

@@ -32,6 +32,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Blocking content, schema v2, strict KaTeX & figure gates
+        run: |
+          node scripts/validate-content.js
+          node scripts/validate-ix.js
+          node scripts/validate-banks.js
+          node scripts/validate-katex-strict.js
+          node scripts/validate-figures.js
+
       - name: Extract content & build static site
         run: npm run build
 

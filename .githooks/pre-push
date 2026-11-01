@@ -1,7 +1,15 @@
-#!/bin/sh
-# ClipSAT Pre-Push Hook: Automatically revise & fix any flagged errors and clear resolved flags
-NODE_BIN=$(command -v node || echo "/usr/local/bin/node")
-if [ -x "$NODE_BIN" ] && [ -f "scripts/revise-and-fix-flagged-errors.js" ]; then
-  "$NODE_BIN" scripts/revise-and-fix-flagged-errors.js
-fi
-exit 0
+#!/usr/bin/env sh
+# ClipSAT Wave 1 Blocking Pre-Push Hook (WP-20)
+# Activate locally via: git config core.hooksPath .githooks
+
+set -e
+
+echo "Running ClipSAT Wave 1 pre-push blocking checks..."
+node scripts/validate-content.js
+node scripts/validate-ix.js
+node scripts/validate-banks.js
+node scripts/validate-katex-strict.js
+node scripts/validate-figures.js
+node scripts/test-wave0-security-and-auth.js
+node scripts/test-wave1-verification.js
+echo "✓ All pre-push checks passed."

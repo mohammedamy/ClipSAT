@@ -319,7 +319,7 @@
         'privacy.forms-intro':'Teachers can optionally connect a Google account to turn a ClipSAT-generated quiz into a Google Form. This is entirely opt-in:',
         'privacy.forms-li1':'ClipSAT requests only minimal permissions to create a Form and save question diagrams to a teacher\'s Google Drive (scoped strictly to files ClipSAT itself creates).',
         'privacy.forms-li2':'Question diagrams containing complex math are saved to the teacher\'s Google Drive with restricted permissions by default. Link-sharing is only enabled if the teacher explicitly opts in so Google Forms can display diagrams to students.',
-        'privacy.forms-li3':'Google API calls are made directly from the teacher\'s browser using OAuth tokens that ClipSAT never persists beyond the current session.',
+        'privacy.forms-li3':'Google Forms creation runs directly from the browser; student Form responses are never stored by ClipSAT. When linked via Google Sign-In, the OAuth refresh token is encrypted inside Supabase Vault (pgsodium) and deleted immediately on account removal.',
         'privacy.forms-li4':'Any score results shown inside ClipSAT are fetched live from Google and not stored on ClipSAT servers.',
         'privacy.forms-li5':'Google\'s own Privacy Policy governs data once requests reach Google — see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.',
         'privacy.forms-li6':'A teacher can revoke ClipSAT\'s access at any time from their <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions</a> page.',

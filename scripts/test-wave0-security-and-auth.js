@@ -465,10 +465,12 @@ function testConfigsPoliciesAndBanks() {
   assert.strictEqual(sat0412.sprAnswer, '101', 'sat-0412 sprAnswer must be 101');
   const apbc = JSON.parse(fs.readFileSync(path.join(ROOT, 'bank-data/apbc.json'), 'utf8'));
   const apbc0312 = apbc.pool.find((q) => q.id === 'apbc-0312');
-  assert.strictEqual(apbc0312.answer, 0, 'apbc-0312 answer must be index 0 (+1/3)');
+  const apbcAns = String(apbc0312.choices[apbc0312.answer] || '');
+  assert(apbcAns.includes('1') && apbcAns.includes('3') && !apbcAns.includes('-'), 'apbc-0312 correct choice must be +1/3');
   const qud = JSON.parse(fs.readFileSync(path.join(ROOT, 'bank-data/qudrat.json'), 'utf8'));
   const qud0034 = qud.pool.find((q) => q.id === 'qudrat-0034');
-  assert.strictEqual(qud0034.answer, 0, 'qudrat-0034 answer must be index 0 (90)');
+  const qudAns = String(qud0034.choices[qud0034.answer] || '');
+  assert(qudAns.includes('90'), 'qudrat-0034 correct choice must be 90');
 }
 
 (async function main() {

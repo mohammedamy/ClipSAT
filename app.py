@@ -58,7 +58,7 @@ app.secret_key = os.environ.get('FLASK_SECRET_KEY', os.urandom(32))
 # ── Config ─────────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY    = os.environ.get('ANTHROPIC_API_KEY', '')
 ALLOWED_ORIGIN       = os.environ.get('CLIPSAT_ALLOWED_ORIGIN', 'http://localhost')
-IS_PRODUCTION        = os.environ.get('FLASK_ENV', 'development') == 'production'
+IS_PRODUCTION        = os.environ.get('FLASK_ENV', 'production') == 'production'
 LEGACY_PROXY_ENABLED = os.environ.get('CLIPSAT_LEGACY_PROXY_ENABLED', '0') == '1'
 LEGACY_PROXY_TOKEN   = os.environ.get('CLIPSAT_LEGACY_PROXY_TOKEN', '')
 DAILY_QUESTION_LIMIT = 20     # 20 questions per day (legacy fallback proxy; the Supabase ai-proxy is authoritative); no other limits

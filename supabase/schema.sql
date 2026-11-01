@@ -399,10 +399,13 @@ grant execute on function public.use_ai_quota(uuid, integer, integer, integer) t
 -- "the client can put a secret in, never take one back out" shape as
 -- ai_usage's write-only-in-effect design above, just for a different
 -- reason (that's a spend counter; this is an actual credential).
+create extension if not exists supabase_vault with schema vault;
+
 create table if not exists public.google_oauth_tokens (
-  user_id       uuid primary key references auth.users(id) on delete cascade,
-  refresh_token text not null,
-  updated_at    timestamptz not null default now()
+  user_id         uuid primary key references auth.users(id) on delete cascade,
+  refresh_token   text,
+  vault_secret_id uuid,
+  updated_at      timestamptz not null default now()
 );
 
 alter table public.google_oauth_tokens enable row level security;
@@ -410,16 +413,90 @@ alter table public.google_oauth_tokens enable row level security;
 drop policy if exists "user stores own google token"  on public.google_oauth_tokens;
 drop policy if exists "user replaces own google token" on public.google_oauth_tokens;
 
-create policy "user stores own google token" on public.google_oauth_tokens
-  for insert with check (auth.uid() = user_id);
--- Needed alongside the insert policy above so a re-sign-in's
--- "on conflict (user_id) do update" (Google only issues a fresh refresh
--- token on first consent / forced re-consent, so re-signing-in is the
--- normal way this row ever changes) is actually allowed to touch the
--- existing row — an insert policy alone doesn't cover the update half of
--- an upsert.
-create policy "user replaces own google token" on public.google_oauth_tokens
-  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create or replace function public.upsert_google_refresh_token(p_refresh_token text)
+returns void as $$
+declare
+  v_uid uuid := auth.uid();
+  v_existing_sid uuid;
+  v_new_sid uuid;
+begin
+  if v_uid is null then
+    raise exception 'Authentication required';
+  end if;
+  if p_refresh_token is null or length(trim(p_refresh_token)) < 10 or length(p_refresh_token) > 4096 then
+    raise exception 'Invalid refresh token';
+  end if;
+
+  select vault_secret_id into v_existing_sid
+    from public.google_oauth_tokens
+   where user_id = v_uid;
+
+  if v_existing_sid is not null then
+    perform vault.update_secret(v_existing_sid, p_refresh_token, 'google_oauth_' || v_uid::text, 'ClipSAT Google OAuth refresh token');
+    v_new_sid := v_existing_sid;
+  else
+    v_new_sid := vault.create_secret(p_refresh_token, 'google_oauth_' || v_uid::text, 'ClipSAT Google OAuth refresh token');
+  end if;
+
+  insert into public.google_oauth_tokens (user_id, refresh_token, vault_secret_id, updated_at)
+  values (v_uid, null, v_new_sid, now())
+  on conflict (user_id) do update
+     set refresh_token = null,
+         vault_secret_id = excluded.vault_secret_id,
+         updated_at = now();
+end;
+$$ language plpgsql security definer set search_path = public, vault;
+
+revoke all on function public.upsert_google_refresh_token(text) from public, anon;
+grant execute on function public.upsert_google_refresh_token(text) to authenticated, service_role;
+
+create or replace function public.get_google_refresh_token_admin(p_user_id uuid)
+returns text as $$
+declare
+  v_sid uuid;
+  v_legacy text;
+  v_decrypted text;
+begin
+  select vault_secret_id, refresh_token
+    into v_sid, v_legacy
+    from public.google_oauth_tokens
+   where user_id = p_user_id;
+
+  if v_sid is not null then
+    select decrypted_secret into v_decrypted
+      from vault.decrypted_secrets
+     where id = v_sid;
+    if v_decrypted is not null then
+      return v_decrypted;
+    end if;
+  end if;
+
+  return v_legacy;
+end;
+$$ language plpgsql security definer set search_path = public, vault;
+
+revoke all on function public.get_google_refresh_token_admin(uuid) from public, anon, authenticated;
+grant execute on function public.get_google_refresh_token_admin(uuid) to service_role;
+
+create or replace function public.delete_google_refresh_token_admin(p_user_id uuid)
+returns void as $$
+declare
+  v_sid uuid;
+begin
+  select vault_secret_id into v_sid
+    from public.google_oauth_tokens
+   where user_id = p_user_id;
+
+  if v_sid is not null then
+    delete from vault.secrets where id = v_sid;
+  end if;
+
+  delete from public.google_oauth_tokens where user_id = p_user_id;
+end;
+$$ language plpgsql security definer set search_path = public, vault;
+
+revoke all on function public.delete_google_refresh_token_admin(uuid) from public, anon, authenticated;
+grant execute on function public.delete_google_refresh_token_admin(uuid) to service_role;
 
 -- ── site_visits: a single running total of visits to the whole site ──────
 -- Powers the "Growing every day" counter on the home page. Replaces a
@@ -571,11 +648,14 @@ returns void as $$
 declare
   v_snap jsonb;
 begin
+  if auth.uid() is null then
+    raise exception 'Authentication required';
+  end if;
   if p_flag_id is null or length(trim(p_flag_id)) = 0 then
     return;
   end if;
   v_snap := coalesce(p_question_snapshot, '{}'::jsonb);
-  if octet_length(v_snap::text) > 16384 then
+  if octet_length(v_snap::text) > 8192 then
     v_snap := jsonb_build_object('truncated', true);
   end if;
   insert into public.question_error_flags (
@@ -603,6 +683,9 @@ begin
 end;
 $$ language plpgsql security definer set search_path = public;
 
+revoke all on function public.report_question_error(text, text, text, text, text, text, text, jsonb, text) from public, anon;
+grant execute on function public.report_question_error(text, text, text, text, text, text, text, jsonb, text) to authenticated, service_role;
+
 create or replace function public.resolve_question_error(
   p_flag_id       text,
   p_build_version text default null
@@ -622,18 +705,28 @@ revoke all on function public.resolve_question_error(text, text) from public, an
 grant execute on function public.resolve_question_error(text, text) to service_role;
 
 -- Self-service account deletion (Saudi PDPL & GDPR Right to Erasure).
--- Deletes the caller's auth.users row; ON DELETE CASCADE wipes profiles,
--- progress, accuracy, mistakes, srs_state, custom_cards, chapter_visits,
--- class_members, classes, ai_usage, ai_plans, and google_oauth_tokens.
+-- Deletes any Vault-encrypted OAuth secret and the caller's auth.users row;
+-- ON DELETE CASCADE wipes profiles, progress, accuracy, mistakes, srs_state,
+-- custom_cards, chapter_visits, class_members, classes, ai_usage, ai_plans,
+-- and google_oauth_tokens.
 create or replace function public.delete_my_account()
 returns void as $$
+declare
+  v_uid uuid := auth.uid();
+  v_sid uuid;
 begin
-  if auth.uid() is null then
+  if v_uid is null then
     raise exception 'Authentication required';
   end if;
-  delete from auth.users where id = auth.uid();
+  select vault_secret_id into v_sid
+    from public.google_oauth_tokens
+   where user_id = v_uid;
+  if v_sid is not null then
+    delete from vault.secrets where id = v_sid;
+  end if;
+  delete from auth.users where id = v_uid;
 end;
-$$ language plpgsql security definer set search_path = public, auth;
+$$ language plpgsql security definer set search_path = public, auth, vault;
 
 revoke all on function public.delete_my_account() from public, anon;
 grant execute on function public.delete_my_account() to authenticated, service_role;

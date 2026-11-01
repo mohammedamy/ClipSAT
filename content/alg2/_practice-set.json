@@ -11,6 +11,13 @@
       "solution": {
         "en": "<p>The standard form of a horizontal hyperbola centered at \\((h, k)\\) is \\(\\frac{(x-h)^2}{a^2} - \\frac{(y-k)^2}{b^2} = 1\\). The vertices of such a hyperbola are located at \\((h \\pm a, k)\\).</p><p>Given the vertices are \\((5, 2)\\) and \\((-1, 2)\\), we can equate these to \\((h+a, k)\\) and \\((h-a, k)\\) respectively.</p><p>From the y-coordinates of the vertices, we see that \\(k=2\\).</p><p>From the x-coordinates, we have two equations:<br>1) \\(h + a = 5\\)<br>2) \\(h - a = -1\\)</p><p>Adding these two equations together, we get \\((h+a) + (h-a) = 5 + (-1)\\), which simplifies to \\(2h = 4\\), so \\(h = 2\\).</p><p>Subtracting the second equation from the first, we get \\((h+a) - (h-a) = 5 - (-1)\\), which simplifies to \\(2a = 6\\), so \\(a=3\\).</p><p>Substituting \\(h=2\\) and \\(a=3\\) into \\(h+a=5\\) gives \\(2+3=5\\), which is true. Substituting \\(h=2\\) and \\(a=3\\) into \\(h-a=-1\\) gives \\(2-3=-1\\), which is true.</p><p>Therefore, the center of the hyperbola is \\((h, k) = (2, 2)\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "conic_section",
+        "conic": "hyperbola",
+        "a": 4,
+        "b": 3,
+        "title": "Hyperbola Branches & Asymptotes"
       }
     },
     {
@@ -109,24 +116,34 @@
       },
       "fig": {
         "type": "transformation_grid",
-        "title": "Matrix Action on Basis Vectors in R²",
+        "title": "Linear Operator Action on Unit Square",
+        "xmin": -3,
+        "xmax": 4,
+        "ymin": -3,
+        "ymax": 5,
         "object": [
           [
             0,
             0
           ],
           [
-            2,
+            1,
             0
           ],
           [
-            2,
-            2
+            1,
+            1
           ],
           [
             0,
-            2
+            1
           ]
+        ],
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ],
         "image": [
           [
@@ -138,20 +155,21 @@
             1
           ],
           [
-            4,
-            3
+            1,
+            4
           ],
           [
-            1,
-            2
+            -2,
+            3
           ]
         ],
-        "objectLabels": [
-          "O",
-          "e₁",
-          "e₁+e₂",
-          "e₂"
-        ]
+        "imageLabels": [
+          "O'",
+          "Ae₁",
+          "A(e₁+e₂)",
+          "Ae₂"
+        ],
+        "mirrorLine": null
       }
     },
     {
@@ -209,6 +227,24 @@
       "solution": {
         "en": "<p>The vertex form of a quadratic function is \\(f(x) = a(x-h)^2 + k\\), where \\((h, k)\\) is the vertex. Given the vertex is \\((-1, 5)\\), we have \\(f(x) = a(x - (-1))^2 + 5 = a(x+1)^2 + 5\\). The graph passes through the point \\((2, -13)\\), so we can substitute these values into the equation: \\(-13 = a(2+1)^2 + 5\\). This simplifies to \\(-13 = a(3)^2 + 5\\), so \\(-13 = 9a + 5\\). Subtracting 5 from both sides gives \\(-18 = 9a\\), which means \\(a = -2\\). Now, we expand the vertex form to find the standard form \\(f(x) = ax^2 + bx + c\\): \\(f(x) = -2(x+1)^2 + 5 = -2(x^2 + 2x + 1) + 5 = -2x^2 - 4x - 2 + 5 = -2x^2 - 4x + 3\\). Comparing this to \\(f(x) = ax^2 + bx + c\\), we see that \\(a = -2\\), \\(b = -4\\), and \\(c = 3\\). Therefore, the value of \\(b\\) is -4. However, re-examining the provided choices and my calculation, there seems to be a discrepancy. Let's re-calculate step-by-step.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -289,23 +325,23 @@
       },
       "fig": {
         "type": "bar",
-        "title": "Discrete Term / Magnitude Comparison",
+        "title": "Stepwise Term Magnitude Profile",
         "data": [
           {
-            "label": "T₁",
-            "val": 5
+            "label": "n=1",
+            "val": 16
           },
           {
-            "label": "T₂",
-            "val": 8
-          },
-          {
-            "label": "T₃",
+            "label": "n=2",
             "val": 12
           },
           {
-            "label": "T₄",
-            "val": 17
+            "label": "n=3",
+            "val": 9
+          },
+          {
+            "label": "n=4",
+            "val": 7
           }
         ]
       }
@@ -401,25 +437,6 @@
       "solution": {
         "en": "<p>An exponential function in the standard form \\(f(x) = a \\cdot b^{x-h} + k\\) (with base \\(b \\gt 1\\)) has a horizontal asymptote determined by its vertical shift, \\(y = k\\).</p><p>As \\(x \\to -\\infty\\), the exponential power \\(2^{x+1} \\to 0\\). Substituting this into the function yields:<br>\\[\\lim_{x \\to -\\infty} f(x) = 3(0) - 5 = -5\\]<br>Thus, the horizontal asymptote is the horizontal line \\(y = -5\\).</p><p>Common Misconceptions:<br>- \\(y = 0\\): Assumes the asymptote is always the \\(x\\)-axis, forgetting the vertical shift by \\(-5\\).<br>- \\(x = -1\\): Confuses a horizontal asymptote with a vertical asymptote or the horizontal shift of the graph.<br>- \\(y = 3\\): Confuses the vertical scale factor \\(a = 3\\) with the vertical translation.</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "fn",
-        "title": "Exponential Growth / Decay Profile",
-        "xrange": [
-          -3,
-          4
-        ],
-        "yrange": [
-          -1,
-          9
-        ],
-        "fns": [
-          {
-            "fn": "Math.pow(2, x)",
-            "color": "var(--fig-indigo)",
-            "label": "y = 2ˣ"
-          }
-        ]
       }
     },
     {

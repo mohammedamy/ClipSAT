@@ -208,6 +208,199 @@
           ],
           "correct": 0,
           "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.25 \\times 0.90 = 0.2250 \\)."
+        },
+        {
+          "q": "An Ordinary Least Squares linear model \\( \\hat{p}(t) = 2t + 11 \\) is evaluated at \\( t = 3 \\). Determine the predicted response \\( \\hat{p}(3) \\).",
+          "answer": "Evaluating \\( 2(3) + 11 = 17 \\).",
+          "choices": [
+            "19",
+            "21",
+            "6",
+            "17"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Considering a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.20 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.20 = 0.80 \\).",
+          "choices": [
+            "\\( 0.90 \\)",
+            "\\( 0.10 \\)",
+            "\\( 1.20 \\)",
+            "\\( 0.80 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "In gradient descent on loss \\( h(u) \\), parameter \\( u_0 = 44 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla h(u_0) = 70 \\). Determine the updated parameter \\( u_1 = u_0 - \\eta \\nabla h(u_0) \\).",
+          "answer": "Computing \\( u_1 = 44 - 0.1(70) = 37 \\).",
+          "choices": [
+            "61",
+            "37",
+            "30",
+            "41"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Examining a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.60 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.60 = 0.40 \\).",
+          "choices": [
+            "\\( 0.70 \\)",
+            "\\( 0.40 \\)",
+            "\\( 0.30 \\)",
+            "\\( 1.60 \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "A medical test for a rare disease has a 99\\% accuracy rate in detecting the disease when it is present (True Positive Rate) and a 95\\% accuracy rate in identifying individuals without the disease (True Negative Rate). If the prevalence of the disease in the population is 0.5\\%, what is the probability that a person who tests positive actually has the disease?",
+          "answer": "Let D be the event that a person has the disease, and P be the event that the person tests positive.\nWe are given:\nP(P|D) = 0.99 (True Positive Rate)\nP(not P|not D) = 0.95 (True Negative Rate), which means P(P|not D) = 1 - 0.95 = 0.05 (False Positive Rate)\nP(D) = 0.005 (Prevalence of the disease)\nFrom P(D), we know P(not D) = 1 - P(D) = 1 - 0.005 = 0.995.\nWe want to find P(D|P), the probability that a person has the disease given a positive test result.\nUsing Bayes' Theorem:\nP(D|P) = [P(P|D) * P(D)] / P(P)\nTo find P(P), we use the law of total probability:\nP(P) = P(P|D) * P(D) + P(P|not D) * P(not D)\nP(P) = (0.99 * 0.005) + (0.05 * 0.995)\nP(P) = 0.00495 + 0.04975\nP(P) = 0.0547\nNow, substitute this back into Bayes' Theorem:\nP(D|P) = (0.99 * 0.005) / 0.0547\nP(D|P) = 0.00495 / 0.0547\nP(D|P) \\approx 0.09049\nConverting to a percentage, this is approximately 9.05\\%, which rounds to 9.1\\%.",
+          "choices": [
+            "Approximately 8.7\\%",
+            "Approximately 1.0\\%",
+            "Approximately 9.1\\%",
+            "Approximately 0.5\\%"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "A medical diagnostic test for a rare disease is designed to be highly sensitive and specific. The disease affects \\( 1 \\) in every \\( 1000 \\) individuals in the population. The test has a sensitivity of \\( 99 \\)\\% (meaning it correctly identifies \\( 99 \\)\\% of individuals who have the disease) and a specificity of \\( 95 \\)\\% (meaning it correctly identifies \\( 95 \\)\\% of individuals who do not have the disease). If a randomly selected individual from the population tests positive, what is the probability that they actually have the disease?",
+          "answer": "Let D be the event that an individual has the disease, and P be the event that the individual tests positive.\nWe are given the following probabilities:\n- Prior probability of having the disease: \\(P(D) = \\frac{1}{1000} = 0.001\\)\n- Prior probability of not having the disease: \\(P(D^c) = 1 - P(D) = 1 - 0.001 = 0.999\\)\n- Sensitivity (true positive rate): \\(P(P|D) = 0.99\\)\n- Specificity (true negative rate): \\(P(P^c|D^c) = 0.95\\)\nFrom specificity, we can derive the false positive rate: \\(P(P|D^c) = 1 - P(P^c|D^c) = 1 - 0.95 = 0.05\\).\n\nWe want to find the probability that an individual actually has the disease given a positive test result, which is \\(P(D|P)\\). We can use Bayes' Theorem:\n\n\\[P(D|P) = \\frac{P(P|D) P(D)}{P(P)}\\]\n\nTo find \\(P(P)\\), the overall probability of testing positive, we can use the law of total probability:\n\n\\[P(P) = P(P|D) P(D) + P(P|D^c) P(D^c)\\]\n\nSubstitute the given values:\n\n\\[P(P) = (0.99)(0.001) + (0.05)(0.999)\\]\n\\[P(P) = 0.00099 + 0.04995\\]\n\\[P(P) = 0.05094\\]\n\nNow, substitute \\(P(P)\\) back into Bayes' Theorem:\n\n\\[P(D|P) = \\frac{(0.99)(0.001)}{0.05094}\\]\n\\[P(D|P) = \\frac{0.00099}{0.05094}\\]\n\\[P(D|P) \\approx 0.0194346\\]\n\nTherefore, the probability that a person who tests positive actually has the disease is approximately \\( 0.0194 \\), which is closest to \\( 0.019 \\).",
+          "choices": [
+            "Approximately \\( 0.019 \\)",
+            "Approximately \\( 0.99 \\)",
+            "Approximately \\( 0.05 \\)",
+            "Approximately \\( 0.95 \\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "In an applied problem, a machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.15 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.15 \\times 0.90 = 0.1350 \\).",
+          "choices": [
+            "\\( 1.0500 \\)",
+            "\\( 0.1350 \\)",
+            "\\( 0.7500 \\)",
+            "\\( 0.0150 \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Suppose a machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.20 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.20 \\times 0.90 = 0.1800 \\).",
+          "choices": [
+            "\\( 1.1000 \\)",
+            "\\( 0.7000 \\)",
+            "\\( 0.0200 \\)",
+            "\\( 0.1800 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "An observed machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.25 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.25 \\times 0.90 = 0.2250 \\).",
+          "choices": [
+            "\\( 0.0250 \\)",
+            "\\( 1.1500 \\)",
+            "\\( 0.6500 \\)",
+            "\\( 0.2250 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Consider a machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.30 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.30 \\times 0.90 = 0.2700 \\).",
+          "choices": [
+            "\\( 0.2700 \\)",
+            "\\( 1.2000 \\)",
+            "\\( 0.6000 \\)",
+            "\\( 0.0300 \\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "In anomaly detection, anomaly prior \\( P(A) = 0.02 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
+          "answer": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.02}{0.95(0.02) + 0.05(0.98)} = \\frac{0.0190}{0.0680} = 0.279 \\).",
+          "choices": [
+            "\\( 0.279 \\)",
+            "\\( 0.140 \\)",
+            "\\( 0.950 \\)",
+            "\\( 0.391 \\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Considering anomaly detection, anomaly prior \\( P(A) = 0.04 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
+          "answer": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.04}{0.95(0.04) + 0.05(0.96)} = \\frac{0.0380}{0.0860} = 0.442 \\).",
+          "choices": [
+            "\\( 0.221 \\)",
+            "\\( 0.442 \\)",
+            "\\( 0.950 \\)",
+            "\\( 0.619 \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Examining anomaly detection, anomaly prior \\( P(A) = 0.06 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
+          "answer": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.06}{0.95(0.06) + 0.05(0.94)} = \\frac{0.0570}{0.1040} = 0.548 \\).",
+          "choices": [
+            "\\( 0.950 \\)",
+            "\\( 0.767 \\)",
+            "\\( 0.274 \\)",
+            "\\( 0.548 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "For the configuration in anomaly detection, anomaly prior \\( P(A) = 0.08 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
+          "answer": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.08}{0.95(0.08) + 0.05(0.92)} = \\frac{0.0760}{0.1220} = 0.623 \\).",
+          "choices": [
+            "\\( 0.872 \\)",
+            "\\( 0.311 \\)",
+            "\\( 0.950 \\)",
+            "\\( 0.623 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Analyzing anomaly detection, anomaly prior \\( P(A) = 0.10 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
+          "answer": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)} = \\frac{0.0950}{0.1400} = 0.679 \\).",
+          "choices": [
+            "\\( 0.340 \\)",
+            "\\( 0.950 \\)",
+            "\\( 0.679 \\)",
+            "\\( 0.951 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Within anomaly detection, anomaly prior \\( P(A) = 0.12 \\), detection sensitivity \\( P(+|A) = 0.95 \\), and false alarm rate \\( P(+|\\neg A) = 0.05 \\). By Bayes' theorem, what is the posterior probability \\( P(A|+) \\) that an alarm is a true anomaly?",
+          "answer": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.12}{0.95(0.12) + 0.05(0.88)} = \\frac{0.1140}{0.1580} = 0.722 \\).",
+          "choices": [
+            "\\( 0.361 \\)",
+            "\\( 0.950 \\)",
+            "\\( 1.011 \\)",
+            "\\( 0.722 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "In classifier audit #1, positive-class prevalence is \\(P(Y=1) = 1\\%\\), sensitivity is \\(P(\\hat{Y}=1 \\mid Y=1) = 90\\%\\), and false-positive rate is \\(P(\\hat{Y}=1 \\mid Y=0) = 5\\%\\). By Bayes' Rule, find the precision \\(P(Y=1 \\mid \\hat{Y}=1)\\).",
+          "answer": "By Bayes' Rule, \\(P(Y=1 \\mid \\hat{Y}=1) = \\frac{(1)(90)}{(1)(90) + (99)(5)} = \\frac{90}{585} = \\frac{2}{13}\\).",
+          "choices": [
+            "\\(\\frac{9}{10}\\)",
+            "\\(\\frac{9}{1000}\\)",
+            "\\(\\frac{11}{13}\\)",
+            "\\(\\frac{2}{13}\\)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "venn",
+            "title": "Classifier Audit #1",
+            "textA": "P(Y=1)=1%",
+            "textB": "Sens=90%"
+          }
         }
       ]
     }

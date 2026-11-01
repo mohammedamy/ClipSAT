@@ -604,7 +604,9 @@
       }
       e = e.replace(/\band\b/g, '&&').replace(/\bor\b/g, '||');
       e = e.replace(/-\s*-/g, '+ ').replace(/\+\s*-/g, '- ');
-      var val = _csEvalMath(e, { x: xVal, t: xVal, w: xVal, a: 1, b: 1, c: 0, C: 0, k: 1, y: 0 });
+      var extraParams = (exprInput && typeof exprInput === 'object' && exprInput.params && typeof exprInput.params === 'object') ? exprInput.params : {};
+      var evalVars = Object.assign({ x: xVal, t: xVal, w: xVal, y: 0 }, extraParams);
+      var val = _csEvalMath(e, evalVars);
       return (typeof val === 'number' && isFinite(val)) ? val : NaN;
     } catch(err){ return NaN; }
   }
@@ -3872,8 +3874,9 @@ function renderSlopeField(s){
   function sx(x){ return ml+((x-xr[0])/((xr[1]-xr[0])||1))*pw; }
   function sy(y){ return mt+ph-((y-yr[0])/((yr[1]-yr[0])||1))*ph; }
 
+  var slopeParams = (s.params && typeof s.params === 'object') ? s.params : {};
   function slopeEval(x, y){
-    var res = window.CSMathEval(expr, { x: x, y: y, k: 1, a: 1, b: 1, c: 0 });
+    var res = window.CSMathEval(expr, Object.assign({ x: x, y: y }, slopeParams));
     return (typeof res === 'number' && isFinite(res)) ? res : NaN;
   }
 

@@ -713,8 +713,8 @@
     body.setAttribute('data-pool', JSON.stringify(_pool.map(function(q){
       return {
         answer: q.answer,
-        ans: q.ans || q.answer,
-        sprAnswer: q.sprAnswer || q.ans || '',
+        ans: q.sprAnswer || q.finalAnswer || q.ans || q.answer,
+        sprAnswer: q.sprAnswer || q.finalAnswer || q.ans || '',
         type: (q.type === 'frq' && (!q.choices || !q.choices.length)) ? 'spr' : (q.type || 'mcq'),
         marks: q.marks || 1,
         domain: q.domain || 'Math',

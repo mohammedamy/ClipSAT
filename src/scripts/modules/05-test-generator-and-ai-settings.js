@@ -284,8 +284,9 @@ function _genTestOriginal(btn, optTrackId){
             chHtml+='</div>';
           }
 
-          var ansLabel=(isMCQ && q.answer!=null && letters[q.answer])?(' ('+letters[q.answer]+')'):(q.ans?(' ['+q.ans+']'):'');
-          var solText=q.sol||q.exp||q.expl||('Answer: '+(q.ans||q.answer||'N/A'));
+          var _qCanonicalAns = q.sprAnswer != null ? String(q.sprAnswer) : (q.finalAnswer != null ? String(q.finalAnswer) : (q.ans != null ? String(q.ans) : ''));
+          var ansLabel=(isMCQ && q.answer!=null && letters[q.answer])?(' ('+letters[q.answer]+')'):(_qCanonicalAns?(' ['+_qCanonicalAns+']'):'');
+          var solText=q.sol||q.exp||q.expl||('Answer: '+(_qCanonicalAns||q.answer||'N/A'));
 
           var hintHtml = (window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function')
             ? window.CSHintEngine.renderHintWidget(q, 'tg-' + (idx + 1))
@@ -312,7 +313,7 @@ function _genTestOriginal(btn, optTrackId){
 
           out.insertAdjacentHTML('beforeend', probHtml);
 
-          var _tgAns = !isMCQ ? (q.ans != null ? String(q.ans) : (q.sprAnswer != null ? String(q.sprAnswer) : (q.answer != null ? String(q.answer) : ''))) : '';
+          var _tgAns = !isMCQ ? (_qCanonicalAns || (q.answer != null ? String(q.answer) : '')) : '';
           _csCaptureQ.push({
             text: qText,
             choices: isMCQ && q.choices ? q.choices.slice() : [],

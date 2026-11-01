@@ -16,18 +16,12 @@
       },
       "fig": {
         "type": "argand",
-        "title": "Complex Argand Plane",
+        "title": "Complex Plane (Re vs Im)",
         "points": [
           {
-            "re": 3,
-            "im": 2,
-            "label": "z₁",
-            "arcLabel": "θ"
-          },
-          {
-            "re": -2,
-            "im": 3,
-            "label": "z₂"
+            "re": -1,
+            "im": 1,
+            "label": "z"
           }
         ]
       }
@@ -59,24 +53,34 @@
       },
       "fig": {
         "type": "transformation_grid",
-        "title": "Matrix Action on Basis Vectors in R²",
+        "title": "Linear Operator Action on Unit Square",
+        "xmin": -3,
+        "xmax": 5,
+        "ymin": -3,
+        "ymax": 4,
         "object": [
           [
             0,
             0
           ],
           [
-            2,
+            1,
             0
           ],
           [
-            2,
-            2
+            1,
+            1
           ],
           [
             0,
-            2
+            1
           ]
+        ],
+        "objectLabels": [
+          "O",
+          "e₁",
+          "e₁+e₂",
+          "e₂"
         ],
         "image": [
           [
@@ -96,12 +100,13 @@
             2
           ]
         ],
-        "objectLabels": [
-          "O",
-          "e₁",
-          "e₁+e₂",
-          "e₂"
-        ]
+        "imageLabels": [
+          "O'",
+          "Ae₁",
+          "A(e₁+e₂)",
+          "Ae₂"
+        ],
+        "mirrorLine": null
       }
     },
     {
@@ -117,12 +122,22 @@
         "ar": null
       },
       "fig": {
-        "type": "sinusoid",
-        "title": "Periodic Trigonometric Wave",
-        "amp": 2,
-        "period": 6.28,
-        "midline": 0,
-        "fnType": "sin"
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -139,21 +154,20 @@
       },
       "fig": {
         "type": "fn",
-        "title": "Non-Negative Integrand Curve y = f(x)",
-        "xrange": [
-          -1,
-          4
-        ],
-        "yrange": [
-          -0.5,
-          6
-        ],
+        "title": "Analytical Function Profile",
         "fns": [
           {
-            "fn": "0.35*x*x + 1",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
           }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
         ]
       }
     },
@@ -168,14 +182,6 @@
       "solution": {
         "en": "<strong>IB Markscheme (4 marks):</strong> <p>(a) For 1 minute, \\(X \\sim \\text{Po}(3)\\):<br>\\[P(X \\ge 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.\\]<br>(b) For 2 minutes, the rate scales linearly: \\(\\lambda = 3 \\times 2 = 6\\), so \\(Y \\sim \\text{Po}(6)\\):<br>\\[P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.\\]</p> <strong>[M1] [A1]</strong>",
         "ar": null
-      },
-      "fig": {
-        "type": "sinusoid",
-        "title": "Periodic Trigonometric Wave",
-        "amp": 2,
-        "period": 6.28,
-        "midline": 0,
-        "fnType": "sin"
       }
     },
     {
@@ -189,6 +195,23 @@
       "solution": {
         "en": "<strong>IB Markscheme (6 marks):</strong> <p>1. <strong>[M1]</strong> Identify \\(P(x) = \\frac{2}{x}\\) and \\(Q(x) = 4x\\).<br>2. <strong>[A1]</strong> Calculate the integrating factor \\(\\mu(x)\\): \\[\\mu(x) = \\exp\\left( \\int \\frac{2}{x}\\,dx \\right) = e^{2\\ln x} = e^{\\ln(x^2)} = x^2.\\]<br>3. Multiply through by \\(x^2\\): \\[x^2\\frac{dy}{dx} + 2x y = 4x^3 \\implies \\frac{d}{dx}[x^2 y] = 4x^3.\\]<br>4. Integrate both sides: \\[x^2 y = \\int 4x^3\\,dx = x^4 + C.\\]<br>5. Apply \\(y(1) = 2\\): \\[(1)^2(2) = 1^4 + C \\implies 2 = 1 + C \\implies C = 1.\\]<br>6. Explicit solution: \\[y = \\frac{x^4 + 1}{x^2} = x^2 + \\frac{1}{x^2}.\\]</p> <strong>[M1] [A1]</strong>",
         "ar": null
+      },
+      "fig": {
+        "type": "slope_field",
+        "title": "Direction / Vector Field Portrait",
+        "fn": "0.4*x - 0.6*y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "solution": {
+          "x0": -1,
+          "y0": 1
+        }
       }
     },
     {

@@ -64,6 +64,9 @@ function sanitizeSafeInlineHtml(s){
     else out += c;
     i++;
   }
+  if(typeof window !== 'undefined' && window.DOMPurify && typeof window.DOMPurify.sanitize === 'function'){
+    out = window.DOMPurify.sanitize(out, { ALLOWED_TAGS: ['br','b','strong','i','em','u','sub','sup','code','p','ul','ol','li','table','thead','tbody','tr','th','td','hr','span'], ALLOWED_ATTR: ['class'] });
+  }
   return out;
 }
 window.sanitizeSafeInlineHtml = sanitizeSafeInlineHtml;

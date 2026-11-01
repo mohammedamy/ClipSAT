@@ -16,27 +16,20 @@
       },
       "fig": {
         "type": "fn",
-        "title": "Smooth Curve & Local Linearization",
-        "xrange": [
-          -2,
-          5
-        ],
-        "yrange": [
-          -1,
-          7
-        ],
+        "title": "Analytical Function Profile",
         "fns": [
           {
-            "fn": "0.5*x*x - x + 1.5",
-            "color": "var(--fig-indigo)",
-            "label": "Curve C"
-          },
-          {
-            "fn": "x - 0.5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "Tangent"
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
           }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
         ]
       }
     },
@@ -50,6 +43,24 @@
       "solution": {
         "en": "<p>Let \\(y = \\frac{3x + 1}{x - 2} \\implies y(x - 2) = 3x + 1 \\implies yx - 2y = 3x + 1 \\implies x(y - 3) = 2y + 1 \\implies x = \\frac{2y + 1}{y - 3}\\). Swap variables to obtain \\(f^{-1}(x) = \\frac{2x + 1}{x - 3}\\).</p><p><strong>Final Answer:</strong> \\(f^{-1}(x) = \\frac{2x + 1}{x - 3} \\quad (x \\ne 3)\\)</p>",
         "ar": "<p>ليكن \\(y = \\frac{3x + 1}{x - 2} \\implies y(x - 2) = 3x + 1 \\implies yx - 2y = 3x + 1 \\implies x(y - 3) = 2y + 1 \\implies x = \\frac{2y + 1}{y - 3}\\). Swap variables to obtain \\(f^{-1}(x) = \\frac{2x + 1}{x - 3}\\).</p><p><strong>الإجابة النهائية:</strong> \\(f^{-1}(x) = \\frac{2x + 1}{x - 3} \\quad (x \\ne 3)\\)</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -62,6 +73,24 @@
       "solution": {
         "en": "<p>Velocity \\(v(t) = \\int (6t - 12)\\,dt = 3t^2 - 12t + C\\). Since \\(v(0) = 0 \\implies C = 0\\). Momentarily at rest when \\(v(t) = 0 \\implies t(3t - 12) = 0 \\implies t = \\frac{12}{3} \\text{ s}\\).</p><p><strong>Final Answer:</strong> \\(t = \\frac{12}{3} \\text{ s}\\)</p>",
         "ar": "<p>Velocity \\(v(t) = \\int (6t - 12)\\,dt = 3t^2 - 12t + C\\). Since \\(v(0) = 0 \\implies C = 0\\). Momentarily at rest عندما \\(v(t) = 0 \\implies t(3t - 12) = 0 \\implies t = \\frac{12}{3} \\text{ s}\\).</p><p><strong>الإجابة النهائية:</strong> \\(t = \\frac{12}{3} \\text{ s}\\)</p>"
+      },
+      "fig": {
+        "type": "numberline",
+        "title": "Rectilinear Motion Axis (s)",
+        "range": [
+          -4,
+          8
+        ],
+        "points": [
+          {
+            "x": 0,
+            "label": "O"
+          },
+          {
+            "x": 4,
+            "label": "P(t)"
+          }
+        ]
       }
     },
     {
@@ -103,28 +132,6 @@
       "solution": {
         "en": "<p>Take natural logs of both sides: \\((x + 2)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 2\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 2\\ln 2 \\implies x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2}\\).</p><p><strong>Final Answer:</strong> \\(x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2}\\)</p>",
         "ar": "<p>Take natural logs of both sides: \\((x + 2)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 2\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 2\\ln 2 \\implies x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2}\\).</p><p><strong>الإجابة النهائية:</strong> \\(x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2}\\)</p>"
-      },
-      "fig": {
-        "type": "bar",
-        "title": "Quantitative Reference Profile",
-        "data": [
-          {
-            "label": "Item I",
-            "val": 13
-          },
-          {
-            "label": "Item II",
-            "val": 19
-          },
-          {
-            "label": "Item III",
-            "val": 23
-          },
-          {
-            "label": "Item IV",
-            "val": 17
-          }
-        ]
       }
     },
     {
@@ -182,6 +189,24 @@
       "solution": {
         "en": "<p>1. <strong>Find the velocity function \\(v(t)\\):</strong><br>\\[v(t) = \\int a \\, dt = \\int (6t - 18) \\, dt = 3t^2 - 18t + c\\]<br>Since the particle is at instantaneous rest when \\(t = 1\\), \\(v(1) = 0\\):<br>\\[3(1)^2 - 18(1) + c = 0 \\implies -15 + c = 0 \\implies c = 15\\]<br>Thus, \\(v(t) = 3t^2 - 18t + 15\\).</p><p>2. <strong>Find when the particle is next at instantaneous rest:</strong><br>Set \\(v(t) = 0\\):<br>\\[3(t^2 - 6t + 5) = 0 \\implies 3(t - 1)(t - 5) = 0\\]<br>So the particle is at rest at \\(t = 1\\) and next at \\(t = 5\\).</p><p>3. <strong>Find the displacement function \\(s(t)\\):</strong><br>\\[s(t) = \\int v(t) \\, dt = \\int (3t^2 - 18t + 15) \\, dt = t^3 - 9t^2 + 15t + d\\]<br>Given that \\(s(2) = -10\\):<br>\\[(2)^3 - 9(2)^2 + 15(2) + d = -10\\]<br>\\[8 - 36 + 30 + d = -10 \\implies 2 + d = -10 \\implies d = -12\\]<br>Thus, \\(s(t) = t^3 - 9t^2 + 15t - 12\\).</p><p>4. <strong>Evaluate displacement at \\(t = 5\\):</strong><br>\\[s(5) = (5)^3 - 9(5)^2 + 15(5) - 12 = 125 - 225 + 75 - 12 = -37 \\text{ m}\\]</p><p><strong>Common traps:</strong><br>- Setting \\(d = 0\\) (assuming displacement is zero at \\(t = 0\\)) leads to \\(s(5) = -25\\).<br>- A sign error when solving \\(2 + d = -10\\) yielding \\(d = 12\\) leads to \\(s(5) = -13\\).<br>- Evaluating at the initial rest time \\(t = 1\\) instead of the next rest time gives \\(s(1) = -5\\).</p><p><strong>Final Answer:</strong> \\(-37\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "title": "Rectilinear Motion Axis (s)",
+        "range": [
+          -4,
+          8
+        ],
+        "points": [
+          {
+            "x": 0,
+            "label": "O"
+          },
+          {
+            "x": 4,
+            "label": "P(t)"
+          }
+        ]
       }
     },
     {
@@ -194,6 +219,24 @@
       "solution": {
         "en": "<p>Let \\(t\\) be the time in hours after the ships begin moving.</p><p>The position vector of ship \\(A\\) at time \\(t\\) is:<br>\\[\\mathbf{r}_A(t) = (24\\mathbf{i} + 10\\mathbf{j}) + t(-2\\mathbf{i} + 5\\mathbf{j}) = (24 - 2t)\\mathbf{i} + (10 + 5t)\\mathbf{j}\\]</p><p>The position vector of ship \\(B\\) at time \\(t\\) is:<br>\\[\\mathbf{r}_B(t) = (-20\\mathbf{i} - 18\\mathbf{j}) + t(u\\mathbf{i} + 12\\mathbf{j}) = (-20 + ut)\\mathbf{i} + (-18 + 12t)\\mathbf{j}\\]</p><p>For ship \\(B\\) to intercept ship \\(A\\), their positions must be identical at some time \\(t \\gt 0\\), so \\(\\mathbf{r}_A(t) = \\mathbf{r}_B(t)\\).</p><p>Equating the \\(\\mathbf{j}\\)-components:<br>\\[10 + 5t = -18 + 12t \\implies 28 = 7t \\implies t = 4\\text{ hours}\\]</p><p>Equating the \\(\\mathbf{i}\\)-components at \\(t = 4\\):<br>\\[24 - 2(4) = -20 + 4u \\implies 16 = -20 + 4u \\implies 4u = 36 \\implies u = 9\\]</p><p>Thus, the velocity of ship \\(B\\) is \\(\\mathbf{v}_B = 9\\mathbf{i} + 12\\mathbf{j}\\text{ km h}^{-1}\\).</p><p>The speed of ship \\(B\\) is the magnitude of its velocity vector:<br>\\[|\\mathbf{v}_B| = \\sqrt{9^2 + 12^2} = \\sqrt{81 + 144} = \\sqrt{225} = 15\\text{ km h}^{-1}\\]</p><p><strong>Final Answer:</strong> \\(15\\text{ km h}^{-1}\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -231,21 +274,20 @@
       },
       "fig": {
         "type": "fn",
-        "title": "Quadratic Parabola y = f(x)",
-        "xrange": [
-          -3,
-          5
-        ],
-        "yrange": [
-          -1,
-          8
-        ],
+        "title": "Parabola y = 6x - x²",
         "fns": [
           {
-            "fn": "(x - 1)*(x - 1) + 1",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
+            "fn": "6*x - x*x",
+            "color": "#2563eb"
           }
+        ],
+        "xrange": [
+          -1,
+          7
+        ],
+        "yrange": [
+          -2,
+          11
         ]
       }
     },
@@ -259,6 +301,24 @@
       "solution": {
         "en": "<p>1. Express the non-linear relationship in linear form \\(Y = mX + c\\):<br>Taking base-2 logarithms of both sides of \\(y = A x^n\\):<br>\\[\\log_2 y = \\log_2(A x^n) = n\\log_2 x + \\log_2 A\\]<br>Letting \\(Y = \\log_2 y\\) and \\(X = \\log_2 x\\), the equation becomes:<br>\\[Y = nX + \\log_2 A\\]<br>where the gradient is \\(m = n\\) and the vertical intercept is \\(c = \\log_2 A\\).</p><p>2. Find the equation of the straight line:<br>Using the given points \\((X_1, Y_1) = (1, 5)\\) and \\((X_2, Y_2) = (4, -1)\\):<br>\\[m = \\frac{-1 - 5}{4 - 1} = \\frac{-6}{3} = -2\\]<br>Using the point \\((1, 5)\\):<br>\\[Y - 5 = -2(X - 1) \\implies Y = -2X + 7\\]</p><p>3. Evaluate \\(y\\) when \\(x = 4\\):<br>First, convert \\(x = 4\\) to the corresponding coordinate on the \\(X\\)-axis:<br>\\[X = \\log_2 x = \\log_2 4 = 2\\]<br>Substitute \\(X = 2\\) into the line equation:<br>\\[Y = -2(2) + 7 = 3\\]<br>Since \\(Y = \\log_2 y\\):<br>\\[\\log_2 y = 3 \\implies y = 2^3 = 8\\]</p><p>Common Algebraic Traps:<br>- Confusing \\(x = 4\\) with \\(X = 4\\): Looking directly at the given coordinate \\((4, -1)\\) yields \\(Y = -1\\), giving \\(y = 2^{-1} = \\frac{1}{2}\\).<br>- Forgetting to un-log: Correctly finding \\(Y = 3\\) but failing to invert the transformation yields \\(3\\).<br>- Incorrect parameter evaluation: Finding \\(A = 2^7 = 128\\) and dividing by \\(x\\) rather than \\(x^2\\) gives \\(\\frac{128}{4} = 32\\).</p><p><strong>Final Answer:</strong> \\(8\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -319,21 +379,20 @@
       },
       "fig": {
         "type": "fn",
-        "title": "Cubic Polynomial Turning Points",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
         "xrange": [
           -3,
           3
         ],
         "yrange": [
-          -4,
-          4
-        ],
-        "fns": [
-          {
-            "fn": "0.5*x*x*x - 1.5*x + 0.5",
-            "color": "var(--fig-indigo)",
-            "label": "y = P(x)"
-          }
+          -2,
+          5
         ]
       }
     },
@@ -437,25 +496,6 @@
       "solution": {
         "en": "<p>To find the points of intersection of the line and the curve, set their equations equal:<br>\\[x^2 + 3x + k = mx - 1\\]<br>Rearranging into standard quadratic form \\(ax^2 + bx + c = 0\\):<br>\\[x^2 + (3 - m)x + (k + 1) = 0\\]<br>For the line and curve to intersect at two distinct points, the discriminant with respect to \\(x\\), denoted \\(\\Delta_x\\), must be strictly positive:<br>\\[\\Delta_x = (3 - m)^2 - 4(1)(k + 1)  \\gt  0\\]<br>Expanding and simplifying:<br>\\[\\Delta_x = m^2 - 6m + 9 - 4k - 4 = m^2 - 6m + (5 - 4k)  \\gt  0\\]<br>We are given that this inequality holds for <strong>all</strong> real values of \\(m\\).</p><p>Consider the quadratic function in \\(m\\):<br>\\[g(m) = m^2 - 6m + (5 - 4k)\\]<br>The coefficient of \\(m^2\\) is \\(1 \\gt 0\\), so the parabola opens upward. For \\(g(m) \\gt 0\\) for all \\(m \\in \\mathbb{R}\\), the graph of \\(g(m)\\) must lie entirely above the \\(m\\)-axis, which means it must have no real roots. Therefore, the discriminant of \\(g(m)\\), denoted \\(\\Delta_m\\), must be strictly negative:<br>\\[\\Delta_m = (-6)^2 - 4(1)(5 - 4k)  \\lt  0\\]<br>\\[36 - 20 + 16k  \\lt  0\\]<br>\\[16 + 16k  \\lt  0 \\implies 16k  \\lt  -16 \\implies k  \\lt  -1\\]</p><p>A common algebraic trap is to set \\(\\Delta_m \\gt 0\\) (confusing \"two distinct points of intersection\" with the condition for \\(g(m) \\gt 0\\)), which erroneously yields \\(k \\gt -1\\).</p><p><strong>Final Answer:</strong> \\(k \\lt -1\\)</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "fn",
-        "title": "Quadratic Parabola y = f(x)",
-        "xrange": [
-          -3,
-          5
-        ],
-        "yrange": [
-          -1,
-          8
-        ],
-        "fns": [
-          {
-            "fn": "(x - 1)*(x - 1) + 1",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          }
-        ]
       }
     },
     {
@@ -592,28 +632,6 @@
       "solution": {
         "en": "<p>1. Apply the logarithm quotient law \\(\\log_a(A) - \\log_a(B) = \\log_a\\left(\\frac{A}{B}\\right)\\):<br>\\[\\log_2\\left(\\frac{5x + 6}{x}\\right) = 3\\]</p><p>2. Convert the equation from logarithmic to exponential form:<br>\\[\\frac{5x + 6}{x} = 2^3 = 8\\]</p><p>3. Multiply through by \\(x\\) (noting \\(x \\gt 0\\)):<br>\\[5x + 6 = 8x \\implies 3x = 6 \\implies x = 2\\]</p><p>4. Checking the domain:<br>Both \\(5(2) + 6 = 16 \\gt 0\\) and \\(2 \\gt 0\\), so \\(x = 2\\) is a valid solution.</p><p>Common misconceptions:<br>- Calculating \\(2^3 = 6\\) instead of \\(8\\) yields \\(5x + 6 = 6x \\implies x = 6\\).<br>- Incorrectly subtracting the arguments directly as \\(\\log_2((5x+6) - x) = 3\\) leads to \\(4x + 6 = 8 \\implies x = \\frac{1}{2}\\).<br>- Forgetting to exponentiate the base and equating \\(\\frac{5x+6}{x} = 3\\) yields \\(x = -3\\), which also violates the logarithm domain.</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "bar",
-        "title": "Quantitative Reference Profile",
-        "data": [
-          {
-            "label": "Item I",
-            "val": 13
-          },
-          {
-            "label": "Item II",
-            "val": 19
-          },
-          {
-            "label": "Item III",
-            "val": 23
-          },
-          {
-            "label": "Item IV",
-            "val": 17
-          }
-        ]
       }
     },
     {
@@ -638,25 +656,6 @@
       "solution": {
         "en": "<p>By the Remainder Theorem, when a polynomial \\(f(x)\\) is divided by a linear factor of the form \\(ax - b\\), the remainder is \\(f\\left(\\frac{b}{a}\\right)\\).</p><p>Here, the divisor is \\(2x - 1\\), so we set \\(2x - 1 = 0 \\implies x = \\frac{1}{2}\\).</p><p>Substitute \\(x = \\frac{1}{2}\\) into \\(f(x)\\):<br>\\[f\\left(\\frac{1}{2}\\right) = 4\\left(\\frac{1}{2}\\right)^3 - 6\\left(\\frac{1}{2}\\right)^2 + 3\\left(\\frac{1}{2}\\right) - 1\\]<br>\\[= 4\\left(\\frac{1}{8}\\right) - 6\\left(\\frac{1}{4}\\right) + \\frac{3}{2} - 1\\]<br>\\[= \\frac{1}{2} - \\frac{3}{2} + \\frac{3}{2} - 1 = -\\frac{1}{2}\\]</p><p>Therefore, the remainder is \\(-\\frac{1}{2}\\).</p><p>Common misconceptions:<br>- Solving \\(2x - 1 = 0\\) incorrectly as \\(x = -\\frac{1}{2}\\) gives \\(f\\left(-\\frac{1}{2}\\right) = -\\frac{9}{2}\\).<br>- Arithmetic sign errors when simplifying the terms often lead to \\(\\frac{1}{2}\\) or \\(0\\).</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "fn",
-        "title": "Cubic Polynomial Turning Points",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -4,
-          4
-        ],
-        "fns": [
-          {
-            "fn": "0.5*x*x*x - 1.5*x + 0.5",
-            "color": "var(--fig-indigo)",
-            "label": "y = P(x)"
-          }
-        ]
       }
     },
     {

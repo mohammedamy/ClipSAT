@@ -491,12 +491,13 @@
         return tmp.innerHTML;
       }
 
+      var _origin=(window.location&&window.location.origin)||'';
       var lpHTML='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head>'
         +'<meta charset="utf-8"><title>'+_tt('lessonPlanDocTitlePrefix')+esc(subject)+'<\/title>'
-        +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
+        +'<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'
         +'<style>'+css+'<\/style>'
-        +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
-        +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
+        +'<script defer src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'
+        +'<script defer src="'+_origin+'/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'
         +'<\/head><body dir="'+_dir+'">'
         +'<div class="lp-header">'
           +'<div class="lp-brand">'

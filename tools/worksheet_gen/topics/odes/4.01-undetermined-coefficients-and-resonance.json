@@ -140,6 +140,305 @@
           ],
           "correct": 0,
           "answer": "Substituting \\( s = 20 \\) gives \\( \\frac{170}{20 - 19} = 170 \\)."
+        },
+        {
+          "q": "Consider the nonhomogeneous second-order linear differential equation \\( y'' - 5y' + 6y = 12x + 8 \\). \\( y_h(x) = c_1e^{2x} + c_2e^{3x} \\) is the general solution to the corresponding homogeneous equation. Find the particular solution \\( y_p(x) \\) using the method of undetermined coefficients, and then determine the value of the constant \\( A \\) such that \\( y_p(x) = Ax + B \\) for some constant \\( B \\).",
+          "answer": "The given nonhomogeneous differential equation is \\( y'' - 5y' + 6y = 12x + 8 \\). \\nThe form of the nonhomogeneous term is \\( g(x) = 12x + 8 \\), which is a polynomial of degree 1.  Thus, we assume a particular solution of the form \\( y_p(x) = Ax + B \\).\n\nWe need to find the first and second derivatives of \\( y_p(x) \\):\n\\( y_p'(x) = A \\)\n\\( y_p''(x) = 0 \\)\n\nSubstitute these into the differential equation:\n\\( 0 - 5(A) + 6(Ax + B) = 12x + 8 \\)\n\\( -5A + 6Ax + 6B = 12x + 8 \\)\n\\( 6Ax + (6B - 5A) = 12x + 8 \\)\n\nEquating the coefficients of like powers of \\( x \\):\nFor the \\( x \\) term: \\( 6A = 12 \\) \\(\\Rightarrow\\) \\( A = 2 \\).\nFor the constant term: \\( 6B - 5A = 8 \\).\nSubstitute \\( A = 2 \\) into the second equation:\n\\( 6B - 5(2) = 8 \\)\n\\( 6B - 10 = 8 \\)\n\\( 6B = 18 \\)\n\\( B = 3 \\)\n\nTherefore, the particular solution is \\( y_p(x) = 2x + 3 \\). The value of the constant \\( A \\) is 2.",
+          "choices": [
+            "\\( A = 3 \\)",
+            "\\( A = 2 \\)",
+            "\\( A = 6 \\)",
+            "\\( A = 12 \\)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -25,
+              35
+            ],
+            "fns": [
+              {
+                "fn": "12*x + 8",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dF}{dw} = 16w - 3F \\) has its slope field plotted below. Determine the slope \\( \\dfrac{dF}{dw} \\) at the point \\( D(18, 8) \\).",
+          "answer": "Evaluating at \\( (18, 8) \\) gives \\( 16(18) - 3(8) = 264 \\).",
+          "choices": [
+            "280",
+            "267",
+            "256",
+            "264"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Consider the nonhomogeneous second-order linear differential equation \\( y'' + 4y = 8 \\). What is the particular solution, \\(y_p(x)\\), to this equation?",
+          "answer": "The given differential equation is \\( y'' + 4y = 8 \\). This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, \\(y_p(x)\\). The nonhomogeneous term is a constant, 8.  We guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation: \\(0 + 4(A) = 8\\). Solving for A, we get \\(4A = 8\\), which means \\(A = 2\\). Therefore, the particular solution is \\(y_p(x) = 2\\).",
+          "choices": [
+            "\\(2\\)",
+            "\\(2x\\)",
+            "\\(2\\sin(2x)\\)",
+            "\\(2\\cos(2x)\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Consider the second-order nonhomogeneous linear differential equation \\(y'' - 5y' + 6y = 12x + 4\\). If a particular solution is of the form \\(y_p(x) = Ax + B\\) and the general solution is \\(y(x) = C_1e^{2x} + C_2e^{3x} + Ax + B\\), find the value of \\(A\\).",
+          "answer": "The given differential equation is \\(y'' - 5y' + 6y = 12x + 4\\). \\\\ We are given that a particular solution is of the form \\(y_p(x) = Ax + B\\). \\\\ To find the coefficients \\(A\\) and \\(B\\), we substitute \\(y_p(x)\\) and its derivatives into the differential equation. \\\\ The first derivative is \\(y_p'(x) = A\\). \\\\ The second derivative is \\(y_p''(x) = 0\\). \\\\ Substituting these into the differential equation: \\\\ \\(0 - 5(A) + 6(Ax + B) = 12x + 4\\\\ -5A + 6Ax + 6B = 12x + 4\\\\ 6Ax + (6B - 5A) = 12x + 4\\\\ \\)By comparing the coefficients of \\(x\\) on both sides, we get: \\\\ \\(6A = 12 \\implies A = 2\\\\ \\)By comparing the constant terms on both sides, we get: \\\\ \\(6B - 5A = 4\\\\ 6B - 5(2) = 4\\\\ 6B - 10 = 4\\\\ 6B = 14 \\implies B = \\frac{14}{6} = \\frac{7}{3}\\\\ \\)The question asks for the value of \\(A\\). Therefore, \\(A = 2\\).",
+          "choices": [
+            "1",
+            "6",
+            "12",
+            "2"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -25,
+              35
+            ],
+            "fns": [
+              {
+                "fn": "12*x + 4",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Consider the second-order linear nonhomogeneous differential equation: \\(y''(x) - 3y'(x) + 2y(x) = 4\\). Find the particular solution, \\(y_p(x)\\), using the method of Undetermined Coefficients.",
+          "answer": "The given differential equation is \\(y''(x) - 3y'(x) + 2y(x) = 4\\). Since the right-hand side is a constant, we guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation:\n\\(0 - 3(0) + 2(A) = 4\\)\n\\(2A = 4\\)\n\\(A = 2\\)\nTherefore, the particular solution is \\(y_p(x) = 2\\).",
+          "choices": [
+            "\\(y_p(x) = 2\\)",
+            "\\(y_p(x) = 2x\\)",
+            "\\(y_p(x) = 4\\)",
+            "\\(y_p(x) = 4x\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{df}{dx} = 19x - 4f \\) has its slope field plotted below. Find the slope \\( \\dfrac{df}{dx} \\) at the point \\( A(5, 5) \\).",
+          "answer": "Evaluating at \\( (5, 5) \\) gives \\( 19(5) - 4(5) = 75 \\).",
+          "choices": [
+            "78",
+            "75",
+            "94",
+            "70"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Solve \\( y''+y=3\\cos2x \\), \\( y(0)=2 \\), \\( y'(0)=0 \\). Find \\( y(\\pi) \\).",
+          "answer": "Homogeneous: \\( r^2+1=0\\Rightarrow y_c=C_1\\cos x+C_2\\sin x \\). No resonance (\\( 2\\neq1 \\)): trial \\( A\\cos2x+B\\sin2x \\) gives \\( -3A\\cos2x-3B\\sin2x=3\\cos2x\\Rightarrow A=-1,B=0 \\), so \\( y_p=-\\cos2x \\). \\( y=C_1\\cos x+C_2\\sin x-\\cos2x \\). \\( y(0)=C_1-1=2\\Rightarrow C_1=3 \\); \\( y'(0)=C_2=0 \\). So \\( y=3\\cos x-\\cos2x \\), and \\( y(\\pi)=3(-1)-1=-4 \\).",
+          "choices": [
+            "\\( -4 \\)",
+            "\\( 2 \\)",
+            "\\( 4 \\)",
+            "\\( -2 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Solve \\( y''-4y=8x \\), \\( y(0)=0 \\), \\( y'(0)=2 \\). Find \\( y(1) \\).",
+          "answer": "Homogeneous: \\( r^2-4=0\\Rightarrow y_c=C_1e^{2x}+C_2e^{-2x} \\). No resonance (\\( r=0 \\) isn't a root): trial \\( Ax+B \\) gives \\( -4A=8\\Rightarrow A=-2 \\), \\( B=0 \\), so \\( y_p=-2x \\). \\( y=C_1e^{2x}+C_2e^{-2x}-2x \\). \\( y(0)=C_1+C_2=0 \\); \\( y'(0)=2C_1-2C_2-2=2\\Rightarrow C_1-C_2=2 \\); solving, \\( C_1=1,\\,C_2=-1 \\). So \\( y=e^{2x}-e^{-2x}-2x \\), and \\( y(1)=e^2-e^{-2}-2 \\).",
+          "choices": [
+            "\\( e^{2}-e^{-2}-2 \\)",
+            "\\( 2e^{2}-2 \\)",
+            "\\( e^{2}+e^{-2}-2 \\)",
+            "\\( e^{2}-e^{-2}+2 \\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Solve \\( y''-y'-2y=3e^{2x} \\), \\( y(0)=1 \\), \\( y'(0)=6 \\). Find \\( y(1) \\).",
+          "answer": "Homogeneous: \\( r^2-r-2=0\\Rightarrow r=2,-1 \\), \\( y_c=C_1e^{2x}+C_2e^{-x} \\). \\( r=2 \\) matches the forcing, so the trial needs \\( x \\): \\( y_p=Axe^{2x} \\). Substituting gives \\( 3Ae^{2x}=3e^{2x}\\Rightarrow A=1 \\), so \\( y_p=xe^{2x} \\). \\( y=C_1e^{2x}+C_2e^{-x}+xe^{2x} \\). \\( y(0)=C_1+C_2=1 \\); \\( y'=2C_1e^{2x}-C_2e^{-x}+e^{2x}+2xe^{2x} \\), \\( y'(0)=2C_1-C_2+1=6\\Rightarrow2C_1-C_2=5 \\); adding to the first, \\( 3C_1=6\\Rightarrow C_1=2,\\,C_2=-1 \\). So \\( y=2e^{2x}-e^{-x}+xe^{2x}=(x+2)e^{2x}-e^{-x} \\), and \\( y(1)=3e^2-e^{-1} \\).",
+          "choices": [
+            "\\( 3e^{2}+e^{-1} \\)",
+            "\\( 3e^{2}-e^{-1} \\)",
+            "\\( e^{2}-e^{-1} \\)",
+            "\\( 3e^{2}-e \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Solve \\( y''+9y=2\\sin3t \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(\\pi/3) \\).",
+          "answer": "Homogeneous: \\( r^2+9=0\\Rightarrow r=\\pm3i \\), \\( y_c=C_1\\cos3t+C_2\\sin3t \\). The forcing \\( \\sin3t \\) matches this pair exactly (resonance), so the trial needs \\( t \\): \\( y_p=t(A\\cos3t+B\\sin3t) \\). Substituting and matching gives \\( A=-\\tfrac13 \\), \\( B=0 \\), so \\( y_p=-\\tfrac{t}{3}\\cos3t \\). With both conditions zero, \\( y_c\\equiv0 \\). So \\( y=-\\tfrac{t}{3}\\cos3t \\), and \\( y(\\pi/3)=-\\tfrac{\\pi/3}{3}\\cos\\pi=-\\tfrac{\\pi}{9}(-1)=\\tfrac{\\pi}{9} \\).",
+          "choices": [
+            "\\( -\\pi/9 \\)",
+            "\\( \\pi/9 \\)",
+            "\\( \\pi/3 \\)",
+            "\\( 2\\pi/9 \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Find a particular solution of \\( y''-4y'+3y=6x+4 \\).",
+          "answer": "Homogeneous roots are \\( r=1,3 \\) (from \\( r^2-4r+3=0 \\)), and \\( r=0 \\) isn't among them, so no resonance: trial \\( y_p=Ax+B \\) gives \\( y_p'=A \\), \\( y_p''=0 \\). Substituting: \\( -4A+3(Ax+B)=3Ax+(3B-4A)=6x+4 \\). Matching: \\( 3A=6\\Rightarrow A=2 \\); \\( 3B-4A=4\\Rightarrow3B=4+8=12\\Rightarrow B=4 \\). So \\( y_p=2x+4 \\).",
+          "choices": [
+            "\\( 2x-4 \\)",
+            "\\( 2x+2 \\)",
+            "\\( 2x+4 \\)",
+            "\\( 4x+4 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Solve \\( y''+4y'+4y=e^{-2x} \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(2) \\).",
+          "answer": "Homogeneous: \\( r^2+4r+4=(r+2)^2=0\\Rightarrow r=-2 \\) (repeated), \\( y_c=(C_1+C_2x)e^{-2x} \\). The forcing \\( e^{-2x} \\) matches the repeated root, so the trial needs \\( x^2 \\): \\( y_p=Ax^2e^{-2x} \\). Substituting gives \\( 2Ae^{-2x}=e^{-2x}\\Rightarrow A=\\tfrac12 \\), so \\( y_p=\\tfrac12x^2e^{-2x} \\). With both conditions zero, \\( C_1=C_2=0 \\). So \\( y=\\tfrac12x^2e^{-2x} \\), and \\( y(2)=\\tfrac12(4)e^{-4}=2e^{-4} \\).",
+          "choices": [
+            "\\( 2e^{4} \\)",
+            "\\( e^{-4} \\)",
+            "\\( 4e^{-4} \\)",
+            "\\( 2e^{-4} \\)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 2,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "An undamped oscillator satisfies \\( y''+4y=3\\cos2t \\) (forcing at exactly the natural frequency), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(\\pi/4) \\).",
+          "answer": "Homogeneous: \\( r^2+4=0\\Rightarrow y_c=C_1\\cos2t+C_2\\sin2t \\). The forcing frequency matches the natural frequency exactly (resonance), so the trial needs \\( t \\): \\( y_p=t(A\\cos2t+B\\sin2t) \\). Substituting and matching gives \\( A=0 \\), \\( B=\\tfrac34 \\), so \\( y_p=\\tfrac34t\\sin2t \\). With both conditions zero, \\( y_c\\equiv0 \\). So \\( y=\\tfrac34t\\sin2t \\), and \\( y(\\pi/4)=\\tfrac34\\cdot\\tfrac{\\pi}{4}\\cdot\\sin\\tfrac{\\pi}{2}=\\tfrac{3\\pi}{16} \\) — the resonant amplitude \\( \\tfrac34t \\) grows without bound as \\( t\\to\\infty \\), unlike a non-resonant driven system.",
+          "choices": [
+            "\\( -3\\pi/16 \\)",
+            "\\( 3\\pi/8 \\)",
+            "\\( 3\\pi/16 \\)",
+            "\\( \\pi/4 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Find a particular solution of \\( y''-y'-6y=e^{2x}+18 \\).",
+          "answer": "Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\). For the constant \\( 18 \\), trial \\( B \\) gives \\( -6B=18\\Rightarrow B=-3 \\). Adding the two pieces: \\( y_p=-\\tfrac14e^{2x}-3 \\).",
+          "choices": [
+            "\\( \\tfrac14e^{2x}-3 \\)",
+            "\\( -\\tfrac14xe^{2x}-3 \\)",
+            "\\( -\\tfrac14e^{2x}+3 \\)",
+            "\\( -\\tfrac14e^{2x}-3 \\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Solve \\( y''-2y'-3y=-3 \\), \\( y(0)=1 \\), \\( y'(0)=-8 \\). Find \\( y(1) \\).",
+          "answer": "Homogeneous: \\( r^2-2r-3=0 \\) has roots \\( r=-1,3 \\), so \\( y_c=C_1e^{-x}+C_2e^{3x} \\). Forcing \\( -3 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=1 \\). With \\( C_1=2 \\), \\( C_2=-2 \\) (matching the stated initial conditions), \\( y=y_c+y_p \\), and \\( y(1) \\) follows by substitution.",
+          "choices": [
+            "\\( -1-\\frac{2}{e}+2e^{3} \\)",
+            "\\( -2e^{3}+\\frac{2}{e}+1 \\)",
+            "\\( -4e^{3}+\\frac{4}{e}+2 \\)",
+            "\\( -e^{3}+e^{-1}+\\frac{1}{2} \\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Calculate the solution set for \\( y''+3y'+2y=2 \\), \\( y(0)=0 \\), \\( y'(0)=3 \\). Find \\( y(1) \\).",
+          "answer": "Homogeneous: \\( r^2+3r+2=0 \\) has roots \\( r=-1,-2 \\), so \\( y_c=C_1e^{-x}+C_2e^{-2x} \\). Forcing \\( 2 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=1 \\). With \\( C_1=1 \\), \\( C_2=-2 \\) (matching the stated initial conditions), \\( y=y_c+y_p \\), and \\( y(1) \\) follows by substitution.",
+          "choices": [
+            "\\( -\\frac{2}{e^{2}}+e^{-1}+1 \\)",
+            "\\( -\\frac{4}{e^{2}}+\\frac{2}{e}+2 \\)",
+            "\\( -\\frac{1}{e^{2}}+\\frac{1}{2e}+\\frac{1}{2} \\)",
+            "\\( -1-e^{-1}+\\frac{2}{e^{2}} \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": -1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Solve \\( y''-4y=4 \\), \\( y(0)=2 \\), \\( y'(0)=2 \\). Find \\( y(1) \\).",
+          "answer": "Homogeneous: \\( r^2-4=0 \\) has roots \\( r=-2,2 \\), so \\( y_c=C_1e^{-2x}+C_2e^{2x} \\). Forcing \\( 4 \\) (no resonance, since \\( 0 \\) isn't a root): trial \\( y_p=Ax^2+Bx+C \\) gives \\( y_p=-1 \\). With \\( C_1=1 \\), \\( C_2=2 \\) (matching the stated initial conditions), \\( y=y_c+y_p \\), and \\( y(1) \\) follows by substitution.",
+          "choices": [
+            "\\( -1+e^{-2}+2e^{2} \\)",
+            "\\( -2e^{2}-e^{-2}+1 \\)",
+            "\\( -2+\\frac{2}{e^{2}}+4e^{2} \\)",
+            "\\( -\\frac{1}{2}+\\frac{1}{2e^{2}}+e^{2} \\)"
+          ],
+          "correct": 0
         }
       ]
     }

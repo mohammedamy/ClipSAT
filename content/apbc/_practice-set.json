@@ -47,23 +47,10 @@
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "title": "Quadratic Parabola y = f(x)",
-        "xrange": [
-          -3,
-          5
-        ],
-        "yrange": [
-          -1,
-          8
-        ],
-        "fns": [
-          {
-            "fn": "(x - 1)*(x - 1) + 1",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          }
-        ]
+        "type": "unit_circle",
+        "title": "Polar & Angular Reference",
+        "angle": 60,
+        "showTriangle": true
       }
     },
     {
@@ -77,23 +64,6 @@
       "solution": {
         "en": "<p><strong>Theorem (Fundamental Theorem of Calculus, Part 2):</strong> If \\(f\\) is continuous on \\([a, b]\\) and \\(F\\) is any antiderivative of \\(f\\) such that \\(F'(x) = f(x)\\), then: \\[\\int_a^b f(x)\\,dx = F(b) - F(a) = \\Big[ F(x) \\Big]_a^b.\\]</p><p><strong>Step 1 · Find the indefinite antiderivative \\(F(x)\\):</strong><br>Using the power rule of integration \\(\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C\\): \\[F(x) = \\int 6x^2\\,dx = 6 \\cdot \\frac{x^3}{3} = 2x^3.\\]</p><p><strong>Step 2 · Evaluate at the upper and lower limits:</strong> \\[\\int_0^2 6x^2\\,dx = \\Big[ 2x^3 \\Big]_0^2 = 2(2)^3 - 2(0)^3 = 2(8) - 0 = \\mathbf{16}.\\]</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "numberline",
-        "range": [
-          -5,
-          7
-        ],
-        "points": [
-          {
-            "x": -2,
-            "label": "P"
-          },
-          {
-            "x": 4,
-            "label": "Q"
-          }
-        ]
       }
     },
     {
@@ -165,14 +135,6 @@
       "solution": {
         "en": "<p><strong>Method · Integration by Parts (LIATE Selection):</strong></p><p><strong>Step 1 · Assign \\(u\\) and \\(dv\\):</strong><br>Algebraic (\\(x\\)) precedes Trigonometric (\\(\\sin x\\)), so set: \\[u = x \\implies du = dx, \\quad dv = \\sin x\\,dx \\implies v = -\\cos x.\\]</p><p><strong>Step 2 · Apply \\(\\int u\\,dv = uv - \\int v\\,du\\):</strong> \\[\\int x\\sin x\\,dx = x(-\\cos x) - \\int (-\\cos x)\\,dx = -x\\cos x + \\int \\cos x\\,dx.\\]</p><p><strong>Step 3 · Integrate:</strong> \\[-x\\cos x + \\sin x + C = \\mathbf{\\sin x - x\\cos x + C}.\\]</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "sinusoid",
-        "title": "Periodic Trigonometric Wave",
-        "amp": 2,
-        "period": 6.28,
-        "midline": 0,
-        "fnType": "sin"
       }
     },
     {
@@ -225,6 +187,24 @@
       "solution": {
         "en": "<p><strong>Theorem (Geometric Series Sum Formula):</strong> For an infinite geometric series \\(\\displaystyle\\sum_{n=0}^{\\infty} a r^n\\), the series converges if and only if \\(|r| \\lt 1\\), and its sum is given by: \\[S = \\frac{a}{1 - r}.\\]</p><p><strong>Step 1 · Identify parameters:</strong><br>Initial term (\\(n = 0\\)): \\(a = \\left(\\tfrac{1}{2}\\right)^0 = 1\\).<br>Common ratio: \\(r = \\frac{1}{2}\\).</p><p><strong>Step 2 · Check convergence criterion:</strong><br>\\(|r| = |1/2| = 0.5 \\lt 1\\), so the series converges.</p><p><strong>Step 3 · Compute the sum:</strong> \\[S = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = \\mathbf{2}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -290,6 +270,24 @@
       "solution": {
         "en": "<p><strong>Method · Geometric Series Sum Evaluation:</strong></p><p><strong>Step 1 · Identify series parameters:</strong><br>Initial term (\\(n = 0\\)): \\(a = 3 \\cdot \\left(\\tfrac{1}{4}\\right)^0 = 3 \\cdot 1 = 3\\).<br>Common ratio: \\(r = \\frac{1}{4}\\).</p><p><strong>Step 2 · Check convergence condition:</strong><br>\\(|r| = \\frac{1}{4} \\lt 1\\), so the series converges absolutely.</p><p><strong>Step 3 · Compute the sum:</strong> \\[S = \\frac{a}{1 - r} = \\frac{3}{1 - 1/4} = \\frac{3}{3/4} = 3 \\cdot \\frac{4}{3} = \\mathbf{4}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -318,12 +316,26 @@
         "ar": null
       },
       "fig": {
-        "type": "sinusoid",
-        "title": "Periodic Trigonometric Wave",
-        "amp": 2,
-        "period": 6.28,
-        "midline": 0,
-        "fnType": "sin"
+        "type": "bar",
+        "title": "Stepwise Term Magnitude Profile",
+        "data": [
+          {
+            "label": "n=1",
+            "val": 16
+          },
+          {
+            "label": "n=2",
+            "val": 12
+          },
+          {
+            "label": "n=3",
+            "val": 9
+          },
+          {
+            "label": "n=4",
+            "val": 7
+          }
+        ]
       }
     },
     {
@@ -339,12 +351,26 @@
         "ar": null
       },
       "fig": {
-        "type": "sinusoid",
-        "title": "Periodic Trigonometric Wave",
-        "amp": 2,
-        "period": 6.28,
-        "midline": 0,
-        "fnType": "sin"
+        "type": "bar",
+        "title": "Stepwise Term Magnitude Profile",
+        "data": [
+          {
+            "label": "n=1",
+            "val": 16
+          },
+          {
+            "label": "n=2",
+            "val": 12
+          },
+          {
+            "label": "n=3",
+            "val": 9
+          },
+          {
+            "label": "n=4",
+            "val": 7
+          }
+        ]
       }
     },
     {
@@ -358,6 +384,24 @@
       "solution": {
         "en": "<p><strong>Method · Taylor/Maclaurin Polynomial Approximation:</strong></p><p><strong>Step 1 · Define the two-term (degree 1) Maclaurin polynomial for \\(e^x\\):</strong> \\[P_1(x) = 1 + x.\\]</p><p><strong>Step 2 · Evaluate at \\(x = 0.1\\):</strong> \\[P_1(0.1) = 1 + 0.1 = \\mathbf{1.1}.\\]</p><p><strong>Step 3 · Error analysis via Lagrange Remainder:</strong><br>By Taylor's Theorem: \\[|R_1(0.1)| = \\left| \\frac{f''(c)}{2!} (0.1)^2 \\right| = \\frac{e^c}{2}(0.01) \\quad \\text{for some } c \\in (0, 0.1).\\] Since \\(e^c \\lt e^{0.1} \\lt 1.2\\), \\(|R_1(0.1)| \\lt \\frac{1.2}{2}(0.01) = 0.006\\).<br>Exact value: \\(e^{0.1} \\approx 1.10517\\). The two-term approximation \\(\\mathbf{1.1}\\) captures the true value within \\(0.47\\%\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {

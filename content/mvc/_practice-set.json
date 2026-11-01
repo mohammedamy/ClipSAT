@@ -42,10 +42,21 @@
         "ar": null
       },
       "fig": {
-        "type": "unit_circle",
-        "title": "Unit Circle Quadrant Reference",
-        "angle": 45,
-        "showTriangle": true
+        "type": "slope_field",
+        "title": "Direction / Vector Field Portrait",
+        "fn": "-0.5*x + 0.4*y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "solution": {
+          "x0": -1,
+          "y0": 1
+        }
       }
     },
     {
@@ -58,23 +69,6 @@
       "solution": {
         "en": "<p><strong>1. Approach along linear paths \\(y = mx\\):</strong>\\[\\lim_{x \\to 0} \\frac{x^2 (mx)}{x^4 + (mx)^2} = \\lim_{x \\to 0} \\frac{m x^3}{x^2(x^2 + m^2)} = \\lim_{x \\to 0} \\frac{mx}{x^2 + m^2} = \\frac{0}{m^2} = 0 \\quad (\\text{for } m \\neq 0).\\] Along \\(y = 0\\) (the \\(x\\)-axis), \\(\\lim_{x\\to 0} \\frac{0}{x^4} = 0\\). Along all straight lines through the origin, the limit is 0.</p><p><strong>2. Approach along parabolic paths \\(y = k x^2\\):</strong>\\[\\lim_{x \\to 0} \\frac{x^2 (k x^2)}{x^4 + (k x^2)^2} = \\lim_{x \\to 0} \\frac{k x^4}{x^4 + k^2 x^4} = \\lim_{x \\to 0} \\frac{k}{1 + k^2} = \\frac{k}{1 + k^2}.\\] Choosing \\(k = 1\\) yields limit \\(1/2\\); choosing \\(k = -1\\) yields \\(-1/2\\).</p><p>Since different approach paths yield different limiting values, the multivariable limit does not exist. \\(\\blacksquare\\)</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "numberline",
-        "range": [
-          -5,
-          7
-        ],
-        "points": [
-          {
-            "x": -2,
-            "label": "P"
-          },
-          {
-            "x": 4,
-            "label": "Q"
-          }
-        ]
       }
     },
     {
@@ -148,29 +142,21 @@
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "title": "Smooth Curve & Local Linearization",
+        "type": "slope_field",
+        "title": "Direction / Vector Field Portrait",
+        "fn": "-0.5*x + 0.4*y",
         "xrange": [
-          -2,
-          5
+          -3,
+          3
         ],
         "yrange": [
-          -1,
-          7
+          -3,
+          3
         ],
-        "fns": [
-          {
-            "fn": "0.5*x*x - x + 1.5",
-            "color": "var(--fig-indigo)",
-            "label": "Curve C"
-          },
-          {
-            "fn": "x - 0.5",
-            "color": "var(--fig-amber)",
-            "dash": "4,4",
-            "label": "Tangent"
-          }
-        ]
+        "solution": {
+          "x0": -1,
+          "y0": 1
+        }
       }
     },
     {
@@ -183,6 +169,23 @@
       "solution": {
         "en": "<p><strong>1. Set the first partial derivatives equal to zero:</strong>\\[f_x = 3x^2 - 3y = 0 \\implies y = x^2.\\]\\[f_y = 3y^2 - 3x = 0 \\implies x = y^2.\\]</p><p><strong>2. Substitute \\(y = x^2\\) into the second equation:</strong>\\[x = (x^2)^2 = x^4 \\implies x^4 - x = 0 \\implies x(x^3 - 1) = 0.\\] Real solutions are \\(x = 0\\) and \\(x = 1\\).</p><p><strong>3. Determine corresponding \\(y\\)-values:</strong><ul><li>If \\(x = 0\\), \\(y = 0^2 = 0 \\implies (0, 0)\\).</li><li>If \\(x = 1\\), \\(y = 1^2 = 1 \\implies (1, 1)\\).</li></ul>Thus, the two critical points are \\((0, 0)\\) and \\((1, 1)\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "slope_field",
+        "title": "Direction / Vector Field Portrait",
+        "fn": "0.4*x - 0.6*y",
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -3,
+          3
+        ],
+        "solution": {
+          "x0": -1,
+          "y0": 1
+        }
       }
     },
     {
@@ -264,12 +267,22 @@
         "ar": null
       },
       "fig": {
-        "type": "sinusoid",
-        "title": "Periodic Trigonometric Wave",
-        "amp": 2,
-        "period": 6.28,
-        "midline": 0,
-        "fnType": "sin"
+        "type": "fn",
+        "title": "Analytical Function Profile",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x + 1.5",
+            "color": "#2563eb"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
@@ -317,49 +330,13 @@
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "title": "Matrix Action on Basis Vectors in R²",
-        "object": [
-          [
-            0,
-            0
-          ],
-          [
-            2,
-            0
-          ],
-          [
-            2,
-            2
-          ],
-          [
-            0,
-            2
-          ]
-        ],
-        "image": [
-          [
-            0,
-            0
-          ],
-          [
-            3,
-            1
-          ],
-          [
-            4,
-            3
-          ],
-          [
-            1,
-            2
-          ]
-        ],
-        "objectLabels": [
-          "O",
-          "e₁",
-          "e₁+e₂",
-          "e₂"
+        "type": "normal_curve",
+        "title": "Gaussian Density Profile",
+        "mean": 0,
+        "sd": 1,
+        "shade": [
+          -1.2,
+          1.2
         ]
       }
     },
@@ -375,23 +352,13 @@
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "title": "Non-Negative Integrand Curve y = f(x)",
-        "xrange": [
-          -1,
-          4
-        ],
-        "yrange": [
-          -0.5,
-          6
-        ],
-        "fns": [
-          {
-            "fn": "0.35*x*x + 1",
-            "color": "var(--fig-indigo)",
-            "label": "y = f(x)"
-          }
-        ]
+        "type": "geometry_3d",
+        "solid": "prism",
+        "title": "3D Spatial Domain",
+        "length": 4,
+        "width": 3,
+        "height": 5,
+        "radius": 3
       }
     },
     {
@@ -862,23 +829,6 @@
       "solution": {
         "en": "<p>The surface area of a surface \\(z = g(x,y)\\) above a region \\(R\\) is given by the integral \\(\\iint_R \\sqrt{1 + (g_x)^2 + (g_y)^2} \\, dA\\). Here, \\(g(x,y) = 2x + 3y + 1\\). The partial derivatives are \\(g_x = 2\\) and \\(g_y = 3\\). Therefore, \\(\\sqrt{1 + (g_x)^2 + (g_y)^2} = \\sqrt{1 + 2^2 + 3^2} = \\sqrt{1 + 4 + 9} = \\sqrt{14}\\). The integral becomes \\(\\iint_R \\sqrt{14} \\, dA\\), where \\(R = [0, 1] \\times [0, 2]\\). This evaluates to \\(\\sqrt{14} \\times \\text{Area}(R)\\). The area of the rectangle \\(R\\) is \\((1-0) \\times (2-0) = 2\\). So, the surface area is \\(2 \\sqrt{14}\\).</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "numberline",
-        "range": [
-          -5,
-          7
-        ],
-        "points": [
-          {
-            "x": -2,
-            "label": "P"
-          },
-          {
-            "x": 4,
-            "label": "Q"
-          }
-        ]
       }
     },
     {

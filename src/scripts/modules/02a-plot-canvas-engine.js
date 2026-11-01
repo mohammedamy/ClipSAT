@@ -927,7 +927,7 @@
       if(!cached){
         cached=Promise.all([
           import('three'),
-          import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js')
+          import('/vendor/three/OrbitControls.js')
         ]).then(function(mods){ return {THREE:mods[0], OrbitControls:mods[1].OrbitControls}; });
       }
       return cached;

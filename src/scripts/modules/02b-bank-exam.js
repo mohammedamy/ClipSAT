@@ -1980,7 +1980,7 @@
           var isMCQ=(q.type==='mcq'||q.type==='data');
           ak.push({n:qNum,type:q.type,domain:q.domain,answer:isMCQ?globalLetters[q.answer]:(q.answer!=null?String(q.answer):'FRQ'),sol:q.sol||''});
           var _fHtml=renderQFig(q);
-          var _ansDisp0=isMCQ?globalLetters[q.answer]:(q.ans!=null?String(q.ans):(q.sprAnswer!=null?String(q.sprAnswer):(q.answer!=null?String(q.answer):'')));
+          var _ansDisp0=isMCQ?globalLetters[q.answer]:(q.sprAnswer!=null?String(q.sprAnswer):(q.finalAnswer!=null?String(q.finalAnswer):(q.ans!=null?String(q.ans):(q.answer!=null?String(q.answer):''))));
           _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':(q.type==='spr'?'spr':'frq'),points:Number(q.marks)||1,ans:_ansDisp0,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'" data-q-id="'+esc(q.id||'')+'" data-topic-id="'+esc(q.topic_id||'')+'" data-track="'+esc(viewId)+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
@@ -2190,7 +2190,7 @@
           if(isFRQPart){isFree=true;isMCQ=false;}
 
           var qMarks = Number(q.marks) || part.defaultMarks || (isIBExam ? 6 : 1);
-          var ansDisplay = isMCQ ? pL[q.answer] : (q.ans != null ? String(q.ans) : (q.sprAnswer != null ? String(q.sprAnswer) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'See Markscheme')))));
+          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (q.finalAnswer != null ? String(q.finalAnswer) : (q.ans != null ? String(q.ans) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'See Markscheme'))))));
           answerKey.push({n:qNum,type:(isFree?(q.type==='spr'?'spr':'frq'):'mcq'),domain:q.domain,
             marks:qMarks,answer:ansDisplay,sol:q.sol||q.exp||''});
           var _fHtml=renderQFig(q);
@@ -2284,10 +2284,9 @@
     return String(txt||'')
       .toLowerCase()
       .replace(/\$[^$]*\$/g, function(m){ return m.replace(/\s+/g,''); })
-      .replace(/[^a-z0-9+\-*/=^().,]/g, ' ')
+      .replace(/[^a-z0-9\u0600-\u06FF+\-*/=^().,]/g, ' ')
       .replace(/\s+/g, ' ')
-      .trim()
-      .slice(0, 180);
+      .trim();
   }
 
   function _normTmplSig(txt){
@@ -2344,11 +2343,11 @@
       var m2 = targetMarks - m1;
       var ansStr = (typeof item.answer === 'number' && item.choices && item.choices[item.answer] != null)
         ? String(item.choices[item.answer])
-        : (item.ans != null ? String(item.ans) : '');
+        : (item.sprAnswer != null ? String(item.sprAnswer) : (item.finalAnswer != null ? String(item.finalAnswer) : (item.ans != null ? String(item.ans) : '')));
       rawStem = rawStem + '\n\n'
         + '(a) Write down the key mathematical relationship or initial setup required to model this problem. [' + m1 + ' marks]\n'
         + '(b) Hence, or otherwise, find the exact value or required analytical solution, showing all working clearly. [' + m2 + ' marks]';
-      if(ansStr && !item.ans) item.ans = ansStr;
+      if(ansStr && !item.finalAnswer && !item.ans) item.finalAnswer = ansStr;
     } else if(!hasMarkTags){
       rawStem = rawStem + ' [' + targetMarks + ' marks]';
     }
@@ -2357,7 +2356,7 @@
     item.q = rawStem;
 
     var rawSol = _balanceMathDelims(item.sol || item.exp || item.expl || '');
-    var ansVal = item.ans != null ? String(item.ans) : ((typeof item.answer === 'number' && item.choices && item.choices[item.answer] != null) ? String(item.choices[item.answer]) : '');
+    var ansVal = item.sprAnswer != null ? String(item.sprAnswer) : (item.finalAnswer != null ? String(item.finalAnswer) : (item.ans != null ? String(item.ans) : ((typeof item.answer === 'number' && item.choices && item.choices[item.answer] != null) ? String(item.choices[item.answer]) : '')));
     if(!/\[M1\]|\[A1\]|\[R1\]/i.test(rawSol)){
       var steps = rawSol.split(/(?<=\.)\s+/).filter(Boolean);
       if(steps.length >= 2){
@@ -2387,11 +2386,21 @@
     var seenFigs = new Set();
     var replacementsMade = 0;
     var revised = [];
+    var futureStemCounts = new Map();
+    for(var fi = 0; fi < (items || []).length; fi++){
+      var fs0 = _normStemSig((items[fi] && (items[fi].text || items[fi].q)) || '');
+      if(fs0) futureStemCounts.set(fs0, (futureStemCounts.get(fs0) || 0) + 1);
+    }
 
     for(var i = 0; i < (items || []).length; i++){
       var cand = Object.assign({}, items[i]);
       var pMeta = partMetaList[i] || null;
       var sSig = _normStemSig(cand.text || cand.q || '');
+      if(sSig){
+        var remCnt = (futureStemCounts.get(sSig) || 1) - 1;
+        if(remCnt <= 0) futureStemCounts.delete(sSig);
+        else futureStemCounts.set(sSig, remCnt);
+      }
       var tSig = _normTmplSig(cand.text || cand.q || '');
       var fSig = _quickFigSig(cand);
       var tCount = seenTmpls.get(tSig) || 0;
@@ -2401,36 +2410,47 @@
       if(rawFig && typeof window._renderFig === 'function'){
         try {
           var testSvg = window._renderFig(rawFig);
-          if(!testSvg || testSvg.indexOf('<svg') === -1 || /NaN|undefined/.test(testSvg)){
+          if(!testSvg || (testSvg.indexOf('<svg') === -1 && testSvg.indexOf('<table') === -1) || /\bNaN\b|\bundefined\b/.test(testSvg)){
             isBadFig = true;
           }
         } catch(e){ isBadFig = true; }
       }
 
-      var isDup = isBadFig || (sSig && seenStems.has(sSig)) || (fSig && seenFigs.has(fSig)) || (tSig && tCount >= 2);
+      var isStemOrFigDup = isBadFig || (sSig && seenStems.has(sSig)) || (fSig && seenFigs.has(fSig));
+      var isDup = isStemOrFigDup || (tSig && tCount >= 2);
       if(isDup && pool.length > 0){
-        /* Find a non-duplicate replacement from the fallback pool */
-        for(var k = 0; k < pool.length; k++){
-          var alt = pool[k];
-          if(isIB && alt.type !== 'frq' && k < pool.length - 20) continue;
-          var altS = _normStemSig(alt.text || alt.q || '');
-          var altT = _normTmplSig(alt.text || alt.q || '');
-          var altF = _quickFigSig(alt);
-          var altRawFig = alt.figure || alt.fig;
-          var altFigOk = true;
-          if(altRawFig && typeof window._renderFig === 'function'){
-            try {
-              var altSvg = window._renderFig(altRawFig);
-              if(!altSvg || altSvg.indexOf('<svg') === -1 || /NaN|undefined/.test(altSvg)) altFigOk = false;
-            } catch(e){ altFigOk = false; }
-          }
-          if(altFigOk && altS && !seenStems.has(altS) && (!altF || !seenFigs.has(altF)) && ((seenTmpls.get(altT) || 0) < 1)){
-            cand = Object.assign({}, alt);
-            sSig = altS;
-            tSig = altT;
-            fSig = altF;
-            replacementsMade++;
-            break;
+        /* Find a non-duplicate replacement from the fallback pool (pass 1: strict template diversity; pass 2: guaranteed stem/fig uniqueness) */
+        var needMcq = pMeta && pMeta.type === 'mcq';
+        var replaced = false;
+        for(var pass = 0; pass < 2 && !replaced; pass++){
+          if(pass === 1 && !isStemOrFigDup) break;
+          for(var k = 0; k < pool.length; k++){
+            var alt = pool[k];
+            if(isIB && alt.type !== 'frq' && k < pool.length - 20) continue;
+            if(needMcq && (!Array.isArray(alt.choices) || alt.choices.length < 2)) continue;
+            var altS = _normStemSig(alt.text || alt.q || '');
+            if(!altS || seenStems.has(altS) || futureStemCounts.has(altS)) continue;
+            var altT = _normTmplSig(alt.text || alt.q || '');
+            var altF = _quickFigSig(alt);
+            if(pass === 0 && altF && seenFigs.has(altF)) continue;
+            if(pass === 0 && (seenTmpls.get(altT) || 0) >= 1) continue;
+            var altRawFig = alt.figure || alt.fig;
+            var altFigOk = true;
+            if(altRawFig && typeof window._renderFig === 'function'){
+              try {
+                var altSvg = window._renderFig(altRawFig);
+                if(!altSvg || (altSvg.indexOf('<svg') === -1 && altSvg.indexOf('<table') === -1) || /\bNaN\b|\bundefined\b/.test(altSvg)) altFigOk = false;
+              } catch(e){ altFigOk = false; }
+            }
+            if(altFigOk){
+              cand = Object.assign({}, alt);
+              sSig = altS;
+              tSig = altT;
+              fSig = altF;
+              replacementsMade++;
+              replaced = true;
+              break;
+            }
           }
         }
       }

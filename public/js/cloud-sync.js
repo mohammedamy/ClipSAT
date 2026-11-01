@@ -805,7 +805,7 @@
     }
   }
 
-  /* ── Layer 1: Self-Hosted First-Party SDK Loader with CDN Fallback ─────── */
+  /* ── Layer 1: Self-Hosted First-Party SDK Loader with Zero-SDK Fallback ──── */
   function loadSDK(cb) {
     if (window.supabase && typeof window.supabase.createClient === 'function') {
       cb();
@@ -817,34 +817,27 @@
       if (window.supabase && typeof window.supabase.createClient === 'function') {
         cb();
       } else {
-        loadCdnFallback(cb);
+        activateZeroSdkFallback();
       }
     };
     localScript.onerror = function () {
-      loadCdnFallback(cb);
+      activateZeroSdkFallback();
     };
     document.head.appendChild(localScript);
   }
 
-  function loadCdnFallback(cb) {
-    var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.min.js';
-    s.crossOrigin = 'anonymous';
-    s.onload = cb;
-    s.onerror = function () {
-      log('failed to load Supabase SDK — activating zero-SDK local OAuth fallback');
-      var captured = (typeof window.__CLIPSAT_CONSUME_OAUTH_HASH__ === 'function')
-        ? window.__CLIPSAT_CONSUME_OAUTH_HASH__()
-        : null;
-      var localSess = (captured && buildSessionFromOAuthTokens(captured)) || readPersistedSessionFallback();
-      if (localSess) {
-        persistLocalSession(localSess);
-        restorePostSignInHash();
-      }
-      renderAuthUI();
-      _readyResolve();
-    };
-    document.head.appendChild(s);
+  function activateZeroSdkFallback() {
+    log('failed to load Supabase SDK — activating zero-SDK local OAuth fallback');
+    var captured = (typeof window.__CLIPSAT_CONSUME_OAUTH_HASH__ === 'function')
+      ? window.__CLIPSAT_CONSUME_OAUTH_HASH__()
+      : null;
+    var localSess = (captured && buildSessionFromOAuthTokens(captured)) || readPersistedSessionFallback();
+    if (localSess) {
+      persistLocalSession(localSess);
+      restorePostSignInHash();
+    }
+    renderAuthUI();
+    _readyResolve();
   }
 
   function hydrateSignedInSession(session, isFreshOAuth) {
@@ -1044,15 +1037,11 @@
 
   function maybeStoreGoogleRefreshToken(session) {
     if (!sb || !session || !session.provider_refresh_token || !session.user) return;
-    sb.from('google_oauth_tokens')
-      .upsert({
-        user_id: session.user.id,
-        refresh_token: session.provider_refresh_token,
-        updated_at: new Date().toISOString()
-      })
-      .then(function (r) {
-        log(r && r.error ? ('failed to store Google refresh token: ' + r.error.message) : 'Google refresh token stored');
-      }, noop);
+    sb.rpc('upsert_google_refresh_token', {
+      p_refresh_token: session.provider_refresh_token
+    }).then(function (r) {
+      log(r && r.error ? ('failed to store Vault Google refresh token: ' + r.error.message) : 'Google refresh token stored in Vault');
+    }, noop);
   }
 
   function signOut() {
@@ -1361,17 +1350,15 @@
       btn.appendChild(label);
     }
     if (_cachedUser) {
-      var signedInTitle = 'Signed in — click to sign out';
-      var signedInLabel = 'Signed in as ' + (_cachedUser.email || 'a synced account') + ' — click to sign out';
-      var doSignOut = function () {
-        if (window.confirm('Sign out of cloud sync? Your progress stays on this device.')) signOut();
-      };
-      if (btn) { btn.title = signedInTitle; btn.setAttribute('aria-label', signedInLabel); btn.onclick = doSignOut; }
+      var signedInTitle = 'Signed in — click to manage cloud sync & account';
+      var signedInLabel = 'Signed in as ' + (_cachedUser.email || 'a synced account') + ' — click to manage account';
+      var openAccount = function () { window.openCloudAuthModal(); };
+      if (btn) { btn.title = signedInTitle; btn.setAttribute('aria-label', signedInLabel); btn.onclick = openAccount; }
       if (mobileBtn) {
         mobileBtn.classList.add('signed-in');
         mobileBtn.title = signedInTitle;
         mobileBtn.setAttribute('aria-label', signedInLabel);
-        mobileBtn.onclick = doSignOut;
+        mobileBtn.onclick = openAccount;
       }
     } else {
       var signedOutTitle = 'Sign in to sync your progress across devices';
@@ -1384,6 +1371,18 @@
         mobileBtn.onclick = doSignIn;
       }
     }
+    syncModalAccountView();
+  }
+
+  function syncModalAccountView() {
+    var signInView = document.getElementById('cloud-auth-signin-view');
+    var accountView = document.getElementById('cloud-auth-account-view');
+    var emailSpan = document.getElementById('cloud-auth-account-email');
+    var titleEl = document.getElementById('cloud-auth-modal-title');
+    if (signInView) signInView.hidden = !!_cachedUser;
+    if (accountView) accountView.hidden = !_cachedUser;
+    if (emailSpan && _cachedUser) emailSpan.textContent = _cachedUser.email || 'Signed-in student';
+    if (titleEl) titleEl.textContent = _cachedUser ? '☁️ Cloud Account & Privacy' : '☁️ Sync Your Progress';
   }
 
   /* ── Browser Health Check (No Synthetic Popup Canary on Google Sign-In) ── */
@@ -1456,16 +1455,30 @@
     box.hidden = false;
   }
 
+  function checkAgeConsentOrWarn() {
+    var cb = document.getElementById('cloud-auth-age-consent');
+    if (cb && !cb.checked) {
+      var status = document.getElementById('cloud-auth-status');
+      if (status) status.textContent = 'Please confirm age (13+) or parent/guardian permission above before signing in.';
+      cb.focus();
+      return false;
+    }
+    return true;
+  }
+
   window.openCloudAuthModal = function () {
+    syncModalAccountView();
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.add('show');
+    var status = document.getElementById('cloud-auth-status');
+    if (status) status.textContent = '';
     var issues = checkBrowserHealth();
     if (_healthNotice) {
       // Notice 'stalled' on passive background check only matters if user isn't signed in
       if (!_cachedUser) issues.push(_healthNotice);
       _healthNotice = null;
     }
-    renderHealthWarning(issues);
+    renderHealthWarning(_cachedUser ? [] : issues);
   };
 
   window.closeCloudAuthModal = function () {
@@ -1473,7 +1486,43 @@
     if (m) m.classList.remove('show');
   };
 
+  window.cloudSyncNow = function () {
+    var status = document.getElementById('cloud-auth-status');
+    if (status) status.textContent = 'Syncing progress…';
+    pushAll();
+    pullAndMerge().then(function () {
+      if (status) status.textContent = '✓ Progress synced across devices.';
+    })['catch'](function () {
+      if (status) status.textContent = 'Saved locally — cloud sync will retry automatically.';
+    });
+  };
+
+  window.cloudSignOut = function () {
+    var status = document.getElementById('cloud-auth-status');
+    signOut().then(function () {
+      if (status) status.textContent = 'Signed out — local progress stays on this device.';
+      syncModalAccountView();
+    });
+  };
+
+  window.cloudDeleteMyAccount = function () {
+    if (!window.confirm('Permanently delete your ClipSAT cloud account, synced progress, and any stored Google Forms token? Local progress on this browser stays unless you clear site data. This cannot be undone.')) {
+      return;
+    }
+    var status = document.getElementById('cloud-auth-status');
+    if (status) status.textContent = 'Deleting cloud account…';
+    deleteMyAccount().then(function (r) {
+      if (r && r.error) {
+        if (status) status.textContent = 'Could not delete account right now: ' + (r.error.message || 'network error');
+        return;
+      }
+      if (status) status.textContent = '✓ Your cloud account and synced data have been permanently deleted.';
+      syncModalAccountView();
+    });
+  };
+
   window.cloudSignInGoogle = function () {
+    if (!checkAgeConsentOrWarn()) return;
     var issues = checkBrowserHealth();
     if (issues.indexOf('storage') !== -1) {
       renderHealthWarning(issues);
@@ -1515,6 +1564,7 @@
   }
 
   window.cloudSendCode = function () {
+    if (!checkAgeConsentOrWarn()) return;
     var input = document.getElementById('cloud-auth-email');
     var status = document.getElementById('cloud-auth-status');
     if (!input || !input.value) return;

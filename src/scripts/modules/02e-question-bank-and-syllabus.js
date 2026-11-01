@@ -430,7 +430,8 @@
     var choicesKey = q.choices ? 'choices' : (q.options ? 'options' : null);
     if(!choicesKey || !q[choicesKey] || q[choicesKey].length < 2) return q;
     var chArr = q[choicesKey];
-    if(q.fixedChoices || q.topic_id === 'qud-compare' || /القيمة الأولى أكبر|Quantity A is greater|Column A is greater/i.test(String(chArr[0]||''))){
+    var joinedCh = chArr.map(function(c){ return String(c || ''); }).join(' | ');
+    if(q.fixedChoices || q.isQC || q.topic_id === 'qud-compare' || /القيمة الأولى أكبر|العمود\s*[AB12١٢أب]\s*أكبر|Quantity A is greater|Column [AB12I] is greater|A is greater|All of the above|None of the above|Both [A-D] and [A-D]|جميع ما سبق|لا شيء مما سبق|المعطيات غير كافية|لا يمكن تحديده/i.test(joinedCh)){
       return Object.assign({}, q);
     }
     var answerKey = (typeof q.answer!=='undefined') ? 'answer' : (typeof q.ans!=='undefined' ? 'ans' : (typeof q.correct!=='undefined' ? 'correct' : null));

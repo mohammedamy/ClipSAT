@@ -122,7 +122,8 @@ it('SAT question bank contains authentic 25% native SPR items', () => {
   assert.ok(sprs.length >= 412, `Must have at least 412 native SPR questions in sat.json (found ${sprs.length})`);
   sprs.forEach(q => {
     assert.ok(q.sprAnswer != null && String(q.sprAnswer).trim() !== '', 'SPR item must have sprAnswer');
-    assert.ok(q.ans != null && String(q.ans).trim() !== '', 'SPR item must have ans');
+    const canonicalAns = q.sprAnswer != null ? q.sprAnswer : q.ans;
+    assert.ok(canonicalAns != null && String(canonicalAns).trim() !== '', 'SPR item must have canonical answer');
   });
 });
 

@@ -140,6 +140,275 @@
           ],
           "correct": 0,
           "answer": "Substituting \\( s = 20 \\) gives \\( \\frac{170}{20 - 19} = 170 \\)."
+        },
+        {
+          "q": "The second-order linear homogeneous ODE \\( F''(w) - 50F'(w) + 621F(w) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "answer": "From \\( \\lambda^2 - 50\\lambda + 621 = 0 \\), the sum of roots is \\( 50 \\).",
+          "choices": [
+            "31",
+            "73",
+            "50",
+            "53"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation \\( y'' - 2y' + y = 0 \\). \\\\\nIf one of the fundamental solutions is \\( y_1(x) = e^x \\), and the Wronskian of two linearly independent solutions \\( y_1(x) \\) and \\( y_2(x) \\) is given by \\( W(y_1, y_2)(x) = 5e^{2x} \\), find the unknown parameter \\( k \\) in \\( y_2(x) = kxe^x \\).",
+          "answer": "The given differential equation is \\( y'' - 2y' + y = 0 \\). The characteristic equation is \\( r^2 - 2r + 1 = 0 \\), which factors as \\( (r-1)^2 = 0 \\). Thus, the roots are repeated: \\( r_1 = r_2 = 1 \\). \\\\\nOne fundamental solution is given as \\( y_1(x) = e^x \\). For a second-order linear homogeneous equation \\( y'' + p(x)y' + q(x)y = 0 \\) with a known solution \\( y_1(x) \\), the Wronskian is given by \\( W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) = C e^{-\\int p(x) dx} \\). \\\\\nIn our equation, \\( p(x) = -2 \\). So, \\( -\\int p(x) dx = -\\int (-2) dx = 2x \\). Therefore, \\( W(y_1, y_2)(x) = C e^{2x} \\). \\\\\nWe are given that \\( W(y_1, y_2)(x) = 5e^{2x} \\), which means \\( C = 5 \\). \\\\\nWe are also given \\( y_1(x) = e^x \\) and \\( y_2(x) = kxe^x \\). \\\\\nLet's compute the Wronskian using these forms: \\\\\n\\( y_1'(x) = e^x \\) \\\\\n\\( y_2'(x) = \\frac{d}{dx}(kxe^x) = k(1 \\cdot e^x + x \\cdot e^x) = ke^x(1+x) \\)\n\\\\\nNow, substitute into the Wronskian formula: \\\\\n\\( W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) \\)\n\\( W(y_1, y_2)(x) = e^x \\cdot [ke^x(1+x)] - e^x \\cdot [kxe^x] \\)\n\\( W(y_1, y_2)(x) = ke^{2x}(1+x) - kxe^{2x} \\)\n\\( W(y_1, y_2)(x) = ke^{2x} + kxe^{2x} - kxe^{2x} \\)\n\\( W(y_1, y_2)(x) = ke^{2x} \\)\n\\\\\nWe equate this to the given Wronskian: \\\\\n\\( ke^{2x} = 5e^{2x} \\)\n\\\\\nTherefore, \\( k = 5 \\).",
+          "choices": [
+            "\\( k = -5 \\)",
+            "\\( k = 1 \\)",
+            "\\( k = 5 \\)",
+            "\\( k = -1 \\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation \\[ y'' - 3y' + 2y = 0. \\] Find the general solution to this equation.",
+          "answer": "The characteristic equation for the differential equation \\(y'' - 3y' + 2y = 0\\) is \\(r^2 - 3r + 2 = 0\\). Factoring this quadratic equation gives \\((r-1)(r-2) = 0\\). The roots are \\(r_1 = 1\\) and \\(r_2 = 2\\). Since the roots are real and distinct, the general solution is of the form \\(y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}\\). Substituting the roots, we get \\(y(x) = c_1 e^x + c_2 e^{2x}\\).\n\nChoice B is incorrect because it uses negative roots.\nChoice C is incorrect because it corresponds to complex roots.\nChoice D is incorrect because it corresponds to a repeated root.",
+          "choices": [
+            "\\[ y(x) = c_1 e^{-x} + c_2 e^{-2x} \\]",
+            "\\[ y(x) = c_1 e^x + c_2 e^{2x} \\]",
+            "\\[ y(x) = c_1 \\cos(x) + c_2 \\sin(x) \\]",
+            "\\[ y(x) = c_1 x e^x + c_2 e^x \\]"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Consider the second-order linear nonhomogeneous differential equation \\( y'' - y = \\sin x \\). If \\( y_p(x) = A \\cos x + B \\sin x \\) is a particular solution, find the values of the constants \\( A \\) and \\( B \\).",
+          "answer": "We are given the differential equation \\( y'' - y = \\sin x \\) and a proposed particular solution \\( y_p(x) = A \\cos x + B \\sin x \\). We need to find the derivatives of \\( y_p(x) \\) and substitute them into the differential equation.\n\nFirst derivative: \\( y_p'(x) = -A \\sin x + B \\cos x \\).\nSecond derivative: \\( y_p''(x) = -A \\cos x - B \\sin x \\).\n\nSubstitute these into the differential equation:\n\\( (-A \\cos x - B \\sin x) - (A \\cos x + B \\sin x) = \\sin x \\)\n\nCombine like terms:\n\\( (-A - A) \\cos x + (-B - B) \\sin x = \\sin x \\)\n\\( -2A \\cos x - 2B \\sin x = \\sin x \\)\n\nFor this equation to hold for all \\( x \\), the coefficients of \\( \\cos x \\) and \\( \\sin x \\) on both sides must be equal.\n\nComparing coefficients of \\( \\cos x \\): \\( -2A = 0 \\), which implies \\( A = 0 \\).\n\nComparing coefficients of \\( \\sin x \\): \\( -2B = 1 \\), which implies \\( B = -\\frac{1}{2} \\).\n\nTherefore, the values of the constants are \\( A = 0 \\) and \\( B = -\\frac{1}{2} \\).",
+          "choices": [
+            "\\( A = \\frac{1}{2}, B = 0 \\)",
+            "\\( A = 0, B = \\frac{1}{2} \\)",
+            "\\( A = -\\frac{1}{2}, B = 0 \\)",
+            "\\( A = 0, B = -\\frac{1}{2} \\)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 2,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation \\(y'' - 2y' + ky = 0\\). We are given that \\(y_1(x) = e^{3x}\\) is a solution to this equation. \\\\\n(a) Find the value of the parameter \\(k\\). \\\\\n(b) Find the general solution to the differential equation.",
+          "answer": "Part (a): \\\\\nIf \\(y_1(x) = e^{3x}\\) is a solution, then its derivatives must satisfy the equation.\\\\\n\\(y_1'(x) = 3e^{3x}\\)\\\\\n\\(y_1''(x) = 9e^{3x}\\)\\\\\nSubstitute these into the differential equation \\(y'' - 2y' + ky = 0\\):\\\\\n\\(9e^{3x} - 2(3e^{3x}) + k(e^{3x}) = 0\\)\\\\\n\\(9e^{3x} - 6e^{3x} + ke^{3x} = 0\\)\\\\\nFactor out \\(e^{3x}\\) (which is never zero):\\\\\n\\(e^{3x}(9 - 6 + k) = 0\\)\\\\\n\\(3 + k = 0\\)\\\\\nSo, \\(k = -3\\).\\\\\n\\\\\nPart (b): \\\\\nNow that we know \\(k = -3\\), the differential equation is \\(y'' - 2y' - 3y = 0\\).\\\\\nThe auxiliary (characteristic) equation is \\(r^2 - 2r - 3 = 0\\).\\\\\nFactor the quadratic equation: \\((r - 3)(r + 1) = 0\\).\\\\\nThe roots are \\(r_1 = 3\\) and \\(r_2 = -1\\).\\\\\nSince the roots are real and distinct, the general solution is of the form \\(y(x) = c_1e^{r_1x} + c_2e^{r_2x}\\).\\\\\nTherefore, the general solution is \\(y(x) = c_1e^{3x} + c_2e^{-x}\\). \\\\\nThis matches choice D.",
+          "choices": [
+            "\\(k = 3, y(x) = c_1e^{3x} + c_2xe^{3x}\\)",
+            "\\(k = -3, y(x) = c_1e^{3x} + c_2e^{x}\\)",
+            "\\(k = 9, y(x) = c_1e^{3x} + c_2e^{-3x}\\)",
+            "\\(k = -3, y(x) = c_1e^{3x} + c_2e^{-x}\\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Consider the second-order linear non-homogeneous differential equation: \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). Suppose a particular solution is found using the method of variation of parameters. Let the fundamental set of solutions for the associated homogeneous equation be \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\). If the particular solution is expressed in the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\), determine the value of \\(u_2'(x)\\).",
+          "answer": "The given differential equation is \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). The associated homogeneous equation is \\(\\frac{d^2y}{dx^2} + 4y = 0\\). The characteristic equation is \\(r^2 + 4 = 0\\), which has roots \\(r = \\pm 2i\\). Thus, the fundamental set of solutions for the homogeneous equation is \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\).\n\nWe use the method of variation of parameters to find a particular solution of the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\).\n\nThe Wronskian of \\(y_1\\) and \\(y_2\\) is:\n\\(W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))\\)\n\\(W(y_1, y_2)(x) = 2\\cos^2(2x) + 2\\sin^2(2x) = 2(\\cos^2(2x) + \\sin^2(2x)) = 2\\).\n\nThe non-homogeneous term is \\(g(x) = \\sec(2x)\\).\n\nThe formulas for \\(u_1'(x)\\) and \\(u_2'(x)\\) are:\n\\(u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)}\\)\n\\(u_2'(x) = \\frac{y_1(x)g(x)}{W(x)}\\)\n\nSubstituting the given functions:\n\\(u_2'(x) = \\frac{\\cos(2x) \\cdot \\sec(2x)}{2}\\)\n\\(u_2'(x) = \\frac{\\cos(2x)}{2\\cos(2x)}\\)\n\\(u_2'(x) = \\frac{1}{2}\\).\n\nThe value of \\(u_2'(x)\\) is \\(\\frac{1}{2}\\).",
+          "choices": [
+            "\\(\\frac{1}{4}\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(\\frac{1}{2}\\sin(2x)\\)",
+            "\\(\\frac{1}{4}\\cos(2x)\\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation \\(y''(x) + 5y'(x) + 6y(x) = 0\\). If the auxiliary equation has roots \\(r_1\\) and \\(r_2\\), what is the value of \\(r_1 + r_2\\)?",
+          "answer": "The general form of a second-order linear homogeneous differential equation with constant coefficients is \\(ay''(x) + by'(x) + cy(x) = 0\\). The associated auxiliary equation is \\(ar^2 + br + c = 0\\). For the given equation \\(y''(x) + 5y'(x) + 6y(x) = 0\\), the auxiliary equation is \\(r^2 + 5r + 6 = 0\\).  According to Vieta's formulas, for a quadratic equation of the form \\(ar^2 + br + c = 0\\), the sum of the roots \\(r_1 + r_2 = -b/a\\). In this case, \\(a=1\\), \\(b=5\\), and \\(c=6\\). Therefore, the sum of the roots is \\(r_1 + r_2 = -5/1 = -5\\).",
+          "choices": [
+            "-5",
+            "-6",
+            "5",
+            "6"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "The separable initial value problem \\( \\dfrac{dp}{dt} = 34t \\) satisfies \\( p(0) = 5 \\). Determine the solution value \\( p(18) \\).",
+          "answer": "Integrating gives \\( p(t) = 17t^2 + 5 \\), so \\( p(18) = 5513 \\).",
+          "choices": [
+            "5530",
+            "5508",
+            "5516",
+            "5513"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "The second-order linear homogeneous ODE \\( p''(t) - 41p'(t) + 210p(t) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "answer": "From \\( \\lambda^2 - 41\\lambda + 210 = 0 \\), the sum of roots is \\( 41 \\).",
+          "choices": [
+            "41",
+            "21",
+            "47",
+            "44"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "sinusoid",
+            "title": "Oscillatory Differential Response",
+            "amp": 2,
+            "period": 6.28,
+            "midline": 0,
+            "fnType": "cos"
+          }
+        },
+        {
+          "q": "The Laplace transform of \\( p(t) = 6e^{17t} \\) is \\( q(s) = \\dfrac{6}{s - 17} \\) for \\( s > 17 \\). Determine the evaluated transform \\( q(18) \\).",
+          "answer": "Substituting \\( s = 18 \\) gives \\( \\frac{6}{18 - 17} = 6 \\).",
+          "choices": [
+            "-11",
+            "6",
+            "9",
+            "8"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Consider the nonhomogeneous second-order linear differential equation \\( y'' - 5y' + 6y = 12x + 8 \\). \\( y_h(x) = c_1e^{2x} + c_2e^{3x} \\) is the general solution to the corresponding homogeneous equation. Find the particular solution \\( y_p(x) \\) using the method of undetermined coefficients, and then determine the value of the constant \\( A \\) such that \\( y_p(x) = Ax + B \\) for some constant \\( B \\).",
+          "answer": "The given nonhomogeneous differential equation is \\( y'' - 5y' + 6y = 12x + 8 \\). \\nThe form of the nonhomogeneous term is \\( g(x) = 12x + 8 \\), which is a polynomial of degree 1.  Thus, we assume a particular solution of the form \\( y_p(x) = Ax + B \\).\n\nWe need to find the first and second derivatives of \\( y_p(x) \\):\n\\( y_p'(x) = A \\)\n\\( y_p''(x) = 0 \\)\n\nSubstitute these into the differential equation:\n\\( 0 - 5(A) + 6(Ax + B) = 12x + 8 \\)\n\\( -5A + 6Ax + 6B = 12x + 8 \\)\n\\( 6Ax + (6B - 5A) = 12x + 8 \\)\n\nEquating the coefficients of like powers of \\( x \\):\nFor the \\( x \\) term: \\( 6A = 12 \\) \\(\\Rightarrow\\) \\( A = 2 \\).\nFor the constant term: \\( 6B - 5A = 8 \\).\nSubstitute \\( A = 2 \\) into the second equation:\n\\( 6B - 5(2) = 8 \\)\n\\( 6B - 10 = 8 \\)\n\\( 6B = 18 \\)\n\\( B = 3 \\)\n\nTherefore, the particular solution is \\( y_p(x) = 2x + 3 \\). The value of the constant \\( A \\) is 2.",
+          "choices": [
+            "\\( A = 3 \\)",
+            "\\( A = 2 \\)",
+            "\\( A = 6 \\)",
+            "\\( A = 12 \\)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -25,
+              35
+            ],
+            "fns": [
+              {
+                "fn": "12*x + 8",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The second-order linear homogeneous ODE \\( h''(u) - 42h'(u) + 272h(u) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "answer": "From \\( \\lambda^2 - 42\\lambda + 272 = 0 \\), the sum of roots is \\( 42 \\).",
+          "choices": [
+            "45",
+            "50",
+            "23",
+            "42"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation: \\( x^2 y'' + x y' + (x^2 - \\nu^2) y = 0 \\), where \\(\\nu\\) is a constant. This is Bessel's equation of order \\(\\nu\\). Assume \\(\\nu = 1/2\\) and that \\(x > 0\\). \\(\\textbf{Part 1: Ordinary Point Analysis}\\\\. x=0\\) is a regular singular point. Determine the indicial equation for this differential equation and find its roots.",
+          "answer": "The given differential equation is \\(x^2 y'' + x y' + (x^2 - \\nu^2) y = 0\\). We can rewrite this in the standard form \\(y'' + P(x)y' + Q(x)y = 0\\) by dividing by \\(x^2\\): \\(y'' + \\frac{1}{x} y' + \\frac{x^2 - \\nu^2}{x^2} y = 0\\). Thus, \\(P(x) = \\frac{1}{x}\\) and \\(Q(x) = \\frac{x^2 - \\nu^2}{x^2} = 1 - \\frac{\\nu^2}{x^2}\\). \\(x=0\\) is a singular point. To determine if it's a regular singular point, we examine \\(x P(x)\\) and \\(x^2 Q(x)\\). \\(x P(x) = x \\cdot \\frac{1}{x} = 1\\), which is analytic at \\(x=0\\). \\(x^2 Q(x) = x^2 \\cdot \\frac{x^2 - \\nu^2}{x^2} = x^2 - \\nu^2\\), which is also analytic at \\(x=0\\). Therefore, \\(x=0\\) is a regular singular point. The method of Frobenius assumes a solution of the form \\(y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}\\), where \\(c_0 \\neq 0\\). Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in \\(r\\). For Bessel's equation, the indicial equation is given by \\(r(r-1) + p_0 r + q_0 = 0\\), where \\(p_0 = \\lim_{x \\to 0} xP(x)\\) and \\(q_0 = \\lim_{x \\to 0} x^2 Q(x)\\). In our case, \\(p_0 = 1\\) and \\(q_0 = -\\nu^2\\). So the indicial equation is \\(r(r-1) + 1 \\cdot r - \\nu^2 = 0\\), which simplifies to \\(r^2 - r + r - \\nu^2 = 0\\), or \\(r^2 - \\nu^2 = 0\\). Given \\(\\nu = 1/2\\), the indicial equation becomes \\(r^2 - (1/2)^2 = 0\\), which is \\(r^2 - \\frac{1}{4} = 0\\). The roots of this equation are \\(r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}\\).",
+          "choices": [
+            "Indicial equation: \\(r^2 + \\frac{1}{4} = 0\\); roots: \\(r = \\pm \\frac{i}{2}\\)",
+            "Indicial equation: \\(r^2 - r + \\frac{1}{4} = 0\\); roots: \\(r = \\frac{1}{2}, \\frac{1}{2}\\)",
+            "Indicial equation: \\(r^2 - \\frac{1}{4} = 0\\); roots: \\(r = \\pm \\frac{1}{4}\\)",
+            "Indicial equation: \\(r^2 - \\frac{1}{4} = 0\\); roots: \\(r = \\pm \\frac{1}{2}\\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "The second-order linear homogeneous ODE \\( u''(s) - 43u'(s) + 460u(s) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Compute the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "answer": "From \\( \\lambda^2 - 43\\lambda + 460 = 0 \\), the sum of roots is \\( 43 \\).",
+          "choices": [
+            "32",
+            "46",
+            "66",
+            "43"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Consider the nonhomogeneous second-order linear differential equation \\( y'' + 4y = 8 \\). What is the particular solution, \\(y_p(x)\\), to this equation?",
+          "answer": "The given differential equation is \\( y'' + 4y = 8 \\). This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, \\(y_p(x)\\). The nonhomogeneous term is a constant, 8.  We guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation: \\(0 + 4(A) = 8\\). Solving for A, we get \\(4A = 8\\), which means \\(A = 2\\). Therefore, the particular solution is \\(y_p(x) = 2\\).",
+          "choices": [
+            "\\(2\\)",
+            "\\(2x\\)",
+            "\\(2\\sin(2x)\\)",
+            "\\(2\\cos(2x)\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Consider the second-order nonhomogeneous linear differential equation \\(y'' - 5y' + 6y = 12x + 4\\). If a particular solution is of the form \\(y_p(x) = Ax + B\\) and the general solution is \\(y(x) = C_1e^{2x} + C_2e^{3x} + Ax + B\\), find the value of \\(A\\).",
+          "answer": "The given differential equation is \\(y'' - 5y' + 6y = 12x + 4\\). \\\\ We are given that a particular solution is of the form \\(y_p(x) = Ax + B\\). \\\\ To find the coefficients \\(A\\) and \\(B\\), we substitute \\(y_p(x)\\) and its derivatives into the differential equation. \\\\ The first derivative is \\(y_p'(x) = A\\). \\\\ The second derivative is \\(y_p''(x) = 0\\). \\\\ Substituting these into the differential equation: \\\\ \\(0 - 5(A) + 6(Ax + B) = 12x + 4\\\\ -5A + 6Ax + 6B = 12x + 4\\\\ 6Ax + (6B - 5A) = 12x + 4\\\\ \\)By comparing the coefficients of \\(x\\) on both sides, we get: \\\\ \\(6A = 12 \\implies A = 2\\\\ \\)By comparing the constant terms on both sides, we get: \\\\ \\(6B - 5A = 4\\\\ 6B - 5(2) = 4\\\\ 6B - 10 = 4\\\\ 6B = 14 \\implies B = \\frac{14}{6} = \\frac{7}{3}\\\\ \\)The question asks for the value of \\(A\\). Therefore, \\(A = 2\\).",
+          "choices": [
+            "1",
+            "6",
+            "12",
+            "2"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -25,
+              35
+            ],
+            "fns": [
+              {
+                "fn": "12*x + 4",
+                "color": "var(--fig-indigo)",
+                "label": "y = f(x)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The second-order linear homogeneous ODE \\( M''(z) - 49M'(z) + 510M(z) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Compute the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "answer": "From \\( \\lambda^2 - 49\\lambda + 510 = 0 \\), the sum of roots is \\( 49 \\).",
+          "choices": [
+            "64",
+            "52",
+            "33",
+            "49"
+          ],
+          "correct": 3
         }
       ]
     }

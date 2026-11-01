@@ -118,6 +118,445 @@
           ],
           "correct": 2,
           "answer": "Applying Double Integrals principles, \\( \\text{Area}=5\\times3=15 \\). Therefore, the verified correct option is 15."
+        },
+        {
+          "q": "Evaluate the double integral of the function \\( f(x,y) = 2xy \\) over the rectangular region \\( R = [0, 2] \\times [0, 3] \\) using Fubini's Theorem. Set up the iterated integral by integrating with respect to \\( y \\) first, then \\( x \\).",
+          "answer": "To evaluate the double integral \\( \\iint_R 2xy \\, dA \\) where \\( R = [0, 2] \\times [0, 3] \\), we can use Fubini's Theorem. We will set up the iterated integral by integrating with respect to \\( y \\) first, then \\( x \\):\n\n\\[ \\int_{0}^{2} \\int_{0}^{3} 2xy \\, dy \\, dx \\] \n\nFirst, integrate with respect to \\( y \\), treating \\( x \\) as a constant:\n\n\\[ \\int_{0}^{3} 2xy \\, dy = \\left[ xy^2 \\right]_{y=0}^{y=3} = x(3^2) - x(0^2) = 9x \\] \n\nNow, integrate the result with respect to \\( x \\):\n\n\\[ \\int_{0}^{2} 9x \\, dx = \\left[ \\frac{9x^2}{2} \\right]_{x=0}^{x=2} = \\frac{9(2^2)}{2} - \\frac{9(0^2)}{2} = \\frac{9(4)}{2} = \\frac{36}{2} = 18 \\] \n\nTherefore, the value of the double integral is 18.",
+          "choices": [
+            "18",
+            "12",
+            "6",
+            "24"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "0",
+                "0",
+                "2"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Consider the region \\( R \\) in the first quadrant bounded by the x-axis, the line \\( y = x \\), and the circle \\( x^2 + y^2 = 16 \\). The integral \\( \\iint_R f(x,y) \\, dA \\) can be evaluated more easily in polar coordinates. If \\( f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}} \\), and the integral in polar coordinates is given by \\( \\int_0^{\\pi/4} \\int_0^4 r \\cdot \\frac{1}{r} \\, dr \\, d\\theta = \\int_0^{\\pi/4} A \\, d\\theta \\), find the value of \\( A \\).",
+          "answer": "The region R is described in the first quadrant, bounded by the x-axis (\\( \\theta = 0 \\)), the line \\( y = x \\) (\\( \\theta = \\pi/4 \\)), and the circle \\( x^2 + y^2 = 16 \\) (\\( r = 4 \\)).\n\nThe integrand is \\( f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}} \\). In polar coordinates, \\( x^2 + y^2 = r^2 \\), so \\( \\sqrt{x^2 + y^2} = r \\). Thus, \\( f(x,y) = \\frac{1}{r} \\).\n\nThe differential area element in polar coordinates is \\( dA = r \\, dr \\, d\\theta \\).\n\nThe double integral in polar coordinates is:\n\n\\( \\iint_R f(x,y) \\, dA = \\int_0^{\\pi/4} \\int_0^4 \\left( \\frac{1}{r} \\right) r \\, dr \\, d\\theta \\)\n\nThis simplifies to:\n\n\\( \\int_0^{\\pi/4} \\int_0^4 1 \\, dr \\, d\\theta \\)\n\nEvaluating the inner integral with respect to \\( r \\):\n\n\\( \\int_0^4 1 \\, dr = [r]_0^4 = 4 - 0 = 4 \\)\n\nSo the integral becomes:\n\n\\( \\int_0^{\\pi/4} 4 \\, d\\theta \\)\n\nThis is in the form \\( \\int_0^{\\pi/4} A \\, d\\theta \\), where \\( A = 4 \\).",
+          "choices": [
+            "\\( \\pi/4 \\)",
+            "4",
+            "16",
+            "2"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "circle",
+            "r": 4,
+            "chord": true,
+            "sector": 45
+          }
+        },
+        {
+          "q": "Evaluate the double integral \\( \\iint_R x y \\, dA \\) where \\( R \\) is the region in the first quadrant bounded by the lines \\( y=x \\), \\( x=1 \\), and \\( y=0 \\).",
+          "answer": "The region of integration \\( R \\) is a triangle with vertices (0,0), (1,0), and (1,1). We can set up the double integral using Fubini's Theorem. Since \\( y=x \\) is the upper bound for \\( y \\) and \\( x=1 \\) is the upper bound for \\( x \\), we can integrate with respect to \\( y \\) first, then \\( x \\). The limits for \\( y \\) are from 0 to \\( x \\), and the limits for \\( x \\) are from 0 to 1.\n\n\\[ \\iint_R x y \\, dA = \\int_0^1 \\int_0^x x y \\, dy \\, dx \\] \n\nFirst, evaluate the inner integral with respect to \\( y \\):\n\n\\[ \\int_0^x x y \\, dy = x \\left[ \\frac{y^2}{2} \\right]_0^x = x \\left( \\frac{x^2}{2} - 0 \\right) = \\frac{x^3}{2} \\] \n\nNow, evaluate the outer integral with respect to \\( x \\):\n\n\\[ \\int_0^1 \\frac{x^3}{2} \\, dx = \\frac{1}{2} \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1}{2} \\left( \\frac{1^4}{4} - 0 \\right) = \\frac{1}{2} \\times \\frac{1}{4} = \\frac{1}{8} \\] \n\nAlternatively, we could integrate with respect to \\( x \\) first. The region is bounded by \\( x=y \\) and \\( x=1 \\) for \\( y \\) from 0 to 1. \n\n\\[ \\iint_R x y \\, dA = \\int_0^1 \\int_y^1 x y \\, dx \\, dy \\] \n\nInner integral with respect to \\( x \\):\n\n\\[ \\int_y^1 x y \\, dx = y \\left[ \\frac{x^2}{2} \\right]_y^1 = y \\left( \\frac{1^2}{2} - \\frac{y^2}{2} \\right) = \\frac{y}{2} - \\frac{y^3}{2} \\] \n\nOuter integral with respect to \\( y \\):\n\n\\[ \\int_0^1 \\left( \\frac{y}{2} - \\frac{y^3}{2} \\right) \\, dy = \\left[ \\frac{y^2}{4} - \\frac{y^4}{8} \\right]_0^1 = \\left( \\frac{1^2}{4} - \\frac{1^4}{8} \\right) - (0-0) = \\frac{1}{4} - \\frac{1}{8} = \\frac{2}{8} - \\frac{1}{8} = \\frac{1}{8} \\] \n\nBoth methods yield the same result.",
+          "choices": [
+            "1/12",
+            "1/6",
+            "1/8",
+            "1/4"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "labels": [
+              "O",
+              "A",
+              "B"
+            ],
+            "sides": [
+              "1",
+              "1",
+              "√2"
+            ],
+            "angles": [
+              "45°",
+              "",
+              "45°"
+            ],
+            "right": 1
+          }
+        },
+        {
+          "q": "Consider the region \\(R\\) in the first quadrant bounded by the x-axis, the y-axis, and the line \\( y = -2x + 6 \\). We are interested in evaluating the double integral \\( \\iint_R f(x, y) \\, dA \\) where \\( f(x, y) = x + y \\). However, the integral is set up in polar coordinates as \\( \\int_{\\alpha}^{\\beta} \\int_{r_1(\\theta)}^{r_2(\\theta)} f(r \\cos \\theta, r \\sin \\theta) \\cdot r \\, dr \\, d\\theta \\). If this integral is evaluated from \\( \\theta = 0 \\) to \\( \\theta = \\frac{\\pi}{2} \\), and the inner integral bounds are \\( r_1(\\theta) = 0 \\) and \\( r_2(\\theta) = \\frac{6}{\\sin \\theta + 2 \\cos \\theta} \\), and the outer integral is \\( \\int_{0}^{\\pi/2} \\int_{0}^{\\frac{6}{\\sin \\theta + 2 \\cos \\theta}} (r \\cos \\theta + r \\sin \\theta) \\cdot r \\, dr \\, d\\theta \\), determine the value of \\( \\alpha \\) and \\( \\beta \\) that correspond to the description of region \\(R\\) in polar coordinates for \\( 0 \\le \\theta \\le \\frac{\\pi}{2} \\).",
+          "answer": "The region R is in the first quadrant, bounded by the x-axis (\\( y=0 \\)), the y-axis (\\( x=0 \\)), and the line \\( y = -2x + 6 \\). When \\( x=0 \\), \\( y=6 \\). When \\( y=0 \\), \\( 2x=6 \\), so \\( x=3 \\). The vertices of the region are \\( (0,0), (3,0), (0,6) \\). In polar coordinates, \\( x = r \\cos \\theta \\) and \\( y = r \\sin \\theta \\). The line \\( y = -2x + 6 \\) becomes \\( r \\sin \\theta = -2 r \\cos \\theta + 6 \\). Rearranging for \\( r \\), we get \\( r(\\sin \\theta + 2 \\cos \\theta) = 6 \\), so \\( r = \\frac{6}{\\sin \\theta + 2 \\cos \\theta} \\). The first quadrant is defined by \\( 0 \\le \\theta \\le \\frac{\\pi}{2} \\). The radial bounds for the integration in polar coordinates are from the origin \\( r=0 \\) to the boundary line. Since the region is entirely within the first quadrant, the angular bounds for the integration are \\( \\alpha = 0 \\) and \\( \\beta = \\frac{\\pi}{2} \\). The given integral setup correctly reflects these bounds.",
+          "choices": [
+            "\\( \\alpha = 0, \\beta = \\frac{\\pi}{4} \\)",
+            "\\( \\alpha = 0, \\beta = \\frac{3\\pi}{4} \\)",
+            "\\( \\alpha = 0, \\beta = \\frac{\\pi}{2} \\)",
+            "\\( \\alpha = \\frac{\\pi}{4}, \\beta = \\frac{\\pi}{2} \\)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "labels": [
+              "O",
+              "A",
+              "B"
+            ],
+            "sides": [
+              "3",
+              "y = -2x + 6",
+              "6"
+            ],
+            "angles": [
+              "",
+              "",
+              ""
+            ],
+            "right": 0
+          }
+        },
+        {
+          "q": "Consider the region \\(R\\) in the \\(xy\\)-plane defined by \\(0 \\le x \\le 1\\) and \\(0 \\le y \\le x^2\\). Evaluate the double integral \\( \\iint_R y \\, dA \\).",
+          "answer": "The double integral can be evaluated using Fubini's Theorem as an iterated integral. The region of integration is described by \\(0 \\le x \\le 1\\) and \\(0 \\le y \\le x^2\\). Therefore, the integral is set up as:\n\\[ \\int_{0}^{1} \\int_{0}^{x^2} y \\, dy \\, dx \\]\nFirst, we integrate with respect to \\(y\\):\n\\[ \\int_{0}^{x^2} y \\, dy = \\left[ \\frac{y^2}{2} \\right]_{0}^{x^2} = \\frac{(x^2)^2}{2} - \\frac{0^2}{2} = \\frac{x^4}{2} \\]\nNow, we integrate the result with respect to \\(x\\):\n\\[ \\int_{0}^{1} \\frac{x^4}{2} \\, dx = \\frac{1}{2} \\int_{0}^{1} x^4 \\, dx = \\frac{1}{2} \\left[ \\frac{x^5}{5} \\right]_{0}^{1} = \\frac{1}{2} \\left( \\frac{1^5}{5} - \\frac{0^5}{5} \\right) = \\frac{1}{2} \\left( \\frac{1}{5} \\right) = \\frac{1}{10} \\]",
+          "choices": [
+            "\\(\\frac{1}{12}\\)",
+            "\\(\\frac{1}{8}\\)",
+            "\\(\\frac{1}{6}\\)",
+            "\\(\\frac{1}{10}\\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Find \\( \\nabla f(-5,-5) \\) for \\( f(x,y)=9 x^{2} + 6 y^{2} \\).",
+          "answer": "\\( \\nabla f=(18 x,12 y) \\), so \\( \\nabla f(-5,-5)=(-90, -60) \\).",
+          "choices": [
+            "(90, 60)",
+            "(-60, -90)",
+            "(-90, -60)",
+            "(-45, -30)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "9",
+                "6",
+                "15"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Deduce \\( \\nabla f(-2,5) \\) for \\( f(x,y)=2 x^{2} + 8 y^{2} \\).",
+          "answer": "\\( \\nabla f=(4 x,16 y) \\), so \\( \\nabla f(-2,5)=(-8, 80) \\).",
+          "choices": [
+            "(8, -80)",
+            "(80, -8)",
+            "(-8, 80)",
+            "(-4, 40)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "2",
+                "8",
+                "10"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Obtain \\( \\nabla f(-1,3) \\) for \\( f(x,y)=8 x^{2} + 9 y^{2} \\).",
+          "answer": "\\( \\nabla f=(16 x,18 y) \\), so \\( \\nabla f(-1,3)=(-16, 54) \\).",
+          "choices": [
+            "(16, -54)",
+            "(54, -16)",
+            "(-16, 54)",
+            "(-8, 27)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "8",
+                "9",
+                "17"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Identify \\( \\nabla f(-2,3) \\) for \\( f(x,y)=2 x^{2} + 8 y^{2} \\).",
+          "answer": "\\( \\nabla f=(4 x,16 y) \\), so \\( \\nabla f(-2,3)=(-8, 48) \\).",
+          "choices": [
+            "(8, -48)",
+            "(48, -8)",
+            "(-4, 24)",
+            "(-8, 48)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "2",
+                "8",
+                "10"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Identify \\( \\nabla f(-3,-2) \\) for \\( f(x,y)=9 x^{2} + 4 y^{2} \\).",
+          "answer": "\\( \\nabla f=(18 x,8 y) \\), so \\( \\nabla f(-3,-2)=(-54, -16) \\).",
+          "choices": [
+            "(-16, -54)",
+            "(-54, -16)",
+            "(-27, -8)",
+            "(54, 16)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "9",
+                "4",
+                "13"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Compute \\( \\nabla f(4,6) \\) for \\( f(x,y)=7 x^{2} + 5 y^{2} \\).",
+          "answer": "\\( \\nabla f=(14 x,10 y) \\), so \\( \\nabla f(4,6)=(56, 60) \\).",
+          "choices": [
+            "(-56, -60)",
+            "(56, 60)",
+            "(60, 56)",
+            "(28, 30)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "7",
+                "5",
+                "12"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Find \\( \\nabla f(-1,-2) \\) for \\( f(x,y)=5 x^{2} y + 3 x y^{2} \\).",
+          "answer": "\\( f_x=10 x y + 3 y^{2} \\), \\( f_y=5 x^{2} + 6 x y \\), so \\( \\nabla f(-1,-2)=(32, 17) \\).",
+          "choices": [
+            "(20, 12)",
+            "(17, 32)",
+            "(-32, -17)",
+            "(32, 17)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "0",
+                "0",
+                "8"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Find \\( \\nabla f(-4,3) \\) for \\( f(x,y)=5 x^{2} y + x y^{2} \\).",
+          "answer": "\\( f_x=10 x y + y^{2} \\), \\( f_y=5 x^{2} + 2 x y \\), so \\( \\nabla f(-4,3)=(-111, 56) \\).",
+          "choices": [
+            "(56, -111)",
+            "(111, -56)",
+            "(-111, 56)",
+            "(-120, -24)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "caption": "Sample Surface Values f(x, y)",
+            "headers": [
+              "(x, y)",
+              "(0, 0)",
+              "(1, 0)",
+              "(0, 1)",
+              "(1, 1)"
+            ],
+            "rows": [
+              [
+                "f(x, y)",
+                "0",
+                "0",
+                "0",
+                "6"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "Calculate \\( \\nabla f(1,1) \\) for \\( f(x,y)=5 x^{2} y + 2 x y^{2} \\).",
+          "answer": "\\( f_x=10 x y + 2 y^{2} \\), \\( f_y=5 x^{2} + 4 x y \\), so \\( \\nabla f(1,1)=(12, 9) \\).",
+          "choices": [
+            "(12, 9)",
+            "(9, 12)",
+            "(-12, -9)",
+            "(10, 4)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Find \\( \\nabla f(1,-1) \\) for \\( f(x,y)=4 x^{2} y + x y^{2} \\).",
+          "answer": "\\( f_x=8 x y + y^{2} \\), \\( f_y=4 x^{2} + 2 x y \\), so \\( \\nabla f(1,-1)=(-7, 2) \\).",
+          "choices": [
+            "(-7, 2)",
+            "(-8, -2)",
+            "(2, -7)",
+            "(7, -2)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Obtain \\( \\nabla f(-1,4) \\) for \\( f(x,y)=5 x^{2} y + 4 x y^{2} \\).",
+          "answer": "\\( f_x=10 x y + 4 y^{2} \\), \\( f_y=5 x^{2} + 8 x y \\), so \\( \\nabla f(-1,4)=(24, -27) \\).",
+          "choices": [
+            "(-27, 24)",
+            "(-24, 27)",
+            "(-40, -32)",
+            "(24, -27)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Compute \\( \\nabla f(-1,-1) \\) for \\( f(x,y)=4 x^{2} y + 2 x y^{2} \\).",
+          "answer": "\\( f_x=8 x y + 2 y^{2} \\), \\( f_y=4 x^{2} + 4 x y \\), so \\( \\nabla f(-1,-1)=(10, 8) \\).",
+          "choices": [
+            "(8, 4)",
+            "(8, 10)",
+            "(10, 8)",
+            "(-10, -8)"
+          ],
+          "correct": 2
         }
       ]
     }

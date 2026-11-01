@@ -38,17 +38,31 @@ function jsonError(message: string, status: number): Response {
 const tokenHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   if (req.method !== "POST") return jsonError("POST only", 405);
 
-  const { data: row, error: readErr } = await ctx.supabaseAdmin
-    .from("google_oauth_tokens")
-    .select("refresh_token")
-    .eq("user_id", ctx.userClaims.id)
-    .maybeSingle();
+  // Read decrypted Google refresh token from Supabase Vault (pgsodium AEAD) via service_role RPC,
+  // with fallback to legacy column only if migration 20261101120000 has not yet been applied.
+  let refreshToken: string | null = null;
+  const { data: vaultToken, error: vaultErr } = await ctx.supabaseAdmin.rpc(
+    "get_google_refresh_token_admin",
+    { p_user_id: ctx.userClaims.id },
+  );
 
-  if (readErr) {
-    console.error("google_oauth_tokens read failed:", readErr);
-    return jsonError("Could not look up your Google connection", 500);
+  if (!vaultErr && typeof vaultToken === "string" && vaultToken.length > 0) {
+    refreshToken = vaultToken;
+  } else {
+    const { data: row, error: readErr } = await ctx.supabaseAdmin
+      .from("google_oauth_tokens")
+      .select("refresh_token")
+      .eq("user_id", ctx.userClaims.id)
+      .maybeSingle();
+
+    if (readErr) {
+      console.error("google_oauth_tokens read failed:", readErr);
+      return jsonError("Could not look up your Google connection", 500);
+    }
+    refreshToken = row?.refresh_token || null;
   }
-  if (!row) {
+
+  if (!refreshToken) {
     return jsonError("No Google account linked to this session", 404);
   }
 
@@ -66,7 +80,7 @@ const tokenHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
       body: new URLSearchParams({
         client_id: GOOGLE_CLIENT_ID,
         client_secret: clientSecret,
-        refresh_token: row.refresh_token,
+        refresh_token: refreshToken,
         grant_type: "refresh_token",
       }),
     });
@@ -79,7 +93,9 @@ const tokenHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
 
   if (!upstream.ok) {
     if ((data as any)?.error === "invalid_grant") {
-      await ctx.supabaseAdmin.from("google_oauth_tokens").delete().eq("user_id", ctx.userClaims.id);
+      await ctx.supabaseAdmin
+        .rpc("delete_google_refresh_token_admin", { p_user_id: ctx.userClaims.id })
+        .catch(() => ctx.supabaseAdmin.from("google_oauth_tokens").delete().eq("user_id", ctx.userClaims.id));
     }
     console.error("Google token refresh failed:", upstream.status, data);
     return jsonError((data as any)?.error_description || (data as any)?.error || "Google token refresh failed", 502);

@@ -118,6 +118,193 @@
           ],
           "correct": 0,
           "answer": "We solve the problem in two steps by first determining \\( \\cos(B) \\) and then applying the Law of Cosines to find \\( AC \\).\n\n**Step 1: Find \\( \\cos(B) \\)**\nUsing the double-angle identity for cosine:\n\\[ \\cos(2B) = 2\\cos^2(B) - 1 \\]\nSubstitute the given value \\( \\cos(2B) = -\\frac{31}{32} \\):\n\\[ -\\frac{31}{32} = 2\\cos^2(B) - 1 \\]\n\\[ 2\\cos^2(B) = 1 - \\frac{31}{32} = \\frac{1}{32} \\]\n\\[ \\cos^2(B) = \\frac{1}{64} \\]\nSince \\( \\angle B \\) is acute (\\( 0^\\circ < B < 90^\\circ \\)), \\( \\cos(B) > 0 \\):\n\\[ \\cos(B) = \\frac{1}{8} \\]\n\n**Step 2: Apply the Law of Cosines**\nIn \\( \\triangle ABC \\), the side opposite \\( \\angle B \\) is \\( AC \\):\n\\[ AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(B) \\]\nSubstitute \\( AB = 5 \\), \\( BC = 4 \\), and \\( \\cos(B) = \\frac{1}{8} \\):\n\\[ AC^2 = 5^2 + 4^2 - 2(5)(4)\\left(\\frac{1}{8}\\right) \\]\n\\[ AC^2 = 25 + 16 - \\frac{40}{8} = 41 - 5 = 36 \\]\nTaking the principal square root gives:\n\\[ AC = 6 \\]\n\n**Common Traps:**\n- \\( \\sqrt{46} \\) arises from using an incorrect sign in the Law of Cosines (\\( 41 + 5 = 46 \\)) or erroneously setting \\( \\cos(B) = -\\frac{1}{8} \\).\n- \\( \\sqrt{41} \\) comes from assuming \\( \\triangle ABC \\) is a right triangle and applying the Pythagorean theorem directly (\\( \\sqrt{5^2 + 4^2} \\)).\n- \\( \\sqrt{31} \\) results from an arithmetic error such as computing \\( \\cos(B) = \\frac{1}{4} \\) instead of \\( \\frac{1}{8} \\)."
+        },
+        {
+          "q": "In the polar coordinate plane, a curve is defined by the equation \\( r = 6\\cos\\theta + 8\\sin\\theta \\). Two rays emanating from the pole at angles \\( \\theta = \\alpha \\) and \\( \\theta = \\alpha + \\frac{\\pi}{2} \\) intersect the curve at points \\( P \\neq O \\) and \\( Q \\neq O \\), respectively, where \\( O \\) denotes the pole. Assuming \\( \\alpha \\) is chosen such that both \\( P \\) and \\( Q \\) have positive radial coordinates, what is the maximum possible area of \\( \\triangle OPQ \\)?",
+          "answer": "We can solve this problem using either trigonometric synthesis or coordinate geometry.\n\n**Method 1: Trigonometric Synthesis**\nThe radial coordinates of \\( P \\) and \\( Q \\) along their respective rays are:\n\\[ r_1 = 6\\cos\\alpha + 8\\sin\\alpha \\]\n\\[ r_2 = 6\\cos\\left(\\alpha + \\frac{\\pi}{2}\\right) + 8\\sin\\left(\\alpha + \\frac{\\pi}{2}\\right) = -6\\sin\\alpha + 8\\cos\\alpha \\]\nSince the angle between the two rays is \\( \\left(\\alpha + \\frac{\\pi}{2}\\right) - \\alpha = \\frac{\\pi}{2} \\), \\( \\triangle OPQ \\) is a right-angled triangle at the pole \\( O \\). Its area is:\n\\[ \\text{Area} = \\frac{1}{2} r_1 r_2 = \\frac{1}{2}(6\\cos\\alpha + 8\\sin\\alpha)(8\\cos\\alpha - 6\\sin\\alpha) \\]\nExpanding the product:\n\\[ (6\\cos\\alpha + 8\\sin\\alpha)(8\\cos\\alpha - 6\\sin\\alpha) = 48\\cos^2\\alpha - 36\\sin\\alpha\\cos\\alpha + 64\\sin\\alpha\\cos\\alpha - 48\\sin^2\\alpha \\]\n\\[ = 48(\\cos^2\\alpha - \\sin^2\\alpha) + 28\\sin\\alpha\\cos\\alpha = 48\\cos(2\\alpha) + 14\\sin(2\\alpha) \\]\nMultiplying by \\( \\frac{1}{2} \\):\n\\[ \\text{Area}(\\alpha) = 24\\cos(2\\alpha) + 7\\sin(2\\alpha) \\]\nFor any expression of the form \\( A\\cos\\phi + B\\sin\\phi \\), the maximum value is \\( \\sqrt{A^2 + B^2} \\):\n\\[ \\text{Maximum Area} = \\sqrt{24^2 + 7^2} = \\sqrt{576 + 49} = \\sqrt{625} = 25 \\]\n\nAt this maximum, \\( \\cos(2\\alpha) = \\frac{24}{25} \\) and \\( \\sin(2\\alpha) = \\frac{7}{25} \\), which yields \\( r_1 = r_2 = 5\\sqrt{2} > 0 \\), satisfying the conditions.\n\n**Method 2: Geometric Synthesis**\nMultiplying \\( r = 6\\cos\\theta + 8\\sin\\theta \\) by \\( r \\) yields:\n\\[ r^2 = 6r\\cos\\theta + 8r\\sin\\theta \\implies x^2 + y^2 - 6x - 8y = 0 \\implies (x - 3)^2 + (y - 4)^2 = 25 \\]\nThis is a circle with diameter \\( D = 2\\sqrt{25} = 10 \\) passing through the pole \\( O(0,0) \\). Because \\( \\angle POQ = \\frac{\\pi}{2} \\) is an inscribed angle in the circle, the hypotenuse \\( PQ \\) must be a diameter of the circle, so \\( PQ = 10 \\). The maximum area of any right triangle with hypotenuse \\( c \\) is \\( \\frac{1}{4}c^2 \\):\n\\[ \\text{Area}_{\\max} = \\frac{1}{4}(10)^2 = 25 \\]\n\n**Misconception Analysis:**\n- Choice B (24) occurs if one mistakenly ignores the sine term and maximizes only \\( 24\\cos(2\\alpha) \\).\n- Choice C (48) and Choice D (50) occur if one forgets the factor of \\( \\frac{1}{2} \\) in the triangle area formula \\( \\frac{1}{2}ab \\).",
+          "choices": [
+            "25",
+            "24",
+            "48",
+            "50"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "In the standard \\((x, y)\\)-coordinate plane, what are the rectangular coordinates of the point with polar coordinates \\((r, \\theta) = \\left(6, \\frac{5\\pi}{6}\\right)\\)?",
+          "answer": "To convert from polar coordinates \\((r, \\theta)\\) to rectangular coordinates \\((x, y)\\), use the conversion formulas:\n\\[\nx = r \\cos\\theta \\quad \\text{and} \\quad y = r \\sin\\theta\n\\]\nGiven \\(r = 6\\) and \\(\\theta = \\frac{5\\pi}{6}\\):\n\\[\nx = 6 \\cos\\left(\\frac{5\\pi}{6}\\right) = 6 \\left(-\\frac{\\sqrt{3}}{2}\\right) = -3\\sqrt{3}\n\\]\n\\[\ny = 6 \\sin\\left(\\frac{5\\pi}{6}\\right) = 6 \\left(\\frac{1}{2}\\right) = 3\n\\]\nThus, the rectangular coordinates are \\((-3\\sqrt{3}, 3)\\).\n\n- Choice A \\((-3, 3\\sqrt{3})\\) results from inadvertently reversing the sine and cosine components (calculating \\(x = r \\sin\\theta\\) and \\(y = r \\cos\\theta\\)).\n- Choice C \\((3\\sqrt{3}, -3)\\) results from applying Quadrant IV signs instead of Quadrant II signs.\n- Choice D \\((-3\\sqrt{3}, -3)\\) results from incorrectly treating both coordinates as negative (Quadrant III).",
+          "choices": [
+            "\\((-3, 3\\sqrt{3})\\)",
+            "\\((3\\sqrt{3}, -3)\\)",
+            "\\((-3\\sqrt{3}, 3)\\)",
+            "\\((-3\\sqrt{3}, -3)\\)"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Find \\( \\sin(30^\\circ) \\).",
+          "answer": "\\( \\sin(30^\\circ)=\\dfrac12 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "1",
+            "\\(-\\dfrac12\\)",
+            "\\(-\\dfrac{\\sqrt3}{2}\\)",
+            "\\(\\dfrac12\\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Find \\( \\cos(180^\\circ) \\).",
+          "answer": "\\( \\cos(180^\\circ)=-1 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "0",
+            "-1",
+            "\\(-\\dfrac{\\sqrt2}{2}\\)",
+            "\\(\\dfrac{\\sqrt2}{2}\\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Calculate \\( \\cos(45^\\circ) \\).",
+          "answer": "\\( \\cos(45^\\circ)=\\dfrac{\\sqrt2}{2} \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(\\dfrac{\\sqrt2}{2}\\)",
+            "\\(\\dfrac12\\)",
+            "1",
+            "\\(\\dfrac{\\sqrt3}{2}\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Calculate \\( \\sin(270^\\circ) \\).",
+          "answer": "\\( \\sin(270^\\circ)=-1 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "-1",
+            "\\(\\dfrac{\\sqrt3}{2}\\)",
+            "0",
+            "\\(\\dfrac12\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Compute \\( \\cos(300^\\circ) \\).",
+          "answer": "\\( \\cos(300^\\circ)=\\dfrac12 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "0",
+            "\\(\\dfrac{\\sqrt2}{2}\\)",
+            "\\(-\\dfrac12\\)",
+            "\\(\\dfrac12\\)"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Compute \\( \\sin(225^\\circ) \\).",
+          "answer": "\\( \\sin(225^\\circ)=-\\dfrac{\\sqrt2}{2} \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "0",
+            "\\(-\\dfrac{\\sqrt2}{2}\\)",
+            "\\(-\\dfrac12\\)",
+            "\\(-\\dfrac{\\sqrt3}{2}\\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Deduce \\( \\sin(210^\\circ) \\).",
+          "answer": "\\( \\sin(210^\\circ)=-\\dfrac12 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "1",
+            "\\(-\\dfrac12\\)",
+            "\\(\\dfrac{\\sqrt2}{2}\\)",
+            "-1"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Obtain \\( \\sin(180^\\circ) \\).",
+          "answer": "\\( \\sin(180^\\circ)=0 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(\\dfrac12\\)",
+            "\\(-\\dfrac{\\sqrt2}{2}\\)",
+            "\\(\\dfrac{\\sqrt2}{2}\\)",
+            "0"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Deduce \\( \\cos(90^\\circ) \\).",
+          "answer": "\\( \\cos(90^\\circ)=0 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(-\\dfrac12\\)",
+            "0",
+            "-1",
+            "1"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Obtain \\( \\cos(120^\\circ) \\).",
+          "answer": "\\( \\cos(120^\\circ)=-\\dfrac12 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(-\\dfrac12\\)",
+            "\\(\\dfrac12\\)",
+            "-1",
+            "\\(-\\dfrac{\\sqrt2}{2}\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Identify \\( \\cos(30^\\circ) \\).",
+          "answer": "\\( \\cos(30^\\circ)=\\dfrac{\\sqrt3}{2} \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(-\\dfrac{\\sqrt2}{2}\\)",
+            "\\(\\dfrac{\\sqrt3}{2}\\)",
+            "\\(-\\dfrac12\\)",
+            "\\(-\\dfrac{\\sqrt3}{2}\\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Identify \\( \\sin(90^\\circ) \\).",
+          "answer": "\\( \\sin(90^\\circ)=1 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(-\\dfrac{\\sqrt3}{2}\\)",
+            "1",
+            "\\(-\\dfrac12\\)",
+            "-1"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Establish \\( \\sin(0^\\circ) \\).",
+          "answer": "\\( \\sin(0^\\circ)=0 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(\\dfrac{\\sqrt3}{2}\\)",
+            "0",
+            "-1",
+            "\\(-\\dfrac{\\sqrt3}{2}\\)"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Determine \\( \\sin(300^\\circ) \\).",
+          "answer": "\\( \\sin(300^\\circ)=-\\dfrac{\\sqrt3}{2} \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(\\dfrac{\\sqrt3}{2}\\)",
+            "\\(-\\dfrac{\\sqrt3}{2}\\)",
+            "\\(-\\dfrac{\\sqrt2}{2}\\)",
+            "1"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Establish \\( \\cos(240^\\circ) \\).",
+          "answer": "\\( \\cos(240^\\circ)=-\\dfrac12 \\) (reference-angle / unit-circle value).",
+          "choices": [
+            "\\(-\\dfrac12\\)",
+            "1",
+            "-1",
+            "\\(\\dfrac12\\)"
+          ],
+          "correct": 0
         }
       ]
     }

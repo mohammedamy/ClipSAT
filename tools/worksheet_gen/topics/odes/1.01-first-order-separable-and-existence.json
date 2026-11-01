@@ -151,6 +151,298 @@
           ],
           "correct": 0,
           "answer": "Substituting \\( s = 20 \\) gives \\( \\frac{170}{20 - 19} = 170 \\)."
+        },
+        {
+          "q": "Consider the separable differential equation \\( \\dfrac{dy}{dx} = ky \\) where \\( k \\) is a positive constant. A solution curve passes through the points \\( (0, 5) \\) and \\( (2, 20) \\). Determine the value of \\( k \\) and then find the value of \\( y \\) when \\( x = 3 \\).",
+          "answer": "The differential equation \\( \\dfrac{dy}{dx} = ky \\) is separable. Separating variables gives \\( \\frac{dy}{y} = k \\, dx \\). Integrating both sides, we get \\( \\int \\frac{dy}{y} = \\int k \\, dx \\), which yields \\( \\ln|y| = kx + C_1 \\). Exponentiating both sides gives \\( |y| = e^{kx+C_1} = e^{C_1}e^{kx} \\). Let \\( C = \\pm e^{C_1} \\), so \\( y = Ce^{kx} \\). \\n\\nWe are given that the solution curve passes through \\( (0, 5) \\). Substituting these values into \\( y = Ce^{kx} \\): \\( 5 = Ce^{k(0)} \\Rightarrow 5 = C \\). Thus, the particular solution is \\( y = 5e^{kx} \\). \\n\\nWe are also given that the solution curve passes through \\( (2, 20) \\). Substituting these values into \\( y = 5e^{kx} \\): \\( 20 = 5e^{k(2)} \\Rightarrow 4 = e^{2k} \\). Taking the natural logarithm of both sides: \\( \\ln 4 = \\ln(e^{2k}) \\Rightarrow \\ln 4 = 2k \\Rightarrow k = \\dfrac{\\ln 4}{2} = \\dfrac{2 \\ln 2}{2} = \\ln 2 \\). \\n\\nSo, the value of \\( k \\) is \\( \\ln 2 \\). The particular solution is \\( y = 5e^{(\\ln 2)x} = 5(e^{\\ln 2})^x = 5(2^x) \\). \\n\\nFinally, we need to find the value of \\( y \\) when \\( x = 3 \\). Substituting \\( x = 3 \\) into \\( y = 5(2^x) \\): \\( y(3) = 5(2^3) = 5(8) = 40 \\). \\n\\nTherefore, \\( k = \\ln 2 \\) and \\( y(3) = 40 \\).",
+          "choices": [
+            "\\( k = \\ln 2, y(3) = 40 \\)",
+            "\\( k = 2 \\ln 2, y(3) = 40 \\)",
+            "\\( k = \\ln 4, y(3) = 80 \\)",
+            "\\( k = \\ln 2, y(3) = 20 \\sqrt{2} \\)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -2,
+              4
+            ],
+            "yrange": [
+              -2,
+              22
+            ],
+            "fns": [
+              {
+                "fn": "7.5*x + (5)",
+                "color": "var(--fig-indigo)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              },
+              {
+                "x": 2,
+                "y": 20,
+                "label": "(2, 20)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The second-order linear homogeneous ODE \\( h''(u) - 42h'(u) + 272h(u) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "answer": "From \\( \\lambda^2 - 42\\lambda + 272 = 0 \\), the sum of roots is \\( 42 \\).",
+          "choices": [
+            "45",
+            "50",
+            "23",
+            "42"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Consider the separable differential equation \\(\\frac{dy}{dx} = \\frac{2x}{y}\\) with the initial condition \\(y(1) = 2\\). Find the value of \\(y(3)\\).",
+          "answer": "The differential equation is separable: \\(y dy = 2x dx\\).\nIntegrate both sides: \\(\\int y dy = \\int 2x dx\\).\nThis gives \\(\\frac{1}{2}y^2 = x^2 + C\\).\nUse the initial condition \\(y(1) = 2\\) to find C: \\(\\frac{1}{2}(2)^2 = (1)^2 + C \\implies 2 = 1 + C \\implies C = 1\\).\nSo, the solution is \\(\\frac{1}{2}y^2 = x^2 + 1\\), which means \\(y^2 = 2x^2 + 2\\), and \\(y = \\sqrt{2x^2 + 2}\\) (since \\(y(1) = 2 > 0\\)).\nNow, find \\(y(3)\\): \\(y(3) = \\sqrt{2(3)^2 + 2} = \\sqrt{2(9) + 2} = \\sqrt{18 + 2} = \\sqrt{20} = 2\\sqrt{5}\\).",
+          "choices": [
+            "\\(2 \\sqrt{5}\\)",
+            "\\(2 \\sqrt{3}\\)",
+            "\\(2 \\sqrt{2}\\)",
+            "\\(4\\)"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Consider the differential equation \\(\\frac{dy}{dx} = kx(y^2 - 1)\\), where \\(k\\) is a positive constant. If the solution passing through \\((1, 2)\\) also passes through \\((2, 3)\\), determine the value of the constant \\(k\\).",
+          "answer": "The given differential equation is separable: \\(\\frac{dy}{y^2 - 1} = kx \\, dx\\).\nIntegrating both sides:\n\\(\\int \\frac{dy}{y^2 - 1} = \\int kx \\, dx\\)\nUsing partial fractions for the left side, \\(\\frac{1}{y^2 - 1} = \\frac{1}{2} \\left( \\frac{1}{y-1} - \\frac{1}{y+1} \\right)\\).\nSo, \\(\\frac{1}{2} \\int \\left( \\frac{1}{y-1} - \\frac{1}{y+1} \\right) dy = \\frac{1}{2} \\ln\\left|\\frac{y-1}{y+1}\\right|\\).\nThe right side integrates to \\(\\frac{1}{2} kx^2 + C_1\\).\nThus, \\(\\frac{1}{2} \\ln\\left|\\frac{y-1}{y+1}\\right| = \\frac{1}{2} kx^2 + C_1\\), which simplifies to \\(\\ln\\left|\\frac{y-1}{y+1}\\right| = kx^2 + C\\), where \\(C = 2C_1\\).\nExponentiating both sides gives \\(\\left|\\frac{y-1}{y+1}\\right| = e^{kx^2 + C} = e^C e^{kx^2}\\). Let \\(A = \\pm e^C\\), then \\(\\frac{y-1}{y+1} = Ae^{kx^2}\\).\n\nWe are given that the solution passes through \\((1, 2)\\). Substitute these values:\n\\(\\frac{2-1}{2+1} = A e^{k(1)^2}\\)\n\\(\\frac{1}{3} = A e^k\\)\nSo, \\(A = \\frac{1}{3} e^{-k}\\).\n\nSubstitute \\(A\\) back into the general solution:\n\\(\\frac{y-1}{y+1} = \\frac{1}{3} e^{-k} e^{kx^2} = \\frac{1}{3} e^{k(x^2-1)}\\).\n\nWe are also given that the solution passes through \\((2, 3)\\). Substitute these values:\n\\(\\frac{3-1}{3+1} = \\frac{1}{3} e^{k(2^2-1)}\\)\n\\(\\frac{2}{4} = \\frac{1}{3} e^{k(3)}\\)\n\\(\\frac{1}{2} = \\frac{1}{3} e^{3k}\\)\nMultiply by 3: \\(\\frac{3}{2} = e^{3k}\\).\nTake the natural logarithm of both sides:\n\\(\\ln\\left(\\frac{3}{2}\\right) = 3k\\)\nSolve for \\(k\\): \\(k = \\frac{1}{3} \\ln\\left(\\frac{3}{2}\\right)\\).",
+          "choices": [
+            "\\(\\frac{1}{3} \\ln\\left(\\frac{3}{2}\\right)\\)",
+            "\\(\\frac{1}{4} \\ln\\left(\\frac{2}{3}\\right)\\)",
+            "\\(\\frac{1}{4} \\ln\\left(\\frac{3}{2}\\right)\\)",
+            "\\(\\frac{1}{3} \\ln\\left(\\frac{2}{3}\\right)\\)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": -1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The separable initial value problem \\( \\dfrac{dh}{du} = 30u \\) satisfies \\( h(0) = 3 \\). Determine the solution value \\( h(3) \\).",
+          "answer": "Integrating gives \\( h(u) = 15u^2 + 3 \\), so \\( h(3) = 138 \\).",
+          "choices": [
+            "141",
+            "138",
+            "153",
+            "135"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dh}{du} = 23u - 2h \\) has its slope field plotted below. Determine the slope \\( \\dfrac{dh}{du} \\) at the point \\( X(14, 4) \\).",
+          "answer": "Evaluating at \\( (14, 4) \\) gives \\( 23(14) - 2(4) = 314 \\).",
+          "choices": [
+            "317",
+            "310",
+            "337",
+            "314"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Consider the separable first-order differential equation \\(\\frac{dy}{dx} = \\frac{x^2}{2y}\\). If the solution passes through the point \\((2, \\sqrt{5})\\), find the explicit solution for \\(y(x)\\) assuming \\(y > 0\\).",
+          "answer": "Separating variables gives \\( 2y\\,dy = x^2\\,dx \\). Integrating both sides yields:\n\\[ y^2 = \\frac{x^3}{3} + C. \\]\nSubstituting \\( (2, \\sqrt{5}) \\) gives \\( 5 = \\frac{8}{3} + C \\implies C = \\frac{7}{3} \\). Since \\( y > 0 \\), \\( y = \\sqrt{\\frac{x^3}{3} + \\frac{7}{3}} \\).",
+          "choices": [
+            "\\(y = \\sqrt{\\frac{x^3}{3} + \\frac{7}{3}}\\)",
+            "\\(y = \\sqrt{\\frac{x^3}{3} + 2}\\)",
+            "\\(y = \\sqrt{\\frac{x^3}{3} + \\frac{2}{3}}\\)",
+            "\\(y = \\sqrt{\\frac{x^3}{3} + \\frac{5}{3}}\\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The separable initial value problem \\( \\dfrac{dU}{dv} = 28v \\) satisfies \\( U(0) = 9 \\). Determine the solution value \\( U(16) \\).",
+          "answer": "Integrating gives \\( U(v) = 14v^2 + 9 \\), so \\( U(16) = 3593 \\).",
+          "choices": [
+            "3584",
+            "3607",
+            "3596",
+            "3593"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "The separable initial value problem \\( \\dfrac{dP}{dr} = 34r \\) satisfies \\( P(0) = 8 \\). Determine the solution value \\( P(7) \\).",
+          "answer": "Integrating gives \\( P(r) = 17r^2 + 8 \\), so \\( P(7) = 841 \\).",
+          "choices": [
+            "858",
+            "844",
+            "841",
+            "833"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dR}{dm} = 9m - 5R \\) has its slope field plotted below. Compute the slope \\( \\dfrac{dR}{dm} \\) at the point \\( M(15, 24) \\).",
+          "answer": "Evaluating at \\( (15, 24) \\) gives \\( 9(15) - 5(24) = 15 \\).",
+          "choices": [
+            "18",
+            "-9",
+            "15",
+            "24"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dh}{du} = 21u - 3h \\) has its slope field plotted below. Compute the slope \\( \\dfrac{dh}{du} \\) at the point \\( X(18, 22) \\).",
+          "answer": "Evaluating at \\( (18, 22) \\) gives \\( 21(18) - 3(22) = 312 \\).",
+          "choices": [
+            "312",
+            "290",
+            "333",
+            "315"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{du}{ds} = 17s - 7u \\) has its slope field plotted below. Compute the slope \\( \\dfrac{du}{ds} \\) at the point \\( K(2, 24) \\).",
+          "answer": "Evaluating at \\( (2, 24) \\) gives \\( 17(2) - 7(24) = -134 \\).",
+          "choices": [
+            "-158",
+            "-117",
+            "-134",
+            "-131"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dF}{dw} = 12w - 4F \\) has its slope field plotted below. Compute the slope \\( \\dfrac{dF}{dw} \\) at the point \\( D(6, 4) \\).",
+          "answer": "Evaluating at \\( (6, 4) \\) gives \\( 12(6) - 4(4) = 56 \\).",
+          "choices": [
+            "52",
+            "59",
+            "68",
+            "56"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dM}{dz} = 11z - 1M \\) has its slope field plotted below. Compute the slope \\( \\dfrac{dM}{dz} \\) at the point \\( G(13, 26) \\).",
+          "answer": "Evaluating at \\( (13, 26) \\) gives \\( 11(13) - 1(26) = 117 \\).",
+          "choices": [
+            "120",
+            "91",
+            "117",
+            "128"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dS}{db} = 4b - 5S \\) has its slope field plotted below. Determine the slope \\( \\dfrac{dS}{db} \\) at the point \\( W(7, 17) \\).",
+          "answer": "Evaluating at \\( (7, 17) \\) gives \\( 4(7) - 5(17) = -57 \\).",
+          "choices": [
+            "-57",
+            "-53",
+            "-54",
+            "-74"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "slope_field",
+            "f": "x - y",
+            "xrange": [
+              -3,
+              3
+            ],
+            "yrange": [
+              -3,
+              3
+            ],
+            "curves": [
+              {
+                "x0": 0,
+                "y0": 1,
+                "color": "var(--fig-amber)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{dp}{dt} = 24t - 6p \\) has its slope field plotted below. Compute the slope \\( \\dfrac{dp}{dt} \\) at the point \\( P(17, 25) \\).",
+          "answer": "Evaluating at \\( (17, 25) \\) gives \\( 24(17) - 6(25) = 258 \\).",
+          "choices": [
+            "233",
+            "258",
+            "261",
+            "282"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "The first-order differential equation \\( \\dfrac{df}{dx} = 4x - 2f \\) has its slope field plotted below. Compute the slope \\( \\dfrac{df}{dx} \\) at the point \\( A(10, 21) \\).",
+          "answer": "Evaluating at \\( (10, 21) \\) gives \\( 4(10) - 2(21) = -2 \\).",
+          "choices": [
+            "-2",
+            "2",
+            "1",
+            "-23"
+          ],
+          "correct": 0
         }
       ]
     }

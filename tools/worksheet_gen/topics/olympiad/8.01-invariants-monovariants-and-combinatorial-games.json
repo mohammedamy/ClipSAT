@@ -139,6 +139,629 @@
           ],
           "correct": 3,
           "answer": "Compute the binary Nim-sum \\( X = 6 \\oplus 9 \\oplus 13 = 2 \\). To restore Nim-sum \\( 0 \\) by playing on the heap of size \\( 6 \\), its new size must be \\( 6 \\oplus 2 = 4 < 6 \\). Therefore, the player must remove \\( 6 - 4 = 2 \\) stones."
+        },
+        {
+          "q": "You begin with a single pile of \\( 6 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 2 \\) piles of \\( 3 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{6}{2} = 15 \\). Stopping at \\( 2 \\) piles of size \\( 3 \\) gives \\( \\text{Score} = \\binom{6}{2} - 2\\binom{3}{2} = 15 - 6 = 9 \\).",
+          "choices": [
+            "\\( 15 \\)",
+            "\\( 9 \\)",
+            "\\( 12 \\)",
+            "\\( 10 \\)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 6)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "6",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=6",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 9 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 3 \\) piles of \\( 3 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{9}{2} = 36 \\). Stopping at \\( 3 \\) piles of size \\( 3 \\) gives \\( \\text{Score} = \\binom{9}{2} - 3\\binom{3}{2} = 36 - 9 = 27 \\).",
+          "choices": [
+            "\\( 36 \\)",
+            "\\( 27 \\)",
+            "\\( 30 \\)",
+            "\\( 18 \\)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 9)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "9",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=9",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 12 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 4 \\) piles of \\( 3 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{12}{2} = 66 \\). Stopping at \\( 4 \\) piles of size \\( 3 \\) gives \\( \\text{Score} = \\binom{12}{2} - 4\\binom{3}{2} = 66 - 12 = 54 \\).",
+          "choices": [
+            "\\( 54 \\)",
+            "\\( 66 \\)",
+            "\\( 57 \\)",
+            "\\( 24 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 12)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "12",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=12",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 8 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 2 \\) piles of \\( 4 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{8}{2} = 28 \\). Stopping at \\( 2 \\) piles of size \\( 4 \\) gives \\( \\text{Score} = \\binom{8}{2} - 2\\binom{4}{2} = 28 - 12 = 16 \\).",
+          "choices": [
+            "\\( 22 \\)",
+            "\\( 24 \\)",
+            "\\( 28 \\)",
+            "\\( 16 \\)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 8)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "8",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=8",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 12 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 3 \\) piles of \\( 4 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{12}{2} = 66 \\). Stopping at \\( 3 \\) piles of size \\( 4 \\) gives \\( \\text{Score} = \\binom{12}{2} - 3\\binom{4}{2} = 66 - 18 = 48 \\).",
+          "choices": [
+            "\\( 66 \\)",
+            "\\( 54 \\)",
+            "\\( 36 \\)",
+            "\\( 48 \\)"
+          ],
+          "correct": 3,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 12)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "12",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=12",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 16 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 4 \\) piles of \\( 4 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{16}{2} = 120 \\). Stopping at \\( 4 \\) piles of size \\( 4 \\) gives \\( \\text{Score} = \\binom{16}{2} - 4\\binom{4}{2} = 120 - 24 = 96 \\).",
+          "choices": [
+            "\\( 96 \\)",
+            "\\( 120 \\)",
+            "\\( 102 \\)",
+            "\\( 48 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 16)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "16",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=16",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 10 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 2 \\) piles of \\( 5 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{10}{2} = 45 \\). Stopping at \\( 2 \\) piles of size \\( 5 \\) gives \\( \\text{Score} = \\binom{10}{2} - 2\\binom{5}{2} = 45 - 20 = 25 \\).",
+          "choices": [
+            "\\( 25 \\)",
+            "\\( 40 \\)",
+            "\\( 45 \\)",
+            "\\( 35 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 10)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "10",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=10",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 15 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 3 \\) piles of \\( 5 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{15}{2} = 105 \\). Stopping at \\( 3 \\) piles of size \\( 5 \\) gives \\( \\text{Score} = \\binom{15}{2} - 3\\binom{5}{2} = 105 - 30 = 75 \\).",
+          "choices": [
+            "\\( 75 \\)",
+            "\\( 105 \\)",
+            "\\( 85 \\)",
+            "\\( 60 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 15)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "15",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=15",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 20 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 4 \\) piles of \\( 5 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{20}{2} = 190 \\). Stopping at \\( 4 \\) piles of size \\( 5 \\) gives \\( \\text{Score} = \\binom{20}{2} - 4\\binom{5}{2} = 190 - 40 = 150 \\).",
+          "choices": [
+            "\\( 150 \\)",
+            "\\( 190 \\)",
+            "\\( 160 \\)",
+            "\\( 80 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 20)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "20",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=20",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 12 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 2 \\) piles of \\( 6 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{12}{2} = 66 \\). Stopping at \\( 2 \\) piles of size \\( 6 \\) gives \\( \\text{Score} = \\binom{12}{2} - 2\\binom{6}{2} = 66 - 30 = 36 \\).",
+          "choices": [
+            "\\( 66 \\)",
+            "\\( 36 \\)",
+            "\\( 51 \\)",
+            "\\( 60 \\)"
+          ],
+          "correct": 1,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 12)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "12",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=12",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 18 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 3 \\) piles of \\( 6 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{18}{2} = 153 \\). Stopping at \\( 3 \\) piles of size \\( 6 \\) gives \\( \\text{Score} = \\binom{18}{2} - 3\\binom{6}{2} = 153 - 45 = 108 \\).",
+          "choices": [
+            "\\( 108 \\)",
+            "\\( 153 \\)",
+            "\\( 123 \\)",
+            "\\( 90 \\)"
+          ],
+          "correct": 0,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 18)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "18",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=18",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 24 \\) stones (illustrated). Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 4 \\) piles of \\( 6 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{24}{2} = 276 \\). Stopping at \\( 4 \\) piles of size \\( 6 \\) gives \\( \\text{Score} = \\binom{24}{2} - 4\\binom{6}{2} = 276 - 60 = 216 \\).",
+          "choices": [
+            "\\( 120 \\)",
+            "\\( 276 \\)",
+            "\\( 216 \\)",
+            "\\( 231 \\)"
+          ],
+          "correct": 2,
+          "figure": {
+            "type": "network_graph",
+            "title": "Stone-Pile Splitting Potential (N = 24)",
+            "directed": true,
+            "nodes": [
+              {
+                "id": "Root",
+                "label": "24",
+                "x": 175,
+                "y": 55,
+                "highlight": true
+              },
+              {
+                "id": "L",
+                "label": "a",
+                "x": 95,
+                "y": 175
+              },
+              {
+                "id": "R",
+                "label": "b",
+                "x": 255,
+                "y": 175
+              }
+            ],
+            "edges": [
+              {
+                "from": "Root",
+                "to": "L",
+                "label": "+a·b",
+                "directed": true
+              },
+              {
+                "from": "Root",
+                "to": "R",
+                "label": "a+b=24",
+                "directed": true
+              }
+            ]
+          }
+        },
+        {
+          "q": "You begin with a single pile of \\( 14 \\) stones. Whenever you split any pile of \\( a + b \\) stones into two smaller piles of \\( a \\) and \\( b \\) stones, you earn \\( a \\cdot b \\) points. Suppose you perform an arbitrary sequence of splits that terminates with exactly \\( 2 \\) piles of \\( 7 \\) stones each. What is your total score?",
+          "answer": "Note the algebraic identity \\( \\binom{a + b}{2} - \\binom{a}{2} - \\binom{b}{2} = ab \\) (counting pairs with one stone in each sub-pile). Thus \\( \\text{Score} + \\sum \\binom{x_i}{2} \\) is a strict invariant equal to \\( \\binom{14}{2} = 91 \\). Stopping at \\( 2 \\) piles of size \\( 7 \\) gives \\( \\text{Score} = \\binom{14}{2} - 2\\binom{7}{2} = 91 - 42 = 49 \\).",
+          "choices": [
+            "\\( 91 \\)",
+            "\\( 70 \\)",
+            "\\( 49 \\)",
+            "\\( 84 \\)"
+          ],
+          "correct": 2
         }
       ]
     }
