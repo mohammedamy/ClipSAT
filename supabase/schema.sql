@@ -399,13 +399,22 @@ grant execute on function public.use_ai_quota(uuid, integer, integer, integer) t
 -- "the client can put a secret in, never take one back out" shape as
 -- ai_usage's write-only-in-effect design above, just for a different
 -- reason (that's a spend counter; this is an actual credential).
-create extension if not exists supabase_vault with schema vault;
+create schema if not exists vault;
+create schema if not exists extensions;
+create extension if not exists pgcrypto with schema extensions;
+do $$
+begin
+  execute 'create extension if not exists supabase_vault with schema vault';
+exception when others then
+  null;
+end $$;
 
 create table if not exists public.google_oauth_tokens (
-  user_id         uuid primary key references auth.users(id) on delete cascade,
-  refresh_token   text,
-  vault_secret_id uuid,
-  updated_at      timestamptz not null default now()
+  user_id                 uuid primary key references auth.users(id) on delete cascade,
+  refresh_token           text,
+  vault_secret_id         uuid,
+  encrypted_refresh_token bytea,
+  updated_at              timestamptz not null default now()
 );
 
 alter table public.google_oauth_tokens enable row level security;
