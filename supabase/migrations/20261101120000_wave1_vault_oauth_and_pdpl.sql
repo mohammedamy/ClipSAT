@@ -1,20 +1,17 @@
 -- Wave 1 Vault OAuth Encryption, RPC Hardening & K-12 PDPL/COPPA Compliance (2026-11-01)
--- 1. Create `vault` schema first and enable `supabase_vault` (with automatic `pgcrypto` AES-256
---    fallback if `supabase_vault` is not enabled under Integrations -> Vault on the cluster)
--- 2. Remove direct client INSERT/UPDATE policies on google_oauth_tokens; replace with encrypted RPCs
--- 3. Revoke anon from report_question_error & tighten snapshot constraint to 8 KB
--- 4. Cascade Vault / encrypted secret cleanup inside delete_my_account()
+-- Self-contained & idempotent: safe to run in full in the Supabase SQL Editor.
 
 create schema if not exists vault;
 create schema if not exists extensions;
 create extension if not exists pgcrypto with schema extensions;
 
-do $$
+do $fn$
 begin
   execute 'create extension if not exists supabase_vault with schema vault';
 exception when others then
   raise notice 'supabase_vault not available on this instance (%); using private pgcrypto AES-256 fallback.', sqlerrm;
-end $$;
+end;
+$fn$;
 
 -- Locked-down private key table used only if supabase_vault (vault.secrets) is absent
 create schema if not exists app_private;
@@ -28,13 +25,23 @@ create table if not exists app_private.oauth_cipher_keys (
 revoke all on table app_private.oauth_cipher_keys from public, anon, authenticated;
 insert into app_private.oauth_cipher_keys (id) values (1) on conflict (id) do nothing;
 
-alter table if exists public.google_oauth_tokens
+-- Ensure google_oauth_tokens exists with Vault + AES-256 columns and RLS enabled
+create table if not exists public.google_oauth_tokens (
+  user_id                 uuid primary key references auth.users(id) on delete cascade,
+  refresh_token           text,
+  vault_secret_id         uuid,
+  encrypted_refresh_token bytea,
+  updated_at              timestamptz not null default now()
+);
+alter table public.google_oauth_tokens enable row level security;
+
+alter table public.google_oauth_tokens
   add column if not exists vault_secret_id uuid,
   add column if not exists encrypted_refresh_token bytea,
   alter column refresh_token drop not null;
 
 -- Migrate any existing plaintext refresh_token rows into vault.secrets (or AES-256 fallback) and clear plaintext column
-do $$
+do $fn$
 declare
   r record;
   v_sid uuid;
@@ -68,7 +75,8 @@ begin
        where user_id = r.user_id;
     end if;
   end loop;
-end $$;
+end;
+$fn$;
 
 -- Drop direct client write policies so plaintext refresh_token can never be inserted directly
 drop policy if exists "user stores own google token" on public.google_oauth_tokens;
@@ -76,7 +84,11 @@ drop policy if exists "user replaces own google token" on public.google_oauth_to
 
 -- Authenticated user stores/rotates their own Google OAuth refresh token into Vault (or AES-256 fallback)
 create or replace function public.upsert_google_refresh_token(p_refresh_token text)
-returns void as $$
+returns void
+language plpgsql
+security definer
+set search_path = public, vault, extensions, app_private
+as $fn$
 declare
   v_uid uuid := auth.uid();
   v_existing_sid uuid;
@@ -115,14 +127,18 @@ begin
          encrypted_refresh_token = excluded.encrypted_refresh_token,
          updated_at = now();
 end;
-$$ language plpgsql security definer set search_path = public, vault, extensions, app_private;
+$fn$;
 
 revoke all on function public.upsert_google_refresh_token(text) from public, anon;
 grant execute on function public.upsert_google_refresh_token(text) to authenticated, service_role;
 
 -- Service-role-only reader for supabase/functions/google-token
 create or replace function public.get_google_refresh_token_admin(p_user_id uuid)
-returns text as $$
+returns text
+language plpgsql
+security definer
+set search_path = public, vault, extensions, app_private
+as $fn$
 declare
   v_sid uuid;
   v_cipher bytea;
@@ -151,14 +167,18 @@ begin
 
   return v_legacy;
 end;
-$$ language plpgsql security definer set search_path = public, vault, extensions, app_private;
+$fn$;
 
 revoke all on function public.get_google_refresh_token_admin(uuid) from public, anon, authenticated;
 grant execute on function public.get_google_refresh_token_admin(uuid) to service_role;
 
 -- Service-role-only cleanup when Google revokes a refresh token (invalid_grant)
 create or replace function public.delete_google_refresh_token_admin(p_user_id uuid)
-returns void as $$
+returns void
+language plpgsql
+security definer
+set search_path = public, vault
+as $fn$
 declare
   v_sid uuid;
 begin
@@ -172,10 +192,31 @@ begin
 
   delete from public.google_oauth_tokens where user_id = p_user_id;
 end;
-$$ language plpgsql security definer set search_path = public, vault;
+$fn$;
 
 revoke all on function public.delete_google_refresh_token_admin(uuid) from public, anon, authenticated;
 grant execute on function public.delete_google_refresh_token_admin(uuid) to service_role;
+
+-- Ensure question_error_flags exists with RLS enabled and no public SELECT policy
+create table if not exists public.question_error_flags (
+  flag_id           text primary key,
+  track             text not null,
+  topic_id          text,
+  source_type       text not null,
+  item_id           text not null,
+  category          text not null default 'other',
+  note              text,
+  question_snapshot jsonb not null default '{}'::jsonb,
+  content_signature text,
+  status            text not null default 'open',
+  report_count      integer not null default 1,
+  created_at        timestamptz not null default now(),
+  updated_at        timestamptz not null default now(),
+  resolved_at       timestamptz,
+  resolved_in_build text
+);
+alter table public.question_error_flags enable row level security;
+drop policy if exists "anyone reads question error flags" on public.question_error_flags;
 
 -- Tighten report_question_error: 8 KB snapshot constraint + authenticated/service_role only
 create or replace function public.report_question_error(
@@ -189,7 +230,11 @@ create or replace function public.report_question_error(
   p_question_snapshot jsonb default '{}'::jsonb,
   p_content_signature text default null
 )
-returns void as $$
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $fn$
 declare
   v_snap jsonb;
 begin
@@ -208,15 +253,15 @@ begin
     question_snapshot, content_signature, status, report_count, created_at, updated_at
   )
   values (
-    left(p_flag_id, 200),
-    left(coalesce(p_track, 'home'), 40),
-    left(p_topic_id, 80),
-    left(coalesce(p_source_type, 'question'), 60),
-    left(coalesce(p_item_id, ''), 120),
-    left(coalesce(p_category, 'other'), 40),
-    left(p_note, 1000),
+    substr(p_flag_id, 1, 200),
+    substr(coalesce(p_track, 'home'), 1, 40),
+    substr(p_topic_id, 1, 80),
+    substr(coalesce(p_source_type, 'question'), 1, 60),
+    substr(coalesce(p_item_id, ''), 1, 120),
+    substr(coalesce(p_category, 'other'), 1, 40),
+    substr(p_note, 1, 1000),
     v_snap,
-    left(p_content_signature, 64),
+    substr(p_content_signature, 1, 64),
     'open',
     1,
     now(),
@@ -226,14 +271,18 @@ begin
     report_count = least(public.question_error_flags.report_count + 1, 10000),
     updated_at   = now();
 end;
-$$ language plpgsql security definer set search_path = public;
+$fn$;
 
 revoke all on function public.report_question_error(text, text, text, text, text, text, text, jsonb, text) from public, anon;
 grant execute on function public.report_question_error(text, text, text, text, text, text, text, jsonb, text) to authenticated, service_role;
 
 -- Self-service PDPL / GDPR / COPPA erasure: purge Vault secret + cascade auth.users deletion
 create or replace function public.delete_my_account()
-returns void as $$
+returns void
+language plpgsql
+security definer
+set search_path = public, auth, vault
+as $fn$
 declare
   v_uid uuid := auth.uid();
   v_sid uuid;
@@ -249,7 +298,7 @@ begin
   end if;
   delete from auth.users where id = v_uid;
 end;
-$$ language plpgsql security definer set search_path = public, auth, vault;
+$fn$;
 
 revoke all on function public.delete_my_account() from public, anon;
 grant execute on function public.delete_my_account() to authenticated, service_role;
