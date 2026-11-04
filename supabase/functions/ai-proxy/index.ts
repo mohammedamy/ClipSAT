@@ -73,11 +73,7 @@ interface AttachmentPayload {
   filename?: string;
 }
 
-const DISALLOWED_PATTERNS = [
-  /ignore\s+(all\s+|any\s+)?(previous|prior|above|system|developer)\s+(instructions|rules|prompts)/i,
-  /disregard\s+(all\s+|any\s+)?(prior|previous|system|developer)/i,
-  /reveal\s+(your|the)\s+(system|developer|hidden|initial)\s+(prompt|instructions)/i,
-  /you\s+are\s+now\s+(dan|unrestricted|jailbroken|free\s+from\s+rules)/i,
+const XSS_PATTERNS = [
   /<\s*script[\s>]/i,
   /<\s*iframe[\s>]/i,
   /onerror\s*=/i,
@@ -85,9 +81,31 @@ const DISALLOWED_PATTERNS = [
   /javascript\s*:/i,
 ];
 
-function checkTextSafety(text: string): string | null {
-  for (const pattern of DISALLOWED_PATTERNS) {
+const INJECTION_PATTERNS = [
+  /ignore\s+(all\s+|any\s+)?(previous|prior|above|system|developer)\s+(instructions|rules|prompts)/i,
+  /disregard\s+(all\s+|any\s+)?(prior|previous|system|developer)\s+(instructions|rules|prompts)/i,
+  /reveal\s+(your|the)\s+(system|developer|hidden|initial)\s+(prompt|instructions)/i,
+  /you\s+are\s+now\s+(dan|unrestricted|jailbroken|free\s+from\s+rules)/i,
+];
+
+// Defensive anti-jailbreak clause inside ClipSAT's own client SYSTEM prompt
+// (03-ai-chat-and-practice-quiz.js) quotes "ignore all previous instructions"
+// as an example of what the tutor must NEVER obey. Strip only that defensive
+// clause on system messages before checking INJECTION_PATTERNS.
+const DEFENSIVE_SYSTEM_QUOTE_RE =
+  /even\s+if\s+the\s+user\s+commands\s+["“]ignore\s+all\s+previous\s+instructions["”]/gi;
+
+function checkTextSafety(text: string, role = "user"): string | null {
+  for (const pattern of XSS_PATTERNS) {
     if (pattern.test(text)) {
+      return "Message contains disallowed patterns or prompt injection.";
+    }
+  }
+  const normalized = role === "system"
+    ? text.replace(DEFENSIVE_SYSTEM_QUOTE_RE, "")
+    : text;
+  for (const pattern of INJECTION_PATTERNS) {
+    if (pattern.test(normalized)) {
       return "Message contains disallowed patterns or prompt injection.";
     }
   }
@@ -102,11 +120,11 @@ function checkContentSafety(
     if (m.role !== "user" && m.role !== "assistant" && m.role !== "system") {
       return "Invalid message role.";
     }
-    const violation = checkTextSafety(m.content);
+    const violation = checkTextSafety(m.content, m.role);
     if (violation) return violation;
   }
   if (attachment?.extracted_text) {
-    const violation = checkTextSafety(attachment.extracted_text);
+    const violation = checkTextSafety(attachment.extracted_text, "user");
     if (violation) return violation;
   }
   return null;
