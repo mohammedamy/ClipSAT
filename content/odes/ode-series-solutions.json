@@ -224,26 +224,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 8.A — Airy's Differential Equation",
           "ar": "مثال محلول 8.A — Airy's المعادلة التفاضلية"
         },
-        "body": {
-          "en": "<p>Find the power series solution about the ordinary point \\( x_0 = 0 \\) for Airy's equation: \\[ y'' - x y = 0. \\]</p><p><strong>Step 1: Series substitution:</strong> \\[ y'' = \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2}, \\qquad x y = \\sum_{n=0}^\\infty a_n x^{n+1}. \\] \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - \\sum_{n=0}^\\infty a_n x^{n+1} = 0. \\]</p><p><strong>Step 2: Shift indices to power \\( x^k \\):</strong><br>In first sum, let \\( k = n - 2 \\implies n = k + 2 \\): \\( \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k \\).<br>In second sum, let \\( k = n + 1 \\implies n = k - 1 \\): \\( \\sum_{k=1}^\\infty a_{k-1} x^k \\).<br>Extract \\( k = 0 \\) term from first sum: \\[ 2(1)a_2 + \\sum_{k=1}^\\infty \\Big[(k+2)(k+1)a_{k+2} - a_{k-1}\\Big]x^k = 0. \\]</p><p><strong>Step 3: Recurrence relation:</strong> \\[ 2a_2 = 0 \\implies a_2 = 0. \\] \\[ a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)} \\quad \\text{for } k \\ge 1. \\]</p><p><strong>Step 4: Compute coefficients:</strong><br>\\( k=1 \\): \\( a_3 = \\frac{a_0}{3 \\cdot 2} = \\frac{a_0}{6} \\).<br>\\( k=2 \\): \\( a_4 = \\frac{a_1}{4 \\cdot 3} = \\frac{a_1}{12} \\).<br>\\( k=3 \\): \\( a_5 = \\frac{a_2}{5 \\cdot 4} = 0 \\).<br>\\( k=4 \\): \\( a_6 = \\frac{a_3}{6 \\cdot 5} = \\frac{a_0}{180} \\).<br>\\( k=5 \\): \\( a_7 = \\frac{a_4}{7 \\cdot 6} = \\frac{a_1}{504} \\).</p><p><strong>Step 5: Fundamental solutions:</strong> \\[ y(x) = a_0\\left(1 + \\frac{x^3}{6} + \\frac{x^6}{180} + \\dots\\right) + a_1\\left(x + \\frac{x^4}{12} + \\frac{x^7}{504} + \\dots\\right). \\] Since \\( P(x) = 0 \\) and \\( Q(x) = -x \\) have no singularities anywhere in \\( \\mathbb{C} \\), the radius of convergence is \\( R = \\infty \\).</p>",
+        "problem": {
+          "en": "Find the power series solution about the ordinary point \\( x_0 = 0 \\) for Airy's equation: \\[ y'' - x y = 0. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Series substitution:</strong> \\[ y'' = \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2}, \\qquad x y = \\sum_{n=0}^\\infty a_n x^{n+1}. \\] \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - \\sum_{n=0}^\\infty a_n x^{n+1} = 0. \\]</p><p><strong>Step 2: Shift indices to power \\( x^k \\):</strong><br>In first sum, let \\( k = n - 2 \\implies n = k + 2 \\): \\( \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k \\).<br>In second sum, let \\( k = n + 1 \\implies n = k - 1 \\): \\( \\sum_{k=1}^\\infty a_{k-1} x^k \\).<br>Extract \\( k = 0 \\) term from first sum: \\[ 2(1)a_2 + \\sum_{k=1}^\\infty \\Big[(k+2)(k+1)a_{k+2} - a_{k-1}\\Big]x^k = 0. \\]</p><p><strong>Step 3: Recurrence relation:</strong> \\[ 2a_2 = 0 \\implies a_2 = 0. \\] \\[ a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)} \\quad \\text{for } k \\ge 1. \\]</p><p><strong>Step 4: Compute coefficients:</strong><br>\\( k=1 \\): \\( a_3 = \\frac{a_0}{3 \\cdot 2} = \\frac{a_0}{6} \\).<br>\\( k=2 \\): \\( a_4 = \\frac{a_1}{4 \\cdot 3} = \\frac{a_1}{12} \\).<br>\\( k=3 \\): \\( a_5 = \\frac{a_2}{5 \\cdot 4} = 0 \\).<br>\\( k=4 \\): \\( a_6 = \\frac{a_3}{6 \\cdot 5} = \\frac{a_0}{180} \\).<br>\\( k=5 \\): \\( a_7 = \\frac{a_4}{7 \\cdot 6} = \\frac{a_1}{504} \\).</p><p><strong>Step 5: Fundamental solutions:</strong> \\[ y(x) = a_0\\left(1 + \\frac{x^3}{6} + \\frac{x^6}{180} + \\dots\\right) + a_1\\left(x + \\frac{x^4}{12} + \\frac{x^7}{504} + \\dots\\right). \\] Since \\( P(x) = 0 \\) and \\( Q(x) = -x \\) have no singularities anywhere in \\( \\mathbb{C} \\), the radius of convergence is \\( R = \\infty \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 8.B — Hermite's Equation & Polynomial Truncation",
           "ar": "مثال محلول 8.B — Hermite's المعادلة & كثيرة الحدود Truncation"
         },
-        "body": {
-          "en": "<p>Find the recurrence relation for Hermite's equation \\[ y'' - 2x y' + 2\\lambda y = 0 \\] about \\( x_0 = 0 \\), and show that if \\( \\lambda = m \\) is an integer, the series terminates into a polynomial.</p><p><strong>Step 1: Series substitution:</strong> \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2 \\sum_{n=1}^\\infty n a_n x^n + 2\\lambda \\sum_{n=0}^\\infty a_n x^n = 0. \\] Shifting first sum \\( k = n - 2 \\): \\[ \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 2\\lambda a_k x^k = 0 \\] \\[ \\sum_{k=0}^\\infty \\Big[(k+2)(k+1)a_{k+2} - 2(k - \\lambda)a_k\\Big]x^k = 0. \\]</p><p><strong>Step 2: Recurrence relation:</strong> \\[ a_{k+2} = \\frac{2(k - \\lambda)}{(k+2)(k+1)} a_k. \\]</p><p><strong>Step 3: Polynomial truncation:</strong> If \\( \\lambda = m \\in \\{0, 1, 2, \\dots\\} \\), setting \\( k = m \\) makes \\( a_{m+2} = 0 \\). Consequently, all subsequent coefficients of the same parity vanish: \\( a_{m+4} = a_{m+6} = \\dots = 0 \\). If \\( m \\) is even, setting \\( a_1 = 0 \\) produces an even polynomial of degree \\( m \\); if \\( m \\) is odd, setting \\( a_0 = 0 \\) produces an odd polynomial of degree \\( m \\). These are the orthogonal <strong>Hermite polynomials</strong> \\( H_m(x) \\) fundamental to the quantum harmonic oscillator.</p>",
+        "problem": {
+          "en": "Find the recurrence relation for Hermite's equation \\[ y'' - 2x y' + 2\\lambda y = 0 \\] about \\( x_0 = 0 \\), and show that if \\( \\lambda = m \\) is an integer, the series terminates into a polynomial.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Series substitution:</strong> \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2 \\sum_{n=1}^\\infty n a_n x^n + 2\\lambda \\sum_{n=0}^\\infty a_n x^n = 0. \\] Shifting first sum \\( k = n - 2 \\): \\[ \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 2\\lambda a_k x^k = 0 \\] \\[ \\sum_{k=0}^\\infty \\Big[(k+2)(k+1)a_{k+2} - 2(k - \\lambda)a_k\\Big]x^k = 0. \\]</p><p><strong>Step 2: Recurrence relation:</strong> \\[ a_{k+2} = \\frac{2(k - \\lambda)}{(k+2)(k+1)} a_k. \\]</p><p><strong>Step 3: Polynomial truncation:</strong> If \\( \\lambda = m \\in \\{0, 1, 2, \\dots\\} \\), setting \\( k = m \\) makes \\( a_{m+2} = 0 \\). Consequently, all subsequent coefficients of the same parity vanish: \\( a_{m+4} = a_{m+6} = \\dots = 0 \\). If \\( m \\) is even, setting \\( a_1 = 0 \\) produces an even polynomial of degree \\( m \\); if \\( m \\) is odd, setting \\( a_0 = 0 \\) produces an odd polynomial of degree \\( m \\). These are the orthogonal <strong>Hermite polynomials</strong> \\( H_m(x) \\) fundamental to the quantum harmonic oscillator.</p>",
           "ar": null
         }
       },
@@ -327,26 +333,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider the second-order linear homogeneous differential equation: \\( x^2 y'' + x y' + (x^2 - \\nu^2) y = 0 \\), where \\(\\nu\\) is a constant. This is Bessel's equation of order \\(\\nu\\). Assume \\(\\nu = 1/2\\) and that \\(x > 0\\). \\(\\textbf{Part 1: Ordinary Point Analysis}\\\\. x=0\\) is a regular singular point. Determine the indicial equation for this differential equation and find its roots.</p><p><strong>Step-by-Step Solution:</strong> The given differential equation is \\(x^2 y'' + x y' + (x^2 - \\nu^2) y = 0\\). We can rewrite this in the standard form \\(y'' + P(x)y' + Q(x)y = 0\\) by dividing by \\(x^2\\): \\(y'' + \\frac{1}{x} y' + \\frac{x^2 - \\nu^2}{x^2} y = 0\\). Thus, \\(P(x) = \\frac{1}{x}\\) and \\(Q(x) = \\frac{x^2 - \\nu^2}{x^2} = 1 - \\frac{\\nu^2}{x^2}\\). \\(x=0\\) is a singular point. To determine if it's a regular singular point, we examine \\(x P(x)\\) and \\(x^2 Q(x)\\). \\(x P(x) = x \\cdot \\frac{1}{x} = 1\\), which is analytic at \\(x=0\\). \\(x^2 Q(x) = x^2 \\cdot \\frac{x^2 - \\nu^2}{x^2} = x^2 - \\nu^2\\), which is also analytic at \\(x=0\\). Therefore, \\(x=0\\) is a regular singular point. The method of Frobenius assumes a solution of the form \\(y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}\\), where \\(c_0 \\neq 0\\). Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in \\(r\\). For Bessel's equation, the indicial equation is given by \\(r(r-1) + p_0 r + q_0 = 0\\), where \\(p_0 = \\lim_{x \\to 0} xP(x)\\) and \\(q_0 = \\lim_{x \\to 0} x^2 Q(x)\\). In our case, \\(p_0 = 1\\) and \\(q_0 = -\\nu^2\\). So the indicial equation is \\(r(r-1) + 1 \\cdot r - \\nu^2 = 0\\), which simplifies to \\(r^2 - r + r - \\nu^2 = 0\\), or \\(r^2 - \\nu^2 = 0\\). Given \\(\\nu = 1/2\\), the indicial equation becomes \\(r^2 - (1/2)^2 = 0\\), which is \\(r^2 - \\frac{1}{4} = 0\\). The roots of this equation are \\(r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}\\).</p>",
+        "problem": {
+          "en": "Consider the second-order linear homogeneous differential equation: \\( x^2 y'' + x y' + (x^2 - \\nu^2) y = 0 \\), where \\(\\nu\\) is a constant. This is Bessel's equation of order \\(\\nu\\). Assume \\(\\nu = 1/2\\) and that \\(x > 0\\). \\(\\textbf{Part 1: Ordinary Point Analysis}\\\\. x=0\\) is a regular singular point. Determine the indicial equation for this differential equation and find its roots.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The given differential equation is \\(x^2 y'' + x y' + (x^2 - \\nu^2) y = 0\\). We can rewrite this in the standard form \\(y'' + P(x)y' + Q(x)y = 0\\) by dividing by \\(x^2\\): \\(y'' + \\frac{1}{x} y' + \\frac{x^2 - \\nu^2}{x^2} y = 0\\). Thus, \\(P(x) = \\frac{1}{x}\\) and \\(Q(x) = \\frac{x^2 - \\nu^2}{x^2} = 1 - \\frac{\\nu^2}{x^2}\\). \\(x=0\\) is a singular point. To determine if it's a regular singular point, we examine \\(x P(x)\\) and \\(x^2 Q(x)\\). \\(x P(x) = x \\cdot \\frac{1}{x} = 1\\), which is analytic at \\(x=0\\). \\(x^2 Q(x) = x^2 \\cdot \\frac{x^2 - \\nu^2}{x^2} = x^2 - \\nu^2\\), which is also analytic at \\(x=0\\). Therefore, \\(x=0\\) is a regular singular point. The method of Frobenius assumes a solution of the form \\(y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}\\), where \\(c_0 \\neq 0\\). Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in \\(r\\). For Bessel's equation, the indicial equation is given by \\(r(r-1) + p_0 r + q_0 = 0\\), where \\(p_0 = \\lim_{x \\to 0} xP(x)\\) and \\(q_0 = \\lim_{x \\to 0} x^2 Q(x)\\). In our case, \\(p_0 = 1\\) and \\(q_0 = -\\nu^2\\). So the indicial equation is \\(r(r-1) + 1 \\cdot r - \\nu^2 = 0\\), which simplifies to \\(r^2 - r + r - \\nu^2 = 0\\), or \\(r^2 - \\nu^2 = 0\\). Given \\(\\nu = 1/2\\), the indicial equation becomes \\(r^2 - (1/2)^2 = 0\\), which is \\(r^2 - \\frac{1}{4} = 0\\). The roots of this equation are \\(r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}\\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius (Easy Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Consider the differential equation \\( y'' - xy = 0 \\). The point \\( x=0 \\) is an ordinary point. If we assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\), find the recurrence relation for the coefficients \\( c_n \\).</p><p><strong>Step-by-Step Solution:</strong> We are given the differential equation \\( y'' - xy = 0 \\) and assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\). \\newline Differentiating twice with respect to \\( x \\), we get: \\( y'(x) = \\sum_{n=1}^{\\infty} n c_n x^{n-1} \\) and \\( y''(x) = \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} \\). \\newline Substituting these into the differential equation: \\( \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} - x \\sum_{n=0}^{\\infty} c_n x^n = 0 \\). \\newline We can rewrite the second term as \\( \\sum_{n=0}^{\\infty} c_n x^{n+1} \\). To combine the series, we need the powers of \\( x \\) to be the same. Let \\( k = n-2 \\) in the first series, so \\( n = k+2 \\). When \\( n=2, k=0 \\). The first series becomes \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k \\). \\newline Let \\( k = n+1 \\) in the second series, so \\( n = k-1 \\). When \\( n=0, k=1 \\). The second series becomes \\( \\sum_{k=1}^{\\infty} c_{k-1} x^k \\). \\newline So the equation is \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline We can separate the \\( k=0 \\) term from the first sum: \\( 2(1)c_2 + \\sum_{k=1}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline For this equation to hold for all \\( x \\), the coefficients of each power of \\( x \\) must be zero. \\newline For \\( k=0 \\): \\( 2c_2 = 0 \\) implies \\( c_2 = 0 \\). \\newline For \\( k \\geq 1 \\): \\( (k+2)(k+1) c_{k+2} - c_{k-1} = 0 \\). \\newline Thus, the recurrence relation is \\( c_{k+2} = \\frac{c_{k-1}}{(k+2)(k+1)} \\) for \\( k \\geq 1 \\). Replacing \\( k \\) with \\( n \\), we get \\( c_{n+2} = \\frac{c_{n-1}}{(n+2)(n+1)} \\) for \\( n \\geq 1 \\).</p>",
+        "problem": {
+          "en": "Consider the differential equation \\( y'' - xy = 0 \\). The point \\( x=0 \\) is an ordinary point. If we assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\), find the recurrence relation for the coefficients \\( c_n \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>We are given the differential equation \\( y'' - xy = 0 \\) and assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\). \\newline Differentiating twice with respect to \\( x \\), we get: \\( y'(x) = \\sum_{n=1}^{\\infty} n c_n x^{n-1} \\) and \\( y''(x) = \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} \\). \\newline Substituting these into the differential equation: \\( \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} - x \\sum_{n=0}^{\\infty} c_n x^n = 0 \\). \\newline We can rewrite the second term as \\( \\sum_{n=0}^{\\infty} c_n x^{n+1} \\). To combine the series, we need the powers of \\( x \\) to be the same. Let \\( k = n-2 \\) in the first series, so \\( n = k+2 \\). When \\( n=2, k=0 \\). The first series becomes \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k \\). \\newline Let \\( k = n+1 \\) in the second series, so \\( n = k-1 \\). When \\( n=0, k=1 \\). The second series becomes \\( \\sum_{k=1}^{\\infty} c_{k-1} x^k \\). \\newline So the equation is \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline We can separate the \\( k=0 \\) term from the first sum: \\( 2(1)c_2 + \\sum_{k=1}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline For this equation to hold for all \\( x \\), the coefficients of each power of \\( x \\) must be zero. \\newline For \\( k=0 \\): \\( 2c_2 = 0 \\) implies \\( c_2 = 0 \\). \\newline For \\( k \\geq 1 \\): \\( (k+2)(k+1) c_{k+2} - c_{k-1} = 0 \\). \\newline Thus, the recurrence relation is \\( c_{k+2} = \\frac{c_{k-1}}{(k+2)(k+1)} \\) for \\( k \\geq 1 \\). Replacing \\( k \\) with \\( n \\), we get \\( c_{n+2} = \\frac{c_{n-1}}{(n+2)(n+1)} \\) for \\( n \\geq 1 \\).</p>",
           "ar": null
         }
       },

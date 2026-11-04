@@ -881,23 +881,16 @@
     var _init = function(){
       enhanceContainer(document.body);
       syncResolvedFlags();
-      if(typeof MutationObserver === 'function' && document.body){
-        var _timer = null;
-        var obs = new MutationObserver(function(mutations){
-          var shouldRun = false;
-          for(var i = 0; i < mutations.length; i++){
-            if(mutations[i].addedNodes && mutations[i].addedNodes.length){
-              shouldRun = true;
-              break;
-            }
-          }
-          if(shouldRun){
-            if(_timer) clearTimeout(_timer);
-            _timer = setTimeout(function(){ enhanceContainer(document.body); }, 180);
-          }
-        });
-        obs.observe(document.body, { childList: true, subtree: true });
-      }
+      var _timer = null;
+      var _scheduleEnhance = function(ev){
+        if(_timer) clearTimeout(_timer);
+        var scope = (ev && ev.detail && ev.detail.outEl) ? ev.detail.outEl : document.body;
+        _timer = setTimeout(function(){ enhanceContainer(scope || document.body); }, 120);
+      };
+      document.addEventListener('clipsat:quiz-ready', _scheduleEnhance);
+      document.addEventListener('clipsat:chapter-change', _scheduleEnhance);
+      document.addEventListener('clipsat:full-exam-ready', _scheduleEnhance);
+      document.addEventListener('clipsat:view-change', _scheduleEnhance);
     };
 
     if(document.readyState === 'loading'){

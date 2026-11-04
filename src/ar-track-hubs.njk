@@ -1,0 +1,38 @@
+---
+layout: base.njk
+pagination:
+  data: arabicTrackHubs
+  size: 1
+  alias: hub
+permalink: "{{ hub.permalink }}"
+---
+{% set _track = migratedContent[hub.trackId] %}
+{% set _courseMeta = _track.meta.meta %}
+{% set pageHeader = _courseMeta.pageHeader %}
+{% set chapters = _track.chapters %}
+{% set practiceSetId = hub.practiceSetId %}
+{% set practiceSetIcon = hub.practiceSetIcon %}
+{% set testGeneratorId = hub.testGeneratorId %}
+{% set downloadsId = hub.downloadsId %}
+{% set railNoTrackId = hub.railNoTrackId %}
+{% set isSyllabusHub = true %}
+<main id="view-{{ hub.trackId }}" class="view active" data-syllabus-hub="1">
+  {% include "partials/subject-head.njk" %}
+  <div class="wrap calc-body">
+    {% include "partials/rail.njk" %}
+    <div class="content">
+      {% if hub.trackId == 'olympiad' %}
+      {% include "partials/olympiad-subsections.njk" %}
+      {% endif %}
+      {% include "partials/syllabus-hub.njk" %}
+
+      {% set sectionId = hub.testGeneratorId %}
+      {% set testGenerator = _courseMeta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = hub.downloadsId %}
+      {% set courseMeta = _courseMeta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

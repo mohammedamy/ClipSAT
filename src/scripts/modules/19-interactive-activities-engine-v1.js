@@ -2393,12 +2393,11 @@ function _onDomReady(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',_onDomReady);
 else _onDomReady();
 
-/* Hook into goChapter */
-var _ogc=window.goChapter;
-window.goChapter=function(chId,view){
-  if(_ogc)_ogc.apply(this,arguments);
-  setTimeout(function(){_inject(chId);},600);
-};
+/* Subscribe to clipsat:chapter-change */
+document.addEventListener('clipsat:chapter-change', function(ev){
+  var chId = ev && ev.detail && ev.detail.chapterId;
+  if(chId) setTimeout(function(){_inject(chId);},600);
+});
 
 })();
 

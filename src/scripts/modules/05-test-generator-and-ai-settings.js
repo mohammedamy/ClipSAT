@@ -447,10 +447,9 @@ window.tgReveal=function(btn){
   if(show&&window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([out]).catch(function(){});
 };
 
-/* ── genFullExam: the question bank in 02; the AI path in 05a-ai-test.js ───────────────────────── */
-var _origGenFullExam=window.genFullExam;
-window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
-  if(!aiSourceChosen(btn)) return _origGenFullExam&&_origGenFullExam(btn,examName,viewId,sectionTitles,qPerSection);
+/* ── genFullExam: register AI hook consumed by 02e without monkey-patching ── */
+window._csGenFullExamAIHook=function(btn,examName,viewId,sectionTitles,qPerSection){
+  if(!aiSourceChosen(btn)) return undefined;
   return _runAI(btn,function(){ return window.CSAITest.genFullExam(btn,examName,viewId,sectionTitles,qPerSection); }, viewId);
 };
 

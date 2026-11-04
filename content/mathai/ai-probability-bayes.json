@@ -254,50 +254,62 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.A — Bayesian Spam Classification",
           "ar": "مثال محلول 4.A — Bayesian Spam Classification"
         },
-        "body": {
-          "en": "<p>An email filter processes emails where \\( 20\\% \\) are spam (\\( P(S) = 0.20 \\)) and \\( 80\\% \\) are legitimate (\\( P(L) = 0.80 \\)). The word <em>'lottery'</em> appears in \\( 60\\% \\) of spam emails (\\( P(W|S) = 0.60 \\)) and in \\( 1\\% \\) of legitimate emails (\\( P(W|L) = 0.01 \\)). If an incoming email contains the word 'lottery', what is the probability that it is spam?</p><p><strong>Solution:</strong><br>By Bayes' Theorem:<br>\\[ P(S|W) = \\frac{P(W|S)P(S)}{P(W)} \\]<br>Calculate total probability \\( P(W) \\):<br>\\[ P(W) = P(W|S)P(S) + P(W|L)P(L) = (0.60)(0.20) + (0.01)(0.80) = 0.12 + 0.008 = 0.128 \\]<br>Compute posterior:<br>\\[ P(S|W) = \\frac{0.12}{0.128} = \\frac{120}{128} = \\frac{15}{16} = 0.9375 \\].<br>Despite only 20% of all emails being spam initially, observing the word 'lottery' raises the probability to \\( 93.75\\% \\).<br><strong>Answer:</strong> \\( 93.75\\% \\) (or \\( 0.938 \\)).</p>",
+        "problem": {
+          "en": "An email filter processes emails where \\( 20\\% \\) are spam (\\( P(S) = 0.20 \\)) and \\( 80\\% \\) are legitimate (\\( P(L) = 0.80 \\)). The word <em>'lottery'</em> appears in \\( 60\\% \\) of spam emails (\\( P(W|S) = 0.60 \\)) and in \\( 1\\% \\) of legitimate emails (\\( P(W|L) = 0.01 \\)). If an incoming email contains the word 'lottery', what is the probability that it is spam?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><br>By Bayes' Theorem:<br>\\[ P(S|W) = \\frac{P(W|S)P(S)}{P(W)} \\]<br>Calculate total probability \\( P(W) \\):<br>\\[ P(W) = P(W|S)P(S) + P(W|L)P(L) = (0.60)(0.20) + (0.01)(0.80) = 0.12 + 0.008 = 0.128 \\]<br>Compute posterior:<br>\\[ P(S|W) = \\frac{0.12}{0.128} = \\frac{120}{128} = \\frac{15}{16} = 0.9375 \\].<br>Despite only 20% of all emails being spam initially, observing the word 'lottery' raises the probability to \\( 93.75\\% \\).<br><strong>Answer:</strong> \\( 93.75\\% \\) (or \\( 0.938 \\)).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Conditional Probability, Bayes' Rule & Classifiers (Medium Application)",
           "ar": "مثال محلول B — الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي (تطبيق Medium)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Given \\( n = 4 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{4} x_i = 12 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?</p><p><strong>Step-by-Step Solution:</strong> The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3 \\).</p>",
+        "problem": {
+          "en": "Given \\( n = 4 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{4} x_i = 12 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3 \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Conditional Probability, Bayes' Rule & Classifiers (Hard Application)",
           "ar": "مثال محلول C — الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي (تطبيق Hard)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.40 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\).</p><p><strong>Step-by-Step Solution:</strong> Odds are \\( \\frac{p}{1-p} = \\frac{0.40}{0.60} = 0.6667 \\). Taking natural logarithm: \\( \\ln(0.6667) = -0.405 \\).</p>",
+        "problem": {
+          "en": "A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.40 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Odds are \\( \\frac{p}{1-p} = \\frac{0.40}{0.60} = 0.6667 \\). Taking natural logarithm: \\( \\ln(0.6667) = -0.405 \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Conditional Probability, Bayes' Rule & Classifiers (Easy Application)",
           "ar": "مثال محلول D — الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي (تطبيق Easy)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> A medical diagnostic test for a rare disease is designed to be highly sensitive and specific. The disease affects \\( 1 \\) in every \\( 1000 \\) individuals in the population. The test has a sensitivity of \\( 99 \\)\\% (meaning it correctly identifies \\( 99 \\)\\% of individuals who have the disease) and a specificity of \\( 95 \\)\\% (meaning it correctly identifies \\( 95 \\)\\% of individuals who do not have the disease). If a randomly selected individual from the population tests positive, what is the probability that they actually have the disease?</p><p><strong>Step-by-Step Solution:</strong> Let D be the event that an individual has the disease, and P be the event that the individual tests positive.\nWe are given the following probabilities:\n- Prior probability of having the disease: \\(P(D) = \\frac{1}{1000} = 0.001\\)\n- Prior probability of not having the disease: \\(P(D^c) = 1 - P(D) = 1 - 0.001 = 0.999\\)\n- Sensitivity (true positive rate): \\(P(P|D) = 0.99\\)\n- Specificity (true negative rate): \\(P(P^c|D^c) = 0.95\\)\nFrom specificity, we can derive the false positive rate: \\(P(P|D^c) = 1 - P(P^c|D^c) = 1 - 0.95 = 0.05\\).\n\nWe want to find the probability that an individual actually has the disease given a positive test result, which is \\(P(D|P)\\). We can use Bayes' Theorem:\n\n\\[P(D|P) = \\frac{P(P|D) P(D)}{P(P)}\\]\n\nTo find \\(P(P)\\), the overall probability of testing positive, we can use the law of total probability:\n\n\\[P(P) = P(P|D) P(D) + P(P|D^c) P(D^c)\\]\n\nSubstitute the given values:\n\n\\[P(P) = (0.99)(0.001) + (0.05)(0.999)\\]\n\\[P(P) = 0.00099 + 0.04995\\]\n\\[P(P) = 0.05094\\]\n\nNow, substitute \\(P(P)\\) back into Bayes' Theorem:\n\n\\[P(D|P) = \\frac{(0.99)(0.001)}{0.05094}\\]\n\\[P(D|P) = \\frac{0.00099}{0.05094}\\]\n\\[P(D|P) \\approx 0.0194346\\]\n\nTherefore, the probability that a person who tests positive actually has the disease is approximately \\( 0.0194 \\), which is closest to \\( 0.019 \\).</p>",
+        "problem": {
+          "en": "A medical diagnostic test for a rare disease is designed to be highly sensitive and specific. The disease affects \\( 1 \\) in every \\( 1000 \\) individuals in the population. The test has a sensitivity of \\( 99 \\)\\% (meaning it correctly identifies \\( 99 \\)\\% of individuals who have the disease) and a specificity of \\( 95 \\)\\% (meaning it correctly identifies \\( 95 \\)\\% of individuals who do not have the disease). If a randomly selected individual from the population tests positive, what is the probability that they actually have the disease?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Let D be the event that an individual has the disease, and P be the event that the individual tests positive.\nWe are given the following probabilities:\n- Prior probability of having the disease: \\(P(D) = \\frac{1}{1000} = 0.001\\)\n- Prior probability of not having the disease: \\(P(D^c) = 1 - P(D) = 1 - 0.001 = 0.999\\)\n- Sensitivity (true positive rate): \\(P(P|D) = 0.99\\)\n- Specificity (true negative rate): \\(P(P^c|D^c) = 0.95\\)\nFrom specificity, we can derive the false positive rate: \\(P(P|D^c) = 1 - P(P^c|D^c) = 1 - 0.95 = 0.05\\).\n\nWe want to find the probability that an individual actually has the disease given a positive test result, which is \\(P(D|P)\\). We can use Bayes' Theorem:\n\n\\[P(D|P) = \\frac{P(P|D) P(D)}{P(P)}\\]\n\nTo find \\(P(P)\\), the overall probability of testing positive, we can use the law of total probability:\n\n\\[P(P) = P(P|D) P(D) + P(P|D^c) P(D^c)\\]\n\nSubstitute the given values:\n\n\\[P(P) = (0.99)(0.001) + (0.05)(0.999)\\]\n\\[P(P) = 0.00099 + 0.04995\\]\n\\[P(P) = 0.05094\\]\n\nNow, substitute \\(P(P)\\) back into Bayes' Theorem:\n\n\\[P(D|P) = \\frac{(0.99)(0.001)}{0.05094}\\]\n\\[P(D|P) = \\frac{0.00099}{0.05094}\\]\n\\[P(D|P) \\approx 0.0194346\\]\n\nTherefore, the probability that a person who tests positive actually has the disease is approximately \\( 0.0194 \\), which is closest to \\( 0.019 \\).</p>",
           "ar": null
         }
       },

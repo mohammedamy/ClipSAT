@@ -44,43 +44,51 @@
   var currentView=null;
 
   window.showView=function(name){
+    var targetEl=document.getElementById('view-'+name);
+    if(!targetEl){
+      var isAr=(window.CLIPSAT_LOCALE==='ar');
+      window.location.href = (name==='home') ? (isAr?'/ar/':'/') : ((isAr?'/ar/':'/') + encodeURIComponent(name) + '/');
+      return;
+    }
     var changed=(name!==currentView); currentView=name;
-    if(window.CS_loadTrackBank) window.CS_loadTrackBank(name);
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
-    var el=document.getElementById('view-'+name); if(el) el.classList.add('active');
-    var sel=document.getElementById('navSelect');
+    targetEl.classList.add('active');
+    var el=targetEl, sel=document.getElementById('navSelect');
     if(sel && sel.value!==name){
       var found=false;
       for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===name){sel.selectedIndex=i;found=true;break;}}
       if(!found) sel.value='home';
     }
     var _nl=document.getElementById('navlinks'),_mb=document.getElementById('menuBtn');
-    if(_nl){_nl.classList.remove('open');}
+    if(_nl) _nl.classList.remove('open');
     if(_mb){_mb.setAttribute('aria-expanded','false');_mb.innerHTML='&#9776; Menu';}
-    if(history.replaceState && (location.hash||'').indexOf('access_token=')===-1) history.replaceState(null,'','#view/'+name);
+    if(history.replaceState && !el.hasAttribute('data-chapter-route') && !el.hasAttribute('data-syllabus-hub') && !el.hasAttribute('data-practice-route') && (location.hash||'').indexOf('access_token=')===-1){
+      var pathNorm=(location.pathname||'/').replace(/index\.html$/,'');
+      if((pathNorm==='/' || pathNorm==='/ar/') && name!=='home') history.replaceState(null,'','#view/'+name);
+    }
     if(changed) window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
     if(changed && el){
-      var chs=el.querySelectorAll('.chapter');
-      var hasActive=el.querySelector('.chapter.ch-active');
-      if(!hasActive && chs.length){ chs[0].classList.add('ch-active'); }
-      if(!hasActive){
-        var rl=el.querySelectorAll('.rail a');
-        if(rl.length){ rl.forEach(function(a){a.classList.remove('active');}); rl[0].classList.add('active'); }
-      }
+      var chs=el.querySelectorAll('.chapter'), hasActive=el.querySelector('.chapter.ch-active');
+      if(!hasActive && chs.length) chs[0].classList.add('ch-active');
+      if(!hasActive){ var rl=el.querySelectorAll('.rail a'); if(rl.length){ rl.forEach(function(a){a.classList.remove('active');}); rl[0].classList.add('active'); } }
     }
     setTimeout(redrawAll,60); setTimeout(redrawAll,420);
     if(el){ setTimeout(function(){ if(window.MathJax && MathJax.typesetPromise){ var _active=el.querySelector('.chapter.ch-active')||el; MathJax.typesetPromise([_active]).catch(function(){}); } },80); }
+    try { document.dispatchEvent(new CustomEvent('clipsat:view-change', { detail: { view: name, changed: changed } })); } catch(e){}
   };
 
   window.goChapter=function(id, view){
-    var vn=view;
-    if(!vn){
-      var _av=document.querySelector('.view.active');
-      vn=_av?_av.id.replace(/^view-/,''):'calculus';
-    }
-    if(!document.getElementById('view-'+vn)){
-      var dest='/'+(vn==='home'?'':vn+'/');
-      window.location.href = id ? dest+'?ch='+encodeURIComponent(id) : dest;
+    var _av0=document.querySelector('.view.active');
+    var vn=view||(_av0?_av0.id.replace(/^view-/,''):(window.CLIPSAT_TRACK||'calculus'));
+    var viewEl=document.getElementById('view-'+vn), targetSec=id?document.getElementById(id):null;
+    var locPrefix=(window.CLIPSAT_LOCALE==='ar')?'/ar':'';
+    if(!viewEl || (id && !targetSec)){
+      if(vn==='home'){ window.location.href = locPrefix ? '/ar/' : '/'; return; }
+      var trackBase = locPrefix + '/' + encodeURIComponent(vn) + '/';
+      if(!id) window.location.href = trackBase;
+      else if(/-practice$/.test(id)) window.location.href = trackBase + 'practice/';
+      else if(/-(testgen|downloads)$/.test(id)) window.location.href = trackBase + '#' + encodeURIComponent(id);
+      else window.location.href = trackBase + encodeURIComponent(id) + '/';
       return;
     }
     window.showView(vn);
@@ -89,49 +97,25 @@
       av.querySelectorAll('.chapter').forEach(function(c){ c.classList.remove('ch-active'); });
       var t=document.getElementById(id);
       if(t){ t.classList.add('ch-active'); window.scrollTo(0,0); }
-      av.querySelectorAll('.rail a').forEach(function(a){
-        a.classList.toggle('active', a.getAttribute('data-target')===id);
-      });
-      if(history.replaceState) history.replaceState(null,'','#view/'+vn+'/'+id);
-      _wireAutoExplorers();
-      redrawAll();
-      setTimeout(redrawAll, 60);
+      av.querySelectorAll('.rail a').forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-target')===id); });
+      if(history.replaceState && !av.hasAttribute('data-chapter-route') && !av.hasAttribute('data-practice-route')){
+        history.replaceState(null,'','#view/'+vn+'/'+id);
+      }
+      _wireAutoExplorers(); redrawAll(); setTimeout(redrawAll, 60);
+      try { document.dispatchEvent(new CustomEvent('clipsat:chapter-change', { detail: { id: id, view: vn } })); } catch(e){}
     }
   };
 
   window.goCatalog=function(){
     window.showView('home');
-    setTimeout(function(){
-      var t=document.getElementById('catalog');
-      if(t) t.scrollIntoView({behavior:reduceMotion?'auto':'smooth', block:'start'});
-    },80);
+    setTimeout(function(){ var t=document.getElementById('catalog'); if(t) t.scrollIntoView({behavior:reduceMotion?'auto':'smooth', block:'start'}); },80);
   };
 
   window.toggleSol=function(btn){
-    var p=btn.closest('.problem'); var open=p.classList.toggle('open');
+    var p=btn.closest('.problem'), open=p.classList.toggle('open');
     btn.childNodes[1].textContent=' '+(open?'Hide solution':'Show solution');
-    if(open && window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([p.querySelector('.solution')]); }
+    if(open && window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([p.querySelector('.solution')]);
   };
-
-  /* Bubble sheet interactivity — click to fill, click filled to clear */
-  document.addEventListener('click',function(e){
-    var b=e.target.closest('.fep-bubble');
-    if(!b) return;
-    var row=b.closest('.fep-bubble-row');
-    row.querySelectorAll('.fep-bubble').forEach(function(x){ x.classList.remove('filled'); });
-    if(!b.classList.contains('filled-prev')){b.classList.add('filled');}
-    row.querySelectorAll('.fep-bubble').forEach(function(x){ x.classList.remove('filled-prev'); });
-    if(b.classList.contains('filled')) b.classList.add('filled-prev');
-  });
-
-  /* Full-exam MCQ choice highlight */
-  document.addEventListener('click',function(e){
-    var ch=e.target.closest('.fep-choice');
-    if(!ch) return;
-    var choices=ch.closest('.fep-choices');
-    choices.querySelectorAll('.fep-choice').forEach(function(c){c.style.background=''; c.style.borderColor='transparent';});
-    ch.style.background='#e8eeff'; ch.style.borderColor='#3b4fc8';
-  });
 
   /* ---------- universal 2D square-lattice & 3D ClipSAT3D auto-explorer binder ---------- */
   function _wireAutoExplorers(){

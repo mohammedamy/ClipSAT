@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: mvc
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/mvc/"
+enAltPath: "/mvc/"
+arAltPath: "/ar/mvc/"
 title: "Multivariable Calculus · ClipSAT"
 description: "Partial derivatives, gradients, optimization and double integrals — proof-first, with full derivations, matching the site's Rigor Standard."
-isRtl: false
 ---
 {#
   Renders from content/mvc/* (docs/CONTENT_MODEL.md), following the pattern established by
@@ -24,33 +29,28 @@ isRtl: false
   domain standard every longer-established track's bank meets. Scaling it up is separate, tracked
   follow-up work, not silently implied as "done" here.
 #}
-{% set mvc = migratedContent.mvc %}
-{% set pageHeader = mvc.meta.meta.pageHeader %}
-<main id="view-mvc" class="view active">
+{% set trackData = migratedContent.mvc %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'mvc-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'mvc-testgen' %}
+{% set downloadsId = 'mvc-downloads' %}
+<main id="view-mvc" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = mvc.chapters %}
-    {% set practiceSetId = 'mvc-practice' %}
-    {% set testGeneratorId = 'mvc-testgen' %}
-    {% set downloadsId = 'mvc-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in mvc.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'mvc-practice' %}
-      {% set practiceSet = mvc.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'mvc-testgen' %}
-      {% set testGenerator = mvc.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'mvc-downloads' %}
-      {% set courseMeta = mvc.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

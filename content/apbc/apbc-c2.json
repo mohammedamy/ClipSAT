@@ -211,26 +211,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Logistic Mechanics & Maximum Growth Rate",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> A bird population on a wildlife reserve satisfies \\(\\frac{dP}{dt} = 0.0004 P(1200 - P)\\), where \\(t\\) is measured in years. Find the carrying capacity \\(L\\), the population size when the birds are reproducing fastest, and the maximum rate of change.</p><p><strong>Step 1 · Identify Carrying Capacity:</strong> Rewrite in standard form: \\(\\frac{dP}{dt} = 0.0004(1200)P\\left(1 - \\frac{P}{1200}\\right) = 0.48 P\\left(1 - \\frac{P}{1200}\\right)\\). The carrying capacity is \\(\\mathbf{L = 1200}\\).</p><p><strong>Step 2 · Population at Maximum Growth Rate:</strong> By the inflection point theorem, the growth rate is maximized at half the carrying capacity: \\[ P = \\frac{L}{2} = \\frac{1200}{2} = \\mathbf{600}. \\]</p><p><strong>Step 3 · Calculate Maximum Growth Rate:</strong> Substitute \\(P = 600\\) into the differential equation: \\[ \\left. \\frac{dP}{dt} \\right|_{P=600} = 0.0004(600)(1200 - 600) = 0.0004(600)(600) = 0.0004(360000) = \\mathbf{144 \\text{ birds/year}}. \\]</p>",
+        "problem": {
+          "en": "A bird population on a wildlife reserve satisfies \\(\\frac{dP}{dt} = 0.0004 P(1200 - P)\\), where \\(t\\) is measured in years. Find the carrying capacity \\(L\\), the population size when the birds are reproducing fastest, and the maximum rate of change.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Identify Carrying Capacity:</strong> Rewrite in standard form: \\(\\frac{dP}{dt} = 0.0004(1200)P\\left(1 - \\frac{P}{1200}\\right) = 0.48 P\\left(1 - \\frac{P}{1200}\\right)\\). The carrying capacity is \\(\\mathbf{L = 1200}\\).</p><p><strong>Step 2 · Population at Maximum Growth Rate:</strong> By the inflection point theorem, the growth rate is maximized at half the carrying capacity: \\[ P = \\frac{L}{2} = \\frac{1200}{2} = \\mathbf{600}. \\]</p><p><strong>Step 3 · Calculate Maximum Growth Rate:</strong> Substitute \\(P = 600\\) into the differential equation: \\[ \\left. \\frac{dP}{dt} \\right|_{P=600} = 0.0004(600)(1200 - 600) = 0.0004(600)(600) = 0.0004(360000) = \\mathbf{144 \\text{ birds/year}}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Unit 7BC · Logistic Models & Euler's Method (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider the logistic differential equation \\( \\frac{dP}{dt} = kP(M-P) \\), where \\( P(t) \\) is the population at time \\( t \\), \\( k \\) is the growth rate constant, and \\( M \\) is the carrying capacity. If \\( \\frac{dP}{dt} = 0.05P(1000-P) \\), what is the carrying capacity of the population?</p><p><strong>Step-by-Step Solution:</strong> The logistic differential equation is given by \\( \\frac{dP}{dt} = kP(M-P) \\). In the given equation, \\( \\frac{dP}{dt} = 0.05P(1000-P) \\). By comparing the two forms, we can identify the carrying capacity \\( M \\). We see that \\( k = 0.05 \\) and \\( M = 1000 \\). Therefore, the carrying capacity of the population is 1000.</p>",
+        "problem": {
+          "en": "Consider the logistic differential equation \\( \\frac{dP}{dt} = kP(M-P) \\), where \\( P(t) \\) is the population at time \\( t \\), \\( k \\) is the growth rate constant, and \\( M \\) is the carrying capacity. If \\( \\frac{dP}{dt} = 0.05P(1000-P) \\), what is the carrying capacity of the population?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The logistic differential equation is given by \\( \\frac{dP}{dt} = kP(M-P) \\). In the given equation, \\( \\frac{dP}{dt} = 0.05P(1000-P) \\). By comparing the two forms, we can identify the carrying capacity \\( M \\). We see that \\( k = 0.05 \\) and \\( M = 1000 \\). Therefore, the carrying capacity of the population is 1000.</p>",
           "ar": null
         }
       },
@@ -369,14 +375,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 2 (Medium) — Worked Example · Multi-Step Euler Approximation",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Let \\(\\frac{dy}{dx} = 2x - y\\) with initial condition \\(y(1) = 2\\). Use Euler's method with 2 steps of equal size \\(\\Delta x = 0.5\\) to approximate \\(y(2)\\).</p><p><strong>Step 1:</strong> Start at \\((x_0, y_0) = (1, 2)\\).<br>Slope: \\(m_0 = 2(1) - 2 = 0\\).<br>Next value: \\[ y_1 = y_0 + m_0\\Delta x = 2 + (0)(0.5) = 2.0. \\]<br>New point: \\((x_1, y_1) = (1.5, 2.0)\\).</p><p><strong>Step 2:</strong> At \\((x_1, y_1) = (1.5, 2.0)\\).<br>Slope: \\(m_1 = 2(1.5) - 2.0 = 3.0 - 2.0 = 1.0\\).<br>Next value: \\[ y_2 = y_1 + m_1\\Delta x = 2.0 + (1.0)(0.5) = 2.0 + 0.5 = \\mathbf{2.5}. \\]</p><p><strong>Conclusion:</strong> The Euler approximation for \\(y(2)\\) is \\(\\mathbf{2.5}\\).</p>",
+        "problem": {
+          "en": "Let \\(\\frac{dy}{dx} = 2x - y\\) with initial condition \\(y(1) = 2\\). Use Euler's method with 2 steps of equal size \\(\\Delta x = 0.5\\) to approximate \\(y(2)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Start at \\((x_0, y_0) = (1, 2)\\).<br>Slope: \\(m_0 = 2(1) - 2 = 0\\).<br>Next value: \\[ y_1 = y_0 + m_0\\Delta x = 2 + (0)(0.5) = 2.0. \\]<br>New point: \\((x_1, y_1) = (1.5, 2.0)\\).</p><p><strong>Step 2:</strong> At \\((x_1, y_1) = (1.5, 2.0)\\).<br>Slope: \\(m_1 = 2(1.5) - 2.0 = 3.0 - 2.0 = 1.0\\).<br>Next value: \\[ y_2 = y_1 + m_1\\Delta x = 2.0 + (1.0)(0.5) = 2.0 + 0.5 = \\mathbf{2.5}. \\]</p><p><strong>Conclusion:</strong> The Euler approximation for \\(y(2)\\) is \\(\\mathbf{2.5}\\).</p>",
           "ar": null
         }
       },
@@ -544,14 +553,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 3 (Advanced/FRQ) — Worked Example · Second Derivative Evaluation for Euler Justification",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Consider the differential equation \\(\\frac{dy}{dx} = x - y\\) with \\(y(0) = 1\\). An Euler approximation with \\(\\Delta x = 0.25\\) is used to estimate \\(y(1)\\). Determine analytically whether this approximation is an overestimate or an underestimate of the true value. Fully justify.</p><p><strong>Step 1 · Find the Second Derivative:</strong> Differentiate \\(\\frac{dy}{dx} = x - y\\) with respect to \\(x\\): \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}[x - y] = 1 - \\frac{dy}{dx}. \\]</p><p><strong>Step 2 · Substitute the First Derivative:</strong> \\[ \\frac{d^2y}{dx^2} = 1 - (x - y) = 1 - x + y. \\]</p><p><strong>Step 3 · Analyze the Sign on \\([0, 1]\\):</strong> Notice that the exact solution is \\(y(x) = x - 1 + 2e^{-x}\\). Substituting into \\(y''\\): \\[ \\frac{d^2y}{dx^2} = 1 - x + (x - 1 + 2e^{-x}) = 2e^{-x}. \\] Because the exponential function \\(e^{-x} > 0\\) for all real \\(x\\), \\(\\frac{d^2y}{dx^2} = 2e^{-x} > 0\\) for all \\(x \\in [0, 1]\\).</p><p><strong>Step 4 · College Board Justification:</strong> Since \\(\\frac{d^2y}{dx^2} > 0\\) on \\([0, 1]\\), the solution curve is <strong>concave up</strong> on the interval. Tangent line segments lie below concave-up curves, so Euler's method yields a guaranteed <strong>underestimate</strong>.</p>",
+        "problem": {
+          "en": "Consider the differential equation \\(\\frac{dy}{dx} = x - y\\) with \\(y(0) = 1\\). An Euler approximation with \\(\\Delta x = 0.25\\) is used to estimate \\(y(1)\\). Determine analytically whether this approximation is an overestimate or an underestimate of the true value. Fully justify.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Find the Second Derivative:</strong> Differentiate \\(\\frac{dy}{dx} = x - y\\) with respect to \\(x\\): \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}[x - y] = 1 - \\frac{dy}{dx}. \\]</p><p><strong>Step 2 · Substitute the First Derivative:</strong> \\[ \\frac{d^2y}{dx^2} = 1 - (x - y) = 1 - x + y. \\]</p><p><strong>Step 3 · Analyze the Sign on \\([0, 1]\\):</strong> Notice that the exact solution is \\(y(x) = x - 1 + 2e^{-x}\\). Substituting into \\(y''\\): \\[ \\frac{d^2y}{dx^2} = 1 - x + (x - 1 + 2e^{-x}) = 2e^{-x}. \\] Because the exponential function \\(e^{-x} > 0\\) for all real \\(x\\), \\(\\frac{d^2y}{dx^2} = 2e^{-x} > 0\\) for all \\(x \\in [0, 1]\\).</p><p><strong>Step 4 · College Board Justification:</strong> Since \\(\\frac{d^2y}{dx^2} > 0\\) on \\([0, 1]\\), the solution curve is <strong>concave up</strong> on the interval. Tangent line segments lie below concave-up curves, so Euler's method yields a guaranteed <strong>underestimate</strong>.</p>",
           "ar": null
         }
       },

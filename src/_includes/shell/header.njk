@@ -1,0 +1,39 @@
+{% set _isAr = (pageLocale == 'ar') or isRtl %}
+  <script>window.CLIPSAT_TRACK='{{ trackId }}';window.CLIPSAT_LOCALE='{{ pageLocale or ("ar" if isRtl else "") }}';window.CLIPSAT_CHAPTER_ID='{{ activeChapterId or "" }}';window.CLIPSAT_CDN_BASE='{{ (siteConfig and siteConfig.cdnBase) or "" }}';{% if flashcardCount is defined %}window.CLIPSAT_FC_COUNT={{ flashcardCount }};{% elif enTrackHubs and enTrackHubs[trackId] %}window.CLIPSAT_FC_COUNT={{ enTrackHubs[trackId].flashcardCount }};{% endif %}</script>
+  <a href="#main-content" class="skip-link">{{ 'تخطَّ إلى المحتوى الرئيسي' if _isAr else 'Skip to main content' }}</a>
+  <div id="csReadingProgress" class="cs-reading-progress" aria-hidden="true"><div id="csReadingProgressBar" class="cs-reading-progress-bar"></div></div>
+  <header class="site">
+    {% if trackId == 'privacy' or trackId == 'terms' or trackId == 'cookies' %}<h1 class="sr-only">{{ title }}</h1>{% endif %}
+    <div class="wrap nav">
+      <button id="cloudSignInBtnMobile" class="mobile-signin-btn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️</button>
+      <div class="brand" onclick="showView('home')" title="Home">
+        <img id="site-logo-img" class="site-logo-img" src="/clipsat-mark-header.png" alt="ClipSAT Logo" width="128" height="144">
+        <span class="name">ClipSAT</span>
+      </div>
+      <select class="nav-select" id="navSelect" onchange="navSelectChange(this)" aria-label="Choose category">
+        <option value="home" data-i18n="nav.overview">Overview</option>
+      </select>
+      <div class="spacer"></div>
+      <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="dm-toggle" id="fsToggle" title="Adjust text size" aria-label="A — Adjust text size">A</button>
+      <button class="dm-toggle" id="hcToggle" title="Toggle high-contrast mode" aria-label="Toggle high-contrast mode" aria-pressed="false">◐</button>
+      {% if _isAr %}
+      <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to English" aria-label="English — Switch language" data-en-url="{{ enAltPath or ('/' + trackId + '/') }}" data-ar-url="{{ arAltPath or ('/ar/' + trackId + '/') }}" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 English</button>
+      {% else %}
+      <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="عربي — Switch language" data-en-url="{{ enAltPath or (('/' + trackId + '/') if trackId != 'home' else '/') }}"{% if arAltPath %} data-ar-url="{{ arAltPath }}"{% endif %} onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 عربي</button>
+      {% endif %}
+      <nav class="nav-links" id="navlinks">
+        <span id="topic-search-wrap">
+          <svg id="topic-search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>
+          <input id="topic-search" type="search" placeholder="Search topics…" data-i18n-attr="placeholder:search.placeholder" autocomplete="off" aria-label="Search topics" oninput="window.CSSearch&&window.CSSearch.onInput(this.value)" onkeydown="window.CSSearch&&window.CSSearch.onKey(event)" onfocus="window.CSSearch&&window.CSSearch.onInput(this.value)" onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
+          <div id="topic-search-results" role="listbox"></div>
+        </span>
+        <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ <span data-i18n="nav.signIn">Sign in</span></button>
+        <div class="nav-more-wrap">
+          <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More options" aria-label="More options">⋯ <span data-i18n="nav.more">More</span></button>
+          <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden></div>
+        </div>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu — Toggle menu" aria-expanded="false" onclick="(function(btn){var n=document.getElementById('navlinks');var open=n.classList.toggle('open');btn.setAttribute('aria-expanded',open);var lbl=window.i18n&&window.i18n.t?window.i18n.t(open?'nav.close':'nav.menu'):(open?'Close':'Menu');btn.innerHTML=(open?'&#10005; ':'&#9776; ')+'<span data-i18n=&quot;'+(open?'nav.close':'nav.menu')+'&quot;>'+lbl+'</span>';})(this)">&#9776; <span data-i18n="nav.menu">Menu</span></button>
+    </div>
+  </header>

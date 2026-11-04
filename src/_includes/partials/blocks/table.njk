@@ -7,7 +7,7 @@
   a deliberate small normalization verified visually, not a byte-for-byte DOM match.
   Expects: block (the table object)
 #}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
 <div class="callout note">
   {% if block.caption %}<span class="lab">{{ bl.text(block.caption) }}</span>{% endif %}
   <table class="exam-table" style="margin-top:6px">

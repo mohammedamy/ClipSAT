@@ -159,15 +159,19 @@
     }
   });
 
-  /* ── Re-render on chapter change ── */
-  new MutationObserver(function(muts){
-    muts.forEach(function(m){
-      if(m.type==='attributes'&&m.attributeName==='class'){
-        var el=m.target;
-        if(el.classList.contains('chapter')&&el.classList.contains('ch-active')) _render();
+  /* ── Re-render on chapter change without document.body subtree observer ── */
+  document.addEventListener('clipsat:chapter-change', function(){ _render(); });
+  var _chAttrObs = new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      var m=muts[i];
+      if(m.type==='attributes'&&m.attributeName==='class'&&m.target.classList.contains('ch-active')){
+        _render(); break;
       }
-    });
-  }).observe(document.body,{attributes:true,subtree:true,attributeFilter:['class']});
+    }
+  });
+  document.querySelectorAll('.chapter').forEach(function(ch){
+    _chAttrObs.observe(ch,{attributes:true,attributeFilter:['class']});
+  });
 
   window.CSInteractive = { render: _render };
   _render();

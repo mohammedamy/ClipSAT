@@ -401,51 +401,63 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.A — Stars and Bars with Parity & Lower Bounds (AMC 10/12 & NSMO)",
           "ar": "مثال محلول 4.A — النجوم والفواصل مع قيود الزوجية والحدود الدنيا (AMC 10/12 ونسما)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> How many ordered quadruples \\( (w, x, y, z) \\) of positive ODD integers satisfy \\( w + x + y + z = 24 \\)?</p><p><strong>Solution:</strong> Parameterize every positive odd integer cleanly as \\( 2a + 1 \\) with non-negative integer \\( a \\ge 0 \\):<br>Set \\( w = 2a + 1,\\; x = 2b + 1,\\; y = 2c + 1,\\; z = 2d + 1 \\) where \\( a, b, c, d \\in \\mathbb{Z}_{\\ge 0} \\). Substituting into the sum:<br>\\[ (2a + 1) + (2b + 1) + (2c + 1) + (2d + 1) = 24 \\iff 2(a + b + c + d) = 20 \\iff a + b + c + d = 10. \\]<br>Now apply non-negative Stars and Bars with \\( n = 10 \\) stars and \\( k = 4 \\) variables:<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = \\frac{13 \\times 12 \\times 11}{6} = 286. \\]</p>",
-          "ar": "<p><strong>المسألة:</strong> كم رباعية مرتبة \\( (w, x, y, z) \\) من الأعداد الصحيحة الموجبة الفردية تحقق المعادلة \\( w + x + y + z = 24 \\)؟</p><p><strong>الحل الأولمبي:</strong> نمثّل كل عدد موجب فردي بالصورة \\( 2a + 1 \\) حيث \\( a \\ge 0 \\) عدد صحيح غير سالب:<br>نضع \\( w = 2a+1,\\; x = 2b+1,\\; y = 2c+1,\\; z = 2d+1 \\). وبالتعويض في المعادلة:<br>\\[ 2(a + b + c + d) + 4 = 24 \\iff a + b + c + d = 10 \\quad (a,b,c,d \\ge 0). \\]<br>بتطبيق قانون النجوم والفواصل لـ \\( n = 10 \\) و\\( k = 4 \\):<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = 286. \\]</p>"
+        "problem": {
+          "en": "How many ordered quadruples \\( (w, x, y, z) \\) of positive ODD integers satisfy \\( w + x + y + z = 24 \\)?",
+          "ar": "كم رباعية مرتبة \\( (w, x, y, z) \\) من الأعداد الصحيحة الموجبة الفردية تحقق المعادلة \\( w + x + y + z = 24 \\)؟"
+        },
+        "solution": {
+          "en": "<p>Parameterize every positive odd integer cleanly as \\( 2a + 1 \\) with non-negative integer \\( a \\ge 0 \\):<br>Set \\( w = 2a + 1,\\; x = 2b + 1,\\; y = 2c + 1,\\; z = 2d + 1 \\) where \\( a, b, c, d \\in \\mathbb{Z}_{\\ge 0} \\). Substituting into the sum:<br>\\[ (2a + 1) + (2b + 1) + (2c + 1) + (2d + 1) = 24 \\iff 2(a + b + c + d) = 20 \\iff a + b + c + d = 10. \\]<br>Now apply non-negative Stars and Bars with \\( n = 10 \\) stars and \\( k = 4 \\) variables:<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = \\frac{13 \\times 12 \\times 11}{6} = 286. \\]</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نمثّل كل عدد موجب فردي بالصورة \\( 2a + 1 \\) حيث \\( a \\ge 0 \\) عدد صحيح غير سالب:<br>نضع \\( w = 2a+1,\\; x = 2b+1,\\; y = 2c+1,\\; z = 2d+1 \\). وبالتعويض في المعادلة:<br>\\[ 2(a + b + c + d) + 4 = 24 \\iff a + b + c + d = 10 \\quad (a,b,c,d \\ge 0). \\]<br>بتطبيق قانون النجوم والفواصل لـ \\( n = 10 \\) و\\( k = 4 \\):<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = 286. \\]</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.B — Stars and Bars + PIE for Upper Bounds (AIME / KAUST KMC)",
           "ar": "مثال محلول 4.B — دمج النجوم والفواصل مع الشمول والإقصاء للقيود العليا (AIME / كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> How many integers between \\( 0 \\) and \\( 9999 \\) inclusive have a sum of decimal digits equal to \\( 14 \\)?</p><p><strong>Solution:</strong> Write a 4-digit padded string \\( d_1 d_2 d_3 d_4 \\) with \\( 0 \\le d_i \\le 9 \\) and \\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. Unrestricted non-negative solutions (\\( d_i \\ge 0 \\)): \\( \\binom{14 + 4 - 1}{3} = \\binom{17}{3} = 680 \\).<br>2. Let \\( A_i \\) be the bad set where \\( d_i \\ge 10 \\). Since \\( 10 + 10 = 20 > 14 \\), <strong>at most ONE digit can be \\( \\ge 10 \\)</strong> (all pairwise intersections \\( A_i \\cap A_j = \\emptyset \\)!).<br>3. For \\( A_1 \\), set \\( d_1' = d_1 - 10 \\ge 0 \\), giving \\( d_1' + d_2 + d_3 + d_4 = 4 \\), which has \\( \\binom{4 + 4 - 1}{3} = \\binom{7}{3} = 35 \\) solutions.<br>4. By PIE across the \\( 4 \\) digits:<br>\\[ 680 - \\binom{4}{1} \\cdot 35 = 680 - 140 = 540. \\]</p>",
-          "ar": "<p><strong>المسألة:</strong> كم عدداً صحيحاً من \\( 0 \\) إلى \\( 9999 \\) يساوي مجموع أرقامه العشرية \\( 14 \\)؟</p><p><strong>الحل الأولمبي:</strong> نمثّل كل عدد بأربع خانات \\( d_1 d_2 d_3 d_4 \\) تحقق \\( 0 \\le d_i \\le 9 \\) و\\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. عدد الحلول غير المقيدة بحد علوي (\\( d_i \\ge 0 \\)): \\( \\binom{17}{3} = 680 \\).<br>2. لتكن \\( A_i \\) مجموعة الحلول المرفوضة التي فيها \\( d_i \\ge 10 \\). بما أن \\( 10 + 10 = 20 > 14 \\)، يستحيل أن يتجاوز رقمان معاً الحد \\( 9 \\) (\\( A_i \\cap A_j = \\emptyset \\))!<br>3. لحساب \\( |A_1| \\) نضع \\( d_1' = d_1 - 10 \\ge 0 \\) فنحصل على \\( d_1' + d_2 + d_3 + d_4 = 4 \\)، وعدد حلولها \\( \\binom{7}{3} = 35 \\).<br>4. بتطبيق مبدأ الشمول والإقصاء على الخانات الأربع: \\( 680 - 4(35) = 540 \\) عدداً.</p>"
+        "problem": {
+          "en": "How many integers between \\( 0 \\) and \\( 9999 \\) inclusive have a sum of decimal digits equal to \\( 14 \\)?",
+          "ar": "كم عدداً صحيحاً من \\( 0 \\) إلى \\( 9999 \\) يساوي مجموع أرقامه العشرية \\( 14 \\)؟"
+        },
+        "solution": {
+          "en": "<p>Write a 4-digit padded string \\( d_1 d_2 d_3 d_4 \\) with \\( 0 \\le d_i \\le 9 \\) and \\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. Unrestricted non-negative solutions (\\( d_i \\ge 0 \\)): \\( \\binom{14 + 4 - 1}{3} = \\binom{17}{3} = 680 \\).<br>2. Let \\( A_i \\) be the bad set where \\( d_i \\ge 10 \\). Since \\( 10 + 10 = 20 > 14 \\), <strong>at most ONE digit can be \\( \\ge 10 \\)</strong> (all pairwise intersections \\( A_i \\cap A_j = \\emptyset \\)!).<br>3. For \\( A_1 \\), set \\( d_1' = d_1 - 10 \\ge 0 \\), giving \\( d_1' + d_2 + d_3 + d_4 = 4 \\), which has \\( \\binom{4 + 4 - 1}{3} = \\binom{7}{3} = 35 \\) solutions.<br>4. By PIE across the \\( 4 \\) digits:<br>\\[ 680 - \\binom{4}{1} \\cdot 35 = 680 - 140 = 540. \\]</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نمثّل كل عدد بأربع خانات \\( d_1 d_2 d_3 d_4 \\) تحقق \\( 0 \\le d_i \\le 9 \\) و\\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. عدد الحلول غير المقيدة بحد علوي (\\( d_i \\ge 0 \\)): \\( \\binom{17}{3} = 680 \\).<br>2. لتكن \\( A_i \\) مجموعة الحلول المرفوضة التي فيها \\( d_i \\ge 10 \\). بما أن \\( 10 + 10 = 20 > 14 \\)، يستحيل أن يتجاوز رقمان معاً الحد \\( 9 \\) (\\( A_i \\cap A_j = \\emptyset \\))!<br>3. لحساب \\( |A_1| \\) نضع \\( d_1' = d_1 - 10 \\ge 0 \\) فنحصل على \\( d_1' + d_2 + d_3 + d_4 = 4 \\)، وعدد حلولها \\( \\binom{7}{3} = 35 \\).<br>4. بتطبيق مبدأ الشمول والإقصاء على الخانات الأربع: \\( 680 - 4(35) = 540 \\) عدداً.</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.C — Geometric Pigeonhole on Lattice Midpoints & Unit Squares (NSMO)",
           "ar": "مثال محلول 4.C — برج الحمام الهندسي على منتصفات الشبكة والمربعات (نسما)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> (a) What is the minimum number of lattice points \\( (x_i, y_i) \\in \\mathbb{Z}^3 \\) in 3D space that MUST be chosen to guarantee at least two chosen points have a midpoint that is ALSO an integer lattice point? (b) If \\( 10 \\) points are placed inside a \\( 3 \\times 3 \\) square, prove two lie at distance \\( \\le \\sqrt{2} \\).</p><p><strong>Solution:</strong><br><strong>(a)</strong> The midpoint \\( \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}, \\frac{z_1+z_2}{2}\\right) \\) is in \\( \\mathbb{Z}^3 \\) iff \\( x_1 \\equiv x_2 \\), \\( y_1 \\equiv y_2 \\), and \\( z_1 \\equiv z_2 \\pmod 2 \\). Each coordinate has \\( 2 \\) parities (Even/Odd), creating \\( 2^3 = 8 \\) parity classes (pigeonholes). Choosing \\( 8 \\) points can place one in each parity class, whereas choosing <strong>\\( 8 + 1 = 9 \\) points</strong> guarantees by Pigeonhole that two share identical parity in all three coordinates!<br><strong>(b)</strong> Partition the \\( 3 \\times 3 \\) square into \\( 9 \\) unit \\( 1 \\times 1 \\) subsquares. With \\( 10 \\) points in \\( 9 \\) boxes, one \\( 1 \\times 1 \\) box contains at least \\( 2 \\) points, and the maximum distance inside a \\( 1 \\times 1 \\) square is its diagonal \\( \\sqrt{1^2 + 1^2} = \\sqrt{2} \\)!</p>",
-          "ar": "<p><strong>المسألة:</strong> (أ) ما أقل عدد من النقاط الصحيحة \\( (x_i, y_i, z_i) \\in \\mathbb{Z}^3 \\) في الفضاء ثلاثي الأبعاد يجب اختياره لضمان وجود نقطتين منتصفهما نقطة صحيحة أيضاً؟ (ب) برهن أنه عند وضع \\( 10 \\) نقاط داخل مربع \\( 3 \\times 3 \\)، توجد نقطتان المسافة بينهما لا تتجاوز \\( \\sqrt{2} \\).</p><p><strong>الحل الأولمبي:</strong><br><strong>(أ)</strong> يكون المنتصف صحيحاً إذا وفقط إذا تطابقت زوجية الإحداثيات الثلاثة \\( \\pmod 2 \\). هناك \\( 2^3 = 8 \\) أصناف زوجية ممكنة (صناديق)؛ لذا فاختيار <strong>\\( 8 + 1 = 9 \\) نقاط</strong> يضمن بمبدأ برج الحمام وقوع نقطتين في الصنف نفسه!<br><strong>(ب)</strong> نقسّم المربع \\( 3 \\times 3 \\) إلى \\( 9 \\) مربعات وحدة \\( 1 \\times 1 \\). بوجود \\( 10 \\) نقاط في \\( 9 \\) مربعات، يضم أحد المربعات نقطتين على الأقل، وأقصى مسافة داخل مربع الوحدة هي طول قطره \\( \\sqrt{2} \\)!</p>"
+        "problem": {
+          "en": "(a) What is the minimum number of lattice points \\( (x_i, y_i) \\in \\mathbb{Z}^3 \\) in 3D space that MUST be chosen to guarantee at least two chosen points have a midpoint that is ALSO an integer lattice point? (b) If \\( 10 \\) points are placed inside a \\( 3 \\times 3 \\) square, prove two lie at distance \\( \\le \\sqrt{2} \\).",
+          "ar": "(أ) ما أقل عدد من النقاط الصحيحة \\( (x_i, y_i, z_i) \\in \\mathbb{Z}^3 \\) في الفضاء ثلاثي الأبعاد يجب اختياره لضمان وجود نقطتين منتصفهما نقطة صحيحة أيضاً؟ (ب) برهن أنه عند وضع \\( 10 \\) نقاط داخل مربع \\( 3 \\times 3 \\)، توجد نقطتان المسافة بينهما لا تتجاوز \\( \\sqrt{2} \\)."
+        },
+        "solution": {
+          "en": "<p><br><strong>(a)</strong> The midpoint \\( \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}, \\frac{z_1+z_2}{2}\\right) \\) is in \\( \\mathbb{Z}^3 \\) iff \\( x_1 \\equiv x_2 \\), \\( y_1 \\equiv y_2 \\), and \\( z_1 \\equiv z_2 \\pmod 2 \\). Each coordinate has \\( 2 \\) parities (Even/Odd), creating \\( 2^3 = 8 \\) parity classes (pigeonholes). Choosing \\( 8 \\) points can place one in each parity class, whereas choosing <strong>\\( 8 + 1 = 9 \\) points</strong> guarantees by Pigeonhole that two share identical parity in all three coordinates!<br><strong>(b)</strong> Partition the \\( 3 \\times 3 \\) square into \\( 9 \\) unit \\( 1 \\times 1 \\) subsquares. With \\( 10 \\) points in \\( 9 \\) boxes, one \\( 1 \\times 1 \\) box contains at least \\( 2 \\) points, and the maximum distance inside a \\( 1 \\times 1 \\) square is its diagonal \\( \\sqrt{1^2 + 1^2} = \\sqrt{2} \\)!</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong><br><strong>(أ)</strong> يكون المنتصف صحيحاً إذا وفقط إذا تطابقت زوجية الإحداثيات الثلاثة \\( \\pmod 2 \\). هناك \\( 2^3 = 8 \\) أصناف زوجية ممكنة (صناديق)؛ لذا فاختيار <strong>\\( 8 + 1 = 9 \\) نقاط</strong> يضمن بمبدأ برج الحمام وقوع نقطتين في الصنف نفسه!<br><strong>(ب)</strong> نقسّم المربع \\( 3 \\times 3 \\) إلى \\( 9 \\) مربعات وحدة \\( 1 \\times 1 \\). بوجود \\( 10 \\) نقاط في \\( 9 \\) مربعات، يضم أحد المربعات نقطتين على الأقل، وأقصى مسافة داخل مربع الوحدة هي طول قطره \\( \\sqrt{2} \\)!</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.D — Partial Derangements (KAUST Finals / Olympiad Classic)",
           "ar": "مثال محلول 4.D — التبديلات الجزئية الخالية من النقاط الثابتة (نهائيات كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Six research fellows at KAUST submit 6 distinct lab notebooks for blind peer review. How many ways can the 6 notebooks be redistributed so that <strong>exactly 2</strong> fellows receive their own notebook and the remaining 4 fellows each receive someone else's notebook?</p><p><strong>Solution:</strong> Decompose into two independent decisions:<br>1. Choose WHICH \\( 2 \\) of the \\( 6 \\) fellows are fixed points: \\( \\binom{6}{2} = 15 \\) ways.<br>2. Derange the remaining \\( 4 \\) notebooks so NONE of those \\( 4 \\) fellows receives their own notebook: the number of derangements of \\( 4 \\) items is:<br>\\[ D_4 = 4!\\left(1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 - 24 + 12 - 4 + 1 = 9. \\]<br>By the multiplication rule, total valid redistributions \\( = 15 \\times 9 = 135 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> قدّم \\( 6 \\) باحثين في كاوست \\( 6 \\) دفاتر أبحاث متمايزة للمراجعة المعمّاة. بكم طريقة يمكن إعادة توزيع الدفاتر الستة بحيث يحصل <strong>باحثان اثنان بالضبط</strong> على دفتريهما الأصليين بينما يحصل كل من الأربعة الباقين على دفتر زميل آخر؟</p><p><strong>الحل الأولمبي:</strong> نفكك العملية إلى خطوتين مستقلتين:<br>1. اختيار الباحثَين اللذين يمثلان نقطتين ثابتتين: \\( \\binom{6}{2} = 15 \\) طريقة.<br>2. تبديل دفاتر الباحثين الأربعة الباقين تبديلاً خالياً تماماً من النقاط الثابتة (\\( D_4 \\)):<br>\\[ D_4 = 4!\\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 12 - 4 + 1 = 9. \\]<br>بمبدأ العد الأساسي، عدد الطرق الكلي \\( = 15 \\times 9 = 135 \\) طريقة.</p>"
+        "problem": {
+          "en": "Six research fellows at KAUST submit 6 distinct lab notebooks for blind peer review. How many ways can the 6 notebooks be redistributed so that <strong>exactly 2</strong> fellows receive their own notebook and the remaining 4 fellows each receive someone else's notebook?",
+          "ar": "قدّم \\( 6 \\) باحثين في كاوست \\( 6 \\) دفاتر أبحاث متمايزة للمراجعة المعمّاة. بكم طريقة يمكن إعادة توزيع الدفاتر الستة بحيث يحصل <strong>باحثان اثنان بالضبط</strong> على دفتريهما الأصليين بينما يحصل كل من الأربعة الباقين على دفتر زميل آخر؟"
+        },
+        "solution": {
+          "en": "<p>Decompose into two independent decisions:<br>1. Choose WHICH \\( 2 \\) of the \\( 6 \\) fellows are fixed points: \\( \\binom{6}{2} = 15 \\) ways.<br>2. Derange the remaining \\( 4 \\) notebooks so NONE of those \\( 4 \\) fellows receives their own notebook: the number of derangements of \\( 4 \\) items is:<br>\\[ D_4 = 4!\\left(1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 - 24 + 12 - 4 + 1 = 9. \\]<br>By the multiplication rule, total valid redistributions \\( = 15 \\times 9 = 135 \\).</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نفكك العملية إلى خطوتين مستقلتين:<br>1. اختيار الباحثَين اللذين يمثلان نقطتين ثابتتين: \\( \\binom{6}{2} = 15 \\) طريقة.<br>2. تبديل دفاتر الباحثين الأربعة الباقين تبديلاً خالياً تماماً من النقاط الثابتة (\\( D_4 \\)):<br>\\[ D_4 = 4!\\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 12 - 4 + 1 = 9. \\]<br>بمبدأ العد الأساسي، عدد الطرق الكلي \\( = 15 \\times 9 = 135 \\) طريقة.</p>"
         }
       },
       {

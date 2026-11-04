@@ -254,50 +254,62 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.A — Deriving the MLE of a Bernoulli Parameter",
           "ar": "مثال محلول 5.A — Deriving the MLE of a Bernoulli المعامل"
         },
-        "body": {
-          "en": "<p>Let \\( x_1, x_2, \\dots, x_N \\in \\{0, 1\\} \\) be \\( N \\) binary outcomes from a coin toss with unknown bias \\( p \\). Deriving the MLE estimator for \\( p \\).</p><p><strong>Solution:</strong><br>The probability of single outcome is \\( P(x_i) = p^{x_i}(1-p)^{1-x_i} \\).<br>The likelihood for \\( N \\) i.i.d. observations is:<br>\\[ L(p) = \\prod_{i=1}^N p^{x_i}(1-p)^{1-x_i} = p^{\\sum x_i} (1-p)^{N - \\sum x_i} \\]<br>Let \\( k = \\sum_{i=1}^N x_i \\) be the total number of successes.<br>Log-likelihood:<br>\\[ \\ell(p) = \\ln L(p) = k \\ln p + (N - k) \\ln(1 - p) \\]<br>Differentiate with respect to \\( p \\) and set to 0:<br>\\[ \\frac{d\\ell}{dp} = \\frac{k}{p} - \\frac{N - k}{1 - p} = 0 \\implies \\frac{k}{p} = \\frac{N - k}{1 - p} \\]<br>\\[ k(1 - p) = p(N - k) \\implies k - kp = Np - kp \\implies Np = k \\implies \\hat{p}_{\\text{MLE}} = \\frac{k}{N} \\].<br>Checking second derivative: \\( \\frac{d^2\\ell}{dp^2} = -\\frac{k}{p^2} - \\frac{N-k}{(1-p)^2} < 0 \\), confirming a maximum.<br><strong>Answer:</strong> \\( \\hat{p}_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N x_i \\).</p>",
+        "problem": {
+          "en": "Let \\( x_1, x_2, \\dots, x_N \\in \\{0, 1\\} \\) be \\( N \\) binary outcomes from a coin toss with unknown bias \\( p \\). Deriving the MLE estimator for \\( p \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><br>The probability of single outcome is \\( P(x_i) = p^{x_i}(1-p)^{1-x_i} \\).<br>The likelihood for \\( N \\) i.i.d. observations is:<br>\\[ L(p) = \\prod_{i=1}^N p^{x_i}(1-p)^{1-x_i} = p^{\\sum x_i} (1-p)^{N - \\sum x_i} \\]<br>Let \\( k = \\sum_{i=1}^N x_i \\) be the total number of successes.<br>Log-likelihood:<br>\\[ \\ell(p) = \\ln L(p) = k \\ln p + (N - k) \\ln(1 - p) \\]<br>Differentiate with respect to \\( p \\) and set to 0:<br>\\[ \\frac{d\\ell}{dp} = \\frac{k}{p} - \\frac{N - k}{1 - p} = 0 \\implies \\frac{k}{p} = \\frac{N - k}{1 - p} \\]<br>\\[ k(1 - p) = p(N - k) \\implies k - kp = Np - kp \\implies Np = k \\implies \\hat{p}_{\\text{MLE}} = \\frac{k}{N} \\].<br>Checking second derivative: \\( \\frac{d^2\\ell}{dp^2} = -\\frac{k}{p^2} - \\frac{N-k}{(1-p)^2} < 0 \\), confirming a maximum.<br><strong>Answer:</strong> \\( \\hat{p}_{\\text{MLE}} = \\frac{1}{N}\\sum_{i=1}^N x_i \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Probability Distributions & Maximum Likelihood (MLE) (Medium Application)",
           "ar": "مثال محلول B — التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE) (تطبيق Medium)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{A} \\) yields eigenvalues \\( \\lambda_1 = 51 \\) and \\( \\lambda_2 = 49 \\). Determine the percentage of variance \\( f_{x} \\) explained by the first principal component.</p><p><strong>Step-by-Step Solution:</strong> The percentage explained is \\( \\frac{51}{51+49} \\times 100\\% = 51\\% \\).</p>",
+        "problem": {
+          "en": "Principal Component Analysis on covariance matrix \\( \\Sigma_{A} \\) yields eigenvalues \\( \\lambda_1 = 51 \\) and \\( \\lambda_2 = 49 \\). Determine the percentage of variance \\( f_{x} \\) explained by the first principal component.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The percentage explained is \\( \\frac{51}{51+49} \\times 100\\% = 51\\% \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Probability Distributions & Maximum Likelihood (MLE) (Hard Application)",
           "ar": "مثال محلول C — التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE) (تطبيق Hard)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider an i.i.d. sample \\( x_1, x_2, \\dots, x_n \\) from a Poisson distribution with probability mass function \\( P(X = k; \\theta) = \\frac{\\theta^k e^{-\\theta}}{k!} \\) for \\( k = 0, 1, 2, \\dots \\), where \\( \\theta > 0 \\). Given a sample of size \\( n = 5 \\) with sample sum \\( \\sum_{i=1}^5 x_i = 15 \\), find the maximum likelihood estimate (MLE) \\( \\hat{\\theta} \\) of \\( \\theta \\).</p><p><strong>Step-by-Step Solution:</strong> The log-likelihood function for \\( n \\) i.i.d. Poisson(\\/\\(\\theta\\)) observations is:\n\\[ \\ell(\\theta) = \\sum_{i=1}^n x_i \\ln\\theta - n\\theta - \\sum_{i=1}^n \\ln(x_i!). \\]\nSetting the derivative with respect to \\( \\theta \\) equal to zero gives:\n\\[ \\frac{d\\ell}{d\\theta} = \\frac{\\sum_{i=1}^n x_i}{\\theta} - n = 0 \\implies \\hat{\\theta} = \\frac{1}{n}\\sum_{i=1}^n x_i = \\frac{15}{5} = 3. \\]</p>",
+        "problem": {
+          "en": "Consider an i.i.d. sample \\( x_1, x_2, \\dots, x_n \\) from a Poisson distribution with probability mass function \\( P(X = k; \\theta) = \\frac{\\theta^k e^{-\\theta}}{k!} \\) for \\( k = 0, 1, 2, \\dots \\), where \\( \\theta > 0 \\). Given a sample of size \\( n = 5 \\) with sample sum \\( \\sum_{i=1}^5 x_i = 15 \\), find the maximum likelihood estimate (MLE) \\( \\hat{\\theta} \\) of \\( \\theta \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The log-likelihood function for \\( n \\) i.i.d. Poisson(\\/\\(\\theta\\)) observations is:\n\\[ \\ell(\\theta) = \\sum_{i=1}^n x_i \\ln\\theta - n\\theta - \\sum_{i=1}^n \\ln(x_i!). \\]\nSetting the derivative with respect to \\( \\theta \\) equal to zero gives:\n\\[ \\frac{d\\ell}{d\\theta} = \\frac{\\sum_{i=1}^n x_i}{\\theta} - n = 0 \\implies \\hat{\\theta} = \\frac{1}{n}\\sum_{i=1}^n x_i = \\frac{15}{5} = 3. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Probability Distributions & Maximum Likelihood (MLE) (Easy Application)",
           "ar": "مثال محلول D — التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE) (تطبيق Easy)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Consider a discrete random variable \\( X \\) with the following probability mass function (PMF): \\( P(X=x) = \\frac{x}{10} \\) for \\( x \\in \\{1, 2, 3, 4\\} \\). What is the value of \\( P(X \\le 2) \\)?</p><p><strong>Step-by-Step Solution:</strong> The probability mass function is given by \\( P(X=x) = \\frac{x}{10} \\) for \\( x \\in \\{1, 2, 3, 4\\} \\). We need to find \\( P(X \\le 2) \\). This is the sum of probabilities for \\( X=1 \\) and \\( X=2 \\). \\( P(X \\le 2) = P(X=1) + P(X=2) \\). \\( P(X=1) = \\frac{1}{10} \\) and \\( P(X=2) = \\frac{2}{10} \\). Therefore, \\( P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10} \\).</p>",
+        "problem": {
+          "en": "Consider a discrete random variable \\( X \\) with the following probability mass function (PMF): \\( P(X=x) = \\frac{x}{10} \\) for \\( x \\in \\{1, 2, 3, 4\\} \\). What is the value of \\( P(X \\le 2) \\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The probability mass function is given by \\( P(X=x) = \\frac{x}{10} \\) for \\( x \\in \\{1, 2, 3, 4\\} \\). We need to find \\( P(X \\le 2) \\). This is the sum of probabilities for \\( X=1 \\) and \\( X=2 \\). \\( P(X \\le 2) = P(X=1) + P(X=2) \\). \\( P(X=1) = \\frac{1}{10} \\) and \\( P(X=2) = \\frac{2}{10} \\). Therefore, \\( P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10} \\).</p>",
           "ar": null
         }
       },

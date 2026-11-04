@@ -135,26 +135,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Gauss–Jordan Elimination to RREF",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Solve the linear system using Gauss–Jordan elimination: \\[ \\begin{aligned} x_1 + 2x_2 - x_3 &= 1 \\\\ 2x_1 + 5x_2 + x_3 &= 7 \\\\ 3x_1 + 7x_2 + 2x_3 &= 12 \\end{aligned} \\]</p><p><strong>Step 1 · Form the Augmented Matrix:</strong> \\[ [A \\mid \\mathbf{b}] = \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 2 & 5 & 1 & | & 7 \\\\ 3 & 7 & 2 & | & 12 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Forward Elimination (Column 1):</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_3 \\leftarrow R_3 - 3R_1 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 1 & 5 & | & 9 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Forward Elimination (Column 2):</strong><br>Perform \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 2 & | & 4 \\end{pmatrix}. \\]</p><p><strong>Step 4 · Backward Elimination to RREF:</strong><br>Scale \\( R_3 \\leftarrow \\frac{1}{2}R_3 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\] Eliminate above pivot 3: \\( R_2 \\leftarrow R_2 - 3R_3 \\) and \\( R_1 \\leftarrow R_1 + R_3 \\): \\[ \\begin{pmatrix} 1 & 2 & 0 & | & 3 \\\\ 0 & 1 & 0 & | & -1 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\] Eliminate above pivot 2: \\( R_1 \\leftarrow R_1 - 2R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 0 & | & 5 \\\\ 0 & 1 & 0 & | & -1 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\]</p><p><strong>Conclusion:</strong> The system has the unique solution \\( \\mathbf{x_1 = 5, \\; x_2 = -1, \\; x_3 = 2} \\).</p>",
+        "problem": {
+          "en": "Solve the linear system using Gauss–Jordan elimination: \\[ \\begin{aligned} x_1 + 2x_2 - x_3 &= 1 \\\\ 2x_1 + 5x_2 + x_3 &= 7 \\\\ 3x_1 + 7x_2 + 2x_3 &= 12 \\end{aligned} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Form the Augmented Matrix:</strong> \\[ [A \\mid \\mathbf{b}] = \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 2 & 5 & 1 & | & 7 \\\\ 3 & 7 & 2 & | & 12 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Forward Elimination (Column 1):</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_3 \\leftarrow R_3 - 3R_1 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 1 & 5 & | & 9 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Forward Elimination (Column 2):</strong><br>Perform \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 2 & | & 4 \\end{pmatrix}. \\]</p><p><strong>Step 4 · Backward Elimination to RREF:</strong><br>Scale \\( R_3 \\leftarrow \\frac{1}{2}R_3 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\] Eliminate above pivot 3: \\( R_2 \\leftarrow R_2 - 3R_3 \\) and \\( R_1 \\leftarrow R_1 + R_3 \\): \\[ \\begin{pmatrix} 1 & 2 & 0 & | & 3 \\\\ 0 & 1 & 0 & | & -1 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\] Eliminate above pivot 2: \\( R_1 \\leftarrow R_1 - 2R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 0 & | & 5 \\\\ 0 & 1 & 0 & | & -1 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\]</p><p><strong>Conclusion:</strong> The system has the unique solution \\( \\mathbf{x_1 = 5, \\; x_2 = -1, \\; x_3 = 2} \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Systems of Linear Equations & Row Reduction (Medium Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Consider the following system of linear equations represented by an augmented matrix: \\( \\begin{bmatrix} 1 & 2 & | & 5 \\\\ 0 & 1 & | & 2 \\end{bmatrix} \\). What is the value of \\( x \\) in the first equation?</p><p><strong>Step-by-Step Solution:</strong> The augmented matrix represents the system of equations: \\( x + 2y = 5 \\) and \\( y = 2 \\). We are asked to find the value of \\( x \\). We can use substitution to solve for \\( x \\). Substitute the value of \\( y \\) from the second equation into the first equation: \\( x + 2(2) = 5 \\). This simplifies to \\( x + 4 = 5 \\). Subtracting 4 from both sides gives \\( x = 1 \\). Therefore, the value of \\( x \\) in the first equation is 1.</p>",
+        "problem": {
+          "en": "Consider the following system of linear equations represented by an augmented matrix: \\( \\begin{bmatrix} 1 & 2 & | & 5 \\\\ 0 & 1 & | & 2 \\end{bmatrix} \\). What is the value of \\( x \\) in the first equation?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The augmented matrix represents the system of equations: \\( x + 2y = 5 \\) and \\( y = 2 \\). We are asked to find the value of \\( x \\). We can use substitution to solve for \\( x \\). Substitute the value of \\( y \\) from the second equation into the first equation: \\( x + 2(2) = 5 \\). This simplifies to \\( x + 4 = 5 \\). Subtracting 4 from both sides gives \\( x = 1 \\). Therefore, the value of \\( x \\) in the first equation is 1.</p>",
           "ar": null
         }
       },
@@ -431,14 +437,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 2 (Medium) — Worked Example · Parametric Vector Form for Consistent Underdetermined Systems",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Express the solution set of the system in parametric vector form: \\[ \\begin{aligned} x_1 - 2x_2 + x_3 + 3x_4 &= 4 \\\\ 2x_1 - 4x_2 + 3x_3 + 8x_4 &= 11 \\end{aligned} \\]</p><p><strong>Step 1 · Reduce Augmented Matrix to RREF:</strong> \\[ \\begin{pmatrix} 1 & -2 & 1 & 3 & | & 4 \\\\ 2 & -4 & 3 & 8 & | & 11 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - 2R_1} \\begin{pmatrix} 1 & -2 & 1 & 3 & | & 4 \\\\ 0 & 0 & 1 & 2 & | & 3 \\end{pmatrix}. \\] Eliminate above pivot 2 via \\( R_1 \\leftarrow R_1 - R_2 \\): \\[ \\begin{pmatrix} 1 & -2 & 0 & 1 & | & 1 \\\\ 0 & 0 & 1 & 2 & | & 3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Identify Basic and Free Variables:</strong><br>Pivots are in columns 1 and 3 \\(\\implies x_1, x_3\\) are <strong>basic variables</strong>.<br>Columns 2 and 4 lack pivots \\(\\implies x_2 = s\\) and \\(x_4 = t\\) are <strong>free parameters</strong> (\\(s, t \\in \\mathbb{R}\\)).</p><p><strong>Step 3 · Express Basic Variables in terms of Free Variables:</strong> \\[ x_1 = 1 + 2s - t, \\qquad x_3 = 3 - 2t. \\]</p><p><strong>Step 4 · Assemble Parametric Vector Form:</strong> \\[ \\mathbf{x} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{pmatrix} = \\begin{pmatrix} 1 + 2s - t \\\\ s \\\\ 3 - 2t \\\\ t \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 1 \\\\ 0 \\\\ 3 \\\\ 0 \\end{pmatrix} + s\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\\\ 1 \\end{pmatrix}}. \\]</p><p><em>Geometric Interpretation:</em> The solution set is a 2-dimensional affine plane in \\( \\mathbb{R}^4 \\) passing through particular solution \\( \\mathbf{x}_p = (1, 0, 3, 0)^T \\) spanned by the null space vectors.</p>",
+        "problem": {
+          "en": "Express the solution set of the system in parametric vector form: \\[ \\begin{aligned} x_1 - 2x_2 + x_3 + 3x_4 &= 4 \\\\ 2x_1 - 4x_2 + 3x_3 + 8x_4 &= 11 \\end{aligned} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Reduce Augmented Matrix to RREF:</strong> \\[ \\begin{pmatrix} 1 & -2 & 1 & 3 & | & 4 \\\\ 2 & -4 & 3 & 8 & | & 11 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - 2R_1} \\begin{pmatrix} 1 & -2 & 1 & 3 & | & 4 \\\\ 0 & 0 & 1 & 2 & | & 3 \\end{pmatrix}. \\] Eliminate above pivot 2 via \\( R_1 \\leftarrow R_1 - R_2 \\): \\[ \\begin{pmatrix} 1 & -2 & 0 & 1 & | & 1 \\\\ 0 & 0 & 1 & 2 & | & 3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Identify Basic and Free Variables:</strong><br>Pivots are in columns 1 and 3 \\(\\implies x_1, x_3\\) are <strong>basic variables</strong>.<br>Columns 2 and 4 lack pivots \\(\\implies x_2 = s\\) and \\(x_4 = t\\) are <strong>free parameters</strong> (\\(s, t \\in \\mathbb{R}\\)).</p><p><strong>Step 3 · Express Basic Variables in terms of Free Variables:</strong> \\[ x_1 = 1 + 2s - t, \\qquad x_3 = 3 - 2t. \\]</p><p><strong>Step 4 · Assemble Parametric Vector Form:</strong> \\[ \\mathbf{x} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{pmatrix} = \\begin{pmatrix} 1 + 2s - t \\\\ s \\\\ 3 - 2t \\\\ t \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 1 \\\\ 0 \\\\ 3 \\\\ 0 \\end{pmatrix} + s\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\\\ 1 \\end{pmatrix}}. \\]</p><p><em>Geometric Interpretation:</em> The solution set is a 2-dimensional affine plane in \\( \\mathbb{R}^4 \\) passing through particular solution \\( \\mathbf{x}_p = (1, 0, 3, 0)^T \\) spanned by the null space vectors.</p>",
           "ar": null
         }
       },
@@ -500,14 +509,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 3 (Advanced) — Worked Example · Complete Parameter Bifurcation Analysis",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Determine all values of the parameter \\( k \\in \\mathbb{R} \\) for which the linear system has (a) a unique solution, (b) infinitely many solutions, or (c) no solution: \\[ \\begin{aligned} x + y + kz &= 2 \\\\ 3x + 4y + 2z &= k \\\\ 2x + 3y - z &= 1 \\end{aligned} \\]</p><p><strong>Step 1 · Set up Augmented Matrix and Row Reduce:</strong> \\[ \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 3 & 4 & 2 & | & k \\\\ 2 & 3 & -1 & | & 1 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 - 3R_1 \\\\ R_3 \\leftarrow R_3 - 2R_1}} \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 1 & -1 - 2k & | & -3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Eliminate Column 2 in Row 3:</strong> Perform \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 0 & (-1 - 2k) - (2 - 3k) & | & -3 - (k - 6) \\end{pmatrix} = \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 0 & k - 3 & | & 3 - k \\end{pmatrix}. \\]</p><p><strong>Step 3 · Analyze Row 3: \\( (k - 3)z = 3 - k \\):</strong><br>• <strong>Case 1 (\\( k \\neq 3 \\)):</strong> The coefficient \\( k - 3 \\neq 0 \\), so there is a pivot in row 3 column 3. All three columns of \\( A \\) have pivots \\(\\implies\\) <strong>Unique solution</strong> for all \\( \\mathbf{k \\neq 3} \\) (with \\( z = -1 \\)).<br>• <strong>Case 2 (\\( k = 3 \\)):</strong> Row 3 becomes: \\[ \\begin{pmatrix} 0 & 0 & 3 - 3 & | & 3 - 3 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 & 0 & | & 0 \\end{pmatrix}. \\] The system is consistent and column 3 lacks a pivot (\\( z \\) is free) \\(\\implies\\) <strong>Infinitely many solutions</strong> when \\( \\mathbf{k = 3} \\).<br>• <strong>Case 3 (No Solution):</strong> For row 3 to represent a contradiction \\( 0 = d \\neq 0 \\), we would require \\( k - 3 = 0 \\) and \\( 3 - k \\neq 0 \\), which is impossible since \\( 3 - 3 = 0 \\). Hence there is <strong>no value of \\( k \\) for which the system is inconsistent</strong>.</p>",
+        "problem": {
+          "en": "Determine all values of the parameter \\( k \\in \\mathbb{R} \\) for which the linear system has (a) a unique solution, (b) infinitely many solutions, or (c) no solution: \\[ \\begin{aligned} x + y + kz &= 2 \\\\ 3x + 4y + 2z &= k \\\\ 2x + 3y - z &= 1 \\end{aligned} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Set up Augmented Matrix and Row Reduce:</strong> \\[ \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 3 & 4 & 2 & | & k \\\\ 2 & 3 & -1 & | & 1 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 - 3R_1 \\\\ R_3 \\leftarrow R_3 - 2R_1}} \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 1 & -1 - 2k & | & -3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Eliminate Column 2 in Row 3:</strong> Perform \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 0 & (-1 - 2k) - (2 - 3k) & | & -3 - (k - 6) \\end{pmatrix} = \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 0 & k - 3 & | & 3 - k \\end{pmatrix}. \\]</p><p><strong>Step 3 · Analyze Row 3: \\( (k - 3)z = 3 - k \\):</strong><br>• <strong>Case 1 (\\( k \\neq 3 \\)):</strong> The coefficient \\( k - 3 \\neq 0 \\), so there is a pivot in row 3 column 3. All three columns of \\( A \\) have pivots \\(\\implies\\) <strong>Unique solution</strong> for all \\( \\mathbf{k \\neq 3} \\) (with \\( z = -1 \\)).<br>• <strong>Case 2 (\\( k = 3 \\)):</strong> Row 3 becomes: \\[ \\begin{pmatrix} 0 & 0 & 3 - 3 & | & 3 - 3 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 & 0 & | & 0 \\end{pmatrix}. \\] The system is consistent and column 3 lacks a pivot (\\( z \\) is free) \\(\\implies\\) <strong>Infinitely many solutions</strong> when \\( \\mathbf{k = 3} \\).<br>• <strong>Case 3 (No Solution):</strong> For row 3 to represent a contradiction \\( 0 = d \\neq 0 \\), we would require \\( k - 3 = 0 \\) and \\( 3 - k \\neq 0 \\), which is impossible since \\( 3 - 3 = 0 \\). Hence there is <strong>no value of \\( k \\) for which the system is inconsistent</strong>.</p>",
           "ar": null
         }
       },

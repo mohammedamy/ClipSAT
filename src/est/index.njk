@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: est
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/est/"
+enAltPath: "/est/"
+arAltPath: "/ar/est/"
 title: "EST Math · ClipSAT"
 description: "Core algebraic reasoning and quantitative analysis for the EST I test"
-isRtl: false
 ---
 {#
   Renders from content/est/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -13,33 +18,28 @@ isRtl: false
   to be kept as an inert rollback path — no longer needed once every track had been
   migrated and verified live.
 #}
-{% set est = migratedContent.est %}
-{% set pageHeader = est.meta.meta.pageHeader %}
-<main id="view-est" class="view active">
+{% set trackData = migratedContent.est %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'est-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'est-testgen' %}
+{% set downloadsId = 'est-downloads' %}
+<main id="view-est" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = est.chapters %}
-    {% set practiceSetId = 'est-practice' %}
-    {% set testGeneratorId = 'est-testgen' %}
-    {% set downloadsId = 'est-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in est.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'est-practice' %}
-      {% set practiceSet = est.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'est-testgen' %}
-      {% set testGenerator = est.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'est-downloads' %}
-      {% set courseMeta = est.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

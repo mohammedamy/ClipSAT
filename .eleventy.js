@@ -13,20 +13,60 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/vendor": "vendor" });
   eleventyConfig.addPassthroughCopy({ "public/data": "data" });
 
-  // ── Build-time KaTeX pre-rendering (all 21 tracks) ────────────────────────
-  // See scripts/katex-ssr.js for the full scoping rationale. Runs as a
-  // transform (on the FINAL rendered HTML, after _bilingual.njk and every
-  // block partial have already expanded) rather than hooking any one
-  // template, since math text only exists in its final form at that point.
-  // Was gated to Calculus alone for an initial trial (PR #175); verified
-  // clean in production (Puppeteer CLS probe + live Lighthouse), then
-  // widened here to every page. No per-track allowlist needed — pages with
-  // no .chapter element (home, legal pages) already no-op via
-  // renderChapterMath's own early return.
-  eleventyConfig.addTransform("katex-ssr", function (content, outputPath) {
-    if (!outputPath || !outputPath.endsWith(".html")) return content;
-    return renderChapterMath(content, outputPath);
-  });
+  // ── Build-time KaTeX pre-rendering (all 31 tracks + 612 chapter pages) ────
+  // Executed sequentially per HTML file in eleventy.after (before stampSwVersion)
+  // rather than concurrently across 860+ Promise.all buffers in addTransform,
+  // keeping peak V8 heap strictly under 512 MB.
+  function compactHtmlSafely(html) {
+    const preserved = [];
+    const masked = html.replace(
+      /<(script|style|pre|textarea)\b[^>]*>[\s\S]*?<\/\1>/gi,
+      (m) => {
+        const idx = preserved.length;
+        preserved.push(m);
+        return `\u0000CSPRESERVE_${idx}\u0000`;
+      }
+    );
+    const compacted = masked
+      .replace(/<!--(?!\[if)[\s\S]*?-->/g, "")
+      .replace(/\n[ \t]+/g, "\n")
+      .replace(/\n{2,}/g, "\n")
+      .replace(/>\n<(?:\/?(?:div|section|aside|nav|header|footer|main|ul|ol|li|table|thead|tbody|tr|th|td|figure|figcaption|details|summary|p|h[1-6])\b)/gi, (m) => m.replace("\n", ""));
+    return compacted.replace(/\u0000CSPRESERVE_(\d+)\u0000/g, (_, i) => preserved[Number(i)]);
+  }
+
+  function renderSiteMathSequential(rootDir) {
+    const fsMod = require("fs");
+    const pathMod = require("path");
+    const stack = [rootDir];
+    while (stack.length) {
+      const cur = stack.pop();
+      if (!fsMod.existsSync(cur)) continue;
+      for (const ent of fsMod.readdirSync(cur, { withFileTypes: true })) {
+        const full = pathMod.join(cur, ent.name);
+        if (ent.isDirectory()) {
+          if (ent.name === "bank-shards" || ent.name === "worksheet-data" || ent.name === "vendor" || ent.name === "js" || ent.name === "css") continue;
+          stack.push(full);
+        } else if (ent.isFile() && ent.name.endsWith(".html")) {
+          const rel = pathMod.relative(rootDir, full);
+          const raw = fsMod.readFileSync(full, "utf8");
+          const isDeepRoute = rel.split(pathMod.sep).length >= 3;
+          let next = raw;
+          if (next.indexOf("\\(") !== -1 || next.indexOf("\\[") !== -1) {
+            next = renderChapterMath(next, rel, {
+              maxExpressions: isDeepRoute ? 2 : 10,
+              maxTexLength: 65,
+              skipHiddenContainers: true,
+            });
+          }
+          next = compactHtmlSafely(next);
+          if (next !== raw) {
+            fsMod.writeFileSync(full, next, "utf8");
+          }
+        }
+      }
+    }
+  }
 
   // ── Root-level assets needed at the site root ─────────────────────────────
   // CNAME tells GitHub Pages the custom domain (clipsat.org). Setting the
@@ -38,36 +78,29 @@ module.exports = function (eleventyConfig) {
   // get for free via their auto-managed CNAME file.
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("_headers");
+  eleventyConfig.addPassthroughCopy("_redirects");
   eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("manifest.json");
-  eleventyConfig.addPassthroughCopy("changelog.html");
-  eleventyConfig.addPassthroughCopy("rigor-standard.html");
-  eleventyConfig.addPassthroughCopy("free-tier-promise.html");
   eleventyConfig.addPassthroughCopy("clipsat-logo.jpg");
   eleventyConfig.addPassthroughCopy("teacher-avatar.jpg");
   eleventyConfig.addPassthroughCopy("teacher-avatar.webp");
   eleventyConfig.addPassthroughCopy("clipsat-mark.png");
-  // Lighthouse "Improve image delivery": header/footer both render this at
-  // 22-44px CSS height (main.css .site-logo-img), yet were loading the full
-  // 212x240 original (57KB) — this is a 128x144 downscale (26.5KB), still
-  // 3-4x oversized for on-page display (retina headroom) and comfortably
-  // above what engine.js's docx export embeds it at (_logoSrc() reads the
-  // header <img>'s live src — see its own comment). clipsat-mark.png itself
-  // is untouched/still passed through above for any future full-res need.
   eleventyConfig.addPassthroughCopy("clipsat-mark-header.png");
   eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addPassthroughCopy("icon-192.png");
   eleventyConfig.addPassthroughCopy("icon-512.png");
   eleventyConfig.addPassthroughCopy("og-image.png");
   eleventyConfig.addPassthroughCopy("robots.txt");
-  eleventyConfig.addPassthroughCopy("sitemap.xml");
-  eleventyConfig.addPassthroughCopy({ "bank-data": "bank-data" });
-  eleventyConfig.addPassthroughCopy({ "public/bank-shards": "bank-shards" });
-  eleventyConfig.addPassthroughCopy({ "public/downloads": "downloads" });
-  // Worksheet topic JSON for the Google Forms integration's worksheet
-  // fast-follow — generated from tools/worksheet_gen/topics/ by build.js's
-  // "Step 6" (canonical {num}[-ar].json names; see that step's comment).
-  eleventyConfig.addPassthroughCopy({ "public/worksheet-data": "worksheet-data" });
+  // WP-23: Offload heavy static data directories (downloads, bank-shards, worksheet-data)
+  // to Cloudflare R2 CDN (cdn.clipsat.org) so _site/ stays < 70 MB.
+  // Local dev/E2E overlays public/ via tests/e2e/static-server.js or CLIPSAT_INCLUDE_LOCAL_SHARDS=1.
+  if (process.env.CLIPSAT_INCLUDE_LOCAL_SHARDS === "1") {
+    eleventyConfig.addPassthroughCopy({ "public/bank-shards": "bank-shards" });
+    eleventyConfig.addPassthroughCopy({ "public/worksheet-data": "worksheet-data" });
+  }
+  if (process.env.CLIPSAT_INCLUDE_LOCAL_DOWNLOADS === "1") {
+    eleventyConfig.addPassthroughCopy({ "public/downloads": "downloads" });
+  }
 
   // ── Question bank supplement files (may 404 gracefully if absent) ─────────
   // These are referenced by the engine but are optional supplements.
@@ -78,6 +111,7 @@ module.exports = function (eleventyConfig) {
   // cached JS/CSS also changes sw.js and reaches returning visitors (Plan 5 Phase 5.017,
   // ADR 0046; scripts/stamp-sw-version.js).
   eleventyConfig.on("eleventy.after", ({ dir }) => {
+    renderSiteMathSequential(dir.output);
     stampSwVersion(dir.output);
   });
 
@@ -86,6 +120,14 @@ module.exports = function (eleventyConfig) {
 
   // ── Allow raw HTML in includes to render unescaped ────────────────────────
   eleventyConfig.addFilter("safe", (str) => str);
+  eleventyConfig.addNunjucksFilter("jsonAttr", function (spec) {
+    if (!spec || typeof spec !== "object") return "";
+    return JSON.stringify(spec)
+      .replace(/&/g, "&amp;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  });
 
   // ── Build-time Figure pre-rendering (Plan 10.3c) ───────────────────────────
   // Evaluates public/js/figures.js in a mock window environment and adds a

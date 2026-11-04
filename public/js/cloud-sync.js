@@ -1116,13 +1116,23 @@
   }
 
   /* ── Pull Cloud Data & Merge into localStorage (Tombstone-Aware) ───────── */
+  function fetchActiveMistakes(uid) {
+    return sb.from('mistakes').select('*').eq('user_id', uid).is('deleted_at', null)
+      .then(function (res) {
+        if (res && res.error && /deleted_at|column|42703|PGRST204/i.test(String(res.error.message || res.error.code || ''))) {
+          return sb.from('mistakes').select('*').eq('user_id', uid);
+        }
+        return res;
+      });
+  }
+
   function pullAndMerge() {
     var uid = _cachedUser && _cachedUser.id;
     if (!uid || !sb) return;
 
     Promise.all([
       sb.from('profiles').select('*').eq('user_id', uid).maybeSingle(),
-      sb.from('mistakes').select('*').eq('user_id', uid),
+      fetchActiveMistakes(uid),
       sb.from('srs_state').select('*').eq('user_id', uid),
       sb.from('chapter_visits').select('*').eq('user_id', uid),
       sb.from('accuracy').select('*').eq('user_id', uid)
@@ -1212,21 +1222,81 @@
     safeSetItem(null, 'clipsat_accuracy_v1', JSON.stringify(local));
   }
 
-  /* ── Watch localStorage & Record Mistake Tombstones ────────────────────── */
+  /* ── Delta Queue & Soft-Delete Mistake Tombstones (WP-26) ──────────────── */
+  var _dirtyDelta = {
+    profiles: false,
+    mistakeIds: {},
+    deletedMistakeIds: {},
+    srsIds: {},
+    visitTracks: {},
+    accuracyBuckets: {}
+  };
+
+  function _resetDeltaQueue() {
+    _dirtyDelta.profiles = false;
+    _dirtyDelta.mistakeIds = {};
+    _dirtyDelta.deletedMistakeIds = {};
+    _dirtyDelta.srsIds = {};
+    _dirtyDelta.visitTracks = {};
+    _dirtyDelta.accuracyBuckets = {};
+  }
+
+  function _upsertMistakeTombstones(uid, idsToDelete, deletedMap, currentIds, nowIso) {
+    if (!idsToDelete.length) return;
+    var batch = idsToDelete.slice(0, 200);
+    var tombstoneRows = batch.map(function (id) {
+      return {
+        user_id: uid,
+        id: id,
+        ts: deletedMap[id] || Date.now(),
+        deleted_at: nowIso,
+        updated_at: nowIso
+      };
+    });
+    sb.from('mistakes').upsert(tombstoneRows)
+      .then(function (res) {
+        if (res && res.error && /deleted_at|column|42703|PGRST204/i.test(String(res.error.message || res.error.code || ''))) {
+          return sb.from('mistakes').delete().eq('user_id', uid)['in']('id', batch);
+        }
+        return res;
+      })
+      .then(function (res) {
+        if (!res || !res.error) {
+          var cutoff = Date.now() - 30 * 86400000;
+          var nextDeleted = {};
+          Object.keys(deletedMap).forEach(function (id) {
+            if (deletedMap[id] > cutoff && !currentIds[id]) nextDeleted[id] = deletedMap[id];
+          });
+          safeSetItem(null, DELETED_MISTAKES_KEY, JSON.stringify(nextDeleted));
+        }
+      }, function (e) { log('mistakes tombstone sync failed: ' + (e && e.message)); });
+  }
+
   function watchLocalStorage() {
     var origSetItem = localStorage.setItem.bind(localStorage);
     var origRemoveItem = localStorage.removeItem.bind(localStorage);
 
-    function recordMistakeRemovals(prevArr, nextArr) {
-      if (!Array.isArray(prevArr) || !prevArr.length) return;
+    function recordMistakeDiff(prevArr, nextArr) {
+      var prevById = {};
+      (prevArr || []).forEach(function (m) { if (m && m.id) prevById[m.id] = m; });
       var nextIds = {};
-      (nextArr || []).forEach(function (m) { if (m && m.id) nextIds[m.id] = true; });
+      (nextArr || []).forEach(function (m) {
+        if (!m || !m.id) return;
+        nextIds[m.id] = true;
+        var p = prevById[m.id];
+        if (!p || p.ts !== m.ts || p.reviewedAt !== m.reviewedAt || p.nextReview !== m.nextReview || p.interval !== m.interval || p.wrong !== m.wrong) {
+          _dirtyDelta.mistakeIds[m.id] = true;
+          delete _dirtyDelta.deletedMistakeIds[m.id];
+        }
+      });
       var deletedMap = safeParse(DELETED_MISTAKES_KEY, {});
       var nowMs = Date.now();
       var changed = false;
-      prevArr.forEach(function (m) {
+      (prevArr || []).forEach(function (m) {
         if (m && m.id && !nextIds[m.id]) {
           deletedMap[m.id] = nowMs;
+          _dirtyDelta.deletedMistakeIds[m.id] = nowMs;
+          delete _dirtyDelta.mistakeIds[m.id];
           changed = true;
         }
       });
@@ -1238,7 +1308,39 @@
         var prevMistakes = safeParse('clipsat_mistakes_v2', []);
         var nextMistakes = [];
         try { nextMistakes = JSON.parse(value || '[]') || []; } catch (e) {}
-        recordMistakeRemovals(prevMistakes, nextMistakes);
+        recordMistakeDiff(prevMistakes, nextMistakes);
+      } else if (key === 'clipsat_srs_state') {
+        var prevSrs = safeParse('clipsat_srs_state', {});
+        var nextSrs = {};
+        try { nextSrs = JSON.parse(value || '{}') || {}; } catch (e) {}
+        Object.keys(nextSrs).forEach(function (cid) {
+          var ps = prevSrs[cid], ns = nextSrs[cid];
+          if (!ps || !ns || ps.due !== ns.due || ps.interval !== ns.interval) _dirtyDelta.srsIds[cid] = true;
+        });
+      } else if (key === 'clipsat_visited') {
+        var prevVis = safeParse('clipsat_visited', {});
+        var nextVis = {};
+        try { nextVis = JSON.parse(value || '{}') || {}; } catch (e) {}
+        Object.keys(nextVis).forEach(function (trk) {
+          if (prevVis[trk] !== nextVis[trk]) _dirtyDelta.visitTracks[trk] = true;
+        });
+      } else if (key === 'clipsat_accuracy_v1') {
+        var prevAcc = safeParse('clipsat_accuracy_v1', {});
+        var nextAcc = {};
+        try { nextAcc = JSON.parse(value || '{}') || {}; } catch (e) {}
+        Object.keys(nextAcc).forEach(function (trk) {
+          Object.keys(nextAcc[trk] || {}).forEach(function (dom) {
+            Object.keys(nextAcc[trk][dom] || {}).forEach(function (day) {
+              var nb = nextAcc[trk][dom][day];
+              var pb = prevAcc[trk] && prevAcc[trk][dom] && prevAcc[trk][dom][day];
+              if (!pb || pb.c !== nb.c || pb.t !== nb.t) {
+                _dirtyDelta.accuracyBuckets[trk + '|' + dom + '|' + day] = { track: trk, domain: dom, day: day, c: nb.c, t: nb.t };
+              }
+            });
+          });
+        });
+      } else if (WATCHED_KEYS.indexOf(key) !== -1) {
+        _dirtyDelta.profiles = true;
       }
       origSetItem(key, value);
       if (WATCHED_KEYS.indexOf(key) !== -1) schedulePush();
@@ -1247,7 +1349,9 @@
     localStorage.removeItem = function (key) {
       if (key === 'clipsat_mistakes_v2') {
         var prevMistakes = safeParse('clipsat_mistakes_v2', []);
-        recordMistakeRemovals(prevMistakes, []);
+        recordMistakeDiff(prevMistakes, []);
+      } else if (WATCHED_KEYS.indexOf(key) !== -1) {
+        _dirtyDelta.profiles = true;
       }
       origRemoveItem(key);
       if (WATCHED_KEYS.indexOf(key) !== -1) schedulePush();
@@ -1256,12 +1360,105 @@
 
   function schedulePush() {
     clearTimeout(pushTimer);
-    pushTimer = setTimeout(pushAll, 4000);
+    pushTimer = setTimeout(pushDelta, 4000);
+  }
+
+  function pushDelta() {
+    var uid = _cachedUser && _cachedUser.id;
+    if (!uid || !sb) return;
+
+    var snap = {
+      profiles: _dirtyDelta.profiles,
+      mistakeIds: Object.keys(_dirtyDelta.mistakeIds),
+      deletedMistakeIds: Object.keys(_dirtyDelta.deletedMistakeIds),
+      srsIds: Object.keys(_dirtyDelta.srsIds),
+      visitTracks: Object.keys(_dirtyDelta.visitTracks),
+      accuracyBuckets: objectValues(_dirtyDelta.accuracyBuckets)
+    };
+    _resetDeltaQueue();
+
+    var nowIso = new Date().toISOString();
+
+    if (snap.profiles) {
+      var dgToday = safeParse('clipsat_dg_today', {});
+      sb.from('profiles').upsert({
+        user_id: uid,
+        xp: parseInt(localStorage.getItem('clipsat_xp') || '0', 10),
+        streak: parseInt(localStorage.getItem('clipsat_streak') || '0', 10),
+        daily_goal: parseInt(localStorage.getItem('clipsat_daily_goal') || '10', 10),
+        dg_today: (dgToday && dgToday.count) || 0,
+        dg_today_date: (dgToday && dgToday.date) || null,
+        dg_streak: parseInt(localStorage.getItem('clipsat_dg_streak') || '0', 10),
+        exam_date: localStorage.getItem('clipsat_exam_date') || null,
+        updated_at: nowIso
+      }).then(noop, function (e) { log('profile delta push failed: ' + (e && e.message)); });
+    }
+
+    if (snap.mistakeIds.length || snap.deletedMistakeIds.length) {
+      var mistakes = safeParse('clipsat_mistakes_v2', []);
+      var dirtySet = {};
+      snap.mistakeIds.forEach(function (id) { dirtySet[id] = true; });
+      var currentIds = {};
+      var mistakeRows = [];
+      mistakes.forEach(function (m) {
+        if (!m || !m.id) return;
+        currentIds[m.id] = true;
+        if (dirtySet[m.id]) {
+          mistakeRows.push({
+            user_id: uid, id: m.id, view_id: m.viewId, q: m.q, wrong: m.wrong,
+            correct: m.right, domain: m.domain, src: m.src, ts: m.ts,
+            reviewed_at: m.reviewedAt, ease_factor: m.easeFactor,
+            interval_days: m.interval, next_review: m.nextReview,
+            deleted_at: null, updated_at: nowIso
+          });
+        }
+      });
+      if (mistakeRows.length) {
+        sb.from('mistakes').upsert(mistakeRows).then(function (res) {
+          if (res && res.error && /deleted_at|column|42703|PGRST204/i.test(String(res.error.message || res.error.code || ''))) {
+            mistakeRows.forEach(function (r) { delete r.deleted_at; });
+            return sb.from('mistakes').upsert(mistakeRows);
+          }
+          return res;
+        }).then(noop, function (e) { log('mistakes delta push failed: ' + (e && e.message)); });
+      }
+      var deletedMap = safeParse(DELETED_MISTAKES_KEY, {});
+      var idsToDelete = snap.deletedMistakeIds.filter(function (id) { return !currentIds[id]; });
+      _upsertMistakeTombstones(uid, idsToDelete, deletedMap, currentIds, nowIso);
+    }
+
+    if (snap.srsIds.length) {
+      var srs = safeParse('clipsat_srs_state', {});
+      var srsRows = [];
+      snap.srsIds.forEach(function (id) {
+        if (srs[id]) srsRows.push({ user_id: uid, card_id: id, due: srs[id].due, interval_days: srs[id].interval, updated_at: nowIso });
+      });
+      if (srsRows.length) sb.from('srs_state').upsert(srsRows).then(noop, function (e) { log('srs delta push failed: ' + (e && e.message)); });
+    }
+
+    if (snap.visitTracks.length) {
+      var visited = safeParse('clipsat_visited', {});
+      var visitRows = [];
+      snap.visitTracks.forEach(function (track) {
+        if (typeof visited[track] === 'number') visitRows.push({ user_id: uid, track: track, count: visited[track], updated_at: nowIso });
+      });
+      if (visitRows.length) sb.from('chapter_visits').upsert(visitRows).then(noop, function (e) { log('visits delta push failed: ' + (e && e.message)); });
+    }
+
+    if (snap.accuracyBuckets.length) {
+      var accRows = snap.accuracyBuckets.map(function (b) {
+        return { user_id: uid, track: b.track, domain: b.domain, day: b.day, correct: b.c, total: b.t, updated_at: nowIso };
+      });
+      sb.from('accuracy').upsert(accRows).then(noop, function (e) { log('accuracy delta push failed: ' + (e && e.message)); });
+    }
+
+    log('pushed delta to cloud');
   }
 
   function pushAll() {
     var uid = _cachedUser && _cachedUser.id;
     if (!uid || !sb) return;
+    _resetDeltaQueue();
 
     var nowIso = new Date().toISOString();
     var dgToday = safeParse('clipsat_dg_today', {});
@@ -1280,35 +1477,22 @@
 
     var mistakes = safeParse('clipsat_mistakes_v2', []);
     if (mistakes.length) {
-      sb.from('mistakes').upsert(mistakes.map(function (m) {
+      var fullRows = mistakes.map(function (m) {
         return {
           user_id: uid, id: m.id, view_id: m.viewId, q: m.q, wrong: m.wrong,
           correct: m.right, domain: m.domain, src: m.src, ts: m.ts,
           reviewed_at: m.reviewedAt, ease_factor: m.easeFactor,
           interval_days: m.interval, next_review: m.nextReview, updated_at: nowIso
         };
-      })).then(noop, function (e) { log('mistakes push failed: ' + (e && e.message)); });
+      });
+      sb.from('mistakes').upsert(fullRows).then(noop, function (e) { log('mistakes push failed: ' + (e && e.message)); });
     }
 
-    // Propagate local mistake deletions/clears to Supabase so cleared items never resurrect
     var deletedMap = safeParse(DELETED_MISTAKES_KEY, {});
     var currentIds = {};
     mistakes.forEach(function (m) { if (m && m.id) currentIds[m.id] = true; });
     var idsToDelete = Object.keys(deletedMap).filter(function (id) { return !currentIds[id]; });
-    if (idsToDelete.length) {
-      sb.from('mistakes').delete().eq('user_id', uid)['in']('id', idsToDelete.slice(0, 200))
-        .then(function (res) {
-          if (!res || !res.error) {
-            // Prune tombstones older than 30 days once synced
-            var cutoff = Date.now() - 30 * 86400000;
-            var nextDeleted = {};
-            Object.keys(deletedMap).forEach(function (id) {
-              if (deletedMap[id] > cutoff && !currentIds[id]) nextDeleted[id] = deletedMap[id];
-            });
-            safeSetItem(null, DELETED_MISTAKES_KEY, JSON.stringify(nextDeleted));
-          }
-        }, function (e) { log('mistakes delete sync failed: ' + (e && e.message)); });
-    }
+    _upsertMistakeTombstones(uid, idsToDelete, deletedMap, currentIds, nowIso);
 
     var srs = safeParse('clipsat_srs_state', {});
     var srsRows = Object.keys(srs).map(function (id) {
@@ -1372,6 +1556,9 @@
       }
     }
     syncModalAccountView();
+    try {
+      document.dispatchEvent(new CustomEvent('clipsat:auth-changed', { detail: { signedIn: Boolean(_cachedUser) } }));
+    } catch (e) {}
   }
 
   function syncModalAccountView() {

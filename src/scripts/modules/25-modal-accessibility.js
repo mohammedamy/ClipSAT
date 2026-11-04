@@ -39,49 +39,69 @@
     if(root.querySelectorAll) root.querySelectorAll('[onclick]').forEach(enhance);
   }
   scan(document.body);
-  var mo=new MutationObserver(function(muts){
-    for(var i=0;i<muts.length;i++){
-      var added=muts[i].addedNodes;
-      for(var j=0;j<added.length;j++) scan(added[j]);
+  // Delegated keyboard activation for dynamically injected [onclick] DIV/SPANs (zero global subtree MutationObserver)
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Enter'&&e.key!==' '&&e.key!=='Spacebar') return;
+    var el=e.target;
+    if(!el||el.nodeType!==1) return;
+    if((el.tagName==='DIV'||el.tagName==='SPAN')&&el.hasAttribute('onclick')&&!isBackdropCloser(el)){
+      e.preventDefault();
+      el.click();
     }
   });
-  mo.observe(document.body,{childList:true,subtree:true});
+  document.addEventListener('clipsat:quiz-ready',function(ev){
+    var root=(ev&&ev.detail&&ev.detail.outEl)||document.body;
+    scan(root);
+  });
+  document.addEventListener('clipsat:chapter-change',function(){ scan(document.body); });
 })();
 
-/* ══════ Modal focus management ══════
-   None of the site's dialog overlays (mistake log, progress, legal,
-   cloud sign-in, AI settings) move focus into themselves on open, trap Tab
-   within themselves while open, or close on Escape — a keyboard user who
-   opens one currently has no way to know it opened (focus stays wherever
-   it was on the page behind it), and Tab keeps cycling through that
-   background page instead of the dialog. Rather than hand-edit each
-   modal's own open/close function (five different call sites, several with
-   different class-toggle conventions), this watches each overlay's computed
-   `display` and adds all three behaviors uniformly the moment any of them
-   opens or closes. */
+/* ══════ Modal focus & inert lifecycle management (WCAG 2.2 AA · WP-29) ══════ */
 (function(){
-  var MODALS=['mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal','cookie-consent-overlay','teacher-view-modal','google-auth-modal','gform-panel-modal'];
+  var MODALS=[
+    'mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal',
+    'cookie-consent-overlay','teacher-view-modal','google-auth-modal','gform-panel-modal',
+    'glossaryOverlay','formulaOverlay','flashcards-sidebar'
+  ];
   var FOCUSABLE_SEL='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  function isOverlayVisible(el){
+    if(!el) return false;
+    var cs=getComputedStyle(el);
+    if(cs.display==='none'||cs.visibility==='hidden'||parseFloat(cs.opacity||'1')<=0.02) return false;
+    if(el.id==='flashcards-sidebar') return el.classList.contains('open');
+    if(el.classList.contains('glossary-overlay')||el.classList.contains('formula-overlay')||el.classList.contains('legal-overlay')){
+      return el.classList.contains('open')||el.classList.contains('show')||el.classList.contains('active');
+    }
+    return true;
+  }
   MODALS.forEach(function(id){
     var el=document.getElementById(id);
     if(!el) return;
-    var lastFocus=null, keyHandler=null, wasVisible=false;
+    var lastFocus=null, keyHandler=null, wasVisible=isOverlayVisible(el);
+    el.inert=!wasVisible;
+    if(!wasVisible) el.setAttribute('aria-hidden','true');
     function focusables(){
       return Array.prototype.slice.call(el.querySelectorAll(FOCUSABLE_SEL))
         .filter(function(n){ return n.offsetParent!==null; });
     }
+    function closeOverlay(){
+      if(id==='glossaryOverlay'&&window.closeGlossaryModal){ window.closeGlossaryModal(); return; }
+      if(id==='formulaOverlay'&&window.closeFormulaModal){ window.closeFormulaModal(); return; }
+      if(id==='flashcards-sidebar'&&window.CSGamify&&window.CSGamify.closeFlashcards){ window.CSGamify.closeFlashcards(); return; }
+      el.click();
+    }
     function onShown(){
+      el.inert=false;
+      el.setAttribute('aria-hidden','false');
       lastFocus=document.activeElement;
-      var f=focusables();
-      (f[0]||el).focus({preventScroll:true});
+      setTimeout(function(){
+        var f=focusables();
+        if(f[0]) f[0].focus({preventScroll:true});
+      }, 20);
       keyHandler=function(e){
         if(e.key==='Escape'){
-          // Every one of these overlays already closes itself via
-          // onclick="if(event.target===this)close…()" on the div — a
-          // programmatic .click() on the div dispatches with target===el,
-          // so this reuses each modal's own close logic without needing
-          // to know its function name.
-          el.click();
+          e.stopPropagation();
+          closeOverlay();
           return;
         }
         if(e.key!=='Tab') return;
@@ -94,16 +114,32 @@
       el.addEventListener('keydown',keyHandler);
     }
     function onHidden(){
+      el.inert=true;
+      el.setAttribute('aria-hidden','true');
       if(keyHandler){ el.removeEventListener('keydown',keyHandler); keyHandler=null; }
       if(lastFocus && document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
       lastFocus=null;
     }
     var mo=new MutationObserver(function(){
-      var visible=getComputedStyle(el).display!=='none';
+      var visible=isOverlayVisible(el);
       if(visible && !wasVisible) onShown();
       else if(!visible && wasVisible) onHidden();
       wasVisible=visible;
     });
     mo.observe(el,{attributes:true,attributeFilter:['class','style']});
   });
+
+  /* #chatPanel Escape & focus return to #chatFab (WP-29) */
+  var chatPanel=document.getElementById('chatPanel');
+  if(chatPanel){
+    chatPanel.addEventListener('keydown',function(e){
+      if(e.key==='Escape' && chatPanel.classList.contains('open')){
+        e.stopPropagation();
+        var closeBtn=document.getElementById('chatClose');
+        if(closeBtn) closeBtn.click();
+        var fab=document.getElementById('chatFab');
+        if(fab) setTimeout(function(){ fab.focus({preventScroll:true}); }, 30);
+      }
+    });
+  }
 })();

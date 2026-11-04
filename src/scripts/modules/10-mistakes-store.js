@@ -97,56 +97,48 @@ window.AccuracyLog = (function(){
   return {record:record, chapterMastery:chapterMastery, trackAccuracy:trackAccuracy, dailyTrend:dailyTrend};
 }());
 
-/* Patch cqPick — record wrong answers into ML with full choices + solution for Adaptive Mistake Deck */
-(function(){
-  var _orig = window.cqPick;
-  window.cqPick = function(el){
-    var item = el.closest('.cq-item');
-    if(!item || item.classList.contains('cq-done')){ if(_orig) _orig(el); return; }
-    var ans    = parseInt(item.getAttribute('data-ans'),10);
-    var opts   = Array.prototype.slice.call(item.querySelectorAll('.cq-opt'));
-    var chosen = opts.indexOf(el);
-    if(_orig) _orig(el);
-    var main    = item.closest('main[id^="view-"]');
-    var viewId  = main ? main.id.replace('view-','') : (window.CLIPSAT_TRACK || '');
-    var isRight = chosen === ans;
-    if(window.AccuracyLog) window.AccuracyLog.record(viewId, item.getAttribute('data-domain') || '', isRight);
-    if(!isRight){
-      var qEl = item.querySelector('.cq-stem,.cq-q,.cq-qt');
-      var solEl = item.querySelector('.cq-sol-box,.cq-sol');
-      var rawChoices = [];
-      var chAttr = item.getAttribute('data-choices');
-      if(chAttr){
-        try{ rawChoices = JSON.parse(decodeURIComponent(chAttr)); }catch(e){}
-      }
-      if(!rawChoices.length){
-        rawChoices = opts.map(function(o){
-          return o.getAttribute('data-raw') || (o.querySelector('.cq-ct') ? o.querySelector('.cq-ct').textContent : o.textContent);
-        });
-      }
-      window.ML.add({
-        id:      item.getAttribute('data-id') || ('q-' + Date.now()),
-        viewId:  viewId,
-        q:       item.getAttribute('data-raw') || (qEl ? qEl.textContent.slice(0,300) : 'Question'),
-        wrong:   el.getAttribute('data-raw') || (el.querySelector('.cq-ct') ? el.querySelector('.cq-ct').textContent : String.fromCharCode(65+chosen)),
-        right:   opts[ans] ? (opts[ans].getAttribute('data-raw') || (opts[ans].querySelector('.cq-ct') ? opts[ans].querySelector('.cq-ct').textContent : String.fromCharCode(65+ans))) : String.fromCharCode(65+ans),
-        domain:  item.getAttribute('data-domain') || '',
-        src:     item.getAttribute('data-src') || '',
-        sol:     solEl ? (solEl.getAttribute('data-raw') || solEl.textContent.replace(/^Solution:\s*/i,'')) : '',
-        choices: rawChoices
-      });
-      _mistakes = window.ML.getAll();
-    } else {
-      /* If this question was in the Mistake Log, record a successful review! */
-      var qId = item.getAttribute('data-id');
-      var hintsUsed = parseInt(item.getAttribute('data-hints-used') || '0', 10);
-      if(qId && window.ML && typeof window.ML.recordReview === 'function'){
-        window.ML.recordReview(qId, true, hintsUsed);
-        _mistakes = window.ML.getAll();
-      }
+/* Subscribe to clipsat:cq-pick — record wrong answers into ML with full choices + solution for Adaptive Mistake Deck */
+document.addEventListener('clipsat:cq-pick', function(ev){
+  var d = (ev && ev.detail) || {};
+  var item = d.item, el = d.el, ans = d.ans, opts = d.opts || [], chosen = d.chosen, isRight = d.isRight;
+  if(!item || !el) return;
+  var main    = item.closest('main[id^="view-"]');
+  var viewId  = main ? main.id.replace('view-','') : (window.CLIPSAT_TRACK || '');
+  if(window.AccuracyLog) window.AccuracyLog.record(viewId, item.getAttribute('data-domain') || '', isRight);
+  if(!isRight){
+    var qEl = item.querySelector('.cq-stem,.cq-q,.cq-qt');
+    var solEl = item.querySelector('.cq-sol-box,.cq-sol');
+    var rawChoices = [];
+    var chAttr = item.getAttribute('data-choices');
+    if(chAttr){
+      try{ rawChoices = JSON.parse(decodeURIComponent(chAttr)); }catch(e){}
     }
-  };
-}());
+    if(!rawChoices.length){
+      rawChoices = opts.map(function(o){
+        return o.getAttribute('data-raw') || (o.querySelector('.cq-ct') ? o.querySelector('.cq-ct').textContent : o.textContent);
+      });
+    }
+    window.ML.add({
+      id:      item.getAttribute('data-id') || ('q-' + Date.now()),
+      viewId:  viewId,
+      q:       item.getAttribute('data-raw') || (qEl ? qEl.textContent.slice(0,300) : 'Question'),
+      wrong:   el.getAttribute('data-raw') || (el.querySelector('.cq-ct') ? el.querySelector('.cq-ct').textContent : String.fromCharCode(65+chosen)),
+      right:   opts[ans] ? (opts[ans].getAttribute('data-raw') || (opts[ans].querySelector('.cq-ct') ? opts[ans].querySelector('.cq-ct').textContent : String.fromCharCode(65+ans))) : String.fromCharCode(65+ans),
+      domain:  item.getAttribute('data-domain') || '',
+      src:     item.getAttribute('data-src') || '',
+      sol:     solEl ? (solEl.getAttribute('data-raw') || solEl.textContent.replace(/^Solution:\s*/i,'')) : '',
+      choices: rawChoices
+    });
+    _mistakes = window.ML.getAll();
+  } else {
+    var qId = item.getAttribute('data-id');
+    var hintsUsed = parseInt(item.getAttribute('data-hints-used') || '0', 10);
+    if(qId && window.ML && typeof window.ML.recordReview === 'function'){
+      window.ML.recordReview(qId, true, hintsUsed);
+      _mistakes = window.ML.getAll();
+    }
+  }
+});
 
 var _activeMistakeBoxFilter = 0; /* 0 = All, 1..4 = Leitner Box 1..4 */
 

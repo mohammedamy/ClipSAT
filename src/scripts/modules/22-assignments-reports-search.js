@@ -88,9 +88,9 @@ var CHAPTER_OBJECTIVES = {
   'igcse-trig':  ['Apply SOHCAHTOA in right-angled triangles','Use the sine rule and cosine rule for non-right triangles','Calculate area of a triangle using ½ab sinC','Identify and apply bearings in trigonometric contexts'],
 };
 
-var _currentView    = 'home';
-var _currentChapter = '';
-window._csCurrentView = 'home';
+var _currentView    = window.CLIPSAT_TRACK || 'home';
+var _currentChapter = window.CLIPSAT_CHAPTER_ID || '';
+window._csCurrentView = _currentView;
 
 /* ── B. Breadcrumb ── */
 function _updateBreadcrumb(viewId, chapterId) {
@@ -127,34 +127,25 @@ function _updateBreadcrumb(viewId, chapterId) {
   }
 }
 
-(function(){
-  var _origSV = window.showView;
-  window.showView = function(name) {
-    _currentView = name; window._csCurrentView = name; _currentChapter = '';
-    if (_origSV) _origSV.apply(this, arguments);
-    _updateBreadcrumb(name, '');
-    document.body.classList.remove.apply(document.body.classList,
-      Array.from(document.body.classList).filter(function(c){ return /^view-/.test(c); }));
-    if (name) document.body.classList.add('view-' + name);
-  };
-}());
+document.addEventListener('clipsat:view-change', function(ev) {
+  var name = ev && ev.detail && ev.detail.viewId;
+  if (!name) return;
+  _currentView = name; window._csCurrentView = name; _currentChapter = '';
+  _updateBreadcrumb(name, '');
+  document.body.classList.remove.apply(document.body.classList,
+    Array.from(document.body.classList).filter(function(c){ return /^view-/.test(c); }));
+  document.body.classList.add('view-' + name);
+});
 
-(function(){
-  var _origGC = window.goChapter;
-  window.goChapter = function(chId, view) {
-    _currentChapter = chId; if (view) { _currentView = view; window._csCurrentView = view; }
-    if (_origGC) _origGC.apply(this, arguments);
-    /* CLS fix: used to be setTimeout(...,90) — #cs-breadcrumb starts
-       height:0 (main.css's .bc-hidden) until this reveals it, and (unlike
-       _renderChapterTeacherMeta below, genuinely opt-in Teacher Mode UI)
-       the breadcrumb is on by default for every visitor on every track
-       page. _origGC.apply just above is synchronous (see goChapter's own
-       fix), so _currentView/chId are already valid — no reason left to
-       delay this. */
-    _updateBreadcrumb(_currentView, chId);
-    setTimeout(function(){ _renderChapterTeacherMeta(chId, _currentView); }, 110);
-  };
-}());
+document.addEventListener('clipsat:chapter-change', function(ev) {
+  var d = (ev && ev.detail) || {};
+  var chId = d.chapterId, view = d.viewId;
+  if (!chId) return;
+  _currentChapter = chId;
+  if (view) { _currentView = view; window._csCurrentView = view; }
+  _updateBreadcrumb(_currentView, chId);
+  setTimeout(function(){ _renderChapterTeacherMeta(chId, _currentView); }, 110);
+});
 
 /* ── C. Chapter objectives ── */
 function _injectObjectives() {
@@ -210,19 +201,7 @@ function _upgradeDifficultyControls() {
   });
 }
 
-(function(){
-  var _orig = window.genChapterQuiz;
-  if (!_orig) return;
-  window.genChapterQuiz = function(btn) {
-    var wrap = btn.closest('.ch-quiz-wrap');
-    if (wrap) {
-      var diff = wrap.getAttribute('data-diff');
-      var lvlSel = wrap.querySelector('.cq-level');
-      if (diff && lvlSel) lvlSel.value = diff === 'all' ? 'all' : diff;
-    }
-    return _orig.apply(this, arguments);
-  };
-}());
+/* Note: data-diff is applied directly inside window.genChapterQuiz (03-ai-chat-and-practice-quiz.js) */
 
 /* ── E. Mobile rail ── */
 function _setupMobileRail() {
@@ -298,20 +277,23 @@ function _renderChapterTeacherMeta(chId, viewId) {
    robustness if TeacherMode is ever eager again), and called a second time
    by the lazy-loader (08b-teacher-mode-loader.js) right after TeacherMode's
    script finishes loading — that's the real trigger path now. */
-var _tmDecorated = false;
+function _onTeacherModeStateChange(isOn) {
+  document.body.classList.toggle('tm-on', isOn);
+  var btn = document.getElementById('teacherModeBtn');
+  if (btn) btn.classList.toggle('tm-active', isOn);
+  if (isOn) _renderChapterTeacherMeta(_currentChapter, _currentView);
+  else document.querySelectorAll('.tm-chapter-panel').forEach(function(el){ el.remove(); });
+}
+document.addEventListener('clipsat:teacher-mode-change', function(ev) {
+  var active = ev && ev.detail && typeof ev.detail.active === 'boolean'
+    ? ev.detail.active
+    : !!(window.TeacherMode && window.TeacherMode.isActive && window.TeacherMode.isActive());
+  _onTeacherModeStateChange(active);
+});
 function _applyTeacherModeDecoration() {
-  if (_tmDecorated || !window.TeacherMode) return;
-  _tmDecorated = true;
-  var _origToggle = window.TeacherMode.toggle;
-  window.TeacherMode.toggle = function() {
-    if (_origToggle) _origToggle.apply(this, arguments);
-    var isOn = window.TeacherMode.isActive && window.TeacherMode.isActive();
-    document.body.classList.toggle('tm-on', isOn);
-    var btn = document.getElementById('teacherModeBtn');
-    if (btn) btn.classList.toggle('tm-active', isOn);
-    if (isOn) _renderChapterTeacherMeta(_currentChapter, _currentView);
-    else document.querySelectorAll('.tm-chapter-panel').forEach(function(el){ el.remove(); });
-  };
+  if (!window.TeacherMode) return;
+  var isOn = !!(window.TeacherMode.isActive && window.TeacherMode.isActive());
+  if (isOn) _onTeacherModeStateChange(true);
 }
 window._applyTeacherModeDecoration = _applyTeacherModeDecoration;
 _applyTeacherModeDecoration();
@@ -333,12 +315,8 @@ var SEARCH_INDEX = [];
       if(seen[e.chapter]) return;
       seen[e.chapter]=1;
       var vm=(window.VIEW_META&&VIEW_META[e.view])||{};
-      /* e.keywords (build-time-harvested rule/definition/worked-example names —
-         see build.js "Generate search index") let a query like "chain rule" or
-         "law of cosines" match a chapter even when that phrase never appears in
-         its title, without bloating the visible result card. */
-      var tags=[e.view,vm.label||'',vm.board||'',e.title,e.chapter].concat(e.keywords||[]).map(function(t){return t.toLowerCase();});
-      idx.push({title:e.title,sub:vm.label||e.view,board:vm.board||'',view:e.view,chapter:e.chapter,
+      var tags=[e.view,vm.label||'',vm.board||'',e.title,e.titleAr||'',e.chapter].concat(e.keywords||[]).map(function(t){return String(t||'').toLowerCase();});
+      idx.push({title:e.title,titleAr:e.titleAr||'',url:e.url||('/'+e.view+'/'+e.chapter+'/'),sub:vm.label||e.view,board:vm.board||'',view:e.view,chapter:e.chapter,
         keywords:e.keywords||[],tags:tags});
     });
     /* Primary: scan nav rail links (has real chapter titles + view context) */
@@ -492,11 +470,11 @@ window.CSSearch = {
     var qRe;
     try { qRe = new RegExp('\\b' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')); } catch(e) { qRe = null; }
     function score(item){
-      var title = norm(item.title), s = 0;
-      if (title === q) s = 100;
-      else if (title.indexOf(q) === 0) s = 80;
+      var title = norm(item.title), titleAr = norm(item.titleAr||''), s = 0;
+      if (title === q || (titleAr && titleAr === q)) s = 100;
+      else if (title.indexOf(q) === 0 || (titleAr && titleAr.indexOf(q) === 0)) s = 80;
       else if (qRe && qRe.test(title)) s = 60;
-      else if (title.indexOf(q) !== -1) s = 40;
+      else if (title.indexOf(q) !== -1 || (titleAr && titleAr.indexOf(q) !== -1)) s = 45;
       (item.keywords||[]).forEach(function(k){
         k = norm(k);
         if (k === q) s = Math.max(s, 55);
@@ -517,13 +495,15 @@ window.CSSearch = {
       matches = this._fuzzyMatches(q);
       fuzzy = matches.length > 0;
     }
+    var isArUi = (window.CLIPSAT_LOCALE === 'ar') || (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
     if (!matches.length) {
-      res.innerHTML = '<div class="ts-item"><span class="ts-item-title" style="color:var(--text-3)">No results — try another term</span></div>';
+      res.innerHTML = '<div class="ts-item"><span class="ts-item-title" style="color:var(--text-3)">' + (isArUi ? 'لا توجد نتائج — جرّب مصطلحاً آخر' : 'No results — try another term') + '</span></div>';
     } else {
       res.innerHTML = (fuzzy ? '<div class="ts-fuzzy-hint" style="padding:6px 12px;font-size:.76rem;font-style:italic;color:var(--text-3)">Showing close matches for “'+_esc(val)+'”</div>' : '')
         + matches.map(function(m){
-        return '<div class="ts-item" onclick="window.CSSearch.go(\''+m.view+'\',\''+m.chapter+'\')" role="option" tabindex="0">' +
-          '<span class="ts-item-title"><span class="ts-item-tag">'+_esc(m.board||m.view)+'</span>'+_esc(m.title)+'</span>' +
+        var dispTitle = (isArUi && m.titleAr) ? m.titleAr : m.title;
+        return '<div class="ts-item" onclick="window.CSSearch.go(\''+m.view+'\',\''+m.chapter+'\',\''+(m.url||'')+'\')" role="option" tabindex="0">' +
+          '<span class="ts-item-title"><span class="ts-item-tag">'+_esc(m.board||m.view)+'</span>'+_esc(dispTitle)+'</span>' +
           '<span class="ts-item-meta">'+_esc(m.sub)+'</span></div>';
       }).join('');
     }
@@ -558,23 +538,23 @@ window.CSSearch = {
   close:function(){
     var res=document.getElementById('topic-search-results'); if(res) res.classList.remove('open');
   },
-  go:function(viewId, chapterId){
+  go:function(viewId, chapterId, itemUrl){
     this.close();
     var inp=document.getElementById('topic-search'); if(inp) inp.value='';
-    /* Multi-page build: a chapter that belongs to a DIFFERENT track than the
-       current page isn't in this page's DOM at all — goChapter would silently
-       no-op. Do a real page navigation and pass the target chapter along so
-       the destination page can open it on load (see base.njk's post-engine
-       shim, which checks for this ?ch= param). Same-track / single-page
-       (index.html-only) behavior is unchanged. */
-    var current = window.CLIPSAT_TRACK;
-    if(current && viewId !== current){
-      var dest = '/' + (viewId === 'home' ? '' : viewId + '/');
-      window.location.href = chapterId ? dest + '?ch=' + encodeURIComponent(chapterId) : dest;
+    var isAr = (window.CLIPSAT_LOCALE === 'ar');
+    if(chapterId && document.getElementById(chapterId) && window.goChapter){
+      window.goChapter(chapterId, viewId);
       return;
     }
-    if(chapterId&&window.goChapter) window.goChapter(chapterId, viewId);
-    else if(window.showView) window.showView(viewId);
+    if(itemUrl){
+      window.location.href = isAr ? ('/ar' + itemUrl) : itemUrl;
+      return;
+    }
+    if(chapterId){
+      window.location.href = (isAr ? '/ar/' : '/') + viewId + '/' + encodeURIComponent(chapterId) + '/';
+      return;
+    }
+    if(window.showView) window.showView(viewId);
   }
 };
 
@@ -638,27 +618,25 @@ function _boot(){
     if (_hashParts[0] === 'view' && _hashParts[1]) _hashViewId = _hashParts[1];
     _updateBreadcrumb(_hashViewId,'');
     document.body.classList.add('view-'+_hashViewId);
+  } else if (window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home') {
+    _updateBreadcrumb(window.CLIPSAT_TRACK, window.CLIPSAT_CHAPTER_ID || '');
+    document.body.classList.add('view-' + window.CLIPSAT_TRACK);
   } else {
     document.body.classList.add('view-home');
   }
-  // Observe future DOM additions (dynamically generated content), debounced
-  var _bootMoTimer = null;
-  new MutationObserver(function(muts){
-    var relevant = false;
-    for (var i = 0; i < muts.length; i++) {
-      var added = muts[i].addedNodes;
-      for (var j = 0; j < added.length; j++) {
-        var nd = added[j];
-        if (nd.nodeType === 1 && (nd.tagName === 'SECTION' || (nd.classList && (nd.classList.contains('chapter') || nd.classList.contains('ch-quiz-wrap'))) || (nd.querySelector && nd.querySelector('section.chapter, .ch-quiz-wrap')))) {
-          relevant = true; break;
-        }
-      }
-      if (relevant) break;
-    }
-    if (!relevant) return;
-    if (_bootMoTimer) clearTimeout(_bootMoTimer);
-    _bootMoTimer = setTimeout(function(){ _bootMoTimer = null; _injectObjectives(); _upgradeDifficultyControls(); }, 80);
-  }).observe(document.body, {childList:true, subtree:true});
+  // Refresh chapter controls on discrete navigation/quiz events (zero subtree MutationObserver)
+  var _bootRefreshTimer = null;
+  function _scheduleChapterEnhancements() {
+    if (_bootRefreshTimer) clearTimeout(_bootRefreshTimer);
+    _bootRefreshTimer = setTimeout(function(){
+      _bootRefreshTimer = null;
+      _injectObjectives();
+      _upgradeDifficultyControls();
+    }, 60);
+  }
+  document.addEventListener('clipsat:chapter-change', _scheduleChapterEnhancements);
+  document.addEventListener('clipsat:view-change', _scheduleChapterEnhancements);
+  document.addEventListener('clipsat:quiz-ready', _scheduleChapterEnhancements);
 }
 
 if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',_boot);

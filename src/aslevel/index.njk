@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: aslevel
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/aslevel/"
+enAltPath: "/aslevel/"
+arAltPath: "/ar/aslevel/"
 title: "AS Level Mathematics · ClipSAT"
 description: "Pure Mathematics 1 with the foundations of trigonometry, calculus and statistics"
-isRtl: false
 ---
 {#
   Renders from content/aslevel/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -33,33 +38,28 @@ isRtl: false
   single weightBadge (paper code "P1"/"M1"/"S1"), matching a2level's own shape exactly (not
   igcse's multi-badge tiers, confirming that deviation really was igcse-specific).
 #}
-{% set aslevel = migratedContent.aslevel %}
-{% set pageHeader = aslevel.meta.meta.pageHeader %}
-<main id="view-aslevel" class="view active">
+{% set trackData = migratedContent.aslevel %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'as-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'as-testgen' %}
+{% set downloadsId = 'as-downloads' %}
+<main id="view-aslevel" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = aslevel.chapters %}
-    {% set practiceSetId = 'as-practice' %}
-    {% set testGeneratorId = 'as-testgen' %}
-    {% set downloadsId = 'as-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in aslevel.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'as-practice' %}
-      {% set practiceSet = aslevel.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'as-testgen' %}
-      {% set testGenerator = aslevel.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'as-downloads' %}
-      {% set courseMeta = aslevel.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

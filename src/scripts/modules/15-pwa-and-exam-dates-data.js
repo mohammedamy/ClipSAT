@@ -218,6 +218,7 @@ window.CSOfflinePack = (function(){
 
   function getUrlsForTrack(trackId){
     if(!trackId || trackId === 'home') return [];
+    var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
     return [
       '/' + trackId + '/',
       '/' + trackId + '/index.html',
@@ -226,8 +227,8 @@ window.CSOfflinePack = (function(){
       '/js/universal-graph-explorers.js',
       '/js/ix/' + trackId + '.js',
       '/js/ex/' + trackId + '.js',
-      '/bank-data/' + trackId + '.json',
-      '/downloads/' + trackId + '/manifest.json',
+      cdnPrefix + '/bank-shards/' + trackId + '/_index.json',
+      cdnPrefix + '/downloads/' + trackId + '/manifest.json',
       '/js/figures.js',
       '/js/bank-exam.js',
       '/js/practice-quiz.js',
@@ -271,10 +272,22 @@ window.CSOfflinePack = (function(){
 
     var cachePromise;
     if(typeof caches !== 'undefined' && typeof caches.open === 'function'){
+      var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
       cachePromise = caches.open(CACHE_NAME).then(function(cache){
         return Promise.all(urls.map(function(u){
           return fetch(u).then(function(res){
-            if(res && res.ok) return cache.put(u, res);
+            if(!res || !res.ok) return;
+            var cloned = res.clone();
+            if(u.indexOf('/bank-shards/' + trackId + '/_index.json') !== -1){
+              cloned.json().then(function(idx){
+                var tids = Object.keys((idx && idx.topics) || {});
+                tids.forEach(function(tid){
+                  var su = cdnPrefix + '/bank-shards/' + trackId + '/' + tid + '.json';
+                  fetch(su).then(function(sr){ if(sr && sr.ok) cache.put(su, sr); }).catch(function(){});
+                });
+              }).catch(function(){});
+            }
+            return cache.put(u, res);
           }).catch(function(){});
         }));
       }).catch(function(){});

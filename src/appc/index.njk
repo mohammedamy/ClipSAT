@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: appc
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/appc/"
+enAltPath: "/appc/"
+arAltPath: "/ar/appc/"
 title: "AP Precalculus · ClipSAT"
 description: "Functions as dynamic models — the AP Precalculus exam"
-isRtl: false
 ---
 {#
   Renders from content/appc/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -17,33 +22,28 @@ isRtl: false
   appc's real source has a genuinely different practice-problem/test-generator DOM shape and
   vocabulary from qud/tah/act2/est2/est.
 #}
-{% set appc = migratedContent.appc %}
-{% set pageHeader = appc.meta.meta.pageHeader %}
-<main id="view-appc" class="view active">
+{% set trackData = migratedContent.appc %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'appc-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'appc-testgen' %}
+{% set downloadsId = 'appc-downloads' %}
+<main id="view-appc" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = appc.chapters %}
-    {% set practiceSetId = 'appc-practice' %}
-    {% set testGeneratorId = 'appc-testgen' %}
-    {% set downloadsId = 'appc-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in appc.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'appc-practice' %}
-      {% set practiceSet = appc.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'appc-testgen' %}
-      {% set testGenerator = appc.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'appc-downloads' %}
-      {% set courseMeta = appc.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

@@ -1,29 +1,13 @@
 {#
-  Shared macro for rendering a bilingualText field ({en, ar}) so the site's EXISTING
-  window.i18n toggle (index.html's _applyToDOM(), data-bilingual scan — docs/DECISIONS/0004)
-  can instantly switch between languages client-side, matching how every other piece of
-  bilingual content on the site already behaves (no page reload).
-
-  Both languages are present in the DOM at once (unlike the data-i18n dictionary-key pattern,
-  which injects only one language's actual text via JS) — necessary so the page is correct
-  before JS runs and so toggling is instant. The .i18n-en span starts visible, .i18n-ar starts
-  hidden; window.i18n.setLocale() flips which one is hidden. If `field.ar` is null (not yet
-  translated), no .i18n-ar span is rendered at all — the English one just stays visible
-  regardless of locale, matching the schema's documented ar:null rule.
-
-  Usage: {% import "partials/_bilingual.njk" as bl %}{{ bl.text(someField) }}
-  `tag` picks the wrapper element (default span — use a block tag like 'div' or 'p' if the
-  field's content itself contains block-level HTML, e.g. a <details> practice-problem body).
+  Shared macro for rendering a bilingualText field ({en, ar}).
+  - On locale-split SSG pages (WP-21, where `pageLocale` is 'en' or 'ar'), emits ONLY
+    the active locale's content without duplicate hidden `.i18n-en`/`.i18n-ar` DOM trees,
+    cutting DOM node count in half (< 3,500 nodes per chapter page).
+  - On dual-language track hub pages (where `pageLocale` is undefined), emits the
+    client-toggleable `<tag data-bilingual>` pair.
 #}
-{% macro text(field, tag='span') %}{% set _en = (field.en or '') | string %}{% set _ar = (field.ar or '') | string %}{% set _combo = (_en ~ ' ' ~ _ar) | lower %}{% set _hasBlock = ('<p>' in _combo) or ('<p ' in _combo) or ('<div' in _combo) or ('<ul' in _combo) or ('<ol' in _combo) or ('<table' in _combo) or ('<details' in _combo) or ('<blockquote' in _combo) or ('<pre' in _combo) or ('<h3' in _combo) or ('<h4' in _combo) %}{% set _tag = 'div' if (tag == 'span' and _hasBlock) else tag %}<{{ _tag }} data-bilingual><{{ _tag }} class="i18n-en">{{ field.en | safe }}</{{ _tag }}>{% if field.ar %}<{{ _tag }} class="i18n-ar" dir="rtl" hidden>{{ field.ar | safe }}</{{ _tag }}>{% endif %}</{{ _tag }}>{% endmacro %}
+{% macro text(field, tag='span', locale=null) %}{% set _loc = locale or pageLocale %}{% if _loc == 'en' %}{% if tag == 'span' %}{{ (field.en or '') | safe }}{% else %}<{{ tag }}>{{ (field.en or '') | safe }}</{{ tag }}>{% endif %}{% elif _loc == 'ar' %}{% if tag == 'span' %}{{ (field.ar or field.en or '') | safe }}{% else %}<{{ tag }}>{{ (field.ar or field.en or '') | safe }}</{{ tag }}>{% endif %}{% else %}{% set _en = (field.en or '') | string %}{% set _ar = (field.ar or '') | string %}{% set _combo = (_en ~ ' ' ~ _ar) | lower %}{% set _hasBlock = ('<p>' in _combo) or ('<p ' in _combo) or ('<div' in _combo) or ('<ul' in _combo) or ('<ol' in _combo) or ('<table' in _combo) or ('<details' in _combo) or ('<blockquote' in _combo) or ('<pre' in _combo) or ('<h3' in _combo) or ('<h4' in _combo) %}{% set _tag = 'div' if (tag == 'span' and _hasBlock) else tag %}<{{ _tag }} data-bilingual><{{ _tag }} class="i18n-en">{{ field.en | safe }}</{{ _tag }}>{% if field.ar %}<{{ _tag }} class="i18n-ar" dir="rtl" hidden>{{ field.ar | safe }}</{{ _tag }}>{% endif %}</{{ _tag }}>{% endif %}{% endmacro %}
 
-{#
-  attr(attrName, field): renders data-{attrName}-en / -ar values for the companion
-  data-bilingual-attrs scan (index.html's _applyToDOM()) to apply as a real attribute — use
-  for values that must be plain attributes (aria-label, etc.), not visible content, so the
-  dual-span trick above doesn't apply. Caller is responsible for adding
-  data-bilingual-attrs="attrName[,attrName2...]" once on the same element (attr() only emits
-  the data-* value pairs, not the marker — so multiple attr() calls on one element share one
-  marker instead of each fighting to set it).
-#}
-{% macro attr(attrName, field) %}data-{{ attrName }}-en="{{ field.en }}"{% if field.ar %} data-{{ attrName }}-ar="{{ field.ar }}"{% endif %}{% endmacro %}
+{% macro block(field, tag='div', locale=null) %}{% set _loc = locale or pageLocale %}{% if _loc == 'en' %}<{{ tag }}>{{ (field.en or '') | safe }}</{{ tag }}>{% elif _loc == 'ar' %}<{{ tag }}>{{ (field.ar or field.en or '') | safe }}</{{ tag }}>{% else %}<{{ tag }} data-bilingual><{{ tag }} class="i18n-en">{{ field.en | safe }}</{{ tag }}>{% if field.ar %}<{{ tag }} class="i18n-ar" dir="rtl" hidden>{{ field.ar | safe }}</{{ tag }}>{% endif %}</{{ tag }}>{% endif %}{% endmacro %}
+
+{% macro attr(attrName, field) %}{% if pageLocale == 'ar' %}{{ attrName }}="{{ field.ar or field.en }}"{% elif pageLocale == 'en' %}{{ attrName }}="{{ field.en }}"{% else %}{{ attrName }}="{{ field.en }}" data-bilingual-attrs="{{ attrName }}" data-{{ attrName }}-en="{{ field.en }}"{% if field.ar %} data-{{ attrName }}-ar="{{ field.ar }}"{% endif %}{% endif %}{% endmacro %}

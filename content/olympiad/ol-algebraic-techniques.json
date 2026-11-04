@@ -459,51 +459,63 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.A — Cubic Newton Sums Without Root-Finding (AMC 12 / NSMO Stage 2)",
           "ar": "مثال محلول 1.A — مجاميع قوى نيوتن لمعادلة تكعيبية دون إيجاد الجذور (AMC 12 / نسما 2)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( r, s, t \\) be the complex roots of \\( x^3 - 4x^2 + 2x - 5 = 0 \\). Compute the exact value of \\( r^3 + s^3 + t^3 \\) and \\( \\frac{1}{r^2} + \\frac{1}{s^2} + \\frac{1}{t^2} \\).</p><p><strong>Solution:</strong> By Vieta's formulas, \\( e_1 = r+s+t = 4 \\), \\( e_2 = rs+st+tr = 2 \\), and \\( e_3 = rst = 5 \\).<br>1. Compute \\( p_2 = r^2+s^2+t^2 = e_1^2 - 2e_2 = 4^2 - 2(2) = 12 \\).<br>2. Since each root satisfies \\( x^3 = 4x^2 - 2x + 5 \\), summing over \\( r, s, t \\) yields:<br>\\[ p_3 = 4p_2 - 2p_1 + 3(5) = 4(12) - 2(4) + 15 = 48 - 8 + 15 = 55. \\]<br>3. For the reciprocal squares, combine over the common denominator \\( (rst)^2 = e_3^2 = 25 \\):<br>\\[ \\frac{(rs)^2 + (st)^2 + (tr)^2}{(rst)^2} = \\frac{e_2^2 - 2e_1 e_3}{e_3^2} = \\frac{2^2 - 2(4)(5)}{25} = \\frac{4 - 40}{25} = -\\frac{36}{25}. \\]<br><em>Notice the negative result \\(-36/25\\) proves instantaneously that two of the three roots are non-real complex conjugates!</em></p>",
-          "ar": "<p><strong>المسألة:</strong> لتكن \\( r, s, t \\) الجذور المركبة للمعادلة \\( x^3 - 4x^2 + 2x - 5 = 0 \\). أوجد القيمة الدقيقة لكل من \\( r^3 + s^3 + t^3 \\) والمقدار \\( \\frac{1}{r^2} + \\frac{1}{s^2} + \\frac{1}{t^2} \\).</p><p><strong>الحل الأولمبي:</strong> من علاقات فييتا: \\( e_1 = r+s+t = 4 \\)، و\\( e_2 = rs+st+tr = 2 \\)، و\\( e_3 = rst = 5 \\).<br>1. نحسب \\( p_2 = r^2+s^2+t^2 = e_1^2 - 2e_2 = 16 - 4 = 12 \\).<br>2. بما أن كل جذر يحقق \\( x^3 = 4x^2 - 2x + 5 \\)، بجمع المعادلات للجذور الثلاثة نجد:<br>\\[ p_3 = 4p_2 - 2p_1 + 15 = 4(12) - 2(4) + 15 = 55. \\]<br>3. لمجموع مقلوبات المربعات نوحد المقامات على \\( (rst)^2 = 25 \\):<br>\\[ \\frac{(rs)^2 + (st)^2 + (tr)^2}{(rst)^2} = \\frac{e_2^2 - 2e_1 e_3}{e_3^2} = \\frac{4 - 2(4)(5)}{25} = -\\frac{36}{25}. \\]<br><em>لاحظ أن الإشارة السالبة \\(-36/25\\) تثبت فوراً وجود جذرين مركبين غير حقيقيين!</em></p>"
+        "problem": {
+          "en": "Let \\( r, s, t \\) be the complex roots of \\( x^3 - 4x^2 + 2x - 5 = 0 \\). Compute the exact value of \\( r^3 + s^3 + t^3 \\) and \\( \\frac{1}{r^2} + \\frac{1}{s^2} + \\frac{1}{t^2} \\).",
+          "ar": "لتكن \\( r, s, t \\) الجذور المركبة للمعادلة \\( x^3 - 4x^2 + 2x - 5 = 0 \\). أوجد القيمة الدقيقة لكل من \\( r^3 + s^3 + t^3 \\) والمقدار \\( \\frac{1}{r^2} + \\frac{1}{s^2} + \\frac{1}{t^2} \\)."
+        },
+        "solution": {
+          "en": "<p>By Vieta's formulas, \\( e_1 = r+s+t = 4 \\), \\( e_2 = rs+st+tr = 2 \\), and \\( e_3 = rst = 5 \\).<br>1. Compute \\( p_2 = r^2+s^2+t^2 = e_1^2 - 2e_2 = 4^2 - 2(2) = 12 \\).<br>2. Since each root satisfies \\( x^3 = 4x^2 - 2x + 5 \\), summing over \\( r, s, t \\) yields:<br>\\[ p_3 = 4p_2 - 2p_1 + 3(5) = 4(12) - 2(4) + 15 = 48 - 8 + 15 = 55. \\]<br>3. For the reciprocal squares, combine over the common denominator \\( (rst)^2 = e_3^2 = 25 \\):<br>\\[ \\frac{(rs)^2 + (st)^2 + (tr)^2}{(rst)^2} = \\frac{e_2^2 - 2e_1 e_3}{e_3^2} = \\frac{2^2 - 2(4)(5)}{25} = \\frac{4 - 40}{25} = -\\frac{36}{25}. \\]<br><em>Notice the negative result \\(-36/25\\) proves instantaneously that two of the three roots are non-real complex conjugates!</em></p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> من علاقات فييتا: \\( e_1 = r+s+t = 4 \\)، و\\( e_2 = rs+st+tr = 2 \\)، و\\( e_3 = rst = 5 \\).<br>1. نحسب \\( p_2 = r^2+s^2+t^2 = e_1^2 - 2e_2 = 16 - 4 = 12 \\).<br>2. بما أن كل جذر يحقق \\( x^3 = 4x^2 - 2x + 5 \\)، بجمع المعادلات للجذور الثلاثة نجد:<br>\\[ p_3 = 4p_2 - 2p_1 + 15 = 4(12) - 2(4) + 15 = 55. \\]<br>3. لمجموع مقلوبات المربعات نوحد المقامات على \\( (rst)^2 = 25 \\):<br>\\[ \\frac{(rs)^2 + (st)^2 + (tr)^2}{(rst)^2} = \\frac{e_2^2 - 2e_1 e_3}{e_3^2} = \\frac{4 - 2(4)(5)}{25} = -\\frac{36}{25}. \\]<br><em>لاحظ أن الإشارة السالبة \\(-36/25\\) تثبت فوراً وجود جذرين مركبين غير حقيقيين!</em></p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.B — Sophie Germain Telescoping Product (KAUST KMC / AIME Style)",
           "ar": "مثال محلول 1.B — الجداء التلسكوبي عبر متطابقة صوفي جيرمان (مسابقة كاوست / AIME)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Evaluate in simplest fraction form:<br>\\[ P = \\frac{(2^4 + 4)(6^4 + 4)(10^4 + 4)(14^4 + 4)}{(4^4 + 4)(8^4 + 4)(12^4 + 4)(16^4 + 4)}. \\]</p><p><strong>Solution:</strong> Apply Sophie Germain's identity \\( a^4 + 4(1)^4 = (a^2 - 2a + 2)(a^2 + 2a + 2) = [(a-1)^2 + 1][(a+1)^2 + 1] \\). Define \\( g(m) = m^2 + 1 \\), so \\( a^4 + 4 = g(a-1)g(a+1) \\).<br>1. Numerator factors: \\( [g(1)g(3)][g(5)g(7)][g(9)g(11)][g(13)g(15)] \\).<br>2. Denominator factors: \\( [g(3)g(5)][g(7)g(9)][g(11)g(13)][g(15)g(17)] \\).<br>3. Every interior factor \\( g(3), g(5), g(7), g(9), g(11), g(13), g(15) \\) cancels cleanly, leaving only the boundary terms:<br>\\[ P = \\frac{g(1)}{g(17)} = \\frac{1^2 + 1}{17^2 + 1} = \\frac{2}{290} = \\frac{1}{145}. \\]</p>",
-          "ar": "<p><strong>المسألة:</strong> احسب في أبسط صورة كسرية قيمة الجداء:<br>\\[ P = \\frac{(2^4 + 4)(6^4 + 4)(10^4 + 4)(14^4 + 4)}{(4^4 + 4)(8^4 + 4)(12^4 + 4)(16^4 + 4)}. \\]</p><p><strong>الحل الأولمبي:</strong> بتطبيق متطابقة صوفي جيرمان عند \\( b = 1 \\): \\( a^4 + 4 = (a^2 - 2a + 2)(a^2 + 2a + 2) = [(a-1)^2 + 1][(a+1)^2 + 1] \\). نضع \\( g(m) = m^2 + 1 \\)، فيكون \\( a^4 + 4 = g(a-1)g(a+1) \\).<br>1. البسط يتحلل إلى: \\( [g(1)g(3)][g(5)g(7)][g(9)g(11)][g(13)g(15)] \\).<br>2. المقام يتحلل إلى: \\( [g(3)g(5)][g(7)g(9)][g(11)g(13)][g(15)g(17)] \\).<br>3. تختصر جميع العوامل الداخلية تلسكوبياً ولا يبقى سوى الطرفين الأول والأخير:<br>\\[ P = \\frac{g(1)}{g(17)} = \\frac{1^2 + 1}{17^2 + 1} = \\frac{2}{290} = \\frac{1}{145}. \\]</p>"
+        "problem": {
+          "en": "Evaluate in simplest fraction form:<br>\\[ P = \\frac{(2^4 + 4)(6^4 + 4)(10^4 + 4)(14^4 + 4)}{(4^4 + 4)(8^4 + 4)(12^4 + 4)(16^4 + 4)}. \\]",
+          "ar": "احسب في أبسط صورة كسرية قيمة الجداء:<br>\\[ P = \\frac{(2^4 + 4)(6^4 + 4)(10^4 + 4)(14^4 + 4)}{(4^4 + 4)(8^4 + 4)(12^4 + 4)(16^4 + 4)}. \\]"
+        },
+        "solution": {
+          "en": "<p>Apply Sophie Germain's identity \\( a^4 + 4(1)^4 = (a^2 - 2a + 2)(a^2 + 2a + 2) = [(a-1)^2 + 1][(a+1)^2 + 1] \\). Define \\( g(m) = m^2 + 1 \\), so \\( a^4 + 4 = g(a-1)g(a+1) \\).<br>1. Numerator factors: \\( [g(1)g(3)][g(5)g(7)][g(9)g(11)][g(13)g(15)] \\).<br>2. Denominator factors: \\( [g(3)g(5)][g(7)g(9)][g(11)g(13)][g(15)g(17)] \\).<br>3. Every interior factor \\( g(3), g(5), g(7), g(9), g(11), g(13), g(15) \\) cancels cleanly, leaving only the boundary terms:<br>\\[ P = \\frac{g(1)}{g(17)} = \\frac{1^2 + 1}{17^2 + 1} = \\frac{2}{290} = \\frac{1}{145}. \\]</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> بتطبيق متطابقة صوفي جيرمان عند \\( b = 1 \\): \\( a^4 + 4 = (a^2 - 2a + 2)(a^2 + 2a + 2) = [(a-1)^2 + 1][(a+1)^2 + 1] \\). نضع \\( g(m) = m^2 + 1 \\)، فيكون \\( a^4 + 4 = g(a-1)g(a+1) \\).<br>1. البسط يتحلل إلى: \\( [g(1)g(3)][g(5)g(7)][g(9)g(11)][g(13)g(15)] \\).<br>2. المقام يتحلل إلى: \\( [g(3)g(5)][g(7)g(9)][g(11)g(13)][g(15)g(17)] \\).<br>3. تختصر جميع العوامل الداخلية تلسكوبياً ولا يبقى سوى الطرفين الأول والأخير:<br>\\[ P = \\frac{g(1)}{g(17)} = \\frac{1^2 + 1}{17^2 + 1} = \\frac{2}{290} = \\frac{1}{145}. \\]</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.C — Constrained Minimum via Titu's Lemma (NSMO Finals / BMO)",
           "ar": "مثال محلول 1.C — إيجاد القيمة الصغرى المشروطة عبر لمّة تيتو (نهائيات نسما / BMO)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( x, y, z > 0 \\) be positive real numbers satisfying \\( x + 2y + 3z = 12 \\). Find the exact minimum possible value of \\( S = \\frac{9}{x} + \\frac{8}{y} + \\frac{3}{z} \\), and determine the triple \\( (x, y, z) \\) at which equality holds.</p><p><strong>Solution:</strong> To match the linear constraint denominator \\( x + 2y + 3z = 12 \\), rewrite each fraction so its denominator matches a summand of \\( x + 2y + 3z \\):<br>\\[ S = \\frac{9}{x} + \\frac{16}{2y} + \\frac{9}{3z} = \\frac{3^2}{x} + \\frac{4^2}{2y} + \\frac{3^2}{3z}. \\]<br>Applying Titu's Lemma directly:<br>\\[ S \\ge \\frac{(3 + 4 + 3)^2}{x + 2y + 3z} = \\frac{10^2}{12} = \\frac{100}{12} = \\frac{25}{3}. \\]<br><strong>Equality Check:</strong> Equality holds iff \\( \\frac{3}{x} = \\frac{4}{2y} = \\frac{3}{3z} = \\lambda \\), giving \\( x = \\frac{3}{\\lambda},\\; y = \\frac{2}{\\lambda},\\; z = \\frac{1}{\\lambda} \\). Substituting into \\( x + 2y + 3z = 12 \\) gives \\( \\frac{3 + 4 + 3}{\\lambda} = 12 \\implies \\lambda = \\frac{5}{6} \\), so \\( (x, y, z) = \\left(\\frac{18}{5}, \\frac{12}{5}, \\frac{6}{5}\\right) \\). Thus the exact minimum is \\( \\frac{25}{3} \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> لتكن \\( x, y, z > 0 \\) أعداداً حقيقية موجبة تحقق الشرط \\( x + 2y + 3z = 12 \\). أوجد القيمة الصغرى الدقيقة للمقدار \\( S = \\frac{9}{x} + \\frac{8}{y} + \\frac{3}{z} \\)، وحدد الثلاثية \\( (x, y, z) \\) التي تحقق المساواة.</p><p><strong>الحل الأولمبي:</strong> لمواءمة القيد الخطي \\( x + 2y + 3z = 12 \\)، نعيد كتابة الكسور بحيث تطابق مقاماتها حدود القيد:<br>\\[ S = \\frac{9}{x} + \\frac{16}{2y} + \\frac{9}{3z} = \\frac{3^2}{x} + \\frac{4^2}{2y} + \\frac{3^2}{3z}. \\]<br>وبتطبيق لمّة تيتو مباشرةً:<br>\\[ S \\ge \\frac{(3 + 4 + 3)^2}{x + 2y + 3z} = \\frac{100}{12} = \\frac{25}{3}. \\]<br><strong>التحقق من شرط المساواة:</strong> تتحقق المساواة عندما \\( \\frac{3}{x} = \\frac{4}{2y} = \\frac{3}{3z} = \\lambda \\)، أي \\( x = \\frac{3}{\\lambda},\\; y = \\frac{2}{\\lambda},\\; z = \\frac{1}{\\lambda} \\). وبالتعويض في \\( x + 2y + 3z = 12 \\) نجد \\( \\lambda = \\frac{5}{6} \\)، ومنه \\( (x, y, z) = \\left(\\frac{18}{5}, \\frac{12}{5}, \\frac{6}{5}\\right) \\)، فتكون القيمة الصغرى الفعلية \\( \\frac{25}{3} \\).</p>"
+        "problem": {
+          "en": "Let \\( x, y, z > 0 \\) be positive real numbers satisfying \\( x + 2y + 3z = 12 \\). Find the exact minimum possible value of \\( S = \\frac{9}{x} + \\frac{8}{y} + \\frac{3}{z} \\), and determine the triple \\( (x, y, z) \\) at which equality holds.",
+          "ar": "لتكن \\( x, y, z > 0 \\) أعداداً حقيقية موجبة تحقق الشرط \\( x + 2y + 3z = 12 \\). أوجد القيمة الصغرى الدقيقة للمقدار \\( S = \\frac{9}{x} + \\frac{8}{y} + \\frac{3}{z} \\)، وحدد الثلاثية \\( (x, y, z) \\) التي تحقق المساواة."
+        },
+        "solution": {
+          "en": "<p>To match the linear constraint denominator \\( x + 2y + 3z = 12 \\), rewrite each fraction so its denominator matches a summand of \\( x + 2y + 3z \\):<br>\\[ S = \\frac{9}{x} + \\frac{16}{2y} + \\frac{9}{3z} = \\frac{3^2}{x} + \\frac{4^2}{2y} + \\frac{3^2}{3z}. \\]<br>Applying Titu's Lemma directly:<br>\\[ S \\ge \\frac{(3 + 4 + 3)^2}{x + 2y + 3z} = \\frac{10^2}{12} = \\frac{100}{12} = \\frac{25}{3}. \\]<br><strong>Equality Check:</strong> Equality holds iff \\( \\frac{3}{x} = \\frac{4}{2y} = \\frac{3}{3z} = \\lambda \\), giving \\( x = \\frac{3}{\\lambda},\\; y = \\frac{2}{\\lambda},\\; z = \\frac{1}{\\lambda} \\). Substituting into \\( x + 2y + 3z = 12 \\) gives \\( \\frac{3 + 4 + 3}{\\lambda} = 12 \\implies \\lambda = \\frac{5}{6} \\), so \\( (x, y, z) = \\left(\\frac{18}{5}, \\frac{12}{5}, \\frac{6}{5}\\right) \\). Thus the exact minimum is \\( \\frac{25}{3} \\).</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> لمواءمة القيد الخطي \\( x + 2y + 3z = 12 \\)، نعيد كتابة الكسور بحيث تطابق مقاماتها حدود القيد:<br>\\[ S = \\frac{9}{x} + \\frac{16}{2y} + \\frac{9}{3z} = \\frac{3^2}{x} + \\frac{4^2}{2y} + \\frac{3^2}{3z}. \\]<br>وبتطبيق لمّة تيتو مباشرةً:<br>\\[ S \\ge \\frac{(3 + 4 + 3)^2}{x + 2y + 3z} = \\frac{100}{12} = \\frac{25}{3}. \\]<br><strong>التحقق من شرط المساواة:</strong> تتحقق المساواة عندما \\( \\frac{3}{x} = \\frac{4}{2y} = \\frac{3}{3z} = \\lambda \\)، أي \\( x = \\frac{3}{\\lambda},\\; y = \\frac{2}{\\lambda},\\; z = \\frac{1}{\\lambda} \\). وبالتعويض في \\( x + 2y + 3z = 12 \\) نجد \\( \\lambda = \\frac{5}{6} \\)، ومنه \\( (x, y, z) = \\left(\\frac{18}{5}, \\frac{12}{5}, \\frac{6}{5}\\right) \\)، فتكون القيمة الصغرى الفعلية \\( \\frac{25}{3} \\).</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.D — Auxiliary Polynomial Interpolation (Olympiad Classic)",
           "ar": "مثال محلول 1.D — استيفاء كثيرات الحدود بالدالة المساعدة (كلاسيكيات الأولمبياد)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Let \\( P(x) \\) be a monic polynomial of degree \\( 4 \\) such that \\( P(1) = 3,\\; P(2) = 7,\\; P(3) = 13, \\) and \\( P(4) = 21 \\). Determine \\( P(6) \\).</p><p><strong>Solution:</strong> Observe the pattern of values at \\( k \\in \\{1, 2, 3, 4\\} \\): \\( 3 = 1^2+1+1 \\), \\( 7 = 2^2+2+1 \\), \\( 13 = 3^2+3+1 \\), \\( 21 = 4^2+4+1 \\). That is, \\( P(k) = k^2 + k + 1 \\) for \\( k = 1, 2, 3, 4 \\).<br>Define the auxiliary polynomial \\( Q(x) = P(x) - (x^2 + x + 1) \\). Since \\( P(x) \\) is monic of degree \\( 4 \\), \\( Q(x) \\) is ALSO monic of degree \\( 4 \\), and its four roots are \\( 1, 2, 3, 4 \\):<br>\\[ Q(x) = (x - 1)(x - 2)(x - 3)(x - 4) \\implies P(x) = x^2 + x + 1 + (x - 1)(x - 2)(x - 3)(x - 4). \\]<br>Evaluating at \\( x = 6 \\): \\( P(6) = (36 + 6 + 1) + (5)(4)(3)(2) = 43 + 120 = 163 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> لتكن \\( P(x) \\) كثيرة حدود واحدية (معاملها الرئيس \\( 1 \\)) من الدرجة الرابعة تحقق \\( P(1) = 3,\\; P(2) = 7,\\; P(3) = 13,\\; P(4) = 21 \\). أوجد قيمة \\( P(6) \\).</p><p><strong>الحل الأولمبي:</strong> نلاحظ أن القيم عند \\( k \\in \\{1, 2, 3, 4\\} \\) تتبع القاعدة \\( P(k) = k^2 + k + 1 \\). نعرّف كثيرة الحدود المساعدة \\( Q(x) = P(x) - (x^2 + x + 1) \\). بما أن \\( P(x) \\) واحدية من الدرجة الرابعة، فإن \\( Q(x) \\) واحدية أيضاً من الدرجة الرابعة وجذورها الأربعة هي \\( 1, 2, 3, 4 \\):<br>\\[ Q(x) = (x - 1)(x - 2)(x - 3)(x - 4) \\implies P(x) = x^2 + x + 1 + (x - 1)(x - 2)(x - 3)(x - 4). \\]<br>بالتعويض عند \\( x = 6 \\): \\( P(6) = (36 + 6 + 1) + 5 \\cdot 4 \\cdot 3 \\cdot 2 = 43 + 120 = 163 \\).</p>"
+        "problem": {
+          "en": "Let \\( P(x) \\) be a monic polynomial of degree \\( 4 \\) such that \\( P(1) = 3,\\; P(2) = 7,\\; P(3) = 13, \\) and \\( P(4) = 21 \\). Determine \\( P(6) \\).",
+          "ar": "لتكن \\( P(x) \\) كثيرة حدود واحدية (معاملها الرئيس \\( 1 \\)) من الدرجة الرابعة تحقق \\( P(1) = 3,\\; P(2) = 7,\\; P(3) = 13,\\; P(4) = 21 \\). أوجد قيمة \\( P(6) \\)."
+        },
+        "solution": {
+          "en": "<p>Observe the pattern of values at \\( k \\in \\{1, 2, 3, 4\\} \\): \\( 3 = 1^2+1+1 \\), \\( 7 = 2^2+2+1 \\), \\( 13 = 3^2+3+1 \\), \\( 21 = 4^2+4+1 \\). That is, \\( P(k) = k^2 + k + 1 \\) for \\( k = 1, 2, 3, 4 \\).<br>Define the auxiliary polynomial \\( Q(x) = P(x) - (x^2 + x + 1) \\). Since \\( P(x) \\) is monic of degree \\( 4 \\), \\( Q(x) \\) is ALSO monic of degree \\( 4 \\), and its four roots are \\( 1, 2, 3, 4 \\):<br>\\[ Q(x) = (x - 1)(x - 2)(x - 3)(x - 4) \\implies P(x) = x^2 + x + 1 + (x - 1)(x - 2)(x - 3)(x - 4). \\]<br>Evaluating at \\( x = 6 \\): \\( P(6) = (36 + 6 + 1) + (5)(4)(3)(2) = 43 + 120 = 163 \\).</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نلاحظ أن القيم عند \\( k \\in \\{1, 2, 3, 4\\} \\) تتبع القاعدة \\( P(k) = k^2 + k + 1 \\). نعرّف كثيرة الحدود المساعدة \\( Q(x) = P(x) - (x^2 + x + 1) \\). بما أن \\( P(x) \\) واحدية من الدرجة الرابعة، فإن \\( Q(x) \\) واحدية أيضاً من الدرجة الرابعة وجذورها الأربعة هي \\( 1, 2, 3, 4 \\):<br>\\[ Q(x) = (x - 1)(x - 2)(x - 3)(x - 4) \\implies P(x) = x^2 + x + 1 + (x - 1)(x - 2)(x - 3)(x - 4). \\]<br>بالتعويض عند \\( x = 6 \\): \\( P(6) = (36 + 6 + 1) + 5 \\cdot 4 \\cdot 3 \\cdot 2 = 43 + 120 = 163 \\).</p>"
         }
       },
       {

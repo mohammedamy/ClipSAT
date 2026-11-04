@@ -18,7 +18,10 @@
       '.tm-drag-handle:active{cursor:grabbing}',
       '.tm-toolbar button{background:#4f46e5;color:#fff;border:none;border-radius:7px;padding:5px 10px;cursor:pointer;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0;transition:background .15s,transform .15s}',
       '.tm-toolbar button:hover{background:#4338ca;transform:translateY(-1px)}',
+      '.tm-drawer-toggle{display:none!important}',
+      '.tm-actions-drawer{display:contents}',
       '@media (max-width: 1060px){.tm-toolbar{top:66px;border-radius:16px;flex-wrap:wrap;justify-content:center;white-space:normal;padding:8px 12px;max-width:calc(100vw - 16px)}}',
+      '@media (max-width: 767px){.tm-toolbar{top:auto;bottom:64px;left:12px;right:12px;transform:none;width:auto;max-width:none;border-radius:14px;padding:7px 10px;justify-content:space-between}.tm-drawer-toggle{display:inline-flex!important;background:#312e81!important}.tm-actions-drawer{display:none;width:100%;padding-top:8px;margin-top:6px;border-top:1px solid rgba(255,255,255,.15);gap:6px;flex-wrap:wrap}.tm-toolbar.tm-drawer-open .tm-actions-drawer{display:flex}}',
       '@media print{.cq-sol{display:block!important}.tm-meta{display:flex!important}',
       'nav,.sidebar,#tm-toolbar,#chatFab,#daily-goal-bar,#exam-countdown-bar,#weak-recs{display:none!important}}'
     ].join('');
@@ -37,6 +40,7 @@
       /* update checkbox if open */
       var cb=document.getElementById('teacher-mode-toggle');
       if(cb) cb.checked=_active;
+      document.dispatchEvent(new CustomEvent('clipsat:teacher-mode-change',{detail:{active:_active}}));
     }
 
     function _renderToolbar(){
@@ -47,7 +51,9 @@
         bar.id='tm-toolbar'; bar.className='tm-toolbar';
         if(_ttAr()) bar.dir='rtl';
         bar.innerHTML='<span class="tm-drag-handle" title="Drag toolbar">⋮⋮</span> '
-          +_tt('tmTeacherMode')
+          +'<span>'+_tt('tmTeacherMode')+'</span>'
+          +' <button type="button" class="tm-drawer-toggle" onclick="var b=document.getElementById(\'tm-toolbar\');if(b)b.classList.toggle(\'tm-drawer-open\')">⋯ '+(_ttAr()?'الأدوات':'Tools')+'</button>'
+          +' <div class="tm-actions-drawer">'
           +' <button onclick="window.TeacherMode.printLessonPlan()">'+_tt('tmLessonPlan')+'</button>'
           +' <button onclick="window.TeacherMode.exportPDF()">'+_tt('tmPrintChapterPdf')+'</button>'
           +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
@@ -57,6 +63,7 @@
           +' <button onclick="window.TeacherMode.openGradebook()">📊 '+(_ttAr()?'سجل الدرجات':'Gradebook')+'</button>'
           +' <button id="teacherWhiteboardBtn" onclick="window.TeacherMode.openWhiteboard()">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
           +' <button onclick="window.CSReport?window.CSReport.generate():window.TeacherMode.generateProgressReport()">'+_tt('tmProgressReport')+'</button>'
+          +' </div>'
           +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
         document.body.appendChild(bar);
 
@@ -533,8 +540,8 @@
         +'<div class="lp-section"><div class="lp-section-head">'+_tt('studentNotes')+'<\/div>'+noteLines+'<\/div>'
         +'<div class="lp-section"><div class="lp-amber-head">'+_tt('practiceAssess')+'<\/div>'+assessHTML+'<\/div>'
         +'<div class="lp-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah<\/span><span>'+_tt('lessonPlanDocTitlePrefix')+esc(subject)+'<\/span><span>'+today+'<\/span><\/div>'
-        /* MathJax script with startup.promise and safe fallback timer if CDN or promise times out */
-        +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(window.print,400);}).catch(function(){setTimeout(window.print,400);});}else{setTimeout(window.print,800);}<\/script>'
+        /* Print once KaTeX auto-render settles */
+        +'<script>window.addEventListener("load",function(){setTimeout(window.print,500);});<\/script>'
         +'<\/body><\/html>';
 
       var _lpBlob=new Blob([lpHTML],{type:'text/html;charset=utf-8'});

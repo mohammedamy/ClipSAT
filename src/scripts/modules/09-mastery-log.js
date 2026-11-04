@@ -6,7 +6,7 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 window.ML = (function(){
   var STORAGE_KEY = 'clipsat_mistakes_v2';
-  var MAX_ENTRIES = 500;
+  var MAX_ENTRIES = 1000;
   var BOX_INTERVALS_MS = {
     1: 0,                 /* Box 1: Due immediately / Re-test now */
     2: 1 * 86400000,      /* Box 2: 1-day review */
@@ -66,13 +66,12 @@ window.ML = (function(){
   }
 
   function _save(){
-    if(_log.length > MAX_ENTRIES) _log = _log.slice(_log.length - MAX_ENTRIES);
+    if(_log.length > MAX_ENTRIES){
+      _log.sort(function(a,b){ return (a.ts||0) - (b.ts||0); });
+      _log = _log.slice(_log.length - MAX_ENTRIES);
+    }
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(_log)); }catch(e){}
-    try{
-      localStorage.setItem('clipsat_mistakes', JSON.stringify(
-        _log.map(function(m){ return {q:m.q, wrong:m.wrong, right:m.right, src:m.src, domain:m.domain}; })
-      ));
-    }catch(e){}
+    try{ localStorage.removeItem('clipsat_mistakes'); }catch(e){}
     _updateBadges();
   }
 

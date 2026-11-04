@@ -1,37 +1,37 @@
 ---
 layout: base.njk
 trackId: gaten
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/gaten/"
+enAltPath: "/gaten/"
+arAltPath: "/ar/gaten/"
 title: "English GAT & SAAT (Qiyas Quantitative & Tahsili) · ClipSAT"
 description: "English-Medium Qiyas General Aptitude Test (GAT Quantitative) & Standardized Achievement Admission Test (SAAT Mathematics) for International School STEM Students"
-isRtl: false
 ---
-{% set gaten = migratedContent.gaten %}
-{% set pageHeader = gaten.meta.meta.pageHeader %}
-<main id="view-gaten" class="view active">
+{% set trackData = migratedContent.gaten %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'ge-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'ge-testgen' %}
+{% set downloadsId = 'ge-downloads' %}
+<main id="view-gaten" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = gaten.chapters %}
-    {% set practiceSetId = 'ge-practice' %}
-    {% set testGeneratorId = 'ge-testgen' %}
-    {% set downloadsId = 'ge-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in gaten.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'ge-practice' %}
-      {% set practiceSet = gaten.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'ge-testgen' %}
-      {% set testGenerator = gaten.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'ge-downloads' %}
-      {% set courseMeta = gaten.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

@@ -1,17 +1,18 @@
 var _sidebarOpen = false;
-var _currentViewName = '';
-var _currentChapterId = '';
+var _currentViewName = window.CLIPSAT_TRACK || '';
+var _currentChapterId = window.CLIPSAT_CHAPTER_ID || '';
 
-// Wrap goChapter to track current chapter and refresh sidebar
-(function(){
-  var _ogc = window.goChapter;
-  window.goChapter = function(id, view){
-    _currentChapterId = id;
-    if(view) _currentViewName = view;
-    if(_ogc) _ogc.apply(this, arguments);
-    if(_sidebarOpen) setTimeout(_renderSidebar, 120);
-  };
-})();
+// Subscribe to chapter/view events to track current chapter and refresh sidebar
+document.addEventListener('clipsat:chapter-change', function(e){
+  var d = (e && e.detail) || {};
+  if(d.chapterId) _currentChapterId = d.chapterId;
+  if(d.viewId) _currentViewName = d.viewId;
+  if(_sidebarOpen) setTimeout(_renderSidebar, 120);
+});
+document.addEventListener('clipsat:view-change', function(e){
+  var d = (e && e.detail) || {};
+  if(d.viewId) loadSidebarForView(d.viewId);
+});
 
 function _renderSidebar(){
   var body = document.getElementById('fsb-body');

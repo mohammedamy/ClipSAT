@@ -1,37 +1,37 @@
 ---
 layout: base.njk
 trackId: mathai
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/mathai/"
+enAltPath: "/mathai/"
+arAltPath: "/ar/mathai/"
 title: "Math for AI & Data Science · ClipSAT"
 description: "Vectors, Matrix Transformations, Gradient Descent, Bayes' Theorem, Regression and PCA for AI"
-isRtl: false
 ---
-{% set mathai = migratedContent.mathai %}
-{% set pageHeader = mathai.meta.meta.pageHeader %}
-<main id="view-mathai" class="view active">
+{% set trackData = migratedContent.mathai %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'ai-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'ai-testgen' %}
+{% set downloadsId = 'ai-downloads' %}
+<main id="view-mathai" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = mathai.chapters %}
-    {% set practiceSetId = 'ai-practice' %}
-    {% set testGeneratorId = 'ai-testgen' %}
-    {% set downloadsId = 'ai-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in mathai.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'ai-practice' %}
-      {% set practiceSet = mathai.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'ai-testgen' %}
-      {% set testGenerator = mathai.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'ai-downloads' %}
-      {% set courseMeta = mathai.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

@@ -391,51 +391,63 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.A — Coupled Parity Recurrence Over Quarternary Digits (AMC 12 / NSMO Stage 2)",
           "ar": "مثال محلول 5.A — التراجع المزدوج للسلاسل ذات العدد الزوجي من الأصفار (AMC 12 / نسما 2)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> How many \\( 6 \\)-digit strings formed from the alphabet \\( \\{0, 1, 2, 3\\} \\) (leading zeros allowed) contain an <strong>even</strong> number of \\( 0 \\)s?</p><p><strong>Solution:</strong> Let \\( E_n \\) and \\( O_n \\) denote the number of \\( n \\)-digit strings over \\( \\{0,1,2,3\\} \\) with an even and odd number of \\( 0 \\)s, respectively.<br>1. Appending \\( 1, 2, \\) or \\( 3 \\) (\\( 3 \\) choices) preserves parity; appending \\( 0 \\) (\\( 1 \\) choice) flips parity:<br>\\[ E_n = 3E_{n-1} + O_{n-1}, \\qquad O_n = E_{n-1} + 3O_{n-1}. \\]<br>2. Add and subtract the two equations to diagonalize instantly:<br>\\[ E_n + O_n = 4(E_{n-1} + O_{n-1}) = 4^n, \\qquad E_n - O_n = 2(E_{n-1} - O_{n-1}) = 2^n. \\]<br>3. Averaging gives \\( E_n = \\frac{4^n + 2^n}{2} \\). For \\( n = 6 \\):<br>\\[ E_6 = \\frac{4^6 + 2^6}{2} = \\frac{4096 + 64}{2} = \\frac{4160}{2} = 2080. \\]</p>",
-          "ar": "<p><strong>المسألة:</strong> كم سلسلة طولها \\( 6 \\) خانات مكوّنة من الأبجدية \\( \\{0, 1, 2, 3\\} \\) (يُسمح بالصفر في اليسار) تحتوي على عدد <strong>زوجي</strong> من الرقم \\( 0 \\)؟</p><p><strong>الحل الأولمبي:</strong> ليكن \\( E_n \\) عدد السلاسل ذات العدد الزوجي من الأصفار، و\\( O_n \\) ذات العدد الفردي.<br>1. إضافة \\( 1 \\) أو \\( 2 \\) أو \\( 3 \\) (\\( 3 \\) خيارات) تحفظ الزوجية، وإضافة \\( 0 \\) (خيار واحد) تعكسها:<br>\\[ E_n = 3E_{n-1} + O_{n-1}, \\qquad O_n = E_{n-1} + 3O_{n-1}. \\]<br>2. بالجمع والطرح لفصل المتغيرات فوراً:<br>\\[ E_n + O_n = 4^n, \\qquad E_n - O_n = 2^n \\implies E_n = \\frac{4^n + 2^n}{2}. \\]<br>3. عند \\( n = 6 \\): \\( E_6 = \\frac{4096 + 64}{2} = 2080 \\).</p>"
+        "problem": {
+          "en": "How many \\( 6 \\)-digit strings formed from the alphabet \\( \\{0, 1, 2, 3\\} \\) (leading zeros allowed) contain an <strong>even</strong> number of \\( 0 \\)s?",
+          "ar": "كم سلسلة طولها \\( 6 \\) خانات مكوّنة من الأبجدية \\( \\{0, 1, 2, 3\\} \\) (يُسمح بالصفر في اليسار) تحتوي على عدد <strong>زوجي</strong> من الرقم \\( 0 \\)؟"
+        },
+        "solution": {
+          "en": "<p>Let \\( E_n \\) and \\( O_n \\) denote the number of \\( n \\)-digit strings over \\( \\{0,1,2,3\\} \\) with an even and odd number of \\( 0 \\)s, respectively.<br>1. Appending \\( 1, 2, \\) or \\( 3 \\) (\\( 3 \\) choices) preserves parity; appending \\( 0 \\) (\\( 1 \\) choice) flips parity:<br>\\[ E_n = 3E_{n-1} + O_{n-1}, \\qquad O_n = E_{n-1} + 3O_{n-1}. \\]<br>2. Add and subtract the two equations to diagonalize instantly:<br>\\[ E_n + O_n = 4(E_{n-1} + O_{n-1}) = 4^n, \\qquad E_n - O_n = 2(E_{n-1} - O_{n-1}) = 2^n. \\]<br>3. Averaging gives \\( E_n = \\frac{4^n + 2^n}{2} \\). For \\( n = 6 \\):<br>\\[ E_6 = \\frac{4^6 + 2^6}{2} = \\frac{4096 + 64}{2} = \\frac{4160}{2} = 2080. \\]</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> ليكن \\( E_n \\) عدد السلاسل ذات العدد الزوجي من الأصفار، و\\( O_n \\) ذات العدد الفردي.<br>1. إضافة \\( 1 \\) أو \\( 2 \\) أو \\( 3 \\) (\\( 3 \\) خيارات) تحفظ الزوجية، وإضافة \\( 0 \\) (خيار واحد) تعكسها:<br>\\[ E_n = 3E_{n-1} + O_{n-1}, \\qquad O_n = E_{n-1} + 3O_{n-1}. \\]<br>2. بالجمع والطرح لفصل المتغيرات فوراً:<br>\\[ E_n + O_n = 4^n, \\qquad E_n - O_n = 2^n \\implies E_n = \\frac{4^n + 2^n}{2}. \\]<br>3. عند \\( n = 6 \\): \\( E_6 = \\frac{4096 + 64}{2} = 2080 \\).</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.B — Non-Crossing Chords & Polygon Triangulation via Catalan (KAUST KMC)",
           "ar": "مثال محلول 5.B — الأوتار غير المتقاطعة وتثليث المضلعات عبر أعداد كاتالان (مسابقة كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Ten distinct points \\( P_1, P_2, \\dots, P_{10} \\) lie in cyclic order on a circle. In how many ways can we pair them up with \\( 5 \\) chords so that NO two chords intersect inside the circle?</p><p><strong>Solution:</strong> Label the points \\( 1, 2, \\dots, 10 \\). Point \\( 1 \\) must pair with an even-indexed point \\( 2k + 2 \\) (for \\( k = 0, 1, 2, 3, 4 \\)), because otherwise an odd number of points would be trapped on each side of chord \\( (1, j) \\), forcing a crossing! Once chord \\( (1, 2k+2) \\) is drawn, the \\( 2k \\) points on one side and \\( 8 - 2k \\) points on the other side must independently form non-crossing matchings:<br>\\[ M_5 = \\sum_{k=0}^4 M_k M_{4-k} = C_5 = \\frac{1}{5 + 1}\\binom{10}{5} = \\frac{252}{6} = 42. \\]</p>",
-          "ar": "<p><strong>المسألة:</strong> عُيّنت عشر نقاط مختلفة \\( P_1, \\dots, P_{10} \\) بترتيب دائري على محيط دائرة. بكم طريقة يمكن توصيلها بـ \\( 5 \\) أوتار مثنى مثنى بحيث لا يتقاطع أي وترين داخل الدائرة؟</p><p><strong>الحل الأولمبي:</strong> يجب أن تتصل النقطة \\( P_1 \\) بنقطة ذات رتبة زوجية \\( P_{2k+2} \\) (حيث \\( k = 0,1,2,3,4 \\)) حتى تترك عدداً زوجياً من النقاط على كل جانب دون تقاطع. وبذلك تحقق الأعداد \\( M_n \\) علاقة كاتالان التراجعية تماماً \\( M_5 = \\sum_{k=0}^4 M_k M_{4-k} = C_5 \\)، ومنه:<br>\\[ C_5 = \\frac{1}{6}\\binom{10}{5} = \\frac{252}{6} = 42. \\]</p>"
+        "problem": {
+          "en": "Ten distinct points \\( P_1, P_2, \\dots, P_{10} \\) lie in cyclic order on a circle. In how many ways can we pair them up with \\( 5 \\) chords so that NO two chords intersect inside the circle?",
+          "ar": "عُيّنت عشر نقاط مختلفة \\( P_1, \\dots, P_{10} \\) بترتيب دائري على محيط دائرة. بكم طريقة يمكن توصيلها بـ \\( 5 \\) أوتار مثنى مثنى بحيث لا يتقاطع أي وترين داخل الدائرة؟"
+        },
+        "solution": {
+          "en": "<p>Label the points \\( 1, 2, \\dots, 10 \\). Point \\( 1 \\) must pair with an even-indexed point \\( 2k + 2 \\) (for \\( k = 0, 1, 2, 3, 4 \\)), because otherwise an odd number of points would be trapped on each side of chord \\( (1, j) \\), forcing a crossing! Once chord \\( (1, 2k+2) \\) is drawn, the \\( 2k \\) points on one side and \\( 8 - 2k \\) points on the other side must independently form non-crossing matchings:<br>\\[ M_5 = \\sum_{k=0}^4 M_k M_{4-k} = C_5 = \\frac{1}{5 + 1}\\binom{10}{5} = \\frac{252}{6} = 42. \\]</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> يجب أن تتصل النقطة \\( P_1 \\) بنقطة ذات رتبة زوجية \\( P_{2k+2} \\) (حيث \\( k = 0,1,2,3,4 \\)) حتى تترك عدداً زوجياً من النقاط على كل جانب دون تقاطع. وبذلك تحقق الأعداد \\( M_n \\) علاقة كاتالان التراجعية تماماً \\( M_5 = \\sum_{k=0}^4 M_k M_{4-k} = C_5 \\)، ومنه:<br>\\[ C_5 = \\frac{1}{6}\\binom{10}{5} = \\frac{252}{6} = 42. \\]</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.C — Expected Local Maxima via Indicator Variables (AIME / NSMO Finals)",
           "ar": "مثال محلول 5.C — القيمة المتوقعة للقمم المحلية عبر المتغيرات المؤشرة (AIME / نهائيات نسما)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> The integers \\( 1, 2, \\dots, 12 \\) are arranged in a uniform random permutation \\( (a_1, a_2, \\dots, a_{12}) \\). An index \\( i \\) is called a <em>peak</em> if \\( a_i \\) is strictly greater than all of its immediate neighbors (note \\( a_1 \\) has only neighbor \\( a_2 \\), and \\( a_{12} \\) has only neighbor \\( a_{11} \\)). Find the expected number of peaks.</p><p><strong>Solution:</strong> Define indicator \\( I_i = 1 \\) if position \\( i \\) is a peak, and \\( 0 \\) otherwise.<br>1. At the two endpoints (\\( i = 1 \\) and \\( i = 12 \\)): \\( a_1 > a_2 \\) occurs in exactly half of all permutations by symmetry, so \\( \\mathbb{E}[I_1] = \\mathbb{E}[I_{12}] = \\frac{1}{2} \\).<br>2. At each of the \\( 10 \\) interior positions (\\( 2 \\le i \\le 11 \\)): among the three adjacent elements \\( \\{a_{i-1}, a_i, a_{i+1}\\} \\), all \\( 3! = 6 \\) relative orderings are equally likely, and \\( a_i \\) is the largest of the three in \\( 2 \\) of the \\( 6 \\) orderings (probability \\( \\frac{1}{3} \\)). Thus \\( \\mathbb{E}[I_i] = \\frac{1}{3} \\).<br>3. By Linearity of Expectation:<br>\\[ \\mathbb{E}[\\text{peaks}] = \\frac{1}{2} + 10 \\cdot \\frac{1}{3} + \\frac{1}{2} = 1 + \\frac{10}{3} = \\frac{13}{3}. \\]</p>",
-          "ar": "<p><strong>المسألة:</strong> رُتّبت الأعداد \\( 1, 2, \\dots, 12 \\) عشوائياً بانتظام في صف \\( (a_1, a_2, \\dots, a_{12}) \\). نسمي الموقع \\( i \\) <em>قمّة محلية</em> إذا كان \\( a_i \\) أكبر من جميع جيرانه المباشرين (للأطراف جارٌ واحد وللداخل جاران). أوجد القيمة المتوقعة لعدد القمم المحلية.</p><p><strong>الحل الأولمبي:</strong> نعرّف المتغير المؤشر \\( I_i \\) لكل موقع \\( i \\):<br>1. عند الطرفين \\( i = 1 \\) و\\( i = 12 \\): بالتناظر \\( \\mathbb{P}(a_1 > a_2) = \\frac{1}{2} \\)، وكذلك \\( \\mathbb{P}(a_{12} > a_{11}) = \\frac{1}{2} \\).<br>2. عند المواقع العشرة الداخلية (\\( 2 \\le i \\le 11 \\)): لأي ثلاثية متجاورة \\( \\{a_{i-1}, a_i, a_{i+1}\\} \\)، كل عنصر له نفس الفرصة لأن يكون الأكبر بين الثلاثة، أي \\( \\mathbb{E}[I_i] = \\frac{1}{3} \\).<br>3. بجمع التوقعات خطياً:<br>\\[ \\mathbb{E}[\\text{peaks}] = \\frac{1}{2} + 10 \\cdot \\frac{1}{3} + \\frac{1}{2} = \\frac{13}{3}. \\]</p>"
+        "problem": {
+          "en": "The integers \\( 1, 2, \\dots, 12 \\) are arranged in a uniform random permutation \\( (a_1, a_2, \\dots, a_{12}) \\). An index \\( i \\) is called a <em>peak</em> if \\( a_i \\) is strictly greater than all of its immediate neighbors (note \\( a_1 \\) has only neighbor \\( a_2 \\), and \\( a_{12} \\) has only neighbor \\( a_{11} \\)). Find the expected number of peaks.",
+          "ar": "رُتّبت الأعداد \\( 1, 2, \\dots, 12 \\) عشوائياً بانتظام في صف \\( (a_1, a_2, \\dots, a_{12}) \\). نسمي الموقع \\( i \\) <em>قمّة محلية</em> إذا كان \\( a_i \\) أكبر من جميع جيرانه المباشرين (للأطراف جارٌ واحد وللداخل جاران). أوجد القيمة المتوقعة لعدد القمم المحلية."
+        },
+        "solution": {
+          "en": "<p>Define indicator \\( I_i = 1 \\) if position \\( i \\) is a peak, and \\( 0 \\) otherwise.<br>1. At the two endpoints (\\( i = 1 \\) and \\( i = 12 \\)): \\( a_1 > a_2 \\) occurs in exactly half of all permutations by symmetry, so \\( \\mathbb{E}[I_1] = \\mathbb{E}[I_{12}] = \\frac{1}{2} \\).<br>2. At each of the \\( 10 \\) interior positions (\\( 2 \\le i \\le 11 \\)): among the three adjacent elements \\( \\{a_{i-1}, a_i, a_{i+1}\\} \\), all \\( 3! = 6 \\) relative orderings are equally likely, and \\( a_i \\) is the largest of the three in \\( 2 \\) of the \\( 6 \\) orderings (probability \\( \\frac{1}{3} \\)). Thus \\( \\mathbb{E}[I_i] = \\frac{1}{3} \\).<br>3. By Linearity of Expectation:<br>\\[ \\mathbb{E}[\\text{peaks}] = \\frac{1}{2} + 10 \\cdot \\frac{1}{3} + \\frac{1}{2} = 1 + \\frac{10}{3} = \\frac{13}{3}. \\]</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نعرّف المتغير المؤشر \\( I_i \\) لكل موقع \\( i \\):<br>1. عند الطرفين \\( i = 1 \\) و\\( i = 12 \\): بالتناظر \\( \\mathbb{P}(a_1 > a_2) = \\frac{1}{2} \\)، وكذلك \\( \\mathbb{P}(a_{12} > a_{11}) = \\frac{1}{2} \\).<br>2. عند المواقع العشرة الداخلية (\\( 2 \\le i \\le 11 \\)): لأي ثلاثية متجاورة \\( \\{a_{i-1}, a_i, a_{i+1}\\} \\)، كل عنصر له نفس الفرصة لأن يكون الأكبر بين الثلاثة، أي \\( \\mathbb{E}[I_i] = \\frac{1}{3} \\).<br>3. بجمع التوقعات خطياً:<br>\\[ \\mathbb{E}[\\text{peaks}] = \\frac{1}{2} + 10 \\cdot \\frac{1}{3} + \\frac{1}{2} = \\frac{13}{3}. \\]</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.D — Markov Expected Waiting Time for Consecutive Heads (KAUST Finals)",
           "ar": "مثال محلول 5.D — توقع زمن الانتظار لظهور صورتين متتاليتين عبر حالات ماركوف (نهائيات كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> A fair coin is tossed repeatedly until two consecutive Heads (\\( HH \\)) appear. Find the expected number of tosses required.</p><p><strong>Solution:</strong> Let \\( E_0 \\) be the expected remaining tosses from the start (or right after a Tail \\( T \\)), and let \\( E_1 \\) be the expected remaining tosses right after seeing a single Head \\( H \\).<br>1. From state \\( 0 \\): we toss once. With probability \\( \\frac{1}{2} \\) we get \\( T \\) (staying in state \\( 0 \\)), and with probability \\( \\frac{1}{2} \\) we get \\( H \\) (moving to state \\( 1 \\)):<br>\\[ E_0 = 1 + \\frac{1}{2}E_0 + \\frac{1}{2}E_1 \\implies E_0 = 2 + E_1. \\]<br>2. From state \\( 1 \\): we toss once. With probability \\( \\frac{1}{2} \\) we get \\( H \\) (done! \\( 0 \\) more tosses), and with probability \\( \\frac{1}{2} \\) we get \\( T \\) (resetting back to state \\( 0 \\)):<br>\\[ E_1 = 1 + \\frac{1}{2}(0) + \\frac{1}{2}E_0. \\]<br>3. Substitute \\( E_1 = 1 + \\frac{1}{2}E_0 \\) into \\( E_0 = 2 + E_1 \\): \\( E_0 = 3 + \\frac{1}{2}E_0 \\implies \\frac{1}{2}E_0 = 3 \\implies E_0 = 6 \\) tosses!</p>",
-          "ar": "<p><strong>المسألة:</strong> تُرمى قطعة نقد متزنة مراراً حتى تظهر صورتان متتاليتان (\\( HH \\)). أوجد العدد المتوقع للرميات اللازمة.</p><p><strong>الحل الأولمبي:</strong> ليكن \\( E_0 \\) التوقع من البداية (أو بعد ظهور كتابة \\( T \\))، و\\( E_1 \\) التوقع بعد ظهور صورة منفردة \\( H \\):<br>1. من الحالة \\( 0 \\): نرمي رمية واحدة؛ باحتمال \\( \\frac{1}{2} \\) نعود لـ \\( 0 \\)، وباحتمال \\( \\frac{1}{2} \\) ننتقل لـ \\( 1 \\):<br>\\[ E_0 = 1 + \\frac{1}{2}E_0 + \\frac{1}{2}E_1 \\implies E_0 = 2 + E_1. \\]<br>2. من الحالة \\( 1 \\): نرمي رمية واحدة؛ باحتمال \\( \\frac{1}{2} \\) تظهر \\( H \\) فينتهي الاختبار (\\( 0 \\))، وباحتمال \\( \\frac{1}{2} \\) تظهر \\( T \\) فنعود للحالة \\( 0 \\):<br>\\[ E_1 = 1 + \\frac{1}{2}E_0. \\]<br>3. بالتعويض نجد \\( E_0 = 3 + \\frac{1}{2}E_0 \\implies E_0 = 6 \\) رميات!</p>"
+        "problem": {
+          "en": "A fair coin is tossed repeatedly until two consecutive Heads (\\( HH \\)) appear. Find the expected number of tosses required.",
+          "ar": "تُرمى قطعة نقد متزنة مراراً حتى تظهر صورتان متتاليتان (\\( HH \\)). أوجد العدد المتوقع للرميات اللازمة."
+        },
+        "solution": {
+          "en": "<p>Let \\( E_0 \\) be the expected remaining tosses from the start (or right after a Tail \\( T \\)), and let \\( E_1 \\) be the expected remaining tosses right after seeing a single Head \\( H \\).<br>1. From state \\( 0 \\): we toss once. With probability \\( \\frac{1}{2} \\) we get \\( T \\) (staying in state \\( 0 \\)), and with probability \\( \\frac{1}{2} \\) we get \\( H \\) (moving to state \\( 1 \\)):<br>\\[ E_0 = 1 + \\frac{1}{2}E_0 + \\frac{1}{2}E_1 \\implies E_0 = 2 + E_1. \\]<br>2. From state \\( 1 \\): we toss once. With probability \\( \\frac{1}{2} \\) we get \\( H \\) (done! \\( 0 \\) more tosses), and with probability \\( \\frac{1}{2} \\) we get \\( T \\) (resetting back to state \\( 0 \\)):<br>\\[ E_1 = 1 + \\frac{1}{2}(0) + \\frac{1}{2}E_0. \\]<br>3. Substitute \\( E_1 = 1 + \\frac{1}{2}E_0 \\) into \\( E_0 = 2 + E_1 \\): \\( E_0 = 3 + \\frac{1}{2}E_0 \\implies \\frac{1}{2}E_0 = 3 \\implies E_0 = 6 \\) tosses!</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> ليكن \\( E_0 \\) التوقع من البداية (أو بعد ظهور كتابة \\( T \\))، و\\( E_1 \\) التوقع بعد ظهور صورة منفردة \\( H \\):<br>1. من الحالة \\( 0 \\): نرمي رمية واحدة؛ باحتمال \\( \\frac{1}{2} \\) نعود لـ \\( 0 \\)، وباحتمال \\( \\frac{1}{2} \\) ننتقل لـ \\( 1 \\):<br>\\[ E_0 = 1 + \\frac{1}{2}E_0 + \\frac{1}{2}E_1 \\implies E_0 = 2 + E_1. \\]<br>2. من الحالة \\( 1 \\): نرمي رمية واحدة؛ باحتمال \\( \\frac{1}{2} \\) تظهر \\( H \\) فينتهي الاختبار (\\( 0 \\))، وباحتمال \\( \\frac{1}{2} \\) تظهر \\( T \\) فنعود للحالة \\( 0 \\):<br>\\[ E_1 = 1 + \\frac{1}{2}E_0. \\]<br>3. بالتعويض نجد \\( E_0 = 3 + \\frac{1}{2}E_0 \\implies E_0 = 6 \\) رميات!</p>"
         }
       },
       {

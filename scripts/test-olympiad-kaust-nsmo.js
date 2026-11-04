@@ -258,12 +258,17 @@ check('Printable Downloads: 12 typeset PDF worksheets + keys and 40 full exams +
   });
 });
 
-check('Built SSG page _site/olympiad/index.html renders all 3 subsections, 12 chapters, and 15 canvases', () => {
+check('Built SSG page _site/olympiad/index.html + 12 per-chapter routes render all 3 subsections, 12 chapters, and 15 canvases', () => {
   const siteHtml = fs.readFileSync(path.join(ROOT, '_site/olympiad/index.html'), 'utf8');
   assert.ok(siteHtml.includes('NSMO of KSA'), '_site/olympiad/index.html must render NSMO of KSA subsection');
   assert.ok(siteHtml.includes('KAUST'), '_site/olympiad/index.html must render KAUST subsection');
+  let allChaptersHtml = siteHtml;
   EXPECTED_CHAPTERS.forEach(slug => {
-    assert.ok(siteHtml.includes(`id="${slug}"`), `_site/olympiad/index.html must render chapter section id="${slug}"`);
+    const chPagePath = path.join(ROOT, '_site/olympiad', slug, 'index.html');
+    assert.ok(fs.existsSync(chPagePath), `Missing per-chapter SSG route _site/olympiad/${slug}/index.html`);
+    const chHtml = fs.readFileSync(chPagePath, 'utf8');
+    assert.ok(chHtml.includes(`id="${slug}"`), `_site/olympiad/${slug}/index.html must render chapter section id="${slug}"`);
+    allChaptersHtml += '\n' + chHtml;
   });
   [
     'olalgebraictechniquesExCanvas', 'olmodularnumbertheoryExCanvas', 'oldiophantineequationsExCanvas',
@@ -272,7 +277,7 @@ check('Built SSG page _site/olympiad/index.html renders all 3 subsections, 12 ch
     'olnsmonationalfinalsExCanvas', 'olkaustkmcqualifierExCanvas', 'olkaustfinalsacademyExCanvas',
     'uge_olalgebraictechniques_mainfnCanvas', 'uge_oltrianglecenterstrig_trig6Canvas', 'uge_oltrianglecenterstrig_invtrig6Canvas'
   ].forEach(cid => {
-    assert.ok(siteHtml.includes(`id="${cid}"`), `_site/olympiad/index.html must render canvas id="${cid}"`);
+    assert.ok(allChaptersHtml.includes(`id="${cid}"`), `Olympiad SSG chapter pages must render canvas id="${cid}"`);
   });
 });
 

@@ -268,50 +268,62 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.A — Combinations with Group Restrictions & Complementary Counting",
           "ar": null
         },
-        "body": {
-          "en": "A committee of 4 members is to be selected from a department containing 5 computer science majors and 6 mathematics majors.<br>(a) In how many ways can the committee be formed if it must contain at least 2 computer science majors?<br>(b) In how many ways can the committee be formed if one specific computer scientist and one specific mathematician refuse to serve together on the same committee?<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Partition by number of CS majors:</strong><br>The committee can have 2, 3, or 4 CS majors:<br><ul><li><strong>Case 1 (Exactly 2 CS, 2 Math):</strong><br>\\[ \\binom{5}{2} \\times \\binom{6}{2} = 10 \\times 15 = 150 \\]</li><li><strong>Case 2 (Exactly 3 CS, 1 Math):</strong><br>\\[ \\binom{5}{3} \\times \\binom{6}{1} = 10 \\times 6 = 60 \\]</li><li><strong>Case 3 (Exactly 4 CS, 0 Math):</strong><br>\\[ \\binom{5}{4} \\times \\binom{6}{0} = 5 \\times 1 = 5 \\]</li></ul>Total valid committees: \\[ N = 150 + 60 + 5 = \\mathbf{215\\text{ ways}} \\]</li><li><strong>(b) Use complementary counting for the feud:</strong><br>Total unrestricted committees from all \\(5 + 6 = 11\\) people:<br>\\[ \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 330 \\]<br>Number of forbidden committees where both feuding members are selected simultaneously:<br>Both feuding members occupy 2 of the 4 spots; we must choose the remaining \\(4 - 2 = 2\\) members from the remaining \\(11 - 2 = 9\\) candidates:<br>\\[ \\binom{9}{2} = \\frac{9 \\times 8}{2} = 36 \\]<br>Subtract the forbidden committees:<br>\\[ N = 330 - 36 = \\mathbf{294\\text{ ways}} \\]</li></ol>",
+        "problem": {
+          "en": "A committee of 4 members is to be selected from a department containing 5 computer science majors and 6 mathematics majors.<br>(a) In how many ways can the committee be formed if it must contain at least 2 computer science majors?<br>(b) In how many ways can the committee be formed if one specific computer scientist and one specific mathematician refuse to serve together on the same committee?<br>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<br><ol><li><strong>(a) Partition by number of CS majors:</strong><br>The committee can have 2, 3, or 4 CS majors:<br><ul><li><strong>Case 1 (Exactly 2 CS, 2 Math):</strong><br>\\[ \\binom{5}{2} \\times \\binom{6}{2} = 10 \\times 15 = 150 \\]</li><li><strong>Case 2 (Exactly 3 CS, 1 Math):</strong><br>\\[ \\binom{5}{3} \\times \\binom{6}{1} = 10 \\times 6 = 60 \\]</li><li><strong>Case 3 (Exactly 4 CS, 0 Math):</strong><br>\\[ \\binom{5}{4} \\times \\binom{6}{0} = 5 \\times 1 = 5 \\]</li></ul>Total valid committees: \\[ N = 150 + 60 + 5 = \\mathbf{215\\text{ ways}} \\]</li><li><strong>(b) Use complementary counting for the feud:</strong><br>Total unrestricted committees from all \\(5 + 6 = 11\\) people:<br>\\[ \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 330 \\]<br>Number of forbidden committees where both feuding members are selected simultaneously:<br>Both feuding members occupy 2 of the 4 spots; we must choose the remaining \\(4 - 2 = 2\\) members from the remaining \\(11 - 2 = 9\\) candidates:<br>\\[ \\binom{9}{2} = \\frac{9 \\times 8}{2} = 36 \\]<br>Subtract the forbidden committees:<br>\\[ N = 330 - 36 = \\mathbf{294\\text{ ways}} \\]</li></ol>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.B — Conditional Probability & Independence Verification",
           "ar": null
         },
-        "body": {
-          "en": "A medical clinic tests 200 patients for a respiratory condition. The joint frequency table is given as follows:<br><table style=\"width:100%; border-collapse:collapse; text-align:center; margin:12px 0;\"><thead><tr style=\"background:rgba(255,255,255,0.05);\"><th style=\"padding:6px; border:1px solid #444;\">Test Result</th><th style=\"padding:6px; border:1px solid #444;\">Condition Present (D)</th><th style=\"padding:6px; border:1px solid #444;\">Condition Absent (D')</th><th style=\"padding:6px; border:1px solid #444;\">Total</th></tr></thead><tbody><tr><td style=\"padding:6px; border:1px solid #444;\">Positive (+)</td><td style=\"padding:6px; border:1px solid #444;\">36</td><td style=\"padding:6px; border:1px solid #444;\">14</td><td style=\"padding:6px; border:1px solid #444;\">50</td></tr><tr><td style=\"padding:6px; border:1px solid #444;\">Negative (-)</td><td style=\"padding:6px; border:1px solid #444;\">4</td><td style=\"padding:6px; border:1px solid #444;\">146</td><td style=\"padding:6px; border:1px solid #444;\">150</td></tr><tr><td style=\"padding:6px; border:1px solid #444;\">Total</td><td style=\"padding:6px; border:1px solid #444;\">40</td><td style=\"padding:6px; border:1px solid #444;\">160</td><td style=\"padding:6px; border:1px solid #444;\">200</td></tr></tbody></table>(a) Find the probability that a randomly chosen patient has the condition given that they tested positive, \\(P(D|+)\\).<br>(b) Are the events \"Condition Present (D)\" and \"Tested Positive (+)\" statistically independent? Prove your answer.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Calculate conditional probability \\(P(D|+)\\):</strong><br>Using Definition 8.1, the sample space restricts to the 50 patients who tested positive:<br>\\[ P(D|+) = \\frac{P(D \\cap +)}{P(+)} = \\frac{36 / 200}{50 / 200} = \\frac{36}{50} = \\mathbf{0.72\\, (72\\%)} \\]</li><li><strong>(b) Test for independence:</strong><br>Two events are independent if and only if \\(P(D|+) = P(D)\\).<br>Compute marginal probability \\(P(D)\\):<br>\\[ P(D) = \\frac{40}{200} = 0.20\\, (20\\%) \\]<br>Since \\(P(D|+) = 0.72 \\neq 0.20 = P(D)\\), the events are <strong>not independent</strong> (they are strongly dependent).</li></ol>",
+        "problem": {
+          "en": "A medical clinic tests 200 patients for a respiratory condition. The joint frequency table is given as follows:<br><table style=\"width:100%; border-collapse:collapse; text-align:center; margin:12px 0;\"><thead><tr style=\"background:rgba(255,255,255,0.05);\"><th style=\"padding:6px; border:1px solid #444;\">Test Result</th><th style=\"padding:6px; border:1px solid #444;\">Condition Present (D)</th><th style=\"padding:6px; border:1px solid #444;\">Condition Absent (D')</th><th style=\"padding:6px; border:1px solid #444;\">Total</th></tr></thead><tbody><tr><td style=\"padding:6px; border:1px solid #444;\">Positive (+)</td><td style=\"padding:6px; border:1px solid #444;\">36</td><td style=\"padding:6px; border:1px solid #444;\">14</td><td style=\"padding:6px; border:1px solid #444;\">50</td></tr><tr><td style=\"padding:6px; border:1px solid #444;\">Negative (-)</td><td style=\"padding:6px; border:1px solid #444;\">4</td><td style=\"padding:6px; border:1px solid #444;\">146</td><td style=\"padding:6px; border:1px solid #444;\">150</td></tr><tr><td style=\"padding:6px; border:1px solid #444;\">Total</td><td style=\"padding:6px; border:1px solid #444;\">40</td><td style=\"padding:6px; border:1px solid #444;\">160</td><td style=\"padding:6px; border:1px solid #444;\">200</td></tr></tbody></table>(a) Find the probability that a randomly chosen patient has the condition given that they tested positive, \\(P(D|+)\\).<br>(b) Are the events \"Condition Present (D)\" and \"Tested Positive (+)\" statistically independent? Prove your answer.<br>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<br><ol><li><strong>(a) Calculate conditional probability \\(P(D|+)\\):</strong><br>Using Definition 8.1, the sample space restricts to the 50 patients who tested positive:<br>\\[ P(D|+) = \\frac{P(D \\cap +)}{P(+)} = \\frac{36 / 200}{50 / 200} = \\frac{36}{50} = \\mathbf{0.72\\, (72\\%)} \\]</li><li><strong>(b) Test for independence:</strong><br>Two events are independent if and only if \\(P(D|+) = P(D)\\).<br>Compute marginal probability \\(P(D)\\):<br>\\[ P(D) = \\frac{40}{200} = 0.20\\, (20\\%) \\]<br>Since \\(P(D|+) = 0.72 \\neq 0.20 = P(D)\\), the events are <strong>not independent</strong> (they are strongly dependent).</li></ol>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.C — Normal Distribution Empirical Rule & Linear Transformations of Data",
           "ar": null
         },
-        "body": {
-          "en": "A standardized math test has scores normally distributed with mean \\(\\mu = 500\\) and standard deviation \\(\\sigma = 100\\).<br>(a) What percentage of test-takers score between 400 and 700?<br>(b) A school curve scales every student's raw score \\(X\\) using the linear transformation \\(Y = 1.2 X + 50\\). Determine the new mean \\(\\mu_Y\\) and new standard deviation \\(\\sigma_Y\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Use Empirical Rule intervals:</strong><br>Express score bounds as standard deviations from \\(\\mu = 500\\):<br>Score 400: \\(z_1 = \\frac{400 - 500}{100} = -1\\sigma\\).<br>Score 700: \\(z_2 = \\frac{700 - 500}{100} = +2\\sigma\\).<br>Partition the area under the normal curve from \\(\\mu - \\sigma\\) to \\(\\mu + 2\\sigma\\):<br><ul><li>From \\(\\mu - \\sigma\\) to \\(\\mu\\): \\(34.13\\%\\).</li><li>From \\(\\mu\\) to \\(\\mu + \\sigma\\): \\(34.13\\%\\).</li><li>From \\(\\mu + \\sigma\\) to \\(\\mu + 2\\sigma\\): \\(13.59\\%\\).</li></ul>Summing these regions:<br>\\[ P(400 \\le X \\le 700) = 34.13\\% + 34.13\\% + 13.59\\% = \\mathbf{81.85\\% \\approx 81.9\\%} \\]</li><li><strong>(b) Apply linear transformation rules:</strong><br>For \\(Y = aX + b\\) with \\(a = 1.2\\) and \\(b = 50\\):<br>New mean:<br>\\[ \\mu_Y = 1.2 \\mu_X + 50 = 1.2(500) + 50 = 600 + 50 = \\mathbf{650} \\]<br>New standard deviation (the additive constant 50 has zero effect):<br>\\[ \\sigma_Y = |a| \\sigma_X = 1.2 \\times 100 = \\mathbf{120} \\]</li></ol>",
+        "problem": {
+          "en": "A standardized math test has scores normally distributed with mean \\(\\mu = 500\\) and standard deviation \\(\\sigma = 100\\).<br>(a) What percentage of test-takers score between 400 and 700?<br>(b) A school curve scales every student's raw score \\(X\\) using the linear transformation \\(Y = 1.2 X + 50\\). Determine the new mean \\(\\mu_Y\\) and new standard deviation \\(\\sigma_Y\\).<br>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<br><ol><li><strong>(a) Use Empirical Rule intervals:</strong><br>Express score bounds as standard deviations from \\(\\mu = 500\\):<br>Score 400: \\(z_1 = \\frac{400 - 500}{100} = -1\\sigma\\).<br>Score 700: \\(z_2 = \\frac{700 - 500}{100} = +2\\sigma\\).<br>Partition the area under the normal curve from \\(\\mu - \\sigma\\) to \\(\\mu + 2\\sigma\\):<br><ul><li>From \\(\\mu - \\sigma\\) to \\(\\mu\\): \\(34.13\\%\\).</li><li>From \\(\\mu\\) to \\(\\mu + \\sigma\\): \\(34.13\\%\\).</li><li>From \\(\\mu + \\sigma\\) to \\(\\mu + 2\\sigma\\): \\(13.59\\%\\).</li></ul>Summing these regions:<br>\\[ P(400 \\le X \\le 700) = 34.13\\% + 34.13\\% + 13.59\\% = \\mathbf{81.85\\% \\approx 81.9\\%} \\]</li><li><strong>(b) Apply linear transformation rules:</strong><br>For \\(Y = aX + b\\) with \\(a = 1.2\\) and \\(b = 50\\):<br>New mean:<br>\\[ \\mu_Y = 1.2 \\mu_X + 50 = 1.2(500) + 50 = 600 + 50 = \\mathbf{650} \\]<br>New standard deviation (the additive constant 50 has zero effect):<br>\\[ \\sigma_Y = |a| \\sigma_X = 1.2 \\times 100 = \\mathbf{120} \\]</li></ol>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Statistics & Probability (Hard Application)",
           "ar": "مثال محلول \\(D\\) — الإحصاء & الاحتمال (Hard Application)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> The following bar chart shows the number of students who prefer different fruits. What is the total number of students who prefer apples and bananas?</p><p><strong>Step-by-Step Solution:</strong> From the bar chart, the number of students who prefer apples is 15. The number of students who prefer bananas is 10. The total number of students who prefer apples and bananas is the sum of these two values: 15 + 10 = 25.</p>",
+        "problem": {
+          "en": "The following bar chart shows the number of students who prefer different fruits. What is the total number of students who prefer apples and bananas?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>From the bar chart, the number of students who prefer apples is 15. The number of students who prefer bananas is 10. The total number of students who prefer apples and bananas is the sum of these two values: 15 + 10 = 25.</p>",
           "ar": null
         }
       },

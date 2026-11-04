@@ -100,25 +100,23 @@
     _cqTimer = setInterval(tick, 1000);
   }
 
-  /* Patch genChapterQuiz to start timer after rendering */
-  var _origGenCQ = window.genChapterQuiz;
-  window.genChapterQuiz = function(btn){
-    clearCqTimer(); /* cancel any running timer */
-    var res = _origGenCQ ? _origGenCQ(btn) : undefined;
-    /* read timer value */
+  /* Subscribe to clipsat:quiz-start to start timer after rendering */
+  document.addEventListener('clipsat:quiz-start', function(ev){
+    clearCqTimer();
+    var d = (ev && ev.detail) || {};
+    var btn = d.btn;
+    if(!btn) return;
     var bar = btn.closest('.ch-quiz-bar');
     var sel = bar && bar.querySelector('.cq-timer-sel');
     var secs = sel ? parseInt(sel.value,10) : 0;
     if(secs > 0){
-      var wrap = btn.closest('.ch-quiz-wrap');
-      var out  = wrap && wrap.querySelector('.cq-out');
+      var wrap = d.wrap || btn.closest('.ch-quiz-wrap');
+      var out  = d.out || (wrap && wrap.querySelector('.cq-out'));
       if(out){
-        /* Wait for MathJax render then start */
         setTimeout(function(){ startCqTimer(out, secs); }, 600);
       }
     }
-    return res;
-  };
+  });
 
   /* Ensure Chapter Quiz is always positioned at the very end of each lesson */
   function ensureQuizAtEndOfLessons(){
@@ -141,23 +139,19 @@
   } else {
     setTimeout(init, 300);
   }
-  /* Re-inject after view and chapter changes */
-  var _origSV = window.showView;
-  window.showView = function(name){
-    if(_origSV) _origSV(name);
+  /* Re-inject after view and chapter changes via custom events */
+  document.addEventListener('clipsat:view-change', function(){
     setTimeout(function(){
       ensureQuizAtEndOfLessons();
       injectTimerSelectors();
     }, 300);
-  };
-  var _origGC = window.goChapter;
-  window.goChapter = function(chId, view){
-    if(_origGC) _origGC.apply(this, arguments);
+  });
+  document.addEventListener('clipsat:chapter-change', function(){
     setTimeout(function(){
       ensureQuizAtEndOfLessons();
       injectTimerSelectors();
     }, 400);
-  };
+  });
 })();
 
 /* ─────────────────────────────────────────────── */

@@ -1,78 +1,57 @@
 {#
-  Renders <aside class="rail"> — the chapter nav sidebar. Matches the site's real markup and,
-  critically, its EXISTING onclick="goChapter(id, trackId)" wiring exactly (index.html, root
-  goChapter() implementation — unmodified, not reimplemented here). Every link also carries a
-  real href="#{chapterId}" (Lighthouse SEO: "Links are not crawlable" without one) — safe
-  alongside the onclick since goChapter() never calls preventDefault(): the browser's own
-  fragment-jump fires first, then goChapter()'s own window.scrollTo(0,0) and (60ms later)
-  history.replaceState() both override whatever that jump did, so behavior is unchanged; this
-  just gives crawlers, right-click/"open in new tab", and no-JS fallback a working link.
-  goChapter() toggles a
-  .ch-active class (see public/css/main.css's .chapter/.chapter.ch-active rules) and defaults
-  to activating the first .chapter in the DOM if none is active yet — so chapter render order
-  in the parent template MUST match this rail's order exactly, which itself must match the
-  `chapters` array's order (already true — content/{track}/*.json chapters render in array order).
-
-  "Chapters"/"Practice set"/"Test generator"/"Downloads" are real, site-wide (not track-specific)
-  dictionary strings, used identically on MOST tracks — embedded here via the bilingual macro with
-  their real translations (not invented), rather than duplicated as per-track content data. A real
-  exception exists (apbc, WP19): its rail link reads "Exam practice"/⊘, not "Practice set"/§ — use
-  practiceSetLabel/practiceSetIcon (typically sourced from that track's practiceSet.heading/.icon,
-  course_schema.json) to override per track; omit them to get the site-wide default.
-
-  Expects: trackId, chapters (array, same objects rendered by chapter.njk — reads chapterNumber/
-  railLabel/title/id), and the REAL section ids (NOT derived from trackId — must match each
-  partial's own `sectionId` exactly, see downloads-block.njk/practice-set.njk/test-generator.njk):
-  practiceSetId (optional — omit to hide the link), testGeneratorId (optional), downloadsId.
-  Optional overrides: practiceSetLabel, practiceSetIcon.
-
-  railExtra (optional, raw HTML string, WP24): appended as the LAST child inside <aside>, before
-  the closing tag — real case: ibhl's real source has a "Curriculum Mapping" <select> widget
-  (window.CSGamify.mapCurriculum) inside its rail, found on NO other track (not even ibsl, the
-  other IB track) — genuinely track-exclusive, so it's passed as literal markup from the track's
-  own index.njk rather than modeled as new schema fields for a one-instance feature.
-
-  chapter.railGroupLabel (optional, WP33, calculus): when a chapter carries this, an extra
-  <p class="rt" style="margin-top:16px">{label}</p> renders immediately before that chapter's own
-  link — calculus's real rail splits into two labeled groups ("Chapters" / "Multivariable · Calc
-  III"), a one-off not modeled as a general per-track grouping mechanism.
-
-  railNoTrackId (optional boolean, WP33, calculus): calculus's real rail has NO trackId anywhere —
-  <aside class="rail" id="rail"> (not "rail-calculus") and every onclick is the single-argument
-  goChapter(id) (not goChapter(id, trackId)), unlike every other track. Root goChapter()'s trackId
-  argument is itself optional (defaults to the current view) — calculus's source simply never
-  passes it, likely a legacy artifact of it being the site's original/flagship track. Set true only
-  for calculus.
+  Renders <aside class="rail"> — the chapter nav sidebar.
+  - On per-chapter SSG pages (`isChapterPage == true` or `isSyllabusHub == true`), links point
+    directly to crawlable chapter URLs (`/{track}/{chapter.id}/` or `/ar/{track}/{chapter.id}/`)
+    with `data-prefetch="1"` for hover/focus `<link rel="prefetch">` preloading (WP-21).
+  - On legacy track pages (`/<track>/index.html`), preserves `#{{ chapter.id }}` + `goChapter(...)`
+    plus `data-chapter-url="/{{ trackId }}/{{ chapter.id }}/"` for deep-linking & prefetch.
 #}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
+{% set _locPrefix = '/ar' if pageLocale == 'ar' else '' %}
 <aside class="rail"{% if not railNoTrackId %} id="rail-{{ trackId }}"{% else %} id="rail"{% endif %}>
   <div class="cs-diagnostic-rail-cta" style="margin:0 4px 14px">
     <button type="button" class="cs-diagnostic-btn" onclick="window.openDiagnosticTest('{{ trackId }}')" style="width:100%; justify-content:center">
-      <span>🎯</span> <span data-i18n="diagnostic.btn">Free Diagnostic</span>
+      <span>🎯</span> <span data-i18n="diagnostic.btn">{% if pageLocale == 'ar' %}ابدأ الاختبار التشخيصي المجاني{% else %}Free Diagnostic{% endif %}</span>
     </button>
   </div>
   {% if not (chapters and chapters[0] and chapters[0].railGroupLabel) %}
-  <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}) }}</p>
+  <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}, 'span', pageLocale) }}</p>
   {% endif %}
   {% for chapter in chapters %}
-  {% if chapter.railGroupLabel %}<p class="rt rt-sub"{% if not loop.first %} style="margin-top:16px"{% endif %}>{% if chapter.railGroupLabel.en %}{{ bl.text(chapter.railGroupLabel) }}{% else %}{{ chapter.railGroupLabel }}{% endif %}</p>{% endif %}
-  <a href="#{{ chapter.id }}" data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
+  {% if chapter.railGroupLabel %}<p class="rt rt-sub"{% if not loop.first %} style="margin-top:16px"{% endif %}>{% if chapter.railGroupLabel.en %}{{ bl.text(chapter.railGroupLabel, 'span', pageLocale) }}{% else %}{{ chapter.railGroupLabel }}{% endif %}</p>{% endif %}
+  {% if isChapterPage or isSyllabusHub or isPracticePage %}
+  <a href="{{ _locPrefix }}/{{ trackId }}/{{ chapter.id }}/" data-target="{{ chapter.id }}" data-prefetch="1"{% if activeChapterId == chapter.id %} class="active" aria-current="page"{% endif %}><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title, 'span', pageLocale) }}</a>
+  {% else %}
+  <a href="#{{ chapter.id }}" data-target="{{ chapter.id }}" data-chapter-url="/{{ trackId }}/{{ chapter.id }}/" data-prefetch="1" onclick="goChapter('{{ chapter.id }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title, 'span', pageLocale) }}</a>
+  {% endif %}
   {% endfor %}
   {% if chapters and chapters[0] and chapters[0].railGroupLabel %}
-  <p class="rt rt-sub" style="margin-top:16px">{{ bl.text({"en": "Practice & Exams", "ar": "التدريب والاختبارات"}) }}</p>
+  <p class="rt rt-sub" style="margin-top:16px">{{ bl.text({"en": "Practice & Exams", "ar": "التدريب والاختبارات"}, 'span', pageLocale) }}</p>
   {% endif %}
   {% if practiceSetId %}
-  <a href="#{{ practiceSetId }}" data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
+  {% if isChapterPage or isSyllabusHub or isPracticePage %}
+  <a href="{{ _locPrefix }}/{{ trackId }}/practice/" data-target="{{ practiceSetId }}" data-prefetch="1"{% if activeChapterId == practiceSetId %} class="active" aria-current="page"{% endif %}><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}, 'span', pageLocale) }}{% endif %}</a>
+  {% else %}
+  <a href="#{{ practiceSetId }}" data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}, 'span', pageLocale) }}{% endif %}</a>
+  {% endif %}
   {% endif %}
   {% if testGeneratorId %}
-  <a href="#{{ testGeneratorId }}" data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
+  {% if isChapterPage or isSyllabusHub or isPracticePage %}
+  <a href="{{ _locPrefix }}/{{ trackId }}/#{{ testGeneratorId }}" data-target="{{ testGeneratorId }}"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}, 'span', pageLocale) }}</a>
+  {% else %}
+  <a href="#{{ testGeneratorId }}" data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}, 'span', pageLocale) }}</a>
+  {% endif %}
   {% endif %}
   {% if downloadsId %}
-  <a href="#{{ downloadsId }}" data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
+  {% if isChapterPage or isSyllabusHub or isPracticePage %}
+  <a href="{{ _locPrefix }}/{{ trackId }}/#{{ downloadsId }}" data-target="{{ downloadsId }}"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}, 'span', pageLocale) }}</a>
+  {% else %}
+  <a href="#{{ downloadsId }}" data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}, 'span', pageLocale) }}</a>
+  {% endif %}
   {% endif %}
   {% if railExtra %}{{ railExtra | safe }}{% else %}
   <div class="mapper-wrap">
-    <span class="mapper-label">{{ bl.text({"en": "Curriculum Mapping", "ar": "توافق المنهج"}) }}</span>
+    <span class="mapper-label">{{ bl.text({"en": "Curriculum Mapping", "ar": "توافق المنهج"}, 'span', pageLocale) }}</span>
     <select class="nav-select" id="curriculum-select-{{ trackId }}" aria-label="Curriculum mapping" onchange="window.CSGamify&&window.CSGamify.mapCurriculum(this.value)">
       <option value="default">ClipSAT Standard</option>
       <option value="reveal-precalc">Reveal Pre-Calculus</option>

@@ -269,4 +269,23 @@
     if(!pw){alert('Please allow pop-ups for this site, then try again.');URL.revokeObjectURL(_burl);return;}
     setTimeout(function(){URL.revokeObjectURL(_burl);},120000);
   };
+
+  /* Bubble sheet & full-exam MCQ choice highlight */
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.fep-bubble');
+    if(b){
+      var row=b.closest('.fep-bubble-row');
+      row.querySelectorAll('.fep-bubble').forEach(function(x){ x.classList.remove('filled'); });
+      if(!b.classList.contains('filled-prev')) b.classList.add('filled');
+      row.querySelectorAll('.fep-bubble').forEach(function(x){ x.classList.remove('filled-prev'); });
+      if(b.classList.contains('filled')) b.classList.add('filled-prev');
+      return;
+    }
+    var ch=e.target.closest('.fep-choice');
+    if(ch){
+      var choices=ch.closest('.fep-choices');
+      choices.querySelectorAll('.fep-choice').forEach(function(c){c.style.background=''; c.style.borderColor='transparent';});
+      ch.style.background='#e8eeff'; ch.style.borderColor='#3b4fc8';
+    }
+  });
 })();

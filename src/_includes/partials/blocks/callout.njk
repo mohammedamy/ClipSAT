@@ -10,17 +10,17 @@
   (docs/DECISIONS/0004) switches which one is visible client-side, no lang param needed here.
   Expects: block (the callout object)
 #}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
 {% if block.style == 'example' %}
 <div class="example">
   {% if block.label %}<span class="xt">{{ bl.text(block.label) }}</span>{% endif %}
   <div style="margin:1rem 0;color:var(--text-1)">{{ bl.text(block.body, 'div') }}</div>
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
     <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
-      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+      <span>🔄</span>{{ bl.text({"en": "Try a Similar Problem", "ar": "جرب مسألة مشابهة"}) }}
     </button>
     <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
-      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+      <span>📈</span>{{ bl.text({"en": "Graph in Calculator", "ar": "مثّل في الحاسبة"}) }}
     </button>
   </div>
 </div>
@@ -30,10 +30,10 @@
   <div style="margin:1rem 0;color:var(--text-1)">{{ bl.text(block.body, 'div') }}</div>
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
     <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
-      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+      <span>🔄</span>{{ bl.text({"en": "Try a Similar Problem", "ar": "جرب مسألة مشابهة"}) }}
     </button>
     <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
-      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+      <span>📈</span>{{ bl.text({"en": "Graph in Calculator", "ar": "مثّل في الحاسبة"}) }}
     </button>
   </div>
 </div>
@@ -47,10 +47,10 @@
   </div>
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
     <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
-      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+      <span>🔄</span>{{ bl.text({"en": "Try a Similar Problem", "ar": "جرب مسألة مشابهة"}) }}
     </button>
     <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
-      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+      <span>📈</span>{{ bl.text({"en": "Graph in Calculator", "ar": "مثّل في الحاسبة"}) }}
     </button>
   </div>
 </div>
@@ -88,10 +88,10 @@
   {% if block.style == 'ex' %}
   <div class="we-actions no-print" style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap">
     <button type="button" class="btn-twin-prob" onclick="window.CSTwinProblem&&window.CSTwinProblem.open(this)" style="background:var(--indigo-soft,#eef2ff);border:1px solid var(--indigo,#4f46e5);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--indigo,#4f46e5);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Practice a similar question from the verified question bank">
-      <span>🔄</span><span data-bilingual><span class="i18n-en">Try a Similar Problem</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>جرب مسألة مشابهة</span></span>
+      <span>🔄</span>{{ bl.text({"en": "Try a Similar Problem", "ar": "جرب مسألة مشابهة"}) }}
     </button>
     <button type="button" class="btn-ex-graph" onclick="window.CSExampleGrapher&&window.CSExampleGrapher.graphFromExample(this)" style="background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:4px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-2,#334155);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease" title="Plot functions from this example in the interactive graphing calculator">
-      <span>📈</span><span data-bilingual><span class="i18n-en">Graph in Calculator</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>مثّل في الحاسبة</span></span>
+      <span>📈</span>{{ bl.text({"en": "Graph in Calculator", "ar": "مثّل في الحاسبة"}) }}
     </button>
   </div>
   {% endif %}

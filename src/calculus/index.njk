@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: calculus
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/calculus/"
+enAltPath: "/calculus/"
+arAltPath: "/ar/calculus/"
 title: "Calculus · ClipSAT"
 description: "Limits, derivatives, integrals, and the Fundamental Theorem — with interactive tangent and area explorers"
-isRtl: false
 ---
 {#
   Renders from content/calculus/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -50,34 +55,29 @@ isRtl: false
   practice set uses the fully standard .problem/.ph/.pn/.pq/.lvl shape (items numbered "P1".."P50",
   same alphanumeric-number pattern algebra's "A1".."A50" already required schema support for).
 #}
-{% set calculus = migratedContent.calculus %}
-{% set pageHeader = calculus.meta.meta.pageHeader %}
-<main id="view-calculus" class="view active">
+{% set trackData = migratedContent.calculus %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'ch-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'ch-testgen' %}
+{% set downloadsId = 'ch-downloads' %}
+{% set railNoTrackId = true %}
+<main id="view-calculus" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = calculus.chapters %}
-    {% set practiceSetId = 'ch-practice' %}
-    {% set testGeneratorId = 'ch-testgen' %}
-    {% set downloadsId = 'ch-downloads' %}
-    {% set railNoTrackId = true %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in calculus.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'ch-practice' %}
-      {% set practiceSet = calculus.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'ch-testgen' %}
-      {% set testGenerator = calculus.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'ch-downloads' %}
-      {% set courseMeta = calculus.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

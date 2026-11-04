@@ -44,6 +44,7 @@ create table if not exists public.mistakes (
   ease_factor   real default 2.5,
   interval_days integer default 1,
   next_review   bigint,
+  deleted_at    timestamptz default null,
   updated_at    timestamptz not null default now(),
   primary key (user_id, id)
 );

@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: est2l2
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/est2l2/"
+enAltPath: "/est2l2/"
+arAltPath: "/ar/est2l2/"
 title: "EST 2 Math Level 2 · ClipSAT"
 description: "EST II Mathematics Level 2 — complex numbers, matrices, vectors, and introductory calculus, proof-first, matching the site's Rigor Standard."
-isRtl: false
 ---
 {#
   Renders from content/est2l2/* (docs/CONTENT_MODEL.md), following the exact pattern established
@@ -25,33 +30,28 @@ isRtl: false
   &amp; graphs, matrices &amp; vectors, sequences &amp; series, intro calculus, probability) are
   separate, tracked follow-up work.
 #}
-{% set est2l2 = migratedContent.est2l2 %}
-{% set pageHeader = est2l2.meta.meta.pageHeader %}
-<main id="view-est2l2" class="view active">
+{% set trackData = migratedContent.est2l2 %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'est2l2-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'est2l2-testgen' %}
+{% set downloadsId = 'est2l2-downloads' %}
+<main id="view-est2l2" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = est2l2.chapters %}
-    {% set practiceSetId = 'est2l2-practice' %}
-    {% set testGeneratorId = 'est2l2-testgen' %}
-    {% set downloadsId = 'est2l2-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in est2l2.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'est2l2-practice' %}
-      {% set practiceSet = est2l2.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'est2l2-testgen' %}
-      {% set testGenerator = est2l2.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'est2l2-downloads' %}
-      {% set courseMeta = est2l2.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

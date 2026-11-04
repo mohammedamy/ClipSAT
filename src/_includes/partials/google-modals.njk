@@ -18,9 +18,9 @@
   Renders nothing visually until google-config.js's placeholder Client ID is
   replaced — the JS that opens these no-ops until then (the feature flag).
 #}
-<div id="google-auth-modal" role="dialog" aria-modal="true" aria-label="Connect Google Account" onclick="if(event.target===this)closeGoogleAuthModal()">
+<div id="google-auth-modal" role="dialog" aria-modal="true" aria-label="Connect Google Account" inert onclick="if(event.target===this)closeGoogleAuthModal()">
   <div id="google-auth-box">
-    <button class="cloud-auth-close" onclick="closeGoogleAuthModal()" aria-label="Close">✕</button>
+    <button class="cloud-auth-close" onclick="closeGoogleAuthModal()" aria-label="✕ — Close">✕</button>
     <h3>🔗 Connect Google Account</h3>
     <div id="google-auth-explain"></div>
     <button class="cloud-auth-send" onclick="window.googleAuthContinue()">Continue with Google</button>
@@ -28,9 +28,9 @@
   </div>
 </div>
 
-<div id="gform-panel-modal" role="dialog" aria-modal="true" aria-label="Google Form" onclick="if(event.target===this)closeGformPanel()">
+<div id="gform-panel-modal" role="dialog" aria-modal="true" aria-label="Google Form" inert onclick="if(event.target===this)closeGformPanel()">
   <div id="gform-panel-box">
-    <button class="cloud-auth-close" onclick="closeGformPanel()" aria-label="Close">✕</button>
+    <button class="cloud-auth-close" onclick="closeGformPanel()" aria-label="✕ — Close">✕</button>
     <div id="gform-panel-body"></div>
   </div>
 </div>

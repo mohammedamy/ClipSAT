@@ -206,14 +206,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 6.A — Solving a 2nd-Order IVP via Partial Fractions",
           "ar": null
         },
-        "body": {
-          "en": "<p>Solve the initial value problem \\[ y'' - 3y' + 2y = 4e^{3t}, \\qquad y(0) = 1, \\quad y'(0) = 0. \\]</p><p><strong>Step 1: Apply Laplace transform:</strong> \\[ \\mathcal{L}\\{y''\\} - 3\\mathcal{L}\\{y'\\} + 2\\mathcal{L}\\{y\\} = 4\\mathcal{L}\\{e^{3t}\\} \\] \\[ \\big(s^2 Y(s) - s y(0) - y'(0)\\big) - 3\\big(s Y(s) - y(0)\\big) + 2Y(s) = \\frac{4}{s - 3}. \\] Substituting \\( y(0) = 1, y'(0) = 0 \\): \\[ (s^2 - 3s + 2)Y(s) - s + 3 = \\frac{4}{s - 3} \\implies (s - 1)(s - 2)Y(s) = s - 3 + \\frac{4}{s - 3}. \\] \\[ (s - 1)(s - 2)Y(s) = \\frac{(s - 3)^2 + 4}{s - 3} = \\frac{s^2 - 6s + 13}{s - 3} \\implies Y(s) = \\frac{s^2 - 6s + 13}{(s - 1)(s - 2)(s - 3)}. \\]</p><p><strong>Step 2: Partial fraction decomposition:</strong> \\[ \\frac{s^2 - 6s + 13}{(s - 1)(s - 2)(s - 3)} = \\frac{A}{s - 1} + \\frac{B}{s - 2} + \\frac{C}{s - 3}. \\] Using Heaviside cover-up method:<br>\\( A = \\frac{1^2 - 6(1) + 13}{(1 - 2)(1 - 3)} = \\frac{8}{(-1)(-2)} = 4 \\).<br>\\( B = \\frac{2^2 - 6(2) + 13}{(2 - 1)(2 - 3)} = \\frac{5}{(1)(-1)} = -5 \\).<br>\\( C = \\frac{3^2 - 6(3) + 13}{(3 - 1)(3 - 2)} = \\frac{4}{(2)(1)} = 2 \\).</p><p><strong>Step 3: Inverse transform:</strong> \\[ y(t) = \\mathcal{L}^{-1}\\left\\{\\frac{4}{s - 1} - \\frac{5}{s - 2} + \\frac{2}{s - 3}\\right\\} = 4e^t - 5e^{2t} + 2e^{3t}. \\]</p>",
+        "problem": {
+          "en": "Solve the initial value problem \\[ y'' - 3y' + 2y = 4e^{3t}, \\qquad y(0) = 1, \\quad y'(0) = 0. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Apply Laplace transform:</strong> \\[ \\mathcal{L}\\{y''\\} - 3\\mathcal{L}\\{y'\\} + 2\\mathcal{L}\\{y\\} = 4\\mathcal{L}\\{e^{3t}\\} \\] \\[ \\big(s^2 Y(s) - s y(0) - y'(0)\\big) - 3\\big(s Y(s) - y(0)\\big) + 2Y(s) = \\frac{4}{s - 3}. \\] Substituting \\( y(0) = 1, y'(0) = 0 \\): \\[ (s^2 - 3s + 2)Y(s) - s + 3 = \\frac{4}{s - 3} \\implies (s - 1)(s - 2)Y(s) = s - 3 + \\frac{4}{s - 3}. \\] \\[ (s - 1)(s - 2)Y(s) = \\frac{(s - 3)^2 + 4}{s - 3} = \\frac{s^2 - 6s + 13}{s - 3} \\implies Y(s) = \\frac{s^2 - 6s + 13}{(s - 1)(s - 2)(s - 3)}. \\]</p><p><strong>Step 2: Partial fraction decomposition:</strong> \\[ \\frac{s^2 - 6s + 13}{(s - 1)(s - 2)(s - 3)} = \\frac{A}{s - 1} + \\frac{B}{s - 2} + \\frac{C}{s - 3}. \\] Using Heaviside cover-up method:<br>\\( A = \\frac{1^2 - 6(1) + 13}{(1 - 2)(1 - 3)} = \\frac{8}{(-1)(-2)} = 4 \\).<br>\\( B = \\frac{2^2 - 6(2) + 13}{(2 - 1)(2 - 3)} = \\frac{5}{(1)(-1)} = -5 \\).<br>\\( C = \\frac{3^2 - 6(3) + 13}{(3 - 1)(3 - 2)} = \\frac{4}{(2)(1)} = 2 \\).</p><p><strong>Step 3: Inverse transform:</strong> \\[ y(t) = \\mathcal{L}^{-1}\\left\\{\\frac{4}{s - 1} - \\frac{5}{s - 2} + \\frac{2}{s - 3}\\right\\} = 4e^t - 5e^{2t} + 2e^{3t}. \\]</p>",
           "ar": null
         }
       },
@@ -272,14 +275,17 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 6.B — Discontinuous Pulse & Impact Forcing",
           "ar": "مثال محلول 6.B — Discontinuous Pulse & Impact Forcing"
         },
-        "body": {
-          "en": "<p>Solve the oscillator IVP driven by a finite rectangular pulse of duration 2: \\[ y'' + 4y = u(t - 1) - u(t - 3), \\qquad y(0) = 0, \\quad y'(0) = 0. \\]</p><p><strong>Step 1: Transform equation:</strong> \\[ (s^2 + 4)Y(s) = \\frac{e^{-s} - e^{-3s}}{s} \\implies Y(s) = (e^{-s} - e^{-3s}) \\cdot \\frac{1}{s(s^2 + 4)}. \\]</p><p><strong>Step 2: Partial fractions on transfer factor:</strong> \\[ \\frac{1}{s(s^2 + 4)} = \\frac{A}{s} + \\frac{Bs + C}{s^2 + 4} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4}. \\] Inverse transform: \\[ h(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{4}\\left(\\frac{1}{s} - \\frac{s}{s^2 + 4}\\right)\\right\\} = \\frac{1}{4}\\big(1 - \\cos(2t)\\big). \\]</p><p><strong>Step 3: Apply Second Shift Theorem:</strong> \\[ y(t) = u(t - 1)h(t - 1) - u(t - 3)h(t - 3) \\] \\[ = \\frac{1}{4}u(t - 1)\\big(1 - \\cos(2(t - 1))\\big) - \\frac{1}{4}u(t - 3)\\big(1 - \\cos(2(t - 3))\\big). \\]</p>",
+        "problem": {
+          "en": "Solve the oscillator IVP driven by a finite rectangular pulse of duration 2: \\[ y'' + 4y = u(t - 1) - u(t - 3), \\qquad y(0) = 0, \\quad y'(0) = 0. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Transform equation:</strong> \\[ (s^2 + 4)Y(s) = \\frac{e^{-s} - e^{-3s}}{s} \\implies Y(s) = (e^{-s} - e^{-3s}) \\cdot \\frac{1}{s(s^2 + 4)}. \\]</p><p><strong>Step 2: Partial fractions on transfer factor:</strong> \\[ \\frac{1}{s(s^2 + 4)} = \\frac{A}{s} + \\frac{Bs + C}{s^2 + 4} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4}. \\] Inverse transform: \\[ h(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{4}\\left(\\frac{1}{s} - \\frac{s}{s^2 + 4}\\right)\\right\\} = \\frac{1}{4}\\big(1 - \\cos(2t)\\big). \\]</p><p><strong>Step 3: Apply Second Shift Theorem:</strong> \\[ y(t) = u(t - 1)h(t - 1) - u(t - 3)h(t - 3) \\] \\[ = \\frac{1}{4}u(t - 1)\\big(1 - \\cos(2(t - 1))\\big) - \\frac{1}{4}u(t - 3)\\big(1 - \\cos(2(t - 3))\\big). \\]</p>",
           "ar": null
         }
       },
@@ -363,26 +369,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider the differential equation \\(y''(t) + 4y(t) = u(t-2)\\), where \\(u(t)\\) is the Heaviside step function, with initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\). Apply the Laplace Transform to both sides of the equation. If \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\) and \\(\\mathcal{L}\\{u(t-a)\\} = \\frac{e^{-as}}{s}\\), which of the following expressions represents \\(Y(s)\\)?</p><p><strong>Step-by-Step Solution:</strong> Applying the Laplace Transform to the given differential equation: \\(\\mathcal{L}\\{y''(t)\\} + 4\\mathcal{L}\\{y(t)\\} = \\mathcal{L}\\{u(t-2)\\}\\). Using the properties of the Laplace Transform and the given initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\), we have \\(\\mathcal{L}\\{y''(t)\\} = s^2 Y(s) - sy(0) - y'(0) = s^2 Y(s)\\). The Laplace Transform of \\(y(t)\\) is \\(Y(s)\\). The Laplace Transform of the Heaviside step function \\(u(t-2)\\) is \\(\\frac{e^{-2s}}{s}\\). Substituting these into the transformed equation gives: \\(s^2 Y(s) + 4 Y(s) = \\frac{e^{-2s}}{s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = \\frac{e^{-2s}}{s}\\). Solving for \\(Y(s)\\), we obtain \\(Y(s) = \\frac{e^{-2s}}{s(s^2 + 4)}\\).</p>",
+        "problem": {
+          "en": "Consider the differential equation \\(y''(t) + 4y(t) = u(t-2)\\), where \\(u(t)\\) is the Heaviside step function, with initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\). Apply the Laplace Transform to both sides of the equation. If \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\) and \\(\\mathcal{L}\\{u(t-a)\\} = \\frac{e^{-as}}{s}\\), which of the following expressions represents \\(Y(s)\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Applying the Laplace Transform to the given differential equation: \\(\\mathcal{L}\\{y''(t)\\} + 4\\mathcal{L}\\{y(t)\\} = \\mathcal{L}\\{u(t-2)\\}\\). Using the properties of the Laplace Transform and the given initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\), we have \\(\\mathcal{L}\\{y''(t)\\} = s^2 Y(s) - sy(0) - y'(0) = s^2 Y(s)\\). The Laplace Transform of \\(y(t)\\) is \\(Y(s)\\). The Laplace Transform of the Heaviside step function \\(u(t-2)\\) is \\(\\frac{e^{-2s}}{s}\\). Substituting these into the transformed equation gives: \\(s^2 Y(s) + 4 Y(s) = \\frac{e^{-2s}}{s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = \\frac{e^{-2s}}{s}\\). Solving for \\(Y(s)\\), we obtain \\(Y(s) = \\frac{e^{-2s}}{s(s^2 + 4)}\\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory (Easy Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The second-order linear homogeneous ODE \\( f''(x) - 39f'(x) + 350f(x) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 39\\lambda + 350 = 0 \\), the sum of roots is \\( 39 \\).</p>",
+        "problem": {
+          "en": "The second-order linear homogeneous ODE \\( f''(x) - 39f'(x) + 350f(x) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>From \\( \\lambda^2 - 39\\lambda + 350 = 0 \\), the sum of roots is \\( 39 \\).</p>",
           "ar": null
         }
       },

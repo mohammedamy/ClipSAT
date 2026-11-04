@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..', '..', '_site');
+const PUBLIC_FALLBACK = path.join(__dirname, '..', '..', 'public');
 const PORT = process.env.E2E_PORT ? Number(process.env.E2E_PORT) : 8791;
 
 const TYPES = {
@@ -24,7 +25,7 @@ const TYPES = {
 
 /* roots are searched in order, as if laid over each other; service-worker.spec.js lays a
    simulated deploy over _site this way. hits counts requests per path. */
-function createServer(roots = [ROOT]) {
+function createServer(roots = [ROOT, PUBLIC_FALLBACK]) {
   const hits = {};
   const server = http.createServer((req, res) => {
     let reqPath = decodeURIComponent(req.url.split('?')[0]);

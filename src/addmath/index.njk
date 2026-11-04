@@ -1,37 +1,37 @@
 ---
 layout: base.njk
 trackId: addmath
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/addmath/"
+enAltPath: "/addmath/"
+arAltPath: "/ar/addmath/"
 title: "Additional Mathematics (0606 & 4PM1) · ClipSAT"
 description: "Cambridge IGCSE 0606 & Pearson Edexcel Further Pure 4PM1 Additional Mathematics"
-isRtl: false
 ---
-{% set addmath = migratedContent.addmath %}
-{% set pageHeader = addmath.meta.meta.pageHeader %}
-<main id="view-addmath" class="view active">
+{% set trackData = migratedContent.addmath %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'am-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'am-testgen' %}
+{% set downloadsId = 'am-downloads' %}
+<main id="view-addmath" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = addmath.chapters %}
-    {% set practiceSetId = 'am-practice' %}
-    {% set testGeneratorId = 'am-testgen' %}
-    {% set downloadsId = 'am-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in addmath.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'am-practice' %}
-      {% set practiceSet = addmath.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'am-testgen' %}
-      {% set testGenerator = addmath.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'am-downloads' %}
-      {% set courseMeta = addmath.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

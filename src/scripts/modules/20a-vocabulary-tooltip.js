@@ -659,28 +659,17 @@
     setTimeout(_scanAll, 1500);
   }
 
-  /* ── Rescan after quiz / exam generation ── */
-  (function(){
-    var _origGCQ = window.genChapterQuiz;
-    window.genChapterQuiz = function(){
-      _origGCQ && _origGCQ.apply(this, arguments);
-      setTimeout(function(){
-        var boxes = document.querySelectorAll('.cq-paper');
-        boxes.forEach(_markNode);
-      }, 800);
-    };
-    var _origGFE = window.genFullExam;
-    window.genFullExam = function(){
-      var r = _origGFE && _origGFE.apply(this, arguments);
-      Promise.resolve(r).then(function(){
-        setTimeout(function(){
-          var boxes = document.querySelectorAll('.fep-body');
-          boxes.forEach(_markNode);
-        }, 1200);
-      });
-      return r;
-    };
-  })();
+  /* ── Rescan after quiz / exam generation via custom events ── */
+  document.addEventListener('clipsat:quiz-ready', function(){
+    setTimeout(function(){
+      document.querySelectorAll('.cq-paper').forEach(_markNode);
+    }, 400);
+  });
+  document.addEventListener('clipsat:full-exam-ready', function(){
+    setTimeout(function(){
+      document.querySelectorAll('.fep-body').forEach(_markNode);
+    }, 800);
+  });
 
   /* ── Interactive Bilingual Glossary Modal ── */
   var CSGlossary = {

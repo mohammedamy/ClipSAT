@@ -1,35 +1,20 @@
 {#
   Renders one chapter (course_schema.json #/definitions/chapter) — content/{track}/{chapter-slug}.json.
-
-  Bilingual rendering: block-kind partials use the shared bilingual macro (docs/DECISIONS/0004),
-  which pairs with index.html's window.i18n toggle (_applyToDOM()'s data-bilingual scan) — both
-  languages render into the DOM and the SAME toggle button/JS the rest of the site already uses
-  switches between them instantly, no page reload, no separate mechanism. The Chapter Quiz widget's
-  labels reuse the EXISTING dictionary keys (quiz.chapterQuiz/count/level/generate) via the
-  original data-i18n attribute — those keys already exist and are already used identically on
-  every legacy track page, so there's no reason to duplicate them as new bilingual content.
-
-  Expects: chapter (one chapter object)
+  On single-chapter SSG routes (`isChapterPage == true`), renders `.ch-active` immediately, uses `<h1>`
+  for the chapter title (unique page `<h1>` for WP-30), and appends Prev / Next chapter links.
 #}
-{% import "partials/_bilingual.njk" as bl %}
-{# CLS fix: every .chapter starts display:none (main.css) until .ch-active is
-   added — server-rendering it on the first chapter (the correct default for
-   every plain page load, no ?ch= deep link) means real content is visible
-   from the very first paint instead of depending on JS to reveal it after
-   the page's large, render-blocking engine.js script finishes loading and
-   running. See engine.js's goChapter()/showView() comments for the rest of
-   this fix — this was intermittently producing a huge footer-jump CLS hit
-   (confirmed via Lighthouse trace) whenever a paint happened to land in the
-   window before that JS ran. loop.first works here because chapter.njk is
-   always {% include %}'d (not imported), which shares the calling template's
-   loop context in Nunjucks. #}
-<section class="chapter{% if loop.first %} ch-active{% endif %}" id="{{ chapter.id }}">
+{% import "partials/_bilingual.njk" as bl with context %}
+<section class="chapter{% if isChapterPage or loop.first %} ch-active{% endif %}" id="{{ chapter.id }}" data-chapter-id="{{ chapter.id }}">
   {% if chapter.subsectionBanner %}
-  <div class="cs-subsection-banner">{{ bl.text(chapter.subsectionBanner) }}</div>
+  <div class="cs-subsection-banner">{{ bl.text(chapter.subsectionBanner, 'span', pageLocale) }}</div>
   {% endif %}
   <div class="chead">
     {% if chapter.chapterNumber %}<span class="cn">{{ chapter.chapterNumber }}</span>{% endif %}
-    <h2>{{ bl.text(chapter.title) }}</h2>
+    {% if isChapterPage %}
+    <h1>{{ bl.text(chapter.title, 'span', pageLocale) }}</h1>
+    {% else %}
+    <h2>{{ bl.text(chapter.title, 'span', pageLocale) }}</h2>
+    {% endif %}
   </div>
 
   {% if chapter.chapterTag %}
@@ -72,20 +57,38 @@
   {% endif %}
 
   {% if chapter.quizWidget.enabled != false %}
-  <div class="ch-quiz-wrap"{% if chapter.quizWidget.domains %} data-quiz-domains="{{ chapter.quizWidget.domains | join('|') }}"{% endif %}>
+  <div class="ch-quiz-wrap" data-topic-id="{{ chapter.id }}"{% if chapter.quizWidget.domains %} data-quiz-domains="{{ chapter.quizWidget.domains | join('|') }}"{% endif %}>
     <div class="ch-quiz-bar">
-      <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
+      <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">{% if pageLocale == 'ar' %}اختبار الفصل{% else %}Chapter Quiz{% endif %}</span></span>
       <div class="ch-quiz-controls">
-        <label><span data-i18n="quiz.count">Questions</span>
+        <label><span data-i18n="quiz.count">{% if pageLocale == 'ar' %}عدد الأسئلة{% else %}Questions{% endif %}</span>
           <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
         </label>
-        <label><span data-i18n="quiz.level">Level</span>
-          <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+        <label><span data-i18n="quiz.level">{% if pageLocale == 'ar' %}المستوى{% else %}Level{% endif %}</span>
+          <select class="cq-level"><option value="all">{% if pageLocale == 'ar' %}جميع المستويات{% else %}All Levels{% endif %}</option><option value="Easy">{% if pageLocale == 'ar' %}سهل{% else %}Easy{% endif %}</option><option value="Medium">{% if pageLocale == 'ar' %}متوسط{% else %}Medium{% endif %}</option><option value="Hard">{% if pageLocale == 'ar' %}صعب{% else %}Hard{% endif %}</option></select>
         </label>
-        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
+        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">{% if pageLocale == 'ar' %}إنشاء اختبار{% else %}Generate Quiz{% endif %}</span> ↻</button>
       </div>
     </div>
     <div class="cq-out"></div>
   </div>
+  {% endif %}
+
+  {% if isChapterPage and (prevChapter or nextChapter) %}
+  {% set _locBase = ('/ar/' + trackId + '/') if pageLocale == 'ar' else ('/' + trackId + '/') %}
+  <nav class="cs-chapter-pager" aria-label="{% if pageLocale == 'ar' %}التنقل بين الفصول{% else %}Chapter navigation{% endif %}">
+    {% if prevChapter %}
+    <a class="cs-pager-link cs-pager-prev" href="{{ _locBase }}{{ prevChapter.id }}/" data-prefetch="1">
+      <span class="cs-pager-dir">{% if pageLocale == 'ar' %}→ الفصل السابق{% else %}← Previous Chapter{% endif %}</span>
+      <span class="cs-pager-title">{% if prevChapter.num %}{{ prevChapter.num }} · {% endif %}{{ bl.text(prevChapter.title, 'span', pageLocale) }}</span>
+    </a>
+    {% else %}<span></span>{% endif %}
+    {% if nextChapter %}
+    <a class="cs-pager-link cs-pager-next" href="{{ _locBase }}{{ nextChapter.id }}/" data-prefetch="1">
+      <span class="cs-pager-dir">{% if pageLocale == 'ar' %}الفصل التالي ←{% else %}Next Chapter →{% endif %}</span>
+      <span class="cs-pager-title">{% if nextChapter.num %}{{ nextChapter.num }} · {% endif %}{{ bl.text(nextChapter.title, 'span', pageLocale) }}</span>
+    </a>
+    {% endif %}
+  </nav>
   {% endif %}
 </section>

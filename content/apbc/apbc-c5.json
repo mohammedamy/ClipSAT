@@ -234,26 +234,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Geometric Series Identification & Sum",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Determine whether the series \\(\\sum_{n=1}^\\infty 5\\left(-\\frac{2}{3}\\right)^n\\) converges or diverges. If it converges, compute its exact sum.</p><p><strong>Step 1 · Identify First Term \\(a\\) and Common Ratio \\(r\\):</strong><br>• For \\(n = 1\\): \\(a_1 = 5\\left(-\\frac{2}{3}\\right)^1 = -\\frac{10}{3}\\).<br>• The common ratio is \\(r = -\\frac{2}{3}\\).</p><p><strong>Step 2 · Convergence Test:</strong> \\[ |r| = \\left|-\\frac{2}{3}\\right| = \\frac{2}{3} < 1. \\] Since \\(|r| < 1\\), the geometric series <strong>converges</strong>.</p><p><strong>Step 3 · Calculate Sum:</strong> \\[ S = \\frac{a_1}{1 - r} = \\frac{-10/3}{1 - (-2/3)} = \\frac{-10/3}{5/3} = -\\frac{10}{3} \\cdot \\frac{3}{5} = \\mathbf{-2}. \\]</p>",
+        "problem": {
+          "en": "Determine whether the series \\(\\sum_{n=1}^\\infty 5\\left(-\\frac{2}{3}\\right)^n\\) converges or diverges. If it converges, compute its exact sum.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Identify First Term \\(a\\) and Common Ratio \\(r\\):</strong><br>• For \\(n = 1\\): \\(a_1 = 5\\left(-\\frac{2}{3}\\right)^1 = -\\frac{10}{3}\\).<br>• The common ratio is \\(r = -\\frac{2}{3}\\).</p><p><strong>Step 2 · Convergence Test:</strong> \\[ |r| = \\left|-\\frac{2}{3}\\right| = \\frac{2}{3} < 1. \\] Since \\(|r| < 1\\), the geometric series <strong>converges</strong>.</p><p><strong>Step 3 · Calculate Sum:</strong> \\[ S = \\frac{a_1}{1 - r} = \\frac{-10/3}{1 - (-2/3)} = \\frac{-10/3}{5/3} = -\\frac{10}{3} \\cdot \\frac{3}{5} = \\mathbf{-2}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Unit 10 · Infinite Sequences & Series — Convergence Tests (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider the sequence defined by \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\). Which of the following statements about the convergence of the sequence \\( \\{a_n\\}_{n=1}^{\\infty} \\) is true?</p><p><strong>Step-by-Step Solution:</strong> We need to determine the limit of the sequence \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\) as \\(n \\to \\infty\\). As \\(n \\to \\infty\\), the upper limit of integration \\(1/n \\to 0\\). We examine the behavior of the integrand \\(\\frac{\\sin(x^2)}{x}\\) near \\(x=0\\). Using the Taylor series expansion for \\(\\sin(u)\\) around \\(u=0\\), which is \\(\\sin(u) = u - \\frac{u^3}{3!} + O(u^5)\\), we substitute \\(u=x^2\\): \\(\\sin(x^2) = x^2 - \\frac{(x^2)^3}{3!} + O(x^{10}) = x^2 - \\frac{x^6}{6} + O(x^{10})\\).\n\nTherefore, for \\(x\\) close to 0, \\(\\frac{\\sin(x^2)}{x} = \\frac{x^2 - \\frac{x^6}{6} + O(x^{10})}{x} = x - \\frac{x^5}{6} + O(x^9)\\).\n\nThis shows that the integrand \\(\\frac{\\sin(x^2)}{x}\\) approaches 0 as \\(x \\to 0\\). In fact, for small \\(x\\), \\(\\frac{\\sin(x^2)}{x} \\approx x\\), which is continuous at \\(x=0\\) if we define it to be 0. More formally, by L'Hopital's Rule applied to \\(\\frac{\\sin(x^2)}{x^2}\\) and then multiplying by \\(x\\), we can see that \\(\\lim_{x\\to 0} \\frac{\\sin(x^2)}{x} = \\lim_{x\\to 0} x \\cdot \\lim_{x\\to 0} \\frac{\\sin(x^2)}{x^2} = 0 \\cdot 1 = 0\\).\n\nSince the integrand is continuous on the interval \\([0, 1/n]\\) for any \\(n \\ge 1\\) (if we define the integrand to be 0 at \\(x=0\\), or by noting the limit is 0), and the interval of integration shrinks to 0 as \\(n \\to \\infty\\), the value of the integral \\(a_n\\) must also approach 0.\n\nLet \\(f(x) = \\frac{\\sin(x^2)}{x}\\). For \\(x \\in (0, 1]\\), \\(f(x)\\) is well-defined. As \\(x \\to 0^+\\), \\(f(x) \\to 0\\). We can consider a continuous extension of \\(f(x)\\) on \\([0, 1]\\) by defining \\(f(0)=0\\). The function \\(f(x)\\) is continuous on \\([0, 1]\\).\n\nBy the Mean Value Theorem for Integrals, for \\(n \\ge 1\\), there exists a \\(c_n \\in [0, 1/n]\\) such that \\(a_n = f(c_n) \\cdot (1/n - 0) = f(c_n) \\cdot (1/n)\\).\n\nAs \\(n \\to \\infty\\), \\(c_n \\to 0\\). Since \\(f\\) is continuous at 0, \\(\\lim_{n \\to \\infty} f(c_n) = f(0) = 0\\).\n\nTherefore, \\(\\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} f(c_n) \\cdot \\frac{1}{n} = 0 \\cdot 0 = 0\\).\n\nThus, the sequence converges to 0.</p>",
+        "problem": {
+          "en": "Consider the sequence defined by \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\). Which of the following statements about the convergence of the sequence \\( \\{a_n\\}_{n=1}^{\\infty} \\) is true?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>We need to determine the limit of the sequence \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\) as \\(n \\to \\infty\\). As \\(n \\to \\infty\\), the upper limit of integration \\(1/n \\to 0\\). We examine the behavior of the integrand \\(\\frac{\\sin(x^2)}{x}\\) near \\(x=0\\). Using the Taylor series expansion for \\(\\sin(u)\\) around \\(u=0\\), which is \\(\\sin(u) = u - \\frac{u^3}{3!} + O(u^5)\\), we substitute \\(u=x^2\\): \\(\\sin(x^2) = x^2 - \\frac{(x^2)^3}{3!} + O(x^{10}) = x^2 - \\frac{x^6}{6} + O(x^{10})\\).\n\nTherefore, for \\(x\\) close to 0, \\(\\frac{\\sin(x^2)}{x} = \\frac{x^2 - \\frac{x^6}{6} + O(x^{10})}{x} = x - \\frac{x^5}{6} + O(x^9)\\).\n\nThis shows that the integrand \\(\\frac{\\sin(x^2)}{x}\\) approaches 0 as \\(x \\to 0\\). In fact, for small \\(x\\), \\(\\frac{\\sin(x^2)}{x} \\approx x\\), which is continuous at \\(x=0\\) if we define it to be 0. More formally, by L'Hopital's Rule applied to \\(\\frac{\\sin(x^2)}{x^2}\\) and then multiplying by \\(x\\), we can see that \\(\\lim_{x\\to 0} \\frac{\\sin(x^2)}{x} = \\lim_{x\\to 0} x \\cdot \\lim_{x\\to 0} \\frac{\\sin(x^2)}{x^2} = 0 \\cdot 1 = 0\\).\n\nSince the integrand is continuous on the interval \\([0, 1/n]\\) for any \\(n \\ge 1\\) (if we define the integrand to be 0 at \\(x=0\\), or by noting the limit is 0), and the interval of integration shrinks to 0 as \\(n \\to \\infty\\), the value of the integral \\(a_n\\) must also approach 0.\n\nLet \\(f(x) = \\frac{\\sin(x^2)}{x}\\). For \\(x \\in (0, 1]\\), \\(f(x)\\) is well-defined. As \\(x \\to 0^+\\), \\(f(x) \\to 0\\). We can consider a continuous extension of \\(f(x)\\) on \\([0, 1]\\) by defining \\(f(0)=0\\). The function \\(f(x)\\) is continuous on \\([0, 1]\\).\n\nBy the Mean Value Theorem for Integrals, for \\(n \\ge 1\\), there exists a \\(c_n \\in [0, 1/n]\\) such that \\(a_n = f(c_n) \\cdot (1/n - 0) = f(c_n) \\cdot (1/n)\\).\n\nAs \\(n \\to \\infty\\), \\(c_n \\to 0\\). Since \\(f\\) is continuous at 0, \\(\\lim_{n \\to \\infty} f(c_n) = f(0) = 0\\).\n\nTherefore, \\(\\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} f(c_n) \\cdot \\frac{1}{n} = 0 \\cdot 0 = 0\\).\n\nThus, the sequence converges to 0.</p>",
           "ar": null
         }
       },
@@ -457,14 +463,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 2 (Medium) — Worked Example · Limit Comparison Test vs \\(p\\)-Series",
           "ar": "Level 2 (Medium) — مثال محلول · النهاية Comparison Test vs \\(p\\)-المتسلسلة"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Determine the convergence or divergence of \\(\\sum_{n=1}^\\infty \\frac{3n^2 + 5}{2n^4 - n + 1}\\).</p><p><strong>Step 1 · Identify Dominant Terms:</strong> For large \\(n\\), \\(a_n \\approx \\frac{3n^2}{2n^4} = \\frac{3}{2n^2}\\). Choose benchmark series \\(b_n = \\frac{1}{n^2}\\).</p><p><strong>Step 2 · State Benchmark Convergence:</strong> The series \\(\\sum_{n=1}^\\infty \\frac{1}{n^2}\\) is a \\(p\\)-series with \\(p = 2 > 1\\), which <strong>converges</strong>.</p><p><strong>Step 3 · Evaluate Limit of the Ratio:</strong> \\[ L = \\lim_{n\\to\\infty} \\frac{a_n}{b_n} = \\lim_{n\\to\\infty} \\frac{\\frac{3n^2 + 5}{2n^4 - n + 1}}{\\frac{1}{n^2}} = \\lim_{n\\to\\infty} \\frac{3n^4 + 5n^2}{2n^4 - n + 1} = \\frac{3}{2}. \\] </p><p><strong>Step 4 · Conclusion & Justification:</strong> Since \\(L = \\frac{3}{2}\\) is finite and positive (\\(0 < L < \\infty\\)), by the <strong>Limit Comparison Test</strong>, the series \\(\\sum_{n=1}^\\infty \\frac{3n^2 + 5}{2n^4 - n + 1}\\) <strong>converges</strong>.</p>",
+        "problem": {
+          "en": "Determine the convergence or divergence of \\(\\sum_{n=1}^\\infty \\frac{3n^2 + 5}{2n^4 - n + 1}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Identify Dominant Terms:</strong> For large \\(n\\), \\(a_n \\approx \\frac{3n^2}{2n^4} = \\frac{3}{2n^2}\\). Choose benchmark series \\(b_n = \\frac{1}{n^2}\\).</p><p><strong>Step 2 · State Benchmark Convergence:</strong> The series \\(\\sum_{n=1}^\\infty \\frac{1}{n^2}\\) is a \\(p\\)-series with \\(p = 2 > 1\\), which <strong>converges</strong>.</p><p><strong>Step 3 · Evaluate Limit of the Ratio:</strong> \\[ L = \\lim_{n\\to\\infty} \\frac{a_n}{b_n} = \\lim_{n\\to\\infty} \\frac{\\frac{3n^2 + 5}{2n^4 - n + 1}}{\\frac{1}{n^2}} = \\lim_{n\\to\\infty} \\frac{3n^4 + 5n^2}{2n^4 - n + 1} = \\frac{3}{2}. \\] </p><p><strong>Step 4 · Conclusion & Justification:</strong> Since \\(L = \\frac{3}{2}\\) is finite and positive (\\(0 < L < \\infty\\)), by the <strong>Limit Comparison Test</strong>, the series \\(\\sum_{n=1}^\\infty \\frac{3n^2 + 5}{2n^4 - n + 1}\\) <strong>converges</strong>.</p>",
           "ar": null
         }
       },
@@ -514,14 +523,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 3 (Advanced/FRQ) — Worked Example · Absolute vs Conditional Convergence Justification",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Determine whether the alternating series \\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges.</p><p><strong>Step 1 · Test Absolute Convergence:</strong> Consider the series of absolute values: \\[ \\sum_{n=1}^\\infty \\left| \\frac{(-1)^n}{\\sqrt{n}} \\right| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}. \\] This is a \\(p\\)-series with \\(p = \\frac{1}{2} \\le 1\\). Therefore, \\(\\sum |a_n|\\) <strong>diverges</strong>. The series is NOT absolutely convergent.</p><p><strong>Step 2 · Test the Original Alternating Series using AST:</strong> Check the three hypotheses of the Alternating Series Test:<br>1. Alternating sign: \\((-1)^n\\) oscillates signs.<br>2. Terms decrease in magnitude: \\(a_n = \\frac{1}{\\sqrt{n}}\\). Since \\(n + 1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}\\), terms strictly decrease.<br>3. Limit of terms: \\(\\lim_{n\\to\\infty} \\frac{1}{\\sqrt{n}} = 0\\).</p><p>All three hypotheses hold, so by the Alternating Series Test, the series \\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}\\) <strong>converges</strong>.</p><p><strong>Conclusion:</strong> Because the series converges but does not converge absolutely, it <strong>converges conditionally</strong>.</p>",
+        "problem": {
+          "en": "Determine whether the alternating series \\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Test Absolute Convergence:</strong> Consider the series of absolute values: \\[ \\sum_{n=1}^\\infty \\left| \\frac{(-1)^n}{\\sqrt{n}} \\right| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}. \\] This is a \\(p\\)-series with \\(p = \\frac{1}{2} \\le 1\\). Therefore, \\(\\sum |a_n|\\) <strong>diverges</strong>. The series is NOT absolutely convergent.</p><p><strong>Step 2 · Test the Original Alternating Series using AST:</strong> Check the three hypotheses of the Alternating Series Test:<br>1. Alternating sign: \\((-1)^n\\) oscillates signs.<br>2. Terms decrease in magnitude: \\(a_n = \\frac{1}{\\sqrt{n}}\\). Since \\(n + 1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}\\), terms strictly decrease.<br>3. Limit of terms: \\(\\lim_{n\\to\\infty} \\frac{1}{\\sqrt{n}} = 0\\).</p><p>All three hypotheses hold, so by the Alternating Series Test, the series \\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}\\) <strong>converges</strong>.</p><p><strong>Conclusion:</strong> Because the series converges but does not converge absolutely, it <strong>converges conditionally</strong>.</p>",
           "ar": null
         }
       },

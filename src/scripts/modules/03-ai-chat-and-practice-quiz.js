@@ -130,15 +130,28 @@
       ? ('\u062D\u062F\u0643 \u0627\u0644\u064A\u0648\u0645\u064A '+cap+' \u0633\u0624\u0627\u0644\u0627\u064B \u0646\u0635\u064A\u0627\u064B \u0623\u0648 '+att+' \u0633\u0624\u0627\u0644\u0627\u064B \u0628\u0635\u0648\u0631\u0629/PDF \u0623\u0648 \u0645\u0632\u064A\u062C\u0627\u064B \u0645\u0646\u0647\u0645\u0627')
       : ('Daily allowance: '+cap+' text questions, or '+att+' photo/PDF questions, or a mix');
   }
+  function _isCloudSignedIn(){
+    return !!(window.ClipSATCloud && typeof window.ClipSATCloud.isSignedIn === 'function' && window.ClipSATCloud.isSignedIn());
+  }
   function _updateAiQuotaUI(){
     if(!_chatUIReady || !panel) return;
+    var signedIn=_isCloudSignedIn();
+    var guestBanner=document.getElementById('chatGuestBanner');
+    if(guestBanner) guestBanner.hidden=signedIn;
     var used=_getAiDailyUsed();
     var cap=_getAiCap();
     var left=Math.max(0, cap - used);
     var subEl=panel.querySelector ? panel.querySelector('.chat-title .chat-sub') : null;
-    if(subEl) subEl.textContent='AI math assistant \u00B7 '+left+'/'+cap+' credits left today (photo/PDF = '+AI_ATTACH_COST+')';
+    if(subEl){
+      subEl.textContent = signedIn
+        ? ('AI math assistant \u00B7 '+left+'/'+cap+' credits left today (photo/PDF = '+AI_ATTACH_COST+')')
+        : 'Guest demo (2 free tries) \u00B7 Sign in free for 20/day';
+    }
     var footEl=panel.querySelector ? panel.querySelector('.chat-foot') : null;
     if(footEl) footEl.textContent='AI-generated; may contain errors; not a substitute for teacher guidance. '+_aiLimitSummary(false)+'.';
+  }
+  if(typeof document !== 'undefined' && document && typeof document.addEventListener === 'function'){
+    document.addEventListener('clipsat:auth-changed', _updateAiQuotaUI);
   }
 
   /* ── Hardened Mathematics Exclusivity System Prompt ── */
@@ -426,6 +439,8 @@
 
   function openPanel(){
     positionPanelNearFab();
+    panel.inert=false;
+    panel.removeAttribute('inert');
     panel.classList.add('open');
     panel.setAttribute('aria-hidden','false');
     fab.style.display='none';
@@ -437,7 +452,10 @@
     if(typeof stopCamera==='function') stopCamera();
     panel.classList.remove('open');
     panel.setAttribute('aria-hidden','true');
+    panel.inert=true;
+    panel.setAttribute('inert','');
     fab.style.display='';
+    if(fab && typeof fab.focus==='function') fab.focus();
   }
 
   /* ═══════════════════════════════════════════════════════════════
@@ -748,15 +766,20 @@ window.launchPracticeQuiz=function(mistake){
     var wrap=btn.closest('.ch-quiz-wrap');
     if(!wrap) return;
     var out=wrap.querySelector('.cq-out');
+    var diffAttr=wrap.getAttribute('data-diff');
+    var lvlSelEl=wrap.querySelector('.cq-level');
+    if(diffAttr && lvlSelEl) lvlSelEl.value = (diffAttr === 'all') ? 'all' : diffAttr;
+    document.dispatchEvent(new CustomEvent('clipsat:quiz-start',{detail:{btn:btn,wrap:wrap,out:out}}));
     var main=btn.closest('main[id^="view-"]');
     var viewId=(main?main.id.replace('view-',''):null) || window.CLIPSAT_TRACK;
     if(!viewId && window.location.pathname){
       var segs=window.location.pathname.split('/').filter(Boolean);
+      if(segs[0]==='ar') segs.shift();
       if(segs.length && segs[0]!=='ClipSAT') viewId=segs[0];
       else if(segs.length>1 && segs[0]==='ClipSAT') viewId=segs[1];
     }
     var n=parseInt(wrap.querySelector('.cq-count').value,10)||10;
-    var lvl=wrap.querySelector('.cq-level').value;
+    var lvl=lvlSelEl ? lvlSelEl.value : 'all';
 
     function _execute(bank){
       if(!bank){
@@ -1098,9 +1121,11 @@ window.launchPracticeQuiz=function(mistake){
 
     out.innerHTML='<p class="cq-msg" style="opacity:0.7">Loading questions…</p>';
 
-    var loadBank = (window.CS_loadTrackBank && viewId)
-      ? window.CS_loadTrackBank(viewId)
-      : Promise.resolve(null);
+    var _chSec = btn.closest('.chapter');
+    var topicSlug = wrap.getAttribute('data-topic-id') || (_chSec && _chSec.id) || window.CLIPSAT_CHAPTER_ID || '';
+    var loadBank = (viewId && topicSlug && window.CS_loadTopicShard)
+      ? window.CS_loadTopicShard(viewId, topicSlug)
+      : ((window.CS_loadTrackBank && viewId) ? window.CS_loadTrackBank(viewId) : Promise.resolve(null));
 
     loadBank.then(function(res){
       var bank = res || (window.fullExamBank && window.fullExamBank[viewId]);
@@ -1116,16 +1141,18 @@ window.launchPracticeQuiz=function(mistake){
 
   window.cqPick=function(el){
     var item=el.closest('.cq-item');
-    if(item.classList.contains('cq-done')) return; /* already answered */
+    if(!item || item.classList.contains('cq-done')) return; /* already answered */
     item.classList.add('cq-done');
     var ans=parseInt(item.getAttribute('data-ans'),10);
     var opts=item.querySelectorAll('.cq-opt');
     var chosen=Array.prototype.indexOf.call(opts,el);
-    opts[ans].classList.add('cq-correct');          /* always highlight correct */
-    if(chosen!==ans) el.classList.add('cq-wrong'); /* mark wrong choice */
+    var isRight=(chosen===ans);
+    if(opts[ans]) opts[ans].classList.add('cq-correct');     /* always highlight correct */
+    if(!isRight) el.classList.add('cq-wrong');               /* mark wrong choice */
     item.querySelectorAll('.cq-opt').forEach(function(o){o.style.pointerEvents='none';}); /* lock */
     var sol=item.querySelector('.cq-sol-box');
     if(sol) sol.style.display='block';
+    document.dispatchEvent(new CustomEvent('clipsat:cq-pick',{detail:{item:item,el:el,ans:ans,opts:Array.prototype.slice.call(opts),chosen:chosen,isRight:isRight}}));
     /* update score counters */
     var paper=el.closest('.cq-paper');
     var answered=paper.querySelectorAll('.cq-item.cq-done').length;
@@ -1454,6 +1481,25 @@ window.launchPracticeQuiz=function(mistake){
     ).then(function(text){ return (text||'').trim(); });
   }
 
+  function _buildGuestSocraticReply(q){
+    var isAr=/[\u0600-\u06FF]/.test(q);
+    var linMatch=q.replace(/\s+/g,'').match(/([+-]?\d*)x([+-]\d+)=([+-]?\d+)/i);
+    if(linMatch){
+      var a=linMatch[1]===''||linMatch[1]==='+'?1:(linMatch[1]==='-'?-1:parseInt(linMatch[1],10));
+      var b=parseInt(linMatch[2],10), c=parseInt(linMatch[3],10);
+      if(a!==0 && !isNaN(a) && !isNaN(b) && !isNaN(c)){
+        var rhs=c-b;
+        var solVal=(rhs%a===0)?String(rhs/a):(rhs+'/'+a);
+        return isAr
+          ? ('✨ **عرض تجريبي مجاني (خطوة بخطوة):**\n1. نطرح/ننقل الحد الثابت للطرف الآخر: \\('+a+'x = '+c+' - ('+b+') = '+rhs+'\\)\n2. نقسم الطرفين على \\('+a+'\\): \\(x = '+solVal+'\\)\n\nجرّب التعويض للتحقق! للحصول على حلول الذكاء الاصطناعي الكاملة لأي مسألة أو صورة، سجّل الدخول مجاناً.')
+          : ('✨ **Guest Demo Walkthrough:**\n1. Isolate the variable term: \\('+a+'x = '+c+' - ('+b+') = '+rhs+'\\)\n2. Divide both sides by \\('+a+'\\): \\(x = '+solVal+'\\)\n\nCheck by substituting \\(x = '+solVal+'\\) back into your original equation!');
+      }
+    }
+    return isAr
+      ? ('✨ **توجيه رياضي (وضع الزائر التجريبي):**\nلحل المسألة **«'+q.slice(0,90)+'»** منهجياً:\n1. **حدد المطلوب والمعطيات** واكتب القاعدة أو القانون الأساسي المرتبط بالمفهوم.\n2. **بسّط العبارة خطوة بخطوة** (فك الأقواس أو عزل المتغير أو التعويض بالقيم).\n3. **تحقق من معقولية الناتج** بالتعويض العكسي أو فحص الوحدات والإشارات.\n\nسجّل الدخول مجاناً (بكود بريد إلكتروني فقط) لتفعيل الحل الكامل بالذكاء الاصطناعي والرسوم البيانية وحل الصور/PDF (20 سؤالاً يومياً)!')
+      : ('✨ **Socratic Math Guide (Guest Demo):**\nTo solve **“'+q.slice(0,90)+'”** systematically:\n1. **Identify the target & governing rule:** Write down the known quantities and the core formula/theorem that connects them.\n2. **Isolate & simplify step-by-step:** Perform inverse operations or algebraic factoring carefully, watching negative signs.\n3. **Verify your result:** Substitute your answer back into the original condition or check boundary cases.\n\nSign in free below (email code, no password) to unlock full step-by-step AI solutions, interactive graphs, and photo/PDF solving (20 daily credits)!');
+  }
+
   function sendMsg(){
     var rawQ=(input.value||'').trim();
     var att=pendingAttachment;
@@ -1488,6 +1534,25 @@ window.launchPracticeQuiz=function(mistake){
       history.push({role:'assistant', content: refusal});
       input.focus();
       return;
+    }
+
+    /* WP-31: Guest Demo Mode — allow up to 2 instant Socratic walkthroughs before requiring sign-in */
+    if(!att && !_isCloudSignedIn()){
+      var guestTries=0;
+      try { guestTries=parseInt(sessionStorage.getItem('clipsat_guest_ai_demos')||'0',10)||0; } catch(e){}
+      if(guestTries < 2){
+        try { sessionStorage.setItem('clipsat_guest_ai_demos', String(guestTries + 1)); } catch(e){}
+        var demoText=_buildGuestSocraticReply(q);
+        var demoNode=addMsg('bot', demoText);
+        history.push({role:'assistant', content: demoText});
+        var ctaWrap=document.createElement('div');
+        ctaWrap.style.marginTop='8px';
+        ctaWrap.innerHTML='<button type="button" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()" style="padding:6px 14px;background:var(--indigo);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.84em;font-weight:600">☁️ Sign in free for 20 daily AI solutions</button>';
+        demoNode.appendChild(ctaWrap);
+        body.scrollTop=body.scrollHeight;
+        input.focus();
+        return;
+      }
     }
 
     var outboundAtt = att ? {

@@ -224,14 +224,19 @@ test('Calculus ch-diffeq slopeCanvas is upgraded to interactive RK4/Euler lab an
   assert.ok(calcJs.includes('CSMountSlopeFieldExplorer'), 'calculus.js must mount CSMountSlopeFieldExplorer');
   assert.ok(calcJs.includes('CSMountHyperbolicExplorer'), 'calculus.js must mount CSMountHyperbolicExplorer');
 
-  const calcHtmlPath = path.join(SITE_DIR, 'calculus', 'index.html');
-  if (fs.existsSync(calcHtmlPath)) {
-    const calcHtml = fs.readFileSync(calcHtmlPath, 'utf8');
-    assert.ok(calcHtml.includes('data-cs-interactive-slopefield="1"'), '_site/calculus/index.html must emit interactive slope field figure attributes');
-    assert.ok(calcHtml.includes('id="slopeX0"'), '_site/calculus/index.html must render upgraded slopeX0 slider');
-    assert.ok(calcHtml.includes('uge_chderivatives_hyperCanvas'), '_site/calculus/index.html must render Hyperbolic explorer canvas');
-    assert.ok(calcHtml.includes('uge_chfoundations_trig6Canvas'), '_site/calculus/index.html must render 6-Trig explorer canvas');
-    assert.ok(calcHtml.includes('uge_chfoundations_invtrig6Canvas'), '_site/calculus/index.html must render 6-Inverse-Trig explorer canvas');
+  const calcDir = path.join(SITE_DIR, 'calculus');
+  if (fs.existsSync(path.join(calcDir, 'index.html'))) {
+    let calcHtml = fs.readFileSync(path.join(calcDir, 'index.html'), 'utf8');
+    for (const ent of fs.readdirSync(calcDir, { withFileTypes: true })) {
+      if (ent.isDirectory() && fs.existsSync(path.join(calcDir, ent.name, 'index.html'))) {
+        calcHtml += '\n' + fs.readFileSync(path.join(calcDir, ent.name, 'index.html'), 'utf8');
+      }
+    }
+    assert.ok(calcHtml.includes('data-cs-interactive-slopefield="1"'), 'Calculus SSG pages must emit interactive slope field figure attributes');
+    assert.ok(calcHtml.includes('id="slopeX0"'), 'Calculus SSG pages must render upgraded slopeX0 slider');
+    assert.ok(calcHtml.includes('uge_chderivatives_hyperCanvas'), 'Calculus SSG pages must render Hyperbolic explorer canvas');
+    assert.ok(calcHtml.includes('uge_chfoundations_trig6Canvas'), 'Calculus SSG pages must render 6-Trig explorer canvas');
+    assert.ok(calcHtml.includes('uge_chfoundations_invtrig6Canvas'), 'Calculus SSG pages must render 6-Inverse-Trig explorer canvas');
   }
 });
 

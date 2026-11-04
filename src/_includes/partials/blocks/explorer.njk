@@ -25,14 +25,14 @@
   note, for the rare real case of one explorer bundling two independent sub-widgets.
   Expects: block (the explorer object)
 #}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
 {% macro renderControl(ctrl) %}
 {% if ctrl.checkbox %}
-<label class="chk"><input type="checkbox" id="{{ ctrl.id }}"{% if ctrl.checked %} checked{% endif %}{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}> {{ bl.text(ctrl.label) }}</label>
+<label class="chk"><input type="checkbox" id="{{ ctrl.id }}"{% if ctrl.checked %} checked{% endif %}{% if ctrl.ariaLabel %} {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}> {{ bl.text(ctrl.label) }}</label>
 {% elif ctrl.buttons %}
 <div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label>{{ bl.text(ctrl.label) }}</label><div class="radios">{% for b in ctrl.buttons %}<button data-rule="{{ b.value }}"{% if b.active %} class="on"{% endif %}>{{ b.label }}</button>{% endfor %}</div></div>
 {% else %}
-<div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label{% if ctrl.id %} for="{{ ctrl.id }}"{% endif %}>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.valueDisplay or ctrl.value }}</span>{% endif %}</label>{% if ctrl.options %}<select id="{{ ctrl.id }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% for o in ctrl.options %}<option value="{{ o.value }}"{% if o.selected %} selected{% endif %}>{{ o.label }}</option>{% endfor %}</select>{% else %}<input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% endif %}</div>
+<div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label{% if ctrl.id %} for="{{ ctrl.id }}"{% endif %}>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.valueDisplay or ctrl.value }}</span>{% endif %}</label>{% if ctrl.options %}<select id="{{ ctrl.id }}"{% if ctrl.ariaLabel %} {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% for o in ctrl.options %}<option value="{{ o.value }}"{% if o.selected %} selected{% endif %}>{{ o.label }}</option>{% endfor %}</select>{% else %}<input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% endif %}</div>
 {% endif %}
 {% endmacro %}
 {% macro renderReadouts(readouts, style) %}
@@ -47,14 +47,14 @@
   <div class="ex-body"{% if block.bodyStyle %} style="{{ block.bodyStyle }}"{% endif %}>
     <div class="ex-canvas"{% if block.canvasStyle %} style="{{ block.canvasStyle }}"{% endif %}>
       {% if block.canvasId %}
-      <div class="canvas-wrap"{% if block.canvasWrapStyle %} style="{{ block.canvasWrapStyle }}"{% endif %}><canvas id="{{ block.canvasId }}"{% if block.ariaLabel %} aria-label="{{ block.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.ariaLabel) }}{% endif %}{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
+      <div class="canvas-wrap"{% if block.canvasWrapStyle %} style="{{ block.canvasWrapStyle }}"{% endif %}><canvas id="{{ block.canvasId }}"{% if block.ariaLabel %} {{ bl.attr('aria-label', block.ariaLabel) }}{% endif %}{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
       {% endif %}
       {% if block.canvasId2 %}
       <div class="canvas-wrap"{% if block.canvas2Style %} style="{{ block.canvas2Style }}"{% endif %}><canvas id="{{ block.canvasId2 }}"></canvas></div>
       {% endif %}
       {% if not block.canvasId and block.canvas3d %}
       <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
-      <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" aria-label="{{ block.canvas3d.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
+      <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
       {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
       {% endif %}
       {% if block.dataPanel %}
@@ -70,7 +70,7 @@
       {% endif %}
       {% if block.canvasId and block.canvas3d %}
       <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
-      <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" aria-label="{{ block.canvas3d.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
+      <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
       {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
       {% endif %}
     </div>

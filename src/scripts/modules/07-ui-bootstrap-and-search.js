@@ -63,10 +63,14 @@ document.addEventListener('click',function(e){
   function applyStep(i){
     STEPS.forEach(function(c){ if(c) document.documentElement.classList.remove(c); });
     if(STEPS[i]) document.documentElement.classList.add(STEPS[i]);
-    if(btn) btn.textContent = LABELS[i];
-    localStorage.setItem('clipsat_fs', String(i));
+    if(btn){
+      btn.textContent = LABELS[i];
+      btn.setAttribute('aria-label', LABELS[i] + ' — Adjust text size');
+    }
+    try { localStorage.setItem('clipsat_fs', String(i)); } catch(e){}
   }
-  var saved = parseInt(localStorage.getItem('clipsat_fs'), 10);
+  var saved = 0;
+  try { saved = parseInt(localStorage.getItem('clipsat_fs'), 10); } catch(e){}
   var idx = (saved >= 0 && saved < STEPS.length) ? saved : 0;
   applyStep(idx);
   if(btn) btn.addEventListener('click', function(){ idx = (idx + 1) % STEPS.length; applyStep(idx); });
@@ -78,39 +82,71 @@ document.addEventListener('click',function(e){
   function applyHC(on){
     document.body.classList.toggle('hc', on);
     if(btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    localStorage.setItem('clipsat_hc', on ? '1' : '0');
+    try { localStorage.setItem('clipsat_hc', on ? '1' : '0'); } catch(e){}
   }
-  applyHC(localStorage.getItem('clipsat_hc') === '1');
+  var initHc = false;
+  try { initHc = localStorage.getItem('clipsat_hc') === '1'; } catch(e){}
+  applyHC(initHc);
   if(btn) btn.addEventListener('click', function(){ applyHC(!document.body.classList.contains('hc')); });
+})();
+
+/* ── STICKY READING PROGRESS BAR (WP-27) ── */
+(function(){
+  var bar = document.getElementById('csReadingProgressBar');
+  if(!bar) return;
+  var ticking = false;
+  function updateReadingProgress(){
+    ticking = false;
+    var docEl = document.documentElement;
+    var scrollTop = window.scrollY || docEl.scrollTop || 0;
+    var maxScroll = Math.max(1, (docEl.scrollHeight || 0) - (window.innerHeight || 0));
+    var pct = Math.max(0, Math.min(100, (scrollTop / maxScroll) * 100));
+    bar.style.width = pct.toFixed(1) + '%';
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      ticking = true;
+      window.requestAnimationFrame(updateReadingProgress);
+    }
+  }, { passive: true });
+  document.addEventListener('clipsat:chapter-change', updateReadingProgress);
+  document.addEventListener('clipsat:view-change', updateReadingProgress);
 })();
 
 /* ── PROGRESS TRACKING ── */
 (function(){
-  var visited = JSON.parse(localStorage.getItem('clipsat_visited')||'{}');
+  var visited = {};
+  try { visited = JSON.parse(localStorage.getItem('clipsat_visited')||'{}') || {}; } catch(e){}
   function markVisited(name){
     if(!name || name==='home') return;
     visited[name] = (visited[name]||0)+1;
-    localStorage.setItem('clipsat_visited', JSON.stringify(visited));
+    try { localStorage.setItem('clipsat_visited', JSON.stringify(visited)); } catch(e){}
     var card = document.querySelector('.card[onclick*="\'' + name + '\'"]');
     if(card){ card.classList.add('cs-visited'); }
   }
   // Add progress badges to all cards
-  document.querySelectorAll('.card[onclick*="showView"]').forEach(function(card){
-    var span = document.createElement('span');
-    span.className = 'prog-badge';
-    span.textContent = '✓';
-    card.appendChild(span);
-    // check if already visited
-    var m = card.getAttribute('onclick').match(/showView\('([^']+)'/);
-    if(m && visited[m[1]]) card.classList.add('cs-visited');
+  document.querySelectorAll('.card[onclick*="showView"], .card[href]').forEach(function(card){
+    if(!card.querySelector('.prog-badge')){
+      var span = document.createElement('span');
+      span.className = 'prog-badge';
+      span.textContent = '✓';
+      card.appendChild(span);
+    }
+    var oc = card.getAttribute('onclick') || '';
+    var m = oc.match(/showView\('([^']+)'/);
+    var h = (card.getAttribute('href') || '').replace(/^\/(?:ar\/)?|\/$/g, '');
+    var tid = (m && m[1]) || h;
+    if(tid && visited[tid]) card.classList.add('cs-visited');
   });
-  // Patch showView
-  var _orig = window.showView;
-  window.showView = function(name){
-    _orig.apply(this, arguments);
-    markVisited(name);
-    loadSidebarForView(name);
-  };
+  // Record visit on current SSG track page and subscribe to clipsat:view-change
+  if(window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home') markVisited(window.CLIPSAT_TRACK);
+  document.addEventListener('clipsat:view-change', function(ev){
+    var name = ev && ev.detail && ev.detail.viewId;
+    if(name){
+      markVisited(name);
+      if(typeof loadSidebarForView === 'function') loadSidebarForView(name);
+    }
+  });
   window._trackVisit = markVisited;
 })();
 
@@ -136,6 +172,7 @@ document.addEventListener('click',function(e){
   };
   window.VIEW_NAMES = VIEW_NAMES;
   function _buildSearchIndex(){
+    if(window.CLIPSAT_CHAPTER_ID) return;
     document.querySelectorAll('main[id^="view-"]').forEach(function(view){
       var vid = view.id.replace('view-','');
       if(vid === 'home') return;
@@ -148,7 +185,7 @@ document.addEventListener('click',function(e){
       });
     });
   }
-  setTimeout(_buildSearchIndex, 1200);
+  if(!window.CLIPSAT_CHAPTER_ID) setTimeout(_buildSearchIndex, 1200);
 
   /* ── Dropdown panel ── */
   var _sdrop = document.createElement('div');
@@ -211,13 +248,11 @@ document.addEventListener('click',function(e){
   document.addEventListener('click', function(e){ if(!input.contains(e.target)&&!_sdrop.contains(e.target)) _sdrop.style.display='none'; });
   input.addEventListener('keydown', function(e){ if(e.key==='Escape'){ _sdrop.style.display='none'; this.value=''; } });
 
-  // Clear search when changing views
-  var _orig = window.showView;
-  window.showView = function(name){
-    _orig.apply(this, arguments);
+  // Clear search when changing views via custom event
+  document.addEventListener('clipsat:view-change', function(){
     input.value = '';
     _sdrop.style.display = 'none';
-  };
+  });
 })();
 
 /* ── FORMULA SIDEBAR ── */

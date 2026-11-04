@@ -50,26 +50,26 @@ function timerStop(){
   var el = document.getElementById('etd'); if(el) el.textContent='00:00';
 }
 
-// Auto-show timer bar when a full exam is generated
-var _timerObserver = new MutationObserver(function(muts){
-  muts.forEach(function(mut){
-    mut.addedNodes.forEach(function(node){
-      if(node.nodeType===1 && (node.classList.contains('fep-header') || (node.querySelector && node.querySelector('.fep-header')))){
-        var bar = document.getElementById('exam-timer-bar');
-        if(!bar.classList.contains('active')){
-          // Move timer bar next to exam output
-          var tgOut = node.closest ? node.closest('.tg-out') : null;
-          if(tgOut && tgOut.parentNode){
-            tgOut.parentNode.insertBefore(bar, tgOut);
-            bar.classList.add('active');
-          }
-        }
-      }
-    });
+// Auto-show timer bar when a full exam is generated (shallow childList + CustomEvent; zero subtree observer)
+function _syncExamTimerToOutput(tgOut){
+  if(!tgOut || !tgOut.querySelector || !tgOut.querySelector('.fep-header')) return;
+  var bar = document.getElementById('exam-timer-bar');
+  if(bar && !bar.classList.contains('active') && tgOut.parentNode){
+    tgOut.parentNode.insertBefore(bar, tgOut);
+    bar.classList.add('active');
+  }
+}
+if(typeof MutationObserver !== 'undefined'){
+  var _timerObserver = new MutationObserver(function(muts){
+    muts.forEach(function(mut){ _syncExamTimerToOutput(mut.target); });
   });
-});
-document.querySelectorAll('.tg-out').forEach(function(el){
-  _timerObserver.observe(el, {childList:true, subtree:true});
+  document.querySelectorAll('.tg-out').forEach(function(el){
+    _timerObserver.observe(el, {childList:true});
+  });
+}
+document.addEventListener('clipsat:exam-generated', function(ev){
+  var tgOut = (ev && ev.detail && ev.detail.container) || document.querySelector('.tg-out');
+  _syncExamTimerToOutput(tgOut);
 });
 
 /* ── PWA / SERVICE WORKER ── */

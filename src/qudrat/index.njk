@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: qudrat
-title: "Qudrat · ClipSAT"
-description: "اختبار القدرات – رياضيات"
+pageLocale: "en"
 isRtl: false
+isSyllabusHub: true
+canonicalPath: "/qudrat/"
+enAltPath: "/qudrat/"
+arAltPath: "/ar/qudrat/"
+title: "Qudrat (GAT Quantitative) · ClipSAT"
+description: "Saudi ETEC/Qiyas General Aptitude Test (GAT Qudrat) Quantitative Reasoning — bilingual lessons, quantitative comparison strategies, mental math techniques, and timed no-calculator mock exams."
 ---
 {#
   Renders from content/qudrat/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -13,33 +18,28 @@ isRtl: false
   (also deleted, same step) used to be kept as an inert rollback path — no longer needed once
   every track had been migrated and verified live.
 #}
-{% set qudrat = migratedContent.qudrat %}
-{% set pageHeader = qudrat.meta.meta.pageHeader %}
-<main id="view-qudrat" class="view active">
+{% set trackData = migratedContent.qudrat %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'qud-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'qud-testgen' %}
+{% set downloadsId = 'qud-downloads' %}
+<main id="view-qudrat" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = qudrat.chapters %}
-    {% set practiceSetId = 'qud-practice' %}
-    {% set testGeneratorId = 'qud-testgen' %}
-    {% set downloadsId = 'qud-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in qudrat.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'qud-practice' %}
-      {% set practiceSet = qudrat.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'qud-testgen' %}
-      {% set testGenerator = qudrat.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'qud-downloads' %}
-      {% set courseMeta = qudrat.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

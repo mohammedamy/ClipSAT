@@ -254,50 +254,62 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example — One-tailed test for \\(\\mu\\)",
           "ar": "مثال محلول — One-tailed test for \\(\\mu\\)"
         },
-        "body": {
-          "en": "<p>Bags of flour are labelled 500 g. A sample of 25 bags gives \\(\\bar{x}=497\\) g. Population SD is 8 g. Test at 5% whether there is evidence that bags are underweight.</p><p>\\(H_0:\\mu=500\\), H_1:\\mu&lt;500 (one-tailed). \\(Z=\\dfrac{497-500}{8/5}=\\dfrac{-3}{1.6}=-1.875\\). Critical value: \\(-1.645\\). Since -1.875&lt;-1.645, reject \\(H_0\\). There is significant evidence at 5% that bags are underweight.</p>",
+        "problem": {
+          "en": "Bags of flour are labelled 500 g. A sample of 25 bags gives \\(\\bar{x}=497\\) g. Population SD is 8 g. Test at 5% whether there is evidence that bags are underweight.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(H_0:\\mu=500\\), H_1:\\mu&lt;500 (one-tailed). \\(Z=\\dfrac{497-500}{8/5}=\\dfrac{-3}{1.6}=-1.875\\). Critical value: \\(-1.645\\). Since -1.875&lt;-1.645, reject \\(H_0\\). There is significant evidence at 5% that bags are underweight.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example — Poisson hypothesis test",
           "ar": "مثال محلول — Poisson اختبار الفرضيات"
         },
-        "body": {
-          "en": "<p>Road accidents used to occur at a rate of 4 per week. After safety measures, only 1 accident is observed in one week. Test at 5% whether the rate has decreased.</p><p>\\(H_0:\\lambda=4\\), H_1:\\lambda&lt;4. \\(P(X\\leq1)=e^{-4}(1+4)=5e^{-4}\\approx0.0916\\). Since 0.0916&gt;0.05, do not reject \\(H_0\\). Insufficient evidence that the rate has decreased.</p>",
+        "problem": {
+          "en": "Road accidents used to occur at a rate of 4 per week. After safety measures, only 1 accident is observed in one week. Test at 5% whether the rate has decreased.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(H_0:\\lambda=4\\), H_1:\\lambda&lt;4. \\(P(X\\leq1)=e^{-4}(1+4)=5e^{-4}\\approx0.0916\\). Since 0.0916&gt;0.05, do not reject \\(H_0\\). Insufficient evidence that the rate has decreased.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Hypothesis Testing (Medium Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> The length, \\(X\\text{ mm}\\), of components manufactured by an industrial process is normally distributed with mean \\(\\mu\\text{ mm}\\) and standard deviation \\(\\sigma\\text{ mm}\\). A quality assurance engineer tests the null hypothesis \\(H_0: \\mu = 20.0\\) against the alternative hypothesis \\(H_1: \\mu > 20.0\\) at the \\(5\\%\\) significance level using an initial random sample of size \\(n = 25\\).\n\nThe critical region for the sample mean \\(\\bar{X}\\) is found to be \\(\\bar{X} \\ge 20.658\\).\n\nUsing the standard normal critical value \\(z_{0.05} = 1.645\\):\n1. Find the value of \\(\\sigma\\).\n2. Hence, determine the minimum sample size, \\(m\\), required so that in a subsequent test of \\(H_0: \\mu = 20.0\\) against \\(H_1: \\mu > 20.0\\) at the same \\(5\\%\\) significance level, the probability of committing a Type II error when the true mean is \\(\\mu = 21.0\\) is at most \\(0.05\\).</p><p><strong>Step-by-Step Solution:</strong> We solve the problem in two stages:\n\n**Step 1: Determine \\(\\sigma\\)**\nUnder \\(H_0\\), the distribution of the sample mean is \\(\\bar{X} \\sim N\\left(20.0, \\frac{\\sigma^2}{25}\\right)\\).\nThe critical value for a upper one-tailed test at the \\(5\\%\\) level corresponds to \\(z = 1.645\\):\n\\[\n\\frac{20.658 - 20.0}{\\frac{\\sigma}{\\sqrt{25}}} = 1.645\n\\]\n\\[\n\\frac{0.658}{\\frac{\\sigma}{5}} = 1.645 \\implies \\frac{3.29}{\\sigma} = 1.645 \\implies \\sigma = \\frac{3.29}{1.645} = 2.0\\text{ mm}\n\\]\n\n**Step 2: Determine the minimum sample size \\(m\\)**\nFor a new sample of size \\(m\\), the rejection rule at the \\(5\\%\\) level requires rejecting \\(H_0\\) if \\(\\bar{X} \\ge c\\), where:\n\\[\nc = 20.0 + 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 20.0 + \\frac{3.29}{\\sqrt{m}}\n\\]\nA Type II error occurs when \\(H_0\\) is not rejected (i.e. \\(\\bar{X} < c\\)) given that the true mean is \\(\\mu = 21.0\\).\nWe require:\n\\[\nP(\\bar{X} < c \\mid \\mu = 21.0) \\le 0.05\n\\]\nStandardising under \\(\\mu = 21.0\\):\n\\[\n\\frac{c - 21.0}{\\frac{2.0}{\\sqrt{m}}} \\le -1.645 \\implies c \\le 21.0 - 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 21.0 - \\frac{3.29}{\\sqrt{m}}\n\\]\nEquating both conditions for \\(c\\):\n\\[\n20.0 + \\frac{3.29}{\\sqrt{m}} \\le 21.0 - \\frac{3.29}{\\sqrt{m}}\n\\]\n\\[\n\\frac{6.58}{\\sqrt{m}} \\le 1.0 \\implies \\sqrt{m} \\ge 6.58\n\\]\n\\[\nm \\ge 6.58^2 = 43.2964\n\\]\nSince \\(m\\) must be an integer, the minimum sample size is \\(m = 44\\).\n\n**Common traps:**\n- Rounding down to \\(43\\) yields a Type II error probability greater than \\(0.05\\).\n- Omitting the calculation of \\(\\sigma\\) and erroneously assuming \\(\\sigma = 1\\) yields \\(m = 11\\).\n- Omitting the critical value shift from one of the two tails leads to \\(m = 22\\).</p>",
+        "problem": {
+          "en": "The length, \\(X\\text{ mm}\\), of components manufactured by an industrial process is normally distributed with mean \\(\\mu\\text{ mm}\\) and standard deviation \\(\\sigma\\text{ mm}\\). A quality assurance engineer tests the null hypothesis \\(H_0: \\mu = 20.0\\) against the alternative hypothesis \\(H_1: \\mu > 20.0\\) at the \\(5\\%\\) significance level using an initial random sample of size \\(n = 25\\).\n\nThe critical region for the sample mean \\(\\bar{X}\\) is found to be \\(\\bar{X} \\ge 20.658\\).\n\nUsing the standard normal critical value \\(z_{0.05} = 1.645\\):\n1. Find the value of \\(\\sigma\\).\n2. Hence, determine the minimum sample size, \\(m\\), required so that in a subsequent test of \\(H_0: \\mu = 20.0\\) against \\(H_1: \\mu > 20.0\\) at the same \\(5\\%\\) significance level, the probability of committing a Type II error when the true mean is \\(\\mu = 21.0\\) is at most \\(0.05\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>We solve the problem in two stages:\n\n**Step 1: Determine \\(\\sigma\\)**\nUnder \\(H_0\\), the distribution of the sample mean is \\(\\bar{X} \\sim N\\left(20.0, \\frac{\\sigma^2}{25}\\right)\\).\nThe critical value for a upper one-tailed test at the \\(5\\%\\) level corresponds to \\(z = 1.645\\):\n\\[\n\\frac{20.658 - 20.0}{\\frac{\\sigma}{\\sqrt{25}}} = 1.645\n\\]\n\\[\n\\frac{0.658}{\\frac{\\sigma}{5}} = 1.645 \\implies \\frac{3.29}{\\sigma} = 1.645 \\implies \\sigma = \\frac{3.29}{1.645} = 2.0\\text{ mm}\n\\]\n\n**Step 2: Determine the minimum sample size \\(m\\)**\nFor a new sample of size \\(m\\), the rejection rule at the \\(5\\%\\) level requires rejecting \\(H_0\\) if \\(\\bar{X} \\ge c\\), where:\n\\[\nc = 20.0 + 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 20.0 + \\frac{3.29}{\\sqrt{m}}\n\\]\nA Type II error occurs when \\(H_0\\) is not rejected (i.e. \\(\\bar{X} < c\\)) given that the true mean is \\(\\mu = 21.0\\).\nWe require:\n\\[\nP(\\bar{X} < c \\mid \\mu = 21.0) \\le 0.05\n\\]\nStandardising under \\(\\mu = 21.0\\):\n\\[\n\\frac{c - 21.0}{\\frac{2.0}{\\sqrt{m}}} \\le -1.645 \\implies c \\le 21.0 - 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 21.0 - \\frac{3.29}{\\sqrt{m}}\n\\]\nEquating both conditions for \\(c\\):\n\\[\n20.0 + \\frac{3.29}{\\sqrt{m}} \\le 21.0 - \\frac{3.29}{\\sqrt{m}}\n\\]\n\\[\n\\frac{6.58}{\\sqrt{m}} \\le 1.0 \\implies \\sqrt{m} \\ge 6.58\n\\]\n\\[\nm \\ge 6.58^2 = 43.2964\n\\]\nSince \\(m\\) must be an integer, the minimum sample size is \\(m = 44\\).\n\n**Common traps:**\n- Rounding down to \\(43\\) yields a Type II error probability greater than \\(0.05\\).\n- Omitting the calculation of \\(\\sigma\\) and erroneously assuming \\(\\sigma = 1\\) yields \\(m = 11\\).\n- Omitting the critical value shift from one of the two tails leads to \\(m = 22\\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Hypothesis Testing (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> A quality control protocol uses a two-stage hypothesis test to monitor the rate of flaws, \\(\\lambda\\) per metre, in the production of high-grade optical fibre. The number of flaws in a length of fibre follows a Poisson distribution. The manufacturer tests:\n\\[ H_0: \\lambda = 1 \\quad \\text{against} \\quad H_1: \\lambda > 1. \\]\nThe two-stage procedure operates as follows:\n- **Stage 1:** A \\(1\\text{-metre}\\) sample is inspected, and the number of flaws \\(X_1\\) is recorded. If \\(X_1 \\ge 3\\), \\(H_0\\) is rejected immediately. If \\(X_1 = 0\\), \\(H_0\\) is accepted immediately. If \\(X_1 \\in \\{1, 2\\}\\), the test proceeds to Stage 2.\n- **Stage 2:** A second, independent \\(1\\text{-metre}\\) sample is inspected, and the number of flaws \\(X_2\\) is recorded. If \\(X_1 + X_2 \\ge 4\\), \\(H_0\\) is rejected; otherwise, \\(H_0\\) is accepted.\n\nGiven that the true flaw rate is \\(\\lambda = 2\\) per metre, find the probability that a Type II error is committed.</p><p><strong>Step-by-Step Solution:</strong> A Type II error occurs when \\(H_0\\) is accepted despite the true parameter value being \\(\\lambda = 2\\) (i.e. \\(H_1\\) is true).\n\nUnder \\(\\lambda = 2\\), the independent counts \\(X_1, X_2 \\sim \\mathrm{Po}(2)\\). The probability mass function is:\n\\[ P(X = k) = \\frac{2^k \\mathrm{e}^{-2}}{k!} \\]\nSpecifically:\n\\[ P(X = 0) = \\mathrm{e}^{-2}, \\quad P(X = 1) = 2\\mathrm{e}^{-2}, \\quad P(X = 2) = 2\\mathrm{e}^{-2} \\]\n\n\\(H_0\\) can be accepted in two mutually exclusive ways:\n1. **In Stage 1:**\n   \\(H_0\\) is accepted immediately if \\(X_1 = 0\\):\n   \\[ P(\\text{Accept in Stage 1}) = P(X_1 = 0) = \\mathrm{e}^{-2} \\]\n\n2. **In Stage 2:**\n   The test enters Stage 2 if \\(X_1 \\in \\{1, 2\\}\\). \\(H_0\\) is then accepted if \\(X_1 + X_2 \\le 3\\):\n   - If \\(X_1 = 1\\), \\(H_0\\) is accepted if \\(X_2 \\le 2\\):\n     \\[ P(X_2 \\le 2) = P(X_2 = 0) + P(X_2 = 1) + P(X_2 = 2) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 5\\mathrm{e}^{-2} \\]\n     \\[ P(X_1 = 1 \\cap X_2 \\le 2) = (2\\mathrm{e}^{-2})(5\\mathrm{e}^{-2}) = 10\\mathrm{e}^{-4} \\]\n   - If \\(X_1 = 2\\), \\(H_0\\) is accepted if \\(X_2 \\le 1\\):\n     \\[ P(X_2 \\le 1) = P(X_2 = 0) + P(X_2 = 1) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 3\\mathrm{e}^{-2} \\]\n     \\[ P(X_1 = 2 \\cap X_2 \\le 1) = (2\\mathrm{e}^{-2})(3\\mathrm{e}^{-2}) = 6\\mathrm{e}^{-4} \\]\n\nCombining these cases:\n\\[ P(\\text{Accept in Stage 2}) = 10\\mathrm{e}^{-4} + 6\\mathrm{e}^{-4} = 16\\mathrm{e}^{-4} \\]\n\nTherefore, the overall probability of a Type II error is:\n\\[ P(\\text{Type II error}) = \\mathrm{e}^{-2} + 16\\mathrm{e}^{-4} \\approx 0.135335 + 0.293050 = 0.428385 \\approx 0.428 \\]\n\n**Common Misconceptions:**\n- Choice B (\\(16\\mathrm{e}^{-4}\\)) accounts only for accepting \\(H_0\\) at Stage 2 and omits immediate acceptance at Stage 1 (\\(X_1 = 0\\)).\n- Choice C (\\(4\\mathrm{e}^{-2}\\)) computes the conditional probability \\(P(\\text{Accept } H_0 \\mid \\text{Stage 2 is reached}) = \\frac{16\\mathrm{e}^{-4}}{4\\mathrm{e}^{-2}} = 4\\mathrm{e}^{-2}\\) instead of the unconditional probability of a Type II error.\n- Choice D computes the probability of a Type I error under \\(H_0\\) (where \\(\\lambda = 1\\)).</p>",
+        "problem": {
+          "en": "A quality control protocol uses a two-stage hypothesis test to monitor the rate of flaws, \\(\\lambda\\) per metre, in the production of high-grade optical fibre. The number of flaws in a length of fibre follows a Poisson distribution. The manufacturer tests:\n\\[ H_0: \\lambda = 1 \\quad \\text{against} \\quad H_1: \\lambda > 1. \\]\nThe two-stage procedure operates as follows:\n- **Stage 1:** A \\(1\\text{-metre}\\) sample is inspected, and the number of flaws \\(X_1\\) is recorded. If \\(X_1 \\ge 3\\), \\(H_0\\) is rejected immediately. If \\(X_1 = 0\\), \\(H_0\\) is accepted immediately. If \\(X_1 \\in \\{1, 2\\}\\), the test proceeds to Stage 2.\n- **Stage 2:** A second, independent \\(1\\text{-metre}\\) sample is inspected, and the number of flaws \\(X_2\\) is recorded. If \\(X_1 + X_2 \\ge 4\\), \\(H_0\\) is rejected; otherwise, \\(H_0\\) is accepted.\n\nGiven that the true flaw rate is \\(\\lambda = 2\\) per metre, find the probability that a Type II error is committed.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>A Type II error occurs when \\(H_0\\) is accepted despite the true parameter value being \\(\\lambda = 2\\) (i.e. \\(H_1\\) is true).\n\nUnder \\(\\lambda = 2\\), the independent counts \\(X_1, X_2 \\sim \\mathrm{Po}(2)\\). The probability mass function is:\n\\[ P(X = k) = \\frac{2^k \\mathrm{e}^{-2}}{k!} \\]\nSpecifically:\n\\[ P(X = 0) = \\mathrm{e}^{-2}, \\quad P(X = 1) = 2\\mathrm{e}^{-2}, \\quad P(X = 2) = 2\\mathrm{e}^{-2} \\]\n\n\\(H_0\\) can be accepted in two mutually exclusive ways:\n1. **In Stage 1:**\n   \\(H_0\\) is accepted immediately if \\(X_1 = 0\\):\n   \\[ P(\\text{Accept in Stage 1}) = P(X_1 = 0) = \\mathrm{e}^{-2} \\]\n\n2. **In Stage 2:**\n   The test enters Stage 2 if \\(X_1 \\in \\{1, 2\\}\\). \\(H_0\\) is then accepted if \\(X_1 + X_2 \\le 3\\):\n   - If \\(X_1 = 1\\), \\(H_0\\) is accepted if \\(X_2 \\le 2\\):\n     \\[ P(X_2 \\le 2) = P(X_2 = 0) + P(X_2 = 1) + P(X_2 = 2) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 5\\mathrm{e}^{-2} \\]\n     \\[ P(X_1 = 1 \\cap X_2 \\le 2) = (2\\mathrm{e}^{-2})(5\\mathrm{e}^{-2}) = 10\\mathrm{e}^{-4} \\]\n   - If \\(X_1 = 2\\), \\(H_0\\) is accepted if \\(X_2 \\le 1\\):\n     \\[ P(X_2 \\le 1) = P(X_2 = 0) + P(X_2 = 1) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 3\\mathrm{e}^{-2} \\]\n     \\[ P(X_1 = 2 \\cap X_2 \\le 1) = (2\\mathrm{e}^{-2})(3\\mathrm{e}^{-2}) = 6\\mathrm{e}^{-4} \\]\n\nCombining these cases:\n\\[ P(\\text{Accept in Stage 2}) = 10\\mathrm{e}^{-4} + 6\\mathrm{e}^{-4} = 16\\mathrm{e}^{-4} \\]\n\nTherefore, the overall probability of a Type II error is:\n\\[ P(\\text{Type II error}) = \\mathrm{e}^{-2} + 16\\mathrm{e}^{-4} \\approx 0.135335 + 0.293050 = 0.428385 \\approx 0.428 \\]\n\n**Common Misconceptions:**\n- Choice B (\\(16\\mathrm{e}^{-4}\\)) accounts only for accepting \\(H_0\\) at Stage 2 and omits immediate acceptance at Stage 1 (\\(X_1 = 0\\)).\n- Choice C (\\(4\\mathrm{e}^{-2}\\)) computes the conditional probability \\(P(\\text{Accept } H_0 \\mid \\text{Stage 2 is reached}) = \\frac{16\\mathrm{e}^{-4}}{4\\mathrm{e}^{-2}} = 4\\mathrm{e}^{-2}\\) instead of the unconditional probability of a Type II error.\n- Choice D computes the probability of a Type I error under \\(H_0\\) (where \\(\\lambda = 1\\)).</p>",
           "ar": null
         }
       },

@@ -51,6 +51,7 @@ var SHELL_ASSETS = [
   './clipsat-mark.png',
   './clipsat-mark-header.png',
   './css/main.css',
+  './js/shell-modals.js',
   './js/engine.js',
   './js/cloud-config.js',
   './js/cloud-sync.js',
@@ -234,10 +235,26 @@ function staleWhileRevalidate(request, cacheName) {
   });
 }
 
+var MAX_DYNAMIC_ITEMS = 60;
+function trimCache(cacheName, maxItems) {
+  caches.open(cacheName).then(function(cache) {
+    cache.keys().then(function(keys) {
+      if (keys.length > maxItems) {
+        cache.delete(keys[0]).then(function() {
+          trimCache(cacheName, maxItems);
+        });
+      }
+    });
+  }).catch(function() {});
+}
+
 function networkFirst(request, cacheName) {
   return caches.open(cacheName).then(function(cache) {
     return fetch(request).then(function(response) {
-      if (response.ok) cache.put(request, response.clone());
+      if (response.ok) {
+        cache.put(request, response.clone());
+        if (cacheName === CACHE.DYNAMIC) trimCache(CACHE.DYNAMIC, MAX_DYNAMIC_ITEMS);
+      }
       return response;
     }).catch(function() {
       return cache.match(request).then(function(cached) {

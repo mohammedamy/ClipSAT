@@ -282,50 +282,62 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 7.A — Probability & Cross-Entropy Calculation",
           "ar": "مثال محلول 7.A — الاحتمال & Cross-Entropy Calculation"
         },
-        "body": {
-          "en": "<p>A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on diameter \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) Find the predicted malignancy probability for a tumor of diameter \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), calculate the binary cross-entropy loss \\( L \\).</p><p><strong>Solution:</strong><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute probability via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% probability).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>",
+        "problem": {
+          "en": "A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on diameter \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) Find the predicted malignancy probability for a tumor of diameter \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), calculate the binary cross-entropy loss \\( L \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute probability via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% probability).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Logistic Regression & Classification Boundaries (Hard Application)",
           "ar": "مثال محلول B — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Hard)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider a binary classification problem where the decision boundary is defined by the logistic function \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\), which represents the probability of a data point \\( \\mathbf{x} = (x_1, x_2) \\) belonging to class 1. The estimated model parameters are \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\). We are interested in the geometric shape of the classification boundary. The classification boundary occurs where \\( p(x) = 0.5 \\). Find the equation of this boundary in the \\( x_1x_2 \\)-plane.</p><p><strong>Step-by-Step Solution:</strong> The logistic regression model gives the probability of belonging to class 1 as \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\). The classification boundary is the set of points where \\( p(x) = 0.5 \\).\n\nSetting \\( p(x) = 0.5 \\), we have:\n\\( 0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\)\n\nThis implies:\n\\( 1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2 \\)\n\nTherefore:\n\\( e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1 \\)\n\nTaking the natural logarithm of both sides:\n\\( -(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1) \\)\n\nSince \\( \\ln(1) = 0 \\), we get:\n\\( \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0 \\)\n\nThis is the equation of the linear decision boundary.\n\nSubstitute the given parameter values: \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\).\n\n\\( -3 + x_1 + (-2) \\cdot x_2 = 0 \\)\n\n\\( -3 + x_1 - 2x_2 = 0 \\)\n\nWe need to express this in the form \\( x_2 = f(x_1) \\).\n\n\\( 2x_2 = x_1 - 3 \\)\n\n\\( x_2 = \\frac{1}{2} x_1 - \\frac{3}{2} \\)\n\nThis matches choice A.</p>",
+        "problem": {
+          "en": "Consider a binary classification problem where the decision boundary is defined by the logistic function \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\), which represents the probability of a data point \\( \\mathbf{x} = (x_1, x_2) \\) belonging to class 1. The estimated model parameters are \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\). We are interested in the geometric shape of the classification boundary. The classification boundary occurs where \\( p(x) = 0.5 \\). Find the equation of this boundary in the \\( x_1x_2 \\)-plane.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The logistic regression model gives the probability of belonging to class 1 as \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\). The classification boundary is the set of points where \\( p(x) = 0.5 \\).\n\nSetting \\( p(x) = 0.5 \\), we have:\n\\( 0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\)\n\nThis implies:\n\\( 1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2 \\)\n\nTherefore:\n\\( e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1 \\)\n\nTaking the natural logarithm of both sides:\n\\( -(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1) \\)\n\nSince \\( \\ln(1) = 0 \\), we get:\n\\( \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0 \\)\n\nThis is the equation of the linear decision boundary.\n\nSubstitute the given parameter values: \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\).\n\n\\( -3 + x_1 + (-2) \\cdot x_2 = 0 \\)\n\n\\( -3 + x_1 - 2x_2 = 0 \\)\n\nWe need to express this in the form \\( x_2 = f(x_1) \\).\n\n\\( 2x_2 = x_1 - 3 \\)\n\n\\( x_2 = \\frac{1}{2} x_1 - \\frac{3}{2} \\)\n\nThis matches choice A.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Logistic Regression & Classification Boundaries (Easy Application)",
           "ar": "مثال محلول C — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Easy)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Consider a simple logistic regression model where the decision boundary is defined by the linear equation \\(w_1x_1 + w_2x_2 + b = 0\\). If the weights are \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias is \\(b = -7\\), what is the equation of the decision boundary?</p><p><strong>Step-by-Step Solution:</strong> The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p>",
+        "problem": {
+          "en": "Consider a simple logistic regression model where the decision boundary is defined by the linear equation \\(w_1x_1 + w_2x_2 + b = 0\\). If the weights are \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias is \\(b = -7\\), what is the equation of the decision boundary?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Logistic Regression & Classification Boundaries (Medium Application)",
           "ar": "مثال محلول D — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Medium)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Consider a simple logistic regression model where the decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). For a data point \\( (x_1, x_2) \\), if \\( -1.5x_1 + 2x_2 + 5 < 0 \\), it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?</p><p><strong>Step-by-Step Solution:</strong> The decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point \\( (-1, 1) \\): \\( -1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5 \\), which is not 0. For point \\( (2, -2) \\): \\( -1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2 \\), which is not 0. For point \\( (0, -2.5) \\): \\( -1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0 \\). This point lies on the boundary. For point \\( (3, 0.5) \\): \\( -1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5 \\), which is not 0. Therefore, the point \\( (0, -2.5) \\) lies on the decision boundary.</p>",
+        "problem": {
+          "en": "Consider a simple logistic regression model where the decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). For a data point \\( (x_1, x_2) \\), if \\( -1.5x_1 + 2x_2 + 5 < 0 \\), it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point \\( (-1, 1) \\): \\( -1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5 \\), which is not 0. For point \\( (2, -2) \\): \\( -1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2 \\), which is not 0. For point \\( (0, -2.5) \\): \\( -1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0 \\). This point lies on the boundary. For point \\( (3, 0.5) \\): \\( -1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5 \\), which is not 0. Therefore, the point \\( (0, -2.5) \\) lies on the decision boundary.</p>",
           "ar": null
         }
       },

@@ -501,11 +501,54 @@
         'qud.compare.practice-label':'Practice Problem',
         'qud.compare.practice-q':'<strong>Quantity A:</strong> \\((x-3)^2\\) &nbsp; <strong>Quantity B:</strong> \\(x^2-6x+9\\) for any real \\(x\\). Compare.',
         'qud.compare.practice-solution1':'Expand A: \\((x-3)^2=x^2-6x+9.\\)',
-        'qud.compare.practice-solution2':'<strong>A = B</strong> (always).'
+        'qud.compare.practice-solution2':'<strong>A = B</strong> (always).',
+        'nav.overview':'Overview','nav.signIn':'Sign in','nav.studyTools':'Study Tools',
+        'nav.teacherSection':'Teacher & Classroom','nav.classroomView':'Classroom View',
+        'nav.menu':'Menu','nav.close':'Close','nav.formulasUpper':'FORMULAS',
+        'calc.loading':'Loading graphing calculator…',
+        'Algebra':'Algebra','Calculus':'Calculus','Differentiation':'Differentiation',
+        'Functions':'Functions','Geometry':'Geometry','Integration':'Integration',
+        'Kinematics':'Kinematics','Mensuration':'Mensuration','Number':'Number',
+        'Precalculus':'Precalculus','Probability':'Probability','Quadratics':'Quadratics',
+        'Series':'Series','Statistics':'Statistics','Trigonometry':'Trigonometry','Vectors':'Vectors',
+        'cookies.li-local':'<strong>Local Storage:</strong> Your chapter progress, study streaks, accuracy metrics, mistake log, flashcard review intervals, and dark-mode appearance preference are stored locally on your device. If you use cloud accounts, your secure authentication session token is also retained locally so you do not need to sign in on every visit. This data is never sold to third parties and can be cleared through your browser settings.',
+        'cookies.li-session':'<strong>Session Storage:</strong> The home page visitor counter uses a temporary session key to ensure page navigation within a single tab does not inflate the public visitor tally. This value clears automatically when you close your browser tab.',
+        'cookies.h3-consent':'2. Cookie Consent & Third-Party Cookies',
+        'cookies.consent-body':'To help maintain free access to our mathematical resources, ClipSAT may serve contextual or relevant advertisements via Google Ads or measure aggregate usage via privacy-focused analytics:',
+        'cookies.li-essential':'<strong>Essential Only:</strong> If you decline non-essential cookies on our consent banner, no advertising or cross-site tracking cookies are set. Only necessary storage for your learning tools remains active.',
+        'cookies.li-accepted':'<strong>Accept All:</strong> If you accept cookies, Google AdSense may serve contextual, non-personalized advertisements configured with child-directed protections (<code>TFCD=1</code>, <code>NPA=1</code>) suitable for K-12 learners.',
+        'cookies.li-controls':'<strong>Control & Withdraw Consent:</strong> You can change or revoke your consent anytime by clicking <button type="button" class="cookie-link-inline" onclick="window.openCookieConsent&&window.openCookieConsent()" style="background:none;border:none;color:var(--indigo);text-decoration:underline;cursor:pointer;font-size:inherit;padding:0">Cookie Settings</button> in the website footer.',
+        'privacy.cloud-li1':'<strong>Authentication:</strong> Sign-in uses passwordless email magic links or one-time verification codes, or Google OAuth sign-in. We do not store plaintext passwords.',
+        'privacy.cloud-li2':'<strong>Database & Row Level Security:</strong> Synchronized study records (such as completed lessons, mistake items, and spaced repetition schedules) are stored in a managed PostgreSQL database hosted by Supabase. Access is governed by strict database Row Level Security (RLS) policies, ensuring only your authenticated session can access or modify your personal records.',
+        'privacy.cloud-li3':'<strong>Infrastructure & IP Logging:</strong> When your device connects to our cloud infrastructure or APIs (such as Supabase or Cloudflare), servers process your device\'s IP address and standard HTTP request headers as an inherent technical requirement of internet routing. These logs are maintained by our hosting processors strictly for security auditing, DDoS mitigation, and rate limiting, and are routinely purged after operational retention periods (typically up to 30 days). ClipSAT does not sell or cross-track IP logs.',
+        'privacy.cloud-li4':'<strong>Account & Data Deletion:</strong> Signed-in users can permanently delete their cloud account and all synchronized records immediately from the Cloud Sync menu, or by emailing <a href="mailto:support@clipsat.org">support@clipsat.org</a>. Deletion requests are fulfilled immediately via self-service or within 30 days by email.',
+        'privacy.h3-ai':'3. ClipSAT AI Tutor & Practice Generation',
+        'privacy.ai-intro':'When you interact with the ClipSAT AI Tutor or generate AI practice questions:',
+        'privacy.ai-li1':'<strong>Server-Side Proxy:</strong> All requests route through a secure server proxy (Supabase Edge Functions). Model provider API keys (Google Gemini, Groq, OpenAI, and OpenRouter for optional cloud voice narration) are secured server-side and never exposed to the client.',
+        'privacy.ai-li2':'<strong>Data Protection & Rate Limits:</strong> Requests are gated behind authenticated user sessions, with server-side quotas, per-IP rate limiting, character length limits, and automated content safety filters to prevent abuse and protect student safety.',
+        'privacy.ai-li3':'<strong>Pedagogical Purpose Limitation:</strong> Prompts and math questions are processed solely to generate pedagogical explanations and tailored practice exercises. Your questions are not used to train public foundation models without consent.',
+        'privacy.ai-li4':'<strong>AI Disclaimer:</strong> Explanations are AI-generated and may occasionally contain inaccuracies. The AI Tutor is a supplemental study aid, not a human tutor or a substitute for teacher instruction.',
+        'privacy.h3-cookies':'5. Advertising, Analytics & Cookie Consent',
+        'privacy.cookies-body':'ClipSAT uses essential browser storage to save your learning progress. With your permission via our cookie consent banner, third-party advertising cookies (such as Google Ads) or analytics scripts may be loaded to support free access to our curriculum:',
+        'privacy.cookies-li1':'<strong>Opt-In & Student-Safe Advertising:</strong> Non-essential advertising and analytics scripts are blocked until you click "Accept All" on the cookie consent banner. When enabled, Google AdSense is configured with child-directed treatment (<code>TFCD=1</code>) and non-personalized ads (<code>NPA=1</code>) to protect K-12 learners. If you choose "Essential Only", only necessary local storage is utilized.',
+        'privacy.cookies-li2':'<strong>Changing Consent:</strong> You can change or revoke your cookie choices at any time by clicking <button type="button" class="cookie-link-inline" onclick="window.openCookieConsent&&window.openCookieConsent()" style="background:none;border:none;color:var(--indigo);text-decoration:underline;cursor:pointer;font-size:inherit;padding:0">Cookie Settings</button> in the site footer.',
+        'privacy.cookies-li3':'You may also manage personalized advertising preferences directly at <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.',
+        'privacy.h3-pdpl':'6. Saudi Personal Data Protection Law (PDPL) Compliance',
+        'privacy.pdpl-intro':'For users in the Kingdom of Saudi Arabia, ClipSAT complies with the principles of the Personal Data Protection Law (Royal Decree No. M/19 and amended by Royal Decree No. M/148):',
+        'privacy.pdpl-li1':'<strong>Fair and Lawful Processing:</strong> Personal data is processed fairly, lawfully, and transparently based on user consent.',
+        'privacy.pdpl-li2':'<strong>Purpose Limitation:</strong> We collect and process data solely for providing educational content, tracking study progress, and powering interactive learning tools.',
+        'privacy.pdpl-li3':'<strong>Data Minimization:</strong> We restrict collection to the minimum data strictly required to deliver our educational services.',
+        'privacy.pdpl-li4':'<strong>User Rights:</strong> Under the PDPL, you have the right to be informed about the data collected, access your data, request corrections, request destruction or erasure of your data, and withdraw consent at any time.',
+        'terms.h3-free':'1. Core Content & Free-Tier Promise',
+        'terms.li-billing':'<strong>Billing:</strong> Subscriptions are billed in Saudi Riyals (SAR) on an annual (75 SAR/year) or monthly (15 SAR/month) basis.',
+        'terms.li-refund':'<strong>14-Day Money-Back Guarantee:</strong> If you are not completely satisfied with ClipSAT Plus, you may cancel your subscription within fourteen (14) days of your initial purchase or renewal to receive a full refund, no questions asked. To request a refund, contact <a href="mailto:support@clipsat.org">support@clipsat.org</a> with your purchase details.',
+        'terms.li-cancellation':'<strong>Cancellation & Reversion:</strong> You may cancel your subscription at any time. Upon expiration, your account seamlessly reverts to the permanent free tier with all your local progress intact.'
       }
     };
 
-    var _locale = localStorage.getItem('clipsat_locale') || 'en';
+    var _savedLoc = '';
+    try { _savedLoc = localStorage.getItem('clipsat_locale') || ''; } catch(e){}
+    var _locale = window.CLIPSAT_LOCALE || _savedLoc || 'en';
 
     /* The Arabic strings ship as their own file, public/js/i18n-ar.js (20e-i18n-ar.js),
        loaded the first time Arabic is needed rather than with every page (ADR 0040).
@@ -540,27 +583,35 @@
        each track's chapter content is untranslated English and must stay LTR. */
     var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content, #qud-compare .i18n-content, #view-contact, #view-privacy, #view-terms, #view-cookies, #view-calculator, #view-pricing, #view-trust, #view-about, #view-home';
 
-    function setLocale(loc){
+    function setLocale(loc, _isBoot){
+      var prevLoc = _locale;
       _locale = loc;
-      localStorage.setItem('clipsat_locale', loc);
-      document.documentElement.lang = loc; // safe globally — lang is metadata, doesn't affect layout/inheritance
-      document.body.classList.toggle('rtl', loc==='ar'); // CSS mirroring hook — see body.rtl rules
+      try { localStorage.setItem('clipsat_locale', loc); } catch(e){}
+      var btn=document.getElementById('i18n-toggle-btn');
+      if(!_isBoot && btn && loc !== prevLoc){
+        var targetUrl = loc === 'ar' ? btn.getAttribute('data-ar-url') : btn.getAttribute('data-en-url');
+        if(targetUrl && window.location && window.location.pathname !== targetUrl){
+          window.location.href = targetUrl;
+          return Promise.resolve();
+        }
+      }
+      document.documentElement.lang = loc;
+      if(window.CLIPSAT_LOCALE === 'ar'){
+        document.documentElement.dir = (loc === 'ar') ? 'rtl' : 'ltr';
+      }
+      document.body.classList.toggle('rtl', loc==='ar');
       document.querySelectorAll(RTL_SCOPE_SELECTOR).forEach(function(el){
         el.dir = loc==='ar' ? 'rtl' : 'ltr';
       });
-      /* update toggle button label */
-      var btn=document.getElementById('i18n-toggle-btn');
       if(btn){
         btn.textContent = loc==='ar' ? '🌐 EN' : '🌐 عربي';
         btn.title = loc==='ar' ? 'Switch to English' : 'Switch to Arabic';
-        btn.setAttribute('aria-label', loc==='ar' ? 'Switch to English' : 'Switch to Arabic');
+        btn.setAttribute('aria-label', loc==='ar' ? 'EN — Switch to English' : 'عربي — Switch to Arabic');
       }
-      _applyToDOM(); // bilingual content and English strings switch now
+      _applyToDOM(null, Boolean(_isBoot && window.CLIPSAT_LOCALE && window.CLIPSAT_LOCALE === loc));
       return _ensureStrings(loc).then(function(){
-        if(_locale !== loc) return; // toggled again while the strings were loading
-        if(loc !== 'en') _applyToDOM();
-        /* re-translate already-injected Interactive Practice widgets (chrome +
-           any reviewed-chapter Arabic content) — see _inject()'s locale guard */
+        if(_locale !== loc) return;
+        if(loc !== 'en') _applyToDOM(null, Boolean(_isBoot && window.CLIPSAT_LOCALE === 'ar'));
         if(window.ClipSATIX)window.ClipSATIX.refreshAll();
         if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
       });
@@ -572,10 +623,19 @@
       return !!(_strings[loc] && Object.prototype.hasOwnProperty.call(_strings[loc], key));
     }
 
-    function _applyToDOM(scopeRoot){
+    function _applyToDOM(scopeRoot, skipBilingualCrawl){
       var root = (scopeRoot && scopeRoot.querySelectorAll) ? scopeRoot : document;
       root.querySelectorAll('[data-i18n]').forEach(function(el){
         var key = el.getAttribute('data-i18n');
+        if(key && key.charAt(0) === '['){
+          var closeIdx = key.indexOf(']');
+          if(closeIdx > 1){
+            var attrName = key.slice(1, closeIdx);
+            var realKey = key.slice(closeIdx + 1);
+            if(_hasKey(_locale, realKey) || _hasKey('en', realKey)) el.setAttribute(attrName, t(realKey));
+            return;
+          }
+        }
         if(el._i18nOrigHtml === undefined) el._i18nOrigHtml = el.innerHTML;
         if(_hasKey(_locale, key)){
           el.textContent = t(key);
@@ -599,31 +659,33 @@
           el.setAttribute(spec[0], t(spec[1]));
         }
       });
-      root.querySelectorAll('[data-bilingual]').forEach(function(el){
-        var en = el.querySelector(':scope > .i18n-en');
-        var ar = el.querySelector(':scope > .i18n-ar');
-        if(!en) return;
-        var showAr = _locale === 'ar' && !!ar;
-        en.hidden = showAr;
-        if(ar) ar.hidden = !showAr;
-      });
-      root.querySelectorAll('[data-bilingual-attrs]').forEach(function(el){
-        el.getAttribute('data-bilingual-attrs').split(',').forEach(function(attr){
-          var en = el.getAttribute('data-'+attr+'-en');
-          var ar = el.getAttribute('data-'+attr+'-ar');
-          var val = (_locale === 'ar' && ar) ? ar : en;
-          if(val != null) el.setAttribute(attr, val);
+      if(!skipBilingualCrawl){
+        root.querySelectorAll('[data-bilingual]').forEach(function(el){
+          var en = el.querySelector(':scope > .i18n-en');
+          var ar = el.querySelector(':scope > .i18n-ar');
+          if(!en) return;
+          var showAr = _locale === 'ar' && !!ar;
+          en.hidden = showAr;
+          if(ar) ar.hidden = !showAr;
         });
-      });
+        root.querySelectorAll('[data-bilingual-attrs]').forEach(function(el){
+          el.getAttribute('data-bilingual-attrs').split(',').forEach(function(attr){
+            var en = el.getAttribute('data-'+attr+'-en');
+            var ar = el.getAttribute('data-'+attr+'-ar');
+            var val = (_locale === 'ar' && ar) ? ar : en;
+            if(val != null) el.setAttribute(attr, val);
+          });
+        });
+      }
       try {
         document.dispatchEvent(new CustomEvent('clipsat:locale-changed', { detail: { locale: _locale } }));
       } catch(e){}
     }
 
     if(document.readyState==='loading'){
-      document.addEventListener('DOMContentLoaded', function(){ setLocale(_locale); });
+      document.addEventListener('DOMContentLoaded', function(){ setLocale(_locale, true); });
     } else {
-      setLocale(_locale);
+      setLocale(_locale, true);
     }
 
     return {t:t, setLocale:setLocale, getLocale:getLocale, _addStrings:_addStrings, _applyToDOM:_applyToDOM};

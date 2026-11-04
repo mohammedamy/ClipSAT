@@ -213,14 +213,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.A (Level 1) — Path-Dependent Limit Non-Existence",
           "ar": "مثال محلول 1.A (Level 1) — Path-Dependent النهاية Non-Existence"
         },
-        "body": {
-          "en": "<p>Evaluate \\( \\lim_{(x,y) \\to (0,0)} \\frac{2x^2 y}{x^4 + y^2} \\) or prove that it does not exist.</p><p><strong>Step 1: Test straight lines \\( y = mx \\):</strong> \\[ \\lim_{x \\to 0} \\frac{2x^2(mx)}{x^4 + (mx)^2} = \\lim_{x \\to 0} \\frac{2mx^3}{x^2(x^2 + m^2)} = \\lim_{x \\to 0} \\frac{2mx}{x^2 + m^2} = \\frac{0}{m^2} = 0 \\quad (\\text{for } m \\neq 0). \\] Along the coordinate axes \\( x = 0 \\) and \\( y = 0 \\), the value is also identically 0. A student might prematurely conclude the limit is 0!</p><p><strong>Step 2: Test parabolic paths \\( y = kx^2 \\):</strong><br>Notice that in the denominator, \\( x^4 \\) and \\( y^2 \\) have matching degree when \\( y \\propto x^2 \\). Choose the path \\( y = kx^2 \\): \\[ \\lim_{x \\to 0} \\frac{2x^2(kx^2)}{x^4 + (kx^2)^2} = \\lim_{x \\to 0} \\frac{2kx^4}{x^4(1 + k^2)} = \\frac{2k}{1 + k^2}. \\] Along \\( y = x^2 \\) (\\( k = 1 \\)), the limit is \\( \\frac{2}{2} = 1 \\). Along \\( y = -x^2 \\) (\\( k = -1 \\)), the limit is \\( \\frac{-2}{2} = -1 \\).</p><p><strong>Conclusion:</strong> Because the limit depends on the choice of path \\( k \\), by the Two-Path Test, the limit <strong>does not exist (DNE)</strong>.</p>",
+        "problem": {
+          "en": "Evaluate \\( \\lim_{(x,y) \\to (0,0)} \\frac{2x^2 y}{x^4 + y^2} \\) or prove that it does not exist.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Test straight lines \\( y = mx \\):</strong> \\[ \\lim_{x \\to 0} \\frac{2x^2(mx)}{x^4 + (mx)^2} = \\lim_{x \\to 0} \\frac{2mx^3}{x^2(x^2 + m^2)} = \\lim_{x \\to 0} \\frac{2mx}{x^2 + m^2} = \\frac{0}{m^2} = 0 \\quad (\\text{for } m \\neq 0). \\] Along the coordinate axes \\( x = 0 \\) and \\( y = 0 \\), the value is also identically 0. A student might prematurely conclude the limit is 0!</p><p><strong>Step 2: Test parabolic paths \\( y = kx^2 \\):</strong><br>Notice that in the denominator, \\( x^4 \\) and \\( y^2 \\) have matching degree when \\( y \\propto x^2 \\). Choose the path \\( y = kx^2 \\): \\[ \\lim_{x \\to 0} \\frac{2x^2(kx^2)}{x^4 + (kx^2)^2} = \\lim_{x \\to 0} \\frac{2kx^4}{x^4(1 + k^2)} = \\frac{2k}{1 + k^2}. \\] Along \\( y = x^2 \\) (\\( k = 1 \\)), the limit is \\( \\frac{2}{2} = 1 \\). Along \\( y = -x^2 \\) (\\( k = -1 \\)), the limit is \\( \\frac{-2}{2} = -1 \\).</p><p><strong>Conclusion:</strong> Because the limit depends on the choice of path \\( k \\), by the Two-Path Test, the limit <strong>does not exist (DNE)</strong>.</p>",
           "ar": null
         }
       },
@@ -261,14 +264,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.B (Level 2) — Tangent Plane & Error Propagation via Differentials",
           "ar": null
         },
-        "body": {
-          "en": "<p>A closed cylindrical storage tank has nominal measured radius \\( r = 2.0 \\text{ m} \\) and height \\( h = 5.0 \\text{ m} \\). The measurement errors are bounded by \\( |\\Delta r| \\le 0.02 \\text{ m} \\) and \\( |\\Delta h| \\le 0.05 \\text{ m} \\).</p><ol><li>Find the tangent plane linear approximation for the volume \\( V(r, h) = \\pi r^2 h \\) at \\( (2, 5) \\).</li><li>Use the total differential \\( dV \\) to estimate the maximum propagated error in the calculated volume, and compute the relative percentage error.</li></ol><p><strong>Step 1: Compute partial derivatives and nominal volume:</strong> \\[ V_0 = V(2, 5) = \\pi (2^2)(5) = 20\\pi \\approx 62.832 \\text{ m}^3. \\] \\[ \\frac{\\partial V}{\\partial r} = 2\\pi r h \\implies \\frac{\\partial V}{\\partial r}(2, 5) = 2\\pi(2)(5) = 20\\pi. \\] \\[ \\frac{\\partial V}{\\partial h} = \\pi r^2 \\implies \\frac{\\partial V}{\\partial h}(2, 5) = \\pi(2^2) = 4\\pi. \\] Tangent plane: \\( V - 20\\pi = 20\\pi(r - 2) + 4\\pi(h - 5) \\).</p><p><strong>Step 2: Total differential & maximum error bound:</strong> \\[ dV = \\frac{\\partial V}{\\partial r} dr + \\frac{\\partial V}{\\partial h} dh = (20\\pi) dr + (4\\pi) dh. \\] Applying the triangle inequality for worst-case error: \\[ |\\Delta V| \\approx |dV| \\le 20\\pi |\\Delta r| + 4\\pi |\\Delta h| = 20\\pi(0.02) + 4\\pi(0.05) = 0.4\\pi + 0.2\\pi = 0.6\\pi \\approx 1.885 \\text{ m}^3. \\]</p><p><strong>Step 3: Relative and percentage error:</strong> \\[ \\frac{|dV|}{V_0} = \\frac{0.6\\pi}{20\\pi} = \\frac{0.6}{20} = 0.03 = \\mathbf{3\\%}. \\] (Notice that radius error contributes twice as heavily as height error due to the quadratic exponent \\( r^2 \\)!)</p>",
+        "problem": {
+          "en": "A closed cylindrical storage tank has nominal measured radius \\( r = 2.0 \\text{ m} \\) and height \\( h = 5.0 \\text{ m} \\). The measurement errors are bounded by \\( |\\Delta r| \\le 0.02 \\text{ m} \\) and \\( |\\Delta h| \\le 0.05 \\text{ m} \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<ol><li>Find the tangent plane linear approximation for the volume \\( V(r, h) = \\pi r^2 h \\) at \\( (2, 5) \\).</li><li>Use the total differential \\( dV \\) to estimate the maximum propagated error in the calculated volume, and compute the relative percentage error.</li></ol><p><strong>Step 1: Compute partial derivatives and nominal volume:</strong> \\[ V_0 = V(2, 5) = \\pi (2^2)(5) = 20\\pi \\approx 62.832 \\text{ m}^3. \\] \\[ \\frac{\\partial V}{\\partial r} = 2\\pi r h \\implies \\frac{\\partial V}{\\partial r}(2, 5) = 2\\pi(2)(5) = 20\\pi. \\] \\[ \\frac{\\partial V}{\\partial h} = \\pi r^2 \\implies \\frac{\\partial V}{\\partial h}(2, 5) = \\pi(2^2) = 4\\pi. \\] Tangent plane: \\( V - 20\\pi = 20\\pi(r - 2) + 4\\pi(h - 5) \\).</p><p><strong>Step 2: Total differential & maximum error bound:</strong> \\[ dV = \\frac{\\partial V}{\\partial r} dr + \\frac{\\partial V}{\\partial h} dh = (20\\pi) dr + (4\\pi) dh. \\] Applying the triangle inequality for worst-case error: \\[ |\\Delta V| \\approx |dV| \\le 20\\pi |\\Delta r| + 4\\pi |\\Delta h| = 20\\pi(0.02) + 4\\pi(0.05) = 0.4\\pi + 0.2\\pi = 0.6\\pi \\approx 1.885 \\text{ m}^3. \\]</p><p><strong>Step 3: Relative and percentage error:</strong> \\[ \\frac{|dV|}{V_0} = \\frac{0.6\\pi}{20\\pi} = \\frac{0.6}{20} = 0.03 = \\mathbf{3\\%}. \\] (Notice that radius error contributes twice as heavily as height error due to the quadratic exponent \\( r^2 \\)!)</p>",
           "ar": null
         }
       },
@@ -309,14 +315,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.C (Level 3) — Canonical Counterexample: Partials Exist, Yet Discontinuous",
           "ar": null
         },
-        "body": {
-          "en": "<p>Consider the classic pathological function: \\[ f(x, y) = \\begin{cases} \\dfrac{xy}{x^2 + y^2}, & (x, y) \\neq (0, 0) \\\\ 0, & (x, y) = (0, 0). \\end{cases} \\]</p><ol><li>Compute the partial derivatives \\( f_x(0, 0) \\) and \\( f_y(0, 0) \\) directly from Definition 1.2.</li><li>Prove that \\( f \\) is discontinuous at \\( (0, 0) \\) and therefore <strong>not differentiable</strong> at the origin.</li></ol><p><strong>Step 1: Compute partials from the limit definition:</strong> \\[ f_x(0, 0) = \\lim_{h \\to 0} \\frac{f(h, 0) - f(0, 0)}{h} = \\lim_{h \\to 0} \\frac{\\frac{(h)(0)}{h^2 + 0^2} - 0}{h} = \\lim_{h \\to 0} \\frac{0}{h} = 0. \\] By symmetry: \\[ f_y(0, 0) = \\lim_{k \\to 0} \\frac{f(0, k) - f(0, 0)}{k} = \\lim_{k \\to 0} \\frac{0}{k} = 0. \\] Both partial derivatives exist cleanly and equal 0 at the origin!</p><p><strong>Step 2: Test continuity at the origin:</strong><br>Approach along the line \\( y = mx \\): \\[ \\lim_{x \\to 0} f(x, mx) = \\lim_{x \\to 0} \\frac{x(mx)}{x^2 + m^2 x^2} = \\frac{m}{1 + m^2}. \\] Along \\( y = x \\) (\\( m = 1 \\)), \\( f(x, x) = 1/2 \\). Along \\( y = -x \\) (\\( m = -1 \\)), \\( f(x, -x) = -1/2 \\). Along the axes, \\( f = 0 \\).<br>Since \\( \\lim_{(x,y) \\to (0,0)} f(x, y) \\) does not exist, \\( f \\) is <strong>discontinuous</strong> at \\( (0, 0) \\). Because differentiability implies continuity, \\( f \\) is <strong>not differentiable at the origin</strong> despite having well-defined partial derivatives there! (Why does this not violate Theorem 1.2? Because \\( f_x(x, y) \\) and \\( f_y(x, y) \\) are discontinuous at \\( (0, 0) \\).)</p>",
+        "problem": {
+          "en": "Consider the classic pathological function: \\[ f(x, y) = \\begin{cases} \\dfrac{xy}{x^2 + y^2}, & (x, y) \\neq (0, 0) \\\\ 0, & (x, y) = (0, 0). \\end{cases} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<ol><li>Compute the partial derivatives \\( f_x(0, 0) \\) and \\( f_y(0, 0) \\) directly from Definition 1.2.</li><li>Prove that \\( f \\) is discontinuous at \\( (0, 0) \\) and therefore <strong>not differentiable</strong> at the origin.</li></ol><p><strong>Step 1: Compute partials from the limit definition:</strong> \\[ f_x(0, 0) = \\lim_{h \\to 0} \\frac{f(h, 0) - f(0, 0)}{h} = \\lim_{h \\to 0} \\frac{\\frac{(h)(0)}{h^2 + 0^2} - 0}{h} = \\lim_{h \\to 0} \\frac{0}{h} = 0. \\] By symmetry: \\[ f_y(0, 0) = \\lim_{k \\to 0} \\frac{f(0, k) - f(0, 0)}{k} = \\lim_{k \\to 0} \\frac{0}{k} = 0. \\] Both partial derivatives exist cleanly and equal 0 at the origin!</p><p><strong>Step 2: Test continuity at the origin:</strong><br>Approach along the line \\( y = mx \\): \\[ \\lim_{x \\to 0} f(x, mx) = \\lim_{x \\to 0} \\frac{x(mx)}{x^2 + m^2 x^2} = \\frac{m}{1 + m^2}. \\] Along \\( y = x \\) (\\( m = 1 \\)), \\( f(x, x) = 1/2 \\). Along \\( y = -x \\) (\\( m = -1 \\)), \\( f(x, -x) = -1/2 \\). Along the axes, \\( f = 0 \\).<br>Since \\( \\lim_{(x,y) \\to (0,0)} f(x, y) \\) does not exist, \\( f \\) is <strong>discontinuous</strong> at \\( (0, 0) \\). Because differentiability implies continuity, \\( f \\) is <strong>not differentiable at the origin</strong> despite having well-defined partial derivatives there! (Why does this not violate Theorem 1.2? Because \\( f_x(x, y) \\) and \\( f_y(x, y) \\) are discontinuous at \\( (0, 0) \\).)</p>",
           "ar": null
         }
       },
@@ -422,15 +431,18 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Functions of Several Variables, Limits, Partial Derivatives & Differentiability (Medium Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\).</p><p><strong>Step-by-Step Solution:</strong> \\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>",
-          "ar": "<p><strong>Problem (Medium):</strong> For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\).</p><p><strong>Step-by-Step الحل:</strong> \\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>"
+        "problem": {
+          "en": "For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\).",
+          "ar": "<strong>Problem (Medium):</strong> For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\)."
+        },
+        "solution": {
+          "en": "<p>\\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>",
+          "ar": "<p><strong>Step-by-Step الحل:</strong> \\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>"
         }
       },
       {

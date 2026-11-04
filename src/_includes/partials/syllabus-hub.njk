@@ -1,0 +1,64 @@
+{% import "partials/_bilingual.njk" as bl with context %}
+{% set _locPrefix = '/ar' if pageLocale == 'ar' else '' %}
+<section class="chapter ch-active cs-syllabus-hub" id="{{ trackId }}-syllabus">
+  <div class="chead">
+    <span class="cn">\( \Sigma \)</span>
+    <h2>{% if pageLocale == 'ar' %}الفصول التفاعلية وخارطة المنهج ({{ chapters | length }} فصول){% else %}Course Syllabus &amp; Interactive Chapters ({{ chapters | length }} Chapters){% endif %}</h2>
+  </div>
+  <p class="cs-hub-lede">
+    {% if pageLocale == 'ar' %}
+      اختر أي فصل أدناه للانتقال مباشرة إلى الشرح الكامل، والأدوات الرسومية التفاعلية، والأمثلة المحلولة خطوة بخطوة، واختبار الفصل الفوري.
+    {% else %}
+      Select any chapter below to open its full interactive lesson, live canvas explorers, progressive worked examples, and adaptive chapter quiz.
+    {% endif %}
+  </p>
+
+  <div class="cs-hub-grid">
+    {% for ch in chapters %}
+    <a class="cs-hub-card" href="{{ _locPrefix }}/{{ trackId }}/{{ ch.id }}/" data-prefetch="1">
+      <div class="cs-hub-card-top">
+        <span class="cs-hub-num">{{ ch.chapterNumber or loop.index }}</span>
+        {% if ch.chapterTag and ch.chapterTag.text %}
+        <span class="cs-hub-tag">{{ bl.text(ch.chapterTag.text, 'span', pageLocale) }}</span>
+        {% endif %}
+      </div>
+      <h3 class="cs-hub-title">{{ bl.text(ch.title, 'span', pageLocale) }}</h3>
+      <span class="cs-hub-cta">{% if pageLocale == 'ar' %}افتح الفصل ←{% else %}Open Chapter →{% endif %}</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% set _quizCh = null %}
+  {% for ch in chapters %}
+    {% if (not _quizCh) and (ch.quizWidget.enabled != false) %}
+      {% set _quizCh = ch %}
+    {% endif %}
+  {% endfor %}
+  {% if _quizCh %}
+  <div class="ch-quiz-wrap" data-topic-id="{{ _quizCh.id }}"{% if _quizCh.quizWidget.domains %} data-quiz-domains="{{ _quizCh.quizWidget.domains | join('|') }}"{% endif %}>
+    <div class="ch-quiz-bar">
+      <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">{% if pageLocale == 'ar' %}اختبار سريع للفصل{% else %}Quick Chapter Quiz{% endif %}</span></span>
+      <div class="ch-quiz-controls">
+        <label><span data-i18n="quiz.count">{% if pageLocale == 'ar' %}عدد الأسئلة{% else %}Questions{% endif %}</span>
+          <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select>
+        </label>
+        <label><span data-i18n="quiz.level">{% if pageLocale == 'ar' %}المستوى{% else %}Level{% endif %}</span>
+          <select class="cq-level"><option value="all">{% if pageLocale == 'ar' %}جميع المستويات{% else %}All Levels{% endif %}</option><option value="Easy">{% if pageLocale == 'ar' %}سهل{% else %}Easy{% endif %}</option><option value="Medium">{% if pageLocale == 'ar' %}متوسط{% else %}Medium{% endif %}</option><option value="Hard">{% if pageLocale == 'ar' %}صعب{% else %}Hard{% endif %}</option></select>
+        </label>
+        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">{% if pageLocale == 'ar' %}إنشاء اختبار{% else %}Generate Quiz{% endif %}</span> ↻</button>
+      </div>
+    </div>
+    <div class="cq-out"></div>
+  </div>
+  {% endif %}
+
+  {% if practiceSetId %}
+  <div class="callout note" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+    <div>
+      <span class="lab">{% if pageLocale == 'ar' %}مجموعة تدريبية شاملة (50 مسألة){% else %}Full 50-Problem Practice Set{% endif %}</span>
+      <p style="margin:4px 0 0">{% if pageLocale == 'ar' %}تدرّب على 50 مسألة متدرجة الصعوبة مع الرسوم التوضيحية والحلول الكاملة خطوة بخطوة.{% else %}Work through 50 exam-style problems with SVG diagrams and step-by-step worked solutions.{% endif %}</p>
+    </div>
+    <a class="btn primary" href="{{ _locPrefix }}/{{ trackId }}/practice/" data-prefetch="1">{% if pageLocale == 'ar' %}ابدأ التدريب (50 سؤالًا) ←{% else %}Open Practice Set (50 Qs) →{% endif %}</a>
+  </div>
+  {% endif %}
+</section>

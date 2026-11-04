@@ -400,51 +400,63 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.A — Last Two Digits of a Power Tower via CRT + Euler (NSMO / KAUST)",
           "ar": "مثال محلول 2.A — آخر رقمين لقوة أسية كبيرة عبر أويلر والباقي الصيني (نسما / كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find the last two decimal digits of \\( 7^{2026} \\) (i.e., compute \\( 7^{2026} \\bmod 100 \\)).</p><p><strong>Solution:</strong> Since \\( 100 = 4 \\times 25 \\) with \\( \\gcd(4, 25) = 1 \\), split modulo \\( 4 \\) and modulo \\( 25 \\) (or use \\( \\varphi(100) = 40 \\)):<br>1. Modulo \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. Modulo \\( 25 \\): \\( \\varphi(25) = 25(1 - \\frac{1}{5}) = 20 \\), or even faster notice \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)! Thus \\( 7^4 \\equiv 1 \\pmod{25} \\) (multiplicative order \\( 4 \\) modulo \\( 100 \\)!).<br>3. Write \\( 2026 = 4(506) + 2 \\):<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1^{506} \\cdot 49 = 49 \\pmod{100} \\]<br>(checking \\( 49 \\equiv 1 \\pmod 4 \\) and \\( 49 \\equiv -1 \\pmod{25} \\) — both match!). Hence the last two digits are <strong>\\( 49 \\)</strong>.</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد رقمَي الآحاد والعشرات للعدد \\( 7^{2026} \\) (أي احسب \\( 7^{2026} \\bmod 100 \\)).</p><p><strong>الحل الأولمبي:</strong> بما أن \\( 100 = 4 \\times 25 \\) و\\( \\gcd(4, 25) = 1 \\)، نفكك التطابق إلى \\( \\pmod 4 \\) و\\( \\pmod{25} \\):<br>1. بترديد \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. بترديد \\( 25 \\): نلاحظ الحيلة السريعة \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)، ومنها \\( 7^4 \\equiv 1 \\pmod{25} \\) (أي أن رتبة \\( 7 \\) بترديد \\( 100 \\) تساوي \\( 4 \\) فقط!).<br>3. بقسمة الأس على \\( 4 \\): \\( 2026 = 4(506) + 2 \\)، إذن:<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1 \\cdot 49 = 49 \\pmod{100}. \\]<br>إذن آخر رقمين هما <strong>\\( 49 \\)</strong>.</p>"
+        "problem": {
+          "en": "Find the last two decimal digits of \\( 7^{2026} \\) (i.e., compute \\( 7^{2026} \\bmod 100 \\)).",
+          "ar": "أوجد رقمَي الآحاد والعشرات للعدد \\( 7^{2026} \\) (أي احسب \\( 7^{2026} \\bmod 100 \\))."
+        },
+        "solution": {
+          "en": "<p>Since \\( 100 = 4 \\times 25 \\) with \\( \\gcd(4, 25) = 1 \\), split modulo \\( 4 \\) and modulo \\( 25 \\) (or use \\( \\varphi(100) = 40 \\)):<br>1. Modulo \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. Modulo \\( 25 \\): \\( \\varphi(25) = 25(1 - \\frac{1}{5}) = 20 \\), or even faster notice \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)! Thus \\( 7^4 \\equiv 1 \\pmod{25} \\) (multiplicative order \\( 4 \\) modulo \\( 100 \\)!).<br>3. Write \\( 2026 = 4(506) + 2 \\):<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1^{506} \\cdot 49 = 49 \\pmod{100} \\]<br>(checking \\( 49 \\equiv 1 \\pmod 4 \\) and \\( 49 \\equiv -1 \\pmod{25} \\) — both match!). Hence the last two digits are <strong>\\( 49 \\)</strong>.</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> بما أن \\( 100 = 4 \\times 25 \\) و\\( \\gcd(4, 25) = 1 \\)، نفكك التطابق إلى \\( \\pmod 4 \\) و\\( \\pmod{25} \\):<br>1. بترديد \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. بترديد \\( 25 \\): نلاحظ الحيلة السريعة \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)، ومنها \\( 7^4 \\equiv 1 \\pmod{25} \\) (أي أن رتبة \\( 7 \\) بترديد \\( 100 \\) تساوي \\( 4 \\) فقط!).<br>3. بقسمة الأس على \\( 4 \\): \\( 2026 = 4(506) + 2 \\)، إذن:<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1 \\cdot 49 = 49 \\pmod{100}. \\]<br>إذن آخر رقمين هما <strong>\\( 49 \\)</strong>.</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.B — Wilson's Theorem Factorial Remainder (Olympiad Classic)",
           "ar": "مثال محلول 2.B — باقي قسمة المضروب عبر مبرهنة ويلسون (كلاسيكيات الأولمبياد)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find the remainder when \\( 97! \\) is divided by \\( 101 \\).</p><p><strong>Solution:</strong> Since \\( 101 \\) is prime, Wilson's Theorem gives \\( 100! \\equiv -1 \\pmod{101} \\). Expand the top three factors modulo \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>Therefore \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>To invert \\( 6 \\pmod{101} \\), notice \\( 101 + 1 = 102 = 6 \\times 17 \\), so \\( 6 \\times 17 = 102 \\equiv 1 \\pmod{101} \\).<br>Multiplying both sides of \\( 6 \\cdot 97! \\equiv 1 \\pmod{101} \\) by \\( 17 \\) gives \\( 97! \\equiv 17 \\pmod{101} \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد باقي قسمة \\( 97! \\) على العدد الأولي \\( 101 \\).</p><p><strong>الحل الأولمبي:</strong> بما أن \\( 101 \\) عدد أولي، تعطي مبرهنة ويلسون \\( 100! \\equiv -1 \\pmod{101} \\). نفكك آخر ثلاثة عوامل بترديد \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>ومنه \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>لإيجاد النظير الضربي للعدد \\( 6 \\pmod{101} \\)، نلاحظ أن \\( 101 + 1 = 102 = 6 \\times 17 \\)، أي \\( 6 \\times 17 \\equiv 1 \\pmod{101} \\). بضرب الطرفين في \\( 17 \\) نجد الباقي \\( 97! \\equiv 17 \\pmod{101} \\).</p>"
+        "problem": {
+          "en": "Find the remainder when \\( 97! \\) is divided by \\( 101 \\).",
+          "ar": "أوجد باقي قسمة \\( 97! \\) على العدد الأولي \\( 101 \\)."
+        },
+        "solution": {
+          "en": "<p>Since \\( 101 \\) is prime, Wilson's Theorem gives \\( 100! \\equiv -1 \\pmod{101} \\). Expand the top three factors modulo \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>Therefore \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>To invert \\( 6 \\pmod{101} \\), notice \\( 101 + 1 = 102 = 6 \\times 17 \\), so \\( 6 \\times 17 = 102 \\equiv 1 \\pmod{101} \\).<br>Multiplying both sides of \\( 6 \\cdot 97! \\equiv 1 \\pmod{101} \\) by \\( 17 \\) gives \\( 97! \\equiv 17 \\pmod{101} \\).</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> بما أن \\( 101 \\) عدد أولي، تعطي مبرهنة ويلسون \\( 100! \\equiv -1 \\pmod{101} \\). نفكك آخر ثلاثة عوامل بترديد \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>ومنه \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>لإيجاد النظير الضربي للعدد \\( 6 \\pmod{101} \\)، نلاحظ أن \\( 101 + 1 = 102 = 6 \\times 17 \\)، أي \\( 6 \\times 17 \\equiv 1 \\pmod{101} \\). بضرب الطرفين في \\( 17 \\) نجد الباقي \\( 97! \\equiv 17 \\pmod{101} \\).</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.C — Chinese Remainder Theorem Reconstruction (AIME / NSMO Stage 2)",
           "ar": "مثال محلول 2.C — حل نظام تطابقات عبر مبرهنة الباقي الصيني (AIME / نسما 2)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find the smallest positive integer \\( N > 10 \\) that leaves remainder \\( 2 \\) when divided by \\( 5 \\), remainder \\( 4 \\) when divided by \\( 7 \\), and remainder \\( 6 \\) when divided by \\( 9 \\).</p><p><strong>Solution:</strong> Look for a structural pattern in the remainders before brute-forcing CRT! At \\( m = 5, 7, 9 \\), the differences \\( m - r \\) are \\( 5 - 2 = 3 \\), \\( 7 - 4 = 3 \\), and \\( 9 - 6 = 3 \\) — every single remainder is <strong>3 less than its modulus</strong>! That means:<br>\\[ N \\equiv -3 \\pmod 5, \\quad N \\equiv -3 \\pmod 7, \\quad N \\equiv -3 \\pmod 9. \\]<br>Since \\( 5, 7, 9 \\) are pairwise coprime with \\( \\operatorname{lcm}(5, 7, 9) = 315 \\), CRT immediately gives \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\). Thus the smallest positive solution is <strong>\\( N = 312 \\)</strong>.</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد أصغر عدد صحيح موجب \\( N > 10 \\) يترك باقياً \\( 2 \\) عند قسمته على \\( 5 \\)، وباقياً \\( 4 \\) عند قسمته على \\( 7 \\)، وباقياً \\( 6 \\) عند قسمته على \\( 9 \\).</p><p><strong>الحل الأولمبي:</strong> ابحث أولاً عن النمط البنيوي بين المقاسات والبواقي قبل الحساب التقليدي! لاحظ الفروق:<br>\\( 5 - 2 = 3 \\)، و\\( 7 - 4 = 3 \\)، و\\( 9 - 6 = 3 \\)!<br>أي أن \\( N + 3 \\) يقبل القسمة على كل من \\( 5 \\) و\\( 7 \\) و\\( 9 \\) في آنٍ واحد:<br>\\[ N \\equiv -3 \\pmod 5, \\qquad N \\equiv -3 \\pmod 7, \\qquad N \\equiv -3 \\pmod 9. \\]<br>وبما أن الأعداد \\( 5, 7, 9 \\) أولية مثنى مثنى ومضاعفها المشترك الأصغر \\( 315 \\)، فإن مبرهنة الباقي الصيني تعطي فوراً \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\)، وأصغر حل موجب هو <strong>\\( 312 \\)</strong>.</p>"
+        "problem": {
+          "en": "Find the smallest positive integer \\( N > 10 \\) that leaves remainder \\( 2 \\) when divided by \\( 5 \\), remainder \\( 4 \\) when divided by \\( 7 \\), and remainder \\( 6 \\) when divided by \\( 9 \\).",
+          "ar": "أوجد أصغر عدد صحيح موجب \\( N > 10 \\) يترك باقياً \\( 2 \\) عند قسمته على \\( 5 \\)، وباقياً \\( 4 \\) عند قسمته على \\( 7 \\)، وباقياً \\( 6 \\) عند قسمته على \\( 9 \\)."
+        },
+        "solution": {
+          "en": "<p>Look for a structural pattern in the remainders before brute-forcing CRT! At \\( m = 5, 7, 9 \\), the differences \\( m - r \\) are \\( 5 - 2 = 3 \\), \\( 7 - 4 = 3 \\), and \\( 9 - 6 = 3 \\) — every single remainder is <strong>3 less than its modulus</strong>! That means:<br>\\[ N \\equiv -3 \\pmod 5, \\quad N \\equiv -3 \\pmod 7, \\quad N \\equiv -3 \\pmod 9. \\]<br>Since \\( 5, 7, 9 \\) are pairwise coprime with \\( \\operatorname{lcm}(5, 7, 9) = 315 \\), CRT immediately gives \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\). Thus the smallest positive solution is <strong>\\( N = 312 \\)</strong>.</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> ابحث أولاً عن النمط البنيوي بين المقاسات والبواقي قبل الحساب التقليدي! لاحظ الفروق:<br>\\( 5 - 2 = 3 \\)، و\\( 7 - 4 = 3 \\)، و\\( 9 - 6 = 3 \\)!<br>أي أن \\( N + 3 \\) يقبل القسمة على كل من \\( 5 \\) و\\( 7 \\) و\\( 9 \\) في آنٍ واحد:<br>\\[ N \\equiv -3 \\pmod 5, \\qquad N \\equiv -3 \\pmod 7, \\qquad N \\equiv -3 \\pmod 9. \\]<br>وبما أن الأعداد \\( 5, 7, 9 \\) أولية مثنى مثنى ومضاعفها المشترك الأصغر \\( 315 \\)، فإن مبرهنة الباقي الصيني تعطي فوراً \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\)، وأصغر حل موجب هو <strong>\\( 312 \\)</strong>.</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.D — Legendre's Valuation & Divisor Count (KAUST Finals / IMO Shortlist)",
           "ar": "مثال محلول 2.D — صيغة ليجاندر والتقييم الأولي لـ \\(n!\\) (نهائيات كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find the largest integer \\( k \\) such that \\( 12^k \\) divides \\( 60! \\).</p><p><strong>Solution:</strong> Prime-factor the base first: \\( 12 = 2^2 \\cdot 3 \\), so \\( 12^k = 2^{2k} \\cdot 3^k \\). Thus \\( 12^k \\mid 60! \\iff 2k \\le v_2(60!) \\) AND \\( k \\le v_3(60!) \\), meaning \\( k = \\min\\!\\left(\\left\\lfloor \\frac{v_2(60!)}{2} \\right\\rfloor,\\; v_3(60!)\\right) \\).<br>1. Compute \\( v_3(60!) \\) by Legendre's formula:<br>\\[ v_3(60!) = \\left\\lfloor \\frac{60}{3} \\right\\rfloor + \\left\\lfloor \\frac{60}{9} \\right\\rfloor + \\left\\lfloor \\frac{60}{27} \\right\\rfloor = 20 + 6 + 2 = 28. \\]<br>2. Compute \\( v_2(60!) \\):<br>\\[ v_2(60!) = \\left\\lfloor \\frac{60}{2} \\right\\rfloor + \\left\\lfloor \\frac{60}{4} \\right\\rfloor + \\left\\lfloor \\frac{60}{8} \\right\\rfloor + \\left\\lfloor \\frac{60}{16} \\right\\rfloor + \\left\\lfloor \\frac{60}{32} \\right\\rfloor = 30 + 15 + 7 + 3 + 1 = 56. \\]<br>3. Compare constraints: \\( \\lfloor 56 / 2 \\rfloor = 28 \\) and \\( v_3(60!) = 28 \\)! Both bounds Tie at \\( 28 \\) — had you lazily assumed \\( 3 \\) is always the bottleneck without checking \\( 2^2 \\), you could miss cases like \\( 8! \\) (where \\( v_3(8!) = 2 \\) and \\( \\lfloor v_2(8!)/2 \\rfloor = \\lfloor 7/2 \\rfloor = 3 \\), vs \\( 9! \\) where \\( v_3(9!) = 4 > \\lfloor 7/2 \\rfloor = 3 \\)!). Here \\( k = \\min(28, 28) = 28 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد أكبر عدد صحيح \\( k \\) بحيث يقسم \\( 12^k \\) العدد \\( 60! \\).</p><p><strong>الحل الأولمبي:</strong> نحلل الأساس أولاً: \\( 12 = 2^2 \\cdot 3 \\)، أي \\( 12^k = 2^{2k} \\cdot 3^k \\). ولكي يتحقق \\( 12^k \\mid 60! \\) يجب أن يتحقق الشرطان \\( 2k \\le v_2(60!) \\) و\\( k \\le v_3(60!) \\) معاً، أي \\( k = \\min\\!\\left(\\lfloor v_2(60!)/2 \\rfloor,\\; v_3(60!)\\right) \\).<br>1. حساب \\( v_3(60!) \\) بصيغة ليجاندر: \\( 20 + 6 + 2 = 28 \\).<br>2. حساب \\( v_2(60!) \\): \\( 30 + 15 + 7 + 3 + 1 = 56 \\implies \\lfloor 56/2 \\rfloor = 28 \\).<br>3. بمقارنة القيدين نجد \\( k = \\min(28, 28) = 28 \\) (انتبه: في حالات مثل \\( 9! \\) يكون \\( v_3(9!) = 4 \\) بينما \\( \\lfloor v_2(9!)/2 \\rfloor = 3 \\)، لذا فحص القيدين معاً إلزامي دائماً!).</p>"
+        "problem": {
+          "en": "Find the largest integer \\( k \\) such that \\( 12^k \\) divides \\( 60! \\).",
+          "ar": "أوجد أكبر عدد صحيح \\( k \\) بحيث يقسم \\( 12^k \\) العدد \\( 60! \\)."
+        },
+        "solution": {
+          "en": "<p>Prime-factor the base first: \\( 12 = 2^2 \\cdot 3 \\), so \\( 12^k = 2^{2k} \\cdot 3^k \\). Thus \\( 12^k \\mid 60! \\iff 2k \\le v_2(60!) \\) AND \\( k \\le v_3(60!) \\), meaning \\( k = \\min\\!\\left(\\left\\lfloor \\frac{v_2(60!)}{2} \\right\\rfloor,\\; v_3(60!)\\right) \\).<br>1. Compute \\( v_3(60!) \\) by Legendre's formula:<br>\\[ v_3(60!) = \\left\\lfloor \\frac{60}{3} \\right\\rfloor + \\left\\lfloor \\frac{60}{9} \\right\\rfloor + \\left\\lfloor \\frac{60}{27} \\right\\rfloor = 20 + 6 + 2 = 28. \\]<br>2. Compute \\( v_2(60!) \\):<br>\\[ v_2(60!) = \\left\\lfloor \\frac{60}{2} \\right\\rfloor + \\left\\lfloor \\frac{60}{4} \\right\\rfloor + \\left\\lfloor \\frac{60}{8} \\right\\rfloor + \\left\\lfloor \\frac{60}{16} \\right\\rfloor + \\left\\lfloor \\frac{60}{32} \\right\\rfloor = 30 + 15 + 7 + 3 + 1 = 56. \\]<br>3. Compare constraints: \\( \\lfloor 56 / 2 \\rfloor = 28 \\) and \\( v_3(60!) = 28 \\)! Both bounds Tie at \\( 28 \\) — had you lazily assumed \\( 3 \\) is always the bottleneck without checking \\( 2^2 \\), you could miss cases like \\( 8! \\) (where \\( v_3(8!) = 2 \\) and \\( \\lfloor v_2(8!)/2 \\rfloor = \\lfloor 7/2 \\rfloor = 3 \\), vs \\( 9! \\) where \\( v_3(9!) = 4 > \\lfloor 7/2 \\rfloor = 3 \\)!). Here \\( k = \\min(28, 28) = 28 \\).</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نحلل الأساس أولاً: \\( 12 = 2^2 \\cdot 3 \\)، أي \\( 12^k = 2^{2k} \\cdot 3^k \\). ولكي يتحقق \\( 12^k \\mid 60! \\) يجب أن يتحقق الشرطان \\( 2k \\le v_2(60!) \\) و\\( k \\le v_3(60!) \\) معاً، أي \\( k = \\min\\!\\left(\\lfloor v_2(60!)/2 \\rfloor,\\; v_3(60!)\\right) \\).<br>1. حساب \\( v_3(60!) \\) بصيغة ليجاندر: \\( 20 + 6 + 2 = 28 \\).<br>2. حساب \\( v_2(60!) \\): \\( 30 + 15 + 7 + 3 + 1 = 56 \\implies \\lfloor 56/2 \\rfloor = 28 \\).<br>3. بمقارنة القيدين نجد \\( k = \\min(28, 28) = 28 \\) (انتبه: في حالات مثل \\( 9! \\) يكون \\( v_3(9!) = 4 \\) بينما \\( \\lfloor v_2(9!)/2 \\rfloor = 3 \\)، لذا فحص القيدين معاً إلزامي دائماً!).</p>"
         }
       },
       {

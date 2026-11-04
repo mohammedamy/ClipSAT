@@ -4,9 +4,11 @@
   /* ══════════════════════════════════════════════════════════════════════════
      A.  GAMIFICATION ENGINE (XP, LEVELS, STREAKS, BADGES)
      ══════════════════════════════════════════════════════════════════════════ */
-  var xp = parseInt(localStorage.getItem('clipsat_xp') || '0');
+  var xp = 0;
+  try { xp = parseInt(localStorage.getItem('clipsat_xp') || '0', 10) || 0; } catch(e){}
   var level = Math.floor(xp / 100) + 1;
-  var streak = parseInt(localStorage.getItem('clipsat_streak') || '0');
+  var streak = 0;
+  try { streak = parseInt(localStorage.getItem('clipsat_streak') || '0', 10) || 0; } catch(e){}
 
   var Badges = [
     { id: 'apprentice', label: 'Algebra Apprentice', desc: 'Mastered linear equations' },
@@ -18,7 +20,7 @@
   window.CSGamify = {
     addXP: function(amount) {
       xp += amount;
-      localStorage.setItem('clipsat_xp', xp);
+      try { localStorage.setItem('clipsat_xp', String(xp)); } catch(e){}
       var currentLevel = Math.floor(xp / 100) + 1;
       if (currentLevel > level) {
         level = currentLevel;
@@ -251,9 +253,11 @@
         });
       }
 
-      // 1. Formula cards (.fcard)
+      // 1. Formula cards (.fcard) — filter out non-math exam-metadata cards (Format, Calculator, Delivery, Duration, Scoring, etc.)
+      var _metaFrontRe = /^(?:format|calculator|delivery|questions|duration|scoring|sections|time|papers?|marks?|grade|exam\s*code|المدة|الأسئلة|الآلة\s*الحاسبة|التسليم|التصحيح|الأقسام|النمط|نظام\s*الاختبار)\b/i;
       document.querySelectorAll('.fcard').forEach(function(el) {
-        if (el.closest('#flashcards-sidebar')) return;
+        if (el.closest('#flashcards-sidebar') || el.classList.contains('we-card')) return;
+        if (el.getAttribute('data-flashcard') === '0') return;
         var frontEl = el.querySelector('.ft, .card-title, .lab');
         var front = '';
         if (frontEl) {
@@ -261,6 +265,8 @@
           fClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
           front = fClone.innerHTML.replace(/^[●▲◆■\s]+/, '').trim();
         }
+        var cleanFrontTxt = textOf(front);
+        if (_metaFrontRe.test(cleanFrontTxt)) return;
         var backClone = el.cloneNode(true);
         var innerFront = backClone.querySelector('.ft, .card-title, .lab');
         if (innerFront) innerFront.remove();
@@ -326,9 +332,21 @@
         }
       });
 
-      // 5. Worked Examples (.example, .worked-example, .example-grid)
+      // 5. Worked Examples (.we-card, .worked-example-card, .example, .worked-example, .example-grid)
+      document.querySelectorAll('.we-card, .worked-example-card').forEach(function(el) {
+        if (el.closest('#flashcards-sidebar') || el.getAttribute('data-flashcard') === '0') return;
+        var titleEl = el.querySelector('.we-title, .ft');
+        var probEl = el.querySelector('.we-problem');
+        var solEl = el.querySelector('.we-solution-body, .solution');
+        var front = '';
+        if (titleEl && probEl) front = '<strong>' + titleEl.innerHTML.trim() + '</strong><div style="margin-top:4px">' + probEl.innerHTML.trim() + '</div>';
+        else if (probEl) front = probEl.innerHTML.trim();
+        else if (titleEl) front = titleEl.innerHTML.trim();
+        var back = solEl ? solEl.innerHTML.trim() : '';
+        addCard(front, back, 'Example', el.closest('.chapter'));
+      });
       document.querySelectorAll('.example, .worked-example, .example-grid').forEach(function(el) {
-        if (el.closest('#flashcards-sidebar')) return;
+        if (el.closest('#flashcards-sidebar') || el.closest('.worked-example-card') || el.closest('.we-card')) return;
         var labelEl = el.querySelector('.xt, .card-title, p:first-child');
         var front = '';
         if (labelEl) {
@@ -378,7 +396,16 @@
     },
 
     _saveSrsState: function(state) {
-      try { localStorage.setItem('clipsat_srs_state', JSON.stringify(state)); } catch (e) {}
+      try {
+        var keys = Object.keys(state || {});
+        if (keys.length > 1000) {
+          keys.sort(function(a, b) {
+            return ((state[a] && state[a].due) || 0) - ((state[b] && state[b].due) || 0);
+          });
+          keys.slice(0, keys.length - 1000).forEach(function(k) { delete state[k]; });
+        }
+        localStorage.setItem('clipsat_srs_state', JSON.stringify(state));
+      } catch (e) {}
     },
 
     getActiveChapterId: function() {
@@ -873,7 +900,11 @@
       this.loadFlashcard();
       var sb = document.getElementById('flashcards-sidebar');
       var bd = document.getElementById('fc-backdrop');
-      if (sb) sb.classList.add('open');
+      if (sb) {
+        sb.inert = false;
+        sb.removeAttribute('inert');
+        sb.classList.add('open');
+      }
       if (bd) bd.classList.add('active');
       document.addEventListener('keydown', window.CSGamify._onKey);
     },
@@ -881,7 +912,11 @@
     closeFlashcards: function() {
       var sb = document.getElementById('flashcards-sidebar');
       var bd = document.getElementById('fc-backdrop');
-      if (sb) sb.classList.remove('open');
+      if (sb) {
+        sb.classList.remove('open');
+        sb.inert = true;
+        sb.setAttribute('inert', '');
+      }
       if (bd) bd.classList.remove('active');
       document.removeEventListener('keydown', window.CSGamify._onKey);
     },
@@ -949,49 +984,24 @@
     }
   };
 
-  /* Hook into answer recording to award XP */
-  (function patchRecordAnswer() {
-    var tries = 0;
-    var interval = setInterval(function() {
-      tries++;
-      if (window._recordAnswer) {
-        var orig = window._recordAnswer;
-        window._recordAnswer = function(isCorrect) {
-          if (isCorrect) window.CSGamify.addXP(10);
-          return orig.apply(this, arguments);
-        };
-        clearInterval(interval);
-      }
-      if (tries > 50) clearInterval(interval);
-    }, 200);
-  })();
+  /* Award XP on correct quiz answers via custom event (zero polling) */
+  document.addEventListener('clipsat:cq-pick', function(ev) {
+    if (ev && ev.detail && ev.detail.isRight && window.CSGamify) {
+      window.CSGamify.addXP(10);
+    }
+  });
 
-  /* Hook into goChapter to refresh flashcards deck when user changes chapters */
-  (function patchGoChapter() {
-    var tries = 0;
-    var interval = setInterval(function() {
-      tries++;
-      if (window.goChapter) {
-        var origGC = window.goChapter;
-        window.goChapter = function(id, view) {
-          var res = origGC.apply(this, arguments);
-          setTimeout(function() {
-            if (window.CSGamify) {
-              window.CSGamify.buildDeckFromPage();
-              window.CSGamify.updateCounters();
-              var sb = document.getElementById('flashcards-sidebar');
-              if (sb && sb.classList.contains('open')) {
-                window.CSGamify.loadFlashcard();
-              }
-            }
-          }, 100);
-          return res;
-        };
-        clearInterval(interval);
+  /* Refresh flashcards deck lazily when user changes chapters */
+  document.addEventListener('clipsat:chapter-change', function() {
+    setTimeout(function() {
+      if (!window.CSGamify) return;
+      var sb = document.getElementById('flashcards-sidebar');
+      if (sb && sb.classList.contains('open')) {
+        window.CSGamify.buildDeckFromPage();
+        window.CSGamify.loadFlashcard();
       }
-      if (tries > 50) clearInterval(interval);
-    }, 100);
-  })();
+    }, 80);
+  });
 
   /* Hook into Teacher Mode to enable Whiteboard button — and, just as
      importantly, to force the whiteboard fully off (hidden, ink wiped)
@@ -1058,22 +1068,95 @@
   /* Daily streak tracking */
   (function trackStreak() {
     var today = new Date().toDateString();
-    var lastVisit = localStorage.getItem('clipsat_last_visit');
+    var lastVisit = null;
+    try { lastVisit = localStorage.getItem('clipsat_last_visit'); } catch(e){}
     var yesterday = new Date(Date.now() - 86400000).toDateString();
     if (lastVisit === yesterday) {
       streak++;
     } else if (lastVisit !== today) {
       streak = 1;
     }
-    localStorage.setItem('clipsat_streak', streak);
-    localStorage.setItem('clipsat_last_visit', today);
+    try {
+      localStorage.setItem('clipsat_streak', String(streak));
+      localStorage.setItem('clipsat_last_visit', today);
+    } catch(e){}
     if (streak >= 3) window.CSGamify.addXP(20); // streak bonus
   })();
 
-  document.addEventListener('DOMContentLoaded', function() {
+  /* WP-22: Paint due-card badge from build-time count & hydrate [data-lazy-fig] lesson figures via IntersectionObserver */
+  function _initBootBadgesAndLazyFigs() {
     window.CSGamify.updateUI();
-    window.CSGamify.loadFlashcard();
-  });
+    var track = window.CLIPSAT_TRACK || 'home';
+    var baseCount = (typeof window.CLIPSAT_FC_COUNT === 'number') ? window.CLIPSAT_FC_COUNT : 0;
+    var customExtra = 0;
+    try {
+      var cc = JSON.parse(localStorage.getItem('clipsat_custom_cards') || '[]');
+      if (Array.isArray(cc)) {
+        cc.forEach(function(c) {
+          if (!c.track || c.track === track || c.track === 'all') customExtra++;
+        });
+      }
+    } catch(e){}
+    var estDue = baseCount + customExtra;
+    var badge = document.getElementById('fc-due-badge');
+    if (badge) {
+      badge.textContent = estDue;
+      badge.classList.toggle('empty', estDue === 0);
+    }
+    var dueNum = document.getElementById('fc-due-num');
+    if (dueNum) dueNum.textContent = estDue;
+    var dueEl = document.getElementById('fc-due-count');
+    if (dueEl) dueEl.textContent = estDue;
+
+    /* Lazy-hydrate [data-lazy-fig] on chapter & practice pages (0 requests on track hubs without [data-lazy-fig]) */
+    var figSlots = document.querySelectorAll('[data-lazy-fig]');
+    if (figSlots && figSlots.length && typeof window._ensureFigures === 'function') {
+      function hydrateSlot(el) {
+        if (!el || !el.hasAttribute('data-lazy-fig')) return;
+        var raw = el.getAttribute('data-lazy-fig');
+        el.removeAttribute('data-lazy-fig');
+        if (!raw) return;
+        window._ensureFigures().then(function() {
+          if (typeof window._renderFig !== 'function') return;
+          try {
+            var spec = JSON.parse(raw);
+            var rendered = window._renderFig(spec);
+            if (!rendered) return;
+            if (el.querySelector('.cs-live-slopefield')) {
+              var printSvg = document.createElement('div');
+              printSvg.style.display = 'none';
+              printSvg.innerHTML = rendered;
+              el.insertBefore(printSvg, el.firstChild);
+            } else {
+              el.innerHTML = rendered;
+            }
+          } catch (err) {}
+        }).catch(function() {});
+      }
+      if ('IntersectionObserver' in window) {
+        var figObs = new IntersectionObserver(function(entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              figObs.unobserve(entries[i].target);
+              hydrateSlot(entries[i].target);
+            }
+          }
+        }, { rootMargin: '500px 0px' });
+        for (var j = 0; j < figSlots.length; j++) figObs.observe(figSlots[j]);
+        window.addEventListener('beforeprint', function() {
+          var rem = document.querySelectorAll('[data-lazy-fig]');
+          for (var k = 0; k < rem.length; k++) hydrateSlot(rem[k]);
+        });
+      } else {
+        for (var m = 0; m < figSlots.length; m++) hydrateSlot(figSlots[m]);
+      }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _initBootBadgesAndLazyFigs);
+  } else {
+    _initBootBadgesAndLazyFigs();
+  }
 }());
 
 /* ══════ Keyboard-accessibility retrofit ══════

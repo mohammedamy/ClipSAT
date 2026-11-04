@@ -60,7 +60,8 @@
           var safeWs = _safeSlug(d.worksheet);
           var safeAk = _safeSlug(d.answerkey);
           var safeLang = (d.lang === 'ar') ? 'ar' : 'en';
-          var base = '/downloads/' + safeTrack + '/';
+          var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
+          var base = cdnPrefix + '/downloads/' + safeTrack + '/';
           var isExam = Boolean(d.isFullExam);
           var wsLabel = d.wsLabel || (isExam ? t.exam : t.ws);
           var akLabel = d.akLabel || (isExam ? t.examAk : t.ak);
@@ -99,7 +100,8 @@
       if(el.dataset.wlLoaded) return;
       el.dataset.wlLoaded = '1';
       var trackId = el.getAttribute('data-track');
-      fetch('/downloads/' + trackId + '/manifest.json')
+      var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
+      fetch(cdnPrefix + '/downloads/' + trackId + '/manifest.json')
         .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
         .then(function(data){ renderLibrary(el, trackId, data); })
         .catch(function(){ el.innerHTML = '<div class="wl-empty">Worksheet library failed to load. Please refresh the page.</div>'; });
@@ -118,9 +120,34 @@ function openLegal(which){
   var priv=document.getElementById('legal-privacy'), terms=document.getElementById('legal-terms');
   if(priv) priv.style.display = which==='privacy' ? '' : 'none';
   if(terms) terms.style.display = which==='terms' ? '' : 'none';
+  var targetBox = (which === 'terms') ? terms : priv;
+  var lazyBody = targetBox && targetBox.querySelector('.legal-lazy-body');
+  if(lazyBody && !lazyBody.dataset.loaded){
+    lazyBody.innerHTML = '<p style="opacity:.7">Loading…</p>';
+    var url = (which === 'terms') ? '/terms/' : '/privacy/';
+    fetch(url).then(function(r){ return r.ok ? r.text() : ''; }).then(function(html){
+      if(!html) return;
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var main = doc.querySelector('main');
+      if(main){
+        main.querySelectorAll('script').forEach(function(s){ s.remove(); });
+        lazyBody.innerHTML = main.innerHTML;
+        lazyBody.dataset.loaded = '1';
+      }
+    }).catch(function(){});
+  }
+  ov.inert = false;
+  ov.removeAttribute('inert');
   ov.classList.add('show');
 }
-function closeLegal(){ var ov=document.getElementById('legal-overlay'); if(ov) ov.classList.remove('show'); }
+function closeLegal(){
+  var ov=document.getElementById('legal-overlay');
+  if(ov){
+    ov.classList.remove('show');
+    ov.inert = true;
+    ov.setAttribute('inert', '');
+  }
+}
 
 /* ── Cookie & Advertising Consent Management ───────────────────────── */
 var CONSENT_KEY = 'clipsat_cookie_consent';

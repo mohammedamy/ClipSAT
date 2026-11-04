@@ -1,0 +1,37 @@
+  <script src="/js/shell-modals.js?v=20261104w2"></script>
+  <script src="/js/cloud-config.js?v=20261104w2"></script>
+  <script defer src="/vendor/supabase/supabase.min.js?v=20261101c"></script>
+  <script defer src="/js/cloud-sync.js?v=20261104w2"></script>
+  <script defer src="/js/teacher-view.js"></script>
+  <script defer src="/js/error-logging.js"></script>
+  <script defer src="/js/visit-counter.js"></script>
+  <script defer src="/js/analytics.js"></script>
+  <script src="/js/google-config.js"></script>
+  <script defer src="/js/google-integration.js"></script>
+  <script defer src="/js/math-image.js"></script>
+  <script defer src="/js/forms-api.js"></script>
+  <script defer src="/js/quiz-capture-ui.js?v=20261104w2"></script>
+  <script src="/js/engine.js?v=20261104w2"></script>
+  <script src="/js/study-hub-extras.js"></script>
+  {% if trackId == 'dev-content-preview' %}
+    <script src="/js/ix-engine.js"></script><script src="/js/universal-graph-explorers.js"></script>{% for t in explorerTracks %}<script src="/js/ex/{{ t }}.js"></script>{% endfor %}
+  {% elif (trackId in explorerTracks) and ((not isChapterPage) or chapterHasExplorer) %}
+    {% if trackId != 'home' %}<script src="/js/ix-engine.js"></script><script src="/js/universal-graph-explorers.js"></script>{% endif %}<script src="/js/ex/{{ trackId }}.js"></script>
+  {% endif %}
+  <script>
+  (function(){
+    var _origShowView = window.showView;
+    if (window.__csInitRouteNav) window.__csInitRouteNav(_origShowView);
+    var prefetched = {};
+    function maybePrefetch(ev){
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[data-prefetch="1"]') : null;
+      if(!a) return;
+      var url = a.getAttribute('data-chapter-url') || a.getAttribute('href');
+      if(!url || url.charAt(0) === '#' || prefetched[url]) return;
+      prefetched[url] = 1;
+      try { var link = document.createElement('link'); link.rel = 'prefetch'; link.href = url; link.as = 'document'; document.head.appendChild(link); } catch(e){}
+    }
+    document.addEventListener('pointerenter', maybePrefetch, true);
+    document.addEventListener('focusin', maybePrefetch, true);
+  })();
+  </script>

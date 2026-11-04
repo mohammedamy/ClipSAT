@@ -961,7 +961,8 @@
     _isSubmitted = false;
     _lastDownloadArgs = [trackId, examFilename, examTitle, lang];
 
-    var examUrl = '/downloads/' + trackId + '/' + examFilename;
+    var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
+    var examUrl = cdnPrefix + '/downloads/' + trackId + '/' + examFilename;
     var overlay = document.getElementById('mock-exam-overlay');
     if(!overlay){
       window.open(examUrl + '?cbt=1', '_blank');

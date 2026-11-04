@@ -113,38 +113,47 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 2.A — Integrating Factor with Variable Coefficients",
           "ar": "مثال محلول 2.A — Integrating Factor with المتغير المعاملات"
         },
-        "body": {
-          "en": "<p>Find the general solution of the differential equation \\[ x \\frac{dy}{dx} + 2y = 4x^2, \\qquad x > 0. \\]</p><p><strong>Step 1: Normalize:</strong> Divide by \\( x \\): \\[ \\frac{dy}{dx} + \\frac{2}{x}y = 4x. \\] Here \\( P(x) = \\frac{2}{x} \\) and \\( Q(x) = 4x \\).</p><p><strong>Step 2: Integrating factor:</strong> \\[ \\mu(x) = \\exp\\left(\\int \\frac{2}{x}\\,dx\\right) = \\exp(2\\ln x) = \\exp(\\ln x^2) = x^2. \\]</p><p><strong>Step 3: Multiply and integrate:</strong> \\[ \\frac{d}{dx}\\big[x^2 y\\big] = x^2(4x) = 4x^3 \\implies x^2 y = \\int 4x^3\\,dx = x^4 + C. \\]</p><p><strong>Step 4: Isolate \\( y(x) \\):</strong> \\[ y(x) = x^2 + \\frac{C}{x^2}. \\] Notice that as \\( x \\to 0^+ \\), the homogeneous term \\( C/x^2 \\) diverges unless \\( C = 0 \\), reflecting the singularity of \\( P(x) \\) at \\( x = 0 \\).</p>",
+        "problem": {
+          "en": "Find the general solution of the differential equation \\[ x \\frac{dy}{dx} + 2y = 4x^2, \\qquad x > 0. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Normalize:</strong> Divide by \\( x \\): \\[ \\frac{dy}{dx} + \\frac{2}{x}y = 4x. \\] Here \\( P(x) = \\frac{2}{x} \\) and \\( Q(x) = 4x \\).</p><p><strong>Step 2: Integrating factor:</strong> \\[ \\mu(x) = \\exp\\left(\\int \\frac{2}{x}\\,dx\\right) = \\exp(2\\ln x) = \\exp(\\ln x^2) = x^2. \\]</p><p><strong>Step 3: Multiply and integrate:</strong> \\[ \\frac{d}{dx}\\big[x^2 y\\big] = x^2(4x) = 4x^3 \\implies x^2 y = \\int 4x^3\\,dx = x^4 + C. \\]</p><p><strong>Step 4: Isolate \\( y(x) \\):</strong> \\[ y(x) = x^2 + \\frac{C}{x^2}. \\] Notice that as \\( x \\to 0^+ \\), the homogeneous term \\( C/x^2 \\) diverges unless \\( C = 0 \\), reflecting the singularity of \\( P(x) \\) at \\( x = 0 \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 2.B — Initial Value Problems & Singular Boundary Points",
           "ar": null
         },
-        "body": {
-          "en": "<p>Solve the initial value problem \\[ \\frac{dy}{dx} - \\frac{2}{x}y = x^3 e^x, \\qquad y(1) = 0, \\quad x > 0. \\]</p><p><strong>Step 1: Integrating factor:</strong> \\( P(x) = -\\frac{2}{x} \\), so \\[ \\mu(x) = \\exp\\left(\\int -\\frac{2}{x}\\,dx\\right) = e^{-2\\ln x} = x^{-2} = \\frac{1}{x^2}. \\]</p><p><strong>Step 2: Collapse and integrate:</strong> \\[ \\frac{d}{dx}\\left[\\frac{y}{x^2}\\right] = \\frac{1}{x^2}\\big(x^3 e^x\\big) = x e^x. \\] Integrating by parts (\\( u = x, dv = e^x dx \\)): \\[ \\frac{y}{x^2} = \\int x e^x\\,dx = x e^x - e^x + C = (x - 1)e^x + C. \\]</p><p><strong>Step 3: Apply initial condition \\( y(1) = 0 \\):</strong> \\[ \\frac{0}{1^2} = (1 - 1)e^1 + C \\implies C = 0. \\]</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = x^2(x - 1)e^x. \\]</p>",
+        "problem": {
+          "en": "Solve the initial value problem \\[ \\frac{dy}{dx} - \\frac{2}{x}y = x^3 e^x, \\qquad y(1) = 0, \\quad x > 0. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Integrating factor:</strong> \\( P(x) = -\\frac{2}{x} \\), so \\[ \\mu(x) = \\exp\\left(\\int -\\frac{2}{x}\\,dx\\right) = e^{-2\\ln x} = x^{-2} = \\frac{1}{x^2}. \\]</p><p><strong>Step 2: Collapse and integrate:</strong> \\[ \\frac{d}{dx}\\left[\\frac{y}{x^2}\\right] = \\frac{1}{x^2}\\big(x^3 e^x\\big) = x e^x. \\] Integrating by parts (\\( u = x, dv = e^x dx \\)): \\[ \\frac{y}{x^2} = \\int x e^x\\,dx = x e^x - e^x + C = (x - 1)e^x + C. \\]</p><p><strong>Step 3: Apply initial condition \\( y(1) = 0 \\):</strong> \\[ \\frac{0}{1^2} = (1 - 1)e^1 + C \\implies C = 0. \\]</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = x^2(x - 1)e^x. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 2.C — Analytical Application: Dynamic Inflow-Outflow Mixing Tanks",
           "ar": null
         },
-        "body": {
-          "en": "<p>A tank initially contains \\( V_0 = 100 \\text{ L} \\) of fresh water. Brine with salt concentration \\( c_{\\text{in}} = 0.5 \\text{ kg/L} \\) flows in at \\( r_{\\text{in}} = 4 \\text{ L/min} \\). Well-mixed solution is pumped out at \\( r_{\\text{out}} = 2 \\text{ L/min} \\). Determine the total salt mass \\( Q(t) \\) in the tank as a function of time.</p><p><strong>Step 1: Dynamic volume:</strong> Because \\( r_{\\text{in}} \\neq r_{\\text{out}} \\), volume changes with time: \\[ V(t) = V_0 + (r_{\\text{in}} - r_{\\text{out}})t = 100 + 2t. \\]</p><p><strong>Step 2: Differential balance equation:</strong> \\[ \\frac{dQ}{dt} = \\text{Rate In} - \\text{Rate Out} = r_{\\text{in}} c_{\\text{in}} - r_{\\text{out}} \\frac{Q(t)}{V(t)} = 4(0.5) - 2 \\frac{Q}{100 + 2t}. \\] In standard linear form: \\[ \\frac{dQ}{dt} + \\frac{1}{50 + t}Q = 2, \\qquad Q(0) = 0. \\]</p><p><strong>Step 3: Integrating factor:</strong> \\[ \\mu(t) = \\exp\\left(\\int \\frac{1}{50 + t}\\,dt\\right) = 50 + t. \\]</p><p><strong>Step 4: Integrate and solve:</strong> \\[ \\frac{d}{dt}\\big[(50 + t)Q\\big] = 2(50 + t) \\implies (50 + t)Q = (50 + t)^2 + C. \\] Applying \\( Q(0) = 0 \\): \\( 50(0) = 50^2 + C \\implies C = -2500 \\). Thus: \\[ Q(t) = 50 + t - \\frac{2500}{50 + t}. \\]</p>",
+        "problem": {
+          "en": "A tank initially contains \\( V_0 = 100 \\text{ L} \\) of fresh water. Brine with salt concentration \\( c_{\\text{in}} = 0.5 \\text{ kg/L} \\) flows in at \\( r_{\\text{in}} = 4 \\text{ L/min} \\). Well-mixed solution is pumped out at \\( r_{\\text{out}} = 2 \\text{ L/min} \\). Determine the total salt mass \\( Q(t) \\) in the tank as a function of time.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Dynamic volume:</strong> Because \\( r_{\\text{in}} \\neq r_{\\text{out}} \\), volume changes with time: \\[ V(t) = V_0 + (r_{\\text{in}} - r_{\\text{out}})t = 100 + 2t. \\]</p><p><strong>Step 2: Differential balance equation:</strong> \\[ \\frac{dQ}{dt} = \\text{Rate In} - \\text{Rate Out} = r_{\\text{in}} c_{\\text{in}} - r_{\\text{out}} \\frac{Q(t)}{V(t)} = 4(0.5) - 2 \\frac{Q}{100 + 2t}. \\] In standard linear form: \\[ \\frac{dQ}{dt} + \\frac{1}{50 + t}Q = 2, \\qquad Q(0) = 0. \\]</p><p><strong>Step 3: Integrating factor:</strong> \\[ \\mu(t) = \\exp\\left(\\int \\frac{1}{50 + t}\\,dt\\right) = 50 + t. \\]</p><p><strong>Step 4: Integrate and solve:</strong> \\[ \\frac{d}{dt}\\big[(50 + t)Q\\big] = 2(50 + t) \\implies (50 + t)Q = (50 + t)^2 + C. \\] Applying \\( Q(0) = 0 \\): \\( 50(0) = 50^2 + C \\implies C = -2500 \\). Thus: \\[ Q(t) = 50 + t - \\frac{2500}{50 + t}. \\]</p>",
           "ar": null
         }
       },
@@ -330,14 +339,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> The Laplace transform of \\( R(m) = 48e^{20m} \\) is \\( S(s) = \\dfrac{48}{s - 20} \\) for \\( s > 20 \\). Determine the evaluated transform \\( S(21) \\).</p><p><strong>Step-by-Step Solution:</strong> Substituting \\( s = 21 \\) gives \\( \\frac{48}{21 - 20} = 48 \\).</p>",
+        "problem": {
+          "en": "The Laplace transform of \\( R(m) = 48e^{20m} \\) is \\( S(s) = \\dfrac{48}{s - 20} \\) for \\( s > 20 \\). Determine the evaluated transform \\( S(21) \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Substituting \\( s = 21 \\) gives \\( \\frac{48}{21 - 20} = 48 \\).</p>",
           "ar": null
         }
       },

@@ -295,38 +295,47 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 4.A — Polynomial & Exponential Forcing without Resonance",
           "ar": null
         },
-        "body": {
-          "en": "<p>Find the general solution of \\[ y'' - 3y' + 2y = 4x^2. \\]</p><p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 3r + 2 = (r - 1)(r - 2) = 0 \\implies y_c(x) = C_1 e^x + C_2 e^{2x}. \\]</p><p><strong>Step 2: Trial form:</strong> For \\( g(x) = 4x^2 \\), trial is \\( y_p(x) = A x^2 + B x + C \\). No term is in \\( y_c(x) \\), so \\( s = 0 \\).</p><p><strong>Step 3: Differentiate and substitute:</strong> \\( y_p' = 2Ax + B \\), \\( y_p'' = 2A \\). \\[ (2A) - 3(2Ax + B) + 2(Ax^2 + Bx + C) = 4x^2 \\] \\[ (2A)x^2 + (-6A + 2B)x + (2A - 3B + 2C) = 4x^2. \\]</p><p><strong>Step 4: Match coefficients:</strong> \\[ 2A = 4 \\implies A = 2, \\] \\[ -6(2) + 2B = 0 \\implies 2B = 12 \\implies B = 6, \\] \\[ 2(2) - 3(6) + 2C = 0 \\implies 4 - 18 + 2C = 0 \\implies 2C = 14 \\implies C = 7. \\]</p><p>Thus \\( y_p(x) = 2x^2 + 6x + 7 \\), and general solution is: \\[ y(x) = C_1 e^x + C_2 e^{2x} + 2x^2 + 6x + 7. \\]</p>",
+        "problem": {
+          "en": "Find the general solution of \\[ y'' - 3y' + 2y = 4x^2. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 3r + 2 = (r - 1)(r - 2) = 0 \\implies y_c(x) = C_1 e^x + C_2 e^{2x}. \\]</p><p><strong>Step 2: Trial form:</strong> For \\( g(x) = 4x^2 \\), trial is \\( y_p(x) = A x^2 + B x + C \\). No term is in \\( y_c(x) \\), so \\( s = 0 \\).</p><p><strong>Step 3: Differentiate and substitute:</strong> \\( y_p' = 2Ax + B \\), \\( y_p'' = 2A \\). \\[ (2A) - 3(2Ax + B) + 2(Ax^2 + Bx + C) = 4x^2 \\] \\[ (2A)x^2 + (-6A + 2B)x + (2A - 3B + 2C) = 4x^2. \\]</p><p><strong>Step 4: Match coefficients:</strong> \\[ 2A = 4 \\implies A = 2, \\] \\[ -6(2) + 2B = 0 \\implies 2B = 12 \\implies B = 6, \\] \\[ 2(2) - 3(6) + 2C = 0 \\implies 4 - 18 + 2C = 0 \\implies 2C = 14 \\implies C = 7. \\]</p><p>Thus \\( y_p(x) = 2x^2 + 6x + 7 \\), and general solution is: \\[ y(x) = C_1 e^x + C_2 e^{2x} + 2x^2 + 6x + 7. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 4.B — Exponential Forcing with Resonance",
           "ar": null
         },
-        "body": {
-          "en": "<p>Solve the initial value problem \\[ y'' - 4y' + 4y = 6e^{2x}, \\qquad y(0) = 0, \\quad y'(0) = 1. \\]</p><p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 4r + 4 = (r - 2)^2 = 0 \\implies y_c(x) = (C_1 + C_2 x)e^{2x}. \\]</p><p><strong>Step 2: Trial form with resonance:</strong> The standard trial \\( A e^{2x} \\) and \\( A x e^{2x} \\) are both already present in \\( y_c \\) because \\( r = 2 \\) is a double root (multiplicity \\( s = 2 \\)). Therefore: \\[ y_p(x) = A x^2 e^{2x}. \\]</p><p><strong>Step 3: Derivatives:</strong> \\[ y_p'(x) = A(2x e^{2x} + 2x^2 e^{2x}) = 2A(x + x^2)e^{2x}, \\] \\[ y_p''(x) = 2A(1 + 2x)e^{2x} + 4A(x + x^2)e^{2x} = 2A(1 + 4x + 2x^2)e^{2x}. \\]</p><p><strong>Step 4: Substitute:</strong> \\[ e^{2x}\\Big[2A(1 + 4x + 2x^2) - 4\\cdot 2A(x + x^2) + 4\\cdot A x^2\\Big] = 6e^{2x} \\] \\[ e^{2x}\\Big[2A + (8A - 8A)x + (4A - 8A + 4A)x^2\\Big] = 2A e^{2x} = 6e^{2x} \\implies 2A = 6 \\implies A = 3. \\] Thus \\( y_p(x) = 3x^2 e^{2x} \\), and general solution is \\( y(x) = (C_1 + C_2 x + 3x^2)e^{2x} \\).</p><p><strong>Step 5: Initial conditions:</strong> \\( y(0) = C_1 = 0 \\).<br>\\( y'(x) = (C_2 + 6x)e^{2x} + 2(C_2 x + 3x^2)e^{2x} \\implies y'(0) = C_2 = 1 \\).<br>Particular solution: \\[ y(x) = (x + 3x^2)e^{2x}. \\]</p>",
+        "problem": {
+          "en": "Solve the initial value problem \\[ y'' - 4y' + 4y = 6e^{2x}, \\qquad y(0) = 0, \\quad y'(0) = 1. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 4r + 4 = (r - 2)^2 = 0 \\implies y_c(x) = (C_1 + C_2 x)e^{2x}. \\]</p><p><strong>Step 2: Trial form with resonance:</strong> The standard trial \\( A e^{2x} \\) and \\( A x e^{2x} \\) are both already present in \\( y_c \\) because \\( r = 2 \\) is a double root (multiplicity \\( s = 2 \\)). Therefore: \\[ y_p(x) = A x^2 e^{2x}. \\]</p><p><strong>Step 3: Derivatives:</strong> \\[ y_p'(x) = A(2x e^{2x} + 2x^2 e^{2x}) = 2A(x + x^2)e^{2x}, \\] \\[ y_p''(x) = 2A(1 + 2x)e^{2x} + 4A(x + x^2)e^{2x} = 2A(1 + 4x + 2x^2)e^{2x}. \\]</p><p><strong>Step 4: Substitute:</strong> \\[ e^{2x}\\Big[2A(1 + 4x + 2x^2) - 4\\cdot 2A(x + x^2) + 4\\cdot A x^2\\Big] = 6e^{2x} \\] \\[ e^{2x}\\Big[2A + (8A - 8A)x + (4A - 8A + 4A)x^2\\Big] = 2A e^{2x} = 6e^{2x} \\implies 2A = 6 \\implies A = 3. \\] Thus \\( y_p(x) = 3x^2 e^{2x} \\), and general solution is \\( y(x) = (C_1 + C_2 x + 3x^2)e^{2x} \\).</p><p><strong>Step 5: Initial conditions:</strong> \\( y(0) = C_1 = 0 \\).<br>\\( y'(x) = (C_2 + 6x)e^{2x} + 2(C_2 x + 3x^2)e^{2x} \\implies y'(0) = C_2 = 1 \\).<br>Particular solution: \\[ y(x) = (x + 3x^2)e^{2x}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 4.C — Analytical Application: Driven RLC Circuit & Steady-State Gain",
           "ar": null
         },
-        "body": {
-          "en": "<p>A series RLC circuit with charge \\( Q(t) \\) is driven by alternating voltage: \\[ L \\frac{d^2Q}{dt^2} + R \\frac{dQ}{dt} + \\frac{1}{C}Q = V_0 \\cos(\\omega t). \\] Compute the steady-state current \\( I_{\\text{ss}}(t) = \\frac{dQ_{\\text{ss}}}{dt} \\) and the resonant driving frequency \\( \\omega_{\\text{res}} \\) that maximizes current amplitude.</p><p><strong>Step 1: Complex trial method:</strong> Consider the complex ODE \\( L Q'' + R Q' + \\frac{1}{C}Q = V_0 e^{i\\omega t} \\). Trial: \\( Q_p(t) = Q_0 e^{i\\omega t} \\). \\[ Q_0\\left(-L\\omega^2 + i R \\omega + \\frac{1}{C}\\right)e^{i\\omega t} = V_0 e^{i\\omega t} \\implies Q_0 = \\frac{V_0}{(1/C - L\\omega^2) + i R\\omega}. \\]</p><p><strong>Step 2: Steady-state current:</strong> \\( I_p(t) = Q_p'(t) = i\\omega Q_0 e^{i\\omega t} = \\frac{V_0 e^{i\\omega t}}{R + i(L\\omega - \\frac{1}{C\\omega})} = \\frac{V_0}{Z(\\omega)} e^{i(\\omega t - \\phi)} \\), where impedance magnitude is: \\[ |Z(\\omega)| = \\sqrt{R^2 + \\left(L\\omega - \\frac{1}{\\omega C}\\right)^2}. \\]</p><p><strong>Step 3: Resonant frequency:</strong> Current amplitude \\( I_0 = \\frac{V_0}{|Z(\\omega)|} \\) is maximized when impedance \\( |Z| \\) is minimized: \\[ L\\omega - \\frac{1}{\\omega C} = 0 \\implies \\omega_{\\text{res}} = \\frac{1}{\\sqrt{LC}}. \\] At electrical resonance, impedance is purely resistive \\( Z = R \\), and current reaches its absolute physical peak \\( I_{\\max} = V_0/R \\).</p>",
+        "problem": {
+          "en": "A series RLC circuit with charge \\( Q(t) \\) is driven by alternating voltage: \\[ L \\frac{d^2Q}{dt^2} + R \\frac{dQ}{dt} + \\frac{1}{C}Q = V_0 \\cos(\\omega t). \\] Compute the steady-state current \\( I_{\\text{ss}}(t) = \\frac{dQ_{\\text{ss}}}{dt} \\) and the resonant driving frequency \\( \\omega_{\\text{res}} \\) that maximizes current amplitude.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Complex trial method:</strong> Consider the complex ODE \\( L Q'' + R Q' + \\frac{1}{C}Q = V_0 e^{i\\omega t} \\). Trial: \\( Q_p(t) = Q_0 e^{i\\omega t} \\). \\[ Q_0\\left(-L\\omega^2 + i R \\omega + \\frac{1}{C}\\right)e^{i\\omega t} = V_0 e^{i\\omega t} \\implies Q_0 = \\frac{V_0}{(1/C - L\\omega^2) + i R\\omega}. \\]</p><p><strong>Step 2: Steady-state current:</strong> \\( I_p(t) = Q_p'(t) = i\\omega Q_0 e^{i\\omega t} = \\frac{V_0 e^{i\\omega t}}{R + i(L\\omega - \\frac{1}{C\\omega})} = \\frac{V_0}{Z(\\omega)} e^{i(\\omega t - \\phi)} \\), where impedance magnitude is: \\[ |Z(\\omega)| = \\sqrt{R^2 + \\left(L\\omega - \\frac{1}{\\omega C}\\right)^2}. \\]</p><p><strong>Step 3: Resonant frequency:</strong> Current amplitude \\( I_0 = \\frac{V_0}{|Z(\\omega)|} \\) is maximized when impedance \\( |Z| \\) is minimized: \\[ L\\omega - \\frac{1}{\\omega C} = 0 \\implies \\omega_{\\text{res}} = \\frac{1}{\\sqrt{LC}}. \\] At electrical resonance, impedance is purely resistive \\( Z = R \\), and current reaches its absolute physical peak \\( I_{\\max} = V_0/R \\).</p>",
           "ar": null
         }
       },
@@ -410,14 +419,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Consider the second-order linear nonhomogeneous differential equation: \\(y''(x) - 3y'(x) + 2y(x) = 4\\). Find the particular solution, \\(y_p(x)\\), using the method of Undetermined Coefficients.</p><p><strong>Step-by-Step Solution:</strong> The given differential equation is \\(y''(x) - 3y'(x) + 2y(x) = 4\\). Since the right-hand side is a constant, we guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation:\n\\(0 - 3(0) + 2(A) = 4\\)\n\\(2A = 4\\)\n\\(A = 2\\)\nTherefore, the particular solution is \\(y_p(x) = 2\\).</p>",
+        "problem": {
+          "en": "Consider the second-order linear nonhomogeneous differential equation: \\(y''(x) - 3y'(x) + 2y(x) = 4\\). Find the particular solution, \\(y_p(x)\\), using the method of Undetermined Coefficients.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The given differential equation is \\(y''(x) - 3y'(x) + 2y(x) = 4\\). Since the right-hand side is a constant, we guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation:\n\\(0 - 3(0) + 2(A) = 4\\)\n\\(2A = 4\\)\n\\(A = 2\\)\nTherefore, the particular solution is \\(y_p(x) = 2\\).</p>",
           "ar": null
         }
       },

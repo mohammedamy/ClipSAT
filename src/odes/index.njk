@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: odes
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/odes/"
+enAltPath: "/odes/"
+arAltPath: "/ar/odes/"
 title: "Differential Equations · ClipSAT"
 description: "Ordinary Differential Equations — proof-first, with full analytical derivations, interactive slope-field, auxiliary root, phase-portrait, and Euler visualizers, and 25 university-rigor practice problems."
-isRtl: false
 ---
 {#
   Renders from content/odes/* (docs/CONTENT_MODEL.md), following the pattern established by
@@ -24,33 +29,28 @@ isRtl: false
   Features 5 interactive canvas explorers (odeSlopeCanvas, odeLinearCanvas, odeAuxCanvas, odeSysCanvas, odeEulerCanvas)
   and 25 university-rigor free-response problems with complete step-by-step proofs and analytical solutions.
 #}
-{% set odes = migratedContent.odes %}
-{% set pageHeader = odes.meta.meta.pageHeader %}
-<main id="view-odes" class="view active">
+{% set trackData = migratedContent.odes %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'odes-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'odes-testgen' %}
+{% set downloadsId = 'odes-downloads' %}
+<main id="view-odes" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = odes.chapters %}
-    {% set practiceSetId = 'odes-practice' %}
-    {% set testGeneratorId = 'odes-testgen' %}
-    {% set downloadsId = 'odes-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in odes.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'odes-practice' %}
-      {% set practiceSet = odes.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'odes-testgen' %}
-      {% set testGenerator = odes.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'odes-downloads' %}
-      {% set courseMeta = odes.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

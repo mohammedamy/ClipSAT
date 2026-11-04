@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: tahsili
-title: "Tahsili · ClipSAT"
-description: "اختبار التحصيلي – رياضيات"
+pageLocale: "en"
 isRtl: false
+isSyllabusHub: true
+canonicalPath: "/tahsili/"
+enAltPath: "/tahsili/"
+arAltPath: "/ar/tahsili/"
+title: "SAAT Tahsili Mathematics · ClipSAT"
+description: "Saudi ETEC/Qiyas Standardized Achievement Admission Test (SAAT Tahsili — Mathematics Section, 25% of Exam) — algebra, geometry, trigonometry, matrices, limits, derivatives, and integrals."
 ---
 {#
   Renders from content/tahsili/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -13,33 +18,28 @@ isRtl: false
   to be kept as an inert rollback path — no longer needed once every track had been
   migrated and verified live.
 #}
-{% set tahsili = migratedContent.tahsili %}
-{% set pageHeader = tahsili.meta.meta.pageHeader %}
-<main id="view-tahsili" class="view active">
+{% set trackData = migratedContent.tahsili %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'tah-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'tah-testgen' %}
+{% set downloadsId = 'tah-downloads' %}
+<main id="view-tahsili" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = tahsili.chapters %}
-    {% set practiceSetId = 'tah-practice' %}
-    {% set testGeneratorId = 'tah-testgen' %}
-    {% set downloadsId = 'tah-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in tahsili.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'tah-practice' %}
-      {% set practiceSet = tahsili.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'tah-testgen' %}
-      {% set testGenerator = tahsili.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'tah-downloads' %}
-      {% set courseMeta = tahsili.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

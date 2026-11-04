@@ -1,0 +1,33 @@
+---
+layout: base.njk
+pagination:
+  data: practicePages
+  size: 1
+  alias: pp
+permalink: "{{ pp.permalink }}"
+---
+{% set _track = migratedContent[pp.trackId] %}
+{% set pageHeader = _track.meta.meta.pageHeader %}
+{% set chapters = _track.chapters %}
+{% set sectionId = pp.sectionId %}
+{% set practiceSet = _track.practiceSet %}
+{% set practiceItemsOverride = _track.practiceSet.items.slice(pp.sliceStart, pp.sliceEnd) %}
+{% set practiceHeadingEn = pp.practiceHeadingEn %}
+{% set practiceHeadingAr = pp.practiceHeadingAr %}
+{% set practicePartNum = pp.practicePartNum %}
+{% set practiceParts = pp.practiceParts %}
+{% set practiceSetId = pp.practiceSetId %}
+{% set practiceSetIcon = pp.practiceSetIcon %}
+{% set testGeneratorId = pp.testGeneratorId %}
+{% set downloadsId = pp.downloadsId %}
+{% set railNoTrackId = pp.railNoTrackId %}
+{% set isPracticePage = true %}
+<main id="view-{{ pp.trackId }}" class="view active" data-practice-route="1">
+  {% include "partials/subject-head.njk" %}
+  <div class="wrap calc-body">
+    {% include "partials/rail.njk" %}
+    <div class="content">
+      {% include "partials/practice-set.njk" %}
+    </div>
+  </div>
+</main>

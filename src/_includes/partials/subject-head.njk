@@ -1,27 +1,34 @@
 {#
   Renders <section class="subject-head {trackId}"> — the page H1 + small stat row at the top of
-  a track page. Matches the site's real markup exactly. Distinct from meta.title (used in
-  <title>/nav/cards) since the on-page H1 can read differently.
-  pageHeader.noTrackClass (WP33, calculus) — calculus's real source omits the trailing trackId
-  class entirely (just <section class="subject-head">), unlike every other track.
-  Expects: trackId, pageHeader (courseMeta.pageHeader)
+  a track page. On per-chapter SSG pages (`isChapterPage == true`), renders a compact course
+  banner link (`<div class="subject-head-course-link">`) instead of `<h1>` so the chapter's own
+  heading in `chapter.njk` is the page's unique `<h1>` (WP-30) and mobile above-the-fold reading
+  height stays >= 78% (WP-27).
 #}
-{% import "partials/_bilingual.njk" as bl %}
-<section class="subject-head{% if not pageHeader.noTrackClass %} {{ trackId }}{% endif %}">
+{% import "partials/_bilingual.njk" as bl with context %}
+<section class="subject-head{% if not pageHeader.noTrackClass %} {{ trackId }}{% endif %}{% if isChapterPage or isPracticePage %} subject-head-compact{% endif %}">
   <div class="wrap">
-    <span class="eyebrow{% if pageHeader.eyebrowClass %} {{ pageHeader.eyebrowClass }}{% endif %}">{% if pageHeader.eyebrow %}{{ bl.text(pageHeader.eyebrow) }}{% endif %}</span>
-    <h1>{{ bl.text(pageHeader.h1) }}</h1>
+    <span class="eyebrow{% if pageHeader.eyebrowClass %} {{ pageHeader.eyebrowClass }}{% endif %}">{% if pageHeader.eyebrow %}{{ bl.text(pageHeader.eyebrow, 'span', pageLocale) }}{% endif %}</span>
+    {% if isChapterPage or isPracticePage %}
+    <div class="subject-head-course-title">
+      <a href="{{ '/ar/' + trackId + '/' if pageLocale == 'ar' else '/' + trackId + '/' }}" class="subject-head-backlink">{{ bl.text(pageHeader.h1, 'span', pageLocale) }}</a>
+    </div>
+    {% else %}
+    <h1>{{ bl.text(pageHeader.h1, 'span', pageLocale) }}</h1>
     <div class="meta">
       {% for stat in pageHeader.stats %}
-      <span><b>{{ bl.text(stat.label) }}</b> · {{ bl.text(stat.value) }}</span>
+      <span><b>{{ bl.text(stat.label, 'span', pageLocale) }}</b> · {{ bl.text(stat.value, 'span', pageLocale) }}</span>
       {% endfor %}
     </div>
+    {% endif %}
     <div class="cs-syllabus-transparency">
-      <span class="cs-transparency-badge">✓ <span data-i18n="syllabus.reviewed">Official Syllabus Verified</span></span>
-      <span class="cs-transparency-date"><span data-i18n="syllabus.lastReview">Last reviewed against official syllabus:</span> <b>2025–2026 Academic Year</b></span>
-      <a href="/rigor-standard.html" class="cs-transparency-link" data-i18n="syllabus.standardLink">Standards &amp; Rigor ↗</a>
-      <button type="button" id="cs-offline-pack-btn" class="cs-offline-pack-btn no-print" data-track="{{ trackId }}" onclick="window.CSOfflinePack&&window.CSOfflinePack.saveTrack('{{ trackId }}',this)" style="margin-left:auto;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:99px;padding:3px 11px;font-size:.75rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .15s" title="Save this track's notes, interactive labs, and verified question bank for offline study">
-        <span>📥</span><span data-bilingual><span class="i18n-en">Save Track Offline</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>حفظ للدراسة دون إنترنت</span></span>
+      <span class="cs-transparency-badge">✓ <span data-i18n="syllabus.reviewed">{% if pageLocale == 'ar' %}تم التحقق من المنهج الرسمي{% else %}Official Syllabus Verified{% endif %}</span></span>
+      {% if not (isChapterPage or isPracticePage) %}
+      <span class="cs-transparency-date"><span data-i18n="syllabus.lastReview">{% if pageLocale == 'ar' %}آخر مراجعة وفق المنهج الرسمي:{% else %}Last reviewed against official syllabus:{% endif %}</span> <b>2025–2026 Academic Year</b></span>
+      {% endif %}
+      <a href="/rigor-standard.html" class="cs-transparency-link" data-i18n="syllabus.standardLink">{% if pageLocale == 'ar' %}معايير الجودة والصرامة ↗{% else %}Standards &amp; Rigor ↗{% endif %}</a>
+      <button type="button" id="cs-offline-pack-btn" class="cs-offline-pack-btn no-print" data-track="{{ trackId }}" onclick="window.CSOfflinePack&&window.CSOfflinePack.saveTrack('{{ trackId }}',this)" style="margin-inline-start:auto;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:99px;padding:4px 12px;min-height:36px;font-size:.75rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .15s" title="Save this track's notes, interactive labs, and verified question bank for offline study">
+        <span>📥</span>{% if pageLocale == 'ar' %}<span>حفظ للدراسة دون إنترنت</span>{% elif pageLocale == 'en' %}<span>Save Track Offline</span>{% else %}<span data-bilingual><span class="i18n-en">Save Track Offline</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>حفظ للدراسة دون إنترنت</span></span>{% endif %}
       </button>
     </div>
   </div>

@@ -162,26 +162,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Tabular Riemann Sums & Limit Identification",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Part A:</strong> Water flows out of a reservoir at rate \\(R(t)\\) gal/hr given by the table below. Use a Trapezoidal Sum with the 3 subintervals indicated to approximate \\(\\int_0^{10} R(t)\\,dt\\). If \\(R''(t) > 0\\), is your approximation an overestimate or underestimate?</p><table style=\"width:80%;margin:10px auto;border-collapse:collapse;text-align:center;\"><tr style=\"border-bottom:1px solid var(--line);\"><th>\\(t\\) (hours)</th><td>0</td><td>3</td><td>7</td><td>10</td></tr><tr><th>\\(R(t)\\) (gal/hr)</th><td>120</td><td>90</td><td>65</td><td>50</td></tr></table><p><strong>Part B:</strong> Express the limit as a definite integral and evaluate: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left( 1 + \\frac{3i}{n} \\right)^2 \\frac{3}{n} \\]</p><p><strong>Solution:</strong></p><p><strong>Part A:</strong> Notice subintervals have unequal widths: \\(\\Delta t_1 = 3 - 0 = 3\\), \\(\\Delta t_2 = 7 - 3 = 4\\), \\(\\Delta t_3 = 10 - 7 = 3\\). Calculate trapezoidal areas individually: \\[ T_1 = \\frac{3}{2}(120 + 90) = \\frac{3}{2}(210) = 315 \\] \\[ T_2 = \\frac{4}{2}(90 + 65) = 2(155) = 310 \\] \\[ T_3 = \\frac{3}{2}(65 + 50) = \\frac{3}{2}(115) = 172.5 \\] \\[ \\int_0^{10} R(t)\\,dt \\approx 315 + 310 + 172.5 = \\mathbf{797.5\\text{ gallons}}. \\] Since \\(R''(t) > 0\\), the rate function is strictly concave up on \\([0, 10]\\). The secant line chords lie above the curve on each subinterval, so \\(797.5\\text{ gal}\\) is an <strong>overestimate</strong>.</p><p><strong>Part B:</strong> Match with \\(\\lim_{n\\to\\infty} \\sum_{i=1}^n f(a + i\\Delta x)\\Delta x\\). Here \\(\\Delta x = \\frac{3}{n} = \\frac{b - a}{n}\\). Choose \\(a = 1\\), so \\(b - a = 3 \\implies b = 4\\). The sample points are \\(x_i = 1 + \\frac{3i}{n}\\), and \\(f(x) = x^2\\). Thus: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left(1 + \\frac{3i}{n}\\right)^2 \\frac{3}{n} = \\int_1^4 x^2\\,dx = \\left[ \\frac{x^3}{3} \\right]_1^4 = \\frac{64}{3} - \\frac{1}{3} = \\mathbf{21}. \\]</p>",
+        "problem": {
+          "en": "<strong>Part A:</strong> Water flows out of a reservoir at rate \\(R(t)\\) gal/hr given by the table below. Use a Trapezoidal Sum with the 3 subintervals indicated to approximate \\(\\int_0^{10} R(t)\\,dt\\). If \\(R''(t) > 0\\), is your approximation an overestimate or underestimate?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<table style=\"width:80%;margin:10px auto;border-collapse:collapse;text-align:center;\"><tr style=\"border-bottom:1px solid var(--line);\"><th>\\(t\\) (hours)</th><td>0</td><td>3</td><td>7</td><td>10</td></tr><tr><th>\\(R(t)\\) (gal/hr)</th><td>120</td><td>90</td><td>65</td><td>50</td></tr></table><p><strong>Part B:</strong> Express the limit as a definite integral and evaluate: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left( 1 + \\frac{3i}{n} \\right)^2 \\frac{3}{n} \\]</p><p><strong>Solution:</strong></p><p><strong>Part A:</strong> Notice subintervals have unequal widths: \\(\\Delta t_1 = 3 - 0 = 3\\), \\(\\Delta t_2 = 7 - 3 = 4\\), \\(\\Delta t_3 = 10 - 7 = 3\\). Calculate trapezoidal areas individually: \\[ T_1 = \\frac{3}{2}(120 + 90) = \\frac{3}{2}(210) = 315 \\] \\[ T_2 = \\frac{4}{2}(90 + 65) = 2(155) = 310 \\] \\[ T_3 = \\frac{3}{2}(65 + 50) = \\frac{3}{2}(115) = 172.5 \\] \\[ \\int_0^{10} R(t)\\,dt \\approx 315 + 310 + 172.5 = \\mathbf{797.5\\text{ gallons}}. \\] Since \\(R''(t) > 0\\), the rate function is strictly concave up on \\([0, 10]\\). The secant line chords lie above the curve on each subinterval, so \\(797.5\\text{ gal}\\) is an <strong>overestimate</strong>.</p><p><strong>Part B:</strong> Match with \\(\\lim_{n\\to\\infty} \\sum_{i=1}^n f(a + i\\Delta x)\\Delta x\\). Here \\(\\Delta x = \\frac{3}{n} = \\frac{b - a}{n}\\). Choose \\(a = 1\\), so \\(b - a = 3 \\implies b = 4\\). The sample points are \\(x_i = 1 + \\frac{3i}{n}\\), and \\(f(x) = x^2\\). Thus: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left(1 + \\frac{3i}{n}\\right)^2 \\frac{3}{n} = \\int_1^4 x^2\\,dx = \\left[ \\frac{x^3}{3} \\right]_1^4 = \\frac{64}{3} - \\frac{1}{3} = \\mathbf{21}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Unit 6 · Integration and Accumulation of Change (Easy Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Consider the function \\( f(x) = 4 \\). What is the value of the definite integral \\( \\int_{3}^{6} f(x) \\, dx \\)?</p><p><strong>Step-by-Step Solution:</strong> The definite integral \\( \\int_{a}^{b} c \\, dx \\) where c is a constant represents the area of a rectangle with height c and width \\( b-a \\). In this case, \\( c = 4 \\), \\( a = 3 \\), and \\( b = 6 \\). Therefore, the value of the integral is \\( 4 \\times (6-3) = 4 \\times 3 = 12 \\).</p>",
+        "problem": {
+          "en": "Consider the function \\( f(x) = 4 \\). What is the value of the definite integral \\( \\int_{3}^{6} f(x) \\, dx \\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The definite integral \\( \\int_{a}^{b} c \\, dx \\) where c is a constant represents the area of a rectangle with height c and width \\( b-a \\). In this case, \\( c = 4 \\), \\( a = 3 \\), and \\( b = 6 \\). Therefore, the value of the integral is \\( 4 \\times (6-3) = 4 \\times 3 = 12 \\).</p>",
           "ar": null
         }
       },
@@ -432,14 +438,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 2 (Medium) — Worked Example · Piecewise Geometric Accumulation Function",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Let \\(g(x) = \\int_{-2}^x f(t)\\,dt\\) for \\(-2 \\le x \\le 6\\), where the continuous graph of \\(f(t)\\) consists of a semicircle of radius 2 from \\(t = -2\\) to \\(t = 2\\) located above the axis, followed by a line segment from \\((2, 0)\\) to \\((6, -4)\\).</p><ol><li>Evaluate \\(g(2)\\), \\(g'(2)\\), and \\(g''(2)\\) (or state DNE).</li><li>Find all critical points of \\(g\\) on \\((-2, 6)\\) and classify them.</li><li>Find the absolute maximum value of \\(g\\) on \\([-2, 6]\\).</li></ol><p><strong>Solution:</strong></p><ol><li>\\(g(2) = \\int_{-2}^2 f(t)\\,dt = \\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi(2)^2 = \\mathbf{2\\pi}\\).<br>By FTC Part 1: \\(g'(x) = f(x) \\implies g'(2) = f(2) = \\mathbf{0}\\).<br>\\(g''(x) = f'(x)\\). The slope of the semicircle as \\(t \\to 2^-\\) approaches \\(-\\infty\\), while the line segment has slope \\(m = \\frac{-4 - 0}{6 - 2} = -1\\). Thus \\(g''(2) = f'(2)\\) <strong>does not exist</strong> (corner/vertical tangent in \\(f\\)).</li><li>Critical points of \\(g\\) occur when \\(g'(x) = f(x) = 0\\): on \\((-2, 6)\\), \\(f(x) = 0\\) at \\(x = 2\\). For \\(x \\in (-2, 2)\\), \\(f(x) > 0 \\implies g'(x) > 0\\). For \\(x \\in (2, 6)\\), \\(f(x) < 0 \\implies g'(x) < 0\\). Since \\(g'\\) changes from positive to negative at \\(x = 2\\), \\(g\\) has a <strong>relative maximum at \\(x = 2\\)</strong>.</li><li>Apply the Candidates Test on \\([-2, 6]\\):<ul><li>Endpoint \\(x = -2\\): \\(g(-2) = \\int_{-2}^{-2} f(t)\\,dt = 0\\)</li><li>Critical point \\(x = 2\\): \\(g(2) = 2\\pi \\approx 6.283\\)</li><li>Endpoint \\(x = 6\\): \\(g(6) = \\int_{-2}^2 f(t)\\,dt + \\int_2^6 f(t)\\,dt = 2\\pi - \\frac{1}{2}(4)(4) = 2\\pi - 8 \\approx -1.717\\)</li></ul>The <strong>absolute maximum value of \\(g\\) is \\(2\\pi\\)</strong>, attained at \\(x = 2\\).</li></ol>",
+        "problem": {
+          "en": "Let \\(g(x) = \\int_{-2}^x f(t)\\,dt\\) for \\(-2 \\le x \\le 6\\), where the continuous graph of \\(f(t)\\) consists of a semicircle of radius 2 from \\(t = -2\\) to \\(t = 2\\) located above the axis, followed by a line segment from \\((2, 0)\\) to \\((6, -4)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<ol><li>Evaluate \\(g(2)\\), \\(g'(2)\\), and \\(g''(2)\\) (or state DNE).</li><li>Find all critical points of \\(g\\) on \\((-2, 6)\\) and classify them.</li><li>Find the absolute maximum value of \\(g\\) on \\([-2, 6]\\).</li></ol><p><strong>Solution:</strong></p><ol><li>\\(g(2) = \\int_{-2}^2 f(t)\\,dt = \\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi(2)^2 = \\mathbf{2\\pi}\\).<br>By FTC Part 1: \\(g'(x) = f(x) \\implies g'(2) = f(2) = \\mathbf{0}\\).<br>\\(g''(x) = f'(x)\\). The slope of the semicircle as \\(t \\to 2^-\\) approaches \\(-\\infty\\), while the line segment has slope \\(m = \\frac{-4 - 0}{6 - 2} = -1\\). Thus \\(g''(2) = f'(2)\\) <strong>does not exist</strong> (corner/vertical tangent in \\(f\\)).</li><li>Critical points of \\(g\\) occur when \\(g'(x) = f(x) = 0\\): on \\((-2, 6)\\), \\(f(x) = 0\\) at \\(x = 2\\). For \\(x \\in (-2, 2)\\), \\(f(x) > 0 \\implies g'(x) > 0\\). For \\(x \\in (2, 6)\\), \\(f(x) < 0 \\implies g'(x) < 0\\). Since \\(g'\\) changes from positive to negative at \\(x = 2\\), \\(g\\) has a <strong>relative maximum at \\(x = 2\\)</strong>.</li><li>Apply the Candidates Test on \\([-2, 6]\\):<ul><li>Endpoint \\(x = -2\\): \\(g(-2) = \\int_{-2}^{-2} f(t)\\,dt = 0\\)</li><li>Critical point \\(x = 2\\): \\(g(2) = 2\\pi \\approx 6.283\\)</li><li>Endpoint \\(x = 6\\): \\(g(6) = \\int_{-2}^2 f(t)\\,dt + \\int_2^6 f(t)\\,dt = 2\\pi - \\frac{1}{2}(4)(4) = 2\\pi - 8 \\approx -1.717\\)</li></ul>The <strong>absolute maximum value of \\(g\\) is \\(2\\pi\\)</strong>, attained at \\(x = 2\\).</li></ol>",
           "ar": null
         }
       },
@@ -489,14 +498,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Level 3 (Advanced / FRQ) — Worked Example · Completing the Square & Trig Substitution",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Evaluate the definite integral: \\[ \\int_1^3 \\frac{2x - 3}{x^2 - 2x + 5}\\,dx \\]</p><p><strong>Solution:</strong></p><ol><li><strong>Decompose the numerator into derivative of denominator plus constant:</strong> The derivative of \\(x^2 - 2x + 5\\) is \\(2x - 2\\). Rewrite: \\[ 2x - 3 = (2x - 2) - 1 \\] Split the integral into two terms: \\[ \\int_1^3 \\frac{2x - 2}{x^2 - 2x + 5}\\,dx - \\int_1^3 \\frac{1}{x^2 - 2x + 5}\\,dx = I_1 - I_2 \\]</li><li><strong>Evaluate \\(I_1\\) via logarithmic substitution:</strong> Let \\(u = x^2 - 2x + 5 \\implies du = (2x - 2)\\,dx\\).<br>When \\(x = 1\\): \\(u = 1 - 2 + 5 = 4\\). When \\(x = 3\\): \\(u = 9 - 6 + 5 = 8\\). \\[ I_1 = \\int_4^8 \\frac{1}{u}\\,du = [\\ln|u|]_4^8 = \\ln 8 - \\ln 4 = \\ln\\left(\\frac{8}{4}\\right) = \\ln 2 \\]</li><li><strong>Evaluate \\(I_2\\) by completing the square:</strong> \\[ x^2 - 2x + 5 = (x - 1)^2 + 4 = (x - 1)^2 + 2^2 \\] Let \\(w = x - 1 \\implies dw = dx\\). Limits: \\(x = 1 \\implies w = 0\\); \\(x = 3 \\implies w = 2\\). \\[ I_2 = \\int_0^2 \\frac{dw}{w^2 + 2^2} = \\left[ \\frac{1}{2}\\arctan\\left(\\frac{w}{2}\\right) \\right]_0^2 = \\frac{1}{2}\\left( \\arctan(1) - \\arctan(0) \\right) = \\frac{1}{2}\\left(\\frac{\\pi}{4} - 0\\right) = \\frac{\\pi}{8} \\]</li><li><strong>Combine results:</strong> \\[ \\int_1^3 \\frac{2x - 3}{x^2 - 2x + 5}\\,dx = \\mathbf{\\ln 2 - \\frac{\\pi}{8}} \\approx 0.6931 - 0.3927 = 0.3004. \\]</li></ol>",
+        "problem": {
+          "en": "Evaluate the definite integral: \\[ \\int_1^3 \\frac{2x - 3}{x^2 - 2x + 5}\\,dx \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<ol><li><strong>Decompose the numerator into derivative of denominator plus constant:</strong> The derivative of \\(x^2 - 2x + 5\\) is \\(2x - 2\\). Rewrite: \\[ 2x - 3 = (2x - 2) - 1 \\] Split the integral into two terms: \\[ \\int_1^3 \\frac{2x - 2}{x^2 - 2x + 5}\\,dx - \\int_1^3 \\frac{1}{x^2 - 2x + 5}\\,dx = I_1 - I_2 \\]</li><li><strong>Evaluate \\(I_1\\) via logarithmic substitution:</strong> Let \\(u = x^2 - 2x + 5 \\implies du = (2x - 2)\\,dx\\).<br>When \\(x = 1\\): \\(u = 1 - 2 + 5 = 4\\). When \\(x = 3\\): \\(u = 9 - 6 + 5 = 8\\). \\[ I_1 = \\int_4^8 \\frac{1}{u}\\,du = [\\ln|u|]_4^8 = \\ln 8 - \\ln 4 = \\ln\\left(\\frac{8}{4}\\right) = \\ln 2 \\]</li><li><strong>Evaluate \\(I_2\\) by completing the square:</strong> \\[ x^2 - 2x + 5 = (x - 1)^2 + 4 = (x - 1)^2 + 2^2 \\] Let \\(w = x - 1 \\implies dw = dx\\). Limits: \\(x = 1 \\implies w = 0\\); \\(x = 3 \\implies w = 2\\). \\[ I_2 = \\int_0^2 \\frac{dw}{w^2 + 2^2} = \\left[ \\frac{1}{2}\\arctan\\left(\\frac{w}{2}\\right) \\right]_0^2 = \\frac{1}{2}\\left( \\arctan(1) - \\arctan(0) \\right) = \\frac{1}{2}\\left(\\frac{\\pi}{4} - 0\\right) = \\frac{\\pi}{8} \\]</li><li><strong>Combine results:</strong> \\[ \\int_1^3 \\frac{2x - 3}{x^2 - 2x + 5}\\,dx = \\mathbf{\\ln 2 - \\frac{\\pi}{8}} \\approx 0.6931 - 0.3927 = 0.3004. \\]</li></ol>",
           "ar": null
         }
       },

@@ -27,10 +27,10 @@
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-testgen' — NOT derived from
   trackId, see rail.njk), testGenerator (courseMeta.testGenerator)
 #}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
 {% set compact = testGenerator.variant == 'compact' %}
 {% set ib = testGenerator.variant == 'ib' %}
-<section class="chapter testgen" id="{{ sectionId }}">
+<section class="chapter{% if isSyllabusHub %} ch-active{% endif %} testgen" id="{{ sectionId }}">
   {% if testGenerator.introText %}<p>{{ bl.text(testGenerator.introText) }}</p>{% endif %}
   {% if trackId == 'qudrat' or trackId == 'tahsili' %}
   <div class="cs-exam-lang-ctrl" style="margin:12px 0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">

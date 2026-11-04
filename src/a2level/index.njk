@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: a2level
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/a2level/"
+enAltPath: "/a2level/"
+arAltPath: "/ar/a2level/"
 title: "A2 Level Mathematics · ClipSAT"
 description: "Modulus and inverse functions, exponentials and logarithms, advanced trigonometry, calculus, series, vectors, and Statistics 2"
-isRtl: false
 ---
 {#
   Renders from content/a2level/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -42,33 +47,28 @@ isRtl: false
   embedded inside a callout.note's body (a raw-HTML string, same mechanism used by sat's
   embedded two-way tables), not the sm-row/sm-bar shape.
 #}
-{% set a2level = migratedContent.a2level %}
-{% set pageHeader = a2level.meta.meta.pageHeader %}
-<main id="view-a2level" class="view active">
+{% set trackData = migratedContent.a2level %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'a2l-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'a2l-testgen' %}
+{% set downloadsId = 'a2l-downloads' %}
+<main id="view-a2level" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = a2level.chapters %}
-    {% set practiceSetId = 'a2l-practice' %}
-    {% set testGeneratorId = 'a2l-testgen' %}
-    {% set downloadsId = 'a2l-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in a2level.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'a2l-practice' %}
-      {% set practiceSet = a2level.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'a2l-testgen' %}
-      {% set testGenerator = a2level.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'a2l-downloads' %}
-      {% set courseMeta = a2level.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

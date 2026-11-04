@@ -1,33 +1,23 @@
-{#
-  Renders one 'practiceProblem' block (course_schema.json #/definitions/practiceProblemBlock).
-  Matches the site's real <div class="problem"> markup exactly, including the chevron-SVG "Show
-  solution" button and toggleSol(this) handler (existing engine.js JS, unmodified) — these are
-  identical on every real instance, so they're static template markup here, not per-instance
-  schema fields (docs/DECISIONS/0002's blocks-model token-efficiency principle).
-  Expects: block (the practiceProblem object)
-#}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
 <div class="problem">
-  <div class="problem-q" style="padding:14px 16px">{{ bl.text(block.question, 'div') }}</div>
+  <div class="problem-q">{{ bl.text(block.question, 'div') }}</div>
   {% if block.hints and block.hints.length %}
-  <div class="problem-hints" style="padding:0 16px 10px;display:flex;flex-direction:column;gap:6px">
+  <div class="problem-hints">
     {% for h in block.hints %}
-    <details class="hint-tier" style="background:var(--panel,#f8fafc);border:1px dashed var(--line,#cbd5e1);border-radius:6px;padding:6px 12px;font-size:.85rem">
-      <summary style="cursor:pointer;font-weight:600;color:var(--indigo,#4338ca)"><span>💡 Hint {{ loop.index }} of {{ block.hints.length }}</span></summary>
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:6px"><div class="cs-hint-body" style="color:var(--ink,#1e293b);line-height:1.5;flex:1">{{ bl.text(h, 'div') }}</div><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakTier(this,event)" title="Listen to this hint" aria-label="Listen to Hint {{ loop.index }}"><span>🔊</span></button></div>
+    <details class="hint-tier">
+      <summary class="hint-tier-sum"><span>💡 Hint {{ loop.index }} of {{ block.hints.length }}</span></summary>
+      <div class="hint-tier-row"><div class="cs-hint-body">{{ bl.text(h, 'div') }}</div><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakTier(this,event)" title="Listen to this hint" aria-label="Listen to Hint {{ loop.index }}"><span>🔊</span></button></div>
     </details>
     {% endfor %}
   </div>
   {% endif %}
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px 8px;gap:8px;flex-wrap:wrap">
-    <div style="display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap">
+  <div class="problem-actions">
+    <div class="ps-item-actions">
       <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
       <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to worked solution" aria-label="Listen to worked solution"><span>🔊</span><span>Listen</span></button>
       <button type="button" class="cs-flag-btn no-print" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="Report an error in this question" aria-label="Report Error"><span>🚩</span><span class="cs-flag-lbl">Report Error</span></button>
     </div>
-    <button type="button" class="btn-intuition-ar" onclick="window.askArabicIntuition&&window.askArabicIntuition(this)" style="background:transparent;border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:3px 8px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--indigo,#1e3e70);display:inline-flex;align-items:center;gap:4px;transition:all .15s ease" title="اشرح الفكرة والحدس الرياضي بالعربية">
-      <span>💡 اشرح الفكرة بالعربية</span>
-    </button>
+    <button type="button" class="btn-intuition-ar" onclick="window.askArabicIntuition&&window.askArabicIntuition(this)" title="اشرح الفكرة والحدس الرياضي بالعربية"><span>💡 اشرح الفكرة بالعربية</span></button>
   </div>
-  <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">{{ bl.text(block.solution, 'div') }}</div>
+  <div class="solution problem-sol">{{ bl.text(block.solution, 'div') }}</div>
 </div>

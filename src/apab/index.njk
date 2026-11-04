@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: apab
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/apab/"
+enAltPath: "/apab/"
+arAltPath: "/ar/apab/"
 title: "AP Calculus AB · ClipSAT"
 description: "Single-variable differential and integral calculus across eight units — limits, derivatives, integrals, and their applications"
-isRtl: false
 ---
 {#
   Renders from content/apab/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -38,35 +43,28 @@ isRtl: false
   (Left/Right/Midpoint sample point), not a range slider — course_schema.json's
   explorerBlock.controls[].options, new this track (docs/DECISIONS/0015).
 #}
-{% set apab = migratedContent.apab %}
-{% set pageHeader = apab.meta.meta.pageHeader %}
-<main id="view-apab" class="view active">
+{% set trackData = migratedContent.apab %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'apab-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'apab-testgen' %}
+{% set downloadsId = 'apab-downloads' %}
+<main id="view-apab" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = apab.chapters %}
-    {% set practiceSetId = 'apab-practice' %}
-    {% set practiceSetLabel = apab.practiceSet.heading %}
-    {% set practiceSetIcon = apab.practiceSet.icon %}
-    {% set testGeneratorId = 'apab-testgen' %}
-    {% set downloadsId = 'apab-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in apab.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'apab-practice' %}
-      {% set practiceSet = apab.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'apab-testgen' %}
-      {% set testGenerator = apab.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'apab-downloads' %}
-      {% set courseMeta = apab.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

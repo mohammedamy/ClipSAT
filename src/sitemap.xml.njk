@@ -1,0 +1,67 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {%- set staticPages = [
+    { path: "/", priority: "1.0", freq: "weekly" },
+    { path: "/pricing/", priority: "0.8", freq: "monthly" },
+    { path: "/calculator/", priority: "0.8", freq: "monthly" },
+    { path: "/about/", priority: "0.6", freq: "monthly" },
+    { path: "/trust/", priority: "0.6", freq: "monthly" },
+    { path: "/contact/", priority: "0.5", freq: "monthly" },
+    { path: "/privacy/", priority: "0.4", freq: "yearly" },
+    { path: "/terms/", priority: "0.4", freq: "yearly" },
+    { path: "/cookies/", priority: "0.4", freq: "yearly" },
+    { path: "/changelog.html", priority: "0.5", freq: "weekly" },
+    { path: "/rigor-standard.html", priority: "0.6", freq: "monthly" },
+    { path: "/free-tier-promise.html", priority: "0.6", freq: "monthly" }
+  ] -%}
+  {%- for sp in staticPages %}
+  <url>
+    <loc>https://clipsat.org{{ sp.path }}</loc>
+    <changefreq>{{ sp.freq }}</changefreq>
+    <priority>{{ sp.priority }}</priority>
+  </url>
+  {%- endfor %}
+  {%- for hub in arabicTrackHubs %}
+  <url>
+    <loc>https://clipsat.org{{ hub.enAltPath }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://clipsat.org{{ hub.enAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://clipsat.org{{ hub.arAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clipsat.org{{ hub.enAltPath }}" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://clipsat.org{{ hub.arAltPath }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://clipsat.org{{ hub.enAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://clipsat.org{{ hub.arAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clipsat.org{{ hub.enAltPath }}" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  {%- endfor %}
+  {%- for cp in chapterPages %}
+  <url>
+    <loc>https://clipsat.org{{ cp.canonicalPath }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://clipsat.org{{ cp.enAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://clipsat.org{{ cp.arAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clipsat.org{{ cp.enAltPath }}" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {%- endfor %}
+  {%- for pp in practicePages %}
+  <url>
+    <loc>https://clipsat.org{{ pp.canonicalPath }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://clipsat.org{{ pp.enAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://clipsat.org{{ pp.arAltPath }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clipsat.org{{ pp.enAltPath }}" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {%- endfor %}
+</urlset>

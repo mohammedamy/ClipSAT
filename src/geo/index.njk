@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: geo
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/geo/"
+enAltPath: "/geo/"
+arAltPath: "/ar/geo/"
 title: "Geometry · ClipSAT"
 description: "High-school Euclidean geometry — proof, congruence, similarity, right-triangle trig, circles, area & volume"
-isRtl: false
 ---
 {#
   Renders from content/geo/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -35,33 +40,28 @@ isRtl: false
   "Chapters · 8" though there are 11 numbered chapters — a real pre-existing source inaccuracy,
   preserved as-is (same call as tahsili's WP9 finding, not silently corrected).
 #}
-{% set geo = migratedContent.geo %}
-{% set pageHeader = geo.meta.meta.pageHeader %}
-<main id="view-geo" class="view active">
+{% set trackData = migratedContent.geo %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'geo-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'geo-testgen' %}
+{% set downloadsId = 'geo-downloads' %}
+<main id="view-geo" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = geo.chapters %}
-    {% set practiceSetId = 'geo-practice' %}
-    {% set testGeneratorId = 'geo-testgen' %}
-    {% set downloadsId = 'geo-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in geo.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'geo-practice' %}
-      {% set practiceSet = geo.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'geo-testgen' %}
-      {% set testGenerator = geo.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'geo-downloads' %}
-      {% set courseMeta = geo.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

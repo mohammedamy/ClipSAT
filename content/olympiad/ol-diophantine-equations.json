@@ -404,51 +404,63 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.A — Counting Unit-Fraction Solutions via SFFT (AMC 10/12 & NSMO)",
           "ar": "مثال محلول 3.A — عدّ حلول معادلة الكسور الوحيدة عبر SFFT (AMC 10/12 ونسما)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> How many ordered pairs of positive integers \\( (x, y) \\) satisfy \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{18} \\)?</p><p><strong>Solution:</strong> Clear denominators (noting \\( x, y > 18 \\) since \\( \\frac{1}{x} < \\frac{1}{18} \\)):<br>\\[ 18(x + y) = xy \\iff xy - 18x - 18y = 0. \\]<br>Add \\( (-18)(-18) = 324 \\) to both sides (SFFT):<br>\\[ (x - 18)(y - 18) = 324 = 2^2 \\cdot 3^4. \\]<br>Since \\( x, y \\ge 1 \\), we have \\( x - 18 > -18 \\) and \\( y - 18 > -18 \\). If \\( x - 18 < 0 \\), both factors are negative with product \\( 324 \\), which is impossible since \\( (-17)(-17) = 289 < 324 \\)! Thus every positive divisor \\( d \\mid 324 \\) gives a unique valid positive pair \\( x = 18 + d,\\; y = 18 + \\frac{324}{d} \\).<br>The number of ordered pairs is \\( \\tau(324) = (2 + 1)(4 + 1) = 15 \\).</p>",
-          "ar": "<p><strong>المسألة:</strong> كم زوجاً مرتباً من الأعداد الصحيحة الموجبة \\( (x, y) \\) يحقق المعادلة \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{18} \\)؟</p><p><strong>الحل الأولمبي:</strong> بضرب الطرفين في \\( 18xy \\) وترتيب الحدود:<br>\\[ xy - 18x - 18y = 0 \\iff (x - 18)(y - 18) = 18^2 = 324 = 2^2 \\cdot 3^4. \\]<br>لا يمكن أن يكون العاملان سالبين معاً لأن \\( x, y \\ge 1 \\implies x - 18 \\ge -17 \\) وأقصى جداء لعاملين سالبين هو \\( (-17)(-17) = 289 < 324 \\). إذن كل قاسم موجب \\( d \\) للعدد \\( 324 \\) يعطي حلاً موجباً وحيداً \\( (18 + d,\\; 18 + 324/d) \\)، وعدد الأزواج المرتبة يساوي \\( \\tau(324) = (2+1)(4+1) = 15 \\).</p>"
+        "problem": {
+          "en": "How many ordered pairs of positive integers \\( (x, y) \\) satisfy \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{18} \\)?",
+          "ar": "كم زوجاً مرتباً من الأعداد الصحيحة الموجبة \\( (x, y) \\) يحقق المعادلة \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{18} \\)؟"
+        },
+        "solution": {
+          "en": "<p>Clear denominators (noting \\( x, y > 18 \\) since \\( \\frac{1}{x} < \\frac{1}{18} \\)):<br>\\[ 18(x + y) = xy \\iff xy - 18x - 18y = 0. \\]<br>Add \\( (-18)(-18) = 324 \\) to both sides (SFFT):<br>\\[ (x - 18)(y - 18) = 324 = 2^2 \\cdot 3^4. \\]<br>Since \\( x, y \\ge 1 \\), we have \\( x - 18 > -18 \\) and \\( y - 18 > -18 \\). If \\( x - 18 < 0 \\), both factors are negative with product \\( 324 \\), which is impossible since \\( (-17)(-17) = 289 < 324 \\)! Thus every positive divisor \\( d \\mid 324 \\) gives a unique valid positive pair \\( x = 18 + d,\\; y = 18 + \\frac{324}{d} \\).<br>The number of ordered pairs is \\( \\tau(324) = (2 + 1)(4 + 1) = 15 \\).</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> بضرب الطرفين في \\( 18xy \\) وترتيب الحدود:<br>\\[ xy - 18x - 18y = 0 \\iff (x - 18)(y - 18) = 18^2 = 324 = 2^2 \\cdot 3^4. \\]<br>لا يمكن أن يكون العاملان سالبين معاً لأن \\( x, y \\ge 1 \\implies x - 18 \\ge -17 \\) وأقصى جداء لعاملين سالبين هو \\( (-17)(-17) = 289 < 324 \\). إذن كل قاسم موجب \\( d \\) للعدد \\( 324 \\) يعطي حلاً موجباً وحيداً \\( (18 + d,\\; 18 + 324/d) \\)، وعدد الأزواج المرتبة يساوي \\( \\tau(324) = (2+1)(4+1) = 15 \\).</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.B — Exponential Diophantine Equation (NSMO Stage 3 / BMO)",
           "ar": "مثال محلول 3.B — حل معادلة ديوفانتية أسية بالكامل (نهائيات نسما / BMO)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find all pairs of non-negative integers \\( (x, y) \\) satisfying \\( 3^x - 2^y = 7 \\).</p><p><strong>Solution:</strong><br>1. Check small \\( y \\) first: \\( y = 0 \\implies 3^x = 8 \\) (no); \\( y = 1 \\implies 3^x = 9 \\implies (x, y) = (2, 1) \\); \\( y = 2 \\implies 3^x = 11 \\) (no).<br>2. Now assume \\( y \\ge 3 \\), so \\( 8 \\mid 2^y \\), meaning \\( 2^y \\equiv 0 \\pmod 8 \\). Reducing the equation modulo \\( 8 \\) gives \\( 3^x = 2^y + 7 \\equiv 7 \\pmod 8 \\). However, powers of \\( 3 \\pmod 8 \\) alternate exclusively between \\( 1 \\) and \\( 3 \\) (\\( 3^{2k} \\equiv 1,\\; 3^{2k+1} \\equiv 3 \\pmod 8 \\)) and can never equal \\( 7 \\pmod 8 \\)!<br>Therefore \\( (x, y) = (2, 1) \\) is the <strong>unique solution</strong> in non-negative integers!</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد جميع أزواج الأعداد الصحيحة غير السالبة \\( (x, y) \\) التي تحقق المعادلة \\( 3^x - 2^y = 7 \\).</p><p><strong>الحل الأولمبي:</strong><br>1. نفحص القيم الصغيرة لـ \\( y \\) أولاً: عند \\( y = 0 \\implies 3^x = 8 \\) (مستحيل)؛ عند \\( y = 1 \\implies 3^x = 9 \\implies (x, y) = (2, 1) \\)؛ عند \\( y = 2 \\implies 3^x = 11 \\) (مستحيل).<br>2. نفترض الآن \\( y \\ge 3 \\)، فيكون \\( 2^y \\equiv 0 \\pmod 8 \\)، وتقتضي المعادلة \\( 3^x = 2^y + 7 \\equiv 7 \\pmod 8 \\). لكن قوى العدد \\( 3 \\) بترديد \\( 8 \\) تتناوب حصراً بين \\( 1 \\) و\\( 3 \\) (\\( 3^{2k} \\equiv 1,\\; 3^{2k+1} \\equiv 3 \\pmod 8 \\)) ولا تساوي \\( 7 \\) أبداً!<br>إذن لا توجد أي حلول أخرى، والحل الوحيد هو <strong>\\( (2, 1) \\)</strong>.</p>"
+        "problem": {
+          "en": "Find all pairs of non-negative integers \\( (x, y) \\) satisfying \\( 3^x - 2^y = 7 \\).",
+          "ar": "أوجد جميع أزواج الأعداد الصحيحة غير السالبة \\( (x, y) \\) التي تحقق المعادلة \\( 3^x - 2^y = 7 \\)."
+        },
+        "solution": {
+          "en": "<p><br>1. Check small \\( y \\) first: \\( y = 0 \\implies 3^x = 8 \\) (no); \\( y = 1 \\implies 3^x = 9 \\implies (x, y) = (2, 1) \\); \\( y = 2 \\implies 3^x = 11 \\) (no).<br>2. Now assume \\( y \\ge 3 \\), so \\( 8 \\mid 2^y \\), meaning \\( 2^y \\equiv 0 \\pmod 8 \\). Reducing the equation modulo \\( 8 \\) gives \\( 3^x = 2^y + 7 \\equiv 7 \\pmod 8 \\). However, powers of \\( 3 \\pmod 8 \\) alternate exclusively between \\( 1 \\) and \\( 3 \\) (\\( 3^{2k} \\equiv 1,\\; 3^{2k+1} \\equiv 3 \\pmod 8 \\)) and can never equal \\( 7 \\pmod 8 \\)!<br>Therefore \\( (x, y) = (2, 1) \\) is the <strong>unique solution</strong> in non-negative integers!</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong><br>1. نفحص القيم الصغيرة لـ \\( y \\) أولاً: عند \\( y = 0 \\implies 3^x = 8 \\) (مستحيل)؛ عند \\( y = 1 \\implies 3^x = 9 \\implies (x, y) = (2, 1) \\)؛ عند \\( y = 2 \\implies 3^x = 11 \\) (مستحيل).<br>2. نفترض الآن \\( y \\ge 3 \\)، فيكون \\( 2^y \\equiv 0 \\pmod 8 \\)، وتقتضي المعادلة \\( 3^x = 2^y + 7 \\equiv 7 \\pmod 8 \\). لكن قوى العدد \\( 3 \\) بترديد \\( 8 \\) تتناوب حصراً بين \\( 1 \\) و\\( 3 \\) (\\( 3^{2k} \\equiv 1,\\; 3^{2k+1} \\equiv 3 \\pmod 8 \\)) ولا تساوي \\( 7 \\) أبداً!<br>إذن لا توجد أي حلول أخرى، والحل الوحيد هو <strong>\\( (2, 1) \\)</strong>.</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.C — Consecutive-Square Bounding in Quartic/Quadratic Equations (KAUST KMC)",
           "ar": "مثال محلول 3.C — الحصر بين مربعين متتاليين (مسابقة كاوست للرياضيات)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find all positive integers \\( n \\) such that \\( n^4 + 2n^3 + 2n^2 + 2n + 1 \\) is a perfect square.</p><p><strong>Solution:</strong> Compare \\( E(n) = n^4 + 2n^3 + 2n^2 + 2n + 1 \\) with nearby squares of monic quadratics \\( (n^2 + n + c)^2 \\):<br>1. Lower square: \\( (n^2 + n)^2 = n^4 + 2n^3 + n^2 < E(n) \\) for all \\( n \\ge 1 \\) (since \\( n^2 + 2n + 1 = (n+1)^2 > 0 \\)).<br>2. Upper square: \\( (n^2 + n + 1)^2 = n^4 + 2n^3 + 3n^2 + 2n + 1 \\). Comparing with \\( E(n) \\):<br>\\[ (n^2 + n + 1)^2 - E(n) = n^2 > 0 \\quad \\text{for all } n \\ge 1. \\]<br>Hence for every positive integer \\( n \\ge 1 \\),<br>\\[ (n^2 + n)^2 < n^4 + 2n^3 + 2n^2 + 2n + 1 < (n^2 + n + 1)^2! \\]<br>Because \\( E(n) \\) is strictly trapped between two consecutive integer squares, there are <strong>zero positive integer solutions</strong>! (Algebraic confirmation: \\( E(n) = (n^2 + 1)(n + 1)^2 \\), which is a square iff \\( n^2 + 1 \\) is a square — impossible for \\( n \\ge 1 \\)!)</p>",
-          "ar": "<p><strong>المسألة:</strong> أوجد جميع الأعداد الصحيحة الموجبة \\( n \\) التي تجعل المقدار \\( n^4 + 2n^3 + 2n^2 + 2n + 1 \\) مربعاً كاملاً.</p><p><strong>الحل الأولمبي (بطريقتين):</strong><br><strong>الطريقة الأولى (الحصر بين مربعين متتاليين):</strong> لكل \\( n \\ge 1 \\) نقارن المقدار \\( E(n) \\) بمربعَي عددين متتاليين:<br>\\[ (n^2 + n)^2 = n^4 + 2n^3 + n^2 < E(n) < n^4 + 2n^3 + 3n^2 + 2n + 1 = (n^2 + n + 1)^2. \\]<br>بما أن \\( E(n) \\) محصور قطعاً بين مربعين متتاليين، فلا يمكن أن يكون مربعاً كاملاً لأي \\( n \\ge 1 \\)!<br><strong>الطريقة الثانية (التحليل الأولمبي):</strong> نلاحظ أن \\( E(n) = (n^2 + 1)(n + 1)^2 \\)، ولكي يكون مربعاً كاملاً يجب أن يكون \\( n^2 + 1 \\) مربعاً كاملاً، وهو مستحيل لكل \\( n \\ge 1 \\)! إذن <strong>لا توجد حلول موجبة</strong>.</p>"
+        "problem": {
+          "en": "Find all positive integers \\( n \\) such that \\( n^4 + 2n^3 + 2n^2 + 2n + 1 \\) is a perfect square.",
+          "ar": "أوجد جميع الأعداد الصحيحة الموجبة \\( n \\) التي تجعل المقدار \\( n^4 + 2n^3 + 2n^2 + 2n + 1 \\) مربعاً كاملاً."
+        },
+        "solution": {
+          "en": "<p>Compare \\( E(n) = n^4 + 2n^3 + 2n^2 + 2n + 1 \\) with nearby squares of monic quadratics \\( (n^2 + n + c)^2 \\):<br>1. Lower square: \\( (n^2 + n)^2 = n^4 + 2n^3 + n^2 < E(n) \\) for all \\( n \\ge 1 \\) (since \\( n^2 + 2n + 1 = (n+1)^2 > 0 \\)).<br>2. Upper square: \\( (n^2 + n + 1)^2 = n^4 + 2n^3 + 3n^2 + 2n + 1 \\). Comparing with \\( E(n) \\):<br>\\[ (n^2 + n + 1)^2 - E(n) = n^2 > 0 \\quad \\text{for all } n \\ge 1. \\]<br>Hence for every positive integer \\( n \\ge 1 \\),<br>\\[ (n^2 + n)^2 < n^4 + 2n^3 + 2n^2 + 2n + 1 < (n^2 + n + 1)^2! \\]<br>Because \\( E(n) \\) is strictly trapped between two consecutive integer squares, there are <strong>zero positive integer solutions</strong>! (Algebraic confirmation: \\( E(n) = (n^2 + 1)(n + 1)^2 \\), which is a square iff \\( n^2 + 1 \\) is a square — impossible for \\( n \\ge 1 \\)!)</p>",
+          "ar": "<p><strong>الحل الأولمبي (بطريقتين):</strong><br><strong>الطريقة الأولى (الحصر بين مربعين متتاليين):</strong> لكل \\( n \\ge 1 \\) نقارن المقدار \\( E(n) \\) بمربعَي عددين متتاليين:<br>\\[ (n^2 + n)^2 = n^4 + 2n^3 + n^2 < E(n) < n^4 + 2n^3 + 3n^2 + 2n + 1 = (n^2 + n + 1)^2. \\]<br>بما أن \\( E(n) \\) محصور قطعاً بين مربعين متتاليين، فلا يمكن أن يكون مربعاً كاملاً لأي \\( n \\ge 1 \\)!<br><strong>الطريقة الثانية (التحليل الأولمبي):</strong> نلاحظ أن \\( E(n) = (n^2 + 1)(n + 1)^2 \\)، ولكي يكون مربعاً كاملاً يجب أن يكون \\( n^2 + 1 \\) مربعاً كاملاً، وهو مستحيل لكل \\( n \\ge 1 \\)! إذن <strong>لا توجد حلول موجبة</strong>.</p>"
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.D — Fractional-Part Floor-Sum Jump Analysis (AIME / KAUST Finals)",
           "ar": "مثال محلول 3.D — تحليل قفزات مجاميع دالة الجزء الصحيح (AIME / نهائيات كاوست)"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Among the \\( 60 \\) integers \\( \\{0, 1, 2, \\dots, 59\\} \\), how many can NEVER be expressed in the form \\( g(x) = \\lfloor x \\rfloor + \\lfloor 2x \\rfloor + \\lfloor 3x \\rfloor \\) for any real number \\( x \\)?</p><p><strong>Solution:</strong> Write \\( x = n + r \\) where \\( n = \\lfloor x \\rfloor \\in \\mathbb{Z} \\) and \\( r = \\{x\\} \\in [0, 1) \\). Then:<br>\\[ g(x) = n + (2n + \\lfloor 2r \\rfloor) + (3n + \\lfloor 3r \\rfloor) = 6n + \\lfloor 2r \\rfloor + \\lfloor 3r \\rfloor. \\]<br>Partition \\( r \\in [0, 1) \\) at the jump thresholds \\( \\frac{1}{3}, \\frac{1}{2}, \\frac{2}{3} \\):<br>• \\( r \\in [0, \\frac{1}{3}) \\implies 0 + 0 = 0 \\)<br>• \\( r \\in [\\frac{1}{3}, \\frac{1}{2}) \\implies 0 + 1 = 1 \\)<br>• \\( r \\in [\\frac{1}{2}, \\frac{2}{3}) \\implies 1 + 1 = 2 \\)<br>• \\( r \\in [\\frac{2}{3}, 1) \\implies 1 + 2 = 3 \\).<br>Thus in every block of \\( 6 \\) consecutive integers \\( \\{6n, 6n+1, \\dots, 6n+5\\} \\), \\( g(x) \\) attains the \\( 4 \\) residues \\( 6n + \\{0, 1, 2, 3\\} \\) and strictly skips the \\( 2 \\) residues \\( 6n + 4 \\) and \\( 6n + 5 \\)! Since \\( \\{0, 1, \\dots, 59\\} \\) consists of \\( 10 \\) complete blocks of length \\( 6 \\), exactly \\( 10 \\times 2 = 20 \\) integers are skipped.</p>",
-          "ar": "<p><strong>المسألة:</strong> من بين الأعداد الصحيحة \\( \\{0, 1, 2, \\dots, 59\\} \\)، كم عدداً لا يمكن كتابته أبداً على الصورة \\( g(x) = \\lfloor x \\rfloor + \\lfloor 2x \\rfloor + \\lfloor 3x \\rfloor \\) لأي عدد حقيقي \\( x \\)؟</p><p><strong>الحل الأولمبي:</strong> نكتب \\( x = n + r \\) حيث \\( n = \\lfloor x \\rfloor \\in \\mathbb{Z} \\) والجزء الكسري \\( r \\in [0, 1) \\)، فيصبح:<br>\\[ g(x) = 6n + \\lfloor 2r \\rfloor + \\lfloor 3r \\rfloor. \\]<br>نقسّم الفترة \\( [0, 1) \\) عند نقاط القفز \\( \\frac{1}{3}, \\frac{1}{2}, \\frac{2}{3} \\):<br>• \\( r \\in [0, \\frac{1}{3}) \\implies 0 + 0 = 0 \\)<br>• \\( r \\in [\\frac{1}{3}, \\frac{1}{2}) \\implies 0 + 1 = 1 \\)<br>• \\( r \\in [\\frac{1}{2}, \\frac{2}{3}) \\implies 1 + 1 = 2 \\)<br>• \\( r \\in [\\frac{2}{3}, 1) \\implies 1 + 2 = 3 \\).<br>إذن في كل دورة طولها \\( 6 \\) أعداد \\( \\{6n, \\dots, 6n+5\\} \\)، يأخذ المقدار البواقي \\( 0, 1, 2, 3 \\) ويقفز دائماً عن العددين \\( 6n + 4 \\) و\\( 6n + 5 \\)! وبما أن \\( \\{0, \\dots, 59\\} \\) تتكون من \\( 10 \\) دورات كاملة، فإن عدد الأعداد غير القابلة للتمثيل هو \\( 10 \\times 2 = 20 \\) عدداً.</p>"
+        "problem": {
+          "en": "Among the \\( 60 \\) integers \\( \\{0, 1, 2, \\dots, 59\\} \\), how many can NEVER be expressed in the form \\( g(x) = \\lfloor x \\rfloor + \\lfloor 2x \\rfloor + \\lfloor 3x \\rfloor \\) for any real number \\( x \\)?",
+          "ar": "من بين الأعداد الصحيحة \\( \\{0, 1, 2, \\dots, 59\\} \\)، كم عدداً لا يمكن كتابته أبداً على الصورة \\( g(x) = \\lfloor x \\rfloor + \\lfloor 2x \\rfloor + \\lfloor 3x \\rfloor \\) لأي عدد حقيقي \\( x \\)؟"
+        },
+        "solution": {
+          "en": "<p>Write \\( x = n + r \\) where \\( n = \\lfloor x \\rfloor \\in \\mathbb{Z} \\) and \\( r = \\{x\\} \\in [0, 1) \\). Then:<br>\\[ g(x) = n + (2n + \\lfloor 2r \\rfloor) + (3n + \\lfloor 3r \\rfloor) = 6n + \\lfloor 2r \\rfloor + \\lfloor 3r \\rfloor. \\]<br>Partition \\( r \\in [0, 1) \\) at the jump thresholds \\( \\frac{1}{3}, \\frac{1}{2}, \\frac{2}{3} \\):<br>• \\( r \\in [0, \\frac{1}{3}) \\implies 0 + 0 = 0 \\)<br>• \\( r \\in [\\frac{1}{3}, \\frac{1}{2}) \\implies 0 + 1 = 1 \\)<br>• \\( r \\in [\\frac{1}{2}, \\frac{2}{3}) \\implies 1 + 1 = 2 \\)<br>• \\( r \\in [\\frac{2}{3}, 1) \\implies 1 + 2 = 3 \\).<br>Thus in every block of \\( 6 \\) consecutive integers \\( \\{6n, 6n+1, \\dots, 6n+5\\} \\), \\( g(x) \\) attains the \\( 4 \\) residues \\( 6n + \\{0, 1, 2, 3\\} \\) and strictly skips the \\( 2 \\) residues \\( 6n + 4 \\) and \\( 6n + 5 \\)! Since \\( \\{0, 1, \\dots, 59\\} \\) consists of \\( 10 \\) complete blocks of length \\( 6 \\), exactly \\( 10 \\times 2 = 20 \\) integers are skipped.</p>",
+          "ar": "<p><strong>الحل الأولمبي:</strong> نكتب \\( x = n + r \\) حيث \\( n = \\lfloor x \\rfloor \\in \\mathbb{Z} \\) والجزء الكسري \\( r \\in [0, 1) \\)، فيصبح:<br>\\[ g(x) = 6n + \\lfloor 2r \\rfloor + \\lfloor 3r \\rfloor. \\]<br>نقسّم الفترة \\( [0, 1) \\) عند نقاط القفز \\( \\frac{1}{3}, \\frac{1}{2}, \\frac{2}{3} \\):<br>• \\( r \\in [0, \\frac{1}{3}) \\implies 0 + 0 = 0 \\)<br>• \\( r \\in [\\frac{1}{3}, \\frac{1}{2}) \\implies 0 + 1 = 1 \\)<br>• \\( r \\in [\\frac{1}{2}, \\frac{2}{3}) \\implies 1 + 1 = 2 \\)<br>• \\( r \\in [\\frac{2}{3}, 1) \\implies 1 + 2 = 3 \\).<br>إذن في كل دورة طولها \\( 6 \\) أعداد \\( \\{6n, \\dots, 6n+5\\} \\)، يأخذ المقدار البواقي \\( 0, 1, 2, 3 \\) ويقفز دائماً عن العددين \\( 6n + 4 \\) و\\( 6n + 5 \\)! وبما أن \\( \\{0, \\dots, 59\\} \\) تتكون من \\( 10 \\) دورات كاملة، فإن عدد الأعداد غير القابلة للتمثيل هو \\( 10 \\times 2 = 20 \\) عدداً.</p>"
         }
       },
       {

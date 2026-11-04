@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: ibsl
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/ibsl/"
+enAltPath: "/ibsl/"
+arAltPath: "/ar/ibsl/"
 title: "IB Math SL (AA/AI) · ClipSAT"
 description: "IB Mathematics Standard Level — algebra, functions, trigonometry, statistics and calculus for both AA and AI"
-isRtl: false
 ---
 {#
   Renders from content/ibsl/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -37,33 +42,28 @@ isRtl: false
 
   pageHeader.eyebrowClass 'amber' matches the real <span class="eyebrow amber">.
 #}
-{% set ibsl = migratedContent.ibsl %}
-{% set pageHeader = ibsl.meta.meta.pageHeader %}
-<main id="view-ibsl" class="view active">
+{% set trackData = migratedContent.ibsl %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'ibsl-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'ibsl-testgen' %}
+{% set downloadsId = 'ibsl-downloads' %}
+<main id="view-ibsl" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = ibsl.chapters %}
-    {% set practiceSetId = 'ibsl-practice' %}
-    {% set testGeneratorId = 'ibsl-testgen' %}
-    {% set downloadsId = 'ibsl-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in ibsl.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'ibsl-practice' %}
-      {% set practiceSet = ibsl.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'ibsl-testgen' %}
-      {% set testGenerator = ibsl.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'ibsl-downloads' %}
-      {% set courseMeta = ibsl.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

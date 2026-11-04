@@ -1,0 +1,145 @@
+---
+layout: base.njk
+trackId: changelog
+permalink: changelog.html
+canonicalPath: "/changelog.html"
+enAltPath: "/changelog.html"
+title: "What's New — ClipSAT Release History"
+description: "Full release history for ClipSAT — version IDs, timestamps, curriculum expansions, security hardening, and platform updates."
+isRtl: false
+---
+<style>
+  .cl-page{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+  .cl-title{font-size:2rem;font-weight:900;color:var(--indigo,#4338ca);margin-bottom:6px}
+  body.dark .cl-title{color:var(--accent,#60a5fa)}
+  .cl-subtitle{color:var(--muted,#6b7280);font-size:.93rem;margin-bottom:36px}
+  .timeline{position:relative;padding-inline-start:28px}
+  .timeline::before{content:'';position:absolute;inset-inline-start:10px;top:0;bottom:0;width:2px;background:var(--line,#e2e8f0)}
+  .cl-entry{position:relative;margin-bottom:36px}
+  .cl-dot{position:absolute;inset-inline-start:-24px;top:14px;width:14px;height:14px;border-radius:50%;border:2.5px solid var(--panel,#fff);box-shadow:0 0 0 2px var(--accent,#4a90d9);background:var(--accent,#4a90d9)}
+  .cl-dot.major{background:var(--indigo,#4338ca);box-shadow:0 0 0 2px var(--indigo,#4338ca)}
+  .cl-card{background:var(--panel,#fff);border:1.5px solid var(--line,#e2e8f0);border-radius:14px;overflow:hidden;transition:box-shadow .2s}
+  .cl-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+  .cl-card-head{padding:16px 20px 12px;border-bottom:1px solid var(--line,#e2e8f0);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .cl-ver{font-size:1.05rem;font-weight:800;color:var(--indigo,#4338ca)}
+  body.dark .cl-ver{color:var(--accent,#60a5fa)}
+  .cl-badge{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase}
+  .badge-major{background:#ede9fe;color:#7c3aed}
+  .badge-feature{background:#dbeafe;color:#1d4ed8}
+  .badge-fix{background:#dcfce7;color:#15803d}
+  .badge-patch{background:#fef9c3;color:#92400e}
+  body.dark .badge-major{background:#3b0764;color:#d8b4fe}
+  body.dark .badge-feature{background:#1e3a5f;color:#93c5fd}
+  body.dark .badge-fix{background:#14532d;color:#86efac}
+  body.dark .badge-patch{background:#451a03;color:#fcd34d}
+  .cl-meta{margin-inline-start:auto;display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--muted,#6b7280)}
+  .cl-hash{font-family:var(--mono,monospace);background:var(--bg,#f4f6fb);padding:2px 7px;border-radius:5px;font-size:.75rem;color:var(--muted,#6b7280);border:1px solid var(--line,#e2e8f0)}
+  .cl-card-body{padding:16px 20px}
+  .cl-section-lbl{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#6b7280);margin:12px 0 6px}
+  .cl-section-lbl:first-child{margin-top:0}
+  .cl-items{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}
+  .cl-items li{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;line-height:1.5}
+  .cl-items li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent,#4a90d9);flex-shrink:0;margin-top:6px}
+  .cl-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:5px;margin-bottom:4px}
+  .tag-add{background:#dbeafe;color:#1d4ed8}
+  .tag-fix{background:#dcfce7;color:#15803d}
+  .tag-improve{background:#fef3c7;color:#92400e}
+  .tag-perf{background:#ede9fe;color:#6d28d9}
+  body.dark .tag-add{background:#1e3a5f;color:#93c5fd}
+  body.dark .tag-fix{background:#14532d;color:#86efac}
+  body.dark .tag-improve{background:#451a03;color:#fcd34d}
+  body.dark .tag-perf{background:#3b0764;color:#d8b4fe}
+  .cl-count{display:inline-flex;gap:20px;background:var(--panel,#fff);border:1.5px solid var(--line,#e2e8f0);border-radius:10px;padding:12px 24px;margin-bottom:20px}
+  .cl-count span{text-align:center}
+  .cl-count strong{display:block;font-size:1.4rem;font-weight:900;color:var(--indigo,#4338ca)}
+  body.dark .cl-count strong{color:var(--accent,#60a5fa)}
+  @media(max-width:600px){
+    .cl-card-head{flex-direction:column;align-items:flex-start}
+    .cl-meta{margin-inline-start:0}
+    .cl-count{gap:12px;padding:10px 16px}
+    .cl-count strong{font-size:1.1rem}
+  }
+</style>
+<main class="cl-page view active" id="view-changelog">
+  <h1 class="cl-title" data-bilingual><span class="i18n-en">What's New?</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>ما الجديد في ClipSAT؟</span></h1>
+  <p class="cl-subtitle" data-bilingual><span class="i18n-en">Full release history — version IDs, timestamps, and detailed change reports across all 31 mathematics tracks.</span><span class="i18n-ar" dir="rtl" lang="ar" hidden>سجل التحديثات الكامل — أرقام الإصدارات والتوقيتات وتقارير التغييرات التفصيلية عبر جميع مسارات الرياضيات الـ 31.</span></p>
+
+  <div style="display:flex;justify-content:center;margin-bottom:36px">
+    <div class="cl-count">
+      <span><strong id="statVers">—</strong>Versions</span>
+      <span><strong id="statFeats">—</strong>Features</span>
+      <span><strong id="statFixes">—</strong>Bug Fixes</span>
+      <span><strong id="statChaps">306</strong>Chapters</span>
+    </div>
+  </div>
+
+  <div class="timeline" id="timeline" aria-live="polite">
+    <p style="color:var(--muted,#6b7280);font-size:.9rem">Loading release history…</p>
+  </div>
+</main>
+<script>
+(function(){
+  var tagLabel = {add:'Added', fix:'Fixed', improve:'Improved', perf:'Performance', feature:'Added'};
+  var typeLabel = {major:'Major Release', feature:'New Features', fix:'Bug Fix', patch:'Patch', improve:'Improved'};
+  function escH(s){
+    return String(s == null ? '').replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function fmtDate(iso){
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso || '');
+    return d.toLocaleString('en-US', {year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  }
+  function renderEntry(rel){
+    var isMajor = rel.type === 'major';
+    var badgeCls = {major:'badge-major',feature:'badge-feature',fix:'badge-fix',patch:'badge-patch'}[rel.type] || 'badge-feature';
+    var sectionsHtml = (rel.sections || []).map(function(s){
+      var items = (s.items || []).map(function(it){ return '<li>' + escH(it) + '</li>'; }).join('');
+      var tKey = tagLabel[s.tag] ? s.tag : 'add';
+      return '<p class="cl-section-lbl"><span class="cl-tag tag-' + tKey + '">' + escH(tagLabel[tKey]) + '</span> ' + escH(s.label) + '</p><ul class="cl-items">' + items + '</ul>';
+    }).join('');
+    var commitHtml = rel.commit ? '<span class="cl-hash">' + escH(rel.commit) + '</span>' : '';
+    return '<div class="cl-entry">'
+      + '<div class="cl-dot' + (isMajor ? ' major' : '') + '"></div>'
+      + '<div class="cl-card">'
+      +   '<div class="cl-card-head">'
+      +     '<span class="cl-ver">' + escH(rel.version) + '</span>'
+      +     '<span class="cl-badge ' + badgeCls + '">' + escH(typeLabel[rel.type] || 'Release') + '</span>'
+      +     '<strong style="font-size:.9rem">' + escH(rel.title) + '</strong>'
+      +     '<span class="cl-meta">' + commitHtml + '<span>' + escH(fmtDate(rel.date)) + '</span></span>'
+      +   '</div>'
+      +   '<div class="cl-card-body">'
+      +     '<p style="font-size:.88rem;color:var(--muted);margin-bottom:14px;line-height:1.6">' + escH(rel.summary) + '</p>'
+      +     sectionsHtml
+      +   '</div>'
+      + '</div>'
+      + '</div>';
+  }
+  fetch('/data/changelog-releases.json')
+    .then(function(r){ return r.json(); })
+    .then(function(releases){
+      if (!Array.isArray(releases)) return;
+      var sorted = releases.slice().sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+      var tl = document.getElementById('timeline');
+      if (tl) tl.innerHTML = sorted.map(renderEntry).join('');
+      var feats = 0, fixes = 0;
+      releases.forEach(function(r){
+        (r.sections || []).forEach(function(s){
+          if (s.tag === 'add' || s.tag === 'feature') feats += (s.items || []).length;
+          if (s.tag === 'fix') fixes += (s.items || []).length;
+        });
+      });
+      var vEl = document.getElementById('statVers');
+      var fEl = document.getElementById('statFeats');
+      var xEl = document.getElementById('statFixes');
+      if (vEl) vEl.textContent = String(releases.length);
+      if (fEl) fEl.textContent = feats + '+';
+      if (xEl) xEl.textContent = String(fixes);
+    })
+    .catch(function(){
+      var tl = document.getElementById('timeline');
+      if (tl) tl.innerHTML = '<p style="color:var(--muted)">Release log is temporarily offline.</p>';
+    });
+})();
+</script>

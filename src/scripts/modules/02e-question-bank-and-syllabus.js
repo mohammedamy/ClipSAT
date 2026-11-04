@@ -18,38 +18,94 @@
   window.VALID_BANK_TRACKS = VALID_BANK_TRACKS;
   window.fullExamBank = {};
   window.CS_BANK_LOADED = {};
+  window.CS_SHARD_CACHE = {};
+
+  function _cdnUrl(p){
+    var base = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
+    return base ? (base + p) : p;
+  }
+  window._csCdnUrl = _cdnUrl;
+
+  function _normalizePool(data){
+    if(data && !data.pool && (data.easy||data.medium||data.hard)){
+      var _cvt=function(a,diff){
+        return(a||[]).map(function(q){
+          return Object.assign({}, q, {
+            type: q.type || 'mcq',
+            difficulty: q.difficulty || diff,
+            domain: q.domain || q.topic || 'Mathematics',
+            text: q.text || q.q || '',
+            choices: q.choices || [],
+            answer: q.answer,
+            ans: q.ans,
+            sol: q.sol || q.exp || q.expl || '',
+            hints: q.hints,
+            figure: q.figure || q.fig,
+            marks: q.marks,
+            paper: q.paper,
+            course: q.course,
+            ibSection: q.ibSection,
+            calc: q.calc
+          });
+        });
+      };
+      data.pool=_cvt(data.easy,'easy').concat(_cvt(data.medium,'medium')).concat(_cvt(data.hard,'hard'));
+    }
+    return data;
+  }
+
+  function _fetchRawShard(trackId, cleanTid){
+    var key = trackId + ':' + cleanTid;
+    if(window.CS_SHARD_CACHE[key]) return Promise.resolve(window.CS_SHARD_CACHE[key]);
+    return fetch(_cdnUrl('/bank-shards/' + trackId + '/' + cleanTid + '.json?v=20261104a'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(shard){
+        if(shard) window.CS_SHARD_CACHE[key] = shard;
+        return shard;
+      })
+      .catch(function(){ return null; });
+  }
+
   window.CS_loadTrackBank = function(trackId){
     if(!trackId || !VALID_BANK_TRACKS[trackId]) return Promise.resolve(null);
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch('/bank-data/'+trackId+'.json?v=20261101a')
+    var p = fetch(_cdnUrl('/bank-shards/' + trackId + '/_index.json?v=20261104a'))
       .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(idx){
+        if(idx && Array.isArray(idx.canonicalTopics) && idx.canonicalTopics.length){
+          return Promise.all(idx.canonicalTopics.map(function(tid){
+            var clean = String(tid).replace(/[^a-zA-Z0-9_-]/g, '');
+            return _fetchRawShard(trackId, clean);
+          })).then(function(shards){
+            var seen = {};
+            var pool = [];
+            shards.forEach(function(s){
+              if(!s || !Array.isArray(s.pool)) return;
+              s.pool.forEach(function(q){
+                if(!q) return;
+                var qk = q.id || (q.text || q.q || '');
+                if(qk && seen[qk]) return;
+                if(qk) seen[qk] = 1;
+                pool.push(q);
+              });
+            });
+            return {
+              track: trackId,
+              schemaVersion: idx.schemaVersion || 2,
+              letters: idx.letters,
+              sections: idx.sections,
+              pool: pool
+            };
+          });
+        }
+        return fetch(_cdnUrl('/bank-data/' + trackId + '.json?v=20261104a'))
+          .then(function(r2){ return r2.ok ? r2.json() : null; });
+      })
       .then(function(data){
         if(data){
-          if(!data.pool && (data.easy||data.medium||data.hard)){
-            var _cvt=function(a,diff){
-              return(a||[]).map(function(q){
-                return Object.assign({}, q, {
-                  type: q.type || 'mcq',
-                  difficulty: q.difficulty || diff,
-                  domain: q.domain || q.topic || 'Mathematics',
-                  text: q.text || q.q || '',
-                  choices: q.choices || [],
-                  answer: q.answer,
-                  ans: q.ans,
-                  sol: q.sol || q.exp || q.expl || '',
-                  hints: q.hints,
-                  figure: q.figure || q.fig,
-                  marks: q.marks,
-                  paper: q.paper,
-                  course: q.course,
-                  ibSection: q.ibSection,
-                  calc: q.calc
-                });
-              });
-            };
-            data.pool=_cvt(data.easy,'easy').concat(_cvt(data.medium,'medium')).concat(_cvt(data.hard,'hard'));
-          }
-          window.fullExamBank[trackId]=data;
+          _normalizePool(data);
+          window.fullExamBank[trackId] = data;
+          if(typeof window.QB_migrate === 'function') window.QB_migrate(trackId);
         }
         return data;
       })
@@ -58,8 +114,7 @@
     return p;
   };
 
-  /* Lightweight per-chapter shard loader (~50 KB vs ~2 MB full bank) for instant topic drills */
-  window.CS_SHARD_CACHE = {};
+  /* Lightweight per-chapter shard loader (~15-60 KB vs ~2 MB full bank) for instant topic drills */
   window.CS_loadTopicShard = function(trackId, topicId){
     if(!trackId || !VALID_BANK_TRACKS[trackId] || !topicId) return window.CS_loadTrackBank(trackId);
     var full = window.fullExamBank && window.fullExamBank[trackId];
@@ -67,24 +122,49 @@
       var filtered = full.pool.filter(function(q){ return q.topic_id === topicId; });
       if(filtered.length) return Promise.resolve({ track: trackId, topic_id: topicId, pool: filtered });
     }
-    var key = trackId + ':' + topicId;
-    if(window.CS_SHARD_CACHE[key]) return Promise.resolve(window.CS_SHARD_CACHE[key]);
     var cleanTid = String(topicId).replace(/[^a-zA-Z0-9_-]/g, '');
-    return fetch('/bank-shards/' + trackId + '/' + cleanTid + '.json?v=20261101a')
-      .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(shard){
-        if(shard && Array.isArray(shard.pool) && shard.pool.length){
-          window.CS_SHARD_CACHE[key] = shard;
-          return shard;
-        }
-        return window.CS_loadTrackBank(trackId);
-      })
-      .catch(function(){
-        return window.CS_loadTrackBank(trackId);
-      });
+    return _fetchRawShard(trackId, cleanTid).then(function(shard){
+      if(!shard) return window.CS_loadTrackBank(trackId);
+      if(Array.isArray(shard.pool) && shard.pool.length){
+        return shard;
+      }
+      if(Array.isArray(shard.aliasTopics) && shard.aliasTopics.length){
+        return Promise.all(shard.aliasTopics.map(function(cid){
+          var cleanCid = String(cid).replace(/[^a-zA-Z0-9_-]/g, '');
+          return _fetchRawShard(trackId, cleanCid);
+        })).then(function(subShards){
+          var seen = {};
+          var merged = [];
+          subShards.forEach(function(ss){
+            if(!ss || !Array.isArray(ss.pool)) return;
+            ss.pool.forEach(function(q){
+              if(!q) return;
+              var qk = q.id || (q.text || q.q || '');
+              if(qk && seen[qk]) return;
+              if(qk) seen[qk] = 1;
+              merged.push(q);
+            });
+          });
+          if(merged.length){
+            var resolved = { track: trackId, topic_id: topicId, pool: merged };
+            window.CS_SHARD_CACHE[trackId + ':' + cleanTid] = resolved;
+            return resolved;
+          }
+          return window.CS_loadTrackBank(trackId);
+        });
+      }
+      return window.CS_loadTrackBank(trackId);
+    }).catch(function(){
+      return window.CS_loadTrackBank(trackId);
+    });
   };
 
-  window.CS_bankReady = window.CS_loadTrackBank(window.CLIPSAT_TRACK);
+  window.CS_ensureQuizPool = function(trackId, topicSlug){
+    return topicSlug ? window.CS_loadTopicShard(trackId, topicSlug) : window.CS_loadTrackBank(trackId);
+  };
+
+  /* WP-22: Zero eager network fetch on initial page load — shards load strictly on demand */
+  window.CS_bankReady = Promise.resolve(null);
 
   /* ===================== QB — Question Bank Module ===================== */
   window.QB = (function(){
@@ -114,9 +194,14 @@
     return {register:register, get:get, getById:getById, filter:filter};
   }());
 
-  window.QB_migrate = function(){
-    Object.keys(window.fullExamBank||{}).forEach(function(viewId){
-      var bank=window.fullExamBank[viewId];
+  var _migratedTracks = {};
+  window.QB_migrate = function(onlyTrackId){
+    var keys = onlyTrackId ? [onlyTrackId] : Object.keys(window.fullExamBank||{});
+    keys.forEach(function(viewId){
+      if(_migratedTracks[viewId]) return;
+      var bank=window.fullExamBank && window.fullExamBank[viewId];
+      if(!bank) return;
+      _migratedTracks[viewId] = true;
       var raw;
       if(bank.pool){ raw=bank.pool; }
       else{
@@ -468,9 +553,24 @@
       if(!window.CSBankExam&&e.target&&e.target.closest&&e.target.closest('.testgen')) window._ensureBankExam().catch(function(){});
     },true);
   });
-  window.genFullExam=function(btn){
+  window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
+    if(typeof window._csGenFullExamAIHook === 'function'){
+      var hooked = window._csGenFullExamAIHook(btn,examName,viewId,sectionTitles,qPerSection);
+      if(hooked !== undefined){
+        return Promise.resolve(hooked).then(function(res){
+          document.dispatchEvent(new CustomEvent('clipsat:full-exam-ready',{detail:{btn:btn,viewId:viewId}}));
+          return res;
+        });
+      }
+    }
     var self=this, args=arguments;
-    return window._ensureBankExam().then(function(){ return window.CSBankExam.genFullExam.apply(self,args); },function(err){
+    return window._ensureBankExam().then(function(){
+      var r = window.CSBankExam.genFullExam.apply(self,args);
+      return Promise.resolve(r).then(function(val){
+        document.dispatchEvent(new CustomEvent('clipsat:full-exam-ready',{detail:{btn:btn,viewId:viewId}}));
+        return val;
+      });
+    },function(err){
       var box=btn&&btn.closest&&btn.closest('.testgen'), out=box&&box.querySelector('.tg-out');
       if(out){ out.innerHTML=''; var p=document.createElement('p'); p.className='tg-empty'; p.style.color='#dc2626'; p.textContent=err.message; out.appendChild(p); }
     });

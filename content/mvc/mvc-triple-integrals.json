@@ -215,14 +215,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.1 — Level 1: Cartesian Triple Integral & Non-Constant Bounds",
           "ar": "مثال محلول 5.1 — Level 1: Cartesian Triple التكامل & Non-الثابت Bounds"
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Evaluate \\( \\iiint_E z\\,dV \\), where \\( E \\) is the solid tetrahedron bounded by the coordinate planes \\( x=0, y=0, z=0 \\) and the plane \\( x + y + z = 1 \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Determine the bounding surfaces:</strong> In the vertical \\( z \\)-direction, \\( E \\) is bounded below by \\( z = 0 \\) and above by \\( z = 1 - x - y \\).</li><li><strong>Project onto the \\( xy \\)-plane:</strong> Setting \\( z = 0 \\) yields the planar triangle \\( D = \\{ (x,y) \\mid 0 \\le x \\le 1, \\, 0 \\le y \\le 1 - x \\} \\).</li><li><strong>Set up the iterated integral:</strong> \\[ \\iiint_E z\\,dV = \\int_0^1 \\int_0^{1-x} \\int_0^{1-x-y} z\\,dz\\,dy\\,dx. \\]</li><li><strong>Evaluate the innermost integral:</strong> \\[ \\int_0^{1-x-y} z\\,dz = \\left[ \\frac{z^2}{2} \\right]_0^{1-x-y} = \\frac{1}{2}(1 - x - y)^2. \\]</li><li><strong>Integrate with respect to \\( y \\):</strong> Using substitution \\( u = 1 - x - y \\), \\( du = -dy \\): \\[ \\int_0^{1-x} \\frac{1}{2}(1 - x - y)^2\\,dy = \\left[ -\\frac{1}{6}(1 - x - y)^3 \\right]_0^{1-x} = 0 - \\left( -\\frac{1}{6}(1-x)^3 \\right) = \\frac{1}{6}(1-x)^3. \\]</li><li><strong>Integrate with respect to \\( x \\):</strong> \\[ \\int_0^1 \\frac{1}{6}(1-x)^3\\,dx = \\left[ -\\frac{1}{24}(1-x)^4 \\right]_0^1 = 0 - \\left( -\\frac{1}{24} \\right) = \\frac{1}{24}. \\]</li></ol><p>Thus, \\( \\iiint_E z\\,dV = \\frac{1}{24} \\).</p>",
+        "problem": {
+          "en": "Evaluate \\( \\iiint_E z\\,dV \\), where \\( E \\) is the solid tetrahedron bounded by the coordinate planes \\( x=0, y=0, z=0 \\) and the plane \\( x + y + z = 1 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Analytical Solution:</strong></p><ol><li><strong>Determine the bounding surfaces:</strong> In the vertical \\( z \\)-direction, \\( E \\) is bounded below by \\( z = 0 \\) and above by \\( z = 1 - x - y \\).</li><li><strong>Project onto the \\( xy \\)-plane:</strong> Setting \\( z = 0 \\) yields the planar triangle \\( D = \\{ (x,y) \\mid 0 \\le x \\le 1, \\, 0 \\le y \\le 1 - x \\} \\).</li><li><strong>Set up the iterated integral:</strong> \\[ \\iiint_E z\\,dV = \\int_0^1 \\int_0^{1-x} \\int_0^{1-x-y} z\\,dz\\,dy\\,dx. \\]</li><li><strong>Evaluate the innermost integral:</strong> \\[ \\int_0^{1-x-y} z\\,dz = \\left[ \\frac{z^2}{2} \\right]_0^{1-x-y} = \\frac{1}{2}(1 - x - y)^2. \\]</li><li><strong>Integrate with respect to \\( y \\):</strong> Using substitution \\( u = 1 - x - y \\), \\( du = -dy \\): \\[ \\int_0^{1-x} \\frac{1}{2}(1 - x - y)^2\\,dy = \\left[ -\\frac{1}{6}(1 - x - y)^3 \\right]_0^{1-x} = 0 - \\left( -\\frac{1}{6}(1-x)^3 \\right) = \\frac{1}{6}(1-x)^3. \\]</li><li><strong>Integrate with respect to \\( x \\):</strong> \\[ \\int_0^1 \\frac{1}{6}(1-x)^3\\,dx = \\left[ -\\frac{1}{24}(1-x)^4 \\right]_0^1 = 0 - \\left( -\\frac{1}{24} \\right) = \\frac{1}{24}. \\]</li></ol><p>Thus, \\( \\iiint_E z\\,dV = \\frac{1}{24} \\).</p>",
           "ar": null
         }
       },
@@ -263,26 +266,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.2 — Level 2: Volume of an Ice-Cream Cone via Spherical Coordinates",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find the volume of the solid \\( E \\) bounded above by the sphere \\( x^2+y^2+z^2 = 4 \\) and below by the cone \\( z = \\sqrt{x^2+y^2} \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Express the bounding surfaces in spherical coordinates:</strong><ul><li>The sphere \\( x^2+y^2+z^2 = 4 \\) becomes \\( \\rho^2 = 4 \\implies \\rho = 2 \\).</li><li>The cone \\( z = \\sqrt{x^2+y^2} \\implies \\rho\\cos\\phi = \\rho\\sin\\phi \\implies \\tan\\phi = 1 \\implies \\phi = \\frac{\\pi}{4} \\).</li></ul></li><li><strong>Identify the parameter limits:</strong> The solid is described by: \\[ 0 \\le \\rho \\le 2, \\quad 0 \\le \\phi \\le \\frac{\\pi}{4}, \\quad 0 \\le \\theta \\le 2\\pi. \\]</li><li><strong>Set up and evaluate the triple integral:</strong> Since the bounds are constants and the integrand separates: \\[ V = \\iiint_E 1\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^{\\pi/4} \\!\\! \\int_0^2 \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^2 \\rho^2\\,d\\rho \\right). \\]</li><li><strong>Calculate the individual factors:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi = \\Big[-\\cos\\phi\\Big]_0^{\\pi/4} = 1 - \\frac{\\sqrt{2}}{2}, \\qquad \\int_0^2 \\rho^2\\,d\\rho = \\left[ \\frac{\\rho^3}{3} \\right]_0^2 = \\frac{8}{3}. \\]</li><li><strong>Multiply results:</strong> \\[ V = (2\\pi) \\left( 1 - \\frac{\\sqrt{2}}{2} \\right) \\left( \\frac{8}{3} \\right) = \\frac{16\\pi}{3}\\left( 1 - \\frac{\\sqrt{2}}{2} \\right) = \\frac{8\\pi(2-\\sqrt{2})}{3}. \\]</li></ol>",
+        "problem": {
+          "en": "Find the volume of the solid \\( E \\) bounded above by the sphere \\( x^2+y^2+z^2 = 4 \\) and below by the cone \\( z = \\sqrt{x^2+y^2} \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Analytical Solution:</strong></p><ol><li><strong>Express the bounding surfaces in spherical coordinates:</strong><ul><li>The sphere \\( x^2+y^2+z^2 = 4 \\) becomes \\( \\rho^2 = 4 \\implies \\rho = 2 \\).</li><li>The cone \\( z = \\sqrt{x^2+y^2} \\implies \\rho\\cos\\phi = \\rho\\sin\\phi \\implies \\tan\\phi = 1 \\implies \\phi = \\frac{\\pi}{4} \\).</li></ul></li><li><strong>Identify the parameter limits:</strong> The solid is described by: \\[ 0 \\le \\rho \\le 2, \\quad 0 \\le \\phi \\le \\frac{\\pi}{4}, \\quad 0 \\le \\theta \\le 2\\pi. \\]</li><li><strong>Set up and evaluate the triple integral:</strong> Since the bounds are constants and the integrand separates: \\[ V = \\iiint_E 1\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^{\\pi/4} \\!\\! \\int_0^2 \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^2 \\rho^2\\,d\\rho \\right). \\]</li><li><strong>Calculate the individual factors:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi = \\Big[-\\cos\\phi\\Big]_0^{\\pi/4} = 1 - \\frac{\\sqrt{2}}{2}, \\qquad \\int_0^2 \\rho^2\\,d\\rho = \\left[ \\frac{\\rho^3}{3} \\right]_0^2 = \\frac{8}{3}. \\]</li><li><strong>Multiply results:</strong> \\[ V = (2\\pi) \\left( 1 - \\frac{\\sqrt{2}}{2} \\right) \\left( \\frac{8}{3} \\right) = \\frac{16\\pi}{3}\\left( 1 - \\frac{\\sqrt{2}}{2} \\right) = \\frac{8\\pi(2-\\sqrt{2})}{3}. \\]</li></ol>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.3 — Level 3: Rotational Inertia of a Solid Homogeneous Ball",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> A solid ball \\( B \\) of radius \\( R \\) has uniform mass density \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\). Derive from first principles the moment of inertia about the \\( z \\)-axis: \\[ I_z = \\iiint_B (x^2+y^2)\\,\\delta_0\\,dV. \\]</p><p><strong>Analytical Derivation:</strong></p><ol><li><strong>Convert the integrand to spherical coordinates:</strong> The distance squared from the \\( z \\)-axis is: \\[ x^2+y^2 = (\\rho\\sin\\phi\\cos\\theta)^2 + (\\rho\\sin\\phi\\sin\\theta)^2 = \\rho^2\\sin^2\\phi. \\]</li><li><strong>Set up the integral:</strong> \\[ I_z = \\delta_0 \\int_0^{2\\pi} \\!\\! \\int_0^\\pi \\!\\! \\int_0^R (\\rho^2\\sin^2\\phi) (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\delta_0 \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin^3\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^4\\,d\\rho \\right). \\]</li><li><strong>Compute the \\( \\rho \\) and \\( \\theta \\) integrals:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^R \\rho^4\\,d\\rho = \\frac{R^5}{5}. \\]</li><li><strong>Evaluate the \\( \\phi \\) integral using \\( \\sin^3\\phi = \\sin\\phi(1-\\cos^2\\phi) \\):</strong> Let \\( u = \\cos\\phi \\), \\( du = -\\sin\\phi\\,d\\phi \\): \\[ \\int_0^\\pi \\sin^3\\phi\\,d\\phi = \\int_1^{-1} -(1-u^2)\\,du = \\int_{-1}^1 (1-u^2)\\,du = \\left[ u - \\frac{u^3}{3} \\right]_{-1}^1 = \\left(1-\\frac{1}{3}\\right) - \\left(-1+\\frac{1}{3}\\right) = \\frac{4}{3}. \\]</li><li><strong>Assemble the product:</strong> \\[ I_z = \\delta_0 \\cdot (2\\pi) \\cdot \\frac{4}{3} \\cdot \\frac{R^5}{5} = \\delta_0 \\cdot \\frac{8\\pi R^5}{15}. \\]</li><li><strong>Substitute \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\):</strong> \\[ I_z = \\left( \\frac{3M}{4\\pi R^3} \\right) \\left( \\frac{8\\pi R^5}{15} \\right) = \\frac{3 \\times 8}{4 \\times 15} M R^2 = \\frac{2}{5} M R^2. \\]</li></ol><p>This yields the classical university physics result \\( I_z = \\frac{2}{5}MR^2 \\) purely via multivariable integration.</p>",
+        "problem": {
+          "en": "A solid ball \\( B \\) of radius \\( R \\) has uniform mass density \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\). Derive from first principles the moment of inertia about the \\( z \\)-axis: \\[ I_z = \\iiint_B (x^2+y^2)\\,\\delta_0\\,dV. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Analytical Derivation:</strong></p><ol><li><strong>Convert the integrand to spherical coordinates:</strong> The distance squared from the \\( z \\)-axis is: \\[ x^2+y^2 = (\\rho\\sin\\phi\\cos\\theta)^2 + (\\rho\\sin\\phi\\sin\\theta)^2 = \\rho^2\\sin^2\\phi. \\]</li><li><strong>Set up the integral:</strong> \\[ I_z = \\delta_0 \\int_0^{2\\pi} \\!\\! \\int_0^\\pi \\!\\! \\int_0^R (\\rho^2\\sin^2\\phi) (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\delta_0 \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin^3\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^4\\,d\\rho \\right). \\]</li><li><strong>Compute the \\( \\rho \\) and \\( \\theta \\) integrals:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^R \\rho^4\\,d\\rho = \\frac{R^5}{5}. \\]</li><li><strong>Evaluate the \\( \\phi \\) integral using \\( \\sin^3\\phi = \\sin\\phi(1-\\cos^2\\phi) \\):</strong> Let \\( u = \\cos\\phi \\), \\( du = -\\sin\\phi\\,d\\phi \\): \\[ \\int_0^\\pi \\sin^3\\phi\\,d\\phi = \\int_1^{-1} -(1-u^2)\\,du = \\int_{-1}^1 (1-u^2)\\,du = \\left[ u - \\frac{u^3}{3} \\right]_{-1}^1 = \\left(1-\\frac{1}{3}\\right) - \\left(-1+\\frac{1}{3}\\right) = \\frac{4}{3}. \\]</li><li><strong>Assemble the product:</strong> \\[ I_z = \\delta_0 \\cdot (2\\pi) \\cdot \\frac{4}{3} \\cdot \\frac{R^5}{5} = \\delta_0 \\cdot \\frac{8\\pi R^5}{15}. \\]</li><li><strong>Substitute \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\):</strong> \\[ I_z = \\left( \\frac{3M}{4\\pi R^3} \\right) \\left( \\frac{8\\pi R^5}{15} \\right) = \\frac{3 \\times 8}{4 \\times 15} M R^2 = \\frac{2}{5} M R^2. \\]</li></ol><p>This yields the classical university physics result \\( I_z = \\frac{2}{5}MR^2 \\) purely via multivariable integration.</p>",
           "ar": null
         }
       },
@@ -392,14 +401,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Triple Integrals & Cylindrical/Spherical Coordinates (Easy Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Consider the solid region \\(E\\) in the first octant bounded by the coordinate planes and the surface \\(z = 4 - x^2 - y^2\\). The volume of this region is given by the triple integral \\( V = \\iiint_E dV \\). We are given that the volume can also be expressed in cylindrical coordinates as \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Find the value of the parameter \\(a\\).</p><p><strong>Step-by-Step Solution:</strong> The solid region \\(E\\) is in the first octant and is bounded by \\(z = 0\\), \\(x = 0\\), \\(y = 0\\) and \\(z = 4 - x^2 - y^2\\). In cylindrical coordinates, \\(x^2 + y^2 = r^2\\), so the surface is \\(z = 4 - r^2\\). Since the region is in the first octant, \\(0 \\le \\theta \\le \\pi/2\\). The lower bound for \\(z\\) is \\(z = 0\\). The upper bound for \\(z\\) is \\(4 - r^2\\). \\\\\nTo determine the bounds for \\(r\\), we look at the projection of the solid onto the \\(xy\\)-plane. This projection is determined by the intersection of \\(z = 4 - x^2 - y^2\\) with the \\(xy\\)-plane (i.e., \\(z=0\\)). This gives \\(0 = 4 - x^2 - y^2\\), or \\(x^2 + y^2 = 4\\). In the first quadrant of the \\(xy\\)-plane, this is a quarter circle of radius 2. Thus, \\(0 \\le r \\le 2\\). \\\\\nThe given integral in cylindrical coordinates is \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Comparing the limits for \\(r\\), we have \\( \\sqrt{a} = 2 \\). Squaring both sides, we get \\( a = 4 \\).</p>",
+        "problem": {
+          "en": "Consider the solid region \\(E\\) in the first octant bounded by the coordinate planes and the surface \\(z = 4 - x^2 - y^2\\). The volume of this region is given by the triple integral \\( V = \\iiint_E dV \\). We are given that the volume can also be expressed in cylindrical coordinates as \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Find the value of the parameter \\(a\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The solid region \\(E\\) is in the first octant and is bounded by \\(z = 0\\), \\(x = 0\\), \\(y = 0\\) and \\(z = 4 - x^2 - y^2\\). In cylindrical coordinates, \\(x^2 + y^2 = r^2\\), so the surface is \\(z = 4 - r^2\\). Since the region is in the first octant, \\(0 \\le \\theta \\le \\pi/2\\). The lower bound for \\(z\\) is \\(z = 0\\). The upper bound for \\(z\\) is \\(4 - r^2\\). \\\\\nTo determine the bounds for \\(r\\), we look at the projection of the solid onto the \\(xy\\)-plane. This projection is determined by the intersection of \\(z = 4 - x^2 - y^2\\) with the \\(xy\\)-plane (i.e., \\(z=0\\)). This gives \\(0 = 4 - x^2 - y^2\\), or \\(x^2 + y^2 = 4\\). In the first quadrant of the \\(xy\\)-plane, this is a quarter circle of radius 2. Thus, \\(0 \\le r \\le 2\\). \\\\\nThe given integral in cylindrical coordinates is \\( V = \\int_0^{\\pi/2} \\int_0^{\\sqrt{a}} \\int_0^{4-r^2} r dz dr d\\theta \\). Comparing the limits for \\(r\\), we have \\( \\sqrt{a} = 2 \\). Squaring both sides, we get \\( a = 4 \\).</p>",
           "ar": null
         }
       },

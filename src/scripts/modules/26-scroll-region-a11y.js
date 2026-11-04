@@ -36,12 +36,11 @@
   if(document.readyState!=='loading') schedule(); else document.addEventListener('DOMContentLoaded',schedule);
   window.addEventListener('load',schedule);
   window.addEventListener('resize',schedule);
-  if('MutationObserver' in window){
-    new MutationObserver(function(muts){
-      for(var i=0;i<muts.length;i++){
-        var t=muts[i].target;
-        if(t===document.body||(t.classList && (t.classList.contains('chapter')||t.classList.contains('view')))){ schedule(); return; }
-      }
-    }).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class']});
+  document.addEventListener('clipsat:view-change',schedule);
+  document.addEventListener('clipsat:chapter-change',schedule);
+  document.addEventListener('clipsat:locale-changed',schedule);
+  document.addEventListener('clipsat:quiz-ready',schedule);
+  if('MutationObserver' in window && document.body){
+    new MutationObserver(schedule).observe(document.body,{attributes:true,attributeFilter:['class']});
   }
 })();

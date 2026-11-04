@@ -192,7 +192,7 @@ test('window.CSOfflinePack builds complete offline URL list for a track and pers
   assert(urls.includes('/calculus/index.html'), 'Missing track HTML in offline pack');
   assert(urls.includes('/js/ix/calculus.js'), 'Missing interactive practice in offline pack');
   assert(urls.includes('/js/ex/calculus.js'), 'Missing canvas explorers in offline pack');
-  assert(urls.includes('/bank-data/calculus.json'), 'Missing question bank in offline pack');
+  assert(urls.includes('/bank-shards/calculus/_index.json') || urls.includes('/bank-data/calculus.json'), 'Missing question bank in offline pack');
   assert.strictEqual(mockWindow.CSOfflinePack.isTrackSaved('calculus'), false);
   mockWindow.CSOfflinePack.saveTrack('calculus', null);
   assert.strictEqual(mockWindow.CSOfflinePack.isTrackSaved('calculus'), true);

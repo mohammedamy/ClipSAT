@@ -1,20 +1,31 @@
 // Reads every migrated track under content/{track}/ (docs/CONTENT_MODEL.md) and exposes it to
-// templates as migratedContent.{trackId} = { meta, chapters, practiceSet }. A track only needs
-// to exist as a content/{track}/ directory with a _meta.json to show up here — no code change
-// needed to add the next migrated track.
+// templates as migratedContent.{trackId} = { meta, chapters, practiceSet }.
+// Memoized once per process and wrapped in a non-plain prototype class so Eleventy's
+// TemplateData.mergeDeep passes it by reference in O(1) instead of deep-cloning 35 MB per page.
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
+class MigratedContentStore {}
+
+let _cachedStore = null;
+
 module.exports = function () {
+  if (_cachedStore) return _cachedStore;
+
   const contentRoot = path.join(__dirname, '..', '..', 'content');
-  const result = {};
-  if (!fs.existsSync(contentRoot)) return result;
+  const store = new MigratedContentStore();
+  if (!fs.existsSync(contentRoot)) {
+    _cachedStore = store;
+    return store;
+  }
 
   const trackDirs = fs.readdirSync(contentRoot, { withFileTypes: true }).filter((d) => d.isDirectory());
   for (const track of trackDirs) {
     const dir = path.join(contentRoot, track.name);
     const metaPath = path.join(dir, '_meta.json');
-    if (!fs.existsSync(metaPath)) continue; // not a real migrated track dir
+    if (!fs.existsSync(metaPath)) continue;
 
     const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
     const practiceSetPath = path.join(dir, '_practice-set.json');
@@ -25,16 +36,16 @@ module.exports = function () {
       const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
       chaptersById[data.id] = data;
     });
-    // chapterOrder (meta._meta.json) is the source of truth for display order — NOT filesystem
-    // directory-listing order, which isn't guaranteed to match. scripts/validate-content.js
-    // checks every chapterOrder entry has a matching file, so this should never silently drop one,
-    // but fail loudly here too rather than rendering an incomplete page if it somehow does.
     const chapters = (meta.chapterOrder || []).map((id) => {
-      if (!chaptersById[id]) throw new Error(`migratedContent.js: content/${track.name}/_meta.json's chapterOrder references '${id}' but no matching chapter file exists`);
+      if (!chaptersById[id]) {
+        throw new Error(`migratedContent.js: content/${track.name}/_meta.json's chapterOrder references '${id}' but no matching chapter file exists`);
+      }
       return chaptersById[id];
     });
 
-    result[track.name] = { meta, chapters, practiceSet };
+    store[track.name] = { meta, chapters, practiceSet };
   }
-  return result;
+
+  _cachedStore = store;
+  return store;
 };

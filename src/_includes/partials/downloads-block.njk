@@ -34,7 +34,7 @@
   trackId; must match the rail's data-target and any existing URL-hash deep links exactly, see
   rail.njk), courseMeta (the _meta.json 'meta' object — for officialLinks and downloadsInfo)
 #}
-{% import "partials/_bilingual.njk" as bl %}
+{% import "partials/_bilingual.njk" as bl with context %}
 {% set info = courseMeta.downloadsInfo %}
 {% macro ppCard() %}<div class="dl pp-card">
       <div class="di">Official · Past Papers</div>
@@ -49,7 +49,7 @@
         {% endfor %}
       </div>
     </div>{% endmacro %}
-<section class="chapter" id="{{ sectionId }}">
+<section class="chapter{% if isSyllabusHub %} ch-active{% endif %}" id="{{ sectionId }}">
   <div class="chead"><span class="cn">↓</span><h2>{% if info.variant == 'ib' %}{{ bl.text({"en": "Downloads &amp; Resources", "ar": "التنزيلات والمصادر"}) }}{% else %}{{ bl.text({"en": "Downloads", "ar": "التنزيلات"}) }}{% endif %}</h2></div>
 
   {% if info.variant == 'ib' %}

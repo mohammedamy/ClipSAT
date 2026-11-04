@@ -1,0 +1,100 @@
+---
+layout: base.njk
+trackId: rigor-standard
+permalink: rigor-standard.html
+canonicalPath: "/rigor-standard.html"
+enAltPath: "/rigor-standard.html"
+title: "The Rigor Standard — ClipSAT"
+description: "The Rigor Standard — ClipSAT's public authoring rubric for every theorem, worked example, interactive explorer, and question bank across all 31 mathematics tracks."
+isRtl: false
+---
+{% import "partials/_bilingual.njk" as bl with context %}
+<style>
+  .rs-page{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+  .rs-title{font-size:2rem;font-weight:900;color:var(--indigo,#4338ca);margin-bottom:6px}
+  body.dark .rs-title{color:var(--accent,#60a5fa)}
+  .rs-subtitle{color:var(--muted,#6b7280);font-size:.95rem;margin-bottom:8px;max-width:68ch}
+  .rs-updated{color:var(--muted,#6b7280);font-size:.78rem;margin-bottom:32px}
+  .rs-thesis{background:var(--panel,#fff);border:1.5px solid var(--line,#e2e8f0);border-inline-start:4px solid var(--amber,#d97706);border-radius:12px;padding:22px 24px;margin-bottom:36px}
+  .rs-thesis .rs-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber,#d97706);font-weight:800;margin-bottom:8px;display:block}
+  .rs-thesis p{font-size:1.08rem;line-height:1.55;font-weight:600;color:var(--text,#1a1a2e);max-width:68ch}
+  .rs-section{margin-bottom:40px}
+  .rs-h2{font-size:1.3rem;font-weight:800;color:var(--indigo,#4338ca);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  body.dark .rs-h2{color:var(--accent,#60a5fa)}
+  .rs-h2 .rs-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--indigo,#4338ca);color:#fff;font-size:.85rem;font-weight:900;flex-shrink:0}
+  body.dark .rs-h2 .rs-num{background:var(--accent,#60a5fa);color:#0f172a}
+  .rs-lede{color:var(--muted,#6b7280);font-size:.92rem;margin:8px 0 18px;max-width:68ch;line-height:1.6}
+  .rs-checklist{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+  .rs-checklist li{background:var(--panel,#fff);border:1.5px solid var(--line,#e2e8f0);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+  .rs-checklist .rs-tick{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--green,#15803d);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;margin-top:1px}
+  .rs-checklist b{display:block;margin-bottom:2px;font-size:.94rem}
+  .rs-checklist span{color:var(--muted,#6b7280);font-size:.86rem;line-height:1.5}
+  .rs-schema{background:var(--panel,#fff);border:1.5px solid var(--line,#e2e8f0);border-radius:12px;padding:18px 20px;margin-top:8px}
+  .rs-schema-row{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:8px 0;border-bottom:1px solid var(--line,#e2e8f0);font-size:.85rem}
+  .rs-schema-row:last-child{border-bottom:none}
+  .rs-schema-row code{font-family:var(--mono,monospace);font-weight:700;color:var(--indigo,#4338ca);font-size:.82rem}
+  body.dark .rs-schema-row code{color:var(--accent,#60a5fa)}
+  .rs-schema-row p{color:var(--muted,#6b7280);line-height:1.5;margin:0}
+  .rs-density{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line,#e2e8f0);border:1.5px solid var(--line,#e2e8f0);border-radius:10px;overflow:hidden;margin:16px 0}
+  .rs-density div{background:var(--panel,#fff);padding:16px;text-align:center}
+  .rs-density b{display:block;font-size:1.4rem;font-weight:900;color:var(--indigo,#4338ca)}
+  body.dark .rs-density b{color:var(--accent,#60a5fa)}
+  .rs-density span{font-size:.72rem;color:var(--muted,#6b7280);text-transform:uppercase;letter-spacing:.05em}
+  .rs-callout{border:1.5px dashed var(--line,#e2e8f0);border-radius:10px;padding:16px 18px;margin-top:14px;background:var(--bg,#f4f6fb)}
+  .rs-callout b{color:#dc2626;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
+  .rs-callout p{color:var(--muted,#6b7280);font-size:.87rem;line-height:1.6;margin:0}
+  @media(max-width:600px){
+    .rs-density{grid-template-columns:1fr}
+    .rs-schema-row{grid-template-columns:1fr}
+  }
+</style>
+<main class="rs-page view active" id="view-rigor-standard">
+  <h1 class="rs-title">{{ bl.text({"en": "The Rigor Standard", "ar": "معيار الدقة والصرامة العلمية"}) }}</h1>
+  <p class="rs-subtitle">{{ bl.text({"en": "The authoring bar every piece of content on ClipSAT — across all 31 mathematics tracks, 306 chapters, and 50,000+ bank items — is verified against before it publishes.", "ar": "المعيار العلمي الذي يُفحص وفقَه كل محتوى في ClipSAT — عبر جميع المسارات الـ 31 والـ 306 فصول وبنك الأسئلة — قبل نشره."}) }}</p>
+  <p class="rs-updated">{{ bl.text({"en": "v2.0 · Updated November 2026 · Revisions are dated, never silent", "ar": "الإصدار 2.0 · آخر تحديث نوفمبر 2026 · كل تعديل مؤرَّخ ولا يمر بصمت"}) }}</p>
+
+  <div class="rs-thesis">
+    <span class="rs-label">{{ bl.text({"en": "The one rule everything below exists to protect", "ar": "القاعدة الوحيدة التي يحميها كل ما يلي"}) }}</span>
+    <p>{{ bl.text({"en": "\"See the proof, move the proof.\" Every non-trivial result on ClipSAT ships with both a rigorous derivation and a live, manipulable explorer of the same object — never a bare formula, and never an animation with nothing rigorous behind it.", "ar": "«شاهد البرهان، وحرّك البرهان.» كل نتيجة غير بديهية في ClipSAT تُنشر مع اشتقاق دقيق كامل وأداة تفاعلية حيّة يمكن التحكم بها لنفس الفكرة — لا صيغة مجردة بلا برهان، ولا رسم متحرك بلا دقة رياضية خلفه."}) }}</p>
+  </div>
+
+  <div class="rs-section">
+    <h2 class="rs-h2"><span class="rs-num">1</span>{{ bl.text({"en": "Every theorem or result chapter", "ar": "كل فصل يقدّم نظرية أو نتيجة"}) }}</h2>
+    <p class="rs-lede">{{ bl.text({"en": "Before a chapter that introduces a formal result publishes, it must satisfy all four pillars below:", "ar": "قبل نشر أي فصل يقدّم نتيجة رياضية رسمية، يجب أن يستوفي الركائز الأربع التالية:"}) }}</p>
+    <ul class="rs-checklist">
+      <li><span class="rs-tick">✓</span><div>
+        <b>{{ bl.text({"en": "A precise statement", "ar": "صياغة رياضية دقيقة"}) }}</b>
+        <span>{{ bl.text({"en": "The result stated formally with all domain hypotheses explicit — the actual theorem, not an informal paraphrase.", "ar": "صياغة النتيجة رسميًا مع تحديد جميع شروط المجال بوضوح تام دون لبس."}) }}</span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b>{{ bl.text({"en": "A full derivation or proof", "ar": "اشتقاق أو برهان متكامل"}) }}</b>
+        <span>{{ bl.text({"en": "Every algebraic and logical step shown clearly, or an explicit scope note with the fullest derivation appropriate to the syllabus.", "ar": "عرض كل خطوة جبرية ومنطقية بوضوح، دون قفزات غير مبررة."}) }}</span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b>{{ bl.text({"en": "At least three progressive worked examples", "ar": "ثلاثة أمثلة محلولة تدريجية على الأقل"}) }}</b>
+        <span>{{ bl.text({"en": "Step-by-step progressive-reveal worked example cards from setup to final answer, paired with Twin Problem practice hooks.", "ar": "بطاقات أمثلة محلولة تكشف الخطوات تدريجيًا من صياغة المعادلة حتى الحل النهائي مع مسائل مشابهة للتدريب."}) }}</span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b>{{ bl.text({"en": "Exam-authentic or physical modeling context", "ar": "تطبيق واقعي أو سياق امتحاني أصيل"}) }}</b>
+        <span>{{ bl.text({"en": "Concrete applications aligned to official board specifications (College Board, Cambridge CAIE, Edexcel, IBO, ETEC/Qiyas, NSMO/KAUST).", "ar": "تطبيقات ملموسة متوافقة مع مواصفات الهيئات الامتحانية الرسمية."}) }}</span>
+      </div></li>
+    </ul>
+  </div>
+
+  <div class="rs-section">
+    <h2 class="rs-h2"><span class="rs-num">2</span>{{ bl.text({"en": "Canonical Question-Bank Schema v2 & Symbolic Verification", "ar": "مخطط بنك الأسئلة الموحّد والتحقق الرمزي الآلي"}) }}</h2>
+    <p class="rs-lede">{{ bl.text({"en": "Every item in bank-data/*.json is validated against Canonical Schema v2, statistical uniformity, strict KaTeX compilation, and symbolic verification:", "ar": "يخضع كل سؤال في بنوك الأسئلة للتحقق الآلي الصارم في المخطط والتوزيع الإحصائي وصحة المعادلات:"}) }}</p>
+    <div class="rs-density">
+      <div><b>50</b><span>{{ bl.text({"en": "Easy / Domain", "ar": "سهل / مجال"}) }}</span></div>
+      <div><b>50</b><span>{{ bl.text({"en": "Medium / Domain", "ar": "متوسط / مجال"}) }}</span></div>
+      <div><b>50</b><span>{{ bl.text({"en": "Hard / Domain", "ar": "صعب / مجال"}) }}</span></div>
+    </div>
+    <div class="rs-schema">
+      <div class="rs-schema-row"><code>id / type</code><p>{{ bl.text({"en": "Globally unique item ID and modality (\"mcq\", \"spr\", or multi-part \"structured\").", "ar": "معرّف فريد عالميًا ونوع السؤال (اختيار من متعدد، إجابة عددية، أو مقالي متعدد الأجزاء)."}) }}</p></div>
+      <div class="rs-schema-row"><code>calc</code><p>{{ bl.text({"en": "Validated boolean calculator policy (true vs false) enforced in No-Calc exam sections.", "ar": "سياسة استخدام الآلة الحاسبة (مسموح أو غير مسموح) وتُطبّق تلقائيًا في أقسام الاختبار."}) }}</p></div>
+      <div class="rs-schema-row"><code>choices / answer</code><p>{{ bl.text({"en": "Mutually exclusive options with debiased uniform answer keys (χ² p > 0.25) and zero shadow fields.", "ar": "خيارات متباينة رياضيًا مع توزيع متوازن للإجابات الصحيحة دون حقول مكررة."}) }}</p></div>
+      <div class="rs-schema-row"><code>hints[3]</code><p>{{ bl.text({"en": "Three Socratic hints (Concept → Setup → Penultimate step) verified free of final-answer leaks.", "ar": "ثلاث تلميحات سقراطية متدرجة خالية تمامًا من تسريب الإجابة النهائية."}) }}</p></div>
+      <div class="rs-schema-row"><code>sympy_cert</code><p>{{ bl.text({"en": "Executable symbolic proof certificate or signed educator review hash asserting keyed accuracy.", "ar": "شهادة تحقق جبري رمزي قابلة للتنفيذ تؤكد مطابقة الحل للإجابة المعتمدة."}) }}</p></div>
+    </div>
+  </div>
+</main>

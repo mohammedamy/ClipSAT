@@ -1,9 +1,14 @@
 ---
 layout: base.njk
 trackId: precalc
+pageLocale: "en"
+isRtl: false
+isSyllabusHub: true
+canonicalPath: "/precalc/"
+enAltPath: "/precalc/"
+arAltPath: "/ar/precalc/"
 title: "Pre-Calculus · ClipSAT"
 description: "Trigonometry, conics, vectors, polar coordinates, exponentials, and sequences"
-isRtl: false
 ---
 {#
   Renders from content/precalc/* (docs/CONTENT_MODEL.md) instead of the legacy
@@ -21,33 +26,28 @@ isRtl: false
   practice link text/icon match the site-wide default here (unlike apbc), so no
   practiceSetLabel/practiceSetIcon override is passed.
 #}
-{% set precalc = migratedContent.precalc %}
-{% set pageHeader = precalc.meta.meta.pageHeader %}
-<main id="view-precalc" class="view active">
+{% set trackData = migratedContent.precalc %}
+{% set pageHeader = trackData.meta.meta.pageHeader %}
+{% set chapters = trackData.chapters %}
+{% set practiceSetId = 'pc-practice' %}
+{% set practiceSetIcon = (trackData.practiceSet and trackData.practiceSet.icon) or '§' %}
+{% set testGeneratorId = 'pc-testgen' %}
+{% set downloadsId = 'pc-downloads' %}
+<main id="view-precalc" class="view active" data-syllabus-hub="1">
   {% include "partials/subject-head.njk" %}
 
   <div class="wrap calc-body">
-    {% set chapters = precalc.chapters %}
-    {% set practiceSetId = 'pc-practice' %}
-    {% set testGeneratorId = 'pc-testgen' %}
-    {% set downloadsId = 'pc-downloads' %}
     {% include "partials/rail.njk" %}
 
     <div class="content">
-      {% for chapter in precalc.chapters %}
-        {% include "partials/chapter.njk" %}
-      {% endfor %}
-
-      {% set sectionId = 'pc-practice' %}
-      {% set practiceSet = precalc.practiceSet %}
-      {% include "partials/practice-set.njk" %}
+      {% include "partials/syllabus-hub.njk" %}
 
       {% set sectionId = 'pc-testgen' %}
-      {% set testGenerator = precalc.meta.meta.testGenerator %}
+      {% set testGenerator = trackData.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}
 
       {% set sectionId = 'pc-downloads' %}
-      {% set courseMeta = precalc.meta.meta %}
+      {% set courseMeta = trackData.meta.meta %}
       {% include "partials/downloads-block.njk" %}
     </div>
   </div>

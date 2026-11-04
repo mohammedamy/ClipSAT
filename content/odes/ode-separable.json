@@ -90,14 +90,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 1.A — Solution Verification & Interval of Definition",
           "ar": "مثال محلول 1.A — الحل Verification & Interval of تعريف"
         },
-        "body": {
-          "en": "<p>Verify that \\( y(x) = C e^{2x} \\) is a solution of \\( \\dfrac{dy}{dx} = 2y \\) for any real constant \\( C \\), prove that these are the <em>only</em> solutions on \\( \\mathbb{R} \\), and determine the unique solution satisfying \\( y(0) = 5 \\).</p><p><strong>Verification:</strong> Differentiating gives \\( \\dfrac{dy}{dx} = \\dfrac{d}{dx}[C e^{2x}] = 2C e^{2x} = 2y(x) \\), satisfying the ODE for all \\( x \\in \\mathbb{R} \\).</p><p><strong>Exhaustiveness Proof:</strong> Suppose \\( y(x) \\) is any arbitrary solution to \\( y' = 2y \\). Consider the product \\( u(x) = e^{-2x}y(x) \\). Applying the product rule: \\[ u'(x) = -2e^{-2x}y(x) + e^{-2x}y'(x) = e^{-2x}\\big(y'(x) - 2y(x)\\big) = e^{-2x}(0) = 0. \\] By the Zero Derivative Theorem (a direct corollary of the Mean Value Theorem), a function whose derivative vanishes on an interval is constant: \\( u(x) = C \\). Hence \\( y(x) = C e^{2x} \\), proving no other solutions exist.</p><p><strong>Initial Condition:</strong> Setting \\( x = 0 \\): \\( y(0) = C e^0 = C = 5 \\). The unique particular solution is \\( y(x) = 5e^{2x} \\).</p>",
+        "problem": {
+          "en": "Verify that \\( y(x) = C e^{2x} \\) is a solution of \\( \\dfrac{dy}{dx} = 2y \\) for any real constant \\( C \\), prove that these are the <em>only</em> solutions on \\( \\mathbb{R} \\), and determine the unique solution satisfying \\( y(0) = 5 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Verification:</strong> Differentiating gives \\( \\dfrac{dy}{dx} = \\dfrac{d}{dx}[C e^{2x}] = 2C e^{2x} = 2y(x) \\), satisfying the ODE for all \\( x \\in \\mathbb{R} \\).</p><p><strong>Exhaustiveness Proof:</strong> Suppose \\( y(x) \\) is any arbitrary solution to \\( y' = 2y \\). Consider the product \\( u(x) = e^{-2x}y(x) \\). Applying the product rule: \\[ u'(x) = -2e^{-2x}y(x) + e^{-2x}y'(x) = e^{-2x}\\big(y'(x) - 2y(x)\\big) = e^{-2x}(0) = 0. \\] By the Zero Derivative Theorem (a direct corollary of the Mean Value Theorem), a function whose derivative vanishes on an interval is constant: \\( u(x) = C \\). Hence \\( y(x) = C e^{2x} \\), proving no other solutions exist.</p><p><strong>Initial Condition:</strong> Setting \\( x = 0 \\): \\( y(0) = C e^0 = C = 5 \\). The unique particular solution is \\( y(x) = 5e^{2x} \\).</p>",
           "ar": null
         }
       },
@@ -180,26 +183,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 1.B — Initial Value Problems & Finite-Time Blowup",
           "ar": null
         },
-        "body": {
-          "en": "<p>Solve the initial value problem \\[ \\frac{dy}{dx} = 2x y^2, \\qquad y(0) = 1, \\] and determine its maximal open interval of valid existence.</p><p><strong>Step 1: Check equilibrium:</strong> \\( g(y) = y^2 = 0 \\implies y \\equiv 0 \\). Since \\( y(0) = 1 \\neq 0 \\), the solution lies on the positive branch \\( y > 0 \\).</p><p><strong>Step 2: Separate and integrate:</strong> \\[ \\int y^{-2}\\,dy = \\int 2x\\,dx \\implies -\\frac{1}{y} = x^2 + C. \\] Applying \\( y(0) = 1 \\): \\( -\\frac{1}{1} = 0^2 + C \\implies C = -1 \\).</p><p><strong>Step 3: Solve for \\( y(x) \\):</strong> \\[ -\\frac{1}{y} = x^2 - 1 \\implies y(x) = \\frac{1}{1 - x^2}. \\]</p><p><strong>Step 4: Maximal interval of existence:</strong> The function \\( y(x) = \\frac{1}{1 - x^2} \\) has vertical asymptotes at \\( x = \\pm 1 \\). Because a solution to an ODE must be continuous on an interval containing the initial point \\( x_0 = 0 \\), the maximal interval of existence is strictly: \\[ I = (-1, 1). \\] As \\( x \\to 1^- \\) or \\( x \\to -1^+ \\), \\( y(x) \\to +\\infty \\). This phenomenon is known as <strong>finite-time blowup</strong>, demonstrating that even when the ODE's right-hand side \\( f(x, y) = 2x y^2 \\) is infinitely smooth everywhere on \\( \\mathbb{R}^2 \\), solutions to non-linear equations can cease to exist in finite time.</p>",
+        "problem": {
+          "en": "Solve the initial value problem \\[ \\frac{dy}{dx} = 2x y^2, \\qquad y(0) = 1, \\] and determine its maximal open interval of valid existence.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Check equilibrium:</strong> \\( g(y) = y^2 = 0 \\implies y \\equiv 0 \\). Since \\( y(0) = 1 \\neq 0 \\), the solution lies on the positive branch \\( y > 0 \\).</p><p><strong>Step 2: Separate and integrate:</strong> \\[ \\int y^{-2}\\,dy = \\int 2x\\,dx \\implies -\\frac{1}{y} = x^2 + C. \\] Applying \\( y(0) = 1 \\): \\( -\\frac{1}{1} = 0^2 + C \\implies C = -1 \\).</p><p><strong>Step 3: Solve for \\( y(x) \\):</strong> \\[ -\\frac{1}{y} = x^2 - 1 \\implies y(x) = \\frac{1}{1 - x^2}. \\]</p><p><strong>Step 4: Maximal interval of existence:</strong> The function \\( y(x) = \\frac{1}{1 - x^2} \\) has vertical asymptotes at \\( x = \\pm 1 \\). Because a solution to an ODE must be continuous on an interval containing the initial point \\( x_0 = 0 \\), the maximal interval of existence is strictly: \\[ I = (-1, 1). \\] As \\( x \\to 1^- \\) or \\( x \\to -1^+ \\), \\( y(x) \\to +\\infty \\). This phenomenon is known as <strong>finite-time blowup</strong>, demonstrating that even when the ODE's right-hand side \\( f(x, y) = 2x y^2 \\) is infinitely smooth everywhere on \\( \\mathbb{R}^2 \\), solutions to non-linear equations can cease to exist in finite time.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 1.C — Analytical Application: Logistic Growth & Critical Harvesting Threshold",
           "ar": null
         },
-        "body": {
-          "en": "<p>A biological population \\( P(t) \\) with carrying capacity \\( K \\) and intrinsic growth rate \\( r \\) is subject to a constant harvesting rate \\( H > 0 \\): \\[ \\frac{dP}{dt} = r P\\left(1 - \\frac{P}{K}\\right) - H. \\] Determine the critical harvesting threshold \\( H_{\\text{crit}} \\) above which population collapse is inevitable.</p><p><strong>Equilibrium Analysis:</strong> Set \\( \\frac{dP}{dt} = 0 \\): \\[ -\\frac{r}{K}P^2 + r P - H = 0 \\implies r P^2 - r K P + K H = 0. \\] The roots are given by the quadratic formula: \\[ P_{1, 2} = \\frac{r K \\pm \\sqrt{r^2 K^2 - 4 r K H}}{2r} = \\frac{K}{2} \\left(1 \\pm \\sqrt{1 - \\frac{4H}{rK}}\\right). \\]</p><p><strong>Saddle-Node Bifurcation:</strong> The discriminant \\( \\Delta = r^2 K^2 - 4rKH \\) dictates the physical dynamics:</p><ul><li>If \\( H < \\frac{rK}{4} \\): Two real equilibria exist: a stable carrying capacity \\( P_1 \\) and an unstable threshold \\( P_2 \\). If \\( P(0) > P_2 \\), the population stabilizes at \\( P_1 \\).</li><li>If \\( H = H_{\\text{crit}} = \\frac{rK}{4} \\): A single semi-stable equilibrium exists at \\( P = K/2 \\).</li><li>If \\( H > \\frac{rK}{4} \\): \\( \\Delta < 0 \\), so \\( \\frac{dP}{dt} < 0 \\) for all \\( P \\ge 0 \\). No equilibria exist, and the population drops to 0 in finite time.</li></ul><p>Hence, the maximum sustainable yield is precisely \\( H_{\\text{crit}} = \\frac{rK}{4} \\).</p>",
+        "problem": {
+          "en": "A biological population \\( P(t) \\) with carrying capacity \\( K \\) and intrinsic growth rate \\( r \\) is subject to a constant harvesting rate \\( H > 0 \\): \\[ \\frac{dP}{dt} = r P\\left(1 - \\frac{P}{K}\\right) - H. \\] Determine the critical harvesting threshold \\( H_{\\text{crit}} \\) above which population collapse is inevitable.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Equilibrium Analysis:</strong> Set \\( \\frac{dP}{dt} = 0 \\): \\[ -\\frac{r}{K}P^2 + r P - H = 0 \\implies r P^2 - r K P + K H = 0. \\] The roots are given by the quadratic formula: \\[ P_{1, 2} = \\frac{r K \\pm \\sqrt{r^2 K^2 - 4 r K H}}{2r} = \\frac{K}{2} \\left(1 \\pm \\sqrt{1 - \\frac{4H}{rK}}\\right). \\]</p><p><strong>Saddle-Node Bifurcation:</strong> The discriminant \\( \\Delta = r^2 K^2 - 4rKH \\) dictates the physical dynamics:</p><ul><li>If \\( H < \\frac{rK}{4} \\): Two real equilibria exist: a stable carrying capacity \\( P_1 \\) and an unstable threshold \\( P_2 \\). If \\( P(0) > P_2 \\), the population stabilizes at \\( P_1 \\).</li><li>If \\( H = H_{\\text{crit}} = \\frac{rK}{4} \\): A single semi-stable equilibrium exists at \\( P = K/2 \\).</li><li>If \\( H > \\frac{rK}{4} \\): \\( \\Delta < 0 \\), so \\( \\frac{dP}{dt} < 0 \\) for all \\( P \\ge 0 \\). No equilibria exist, and the population drops to 0 in finite time.</li></ul><p>Hence, the maximum sustainable yield is precisely \\( H_{\\text{crit}} = \\frac{rK}{4} \\).</p>",
           "ar": null
         }
       },
@@ -387,14 +396,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — First-Order Differential Equations, Separable Equations &amp; Existence Theory (Hard Application)",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> What is the general solution to the initial value problem \\(\\frac{dy}{dt} = -3y\\) with \\(y(0) = 50\\)?</p><p><strong>Step-by-Step Solution:</strong> Separable: \\(\\frac{dy}{y} = -3\\,dt \\implies \\ln|y| = -3t + C \\implies y(t) = y(0)e^{-3t}\\). Using \\(y(0) = 50\\) yields \\(y(t) = 50e^{-3t}\\).</p>",
+        "problem": {
+          "en": "What is the general solution to the initial value problem \\(\\frac{dy}{dt} = -3y\\) with \\(y(0) = 50\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Separable: \\(\\frac{dy}{y} = -3\\,dt \\implies \\ln|y| = -3t + C \\implies y(t) = y(0)e^{-3t}\\). Using \\(y(0) = 50\\) yields \\(y(t) = 50e^{-3t}\\).</p>",
           "ar": null
         }
       },

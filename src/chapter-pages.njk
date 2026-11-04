@@ -1,0 +1,28 @@
+---
+layout: base.njk
+pagination:
+  data: chapterPages
+  size: 1
+  alias: cp
+permalink: "{{ cp.permalink }}"
+---
+{% set _track = migratedContent[cp.trackId] %}
+{% set pageHeader = _track.meta.meta.pageHeader %}
+{% set chapters = _track.chapters %}
+{% set chapter = _track.chapters[cp.chapterIndex] %}
+{% set prevChapter = cp.prevChapter %}
+{% set nextChapter = cp.nextChapter %}
+{% set practiceSetId = cp.practiceSetId %}
+{% set practiceSetIcon = cp.practiceSetIcon %}
+{% set testGeneratorId = cp.testGeneratorId %}
+{% set downloadsId = cp.downloadsId %}
+{% set railNoTrackId = cp.railNoTrackId %}
+<main id="view-{{ cp.trackId }}" class="view active" data-chapter-route="1">
+  {% include "partials/subject-head.njk" %}
+  <div class="wrap calc-body">
+    {% include "partials/rail.njk" %}
+    <div class="content">
+      {% include "partials/chapter.njk" %}
+    </div>
+  </div>
+</main>

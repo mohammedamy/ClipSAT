@@ -59,9 +59,14 @@ function _renderDailyGoal(){
     +'<button type="button" onclick="setDailyGoal()">'+(isAr?'الهدف: ':'Goal: ')+_dgGoal+'</button>'
     +'<button type="button" onclick="dismissDailyGoal()" title="Dismiss" style="padding:2px 7px;font-size:.85rem;background:transparent;border:1px solid var(--line);border-radius:5px;cursor:pointer;color:var(--muted)">&#x2715;</button>';
 }
-window.setDailyGoal=function(){var n=parseInt(prompt('Daily question target:',_dgGoal),10);if(n&&n>0){_dgGoal=n;localStorage.setItem(DG_KEY,n);_renderDailyGoal();}};
-var _origCqPick=window.cqPick;
-window.cqPick=function(el){if(_origCqPick)_origCqPick(el);var item=el.closest('.cq-item');if(item&&!item.classList.contains('_dg_counted')){item.classList.add('_dg_counted');_recordAnswer();}};
+window.setDailyGoal=function(){var n=parseInt(prompt('Daily question target:',_dgGoal),10);if(n&&n>0){_dgGoal=n;try{localStorage.setItem(DG_KEY,n);}catch(e){}_renderDailyGoal();}};
+document.addEventListener('clipsat:cq-pick', function(ev){
+  var item = ev && ev.detail && ev.detail.item;
+  if(item && !item.classList.contains('_dg_counted')){
+    item.classList.add('_dg_counted');
+    _recordAnswer(Boolean(ev.detail.isRight));
+  }
+});
 
 /* ── 62: MASTERY MODULE (window.Mastery) ── */
 window.Mastery = (function(){
@@ -839,8 +844,9 @@ function _renderDeferredChrome(){
   _renderWeakRecs();
   _injectNoteButtons();
   _renderAccBadges();
-  var _sv0=window.showView;
-  window.showView=function(name){if(_sv0)_sv0(name);setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();},200);};
+  document.addEventListener('clipsat:view-change', function(){
+    setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();},200);
+  });
 }
 if(document.readyState!=='loading') _renderDeferredChrome();
 else document.addEventListener('DOMContentLoaded',_renderDeferredChrome);

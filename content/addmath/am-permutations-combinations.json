@@ -284,50 +284,62 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 5.A — Arrangements with Constraints",
           "ar": "مثال محلول 5.A — Arrangements with Constraints"
         },
-        "body": {
-          "en": "<p>A group of 4 boys and 3 girls are to sit in a row of 7 chairs. Find the number of possible arrangements if:<br>(a) All 3 girls must sit together.<br>(b) No two girls may sit next to each other.</p><p><strong>Solution:</strong><br>(a) <strong>Girls together:</strong> Treat the 3 girls as 1 composite block \\( G \\). We now have 4 boys + 1 block = 5 entities to arrange: \\( 5! = 120 \\). Within the block, the 3 girls can be arranged in \\( 3! = 6 \\) ways.<br>Total arrangements = \\( 5! \\times 3! = 120 \\times 6 = 720 \\).<br><br>(b) <strong>No two girls adjacent:</strong> First arrange the 4 boys in a row: \\( 4! = 24 \\) ways.<br>This creates 5 available gaps (including ends): \\( \\_ \\; B \\; \\_ \\; B \\; \\_ \\; B \\; \\_ \\; B \\; \\_ \\).<br>We must choose 3 of these 5 gaps for the 3 girls and arrange them: \\( {}^5P_3 = 5 \\times 4 \\times 3 = 60 \\).<br>Total arrangements = \\( 4! \\times {}^5P_3 = 24 \\times 60 = 1,440 \\).<br><strong>Answer:</strong> (a) 720, (b) 1,440.</p>",
+        "problem": {
+          "en": "A group of 4 boys and 3 girls are to sit in a row of 7 chairs. Find the number of possible arrangements if:<br>(a) All 3 girls must sit together.<br>(b) No two girls may sit next to each other.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><br>(a) <strong>Girls together:</strong> Treat the 3 girls as 1 composite block \\( G \\). We now have 4 boys + 1 block = 5 entities to arrange: \\( 5! = 120 \\). Within the block, the 3 girls can be arranged in \\( 3! = 6 \\) ways.<br>Total arrangements = \\( 5! \\times 3! = 120 \\times 6 = 720 \\).<br><br>(b) <strong>No two girls adjacent:</strong> First arrange the 4 boys in a row: \\( 4! = 24 \\) ways.<br>This creates 5 available gaps (including ends): \\( \\_ \\; B \\; \\_ \\; B \\; \\_ \\; B \\; \\_ \\; B \\; \\_ \\).<br>We must choose 3 of these 5 gaps for the 3 girls and arrange them: \\( {}^5P_3 = 5 \\times 4 \\times 3 = 60 \\).<br>Total arrangements = \\( 4! \\times {}^5P_3 = 24 \\times 60 = 1,440 \\).<br><strong>Answer:</strong> (a) 720, (b) 1,440.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Permutations & Combinations (Medium Application)",
           "ar": "مثال محلول B — التباديل والتوافيق (تطبيق Medium)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Medium):</strong> A committee of 5 members is to be selected from a group consisting of \\( n \\) men and 6 women, where \\( n \\ge 4 \\).\n\nGiven that the number of possible committees containing exactly 3 men is equal to the number of possible committees containing exactly 4 men, find the value of \\( n \\).</p><p><strong>Step-by-Step Solution:</strong> To form a committee of 5 members:\n\n1. **Committees with exactly 3 men:**\nSince there are 5 members in total, the committee must contain 3 men and \\( 5 - 3 = 2 \\) women.\n\\[\n\\text{Number of ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}\n\\]\n\n2. **Committees with exactly 4 men:**\nThe committee must contain 4 men and \\( 5 - 4 = 1 \\) woman.\n\\[\n\\text{Number of ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}\n\\]\n\n3. **Equating the two expressions:**\n\\[\n15\\binom{n}{3} = 6\\binom{n}{4}\n\\]\nDivide both sides by 3:\n\\[\n5\\binom{n}{3} = 2\\binom{n}{4}\n\\]\nUsing the relation \\( \\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3} \\):\n\\[\n5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}\n\\]\nSince \\( n \\ge 4 \\), \\( \\binom{n}{3} \\neq 0 \\), so we can divide both sides by \\( \\binom{n}{3} \\):\n\\[\n5 = \\frac{n - 3}{2} \\implies 10 = n - 3 \\implies n = 13\n\\]\n\n**Common Traps:**\n- Setting \\( \\binom{n}{3} = \\binom{n}{4} \\) ignores the selection of the women needed to complete the 5-member committee, giving \\( \\frac{n-3}{4} = 1 \\implies n = 7 \\).\n- Forgetting to add 3 after solving \\( n - 3 = 10 \\) leads to the distractor 10.</p>",
+        "problem": {
+          "en": "A committee of 5 members is to be selected from a group consisting of \\( n \\) men and 6 women, where \\( n \\ge 4 \\).\n\nGiven that the number of possible committees containing exactly 3 men is equal to the number of possible committees containing exactly 4 men, find the value of \\( n \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>To form a committee of 5 members:\n\n1. **Committees with exactly 3 men:**\nSince there are 5 members in total, the committee must contain 3 men and \\( 5 - 3 = 2 \\) women.\n\\[\n\\text{Number of ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}\n\\]\n\n2. **Committees with exactly 4 men:**\nThe committee must contain 4 men and \\( 5 - 4 = 1 \\) woman.\n\\[\n\\text{Number of ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}\n\\]\n\n3. **Equating the two expressions:**\n\\[\n15\\binom{n}{3} = 6\\binom{n}{4}\n\\]\nDivide both sides by 3:\n\\[\n5\\binom{n}{3} = 2\\binom{n}{4}\n\\]\nUsing the relation \\( \\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3} \\):\n\\[\n5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}\n\\]\nSince \\( n \\ge 4 \\), \\( \\binom{n}{3} \\neq 0 \\), so we can divide both sides by \\( \\binom{n}{3} \\):\n\\[\n5 = \\frac{n - 3}{2} \\implies 10 = n - 3 \\implies n = 13\n\\]\n\n**Common Traps:**\n- Setting \\( \\binom{n}{3} = \\binom{n}{4} \\) ignores the selection of the women needed to complete the 5-member committee, giving \\( \\frac{n-3}{4} = 1 \\implies n = 7 \\).\n- Forgetting to add 3 after solving \\( n - 3 = 10 \\) leads to the distractor 10.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Permutations & Combinations (Hard Application)",
           "ar": "مثال محلول C — التباديل والتوافيق (تطبيق Hard)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Six-digit numbers are formed using digits chosen from the set \\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\), with no digit repeated in any number.\n\nFind the number of different six-digit odd numbers that can be formed such that the digits \\(2\\) and \\(4\\) are not adjacent.</p><p><strong>Step-by-Step Solution:</strong> We use complementary counting: \\(\\text{Number of valid arrangements} = \\text{Total odd 6-digit numbers} - \\text{Odd 6-digit numbers where } 2 \\text{ and } 4 \\text{ are adjacent}\\).\n\n**Step 1: Total number of 6-digit odd numbers**\n- For the number to be odd, the last digit (units place) must be chosen from the odd digits \\(\\{1, 3, 5, 7\\}\\), giving \\(4\\) choices.\n- The remaining \\(5\\) positions are filled by selecting and arranging \\(5\\) digits from the remaining \\(7\\) digits in the set:\n\\[\nP(7, 5) = 7 \\times 6 \\times 5 \\times 4 \\times 3 = 2520\n\\]\n- Total odd 6-digit numbers \\(= 4 \\times 2520 = 10080\\).\n\n**Step 2: Number of 6-digit odd numbers where \\(2\\) and \\(4\\) are adjacent**\n- Treat the pair of digits \\(2\\) and \\(4\\) as a single block \\(B\\), which can be ordered as \\((2, 4)\\) or \\((4, 2)\\) (\\(2\\) internal arrangements).\n- Since the number must be odd, the units digit must be odd (\\(4\\) choices from \\(\\{1, 3, 5, 7\\}\\)). Because both \\(2\\) and \\(4\\) are even, the block \\(B\\) cannot occupy the final position.\n- Thus, the block \\(B\\) must occupy two adjacent positions entirely within the first \\(5\\) digits. The possible adjacent pairs for \\(B\\) are positions \\((1, 2)\\), \\((2, 3)\\), \\((3, 4)\\), and \\((4, 5)\\), giving \\(4\\) possible positions.\n- The remaining \\(3\\) unfilled positions among the first \\(5\\) places are filled from the remaining \\(8 - 1 - 2 = 5\\) available digits:\n\\[\nP(5, 3) = 5 \\times 4 \\times 3 = 60\n\\]\n- Number of odd numbers with \\(2\\) and \\(4\\) adjacent:\n\\[\n4 \\text{ (choices for units digit)} \\times 4 \\text{ (positions for block } B) \\times 2 \\text{ (internal orders of } B) \\times 60 = 1920\n\\]\n\n**Step 3: Subtract adjacent cases from the total**\n\\[\n10080 - 1920 = 8160\n\\]\n\n**Common Misconceptions:**\n- **7680**: Incorrectly allows the block \\(B\\) to occupy positions \\((5, 6)\\), forgetting that the units digit cannot be even, leading to \\(10080 - 4 \\times 5 \\times 2 \\times 60 = 7680\\).\n- **9120**: Forgets the internal order of the pair \\((2, 4)\\) and \\((4, 2)\\), calculating \\(10080 - 960 = 9120\\).\n- **2880**: Erroneously assumes that both digits \\(2\\) and \\(4\\) must be present in the number, omitting numbers where only one or neither of \\(2\\) and \\(4\\) is selected.</p>",
+        "problem": {
+          "en": "Six-digit numbers are formed using digits chosen from the set \\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\), with no digit repeated in any number.\n\nFind the number of different six-digit odd numbers that can be formed such that the digits \\(2\\) and \\(4\\) are not adjacent.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>We use complementary counting: \\(\\text{Number of valid arrangements} = \\text{Total odd 6-digit numbers} - \\text{Odd 6-digit numbers where } 2 \\text{ and } 4 \\text{ are adjacent}\\).\n\n**Step 1: Total number of 6-digit odd numbers**\n- For the number to be odd, the last digit (units place) must be chosen from the odd digits \\(\\{1, 3, 5, 7\\}\\), giving \\(4\\) choices.\n- The remaining \\(5\\) positions are filled by selecting and arranging \\(5\\) digits from the remaining \\(7\\) digits in the set:\n\\[\nP(7, 5) = 7 \\times 6 \\times 5 \\times 4 \\times 3 = 2520\n\\]\n- Total odd 6-digit numbers \\(= 4 \\times 2520 = 10080\\).\n\n**Step 2: Number of 6-digit odd numbers where \\(2\\) and \\(4\\) are adjacent**\n- Treat the pair of digits \\(2\\) and \\(4\\) as a single block \\(B\\), which can be ordered as \\((2, 4)\\) or \\((4, 2)\\) (\\(2\\) internal arrangements).\n- Since the number must be odd, the units digit must be odd (\\(4\\) choices from \\(\\{1, 3, 5, 7\\}\\)). Because both \\(2\\) and \\(4\\) are even, the block \\(B\\) cannot occupy the final position.\n- Thus, the block \\(B\\) must occupy two adjacent positions entirely within the first \\(5\\) digits. The possible adjacent pairs for \\(B\\) are positions \\((1, 2)\\), \\((2, 3)\\), \\((3, 4)\\), and \\((4, 5)\\), giving \\(4\\) possible positions.\n- The remaining \\(3\\) unfilled positions among the first \\(5\\) places are filled from the remaining \\(8 - 1 - 2 = 5\\) available digits:\n\\[\nP(5, 3) = 5 \\times 4 \\times 3 = 60\n\\]\n- Number of odd numbers with \\(2\\) and \\(4\\) adjacent:\n\\[\n4 \\text{ (choices for units digit)} \\times 4 \\text{ (positions for block } B) \\times 2 \\text{ (internal orders of } B) \\times 60 = 1920\n\\]\n\n**Step 3: Subtract adjacent cases from the total**\n\\[\n10080 - 1920 = 8160\n\\]\n\n**Common Misconceptions:**\n- **7680**: Incorrectly allows the block \\(B\\) to occupy positions \\((5, 6)\\), forgetting that the units digit cannot be even, leading to \\(10080 - 4 \\times 5 \\times 2 \\times 60 = 7680\\).\n- **9120**: Forgets the internal order of the pair \\((2, 4)\\) and \\((4, 2)\\), calculating \\(10080 - 960 = 9120\\).\n- **2880**: Erroneously assumes that both digits \\(2\\) and \\(4\\) must be present in the number, omitting numbers where only one or neither of \\(2\\) and \\(4\\) is selected.</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Permutations & Combinations (Easy Application)",
           "ar": "مثال محلول D — التباديل والتوافيق (تطبيق Easy)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Given that\n\\[\n{}^{n}\\mathrm{P}_{3} = 8\\,{}^{n}\\mathrm{C}_{2},\n\\]\nfind the value of the integer \\( n \\), where \\( n \\ge 3 \\).</p><p><strong>Step-by-Step Solution:</strong> By definition of permutations and combinations:\n\\[\n{}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n-3)!} = n(n-1)(n-2)\n\\]\nand\n\\[\n{}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n-2)!} = \\frac{n(n-1)}{2}.\n\\]\n\nSubstitute these expressions into the given equation:\n\\[\nn(n-1)(n-2) = 8 \\left(\\frac{n(n-1)}{2}\\right) = 4n(n-1).\n\\]\n\nSince \\( n \\ge 3 \\), \\( n(n-1) \\neq 0 \\). Dividing both sides by \\( n(n-1) \\) gives:\n\\[\nn - 2 = 4 \\implies n = 6.\n\\]\n\nCommon error:\nOmitting the factor of \\( 2! \\) in the denominator of \\( {}^{n}\\mathrm{C}_{2} \\) leads to \\( n - 2 = 8 \\implies n = 10 \\).</p>",
+        "problem": {
+          "en": "Given that\n\\[\n{}^{n}\\mathrm{P}_{3} = 8\\,{}^{n}\\mathrm{C}_{2},\n\\]\nfind the value of the integer \\( n \\), where \\( n \\ge 3 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>By definition of permutations and combinations:\n\\[\n{}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n-3)!} = n(n-1)(n-2)\n\\]\nand\n\\[\n{}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n-2)!} = \\frac{n(n-1)}{2}.\n\\]\n\nSubstitute these expressions into the given equation:\n\\[\nn(n-1)(n-2) = 8 \\left(\\frac{n(n-1)}{2}\\right) = 4n(n-1).\n\\]\n\nSince \\( n \\ge 3 \\), \\( n(n-1) \\neq 0 \\). Dividing both sides by \\( n(n-1) \\) gives:\n\\[\nn - 2 = 4 \\implies n = 6.\n\\]\n\nCommon error:\nOmitting the factor of \\( 2! \\) in the denominator of \\( {}^{n}\\mathrm{C}_{2} \\) leads to \\( n - 2 = 8 \\implies n = 10 \\).</p>",
           "ar": null
         }
       },
@@ -421,14 +433,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
+        "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(E\\) — Permutations & Combinations (Hard Application)",
           "ar": "مثال محلول E — التباديل والتوافيق (تطبيق Hard)"
         },
-        "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Two parallel lines, \\( L_1 \\) and \\( L_2 \\), have \\( n \\) and \\( n + 2 \\) distinct points marked on them respectively, where \\( n \\) is an integer with \\( n \\ge 2 \\).\n\nTriangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear.\n\nGiven that the ratio of the number of quadrilaterals to the number of triangles that can be formed is \\( 6 : 5 \\), find the total number of triangles that can be formed.</p><p><strong>Step-by-Step Solution:</strong> 1. **Determine the number of triangles, \\( T \\):**\nThree points form a triangle if and only if they are not all on the same straight line.\n- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):\n  \\[\n  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}\n  \\]\n- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):\n  \\[\n  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)\n  \\]\nSumming both cases:\n\\[\nT = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)\n\\]\n\n2. **Determine the number of quadrilaterals, \\( Q \\):**\nTo ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):\n\\[\nQ = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}\n\\]\n\n3. **Use the given ratio to find \\( n \\):**\n\\[\n\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}\n\\]\nSetting this equal to \\( \\frac{6}{5} \\):\n\\[\n\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0\n\\]\nFactoring the quadratic:\n\\[\n(5n + 1)(n - 5) = 0\n\\]\nSince \\( n \\) must be a positive integer, \\( n = 5 \\).\n\n4. **Calculate the total number of triangles:**\n\\[\nT = 5^2(5 + 2) = 25 \\times 7 = 175\n\\]\n\n**Distractor Analysis:**\n- \\( 210 \\) is the number of quadrilaterals, \\( Q = \\frac{6}{5} \\times 175 = 210 \\).\n- \\( 220 \\) is \\( \\binom{12}{3} \\), which erroneously counts sets of 3 collinear points.\n- \\( 96 \\) is obtained from substituting \\( n = 4 \\) into \\( T \\).</p>",
+        "problem": {
+          "en": "Two parallel lines, \\( L_1 \\) and \\( L_2 \\), have \\( n \\) and \\( n + 2 \\) distinct points marked on them respectively, where \\( n \\) is an integer with \\( n \\ge 2 \\).\n\nTriangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear.\n\nGiven that the ratio of the number of quadrilaterals to the number of triangles that can be formed is \\( 6 : 5 \\), find the total number of triangles that can be formed.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. **Determine the number of triangles, \\( T \\):**\nThree points form a triangle if and only if they are not all on the same straight line.\n- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):\n  \\[\n  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}\n  \\]\n- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):\n  \\[\n  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)\n  \\]\nSumming both cases:\n\\[\nT = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)\n\\]\n\n2. **Determine the number of quadrilaterals, \\( Q \\):**\nTo ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):\n\\[\nQ = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}\n\\]\n\n3. **Use the given ratio to find \\( n \\):**\n\\[\n\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}\n\\]\nSetting this equal to \\( \\frac{6}{5} \\):\n\\[\n\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0\n\\]\nFactoring the quadratic:\n\\[\n(5n + 1)(n - 5) = 0\n\\]\nSince \\( n \\) must be a positive integer, \\( n = 5 \\).\n\n4. **Calculate the total number of triangles:**\n\\[\nT = 5^2(5 + 2) = 25 \\times 7 = 175\n\\]\n\n**Distractor Analysis:**\n- \\( 210 \\) is the number of quadrilaterals, \\( Q = \\frac{6}{5} \\times 175 = 210 \\).\n- \\( 220 \\) is \\( \\binom{12}{3} \\), which erroneously counts sets of 3 collinear points.\n- \\( 96 \\) is obtained from substituting \\( n = 4 \\) into \\( T \\).</p>",
           "ar": null
         }
       },
