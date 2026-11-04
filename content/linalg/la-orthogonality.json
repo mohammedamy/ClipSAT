@@ -89,7 +89,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.A (Level 1) — Coordinates Under Orthonormal Basis",
-          "ar": "مثال محلول 8.A (Level 1) — الإحداثيات Under Orthonormal Basis"
+          "ar": null
         },
         "problem": {
           "en": "Verify that the vectors \\( \\mathbf{q}_1 = \\frac{1}{3}\\begin{pmatrix} 2 \\\\ 2 \\\\ 1 \\end{pmatrix} \\), \\( \\mathbf{q}_2 = \\frac{1}{3}\\begin{pmatrix} -2 \\\\ 1 \\\\ 2 \\end{pmatrix} \\), and \\( \\mathbf{q}_3 = \\frac{1}{3}\\begin{pmatrix} 1 \\\\ -2 \\\\ 2 \\end{pmatrix} \\) form an orthonormal basis for \\( \\mathbb{R}^3 \\), and express \\( \\mathbf{x} = \\begin{pmatrix} 9 \\\\ 0 \\\\ 0 \\end{pmatrix} \\) as a linear combination of these basis vectors.",
@@ -128,7 +128,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.B (Level 2) — Gram–Schmidt & QR Factorization",
-          "ar": "مثال محلول 8.B (Level 2) — Gram–Schmidt & QR Factorization"
+          "ar": null
         },
         "problem": {
           "en": "Apply the Gram–Schmidt process to find the \\( QR \\) factorization of: \\[ A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 0 \\\\ 0 & 1 \\end{pmatrix}. \\]",
@@ -156,7 +156,7 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 3 University Rigor — Theorem 8.3: Derivation of the Normal Equations",
-          "ar": "▲ Level 3 University Rigor — مبرهنة 8.3: اشتقاق of the Normal المعادلات"
+          "ar": null
         },
         "body": {
           "en": "<p>Let \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( \\mathbf{b} \\in \\mathbb{R}^m \\). A vector \\( \\hat{\\mathbf{x}} \\in \\mathbb{R}^n \\) minimizes \\( \\|A\\mathbf{x} - \\mathbf{b}\\|^2 \\) if and only if \\( \\hat{\\mathbf{x}} \\) satisfies the <strong>normal equations</strong>: \\[ A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b}. \\] If \\( A \\) has full column rank (\\( \\operatorname{rank}(A) = n \\)), then \\( A^T A \\) is strictly positive definite and invertible, yielding the unique least-squares solution: \\[ \\hat{\\mathbf{x}} = (A^T A)^{-1} A^T \\mathbf{b}. \\]</p>",
@@ -206,7 +206,7 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Least squares — minimizing the sum of squared residuals",
-          "ar": null
+          "ar": "في مسألة رياضية ضمن (الرياضيات)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
         },
         "canvasId": "laLSQCanvas",
         "ariaLabel": {
@@ -225,7 +225,7 @@
           "columns": [
             {
               "en": "\\(x\\)",
-              "ar": "\\(x\\)"
+              "ar": null
             },
             {
               "en": "\\(y\\) (actual)",
@@ -255,7 +255,7 @@
             "valueDisplayId": "laLSQmVal",
             "ariaLabel": {
               "en": "Slope m of the candidate line, times 10",
-              "ar": "الميل m of the candidate line, times 10"
+              "ar": null
             }
           },
           {
@@ -271,7 +271,7 @@
             "valueDisplayId": "laLSQbVal",
             "ariaLabel": {
               "en": "Intercept b of the candidate line, times 10",
-              "ar": "المقطع b of the candidate line, times 10"
+              "ar": null
             }
           }
         ],
@@ -289,7 +289,7 @@
             "id": "laLSQOpt",
             "label": {
               "en": "least-squares optimum",
-              "ar": "least-squares optimum (التعامد وخوارزمية غرام-شميدت وتفكيك QR والمربعات الصغرى)"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(m = 1.6, b = -0.5\\)"
@@ -305,7 +305,7 @@
         "style": "warn",
         "label": {
           "en": "⚠️ Common Traps & University Pitfalls — Orthogonality & Least Squares",
-          "ar": "⚠️ أخطاء شائعة ومصائد جامعية — Orthogonality & Least Squares"
+          "ar": null
         },
         "body": {
           "en": "<ul class=\"space-y-2\"><li><strong>Gram–Schmidt Projection Target:</strong> When subtracting projections in Gram–Schmidt to form \\( \\mathbf{v}_k \\), you must project \\( \\mathbf{x}_k \\) onto the <em>already orthogonalized vectors</em> \\( \\mathbf{v}_1, \\ldots, \\mathbf{v}_{k-1} \\), NOT onto the original input vectors \\( \\mathbf{x}_1, \\ldots, \\mathbf{x}_{k-1} \\). Projecting onto non-orthogonal vectors destroys mutual orthogonality completely.</li><li><strong>Order of \\( Q \\) and \\( Q^T \\):</strong> For an \\( m \\times n \\) matrix \\( Q \\) with orthonormal columns (where \\( m > n \\)), \\( Q^T Q = I_n \\), but \\( Q Q^T \\neq I_m \\). In fact, \\( Q Q^T = P \\) is the \\( m \\times m \\) orthogonal projector onto \\( \\operatorname{Col}(Q) \\). Only square orthogonal matrices have \\( Q Q^T = I \\).</li><li><strong>Singularity of \\( A^T A \\):</strong> The normal equations have a unique solution if and only if the columns of \\( A \\) are linearly independent. If \\( A \\) has multicollinear columns (rank \\( < n \\)), \\( A^T A \\) is singular, and regularized least squares (Ridge / Tikhonov regression: \\( (A^T A + \\lambda I)\\hat{\\mathbf{x}} = A^T \\mathbf{b} \\)) or pseudoinverse methods are required.</li><li><strong>Residual Orthogonality Direction:</strong> The residual error vector \\( \\mathbf{e} = \\mathbf{b} - A\\hat{\\mathbf{x}} \\) is orthogonal to the column space \\( \\operatorname{Col}(A) \\) (so \\( A^T \\mathbf{e} = \\mathbf{0} \\)). It is NOT orthogonal to \\( \\mathbf{b} \\). Confusing \\( \\mathbf{e} \\perp \\operatorname{Col}(A) \\) with \\( \\mathbf{e} \\perp \\mathbf{b} \\) is a frequent conceptual exam blunder.</li></ul>",
@@ -322,7 +322,7 @@
             },
             "value": {
               "en": "\\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\mathbf{a} \\cdot \\mathbf{a}} \\mathbf{a} \\)",
-              "ar": "\\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\mathbf{a} \\cdot \\mathbf{a}} \\mathbf{a} \\)"
+              "ar": null
             }
           },
           {
@@ -332,7 +332,7 @@
             },
             "value": {
               "en": "\\( \\mathbf{v}_k = \\mathbf{x}_k - \\sum_{j=1}^{k-1} \\frac{\\mathbf{x}_k \\cdot \\mathbf{v}_j}{\\|\\mathbf{v}_j\\|^2} \\mathbf{v}_j \\)",
-              "ar": "\\( \\mathbf{v}_k = \\mathbf{x}_k - \\sum_{j=1}^{k-1} \\frac{\\mathbf{x}_k \\cdot \\mathbf{v}_j}{\\|\\mathbf{v}_j\\|^2} \\mathbf{v}_j \\)"
+              "ar": null
             }
           },
           {
@@ -342,7 +342,7 @@
             },
             "value": {
               "en": "\\( R\\hat{\\mathbf{x}} = Q^T\\mathbf{b} \\)",
-              "ar": "\\( R\\hat{\\mathbf{x}} = Q^T\\mathbf{b} \\)"
+              "ar": null
             }
           },
           {
@@ -352,7 +352,7 @@
             },
             "value": {
               "en": "\\( A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\)",
-              "ar": "\\( A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\)"
+              "ar": null
             }
           }
         ]
@@ -403,7 +403,7 @@
         },
         "caption": {
           "en": "Orthogonal projection of \\( \\mathbf{y} = \\langle 3, 4 \\rangle \\) onto the subspace \\( L = \\text{span}\\{\\langle 2, 1 \\rangle\\} \\). The projection \\( \\hat{\\mathbf{y}} = \\langle 4, 2 \\rangle \\) minimizes the distance to \\( \\mathbf{y} \\), ensuring the error vector \\( \\mathbf{z} = \\mathbf{y} - \\hat{\\mathbf{y}} = \\langle -1, 2 \\rangle \\) is perpendicular to \\( L \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التعامد وخوارزمية غرام-شميدت وتفكيك QR والمربعات الصغرى."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التعامد وخوارزمية غرام-شميدت وتفكيك QR والمربعات الصغرى. \\(\\mathbf{y} = \\langle 3, 4 \\rangle\\) ، \\(L = \\text{span}\\{\\langle 2, 1 \\rangle\\}\\) ، \\(\\hat{\\mathbf{y}} = \\langle 4, 2 \\rangle\\) ، \\(\\mathbf{y}\\) ، \\(\\mathbf{z} = \\mathbf{y} - \\hat{\\mathbf{y}} = \\langle -1, 2 \\rangle\\) ، \\(L\\)"
         }
       },
       {
@@ -489,7 +489,7 @@
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\). (التعامد وخوارزمية غرام-شميدت وتفكيك QR والمربعات الصغرى)"
+              "ar": null
             }
           ],
           [
@@ -517,7 +517,7 @@
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\). (التعامد وخوارزمية غرام-شميدت وتفكيك QR والمربعات الصغرى)"
+              "ar": null
             }
           ]
         ]
@@ -547,11 +547,11 @@
         "hints": [
           {
             "en": "<strong>Set up normal equations \\( A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\):</strong> \\(A^T A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix}\\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\) ، \\(A^T A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix}\\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b}\\) ، \\(A^T A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix}\\) لتبسيط الخطوة."
           },
           {
             "en": "Rewrite and simplify to obtain: \\(A^T \\mathbf{b} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix}\\) <strong>Invert \\( A^T A \\) and solve:</strong> \\(\\det(A^T A) = 3(14) - 6(6) = 42 - 36\\).",
-            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(A^T \\mathbf{b} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix}\\) <strong>Invert \\( A^T A \\) and حل:</strong> \\(\\det(A^T A) = 3(14) - 6(6) = 42 - 36\\)."
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(A^T \\mathbf{b} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix}\\) <strong>Invert \\(A^T A\\) and حل:</strong> \\(\\det(A^T A) = 3(14) - 6(6) = 42 - 36\\)."
           },
           {
             "en": "Use the resulting form to finish: \\(\\hat{x} = \\frac{1}{6}\\begin{pmatrix} 14 & -6 \\\\ -6 & 3 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix} = \\frac{1}{6}\\begin{pmatrix} 98 - 102 \\\\ -42 + 51 \\end{pmatrix} = \\frac{1}{6}\\begin{pmatrix} -4 \\\\ 9 \\end{pmatrix}\\).",
@@ -581,7 +581,7 @@
         ],
         "solution": {
           "en": "\\( \\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd. \\)\n\n\\( \\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}. \\)\n\n\\( \\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0. \\)\n\n\\( \\text{A dot product of 0 indicates that the vectors are orthogonal.} \\)",
-          "ar": "خطوات الحل التفصيلية: \\( \\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd. \\)\n\n\\( \\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}. \\)\n\n\\( \\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0. \\)\n\n\\( \\text{A dot product of 0 indicates that the vectors are orthogonal.} \\)"
+          "ar": "خطوات الحل التفصيلية: \\(\\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd.\\)\n\n\\(\\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}.\\)\n\n\\(\\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0.\\)\n\n\\(\\text{A dot product of 0 indicates that the vectors are orthogonal.}\\)"
         }
       },
       {
@@ -597,7 +597,7 @@
           },
           {
             "en": "For the column vectors to be orthogonal, their dot product must be zero. \\( \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 0 \\) \\( (1)(2) + (-2)(k) = 0 \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 0 \\) ، \\( (1)(2) + (-2)(k) = 0 \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 0\\) ، \\((1)(2) + (-2)(k) = 0\\) لتبسيط الخطوة."
           },
           {
             "en": "Use the resulting form to finish: \\(2 - 2k\\).",
@@ -618,7 +618,7 @@
         "hints": [
           {
             "en": "The columns of matrix A are \\( \\mathbf{c}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\) and \\( \\mathbf{c}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( \\mathbf{c}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\) ، \\( \\mathbf{c}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\mathbf{c}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\\) ، \\(\\mathbf{c}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\) لتبسيط الخطوة."
           },
           {
             "en": "This set of vectors is already orthogonal since \\( \\mathbf{c}_1 \\cdot \\mathbf{c}_2 = (1)(1) + (1)(-1) = 0 \\). Thus, \\( \\{\\mathbf{a}_1, \\mathbf{a}_2\\} = \\{\\mathbf{c}_1, \\mathbf{c}_2\\} \\) is an orthogonal basis.",
@@ -656,7 +656,7 @@
         ],
         "solution": {
           "en": "\\( \\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd. \\)\n\n\\( \\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}. \\)\n\n\\( \\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0. \\)\n\n\\( \\text{A dot product of 0 indicates that the vectors are orthogonal.} \\)",
-          "ar": "خطوات الحل التفصيلية: \\( \\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd. \\)\n\n\\( \\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}. \\)\n\n\\( \\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0. \\)\n\n\\( \\text{A dot product of 0 indicates that the vectors are orthogonal.} \\)"
+          "ar": "خطوات الحل التفصيلية: \\(\\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd.\\)\n\n\\(\\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}.\\)\n\n\\(\\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0.\\)\n\n\\(\\text{A dot product of 0 indicates that the vectors are orthogonal.}\\)"
         }
       },
       {

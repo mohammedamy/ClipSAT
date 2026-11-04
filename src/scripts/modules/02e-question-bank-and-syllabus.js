@@ -526,6 +526,7 @@
     var copy = {};
     for(var k in q) if(Object.prototype.hasOwnProperty.call(q,k)) copy[k]=q[k];
     copy[choicesKey] = order.map(function(i){return q[choicesKey][i];});
+    if(Array.isArray(q.choices_ar) && q.choices_ar.length === q[choicesKey].length) copy.choices_ar = order.map(function(i){return q.choices_ar[i];});
     var newAns = order.indexOf(origAns);
     if(answerKey) copy[answerKey] = newAns;
     if(typeof q.answer!=='undefined') copy.answer = newAns;

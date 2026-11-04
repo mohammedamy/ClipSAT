@@ -80,6 +80,8 @@
         "icon":         { "type": "string",  "description": "Optional emoji or short string used on the card badge." },
         "estimatedHours":{ "type": "number", "description": "Approximate study hours for the full course." },
         "examBoard":    { "type": "string",  "description": "Awarding body, e.g. 'College Board', 'IB', 'Cambridge'. Proper noun, not translated." },
+        "scopeNotice":  { "$ref": "#/definitions/bilingualText", "description": "Optional prominent scope clarification banner (e.g. SAAT Tahsili Mathematics Section — 25% of Exam)." },
+        "subtracks":    { "type": "array", "items": { "type": "string" }, "description": "Optional subtrack identifiers supported by this curriculum track (e.g. ['gat-en', 'saat-en'] or ['ib-aa-sl', 'ib-ai-sl'])." },
         "tags":         { "type": "array",   "items": { "type": "string" }, "description": "Searchable keyword tags (English)." },
         "officialLinks": {
           "type": "array",
@@ -325,7 +327,8 @@
         { "$ref": "#/definitions/syllabusMapBlock" },
         { "$ref": "#/definitions/topicGridBlock" },
         { "$ref": "#/definitions/seeAlsoBlock" },
-        { "$ref": "#/definitions/figureBlock" }
+        { "$ref": "#/definitions/figureBlock" },
+        { "$ref": "#/definitions/structuredQuestionBlock" }
       ]
     },
 
@@ -695,6 +698,50 @@
             "type": { "type": "string" }
           },
           "description": "The math figure descriptor passed to _renderFig (e.g. fn, triangle, circle, polygon, numberline, box_plot, etc.)."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "structuredQuestionBlock": {
+      "type": "object",
+      "description": "WP-38 — Multi-part structured FRQ / written mark-scheme question block supporting subparts (a)(i), (a)(ii), (b), (c) with explicit [M1][A1][B1] rubric criteria.",
+      "required": ["kind", "stem", "parts"],
+      "properties": {
+        "kind":  { "const": "structuredQuestion" },
+        "id":    { "type": "string" },
+        "marks": { "type": "number", "minimum": 1 },
+        "calc":  { "type": "boolean" },
+        "stem":  { "$ref": "#/definitions/bilingualText" },
+        "parts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "prompt", "marks", "markScheme"],
+            "properties": {
+              "label":      { "type": "string" },
+              "prompt":     { "$ref": "#/definitions/bilingualText" },
+              "marks":      { "type": "number", "minimum": 1 },
+              "answer":     { "type": "string" },
+              "tolerances": { "type": "number", "minimum": 0 },
+              "markScheme": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["code", "criterion", "marks"],
+                  "properties": {
+                    "code":      { "type": "string" },
+                    "criterion": { "$ref": "#/definitions/bilingualText" },
+                    "marks":     { "type": "number", "minimum": 1 }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": false

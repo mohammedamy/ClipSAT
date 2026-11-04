@@ -55,14 +55,14 @@
         },
         "caption": {
           "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution). \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\)"
         }
       },
       {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Laplace Transform: Heaviside Step Forcing \\(u(t - a)\\) & Delayed Response",
-          "ar": null
+          "ar": "في مسألة رياضية ضمن (الرياضيات) بالاعتماد على العلاقات الرياضية \\(u(t - a)\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
         },
         "canvasId": "odelaplacetransformsExCanvas",
         "ariaLabel": {
@@ -94,7 +94,7 @@
             "id": "odelaplacetransformsExCanvas_s0",
             "label": {
               "en": "Step Switch-On Time <b>\\(a =\\)</b>",
-              "ar": "Step Switch-On Time <b>\\(a =\\)</b> (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))"
+              "ar": null
             },
             "min": 0.5,
             "max": 4,
@@ -103,14 +103,14 @@
             "valueDisplayId": "odelaplacetransformsExCanvas_v0",
             "ariaLabel": {
               "en": "Step Switch-On Time a =",
-              "ar": "عنصر تفاعلي: Step Switch-On Time a ="
+              "ar": null
             }
           },
           {
             "id": "odelaplacetransformsExCanvas_s1",
             "label": {
               "en": "Damping Ratio <b>\\(\\zeta =\\)</b>",
-              "ar": "Damping Ratio <b>\\(\\zeta =\\)</b> (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))"
+              "ar": null
             },
             "min": 0.1,
             "max": 0.8,
@@ -128,7 +128,7 @@
             "id": "odelaplacetransformsExCanvas_r0",
             "label": {
               "en": "Laplace Factor e^(−as)/\\(s\\)",
-              "ar": "Laplace Factor e^(−as)/\\(s\\) (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(e^{-2.00s}/s\\)"
@@ -174,7 +174,7 @@
         "style": "pf",
         "label": {
           "en": "Proof (Linearity & First Shift Theorem)",
-          "ar": "برهان (Linearity & First Shift مبرهنة)"
+          "ar": null
         },
         "body": {
           "en": "<p>Linearity follows directly from the linearity of integration: \\[ \\int_0^\\infty e^{-st}\\big(c_1 f(t) + c_2 g(t)\\big)dt = c_1 \\int_0^\\infty e^{-st}f(t)\\,dt + c_2 \\int_0^\\infty e^{-st}g(t)\\,dt = c_1 F(s) + c_2 G(s). \\]</p><p>For the First Shift Theorem: \\[ \\mathcal{L}\\{e^{at}f(t)\\} = \\int_0^\\infty e^{-st}\\big(e^{at}f(t)\\big)dt = \\int_0^\\infty e^{-(s - a)t}f(t)\\,dt = F(s - a). \\]</p>",
@@ -186,7 +186,7 @@
         "style": "thm",
         "label": {
           "en": "▲ Level 1 Foundation — Theorem 6.2: Operational Calculus for Derivatives & IVPs",
-          "ar": "▲ Level 1 Foundation — مبرهنة 6.2: Operational التفاضل والتكامل for المشتقات & IVPs"
+          "ar": null
         },
         "body": {
           "en": "<p>Let \\( f(t) \\) be continuously differentiable on \\( [0, \\infty) \\) with \\( f'(t) \\) of exponential order. Then: \\[ \\mathcal{L}\\{f'(t)\\} = s \\mathcal{L}\\{f(t)\\} - f(0) = s F(s) - f(0). \\] Applying this result inductively to higher derivatives: \\[ \\mathcal{L}\\{f''(t)\\} = s^2 F(s) - s f(0) - f'(0), \\] \\[ \\mathcal{L}\\{f^{(n)}(t)\\} = s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \\dots - f^{(n-1)}(0). \\] Initial conditions at \\( t = 0 \\) are thus baked directly into the algebraic domain.</p>",
@@ -198,7 +198,7 @@
         "style": "pf",
         "label": {
           "en": "Proof (Derivative Transform via Integration by Parts)",
-          "ar": "برهان (المشتقة Transform via Integration by Parts)"
+          "ar": null
         },
         "body": {
           "en": "<p>Evaluating by integration by parts with \\( u = e^{-st} \\) and \\( dv = f'(t)dt \\) (so \\( du = -s e^{-st}dt \\) and \\( v = f(t) \\)): \\[ \\mathcal{L}\\{f'(t)\\} = \\int_0^\\infty e^{-st}f'(t)\\,dt = \\left[e^{-st}f(t)\\right]_0^\\infty - \\int_0^\\infty (-s e^{-st})f(t)\\,dt. \\] Because \\( f(t) \\) is of exponential order \\( c \\), for \\( \\operatorname{Re}(s) > c \\), \\( \\lim_{t\\to\\infty} e^{-st}f(t) = 0 \\). At the lower limit \\( t = 0 \\), \\( e^0 f(0) = f(0) \\). Hence: \\[ \\mathcal{L}\\{f'(t)\\} = 0 - f(0) + s \\int_0^\\infty e^{-st}f(t)\\,dt = s F(s) - f(0). \\] Replacing \\( f \\) by \\( f' \\) immediately yields \\( \\mathcal{L}\\{f''\\} = s(s F(s) - f(0)) - f'(0) = s^2 F(s) - s f(0) - f'(0) \\).</p>",
@@ -239,7 +239,7 @@
           {
             "label": {
               "en": "First Shift: e^(at) f(t)",
-              "ar": "First Shift: e^(at) f(t) (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))"
+              "ar": null
             },
             "value": {
               "en": "\\( \\mathcal{L}\\{e^{at}f(t)\\} = F(s - a) \\). Replaces every \\( s \\) in \\( F(s) \\) with \\( s - a \\)."
@@ -248,7 +248,7 @@
           {
             "label": {
               "en": "Second Shift: u(t - a) f(t - a)",
-              "ar": "Second Shift: u(t - a) f(t - a) (تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution))"
+              "ar": null
             },
             "value": {
               "en": "\\( \\mathcal{L}\\{u(t - a)f(t - a)\\} = e^{-as}F(s) \\). Incorporates time delays and piecewise switching."
@@ -278,7 +278,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 6.B — Discontinuous Pulse & Impact Forcing",
-          "ar": "مثال محلول 6.B — Discontinuous Pulse & Impact Forcing"
+          "ar": null
         },
         "problem": {
           "en": "Solve the oscillator IVP driven by a finite rectangular pulse of duration 2: \\[ y'' + 4y = u(t - 1) - u(t - 3), \\qquad y(0) = 0, \\quad y'(0) = 0. \\]",
@@ -353,7 +353,7 @@
         },
         "caption": {
           "en": "Exponential decay of the Laplace kernel \\( e^{-st} \\) for \\( s = 1, 2, 3 \\). Higher values of \\( s \\) induce faster damping, guaranteeing absolute convergence for all functions of exponential order \\( c < s \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution). \\(e^{-st}\\) ، \\(s = 1, 2, 3\\) ، \\(s\\) ، \\(c < s\\)"
         }
       },
       {
@@ -361,7 +361,7 @@
         "style": "warn",
         "label": {
           "en": "⚠️ Common Traps & University Pitfalls — Derivative Transform Initial Conditions",
-          "ar": "⚠️ أخطاء شائعة ومصائد جامعية — المشتقة Transform Initial Conditions"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Sign of initial values in derivative transforms:</strong> Remember that \\( \\mathcal{L}\\{y''\\} = s^2 Y(s) - s y(0) - y'(0) \\). Both initial condition terms are SUBTRACTED. When \\( y(0) = -3 \\), \\( -s(-3) = +3s \\). A sign error here ruins the entire partial fraction decomposition.</p><p><strong>Second Shift unshifted arguments:</strong> \\( \\mathcal{L}\\{u(t - a)g(t)\\} \\neq e^{-as}\\mathcal{L}\\{g(t)\\} \\)! You must write \\( g(t) = f(t - a) \\) before transforming: \\( \\mathcal{L}\\{u(t - a)g(t)\\} = e^{-as}\\mathcal{L}\\{g(t + a)\\} \\). For example, \\( \\mathcal{L}\\{u(t - 2)t\\} = e^{-2s}\\mathcal{L}\\{t + 2\\} = e^{-2s}\\left(\\frac{1}{s^2} + \\frac{2}{s}\\right) \\), NOT \\( \\frac{e^{-2s}}{s^2} \\).</p><p><strong>Pointwise multiplication fallacy:</strong> \\( \\mathcal{L}^{-1}\\{F(s)G(s)\\} \\neq f(t)g(t) \\). The inverse of a product of transforms is always the <strong>convolution</strong> \\( (f * g)(t) = \\int_0^t f(\\tau)g(t - \\tau)\\,d\\tau \\).</p>",
@@ -517,7 +517,7 @@
           },
           {
             "en": "<strong>Solve for \\( Y(s) \\):</strong> \\(Y(s)\\left(1 - \\frac{1}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s)\\left(\\frac{s^2}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s) = \\frac{s^2 + 1}{s^4} = \\frac{1}{s^2} + \\frac{1}{s^4}\\).",
-            "ar": "<strong>أوجد قيمة \\( Y(s) \\):</strong> \\(Y(s)\\left(1 - \\frac{1}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s)\\left(\\frac{s^2}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s) = \\frac{s^2 + 1}{s^4} = \\frac{1}{s^2} + \\frac{1}{s^4}\\)."
+            "ar": "<strong>أوجد قيمة \\(Y(s)\\):</strong> \\(Y(s)\\left(1 - \\frac{1}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s)\\left(\\frac{s^2}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s) = \\frac{s^2 + 1}{s^4} = \\frac{1}{s^2} + \\frac{1}{s^4}\\)."
           },
           {
             "en": "<strong>Inverse transform:</strong> \\(y(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{s^2} + \\frac{1}{6} \\cdot \\frac{3!}{s^4}\\right\\}\\).",
@@ -554,16 +554,16 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Hard]</strong> Solve \\( y''-12y'+35y=0 \\), \\( y(0)=-1 \\), \\( y'(0)=-13 \\). Find \\( y(2) \\).",
-          "ar": "<strong>[Practice 4 · Hard]</strong> حل \\( y''-12y'+35y=0 \\), \\( y(0)=-1 \\), \\( y'(0)=-13 \\). أوجد \\( y(2) \\)."
+          "ar": "<strong>[Practice 4 · Hard]</strong> حل \\(y''-12y'+35y=0\\), \\(y(0)=-1\\), \\(y'(0)=-13\\). أوجد \\(y(2)\\)."
         },
         "hints": [
           {
             "en": "Auxiliary equation \\( r^2-12r+35=0 \\) has roots \\( r=5,7 \\), so \\( y=C_1e^{5x}+C_2e^{7x} \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( r^2-12r+35=0 \\) ، \\( r=5,7 \\) ، \\( y=C_1e^{5x}+C_2e^{7x} \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(r^2-12r+35=0\\) ، \\(r=5,7\\) ، \\(y=C_1e^{5x}+C_2e^{7x}\\) لتبسيط الخطوة."
           },
           {
             "en": "Solving \\( y(0)=C_1+C_2=-1 \\) and \\( y'(0)=5C_1+7C_2=-13 \\) gives \\( C_1=3 \\), \\( C_2=-4 \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( y(0)=C_1+C_2=-1 \\) ، \\( y'(0)=5C_1+7C_2=-13 \\) ، \\( C_1=3 \\) ، \\( C_2=-4 \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(y(0)=C_1+C_2=-1\\) ، \\(y'(0)=5C_1+7C_2=-13\\) ، \\(C_1=3\\) ، \\(C_2=-4\\) لتبسيط الخطوة."
           },
           {
             "en": "So \\(y=3e^{5x}-4e^{7x}\\), and \\(y(2)\\) follows by substitution.",
@@ -597,7 +597,7 @@
         ],
         "solution": {
           "en": "From \\( \\lambda^2 - 39\\lambda + 350 = 0 \\), the sum of roots is \\( 39 \\).",
-          "ar": "خطوات الحل التفصيلية: From \\( \\lambda^2 - 39\\lambda + 350 = 0 \\), the sum of roots is \\( 39 \\)."
+          "ar": "خطوات الحل التفصيلية: From \\(\\lambda^2 - 39\\lambda + 350 = 0\\), the sum of roots is \\(39\\)."
         }
       },
       {

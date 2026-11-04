@@ -38,7 +38,7 @@
         "style": "def",
         "label": {
           "en": "● Definition 2.1 — Dense Neural Layer Formulation",
-          "ar": "● تعريف 2.1 — Dense Neural Layer Formulation"
+          "ar": null
         },
         "body": {
           "en": "A fully connected (dense) neural network layer with \\( n_{\\text{in}} \\) inputs and \\( n_{\\text{out}} \\) neurons computes an affine linear transformation followed by an element-wise activation \\( \\sigma \\):<br>\\[ \\mathbf{z} = \\mathbf{W}\\mathbf{x} + \\mathbf{b}, \\quad \\mathbf{a} = \\sigma(\\mathbf{z}) \\]<br>where \\( \\mathbf{W} \\in \\mathbb{R}^{n_{\\text{out}} \\times n_{\\text{in}}} \\) is the weight matrix, \\( \\mathbf{x} \\in \\mathbb{R}^{n_{\\text{in}}} \\) is the input vector, \\( \\mathbf{b} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the bias vector, and \\( \\mathbf{a} \\in \\mathbb{R}^{n_{\\text{out}}} \\) is the layer activation vector.",
@@ -54,7 +54,7 @@
         },
         "body": {
           "en": "<p><strong>Linear Structure, Inner Products &amp; Geometric Transformations:</strong> In \\(\\mathbb{R}^n\\), the dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta = \\sum_{i=1}^n u_i v_i\\) encodes orthogonality (\\(\\mathbf{u}\\perp\\mathbf{v} \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0\\)) and orthogonal projection \\(\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\). For a matrix transformation \\(A \\in \\mathbb{R}^{n\\times n}\\), \\(|\\det(A)|\\) measures the local volume scaling factor, and \\(A\\) is invertible if and only if \\(\\det(A) \\ne 0\\) (equivalently, all eigenvalues \\(\\lambda_i \\ne 0\\)).</p>",
-          "ar": "<p><strong>الفضاءات المتجهية والتحويلات الخطية:</strong> يقيس الضرب القياسي \\(\\mathbf{u}\\cdot\\mathbf{v}\\) الزاوية والتعامد بين المتجهات، بينما يقيس محدد المصفوفة \\(|\\det(A)|\\) معامل تغير المساحة أو الحجم.</p>"
+          "ar": null
         }
       },
       {
@@ -197,7 +197,7 @@
         ],
         "note": {
           "en": "See how a hidden layer combining piecewise-linear ReLU activations \\(\\max(0, w_i \\cdot x + b_i)\\) creates hinged bends capable of approximating nonlinear functions.",
-          "ar": "شاهد كيف تشكل وحدات تفعيل ReLU المتعددة انكسارات خطية قادرة على تقريب الدوال غير الخطية."
+          "ar": null
         }
       },
       {
@@ -249,7 +249,7 @@
             },
             "value": {
               "en": "\\( \\text{ReLU}(z) = \\max(0, z) \\)",
-              "ar": "\\( \\text{ReLU}(z) = \\max(0, z) \\)"
+              "ar": null
             }
           },
           {
@@ -259,7 +259,7 @@
             },
             "value": {
               "en": "\\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\in (0, 1) \\)",
-              "ar": "\\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\in (0, 1) \\)"
+              "ar": null
             }
           },
           {
@@ -269,7 +269,7 @@
             },
             "value": {
               "en": "\\( \\text{Softmax}(z_i) = \\frac{e^{z_i}}{\\sum_j e^{z_j}} \\)",
-              "ar": "\\( \\text{Softmax}(z_i) = \\frac{e^{z_i}}{\\sum_j e^{z_j}} \\)"
+              "ar": null
             }
           },
           {
@@ -279,7 +279,7 @@
             },
             "value": {
               "en": "\\( (m \\times k) \\cdot (k \\times n) = (m \\times n) \\)",
-              "ar": "\\( (m \\times k) \\cdot (k \\times n) = (m \\times n) \\)"
+              "ar": null
             }
           }
         ]
@@ -293,14 +293,14 @@
         },
         "body": {
           "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": "<p><strong>برهان صيغة المسقط العمودي والمعادلة المميزة للقيم الذاتية:</strong> من شرط التعامد \\((\\mathbf{u}-c\\mathbf{v})\\cdot\\mathbf{v}=0\\) ينتج \\(c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\). وشرط وجود متجه ذاتي غير صفري \\((A-\\lambda I)\\mathbf{v}=\\mathbf{0}\\) يكافئ انعدام المحدد \\(\\det(A-\\lambda I)=0\\).</p>"
+          "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.A — Manual Feedforward Neural Layer",
-          "ar": "مثال محلول 2.A — Manual Feedforward Neural Layer"
+          "ar": null
         },
         "problem": {
           "en": "A neural network layer has 2 inputs and 3 neurons with weights and biases:<br>\\[ \\mathbf{W} = \\begin{pmatrix} 2 & -1 \\\\ 0.5 & 3 \\\\ -1 & 1 \\end{pmatrix}, \\quad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ -2 \\\\ 0.5 \\end{pmatrix} \\]<br>For the input \\( \\mathbf{x} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix} \\), compute the pre-activation \\( \\mathbf{z} \\) and the activated output \\( \\mathbf{a} \\) using the ReLU function.",
@@ -315,7 +315,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Matrices, Linear Layers & Activation Functions (Medium Application)",
-          "ar": "مثال محلول B — المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط (تطبيق Medium)"
+          "ar": null
         },
         "problem": {
           "en": "In a multiple linear regression model, the Sum of Squared Errors is \\( \\text{SSE} = 100 \\) and the Total Sum of Squares is \\( \\text{SST} = 500 \\). What is the coefficient of determination \\( R^2 \\)?",
@@ -330,7 +330,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Matrices, Linear Layers & Activation Functions (Hard Application)",
-          "ar": "مثال محلول C — المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط (تطبيق Hard)"
+          "ar": null
         },
         "problem": {
           "en": "A centered feature matrix \\( \\mathbf{X} \\) has shape \\( N \\times 38 \\). What is the size and symmetry property of the sample covariance matrix \\( \\mathbf{\\Sigma} = \\frac{1}{N-1}\\mathbf{X}^T\\mathbf{X} \\)?",
@@ -345,7 +345,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Matrices, Linear Layers & Activation Functions (Easy Application)",
-          "ar": "مثال محلول D — المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط (تطبيق Easy)"
+          "ar": null
         },
         "problem": {
           "en": "Consider a linear layer with a weight matrix \\( W \\) and an input vector \\( \\mathbf{x} \\). If \\( W = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( \\mathbf{x} = \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix} \\), compute the output vector \\( \\mathbf{y} = W\\mathbf{x} \\).",
@@ -365,7 +365,7 @@
         },
         "body": {
           "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication &amp; Cross Products:</strong> On Mathematics for Artificial Intelligence & Machine Learning, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
-          "ar": "<p><strong>1. عدم إبدالية ضرب المصفوفات:</strong> حاصل الضرب \\(AB\\) لا يساوي \\(BA\\) عموماً، وعند حساب الزاوية عند الرأس \\(B\\) يجب استخدام المتجهين المنطلقين من \\(B\\) وهما \\(\\overrightarrow{BA}\\) و \\(\\overrightarrow{BC}\\).</p>"
+          "ar": null
         }
       },
       {
@@ -392,43 +392,43 @@
           [
             {
               "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
-              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+              "ar": null
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+              "ar": null
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+              "ar": null
             }
           ],
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+              "ar": null
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+              "ar": null
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+              "ar": null
             }
           ],
           [
             {
               "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
-              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+              "ar": null
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+              "ar": null
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+              "ar": null
             }
           ]
         ]
@@ -442,7 +442,7 @@
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (Mathematics for Artificial Intelligence & Machine Learning):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": "<p><strong>فحص سريع للقيم الذاتية:</strong> تحقق دائماً من أن مجموع القيم الذاتية يساوي أثر المصفوفة \\(\\operatorname{tr}(A)\\) وحاصل ضربها يساوي المحدد \\(\\det(A)\\).</p>"
+          "ar": null
         }
       },
       {
@@ -508,7 +508,7 @@
           },
           {
             "en": "Here \\( k = 6 \\).",
-            "ar": "Here \\( k = 6 \\)."
+            "ar": null
           },
           {
             "en": "So the reduced dimension is \\(6\\).",

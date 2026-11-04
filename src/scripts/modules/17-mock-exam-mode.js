@@ -120,10 +120,43 @@
     return picked;
   }
 
+  var MENA_BILINGUAL_TRACKS = {
+    qudrat: 1, tahsili: 1, gaten: 1, 'gat-en': 1, 'saat-en': 1,
+    sat: 1, est: 1, est2: 1, est2l2: 1, igcse: 1
+  };
+
+  function _resolveBankTrack(viewId){
+    var m = {
+      'ib-aa-sl': 'ibsl',
+      'ib-ai-sl': 'ibsl',
+      'ib-aa-hl': 'ibhl',
+      'ib-ai-hl': 'ibhl',
+      'gat-en': 'gaten',
+      'saat-en': 'gaten'
+    };
+    return m[viewId] || viewId;
+  }
+
+  function _activeExamLang(trackId){
+    try {
+      var saved = (typeof localStorage !== 'undefined' && localStorage.getItem('clipsat_exam_lang')) || '';
+      if(saved === 'ar' || saved === 'en' || saved === 'both'){
+        if(MENA_BILINGUAL_TRACKS[trackId]) return saved;
+      }
+    } catch(_e){}
+    if(trackId === 'qudrat' || trackId === 'tahsili') return 'both';
+    if(typeof document !== 'undefined'){
+      if((document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl'))){
+        return MENA_BILINGUAL_TRACKS[trackId] ? 'ar' : 'en';
+      }
+    }
+    return 'en';
+  }
+
   var PAPERS = {
     qudrat: [
-      { name: 'القسم الكمي — اختبار محوسب كامل (Qudrat CBT)', minutes: 25, qCount: 24, calc: false, domains: ['arithmetic', 'algebra', 'geometry', 'ratio', 'percent', 'speed', 'comparison'] },
-      { name: 'قسم المقارنات الرياضية (Quantitative Comparisons)', minutes: 20, qCount: 20, calc: false, domains: ['comparison', 'arithmetic', 'geometry'] }
+      { name: 'القسم الكمي — اختبار محوسب كامل (Qudrat CBT)', minutes: 25, qCount: 24, calc: false, qcRatio: 0.292, domains: ['arithmetic', 'algebra', 'geometry', 'ratio', 'percent', 'speed', 'comparison'] },
+      { name: 'قسم المقارنات الرياضية (Quantitative Comparisons)', minutes: 20, qCount: 20, calc: false, qcOnly: true, domains: ['comparison', 'arithmetic', 'geometry'] }
     ],
     tahsili: [
       { name: 'رياضيات التحصيلي — اختبار محوسب تجريبي (SAAT Math CBT)', minutes: 25, qCount: 22, calc: false, domains: ['functions', 'algebra', 'trig', 'vectors', 'matrices', 'calculus', 'probability'] }
@@ -140,7 +173,8 @@
       { name: 'ACT® Mathematics — Enhanced 4-Choice CBT', minutes: 50, qCount: 45, calc: true, domains: ['pre-algebra', 'elementary-algebra', 'intermediate-algebra', 'coordinate-geometry', 'plane-geometry', 'trigonometry'] }
     ],
     est: [
-      { name: 'EST I — Mathematics Section (Egyptian Scholastic Test)', minutes: 55, qCount: 38, calc: true, domains: ['algebra', 'functions', 'geometry', 'statistics'] }
+      { name: 'EST I — Section 3: Mathematics (No Calculator)', minutes: 25, qCount: 20, calc: false, domains: ['algebra', 'functions', 'geometry'] },
+      { name: 'EST I — Section 4: Mathematics (Calculator Permitted)', minutes: 55, qCount: 38, calc: true, domains: ['algebra', 'functions', 'geometry', 'statistics'] }
     ],
     est2: [
       { name: 'EST II — Mathematics Level 1', minutes: 60, qCount: 50, calc: true, domains: ['algebra', 'geometry', 'trigonometry', 'statistics'] }
@@ -149,19 +183,26 @@
       { name: 'EST II — Mathematics Level 2 (Advanced)', minutes: 60, qCount: 50, calc: true, domains: ['algebra', 'complex', 'vectors', 'matrices', 'calculus', 'trigonometry'] }
     ],
     apab: [
-      { name: 'AP® Calculus AB — Section I Part A (Non-Calculator)', minutes: 60, qCount: 28, calc: false, domains: ['limits', 'derivatives', 'integrals', 'applications'] },
-      { name: 'AP® Calculus AB — Section I Part B (Graphing Calculator)', minutes: 40, qCount: 14, calc: true, domains: ['derivatives', 'integrals', 'applications'] }
+      { name: 'AP® Calculus AB — Section I Part A (Non-Calculator)', minutes: 60, qCount: 28, calc: false, typeFilter: 'mcq', domains: ['limits', 'derivatives', 'integrals', 'applications'] },
+      { name: 'AP® Calculus AB — Section I Part B (Graphing Calculator)', minutes: 40, qCount: 14, calc: true, typeFilter: 'mcq', domains: ['derivatives', 'integrals', 'applications'] },
+      { name: 'AP® Calculus AB — Section II Part A Free Response (Graphing Calculator)', minutes: 30, qCount: 2, calc: true, structuredOnly: true },
+      { name: 'AP® Calculus AB — Section II Part B Free Response (No Calculator)', minutes: 60, qCount: 4, calc: false, structuredOnly: true }
     ],
     apbc: [
-      { name: 'AP® Calculus BC — Section I Part A (Non-Calculator)', minutes: 60, qCount: 28, calc: false, domains: ['derivatives', 'integrals', 'series', 'parametrics', 'polars'] },
-      { name: 'AP® Calculus BC — Section I Part B (Graphing Calculator)', minutes: 40, qCount: 14, calc: true, domains: ['derivatives', 'integrals', 'series', 'vector-calculus'] }
+      { name: 'AP® Calculus BC — Section I Part A (Non-Calculator)', minutes: 60, qCount: 28, calc: false, typeFilter: 'mcq', domains: ['derivatives', 'integrals', 'series', 'parametrics', 'polars'] },
+      { name: 'AP® Calculus BC — Section I Part B (Graphing Calculator)', minutes: 40, qCount: 14, calc: true, typeFilter: 'mcq', domains: ['derivatives', 'integrals', 'series', 'vector-calculus'] },
+      { name: 'AP® Calculus BC — Section II Part A Free Response (Graphing Calculator)', minutes: 30, qCount: 2, calc: true, structuredOnly: true },
+      { name: 'AP® Calculus BC — Section II Part B Free Response (No Calculator)', minutes: 60, qCount: 4, calc: false, structuredOnly: true }
     ],
     appc: [
-      { name: 'AP® Precalculus — Section I Part A (Non-Calculator)', minutes: 65, qCount: 28, calc: false, domains: ['polynomials', 'rationals', 'exponential', 'logarithmic', 'trigonometry'] },
-      { name: 'AP® Precalculus — Section I Part B (Graphing Calculator)', minutes: 40, qCount: 12, calc: true, domains: ['trigonometry', 'parameters', 'matrices'] }
+      { name: 'AP® Precalculus — Section I Part A (Non-Calculator)', minutes: 65, qCount: 28, calc: false, typeFilter: 'mcq', domains: ['polynomials', 'rationals', 'exponential', 'logarithmic', 'trigonometry'] },
+      { name: 'AP® Precalculus — Section I Part B (Graphing Calculator)', minutes: 40, qCount: 12, calc: true, typeFilter: 'mcq', domains: ['trigonometry', 'parameters', 'matrices'] },
+      { name: 'AP® Precalculus — Section II Part A Free Response (Graphing Calculator)', minutes: 30, qCount: 2, calc: true, structuredOnly: true },
+      { name: 'AP® Precalculus — Section II Part B Free Response (No Calculator)', minutes: 30, qCount: 2, calc: false, structuredOnly: true }
     ],
     apstats: [
-      { name: 'AP® Statistics — Section I Multiple Choice', minutes: 90, qCount: 40, calc: true, domains: ['exploring-data', 'sampling-experimentation', 'probability', 'inference'] }
+      { name: 'AP® Statistics — Section I Multiple Choice', minutes: 90, qCount: 40, calc: true, typeFilter: 'mcq', domains: ['exploring-data', 'sampling-experimentation', 'probability', 'inference'] },
+      { name: 'AP® Statistics — Section II Multi-Part Free Response', minutes: 90, qCount: 4, calc: true, structuredOnly: true }
     ],
     aslevel: [
       { name: 'Paper 1 — Pure Maths 1 (Cambridge 9709)', minutes: 105, qCount: 12, calc: true, domains: ['pure', 'algebra', 'quadratic', 'trigonometry', 'sequence', 'series', 'differentiation', 'integration'] },
@@ -173,12 +214,18 @@
       { name: 'Paper 6 — Statistics 2 (Cambridge 9709)', minutes: 75, qCount: 10, calc: true, domains: ['poisson', 'continuous random', 'sampling', 'hypothesis', 'estimation'] }
     ],
     ibsl: [
-      { name: 'IB Math SL — Paper 1 (Non-Calculator)', minutes: 90, qCount: 12, calc: false, domains: ['algebra', 'functions', 'trigonometry', 'calculus', 'statistics'] },
-      { name: 'IB Math SL — Paper 2 (GDC Required)', minutes: 90, qCount: 12, calc: true, domains: ['functions', 'trigonometry', 'calculus', 'statistics', 'vectors'] }
+      { name: 'IB Math AA SL — Paper 1 (No Calculator)', minutes: 90, qCount: 9, calc: false, courseFilter: 'ib-aa-sl', paperFilter: 'P1' },
+      { name: 'IB Math AA SL — Paper 2 (GDC Required)', minutes: 90, qCount: 9, calc: true, courseFilter: 'ib-aa-sl', paperFilter: 'P2' },
+      { name: 'IB Math AI SL — Paper 1 (GDC Required)', minutes: 90, qCount: 9, calc: true, courseFilter: 'ib-ai-sl', paperFilter: 'P1' },
+      { name: 'IB Math AI SL — Paper 2 (GDC Required)', minutes: 90, qCount: 9, calc: true, courseFilter: 'ib-ai-sl', paperFilter: 'P2' }
     ],
     ibhl: [
-      { name: 'IB Math HL — Paper 1 (Non-Calculator)', minutes: 120, qCount: 14, calc: false, domains: ['algebra', 'functions', 'trigonometry', 'vectors', 'calculus'] },
-      { name: 'IB Math HL — Paper 2 (GDC Required)', minutes: 120, qCount: 14, calc: true, domains: ['functions', 'complex', 'vectors', 'calculus', 'statistics'] }
+      { name: 'IB Math AA HL — Paper 1 (No Calculator)', minutes: 120, qCount: 11, calc: false, courseFilter: 'ib-aa-hl', paperFilter: 'P1' },
+      { name: 'IB Math AA HL — Paper 2 (GDC Required)', minutes: 120, qCount: 11, calc: true, courseFilter: 'ib-aa-hl', paperFilter: 'P2' },
+      { name: 'IB Math AA HL — Paper 3 (Investigation · GDC Required)', minutes: 60, qCount: 2, calc: true, courseFilter: 'ib-aa-hl', paperFilter: 'P3' },
+      { name: 'IB Math AI HL — Paper 1 (GDC Required)', minutes: 120, qCount: 11, calc: true, courseFilter: 'ib-ai-hl', paperFilter: 'P1' },
+      { name: 'IB Math AI HL — Paper 2 (GDC Required)', minutes: 120, qCount: 11, calc: true, courseFilter: 'ib-ai-hl', paperFilter: 'P2' },
+      { name: 'IB Math AI HL — Paper 3 (Investigation · GDC Required)', minutes: 60, qCount: 2, calc: true, courseFilter: 'ib-ai-hl', paperFilter: 'P3' }
     ],
     act2: [
       { name: 'ACT® International Subject Test — Mathematics 1 (CBT)', minutes: 60, qCount: 50, calc: true, domains: ['algebra', 'functions', 'geometry', 'trigonometry', 'statistics'] }
@@ -191,17 +238,19 @@
       { name: 'Cambridge IGCSE® 0606 / Edexcel 4PM1 — Paper 2 (Calculator Allowed)', minutes: 120, qCount: 14, calc: true, domains: ['functions', 'binomial', 'Circular', 'differentiation', 'integration', 'kinematics', 'vector'] }
     ],
     edexcel: [
-      { name: 'Pearson Edexcel IGCSE® 4MA1 — Paper 1H (Higher Tier)', minutes: 120, qCount: 22, calc: true, domains: ['number', 'algebra', 'functions', 'geometry', 'trigonometry', 'differentiation', 'probability'] },
-      { name: 'Pearson Edexcel IGCSE® 4MA1 — Paper 2H (Higher Tier)', minutes: 120, qCount: 22, calc: true, domains: ['surds', 'quadratic', 'series', 'circle', 'vector', 'kinematics', 'statistics'] }
+      { name: 'Pearson Edexcel IGCSE® 4MA1 — Paper 1H (Higher Tier · Non-Calculator)', minutes: 120, qCount: 22, calc: false, domains: ['number', 'algebra', 'functions', 'geometry', 'trigonometry', 'differentiation', 'probability'] },
+      { name: 'Pearson Edexcel IGCSE® 4MA1 — Paper 2H (Higher Tier · Calculator Allowed)', minutes: 120, qCount: 22, calc: true, domains: ['surds', 'quadratic', 'series', 'circle', 'vector', 'kinematics', 'statistics'] }
     ],
     gaten: [
-      { name: 'ETEC / Qiyas English GAT — Quantitative Aptitude CBT', minutes: 25, qCount: 24, calc: false, domains: ['GAT Arithmetic', 'GAT Ratios', 'GAT Quantitative', 'GAT Data'] },
-      { name: 'ETEC / Qiyas English SAAT — Mathematics Achievement CBT', minutes: 25, qCount: 24, calc: false, domains: ['SAAT Logic', 'SAAT Functions', 'SAAT Trigonometry', 'SAAT Differential'] }
+      { name: 'ETEC / Qiyas English GAT — Quantitative Aptitude CBT', minutes: 25, qCount: 24, calc: false, subtrackFilter: 'gat-en', domains: ['GAT Arithmetic', 'GAT Ratios', 'GAT Quantitative', 'GAT Data'] },
+      { name: 'ETEC / Qiyas English SAAT — Mathematics Achievement CBT', minutes: 25, qCount: 24, calc: false, subtrackFilter: 'saat-en', domains: ['SAAT Logic', 'SAAT Functions', 'SAAT Trigonometry', 'SAAT Differential'] }
     ],
     olympiad: [
-      { name: 'NSMO of KSA (Mawhiba) — National Olympiad CBT Simulation', minutes: 90, qCount: 25, calc: false, domains: ['NSMO of KSA', 'Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Circle Geometry', 'Invariants'] },
-      { name: 'KAUST Mathematics Competition (KMC) — Qualifier & Thuwal Finals CBT', minutes: 90, qCount: 25, calc: false, domains: ['KAUST', 'Olympiad Algebra', 'Recurrence', 'Bijective Counting', 'Triangle Centers'] },
-      { name: 'MAA AMC 10/12 & Kangaroo Math Arabia — Competition Simulation', minutes: 75, qCount: 25, calc: false, domains: ['Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Bijective Counting', 'Recurrence', 'Circle Geometry', 'Triangle Centers', 'Invariants'] }
+      { name: 'NSMO of KSA (Mawhiba) — National Olympiad CBT Simulation', minutes: 90, qCount: 25, calc: false, typeFilter: 'mcq', domains: ['NSMO of KSA', 'Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Circle Geometry', 'Invariants'] },
+      { name: 'KAUST Mathematics Competition (KMC) — Qualifier & Thuwal Finals CBT', minutes: 90, qCount: 25, calc: false, typeFilter: 'mcq', domains: ['KAUST', 'Olympiad Algebra', 'Recurrence', 'Bijective Counting', 'Triangle Centers'] },
+      { name: 'MAA AMC 10/12 & Kangaroo Math Arabia — Competition Simulation', minutes: 75, qCount: 25, calc: false, typeFilter: 'mcq', domains: ['Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Bijective Counting', 'Recurrence', 'Circle Geometry', 'Triangle Centers', 'Invariants'] },
+      { name: 'Olympiad Stage 1 — Integer Entry Qualifier (000–999 · No Calculator)', minutes: 90, qCount: 15, calc: false, typeFilter: 'spr' },
+      { name: 'Olympiad Stage 2 — National Finals Deductive Proof Paper (No Calculator)', minutes: 120, qCount: 6, calc: false, structuredOnly: true }
     ],
     mathai: [
       { name: 'Math for AI & Data Science — Foundations Assessment (Part A: Linear Algebra & Optimization)', minutes: 60, qCount: 20, calc: true, domains: ['Vectors', 'Matrices', 'Gradient Descent'] },
@@ -236,20 +285,27 @@
       { name: 'Ordinary Differential Equations — Comprehensive University Exam', minutes: 90, qCount: 25, calc: false, domains: ['first-order', 'separable', 'second-order', 'laplace', 'systems', 'series', 'boundary'] }
     ]
   };
+  PAPERS['ib-aa-sl'] = PAPERS.ibsl.slice(0, 2);
+  PAPERS['ib-ai-sl'] = PAPERS.ibsl.slice(2, 4);
+  PAPERS['ib-aa-hl'] = PAPERS.ibhl.slice(0, 3);
+  PAPERS['ib-ai-hl'] = PAPERS.ibhl.slice(3, 6);
+  PAPERS['gat-en'] = [PAPERS.gaten[0]];
+  PAPERS['saat-en'] = [PAPERS.gaten[1]];
 
   function _ensureBank(viewId){
-    if(window.fullExamBank && window.fullExamBank[viewId] && window.fullExamBank[viewId].pool){
-      return Promise.resolve(window.fullExamBank[viewId]);
+    var canonicalId = _resolveBankTrack(viewId);
+    if(window.fullExamBank && window.fullExamBank[canonicalId] && window.fullExamBank[canonicalId].pool){
+      return Promise.resolve(window.fullExamBank[canonicalId]);
     }
     if(window.CS_loadTrackBank){
-      return window.CS_loadTrackBank(viewId);
+      return window.CS_loadTrackBank(canonicalId);
     }
-    return fetch('/bank-data/' + viewId + '.json?v=20261026b')
+    return fetch('/bank-data/' + canonicalId + '.json?v=20261105a')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if(d){
           window.fullExamBank = window.fullExamBank || {};
-          window.fullExamBank[viewId] = d;
+          window.fullExamBank[canonicalId] = d;
         }
         return d;
       })
@@ -279,7 +335,8 @@
 
   function _isQuantComp(q){
     if(!q) return false;
-    if(q.domain === 'Quantitative Comparisons') return true;
+    if(q.qc_col_a && q.qc_col_b) return true;
+    if(q.domain === 'Quantitative Comparisons' || q.domain === 'Quantitative Comparison') return true;
     var t = (q.text || q.q || '').trim();
     return (
       t.indexOf('قارن') !== -1 ||
@@ -288,11 +345,32 @@
       (t.indexOf('العمود أ') !== -1 && t.indexOf('العمود ب') !== -1) ||
       (t.indexOf('Quantity A') !== -1 && t.indexOf('Quantity B') !== -1) ||
       (t.indexOf('القيمة الأولى') !== -1 && t.indexOf('القيمة الثانية') !== -1) ||
-      (q.val1 && q.val2)
+      Boolean(q.val1 && q.val2)
     );
   }
 
-  function _parseCompBoxes(q){
+  function _parseCompBoxes(q, langMode){
+    if(q && (q.qc_col_a || q.qc_col_a_ar)){
+      var mode = langMode || 'both';
+      var caAr = q.qc_col_a_ar || q.qc_col_a || '';
+      var cbAr = q.qc_col_b_ar || q.qc_col_b || '';
+      var caEn = q.qc_col_a || q.qc_col_a_ar || '';
+      var cbEn = q.qc_col_b || q.qc_col_b_ar || '';
+      var ctxAr = q.qc_context_ar || '';
+      var ctxEn = q.qc_context || '';
+      var v1, v2, ctxOut;
+      if(mode === 'ar'){
+        v1 = caAr; v2 = cbAr; ctxOut = ctxAr || ctxEn;
+      } else if(mode === 'en'){
+        v1 = caEn; v2 = cbEn; ctxOut = ctxEn || ctxAr;
+      } else {
+        v1 = (caAr && caEn && caAr !== caEn) ? (caAr + ' <span style="color:var(--muted,#64748b);font-size:.85em">(' + caEn + ')</span>') : (caAr || caEn);
+        v2 = (cbAr && cbEn && cbAr !== cbEn) ? (cbAr + ' <span style="color:var(--muted,#64748b);font-size:.85em">(' + cbEn + ')</span>') : (cbAr || cbEn);
+        ctxOut = (ctxAr && ctxEn && ctxAr !== ctxEn) ? (ctxAr + ' / ' + ctxEn) : (ctxAr || ctxEn);
+      }
+      return { context: ctxOut, val1: v1, val2: v2 };
+    }
+
     var t = (q.text || q.q || '').trim();
     var val1 = q.val1 || '', val2 = q.val2 || '', context = q.context || '';
 
@@ -339,9 +417,77 @@
     return { context: context, val1: val1, val2: val2 };
   }
 
+  function _filterPoolForPaper(rawPool, paper){
+    var base = (rawPool || []).filter(function(q){
+      var d = (q.domain || '').toLowerCase();
+      return d.indexOf('format') === -1 && d.indexOf('strategy') === -1 && d.indexOf('overview') === -1;
+    });
+    if(!paper) return base;
+
+    // WP-37: Strict No-Calculator filter — never admit calc:true items into a No-Calc paper
+    if(paper.calc === false){
+      base = base.filter(function(q){ return q.calc === false; });
+    }
+    if(paper.subtrackFilter){
+      var subFiltered = base.filter(function(q){ return q.subtrack === paper.subtrackFilter; });
+      if(subFiltered.length) base = subFiltered;
+    }
+    if(paper.courseFilter){
+      var crsFiltered = base.filter(function(q){ return q.course === paper.courseFilter; });
+      if(crsFiltered.length) base = crsFiltered;
+    }
+    if(paper.paperFilter){
+      var pFiltered = base.filter(function(q){
+        return q.paper && q.paper.indexOf(paper.paperFilter) !== -1;
+      });
+      if(pFiltered.length >= Math.min(2, paper.qCount || 2)) base = pFiltered;
+    }
+    if(paper.structuredOnly){
+      var sFiltered = base.filter(function(q){ return q.type === 'structured' || q.type === 'proof'; });
+      if(sFiltered.length) base = sFiltered;
+    } else if(paper.typeFilter){
+      var tFiltered = base.filter(function(q){ return q.type === paper.typeFilter; });
+      if(tFiltered.length) base = tFiltered;
+    }
+    if(paper.qcOnly){
+      var qcFiltered = base.filter(function(q){ return _isQuantComp(q); });
+      if(qcFiltered.length) base = qcFiltered;
+    }
+    return base;
+  }
+
+  function _drawPaperPool(rawPool, paper, tracker){
+    var strictBase = _filterPoolForPaper(rawPool, paper);
+    var domainFilter = paper && paper.domains;
+    var pool = strictBase;
+    if(domainFilter && domainFilter.length){
+      var filtered = strictBase.filter(function(q){
+        var d = ((q.domain || '') + ' ' + (q.text || q.q || '')).toLowerCase();
+        return domainFilter.some(function(f){ return d.indexOf(f.toLowerCase()) !== -1; });
+      });
+      if(filtered.length >= Math.min(8, strictBase.length)) pool = filtered;
+    }
+    var targetCount = Math.min((paper && paper.qCount) || 20, strictBase.length);
+    if(paper && typeof paper.qcRatio === 'number' && paper.qcRatio > 0 && targetCount >= 8){
+      var qcPool = strictBase.filter(function(q){ return _isQuantComp(q); });
+      var nonQcPool = pool.filter(function(q){ return !_isQuantComp(q); });
+      var qcTarget = Math.min(qcPool.length, Math.round(targetCount * paper.qcRatio));
+      var nonQcTarget = Math.max(0, targetCount - qcTarget);
+      var pickedNonQc = _pickBalancedWithProgression(nonQcPool, nonQcPool, nonQcTarget, tracker);
+      var pickedQc = _pickBalancedWithProgression(qcPool, qcPool, qcTarget, tracker);
+      return pickedNonQc.concat(pickedQc);
+    }
+    // IMPORTANT: pass strictBase (already No-Calc / subtrack / course filtered) as backfill source!
+    return _pickBalancedWithProgression(pool, strictBase, targetCount, tracker);
+  }
+
   function _isQuestionAnswered(idx){
     var ans = _answers[idx];
-    return ans !== undefined && ans !== null && String(ans).trim() !== '';
+    if(ans === undefined || ans === null) return false;
+    if(typeof ans === 'object'){
+      return window.CSStructuredFRQ ? window.CSStructuredFRQ.isStateAnswered(ans) : Object.keys(ans).length > 0;
+    }
+    return String(ans).trim() !== '';
   }
 
   function _goToQuestion(idx){
@@ -595,12 +741,73 @@
     }
   }
 
+  function _bindStructuredFRQHook(){
+    if(window.CSStructuredFRQ && typeof window.CSStructuredFRQ.setOnChangeHook === 'function'){
+      window.CSStructuredFRQ.setOnChangeHook(function(qIdx, st){
+        _answers[qIdx] = Object.assign({}, st);
+        _updateFooterNav();
+      });
+    }
+  }
+  _bindStructuredFRQHook();
+
+  var _prevSetExamLang = window.ClipSATSetExamLang;
+  window.ClipSATSetExamLang = function(lang, btn){
+    try { localStorage.setItem('clipsat_exam_lang', lang); } catch(_e){}
+    if(typeof _prevSetExamLang === 'function'){
+      try { _prevSetExamLang(lang, btn); } catch(_e2){}
+    } else if(typeof document !== 'undefined' && document.body){
+      document.body.classList.remove('cs-lang-ar', 'cs-lang-en', 'cs-lang-both');
+      document.body.classList.add('cs-lang-' + lang);
+      document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+    }
+    if(!_isSubmitted && typeof document !== 'undefined' && document.body && document.body.classList.contains('cbt-open') && _pool && _pool.length){
+      _renderQuestionsDOM();
+      _goToQuestion(_curIdx);
+    }
+  };
+
+  function _selectBilingualStem(q, activeLang){
+    var enTxt = (q.text || q.q || '').trim();
+    var arTxt = (q.text_ar || '').trim();
+    if(!arTxt) return enTxt;
+    var hasEmbeddedBi = /en-trans|<em>/i.test(enTxt) && /[\u0600-\u06FF]/.test(enTxt);
+    if(activeLang === 'ar'){
+      return arTxt;
+    }
+    if(activeLang === 'both'){
+      if(hasEmbeddedBi) return enTxt;
+      if(arTxt === enTxt) return arTxt;
+      return '<span class="q-lang-ar" dir="rtl">' + arTxt + '</span><br><span class="q-lang-en en-trans" dir="ltr">' + enTxt + '</span>';
+    }
+    return enTxt;
+  }
+
+  function _selectBilingualChoices(q, activeLang){
+    var enCh = Array.isArray(q.choices) ? q.choices : [];
+    var arCh = Array.isArray(q.choices_ar) && q.choices_ar.length === enCh.length ? q.choices_ar : null;
+    if(!arCh) return enCh;
+    if(activeLang === 'ar') return arCh;
+    if(activeLang === 'both'){
+      return enCh.map(function(c, idx){
+        var a = String(arCh[idx] || '').trim();
+        var e = String(c || '').trim();
+        if(!a || a === e || /[\u0600-\u06FF]/.test(e)) return e || a;
+        return '<span class="q-lang-ar" dir="rtl">' + a + '</span> <span class="q-lang-en en-trans" dir="ltr">(' + e + ')</span>';
+      });
+    }
+    return enCh;
+  }
+
   function _renderQuestionsDOM(){
     var body = document.getElementById('mock-exam-body');
     if(!body) return;
 
     var h = '';
-    var isArPaper = (_paper && _paper.lang === 'ar');
+    var activeLang = (_paper && _paper.lang) ? _paper.lang : _activeExamLang(_trackId);
+    var isArPaper = (activeLang === 'ar');
     var letters = (_paper && Array.isArray(_paper.letters) && _paper.letters.length)
       ? _paper.letters
       : (isArPaper ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D', 'E']);
@@ -609,8 +816,10 @@
     _pool.forEach(function(q, i){
       var isPre = Boolean(q.preRendered);
       var isComp = !isPre && _isQuantComp(q);
+      var isStructured = !isPre && (q.type === 'structured' || q.type === 'proof') && Array.isArray(q.parts) && q.parts.length > 0 && Boolean(window.CSStructuredFRQ);
       var figHtml = isPre ? (q.figure || '') : _renderQFig(q);
-      var qText = (q.text || q.q || '').trim();
+      var qText = isPre ? (q.text || q.q || '').trim() : _selectBilingualStem(q, activeLang);
+      var activeChoices = isPre ? (q.choices || []) : _selectBilingualChoices(q, activeLang);
       var isFlagged = !!_flags[i];
       var diffKey = ['easy', 'medium', 'hard'].indexOf((q.difficulty || '').toLowerCase()) !== -1
         ? q.difficulty.toLowerCase()
@@ -653,18 +862,18 @@
       }
 
       if(isComp){
-        var comp = _parseCompBoxes(q);
-        h += '<div class="mq-text" dir="rtl" style="font-weight:700;margin-bottom:10px">قارن بين القيمتين التاليتين / Compare the two quantities:</div>';
+        var comp = _parseCompBoxes(q, activeLang);
+        h += '<div class="mq-text" dir="rtl" style="font-weight:700;margin-bottom:10px">' + (activeLang === 'en' ? 'Compare the two quantities:' : (activeLang === 'ar' ? 'قارن بين القيمتين التاليتين:' : 'قارن بين القيمتين التاليتين / Compare the two quantities:')) + '</div>';
         if(comp.context){
           h += '<div class="mock-qc-context" style="background:var(--paper-2,#f8fafc);border-left:3px solid var(--indigo,#1e3e70);border-right:3px solid var(--indigo,#1e3e70);padding:8px 12px;margin-bottom:12px;border-radius:4px;font-size:1rem;font-weight:600">' + _fmtBi(comp.context) + '</div>';
         }
         h += '<div class="mock-qc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'
           + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
-          + '<div style="font-size:.82rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">القيمة الأولى (Column A)</div>'
+          + '<div style="font-size:.82rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">' + (activeLang === 'en' ? 'Column A' : (activeLang === 'ar' ? 'القيمة الأولى' : 'القيمة الأولى (Column A)')) + '</div>'
           + '<div style="font-size:1.05rem;font-weight:600">' + _fmtBi(comp.val1 || qText) + '</div>'
           + '</div>'
           + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
-          + '<div style="font-size:.82rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">القيمة الثانية (Column B)</div>'
+          + '<div style="font-size:.82rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">' + (activeLang === 'en' ? 'Column B' : (activeLang === 'ar' ? 'القيمة الثانية' : 'القيمة الثانية (Column B)')) + '</div>'
           + '<div style="font-size:1.05rem;font-weight:600">' + _fmtBi(comp.val2 || '—') + '</div>'
           + '</div>'
           + '</div>';
@@ -676,41 +885,52 @@
       var isFRQ = (q.type === 'frq');
       var currentAns = _answers[i];
 
-      if(isFRQ){
-        h += '<div style="margin:12px 0">'
-          + '<label style="display:block;font-size:.82rem;color:var(--muted,#64748b);margin-bottom:5px;font-weight:700">✏️ Structured Mathematical Working Space (Optional Scratchpad):</label>'
-          + '<textarea class="mock-frq-area" placeholder="Write your step-by-step derivation, equations, and working here..." style="width:100%;min-height:85px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--sans);font-size:.9rem;margin-bottom:10px"></textarea>'
-          + '</div>';
-      }
-
-      if(isSPR || (isFRQ && (!q.choices || !q.choices.length))){
-        h += '<div class="mock-spr-wrap" style="margin:14px 0">'
-          + '<label style="display:block;font-size:.84rem;color:var(--muted,#64748b);margin-bottom:6px;font-weight:600">' + (isFRQ ? 'Final Verified Numerical / Algebraic Answer:' : 'Student-Produced Response (Grid-in):') + '</label>'
-          + '<input type="text" class="mock-spr-input" name="mq' + i + '" value="' + (currentAns != null ? String(currentAns).replace(/"/g, '&quot;') : '') + '" placeholder="e.g. 7/4 or 1.75" oninput="window.cbtRecordAnswer(' + i + ', this.value)" style="width:220px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem">'
-          + '</div>';
-      } else if(q.choices && q.choices.length){
-        if(isFRQ){
-          h += '<div style="font-size:.83rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:8px">Select your verified final analytical result for CBT auto-grading:</div>';
-        }
-        h += '<div class="mock-choices-list" style="display:flex;flex-direction:column;gap:8px">';
-        q.choices.forEach(function(c, ci){
-          var letLabel = letters[ci] || String.fromCharCode(65 + ci);
-          var chText = isPre ? String(c || '') : (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
-          var isChecked = (currentAns === ci);
-          h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + (isChecked ? '#3b82f6' : 'var(--border,#e2e8f0)') + ';border-radius:8px;cursor:pointer;background:' + (isChecked ? '#eff6ff' : 'var(--paper,#fff)') + ';transition:all .15s ease">'
-            + '<input type="radio" name="mq' + i + '" value="' + ci + '" ' + (isChecked ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
-            + '<span style="font-weight:800;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
-            + '<span style="flex:1">' + (isPre ? chText : _fmtBi(chText)) + '</span>'
-            + '</label>';
+      if(isStructured){
+        h += window.CSStructuredFRQ.renderCBTWidget(q, i, currentAns, {
+          lang: activeLang,
+          formatMath: _fmtBi
         });
-        h += '</div>';
+      } else {
+        if(isFRQ){
+          h += '<div style="margin:12px 0">'
+            + '<label style="display:block;font-size:.82rem;color:var(--muted,#64748b);margin-bottom:5px;font-weight:700">✏️ Structured Mathematical Working Space (Optional Scratchpad):</label>'
+            + '<textarea class="mock-frq-area" placeholder="Write your step-by-step derivation, equations, and working here..." style="width:100%;min-height:85px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--sans);font-size:.9rem;margin-bottom:10px"></textarea>'
+            + '</div>';
+        }
+
+        if(isSPR || (isFRQ && (!activeChoices || !activeChoices.length))){
+          h += '<div class="mock-spr-wrap" style="margin:14px 0">'
+            + '<label style="display:block;font-size:.84rem;color:var(--muted,#64748b);margin-bottom:6px;font-weight:600">' + (isFRQ ? 'Final Verified Numerical / Algebraic Answer:' : (isArPaper ? 'الإجابة الرقمية (Grid-in):' : 'Student-Produced Response (Grid-in):')) + '</label>'
+            + '<input type="text" class="mock-spr-input" name="mq' + i + '" value="' + (currentAns != null && typeof currentAns !== 'object' ? String(currentAns).replace(/"/g, '&quot;') : '') + '" placeholder="e.g. 7/4 or 1.75" oninput="window.cbtRecordAnswer(' + i + ', this.value)" style="width:220px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem">'
+            + '</div>';
+        } else if(activeChoices && activeChoices.length){
+          if(isFRQ){
+            h += '<div style="font-size:.83rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:8px">Select your verified final analytical result for CBT auto-grading:</div>';
+          }
+          h += '<div class="mock-choices-list" style="display:flex;flex-direction:column;gap:8px">';
+          activeChoices.forEach(function(c, ci){
+            var letLabel = letters[ci] || String.fromCharCode(65 + ci);
+            var chText = isPre ? String(c || '') : (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
+            var isChecked = (currentAns === ci);
+            h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + (isChecked ? '#3b82f6' : 'var(--border,#e2e8f0)') + ';border-radius:8px;cursor:pointer;background:' + (isChecked ? '#eff6ff' : 'var(--paper,#fff)') + ';transition:all .15s ease">'
+              + '<input type="radio" name="mq' + i + '" value="' + ci + '" ' + (isChecked ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
+              + '<span style="font-weight:800;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
+              + '<span style="flex:1">' + (isPre ? chText : _fmtBi(chText)) + '</span>'
+              + '</label>';
+          });
+          h += '</div>';
+        }
       }
 
       h += '</div>';
     });
 
     body.innerHTML = h;
+    if(window.CSStructuredFRQ && typeof window.CSStructuredFRQ.bindCanvases === 'function'){
+      window.CSStructuredFRQ.bindCanvases(body);
+    }
     body.setAttribute('data-pool', JSON.stringify(_pool.map(function(q){
+      var solStr = (isArPaper && q.sol_ar) ? q.sol_ar : (q.sol || q.expl || '');
       return {
         answer: q.answer,
         ans: q.sprAnswer || q.finalAnswer || q.ans || q.answer,
@@ -718,7 +938,8 @@
         type: (q.type === 'frq' && (!q.choices || !q.choices.length)) ? 'spr' : (q.type || 'mcq'),
         marks: q.marks || 1,
         domain: q.domain || 'Math',
-        sol: q.sol || q.expl || ''
+        sol: solStr,
+        sol_ar: q.sol_ar || ''
       };
     })));
   }
@@ -774,6 +995,10 @@
     _flags = {};
     _viewMode = 'cbt';
     _isSubmitted = false;
+    if(window.CSStructuredFRQ && typeof window.CSStructuredFRQ.resetStore === 'function'){
+      window.CSStructuredFRQ.resetStore();
+    }
+    _bindStructuredFRQHook();
 
     var overlay = document.getElementById('mock-exam-overlay');
     if(!overlay) return;
@@ -814,7 +1039,6 @@
       ];
       var paper = papers[pidx] || papers[0];
       _paper = paper;
-      var domainFilter = paper.domains || null;
 
       // Extract pool
       var allPool = [];
@@ -838,28 +1062,14 @@
         allPool = cvt(bank.easy, 'easy').concat(cvt(bank.medium, 'medium')).concat(cvt(bank.hard, 'hard'));
       }
 
-      // Filter out meta trivia
-      allPool = allPool.filter(function(q){
-        var d = (q.domain || '').toLowerCase();
-        return d.indexOf('format') === -1 && d.indexOf('strategy') === -1 && d.indexOf('overview') === -1;
-      });
-
-      // Filter by paper domains if specified
-      var pool = allPool;
-      if(domainFilter && domainFilter.length){
-        var filtered = allPool.filter(function(q){
-          var d = ((q.domain || '') + ' ' + (q.text || q.q || '')).toLowerCase();
-          return domainFilter.some(function(f){ return d.indexOf(f.toLowerCase()) !== -1; });
-        });
-        if(filtered.length >= 8) pool = filtered;
-      }
-
-      var targetCount = Math.min(paper.qCount || 20, pool.length);
       var tracker = window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null;
-      var picked = _pickBalancedWithProgression(pool, allPool, targetCount, tracker);
+      var picked = _drawPaperPool(allPool, paper, tracker);
 
       _lastDownloadArgs = null;
-      _pool = picked.map(function(q){ return window._shuffleQ ? window._shuffleQ(q) : q; });
+      _pool = picked.map(function(q){
+        var isFixed = q.fixedChoices || _isQuantComp(q);
+        return (!isFixed && window._shuffleQ) ? window._shuffleQ(q) : q;
+      });
       if(!_pool.length){
         if(body){
           body.innerHTML = '<div style="text-align:center;padding:60px 20px">'
@@ -900,9 +1110,8 @@
           : '';
 
         var langToggleHtml = '';
-        if(trackId === 'qudrat' || trackId === 'tahsili'){
-          var curLang = 'both';
-          try{ curLang = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+        if(MENA_BILINGUAL_TRACKS[trackId]){
+          var curLang = _activeExamLang(trackId);
           langToggleHtml = '<div class="cs-lang-toggle-group" style="margin-right:4px">'
             + '<button type="button" class="cs-lt-btn'+(curLang==='ar'?' active':'')+'" data-lang="ar" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'ar\',this)" title="Arabic Only">🇸🇦 عربي</button>'
             + '<button type="button" class="cs-lt-btn'+(curLang==='en'?' active':'')+'" data-lang="en" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'en\',this)" title="English Only">🇬🇧 English</button>'
@@ -959,6 +1168,10 @@
     _flags = {};
     _viewMode = 'cbt';
     _isSubmitted = false;
+    if(window.CSStructuredFRQ && typeof window.CSStructuredFRQ.resetStore === 'function'){
+      window.CSStructuredFRQ.resetStore();
+    }
+    _bindStructuredFRQHook();
     _lastDownloadArgs = [trackId, examFilename, examTitle, lang];
 
     var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
@@ -1128,7 +1341,8 @@
 
   function _getScaledScoreEstimate(trackId, correct, total){
     var p = total > 0 ? (correct / total) : 0;
-    if(trackId === 'sat'){
+    var baseTrack = _resolveBankTrack(trackId);
+    if(baseTrack === 'sat'){
       var satScore = 200 + Math.round(p * 600);
       if(p >= 0.95) satScore = 800;
       else if(p >= 0.88) satScore = 740 + Math.round((p - 0.88) * 800);
@@ -1136,31 +1350,31 @@
       else if(p >= 0.50) satScore = 500 + Math.round((p - 0.50) * 600);
       return { label: 'Projected SAT Math Score', value: satScore + ' / 800', badge: satScore >= 700 ? '95th+ Percentile' : 'Competitive' };
     }
-    if(trackId === 'qudrat' || trackId === 'tahsili'){
+    if(baseTrack === 'qudrat' || baseTrack === 'tahsili'){
       var qScore = Math.round(50 + p * 50);
       return { label: 'Estimated Qiyas Scale Score', value: qScore + ' / 100', badge: qScore >= 90 ? 'ممتاز (Top 5%)' : 'جيد جداً' };
     }
-    if(trackId === 'act'){
+    if(baseTrack === 'act'){
       var actScore = Math.max(1, Math.min(36, Math.round(p * 36)));
       return { label: 'Projected ACT Math Score', value: actScore + ' / 36', badge: actScore >= 30 ? 'Elite' : 'Standard' };
     }
-    if(trackId === 'igcse' || trackId === 'edexcel' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath'){
+    if(baseTrack === 'igcse' || baseTrack === 'edexcel' || baseTrack === 'aslevel' || baseTrack === 'a2level' || baseTrack === 'addmath'){
       var g = p >= 0.85 ? 'Grade 9 (A*)' : p >= 0.72 ? 'Grade 8 (A)' : p >= 0.60 ? 'Grade 7 (A)' : p >= 0.50 ? 'Grade 6 (B)' : 'Grade 5 (C)';
-      return { label: (trackId === 'addmath' ? 'Projected Cambridge Grade (0606 / 4PM1)' : trackId === 'edexcel' ? 'Projected Edexcel 4MA1 Grade' : 'Projected Cambridge Grade'), value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
+      return { label: (baseTrack === 'addmath' ? 'Projected Cambridge Grade (0606 / 4PM1)' : baseTrack === 'edexcel' ? 'Projected Edexcel 4MA1 Grade' : 'Projected Cambridge Grade'), value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
     }
-    if(trackId === 'gaten'){
+    if(baseTrack === 'gaten'){
       var gScore = Math.round(55 + p * 44);
       return { label: 'Projected Qiyas GAT/SAAT Score', value: gScore + ' / 100', badge: gScore >= 85 ? 'Top 5% STEM' : 'Standard' };
     }
-    if(trackId === 'olympiad'){
+    if(baseTrack === 'olympiad'){
       var oScore = Math.round(p * 150);
       return { label: 'Projected NSMO / KAUST / Olympiad Score', value: oScore + ' / 150', badge: oScore >= 105 ? 'NSMO / KMC Finalist & AIME Qualifier' : 'Contest Ready' };
     }
-    if(trackId === 'mathai'){
+    if(baseTrack === 'mathai'){
       var aiPct = Math.round(p * 100);
       return { label: 'AI Math Mastery Score', value: aiPct + '%', badge: aiPct >= 80 ? 'Mastery (Level 4)' : aiPct >= 65 ? 'Proficient' : 'Developing' };
     }
-    if(trackId === 'ibsl' || trackId === 'ibhl'){
+    if(baseTrack === 'ibsl' || baseTrack === 'ibhl'){
       var ibG = p >= 0.80 ? 'Grade 7' : p >= 0.68 ? 'Grade 6' : p >= 0.55 ? 'Grade 5' : p >= 0.40 ? 'Grade 4' : 'Grade 3';
       return { label: 'Projected IB Boundary', value: ibG, badge: p >= 0.68 ? 'Top Band' : 'Standard' };
     }
@@ -1188,6 +1402,8 @@
     var pool = JSON.parse(body.getAttribute('data-pool') || '[]');
     var correct = 0, totalGraded = 0;
     var domainStats = {};
+    var activeLang = (_paper && _paper.lang) ? _paper.lang : _activeExamLang(_trackId);
+    var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
 
     _pool.forEach(function(q, i){
       var meta = pool[i] || {};
@@ -1198,17 +1414,41 @@
       var qEl = document.getElementById('mock-q-' + i);
       if(!qEl) return;
 
-      var isSPR = (meta.type === 'spr' || meta.isSPR);
+      var isStructured = !q.preRendered && (q.type === 'structured' || q.type === 'proof') && Array.isArray(q.parts) && q.parts.length > 0 && Boolean(window.CSStructuredFRQ);
+      var isSPR = !isStructured && (meta.type === 'spr' || meta.isSPR);
       var sprInput = qEl.querySelector('.mock-spr-input');
       var radios = qEl.querySelectorAll('input[type=radio]');
       var userAns = _answers[i];
       var isRight = false;
       var targetAns = String(meta.sprAnswer != null ? meta.sprAnswer : (meta.ans != null ? meta.ans : (Array.isArray(meta.choices) && meta.answer != null ? meta.choices[meta.answer] : meta.answer))).trim().toLowerCase();
 
-      if(isSPR){
+      if(isStructured){
+        totalGraded++;
+        var g = window.CSStructuredFRQ.gradeStructuredResponse(q, userAns, window.ClipSATAnswerCheck);
+        window.CSStructuredFRQ.toggleRubric(i, true);
+        correct += g.ratio;
+        domainStats[d].correct += g.ratio;
+        isRight = (g.ratio >= 0.999);
+        qEl.setAttribute('data-correct', isRight ? '1' : '0');
+
+        var resBoxS = document.createElement('div');
+        resBoxS.className = 'mock-res-feedback';
+        resBoxS.style.cssText = 'margin-top:12px;padding:12px 16px;border-radius:8px;font-size:.88rem;line-height:1.6;' + (g.ratio >= 0.7 ? 'background:#f0fdf4;border:1px solid #86efac;color:#166534' : (g.ratio > 0 ? 'background:#fffbeb;border:1px solid #fcd34d;color:#92400e' : 'background:#fef2f2;border:1px solid #fca5a5;color:#991b1b'));
+        resBoxS.innerHTML = '<div style="font-weight:700;font-size:.95rem;margin-bottom:4px">'
+          + (isRight ? '✓ Full Marks Awarded' : (g.awardedMarks > 0 ? '◐ Partial Credit Awarded' : '✗ Review Markscheme & Rubric'))
+          + ' — <span>' + g.awardedMarks + ' / ' + g.totalMarks + ' marks</span></div>'
+          + window.CSStructuredFRQ.renderPrintableMarkScheme(q, _fmtBi, activeLang)
+          + (meta.sol ? '<div style="margin-top:8px;border-top:1px dashed rgba(0,0,0,.15);padding-top:8px;color:var(--ink,#1e293b)"><strong>Complete Examiner Solution:</strong><br>' + meta.sol + '</div>' : '');
+        qEl.appendChild(resBoxS);
+
+      } else if(isSPR){
         totalGraded++;
         var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
-        isRight = (val === targetAns);
+        isRight = (val !== '' && val === targetAns);
+
+        if(!isRight && val !== '' && window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function'){
+          try { isRight = Boolean(window.ClipSATAnswerCheck.equivalent(val, targetAns)); } catch(_eqErr){}
+        }
 
         if(!isRight){
           var _toNum = function(s){
@@ -1285,10 +1525,12 @@
 
     var pct = totalGraded ? Math.round((correct / totalGraded) * 100) : 0;
     var scaled = _getScaledScoreEstimate(_trackId, correct, totalGraded);
+    var correctDisp = Math.abs(correct - Math.round(correct)) < 1e-6 ? String(Math.round(correct)) : (Math.round(correct * 10) / 10).toFixed(1);
+    var mistakesCount = Math.max(0, Math.ceil(totalGraded - correct - 1e-6));
 
     var title = document.getElementById('mock-exam-title');
     if(title){
-      title.innerHTML = 'Examination Completed — <strong>Score: ' + correct + '/' + totalGraded + ' (' + pct + '%)</strong>';
+      title.innerHTML = 'Examination Completed — <strong>Score: ' + correctDisp + '/' + totalGraded + ' (' + pct + '%)</strong>';
     }
 
     // Build Domain Breakdown HTML
@@ -1296,11 +1538,12 @@
     Object.keys(domainStats).forEach(function(dName){
       var st = domainStats[dName];
       var dPct = st.total > 0 ? Math.round((st.correct / st.total) * 100) : 0;
+      var stCorrDisp = Math.abs(st.correct - Math.round(st.correct)) < 1e-6 ? String(Math.round(st.correct)) : (Math.round(st.correct * 10) / 10).toFixed(1);
       var barColor = dPct >= 80 ? '#16a34a' : dPct >= 50 ? '#d97706' : '#dc2626';
       domainBarsHtml += '<div style="margin-bottom:8px">'
         + '<div style="display:flex;justify-content:space-between;font-size:.78rem;font-weight:700;margin-bottom:3px">'
         + '  <span>' + dName + '</span>'
-        + '  <span>' + st.correct + '/' + st.total + ' (' + dPct + '%)</span>'
+        + '  <span>' + stCorrDisp + '/' + st.total + ' (' + dPct + '%)</span>'
         + '</div>'
         + '<div style="height:6px;background:var(--border,#e2e8f0);border-radius:4px;overflow:hidden">'
         + '  <div style="width:' + dPct + '%;height:100%;background:' + barColor + ';border-radius:4px"></div>'
@@ -1316,7 +1559,7 @@
             '<h2 style="margin:4px 0 0;font-size:1.6rem;font-weight:800;color:var(--indigo,#132746)">' + (_paper ? _paper.name : 'Mathematics CBT') + '</h2>',
           '</div>',
           '<div style="text-align:right">',
-            '<div style="font-size:1.8rem;font-weight:900;color:' + (pct >= 70 ? '#16a34a' : '#d97706') + '">' + correct + ' <span style="font-size:1.1rem;color:var(--muted)">/ ' + totalGraded + ' (' + pct + '%)</span></div>',
+            '<div style="font-size:1.8rem;font-weight:900;color:' + (pct >= 70 ? '#16a34a' : '#d97706') + '">' + correctDisp + ' <span style="font-size:1.1rem;color:var(--muted)">/ ' + totalGraded + ' (' + pct + '%)</span></div>',
             '<div style="font-size:.8rem;font-weight:700;color:#2563eb">' + scaled.label + ': ' + scaled.value + '</div>',
           '</div>',
         '</div>',
@@ -1324,7 +1567,7 @@
         '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border,#e2e8f0);padding-top:14px;flex-wrap:wrap;gap:10px">',
           '<div style="display:flex;gap:6px" id="cbt-filter-group">',
             '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtFilterReview(\'all\', this)">All Questions (' + totalGraded + ')</button>',
-            '<button type="button" class="cbt-nav-btn" onclick="window.cbtFilterReview(\'mistakes\', this)">Mistakes Only (' + (totalGraded - correct) + ')</button>',
+            '<button type="button" class="cbt-nav-btn" onclick="window.cbtFilterReview(\'mistakes\', this)">Mistakes Only (' + mistakesCount + ')</button>',
             '<button type="button" class="cbt-nav-btn" onclick="window.cbtFilterReview(\'flagged\', this)">Flagged</button>',
           '</div>',
           '<div style="display:flex;gap:8px">',
@@ -1402,5 +1645,15 @@
     }
   };
   window.closeMockExam = window.exitMockExam;
+  window.CSMockExamConfig = {
+    PAPERS: PAPERS,
+    MENA_BILINGUAL_TRACKS: MENA_BILINGUAL_TRACKS,
+    filterPoolForPaper: _filterPoolForPaper,
+    drawPaperPool: _drawPaperPool,
+    isQuantComp: _isQuantComp,
+    parseCompBoxes: _parseCompBoxes,
+    resolveBankTrack: _resolveBankTrack,
+    getScaledScoreEstimate: _getScaledScoreEstimate
+  };
 
 })();

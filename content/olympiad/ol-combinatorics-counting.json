@@ -7,7 +7,7 @@
   },
   "title": {
     "en": "Combinatorics I: Bijective Counting, Stars & Bars, Inclusion–Exclusion & Pigeonhole",
-    "ar": "التركيبات (1): العد التقابلي والنجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام"
+    "ar": "التركيبات (واحد): العد التقابلي والنجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام"
   },
   "railLabel": {
     "en": "Bijective Counting, PIE & Pigeonhole",
@@ -38,7 +38,7 @@
         "kind": "text",
         "body": {
           "en": "Olympiad combinatorics replaces messy casework with <strong>structural bijections</strong>: instead of counting a complicated set \\( A \\) directly, construct a 1-to-1 correspondence \\( f: A \\to B \\) onto a clean set \\( B \\) of binary strings, lattice paths, or subset choices. Paired with <strong>Stars and Bars</strong>, the <strong>Principle of Inclusion–Exclusion (PIE)</strong>, and Dirichlet’s <strong>Pigeonhole Principle</strong>, these tools form the backbone of NSMO, KAUST KMC, AMC/AIME, and IMO combinatorics.",
-          "ar": "تستبدل التركيبات الأولمبية تقسيم الحالات المرهق بـ<strong>التقابلات البنيوية (Bijections)</strong>: فبدلاً من عدّ مجموعة معقدة \\( A \\) مباشرةً، ننشئ تقابلاً واحداً لواحد \\( f: A \\to B \\) مع مجموعة واضحة من المتتابعات الثنائية أو مسارات الشبكة. وبالاقتران مع <strong>النجوم والفواصل</strong> و<strong>مبدأ الشمول والإقصاء (PIE)</strong> و<strong>مبدأ برج الحمام لديريخليه</strong>، تتشكل الركيزة الأساسية لمسائل التركيبات في نسما وكاوست وAIME وIMO."
+          "ar": null
         }
       },
       {
@@ -50,7 +50,7 @@
         },
         "body": {
           "en": "<p><strong>1. Stars and Bars:</strong> The number of solutions to \\( x_1 + x_2 + \\cdots + x_k = n \\) is:</p>\\[ \\binom{n - 1}{k - 1} \\text{ in positive integers } (x_i \\ge 1), \\qquad \\binom{n + k - 1}{k - 1} \\text{ in non-negative integers } (x_i \\ge 0). \\]<p><strong>2. Hockey-Stick &amp; Vandermonde Identities:</strong></p>\\[ \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1}, \\qquad \\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k - j} = \\binom{m + n}{k}, \\qquad \\sum_{j=0}^{n} \\binom{n}{j}^2 = \\binom{2n}{n}. \\]",
-          "ar": "<p><strong>1. النجوم والفواصل (Stars and Bars):</strong> عدد حلول المعادلة \\( x_1 + x_2 + \\cdots + x_k = n \\) يساوي:</p>\\[ \\binom{n - 1}{k - 1} \\text{ في الأعداد الموجبة } (x_i \\ge 1), \\qquad \\binom{n + k - 1}{k - 1} \\text{ في الأعداد غير السالبة } (x_i \\ge 0). \\]<p><strong>2. متطابقتا عصا الهوكي وفاندرموند:</strong></p>\\[ \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1}, \\qquad \\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k - j} = \\binom{m + n}{k}, \\qquad \\sum_{j=0}^{n} \\binom{n}{j}^2 = \\binom{2n}{n}. \\]"
+          "ar": "<p><strong>1. النجوم والفواصل (Stars and Bars):</strong> عدد حلول المعادلة \\(x_1 + x_2 + \\cdots + x_k = n\\) يساوي:</p>\\[\\binom{n - 1}{k - 1} \\text{ في الأعداد الموجبة } (x_i \\ge 1), \\qquad \\binom{n + k - 1}{k - 1} \\text{ في الأعداد غير السالبة } (x_i \\ge 0).\\]<p><strong>2. متطابقتا عصا الهوكي وفاندرموند:</strong></p>\\[\\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1}, \\qquad \\sum_{j=0}^{k} \\binom{m}{j}\\binom{n}{k - j} = \\binom{m + n}{k}, \\qquad \\sum_{j=0}^{n} \\binom{n}{j}^2 = \\binom{2n}{n}.\\]"
         }
       },
       {
@@ -62,7 +62,7 @@
         },
         "body": {
           "en": "<p><strong>1. Principle of Inclusion–Exclusion (PIE):</strong> For finite subsets \\( A_1, \\dots, A_m \\subseteq U \\), the number of elements in NONE of the \\( A_i \\) is:</p>\\[ \\left|U \\setminus \\bigcup_{i=1}^m A_i\\right| = |U| - \\sum_{i} |A_i| + \\sum_{i<j} |A_i \\cap A_j| - \\cdots + (-1)^m |A_1 \\cap \\cdots \\cap A_m|. \\]<p>In particular, the number of <strong>derangements</strong> \\( D_n \\) (permutations of \\( \\{1,\\dots,n\\} \\) with \\( \\pi(i) \\ne i \\) for all \\( i \\)) is \\( D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!} \\) (\\( D_1=0, D_2=1, D_3=2, D_4=9, D_5=44 \\)).</p><p><strong>2. Generalized Pigeonhole Principle:</strong> Placing \\( N \\) objects into \\( k \\) boxes forces at least one box to contain at least \\( \\lceil N / k \\rceil \\) objects.</p>",
-          "ar": "<p><strong>1. مبدأ الشمول والإقصاء (PIE):</strong> لمجموعات جزئية منتهية \\( A_1, \\dots, A_m \\subseteq U \\)، عدد عناصر \\( U \\) التي لا تنتمي إلى أيٍّ من \\( A_i \\) يعطى بالصيغة:</p>\\[ \\left|U \\setminus \\bigcup_{i=1}^m A_i\\right| = |U| - \\sum_{i} |A_i| + \\sum_{i<j} |A_i \\cap A_j| - \\cdots + (-1)^m |A_1 \\cap \\cdots \\cap A_m|. \\]<p>وبوجه خاص، عدد <strong>التبديلات الخالية من النقاط الثابتة (Derangements)</strong> يساوي \\( D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!} \\) (حيث \\( D_1=0,\\; D_2=1,\\; D_3=2,\\; D_4=9,\\; D_5=44 \\)).</p><p><strong>2. مبدأ برج الحمام المعمم:</strong> عند توزيع \\( N \\) عنصراً على \\( k \\) صناديق، لا بد من وجود صندوق واحد على الأقل يحوي \\( \\lceil N / k \\rceil \\) عنصراً على الأقل.</p>"
+          "ar": null
         }
       },
       {
@@ -74,7 +74,7 @@
         },
         "body": {
           "en": "<p>How many \\( (r + 1) \\)-element subsets can be chosen from \\( S = \\{1, 2, \\dots, n + 1\\} \\)? On the right-hand side, by definition, there are \\( \\binom{n+1}{r+1} \\) such subsets. On the left-hand side, partition those subsets according to their <strong>largest element</strong> \\( m = i + 1 \\), which must satisfy \\( r + 1 \\le i + 1 \\le n + 1 \\) (so \\( r \\le i \\le n \\)). Once the largest element \\( i + 1 \\) is fixed, the remaining \\( r \\) elements can be chosen freely from \\( \\{1, 2, \\dots, i\\} \\) in \\( \\binom{i}{r} \\) ways. Summing over disjoint cases \\( i = r, r+1, \\dots, n \\) yields \\( \\sum_{i=r}^n \\binom{i}{r} = \\binom{n+1}{r+1} \\). \\( \\blacksquare \\)</p>",
-          "ar": "<p>بكم طريقة يمكن اختيار مجموعة جزئية مكوّنة من \\( r + 1 \\) عنصراً من المجموعة \\( S = \\{1, 2, \\dots, n + 1\\} \\)؟ الطرف الأيمن يعدّها مباشرةً بـ \\( \\binom{n+1}{r+1} \\). أما الطرف الأيسر فيصنّف هذه المجموعات الجزئية بحسب <strong>أكبر عنصر فيها</strong> وليكن \\( i + 1 \\) حيث \\( r \\le i \\le n \\)؛ فبعد تثبيت العنصر الأكبر \\( i + 1 \\)، نختار العناصر الـ \\( r \\) المتبقية من المجموعة \\( \\{1, 2, \\dots, i\\} \\) بعدد طرق قدره \\( \\binom{i}{r} \\). وبجمع هذه الحالات المتنافية من \\( i = r \\) إلى \\( n \\) يثبت أن \\( \\sum_{i=r}^n \\binom{i}{r} = \\binom{n+1}{r+1} \\). \\( \\blacksquare \\)</p>"
+          "ar": null
         }
       },
       {
@@ -105,53 +105,53 @@
             },
             {
               "en": "Insert \\(k\\) chosen balls into the \\(n-k+1\\) gaps around \\(n-k\\) unchosen balls",
-              "ar": "إدراج \\(k\\) عناصر مختارة في الفجوات الـ \\(n-k+1\\) حول العناصر غير المختارة"
+              "ar": null
             },
             {
               "en": "\\(\\binom{n - k + 1}{k}\\)",
-              "ar": "\\(\\binom{n - k + 1}{k}\\)"
+              "ar": null
             }
           ],
           [
             {
               "en": "Non-decreasing sequences \\(1 \\le a_1 \\le a_2 \\le \\dots \\le a_k \\le m\\)",
-              "ar": "متتابعات غير متناقصة \\(1 \\le a_1 \\le \\dots \\le a_k \\le m\\)"
+              "ar": null
             },
             {
               "en": "Shift \\(b_i = a_i + (i - 1)\\) to get strictly increasing \\(1 \\le b_1 < \\dots < b_k \\le m+k-1\\)",
-              "ar": "الإزاحة \\(b_i = a_i + (i - 1)\\) لتحويلها إلى متزايدة قطعاً"
+              "ar": null
             },
             {
               "en": "\\(\\binom{m + k - 1}{k}\\)",
-              "ar": "\\(\\binom{m + k - 1}{k}\\)"
+              "ar": null
             }
           ],
           [
             {
               "en": "Surjective functions \\(f: \\{1,\\dots,n\\} \\to \\{1,\\dots,k\\}\\)",
-              "ar": "الدوال الشاملة (الغامرة) من مجموعة حجمها \\(n\\) إلى \\(k\\)"
+              "ar": null
             },
             {
               "en": "PIE on \\(A_i = \\{\\text{functions missing output } i\\}\\)",
-              "ar": "مبدأ الشمول والإقصاء على المخرجات المفقودة"
+              "ar": "PIE على \\(A_i = \\{\\text{functions missing output } i\\}\\)"
             },
             {
               "en": "\\(\\sum_{j=0}^k (-1)^j \\binom{k}{j} (k - j)^n\\)",
-              "ar": "\\(\\sum_{j=0}^k (-1)^j \\binom{k}{j} (k - j)^n\\)"
+              "ar": null
             }
           ],
           [
             {
               "en": "Diagonal intersections inside convex \\(n\\)-gon (no 3 concurrent)",
-              "ar": "نقاط تقاطع أقطار مضلع محدب ذي \\(n\\) رؤوس بالداخل"
+              "ar": null
             },
             {
               "en": "Every 4 vertices determine a unique interior diagonal intersection!",
-              "ar": "كل \\(4\\) رؤوس تحدد نقطة تقاطع داخلية وحيدة لقطرين!"
+              "ar": null
             },
             {
               "en": "\\(\\binom{n}{4}\\)",
-              "ar": "\\(\\binom{n}{4}\\)"
+              "ar": null
             }
           ]
         ]
@@ -196,7 +196,7 @@
             },
             "value": {
               "en": "Pairs \\((A, B)\\) with \\(A \\subseteq B \\subseteq \\{1,\\dots,n\\}\\) equal \\(3^n\\) (3 states per element)",
-              "ar": "عدد الأزواج \\((A, B)\\) التي تحقق \\(A \\subseteq B \\subseteq \\{1,\\dots,n\\}\\) يساوي \\(3^n\\)"
+              "ar": null
             }
           }
         ]
@@ -397,7 +397,7 @@
         },
         "caption": {
           "en": "Ramsey number \\(R(3,3) = 6\\) via Pigeonhole: vertex \\(v_1\\) has \\(5\\) incident edges in \\(2\\) colors, so by Pigeonhole \\(\\lceil 5/2 \\rceil = 3\\) edges share a color (say to \\(v_2, v_3, v_4\\)); either one edge among \\(\\{v_2,v_3,v_4\\}\\) matches that color (triangle with \\(v_1\\)) or all \\(3\\) have the opposite color (triangle \\(v_2 v_3 v_4\\))!",
-          "ar": "مبرهنة رامزي \\(R(3,3) = 6\\) عبر برج الحمام: ينطلق من الرأس \\(v_1\\) خمسة أضلاع بلونين، فلا بد من \\(\\lceil 5/2 \\rceil = 3\\) أضلاع من لون واحد نحو \\(v_2, v_3, v_4\\)؛ فإما يظهر ضلع بنفس اللون بينها فيكتمل مثلث مع \\(v_1\\)، أو تتلون الأضلاع الثلاثة جميعاً باللون الآخر فتكوّن المثلث \\(v_2 v_3 v_4\\)!"
+          "ar": "مبرهنة رامزي عبر برج الحمام: ينطلق من الرأس خمسة أضلاع بلونين، فلا بد من أضلاع من لون واحد نحو ؛ فإما يظهر ضلع بنفس اللون بينها فيكتمل مثلث مع ، أو تتلون الأضلاع الثلاثة جميعاً باللون الآخر فتكوّن المثلث ! \\(R(3,3) = 6\\) ، \\(v_1\\) ، \\(5\\) ، \\(2\\) ، \\(\\lceil 5/2 \\rceil = 3\\) ، \\(v_2, v_3, v_4\\) ، \\(\\{v_2,v_3,v_4\\}\\) ، \\(v_1\\) ، \\(3\\) ، \\(v_2 v_3 v_4\\)"
         }
       },
       {
@@ -408,11 +408,11 @@
         },
         "problem": {
           "en": "How many ordered quadruples \\( (w, x, y, z) \\) of positive ODD integers satisfy \\( w + x + y + z = 24 \\)?",
-          "ar": "كم رباعية مرتبة \\( (w, x, y, z) \\) من الأعداد الصحيحة الموجبة الفردية تحقق المعادلة \\( w + x + y + z = 24 \\)؟"
+          "ar": "كم رباعية مرتبة \\((w, x, y, z)\\) من الأعداد الصحيحة الموجبة الفردية تحقق المعادلة \\(w + x + y + z = 24\\)؟"
         },
         "solution": {
           "en": "<p>Parameterize every positive odd integer cleanly as \\( 2a + 1 \\) with non-negative integer \\( a \\ge 0 \\):<br>Set \\( w = 2a + 1,\\; x = 2b + 1,\\; y = 2c + 1,\\; z = 2d + 1 \\) where \\( a, b, c, d \\in \\mathbb{Z}_{\\ge 0} \\). Substituting into the sum:<br>\\[ (2a + 1) + (2b + 1) + (2c + 1) + (2d + 1) = 24 \\iff 2(a + b + c + d) = 20 \\iff a + b + c + d = 10. \\]<br>Now apply non-negative Stars and Bars with \\( n = 10 \\) stars and \\( k = 4 \\) variables:<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = \\frac{13 \\times 12 \\times 11}{6} = 286. \\]</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> نمثّل كل عدد موجب فردي بالصورة \\( 2a + 1 \\) حيث \\( a \\ge 0 \\) عدد صحيح غير سالب:<br>نضع \\( w = 2a+1,\\; x = 2b+1,\\; y = 2c+1,\\; z = 2d+1 \\). وبالتعويض في المعادلة:<br>\\[ 2(a + b + c + d) + 4 = 24 \\iff a + b + c + d = 10 \\quad (a,b,c,d \\ge 0). \\]<br>بتطبيق قانون النجوم والفواصل لـ \\( n = 10 \\) و\\( k = 4 \\):<br>\\[ \\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = 286. \\]</p>"
+          "ar": null
         }
       },
       {
@@ -423,11 +423,11 @@
         },
         "problem": {
           "en": "How many integers between \\( 0 \\) and \\( 9999 \\) inclusive have a sum of decimal digits equal to \\( 14 \\)?",
-          "ar": "كم عدداً صحيحاً من \\( 0 \\) إلى \\( 9999 \\) يساوي مجموع أرقامه العشرية \\( 14 \\)؟"
+          "ar": "كم عدداً صحيحاً من \\(0\\) إلى \\(9999\\) يساوي مجموع أرقامه العشرية \\(14\\)؟"
         },
         "solution": {
           "en": "<p>Write a 4-digit padded string \\( d_1 d_2 d_3 d_4 \\) with \\( 0 \\le d_i \\le 9 \\) and \\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. Unrestricted non-negative solutions (\\( d_i \\ge 0 \\)): \\( \\binom{14 + 4 - 1}{3} = \\binom{17}{3} = 680 \\).<br>2. Let \\( A_i \\) be the bad set where \\( d_i \\ge 10 \\). Since \\( 10 + 10 = 20 > 14 \\), <strong>at most ONE digit can be \\( \\ge 10 \\)</strong> (all pairwise intersections \\( A_i \\cap A_j = \\emptyset \\)!).<br>3. For \\( A_1 \\), set \\( d_1' = d_1 - 10 \\ge 0 \\), giving \\( d_1' + d_2 + d_3 + d_4 = 4 \\), which has \\( \\binom{4 + 4 - 1}{3} = \\binom{7}{3} = 35 \\) solutions.<br>4. By PIE across the \\( 4 \\) digits:<br>\\[ 680 - \\binom{4}{1} \\cdot 35 = 680 - 140 = 540. \\]</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> نمثّل كل عدد بأربع خانات \\( d_1 d_2 d_3 d_4 \\) تحقق \\( 0 \\le d_i \\le 9 \\) و\\( d_1 + d_2 + d_3 + d_4 = 14 \\).<br>1. عدد الحلول غير المقيدة بحد علوي (\\( d_i \\ge 0 \\)): \\( \\binom{17}{3} = 680 \\).<br>2. لتكن \\( A_i \\) مجموعة الحلول المرفوضة التي فيها \\( d_i \\ge 10 \\). بما أن \\( 10 + 10 = 20 > 14 \\)، يستحيل أن يتجاوز رقمان معاً الحد \\( 9 \\) (\\( A_i \\cap A_j = \\emptyset \\))!<br>3. لحساب \\( |A_1| \\) نضع \\( d_1' = d_1 - 10 \\ge 0 \\) فنحصل على \\( d_1' + d_2 + d_3 + d_4 = 4 \\)، وعدد حلولها \\( \\binom{7}{3} = 35 \\).<br>4. بتطبيق مبدأ الشمول والإقصاء على الخانات الأربع: \\( 680 - 4(35) = 540 \\) عدداً.</p>"
+          "ar": null
         }
       },
       {
@@ -438,11 +438,11 @@
         },
         "problem": {
           "en": "(a) What is the minimum number of lattice points \\( (x_i, y_i) \\in \\mathbb{Z}^3 \\) in 3D space that MUST be chosen to guarantee at least two chosen points have a midpoint that is ALSO an integer lattice point? (b) If \\( 10 \\) points are placed inside a \\( 3 \\times 3 \\) square, prove two lie at distance \\( \\le \\sqrt{2} \\).",
-          "ar": "(أ) ما أقل عدد من النقاط الصحيحة \\( (x_i, y_i, z_i) \\in \\mathbb{Z}^3 \\) في الفضاء ثلاثي الأبعاد يجب اختياره لضمان وجود نقطتين منتصفهما نقطة صحيحة أيضاً؟ (ب) برهن أنه عند وضع \\( 10 \\) نقاط داخل مربع \\( 3 \\times 3 \\)، توجد نقطتان المسافة بينهما لا تتجاوز \\( \\sqrt{2} \\)."
+          "ar": null
         },
         "solution": {
           "en": "<p><br><strong>(a)</strong> The midpoint \\( \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}, \\frac{z_1+z_2}{2}\\right) \\) is in \\( \\mathbb{Z}^3 \\) iff \\( x_1 \\equiv x_2 \\), \\( y_1 \\equiv y_2 \\), and \\( z_1 \\equiv z_2 \\pmod 2 \\). Each coordinate has \\( 2 \\) parities (Even/Odd), creating \\( 2^3 = 8 \\) parity classes (pigeonholes). Choosing \\( 8 \\) points can place one in each parity class, whereas choosing <strong>\\( 8 + 1 = 9 \\) points</strong> guarantees by Pigeonhole that two share identical parity in all three coordinates!<br><strong>(b)</strong> Partition the \\( 3 \\times 3 \\) square into \\( 9 \\) unit \\( 1 \\times 1 \\) subsquares. With \\( 10 \\) points in \\( 9 \\) boxes, one \\( 1 \\times 1 \\) box contains at least \\( 2 \\) points, and the maximum distance inside a \\( 1 \\times 1 \\) square is its diagonal \\( \\sqrt{1^2 + 1^2} = \\sqrt{2} \\)!</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong><br><strong>(أ)</strong> يكون المنتصف صحيحاً إذا وفقط إذا تطابقت زوجية الإحداثيات الثلاثة \\( \\pmod 2 \\). هناك \\( 2^3 = 8 \\) أصناف زوجية ممكنة (صناديق)؛ لذا فاختيار <strong>\\( 8 + 1 = 9 \\) نقاط</strong> يضمن بمبدأ برج الحمام وقوع نقطتين في الصنف نفسه!<br><strong>(ب)</strong> نقسّم المربع \\( 3 \\times 3 \\) إلى \\( 9 \\) مربعات وحدة \\( 1 \\times 1 \\). بوجود \\( 10 \\) نقاط في \\( 9 \\) مربعات، يضم أحد المربعات نقطتين على الأقل، وأقصى مسافة داخل مربع الوحدة هي طول قطره \\( \\sqrt{2} \\)!</p>"
+          "ar": null
         }
       },
       {
@@ -453,11 +453,11 @@
         },
         "problem": {
           "en": "Six research fellows at KAUST submit 6 distinct lab notebooks for blind peer review. How many ways can the 6 notebooks be redistributed so that <strong>exactly 2</strong> fellows receive their own notebook and the remaining 4 fellows each receive someone else's notebook?",
-          "ar": "قدّم \\( 6 \\) باحثين في كاوست \\( 6 \\) دفاتر أبحاث متمايزة للمراجعة المعمّاة. بكم طريقة يمكن إعادة توزيع الدفاتر الستة بحيث يحصل <strong>باحثان اثنان بالضبط</strong> على دفتريهما الأصليين بينما يحصل كل من الأربعة الباقين على دفتر زميل آخر؟"
+          "ar": null
         },
         "solution": {
           "en": "<p>Decompose into two independent decisions:<br>1. Choose WHICH \\( 2 \\) of the \\( 6 \\) fellows are fixed points: \\( \\binom{6}{2} = 15 \\) ways.<br>2. Derange the remaining \\( 4 \\) notebooks so NONE of those \\( 4 \\) fellows receives their own notebook: the number of derangements of \\( 4 \\) items is:<br>\\[ D_4 = 4!\\left(1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 - 24 + 12 - 4 + 1 = 9. \\]<br>By the multiplication rule, total valid redistributions \\( = 15 \\times 9 = 135 \\).</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> نفكك العملية إلى خطوتين مستقلتين:<br>1. اختيار الباحثَين اللذين يمثلان نقطتين ثابتتين: \\( \\binom{6}{2} = 15 \\) طريقة.<br>2. تبديل دفاتر الباحثين الأربعة الباقين تبديلاً خالياً تماماً من النقاط الثابتة (\\( D_4 \\)):<br>\\[ D_4 = 4!\\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 12 - 4 + 1 = 9. \\]<br>بمبدأ العد الأساسي، عدد الطرق الكلي \\( = 15 \\times 9 = 135 \\) طريقة.</p>"
+          "ar": null
         }
       },
       {
@@ -469,7 +469,7 @@
         },
         "body": {
           "en": "<p><strong>Never count \"at least one from each category\" by picking 1 from each first and multiplying by the rest!</strong> For example, choosing \\( 5 \\) balls from \\( 3 \\) distinct colors so every color appears is NOT \\( \\binom{n_1}{1}\\binom{n_2}{1}\\binom{n_3}{1}\\binom{N-3}{2} \\) — that counts a configuration with \\( 3 \\) red balls three separate times! Always use <strong>PIE</strong> (total minus missing \\( \\ge 1 \\) color plus missing \\( \\ge 2 \\) colors).</p>",
-          "ar": "<p><strong>إياك وعدّ شرط «واحد على الأقل من كل فئة» باختيار عنصر من كل فئة أولاً ثم ضرب الباقي اعتباطياً!</strong> فهذه الخدعة الخاطئة تعدّ التشكيلات المتعددة مراراً وتكراراً. الأداة السليمة الوحيدة هنا هي <strong>مبدأ الشمول والإقصاء (PIE)</strong> بطرح الحالات التي تغيب فيها فئة أو أكثر.</p>"
+          "ar": null
         }
       },
       {
@@ -477,11 +477,11 @@
         "style": "tip",
         "label": {
           "en": "▲ Contest Strategy — Small-n Sanity Verification on Combinatorial Formulas",
-          "ar": "▲ استراتيجية المسابقات — اختبار الصيغ التوافقية عند قيم صغيرة لـ \\(n\\)"
+          "ar": null
         },
         "body": {
           "en": "<p>Before committing to a combinatorial expression like \\( \\binom{n-k+1}{k} \\) vs \\( \\binom{n-k}{k} \\), plug in \\( n = 4, k = 2 \\) by hand in 5 seconds! For non-adjacent pairs from \\( \\{1,2,3,4\\} \\), the valid pairs are \\( \\{1,3\\}, \\{1,4\\}, \\{2,4\\} \\) (\\( 3 \\) ways), immediately confirming \\( \\binom{4-2+1}{2} = \\binom{3}{2} = 3 \\) rather than \\( \\binom{2}{2} = 1 \\)!</p>",
-          "ar": "<p>قبل اعتماد أي صيغة توافقية مثل \\( \\binom{n-k+1}{k} \\) مقابل \\( \\binom{n-k}{k} \\)، جرّب حالة يدوية صغيرة مثل \\( n = 4, k = 2 \\) خلال 5 ثوانٍ! للأزواج غير المتجاورة من \\( \\{1,2,3,4\\} \\) نجد \\( \\{1,3\\}, \\{1,4\\}, \\{2,4\\} \\) أي \\( 3 \\) طرق، ما يؤكد فوراً صحة \\( \\binom{3}{2} = 3 \\)!</p>"
+          "ar": null
         }
       },
       {
@@ -493,107 +493,107 @@
         "hints": [
           {
             "en": "There are \\( 11 - 4 = 7 \\) unchosen books remaining on the shelf.",
-            "ar": "يتبقى على الرف \\( 11 - 4 = 7 \\) كتب غير مختارة."
+            "ar": "يتبقى على الرف \\(11 - 4 = 7\\) كتب غير مختارة."
           },
           {
             "en": "Those 7 unchosen books create \\( 7 + 1 = 8 \\) gaps (including the two ends).",
-            "ar": "تُحدث هذه الكتب السبعة \\( 7 + 1 = 8 \\) فجوات (بما فيها الطرفان)."
+            "ar": null
           },
           {
             "en": "Choose \\( 4 \\) of those \\( 8 \\) gaps to place the chosen books: \\( \\binom{8}{4} \\).",
-            "ar": "اختر \\( 4 \\) فجوات من أصل \\( 8 \\): \\( \\binom{8}{4} \\)."
+            "ar": "اختر \\(4\\) فجوات من أصل \\(8\\): \\(\\binom{8}{4}\\)."
           }
         ],
         "solution": {
           "en": "Using the gap bijection \\( \\binom{n - k + 1}{k} \\) with \\( n = 11, k = 4 \\), we obtain \\( \\binom{11 - 4 + 1}{4} = \\binom{8}{4} = \\frac{8 \\times 7 \\times 6 \\times 5}{24} = 70 \\) ways.",
-          "ar": "بتطبيق تقابل الفجوات \\( \\binom{n - k + 1}{k} \\) عند \\( n = 11, k = 4 \\)، نحصل على \\( \\binom{8}{4} = 70 \\) طريقة."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4.2 · KAUST KMC / Easy]</strong> Evaluate the Hockey-Stick sum \\( \\binom{3}{3} + \\binom{4}{3} + \\binom{5}{3} + \\cdots + \\binom{10}{3} \\).",
-          "ar": "<strong>[تدريب 4.2 · مسابقة كاوست / سهل]</strong> احسب قيمة المجموع التوافقي \\( \\binom{3}{3} + \\binom{4}{3} + \\binom{5}{3} + \\cdots + \\binom{10}{3} \\)."
+          "ar": "<strong>[تدريب 4.2 · مسابقة كاوست / سهل]</strong> احسب قيمة المجموع التوافقي \\(\\binom{3}{3} + \\binom{4}{3} + \\binom{5}{3} + \\cdots + \\binom{10}{3}\\)."
         },
         "hints": [
           {
             "en": "Recall the Hockey-Stick Identity \\( \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1} \\).",
-            "ar": "طبّق متطابقة عصا الهوكي \\( \\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1} \\)."
+            "ar": "طبّق متطابقة عصا الهوكي \\(\\sum_{i=r}^{n} \\binom{i}{r} = \\binom{n + 1}{r + 1}\\)."
           },
           {
             "en": "Substitute \\( r = 3 \\) and \\( n = 10 \\) to obtain \\( \\binom{11}{4} \\).",
-            "ar": "عوّض بـ \\( r = 3 \\) و\\( n = 10 \\) لتحصل على \\( \\binom{11}{4} \\)."
+            "ar": "عوّض بـ \\(r = 3\\) و\\(n = 10\\) لتحصل على \\(\\binom{11}{4}\\)."
           },
           {
             "en": "Compute \\( \\frac{11 \\times 10 \\times 9 \\times 8}{24} \\).",
-            "ar": "احسب \\( \\frac{11 \\times 10 \\times 9 \\times 8}{24} \\)."
+            "ar": "احسب \\(\\frac{11 \\times 10 \\times 9 \\times 8}{24}\\)."
           }
         ],
         "solution": {
           "en": "By the Hockey-Stick Identity, \\( \\sum_{i=3}^{10} \\binom{i}{3} = \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{24} = 330 \\).",
-          "ar": "حسب متطابقة عصا الهوكي: \\( \\sum_{i=3}^{10} \\binom{i}{3} = \\binom{11}{4} = 330 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4.3 · NSMO Stage 2 / Medium]</strong> How many integers in \\( \\{1, 2, \\dots, 1000\\} \\) are divisible by NONE of \\( 2, 3, \\) or \\( 5 \\)?",
-          "ar": "<strong>[تدريب 4.3 · نسما المرحلة 2 / متوسط]</strong> كم عدداً صحيحاً في المجموعة \\( \\{1, 2, \\dots, 1000\\} \\) لا يقبل القسمة على أيٍّ من \\( 2 \\) أو \\( 3 \\) أو \\( 5 \\)؟"
+          "ar": null
         },
         "hints": [
           {
             "en": "Apply 3-set PIE on \\( A_2, A_3, A_5 \\subseteq \\{1,\\dots,1000\\} \\), or group into blocks of \\( \\operatorname{lcm}(2,3,5) = 30 \\)!",
-            "ar": "طبّق مبدأ الشمول والإقصاء لثلاث مجموعات، أو قسّم الأعداد إلى دورات طولها \\( 30 \\)!"
+            "ar": null
           },
           {
             "en": "Using blocks of 30: \\( 990 = 33 \\times 30 \\) gives \\( 33 \\times \\varphi(30) = 33 \\times 8 = 264 \\) integers in \\( \\{1,\\dots,990\\} \\).",
-            "ar": "في أول \\( 990 = 33 \\times 30 \\) عدداً يوجد \\( 33 \\times \\varphi(30) = 33 \\times 8 = 264 \\) عدداً."
+            "ar": null
           },
           {
             "en": "Check the remaining \\( 10 \\) integers \\( \\{991, 992, \\dots, 1000\\} \\) (which mirror \\( \\{1,\\dots,10\\} \\): only \\( 991 \\) and \\( 997 \\) are coprime to \\( 30 \\)).",
-            "ar": "افحص الأعداد العشرة المتبقية \\( \\{991,\\dots,1000\\} \\) فتجد العددين \\( 991 \\) و\\( 997 \\) فقط."
+            "ar": null
           }
         ],
         "solution": {
           "en": "By 3-set PIE: \\( 1000 - (500 + 333 + 200) + (166 + 100 + 66) - 33 = 1000 - 1033 + 332 - 33 = 266 \\).",
-          "ar": "بمبدأ الشمول والإقصاء: \\( 1000 - (500 + 333 + 200) + (166 + 100 + 66) - 33 = 266 \\) عدداً."
+          "ar": "بواسطة 3-set PIE: \\( 1000 - (500 + 333 + 200) + (166 + 100 + 66) - 33 = 1000 - 1033 + 332 - 33 = 266 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4.4 · AIME / KAUST KMC / Hard]</strong> How many ordered pairs of subsets \\( (A, B) \\) of \\( S = \\{1, 2, 3, 4, 5\\} \\) satisfy \\( A \\cap B = \\emptyset \\) and \\( A \\cup B \\ne S \\)?",
-          "ar": "<strong>[تدريب 4.4 · AIME / مسابقة كاوست / متقدم]</strong> كم زوجاً مرتباً من المجموعات الجزئية \\( (A, B) \\) للمجموعة \\( S = \\{1, 2, 3, 4, 5\\} \\) يحقق \\( A \\cap B = \\emptyset \\) و\\( A \\cup B \\ne S \\)؟"
+          "ar": "<strong>[تدريب 4.4 · AIME / مسابقة كاوست / متقدم]</strong> كم زوجاً مرتباً من المجموعات الجزئية \\((A, B)\\) للمجموعة \\(S = \\{1, 2, 3, 4, 5\\}\\) يحقق \\(A \\cap B = \\emptyset\\) و\\(A \\cup B \\ne S\\)؟"
         },
         "hints": [
           {
             "en": "For \\( A \\cap B = \\emptyset \\), each element \\( x \\in S \\) has independently \\( 3 \\) valid states: \\( x \\in A \\) only, \\( x \\in B \\) only, or \\( x \\notin A \\cup B \\).",
-            "ar": "لتحقيق \\( A \\cap B = \\emptyset \\)، يملك كل عنصر من العناصر الخمسة \\( 3 \\) حالات مستقلة: في \\( A \\) فقط، أو في \\( B \\) فقط، أو خارج \\( A \\cup B \\)."
+            "ar": null
           },
           {
             "en": "Thus there are \\( 3^5 = 243 \\) disjoint pairs \\( (A, B) \\) in total.",
-            "ar": "إذن إجمالي الأزواج المنفصلة يساوي \\( 3^5 = 243 \\)."
+            "ar": null
           },
           {
             "en": "Subtract the pairs where \\( A \\cup B = S \\) (each element has only \\( 2 \\) states: \\( x \\in A \\) or \\( x \\in B \\), giving \\( 2^5 = 32 \\)).",
-            "ar": "اطرح الأزواج التي تحقق \\( A \\cup B = S \\) (حيث لكل عنصر حالتان فقط: في \\( A \\) أو في \\( B \\)، أي \\( 2^5 = 32 \\))."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Each element of \\( S \\) has \\( 3 \\) disjoint-subset states, giving \\( 3^5 = 243 \\) pairs with \\( A \\cap B = \\emptyset \\). Subtracting the \\( 2^5 = 32 \\) partitions where \\( A \\cup B = S \\) leaves \\( 243 - 32 = 211 \\).",
-          "ar": "عدد الأزواج التي تحقق \\( A \\cap B = \\emptyset \\) هو \\( 3^5 = 243 \\)، وبطرح الأزواج التي تحقق \\( A \\cup B = S \\) وعددها \\( 2^5 = 32 \\) يتبقى \\( 243 - 32 = 211 \\) زوجاً."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4.5 · NSMO National Finals / Pigeonhole]</strong> What is the minimum number of distinct integers that must be selected from \\( \\{1, 2, \\dots, 50\\} \\) to guarantee that at least two selected integers sum to \\( 51 \\)?",
-          "ar": "<strong>[تدريب 4.5 · نهائيات نسما / برج الحمام]</strong> ما أقل عدد من الأعداد الصحيحة المختلفة يجب اختياره من المجموعة \\( \\{1, 2, \\dots, 50\\} \\) لضمان وجود عددين مختارين مجموعهما \\( 51 \\)؟"
+          "ar": "<strong>[تدريب 4.5 · نهائيات نسما / برج الحمام]</strong> ما أقل عدد من الأعداد الصحيحة المختلفة يجب اختياره من المجموعة \\(\\{1, 2, \\dots, 50\\}\\) لضمان وجود عددين مختارين مجموعهما \\(51\\)؟"
         },
         "hints": [
           {
             "en": "Pair up the elements of \\( \\{1, \\dots, 50\\} \\) into disjoint boxes that sum to \\( 51 \\): \\( \\{1,50\\}, \\{2,49\\}, \\dots, \\{25,26\\} \\).",
-            "ar": "قسّم عناصر \\( \\{1, \\dots, 50\\} \\) إلى أزواج منفصلة مجموع كل منها \\( 51 \\): \\( \\{1,50\\}, \\{2,49\\}, \\dots, \\{25,26\\} \\)."
+            "ar": "قسّم عناصر \\(\\{1, \\dots, 50\\}\\) إلى أزواج منفصلة مجموع كل منها \\(51\\): \\(\\{1,50\\}, \\{2,49\\}, \\dots, \\{25,26\\}\\)."
           },
           {
             "en": "How many such two-element pigeonholes are formed?",
@@ -601,12 +601,12 @@
           },
           {
             "en": "With \\( 25 \\) boxes, \\( 25 \\) numbers could take \\( \\{1, 2, \\dots, 25\\} \\) with no sum \\( 51 \\); adding \\( 1 \\) more triggers Pigeonhole!",
-            "ar": "بوجود \\( 25 \\) صندوقاً، يمكن اختيار \\( \\{1,\\dots,25\\} \\) دون مجموع \\( 51 \\)، أما العنصر التالي فيحسم البرهان!"
+            "ar": null
           }
         ],
         "solution": {
           "en": "Partition \\( \\{1, \\dots, 50\\} \\) into \\( 25 \\) pairs \\( \\{k, 51 - k\\} \\) for \\( k = 1, \\dots, 25 \\). Choosing \\( 25 \\) integers (e.g., \\( 1, 2, \\dots, 25 \\)) avoids any pair, whereas by the Pigeonhole Principle, selecting \\( 25 + 1 = 26 \\) integers forces two to fall into the same pair \\( \\{k, 51-k\\} \\) and sum to \\( 51 \\).",
-          "ar": "بتقسيم المجموعة إلى \\( 25 \\) زوجاً \\( \\{k, 51 - k\\} \\) حيث \\( 1 \\le k \\le 25 \\)، يمكن اختيار \\( 25 \\) عدداً دون تكوين المجموع \\( 51 \\)، ولكن اختيار \\( 25 + 1 = 26 \\) عدداً يجبر بمبدأ برج الحمام عددين على الوقوع في الزوج نفسه فيكون مجموعهما \\( 51 \\)."
+          "ar": null
         }
       },
       {

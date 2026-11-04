@@ -54,7 +54,7 @@
         },
         "body": {
           "en": "<p><strong>Linear Structure, Inner Products &amp; Geometric Transformations:</strong> In \\(\\mathbb{R}^n\\), the dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta = \\sum_{i=1}^n u_i v_i\\) encodes orthogonality (\\(\\mathbf{u}\\perp\\mathbf{v} \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0\\)) and orthogonal projection \\(\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\). For a matrix transformation \\(A \\in \\mathbb{R}^{n\\times n}\\), \\(|\\det(A)|\\) measures the local volume scaling factor, and \\(A\\) is invertible if and only if \\(\\det(A) \\ne 0\\) (equivalently, all eigenvalues \\(\\lambda_i \\ne 0\\)).</p>",
-          "ar": "<p><strong>الفضاءات المتجهية والتحويلات الخطية:</strong> يقيس الضرب القياسي \\(\\mathbf{u}\\cdot\\mathbf{v}\\) الزاوية والتعامد بين المتجهات، بينما يقيس محدد المصفوفة \\(|\\det(A)|\\) معامل تغير المساحة أو الحجم.</p>"
+          "ar": null
         }
       },
       {
@@ -100,7 +100,7 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · PCA: Covariance Point Cloud, Principal Axis \\(v_{1}\\) & Projections",
-          "ar": "⊙ مستكشف تفاعلي · تحليل المركبات الأساسية (PCA): المحور الرئيسي v₁ والإسقاطات المتعامدة"
+          "ar": "⊙ مستكشف تفاعلي · تحليل المركبات الأساسية (PCA): المحور الرئيسي v₁ والإسقاطات المتعامدة \\(v_{1}\\)"
         },
         "canvasId": "aipcadimensionalityExCanvas",
         "ariaLabel": {
@@ -114,7 +114,7 @@
           "rowsId": "aipcadimensionalityExCanvas_dataRows",
           "caption": {
             "en": "Live numerical table for PCA: Covariance Point Cloud, Principal Axis \\(v_{1}\\) & Projections",
-            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · تحليل المركبات الأساسية (PCA): المحور الرئيسي v₁ والإسقاطات المتعامدة"
+            "ar": null
           },
           "columns": [
             {
@@ -192,7 +192,7 @@
         ],
         "note": {
           "en": "Rotate unit direction vector \\(u(\\theta)\\) through the centered 2D data cloud. PCA chooses the angle \\(\\theta\\)* that maximizes the variance of the orthogonal projections (and minimizes perpendicular reconstruction error).",
-          "ar": "أدر متجه الاتجاه u(θ) عبر سحابة البيانات لاكتشاف الزاوية θ* التي تعظم تباين الإسقاطات المتعامدة."
+          "ar": null
         }
       },
       {
@@ -234,7 +234,7 @@
             },
             "value": {
               "en": "\\( \\text{Cov}(X, Y) = \\frac{1}{N-1}\\sum (x_i - \\bar{x})(y_i - \\bar{y}) \\)",
-              "ar": "\\( \\text{Cov}(X, Y) = \\frac{1}{N-1}\\sum (x_i - \\bar{x})(y_i - \\bar{y}) \\)"
+              "ar": null
             }
           },
           {
@@ -244,7 +244,7 @@
             },
             "value": {
               "en": "\\( \\det(\\mathbf{\\Sigma} - \\lambda \\mathbf{I}) = 0 \\)",
-              "ar": "\\( \\det(\\mathbf{\\Sigma} - \\lambda \\mathbf{I}) = 0 \\)"
+              "ar": null
             }
           },
           {
@@ -254,7 +254,7 @@
             },
             "value": {
               "en": "\\( \\text{Ratio}_k = \\frac{\\lambda_k}{\\sum_{j=1}^d \\lambda_j} \\)",
-              "ar": "\\( \\text{Ratio}_k = \\frac{\\lambda_k}{\\sum_{j=1}^d \\lambda_j} \\)"
+              "ar": null
             }
           },
           {
@@ -264,7 +264,7 @@
             },
             "value": {
               "en": "\\( \\mathbf{z} = \\mathbf{V}_k^T \\mathbf{x} \\in \\mathbb{R}^k \\) (reduced representation)",
-              "ar": "\\( \\mathbf{z} = \\mathbf{V}_k^T \\mathbf{x} \\in \\mathbb{R}^k \\) (reduced representation) (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
+              "ar": "\\(\\mathbf{z} = \\mathbf{V}_k^T \\mathbf{x} \\in \\mathbb{R}^k\\) (reduced representation) (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
             }
           }
         ]
@@ -278,7 +278,7 @@
         },
         "body": {
           "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": "<p><strong>برهان صيغة المسقط العمودي والمعادلة المميزة للقيم الذاتية:</strong> من شرط التعامد \\((\\mathbf{u}-c\\mathbf{v})\\cdot\\mathbf{v}=0\\) ينتج \\(c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\). وشرط وجود متجه ذاتي غير صفري \\((A-\\lambda I)\\mathbf{v}=\\mathbf{0}\\) يكافئ انعدام المحدد \\(\\det(A-\\lambda I)=0\\).</p>"
+          "ar": null
         }
       },
       {
@@ -300,7 +300,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(B\\) — Dimensionality Reduction, Covariance & PCA (Easy Application)",
-          "ar": "مثال محلول B — تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA) (تطبيق Easy)"
+          "ar": null
         },
         "problem": {
           "en": "Consider a 2D data point \\( \\mathbf{v} = \\begin{bmatrix} 3 \\\\ -4 \\end{bmatrix} \\). What is the squared Euclidean norm (or squared magnitude) of this vector?",
@@ -315,7 +315,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(C\\) — Dimensionality Reduction, Covariance & PCA (Medium Application)",
-          "ar": "مثال محلول C — تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA) (تطبيق Medium)"
+          "ar": null
         },
         "problem": {
           "en": "A binary classifier \\( p(t) \\) produces the confusion matrix below with \\( \\text{TP} = 68 \\), \\( \\text{FP} = 10 \\), \\( \\text{FN} = 48 \\), and \\( \\text{TN} = 80 \\). Determine the total number of correct classifications \\( q = \\text{TP} + \\text{TN} \\).",
@@ -330,7 +330,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example \\(D\\) — Dimensionality Reduction, Covariance & PCA (Hard Application)",
-          "ar": "مثال محلول D — تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA) (تطبيق Hard)"
+          "ar": null
         },
         "problem": {
           "en": "Consider a 2D dataset represented by the points \\( A = (1, 2) \\), \\( B = (4, 2) \\), and \\( C = (2, 5) \\). If this dataset undergoes a linear transformation represented by the matrix \\( M = \\begin{pmatrix} 2 & 0 \\\\ 0 & 1 \\end{pmatrix} \\), what are the coordinates of the transformed points \\( A' \\), \\( B' \\), and \\( C' \\)?",
@@ -350,7 +350,7 @@
         },
         "body": {
           "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication &amp; Cross Products:</strong> On Mathematics for Artificial Intelligence & Machine Learning, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
-          "ar": "<p><strong>1. عدم إبدالية ضرب المصفوفات:</strong> حاصل الضرب \\(AB\\) لا يساوي \\(BA\\) عموماً، وعند حساب الزاوية عند الرأس \\(B\\) يجب استخدام المتجهين المنطلقين من \\(B\\) وهما \\(\\overrightarrow{BA}\\) و \\(\\overrightarrow{BC}\\).</p>"
+          "ar": null
         }
       },
       {
@@ -377,43 +377,43 @@
           [
             {
               "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
-              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+              "ar": null
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
-              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+              "ar": null
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+              "ar": null
             }
           ],
           [
             {
               "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
-              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+              "ar": null
             },
             {
               "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
-              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+              "ar": null
             },
             {
               "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
-              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+              "ar": null
             }
           ],
           [
             {
               "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
-              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+              "ar": null
             },
             {
               "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
-              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+              "ar": null
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+              "ar": null
             }
           ]
         ]
@@ -427,7 +427,7 @@
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (Mathematics for Artificial Intelligence & Machine Learning):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
-          "ar": "<p><strong>فحص سريع للقيم الذاتية:</strong> تحقق دائماً من أن مجموع القيم الذاتية يساوي أثر المصفوفة \\(\\operatorname{tr}(A)\\) وحاصل ضربها يساوي المحدد \\(\\det(A)\\).</p>"
+          "ar": null
         }
       },
       {

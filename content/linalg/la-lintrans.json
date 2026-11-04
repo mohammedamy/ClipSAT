@@ -74,7 +74,7 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Linear Transformation Grid \\(T(x)\\) = Ax, Basis Columns & Determinant",
-          "ar": null
+          "ar": "في مسألة رياضية ضمن (الرياضيات) بالاعتماد على العلاقات الرياضية \\(T(x)\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
         },
         "canvasId": "lalintransExCanvas",
         "ariaLabel": {
@@ -261,7 +261,7 @@
         "style": "pf",
         "label": {
           "en": "Proof of the Dimension Theorem (Rank-Nullity)",
-          "ar": "برهان of the Dimension مبرهنة (Rank-Nullity)"
+          "ar": null
         },
         "body": {
           "en": "<p>Let \\( n = \\dim(V) \\) and let \\( k = \\dim(\\ker T) \\). If \\( k = 0 \\), the kernel is \\( \\{ \\mathbf{0} \\} \\) with basis \\( \\emptyset \\). Otherwise, choose a basis \\( \\mathcal{B}_K = \\{ \\mathbf{u}_1, \\mathbf{u}_2, \\ldots, \\mathbf{u}_k \\} \\) for \\( \\ker(T) \\).</p><p>By the Basis Extension Theorem, extend \\( \\mathcal{B}_K \\) to a complete basis for \\( V \\): \\[ \\mathcal{B} = \\{ \\mathbf{u}_1, \\ldots, \\mathbf{u}_k, \\mathbf{w}_1, \\ldots, \\mathbf{w}_{n-k} \\}. \\] We claim that the set \\( \\mathcal{S} = \\{ T(\\mathbf{w}_1), T(\\mathbf{w}_2), \\ldots, T(\\mathbf{w}_{n-k}) \\} \\) is a basis for \\( \\operatorname{im}(T) \\).</p><p><strong>1. \\( \\mathcal{S} \\) spans \\( \\operatorname{im}(T) \\):</strong> Let \\( \\mathbf{y} \\in \\operatorname{im}(T) \\). Then \\( \\mathbf{y} = T(\\mathbf{v}) \\) for some \\( \\mathbf{v} \\in V \\). Express \\( \\mathbf{v} \\) in terms of \\( \\mathcal{B} \\): \\[ \\mathbf{v} = \\sum_{i=1}^k c_i \\mathbf{u}_i + \\sum_{j=1}^{n-k} d_j \\mathbf{w}_j. \\] Applying \\( T \\) and noting \\( T(\\mathbf{u}_i) = \\mathbf{0} \\) for all \\( i \\): \\[ \\mathbf{y} = T(\\mathbf{v}) = \\sum_{i=1}^k c_i T(\\mathbf{u}_i) + \\sum_{j=1}^{n-k} d_j T(\\mathbf{w}_j) = \\sum_{j=1}^{n-k} d_j T(\\mathbf{w}_j). \\] Thus \\( \\operatorname{span}(\\mathcal{S}) = \\operatorname{im}(T) \\).</p><p><strong>2. \\( \\mathcal{S} \\) is linearly independent:</strong> Suppose \\[ \\sum_{j=1}^{n-k} d_j T(\\mathbf{w}_j) = \\mathbf{0}_W. \\] By linearity, \\( T\\left( \\sum_{j=1}^{n-k} d_j \\mathbf{w}_j \\right) = \\mathbf{0}_W \\), which proves that the vector \\( \\mathbf{w} = \\sum_{j=1}^{n-k} d_j \\mathbf{w}_j \\) lies in \\( \\ker(T) \\). Since \\( \\mathcal{B}_K \\) is a basis for \\( \\ker(T) \\), \\( \\mathbf{w} \\) can be written as: \\[ \\sum_{j=1}^{n-k} d_j \\mathbf{w}_j = \\sum_{i=1}^k c_i \\mathbf{u}_i \\iff \\sum_{i=1}^k (-c_i)\\mathbf{u}_i + \\sum_{j=1}^{n-k} d_j \\mathbf{w}_j = \\mathbf{0}_V. \\] Because the combined set \\( \\mathcal{B} \\) is linearly independent in \\( V \\), all coefficients must vanish: \\( c_1 = \\cdot s = c_k = d_1 = \\cdot s = d_{n-k} = 0 \\). In particular, \\( d_1 = d_2 = \\cdot s = d_{n-k} = 0 \\), establishing that \\( \\mathcal{S} \\) is linearly independent.</p><p>Since \\( \\mathcal{S} \\) spans \\( \\operatorname{im}(T) \\) and is linearly independent, it is a basis for \\( \\operatorname{im}(T) \\). Hence \\( \\dim(\\operatorname{im} T) = n - k = \\dim(V) - \\dim(\\ker T) \\), completing the proof. \\( \\blacksquare \\)</p>",
@@ -272,7 +272,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 7.B (Level 2) — Dimension Theorem & Kernel Computation",
-          "ar": "مثال محلول 7.B (Level 2) — Dimension مبرهنة & Kernel Computation"
+          "ar": null
         },
         "problem": {
           "en": "Consider the linear transformation \\( T: \\mathbb{R}^4 \\to \\mathbb{R}^3 \\) defined by \\( T(\\mathbf{x}) = A\\mathbf{x} \\) where: \\[ A = \\begin{pmatrix} 1 & -1 & 2 & 3 \\\\ 2 & 2 & 0 & 2 \\\\ 4 & 0 & 4 & 8 \\end{pmatrix}. \\] Determine a basis for \\( \\ker(T) \\), a basis for \\( \\operatorname{im}(T) \\), and verify the Dimension Theorem.",
@@ -356,7 +356,7 @@
             },
             "value": {
               "en": "\\( T(c_1\\mathbf{u} + c_2\\mathbf{v}) = c_1T(\\mathbf{u}) + c_2T(\\mathbf{v}) \\)",
-              "ar": "\\( T(c_1\\mathbf{u} + c_2\\mathbf{v}) = c_1T(\\mathbf{u}) + c_2T(\\mathbf{v}) \\)"
+              "ar": null
             }
           },
           {
@@ -366,7 +366,7 @@
             },
             "value": {
               "en": "Columns are \\( T(\\mathbf{e}_1), \\ldots, T(\\mathbf{e}_n) \\)",
-              "ar": "Columns are \\( T(\\mathbf{e}_1), \\ldots, T(\\mathbf{e}_n) \\) (التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس)"
+              "ar": "Columns are \\(T(\\mathbf{e}_1), \\ldots, T(\\mathbf{e}_n)\\) (التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس)"
             }
           },
           {
@@ -376,7 +376,7 @@
             },
             "value": {
               "en": "\\( \\dim(\\ker T) + \\dim(\\operatorname{im} T) = \\dim(V) \\)",
-              "ar": "\\( \\dim(\\ker T) + \\dim(\\operatorname{im} T) = \\dim(V) \\)"
+              "ar": null
             }
           },
           {
@@ -386,7 +386,7 @@
             },
             "value": {
               "en": "\\( [T]_\\mathcal{C} = P^{-1} [T]_\\mathcal{B} P \\)",
-              "ar": "\\( [T]_\\mathcal{C} = P^{-1} [T]_\\mathcal{B} P \\)"
+              "ar": null
             }
           }
         ]
@@ -436,7 +436,7 @@
         },
         "caption": {
           "en": "Geometric effect of the rotation transformation \\( T(\\mathbf{x}) = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\mathbf{x} \\). The standard basis vector \\( \\mathbf{e}_1 = \\langle 1, 0 \\rangle \\) maps to \\( \\langle 0, 1 \\rangle \\), rotating the plane \\( 90^\\circ \\) counterclockwise.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس. \\(T(\\mathbf{x}) = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\mathbf{x}\\) ، \\(\\mathbf{e}_1 = \\langle 1, 0 \\rangle\\) ، \\(\\langle 0, 1 \\rangle\\) ، \\(90^\\circ\\)"
         }
       },
       {
@@ -468,7 +468,7 @@
         "style": "example-grid",
         "label": {
           "en": "Injectivity & Codomain Dimensions",
-          "ar": "Injectivity & Codomain Dimensions (التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس)"
+          "ar": null
         },
         "body": {
           "en": "<p>Can a linear transformation \\( T: \\mathbb{R}^5 \\to \\mathbb{R}^3 \\) be injective (one-to-one)? Can it be surjective (onto)?</p><p><strong>Solution:</strong> By the Dimension Theorem, \\( \\dim(\\ker T) + \\dim(\\operatorname{im} T) = 5 \\). Since \\( \\operatorname{im}(T) \\subseteq \\mathbb{R}^3 \\), \\( \\dim(\\operatorname{im} T) \\le 3 \\). Thus: \\[ \\dim(\\ker T) = 5 - \\dim(\\operatorname{im} T) \\ge 5 - 3 = 2. \\] Since \\( \\dim(\\ker T) \\ge 2 > 0 \\), \\( \\ker(T) \\neq \\{\\mathbf{0}\\} \\), so \\( T \\) <strong>cannot be one-to-one</strong> under any circumstances. However, if \\( \\operatorname{rank}(T) = 3 = \\dim(\\mathbb{R}^3) \\), \\( T \\) <strong>can be surjective</strong>.</p>",
@@ -522,7 +522,7 @@
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\). (التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس)"
+              "ar": null
             }
           ],
           [
@@ -550,7 +550,7 @@
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\). (التحويلات الخطية والتمثيل المصفوفي وتغيير الأساس)"
+              "ar": null
             }
           ]
         ]
@@ -580,7 +580,7 @@
         "hints": [
           {
             "en": "By the Dimension Theorem, \\( \\operatorname{nullity}(T) + \\operatorname{rank}(T) = \\dim(\\text{domain}) \\).",
-            "ar": "بتطبيق Dimension Theorem, \\( \\operatorname{nullity}(T) + \\operatorname{rank}(T) = \\dim(\\text{domain}) \\)."
+            "ar": "بتطبيق Dimension Theorem, \\(\\operatorname{nullity}(T) + \\operatorname{rank}(T) = \\dim(\\text{domain})\\)."
           },
           {
             "en": "Here: \\(3 + \\operatorname{rank}(T) = 7 \\implies \\operatorname{rank}(T) = \\dim(\\operatorname{im} T)\\).",
@@ -605,11 +605,11 @@
         "hints": [
           {
             "en": "<strong>Track images of standard basis vectors:</strong> For \\( \\mathbf{e}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\): Rotation by \\( 90^\\circ \\) CCW sends \\( \\mathbf{e}_1 \\) to \\( \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\). Reflection across \\( y = x \\) swaps coordinates: \\( \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( \\mathbf{e}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\) ، \\( 90^\\circ \\) ، \\( \\mathbf{e}_1 \\) ، \\( \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\) ، \\( y = x \\) ، \\( \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\mathbf{e}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\) ، \\(90^\\circ\\) ، \\(\\mathbf{e}_1\\) ، \\(\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\\) ، \\(y = x\\) ، \\(\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\) لتبسيط الخطوة."
           },
           {
             "en": "<strong>Assemble standard matrix:</strong> The columns of \\( [T] \\) are \\( T(\\mathbf{e}_1) \\) and \\( T(\\mathbf{e}_2) \\): \\([T] = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}\\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( [T] \\) ، \\( T(\\mathbf{e}_1) \\) ، \\( T(\\mathbf{e}_2) \\) ، \\([T] = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}\\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\([T]\\) ، \\(T(\\mathbf{e}_1)\\) ، \\(T(\\mathbf{e}_2)\\) ، \\([T] = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}\\) لتبسيط الخطوة."
           },
           {
             "en": "This composite operator is geometrically equivalent to reflection across the x-axis!",
@@ -626,7 +626,7 @@
         "hints": [
           {
             "en": "To find \\( T(\\mathbf{v}) \\), we multiply the matrix \\( A \\) by the vector \\( \\mathbf{v} \\).",
-            "ar": "To أوجد \\( T(\\mathbf{v}) \\), we multiply the matrix \\( A \\) بتطبيق vector \\( \\mathbf{v} \\)."
+            "ar": "إلى أوجد \\( T(\\mathbf{v}) \\), we اضرب المصفوفة \\( A \\) بواسطة المتجه \\( \\mathbf{v} \\)."
           },
           {
             "en": "Performing the matrix-vector multiplication: \\(T(\\mathbf{v}) = \\begin{pmatrix} (2 \\times 1) + (1 \\times 2) \\\\ (1 \\times 1) + (3 \\times 2) \\end{pmatrix} = \\begin{pmatrix} 2 + 2 \\\\ 1 + 6 \\end{pmatrix}\\).",
@@ -676,7 +676,7 @@
         "hints": [
           {
             "en": "To find \\( T(\\mathbf{v}) \\), we multiply the matrix \\( A \\) by the vector \\( \\mathbf{v} \\).",
-            "ar": "To أوجد \\( T(\\mathbf{v}) \\), we multiply the matrix \\( A \\) بتطبيق vector \\( \\mathbf{v} \\)."
+            "ar": "إلى أوجد \\( T(\\mathbf{v}) \\), we اضرب المصفوفة \\( A \\) بواسطة المتجه \\( \\mathbf{v} \\)."
           },
           {
             "en": "Performing the matrix-vector multiplication: \\(T(\\mathbf{v}) = \\begin{pmatrix} (2 \\times 1) + (1 \\times 2) \\\\ (1 \\times 1) + (3 \\times 2) \\end{pmatrix} = \\begin{pmatrix} 2 + 2 \\\\ 1 + 6 \\end{pmatrix}\\).",

@@ -381,7 +381,7 @@
       "difficulty": "Advanced",
       "question": {
         "en": "Solve \\(y'' + 2y' + 2y = 3\\delta(t - \\pi)\\) with \\(y(0) = 1\\) and \\(y'(0) = 0\\) using the Laplace transform.",
-        "ar": "حل \\(y'' + 2y' + 2y = 3\\delta(t - \\pi)\\) with \\(y(0) = 1\\) و \\(y'(0) = 0\\) using the Laplace transform."
+        "ar": null
       },
       "solution": {
         "en": "<p><strong>Step 1: Transform:</strong> \\[(s^2 + 2s + 2)Y(s) - s(1) - 2(1) = 3e^{-\\pi s} \\implies (s^2 + 2s + 2)Y(s) = s + 2 + 3e^{-\\pi s}.\\] Complete square in denominator: \\(s^2 + 2s + 2 = (s + 1)^2 + 1\\).<br>Write numerator as \\((s + 1) + 1\\): \\[Y(s) = \\frac{s + 1}{(s + 1)^2 + 1} + \\frac{1}{(s + 1)^2 + 1} + 3e^{-\\pi s} \\cdot \\frac{1}{(s + 1)^2 + 1}.\\] <strong>Step 2: Inverse transform:</strong><br>For unshifted terms: \\(e^{-t}\\cos t + e^{-t}\\sin t\\).<br>For shifted term: \\(3u(t - \\pi)e^{-(t - \\pi)}\\sin(t - \\pi) = -3u(t - \\pi)e^{-(t - \\pi)}\\sin t\\).<br>Thus: \\[y(t) = e^{-t}(\\cos t + \\sin t) - 3u(t - \\pi)e^{-(t - \\pi)}\\sin t.\\]</p>",
@@ -507,7 +507,7 @@
       "difficulty": "Advanced",
       "question": {
         "en": "Solve \\(y'+4y=4 e^{- t}\\), \\(y(0)=3\\) with the Laplace transform. Find \\(y(1)\\).",
-        "ar": "حل \\(y'+4y=4 e^{- t}\\), \\(y(0)=3\\) with the Laplace transform. أوجد \\(y(1)\\)."
+        "ar": null
       },
       "solution": {
         "en": "<p>\\(Y(s)=\\frac{3 s + 7}{\\left(s + 1\\right) \\left(s + 4\\right)}=\\frac{5}{3 \\left(s + 4\\right)} + \\frac{4}{3 \\left(s + 1\\right)}\\). Inverting, \\(y(t)=\\left(\\frac{4}{3} + \\frac{5 e^{- 3 t}}{3}\\right) e^{- t}\\), so \\(y(1)=\\frac{5 + 4 e^{3}}{3 e^{4}}\\).</p><p><strong>Final Answer:</strong> \\(\\frac{5 + 4 e^{3}}{3 e^{4}}\\)</p>",
@@ -627,7 +627,7 @@
       "difficulty": "Advanced",
       "question": {
         "en": "Solve \\(\\frac{dy}{dx} = \\frac{1 + y^2}{x^2 - 4}\\) on \\((-2, 2)\\) with \\(y(0) = 1\\). At what value of \\(x\\) does \\(y(x) \\to +\\infty\\)?",
-        "ar": "حل \\(\\frac{dy}{dx} = \\frac{1 + y^2}{x^2 - 4}\\) on \\((-2, 2)\\) with \\(y(0) = 1\\). At what value of \\(x\\) does \\(y(x) \\to +\\infty\\)?"
+        "ar": null
       },
       "solution": {
         "en": "<p>Separable: \\(\\frac{dy}{1 + y^2} = \\frac{dx}{x^2 - 4} \\implies \\arctan y = \\frac{1}{4}\\ln\\left(\\frac{2 - x}{2 + x}\\right) + C\\). Using \\(y(0) = 1\\) gives \\(\\arctan(1) = \\frac{\\pi}{4} = 0 + C \\implies C = \\frac{\\pi}{4}\\). Blow-up \\(y \\to \\infty\\) occurs when \\(\\arctan y \\to \\frac{\\pi}{2}\\), so \\(\\frac{1}{4}\\ln\\left(\\frac{2 - x}{2 + x}\\right) + \\frac{\\pi}{4} = \\frac{\\pi}{2} \\implies \\ln\\left(\\frac{2 - x}{2 + x}\\right) = \\pi \\implies \\frac{2 - x}{2 + x} = e^\\pi\\). Solving for \\(x\\): \\(2 - x = 2e^\\pi + xe^\\pi \\implies x(1 + e^\\pi) = 2(1 - e^\\pi) \\implies x = -2\\frac{e^\\pi - 1}{e^\\pi + 1} = -2\\tanh(\\pi/2)\\).</p><p><strong>Final Answer:</strong> \\(-2\\tanh(\\pi/2)\\)</p>",
@@ -711,7 +711,7 @@
       "difficulty": "Advanced",
       "question": {
         "en": "Solve \\(y'+2y=4 e^{3 t}\\), \\(y(0)=-3\\) with the Laplace transform. Find \\(y(1)\\).",
-        "ar": "حل \\(y'+2y=4 e^{3 t}\\), \\(y(0)=-3\\) with the Laplace transform. أوجد \\(y(1)\\)."
+        "ar": null
       },
       "solution": {
         "en": "<p>\\(Y(s)=\\frac{13 - 3 s}{\\left(s - 3\\right) \\left(s + 2\\right)}=- \\frac{19}{5 \\left(s + 2\\right)} + \\frac{4}{5 \\left(s - 3\\right)}\\). Inverting, \\(y(t)=\\frac{4 e^{3 t}}{5} - \\frac{19 e^{- 2 t}}{5}\\), so \\(y(1)=\\frac{-19 + 4 e^{5}}{5 e^{2}}\\).</p><p><strong>Final Answer:</strong> \\(\\frac{-19 + 4 e^{5}}{5 e^{2}}\\)</p>",

@@ -36,6 +36,8 @@ const BANK_SCHEMA_V2 = {
   properties: {
     schemaVersion: { const: 2 },
     track: { type: 'string', minLength: 2 },
+    quarantined: { type: 'boolean' },
+    subtracks: { type: 'array', items: { type: 'string', minLength: 2 } },
     pool: {
       type: 'array',
       minItems: 1200,
@@ -45,20 +47,25 @@ const BANK_SCHEMA_V2 = {
         additionalProperties: false,
         properties: {
           id: { type: 'string', minLength: 3 },
-          type: { enum: ['mcq', 'spr', 'frq'] },
+          type: { enum: ['mcq', 'spr', 'frq', 'structured', 'proof'] },
           domain: { type: 'string', minLength: 1 },
           difficulty: { enum: ['easy', 'medium', 'hard'] },
           text: { type: 'string', minLength: 3 },
+          text_ar: { type: 'string', minLength: 2 },
           sol: { type: 'string', minLength: 1 },
+          sol_ar: { type: 'string', minLength: 1 },
           topic_id: { type: 'string' },
           subskill_id: { type: 'string' },
+          subtrack: { type: 'string' },
           educational_aim: { type: 'string' },
           exam_archetype: { type: 'string' },
           choices: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 2, maxItems: 4 },
+          choices_ar: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 2, maxItems: 4 },
           answer: { type: 'integer', minimum: 0, maximum: 3 },
           sprAnswer: { type: 'string', minLength: 1 },
           finalAnswer: { type: 'string', minLength: 1 },
           hints: { type: 'array', items: { type: 'string' } },
+          hints_ar: { type: 'array', items: { type: 'string' } },
           figure: { type: 'object' },
           marks: { type: 'number' },
           paper: { type: 'string' },
@@ -67,14 +74,66 @@ const BANK_SCHEMA_V2 = {
           calc: { type: 'boolean' },
           calculator: { type: 'boolean' },
           sympy_verified: { type: 'boolean' },
-          fixedChoices: { type: 'boolean' }
+          sympy_cert: { type: 'string', minLength: 1 },
+          educator_review_hash: { type: 'string', minLength: 16 },
+          fixedChoices: { type: 'boolean' },
+          qc_col_a: { type: 'string' },
+          qc_col_b: { type: 'string' },
+          qc_col_a_ar: { type: 'string' },
+          qc_col_b_ar: { type: 'string' },
+          qc_context: { type: 'string' },
+          qc_context_ar: { type: 'string' },
+          markScheme: { type: ['string', 'array'] },
+          parts: {
+            type: 'array',
+            minItems: 1,
+            items: {
+              type: 'object',
+              required: ['label', 'prompt', 'marks', 'markScheme'],
+              additionalProperties: false,
+              properties: {
+                label: { type: 'string', minLength: 1 },
+                prompt: { type: 'string', minLength: 1 },
+                prompt_ar: { type: 'string' },
+                marks: { type: 'number', minimum: 1 },
+                answer: { type: 'string' },
+                tolerances: { type: 'number', minimum: 0 },
+                inputType: { enum: ['algebraic', 'numeric', 'proof', 'text'] },
+                markScheme: {
+                  type: 'array',
+                  minItems: 1,
+                  items: {
+                    type: 'object',
+                    required: ['code', 'criterion', 'marks'],
+                    additionalProperties: false,
+                    properties: {
+                      code: { type: 'string', minLength: 2 },
+                      criterion: { type: 'string', minLength: 2 },
+                      criterion_ar: { type: 'string' },
+                      marks: { type: 'number', minimum: 1 }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          irt: {
+            type: 'object',
+            required: ['a', 'b', 'c'],
+            additionalProperties: false,
+            properties: {
+              a: { type: 'number', minimum: 0.2, maximum: 3.5 },
+              b: { type: 'number', minimum: -4.0, maximum: 4.0 },
+              c: { type: 'number', minimum: 0.0, maximum: 0.5 }
+            }
+          }
         }
       }
     }
   }
 };
 
-const ajv = new Ajv({ allErrors: false });
+const ajv = new Ajv({ allErrors: false, allowUnionTypes: true });
 const validateBankSchema = ajv.compile(BANK_SCHEMA_V2);
 
 const KATEX_OPTS = {
@@ -121,7 +180,7 @@ function checkItem(q, push) {
     }
   }
   const stem = q.text;
-  const isFrq = q.type === 'frq' || q.type === 'spr';
+  const isFrq = q.type === 'frq' || q.type === 'spr' || q.type === 'structured' || q.type === 'proof';
   if (!stem || !String(stem).trim()) push('error', 'missing stem');
   if (!isFrq) {
     const ch = q.choices;
@@ -138,17 +197,56 @@ function checkItem(q, push) {
         if (seen.has(k)) push('error', `choices ${seen.get(k)} and ${i} are identical: ${k.slice(0, 40)}`);
         else seen.set(k, i);
       });
+      if (Array.isArray(q.choices_ar) && q.choices_ar.length !== ch.length) {
+        push('error', `choices_ar length (${q.choices_ar.length}) must match choices length (${ch.length})`);
+      }
     }
   } else if (q.type === 'spr') {
     if (q.sprAnswer == null || !String(q.sprAnswer).trim()) {
       push('error', 'spr question missing sprAnswer');
+    }
+  } else if (q.type === 'structured' || q.type === 'proof') {
+    if (!Array.isArray(q.parts) || q.parts.length < 2) {
+      push('error', `${q.type} question must include >= 2 parts`);
+    }
+    if (!q.marks || q.marks < 2) {
+      push('error', `${q.type} question must define marks >= 2`);
     }
   }
   const sol = q.sol;
   if (!sol || !String(sol).trim()) push('warn', 'no solution');
   else if (norm(sol).length < 25) push('warn', 'solution under 25 characters');
 
-  const texts = [stem, sol, ...(Array.isArray(q.choices) ? q.choices : []), ...(Array.isArray(q.hints) ? q.hints : [])];
+  const partTexts = [];
+  if (Array.isArray(q.parts)) {
+    q.parts.forEach((p) => {
+      if (p.prompt) partTexts.push(p.prompt);
+      if (p.prompt_ar) partTexts.push(p.prompt_ar);
+      if (p.answer) partTexts.push(p.answer);
+      if (Array.isArray(p.markScheme)) {
+        p.markScheme.forEach((m) => {
+          if (m.criterion) partTexts.push(m.criterion);
+          if (m.criterion_ar) partTexts.push(m.criterion_ar);
+        });
+      }
+    });
+  }
+
+  const texts = [
+    stem,
+    q.text_ar,
+    sol,
+    q.sol_ar,
+    q.qc_col_a,
+    q.qc_col_b,
+    q.qc_col_a_ar,
+    q.qc_col_b_ar,
+    ...(Array.isArray(q.choices) ? q.choices : []),
+    ...(Array.isArray(q.choices_ar) ? q.choices_ar : []),
+    ...(Array.isArray(q.hints) ? q.hints : []),
+    ...(Array.isArray(q.hints_ar) ? q.hints_ar : []),
+    ...partTexts
+  ];
   for (const t of texts) {
     if (typeof t !== 'string') continue;
     for (const seg of mathSegments(t)) {

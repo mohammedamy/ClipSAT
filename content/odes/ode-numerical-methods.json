@@ -43,7 +43,7 @@
         },
         "caption": {
           "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4)."
+          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في الطرق العددية: طريقة أويلر وأويلر المحسنة (RK اثنان) ورونج-كوتا (RK أربعة). \\(\\frac{dy}{dx} = x -y\\) ، \\((0, 1)\\)"
         }
       },
       {
@@ -77,7 +77,7 @@
           {
             "label": {
               "en": "Forward Euler (RK1)",
-              "ar": "Forward Euler (RK1) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "value": {
               "en": "Local error \\( O(h^2) \\), Global error \\( O(h) \\). Single function evaluation per step: \\( y_{n+1} = y_n + h f_n \\)."
@@ -86,7 +86,7 @@
           {
             "label": {
               "en": "Heun's Method (RK2)",
-              "ar": "Heun's Method (RK2) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "value": {
               "en": "Local error \\( O(h^3) \\), Global error \\( O(h^2) \\). Two evaluations per step: predictor \\( \\tilde{y} \\) and average slope."
@@ -95,7 +95,7 @@
           {
             "label": {
               "en": "Classical RK4",
-              "ar": "Classical RK4 (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "value": {
               "en": "Local error \\( O(h^5) \\), Global error \\( O(h^4) \\). Four evaluations per step with Simpson-rule weighting."
@@ -104,7 +104,7 @@
           {
             "label": {
               "en": "Backward (Implicit) Euler",
-              "ar": "Backward (Implicit) Euler (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "value": {
               "en": "\\( y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}) \\). Solves implicit equation at each step; unconditionally stable for stiff systems."
@@ -128,7 +128,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked example 9.A — Manual Step Comparison: Euler vs Heun",
-          "ar": "مثال محلول 9.A — Manual Step Comparison: Euler vs Heun"
+          "ar": null
         },
         "problem": {
           "en": "Apply one step of step size \\( h = 0.2 \\) to approximate \\( y(0.2) \\) for \\[ \\frac{dy}{dt} = y - t^2 + 1, \\qquad y(0) = 0.5. \\] Compare Forward Euler and Heun's method with the exact analytical solution \\( y(t) = t^2 + 2t + 1 - 0.5e^t \\) (at \\( t = 0.2 \\), \\( y(0.2) = 0.2^2 + 2(0.2) + 1 - 0.5e^{0.2} \\approx 1.44 - 0.6107 = 0.8293 \\)).",
@@ -162,15 +162,15 @@
           "columns": [
             {
               "en": "\\(x\\)",
-              "ar": "\\(x\\)"
+              "ar": null
             },
             {
               "en": "approx \\(y\\)",
-              "ar": "approx \\(y\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             {
               "en": "exact \\(y\\)",
-              "ar": "exact \\(y\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             }
           ]
         },
@@ -179,7 +179,7 @@
             "id": "odeEulerH",
             "label": {
               "en": "step size <b>\\(h\\)</b>:",
-              "ar": "step size <b>\\(h\\)</b>: (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "min": 5,
             "max": 100,
@@ -188,14 +188,14 @@
             "valueDisplayId": "odeEulerHVal",
             "ariaLabel": {
               "en": "Step size h, as a percentage of 1",
-              "ar": "عنصر تفاعلي: Step size h, as a percentage of 1"
+              "ar": null
             }
           },
           {
             "id": "odeEulerImproved",
             "label": {
               "en": "use improved Euler (Heun's method)",
-              "ar": "use improved Euler (Heun's method) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "checkbox": true,
             "checked": false,
@@ -210,7 +210,7 @@
             "id": "odeEulerApprox",
             "label": {
               "en": "approx \\(y(2)\\)",
-              "ar": "approx \\(y(2)\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(4.866\\)"
@@ -219,7 +219,7 @@
             "id": "odeEulerExact",
             "label": {
               "en": "exact \\(y(2)\\)",
-              "ar": "exact \\(y(2)\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(5.305\\)"
@@ -228,7 +228,7 @@
             "id": "odeEulerErr",
             "label": {
               "en": "error",
-              "ar": "error (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             "value": "\\(0.440\\)"
           }
@@ -307,7 +307,7 @@
         },
         "caption": {
           "en": "Tangent extrapolation in Forward Euler for \\( y' = y, y(0) = 1 \\). A single large step \\( h = 1 \\) yields \\( y(1) \\approx 2 \\) (error \\( \\approx 0.718 \\)); refining to \\( h = 0.5 \\) brings the polyline closer to the true exponential curve.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4)."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الطرق العددية: طريقة أويلر وأويلر المحسنة (RK اثنان) ورونج-كوتا (RK أربعة). \\(y' = y, y(0) = 1\\) ، \\(h = 1\\) ، \\(y(1) \\approx 2\\) ، \\(\\approx 0.718\\) ، \\(h = 0.5\\)"
         }
       },
       {
@@ -391,7 +391,7 @@
           [
             {
               "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
-              "ar": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             {
               "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
@@ -413,13 +413,13 @@
             },
             {
               "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
-              "ar": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\). (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             }
           ],
           [
             {
               "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
-              "ar": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\) (الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4))"
+              "ar": null
             },
             {
               "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
@@ -457,11 +457,11 @@
         "hints": [
           {
             "en": "<strong>First interval \\( [0, 0.1] \\):</strong> Initial point: \\(t_0 = 0, y_0\\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( [0, 0.1] \\) ، \\(t_0 = 0, y_0\\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\([0, 0.1]\\) ، \\(t_0 = 0, y_0\\) لتبسيط الخطوة."
           },
           {
             "en": "Slope at start: \\( k_1 = f(0, 1) = 2(0)(1) = 0 \\). Predictor: \\(\\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0)\\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( k_1 = f(0, 1) = 2(0)(1) = 0 \\) ، \\(\\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0)\\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(k_1 = f(0, 1) = 2(0)(1) = 0\\) ، \\(\\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0)\\) لتبسيط الخطوة."
           },
           {
             "en": "Absolute error: \\(|1.04081077 - 1.040704|\\), demonstrating second-order accuracy.",
@@ -486,7 +486,7 @@
           },
           {
             "en": "Absolute stability requires \\( |1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025 \\). Thus \\( h_{\\text{crit}} = 0.025 \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( |1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025 \\) ، \\( h_{\\text{crit}} = 0.025 \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(|1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025\\) ، \\(h_{\\text{crit}} = 0.025\\) لتبسيط الخطوة."
           },
           {
             "en": "Use the resulting form to finish: \\(y_1 = -0.6\\), \\(y_2 = (-0.6)^2\\), \\(y_{10} = (-0.6)^{10}\\) (stable decay to equilibrium zero).",
@@ -503,7 +503,7 @@
         "hints": [
           {
             "en": "Evaluating at \\( (6, 23) \\) gives.",
-            "ar": "تلميح للحل: استخدم العلاقة \\( (6, 23) \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\((6, 23)\\) لتبسيط الخطوة."
           },
           {
             "en": "Set up the numerical expression: \\(12(6) - 2(23)\\).",
@@ -516,7 +516,7 @@
         ],
         "solution": {
           "en": "Evaluating at \\( (6, 23) \\) gives \\( 12(6) - 2(23) = 26 \\).",
-          "ar": "خطوات الحل التفصيلية: Evaluating at \\( (6, 23) \\) gives \\( 12(6) - 2(23) = 26 \\)."
+          "ar": "خطوات الحل التفصيلية: Evaluating at \\((6, 23)\\) gives \\(12(6) - 2(23) = 26\\)."
         }
       },
       {
@@ -528,11 +528,11 @@
         "hints": [
           {
             "en": "Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( e^{2x} \\) ، \\( r=2 \\) ، \\( r^2-r-6=0 \\) ، \\( 3,-2 \\) ، \\( Ae^{2x} \\) ، \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(e^{2x}\\) ، \\(r=2\\) ، \\(r^2-r-6=0\\) ، \\(3,-2\\) ، \\(Ae^{2x}\\) ، \\((4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14\\) لتبسيط الخطوة."
           },
           {
             "en": "For the constant \\( 18 \\), trial \\( B \\) gives \\(-6B = 18\\Rightarrow B\\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( 18 \\) ، \\( B \\) ، \\(-6B = 18\\Rightarrow B\\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(18\\) ، \\(B\\) ، \\(-6B = 18\\Rightarrow B\\) لتبسيط الخطوة."
           },
           {
             "en": "Adding the two pieces: \\(y_p=-\\tfrac14e^{2x}-3\\).",
@@ -553,11 +553,11 @@
         "hints": [
           {
             "en": "Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\(x_0 = 0, y_0 = 1, h\\): 1.",
-            "ar": "تلميح للحل: استخدم العلاقة \\( y_{n+1} = y_n + h(x_n + y_n) \\) ، \\(x_0 = 0, y_0 = 1, h\\) لتبسيط الخطوة."
+            "ar": null
           },
           {
             "en": "Rewrite and simplify to obtain: \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).",
-            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\)."
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(y_1 = 1 + 0.1(0 + 1) = 1.100\\) at \\(x_1 = 0.1\\)."
           },
           {
             "en": "Use the resulting form to finish: \\(y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12\\) at \\(x_2\\).",
@@ -566,7 +566,7 @@
         ],
         "solution": {
           "en": "Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\).",
-          "ar": "خطوات الحل التفصيلية: Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\)."
+          "ar": null
         }
       },
       {

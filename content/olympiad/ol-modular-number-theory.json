@@ -7,7 +7,7 @@
   },
   "title": {
     "en": "Number Theory I: Divisibility, Primes, Fermat–Euler Theorems & Chinese Remainder Theorem",
-    "ar": "نظرية الأعداد (1): قابلية القسمة والأعداد الأولية ومبرهنات فيرما وأويلر والباقي الصيني"
+    "ar": "نظرية الأعداد (واحد): قابلية القسمة والأعداد الأولية ومبرهنات فيرما وأويلر والباقي الصيني"
   },
   "railLabel": {
     "en": "Modular Number Theory & CRT",
@@ -46,11 +46,11 @@
         "style": "def",
         "label": {
           "en": "● Definition 2.1 — Prime Factorization, Arithmetic Functions & p-adic Valuation",
-          "ar": "● تعريف 2.1 — التحليل الأولي والدوال الحسابية والتقييم الأسّي \\(v_p\\)"
+          "ar": null
         },
         "body": {
           "en": "<p>By the Fundamental Theorem of Arithmetic, every integer \\( n > 1 \\) factors uniquely as \\( n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\). Its key multiplicative invariants are:</p>\\[ \\tau(n) = \\prod_{i=1}^k (e_i + 1), \\qquad \\sigma(n) = \\prod_{i=1}^k \\frac{p_i^{e_i+1} - 1}{p_i - 1}, \\qquad \\varphi(n) = n \\prod_{i=1}^k \\left(1 - \\frac{1}{p_i}\\right). \\]<p>For a prime \\( p \\), the <strong>\\( p \\)-adic valuation</strong> \\( v_p(n) \\) is the largest exponent \\( e \\) such that \\( p^e \\mid n \\). <strong>Legendre's Theorem</strong> gives the exact prime power dividing \\( n! \\):</p>\\[ v_p(n!) = \\sum_{j=1}^{\\infty} \\left\\lfloor \\frac{n}{p^j} \\right\\rfloor = \\frac{n - s_p(n)}{p - 1}, \\]<p>where \\( s_p(n) \\) is the sum of the base-\\( p \\) digits of \\( n \\).</p>",
-          "ar": "<p>حسب المبرهنة الأساسية في الحساب، يتحلل كل عدد صحيح \\( n > 1 \\) بصورة وحيدة إلى عوامل أولية \\( n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\)، وتعطى دواله الضربية الأساسية بالعلاقات:</p>\\[ \\tau(n) = \\prod_{i=1}^k (e_i + 1), \\qquad \\sigma(n) = \\prod_{i=1}^k \\frac{p_i^{e_i+1} - 1}{p_i - 1}, \\qquad \\varphi(n) = n \\prod_{i=1}^k \\left(1 - \\frac{1}{p_i}\\right). \\]<p>ولأي عدد أولي \\( p \\)، يُعرَّف <strong>التقييم \\( v_p(n) \\)</strong> بأنه أكبر أس \\( e \\) يحقق \\( p^e \\mid n \\). وتعطي <strong>صيغة ليجاندر</strong> الأس الدقيق للعدد الأولي \\( p \\) في \\( n! \\):</p>\\[ v_p(n!) = \\sum_{j=1}^{\\infty} \\left\\lfloor \\frac{n}{p^j} \\right\\rfloor = \\frac{n - s_p(n)}{p - 1}, \\]<p>حيث \\( s_p(n) \\) مجموع أرقام العدد \\( n \\) مكتوباً في الأساس \\( p \\).</p>"
+          "ar": "<p>حسب المبرهنة الأساسية في الحساب، يتحلل كل عدد صحيح \\(n > 1\\) بصورة وحيدة إلى عوامل أولية \\(n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\\)، وتعطى دواله الضربية الأساسية بالعلاقات:</p>\\[\\tau(n) = \\prod_{i=1}^k (e_i + 1), \\qquad \\sigma(n) = \\prod_{i=1}^k \\frac{p_i^{e_i+1} - 1}{p_i - 1}, \\qquad \\varphi(n) = n \\prod_{i=1}^k \\left(1 - \\frac{1}{p_i}\\right).\\]<p>ولأي عدد أولي \\(p\\)، يُعرَّف <strong>التقييم \\(v_p(n)\\)</strong> بأنه أكبر أس \\(e\\) يحقق \\(p^e \\mid n\\). وتعطي <strong>صيغة ليجاندر</strong> الأس الدقيق للعدد الأولي \\(p\\) في \\(n!\\):</p>\\[v_p(n!) = \\sum_{j=1}^{\\infty} \\left\\lfloor \\frac{n}{p^j} \\right\\rfloor = \\frac{n - s_p(n)}{p - 1},\\]<p>حيث \\(s_p(n)\\) مجموع أرقام العدد \\(n\\) مكتوباً في الأساس \\(p\\).</p>"
         }
       },
       {
@@ -62,7 +62,7 @@
         },
         "body": {
           "en": "<p><strong>1. Euler's &amp; Fermat's Theorems:</strong> If \\( \\gcd(a, m) = 1 \\), then \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). In particular, for prime \\( p \\nmid a \\), \\( a^{p-1} \\equiv 1 \\pmod p \\).</p><p><strong>2. Wilson's Theorem:</strong> An integer \\( p > 1 \\) is prime if and only if \\( (p - 1)! \\equiv -1 \\pmod p \\) (and \\( (p - 2)! \\equiv 1 \\pmod p \\)).</p><p><strong>3. Chinese Remainder Theorem (CRT):</strong> If \\( m_1, m_2, \\dots, m_r \\) are pairwise coprime (\\( \\gcd(m_i, m_j) = 1 \\)), then the system \\( x \\equiv c_i \\pmod{m_i} \\) has a <strong>unique solution modulo \\( M = m_1 m_2 \\cdots m_r \\)</strong>.</p>",
-          "ar": "<p><strong>1. مبرهنتا أويلر وفيرما الصغرى:</strong> إذا كان \\( \\gcd(a, m) = 1 \\)، فإن \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). وبوجه خاص لعدد أولي \\( p \\nmid a \\): \\( a^{p-1} \\equiv 1 \\pmod p \\).</p><p><strong>2. مبرهنة ويلسون:</strong> يكون العدد \\( p > 1 \\) أولياً إذا وفقط إذا كان \\( (p - 1)! \\equiv -1 \\pmod p \\) (ومنه \\( (p - 2)! \\equiv 1 \\pmod p \\)).</p><p><strong>3. مبرهنة الباقي الصيني (CRT):</strong> إذا كانت المقاسات \\( m_1, m_2, \\dots, m_r \\) أولية فيما بينها مثنى مثنى (\\( \\gcd(m_i, m_j) = 1 \\))، فإن نظام التطابقات \\( x \\equiv c_i \\pmod{m_i} \\) يمتلك <strong>حلاً وحيداً بترديد \\( M = m_1 m_2 \\cdots m_r \\)</strong>.</p>"
+          "ar": "<p><strong>1. مبرهنتا أويلر وفيرما الصغرى:</strong> إذا كان \\(\\gcd(a, m) = 1\\)، فإن \\(a^{\\varphi(m)} \\equiv 1 \\pmod m\\). وبوجه خاص لعدد أولي \\(p \\nmid a\\): \\(a^{p-1} \\equiv 1 \\pmod p\\).</p><p><strong>2. مبرهنة ويلسون:</strong> يكون العدد \\(p > 1\\) أولياً إذا وفقط إذا كان \\((p - 1)! \\equiv -1 \\pmod p\\) (ومنه \\((p - 2)! \\equiv 1 \\pmod p\\)).</p><p><strong>3. مبرهنة الباقي الصيني (CRT):</strong> إذا كانت المقاسات \\(m_1, m_2, \\dots, m_r\\) أولية فيما بينها مثنى مثنى (\\(\\gcd(m_i, m_j) = 1\\))، فإن نظام التطابقات \\(x \\equiv c_i \\pmod{m_i}\\) يمتلك <strong>حلاً وحيداً بترديد \\(M = m_1 m_2 \\cdots m_r\\)</strong>.</p>"
         }
       },
       {
@@ -74,7 +74,7 @@
         },
         "body": {
           "en": "<p>Let \\( R = \\{r_1, r_2, \\dots, r_{\\varphi(m)}\\} \\) be a reduced residue system modulo \\( m \\) (all \\( 1 \\le r_i \\le m \\) with \\( \\gcd(r_i, m) = 1 \\)). Since \\( \\gcd(a, m) = 1 \\), multiplication by \\( a \\) is injective modulo \\( m \\): if \\( ar_i \\equiv ar_j \\pmod m \\), multiplying by \\( a^{-1} \\pmod m \\) yields \\( r_i \\equiv r_j \\pmod m \\). Moreover \\( \\gcd(ar_i, m) = 1 \\), so \\( \\{ar_1, \\dots, ar_{\\varphi(m)}\\} \\) is simply a permutation of \\( R \\) modulo \\( m \\)! Multiplying all elements together gives:</p>\\[ (ar_1)(ar_2)\\cdots(ar_{\\varphi(m)}) \\equiv r_1 r_2 \\cdots r_{\\varphi(m)} \\pmod m \\implies a^{\\varphi(m)} \\prod_{i=1}^{\\varphi(m)} r_i \\equiv \\prod_{i=1}^{\\varphi(m)} r_i \\pmod m. \\]<p>Since \\( \\gcd\\!\\left(\\prod r_i, m\\right) = 1 \\), we cancel \\( \\prod r_i \\) to obtain \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). \\( \\blacksquare \\)</p>",
-          "ar": "<p>لتكن \\( R = \\{r_1, r_2, \\dots, r_{\\varphi(m)}\\} \\) مجموعة البواقي المختزلة بترديد \\( m \\) (حيث \\( \\gcd(r_i, m) = 1 \\)). بما أن \\( \\gcd(a, m) = 1 \\)، فإن الضرب في \\( a \\) يمثل دالة تقابل على \\( R \\) بترديد \\( m \\): إذا كان \\( ar_i \\equiv ar_j \\pmod m \\) فإن الضرب في النظير الضربي \\( a^{-1} \\) يعطي \\( r_i \\equiv r_j \\pmod m \\). إذن المجموعة \\( \\{ar_1, \\dots, ar_{\\varphi(m)}\\} \\) هي مجرد تبديل لعناصر \\( R \\) بترديد \\( m \\)! بضرب جميع العناصر معاً نجد:</p>\\[ a^{\\varphi(m)} \\prod_{i=1}^{\\varphi(m)} r_i \\equiv \\prod_{i=1}^{\\varphi(m)} r_i \\pmod m. \\]<p>وبما أن \\( \\gcd\\!\\left(\\prod r_i, m\\right) = 1 \\)، نختصر الجداء من الطرفين فنحصل على \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\). \\( \\blacksquare \\)</p>"
+          "ar": null
         }
       },
       {
@@ -101,7 +101,7 @@
           [
             {
               "en": "Squares \\(\\pmod 4, 8\\)",
-              "ar": "المربعات الكاملة \\(\\pmod{4, 8}\\)"
+              "ar": null
             },
             {
               "en": "\\(n^2 \\equiv 0, 1 \\pmod 4\\); odd \\(n^2 \\equiv 1 \\pmod 8\\)",
@@ -115,11 +115,11 @@
           [
             {
               "en": "Cubes \\(\\pmod 7, 9\\)",
-              "ar": "المكعبات الكاملة \\(\\pmod{7, 9}\\)"
+              "ar": null
             },
             {
               "en": "\\(n^3 \\equiv 0, \\pm 1 \\pmod 7\\) and \\(n^3 \\equiv 0, \\pm 1 \\pmod 9\\)",
-              "ar": "\\(n^3 \\equiv 0, \\pm 1 \\pmod 7\\) وكذلك \\(\\pmod 9\\)"
+              "ar": "\\(n^3 \\equiv 0, \\pm 1 \\pmod 7\\) و \\(n^3 \\equiv 0, \\pm 1 \\pmod 9\\)"
             },
             {
               "en": "Cubic Diophantine equations like \\(x^3+y^3+z^3 = 9k \\pm 4\\)",
@@ -137,7 +137,7 @@
             },
             {
               "en": "Exact power of \\(p\\) dividing \\(a^n \\pm b^n\\) in NSMO/IMO",
-              "ar": "حساب أعلى قوة لعدد أولي تقسم \\(a^n \\pm b^n\\) في نهائيات نسما وIMO"
+              "ar": null
             }
           ],
           [
@@ -151,7 +151,7 @@
             },
             {
               "en": "Prime divisors of \\(2^p - 1\\) satisfy \\(q \\equiv 1 \\pmod p\\)",
-              "ar": "إثبات أن أي قاسم أولي \\(q\\) للعدد \\(2^p - 1\\) يحقق \\(q \\equiv 1 \\pmod p\\)"
+              "ar": null
             }
           ]
         ]
@@ -166,7 +166,7 @@
             },
             "value": {
               "en": "\\(\\exists x,y \\in \\mathbb{Z}: ax + by = \\gcd(a,b)\\); modular inverse exists iff \\(\\gcd(a,m)=1\\)",
-              "ar": "يوجد عددان صحيحان \\(ax + by = \\gcd(a,b)\\)؛ والنظير الضربي موجود \\(\\iff \\gcd(a,m)=1\\)"
+              "ar": null
             }
           },
           {
@@ -186,7 +186,7 @@
             },
             "value": {
               "en": "\\(\\gcd(n^2+1, n+1) = \\gcd((-1)^2+1, n+1) = \\gcd(2, n+1)\\)",
-              "ar": "\\(\\gcd(n^2+1, n+1) = \\gcd(2, n+1)\\) بالتعويض المباشر"
+              "ar": null
             }
           },
           {
@@ -196,7 +196,7 @@
             },
             "value": {
               "en": "Since \\(v_2(n!) \\ge v_5(n!)\\), trailing zeros equal \\(v_5(n!) = \\sum_{k \\ge 1} \\lfloor n/5^k \\rfloor\\)",
-              "ar": "عدد الأصفار في يمين \\(n!\\) يساوي \\(v_5(n!) = \\sum_{k \\ge 1} \\lfloor n/5^k \\rfloor\\)"
+              "ar": null
             }
           }
         ]
@@ -229,7 +229,7 @@
         },
         "caption": {
           "en": "Chinese Remainder Theorem intersection on the integer line: numbers \\(\\equiv 2 \\pmod 5\\) (\\(2, 7, 12, 17, 22, 27, 32\\)) meet numbers \\(\\equiv 3 \\pmod 7\\) (\\(3, 10, 17, 24, 31\\)) uniquely modulo \\(35\\) at \\(x \\equiv 17 \\pmod{35}\\).",
-          "ar": "تقاطع مبرهنة الباقي الصيني على خط الأعداد: الأعداد التي تحقق \\(x \\equiv 2 \\pmod 5\\) تتقاطع مع \\(x \\equiv 3 \\pmod 7\\) في حل وحيد بترديد \\(35\\) عند \\(x \\equiv 17 \\pmod{35}\\)."
+          "ar": "تقاطع مبرهنة الباقي الصيني على خط الأعداد: الأعداد التي تحقق تتقاطع مع في حل وحيد بترديد عند . \\(\\equiv 2 \\pmod 5\\) ، \\(2, 7, 12, 17, 22, 27, 32\\) ، \\(\\equiv 3 \\pmod 7\\) ، \\(3, 10, 17, 24, 31\\) ، \\(35\\) ، \\(x \\equiv 17 \\pmod{35}\\)"
         }
       },
       {
@@ -396,7 +396,7 @@
         },
         "caption": {
           "en": "Primitive-root star polygon modulo \\(7\\): powers of \\(3 \\pmod 7\\) cycle through all \\(\\varphi(7) = 6\\) nonzero residues \\(3 \\to 2 \\to 6 \\to 4 \\to 5 \\to 1\\), illustrating multiplicative order \\(\\operatorname{ord}_7(3) = 6\\).",
-          "ar": "المضلع النجمي للجذر البدائي بترديد \\(7\\): قوى العدد \\(3 \\pmod 7\\) تمر بجميع البواقي الستة غير الصفرية \\(3 \\to 2 \\to 6 \\to 4 \\to 5 \\to 1\\)، مما يوضح الرتبة الضربية \\(\\operatorname{ord}_7(3) = 6\\)."
+          "ar": "المضلع النجمي للجذر البدائي بترديد : قوى العدد تمر بجميع البواقي الستة غير الصفرية ، مما يوضح الرتبة الضربية . \\(7\\) ، \\(3 \\pmod 7\\) ، \\(\\varphi(7) = 6\\) ، \\(3 \\to 2 \\to 6 \\to 4 \\to 5 \\to 1\\) ، \\(\\operatorname{ord}_7(3) = 6\\)"
         }
       },
       {
@@ -407,11 +407,11 @@
         },
         "problem": {
           "en": "Find the last two decimal digits of \\( 7^{2026} \\) (i.e., compute \\( 7^{2026} \\bmod 100 \\)).",
-          "ar": "أوجد رقمَي الآحاد والعشرات للعدد \\( 7^{2026} \\) (أي احسب \\( 7^{2026} \\bmod 100 \\))."
+          "ar": "أوجد رقمَي الآحاد والعشرات للعدد \\(7^{2026}\\) (أي احسب \\(7^{2026} \\bmod 100\\))."
         },
         "solution": {
           "en": "<p>Since \\( 100 = 4 \\times 25 \\) with \\( \\gcd(4, 25) = 1 \\), split modulo \\( 4 \\) and modulo \\( 25 \\) (or use \\( \\varphi(100) = 40 \\)):<br>1. Modulo \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. Modulo \\( 25 \\): \\( \\varphi(25) = 25(1 - \\frac{1}{5}) = 20 \\), or even faster notice \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)! Thus \\( 7^4 \\equiv 1 \\pmod{25} \\) (multiplicative order \\( 4 \\) modulo \\( 100 \\)!).<br>3. Write \\( 2026 = 4(506) + 2 \\):<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1^{506} \\cdot 49 = 49 \\pmod{100} \\]<br>(checking \\( 49 \\equiv 1 \\pmod 4 \\) and \\( 49 \\equiv -1 \\pmod{25} \\) — both match!). Hence the last two digits are <strong>\\( 49 \\)</strong>.</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> بما أن \\( 100 = 4 \\times 25 \\) و\\( \\gcd(4, 25) = 1 \\)، نفكك التطابق إلى \\( \\pmod 4 \\) و\\( \\pmod{25} \\):<br>1. بترديد \\( 4 \\): \\( 7 \\equiv -1 \\pmod 4 \\implies 7^{2026} \\equiv (-1)^{2026} = 1 \\pmod 4 \\).<br>2. بترديد \\( 25 \\): نلاحظ الحيلة السريعة \\( 7^2 = 49 \\equiv -1 \\pmod{25} \\)، ومنها \\( 7^4 \\equiv 1 \\pmod{25} \\) (أي أن رتبة \\( 7 \\) بترديد \\( 100 \\) تساوي \\( 4 \\) فقط!).<br>3. بقسمة الأس على \\( 4 \\): \\( 2026 = 4(506) + 2 \\)، إذن:<br>\\[ 7^{2026} = (7^4)^{506} \\cdot 7^2 \\equiv 1 \\cdot 49 = 49 \\pmod{100}. \\]<br>إذن آخر رقمين هما <strong>\\( 49 \\)</strong>.</p>"
+          "ar": null
         }
       },
       {
@@ -422,11 +422,11 @@
         },
         "problem": {
           "en": "Find the remainder when \\( 97! \\) is divided by \\( 101 \\).",
-          "ar": "أوجد باقي قسمة \\( 97! \\) على العدد الأولي \\( 101 \\)."
+          "ar": "أوجد باقي قسمة \\(97!\\) على العدد الأولي \\(101\\)."
         },
         "solution": {
           "en": "<p>Since \\( 101 \\) is prime, Wilson's Theorem gives \\( 100! \\equiv -1 \\pmod{101} \\). Expand the top three factors modulo \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>Therefore \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>To invert \\( 6 \\pmod{101} \\), notice \\( 101 + 1 = 102 = 6 \\times 17 \\), so \\( 6 \\times 17 = 102 \\equiv 1 \\pmod{101} \\).<br>Multiplying both sides of \\( 6 \\cdot 97! \\equiv 1 \\pmod{101} \\) by \\( 17 \\) gives \\( 97! \\equiv 17 \\pmod{101} \\).</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> بما أن \\( 101 \\) عدد أولي، تعطي مبرهنة ويلسون \\( 100! \\equiv -1 \\pmod{101} \\). نفكك آخر ثلاثة عوامل بترديد \\( 101 \\):<br>\\[ 100! = 100 \\cdot 99 \\cdot 98 \\cdot 97! \\equiv (-1)(-2)(-3) \\cdot 97! = -6 \\cdot 97! \\pmod{101}. \\]<br>ومنه \\( -6 \\cdot 97! \\equiv -1 \\pmod{101} \\iff 6 \\cdot 97! \\equiv 1 \\pmod{101} \\).<br>لإيجاد النظير الضربي للعدد \\( 6 \\pmod{101} \\)، نلاحظ أن \\( 101 + 1 = 102 = 6 \\times 17 \\)، أي \\( 6 \\times 17 \\equiv 1 \\pmod{101} \\). بضرب الطرفين في \\( 17 \\) نجد الباقي \\( 97! \\equiv 17 \\pmod{101} \\).</p>"
+          "ar": null
         }
       },
       {
@@ -437,26 +437,26 @@
         },
         "problem": {
           "en": "Find the smallest positive integer \\( N > 10 \\) that leaves remainder \\( 2 \\) when divided by \\( 5 \\), remainder \\( 4 \\) when divided by \\( 7 \\), and remainder \\( 6 \\) when divided by \\( 9 \\).",
-          "ar": "أوجد أصغر عدد صحيح موجب \\( N > 10 \\) يترك باقياً \\( 2 \\) عند قسمته على \\( 5 \\)، وباقياً \\( 4 \\) عند قسمته على \\( 7 \\)، وباقياً \\( 6 \\) عند قسمته على \\( 9 \\)."
+          "ar": "أوجد أصغر عدد صحيح موجب \\(N > 10\\) يترك باقياً \\(2\\) عند قسمته على \\(5\\)، وباقياً \\(4\\) عند قسمته على \\(7\\)، وباقياً \\(6\\) عند قسمته على \\(9\\)."
         },
         "solution": {
           "en": "<p>Look for a structural pattern in the remainders before brute-forcing CRT! At \\( m = 5, 7, 9 \\), the differences \\( m - r \\) are \\( 5 - 2 = 3 \\), \\( 7 - 4 = 3 \\), and \\( 9 - 6 = 3 \\) — every single remainder is <strong>3 less than its modulus</strong>! That means:<br>\\[ N \\equiv -3 \\pmod 5, \\quad N \\equiv -3 \\pmod 7, \\quad N \\equiv -3 \\pmod 9. \\]<br>Since \\( 5, 7, 9 \\) are pairwise coprime with \\( \\operatorname{lcm}(5, 7, 9) = 315 \\), CRT immediately gives \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\). Thus the smallest positive solution is <strong>\\( N = 312 \\)</strong>.</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> ابحث أولاً عن النمط البنيوي بين المقاسات والبواقي قبل الحساب التقليدي! لاحظ الفروق:<br>\\( 5 - 2 = 3 \\)، و\\( 7 - 4 = 3 \\)، و\\( 9 - 6 = 3 \\)!<br>أي أن \\( N + 3 \\) يقبل القسمة على كل من \\( 5 \\) و\\( 7 \\) و\\( 9 \\) في آنٍ واحد:<br>\\[ N \\equiv -3 \\pmod 5, \\qquad N \\equiv -3 \\pmod 7, \\qquad N \\equiv -3 \\pmod 9. \\]<br>وبما أن الأعداد \\( 5, 7, 9 \\) أولية مثنى مثنى ومضاعفها المشترك الأصغر \\( 315 \\)، فإن مبرهنة الباقي الصيني تعطي فوراً \\( N \\equiv -3 \\equiv 312 \\pmod{315} \\)، وأصغر حل موجب هو <strong>\\( 312 \\)</strong>.</p>"
+          "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.D — Legendre's Valuation & Divisor Count (KAUST Finals / IMO Shortlist)",
-          "ar": "مثال محلول 2.D — صيغة ليجاندر والتقييم الأولي لـ \\(n!\\) (نهائيات كاوست)"
+          "ar": null
         },
         "problem": {
           "en": "Find the largest integer \\( k \\) such that \\( 12^k \\) divides \\( 60! \\).",
-          "ar": "أوجد أكبر عدد صحيح \\( k \\) بحيث يقسم \\( 12^k \\) العدد \\( 60! \\)."
+          "ar": "أوجد أكبر عدد صحيح \\(k\\) بحيث يقسم \\(12^k\\) العدد \\(60!\\)."
         },
         "solution": {
           "en": "<p>Prime-factor the base first: \\( 12 = 2^2 \\cdot 3 \\), so \\( 12^k = 2^{2k} \\cdot 3^k \\). Thus \\( 12^k \\mid 60! \\iff 2k \\le v_2(60!) \\) AND \\( k \\le v_3(60!) \\), meaning \\( k = \\min\\!\\left(\\left\\lfloor \\frac{v_2(60!)}{2} \\right\\rfloor,\\; v_3(60!)\\right) \\).<br>1. Compute \\( v_3(60!) \\) by Legendre's formula:<br>\\[ v_3(60!) = \\left\\lfloor \\frac{60}{3} \\right\\rfloor + \\left\\lfloor \\frac{60}{9} \\right\\rfloor + \\left\\lfloor \\frac{60}{27} \\right\\rfloor = 20 + 6 + 2 = 28. \\]<br>2. Compute \\( v_2(60!) \\):<br>\\[ v_2(60!) = \\left\\lfloor \\frac{60}{2} \\right\\rfloor + \\left\\lfloor \\frac{60}{4} \\right\\rfloor + \\left\\lfloor \\frac{60}{8} \\right\\rfloor + \\left\\lfloor \\frac{60}{16} \\right\\rfloor + \\left\\lfloor \\frac{60}{32} \\right\\rfloor = 30 + 15 + 7 + 3 + 1 = 56. \\]<br>3. Compare constraints: \\( \\lfloor 56 / 2 \\rfloor = 28 \\) and \\( v_3(60!) = 28 \\)! Both bounds Tie at \\( 28 \\) — had you lazily assumed \\( 3 \\) is always the bottleneck without checking \\( 2^2 \\), you could miss cases like \\( 8! \\) (where \\( v_3(8!) = 2 \\) and \\( \\lfloor v_2(8!)/2 \\rfloor = \\lfloor 7/2 \\rfloor = 3 \\), vs \\( 9! \\) where \\( v_3(9!) = 4 > \\lfloor 7/2 \\rfloor = 3 \\)!). Here \\( k = \\min(28, 28) = 28 \\).</p>",
-          "ar": "<p><strong>الحل الأولمبي:</strong> نحلل الأساس أولاً: \\( 12 = 2^2 \\cdot 3 \\)، أي \\( 12^k = 2^{2k} \\cdot 3^k \\). ولكي يتحقق \\( 12^k \\mid 60! \\) يجب أن يتحقق الشرطان \\( 2k \\le v_2(60!) \\) و\\( k \\le v_3(60!) \\) معاً، أي \\( k = \\min\\!\\left(\\lfloor v_2(60!)/2 \\rfloor,\\; v_3(60!)\\right) \\).<br>1. حساب \\( v_3(60!) \\) بصيغة ليجاندر: \\( 20 + 6 + 2 = 28 \\).<br>2. حساب \\( v_2(60!) \\): \\( 30 + 15 + 7 + 3 + 1 = 56 \\implies \\lfloor 56/2 \\rfloor = 28 \\).<br>3. بمقارنة القيدين نجد \\( k = \\min(28, 28) = 28 \\) (انتبه: في حالات مثل \\( 9! \\) يكون \\( v_3(9!) = 4 \\) بينما \\( \\lfloor v_2(9!)/2 \\rfloor = 3 \\)، لذا فحص القيدين معاً إلزامي دائماً!).</p>"
+          "ar": null
         }
       },
       {
@@ -464,11 +464,11 @@
         "style": "warn",
         "label": {
           "en": "⚠ Olympiad Trap — Never Reduce Exponents Modulo m Instead of φ(m)!",
-          "ar": "⚠ فخ أولمبي قاتل — إياك واختزال الأسس بترديد \\(m\\) بدلاً من \\(\\varphi(m)\\)!"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Exponents live modulo \\( \\varphi(m) \\), NOT modulo \\( m \\)!</strong> Moreover, \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\) requires \\( \\gcd(a, m) = 1 \\). If \\( \\gcd(a, m) > 1 \\) (for instance \\( 6^{100} \\bmod 40 \\)), split \\( 40 = 8 \\times 5 \\) into prime-power moduli via CRT: clearly \\( 6^{100} \\equiv 0 \\pmod 8 \\) (since \\( 100 \\ge 3 \\)) and \\( 6^{100} \\equiv 1^{100} = 1 \\pmod 5 \\), yielding \\( 6^{100} \\equiv 16 \\pmod{40} \\) — NOT \\( 1 \\)!</p>",
-          "ar": "<p><strong>تُختزل الأسس بترديد \\( \\varphi(m) \\) وليس بترديد \\( m \\)!</strong> والأهم من ذلك أن مبرهنة أويلر \\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\) تشترط \\( \\gcd(a, m) = 1 \\). إذا لم يتحقق الشرط (مثل حساب \\( 6^{100} \\bmod 40 \\))، فكك المقاس عبر الباقي الصيني إلى قوى أولية \\( 40 = 8 \\times 5 \\): \\( 6^{100} \\equiv 0 \\pmod 8 \\) و\\( 6^{100} \\equiv 1 \\pmod 5 \\)، فيكون الناتج \\( 16 \\) وليس \\( 1 \\)!</p>"
+          "ar": null
         }
       },
       {
@@ -480,132 +480,132 @@
         },
         "body": {
           "en": "<p>Whenever asked for the maximum possible value of \\( \\gcd(A(n), B(n)) \\) as \\( n \\) varies over \\( \\mathbb{Z}^+ \\) (e.g., \\( \\gcd(3n + 7, 5n + 2) \\)), eliminate \\( n \\) linearly: \\( d \\mid 5(3n+7) - 3(5n+2) = 35 - 6 = 29 \\). Thus \\( d \\in \\{1, 29\\} \\), and checking \\( 3n + 7 \\equiv 0 \\pmod{29} \\implies n = 27 \\) confirms \\( 29 \\) is achieved!</p>",
-          "ar": "<p>عندما يُطلب أكبر قيمة ممكنة للقاسم المشترك الأكبر \\( \\gcd(A(n), B(n)) \\) مثل \\( \\gcd(3n + 7, 5n + 2) \\)، احذف \\( n \\) خطياً: أي قاسم مشترك \\( d \\) يقسم \\( 5(3n+7) - 3(5n+2) = 29 \\)، فيكون أقصى قاسم ممكن هو \\( 29 \\) (ويتحقق فعلياً عند \\( n = 27 \\)).</p>"
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2.1 · NSMO Stage 1 / Easy]</strong> How many positive integer divisors of \\( 720 \\) are perfect squares?",
-          "ar": "<strong>[تدريب 2.1 · نسما المرحلة 1 / سهل]</strong> كم قاسماً موجباً للعدد \\( 720 \\) يمثل مربعاً كاملاً؟"
+          "ar": "<strong>[تدريب 2.1 · نسما المرحلة 1 / سهل]</strong> كم قاسماً موجباً للعدد \\(720\\) يمثل مربعاً كاملاً؟"
         },
         "hints": [
           {
             "en": "Write the prime factorization \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\).",
-            "ar": "حلل العدد إلى عوامله الأولية: \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\)."
+            "ar": "حلل العدد إلى عوامله الأولية: \\(720 = 2^4 \\cdot 3^2 \\cdot 5^1\\)."
           },
           {
             "en": "A divisor \\( 2^a 3^b 5^c \\) is a perfect square iff \\( a, b, c \\) are all even.",
-            "ar": "يكون القاسم \\( 2^a 3^b 5^c \\) مربعاً كاملاً إذا وفقط إذا كانت الأسس \\( a, b, c \\) زوجية جميعاً."
+            "ar": "يكون القاسم \\(2^a 3^b 5^c\\) مربعاً كاملاً إذا وفقط إذا كانت الأسس \\(a, b, c\\) زوجية جميعاً."
           },
           {
             "en": "Count valid choices: \\( a \\in \\{0,2,4\\} \\), \\( b \\in \\{0,2\\} \\), \\( c \\in \\{0\\} \\).",
-            "ar": "احسب عدد الخيارات الممكنة: \\( a \\in \\{0,2,4\\} \\)، و\\( b \\in \\{0,2\\} \\)، و\\( c \\in \\{0\\} \\)."
+            "ar": "احسب عدد الخيارات الممكنة: \\(a \\in \\{0,2,4\\}\\)، و\\(b \\in \\{0,2\\}\\)، و\\(c \\in \\{0\\}\\)."
           }
         ],
         "solution": {
           "en": "Since \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\), even exponents allow \\( 3 \\) choices for \\( a \\) (\\(0,2,4\\)), \\( 2 \\) choices for \\( b \\) (\\(0,2\\)), and \\( 1 \\) choice for \\( c \\) (\\(0\\)), giving \\( 3 \\times 2 \\times 1 = 6 \\) square divisors.",
-          "ar": "بما أن \\( 720 = 2^4 \\cdot 3^2 \\cdot 5^1 \\)، فاختيار الأسس الزوجية يعطي \\( 3 \\) خيارات لـ \\( a \\) وخيارين لـ \\( b \\) وخياراً واحداً لـ \\( c \\)، أي \\( 3 \\times 2 \\times 1 = 6 \\) قواسم مربعة."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2.2 · KAUST KMC / Easy]</strong> Compute Euler totient \\( \\varphi(360) \\) — the number of integers \\( 1 \\le k \\le 360 \\) coprime to \\( 360 \\).",
-          "ar": "<strong>[تدريب 2.2 · مسابقة كاوست / سهل]</strong> احسب قيمة دالة أويلر \\( \\varphi(360) \\)، أي عدد الأعداد الصحيحة من \\( 1 \\) إلى \\( 360 \\) الأولية نسبياً مع \\( 360 \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Find the distinct prime factors of \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\): primes \\( 2, 3, 5 \\).",
-            "ar": "استخرج العوامل الأولية المختلفة للعدد \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\) وهي \\( 2, 3, 5 \\)."
+            "ar": "استخرج العوامل الأولية المختلفة للعدد \\(360 = 2^3 \\cdot 3^2 \\cdot 5\\) وهي \\(2, 3, 5\\)."
           },
           {
             "en": "Apply \\( \\varphi(360) = 360\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{1}{5}\\right) \\).",
-            "ar": "طبّق القانون \\( \\varphi(360) = 360\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{1}{5}\\right) \\)."
+            "ar": "طبّق القانون \\(\\varphi(360) = 360\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{1}{5}\\right)\\)."
           },
           {
             "en": "Multiply \\( 360 \\times \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{4}{5} \\).",
-            "ar": "احسب ناتج الضرب \\( 360 \\times \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{4}{5} \\)."
+            "ar": "احسب ناتج الضرب \\(360 \\times \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{4}{5}\\)."
           }
         ],
         "solution": {
           "en": "Using \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\), we obtain \\( \\varphi(360) = 360 \\cdot \\frac{1}{2} \\cdot \\frac{2}{3} \\cdot \\frac{4}{5} = 96 \\).",
-          "ar": "بتطبيق صيغة أويلر على \\( 360 = 2^3 \\cdot 3^2 \\cdot 5 \\) نحصل على \\( \\varphi(360) = 360 \\cdot \\frac{1}{2} \\cdot \\frac{2}{3} \\cdot \\frac{4}{5} = 96 \\)."
+          "ar": "بتطبيق صيغة أويلر على \\(360 = 2^3 \\cdot 3^2 \\cdot 5\\) نحصل على \\(\\varphi(360) = 360 \\cdot \\frac{1}{2} \\cdot \\frac{2}{3} \\cdot \\frac{4}{5} = 96\\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2.3 · NSMO Stage 2 / Medium]</strong> Find the remainder when \\( 3^{2026} \\) is divided by \\( 13 \\).",
-          "ar": "<strong>[تدريب 2.3 · نسما المرحلة 2 / متوسط]</strong> أوجد باقي قسمة \\( 3^{2026} \\) على \\( 13 \\)."
+          "ar": "<strong>[تدريب 2.3 · نسما المرحلة 2 / متوسط]</strong> أوجد باقي قسمة \\(3^{2026}\\) على \\(13\\)."
         },
         "hints": [
           {
             "en": "Test small powers of \\( 3 \\) modulo \\( 13 \\) before using \\( \\varphi(13) = 12 \\)!",
-            "ar": "اختبر القوى الصغيرة للعدد \\( 3 \\) بترديد \\( 13 \\) لاكتشاف الرتبة الضربية أولاً!"
+            "ar": null
           },
           {
             "en": "Observe that \\( 3^3 = 27 = 2(13) + 1 \\equiv 1 \\pmod{13} \\)!",
-            "ar": "لاحظ أن \\( 3^3 = 27 \\equiv 1 \\pmod{13} \\)!"
+            "ar": null
           },
           {
             "en": "Reduce the exponent \\( 2026 \\) modulo \\( 3 \\): sum of digits \\( 2+0+2+6 = 10 \\equiv 1 \\pmod 3 \\).",
-            "ar": "اختزل الأس \\( 2026 \\) بترديد \\( 3 \\): مجموع الأرقام \\( 10 \\equiv 1 \\pmod 3 \\)."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Since \\( 3^3 \\equiv 1 \\pmod{13} \\) and \\( 2026 = 3(675) + 1 \\), we have \\( 3^{2026} = (3^3)^{675} \\cdot 3^1 \\equiv 1 \\cdot 3 = 3 \\pmod{13} \\).",
-          "ar": "بما أن \\( 3^3 \\equiv 1 \\pmod{13} \\) وأن \\( 2026 = 3(675) + 1 \\)، فإن \\( 3^{2026} \\equiv 3^1 = 3 \\pmod{13} \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2.4 · AIME / KAUST KMC / Hard]</strong> Find the unique integer \\( x \\in \\{0, 1, \\dots, 104\\} \\) satisfying \\( x \\equiv 1 \\pmod 3 \\), \\( x \\equiv 2 \\pmod 5 \\), and \\( x \\equiv 3 \\pmod 7 \\).",
-          "ar": "<strong>[تدريب 2.4 · AIME / مسابقة كاوست / متقدم]</strong> أوجد العدد الصحيح الوحيد \\( x \\in \\{0, 1, \\dots, 104\\} \\) الذي يحقق \\( x \\equiv 1 \\pmod 3 \\) و\\( x \\equiv 2 \\pmod 5 \\) و\\( x \\equiv 3 \\pmod 7 \\)."
+          "ar": "<strong>[تدريب 2.4 · AIME / مسابقة كاوست / متقدم]</strong> أوجد العدد الصحيح الوحيد \\(x \\in \\{0, 1, \\dots, 104\\}\\) الذي يحقق \\(x \\equiv 1 \\pmod 3\\) و\\(x \\equiv 2 \\pmod 5\\) و\\(x \\equiv 3 \\pmod 7\\)."
         },
         "hints": [
           {
             "en": "Check the linear combination \\( 2x + 1 \\) against all three moduli \\( 3, 5, 7 \\)!",
-            "ar": "افحص المقدار \\( 2x + 1 \\) بترديد كل من \\( 3, 5, 7 \\)!"
+            "ar": "افحص المقدار \\(2x + 1\\) بترديد كل من \\(3, 5, 7\\)!"
           },
           {
             "en": "Notice \\( 2(1)+1 = 3 \\equiv 0 \\pmod 3 \\), \\( 2(2)+1 = 5 \\equiv 0 \\pmod 5 \\), and \\( 2(3)+1 = 7 \\equiv 0 \\pmod 7 \\)!",
-            "ar": "لاحظ أن \\( 2x + 1 \\) يقبل القسمة على \\( 3 \\) و\\( 5 \\) و\\( 7 \\) معاً!"
+            "ar": null
           },
           {
             "en": "Thus \\( 2x + 1 \\equiv 0 \\pmod{105} \\implies 2x = 105 - 1 = 104 \\).",
-            "ar": "إذن \\( 2x + 1 \\equiv 0 \\pmod{105} \\)، وأصغر مضاعف فردي لـ \\( 105 \\) هو \\( 105 \\) نفسه."
+            "ar": "وعليه \\( 2x + 1 \\equiv 0 \\pmod{105} \\implies 2x = 105 - 1 = 104 \\)."
           }
         ],
         "solution": {
           "en": "In all three congruences, \\( 2x + 1 \\equiv 0 \\pmod m \\) for \\( m \\in \\{3, 5, 7\\} \\). By CRT, \\( 2x + 1 \\equiv 0 \\pmod{105} \\). Taking \\( 2x + 1 = 105 \\) gives \\( x = 52 \\) (checking: \\( 52 = 17(3)+1 = 10(5)+2 = 7(7)+3 \\)).",
-          "ar": "نلاحظ أن \\( 2x + 1 \\) مضاعف مشترك لـ \\( 3, 5, 7 \\)، أي \\( 2x + 1 \\equiv 0 \\pmod{105} \\). وبوضع \\( 2x + 1 = 105 \\) نحصل فوراً على \\( x = 52 \\)."
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 2.5 · NSMO National Finals / LTE]</strong> Using Lifting-the-Exponent (LTE), find the exact 3-adic valuation \\( v_3(7^{54} - 1) \\) — i.e., the largest integer \\( k \\) such that \\( 3^k \\mid (7^{54} - 1) \\).",
-          "ar": "<strong>[تدريب 2.5 · نهائيات نسما / لمّة LTE]</strong> باستخدام لمّة رفع الأس (LTE)، أوجد قيمة \\( v_3(7^{54} - 1) \\)، أي أكبر عدد صحيح \\( k \\) يحقق \\( 3^k \\mid (7^{54} - 1) \\)."
+          "ar": null
         },
         "hints": [
           {
             "en": "Check LTE conditions for odd prime \\( p = 3 \\): \\( x = 7, y = 1 \\), so \\( 3 \\mid (7 - 1) = 6 \\) and \\( 3 \\nmid 7 \\cdot 1 \\).",
-            "ar": "تحقق من شروط لمّة LTE للعدد الأولي الفردي \\( p = 3 \\): لدينا \\( 3 \\mid (7 - 1) = 6 \\) و\\( 3 \\nmid 7 \\)."
+            "ar": null
           },
           {
             "en": "Apply \\( v_3(x^n - y^n) = v_3(x - y) + v_3(n) \\) with \\( x = 7, y = 1, n = 54 \\).",
-            "ar": "طبّق قانون LTE مباشرةً: \\( v_3(7^{54} - 1) = v_3(7 - 1) + v_3(54) \\)."
+            "ar": "طبّق \\( v_3(x^n - y^n) = v_3(x - y) + v_3(n) \\) مع \\( x = 7, y = 1, n = 54 \\)."
           },
           {
             "en": "Compute \\( v_3(6) = 1 \\) and \\( v_3(54) = v_3(2 \\cdot 3^3) = 3 \\).",
-            "ar": "احسب \\( v_3(6) = 1 \\) و\\( v_3(54) = v_3(2 \\cdot 27) = 3 \\)."
+            "ar": "احسب \\( v_3(6) = 1 \\) و \\( v_3(54) = v_3(2 \\cdot 3^3) = 3 \\)."
           }
         ],
         "solution": {
           "en": "Since \\( p = 3 \\) is an odd prime with \\( 3 \\mid (7 - 1) \\) and \\( 3 \\nmid 7 \\), LTE gives \\( v_3(7^{54} - 1) = v_3(6) + v_3(54) = 1 + 3 = 4 \\). Thus \\( 3^4 = 81 \\) is the highest power of \\( 3 \\) dividing \\( 7^{54} - 1 \\).",
-          "ar": "بما أن \\( p = 3 \\) أولي فردي ويحقق \\( 3 \\mid (7 - 1) \\)، تعطي لمّة LTE: \\( v_3(7^{54} - 1) = v_3(6) + v_3(54) = 1 + 3 = 4 \\)، أي أن أعلى قوة لـ \\( 3 \\) هي \\( 3^4 = 81 \\)."
+          "ar": null
         }
       },
       {

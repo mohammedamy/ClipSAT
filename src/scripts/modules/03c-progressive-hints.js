@@ -46,6 +46,11 @@
       'Substitute carefully, check signs and units, and compare with the answer choices.'
     ];
 
+    /* If Arabic UI/exam mode is active and explicit hints_ar exists, return it */
+    var preferAr = (typeof document !== 'undefined') && ((document.documentElement && document.documentElement.lang === 'ar') || (document.body && (document.body.classList.contains('rtl') || document.body.classList.contains('cs-lang-ar'))));
+    if(preferAr && Array.isArray(q.hints_ar) && q.hints_ar.length >= 3){
+      return q.hints_ar.slice(0, 3).map(function(h){ return String(h || ''); });
+    }
     /* If explicit 3-tier hints array exists on the item (and is not legacy boilerplate), normalize and return it */
     if(Array.isArray(q.hints) && q.hints.length >= 3){
       var joinedH = q.hints.slice(0, 3).map(function(h){

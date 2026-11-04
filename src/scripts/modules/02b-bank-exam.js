@@ -394,9 +394,12 @@
         'There is no penalty for guessing — answer every question.'],
       sections:[
         {title:'Quantitative Reasoning · القسم الكمي الشامل',time:'52 min',
-         note:'52 questions — ETEC/Qiyas Official Blueprint (Arithmetic, Geometry, Algebra, Data & Quantitative Comparisons).',
+         note:'52 questions — ETEC/Qiyas Official Blueprint (Arithmetic, Geometry, Algebra, Data & 28.8% Quantitative Comparisons).',
          domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','Algebra Essentials','Sequences & Patterns','Number Patterns & Sequences','Geometry & Measurement','Geometry & Spatial Reasoning','Quantitative Comparison','Quantitative Comparisons','Data Analysis & Probability','Statistics, Probability & Data','High-Speed Qiyas Shortcuts'],
-         parts:[{label:'',q:52,time:'52 min',calc:false,type:'mcq',note:'No calculator permitted.'}]}]},
+         parts:[
+           {label:'Problem Solving & Analytical Shortcuts',q:37,time:'37 min',calc:false,type:'mcq',excludeQC:true,note:'No calculator permitted.'},
+           {label:'Quantitative Comparisons · المقارنات الكمية',q:15,time:'15 min',calc:false,type:'mcq',qcOnly:true,note:'Fixed 4-option ETEC/Qiyas comparison format. No calculator permitted.'}
+         ]}]},
 
     'GAT Qudrat — Quantitative Reasoning':{
       title:'GAT Qudrat — Quantitative Reasoning (اختبار القدرات العامة - القسم الكمي)',totalTime:'52 min',
@@ -789,32 +792,32 @@
          parts:[{label:'',q:8,time:'75 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     'Edexcel IGCSE (4MA1) — Paper 1H':{
-      title:'Pearson Edexcel International GCSE Mathematics A (4MA1) — Paper 1H',totalTime:'2 hr',
-      bankId:'igcse',
+      title:'Pearson Edexcel International GCSE Mathematics A (4MA1) — Paper 1H (Non-Calculator)',totalTime:'2 hr',
+      bankId:'edexcel',
       logo:'Edexcel IGCSE',org:'Pearson Edexcel International Examinations',
       instructions:['Answer ALL questions.','Write your answers in the spaces provided.',
         'You must write down all stages in your working.',
-        'Calculators may be used.',
+        'Calculators must NOT be used on Paper 1H.',
         'Diagrams are NOT accurately drawn, unless otherwise indicated.'],
       sections:[
-        {title:'Paper 1H — Higher Tier (4MA1/1H)',time:'2 hr',
-         note:'100 marks. Calculator permitted. Show all stages in your working.',
-         domains:['Number','Algebra & Graphs','Geometry','Statistics & Probability'],
-         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Show all necessary working.'}]}]},
+        {title:'Paper 1H — Higher Tier Non-Calculator (4MA1/1H)',time:'2 hr',
+         note:'100 marks. Non-Calculator paper. Show all stages in your working.',
+         domains:['Number, Surds, Bounds & Set Theory','Algebraic Fractions, Quadratics & Simultaneous Systems','Functions, Transformations & Arithmetic Series','Coordinate Geometry & Linear Programming','Circle Theorems, Similar Solids & Mensuration','Sine/Cosine Rules, 3D Trigonometry & Vectors','Differentiation, Stationary Points & Kinematics','Histograms, Cumulative Frequency & Conditional Probability'],
+         parts:[{label:'',q:20,time:'120 min',calc:false,type:'frq',note:'No calculator permitted. Show all necessary working.'}]}]},
 
     'Edexcel IGCSE (4MA1) — Paper 2H':{
-      title:'Pearson Edexcel International GCSE Mathematics A (4MA1) — Paper 2H',totalTime:'2 hr',
-      bankId:'igcse',
+      title:'Pearson Edexcel International GCSE Mathematics A (4MA1) — Paper 2H (Calculator)',totalTime:'2 hr',
+      bankId:'edexcel',
       logo:'Edexcel IGCSE',org:'Pearson Edexcel International Examinations',
       instructions:['Answer ALL questions.','Write your answers in the spaces provided.',
         'You must write down all stages in your working.',
-        'Calculators may be used.',
+        'Calculators may be used on Paper 2H.',
         'Diagrams are NOT accurately drawn, unless otherwise indicated.'],
       sections:[
-        {title:'Paper 2H — Higher Tier (4MA1/2H)',time:'2 hr',
+        {title:'Paper 2H — Higher Tier Calculator (4MA1/2H)',time:'2 hr',
          note:'100 marks. Calculator permitted. Show all stages in your working.',
-         domains:['Number','Algebra & Graphs','Geometry','Statistics & Probability'],
-         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Show all necessary working.'}]}]},
+         domains:['Number, Surds, Bounds & Set Theory','Algebraic Fractions, Quadratics & Simultaneous Systems','Functions, Transformations & Arithmetic Series','Coordinate Geometry & Linear Programming','Circle Theorems, Similar Solids & Mensuration','Sine/Cosine Rules, 3D Trigonometry & Vectors','Differentiation, Stationary Points & Kinematics','Histograms, Cumulative Frequency & Conditional Probability'],
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator permitted. Show all necessary working.'}]}]},
 
     'Cambridge IGCSE 0580 — Paper 2 (Extended Non-Calculator)':{
       title:'Cambridge IGCSE 0580 — Paper 2 Extended (Non-Calculator)',totalTime:'2 hr',
@@ -1357,17 +1360,21 @@
          parts:[{label:'',q:14,time:'75 min',calc:true,type:'mcq'}]}]},
 
     edexcel:{
-      title:'Pearson Edexcel International GCSE Mathematics A (4MA1 Higher Tier)',totalTime:'2 hr',
+      title:'Pearson Edexcel International GCSE Mathematics A (4MA1 Higher Tier)',totalTime:'4 hr',
       bankId:'edexcel',
       logo:'Edexcel IGCSE 4MA1',org:'Pearson Edexcel International Examinations',
-      instructions:['Answer ALL questions.','Write your answers in the spaces provided and show all stages in your working.',
-        'Calculators may be used.',
+      instructions:['Answer ALL questions across Paper 1H (Non-Calculator) and Paper 2H (Calculator).','Write your answers in the spaces provided and show all stages in your working.',
+        'Paper 1H is strictly Non-Calculator; a scientific calculator is permitted on Paper 2H.',
         'Give non-exact numerical answers correct to 3 significant figures unless stated otherwise.'],
       sections:[
-        {title:'Paper 1H — Higher Tier (4MA1/1H)',time:'2 hr',
-         note:'100 marks · 20 structured questions · Scientific calculator permitted',
+        {title:'Paper 1H — Higher Tier Non-Calculator (4MA1/1H)',time:'2 hr',
+         note:'100 marks · 15 structured questions · Calculators must NOT be used',
          domains:['Number, Surds, Bounds & Set Theory','Algebraic Fractions, Quadratics & Simultaneous Systems','Functions, Transformations & Arithmetic Series','Coordinate Geometry & Linear Programming','Circle Theorems, Similar Solids & Mensuration','Sine/Cosine Rules, 3D Trigonometry & Vectors','Differentiation, Stationary Points & Kinematics','Histograms, Cumulative Frequency & Conditional Probability'],
-         parts:[{label:'',q:20,time:'120 min',calc:true,type:'mcq',note:'Show all working.'}]}]},
+         parts:[{label:'Paper 1H (Non-Calculator)',q:15,time:'120 min',calc:false,type:'frq',note:'No calculator permitted. Show all working.'}]},
+        {title:'Paper 2H — Higher Tier Calculator Permitted (4MA1/2H)',time:'2 hr',
+         note:'100 marks · 15 structured questions · Scientific calculator permitted',
+         domains:['Number, Surds, Bounds & Set Theory','Algebraic Fractions, Quadratics & Simultaneous Systems','Functions, Transformations & Arithmetic Series','Coordinate Geometry & Linear Programming','Circle Theorems, Similar Solids & Mensuration','Sine/Cosine Rules, 3D Trigonometry & Vectors','Differentiation, Stationary Points & Kinematics','Histograms, Cumulative Frequency & Conditional Probability'],
+         parts:[{label:'Paper 2H (Calculator)',q:15,time:'120 min',calc:true,type:'frq',note:'Scientific calculator permitted. Show all working.'}]}]},
 
     gaten:{
       title:'Qiyas English GAT (Quantitative) & SAAT (Mathematics)',totalTime:'1 hr 40 min',
@@ -1381,11 +1388,65 @@
         {title:'Part I — GAT Quantitative Reasoning (English Medium)',time:'50 min',
          note:'25 questions · Arithmetic Shortcuts, Ratios, Motion, Quantitative Comparisons & Data · No calculator',
          domains:['GAT Arithmetic Shortcuts, Surds & Number Sense','GAT Ratios, Percentages, Work & Motion Problems','GAT Quantitative Comparisons & Fast Geometry','GAT Data Interpretation, Averages & Counting'],
-         parts:[{label:'GAT Quantitative',q:25,time:'50 min',calc:false,type:'mcq',note:'No calculator allowed.'}]},
+         parts:[{label:'GAT Quantitative',q:25,time:'50 min',calc:false,type:'mcq',subtrackFilter:'gat-en',note:'No calculator allowed.'}]},
         {title:'Part II — SAAT Mathematics Achievement (English Medium)',time:'50 min',
          note:'25 questions · Logic, Matrices, Complex Numbers, Functions, Logs, Conics, Vectors & Calculus · No calculator',
          domains:['SAAT Logic, Polynomials, Matrices & Complex Numbers','SAAT Functions, Sequences & Logarithms','SAAT Trigonometry, Conics & Vectors','SAAT Differential & Integral Calculus'],
-         parts:[{label:'SAAT Mathematics',q:25,time:'50 min',calc:false,type:'mcq',note:'No calculator allowed.'}]}]},
+         parts:[{label:'SAAT Mathematics',q:25,time:'50 min',calc:false,type:'mcq',subtrackFilter:'saat-en',note:'No calculator allowed.'}]}]},
+
+    'gat-en':{
+      title:'ETEC / Qiyas English GAT — Quantitative Aptitude Examination',totalTime:'50 min',
+      bankId:'gaten',
+      subtrackFilter:'gat-en',
+      defaultLang:'en',
+      logo:'Qiyas GAT-EN',org:'Education & Training Evaluation Commission (ETEC / Qiyas)',
+      instructions:['Answer ALL 25 multiple-choice questions from choices A, B, C, D.',
+        'Calculators are strictly PROHIBITED.',
+        'Quantitative Comparison options are locked in official A/B/C/D order.'],
+      sections:[
+        {title:'GAT Quantitative Reasoning (English Medium)',time:'50 min',
+         note:'25 questions · Arithmetic, Ratios, Motion, Geometry, Data & Quantitative Comparisons · No calculator',
+         domains:['GAT Arithmetic Shortcuts, Surds & Number Sense','GAT Ratios, Percentages, Work & Motion Problems','GAT Quantitative Comparisons & Fast Geometry','GAT Data Interpretation, Averages & Counting'],
+         parts:[{label:'GAT Quantitative',q:25,time:'50 min',calc:false,type:'mcq',subtrackFilter:'gat-en',note:'No calculator allowed.'}]}]},
+
+    'saat-en':{
+      title:'ETEC / Qiyas English SAAT — Mathematics Achievement Examination',totalTime:'50 min',
+      bankId:'gaten',
+      subtrackFilter:'saat-en',
+      defaultLang:'en',
+      logo:'Qiyas SAAT-EN',org:'Education & Training Evaluation Commission (ETEC / Qiyas)',
+      instructions:['Answer ALL 25 multiple-choice questions from choices A, B, C, D.',
+        'Calculators are strictly PROHIBITED.',
+        'Covers Saudi Secondary Pathways Mathematics (Years 1–3) in English medium.'],
+      sections:[
+        {title:'SAAT Mathematics Achievement (English Medium)',time:'50 min',
+         note:'25 questions · Logic, Matrices, Complex Numbers, Functions, Logs, Conics, Vectors & Calculus · No calculator',
+         domains:['SAAT Logic, Polynomials, Matrices & Complex Numbers','SAAT Functions, Sequences & Logarithms','SAAT Trigonometry, Conics & Vectors','SAAT Differential & Integral Calculus'],
+         parts:[{label:'SAAT Mathematics',q:25,time:'50 min',calc:false,type:'mcq',subtrackFilter:'saat-en',note:'No calculator allowed.'}]}]},
+
+    'Olympiad Stage 1 — Integer Entry Qualifier':{
+      title:'Olympiad Stage 1 — Short-Answer Integer Entry Qualifier (000–999)',totalTime:'90 min',
+      bankId:'olympiad',
+      logo:'Olympiad Stage 1',org:'NSMO of KSA · KAUST KMC · AIME Qualifier Format',
+      instructions:['Answer ALL 15 integer-entry problems — 90 minutes.',
+        'Each answer is an integer (or exact rational value) computed without any calculator.',
+        'Calculators, protractors, and graph paper with grid formulas are strictly prohibited.'],
+      sections:[
+        {title:'Stage 1 — Integer Entry Qualifier',time:'90 min',
+         note:'15 short-answer response problems · No calculator permitted',
+         parts:[{label:'Problems 1–15',q:15,time:'90 min',calc:false,type:'spr',note:'No calculator permitted.'}]}]},
+
+    'Olympiad Stage 2 — National Finals Deductive Proof Paper':{
+      title:'Olympiad Stage 2 — National Finals Deductive Proof Paper',totalTime:'3 hr',
+      bankId:'olympiad',
+      logo:'Olympiad Stage 2',org:'NSMO National Finals · IMO Team Selection Format',
+      instructions:['Attempt ALL 6 multi-part proof problems — 3 hours (7 marks per problem, 42 marks total).',
+        'Every claim must be justified rigorously with definitions, lemmas, and clear deductive steps.',
+        'Calculators and electronic aids are strictly prohibited.'],
+      sections:[
+        {title:'Stage 2 — Deductive Proof Examination',time:'3 hr',
+         note:'6 structured proof questions · 7 marks each · No calculator permitted',
+         parts:[{label:'Proof Problems 1–6',q:6,time:'180 min',calc:false,type:'frq',structuredOnly:true,defaultMarks:7,note:'Write complete proofs. Partial marks are awarded via rubric milestones.'}]}]},
 
     olympiad:{
       title:'Contest Math & Olympiad (Core Olympiad · NSMO of KSA · KAUST KMC)',totalTime:'90 min',
@@ -1576,6 +1637,10 @@
          note:'18 questions · 1 mark each',
          parts:[{label:'Questions 19–36',q:18,time:'60 min',calc:false,type:'mcq'}]}]}
   };
+  window.examSpecs['ib-aa-sl'] = Object.assign({}, window.examSpecs['IB Math SL (AA)'], { ibCourseSlug: 'ib-aa-sl' });
+  window.examSpecs['ib-ai-sl'] = Object.assign({}, window.examSpecs['IB Math SL (AI)'], { ibCourseSlug: 'ib-ai-sl' });
+  window.examSpecs['ib-aa-hl'] = Object.assign({}, window.examSpecs['IB Math HL (AA)'], { ibCourseSlug: 'ib-aa-hl' });
+  window.examSpecs['ib-ai-hl'] = Object.assign({}, window.examSpecs['IB Math HL (AI)'], { ibCourseSlug: 'ib-ai-hl' });
 
 
   /* ===================== FULL EXAM GENERATOR ===================== */
@@ -1817,40 +1882,106 @@
        IB section (Section A short-response, Section B extended-response, or Paper 3 investigation),
        course (AA / AI / Both), and calculator policy. */
     var _needsOptions=/which of the following|which (one|statement|expression|equation|graph|table|value|point|option)/i;
+    function _isQCItem(q){
+      if(!q) return false;
+      return Boolean((q.qc_col_a && q.qc_col_b) || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'') || /قارن بين|القيمة الأولى|Quantity A/i.test(q.text||q.q||''));
+    }
+    function _renderPartsFallback(q, fmtFn){
+      if(!q || !Array.isArray(q.parts) || !q.parts.length) return '';
+      if(window.CSStructuredFRQ && typeof window.CSStructuredFRQ.renderPrintableSubparts === 'function'){
+        return window.CSStructuredFRQ.renderPrintableSubparts(q, fmtFn, 'en');
+      }
+      var out = '<div class="cs-print-subparts" style="margin-top:8px;display:flex;flex-direction:column;gap:6px">';
+      q.parts.forEach(function(pt){
+        out += '<div class="cs-print-subpart" style="display:flex;justify-content:space-between;gap:10px;align-items:baseline">'
+          + '<div><strong>(' + esc(pt.label || '') + ')</strong> ' + fmtFn(pt.prompt || '') + '</div>'
+          + '<span style="font-weight:700;white-space:nowrap;font-size:.82rem">[' + (Number(pt.marks)||1) + ']</span>'
+          + '</div>';
+      });
+      out += '</div>';
+      return out;
+    }
+    function _renderMarkSchemeFallback(q, fmtFn){
+      if(!q || !Array.isArray(q.parts) || !q.parts.length) return '';
+      if(window.CSStructuredFRQ && typeof window.CSStructuredFRQ.renderPrintableMarkScheme === 'function'){
+        return window.CSStructuredFRQ.renderPrintableMarkScheme(q, fmtFn, 'en');
+      }
+      var out = '<table class="exam-table" style="width:100%;border-collapse:collapse;margin:8px 0;font-size:.82rem"><thead><tr><th>Part</th><th>Expected</th><th>Marks &amp; Rubric</th></tr></thead><tbody>';
+      q.parts.forEach(function(pt){
+        var rb = (pt.rubric || []).map(function(r){ return '<strong>[' + esc(r.code||'M1') + ']</strong> ' + fmtFn(r.criterion||''); }).join('<br>');
+        out += '<tr><td><strong>(' + esc(pt.label||'') + ')</strong></td><td>' + fmtFn(pt.answer_latex || pt.answer || '') + '</td><td>[' + (Number(pt.marks)||1) + '] ' + rb + '</td></tr>';
+      });
+      out += '</tbody></table>';
+      return out;
+    }
     function drawForPart(pool,part){
+      // WP-37: Strict No-Calculator filter — never draw calc:true items into a No-Calc part
+      var basePool = (part && part.calc === false)
+        ? pool.filter(function(q){ return q.calc === false; })
+        : pool.slice();
+      if(part && part.subtrackFilter){
+        var stPool = basePool.filter(function(q){ return q.subtrack === part.subtrackFilter; });
+        if(stPool.length >= part.q) basePool = stPool;
+      }
+      if(part && part.qcOnly){
+        var qcP = basePool.filter(_isQCItem);
+        if(qcP.length) basePool = qcP;
+      } else if(part && part.excludeQC){
+        var nonQcP = basePool.filter(function(q){ return !_isQCItem(q); });
+        if(nonQcP.length >= part.q) basePool = nonQcP;
+      }
+
       var isPartFree = (part.type==='frq' || part.type==='spr');
       if(isPartFree){
-        var frqPool = pool.filter(function(q){return q.type==='frq' || q.type==='spr';});
+        if(part.type === 'spr'){
+          var sprOnly = basePool.filter(function(q){ return q.type === 'spr'; });
+          var gotSpr = drawQ(sprOnly, part.q);
+          if(gotSpr.length < part.q){
+            gotSpr = gotSpr.concat(drawQ(basePool.filter(function(q){ return q.type==='frq' || !_needsOptions.test(q.text||q.q||''); }), part.q - gotSpr.length));
+          }
+          if(gotSpr.length < part.q) gotSpr = gotSpr.concat(drawQ(basePool, part.q - gotSpr.length));
+          return gotSpr;
+        }
+        var frqPool = basePool.filter(function(q){return q.type==='frq' || q.type==='spr' || q.type==='structured' || q.type==='proof';});
+        var structPool = frqPool.filter(function(q){return (q.type==='structured' || q.type==='proof') && Array.isArray(q.parts) && q.parts.length >= 2;});
         var got = [];
-        if(part.ibSection || part.ibCourse || part.ibPaper){
+        if(part.structuredOnly && structPool.length){
+          got = drawQ(structPool, part.q);
+        } else if(part.ibSection || part.ibCourse || part.ibPaper){
           var exactIB = frqPool.filter(function(q){
             var secOk = !part.ibSection || q.ibSection === part.ibSection || (part.ibSection === 'Paper 3' && /P3|Paper 3/i.test(q.paper||'')) || (part.ibSection === 'Section B' && (q.marks >= 12));
-            var crsOk = !part.ibCourse || !q.course || q.course === 'Both' || q.course.indexOf(part.ibCourse) !== -1;
+            var crsMatch = !part.ibCourse || !q.course || q.course === 'Both' || q.course.toUpperCase().indexOf(part.ibCourse.toUpperCase()) !== -1;
             var calcOk = (typeof part.calc !== 'boolean') || (typeof q.calc !== 'boolean') || q.calc === part.calc;
-            return secOk && crsOk && calcOk;
+            return secOk && crsMatch && calcOk;
           });
-          got = drawQ(exactIB, part.q);
+          var exactStructIB = exactIB.filter(function(q){ return Array.isArray(q.parts) && q.parts.length >= 2; });
+          got = drawQ(exactStructIB, part.q);
+          if(got.length < part.q){
+            got = got.concat(drawQ(exactIB, part.q - got.length));
+          }
           if(got.length < part.q){
             var secIB = frqPool.filter(function(q){
               return !part.ibSection || q.ibSection === part.ibSection || (part.ibSection === 'Section B' ? (q.marks >= 11) : (part.ibSection === 'Paper 3' ? (q.marks >= 20) : (q.marks <= 10)));
             });
             got = got.concat(drawQ(secIB, part.q - got.length));
           }
+        } else if(structPool.length){
+          got = drawQ(structPool, part.q);
         }
         if(got.length<part.q) got=got.concat(drawQ(frqPool,part.q-got.length));
-        if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq' && q.type!=='spr' && !_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
-        if(got.length<part.q) got=got.concat(drawQ(pool,part.q-got.length));
+        if(got.length<part.q) got=got.concat(drawQ(basePool.filter(function(q){return q.type!=='frq' && q.type!=='spr' && q.type!=='structured' && q.type!=='proof' && !_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
+        if(got.length<part.q) got=got.concat(drawQ(basePool,part.q-got.length));
         return got;
       }
       if(part.type==='mcq'){
-        /* prefer items with exactly the exam's option count (4-option exams skip old 5-option items) */
-        var nOpt=(part.letters||globalLetters).length, mcq=pool.filter(function(q){return q.type!=='frq' && q.type!=='spr';});
-        var got2=drawQ(mcq.filter(function(q){return !q.choices||q.choices.length===nOpt;}),part.q);
+        /* prefer items with exactly the exam's option count; never draw structured/proof items without choices into MCQ parts */
+        var nOpt=(part.letters||globalLetters).length;
+        var mcq=basePool.filter(function(q){return q.type!=='frq' && q.type!=='spr' && q.type!=='structured' && q.type!=='proof' && Array.isArray(q.choices) && q.choices.length >= 2;});
+        var got2=drawQ(mcq.filter(function(q){return q.choices.length===nOpt;}),part.q);
         if(got2.length<part.q) got2=got2.concat(drawQ(mcq,part.q-got2.length));
-        if(got2.length<part.q) got2=got2.concat(drawQ(pool,part.q-got2.length));
         return got2;
       }
-      return drawQ(pool,part.q);
+      return drawQ(basePool,part.q);
     }
     function renderQFig(q){
       var f = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
@@ -2016,7 +2147,7 @@
     /* ── SPEC-DRIVEN PATH — real exam standards + mandatory pre-display revision pass ── */
     var totalMCQ=0,totalFRQ=0;
     spec.sections.forEach(function(sec){sec.parts.forEach(function(p){
-      if(p.type==='mcq')totalMCQ+=p.q; else if(p.type==='frq')totalFRQ+=p.q;
+      if(p.type==='mcq')totalMCQ+=p.q; else if(p.type==='frq' || p.type==='spr')totalFRQ+=p.q;
     });});
     var totalQ=totalMCQ+totalFRQ;
 
@@ -2025,11 +2156,25 @@
     var _allDrawnEntries = [];
     spec.sections.forEach(function(sec, si){
       sec.parts.forEach(function(part, pi){
+        var strictPool = bank.pool.filter(function(q){
+          if(part.calc === false && q.calc !== false) return false;
+          return true;
+        });
+        var effSubtrack = part.subtrackFilter || spec.subtrackFilter;
+        if(effSubtrack){
+          var subMatched = strictPool.filter(function(q){ return q.subtrack === effSubtrack; });
+          if(subMatched.length >= part.q) strictPool = subMatched;
+        }
+        var effCourseSlug = part.ibCourseSlug || spec.ibCourseSlug;
+        if(effCourseSlug){
+          var crsMatched = strictPool.filter(function(q){ return q.course === effCourseSlug; });
+          if(crsMatched.length >= part.q) strictPool = crsMatched;
+        }
         var partDomains = part.domains || sec.domains;
-        var poolToUse = (partDomains && partDomains.length) ? bank.pool.filter(function(q){
+        var poolToUse = (partDomains && partDomains.length) ? strictPool.filter(function(q){
           return partDomains.indexOf(q.domain) !== -1;
-        }) : bank.pool;
-        if(poolToUse.length < part.q) poolToUse = bank.pool;
+        }) : strictPool;
+        if(poolToUse.length < part.q) poolToUse = strictPool;
         var rawQs = drawForPart(poolToUse, part);
         rawQs.forEach(function(q){
           _allDrawnEntries.push({
@@ -2078,9 +2223,10 @@
     h+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">'+'<img src="'+((document.getElementById('site-logo-img')||{}).src||'/clipsat-mark.png')+'" class="fep-logo-img" alt="ClipSAT Logo"></div>';
     h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">'+(isIBExam?'IB DP Official Format Examination':'Practice Examination')+'</span></div>';
     h+='<h1 class="fep-title">'+esc(spec.title)+'</h1>';
-    if(viewId === 'qudrat' || viewId === 'tahsili'){
-      var curLang = 'both';
-      try{ curLang = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+    var _menaBiPrint = { qudrat:1, tahsili:1, gaten:1, 'gat-en':1, 'saat-en':1, sat:1, est:1, est2:1, est2l2:1, igcse:1 };
+    if(_menaBiPrint[viewId]){
+      var curLang = (viewId === 'qudrat' || viewId === 'tahsili') ? 'both' : 'en';
+      try{ curLang = localStorage.getItem('clipsat_exam_lang') || curLang; }catch(e){}
       h+='<div class="fep-lang-bar" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 12px">'
         + '<span style="font-size:.82rem;font-weight:600">Language / لغة الطباعة:</span>'
         + '<div class="cs-lang-toggle-group" role="group" aria-label="Exam Language">'
@@ -2166,7 +2312,7 @@
       sec.parts.forEach(function(part){
         var pL=part.letters||globalLetters;
         var isMCQPart=(part.type==='mcq');
-        var isFRQPart=(part.type==='frq');
+        var isFRQPart=(part.type==='frq' || part.type==='spr');
 
         if(part.label){
           h+='<div class="fep-part-head">';
@@ -2184,17 +2330,19 @@
         if(part.q>1)h+='<div class="fep-q-count">Questions '+partStart+'–'+(partStart+part.q-1)+'</div>';
 
         qs.forEach(function(q){
-          var isFree = isFRQPart || (q.type==='frq' || q.type==='spr');
+          var isFree = isFRQPart || (q.type==='frq' || q.type==='spr' || q.type==='structured' || q.type==='proof');
           var isMCQ = !isFree && (isMCQPart || (q.type==='mcq'||q.type==='data'));
           if(isMCQPart){isFree=false;isMCQ=true;}
           if(isFRQPart){isFree=true;isMCQ=false;}
 
           var qMarks = Number(q.marks) || part.defaultMarks || (isIBExam ? 6 : 1);
-          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (q.finalAnswer != null ? String(q.finalAnswer) : (q.ans != null ? String(q.ans) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'See Markscheme'))))));
-          answerKey.push({n:qNum,type:(isFree?(q.type==='spr'?'spr':'frq'):'mcq'),domain:q.domain,
+          var firstPartAns = (Array.isArray(q.parts) && q.parts.length && (q.parts[q.parts.length-1].answer_latex || q.parts[q.parts.length-1].answer)) || '';
+          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (q.finalAnswer != null ? String(q.finalAnswer) : (q.ans != null ? String(q.ans) : (firstPartAns ? String(firstPartAns) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'See Markscheme')))))));
+          var capType = isFree ? ((part.type==='spr' || q.type==='spr') ? 'spr' : 'frq') : 'mcq';
+          answerKey.push({n:qNum,type:capType,domain:q.domain,
             marks:qMarks,answer:ansDisplay,sol:q.sol||q.exp||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:qMarks,ans:ansDisplay,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:capType,points:qMarks,ans:ansDisplay,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
 
           h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+(isIBExam?' ib-question-card':'')+'" data-q-id="'+esc(q.id||'')+'" data-topic-id="'+esc(q.topic_id||'')+'" data-track="'+esc(viewId)+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'.</span>';
@@ -2205,17 +2353,24 @@
             h+='<span class="fep-type-tag frq-tag">'+(part.ibSection || q.ibSection || 'Written FRQ')+'</span>';
           } else {
             h+='<span class="fep-domain-tag">'+esc(q.domain||'')+'</span>';
-            if(isFree)h+='<span class="fep-type-tag frq-tag">'+(q.type==='spr'?'SPR':'FRQ')+'</span>';
+            if(isFree)h+='<span class="fep-type-tag frq-tag">'+(capType==='spr'?'SPR':'FRQ')+'</span>';
           }
           h+='</div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
-          var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'')))
+          var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || _isQCItem(q)))
             ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
-          var _qBodyHtml = _fmtBi(_maths(q.text||q.q||''));
+          var rawQText = q.text || q.q || '';
+          if(q.text_ar && !/[\u0600-\u06FF]/.test(rawQText) && _menaBiPrint[viewId] && (!spec || !spec.defaultLang)){
+            rawQText = q.text_ar + '<br><em>' + rawQText + '</em>';
+          }
+          var _qBodyHtml = _fmtBi(_maths(rawQText));
           if(spec && spec.defaultLang === 'en' && _qBodyHtml.indexOf('q-lang-en') === -1){
             _qBodyHtml = '<span class="q-lang-en" dir="ltr">' + _qBodyHtml + '</span>';
           }
-          h+='<div class="fep-qbody">'+_qBodyHtml+_qCardHtml+'</div>';
+          var _subpartsHtml = (isFree && Array.isArray(q.parts) && q.parts.length)
+            ? _renderPartsFallback(q, function(s){ return _fmtBi(_maths(s)); })
+            : '';
+          h+='<div class="fep-qbody">'+_qBodyHtml+_qCardHtml+_subpartsHtml+'</div>';
           if(isMCQ&&q.choices){
             h+='<div class="fep-choices">';
             q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
@@ -2245,7 +2400,10 @@
           if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
             h+='<div style="margin-left:28pt">' + window.CSHintEngine.renderHintWidget(q, 'fep-sp-' + qNum) + '</div>';
           }
-          h+='<div class="fep-sol-block" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
+          var _msTableHtml = (isFree && Array.isArray(q.parts) && q.parts.length)
+            ? _renderMarkSchemeFallback(q, function(s){ return _fmtBi(_maths(s)); })
+            : '';
+          h+='<div class="fep-sol-block" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div>'+_msTableHtml+'<div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
           h+='</div>';
           qNum++;
         });
@@ -2336,8 +2494,9 @@
       .replace(/Which of the following/gi, 'Determine the expression that')
       .replace(/Select the correct[^.]*\./gi, '');
 
-    var hasSubparts = /\([a-c]\)|\([i]+\)/i.test(rawStem);
-    var hasMarkTags = /\[\d+\s*(marks?|m)?\]/i.test(rawStem);
+    var hasStructuredParts = Array.isArray(item.parts) && item.parts.length >= 2;
+    var hasSubparts = hasStructuredParts || /\([a-c]\)|\([i]+\)/i.test(rawStem);
+    var hasMarkTags = hasStructuredParts || /\[\d+\s*(marks?|m)?\]/i.test(rawStem);
     if(!hasSubparts){
       var m1 = Math.max(2, Math.floor(targetMarks * 0.4));
       var m2 = targetMarks - m1;
@@ -2426,8 +2585,9 @@
           if(pass === 1 && !isStemOrFigDup) break;
           for(var k = 0; k < pool.length; k++){
             var alt = pool[k];
-            if(isIB && alt.type !== 'frq' && k < pool.length - 20) continue;
-            if(needMcq && (!Array.isArray(alt.choices) || alt.choices.length < 2)) continue;
+            if(pMeta && pMeta.calc === false && alt.calc !== false) continue;
+            if(isIB && alt.type !== 'frq' && alt.type !== 'structured' && alt.type !== 'proof' && k < pool.length - 20) continue;
+            if(needMcq && (alt.type === 'structured' || alt.type === 'proof' || !Array.isArray(alt.choices) || alt.choices.length < 2)) continue;
             var altS = _normStemSig(alt.text || alt.q || '');
             if(!altS || seenStems.has(altS) || futureStemCounts.has(altS)) continue;
             var altT = _normTmplSig(alt.text || alt.q || '');
@@ -2558,6 +2718,25 @@
 
   /* Official ETEC/Qiyas Two-Column Quantitative Comparison Card Renderer */
   window.CSRenderQiyasComparisonCard = function(q, mathFn){
+    var fmt = typeof mathFn === 'function' ? mathFn : function(x){ return x; };
+    if(q && (q.qc_col_a || q.qc_col_a_ar) && (q.qc_col_b || q.qc_col_b_ar)){
+      var qA_ar0 = String(q.qc_col_a_ar || '').trim();
+      var qB_ar0 = String(q.qc_col_b_ar || '').trim();
+      var qA_en0 = String(q.qc_col_a || '').trim();
+      var qB_en0 = String(q.qc_col_b || '').trim();
+      var colA0 = (qA_ar0 ? '<div dir="rtl" style="font-weight:700;font-size:.92rem;color:#0f172a">' + fmt(qA_ar0) + '</div>' : '')
+        + (qA_en0 && qA_en0 !== qA_ar0 ? '<div dir="ltr" style="font-size:.82rem;color:#475569;margin-top:3px">' + fmt(qA_en0) + '</div>' : '');
+      var colB0 = (qB_ar0 ? '<div dir="rtl" style="font-weight:700;font-size:.92rem;color:#0f172a">' + fmt(qB_ar0) + '</div>' : '')
+        + (qB_en0 && qB_en0 !== qB_ar0 ? '<div dir="ltr" style="font-size:.82rem;color:#475569;margin-top:3px">' + fmt(qB_en0) + '</div>' : '');
+      return '<div class="qiyas-qc-box" style="display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #94a3b8;border-radius:8px;overflow:hidden;margin:10px 0 4px;background:#f8fafc;text-align:center;font-family:var(--sans)">'
+        + '<div style="border-right:1.5px solid #cbd5e1">'
+        + '<div style="background:#e2e8f0;padding:5px 10px;font-weight:700;font-size:.8rem;color:#1e293b">القيمة الأولى &middot; Quantity A</div>'
+        + '<div style="padding:10px 12px">' + colA0 + '</div></div>'
+        + '<div>'
+        + '<div style="background:#e2e8f0;padding:5px 10px;font-weight:700;font-size:.8rem;color:#1e293b">القيمة الثانية &middot; Quantity B</div>'
+        + '<div style="padding:10px 12px">' + colB0 + '</div></div>'
+        + '</div>';
+    }
     var raw = String((q && (q.text || q.q)) || '');
     if(!/القيمة الأولى|Quantity A/i.test(raw)) return '';
     var mAr = raw.match(/القيمة الأولى\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+و\s*|\s*،\s*)القيمة الثانية\s*:\s*([^\n<]*)/);
@@ -2567,7 +2746,6 @@
     var qB_ar = mAr ? mAr[2].trim().replace(/[.\s]+$/, '') : '';
     var qA_en = mEn ? mEn[1].trim().replace(/[.\s]+$/, '') : '';
     var qB_en = mEn ? mEn[2].trim().replace(/[.\s]+$/, '') : '';
-    var fmt = typeof mathFn === 'function' ? mathFn : function(x){ return x; };
     var colA = (qA_ar ? '<div dir="rtl" style="font-weight:700;font-size:.92rem;color:#0f172a">' + fmt(qA_ar) + '</div>' : '')
       + (qA_en && qA_en !== qA_ar ? '<div dir="ltr" style="font-size:.82rem;color:#475569;margin-top:3px">' + fmt(qA_en) + '</div>' : '');
     var colB = (qB_ar ? '<div dir="rtl" style="font-weight:700;font-size:.92rem;color:#0f172a">' + fmt(qB_ar) + '</div>' : '')

@@ -147,16 +147,20 @@ function showPracticeQuiz(ov, questions, origMistake){
     var qo = questions[current];
       var pct = Math.round(((current+1)/total)*100);
       var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
-      var qRendered = typeof window.CSQuizMath==='function'?window.CSQuizMath(qo.q):escHtml(qo.q);
+      var _isArUI = (typeof document !== 'undefined') && ((document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl')));
+      var rawStem = (_isArUI && qo.text_ar) ? qo.text_ar : (qo.q || qo.text || '');
+      var rawChoices = (_isArUI && Array.isArray(qo.choices_ar) && qo.choices_ar.length) ? qo.choices_ar : (qo.choices || []);
+      var qRendered = typeof window.CSQuizMath==='function'?window.CSQuizMath(rawStem):escHtml(rawStem);
       var pqHintHtml = (window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function')
         ? window.CSHintEngine.renderHintWidget({
-            text: qo.q,
+            text: rawStem,
             domain: (origMistake && (origMistake.domain || origMistake.src)) || 'Mathematics',
-            sol: qo.sol || qo.explanation || '',
-            hints: qo.hints
+            sol: (_isArUI && qo.sol_ar) ? qo.sol_ar : (qo.sol || qo.explanation || ''),
+            hints: qo.hints,
+            hints_ar: qo.hints_ar
           }, 'pq-' + current)
         : '';
-      ov.innerHTML = '<div style="background:var(--panel);border-radius:16px;padding:24px 28px;max-width:580px;width:90%;margin:auto;position:relative">'
+      ov.innerHTML = '<div style="background:var(--panel);border-radius:16px;padding:24px 28px;max-width:580px;width:90%;margin:auto;position:relative" dir="' + (_isArUI ? 'rtl' : 'ltr') + '">'
       + '<button onclick="document.getElementById(\'pq-overlay\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--muted);padding:2px 6px;border-radius:4px" title="Close">&times;</button>'
       + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
       + '<span style="font-size:.78rem;color:var(--muted)">Practice Quiz &mdash; Question '+(current+1)+' of '+total+'</span>'
@@ -165,7 +169,7 @@ function showPracticeQuiz(ov, questions, origMistake){
       + '</div>'
       + '<p style="font-size:.95rem;line-height:1.7;color:var(--ink);margin:0 0 20px" id="pq-qtext">'+_fmtBi(qRendered)+'</p>'
       + '<div id="pq-choices">'
-      + (qo.choices||[]).map(function(c,i){
+      + rawChoices.map(function(c,i){
           var letter = String.fromCharCode(65+i);
           var s = typeof window.CSAutoMath==='function' ? window.CSAutoMath(c) : c;
           var m = typeof window.CSQuizMath==='function' ? window.CSQuizMath(s) : escHtml(s);

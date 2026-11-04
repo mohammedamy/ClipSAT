@@ -117,7 +117,7 @@
         "style": "def",
         "label": {
           "en": "● Level 1 Foundation — Definition 1.2: Partial Derivatives & Coordinate Traces",
-          "ar": "● Level 1 Foundation — تعريف 1.2: Partial المشتقات & الإحداثي Traces"
+          "ar": null
         },
         "body": {
           "en": "<p>Fixing \\( y = b \\) restricts the surface \\( z = f(x, y) \\) to the vertical plane \\( y = b \\), generating the 1D trace curve \\( C_1: z = f(x, b) \\). The slope of the tangent line to \\( C_1 \\) at \\( x = a \\) is the <strong>partial derivative with respect to \\( x \\)</strong>:</p>\\[ f_x(a, b) = \\frac{\\partial f}{\\partial x}(a, b) = \\lim_{h \\to 0} \\frac{f(a+h, b) - f(a, b)}{h}. \\]<p>Similarly, fixing \\( x = a \\) yields the trace curve \\( C_2: z = f(a, y) \\) in the plane \\( x = a \\), whose slope at \\( y = b \\) is the <strong>partial derivative with respect to \\( y \\)</strong>:</p>\\[ f_y(a, b) = \\frac{\\partial f}{\\partial y}(a, b) = \\lim_{k \\to 0} \\frac{f(a, b+k) - f(a, b)}{k}. \\]<p><strong>Operational Rule:</strong> To compute \\( \\frac{\\partial f}{\\partial x} \\), treat \\( y \\) as a constant and differentiate with respect to \\( x \\) using standard single-variable calculus rules. To compute \\( \\frac{\\partial f}{\\partial y} \\), treat \\( x \\) as a constant.</p>",
@@ -157,11 +157,11 @@
           "columns": [
             {
               "en": "\\(x\\)",
-              "ar": "\\(x\\)"
+              "ar": null
             },
             {
               "en": "\\(g(x)\\)",
-              "ar": "\\(g(x)\\)"
+              "ar": null
             },
             {
               "en": "tangent \\(y\\)",
@@ -192,7 +192,7 @@
             "id": "mvcSliceF",
             "label": {
               "en": "\\(f(1, c)\\)",
-              "ar": "\\(f(1, c)\\)"
+              "ar": null
             },
             "colorClass": "indigo",
             "value": "\\(4.700\\)"
@@ -201,7 +201,7 @@
             "id": "mvcSliceFx",
             "label": {
               "en": "\\(f\\)<sub>\\(x\\)</sub>\\((1, c)\\)",
-              "ar": "\\(f\\)<sub>\\(x\\)</sub>\\((1, c)\\)"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(-0.600\\)"
@@ -216,7 +216,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.A (Level 1) — Path-Dependent Limit Non-Existence",
-          "ar": "مثال محلول 1.A (Level 1) — Path-Dependent النهاية Non-Existence"
+          "ar": null
         },
         "problem": {
           "en": "Evaluate \\( \\lim_{(x,y) \\to (0,0)} \\frac{2x^2 y}{x^4 + y^2} \\) or prove that it does not exist.",
@@ -256,7 +256,7 @@
         "style": "pf",
         "label": {
           "en": "Formal Proof of Clairaut's Theorem (Double Mean Value Theorem)",
-          "ar": "Formal برهان of Clairaut's مبرهنة (Double Mean Value مبرهنة)"
+          "ar": null
         },
         "body": {
           "en": "<p>Fix \\( (a, b) \\in D \\). For small nonzero increments \\( h, k \\) such that the rectangle \\( [a, a+h] \\times [b, b+k] \\subset D \\), define the second-order difference quotient: \\[ \\Delta(h, k) = f(a+h, b+k) - f(a+h, b) - f(a, b+k) + f(a, b). \\]</p><p><strong>Perspective 1 (\\( x \\) then \\( y \\)):</strong> Define the auxiliary single-variable function \\( g(t) = f(t, b+k) - f(t, b) \\). Then: \\[ \\Delta(h, k) = g(a+h) - g(a). \\] Since \\( f_x \\) exists, \\( g \\) is differentiable with derivative \\( g'(t) = f_x(t, b+k) - f_x(t, b) \\). By the Mean Value Theorem on \\( [a, a+h] \\), there exists \\( c_1 \\in (a, a+h) \\) such that: \\[ \\Delta(h, k) = h \\, g'(c_1) = h \\left[ f_x(c_1, b+k) - f_x(c_1, b) \\right]. \\] Now define \\( \\phi(s) = f_x(c_1, s) \\). Applying the Mean Value Theorem to \\( \\phi \\) on \\( [b, b+k] \\), there exists \\( d_1 \\in (b, b+k) \\) such that: \\[ f_x(c_1, b+k) - f_x(c_1, b) = k \\, \\phi'(d_1) = k \\, f_{xy}(c_1, d_1). \\] Substituting back: \\[ \\Delta(h, k) = h k \\, f_{xy}(c_1, d_1) \\implies \\frac{\\Delta(h, k)}{h k} = f_{xy}(c_1, d_1). \\]</p><p><strong>Perspective 2 (\\( y \\) then \\( x \\)):</strong> Symmetrically, define \\( G(s) = f(a+h, s) - f(a, s) \\). Then \\( \\Delta(h, k) = G(b+k) - G(b) \\). Applying the Mean Value Theorem first to \\( G \\) on \\( [b, b+k] \\) (yielding \\( d_2 \\in (b, b+k) \\)) and then to \\( t \\mapsto f_y(t, d_2) \\) on \\( [a, a+h] \\) (yielding \\( c_2 \\in (a, a+h) \\)): \\[ \\Delta(h, k) = h k \\, f_{yx}(c_2, d_2) \\implies \\frac{\\Delta(h, k)}{h k} = f_{yx}(c_2, d_2). \\]</p><p><strong>Equating perspectives and taking limits:</strong> Since both expressions equal \\( \\frac{\\Delta(h, k)}{h k} \\): \\[ f_{xy}(c_1, d_1) = f_{yx}(c_2, d_2). \\] As \\( (h, k) \\to (0, 0) \\), \\( (c_1, d_1) \\to (a, b) \\) and \\( (c_2, d_2) \\to (a, b) \\). By continuity of \\( f_{xy} \\) and \\( f_{yx} \\) at \\( (a, b) \\): \\[ f_{xy}(a, b) = \\lim_{(h,k) \\to (0,0)} f_{xy}(c_1, d_1) = \\lim_{(h,k) \\to (0,0)} f_{yx}(c_2, d_2) = f_{yx}(a, b). \\quad \\blacksquare \\]</p>",
@@ -352,7 +352,7 @@
             },
             "value": {
               "en": "\\( f_x = \\lim_{h \\to 0} \\frac{f(x+h, y) - f(x, y)}{h} \\) (hold \\( y \\) fixed)",
-              "ar": "\\( f_x = \\lim_{h \\to 0} \\frac{f(x+h, y) - f(x, y)}{h} \\) (hold \\( y \\) fixed) (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)"
+              "ar": "\\(f_x = \\lim_{h \\to 0} \\frac{f(x+h, y) - f(x, y)}{h}\\) (hold \\(y\\) fixed) (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)"
             }
           },
           {
@@ -362,7 +362,7 @@
             },
             "value": {
               "en": "\\( z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\)",
-              "ar": "\\( z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\)"
+              "ar": null
             }
           },
           {
@@ -372,7 +372,7 @@
             },
             "value": {
               "en": "\\( dz = f_x \\, dx + f_y \\, dy \\)",
-              "ar": "\\( dz = f_x \\, dx + f_y \\, dy \\)"
+              "ar": null
             }
           },
           {
@@ -427,7 +427,7 @@
         },
         "caption": {
           "en": "Coordinate slices (traces) through the elliptic paraboloid \\( z = 4 - x^2 - y^2 \\). Holding \\( y = 0 \\) yields the parabolic curve \\( z = 4 - x^2 \\) with slope \\( \\partial z / \\partial x = -2x \\), showing how partial derivatives measure slope along cross sections parallel to coordinate axes.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق."
+          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق. \\(z = 4 - x^2 - y^2\\) ، \\(y = 0\\) ، \\(z = 4 - x^2\\) ، \\(\\partial z / \\partial x = -2x\\)"
         }
       },
       {
@@ -438,11 +438,11 @@
         },
         "problem": {
           "en": "For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\).",
-          "ar": "<strong>Problem (Medium):</strong> For \\( f(x,y)=5 x^{2} + y^{2} \\), find \\( f_y(2,-1) \\)."
+          "ar": "لـ \\( f(x,y)=5 x^{2} + y^{2} \\), أوجد \\( f_y(2,-1) \\)."
         },
         "solution": {
           "en": "<p>\\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>",
-          "ar": "<p><strong>Step-by-Step الحل:</strong> \\( f_y=2 y \\), so \\( f_y(2,-1)=2(-1)=-2 \\).</p>"
+          "ar": "<p><strong>Step-by-Step الحل:</strong> \\(f_y=2 y\\), so \\(f_y(2,-1)=2(-1)=-2\\).</p>"
         }
       },
       {
@@ -477,7 +477,7 @@
             },
             {
               "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
-              "ar": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\). (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)"
+              "ar": null
             }
           ],
           [
@@ -505,7 +505,7 @@
             },
             {
               "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
-              "ar": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\). (الدوال متعددة المتغيرات والنهايات والمشتقات الجزئية وقابلية الاشتقاق)"
+              "ar": null
             }
           ]
         ]
@@ -515,7 +515,7 @@
         "style": "tip",
         "label": {
           "en": "▲ Exam Pacing & Verification Strategy — Functions of Several Variables, Limits, Partial Derivatives & Differentiability",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — الدوال of Several المتغيرات, النهايات, Partial المشتقات & Differentiability"
+          "ar": null
         },
         "body": {
           "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
@@ -551,12 +551,12 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · 3D Tangent Plane & Surface Normal",
-          "ar": "⊙ مستكشف · المستوى المماس ثلاثي الأبعاد والمتجه العمودي على السطح"
+          "ar": "⊙ مستكشف · المستوى المماس ثلاثي الأبعاد والمتجه العمودي على السطح (3)"
         },
         "canvasId": "mvcTangentCanvas",
         "ariaLabel": {
           "en": "Interactive 3D model of curved surface with dynamic tangent plane and normal vector",
-          "ar": "نموذج ثلاثي الأبعاد تفاعلي لسطح منحني مع مستوى مماس ومتجه عمود"
+          "ar": null
         },
         "canvas3d": {
           "btnId": "mvcTangent3dBtn",
@@ -565,7 +565,7 @@
           "btnLabel": "🧊 View Tangent Plane & Normal in 3D",
           "ariaLabel": {
             "en": "Interactive 3D model of curved surface with dynamic tangent plane and normal vector",
-            "ar": "نموذج ثلاثي الأبعاد تفاعلي لسطح منحني مع مستوى مماس ومتجه عمود"
+            "ar": null
           }
         },
         "dataPanel": {
@@ -593,7 +593,7 @@
             "id": "mvcTanX0",
             "label": {
               "en": "Point \\(x_{0} =\\)",
-              "ar": "الإحداثي x₀ ="
+              "ar": "النقطة \\(x_{0} =\\)"
             },
             "min": -3,
             "max": 3,
@@ -609,7 +609,7 @@
             "id": "mvcTanY0",
             "label": {
               "en": "Point \\(y_{0} =\\)",
-              "ar": "الإحداثي y₀ ="
+              "ar": "النقطة \\(y_{0} =\\)"
             },
             "min": -3,
             "max": 3,
@@ -627,7 +627,7 @@
             "id": "mvcTanPt",
             "label": {
               "en": "Tangent Point \\(P(x_{0}, y_{0}, z_{0})\\)",
-              "ar": "نقطة التماس P(x₀, y₀, z₀)"
+              "ar": "المماس النقطة \\(P(x_{0}, y_{0}, z_{0})\\)"
             },
             "colorClass": "indigo",
             "value": "\\((1.0, 1.5, 3.25)\\)"
@@ -636,7 +636,7 @@
             "id": "mvcTanFx",
             "label": {
               "en": "Slope in \\(x\\)-direction \\(f_x\\)",
-              "ar": "الميل باتجاه x (f_x)"
+              "ar": "الميل في \\(x\\)-الاتجاه \\(f_x\\)"
             },
             "colorClass": "amber",
             "value": "\\(-0.60\\)"
@@ -645,7 +645,7 @@
             "id": "mvcTanFy",
             "label": {
               "en": "Slope in \\(y\\)-direction \\(f_y\\)",
-              "ar": "الميل باتجاه y (f_y)"
+              "ar": "الميل في \\(y\\)-الاتجاه \\(f_y\\)"
             },
             "colorClass": "amber",
             "value": "\\(-0.60\\)"
@@ -663,7 +663,7 @@
             "id": "mvcTanNormal",
             "label": {
               "en": "Upward Normal Vector \\(n\\)",
-              "ar": "متجه العمود العلوي n"
+              "ar": null
             },
             "colorClass": "amber",
             "value": "\\(\\langle 0.60, 0.60, 1.00\\rangle\\)"
@@ -671,7 +671,7 @@
         ],
         "note": {
           "en": "University Multivariable Rigor: The tangent plane is the best linear approximation to the surface near \\((x_0, y_0)\\). The upward surface normal \\( \\mathbf{n} = \\langle -f_x, -f_y, 1 \\rangle \\) is orthogonal to every tangent vector on the surface!",
-          "ar": "العمق الجامعي في حساب التفاضل متعدد المتغيرات: المستوى المماس هو أفضل تقريب خطي للسطح بالقرب من \\((x_0, y_0)\\). المتجه العمودي العلوي على السطح \\( \\mathbf{n} = \\langle -f_x, -f_y, 1 \\rangle \\) متعامد مع كل متجه مماس على السطح!"
+          "ar": "العمق الجامعي في حساب التفاضل متعدد المتغيرات: المستوى المماس هو أفضل تقريب خطي للسطح بالقرب من \\((x_0, y_0)\\). المتجه العمودي العلوي على السطح \\(\\mathbf{n} = \\langle -f_x, -f_y, 1 \\rangle\\) متعامد مع كل متجه مماس على السطح!"
         }
       },
       {
@@ -733,7 +733,7 @@
         "hints": [
           {
             "en": "Since \\( \\nabla h = \\langle 15, 8 \\rangle \\),: \\(\\| \\nabla h\\|^2\\).",
-            "ar": "تلميح للحل: استخدم العلاقة \\( \\nabla h = \\langle 15, 8 \\rangle \\) ، \\(\\| \\nabla h\\|^2\\) لتبسيط الخطوة."
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\nabla h = \\langle 15, 8 \\rangle\\) ، \\(\\| \\nabla h\\|^2\\) لتبسيط الخطوة."
           },
           {
             "en": "Rewrite and substitute: \\(\\| \\nabla h\\|^2 = 15^2 + 8^2\\).",
@@ -741,24 +741,24 @@
           },
           {
             "en": "Evaluate \\(15^2 + 8^2\\) to obtain the final answer.",
-            "ar": "احسب قيمة \\(15^2 + 8^2\\) to obtain the final answer."
+            "ar": null
           }
         ],
         "solution": {
           "en": "Since \\(\n\\nabla h = \\langle 15, 8 \\rangle \\), \\( \\|\n\\nabla h\\|^2 = 15^2 + 8^2 = 289 \\).",
-          "ar": "خطوات الحل التفصيلية: Since \\(\n\\nabla h = \\langle 15, 8 \\rangle \\), \\( \\|\n\\nabla h\\|^2 = 15^2 + 8^2 = 289 \\)."
+          "ar": "خطوات الحل التفصيلية: Since \\(\\nabla h = \\langle 15, 8 \\rangle\\), \\(\\|\n\\nabla h\\|^2 = 15^2 + 8^2 = 289\\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "For \\( f(x,y)=7 x^{2} + 4 y^{2} \\), find \\( f_y(-3,1) \\).",
-          "ar": "For \\( f(x,y)=7 x^{2} + 4 y^{2} \\), أوجد \\( f_y(-3,1) \\)."
+          "ar": "For \\(f(x,y)=7 x^{2} + 4 y^{2}\\), أوجد \\(f_y(-3,1)\\)."
         },
         "hints": [
           {
             "en": "Set up the initial relation: \\( f_y=8 y \\).",
-            "ar": "ابدأ بكتابة العلاقة الأساسية: \\( f_y=8 y \\)."
+            "ar": "ابدأ بكتابة العلاقة الأساسية: \\(f_y=8 y\\)."
           },
           {
             "en": "So: \\(f_y(-3,1)\\). Rewrite and substitute: \\(f_y(-3,1) = 8(1)\\).",
@@ -766,7 +766,7 @@
           },
           {
             "en": "Evaluate \\(8(1)\\) to obtain the final answer.",
-            "ar": "احسب قيمة \\(8(1)\\) to obtain the final answer."
+            "ar": null
           }
         ],
         "solution": {
@@ -780,11 +780,11 @@
         "style": "def",
         "label": {
           "en": "● Master Atlas of the 9 Main Parent Functions & Universal Transformation Law",
-          "ar": "● الأطلس الشامل للدوال الأم التسع وقانون التحويلات الهندسية العام"
+          "ar": null
         },
         "body": {
           "en": "<p>Every algebraic and elementary transcendental model is built by transforming one of the <strong>nine core parent functions</strong> via \\(g(x) = a\\,f(x - h) + k\\), where \\(|a|\\) scales vertically (reflecting across the \\(x\\)-axis if \\(a < 0\\)), \\(h\\) shifts horizontally, and \\(k\\) shifts vertically:</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Family</th><th>Transformed Form \\(g(x)\\)</th><th>Domain</th><th>Range (\\(a > 0\\))</th><th>Key Geometric Feature</th></tr></thead><tbody><tr><td><strong>Constant</strong></td><td>\\(f(x) = c\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\(\\{c\\}\\)</td><td>Horizontal line, slope \\(0\\)</td></tr><tr><td><strong>Linear</strong></td><td>\\(a(x - h) + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>Constant slope \\(m = a\\), pivot \\((h, k)\\)</td></tr><tr><td><strong>Quadratic</strong></td><td>\\(a(x - h)^2 + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\([k, \\infty)\\)</td><td>Parabola vertex \\((h, k)\\), axis \\(x = h\\)</td></tr><tr><td><strong>Cubic</strong></td><td>\\(a(x - h)^3 + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>Inflection center \\((h, k)\\), S-curve</td></tr><tr><td><strong>Absolute Value</strong></td><td>\\(a|x - h| + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\([k, \\infty)\\)</td><td>V-corner vertex \\((h, k)\\), slopes \\(\\pm a\\)</td></tr><tr><td><strong>Radical</strong></td><td>\\(a\\sqrt{x - h} + k\\)</td><td>\\([h, \\infty)\\)</td><td>\\([k, \\infty)\\)</td><td>Endpoint \\((h, k)\\), half-parabola</td></tr><tr><td><strong>Rational</strong></td><td>\\(\\dfrac{a}{x - h} + k\\)</td><td>\\(x \\neq h\\)</td><td>\\(y \\neq k\\)</td><td>Vertical asymptote \\(x = h\\), horizontal \\(y = k\\)</td></tr><tr><td><strong>Exponential</strong></td><td>\\(a \\cdot 2^{x - h} + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((k, \\infty)\\)</td><td>Horizontal asymptote \\(y = k\\), anchor \\((h, a+k)\\)</td></tr><tr><td><strong>Logarithmic</strong></td><td>\\(a\\ln(x - h) + k\\)</td><td>\\((h, \\infty)\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>Vertical asymptote \\(x = h\\), anchor \\((h+1, k)\\)</td></tr></tbody></table>",
-          "ar": "<p>تُبنى النماذج الجبرية والمتسامية الأساسية من خلال تطبيق التحويل القياسي \\(g(x) = a\\,f(x - h) + k\\) على إحدى <strong>الدوال الأم التسع</strong>، حيث يتحكم \\(|a|\\) في التمدد الرأسي (مع انعكاس حول محور السينات إذا كان \\(a < 0\\))، ويمثل \\(h\\) الإزاحة الأفقية، و\\(k\\) الإزاحة الرأسية:</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>عائلة الدالة</th><th>الصورة المحوّلة \\(g(x)\\)</th><th>المجال</th><th>المدى (\\(a > 0\\))</th><th>السمة الهندسية المميزة</th></tr></thead><tbody><tr><td><strong>الثابتة</strong></td><td>\\(f(x) = c\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\(\\{c\\}\\)</td><td>مستقيم أفقي ميله \\(0\\)</td></tr><tr><td><strong>الخطية</strong></td><td>\\(a(x - h) + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>ميل ثابت \\(m = a\\) ونقطة ارتكاز \\((h, k)\\)</td></tr><tr><td><strong>التربيعية</strong></td><td>\\(a(x - h)^2 + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\([k, \\infty)\\)</td><td>قطع مكافئ رأسه \\((h, k)\\) ومحوره \\(x = h\\)</td></tr><tr><td><strong>التكعيبية</strong></td><td>\\(a(x - h)^3 + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>نقطة انعطاف مركزية \\((h, k)\\)</td></tr><tr><td><strong>القيمة المطلقة</strong></td><td>\\(a|x - h| + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\([k, \\infty)\\)</td><td>رأس زاوي على شكل V عند \\((h, k)\\) بميلين \\(\\pm a\\)</td></tr><tr><td><strong>الجذرية</strong></td><td>\\(a\\sqrt{x - h} + k\\)</td><td>\\([h, \\infty)\\)</td><td>\\([k, \\infty)\\)</td><td>نقطة بداية \\((h, k)\\) ومجال مقيّد \\(x \\ge h\\)</td></tr><tr><td><strong>النسبية (المقلوب)</strong></td><td>\\(\\dfrac{a}{x - h} + k\\)</td><td>\\(x \\neq h\\)</td><td>\\(y \\neq k\\)</td><td>تقارب رأسي \\(x = h\\) وتقارب أفقي \\(y = k\\)</td></tr><tr><td><strong>الأسية</strong></td><td>\\(a \\cdot 2^{x - h} + k\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((k, \\infty)\\)</td><td>تقارب أفقي \\(y = k\\) ونقطة ارتكاز \\((h, a+k)\\)</td></tr><tr><td><strong>اللوغاريتمية</strong></td><td>\\(a\\ln(x - h) + k\\)</td><td>\\((h, \\infty)\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>تقارب رأسي \\(x = h\\) ونقطة ارتكاز \\((h+1, k)\\)</td></tr></tbody></table>"
+          "ar": null
         }
       },
       {
@@ -792,12 +792,12 @@
         "id": "cs-uge-mvc-partials-mainfn-exp",
         "title": {
           "en": "⊙ Explorer · 1D Cross-Section Traces \\(g(x) = f(x, y_0)\\) & Parent Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مقاطع الأثر أحادية البعد \\(g(x) = f(x, y_0)\\) وعائلات الدوال الأم"
+          "ar": "⊙ مستكشف تفاعلي · مقاطع الأثر أحادية البعد \\(g(x) = f(x, y_0)\\) وعائلات الدوال الأم (1)"
         },
         "canvasId": "uge_mvcpartials_mainfnCanvas",
         "ariaLabel": {
           "en": "Interactive Cartesian grapher for all 9 main parent functions (constant, linear, quadratic, cubic, absolute, radical, rational, exponential, logarithmic) with draggable anchor (h, k) and scale slider a.",
-          "ar": "راسم بياني تفاعلي للدوال الأم التسع جميعاً (الثابتة، الخطية، التربيعية، التكعيبية، القيمة المطلقة، الجذرية، النسبية، الأسية، اللوغاريتمية) مع سحب مباشر للنقطة المحورية (h, k) ومعامل التمدد a."
+          "ar": null
         },
         "dataPanel": {
           "btnId": "uge_mvcpartials_mainfnDataBtn",
@@ -811,7 +811,7 @@
           "columns": [
             {
               "en": "\\(x\\)",
-              "ar": "\\(x\\)"
+              "ar": null
             },
             {
               "en": "Parent \\(f(x)\\)",
@@ -986,7 +986,7 @@
         ],
         "note": {
           "en": "Starts on the <strong>quadratic family</strong> \\(f(x) = a(x - h)^2 + k\\) with vertex \\((h, k)\\) and axis of symmetry \\(x = h\\). Drag the vertex on the graph or compare across all 9 parent families.",
-          "ar": "يبدأ على <strong>الدالة التربيعية</strong> \\(f(x) = a(x - h)^2 + k\\) برأس \\((h, k)\\) ومحور تماثل \\(x = h\\). اسحب الرأس مباشرةً على الرسم أو قارن بين عائلات الدوال الأم التسع."
+          "ar": null
         }
       },
       {

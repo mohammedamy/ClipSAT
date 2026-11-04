@@ -40,7 +40,7 @@ function strictFilter(code, msg) {
   return 'error';
 }
 
-const SKIP_KEYS = new Set(['svg', 'code', 'fn', 'expr', 'tikz']);
+const SKIP_KEYS = new Set(['svg', 'code', 'fn', 'expr', 'tikz', 'sympy_cert', 'educator_review_hash']);
 
 let totalStrings = 0;
 let totalSegments = 0;

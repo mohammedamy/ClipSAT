@@ -1,6 +1,13 @@
 {% import "partials/_bilingual.njk" as bl with context %}
 {% set _locPrefix = '/ar' if pageLocale == 'ar' else '' %}
+{% set _hubMeta = (trackData and trackData.meta and trackData.meta.meta) or _courseMeta %}
 <section class="chapter ch-active cs-syllabus-hub" id="{{ trackId }}-syllabus">
+  {% if _hubMeta and _hubMeta.scopeNotice %}
+  <div class="callout note cs-scope-notice" role="note" style="margin-bottom:14px">
+    <span class="lab">{% if pageLocale == 'ar' %}نطاق الاختبار والتغطية{% else %}Exam Scope &amp; Coverage{% endif %}</span>
+    <p style="margin:4px 0 0">{{ bl.text(_hubMeta.scopeNotice, 'span', pageLocale) }}</p>
+  </div>
+  {% endif %}
   <div class="chead">
     <span class="cn">\( \Sigma \)</span>
     <h2>{% if pageLocale == 'ar' %}الفصول التفاعلية وخارطة المنهج ({{ chapters | length }} فصول){% else %}Course Syllabus &amp; Interactive Chapters ({{ chapters | length }} Chapters){% endif %}</h2>
