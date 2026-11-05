@@ -225,14 +225,76 @@ begin
     raise exception 'Invalid class code';
   end if;
   insert into public.class_members(class_id, student_id, display_name, consent_given, consent_at)
-    values (v_class_id, v_uid, left(nullif(trim(p_display_name), ''), 80), true, now())
-    on conflict on constraint class_members_pkey do update
+    values (v_class_id, v_uid, substr(nullif(trim(p_display_name), ''), 1, 80), true, now())
+    on conflict (class_id, student_id) do update
       set display_name = excluded.display_name, consent_given = true, consent_at = now();
   return query select v_class_id, v_name;
 end;
 $$ language plpgsql security definer set search_path = public;
 revoke all on function public.join_class_by_code(text, text, boolean) from public, anon;
 grant execute on function public.join_class_by_code(text, text, boolean) to authenticated, service_role;
+
+-- ── assignments: "assign a chapter/mock exam to a roster" (Pillar 3 Scale
+--    phase) — the other half of the teacher/parent view, alongside the
+--    aggregate-mastery reads below. One row per assignment a teacher hands
+--    to a whole class; `track` is a ClipSAT track id (e.g. "calculus"),
+--    `label` is free text (e.g. "Chapter 3: Derivatives" or "Mock Exam 2")
+--    since assignments aren't tied to a specific chapter-content id, just a
+--    track + a human-readable description. See public/js/teacher-view.js.
+create table if not exists public.assignments (
+  id         uuid primary key default gen_random_uuid(),
+  class_id   uuid not null references public.classes(id) on delete cascade,
+  track      text not null,
+  label      text not null,
+  due_date   date,
+  created_at timestamptz not null default now()
+);
+
+-- ── assignment_completions: a student's own self-reported "done" mark ────
+create table if not exists public.assignment_completions (
+  assignment_id uuid not null references public.assignments(id) on delete cascade,
+  student_id    uuid not null references auth.users(id) on delete cascade,
+  completed_at  timestamptz not null default now(),
+  primary key (assignment_id, student_id)
+);
+
+alter table public.assignments enable row level security;
+alter table public.assignment_completions enable row level security;
+
+drop policy if exists "teacher manages own assignments" on public.assignments;
+drop policy if exists "student reads class assignments" on public.assignments;
+drop policy if exists "student manages own completion" on public.assignment_completions;
+drop policy if exists "teacher reads roster completions" on public.assignment_completions;
+
+-- Teacher creates/renames/deletes assignments only for classes they own.
+create policy "teacher manages own assignments" on public.assignments for all using (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+) with check (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+);
+-- A student sees assignments for any class they're a member of.
+create policy "student reads class assignments" on public.assignments for select using (
+  exists (select 1 from public.class_members cm where cm.class_id = assignments.class_id and cm.student_id = auth.uid())
+);
+
+-- A student manages only their own completion row, and only for an
+-- assignment in a class they're actually a member of.
+create policy "student manages own completion" on public.assignment_completions for all using (
+  auth.uid() = student_id
+) with check (
+  auth.uid() = student_id
+  and exists (
+    select 1 from public.assignments a join public.class_members cm on cm.class_id = a.class_id
+    where a.id = assignment_completions.assignment_id and cm.student_id = auth.uid()
+  )
+);
+-- The teacher sees who's done, for aggregate counts — never write access.
+create policy "teacher reads roster completions" on public.assignment_completions for select using (
+  exists (
+    select 1 from public.assignments a join public.classes c on c.id = a.class_id
+    where a.id = assignment_completions.assignment_id and c.owner_id = auth.uid()
+  )
+);
 
 -- Track-scoped, read-only teacher visibility (WP-44): teachers only see accuracy,
 -- mistakes, and visits matching the track(s) of classes/assignments the student joined.
@@ -269,76 +331,6 @@ create policy "teacher reads roster profile" on public.profiles for select using
   exists (
     select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
     where cm.student_id = profiles.user_id and cm.consent_given = true and c.owner_id = auth.uid()
-  )
-);
-
--- ── assignments: "assign a chapter/mock exam to a roster" (Pillar 3 Scale
---    phase) — the other half of the teacher/parent view, alongside the
---    aggregate-mastery reads above. One row per assignment a teacher hands
---    to a whole class; `track` is a ClipSAT track id (e.g. "calculus"),
---    `label` is free text (e.g. "Chapter 3: Derivatives" or "Mock Exam 2")
---    since assignments aren't tied to a specific chapter-content id, just a
---    track + a human-readable description. See public/js/teacher-view.js.
-create table if not exists public.assignments (
-  id         uuid primary key default gen_random_uuid(),
-  class_id   uuid not null references public.classes(id) on delete cascade,
-  track      text not null,
-  label      text not null,
-  due_date   date,
-  created_at timestamptz not null default now()
-);
-
--- ── assignment_completions: a student's own self-reported "done" mark ────
--- Deliberately self-reported, not auto-derived from accuracy/chapter_visits
--- — inferring "completed" from quiz activity would need a way to tie an
--- attempt to a specific assignment, which the bank/quiz engine has no
--- concept of. A simple checkbox is honest about what it is instead of
--- guessing. Teachers still see genuine mastery signal from the roster's
--- existing weakest-areas/accuracy columns alongside this completion count.
-create table if not exists public.assignment_completions (
-  assignment_id uuid not null references public.assignments(id) on delete cascade,
-  student_id    uuid not null references auth.users(id) on delete cascade,
-  completed_at  timestamptz not null default now(),
-  primary key (assignment_id, student_id)
-);
-
-alter table public.assignments enable row level security;
-alter table public.assignment_completions enable row level security;
-
-drop policy if exists "teacher manages own assignments" on public.assignments;
-drop policy if exists "student reads class assignments" on public.assignments;
-drop policy if exists "student manages own completion" on public.assignment_completions;
-drop policy if exists "teacher reads roster completions" on public.assignment_completions;
-
--- Teacher creates/renames/deletes assignments only for classes they own.
-create policy "teacher manages own assignments" on public.assignments for all using (
-  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
-) with check (
-  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
-);
--- A student sees assignments for any class they're a member of.
-create policy "student reads class assignments" on public.assignments for select using (
-  exists (select 1 from public.class_members cm where cm.class_id = assignments.class_id and cm.student_id = auth.uid())
-);
-
--- A student manages only their own completion row, and only for an
--- assignment in a class they're actually a member of (mirrors the "opt-in,
--- never auto-shared" privacy shape of class_members/join_class_by_code).
-create policy "student manages own completion" on public.assignment_completions for all using (
-  auth.uid() = student_id
-) with check (
-  auth.uid() = student_id
-  and exists (
-    select 1 from public.assignments a join public.class_members cm on cm.class_id = a.class_id
-    where a.id = assignment_completions.assignment_id and cm.student_id = auth.uid()
-  )
-);
--- The teacher sees who's done, for aggregate counts — never write access,
--- same read-only shape as "teacher reads roster …" above.
-create policy "teacher reads roster completions" on public.assignment_completions for select using (
-  exists (
-    select 1 from public.assignments a join public.classes c on c.id = a.class_id
-    where a.id = assignment_completions.assignment_id and c.owner_id = auth.uid()
   )
 );
 
@@ -877,7 +869,7 @@ begin
     on conflict (id) do update set secret_hex = excluded.secret_hex;
   end if;
   v_payload := v_sub_id::text || ':' || v_uid::text || ':' || v_track || ':' || p_score::text || '/' || p_total::text || ':' || v_keys;
-  v_sig := encode(extensions.hmac(v_payload::bytea, v_secret::bytea, 'sha256'), 'hex');
+  v_sig := encode(extensions.hmac(convert_to(v_payload, 'UTF8'), convert_to(v_secret, 'UTF8'), 'sha256'), 'hex');
   insert into public.assignment_submissions (
     id, assignment_id, class_id, student_id, track, assignment_keys, score, total, answers, hmac_sig
   ) values (
@@ -891,7 +883,7 @@ begin
     values (p_assignment_id, v_uid, now())
     on conflict (assignment_id, student_id) do update set completed_at = now();
   end if;
-  return query select v_sub_id, v_sig, ('CS-VERIFIED-' || v_sub_id::text || '-' || upper(left(v_sig, 16)))::text;
+  return query select v_sub_id, v_sig, ('CS-VERIFIED-' || v_sub_id::text || '-' || upper(substr(v_sig, 1, 16)))::text;
 end;
 $$ language plpgsql security definer set search_path = public, extensions;
 
@@ -920,8 +912,8 @@ begin
   end if;
   select s.secret_hex into v_secret from public.assignment_signing_secrets s where s.id = 1;
   v_payload := v_row.id::text || ':' || v_row.student_id::text || ':' || v_row.track || ':' || v_row.score::text || '/' || v_row.total::text || ':' || v_row.assignment_keys;
-  v_expect := encode(extensions.hmac(v_payload::bytea, coalesce(v_secret, '')::bytea, 'sha256'), 'hex');
-  if v_expect = v_row.hmac_sig and (v_clean = v_expect or v_clean = left(v_expect, 16)) then
+  v_expect := encode(extensions.hmac(convert_to(v_payload, 'UTF8'), convert_to(coalesce(v_secret, ''), 'UTF8'), 'sha256'), 'hex');
+  if v_expect = v_row.hmac_sig and (v_clean = v_expect or v_clean = substr(v_expect, 1, 16)) then
     return query select true, v_row.student_id, v_row.track, v_row.score, v_row.total, v_row.created_at;
   else
     return query select false, null::uuid, null::text, null::integer, null::integer, null::timestamptz;

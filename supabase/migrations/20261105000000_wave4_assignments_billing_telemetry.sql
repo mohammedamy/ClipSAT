@@ -1,18 +1,174 @@
 -- Wave 4 (WP-44, WP-45, WP-46): Server-Verified Teacher Assignments, Scoped Privacy,
 -- Automated SAR Billing Provisioning (Moyasar + Stripe), and 30-Day Telemetry Retention
 -- ════════════════════════════════════════════════════════════════════════════════════════
+-- Self-contained & idempotent: safe to run in full in the Supabase SQL Editor even if
+-- intermediate schema tables (`public.assignments`, `public.assignment_completions`,
+-- `public.client_errors`, etc.) were not previously created on the live database.
 
 create schema if not exists extensions;
 create extension if not exists pgcrypto with schema extensions;
 
--- ── 1. Scoped Teacher Classes, Student Consent & Join Rate Limiting (WP-44) ────────────
+-- ── 0. Ensure Prerequisite Core & Teacher/Assignment Tables Exist ──────────────────────
+create table if not exists public.profiles (
+  user_id        uuid primary key references auth.users(id) on delete cascade,
+  xp             integer not null default 0,
+  streak         integer not null default 0,
+  daily_goal     integer not null default 10,
+  dg_today       integer not null default 0,
+  dg_today_date  date,
+  dg_streak      integer not null default 0,
+  exam_date      date,
+  updated_at     timestamptz not null default now()
+);
+alter table public.profiles enable row level security;
+
+create table if not exists public.mistakes (
+  user_id       uuid not null references auth.users(id) on delete cascade,
+  id            text not null,
+  view_id       text default '',
+  q             text default '',
+  wrong         text default '',
+  correct       text default '',
+  domain        text default '',
+  src           text default '',
+  ts            bigint not null,
+  reviewed_at   bigint default 0,
+  ease_factor   real default 2.5,
+  interval_days integer default 1,
+  next_review   bigint,
+  deleted_at    timestamptz default null,
+  updated_at    timestamptz not null default now(),
+  primary key (user_id, id)
+);
+alter table public.mistakes
+  add column if not exists deleted_at timestamptz default null;
+create index if not exists idx_mistakes_user_active
+  on public.mistakes (user_id)
+  where deleted_at is null;
+alter table public.mistakes enable row level security;
+
+create table if not exists public.chapter_visits (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  track      text not null,
+  count      integer not null default 0,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, track)
+);
+alter table public.chapter_visits enable row level security;
+
+create table if not exists public.accuracy (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  track      text not null,
+  domain     text not null,
+  day        date not null,
+  correct    integer not null default 0,
+  total      integer not null default 0,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, track, domain, day)
+);
+alter table public.accuracy enable row level security;
+
+create table if not exists public.classes (
+  id         uuid primary key default gen_random_uuid(),
+  owner_id   uuid not null references auth.users(id) on delete cascade,
+  name       text not null,
+  code       text not null unique,
+  track      text default null,
+  created_at timestamptz not null default now()
+);
 alter table public.classes
   add column if not exists track text default null;
+alter table public.classes enable row level security;
 
+drop policy if exists "own classes" on public.classes;
+create policy "own classes" on public.classes for all
+  using (auth.uid() = owner_id) with check (auth.uid() = owner_id);
+
+create table if not exists public.class_members (
+  class_id      uuid not null references public.classes(id) on delete cascade,
+  student_id    uuid not null references auth.users(id) on delete cascade,
+  display_name  text,
+  consent_given boolean not null default true,
+  consent_at    timestamptz not null default now(),
+  joined_at     timestamptz not null default now(),
+  primary key (class_id, student_id)
+);
 alter table public.class_members
   add column if not exists consent_given boolean not null default true,
   add column if not exists consent_at    timestamptz not null default now();
+alter table public.class_members enable row level security;
 
+drop policy if exists "own membership"         on public.class_members;
+drop policy if exists "leave class"            on public.class_members;
+drop policy if exists "teacher sees roster"    on public.class_members;
+drop policy if exists "teacher removes member" on public.class_members;
+
+create policy "own membership" on public.class_members
+  for select using (auth.uid() = student_id);
+create policy "leave class" on public.class_members
+  for delete using (auth.uid() = student_id);
+create policy "teacher sees roster" on public.class_members
+  for select using (
+    exists (select 1 from public.classes c where c.id = class_id and c.owner_id = auth.uid())
+  );
+create policy "teacher removes member" on public.class_members
+  for delete using (
+    exists (select 1 from public.classes c where c.id = class_id and c.owner_id = auth.uid())
+  );
+
+create table if not exists public.assignments (
+  id         uuid primary key default gen_random_uuid(),
+  class_id   uuid not null references public.classes(id) on delete cascade,
+  track      text not null,
+  label      text not null,
+  due_date   date,
+  created_at timestamptz not null default now()
+);
+alter table public.assignments enable row level security;
+
+create table if not exists public.assignment_completions (
+  assignment_id uuid not null references public.assignments(id) on delete cascade,
+  student_id    uuid not null references auth.users(id) on delete cascade,
+  completed_at  timestamptz not null default now(),
+  primary key (assignment_id, student_id)
+);
+alter table public.assignment_completions enable row level security;
+
+drop policy if exists "teacher manages own assignments"  on public.assignments;
+drop policy if exists "student reads class assignments"  on public.assignments;
+drop policy if exists "student manages own completion"   on public.assignment_completions;
+drop policy if exists "teacher reads roster completions" on public.assignment_completions;
+
+create policy "teacher manages own assignments" on public.assignments for all using (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+) with check (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+);
+
+create policy "student reads class assignments" on public.assignments for select using (
+  exists (select 1 from public.class_members cm where cm.class_id = assignments.class_id and cm.student_id = auth.uid())
+);
+
+create policy "student manages own completion" on public.assignment_completions for all using (
+  auth.uid() = student_id
+) with check (
+  auth.uid() = student_id
+  and exists (
+    select 1 from public.assignments a
+    join public.class_members cm on cm.class_id = a.class_id
+    where a.id = assignment_completions.assignment_id and cm.student_id = auth.uid()
+  )
+);
+
+create policy "teacher reads roster completions" on public.assignment_completions for select using (
+  exists (
+    select 1 from public.assignments a
+    join public.classes c on c.id = a.class_id
+    where a.id = assignment_completions.assignment_id and c.owner_id = auth.uid()
+  )
+);
+
+-- ── 1. Scoped Teacher Classes, Student Consent & Join Rate Limiting (WP-44) ────────────
 create table if not exists public.class_join_attempts (
   id           bigint generated always as identity primary key,
   user_id      uuid not null references auth.users(id) on delete cascade,
@@ -32,7 +188,11 @@ create or replace function public.join_class_by_code(
   p_display_name text default null,
   p_consent      boolean default true
 )
-returns table(class_id uuid, class_name text) as $$
+returns table(class_id uuid, class_name text)
+language plpgsql
+security definer
+set search_path = public
+as $fn$
 declare
   v_uid      uuid := auth.uid();
   v_recent   integer;
@@ -81,18 +241,18 @@ begin
   values (
     v_class_id,
     v_uid,
-    left(nullif(trim(p_display_name), ''), 80),
+    substr(nullif(trim(p_display_name), ''), 1, 80),
     true,
     now()
   )
-  on conflict on constraint class_members_pkey do update
+  on conflict (class_id, student_id) do update
      set display_name  = excluded.display_name,
          consent_given = true,
          consent_at    = now();
 
   return query select v_class_id, v_name;
 end;
-$$ language plpgsql security definer set search_path = public;
+$fn$;
 
 revoke all on function public.join_class_by_code(text, text, boolean) from public, anon;
 grant execute on function public.join_class_by_code(text, text, boolean) to authenticated, service_role;
@@ -101,6 +261,7 @@ grant execute on function public.join_class_by_code(text, text, boolean) to auth
 drop policy if exists "teacher reads roster accuracy"       on public.accuracy;
 drop policy if exists "teacher reads roster mistakes"       on public.mistakes;
 drop policy if exists "teacher reads roster chapter visits" on public.chapter_visits;
+drop policy if exists "teacher reads roster profile"        on public.profiles;
 drop policy if exists "teachers_read_scoped_class_accuracy" on public.accuracy;
 drop policy if exists "teachers_read_scoped_class_mistakes" on public.mistakes;
 drop policy if exists "teachers_read_scoped_class_visits"   on public.chapter_visits;
@@ -163,6 +324,18 @@ create policy "teachers_read_scoped_class_visits" on public.chapter_visits
     )
   );
 
+create policy "teacher reads roster profile" on public.profiles
+  for select to authenticated using (
+    exists (
+      select 1
+        from public.class_members cm
+        join public.classes c on c.id = cm.class_id
+       where cm.student_id = profiles.user_id
+         and cm.consent_given = true
+         and c.owner_id = auth.uid()
+    )
+  );
+
 -- ── 2. Server-Verified Assignment Submissions & HMAC Certificates (WP-44) ──────────────
 create table if not exists public.assignment_signing_secrets (
   id         smallint primary key default 1 check (id = 1),
@@ -196,7 +369,7 @@ create index if not exists idx_assignment_submissions_assignment
 
 alter table public.assignment_submissions enable row level security;
 
-drop policy if exists "student reads own submissions"  on public.assignment_submissions;
+drop policy if exists "student reads own submissions"   on public.assignment_submissions;
 drop policy if exists "teacher reads class submissions" on public.assignment_submissions;
 
 create policy "student reads own submissions" on public.assignment_submissions
@@ -232,12 +405,16 @@ create or replace function public.submit_verified_assignment(
   p_assignment_id   uuid default null,
   p_class_id        uuid default null
 )
-returns table(submission_id uuid, hmac_sig text, verify_code text) as $$
+returns table(submission_id uuid, hmac_sig text, verify_code text)
+language plpgsql
+security definer
+set search_path = public, extensions
+as $fn$
 declare
   v_uid     uuid := auth.uid();
   v_sub_id  uuid := gen_random_uuid();
   v_track   text := lower(trim(coalesce(p_track, '')));
-  v_keys    text := left(trim(coalesce(p_assignment_keys, '')), 2000);
+  v_keys    text := substr(trim(coalesce(p_assignment_keys, '')), 1, 2000);
   v_secret  text;
   v_payload text;
   v_sig     text;
@@ -270,7 +447,7 @@ begin
   end if;
 
   v_payload := v_sub_id::text || ':' || v_uid::text || ':' || v_track || ':' || p_score::text || '/' || p_total::text || ':' || v_keys;
-  v_sig := encode(extensions.hmac(v_payload::bytea, v_secret::bytea, 'sha256'), 'hex');
+  v_sig := encode(extensions.hmac(convert_to(v_payload, 'UTF8'), convert_to(v_secret, 'UTF8'), 'sha256'), 'hex');
 
   insert into public.assignment_submissions (
     id, assignment_id, class_id, student_id, track, assignment_keys, score, total, answers, hmac_sig
@@ -292,9 +469,9 @@ begin
   return query select
     v_sub_id,
     v_sig,
-    ('CS-VERIFIED-' || v_sub_id::text || '-' || upper(left(v_sig, 16)))::text;
+    ('CS-VERIFIED-' || v_sub_id::text || '-' || upper(substr(v_sig, 1, 16)))::text;
 end;
-$$ language plpgsql security definer set search_path = public, extensions;
+$fn$;
 
 revoke all on function public.submit_verified_assignment(text, text, integer, integer, jsonb, uuid, uuid) from public, anon;
 grant execute on function public.submit_verified_assignment(text, text, integer, integer, jsonb, uuid, uuid) to authenticated, service_role;
@@ -310,7 +487,11 @@ returns table(
   score        integer,
   total        integer,
   submitted_at timestamptz
-) as $$
+)
+language plpgsql
+security definer
+set search_path = public, extensions
+as $fn$
 declare
   v_row     public.assignment_submissions%rowtype;
   v_secret  text;
@@ -333,20 +514,34 @@ begin
 
   select s.secret_hex into v_secret from public.assignment_signing_secrets s where s.id = 1;
   v_payload := v_row.id::text || ':' || v_row.student_id::text || ':' || v_row.track || ':' || v_row.score::text || '/' || v_row.total::text || ':' || v_row.assignment_keys;
-  v_expect := encode(extensions.hmac(v_payload::bytea, coalesce(v_secret, '')::bytea, 'sha256'), 'hex');
+  v_expect := encode(extensions.hmac(convert_to(v_payload, 'UTF8'), convert_to(coalesce(v_secret, ''), 'UTF8'), 'sha256'), 'hex');
 
-  if v_expect = v_row.hmac_sig and (v_clean = v_expect or v_clean = left(v_expect, 16)) then
+  if v_expect = v_row.hmac_sig and (v_clean = v_expect or v_clean = substr(v_expect, 1, 16)) then
     return query select true, v_row.student_id, v_row.track, v_row.score, v_row.total, v_row.created_at;
   else
     return query select false, null::uuid, null::text, null::integer, null::integer, null::timestamptz;
   end if;
 end;
-$$ language plpgsql security definer set search_path = public, extensions;
+$fn$;
 
 revoke all on function public.verify_assignment_certificate(uuid, text) from public, anon;
 grant execute on function public.verify_assignment_certificate(uuid, text) to authenticated, service_role;
 
 -- ── 3. Automated SAR Checkout Entitlements & Webhook Idempotency (WP-45) ───────────────
+create table if not exists public.ai_plans (
+  user_id              uuid primary key references auth.users(id) on delete cascade,
+  tier                 text not null default 'free' check (tier in ('free', 'paid')),
+  paid_until           timestamptz,
+  provider             text default null,
+  external_customer_id text default null,
+  external_sub_id      text default null,
+  daily_credits        integer not null default 20,
+  trial_ends_at        timestamptz default null,
+  cancel_at_period_end boolean not null default false,
+  updated_at           timestamptz not null default now()
+);
+alter table public.ai_plans enable row level security;
+
 alter table public.ai_plans
   add column if not exists provider              text default null,
   add column if not exists external_customer_id  text default null,
@@ -373,6 +568,20 @@ alter table public.billing_webhook_events enable row level security;
 -- Zero client policies on billing_webhook_events (service_role only).
 
 -- ── 4. Cookieless Item Calibration Telemetry & 30-Day Error Auto-Pruning (WP-46) ───────
+create table if not exists public.client_errors (
+  id         bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  track      text,
+  message    text not null,
+  source     text,
+  line       integer,
+  col        integer,
+  stack      text,
+  user_agent text,
+  page_url   text
+);
+alter table public.client_errors enable row level security;
+
 create table if not exists public.item_calibration_telemetry (
   id          bigint generated always as identity primary key,
   created_at  timestamptz not null default now(),
@@ -394,27 +603,35 @@ create or replace function public.log_item_calibration(
   p_rapid_guess boolean default false,
   p_theta_est   real default null
 )
-returns void as $$
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $fn$
 begin
   if p_track is null or length(trim(p_track)) = 0 or p_item_id is null or length(trim(p_item_id)) = 0 then
     return;
   end if;
   insert into public.item_calibration_telemetry (track, item_id, correct, dwell_ms, rapid_guess, theta_est)
   values (
-    left(lower(trim(p_track)), 40),
-    left(trim(p_item_id), 80),
+    substr(lower(trim(p_track)), 1, 40),
+    substr(trim(p_item_id), 1, 80),
     coalesce(p_correct, false),
     greatest(0, least(coalesce(p_dwell_ms, 0), 3600000)),
     coalesce(p_rapid_guess, false),
     case when p_theta_est is null then null else greatest(-5.0, least(5.0, p_theta_est)) end
   );
 end;
-$$ language plpgsql security definer set search_path = public;
+$fn$;
 
 grant execute on function public.log_item_calibration(text, text, boolean, integer, boolean, real) to anon, authenticated, service_role;
 
 create or replace function public.prune_old_telemetry()
-returns integer as $$
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $fn$
 declare
   v_err_del integer := 0;
   v_cal_del integer := 0;
@@ -429,7 +646,7 @@ begin
 
   return v_err_del + v_cal_del;
 end;
-$$ language plpgsql security definer set search_path = public;
+$fn$;
 
 revoke all on function public.prune_old_telemetry() from public, anon, authenticated;
 grant execute on function public.prune_old_telemetry() to service_role;
@@ -445,7 +662,11 @@ create or replace function public.log_client_error(
   p_page_url   text default null,
   p_user_agent text default null
 )
-returns void as $$
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $fn$
 begin
   if p_message is null or length(trim(p_message)) = 0 then
     return;
@@ -458,19 +679,21 @@ begin
    );
   insert into public.client_errors (message, track, source, line, col, stack, page_url, user_agent)
   values (
-    left(p_message, 2000),
-    left(p_track, 40),
-    left(p_source, 500),
+    substr(p_message, 1, 2000),
+    substr(p_track, 1, 40),
+    substr(p_source, 1, 500),
     p_line,
     p_col,
-    left(p_stack, 4000),
-    left(p_page_url, 500),
-    left(p_user_agent, 300)
+    substr(p_stack, 1, 4000),
+    substr(p_page_url, 1, 500),
+    substr(p_user_agent, 1, 300)
   );
 end;
-$$ language plpgsql security definer set search_path = public;
+$fn$;
 
-do $$
+grant execute on function public.log_client_error(text, text, text, integer, integer, text, text, text) to anon, authenticated, service_role;
+
+do $fn$
 begin
   execute $cron$
     select cron.schedule(
@@ -481,4 +704,5 @@ begin
   $cron$;
 exception when others then
   null;
-end $$;
+end;
+$fn$;
