@@ -73,10 +73,6 @@ jobs:
           fi
           for fn in $FUNCTIONS; do
             echo "::group::Deploy $fn"
-            if [ "$fn" = "billing-webhook" ]; then
-              supabase functions deploy "$fn" --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt --use-api
-            else
-              supabase functions deploy "$fn" --project-ref "$SUPABASE_PROJECT_REF" --use-api
-            fi
+            supabase functions deploy "$fn" --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt --use-api
             echo "::endgroup::"
           done
