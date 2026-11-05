@@ -1594,6 +1594,66 @@
     });
   };
 
+  /* ── Email + password (alongside Google and one-time code) ─────────────── */
+  function readPasswordCreds() {
+    var e = document.getElementById('cloud-auth-email');
+    var p = document.getElementById('cloud-auth-password');
+    return { email: e ? e.value.trim() : '', password: p ? p.value : '' };
+  }
+  function finishPasswordSession(status, session, msg) {
+    if (session) {
+      persistLocalSession(session);
+      hydrateSignedInSession(session, false);
+    }
+    status.textContent = msg;
+    setTimeout(function () { window.closeCloudAuthModal && window.closeCloudAuthModal(); }, 700);
+  }
+  window.cloudSignInPassword = function () {
+    if (!checkAgeConsentOrWarn()) return;
+    var c = readPasswordCreds();
+    var status = document.getElementById('cloud-auth-status');
+    if (!c.email || !c.password) { if (status) status.textContent = 'Enter your email and password.'; return; }
+    if (!sb) { renderHealthWarning(['error']); return; }
+    if (status) status.textContent = 'Signing in…';
+    withStallGuard(sb.auth.signInWithPassword({ email: c.email, password: c.password }), status, function (r) {
+      finishPasswordSession(status, r && r.data && r.data.session, 'Signed in!');
+    });
+  };
+  window.cloudSignUpPassword = function () {
+    if (!checkAgeConsentOrWarn()) return;
+    var c = readPasswordCreds();
+    var status = document.getElementById('cloud-auth-status');
+    if (!c.email || !c.password) { if (status) status.textContent = 'Enter an email and a password.'; return; }
+    if (c.password.length < 8) { if (status) status.textContent = 'Password must be at least 8 characters.'; return; }
+    if (!sb) { renderHealthWarning(['error']); return; }
+    if (status) status.textContent = 'Creating account…';
+    withStallGuard(sb.auth.signUp({
+      email: c.email,
+      password: c.password,
+      options: { emailRedirectTo: window.location.href.split('#')[0] }
+    }), status, function (r) {
+      if (r && r.data && r.data.session) {
+        finishPasswordSession(status, r.data.session, 'Account created — signed in!');
+      } else {
+        // "Confirm email" is on: no session until the emailed link is clicked.
+        status.textContent = 'Check your email to confirm your account, then sign in.';
+      }
+    });
+  };
+
+  /* ── Protected-route guard (CLIENT-SIDE ONLY) ──────────────────────────
+   * Static site: this hides UI from signed-out visitors; it does not protect
+   * data. Real enforcement is RLS + verify_jwt on the edge functions.
+   * Uses the cached session (no extra getUser() call — see the reentrancy
+   * note at the top of this file). Resolves to the user, or null after
+   * opening the sign-in modal. */
+  function requireAuth() {
+    return _readyPromise.then(function () {
+      if (!_cachedUser && window.openCloudAuthModal) window.openCloudAuthModal();
+      return _cachedUser || null;
+    });
+  }
+
   window.cloudResetAuthStep = function () {
     var codeStep = document.getElementById('cloud-auth-code-step');
     var codeInput = document.getElementById('cloud-auth-code');
@@ -1611,6 +1671,7 @@
     signInWithGoogle: signInWithGoogle,
     verifyEmailCode: verifyEmailCode,
     signOut: signOut,
+    requireAuth: requireAuth,
     deleteMyAccount: deleteMyAccount,
     isSignedIn: function () { return !!_cachedUser; },
     getUser: function () { return _cachedUser; },
