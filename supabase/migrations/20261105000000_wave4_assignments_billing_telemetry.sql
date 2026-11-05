@@ -1,0 +1,484 @@
+-- Wave 4 (WP-44, WP-45, WP-46): Server-Verified Teacher Assignments, Scoped Privacy,
+-- Automated SAR Billing Provisioning (Moyasar + Stripe), and 30-Day Telemetry Retention
+-- ════════════════════════════════════════════════════════════════════════════════════════
+
+create schema if not exists extensions;
+create extension if not exists pgcrypto with schema extensions;
+
+-- ── 1. Scoped Teacher Classes, Student Consent & Join Rate Limiting (WP-44) ────────────
+alter table public.classes
+  add column if not exists track text default null;
+
+alter table public.class_members
+  add column if not exists consent_given boolean not null default true,
+  add column if not exists consent_at    timestamptz not null default now();
+
+create table if not exists public.class_join_attempts (
+  id           bigint generated always as identity primary key,
+  user_id      uuid not null references auth.users(id) on delete cascade,
+  attempted_at timestamptz not null default now()
+);
+create index if not exists idx_class_join_attempts_user_time
+  on public.class_join_attempts (user_id, attempted_at desc);
+
+alter table public.class_join_attempts enable row level security;
+-- Zero client policies on class_join_attempts (managed strictly inside join_class_by_code).
+
+drop function if exists public.join_class_by_code(text, text);
+drop function if exists public.join_class_by_code(text, text, boolean);
+
+create or replace function public.join_class_by_code(
+  p_code         text,
+  p_display_name text default null,
+  p_consent      boolean default true
+)
+returns table(class_id uuid, class_name text) as $$
+declare
+  v_uid      uuid := auth.uid();
+  v_recent   integer;
+  v_class_id uuid;
+  v_name     text;
+  v_code     text;
+begin
+  if v_uid is null then
+    raise exception 'Authentication required';
+  end if;
+
+  if coalesce(p_consent, false) is not true then
+    raise exception 'Explicit data-sharing consent is required to join a class';
+  end if;
+
+  -- Prune stale rate-limit records older than 24 hours
+  delete from public.class_join_attempts
+   where attempted_at < now() - interval '24 hours';
+
+  select count(*) into v_recent
+    from public.class_join_attempts
+   where user_id = v_uid
+     and attempted_at > now() - interval '15 minutes';
+
+  if v_recent >= 8 then
+    raise exception 'Too many class code attempts. Please wait 15 minutes.';
+  end if;
+
+  insert into public.class_join_attempts (user_id, attempted_at)
+  values (v_uid, now());
+
+  v_code := upper(trim(coalesce(p_code, '')));
+  if length(v_code) < 4 or length(v_code) > 12 then
+    raise exception 'Invalid class code';
+  end if;
+
+  select c.id, c.name into v_class_id, v_name
+    from public.classes c
+   where c.code = v_code;
+
+  if v_class_id is null then
+    raise exception 'Invalid class code';
+  end if;
+
+  insert into public.class_members (class_id, student_id, display_name, consent_given, consent_at)
+  values (
+    v_class_id,
+    v_uid,
+    left(nullif(trim(p_display_name), ''), 80),
+    true,
+    now()
+  )
+  on conflict on constraint class_members_pkey do update
+     set display_name  = excluded.display_name,
+         consent_given = true,
+         consent_at    = now();
+
+  return query select v_class_id, v_name;
+end;
+$$ language plpgsql security definer set search_path = public;
+
+revoke all on function public.join_class_by_code(text, text, boolean) from public, anon;
+grant execute on function public.join_class_by_code(text, text, boolean) to authenticated, service_role;
+
+-- Scope teacher visibility strictly to the track(s) of classes/assignments the student joined
+drop policy if exists "teacher reads roster accuracy"       on public.accuracy;
+drop policy if exists "teacher reads roster mistakes"       on public.mistakes;
+drop policy if exists "teacher reads roster chapter visits" on public.chapter_visits;
+drop policy if exists "teachers_read_scoped_class_accuracy" on public.accuracy;
+drop policy if exists "teachers_read_scoped_class_mistakes" on public.mistakes;
+drop policy if exists "teachers_read_scoped_class_visits"   on public.chapter_visits;
+
+create policy "teachers_read_scoped_class_accuracy" on public.accuracy
+  for select to authenticated using (
+    exists (
+      select 1
+        from public.class_members cm
+        join public.classes c on c.id = cm.class_id
+       where cm.student_id = accuracy.user_id
+         and cm.consent_given = true
+         and c.owner_id = auth.uid()
+         and (
+           c.track = accuracy.track
+           or exists (
+             select 1 from public.assignments a
+              where a.class_id = c.id and a.track = accuracy.track
+           )
+         )
+    )
+  );
+
+create policy "teachers_read_scoped_class_mistakes" on public.mistakes
+  for select to authenticated using (
+    mistakes.deleted_at is null
+    and exists (
+      select 1
+        from public.class_members cm
+        join public.classes c on c.id = cm.class_id
+       where cm.student_id = mistakes.user_id
+         and cm.consent_given = true
+         and c.owner_id = auth.uid()
+         and (
+           c.track = mistakes.view_id
+           or exists (
+             select 1 from public.assignments a
+              where a.class_id = c.id and a.track = mistakes.view_id
+           )
+         )
+    )
+  );
+
+create policy "teachers_read_scoped_class_visits" on public.chapter_visits
+  for select to authenticated using (
+    exists (
+      select 1
+        from public.class_members cm
+        join public.classes c on c.id = cm.class_id
+       where cm.student_id = chapter_visits.user_id
+         and cm.consent_given = true
+         and c.owner_id = auth.uid()
+         and (
+           c.track = chapter_visits.track
+           or exists (
+             select 1 from public.assignments a
+              where a.class_id = c.id and a.track = chapter_visits.track
+           )
+         )
+    )
+  );
+
+-- ── 2. Server-Verified Assignment Submissions & HMAC Certificates (WP-44) ──────────────
+create table if not exists public.assignment_signing_secrets (
+  id         smallint primary key default 1 check (id = 1),
+  secret_hex text not null,
+  created_at timestamptz not null default now()
+);
+alter table public.assignment_signing_secrets enable row level security;
+-- Zero policies on assignment_signing_secrets: inaccessible to anon & authenticated clients.
+
+insert into public.assignment_signing_secrets (id, secret_hex)
+values (1, encode(extensions.gen_random_bytes(32), 'hex'))
+on conflict (id) do nothing;
+
+create table if not exists public.assignment_submissions (
+  id              uuid primary key default gen_random_uuid(),
+  assignment_id   uuid references public.assignments(id) on delete set null,
+  class_id        uuid references public.classes(id) on delete set null,
+  student_id      uuid not null references auth.users(id) on delete cascade,
+  track           text not null,
+  assignment_keys text not null,
+  score           integer not null check (score >= 0 and score <= total),
+  total           integer not null check (total > 0 and total <= 500),
+  answers         jsonb not null default '{}'::jsonb,
+  hmac_sig        text not null,
+  created_at      timestamptz not null default now()
+);
+create index if not exists idx_assignment_submissions_student
+  on public.assignment_submissions (student_id, created_at desc);
+create index if not exists idx_assignment_submissions_assignment
+  on public.assignment_submissions (assignment_id);
+
+alter table public.assignment_submissions enable row level security;
+
+drop policy if exists "student reads own submissions"  on public.assignment_submissions;
+drop policy if exists "teacher reads class submissions" on public.assignment_submissions;
+
+create policy "student reads own submissions" on public.assignment_submissions
+  for select to authenticated using (auth.uid() = student_id);
+
+create policy "teacher reads class submissions" on public.assignment_submissions
+  for select to authenticated using (
+    exists (
+      select 1
+        from public.class_members cm
+        join public.classes c on c.id = cm.class_id
+       where cm.student_id = assignment_submissions.student_id
+         and cm.consent_given = true
+         and c.owner_id = auth.uid()
+         and (
+           c.id = assignment_submissions.class_id
+           or c.track = assignment_submissions.track
+           or exists (
+             select 1 from public.assignments a
+              where a.class_id = c.id
+                and (a.id = assignment_submissions.assignment_id or a.track = assignment_submissions.track)
+           )
+         )
+    )
+  );
+
+create or replace function public.submit_verified_assignment(
+  p_track           text,
+  p_assignment_keys text,
+  p_score           integer,
+  p_total           integer,
+  p_answers         jsonb default '{}'::jsonb,
+  p_assignment_id   uuid default null,
+  p_class_id        uuid default null
+)
+returns table(submission_id uuid, hmac_sig text, verify_code text) as $$
+declare
+  v_uid     uuid := auth.uid();
+  v_sub_id  uuid := gen_random_uuid();
+  v_track   text := lower(trim(coalesce(p_track, '')));
+  v_keys    text := left(trim(coalesce(p_assignment_keys, '')), 2000);
+  v_secret  text;
+  v_payload text;
+  v_sig     text;
+  v_ans     jsonb := coalesce(p_answers, '{}'::jsonb);
+  v_cid     uuid := p_class_id;
+begin
+  if v_uid is null then
+    raise exception 'Authentication required';
+  end if;
+  if v_track = '' or length(v_track) > 40 then
+    raise exception 'Invalid track identifier';
+  end if;
+  if p_total is null or p_total <= 0 or p_total > 500 or p_score is null or p_score < 0 or p_score > p_total then
+    raise exception 'Invalid score bounds';
+  end if;
+  if octet_length(v_ans::text) > 16384 then
+    v_ans := jsonb_build_object('truncated', true);
+  end if;
+
+  if v_cid is null and p_assignment_id is not null then
+    select a.class_id into v_cid from public.assignments a where a.id = p_assignment_id;
+  end if;
+
+  select s.secret_hex into v_secret from public.assignment_signing_secrets s where s.id = 1;
+  if v_secret is null then
+    v_secret := encode(extensions.gen_random_bytes(32), 'hex');
+    insert into public.assignment_signing_secrets (id, secret_hex)
+    values (1, v_secret)
+    on conflict (id) do update set secret_hex = excluded.secret_hex;
+  end if;
+
+  v_payload := v_sub_id::text || ':' || v_uid::text || ':' || v_track || ':' || p_score::text || '/' || p_total::text || ':' || v_keys;
+  v_sig := encode(extensions.hmac(v_payload::bytea, v_secret::bytea, 'sha256'), 'hex');
+
+  insert into public.assignment_submissions (
+    id, assignment_id, class_id, student_id, track, assignment_keys, score, total, answers, hmac_sig
+  ) values (
+    v_sub_id, p_assignment_id, v_cid, v_uid, v_track, v_keys, p_score, p_total, v_ans, v_sig
+  );
+
+  if p_assignment_id is not null and exists (
+    select 1
+      from public.assignments a
+      join public.class_members cm on cm.class_id = a.class_id
+     where a.id = p_assignment_id and cm.student_id = v_uid
+  ) then
+    insert into public.assignment_completions (assignment_id, student_id, completed_at)
+    values (p_assignment_id, v_uid, now())
+    on conflict (assignment_id, student_id) do update set completed_at = now();
+  end if;
+
+  return query select
+    v_sub_id,
+    v_sig,
+    ('CS-VERIFIED-' || v_sub_id::text || '-' || upper(left(v_sig, 16)))::text;
+end;
+$$ language plpgsql security definer set search_path = public, extensions;
+
+revoke all on function public.submit_verified_assignment(text, text, integer, integer, jsonb, uuid, uuid) from public, anon;
+grant execute on function public.submit_verified_assignment(text, text, integer, integer, jsonb, uuid, uuid) to authenticated, service_role;
+
+create or replace function public.verify_assignment_certificate(
+  p_submission_id uuid,
+  p_sig_prefix    text
+)
+returns table(
+  valid        boolean,
+  student_id   uuid,
+  track        text,
+  score        integer,
+  total        integer,
+  submitted_at timestamptz
+) as $$
+declare
+  v_row     public.assignment_submissions%rowtype;
+  v_secret  text;
+  v_payload text;
+  v_expect  text;
+  v_clean   text := lower(trim(coalesce(p_sig_prefix, '')));
+begin
+  if auth.uid() is null and current_setting('role', true) <> 'service_role' then
+    raise exception 'Authentication required';
+  end if;
+
+  select * into v_row
+    from public.assignment_submissions s
+   where s.id = p_submission_id;
+
+  if not found or length(v_clean) < 16 then
+    return query select false, null::uuid, null::text, null::integer, null::integer, null::timestamptz;
+    return;
+  end if;
+
+  select s.secret_hex into v_secret from public.assignment_signing_secrets s where s.id = 1;
+  v_payload := v_row.id::text || ':' || v_row.student_id::text || ':' || v_row.track || ':' || v_row.score::text || '/' || v_row.total::text || ':' || v_row.assignment_keys;
+  v_expect := encode(extensions.hmac(v_payload::bytea, coalesce(v_secret, '')::bytea, 'sha256'), 'hex');
+
+  if v_expect = v_row.hmac_sig and (v_clean = v_expect or v_clean = left(v_expect, 16)) then
+    return query select true, v_row.student_id, v_row.track, v_row.score, v_row.total, v_row.created_at;
+  else
+    return query select false, null::uuid, null::text, null::integer, null::integer, null::timestamptz;
+  end if;
+end;
+$$ language plpgsql security definer set search_path = public, extensions;
+
+revoke all on function public.verify_assignment_certificate(uuid, text) from public, anon;
+grant execute on function public.verify_assignment_certificate(uuid, text) to authenticated, service_role;
+
+-- ── 3. Automated SAR Checkout Entitlements & Webhook Idempotency (WP-45) ───────────────
+alter table public.ai_plans
+  add column if not exists provider              text default null,
+  add column if not exists external_customer_id  text default null,
+  add column if not exists external_sub_id       text default null,
+  add column if not exists daily_credits         integer not null default 20,
+  add column if not exists trial_ends_at         timestamptz default null,
+  add column if not exists cancel_at_period_end  boolean not null default false;
+
+drop policy if exists "own ai plan" on public.ai_plans;
+create policy "own ai plan" on public.ai_plans
+  for select to authenticated using (auth.uid() = user_id);
+-- Zero client INSERT/UPDATE/DELETE policies on ai_plans (mutated strictly by billing-webhook service_role).
+
+create table if not exists public.billing_webhook_events (
+  event_id      text primary key,
+  provider      text not null check (provider in ('moyasar', 'stripe')),
+  event_type    text not null,
+  user_id       uuid references auth.users(id) on delete set null,
+  amount_halala integer,
+  currency      text default 'SAR',
+  processed_at  timestamptz not null default now()
+);
+alter table public.billing_webhook_events enable row level security;
+-- Zero client policies on billing_webhook_events (service_role only).
+
+-- ── 4. Cookieless Item Calibration Telemetry & 30-Day Error Auto-Pruning (WP-46) ───────
+create table if not exists public.item_calibration_telemetry (
+  id          bigint generated always as identity primary key,
+  created_at  timestamptz not null default now(),
+  track       text not null,
+  item_id     text not null,
+  correct     boolean not null,
+  dwell_ms    integer not null check (dwell_ms >= 0 and dwell_ms <= 3600000),
+  rapid_guess boolean not null default false,
+  theta_est   real
+);
+alter table public.item_calibration_telemetry enable row level security;
+-- Zero SELECT policies on item_calibration_telemetry (aggregate write-only via RPC).
+
+create or replace function public.log_item_calibration(
+  p_track       text,
+  p_item_id     text,
+  p_correct     boolean,
+  p_dwell_ms    integer,
+  p_rapid_guess boolean default false,
+  p_theta_est   real default null
+)
+returns void as $$
+begin
+  if p_track is null or length(trim(p_track)) = 0 or p_item_id is null or length(trim(p_item_id)) = 0 then
+    return;
+  end if;
+  insert into public.item_calibration_telemetry (track, item_id, correct, dwell_ms, rapid_guess, theta_est)
+  values (
+    left(lower(trim(p_track)), 40),
+    left(trim(p_item_id), 80),
+    coalesce(p_correct, false),
+    greatest(0, least(coalesce(p_dwell_ms, 0), 3600000)),
+    coalesce(p_rapid_guess, false),
+    case when p_theta_est is null then null else greatest(-5.0, least(5.0, p_theta_est)) end
+  );
+end;
+$$ language plpgsql security definer set search_path = public;
+
+grant execute on function public.log_item_calibration(text, text, boolean, integer, boolean, real) to anon, authenticated, service_role;
+
+create or replace function public.prune_old_telemetry()
+returns integer as $$
+declare
+  v_err_del integer := 0;
+  v_cal_del integer := 0;
+begin
+  delete from public.client_errors
+   where created_at < now() - interval '30 days';
+  get diagnostics v_err_del = row_count;
+
+  delete from public.item_calibration_telemetry
+   where created_at < now() - interval '30 days';
+  get diagnostics v_cal_del = row_count;
+
+  return v_err_del + v_cal_del;
+end;
+$$ language plpgsql security definer set search_path = public;
+
+revoke all on function public.prune_old_telemetry() from public, anon, authenticated;
+grant execute on function public.prune_old_telemetry() to service_role;
+
+-- Update log_client_error to opportunistically prune expired >30-day rows (bounded batch)
+create or replace function public.log_client_error(
+  p_message    text,
+  p_track      text default null,
+  p_source     text default null,
+  p_line       integer default null,
+  p_col        integer default null,
+  p_stack      text default null,
+  p_page_url   text default null,
+  p_user_agent text default null
+)
+returns void as $$
+begin
+  if p_message is null or length(trim(p_message)) = 0 then
+    return;
+  end if;
+  delete from public.client_errors
+   where id in (
+     select c.id from public.client_errors c
+      where c.created_at < now() - interval '30 days'
+      limit 50
+   );
+  insert into public.client_errors (message, track, source, line, col, stack, page_url, user_agent)
+  values (
+    left(p_message, 2000),
+    left(p_track, 40),
+    left(p_source, 500),
+    p_line,
+    p_col,
+    left(p_stack, 4000),
+    left(p_page_url, 500),
+    left(p_user_agent, 300)
+  );
+end;
+$$ language plpgsql security definer set search_path = public;
+
+do $$
+begin
+  execute $cron$
+    select cron.schedule(
+      'clipsat-prune-telemetry-30d',
+      '17 3 * * *',
+      'select public.prune_old_telemetry()'
+    )
+  $cron$;
+exception when others then
+  null;
+end $$;

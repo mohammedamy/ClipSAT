@@ -1,76 +1,103 @@
 # ClipSAT 📐
 
-**ClipSAT** is a comprehensive, free, bilingual (English LTR & Arabic RTL) mathematics platform created by **Mr. Mohamed Abdallah** (Head of Mathematics). It provides rigorous curriculum notes, worked examples, interactive canvas explorers, question banks, adaptive diagnostic tests, and automated assignment tools across **26 international, standardized, and university mathematics tracks**.
+**ClipSAT** is a comprehensive, free, bilingual (English LTR & Arabic RTL) mathematics platform created by **Mr. Mohamed Abdallah** (Head of Mathematics). It provides rigorous curriculum notes, progressive-reveal worked examples, interactive HTML5 Canvas explorers, symbolically verified question banks, 3PL Bayesian adaptive diagnostic tests, Bluebook-style 2-stage adaptive CBT simulators, and server-verified classroom assignment tools across **31 international, standardized, olympiad, and university mathematics tracks**.
 
-Live at: **[https://mohammedamy.github.io/ClipSAT/](https://mohammedamy.github.io/ClipSAT/)** (and **[clipsat.org](https://clipsat.org)**)
+Live at: **[https://clipsat.org](https://clipsat.org)** (and **[https://mohammedamy.github.io/ClipSAT/](https://mohammedamy.github.io/ClipSAT/)**)
 
 ---
 
-## 🎯 Supported Curriculum Tracks (26 Tracks)
+## 📊 Live Corpus & Platform Metrics
 
-| Category | Tracks |
+<!-- @AUTOGEN:STATS_START -->
+- **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
+- **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
+- **Verified Question Bank (Schema v2):** **50,758** items (**34,578** executable SymPy certificates + **16,180** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
+- **Interactive Learning & Exports:** **2,816** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
+<!-- @AUTOGEN:STATS_END -->
+
+<!-- @AUTOGEN:TRACKS_START -->
+### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 50,758 Bank Questions)
+
+| Category | Tracks (Slug, Chapters, Verified Bank Items) |
 | :--- | :--- |
-| **Standardized Testing** | Digital SAT Math, ACT Math, ACT Math 2, EST Math, EST 2 Math, EST 2 Math Level 2 |
-| **Advanced Placement (AP)** | AP Calculus AB, AP Calculus BC, AP Precalculus, AP Statistics |
-| **British Curriculum** | Cambridge IGCSE 0580, AS Level Mathematics, A2 Level Mathematics |
-| **International Baccalaureate** | IB Math SL (AA/AI), IB Math HL (AA/AI) |
-| **Saudi National Exams** | GAT Qudrat (قدرات عامة), SAAT Tahsili (تحصيلي علمي) |
-| **Secondary Foundations** | Algebra 1, Algebra 2, Geometry, Precalculus |
-| **University Mathematics** | Calculus (Single Variable), Multivariable Calculus, Linear Algebra, Differential Equations (ODEs) |
+| **US & Regional Standardized Testing** | Digital SAT Math (`sat`, 11 ch, 1,605 Qs) · ACT Math (`act`, 9 ch, 1,261 Qs) · ACT 2 Math Level 1 (`act2`, 9 ch, 1,715 Qs) · ACT 2 Math Level 2 (`act2l2`, 8 ch, 1,200 Qs) · EST Math (`est`, 9 ch, 1,280 Qs) · EST 2 Math Level 1 (`est2`, 9 ch, 1,416 Qs) · EST 2 Math Level 2 (`est2l2`, 8 ch, 1,200 Qs) |
+| **Saudi National Exams (ETEC / Qiyas)** | GAT Qudrat (`qudrat`, 9 ch, 1,350 Qs) · SAAT Tahsili (`tahsili`, 10 ch, 1,500 Qs) · English GAT & SAAT (Qiyas) (`gaten`, 8 ch, 1,280 Qs) |
+| **Advanced Placement (College Board AP)** | AP Calculus AB (`apab`, 11 ch, 1,650 Qs) · AP Calculus BC (`apbc`, 9 ch, 1,350 Qs) · AP Precalculus (`appc`, 8 ch, 1,200 Qs) · AP Statistics (`apstats`, 8 ch, 1,200 Qs) |
+| **Cambridge & Pearson Edexcel (IGCSE / A-Level)** | IGCSE 0580 (`igcse`, 10 ch, 1,500 Qs) · Pearson Edexcel IGCSE (4MA1) (`edexcel`, 8 ch, 1,240 Qs) · Additional Mathematics (`addmath`, 8 ch, 1,246 Qs) · AS Level Mathematics (`aslevel`, 20 ch, 2,894 Qs) · A2 Level Mathematics (`a2level`, 16 ch, 2,894 Qs) |
+| **International Baccalaureate (IBO)** | IB Math SL (AA/AI) (`ibsl`, 8 ch, 1,200 Qs) · IB Math HL (AA/AI) (`ibhl`, 8 ch, 1,200 Qs) |
+| **Mathematical Olympiad & Competitions** | Mathematical Olympiad · NSMO of KSA & KAUST (`olympiad`, 12 ch, 1,440 Qs) |
+| **Secondary Mathematics Foundations** | Algebra (`algebra`, 11 ch, 1,815 Qs) · Algebra 2 (`alg2`, 11 ch, 1,654 Qs) · Geometry (`geo`, 11 ch, 2,683 Qs) · Pre-Calculus (`precalc`, 8 ch, 3,438 Qs) |
+| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,311 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,200 Qs) · Linear Algebra (`linalg`, 8 ch, 1,200 Qs) · Differential Equations (`odes`, 9 ch, 1,350 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,286 Qs) |
+<!-- @AUTOGEN:TRACKS_END -->
 
 ---
 
-## 🏗️ Architecture & Technology Stack
+## 🏗️ ClipSAT 2.0 Architecture & Technology Stack
 
-- **Static Site Engine:** [Eleventy (11ty 3.x)](https://www.11ty.dev/) with Nunjucks templates and custom plugins.
-- **Frontend Architecture:** Vanilla ES6+ JavaScript and custom Vanilla CSS design tokens (`src/styles/main.css`). No heavy frontend frameworks or CSS utility bloat.
-- **Mathematical Typesetting:**
-  - **Build-Time SSR:** `scripts/katex-ssr.js` pre-renders equations into accessible HTML/MathML during Eleventy build for instantaneous Largest Contentful Paint (LCP).
-  - **Dynamic Typesetting:** KaTeX `renderMathInElement` with complete delimiter support (`\(...\)`, `\[...\]`, `$$...$$`, `$..$`) and MathJax API compatibility shim (`window.MathJax.typesetPromise`) for dynamically injected DOM (chapter quizzes, AI chat, diagnostic assessments, and mistake reviews).
-  - **Accessibility (a11y):** Automatic `tabindex="0"`, `role="region"`, and `aria-label="Scrollable math expression"` applied to overflowing equations.
-- **Interactive Visualizers:** Over 120 custom HTML5 Canvas mathematical explorers with accessible "View as data" table equivalents (ADR 0038/0039).
-- **Backend & Cloud Sync:** [Supabase](https://supabase.com/) Postgres with Row Level Security (RLS) for optional multi-device progress sync (mistakes, SRS flashcards, accuracy trends, class rosters, and assignments).
-- **AI Tutoring ("Ask Mr. Mohamed"):** Server-side proxy (`supabase/functions/ai-proxy` or standalone Flask proxy `app.py`) holding API keys securely, with per-IP rate limiting, daily user quotas, and prompt injection filtering.
-- **PWA & Offline Capability:** Custom Service Worker (`sw.js`) with hash-based automated cache busting (`scripts/stamp-sw-version.js`).
+- **Per-Chapter Locale-Split SSG:** [Eleventy (11ty 3.x)](https://www.11ty.dev/) + Nunjucks paginates every curriculum chapter into lightweight English (`/{track}/{chapter}/`) and Arabic (`/ar/{track}/{chapter}/`) routes (`< 95 KB` HTML, `< 3,500` DOM nodes) alongside fast track syllabus hubs (`/{track}/` & `/ar/{track}/`).
+- **Frontend & Code-Split Bundles:** Modular ES6+ architecture (`public/js/engine.js` core shell + lazy-loaded feature bundles for `mock-exam.js`, `diagnostic-test.js`, `assignment-view.js`, `teacher-view.js`, and lazy `/bank-shards/{track}/{topic}.json` fetches) with private `.js.map` source maps in `artifacts/sourcemaps/`.
+- **Mathematical Typesetting & Symbolic Verification:**
+  - **Build-Time SSR & Semantic MathML:** `scripts/katex-ssr.js` pre-renders equations with `output: 'htmlAndMathml'` for zero-CLS rendering and screen-reader accessibility.
+  - **Canonical Bank Schema v2 & SymPy Gate:** Every item in `bank-data/*.json` conforms to strict JSON Schema v2, carries an executable `sympy_cert` or SHA-256 `educator_review_hash`, calibrated 3PL IRT parameters (`irt: { a, b, c }`), and `calc: boolean` policy metadata.
+- **Exam Fidelity & Adaptive Psychometrics:**
+  - **2-Stage Adaptive Digital SAT (`window.CSSatAdaptive`):** Module 1 → Hard/Standard Module 2 routing ($\hat{\theta}_{M1} \ge 0.15$ or raw $\ge 15/22$) with 3PL EAP scaled `200–800 ± CI` scoring.
+  - **3PL Bayesian EAP Diagnostic CAT (`window.CSDiagnosticCAT`):** 61-node quadrature, Maximum Fisher Information item selection, `< 2.5s` rapid-guess down-weighting, and subskill study-plan routing.
+  - **Multi-Part Structured FRQ & Proof Engine:** Step-by-step `[M1][A1][B1]` mark-scheme rubrics, recursive-descent algebraic equivalence checking (zero `eval` / `new Function`), and scratchpad canvas capture.
+- **Supabase Cloud, RLS & Edge Functions:**
+  - **Row Level Security & Vault:** Track-scoped teacher RLS with explicit student consent, delta-plus-tombstone (`deleted_at`) multi-device sync, HMAC-SHA256 server-verified assignment certificates (`CS-VERIFIED-...`), and `pgsodium` Vault-encrypted OAuth tokens.
+  - **Serverless Edge Suite:** `ai-proxy` (server-owned Socratic prompt + daily credit quota), `tts-proxy` (metered cloud voice), `google-token` (Vault OAuth exchange), and `billing-webhook` (Moyasar SAR Mada/Apple Pay/STC Pay + Stripe global checkout provisioning into `public.ai_plans`).
 
 ---
 
-## 🚀 Quick Start & Local Development
+## 🚀 Quick Start, Educator Studio CLI & Verification
 
 ### Prerequisites
-- **Node.js** >= 18.0.0
-- **npm** >= 9.0.0
+- **Node.js** >= 20.0.0
+- **Python 3.11+** with `sympy` (`pip install sympy`) for symbolic math verification
 
-### Installation
+### Installation & Build
 ```bash
 git clone https://github.com/mohammedamy/ClipSAT.git
 cd ClipSAT
-npm install
-```
-
-### Build Commands
-```bash
-# 1. Run full build (content validation + bundle concatenation + 11ty compile):
+npm ci
 npm run build
-
-# 2. Start local development server (serves _site/ at http://localhost:8080):
 npm start
-
-# 3. Extract CSS, JS modules, and templates without rebuilding 11ty:
-npm run extract
 ```
 
-### Running Test Suites
+### Educator Studio CLI (`WP-48`)
+Add or validate curriculum items and keep documentation synchronized with single commands:
 ```bash
-# Run unit test suites (answer checker, figure rendering, interactive activities):
+# View live corpus statistics across all 31 tracks:
+npm run studio -- stats
+
+# Scaffold a canonical Schema v2 question template (mcq | spr | structured | proof):
+npm run studio -- scaffold-item --track sat --type spr --out /tmp/new-sat-item.json
+
+# Validate Schema v2 + strict KaTeX + AST bilingual parity + SymPy certificate + append & re-shard:
+npm run item:add -- --track sat --file /tmp/new-sat-item.json --dry-run
+
+# Synchronize README.md, AGENTS.md, and docs/ARCHITECTURE.md from content/*/_meta.json:
+npm run docs:sync
+```
+
+### Zero-Regression Test & CI Gate Suite
+```bash
+# Run all 28 unit & security verification suites:
 npm run test:unit
 
-# Validate course content, interactive data, and question banks:
-npm run validate-content
-npm run validate-ix
-npm run validate-banks
+# Run deterministic CI quality gates (Schema v2, SymPy, Psychometrics, KaTeX, Bilingual AST, SAST, RLS, Edge, Budgets):
+node scripts/ci/validate-schema-v2.mjs
+python3 scripts/ci/verify_bank_sympy.py --all
+python3 scripts/ci/check_psychometrics.py
+node scripts/ci/check-katex-strict.mjs
+python3 scripts/ci/check_bilingual_parity.py
+node scripts/ci/validate-figures-and-pdfs.mjs
+node scripts/ci/check-no-eval-or-secrets.mjs
+node scripts/ci/check-rls-policies.mjs
+node scripts/ci/run-edge-tests.mjs
+node scripts/ci/check-build-budgets.mjs
 
-# Run end-to-end browser tests via Playwright:
+# Run Playwright E2E + axe-core WCAG 2.2 AA accessibility suite:
 npm run test:e2e
 ```
 
@@ -78,56 +105,37 @@ npm run test:e2e
 
 ## ☁️ Supabase Cloud & Edge Function Deployment
 
-See [`SUPABASE_SETUP.md`](SUPABASE_SETUP.md) for step-by-step database provisioning and table schemas.
+See [`SUPABASE_SETUP.md`](SUPABASE_SETUP.md) for database migrations, Vault configuration, and RLS policies.
 
-### Environment Variables & Secrets
-
-| Variable / Secret | Target Location | Description |
+| Secret / Variable | Location | Purpose |
 | :--- | :--- | :--- |
-| `GROQ_API_KEY` or `OPENAI_API_KEY` | Supabase Secrets (`supabase secrets set`) | API key for the AI tutor proxy |
-| `SUPABASE_URL` | `public/js/cloud-config.js` | Public Supabase project URL |
-| `SUPABASE_ANON_KEY` | `public/js/cloud-config.js` | Public anon key (protected via Postgres RLS) |
-| `ANTHROPIC_API_KEY` | Flask server (`app.py` environment) | Required only if running standalone Python AI backend |
-
-### Deploying Edge Functions
-```bash
-# Install Supabase CLI if needed
-npm install -g supabase
-
-# Link your remote Supabase project
-supabase link --project-ref your-project-id
-
-# Set AI provider API key secret
-supabase secrets set GROQ_API_KEY=your_groq_api_key_here
-
-# Deploy edge functions
-supabase functions deploy ai-proxy
-supabase functions deploy google-token
-```
+| `GEMINI_API_KEY` / `OPENROUTER_API_KEY` / `GROQ_API_KEY` | Supabase Edge Secrets | Upstream LLM keys for `ai-proxy` |
+| `STRIPE_SECRET_KEY` & `STRIPE_WEBHOOK_SECRET` | Supabase Edge Secrets | Stripe global checkout & HMAC webhook verification (`billing-webhook`) |
+| `MOYASAR_SECRET_KEY` & `MOYASAR_WEBHOOK_SECRET` | Supabase Edge Secrets | Moyasar SAR (Mada / Apple Pay / STC Pay) checkout & webhook verification |
+| `SUPABASE_URL` & `SUPABASE_ANON_KEY` | `public/js/cloud-config.js` | Public client config protected by strict Postgres RLS |
 
 ---
 
-## 🔒 Privacy, Security & Compliance
+## 🔒 Privacy, Security & K-12 Compliance
 
-- **GDPR & Saudi PDPL Compliance:** Explicit opt-in cookie consent banner with granular preferences (`necessary`, `analytics`, `preferences`) and immediate revocation.
-- **Cookieless Telemetry:** First-party, zero-PII event logging (`public/js/analytics.js`) tracks usage without cross-site tracking or third-party cookies.
-- **Server-Side API Protection:** Client code never contains AI or cloud provider secrets. Requests route through authenticated Supabase Edge Functions with rate limits and content filters.
-- **First-Party Visitor Counter:** Replaced external third-party tracking badges with an in-house Postgres atomic counter (`site_visits` table).
+- **Strict CSP & Zero Dynamic Code Execution:** Enforced via `_headers` (no `unsafe-eval`), strict 5-entity `escHtml()`, `DOMPurify.sanitize()`, and a recursive-descent math AST evaluator.
+- **GDPR, COPPA & Saudi PDPL Compliance:** K-12 age/guardian gate, `TFCD=1` child-directed ad treatment, granular opt-in consent banner, self-service `delete_my_account()` cascade RPC, and 30-day automatic telemetry pruning (`prune_old_telemetry()`).
+- **Cookieless Telemetry & Error Symbolication:** Zero-PII aggregate funnel telemetry (`public/js/analytics.js`) and redacted client error logging symbolicated offline via `scripts/symbolicate-error.js`.
 
 ---
 
 ## 📖 Key Documentation Index
 
-- [`AGENTS.md`](AGENTS.md) — Architectural overview, content migration guidelines, and contributor orientation.
-- [`SUPABASE_SETUP.md`](SUPABASE_SETUP.md) — Database schema, RLS policies, email OTP auth, and cloud sync setup.
-- [`TESTING_CHECKLIST.md`](TESTING_CHECKLIST.md) — Comprehensive QA checklist covering math, RTL, exports, and automated tests.
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — Detailed system design, data flow, and module boundaries.
-- [`docs/CONTENT_MODEL.md`](docs/CONTENT_MODEL.md) — Target block-based content schema and Nunjucks rendering.
-- [`docs/RECIPES.md`](docs/RECIPES.md) — Step-by-step guides for adding lessons, creating question banks, and updating exams.
+- [`AGENTS.md`](AGENTS.md) — Contributor & AI agent orientation, canonical file map, and guardrails.
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — System design, per-chapter SSG data flow, runtime bundles, and cloud architecture.
+- [`docs/CONTENT_MODEL.md`](docs/CONTENT_MODEL.md) — Block-based chapter schema and Nunjucks rendering macros.
+- [`docs/RECIPES.md`](docs/RECIPES.md) — Step-by-step guides for common curriculum and UI changes.
+- [`SUPABASE_SETUP.md`](SUPABASE_SETUP.md) — Database schema, migrations, RLS policies, and Edge Function setup.
+- [`MATH_ERRATA.md`](MATH_ERRATA.md) — Automated symbolic verification audit & errata log.
 
 ---
 
 ## 📄 License & Attribution
 
-Designed and maintained by **Mr. Mohamed Abdallah**.  
+Designed and maintained by **Mr. Mohamed Abdallah**.
 All rights reserved. Free for educators and students worldwide.

@@ -20,6 +20,253 @@
   var _viewMode = 'cbt'; // 'cbt' (single question) or 'all' (stacked review)
   var _isSubmitted = false;
   var _lastDownloadArgs = null;
+  var _satFullPool = [];
+  var _satAdaptiveState = null;
+
+  /* ── WP-42: 3PL IRT & 2-Stage Adaptive Digital SAT Engine ────────────── */
+  var _SAT_DOMAIN_QUOTAS = [
+    { name: 'Algebra', count: 8 },
+    { name: 'Advanced Math', count: 8 },
+    { name: 'Problem-Solving and Data Analysis', count: 3 },
+    { name: 'Geometry and Trigonometry', count: 3 }
+  ];
+
+  function _getItemIRT(q){
+    if(q && q.irt && typeof q.irt.a === 'number' && typeof q.irt.b === 'number'){
+      return { a: q.irt.a, b: q.irt.b, c: typeof q.irt.c === 'number' ? q.irt.c : (q.type === 'mcq' ? 0.25 : 0) };
+    }
+    var diff = String((q && q.difficulty) || 'medium').toLowerCase();
+    var b = diff === 'easy' ? -1.1 : (diff === 'hard' ? 1.3 : 0.1);
+    return { a: 1.25, b: b, c: (q && q.type === 'mcq') ? 0.25 : 0.0 };
+  }
+
+  function _compute3PLEAP(items, outcomes){
+    var nodes = 61;
+    var minT = -4.0, maxT = 4.0, step = (maxT - minT) / (nodes - 1);
+    var thetas = new Array(nodes);
+    var logPost = new Array(nodes);
+    var maxLP = -Infinity;
+    for(var g = 0; g < nodes; g++){
+      var th = minT + g * step;
+      thetas[g] = th;
+      var lp = -0.5 * th * th;
+      for(var i = 0; i < items.length; i++){
+        var prm = _getItemIRT(items[i]);
+        var z = -1.702 * prm.a * (th - prm.b);
+        var ez = z > 35 ? Infinity : (z < -35 ? 0 : Math.exp(z));
+        var p = prm.c + (1 - prm.c) / (1 + ez);
+        if(p < 1e-9) p = 1e-9;
+        if(p > 1 - 1e-9) p = 1 - 1e-9;
+        var y = outcomes[i] ? 1 : 0;
+        lp += y ? Math.log(p) : Math.log(1 - p);
+      }
+      logPost[g] = lp;
+      if(lp > maxLP) maxLP = lp;
+    }
+    var sumW = 0, sumTW = 0;
+    var weights = new Array(nodes);
+    for(var j = 0; j < nodes; j++){
+      var w = Math.exp(logPost[j] - maxLP);
+      weights[j] = w;
+      sumW += w;
+      sumTW += thetas[j] * w;
+    }
+    var mean = sumW > 0 ? (sumTW / sumW) : 0;
+    var sumVar = 0;
+    for(var k = 0; k < nodes; k++){
+      var d = thetas[k] - mean;
+      sumVar += d * d * weights[k];
+    }
+    var sem = sumW > 0 ? Math.sqrt(Math.max(0.01, sumVar / sumW)) : 1.0;
+    return { theta: Math.round(mean * 1000) / 1000, sem: Math.round(sem * 1000) / 1000 };
+  }
+
+  function _thetaToSatScaled(theta, sem, routedTrack, rawCorrect, totalItems){
+    // Map logit [-3.0, +2.6] -> [200, 800], rounded to nearest 10
+    var norm = (theta + 2.8) / 5.2;
+    if(norm < 0) norm = 0;
+    if(norm > 1) norm = 1;
+    var rawScaled = 200 + norm * 600;
+    if(totalItems > 0 && rawCorrect >= totalItems && routedTrack !== 'standard'){
+      rawScaled = 800;
+    } else if(totalItems > 0 && rawCorrect === 0){
+      rawScaled = 200;
+    }
+    if(routedTrack === 'standard'){
+      // Authentic College Board routing ceiling on Standard/Lower Module 2
+      rawScaled = Math.min(rawScaled, (totalItems > 0 && rawCorrect >= totalItems) ? 640 : 620);
+    }
+    var scaled = Math.max(200, Math.min(800, Math.round(rawScaled / 10) * 10));
+    var ciBand = Math.max(10, Math.min(60, Math.round((sem * 105) / 10) * 10));
+    return {
+      score: scaled,
+      ci: ciBand,
+      low: Math.max(200, scaled - ciBand),
+      high: Math.min(800, scaled + ciBand),
+      theta: theta,
+      sem: sem,
+      routedTrack: routedTrack || 'hard'
+    };
+  }
+
+  function _drawSatAdaptiveModule(rawPool, opts){
+    opts = opts || {};
+    var stage = opts.stage || 1;
+    var adaptiveTrack = opts.adaptiveTrack || 'routing'; // 'routing' | 'hard' | 'standard'
+    var excludeIds = opts.excludeIds || new Set();
+    var targetSpr = typeof opts.sprCount === 'number' ? opts.sprCount : (stage === 2 ? 6 : 5);
+    var targetTotal = 22;
+
+    var avail = (rawPool || []).filter(function(q){
+      return q && !excludeIds.has(q.id) && (q.type === 'mcq' || q.type === 'spr');
+    });
+
+    function inBand(q){
+      var b = _getItemIRT(q).b;
+      if(stage === 2 && adaptiveTrack === 'hard') return b >= 0.05;
+      if(stage === 2 && adaptiveTrack === 'standard') return b <= 0.65;
+      return b >= -1.85 && b <= 1.75;
+    }
+
+    function shuf(arr){
+      var a = arr.slice();
+      for(var i = a.length - 1; i > 0; i--){
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i]; a[i] = a[j]; a[j] = t;
+      }
+      return a;
+    }
+
+    var used = new Set();
+    var chosenSpr = [];
+    var chosenMcq = [];
+
+    // Allocate SPRs across the 4 domains proportionally (2 Alg, 2 Adv, 1 PSDA/Geo, +1 for 6-SPR M2)
+    var sprDomainPlan = targetSpr >= 6
+      ? { 'Algebra': 2, 'Advanced Math': 2, 'Problem-Solving and Data Analysis': 1, 'Geometry and Trigonometry': 1 }
+      : { 'Algebra': 2, 'Advanced Math': 2, 'Problem-Solving and Data Analysis': 1, 'Geometry and Trigonometry': 0 };
+
+    _SAT_DOMAIN_QUOTAS.forEach(function(dq){
+      var domPool = avail.filter(function(q){ return q.domain === dq.name; });
+      var bandDom = domPool.filter(inBand);
+      var src = bandDom.length >= dq.count ? bandDom : domPool;
+
+      var wantSpr = sprDomainPlan[dq.name] || 0;
+      var wantMcq = dq.count - wantSpr;
+
+      var sprCands = shuf(src.filter(function(q){ return q.type === 'spr'; }));
+      if(sprCands.length < wantSpr){
+        sprCands = sprCands.concat(shuf(domPool.filter(function(q){ return q.type === 'spr' && sprCands.indexOf(q) === -1; })));
+      }
+      for(var s = 0; s < sprCands.length && wantSpr > 0; s++){
+        if(!used.has(sprCands[s].id)){
+          used.add(sprCands[s].id);
+          chosenSpr.push(sprCands[s]);
+          wantSpr--;
+        }
+      }
+      wantMcq += wantSpr; // if domain lacked SPR, fill slot with MCQ and top up SPR below
+
+      var mcqPool = src.filter(function(q){ return q.type === 'mcq' && !used.has(q.id); });
+      // Prioritize >= 30% figure items per domain
+      var figMcq = shuf(mcqPool.filter(function(q){ return Boolean(q.figure || q.fig); }));
+      var plainMcq = shuf(mcqPool.filter(function(q){ return !(q.figure || q.fig); }));
+      var orderedMcq = figMcq.slice(0, Math.ceil(wantMcq * 0.35)).concat(shuf(figMcq.slice(Math.ceil(wantMcq * 0.35)).concat(plainMcq)));
+      if(orderedMcq.length < wantMcq){
+        orderedMcq = orderedMcq.concat(shuf(domPool.filter(function(q){ return q.type === 'mcq' && !used.has(q.id) && orderedMcq.indexOf(q) === -1; })));
+      }
+      for(var m = 0; m < orderedMcq.length && wantMcq > 0; m++){
+        if(!used.has(orderedMcq[m].id)){
+          used.add(orderedMcq[m].id);
+          chosenMcq.push(orderedMcq[m]);
+          wantMcq--;
+        }
+      }
+    });
+
+    // Top up if needed to exact targetTotal
+    while(chosenSpr.length < targetSpr){
+      var extraSpr = avail.find(function(q){ return q.type === 'spr' && !used.has(q.id); });
+      if(!extraSpr) break;
+      used.add(extraSpr.id);
+      chosenSpr.push(extraSpr);
+    }
+    while(chosenSpr.length + chosenMcq.length < targetTotal){
+      var extraMcq = avail.find(function(q){ return q.type === 'mcq' && !used.has(q.id); });
+      if(!extraMcq) break;
+      used.add(extraMcq.id);
+      chosenMcq.push(extraMcq);
+    }
+
+    // Sort MCQs and SPRs smoothly by IRT difficulty b so each subset progresses naturally
+    chosenMcq.sort(function(a, b){ return _getItemIRT(a).b - _getItemIRT(b).b; });
+    chosenSpr.sort(function(a, b){ return _getItemIRT(a).b - _getItemIRT(b).b; });
+
+    // Intersperse SPR items across authentic Bluebook positions (never clumped all at the end)
+    var sprSlots = chosenSpr.length === 6 ? [3, 7, 11, 15, 18, 20] : [3, 8, 12, 16, 20];
+    var sprSlotSet = {};
+    for(var si = 0; si < chosenSpr.length && si < sprSlots.length; si++) sprSlotSet[sprSlots[si]] = true;
+
+    var finalModule = [];
+    var mi = 0, pi = 0;
+    for(var pos = 0; pos < targetTotal; pos++){
+      if(sprSlotSet[pos] && pi < chosenSpr.length){
+        finalModule.push(chosenSpr[pi++]);
+      } else if(mi < chosenMcq.length){
+        finalModule.push(chosenMcq[mi++]);
+      } else if(pi < chosenSpr.length){
+        finalModule.push(chosenSpr[pi++]);
+      }
+    }
+    return finalModule;
+  }
+
+  function _gradeSingleItemQuick(q, userAns){
+    if(!q) return false;
+    if(q.type === 'spr'){
+      var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
+      var target = String(q.sprAnswer != null ? q.sprAnswer : (q.ans != null ? q.ans : '')).trim().toLowerCase();
+      if(!val || !target) return false;
+      if(val === target) return true;
+      if(window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function'){
+        try { if(window.ClipSATAnswerCheck.equivalent(val, target)) return true; } catch(_e){}
+      }
+      var toN = function(s){
+        if(!s) return NaN;
+        if(s.indexOf('/') !== -1){
+          var p = s.split('/');
+          var n = parseFloat(p[0]), d = parseFloat(p[1]);
+          return (d !== 0 && !isNaN(n) && !isNaN(d)) ? (n / d) : NaN;
+        }
+        return parseFloat(s);
+      };
+      var vn = toN(val), tn = toN(target);
+      return (!isNaN(vn) && !isNaN(tn) && Math.abs(vn - tn) < 1e-4);
+    }
+    var chosen = (userAns !== undefined && userAns !== null) ? parseInt(userAns, 10) : -1;
+    return chosen === q.answer;
+  }
+
+  function _routeSatModule2(m1Items, m1Outcomes, fullPool){
+    var eap = _compute3PLEAP(m1Items, m1Outcomes);
+    var rawM1 = 0;
+    for(var i = 0; i < m1Outcomes.length; i++){ if(m1Outcomes[i]) rawM1++; }
+    var routedTrack = (eap.theta >= 0.15 || rawM1 >= 15) ? 'hard' : 'standard';
+    var exclude = new Set(m1Items.map(function(q){ return q.id; }));
+    var m2Items = _drawSatAdaptiveModule(fullPool, {
+      stage: 2,
+      adaptiveTrack: routedTrack,
+      excludeIds: exclude,
+      sprCount: 6
+    });
+    return {
+      routedTrack: routedTrack,
+      m1Theta: eap.theta,
+      m1Sem: eap.sem,
+      m1Raw: rawM1,
+      module2Items: m2Items
+    };
+  }
 
   function _complexityScore(q){
     if(!q) return 0;
@@ -162,8 +409,10 @@
       { name: 'رياضيات التحصيلي — اختبار محوسب تجريبي (SAAT Math CBT)', minutes: 25, qCount: 22, calc: false, domains: ['functions', 'algebra', 'trig', 'vectors', 'matrices', 'calculus', 'probability'] }
     ],
     sat: [
-      { name: 'Digital SAT® Math — Module 1 (Standard Stage)', minutes: 35, qCount: 22, calc: true, domains: ['algebra', 'advanced', 'problem-solving', 'geometry', 'trigonometry'] },
-      { name: 'Digital SAT® Math — Module 2 (Adaptive Stage)', minutes: 35, qCount: 22, calc: true, domains: ['algebra', 'advanced', 'problem-solving', 'geometry', 'trigonometry'] }
+      { name: 'Digital SAT® Math — Full 2-Stage Adaptive Test (Module 1 + Module 2)', minutes: 35, qCount: 22, calc: true, adaptiveTwoStage: true, satStratified: true, stage: 1, domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
+      { name: 'Digital SAT® Math — Module 1 (Routing Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 1, domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
+      { name: 'Digital SAT® Math — Module 2 (Hard Adaptive Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 2, adaptiveTrack: 'hard', domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
+      { name: 'Digital SAT® Math — Module 2 (Standard Adaptive Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 2, adaptiveTrack: 'standard', domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] }
     ],
     igcse: [
       { name: 'Cambridge IGCSE® 0580 — Paper 2 (Non-Calculator)', minutes: 90, qCount: 20, calc: false, domains: ['number', 'algebra', 'geometry', 'trigonometry', 'probability', 'statistics'] },
@@ -457,6 +706,13 @@
   }
 
   function _drawPaperPool(rawPool, paper, tracker){
+    if(paper && (paper.satStratified || paper.adaptiveTwoStage)){
+      return _drawSatAdaptiveModule(rawPool, {
+        stage: paper.stage || 1,
+        adaptiveTrack: paper.adaptiveTrack || 'routing',
+        sprCount: (paper.stage === 2) ? 6 : 5
+      });
+    }
     var strictBase = _filterPoolForPaper(rawPool, paper);
     var domainFilter = paper && paper.domains;
     var pool = strictBase;
@@ -1066,6 +1322,10 @@
       var picked = _drawPaperPool(allPool, paper, tracker);
 
       _lastDownloadArgs = null;
+      _satFullPool = allPool.slice();
+      _satAdaptiveState = (paper && paper.adaptiveTwoStage)
+        ? { stage: 1, m1Pool: null, m1Answers: null, m1Outcomes: null, routedTrack: null, m1Theta: 0, m1Sem: 1 }
+        : null;
       _pool = picked.map(function(q){
         var isFixed = q.fixedChoices || _isQuantComp(q);
         return (!isFixed && window._shuffleQ) ? window._shuffleQ(q) : q;
@@ -1383,6 +1643,71 @@
 
   function submitMockExam(){
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
+
+    var body = document.getElementById('mock-exam-body');
+    if(!body) return;
+
+    // WP-42: Live 2-Stage Adaptive Digital SAT Transition (Module 1 -> Module 2)
+    if(_paper && _paper.adaptiveTwoStage && _satAdaptiveState && _satAdaptiveState.stage === 1){
+      var m1Outcomes = _pool.map(function(q, qi){
+        return _gradeSingleItemQuick(q, _answers[qi]);
+      });
+      var route = _routeSatModule2(_pool, m1Outcomes, _satFullPool);
+      _satAdaptiveState.stage = 2;
+      _satAdaptiveState.m1Pool = _pool.slice();
+      _satAdaptiveState.m1Answers = Object.assign({}, _answers);
+      _satAdaptiveState.m1Outcomes = m1Outcomes;
+      _satAdaptiveState.routedTrack = route.routedTrack;
+      _satAdaptiveState.m1Theta = route.m1Theta;
+      _satAdaptiveState.m1Sem = route.m1Sem;
+
+      _pool = route.module2Items.map(function(q){
+        var isFixed = q.fixedChoices || _isQuantComp(q);
+        return (!isFixed && window._shuffleQ) ? window._shuffleQ(q) : q;
+      });
+      _answers = {};
+      _flags = {};
+      _curIdx = 0;
+      _isSubmitted = false;
+      _secs = (_paper.minutes || 35) * 60;
+      _totalSecs = _secs;
+
+      var titleM2 = document.getElementById('mock-exam-title');
+      if(titleM2){
+        titleM2.innerHTML = '<span>Digital SAT® Math — Module 2 of 2 (Adaptive Stage)</span> '
+          + '<span style="background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:600">🖩 Calculator Allowed</span>';
+      }
+
+      _renderQuestionsDOM();
+      _goToQuestion(0);
+      _renderTimer();
+      _tmr = setInterval(function(){
+        _secs--;
+        _renderTimer();
+        if(_secs <= 0){
+          clearInterval(_tmr);
+          _tmr = null;
+          submitMockExam();
+        }
+      }, 1000);
+      return;
+    }
+
+    // If finishing Stage 2 of 2-stage adaptive SAT, merge Module 1 + Module 2 (44 items) for combined IRT scoring & review
+    if(_paper && _paper.adaptiveTwoStage && _satAdaptiveState && _satAdaptiveState.stage === 2 && Array.isArray(_satAdaptiveState.m1Pool)){
+      var m1Len = _satAdaptiveState.m1Pool.length;
+      var mergedAnswers = {};
+      Object.keys(_satAdaptiveState.m1Answers || {}).forEach(function(k){
+        mergedAnswers[parseInt(k, 10)] = _satAdaptiveState.m1Answers[k];
+      });
+      Object.keys(_answers || {}).forEach(function(k){
+        mergedAnswers[m1Len + parseInt(k, 10)] = _answers[k];
+      });
+      _pool = _satAdaptiveState.m1Pool.concat(_pool);
+      _answers = mergedAnswers;
+      _renderQuestionsDOM();
+    }
+
     _isSubmitted = true;
 
     if(typeof window.setFloatingCalcLocked === 'function'){
@@ -1391,9 +1716,6 @@
     if(typeof window.closeFloatingCalc === 'function'){
       window.closeFloatingCalc();
     }
-
-    var body = document.getElementById('mock-exam-body');
-    if(!body) return;
 
     // Ensure all question cards are visible in review mode
     var allQEls = body.querySelectorAll('.mock-q');
@@ -1525,6 +1847,20 @@
 
     var pct = totalGraded ? Math.round((correct / totalGraded) * 100) : 0;
     var scaled = _getScaledScoreEstimate(_trackId, correct, totalGraded);
+    if(_resolveBankTrack(_trackId) === 'sat' && _pool.length > 0){
+      var itemOutcomes = _pool.map(function(_q, qi){
+        var el = document.getElementById('mock-q-' + qi);
+        return el ? (el.getAttribute('data-correct') === '1') : false;
+      });
+      var eapAll = _compute3PLEAP(_pool, itemOutcomes);
+      var rTrack = (_satAdaptiveState && _satAdaptiveState.routedTrack) || ((_paper && _paper.adaptiveTrack) || 'hard');
+      var satIrt = _thetaToSatScaled(eapAll.theta, eapAll.sem, rTrack, Math.round(correct), totalGraded);
+      scaled = {
+        label: 'Projected SAT Math Score',
+        value: satIrt.score + ' / 800 (±' + satIrt.ci + ', θ=' + satIrt.theta.toFixed(2) + ', ' + (rTrack === 'standard' ? 'Standard M2' : 'Hard M2') + ')',
+        badge: satIrt.score >= 700 ? '95th+ Percentile' : 'Competitive'
+      };
+    }
     var correctDisp = Math.abs(correct - Math.round(correct)) < 1e-6 ? String(Math.round(correct)) : (Math.round(correct * 10) / 10).toFixed(1);
     var mistakesCount = Math.max(0, Math.ceil(totalGraded - correct - 1e-6));
 
@@ -1645,6 +1981,15 @@
     }
   };
   window.closeMockExam = window.exitMockExam;
+  window.CSSatAdaptive = {
+    DOMAIN_QUOTAS: _SAT_DOMAIN_QUOTAS,
+    getItemIRT: _getItemIRT,
+    compute3PLEAP: _compute3PLEAP,
+    thetaToSatScaled: _thetaToSatScaled,
+    drawSatAdaptiveModule: _drawSatAdaptiveModule,
+    routeSatModule2: _routeSatModule2,
+    gradeSingleItemQuick: _gradeSingleItemQuick
+  };
   window.CSMockExamConfig = {
     PAPERS: PAPERS,
     MENA_BILINGUAL_TRACKS: MENA_BILINGUAL_TRACKS,

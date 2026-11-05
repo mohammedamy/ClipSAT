@@ -29,23 +29,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check live site
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check live site, RLS & Edge Functions
         id: site
+        env:
+          UPTIME_ALERT_WEBHOOK_URL: ${{ secrets.UPTIME_ALERT_WEBHOOK_URL }}
         run: |
           set +e
-          ok=true
-          detail=""
-          for path in "/" "/calculus/" "/sat/"; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "https://clipsat.org${path}")
-            echo "clipsat.org${path} -> ${code}"
-            if [ "$code" != "200" ]; then
-              ok=false
-              detail="clipsat.org${path} returned HTTP ${code}"
-              break
-            fi
-          done
-          echo "ok=${ok}" >> "$GITHUB_OUTPUT"
-          echo "detail=${detail}" >> "$GITHUB_OUTPUT"
+          output=$(node scripts/health-check.js --live 2>&1)
+          status=$?
+          echo "$output"
+          if [ "$status" -ne 0 ]; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            detail=$(echo "$output" | tr '\n' ' ' | cut -c1-400)
+            echo "detail=${detail}" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+            echo "detail=" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Check Supabase project
         id: supabase

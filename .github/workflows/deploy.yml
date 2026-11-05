@@ -29,6 +29,20 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Setup Python 3.12 (SymPy & Psychometric Gates)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install SymPy
+        run: pip install sympy
+
+      - name: Setup Deno 2.x (Edge Function Test Gate)
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
       - name: Install dependencies
         run: npm ci
 
@@ -39,9 +53,23 @@ jobs:
           node scripts/validate-banks.js
           node scripts/validate-katex-strict.js
           node scripts/validate-figures.js
+          node scripts/ci/validate-schema-v2.mjs
+          python3 scripts/ci/verify_bank_sympy.py --all
+          python3 scripts/ci/check_psychometrics.py
+          node scripts/ci/check-katex-strict.mjs
+          python3 scripts/ci/check_bilingual_parity.py
+          node scripts/ci/validate-figures-and-pdfs.mjs
+          node scripts/ci/check-no-eval-or-secrets.mjs
+          node scripts/ci/check-rls-policies.mjs
+          node scripts/ci/run-edge-tests.mjs
 
       - name: Extract content & build static site
         run: npm run build
+
+      - name: Verify CWV & build size budgets
+        run: |
+          node scripts/ci/check-build-budgets.mjs
+          node scripts/health-check.js --local
 
       - name: Run unit & security verification
         run: npm run test:unit

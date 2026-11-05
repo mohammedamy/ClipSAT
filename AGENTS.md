@@ -1,143 +1,74 @@
-# ClipSAT — Agent orientation
+# ClipSAT — Agent & Contributor Orientation
 
-Read this first, every session. It's an index, not an encyclopedia — follow the links for detail.
+Read this first, every session. All curriculum counts and track tables below are generated from `content/*/_meta.json` via `npm run docs:sync` (`scripts/sync-docs.js`).
 
-## What this is
+## What ClipSAT Is
 
-ClipSAT — a free math platform for 23 tracks (SAT/AP/IGCSE/Cambridge/IB/GAT Qudrat/SAAT Tahsili/Linear
-Algebra/Multivariable Calculus), bilingual (English LTR + Arabic RTL, in incremental rollout). Solo maintainer (Mohamed,
-full-time math teacher), AI-assisted, PR-based workflow. Live at `https://mohammedamy.github.io/ClipSAT/`.
+ClipSAT (`https://clipsat.org`) is a free, bilingual (English LTR + Arabic RTL) mathematics platform maintained by Mr. Mohamed Abdallah.
 
-## Current architecture (as of this file's last edit — check `docs/ARCHITECTURE.md` if this feels stale)
+<!-- @AUTOGEN:STATS_START -->
+- **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
+- **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
+- **Verified Question Bank (Schema v2):** **50,758** items (**34,578** executable SymPy certificates + **16,180** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
+- **Interactive Learning & Exports:** **2,816** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
+<!-- @AUTOGEN:STATS_END -->
 
-Static site: **Eleventy 3.x + Nunjucks**, deployed via GitHub Actions to GitHub Pages (`gh-pages`).
-Separate, NOT statically hosted: `app.py`, a Flask proxy for the "Ask Mr. Mohamed" AI chat feature —
-needs its own host + `ANTHROPIC_API_KEY`. See `docs/DEPLOY.md`.
+<!-- @AUTOGEN:TRACKS_START -->
+### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 50,758 Bank Questions)
 
-**Content model is mid-migration** (see `docs/DECISIONS/` and `docs/PHASE1-2_TARGET_ARCHITECTURE.md` for
-the full plan). Two content systems currently coexist — check which one a given track uses before editing:
+| Category | Tracks (Slug, Chapters, Verified Bank Items) |
+| :--- | :--- |
+| **US & Regional Standardized Testing** | Digital SAT Math (`sat`, 11 ch, 1,605 Qs) · ACT Math (`act`, 9 ch, 1,261 Qs) · ACT 2 Math Level 1 (`act2`, 9 ch, 1,715 Qs) · ACT 2 Math Level 2 (`act2l2`, 8 ch, 1,200 Qs) · EST Math (`est`, 9 ch, 1,280 Qs) · EST 2 Math Level 1 (`est2`, 9 ch, 1,416 Qs) · EST 2 Math Level 2 (`est2l2`, 8 ch, 1,200 Qs) |
+| **Saudi National Exams (ETEC / Qiyas)** | GAT Qudrat (`qudrat`, 9 ch, 1,350 Qs) · SAAT Tahsili (`tahsili`, 10 ch, 1,500 Qs) · English GAT & SAAT (Qiyas) (`gaten`, 8 ch, 1,280 Qs) |
+| **Advanced Placement (College Board AP)** | AP Calculus AB (`apab`, 11 ch, 1,650 Qs) · AP Calculus BC (`apbc`, 9 ch, 1,350 Qs) · AP Precalculus (`appc`, 8 ch, 1,200 Qs) · AP Statistics (`apstats`, 8 ch, 1,200 Qs) |
+| **Cambridge & Pearson Edexcel (IGCSE / A-Level)** | IGCSE 0580 (`igcse`, 10 ch, 1,500 Qs) · Pearson Edexcel IGCSE (4MA1) (`edexcel`, 8 ch, 1,240 Qs) · Additional Mathematics (`addmath`, 8 ch, 1,246 Qs) · AS Level Mathematics (`aslevel`, 20 ch, 2,894 Qs) · A2 Level Mathematics (`a2level`, 16 ch, 2,894 Qs) |
+| **International Baccalaureate (IBO)** | IB Math SL (AA/AI) (`ibsl`, 8 ch, 1,200 Qs) · IB Math HL (AA/AI) (`ibhl`, 8 ch, 1,200 Qs) |
+| **Mathematical Olympiad & Competitions** | Mathematical Olympiad · NSMO of KSA & KAUST (`olympiad`, 12 ch, 1,440 Qs) |
+| **Secondary Mathematics Foundations** | Algebra (`algebra`, 11 ch, 1,815 Qs) · Algebra 2 (`alg2`, 11 ch, 1,654 Qs) · Geometry (`geo`, 11 ch, 2,683 Qs) · Pre-Calculus (`precalc`, 8 ch, 3,438 Qs) |
+| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,311 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,200 Qs) · Linear Algebra (`linalg`, 8 ch, 1,200 Qs) · Differential Equations (`odes`, 9 ch, 1,350 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,286 Qs) |
+<!-- @AUTOGEN:TRACKS_END -->
 
-1. **Legacy (still true for most tracks):** all content — 21 tracks' chapters, definitions, theorems,
-   examples, the entire JS engine — lives inline in root `index.html` (41K+ LOC). `build.js` extracts it
-   into `public/css/main.css`, `public/js/engine.js`, `src/_includes/tracks/{track}.html`, and the shared
-   page shell (the `baseNjk` string inside `build.js` — **`src/_includes/base.njk` is generated from this
-   string, never hand-edit it directly**). Editing this system: edit `index.html` or `build.js`, then
-   `node build.js && npx @11ty/eleventy`.
-2. **Target (ALL 21 of the original 21 tracks migrated and LIVE — qudrat/tahsili/act2/est2/est/appc/apstats/apbc/act/precalc/ibsl/ibhl/geo/apab/alg2/algebra/sat/a2level/igcse/aslevel/calculus — plus `linalg` and `mvc`, a 22nd and 23rd track built directly in this system, never legacy tracks to begin with):** content lives in `content/{track}/_meta.json`
-   (incl. `chapterOrder` — the source of truth for display order, not filesystem listing order) +
-   `content/{track}/{chapter-slug}.json` (+ optional `_practice-set.json`), schema-validated against
-   `course_schema.json` (a `blocks[]` model — see `docs/DECISIONS/0002`/`0003`), rendered by
-   `src/_includes/partials/*.njk` via `src/{track}/index.njk` (hand-maintained for migrated tracks —
-   `build.js`'s `MIGRATED_TRACKS` set must list the track or the next build silently overwrites this file
-   back to the legacy include). Bilingual text renders via the `_bilingual.njk` macro and drives the
-   site's **real, existing** language toggle (`window.i18n` — extended, not replaced, `docs/DECISIONS/0004`).
-   See `docs/CONTENT_MODEL.md` and `docs/DECISIONS/0005-qudrat-cutover.md` (the actual cutover, incl. the
-   rollback path — `index.html`'s `qud-*` section and `tracks/qudrat.html` are kept, unused, on purpose).
-   To migrate the next track, follow the same sequence WP6-WP8 used, in order — don't skip the pilot's
-   lessons: the schema was wrong twice before it matched real content (`docs/DECISIONS/0002`/`0003`), and
-   the cutover itself found 3 more missing pieces (`docs/DECISIONS/0005`) that only turned up from reading
-   the ACTUAL legacy markup in full, not from assuming the pattern already built would cover everything.
-   One more recurring lesson (`docs/DECISIONS/0006`): a shared partial's "boilerplate" copy has three times
-   now turned out to be one specific track's copy hardcoded and silently wrong on every other migrated
-   track (chapter-tag pill, test-generator description, downloads section, practice-set intro — all found
-   by diffing a new track's real source text against what the partial actually renders). When migrating a
-   new track, diff its real copy against every partial it uses, don't assume "boilerplate" is actually
-   shared until you've checked. Also don't assume a fixed per-chapter block ORDER — `est`'s real source
-   showed several chapters skip the "Reference" callout-thm box qud/tah/act2/est2 usually open with, or
-   skip the later `callout def`, in different combinations per chapter; read each chapter's actual markup
-   order and reproduce it exactly rather than reusing the previous track's template shape.
+## Current Architecture (ClipSAT 2.0)
 
-**Question banks (already fully in the target pattern, both systems):** `bank-data/{track}.json`, fetched
-client-side at runtime. Adding/editing a question = edit the JSON, zero code changes, zero rebuild.
+All **31 curriculum tracks** are 100% unified on the canonical JSON + Per-Chapter Locale-Split SSG architecture (zero legacy inline track HTML):
 
-## Where to make each common kind of change
+1. **Curriculum Store (`content/{track}/`):**
+   - `content/{track}/_meta.json` defines `chapterOrder`, bilingual titles/subtitles, `examBoard`, `officialLinks`, `scopeNotice`, and `testGenerator` settings.
+   - `content/{track}/{chapter-slug}.json` stores structured `blocks[]` (`callout`, `workedExampleCard`, `practiceProblem`, `table`, `cards`, `text`, `figure`, `explorer`, `syllabusMap`, `seeAlso`) validated against `course_schema.json`.
+   - `src/_data/chapterPages.js` + `src/_includes/layouts/chapter-page.njk` generate **612 single-chapter routes** (`/{track}/{chapter}/` in English LTR and `/ar/{track}/{chapter}/` in Arabic RTL, each `< 95 KB` HTML and `< 3,500` DOM nodes), plus lightweight track syllabus hubs (`/{track}/` and `/ar/{track}/`).
+2. **Question Banks & Topic Shards (`bank-data/{track}.json` → `public/bank-shards/{track}/`):**
+   - Every bank uses **Canonical Schema v2** (`{ schemaVersion: 2, track, pool }`), validated by `scripts/validate-banks.js` and `scripts/quality_engine/verify_bank_sympy.py`.
+   - Every item carries an executable SymPy proof certificate (`sympy_cert`) or signed SHA-256 `educator_review_hash`, calibrated 3PL IRT parameters (`irt: { a, b, c }`), and `calc: boolean`.
+   - `build.js` emits per-topic shards into `public/bank-shards/{track}/{topic}.json` for lazy on-demand quiz loading (monolithic `bank-data/` is never copied into `_site/`).
+3. **Frontend Shell & Lazy Feature Bundles:**
+   - Real Nunjucks templates live in `src/_includes/base.njk`, `src/_includes/shell/*.html`, `src/index.njk`, and `src/404.njk`.
+   - Core boot scripts concatenate into `public/js/engine.js` (`< 350 KB`), while heavy features load on demand (`mock-exam.js`, `diagnostic-test.js`, `assignment-view.js`, `teacher-view.js`, `shell-modals.js`, `explorers-bundle.js`). Private `.js.map` source maps and module line tables are emitted to `artifacts/sourcemaps/` (never shipped inside `_site/`).
+4. **Supabase Backend & Edge Functions (`supabase/`):**
+   - Schema & migrations: `supabase/schema.sql` and `supabase/migrations/*.sql`, tested by `supabase/tests/rls_security.test.sql` (pgTAP).
+   - Edge Functions: `ai-proxy` (server-locked Socratic math prompt + `use_ai_quota`), `tts-proxy` (1-credit metered TTS), `google-token` (Vault `pgsodium` encrypted refresh tokens), and `billing-webhook` (Stripe + Moyasar SAR checkout & `public.ai_plans` entitlement provisioning).
 
-See **`docs/RECIPES.md`** — exact file-level steps for the 10 most common tasks (add a lesson, add a
-course, rebrand, add a question type, fix RTL layout, embed a video, add nav, edit footer, add SEO
-metadata, translate a page). Don't improvise a task this doc already covers.
+## Essential Commands
 
-For anything else: **`docs/MAP.json`** (path → purpose, machine-readable) or `docs/ARCHITECTURE.md`
-(system design, module boundaries, the "why").
-
-## Conventions
-
-- **Bilingual:** every user-facing string in the target content system is `{ "en": "...", "ar": "..." | null }`.
-  `ar: null` = not yet translated, renders English only. `dir="rtl"` is derived from `lang`, never stored.
-- **Design tokens:** `public/css/main.css` — see `docs/DESIGN_TOKENS.md`. Prefer an existing token over a
-  new hex value; the file still has legacy hardcoded colors being swept out incrementally (not yet zero).
-- **File size:** target ≤300 LOC per source file (≤150 preferred for components/partials). Don't add to
-  `index.html` if the track you're touching has already migrated to `content/`.
-- **No new dependency without one sentence justifying it** (what it replaces, what it costs).
-- **Cache-busting:** the build stamps `_site/sw.js`'s `SW_VERSION` with a hash of every JS/CSS file it
-  caches (`scripts/stamp-sw-version.js`, run from `.eleventy.js`), so any change to them reaches returning
-  visitors on its own. Don't bump `SW_VERSION` by hand (ADR 0046).
-
-## Commands
-
-```
-npm run build     # node build.js && npx @11ty/eleventy  — full build, mirrors CI
-npm start         # npx @11ty/eleventy --serve            — local dev server, use this to preview, not raw index.html
+```bash
+npm run build        # Full validation + shard/bundle build + Eleventy SSG (_site/ < 70 MiB)
+npm run test:unit    # All 28 unit, psychometric, security & Wave 0–4 verification suites
+npm run test:e2e     # Playwright Desktop / Mobile / RTL + axe-core WCAG 2.2 AA suite
+npm run docs:sync    # Sync @AUTOGEN stats & 31-track table in README/AGENTS/ARCHITECTURE
+npm run studio       # Educator Studio CLI (stats | scaffold-item | validate-item | add-item | scaffold-chapter)
+npm run item:add     # Shortcut for `node scripts/studio-cli.js add-item`
 ```
 
-CI (`.github/workflows/deploy.yml`) runs the same build on every push to `main` and deploys `_site/`.
-Nothing needs to be built locally before pushing, but do it anyway to catch failures before CI does.
-`.github/workflows/pr-checks.yml` also runs the build on every PR (previously only `push` to `main` ran CI)
-and, if the PR touches `content/**` or `bank-data/**`, requires a `Reviewed-by: <name>` line in the PR body
-naming someone other than the author — see `docs/DECISIONS/0025-second-reviewer-process.md` and the PR
-template.
+## Non-Negotiable Engineering Guardrails
 
-## Deploying
+- **Quarantined Content Edits:** Never mutate `content/` or `bank-data/` inside `npm run build`. Use `npm run item:add` (supports `--dry-run` and `--staging`) when adding or modifying items so Schema v2, strict KaTeX, AST Arabic parity, and SymPy verification run automatically.
+- **Zero Dynamic Code Execution:** Never introduce `eval()` or `new Function()` anywhere in `src/` or `public/js/`. Use the recursive-descent math AST parser (`19a-ix-answer-check.js`) and `escHtml()` / `DOMPurify.sanitize()`.
+- **Bilingual AST Parity:** Protect all `\(...\)`, `\[...\]`, and HTML tags as immutable `__MATH_k__` tokens when authoring or translating `.ar` strings (`scripts/quality_engine/ast_arabic_translator.py`). Keep Arabic prose outside KaTeX `\text{...}`.
+- **Build & Performance Budgets:** `_site/ < 70 MiB`, individual HTML `< 95 KB` & `< 3,500` DOM nodes, `public/js/engine.js < 350,000` bytes, and `src/scripts/modules/02-core-app.js < 350` lines.
+- **Documentation Sync:** After adding a track, chapter, or bank item, run `npm run docs:sync`; CI Gate 1 (`scripts/ci/validate-schema-v2.mjs`) fails closed if `README.md`, `AGENTS.md`, or `docs/ARCHITECTURE.md` drift from `content/*/_meta.json`.
 
-Branch, commit, push, `gh pr create`, merge. **Never push directly to `main`.**
+## Where to Look Next
 
-```
-git checkout -b <short-description>
-git add <files> && git commit -m "..."
-git push -u origin <branch>
-gh pr create --fill
-```
-
-Wait ~1–2 min after merge, then verify live. **Hard-reload (Cmd+Shift+R)** when checking —
-`js/engine.js`/`css/main.css` cache for 10 minutes; `bank-data/*.json` doesn't cache long.
-
-`fatal: cannot lock ref` / `Unable to create .git/index.lock`: `rm -f .git/*.lock .git/refs/heads/*.lock`.
-
-## Known gaps and traps — check before assuming these are bugs
-
-- **Footer/nav is still duplicated** between `index.html`'s own `<header>`/`<footer>` and `build.js`'s
-  `baseNjk` string's `<header>`/`<footer>` — only the `baseNjk` copy ships; `index.html`'s is never served,
-  but is still hand-maintained (unclear whether it's still used for direct preview, so it hasn't been
-  removed — see `docs/PHASE1-2_TARGET_ARCHITECTURE.md` WP3). **`npm run build` now runs
-  `scripts/check-shell-sync.js` first and fails loudly if the two drift** (it already caught real,
-  pre-existing drift once — see `docs/DECISIONS/`). If you edit one, mirror the change in the other, then
-  re-run `npm run check-shell-sync` before pushing.
-- **Root-level standalone pages** (`changelog.html`, `rigor-standard.html`, `free-tier-promise.html`) need
-  explicit `addPassthroughCopy(...)` entries in `.eleventy.js` or they silently vanish from `_site/`.
-- **`course-loader.js`, `router.js`, `storage.js`, `desmos-widget.js` were deleted (WP4)** — confirmed
-  orphaned in the Phase 0 audit, only referenced by `sw.js`'s precache list. Deleting them also fixed a
-  real bug: `.eleventy.js` never copied them into `_site/`, so `sw.js`'s `cache.addAll()` shell pre-cache
-  (atomic — one 404 fails the whole call) had been silently failing on every install. If you're reading
-  this in a checkout from before WP4, these files may still be present; check `git log` for the deletion.
-- **`courses/`** contains only `.gitkeep` — not the same thing as `content/` (the new content root).
-- **Monetization is copy, not code** — `free-tier-promise.html` describes a paid tier; no billing/gating
-  exists in the app.
-
-## Style preferences (Mohamed)
-
-- Math deliverables (worksheets/exams) as `.docx` with native Word equations (OMML), not images/plain LaTeX.
-- Diagrams/graphs via GeoGebra where applicable.
-- Concise, direct responses — minimal narration, don't restate what was just done.
-- Real work as a PR, not a narrated plan.
-
-## More docs
-
-`docs/ARCHITECTURE.md` (system design, the two content systems, data flow), `docs/DEPLOY.md` (build/CI/
-rollback), `docs/CONTENT_MODEL.md` (target-system schema), `docs/RECIPES.md` (file-level steps per task),
-`docs/PHASE8_TOKEN_VERIFICATION.md` (measured, not projected, token savings — qudrat scope only),
-`docs/DECISIONS/` (why, per decision, in the order they were made).
-
-## Full history / superseded docs
-
-`CLAUDE_CODE_STARTER_PROMPT.md` (pre-dates this file, being folded in here — check both until fully merged),
-`AUDIT.md` and `docs/INVENTORY.md` (point-in-time audits, historical record, not current-state truth),
-`docs/PHASE1-2_TARGET_ARCHITECTURE.md` (the active migration plan this file's "target" column refers to).
+- `docs/ARCHITECTURE.md` — Detailed data flow, SSG pagination, adaptive 3PL engines, and security boundaries.
+- `docs/CONTENT_MODEL.md` — Chapter `blocks[]` JSON schema and partial rendering rules.
+- `docs/RECIPES.md` — Step-by-step recipes for common curriculum and UI tasks.
+- `SUPABASE_SETUP.md` — Cloud database, Vault secrets, Moyasar/Stripe webhooks, and RLS setup.

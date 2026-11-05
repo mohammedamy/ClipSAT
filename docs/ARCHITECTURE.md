@@ -1,96 +1,71 @@
-# ClipSAT — Architecture
+# ClipSAT 2.0 — System Architecture
 
-System design, module boundaries, and the reasoning behind them. For "where do I edit X," see
-`docs/RECIPES.md`. For the content schema itself, see `docs/CONTENT_MODEL.md`. For why specific decisions
-were made, see `docs/DECISIONS/`.
+System design, data flow, runtime module boundaries, and security invariants. Metrics below are synchronized directly from `content/*/_meta.json` and `bank-data/*.json` via `scripts/sync-docs.js`.
 
-## The two content systems
+## Platform Scale Snapshot
 
-ClipSAT is mid-migration between two coexisting content systems. Check which one a track uses before
-editing it (`docs/MAP.json` / `AGENTS.md` say which).
+<!-- @AUTOGEN:STATS_START -->
+- **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
+- **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
+- **Verified Question Bank (Schema v2):** **50,758** items (**34,578** executable SymPy certificates + **16,180** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
+- **Interactive Learning & Exports:** **2,816** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
+<!-- @AUTOGEN:STATS_END -->
 
-**Legacy** — content lives inline in root `index.html` (still the case for 20 of 21 tracks). `build.js`
-extracts it at build time into `public/css/main.css`, `public/js/engine.js`,
-`src/_includes/tracks/{track}.html`, and `src/_includes/base.njk` (generated from `build.js`'s `baseNjk`
-string). Eleventy then wraps each track's extracted include with `base.njk` to produce `_site/{track}/`.
+## 1. Per-Chapter Locale-Split Static Site Generation (SSG)
 
-**Target** — content lives in `content/{track}/*.json` (schema-validated against `course_schema.json`),
-rendered directly by Nunjucks partials (`src/_includes/partials/`) via a hand-authored
-`src/{track}/index.njk`. No `build.js` extraction step for these tracks — `build.js`'s `MIGRATED_TRACKS`
-set tells it to leave that track's `index.njk` alone. `qudrat` is the only track on this system so far
-(`docs/DECISIONS/0005-qudrat-cutover.md`).
+All curriculum content lives in `content/{track}/_meta.json` and `content/{track}/{chapter-slug}.json` (validated against `course_schema.json`). During `npm run build`, Eleventy (`src/_data/chapterPages.js` + `src/_includes/layouts/chapter-page.njk`) compiles two isolated static route families so no page ever ships hidden chapters or hidden second-language DOM subtrees:
 
-Both systems produce pages that use the same `base.njk` shell, the same `bank-data/*.json` question
-banks, the same `public/js/engine.js` explorer/quiz JS, and the same `window.i18n` language toggle — the
-migration changes where *content* lives, not the runtime engine, the explorer JS, or the deploy pipeline.
-
-## Why two systems coexist, not a big-bang rewrite
-
-Non-negotiable constraint from the re-engineering brief: incremental, reversible migration, deployable and
-correct after every step. The qudrat cutover alone required 8 work packages (WP1–WP8) and found real
-problems only visible once real content was actually converted (`docs/DECISIONS/0002` and `0003`
-corrected the schema shape twice; `0005` found 3 missing pieces by reading the full legacy markup). A
-big-bang rewrite of all 21 tracks at once would have multiplied that risk 21×, with no ability to catch
-and fix a wrong design decision before it was baked into 20 more tracks.
-
-## Data flow (target system, per request)
-
-```
+```text
 content/{track}/_meta.json ──┐
-content/{track}/{ch}.json ───┼──> migratedContent.js (Eleventy global data)
-content/{track}/_practice-set.json ┘         │
-                                              ▼
-                          src/{track}/index.njk
-                     (subject-head.njk, rail.njk,
-                    chapter.njk × N, practice-set.njk,
-                  test-generator.njk, downloads-block.njk)
-                                              │
-                                        base.njk shell
-                                              │
-                                   _site/{track}/index.html
+content/{track}/{ch}.json ───┼──> migratedContent.js ──> chapterPages.js
+content/{track}/_practice-set.json ┘                        │
+                                                            ├──> _site/{track}/index.html              (EN syllabus hub)
+                                                            ├──> _site/ar/{track}/index.html           (AR RTL syllabus hub)
+                                                            ├──> _site/{track}/{ch}/index.html         (306 EN chapter pages, <95 KB)
+                                                            └──> _site/ar/{track}/{ch}/index.html      (306 AR chapter pages, <95 KB)
 ```
 
-Each `chapter.njk` dispatches its `content.blocks[]` to one of `partials/blocks/{callout,table,cards,
-text,explorer}.njk` by `kind` (`course_schema.json`'s discriminated union — `docs/DECISIONS/0002`/`0003`
-explain why these five, not a fixed definitions/theorems/examples split).
+- **Build-Time KaTeX SSR (`scripts/katex-ssr.js`):** Pre-renders math expressions with `output: 'htmlAndMathml'` so browsers paint equations on first frame without layout shift while assistive technologies read semantic `<math>` trees.
+- **Logical RTL Layout:** Arabic routes render with `<html lang="ar" dir="rtl">`, self-hosted `Noto Sans Arabic`, logical CSS properties (`inset-inline-start/end`), and reciprocal `hreflang="en"` / `hreflang="ar"` / `hreflang="x-default"` SEO tags.
 
-## Bilingual rendering
+## 2. Canonical Question Banks, Shards & Adaptive Psychometrics
 
-Every user-facing string in the target system is `{en, ar}`. A shared macro
-(`src/_includes/partials/_bilingual.njk`) renders both languages into the DOM as sibling `.i18n-en`/
-`.i18n-ar` elements (the second omitted if `ar` is `null`), and a small, additive extension to
-`index.html`'s existing `_applyToDOM()` — the function the site's real `window.i18n.setLocale()` already
-calls on every toggle — flips which one is visible. No second toggle mechanism; the same header button
-drives legacy dictionary-key content and target-system embedded-pair content on the same page.
-`docs/DECISIONS/0004` has the full reasoning, including why dictionary injection was rejected.
+```text
+bank-data/{track}.json (Schema v2 + sympy_cert + 3PL irt + calc)
+        │
+        ├──> CI Gates 1–5 (AJV Schema v2, SymPy symbolic proof, χ² < 4.0, KaTeX strict, AST AR parity)
+        │
+        └──> build.js shard emitter ──> public/bank-shards/{track}/{topic}.json ──> _site/bank-shards/...
+```
 
-## The explorer engine boundary
+- **Lazy Shard Delivery (`02e-question-bank-and-syllabus.js`):** Pages boot with zero bank network requests. Opening a chapter quiz fetches only `/bank-shards/{track}/{topic}.json` (cached by `sw.js` with a bounded LRU cache).
+- **2-Stage Adaptive Digital SAT (`17-mock-exam-mode.js` / `window.CSSatAdaptive`):** Administers a 22-item stratified Module 1 (`35%` Algebra, `35%` Advanced Math, `15%` PSDA, `15%` Geometry & Trig; ~`25%` SPR), estimates $\hat{\theta}_{M1}$ via 61-node 3PL Expected A Posteriori (EAP) quadrature, and routes deterministically to the **Hard** ($\hat{\theta}_{M1} \ge 0.15$ or raw $\ge 15/22$) or **Standard** Module 2 pool with scaled `200–800 ± CI` reporting.
+- **3PL Bayesian Diagnostic CAT (`27-diagnostic-test.js` / `window.CSDiagnosticCAT`):** Selects items by Maximum Fisher Information with domain-exposure balancing, down-weights `< 2.5s` rapid guesses (`w = 0.15`), stops early once $\text{SEM} \le 0.32$ (`6–15` items), and generates a chapter-linked study plan.
+- **Structured Multi-Part FRQ & Proof Engine (`src/scripts/exam/structured-frq.js`):** Supports `(a)(i), (a)(ii), (b)` written questions for AP, IGCSE, A-Level, Edexcel, IB AA/AI, and Olympiad Proof papers with recursive-descent symbolic grading, scratchpad `<canvas>` capture, and `[M1][A1][B1]` partial-credit rubrics.
 
-56 interactive canvas explorers (`docs/INVENTORY.md` §A) are hand-written JS in `public/js/engine.js`,
-each keyed to specific, pre-existing DOM ids. The target system's `explorer` block kind
-(`docs/DECISIONS/0003`) is deliberately a **reference + exact shell**, not a generic reusable explorer
-type: it places the correct pre-existing ids into the correct pre-existing HTML shape, and holds the
-surrounding text bilingually — it does not, and is not meant to, let a content author invent a *new*
-explorer from data alone. Authoring a new explorer still means writing real JS in `engine.js`. This
-matches the product roadmap's explicit "don't rebuild the explorer engine" guidance.
+## 3. Frontend Bundles, Security & Observability
 
-## Two separately-deployed pieces
+- **Code Splitting & Private Source Maps:** `build.js` produces `public/js/engine.js` (`< 350 KB`) plus deferred bundles (`mock-exam.js`, `diagnostic-test.js`, `assignment-view.js`, `teacher-view.js`, `shell-modals.js`, `explorers-bundle.js`). Source maps (`.js.map`) and module line tables (`.modules.json`) are written exclusively to `artifacts/sourcemaps/` and resolved offline via `scripts/symbolicate-error.js`.
+- **XSS & RCE Elimination:** All dynamic text passes through strict 5-entity `escHtml()` or `DOMPurify.sanitize()`. All dynamic math graphing and answer checking use zero-eval recursive-descent AST parsers. `_headers` enforces strict `Content-Security-Policy` (no `unsafe-eval`), `Strict-Transport-Security`, and `X-Frame-Options: DENY`.
+- **Privacy-First Telemetry (`public/js/analytics.js` & `public/js/error-logging.js`):** Consent-gated, cookieless funnel events and PII-redacted error reports with automatic 30-day retention pruning (`prune_old_telemetry()`) and 1-minute external health probing (`scripts/health-check.js`).
 
-The static site (this repo, built by `build.js` + Eleventy, deployed to GitHub Pages via
-`.github/workflows/deploy.yml`) is not the whole system:
+## 4. Supabase Cloud Sync, Scoped Teacher LMS & Billing
 
-- **`app.py`** — a Flask reverse-proxy for the "Ask Mr. Mohamed" AI chat feature. Needs its own host and
-  `ANTHROPIC_API_KEY`. Not built or deployed by this repo's CI. See `docs/DEPLOY.md`.
-- **Supabase** (`supabase/schema.sql`, `public/js/cloud-sync.js`) — optional account/cloud-sync backend,
-  a thin layer over the existing localStorage progress system. Setup: `SUPABASE_SETUP.md`.
+- **Delta + Tombstone Sync (`public/js/cloud-sync.js`):** Dirty-record delta queue with `deleted_at` soft-delete tombstones prevents resurrected cleared mistakes across devices while cutting sync payloads by >95%.
+- **Server-Verified Teacher LMS (`22d-assignment-view.js`, `public/js/teacher-view.js`):** Joining a class via `join_class_by_code` is rate-limited (`8 / 15 min`) and requires explicit student data-sharing consent (`consent_given = true`). Teacher RLS policies scope visibility strictly to the class's `track`. Completed assignments mint server-signed HMAC-SHA256 certificates (`CS-VERIFIED-<uuid>-<sig16>`) stored in `public.assignment_submissions`.
+- **Automated Checkout & Entitlements (`supabase/functions/billing-webhook/`):** Verifies Stripe (`Stripe-Signature` with 300s replay window) and Moyasar SAR (`X-Moyasar-Signature` for Mada / Apple Pay / STC Pay) webhooks in constant time, records idempotency in `public.billing_webhook_events`, and provisions Plus (`tier = 'paid'`, `daily_credits = 200`, 30-day trial support) in `public.ai_plans`.
 
-## Navigation and chapter switching (target system)
+<!-- @AUTOGEN:TRACKS_START -->
+### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 50,758 Bank Questions)
 
-`src/{track}/index.njk` wraps everything in `<main id="view-{track}" class="view">` — required by the
-site's existing `showView()`/`goChapter()` JS (root implementations in `index.html`, wrapped by several
-later feature layers — see `docs/DECISIONS/0005` for the trace). Chapters are hidden by CSS
-(`.chapter{display:none}`) and shown by toggling a `.ch-active` class; `showView()` defaults to activating
-the first `.chapter` in DOM order if none is active yet. This means: chapter render order in
-`index.njk` must match `content/{track}/_meta.json`'s `chapterOrder` exactly, which must match the nav
-rail's order exactly (`rail.njk` reads the same `chapters` array, so this holds automatically as long as
-both are fed the same ordered array — don't reorder one without the other).
+| Category | Tracks (Slug, Chapters, Verified Bank Items) |
+| :--- | :--- |
+| **US & Regional Standardized Testing** | Digital SAT Math (`sat`, 11 ch, 1,605 Qs) · ACT Math (`act`, 9 ch, 1,261 Qs) · ACT 2 Math Level 1 (`act2`, 9 ch, 1,715 Qs) · ACT 2 Math Level 2 (`act2l2`, 8 ch, 1,200 Qs) · EST Math (`est`, 9 ch, 1,280 Qs) · EST 2 Math Level 1 (`est2`, 9 ch, 1,416 Qs) · EST 2 Math Level 2 (`est2l2`, 8 ch, 1,200 Qs) |
+| **Saudi National Exams (ETEC / Qiyas)** | GAT Qudrat (`qudrat`, 9 ch, 1,350 Qs) · SAAT Tahsili (`tahsili`, 10 ch, 1,500 Qs) · English GAT & SAAT (Qiyas) (`gaten`, 8 ch, 1,280 Qs) |
+| **Advanced Placement (College Board AP)** | AP Calculus AB (`apab`, 11 ch, 1,650 Qs) · AP Calculus BC (`apbc`, 9 ch, 1,350 Qs) · AP Precalculus (`appc`, 8 ch, 1,200 Qs) · AP Statistics (`apstats`, 8 ch, 1,200 Qs) |
+| **Cambridge & Pearson Edexcel (IGCSE / A-Level)** | IGCSE 0580 (`igcse`, 10 ch, 1,500 Qs) · Pearson Edexcel IGCSE (4MA1) (`edexcel`, 8 ch, 1,240 Qs) · Additional Mathematics (`addmath`, 8 ch, 1,246 Qs) · AS Level Mathematics (`aslevel`, 20 ch, 2,894 Qs) · A2 Level Mathematics (`a2level`, 16 ch, 2,894 Qs) |
+| **International Baccalaureate (IBO)** | IB Math SL (AA/AI) (`ibsl`, 8 ch, 1,200 Qs) · IB Math HL (AA/AI) (`ibhl`, 8 ch, 1,200 Qs) |
+| **Mathematical Olympiad & Competitions** | Mathematical Olympiad · NSMO of KSA & KAUST (`olympiad`, 12 ch, 1,440 Qs) |
+| **Secondary Mathematics Foundations** | Algebra (`algebra`, 11 ch, 1,815 Qs) · Algebra 2 (`alg2`, 11 ch, 1,654 Qs) · Geometry (`geo`, 11 ch, 2,683 Qs) · Pre-Calculus (`precalc`, 8 ch, 3,438 Qs) |
+| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,311 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,200 Qs) · Linear Algebra (`linalg`, 8 ch, 1,200 Qs) · Differential Equations (`odes`, 9 ch, 1,350 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,286 Qs) |
+<!-- @AUTOGEN:TRACKS_END -->

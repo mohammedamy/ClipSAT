@@ -1,16 +1,5 @@
 name: PR Checks
 
-# Runs on every pull request into main. Previously this repo had no PR-triggered CI at all —
-# .github/workflows/deploy.yml only runs on push to main, so a broken build or an unreviewed content
-# change was only ever caught after merge. See docs/DECISIONS/0025-second-reviewer-process.md.
-#
-# types explicitly includes 'edited': the reviewer gate reads github.event.pull_request.body, and
-# the whole point of that gate is to react to the PR description gaining a Reviewed-by line — which
-# on a real PR (#181) happens via an edit to the description, not a new commit. GitHub's default
-# pull_request trigger set (opened/synchronize/reopened) does NOT include edits to the description,
-# so without this the gate would only ever see the body as it stood at the last push, permanently
-# stale until the next code change forced a re-run for an unrelated reason.
-
 on:
   pull_request:
     branches: [main]
@@ -34,6 +23,20 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Setup Python 3.12 (SymPy & Psychometric Gates)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install SymPy
+        run: pip install sympy
+
+      - name: Setup Deno 2.x (Edge Function Test Gate)
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
       - name: Install dependencies
         run: npm ci
 
@@ -44,11 +47,25 @@ jobs:
           node scripts/validate-banks.js
           node scripts/validate-katex-strict.js
           node scripts/validate-figures.js
+          node scripts/ci/validate-schema-v2.mjs
+          python3 scripts/ci/verify_bank_sympy.py --all
+          python3 scripts/ci/check_psychometrics.py
+          node scripts/ci/check-katex-strict.mjs
+          python3 scripts/ci/check_bilingual_parity.py
+          node scripts/ci/validate-figures-and-pdfs.mjs
+          node scripts/ci/check-no-eval-or-secrets.mjs
+          node scripts/ci/check-rls-policies.mjs
+          node scripts/ci/run-edge-tests.mjs
 
       - name: Build & validate content
         run: npm run build
 
-      - name: Answer-checker unit tests
+      - name: CWV & build size budget gate
+        run: |
+          node scripts/ci/check-build-budgets.mjs
+          node scripts/health-check.js --local
+
+      - name: Unit, psychometric & security verification suites
         run: npm run test:unit
 
       - name: Second-reviewer gate for content changes
@@ -59,9 +76,6 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: node scripts/check-second-reviewer.js
 
-  # The Playwright suite in tests/e2e/ — Phase 5.009's regression checks (tracks.spec.js) and the
-  # Pillar 4 WCAG 2.1 AA axe-core sweep (a11y.spec.js). A separate job so an a11y or regression
-  # failure is visibly distinct from a build/content failure in the checks list.
   e2e-and-a11y:
     runs-on: ubuntu-latest
     timeout-minutes: 40
@@ -84,5 +98,5 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Playwright (regression + accessibility)
+      - name: Playwright (E2E, RTL, Offline & WCAG 2.2 AA Accessibility)
         run: npm run test:e2e

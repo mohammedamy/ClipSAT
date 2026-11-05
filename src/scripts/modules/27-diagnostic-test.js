@@ -347,11 +347,143 @@
     return '';
   }
 
-  // ── Computerized Adaptive Testing (CAT) Routing ─────────────────────────────
-  function pickNextAdaptiveQuestion(state) {
-    var targetDiff = state.currentDifficulty || 'medium';
+  // ── WP-43: 3PL Bayesian EAP Computerized Adaptive Testing (CAT) Engine ──────
+  var RAPID_GUESS_MS = 2500;
+  var RAPID_GUESS_WEIGHT = 0.15;
+  var MIN_CAT_ITEMS = 6;
+  var MAX_CAT_ITEMS = 15;
+  var SEM_STOP_THRESHOLD = 0.32;
 
-    // Domain balance: count questions already picked per domain
+  function getItemIRT(q) {
+    if (q && q.irt && typeof q.irt.a === 'number' && typeof q.irt.b === 'number') {
+      return {
+        a: q.irt.a,
+        b: q.irt.b,
+        c: typeof q.irt.c === 'number' ? q.irt.c : (q.type === 'spr' ? 0.0 : 0.25)
+      };
+    }
+    var diff = normalizeDiff(q || {});
+    var b = diff === 'easy' ? -1.15 : (diff === 'hard' ? 1.35 : 0.05);
+    var nChoices = (q && Array.isArray(q.choices) && q.choices.length >= 3) ? q.choices.length : 4;
+    return {
+      a: 1.25,
+      b: b,
+      c: (q && q.type === 'spr') ? 0.0 : Math.round((1.0 / nChoices) * 100) / 100
+    };
+  }
+
+  function prob3PL(theta, prm) {
+    var z = -1.702 * prm.a * (theta - prm.b);
+    var ez = z > 35 ? Infinity : (z < -35 ? 0 : Math.exp(z));
+    var p = prm.c + (1 - prm.c) / (1 + ez);
+    if (p < 1e-9) p = 1e-9;
+    if (p > 1 - 1e-9) p = 1 - 1e-9;
+    return p;
+  }
+
+  function fisherInformation3PL(q, theta) {
+    var prm = getItemIRT(q);
+    var p = prob3PL(theta, prm);
+    var denom = (1 - prm.c) * (1 - prm.c) * p;
+    if (denom <= 1e-12) return 0;
+    var num = 2.896804 * prm.a * prm.a * (p - prm.c) * (p - prm.c) * (1 - p);
+    return num / denom;
+  }
+
+  function computeEAPPosterior(items, outcomes, dwellMsMap) {
+    var nodes = 61;
+    var minT = -4.0, maxT = 4.0, step = (maxT - minT) / (nodes - 1);
+    var thetas = new Array(nodes);
+    var logPost = new Array(nodes);
+    var maxLP = -Infinity;
+    var rapidCount = 0;
+
+    for (var i0 = 0; i0 < items.length; i0++) {
+      var dw0 = dwellMsMap ? dwellMsMap[i0] : undefined;
+      if (typeof dw0 === 'number' && dw0 > 0 && dw0 < RAPID_GUESS_MS) rapidCount++;
+    }
+
+    for (var g = 0; g < nodes; g++) {
+      var th = minT + g * step;
+      thetas[g] = th;
+      var lp = -0.5 * th * th; // N(0, 1) prior
+      for (var i = 0; i < items.length; i++) {
+        if (outcomes[i] === undefined || outcomes[i] === null) continue;
+        var prm = getItemIRT(items[i]);
+        var p = prob3PL(th, prm);
+        var dw = dwellMsMap ? dwellMsMap[i] : undefined;
+        var w = (typeof dw === 'number' && dw > 0 && dw < RAPID_GUESS_MS) ? RAPID_GUESS_WEIGHT : 1.0;
+        lp += w * (outcomes[i] ? Math.log(p) : Math.log(1 - p));
+      }
+      logPost[g] = lp;
+      if (lp > maxLP) maxLP = lp;
+    }
+
+    var sumW = 0, sumTW = 0;
+    var weights = new Array(nodes);
+    for (var j = 0; j < nodes; j++) {
+      var wt = Math.exp(logPost[j] - maxLP);
+      weights[j] = wt;
+      sumW += wt;
+      sumTW += thetas[j] * wt;
+    }
+    var mean = sumW > 0 ? (sumTW / sumW) : 0;
+    var sumVar = 0;
+    for (var k = 0; k < nodes; k++) {
+      var d = thetas[k] - mean;
+      sumVar += d * d * weights[k];
+    }
+    var sem = sumW > 0 ? Math.sqrt(Math.max(0.01, sumVar / sumW)) : 1.0;
+    return {
+      theta: Math.round(mean * 1000) / 1000,
+      sem: Math.round(sem * 1000) / 1000,
+      rapidCount: rapidCount
+    };
+  }
+
+  function checkDiagAnswer(q, userAns) {
+    if (!q || userAns === undefined || userAns === null) return false;
+    if (q.type === 'spr') {
+      var val = String(userAns).trim().toLowerCase();
+      var target = String(q.sprAnswer != null ? q.sprAnswer : (q.ans != null ? q.ans : '')).trim().toLowerCase();
+      if (!val || !target) return false;
+      if (val === target) return true;
+      if (window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function') {
+        try { if (window.ClipSATAnswerCheck.equivalent(val, target)) return true; } catch (_e) {}
+      }
+      var toNum = function(s) {
+        if (!s) return NaN;
+        if (s.indexOf('/') !== -1) {
+          var p = s.split('/');
+          var n = parseFloat(p[0]), d = parseFloat(p[1]);
+          return (d !== 0 && !isNaN(n) && !isNaN(d)) ? (n / d) : NaN;
+        }
+        return parseFloat(s);
+      };
+      var vn = toNum(val), tn = toNum(target);
+      return (!isNaN(vn) && !isNaN(tn) && Math.abs(vn - tn) < 1e-4);
+    }
+    return userAns === parseAnswerIndex(q);
+  }
+
+  function shouldStopCAT(answeredCount, sem, maxItems) {
+    var cap = maxItems || MAX_CAT_ITEMS;
+    if (answeredCount >= cap) return true;
+    if (answeredCount >= MIN_CAT_ITEMS && typeof sem === 'number' && sem <= SEM_STOP_THRESHOLD) return true;
+    return false;
+  }
+
+  function thetaToDifficultyLabel(theta) {
+    if (theta <= -0.45) return 'easy';
+    if (theta >= 0.65) return 'hard';
+    return 'medium';
+  }
+
+  function pickNextAdaptiveQuestion(state) {
+    var theta = typeof state.theta === 'number' ? state.theta : 0.0;
+    var targetDiff = state.currentDifficulty || thetaToDifficultyLabel(theta);
+
+    // Domain exposure control: prioritize least-exposed domains
     var domainCounts = {};
     state.domains.forEach(function(d) { domainCounts[d] = 0; });
     state.questions.forEach(function(q) {
@@ -359,79 +491,67 @@
       domainCounts[d] = (domainCounts[d] || 0) + 1;
     });
 
-    // Sort domains by lowest frequency
-    var sortedDomains = state.domains.slice().sort(function(a, b) {
-      return (domainCounts[a] || 0) - (domainCounts[b] || 0);
+    var minCount = Infinity;
+    state.domains.forEach(function(d) {
+      var c = domainCounts[d] || 0;
+      if (c < minCount) minCount = c;
     });
 
-    var picked = null;
-    var pickedDomain = null;
+    // Candidate domains within +1 exposure of minimum
+    var eligibleDomains = state.domains.filter(function(d) {
+      return (domainCounts[d] || 0) <= minCount;
+    });
+    if (!eligibleDomains.length) eligibleDomains = state.domains.slice();
 
-    // Try finding unused question in least represented domains at target difficulty
-    for (var di = 0; di < sortedDomains.length; di++) {
-      var d = sortedDomains[di];
-      var diffMap = state.byDomainAndDiff[d];
+    // Select candidate maximizing 3PL Fisher Information I_i(theta)
+    var bestItem = null;
+    var bestInfo = -1;
+    var bestKey = '';
+
+    for (var di = 0; di < eligibleDomains.length; di++) {
+      var dom = eligibleDomains[di];
+      var diffMap = state.byDomainAndDiff[dom];
       if (!diffMap) continue;
-
-      var diffPool = diffMap[targetDiff] || [];
-      for (var pi = 0; pi < diffPool.length; pi++) {
-        var candidate = diffPool[pi];
-        var qId = (candidate.text || candidate.q || '') + '|' + d;
-        if (!state.usedIndices[qId]) {
-          picked = candidate;
-          pickedDomain = d;
-          state.usedIndices[qId] = true;
-          break;
+      var domAll = (diffMap.easy || []).concat(diffMap.medium || []).concat(diffMap.hard || []);
+      for (var pi = 0; pi < domAll.length; pi++) {
+        var cand = domAll[pi];
+        var key = (cand.id || cand.text || cand.q || '') + '|' + dom;
+        if (state.usedIndices[key]) continue;
+        var info = fisherInformation3PL(cand, theta);
+        // Gentle bonus when item's difficulty tier matches current step target
+        if (normalizeDiff(cand) === targetDiff) info *= 1.08;
+        if (info > bestInfo) {
+          bestInfo = info;
+          bestItem = cand;
+          bestKey = key;
         }
-      }
-      if (picked) break;
-    }
-
-    // Fallback: search adjacent difficulty levels in least represented domains
-    if (!picked) {
-      var fallbackOrder = targetDiff === 'medium' ? ['hard', 'easy'] : ['medium', targetDiff === 'easy' ? 'hard' : 'easy'];
-      for (var fi = 0; fi < fallbackOrder.length; fi++) {
-        var altDiff = fallbackOrder[fi];
-        for (var di2 = 0; di2 < sortedDomains.length; di2++) {
-          var d2 = sortedDomains[di2];
-          var diffMap2 = state.byDomainAndDiff[d2];
-          if (!diffMap2) continue;
-          var altPool = diffMap2[altDiff] || [];
-          for (var pj = 0; pj < altPool.length; pj++) {
-            var cand = altPool[pj];
-            var qId2 = (cand.text || cand.q || '') + '|' + d2;
-            if (!state.usedIndices[qId2]) {
-              picked = cand;
-              pickedDomain = d2;
-              state.usedIndices[qId2] = true;
-              break;
-            }
-          }
-          if (picked) break;
-        }
-        if (picked) break;
       }
     }
 
-    // Ultimate fallback: any unused question in pool
-    if (!picked && state.pool.length) {
+    // Ultimate fallback across entire pool
+    if (!bestItem && state.pool.length) {
       for (var k = 0; k < state.pool.length; k++) {
         var anyQ = state.pool[k];
-        var anyId = (anyQ.text || anyQ.q || '') + '|' + (anyQ.domain || '');
-        if (!state.usedIndices[anyId]) {
-          picked = anyQ;
-          state.usedIndices[anyId] = true;
-          break;
+        var anyKey = (anyQ.id || anyQ.text || anyQ.q || '') + '|' + (anyQ.domain || '');
+        if (!state.usedIndices[anyKey]) {
+          var anyInfo = fisherInformation3PL(anyQ, theta);
+          if (anyInfo > bestInfo) {
+            bestInfo = anyInfo;
+            bestItem = anyQ;
+            bestKey = anyKey;
+          }
         }
       }
     }
 
-    if (picked) {
-      picked._adaptiveDiff = targetDiff;
-      state.questions.push(picked);
-      state.difficultyHistory.push(targetDiff);
+    if (bestItem) {
+      state.usedIndices[bestKey] = true;
+      var assignedDiff = normalizeDiff(bestItem);
+      bestItem._adaptiveDiff = assignedDiff;
+      state.questions.push(bestItem);
+      state.difficultyHistory.push(assignedDiff);
     }
-    return picked;
+    return bestItem;
   }
 
   function renderQuestion() {
@@ -439,6 +559,7 @@
     var state = _diagState;
     if (!state) return;
 
+    state.shownAtMs = Date.now();
     var q = state.questions[state.currentIdx];
     var total = state.targetCount;
     var progressPct = Math.round(((state.currentIdx + 1) / total) * 100);
@@ -455,24 +576,38 @@
     } else {
       diffBadgeHtml = '<span class="cs-diag-cat-badge medium">⚖️ Standard / Level 2</span>';
     }
+    var semChip = (typeof state.sem === 'number' && state.currentIdx > 0)
+      ? '<span class="cs-diag-counter" title="3PL Posterior Standard Error">θ=' + (state.theta >= 0 ? '+' : '') + state.theta.toFixed(2) + ' ±' + state.sem.toFixed(2) + '</span>'
+      : '';
 
-    var choicesHtml = (q.choices || []).map(function(choice, cIdx) {
-      var letter = String.fromCharCode(65 + cIdx);
-      var isSelected = userAns === cIdx;
-      return '<button type="button" class="cs-diag-choice' + (isSelected ? ' selected' : '') + '" onclick="window.selectDiagChoice(' + cIdx + ')">'
-        + '<span class="cs-diag-letter">' + letter + '</span>'
-        + '<span class="cs-diag-choice-text">' + formatMath(choice) + '</span>'
-        + '</button>';
-    }).join('');
+    var responseAreaHtml = '';
+    if (q.type === 'spr') {
+      var curSpr = userAns != null ? String(userAns) : '';
+      responseAreaHtml = '<div class="cs-diag-spr-wrap" style="margin-top:14px;padding:14px;border:1.5px solid var(--border,#cbd5e1);border-radius:10px;background:var(--paper-2,#f8fafc)">'
+        + '<label style="display:block;font-size:.82rem;font-weight:700;color:var(--indigo,#1e3a8a);margin-bottom:6px">✍️ Student-Produced Response (Enter integer, fraction like 7/4, or decimal):</label>'
+        + '<input type="text" class="cs-diag-spr-input" value="' + escT(curSpr) + '" placeholder="Type exact value…" '
+        + 'oninput="window.inputDiagSpr(this.value)" '
+        + 'style="width:100%;max-width:260px;padding:10px 12px;border:2px solid var(--border,#94a3b8);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem;font-weight:700">'
+        + '</div>';
+    } else {
+      responseAreaHtml = '<div class="cs-diag-choices">' + (q.choices || []).map(function(choice, cIdx) {
+        var letter = String.fromCharCode(65 + cIdx);
+        var isSelected = userAns === cIdx;
+        return '<button type="button" class="cs-diag-choice' + (isSelected ? ' selected' : '') + '" onclick="window.selectDiagChoice(' + cIdx + ')">'
+          + '<span class="cs-diag-letter">' + letter + '</span>'
+          + '<span class="cs-diag-choice-text">' + formatMath(choice) + '</span>'
+          + '</button>';
+      }).join('') + '</div>';
+    }
 
     var isLast = state.currentIdx === total - 1;
 
     overlay.innerHTML = '<div class="cs-diag-card">'
       + '<div class="cs-diag-head">'
       + '  <div class="cs-diag-meta">'
-      + '    <span class="cs-diag-track-badge">🎯 ' + escT(trackLabel) + ' CAT</span>'
-      + '    <span class="cs-diag-counter">Question ' + (state.currentIdx + 1) + ' of ' + total + '</span>'
-      + '    ' + diffBadgeHtml
+      + '    <span class="cs-diag-track-badge">🎯 ' + escT(trackLabel) + ' 3PL CAT</span>'
+      + '    <span class="cs-diag-counter">Question ' + (state.currentIdx + 1) + ' of up to ' + total + '</span>'
+      + '    ' + diffBadgeHtml + semChip
       + '  </div>'
       + '  <button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()" aria-label="Close diagnostic">✕</button>'
       + '</div>'
@@ -481,7 +616,7 @@
       + '  <div class="cs-diag-domain-tag">' + escT(q.domain || 'Core Mathematics') + '</div>'
       + (figHtml ? '<div class="cs-diag-fig-wrap">' + figHtml + '</div>' : '')
       + '  <div class="cs-diag-q-text">' + formatMath(q.text || q.q || '') + '</div>'
-      + '  <div class="cs-diag-choices">' + choicesHtml + '</div>'
+      + '  ' + responseAreaHtml
       + '</div>'
       + '<div class="cs-diag-footer">'
       + '  <button type="button" class="cs-diag-nav-btn" onclick="window.prevDiagQuestion()"' + (state.currentIdx === 0 ? ' disabled' : '') + '>← Previous</button>'
@@ -545,8 +680,7 @@
 
     var total = state.questions.length;
     var correct = 0;
-    var weightedScore = 0;
-    var maxWeightedScore = 0;
+    var outcomesArr = [];
     var domainStats = {};
 
     state.questions.forEach(function(q, i) {
@@ -554,26 +688,28 @@
       if (!domainStats[d]) domainStats[d] = { correct: 0, total: 0 };
       domainStats[d].total++;
 
-      var diff = q._adaptiveDiff || 'medium';
-      var weight = diff === 'hard' ? 3.2 : (diff === 'medium' ? 2.0 : 1.0);
-      maxWeightedScore += weight;
-
-      var targetAns = parseAnswerIndex(q);
-      var userAns = state.userAnswers[i];
-      if (userAns !== undefined && userAns === targetAns) {
+      var isRight = checkDiagAnswer(q, state.userAnswers[i]);
+      outcomesArr.push(isRight);
+      if (isRight) {
         correct++;
-        weightedScore += weight;
         domainStats[d].correct++;
       }
     });
 
-    var rawPct = Math.round((correct / total) * 100);
-    var catPct = Math.min(99, Math.max(25, Math.round((weightedScore / maxWeightedScore) * 100)));
+    var eap = computeEAPPosterior(state.questions, outcomesArr, state.dwellMs || {});
+    state.theta = eap.theta;
+    state.sem = eap.sem;
+
+    // Map 3PL posterior theta [-2.8, +2.6] -> [15, 99]% ability percentile
+    var normAbility = Math.max(0, Math.min(1, (eap.theta + 2.6) / 5.2));
+    var rawPct = total > 0 ? Math.round((correct / total) * 100) : 0;
+    var catPct = Math.min(99, Math.max(18, Math.round(18 + normAbility * 81)));
     var isArabic = (state.lang === 'ar');
     var trackLabel = isArabic ? (TRACK_NAMES_AR[state.trackId] || state.trackId) : (TRACK_NAMES[state.trackId] || state.trackId.toUpperCase());
-    var projScore = getProjectedScore(state.trackId, catPct);
+    var projBase = getProjectedScore(state.trackId, catPct);
+    var projScore = projBase + ' · θ=' + (eap.theta >= 0 ? '+' : '') + eap.theta.toFixed(2) + ' (±' + eap.sem.toFixed(2) + ' SEM)';
 
-    // Persist diagnostic result
+    // Persist diagnostic result with 3PL IRT estimates
     try {
       localStorage.setItem('clipsat_diagnostic_' + state.trackId, JSON.stringify({
         date: Date.now(),
@@ -581,18 +717,34 @@
         total: total,
         rawPct: rawPct,
         catPct: catPct,
+        theta: eap.theta,
+        sem: eap.sem,
+        rapidCount: eap.rapidCount,
         projectedScore: projScore,
         domains: domainStats
       }));
     } catch(e) {}
 
-    // Track analytics event
+    // Track aggregate analytics + anonymized empirical item calibration telemetry
     if (window.ClipSATAnalytics) {
       window.ClipSATAnalytics.track('diagnostic_complete', {
         track: state.trackId,
         score: correct,
         total: total,
-        catPct: catPct
+        catPct: catPct,
+        theta: eap.theta,
+        sem: eap.sem
+      });
+      state.questions.forEach(function(q, qi) {
+        if (q && q.id) {
+          window.ClipSATAnalytics.track('item_calibration', {
+            item_id: q.id,
+            track: state.trackId,
+            is_correct: outcomesArr[qi] ? 1 : 0,
+            dwell_ms: (state.dwellMs && state.dwellMs[qi]) || 0,
+            theta_bucket: Math.round(eap.theta * 2) / 2
+          });
+        }
       });
     }
 
@@ -721,15 +873,23 @@
       }).join('');
     }
 
-    // Solutions review accordion
+    // Solutions review accordion (supports both MCQ and SPR items)
     var solutionsHtml = state.questions.map(function(q, i) {
-      var targetAns = parseAnswerIndex(q);
       var userAns = state.userAnswers[i];
-      var isCorrect = userAns !== undefined && userAns === targetAns;
-      var userLetter = userAns !== undefined ? String.fromCharCode(65 + userAns) : (isArabic ? 'بدون إجابة' : 'None');
-      var targetLetter = String.fromCharCode(65 + targetAns);
-      var userChoiceText = userAns !== undefined && q.choices ? q.choices[userAns] : (isArabic ? 'لم تتم الإجابة' : 'Not answered');
-      var targetChoiceText = q.choices ? q.choices[targetAns] : '';
+      var isCorrect = checkDiagAnswer(q, userAns);
+      var userDisp = '', targetDisp = '';
+      if (q.type === 'spr') {
+        userDisp = (userAns !== undefined && String(userAns).trim() !== '') ? escT(String(userAns)) : (isArabic ? 'لم تتم الإجابة' : 'Not answered');
+        targetDisp = formatMath(String(q.sprAnswer != null ? q.sprAnswer : (q.ans != null ? q.ans : '')));
+      } else {
+        var targetAns = parseAnswerIndex(q);
+        var userLetter = userAns !== undefined ? String.fromCharCode(65 + userAns) : (isArabic ? 'بدون إجابة' : 'None');
+        var targetLetter = String.fromCharCode(65 + targetAns);
+        var userChoiceText = userAns !== undefined && q.choices ? q.choices[userAns] : (isArabic ? 'لم تتم الإجابة' : 'Not answered');
+        var targetChoiceText = q.choices ? q.choices[targetAns] : '';
+        userDisp = userLetter + ' (' + formatMath(userChoiceText) + ')';
+        targetDisp = targetLetter + ' (' + formatMath(targetChoiceText) + ')';
+      }
       var figHtml = renderFig(q);
       var qDiff = q._adaptiveDiff || 'medium';
 
@@ -741,8 +901,8 @@
         + (figHtml ? '<div class="cs-diag-fig-wrap">' + figHtml + '</div>' : '')
         + '<div class="cs-diag-sol-q">' + formatMath(q.text || q.q || '') + '</div>'
         + '<div class="cs-diag-sol-answers">'
-        + '  <div>' + (isArabic ? 'إجابتك: ' : 'Your Answer: ') + '<b class="' + (isCorrect ? 'text-correct' : 'text-incorrect') + '">' + userLetter + ' (' + formatMath(userChoiceText) + ')</b></div>'
-        + (!isCorrect ? '<div>' + (isArabic ? 'الإجابة الصحيحة: ' : 'Correct Answer: ') + '<b class="text-correct">' + targetLetter + ' (' + formatMath(targetChoiceText) + ')</b></div>' : '')
+        + '  <div>' + (isArabic ? 'إجابتك: ' : 'Your Answer: ') + '<b class="' + (isCorrect ? 'text-correct' : 'text-incorrect') + '">' + userDisp + '</b></div>'
+        + (!isCorrect ? '<div>' + (isArabic ? 'الإجابة الصحيحة: ' : 'Correct Answer: ') + '<b class="text-correct">' + targetDisp + '</b></div>' : '')
         + '</div>'
         + (q.sol ? '<div class="cs-diag-sol-expl"><b>' + (isArabic ? 'الشرح والتوضيح: ' : 'Explanation: ') + '</b>' + formatMath(q.sol) + '</div>' : '')
         + '</div>';
@@ -868,11 +1028,12 @@
         return;
       }
 
-      // Filter and group by domain and difficulty
+      // Filter and group by domain and difficulty (supports both MCQ and SPR items)
       var byDomainAndDiff = {};
       var validPool = [];
       for (var i = 0; i < rawPool.length; i++) {
         var item = rawPool[i];
+        if (item.type && item.type !== 'mcq' && item.type !== 'spr') continue;
         var d = item.domain || 'Core Mathematics';
         if (SKIP_DIAG_DOMAINS.test(d)) continue;
         var diff = normalizeDiff(item);
@@ -893,9 +1054,13 @@
       _diagState = {
         trackId: trackId,
         catMode: true,
-        targetCount: 12,
+        targetCount: MAX_CAT_ITEMS,
         currentIdx: 0,
-        currentDifficulty: 'medium', // Start at Medium!
+        currentDifficulty: 'medium',
+        theta: 0.0,
+        sem: 1.0,
+        shownAtMs: Date.now(),
+        dwellMs: {},
         pool: validPool,
         byDomainAndDiff: byDomainAndDiff,
         domains: allDomains,
@@ -923,6 +1088,11 @@
     if (overlay) overlay.classList.remove('show');
   };
 
+  window.inputDiagSpr = function(val) {
+    if (!_diagState) return;
+    _diagState.userAnswers[_diagState.currentIdx] = String(val == null ? '' : val);
+  };
+
   window.selectDiagChoice = function(choiceIdx) {
     if (!_diagState) return;
     _diagState.userAnswers[_diagState.currentIdx] = choiceIdx;
@@ -943,21 +1113,27 @@
 
   window.nextDiagQuestion = function() {
     if (!_diagState) return;
-    var currentQ = _diagState.questions[_diagState.currentIdx];
-    var userAns = _diagState.userAnswers[_diagState.currentIdx];
-    var targetAns = parseAnswerIndex(currentQ);
-    var isCorrect = (userAns !== undefined && userAns === targetAns);
-    _diagState.answersCorrect[_diagState.currentIdx] = isCorrect;
+    var idx = _diagState.currentIdx;
+    var currentQ = _diagState.questions[idx];
+    var userAns = _diagState.userAnswers[idx];
+    var elapsed = Date.now() - (_diagState.shownAtMs || Date.now());
+    _diagState.dwellMs[idx] = (_diagState.dwellMs[idx] || 0) + Math.max(1, elapsed);
 
-    // CAT Step Routing: promote on correct, demote on mistake
-    var prevDiff = _diagState.currentDifficulty || 'medium';
-    if (isCorrect) {
-      _diagState.currentDifficulty = (prevDiff === 'easy' ? 'medium' : 'hard');
-    } else {
-      _diagState.currentDifficulty = (prevDiff === 'hard' ? 'medium' : 'easy');
+    var isCorrect = checkDiagAnswer(currentQ, userAns);
+    _diagState.answersCorrect[idx] = isCorrect;
+
+    // Recompute 3PL Bayesian EAP posterior (theta, SEM) with rapid-guessing downweighting
+    var outcomesSoFar = [];
+    for (var j = 0; j < _diagState.questions.length; j++) {
+      outcomesSoFar.push(_diagState.answersCorrect[j]);
     }
+    var post = computeEAPPosterior(_diagState.questions, outcomesSoFar, _diagState.dwellMs);
+    _diagState.theta = post.theta;
+    _diagState.sem = post.sem;
+    _diagState.currentDifficulty = thetaToDifficultyLabel(post.theta);
 
-    if (_diagState.currentIdx < _diagState.targetCount - 1) {
+    var answeredCount = idx + 1;
+    if (!shouldStopCAT(answeredCount, post.sem, _diagState.targetCount)) {
       _diagState.currentIdx++;
       if (_diagState.questions.length <= _diagState.currentIdx) {
         pickNextAdaptiveQuestion(_diagState);
@@ -978,10 +1154,12 @@
 
   window.finishDiagnosticTest = function() {
     if (!_diagState) return;
-    var currentQ = _diagState.questions[_diagState.currentIdx];
-    var userAns = _diagState.userAnswers[_diagState.currentIdx];
-    var targetAns = parseAnswerIndex(currentQ);
-    _diagState.answersCorrect[_diagState.currentIdx] = (userAns !== undefined && userAns === targetAns);
+    var idx = _diagState.currentIdx;
+    var currentQ = _diagState.questions[idx];
+    var userAns = _diagState.userAnswers[idx];
+    var elapsed = Date.now() - (_diagState.shownAtMs || Date.now());
+    _diagState.dwellMs[idx] = (_diagState.dwellMs[idx] || 0) + Math.max(1, elapsed);
+    _diagState.answersCorrect[idx] = checkDiagAnswer(currentQ, userAns);
     renderResults();
   };
 
@@ -999,6 +1177,23 @@
 
   window.printDiagReport = function() {
     window.print();
+  };
+
+  // Expose 3PL CAT primitives for unit and psychometric verification (WP-43)
+  window.CSDiagnosticCAT = {
+    RAPID_GUESS_MS: RAPID_GUESS_MS,
+    RAPID_GUESS_WEIGHT: RAPID_GUESS_WEIGHT,
+    MIN_CAT_ITEMS: MIN_CAT_ITEMS,
+    MAX_CAT_ITEMS: MAX_CAT_ITEMS,
+    SEM_STOP_THRESHOLD: SEM_STOP_THRESHOLD,
+    getItemIRT: getItemIRT,
+    prob3PL: prob3PL,
+    fisherInformation3PL: fisherInformation3PL,
+    computeEAPPosterior: computeEAPPosterior,
+    checkDiagAnswer: checkDiagAnswer,
+    shouldStopCAT: shouldStopCAT,
+    pickNextAdaptiveQuestion: pickNextAdaptiveQuestion,
+    getProjectedScore: getProjectedScore
   };
 
   // Video facade global click handler

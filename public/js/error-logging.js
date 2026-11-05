@@ -48,43 +48,55 @@
     try { sessionStorage.setItem(CAP_KEY, String(readCount() + 1)); } catch (e) {}
   }
 
+  function sanitizeErrorText(str, maxLen) {
+    if (!str) return null;
+    return String(str)
+      .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, '[redacted-email]')
+      .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, 'Bearer [redacted-token]')
+      .replace(/\beyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{4,}\.[A-Za-z0-9_-]{2,}/g, '[redacted-jwt]')
+      .replace(/access_token=[^&\s#]+/gi, 'access_token=[redacted]')
+      .replace(/refresh_token=[^&\s#]+/gi, 'refresh_token=[redacted]')
+      .replace(/(https?:\/\/[^\s?#]+)\?[^\s#]+/gi, '$1?[redacted]')
+      .replace(/\?assign=[0-9a-z._-]+/gi, '?assign=[redacted]')
+      .slice(0, maxLen || 2000);
+  }
+
   function report(fields) {
-    var key = fields.message + '|' + fields.source + '|' + fields.line;
+    var cleanMsg = sanitizeErrorText(fields.message, 500) || '';
+    var cleanStack = sanitizeErrorText(fields.stack, 2000);
+    var cleanSource = fields.source ? String(fields.source).split('?')[0].split('#')[0].slice(0, 500) : null;
+    var key = cleanMsg + '|' + cleanSource + '|' + fields.line;
     if (seenThisPage[key]) return;
     seenThisPage[key] = true;
 
-    if (readCount() >= MAX_PER_SESSION) { log('session cap reached, dropping: ' + fields.message); return; }
+    if (readCount() >= MAX_PER_SESSION) { log('session cap reached, dropping: ' + cleanMsg); return; }
     bumpCount();
 
-    // Checked at report time, not at module-load time: cloud-sync.js's
-    // Supabase SDK <script> tag loads asynchronously, so window.ClipSATCloud
-    // may not be the real (configured) object yet on the very first tick —
-    // but an error can happen anywhere in the session, by which point
-    // cloud-sync.js has long since finished initializing. Same tolerance
-    // for "might miss the very first instant" as visit-counter.js already
-    // accepts (see its v1.1 comment) — not worth a retry/poll loop for a
-    // best-effort diagnostic channel.
     var cloud = window.ClipSATCloud;
-    if (!cloud || !cloud.configured) { log('cloud sync not configured, dropping: ' + fields.message); return; }
+    if (!cloud || !cloud.configured) { log('cloud sync not configured, dropping: ' + cleanMsg); return; }
 
     cloud.ready.then(function () {
       var sb = cloud.getClient();
       if (!sb) return;
       sb.rpc('log_client_error', {
-        p_message: fields.message,
+        p_message: cleanMsg,
         p_track: window.CLIPSAT_TRACK || null,
-        p_source: fields.source,
+        p_source: cleanSource,
         p_line: fields.line,
         p_col: fields.col,
-        p_stack: fields.stack,
+        p_stack: cleanStack,
         p_page_url: location.origin + location.pathname,
-        p_user_agent: navigator.userAgent
+        p_user_agent: String(navigator.userAgent || '').slice(0, 200)
       }).then(
         function (res) { if (res && res.error) log('RPC error: ' + res.error.message); },
         function (err) { log('RPC threw: ' + (err && err.message)); }
       );
     }, function () {});
   }
+
+  window.ClipSATErrorLog = {
+    sanitizeErrorText: sanitizeErrorText
+  };
 
   window.addEventListener('error', function (evt) {
     // Ignore resource-load errors (a failed <img>/<script>/<link> also fires

@@ -159,12 +159,23 @@
   window.openTeacherView = function () {
     var m = document.getElementById('teacher-view-modal');
     if (!m) return;
+    if (m.removeAttribute) m.removeAttribute('inert');
+    var trSel = document.getElementById('tv-create-track');
+    if (trSel && trSel.options && trSel.options.length <= 1) {
+      trSel.insertAdjacentHTML('beforeend', trackOptionsHtml());
+      if (window.CLIPSAT_TRACK && TRACK_LABELS[window.CLIPSAT_TRACK]) {
+        trSel.value = window.CLIPSAT_TRACK;
+      }
+    }
     m.classList.add('show');
     refreshAll();
   };
   window.closeTeacherView = function () {
     var m = document.getElementById('teacher-view-modal');
-    if (m) m.classList.remove('show');
+    if (m) {
+      m.classList.remove('show');
+      if (m.setAttribute) m.setAttribute('inert', '');
+    }
   };
 
   // ── Create a class (retries once on a code collision — astronomically
@@ -172,16 +183,24 @@
   window.tvCreateClass = function () {
     var sb = getClient();
     var input = document.getElementById('tv-create-name');
+    var trSel = document.getElementById('tv-create-track');
     var name = input && input.value.trim();
+    var trackVal = (trSel && trSel.value && TRACK_LABELS[trSel.value]) ? trSel.value : null;
     if (!sb || !name) { setStatus('tv-create-status', 'Enter a class name first.', true); return; }
     setStatus('tv-create-status', 'Creating…');
     var uid = window.ClipSATCloud.currentUserId();
-    var attempt = function (triesLeft) {
+    var attempt = function (triesLeft, omitTrackCol) {
       var code = randomCode();
-      sb.from('classes').insert({ owner_id: uid, name: name, code: code }).select().single()
+      var rowPayload = { owner_id: uid, name: name, code: code };
+      if (trackVal && !omitTrackCol) rowPayload.track = trackVal;
+      sb.from('classes').insert(rowPayload).select().single()
         .then(function (r) {
           if (r.error) {
-            if (triesLeft > 0 && /duplicate|unique/i.test(r.error.message || '')) { attempt(triesLeft - 1); return; }
+            if (!omitTrackCol && trackVal && /track|column/i.test(r.error.message || '')) {
+              attempt(triesLeft, true);
+              return;
+            }
+            if (triesLeft > 0 && /duplicate|unique/i.test(r.error.message || '')) { attempt(triesLeft - 1, omitTrackCol); return; }
             setStatus('tv-create-status', r.error.message, true);
             return;
           }
@@ -190,18 +209,30 @@
           refreshMyClasses();
         });
     };
-    attempt(2);
+    attempt(2, false);
   };
 
-  // ── Join a class by code ───────────────────────────────────────────
+  // ── Join a class by code (requires explicit student consent + server rate limit) ──
   window.tvJoinClass = function () {
     var sb = getClient();
     var codeInput = document.getElementById('tv-join-code');
     var nameInput = document.getElementById('tv-join-name');
+    var consentBox = document.getElementById('tv-join-consent');
     var code = codeInput && codeInput.value.trim();
     if (!sb || !code) { setStatus('tv-join-status', 'Enter a class code first.', true); return; }
+    if (consentBox && !consentBox.checked) {
+      setStatus('tv-join-status', 'Please confirm data-sharing consent before joining this class.', true);
+      return;
+    }
     setStatus('tv-join-status', 'Joining…');
-    sb.rpc('join_class_by_code', { p_code: code, p_display_name: nameInput ? nameInput.value.trim() : null })
+    var disp = nameInput ? nameInput.value.trim() : null;
+    sb.rpc('join_class_by_code', { p_code: code, p_display_name: disp, p_consent: true })
+      .then(function (r) {
+        if (r.error && /p_consent|function public\.join_class_by_code/i.test(r.error.message || '')) {
+          return sb.rpc('join_class_by_code', { p_code: code, p_display_name: disp });
+        }
+        return r;
+      })
       .then(function (r) {
         if (r.error) { setStatus('tv-join-status', r.error.message, true); return; }
         var row = r.data && r.data[0];
@@ -209,6 +240,41 @@
         if (codeInput) codeInput.value = '';
         refreshMyMemberships();
       });
+  };
+
+  // ── Verify server HMAC assignment certificate (or flag offline self-report) ──
+  window.tvVerifyAssignmentCode = function () {
+    var sb = getClient();
+    var inp = document.getElementById('tv-verify-code');
+    var raw = inp && inp.value ? inp.value.trim() : '';
+    if (!raw) { setStatus('tv-verify-status', 'Paste a CS-VERIFIED-… certificate code first.', true); return; }
+    var srvMatch = /^CS-VERIFIED-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})-([0-9a-f]{16,64})$/i.exec(raw);
+    if (srvMatch) {
+      if (!sb) { setStatus('tv-verify-status', 'Sign in to verify server HMAC certificates.', true); return; }
+      setStatus('tv-verify-status', 'Verifying cryptographic HMAC signature…');
+      sb.rpc('verify_assignment_certificate', {
+        p_submission_id: srvMatch[1].toLowerCase(),
+        p_sig_prefix: srvMatch[2].toLowerCase()
+      }).then(function (r) {
+        if (r.error) { setStatus('tv-verify-status', r.error.message, true); return; }
+        var row = Array.isArray(r.data) ? r.data[0] : r.data;
+        if (row && row.valid) {
+          var pct = row.total ? Math.round((row.score / row.total) * 100) : 0;
+          setStatus('tv-verify-status', '✅ Authentic Server HMAC Certificate · Track: ' + (TRACK_LABELS[row.track] || row.track) + ' · Score: ' + row.score + '/' + row.total + ' (' + pct + '%)', false);
+        } else {
+          setStatus('tv-verify-status', '❌ Invalid or tampered certificate signature.', true);
+        }
+      });
+      return;
+    }
+    if (typeof window.CSVerifyCertCode === 'function') {
+      var legacy = window.CSVerifyCertCode(raw);
+      if (legacy && legacy.valid) {
+        setStatus('tv-verify-status', '⚠️ Offline guest code (' + legacy.score + '/' + legacy.total + ', ' + legacy.pct + '%). Ask student to sign in for an unforgeable CS-VERIFIED certificate.', false);
+        return;
+      }
+    }
+    setStatus('tv-verify-status', '❌ Invalid or forged verification code.', true);
   };
 
   // ── Leave (as a student) / delete (as the owner) ───────────────────
@@ -279,12 +345,21 @@
         Promise.all([
           sb.from('accuracy').select('user_id,track,domain,correct,total').in('user_id', ids),
           sb.from('chapter_visits').select('user_id,track,count,updated_at').in('user_id', ids),
-          sb.from('mistakes').select('user_id,id,q,wrong,correct,domain,ts').in('user_id', ids).order('ts', { ascending: false }).limit(200)
+          sb.from('mistakes').select('user_id,id,view_id,q,wrong,correct,domain,ts').is('deleted_at', null).in('user_id', ids).order('ts', { ascending: false }).limit(200)
         ]).then(function (results) {
           var ar = results[0], vr = results[1], mr = results[2];
+          // Scope roster client-side to class track + assigned tracks (matches RLS policy)
+          var cObj = _classesById[classId] || {};
+          var allowedTracks = {};
+          var hasTrackScope = false;
+          if (cObj.track) { allowedTracks[cObj.track] = true; hasTrackScope = true; }
+          if (Array.isArray(cObj._assignedTracks)) {
+            cObj._assignedTracks.forEach(function (t) { if (t) { allowedTracks[t] = true; hasTrackScope = true; } });
+          }
           var byUser = {};        // uid -> {c,t} overall
           var bucketsByUser = {}; // uid -> { "track::domain" -> {track,domain,c,t} }
           (ar.data || []).forEach(function (row) {
+            if (hasTrackScope && row.track && !allowedTracks[row.track]) return;
             var agg = byUser[row.user_id] || { c: 0, t: 0 };
             agg.c += row.correct || 0; agg.t += row.total || 0;
             byUser[row.user_id] = agg;
@@ -297,6 +372,7 @@
           var lastActiveByUser = {};
           var visitsByUser = {};
           (vr.data || []).forEach(function (row) {
+            if (hasTrackScope && row.track && !allowedTracks[row.track]) return;
             var t = row.updated_at ? Date.parse(row.updated_at) : 0;
             if (!lastActiveByUser[row.user_id] || t > lastActiveByUser[row.user_id]) lastActiveByUser[row.user_id] = t;
             var vlist = visitsByUser[row.user_id] || (visitsByUser[row.user_id] = []);
@@ -304,6 +380,7 @@
           });
           var mistakesByUser = {};
           (mr.data || []).forEach(function (row) {
+            if (hasTrackScope && row.view_id && !allowedTracks[row.view_id]) return;
             var mlist = mistakesByUser[row.user_id] || (mistakesByUser[row.user_id] = []);
             if (mlist.length < 6) {
               mlist.push({ id: row.id, q: row.q, wrong: row.wrong, correct: row.correct, domain: row.domain, ts: row.ts });
@@ -521,20 +598,37 @@
     ]).then(function (results) {
       var ar = results[0], mr = results[1];
       var assignments = ar.data || [];
+      if (_classesById[classId]) {
+        _classesById[classId]._assignedTracks = assignments.map(function (a) { return a.track; });
+      }
       var total = (mr.data || []).length;
       if (!assignments.length) { el.innerHTML = '<p class="tv-empty">No assignments yet.</p>'; return; }
       var ids = assignments.map(function (a) { return a.id; });
-      sb.from('assignment_completions').select('assignment_id').in('assignment_id', ids)
-        .then(function (cr) {
+      Promise.all([
+        sb.from('assignment_completions').select('assignment_id').in('assignment_id', ids),
+        sb.from('assignment_submissions').select('assignment_id,score,total').in('assignment_id', ids).then(function (sr) { return sr; }, function () { return { data: [] }; })
+      ]).then(function (subResults) {
+          var cr = subResults[0], sr = subResults[1] || { data: [] };
           var doneCount = {};
           (cr.data || []).forEach(function (row) { doneCount[row.assignment_id] = (doneCount[row.assignment_id] || 0) + 1; });
+          var verStats = {};
+          (sr.data || []).forEach(function (row) {
+            if (!row.assignment_id) return;
+            var st = verStats[row.assignment_id] || (verStats[row.assignment_id] = { count: 0, pctSum: 0 });
+            st.count += 1;
+            st.pctSum += row.total ? Math.round((row.score / row.total) * 100) : 0;
+          });
           var cid = safeId(classId);
           el.innerHTML = '<ul class="tv-assign-list">' + assignments.map(function (a) {
             var aid = safeId(a.id);
             var n = doneCount[a.id] || 0;
+            var vst = verStats[a.id];
+            var verBadge = vst && vst.count
+              ? ' <span class="tv-frac" style="color:#15803d;font-weight:700">· 🔐 ' + vst.count + ' verified (' + Math.round(vst.pctSum / vst.count) + '% avg)</span>'
+              : '';
             var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
             return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
-              + escT(a.label) + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>'
+              + escT(a.label) + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>' + verBadge
               + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + aid + '\',\'' + cid + '\')" title="Delete assignment" aria-label="Delete assignment">🗑</button></li>';
           }).join('') + '</ul>';
         });

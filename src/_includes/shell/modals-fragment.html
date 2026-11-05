@@ -120,19 +120,34 @@
       <p>Create a class to get a code you can share with students, or join one with a code your teacher gave you. You can do both.</p>
       <div class="tv-section">
         <h4>Join a class</h4>
-        <input type="text" id="tv-join-code" placeholder="Class code, e.g. MATH7F" maxlength="12" style="text-transform:uppercase">
-        <input type="text" id="tv-join-name" placeholder="Your name (optional — shown to the teacher)">
+        <input type="text" id="tv-join-code" aria-label="Class code" placeholder="Class code, e.g. MATH7F" maxlength="12" style="text-transform:uppercase">
+        <input type="text" id="tv-join-name" aria-label="Display name (optional)" placeholder="Your name (optional — shown to the teacher)">
+        <label for="tv-join-consent" style="display:flex;align-items:flex-start;gap:8px;font-size:.78rem;line-height:1.4;margin:8px 0;color:var(--muted);cursor:pointer">
+          <input type="checkbox" id="tv-join-consent" style="margin-top:2px;min-width:18px;min-height:18px">
+          <span>I consent to sharing my class-scoped accuracy &amp; assignment scores with this teacher (other tracks stay private; revocable anytime by leaving).</span>
+        </label>
         <button class="cloud-auth-send" onclick="window.tvJoinClass&&window.tvJoinClass()">Join class</button>
         <p id="tv-join-status" class="cloud-auth-status"></p>
       </div>
       <div id="tv-my-memberships"></div>
       <div class="tv-section">
         <h4>Create a class</h4>
-        <input type="text" id="tv-create-name" placeholder="Class name, e.g. Period 3 Calculus">
+        <input type="text" id="tv-create-name" aria-label="Class name" placeholder="Class name, e.g. Period 3 Calculus">
+        <select id="tv-create-track" aria-label="Primary class track" style="width:100%;padding:8px 10px;margin:6px 0;border:1px solid var(--line,#cbd5e1);border-radius:8px;background:var(--paper,#fff);color:var(--text,#0f172a);font-size:.88rem">
+          <option value="">Select primary class track (scopes student privacy)</option>
+        </select>
         <button class="cloud-auth-send" onclick="window.tvCreateClass&&window.tvCreateClass()">Create class</button>
         <p id="tv-create-status" class="cloud-auth-status"></p>
       </div>
       <div id="tv-my-classes"></div>
+      <div class="tv-section" style="margin-top:14px">
+        <h4>🔐 Verify Assignment Certificate</h4>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input type="text" id="tv-verify-code" aria-label="Assignment verification certificate" placeholder="CS-VERIFIED-… or CLIP-…" style="flex:1;min-width:180px">
+          <button type="button" class="cloud-auth-send" style="width:auto;padding:8px 14px" onclick="window.tvVerifyAssignmentCode&&window.tvVerifyAssignmentCode()">Verify</button>
+        </div>
+        <p id="tv-verify-status" class="cloud-auth-status"></p>
+      </div>
     </div>
   </div>
 

@@ -35,3 +35,13 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/tts-proxy/deno.json"
 entrypoint = "./functions/tts-proxy/index.ts"
+
+[functions.billing-webhook]
+enabled = true
+# Stripe and Moyasar send server-to-server webhooks signed via HMAC-SHA256
+# (`Stripe-Signature` and `X-Moyasar-Signature`), not a Supabase JWT.
+# Browser-initiated checkout/portal requests verify user JWT inside index.ts.
+verify_jwt = false
+import_map = "./functions/billing-webhook/deno.json"
+entrypoint = "./functions/billing-webhook/index.ts"
+

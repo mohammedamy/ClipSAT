@@ -134,14 +134,27 @@ mkdirp(SOURCEMAP_DIR);
 const MINIFY_OPTS = { compress: { toplevel: false }, mangle: { toplevel: false } };
 let ixInjected = false;
 const engineSources = {};
-moduleManifest.forEach((name) => {
-  engineSources[name] = fs.readFileSync(path.join(MODULES_DIR, name), 'utf8');
+const engineModuleOffsets = [];
+let runningLine = 1;
+const enginePieces = moduleManifest.map((name, idx) => {
+  let piece = fs.readFileSync(path.join(MODULES_DIR, name), 'utf8');
+  if (idx === 0) piece = piece.replace(/^\s+/, '');
+  if (idx === moduleManifest.length - 1) piece = piece.replace(/\s+$/, '');
+  if (piece.includes(IX_PLACEHOLDER)) {
+    piece = piece.replace(IX_PLACEHOLDER, () => { ixInjected = true; return JSON.stringify(ixTracks); });
+  }
+  engineSources[name] = piece;
+  const newlineCount = (piece.match(/\n/g) || []).length;
+  engineModuleOffsets.push({
+    module: `src/scripts/modules/${name}`,
+    startLine: runningLine,
+    endLine: runningLine + newlineCount,
+  });
+  runningLine += newlineCount;
+  return piece;
 });
-const engineJs = moduleManifest
-  .map((name) => engineSources[name])
-  .join('')
-  .trim()
-  .replace(IX_PLACEHOLDER, () => { ixInjected = true; return JSON.stringify(ixTracks); });
+const engineJs = enginePieces.join('');
+fs.writeFileSync(path.join(SOURCEMAP_DIR, 'engine.js.modules.json'), JSON.stringify(engineModuleOffsets, null, 2), 'utf8');
 console.log(`  ${moduleManifest.length} modules concatenated`);
 const jsMinified = UglifyJS.minify(
   { 'engine.bundle.js': engineJs },
@@ -160,11 +173,26 @@ const jsMinified = UglifyJS.minify(
 const deferredManifest = JSON.parse(fs.readFileSync(path.join(MODULES_DIR, 'deferred-manifest.json'), 'utf8'));
 // An entry may list several modules as "sources"; they ship concatenated, in order, as one file.
 deferredManifest.forEach(({ source, sources, output }) => {
-  let src = (sources || [source]).map((f) => fs.readFileSync(path.join(MODULES_DIR, f), 'utf8').trim()).join('\n');
-  if (src.includes(IX_PLACEHOLDER)) {
-    src = src.replace(IX_PLACEHOLDER, () => { ixInjected = true; return JSON.stringify(ixTracks); });
-  }
-  source = (sources || [source]).join(' + ');
+  const srcList = sources || [source];
+  const defOffsets = [];
+  let defLine = 1;
+  const defPieces = srcList.map((f) => {
+    let part = fs.readFileSync(path.join(MODULES_DIR, f), 'utf8').trim();
+    if (part.includes(IX_PLACEHOLDER)) {
+      part = part.replace(IX_PLACEHOLDER, () => { ixInjected = true; return JSON.stringify(ixTracks); });
+    }
+    const lines = (part.match(/\n/g) || []).length + 1;
+    defOffsets.push({
+      module: `src/scripts/modules/${f}`,
+      startLine: defLine,
+      endLine: defLine + lines - 1,
+    });
+    defLine += lines;
+    return part;
+  });
+  let src = defPieces.join('\n');
+  fs.writeFileSync(path.join(SOURCEMAP_DIR, `${output}.modules.json`), JSON.stringify(defOffsets, null, 2), 'utf8');
+  source = srcList.join(' + ');
   const minified = UglifyJS.minify(
     { [output]: src },
     Object.assign({}, MINIFY_OPTS, { sourceMap: { filename: output } })

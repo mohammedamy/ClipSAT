@@ -1,0 +1,26 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./_site",
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/sat/index.html",
+        "http://localhost/ar/qudrat/index.html",
+        "http://localhost/pricing/index.html"
+      ],
+      "numberOfRuns": 2
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.92 }],
+        "categories:accessibility": ["error", { "minScore": 1.0 }],
+        "categories:seo": ["error", { "minScore": 1.0 }],
+        "total-blocking-time": ["error", { "maxNumericValue": 150 }],
+        "dom-size": ["error", { "maxNumericValue": 3500 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

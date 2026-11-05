@@ -133,3 +133,5 @@ export default {
     return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
   },
 };
+
+export { DAILY_TTS_BASE_CAP, MAX_INPUT_CHARS, PAID_MULTIPLIER, resolveAllowedOrigin };
