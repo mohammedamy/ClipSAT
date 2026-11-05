@@ -902,7 +902,10 @@ const baseNjk = `<!DOCTYPE html>
         <p class="cloud-auth-google-note">Google Forms export uses a separate opt-in popup only when you click Export to Google Forms.</p>
         <div class="cloud-auth-divider"><span>or use email</span></div>
         <input type="email" id="cloud-auth-email" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudSendCode&&window.cloudSendCode();}">
-        <button class="cloud-auth-send" onclick="window.cloudSendCode&&window.cloudSendCode()">Send code</button>
+        <input type="password" id="cloud-auth-password" placeholder="Password (min 8 characters)" autocomplete="current-password" minlength="8" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudSignInPassword&&window.cloudSignInPassword();}">
+        <button class="cloud-auth-send" onclick="window.cloudSignInPassword&&window.cloudSignInPassword()">Sign in with password</button>
+        <button type="button" class="cloud-auth-resend" onclick="window.cloudSignUpPassword&&window.cloudSignUpPassword()">Create account with this email &amp; password</button>
+        <button type="button" class="cloud-auth-resend" onclick="window.cloudSendCode&&window.cloudSendCode()">Or email me a one-time code instead</button>
         <div id="cloud-auth-code-step" hidden>
           <input type="text" id="cloud-auth-code" placeholder="Sign-in code" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudVerifyCode&&window.cloudVerifyCode();}">
           <button class="cloud-auth-send" onclick="window.cloudVerifyCode&&window.cloudVerifyCode()">Verify code</button>

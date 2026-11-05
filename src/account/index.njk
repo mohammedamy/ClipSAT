@@ -1,0 +1,77 @@
+---
+layout: base.njk
+trackId: account
+title: "My Account · ClipSAT"
+description: "Your ClipSAT account and cloud-sync status."
+isRtl: false
+---
+<main class="view active" id="view-account">
+  <div class="wrap" style="max-width:760px; margin:0 auto; padding:40px 20px 80px">
+    <h2>My Account</h2>
+
+    <!-- Shown to signed-out visitors. Client-side gate only: the data itself
+         is protected by RLS (supabase/schema.sql), not by hiding this page. -->
+    <div id="account-gate">
+      <p id="account-gate-msg">Checking your session…</p>
+      <button class="cloud-auth-send" id="account-signin-btn" style="max-width:240px" hidden
+              onclick="window.openCloudAuthModal && window.openCloudAuthModal()">Sign in or create account</button>
+    </div>
+
+    <div id="account-content" hidden>
+      <p>Signed in as <strong id="account-email"></strong> (<span id="account-provider"></span>).</p>
+      <p>Your mistake log, flashcards, streaks and accuracy are synced to this account.</p>
+      <button class="cloud-auth-send" style="max-width:240px" id="account-signout-btn">Sign out</button>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var gate = document.getElementById('account-gate');
+  var msg = document.getElementById('account-gate-msg');
+  var signinBtn = document.getElementById('account-signin-btn');
+  var content = document.getElementById('account-content');
+
+  function render(user) {
+    if (user) {
+      document.getElementById('account-email').textContent = user.email || 'your account';
+      document.getElementById('account-provider').textContent =
+        (window.ClipSATCloud.currentProvider && window.ClipSATCloud.currentProvider()) || 'email';
+      gate.hidden = true;
+      content.hidden = false;
+    } else {
+      content.hidden = true;
+      gate.hidden = false;
+      msg.textContent = 'Please sign in to view your account.';
+      signinBtn.hidden = false;
+    }
+  }
+
+  function start() {
+    var cloud = window.ClipSATCloud;
+    if (!cloud || !cloud.configured) { msg.textContent = 'Accounts are not available right now.'; return; }
+    // requireAuth() uses the cached session and opens the sign-in modal when
+    // signed out. Client-side gate only; RLS protects the data.
+    cloud.requireAuth().then(render);
+    // Re-render after sign-in / sign-out without a page reload.
+    cloud.ready.then(function () {
+      var client = cloud.getClient();
+      if (!client) return;
+      client.auth.onAuthStateChange(function (event, session) {
+        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+          setTimeout(function () { render(session ? session.user : null); }, 0);
+        }
+      });
+    });
+    document.getElementById('account-signout-btn').onclick = function () { cloud.signOut(); };
+  }
+
+  // cloud-sync.js is deferred and loads the Supabase SDK asynchronously.
+  var tries = 0;
+  (function wait() {
+    if (window.ClipSATCloud && (window.ClipSATCloud.requireAuth || window.ClipSATCloud.configured === false)) return start();
+    if (++tries > 100) { msg.textContent = 'Could not load sign-in. Check your connection or browser extensions.'; return; }
+    setTimeout(wait, 100);
+  })();
+})();
+</script>
