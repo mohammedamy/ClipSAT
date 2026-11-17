@@ -45820,6 +45820,2164 @@
         "b": 2.032,
         "c": 0.25
       }
+    },
+    {
+      "id": "odes-1351",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.95,
+        "b": -1.5,
+        "c": 0.25
+      },
+      "text": "Solve the initial value problem \\( \\frac{dy}{dx} = 3x^2 - 4x + 1 \\) with \\( y(1) = 5 \\), and find \\( y(3) \\).",
+      "choices": [
+        "\\( 17 \\)",
+        "\\( 15 \\)",
+        "\\( 19 \\)",
+        "\\( 13 \\)"
+      ],
+      "answer": 0,
+      "sol": "Integrating directly gives \\( y(x) = x^3 - 2x^2 + x + C \\). Applying \\( y(1) = 1 - 2 + 1 + C = 5 \\) yields \\( C = 5 \\). Evaluating at \\( x = 3 \\) gives \\( y(3) = 27 - 18 + 3 + 5 = 17 \\).",
+      "hints": [
+        "Separate and integrate the polynomial \\( 3x^2 - 4x + 1 \\) directly with respect to \\( x \\).",
+        "Use the initial condition \\( y(1) = 5 \\) to determine the constant of integration \\( C \\).",
+        "Substitute \\( x = 3 \\) into your expression for \\( y(x) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny_func = sp.integrate(3*x**2 - 4*x + 1, x)\nC = 5 - y_func.subs(x, 1)\nEXPECTED = (y_func + C).subs(x, 3)"
+    },
+    {
+      "id": "odes-1352",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.12,
+        "b": -1.21,
+        "c": 0.25
+      },
+      "text": "A bacterial culture grows according to \\( \\frac{dP}{dt} = 0.25 P \\), with initial population \\( P(0) = 120 \\). What is \\( P(8) \\)?",
+      "choices": [
+        "\\( 120e^2 \\)",
+        "\\( 120e^{0.25} \\)",
+        "\\( 240 \\)",
+        "\\( 120e^4 \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\frac{dP}{P} = 0.25\\,dt \\), so \\( \\ln P = 0.25t + C \\) and \\( P(t) = 120e^{0.25t} \\). At \\( t = 8 \\), \\( P(8) = 120e^{0.25 \\times 8} = 120e^2 \\).",
+      "hints": [
+        "Separate variables to obtain \\( \\frac{1}{P}\\,dP = 0.25\\,dt \\) and integrate both sides.",
+        "Exponentiate and apply \\( P(0) = 120 \\) to write \\( P(t) \\) explicitly.",
+        "Substitute \\( t = 8 \\) into \\( P(t) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nP = sp.Function('P')\nsol = sp.dsolve(sp.Eq(P(t).diff(t), sp.Rational(1, 4)*P(t)), ics={P(0): 120})\nEXPECTED = sol.rhs.subs(t, 8)"
+    },
+    {
+      "id": "odes-1353",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.29,
+        "b": -0.92,
+        "c": 0.25
+      },
+      "text": "Find the positive value of \\( y(2) \\) if \\( \\frac{dy}{dx} = \\frac{3x^2}{y} \\) and \\( y(0) = 2 \\).",
+      "choices": [
+        "\\( 2\\sqrt{5} \\)",
+        "\\( \\sqrt{10} \\)",
+        "\\( 4 \\)",
+        "\\( 2\\sqrt{3} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( y\\,dy = 3x^2\\,dx \\). Integrating yields \\( \\frac{1}{2}y^2 = x^3 + C \\). Since \\( y(0) = 2 \\), \\( \\frac{1}{2}(4) = C \\implies C = 2 \\), so \\( y^2 = 2x^3 + 4 \\). At \\( x = 2 \\), \\( y^2 = 2(8) + 4 = 20 \\), giving positive root \\( y(2) = \\sqrt{20} = 2\\sqrt{5} \\).",
+      "hints": [
+        "Multiply both sides by \\( y\\,dx \\) to isolate \\( y\\,dy \\) on the left and \\( 3x^2\\,dx \\) on the right.",
+        "Integrate both sides and solve for \\( C \\) using \\( y(0) = 2 \\).",
+        "Evaluate \\( y^2 \\) at \\( x = 2 \\) and take the positive square root."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Symbol('y', positive=True)\nlhs = sp.integrate(y, y)\nrhs = sp.integrate(3*x**2, x)\nC = lhs.subs(y, 2) - rhs.subs(x, 0)\nEXPECTED = sp.solve(sp.Eq(lhs, rhs.subs(x, 2) + C), y)[0]"
+    },
+    {
+      "id": "odes-1354",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.46,
+        "b": -1.24,
+        "c": 0.25
+      },
+      "text": "Consider the separable equation \\( \\frac{dy}{dx} = e^{2x} y \\) with \\( y(0) = 3 \\). Find \\( y(1) \\).",
+      "choices": [
+        "\\( 3e^{(e^2 - 1)/2} \\)",
+        "\\( 3e^{e^2 - 1} \\)",
+        "\\( 3e^{2e^2} \\)",
+        "\\( 3e^{(e^2 + 1)/2} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\frac{dy}{y} = e^{2x}\\,dx \\). Integrating yields \\( \\ln|y| = \\frac{1}{2}e^{2x} + C \\). At \\( x = 0, y = 3 \\): \\( \\ln 3 = \\frac{1}{2} + C \\implies C = \\ln 3 - \\frac{1}{2} \\). Thus \\( y(x) = 3\\exp\\left(\\frac{e^{2x} - 1}{2}\\right) \\), so \\( y(1) = 3e^{(e^2 - 1)/2} \\).",
+      "hints": [
+        "Rewrite the ODE as \\( \\frac{1}{y}\\,dy = e^{2x}\\,dx \\) and integrate each side.",
+        "Don't forget the factor of \\( \\frac{1}{2} \\) when integrating \\( e^{2x} \\), and note \\( e^{2(0)} = 1 \\ne 0 \\).",
+        "Apply \\( y(0) = 3 \\) to find the multiplicative constant, then substitute \\( x = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), sp.exp(2*x)*y(x)), ics={y(0): 3})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 1))"
+    },
+    {
+      "id": "odes-1355",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.02,
+        "b": -0.95,
+        "c": 0.25
+      },
+      "text": "Given the initial value problem \\( \\frac{dy}{dx} = -2xy^2 \\) with \\( y(0) = \\frac{1}{4} \\), find \\( y(2) \\).",
+      "choices": [
+        "\\( \\frac{1}{8} \\)",
+        "\\( \\frac{1}{12} \\)",
+        "\\( \\frac{1}{2} \\)",
+        "\\( -\\frac{1}{4} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( y^{-2}\\,dy = -2x\\,dx \\). Integrating yields \\( -y^{-1} = -x^2 + C \\), or \\( \\frac{1}{y} = x^2 - C \\). With \\( y(0) = \\frac{1}{4} \\), \\( 4 = 0 - C \\implies -C = 4 \\), so \\( y(x) = \\frac{1}{x^2 + 4} \\). At \\( x = 2 \\), \\( y(2) = \\frac{1}{4 + 4} = \\frac{1}{8} \\).",
+      "hints": [
+        "Divide by \\( y^2 \\) to write \\( y^{-2}\\,dy = -2x\\,dx \\).",
+        "Recall that \\( \\int y^{-2}\\,dy = -y^{-1} \\), and integrate \\( -2x \\) with respect to \\( x \\).",
+        "Use \\( y(0) = \\frac{1}{4} \\) to solve for the integration constant, then evaluate at \\( x = 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), -2*x*y(x)**2), ics={y(0): sp.Rational(1, 4)})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 2))"
+    },
+    {
+      "id": "odes-1356",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.19,
+        "b": -1.27,
+        "c": 0.25
+      },
+      "text": "What is the particular solution \\( y(x) \\) to \\( \\frac{dy}{dx} = 4\\cos(2x) \\) satisfying \\( y(\\frac{\\pi}{4}) = 3 \\)?",
+      "choices": [
+        "\\( 2\\sin(2x) + 1 \\)",
+        "\\( 4\\sin(2x) - 1 \\)",
+        "\\( 2\\sin(2x) + 3 \\)",
+        "\\( -2\\sin(2x) + 5 \\)"
+      ],
+      "answer": 0,
+      "sol": "Integrating \\( 4\\cos(2x) \\) gives \\( y(x) = 2\\sin(2x) + C \\). Applying \\( y(\\frac{\\pi}{4}) = 2\\sin(\\frac{\\pi}{2}) + C = 2 + C = 3 \\) gives \\( C = 1 \\), so \\( y(x) = 2\\sin(2x) + 1 \\).",
+      "hints": [
+        "Integrate \\( 4\\cos(2x) \\) directly, dividing by the inner derivative \\( 2 \\).",
+        "Plug in \\( x = \\frac{\\pi}{4} \\) and \\( y = 3 \\) to find \\( C \\).",
+        "Write the explicit expression for \\( y(x) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny_expr = sp.integrate(4*sp.cos(2*x), x)\nC = 3 - y_expr.subs(x, sp.pi/4)\nEXPECTED = y_expr + C"
+    },
+    {
+      "id": "odes-1357",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.36,
+        "b": -0.98,
+        "c": 0.25
+      },
+      "text": "If \\( \\frac{dy}{dx} = \\frac{y}{x} \\) for \\( x > 0 \\) and \\( y(2) = 6 \\), what is \\( y(5) \\)?",
+      "choices": [
+        "\\( 15 \\)",
+        "\\( 12 \\)",
+        "\\( 10 \\)",
+        "\\( \\frac{12}{5} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\frac{dy}{y} = \\frac{dx}{x} \\), so \\( \\ln|y| = \\ln x + C \\implies y = kx \\). From \\( y(2) = 6 \\), \\( k = 3 \\), giving \\( y(x) = 3x \\) and \\( y(5) = 15 \\).",
+      "hints": [
+        "Separate variables into \\( \\frac{dy}{y} = \\frac{dx}{x} \\).",
+        "Integrate both sides to see that \\( y \\) is proportional to \\( x \\).",
+        "Find the proportionality constant using \\( y(2) = 6 \\) and evaluate at \\( x = 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), y(x)/x), ics={y(2): 6})\nEXPECTED = sol.rhs.subs(x, 5)"
+    },
+    {
+      "id": "odes-1358",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.53,
+        "b": -1.3,
+        "c": 0.25
+      },
+      "text": "Solve the separable differential equation \\( e^y \\frac{dy}{dx} = 6x \\) with \\( y(1) = 0 \\), and find the exact value of \\( y(2) \\).",
+      "choices": [
+        "\\( \\ln(10) \\)",
+        "\\( \\ln(9) \\)",
+        "\\( \\ln(12) \\)",
+        "\\( \\ln(4) \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( e^y\\,dy = 6x\\,dx \\). Integrating gives \\( e^y = 3x^2 + C \\). Applying \\( y(1) = 0 \\) yields \\( e^0 = 3(1)^2 + C \\implies 1 = 3 + C \\implies C = -2 \\). Thus \\( e^y = 3x^2 - 2 \\), so at \\( x = 2 \\), \\( e^{y(2)} = 12 - 2 = 10 \\), giving \\( y(2) = \\ln(10) \\).",
+      "hints": [
+        "Integrate \\( e^y\\,dy \\) on the left and \\( 6x\\,dx \\) on the right.",
+        "Use \\( y(1) = 0 \\) (so \\( e^y = 1 \\)) to determine the constant \\( C \\).",
+        "Substitute \\( x = 2 \\) and take the natural logarithm to isolate \\( y(2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Symbol('y', real=True)\nlhs = sp.integrate(sp.exp(y), y)\nrhs = sp.integrate(6*x, x)\nC = lhs.subs(y, 0) - rhs.subs(x, 1)\nEXPECTED = sp.solve(sp.Eq(lhs, rhs.subs(x, 2) + C), y)[0]"
+    },
+    {
+      "id": "odes-1359",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.09,
+        "b": -1.01,
+        "c": 0.25
+      },
+      "text": "The slope field shown below represents \\( \\frac{dy}{dx} = \\frac{1}{2}y \\). For the solution curve passing through \\( (0, 4) \\), what is \\( y(2) \\)?",
+      "choices": [
+        "\\( 4e \\)",
+        "\\( 2e \\)",
+        "\\( 4e^2 \\)",
+        "\\( 8 \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\frac{dy}{y} = \\frac{1}{2}\\,dx \\), so \\( y(x) = Ce^{x/2} \\). Passing through \\( (0, 4) \\) gives \\( C = 4 \\), hence \\( y(2) = 4e^{2/2} = 4e \\).",
+      "hints": [
+        "Solve \\( \\frac{dy}{y} = \\frac{1}{2}\\,dx \\) by integrating both sides.",
+        "Use the point \\( (0, 4) \\) to determine the initial coefficient \\( C \\).",
+        "Evaluate \\( y(x) \\) at \\( x = 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), sp.Rational(1, 2)*y(x)), ics={y(0): 4})\nEXPECTED = sol.rhs.subs(x, 2)",
+      "figure": {
+        "type": "slope_field",
+        "fn": "0.5*y",
+        "xrange": [
+          -2,
+          3
+        ],
+        "yrange": [
+          -2,
+          6
+        ]
+      }
+    },
+    {
+      "id": "odes-1360",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.26,
+        "b": -1.33,
+        "c": 0.25
+      },
+      "text": "If \\( \\frac{dy}{dx} = \\frac{2x + 1}{\\sqrt{x}} \\) for \\( x > 0 \\) and \\( y(1) = 4 \\), calculate \\( y(4) \\).",
+      "choices": [
+        "\\( \\frac{46}{3} \\)",
+        "\\( \\frac{28}{3} \\)",
+        "\\( 12 \\)",
+        "\\( \\frac{38}{3} \\)"
+      ],
+      "answer": 0,
+      "sol": "Rewrite the integrand as \\( 2x^{1/2} + x^{-1/2} \\). Integrating yields \\( y(x) = \\frac{4}{3}x^{3/2} + 2x^{1/2} + C \\). Using \\( y(1) = \\frac{4}{3} + 2 + C = 4 \\) gives \\( C = \\frac{2}{3} \\). Evaluating at \\( x = 4 \\) gives \\( y(4) = \\frac{4}{3}(8) + 2(2) + \\frac{2}{3} = \\frac{32}{3} + \\frac{12}{3} + \\frac{2}{3} = \\frac{46}{3} \\).",
+      "hints": [
+        "Split the fraction into \\( 2x^{1/2} + x^{-1/2} \\) before integrating.",
+        "Apply the power rule to each term and solve for \\( C \\) using \\( y(1) = 4 \\).",
+        "Evaluate \\( x^{3/2} = 8 \\) and \\( x^{1/2} = 2 \\) at \\( x = 4 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny_expr = sp.integrate((2*x + 1)/sp.sqrt(x), x)\nC = 4 - y_expr.subs(x, 1)\nEXPECTED = sp.simplify((y_expr + C).subs(x, 4))"
+    },
+    {
+      "id": "odes-1361",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.43,
+        "b": -1.04,
+        "c": 0.25
+      },
+      "text": "Solve \\( \\frac{dy}{dt} = \\frac{1}{y^2} \\) with \\( y(0) = 1 \\), and find \\( y(7) \\).",
+      "choices": [
+        "\\( \\sqrt[3]{22} \\)",
+        "\\( \\sqrt[3]{15} \\)",
+        "\\( 3 \\)",
+        "\\( \\sqrt[3]{21} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( y^2\\,dy = dt \\). Integrating gives \\( \\frac{1}{3}y^3 = t + C \\). Since \\( y(0) = 1 \\), \\( C = \\frac{1}{3} \\), so \\( y^3 = 3t + 1 \\). At \\( t = 7 \\), \\( y^3 = 22 \\), hence \\( y(7) = \\sqrt[3]{22} \\).",
+      "hints": [
+        "Multiply both sides by \\( y^2\\,dt \\) to separate variables.",
+        "Integrate to obtain \\( \\frac{y^3}{3} = t + C \\) and find \\( C \\) from \\( y(0) = 1 \\).",
+        "Solve for \\( y(7) \\) by taking the cube root of \\( 3(7) + 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\ny = sp.Symbol('y', positive=True)\nlhs = sp.integrate(y**2, y)\nrhs = sp.integrate(sp.Integer(1), t)\nC = lhs.subs(y, 1) - rhs.subs(t, 0)\nEXPECTED = sp.solve(sp.Eq(lhs, rhs.subs(t, 7) + C), y)[0]"
+    },
+    {
+      "id": "odes-1362",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 0.99,
+        "b": -0.11,
+        "c": 0.25
+      },
+      "text": "Solve the initial value problem \\( \\frac{dy}{dx} = y\\tan x \\) for \\( -\\frac{\\pi}{2} < x < \\frac{\\pi}{2} \\) with \\( y(0) = 4 \\), and evaluate \\( y\\left(\\frac{\\pi}{3}\\right) \\).",
+      "choices": [
+        "\\( 8 \\)",
+        "\\( 4\\sqrt{3} \\)",
+        "\\( 2 \\)",
+        "\\( \\frac{8}{\\sqrt{3}} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\frac{dy}{y} = \\tan x\\,dx \\). Integrating gives \\( \\ln|y| = -\\ln|\\cos x| + C = \\ln|\\sec x| + C \\), so \\( y(x) = A\\sec x \\). With \\( y(0) = 4 \\), \\( A = 4 \\). Thus \\( y\\left(\\frac{\\pi}{3}\\right) = 4\\sec\\left(\\frac{\\pi}{3}\\right) = 4 \\times 2 = 8 \\).",
+      "hints": [
+        "Separate into \\( \\frac{dy}{y} = \\frac{\\sin x}{\\cos x}\\,dx \\) and integrate using \\( u = \\cos x \\).",
+        "Exponentiate to express \\( y(x) \\) in terms of \\( \\sec x \\).",
+        "Apply \\( y(0) = 4 \\) and evaluate at \\( x = \\frac{\\pi}{3} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), y(x)*sp.tan(x)), ics={y(0): 4})\nEXPECTED = sp.simplify(sol.rhs.subs(x, sp.pi/3))"
+    },
+    {
+      "id": "odes-1363",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.16,
+        "b": 0.18,
+        "c": 0.25
+      },
+      "text": "A logistic population satisfies \\( \\frac{dP}{dt} = P(4 - P) \\) with \\( P(0) = 1 \\). Find \\( P(\\ln 3) \\).",
+      "choices": [
+        "\\( \\frac{27}{7} \\)",
+        "\\( \\frac{12}{5} \\)",
+        "\\( 3 \\)",
+        "\\( \\frac{36}{11} \\)"
+      ],
+      "answer": 0,
+      "sol": "Using partial fractions: \\( \\left(\\frac{1}{P} + \\frac{1}{4 - P}\\right) dP = 4\\,dt \\). Integrating gives \\( \\ln\\frac{P}{4 - P} = 4t + C \\). At \\( t = 0, P = 1 \\): \\( \\ln\\frac{1}{3} = C \\), so \\( \\frac{P}{4 - P} = \\frac{1}{3}e^{4t} \\). At \\( t = \\ln 3 \\), \\( e^{4\\ln 3} = 3^4 = 81 \\), giving \\( \\frac{P}{4 - P} = 27 \\implies P = 108 - 27P \\implies 28P = 108 \\implies P = \\frac{27}{7} \\).",
+      "hints": [
+        "Decompose \\( \\frac{1}{P(4 - P)} = \\frac{1}{4}\\left(\\frac{1}{P} + \\frac{1}{4 - P}\\right) \\) via partial fractions.",
+        "Integrate to obtain \\( \\ln\\left|\\frac{P}{4 - P}\\right| = 4t + C \\) and apply \\( P(0) = 1 \\).",
+        "Substitute \\( e^{4\\ln 3} = 81 \\) and solve for \\( P \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nP = sp.Function('P')\nsol = sp.dsolve(sp.Eq(P(t).diff(t), P(t)*(4 - P(t))), ics={P(0): 1})\nEXPECTED = sp.simplify(sol.rhs.subs(t, sp.log(3)))"
+    },
+    {
+      "id": "odes-1364",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.33,
+        "b": -0.14,
+        "c": 0.25
+      },
+      "text": "For \\( x > 0 \\), solve \\( \\frac{dy}{dx} = \\frac{y \\ln y}{x} \\) with \\( y(1) = e \\), and compute \\( y(2) \\).",
+      "choices": [
+        "\\( e^2 \\)",
+        "\\( 2e \\)",
+        "\\( e^4 \\)",
+        "\\( e^{1/2} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separate variables: \\( \\frac{dy}{y\\ln y} = \\frac{dx}{x} \\). Substituting \\( u = \\ln y \\) gives \\( \\ln(\\ln y) = \\ln x + C \\implies \\ln y = kx \\). From \\( y(1) = e \\), \\( \\ln e = 1 = k(1) \\implies k = 1 \\), so \\( y(x) = e^x \\). Therefore \\( y(2) = e^2 \\).",
+      "hints": [
+        "Separate into \\( \\frac{dy}{y\\ln y} = \\frac{dx}{x} \\).",
+        "Integrate the left side using the substitution \\( u = \\ln y \\), \\( du = \\frac{dy}{y} \\).",
+        "Exponentiate twice (or apply \\( y(1) = e \\) right after the first exponentiation) and evaluate at \\( x = 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), y(x)*sp.log(y(x))/x), ics={y(1): sp.E})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 2))"
+    },
+    {
+      "id": "odes-1365",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.5,
+        "b": 0.15,
+        "c": 0.25
+      },
+      "text": "By using the substitution \\( u = x + y \\), solve \\( \\frac{dy}{dx} = (x + y)^2 - 1 \\) with \\( y(0) = 1 \\), and find \\( y\\left(\\frac{1}{2}\\right) \\).",
+      "choices": [
+        "\\( \\frac{3}{2} \\)",
+        "\\( 2 \\)",
+        "\\( \\frac{5}{2} \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 0,
+      "sol": "Let \\( u = x + y \\), so \\( \\frac{du}{dx} = 1 + \\frac{dy}{dx} \\). The ODE becomes \\( \\frac{du}{dx} - 1 = u^2 - 1 \\implies \\frac{du}{dx} = u^2 \\). Separating variables gives \\( -u^{-1} = x + C \\). With \\( u(0) = 0 + 1 = 1 \\), \\( C = -1 \\), so \\( u(x) = \\frac{1}{1 - x} \\). Thus \\( y(x) = \\frac{1}{1 - x} - x \\), and \\( y(\\frac{1}{2}) = 2 - \\frac{1}{2} = \\frac{3}{2} \\).",
+      "hints": [
+        "Differentiate \\( u = x + y \\) to express \\( \\frac{dy}{dx} = \\frac{du}{dx} - 1 \\).",
+        "Substitute into the ODE to get the separable equation \\( \\frac{du}{dx} = u^2 \\).",
+        "Solve for \\( u(x) \\) using \\( u(0) = 1 \\), subtract \\( x \\) to recover \\( y(x) \\), and evaluate at \\( x = \\frac{1}{2} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nu = sp.Function('u')\nsol_u = sp.dsolve(sp.Eq(u(x).diff(x), u(x)**2), ics={u(0): 1})\ny_expr = sol_u.rhs - x\nEXPECTED = sp.simplify(y_expr.subs(x, sp.Rational(1, 2)))"
+    },
+    {
+      "id": "odes-1366",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.06,
+        "b": -0.17,
+        "c": 0.25
+      },
+      "text": "Find the value of \\( y(1) \\) if \\( \\frac{dy}{dx} = \\frac{xe^{-x}}{y} \\) with \\( y(0) = 3 \\) and \\( y > 0 \\).",
+      "choices": [
+        "\\( \\sqrt{11 - 4e^{-1}} \\)",
+        "\\( \\sqrt{9 - 4e^{-1}} \\)",
+        "\\( \\sqrt{11 - 2e^{-1}} \\)",
+        "\\( \\sqrt{7 + 4e^{-1}} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( y\\,dy = xe^{-x}\\,dx \\). Integrating the right-hand side by parts yields \\( \\frac{1}{2}y^2 = -(x + 1)e^{-x} + C \\). Using \\( y(0) = 3 \\) gives \\( \\frac{9}{2} = -1 + C \\implies C = \\frac{11}{2} \\). Thus \\( y^2 = 11 - 2(x + 1)e^{-x} \\), and at \\( x = 1 \\), \\( y(1) = \\sqrt{11 - 4e^{-1}} \\).",
+      "hints": [
+        "Separate variables into \\( y\\,dy = xe^{-x}\\,dx \\).",
+        "Apply integration by parts to \\( \\int xe^{-x}\\,dx = -(x + 1)e^{-x} \\).",
+        "Determine \\( C \\) from \\( y(0) = 3 \\), multiply by \\( 2 \\), and evaluate at \\( x = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Symbol('y', positive=True)\nlhs = sp.integrate(y, y)\nrhs = sp.integrate(x*sp.exp(-x), x)\nC = lhs.subs(y, 3) - rhs.subs(x, 0)\nEXPECTED = sp.simplify(sp.solve(sp.Eq(lhs, rhs.subs(x, 1) + C), y)[0])"
+    },
+    {
+      "id": "odes-1367",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.23,
+        "b": 0.12,
+        "c": 0.25
+      },
+      "text": "A tank initially holds \\( 100\\text{ L} \\) of pure water. Brine containing \\( 0.5\\text{ kg/L} \\) of salt enters at \\( 4\\text{ L/min} \\), and the well-stirred mixture leaves at \\( 4\\text{ L/min} \\). How many kilograms of salt are in the tank after \\( 25\\text{ min} \\)?",
+      "choices": [
+        "\\( 50(1 - e^{-1}) \\)",
+        "\\( 50(1 - e^{-4}) \\)",
+        "\\( 100(1 - e^{-1}) \\)",
+        "\\( 25(1 - e^{-1}) \\)"
+      ],
+      "answer": 0,
+      "sol": "Let \\( S(t) \\) be the salt in kg. The rate of change is \\( \\frac{dS}{dt} = 4(0.5) - 4\\frac{S}{100} = 2 - \\frac{S}{25} = \\frac{50 - S}{25} \\) with \\( S(0) = 0 \\). Separating variables: \\( \\int_0^S \\frac{du}{50 - u} = \\int_0^t \\frac{1}{25}\\,d\\tau \\implies S(t) = 50(1 - e^{-t/25}) \\). At \\( t = 25 \\), \\( S(25) = 50(1 - e^{-1}) \\).",
+      "hints": [
+        "Set up the mixing ODE: \\( \\frac{dS}{dt} = \\text{rate in} - \\text{rate out} = 2 - \\frac{4S}{100} \\).",
+        "Separate variables as \\( \\frac{dS}{50 - S} = \\frac{1}{25}\\,dt \\) and integrate with \\( S(0) = 0 \\).",
+        "Substitute \\( t = 25 \\) into \\( S(t) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nS = sp.Function('S')\nsol = sp.dsolve(sp.Eq(S(t).diff(t), 2 - S(t)/25), ics={S(0): 0})\nEXPECTED = sp.simplify(sol.rhs.subs(t, 25))"
+    },
+    {
+      "id": "odes-1368",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.4,
+        "b": -0.2,
+        "c": 0.25
+      },
+      "text": "An object cools according to Newton's Law of Cooling, \\( \\frac{dT}{dt} = -k(T - 20) \\), where \\( T(0) = 80^\\circ\\text{C} \\) and \\( T(10) = 50^\\circ\\text{C} \\). What is the temperature \\( T(20) \\), in \\( ^\\circ\\text{C} \\)?",
+      "choices": [
+        "\\( 35 \\)",
+        "\\( 30 \\)",
+        "\\( 40 \\)",
+        "\\( 25 \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( T(t) - 20 = (80 - 20)e^{-kt} = 60e^{-kt} \\). Since \\( T(10) = 50 \\), \\( 50 - 20 = 30 = 60e^{-10k} \\implies e^{-10k} = \\frac{1}{2} \\). Therefore at \\( t = 20 \\), \\( T(20) = 20 + 60(e^{-10k})^2 = 20 + 60\\left(\\frac{1}{4}\\right) = 35^\\circ\\text{C} \\).",
+      "hints": [
+        "Solve \\( \\frac{dT}{T - 20} = -k\\,dt \\) to express \\( T(t) - 20 = 60e^{-kt} \\).",
+        "Use \\( T(10) = 50 \\) to find the exact decay factor \\( e^{-10k} = \\frac{1}{2} \\).",
+        "Notice \\( e^{-20k} = (e^{-10k})^2 \\) and compute \\( T(20) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t, k = sp.symbols('t k', real=True)\nT_expr = 20 + 60*sp.exp(-k*t)\nr = sp.Symbol('r', positive=True)\nr_val = sp.solve(sp.Eq(20 + 60*r, 50), r)[0]\nEXPECTED = 20 + 60*r_val**2"
+    },
+    {
+      "id": "odes-1369",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 0.96,
+        "b": 0.09,
+        "c": 0.25
+      },
+      "text": "Solve the differential equation \\( x\\frac{dy}{dx} = y + x e^{-y/x} \\) for \\( x > 0 \\) with \\( y(1) = 0 \\), and find \\( y(e) \\).",
+      "choices": [
+        "\\( e \\ln(2) \\)",
+        "\\( e \\)",
+        "\\( 2e \\)",
+        "\\( \\ln(2) \\)"
+      ],
+      "answer": 0,
+      "sol": "Let \\( v = \\frac{y}{x} \\), so \\( y = vx \\) and \\( x\\frac{dy}{dx} = vx + x^2\\frac{dv}{dx} \\). Dividing by \\( x \\) yields \\( v + x\\frac{dv}{dx} = v + e^{-v} \\), which simplifies to \\( e^v\\,dv = \\frac{dx}{x} \\). Integrating gives \\( e^v = \\ln x + C \\). Since \\( y(1) = 0 \\), \\( v(1) = 0 \\), giving \\( e^0 = 0 + C \\implies C = 1 \\). Thus \\( y(x) = x\\ln(\\ln x + 1) \\), and at \\( x = e \\), \\( y(e) = e\\ln(1 + 1) = e \\ln(2) \\).",
+      "hints": [
+        "Substitute \\( v = \\frac{y}{x} \\) (so \\( y = vx \\) and \\( \\frac{dy}{dx} = v + x\\frac{dv}{dx} \\)).",
+        "The equation simplifies to the separable ODE \\( e^v\\,dv = \\frac{1}{x}\\,dx \\).",
+        "Integrate with \\( v(1) = 0 \\) to find \\( e^v = \\ln x + 1 \\), then evaluate \\( y(e) = e \\cdot v(e) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\nv = sp.Symbol('v', real=True)\nlhs = sp.integrate(sp.exp(v), v)\nrhs = sp.integrate(1/x, x)\nC = lhs.subs(v, 0) - rhs.subs(x, 1)\nv_e = sp.solve(sp.Eq(lhs, rhs.subs(x, sp.E) + C), v)[0]\nEXPECTED = sp.simplify(sp.E * v_e)"
+    },
+    {
+      "id": "odes-1370",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.13,
+        "b": -0.23,
+        "c": 0.25
+      },
+      "text": "Consider the separable ODE \\( \\frac{dy}{dx} = \\frac{2x}{1 + y^2} \\) with \\( y(0) = 1 \\). If \\( y(a) = 2 \\) for some \\( a > 0 \\), find \\( a \\).",
+      "choices": [
+        "\\( \\sqrt{\\frac{10}{3}} \\)",
+        "\\( \\sqrt{3} \\)",
+        "\\( \\frac{10}{3} \\)",
+        "\\( \\sqrt{\\frac{7}{3}} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( (1 + y^2)\\,dy = 2x\\,dx \\), so \\( y + \\frac{1}{3}y^3 = x^2 + C \\). From \\( y(0) = 1 \\), \\( C = 1 + \\frac{1}{3} = \\frac{4}{3} \\). Setting \\( y = 2 \\) gives \\( 2 + \\frac{8}{3} = a^2 + \\frac{4}{3} \\implies a^2 = \\frac{14}{3} - \\frac{4}{3} = \\frac{10}{3} \\), so \\( a = \\sqrt{\\frac{10}{3}} \\).",
+      "hints": [
+        "Separate into \\( (1 + y^2)\\,dy = 2x\\,dx \\) and integrate both sides.",
+        "Use \\( y(0) = 1 \\) to compute the constant \\( C = \\frac{4}{3} \\).",
+        "Plug in \\( y = 2 \\) and solve for \\( a > 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, y = sp.symbols('x y', real=True)\na = sp.Symbol('a', positive=True)\nlhs = sp.integrate(1 + y**2, y)\nrhs = sp.integrate(2*x, x)\nC = lhs.subs(y, 1) - rhs.subs(x, 0)\nEXPECTED = sp.solve(sp.Eq(lhs.subs(y, 2), rhs.subs(x, a) + C), a)[0]"
+    },
+    {
+      "id": "odes-1371",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.3,
+        "b": 0.06,
+        "c": 0.25
+      },
+      "text": "The family of curves \\( y = Cx^3 \\) (\\( C \\ne 0 \\)) satisfies a differential equation whose orthogonal trajectories satisfy \\( \\frac{dy}{dx} = -\\frac{x}{3y} \\). Find the positive value of \\( y(3) \\) on the orthogonal trajectory passing through \\( (0, 2) \\).",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( \\sqrt{7} \\)",
+        "\\( \\sqrt{3} \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables in \\( \\frac{dy}{dx} = -\\frac{x}{3y} \\) gives \\( 3y\\,dy = -x\\,dx \\), so \\( \\frac{3}{2}y^2 = -\\frac{1}{2}x^2 + K \\), or \\( x^2 + 3y^2 = 2K \\). Passing through \\( (0, 2) \\) gives \\( 0 + 3(4) = 12 = 2K \\). At \\( x = 3 \\), \\( 9 + 3y^2 = 12 \\implies 3y^2 = 3 \\implies y = 1 \\) (positive branch).",
+      "hints": [
+        "Separate variables in \\( \\frac{dy}{dx} = -\\frac{x}{3y} \\) into \\( 3y\\,dy = -x\\,dx \\).",
+        "Integrate to obtain an ellipse equation \\( x^2 + 3y^2 = C_1 \\).",
+        "Determine \\( C_1 \\) from \\( (0, 2) \\), then set \\( x = 3 \\) and take \\( y > 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Symbol('y', positive=True)\nlhs = sp.integrate(3*y, y)\nrhs = sp.integrate(-x, x)\nK = lhs.subs(y, 2) - rhs.subs(x, 0)\nEXPECTED = sp.solve(sp.Eq(lhs, rhs.subs(x, 3) + K), y)[0]"
+    },
+    {
+      "id": "odes-1372",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.47,
+        "b": 0.35,
+        "c": 0.25
+      },
+      "text": "Solve the separable equation \\( \\frac{dy}{dx} = \\frac{\\sin x}{\\cos y} \\) with \\( y(0) = 0 \\) and \\( -\\frac{\\pi}{2} < y < \\frac{\\pi}{2} \\), and evaluate \\( y\\left(\\frac{\\pi}{3}\\right) \\).",
+      "choices": [
+        "\\( \\frac{\\pi}{6} \\)",
+        "\\( \\frac{\\pi}{3} \\)",
+        "\\( \\frac{\\pi}{4} \\)",
+        "\\( \\frac{\\pi}{12} \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\cos y\\,dy = \\sin x\\,dx \\). Integrating gives \\( \\sin y = -\\cos x + C \\). Applying \\( y(0) = 0 \\) yields \\( 0 = -1 + C \\implies C = 1 \\), so \\( \\sin y = 1 - \\cos x \\). At \\( x = \\frac{\\pi}{3} \\), \\( \\sin y = 1 - \\frac{1}{2} = \\frac{1}{2} \\), hence \\( y\\left(\\frac{\\pi}{3}\\right) = \\frac{\\pi}{6} \\).",
+      "hints": [
+        "Multiply both sides by \\( \\cos y\\,dx \\) to get \\( \\cos y\\,dy = \\sin x\\,dx \\).",
+        "Integrate and determine \\( C \\) using \\( y(0) = 0 \\).",
+        "Evaluate \\( \\sin y = 1 - \\cos(\\pi/3) \\) and invert on \\( (-\\pi/2, \\pi/2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, y = sp.symbols('x y', real=True)\nlhs = sp.integrate(sp.cos(y), y)\nrhs = sp.integrate(sp.sin(x), x)\nC = lhs.subs(y, 0) - rhs.subs(x, 0)\nEXPECTED = sp.asin(rhs.subs(x, sp.pi/3) + C)"
+    },
+    {
+      "id": "odes-1373",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.03,
+        "b": 1.23,
+        "c": 0.25
+      },
+      "text": "The solution to the initial value problem \\( \\frac{dy}{dt} = 1 + y^2 \\) with \\( y(0) = 1 \\) blows up to \\( +\\infty \\) at a finite time \\( t_* > 0 \\). What is the exact value of \\( t_* \\)?",
+      "choices": [
+        "\\( \\frac{\\pi}{4} \\)",
+        "\\( \\frac{\\pi}{2} \\)",
+        "\\( \\frac{\\pi}{3} \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 0,
+      "sol": "Separating variables gives \\( \\frac{dy}{1 + y^2} = dt \\), so \\( \\arctan y = t + C \\). Since \\( y(0) = 1 \\), \\( C = \\arctan(1) = \\frac{\\pi}{4} \\), giving \\( y(t) = \\tan\\left(t + \\frac{\\pi}{4}\\right) \\). Blow-up occurs when the argument first reaches \\( \\frac{\\pi}{2} \\), i.e., \\( t_* + \\frac{\\pi}{4} = \\frac{\\pi}{2} \\implies t_* = \\frac{\\pi}{4} \\).",
+      "hints": [
+        "Separate variables into \\( \\frac{dy}{1 + y^2} = dt \\) and integrate to get \\( \\arctan y = t + C \\).",
+        "Use \\( y(0) = 1 \\) to solve for \\( C \\) and write \\( y(t) \\) explicitly using \\( \\tan \\).",
+        "Find the smallest \\( t > 0 \\) where the tangent function has a vertical asymptote."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(t).diff(t), 1 + y(t)**2), ics={y(0): 1})\nEXPECTED = sp.solve(sp.cos(t + sp.pi/4), t)[0]"
+    },
+    {
+      "id": "odes-1374",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.2,
+        "b": 1.52,
+        "c": 0.25
+      },
+      "text": "Solve the homogeneous ODE \\( xy\\frac{dy}{dx} = y^2 + x^2 \\) for \\( x > 0 \\) with \\( y(1) = 0 \\), and find the positive value \\( y(e^2) \\).",
+      "choices": [
+        "\\( e^2\\sqrt{3} \\)",
+        "\\( e^2\\sqrt{2} \\)",
+        "\\( 4e^2 \\)",
+        "\\( 2e^2 \\)"
+      ],
+      "answer": 3,
+      "sol": "Dividing by \\( x^2 \\) and letting \\( v = \\frac{y}{x} \\) gives \\( v(v + x\\frac{dv}{dx}) = v^2 + 1 \\implies vx\\frac{dv}{dx} = 1 \\). Separating variables yields \\( v\\,dv = \\frac{dx}{x} \\implies \\frac{1}{2}v^2 = \\ln x + C \\). Since \\( y(1) = 0 \\), \\( v(1) = 0 \\implies C = 0 \\), so \\( y(x) = x\\sqrt{2\\ln x} \\). At \\( x = e^2 \\), \\( y(e^2) = e^2\\sqrt{2(2)} = 2e^2 \\).",
+      "hints": [
+        "Set \\( y = vx \\) so \\( \\frac{dy}{dx} = v + x\\frac{dv}{dx} \\), and substitute into \\( xy\\frac{dy}{dx} = y^2 + x^2 \\).",
+        "Notice the \\( v^2 \\) terms cancel, leaving \\( v\\,dv = \\frac{dx}{x} \\).",
+        "Solve for \\( v(x) \\) using \\( v(1) = 0 \\), then compute \\( y(e^2) = e^2 v(e^2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\nv = sp.Symbol('v', positive=True)\nlhs = sp.integrate(v, v)\nrhs = sp.integrate(1/x, x)\nC = lhs.subs(v, 0) - rhs.subs(x, 1)\nv_sol = sp.solve(sp.Eq(lhs, rhs.subs(x, sp.E**2) + C), v)[0]\nEXPECTED = sp.simplify(sp.E**2 * v_sol)"
+    },
+    {
+      "id": "odes-1375",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.37,
+        "b": 1.2,
+        "c": 0.25
+      },
+      "text": "Consider the second-order ODE \\( y'' + (y')^2 = 0 \\) with \\( y(0) = 2 \\) and \\( y'(0) = 1 \\). Let \\( v = y' \\), solve by separating variables, and find \\( y(e^2 - 1) \\).",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( 2 + e^2 \\)",
+        "\\( 2\\ln 2 + 2 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 3,
+      "sol": "Let \\( v = y' \\), so \\( y'' = \\frac{dv}{dx} \\). The equation \\( \\frac{dv}{dx} = -v^2 \\) separates to \\( v^{-2}\\,dv = -dx \\implies -v^{-1} = -x + C \\). Since \\( v(0) = 1 \\), \\( C = -1 \\), giving \\( v(x) = \\frac{dy}{dx} = \\frac{1}{x + 1} \\). Integrating again with \\( y(0) = 2 \\) yields \\( y(x) = \\ln(x + 1) + 2 \\). At \\( x = e^2 - 1 \\), \\( y(e^2 - 1) = \\ln(e^2) + 2 = 4 \\).",
+      "hints": [
+        "Reduce the order by substituting \\( v = y' \\), turning \\( y'' + (y')^2 = 0 \\) into a first-order separable ODE for \\( v(x) \\).",
+        "Solve for \\( v(x) \\) using \\( v(0) = 1 \\).",
+        "Integrate \\( y'(x) = v(x) \\) with \\( y(0) = 2 \\), then evaluate at \\( x = e^2 - 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nv = sp.Function('v')\nsol_v = sp.dsolve(sp.Eq(v(x).diff(x), -v(x)**2), ics={v(0): 1})\nEXPECTED = sp.simplify(2 + sp.integrate(sol_v.rhs, (x, 0, sp.E**2 - 1)))"
+    },
+    {
+      "id": "odes-1376",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.54,
+        "b": 1.49,
+        "c": 0.25
+      },
+      "text": "For the separable initial value problem \\( \\frac{dy}{dx} = \\frac{x - 1}{y + 2} \\) with \\( y(1) = -5 \\), find the value of \\( y(5) \\) on the valid continuous branch.",
+      "choices": [
+        "\\( -6 \\)",
+        "\\( 3 \\)",
+        "\\( -3 \\)",
+        "\\( -7 \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables gives \\( (y + 2)\\,dy = (x - 1)\\,dx \\), so \\( (y + 2)^2 = (x - 1)^2 + C \\). At \\( (1, -5) \\), \\( (-5 + 2)^2 = 0 + C \\implies C = 9 \\). Because \\( y(1) = -5 < -2 \\), continuity requires taking the negative root branch: \\( y + 2 = -\\sqrt{(x - 1)^2 + 9} \\). At \\( x = 5 \\), \\( y(5) = -2 - \\sqrt{16 + 9} = -2 - 5 = -7 \\).",
+      "hints": [
+        "Separate variables into \\( (y + 2)\\,dy = (x - 1)\\,dx \\) and integrate.",
+        "Check the sign of \\( y + 2 \\) at the initial condition \\( y(1) = -5 \\): since \\( -5 + 2 = -3 < 0 \\), the solution stays on the negative square-root branch.",
+        "Evaluate \\( y(5) = -2 - \\sqrt{(5 - 1)^2 + 9} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, y = sp.symbols('x y', real=True)\nlhs = sp.integrate(y + 2, y)\nrhs = sp.integrate(x - 1, x)\nC = lhs.subs(y, -5) - rhs.subs(x, 1)\nsols = sp.solve(sp.Eq(lhs, rhs.subs(x, 5) + C), y)\nEXPECTED = min(sols)"
+    },
+    {
+      "id": "odes-1377",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.1,
+        "b": 1.17,
+        "c": 0.25
+      },
+      "text": "The differential equation \\( \\frac{dy}{dx} = (y - 1)(y - 3) \\) satisfies \\( y(0) = 2 \\). What is \\( \\lim_{x \\to \\infty} y(x) \\)?",
+      "choices": [
+        "\\( 0 \\)",
+        "\\( 3 \\)",
+        "\\( 2 \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 3,
+      "sol": "Notice the equilibrium solutions are \\( y = 1 \\) and \\( y = 3 \\). For \\( 1 < y < 3 \\), the derivative \\( (y - 1)(y - 3) \\) is strictly negative, so \\( y(x) \\) decreases monotonically toward the stable equilibrium \\( y = 1 \\) as \\( x \\to \\infty \\). (Explicitly, \\( y(x) = \\frac{3 + e^{2x}}{1 + e^{2x}} \\to 1 \\).)",
+      "hints": [
+        "Find the equilibrium solutions where \\( \\frac{dy}{dx} = 0 \\), namely \\( y = 1 \\) and \\( y = 3 \\).",
+        "Check the sign of \\( \\frac{dy}{dx} = (y - 1)(y - 3) \\) when \\( y(0) = 2 \\in (1, 3) \\).",
+        "Since \\( \\frac{dy}{dx} < 0 \\), \\( y(x) \\) decreases toward the lower equilibrium."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, C = sp.symbols('x C', real=True)\ny = sp.Symbol('y', real=True)\nlhs = sp.log((3 - y)/(y - 1)) / 2\nC_val = lhs.subs(y, 2) - 0\ny_sol = sp.solve(sp.Eq(lhs, x + C_val), y)[0]\nEXPECTED = sp.limit(y_sol, x, sp.oo)"
+    },
+    {
+      "id": "odes-1378",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.27,
+        "b": 1.46,
+        "c": 0.25
+      },
+      "text": "A hemispherical bowl of radius \\( 4\\text{ m} \\)? Better: A conical tank with vertex down has height \\( 6\\text{ m} \\) and top radius \\( 3\\text{ m} \\). Water leaks from a small hole at the vertex so that the water volume \\( V \\) satisfies \\( \\frac{dV}{dt} = -\\frac{\\pi}{4}\\sqrt{h} \\), where \\( h \\) is the depth of water in metres. Express \\( \\frac{dh}{dt} \\) as \\( -c\\,h^{-3/2} \\); what is the constant \\( c \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( \\frac{1}{4} \\)",
+        "\\( \\frac{1}{2} \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 3,
+      "sol": "By similar triangles, the water radius at depth \\( h \\) is \\( r = \\frac{3}{6}h = \\frac{h}{2} \\). Thus \\( V = \\frac{1}{3}\\pi r^2 h = \\frac{\\pi}{12}h^3 \\), so \\( \\frac{dV}{dt} = \\frac{\\pi}{4}h^2\\frac{dh}{dt} \\). Equating to \\( -\\frac{\\pi}{4}\\sqrt{h} \\) gives \\( h^2\\frac{dh}{dt} = -\\sqrt{h} \\implies \\frac{dh}{dt} = -h^{-3/2} \\), hence \\( c = 1 \\).",
+      "hints": [
+        "Relate the water surface radius \\( r \\) to depth \\( h \\) using similar triangles: \\( \\frac{r}{h} = \\frac{3}{6} \\).",
+        "Write volume \\( V(h) = \\frac{1}{3}\\pi r^2 h \\) purely in terms of \\( h \\), then differentiate using the chain rule.",
+        "Equate \\( \\frac{dV}{dt} \\) to \\( -\\frac{\\pi}{4}h^{1/2} \\) and isolate \\( \\frac{dh}{dt} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "h = sp.Symbol('h', positive=True)\nr = sp.Rational(3, 6) * h\nV = sp.Rational(1, 3) * sp.pi * r**2 * h\ndV_dh = sp.diff(V, h)\ndh_dt = (-sp.pi / 4 * sp.sqrt(h)) / dV_dh\nEXPECTED = sp.simplify(-dh_dt * h**sp.Rational(3, 2))"
+    },
+    {
+      "id": "odes-1379",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.44,
+        "b": 1.14,
+        "c": 0.25
+      },
+      "text": "Solve the separable differential equation \\( \\frac{dy}{dx} = \\frac{y^2 - 1}{x^2 - 1} \\) for \\( x > 1 \\) with \\( y(2) = 2 \\), and evaluate \\( y(3) \\).",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( \\frac{5}{2} \\)",
+        "\\( \\frac{7}{3} \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables gives \\( \\frac{dy}{y^2 - 1} = \\frac{dx}{x^2 - 1} \\). Using partial fractions \\( \\frac{1}{u^2 - 1} = \\frac{1}{2}\\left(\\frac{1}{u - 1} - \\frac{1}{u + 1}\\right) \\), integrating both sides yields \\( \\ln\\frac{y - 1}{y + 1} = \\ln\\frac{x - 1}{x + 1} + C \\). At \\( (2, 2) \\), \\( C = 0 \\), so \\( \\frac{y - 1}{y + 1} = \\frac{x - 1}{x + 1} \\implies y(x) = x \\). Thus \\( y(3) = 3 \\).",
+      "hints": [
+        "Separate into \\( \\frac{dy}{y^2 - 1} = \\frac{dx}{x^2 - 1} \\).",
+        "Integrate both sides using partial fractions to get \\( \\ln\\left|\\frac{y - 1}{y + 1}\\right| = \\ln\\left|\\frac{x - 1}{x + 1}\\right| + C \\).",
+        "Apply \\( y(2) = 2 \\) to find \\( C = 0 \\) and solve for \\( y(3) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), (y(x)**2 - 1)/(x**2 - 1)), ics={y(2): 2})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 3))"
+    },
+    {
+      "id": "odes-1380",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.0,
+        "b": 1.43,
+        "c": 0.25
+      },
+      "text": "A second-order chemical reaction consumes reactant \\( A \\) according to \\( \\frac{d[A]}{dt} = -k[A]^2 \\) with \\( [A](0) = 1\\text{ M} \\). If \\( [A](4) = \\frac{1}{3}\\text{ M} \\), at what time \\( t > 0 \\) does \\( [A](t) = \\frac{1}{6}\\text{ M} \\)?",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( 8 \\)",
+        "\\( 12 \\)",
+        "\\( 10 \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables gives \\( \\frac{1}{[A](t)} - \\frac{1}{[A](0)} = kt \\). With \\( [A](0) = 1 \\), \\( \\frac{1}{[A](t)} = 1 + kt \\). At \\( t = 4 \\), \\( 3 = 1 + 4k \\implies k = \\frac{1}{2} \\). Setting \\( [A](t) = \\frac{1}{6} \\) gives \\( 6 = 1 + \\frac{1}{2}t \\implies \\frac{1}{2}t = 5 \\implies t = 10 \\).",
+      "hints": [
+        "Separate and integrate \\( [A]^{-2}\\,d[A] = -k\\,dt \\) to obtain \\( \\frac{1}{[A](t)} = \\frac{1}{[A](0)} + kt \\).",
+        "Use \\( [A](0) = 1 \\) and \\( [A](4) = \\frac{1}{3} \\) to solve for the rate constant \\( k \\).",
+        "Solve \\( 6 = 1 + kt \\) for \\( t \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t, k = sp.symbols('t k', positive=True)\nk_val = sp.solve(sp.Eq(1 + 4*k, 3), k)[0]\nEXPECTED = sp.solve(sp.Eq(1 + k_val*t, 6), t)[0]"
+    },
+    {
+      "id": "odes-1381",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.17,
+        "b": 1.11,
+        "c": 0.25
+      },
+      "text": "Solve the separable equation \\( \\frac{dy}{dx} = \\frac{x\\ln x}{y} \\) for \\( x > 0 \\) with \\( y(1) = 2 \\) and \\( y > 0 \\), and find \\( y(e) \\).",
+      "choices": [
+        "\\( \\sqrt{\\frac{e^2 + 5}{2}} \\)",
+        "\\( \\sqrt{\\frac{e^2 + 7}{2}} \\)",
+        "\\( \\sqrt{e^2 + 3} \\)",
+        "\\( \\sqrt{\\frac{e^2 + 9}{2}} \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables gives \\( y\\,dy = x\\ln x\\,dx \\). Integrating by parts on the right (\\( u = \\ln x, dv = x\\,dx \\)) gives \\( \\frac{1}{2}y^2 = \\frac{1}{2}x^2\\ln x - \\frac{1}{4}x^2 + C \\). With \\( y(1) = 2 \\), \\( 2 = 0 - \\frac{1}{4} + C \\implies C = \\frac{9}{4} \\). Multiplying by \\( 2 \\) gives \\( y^2 = x^2\\ln x - \\frac{1}{2}x^2 + \\frac{9}{2} \\). At \\( x = e \\), \\( y^2 = e^2(1) - \\frac{1}{2}e^2 + \\frac{9}{2} = \\frac{e^2 + 9}{2} \\), so \\( y(e) = \\sqrt{\\frac{e^2 + 9}{2}} \\).",
+      "hints": [
+        "Separate into \\( y\\,dy = x\\ln x\\,dx \\).",
+        "Use integration by parts with \\( u = \\ln x \\) and \\( dv = x\\,dx \\) to evaluate \\( \\int x\\ln x\\,dx \\).",
+        "Apply \\( y(1) = 2 \\) to find \\( C \\), then substitute \\( x = e \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Symbol('y', positive=True)\nlhs = sp.integrate(y, y)\nrhs = sp.integrate(x*sp.log(x), x)\nC = lhs.subs(y, 2) - rhs.subs(x, 1)\nEXPECTED = sp.simplify(sp.solve(sp.Eq(lhs, rhs.subs(x, sp.E) + C), y)[0])"
+    },
+    {
+      "id": "odes-1382",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.34,
+        "b": 1.4,
+        "c": 0.25
+      },
+      "text": "Consider the initial value problem \\( \\frac{dy}{dx} = \\frac{e^x}{2y + e^y} \\) with \\( y(0) = 0 \\). If \\( y(x) \\) satisfies \\( y^2 + e^y = e^x \\), what is the value of \\( \\frac{dy}{dx} \\) at the point where \\( y = 1 \\)?",
+      "choices": [
+        "\\( \\frac{1 + e}{2} \\)",
+        "\\( \\frac{e}{2 + e} \\)",
+        "\\( \\frac{1}{2 + e} \\)",
+        "\\( \\frac{1 + e}{2 + e} \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables gives \\( (2y + e^y)\\,dy = e^x\\,dx \\). Integrating with \\( y(0) = 0 \\) yields \\( y^2 + e^y - 1 = e^x - 1 \\implies y^2 + e^y = e^x \\). When \\( y = 1 \\), \\( e^x = 1^2 + e^1 = 1 + e \\). Substituting \\( y = 1 \\) and \\( e^x = 1 + e \\) directly into the ODE gives \\( \\frac{dy}{dx} = \\frac{1 + e}{2(1) + e} = \\frac{1 + e}{2 + e} \\).",
+      "hints": [
+        "Note that \\( e^x \\) at the point where \\( y = 1 \\) can be read directly from the given implicit solution \\( y^2 + e^y = e^x \\).",
+        "Substitute \\( y = 1 \\) into \\( y^2 + e^y = e^x \\) to obtain \\( e^x = 1 + e \\).",
+        "Plug both \\( y = 1 \\) and \\( e^x = 1 + e \\) back into \\( \\frac{dy}{dx} = \\frac{e^x}{2y + e^y} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "y = sp.Integer(1)\nex = y**2 + sp.exp(y)\nEXPECTED = ex / (2*y + sp.exp(y))"
+    },
+    {
+      "id": "odes-1383",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.51,
+        "b": 1.08,
+        "c": 0.25
+      },
+      "text": "Solve the separable initial value problem \\( \\frac{dy}{dx} = \\frac{1 + y^2}{1 + x^2} \\) with \\( y(0) = \\frac{1}{\\sqrt{3}} \\), and find the exact value of \\( y(1) \\).",
+      "choices": [
+        "\\( \\frac{\\sqrt{3} + 1}{2} \\)",
+        "\\( 2 - \\sqrt{3} \\)",
+        "\\( \\sqrt{3} + 1 \\)",
+        "\\( 2 + \\sqrt{3} \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables yields \\( \\frac{dy}{1 + y^2} = \\frac{dx}{1 + x^2} \\), so \\( \\arctan y = \\arctan x + C \\). Using \\( y(0) = \\frac{1}{\\sqrt{3}} \\) gives \\( C = \\frac{\\pi}{6} \\). At \\( x = 1 \\), \\( \\arctan y(1) = \\frac{\\pi}{4} + \\frac{\\pi}{6} \\), so \\( y(1) = \\tan\\left(\\frac{\\pi}{4} + \\frac{\\pi}{6}\\right) = \\frac{1 + \\frac{1}{\\sqrt{3}}}{1 - \\frac{1}{\\sqrt{3}}} = \\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1} = 2 + \\sqrt{3} \\).",
+      "hints": [
+        "Separate into \\( \\frac{dy}{1 + y^2} = \\frac{dx}{1 + x^2} \\) and integrate both sides to obtain \\( \\arctan y = \\arctan x + C \\).",
+        "Determine \\( C = \\arctan\\left(\\frac{1}{\\sqrt{3}}\\right) = \\frac{\\pi}{6} \\), then add \\( \\arctan(1) = \\frac{\\pi}{4} \\).",
+        "Use the tangent addition formula \\( \\tan\\left(\\frac{\\pi}{4} + \\frac{\\pi}{6}\\right) = \\frac{1 + 1/\\sqrt{3}}{1 - 1/\\sqrt{3}} \\) and rationalize."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), (1 + y(x)**2)/(1 + x**2)), ics={y(0): 1/sp.sqrt(3)})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 1))"
+    },
+    {
+      "id": "odes-1384",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.07,
+        "b": 1.37,
+        "c": 0.25
+      },
+      "text": "For \\( x > 0 \\), the separable ODE \\( \\frac{dy}{dx} = \\frac{y + 1}{x(x + 1)} \\) satisfies \\( y(1) = 3 \\). What is the value of \\( y(2) \\)?",
+      "choices": [
+        "\\( \\frac{17}{3} \\)",
+        "\\( 5 \\)",
+        "\\( \\frac{11}{3} \\)",
+        "\\( \\frac{13}{3} \\)"
+      ],
+      "answer": 3,
+      "sol": "Separating variables gives \\( \\frac{dy}{y + 1} = \\left(\\frac{1}{x} - \\frac{1}{x + 1}\\right)dx \\). Integrating yields \\( \\ln|y + 1| = \\ln\\frac{x}{x + 1} + C \\), so \\( y + 1 = K\\frac{x}{x + 1} \\). With \\( y(1) = 3 \\), \\( 4 = K \\cdot \\frac{1}{2} \\implies K = 8 \\). At \\( x = 2 \\), \\( y(2) + 1 = 8 \\cdot \\frac{2}{3} = \\frac{16}{3} \\implies y(2) = \\frac{13}{3} \\).",
+      "hints": [
+        "Separate variables and use partial fractions: \\( \\frac{1}{x(x + 1)} = \\frac{1}{x} - \\frac{1}{x + 1} \\).",
+        "Integrate and exponentiate to express \\( y + 1 = K\\frac{x}{x + 1} \\).",
+        "Solve for \\( K \\) using \\( y(1) = 3 \\), then evaluate \\( y(2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), (y(x) + 1)/(x*(x + 1))), ics={y(1): 3})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 2))"
+    },
+    {
+      "id": "odes-1385",
+      "type": "mcq",
+      "domain": "Separable Equations",
+      "topic_id": "ode-separable",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.24,
+        "b": 1.05,
+        "c": 0.25
+      },
+      "text": "A solution \\( y(x) \\) of the autonomous differential equation \\( \\frac{dy}{dx} = y(y - 2) \\) satisfies \\( y(0) = 1 \\). What is the sum \\( \\lim_{x \\to +\\infty} y(x) + \\lim_{x \\to -\\infty} y(x) \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 3 \\)",
+        "\\( 1 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 3,
+      "sol": "The equilibria of \\( \\frac{dy}{dx} = y(y - 2) \\) are \\( y = 0 \\) and \\( y = 2 \\). Since \\( y(0) = 1 \\in (0, 2) \\) and \\( y(y - 2) < 0 \\) on \\( (0, 2) \\), \\( y(x) \\) is strictly decreasing for all \\( x \\in \\mathbb{R} \\). Consequently, \\( \\lim_{x \\to +\\infty} y(x) = 0 \\) and \\( \\lim_{x \\to -\\infty} y(x) = 2 \\), giving a sum of \\( 0 + 2 = 2 \\).",
+      "hints": [
+        "Find the two equilibrium solutions where \\( \\frac{dy}{dx} = 0 \\).",
+        "Because \\( y(0) = 1 \\) lies strictly between \\( 0 \\) and \\( 2 \\), check the sign of \\( y(y - 2) \\) on \\( (0, 2) \\).",
+        "Since \\( y'(x) < 0 \\), \\( y(x) \\to 0 \\) as \\( x \\to +\\infty \\) and \\( y(x) \\to 2 \\) as \\( x \\to -\\infty \\); add both limits."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), y(x)*(y(x) - 2)), ics={y(0): 1})\nEXPECTED = sp.limit(sol.rhs, x, sp.oo) + sp.limit(sol.rhs, x, -sp.oo)"
+    },
+    {
+      "id": "odes-1386",
+      "type": "mcq",
+      "domain": "Linear First-Order Equations",
+      "topic_id": "ode-linear",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.41,
+        "b": -1.11,
+        "c": 0.25
+      },
+      "text": "What is the integrating factor \\( \\mu(x) \\) (with constant factor \\( 1 \\)) for the linear differential equation \\( \\frac{dy}{dx} + \\frac{4}{x}y = x^2 \\) on \\( x > 0 \\)?",
+      "choices": [
+        "\\( \\frac{1}{x^4} \\)",
+        "\\( 4\\ln(x) \\)",
+        "\\( e^{4x} \\)",
+        "\\( x^4 \\)"
+      ],
+      "answer": 3,
+      "sol": "In standard form \\( y' + P(x)y = Q(x) \\), \\( P(x) = \\frac{4}{x} \\). The integrating factor is \\( \\mu(x) = \\exp\\left(\\int \\frac{4}{x}\\,dx\\right) = e^{4\\ln x} = x^4 \\) for \\( x > 0 \\).",
+      "hints": [
+        "Identify \\( P(x) = \\frac{4}{x} \\) from the standard form \\( y' + P(x)y = Q(x) \\).",
+        "Apply the integrating factor formula \\( \\mu(x) = \\exp\\left(\\int P(x)\\,dx\\right) \\).",
+        "Simplify \\( e^{4\\ln x} \\) using logarithm properties for \\( x > 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.exp(4*sp.log(x))"
+    },
+    {
+      "id": "odes-1387",
+      "type": "mcq",
+      "domain": "Linear First-Order Equations",
+      "topic_id": "ode-linear",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 0.97,
+        "b": -0.18,
+        "c": 0.25
+      },
+      "text": "Solve the linear initial value problem \\( x\\frac{dy}{dx} + 3y = 5x^2 \\) for \\( x > 0 \\) with \\( y(1) = 2 \\), and calculate \\( y(2) \\).",
+      "choices": [
+        "\\( \\frac{25}{8} \\)",
+        "\\( \\frac{31}{8} \\)",
+        "\\( \\frac{17}{4} \\)",
+        "\\( \\frac{33}{8} \\)"
+      ],
+      "answer": 3,
+      "sol": "Divide by \\( x \\) to write standard form: \\( y' + \\frac{3}{x}y = 5x \\). The integrating factor is \\( \\mu(x) = x^3 \\). Multiplying gives \\( \\frac{d}{dx}(x^3 y) = 5x^4 \\), so \\( x^3 y = x^5 + C \\). Using \\( y(1) = 2 \\) yields \\( 2 = 1 + C \\implies C = 1 \\), hence \\( y(x) = x^2 + x^{-3} \\). At \\( x = 2 \\), \\( y(2) = 4 + \\frac{1}{8} = \\frac{33}{8} \\).",
+      "hints": [
+        "First divide the equation by \\( x \\) so the leading coefficient of \\( y' \\) is \\( 1 \\).",
+        "Compute the integrating factor \\( \\mu(x) = \\exp\\left(\\int \\frac{3}{x}\\,dx\\right) = x^3 \\).",
+        "Integrate \\( (x^3 y)' = 5x^4 \\), find \\( C \\) from \\( y(1) = 2 \\), and evaluate \\( y(2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(x*y(x).diff(x) + 3*y(x), 5*x**2), ics={y(1): 2})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 2))"
+    },
+    {
+      "id": "odes-1388",
+      "type": "mcq",
+      "domain": "Linear First-Order Equations",
+      "topic_id": "ode-linear",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.14,
+        "b": 1.31,
+        "c": 0.25
+      },
+      "text": "Solve the Bernoulli differential equation \\( \\frac{dy}{dx} + \\frac{1}{x}y = x y^2 \\) for \\( x > 0 \\) with \\( y(1) = \\frac{1}{3} \\), and find \\( y(2) \\).",
+      "choices": [
+        "\\( \\frac{1}{8} \\)",
+        "\\( \\frac{1}{2} \\)",
+        "\\( \\frac{1}{6} \\)",
+        "\\( \\frac{1}{4} \\)"
+      ],
+      "answer": 3,
+      "sol": "Divide through by \\( y^2 \\) and substitute \\( v = y^{-1} \\) (so \\( \\frac{dv}{dx} = -y^{-2}\\frac{dy}{dx} \\)) to obtain the linear equation \\( \\frac{dv}{dx} - \\frac{1}{x}v = -x \\). Multiplying by the integrating factor \\( \\mu(x) = \\frac{1}{x} \\) gives \\( \\frac{d}{dx}\\left(\\frac{v}{x}\\right) = -1 \\), so \\( \\frac{v}{x} = -x + C \\). With \\( v(1) = 3 \\), we get \\( 3 = -1 + C \\implies C = 4 \\), hence \\( v(x) = 4x - x^2 \\). Therefore \\( y(x) = \\frac{1}{4x - x^2} \\), and \\( y(2) = \\frac{1}{8 - 4} = \\frac{1}{4} \\).",
+      "hints": [
+        "Divide both sides by \\( y^2 \\) and apply the Bernoulli substitution \\( v = y^{-1} \\) (so \\( v' = -y^{-2}y' \\)).",
+        "Solve the resulting linear first-order ODE \\( v' - \\frac{1}{x}v = -x \\) with integrating factor \\( \\frac{1}{x} \\).",
+        "Apply \\( v(1) = 3 \\) to find \\( v(x) \\), then invert \\( y(2) = \\frac{1}{v(2)} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x) + y(x)/x, x*y(x)**2), ics={y(1): sp.Rational(1, 3)})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 2))"
+    },
+    {
+      "id": "odes-1389",
+      "type": "mcq",
+      "domain": "Second-Order Linear Equations (Constant Coefficients)",
+      "topic_id": "ode-second-order",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.31,
+        "b": -1.46,
+        "c": 0.25
+      },
+      "text": "Solve the initial value problem \\( y'' - 5y' + 6y = 0 \\) with \\( y(0) = 1 \\) and \\( y'(0) = 4 \\), and find \\( y(1) \\).",
+      "choices": [
+        "\\( 3e^3 - 2e^2 \\)",
+        "\\( 2e^2 - e^3 \\)",
+        "\\( e^3 + e^2 \\)",
+        "\\( 2e^3 - e^2 \\)"
+      ],
+      "answer": 3,
+      "sol": "The characteristic equation \\( r^2 - 5r + 6 = (r - 2)(r - 3) = 0 \\) has roots \\( r = 2, 3 \\), so \\( y(x) = c_1 e^{2x} + c_2 e^{3x} \\). From \\( y(0) = c_1 + c_2 = 1 \\) and \\( y'(0) = 2c_1 + 3c_2 = 4 \\), we get \\( c_2 = 2 \\) and \\( c_1 = -1 \\). Thus \\( y(1) = 2e^3 - e^2 \\).",
+      "hints": [
+        "Find the roots of the characteristic polynomial \\( r^2 - 5r + 6 = 0 \\).",
+        "Write the general solution \\( y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x} \\) and differentiate it.",
+        "Solve the \\( 2 \\times 2 \\) system from \\( y(0) = 1 \\) and \\( y'(0) = 4 \\), then set \\( x = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x, 2) - 5*y(x).diff(x) + 6*y(x), 0), ics={y(0): 1, y(x).diff(x).subs(x, 0): 4})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 1))"
+    },
+    {
+      "id": "odes-1390",
+      "type": "mcq",
+      "domain": "Second-Order Linear Equations (Constant Coefficients)",
+      "topic_id": "ode-second-order",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.48,
+        "b": -1.17,
+        "c": 0.25
+      },
+      "text": "Consider the repeated-root ODE \\( y'' - 6y' + 9y = 0 \\) with \\( y(0) = 2 \\) and \\( y'(0) = 1 \\). Calculate \\( y(1) \\).",
+      "choices": [
+        "\\( -e^3 \\)",
+        "\\( 5e^3 \\)",
+        "\\( 3e^3 \\)",
+        "\\( -3e^3 \\)"
+      ],
+      "answer": 3,
+      "sol": "The auxiliary equation \\( r^2 - 6r + 9 = (r - 3)^2 = 0 \\) has repeated root \\( r = 3 \\), so \\( y(x) = (c_1 + c_2 x)e^{3x} \\). Since \\( y(0) = 2 \\), \\( c_1 = 2 \\). Differentiating gives \\( y'(x) = (c_2 + 3c_1 + 3c_2 x)e^{3x} \\), so \\( y'(0) = c_2 + 6 = 1 \\implies c_2 = -5 \\). Thus \\( y(x) = (2 - 5x)e^{3x} \\), and \\( y(1) = -3e^3 \\).",
+      "hints": [
+        "Solve \\( (r - 3)^2 = 0 \\) and recall the repeated-root form \\( y(x) = (c_1 + c_2 x)e^{3x} \\).",
+        "Use the product rule to compute \\( y'(0) \\) in terms of \\( c_1 \\) and \\( c_2 \\).",
+        "Find \\( c_1, c_2 \\) and substitute \\( x = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x, 2) - 6*y(x).diff(x) + 9*y(x), 0), ics={y(0): 2, y(x).diff(x).subs(x, 0): 1})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 1))"
+    },
+    {
+      "id": "odes-1391",
+      "type": "mcq",
+      "domain": "Second-Order Linear Equations (Constant Coefficients)",
+      "topic_id": "ode-second-order",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.04,
+        "b": -1.49,
+        "c": 0.25
+      },
+      "text": "An undamped oscillator obeys \\( y'' + 16y = 0 \\) with \\( y(0) = 3 \\) and \\( y'(0) = 8 \\). What is \\( y\\left(\\frac{\\pi}{8}\\right) \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 3 \\)",
+        "\\( 5 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 3,
+      "sol": "The characteristic equation \\( r^2 + 16 = 0 \\) gives \\( r = \\pm 4i \\), so \\( y(x) = c_1 \\cos(4x) + c_2 \\sin(4x) \\). Using \\( y(0) = 3 \\) gives \\( c_1 = 3 \\), and \\( y'(0) = 4c_2 = 8 \\) gives \\( c_2 = 2 \\). At \\( x = \\frac{\\pi}{8} \\), \\( 4x = \\frac{\\pi}{2} \\), so \\( y\\left(\\frac{\\pi}{8}\\right) = 3\\cos\\left(\\frac{\\pi}{2}\\right) + 2\\sin\\left(\\frac{\\pi}{2}\\right) = 2 \\).",
+      "hints": [
+        "Identify the angular frequency \\( \\omega = 4 \\) from \\( r^2 + 16 = 0 \\).",
+        "Write \\( y(x) = c_1 \\cos(4x) + c_2 \\sin(4x) \\) and solve for \\( c_1, c_2 \\) from the initial conditions.",
+        "Evaluate at \\( 4x = \\frac{\\pi}{2} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x, 2) + 16*y(x), 0), ics={y(0): 3, y(x).diff(x).subs(x, 0): 8})\nEXPECTED = sp.simplify(sol.rhs.subs(x, sp.pi/8))"
+    },
+    {
+      "id": "odes-1392",
+      "type": "mcq",
+      "domain": "Second-Order Linear Equations (Constant Coefficients)",
+      "topic_id": "ode-second-order",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.21,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "Compute the Wronskian \\( W(y_1, y_2)(0) \\) of the two fundamental solutions \\( y_1(x) = e^{2x} \\) and \\( y_2(x) = e^{-3x} \\) of \\( y'' + y' - 6y = 0 \\).",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( 5 \\)",
+        "\\( -1 \\)",
+        "\\( -5 \\)"
+      ],
+      "answer": 3,
+      "sol": "The Wronskian is \\( W = y_1 y_2' - y_1' y_2 = e^{2x}(-3e^{-3x}) - (2e^{2x})e^{-3x} = -5e^{-x} \\). Evaluating at \\( x = 0 \\) gives \\( W(0) = -5 \\).",
+      "hints": [
+        "Write out the \\( 2 \\times 2 \\) Wronskian determinant \\( W(y_1, y_2) = y_1 y_2' - y_1' y_2 \\).",
+        "Differentiate \\( y_1 = e^{2x} \\) and \\( y_2 = e^{-3x} \\) carefully.",
+        "Substitute \\( x = 0 \\) and simplify."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny1, y2 = sp.exp(2*x), sp.exp(-3*x)\nW = sp.simplify(y1*sp.diff(y2, x) - sp.diff(y1, x)*y2)\nEXPECTED = W.subs(x, 0)"
+    },
+    {
+      "id": "odes-1393",
+      "type": "mcq",
+      "domain": "Second-Order Linear Equations (Constant Coefficients)",
+      "topic_id": "ode-second-order",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.38,
+        "b": -0.91,
+        "c": 0.25
+      },
+      "text": "The damped oscillator equation \\( y'' + 2y' + 5y = 0 \\) satisfies \\( y(0) = 1 \\) and \\( y'(0) = 3 \\). Evaluate \\( y\\left(\\frac{\\pi}{4}\\right) \\).",
+      "choices": [
+        "\\( -2e^{-\\pi/4} \\)",
+        "\\( e^{-\\pi/4} \\)",
+        "\\( 3e^{-\\pi/4} \\)",
+        "\\( 2e^{-\\pi/4} \\)"
+      ],
+      "answer": 3,
+      "sol": "The characteristic roots of \\( r^2 + 2r + 5 = 0 \\) are \\( r = -1 \\pm 2i \\), so \\( y(x) = e^{-x}(c_1 \\cos 2x + c_2 \\sin 2x) \\). From \\( y(0) = 1 \\), \\( c_1 = 1 \\). Differentiating gives \\( y'(0) = -c_1 + 2c_2 = 3 \\implies 2c_2 = 4 \\implies c_2 = 2 \\). At \\( x = \\frac{\\pi}{4} \\), \\( 2x = \\frac{\\pi}{2} \\), so \\( y\\left(\\frac{\\pi}{4}\\right) = e^{-\\pi/4}(0 + 2(1)) = 2e^{-\\pi/4} \\).",
+      "hints": [
+        "Complete the square on \\( r^2 + 2r + 5 = (r + 1)^2 + 4 = 0 \\) to find the complex roots \\( -1 \\pm 2i \\).",
+        "Use \\( y(x) = e^{-x}(c_1\\cos 2x + c_2\\sin 2x) \\) and differentiate using the product rule to apply \\( y'(0) = 3 \\).",
+        "Evaluate at \\( x = \\frac{\\pi}{4} \\), noting \\( \\cos(\\pi/2) = 0 \\) and \\( \\sin(\\pi/2) = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x, 2) + 2*y(x).diff(x) + 5*y(x), 0), ics={y(0): 1, y(x).diff(x).subs(x, 0): 3})\nEXPECTED = sp.simplify(sol.rhs.subs(x, sp.pi/4))"
+    },
+    {
+      "id": "odes-1394",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.55,
+        "b": 0.02,
+        "c": 0.25
+      },
+      "text": "To solve \\( y'' + y = \\sec x \\) on \\( (-\\frac{\\pi}{2}, \\frac{\\pi}{2}) \\) by variation of parameters with \\( y_1 = \\cos x \\) and \\( y_2 = \\sin x \\), we write \\( y_p = u_1\\cos x + u_2\\sin x \\). What is \\( u_1'(x) \\)?",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( \\tan x \\)",
+        "\\( -\\sec x \\)",
+        "\\( -\\tan x \\)"
+      ],
+      "answer": 3,
+      "sol": "The Wronskian is \\( W(\\cos x, \\sin x) = \\cos^2 x + \\sin^2 x = 1 \\). By variation of parameters, \\( u_1'(x) = \\frac{-y_2(x) g(x)}{W(x)} = \\frac{-\\sin x \\sec x}{1} = -\\tan x \\).",
+      "hints": [
+        "Compute the Wronskian \\( W(\\cos x, \\sin x) = 1 \\).",
+        "Use the formula \\( u_1'(x) = \\frac{-y_2(x) g(x)}{W(x)} \\) with \\( g(x) = \\sec x \\).",
+        "Simplify \\( -\\sin x \\cdot \\frac{1}{\\cos x} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny1, y2, g = sp.cos(x), sp.sin(x), sp.sec(x)\nW = sp.simplify(y1*sp.diff(y2, x) - sp.diff(y1, x)*y2)\nEXPECTED = sp.simplify(-y2 * g / W)"
+    },
+    {
+      "id": "odes-1395",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.11,
+        "b": 0.31,
+        "c": 0.25
+      },
+      "text": "Using variation of parameters on \\( y'' - y = \\frac{2}{e^x + e^{-x}} \\) with basis \\( y_1 = e^x, y_2 = e^{-x} \\), find the Wronskian \\( W(y_1, y_2)(x) \\).",
+      "choices": [
+        "\\( 0 \\)",
+        "\\( 2 \\)",
+        "\\( -2e^{2x} \\)",
+        "\\( -2 \\)"
+      ],
+      "answer": 3,
+      "sol": "Compute \\( W(e^x, e^{-x}) = e^x(-e^{-x}) - (e^x)e^{-x} = -1 - 1 = -2 \\).",
+      "hints": [
+        "Apply \\( W(y_1, y_2) = y_1 y_2' - y_1' y_2 \\).",
+        "Substitute \\( y_1 = e^x \\), \\( y_2 = e^{-x} \\), and their derivatives.",
+        "Simplify using \\( e^x e^{-x} = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny1, y2 = sp.exp(x), sp.exp(-x)\nEXPECTED = sp.simplify(y1*sp.diff(y2, x) - sp.diff(y1, x)*y2)"
+    },
+    {
+      "id": "odes-1396",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.28,
+        "b": -0.01,
+        "c": 0.25
+      },
+      "text": "For \\( y'' - 2y' + y = \\frac{e^x}{x} \\) (\\( x > 0 \\)) using basis \\( y_1 = e^x, y_2 = xe^x \\) in variation of parameters \\( y_p = u_1 e^x + u_2 x e^x \\), find \\( u_2'(x) \\).",
+      "choices": [
+        "\\( \\frac{1}{x^2} \\)",
+        "\\( -\\frac{1}{x} \\)",
+        "\\( \\frac{1}{x} \\)",
+        "\\( \\frac{e^x}{x} \\)"
+      ],
+      "answer": 2,
+      "sol": "First compute the Wronskian: \\( W(e^x, xe^x) = e^x(e^x + xe^x) - e^x(xe^x) = e^{2x} \\). Then \\( u_2'(x) = \\frac{y_1(x) g(x)}{W(x)} = \\frac{e^x \\cdot (e^x / x)}{e^{2x}} = \\frac{1}{x} \\).",
+      "hints": [
+        "Calculate the Wronskian \\( W(e^x, xe^x) = y_1 y_2' - y_1' y_2 \\).",
+        "Use the variation of parameters formula \\( u_2'(x) = \\frac{y_1(x) g(x)}{W(x)} \\) with \\( g(x) = \\frac{e^x}{x} \\).",
+        "Cancel \\( e^{2x} \\) in numerator and denominator."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny1, y2, g = sp.exp(x), x*sp.exp(x), sp.exp(x)/x\nW = sp.simplify(y1*sp.diff(y2, x) - sp.diff(y1, x)*y2)\nEXPECTED = sp.simplify(y1 * g / W)"
+    },
+    {
+      "id": "odes-1397",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": 0.28,
+        "c": 0.25
+      },
+      "text": "Using variation of parameters on \\( y'' + y = 2\\sec^3 x \\) for \\( -\\frac{\\pi}{2} < x < \\frac{\\pi}{2} \\), find the particular solution satisfying \\( y_p(0) = y_p'(0) = 0 \\), and evaluate \\( y_p\\left(\\frac{\\pi}{3}\\right) \\).",
+      "choices": [
+        "\\( \\sqrt{3} \\)",
+        "\\( \\frac{3}{4} \\)",
+        "\\( \\frac{3}{2} \\)",
+        "\\( \\frac{1}{2} \\)"
+      ],
+      "answer": 2,
+      "sol": "With \\( y_1 = \\cos x \\) and \\( y_2 = \\sin x \\), the Wronskian is \\( W = 1 \\). Variation of parameters with \\( u_1(0) = u_2(0) = 0 \\) gives \\( u_1'(x) = -2\\sin x \\sec^3 x = -2\\tan x \\sec^2 x \\), so \\( u_1(x) = -\\tan^2 x \\), and \\( u_2'(x) = 2\\cos x \\sec^3 x = 2\\sec^2 x \\), so \\( u_2(x) = 2\\tan x \\). Thus \\( y_p(x) = (-\\tan^2 x)\\cos x + (2\\tan x)\\sin x = \\frac{\\sin^2 x}{\\cos x} = \\sin x \\tan x \\). At \\( x = \\frac{\\pi}{3} \\), \\( y_p\\left(\\frac{\\pi}{3}\\right) = \\frac{\\sqrt{3}}{2} \\cdot \\sqrt{3} = \\frac{3}{2} \\).",
+      "hints": [
+        "Use \\( y_1 = \\cos x, y_2 = \\sin x \\) (\\( W = 1 \\)) to write \\( u_1'(x) = -2\\sin x \\sec^3 x \\) and \\( u_2'(x) = 2\\cos x \\sec^3 x \\).",
+        "Integrate from \\( 0 \\) to \\( x \\): note \\( \\int_0^x 2\\tan t \\sec^2 t\\,dt = \\tan^2 x \\) and \\( \\int_0^x 2\\sec^2 t\\,dt = 2\\tan x \\).",
+        "Substitute \\( u_1, u_2 \\) into \\( y_p = u_1\\cos x + u_2\\sin x \\), simplify, and evaluate at \\( x = \\frac{\\pi}{3} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny1, y2, g = sp.cos(x), sp.sin(x), 2*sp.sec(x)**3\nW = sp.simplify(y1*sp.diff(y2, x) - sp.diff(y1, x)*y2)\nu1 = sp.integrate(-y2*g/W, (x, 0, x))\nu2 = sp.integrate(y1*g/W, (x, 0, x))\nyp = sp.simplify(u1*y1 + u2*y2)\nEXPECTED = sp.simplify(yp.subs(x, sp.pi/3))"
+    },
+    {
+      "id": "odes-1398",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.01,
+        "b": -0.04,
+        "c": 0.25
+      },
+      "text": "Consider the Cauchy-Euler ODE \\( x^2 y'' - 2xy' + 2y = 6x^3 \\) for \\( x > 0 \\), whose homogeneous basis is \\( y_1 = x, y_2 = x^2 \\). After dividing by \\( x^2 \\) to put the equation in standard form, find the particular solution \\( y_p(x) = c x^3 \\) via variation of parameters; what is \\( c \\)?",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( 6 \\)",
+        "\\( 3 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 2,
+      "sol": "Dividing by \\( x^2 \\) yields \\( y'' - \\frac{2}{x}y' + \\frac{2}{x^2}y = 6x \\), so \\( g(x) = 6x \\). The Wronskian of \\( y_1 = x, y_2 = x^2 \\) is \\( W = x(2x) - 1(x^2) = x^2 \\). Then \\( u_1' = \\frac{-x^2(6x)}{x^2} = -6x \\implies u_1 = -3x^2 \\) and \\( u_2' = \\frac{x(6x)}{x^2} = 6 \\implies u_2 = 6x \\). Hence \\( y_p = (-3x^2)x + (6x)x^2 = 3x^3 \\), giving \\( c = 3 \\).",
+      "hints": [
+        "Divide the ODE by \\( x^2 \\) first so \\( g(x) = 6x \\) is the standard forcing term.",
+        "Compute \\( W(x, x^2) = x^2 \\) and then \\( u_1' = -\\frac{y_2 g}{W} \\), \\( u_2' = \\frac{y_1 g}{W} \\).",
+        "Integrate \\( u_1', u_2' \\) and combine \\( u_1 y_1 + u_2 y_2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\ny1, y2, g = x, x**2, 6*x\nW = sp.simplify(y1*sp.diff(y2, x) - sp.diff(y1, x)*y2)\nu1 = sp.integrate(-y2*g/W, x)\nu2 = sp.integrate(y1*g/W, x)\nyp = sp.simplify(u1*y1 + u2*y2)\nEXPECTED = yp.coeff(x, 3)"
+    },
+    {
+      "id": "odes-1399",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.18,
+        "b": 0.25,
+        "c": 0.25
+      },
+      "text": "For \\( y'' - y = 2e^x \\) solved via variation of parameters with \\( y_1 = e^x \\) and \\( y_2 = e^{-x} \\), find the particular solution \\( y_p(x) \\) satisfying \\( y_p(0) = y_p'(0) = 0 \\), and evaluate \\( y_p(1) \\).",
+      "choices": [
+        "\\( 2e \\)",
+        "\\( e \\)",
+        "\\( \\frac{e + e^{-1}}{2} \\)",
+        "\\( e - e^{-1} \\)"
+      ],
+      "answer": 2,
+      "sol": "With \\( W(e^x, e^{-x}) = -2 \\) and \\( g(x) = 2e^x \\), integrating from \\( 0 \\) to \\( x \\) gives \\( u_1(x) = \\int_0^x \\frac{-e^{-t}(2e^t)}{-2}\\,dt = x \\) and \\( u_2(x) = \\int_0^x \\frac{e^t(2e^t)}{-2}\\,dt = -\\int_0^x e^{2t}\\,dt = -\\frac{1}{2}(e^{2x} - 1) \\). Thus \\( y_p(x) = x e^x - \\frac{1}{2}(e^{2x} - 1)e^{-x} = x e^x - \\frac{1}{2}e^x + \\frac{1}{2}e^{-x} = \\left(x - \\frac{1}{2}\\right)e^x + \\frac{1}{2}e^{-x} \\). Evaluating at \\( x = 1 \\) gives \\( \\frac{1}{2}e + \\frac{1}{2}e^{-1} = \\frac{e + e^{-1}}{2} \\).",
+      "hints": [
+        "Compute \\( W(e^x, e^{-x}) = -2 \\) and integrate \\( u_1'(t) \\) and \\( u_2'(t) \\) from \\( 0 \\) to \\( x \\) so \\( y_p(0) = y_p'(0) = 0 \\).",
+        "Simplify \\( y_p(x) = u_1(x)e^x + u_2(x)e^{-x} \\).",
+        "Evaluate the resulting expression at \\( x = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x, 2) - y(x), 2*sp.exp(x)), ics={y(0): 0, y(x).diff(x).subs(x, 0): 0})\nEXPECTED = sp.simplify(sol.rhs.subs(x, 1))"
+    },
+    {
+      "id": "odes-1400",
+      "type": "mcq",
+      "domain": "Variation of Parameters",
+      "topic_id": "ode-variation-of-parameters",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.35,
+        "b": 1.13,
+        "c": 0.25
+      },
+      "text": "Using variation of parameters, find the particular solution \\( y_p(x) \\) of \\( y'' - 3y' + 2y = \\frac{1}{1 + e^{-x}} \\) satisfying \\( y_p(0) = y_p'(0) = 0 \\), and evaluate \\( y_p(\\ln 2) \\).",
+      "choices": [
+        "\\( 1 + 6\\ln(\\frac{3}{4}) \\)",
+        "\\( 2 + 2\\ln(\\frac{3}{4}) \\)",
+        "\\( 2 + 6\\ln(\\frac{3}{4}) \\)",
+        "\\( 2 + 6\\ln(\\frac{4}{3}) \\)"
+      ],
+      "answer": 2,
+      "sol": "The homogeneous basis is \\( y_1 = e^x, y_2 = e^{2x} \\), giving Wronskian \\( W = e^{3x} \\). With \\( y_p(0) = y_p'(0) = 0 \\), we integrate from \\( 0 \\) to \\( x = \\ln 2 \\): \\( u_1(\\ln 2) = \\int_0^{\\ln 2} \\frac{-e^{-t}}{1 + e^{-t}}\\,dt = \\ln\\frac{3}{4} \\), and substituting \\( s = e^{-t} \\) gives \\( u_2(\\ln 2) = \\int_{1/2}^1 \\frac{s}{1 + s}\\,ds = \\frac{1}{2} + \\ln\\frac{3}{4} \\). Multiplying by \\( y_1(\\ln 2) = 2 \\) and \\( y_2(\\ln 2) = 4 \\) gives \\( y_p(\\ln 2) = 2\\ln\\frac{3}{4} + 4\\left(\\frac{1}{2} + \\ln\\frac{3}{4}\\right) = 2 + 6\\ln\\left(\\frac{3}{4}\\right) \\).",
+      "hints": [
+        "Use the homogeneous basis \\( y_1 = e^x, y_2 = e^{2x} \\) with Wronskian \\( W = e^{3x} \\).",
+        "Integrate \\( u_1'(t) = \\frac{-e^{-t}}{1 + e^{-t}} \\) and \\( u_2'(t) = \\frac{e^{-2t}}{1 + e^{-t}} \\) from \\( t = 0 \\) to \\( t = \\ln 2 \\) via the substitution \\( s = e^{-t} \\).",
+        "Combine \\( y_p(\\ln 2) = u_1(\\ln 2) e^{\\ln 2} + u_2(\\ln 2) e^{2\\ln 2} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, t = sp.symbols('x t', real=True)\ny1, y2, g = sp.exp(t), sp.exp(2*t), 1/(1 + sp.exp(-t))\nW = sp.simplify(y1*sp.diff(y2, t) - sp.diff(y1, t)*y2)\nu1 = sp.integrate(-y2*g/W, (t, 0, sp.log(2)))\nu2 = sp.integrate(y1*g/W, (t, 0, sp.log(2)))\nEXPECTED = sp.simplify(u1*2 + u2*4)"
+    },
+    {
+      "id": "odes-1401",
+      "type": "mcq",
+      "domain": "Laplace Transforms",
+      "topic_id": "ode-laplace-transforms",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.52,
+        "b": 0.22,
+        "c": 0.25
+      },
+      "text": "Compute the Laplace transform \\( F(s) = \\mathcal{L}\\{t^2 e^{-3t}\\} \\) for \\( s > -3 \\).",
+      "choices": [
+        "\\( \\frac{1}{(s + 3)^3} \\)",
+        "\\( \\frac{2}{(s - 3)^3} \\)",
+        "\\( \\frac{2}{(s + 3)^3} \\)",
+        "\\( \\frac{6}{(s + 3)^3} \\)"
+      ],
+      "answer": 2,
+      "sol": "Since \\( \\mathcal{L}\\{t^2\\} = \\frac{2!}{s^3} = \\frac{2}{s^3} \\), the first shifting theorem \\( \\mathcal{L}\\{e^{at}f(t)\\} = F(s - a) \\) with \\( a = -3 \\) gives \\( \\mathcal{L}\\{t^2 e^{-3t}\\} = \\frac{2}{(s + 3)^3} \\).",
+      "hints": [
+        "Start from the power transform \\( \\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}} \\) for \\( n = 2 \\).",
+        "Apply the frequency-shift property \\( \\mathcal{L}\\{e^{-at} f(t)\\} = F(s + a) \\) with \\( a = 3 \\).",
+        "Substitute \\( s \\mapsto s + 3 \\) into \\( \\frac{2}{s^3} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', positive=True)\ns = sp.Symbol('s', real=True)\nEXPECTED = sp.laplace_transform(t**2 * sp.exp(-3*t), t, s, noconds=True)"
+    },
+    {
+      "id": "odes-1402",
+      "type": "mcq",
+      "domain": "Laplace Transforms",
+      "topic_id": "ode-laplace-transforms",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.08,
+        "b": -0.1,
+        "c": 0.25
+      },
+      "text": "Let \\( f(t) = \\mathcal{L}^{-1}\\left\\{ \\frac{s + 5}{s^2 + 4s + 13} \\right\\} \\). Evaluate \\( f\\left(\\frac{\\pi}{6}\\right) \\).",
+      "choices": [
+        "\\( \\frac{1}{2}e^{-\\pi/3} \\)",
+        "\\( 2e^{-\\pi/3} \\)",
+        "\\( e^{-\\pi/3} \\)",
+        "\\( e^{-\\pi/6} \\)"
+      ],
+      "answer": 2,
+      "sol": "Complete the square in the denominator: \\( s^2 + 4s + 13 = (s + 2)^2 + 9 \\). Rewrite the numerator as \\( (s + 2) + 3 \\), giving \\( \\frac{s + 2}{(s + 2)^2 + 3^2} + \\frac{3}{(s + 2)^2 + 3^2} \\). Inverting via the shifting theorem gives \\( f(t) = e^{-2t}(\\cos 3t + \\sin 3t) \\). At \\( t = \\frac{\\pi}{6} \\), \\( 3t = \\frac{\\pi}{2} \\), so \\( f\\left(\\frac{\\pi}{6}\\right) = e^{-\\pi/3}(0 + 1) = e^{-\\pi/3} \\).",
+      "hints": [
+        "Complete the square in \\( s^2 + 4s + 13 \\) to get \\( (s + 2)^2 + 3^2 \\).",
+        "Split the numerator \\( s + 5 = (s + 2) + 3 \\) so the two terms match shifted \\( \\cos(3t) \\) and \\( \\sin(3t) \\) forms.",
+        "Invert to find \\( f(t) \\) and substitute \\( t = \\frac{\\pi}{6} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t, s = sp.symbols('t s', real=True)\nf = sp.inverse_laplace_transform((s + 5)/(s**2 + 4*s + 13), s, t)\nEXPECTED = sp.simplify(f.subs(t, sp.pi/6))"
+    },
+    {
+      "id": "odes-1403",
+      "type": "mcq",
+      "domain": "Laplace Transforms",
+      "topic_id": "ode-laplace-transforms",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.19,
+        "c": 0.25
+      },
+      "text": "Solve the initial value problem \\( y'' + 4y = 8u(t - \\pi) \\) with \\( y(0) = 0 \\) and \\( y'(0) = 0 \\), where \\( u \\) is the unit step function. What is the value of \\( y\\left(\\frac{5\\pi}{4}\\right) \\)?",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( 4 \\)",
+        "\\( 2 \\)",
+        "\\( 2 - \\sqrt{2} \\)"
+      ],
+      "answer": 2,
+      "sol": "Taking Laplace transforms gives \\( (s^2 + 4)Y(s) = \\frac{8e^{-\\pi s}}{s} \\), so \\( Y(s) = e^{-\\pi s}\\left(\\frac{2}{s} - \\frac{2s}{s^2 + 4}\\right) \\) by partial fractions. Inverting via the second shifting theorem gives \\( y(t) = 2u(t - \\pi)\\bigl(1 - \\cos(2(t - \\pi))\\bigr) \\). At \\( t = \\frac{5\\pi}{4} > \\pi \\), \\( t - \\pi = \\frac{\\pi}{4} \\), so \\( y\\left(\\frac{5\\pi}{4}\\right) = 2\\left(1 - \\cos\\frac{\\pi}{2}\\right) = 2 \\).",
+      "hints": [
+        "Take the Laplace transform of both sides using \\( \\mathcal{L}\\{u(t - \\pi)\\} = \\frac{e^{-\\pi s}}{s} \\).",
+        "Decompose \\( \\frac{8}{s(s^2 + 4)} = \\frac{2}{s} - \\frac{2s}{s^2 + 4} \\).",
+        "Apply \\( \\mathcal{L}^{-1}\\{e^{-\\pi s} F(s)\\} = u(t - \\pi)f(t - \\pi) \\) and evaluate at \\( t = \\frac{5\\pi}{4} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', positive=True)\ns = sp.Symbol('s', real=True)\nf_shifted = sp.inverse_laplace_transform(8/(s*(s**2 + 4)), s, t)\nEXPECTED = sp.simplify(f_shifted.subs(t, sp.Rational(5, 4)*sp.pi - sp.pi))"
+    },
+    {
+      "id": "odes-1404",
+      "type": "mcq",
+      "domain": "Laplace Transforms",
+      "topic_id": "ode-laplace-transforms",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.42,
+        "b": -0.13,
+        "c": 0.25
+      },
+      "text": "Using the Laplace convolution theorem (or partial fractions), evaluate \\( f(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{s(s + 2)}\\right\\} \\) at \\( t = \\ln 2 \\).",
+      "choices": [
+        "\\( \\frac{1}{2} \\)",
+        "\\( \\frac{1}{4} \\)",
+        "\\( \\frac{3}{8} \\)",
+        "\\( \\frac{3}{4} \\)"
+      ],
+      "answer": 2,
+      "sol": "By convolution, \\( \\mathcal{L}^{-1}\\left\\{\\frac{1}{s}\\cdot\\frac{1}{s + 2}\\right\\} = \\int_0^t 1 \\cdot e^{-2\\tau}\\,d\\tau = \\frac{1}{2}(1 - e^{-2t}) \\). At \\( t = \\ln 2 \\), \\( e^{-2\\ln 2} = \\frac{1}{4} \\), so \\( f(\\ln 2) = \\frac{1}{2}\\left(1 - \\frac{1}{4}\\right) = \\frac{3}{8} \\).",
+      "hints": [
+        "Identify the two factors \\( \\frac{1}{s} \\) and \\( \\frac{1}{s + 2} \\) corresponding to \\( 1 \\) and \\( e^{-2t} \\) (or split via partial fractions).",
+        "Compute the convolution integral \\( \\int_0^t e^{-2\\tau}\\,d\\tau = \\frac{1 - e^{-2t}}{2} \\).",
+        "Evaluate at \\( t = \\ln 2 \\) using \\( e^{-2\\ln 2} = 2^{-2} = \\frac{1}{4} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t, s = sp.symbols('t s', positive=True)\nf = sp.inverse_laplace_transform(1/(s*(s + 2)), s, t)\nEXPECTED = sp.simplify(f.subs(t, sp.log(2)))"
+    },
+    {
+      "id": "odes-1405",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.98,
+        "b": -1.09,
+        "c": 0.25
+      },
+      "text": "What is the larger eigenvalue of the coefficient matrix \\( A = \\begin{pmatrix} 5 & 2 \\\\ 2 & 2 \\end{pmatrix} \\) for the system \\( \\mathbf{x}' = A\\mathbf{x} \\)?",
+      "choices": [
+        "\\( 7 \\)",
+        "\\( 5 \\)",
+        "\\( 6 \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 2,
+      "sol": "The characteristic equation is \\( \\det(A - \\lambda I) = (5 - \\lambda)(2 - \\lambda) - 4 = \\lambda^2 - 7\\lambda + 6 = (\\lambda - 6)(\\lambda - 1) = 0 \\). The eigenvalues are \\( 1 \\) and \\( 6 \\), so the larger eigenvalue is \\( 6 \\).",
+      "hints": [
+        "Set up the characteristic polynomial \\( \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0 \\).",
+        "Compute \\( \\operatorname{tr}(A) = 5 + 2 = 7 \\) and \\( \\det(A) = 10 - 4 = 6 \\).",
+        "Factor \\( \\lambda^2 - 7\\lambda + 6 = 0 \\) and choose the larger root."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[5, 2], [2, 2]])\nlam = sp.Symbol('lam', real=True)\nroots = sp.solve(sp.det(A - lam*sp.eye(2)), lam)\nEXPECTED = max(roots)"
+    },
+    {
+      "id": "odes-1406",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.15,
+        "b": -1.41,
+        "c": 0.25
+      },
+      "text": "Consider the decoupled system \\( x'(t) = 2x(t) \\), \\( y'(t) = -3y(t) \\) with \\( x(0) = 4 \\) and \\( y(0) = 5 \\). Find \\( x(1) + y(1) \\).",
+      "choices": [
+        "\\( 4e^{-2} + 5e^3 \\)",
+        "\\( 5e^2 + 4e^{-3} \\)",
+        "\\( 4e^2 + 5e^{-3} \\)",
+        "\\( 9e^{-1} \\)"
+      ],
+      "answer": 2,
+      "sol": "Each equation can be solved independently: \\( x(t) = 4e^{2t} \\) and \\( y(t) = 5e^{-3t} \\). At \\( t = 1 \\), \\( x(1) + y(1) = 4e^2 + 5e^{-3} \\).",
+      "hints": [
+        "Notice the equations for \\( x(t) \\) and \\( y(t) \\) are completely independent.",
+        "Solve \\( x' = 2x \\) with \\( x(0) = 4 \\) and \\( y' = -3y \\) with \\( y(0) = 5 \\).",
+        "Substitute \\( t = 1 \\) and add \\( x(1) + y(1) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nx, y = sp.Function('x'), sp.Function('y')\nsols = sp.dsolve([sp.Eq(x(t).diff(t), 2*x(t)), sp.Eq(y(t).diff(t), -3*y(t))], ics={x(0): 4, y(0): 5})\nEXPECTED = sp.simplify((sols[0].rhs + sols[1].rhs).subs(t, 1))"
+    },
+    {
+      "id": "odes-1407",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.32,
+        "b": -1.12,
+        "c": 0.25
+      },
+      "text": "For the system \\( \\mathbf{x}' = \\begin{pmatrix} 3 & -4 \\\\ 2 & -1 \\end{pmatrix}\\mathbf{x} \\), compute the trace of the coefficient matrix.",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 5 \\)",
+        "\\( 2 \\)",
+        "\\( -2 \\)"
+      ],
+      "answer": 2,
+      "sol": "The trace of a square matrix is the sum of its main diagonal entries: \\( \\operatorname{tr}(A) = 3 + (-1) = 2 \\).",
+      "hints": [
+        "Recall that the trace of a \\( 2 \\times 2 \\) matrix \\( \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\) is \\( a + d \\).",
+        "Identify the diagonal entries \\( 3 \\) and \\( -1 \\).",
+        "Add \\( 3 + (-1) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[3, -4], [2, -1]])\nEXPECTED = A.trace()"
+    },
+    {
+      "id": "odes-1408",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.49,
+        "b": -1.44,
+        "c": 0.25
+      },
+      "text": "Solve the upper-triangular system \\( x' = x + 3y \\), \\( y' = 4y \\) with \\( x(0) = 2 \\) and \\( y(0) = 1 \\), and evaluate \\( x(1) \\).",
+      "choices": [
+        "\\( 3e^4 - e \\)",
+        "\\( 3e + e^4 \\)",
+        "\\( e^4 + e \\)",
+        "\\( e^4 + 2e \\)"
+      ],
+      "answer": 2,
+      "sol": "From \\( y' = 4y \\) and \\( y(0) = 1 \\), we have \\( y(t) = e^{4t} \\). Substituting into the first equation gives \\( x' - x = 3e^{4t} \\). Multiplying by \\( e^{-t} \\) gives \\( (xe^{-t})' = 3e^{3t} \\implies xe^{-t} = e^{3t} + C \\). Since \\( x(0) = 2 \\), \\( 2 = 1 + C \\implies C = 1 \\), so \\( x(t) = e^{4t} + e^t \\). At \\( t = 1 \\), \\( x(1) = e^4 + e \\).",
+      "hints": [
+        "Solve the second equation \\( y' = 4y \\) first using \\( y(0) = 1 \\).",
+        "Substitute \\( y(t) = e^{4t} \\) into \\( x' - x = 3y \\) to obtain a linear first-order ODE for \\( x(t) \\).",
+        "Use integrating factor \\( e^{-t} \\) and \\( x(0) = 2 \\), then evaluate \\( x(1) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nx, y = sp.Function('x'), sp.Function('y')\nsols = sp.dsolve([sp.Eq(x(t).diff(t), x(t) + 3*y(t)), sp.Eq(y(t).diff(t), 4*y(t))], ics={x(0): 2, y(0): 1})\nEXPECTED = sp.simplify(sols[0].rhs.subs(t, 1))"
+    },
+    {
+      "id": "odes-1409",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "A \\( 2 \\times 2 \\) linear system \\( \\mathbf{x}' = A\\mathbf{x} \\) has coefficient matrix \\( A = \\begin{pmatrix} 2 & 1 \\\\ 6 & 3 \\end{pmatrix} \\). What is the determinant \\( \\det(A) \\)?",
+      "choices": [
+        "\\( 12 \\)",
+        "\\( 0 \\)",
+        "\\( -6 \\)",
+        "\\( 5 \\)"
+      ],
+      "answer": 1,
+      "sol": "Compute \\( \\det(A) = (2)(3) - (1)(6) = 6 - 6 = 0 \\) (meaning the system has a line of equilibrium points).",
+      "hints": [
+        "Use the \\( 2 \\times 2 \\) determinant formula \\( ad - bc \\).",
+        "Multiply the main diagonal entries \\( 2 \\times 3 \\) and the off-diagonal entries \\( 1 \\times 6 \\).",
+        "Subtract the two products."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[2, 1], [6, 3]])\nEXPECTED = A.det()"
+    },
+    {
+      "id": "odes-1410",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.22,
+        "b": -1.47,
+        "c": 0.25
+      },
+      "text": "For the linear system \\( \\mathbf{x}' = \\begin{pmatrix} 4 & 1 \\\\ -2 & 1 \\end{pmatrix}\\mathbf{x} \\), what is the sum of the two eigenvalues of \\( A \\)?",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( 5 \\)",
+        "\\( 3 \\)",
+        "\\( -1 \\)"
+      ],
+      "answer": 1,
+      "sol": "The sum of the eigenvalues of any square matrix equals its trace: \\( \\lambda_1 + \\lambda_2 = \\operatorname{tr}(A) = 4 + 1 = 5 \\).",
+      "hints": [
+        "Remember the trace identity: the sum of the eigenvalues equals \\( \\operatorname{tr}(A) \\).",
+        "Alternatively, form \\( \\det(A - \\lambda I) = \\lambda^2 - 5\\lambda + 6 = 0 \\).",
+        "Add the diagonal entries \\( 4 + 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[4, 1], [-2, 1]])\nlam = sp.Symbol('lam', real=True)\nroots = sp.solve(sp.det(A - lam*sp.eye(2)), lam)\nEXPECTED = sum(roots)"
+    },
+    {
+      "id": "odes-1411",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.39,
+        "b": -1.18,
+        "c": 0.25
+      },
+      "text": "What is the product of the two eigenvalues of \\( A = \\begin{pmatrix} 3 & -2 \\\\ 5 & 4 \\end{pmatrix} \\) in \\( \\mathbf{x}' = A\\mathbf{x} \\)?",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 22 \\)",
+        "\\( 7 \\)",
+        "\\( 12 \\)"
+      ],
+      "answer": 1,
+      "sol": "The product of the eigenvalues of a matrix equals its determinant: \\( \\lambda_1 \\lambda_2 = \\det(A) = (3)(4) - (-2)(5) = 12 + 10 = 22 \\).",
+      "hints": [
+        "Recall that the product of all eigenvalues equals \\( \\det(A) \\).",
+        "Watch the double negative in \\( (3)(4) - (-2)(5) \\).",
+        "Add \\( 12 + 10 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[3, -2], [5, 4]])\nlam = sp.Symbol('lam')\nroots = sp.solve(sp.det(A - lam*sp.eye(2)), lam)\nEXPECTED = sp.simplify(roots[0] * roots[1])"
+    },
+    {
+      "id": "odes-1412",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.95,
+        "b": -1.5,
+        "c": 0.25
+      },
+      "text": "The matrix \\( A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix} \\) has eigenvalue \\( \\lambda = 3 \\) with eigenvector \\( \\mathbf{v} = \\begin{pmatrix} 1 \\\\ k \\end{pmatrix} \\). Find \\( k \\).",
+      "choices": [
+        "\\( -1 \\)",
+        "\\( 1 \\)",
+        "\\( 2 \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 1,
+      "sol": "From \\( A\\mathbf{v} = 3\\mathbf{v} \\), the first row gives \\( 1(1) + 2k = 3(1) \\implies 2k = 2 \\implies k = 1 \\).",
+      "hints": [
+        "Write out the eigenvector equation \\( (A - 3I)\\mathbf{v} = \\mathbf{0} \\).",
+        "Compute the first row of \\( A\\mathbf{v} = 3\\mathbf{v} \\): \\( 1 + 2k = 3 \\).",
+        "Solve for \\( k \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Symbol('k', real=True)\nA = sp.Matrix([[1, 2], [2, 1]])\nv = sp.Matrix([1, k])\neq = sp.Eq((A*v)[0], (3*v)[0])\nEXPECTED = sp.solve(eq, k)[0]"
+    },
+    {
+      "id": "odes-1413",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.12,
+        "b": -1.21,
+        "c": 0.25
+      },
+      "text": "Find the equilibrium point \\( (x_*, y_*) \\) of the nonhomogeneous system \\( x' = 2x - y - 3 \\), \\( y' = x + y - 6 \\), and compute \\( x_* + y_* \\).",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( 6 \\)",
+        "\\( 9 \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Set \\( x' = 0 \\) and \\( y' = 0 \\): \\( 2x_* - y_* = 3 \\) and \\( x_* + y_* = 6 \\). Adding gives \\( 3x_* = 9 \\implies x_* = 3 \\), and \\( y_* = 3 \\), so \\( x_* + y_* = 6 \\).",
+      "hints": [
+        "Equilibrium points occur where both \\( x' = 0 \\) and \\( y' = 0 \\).",
+        "Notice the second equation directly reads \\( x_* + y_* - 6 = 0 \\)!",
+        "Solve for \\( x_* + y_* \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, y = sp.symbols('x y', real=True)\nsol = sp.solve([sp.Eq(2*x - y - 3, 0), sp.Eq(x + y - 6, 0)], (x, y))\nEXPECTED = sol[x] + sol[y]"
+    },
+    {
+      "id": "odes-1414",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.29,
+        "b": -0.92,
+        "c": 0.25
+      },
+      "text": "Let \\( W(t) \\) be the Wronskian of a fundamental matrix solution to \\( \\mathbf{x}' = \\begin{pmatrix} 2 & -5 \\\\ 1 & -4 \\end{pmatrix}\\mathbf{x} \\) with \\( W(0) = 3 \\). By Abel's theorem, what is \\( W(1) \\)?",
+      "choices": [
+        "\\( 3e^2 \\)",
+        "\\( 3e^{-2} \\)",
+        "\\( 3e^{-3} \\)",
+        "\\( 3e^{-6} \\)"
+      ],
+      "answer": 1,
+      "sol": "By Abel's formula for systems, \\( W'(t) = \\operatorname{tr}(A)W(t) \\), so \\( W(t) = W(0)e^{\\operatorname{tr}(A)t} \\). Here \\( \\operatorname{tr}(A) = 2 + (-4) = -2 \\), giving \\( W(1) = 3e^{-2} \\).",
+      "hints": [
+        "Apply Abel's identity: \\( W(t) = W(0) e^{\\operatorname{tr}(A) t} \\).",
+        "Calculate the trace \\( \\operatorname{tr}(A) = 2 + (-4) \\).",
+        "Substitute \\( W(0) = 3 \\) and \\( t = 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[2, -5], [1, -4]])\nEXPECTED = 3 * sp.exp(A.trace() * 1)"
+    },
+    {
+      "id": "odes-1415",
+      "type": "mcq",
+      "domain": "Systems of Linear ODEs",
+      "topic_id": "ode-systems",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.46,
+        "b": -1.24,
+        "c": 0.25
+      },
+      "text": "A system \\( \\mathbf{x}' = A\\mathbf{x} \\) has general solution \\( \\mathbf{x}(t) = c_1 e^{2t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + c_2 e^{-5t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\). Given \\( \\mathbf{x}(0) = \\begin{pmatrix} 5 \\\\ 1 \\end{pmatrix} \\), find the first component \\( x_1(\\ln 2) \\).",
+      "choices": [
+        "\\( \\frac{191}{16} \\)",
+        "\\( \\frac{193}{16} \\)",
+        "\\( 12 \\)",
+        "\\( \\frac{97}{8} \\)"
+      ],
+      "answer": 1,
+      "sol": "At \\( t = 0 \\), \\( c_1 + c_2 = 5 \\) and \\( c_1 - c_2 = 1 \\), yielding \\( c_1 = 3 \\) and \\( c_2 = 2 \\). Thus \\( x_1(t) = 3e^{2t} + 2e^{-5t} \\). At \\( t = \\ln 2 \\), \\( e^{2\\ln 2} = 4 \\) and \\( e^{-5\\ln 2} = \\frac{1}{32} \\), so \\( x_1(\\ln 2) = 3(4) + 2\\left(\\frac{1}{32}\\right) = 12 + \\frac{1}{16} = \\frac{193}{16} \\).",
+      "hints": [
+        "Solve \\( c_1 + c_2 = 5 \\) and \\( c_1 - c_2 = 1 \\) from the initial vector \\( \\mathbf{x}(0) \\).",
+        "Write the first component \\( x_1(t) = c_1 e^{2t} + c_2 e^{-5t} \\).",
+        "Substitute \\( t = \\ln 2 \\) using \\( e^{2\\ln 2} = 4 \\) and \\( e^{-5\\ln 2} = 2^{-5} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "c1, c2 = sp.symbols('c1 c2', real=True)\nsol = sp.solve([sp.Eq(c1 + c2, 5), sp.Eq(c1 - c2, 1)], (c1, c2))\nx1 = sol[c1]*sp.exp(2*sp.log(2)) + sol[c2]*sp.exp(-5*sp.log(2))\nEXPECTED = sp.simplify(x1)"
+    },
+    {
+      "id": "odes-1416",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.02,
+        "b": 0.3,
+        "c": 0.25
+      },
+      "text": "What is the guaranteed minimum radius of convergence of a power series solution centered at \\( x_0 = 4 \\) for \\( (x^2 + 9)y'' + xy' - y = 0 \\)?",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( 5 \\)",
+        "\\( 4 \\)",
+        "\\( \\sqrt{7} \\)"
+      ],
+      "answer": 1,
+      "sol": "Dividing by \\( x^2 + 9 \\) puts the ODE in standard form with coefficients having singular points where \\( x^2 + 9 = 0 \\), namely \\( x = \\pm 3i \\) in the complex plane. The distance from \\( x_0 = 4 \\) to \\( \\pm 3i \\) is \\( \\sqrt{(4 - 0)^2 + (0 - 3)^2} = \\sqrt{16 + 9} = 5 \\).",
+      "hints": [
+        "Find all roots of the leading coefficient \\( x^2 + 9 = 0 \\) in the complex plane.",
+        "Compute the Euclidean distance in \\( \\mathbb{C} \\) from the expansion center \\( x_0 = 4 \\) to the nearest singular point \\( \\pm 3i \\).",
+        "Apply the \\( 3\\text{-}4\\text{-}5 \\) right triangle distance \\( \\sqrt{4^2 + 3^2} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.sqrt((4 - 0)**2 + (0 - 3)**2)"
+    },
+    {
+      "id": "odes-1417",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.19,
+        "b": -0.02,
+        "c": 0.25
+      },
+      "text": "For the differential equation \\( y'' + x y' + 2y = 0 \\) with initial conditions \\( y(0) = 3 \\) and \\( y'(0) = 0 \\), find the coefficient \\( a_4 \\) of \\( x^4 \\) in its Maclaurin series solution \\( y(x) = \\sum_{n=0}^\\infty a_n x^n \\).",
+      "choices": [
+        "\\( -1 \\)",
+        "\\( 1 \\)",
+        "\\( \\frac{1}{2} \\)",
+        "\\( -\\frac{1}{3} \\)"
+      ],
+      "answer": 1,
+      "sol": "Substituting \\( y = \\sum_{n=0}^\\infty a_n x^n \\) into \\( y'' + xy' + 2y = 0 \\) gives \\( \\sum_{n=0}^\\infty \\bigl[(n + 2)(n + 1)a_{n+2} + (n + 2)a_n\\bigr] x^n = 0 \\), so \\( a_{n+2} = -\\frac{a_n}{n + 1} \\). With \\( a_0 = y(0) = 3 \\), setting \\( n = 0 \\) yields \\( a_2 = -a_0 = -3 \\), and setting \\( n = 2 \\) yields \\( a_4 = -\\frac{a_2}{3} = 1 \\).",
+      "hints": [
+        "Substitute \\( y = \\sum a_n x^n \\), \\( xy' = \\sum n a_n x^n \\), and \\( y'' = \\sum (n+2)(n+1)a_{n+2} x^n \\).",
+        "Set the coefficient of \\( x^n \\) to zero to obtain the recurrence \\( (n+2)(n+1)a_{n+2} + (n+2)a_n = 0 \\).",
+        "Compute \\( a_2 \\) from \\( a_0 = 3 \\), and then \\( a_4 \\) from \\( a_2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a0 = sp.Integer(3)\na2 = -a0 * (0 + 2) / (2 * 1)\na4 = -a2 * (2 + 2) / (4 * 3)\nEXPECTED = a4"
+    },
+    {
+      "id": "odes-1418",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.36,
+        "b": 0.27,
+        "c": 0.25
+      },
+      "text": "Consider the Airy equation \\( y'' - xy = 0 \\) with \\( y(0) = 1 \\) and \\( y'(0) = 2 \\). Find the coefficient \\( a_3 \\) of \\( x^3 \\) in its power series solution \\( y(x) = \\sum_{n=0}^\\infty a_n x^n \\).",
+      "choices": [
+        "\\( \\frac{1}{3} \\)",
+        "\\( \\frac{1}{6} \\)",
+        "\\( \\frac{1}{2} \\)",
+        "\\( \\frac{2}{3} \\)"
+      ],
+      "answer": 1,
+      "sol": "Writing \\( y'' = \\sum_{n=0}^\\infty (n+2)(n+1)a_{n+2} x^n \\) and \\( xy = \\sum_{n=1}^\\infty a_{n-1} x^n \\), matching the \\( x^1 \\) coefficient gives \\( 3 \\cdot 2 a_3 - a_0 = 0 \\implies a_3 = \\frac{a_0}{6} \\). Since \\( a_0 = y(0) = 1 \\), \\( a_3 = \\frac{1}{6} \\).",
+      "hints": [
+        "Substitute \\( y = \\sum a_n x^n \\) and shift the index on \\( xy = \\sum_{n=1}^\\infty a_{n-1} x^n \\).",
+        "Match the coefficient of \\( x^1 \\): \\( (3)(2)a_3 - a_0 = 0 \\).",
+        "Substitute \\( a_0 = y(0) = 1 \\) to solve for \\( a_3 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a0 = sp.Integer(1)\nEXPECTED = a0 / (3 * 2)"
+    },
+    {
+      "id": "odes-1419",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.53,
+        "b": -0.05,
+        "c": 0.25
+      },
+      "text": "Find the larger root of the indicial equation at the regular singular point \\( x = 0 \\) for \\( x^2 y'' + x(2 - x)y' - 6y = 0 \\).",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( 2 \\)",
+        "\\( -3 \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 1,
+      "sol": "For \\( x^2 y'' + x p(x) y' + q(x) y = 0 \\), here \\( p_0 = \\lim_{x \\to 0}(2 - x) = 2 \\) and \\( q_0 = -6 \\). The indicial equation is \\( r(r - 1) + p_0 r + q_0 = r(r - 1) + 2r - 6 = r^2 + r - 6 = (r + 3)(r - 2) = 0 \\). The larger root is \\( r = 2 \\).",
+      "hints": [
+        "Write the ODE in Frobenius form \\( x^2 y'' + x p(x) y' + q(x) y = 0 \\) and read off \\( p_0 = p(0) \\) and \\( q_0 = q(0) \\).",
+        "Form the indicial quadratic \\( r(r - 1) + p_0 r + q_0 = 0 \\).",
+        "Factor \\( r^2 + r - 6 = 0 \\) and select the larger root."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "r = sp.Symbol('r', real=True)\nindicial = r*(r - 1) + 2*r - 6\nEXPECTED = max(sp.solve(indicial, r))"
+    },
+    {
+      "id": "odes-1420",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.09,
+        "b": 0.24,
+        "c": 0.25
+      },
+      "text": "For the power series solution \\( y(x) = \\sum_{n=0}^\\infty a_n (x - 1)^n \\) of \\( (x^2 - 6x + 13)y'' + y' - 2y = 0 \\), what is the guaranteed minimum radius of convergence?",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 2\\sqrt{2} \\)",
+        "\\( 4 \\)",
+        "\\( \\sqrt{13} \\)"
+      ],
+      "answer": 1,
+      "sol": "Complete the square on \\( x^2 - 6x + 13 = (x - 3)^2 + 4 = 0 \\), whose singular points are \\( x = 3 \\pm 2i \\). The distance from the center \\( x_0 = 1 \\) to \\( 3 \\pm 2i \\) is \\( \\sqrt{(3 - 1)^2 + 2^2} = \\sqrt{4 + 4} = 2\\sqrt{2} \\).",
+      "hints": [
+        "Solve \\( x^2 - 6x + 13 = 0 \\) to find the complex singular points.",
+        "Calculate the distance in the complex plane between \\( x_0 = 1 \\) and \\( 3 \\pm 2i \\).",
+        "Simplify \\( \\sqrt{2^2 + 2^2} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x')\nroots = sp.solve(x**2 - 6*x + 13, x)\nEXPECTED = sp.Abs(roots[0] - 1)"
+    },
+    {
+      "id": "odes-1421",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.26,
+        "b": -0.08,
+        "c": 0.25
+      },
+      "text": "Using a power series \\( y(x) = \\sum_{n=0}^\\infty a_n x^n \\) centered at \\( x = 0 \\) for \\( y'' - 2xy' + 4y = 0 \\) with \\( y(0) = 1, y'(0) = 0 \\), find \\( a_2 \\).",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( -2 \\)",
+        "\\( -4 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 1,
+      "sol": "At \\( x = 0 \\), the ODE gives \\( y''(0) - 0 + 4y(0) = 0 \\implies y''(0) = -4(1) = -4 \\). Since \\( a_2 = \\frac{y''(0)}{2!} \\), we get \\( a_2 = \\frac{-4}{2} = -2 \\).",
+      "hints": [
+        "Evaluate the ODE directly at \\( x = 0 \\) to find \\( y''(0) \\).",
+        "Use Taylor's formula \\( a_2 = \\frac{y''(0)}{2!} \\).",
+        "Divide \\( -4 \\) by \\( 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a0 = sp.Integer(1)\nEXPECTED = sp.solve(sp.Eq(2*sp.Symbol('a2') + 4*a0, 0), sp.Symbol('a2'))[0]"
+    },
+    {
+      "id": "odes-1422",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.43,
+        "b": 0.21,
+        "c": 0.25
+      },
+      "text": "The recurrence relation for \\( (1 - x^2)y'' - 2xy' + 12y = 0 \\) (Legendre's equation of degree \\( 3 \\)) is \\( a_{n+2} = \\frac{n(n + 1) - 12}{(n + 2)(n + 1)} a_n \\). Given \\( a_0 = 0 \\) and \\( a_1 = 1 \\), find \\( a_3 \\).",
+      "choices": [
+        "\\( \\frac{5}{3} \\)",
+        "\\( -\\frac{5}{3} \\)",
+        "\\( -\\frac{10}{3} \\)",
+        "\\( -2 \\)"
+      ],
+      "answer": 1,
+      "sol": "Setting \\( n = 1 \\) in the recurrence relation gives \\( a_3 = \\frac{1(2) - 12}{(3)(2)} a_1 = \\frac{-10}{6}(1) = -\\frac{5}{3} \\).",
+      "hints": [
+        "Substitute \\( n = 1 \\) directly into the given recurrence relation for \\( a_{n+2} \\).",
+        "Compute the numerator \\( 1(1 + 1) - 12 = -10 \\) and denominator \\( (3)(2) = 6 \\).",
+        "Multiply by \\( a_1 = 1 \\) and simplify the fraction."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "n = 1\na1 = sp.Integer(1)\nEXPECTED = sp.Rational(n*(n + 1) - 12, (n + 2)*(n + 1)) * a1"
+    },
+    {
+      "id": "odes-1423",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 0.99,
+        "b": -0.11,
+        "c": 0.25
+      },
+      "text": "Determine the sum of the two roots of the indicial equation at \\( x = 0 \\) for the Frobenius ODE \\( 2x^2 y'' + 5x(1 + x)y' - (3 - x)y = 0 \\).",
+      "choices": [
+        "\\( \\frac{3}{2} \\)",
+        "\\( -\\frac{3}{2} \\)",
+        "\\( -\\frac{5}{2} \\)",
+        "\\( -3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Divide by \\( 2 \\) to obtain standard Frobenius form \\( x^2 y'' + x\\left(\\frac{5}{2}(1 + x)\\right)y' + \\left(-\\frac{3 - x}{2}\\right)y = 0 \\), so \\( p_0 = \\frac{5}{2} \\) and \\( q_0 = -\\frac{3}{2} \\). The indicial equation is \\( r(r - 1) + \\frac{5}{2}r - \\frac{3}{2} = r^2 + \\frac{3}{2}r - \\frac{3}{2} = 0 \\). By Vieta's formulas, the sum of roots is \\( -\\frac{3}{2} \\).",
+      "hints": [
+        "Divide the ODE by \\( 2 \\) first so the coefficient of \\( x^2 y'' \\) is \\( 1 \\).",
+        "Find \\( p_0 = \\lim_{x \\to 0} x \\frac{5(1+x)}{2x} = \\frac{5}{2} \\) and write \\( r^2 + (p_0 - 1)r + q_0 = 0 \\).",
+        "Compute the sum of the two roots \\( r_1 + r_2 = 1 - p_0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "r = sp.Symbol('r', real=True)\np0 = sp.Rational(5, 2)\nq0 = sp.Rational(-3, 2)\nEXPECTED = sum(sp.solve(r*(r - 1) + p0*r + q0, r))"
+    },
+    {
+      "id": "odes-1424",
+      "type": "mcq",
+      "domain": "Power Series Solutions",
+      "topic_id": "ode-series-solutions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.16,
+        "b": 0.18,
+        "c": 0.25
+      },
+      "text": "Suppose \\( y(x) = \\sum_{n=0}^\\infty a_n x^n \\) solves \\( y' = y + x \\) with \\( y(0) = 2 \\). Compute \\( a_3 \\).",
+      "choices": [
+        "\\( \\frac{1}{6} \\)",
+        "\\( \\frac{1}{2} \\)",
+        "\\( \\frac{1}{3} \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 1,
+      "sol": "Using \\( y' = y + x \\) at \\( x = 0 \\) with \\( y(0) = 2 \\): \\( y'(0) = 2 + 0 = 2 \\). Differentiating the ODE gives \\( y'' = y' + 1 \\), so \\( y''(0) = 2 + 1 = 3 \\). Differentiating again gives \\( y''' = y'' \\), so \\( y'''(0) = 3 \\). Hence \\( a_3 = \\frac{y'''(0)}{3!} = \\frac{3}{6} = \\frac{1}{2} \\).",
+      "hints": [
+        "Differentiate the ODE repeatedly or match powers of \\( x \\) in \\( \\sum (n+1)a_{n+1}x^n = \\sum a_n x^n + x \\).",
+        "Find \\( a_1 = a_0 = 2 \\), then \\( 2a_2 = a_1 + 1 = 3 \\), and finally \\( 3a_3 = a_2 \\).",
+        "Divide \\( a_2 = \\frac{3}{2} \\) by \\( 3 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ny = sp.Function('y')\nsol = sp.dsolve(sp.Eq(y(x).diff(x), y(x) + x), ics={y(0): 2})\nEXPECTED = sp.series(sol.rhs, x, 0, 4).coeff(x, 3)"
     }
   ]
 }

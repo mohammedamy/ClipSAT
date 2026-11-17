@@ -205,16 +205,16 @@ check('Built explorers (public/js/ex/olympiad.js) and IX activities (public/js/i
   });
 });
 
-check('Question bank (1,440 items, >= 500 SVG figures) and 12 topic shards in public/bank-shards/olympiad/ match', () => {
+check('Question bank (>= 1,910 items, >= 500 SVG figures) and 12 topic shards in public/bank-shards/olympiad/ match', () => {
   const bankRaw = fs.readFileSync(path.join(ROOT, 'bank-data/olympiad.json'), 'utf8');
   assert.ok(!bankRaw.includes('$'), 'bank-data/olympiad.json must contain zero $ signs');
   const bank = JSON.parse(bankRaw);
-  assert.strictEqual(bank.pool.length, 1440, `Expected 1,440 questions, found ${bank.pool.length}`);
+  assert.ok(bank.pool.length >= 1910, `Expected >= 1,910 questions, found ${bank.pool.length}`);
   const nsmoQs = bank.pool.filter(q => /^NSMO of KSA:/.test(q.domain));
   const kaustQs = bank.pool.filter(q => /^KAUST /.test(q.domain));
   const figs = bank.pool.filter(q => q.figure);
-  assert.strictEqual(nsmoQs.length, 240, `Expected 240 NSMO of KSA bank questions, found ${nsmoQs.length}`);
-  assert.strictEqual(kaustQs.length, 240, `Expected 240 KAUST bank questions, found ${kaustQs.length}`);
+  assert.ok(nsmoQs.length >= 320, `Expected >= 320 NSMO of KSA bank questions, found ${nsmoQs.length}`);
+  assert.ok(kaustQs.length >= 320, `Expected >= 320 KAUST bank questions, found ${kaustQs.length}`);
   assert.ok(figs.length >= 500, `Expected >= 500 SVG figures in olympiad bank, found ${figs.length}`);
 
   const shardIndex = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/bank-shards/olympiad/_index.json'), 'utf8'));

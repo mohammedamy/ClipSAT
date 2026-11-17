@@ -49350,6 +49350,2242 @@
         "b": 2.067,
         "c": 0.25
       }
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "Given \\(\\mathbf{u} = (2, -1, 4)\\) and \\(\\mathbf{v} = (1, 3, -2)\\), what is the sum of the components of \\(3\\mathbf{u} - 2\\mathbf{v}\\)?",
+      "text_ar": "ليكن \\(\\mathbf{u} = (2, -1, 4)\\) و\\(\\mathbf{v} = (1, 3, -2)\\). ما مجموع مركّبات المتجه \\(3\\mathbf{u} - 2\\mathbf{v}\\)؟",
+      "choices": [
+        "\\(9\\)",
+        "\\(11\\)",
+        "\\(15\\)",
+        "\\(7\\)"
+      ],
+      "choices_ar": [
+        "\\(9\\)",
+        "\\(11\\)",
+        "\\(15\\)",
+        "\\(7\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Compute component-wise: \\(3(2, -1, 4) - 2(1, 3, -2) = (6 - 2, -3 - 6, 12 + 4) = (4, -9, 16)\\).</p><p>Sum of components: \\(4 + (-9) + 16 = 11\\).</p>",
+      "sol_ar": "<p>نحسب المركّبات: \\((6 - 2, -3 - 6, 12 + 4) = (4, -9, 16)\\).</p><p>مجموع المركّبات يساوي \\(4 - 9 + 16 = 11\\).</p>",
+      "hints": [
+        "Multiply \\(\\mathbf{u}\\) by \\(3\\) and \\(\\mathbf{v}\\) by \\(2\\) entry by entry.",
+        "Subtract \\(2\\mathbf{v}\\) from \\(3\\mathbf{u}\\), watching the sign on the third entry.",
+        "Add the three entries of the resultant vector."
+      ],
+      "hints_ar": [
+        "اضرب \\(\\mathbf{u}\\) في \\(3\\) و\\(\\mathbf{v}\\) في \\(2\\) لكل مركّبة.",
+        "اطرح \\(2\\mathbf{v}\\) من \\(3\\mathbf{u}\\) مع الانتباه للإشارات.",
+        "اجمع المركّبات الثلاث للمتجه الناتج."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u = sp.Matrix([2, -1, 4])\nv = sp.Matrix([1, 3, -2])\nw = 3*u - 2*v\nEXPECTED = sum(w)",
+      "id": "linalg-1201"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "What is the Euclidean norm \\(\\|\\mathbf{w}\\|\\) of the vector \\(\\mathbf{w} = (3, -4, 12)\\)?",
+      "text_ar": "ما الطول الإقليدي (المعيار) \\(\\|\\mathbf{w}\\|\\) للمتجه \\(\\mathbf{w} = (3, -4, 12)\\)؟",
+      "choices": [
+        "\\(19\\)",
+        "\\(11\\)",
+        "\\(13\\)",
+        "\\(17\\)"
+      ],
+      "choices_ar": [
+        "\\(19\\)",
+        "\\(11\\)",
+        "\\(13\\)",
+        "\\(17\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>\\(\\|\\mathbf{w}\\| = \\sqrt{3^2 + (-4)^2 + 12^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13\\).</p>",
+      "sol_ar": "<p>\\(\\|\\mathbf{w}\\| = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13\\).</p>",
+      "hints": [
+        "Recall the Euclidean norm definition \\(\\|\\mathbf{w}\\| = \\sqrt{w_1^2 + w_2^2 + w_3^2}\\).",
+        "Compute the sum of squares \\(3^2 + (-4)^2 + 12^2 = 169\\).",
+        "Take the positive square root of \\(169\\)."
+      ],
+      "hints_ar": [
+        "تذكر تعريف المعيار الإقليدي \\(\\|\\mathbf{w}\\| = \\sqrt{w_1^2 + w_2^2 + w_3^2}\\).",
+        "احسب مجموع المربعات \\(9 + 16 + 144 = 169\\).",
+        "خذ الجذر التربيعي الموجب للعدد \\(169\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Matrix([3, -4, 12]).norm()",
+      "id": "linalg-1202"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "Evaluate the dot product \\((2, -1, 3, 4) \\cdot (1, 5, -2, 3)\\) in \\(\\mathbb{R}^4\\).",
+      "text_ar": "احسب الضرب القياسي \\((2, -1, 3, 4) \\cdot (1, 5, -2, 3)\\) في الفضاء \\(\\mathbb{R}^4\\).",
+      "choices": [
+        "\\(-3\\)",
+        "\\(9\\)",
+        "\\(15\\)",
+        "\\(3\\)"
+      ],
+      "choices_ar": [
+        "\\(-3\\)",
+        "\\(9\\)",
+        "\\(15\\)",
+        "\\(3\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Multiply matching coordinates and sum: \\(2(1) + (-1)(5) + 3(-2) + 4(3) = 2 - 5 - 6 + 12 = 3\\).</p>",
+      "sol_ar": "<p>\\(2(1) + (-1)(5) + 3(-2) + 4(3) = 2 - 5 - 6 + 12 = 3\\).</p>",
+      "hints": [
+        "Write the dot product as \\(\\sum_{i=1}^{4} u_i v_i\\) across all four entries.",
+        "Multiply corresponding pairs: \\(2(1), (-1)(5), 3(-2), 4(3)\\).",
+        "Combine the four signed products carefully."
+      ],
+      "hints_ar": [
+        "اكتب الضرب القياسي كمجموع \\(\\sum_{i=1}^{4} u_i v_i\\) للمواضع الأربعة.",
+        "اضرب الأزواج المتناظرة بدقة مع الانتباه للإشارات.",
+        "اجمع حواصل الضرب الأربعة الناتجة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Matrix([2, -1, 3, 4]).dot(sp.Matrix([1, 5, -2, 3]))",
+      "id": "linalg-1203"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "For what value of \\(k\\) are the vectors \\(\\mathbf{a} = (3, k, -2)\\) and \\(\\mathbf{b} = (4, -3, 6)\\) orthogonal?",
+      "text_ar": "ما قيمة \\(k\\) التي تجعل المتجهين \\(\\mathbf{a} = (3, k, -2)\\) و\\(\\mathbf{b} = (4, -3, 6)\\) متعامدين؟",
+      "choices": [
+        "\\(4\\)",
+        "\\(0\\)",
+        "\\(-4\\)",
+        "\\(8\\)"
+      ],
+      "choices_ar": [
+        "\\(4\\)",
+        "\\(0\\)",
+        "\\(-4\\)",
+        "\\(8\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Orthogonality means \\(\\mathbf{a} \\cdot \\mathbf{b} = 0\\): \\(3(4) + k(-3) + (-2)(6) = 12 - 3k - 12 = -3k = 0 \\implies k = 0\\).</p>",
+      "sol_ar": "<p>شرط التعامد هو \\(\\mathbf{a} \\cdot \\mathbf{b} = 0\\): \\(12 - 3k - 12 = 0 \\implies k = 0\\).</p>",
+      "hints": [
+        "Recall that two nonzero vectors are orthogonal when their dot product equals zero.",
+        "Compute \\(\\mathbf{a} \\cdot \\mathbf{b} = 3(4) + k(-3) + (-2)(6)\\).",
+        "Simplify the constant terms and solve \\(-3k = 0\\) for \\(k\\)."
+      ],
+      "hints_ar": [
+        "تذكر أن متجهين غير صفريين يكونان متعامدين إذا انعدم ضربهما القياسي.",
+        "احسب \\(3(4) + k(-3) + (-2)(6)\\) وساوِه بالصفر.",
+        "بسّط الحدود الثابتة ثم أوجد قيمة \\(k\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Symbol('k')\nEXPECTED = sp.solve(sp.Matrix([3, k, -2]).dot(sp.Matrix([4, -3, 6])), k)[0]",
+      "id": "linalg-1204"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "What is \\(\\cos\\theta\\), where \\(\\theta\\) is the angle between \\(\\mathbf{u} = (1, 2, 2)\\) and \\(\\mathbf{v} = (2, 1, -2)\\)?",
+      "text_ar": "ما قيمة \\(\\cos\\theta\\) حيث \\(\\theta\\) هي الزاوية بين المتجهين \\(\\mathbf{u} = (1, 2, 2)\\) و\\(\\mathbf{v} = (2, 1, -2)\\)؟",
+      "choices": [
+        "\\(\\dfrac{4}{9}\\)",
+        "\\(\\dfrac{1}{9}\\)",
+        "\\(0\\)",
+        "\\(\\dfrac{2}{3}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{4}{9}\\)",
+        "\\(\\dfrac{1}{9}\\)",
+        "\\(0\\)",
+        "\\(\\dfrac{2}{3}\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Compute the dot product: \\(\\mathbf{u} \\cdot \\mathbf{v} = 1(2) + 2(1) + 2(-2) = 2 + 2 - 4 = 0\\).</p><p>Since both vectors are non-zero, \\(\\cos\\theta = \\dfrac{0}{3 \\cdot 3} = 0\\).</p>",
+      "sol_ar": "<p>الضرب القياسي \\(\\mathbf{u} \\cdot \\mathbf{v} = 2 + 2 - 4 = 0\\)، وبما أن المتجهين غير صفريين فإن \\(\\cos\\theta = 0\\).</p>",
+      "hints": [
+        "Recall the cosine angle formula \\(\\cos\\theta = \\dfrac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}\\).",
+        "Compute the numerator \\(\\mathbf{u} \\cdot \\mathbf{v} = 1(2) + 2(1) + 2(-2)\\).",
+        "Divide the numerator by the product of positive norms \\(3 \\times 3\\)."
+      ],
+      "hints_ar": [
+        "تذكر قانون جيب تمام الزاوية بين متجهين.",
+        "احسب البسط \\(\\mathbf{u} \\cdot \\mathbf{v} = 2 + 2 - 4\\).",
+        "اقسم البسط على حاصل ضرب المعيارين الموجبين."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u, v = sp.Matrix([1, 2, 2]), sp.Matrix([2, 1, -2])\nEXPECTED = u.dot(v) / (u.norm() * v.norm())",
+      "id": "linalg-1205"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "Find the distance between the points \\(P(2, -1, 5)\\) and \\(Q(5, 3, -7)\\) in \\(\\mathbb{R}^3\\).",
+      "text_ar": "أوجد المسافة بين النقطتين \\(P(2, -1, 5)\\) و\\(Q(5, 3, -7)\\) في \\(\\mathbb{R}^3\\).",
+      "choices": [
+        "\\(17\\)",
+        "\\(15\\)",
+        "\\(\\sqrt{137}\\)",
+        "\\(13\\)"
+      ],
+      "choices_ar": [
+        "\\(17\\)",
+        "\\(15\\)",
+        "\\(\\sqrt{137}\\)",
+        "\\(13\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Displacement vector: \\(\\vec{PQ} = (5 - 2, 3 - (-1), -7 - 5) = (3, 4, -12)\\).</p><p>Distance: \\(\\|\\vec{PQ}\\| = \\sqrt{3^2 + 4^2 + (-12)^2} = \\sqrt{9 + 16 + 144} = 13\\).</p>",
+      "sol_ar": "<p>متجه الإزاحة \\(\\vec{PQ} = (3, 4, -12)\\)، فتكون المسافة \\(\\sqrt{9 + 16 + 144} = 13\\).</p>",
+      "hints": [
+        "Subtract the coordinates of \\(P\\) from \\(Q\\) to obtain the displacement vector \\(\\vec{PQ}\\).",
+        "Confirm the components \\((3, 4, -12)\\) and square each coordinate.",
+        "Evaluate \\(\\sqrt{9 + 16 + 144}\\)."
+      ],
+      "hints_ar": [
+        "اطرح إحداثيات \\(P\\) من \\(Q\\) لإيجاد متجه الإزاحة \\(\\vec{PQ}\\).",
+        "تحقق من المركّبات \\((3, 4, -12)\\) وربّع كل مركّبة.",
+        "احسب قيمة \\(\\sqrt{9 + 16 + 144}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "P, Q = sp.Matrix([2, -1, 5]), sp.Matrix([5, 3, -7])\nEXPECTED = (Q - P).norm()",
+      "id": "linalg-1206"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "What is the scalar projection \\(\\operatorname{comp}_{\\mathbf{a}}(\\mathbf{b})\\) of \\(\\mathbf{b} = (7, 1)\\) onto \\(\\mathbf{a} = (3, 4)\\)?",
+      "text_ar": "ما المسقط العددي \\(\\operatorname{comp}_{\\mathbf{a}}(\\mathbf{b})\\) للمتجه \\(\\mathbf{b} = (7, 1)\\) على المتجه \\(\\mathbf{a} = (3, 4)\\)؟",
+      "choices": [
+        "\\(25\\)",
+        "\\(5\\)",
+        "\\(\\dfrac{25}{\\sqrt{50}}\\)",
+        "\\(4\\)"
+      ],
+      "choices_ar": [
+        "\\(25\\)",
+        "\\(5\\)",
+        "\\(\\dfrac{25}{\\sqrt{50}}\\)",
+        "\\(4\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Use \\(\\operatorname{comp}_{\\mathbf{a}}(\\mathbf{b}) = \\dfrac{\\mathbf{a} \\cdot \\mathbf{b}}{\\|\\mathbf{a}\\|}\\).</p><p>Here \\(\\mathbf{a} \\cdot \\mathbf{b} = 3(7) + 4(1) = 25\\) and \\(\\|\\mathbf{a}\\| = \\sqrt{3^2 + 4^2} = 5\\), so the scalar projection is \\(\\dfrac{25}{5} = 5\\).</p>",
+      "sol_ar": "<p>المسقط العددي يساوي \\(\\dfrac{\\mathbf{a} \\cdot \\mathbf{b}}{\\|\\mathbf{a}\\|} = \\dfrac{21 + 4}{5} = 5\\).</p>",
+      "hints": [
+        "Recall the scalar projection formula \\(\\operatorname{comp}_{\\mathbf{a}}(\\mathbf{b}) = \\dfrac{\\mathbf{a} \\cdot \\mathbf{b}}{\\|\\mathbf{a}\\|}\\).",
+        "Compute the dot product \\(3(7) + 4(1) = 25\\) and norm \\(\\|(3, 4)\\|\\).",
+        "Divide \\(25\\) by \\(\\|\\mathbf{a}\\|\\) (not by \\(\\|\\mathbf{a}\\|^2\\))."
+      ],
+      "hints_ar": [
+        "تذكر صيغة المسقط العددي \\(\\dfrac{\\mathbf{a} \\cdot \\mathbf{b}}{\\|\\mathbf{a}\\|}\\).",
+        "احسب الضرب القياسي \\(25\\) ومعيار المتجه \\(\\mathbf{a}\\).",
+        "اقسم \\(25\\) على طول المتجه \\(\\mathbf{a}\\) وليس مربعه."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a, b = sp.Matrix([3, 4]), sp.Matrix([7, 1])\nEXPECTED = a.dot(b) / a.norm()",
+      "id": "linalg-1207"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "Let \\(\\mathbf{p} = \\operatorname{proj}_{\\mathbf{u}}(\\mathbf{v})\\) be the orthogonal vector projection of \\(\\mathbf{v} = (4, 6)\\) onto \\(\\mathbf{u} = (2, 1)\\). What is the first coordinate of \\(\\mathbf{p}\\)?",
+      "text_ar": "ليكن \\(\\mathbf{p} = \\operatorname{proj}_{\\mathbf{u}}(\\mathbf{v})\\) المسقط المتجهي العمودي للمتجه \\(\\mathbf{v} = (4, 6)\\) على \\(\\mathbf{u} = (2, 1)\\). ما الإحداثي الأول للمتجه \\(\\mathbf{p}\\)؟",
+      "choices": [
+        "\\(\\dfrac{14}{\\sqrt{5}}\\)",
+        "\\(\\dfrac{14}{5}\\)",
+        "\\(\\dfrac{28}{5}\\)",
+        "\\(4\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{14}{\\sqrt{5}}\\)",
+        "\\(\\dfrac{14}{5}\\)",
+        "\\(\\dfrac{28}{5}\\)",
+        "\\(4\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>\\(\\operatorname{proj}_{\\mathbf{u}}(\\mathbf{v}) = \\dfrac{\\mathbf{u} \\cdot \\mathbf{v}}{\\mathbf{u} \\cdot \\mathbf{u}}\\,\\mathbf{u} = \\dfrac{2(4) + 1(6)}{2^2 + 1^2}(2, 1) = \\dfrac{14}{5}(2, 1) = \\left(\\dfrac{28}{5}, \\dfrac{14}{5}\\right)\\).</p><p>Thus the first coordinate is \\(\\dfrac{28}{5}\\).</p>",
+      "sol_ar": "<p>المسقط المتجهي هو \\(\\dfrac{8 + 6}{4 + 1}(2, 1) = \\dfrac{14}{5}(2, 1) = \\left(\\dfrac{28}{5}, \\dfrac{14}{5}\\right)\\)، فالإحداثي الأول يساوي \\(\\dfrac{28}{5}\\).</p>",
+      "hints": [
+        "Write the orthogonal projection formula \\(\\dfrac{\\mathbf{u} \\cdot \\mathbf{v}}{\\mathbf{u} \\cdot \\mathbf{u}}\\,\\mathbf{u}\\).",
+        "Evaluate the scalar multiplier \\(\\dfrac{2(4) + 1(6)}{2^2 + 1^2} = \\dfrac{14}{5}\\).",
+        "Multiply that scalar factor by the first coordinate \\(2\\) of \\(\\mathbf{u}\\)."
+      ],
+      "hints_ar": [
+        "اكتب قانون المسقط المتجهي \\(\\dfrac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|^2}\\,\\mathbf{u}\\).",
+        "احسب المعامل القياسي \\(\\dfrac{14}{5}\\).",
+        "اضرب المعامل في الإحداثي الأول للمتجه \\(\\mathbf{u}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u, v = sp.Matrix([2, 1]), sp.Matrix([4, 6])\np = (u.dot(v) / u.dot(u)) * u\nEXPECTED = p[0]",
+      "id": "linalg-1208"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "Compute the cross product \\((1, 2, -1) \\times (3, 0, 4)\\) and state the value of its second (\\(y\\)) component.",
+      "text_ar": "احسب الضرب الاتجاهي \\((1, 2, -1) \\times (3, 0, 4)\\) وحدد قيمة مركّبته الثانية (مركّبة \\(y\\)).",
+      "choices": [
+        "\\(-8\\)",
+        "\\(7\\)",
+        "\\(8\\)",
+        "\\(-7\\)"
+      ],
+      "choices_ar": [
+        "\\(-8\\)",
+        "\\(7\\)",
+        "\\(8\\)",
+        "\\(-7\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Use the determinant cofactor expansion along \\(\\mathbf{j}\\): the \\(y\\)-component is \\(-\\begin{vmatrix} 1 & -1 \\\\ 3 & 4 \\end{vmatrix} = -(1(4) - (-1)(3)) = -(4 + 3) = -7\\).</p>",
+      "sol_ar": "<p>مركّبة \\(\\mathbf{j}\\) في محدد الضرب الاتجاهي هي \\(-(1(4) - (-1)(3)) = -(4 + 3) = -7\\).</p>",
+      "hints": [
+        "Write the \\(3 \\times 3\\) cross-product determinant with \\(\\mathbf{i}, \\mathbf{j}, \\mathbf{k}\\) across the top row.",
+        "Expand the middle \\(\\mathbf{j}\\) cofactor with its minus sign: \\(-(a_1 b_3 - a_3 b_1)\\).",
+        "Evaluate \\(-(1 \\times 4 - (-1) \\times 3)\\) carefully."
+      ],
+      "hints_ar": [
+        "اكتب محدد الضرب الاتجاهي الثلاثي بالصف الأول \\(\\mathbf{i}, \\mathbf{j}, \\mathbf{k}\\).",
+        "انشر المحدّد الجزئي لمركّبة \\(\\mathbf{j}\\) مع الإشارة السالبة.",
+        "احسب القيمة \\(-(4 + 3)\\) بدقة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "cp = sp.Matrix([1, 2, -1]).cross(sp.Matrix([3, 0, 4]))\nEXPECTED = cp[1]",
+      "id": "linalg-1209"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "What is the area of the parallelogram spanned by the vectors \\(\\mathbf{u} = (3, 1, 0)\\) and \\(\\mathbf{v} = (1, 5, 0)\\)?",
+      "text_ar": "ما مساحة متوازي الأضلاع المنشأ على المتجهين \\(\\mathbf{u} = (3, 1, 0)\\) و\\(\\mathbf{v} = (1, 5, 0)\\)؟",
+      "choices": [
+        "\\(7\\)",
+        "\\(14\\)",
+        "\\(16\\)",
+        "\\(8\\)"
+      ],
+      "choices_ar": [
+        "\\(7\\)",
+        "\\(14\\)",
+        "\\(16\\)",
+        "\\(8\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Compute the cross product \\(\\mathbf{u} \\times \\mathbf{v} = (0, 0, 3(5) - 1(1)) = (0, 0, 14)\\).</p><p>The area is \\(\\|\\mathbf{u} \\times \\mathbf{v}\\| = 14\\).</p>",
+      "sol_ar": "<p>الضرب الاتجاهي \\(\\mathbf{u} \\times \\mathbf{v} = (0, 0, 14)\\)، فتكون المساحة مساوية لطوله أي \\(14\\).</p>",
+      "hints": [
+        "Recall that the parallelogram area spanned by two vectors is \\(\\|\\mathbf{u} \\times \\mathbf{v}\\|\\).",
+        "Compute the \\(z\\)-component \\(3(5) - 1(1)\\) (or the \\(2 \\times 2\\) determinant).",
+        "Take its absolute value directly without dividing by \\(2\\)."
+      ],
+      "hints_ar": [
+        "تذكر أن مساحة متوازي الأضلاع تساوي \\(\\|\\mathbf{u} \\times \\mathbf{v}\\|\\).",
+        "احسب محدد المركّبتين الأفقيتين \\(3(5) - 1(1)\\).",
+        "خذ القيمة المطلقة دون القسمة على \\(2\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Matrix([3, 1, 0]).cross(sp.Matrix([1, 5, 0])).norm()",
+      "id": "linalg-1210"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "Find the area of the triangle with vertices \\(O(0, 0, 0)\\), \\(A(2, 0, 2)\\), and \\(B(0, 6, 0)\\).",
+      "text_ar": "أوجد مساحة المثلث الذي رؤوسه \\(O(0, 0, 0)\\) و\\(A(2, 0, 2)\\) و\\(B(0, 6, 0)\\).",
+      "choices": [
+        "\\(6\\)",
+        "\\(12\\sqrt{2}\\)",
+        "\\(6\\sqrt{2}\\)",
+        "\\(12\\)"
+      ],
+      "choices_ar": [
+        "\\(6\\)",
+        "\\(12\\sqrt{2}\\)",
+        "\\(6\\sqrt{2}\\)",
+        "\\(12\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Compute \\(\\vec{OA} \\times \\vec{OB} = (2, 0, 2) \\times (0, 6, 0) = (-12, 0, 12)\\).</p><p>Area of the triangle: \\(\\dfrac{1}{2}\\|(-12, 0, 12)\\| = \\dfrac{1}{2}(12\\sqrt{2}) = 6\\sqrt{2}\\).</p>",
+      "sol_ar": "<p>نحسب \\(\\vec{OA} \\times \\vec{OB} = (-12, 0, 12)\\).</p><p>مساحة المثلث تساوي نصف طول الضرب الاتجاهي: \\(\\frac{1}{2}(12\\sqrt{2}) = 6\\sqrt{2}\\).</p>",
+      "hints": [
+        "Form the edge vectors \\(\\vec{OA} = (2, 0, 2)\\) and \\(\\vec{OB} = (0, 6, 0)\\).",
+        "Compute their cross product \\((-12, 0, 12)\\) and its Euclidean norm.",
+        "Take half of \\(\\|\\vec{OA} \\times \\vec{OB}\\|\\) for the triangle area."
+      ],
+      "hints_ar": [
+        "كوّن متجهي الضلعين \\(\\vec{OA}\\) و\\(\\vec{OB}\\).",
+        "احسب الضرب الاتجاهي \\((-12, 0, 12)\\) وطوله الإقليدي.",
+        "اقسم المعيار على \\(2\\) لإيجاد مساحة المثلث."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(1, 2) * sp.Matrix([2, 0, 2]).cross(sp.Matrix([0, 6, 0])).norm()",
+      "id": "linalg-1211"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "Let \\(\\hat{\\mathbf{u}}\\) be the unit vector pointing in the same direction as \\(\\mathbf{v} = (6, -8)\\). What is the second coordinate of \\(\\hat{\\mathbf{u}}\\)?",
+      "text_ar": "ليكن \\(\\hat{\\mathbf{u}}\\) متجه الوحدة في الاتجاه نفسه للمتجه \\(\\mathbf{v} = (6, -8)\\). ما الإحداثي الثاني للمتجه \\(\\hat{\\mathbf{u}}\\)؟",
+      "choices": [
+        "\\(-\\dfrac{3}{5}\\)",
+        "\\(\\dfrac{3}{5}\\)",
+        "\\(\\dfrac{4}{5}\\)",
+        "\\(-\\dfrac{4}{5}\\)"
+      ],
+      "choices_ar": [
+        "\\(-\\dfrac{3}{5}\\)",
+        "\\(\\dfrac{3}{5}\\)",
+        "\\(\\dfrac{4}{5}\\)",
+        "\\(-\\dfrac{4}{5}\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Norm: \\(\\|\\mathbf{v}\\| = \\sqrt{6^2 + (-8)^2} = 10\\).</p><p>Unit vector: \\(\\hat{\\mathbf{u}} = \\dfrac{1}{10}(6, -8) = \\left(\\dfrac{3}{5}, -\\dfrac{4}{5}\\right)\\), whose second coordinate is \\(-\\dfrac{4}{5}\\).</p>",
+      "sol_ar": "<p>طول المتجه \\(\\|\\mathbf{v}\\| = 10\\)، فيكون متجه الوحدة \\(\\left(\\dfrac{3}{5}, -\\dfrac{4}{5}\\right)\\) وإحداثيه الثاني \\(-\\dfrac{4}{5}\\).</p>",
+      "hints": [
+        "Calculate the Euclidean norm \\(\\|\\mathbf{v}\\| = \\sqrt{6^2 + (-8)^2}\\).",
+        "Normalize by dividing each entry of \\((6, -8)\\) by \\(\\|\\mathbf{v}\\|\\).",
+        "Simplify the fraction for the second coordinate \\(\\dfrac{-8}{10}\\)."
+      ],
+      "hints_ar": [
+        "احسب طول المتجه \\(\\|(6, -8)\\| = \\sqrt{36 + 64}\\).",
+        "اقسم كل مركّبة على الطول لتكوين متجه الوحدة.",
+        "بسّط الكسر \\(\\dfrac{-8}{10}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "v = sp.Matrix([6, -8])\nEXPECTED = (v / v.norm())[1]",
+      "id": "linalg-1212"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "For vectors \\(\\mathbf{u} = (1, 2)\\) and \\(\\mathbf{v} = (3, 1)\\), evaluate the Cauchy-Schwarz ratio \\(\\dfrac{(\\mathbf{u} \\cdot \\mathbf{v})^2}{\\|\\mathbf{u}\\|^2 \\|\\mathbf{v}\\|^2}\\).",
+      "text_ar": "للمتجهين \\(\\mathbf{u} = (1, 2)\\) و\\(\\mathbf{v} = (3, 1)\\)، احسب نسبة كوشي-شفارز \\(\\dfrac{(\\mathbf{u} \\cdot \\mathbf{v})^2}{\\|\\mathbf{u}\\|^2 \\|\\mathbf{v}\\|^2}\\).",
+      "choices": [
+        "\\(\\dfrac{1}{4}\\)",
+        "\\(\\dfrac{1}{2}\\)",
+        "\\(\\dfrac{5}{\\sqrt{50}}\\)",
+        "\\(\\dfrac{2}{5}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{1}{4}\\)",
+        "\\(\\dfrac{1}{2}\\)",
+        "\\(\\dfrac{5}{\\sqrt{50}}\\)",
+        "\\(\\dfrac{2}{5}\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Compute \\(\\mathbf{u} \\cdot \\mathbf{v} = 3 + 2 = 5\\), \\(\\|\\mathbf{u}\\|^2 = 1 + 4 = 5\\), and \\(\\|\\mathbf{v}\\|^2 = 9 + 1 = 10\\).</p><p>Ratio: \\(\\dfrac{5^2}{5 \\times 10} = \\dfrac{25}{50} = \\dfrac{1}{2}\\).</p>",
+      "sol_ar": "<p>\\(\\mathbf{u} \\cdot \\mathbf{v} = 5\\) و\\(\\|\\mathbf{u}\\|^2 = 5\\) و\\(\\|\\mathbf{v}\\|^2 = 10\\)، فتكون النسبة \\(\\dfrac{25}{50} = \\dfrac{1}{2}\\).</p>",
+      "hints": [
+        "Compute the dot product \\(\\mathbf{u} \\cdot \\mathbf{v} = 1(3) + 2(1)\\) first.",
+        "Evaluate the squared norms \\(\\|\\mathbf{u}\\|^2 = 5\\) and \\(\\|\\mathbf{v}\\|^2 = 10\\) without square roots.",
+        "Divide \\((\\mathbf{u} \\cdot \\mathbf{v})^2\\) by \\(5 \\times 10\\) and simplify."
+      ],
+      "hints_ar": [
+        "احسب أولاً \\(\\mathbf{u} \\cdot \\mathbf{v} = 5\\).",
+        "احسب مربعي الطولين \\(\\|\\mathbf{u}\\|^2 = 5\\) و\\(\\|\\mathbf{v}\\|^2 = 10\\).",
+        "اقسم \\(25\\) على \\(50\\) وبسّط الكسر."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u, v = sp.Matrix([1, 2]), sp.Matrix([3, 1])\nEXPECTED = (u.dot(v)**2) / (u.dot(u) * v.dot(v))",
+      "id": "linalg-1213"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "A constant force \\(\\mathbf{F} = (5, -2, 4)\\text{ N}\\) moves a particle in a straight line from \\(A(1, 1, 0)\\) to \\(B(4, 3, 2)\\) (coordinates in metres). How many joules of work are done by \\(\\mathbf{F}\\)?",
+      "text_ar": "تؤثر قوة ثابتة \\(\\mathbf{F} = (5, -2, 4)\\text{ N}\\) على جسيم فتنقله في خط مستقيم من \\(A(1, 1, 0)\\) إلى \\(B(4, 3, 2)\\) (الإحداثيات بالأمتار). ما الشغل المبذول بالجول؟",
+      "choices": [
+        "\\(11\\)",
+        "\\(27\\)",
+        "\\(19\\)",
+        "\\(23\\)"
+      ],
+      "choices_ar": [
+        "\\(11\\)",
+        "\\(27\\)",
+        "\\(19\\)",
+        "\\(23\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Displacement vector: \\(\\mathbf{d} = B - A = (4 - 1, 3 - 1, 2 - 0) = (3, 2, 2)\\).</p><p>Work done: \\(W = \\mathbf{F} \\cdot \\mathbf{d} = 5(3) + (-2)(2) + 4(2) = 15 - 4 + 8 = 19\\text{ J}\\).</p>",
+      "sol_ar": "<p>متجه الإزاحة \\(\\mathbf{d} = (3, 2, 2)\\)، والشغل يساوي الضرب القياسي \\(\\mathbf{F} \\cdot \\mathbf{d} = 15 - 4 + 8 = 19\\text{ J}\\).</p>",
+      "hints": [
+        "Find the displacement vector \\(\\mathbf{d} = (4 - 1, 3 - 1, 2 - 0)\\).",
+        "Recall that mechanical work equals \\(W = \\mathbf{F} \\cdot \\mathbf{d}\\).",
+        "Compute \\(5(3) + (-2)(2) + 4(2)\\)."
+      ],
+      "hints_ar": [
+        "احسب متجه الإزاحة \\(\\mathbf{d} = B - A\\).",
+        "تذكر أن الشغل يساوي الضرب القياسي \\(W = \\mathbf{F} \\cdot \\mathbf{d}\\).",
+        "احسب قيمة \\(15 - 4 + 8\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "F = sp.Matrix([5, -2, 4])\nd = sp.Matrix([4, 3, 2]) - sp.Matrix([1, 1, 0])\nEXPECTED = F.dot(d)",
+      "id": "linalg-1214"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "Let \\(M\\) be the midpoint of the segment joining \\(A(4, -3, 7)\\) and \\(B(-2, 9, 1)\\) in \\(\\mathbb{R}^3\\). What is the sum of the three coordinates of \\(M\\)?",
+      "text_ar": "لتكن \\(M\\) نقطة منتصف القطعة الواصلة بين \\(A(4, -3, 7)\\) و\\(B(-2, 9, 1)\\) في \\(\\mathbb{R}^3\\). ما مجموع الإحداثيات الثلاثة للنقطة \\(M\\)؟",
+      "choices": [
+        "\\(10\\)",
+        "\\(16\\)",
+        "\\(4\\)",
+        "\\(8\\)"
+      ],
+      "choices_ar": [
+        "\\(10\\)",
+        "\\(16\\)",
+        "\\(4\\)",
+        "\\(8\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>\\(M = \\dfrac{1}{2}(A + B) = \\left(\\dfrac{4 - 2}{2}, \\dfrac{-3 + 9}{2}, \\dfrac{7 + 1}{2}\\right) = (1, 3, 4)\\).</p><p>Sum of coordinates: \\(1 + 3 + 4 = 8\\).</p>",
+      "sol_ar": "<p>إحداثيات المنتصف \\(M = (1, 3, 4)\\)، ومجموعها \\(1 + 3 + 4 = 8\\).</p>",
+      "hints": [
+        "Use the midpoint formula \\(\\dfrac{A + B}{2}\\) entry by entry.",
+        "Verify the midpoint coordinates \\((1, 3, 4)\\).",
+        "Sum all three coordinates \\(1 + 3 + 4\\)."
+      ],
+      "hints_ar": [
+        "احسب المتوسط الحسابي لكل إحداثي بين \\(A\\) و\\(B\\).",
+        "تحقق من إحداثيات المنتصف \\((1, 3, 4)\\).",
+        "اجمع الإحداثيات الثلاثة الناتجة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "M = (sp.Matrix([4, -3, 7]) + sp.Matrix([-2, 9, 1])) / 2\nEXPECTED = sum(M)",
+      "id": "linalg-1215"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A triangle in \\(\\mathbb{R}^2\\) has vertices \\(O(0, 0)\\), \\(P(3, 0)\\), and \\(Q(3, 4)\\). What is the perimeter \\(\\|\\vec{OP}\\| + \\|\\vec{PQ}\\| + \\|\\vec{QO}\\|\\)?",
+      "text_ar": "مثلث في \\(\\mathbb{R}^2\\) رؤوسه \\(O(0, 0)\\) و\\(P(3, 0)\\) و\\(Q(3, 4)\\). ما محيطه \\(\\|\\vec{OP}\\| + \\|\\vec{PQ}\\| + \\|\\vec{QO}\\|\\)؟",
+      "choices": [
+        "\\(10\\)",
+        "\\(12\\)",
+        "\\(14\\)",
+        "\\(9\\)"
+      ],
+      "choices_ar": [
+        "\\(10\\)",
+        "\\(12\\)",
+        "\\(14\\)",
+        "\\(9\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Edge vectors: \\(\\vec{OP} = (3, 0)\\) with length \\(3\\), \\(\\vec{PQ} = (0, 4)\\) with length \\(4\\), and \\(\\vec{QO} = (-3, -4)\\) with length \\(5\\).</p><p>Perimeter: \\(3 + 4 + 5 = 12\\).</p>",
+      "sol_ar": "<p>أطوال الأضلاع هي \\(3\\) و\\(4\\) و\\(5\\)، فيكون المحيط \\(3 + 4 + 5 = 12\\).</p>",
+      "hints": [
+        "Write the three edge vectors \\(\\vec{OP} = (3, 0)\\), \\(\\vec{PQ} = (0, 4)\\), and \\(\\vec{QO} = (-3, -4)\\).",
+        "Calculate the Euclidean length of each side (noting the \\(3\text{-}4\text{-}5\\) triple).",
+        "Sum the three side lengths \\(3 + 4 + 5\\)."
+      ],
+      "hints_ar": [
+        "اكتب متجهات الأضلاع الثلاثة \\(\\vec{OP}, \\vec{PQ}, \\vec{QO}\\).",
+        "احسب طول كل ضلع باستخدام المعيار الإقليدي.",
+        "اجمع الأطوال الثلاثة \\(3 + 4 + 5\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "O, P, Q = sp.Matrix([0,0]), sp.Matrix([3,0]), sp.Matrix([3,4])\nEXPECTED = (P-O).norm() + (Q-P).norm() + (O-Q).norm()",
+      "id": "linalg-1216"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "What is the direction cosine \\(\\cos\\gamma\\) of the vector \\(\\mathbf{v} = (2, -3, 6)\\) with the positive \\(z\\)-axis?",
+      "text_ar": "ما جيب تمام الاتجاه \\(\\cos\\gamma\\) للمتجه \\(\\mathbf{v} = (2, -3, 6)\\) مع محور \\(z\\) الموجب؟",
+      "choices": [
+        "\\(-\\dfrac{3}{7}\\)",
+        "\\(\\dfrac{2}{7}\\)",
+        "\\(\\dfrac{6}{7}\\)",
+        "\\(\\dfrac{6}{5}\\)"
+      ],
+      "choices_ar": [
+        "\\(-\\dfrac{3}{7}\\)",
+        "\\(\\dfrac{2}{7}\\)",
+        "\\(\\dfrac{6}{7}\\)",
+        "\\(\\dfrac{6}{5}\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Length: \\(\\|\\mathbf{v}\\| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7\\).</p><p>The direction cosine with the \\(z\\)-axis is \\(\\cos\\gamma = \\dfrac{v_z}{\\|\\mathbf{v}\\|} = \\dfrac{6}{7}\\).</p>",
+      "sol_ar": "<p>طول المتجه \\(\\|\\mathbf{v}\\| = \\sqrt{4 + 9 + 36} = 7\\)، فيكون جيب تمام الاتجاه مع محور \\(z\\) هو \\(\\dfrac{6}{7}\\).</p>",
+      "hints": [
+        "Recall that the direction cosine with the \\(z\\)-axis is \\(\\cos\\gamma = \\dfrac{v_z}{\\|\\mathbf{v}\\|}\\).",
+        "Compute \\(\\|\\mathbf{v}\\| = \\sqrt{2^2 + (-3)^2 + 6^2} = 7\\).",
+        "Divide the third component \\(6\\) by \\(7\\)."
+      ],
+      "hints_ar": [
+        "تذكر أن جيب تمام الاتجاه مع محور \\(z\\) يساوي \\(\\dfrac{v_z}{\\|\\mathbf{v}\\|}\\).",
+        "احسب المعيار \\(\\|\\mathbf{v}\\| = \\sqrt{4 + 9 + 36} = 7\\).",
+        "اقسم المركّبة الثالثة \\(6\\) على المعيار \\(7\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "v = sp.Matrix([2, -3, 6])\nEXPECTED = v.dot(sp.Matrix([0, 0, 1])) / v.norm()",
+      "id": "linalg-1217"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "Solve the vector equation \\(2\\mathbf{x} + (3, -5) = (7, 9)\\) for \\(\\mathbf{x}\\), and state the second coordinate of \\(\\mathbf{x}\\).",
+      "text_ar": "حل المعادلة المتجهية \\(2\\mathbf{x} + (3, -5) = (7, 9)\\) لإيجاد \\(\\mathbf{x}\\)، ثم حدّد إحداثيه الثاني.",
+      "choices": [
+        "\\(14\\)",
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(7\\)"
+      ],
+      "choices_ar": [
+        "\\(14\\)",
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(7\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Isolate \\(2\\mathbf{x} = (7 - 3, 9 - (-5)) = (4, 14)\\), then divide by \\(2\\): \\(\\mathbf{x} = (2, 7)\\).</p><p>The second coordinate is \\(7\\).</p>",
+      "sol_ar": "<p>بطرح \\((3, -5)\\) نحصل على \\(2\\mathbf{x} = (4, 14)\\)، وبالقسمة على \\(2\\) نجد \\(\\mathbf{x} = (2, 7)\\) فالإحداثي الثاني \\(7\\).</p>",
+      "hints": [
+        "Isolate \\(2\\mathbf{x}\\) by subtracting \\((3, -5)\\) from \\((7, 9)\\).",
+        "Check the second entry of \\(2\\mathbf{x}\\): \\(9 - (-5) = 14\\).",
+        "Divide \\(14\\) by \\(2\\) to find the second entry of \\(\\mathbf{x}\\)."
+      ],
+      "hints_ar": [
+        "اعزل \\(2\\mathbf{x}\\) بطرح \\((3, -5)\\) من \\((7, 9)\\).",
+        "احسب المركّبة الثانية في \\(2\\mathbf{x}\\): \\(9 - (-5) = 14\\).",
+        "اقسم \\(14\\) على \\(2\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "xvec = (sp.Matrix([7, 9]) - sp.Matrix([3, -5])) / 2\nEXPECTED = xvec[1]",
+      "id": "linalg-1218"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.0,
+        "c": 0.25
+      },
+      "text": "What is the volume of the parallelepiped determined by the three edge vectors \\(\\mathbf{a} = (2, 1, 0)\\), \\(\\mathbf{b} = (0, 3, 1)\\), and \\(\\mathbf{c} = (1, 0, 2)\\)?",
+      "text_ar": "ما حجم متوازي السطوح الذي تشكله متجهات الأحرف \\(\\mathbf{a} = (2, 1, 0)\\) و\\(\\mathbf{b} = (0, 3, 1)\\) و\\(\\mathbf{c} = (1, 0, 2)\\)؟",
+      "choices": [
+        "\\(11\\)",
+        "\\(13\\)",
+        "\\(12\\)",
+        "\\(14\\)"
+      ],
+      "choices_ar": [
+        "\\(11\\)",
+        "\\(13\\)",
+        "\\(12\\)",
+        "\\(14\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Volume equals \\(|\\det([\\mathbf{a}, \\mathbf{b}, \\mathbf{c}])|\\):</p><p>\\(\\det\\begin{pmatrix} 2 & 1 & 0 \\\\ 0 & 3 & 1 \\\\ 1 & 0 & 2 \\end{pmatrix} = 2(6 - 0) - 1(0 - 1) + 0 = 12 + 1 = 13\\).</p>",
+      "sol_ar": "<p>الحجم يساوي القيمة المطلقة لمحدد المتجهات الثلاثة: \\(2(6) - 1(-1) = 13\\).</p>",
+      "hints": [
+        "Recall that parallelepiped volume equals \\(|\\det([\\mathbf{a}, \\mathbf{b}, \\mathbf{c}])|\\).",
+        "Arrange the three vectors in a \\(3 \\times 3\\) matrix and expand along the first row.",
+        "Simplify \\(2(6) - 1(-1)\\) and take the absolute value."
+      ],
+      "hints_ar": [
+        "تذكر أن حجم متوازي السطوح يساوي القيمة المطلقة لمحدد المتجهات الثلاثة.",
+        "رتّب المتجهات في مصفوفة \\(3 \\times 3\\) وانشر حسب الصف الأول.",
+        "احسب \\(2(6) - 1(-1)\\) وخذ القيمة المطلقة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "M = sp.Matrix([[2, 1, 0], [0, 3, 1], [1, 0, 2]])\nEXPECTED = abs(M.det())",
+      "id": "linalg-1219"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "If \\(\\|\\mathbf{u}\\| = 3\\), \\(\\|\\mathbf{v}\\| = 5\\), and \\(\\mathbf{u} \\cdot \\mathbf{v} = -2\\), what is the exact value of \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2\\)?",
+      "text_ar": "إذا كان \\(\\|\\mathbf{u}\\| = 3\\) و\\(\\|\\mathbf{v}\\| = 5\\) و\\(\\mathbf{u} \\cdot \\mathbf{v} = -2\\)، فما القيمة الدقيقة للمقدار \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2\\)؟",
+      "choices": [
+        "\\(38\\)",
+        "\\(34\\)",
+        "\\(30\\)",
+        "\\(32\\)"
+      ],
+      "choices_ar": [
+        "\\(38\\)",
+        "\\(34\\)",
+        "\\(30\\)",
+        "\\(32\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Expand using the dot product: \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = (\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} + \\mathbf{v}) = \\|\\mathbf{u}\\|^2 + 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2\\).</p><p>Substitute: \\(3^2 + 2(-2) + 5^2 = 9 - 4 + 25 = 30\\).</p>",
+      "sol_ar": "<p>نفك المربع عبر الضرب القياسي: \\(\\|\\mathbf{u}\\|^2 + 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2 = 9 - 4 + 25 = 30\\).</p>",
+      "hints": [
+        "Use \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = (\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} + \\mathbf{v})\\).",
+        "Expand to \\(\\|\\mathbf{u}\\|^2 + 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2\\).",
+        "Substitute \\(3^2 + 2(-2) + 5^2\\) and combine."
+      ],
+      "hints_ar": [
+        "استعمل \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = (\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} + \\mathbf{v})\\).",
+        "فك إلى \\(\\|\\mathbf{u}\\|^2 + 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2\\).",
+        "عوّض القيم واحسب \\(9 - 4 + 25\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 3**2 + 2*(-2) + 5**2",
+      "id": "linalg-1220"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "Given \\(\\|\\mathbf{u}\\| = 4\\), \\(\\|\\mathbf{v}\\| = 3\\), and \\(\\mathbf{u} \\cdot \\mathbf{v} = 5\\), evaluate \\(\\|\\mathbf{u} - 2\\mathbf{v}\\|^2\\).",
+      "text_ar": "إذا كان \\(\\|\\mathbf{u}\\| = 4\\) و\\(\\|\\mathbf{v}\\| = 3\\) و\\(\\mathbf{u} \\cdot \\mathbf{v} = 5\\)، فاحسب \\(\\|\\mathbf{u} - 2\\mathbf{v}\\|^2\\).",
+      "choices": [
+        "\\(42\\)",
+        "\\(52\\)",
+        "\\(12\\)",
+        "\\(32\\)"
+      ],
+      "choices_ar": [
+        "\\(42\\)",
+        "\\(52\\)",
+        "\\(12\\)",
+        "\\(32\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Expand: \\(\\|\\mathbf{u} - 2\\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 - 4(\\mathbf{u} \\cdot \\mathbf{v}) + 4\\|\\mathbf{v}\\|^2 = 4^2 - 4(5) + 4(3^2) = 16 - 20 + 36 = 32\\).</p>",
+      "sol_ar": "<p>نفك المقدار: \\(4^2 - 4(5) + 4(3^2) = 16 - 20 + 36 = 32\\).</p>",
+      "hints": [
+        "Rewrite \\(\\|\\mathbf{u} - 2\\mathbf{v}\\|^2\\) as the dot product \\((\\mathbf{u} - 2\\mathbf{v}) \\cdot (\\mathbf{u} - 2\\mathbf{v})\\).",
+        "Note that \\((-2\\mathbf{v}) \\cdot (-2\\mathbf{v}) = 4\\|\\mathbf{v}\\|^2\\) and the cross term is \\(-4(\\mathbf{u} \\cdot \\mathbf{v})\\).",
+        "Evaluate \\(4^2 - 4(5) + 4(3^2)\\)."
+      ],
+      "hints_ar": [
+        "اكتب \\(\\|\\mathbf{u} - 2\\mathbf{v}\\|^2 = (\\mathbf{u} - 2\\mathbf{v}) \\cdot (\\mathbf{u} - 2\\mathbf{v})\\).",
+        "لاحظ أن معامل \\(\\|\\mathbf{v}\\|^2\\) هو \\(4\\) ومعامل \\(\\mathbf{u} \\cdot \\mathbf{v}\\) هو \\(-4\\).",
+        "احسب قيمة \\(16 - 20 + 36\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 4**2 - 4*5 + 4*(3**2)",
+      "id": "linalg-1221"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "The vector \\((6, c, -9)\\) is a scalar multiple of \\((-2, 5, 3)\\). What is the value of \\(c\\)?",
+      "text_ar": "المتجه \\((6, c, -9)\\) مضاعف قياسي للمتجه \\((-2, 5, 3)\\). ما قيمة \\(c\\)؟",
+      "choices": [
+        "\\(15\\)",
+        "\\(-15\\)",
+        "\\(-3\\)",
+        "\\(-10\\)"
+      ],
+      "choices_ar": [
+        "\\(15\\)",
+        "\\(-15\\)",
+        "\\(-3\\)",
+        "\\(-10\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Compare the first coordinates: \\(6 = k(-2) \\implies k = -3\\) (also matches \\((-3)(3) = -9\\)).</p><p>Multiply the second coordinate by \\(-3\\): \\(c = (-3)(5) = -15\\).</p>",
+      "sol_ar": "<p>بمقارنة الإحداثي الأول نجد معامل الضرب \\(k = \\dfrac{6}{-2} = -3\\).</p><p>إذن \\(c = -3 \\times 5 = -15\\).</p>",
+      "hints": [
+        "Set \\((6, c, -9) = k(-2, 5, 3)\\) for a scalar \\(k\\).",
+        "Solve for \\(k\\) using the first (or third) coordinate: \\(6 = -2k\\).",
+        "Multiply the middle entry \\(5\\) by \\(k\\)."
+      ],
+      "hints_ar": [
+        "ضع \\((6, c, -9) = k(-2, 5, 3)\\) لإيجاد المعامل القياسي \\(k\\).",
+        "أوجد \\(k\\) من الإحداثي الأول أو الثالث.",
+        "اضرب المركّبة الوسطى \\(5\\) في قيمة \\(k\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Rational(6, -2)\nEXPECTED = k * 5",
+      "id": "linalg-1222"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "Find the centroid \\(G = \\dfrac{1}{3}(A + B + C)\\) of the triangle with vertices \\(A(1, -4, 5)\\), \\(B(7, 2, -1)\\), and \\(C(4, 8, 5)\\), and state the \\(z\\)-coordinate of \\(G\\).",
+      "text_ar": "أوجد مركز الثقل \\(G = \\dfrac{1}{3}(A + B + C)\\) للمثلث الذي رؤوسه \\(A(1, -4, 5)\\) و\\(B(7, 2, -1)\\) و\\(C(4, 8, 5)\\)، وحدد الإحداثي الثالث \\(z\\) للنقطة \\(G\\).",
+      "choices": [
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(3\\)",
+        "\\(9\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(3\\)",
+        "\\(9\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Average the third coordinates: \\(z_G = \\dfrac{5 + (-1) + 5}{3} = \\dfrac{9}{3} = 3\\).</p>",
+      "sol_ar": "<p>متوسط الإحداثيات الثالثة هو \\(\\dfrac{5 - 1 + 5}{3} = \\dfrac{9}{3} = 3\\).</p>",
+      "hints": [
+        "Recall that the centroid formula \\(\\dfrac{A + B + C}{3}\\) applies coordinate-wise.",
+        "Extract only the third (\\(z\\)) coordinates \\(5, -1, 5\\) of the three vertices.",
+        "Compute \\(\\dfrac{5 + (-1) + 5}{3}\\)."
+      ],
+      "hints_ar": [
+        "تذكر أن صيغة مركز الثقل تُطبق على كل إحداثي على حدة.",
+        "استخرج الإحداثيات الثالثة فقط \\(5, -1, 5\\).",
+        "احسب المتوسط \\(\\dfrac{5 - 1 + 5}{3}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "G = (sp.Matrix([1, -4, 5]) + sp.Matrix([7, 2, -1]) + sp.Matrix([4, 8, 5])) / 3\nEXPECTED = G[2]",
+      "id": "linalg-1223"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "Decompose \\(\\mathbf{v} = (5, 7)\\) into \\(\\mathbf{v}_{\\parallel} + \\mathbf{v}_{\\perp}\\) relative to \\(\\mathbf{u} = (1, 1)\\), where \\(\\mathbf{v}_{\\perp} = \\mathbf{v} - \\operatorname{proj}_{\\mathbf{u}}(\\mathbf{v})\\) is orthogonal to \\(\\mathbf{u}\\). What is \\(\\|\\mathbf{v}_{\\perp}\\|^2\\)?",
+      "text_ar": "حلّل المتجه \\(\\mathbf{v} = (5, 7)\\) إلى \\(\\mathbf{v}_{\\parallel} + \\mathbf{v}_{\\perp}\\) بالنسبة إلى \\(\\mathbf{u} = (1, 1)\\)، حيث \\(\\mathbf{v}_{\\perp}\\) عمودي على \\(\\mathbf{u}\\). ما قيمة \\(\\|\\mathbf{v}_{\\perp}\\|^2\\)؟",
+      "choices": [
+        "\\(8\\)",
+        "\\(4\\)",
+        "\\(1\\)",
+        "\\(2\\)"
+      ],
+      "choices_ar": [
+        "\\(8\\)",
+        "\\(4\\)",
+        "\\(1\\)",
+        "\\(2\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Project onto \\((1, 1)\\): \\(\\mathbf{v}_{\\parallel} = \\dfrac{5 + 7}{1 + 1}(1, 1) = (6, 6)\\).</p><p>Then \\(\\mathbf{v}_{\\perp} = (5, 7) - (6, 6) = (-1, 1)\\), so \\(\\|\\mathbf{v}_{\\perp}\\|^2 = (-1)^2 + 1^2 = 2\\).</p>",
+      "sol_ar": "<p>المسقط الموازي \\(\\mathbf{v}_{\\parallel} = \\dfrac{12}{2}(1, 1) = (6, 6)\\)، فيكون العمودي \\(\\mathbf{v}_{\\perp} = (-1, 1)\\) ومربع طوله \\(1 + 1 = 2\\).</p>",
+      "hints": [
+        "First project \\(\\mathbf{v} = (5, 7)\\) onto \\(\\mathbf{u} = (1, 1)\\) to find \\(\\mathbf{v}_{\\parallel} = (6, 6)\\).",
+        "Subtract \\(\\mathbf{v}_{\\parallel}\\) from \\(\\mathbf{v}\\) to obtain the orthogonal remainder \\(\\mathbf{v}_{\\perp}\\).",
+        "Square and sum the components of \\(\\mathbf{v}_{\\perp} = (-1, 1)\\)."
+      ],
+      "hints_ar": [
+        "احسب أولاً المسقط الموازي \\(\\mathbf{v}_{\\parallel} = (6, 6)\\).",
+        "اطرح \\(\\mathbf{v}_{\\parallel}\\) من \\(\\mathbf{v}\\) لإيجاد المركّبة العمودية \\(\\mathbf{v}_{\\perp}\\).",
+        "ربّع واجمع مركّبتي \\((-1, 1)\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u, v = sp.Matrix([1, 1]), sp.Matrix([5, 7])\nv_perp = v - (v.dot(u)/u.dot(u))*u\nEXPECTED = v_perp.dot(v_perp)",
+      "id": "linalg-1224"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "What is the angle (in radians) between the vectors \\((1, \\sqrt{3})\\) and \\((\\sqrt{3}, 1)\\)?",
+      "text_ar": "ما قياس الزاوية (بالراديان) بين المتجهين \\((1, \\sqrt{3})\\) و\\((\\sqrt{3}, 1)\\)؟",
+      "choices": [
+        "\\(\\dfrac{\\pi}{3}\\)",
+        "\\(\\dfrac{\\pi}{6}\\)",
+        "\\(\\dfrac{\\pi}{4}\\)",
+        "\\(\\dfrac{\\pi}{2}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{\\pi}{3}\\)",
+        "\\(\\dfrac{\\pi}{6}\\)",
+        "\\(\\dfrac{\\pi}{4}\\)",
+        "\\(\\dfrac{\\pi}{2}\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>\\(\\cos\\theta = \\dfrac{1\\cdot\\sqrt{3} + \\sqrt{3}\\cdot 1}{\\sqrt{1+3}\\sqrt{3+1}} = \\dfrac{2\\sqrt{3}}{2 \\times 2} = \\dfrac{\\sqrt{3}}{2}\\).</p><p>Therefore \\(\\theta = \\arccos\\left(\\dfrac{\\sqrt{3}}{2}\\right) = \\dfrac{\\pi}{6}\\).</p>",
+      "sol_ar": "<p>\\(\\cos\\theta = \\dfrac{2\\sqrt{3}}{2 \\times 2} = \\dfrac{\\sqrt{3}}{2}\\)، ومن ثم فإن \\(\\theta = \\dfrac{\\pi}{6}\\).</p>",
+      "hints": [
+        "Compute the dot product \\(1\\cdot\\sqrt{3} + \\sqrt{3}\\cdot 1 = 2\\sqrt{3}\\).",
+        "Find both vector norms (each equals \\(2\\)) so \\(\\cos\\theta = \\dfrac{\\sqrt{3}}{2}\\).",
+        "Evaluate \\(\\arccos\\left(\\dfrac{\\sqrt{3}}{2}\\right)\\) in radians."
+      ],
+      "hints_ar": [
+        "احسب الضرب القياسي \\(2\\sqrt{3}\\).",
+        "احسب معيار كل متجه (يساوي \\(2\\)) لتجد \\(\\cos\\theta = \\dfrac{\\sqrt{3}}{2}\\).",
+        "حدّد الزاوية بالراديان المناظرة لقيمة \\(\\cos\\theta\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u, v = sp.Matrix([1, sp.sqrt(3)]), sp.Matrix([sp.sqrt(3), 1])\nEXPECTED = sp.acos(sp.simplify(u.dot(v)/(u.norm()*v.norm())))",
+      "id": "linalg-1225"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "For two vectors satisfying \\(\\|\\mathbf{u}\\| = 7\\) and \\(\\|\\mathbf{v}\\| = 4\\), what is the value of \\((\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v})\\)?",
+      "text_ar": "لمتجهين يحققان \\(\\|\\mathbf{u}\\| = 7\\) و\\(\\|\\mathbf{v}\\| = 4\\)، ما قيمة \\((\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v})\\)؟",
+      "choices": [
+        "\\(9\\)",
+        "\\(65\\)",
+        "\\(33\\)",
+        "\\(28\\)"
+      ],
+      "choices_ar": [
+        "\\(9\\)",
+        "\\(65\\)",
+        "\\(33\\)",
+        "\\(28\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>By bilinearity and symmetry of the dot product: \\((\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v}) = \\mathbf{u} \\cdot \\mathbf{u} - \\mathbf{v} \\cdot \\mathbf{v} = \\|\\mathbf{u}\\|^2 - \\|\\mathbf{v}\\|^2 = 49 - 16 = 33\\).</p>",
+      "sol_ar": "<p>بالنشر \\((\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v}) = \\|\\mathbf{u}\\|^2 - \\|\\mathbf{v}\\|^2 = 49 - 16 = 33\\).</p>",
+      "hints": [
+        "Apply distributivity of the dot product to expand \\((\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v})\\).",
+        "Cancel the opposite cross terms \\(-\\mathbf{u}\\cdot\\mathbf{v} + \\mathbf{v}\\cdot\\mathbf{u}\\).",
+        "Evaluate \\(7^2 - 4^2\\)."
+      ],
+      "hints_ar": [
+        "وزّع الضرب القياسي لفك \\((\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v})\\).",
+        "اختصر الحدين المختلطين المتعاكسين.",
+        "احسب الفرق \\(7^2 - 4^2\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 7**2 - 4**2",
+      "id": "linalg-1226"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "For the orthogonal vectors \\(\\mathbf{u} = (6, 0)\\) and \\(\\mathbf{v} = (0, 8)\\), what is the triangle-inequality excess \\((\\|\\mathbf{u}\\| + \\|\\mathbf{v}\\|) - \\|\\mathbf{u} + \\mathbf{v}\\|\\)?",
+      "text_ar": "للمتجهين المتعامدين \\(\\mathbf{u} = (6, 0)\\) و\\(\\mathbf{v} = (0, 8)\\)، ما مقدار الفرق \\((\\|\\mathbf{u}\\| + \\|\\mathbf{v}\\|) - \\|\\mathbf{u} + \\mathbf{v}\\|\\)؟",
+      "choices": [
+        "\\(10\\)",
+        "\\(2\\)",
+        "\\(14\\)",
+        "\\(4\\)"
+      ],
+      "choices_ar": [
+        "\\(10\\)",
+        "\\(2\\)",
+        "\\(14\\)",
+        "\\(4\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>\\(\\|\\mathbf{u}\\| = 6\\), \\(\\|\\mathbf{v}\\| = 8\\), and \\(\\|\\mathbf{u} + \\mathbf{v}\\| = \\|(6, 8)\\| = 10\\). Thus \\((6 + 8) - 10 = 4\\).</p>",
+      "sol_ar": "<p>الأطوال هي \\(6\\) و\\(8\\) و\\(\\|(6, 8)\\| = 10\\)، فيكون الفرق \\((6 + 8) - 10 = 4\\).</p>",
+      "hints": [
+        "Compute the individual norms \\(\\|(6, 0)\\| = 6\\) and \\(\\|(0, 8)\\| = 8\\).",
+        "Find the sum vector \\((6, 8)\\) and its Euclidean norm \\(\\sqrt{6^2 + 8^2} = 10\\).",
+        "Subtract \\(10\\) from \\(6 + 8\\)."
+      ],
+      "hints_ar": [
+        "احسب طول كل متجه على حدة (\\(6\\) و\\(8\\)).",
+        "أوجد معيار المتجه المجموع \\(\\|(6, 8)\\| = 10\\).",
+        "اطرح \\(10\\) من \\(6 + 8\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u, v = sp.Matrix([6, 0]), sp.Matrix([0, 8])\nEXPECTED = u.norm() + v.norm() - (u + v).norm()",
+      "id": "linalg-1227"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "For \\(\\mathbf{x} = (-7, 3, -5, 2)\\), let \\(\\|\\mathbf{x}\\|_1 = \\sum |x_i|\\) and \\(\\|\\mathbf{x}\\|_\\infty = \\max_i |x_i|\\). What is the value of \\(\\|\\mathbf{x}\\|_1 - \\|\\mathbf{x}\\|_\\infty\\)?",
+      "text_ar": "للمتجه \\(\\mathbf{x} = (-7, 3, -5, 2)\\)، ليكن \\(\\|\\mathbf{x}\\|_1 = \\sum |x_i|\\) و\\(\\|\\mathbf{x}\\|_\\infty = \\max_i |x_i|\\). ما قيمة \\(\\|\\mathbf{x}\\|_1 - \\|\\mathbf{x}\\|_\\infty\\)؟",
+      "choices": [
+        "\\(17\\)",
+        "\\(10\\)",
+        "\\(7\\)",
+        "\\(15\\)"
+      ],
+      "choices_ar": [
+        "\\(17\\)",
+        "\\(10\\)",
+        "\\(7\\)",
+        "\\(15\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Compute \\(\\|\\mathbf{x}\\|_1 = 7 + 3 + 5 + 2 = 17\\) and \\(\\|\\mathbf{x}\\|_\\infty = \\max(7, 3, 5, 2) = 7\\). Their difference is \\(17 - 7 = 10\\).</p>",
+      "sol_ar": "<p>المعيار الأول \\(7 + 3 + 5 + 2 = 17\\) ومعيار اللانهاية \\(\\max = 7\\)، فيكون الفرق \\(17 - 7 = 10\\).</p>",
+      "hints": [
+        "Sum the absolute values \\(7 + 3 + 5 + 2\\) to obtain the \\(L^1\\) norm.",
+        "Identify the maximum absolute entry \\(\\|\\mathbf{x}\\|_\\infty = |-7| = 7\\).",
+        "Subtract \\(7\\) from \\(17\\)."
+      ],
+      "hints_ar": [
+        "اجمع القيم المطلقة الأربعة لحساب المعيار الأول \\(17\\).",
+        "حدّد أكبر قيمة مطلقة مفردة \\(7\\).",
+        "اطرح \\(7\\) من \\(17\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "xs = [-7, 3, -5, 2]\nEXPECTED = sum(abs(v) for v in xs) - max(abs(v) for v in xs)",
+      "id": "linalg-1228"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "The point \\(\\mathbf{p} = (1 - t)\\mathbf{a} + t\\mathbf{b}\\) lies on the segment between \\(\\mathbf{a} = (4, -2, 8)\\) and \\(\\mathbf{b} = (12, 10, 0)\\) at parameter \\(t = \\dfrac{1}{4}\\). What is the second coordinate of \\(\\mathbf{p}\\)?",
+      "text_ar": "تقع النقطة \\(\\mathbf{p} = (1 - t)\\mathbf{a} + t\\mathbf{b}\\) على القطعة المستقيمة بين \\(\\mathbf{a} = (4, -2, 8)\\) و\\(\\mathbf{b} = (12, 10, 0)\\) عند \\(t = \\dfrac{1}{4}\\). ما الإحداثي الثاني للنقطة \\(\\mathbf{p}\\)؟",
+      "choices": [
+        "\\(-1\\)",
+        "\\(3\\)",
+        "\\(1\\)",
+        "\\(4\\)"
+      ],
+      "choices_ar": [
+        "\\(-1\\)",
+        "\\(3\\)",
+        "\\(1\\)",
+        "\\(4\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Compute the second coordinate using weights \\(\\dfrac{3}{4}\\) and \\(\\dfrac{1}{4}\\): \\(\\dfrac{3}{4}(-2) + \\dfrac{1}{4}(10) = \\dfrac{-6 + 10}{4} = \\dfrac{4}{4} = 1\\).</p>",
+      "sol_ar": "<p>نحسب الإحداثي الثاني: \\(\\dfrac{3}{4}(-2) + \\dfrac{1}{4}(10) = \\dfrac{4}{4} = 1\\).</p>",
+      "hints": [
+        "Calculate the two convex weights \\(1 - t = \\dfrac{3}{4}\\) and \\(t = \\dfrac{1}{4}\\).",
+        "Apply those weights to the second coordinates \\(-2\\) and \\(10\\) only.",
+        "Simplify \\(\\dfrac{-6 + 10}{4}\\)."
+      ],
+      "hints_ar": [
+        "احسب الوزنَين \\(1 - t = \\dfrac{3}{4}\\) و\\(t = \\dfrac{1}{4}\\).",
+        "طبّق الوزنين على الإحداثي الثاني فقط لكل متجه.",
+        "بسّط الناتج \\(\\dfrac{-6 + 10}{4}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "p = sp.Rational(3, 4)*sp.Matrix([4, -2, 8]) + sp.Rational(1, 4)*sp.Matrix([12, 10, 0])\nEXPECTED = p[1]",
+      "id": "linalg-1229"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "A plane in \\(\\mathbb{R}^3\\) has normal vector \\(\\mathbf{n} = (2, -3, 5)\\) and passes through \\(P(1, -2, 4)\\), giving equation \\(2x - 3y + 5z = d\\). What is the constant \\(d\\)?",
+      "text_ar": "مستوى في \\(\\mathbb{R}^3\\) متجهه العمودي \\(\\mathbf{n} = (2, -3, 5)\\) ويمر بالنقطة \\(P(1, -2, 4)\\)، فتكون معادلته \\(2x - 3y + 5z = d\\). ما قيمة الثابت \\(d\\)؟",
+      "choices": [
+        "\\(12\\)",
+        "\\(16\\)",
+        "\\(22\\)",
+        "\\(28\\)"
+      ],
+      "choices_ar": [
+        "\\(12\\)",
+        "\\(16\\)",
+        "\\(22\\)",
+        "\\(28\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>Compute \\(d = \\mathbf{n} \\cdot P = 2(1) - 3(-2) + 5(4) = 2 + 6 + 20 = 28\\).</p>",
+      "sol_ar": "<p>الثابت يساوي \\(\\mathbf{n} \\cdot P = 2(1) - 3(-2) + 5(4) = 28\\).</p>",
+      "hints": [
+        "Use the point-normal plane equation \\(\\mathbf{n} \\cdot \\mathbf{x} = \\mathbf{n} \\cdot P\\).",
+        "Substitute \\((x, y, z) = (1, -2, 4)\\) into \\(2x - 3y + 5z\\).",
+        "Evaluate \\(2 + 6 + 20\\)."
+      ],
+      "hints_ar": [
+        "استعمل الصيغة القياسية للمستوى \\(\\mathbf{n} \\cdot \\mathbf{x} = \\mathbf{n} \\cdot P\\).",
+        "عوّض إحداثيات \\(P(1, -2, 4)\\) في المعادلة.",
+        "احسب مجموع الحدود الثلاثة \\(2 + 6 + 20\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Matrix([2, -3, 5]).dot(sp.Matrix([1, -2, 4]))",
+      "id": "linalg-1230"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "A line with direction vector \\(\\mathbf{d} = (1, 1, 0)\\) meets a plane having normal vector \\(\\mathbf{n} = (1, 0, 1)\\). What is the acute angle \\(\\alpha\\) (in radians) between the line and the plane?",
+      "text_ar": "مستقيم متجه اتجاهه \\(\\mathbf{d} = (1, 1, 0)\\) يقطع مستوى متجهه العمودي \\(\\mathbf{n} = (1, 0, 1)\\). ما قياس الزاوية الحادة \\(\\alpha\\) (بالراديان) بين المستقيم والمستوى؟",
+      "choices": [
+        "\\(\\dfrac{\\pi}{3}\\)",
+        "\\(\\dfrac{\\pi}{6}\\)",
+        "\\(\\dfrac{\\pi}{4}\\)",
+        "\\(\\dfrac{\\pi}{2}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{\\pi}{3}\\)",
+        "\\(\\dfrac{\\pi}{6}\\)",
+        "\\(\\dfrac{\\pi}{4}\\)",
+        "\\(\\dfrac{\\pi}{2}\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>The angle between a line and a plane satisfies \\(\\sin\\alpha = \\dfrac{|\\mathbf{d} \\cdot \\mathbf{n}|}{\\|\\mathbf{d}\\|\\|\\mathbf{n}\\|}\\).</p><p>Here \\(\\mathbf{d} \\cdot \\mathbf{n} = 1\\) and \\(\\|\\mathbf{d}\\| = \\|\\mathbf{n}\\| = \\sqrt{2}\\), so \\(\\sin\\alpha = \\dfrac{1}{2} \\implies \\alpha = \\dfrac{\\pi}{6}\\).</p>",
+      "sol_ar": "<p>تحقق الزاوية بين المستقيم والمستوى العلاقة \\(\\sin\\alpha = \\dfrac{|\\mathbf{d} \\cdot \\mathbf{n}|}{\\|\\mathbf{d}\\|\\|\\mathbf{n}\\|} = \\dfrac{1}{\\sqrt{2} \\cdot \\sqrt{2}} = \\dfrac{1}{2}\\)، ومن ثم \\(\\alpha = \\dfrac{\\pi}{6}\\).</p>",
+      "hints": [
+        "Use \\(\\sin\\alpha = \\dfrac{|\\mathbf{d} \\cdot \\mathbf{n}|}{\\|\\mathbf{d}\\|\\|\\mathbf{n}\\|}\\) because the plane angle complements the angle with the normal.",
+        "Evaluate \\(|\\mathbf{d} \\cdot \\mathbf{n}| = 1\\) and \\(\\|\\mathbf{d}\\| = \\|\\mathbf{n}\\| = \\sqrt{2}\\).",
+        "Invert \\(\\sin\\alpha = \\dfrac{1}{2}\\) in radians."
+      ],
+      "hints_ar": [
+        "استعمل \\(\\sin\\alpha = \\dfrac{|\\mathbf{d} \\cdot \\mathbf{n}|}{\\|\\mathbf{d}\\|\\|\\mathbf{n}\\|}\\) لأن الزاوية مع المستوى تتمم الزاوية مع العمودي.",
+        "احسب \\(|\\mathbf{d} \\cdot \\mathbf{n}| = 1\\) وطول كل متجه \\(\\sqrt{2}\\).",
+        "استنتج الزاوية الحادة بالراديان."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "d, n = sp.Matrix([1, 1, 0]), sp.Matrix([1, 0, 1])\nEXPECTED = sp.asin(abs(d.dot(n)) / (d.norm() * n.norm()))",
+      "id": "linalg-1231"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-1",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.05,
+        "c": 0.25
+      },
+      "text": "What is the perpendicular distance from the point \\(Q(3, -2, 1)\\) to the plane \\(2x - y + 2z = 25\\)?",
+      "text_ar": "ما المسافة العمودية من النقطة \\(Q(3, -2, 1)\\) إلى المستوى \\(2x - y + 2z = 25\\)؟",
+      "choices": [
+        "\\(\\dfrac{25}{3}\\)",
+        "\\(15\\)",
+        "\\(5\\)",
+        "\\(3\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{25}{3}\\)",
+        "\\(15\\)",
+        "\\(5\\)",
+        "\\(3\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Apply the point-to-plane distance formula \\(\\dfrac{|2(3) - (-2) + 2(1) - 25|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\dfrac{|6 + 2 + 2 - 25|}{\\sqrt{9}} = \\dfrac{15}{3} = 5\\).</p>",
+      "sol_ar": "<p>المسافة العمودية تساوي \\(\\dfrac{|2(3) - (-2) + 2(1) - 25|}{\\sqrt{4 + 1 + 4}} = \\dfrac{15}{3} = 5\\).</p>",
+      "hints": [
+        "Apply the point-to-plane distance formula \\(\\dfrac{|2x_0 - y_0 + 2z_0 - 25|}{\\sqrt{2^2 + (-1)^2 + 2^2}}\\).",
+        "Evaluate the numerator \\(|6 + 2 + 2 - 25| = 15\\) and normal length \\(3\\).",
+        "Divide \\(15\\) by \\(3\\)."
+      ],
+      "hints_ar": [
+        "طبق قانون المسافة من نقطة إلى مستوى.",
+        "احسب البسط \\(|6 + 2 + 2 - 25| = 15\\) ومعيار المتجه العمودي \\(3\\).",
+        "اقسم \\(15\\) على \\(3\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "n = sp.Matrix([2, -1, 2])\nQ = sp.Matrix([3, -2, 1])\nEXPECTED = abs(n.dot(Q) - 25) / n.norm()",
+      "id": "linalg-1232"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.1,
+        "c": 0.25
+      },
+      "text": "The line \\(\\mathbf{r}(t) = (1, -2, 4) + t(2, 1, -3)\\) intersects the plane \\(3x + 2y + z = 13\\) at a single point \\(P\\). What is the parameter value \\(t\\) at \\(P\\)?",
+      "text_ar": "يقطع المستقيم \\(\\mathbf{r}(t) = (1, -2, 4) + t(2, 1, -3)\\) المستوى \\(3x + 2y + z = 13\\) في نقطة وحيدة \\(P\\). ما قيمة الوسيط \\(t\\) عند \\(P\\)؟",
+      "choices": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(1\\)",
+        "\\(-2\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(1\\)",
+        "\\(-2\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Substitute \\(x = 1 + 2t\\), \\(y = -2 + t\\), and \\(z = 4 - 3t\\) into \\(3x + 2y + z = 13\\):</p><p>\\(3(1 + 2t) + 2(-2 + t) + (4 - 3t) = 13 \\implies (3 - 4 + 4) + (6 + 2 - 3)t = 13 \\implies 3 + 5t = 13 \\implies t = 2\\).</p>",
+      "sol_ar": "<p>نعوض إحداثيات المستقيم في معادلة المستوى: \\(3(1 + 2t) + 2(-2 + t) + (4 - 3t) = 13 \\implies 3 + 5t = 13 \\implies t = 2\\).</p>",
+      "hints": [
+        "Write the parametric coordinates \\(x = 1 + 2t\\), \\(y = -2 + t\\), and \\(z = 4 - 3t\\).",
+        "Substitute all three into \\(3x + 2y + z = 13\\).",
+        "Collect constants and \\(t\\)-terms to solve \\(3 + 5t = 13\\)."
+      ],
+      "hints_ar": [
+        "اكتب الإحداثيات الوسيطية الثلاثة للمستقيم بدلالة \\(t\\).",
+        "عوّضها في معادلة المستوى \\(3x + 2y + z = 13\\).",
+        "اجمع الثوابت ومعاملات \\(t\\) لحل \\(3 + 5t = 13\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t')\nr = sp.Matrix([1, -2, 4]) + t*sp.Matrix([2, 1, -3])\nn = sp.Matrix([3, 2, 1])\nEXPECTED = sp.solve(sp.Eq(n.dot(r), 13), t)[0]",
+      "id": "linalg-1233"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.15,
+        "c": 0.25
+      },
+      "text": "As \\(t\\) varies over all real numbers, what is the minimum possible value of \\(\\|(3, 1, -2) + t(1, 2, -2)\\|^2\\)?",
+      "text_ar": "بتغيّر \\(t\\) في جميع الأعداد الحقيقية، ما أصغر قيمة ممكنة للمقدار \\(\\|(3, 1, -2) + t(1, 2, -2)\\|^2\\)؟",
+      "choices": [
+        "\\(5\\)",
+        "\\(14\\)",
+        "\\(9\\)",
+        "\\(4\\)"
+      ],
+      "choices_ar": [
+        "\\(5\\)",
+        "\\(14\\)",
+        "\\(9\\)",
+        "\\(4\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Let \\(\\mathbf{u} = (3, 1, -2)\\) and \\(\\mathbf{v} = (1, 2, -2)\\). Notice \\(\\|\\mathbf{v}\\|^2 = 1 + 4 + 4 = 9\\) and \\(\\mathbf{u} \\cdot \\mathbf{v} = 3 + 2 + 4 = 9\\).</p><p>Minimum squared norm occurs where \\(\\mathbf{u} + t\\mathbf{v}\\) is orthogonal to \\(\\mathbf{v}\\): \\(t = -\\dfrac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} = -1\\), leaving \\((2, -1, 0)\\) with squared norm \\(2^2 + (-1)^2 + 0^2 = 5\\).</p>",
+      "sol_ar": "<p>يتحقق أصغر معيار عندما يكون المتجه \\(\\mathbf{u} + t\\mathbf{v}\\) عمودياً على \\(\\mathbf{v}\\): \\(t = -\\dfrac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} = -\\dfrac{9}{9} = -1\\).</p><p>عند \\(t = -1\\) يكون المتجه \\((2, -1, 0)\\) ومربع طوله \\(4 + 1 = 5\\).</p>",
+      "hints": [
+        "Expand \\((3 + t)^2 + (1 + 2t)^2 + (-2 - 2t)^2\\) as a quadratic in \\(t\\).",
+        "Complete the square or set its derivative \\(18t + 18 = 0\\) to find \\(t = -1\\).",
+        "Substitute \\(t = -1\\) back into the squared norm."
+      ],
+      "hints_ar": [
+        "فك \\((3 + t)^2 + (1 + 2t)^2 + (-2 - 2t)^2\\) كدالة تربيعية في \\(t\\).",
+        "أوجد قيمة \\(t\\) التي تبلغ عندها الدالة صغراها (\\(t = -1\\)).",
+        "عوّض \\(t = -1\\) لحساب مربع الطول الأصغري."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t')\nw = sp.Matrix([3, 1, -2]) + t*sp.Matrix([1, 2, -2])\nf = w.dot(w)\nt0 = sp.solve(sp.diff(f, t), t)[0]\nEXPECTED = f.subs(t, t0)",
+      "id": "linalg-1234"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.2,
+        "c": 0.25
+      },
+      "text": "Evaluate the vector triple product \\((2, 1, 0) \\times \\left((1, -1, 2) \\times (3, 1, -1)\\right)\\) and state its first coordinate.",
+      "text_ar": "احسب الضرب الثلاثي الاتجاهي \\((2, 1, 0) \\times \\left((1, -1, 2) \\times (3, 1, -1)\\right)\\) وحدد قيمة إحداثيه الأول.",
+      "choices": [
+        "\\(4\\)",
+        "\\(10\\)",
+        "\\(-8\\)",
+        "\\(15\\)"
+      ],
+      "choices_ar": [
+        "\\(4\\)",
+        "\\(10\\)",
+        "\\(-8\\)",
+        "\\(15\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Using the BAC-CAB identity \\(\\mathbf{a} \\times (\\mathbf{b} \\times \\mathbf{c}) = (\\mathbf{a} \\cdot \\mathbf{c})\\mathbf{b} - (\\mathbf{a} \\cdot \\mathbf{b})\\mathbf{c}\\):</p><p>\\(\\mathbf{a} \\cdot \\mathbf{c} = 2(3) + 1(1) + 0 = 7\\) and \\(\\mathbf{a} \\cdot \\mathbf{b} = 2(1) + 1(-1) + 0 = 1\\).</p><p>Hence \\(7(1, -1, 2) - 1(3, 1, -1) = (4, -8, 15)\\), whose first coordinate is \\(4\\).</p>",
+      "sol_ar": "<p>باستعمال متطابقة \\(\\mathbf{a} \\times (\\mathbf{b} \\times \\mathbf{c}) = (\\mathbf{a} \\cdot \\mathbf{c})\\mathbf{b} - (\\mathbf{a} \\cdot \\mathbf{b})\\mathbf{c}\\):</p><p>\\(\\mathbf{a} \\cdot \\mathbf{c} = 7\\) و\\(\\mathbf{a} \\cdot \\mathbf{b} = 1\\)، فيكون الناتج \\(7(1, -1, 2) - (3, 1, -1) = (4, -8, 15)\\)، وإحداثيه الأول \\(4\\).</p>",
+      "hints": [
+        "Compute the inner cross product \\(\\mathbf{b} \\times \\mathbf{c}\\) first (or use BAC-CAB).",
+        "Verify \\(\\mathbf{b} \\times \\mathbf{c} = (-1, 7, 4)\\) (or \\(\\mathbf{a}\\cdot\\mathbf{c}=7, \\mathbf{a}\\cdot\\mathbf{b}=1\\)).",
+        "Extract the first coordinate of \\((2, 1, 0) \\times (-1, 7, 4)\\)."
+      ],
+      "hints_ar": [
+        "احسب الضرب الاتجاهي الداخلي \\(\\mathbf{b} \\times \\mathbf{c}\\) أولاً أو طبق متطابقة الضرب الثلاثي.",
+        "تحقق من الناتج الوسيط قبل الخطوة الثانية.",
+        "استخرج الإحداثي الأول فقط من المتجه النهائي."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a, b, c = sp.Matrix([2, 1, 0]), sp.Matrix([1, -1, 2]), sp.Matrix([3, 1, -1])\nEXPECTED = a.cross(b.cross(c))[0]",
+      "id": "linalg-1235"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.1,
+        "c": 0.25
+      },
+      "text": "In applying the Gram-Schmidt process to \\(\\mathbf{v}_1 = (1, 2, 2)\\) and \\(\\mathbf{v}_2 = (4, 1, 3)\\), we form \\(\\mathbf{w}_2 = \\mathbf{v}_2 - \\alpha\\mathbf{v}_1\\) orthogonal to \\(\\mathbf{v}_1\\). What is the value of \\(\\alpha\\)?",
+      "text_ar": "عند تطبيق عملية غرام-شميدت على \\(\\mathbf{v}_1 = (1, 2, 2)\\) و\\(\\mathbf{v}_2 = (4, 1, 3)\\)، نكوّن المتجه المتعامد \\(\\mathbf{w}_2 = \\mathbf{v}_2 - \\alpha\\mathbf{v}_1\\). ما قيمة الثابت \\(\\alpha\\)؟",
+      "choices": [
+        "\\(\\dfrac{4}{3}\\)",
+        "\\(4\\)",
+        "\\(\\dfrac{3}{4}\\)",
+        "\\(\\dfrac{12}{5}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{4}{3}\\)",
+        "\\(4\\)",
+        "\\(\\dfrac{3}{4}\\)",
+        "\\(\\dfrac{12}{5}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>For \\(\\mathbf{w}_2 \\perp \\mathbf{v}_1\\), we require \\(\\alpha = \\dfrac{\\mathbf{v}_2 \\cdot \\mathbf{v}_1}{\\mathbf{v}_1 \\cdot \\mathbf{v}_1}\\).</p><p>Compute \\(\\mathbf{v}_2 \\cdot \\mathbf{v}_1 = 4(1) + 1(2) + 3(2) = 12\\) and \\(\\mathbf{v}_1 \\cdot \\mathbf{v}_1 = 1 + 4 + 4 = 9\\), so \\(\\alpha = \\dfrac{12}{9} = \\dfrac{4}{3}\\).</p>",
+      "sol_ar": "<p>لتحقيق التعامد يكون \\(\\alpha = \\dfrac{\\mathbf{v}_2 \\cdot \\mathbf{v}_1}{\\mathbf{v}_1 \\cdot \\mathbf{v}_1} = \\dfrac{4 + 2 + 6}{1 + 4 + 4} = \\dfrac{12}{9} = \\dfrac{4}{3}\\).</p>",
+      "hints": [
+        "Set the inner product \\((\\mathbf{v}_2 - \\alpha\\mathbf{v}_1) \\cdot \\mathbf{v}_1 = 0\\) to isolate \\(\\alpha = \\dfrac{\\mathbf{v}_2 \\cdot \\mathbf{v}_1}{\\mathbf{v}_1 \\cdot \\mathbf{v}_1}\\).",
+        "Compute \\(\\mathbf{v}_2 \\cdot \\mathbf{v}_1 = 12\\) and \\(\\|\\mathbf{v}_1\\|^2 = 9\\).",
+        "Reduce \\(\\dfrac{12}{9}\\) to lowest terms."
+      ],
+      "hints_ar": [
+        "ضع \\((\\mathbf{v}_2 - \\alpha\\mathbf{v}_1) \\cdot \\mathbf{v}_1 = 0\\) لعزل \\(\\alpha\\).",
+        "احسب الضرب القياسي \\(12\\) ومربع المعيار \\(9\\).",
+        "اختزل الكسر \\(\\dfrac{12}{9}\\) إلى أبسط صورة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "v1, v2 = sp.Matrix([1, 2, 2]), sp.Matrix([4, 1, 3])\na = sp.Symbol('a')\nEXPECTED = sp.solve((v2 - a*v1).dot(v1), a)[0]",
+      "id": "linalg-1236"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.05,
+        "c": 0.25
+      },
+      "text": "Two vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) satisfy \\(\\|\\mathbf{u} + \\mathbf{v}\\| = 9\\) and \\(\\|\\mathbf{u} - \\mathbf{v}\\| = 5\\). Using the polarization identity, find \\(\\mathbf{u} \\cdot \\mathbf{v}\\).",
+      "text_ar": "متجهان \\(\\mathbf{u}\\) و\\(\\mathbf{v}\\) يحققان \\(\\|\\mathbf{u} + \\mathbf{v}\\| = 9\\) و\\(\\|\\mathbf{u} - \\mathbf{v}\\| = 5\\). باستعمال متطابقة الاستقطاب أوجد \\(\\mathbf{u} \\cdot \\mathbf{v}\\).",
+      "choices": [
+        "\\(14\\)",
+        "\\(56\\)",
+        "\\(28\\)",
+        "\\(1\\)"
+      ],
+      "choices_ar": [
+        "\\(14\\)",
+        "\\(56\\)",
+        "\\(28\\)",
+        "\\(1\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Subtracting \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 - 2\\mathbf{u}\\cdot\\mathbf{v} + \\|\\mathbf{v}\\|^2\\) from \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 + 2\\mathbf{u}\\cdot\\mathbf{v} + \\|\\mathbf{v}\\|^2\\) gives \\(4(\\mathbf{u} \\cdot \\mathbf{v}) = 9^2 - 5^2 = 81 - 25 = 56\\).</p><p>Divide by \\(4\\): \\(\\mathbf{u} \\cdot \\mathbf{v} = 14\\).</p>",
+      "sol_ar": "<p>من متطابقة الاستقطاب \\(4(\\mathbf{u} \\cdot \\mathbf{v}) = \\|\\mathbf{u} + \\mathbf{v}\\|^2 - \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 81 - 25 = 56\\).</p><p>بالقسمة على \\(4\\) نجد \\(\\mathbf{u} \\cdot \\mathbf{v} = 14\\).</p>",
+      "hints": [
+        "Square both given norms: \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = 81\\) and \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2 = 25\\).",
+        "Subtract the two expansions so \\(\\|\\mathbf{u}\\|^2\\) and \\(\\|\\mathbf{v}\\|^2\\) cancel, leaving \\(4(\\mathbf{u} \\cdot \\mathbf{v})\\).",
+        "Divide \\(81 - 25\\) by \\(4\\)."
+      ],
+      "hints_ar": [
+        "ربّع المعادلتين: \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = 81\\) و\\(\\|\\mathbf{u} - \\mathbf{v}\\|^2 = 25\\).",
+        "اطرحهما لحذف المربعات وإبقاء \\(4(\\mathbf{u} \\cdot \\mathbf{v})\\).",
+        "اقسم الفرق \\(56\\) على \\(4\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "uv = sp.Symbol('uv')\nEXPECTED = sp.solve(sp.Eq(4*uv, 9**2 - 5**2), uv)[0]",
+      "id": "linalg-1237"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.15,
+        "c": 0.25
+      },
+      "text": "Find the volume of the tetrahedron with vertices \\(O(0, 0, 0)\\), \\(A(3, 1, 0)\\), \\(B(0, 4, 1)\\), and \\(C(1, 0, 3)\\).",
+      "text_ar": "أوجد حجم رباعي الأوجه الذي رؤوسه \\(O(0, 0, 0)\\) و\\(A(3, 1, 0)\\) و\\(B(0, 4, 1)\\) و\\(C(1, 0, 3)\\).",
+      "choices": [
+        "\\(\\dfrac{37}{6}\\)",
+        "\\(37\\)",
+        "\\(\\dfrac{37}{2}\\)",
+        "\\(\\dfrac{35}{6}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{37}{6}\\)",
+        "\\(37\\)",
+        "\\(\\dfrac{37}{2}\\)",
+        "\\(\\dfrac{35}{6}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Tetrahedron volume is \\(\\dfrac{1}{6}|\\det([\\vec{OA}, \\vec{OB}, \\vec{OC}])|\\):</p><p>\\(\\det\\begin{pmatrix} 3 & 1 & 0 \\\\ 0 & 4 & 1 \\\\ 1 & 0 & 3 \\end{pmatrix} = 3(12 - 0) - 1(0 - 1) = 36 + 1 = 37\\). Thus volume \\(= \\dfrac{37}{6}\\).</p>",
+      "sol_ar": "<p>حجم رباعي الأوجه يساوي سدس القيمة المطلقة للمحدد: \\(\\frac{1}{6}|3(12) - 1(-1)| = \\frac{37}{6}\\).</p>",
+      "hints": [
+        "Form the \\(3 \\times 3\\) matrix whose rows are \\(\\vec{OA}, \\vec{OB}, \\vec{OC}\\).",
+        "Evaluate the determinant \\(3(12) - 1(-1) = 37\\).",
+        "Multiply \\(|\\det|\\) by \\(\\dfrac{1}{6}\\) for a tetrahedron (rather than \\(1\\) for a parallelepiped)."
+      ],
+      "hints_ar": [
+        "كوّن مصفوفة \\(3 \\times 3\\) من متجهات الأحرف الثلاثة.",
+        "احسب المحدد \\(3(12) - 1(-1) = 37\\).",
+        "اضرب القيمة المطلقة للمحدد في \\(\\dfrac{1}{6}\\) لحساب حجم رباعي الأوجه."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "M = sp.Matrix([[3, 1, 0], [0, 4, 1], [1, 0, 3]])\nEXPECTED = sp.Rational(1, 6) * abs(M.det())",
+      "id": "linalg-1238"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.25,
+        "c": 0.25
+      },
+      "text": "What is the shortest distance from the point \\(P(4, 1, 2)\\) to the line \\(\\mathbf{r}(t) = (1, 0, 1) + t(2, 1, 2)\\)?",
+      "text_ar": "ما أقصر مسافة بين النقطة \\(P(4, 1, 2)\\) والمستقيم \\(\\mathbf{r}(t) = (1, 0, 1) + t(2, 1, 2)\\)؟",
+      "choices": [
+        "\\(\\sqrt{2}\\)",
+        "\\(3\\sqrt{2}\\)",
+        "\\(\\sqrt{11}\\)",
+        "\\(\\dfrac{5}{3}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\sqrt{2}\\)",
+        "\\(3\\sqrt{2}\\)",
+        "\\(\\sqrt{11}\\)",
+        "\\(\\dfrac{5}{3}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Take \\(A = (1, 0, 1)\\) on the line so \\(\\vec{AP} = (3, 1, 1)\\), and direction \\(\\mathbf{d} = (2, 1, 2)\\) has length \\(\\|\\mathbf{d}\\| = 3\\).</p><p>Compute \\(\\vec{AP} \\times \\mathbf{d} = (1, -4, 1)\\) with norm \\(\\sqrt{1 + 16 + 1} = 3\\sqrt{2}\\).</p><p>Distance: \\(\\dfrac{\\|\\vec{AP} \\times \\mathbf{d}\\|}{\\|\\mathbf{d}\\|} = \\dfrac{3\\sqrt{2}}{3} = \\sqrt{2}\\).</p>",
+      "sol_ar": "<p>بأخذ \\(A(1, 0, 1)\\) على المستقيم يكون \\(\\vec{AP} = (3, 1, 1)\\) ومتجه الاتجاه \\(\\mathbf{d} = (2, 1, 2)\\) طوله \\(3\\).</p><p>نحسب \\(\\vec{AP} \\times \\mathbf{d} = (1, -4, 1)\\) بطول \\(\\sqrt{18} = 3\\sqrt{2}\\)، فتكون المسافة \\(\\dfrac{3\\sqrt{2}}{3} = \\sqrt{2}\\).</p>",
+      "hints": [
+        "Pick the base point \\(A(1, 0, 1)\\) on the line and form \\(\\vec{AP} = (3, 1, 1)\\).",
+        "Compute the cross product \\(\\vec{AP} \\times (2, 1, 2) = (1, -4, 1)\\) and find its norm \\(\\sqrt{18}\\).",
+        "Divide by \\(\\|(2, 1, 2)\\| = 3\\) and simplify \\(\\dfrac{3\\sqrt{2}}{3}\\)."
+      ],
+      "hints_ar": [
+        "خذ النقطة \\(A(1, 0, 1)\\) على المستقيم وكوّن \\(\\vec{AP} = (3, 1, 1)\\).",
+        "احسب الضرب الاتجاهي \\((1, -4, 1)\\) ومعياره \\(\\sqrt{18}\\).",
+        "اقسم على \\(\\|\\mathbf{d}\\| = 3\\) وبسّط الناتج."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "AP = sp.Matrix([4, 1, 2]) - sp.Matrix([1, 0, 1])\nd = sp.Matrix([2, 1, 2])\nEXPECTED = AP.cross(d).norm() / d.norm()",
+      "id": "linalg-1239"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "la-vectors",
+      "subskill_id": "la-vectors-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "A vector \\(\\mathbf{v} = (x, y, z) \\in \\mathbb{R}^3\\) satisfies \\(\\mathbf{v} \\cdot (1, 1, 0) = 5\\), \\(\\mathbf{v} \\cdot (0, 1, 1) = 7\\), and \\(\\mathbf{v} \\cdot (1, 0, 1) = 4\\). What is the sum \\(x + y + z\\)?",
+      "text_ar": "متجه \\(\\mathbf{v} = (x, y, z) \\in \\mathbb{R}^3\\) يحقق \\(\\mathbf{v} \\cdot (1, 1, 0) = 5\\) و\\(\\mathbf{v} \\cdot (0, 1, 1) = 7\\) و\\(\\mathbf{v} \\cdot (1, 0, 1) = 4\\). ما قيمة المجموع \\(x + y + z\\)؟",
+      "choices": [
+        "\\(8\\)",
+        "\\(16\\)",
+        "\\(6\\)",
+        "\\(12\\)"
+      ],
+      "choices_ar": [
+        "\\(8\\)",
+        "\\(16\\)",
+        "\\(6\\)",
+        "\\(12\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Write the three dot products as equations: \\(x + y = 5\\), \\(y + z = 7\\), and \\(x + z = 4\\).</p><p>Add all three equations: \\(2(x + y + z) = 5 + 7 + 4 = 16 \\implies x + y + z = 8\\).</p>",
+      "sol_ar": "<p>المعادلات هي \\(x + y = 5\\) و\\(y + z = 7\\) و\\(x + z = 4\\). بجمع الثلاث نحصل على \\(2(x + y + z) = 16 \\implies x + y + z = 8\\).</p>",
+      "hints": [
+        "Write the three linear equations \\(x + y = 5\\), \\(y + z = 7\\), and \\(x + z = 4\\).",
+        "Add all three equations to obtain \\(2(x + y + z) = 16\\).",
+        "Divide both sides by \\(2\\)."
+      ],
+      "hints_ar": [
+        "اكتب المعادلات الثلاث \\(x + y = 5\\) و\\(y + z = 7\\) و\\(x + z = 4\\).",
+        "اجمع المعادلات الثلاث لتحصل على \\(2(x + y + z) = 16\\).",
+        "اقسم الطرفين على \\(2\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, y, z = sp.symbols('x y z')\nv = sp.Matrix([x, y, z])\nsol = sp.solve([v.dot(sp.Matrix([1,1,0])) - 5, v.dot(sp.Matrix([0,1,1])) - 7, v.dot(sp.Matrix([1,0,1])) - 4], [x, y, z])\nEXPECTED = sp.simplify(sol[x] + sol[y] + sol[z])",
+      "id": "linalg-1240"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vector Spaces & Linear Independence",
+      "topic_id": "la-vectorspaces",
+      "subskill_id": "la-vectorspaces-1",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": 1.25,
+        "c": 0.25
+      },
+      "text": "For what value of \\(k\\) does the vector \\((2, -1, k)\\) lie in \\(\\operatorname{span}\\{(1, 2, 3), (3, 1, 5)\\}\\)?",
+      "text_ar": "ما قيمة الثابت \\(k\\) التي تجعل المتجه \\((2, -1, k)\\) ينتمي إلى الفضاء المولد \\(\\operatorname{span}\\{(1, 2, 3), (3, 1, 5)\\}\\)؟",
+      "choices": [
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(6\\)",
+        "\\(-2\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(6\\)",
+        "\\(-2\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Write \\(c_1(1, 2, 3) + c_2(3, 1, 5) = (2, -1, k)\\). Solving \\(c_1 + 3c_2 = 2\\) and \\(2c_1 + c_2 = -1\\) gives \\(c_1 = -1\\) and \\(c_2 = 1\\).</p><p>Evaluate the third coordinate: \\(k = 3(-1) + 5(1) = 2\\).</p>",
+      "sol_ar": "<p>نضع \\(c_1(1, 2, 3) + c_2(3, 1, 5) = (2, -1, k)\\). من المركّبتين الأوليين نجد \\(c_1 = -1\\) و\\(c_2 = 1\\)، وبالتعويض في الثالثة يكون \\(k = 3(-1) + 5(1) = 2\\).</p>",
+      "hints": [
+        "Express \\((2, -1, k)\\) as a linear combination \\(c_1(1, 2, 3) + c_2(3, 1, 5)\\).",
+        "Solve the \\(2 \\times 2\\) system from the first two components for \\(c_1\\) and \\(c_2\\).",
+        "Compute \\(3c_1 + 5c_2\\)."
+      ],
+      "hints_ar": [
+        "عبّر عن المتجه كتركيبة خطية \\(c_1(1, 2, 3) + c_2(3, 1, 5)\\).",
+        "حل معادلتي المركّبتين الأوليين لإيجاد \\(c_1\\) و\\(c_2\\).",
+        "احسب قيمة \\(3c_1 + 5c_2\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "c1, c2, k = sp.symbols('c1 c2 k')\nv = c1*sp.Matrix([1, 2, 3]) + c2*sp.Matrix([3, 1, 5])\nsol = sp.solve([sp.Eq(v[0], 2), sp.Eq(v[1], -1), sp.Eq(v[2], k)], [c1, c2, k])\nEXPECTED = sol[k]",
+      "id": "linalg-1241"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vector Spaces & Linear Independence",
+      "topic_id": "la-vectorspaces",
+      "subskill_id": "la-vectorspaces-2",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": 1.3,
+        "c": 0.25
+      },
+      "text": "For what value of \\(k\\) is the set \\(\\{(1, 2, -1), (2, 3, 1), (4, 7, k)\\}\\) linearly dependent in \\(\\mathbb{R}^3\\)?",
+      "text_ar": "ما قيمة \\(k\\) التي تجعل المجموعة \\(\\{(1, 2, -1), (2, 3, 1), (4, 7, k)\\}\\) مرتبطة خطياً في \\(\\mathbb{R}^3\\)؟",
+      "choices": [
+        "\\(-1\\)",
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(-3\\)"
+      ],
+      "choices_ar": [
+        "\\(-1\\)",
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(-3\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Three vectors in \\(\\mathbb{R}^3\\) are linearly dependent precisely when their \\(3 \\times 3\\) determinant equals zero:</p><p>\\(\\det\\begin{pmatrix} 1 & 2 & 4 \\\\ 2 & 3 & 7 \\\\ -1 & 1 & k \\end{pmatrix} = (3k - 7) - 2(2k + 7) + 4(2 + 3) = -k - 1 = 0 \\implies k = -1\\) (indeed \\(2(1,2,-1) + (2,3,1) = (4,7,-1)\\)).</p>",
+      "sol_ar": "<p>تكون المتجهات الثلاثة في \\(\\mathbb{R}^3\\) مرتبطة خطياً إذا انعدم محددها: \\((3k - 7) - 2(2k + 7) + 20 = -k - 1 = 0 \\implies k = -1\\).</p>",
+      "hints": [
+        "Arrange the three vectors as columns of a \\(3 \\times 3\\) matrix.",
+        "Set the determinant equal to zero for linear dependence: \\(-k - 1 = 0\\).",
+        "Solve for \\(k\\) and verify with \\(2\\mathbf{v}_1 + \\mathbf{v}_2 = \\mathbf{v}_3\\)."
+      ],
+      "hints_ar": [
+        "رتّب المتجهات الثلاثة كأعمدة لمصفوفة \\(3 \\times 3\\).",
+        "ضع المحدد مساوياً للصفر لتكوين المعادلة \\(-k - 1 = 0\\).",
+        "أوجد \\(k\\) وتحقق بالتركيب الخطي."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Symbol('k')\nM = sp.Matrix([[1, 2, 4], [2, 3, 7], [-1, 1, k]])\nEXPECTED = sp.solve(M.det(), k)[0]",
+      "id": "linalg-1242"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vector Spaces & Linear Independence",
+      "topic_id": "la-vectorspaces",
+      "subskill_id": "la-vectorspaces-3",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": 1.35,
+        "c": 0.25
+      },
+      "text": "In \\(\\mathbb{R}^5\\), let \\(U = \\operatorname{span}\\{\\mathbf{e}_1, \\mathbf{e}_2, \\mathbf{e}_3\\}\\) and \\(W = \\operatorname{span}\\{\\mathbf{e}_2, \\mathbf{e}_3, \\mathbf{e}_4, \\mathbf{e}_5\\}\\). What is the dimension of the subspace intersection \\(\\dim(U \\cap W)\\)?",
+      "text_ar": "في الفضاء \\(\\mathbb{R}^5\\)، ليكن \\(U = \\operatorname{span}\\{\\mathbf{e}_1, \\mathbf{e}_2, \\mathbf{e}_3\\}\\) و\\(W = \\operatorname{span}\\{\\mathbf{e}_2, \\mathbf{e}_3, \\mathbf{e}_4, \\mathbf{e}_5\\}\\). ما بُعد التقاطع \\(\\dim(U \\cap W)\\)؟",
+      "choices": [
+        "\\(2\\)",
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(0\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(0\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Here \\(\\dim(U) = 3\\), \\(\\dim(W) = 4\\), and \\(U + W = \\mathbb{R}^5\\) so \\(\\dim(U + W) = 5\\).</p><p>By the subspace dimension formula, \\(\\dim(U \\cap W) = \\dim(U) + \\dim(W) - \\dim(U + W) = 3 + 4 - 5 = 2\\).</p>",
+      "sol_ar": "<p>لدينا \\(\\dim(U) = 3\\) و\\(\\dim(W) = 4\\) و\\(\\dim(U + W) = 5\\). وبصيغة الأبعاد للفضاءات الجزئية يكون \\(\\dim(U \\cap W) = 3 + 4 - 5 = 2\\).</p>",
+      "hints": [
+        "Determine \\(\\dim(U) = 3\\) and \\(\\dim(W) = 4\\) from the basis counts.",
+        "Notice that \\(U + W\\) contains all five standard basis vectors of \\(\\mathbb{R}^5\\), so \\(\\dim(U + W) = 5\\).",
+        "Apply Grassmann's identity \\(\\dim(U) + \\dim(W) - \\dim(U + W)\\)."
+      ],
+      "hints_ar": [
+        "حدّد البعدين \\(\\dim(U) = 3\\) و\\(\\dim(W) = 4\\).",
+        "لاحظ أن \\(U + W = \\mathbb{R}^5\\) فبعده \\(5\\).",
+        "طبق صيغة الأبعاد \\(3 + 4 - 5\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "I5 = sp.eye(5)\nU = [I5[:, i] for i in [0, 1, 2]]\nW = [I5[:, i] for i in [1, 2, 3, 4]]\ndim_sum = sp.Matrix.hstack(*(U + W)).rank()\nEXPECTED = sp.Matrix.hstack(*U).rank() + sp.Matrix.hstack(*W).rank() - dim_sum",
+      "id": "linalg-1243"
+    },
+    {
+      "type": "mcq",
+      "domain": "Eigenvalues & Eigenvectors",
+      "topic_id": "la-eigen",
+      "subskill_id": "la-eigen-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "The vector \\(\\mathbf{v} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}\\) is an eigenvector of the matrix \\(A = \\begin{pmatrix} 5 & 4 \\\\ 1 & 5 \\end{pmatrix}\\). What is its corresponding eigenvalue \\(\\lambda\\)?",
+      "text_ar": "المتجه \\(\\mathbf{v} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}\\) هو متجه ذاتي للمصفوفة \\(A = \\begin{pmatrix} 5 & 4 \\\\ 1 & 5 \\end{pmatrix}\\). ما القيمة الذاتية \\(\\lambda\\) المناظرة له؟",
+      "choices": [
+        "\\(3\\)",
+        "\\(7\\)",
+        "\\(5\\)",
+        "\\(-3\\)"
+      ],
+      "choices_ar": [
+        "\\(3\\)",
+        "\\(7\\)",
+        "\\(5\\)",
+        "\\(-3\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Multiply \\(A\\mathbf{v}\\): \\(\\begin{pmatrix} 5 & 4 \\\\ 1 & 5 \\end{pmatrix}\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 10 - 4 \\\\ 2 - 5 \\end{pmatrix} = \\begin{pmatrix} 6 \\\\ -3 \\end{pmatrix} = 3\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}\\).</p><p>Therefore the corresponding eigenvalue is \\(\\lambda = 3\\).</p>",
+      "sol_ar": "<p>نحسب حاصل الضرب: \\(\\begin{pmatrix} 5 & 4 \\\\ 1 & 5 \\end{pmatrix}\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 6 \\\\ -3 \\end{pmatrix} = 3\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}\\).</p><p>إذن القيمة الذاتية المناظرة هي \\(\\lambda = 3\\).</p>",
+      "hints": [
+        "Recall the defining eigenvalue equation \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\).",
+        "Multiply \\(A\\mathbf{v}\\) to obtain \\((6, -3)^T\\).",
+        "Divide the first coordinate \\(6\\) by the matching coordinate \\(2\\) of \\(\\mathbf{v}\\)."
+      ],
+      "hints_ar": [
+        "تذكر معادلة القيمة الذاتية \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\).",
+        "احسب الضرب \\(A\\mathbf{v} = (6, -3)^T\\).",
+        "قارن المركّبتين لاستخراج \\(\\lambda\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[5, 4], [1, 5]])\nv = sp.Matrix([2, -1])\nAv = A * v\nEXPECTED = sp.simplify(Av[0] / v[0])",
+      "id": "linalg-1244"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "Let \\(T: \\mathbb{R}^3 \\to \\mathbb{R}^3\\) be defined by \\(T(x, y, z) = (2x - y, \\; x + 3z, \\; y - z)\\). What is the sum of the three components of \\(T(-1, 4, 2)\\)?",
+      "text_ar": "ليكن التحويل الخطي \\(T: \\mathbb{R}^3 \\to \\mathbb{R}^3\\) معرفاً بالقاعدة \\(T(x, y, z) = (2x - y, \\; x + 3z, \\; y - z)\\). ما مجموع مركّبات الصورة \\(T(-1, 4, 2)\\)؟",
+      "choices": [
+        "\\(1\\)",
+        "\\(5\\)",
+        "\\(-1\\)",
+        "\\(3\\)"
+      ],
+      "choices_ar": [
+        "\\(1\\)",
+        "\\(5\\)",
+        "\\(-1\\)",
+        "\\(3\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Substitute \\(x = -1, y = 4, z = 2\\): \\(T(-1, 4, 2) = (2(-1) - 4, \\; -1 + 3(2), \\; 4 - 2) = (-6, 5, 2)\\).</p><p>Sum of components: \\(-6 + 5 + 2 = 1\\).</p>",
+      "sol_ar": "<p>بالتعويض: \\(T(-1, 4, 2) = (-6, 5, 2)\\)، ومجموع المركّبات يساوي \\(-6 + 5 + 2 = 1\\).</p>",
+      "hints": [
+        "Substitute \\(x = -1, y = 4, z = 2\\) into each of the three output expressions.",
+        "Verify the image vector \\((-6, 5, 2)\\).",
+        "Sum its three components \\(-6 + 5 + 2\\)."
+      ],
+      "hints_ar": [
+        "عوّض \\((-1, 4, 2)\\) في كل مركّبة من قاعدة التحويل.",
+        "تحقق من أن المتجه الناتج هو \\((-6, 5, 2)\\).",
+        "اجمع المركّبات الثلاث الناتجة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "v = sp.Matrix([-1, 4, 2])\nA = sp.Matrix([[2, -1, 0], [1, 0, 3], [0, 1, -1]])\nEXPECTED = sum(A * v)",
+      "id": "linalg-1245"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "Let \\(R_{\\pi/3}: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) be counterclockwise rotation by \\(\\dfrac{\\pi}{3}\\) radians about the origin. What is the trace (sum of diagonal entries) of its standard matrix?",
+      "text_ar": "ليكن \\(R_{\\pi/3}: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) دوراناً عكس عقارب الساعة بزاوية \\(\\dfrac{\\pi}{3}\\) راديان حول نقطة الأصل. ما أثر (مجموع عناصر القطر الرئيس) مصفوفته القياسية؟",
+      "choices": [
+        "\\(1\\)",
+        "\\(\\sqrt{3}\\)",
+        "\\(2\\)",
+        "\\(\\dfrac{1}{2}\\)"
+      ],
+      "choices_ar": [
+        "\\(1\\)",
+        "\\(\\sqrt{3}\\)",
+        "\\(2\\)",
+        "\\(\\dfrac{1}{2}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>The standard matrix of rotation by \\(\\theta\\) is \\(\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\\).</p><p>With \\(\\theta = \\dfrac{\\pi}{3}\\), the diagonal entries are both \\(\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}\\), so the trace is \\(\\dfrac{1}{2} + \\dfrac{1}{2} = 1\\).</p>",
+      "sol_ar": "<p>المصفوفة القياسية للدوران بزاوية \\(\\theta\\) هي \\(\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\\). عند \\(\\theta = \\dfrac{\\pi}{3}\\) يكون مجموع القطر الرئيس \\(\\dfrac{1}{2} + \\dfrac{1}{2} = 1\\).</p>",
+      "hints": [
+        "Write the \\(2 \\times 2\\) rotation matrix with \\(\\cos(\\pi/3)\\) on both main diagonal positions.",
+        "Evaluate \\(\\cos(\\pi/3) = \\dfrac{1}{2}\\).",
+        "Sum the two diagonal entries to get the trace."
+      ],
+      "hints_ar": [
+        "اكتب مصفوفة الدوران بوضع \\(\\cos(\\pi/3)\\) على القطر الرئيس.",
+        "احسب قيمة \\(\\cos(\\pi/3) = \\dfrac{1}{2}\\).",
+        "اجمع عنصري القطر الرئيس."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "th = sp.pi / 3\nR = sp.Matrix([[sp.cos(th), -sp.sin(th)], [sp.sin(th), sp.cos(th)]])\nEXPECTED = sp.simplify(R.trace())",
+      "id": "linalg-1246"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "Suppose \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) is a linear transformation with \\(T(\\mathbf{u}) = (4, -1)\\) and \\(T(\\mathbf{v}) = (-2, 5)\\). What is the second coordinate of \\(T(3\\mathbf{u} - 2\\mathbf{v})\\)?",
+      "text_ar": "ليكن \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) تحويلاً خطياً يحقق \\(T(\\mathbf{u}) = (4, -1)\\) و\\(T(\\mathbf{v}) = (-2, 5)\\). ما الإحداثي الثاني للمتجه \\(T(3\\mathbf{u} - 2\\mathbf{v})\\)؟",
+      "choices": [
+        "\\(-13\\)",
+        "\\(7\\)",
+        "\\(16\\)",
+        "\\(-7\\)"
+      ],
+      "choices_ar": [
+        "\\(-13\\)",
+        "\\(7\\)",
+        "\\(16\\)",
+        "\\(-7\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>By linearity, \\(T(3\\mathbf{u} - 2\\mathbf{v}) = 3T(\\mathbf{u}) - 2T(\\mathbf{v}) = 3(4, -1) - 2(-2, 5) = (16, -13)\\).</p><p>The second coordinate is \\(-13\\).</p>",
+      "sol_ar": "<p>من خاصية الخطية \\(T(3\\mathbf{u} - 2\\mathbf{v}) = 3T(\\mathbf{u}) - 2T(\\mathbf{v}) = (16, -13)\\)، فالإحداثي الثاني هو \\(-13\\).</p>",
+      "hints": [
+        "Apply linearity: \\(T(3\\mathbf{u} - 2\\mathbf{v}) = 3T(\\mathbf{u}) - 2T(\\mathbf{v})\\).",
+        "Focus only on the second coordinates: \\(3(-1) - 2(5)\\).",
+        "Simplify \\(-3 - 10\\)."
+      ],
+      "hints_ar": [
+        "طبق خاصية الخطية \\(3T(\\mathbf{u}) - 2T(\\mathbf{v})\\).",
+        "ركّز على المركّبة الثانية: \\(3(-1) - 2(5)\\).",
+        "بسّط \\(-3 - 10\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "Tu, Tv = sp.Matrix([4, -1]), sp.Matrix([-2, 5])\nEXPECTED = (3*Tu - 2*Tv)[1]",
+      "id": "linalg-1247"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-1",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "A linear transformation \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) satisfies \\(T(1, 1) = (5, 2)\\) and \\(T(1, -1) = (1, 6)\\). What is the first coordinate of \\(T(3, 2)\\)?",
+      "text_ar": "تحويل خطي \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) يحقق \\(T(1, 1) = (5, 2)\\) و\\(T(1, -1) = (1, 6)\\). ما الإحداثي الأول للصورة \\(T(3, 2)\\)؟",
+      "choices": [
+        "\\(13\\)",
+        "\\(8\\)",
+        "\\(11\\)",
+        "\\(15\\)"
+      ],
+      "choices_ar": [
+        "\\(13\\)",
+        "\\(8\\)",
+        "\\(11\\)",
+        "\\(15\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>First recover \\(T(\\mathbf{e}_1)\\) and \\(T(\\mathbf{e}_2)\\): adding gives \\(T(2, 0) = (6, 8) \\implies T(1, 0) = (3, 4)\\); subtracting gives \\(T(0, 2) = (4, -4) \\implies T(0, 1) = (2, -2)\\).</p><p>Thus \\(T(3, 2) = 3(3, 4) + 2(2, -2) = (13, 8)\\), whose first coordinate is \\(13\\).</p>",
+      "sol_ar": "<p>بالجمع \\(T(1, 0) = (3, 4)\\) وبالطرح \\(T(0, 1) = (2, -2)\\).</p><p>إذن \\(T(3, 2) = 3(3, 4) + 2(2, -2) = (13, 8)\\)، فالإحداثي الأول يساوي \\(13\\).</p>",
+      "hints": [
+        "Add and subtract \\((1, 1)\\) and \\((1, -1)\\) to find \\(T(1, 0) = (3, 4)\\) and \\(T(0, 1) = (2, -2)\\).",
+        "Write \\((3, 2) = 3(1, 0) + 2(0, 1)\\) and apply linearity.",
+        "Evaluate only the first coordinate: \\(3(3) + 2(2)\\)."
+      ],
+      "hints_ar": [
+        "اجمع واطرح المتجهين لإيجاد صورتي الأساس القياسي \\(T(1, 0)\\) و\\(T(0, 1)\\).",
+        "اكتب \\((3, 2) = 3\\mathbf{e}_1 + 2\\mathbf{e}_2\\) وطبق الخطية.",
+        "احسب المركّبة الأولى \\(3(3) + 2(2)\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "B = sp.Matrix([[1, 1], [1, -1]])\nY = sp.Matrix([[5, 1], [2, 6]])\nA = Y * B.inv()\nEXPECTED = (A * sp.Matrix([3, 2]))[0]",
+      "id": "linalg-1248"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.05,
+        "c": 0.25
+      },
+      "text": "A linear map \\(T(x, y) = (3x, 2y)\\) is followed by a shear \\(S(x, y) = (x + 4y, y)\\). If a region \\(\\Omega\\) has area \\(7\\), what is the area of the transformed image \\(S(T(\\Omega))\\)?",
+      "text_ar": "يتبع التحويل الخطي \\(T(x, y) = (3x, 2y)\\) تحويل قصّ \\(S(x, y) = (x + 4y, y)\\). إذا كانت مساحة منطقة \\(\\Omega\\) تساوي \\(7\\)، فما مساحة صورتها \\(S(T(\\Omega))\\)؟",
+      "choices": [
+        "\\(42\\)",
+        "\\(28\\)",
+        "\\(21\\)",
+        "\\(84\\)"
+      ],
+      "choices_ar": [
+        "\\(42\\)",
+        "\\(28\\)",
+        "\\(21\\)",
+        "\\(84\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Matrix of \\(T\\) is \\(\\begin{pmatrix} 3 & 0 \\\\ 0 & 2 \\end{pmatrix}\\) (\\(\\det T = 6\\)) and matrix of \\(S\\) is \\(\\begin{pmatrix} 1 & 4 \\\\ 0 & 1 \\end{pmatrix}\\) (\\(\\det S = 1\\)).</p><p>Composite determinant is \\(\\det(ST) = 1 \\times 6 = 6\\), so the new area is \\(6 \\times 7 = 42\\).</p>",
+      "sol_ar": "<p>محدد \\(T\\) يساوي \\(6\\) ومحدد القص \\(S\\) يساوي \\(1\\)، فيكون محدد التركيب \\(6\\)، وتصبح المساحة الجديدة \\(6 \\times 7 = 42\\).</p>",
+      "hints": [
+        "Write the standard matrix of \\(T\\) (determinant \\(6\\)) and of the shear \\(S\\) (determinant \\(1\\)).",
+        "Remember that area scales by the absolute determinant of the composite map \\(|\\det(S)\\det(T)| = 6\\).",
+        "Multiply the area \\(7\\) by \\(6\\)."
+      ],
+      "hints_ar": [
+        "حدّد مصفوفتي التحويلين \\(T\\) و\\(S\\) ومحدد كل منهما.",
+        "احسب معامل تكبير المساحة \\(|\\det(S)\\det(T)| = 6\\).",
+        "اضرب المساحة الأصلية \\(7\\) في \\(6\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "T = sp.Matrix([[3, 0], [0, 2]])\nS = sp.Matrix([[1, 4], [0, 1]])\nEXPECTED = abs((S * T).det()) * 7",
+      "id": "linalg-1249"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.1,
+        "c": 0.25
+      },
+      "text": "What is the nullity (dimension of the kernel) of the linear transformation \\(T: \\mathbb{R}^3 \\to \\mathbb{R}^3\\) given by \\(T(x, y, z) = (x + 2y - z, \\; 2x + 4y - 2z, \\; -x - 2y + z)\\)?",
+      "text_ar": "ما بُعد النواة (\\(\\dim\\ker T\\)) للتحويل الخطي \\(T(x, y, z) = (x + 2y - z, \\; 2x + 4y - 2z, \\; -x - 2y + z)\\)؟",
+      "choices": [
+        "\\(2\\)",
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(0\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(0\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>All three rows of the standard matrix \\(\\begin{pmatrix} 1 & 2 & -1 \\\\ 2 & 4 & -2 \\\\ -1 & -2 & 1 \\end{pmatrix}\\) are scalar multiples of \\((1, 2, -1)\\), so \\(\\operatorname{rank}(T) = 1\\).</p><p>By Rank-Nullity in \\(\\mathbb{R}^3\\): \\(\\operatorname{nullity}(T) = 3 - 1 = 2\\).</p>",
+      "sol_ar": "<p>جميع صفوف المصفوفة القياسية مضاعفات للصف \\((1, 2, -1)\\)، إذن الرتبة \\(\\operatorname{rank}(T) = 1\\). وبنظرية الرتبة والنواة في \\(\\mathbb{R}^3\\) يكون بُعد النواة \\(3 - 1 = 2\\).</p>",
+      "hints": [
+        "Form the \\(3 \\times 3\\) standard matrix of \\(T\\) from its coefficients.",
+        "Row-reduce (note rows \\(2\\) and \\(3\\) are multiples of row \\(1\\)) to confirm \\(\\operatorname{rank}(T) = 1\\).",
+        "Subtract the rank from the domain dimension \\(3\\) via Rank-Nullity."
+      ],
+      "hints_ar": [
+        "كوّن المصفوفة القياسية ذات الأبعاد \\(3 \\times 3\\) من المعاملات.",
+        "اختزل الصفوف لتلاحظ أن الرتبة تساوي \\(1\\).",
+        "استعمل نظرية الرتبة والنواة لطرح الرتبة من البعد \\(3\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[1, 2, -1], [2, 4, -2], [-1, -2, 1]])\nEXPECTED = 3 - A.rank()",
+      "id": "linalg-1250"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.2,
+        "c": 0.25
+      },
+      "text": "Let \\(P: \\mathbb{R}^3 \\to \\mathbb{R}^3\\) be orthogonal projection onto the line spanned by \\(\\mathbf{u} = (1, 2, -2)^T\\), with standard matrix \\(P = \\dfrac{\\mathbf{u}\\mathbf{u}^T}{\\mathbf{u}^T\\mathbf{u}}\\). What is the middle diagonal entry \\(P_{2,2}\\)?",
+      "text_ar": "ليكن \\(P: \\mathbb{R}^3 \\to \\mathbb{R}^3\\) الإسقاط العمودي على المستقيم المولد بالمتجه \\(\\mathbf{u} = (1, 2, -2)^T\\) بمصفوفة \\(P = \\dfrac{\\mathbf{u}\\mathbf{u}^T}{\\mathbf{u}^T\\mathbf{u}}\\). ما قيمة العنصر القطري الأوسط \\(P_{2,2}\\)؟",
+      "choices": [
+        "\\(\\dfrac{4}{9}\\)",
+        "\\(\\dfrac{1}{9}\\)",
+        "\\(\\dfrac{2}{3}\\)",
+        "\\(\\dfrac{2}{9}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{4}{9}\\)",
+        "\\(\\dfrac{1}{9}\\)",
+        "\\(\\dfrac{2}{3}\\)",
+        "\\(\\dfrac{2}{9}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Here \\(\\mathbf{u}^T\\mathbf{u} = 1^2 + 2^2 + (-2)^2 = 9\\), and the \\((2, 2)\\) entry of \\(\\mathbf{u}\\mathbf{u}^T\\) is \\(u_2^2 = 2^2 = 4\\).</p><p>Thus \\(P_{2,2} = \\dfrac{4}{9}\\).</p>",
+      "sol_ar": "<p>لدينا \\(\\mathbf{u}^T\\mathbf{u} = 1 + 4 + 4 = 9\\)، والعنصر \\((2, 2)\\) في \\(\\mathbf{u}\\mathbf{u}^T\\) هو \\(2^2 = 4\\)، فتكون القيمة \\(\\dfrac{4}{9}\\).</p>",
+      "hints": [
+        "Calculate the scalar denominator \\(\\mathbf{u}^T\\mathbf{u} = 1^2 + 2^2 + (-2)^2 = 9\\).",
+        "Find the \\((2, 2)\\) entry of the outer product \\(\\mathbf{u}\\mathbf{u}^T\\), which is \\(u_2^2 = 4\\).",
+        "Form the fraction \\(\\dfrac{u_2^2}{\\|\\mathbf{u}\\|^2}\\)."
+      ],
+      "hints_ar": [
+        "احسب المقام \\(\\|\\mathbf{u}\\|^2 = 9\\).",
+        "حدّد العنصر القطري الأوسط في الضرب الخارجي وهو \\(u_2^2 = 4\\).",
+        "اقسم \\(4\\) على \\(9\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u = sp.Matrix([1, 2, -2])\nP = (u * u.T) / (u.dot(u))\nEXPECTED = P[1, 1]",
+      "id": "linalg-1251"
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Transformations",
+      "topic_id": "la-lintrans",
+      "subskill_id": "la-lintrans-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "Given the ordered basis \\(\\mathcal{B} = \\{(1, 2), (3, 1)\\}\\) of \\(\\mathbb{R}^2\\), let \\([\\mathbf{v}]_{\\mathcal{B}} = \\begin{pmatrix} c_1 \\\\ c_2 \\end{pmatrix}\\) be the coordinate vector of \\(\\mathbf{v} = (7, 9)\\) relative to \\(\\mathcal{B}\\). What is the sum \\(c_1 + c_2\\)?",
+      "text_ar": "في الفضاء \\(\\mathbb{R}^2\\) بالأساس المرتب \\(\\mathcal{B} = \\{(1, 2), (3, 1)\\}\\)، ليكن \\([\\mathbf{v}]_{\\mathcal{B}} = \\begin{pmatrix} c_1 \\\\ c_2 \\end{pmatrix}\\) متجه إحداثيات \\(\\mathbf{v} = (7, 9)\\) بالنسبة للأساس \\(\\mathcal{B}\\). ما قيمة المجموع \\(c_1 + c_2\\)؟",
+      "choices": [
+        "\\(5\\)",
+        "\\(4\\)",
+        "\\(6\\)",
+        "\\(3\\)"
+      ],
+      "choices_ar": [
+        "\\(5\\)",
+        "\\(4\\)",
+        "\\(6\\)",
+        "\\(3\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Solve \\(c_1(1, 2) + c_2(3, 1) = (7, 9)\\), i.e. \\(c_1 + 3c_2 = 7\\) and \\(2c_1 + c_2 = 9\\).</p><p>Doubling the second equation (\\(4c_1 + 2c_2 = 18\\)) or subtracting twice the first from the second gives \\(-5c_2 = -5 \\implies c_2 = 1\\) and \\(c_1 = 4\\).</p><p>Thus \\(c_1 + c_2 = 4 + 1 = 5\\).</p>",
+      "sol_ar": "<p>نحل النظام \\(c_1 + 3c_2 = 7\\) و\\(2c_1 + c_2 = 9\\) فنجد \\(c_1 = 4\\) و\\(c_2 = 1\\)، فيكون المجموع \\(4 + 1 = 5\\).</p>",
+      "hints": [
+        "Translate \\(c_1(1, 2) + c_2(3, 1) = (7, 9)\\) into two linear equations in \\(c_1\\) and \\(c_2\\).",
+        "Eliminate \\(c_1\\) by subtracting twice the first equation from the second.",
+        "Recover \\(c_1\\) and \\(c_2\\), then compute \\(c_1 + c_2\\)."
+      ],
+      "hints_ar": [
+        "حوّل المعادلة المتجهية إلى معادلتين خطيتين في \\(c_1\\) و\\(c_2\\).",
+        "احذف \\(c_1\\) بطرح ضعف المعادلة الأولى من الثانية.",
+        "احسب قيمتي \\(c_1\\) و\\(c_2\\) ثم اجمعهما."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "B = sp.Matrix([[1, 3], [2, 1]])\nc = B.inv() * sp.Matrix([7, 9])\nEXPECTED = sum(c)",
+      "id": "linalg-1252"
     }
   ]
 }

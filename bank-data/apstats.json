@@ -49579,6 +49579,952 @@
         "b": 1.552,
         "c": 0.25
       }
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 1 · Exploring One-Variable & Two-Variable Data",
+      "topic_id": "aps-u1",
+      "subskill_id": "aps-u1-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "The resting heart rates (in beats per minute) of \\(8\\) athletes are \\(52, 56, 58, 61, 63, 66, 70, 74\\). What is the median heart rate?",
+      "text_ar": "معدلات نبض الراحة (نبضة في الدقيقة) لـ \\(8\\) رياضيين هي \\(52, 56, 58, 61, 63, 66, 70, 74\\). ما الوسيط لهذه البيانات؟",
+      "choices": [
+        "\\(61\\)",
+        "\\(62.5\\)",
+        "\\(62\\)",
+        "\\(63\\)"
+      ],
+      "choices_ar": [
+        "\\(61\\)",
+        "\\(62.5\\)",
+        "\\(62\\)",
+        "\\(63\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>With \\(n = 8\\) ordered observations, the median is the mean of the \\(4\\)th and \\(5\\)th values: \\(\\dfrac{61 + 63}{2} = 62\\).</p>",
+      "sol_ar": "<p>بما أن البيانات مرتبة وعددها \\(8\\) فإن الوسيط هو متوسط القيمتين الرابعة والخامسة: \\(\\dfrac{61 + 63}{2} = 62\\).</p>",
+      "hints": [
+        "Count the number of observations \\(n = 8\\), which is even.",
+        "Identify the two middle values at positions \\(4\\) and \\(5\\).",
+        "Average the two middle values."
+      ],
+      "hints_ar": [
+        "عدّ المشاهدات \\(n = 8\\) وهو عدد زوجي.",
+        "حدّد القيمتين الوسطيين في الترتيبين الرابع والخامس.",
+        "احسب المتوسط الحسابي لهاتين القيمتين."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "vals = [52, 56, 58, 61, 63, 66, 70, 74]\nEXPECTED = sp.Rational(vals[3] + vals[4], 2)",
+      "id": "apstats-1201"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 1 · Exploring One-Variable & Two-Variable Data",
+      "topic_id": "aps-u1",
+      "subskill_id": "aps-u1-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "A distribution of test scores has first quartile \\(Q_1 = 68\\) and third quartile \\(Q_3 = 84\\). Under the \\(1.5 \\times \\text{IQR}\\) rule, what is the upper fence above which a score is flagged as a high outlier?",
+      "text_ar": "توزيع لدرجات اختبار فيه الربيع الأول \\(Q_1 = 68\\) والربيع الثالث \\(Q_3 = 84\\). وفق قاعدة \\(1.5 \\times \\text{IQR}\\)، ما الحد العلوي الذي تُصنَّف الدرجة الأكبر منه قيمةً متطرفةً عليا؟",
+      "choices": [
+        "\\(116\\)",
+        "\\(100\\)",
+        "\\(92\\)",
+        "\\(108\\)"
+      ],
+      "choices_ar": [
+        "\\(116\\)",
+        "\\(100\\)",
+        "\\(92\\)",
+        "\\(108\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>First compute the interquartile range: \\(\\text{IQR} = Q_3 - Q_1 = 84 - 68 = 16\\).</p><p>The upper fence is \\(Q_3 + 1.5 \\times \\text{IQR} = 84 + 1.5(16) = 84 + 24 = 108\\).</p>",
+      "sol_ar": "<p>المدى الربيعي هو \\(\\text{IQR} = 84 - 68 = 16\\).</p><p>والحد العلوي للقيم المتطرفة يساوي \\(84 + 1.5(16) = 84 + 24 = 108\\).</p>",
+      "hints": [
+        "Calculate the interquartile range \\(\\text{IQR} = Q_3 - Q_1\\).",
+        "Multiply the IQR by \\(1.5\\).",
+        "Add that product to the third quartile \\(Q_3\\)."
+      ],
+      "hints_ar": [
+        "احسب المدى الربيعي \\(\\text{IQR} = Q_3 - Q_1\\).",
+        "اضرب المدى الربيعي في \\(1.5\\).",
+        "أضف الناتج إلى الربيع الثالث \\(Q_3\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "q1, q3 = 68, 84\niqr = q3 - q1\nEXPECTED = sp.simplify(q3 + sp.Rational(3, 2) * iqr)",
+      "id": "apstats-1202"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 1 · Exploring One-Variable & Two-Variable Data",
+      "topic_id": "aps-u1",
+      "subskill_id": "aps-u1-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "A random variable \\(X\\) has mean \\(20\\) and standard deviation \\(4\\). If each observation is transformed by \\(Y = 3X - 10\\), what is the standard deviation of \\(Y\\)?",
+      "text_ar": "متغير عشوائي \\(X\\) وسطه \\(20\\) وانحرافه المعياري \\(4\\). إذا حُوِّلت كل قيمة بالعلاقة \\(Y = 3X - 10\\)، فما الانحراف المعياري للمتغير \\(Y\\)؟",
+      "choices": [
+        "\\(2\\)",
+        "\\(12\\)",
+        "\\(50\\)",
+        "\\(36\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(12\\)",
+        "\\(50\\)",
+        "\\(36\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Shifting all data values by subtracting \\(10\\) leaves spread unchanged, while multiplying by \\(3\\) multiplies the standard deviation by \\(|3|\\): \\(\\text{SD}(Y) = 3 \\times 4 = 12\\).</p>",
+      "sol_ar": "<p>طرح الثابت \\(10\\) لا يغيّر التشتت، بينما يضرب المعامل \\(3\\) الانحراف المعياري في \\(|3|\\)، إذن \\(\\text{SD}(Y) = 3 \\times 4 = 12\\).</p>",
+      "hints": [
+        "Recall that adding or subtracting a constant shifts the mean without changing the standard deviation.",
+        "Identify the multiplicative scaling factor \\(3\\) in \\(Y = 3X - 10\\).",
+        "Multiply the original standard deviation by \\(|3|\\)."
+      ],
+      "hints_ar": [
+        "تذكر أن جمع أو طرح ثابت لا يؤثر في الانحراف المعياري.",
+        "حدد معامل الضرب \\(3\\) في التحويل الخطي.",
+        "اضرب الانحراف المعياري الأصلي في \\(|3|\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = abs(3) * 4",
+      "id": "apstats-1203"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 1 · Exploring One-Variable & Two-Variable Data",
+      "topic_id": "aps-u1",
+      "subskill_id": "aps-u1-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "For bivariate data \\((x, y)\\), the correlation coefficient is \\(r = 0.8\\), the standard deviation of \\(x\\) is \\(s_x = 5\\), and the standard deviation of \\(y\\) is \\(s_y = 15\\). What is the slope of the least-squares regression line predicting \\(y\\) from \\(x\\)?",
+      "text_ar": "لبيانات ثنائية المتغير \\((x, y)\\)، معامل الارتباط \\(r = 0.8\\) والانحراف المعياري لـ \\(x\\) هو \\(s_x = 5\\) والانحراف المعياري لـ \\(y\\) هو \\(s_y = 15\\). ما ميل خط الانحدار بأقل مربعات للتنبؤ بـ \\(y\\) من \\(x\\)؟",
+      "choices": [
+        "\\(1.5\\)",
+        "\\(0.27\\)",
+        "\\(2.4\\)",
+        "\\(3.75\\)"
+      ],
+      "choices_ar": [
+        "\\(1.5\\)",
+        "\\(0.27\\)",
+        "\\(2.4\\)",
+        "\\(3.75\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>The slope of the least-squares regression line is \\(b_1 = r\\,\\dfrac{s_y}{s_x} = 0.8 \\times \\dfrac{15}{5} = 0.8 \\times 3 = 2.4\\).</p>",
+      "sol_ar": "<p>ميل خط الانحدار يعطى بالصيغة \\(b_1 = r\\,\\dfrac{s_y}{s_x} = 0.8 \\times \\dfrac{15}{5} = 2.4\\).</p>",
+      "hints": [
+        "Recall the least-squares slope formula connecting \\(r\\), \\(s_x\\), and \\(s_y\\).",
+        "Put \\(s_y\\) in the numerator and \\(s_x\\) in the denominator: \\(b_1 = r\\,\\dfrac{s_y}{s_x}\\).",
+        "Evaluate \\(0.8 \\times 3\\)."
+      ],
+      "hints_ar": [
+        "استعمل قانون ميل خط الانحدار \\(b_1 = r\\,\\dfrac{s_y}{s_x}\\).",
+        "تأكد من وضع \\(s_y\\) في البسط و\\(s_x\\) في المقام.",
+        "احسب قيمة \\(0.8 \\times 3\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "r, sx, sy = sp.Rational(4, 5), 5, 15\nEXPECTED = sp.simplify(r * sy / sx)",
+      "id": "apstats-1204"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 1 · Exploring One-Variable & Two-Variable Data",
+      "topic_id": "aps-u1",
+      "subskill_id": "aps-u1-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A least-squares regression line has equation \\(\\hat{y} = 4.2x + 11\\). For an observation at \\(x = 5\\) with actual value \\(y = 29\\), what is the residual \\(y - \\hat{y}\\)?",
+      "text_ar": "معادلة خط الانحدار هي \\(\\hat{y} = 4.2x + 11\\). عند القيمة \\(x = 5\\) كانت القيمة المشاهدة الفعلية \\(y = 29\\). ما قيمة الباقي \\(y - \\hat{y}\\)؟",
+      "choices": [
+        "\\(-2\\)",
+        "\\(3\\)",
+        "\\(32\\)",
+        "\\(-3\\)"
+      ],
+      "choices_ar": [
+        "\\(-2\\)",
+        "\\(3\\)",
+        "\\(32\\)",
+        "\\(-3\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>First compute the predicted value at \\(x = 5\\): \\(\\hat{y} = 4.2(5) + 11 = 21 + 11 = 32\\).</p><p>Then the residual is Observed minus Predicted: \\(y - \\hat{y} = 29 - 32 = -3\\).</p>",
+      "sol_ar": "<p>أولاً القيمة المتنبأ بها عند \\(x = 5\\) هي \\(\\hat{y} = 4.2(5) + 11 = 32\\).</p><p>إذن الباقي يساوي المشاهدة مطروحاً منها المتنبأ بها: \\(29 - 32 = -3\\).</p>",
+      "hints": [
+        "Compute the predicted value \\(\\hat{y}\\) by substituting \\(x = 5\\) into the regression equation.",
+        "Remember that residual = Observed \\(y\\) minus Predicted \\(\\hat{y}\\).",
+        "Subtract \\(32\\) from \\(29\\), keeping the negative sign."
+      ],
+      "hints_ar": [
+        "احسب القيمة المتنبأ بها \\(\\hat{y}\\) بتعويض \\(x = 5\\) في معادلة الانحدار.",
+        "تذكر أن الباقي = القيمة الفعلية \\(y\\) مطروحاً منها المتنبأ بها \\(\\hat{y}\\).",
+        "احسب \\(29 - 32\\) مع الحفاظ على الإشارة السالبة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "y_hat = sp.Rational(42, 10)*5 + 11\nEXPECTED = 29 - y_hat",
+      "id": "apstats-1205"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 1 · Exploring One-Variable & Two-Variable Data",
+      "topic_id": "aps-u1",
+      "subskill_id": "aps-u1-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "Exam scores in a class follow a distribution with mean \\(73\\) and standard deviation \\(6\\). What is the \\(z\\)-score of a student who scored \\(85\\)?",
+      "text_ar": "تتبع درجات امتحان في فصل ما توزيعاً وسطه \\(73\\) وانحرافه المعياري \\(6\\). ما الدرجة المعيارية \\(z\\) لطالب حصل على \\(85\\)؟",
+      "choices": [
+        "\\(-2\\)",
+        "\\(2\\)",
+        "\\(1.5\\)",
+        "\\(12\\)"
+      ],
+      "choices_ar": [
+        "\\(-2\\)",
+        "\\(2\\)",
+        "\\(1.5\\)",
+        "\\(12\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>Compute the standardized \\(z\\)-score: \\(z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{85 - 73}{6} = \\dfrac{12}{6} = 2\\).</p>",
+      "sol_ar": "<p>نحسب الدرجة المعيارية: \\(z = \\dfrac{85 - 73}{6} = \\dfrac{12}{6} = 2\\).</p>",
+      "hints": [
+        "Recall the \\(z\\)-score formula \\(z = \\dfrac{x - \\text{mean}}{\\text{SD}}\\).",
+        "Find the deviation \\(85 - 73\\) above the mean.",
+        "Divide the positive deviation by the standard deviation \\(6\\)."
+      ],
+      "hints_ar": [
+        "تذكر صيغة الدرجة المعيارية \\(z = \\dfrac{x - \\mu}{\\sigma}\\).",
+        "احسب الانحراف \\(85 - 73\\) عن الوسط.",
+        "اقسم الانحراف على الانحراف المعياري \\(6\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(85 - 73, 6)",
+      "id": "apstats-1206"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "A high school has \\(600\\) sophomores, \\(500\\) juniors, and \\(400\\) seniors. To conduct a stratified random sample of \\(90\\) students proportional to class size, how many seniors should be selected?",
+      "text_ar": "في مدرسة ثانوية \\(600\\) طالب في الصف العاشر و\\(500\\) في الحادي عشر و\\(400\\) في الثاني عشر. لأخذ عينة طبقية عشوائية حجمها \\(90\\) طالباً متناسبة مع حجم كل صف، كم طالباً يجب اختياره من الصف الثاني عشر؟",
+      "choices": [
+        "\\(36\\)",
+        "\\(30\\)",
+        "\\(24\\)",
+        "\\(18\\)"
+      ],
+      "choices_ar": [
+        "\\(36\\)",
+        "\\(30\\)",
+        "\\(24\\)",
+        "\\(18\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Total school population: \\(600 + 500 + 400 = 1500\\). Seniors make up \\(\\dfrac{400}{1500} = \\dfrac{4}{15}\\) of the school.</p><p>Multiply by the sample size: \\(90 \\times \\dfrac{4}{15} = 24\\) seniors.</p>",
+      "sol_ar": "<p>إجمالي طلاب المدرسة \\(600 + 500 + 400 = 1500\\) طالباً، ونسبة الصف الثاني عشر هي \\(\\dfrac{400}{1500} = \\dfrac{4}{15}\\).</p><p>العدد المختار هو \\(90 \\times \\dfrac{4}{15} = 24\\) طالباً.</p>",
+      "hints": [
+        "Compute the total population across all three grade strata.",
+        "Find the fraction of the population that seniors represent.",
+        "Multiply that fraction by the total sample size \\(90\\)."
+      ],
+      "hints_ar": [
+        "احسب إجمالي عدد الطلاب في الصفوف الثلاثة.",
+        "أوجد نسبة طلاب الصف الثاني عشر من المجموع الكلي.",
+        "اضرب النسبة في حجم العينة \\(90\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "tot = 600 + 500 + 400\nEXPECTED = sp.Rational(400, tot) * 90",
+      "id": "apstats-1207"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A factory inspects every \\(12\\)th bottle on an ordered assembly line of \\(240\\) bottles. If the random starting number between \\(1\\) and \\(12\\) is \\(5\\), what is the number of the \\(6\\)th bottle selected?",
+      "text_ar": "يفحص مصنع كل زجاجة رقمها مضاعف بزيادة \\(12\\) في خط إنتاج مرتب يضم \\(240\\) زجاجة. إذا كان رقم البداية العشوائي بين \\(1\\) و\\(12\\) هو \\(5\\)، فما رقم الزجاجة السادسة المختارة؟",
+      "choices": [
+        "\\(60\\)",
+        "\\(77\\)",
+        "\\(72\\)",
+        "\\(65\\)"
+      ],
+      "choices_ar": [
+        "\\(60\\)",
+        "\\(77\\)",
+        "\\(72\\)",
+        "\\(65\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>The systematic sample takes positions \\(5 + 12(k - 1)\\) for \\(k = 1, 2, \\dots\\).</p><p>For the \\(6\\)th selected bottle (\\(k = 6\\)), the position is \\(5 + 12(5) = 5 + 60 = 65\\).</p>",
+      "sol_ar": "<p>تتبع العينة المنتظمة المتتالية \\(5 + 12(k - 1)\\).</p><p>عند الزجاجة السادسة (\\(k = 6\\)) يكون رقمها \\(5 + 12 \\times 5 = 65\\).</p>",
+      "hints": [
+        "Write out the starting position \\(5\\) as the \\(1\\)st item in the systematic sample.",
+        "Notice that reaching the \\(6\\)th item requires adding \\(5\\) steps of length \\(12\\).",
+        "Evaluate \\(5 + 5 \\times 12\\)."
+      ],
+      "hints_ar": [
+        "ابدأ بالزجاجة الأولى عند الموضع \\(5\\).",
+        "يتطلب الوصول إلى الزجاجة السادسة إضافة \\(5\\) خطوات طول كل منها \\(12\\).",
+        "احسب قيمة \\(5 + 5 \\times 12\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 5 + 12*(6 - 1)",
+      "id": "apstats-1208"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "An agricultural trial tests \\(3\\) fertilizer formulas (A, B, C), \\(4\\) irrigation levels, and \\(2\\) soil types in a completely randomized design. How many distinct treatments are there in total?",
+      "text_ar": "تجربة زراعية تختبر \\(3\\) تركيبات سماد و\\(4\\) مستويات ري و\\(2\\) نوعي تربة في تصميم عشوائي تام. ما العدد الكلي للمعالجات المختلفة في التجربة؟",
+      "choices": [
+        "\\(9\\)",
+        "\\(24\\)",
+        "\\(14\\)",
+        "\\(12\\)"
+      ],
+      "choices_ar": [
+        "\\(9\\)",
+        "\\(24\\)",
+        "\\(14\\)",
+        "\\(12\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>In a multi-factor experiment, every combination of factor levels defines one treatment.</p><p>Multiply the numbers of levels: \\(3 \\times 4 \\times 2 = 24\\) treatments.</p>",
+      "sol_ar": "<p>في التجربة متعددة العوامل يمثل كل تركيب من مستويات العوامل معالجة مستقلة.</p><p>عدد المعالجات يساوي \\(3 \\times 4 \\times 2 = 24\\).</p>",
+      "hints": [
+        "Identify the number of levels for each of the three explanatory factors.",
+        "Remember that treatments are all distinct combinations across factors.",
+        "Multiply \\(3 \\times 4 \\times 2\\)."
+      ],
+      "hints_ar": [
+        "حدد عدد مستويات كل عامل من العوامل الثلاثة.",
+        "تذكر أن المعالجات تمثل جميع التركيبات الممكنة بين مستويات العوامل.",
+        "اضرب \\(3 \\times 4 \\times 2\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 3 * 4 * 2",
+      "id": "apstats-1209"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A clinical study randomly assigns \\(180\\) volunteers equally across \\(5\\) treatment groups (including a placebo group). How many volunteers are assigned to each treatment group?",
+      "text_ar": "توزع دراسة سريرية \\(180\\) متطوعاً عشوائياً بالتساوي على \\(5\\) مجموعات معالجة (تتضمن مجموعة الدواء الوهمي). كم متطوعاً يُخصص لكل مجموعة معالجة؟",
+      "choices": [
+        "\\(45\\)",
+        "\\(30\\)",
+        "\\(36\\)",
+        "\\(40\\)"
+      ],
+      "choices_ar": [
+        "\\(45\\)",
+        "\\(30\\)",
+        "\\(36\\)",
+        "\\(40\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Equal random assignment divides the \\(180\\) experimental units evenly across the \\(5\\) groups: \\(\\dfrac{180}{5} = 36\\) volunteers per group.</p>",
+      "sol_ar": "<p>يقسم التوزيع العشوائي المتساوي المتطوعين الـ \\(180\\) على المجموعات الخمس بالتساوي: \\(\\dfrac{180}{5} = 36\\) متطوعاً في كل مجموعة.</p>",
+      "hints": [
+        "Identify the total number of volunteers \\(180\\) and the \\(5\\) equal treatment groups.",
+        "Divide \\(180\\) equally across the \\(5\\) groups.",
+        "Check that \\(5\\) groups of that size sum back to \\(180\\)."
+      ],
+      "hints_ar": [
+        "حدّد إجمالي المتطوعين \\(180\\) وعدد مجموعات المعالجة \\(5\\).",
+        "اقسم العدد الكلي \\(180\\) بالتساوي على المجموعات الخمس.",
+        "تحقق من أن ضرب الناتج في \\(5\\) يعيد \\(180\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(180, 5)",
+      "id": "apstats-1210"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "A pollster takes a simple random sample of \\(n = 85\\) residents without replacement from a city. Under the \\(10\\%\\) condition for approximate independence, what is the minimum city population \\(N\\) required?",
+      "text_ar": "يسحب باحث عينة عشوائية بسيطة حجمها \\(n = 85\\) دون إرجاع من سكان مدينة. وفق شرط الـ \\(10\\%\\) للاستقلال التقريبي، ما الحد الأدنى لعدد سكان المدينة \\(N\\) المطلوب؟",
+      "choices": [
+        "\\(850\\)",
+        "\\(425\\)",
+        "\\(170\\)",
+        "\\(8500\\)"
+      ],
+      "choices_ar": [
+        "\\(850\\)",
+        "\\(425\\)",
+        "\\(170\\)",
+        "\\(8500\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>The \\(10\\%\\) condition states that the sample size must be at most \\(10\\%\\) of the population: \\(n \\le 0.10N \\implies N \\ge 10n\\).</p><p>With \\(n = 85\\), we require \\(N \\ge 10(85) = 850\\).</p>",
+      "sol_ar": "<p>ينص شرط الـ \\(10\\%\\) على أن يكون حجم العينة \\(n \\le 0.10N\\) أي \\(N \\ge 10n\\).</p><p>بوضع \\(n = 85\\) يكون الحد الأدنى لعدد السكان \\(10 \\times 85 = 850\\).</p>",
+      "hints": [
+        "Write the \\(10\\%\\) condition inequality: \\(n \\le 0.10N\\).",
+        "Isolate the population size \\(N\\) by multiplying \\(n\\) by \\(10\\).",
+        "Evaluate \\(10 \\times 85\\)."
+      ],
+      "hints_ar": [
+        "اكتب متباينة شرط الـ \\(10\\%\\): \\(n \\le 0.10N\\).",
+        "اعزل حجم المجتمع \\(N\\) بضرب حجم العينة في \\(10\\).",
+        "احسب قيمة \\(10 \\times 85\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 10 * 85",
+      "id": "apstats-1211"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "Researchers recruit \\(96\\) participants and group them into \\(4\\) equal-sized blocks by age bracket before randomly assigning participants within each block equally to \\(3\\) exercise regimens. How many participants receive each regimen within a single block?",
+      "text_ar": "جمّع باحثون \\(96\\) مشاركاً وقسموهم إلى \\(4\\) قطاعات متساوية حسب الفئة العمرية، ثم وزّعوا أفراد كل قطاع عشوائياً بالتساوي على \\(3\\) برامج رياضية. كم مشاركاً يتلقى كل برنامج داخل القطاع الواحد؟",
+      "choices": [
+        "\\(8\\)",
+        "\\(24\\)",
+        "\\(32\\)",
+        "\\(12\\)"
+      ],
+      "choices_ar": [
+        "\\(8\\)",
+        "\\(24\\)",
+        "\\(32\\)",
+        "\\(12\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Each of the \\(4\\) blocks contains \\(\\dfrac{96}{4} = 24\\) participants.</p><p>Within each block, dividing equally among the \\(3\\) treatments gives \\(\\dfrac{24}{3} = 8\\) participants per treatment per block.</p>",
+      "sol_ar": "<p>يضم كل قطاع من القطاعات الأربعة \\(\\dfrac{96}{4} = 24\\) مشاركاً.</p><p>وبالتوزيع المتساوي داخل القطاع على البرامج الثلاثة يكون النصيب \\(\\dfrac{24}{3} = 8\\) مشاركين لكل برنامج في القطاع الواحد.</p>",
+      "hints": [
+        "First divide the \\(96\\) participants across the \\(4\\) blocks to find the block size.",
+        "Next split each block evenly among the \\(3\\) exercise regimens.",
+        "Verify your answer satisfies \\(4 \\times 3 \\times k = 96\\)."
+      ],
+      "hints_ar": [
+        "اقسم أولاً المشاركين الـ \\(96\\) على القطاعات الأربعة لمعرفة حجم القطاع.",
+        "قسّم أفراد كل قطاع بالتساوي على البرامج الثلاثة.",
+        "تحقق أن \\(4 \\times 3 \\times k = 96\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(96, 4 * 3)",
+      "id": "apstats-1212"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.05,
+        "c": 0.25
+      },
+      "text": "Biologists catch, tag, and release \\(45\\) trout in a lake. One week later, they catch \\(60\\) trout and observe that \\(9\\) of them carry tags. Using the Lincoln-Petersen proportion \\(\\dfrac{\\text{Tagged in sample}}{\\text{Sample size}} = \\dfrac{\\text{Total tagged}}{N}\\), what is the estimated trout population \\(N\\)?",
+      "text_ar": "اصطاد علماء أحياء \\(45\\) سمكة سلمون، وسموها وأطلقوها في بحيرة. بعد أسبوع اصطادوا \\(60\\) سمكة فوجدوا \\(9\\) منها موسومة. باستعمال تناسب العينة \\(\\dfrac{9}{60} = \\dfrac{45}{N}\\)، ما التقدير العددي لمجموع الأسماك \\(N\\)؟",
+      "choices": [
+        "\\(300\\)",
+        "\\(270\\)",
+        "\\(405\\)",
+        "\\(240\\)"
+      ],
+      "choices_ar": [
+        "\\(300\\)",
+        "\\(270\\)",
+        "\\(405\\)",
+        "\\(240\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Solve the proportion \\(\\dfrac{9}{60} = \\dfrac{45}{N}\\):</p><p>Cross-multiplying gives \\(9N = 45 \\times 60 = 2700 \\implies N = \\dfrac{2700}{9} = 300\\) trout.</p>",
+      "sol_ar": "<p>نحل التناسب \\(\\dfrac{9}{60} = \\dfrac{45}{N}\\):</p><p>بالضرب التبادلي \\(9N = 45 \\times 60 = 2700 \\implies N = 300\\) سمكة.</p>",
+      "hints": [
+        "Set the sample proportion of tagged fish \\(\\dfrac{9}{60}\\) equal to the population proportion \\(\\dfrac{45}{N}\\).",
+        "Cross-multiply to express \\(9N\\).",
+        "Divide \\(45 \\times 60\\) by \\(9\\)."
+      ],
+      "hints_ar": [
+        "ساوِ نسبة الأسماك الموسومة في العينة \\(\\dfrac{9}{60}\\) بنسبتها في المجتمع \\(\\dfrac{45}{N}\\).",
+        "اضرب ضرباً تبادلياً.",
+        "اقسم \\(45 \\times 60\\) على \\(9\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(45 * 60, 9)",
+      "id": "apstats-1213"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "A customer satisfaction survey is mailed to \\(400\\) randomly selected subscribers, and \\(260\\) completed questionnaires are returned. What percentage of the sampled subscribers did NOT respond?",
+      "text_ar": "أُرسل استبيان رضا العملاء بالبريد إلى \\(400\\) مشترك مختارين عشوائياً، وأُعيد \\(260\\) استبياناً مكتملاً. ما النسبة المئوية (كنسبة عددية من غير رمز \\(\\%\\)) للمشتركين في العينة الذين لم يستجيبوا؟",
+      "choices": [
+        "\\(35\\)",
+        "\\(65\\)",
+        "\\(40\\)",
+        "\\(26\\)"
+      ],
+      "choices_ar": [
+        "\\(35\\)",
+        "\\(65\\)",
+        "\\(40\\)",
+        "\\(26\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>The number of nonrespondents is \\(400 - 260 = 140\\).</p><p>Expressing as a percentage: \\(\\dfrac{140}{400} \\times 100 = 35\\) (i.e. \\(35\\%\\)).</p>",
+      "sol_ar": "<p>عدد غير المستجيبين هو \\(400 - 260 = 140\\).</p><p>وبحساب النسبة المئوية: \\(\\dfrac{140}{400} \\times 100 = 35\\).</p>",
+      "hints": [
+        "Subtract the \\(260\\) respondents from the \\(400\\) sampled subscribers.",
+        "Divide the nonrespondent count by the total sample size \\(400\\).",
+        "Multiply by \\(100\\) to express the rate as a percentage."
+      ],
+      "hints_ar": [
+        "اطرح عدد المستجيبين \\(260\\) من إجمالي العينة \\(400\\).",
+        "اقسم عدد غير المستجيبين على حجم العينة \\(400\\).",
+        "اضرب في \\(100\\) لتحويل الكسر إلى نسبة مئوية."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(400 - 260, 400) * 100",
+      "id": "apstats-1214"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "In a matched-pairs experiment comparing two headache medications, \\(64\\) volunteers are paired by age and symptom severity so each pair tests both treatments (in random order). How many matched pairs are formed?",
+      "text_ar": "في تجربة الأزواج المتطابقة لمقارنة دواءين للصداع، يُقرن \\(64\\) متطوعاً في أزواج متشابهة بالعمر وشدة الأعراض بحيث يتلقى كل زوج الدواءين بترتيب عشوائي. كم زوجاً متطابقاً يتكوّن؟",
+      "choices": [
+        "\\(32\\)",
+        "\\(64\\)",
+        "\\(128\\)",
+        "\\(16\\)"
+      ],
+      "choices_ar": [
+        "\\(32\\)",
+        "\\(64\\)",
+        "\\(128\\)",
+        "\\(16\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Each matched pair consists of \\(2\\) similar participants (one assigned to each treatment first). Dividing \\(64\\) volunteers by \\(2\\) gives \\(32\\) pairs.</p>",
+      "sol_ar": "<p>يتكون كل زوج متطابق من متطوعَين متشابهَين، وبقسمة \\(64\\) متطوعاً على \\(2\\) نحصل على \\(32\\) زوجاً.</p>",
+      "hints": [
+        "Identify the total number of participants (\\(64\\)) in the matched-pairs study.",
+        "Recall that each matched pair groups \\(2\\) similar participants together.",
+        "Divide \\(64\\) by \\(2\\) to find the total number of pairs."
+      ],
+      "hints_ar": [
+        "حدّد العدد الكلي للمشاركين (\\(64\\)) في الدراسة.",
+        "تذكر أن كل زوج متطابق يضم مشاركَين اثنين.",
+        "اقسم \\(64\\) على \\(2\\) لإيجاد عدد الأزواج المتطابقة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(64, 2)",
+      "id": "apstats-1215"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "A poll of \\(n = 250\\) voters produces a margin of error of \\(\\pm 6\\%\\) for a sample proportion. Approximately how many voters must be polled at the same confidence level to cut the margin of error in half to \\(\\pm 3\\%\\)?",
+      "text_ar": "أسفر استطلاع شمل \\(n = 250\\) ناخباً عن هامش خطأ \\(\\pm 6\\%\\). كم ناخباً تقريباً يجب استطلاع آرائهم عند مستوى الثقة نفسه لخفض هامش الخطأ إلى النصف أي \\(\\pm 3\\%\\)؟",
+      "choices": [
+        "\\(1000\\)",
+        "\\(500\\)",
+        "\\(750\\)",
+        "\\(2000\\)"
+      ],
+      "choices_ar": [
+        "\\(1000\\)",
+        "\\(500\\)",
+        "\\(750\\)",
+        "\\(2000\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Margin of error is inversely proportional to \\(\\sqrt{n}\\): \\(\\text{ME} \\propto \\dfrac{1}{\\sqrt{n}}\\).</p><p>Halving \\(\\text{ME}\\) requires multiplying \\(\\sqrt{n}\\) by \\(2\\), which multiplies the sample size \\(n\\) by \\(2^2 = 4\\): \\(4 \\times 250 = 1000\\) voters.</p>",
+      "sol_ar": "<p>يتناسب هامش الخطأ عكسياً مع \\(\\sqrt{n}\\).</p><p>ولخفض هامش الخطأ إلى النصف يلزم مضاعفة حجم العينة \\(2^2 = 4\\) مرات، أي \\(4 \\times 250 = 1000\\) ناخب.</p>",
+      "hints": [
+        "Recall how the standard error of \\(\\hat{p}\\) scales with \\(\\sqrt{n}\\).",
+        "To reduce \\(\\dfrac{1}{\\sqrt{n}}\\) by a factor of \\(2\\), \\(\\sqrt{n}\\) must double.",
+        "Multiply the original sample size \\(250\\) by \\(4\\)."
+      ],
+      "hints_ar": [
+        "تذكر أن هامش الخطأ يتناسب عكسياً مع \\(\\sqrt{n}\\).",
+        "لتخفيض الهامش إلى النصف يجب أن يتضاعف \\(\\sqrt{n}\\).",
+        "اضرب حجم العينة الأصلي \\(250\\) في \\(4\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 250 * 2**2",
+      "id": "apstats-1216"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 2 · Collecting Data, Sampling & Experimental Design",
+      "topic_id": "aps-u2",
+      "subskill_id": "aps-u2-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A city conducts a cluster sample by randomly selecting \\(8\\) city blocks out of \\(60\\) and surveying all \\(15\\) households living on each chosen block. How many households are surveyed in total?",
+      "text_ar": "تجري مدينة مسحاً عنقودياً باختيار \\(8\\) مربعات سكنية عشوائياً من أصل \\(60\\) مربعاً، ثم مسح جميع الأسر الـ \\(15\\) في كل مربع مختار. ما العدد الكلي للأسر التي شملها المسح؟",
+      "choices": [
+        "\\(120\\)",
+        "\\(900\\)",
+        "\\(75\\)",
+        "\\(68\\)"
+      ],
+      "choices_ar": [
+        "\\(120\\)",
+        "\\(900\\)",
+        "\\(75\\)",
+        "\\(68\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>In a one-stage cluster sample, every unit inside the \\(8\\) selected clusters is included: \\(8 \\times 15 = 120\\) households.</p>",
+      "sol_ar": "<p>في العينة العنقودية ذات المرحلة الواحدة يُفحص كل فرد داخل العناقيد الثمانية المختارة: \\(8 \\times 15 = 120\\) أسرة.</p>",
+      "hints": [
+        "Distinguish between the \\(60\\) population blocks and the \\(8\\) blocks actually selected.",
+        "Notice that a single-stage cluster sample surveys all \\(15\\) households inside each chosen block.",
+        "Multiply \\(8\\) selected blocks by \\(15\\) households per block."
+      ],
+      "hints_ar": [
+        "فرّق بين عدد عناقيد المجتمع (\\(60\\)) وعدد العناقيد المختارة (\\(8\\)).",
+        "لاحظ أن العينة العنقودية تشمل جميع الأسر داخل كل مربع مختار.",
+        "اضرب \\(8\\) مربعات مختارة في \\(15\\) أسرة لكل مربع."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 8 * 15",
+      "id": "apstats-1217"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 3 · Probability, Random Variables & Distributions",
+      "topic_id": "aps-u3",
+      "subskill_id": "aps-u3-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A discrete random variable \\(X\\) takes values \\(1, 2, 3, 4\\) with probabilities \\(0.1, 0.3, k, 0.2\\) respectively. What is the expected value \\(E(X)\\)?",
+      "text_ar": "متغير عشوائي منفصل \\(X\\) يأخذ القيم \\(1, 2, 3, 4\\) باحتمالات \\(0.1, 0.3, k, 0.2\\) على الترتيب. ما القيمة المتوقعة \\(E(X)\\)؟",
+      "choices": [
+        "\\(2.7\\)",
+        "\\(2.5\\)",
+        "\\(2.3\\)",
+        "\\(3.0\\)"
+      ],
+      "choices_ar": [
+        "\\(2.7\\)",
+        "\\(2.5\\)",
+        "\\(2.3\\)",
+        "\\(3.0\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>First find \\(k\\) using total probability \\(1\\): \\(k = 1 - (0.1 + 0.3 + 0.2) = 0.4\\).</p><p>Compute \\(E(X) = 1(0.1) + 2(0.3) + 3(0.4) + 4(0.2) = 0.1 + 0.6 + 1.2 + 0.8 = 2.7\\).</p>",
+      "sol_ar": "<p>بما أن مجموع الاحتمالات يساوي \\(1\\) فإن \\(k = 1 - 0.6 = 0.4\\).</p><p>نحسب التوقع \\(E(X) = 1(0.1) + 2(0.3) + 3(0.4) + 4(0.2) = 2.7\\).</p>",
+      "hints": [
+        "Use the rule that all probabilities in a valid distribution sum to \\(1\\) to find \\(k\\).",
+        "Multiply each outcome \\(x\\) by its probability \\(P(X = x)\\).",
+        "Add the four products to get \\(E(X)\\)."
+      ],
+      "hints_ar": [
+        "استفد من أن مجموع الاحتمالات يساوي \\(1\\) لإيجاد \\(k\\).",
+        "اضرب كل قيمة في احتمالها المناظر.",
+        "اجمع الحواصل الأربعة لإيجاد التوقع \\(E(X)\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = 1 - sp.Rational(1,10) - sp.Rational(3,10) - sp.Rational(2,10)\nEXPECTED = 1*sp.Rational(1,10) + 2*sp.Rational(3,10) + 3*k + 4*sp.Rational(2,10)",
+      "id": "apstats-1218"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 3 · Probability, Random Variables & Distributions",
+      "topic_id": "aps-u3",
+      "subskill_id": "aps-u3-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "Events \\(A\\) and \\(B\\) are independent with \\(P(A) = 0.4\\) and \\(P(B) = 0.5\\). What is \\(P(A \\cup B)\\)?",
+      "text_ar": "الحدثان \\(A\\) و\\(B\\) مستقلان حيث \\(P(A) = 0.4\\) و\\(P(B) = 0.5\\). ما قيمة \\(P(A \\cup B)\\)؟",
+      "choices": [
+        "\\(0.7\\)",
+        "\\(0.9\\)",
+        "\\(0.2\\)",
+        "\\(0.6\\)"
+      ],
+      "choices_ar": [
+        "\\(0.7\\)",
+        "\\(0.9\\)",
+        "\\(0.2\\)",
+        "\\(0.6\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>For independent events, \\(P(A \\cap B) = P(A)P(B) = 0.4 \\times 0.5 = 0.2\\).</p><p>By the addition rule, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.4 + 0.5 - 0.2 = 0.7\\).</p>",
+      "sol_ar": "<p>بسبب الاستقلال \\(P(A \\cap B) = 0.4 \\times 0.5 = 0.2\\).</p><p>وبقاعدة الجمع \\(P(A \\cup B) = 0.4 + 0.5 - 0.2 = 0.7\\).</p>",
+      "hints": [
+        "Use independence of \\(A\\) and \\(B\\) to compute \\(P(A \\cap B) = P(A)P(B)\\).",
+        "Apply the general addition rule \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).",
+        "Subtract \\(0.2\\) from the sum \\(0.4 + 0.5\\)."
+      ],
+      "hints_ar": [
+        "استعمل استقلال \\(A\\) و\\(B\\) لحساب \\(P(A \\cap B) = P(A)P(B)\\).",
+        "طبق قاعدة الجمع العامة \\(P(A) + P(B) - P(A \\cap B)\\).",
+        "اطرح \\(0.2\\) من المجموع \\(0.4 + 0.5\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "pa, pb = sp.Rational(4, 10), sp.Rational(5, 10)\nEXPECTED = sp.simplify(pa + pb - pa*pb)",
+      "id": "apstats-1219"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 3 · Probability, Random Variables & Distributions",
+      "topic_id": "aps-u3",
+      "subskill_id": "aps-u3-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "Independent random variables \\(X\\) and \\(Y\\) have standard deviations \\(\\sigma_X = 3\\) and \\(\\sigma_Y = 4\\). What is the standard deviation of the difference \\(X - Y\\)?",
+      "text_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) انحرافاهما المعياريان \\(\\sigma_X = 3\\) و\\(\\sigma_Y = 4\\). ما الانحراف المعياري للفرق \\(X - Y\\)؟",
+      "choices": [
+        "\\(5\\)",
+        "\\(1\\)",
+        "\\(7\\)",
+        "\\(25\\)"
+      ],
+      "choices_ar": [
+        "\\(5\\)",
+        "\\(1\\)",
+        "\\(7\\)",
+        "\\(25\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Variances always ADD for independent variables, even when subtracting: \\(\\text{Var}(X - Y) = \\sigma_X^2 + \\sigma_Y^2 = 3^2 + 4^2 = 25\\).</p><p>Taking the square root gives \\(\\text{SD}(X - Y) = \\sqrt{25} = 5\\).</p>",
+      "sol_ar": "<p>عند طرح متغيرين مستقلين تُجمع التباينات دائماً: \\(\\text{Var}(X - Y) = 3^2 + 4^2 = 25\\).</p><p>بأخذ الجذر التربيعي يكون الانحراف المعياري \\(\\sqrt{25} = 5\\).</p>",
+      "hints": [
+        "Remember that variances add for independent random variables even for \\(X - Y\\).",
+        "Compute \\(\\text{Var}(X - Y) = \\sigma_X^2 + \\sigma_Y^2\\).",
+        "Take the square root to return from variance to standard deviation."
+      ],
+      "hints_ar": [
+        "تذكر أن التباينات تُجمع دائماً عند جمع أو طرح متغيرين مستقلين.",
+        "احسب \\(\\sigma_X^2 + \\sigma_Y^2\\).",
+        "خذ الجذر التربيعي للعودة من التباين إلى الانحراف المعياري."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.sqrt(3**2 + 4**2)",
+      "id": "apstats-1220"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 3 · Probability, Random Variables & Distributions",
+      "topic_id": "aps-u3",
+      "subskill_id": "aps-u3-2",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "A basketball player makes each free throw independently with probability \\(p = 0.25\\) from half-court. What is the expected number of attempts needed until the player makes the first successful shot?",
+      "text_ar": "يسجل لاعب كل رمية مستقلة باحتمال \\(p = 0.25\\). ما العدد المتوقع للمحاولات اللازمة لتسجيل أول رمية ناجحة؟",
+      "choices": [
+        "\\(4\\)",
+        "\\(3\\)",
+        "\\(16\\)",
+        "\\(2\\)"
+      ],
+      "choices_ar": [
+        "\\(4\\)",
+        "\\(3\\)",
+        "\\(16\\)",
+        "\\(2\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>The number of independent Bernoulli trials up to and including the first success follows a Geometric distribution with mean \\(\\mu = \\dfrac{1}{p} = \\dfrac{1}{0.25} = 4\\).</p>",
+      "sol_ar": "<p>يتبع عدد المحاولات حتى أول نجاح التوزيع الهندسي الذي وسطه المتوقع يساوي \\(\\mu = \\dfrac{1}{p} = \\dfrac{1}{0.25} = 4\\).</p>",
+      "hints": [
+        "Recognize the scenario as a Geometric random variable (trials until first success).",
+        "Recall the expected value formula \\(\\mu = \\dfrac{1}{p}\\) for a Geometric distribution.",
+        "Evaluate \\(\\dfrac{1}{0.25}\\)."
+      ],
+      "hints_ar": [
+        "تعرّف على المسألة بوصفها توزيعاً هندسياً (عدد المحاولات حتى أول نجاح).",
+        "تذكر صيغة التوقع في التوزيع الهندسي \\(\\mu = \\dfrac{1}{p}\\).",
+        "احسب قيمة \\(\\dfrac{1}{0.25}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.Rational(1, 1) / sp.Rational(1, 4)",
+      "id": "apstats-1221"
+    },
+    {
+      "type": "mcq",
+      "domain": "Unit 3 · Probability, Random Variables & Distributions",
+      "topic_id": "aps-u3",
+      "subskill_id": "aps-u3-3",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "A fair coin is tossed \\(4\\) times independently. What is the exact probability of obtaining strictly \\(1\\) head?",
+      "text_ar": "أُلقيت قطعة نقود متزنة \\(4\\) مرات مستقلة. ما الاحتمال الدقيق للحصول على صورة واحدة فقط؟",
+      "choices": [
+        "\\(\\dfrac{1}{4}\\)",
+        "\\(\\dfrac{1}{16}\\)",
+        "\\(\\dfrac{3}{8}\\)",
+        "\\(\\dfrac{1}{8}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{1}{4}\\)",
+        "\\(\\dfrac{1}{16}\\)",
+        "\\(\\dfrac{3}{8}\\)",
+        "\\(\\dfrac{1}{8}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Model the count of heads as \\(X \\sim \\text{Binomial}(4, 0.5)\\).</p><p>\\(P(X = 1) = \\binom{4}{1}(0.5)^1(0.5)^3 = 4 \\cdot \\dfrac{1}{16} = \\dfrac{1}{4}\\).</p>",
+      "sol_ar": "<p>عدد الصور يتبع التوزيع ذي الحدين \\(B(4, 0.5)\\): \\(P(X = 1) = \\binom{4}{1}(0.5)^4 = 4 \\times \\dfrac{1}{16} = \\dfrac{1}{4}\\).</p>",
+      "hints": [
+        "Identify the distribution as Binomial with \\(n = 4\\) and \\(p = 0.5\\).",
+        "Apply \\(P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}\\) with \\(k = 1\\).",
+        "Simplify \\(4 \\times \\dfrac{1}{16}\\)."
+      ],
+      "hints_ar": [
+        "استعمل التوزيع ذا الحدين حيث \\(n = 4\\) و\\(p = 0.5\\).",
+        "طبق الصيغة \\(\\binom{4}{1}(0.5)^1(0.5)^3\\).",
+        "بسّط الكسر الناتج."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.binomial(4, 1) * sp.Rational(1, 2)**4",
+      "id": "apstats-1222"
     }
   ]
 }

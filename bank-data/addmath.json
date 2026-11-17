@@ -46584,6 +46584,436 @@
         "b": -1.824,
         "c": 0.25
       }
+    },
+    {
+      "type": "mcq",
+      "domain": "Functions, Modulus & Quadratics",
+      "topic_id": "am-functions-quadratics",
+      "subskill_id": "am-functions-quadratics-1",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "The quadratic equation \\((k - 1)x^2 + 6x + (k + 2) = 0\\) has two distinct real roots and \\(k \\gt 1\\). What is the largest integer value of \\(k\\)?",
+      "text_ar": "المعادلة التربيعية \\((k - 1)x^2 + 6x + (k + 2) = 0\\) لها جذران حقيقيان مختلفان حيث \\(k \\gt 1\\). ما أكبر قيمة صحيحة ممكنة للثابت \\(k\\)؟",
+      "choices": [
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(2\\)"
+      ],
+      "choices_ar": [
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(2\\)"
+      ],
+      "answer": 3,
+      "sol": "<p>For two distinct real roots, the discriminant must be strictly positive: \\(b^2 - 4ac \\gt 0\\).</p><p>Substitute \\(a = k - 1\\), \\(b = 6\\), \\(c = k + 2\\): \\(36 - 4(k - 1)(k + 2) \\gt 0 \\implies 9 - (k^2 + k - 2) \\gt 0 \\implies k^2 + k - 11 \\lt 0\\).</p><p>Check integers with \\(k \\gt 1\\): for \\(k = 2\\), \\(4 + 2 - 11 = -5 \\lt 0\\); for \\(k = 3\\), \\(9 + 3 - 11 = 1 \\gt 0\\). Thus the largest integer is \\(2\\).</p>",
+      "sol_ar": "<p>لوجود جذرين حقيقيين مختلفين يشترط أن يكون المميز موجباً تماماً: \\(36 - 4(k - 1)(k + 2) \\gt 0\\).</p><p>بالتبسيط \\(k^2 + k - 11 \\lt 0\\). باختبار الأعداد الصحيحة الأكبر من \\(1\\): عند \\(k = 2\\) يكون \\(-5 \\lt 0\\)، وعند \\(k = 3\\) يكون \\(1 \\gt 0\\)، إذن أكبر عدد صحيح هو \\(2\\).</p>",
+      "hints": [
+        "Apply the discriminant condition \\(b^2 - 4ac \\gt 0\\) for two distinct real roots.",
+        "Simplify the quadratic inequality in \\(k\\) to \\(k^2 + k - 11 \\lt 0\\).",
+        "Test integer values starting from \\(k = 2\\) to find the maximum integer satisfying the inequality."
+      ],
+      "hints_ar": [
+        "طبق شرط المميز الموجب تماماً \\(b^2 - 4ac \\gt 0\\).",
+        "بسّط المتباينة إلى \\(k^2 + k - 11 \\lt 0\\).",
+        "اختبر الأعداد الصحيحة بدءاً من \\(k = 2\\) لتحديد أكبر عدد يحقق المتباينة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Symbol('k')\ndisc = 6**2 - 4*(k - 1)*(k + 2)\nbest_k = 0\nfor val in range(2, 10):\n    if disc.subs(k, val) > 0:\n        best_k = val\nEXPECTED = best_k",
+      "id": "addmath-1247"
+    },
+    {
+      "type": "mcq",
+      "domain": "Logarithmic & Exponential Functions",
+      "topic_id": "am-logs-exponentials",
+      "subskill_id": "am-logs-exponentials-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "Given \\(\\log_4(3x - 5) = \\dfrac{3}{2}\\), what is the value of \\(x\\)?",
+      "text_ar": "إذا كان \\(\\log_4(3x - 5) = \\dfrac{3}{2}\\)، فما قيمة \\(x\\)؟",
+      "choices": [
+        "\\(\\dfrac{13}{3}\\)",
+        "\\(\\dfrac{11}{3}\\)",
+        "\\(3\\)",
+        "\\(5\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{13}{3}\\)",
+        "\\(\\dfrac{11}{3}\\)",
+        "\\(3\\)",
+        "\\(5\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Convert from logarithmic form to exponential form: \\(3x - 5 = 4^{3/2}\\).</p><p>Since \\(4^{3/2} = (\\sqrt{4})^3 = 2^3 = 8\\), we have \\(3x - 5 = 8 \\implies 3x = 13 \\implies x = \\dfrac{13}{3}\\).</p>",
+      "sol_ar": "<p>نحول المعادلة اللوغاريتمية إلى الصورة الأسية: \\(3x - 5 = 4^{3/2} = (\\sqrt{4})^3 = 8\\).</p><p>إذن \\(3x = 13 \\implies x = \\dfrac{13}{3}\\).</p>",
+      "hints": [
+        "Rewrite \\(\\log_b(M) = c\\) in exponential form as \\(M = b^c\\).",
+        "Evaluate \\(4^{3/2}\\) by taking the square root of \\(4\\) first and then cubing.",
+        "Solve the linear equation \\(3x - 5 = 8\\) for \\(x\\)."
+      ],
+      "hints_ar": [
+        "حوّل \\(\\log_b(M) = c\\) إلى الصورة الأسية \\(M = b^c\\).",
+        "احسب قيمة \\(4^{3/2}\\) بأخذ الجذر التربيعي ثم التكعيب.",
+        "حل المعادلة الخطية الناتجة لإيجاد \\(x\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x')\nEXPECTED = sp.solve(sp.Eq(3*x - 5, sp.Integer(4)**sp.Rational(3, 2)), x)[0]",
+      "id": "addmath-1248"
+    },
+    {
+      "type": "mcq",
+      "domain": "Trigonometry & Circular Measure",
+      "topic_id": "am-trigonometry-circular",
+      "subskill_id": "am-trigonometry-circular-1",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": 1.25,
+        "c": 0.25
+      },
+      "text": "For \\(0 \\lt x \\lt \\dfrac{\\pi}{2}\\), solve \\(2\\sec^2 x - 5\\tan x = 0\\) and find the exact value of \\(\\tan x\\) corresponding to the smaller angle solution.",
+      "text_ar": "لقيم \\(0 \\lt x \\lt \\dfrac{\\pi}{2}\\)، حل المعادلة \\(2\\sec^2 x - 5\\tan x = 0\\) وأوجد القيمة الدقيقة للمقدار \\(\\tan x\\) المناظرة لأصغر حل للزاوية.",
+      "choices": [
+        "\\(\\dfrac{1}{2}\\)",
+        "\\(2\\)",
+        "\\(\\dfrac{1}{3}\\)",
+        "\\(\\dfrac{3}{2}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{1}{2}\\)",
+        "\\(2\\)",
+        "\\(\\dfrac{1}{3}\\)",
+        "\\(\\dfrac{3}{2}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Use the Pythagorean identity \\(\\sec^2 x = 1 + \\tan^2 x\\) to rewrite entirely in terms of \\(t = \\tan x\\):</p><p>\\(2(1 + t^2) - 5t = 0 \\implies 2t^2 - 5t + 2 = 0 \\implies (2t - 1)(t - 2) = 0\\).</p><p>Since \\(\\tan x\\) is strictly increasing on \\((0, \\frac{\\pi}{2})\\), the smaller angle corresponds to the smaller positive tangent value, \\(\\tan x = \\dfrac{1}{2}\\).</p>",
+      "sol_ar": "<p>باستعمال المتطابقة \\(\\sec^2 x = 1 + \\tan^2 x\\) وبوضع \\(t = \\tan x\\) نجد \\(2t^2 - 5t + 2 = 0\\).</p><p>بالتحليل \\((2t - 1)(t - 2) = 0\\)، وبما أن \\(\\tan x\\) متزايدة تماماً في الربع الأول فإن أصغر زاوية تقابل \\(\\tan x = \\dfrac{1}{2}\\).</p>",
+      "hints": [
+        "Substitute \\(\\sec^2 x = 1 + \\tan^2 x\\) to obtain a quadratic equation in \\(\\tan x\\).",
+        "Factorise \\(2\\tan^2 x - 5\\tan x + 2 = 0\\) into two linear factors.",
+        "Recall that \\(\\tan x\\) increases with \\(x\\) in the first quadrant, so pick the smaller root."
+      ],
+      "hints_ar": [
+        "عوّض \\(\\sec^2 x = 1 + \\tan^2 x\\) لتكوين معادلة تربيعية في \\(\\tan x\\).",
+        "حلل المعادلة \\(2\\tan^2 x - 5\\tan x + 2 = 0\\) إلى عاملين.",
+        "تذكر أن \\(\\tan x\\) متزايدة في الربع الأول فاختر الجذر الأصغر."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t')\nroots = sp.solve(2*(1 + t**2) - 5*t, t)\nEXPECTED = min(roots)",
+      "id": "addmath-1249"
+    },
+    {
+      "type": "mcq",
+      "domain": "Differentiation & Rates of Change",
+      "topic_id": "am-differentiation-rates",
+      "subskill_id": "am-differentiation-rates-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "The radius \\(r\\) of a circular ripple increases at a constant rate of \\(0.5\\text{ cm s}^{-1}\\). At the instant when \\(r = 6\\text{ cm}\\), at what rate (in \\(\\text{cm}^2\\text{ s}^{-1}\\)) is the area \\(A = \\pi r^2\\) increasing?",
+      "text_ar": "يزداد نصف قطر موجة دائرية \\(r\\) بمعدل ثابت قدره \\(0.5\\text{ cm s}^{-1}\\). عند اللحظة التي يكون فيها \\(r = 6\\text{ cm}\\)، ما معدل زيادة المساحة \\(A = \\pi r^2\\) بوحدة \\(\\text{cm}^2\\text{ s}^{-1}\\)؟",
+      "choices": [
+        "\\(6\\pi\\)",
+        "\\(3\\pi\\)",
+        "\\(12\\pi\\)",
+        "\\(18\\pi\\)"
+      ],
+      "choices_ar": [
+        "\\(6\\pi\\)",
+        "\\(3\\pi\\)",
+        "\\(12\\pi\\)",
+        "\\(18\\pi\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Differentiate \\(A = \\pi r^2\\) with respect to \\(r\\): \\(\\dfrac{\\mathrm{d}A}{\\mathrm{d}r} = 2\\pi r\\).</p><p>By the chain rule, \\(\\dfrac{\\mathrm{d}A}{\\mathrm{d}t} = \\dfrac{\\mathrm{d}A}{\\mathrm{d}r} \\cdot \\dfrac{\\mathrm{d}r}{\\mathrm{d}t} = 2\\pi(6)(0.5) = 6\\pi\\text{ cm}^2\\text{ s}^{-1}\\).</p>",
+      "sol_ar": "<p>نشتق المساحة بالنسبة إلى نصف القطر: \\(\\dfrac{\\mathrm{d}A}{\\mathrm{d}r} = 2\\pi r\\).</p><p>وبقاعدة السلسلة \\(\\dfrac{\\mathrm{d}A}{\\mathrm{d}t} = 2\\pi(6)(0.5) = 6\\pi\\text{ cm}^2\\text{ s}^{-1}\\).</p>",
+      "hints": [
+        "Differentiate the area formula \\(A = \\pi r^2\\) with respect to \\(r\\).",
+        "Multiply \\(\\dfrac{\\mathrm{d}A}{\\mathrm{d}r}\\) by the given rate \\(\\dfrac{\\mathrm{d}r}{\\mathrm{d}t} = 0.5\\).",
+        "Evaluate the product at \\(r = 6\\)."
+      ],
+      "hints_ar": [
+        "اشتق قانون المساحة \\(A = \\pi r^2\\) بالنسبة إلى \\(r\\).",
+        "اضرب \\(\\dfrac{\\mathrm{d}A}{\\mathrm{d}r}\\) في معدل التغير المعطى \\(\\dfrac{\\mathrm{d}r}{\\mathrm{d}t} = 0.5\\).",
+        "احسب الناتج عند \\(r = 6\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "r = sp.Symbol('r')\ndAdr = sp.diff(sp.pi*r**2, r)\nEXPECTED = sp.simplify(dAdr.subs(r, 6) * sp.Rational(1, 2))",
+      "id": "addmath-1250"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors in Two Dimensions & Relative Motion",
+      "topic_id": "am-vectors-2d",
+      "subskill_id": "am-vectors-2d-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "Given two vectors \\(\\mathbf{p} = \\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix}\\) and \\(\\mathbf{q} = \\begin{pmatrix} -1 \\\\ 11 \\end{pmatrix}\\), what is the magnitude of the vector \\(\\mathbf{p} + \\mathbf{q}\\)?",
+      "text_ar": "إذا كان المتجهان \\(\\mathbf{p} = \\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix}\\) و\\(\\mathbf{q} = \\begin{pmatrix} -1 \\\\ 11 \\end{pmatrix}\\)، فما مقدار المتجه \\(\\mathbf{p} + \\mathbf{q}\\)؟",
+      "choices": [
+        "\\(4\\sqrt{5}\\)",
+        "\\(12\\)",
+        "\\(2\\sqrt{17}\\)",
+        "\\(10\\)"
+      ],
+      "choices_ar": [
+        "\\(4\\sqrt{5}\\)",
+        "\\(12\\)",
+        "\\(2\\sqrt{17}\\)",
+        "\\(10\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Add component-wise: \\(\\mathbf{p} + \\mathbf{q} = \\begin{pmatrix} 5 - 1 \\\\ -3 + 11 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 8 \\end{pmatrix}\\).</p><p>Compute the magnitude: \\(|\\mathbf{p} + \\mathbf{q}| = \\sqrt{4^2 + 8^2} = \\sqrt{16 + 64} = \\sqrt{80} = 4\\sqrt{5}\\).</p>",
+      "sol_ar": "<p>نجمع المركّبات: \\(\\mathbf{p} + \\mathbf{q} = \\begin{pmatrix} 4 \\\\ 8 \\end{pmatrix}\\).</p><p>إذن المقدار يساوي \\(\\sqrt{4^2 + 8^2} = \\sqrt{80} = 4\\sqrt{5}\\).</p>",
+      "hints": [
+        "Add the horizontal and vertical components of \\(\\mathbf{p}\\) and \\(\\mathbf{q}\\) first.",
+        "Apply Pythagoras' theorem \\(\\sqrt{x^2 + y^2}\\) to the resultant vector components.",
+        "Simplify the resulting square root into surd form \\(k\\sqrt{5}\\)."
+      ],
+      "hints_ar": [
+        "اجمع المركّبتين الأفقية والرأسية للمتجهين \\(\\mathbf{p}\\) و\\(\\mathbf{q}\\) أولاً.",
+        "طبق فيثاغورس \\(\\sqrt{x^2 + y^2}\\) على مركّبتي المحصلة.",
+        "بسّط الجذر الناتج إلى الصورة \\(k\\sqrt{5}\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "v = sp.Matrix([5, -3]) + sp.Matrix([-1, 11])\nEXPECTED = sp.simplify(v.norm())",
+      "id": "addmath-1251"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors in Two Dimensions & Relative Motion",
+      "topic_id": "am-vectors-2d",
+      "subskill_id": "am-vectors-2d-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "A particle starts at \\(A(-1, 2)\\) and moves with constant velocity \\(\\mathbf{v} = \\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\text{ m s}^{-1}\\). After how many seconds (\\(t \\gt 0\\)) is the particle at a distance of \\(13\\text{ m}\\) from the origin \\(O\\)?",
+      "text_ar": "يبدأ جسيم حركته من النقطة \\(A(-1, 2)\\) بسرعة ثابتة \\(\\mathbf{v} = \\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}\\text{ m s}^{-1}\\). بعد كم ثانية (\\(t \\gt 0\\)) يصبح بُعده عن نقطة الأصل \\(O\\) مساوياً \\(13\\text{ m}\\)؟",
+      "choices": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(5\\)"
+      ],
+      "choices_ar": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(5\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Position at time \\(t\\): \\(\\mathbf{r}(t) = \\begin{pmatrix} -1 + 3t \\\\ 2 + 5t \\end{pmatrix}\\).</p><p>Equate squared distance to \\(13^2 = 169\\): \\((3t - 1)^2 + (5t + 2)^2 = 169 \\implies (9t^2 - 6t + 1) + (25t^2 + 20t + 4) = 169\\).</p><p>Simplify to \\(34t^2 + 14t - 164 = 0 \\implies 17t^2 + 7t - 82 = 0 \\implies (t - 2)(17t + 41) = 0\\). Since \\(t \\gt 0\\), \\(t = 2\\).</p>",
+      "sol_ar": "<p>متجه الموضع عند الزمن \\(t\\) هو \\(\\mathbf{r}(t) = \\begin{pmatrix} 3t - 1 \\\\ 5t + 2 \\end{pmatrix}\\).</p><p>بمساواة مربع المسافة مع \\(13^2 = 169\\) والتبسيط نجد \\(17t^2 + 7t - 82 = (t - 2)(17t + 41) = 0\\)، وبما أن \\(t \\gt 0\\) فإن \\(t = 2\\).</p>",
+      "hints": [
+        "Write the position vector \\(\\mathbf{r}(t) = \\mathbf{r}_0 + t\\mathbf{v}\\) in component form.",
+        "Set the sum of squares of the components equal to \\(13^2\\).",
+        "Factorise the quadratic equation in \\(t\\) and keep only the positive root."
+      ],
+      "hints_ar": [
+        "اكتب متجه الموضع \\(\\mathbf{r}(t) = \\mathbf{r}_0 + t\\mathbf{v}\\) بدلالة المركّبات.",
+        "ساوِ مجموع مربعي المركّبتين بالعدد \\(13^2\\).",
+        "حلل المعادلة التربيعية الناتجة واختر الجذر الموجب فقط."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t')\neq = sp.Eq((-1 + 3*t)**2 + (2 + 5*t)**2, 13**2)\nEXPECTED = max(r for r in sp.solve(eq, t) if r > 0)",
+      "id": "addmath-1252"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors in Two Dimensions & Relative Motion",
+      "topic_id": "am-vectors-2d",
+      "subskill_id": "am-vectors-2d-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.1,
+        "c": 0.25
+      },
+      "text": "The vectors \\(\\mathbf{a} = \\begin{pmatrix} 2k - 1 \\\\ 6 \\end{pmatrix}\\) and \\(\\mathbf{b} = \\begin{pmatrix} 5 \\\\ k + 3 \\end{pmatrix}\\) are parallel in the same direction. What is the positive value of \\(k\\)?",
+      "text_ar": "المتجهان \\(\\mathbf{a} = \\begin{pmatrix} 2k - 1 \\\\ 6 \\end{pmatrix}\\) و\\(\\mathbf{b} = \\begin{pmatrix} 5 \\\\ k + 3 \\end{pmatrix}\\) متوازيان وفي الاتجاه نفسه. ما القيمة الموجبة للثابت \\(k\\)؟",
+      "choices": [
+        "\\(\\dfrac{7}{2}\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(\\dfrac{5}{2}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{7}{2}\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(\\dfrac{5}{2}\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>For parallel 2D vectors, cross-products vanish: \\((2k - 1)(k + 3) = 6 \\times 5 = 30\\).</p><p>Expand and simplify: \\(2k^2 + 5k - 33 = 0 \\implies (2k + 11)(k - 3) = 0\\). The positive solution is \\(k = 3\\) (for which both vectors equal \\(\\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix}\\)).</p>",
+      "sol_ar": "<p>لتوازي المتجهين نساوي حاصل الضرب التبادلي: \\((2k - 1)(k + 3) = 30\\).</p><p>بالتبسيط \\(2k^2 + 5k - 33 = (2k + 11)(k - 3) = 0\\)، فتكون القيمة الموجبة هي \\(k = 3\\).</p>",
+      "hints": [
+        "Use the parallelism condition \\(\\dfrac{2k - 1}{5} = \\dfrac{6}{k + 3}\\).",
+        "Cross-multiply to obtain the quadratic \\(2k^2 + 5k - 33 = 0\\).",
+        "Factorise and keep the root that preserves the same direction."
+      ],
+      "hints_ar": [
+        "استعمل شرط التوازي \\(\\dfrac{2k - 1}{5} = \\dfrac{6}{k + 3}\\).",
+        "اضرب ضرباً تبادلياً لتكوين المعادلة التربيعية \\(2k^2 + 5k - 33 = 0\\).",
+        "حلل المعادلة واختر القيمة الموجبة التي تحافظ على الاتجاه نفسه."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Symbol('k')\nEXPECTED = max(r for r in sp.solve((2*k - 1)*(k + 3) - 30, k) if r > 0)",
+      "id": "addmath-1253"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors in Two Dimensions & Relative Motion",
+      "topic_id": "am-vectors-2d",
+      "subskill_id": "am-vectors-2d-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.2,
+        "c": 0.25
+      },
+      "text": "An aircraft flies with airspeed \\(200\\text{ km h}^{-1}\\) on a vector velocity \\(\\begin{pmatrix} 120 \\\\ 160 \\end{pmatrix}\\text{ km h}^{-1}\\) relative to the air, while a crosswind blows with velocity \\(\\begin{pmatrix} -45 \\\\ -60 \\end{pmatrix}\\text{ km h}^{-1}\\). What is the ground speed of the aircraft in \\(\\text{km h}^{-1}\\)?",
+      "text_ar": "تطير طائرة بسرعة متجهة بالنسبة للهواء \\(\\begin{pmatrix} 120 \\\\ 160 \\end{pmatrix}\\text{ km h}^{-1}\\) بينما تهب رياح بسرعة \\(\\begin{pmatrix} -45 \\\\ -60 \\end{pmatrix}\\text{ km h}^{-1}\\). ما مقدار السرعة الفعلية للطائرة بالنسبة للأرض بوحدة \\(\\text{km h}^{-1}\\)؟",
+      "choices": [
+        "\\(125\\)",
+        "\\(100\\)",
+        "\\(150\\)",
+        "\\(175\\)"
+      ],
+      "choices_ar": [
+        "\\(125\\)",
+        "\\(100\\)",
+        "\\(150\\)",
+        "\\(175\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Add the aircraft velocity relative to the air and the wind velocity to find the resultant velocity relative to the ground:</p><p>\\(\\mathbf{v}_g = \\begin{pmatrix} 120 - 45 \\\\ 160 - 60 \\end{pmatrix} = \\begin{pmatrix} 75 \\\\ 100 \\end{pmatrix}\\).</p><p>Ground speed is the magnitude: \\(\\sqrt{75^2 + 100^2} = 25\\sqrt{3^2 + 4^2} = 25 \\times 5 = 125\\text{ km h}^{-1}\\).</p>",
+      "sol_ar": "<p>السرعة المحصلة بالنسبة للأرض هي مجموع المتجهين: \\(\\mathbf{v}_g = \\begin{pmatrix} 75 \\\\ 100 \\end{pmatrix}\\).</p><p>مقدار السرعة يساوي \\(\\sqrt{75^2 + 100^2} = 125\\text{ km h}^{-1}\\).</p>",
+      "hints": [
+        "Find the resultant velocity relative to the ground by adding the plane's velocity and the wind velocity.",
+        "Evaluate the components \\((75, 100)\\) of the resultant velocity vector.",
+        "Calculate its magnitude using the \\(3\\text{-}4\\text{-}5\\) right-triangle ratio scaled by \\(25\\)."
+      ],
+      "hints_ar": [
+        "اجمع متجهي سرعة الطائرة والرياح لإيجاد السرعة المحصلة بالنسبة للأرض.",
+        "حدّد مركّبتي السرعة المحصلة \\((75, 100)\\).",
+        "احسب مقدار المحصلة باستعمال مثلث \\(3\\text{-}4\\text{-}5\\) مضاعفاً بـ \\(25\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "vg = sp.Matrix([120, 160]) + sp.Matrix([-45, -60])\nEXPECTED = vg.norm()",
+      "id": "addmath-1254"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors in Two Dimensions & Relative Motion",
+      "topic_id": "am-vectors-2d",
+      "subskill_id": "am-vectors-2d-3",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": 1.3,
+        "c": 0.25
+      },
+      "text": "In triangle \\(OAB\\), \\(\\vec{OA} = 6\\mathbf{a}\\) and \\(\\vec{OB} = 6\\mathbf{b}\\). Point \\(P\\) lies on \\(AB\\) with \\(AP : PB = 1 : 2\\), and point \\(D\\) lies on \\(OA\\) extended such that \\(\\vec{OD} = 8\\mathbf{a}\\). The line \\(DP\\) meets \\(OB\\) at \\(Q\\), where \\(\\vec{OQ} = \\lambda\\vec{OB}\\). What is the exact value of \\(\\lambda\\)?",
+      "text_ar": "في المثلث \\(OAB\\)، \\(\\vec{OA} = 6\\mathbf{a}\\) و\\(\\vec{OB} = 6\\mathbf{b}\\). تقع النقطة \\(P\\) على \\(AB\\) بحيث \\(AP : PB = 1 : 2\\)، وتقع \\(D\\) على امتداد \\(OA\\) بحيث \\(\\vec{OD} = 8\\mathbf{a}\\). يقطع المستقيم \\(DP\\) الضلع \\(OB\\) عند \\(Q\\) حيث \\(\\vec{OQ} = \\lambda\\vec{OB}\\). ما القيمة الدقيقة للعدد \\(\\lambda\\)؟",
+      "choices": [
+        "\\(\\dfrac{2}{3}\\)",
+        "\\(\\dfrac{1}{2}\\)",
+        "\\(\\dfrac{3}{4}\\)",
+        "\\(\\dfrac{3}{5}\\)"
+      ],
+      "choices_ar": [
+        "\\(\\dfrac{2}{3}\\)",
+        "\\(\\dfrac{1}{2}\\)",
+        "\\(\\dfrac{3}{4}\\)",
+        "\\(\\dfrac{3}{5}\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>First find \\(\\vec{OP} = \\vec{OA} + \\dfrac{1}{3}(\\vec{OB} - \\vec{OA}) = 6\\mathbf{a} + \\dfrac{1}{3}(6\\mathbf{b} - 6\\mathbf{a}) = 4\\mathbf{a} + 2\\mathbf{b}\\).</p><p>Then \\(\\vec{DP} = \\vec{OP} - \\vec{OD} = -4\\mathbf{a} + 2\\mathbf{b}\\). Also \\(\\vec{DQ} = 6\\lambda\\mathbf{b} - 8\\mathbf{a}\\).</p><p>Because \\(D, P, Q\\) are collinear, \\(\\vec{DQ} = k\\vec{DP}\\): comparing the \\(\\mathbf{a}\\)-components gives \\(-8 = -4k \\implies k = 2\\), so the \\(\\mathbf{b}\\)-components give \\(6\\lambda = 2(2) = 4 \\implies \\lambda = \\dfrac{2}{3}\\).</p>",
+      "sol_ar": "<p>نجد أولاً \\(\\vec{OP} = 4\\mathbf{a} + 2\\mathbf{b}\\)، ومن ثم \\(\\vec{DP} = -4\\mathbf{a} + 2\\mathbf{b}\\) و\\(\\vec{DQ} = -8\\mathbf{a} + 6\\lambda\\mathbf{b}\\).</p><p>باستعمال شرط الاستقامة الواحدة \\(\\vec{DQ} = k\\vec{DP}\\) ينتج من مركّبة \\(\\mathbf{a}\\) أن \\(k = 2\\)، ومن مركّبة \\(\\mathbf{b}\\) أن \\(6\\lambda = 4 \\implies \\lambda = \\dfrac{2}{3}\\).</p>",
+      "hints": [
+        "Express \\(\\vec{OP}\\) as a weighted combination of \\(\\vec{OA} = 6\\mathbf{a}\\) and \\(\\vec{OB} = 6\\mathbf{b}\\).",
+        "Form the direction vectors \\(\\vec{DP} = \\vec{OP} - \\vec{OD}\\) and \\(\\vec{DQ} = \\vec{OQ} - \\vec{OD}\\).",
+        "Equate coefficients using collinearity \\(\\vec{DQ} = k\\vec{DP}\\) to solve first for \\(k\\), then for \\(\\lambda\\)."
+      ],
+      "hints_ar": [
+        "عبّر عن \\(\\vec{OP}\\) بدلالة \\(\\mathbf{a}\\) و\\(\\mathbf{b}\\) باستعمال النسبة \\(1 : 2\\).",
+        "كوّن المتجهين \\(\\vec{DP}\\) و\\(\\vec{DQ}\\).",
+        "استعمل التوازي \\(\\vec{DQ} = k\\vec{DP}\\) ومقارنة المعاملات لإيجاد \\(k\\) ثم \\(\\lambda\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "lam, k = sp.symbols('lam k')\nOP = 4*sp.Matrix([1, 0]) + 2*sp.Matrix([0, 1])\nOD = 8*sp.Matrix([1, 0])\nOQ = 6*lam*sp.Matrix([0, 1])\nDP = OP - OD\nDQ = OQ - OD\nsol = sp.solve([sp.Eq(DQ[0], k*DP[0]), sp.Eq(DQ[1], k*DP[1])], [lam, k])\nEXPECTED = sol[lam]",
+      "id": "addmath-1255"
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors in Two Dimensions & Relative Motion",
+      "topic_id": "am-vectors-2d",
+      "subskill_id": "am-vectors-2d-1",
+      "difficulty": "hard",
+      "calc": true,
+      "irt": {
+        "a": 1.45,
+        "b": 1.35,
+        "c": 0.25
+      },
+      "text": "A boat must cross a straight river of width \\(240\\text{ m}\\) directly from a pier \\(A\\) to the point \\(B\\) immediately opposite on the other bank. The river flows downstream at \\(1.5\\text{ m s}^{-1}\\) and the boat moves at \\(2.5\\text{ m s}^{-1}\\) relative to the water. How many seconds does the crossing take?",
+      "text_ar": "يريد قارب عبور نهر مستقيم عرضه \\(240\\text{ m}\\) مباشرة من الرصيف \\(A\\) إلى النقطة \\(B\\) المقابلة تماماً على الضفة الأخرى. يجري تيار النهر بسرعة \\(1.5\\text{ m s}^{-1}\\) وسرعة القارب بالنسبة للماء \\(2.5\\text{ m s}^{-1}\\). كم ثانية يستغرق العبور؟",
+      "choices": [
+        "\\(120\\)",
+        "\\(96\\)",
+        "\\(150\\)",
+        "\\(160\\)"
+      ],
+      "choices_ar": [
+        "\\(120\\)",
+        "\\(96\\)",
+        "\\(150\\)",
+        "\\(160\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>To travel perpendicularly across the banks, the boat aims upstream so its upstream velocity component cancels the river current of \\(1.5\\text{ m s}^{-1}\\).</p><p>By Pythagoras' theorem, the resultant speed directly across the river is \\(\\sqrt{2.5^2 - 1.5^2} = \\sqrt{6.25 - 2.25} = \\sqrt{4} = 2\\text{ m s}^{-1}\\).</p><p>Crossing time is \\(\\dfrac{240}{2} = 120\\text{ s}\\).</p>",
+      "sol_ar": "<p>لعبور النهر عمودياً نحو \\(B\\) تتجه مقدمة القارب عكس التيار لتلغي المركّبة الموازية للضفة سرعة التيار \\(1.5\\text{ m s}^{-1}\\).</p><p>تكون السرعة المحصلة العمودية على الضفة \\(\\sqrt{2.5^2 - 1.5^2} = 2\\text{ m s}^{-1}\\)، ومن ثم زمن العبور يساوي \\(\\dfrac{240}{2} = 120\\text{ s}\\).</p>",
+      "hints": [
+        "For a direct perpendicular path from \\(A\\) to \\(B\\), the downstream current component must be cancelled out.",
+        "Use a right-angled velocity triangle with hypotenuse \\(2.5\\) and leg \\(1.5\\) to find the cross-river speed.",
+        "Divide the river width \\(240\\text{ m}\\) by that perpendicular crossing speed."
+      ],
+      "hints_ar": [
+        "للوصول مباشرة إلى \\(B\\) يجب أن تلغي مركّبة سرعة القارب الموازية للضفة سرعة التيار.",
+        "استعمل مثلث السرعات القائم بوتر \\(2.5\\) وضلع \\(1.5\\) لإيجاد سرعة العبور العمودية.",
+        "اقسم عرض النهر \\(240\\text{ m}\\) على سرعة العبور العمودية."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "v_across = sp.sqrt(sp.Rational(5, 2)**2 - sp.Rational(3, 2)**2)\nEXPECTED = sp.simplify(240 / v_across)",
+      "id": "addmath-1256"
     }
   ]
 }

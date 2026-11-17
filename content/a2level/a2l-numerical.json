@@ -93,12 +93,12 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Fixed-Point Iteration x_{n+1} = \\(g(x_n)\\) Cobweb Diagram",
-          "ar": "في مسألة رياضية ضمن (الرياضيات) بالاعتماد على العلاقات الرياضية \\(g(x_n)\\) والقيم العددية 1، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
+          "en": "⊙ Explorer · Fixed-Point Iteration \\(x_{n+1} = g(x_n)\\) Cobweb Diagram",
+          "ar": "⊙ المختبر التفاعلي · التكرار ذو النقطة الثابتة \\(x_{n+1} = g(x_n)\\) ومخطط العنكبوت"
         },
         "canvasId": "a2lnumericalExCanvas",
         "ariaLabel": {
-          "en": "Fixed-Point Iteration x_{n+1} = g(x_n) Cobweb Diagram interactive mathematical canvas",
+          "en": "Fixed-Point Iteration x_(n+1) = g(x_n) Cobweb Diagram interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
@@ -107,7 +107,7 @@
           "descId": "a2lnumericalExCanvas_dataDesc",
           "rowsId": "a2lnumericalExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Fixed-Point Iteration x_{n+1} = \\(g(x_n)\\) Cobweb Diagram",
+            "en": "Live numerical table for Fixed-Point Iteration \\(x_{n+1} = g(x_n)\\) Cobweb Diagram",
             "ar": null
           },
           "columns": [
@@ -257,7 +257,7 @@
           "ar": null
         },
         "solution": {
-          "en": "1\\ \\text{and}\\ 2,\\ \\text{since}\\ f(1)&lt;0&lt;f(2).",
+          "en": "\\(1\\text{ and }2\\), since \\(f(1)\\lt 0\\lt f(2)\\).",
           "ar": null
         }
       },
@@ -287,7 +287,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p>To determine the range of \\(k\\) for which the iteration converges locally, we follow these steps:\n\n1. **Root relation:**\nAt the fixed point \\(x = \\alpha\\), we have:\n\\[ \\alpha = g(\\alpha) = \\frac{k}{\\alpha^2 + 2} \\implies \\alpha^3 + 2\\alpha = k. \\]\nSince \\(k > 0\\) and the function \\(f(x) = x^3 + 2x - k\\) satisfies \\(f'(x) = 3x^2 + 2 > 0\\) for all real \\(x\\), there is a unique real root \\(\\alpha\\), and \\(\\alpha > 0\\).\n\n2. **Differentiating \\(g(x)\\):**\nUsing the chain rule on \\(g(x) = k(x^2 + 2)^{-1}\\):\n\\[ g'(x) = -k(x^2 + 2)^{-2} \\cdot (2x) = -\\frac{2kx}{(x^2 + 2)^2}. \\]\n\n3. **Evaluating \\(g'(\\alpha)\\):**\nFrom \\(\\alpha(\\alpha^2 + 2) = k\\), we have \\(\\alpha^2 + 2 = \\frac{k}{\\alpha}\\). Substituting this into the denominator gives:\n\\[ g'(\\alpha) = -\\frac{2k\\alpha}{\\left(\\frac{k}{\\alpha}\\right)^2} = -\\frac{2k\\alpha^3}{k^2} = -\\frac{2\\alpha^3}{k}. \\]\nNow, substitute \\(k = \\alpha^3 + 2\\alpha\\):\n\\[ g'(\\alpha) = -\\frac{2\\alpha^3}{\\alpha^3 + 2\\alpha} = -\\frac{2\\alpha^2}{\\alpha^2 + 2}. \\]\n\n4. **Applying the convergence criterion:**\nSince \\(\\alpha > 0\\), \\(g'(\\alpha) < 0\\). Local convergence requires:\n\\[ |g'(\\alpha)| < 1 \\iff \\frac{2\\alpha^2}{\\alpha^2 + 2} < 1. \\]\nMultiplying by \\(\\alpha^2 + 2 > 0\\):\n\\[ 2\\alpha^2 < \\alpha^2 + 2 \\iff \\alpha^2 < 2 \\iff 0 < \\alpha < \\sqrt{2}. \\]\n\n5. **Finding the range of \\(k\\):**\nBecause \\(k(\\alpha) = \\alpha^3 + 2\\alpha\\) is strictly increasing for \\(\\alpha > 0\\) (since \\(k'(\\alpha) = 3\\alpha^2 + 2 > 0\\)):\n- As \\(\\alpha \\to 0^+\\), \\(k \\to 0\\).\n- At \\(\\alpha = \\sqrt{2}\\):\n\\[ k = (\\sqrt{2})^3 + 2\\sqrt{2} = 2\\sqrt{2} + 2\\sqrt{2} = 4\\sqrt{2}. \\]\n\nThus, the iteration is guaranteed to converge locally if and only if \\(0 < k < 4\\sqrt{2}\\).\n\n**Common Misconceptions:**\n- Choice B (\\(0 < k < 2\\sqrt{2}\\)) results from incorrectly approximating \\(k \\approx 2\\alpha\\) rather than \\(\\alpha^3 + 2\\alpha\\).\n- Choice C (\\(0 < k < 3\\)) arises from assuming the threshold root is \\(\\alpha = 1\\) instead of \\(\\alpha = \\sqrt{2}\\).\n- Choice D (\\(0 < k < 12\\)) arises from solving \\(\\alpha < 2\\) instead of \\(\\alpha < \\sqrt{2}\\).</p>",
+          "en": "<p>To determine the range of \\(k\\) for which the iteration converges locally, we follow these steps:\n\n1. **Root relation:**\nAt the fixed point \\(x = \\alpha\\), we have:\n\\[ \\alpha = g(\\alpha) = \\frac{k}{\\alpha^2 + 2} \\implies \\alpha^3 + 2\\alpha = k. \\]\nSince \\(k > 0\\) and the function \\(f(x) = x^3 + 2x - k\\) satisfies \\(f'(x) = 3x^2 + 2 > 0\\) for all real \\(x\\), there is a unique real root \\(\\alpha\\), and \\(\\alpha > 0\\).\n\n2. **Differentiating \\(g(x)\\):**\nUsing the chain rule on \\(g(x) = k(x^2 + 2)^{-1}\\):\n\\[ g'(x) = -k(x^2 + 2)^{-2} \\cdot (2x) = -\\frac{2kx}{(x^2 + 2)^2}. \\]\n\n3. **Evaluating \\(g'(\\alpha)\\):**\nFrom \\(\\alpha(\\alpha^2 + 2) = k\\), we have \\(\\alpha^2 + 2 = \\frac{k}{\\alpha}\\). Substituting this into the denominator gives:\n\\[ g'(\\alpha) = -\\frac{2k\\alpha}{\\left(\\frac{k}{\\alpha}\\right)^2} = -\\frac{2k\\alpha^3}{k^2} = -\\frac{2\\alpha^3}{k}. \\]\nNow, substitute \\(k = \\alpha^3 + 2\\alpha\\):\n\\[ g'(\\alpha) = -\\frac{2\\alpha^3}{\\alpha^3 + 2\\alpha} = -\\frac{2\\alpha^2}{\\alpha^2 + 2}. \\]\n\n4. **Applying the convergence criterion:**\nSince \\(\\alpha > 0\\), \\(g'(\\alpha) < 0\\). Local convergence requires:\n\\[ |g'(\\alpha)| < 1 \\iff \\frac{2\\alpha^2}{\\alpha^2 + 2} < 1. \\]\nMultiplying by \\(\\alpha^2 + 2 > 0\\):\n\\[ 2\\alpha^2 < \\alpha^2 + 2 \\iff \\alpha^2 < 2 \\iff 0 < \\alpha < \\sqrt{2}. \\]\n\n5. **Finding the range of \\(k\\):**\nBecause \\(k(\\alpha) = \\alpha^3 + 2\\alpha\\) is strictly increasing for \\(\\alpha > 0\\) (since \\(k'(\\alpha) = 3\\alpha^2 + 2 > 0\\)):\n- As \\(\\alpha \\to 0^+\\), \\(k \\to 0\\).\n- At \\(\\alpha = \\sqrt{2}\\):\n\\[ k = (\\sqrt{2})^3 + 2\\sqrt{2} = 2\\sqrt{2} + 2\\sqrt{2} = 4\\sqrt{2}. \\]\n\nThus, the iteration is guaranteed to converge locally if and only if \\(0 < k < 4\\sqrt{2}\\).</p>",
           "ar": null
         }
       },
@@ -390,12 +390,12 @@
           "ar": null
         },
         "solution": {
-          "en": "f(1)=-3&lt;0, f(2)=6&gt;0: sign change confirms root. \\(f(1.5)=1.5^3+3-6=-0.625\\). \\(f'(x)=3x^2+2\\Rightarrow f'(1.5)=8.75\\). \\(x_1=1.5-\\tfrac{-0.625}{8.75}\\approx1.571\\).",
+          "en": "\\(f(1)=-3\\lt 0\\), \\(f(2)=6\\gt 0\\): sign change confirms a root in \\((1,2)\\). \\(f(1.5)=1.5^3+3-6=-0.625\\), \\(f'(x)=3x^2+2\\Rightarrow f'(1.5)=8.75\\). \\(x_1=1.5-\\tfrac{-0.625}{8.75}\\approx 1.571\\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "Set up the initial relation: f(1)=-3&lt;0, f(2)=6&gt;0: sign change confirms root.",
+            "en": "Set up the sign-change check: \\(f(1)=-3\\lt 0\\), \\(f(2)=6\\gt 0\\).",
             "ar": null
           },
           {
@@ -502,7 +502,7 @@
           }
         ],
         "solution": {
-          "en": "We solve the problem in two steps:\n\n**Step 1: Find the value of \\( k \\)**\n\nThe Newton-Raphson iteration formula is:\n\\[ x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)} \\]\n\nDifferentiating \\( f(x) = x^3 - 2x^2 - kx + 12 \\) with respect to \\( x \\):\n\\[ f'(x) = 3x^2 - 4x - k \\]\n\nEvaluating \\( f(x) \\) and \\( f'(x) \\) at \\( x_0 = 2 \\):\n\\[ f(2) = 2^3 - 2(2^2) - 2k + 12 = 8 - 8 - 2k + 12 = 12 - 2k \\]\n\\[ f'(2) = 3(2^2) - 4(2) - k = 12 - 8 - k = 4 - k \\]\n\nUsing the iteration formula for \\( x_1 \\):\n\\[ x_1 = x_0 - \\frac{f(x_0)}{f'(x_0)} \\implies 4 = 2 - \\frac{12 - 2k}{4 - k} \\]\n\nRearranging to solve for \\( k \\):\n\\[ 2 = -\\frac{12 - 2k}{4 - k} = \\frac{2k - 12}{4 - k} \\]\n\\[ 2(4 - k) = 2k - 12 \\]\n\\[ 8 - 2k = 2k - 12 \\implies 4k = 20 \\implies k = 5 \\]\n\n**Step 2: Find the second approximation \\( x_2 \\)**\n\nWith \\( k = 5 \\), the function and its derivative are:\n\\[ f(x) = x^3 - 2x^2 - 5x + 12 \\]\n\\[ f'(x) = 3x^2 - 4x - 5 \\]\n\nNow apply the iteration starting from \\( x_1 = 4 \\):\n\\[ f(4) = 4^3 - 2(4^2) - 5(4) + 12 = 64 - 32 - 20 + 12 = 24 \\]\n\\[ f'(4) = 3(4^2) - 4(4) - 5 = 48 - 16 - 5 = 27 \\]\n\nTherefore:\n\\[ x_2 = 4 - \\frac{f(4)}{f'(4)} = 4 - \\frac{24}{27} = 4 - \\frac{8}{9} = \\frac{28}{9} \\]\n\n**Common Traps:**\n- Choice B uses the incorrect addition \\( x_{n+1} = x_n + \\frac{f(x_n)}{f'(x_n)} \\), yielding \\( 4 + \\frac{8}{9} = \\frac{44}{9} \\).\n- Choice C omits subtracting from \\( x_0 \\), taking \\( x_1 = \\frac{f(x_0)}{f'(x_0)} \\), which incorrectly yields \\( k = 2 \\) and \\( x_2 = \\frac{14}{5} \\).\n- Choice D incorrectly differentiates \\(-2x^2\\) as \\(-2x\\) rather than \\(-4x\\), leading to \\( k = 7 \\) and \\( x_2 = \\frac{84}{25} \\).",
+          "en": "We solve the problem in two steps:\n\n**Step 1: Find the value of \\( k \\)**\n\nThe Newton-Raphson iteration formula is:\n\\[ x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)} \\]\n\nDifferentiating \\( f(x) = x^3 - 2x^2 - kx + 12 \\) with respect to \\( x \\):\n\\[ f'(x) = 3x^2 - 4x - k \\]\n\nEvaluating \\( f(x) \\) and \\( f'(x) \\) at \\( x_0 = 2 \\):\n\\[ f(2) = 2^3 - 2(2^2) - 2k + 12 = 8 - 8 - 2k + 12 = 12 - 2k \\]\n\\[ f'(2) = 3(2^2) - 4(2) - k = 12 - 8 - k = 4 - k \\]\n\nUsing the iteration formula for \\( x_1 \\):\n\\[ x_1 = x_0 - \\frac{f(x_0)}{f'(x_0)} \\implies 4 = 2 - \\frac{12 - 2k}{4 - k} \\]\n\nRearranging to solve for \\( k \\):\n\\[ 2 = -\\frac{12 - 2k}{4 - k} = \\frac{2k - 12}{4 - k} \\]\n\\[ 2(4 - k) = 2k - 12 \\]\n\\[ 8 - 2k = 2k - 12 \\implies 4k = 20 \\implies k = 5 \\]\n\n**Step 2: Find the second approximation \\( x_2 \\)**\n\nWith \\( k = 5 \\), the function and its derivative are:\n\\[ f(x) = x^3 - 2x^2 - 5x + 12 \\]\n\\[ f'(x) = 3x^2 - 4x - 5 \\]\n\nNow apply the iteration starting from \\( x_1 = 4 \\):\n\\[ f(4) = 4^3 - 2(4^2) - 5(4) + 12 = 64 - 32 - 20 + 12 = 24 \\]\n\\[ f'(4) = 3(4^2) - 4(4) - 5 = 48 - 16 - 5 = 27 \\]\n\nTherefore:\n\\[ x_2 = 4 - \\frac{f(4)}{f'(4)} = 4 - \\frac{24}{27} = 4 - \\frac{8}{9} = \\frac{28}{9} \\]",
           "ar": null
         }
       },

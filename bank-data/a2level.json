@@ -97225,6 +97225,178 @@
         "b": -1.14,
         "c": 0.25
       }
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors",
+      "topic_id": "a2l-vectors",
+      "subskill_id": "a2l-vectors-1",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "The line \\(L\\) has vector equation \\(\\mathbf{r} = \\begin{pmatrix} 3 \\\\ -2 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 4 \\\\ -3 \\end{pmatrix}\\). If the point \\((9, y, z)\\) lies on \\(L\\), what is the value of \\(y + z\\)?",
+      "text_ar": "المستقيم \\(L\\) معادلته المتجهية \\(\\mathbf{r} = \\begin{pmatrix} 3 \\\\ -2 \\\\ 5 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 4 \\\\ -3 \\end{pmatrix}\\). إذا وقعت النقطة \\((9, y, z)\\) على \\(L\\)، فما قيمة \\(y + z\\)؟",
+      "choices": [
+        "\\(6\\)",
+        "\\(10\\)",
+        "\\(-4\\)",
+        "\\(14\\)"
+      ],
+      "choices_ar": [
+        "\\(6\\)",
+        "\\(10\\)",
+        "\\(-4\\)",
+        "\\(14\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Equate the \\(x\\)-component: \\(3 + 2t = 9 \\implies 2t = 6 \\implies t = 3\\).</p><p>Substitute \\(t = 3\\) into the \\(y\\)- and \\(z\\)-components: \\(y = -2 + 4(3) = 10\\) and \\(z = 5 - 3(3) = -4\\). Hence \\(y + z = 10 + (-4) = 6\\).</p>",
+      "sol_ar": "<p>بمساواة المركّبة السينية نجد \\(3 + 2t = 9 \\implies t = 3\\).</p><p>وبالتعويض نحصل على \\(y = -2 + 12 = 10\\) و\\(z = 5 - 9 = -4\\)، فيكون المجموع \\(y + z = 6\\).</p>",
+      "hints": [
+        "Match the first coordinate \\(3 + 2t\\) with \\(9\\) to solve for the parameter \\(t\\).",
+        "Substitute the resulting parameter \\(t\\) into the second and third vector components separately.",
+        "Add the values found for \\(y\\) and \\(z\\) carefully."
+      ],
+      "hints_ar": [
+        "ساوِ المركّبة الأولى \\(3 + 2t\\) بالعدد \\(9\\) لإيجاد الوسيط \\(t\\).",
+        "عوّض قيمة \\(t\\) في المركّبتين الثانية والثالثة لإيجاد \\(y\\) و\\(z\\).",
+        "اجمع قيمتي \\(y\\) و\\(z\\) بدقة."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.solve(sp.Eq(3 + 2*sp.Symbol('t'), 9), sp.Symbol('t'))[0]\ny = -2 + 4*t\nz = 5 - 3*t\nEXPECTED = sp.simplify(y + z)",
+      "id": "a2level-3008"
+    },
+    {
+      "type": "mcq",
+      "domain": "Algebra: Partial Fractions & Division",
+      "topic_id": "a2l-algebra",
+      "subskill_id": "a2l-algebra-1",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": -0.05,
+        "c": 0.25
+      },
+      "text": "When the polynomial \\(P(x) = 2x^3 - 5x^2 + kx + 6\\) is divided by \\((x - 2)\\), the remainder is \\(14\\). What is the value of the constant \\(k\\)?",
+      "text_ar": "عند قسمة كثيرة الحدود \\(P(x) = 2x^3 - 5x^2 + kx + 6\\) على \\((x - 2)\\) يكون الباقي \\(14\\). ما قيمة الثابت \\(k\\)؟",
+      "choices": [
+        "\\(3\\)",
+        "\\(6\\)",
+        "\\(-3\\)",
+        "\\(9\\)"
+      ],
+      "choices_ar": [
+        "\\(3\\)",
+        "\\(6\\)",
+        "\\(-3\\)",
+        "\\(9\\)"
+      ],
+      "answer": 1,
+      "sol": "<p>By the Remainder Theorem, dividing \\(P(x)\\) by \\((x - 2)\\) leaves remainder \\(P(2)\\).</p><p>Evaluate \\(P(2) = 2(8) - 5(4) + 2k + 6 = 16 - 20 + 2k + 6 = 2k + 2\\). Setting \\(2k + 2 = 14\\) gives \\(2k = 12 \\implies k = 6\\).</p>",
+      "sol_ar": "<p>وفق نظرية الباقي يكون الباقي هو \\(P(2)\\).</p><p>نحسب \\(P(2) = 16 - 20 + 2k + 6 = 2k + 2 = 14\\)، ومن ثم \\(2k = 12 \\implies k = 6\\).</p>",
+      "hints": [
+        "Apply the Remainder Theorem by substituting the root of the linear divisor \\(x - 2 = 0\\) into \\(P(x)\\).",
+        "Compute the numerical terms in \\(P(2)\\) and equate the expression to the given remainder \\(14\\).",
+        "Solve the resulting linear equation for \\(k\\)."
+      ],
+      "hints_ar": [
+        "طبق نظرية الباقي بتعويض جذر المقسوم عليه \\(x - 2 = 0\\) في \\(P(x)\\).",
+        "احسب الحدود العددية في \\(P(2)\\) وساوِ الناتج بالباقي \\(14\\).",
+        "حل المعادلة الخطية الناتجة لإيجاد \\(k\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, k = sp.symbols('x k')\nP = 2*x**3 - 5*x**2 + k*x + 6\nEXPECTED = sp.solve(sp.Eq(P.subs(x, 2), 14), k)[0]",
+      "id": "a2level-3009"
+    },
+    {
+      "type": "mcq",
+      "domain": "Algebra: Partial Fractions & Division",
+      "topic_id": "a2l-algebra",
+      "subskill_id": "a2l-algebra-2",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.08,
+        "c": 0.25
+      },
+      "text": "Given the identity \\(\\dfrac{7x + 1}{(x + 2)(2x - 1)} \\equiv \\dfrac{A}{x + 2} + \\dfrac{B}{2x - 1}\\), what is the value of \\(A - B\\)?",
+      "text_ar": "في المتطابقة \\(\\dfrac{7x + 1}{(x + 2)(2x - 1)} \\equiv \\dfrac{A}{x + 2} + \\dfrac{B}{2x - 1}\\)، ما قيمة \\(A - B\\)؟",
+      "choices": [
+        "\\(-\\dfrac{2}{5}\\)",
+        "\\(\\dfrac{14}{5}\\)",
+        "\\(\\dfrac{4}{5}\\)",
+        "\\(\\dfrac{22}{5}\\)"
+      ],
+      "choices_ar": [
+        "\\(-\\dfrac{2}{5}\\)",
+        "\\(\\dfrac{14}{5}\\)",
+        "\\(\\dfrac{4}{5}\\)",
+        "\\(\\dfrac{22}{5}\\)"
+      ],
+      "answer": 2,
+      "sol": "<p>Clear denominators: \\(7x + 1 \\equiv A(2x - 1) + B(x + 2)\\).</p><p>Substitute \\(x = -2\\): \\(-13 = -5A \\implies A = \\dfrac{13}{5}\\). Substitute \\(x = \\dfrac{1}{2}\\): \\(\\dfrac{9}{2} = \\dfrac{5}{2}B \\implies B = \\dfrac{9}{5}\\).</p><p>Subtracting gives \\(A - B = \\dfrac{13}{5} - \\dfrac{9}{5} = \\dfrac{4}{5}\\).</p>",
+      "sol_ar": "<p>بضرب الطرفين في المقام المشترك نحصل على \\(7x + 1 \\equiv A(2x - 1) + B(x + 2)\\).</p><p>بتعويض \\(x = -2\\) نجد \\(A = \\dfrac{13}{5}\\)، وبتعويض \\(x = \\dfrac{1}{2}\\) نجد \\(B = \\dfrac{9}{5}\\).</p><p>ومنه \\(A - B = \\dfrac{13}{5} - \\dfrac{9}{5} = \\dfrac{4}{5}\\).</p>",
+      "hints": [
+        "Multiply through by \\((x + 2)(2x - 1)\\) to form a polynomial identity.",
+        "Substitute \\(x = -2\\) and \\(x = \\dfrac{1}{2}\\) separately to find \\(A\\) and \\(B\\).",
+        "Compute the difference between your rational values of \\(A\\) and \\(B\\)."
+      ],
+      "hints_ar": [
+        "اضرب الطرفين في \\((x + 2)(2x - 1)\\) لتكوين متطابقة متعددة الحدود.",
+        "عوّض \\(x = -2\\) ثم \\(x = \\dfrac{1}{2}\\) لإيجاد قيمتي \\(A\\) و\\(B\\).",
+        "احسب الفرق \\(A - B\\) بين القيمتين الكسريتين."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, A, B = sp.symbols('x A B')\nrhs = sp.together(A/(x+2) + B/(2*x-1))\nnum = sp.Poly(sp.numer(rhs), x)\nsol = sp.solve([sp.Eq(num.coeff_monomial(x), 7), sp.Eq(num.coeff_monomial(1), 1)], [A, B])\nEXPECTED = sp.simplify(sol[A] - sol[B])",
+      "id": "a2level-3010"
+    },
+    {
+      "type": "mcq",
+      "domain": "Algebra: Partial Fractions & Division",
+      "topic_id": "a2l-algebra",
+      "subskill_id": "a2l-algebra-3",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 0.15,
+        "c": 0.25
+      },
+      "text": "The rational expression \\(\\dfrac{3x^2 - 2x + 7}{x - 2}\\) is rewritten by polynomial division as \\(px + q + \\dfrac{r}{x - 2}\\). What is the value of \\(p + q + r\\)?",
+      "text_ar": "عند إعادة كتابة التعبير النسبي \\(\\dfrac{3x^2 - 2x + 7}{x - 2}\\) بالقسمة المطولة على الصورة \\(px + q + \\dfrac{r}{x - 2}\\)، ما قيمة \\(p + q + r\\)؟",
+      "choices": [
+        "\\(22\\)",
+        "\\(18\\)",
+        "\\(12\\)",
+        "\\(25\\)"
+      ],
+      "choices_ar": [
+        "\\(22\\)",
+        "\\(18\\)",
+        "\\(12\\)",
+        "\\(25\\)"
+      ],
+      "answer": 0,
+      "sol": "<p>Divide \\(3x^2 - 2x + 7\\) by \\(x - 2\\): the leading term is \\(3x\\) (\\(p = 3\\)), leaving \\((3x^2 - 2x) - 3x(x - 2) = 4x\\).</p><p>Next term in the quotient is \\(+4\\) (\\(q = 4\\)), leaving remainder \\(4x + 7 - 4(x - 2) = 15\\) (\\(r = 15\\)).</p><p>Summing gives \\(p + q + r = 3 + 4 + 15 = 22\\).</p>",
+      "sol_ar": "<p>بقسمة \\(3x^2 - 2x + 7\\) على \\(x - 2\\) يكون خارج القسمة \\(3x + 4\\) (أي \\(p = 3\\) و\\(q = 4\\)) والباقي \\(r = 3(4) - 2(2) + 7 = 15\\).</p><p>إذن \\(p + q + r = 3 + 4 + 15 = 22\\).</p>",
+      "hints": [
+        "Perform polynomial division of \\(3x^2 - 2x + 7\\) by \\(x - 2\\) (or evaluate the remainder at \\(x = 2\\)).",
+        "Write out the quotient \\(3x + 4\\) and identify \\(p\\), \\(q\\), and the constant remainder \\(r\\).",
+        "Sum all three coefficients \\(p + q + r\\)."
+      ],
+      "hints_ar": [
+        "أجرِ القسمة المطولة للمقدار \\(3x^2 - 2x + 7\\) على \\(x - 2\\) لتحديد خارج القسمة والباقي.",
+        "استخرج الثوابت \\(p\\) و\\(q\\) من خارج القسمة والباقي \\(r\\).",
+        "اجمع القيم الثلاث \\(p + q + r\\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x')\nQ, r = sp.div(3*x**2 - 2*x + 7, x - 2, domain='QQ')\npoly_q = sp.Poly(Q, x)\nEXPECTED = sp.simplify(poly_q.coeff_monomial(x) + poly_q.coeff_monomial(1) + r)",
+      "id": "a2level-3011"
     }
   ]
 }

@@ -1047,7 +1047,8 @@
       var inner=window.renderMathFigure(fig);
       if(!inner) return '';
       if(fig.type==='table'||fig.type==='two_way_table'||fig.type==='twoWayTable'||fig.type==='twowaytable') return inner;
-      var capW=fig.width||fig.w||460;
+      var isGeom3d=(fig.type==='geometry_3d'||fig.type==='geometry3d'||fig.type==='geom3d');
+      var capW=(+fig.w>=120 ? +fig.w : (!isGeom3d && +fig.width>=120 ? +fig.width : 460));
       return '<span style="display:inline-block;width:100%;max-width:'+capW+'px">'+inner+'</span>';
     }
     var isCoordGraph = (fig.type==='fn'||fig.type==='axes'||fig.type==='graph');

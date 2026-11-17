@@ -110,8 +110,8 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Binomial Distribution \\(X\\) ~ \\(B(n, p)\\) Probability Mass Lab",
-          "ar": "⊙ مستكشف تفاعلي · توزيع ذي الحدين \\(X\\) ~ \\(B(n, p)\\) الاحتمال Mass Lab"
+          "en": "⊙ Explorer · Binomial Distribution \\(X \\sim B(n, p)\\) Probability Mass Lab",
+          "ar": "⊙ المختبر التفاعلي · توزيع ذي الحدين \\(X \\sim B(n, p)\\) ودالة الكتلة الاحتمالية"
         },
         "canvasId": "asbindistExCanvas",
         "ariaLabel": {
@@ -124,7 +124,7 @@
           "descId": "asbindistExCanvas_dataDesc",
           "rowsId": "asbindistExCanvas_dataRows",
           "caption": {
-            "en": "Live numerical table for Binomial Distribution \\(X\\) ~ \\(B(n, p)\\) Probability Mass Lab",
+            "en": "Live numerical table for Binomial Distribution \\(X \\sim B(n, p)\\) Probability Mass Lab",
             "ar": "جدول القيم العددية المباشر لـ توزيع ذي الحدين \\(X\\) ~ \\(B(n, p)\\) الاحتمال Mass Lab"
           },
           "columns": [
@@ -194,8 +194,8 @@
           {
             "id": "asbindistExCanvas_r2",
             "label": {
-              "en": "Variance Var(\\(X\\)) = npq",
-              "ar": "Variance Var(\\(X\\)) = npq (توزيع ذات الحدين والتوزيع الهندسي)"
+              "en": "Variance \\(\\text{Var}(X) = npq\\)",
+              "ar": "التباين \\(\\text{Var}(X) = npq\\)"
             },
             "colorClass": "teal",
             "value": "\\(\\sigma = 1.39\\)"
@@ -553,7 +553,7 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Permutations &amp; Combinations",
+            "label": "Permutations & Combinations",
             "chapterId": "as-permcomb",
             "trackId": "aslevel"
           },
@@ -590,7 +590,7 @@
           }
         ],
         "solution": {
-          "en": "Part (i):\nFor a binomial distribution \\(X \\sim B(n, p)\\), the mean is given by \\(E(X) = np\\). \\\\\nWe are given \\(n=25\\) and \\(E(X)=2\\). \\\\\nSo, \\(25p = 2\\), which gives \\(p = \\frac{2}{25} = 0.08\\). \\\\\n\nPart (ii):\nNow, \\(n=50\\) and \\(p=0.08\\). The number of defective bulbs follows \\(X \\sim B(50, 0.08)\\). \\\\\nWe need to find the smallest integer \\(k\\) such that \\(P(X \\le k) > 0.9\\). \\\\\nWe can use a binomial cumulative distribution table or a calculator. \\\\\nLet's calculate a few values:\n\\(P(X \\le 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)\\)\nUsing a binomial CDF calculator or table for \\(B(50, 0.08)\\): \\\\\n\\(P(X \\le 3) \\approx 0.4503 \\)\n\\(P(X \\le 4) \\approx 0.6333 \\)\n\\(P(X \\le 5) \\approx 0.7918 \\)\n\\(P(X \\le 6) \\approx 0.8941 \\)\n\\(P(X \\le 7) \\approx 0.9575 \\)\n\nThe smallest integer \\(k\\) for which \\(P(X \\le k) > 0.9\\) is \\(k=7\\). \\\\\n\nPart (iii):\nWe have \\(n=50\\) and \\(p=0.08\\). We want to find the smallest value of \\(n'\\) such that the probability of observing at least one defective bulb is greater than \\(0.999\\). \\\\\nThe probability of observing at least one defective bulb is \\(P(X \\ge 1) = 1 - P(X=0)\\). \\\\\nFor a binomial distribution, \\(P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}\\). \\\\\nSo we need \\(1 - (1-p)^{n'} > 0.999\\). \\\\\nSubstituting \\(p=0.08\\), we get \\(1 - (0.92)^{n'} > 0.999\\). \\\\\nThis means \\((0.92)^{n'} < 1 - 0.999 = 0.001\\). \\\\\nTaking the natural logarithm of both sides: \\(n' \\ln(0.92) < \\ln(0.001)\\). \\\\\nSince \\(\\ln(0.92)\\) is negative, we must reverse the inequality sign when dividing: \\(n' > \\frac{\\ln(0.001)}{\\ln(0.92)}\\). \\\\\n\\(n' > \\frac{-6.907755...}{-0.083381...}\\)\n\\(n' > 82.847...\\)\n\nThe smallest integer value of \\(n'\\) is \\(83\\). \\\\\n\nThe question asks for the smallest value of \\(n'\\) for a sample of size \\(n=50\\). This part of the question seems to imply a re-sampling or a different scenario for \\(n'\\). Assuming \\(n'\\) refers to the sample size for a new calculation of the probability of at least one defective bulb. [M1][A1]",
+          "en": "Part (i):\nFor a binomial distribution \\(X \\sim B(n, p)\\), the mean is given by \\(E(X) = np\\). \\\\\nWe are given \\(n=25\\) and \\(E(X)=2\\). \\\\\nSo, \\(25p = 2\\), which gives \\(p = \\frac{2}{25} = 0.08\\). \\\\\n\nPart (ii):\nNow, \\(n=50\\) and \\(p=0.08\\). The number of defective bulbs follows \\(X \\sim B(50, 0.08)\\). \\\\\nWe need to find the smallest integer \\(k\\) such that \\(P(X \\le k) > 0.9\\). \\\\\nWe can use a binomial cumulative distribution table or a calculator. \\\\\nLet's calculate a few values:\n\\(P(X \\le 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)\\)\nUsing a binomial CDF calculator or table for \\(B(50, 0.08)\\): \\\\\n\\(P(X \\le 3) \\approx 0.4503 \\)\n\\(P(X \\le 4) \\approx 0.6333 \\)\n\\(P(X \\le 5) \\approx 0.7918 \\)\n\\(P(X \\le 6) \\approx 0.8941 \\)\n\\(P(X \\le 7) \\approx 0.9575 \\)\n\nThe smallest integer \\(k\\) for which \\(P(X \\le k) > 0.9\\) is \\(k=7\\). \\\\\n\nPart (iii):\nWe have \\(n=50\\) and \\(p=0.08\\). We want to find the smallest value of \\(n'\\) such that the probability of observing at least one defective bulb is greater than \\(0.999\\). \\\\\nThe probability of observing at least one defective bulb is \\(P(X \\ge 1) = 1 - P(X=0)\\). \\\\\nFor a binomial distribution, \\(P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}\\). \\\\\nSo we need \\(1 - (1-p)^{n'} > 0.999\\). \\\\\nSubstituting \\(p=0.08\\), we get \\(1 - (0.92)^{n'} > 0.999\\). \\\\\nThis means \\((0.92)^{n'} < 1 - 0.999 = 0.001\\). \\\\\nTaking the natural logarithm of both sides: \\(n' \\ln(0.92) < \\ln(0.001)\\). \\\\\nSince \\(\\ln(0.92)\\) is negative, we must reverse the inequality sign when dividing: \\(n' > \\frac{\\ln(0.001)}{\\ln(0.92)}\\). \\\\\n\\(n' > \\frac{-6.907755...}{-0.083381...}\\)\n\\(n' > 82.847...\\)\n\nThe smallest integer value of \\(n'\\) is \\(83\\). \\\\\n\nThe question asks for the smallest value of \\(n'\\) for a sample of size \\(n=50\\). This part of the question seems to imply a re-sampling or a different scenario for \\(n'\\). Assuming \\(n'\\) refers to the sample size for a new calculation of the probability of at least one defective bulb.",
           "ar": null
         }
       }

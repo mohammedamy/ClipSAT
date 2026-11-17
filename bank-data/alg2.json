@@ -55704,6 +55704,3394 @@
         "b": 1.987,
         "c": 0.25
       }
+    },
+    {
+      "id": "alg2-1655",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.95,
+        "b": -1.5,
+        "c": 0.25
+      },
+      "text": "What is the smallest real number \\( x \\) in the domain of \\( f(x) = \\sqrt{5x - 20} \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 5 \\)",
+        "\\( 20 \\)",
+        "\\( -4 \\)"
+      ],
+      "answer": 0,
+      "sol": "The expression inside the square root must be non-negative: \\( 5x - 20 \\ge 0 \\), so \\( 5x \\ge 20 \\) and \\( x \\ge 4 \\). Hence the smallest value in the domain is \\( 4 \\).",
+      "hints": [
+        "For a real-valued square root, require the radicand \\( 5x - 20 \\) to be greater than or equal to \\( 0 \\).",
+        "Add \\( 20 \\) to both sides of \\( 5x - 20 \\ge 0 \\).",
+        "Divide by \\( 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(5*x - 20, 0), x)[0]"
+    },
+    {
+      "id": "alg2-1656",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.12,
+        "b": -1.21,
+        "c": 0.25
+      },
+      "text": "For which real number \\( x \\) is the rational function \\( g(x) = \\frac{x + 5}{3x - 12} \\) undefined?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( -5 \\)",
+        "\\( 3 \\)",
+        "\\( -4 \\)"
+      ],
+      "answer": 0,
+      "sol": "A rational function is undefined where its denominator is zero. Setting \\( 3x - 12 = 0 \\) gives \\( x = 4 \\).",
+      "hints": [
+        "Division by zero is undefined; the numerator \\( x + 5 \\) does not restrict the domain.",
+        "Set the denominator \\( 3x - 12 \\) equal to zero.",
+        "Solve \\( 3x = 12 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(3*x - 12, 0), x)[0]"
+    },
+    {
+      "id": "alg2-1657",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.29,
+        "b": -0.92,
+        "c": 0.25
+      },
+      "text": "What is the minimum value in the range of \\( h(x) = 3(x - 2)^2 - 7 \\) for \\( x \\in \\mathbb{R} \\)?",
+      "choices": [
+        "\\( -7 \\)",
+        "\\( 2 \\)",
+        "\\( -2 \\)",
+        "\\( 5 \\)"
+      ],
+      "answer": 0,
+      "sol": "Because \\( 3(x - 2)^2 \\ge 0 \\) for all real \\( x \\) and vanishes at \\( x = 2 \\), we have \\( h(x) \\ge -7 \\). Thus the minimum value in the range is \\( -7 \\).",
+      "hints": [
+        "Note that \\( (x - 2)^2 \\ge 0 \\) for every real number \\( x \\).",
+        "Since the leading coefficient \\( 3 > 0 \\), the parabola opens upward and attains its minimum at the vertex.",
+        "Evaluate \\( h(2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nh = 3*(x - 2)**2 - 7\nxv = sp.solve(sp.diff(h, x), x)[0]\nEXPECTED = h.subs(x, xv)"
+    },
+    {
+      "id": "alg2-1658",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.46,
+        "b": 0.01,
+        "c": 0.25
+      },
+      "text": "How many integers lie in the domain of \\( f(x) = \\sqrt{x + 3} + \\sqrt{9 - x} \\)?",
+      "choices": [
+        "\\( 13 \\)",
+        "\\( 12 \\)",
+        "\\( 11 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 0,
+      "sol": "Both radicands must be non-negative: \\( x + 3 \\ge 0 \\implies x \\ge -3 \\) and \\( 9 - x \\ge 0 \\implies x \\le 9 \\). The closed interval \\( [-3, 9] \\) contains \\( 9 - (-3) + 1 = 13 \\) integers.",
+      "hints": [
+        "Require both \\( x + 3 \\ge 0 \\) and \\( 9 - x \\ge 0 \\) simultaneously.",
+        "Intersect the two conditions to find the closed interval \\( [-3, 9] \\).",
+        "Count all integers from \\( -3 \\) to \\( 9 \\) inclusive."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "cnt = 0\nfor k in range(-10, 15):\n    if k + 3 >= 0 and 9 - k >= 0:\n        cnt = cnt + 1\nEXPECTED = cnt"
+    },
+    {
+      "id": "alg2-1659",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.02,
+        "b": 0.3,
+        "c": 0.25
+      },
+      "text": "What is the maximum value in the range of \\( f(x) = -2|x - 4| + 11 \\)?",
+      "choices": [
+        "\\( 11 \\)",
+        "\\( 4 \\)",
+        "\\( 3 \\)",
+        "\\( 19 \\)"
+      ],
+      "answer": 0,
+      "sol": "Since \\( |x - 4| \\ge 0 \\), multiplying by \\( -2 \\) gives \\( -2|x - 4| \\le 0 \\). Adding \\( 11 \\) yields \\( f(x) \\le 11 \\), attained at \\( x = 4 \\).",
+      "hints": [
+        "Use the fact that \\( |x - 4| \\ge 0 \\) for all real \\( x \\).",
+        "Multiplying by \\( -2 \\) makes \\( -2|x - 4| \\le 0 \\), so the V-shaped graph opens downward.",
+        "Evaluate \\( f(4) \\) to find the peak value."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = (-2*sp.Abs(x - 4) + 11).subs(x, 4)"
+    },
+    {
+      "id": "alg2-1660",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.19,
+        "b": -0.02,
+        "c": 0.25
+      },
+      "text": "How many integers belong to the domain of \\( p(x) = \\frac{\\sqrt{16 - x^2}}{x - 1} \\)?",
+      "choices": [
+        "\\( 8 \\)",
+        "\\( 9 \\)",
+        "\\( 7 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 0,
+      "sol": "The radical requires \\( 16 - x^2 \\ge 0 \\), i.e., \\( -4 \\le x \\le 4 \\) (9 integers), and the denominator excludes \\( x = 1 \\). Thus \\( 9 - 1 = 8 \\) integers lie in the domain.",
+      "hints": [
+        "Solve \\( 16 - x^2 \\ge 0 \\) to get \\( -4 \\le x \\le 4 \\).",
+        "Check the denominator \\( x - 1 \\ne 0 \\) to exclude \\( x = 1 \\).",
+        "Count the valid integers in \\( [-4, 4] \\setminus \\{1\\} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "cnt = 0\nfor k in range(-10, 10):\n    if 16 - k**2 >= 0 and k != 1:\n        cnt = cnt + 1\nEXPECTED = cnt"
+    },
+    {
+      "id": "alg2-1661",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.36,
+        "b": 0.27,
+        "c": 0.25
+      },
+      "text": "Let \\( f(x) = x^2 - 4x + 7 \\) be restricted to the domain \\( [0, 5] \\). If the range of \\( f \\) is \\( [m, M] \\), what is \\( M - m \\)?",
+      "choices": [
+        "\\( 9 \\)",
+        "\\( 5 \\)",
+        "\\( 12 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 0,
+      "sol": "Completing the square gives \\( f(x) = (x - 2)^2 + 3 \\). Since the vertex \\( x = 2 \\) lies inside \\( [0, 5] \\), the minimum is \\( m = f(2) = 3 \\). Checking endpoints: \\( f(0) = 7 \\) and \\( f(5) = 12 \\), so \\( M = 12 \\). Hence \\( M - m = 12 - 3 = 9 \\).",
+      "hints": [
+        "Find the vertex of the parabola and verify whether it lies inside \\( [0, 5] \\).",
+        "Evaluate \\( f \\) at the vertex \\( x = 2 \\) and at both endpoints \\( x = 0 \\) and \\( x = 5 \\).",
+        "Subtract the minimum value \\( m \\) from the maximum value \\( M \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**2 - 4*x + 7\nvals = [f.subs(x, 0), f.subs(x, 2), f.subs(x, 5)]\nEXPECTED = max(vals) - min(vals)"
+    },
+    {
+      "id": "alg2-1662",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.53,
+        "b": 1.15,
+        "c": 0.25
+      },
+      "text": "How many integers are NOT in the domain of \\( f(x) = \\frac{1}{\\sqrt{x^2 - 5x - 14}} \\)?",
+      "choices": [
+        "\\( 10 \\)",
+        "\\( 8 \\)",
+        "\\( 9 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 0,
+      "sol": "The domain requires strict positivity \\( x^2 - 5x - 14 > 0 \\), or \\( (x - 7)(x + 2) > 0 \\), which excludes \\( -2 \\le x \\le 7 \\). The integers in \\( [-2, 7] \\) are \\( -2, -1, 0, 1, 2, 3, 4, 5, 6, 7 \\), totaling \\( 10 \\) excluded integers.",
+      "hints": [
+        "Because the square root is in the denominator, we must require strict inequality \\( x^2 - 5x - 14 > 0 \\).",
+        "Factor \\( (x - 7)(x + 2) \\) to find that the excluded values form the closed interval \\( -2 \\le x \\le 7 \\).",
+        "Count all integers from \\( -2 \\) through \\( 7 \\) inclusive (including endpoints because division by zero is also undefined)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "cnt = 0\nfor k in range(-10, 15):\n    if k**2 - 5*k - 14 <= 0:\n        cnt = cnt + 1\nEXPECTED = cnt"
+    },
+    {
+      "id": "alg2-1663",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.09,
+        "b": 1.44,
+        "c": 0.25
+      },
+      "text": "What is the maximum value in the range of the rational function \\( f(x) = \\frac{8x}{x^2 + 4} \\) over all \\( x \\in \\mathbb{R} \\)?",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 4 \\)",
+        "\\( 1 \\)",
+        "\\( 8 \\)"
+      ],
+      "answer": 0,
+      "sol": "For \\( x \\le 0 \\), \\( f(x) \\le 0 \\). For \\( x > 0 \\), AM-GM gives \\( x^2 + 4 \\ge 2\\sqrt{4x^2} = 4x \\), so \\( \\frac{8x}{x^2 + 4} \\le \\frac{8x}{4x} = 2 \\), with equality at \\( x = 2 \\). (Equivalently, setting \\( \\frac{8x}{x^2 + 4} = y \\) gives discriminant \\( 64 - 16y^2 \\ge 0 \\implies |y| \\le 2 \\).)",
+      "hints": [
+        "Set \\( y = \\frac{8x}{x^2 + 4} \\) and cross-multiply to form the quadratic \\( y x^2 - 8x + 4y = 0 \\) in \\( x \\).",
+        "For a real solution \\( x \\) to exist when \\( y \\ne 0 \\), the discriminant \\( (-8)^2 - 4(y)(4y) \\ge 0 \\).",
+        "Solve \\( 64 - 16y^2 \\ge 0 \\) for the maximum value of \\( y \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 8*x / (x**2 + 4)\ncrit = sp.solve(sp.diff(f, x), x)\nEXPECTED = max(f.subs(x, crit[0]), f.subs(x, crit[1]))"
+    },
+    {
+      "id": "alg2-1664",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.26,
+        "b": -1.33,
+        "c": 0.25
+      },
+      "text": "Suppose \\( f \\) is an even function defined on \\( \\mathbb{R} \\) with \\( f(-3) = 7 \\). Calculate \\( 2f(3) - 5 \\).",
+      "choices": [
+        "\\( 9 \\)",
+        "\\( -19 \\)",
+        "\\( 19 \\)",
+        "\\( -9 \\)"
+      ],
+      "answer": 0,
+      "sol": "Because \\( f \\) is even, \\( f(3) = f(-3) = 7 \\). Substituting gives \\( 2(7) - 5 = 9 \\).",
+      "hints": [
+        "Recall the definition of an even function: \\( f(-x) = f(x) \\) for all \\( x \\).",
+        "Determine \\( f(3) \\) from \\( f(-3) = 7 \\).",
+        "Substitute into \\( 2f(3) - 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "f3 = 7\nEXPECTED = 2*f3 - 5"
+    },
+    {
+      "id": "alg2-1665",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.43,
+        "b": -1.04,
+        "c": 0.25
+      },
+      "text": "If \\( g \\) is an odd function on \\( \\mathbb{R} \\) and \\( g(4) = -6 \\), what is the value of \\( g(-4) + 3 \\)?",
+      "choices": [
+        "\\( 9 \\)",
+        "\\( -3 \\)",
+        "\\( -9 \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 0,
+      "sol": "Because \\( g \\) is odd, \\( g(-4) = -g(4) = -(-6) = 6 \\). Therefore \\( g(-4) + 3 = 6 + 3 = 9 \\).",
+      "hints": [
+        "Recall that an odd function satisfies \\( g(-x) = -g(x) \\).",
+        "Compute \\( g(-4) = -(-6) = 6 \\).",
+        "Add \\( 3 \\) to \\( g(-4) \\) to find the final expression value."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "g_neg4 = -(-6)\nEXPECTED = g_neg4 + 3"
+    },
+    {
+      "id": "alg2-1666",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.99,
+        "b": -1.36,
+        "c": 0.25
+      },
+      "text": "For what value of the constant \\( k \\) is the polynomial \\( p(x) = x^4 + kx^3 - 5x^2 + 1 \\) an even function?",
+      "choices": [
+        "\\( 0 \\)",
+        "\\( 1 \\)",
+        "\\( -5 \\)",
+        "\\( 5 \\)"
+      ],
+      "answer": 0,
+      "sol": "A polynomial is even if and only if every odd-degree term has coefficient \\( 0 \\). Here \\( p(-x) = x^4 - kx^3 - 5x^2 + 1 \\) equals \\( p(x) \\) for all \\( x \\) only when \\( k = -k \\implies k = 0 \\).",
+      "hints": [
+        "Compute \\( p(-x) \\) by replacing \\( x \\) with \\( -x \\).",
+        "Set \\( p(-x) = p(x) \\) for all real \\( x \\).",
+        "Equate coefficients of \\( x^3 \\) on both sides."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, k = sp.symbols('x k', real=True)\np = x**4 + k*x**3 - 5*x**2 + 1\nEXPECTED = sp.solve(sp.Eq((p.subs(x, -x) - p).subs(x, 1), 0), k)[0]"
+    },
+    {
+      "id": "alg2-1667",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.16,
+        "b": 0.18,
+        "c": 0.25
+      },
+      "text": "Find the value of \\( c \\) for which \\( f(x) = 2x^3 - 4x + (c - 3) \\) is an odd function.",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( -3 \\)",
+        "\\( 0 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 0,
+      "sol": "Any odd function defined at \\( 0 \\) must satisfy \\( f(0) = -f(0) \\implies f(0) = 0 \\). Setting \\( f(0) = c - 3 = 0 \\) gives \\( c = 3 \\), and indeed \\( 2x^3 - 4x \\) is odd.",
+      "hints": [
+        "Use the property that an odd function continuous at \\( 0 \\) passes through the origin: \\( f(0) = 0 \\).",
+        "Alternatively, compare \\( f(-x) = -2x^3 + 4x + c - 3 \\) with \\( -f(x) = -2x^3 + 4x - (c - 3) \\).",
+        "Solve \\( c - 3 = 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, c = sp.symbols('x c', real=True)\nf = 2*x**3 - 4*x + c - 3\nEXPECTED = sp.solve(sp.Eq(f.subs(x, 0), 0), c)[0]"
+    },
+    {
+      "id": "alg2-1668",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.33,
+        "b": -0.14,
+        "c": 0.25
+      },
+      "text": "Suppose \\( h(x) = f(x) + g(x) \\), where \\( f \\) is even and \\( g \\) is odd. Given that \\( h(2) = 10 \\) and \\( h(-2) = 4 \\), find \\( f(2) \\).",
+      "choices": [
+        "\\( 7 \\)",
+        "\\( 3 \\)",
+        "\\( 6 \\)",
+        "\\( 14 \\)"
+      ],
+      "answer": 0,
+      "sol": "By symmetry, \\( h(2) = f(2) + g(2) = 10 \\) and \\( h(-2) = f(-2) + g(-2) = f(2) - g(2) = 4 \\). Adding both equations gives \\( 2f(2) = 14 \\implies f(2) = 7 \\).",
+      "hints": [
+        "Write \\( h(-2) = f(-2) + g(-2) \\) using \\( f(-2) = f(2) \\) and \\( g(-2) = -g(2) \\).",
+        "Form the system \\( f(2) + g(2) = 10 \\) and \\( f(2) - g(2) = 4 \\).",
+        "Add the two equations and divide by \\( 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "fe, go = sp.symbols('fe go', real=True)\nsol = sp.solve([sp.Eq(fe + go, 10), sp.Eq(fe - go, 4)], (fe, go))\nEXPECTED = sol[fe]"
+    },
+    {
+      "id": "alg2-1669",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.5,
+        "b": 0.15,
+        "c": 0.25
+      },
+      "text": "Let \\( f \\) be an odd function with \\( f(1) = 3 \\) and \\( f(3) = -5 \\). Calculate \\( f(f(-1)) \\).",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( -5 \\)",
+        "\\( 3 \\)",
+        "\\( -3 \\)"
+      ],
+      "answer": 0,
+      "sol": "Since \\( f \\) is odd, \\( f(-1) = -f(1) = -3 \\). Then \\( f(f(-1)) = f(-3) = -f(3) = -(-5) = 5 \\).",
+      "hints": [
+        "Apply odd symmetry \\( f(-x) = -f(x) \\) to evaluate the inner value \\( f(-1) \\).",
+        "Substitute \\( f(-1) = -3 \\) into the outer function.",
+        "Apply odd symmetry a second time to evaluate \\( f(-3) = -f(3) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "f1, f3 = 3, -5\nf_neg1 = -f1\nEXPECTED = -f3"
+    },
+    {
+      "id": "alg2-1670",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.06,
+        "b": -0.17,
+        "c": 0.25
+      },
+      "text": "The function \\( f(x) = \\frac{ax^2 + bx + 6}{x^2 + 1} \\) is even and satisfies \\( f(1) = 5 \\). What is \\( a + b \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 10 \\)",
+        "\\( 5 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 0,
+      "sol": "For \\( f(-x) = f(x) \\) for all \\( x \\), the odd-degree numerator coefficient must vanish: \\( b = 0 \\). Then \\( f(1) = \\frac{a + 6}{1 + 1} = 5 \\implies a + 6 = 10 \\implies a = 4 \\). Thus \\( a + b = 4 + 0 = 4 \\).",
+      "hints": [
+        "Since the denominator \\( x^2 + 1 \\) is even, \\( f(x) \\) is even precisely when its numerator \\( ax^2 + bx + 6 \\) is even.",
+        "Deduce \\( b = 0 \\) from \\( f(-x) = f(x) \\).",
+        "Plug \\( x = 1 \\) into \\( \\frac{a(1)^2 + 6}{1^2 + 1} = 5 \\) to solve for \\( a \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a, b = sp.symbols('a b', real=True)\nf1 = (a + b + 6) / 2\nf_m1 = (a - b + 6) / 2\nsol = sp.solve([sp.Eq(f1, 5), sp.Eq(f_m1, 5)], (a, b))\nEXPECTED = sol[a] + sol[b]"
+    },
+    {
+      "id": "alg2-1671",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.23,
+        "b": 1.32,
+        "c": 0.25
+      },
+      "text": "Let \\( F(x) = x \\cdot f(x) + g(x^2) \\), where \\( f \\) is an odd function and \\( g \\) is any function defined on \\( \\mathbb{R} \\). If \\( F(5) = 11 \\), find \\( 3F(-5) - 2 \\).",
+      "choices": [
+        "\\( 31 \\)",
+        "\\( -35 \\)",
+        "\\( 33 \\)",
+        "\\( -31 \\)"
+      ],
+      "answer": 0,
+      "sol": "Test parity of \\( F \\): \\( F(-x) = (-x)f(-x) + g((-x)^2) = (-x)(-f(x)) + g(x^2) = x f(x) + g(x^2) = F(x) \\), so \\( F \\) is an even function! Thus \\( F(-5) = F(5) = 11 \\), giving \\( 3F(-5) - 2 = 3(11) - 2 = 31 \\).",
+      "hints": [
+        "Evaluate \\( F(-x) = (-x)f(-x) + g((-x)^2) \\) using \\( f(-x) = -f(x) \\).",
+        "Notice the product of two odd functions \\( x \\) and \\( f(x) \\) is even, and \\( g(x^2) \\) is also even, so \\( F \\) is even.",
+        "Use \\( F(-5) = F(5) = 11 \\) to compute \\( 3F(-5) - 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "F5 = 11\nF_neg5 = F5\nEXPECTED = 3*F_neg5 - 2"
+    },
+    {
+      "id": "alg2-1672",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.4,
+        "b": 1.0,
+        "c": 0.25
+      },
+      "text": "Given \\( f(x) = \\frac{x^3}{x^2 + 1} + 7 \\), calculate the sum \\( f(-5) + f(-3) + f(3) + f(5) \\).",
+      "choices": [
+        "\\( 28 \\)",
+        "\\( 14 \\)",
+        "\\( 0 \\)",
+        "\\( 35 \\)"
+      ],
+      "answer": 0,
+      "sol": "Notice \\( h(x) = \\frac{x^3}{x^2 + 1} \\) is an odd function, so \\( h(-x) + h(x) = 0 \\) for all \\( x \\). Hence \\( f(-x) + f(x) = \\bigl(h(-x) + 7\\bigr) + \\bigl(h(x) + 7\\bigr) = 14 \\). Summing for \\( x = 5 \\) and \\( x = 3 \\) gives \\( 14 + 14 = 28 \\).",
+      "hints": [
+        "Separate \\( f(x) \\) into its odd part \\( \\frac{x^3}{x^2 + 1} \\) plus the constant \\( 7 \\).",
+        "For any \\( a \\), compute \\( f(-a) + f(a) \\): the odd fraction cancels completely.",
+        "Add \\( \\bigl(f(-5) + f(5)\\bigr) + \\bigl(f(-3) + f(3)\\bigr) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**3/(x**2 + 1) + 7\nEXPECTED = f.subs(x, -5) + f.subs(x, -3) + f.subs(x, 3) + f.subs(x, 5)"
+    },
+    {
+      "id": "alg2-1673",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.96,
+        "b": -1.16,
+        "c": 0.25
+      },
+      "text": "A piecewise function is defined by \\( f(x) = \\begin{cases} 2x + 7, & x < 1 \\\\ x^2 - 3, & x \\ge 1 \\end{cases} \\). Evaluate \\( f(-2) + f(4) \\).",
+      "choices": [
+        "\\( 16 \\)",
+        "\\( 14 \\)",
+        "\\( 20 \\)",
+        "\\( 12 \\)"
+      ],
+      "answer": 0,
+      "sol": "For \\( x = -2 < 1 \\), use the top branch: \\( f(-2) = 2(-2) + 7 = 3 \\). For \\( x = 4 \\ge 1 \\), use the bottom branch: \\( f(4) = 4^2 - 3 = 13 \\). Thus \\( f(-2) + f(4) = 3 + 13 = 16 \\).",
+      "hints": [
+        "Check which interval contains \\( x = -2 \\) (\\( x < 1 \\)) and which contains \\( x = 4 \\) (\\( x \\ge 1 \\)).",
+        "Compute \\( f(-2) \\) using \\( 2x + 7 \\) and \\( f(4) \\) using \\( x^2 - 3 \\).",
+        "Add the two values."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = sp.Piecewise((2*x + 7, x < 1), (x**2 - 3, True))\nEXPECTED = f.subs(x, -2) + f.subs(x, 4)"
+    },
+    {
+      "id": "alg2-1674",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.13,
+        "b": -1.48,
+        "c": 0.25
+      },
+      "text": "Given \\( g(x) = \\begin{cases} |x + 1|, & x < 0 \\\\ 5, & x = 0 \\\\ 3x - 2, & x > 0 \\end{cases} \\), compute \\( g(-4) + g(0) + g(2) \\).",
+      "choices": [
+        "\\( 12 \\)",
+        "\\( 10 \\)",
+        "\\( 14 \\)",
+        "\\( 8 \\)"
+      ],
+      "answer": 0,
+      "sol": "Evaluate each piece: \\( g(-4) = |-4 + 1| = 3 \\), \\( g(0) = 5 \\), and \\( g(2) = 3(2) - 2 = 4 \\). Their sum is \\( 3 + 5 + 4 = 12 \\).",
+      "hints": [
+        "Select the first rule for \\( x = -4 \\), the middle rule for \\( x = 0 \\), and the third rule for \\( x = 2 \\).",
+        "Evaluate \\( |-3| = 3 \\), \\( 5 \\), and \\( 3(2) - 2 = 4 \\).",
+        "Sum the three values."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ng = sp.Piecewise((sp.Abs(x + 1), x < 0), (5, sp.Eq(x, 0)), (3*x - 2, True))\nEXPECTED = g.subs(x, -4) + g.subs(x, 0) + g.subs(x, 2)"
+    },
+    {
+      "id": "alg2-1675",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.3,
+        "b": -1.19,
+        "c": 0.25
+      },
+      "text": "Let \\( f(x) = \\begin{cases} x + 6, & x \\le 2 \\\\ 4x - 5, & x > 2 \\end{cases} \\). Find the unique value of \\( x \\) such that \\( f(x) = 15 \\).",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( 9 \\)",
+        "\\( \\frac{5}{2} \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 0,
+      "sol": "Check the first branch (\\( x \\le 2 \\)): \\( x + 6 = 15 \\implies x = 9 \\), which violates \\( x \\le 2 \\)! Check the second branch (\\( x > 2 \\)): \\( 4x - 5 = 15 \\implies 4x = 20 \\implies x = 5 \\), which satisfies \\( 5 > 2 \\). Hence \\( x = 5 \\).",
+      "hints": [
+        "Test both branches by setting each formula equal to \\( 15 \\).",
+        "Verify whether each candidate root actually lies in that branch's domain interval.",
+        "Reject \\( x = 9 \\) from the first branch because \\( 9 \\not\\le 2 \\), and accept \\( x = 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(4*x - 5, 15), x)[0]"
+    },
+    {
+      "id": "alg2-1676",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.47,
+        "b": 0.35,
+        "c": 0.25
+      },
+      "text": "For what value of the constant \\( k \\) is the piecewise function \\( f(x) = \\begin{cases} x^2 + kx - 1, & x \\le 2 \\\\ 3x + 5, & x > 2 \\end{cases} \\) continuous at \\( x = 2 \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 3 \\)",
+        "\\( 5 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 0,
+      "sol": "Continuity at \\( x = 2 \\) requires the left-hand value and right-hand limit to match: \\( 2^2 + 2k - 1 = 3(2) + 5 \\implies 3 + 2k = 11 \\implies 2k = 8 \\implies k = 4 \\).",
+      "hints": [
+        "For continuity at \\( x = 2 \\), set the two branch formulas equal at \\( x = 2 \\).",
+        "Substitute \\( x = 2 \\) into \\( x^2 + kx - 1 \\) and \\( 3x + 5 \\).",
+        "Solve \\( 3 + 2k = 11 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "k = sp.Symbol('k', real=True)\nEXPECTED = sp.solve(sp.Eq(2**2 + 2*k - 1, 3*2 + 5), k)[0]"
+    },
+    {
+      "id": "alg2-1677",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.03,
+        "b": 0.03,
+        "c": 0.25
+      },
+      "text": "Find the sum of all real solutions to the absolute-value equation \\( |2x - 5| + x = 7 \\).",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 4 \\)",
+        "\\( 6 \\)",
+        "\\( -2 \\)"
+      ],
+      "answer": 0,
+      "sol": "Split at \\( x = \\frac{5}{2} \\): (1) For \\( x \\ge \\frac{5}{2} \\), \\( (2x - 5) + x = 7 \\implies 3x = 12 \\implies x = 4 \\) (valid since \\( 4 \\ge 2.5 \\)). (2) For \\( x < \\frac{5}{2} \\), \\( (5 - 2x) + x = 7 \\implies 5 - x = 7 \\implies x = -2 \\) (valid since \\( -2 < 2.5 \\)). Their sum is \\( 4 + (-2) = 2 \\).",
+      "hints": [
+        "Rewrite \\( |2x - 5| \\) piecewise as \\( 2x - 5 \\) for \\( x \\ge \\frac{5}{2} \\) and \\( 5 - 2x \\) for \\( x < \\frac{5}{2} \\).",
+        "Solve each linear equation and check that each solution satisfies its inequality condition.",
+        "Add the two valid solutions."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nr1 = sp.solve(sp.Eq((2*x - 5) + x, 7), x)[0]\nr2 = sp.solve(sp.Eq(-(2*x - 5) + x, 7), x)[0]\nEXPECTED = r1 + r2"
+    },
+    {
+      "id": "alg2-1678",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.2,
+        "b": 0.32,
+        "c": 0.25
+      },
+      "text": "An electricity utility bills monthly usage \\( u \\) (in kWh) via \\( C(u) = \\begin{cases} 0.10u, & 0 \\le u \\le 200 \\\\ 20 + 0.15(u - 200), & u > 200 \\end{cases} \\). What is the total bill (in dollars) for \\( u = 360\\text{ kWh} \\)?",
+      "choices": [
+        "\\( 44 \\)",
+        "\\( 54 \\)",
+        "\\( 36 \\)",
+        "\\( 40 \\)"
+      ],
+      "answer": 0,
+      "sol": "Since \\( 360 > 200 \\), use the second branch: \\( C(360) = 20 + 0.15(360 - 200) = 20 + 0.15(160) = 20 + 24 = 44 \\).",
+      "hints": [
+        "Since \\( 360 > 200 \\), apply the second tier formula \\( 20 + 0.15(u - 200) \\).",
+        "Compute the excess usage \\( 360 - 200 = 160 \\) kWh.",
+        "Calculate \\( 20 + 0.15(160) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = 20 + sp.Rational(15, 100)*(360 - 200)"
+    },
+    {
+      "id": "alg2-1679",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.37,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "text": "Given \\( f(x) = \\begin{cases} x^2 + 1, & x \\le 1 \\\\ 10 - 2x, & x > 1 \\end{cases} \\), compute \\( f(f(0)) \\).",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 8 \\)",
+        "\\( 5 \\)",
+        "\\( 10 \\)"
+      ],
+      "answer": 0,
+      "sol": "First compute \\( f(0) \\): since \\( 0 \\le 1 \\), \\( f(0) = 0^2 + 1 = 1 \\). Now compute \\( f(1) \\): since \\( 1 \\le 1 \\), use the top branch again, giving \\( f(1) = 1^2 + 1 = 2 \\).",
+      "hints": [
+        "Evaluate the inner value \\( f(0) \\) first using the \\( x \\le 1 \\) rule.",
+        "Check carefully which branch applies at the boundary \\( x = 1 \\) (\\( x \\le 1 \\) vs \\( x > 1 \\)).",
+        "Evaluate \\( f(1) \\) on the \\( x \\le 1 \\) branch."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = sp.Piecewise((x**2 + 1, x <= 1), (10 - 2*x, True))\nEXPECTED = f.subs(x, f.subs(x, 0))"
+    },
+    {
+      "id": "alg2-1680",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.54,
+        "b": 1.49,
+        "c": 0.25
+      },
+      "text": "The three-part function \\( f(x) = \\begin{cases} 2x + 3, & x < 1 \\\\ ax + b, & 1 \\le x \\le 4 \\\\ x^2 - 2, & x > 4 \\end{cases} \\) is continuous everywhere on \\( \\mathbb{R} \\). Find \\( a + b \\).",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( 6 \\)",
+        "\\( 4 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 0,
+      "sol": "Continuity at \\( x = 1 \\) requires \\( a(1) + b = 2(1) + 3 \\implies a + b = 5 \\)! (And checking at \\( x = 4 \\): \\( 4a + b = 4^2 - 2 = 14 \\implies 3a = 9 \\implies a = 3, b = 2 \\), confirming \\( a + b = 5 \\).)",
+      "hints": [
+        "Continuity at \\( x = 1 \\) requires the left-hand limit \\( 2(1) + 3 \\) to equal the middle branch value \\( a(1) + b \\).",
+        "Notice that \\( a(1) + b \\) is already the target sum \\( a + b \\)!",
+        "You can also solve \\( 4a + b = 14 \\) from continuity at \\( x = 4 \\) to verify \\( a = 3, b = 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a, b = sp.symbols('a b', real=True)\nsol = sp.solve([sp.Eq(a*1 + b, 2*1 + 3), sp.Eq(a*4 + b, 4**2 - 2)], (a, b))\nEXPECTED = sol[a] + sol[b]"
+    },
+    {
+      "id": "alg2-1681",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.1,
+        "b": 1.17,
+        "c": 0.25
+      },
+      "text": "Let \\( m(x) = \\min(x + 4, 10 - 2x) \\) be the smaller of the two values at each \\( x \\in \\mathbb{R} \\). What is the maximum possible value of \\( m(x) \\)?",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( 2 \\)",
+        "\\( 10 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 0,
+      "sol": "The function \\( x + 4 \\) is strictly increasing while \\( 10 - 2x \\) is strictly decreasing. Thus their minimum \\( m(x) \\) rises until the two lines intersect and falls afterward, attaining its maximum where \\( x + 4 = 10 - 2x \\implies 3x = 6 \\implies x = 2 \\), giving \\( m(2) = 2 + 4 = 6 \\).",
+      "hints": [
+        "One line rises with slope \\( +1 \\) while the other falls with slope \\( -2 \\).",
+        "The lower envelope \\( \\min(x + 4, 10 - 2x) \\) peaks at the intersection of the two lines.",
+        "Solve \\( x + 4 = 10 - 2x \\) for \\( x \\), then evaluate \\( m(x) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nx_int = sp.solve(sp.Eq(x + 4, 10 - 2*x), x)[0]\nEXPECTED = x_int + 4"
+    },
+    {
+      "id": "alg2-1682",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.27,
+        "b": -0.99,
+        "c": 0.25
+      },
+      "text": "Let \\( f(x) = 4x - 1 \\) and \\( g(x) = x^2 + 3 \\). Calculate \\( f(g(2)) \\).",
+      "choices": [
+        "\\( 27 \\)",
+        "\\( 52 \\)",
+        "\\( 19 \\)",
+        "\\( 29 \\)"
+      ],
+      "answer": 0,
+      "sol": "First find \\( g(2) = 2^2 + 3 = 7 \\). Then \\( f(7) = 4(7) - 1 = 27 \\).",
+      "hints": [
+        "Evaluate the inner function \\( g(2) \\) first.",
+        "Substitute \\( g(2) = 7 \\) into \\( f(x) = 4x - 1 \\).",
+        "Compute \\( 4(7) - 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 4*x - 1\ng = x**2 + 3\nEXPECTED = f.subs(x, g.subs(x, 2))"
+    },
+    {
+      "id": "alg2-1683",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.44,
+        "b": -1.31,
+        "c": 0.25
+      },
+      "text": "Given \\( f(x) = \\sqrt{x + 5} \\) and \\( g(x) = 2x + 7 \\), find \\( g(f(4)) \\).",
+      "choices": [
+        "\\( 13 \\)",
+        "\\( \\sqrt{20} \\)",
+        "\\( 11 \\)",
+        "\\( 15 \\)"
+      ],
+      "answer": 0,
+      "sol": "First compute \\( f(4) = \\sqrt{4 + 5} = 3 \\). Then \\( g(3) = 2(3) + 7 = 13 \\).",
+      "hints": [
+        "Evaluate \\( f(4) = \\sqrt{4 + 5} \\) first.",
+        "Substitute the resulting integer \\( 3 \\) into \\( g(x) = 2x + 7 \\).",
+        "Simplify \\( 2(3) + 7 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = sp.sqrt(x + 5)\ng = 2*x + 7\nEXPECTED = g.subs(x, f.subs(x, 4))"
+    },
+    {
+      "id": "alg2-1684",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.0,
+        "b": -1.02,
+        "c": 0.25
+      },
+      "text": "Selected values of \\( f \\) and \\( g \\) are given in the table below. What is the value of \\( f(g(3)) - g(f(1)) \\)?",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( -6 \\)",
+        "\\( 4 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 0,
+      "sol": "From the table, \\( g(3) = 4 \\), so \\( f(g(3)) = f(4) = 8 \\). Similarly, \\( f(1) = 2 \\), so \\( g(f(1)) = g(2) = 2 \\). Thus \\( f(g(3)) - g(f(1)) = 8 - 2 = 6 \\).",
+      "hints": [
+        "Read \\( g(3) \\) from the \\( g(x) \\) row, then look up \\( f \\) at that value.",
+        "Read \\( f(1) \\) from the \\( f(x) \\) row, then look up \\( g \\) at that value.",
+        "Subtract \\( g(f(1)) \\) from \\( f(g(3)) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "f_map = {1: 2, 2: 7, 3: 1, 4: 8}\ng_map = {1: 5, 2: 2, 3: 4, 4: 6}\nEXPECTED = f_map[g_map[3]] - g_map[f_map[1]]",
+      "figure": {
+        "type": "table",
+        "caption": "Selected Values of f(x) and g(x)",
+        "headers": [
+          "x",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "2",
+            "7",
+            "1",
+            "8"
+          ],
+          [
+            "g(x)",
+            "5",
+            "2",
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "alg2-1685",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.17,
+        "b": -0.09,
+        "c": 0.25
+      },
+      "text": "If \\( f(x) = x^2 - 2x \\) and \\( g(x) = x + 3 \\), write \\( f(g(x)) \\) in expanded form \\( ax^2 + bx + c \\). What is \\( a + b + c \\)?",
+      "choices": [
+        "\\( 16 \\)",
+        "\\( 4 \\)",
+        "\\( 2 \\)",
+        "\\( 8 \\)"
+      ],
+      "answer": 3,
+      "sol": "Expanding gives \\( f(g(x)) = (x + 3)^2 - 2(x + 3) = x^2 + 6x + 9 - 2x - 6 = x^2 + 4x + 3 \\). Thus \\( a = 1, b = 4, c = 3 \\), giving \\( a + b + c = 8 \\) (which equals \\( f(g(1)) = f(4) = 8 \\)).",
+      "hints": [
+        "Substitute \\( x + 3 \\) into every \\( x \\) in \\( f(x) = x^2 - 2x \\).",
+        "Expand \\( (x + 3)^2 - 2(x + 3) \\) carefully.",
+        "Add the coefficients \\( a + b + c \\) (or note that \\( a + b + c = f(g(1)) \\))."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**2 - 2*x\ng = x + 3\nfg = sp.expand(f.subs(x, g))\nEXPECTED = fg.subs(x, 1)"
+    },
+    {
+      "id": "alg2-1686",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.34,
+        "b": 0.2,
+        "c": 0.25
+      },
+      "text": "Let \\( f(x) = 3x + 4 \\) and \\( g(x) = x^2 - 4 \\). What is the positive solution to \\( f(g(x)) = 19 \\)?",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( 9 \\)",
+        "\\( \\sqrt{19} \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 3,
+      "sol": "Compute \\( f(g(x)) = 3(x^2 - 4) + 4 = 3x^2 - 8 \\). Setting \\( 3x^2 - 8 = 19 \\) gives \\( 3x^2 = 27 \\implies x^2 = 9 \\), so the positive solution is \\( x = 3 \\).",
+      "hints": [
+        "Form the composite expression \\( f(g(x)) = 3(x^2 - 4) + 4 \\).",
+        "Set \\( 3x^2 - 8 = 19 \\) and isolate \\( x^2 \\).",
+        "Take the positive square root."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', positive=True)\nf = 3*x + 4\ng = x**2 - 4\nEXPECTED = sp.solve(sp.Eq(f.subs(x, g), 19), x)[0]"
+    },
+    {
+      "id": "alg2-1687",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.51,
+        "b": -0.12,
+        "c": 0.25
+      },
+      "text": "Suppose \\( h(x) = (2x - 5)^3 + 4 \\) is written as a composition \\( h(x) = f(g(x)) \\) where \\( g(x) = 2x - 5 \\). What is \\( f(2) \\)?",
+      "choices": [
+        "\\( 8 \\)",
+        "\\( 3 \\)",
+        "\\( -1 \\)",
+        "\\( 12 \\)"
+      ],
+      "answer": 3,
+      "sol": "Since \\( f(g(x)) = (g(x))^3 + 4 \\), the outer function is \\( f(u) = u^3 + 4 \\). Evaluating at \\( u = 2 \\) gives \\( f(2) = 2^3 + 4 = 12 \\).",
+      "hints": [
+        "Replace the inner expression \\( 2x - 5 \\) by a single variable \\( u \\) to identify \\( f(u) \\).",
+        "Obtain \\( f(u) = u^3 + 4 \\).",
+        "Substitute \\( u = 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "u = sp.Symbol('u', real=True)\nf = u**3 + 4\nEXPECTED = f.subs(u, 2)"
+    },
+    {
+      "id": "alg2-1688",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.07,
+        "b": 1.37,
+        "c": 0.25
+      },
+      "text": "A function satisfies \\( f(2x - 1) = 4x^2 - 6x + 5 \\) for all real \\( x \\). What is the value of \\( f(5) \\)?",
+      "choices": [
+        "\\( 27 \\)",
+        "\\( 75 \\)",
+        "\\( 19 \\)",
+        "\\( 23 \\)"
+      ],
+      "answer": 3,
+      "sol": "We need the input inside \\( f \\) to equal \\( 5 \\), so set \\( 2x - 1 = 5 \\implies x = 3 \\). Substituting \\( x = 3 \\) into the right-hand side gives \\( f(5) = 4(3)^2 - 6(3) + 5 = 36 - 18 + 5 = 23 \\).",
+      "hints": [
+        "Do not plug \\( x = 5 \\) directly into \\( 4x^2 - 6x + 5 \\)!",
+        "First solve \\( 2x - 1 = 5 \\) to find the \\( x \\) that makes the argument equal \\( 5 \\).",
+        "Substitute \\( x = 3 \\) into \\( 4x^2 - 6x + 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nx_val = sp.solve(sp.Eq(2*x - 1, 5), x)[0]\nEXPECTED = (4*x**2 - 6*x + 5).subs(x, x_val)"
+    },
+    {
+      "id": "alg2-1689",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.24,
+        "b": 1.05,
+        "c": 0.25
+      },
+      "text": "Let \\( f(x) = \\frac{1}{1 - x} \\) for \\( x \\ne 1 \\). Evaluate \\( f(f(f(3))) + f(f(3)) \\).",
+      "choices": [
+        "\\( \\frac{10}{3} \\)",
+        "\\( \\frac{5}{2} \\)",
+        "\\( \\frac{7}{3} \\)",
+        "\\( \\frac{11}{3} \\)"
+      ],
+      "answer": 3,
+      "sol": "Step by step: \\( f(3) = \\frac{1}{1 - 3} = -\\frac{1}{2} \\); \\( f(f(3)) = f(-\\frac{1}{2}) = \\frac{1}{1 - (-1/2)} = \\frac{2}{3} \\); and \\( f(f(f(3))) = f(\\frac{2}{3}) = \\frac{1}{1 - 2/3} = 3 \\). Adding gives \\( 3 + \\frac{2}{3} = \\frac{11}{3} \\).",
+      "hints": [
+        "Evaluate iteratively from the inside out: first find \\( f(3) \\).",
+        "Next compute \\( f(f(3)) = f(-1/2) \\), and then apply \\( f \\) one more time.",
+        "Add \\( f(f(f(3))) \\) and \\( f(f(3)) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 1 / (1 - x)\nv1 = f.subs(x, 3)\nv2 = f.subs(x, v1)\nv3 = f.subs(x, v2)\nEXPECTED = sp.simplify(v3 + v2)"
+    },
+    {
+      "id": "alg2-1690",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.41,
+        "b": 1.34,
+        "c": 0.25
+      },
+      "text": "Given \\( f(x) = \\frac{1}{x - 4} \\) and \\( g(x) = \\sqrt{x + 2} \\), what single value of \\( x \\ge -2 \\) must be excluded from the domain of the composite function \\( (f \\circ g)(x) \\)?",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 4 \\)",
+        "\\( 18 \\)",
+        "\\( 14 \\)"
+      ],
+      "answer": 3,
+      "sol": "The composite is \\( f(g(x)) = \\frac{1}{\\sqrt{x + 2} - 4} \\). Beyond requiring \\( x + 2 \\ge 0 \\), the denominator cannot be zero: \\( \\sqrt{x + 2} = 4 \\implies x + 2 = 16 \\implies x = 14 \\).",
+      "hints": [
+        "Write out the composite formula \\( f(g(x)) = \\frac{1}{\\sqrt{x + 2} - 4} \\).",
+        "Set the denominator \\( \\sqrt{x + 2} - 4 \\) equal to zero.",
+        "Square both sides of \\( \\sqrt{x + 2} = 4 \\) and solve for \\( x \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(sp.sqrt(x + 2) - 4, 0), x)[0]"
+    },
+    {
+      "id": "alg2-1691",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.97,
+        "b": -1.43,
+        "c": 0.25
+      },
+      "text": "For the invertible linear function \\( f(x) = 5x - 9 \\), what is \\( f^{-1}(11) \\)?",
+      "choices": [
+        "\\( 20 \\)",
+        "\\( 46 \\)",
+        "\\( \\frac{2}{5} \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 3,
+      "sol": "Setting \\( 5x - 9 = 11 \\) gives \\( 5x = 20 \\implies x = 4 \\), so \\( f^{-1}(11) = 4 \\).",
+      "hints": [
+        "Recall that \\( f^{-1}(11) \\) is the input \\( x \\) satisfying \\( f(x) = 11 \\).",
+        "Set \\( 5x - 9 = 11 \\) and add \\( 9 \\) to both sides.",
+        "Divide by \\( 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(5*x - 9, 11), x)[0]"
+    },
+    {
+      "id": "alg2-1692",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.14,
+        "b": -1.14,
+        "c": 0.25
+      },
+      "text": "If \\( g(x) = \\frac{x + 7}{3} \\), find \\( g^{-1}(4) \\).",
+      "choices": [
+        "\\( 12 \\)",
+        "\\( \\frac{11}{3} \\)",
+        "\\( 19 \\)",
+        "\\( 5 \\)"
+      ],
+      "answer": 3,
+      "sol": "Set \\( \\frac{x + 7}{3} = 4 \\), multiply by \\( 3 \\) to get \\( x + 7 = 12 \\), and subtract \\( 7 \\) to obtain \\( x = 5 \\).",
+      "hints": [
+        "Either find \\( g^{-1}(x) = 3x - 7 \\) or solve \\( g(x) = 4 \\) directly.",
+        "Multiply \\( 4 \\) by \\( 3 \\).",
+        "Subtract \\( 7 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq((x + 7)/3, 4), x)[0]"
+    },
+    {
+      "id": "alg2-1693",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.31,
+        "b": -1.46,
+        "c": 0.25
+      },
+      "text": "An invertible function \\( f \\) satisfies \\( f(2) = 9 \\). What is the value of \\( 3f^{-1}(9) + 1 \\)?",
+      "choices": [
+        "\\( 10 \\)",
+        "\\( 28 \\)",
+        "\\( \\frac{4}{3} \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 3,
+      "sol": "Because \\( f(2) = 9 \\) and \\( f \\) is invertible, \\( f^{-1}(9) = 2 \\). Substituting gives \\( 3(2) + 1 = 7 \\).",
+      "hints": [
+        "Use the inverse correspondence: \\( f(a) = b \\iff f^{-1}(b) = a \\).",
+        "Deduce \\( f^{-1}(9) = 2 \\) from \\( f(2) = 9 \\).",
+        "Compute \\( 3(2) + 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "inv9 = 2\nEXPECTED = 3 * inv9 + 1"
+    },
+    {
+      "id": "alg2-1694",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.48,
+        "b": 0.08,
+        "c": 0.25
+      },
+      "text": "The function \\( f(x) = 2\\sqrt{x - 3} + 1 \\) is defined for \\( x \\ge 3 \\). Find \\( f^{-1}(7) \\).",
+      "choices": [
+        "\\( 15 \\)",
+        "\\( 5 \\)",
+        "\\( 9 \\)",
+        "\\( 12 \\)"
+      ],
+      "answer": 3,
+      "sol": "Solve \\( 2\\sqrt{x - 3} + 1 = 7 \\): subtracting \\( 1 \\) gives \\( 2\\sqrt{x - 3} = 6 \\), dividing by \\( 2 \\) gives \\( \\sqrt{x - 3} = 3 \\), and squaring yields \\( x - 3 = 9 \\implies x = 12 \\).",
+      "hints": [
+        "Set \\( 2\\sqrt{x - 3} + 1 = 7 \\) and isolate the square root term first.",
+        "Divide by \\( 2 \\) to get \\( \\sqrt{x - 3} = 3 \\).",
+        "Square both sides and add \\( 3 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(2*sp.sqrt(x - 3) + 1, 7), x)[0]"
+    },
+    {
+      "id": "alg2-1695",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.04,
+        "b": -0.24,
+        "c": 0.25
+      },
+      "text": "For \\( f(x) = \\frac{3x + 2}{x - 4} \\) (\\( x \\ne 4 \\)), determine \\( f^{-1}(5) \\).",
+      "choices": [
+        "\\( 13 \\)",
+        "\\( 17 \\)",
+        "\\( 9 \\)",
+        "\\( 11 \\)"
+      ],
+      "answer": 3,
+      "sol": "Set \\( \\frac{3x + 2}{x - 4} = 5 \\). Multiplying by \\( x - 4 \\) gives \\( 3x + 2 = 5x - 20 \\implies 22 = 2x \\implies x = 11 \\).",
+      "hints": [
+        "Set \\( f(x) = 5 \\) and multiply both sides by \\( x - 4 \\).",
+        "Expand \\( 5(x - 4) = 5x - 20 \\).",
+        "Solve \\( 3x + 2 = 5x - 20 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq((3*x + 2)/(x - 4), 5), x)[0]"
+    },
+    {
+      "id": "alg2-1696",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.21,
+        "b": 0.05,
+        "c": 0.25
+      },
+      "text": "The quadratic \\( f(x) = x^2 - 4x + 9 \\) is restricted to \\( x \\ge 2 \\) so that it has an inverse \\( f^{-1} \\). Find \\( f^{-1}(14) \\).",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( -1 \\)",
+        "\\( 7 \\)",
+        "\\( 5 \\)"
+      ],
+      "answer": 3,
+      "sol": "Set \\( x^2 - 4x + 9 = 14 \\implies x^2 - 4x - 5 = (x - 5)(x + 1) = 0 \\). Because the domain is \\( x \\ge 2 \\), we discard \\( -1 \\) and take \\( x = 5 \\).",
+      "hints": [
+        "Solve \\( x^2 - 4x + 9 = 14 \\), which rearranges to \\( x^2 - 4x - 5 = 0 \\).",
+        "Factor to find the two roots \\( x = 5 \\) and \\( x = -1 \\).",
+        "Keep only the root satisfying the restricted domain \\( x \\ge 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nsols = sp.solve(sp.Eq(x**2 - 4*x + 9, 14), x)\nEXPECTED = max(sols)"
+    },
+    {
+      "id": "alg2-1697",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.38,
+        "b": 1.54,
+        "c": 0.25
+      },
+      "text": "For what value of the constant \\( a \\) is the rational function \\( f(x) = \\frac{ax + 5}{2x - 6} \\) equal to its own inverse \\( f^{-1}(x) \\)?",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( -6 \\)",
+        "\\( 3 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 3,
+      "sol": "Let \\( y = \\frac{ax + 5}{2x - 6} \\). Cross-multiplying gives \\( 2xy - 6y = ax + 5 \\implies x(2y - a) = 6y + 5 \\implies f^{-1}(x) = \\frac{6x + 5}{2x - a} \\). Comparing with \\( f(x) = \\frac{ax + 5}{2x - 6} \\) gives \\( a = 6 \\).",
+      "hints": [
+        "Compute the inverse \\( f^{-1}(x) \\) by solving \\( y = \\frac{ax + 5}{2x - 6} \\) for \\( x \\) in terms of \\( y \\).",
+        "You should obtain \\( f^{-1}(x) = \\frac{6x + 5}{2x - a} \\).",
+        "Match numerator and denominator coefficients against \\( f(x) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, y, a = sp.symbols('x y a', real=True)\ninv = sp.solve(sp.Eq(y, (a*x + 5)/(2*x - 6)), x)[0].subs(y, x)\nEXPECTED = sp.solve(sp.Eq(inv.subs(x, 10), ((a*10 + 5)/(2*10 - 6))), a)[0]"
+    },
+    {
+      "id": "alg2-1698",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.55,
+        "b": 1.22,
+        "c": 0.25
+      },
+      "text": "The strictly increasing cubic function \\( f(x) = x^3 + 2x + 1 \\) is one-to-one on \\( \\mathbb{R} \\). Find the integer value of \\( f^{-1}(13) \\).",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 3 \\)",
+        "\\( 1 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 3,
+      "sol": "We seek the unique real solution of \\( x^3 + 2x + 1 = 13 \\), i.e., \\( x^3 + 2x - 12 = 0 \\). Testing integer factors of \\( 12 \\): at \\( x = 2 \\), \\( 2^3 + 2(2) - 12 = 8 + 4 - 12 = 0 \\), and since \\( f \\) is strictly increasing, \\( x = 2 \\) is unique.",
+      "hints": [
+        "Set \\( x^3 + 2x + 1 = 13 \\), which gives \\( x^3 + 2x - 12 = 0 \\).",
+        "Use the Rational Root Theorem (or test small positive integers) for divisors of \\( 12 \\).",
+        "Verify \\( f(2) = 13 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(x**3 + 2*x + 1, 13), x)[0]"
+    },
+    {
+      "id": "alg2-1699",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.11,
+        "b": 1.51,
+        "c": 0.25
+      },
+      "text": "Given \\( f(x) = 2x + 4 \\) and \\( g(x) = x - 3 \\), evaluate \\( (f \\circ g)^{-1}(10) \\).",
+      "choices": [
+        "\\( 8 \\)",
+        "\\( 6 \\)",
+        "\\( 2 \\)",
+        "\\( 10 \\)"
+      ],
+      "answer": 1,
+      "sol": "Computing the composition gives \\( (f \\circ g)(x) = 2(x - 3) + 4 = 2x - 2 \\). Setting \\( 2x - 2 = 10 \\) yields \\( 2x = 12 \\), so \\( x = 6 \\). Equivalently, \\( f^{-1}(10) = \\frac{10 - 4}{2} = 3 \\) and \\( g^{-1}(3) = 3 + 3 = 6 \\).",
+      "hints": [
+        "Either compute \\( (f \\circ g)(x) = f(g(x)) \\) first and invert, or use the identity \\( (f \\circ g)^{-1} = g^{-1} \\circ f^{-1} \\).",
+        "Using the identity, find \\( f^{-1}(10) \\) by solving \\( 2u + 4 = 10 \\).",
+        "Apply \\( g^{-1}(u) = u + 3 \\) to \\( u = 3 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 2*x + 4\ng = x - 3\nEXPECTED = sp.solve(sp.Eq(f.subs(x, g), 10), x)[0]"
+    },
+    {
+      "id": "alg2-1700",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.28,
+        "b": -1.26,
+        "c": 0.25
+      },
+      "text": "The graph of \\( y = |x| \\) is translated \\( 3 \\) units right and \\( 5 \\) units up to form the graph of \\( y = g(x) \\) shown below. What is \\( g(1) \\)?",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( 3 \\)",
+        "\\( 9 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 3,
+      "sol": "Shifting \\( 3 \\) units right replaces \\( x \\) by \\( x - 3 \\), and shifting \\( 5 \\) units up adds \\( 5 \\), giving \\( g(x) = |x - 3| + 5 \\). At \\( x = 1 \\), \\( g(1) = |1 - 3| + 5 = 2 + 5 = 7 \\).",
+      "hints": [
+        "Write the transformed equation \\( g(x) = |x - 3| + 5 \\).",
+        "Substitute \\( x = 1 \\) into \\( |x - 3| + 5 \\).",
+        "Evaluate \\( |-2| + 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\ng = sp.Abs(x - 3) + 5\nEXPECTED = g.subs(x, 1)",
+      "figure": {
+        "type": "fn",
+        "fns": [
+          "Math.abs(x - 3) + 5"
+        ],
+        "xlim": [
+          -2,
+          8
+        ],
+        "ylim": [
+          0,
+          12
+        ],
+        "points": [
+          {
+            "x": 3,
+            "y": 5,
+            "label": "Vertex (3, 5)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "alg2-1701",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": -0.97,
+        "c": 0.25
+      },
+      "text": "The graph of \\( f(x) = x^2 + 2 \\) is reflected across the \\( x \\)-axis to produce \\( g(x) \\). Calculate \\( g(3) \\).",
+      "choices": [
+        "\\( -7 \\)",
+        "\\( 11 \\)",
+        "\\( 7 \\)",
+        "\\( -11 \\)"
+      ],
+      "answer": 3,
+      "sol": "Reflecting across the \\( x \\)-axis negates the output: \\( g(x) = -f(x) = -(x^2 + 2) \\). Thus \\( g(3) = -(3^2 + 2) = -11 \\).",
+      "hints": [
+        "Reflection across the \\( x \\)-axis transforms \\( y = f(x) \\) into \\( y = -f(x) \\).",
+        "Evaluate \\( f(3) = 3^2 + 2 = 11 \\).",
+        "Negate the result."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**2 + 2\ng = -f\nEXPECTED = g.subs(x, 3)"
+    },
+    {
+      "id": "alg2-1702",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.01,
+        "b": -1.29,
+        "c": 0.25
+      },
+      "text": "When the line \\( f(x) = 2x - 5 \\) is translated \\( 4 \\) units to the left, what is the \\( y \\)-intercept of the new line?",
+      "choices": [
+        "\\( -9 \\)",
+        "\\( -13 \\)",
+        "\\( -1 \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 3,
+      "sol": "Translating \\( 4 \\) units left replaces \\( x \\) by \\( x + 4 \\): \\( g(x) = f(x + 4) = 2(x + 4) - 5 = 2x + 3 \\). The \\( y \\)-intercept at \\( x = 0 \\) is \\( 3 \\).",
+      "hints": [
+        "A horizontal shift \\( 4 \\) units left maps \\( f(x) \\) to \\( f(x + 4) \\).",
+        "Substitute \\( x + 4 \\) into \\( 2x - 5 \\).",
+        "Evaluate \\( g(0) \\) for the \\( y \\)-intercept."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 2*x - 5\ng = f.subs(x, x + 4)\nEXPECTED = g.subs(x, 0)"
+    },
+    {
+      "id": "alg2-1703",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.18,
+        "b": -1.0,
+        "c": 0.25
+      },
+      "text": "The curve \\( f(x) = x^3 - 1 \\) undergoes a vertical stretch by scale factor \\( 3 \\) away from the \\( x \\)-axis to yield \\( g(x) \\). Find \\( g(2) \\).",
+      "choices": [
+        "\\( 63 \\)",
+        "\\( 23 \\)",
+        "\\( 7 \\)",
+        "\\( 21 \\)"
+      ],
+      "answer": 3,
+      "sol": "A vertical stretch by factor \\( 3 \\) gives \\( g(x) = 3f(x) = 3(x^3 - 1) \\). At \\( x = 2 \\), \\( g(2) = 3(8 - 1) = 21 \\).",
+      "hints": [
+        "Multiply the entire function \\( f(x) \\) by \\( 3 \\) to stretch vertically by factor \\( 3 \\).",
+        "Compute \\( f(2) = 2^3 - 1 = 7 \\).",
+        "Multiply by \\( 3 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**3 - 1\ng = 3*f\nEXPECTED = g.subs(x, 2)"
+    },
+    {
+      "id": "alg2-1704",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.35,
+        "b": -0.07,
+        "c": 0.25
+      },
+      "text": "A parabola \\( y = f(x) \\) has its vertex at \\( (3, -4) \\). The transformed parabola \\( y = -2f(x + 5) + 1 \\) has vertex \\( (h, k) \\). Find \\( h + k \\).",
+      "choices": [
+        "\\( 17 \\)",
+        "\\( -2 \\)",
+        "\\( 9 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 3,
+      "sol": "Replacing \\( x \\) with \\( x + 5 \\) shifts the vertex \\( 5 \\) units left: \\( h = 3 - 5 = -2 \\). Multiplying \\( f \\) by \\( -2 \\) and adding \\( 1 \\) transforms the \\( y \\)-coordinate to \\( k = -2(-4) + 1 = 9 \\). Thus \\( h + k = -2 + 9 = 7 \\).",
+      "hints": [
+        "Track how the vertex \\( (3, -4) \\) moves under \\( x + 5 = 3 \\) for the new \\( x \\)-coordinate \\( h \\).",
+        "Apply the vertical operations \\( y_{\\text{new}} = -2y_{\\text{old}} + 1 \\) to \\( -4 \\) to find \\( k \\).",
+        "Add \\( h \\) and \\( k \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "h = 3 - 5\nk = -2*(-4) + 1\nEXPECTED = h + k"
+    },
+    {
+      "id": "alg2-1705",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.52,
+        "b": 0.22,
+        "c": 0.25
+      },
+      "text": "Given \\( f(x) = x^2 - 4x + 5 \\), define \\( g(x) = f(2x) - 3 \\). What is the minimum value of \\( g(x) \\)?",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 1 \\)",
+        "\\( -1 \\)",
+        "\\( -2 \\)"
+      ],
+      "answer": 3,
+      "sol": "Complete the square on \\( f(x) = (x - 2)^2 + 1 \\), whose minimum value is \\( 1 \\). Replacing \\( x \\) by \\( 2x \\) only compresses the graph horizontally without changing its minimum value, while subtracting \\( 3 \\) lowers the minimum by \\( 3 \\): \\( 1 - 3 = -2 \\).",
+      "hints": [
+        "Find the minimum value of \\( f(x) = (x - 2)^2 + 1 \\).",
+        "Note that horizontal scaling \\( x \\mapsto 2x \\) preserves all output \\( y \\)-values.",
+        "Subtract \\( 3 \\) from the minimum of \\( f \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**2 - 4*x + 5\ng = f.subs(x, 2*x) - 3\nxv = sp.solve(sp.diff(g, x), x)[0]\nEXPECTED = sp.simplify(g.subs(x, xv))"
+    },
+    {
+      "id": "alg2-1706",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.08,
+        "b": -0.1,
+        "c": 0.25
+      },
+      "text": "Let \\( f(x) = \\sqrt{x + 5} \\) and \\( g(x) = f(-x + 4) \\). What is \\( g(-4) \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 3 \\)",
+        "\\( \\sqrt{5} \\)",
+        "\\( \\sqrt{13} \\)"
+      ],
+      "answer": 3,
+      "sol": "Carefully substitute \\( x = -4 \\) into \\( g(x) = f(-x + 4) \\): \\( g(-4) = f(-(-4) + 4) = f(8) = \\sqrt{8 + 5} = \\sqrt{13} \\).",
+      "hints": [
+        "Compute the argument \\( -x + 4 \\) at \\( x = -4 \\) carefully, watching the double negative.",
+        "Notice \\( -(-4) + 4 = 8 \\), NOT \\( 0 \\).",
+        "Evaluate \\( f(8) = \\sqrt{8 + 5} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = sp.sqrt(x + 5)\ng = f.subs(x, -x + 4)\nEXPECTED = g.subs(x, -4)"
+    },
+    {
+      "id": "alg2-1707",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.25,
+        "b": 1.39,
+        "c": 0.25
+      },
+      "text": "The polynomial \\( y = f(x) \\) has three distinct \\( x \\)-intercepts at \\( x = -6, 2, 8 \\). What is the sum of the \\( x \\)-intercepts of \\( y = f(2x - 4) \\)?",
+      "choices": [
+        "\\( 16 \\)",
+        "\\( 4 \\)",
+        "\\( 2 \\)",
+        "\\( 8 \\)"
+      ],
+      "answer": 3,
+      "sol": "The transformed graph equals zero whenever the input \\( 2x - 4 \\) hits one of the original roots \\( r \\in \\{-6, 2, 8\\} \\). Solving \\( 2x - 4 = r \\) gives \\( x = \\frac{r + 4}{2} \\), yielding new intercepts \\( -1, 3, 6 \\). Their sum is \\( -1 + 3 + 6 = 8 \\).",
+      "hints": [
+        "Set the inner argument \\( 2x - 4 \\) equal to each original \\( x \\)-intercept \\( -6, 2, 8 \\).",
+        "Solve \\( 2x - 4 = r \\) for each new intercept \\( x = \\frac{r + 4}{2} \\).",
+        "Add the three transformed \\( x \\)-intercepts."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "r1, r2, r3 = -6, 2, 8\nEXPECTED = sp.Rational(r1 + 4, 2) + sp.Rational(r2 + 4, 2) + sp.Rational(r3 + 4, 2)"
+    },
+    {
+      "id": "alg2-1708",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.42,
+        "b": 1.07,
+        "c": 0.25
+      },
+      "text": "The parabola \\( f(x) = x^2 - 6x + 11 \\) is reflected across the \\( y \\)-axis and then translated \\( 3 \\) units down to give \\( g(x) \\). What is the sum of the coordinates of the vertex of \\( y = g(x) \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 2 \\)",
+        "\\( -2 \\)",
+        "\\( -4 \\)"
+      ],
+      "answer": 3,
+      "sol": "First complete the square: \\( f(x) = (x - 3)^2 + 2 \\), which has vertex \\( (3, 2) \\). Reflecting across the \\( y \\)-axis negates the \\( x \\)-coordinate to \\( (-3, 2) \\), and shifting \\( 3 \\) units down subtracts \\( 3 \\) from \\( y \\) to give \\( (-3, -1) \\). The sum of the coordinates is \\( -3 + (-1) = -4 \\).",
+      "hints": [
+        "Find the vertex of \\( f(x) = (x - 3)^2 + 2 \\), which is \\( (3, 2) \\).",
+        "Apply a \\( y \\)-axis reflection \\( (x, y) \\mapsto (-x, y) \\) followed by a shift \\( 3 \\) units down \\( (x, y) \\mapsto (x, y - 3) \\).",
+        "Add the \\( x \\)- and \\( y \\)-coordinates of the final vertex."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**2 - 6*x + 11\ng = f.subs(x, -x) - 3\nxv = sp.solve(sp.diff(g, x), x)[0]\nyv = g.subs(x, xv)\nEXPECTED = xv + yv"
+    },
+    {
+      "id": "alg2-1709",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 0.98,
+        "b": 1.36,
+        "c": 0.25
+      },
+      "text": "A square-root graph of the form \\( g(x) = a\\sqrt{b - x} + c \\) has its endpoint at \\( (4, 2) \\) and passes through \\( (0, 6) \\). What is the value of \\( a + b + c \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 6 \\)",
+        "\\( 10 \\)",
+        "\\( 8 \\)"
+      ],
+      "answer": 3,
+      "sol": "The endpoint occurs where the radicand vanishes, so \\( b - 4 = 0 \\implies b = 4 \\), and the \\( y \\)-coordinate at the endpoint is \\( g(4) = c = 2 \\). Using \\( (0, 6) \\): \\( 6 = a\\sqrt{4 - 0} + 2 = 2a + 2 \\implies a = 2 \\). Thus \\( a + b + c = 2 + 4 + 2 = 8 \\).",
+      "hints": [
+        "At the endpoint \\( (4, 2) \\), the expression inside the square root equals \\( 0 \\), determining \\( b \\).",
+        "Since \\( \\sqrt{0} = 0 \\), the \\( y \\)-coordinate of the endpoint directly gives \\( c = 2 \\).",
+        "Substitute \\( (0, 6) \\) into \\( a\\sqrt{4 - x} + 2 \\) to find \\( a \\), then sum \\( a + b + c \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a, b, c = sp.symbols('a b c', real=True)\nb_val = 4\nc_val = 2\na_val = sp.solve(sp.Eq(a*sp.sqrt(b_val - 0) + c_val, 6), a)[0]\nEXPECTED = a_val + b_val + c_val"
+    },
+    {
+      "id": "alg2-1710",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.15,
+        "b": -1.41,
+        "c": 0.25
+      },
+      "text": "The rational function \\( f(x) = \\frac{5}{x - 7} + 2 \\) has a vertical asymptote at \\( x = a \\). What is \\( a \\)?",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( -7 \\)",
+        "\\( 2 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 3,
+      "sol": "Vertical asymptotes occur at zeros of the simplified denominator. Setting \\( x - 7 = 0 \\) gives \\( x = 7 \\), so \\( a = 7 \\).",
+      "hints": [
+        "Find the value of \\( x \\) that makes the denominator \\( x - 7 \\) equal to zero.",
+        "The constant \\( +2 \\) shifts the horizontal asymptote, not the vertical asymptote.",
+        "Solve \\( x - 7 = 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(x - 7, 0), x)[0]"
+    },
+    {
+      "id": "alg2-1711",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.32,
+        "b": -1.12,
+        "c": 0.25
+      },
+      "text": "If the horizontal asymptote of \\( f(x) = \\frac{6x - 1}{2x + 5} \\) is \\( y = b \\), find \\( b \\).",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( -\\frac{5}{2} \\)",
+        "\\( -\\frac{1}{5} \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 3,
+      "sol": "Since the numerator and denominator have the same degree (\\( 1 \\)), the horizontal asymptote is the ratio of their leading coefficients: \\( b = \\frac{6}{2} = 3 \\).",
+      "hints": [
+        "Compare the degrees of the numerator and denominator (both are degree \\( 1 \\)).",
+        "Take the ratio of the leading coefficients as \\( x \\to \\pm\\infty \\).",
+        "Divide \\( 6 \\) by \\( 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.limit((6*x - 1)/(2*x + 5), x, sp.oo)"
+    },
+    {
+      "id": "alg2-1712",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.49,
+        "b": -1.44,
+        "c": 0.25
+      },
+      "text": "The exponential function \\( f(x) = 4 \\cdot 3^x - 9 \\) approaches a horizontal asymptote \\( y = k \\) as \\( x \\to -\\infty \\). What is \\( k \\)?",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( 4 \\)",
+        "\\( -9 \\)",
+        "\\( -5 \\)"
+      ],
+      "answer": 2,
+      "sol": "As \\( x \\to -\\infty \\), \\( 3^x \\to 0 \\), so \\( f(x) \\to 4(0) - 9 = -9 \\). Thus \\( k = -9 \\).",
+      "hints": [
+        "Evaluate the behavior of \\( 3^x \\) as \\( x \\to -\\infty \\).",
+        "Since \\( 3^x \\) shrinks toward \\( 0 \\), substitute \\( 3^x \\to 0 \\) into \\( 4\\cdot 3^x - 9 \\).",
+        "Read off the constant vertical shift \\( -9 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.limit(4*3**x - 9, x, -sp.oo)"
+    },
+    {
+      "id": "alg2-1713",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.05,
+        "b": -1.15,
+        "c": 0.25
+      },
+      "text": "What is the \\( x \\)-value of the vertical asymptote of the logarithmic function \\( g(x) = \\ln(x + 4) - 2 \\)?",
+      "choices": [
+        "\\( -2 \\)",
+        "\\( 4 \\)",
+        "\\( -4 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 2,
+      "sol": "The logarithm \\( \\ln(u) \\) has a vertical asymptote as \\( u \\to 0^+ \\). Setting \\( x + 4 = 0 \\) gives \\( x = -4 \\).",
+      "hints": [
+        "Recall that \\( \\ln(u) \\to -\\infty \\) as the argument \\( u \\to 0^+ \\).",
+        "Set the argument inside the logarithm, \\( x + 4 \\), equal to \\( 0 \\).",
+        "Solve for \\( x \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(x + 4, 0), x)[0]"
+    },
+    {
+      "id": "alg2-1714",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.22,
+        "b": -0.22,
+        "c": 0.25
+      },
+      "text": "Find the sum of the \\( x \\)-values of all vertical asymptotes of \\( f(x) = \\frac{x + 1}{x^2 - 5x - 14} \\).",
+      "choices": [
+        "\\( -14 \\)",
+        "\\( -5 \\)",
+        "\\( 5 \\)",
+        "\\( 9 \\)"
+      ],
+      "answer": 2,
+      "sol": "Factor the denominator: \\( x^2 - 5x - 14 = (x - 7)(x + 2) \\). Neither factor cancels with \\( x + 1 \\), so the vertical asymptotes are \\( x = 7 \\) and \\( x = -2 \\), and their sum is \\( 7 + (-2) = 5 \\).",
+      "hints": [
+        "Factor \\( x^2 - 5x - 14 \\) and check that no factor cancels with the numerator \\( x + 1 \\).",
+        "Find the two roots \\( x = 7 \\) and \\( x = -2 \\).",
+        "Add the two asymptote locations."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nroots = sp.solve(x**2 - 5*x - 14, x)\nEXPECTED = sum(roots)"
+    },
+    {
+      "id": "alg2-1715",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.39,
+        "b": 0.07,
+        "c": 0.25
+      },
+      "text": "The rational function \\( f(x) = \\frac{x^2 - 9}{x^2 - x - 6} \\) has a removable discontinuity (hole) at \\( x = a \\) and a vertical asymptote at \\( x = b \\). What is \\( a + b \\)?",
+      "choices": [
+        "\\( -1 \\)",
+        "\\( 5 \\)",
+        "\\( 1 \\)",
+        "\\( -5 \\)"
+      ],
+      "answer": 2,
+      "sol": "Factor numerator and denominator: \\( f(x) = \\frac{(x - 3)(x + 3)}{(x - 3)(x + 2)} \\). The common factor \\( (x - 3) \\) creates a hole at \\( a = 3 \\), while the remaining denominator factor \\( (x + 2) \\) gives a vertical asymptote at \\( b = -2 \\). Hence \\( a + b = 3 + (-2) = 1 \\).",
+      "hints": [
+        "Factor both numerator and denominator completely.",
+        "A canceled common factor \\( x - a \\) gives a hole at \\( x = a \\); an uncanceled denominator factor gives a vertical asymptote.",
+        "Compute \\( a + b = 3 + (-2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\na_hole = sp.solve(sp.gcd(x**2 - 9, x**2 - x - 6), x)[0]\nb_va = sp.solve(sp.denom(sp.cancel((x**2 - 9)/(x**2 - x - 6))), x)[0]\nEXPECTED = a_hole + b_va"
+    },
+    {
+      "id": "alg2-1716",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 0.95,
+        "b": -0.25,
+        "c": 0.25
+      },
+      "text": "The rational function \\( f(x) = \\frac{x^2 + 3x + 5}{x - 1} \\) has an oblique (slant) asymptote \\( y = mx + b \\). What is \\( m + b \\)?",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( 4 \\)",
+        "\\( 5 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 2,
+      "sol": "Perform polynomial division: \\( x^2 + 3x + 5 = (x - 1)(x + 4) + 9 \\), so \\( f(x) = x + 4 + \\frac{9}{x - 1} \\). As \\( |x| \\to \\infty \\), \\( \\frac{9}{x - 1} \\to 0 \\), giving slant asymptote \\( y = x + 4 \\). Here \\( m = 1 \\) and \\( b = 4 \\), so \\( m + b = 5 \\).",
+      "hints": [
+        "Divide \\( x^2 + 3x + 5 \\) by \\( x - 1 \\) using long or synthetic division.",
+        "Discard the remainder fraction \\( \\frac{9}{x - 1} \\), which tends to \\( 0 \\) as \\( |x| \\to \\infty \\).",
+        "Read \\( m \\) and \\( b \\) from the linear quotient \\( y = x + 4 \\) and add them."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nq, r = sp.div(x**2 + 3*x + 5, x - 1)\nEXPECTED = q.subs(x, 1)"
+    },
+    {
+      "id": "alg2-1717",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.12,
+        "b": 1.24,
+        "c": 0.25
+      },
+      "text": "Suppose \\( f(x) = \\frac{ax^2 + 3x - 1}{2x^2 + bx + c} \\) has a horizontal asymptote \\( y = 4 \\) and vertical asymptotes at \\( x = -1 \\) and \\( x = 3 \\) (with no holes). Find \\( a + b + c \\).",
+      "choices": [
+        "\\( 2 \\)",
+        "\\( 6 \\)",
+        "\\( -2 \\)",
+        "\\( -6 \\)"
+      ],
+      "answer": 2,
+      "sol": "For the horizontal asymptote to be \\( y = 4 \\), \\( \\frac{a}{2} = 4 \\implies a = 8 \\). Because the denominator has roots \\( -1 \\) and \\( 3 \\) and leading coefficient \\( 2 \\), \\( 2x^2 + bx + c = 2(x + 1)(x - 3) = 2x^2 - 4x - 6 \\), giving \\( b = -4 \\) and \\( c = -6 \\). Thus \\( a + b + c = 8 - 4 - 6 = -2 \\).",
+      "hints": [
+        "Use the horizontal asymptote \\( \\lim_{x \\to \\infty} f(x) = \\frac{a}{2} = 4 \\) to determine \\( a \\).",
+        "Write the denominator with leading coefficient \\( 2 \\) and roots \\( -1, 3 \\): \\( 2(x + 1)(x - 3) \\).",
+        "Expand to read off \\( b \\) and \\( c \\), then compute \\( a + b + c \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nden = sp.expand(2*(x + 1)*(x - 3))\na = 4 * 2\nb = den.coeff(x, 1)\nc = den.subs(x, 0)\nEXPECTED = a + b + c"
+    },
+    {
+      "id": "alg2-1718",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.29,
+        "b": 1.53,
+        "c": 0.25
+      },
+      "text": "The function \\( f(x) = \\frac{2x^2 - 5x - 3}{x^2 - 9} \\) has a removable discontinuity (hole) at \\( x = 3 \\). What is the \\( y \\)-coordinate of this hole?",
+      "choices": [
+        "\\( \\frac{7}{3} \\)",
+        "\\( \\frac{5}{6} \\)",
+        "\\( \\frac{7}{6} \\)",
+        "\\( \\frac{1}{6} \\)"
+      ],
+      "answer": 2,
+      "sol": "Factor both polynomials: \\( f(x) = \\frac{(2x + 1)(x - 3)}{(x + 3)(x - 3)} \\). Canceling \\( x - 3 \\) for \\( x \\ne 3 \\) gives the reduced function \\( \\frac{2x + 1}{x + 3} \\). Evaluating the limit at \\( x = 3 \\) yields \\( \\frac{2(3) + 1}{3 + 3} = \\frac{7}{6} \\).",
+      "hints": [
+        "Factor numerator and denominator to cancel the common factor \\( (x - 3) \\).",
+        "Obtain the simplified form \\( \\frac{2x + 1}{x + 3} \\).",
+        "Substitute \\( x = 3 \\) into the simplified expression."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.limit((2*x**2 - 5*x - 3)/(x**2 - 9), x, 3)"
+    },
+    {
+      "id": "alg2-1719",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.46,
+        "b": 1.21,
+        "c": 0.25
+      },
+      "text": "For what value of \\( k \\) does \\( f(x) = \\frac{2x^2 + kx + 7}{x + 2} \\) have the oblique asymptote \\( y = 2x - 3 \\)?",
+      "choices": [
+        "\\( 7 \\)",
+        "\\( -1 \\)",
+        "\\( 1 \\)",
+        "\\( -7 \\)"
+      ],
+      "answer": 2,
+      "sol": "By polynomial division, \\( 2x^2 + kx + 7 = (x + 2)(2x - 3) + R \\), where \\( R \\) is a constant. Expanding \\( (x + 2)(2x - 3) = 2x^2 + x - 6 \\), matching the \\( x \\)-coefficient gives \\( k = 1 \\) (with remainder \\( 7 - (-6) = 13 \\ne 0 \\)).",
+      "hints": [
+        "Multiply the oblique asymptote \\( 2x - 3 \\) by the denominator \\( x + 2 \\).",
+        "Remember the numerator equals \\( (x + 2)(2x - 3) + R \\) for a nonzero constant remainder \\( R \\).",
+        "Compare the coefficient of \\( x \\) in \\( (x + 2)(2x - 3) \\) with \\( k \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, k = sp.symbols('x k', real=True)\nprod = sp.expand((x + 2)*(2*x - 3))\nEXPECTED = prod.coeff(x, 1)"
+    },
+    {
+      "id": "alg2-1720",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.02,
+        "b": -0.95,
+        "c": 0.25
+      },
+      "text": "What is the largest real zero of \\( f(x) = x^2 - 9x + 14 \\)?",
+      "choices": [
+        "\\( 9 \\)",
+        "\\( 2 \\)",
+        "\\( 7 \\)",
+        "\\( 14 \\)"
+      ],
+      "answer": 2,
+      "sol": "Factoring gives \\( x^2 - 9x + 14 = (x - 7)(x - 2) = 0 \\), so the zeros are \\( x = 2 \\) and \\( x = 7 \\). The largest zero is \\( 7 \\).",
+      "hints": [
+        "Set \\( f(x) = 0 \\) and factor \\( x^2 - 9x + 14 \\).",
+        "Find two numbers with sum \\( 9 \\) and product \\( 14 \\).",
+        "Choose the larger root."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = max(sp.solve(x**2 - 9*x + 14, x))"
+    },
+    {
+      "id": "alg2-1721",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.19,
+        "b": -1.27,
+        "c": 0.25
+      },
+      "text": "The parabola \\( f(x) = -3(x + 2)^2 + 15 \\) is shown below. What is its global maximum value?",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( -2 \\)",
+        "\\( 15 \\)",
+        "\\( 27 \\)"
+      ],
+      "answer": 2,
+      "sol": "Because \\( -3(x + 2)^2 \\le 0 \\) for all real \\( x \\) and equals \\( 0 \\) when \\( x = -2 \\), the global maximum value of \\( f(x) \\) is \\( 15 \\).",
+      "hints": [
+        "Read the vertex coordinates \\( (-2, 15) \\) from vertex form \\( a(x - h)^2 + k \\).",
+        "Notice \\( a = -3 < 0 \\), so the vertex represents a global maximum.",
+        "The maximum value of a function is its \\( y \\)-coordinate, not its \\( x \\)-coordinate."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = -3*(x + 2)**2 + 15\nxv = sp.solve(sp.diff(f, x), x)[0]\nEXPECTED = f.subs(x, xv)",
+      "figure": {
+        "type": "fn",
+        "fns": [
+          "-3*(x + 2)*(x + 2) + 15"
+        ],
+        "xlim": [
+          -6,
+          2
+        ],
+        "ylim": [
+          -4,
+          18
+        ],
+        "points": []
+      }
+    },
+    {
+      "id": "alg2-1722",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.36,
+        "b": -0.98,
+        "c": 0.25
+      },
+      "text": "Find the sum of all real zeros of \\( f(x) = (x - 4)(x + 1)(x - 6) \\).",
+      "choices": [
+        "\\( -9 \\)",
+        "\\( 11 \\)",
+        "\\( 9 \\)",
+        "\\( 24 \\)"
+      ],
+      "answer": 2,
+      "sol": "Setting each linear factor to zero yields the roots \\( 4, -1, 6 \\). Their sum is \\( 4 + (-1) + 6 = 9 \\).",
+      "hints": [
+        "Set each factor \\( x - 4 \\), \\( x + 1 \\), and \\( x - 6 \\) equal to zero.",
+        "Be careful with signs: \\( x + 1 = 0 \\implies x = -1 \\).",
+        "Add \\( 4 + (-1) + 6 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sum(sp.solve((x - 4)*(x + 1)*(x - 6), x))"
+    },
+    {
+      "id": "alg2-1723",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.53,
+        "b": -0.05,
+        "c": 0.25
+      },
+      "text": "How many distinct real zeros does the cubic function \\( f(x) = x^3 - 4x \\) have?",
+      "choices": [
+        "\\( 1 \\)",
+        "\\( 2 \\)",
+        "\\( 3 \\)",
+        "\\( 0 \\)"
+      ],
+      "answer": 2,
+      "sol": "Factor completely: \\( f(x) = x(x^2 - 4) = x(x - 2)(x + 2) \\). Setting \\( f(x) = 0 \\) gives three distinct real roots: \\( -2, 0, 2 \\).",
+      "hints": [
+        "Factor out the common factor \\( x \\) first.",
+        "Factor \\( x^2 - 4 \\) as a difference of squares.",
+        "Count the distinct real values where \\( f(x) = 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = len(sp.solve(x**3 - 4*x, x))"
+    },
+    {
+      "id": "alg2-1724",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.09,
+        "b": 0.24,
+        "c": 0.25
+      },
+      "text": "Calculate the sum of the \\( x \\)-intercepts of the absolute-value function \\( f(x) = 2|x - 3| - 8 \\).",
+      "choices": [
+        "\\( 10 \\)",
+        "\\( 8 \\)",
+        "\\( 6 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 2,
+      "sol": "Setting \\( 2|x - 3| - 8 = 0 \\) gives \\( |x - 3| = 4 \\), so \\( x - 3 = 4 \\) or \\( x - 3 = -4 \\), giving \\( x = 7 \\) and \\( x = -1 \\). Their sum is \\( 7 + (-1) = 6 \\).",
+      "hints": [
+        "Set \\( 2|x - 3| - 8 = 0 \\) and isolate \\( |x - 3| \\).",
+        "Solve both \\( x - 3 = 4 \\) and \\( x - 3 = -4 \\).",
+        "Add the two \\( x \\)-intercepts."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nr1 = sp.solve(sp.Eq(2*(x - 3) - 8, 0), x)[0]\nr2 = sp.solve(sp.Eq(2*(3 - x) - 8, 0), x)[0]\nEXPECTED = r1 + r2"
+    },
+    {
+      "id": "alg2-1725",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.26,
+        "b": -0.08,
+        "c": 0.25
+      },
+      "text": "Determine the constant \\( c \\) so that the minimum value of \\( f(x) = 2x^2 - 8x + c \\) is \\( 5 \\).",
+      "choices": [
+        "\\( 9 \\)",
+        "\\( 5 \\)",
+        "\\( 13 \\)",
+        "\\( -3 \\)"
+      ],
+      "answer": 2,
+      "sol": "The vertex occurs at \\( x = -\\frac{-8}{2(2)} = 2 \\). Setting \\( f(2) = 2(4) - 8(2) + c = 5 \\) gives \\( -8 + c = 5 \\implies c = 13 \\).",
+      "hints": [
+        "Find the \\( x \\)-coordinate of the vertex using \\( x = -\\frac{b}{2a} \\).",
+        "Evaluate \\( f(2) \\) in terms of \\( c \\).",
+        "Solve \\( 8 - 16 + c = 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, c = sp.symbols('x c', real=True)\nf = 2*x**2 - 8*x + c\nxv = sp.solve(sp.diff(f, x), x)[0]\nEXPECTED = sp.solve(sp.Eq(f.subs(x, xv), 5), c)[0]"
+    },
+    {
+      "id": "alg2-1726",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.43,
+        "b": 0.21,
+        "c": 0.25
+      },
+      "text": "A quadratic function \\( f(x) \\) has zeros at \\( x = -2 \\) and \\( x = 6 \\), and a \\( y \\)-intercept at \\( (0, -24) \\). What is the minimum value of \\( f(x) \\)?",
+      "choices": [
+        "\\( -24 \\)",
+        "\\( -16 \\)",
+        "\\( -32 \\)",
+        "\\( -36 \\)"
+      ],
+      "answer": 2,
+      "sol": "Write \\( f(x) = a(x + 2)(x - 6) \\). Using \\( f(0) = -24 \\) gives \\( a(2)(-6) = -24 \\implies -12a = -24 \\implies a = 2 \\). The axis of symmetry is \\( x = \\frac{-2 + 6}{2} = 2 \\), so the minimum value is \\( f(2) = 2(4)(-4) = -32 \\).",
+      "hints": [
+        "Use factored form \\( f(x) = a(x + 2)(x - 6) \\) and find \\( a \\) from \\( f(0) = -24 \\).",
+        "Find the vertex's \\( x \\)-coordinate midway between \\( -2 \\) and \\( 6 \\).",
+        "Evaluate \\( f(2) \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, a = sp.symbols('x a', real=True)\na_val = sp.solve(sp.Eq(a*(0 + 2)*(0 - 6), -24), a)[0]\nf = a_val*(x + 2)*(x - 6)\nEXPECTED = f.subs(x, (-2 + 6)/2)"
+    },
+    {
+      "id": "alg2-1727",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 0.99,
+        "b": 1.09,
+        "c": 0.25
+      },
+      "text": "What is the product of all real zeros of the quartic function \\( f(x) = x^4 - 13x^2 + 36 \\)?",
+      "choices": [
+        "\\( 13 \\)",
+        "\\( -36 \\)",
+        "\\( 36 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 2,
+      "sol": "Factor as a quadratic in \\( x^2 \\): \\( (x^2 - 9)(x^2 - 4) = 0 \\), giving four real roots \\( -3, -2, 2, 3 \\). Their product is \\( (-3)(-2)(2)(3) = 36 \\).",
+      "hints": [
+        "Substitute \\( u = x^2 \\) and factor \\( u^2 - 13u + 36 = 0 \\).",
+        "Find all four real values of \\( x \\).",
+        "Multiply all four roots together, paying attention to signs."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nroots = sp.solve(x**4 - 13*x**2 + 36, x)\nprod = 1\nfor r in roots:\n    prod = prod * r\nEXPECTED = prod"
+    },
+    {
+      "id": "alg2-1728",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.16,
+        "b": 1.38,
+        "c": 0.25
+      },
+      "text": "What is the maximum value of \\( f(x) = -x^2 + 6x - 2 \\) on the closed interval \\( [0, 2] \\)?",
+      "choices": [
+        "\\( -2 \\)",
+        "\\( 7 \\)",
+        "\\( 6 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 2,
+      "sol": "The parabola's vertex is at \\( x = -\\frac{6}{2(-1)} = 3 \\), which lies OUTSIDE the interval \\( [0, 2] \\). Because \\( f \\) is strictly increasing on \\( (-\\infty, 3] \\), its maximum on \\( [0, 2] \\) occurs at the right endpoint \\( x = 2 \\): \\( f(2) = -4 + 12 - 2 = 6 \\).",
+      "hints": [
+        "Locate the vertex \\( x = 3 \\) first and check whether \\( 3 \\in [0, 2] \\).",
+        "Because \\( 3 \\) is outside \\( [0, 2] \\), the maximum cannot be \\( f(3) = 7 \\)!",
+        "Test the endpoints \\( f(0) \\) and \\( f(2) \\) and take the larger value."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = -x**2 + 6*x - 2\nEXPECTED = max(f.subs(x, 0), f.subs(x, 2))"
+    },
+    {
+      "id": "alg2-1729",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.33,
+        "b": 1.06,
+        "c": 0.25
+      },
+      "text": "For what positive constant \\( k \\) does the equation \\( |x^2 - 4x - 5| = k \\) have exactly \\( 3 \\) distinct real solutions?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 5 \\)",
+        "\\( 9 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 2,
+      "sol": "The inner parabola \\( y = x^2 - 4x - 5 = (x - 2)^2 - 9 \\) opens upward with vertex \\( (2, -9) \\). Reflecting the negative portion above the \\( x \\)-axis creates a local peak at \\( (2, 9) \\). A horizontal line \\( y = k \\) intersects \\( y = |x^2 - 4x - 5| \\) at \\( 4 \\) points for \\( 0 < k < 9 \\), at \\( 2 \\) points for \\( k > 9 \\), and at exactly \\( 3 \\) points when tangent to that peak, i.e., \\( k = 9 \\).",
+      "hints": [
+        "Find the vertex of the inner parabola \\( y = x^2 - 4x - 5 \\) by completing the square.",
+        "Reflecting negative \\( y \\)-values across the \\( x \\)-axis moves the vertex \\( (2, -9) \\) to a local peak at \\( (2, 9) \\).",
+        "A horizontal line \\( y = k \\) hits the W-shaped graph \\( 3 \\) times only when passing right through the peak \\( y = 9 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\np = x**2 - 4*x - 5\nxv = sp.solve(sp.diff(p, x), x)[0]\nEXPECTED = sp.Abs(p.subs(x, xv))"
+    },
+    {
+      "id": "alg2-1730",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.5,
+        "b": -1.1,
+        "c": 0.25
+      },
+      "text": "Find the average rate of change of \\( f(x) = x^2 + 3x \\) over the interval \\( [1, 4] \\).",
+      "choices": [
+        "\\( 10 \\)",
+        "\\( 24 \\)",
+        "\\( 8 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 2,
+      "sol": "Compute \\( f(1) = 1 + 3 = 4 \\) and \\( f(4) = 16 + 12 = 28 \\). The average rate of change is \\( \\frac{f(4) - f(1)}{4 - 1} = \\frac{28 - 4}{3} = \\frac{24}{3} = 8 \\).",
+      "hints": [
+        "Use the average rate of change formula \\( \\frac{f(b) - f(a)}{b - a} \\) with \\( a = 1, b = 4 \\).",
+        "Evaluate \\( f(4) = 28 \\) and \\( f(1) = 4 \\).",
+        "Divide \\( 28 - 4 \\) by \\( 4 - 1 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**2 + 3*x\nEXPECTED = (f.subs(x, 4) - f.subs(x, 1)) / (4 - 1)"
+    },
+    {
+      "id": "alg2-1731",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.06,
+        "b": -1.42,
+        "c": 0.25
+      },
+      "text": "What is the average rate of change of the exponential function \\( f(x) = 2^x \\) on the interval \\( [0, 3] \\)?",
+      "choices": [
+        "\\( 7 \\)",
+        "\\( \\frac{8}{3} \\)",
+        "\\( \\frac{7}{3} \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 2,
+      "sol": "Compute \\( f(0) = 2^0 = 1 \\) and \\( f(3) = 2^3 = 8 \\). The average rate of change is \\( \\frac{8 - 1}{3 - 0} = \\frac{7}{3} \\).",
+      "hints": [
+        "Remember \\( 2^0 = 1 \\), not \\( 0 \\).",
+        "Compute \\( \\frac{f(3) - f(0)}{3 - 0} \\).",
+        "Simplify \\( \\frac{8 - 1}{3} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 2**x\nEXPECTED = (f.subs(x, 3) - f.subs(x, 0)) / (3 - 0)"
+    },
+    {
+      "id": "alg2-1732",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.23,
+        "b": -1.13,
+        "c": 0.25
+      },
+      "text": "The table below shows the height \\( h(t) \\) (in metres) of a drone at time \\( t \\) seconds. What is the average rate of change of \\( h(t) \\) from \\( t = 2 \\) to \\( t = 6 \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 20 \\)",
+        "\\( 5 \\)",
+        "\\( 6 \\)"
+      ],
+      "answer": 2,
+      "sol": "From the table, \\( h(2) = 12 \\) and \\( h(6) = 32 \\). The average rate of change is \\( \\frac{32 - 12}{6 - 2} = \\frac{20}{4} = 5 \\).",
+      "hints": [
+        "Read \\( h(2) \\) and \\( h(6) \\) from the table.",
+        "Form the difference quotient \\( \\frac{h(6) - h(2)}{6 - 2} \\).",
+        "Divide \\( 20 \\) by \\( 4 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "h_map = {0: 4, 2: 12, 4: 25, 6: 32}\nEXPECTED = sp.Rational(h_map[6] - h_map[2], 6 - 2)",
+      "figure": {
+        "type": "table",
+        "caption": "Drone Height h(t) vs Time t",
+        "headers": [
+          "t (s)",
+          "0",
+          "2",
+          "4",
+          "6"
+        ],
+        "rows": [
+          [
+            "h(t) (m)",
+            "4",
+            "12",
+            "25",
+            "32"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "alg2-1733",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.4,
+        "b": -1.45,
+        "c": 0.25
+      },
+      "text": "Compute the average rate of change of the linear function \\( f(x) = -4x + 9 \\) over \\( [-3, 5] \\).",
+      "choices": [
+        "\\( -32 \\)",
+        "\\( 4 \\)",
+        "\\( -4 \\)",
+        "\\( 9 \\)"
+      ],
+      "answer": 2,
+      "sol": "For any linear function \\( f(x) = mx + b \\), the average rate of change over any non-empty interval equals its constant slope \\( m = -4 \\). (Indeed, \\( \\frac{(-11) - 21}{5 - (-3)} = \\frac{-32}{8} = -4 \\).)",
+      "hints": [
+        "Recall that a linear function has a constant rate of change equal to its slope.",
+        "Alternatively, evaluate \\( f(5) = -11 \\) and \\( f(-3) = 21 \\).",
+        "Compute \\( \\frac{-11 - 21}{5 - (-3)} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = -4*x + 9\nEXPECTED = (f.subs(x, 5) - f.subs(x, -3)) / (5 - (-3))"
+    },
+    {
+      "id": "alg2-1734",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 0.96,
+        "b": 0.09,
+        "c": 0.25
+      },
+      "text": "Calculate the average rate of change of the reciprocal function \\( f(x) = \\frac{12}{x} \\) on the interval \\( [2, 6] \\).",
+      "choices": [
+        "\\( -4 \\)",
+        "\\( 1 \\)",
+        "\\( -1 \\)",
+        "\\( -\\frac{1}{2} \\)"
+      ],
+      "answer": 2,
+      "sol": "Evaluate \\( f(2) = \\frac{12}{2} = 6 \\) and \\( f(6) = \\frac{12}{6} = 2 \\). Thus the average rate of change is \\( \\frac{2 - 6}{6 - 2} = \\frac{-4}{4} = -1 \\).",
+      "hints": [
+        "Compute \\( f(6) = 2 \\) and \\( f(2) = 6 \\).",
+        "Watch the order in the numerator: \\( f(6) - f(2) = 2 - 6 = -4 \\).",
+        "Divide \\( -4 \\) by \\( 6 - 2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 12 / x\nEXPECTED = (f.subs(x, 6) - f.subs(x, 2)) / (6 - 2)"
+    },
+    {
+      "id": "alg2-1735",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.13,
+        "b": -0.23,
+        "c": 0.25
+      },
+      "text": "The average rate of change of \\( f(x) = x^2 + kx \\) over the interval \\( [1, 5] \\) is \\( 9 \\). What is the value of the constant \\( k \\)?",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 6 \\)",
+        "\\( 3 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 2,
+      "sol": "Write \\( \\frac{f(5) - f(1)}{5 - 1} = \\frac{(25 + 5k) - (1 + k)}{4} = \\frac{24 + 4k}{4} = 6 + k \\). Setting \\( 6 + k = 9 \\) gives \\( k = 3 \\).",
+      "hints": [
+        "Write \\( f(5) = 25 + 5k \\) and \\( f(1) = 1 + k \\).",
+        "Simplify the average rate of change \\( \\frac{f(5) - f(1)}{4} \\) in terms of \\( k \\).",
+        "Solve \\( 6 + k = 9 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, k = sp.symbols('x k', real=True)\nf = x**2 + k*x\naroc = (f.subs(x, 5) - f.subs(x, 1)) / 4\nEXPECTED = sp.solve(sp.Eq(aroc, 9), k)[0]"
+    },
+    {
+      "id": "alg2-1736",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.3,
+        "b": 0.06,
+        "c": 0.25
+      },
+      "text": "Find the average rate of change of \\( f(x) = \\sqrt{x + 4} \\) over the interval \\( [0, 12] \\).",
+      "choices": [
+        "\\( \\frac{1}{3} \\)",
+        "\\( \\frac{1}{4} \\)",
+        "\\( \\frac{1}{6} \\)",
+        "\\( \\frac{1}{2} \\)"
+      ],
+      "answer": 2,
+      "sol": "Evaluate \\( f(0) = \\sqrt{4} = 2 \\) and \\( f(12) = \\sqrt{16} = 4 \\). The average rate of change is \\( \\frac{4 - 2}{12 - 0} = \\frac{2}{12} = \\frac{1}{6} \\).",
+      "hints": [
+        "Evaluate \\( f(12) = \\sqrt{16} \\) and \\( f(0) = \\sqrt{4} \\).",
+        "Divide the change in output by the interval width \\( 12 - 0 \\).",
+        "Reduce \\( \\frac{2}{12} \\) to lowest terms."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = sp.sqrt(x + 4)\nEXPECTED = (f.subs(x, 12) - f.subs(x, 0)) / 12"
+    },
+    {
+      "id": "alg2-1737",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.47,
+        "b": 1.55,
+        "c": 0.25
+      },
+      "text": "For \\( f(x) = x^2 - 2x \\), find the value \\( b > 1 \\) such that the average rate of change of \\( f \\) on \\( [1, b] \\) equals \\( 5 \\).",
+      "choices": [
+        "\\( 7 \\)",
+        "\\( 5 \\)",
+        "\\( 6 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 2,
+      "sol": "Since \\( f(1) = 1 - 2 = -1 \\), the average rate of change is \\( \\frac{(b^2 - 2b) - (-1)}{b - 1} = \\frac{b^2 - 2b + 1}{b - 1} = \\frac{(b - 1)^2}{b - 1} = b - 1 \\) (for \\( b > 1 \\)). Setting \\( b - 1 = 5 \\) gives \\( b = 6 \\).",
+      "hints": [
+        "Write \\( f(b) - f(1) = b^2 - 2b + 1 = (b - 1)^2 \\).",
+        "Cancel \\( b - 1 \\) (since \\( b > 1 \\)) to simplify the difference quotient.",
+        "Solve \\( b - 1 = 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nb = sp.Symbol('b', positive=True)\nf = x**2 - 2*x\nsols = sp.solve(sp.Eq((f.subs(x, b) - f.subs(x, 1))/(b - 1), 5), b)\nEXPECTED = sols[0]"
+    },
+    {
+      "id": "alg2-1738",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.03,
+        "b": 1.23,
+        "c": 0.25
+      },
+      "text": "Let \\( R_1 \\) be the average rate of change of \\( f(x) = x^3 \\) on \\( [0, 2] \\), and let \\( R_2 \\) be the average rate of change of \\( f(x) = x^3 \\) on \\( [2, 4] \\). Calculate \\( R_2 - R_1 \\).",
+      "choices": [
+        "\\( 28 \\)",
+        "\\( 24 \\)",
+        "\\( 12 \\)",
+        "\\( 32 \\)"
+      ],
+      "answer": 1,
+      "sol": "Compute \\( R_1 = \\frac{2^3 - 0^3}{2 - 0} = \\frac{8}{2} = 4 \\) and \\( R_2 = \\frac{4^3 - 2^3}{4 - 2} = \\frac{64 - 8}{2} = 28 \\). Thus \\( R_2 - R_1 = 28 - 4 = 24 \\).",
+      "hints": [
+        "Calculate \\( R_1 = \\frac{f(2) - f(0)}{2} \\) on \\( [0, 2] \\).",
+        "Calculate \\( R_2 = \\frac{f(4) - f(2)}{2} \\) on \\( [2, 4] \\).",
+        "Subtract \\( R_1 \\) from \\( R_2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = x**3\nr1 = (f.subs(x, 2) - f.subs(x, 0)) / 2\nr2 = (f.subs(x, 4) - f.subs(x, 2)) / 2\nEXPECTED = r2 - r1"
+    },
+    {
+      "id": "alg2-1739",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.2,
+        "b": 1.52,
+        "c": 0.25
+      },
+      "text": "For \\( f(x) = 3x^2 - 5x + 2 \\), evaluate the difference quotient \\( \\frac{f(x + h) - f(x)}{h} \\) when \\( x = 2 \\) and \\( h = \\frac{1}{2} \\).",
+      "choices": [
+        "\\( 7 \\)",
+        "\\( \\frac{17}{2} \\)",
+        "\\( \\frac{13}{2} \\)",
+        "\\( 9 \\)"
+      ],
+      "answer": 1,
+      "sol": "Simplifying symbolically: \\( \\frac{f(x + h) - f(x)}{h} = 6x + 3h - 5 \\). Substituting \\( x = 2 \\) and \\( h = \\frac{1}{2} \\) gives \\( 6(2) + 3\\left(\\frac{1}{2}\\right) - 5 = 7 + \\frac{3}{2} = \\frac{17}{2} \\).",
+      "hints": [
+        "Compute \\( f(2.5) - f(2) \\) directly or simplify \\( \\frac{f(x + h) - f(x)}{h} = 6x + 3h - 5 \\).",
+        "Substitute \\( x = 2 \\) and \\( h = \\frac{1}{2} \\).",
+        "Combine \\( 12 - 5 + \\frac{3}{2} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, h = sp.symbols('x h', real=True)\nf = 3*x**2 - 5*x + 2\ndq = sp.simplify((f.subs(x, x + h) - f) / h)\nEXPECTED = dq.subs({x: 2, h: sp.Rational(1, 2)})"
+    },
+    {
+      "id": "alg2-1740",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": true,
+      "irt": {
+        "a": 1.37,
+        "b": -1.25,
+        "c": 0.25
+      },
+      "text": "A linear regression model relating test score \\( \\hat{y} \\) to study hours \\( x \\) is \\( \\hat{y} = 2.4x + 15.2 \\). What score does the model predict for \\( x = 10 \\) hours?",
+      "choices": [
+        "\\( 24.0 \\)",
+        "\\( 39.2 \\)",
+        "\\( 17.6 \\)",
+        "\\( 36.8 \\)"
+      ],
+      "answer": 1,
+      "sol": "Substitute \\( x = 10 \\) into the regression equation: \\( \\hat{y} = 2.4(10) + 15.2 = 24 + 15.2 = 39.2 \\).",
+      "hints": [
+        "Plug \\( x = 10 \\) directly into \\( \\hat{y} = 2.4x + 15.2 \\).",
+        "Compute \\( 2.4 \\times 10 = 24 \\).",
+        "Add \\( 15.2 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = (sp.Rational(24, 10)*x + sp.Rational(152, 10)).subs(x, 10)"
+    },
+    {
+      "id": "alg2-1741",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": true,
+      "irt": {
+        "a": 1.54,
+        "b": -0.96,
+        "c": 0.25
+      },
+      "text": "The scatter plot below includes the observed data point \\( (5, 28) \\) and the fitted regression line \\( \\hat{y} = 4.5x + 3 \\). What is the residual \\( y - \\hat{y} \\) at \\( x = 5 \\)?",
+      "choices": [
+        "\\( -2.5 \\)",
+        "\\( 2.5 \\)",
+        "\\( 25.5 \\)",
+        "\\( 3.0 \\)"
+      ],
+      "answer": 1,
+      "sol": "At \\( x = 5 \\), the predicted value is \\( \\hat{y} = 4.5(5) + 3 = 22.5 + 3 = 25.5 \\). The residual is actual minus predicted: \\( y - \\hat{y} = 28 - 25.5 = 2.5 \\).",
+      "hints": [
+        "First compute the predicted value \\( \\hat{y} \\) on the regression line at \\( x = 5 \\).",
+        "Recall the definition of residual: \\( \\text{residual} = y_{\\text{actual}} - \\hat{y}_{\\text{predicted}} \\).",
+        "Subtract \\( 25.5 \\) from \\( 28 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "y_hat = sp.Rational(45, 10)*5 + 3\nEXPECTED = 28 - y_hat",
+      "figure": {
+        "type": "scatter",
+        "title": "Observed Data and Linear Fit",
+        "xlabel": "x",
+        "ylabel": "y",
+        "points": [
+          [
+            1,
+            8
+          ],
+          [
+            2,
+            11
+          ],
+          [
+            3,
+            17
+          ],
+          [
+            4,
+            20
+          ],
+          [
+            5,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "id": "alg2-1742",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "easy",
+      "calc": true,
+      "irt": {
+        "a": 1.1,
+        "b": -1.28,
+        "c": 0.25
+      },
+      "text": "A city's bike-share membership is modeled by \\( P(t) = 500(1.2)^t \\), where \\( t \\) is years after \\( 2022 \\). What is the predicted membership at \\( t = 2 \\)?",
+      "choices": [
+        "\\( 700 \\)",
+        "\\( 720 \\)",
+        "\\( 600 \\)",
+        "\\( 1200 \\)"
+      ],
+      "answer": 1,
+      "sol": "Substitute \\( t = 2 \\): \\( P(2) = 500(1.2)^2 = 500(1.44) = 720 \\).",
+      "hints": [
+        "Compute \\( 1.2^2 = 1.44 \\) first before multiplying by \\( 500 \\).",
+        "Do not multiply \\( 500 \\times 1.2 \\) before squaring.",
+        "Multiply \\( 500 \\times 1.44 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nEXPECTED = (500 * sp.Rational(12, 10)**t).subs(t, 2)"
+    },
+    {
+      "id": "alg2-1743",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": true,
+      "irt": {
+        "a": 1.27,
+        "b": 0.26,
+        "c": 0.25
+      },
+      "text": "A least-squares regression line has slope \\( 2.5 \\) and passes through the sample centroid \\( (\\bar{x}, \\bar{y}) = (6, 20) \\). What is the \\( y \\)-intercept of the regression line?",
+      "choices": [
+        "\\( 15 \\)",
+        "\\( 5 \\)",
+        "\\( 35 \\)",
+        "\\( 10 \\)"
+      ],
+      "answer": 1,
+      "sol": "Every least-squares line \\( \\hat{y} = mx + b \\) passes through \\( (\\bar{x}, \\bar{y}) \\), so \\( 20 = 2.5(6) + b \\implies 20 = 15 + b \\implies b = 5 \\).",
+      "hints": [
+        "Use the regression property that the best-fit line passes through the mean point \\( (\\bar{x}, \\bar{y}) \\).",
+        "Substitute \\( x = 6, y = 20, m = 2.5 \\) into \\( \\hat{y} = mx + b \\).",
+        "Solve \\( 20 = 15 + b \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "b = sp.Symbol('b', real=True)\nEXPECTED = sp.solve(sp.Eq(20, sp.Rational(25, 10)*6 + b), b)[0]"
+    },
+    {
+      "id": "alg2-1744",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.44,
+        "b": -0.06,
+        "c": 0.25
+      },
+      "text": "The height (in feet) of a projectile launched from a platform is modeled by \\( h(t) = -16t^2 + 64t + 80 \\). What is the maximum height reached by the projectile, in feet?",
+      "choices": [
+        "\\( 80 \\)",
+        "\\( 144 \\)",
+        "\\( 128 \\)",
+        "\\( 160 \\)"
+      ],
+      "answer": 1,
+      "sol": "The maximum occurs at \\( t = -\\frac{64}{2(-16)} = 2\\text{ s} \\). Evaluating at \\( t = 2 \\) yields \\( h(2) = -16(4) + 64(2) + 80 = -64 + 128 + 80 = 144\\text{ feet} \\).",
+      "hints": [
+        "Find the time of peak height using \\( t = -\\frac{b}{2a} \\).",
+        "Substitute \\( t = 2 \\) into \\( h(t) \\).",
+        "Simplify \\( -64 + 128 + 80 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nh = -16*t**2 + 64*t + 80\ntp = sp.solve(sp.diff(h, t), t)[0]\nEXPECTED = h.subs(t, tp)"
+    },
+    {
+      "id": "alg2-1745",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "medium",
+      "calc": false,
+      "irt": {
+        "a": 1.0,
+        "b": 0.23,
+        "c": 0.25
+      },
+      "text": "The resale value of laboratory equipment is modeled by \\( V(t) = 1600 \\cdot (0.5)^{t/4} \\), where \\( t \\) is age in years. Find its modeled value after \\( t = 12 \\) years, in dollars.",
+      "choices": [
+        "\\( 400 \\)",
+        "\\( 200 \\)",
+        "\\( 100 \\)",
+        "\\( 800 \\)"
+      ],
+      "answer": 1,
+      "sol": "At \\( t = 12 \\), the exponent is \\( \\frac{12}{4} = 3 \\). Thus \\( V(12) = 1600 \\cdot (0.5)^3 = 1600 \\cdot \\frac{1}{8} = 200 \\).",
+      "hints": [
+        "Evaluate the exponent \\( \\frac{12}{4} = 3 \\) first.",
+        "Compute \\( (0.5)^3 = \\frac{1}{8} \\).",
+        "Divide \\( 1600 \\) by \\( 8 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nEXPECTED = (1600 * sp.Rational(1, 2)**(t/4)).subs(t, 12)"
+    },
+    {
+      "id": "alg2-1746",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.17,
+        "b": 1.11,
+        "c": 0.25
+      },
+      "text": "An exponential regression curve \\( y = a b^x \\) passes through \\( (0, 12) \\) and \\( (3, 96) \\). What value of \\( y \\) does the model predict when \\( x = 5 \\)?",
+      "choices": [
+        "\\( 192 \\)",
+        "\\( 384 \\)",
+        "\\( 768 \\)",
+        "\\( 160 \\)"
+      ],
+      "answer": 1,
+      "sol": "From \\( (0, 12) \\), \\( a = 12 \\). From \\( (3, 96) \\), \\( 12b^3 = 96 \\implies b^3 = 8 \\implies b = 2 \\). Thus \\( y = 12 \\cdot 2^x \\), and at \\( x = 5 \\), \\( y = 12 \\cdot 32 = 384 \\).",
+      "hints": [
+        "Use \\( (0, 12) \\) to find \\( a = 12 \\).",
+        "Substitute \\( (3, 96) \\) into \\( 12b^3 = 96 \\) to determine the growth factor \\( b \\).",
+        "Evaluate \\( 12 \\cdot 2^5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "a, b = sp.symbols('a b', positive=True)\nsol = sp.solve([sp.Eq(a*b**0, 12), sp.Eq(a*b**3, 96)], (a, b))[0]\nEXPECTED = sol[0] * sol[1]**5"
+    },
+    {
+      "id": "alg2-1747",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.34,
+        "b": 1.4,
+        "c": 0.25
+      },
+      "text": "Consider the three data points \\( (1, 3) \\), \\( (2, 7) \\), and \\( (3, 12) \\) fitted by the quadratic model \\( \\hat{y} = x^2 + 2 \\). What is the sum of squared errors (residuals), \\( \\text{SSE} = \\sum (y_i - \\hat{y}_i)^2 \\)?",
+      "choices": [
+        "\\( 0 \\)",
+        "\\( 2 \\)",
+        "\\( 4 \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 1,
+      "sol": "Compute predicted values and residuals: at \\( x = 1 \\), \\( \\hat{y} = 3 \\), residual \\( 3 - 3 = 0 \\); at \\( x = 2 \\), \\( \\hat{y} = 6 \\), residual \\( 7 - 6 = 1 \\); at \\( x = 3 \\), \\( \\hat{y} = 11 \\), residual \\( 12 - 11 = 1 \\). Thus \\( \\text{SSE} = 0^2 + 1^2 + 1^2 = 2 \\).",
+      "hints": [
+        "Evaluate \\( \\hat{y} = x^2 + 2 \\) at \\( x = 1, 2, 3 \\) to get \\( 3, 6, 11 \\).",
+        "Subtract each predicted value from the observed \\( y_i \\) to obtain residuals \\( 0, 1, 1 \\).",
+        "Square each residual and add them."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "pts = [(1, 3), (2, 7), (3, 12)]\nsse = 0\nfor xi, yi in pts:\n    sse = sse + (yi - (xi**2 + 2))**2\nEXPECTED = sse"
+    },
+    {
+      "id": "alg2-1748",
+      "type": "mcq",
+      "domain": "Functions & Their Graphs",
+      "topic_id": "a2-functions",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.51,
+        "b": 1.08,
+        "c": 0.25
+      },
+      "text": "A logistic model for the spread of a software patch is \\( N(t) = \\frac{600}{1 + 5e^{-0.4t}} \\), where \\( t \\) is days after release. What is the carrying capacity \\( \\lim_{t \\to \\infty} N(t) \\)?",
+      "choices": [
+        "\\( 100 \\)",
+        "\\( 600 \\)",
+        "\\( 120 \\)",
+        "\\( 500 \\)"
+      ],
+      "answer": 1,
+      "sol": "As \\( t \\to \\infty \\), \\( e^{-0.4t} \\to 0 \\), so the denominator approaches \\( 1 + 5(0) = 1 \\). Hence \\( \\lim_{t \\to \\infty} N(t) = \\frac{600}{1} = 600 \\).",
+      "hints": [
+        "Examine what happens to the negative exponential \\( e^{-0.4t} \\) as \\( t \\to \\infty \\).",
+        "Since \\( e^{-0.4t} \\to 0 \\), the term \\( 5e^{-0.4t} \\) vanishes.",
+        "Evaluate \\( \\frac{600}{1 + 0} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "t = sp.Symbol('t', real=True)\nEXPECTED = sp.limit(600 / (1 + 5*sp.exp(-sp.Rational(4, 10)*t)), t, sp.oo)"
+    },
+    {
+      "id": "alg2-1749",
+      "type": "mcq",
+      "domain": "Polynomial Functions",
+      "topic_id": "a2-polynomials",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.07,
+        "b": -1.08,
+        "c": 0.25
+      },
+      "text": "By the Remainder Theorem, what is the remainder when \\( P(x) = x^3 - 4x^2 + 5x - 7 \\) is divided by \\( x - 2 \\)?",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( -5 \\)",
+        "\\( -19 \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 1,
+      "sol": "The Remainder Theorem states that the remainder upon division by \\( x - 2 \\) is \\( P(2) = 2^3 - 4(2)^2 + 5(2) - 7 = 8 - 16 + 10 - 7 = -5 \\).",
+      "hints": [
+        "Apply the Remainder Theorem: dividing \\( P(x) \\) by \\( x - c \\) leaves remainder \\( P(c) \\).",
+        "Evaluate \\( P(2) \\) carefully.",
+        "Compute \\( 8 - 16 + 10 - 7 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nP = x**3 - 4*x**2 + 5*x - 7\nEXPECTED = P.subs(x, 2)"
+    },
+    {
+      "id": "alg2-1750",
+      "type": "mcq",
+      "domain": "Polynomial Functions",
+      "topic_id": "a2-polynomials",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.24,
+        "b": -1.4,
+        "c": 0.25
+      },
+      "text": "Given that \\( x + 1 \\) is a factor of \\( P(x) = 2x^3 + kx^2 - 3x + 4 \\), find the value of \\( k \\).",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( -5 \\)",
+        "\\( -3 \\)",
+        "\\( 1 \\)"
+      ],
+      "answer": 1,
+      "sol": "By the Factor Theorem, \\( P(-1) = 0 \\): \\( 2(-1)^3 + k(-1)^2 - 3(-1) + 4 = -2 + k + 3 + 4 = k + 5 = 0 \\), so \\( k = -5 \\).",
+      "hints": [
+        "If \\( x + 1 \\) is a factor of \\( P(x) \\), then \\( P(-1) = 0 \\) by the Factor Theorem.",
+        "Substitute \\( x = -1 \\) into \\( 2x^3 + kx^2 - 3x + 4 \\).",
+        "Solve \\( k + 5 = 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x, k = sp.symbols('x k', real=True)\nP = 2*x**3 + k*x**2 - 3*x + 4\nEXPECTED = sp.solve(sp.Eq(P.subs(x, -1), 0), k)[0]"
+    },
+    {
+      "id": "alg2-1751",
+      "type": "mcq",
+      "domain": "Polynomial Functions",
+      "topic_id": "a2-polynomials",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.41,
+        "b": -1.11,
+        "c": 0.25
+      },
+      "text": "What is the degree of the polynomial \\( P(x) = (x^2 + 3)^2 (2x^3 - x + 1) \\)?",
+      "choices": [
+        "\\( 12 \\)",
+        "\\( 7 \\)",
+        "\\( 6 \\)",
+        "\\( 5 \\)"
+      ],
+      "answer": 1,
+      "sol": "The leading term of \\( (x^2 + 3)^2 \\) is \\( (x^2)^2 = x^4 \\) (degree \\( 4 \\)), and the leading term of \\( 2x^3 - x + 1 \\) has degree \\( 3 \\). Multiplying adds the degrees: \\( 4 + 3 = 7 \\).",
+      "hints": [
+        "Determine the highest power of \\( x \\) in \\( (x^2 + 3)^2 \\).",
+        "Multiply by the highest power of \\( x \\) in \\( 2x^3 - x + 1 \\).",
+        "Add the exponents \\( 4 + 3 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nP = sp.expand((x**2 + 3)**2 * (2*x**3 - x + 1))\nEXPECTED = sp.degree(P, x)"
+    },
+    {
+      "id": "alg2-1752",
+      "type": "mcq",
+      "domain": "Polynomial Functions",
+      "topic_id": "a2-polynomials",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 0.97,
+        "b": -1.43,
+        "c": 0.25
+      },
+      "text": "What is the \\( y \\)-intercept of the polynomial \\( f(x) = 3(x - 2)^2(x + 5) \\)?",
+      "choices": [
+        "\\( -30 \\)",
+        "\\( 60 \\)",
+        "\\( 12 \\)",
+        "\\( -60 \\)"
+      ],
+      "answer": 1,
+      "sol": "Set \\( x = 0 \\): \\( f(0) = 3(-2)^2(5) = 3(4)(5) = 60 \\).",
+      "hints": [
+        "To find the \\( y \\)-intercept, evaluate \\( f(0) \\).",
+        "Be sure to compute \\( (-2)^2 = +4 \\).",
+        "Multiply \\( 3 \\times 4 \\times 5 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nf = 3*(x - 2)**2*(x + 5)\nEXPECTED = f.subs(x, 0)"
+    },
+    {
+      "id": "alg2-1753",
+      "type": "mcq",
+      "domain": "Polynomial Functions",
+      "topic_id": "a2-polynomials",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.14,
+        "b": -1.14,
+        "c": 0.25
+      },
+      "text": "Factor \\( x^3 - 27 \\) as \\( (x - 3)(x^2 + ax + b) \\). What is \\( a + b \\)?",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( 12 \\)",
+        "\\( 9 \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Using the difference of cubes \\( A^3 - B^3 = (A - B)(A^2 + AB + B^2) \\) with \\( A = x, B = 3 \\): \\( x^3 - 27 = (x - 3)(x^2 + 3x + 9) \\). Thus \\( a = 3, b = 9 \\), and \\( a + b = 12 \\).",
+      "hints": [
+        "Apply the difference of cubes formula \\( x^3 - 3^3 = (x - 3)(x^2 + 3x + 9) \\).",
+        "Read off \\( a = 3 \\) and \\( b = 9 \\).",
+        "Add \\( a + b \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nq, r = sp.div(x**3 - 27, x - 3)\nEXPECTED = q.coeff(x, 1) + q.subs(x, 0)"
+    },
+    {
+      "id": "alg2-1754",
+      "type": "mcq",
+      "domain": "Polynomial Functions",
+      "topic_id": "a2-polynomials",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.31,
+        "b": -1.46,
+        "c": 0.25
+      },
+      "text": "If \\( P(x) = x^3 - 6x^2 + 11x - 6 \\) has roots \\( 1, 2, r \\), what is the value of \\( r \\)?",
+      "choices": [
+        "\\( 6 \\)",
+        "\\( 3 \\)",
+        "\\( -3 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 1,
+      "sol": "By Vieta's formulas, the sum of the roots of \\( x^3 - 6x^2 + 11x - 6 \\) equals \\( 6 \\). Since \\( 1 + 2 + r = 6 \\), we get \\( r = 3 \\).",
+      "hints": [
+        "Recall that for a monic cubic \\( x^3 + c_2 x^2 + c_1 x + c_0 \\), the sum of the three roots is \\( -c_2 \\).",
+        "Set \\( 1 + 2 + r = 6 \\) (or check \\( 1 \\cdot 2 \\cdot r = 6 \\)).",
+        "Solve for \\( r \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = max(sp.solve(x**3 - 6*x**2 + 11*x - 6, x))"
+    },
+    {
+      "id": "alg2-1755",
+      "type": "mcq",
+      "domain": "Rational Expressions & Functions",
+      "topic_id": "a2-rational",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.48,
+        "b": -1.17,
+        "c": 0.25
+      },
+      "text": "Simplify \\( \\frac{x^2 - 25}{x^2 + 3x - 10} \\) for \\( x \\ne 2, -5 \\) to \\( \\frac{x + a}{x + b} \\). What is \\( a + b \\)?",
+      "choices": [
+        "\\( 3 \\)",
+        "\\( -7 \\)",
+        "\\( 7 \\)",
+        "\\( -3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Factor both: \\( \\frac{(x - 5)(x + 5)}{(x + 5)(x - 2)} = \\frac{x - 5}{x - 2} \\). Matching with \\( \\frac{x + a}{x + b} \\) gives \\( a = -5 \\) and \\( b = -2 \\), so \\( a + b = -7 \\).",
+      "hints": [
+        "Factor the numerator \\( x^2 - 25 = (x - 5)(x + 5) \\) and denominator \\( (x + 5)(x - 2) \\).",
+        "Cancel the common factor \\( x + 5 \\).",
+        "Read \\( a = -5 \\) and \\( b = -2 \\) from \\( \\frac{x + a}{x + b} \\) and add them."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nsimp = sp.cancel((x**2 - 25)/(x**2 + 3*x - 10))\nEXPECTED = sp.numer(simp).subs(x, 0) + sp.denom(simp).subs(x, 0)"
+    },
+    {
+      "id": "alg2-1756",
+      "type": "mcq",
+      "domain": "Rational Expressions & Functions",
+      "topic_id": "a2-rational",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.04,
+        "b": -1.49,
+        "c": 0.25
+      },
+      "text": "Solve the rational equation \\( \\frac{4}{x - 3} = \\frac{2}{x + 1} \\). What is \\( x \\)?",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( -5 \\)",
+        "\\( 1 \\)",
+        "\\( -1 \\)"
+      ],
+      "answer": 1,
+      "sol": "Cross-multiply: \\( 4(x + 1) = 2(x - 3) \\implies 4x + 4 = 2x - 6 \\implies 2x = -10 \\implies x = -5 \\).",
+      "hints": [
+        "Cross-multiply \\( 4(x + 1) = 2(x - 3) \\).",
+        "Expand both sides and collect \\( x \\) terms on one side.",
+        "Check that \\( x = -5 \\) does not make either denominator zero."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(4/(x - 3), 2/(x + 1)), x)[0]"
+    },
+    {
+      "id": "alg2-1757",
+      "type": "mcq",
+      "domain": "Rational Expressions & Functions",
+      "topic_id": "a2-rational",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.21,
+        "b": -1.2,
+        "c": 0.25
+      },
+      "text": "Add the rational expressions \\( \\frac{3}{x} + \\frac{5}{2x} \\) to write a single fraction \\( \\frac{k}{2x} \\). What is \\( k \\)?",
+      "choices": [
+        "\\( 8 \\)",
+        "\\( 11 \\)",
+        "\\( 16 \\)",
+        "\\( 13 \\)"
+      ],
+      "answer": 1,
+      "sol": "Use common denominator \\( 2x \\): \\( \\frac{3}{x} = \\frac{6}{2x} \\), so \\( \\frac{6}{2x} + \\frac{5}{2x} = \\frac{11}{2x} \\). Thus \\( k = 11 \\).",
+      "hints": [
+        "Rewrite \\( \\frac{3}{x} \\) with denominator \\( 2x \\) by multiplying top and bottom by \\( 2 \\).",
+        "Add the numerators \\( 6 + 5 \\) over \\( 2x \\).",
+        "Read off \\( k \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nexpr = sp.together(3/x + 5/(2*x))\nEXPECTED = sp.numer(expr)"
+    },
+    {
+      "id": "alg2-1758",
+      "type": "mcq",
+      "domain": "Rational Expressions & Functions",
+      "topic_id": "a2-rational",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.38,
+        "b": -0.91,
+        "c": 0.25
+      },
+      "text": "Multiply and simplify \\( \\frac{x^2 - 9}{6} \\cdot \\frac{12}{x + 3} \\) for \\( x \\ne -3 \\), then evaluate the simplified expression at \\( x = 8 \\).",
+      "choices": [
+        "\\( 22 \\)",
+        "\\( 10 \\)",
+        "\\( 5 \\)",
+        "\\( 11 \\)"
+      ],
+      "answer": 1,
+      "sol": "Factor \\( x^2 - 9 = (x - 3)(x + 3) \\) and cancel \\( x + 3 \\) and \\( 6 \\): \\( \\frac{(x - 3)(x + 3)}{6} \\cdot \\frac{12}{x + 3} = 2(x - 3) \\). At \\( x = 8 \\), \\( 2(8 - 3) = 10 \\).",
+      "hints": [
+        "Factor \\( x^2 - 9 \\) and cancel \\( (x + 3) \\) and \\( \\frac{12}{6} = 2 \\).",
+        "Simplify to \\( 2(x - 3) \\).",
+        "Substitute \\( x = 8 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nexpr = sp.cancel((x**2 - 9)/6 * 12/(x + 3))\nEXPECTED = expr.subs(x, 8)"
+    },
+    {
+      "id": "alg2-1759",
+      "type": "mcq",
+      "domain": "Rational Expressions & Functions",
+      "topic_id": "a2-rational",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.55,
+        "b": -1.23,
+        "c": 0.25
+      },
+      "text": "If \\( y \\) varies inversely with \\( x \\), and \\( y = 9 \\) when \\( x = 4 \\), what is \\( y \\) when \\( x = 6 \\)?",
+      "choices": [
+        "\\( \\frac{27}{2} \\)",
+        "\\( 6 \\)",
+        "\\( 12 \\)",
+        "\\( 3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Inverse variation means \\( xy = k \\). Using \\( (4, 9) \\), \\( k = 4 \\times 9 = 36 \\). When \\( x = 6 \\), \\( y = \\frac{36}{6} = 6 \\).",
+      "hints": [
+        "Write the inverse variation relation \\( xy = k \\).",
+        "Compute the constant \\( k = 4 \\times 9 = 36 \\).",
+        "Divide \\( 36 \\) by \\( 6 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "y = sp.Symbol('y', real=True)\nEXPECTED = sp.solve(sp.Eq(6*y, 4*9), y)[0]"
+    },
+    {
+      "id": "alg2-1760",
+      "type": "mcq",
+      "domain": "Rational Expressions & Functions",
+      "topic_id": "a2-rational",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.11,
+        "b": -0.94,
+        "c": 0.25
+      },
+      "text": "Simplify the complex fraction \\( \\frac{\\frac{1}{2} + \\frac{1}{3}}{\\frac{1}{4}} \\).",
+      "choices": [
+        "\\( \\frac{5}{24} \\)",
+        "\\( \\frac{10}{3} \\)",
+        "\\( \\frac{5}{6} \\)",
+        "\\( \\frac{20}{3} \\)"
+      ],
+      "answer": 1,
+      "sol": "Combine the numerator: \\( \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6} \\). Dividing by \\( \\frac{1}{4} \\) multiplies by \\( 4 \\): \\( \\frac{5}{6} \\times 4 = \\frac{20}{6} = \\frac{10}{3} \\).",
+      "hints": [
+        "Add \\( \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6} \\) in the numerator first.",
+        "Dividing by \\( \\frac{1}{4} \\) is equivalent to multiplying by \\( 4 \\).",
+        "Simplify \\( \\frac{20}{6} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = (sp.Rational(1, 2) + sp.Rational(1, 3)) / sp.Rational(1, 4)"
+    },
+    {
+      "id": "alg2-1761",
+      "type": "mcq",
+      "domain": "Exponential & Logarithmic Functions",
+      "topic_id": "a2-exponential",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.28,
+        "b": -1.26,
+        "c": 0.25
+      },
+      "text": "Solve the logarithmic equation \\( \\log_3(2x - 1) = 3 \\). What is \\( x \\)?",
+      "choices": [
+        "\\( 5 \\)",
+        "\\( 14 \\)",
+        "\\( 13 \\)",
+        "\\( 4 \\)"
+      ],
+      "answer": 1,
+      "sol": "Convert from logarithmic to exponential form: \\( 2x - 1 = 3^3 = 27 \\). Adding \\( 1 \\) gives \\( 2x = 28 \\), so \\( x = 14 \\).",
+      "hints": [
+        "Rewrite \\( \\log_b(A) = C \\) in exponential form as \\( A = b^C \\).",
+        "Compute \\( 3^3 = 27 \\).",
+        "Solve \\( 2x - 1 = 27 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "x = sp.Symbol('x', real=True)\nEXPECTED = sp.solve(sp.Eq(2*x - 1, 3**3), x)[0]"
+    },
+    {
+      "id": "alg2-1762",
+      "type": "mcq",
+      "domain": "Exponential & Logarithmic Functions",
+      "topic_id": "a2-exponential",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.45,
+        "b": -0.97,
+        "c": 0.25
+      },
+      "text": "Evaluate \\( \\log_2(32) - \\log_2(4) + \\log_2(1) \\).",
+      "choices": [
+        "\\( 28 \\)",
+        "\\( 3 \\)",
+        "\\( 4 \\)",
+        "\\( 7 \\)"
+      ],
+      "answer": 1,
+      "sol": "Since \\( 32 = 2^5 \\), \\( 4 = 2^2 \\), and \\( 1 = 2^0 \\), we have \\( \\log_2(32) = 5 \\), \\( \\log_2(4) = 2 \\), and \\( \\log_2(1) = 0 \\). Thus \\( 5 - 2 + 0 = 3 \\).",
+      "hints": [
+        "Evaluate each base-\\( 2 \\) logarithm individually: \\( 2^5 = 32 \\), \\( 2^2 = 4 \\), \\( 2^0 = 1 \\).",
+        "Alternatively combine as \\( \\log_2\\left(\\frac{32 \\cdot 1}{4}\\right) = \\log_2(8) \\).",
+        "Compute \\( 5 - 2 + 0 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "EXPECTED = sp.log(32, 2) - sp.log(4, 2) + sp.log(1, 2)"
+    },
+    {
+      "id": "alg2-1763",
+      "type": "mcq",
+      "domain": "Trigonometric Functions",
+      "topic_id": "a2-trig",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.01,
+        "b": 1.16,
+        "c": 0.25
+      },
+      "text": "Solve \\( 2\\cos^2 x - \\sin x - 1 = 0 \\) on \\( [0, 2\\pi) \\). What is the sum of all solutions in this interval?",
+      "choices": [
+        "\\( 2\\pi \\)",
+        "\\( \\frac{5\\pi}{2} \\)",
+        "\\( \\frac{3\\pi}{2} \\)",
+        "\\( 3\\pi \\)"
+      ],
+      "answer": 1,
+      "sol": "Replace \\( \\cos^2 x = 1 - \\sin^2 x \\): \\( 2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\implies 2\\sin^2 x + \\sin x - 1 = 0 \\). Factoring gives \\( (2\\sin x - 1)(\\sin x + 1) = 0 \\), so \\( \\sin x = \\frac{1}{2} \\) or \\( \\sin x = -1 \\). In \\( [0, 2\\pi) \\), the solutions are \\( \\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{3\\pi}{2} \\), whose sum is \\( \\pi + \\frac{3\\pi}{2} = \\frac{5\\pi}{2} \\).",
+      "hints": [
+        "Substitute \\( \\cos^2 x = 1 - \\sin^2 x \\) to obtain a quadratic equation in \\( \\sin x \\).",
+        "Factor \\( 2\\sin^2 x + \\sin x - 1 = (2\\sin x - 1)(\\sin x + 1) = 0 \\).",
+        "Find all angles in \\( [0, 2\\pi) \\) where \\( \\sin x = \\frac{1}{2} \\) or \\( \\sin x = -1 \\), then add them."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "s = sp.Symbol('s', real=True)\nsols_s = sp.solve(2*(1 - s**2) - s - 1, s)\n# Match angles in [0, 2*pi)\na1 = sp.asin(sols_s[0])\na2 = sp.pi - sp.asin(sols_s[0])\na3 = sp.pi - sp.asin(sols_s[1])\n# Filter: for s=1/2 -> pi/6, 5pi/6; for s=-1 -> 3pi/2\ntot = 0\nfor sv in sols_s:\n    if sv == sp.Rational(1, 2):\n        tot = tot + sp.asin(sv) + (sp.pi - sp.asin(sv))\n    elif sv == -1:\n        tot = tot + 3*sp.pi/2\nEXPECTED = tot"
+    },
+    {
+      "id": "alg2-1764",
+      "type": "mcq",
+      "domain": "Trigonometric Functions",
+      "topic_id": "a2-trig",
+      "difficulty": "hard",
+      "calc": false,
+      "irt": {
+        "a": 1.18,
+        "b": 1.45,
+        "c": 0.25
+      },
+      "text": "Given that \\( \\sin\\theta = \\frac{5}{13} \\) with \\( \\frac{\\pi}{2} < \\theta < \\pi \\) (Quadrant II), compute the exact value of \\( \\cos(2\\theta) + \\sin(2\\theta) \\).",
+      "choices": [
+        "\\( \\frac{239}{169} \\)",
+        "\\( -\\frac{1}{169} \\)",
+        "\\( \\frac{119}{169} \\)",
+        "\\( -\\frac{119}{169} \\)"
+      ],
+      "answer": 1,
+      "sol": "In Quadrant II, \\( \\cos\\theta = -\\sqrt{1 - \\left(\\frac{5}{13}\\right)^2} = -\\frac{12}{13} \\). Using double-angle identities: \\( \\cos(2\\theta) = 1 - 2\\sin^2\\theta = 1 - \\frac{50}{169} = \\frac{119}{169} \\), and \\( \\sin(2\\theta) = 2\\sin\\theta\\cos\\theta = 2\\left(\\frac{5}{13}\\right)\\left(-\\frac{12}{13}\\right) = -\\frac{120}{169} \\). Adding gives \\( \\frac{119 - 120}{169} = -\\frac{1}{169} \\).",
+      "hints": [
+        "Determine \\( \\cos\\theta = -\\frac{12}{13} \\) using the Pythagorean identity and Quadrant II sign (\\( \\cos\\theta < 0 \\)).",
+        "Apply \\( \\cos(2\\theta) = 1 - 2\\sin^2\\theta \\) and \\( \\sin(2\\theta) = 2\\sin\\theta\\cos\\theta \\).",
+        "Add \\( \\frac{119}{169} \\) and \\( -\\frac{120}{169} \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "s_t = sp.Rational(5, 13)\nc_t = -sp.sqrt(1 - s_t**2)\nEXPECTED = (1 - 2*s_t**2) + 2*s_t*c_t"
+    },
+    {
+      "id": "alg2-1765",
+      "type": "mcq",
+      "domain": "Matrices & Systems",
+      "topic_id": "a2-matrices",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.35,
+        "b": -1.32,
+        "c": 0.25
+      },
+      "text": "What is the determinant of the \\( 2 \\times 2 \\) matrix \\( A = \\begin{pmatrix} 6 & -3 \\\\ 4 & 5 \\end{pmatrix} \\)?",
+      "choices": [
+        "\\( 18 \\)",
+        "\\( 42 \\)",
+        "\\( 30 \\)",
+        "\\( -42 \\)"
+      ],
+      "answer": 1,
+      "sol": "For \\( A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\), \\( \\det(A) = ad - bc = (6)(5) - (-3)(4) = 30 + 12 = 42 \\).",
+      "hints": [
+        "Use the determinant formula \\( ad - bc \\).",
+        "Watch the negative sign in \\( -(-3)(4) = +12 \\).",
+        "Add \\( 30 + 12 \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[6, -3], [4, 5]])\nEXPECTED = A.det()"
+    },
+    {
+      "id": "alg2-1766",
+      "type": "mcq",
+      "domain": "Matrices & Systems",
+      "topic_id": "a2-matrices",
+      "difficulty": "easy",
+      "calc": false,
+      "irt": {
+        "a": 1.52,
+        "b": -1.03,
+        "c": 0.25
+      },
+      "text": "Let \\( A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( B = \\begin{pmatrix} 1 & 5 \\\\ -2 & 0 \\end{pmatrix} \\). Find the top-right entry (row \\( 1 \\), column \\( 2 \\)) of the matrix product \\( AB \\).",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( 10 \\)",
+        "\\( 15 \\)",
+        "\\( -5 \\)"
+      ],
+      "answer": 1,
+      "sol": "The entry in row \\( 1 \\), column \\( 2 \\) of \\( AB \\) is the dot product of row \\( 1 \\) of \\( A \\) with column \\( 2 \\) of \\( B \\): \\( (2)(5) + (-1)(0) = 10 + 0 = 10 \\).",
+      "hints": [
+        "Multiply row \\( 1 \\) of \\( A \\), \\( (2, -1) \\), by column \\( 2 \\) of \\( B \\), \\( (5, 0) \\).",
+        "Compute the dot product \\( 2 \\times 5 + (-1) \\times 0 \\).",
+        "Simplify \\( 10 + 0 \\) to get the final entry."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "A = sp.Matrix([[2, -1], [3, 4]])\nB = sp.Matrix([[1, 5], [-2, 0]])\nEXPECTED = (A * B)[0, 1]"
+    },
+    {
+      "id": "alg2-1767",
+      "type": "mcq",
+      "domain": "Probability & Statistics",
+      "topic_id": "a2-stats",
+      "difficulty": "medium",
+      "calc": true,
+      "irt": {
+        "a": 1.08,
+        "b": -0.1,
+        "c": 0.25
+      },
+      "text": "Test scores on an Algebra 2 exam are normally distributed with mean \\( \\mu = 76 \\) and standard deviation \\( \\sigma = 8 \\). Using the Empirical Rule (\\( 68\\text{–}95\\text{–}99.7\\% \\)), what percentage of students score between \\( 68 \\) and \\( 92 \\)?",
+      "choices": [
+        "\\( 68.0\\% \\)",
+        "\\( 81.5\\% \\)",
+        "\\( 95.0\\% \\)",
+        "\\( 84.0\\% \\)"
+      ],
+      "answer": 1,
+      "sol": "Compute the \\( z \\)-scores: \\( z_1 = \\frac{68 - 76}{8} = -1 \\) and \\( z_2 = \\frac{92 - 76}{8} = +2 \\). By the Empirical Rule, \\( 68\\% \\) lies within \\( \\pm 1\\sigma \\) (so \\( 34\\% \\) in \\( [-1\\sigma, 0] \\)) and \\( 95\\% \\) lies within \\( \\pm 2\\sigma \\) (so \\( 47.5\\% \\) in \\( [0, +2\\sigma] \\)). Thus the total percentage in \\( [-1\\sigma, +2\\sigma] \\) is \\( 34\\% + 47.5\\% = 81.5\\% \\).",
+      "hints": [
+        "Convert both bounds \\( 68 \\) and \\( 92 \\) to standard deviations from the mean \\( 76 \\): \\( -1\\sigma \\) and \\( +2\\sigma \\).",
+        "Split the interval at the mean \\( 76 \\): use half of \\( 68\\% \\) on the left and half of \\( 95\\% \\) on the right.",
+        "Add \\( 34\\% + 47.5\\% \\)."
+      ],
+      "sympy_verified": true,
+      "sympy_cert": "left_half = sp.Rational(68, 100) / 2\nright_half = sp.Rational(95, 100) / 2\nEXPECTED = left_half + right_half"
     }
   ]
 }

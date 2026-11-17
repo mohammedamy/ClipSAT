@@ -874,6 +874,31 @@ it('Handles bank/content edge-case figure schemas cleanly (pyramid solid, object
   });
   const cxVals = [...netSvg.matchAll(/<circle cx="([0-9.]+)"/g)].map((m) => Number(m[1]));
   assert.ok(cxVals.length === 3 && Math.max(...cxVals) - Math.min(...cxVals) > 140, 'Normalized 0..100 network_graph coordinates must scale across the SVG canvas');
+
+  // 7. geometry_3d prism geometric width must never collapse wrapper max-width
+  const geom3dExplicitW = window._renderFig({
+    type: 'geometry_3d',
+    solid: 'rectangular_prism',
+    length: 3,
+    width: 8,
+    height: 7,
+    w: 240
+  });
+  assert.ok(
+    geom3dExplicitW.includes('max-width:240px') && !geom3dExplicitW.includes('max-width:8px'),
+    'geometry_3d with explicit pixel w must use max-width:240px rather than prism width 8px'
+  );
+  const geom3dDefaultW = window._renderFig({
+    type: 'geometry_3d',
+    solid: 'rectangular_prism',
+    length: 6,
+    width: 5,
+    height: 4
+  });
+  assert.ok(
+    geom3dDefaultW.includes('max-width:460px') && !geom3dDefaultW.includes('max-width:5px'),
+    'geometry_3d without pixel w must default to max-width:460px rather than prism width 5px'
+  );
 });
 
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
