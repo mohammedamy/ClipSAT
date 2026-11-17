@@ -2,7 +2,7 @@
   "id": "ode-systems",
   "chapterNumber": "7",
   "title": {
-    "en": "Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials",
+    "en": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
     "ar": "أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس"
   },
   "content": {
@@ -29,33 +29,21 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
-          "xrange": [
-            0,
-            8
-          ],
-          "yrange": [
-            -2,
-            2.5
-          ],
-          "fns": [
-            {
-              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
-              "color": "var(--fig-indigo)",
-              "label": "Underdamped y(t)"
-            },
-            {
-              "fn": "2*Math.exp(-0.35*x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Envelope ±2e^(−0.35t)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Phase-Plane Nullclines & Spiral Sink Portrait",
+          "fn": "abs(-x - y) < 0.15 ? 0 : (x - y)/(-x - y)",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 2,
+            "y0": 0
+          }
         },
         "caption": {
-          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
-          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس."
+          "en": "Planar system \\(\\mathbf{x}' = \\begin{pmatrix} -1 & -1 \\\\ 1 & -1 \\end{pmatrix}\\mathbf{x}\\) with complex eigenvalues \\(\\lambda = -1 \\pm i\\) spirals inward toward the asymptotically stable origin.",
+          "ar": "النظام الخطي المستوي \\(\\mathbf{x}' = \\begin{pmatrix} -1 & -1 \\\\ 1 & -1 \\end{pmatrix}\\mathbf{x}\\) ذو القيم الذاتية المركبة \\(\\lambda = -1 \\pm i\\) يلتف حلزونياً نحو نقطة الأصل المستقرة."
         }
       },
       {
@@ -310,7 +298,7 @@
         },
         "caption": {
           "en": "Hyperbolic trajectories of a saddle point. The stable manifold pulls state trajectories inward toward the origin, while the unstable manifold drives trajectories outward to infinity.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في أنظمة المعادلات التفاضلية الخطية ومستوى الطور ومصفوفة الأس."
+          "ar": "مسارات مستوى الطور لنقطة سرج ذات قيمتين ذاتيتين متعاكستين في الإشارة: تقارب على الفرع المستقر وتباعد على الفرع غير المستقر."
         }
       },
       {
@@ -328,7 +316,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(C\\) — Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials (Medium Application)",
+          "en": "Worked Example \\(C\\) — Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials (Medium Application)",
           "ar": null
         },
         "problem": {
@@ -343,7 +331,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(D\\) — Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials (Hard Application)",
+          "en": "Worked Example \\(D\\) — Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials (Hard Application)",
           "ar": null
         },
         "problem": {
@@ -358,7 +346,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials)",
           "ar": null
         },
         "columns": [
@@ -424,7 +412,7 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials",
+          "en": "▲ Exam Pacing & Verification Strategy — Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
           "ar": null
         },
         "body": {
@@ -561,12 +549,12 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+            "label": "Power Series Solutions, Ordinary Points & the Method of Frobenius",
             "chapterId": "ode-series-solutions",
             "trackId": "odes"
           },
           {
-            "label": "The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
+            "label": "The Laplace Transform, Discontinuous Forcing & Convolution Theory",
             "chapterId": "ode-laplace-transforms",
             "trackId": "odes"
           },
@@ -582,14 +570,15 @@
   "quizWidget": {
     "domains": [
       "Systems of Linear ODEs"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",
     "className": "la-tag",
     "badgeClassName": "la-wt",
     "emoji": "📌",
-    "category": "Differential Equations · Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials",
+    "category": "Differential Equations · Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
     "weightBadge": "ODE Core · 7",
     "topics": [
       "Systems of Linear ODEs"

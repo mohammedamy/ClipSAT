@@ -985,7 +985,8 @@
         var svgHolder = fig.querySelector('.lesson-figure-svg');
         if(!svgHolder) return;
 
-        var origExpr = fig.getAttribute('data-sf-fn') || 'x - y';
+        var rawExpr = fig.getAttribute('data-sf-fn') || 'x - y';
+        var origExpr = String(rawExpr).indexOf('=') !== -1 ? String(rawExpr).replace(/^.*=\s*/, '') : rawExpr;
         var xmin = parseFloat(fig.getAttribute('data-sf-xmin')); if(!isFinite(xmin)) xmin = -3;
         var xmax = parseFloat(fig.getAttribute('data-sf-xmax')); if(!isFinite(xmax)) xmax = 3;
         var ymin = parseFloat(fig.getAttribute('data-sf-ymin')); if(!isFinite(ymin)) ymin = -3;

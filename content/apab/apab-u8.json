@@ -40,10 +40,10 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "title": "Unit 8 · Region Bounded Between f(x) = 4x − x² and g(x) = x",
           "xrange": [
-            -1,
-            5
+            -0.5,
+            4
           ],
           "yrange": [
             -1,
@@ -51,59 +51,15 @@
           ],
           "fns": [
             {
-              "fn": "4 - 0.25*x*x",
+              "fn": "4*x - x*x",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = 4 − x²/4"
+              "label": "f(x) = 4x − x²"
             },
             {
-              "fn": "0",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "y = 0"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 4,
-              "label": "a = 0"
-            },
-            {
-              "x": 4,
-              "y": 0,
-              "label": "b = 4"
-            }
-          ]
-        },
-        "caption": {
-          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
-          "ar": "منحنى المكامل غير السالب على الفترة لحساب المساحة المتراكمة في الوحدة ثمانية · تطبيقات التكامل (المساحات والحجوم). \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) ، \\([0, 4]\\) ، \\(\\int_0^4 f(x)\\,dx\\)"
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Area Enclosed Between Intersecting Curves f(x) and g(x)",
-          "xrange": [
-            -1,
-            5
-          ],
-          "yrange": [
-            -1,
-            7
-          ],
-          "fns": [
-            {
-              "fn": "4*x - 0.8*x*x",
-              "color": "var(--fig-indigo)",
-              "label": "Upper f(x)"
-            },
-            {
-              "fn": "0.8*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Lower g(x)"
+              "label": "g(x) = x"
             }
           ],
           "points": [
@@ -113,15 +69,54 @@
               "label": "(0, 0)"
             },
             {
-              "x": 4,
-              "y": 3.2,
-              "label": "(4, 3.2)"
+              "x": 3,
+              "y": 3,
+              "label": "(3, 3)"
             }
           ]
         },
         "caption": {
-          "en": "Region bounded between upper curve \\(f(x)\\) and lower line \\(g(x)\\) from \\(x = 0\\) to \\(x = 4\\).",
-          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x)\\) والمستقيم السفلي \\(g(x)\\) من \\(x = 0\\) إلى \\(x = 4\\) في الوحدة ثمانية · تطبيقات التكامل (المساحات والحجوم)."
+          "en": "Enclosed area \\(A = \\int_0^3 [(4x - x^2) - x]\\,dx = \\frac{9}{2}\\) between intersecting parabola \\(f(x)\\) and line \\(g(x)\\).",
+          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x) = 4x - x^2\\) والمستقيم السفلي \\(g(x) = x\\) من \\(x = 0\\) إلى \\(x = 3\\)."
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Washer Method Outer R(x) = √x and Inner r(x) = x/2 on [0, 4]",
+          "xrange": [
+            0,
+            4.5
+          ],
+          "yrange": [
+            0,
+            2.5
+          ],
+          "fns": [
+            {
+              "fn": "x >= 0 ? sqrt(x) : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "R(x) = √x"
+            },
+            {
+              "fn": "0.5*x",
+              "color": "var(--fig-emerald)",
+              "dash": "4,4",
+              "label": "r(x) = x/2"
+            }
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Revolving the region between \\(R(x) = \\sqrt{x}\\) and \\(r(x) = x/2\\) around the \\(x\\)-axis yields washer volume \\(\\pi\\int_0^4 [(\\sqrt{x})^2 - (x/2)^2]\\,dx\\).",
+          "ar": "دوران المنطقة المحصورة بين \\(R(x) = \\sqrt{x}\\) و\\(r(x) = x/2\\) حول محور السينات بطريقة الحلقات."
         }
       },
       {
@@ -187,7 +182,7 @@
             },
             {
               "en": "Cumulative Area",
-              "ar": "Cumulative المساحة"
+              "ar": "المساحة التراكمية"
             }
           ]
         },
@@ -196,7 +191,7 @@
             "id": "apabAreaB",
             "label": {
               "en": "Upper limit <b>\\(b =\\)</b>",
-              "ar": "Upper النهاية <b>\\(b =\\)</b>"
+              "ar": "الحد العلوي <b>\\(b =\\)</b>"
             },
             "min": 1,
             "max": 3.5,
@@ -205,7 +200,7 @@
             "valueDisplayId": "apabAreaBV",
             "ariaLabel": {
               "en": "Upper limit of integration b",
-              "ar": "Upper النهاية of integration b"
+              "ar": "الحد العلوي للتكامل b"
             }
           },
           {
@@ -281,12 +276,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 8 · Applications of Integration)",
-          "ar": null
+          "en": "◆ Why It Works — Cavalieri Slicing & Cross-Sectional Volume Accumulation",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — تقطيع المقاطع العرضية وتراكم الحجم"
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
-          "ar": null
+          "en": "<p><strong>From Thin Slabs to Exact Volume:</strong> Partitioning \\([a,b]\\) into slabs of thickness \\(\\Delta x_i\\) and cross-sectional area \\(A(x_i)\\) gives slab volume \\(A(x_i)\\Delta x_i\\). Taking the Riemann limit \\(V = \\lim_{n\\to\\infty}\\sum A(x_i)\\Delta x_i = \\int_a^b A(x)\\,dx\\) unifies square/semicircular cross sections, discs (\\(\\pi R^2\\)), and washers (\\(\\pi(R^2 - r^2)\\)).</p>",
+          "ar": "<p><strong>من الشرائح الرقيقة إلى الحجم الدقيق:</strong> تقسيم المجسم إلى شرائح مساحة مقطعها \\(A(x_i)\\) وسمكها \\(\\Delta x_i\\) وأخذ نهاية مجموع ريمان يعطي \\(V = \\int_a^b A(x)\\,dx\\) شاملاً الأقراص والحلقات والمقاطع الهندسية.</p>"
         }
       },
       {

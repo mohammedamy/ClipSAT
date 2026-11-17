@@ -602,6 +602,7 @@
     if(rect.width<2||rect.height<2) return null;
     canvas.width=Math.round(rect.width*dpr); canvas.height=Math.round(rect.height*dpr);
     var ctx=canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+    try { ctx.direction = 'ltr'; } catch(_){}
     _patchCanvasMathText(ctx);
     return {ctx:ctx, w:rect.width, h:rect.height};
   }

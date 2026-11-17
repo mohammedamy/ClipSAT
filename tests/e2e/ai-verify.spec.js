@@ -65,7 +65,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
   test('the AI test code ships in ai-exam.js, not engine.js (ADR 0041)', async ({ request }) => {
     const engine = await (await request.get('/js/engine.js')).text();
     const aiExam = await (await request.get('/js/ai-exam.js')).text();
-    for (const marker of ['function examSystemPrompt', 'window.ClipSATSymbolicCheck', 'function renderAIQuestion']) {
+    for (const marker of ['window.CSAITest', 'window.ClipSATSymbolicCheck', 'window.ClipSATVerifyAI', 'window.ClipSATBlueprints', 'window.ClipSATAssembler']) {
       expect(engine.includes(marker), `${marker} should not be in engine.js`).toBe(false);
       expect(aiExam.includes(marker), `${marker} should be in ai-exam.js`).toBe(true);
     }
@@ -74,10 +74,10 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
   test('a full enhanced-ACT paper matches the blueprint exactly: topics, difficulty, retries and bank fill', async ({ page }) => {
     test.setTimeout(60000);
     let aiExamRequested = false;
-    page.on('request', (req) => { if (req.url().endsWith('/js/ai-exam.js')) aiExamRequested = true; });
+    page.on('request', (req) => { if (new URL(req.url()).pathname === '/js/ai-exam.js') aiExamRequested = true; });
     await page.goto('/act/');
     expect(aiExamRequested, 'ai-exam.js should not load with the page').toBe(false);
-    await page.evaluate(() => window.CS_bankReady);
+    await page.evaluate(() => window.CS_loadTrackBank('act'));
     // slot % 7 == 3 fails once (retried by AI); slot % 11 == 0 always fails (filled from the bank).
     await stubPipeline(page, { badOnFirstTry: 's % 7 === 3', alwaysBad: 's % 11 === 0' });
     await page.evaluate(() => {
@@ -118,10 +118,14 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
   test('a full IGCSE 0580 paper follows the current syllabus: two papers, topic shares and AO balance', async ({ page }) => {
     test.setTimeout(60000);
     await page.goto('/igcse/');
-    await page.evaluate(() => window.CS_bankReady);
+    await page.evaluate(() => window.CS_loadTrackBank('igcse'));
     await stubPipeline(page);
     await page.evaluate(() => {
-      document.querySelector('.tg-source').closest('.testgen').querySelector('button[onclick^="genFullExam"]').click();
+      const btn = document.querySelector('.tg-source').closest('.testgen').querySelector('button[onclick^="genFullExam"]');
+      window.genFullExam(btn, 'Cambridge IGCSE Mathematics 0580', 'igcse', [
+        'Paper 2 — Non-Calculator (1 hr 30 min · 70 marks)',
+        'Paper 4 — Calculator (2 hr 30 min · 130 marks)'
+      ], 18);
     });
     const paper = page.locator('.full-exam-paper');
     await expect(paper.locator('.fep-item')).toHaveCount(40, { timeout: 45000 });
@@ -153,8 +157,8 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
       appc: { parts: ['29mcq', '13mcq', '2frq', '2frq'], letters: 4 },    // May 2027 AP Precalculus
       apstats: { parts: ['42mcq', '4frq'], letters: 4 },                  // revised AP Statistics
       sat: { parts: ['17mcq', '5frq', '17mcq', '5frq'], letters: 4 },     // Digital SAT with SPR
-      ibsl: { parts: ['9frq', '9frq'] },                                  // IB papers are written
-      ibhl: { parts: ['10frq', '10frq', '2frq'] },
+      ibsl: { parts: ['6frq', '3frq', '6frq', '3frq'] },                  // IB papers: Section A + Section B per paper
+      ibhl: { parts: ['7frq', '3frq', '7frq', '3frq', '2frq'] },          // IB HL Paper 1 & 2 (Sec A + Sec B) + Paper 3
       igcse: { parts: ['20frq', '20frq'] },
       aslevel: { parts: ['11frq'] },
       act2: { parts: ['50mcq'], letters: 4 },
@@ -194,7 +198,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     const by = Object.fromEntries(got.map((g) => [g.v, g]));
     expect(by.est2l2.counts).toEqual([6, 24, 5, 5, 5, 5]);   // 12 / 48 / 10 × 4 % of 50
     expect(by.act2l2.counts).toEqual([25, 25]);
-    expect(by.tahsili.counts).toEqual([24, 14, 4, 3, 5]);   // lessons per part of the syllabus book
+    expect(by.tahsili.counts).toEqual([10, 15, 7, 5, 8, 5]); // ETEC/Qiyas official 20% Y1 / 30% Y2 / 50% Y3 of 50
   });
 
   test('EST I papers use the observed topic mix of each section', async ({ page }) => {
@@ -375,30 +379,34 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
   test('a question-bank test never repeats a question (the redundancy check applies to "Generate test")', async ({ page }) => {
     await page.goto('/calculus/');
     await stubPipeline(page, { enabled: false });
-    const result = await page.evaluate(() => {
+    await page.evaluate(() => window.CS_loadTrackBank('calculus'));
+    const stem = await page.evaluate(() => {
+      const bank = window.fullExamBank.calculus;
+      const [q1, q2, q3] = bank.pool.filter((q) => q.choices && q.choices.length);
+      bank.pool = [q1, JSON.parse(JSON.stringify(q1)), q2, q3]; // the same question twice in the pool
       const box = document.querySelector('.tg-source').closest('.testgen');
-      const practice = box.closest('main[id^="view-"]').querySelector('section[id$="-practice"]');
-      const first = practice.querySelector('.problem');
-      const pq = first.querySelector('.pq') || first;
-      const stem = pq.textContent.trim();
-      practice.appendChild(first.cloneNode(true)); // the same question twice in the pool
-      const total = practice.querySelectorAll('.problem').length;
       box.querySelector('.tg-source').value = 'bank';
       box.querySelector('.tg-level').value = 'all';
       const count = box.querySelector('.tg-count');
-      const opt = document.createElement('option'); opt.value = String(total); count.appendChild(opt); count.value = String(total);
+      const opt = document.createElement('option'); opt.value = '4'; count.appendChild(opt); count.value = '4';
       window.genTest(box.querySelector('button[onclick^="genTest"]'));
-      const shown = [...box.querySelectorAll('.tg-out .problem')].map((p) => (p.querySelector('.pq') || p).textContent.trim());
-      return { total, shown: shown.length, repeats: shown.filter((t) => t === stem).length };
+      return (q1.text || q1.q || '').trim();
     });
-    expect(result.shown).toBeGreaterThan(0);
-    expect(result.repeats, `the duplicated question appears ${result.repeats} times`).toBe(1);
+    await expect(page.locator('.testgen .tg-out .problem')).toHaveCount(3, { timeout: 15000 });
+    const result = await page.evaluate((targetStem) => {
+      const box = document.querySelector('.tg-source').closest('.testgen');
+      const shown = [...box.querySelectorAll('.tg-out .problem')].map((p) => (p.getAttribute('data-raw') || (p.querySelector('.pq') || p).textContent).trim());
+      return { shown: shown.length, unique: new Set(shown).size, repeats: shown.filter((t) => t === targetStem).length };
+    }, stem);
+    expect(result.shown).toBe(3);
+    expect(result.unique).toBe(3);
+    expect(result.repeats).toBeLessThanOrEqual(1);
   });
 
   test('a chapter quiz and a mock exam never repeat a question', async ({ page }) => {
-    await page.goto('/sat/');
-    await page.waitForFunction(() => window.fullExamBank && window.fullExamBank.sat);
-    const result = await page.evaluate(() => {
+    await page.goto('/sat/sat-linear/');
+    await page.evaluate(() => Promise.all([window.CS_loadTrackBank('sat'), window._ensureMockExam()]));
+    const result = await page.evaluate(async () => {
       const bank = window.fullExamBank.sat;
       const wrap = document.querySelector('.ch-quiz-wrap[data-quiz-domains]');
       const domain = wrap.getAttribute('data-quiz-domains').split('|')[0];
@@ -409,7 +417,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
       const opt = document.createElement('option'); opt.value = '5'; count.appendChild(opt); count.value = '5';
       window.genChapterQuiz(wrap.querySelector('.cq-btn'));
       const quiz = wrap.querySelectorAll('.cq-item').length;
-      window.openMockExam('sat', 0);
+      await window.openMockExam('sat', 0);
       const mock = document.querySelectorAll('#mock-exam-body .mock-q').length;
       window.exitMockExam();
       return { quiz, mock };

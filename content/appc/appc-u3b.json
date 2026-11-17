@@ -48,15 +48,39 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "conic_section",
-          "subtype": "ellipse",
-          "a": 5,
-          "b": 3,
-          "title": "Ellipse x²/25 + y²/9 = 1 with Foci F₁, F₂ (c = 4)"
+          "type": "fn",
+          "title": "Tangent Function y = tan(x) & Periodic Vertical Asymptotes",
+          "xrange": [
+            -1.45,
+            4.55
+          ],
+          "yrange": [
+            -5,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "abs(cos(x)) > 0.12 ? tan(x) : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "y = tan(x)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 3.1416,
+              "y": 0,
+              "label": "(π, 0)"
+            }
+          ]
         },
         "caption": {
-          "en": "Standard ellipse \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1\\) with semi-major axis \\(a = 5\\), semi-minor axis \\(b = 3\\), and foci at \\((\\pm 4, 0)\\).",
-          "ar": "القطع الناقص القياسي \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1\\) بنصف المحور الأكبر \\(a = 5\\) والأصغر \\(b = 3\\) والبؤرتين \\((\\pm 4, 0)\\)."
+          "en": "Branches of \\(y = \\tan(x)\\) repeating with period \\(\\pi\\) between vertical asymptotes at \\(x = -\\frac{\\pi}{2}, \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\).",
+          "ar": "فروع دالة الظل \\(y = \\tan(x)\\) المتكررة بدورة \\(\\pi\\) بين خطوط التقارب الرأسية."
         }
       },
       {
@@ -162,7 +186,7 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Sinusoidal Model: y = 2sin(x - π/4) + 1",
+          "title": "Sinusoidal Model y = 2 sin(x − π/4) + 1 & Midline y = 1",
           "xrange": [
             -1,
             8
@@ -173,9 +197,9 @@
           ],
           "fns": [
             {
-              "fn": "2*Math.sin(x - Math.PI/4) + 1",
+              "fn": "2*sin(x - 0.7854) + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = 2sin(x - π/4) + 1"
+              "label": "y = 2 sin(x − π/4) + 1"
             },
             {
               "fn": "1",
@@ -183,27 +207,11 @@
               "dash": "4,4",
               "label": "Midline y = 1"
             }
-          ],
-          "points": [
-            {
-              "x": 2.36,
-              "y": 3,
-              "label": "Max (3π/4, 3)"
-            },
-            {
-              "x": 5.5,
-              "y": -1,
-              "label": "Min (7π/4, -1)"
-            }
           ]
         },
         "caption": {
-          "en": "Sinusoidal model \\(y = 2\\sin(x - \\pi/4) + 1\\) oscillating with amplitude \\(A = 2\\) around midline \\(d = 1\\) with phase shift \\(c = \\pi/4\\).",
-          "ar": "النموذج الجيبي \\(y = 2\\sin(x - \\pi/4) + 1\\) يتذبذب بسعة \\(A = 2\\) حول خط المنتصف \\(d = 1\\) مع إزاحة طور \\(c = \\pi/4\\)."
-        },
-        "title": {
-          "en": "Sinusoidal Regression Model: Amplitude, Period & Midline",
-          "ar": "نموذج الانحدار الجيبي: السعة والدورة وخط المنتصف"
+          "en": "Phase-shifted sinusoidal model oscillating with amplitude \\(A = 2\\) around midline \\(y = 1\\).",
+          "ar": "النموذج الجيبي المزاح طورياً بسعة \\(A = 2\\) حول خط الوسط \\(y = 1\\)."
         }
       },
       {
@@ -255,72 +263,72 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 3B · Sinusoidal Regression, Inverse Trig, Tangent & Polar Conics)",
-          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 3B · الانحدار الجيبي والدوال المثلثية العكسية والدوال القطبية)"
+          "en": "◆ Why It Works — Why Inverse Trigonometric Domains Must Be Restricted",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — سبب تقييد مجالات الدوال المثلثية العكسية"
         },
         "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
-          "ar": null
+          "en": "<p><strong>Horizontal Line Test &amp; Bijectivity:</strong> Periodic functions fail one-to-one injectivity on \\(\\mathbb{R}\\). Restricting \\(\\sin x\\) to \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\), \\(\\cos x\\) to \\([0, \\pi]\\), and \\(\\tan x\\) to \\((-\\frac{\\pi}{2}, \\frac{\\pi}{2})\\) selects one monotonic branch covering the full range so \\(\\arcsin, \\arccos, \\arctan\\) are well-defined functions.</p>",
+          "ar": "<p><strong>اختبار الخط الأفقي والتقابل:</strong> الدوال الدورية ليست متباينة على \\(\\mathbb{R}\\)؛ لذا نقصر \\(\\sin x\\) على \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\) و\\(\\cos x\\) على \\([0, \\pi]\\) لتصبح الدوال العكسية وحيدة القيمة.</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 3B.A — Foundational Formulation",
-          "ar": "مثال محلول 3B.A — تطبيق أساسي"
+          "en": "Worked Example 3B.1 — Sinusoidal Model from Peak and Trough Data",
+          "ar": "مثال محلول 3B.1 — بناء نموذج جيبي من القيمتين العظمى والصغرى"
         },
         "problem": {
-          "en": "Express \\( f(x) = x^2 - 10x + 29 \\) in completed-square vertex form and find its minimum value.",
-          "ar": "أوجد صيغة إكمال المربع للدالة \\(f(x) = x^2 - 10x + 29\\)."
+          "en": "Harbor water depth reaches a high tide of \\( 9.4\\text{ m} \\) at \\( t = 2\\text{ h} \\) and the next consecutive low tide of \\( 3.0\\text{ m} \\) at \\( t = 8\\text{ h} \\). Write a cosine model \\( d(t) = A\\cos(B(t - C)) + D \\).",
+          "ar": "يبلغ عمق المياه في ميناء أقصى مدّ قدره \\( 9.4\\text{ m} \\) عند \\( t = 2\\text{ h} \\) وأدنى جزر تالٍ قدره \\( 3.0\\text{ m} \\) عند \\( t = 8\\text{ h} \\). اكتب نموذج جيب تمام \\( d(t) = A\\cos(B(t - C)) + D \\)."
         },
         "solution": {
-          "en": "<p>Halving \\( -10 \\) gives \\( -5 \\), so \\( f(x) = (x - 5)^2 - 25 + 29 = (x - 5)^2 + 4 \\). Minimum value is \\( 4 \\) at \\( x = 5 \\).</p>",
-          "ar": null
+          "en": "<p>Amplitude \\( A = \\frac{9.4 - 3.0}{2} = 3.2 \\), midline \\( D = \\frac{9.4 + 3.0}{2} = 6.2 \\). Half a period elapses from peak \\( t = 2 \\) to trough \\( t = 8 \\), so \\( \\frac{P}{2} = 6 \\implies P = 12 \\) and \\( B = \\frac{2\\pi}{12} = \\frac{\\pi}{6} \\). Anchoring at peak \\( C = 2 \\) gives \\[ d(t) = 3.2\\cos\\!\\left(\\frac{\\pi}{6}(t - 2)\\right) + 6.2 \\]</p>",
+          "ar": "<p>السعة \\( A = \\frac{9.4 - 3.0}{2} = 3.2 \\)، وخط الوسط \\( D = \\frac{9.4 + 3.0}{2} = 6.2 \\). نصف الدورة بين القمة والقاع يساوي \\( 8 - 2 = 6 \\) ساعات؛ لذا الدورة \\( P = 12 \\) و\\( B = \\frac{2\\pi}{12} = \\frac{\\pi}{6} \\)، وباتخاذ القمة عند \\( C = 2 \\): \\[ d(t) = 3.2\\cos\\!\\left(\\frac{\\pi}{6}(t - 2)\\right) + 6.2 \\]</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 3B.B — Multi-Step Tangency & Discriminant",
-          "ar": "مثال محلول 3B.B — شرط التماس والمميز"
+          "en": "Worked Example 3B.2 — Period and Asymptotes of a Transformed Tangent Function",
+          "ar": "مثال محلول 3B.2 — الدورة وخطوط التقارب لدالة ظل محوّلة"
         },
         "problem": {
-          "en": "Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 10x + 30 \\).",
-          "ar": "أوجد قيمة \\(k\\) التي تجعل المستقيم \\(y = 2x + k\\) مماساً للمنحنى \\(y = x^2 - 10x + 30\\)."
+          "en": "Find the period and two consecutive vertical asymptotes of \\( g(x) = 2\\tan\\!\\left(\\dfrac{\\pi}{4}x\\right) - 1 \\).",
+          "ar": "أوجد الدورة ومعادلتي خطّي تقارب رأسيين متتاليين للدالة \\( g(x) = 2\\tan\\!\\left(\\dfrac{\\pi}{4}x\\right) - 1 \\)."
         },
         "solution": {
-          "en": "<p>Equating gives \\( x^2 - 12x + (30 - k) = 0 \\). Setting \\( \\Delta = (-12)^2 - 4(30 - k) = 0 \\) yields \\( k = -6 \\).</p>",
-          "ar": null
+          "en": "<p>The parent \\( \\tan u \\) has period \\( \\pi \\) and consecutive asymptotes at \\( u = \\pm\\frac{\\pi}{2} \\). Thus the period of \\( g \\) is \\( \\frac{\\pi}{\\pi/4} = 4 \\), and setting \\( \\frac{\\pi}{4}x = \\pm\\frac{\\pi}{2} \\) gives consecutive vertical asymptotes \\( x = -2 \\) and \\( x = 2 \\).</p>",
+          "ar": "<p>دالة الظل الأساسية \\( \\tan u \\) دورتها \\( \\pi \\) وخطا تقاربها المتتاليان عند \\( u = \\pm\\frac{\\pi}{2} \\)؛ لذا دورة \\( g \\) هي \\( \\frac{\\pi}{\\pi/4} = 4 \\)، وبوضع \\( \\frac{\\pi}{4}x = \\pm\\frac{\\pi}{2} \\) نحصل على خطّي التقارب \\( x = -2 \\) و\\( x = 2 \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 3B.C — Rate of Change & Tangent Slope",
-          "ar": "مثال محلول 3B.C — معدل التغير وميل المماس"
+          "en": "Worked Example 3B.3 — Exact Evaluation of Inverse Trig Compositions",
+          "ar": "مثال محلول 3B.3 — القيمة الدقيقة لتركيب الدوال المثلثية العكسية"
         },
         "problem": {
-          "en": "Find the instantaneous rate of change of \\( g(x) = x^3 - 15x^2 + 75x + 4 \\) at \\( x = 7 \\).",
-          "ar": "أوجد معدل التغير اللحظي للدالة \\(g(x) = x^3 - 15x^2 + 75x + 4\\) عند \\(x = 7\\)."
+          "en": "Evaluate \\( \\sin\\!\\left(\\arccos\\!\\left(-\\dfrac{5}{13}\\right)\\right) \\) exactly without a calculator.",
+          "ar": "احسب القيمة الدقيقة للمقدار \\( \\sin\\!\\left(\\arccos\\!\\left(-\\dfrac{5}{13}\\right)\\right) \\) بدون آلة حاسبة."
         },
         "solution": {
-          "en": "<p>\\( g'(x) = 3(x - 5)^2 \\), so \\( g'(7) = 3(2)^2 = 12 \\).</p>",
-          "ar": null
+          "en": "<p>Let \\( \\theta = \\arccos(-5/13) \\in [0, \\pi] \\). Since \\( \\cos\\theta = -\\frac{5}{13} < 0 \\), \\( \\theta \\) lies in Quadrant II where \\( \\sin\\theta > 0 \\). By \\( \\sin^2\\theta + \\cos^2\\theta = 1 \\): \\[ \\sin\\theta = \\sqrt{1 - \\frac{25}{169}} = \\sqrt{\\frac{144}{169}} = \\frac{12}{13} \\]</p>",
+          "ar": "<p>نضع \\( \\theta = \\arccos(-5/13) \\in [0, \\pi] \\). بما أن \\( \\cos\\theta < 0 \\) فإن \\( \\theta \\) تقع في الربع الثاني حيث \\( \\sin\\theta > 0 \\)، ومن متطابقة فيثاغورس: \\[ \\sin\\theta = \\sqrt{1 - \\frac{25}{169}} = \\frac{12}{13} \\]</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 3B.D — Synthesis & Definite Accumulation",
-          "ar": "مثال محلول 3B.D — مسألة شاملة"
+          "en": "Worked Example 3B.4 — Polar Rose Symmetry and Petal Count",
+          "ar": "مثال محلول 3B.4 — تماثل منحنى الوردة القطبي وعدد بتلاته"
         },
         "problem": {
-          "en": "Evaluate \\( \\int_0^2 (3x^2 + 10x + 4)\\,\\mathrm{d}x \\).",
-          "ar": "احسب \\(\\int_0^2 (3x^2 + 10x + 4)\\,\\mathrm{d}x\\)."
+          "en": "Analyze the polar curve \\( r(\\theta) = 6\\cos(3\\theta) \\): state its maximum distance from the pole, number of petals, and first positive \\( \\theta \\) where \\( r = 0 \\).",
+          "ar": "حلّل المنحنى القطبي \\( r(\\theta) = 6\\cos(3\\theta) \\): حدّد أقصى بُعد عن القطب، وعدد البتلات، وأصغر زاوية موجبة \\( \\theta \\) تنعدم عندها \\( r \\)."
         },
         "solution": {
-          "en": "<p>\\( \\left[x^3 + 5x^2 + 4x\\right]_0^2 = 8 + 20 + 8 = 36 \\).</p>",
-          "ar": null
+          "en": "<p>Because \\( n = 3 \\) is odd, \\( r = 6\\cos(3\\theta) \\) forms a <strong>3-petal rose</strong> with maximum radius \\( |r|_{\\max} = 6 \\). Setting \\( \\cos(3\\theta) = 0 \\) gives \\( 3\\theta = \\frac{\\pi}{2} \\implies \\theta = \\frac{\\pi}{6} \\) as the first positive zero.</p>",
+          "ar": "<p>بما أن \\( n = 3 \\) عدد فردي، يمثّل المنحنى <strong>وردة قطبية ذات 3 بتلات</strong> وأقصى نصف قطر لها \\( 6 \\). وبوضع \\( \\cos(3\\theta) = 0 \\) نجد \\( 3\\theta = \\frac{\\pi}{2} \\implies \\theta = \\frac{\\pi}{6} \\).</p>"
         }
       },
       {
@@ -338,50 +346,64 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 3B · Sinusoidal Regression, Inverse Trig, Tangent & Polar Conics)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 3B · الانحدار الجيبي والدوال المثلثية العكسية والدوال القطبية)"
+          "en": "Error Diagnosis — Common AP Precalculus Modeling & Algebraic Traps",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Precalculus"
         },
         "columns": [
           {
-            "en": "Error Pattern",
-            "ar": "الخطأ الشائع"
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
-            "en": "Incorrect Working",
-            "ar": "الخطوة الخاطئة"
+            "en": "Why It Fails Mathematically",
+            "ar": "لماذا يفشل رياضياً"
           },
           {
-            "en": "Correct Method",
-            "ar": "الطريقة الصحيحة"
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
-              "en": "Term-by-term cancellation",
-              "ar": "اختصار حدود مجموعه"
+              "en": "Canceling individual terms across sums: \\(\\frac{x^2 - 9}{x - 3} \\to x - 3\\)",
+              "ar": "اختصار الحدود عبر الجمع أو الطرح دون تحليل"
             },
             {
-              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
-              "ar": null
+              "en": "Division distributes over sums only after factoring common multiplicative factors.",
+              "ar": "لا يجوز الاختصار إلا لعوامل مضروبة في كامل البسط والمقام."
             },
             {
-              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
-              "ar": "حلّل الأول: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))"
+              "en": "Factor completely first: \\(\\frac{(x-3)(x+3)}{x-3} = x + 3\\) for \\(x \\neq 3\\) (hole at \\(x = 3\\)).",
+              "ar": "التحليل إلى عوامل أولاً مع تسجيل قيود المجال والفجوات."
             }
           ],
           [
             {
-              "en": "Sign error in completing square",
-              "ar": "خطأ إشارة عند إكمال المربع"
+              "en": "Using degree mode instead of radian mode on AP Precalculus trigonometric models",
+              "ar": "استخدام نظام الدرجات بدلاً من الراديان في النماذج الجيبية"
             },
             {
-              "en": "\\( (x - h)^2 + h^2 + c \\)",
-              "ar": null
+              "en": "All AP Precalculus sinusoidal functions \\(A\\sin(B(x-C))+D\\) assume radian measure unless ° is printed.",
+              "ar": "تُفترض وحدة الراديان في جميع الدوال المثلثية في الاختبار ما لم يُنص على الدرجات."
             },
             {
-              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
-              "ar": "اطرح \\(h^2\\): \\((x - h)^2 - h^2 + c\\)"
+              "en": "Keep calculator in RADIAN mode and compute period as \\(P = \\frac{2\\pi}{|B|}\\) (or \\(\\frac{\\pi}{|B|}\\) for tangent).",
+              "ar": "ضبط الآلة على وضع الراديان وحساب الدورة عبر \\(2\\pi/|B|\\)."
+            }
+          ],
+          [
+            {
+              "en": "Omitting domain checks after solving \\(\\log_b(f(x)) + \\log_b(g(x)) = k\\)",
+              "ar": "إغفال فحص المجال بعد حل المعادلات اللوغاريتمية"
+            },
+            {
+              "en": "Multiplying \\(f(x)g(x) > 0\\) admits negative pairs \\(f(x) < 0, g(x) < 0\\) where individual logs are undefined.",
+              "ar": "حاصل الضرب الموجب قد ينتج عن عاملين سالبين يجعل كل لوغاريتم غير معرّف."
+            },
+            {
+              "en": "Substitute every algebraic root back into each original logarithm argument to verify positivity.",
+              "ar": "التعويض بكل جذر في المعادلة الأصلية للتحقق من كون ما داخل كل لوغاريتم موجباً."
             }
           ]
         ]
@@ -401,126 +423,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 6)^2 + 5 \\), evaluate \\( f(12) \\).",
-          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\(f(x) = (x - 6)^2 + 5\\)، فاحسب قيمة \\(f(12)\\)."
+          "en": "<strong>[Practice 1]</strong> Find the exact principal value of \\( \\arcsin\\!\\left(-\\dfrac{\\sqrt{3}}{2}\\right) \\) in radians.",
+          "ar": "<strong>[تدريب 1]</strong> أوجد القيمة الأساسية الدقيقة للمقدار \\( \\arcsin\\!\\left(-\\dfrac{\\sqrt{3}}{2}\\right) \\) بالراديان."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 12 \\) into \\( (x - 6)^2 + 5 \\).",
-            "ar": null
+            "en": "Recall the principal range of \\( \\arcsin \\) is \\( [-\\frac{\\pi}{2}, \\frac{\\pi}{2}] \\).",
+            "ar": "تذكّر أن مدى القيم الأساسية لدالة \\( \\arcsin \\) هو \\( [-\\frac{\\pi}{2}, \\frac{\\pi}{2}] \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (12 - 6)^2 = 6^2 = 36 \\).",
-            "ar": null
+            "en": "The reference angle with sine \\( \\frac{\\sqrt{3}}{2} \\) is \\( \\frac{\\pi}{3} \\).",
+            "ar": "زاوية الإسناد التي جيبها \\( \\frac{\\sqrt{3}}{2} \\) هي \\( \\frac{\\pi}{3} \\)."
           },
           {
-            "en": "Add \\( 36 + 5 \\) to obtain the final answer.",
-            "ar": "اجمع \\(36 + 5\\) للحصول على الناتج."
+            "en": "Choose the negative angle in Quadrant IV.",
+            "ar": "اختر الزاوية السالبة الواقعة في الربع الرابع."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 12 \\) gives \\( f(12) = (6)^2 + 5 = 36 + 5 = 41 \\).",
-          "ar": null
+          "en": "Within \\( [-\\frac{\\pi}{2}, \\frac{\\pi}{2}] \\), \\( \\sin(-\\frac{\\pi}{3}) = -\\frac{\\sqrt{3}}{2} \\), so the answer is \\( -\\dfrac{\\pi}{3} \\).",
+          "ar": "ضمن الفترة \\( [-\\frac{\\pi}{2}, \\frac{\\pi}{2}] \\) لدينا \\( \\sin(-\\frac{\\pi}{3}) = -\\frac{\\sqrt{3}}{2} \\)، فالناتج هو \\( -\\dfrac{\\pi}{3} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 7)^2 + 6 \\), evaluate \\( f(14) \\).",
-          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\(f(x) = (x - 7)^2 + 6\\)، فاحسب قيمة \\(f(14)\\)."
+          "en": "<strong>[Practice 2]</strong> Find the period of \\( f(x) = -4\\tan(2x) + 3 \\).",
+          "ar": "<strong>[تدريب 2]</strong> أوجد دورة الدالة \\( f(x) = -4\\tan(2x) + 3 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 14 \\) into \\( (x - 7)^2 + 6 \\).",
-            "ar": null
+            "en": "Remember that \\( \\tan(Bx) \\) has period \\( \\frac{\\pi}{|B|} \\), NOT \\( \\frac{2\\pi}{|B|} \\).",
+            "ar": "تذكّر أن دورة \\( \\tan(Bx) \\) هي \\( \\frac{\\pi}{|B|} \\) وليست \\( \\frac{2\\pi}{|B|} \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (14 - 7)^2 = 7^2 = 49 \\).",
-            "ar": null
+            "en": "Identify \\( B = 2 \\).",
+            "ar": "عيّن معامل الزاوية \\( B = 2 \\)."
           },
           {
-            "en": "Add \\( 49 + 6 \\) to obtain the final answer.",
-            "ar": "اجمع \\(49 + 6\\) للحصول على الناتج."
+            "en": "Compute \\( \\frac{\\pi}{2} \\).",
+            "ar": "اقسم \\( \\pi \\) على \\( 2 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 14 \\) gives \\( f(14) = (7)^2 + 6 = 49 + 6 = 55 \\).",
-          "ar": null
+          "en": "The period of \\( \\tan(2x) \\) is \\( \\dfrac{\\pi}{2} \\).",
+          "ar": "دورة الدالة \\( \\tan(2x) \\) تساوي \\( \\dfrac{\\pi}{2} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 8)^2 + 7 \\), evaluate \\( f(16) \\).",
-          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\(f(x) = (x - 8)^2 + 7\\)، فاحسب قيمة \\(f(16)\\)."
+          "en": "<strong>[Practice 3]</strong> How many petals does the polar rose \\( r = 5\\sin(4\\theta) \\) have over \\( [0, 2\\pi] \\)?",
+          "ar": "<strong>[تدريب 3]</strong> كم عدد بتلات الوردة القطبية \\( r = 5\\sin(4\\theta) \\) على الفترة \\( [0, 2\\pi] \\)؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 16 \\) into \\( (x - 8)^2 + 7 \\).",
-            "ar": null
+            "en": "Check whether the angular multiplier \\( n = 4 \\) is even or odd.",
+            "ar": "تحقق مما إذا كان المعامل الزاوي \\( n = 4 \\) زوجياً أم فردياً."
           },
           {
-            "en": "Simplify the squared term: \\( (16 - 8)^2 = 8^2 = 64 \\).",
-            "ar": null
+            "en": "For even \\( n \\), a rose \\( r = a\\sin(n\\theta) \\) has \\( 2n \\) petals.",
+            "ar": "إذا كان \\( n \\) زوجياً فإن للوردة \\( 2n \\) بتلة."
           },
           {
-            "en": "Add \\( 64 + 7 \\) to obtain the final answer.",
-            "ar": "اجمع \\(64 + 7\\) للحصول على الناتج."
+            "en": "Multiply \\( 2 \\times 4 \\).",
+            "ar": "اضرب \\( 2 \\times 4 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 16 \\) gives \\( f(16) = (8)^2 + 7 = 64 + 7 = 71 \\).",
-          "ar": null
+          "en": "Since \\( n = 4 \\) is even, the polar curve has \\( 2(4) = 8 \\) petals.",
+          "ar": "بما أن \\( n = 4 \\) زوجي، فللمنحنى القطبي \\( 2(4) = 8 \\) بتلات."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
-          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\(f(x) = (x - 9)^2 + 8\\)، فاحسب قيمة \\(f(18)\\)."
+          "en": "<strong>[Practice 4]</strong> Convert the polar point \\( \\left(6, \\dfrac{5\\pi}{6}\\right) \\) to rectangular coordinates \\( (x, y) \\).",
+          "ar": "<strong>[تدريب 4]</strong> حوّل النقطة القطبية \\( \\left(6, \\dfrac{5\\pi}{6}\\right) \\) إلى الإحداثيات الديكارتية \\( (x, y) \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
-            "ar": null
+            "en": "Use \\( x = r\\cos\\theta \\) and \\( y = r\\sin\\theta \\).",
+            "ar": "استخدم \\( x = r\\cos\\theta \\) و\\( y = r\\sin\\theta \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
-            "ar": null
+            "en": "Evaluate \\( \\cos(5\\pi/6) = -\\frac{\\sqrt{3}}{2} \\) and \\( \\sin(5\\pi/6) = \\frac{1}{2} \\).",
+            "ar": "احسب \\( \\cos(5\\pi/6) = -\\frac{\\sqrt{3}}{2} \\) و\\( \\sin(5\\pi/6) = \\frac{1}{2} \\)."
           },
           {
-            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
-            "ar": "اجمع \\(81 + 8\\) للحصول على الناتج."
+            "en": "Multiply each by \\( r = 6 \\).",
+            "ar": "اضرب كل قيمة في \\( r = 6 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
-          "ar": null
+          "en": "\\( x = 6(-\\frac{\\sqrt{3}}{2}) = -3\\sqrt{3} \\) and \\( y = 6(\\frac{1}{2}) = 3 \\), giving \\( (-3\\sqrt{3}, 3) \\).",
+          "ar": "نجد \\( x = -3\\sqrt{3} \\) و\\( y = 3 \\)، أي \\( (-3\\sqrt{3}, 3) \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 10)^2 + 9 \\), evaluate \\( f(20) \\).",
-          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\(f(x) = (x - 10)^2 + 9\\)، فاحسب قيمة \\(f(20)\\)."
+          "en": "<strong>[Practice 5]</strong> A Ferris wheel has minimum height \\( 2\\text{ m} \\) and maximum height \\( 32\\text{ m} \\). Find the midline \\( D \\) and amplitude \\( A \\).",
+          "ar": "<strong>[تدريب 5]</strong> عجلة دوّارة أدنى ارتفاع لها \\( 2\\text{ m} \\) وأقصى ارتفاع \\( 32\\text{ m} \\). أوجد خط الوسط \\( D \\) والسعة \\( A \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 20 \\) into \\( (x - 10)^2 + 9 \\).",
-            "ar": null
+            "en": "Midline \\( D \\) is the average of maximum and minimum heights.",
+            "ar": "خط الوسط \\( D \\) هو متوسط القيمتين العظمى والصغرى."
           },
           {
-            "en": "Simplify the squared term: \\( (20 - 10)^2 = 10^2 = 100 \\).",
-            "ar": null
+            "en": "Amplitude \\( A \\) is half the difference between maximum and minimum.",
+            "ar": "السعة \\( A \\) هي نصف الفرق بين القيمتين العظمى والصغرى."
           },
           {
-            "en": "Add \\( 100 + 9 \\) to obtain the final answer.",
-            "ar": "اجمع \\(100 + 9\\) للحصول على الناتج."
+            "en": "Compute \\( D = (32+2)/2 \\) and \\( A = (32-2)/2 \\).",
+            "ar": "احسب \\( D = (32+2)/2 \\) و\\( A = (32-2)/2 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 20 \\) gives \\( f(20) = (10)^2 + 9 = 100 + 9 = 109 \\).",
-          "ar": null
+          "en": "\\( D = \\frac{32 + 2}{2} = 17\\text{ m} \\) and \\( A = \\frac{32 - 2}{2} = 15\\text{ m} \\).",
+          "ar": "خط الوسط \\( D = 17\\text{ m} \\) والسعة \\( A = 15\\text{ m} \\)."
         }
       },
       {

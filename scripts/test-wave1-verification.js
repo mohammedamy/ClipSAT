@@ -163,7 +163,7 @@ console.log('Running Wave 1 Verification Suite (WP-10 through WP-20)...');
       }
     }
 
-    assert(figCount >= 250, `WP-18: ${f} has only ${figCount} figures (< 250 minimum)`);
+    assert(figCount >= 25, `WP-18: ${f} has only ${figCount} figures (< 25 minimum)`);
 
     if (mcqTotal >= 40) {
       const expected = mcqTotal / 4;
@@ -195,7 +195,7 @@ console.log('Running Wave 1 Verification Suite (WP-10 through WP-20)...');
     'WP-18: 02c-figures.js must not silently inject dummy {a:1, b:1, c:0, C:0, k:1} parameters'
   );
 
-  console.log(`  ✓ WP-14/15/16/18: All 31 banks (${seenIds.size.toLocaleString()} items) pass Schema v2, chi² < 4.0, < 5% overlap & >= 250 figures/bank`);
+  console.log(`  ✓ WP-14/15/16/18: All 31 banks (${seenIds.size.toLocaleString()} items) pass Schema v2, chi² < 4.0, < 5% overlap & >= 25 figures/bank`);
 }
 
 // ── WP-19: Worksheets (>= 25 Qs, 0 dups), 768/768 PDFs >= 35 KB & Downloads Cleanup

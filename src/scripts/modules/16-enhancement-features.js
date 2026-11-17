@@ -260,7 +260,8 @@ window.CSDailyPlan = (function(){
     } catch(e){}
     var activeCh = document.querySelector('section.chapter.ch-active') || document.querySelector('section.chapter');
     var activeChId = activeCh ? activeCh.id : '';
-    var activeChTitle = activeCh && activeCh.querySelector('.chead h2') ? activeCh.querySelector('.chead h2').textContent.trim() : (activeChId || trackId.toUpperCase());
+    var activeChH = activeCh && activeCh.querySelector('.chead h1, .chead h2');
+    var activeChTitle = activeChH ? activeChH.textContent.trim() : (activeChId || trackId.toUpperCase());
     var focusTopic = catWeak || (weakDomains.length ? weakDomains[0] : activeChTitle);
     var explorerEl = (activeCh && activeCh.querySelector('.explorer')) || document.querySelector('.explorer');
     var explorerTitle = explorerEl && explorerEl.querySelector('.ex-title, h3, h4')

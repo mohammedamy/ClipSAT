@@ -29,44 +29,21 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            3
-          ],
-          "fns": [
-            {
-              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)",
-              "label": "c = 4"
-            },
-            {
-              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)"
-            },
-            {
-              "fn": "2*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Normal ∇f"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 1.22,
-              "label": "P"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Rotational Vortex Field Streamlines dy/dx = −x / y",
+          "fn": "abs(y) < 0.25 ? 0 : -x / y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 2
+          }
         },
         "caption": {
-          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
-          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في الحقول المتجهة والتكاملات الخطية والحقول المحافظة."
+          "en": "Tangent field of \\(\\mathbf{F}(x, y) = \\langle -y, x \\rangle\\), whose counterclockwise circular streamlines yield positive work \\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 2\\pi R^2 > 0\\).",
+          "ar": "حقل المماسات للمجال الدوراني \\(\\mathbf{F}(x, y) = \\langle -y, x \\rangle\\)، حيث تعطي المسارات الدائرية عكس عقارب الساعة شغلاً موجباً \\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 2\\pi R^2 > 0\\)."
         }
       },
       {
@@ -89,7 +66,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -408,7 +385,7 @@
         },
         "caption": {
           "en": "Equipotential curves \\( f(x, y) = C \\) for a conservative gradient field \\( \\mathbf{F} = \\nabla f \\). Because the line integral \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(B) - f(A) \\) depends only on the endpoints, any path connecting points on the same equipotential curve experiences zero net work.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الحقول المتجهة والتكاملات الخطية والحقول المحافظة. \\(f(x, y) = C\\) ، \\(\\mathbf{F} = \\nabla f\\) ، \\(\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(B) - f(A)\\)"
+          "ar": "منحنيات تساوي الجهد \\(f(x, y) = C\\) لمجال متجهي محافظ \\(\\mathbf{F} = \\nabla f\\) حيث يستقل التكامل الخطي عن المسار."
         }
       },
       {
@@ -511,7 +488,7 @@
           "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — المتجه Fields & Line التكاملات"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -522,7 +499,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
+          "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z\\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
           "ar": null
         },
         "hints": [
@@ -665,7 +642,8 @@
   "quizWidget": {
     "domains": [
       "Vector Fields & Line Integrals"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",

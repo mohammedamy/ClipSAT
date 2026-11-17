@@ -28,9 +28,9 @@
   function _forward(methodName){
     var stub = function(){
       var args = Array.prototype.slice.call(arguments);
-      _ensureMockExam().then(function(){
+      return _ensureMockExam().then(function(){
         if (typeof window[methodName] === 'function' && window[methodName] !== stub){
-          window[methodName].apply(window, args);
+          return window[methodName].apply(window, args);
         }
       });
     };

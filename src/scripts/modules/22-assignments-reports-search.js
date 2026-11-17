@@ -115,7 +115,7 @@ function _updateBreadcrumb(viewId, chapterId) {
   }
   if (chapterId) {
     var chEl = document.getElementById(chapterId);
-    var h2   = chEl && chEl.querySelector('.chead h2');
+    var h2   = chEl && chEl.querySelector('.chead h1, .chead h2');
     bChapter.textContent = h2 ? h2.textContent.trim() : '';
     if (bChapter.textContent) {
       bChapter.style.display = ''; if (bSep) bSep.style.display = '';

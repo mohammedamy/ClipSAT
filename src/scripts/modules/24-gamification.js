@@ -228,7 +228,7 @@
         var chId = '';
         if (chEl) {
           chId = chEl.id || '';
-          var h2 = chEl.querySelector('.chead h2, .subject-head h1');
+          var h2 = chEl.querySelector('.chead h1, .chead h2, .subject-head h1');
           if (h2) {
             var isAr = window.i18n && window.i18n.getLocale() === 'ar';
             var trg = isAr ? h2.querySelector('.i18n-ar') : h2.querySelector('.i18n-en');
@@ -426,7 +426,7 @@
       document.querySelectorAll('section.chapter').forEach(function(sec) {
         if (sec.classList.contains('testgen') || sec.classList.contains('downloads') ||
             sec.id.indexOf('testgen') !== -1 || sec.id.indexOf('downloads') !== -1) return;
-        var h2 = sec.querySelector('.chead h2, .subject-head h1');
+        var h2 = sec.querySelector('.chead h1, .chead h2, .subject-head h1');
         var title = h2 ? h2.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim() : sec.id;
         if (sec.id === activeCh) activeTitle = title;
         chapters.push({ id: sec.id, title: title });
@@ -606,11 +606,11 @@
       var delBtn = document.getElementById('fc-delete-btn');
 
       if (trackSubtitle) {
-        var subj = document.querySelector('.subject-head h1, .chead h2');
+        var subj = document.querySelector('.subject-head h1, .chead h1, .chead h2');
         var trkName = subj ? subj.textContent.trim() : 'Math Course';
         var activeCh = this.selectedChapterId || this.getActiveChapterId();
         var chSec = activeCh ? document.getElementById(activeCh) : null;
-        var chH2 = chSec ? chSec.querySelector('.chead h2') : null;
+        var chH2 = chSec ? chSec.querySelector('.chead h1, .chead h2') : null;
         var chTitle = chH2 ? chH2.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim() : '';
         trackSubtitle.textContent = trkName + (chTitle ? ' · ' + chTitle : '');
       }
@@ -1109,46 +1109,61 @@
     if (dueEl) dueEl.textContent = estDue;
 
     /* Lazy-hydrate [data-lazy-fig] on chapter & practice pages (0 requests on track hubs without [data-lazy-fig]) */
+    function _applyRenderedFig(el, raw) {
+      if (typeof window._renderFig !== 'function') return;
+      try {
+        var spec = JSON.parse(raw);
+        var rendered = window._renderFig(spec);
+        if (!rendered) return;
+        if (el.querySelector('.cs-live-slopefield')) {
+          var printSvg = document.createElement('div');
+          printSvg.style.display = 'none';
+          printSvg.innerHTML = rendered;
+          el.insertBefore(printSvg, el.firstChild);
+        } else {
+          el.innerHTML = rendered;
+        }
+      } catch (err) {}
+    }
+    function _hydrateSlot(el) {
+      if (!el || !el.hasAttribute('data-lazy-fig')) return Promise.resolve();
+      var raw = el.getAttribute('data-lazy-fig');
+      el.removeAttribute('data-lazy-fig');
+      if (!raw) return Promise.resolve();
+      if (typeof window._renderFig === 'function') {
+        _applyRenderedFig(el, raw);
+        return Promise.resolve();
+      }
+      if (typeof window._ensureFigures !== 'function') return Promise.resolve();
+      return window._ensureFigures().then(function() {
+        _applyRenderedFig(el, raw);
+      }).catch(function() {});
+    }
+    window.CSHydrateAllFigures = function(root) {
+      var scope = root || document;
+      var rem = scope && scope.querySelectorAll ? scope.querySelectorAll('[data-lazy-fig]') : [];
+      if (!rem || !rem.length) return Promise.resolve();
+      var tasks = [];
+      for (var k = 0; k < rem.length; k++) tasks.push(_hydrateSlot(rem[k]));
+      return Promise.all(tasks);
+    };
     var figSlots = document.querySelectorAll('[data-lazy-fig]');
     if (figSlots && figSlots.length && typeof window._ensureFigures === 'function') {
-      function hydrateSlot(el) {
-        if (!el || !el.hasAttribute('data-lazy-fig')) return;
-        var raw = el.getAttribute('data-lazy-fig');
-        el.removeAttribute('data-lazy-fig');
-        if (!raw) return;
-        window._ensureFigures().then(function() {
-          if (typeof window._renderFig !== 'function') return;
-          try {
-            var spec = JSON.parse(raw);
-            var rendered = window._renderFig(spec);
-            if (!rendered) return;
-            if (el.querySelector('.cs-live-slopefield')) {
-              var printSvg = document.createElement('div');
-              printSvg.style.display = 'none';
-              printSvg.innerHTML = rendered;
-              el.insertBefore(printSvg, el.firstChild);
-            } else {
-              el.innerHTML = rendered;
-            }
-          } catch (err) {}
-        }).catch(function() {});
-      }
       if ('IntersectionObserver' in window) {
         var figObs = new IntersectionObserver(function(entries) {
           for (var i = 0; i < entries.length; i++) {
             if (entries[i].isIntersecting) {
               figObs.unobserve(entries[i].target);
-              hydrateSlot(entries[i].target);
+              _hydrateSlot(entries[i].target);
             }
           }
         }, { rootMargin: '500px 0px' });
         for (var j = 0; j < figSlots.length; j++) figObs.observe(figSlots[j]);
         window.addEventListener('beforeprint', function() {
-          var rem = document.querySelectorAll('[data-lazy-fig]');
-          for (var k = 0; k < rem.length; k++) hydrateSlot(rem[k]);
+          window.CSHydrateAllFigures(document);
         });
       } else {
-        for (var m = 0; m < figSlots.length; m++) hydrateSlot(figSlots[m]);
+        window.CSHydrateAllFigures(document);
       }
     }
   }

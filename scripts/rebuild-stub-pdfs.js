@@ -726,7 +726,17 @@ function startStaticServer() {
 }
 
 async function main() {
-  // Discover all < 35 KB PDFs in public/downloads/<track>/*.pdf
+  const rawArgs = process.argv.slice(2);
+  const forcePatterns = [];
+  for (let i = 0; i < rawArgs.length; i++) {
+    if (rawArgs[i] === '--force' && rawArgs[i + 1]) {
+      forcePatterns.push(rawArgs[++i]);
+    } else if (rawArgs[i].startsWith('--force=')) {
+      forcePatterns.push(rawArgs[i].slice('--force='.length));
+    }
+  }
+
+  // Discover all < 35 KB PDFs (or --force matched PDFs) in public/downloads/<track>/*.pdf
   const jobs = [];
   for (const tr of fs.readdirSync(DL_ROOT).sort()) {
     const dp = path.join(DL_ROOT, tr);
@@ -734,7 +744,9 @@ async function main() {
     for (const f of fs.readdirSync(dp).filter((x) => x.endsWith('.pdf')).sort()) {
       const pdfPath = path.join(dp, f);
       const sz = fs.statSync(pdfPath).size;
-      if (sz >= 35000) continue;
+      const rel = `${tr}/${f}`;
+      const forced = forcePatterns.some((p) => rel.includes(p));
+      if (!forced && (forcePatterns.length > 0 || sz >= 35000)) continue;
       const m = f.match(/^(.+)-(worksheet|answerkey)\.pdf$/);
       if (!m) continue;
       const base = m[1];
@@ -756,13 +768,14 @@ async function main() {
     }
   }
 
-  console.log(`Found ${jobs.length} stub PDFs (< 35 KB) to regenerate...`);
+  console.log(`Found ${jobs.length} PDF(s) to regenerate...`);
   if (jobs.length === 0) return;
 
   const { srv, baseUrl } = await startStaticServer();
   let browser;
+  const chromeExe = process.env.PLAYWRIGHT_CHROME_PATH;
   try {
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch({ headless: true, ...(chromeExe ? { executablePath: chromeExe } : {}) });
   } catch (_e) {
     browser = await chromium.launch({ channel: 'chrome', headless: true });
   }

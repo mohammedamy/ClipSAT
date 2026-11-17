@@ -53,47 +53,56 @@
           "ar": "● الفهم المفاهيمي العميق — تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)"
         },
         "body": {
-          "en": "<p><strong>Linear Structure, Inner Products &amp; Geometric Transformations:</strong> In \\(\\mathbb{R}^n\\), the dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta = \\sum_{i=1}^n u_i v_i\\) encodes orthogonality (\\(\\mathbf{u}\\perp\\mathbf{v} \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0\\)) and orthogonal projection \\(\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\). For a matrix transformation \\(A \\in \\mathbb{R}^{n\\times n}\\), \\(|\\det(A)|\\) measures the local volume scaling factor, and \\(A\\) is invertible if and only if \\(\\det(A) \\ne 0\\) (equivalently, all eigenvalues \\(\\lambda_i \\ne 0\\)).</p>",
+          "en": "<p><strong>Linear Structure, Inner Products & Geometric Transformations:</strong> In \\(\\mathbb{R}^n\\), the dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta = \\sum_{i=1}^n u_i v_i\\) encodes orthogonality (\\(\\mathbf{u}\\perp\\mathbf{v} \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0\\)) and orthogonal projection \\(\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\). For a matrix transformation \\(A \\in \\mathbb{R}^{n\\times n}\\), \\(|\\det(A)|\\) measures the local volume scaling factor, and \\(A\\) is invertible if and only if \\(\\det(A) \\ne 0\\) (equivalently, all eigenvalues \\(\\lambda_i \\ne 0\\)).</p>",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "scatter",
-          "title": "Bivariate Scatterplot & Least-Squares Trend",
-          "pts": [
-            [
-              1,
-              2.1
-            ],
-            [
-              2,
-              3.8
-            ],
-            [
-              3,
-              4.9
-            ],
-            [
-              4,
-              6.7
-            ],
-            [
-              5,
-              8.1
-            ],
-            [
-              6,
-              9.6
-            ]
+          "type": "fn",
+          "title": "Orthogonal Principal Axes PC₁ (Max Variance) & PC₂ in Centered Data",
+          "xrange": [
+            -4,
+            4
           ],
-          "xlabel": "Explanatory Variable x",
-          "ylabel": "Response Variable y"
+          "yrange": [
+            -4,
+            4
+          ],
+          "fns": [
+            {
+              "fn": "x",
+              "color": "var(--fig-indigo)",
+              "label": "PC₁ Axis (λ₁ = 5)"
+            },
+            {
+              "fn": "-x",
+              "color": "var(--fig-amber)",
+              "label": "PC₂ Axis (λ₂ = 1)"
+            }
+          ],
+          "points": [
+            {
+              "x": 2.2,
+              "y": 1.8,
+              "label": "x⁽¹⁾"
+            },
+            {
+              "x": -2.0,
+              "y": -2.3,
+              "label": "x⁽²⁾"
+            },
+            {
+              "x": 1.1,
+              "y": 1.4,
+              "label": "x⁽³⁾"
+            }
+          ]
         },
         "caption": {
-          "en": "Positive linear association in bivariate data \\((x_i, y_i)\\) modeled by ordinary least squares.",
-          "ar": "مخطط الانتشار لبيانات ثنائية المتغير \\((x_i, y_i)\\) والاتجاه الخطي للمربعات الصغرى في تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)."
+          "en": "Principal Component Analysis aligns \\(\\text{PC}_1\\) with the dominant eigenvector of covariance matrix \\(\\Sigma\\), capturing maximum projected variance \\(\\lambda_1\\).",
+          "ar": "يوجه تحليل المركبات الرئيسية المحور \\(\\text{PC}_1\\) باتجاه المتجه الذاتي الأكبر لمصفوفة التغاير \\(\\Sigma\\) لالتقاط أقصى تباين مسقط \\(\\lambda_1\\)."
         }
       },
       {
@@ -221,7 +230,7 @@
         },
         "caption": {
           "en": "Proportion of total dataset variance captured across orthogonal components.",
-          "ar": "نسبة التباين المفسَّر عبر المركبات المتعامدة للبيانات في تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)."
+          "ar": "نسبة التباين المفسَّر لكل مركبة رئيسية متعامدة لتحديد عدد الأبعاد الكافية لضغط البيانات."
         }
       },
       {
@@ -277,7 +286,7 @@
           "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))"
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -349,7 +358,7 @@
           "ar": "⚠️ أخطاء شائعة في الاختبار — تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)"
         },
         "body": {
-          "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication &amp; Cross Products:</strong> On Mathematics for Artificial Intelligence & Machine Learning, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
+          "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication & Cross Products:</strong> On Mathematics for Artificial Intelligence & Machine Learning, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
           "ar": null
         }
       },
@@ -426,7 +435,7 @@
           "ar": "▲ استراتيجية الحل السريع والتحقق — تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (Mathematics for Artificial Intelligence & Machine Learning):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (Mathematics for Artificial Intelligence & Machine Learning):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },

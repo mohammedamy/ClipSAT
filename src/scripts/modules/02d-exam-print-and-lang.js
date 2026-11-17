@@ -106,6 +106,7 @@
     var examTitle=_titleEl?_titleEl.textContent.trim():'ClipSAT Practice Exam';
 
     var CSS=[
+      ':root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}',
       '@page{margin:20mm 18mm 22mm 18mm}',
       '@page:first{margin-top:18mm}',
       '*,*::before,*::after{box-sizing:border-box}',
@@ -160,7 +161,7 @@
       '.fep-domain-tag{font-family:sans-serif;font-size:7pt;color:#888;background:#f4f4f4;padding:1pt 6pt;border-radius:2pt;text-transform:uppercase;letter-spacing:.05em}',
       '.fep-type-tag{font-family:sans-serif;font-size:6pt;padding:1pt 5pt;border-radius:2pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em}',
       '.fep-figure,.cq-figure{margin:8pt 0 10pt 28pt;break-inside:avoid;page-break-inside:avoid}',
-      '.fep-figure svg,.cq-figure svg{width:auto!important;max-width:250pt!important;height:auto!important;display:block;max-height:180pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.fep-figure svg,.cq-figure svg{width:100%!important;max-width:250pt!important;height:auto!important;display:block;max-height:180pt;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '.exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto;break-inside:avoid;page-break-inside:avoid}',
       '.exam-barchart{font-family:sans-serif;font-size:8pt;max-width:240pt;margin:8pt auto;break-inside:avoid;page-break-inside:avoid}',
       '.ebc-wrap{display:flex;align-items:flex-end;gap:8pt;height:90pt;border-bottom:1.5pt solid #1a1a2e;padding-bottom:0;justify-content:center}',
@@ -228,8 +229,8 @@
       'body[dir="rtl"] .fep-choices{margin-left:0;margin-right:28pt}',
       'body[dir="rtl"] .fep-choice{direction:rtl}',
       'body[dir="rtl"] .fep-work-space{margin-left:0;margin-right:28pt}',
-      'body[dir="rtl"] .fep-figure,.cq-figure{margin:8pt 28pt 10pt 0}',
-      'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}'
+      'body[dir="rtl"] .fep-figure,body[dir="rtl"] .cq-figure{margin:8pt 28pt 10pt 0}',
+      'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex,body[dir="rtl"] svg{direction:ltr!important;unicode-bidi:isolate}'
     ].join('');
 
     var isRtl = document.body.classList.contains('rtl') ||
@@ -238,29 +239,20 @@
                 (typeof _ttDir === 'function' && _ttDir() === 'rtl');
     var lang = isRtl ? 'ar' : 'en';
     var dir = isRtl ? 'rtl' : 'ltr';
+    var _origin = (window.location && window.location.origin) || '';
 
     var html='<!DOCTYPE html><html lang="'+lang+'" dir="'+dir+'"><head>'+
       '<meta charset="utf-8">'+
       '<meta name="viewport" content="width=device-width,initial-scale=1">'+
       '<title>'+examTitle+'<\/title>'+
-      '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'+
-      '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]]},startup:{typeset:true}};<\/script>'+
-      '<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"><\/script>'+
+      '<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'+
+      '<script defer src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'+
+      '<script defer src="'+_origin+'/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'+
       '<style>'+CSS+'<\/style>'+
       '<\/head><body dir="'+dir+'">'+
       '<div id="print-brand"><span class="pb-left">'+brandLogoTag+'<span><strong>ClipSAT<\/strong> &middot; Mr. Mohamed Abdallah<\/span><\/span><span>'+today+'<\/span><\/div>'+
       '<div class="content-wrap">'+examHTML+'<\/div>'+
-      '<script>window.addEventListener("load",function(){'+
-        'function doPrint(){'+
-          'if(window.MathJax&&MathJax.typesetPromise){'+
-            'MathJax.typesetPromise().then(function(){setTimeout(function(){window.print();},300);});'+
-          '}else if(window.MathJax&&MathJax.startup){'+
-            'MathJax.startup.promise.then(function(){setTimeout(function(){window.print();},300);});'+
-          '}else{setTimeout(function(){window.print();},300);}}'+
-        'var _t=0,_iv=setInterval(function(){_t++;'+
-          'if((window.MathJax&&MathJax.startup)||_t>25){clearInterval(_iv);doPrint();}'+
-        '},200);'+
-      '});<\/script>'+
+      '<script>window.addEventListener("load",function(){setTimeout(function(){window.print();},350);});<\/script>'+
       '<\/body><\/html>';
 
     var _blob=new Blob([html],{type:'text/html;charset=utf-8'});

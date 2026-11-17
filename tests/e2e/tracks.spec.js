@@ -36,6 +36,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BANK_DATA_DIR = path.join(__dirname, '..', '..', 'bank-data');
+const CONTENT_DIR = path.join(__dirname, '..', '..', 'content');
 const SITE_DIR = path.join(__dirname, '..', '..', '_site');
 
 // bank-data/*.json is the real source of truth for "what track exists" —
@@ -83,6 +84,10 @@ function isExternalResourceError(url) {
     return false;
   }
 }
+
+const reqPath = (req) => {
+  try { return new URL(req.url()).pathname; } catch { return ''; }
+};
 
 test.describe.configure({ mode: 'parallel' });
 
@@ -306,9 +311,9 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
     const engineJsRequests = [];
     let teacherModeJsRequested = false;
     page.on('request', (req) => {
-      const url = req.url();
-      if (url.endsWith('/js/engine.js')) engineJsRequests.push(url);
-      if (url.endsWith('/js/teacher-mode.js')) teacherModeJsRequested = true;
+      const pathname = reqPath(req);
+      if (pathname === '/js/engine.js') engineJsRequests.push(req.url());
+      if (pathname === '/js/teacher-mode.js') teacherModeJsRequested = true;
     });
     const pageErrors = [];
     page.on('pageerror', (err) => pageErrors.push(err.message));
@@ -348,7 +353,7 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
   test('deferred practice quiz: practice-quiz.js is not eager and "Still unsure" loads and runs it', async ({ page }) => {
     test.setTimeout(60000);
     let practiceJsRequested = false;
-    page.on('request', (req) => { if (req.url().endsWith('/js/practice-quiz.js')) practiceJsRequested = true; });
+    page.on('request', (req) => { if (reqPath(req) === '/js/practice-quiz.js') practiceJsRequested = true; });
     const pageErrors = [];
     page.on('pageerror', (err) => pageErrors.push(err.message));
     await page.goto('/calculus/');
@@ -371,7 +376,7 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
     test.setTimeout(60000);
     let docxExportJsRequested = false;
     page.on('request', (req) => {
-      if (req.url().endsWith('/js/docx-export.js')) docxExportJsRequested = true;
+      if (reqPath(req) === '/js/docx-export.js') docxExportJsRequested = true;
     });
     const pageErrors = [];
     page.on('pageerror', (err) => pageErrors.push(err.message));
@@ -409,7 +414,7 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
     test.setTimeout(90000);
     let whiteboardJsRequested = false;
     page.on('request', (req) => {
-      if (req.url().endsWith('/js/whiteboard.js')) whiteboardJsRequested = true;
+      if (reqPath(req) === '/js/whiteboard.js') whiteboardJsRequested = true;
     });
     const pageErrors = [];
     page.on('pageerror', (err) => pageErrors.push(err.message));
@@ -609,13 +614,34 @@ test.describe('site-wide: chapter quiz relevance', () => {
   };
   for (const [track, chapters] of Object.entries(DOMAIN_TRACKS)) {
     test(`${track} chapter quizzes draw only from each chapter's own bank domains`, async ({ page }) => {
+      const meta = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, track, '_meta.json'), 'utf8'));
+      const chapterQuizBlocks = [];
+      for (const chSlug of meta.chapterOrder || []) {
+        const chHtmlPath = path.join(SITE_DIR, track, chSlug, 'index.html');
+        if (!fs.existsSync(chHtmlPath)) continue;
+        const html = fs.readFileSync(chHtmlPath, 'utf8');
+        const m = html.match(/<div class="ch-quiz-wrap"[^>]*data-quiz-domains="([^"]*)"[^>]*>[\s\S]*?<div class="cq-out"><\/div>\s*<\/div>/);
+        if (m) chapterQuizBlocks.push({ id: chSlug, wrapHtml: m[0] });
+      }
+
       await page.goto(`/${track}/`);
-      await page.waitForFunction((t) => window.fullExamBank && window.fullExamBank[t], track, { timeout: 15000 });
-      const results = await page.evaluate(() => {
+      await page.evaluate((t) => window.CS_loadTrackBank(t), track);
+      await page.waitForFunction((t) => Boolean(window.fullExamBank && window.fullExamBank[t]), track, { timeout: 15000 });
+      const results = await page.evaluate(({ blocks, tr }) => {
+        const main = document.getElementById(`view-${tr}`) || document.querySelector('main') || document.body;
+        const host = document.createElement('div');
+        main.appendChild(host);
+        blocks.forEach(({ id, wrapHtml }) => {
+          const sec = document.createElement('section');
+          sec.className = 'chapter';
+          sec.id = id;
+          sec.innerHTML = wrapHtml;
+          host.appendChild(sec);
+        });
         let rec = null;
         const orig = window._shuffleQ;
         window._shuffleQ = (q) => { if (rec) rec.add(q.domain); return orig ? orig(q) : q; };
-        return [...document.querySelectorAll('.chapter .ch-quiz-wrap[data-quiz-domains]')].map((wrap) => {
+        return [...host.querySelectorAll('.chapter .ch-quiz-wrap[data-quiz-domains]')].map((wrap) => {
           const allowed = wrap.getAttribute('data-quiz-domains').split('|');
           const count = wrap.querySelector('.cq-count');
           const opt = document.createElement('option');
@@ -628,7 +654,7 @@ test.describe('site-wide: chapter quiz relevance', () => {
           rec = null;
           return { id: wrap.closest('.chapter').id, allowed, used, items: wrap.querySelectorAll('.cq-item').length };
         });
-      });
+      }, { blocks: chapterQuizBlocks, tr: track });
       expect(results.length, `every ${track} chapter should declare its quiz domains`).toBe(chapters);
       for (const r of results) {
         expect(r.items, `${r.id} quiz should have questions`).toBeGreaterThan(0);
@@ -662,8 +688,8 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
     const seen = ixRequests(page);
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
-    await page.goto('/calculus/');
-    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(16);
+    await page.goto('/calculus/ch-foundations/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(1);
     expect(seen).toEqual(['calculus']);
     expect(await page.locator('#ch-foundations .ix-box button').count()).toBeGreaterThanOrEqual(4);
     expect(errors, errors.join('\n')).toHaveLength(0);
@@ -677,17 +703,20 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
     expect(seen).toEqual([]);
     expect(await page.locator('.ix-section').count()).toBe(0);
 
-    // Track pages (including act2l2) load their own ix data
-    await page.goto('/act2l2/');
-    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(8);
+    // Chapter pages (including act2l2) load their own ix data
+    await page.goto('/act2l2/act2l2-complex/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(1);
     expect(seen).toEqual(['act2l2']);
   });
 
   test('switching to Arabic re-renders the loaded widgets', async ({ page }) => {
-    await page.goto('/qudrat/');
-    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(9);
-    await page.evaluate(() => window.i18n.setLocale('ar'));
-    await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count()).toBe(9);
+    await page.goto('/qudrat/qud-arithmetic/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(1);
+    await Promise.all([
+      page.waitForURL('**/ar/qudrat/qud-arithmetic/'),
+      page.evaluate(() => window.i18n.setLocale('ar')),
+    ]);
+    await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count(), { timeout: 10000 }).toBe(1);
   });
 
   test('Step Builder grading rejects sign/operator errors (Plan 10.0)', async ({ page }) => {
@@ -702,8 +731,8 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
   });
 
   test('interactive engine a11y, hints, and controls (Plan 10.4a)', async ({ page }) => {
-    await page.goto('/calculus/');
-    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(16);
+    await page.goto('/calculus/ch-foundations/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(1);
 
     // Worked Example: verify "Reveal all steps" button exists
     const revealAll = page.locator('.chapter:not([style*="display: none"]) .ix-sr-all-btn, .ix-sr-all-btn').first();
@@ -736,23 +765,29 @@ test.describe('site-wide: Arabic strings load on demand (Phase 5.015, ADR 0040)'
     const engine = await (await request.get('/js/engine.js')).text();
     expect(engine.includes("'nav.home':'الرئيسية'"), 'Arabic strings should not be in engine.js').toBe(false);
     const seen = arRequests(page);
-    await page.goto('/calculus/');
+    await page.goto('/calculus/ch-foundations/');
     await page.waitForLoadState('load');
     expect(seen).toEqual([]);
   });
 
   test('switching to Arabic loads them and translates the page; a saved Arabic locale applies on load', async ({ page }) => {
     const seen = arRequests(page);
-    await page.goto('/calculus/');
+    await page.goto('/calculus/ch-foundations/');
     const quiz = page.locator('[data-i18n="quiz.chapterQuiz"]').first();
     await expect(quiz).toHaveText('Chapter Quiz');
-    await page.locator('#i18n-toggle-btn').click();
-    await expect(quiz).toHaveText('اختبار الفصل');
+    await Promise.all([
+      page.waitForURL('**/ar/calculus/ch-foundations/'),
+      page.locator('#i18n-toggle-btn').click(),
+    ]);
+    await expect(page.locator('[data-i18n="quiz.chapterQuiz"]').first()).toHaveText('اختبار الفصل');
     expect(seen).toHaveLength(1);
     await page.reload();
     await expect(page.locator('[data-i18n="quiz.chapterQuiz"]').first()).toHaveText('اختبار الفصل');
     await expect.poll(() => page.evaluate(() => document.body.classList.contains('rtl'))).toBe(true);
-    await page.locator('#i18n-toggle-btn').click();
+    await Promise.all([
+      page.waitForURL('**/calculus/ch-foundations/'),
+      page.locator('#i18n-toggle-btn').click(),
+    ]);
     await expect(page.locator('[data-i18n="quiz.chapterQuiz"]').first()).toHaveText('Chapter Quiz');
   });
 });
@@ -763,7 +798,7 @@ test.describe('site-wide: topic search loads its cross-track index on demand (AD
     expect(engine.length, 'engine.js should not carry the chapter index').toBeLessThan(400000);
     expect(engine.includes('"keywords":['), 'the chapter index should not be inside engine.js').toBe(false);
     let requested = 0;
-    page.on('request', (req) => { if (req.url().endsWith('/js/search-index.js')) requested += 1; });
+    page.on('request', (req) => { if (reqPath(req) === '/js/search-index.js') requested += 1; });
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('/calculus/');
@@ -787,7 +822,7 @@ test.describe('site-wide: figure renderers load on demand (ADR 0045)', () => {
     expect(engine.length, 'engine.js should stay under 350KB').toBeLessThan(350000);
     for (const name of ['_renderFig=', 'renderGeom3D', 'FIG_INDIGO']) expect(engine.includes(name), `${name} should not be in engine.js`).toBe(false);
     let requested = 0;
-    page.on('request', (req) => { if (req.url().endsWith('/js/figures.js')) requested += 1; });
+    page.on('request', (req) => { if (reqPath(req) === '/js/figures.js') requested += 1; });
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('/geo/');
@@ -797,11 +832,17 @@ test.describe('site-wide: figure renderers load on demand (ADR 0045)', () => {
     expect(await page.evaluate(() => typeof window._renderFig)).toBe('undefined');
     // Called directly, not clicked, so the warm-load on touch does not fetch the file first:
     // the quiz renders with empty figure slots and fills them once figures.js arrives.
-    // Geometry's first chapter has figures on 154 of its 162 questions.
-    const quiz = () => page.evaluate(() => window.genChapterQuiz(document.querySelector('button.cq-btn')));
+    const quiz = () =>
+      page.evaluate(
+        () =>
+          new Promise((resolve) => {
+            document.addEventListener('clipsat:quiz-ready', () => resolve(), { once: true });
+            window.genChapterQuiz(document.querySelector('button.cq-btn'));
+          })
+      );
     const allDrawn = () => {
       const f = [...document.querySelectorAll('.cq-paper .cq-figure')];
-      return f.length > 0 && f.every((el) => el.querySelector('svg') && !el.hasAttribute('data-fig'));
+      return f.length > 0 && f.every((el) => (el.querySelector('svg') || el.querySelector('table')) && !el.hasAttribute('data-fig'));
     };
     await quiz();
     await page.waitForFunction(allDrawn, null, { timeout: 10000 });
@@ -817,7 +858,7 @@ test.describe('site-wide: figure renderers load on demand (ADR 0045)', () => {
     // The service worker would fetch the file itself, past page.route, so it is blocked here.
     test.use({ serviceWorkers: 'block' });
     test('if figures.js cannot load, the quiz still shows and each figure slot says so (ADR 0045)', async ({ page }) => {
-      await page.route('**/js/figures.js', (route) => route.abort());
+      await page.route('**/js/figures.js*', (route) => route.abort());
       await page.goto('/geo/');
       await page.waitForFunction(() => window.CS_bankReady !== undefined, null, { timeout: 15000 });
       await page.evaluate(() => window.CS_bankReady);
@@ -868,6 +909,7 @@ test.describe('site-wide: send an assignment to Google Classroom (ADR 0047)', ()
     await expect(items).toHaveCount(5, { timeout: 15000 });
     await expect(page.locator('#cs-assignment .cs-assign-missing')).toHaveCount(0);
     // the questions are the ones the link names, in its order
+    await page.evaluate(() => window.CS_loadTrackBank('geo'));
     const match = await page.evaluate(() => {
       const want = new URLSearchParams(location.search).get('assign').split('.');
       const pool = window.fullExamBank.geo.pool;
@@ -876,7 +918,11 @@ test.describe('site-wide: send an assignment to Google Classroom (ADR 0047)', ()
     });
     expect(match).toBe(true);
     // Geometry questions carry figures; each is drawn
-    await page.waitForFunction(() => [...document.querySelectorAll('#cs-assignment .cq-figure')].every((f) => f.querySelector('svg')), null, { timeout: 10000 });
+    await page.waitForFunction(
+      () => [...document.querySelectorAll('#cs-assignment .cq-figure')].every((f) => f.querySelector('svg') || f.querySelector('table')),
+      null,
+      { timeout: 10000 }
+    );
     // choosing an answer marks it and counts it
     await items.first().locator('.cq-opt').first().click();
     await expect(items.first()).toHaveClass(/cq-done/);
@@ -888,11 +934,11 @@ test.describe('site-wide: send an assignment to Google Classroom (ADR 0047)', ()
     const engine = await (await request.get('/js/engine.js')).text();
     expect(engine.includes('avIntro'), 'the assignment view should ship in its own file').toBe(false);
     let requested = 0;
-    page.on('request', (req) => { if (req.url().endsWith('/js/assignment-view.js')) requested += 1; });
+    page.on('request', (req) => { if (reqPath(req) === '/js/assignment-view.js') requested += 1; });
     await page.goto('/geo/');
-    await page.waitForFunction(() => window.CS_bankReady !== undefined, null, { timeout: 15000 });
-    await page.evaluate(() => window.CS_bankReady);
+    await page.waitForFunction(() => typeof window.CS_loadTrackBank === 'function', null, { timeout: 15000 });
     expect(requested).toBe(0);
+    await page.evaluate(() => window.CS_loadTrackBank('geo'));
     const [k0, k1] = await page.evaluate(() => window.fullExamBank.geo.pool.slice(0, 2).map((q) => window.CSAssignKey(q)));
     await page.goto(`/geo/?assign=${k0}.zzzzzz.${k1}`);
     await expect(page.locator('#cs-assignment .cq-item')).toHaveCount(2, { timeout: 15000 });
@@ -929,6 +975,7 @@ test.describe('site-wide: AI chat error messages', () => {
     test(`${c.name} is not blamed on the student's internet connection`, async ({ page }) => {
       await page.goto('/calculus/');
       await page.evaluate((msg) => {
+        try { sessionStorage.setItem('clipsat_guest_ai_demos', '2'); } catch (_e) {}
         window._openrouterChatMessages = () => Promise.reject(new Error(msg));
       }, c.error);
       await page.locator('#chatFab').click();
@@ -939,4 +986,68 @@ test.describe('site-wide: AI chat error messages', () => {
       await expect(last).not.toContainText('internet connection');
     });
   }
+});
+
+test.describe('site-wide: print stylesheet, dark-mode print reset, and RTL figure coordinates', () => {
+  test('@media print keeps lesson content visible, hides chrome, resets dark-mode tokens, and fits A4 width', async ({ browser }) => {
+    const context = await browser.newContext({ colorScheme: 'dark', viewport: { width: 794, height: 1123 } });
+    const page = await context.newPage();
+    try {
+      await page.goto('/calculus/ch-foundations/');
+      await expect(page.locator('body.dark')).toHaveCount(1);
+      await page.emulateMedia({ media: 'print' });
+      const audit = await page.evaluate(() => {
+        const ch = document.querySelector('section.chapter.ch-active');
+        const chCs = getComputedStyle(ch);
+        const bodyCs = getComputedStyle(document.body);
+        const hdrCs = getComputedStyle(document.querySelector('header.site'));
+        const railCs = getComputedStyle(document.querySelector('aside.rail'));
+        const rect = ch.getBoundingClientRect();
+        return {
+          chapterVisibility: chCs.visibility,
+          chapterDisplay: chCs.display,
+          headerDisplay: hdrCs.display,
+          railDisplay: railCs.display,
+          paperToken: bodyCs.getPropertyValue('--paper').trim().toLowerCase(),
+          figInkToken: bodyCs.getPropertyValue('--fig-ink').trim().toLowerCase(),
+          chapterRight: Math.round(rect.right),
+        };
+      });
+      expect(audit.chapterVisibility).toBe('visible');
+      expect(audit.chapterDisplay).not.toBe('none');
+      expect(audit.headerDisplay).toBe('none');
+      expect(audit.railDisplay).toBe('none');
+      expect(audit.paperToken).toBe('#ffffff');
+      expect(audit.figInkToken).toBe('#0e1726');
+      expect(audit.chapterRight).toBeLessThanOrEqual(795);
+    } finally {
+      await context.close();
+    }
+  });
+
+  test('Arabic RTL chapter pages hydrate figures with strict LTR coordinate axes', async ({ page }) => {
+    await page.goto('/ar/qudrat/qud-geometry/');
+    await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+    await page.evaluate(() => {
+      if (typeof window.CSHydrateAllFigures === 'function') return window.CSHydrateAllFigures();
+    });
+    await page.waitForFunction(
+      () => document.querySelectorAll('.lesson-figure-svg svg').length > 0,
+      null,
+      { timeout: 10000 }
+    );
+    const svgChecks = await page.evaluate(() =>
+      [...document.querySelectorAll('.lesson-figure-svg svg')].map((svg) => ({
+        attrDir: svg.getAttribute('direction'),
+        computedDir: getComputedStyle(svg).direction,
+        hasNaN: /\bNaN\b|\bundefined\b/.test(svg.outerHTML),
+      }))
+    );
+    expect(svgChecks.length).toBeGreaterThan(0);
+    for (const c of svgChecks) {
+      expect(c.attrDir).toBe('ltr');
+      expect(c.computedDir).toBe('ltr');
+      expect(c.hasNaN).toBe(false);
+    }
+  });
 });

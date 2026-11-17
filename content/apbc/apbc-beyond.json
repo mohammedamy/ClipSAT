@@ -30,29 +30,29 @@
         "kind": "figure",
         "figure": {
           "type": "bar",
-          "title": "Syllabus Topic Weight Distribution (%)",
+          "title": "BC-Exclusive Content Share Across Units (%)",
           "data": [
             {
-              "label": "Core I",
-              "val": 30
+              "label": "U6BC Int Tech",
+              "val": 18
             },
             {
-              "label": "Core II",
+              "label": "U7BC Logistic",
+              "val": 14
+            },
+            {
+              "label": "U9 Param/Polar",
               "val": 28
             },
             {
-              "label": "Applied III",
-              "val": 24
-            },
-            {
-              "label": "Synthesis IV",
-              "val": 18
+              "label": "U10 Series",
+              "val": 40
             }
           ]
         },
         "caption": {
-          "en": "Relative exam domain weightings across core syllabus units in Beyond AB — Core BC Topics Overview.",
-          "ar": "التوزيع النسبي لأوزان وحدات المنهج الأساسية في ما بعد AB — نظرة عامة على موضوعات BC المتقدمة."
+          "en": "Relative share of BC-only topics beyond AB: Infinite Series (Unit 10) and Parametric/Polar/Vectors (Unit 9) anchor the BC extension.",
+          "ar": "الحصة النسبية للموضوعات الخاصة بمسار BC ما بعد AB."
         }
       },
       {
@@ -91,7 +91,7 @@
             "id": "apbcbeyondExCanvas_s0",
             "label": {
               "en": "Evaluation Point <b>\\(x_{0} =\\)</b>",
-              "ar": "Evaluation Point <b>\\(x_{0} =\\)</b> (ما بعد AB — نظرة عامة على موضوعات BC المتقدمة)"
+              "ar": "نقطة الحساب <b>\\(x_{0} =\\)</b> (ما بعد AB — نظرة عامة على موضوعات BC المتقدمة)"
             },
             "min": -2.5,
             "max": 2.5,
@@ -100,14 +100,14 @@
             "valueDisplayId": "apbcbeyondExCanvas_v0",
             "ariaLabel": {
               "en": "Evaluation Point x₀ =",
-              "ar": "عنصر تفاعلي: Evaluation Point x₀ ="
+              "ar": "عنصر تفاعلي: نقطة الحساب x₀ ="
             }
           },
           {
             "id": "apbcbeyondExCanvas_s1",
             "label": {
               "en": "Polynomial Order <b>\\(N =\\)</b>",
-              "ar": "كثيرة الحدود Order <b>\\(N =\\)</b>"
+              "ar": "درجة كثيرة الحدود <b>\\(N =\\)</b>"
             },
             "min": 1,
             "max": 7,
@@ -116,7 +116,7 @@
             "valueDisplayId": "apbcbeyondExCanvas_v1",
             "ariaLabel": {
               "en": "Polynomial Order N =",
-              "ar": "كثيرة الحدود Order N ="
+              "ar": "درجة كثيرة الحدود N ="
             }
           }
         ],
@@ -157,30 +157,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bar",
-          "title": "Recommended Time Allocation per Exam Section (min)",
-          "data": [
+          "type": "fn",
+          "title": "Taylor Polynomials P₁(x), P₃(x) Approximating sin(x)",
+          "xrange": [
+            -3.5,
+            3.5
+          ],
+          "yrange": [
+            -2,
+            2
+          ],
+          "fns": [
             {
-              "label": "Warm-up",
-              "val": 15
+              "fn": "sin(x)",
+              "color": "var(--fig-indigo)",
+              "label": "sin(x)"
             },
             {
-              "label": "Core MCQ",
-              "val": 35
-            },
-            {
-              "label": "Multi-Step",
-              "val": 30
-            },
-            {
-              "label": "Review",
-              "val": 10
+              "fn": "x - x*x*x/6",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "P₃(x) = x − x³/6"
             }
           ]
         },
         "caption": {
-          "en": "Target pacing allocation (in minutes) across question tiers and final verification for Beyond AB — Core BC Topics Overview.",
-          "ar": "التوزيع الزمني المقترح (بالدقائق) عبر مستويات الأسئلة والمراجعة النهائية في ما بعد AB — نظرة عامة على موضوعات BC المتقدمة."
+          "en": "Local polynomial approximation improving across larger intervals as degree increases in Unit 10 Taylor & Maclaurin series.",
+          "ar": "تقريب دالة الجيب \\(\\sin(x)\\) بواسطة كثيرة حدود ماكلورين من الدرجة الثالثة \\(P_3(x)\\)."
         }
       },
       {
@@ -207,12 +210,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Beyond AB — Core BC Topics Overview)",
-          "ar": null
+          "en": "◆ Why It Works — Net Change & Accumulation as the Unifying Thread of AP Calculus",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — التغير الصافي والتراكم كمحور موحّد لاختبار التفاضل والتكامل"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Net Change Unifies MCQ and FRQ Calculus:</strong> By the Fundamental Theorem of Calculus, any differentiable quantity \\(Q(t)\\) satisfies \\[ Q(b) = Q(a) + \\int_a^b Q'(t)\\,dt \\] Rearranging this single identity powers Rate-In/Rate-Out FRQs (\\(Q(t) = Q(0) + \\int_0^t [E(s) - L(s)]\\,ds\\)), particle position from velocity, tabular Riemann approximations, and Taylor remainder bounds in BC.</p>",
+          "ar": "<p><strong>كيف توحّد نظرية التغير الصافي أسئلة الاختبار:</strong> بموجب النظرية الأساسية للتفاضل والتكامل تحقق أي كمية قابلة للاشتقاق \\(Q(t)\\) العلاقة \\[ Q(b) = Q(a) + \\int_a^b Q'(t)\\,dt \\] وهي الهوية الجوهرية التي تحكم مسائل معدل الدخول والخروج، وحركة الجسيمات، ومجاميع ريمان الجدولية.</p>"
         }
       },
       {

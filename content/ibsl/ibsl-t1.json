@@ -2,8 +2,8 @@
   "id": "ibsl-t1",
   "chapterNumber": "1",
   "title": {
-    "en": "Number &amp; Algebra",
-    "ar": "عدد &amp; الجبر"
+    "en": "Number & Algebra",
+    "ar": "الأعداد والجبر"
   },
   "chapterTag": {
     "variant": "pill",
@@ -62,31 +62,19 @@
             {
               "fn": "2*pow(1.45, x)",
               "color": "var(--fig-indigo)",
-              "label": "Geometric: uₙ = 2(1.45)ⁿ⁻¹"
+              "label": "Geometric uₙ = 2(1.45)ⁿ"
             },
             {
               "fn": "2 + 3.8*x",
               "color": "var(--fig-amber)",
               "dash": "5,3",
-              "label": "Arithmetic: vₙ = 2 + 3.8(n−1)"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 2,
-              "label": "u₁ = 2"
-            },
-            {
-              "x": 6.22,
-              "y": 25.6,
-              "label": "Intersection (n ≈ 7.2)"
+              "label": "Arithmetic vₙ = 2 + 3.8n"
             }
           ]
         },
         "caption": {
-          "en": "Comparison of compound geometric growth \\(u_{n} = u_{1}r^{n-1}\\) against linear arithmetic progression \\(v_{n} = u_{1} + (n-1)\\)d — a signature IB Paper 2 GDC crossover problem.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الموضوع واحد · الأعداد والجبر والمتسلسلات. \\(u_{n} = u_{1}r^{n-1}\\) ، \\(v_{n} = u_{1} + (n-1)\\) (2)"
+          "en": "Compound geometric growth \\(u_n = u_1 r^{n-1}\\) eventually overtakes any constant-difference arithmetic progression \\(v_n = v_1 + (n-1)d\\).",
+          "ar": "النمو الهندسي الأسي \\(u_n = u_1 r^{n-1}\\) يتجاوز النمو الحسابي الخطي \\(v_n = v_1 + (n-1)d\\)."
         }
       },
       {
@@ -207,19 +195,19 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Number &amp; Algebra)",
-          "ar": null
+          "en": "◆ Why It Works — Telescoping Derivation of the Geometric Series Sum",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — الاشتقاق المتداخل لمجموع المتسلسلة الهندسية"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why \\(S_n = \\frac{u_1(r^n - 1)}{r - 1}\\) Holds:</strong> Multiply \\(S_n = u_1 + u_1 r + \\dots + u_1 r^{n-1}\\) by \\(r\\) and subtract: \\[ rS_n - S_n = u_1 r^n - u_1 \\implies S_n(r - 1) = u_1(r^n - 1) \\] When \\(|r| < 1\\), \\(\\lim_{n\\to\\infty} r^n = 0\\), yielding the convergent infinite sum \\(S_\\infty = \\frac{u_1}{1 - r}\\).</p>",
+          "ar": "<p><strong>اشتقاق قانون مجموع المتسلسلة الهندسية:</strong> بضرب \\(S_n\\) في \\(r\\) والطرح تختفي الحدود الوسطى بالتداخل فينتج \\((r - 1)S_n = u_1(r^n - 1)\\)، وعندما \\(|r| < 1\\) فإن \\(r^n \\to 0\\) فنحصل على \\(S_\\infty = \\frac{u_1}{1 - r}\\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.1 — Geometric Series & Convergence",
-          "ar": "مثال محلول 1.1 — Geometric المتسلسلة & Convergence"
+          "ar": "مثال محلول 1.1 — المتسلسلة الهندسية والتقارب"
         },
         "problem": {
           "en": "The second term of a geometric sequence is 12 and the sum to infinity is 64. Given that all terms are positive, find the first term \\(u_1\\), the common ratio \\(r\\), and the minimum number of terms \\(n\\) such that \\(S_n > 63.9\\).",
@@ -294,25 +282,29 @@
         "kind": "figure",
         "figure": {
           "type": "bar",
-          "title": "Proportional Parts & Percentage Breakdown",
+          "title": "Compound Value of $1,000 After 10 Years at 6% Nominal Rate ($)",
           "data": [
             {
-              "label": "Part A",
-              "val": 25
+              "label": "Simple",
+              "val": 1600
             },
             {
-              "label": "Part B",
-              "val": 40
+              "label": "Annual (k=1)",
+              "val": 1791
             },
             {
-              "label": "Part C",
-              "val": 35
+              "label": "Quarterly (k=4)",
+              "val": 1814
+            },
+            {
+              "label": "Monthly (k=12)",
+              "val": 1819
             }
           ]
         },
         "caption": {
-          "en": "Proportional ratio breakdown across three components summing to \\(100\\%\\).",
-          "ar": "التوزيع التناسبي والنسب المئوية للمكونات الثلاثة بمجموع \\(100\\%\\) في الموضوع واحد · الأعداد والجبر والمتسلسلات."
+          "en": "Effect of compounding frequency \\(k\\) in the IB financial formula \\(FV = PV\\left(1 + \\frac{r}{100k}\\right)^{kn}\\).",
+          "ar": "أثر عدد فترات التركيب \\(k\\) في صيغة الفائدة المركبة المعتمدة في كتيب قوانين البكالوريا الدولية."
         }
       },
       {
@@ -330,7 +322,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Number &amp; Algebra)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Number & Algebra)",
           "ar": null
         },
         "columns": [
@@ -396,8 +388,8 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Number &amp; Algebra",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Number &amp; الجبر"
+          "en": "▲ Exam Pacing & Verification Strategy — Number & Algebra",
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — الأعداد والجبر"
         },
         "body": {
           "en": "<p><strong>High-Speed Exam Shortcut (IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
@@ -421,7 +413,7 @@
           },
           {
             "en": "If \\(u_4 = 19\\) and \\(S_{10} = 235\\): \\(2u_1 + 9d = 47\\), \\(2u_1 + 6d = 38 \\implies 3d = 9 \\implies d = 3\\), \\(u_1 = 19 - 9\\).",
-            "ar": "إذا كان \\(u_4 = 19\\) and \\(S_{10} = 235\\): \\(2u_1 + 9d = 47\\), \\(2u_1 + 6d = 38 \\implies 3d = 9 \\implies d = 3\\), \\(u_1 = 19 - 9\\)."
+            "ar": "إذا كان \\(u_4 = 19\\) و \\(S_{10} = 235\\): \\(2u_1 + 9d = 47\\), \\(2u_1 + 6d = 38 \\implies 3d = 9 \\implies d = 3\\), \\(u_1 = 19 - 9\\)."
           },
           {
             "en": "Sum \\(= \\frac{15}{2}(40 + 82) = \\frac{15}{2}(122) = 15 \\times 61\\).",
@@ -554,6 +546,7 @@
   "quizWidget": {
     "domains": [
       "Number & Algebra"
-    ]
+    ],
+    "enabled": true
   }
 }

@@ -8,7 +8,8 @@ const ROUTES = [
   { name: 'Digital SAT Hub (EN)', url: '/sat/' },
   { name: 'Digital SAT Hub (AR RTL)', url: '/ar/sat/' },
   { name: 'GAT Qudrat Hub (AR RTL)', url: '/ar/qudrat/' },
-  { name: 'Pricing & SAR Checkout', url: '/pricing/' }
+  { name: 'Pricing & SAR Checkout', url: '/pricing/' },
+  { name: 'Account & Password Auth Modal', url: '/account/' }
 ];
 
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];

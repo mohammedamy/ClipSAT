@@ -48,50 +48,38 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Inverse Reflection: y = 2ˣ, y = log₂(x), and y = x",
-          "xrange": [
-            -3,
-            6
+          "type": "scatter",
+          "title": "Semi-Log Plot Linearization (x, ln y) for Exponential Data y = 2·3ˣ",
+          "pts": [
+            [
+              0,
+              0.69
+            ],
+            [
+              1,
+              1.79
+            ],
+            [
+              2,
+              2.89
+            ],
+            [
+              3,
+              3.99
+            ],
+            [
+              4,
+              5.09
+            ]
           ],
-          "yrange": [
-            -3,
-            6
-          ],
-          "fns": [
-            {
-              "fn": "Math.pow(2, x)",
-              "color": "var(--fig-indigo)",
-              "label": "y = 2ˣ"
-            },
-            {
-              "fn": "Math.log(x)/Math.LN2",
-              "color": "var(--fig-teal)",
-              "label": "y = log₂(x)"
-            },
-            {
-              "fn": "x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = x"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 1,
-              "label": "(0, 1)"
-            },
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            }
-          ]
+          "line": {
+            "m": 1.0986,
+            "b": 0.6931
+          }
         },
         "caption": {
-          "en": "Symmetric reflection of \\(y = 2^x\\) and its inverse \\(y = \\log_2(x)\\) across the line \\(y = x\\).",
-          "ar": "التناظر الانعكاسي بين الدالة الأسية \\(y = 2^x\\) ودالتها العكسية \\(y = \\log_2(x)\\) حول المستقيم \\(y = x\\) في الوحدة اثنان B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
+          "en": "Plotting \\((x, \\ln y)\\) transforms exponential growth \\(y = 2 \\cdot 3^x\\) into the straight line \\(\\ln y = \\ln 2 + (\\ln 3)x\\).",
+          "ar": "تحويل البيانات الأسية \\(y = 2 \\cdot 3^x\\) إلى علاقة خطية على الرسم شبه اللوغاريتمي \\((x, \\ln y)\\)."
         }
       },
       {
@@ -197,7 +185,7 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Inverse Pair: y = 2^x and y = log₂(x)",
+          "title": "Inverse Reflection: f(x) = 2ˣ, f⁻¹(x) = log₂(x), and Mirror y = x",
           "xrange": [
             -3,
             6
@@ -208,42 +196,26 @@
           ],
           "fns": [
             {
-              "fn": "Math.pow(2, x)",
+              "fn": "pow(2, x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = 2^x"
+              "label": "f(x) = 2ˣ"
             },
             {
-              "fn": "x > 0.05 ? Math.log2(x) : NaN",
-              "color": "var(--fig-amber)",
+              "fn": "x > 0.05 ? log(x)/log(2) : NaN",
+              "color": "var(--fig-emerald)",
               "label": "f⁻¹(x) = log₂(x)"
             },
             {
               "fn": "x",
-              "color": "#64748b",
+              "color": "var(--fig-amber)",
               "dash": "4,4",
               "label": "y = x"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 1,
-              "label": "(0, 1)"
-            },
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Inverse reflection between exponential growth \\(f(x) = 2^x\\) and logarithmic model \\(f^{-1}(x) = \\log_2(x)\\) across the line \\(y = x\\).",
-          "ar": "انعكاس الدالة الأسية \\(f(x) = 2^x\\) والدالة اللوغاريتمية العكسية \\(f^{-1}(x) = \\log_2(x)\\) حول محور التماثل \\(y = x\\)."
-        },
-        "title": {
-          "en": "Exponential & Logarithmic Inverse Symmetry Across y = x",
-          "ar": "التماثل العكسي بين الدالة الأسية واللوغاريتمية حول المستقيم y = x"
+          "en": "Symmetric reflection of \\(f(x) = 2^x\\) (horizontal asymptote \\(y = 0\\)) and \\(f^{-1}(x) = \\log_2(x)\\) (vertical asymptote \\(x = 0\\)) across \\(y = x\\).",
+          "ar": "الانعكاس المتماثل بين الدالة الأسية \\(2^x\\) ودالتها العكسية \\(\\log_2(x)\\) حول المستقيم \\(y = x\\)."
         }
       },
       {
@@ -295,72 +267,72 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions)",
-          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية)"
+          "en": "◆ Why It Works — Why Semi-Log Plots Straighten Exponential Data",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — لماذا يحوّل اللوغاريتم النمو الأسي إلى خط مستقيم"
         },
         "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
-          "ar": null
+          "en": "<p><strong>Logarithmic Linearization:</strong> Taking natural logarithms of \\(y = a \\cdot b^x\\) yields \\[ \\ln y = \\ln a + (\\ln b)x \\] Setting \\(Y = \\ln y\\) produces linear equation \\(Y = m x + c\\) with vertical intercept \\(c = \\ln a\\) and constant slope \\(m = \\ln b\\).</p>",
+          "ar": "<p><strong>التحويل الخطي اللوغاريتمي:</strong> بأخذ اللوغاريتم الطبيعي للعلاقة \\(y = a \\cdot b^x\\) نحصل على \\(\\ln y = \\ln a + (\\ln b)x\\)، وهي معادلة خط مستقيم ميله \\(\\ln b\\) ومقطعه \\(\\ln a\\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 2B.A — Foundational Formulation",
-          "ar": "مثال محلول 2B.A — تطبيق أساسي"
+          "en": "Worked Example 2B.1 — Domain of a Composite Logarithmic Function",
+          "ar": "مثال محلول 2B.1 — مجال الدالة اللوغاريتمية المركّبة"
         },
         "problem": {
-          "en": "Express \\( f(x) = x^2 - 8x + 19 \\) in completed-square vertex form and find its minimum value.",
-          "ar": "أوجد صيغة إكمال المربع للدالة \\(f(x) = x^2 - 8x + 19\\)."
+          "en": "Let \\( f(x) = \\ln(x - 3) \\) and \\( g(x) = \\sqrt{9 - x} \\). Find the exact domain of \\( (f \\circ g)(x) = f(g(x)) \\).",
+          "ar": "لتكن \\( f(x) = \\ln(x - 3) \\) و\\( g(x) = \\sqrt{9 - x} \\). أوجد المجال الدقيق للدالة المركّبة \\( (f \\circ g)(x) = f(g(x)) \\)."
         },
         "solution": {
-          "en": "<p>Halving \\( -8 \\) gives \\( -4 \\), so \\( f(x) = (x - 4)^2 - 16 + 19 = (x - 4)^2 + 3 \\). Minimum value is \\( 3 \\) at \\( x = 4 \\).</p>",
-          "ar": null
+          "en": "<p>For \\( g(x) = \\sqrt{9 - x} \\) to be defined, \\( 9 - x \\ge 0 \\implies x \\le 9 \\). Next, \\( f(g(x)) = \\ln(\\sqrt{9 - x} - 3) \\) requires \\( \\sqrt{9 - x} - 3 > 0 \\implies \\sqrt{9 - x} > 3 \\implies 9 - x > 9 \\implies x < 0 \\). Intersecting \\( x \\le 9 \\) and \\( x < 0 \\) gives domain \\( (-\\infty, 0) \\).</p>",
+          "ar": "<p>حتى تكون \\( g(x) = \\sqrt{9 - x} \\) معرّفة يلزم \\( 9 - x \\ge 0 \\implies x \\le 9 \\). وحتى تكون \\( f(g(x)) = \\ln(\\sqrt{9 - x} - 3) \\) معرّفة يلزم \\( \\sqrt{9 - x} > 3 \\implies 9 - x > 9 \\implies x < 0 \\). تقاطع الشرطين يعطي المجال \\( (-\\infty, 0) \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 2B.B — Multi-Step Tangency & Discriminant",
-          "ar": "مثال محلول 2B.B — شرط التماس والمميز"
+          "en": "Worked Example 2B.2 — Finding an Inverse Logarithmic Model",
+          "ar": "مثال محلول 2B.2 — إيجاد الدالة العكسية لنموذج لوغاريتمي"
         },
         "problem": {
-          "en": "Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 8x + 21 \\).",
-          "ar": "أوجد قيمة \\(k\\) التي تجعل المستقيم \\(y = 2x + k\\) مماساً للمنحنى \\(y = x^2 - 8x + 21\\)."
+          "en": "Find \\( f^{-1}(x) \\) for \\( f(x) = 5 + 2\\ln(3x - 1) \\) and state the domain of \\( f^{-1} \\).",
+          "ar": "أوجد \\( f^{-1}(x) \\) للدالة \\( f(x) = 5 + 2\\ln(3x - 1) \\) وحدّد مجال \\( f^{-1} \\)."
         },
         "solution": {
-          "en": "<p>Equating gives \\( x^2 - 10x + (21 - k) = 0 \\). Setting \\( \\Delta = (-10)^2 - 4(21 - k) = 0 \\) yields \\( k = -4 \\).</p>",
-          "ar": null
+          "en": "<p>Set \\( y = 5 + 2\\ln(3x - 1) \\). Isolate the logarithm: \\( \\ln(3x - 1) = \\frac{y - 5}{2} \\). Exponentiate base \\( e \\): \\( 3x - 1 = e^{(y - 5)/2} \\implies x = \\frac{1 + e^{(y - 5)/2}}{3} \\). Swapping variables gives \\( f^{-1}(x) = \\frac{1 + e^{(x - 5)/2}}{3} \\), whose domain equals the range of \\( f \\), namely \\( (-\\infty, \\infty) \\).</p>",
+          "ar": "<p>نضع \\( y = 5 + 2\\ln(3x - 1) \\) فنجد \\( \\ln(3x - 1) = \\frac{y - 5}{2} \\). برفع الطرفين للأساس \\( e \\): \\( 3x - 1 = e^{(y - 5)/2} \\implies x = \\frac{1 + e^{(y - 5)/2}}{3} \\). بتبديل المتغيرين نحصل على \\( f^{-1}(x) = \\frac{1 + e^{(x - 5)/2}}{3} \\) ومجالها \\( (-\\infty, \\infty) \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 2B.C — Rate of Change & Tangent Slope",
-          "ar": "مثال محلول 2B.C — معدل التغير وميل المماس"
+          "en": "Worked Example 2B.3 — Semi-Log Plot Linearization",
+          "ar": "مثال محلول 2B.3 — التحويل الخطي عبر الرسم شبه اللوغاريتمي"
         },
         "problem": {
-          "en": "Find the instantaneous rate of change of \\( g(x) = x^3 - 12x^2 + 48x + 3 \\) at \\( x = 6 \\).",
-          "ar": "أوجد معدل التغير اللحظي للدالة \\(g(x) = x^3 - 12x^2 + 48x + 3\\) عند \\(x = 6\\)."
+          "en": "On a semi-log plot with \\( x \\) on the horizontal axis and \\( \\ln y \\) on the vertical axis, data lie along the line \\( \\ln y = \\ln 5 + (\\ln 3)x \\). Express \\( y \\) explicitly as a function of \\( x \\).",
+          "ar": "في رسم شبه لوغاريتمي يمثّل \\( x \\) أفقياً و\\( \\ln y \\) رأسياً، تقع البيانات على المستقيم \\( \\ln y = \\ln 5 + (\\ln 3)x \\). اكتب \\( y \\) كدالة صريحة في \\( x \\)."
         },
         "solution": {
-          "en": "<p>\\( g'(x) = 3(x - 4)^2 \\), so \\( g'(6) = 3(2)^2 = 12 \\).</p>",
-          "ar": null
+          "en": "<p>Exponentiating both sides: \\[ y = e^{\\ln 5 + (\\ln 3)x} = e^{\\ln 5} \\cdot \\left(e^{\\ln 3}\\right)^x = 5 \\cdot 3^x \\] Because a linear relationship between \\( x \\) and \\( \\ln y \\) corresponds to constant multiplicative growth per unit \\( x \\), \\( y(x) = 5 \\cdot 3^x \\) is an exponential model.</p>",
+          "ar": "<p>بأخذ الدالة الأسية للطرفين: \\[ y = e^{\\ln 5 + (\\ln 3)x} = e^{\\ln 5} \\cdot \\left(e^{\\ln 3}\\right)^x = 5 \\cdot 3^x \\] فالعلاقة الخطية بين \\( x \\) و\\( \\ln y \\) تكافئ نموذجاً أسياً \\( y(x) = 5 \\cdot 3^x \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 2B.D — Synthesis & Definite Accumulation",
-          "ar": "مثال محلول 2B.D — مسألة شاملة"
+          "en": "Worked Example 2B.4 — Logarithmic Equation & Extraneous Root Check",
+          "ar": "مثال محلول 2B.4 — حل معادلة لوغاريتمية والتحقق من الحلول الدخيلة"
         },
         "problem": {
-          "en": "Evaluate \\( \\int_0^2 (3x^2 + 8x + 3)\\,\\mathrm{d}x \\).",
-          "ar": "احسب \\(\\int_0^2 (3x^2 + 8x + 3)\\,\\mathrm{d}x\\)."
+          "en": "Solve \\( \\log_2(x + 3) + \\log_2(x - 3) = 4 \\) for all valid real \\( x \\).",
+          "ar": "حل المعادلة \\( \\log_2(x + 3) + \\log_2(x - 3) = 4 \\) لجميع قيم \\( x \\) الحقيقية المقبولة."
         },
         "solution": {
-          "en": "<p>\\( \\left[x^3 + 4x^2 + 3x\\right]_0^2 = 8 + 16 + 6 = 30 \\).</p>",
-          "ar": null
+          "en": "<p>Domain requires \\( x + 3 > 0 \\) and \\( x - 3 > 0 \\), so \\( x > 3 \\). Combining logs: \\[ \\log_2((x + 3)(x - 3)) = 4 \\implies x^2 - 9 = 2^4 = 16 \\implies x^2 = 25 \\implies x = \\pm 5 \\] Rejecting \\( x = -5 \\) (since \\( -5 \\le 3 \\)), the unique valid solution is \\( x = 5 \\).</p>",
+          "ar": "<p>يشترط المجال \\( x > 3 \\). بدمج اللوغاريتمين: \\[ \\log_2(x^2 - 9) = 4 \\implies x^2 - 9 = 16 \\implies x^2 = 25 \\implies x = \\pm 5 \\] نرفض \\( x = -5 \\) لأنه خارج المجال، فيكون الحل الوحيد المقبول \\( x = 5 \\).</p>"
         }
       },
       {
@@ -378,50 +350,64 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية)"
+          "en": "Error Diagnosis — Common AP Precalculus Modeling & Algebraic Traps",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Precalculus"
         },
         "columns": [
           {
-            "en": "Error Pattern",
-            "ar": "الخطأ الشائع"
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
-            "en": "Incorrect Working",
-            "ar": "الخطوة الخاطئة"
+            "en": "Why It Fails Mathematically",
+            "ar": "لماذا يفشل رياضياً"
           },
           {
-            "en": "Correct Method",
-            "ar": "الطريقة الصحيحة"
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
-              "en": "Term-by-term cancellation",
-              "ar": "اختصار حدود مجموعه"
+              "en": "Canceling individual terms across sums: \\(\\frac{x^2 - 9}{x - 3} \\to x - 3\\)",
+              "ar": "اختصار الحدود عبر الجمع أو الطرح دون تحليل"
             },
             {
-              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
-              "ar": null
+              "en": "Division distributes over sums only after factoring common multiplicative factors.",
+              "ar": "لا يجوز الاختصار إلا لعوامل مضروبة في كامل البسط والمقام."
             },
             {
-              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
-              "ar": "حلّل الأول: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))"
+              "en": "Factor completely first: \\(\\frac{(x-3)(x+3)}{x-3} = x + 3\\) for \\(x \\neq 3\\) (hole at \\(x = 3\\)).",
+              "ar": "التحليل إلى عوامل أولاً مع تسجيل قيود المجال والفجوات."
             }
           ],
           [
             {
-              "en": "Sign error in completing square",
-              "ar": "خطأ إشارة عند إكمال المربع"
+              "en": "Using degree mode instead of radian mode on AP Precalculus trigonometric models",
+              "ar": "استخدام نظام الدرجات بدلاً من الراديان في النماذج الجيبية"
             },
             {
-              "en": "\\( (x - h)^2 + h^2 + c \\)",
-              "ar": null
+              "en": "All AP Precalculus sinusoidal functions \\(A\\sin(B(x-C))+D\\) assume radian measure unless ° is printed.",
+              "ar": "تُفترض وحدة الراديان في جميع الدوال المثلثية في الاختبار ما لم يُنص على الدرجات."
             },
             {
-              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
-              "ar": "اطرح \\(h^2\\): \\((x - h)^2 - h^2 + c\\)"
+              "en": "Keep calculator in RADIAN mode and compute period as \\(P = \\frac{2\\pi}{|B|}\\) (or \\(\\frac{\\pi}{|B|}\\) for tangent).",
+              "ar": "ضبط الآلة على وضع الراديان وحساب الدورة عبر \\(2\\pi/|B|\\)."
+            }
+          ],
+          [
+            {
+              "en": "Omitting domain checks after solving \\(\\log_b(f(x)) + \\log_b(g(x)) = k\\)",
+              "ar": "إغفال فحص المجال بعد حل المعادلات اللوغاريتمية"
+            },
+            {
+              "en": "Multiplying \\(f(x)g(x) > 0\\) admits negative pairs \\(f(x) < 0, g(x) < 0\\) where individual logs are undefined.",
+              "ar": "حاصل الضرب الموجب قد ينتج عن عاملين سالبين يجعل كل لوغاريتم غير معرّف."
+            },
+            {
+              "en": "Substitute every algebraic root back into each original logarithm argument to verify positivity.",
+              "ar": "التعويض بكل جذر في المعادلة الأصلية للتحقق من كون ما داخل كل لوغاريتم موجباً."
             }
           ]
         ]
@@ -441,126 +427,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 5)^2 + 4 \\), evaluate \\( f(10) \\).",
-          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\(f(x) = (x - 5)^2 + 4\\)، فاحسب قيمة \\(f(10)\\)."
+          "en": "<strong>[Practice 1]</strong> Solve \\( \\log_3(2x - 1) = 3 \\).",
+          "ar": "<strong>[تدريب 1]</strong> حل المعادلة \\( \\log_3(2x - 1) = 3 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 10 \\) into \\( (x - 5)^2 + 4 \\).",
-            "ar": null
+            "en": "Rewrite in exponential form with base \\( 3 \\).",
+            "ar": "حوّل المعادلة إلى الصورة الأسية بالأساس \\( 3 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (10 - 5)^2 = 5^2 = 25 \\).",
-            "ar": null
+            "en": "Compute \\( 3^3 = 27 \\), so \\( 2x - 1 = 27 \\).",
+            "ar": "احسب \\( 3^3 = 27 \\)، أي \\( 2x - 1 = 27 \\)."
           },
           {
-            "en": "Add \\( 25 + 4 \\) to obtain the final answer.",
-            "ar": "اجمع \\(25 + 4\\) للحصول على الناتج."
+            "en": "Solve for \\( x \\) and check \\( 2x - 1 > 0 \\).",
+            "ar": "أوجد قيمة \\( x \\) وتحقق من شرط المجال \\( 2x - 1 > 0 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 10 \\) gives \\( f(10) = (5)^2 + 4 = 25 + 4 = 29 \\).",
-          "ar": null
+          "en": "Exponentiating gives \\( 2x - 1 = 3^3 = 27 \\implies 2x = 28 \\implies x = 14 \\).",
+          "ar": "التحويل للصورة الأسية يعطي \\( 2x - 1 = 27 \\implies 2x = 28 \\implies x = 14 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 6)^2 + 5 \\), evaluate \\( f(12) \\).",
-          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\(f(x) = (x - 6)^2 + 5\\)، فاحسب قيمة \\(f(12)\\)."
+          "en": "<strong>[Practice 2]</strong> If \\( f(x) = 3^x - 4 \\), find \\( f^{-1}(5) \\).",
+          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\( f(x) = 3^x - 4 \\)، فأوجد \\( f^{-1}(5) \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 12 \\) into \\( (x - 6)^2 + 5 \\).",
-            "ar": null
+            "en": "Set \\( f(x) = 5 \\) rather than computing the full inverse formula first.",
+            "ar": "ضع \\( f(x) = 5 \\) مباشرة لإيجاد القيمة المطلوبة."
           },
           {
-            "en": "Simplify the squared term: \\( (12 - 6)^2 = 6^2 = 36 \\).",
-            "ar": null
+            "en": "Solve \\( 3^x - 4 = 5 \\implies 3^x = 9 \\).",
+            "ar": "حل \\( 3^x - 4 = 5 \\implies 3^x = 9 \\)."
           },
           {
-            "en": "Add \\( 36 + 5 \\) to obtain the final answer.",
-            "ar": "اجمع \\(36 + 5\\) للحصول على الناتج."
+            "en": "Express \\( 9 \\) as a power of \\( 3 \\).",
+            "ar": "اكتب \\( 9 \\) كقوة للعدد \\( 3 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 12 \\) gives \\( f(12) = (6)^2 + 5 = 36 + 5 = 41 \\).",
-          "ar": null
+          "en": "Solving \\( 3^x - 4 = 5 \\) gives \\( 3^x = 9 = 3^2 \\), so \\( f^{-1}(5) = 2 \\).",
+          "ar": "من \\( 3^x - 4 = 5 \\) نجد \\( 3^x = 9 = 3^2 \\)، إذن \\( f^{-1}(5) = 2 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 7)^2 + 6 \\), evaluate \\( f(14) \\).",
-          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\(f(x) = (x - 7)^2 + 6\\)، فاحسب قيمة \\(f(14)\\)."
+          "en": "<strong>[Practice 3]</strong> A semi-log plot of \\( (x, \\log_{10} y) \\) follows \\( \\log_{10} y = 2 + 0.5x \\). Find \\( y(4) \\).",
+          "ar": "<strong>[تدريب 3]</strong> يحقق رسم شبه لوغاريتمي للنقاط \\( (x, \\log_{10} y) \\) المعادلة \\( \\log_{10} y = 2 + 0.5x \\). أوجد \\( y(4) \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 14 \\) into \\( (x - 7)^2 + 6 \\).",
-            "ar": null
+            "en": "Substitute \\( x = 4 \\) into \\( \\log_{10} y = 2 + 0.5x \\).",
+            "ar": "عوّض \\( x = 4 \\) في \\( \\log_{10} y = 2 + 0.5x \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (14 - 7)^2 = 7^2 = 49 \\).",
-            "ar": null
+            "en": "Obtain \\( \\log_{10} y = 4 \\).",
+            "ar": "تحصل على \\( \\log_{10} y = 4 \\)."
           },
           {
-            "en": "Add \\( 49 + 6 \\) to obtain the final answer.",
-            "ar": "اجمع \\(49 + 6\\) للحصول على الناتج."
+            "en": "Raise \\( 10 \\) to the power \\( 4 \\).",
+            "ar": "ارفع \\( 10 \\) للأس \\( 4 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 14 \\) gives \\( f(14) = (7)^2 + 6 = 49 + 6 = 55 \\).",
-          "ar": null
+          "en": "At \\( x = 4 \\), \\( \\log_{10} y = 2 + 2 = 4 \\implies y(4) = 10^4 = 10{,}000 \\).",
+          "ar": "عند \\( x = 4 \\)، \\( \\log_{10} y = 4 \\implies y(4) = 10^4 = 10{,}000 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 8)^2 + 7 \\), evaluate \\( f(16) \\).",
-          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\(f(x) = (x - 8)^2 + 7\\)، فاحسب قيمة \\(f(16)\\)."
+          "en": "<strong>[Practice 4]</strong> Find the exact value of \\( \\log_4(8) + \\log_4(2) \\).",
+          "ar": "<strong>[تدريب 4]</strong> أوجد القيمة الدقيقة للمقدار \\( \\log_4(8) + \\log_4(2) \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 16 \\) into \\( (x - 8)^2 + 7 \\).",
-            "ar": null
+            "en": "Apply the product rule \\( \\log_b A + \\log_b B = \\log_b(AB) \\).",
+            "ar": "طبّق قاعدة الضرب \\( \\log_b A + \\log_b B = \\log_b(AB) \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (16 - 8)^2 = 8^2 = 64 \\).",
-            "ar": null
+            "en": "Multiply \\( 8 \\times 2 = 16 \\).",
+            "ar": "اضرب \\( 8 \\times 2 = 16 \\)."
           },
           {
-            "en": "Add \\( 64 + 7 \\) to obtain the final answer.",
-            "ar": "اجمع \\(64 + 7\\) للحصول على الناتج."
+            "en": "Evaluate \\( \\log_4(16) \\).",
+            "ar": "احسب \\( \\log_4(16) \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 16 \\) gives \\( f(16) = (8)^2 + 7 = 64 + 7 = 71 \\).",
-          "ar": null
+          "en": "By the product law, \\( \\log_4(8 \\cdot 2) = \\log_4(16) = \\log_4(4^2) = 2 \\).",
+          "ar": "بقانون الضرب: \\( \\log_4(8 \\cdot 2) = \\log_4(16) = 2 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
-          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\(f(x) = (x - 9)^2 + 8\\)، فاحسب قيمة \\(f(18)\\)."
+          "en": "<strong>[Practice 5]</strong> State the vertical asymptote of \\( h(x) = -2\\ln(x + 5) + 7 \\).",
+          "ar": "<strong>[تدريب 5]</strong> عيّن خط التقارب الرأسي للدالة \\( h(x) = -2\\ln(x + 5) + 7 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
-            "ar": null
+            "en": "A logarithmic function \\( \\ln(u) \\) has its boundary where its argument \\( u = 0 \\).",
+            "ar": "يقع خط التقارب الرأسي للدالة \\( \\ln(u) \\) حيث ينعدم ما داخل اللوغاريتم \\( u = 0 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
-            "ar": null
+            "en": "Set \\( x + 5 = 0 \\).",
+            "ar": "ضع \\( x + 5 = 0 \\)."
           },
           {
-            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
-            "ar": "اجمع \\(81 + 8\\) للحصول على الناتج."
+            "en": "Write the vertical line equation \\( x = c \\).",
+            "ar": "اكتب معادلة المستقيم الرأسي \\( x = c \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
-          "ar": null
+          "en": "Setting \\( x + 5 = 0 \\) yields the vertical asymptote \\( x = -5 \\).",
+          "ar": "بوضع \\( x + 5 = 0 \\) نحصل على خط التقارب الرأسي \\( x = -5 \\)."
         }
       },
       {
@@ -822,7 +808,7 @@
             },
             "ariaLabel": {
               "en": "Select function f(x)",
-              "ar": "Select الدالة f(x)"
+              "ar": "اختر الدالة f(x)"
             },
             "value": "rat",
             "options": [

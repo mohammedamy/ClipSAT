@@ -259,72 +259,72 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)"
+          "en": "◆ Why It Works — Why Replacing σ with Sample s Introduces Student's t-Distribution",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — لماذا ينشأ توزيع t عند استبدال σ بالانحراف المعياري للعينة s"
         },
         "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
-          "ar": null
+          "en": "<p><strong>Extra Tail Uncertainty:</strong> Estimating unknown \\(\\sigma\\) by random sample statistic \\(s\\) injects sample-to-sample denominator variability into \\(t = \\frac{\\bar{x} - \\mu}{s/\\sqrt{n}}\\), producing heavier tails than \\(N(0,1)\\) governed by \\(\\text{df} = n - 1\\). As \\(n \\to \\infty\\), \\(s \\to \\sigma\\) and \\(t_{\\text{df}} \\to N(0,1)\\).</p>",
+          "ar": "<p><strong>منشأ الأطراف الأثقل في توزيع \\(t\\):</strong> تقدير \\(\\sigma\\) المجهول بواسطة \\(s\\) يضيف تشتتاً إضافياً في المقام فيعطي توزيع \\(t\\) أطرافاً أثقل بدرجات حرية \\(n - 1\\)، ويقترب من التوزيع الطبيعي كلما كبر \\(n\\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 7.A — Foundational Formulation",
-          "ar": "مثال محلول 7.A — تطبيق أساسي"
+          "en": "Worked Example 7.1 — One-Sample t-Confidence Interval for a Mean",
+          "ar": "مثال محلول 7.1 — فترة ثقة t لمتوسط مجتمع واحد"
         },
         "problem": {
-          "en": "Express \\( f(x) = x^2 - 16x + 71 \\) in completed-square vertex form and find its minimum value.",
-          "ar": "أوجد صيغة إكمال المربع للدالة \\(f(x) = x^2 - 16x + 71\\)."
+          "en": "An SRS of \\( n = 25 \\) lithium battery packs yields sample mean lifetime \\( \\bar{x} = 512\\text{ cycles} \\) and \\( s = 30\\text{ cycles} \\). Given \\( t^*_{24} = 2.064 \\) for \\( 95\\% \\) confidence, construct and interpret the interval.",
+          "ar": "أعطت عينة عشوائية بسيطة من \\( n = 25 \\) بطارية ليثيوم متوسط عمر \\( \\bar{x} = 512 \\) دورة وانحرافاً معيارياً \\( s = 30 \\) دورة. إذا كانت القيمة الحرجة \\( t^*_{24} = 2.064 \\) لمستوى ثقة \\( 95\\% \\)، فأنشئ فترة الثقة وفسّرها."
         },
         "solution": {
-          "en": "<p>Halving \\( -16 \\) gives \\( -8 \\), so \\( f(x) = (x - 8)^2 - 64 + 71 = (x - 8)^2 + 7 \\). Minimum value is \\( 7 \\) at \\( x = 8 \\).</p>",
-          "ar": null
+          "en": "<p>With \\( \\text{df} = 25 - 1 = 24 \\) and \\( SE = \\frac{30}{\\sqrt{25}} = 6.0 \\): \\[ 512 \\pm 2.064(6.0) = 512 \\pm 12.384 = (499.62, 524.38) \\] We are \\( 95\\% \\) confident that the true mean cycle life of all such battery packs is between \\( 499.62 \\) and \\( 524.38 \\) cycles.</p>",
+          "ar": "<p>بدرجات حرية \\( \\text{df} = 24 \\) وخطأ معياري \\( SE = \\frac{30}{5} = 6.0 \\): \\[ 512 \\pm 2.064(6.0) = (499.62, 524.38) \\] نحن واثقون بنسبة \\( 95\\% \\) أن المتوسط الحقيقي لعمر جميع البطاريات يقع بين \\( 499.62 \\) و\\( 524.38 \\) دورة.</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 7.B — Multi-Step Tangency & Discriminant",
-          "ar": "مثال محلول 7.B — شرط التماس والمميز"
+          "en": "Worked Example 7.2 — Matched-Pairs t-Test vs. Two-Sample t-Test",
+          "ar": "مثال محلول 7.2 — اختبار t للأزواج المتطابقة مقابل عينتين مستقلتين"
         },
         "problem": {
-          "en": "Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 16x + 69 \\).",
-          "ar": "أوجد قيمة \\(k\\) التي تجعل المستقيم \\(y = 2x + k\\) مماساً للمنحنى \\(y = x^2 - 16x + 69\\)."
+          "en": "Sixteen runners each time a 5K race in Shoe A and Shoe B (random order). The differences \\( d = \\text{A} - \\text{B} \\) have \\( \\bar{d} = -18.0\\text{ s} \\) and \\( s_d = 24.0\\text{ s} \\). Compute the paired \\( t \\)-statistic and degrees of freedom for \\( H_0: \\mu_d = 0 \\).",
+          "ar": "خاض \\( 16 \\) عدّاءً سباق 5 كم بكلٍّ من الحذاء A والحذاء B بترتيب عشوائي. بلغ متوسط الفروق \\( \\bar{d} = -18.0\\text{ s} \\) وانحرافها المعياري \\( s_d = 24.0\\text{ s} \\). احسب إحصائية \\( t \\) للأزواج المتطابقة ودرجات الحرية لاختبار \\( H_0: \\mu_d = 0 \\)."
         },
         "solution": {
-          "en": "<p>Equating gives \\( x^2 - 18x + (69 - k) = 0 \\). Setting \\( \\Delta = (-18)^2 - 4(69 - k) = 0 \\) yields \\( k = -12 \\).</p>",
-          "ar": null
+          "en": "<p>Because both measurements come from each runner, this is a <strong>matched-pairs</strong> design with \\( n = 16 \\) pairs and \\( \\text{df} = 15 \\): \\[ t = \\frac{\\bar{d} - 0}{s_d / \\sqrt{n}} = \\frac{-18.0}{24.0 / \\sqrt{16}} = \\frac{-18.0}{6.0} = -3.00 \\]</p>",
+          "ar": "<p>بما أن القياسين مأخوذان لكل عدّاء نفسه، فالتصميم <strong>أزواج متطابقة</strong> بعدد \\( n = 16 \\) زوجاً و\\( \\text{df} = 15 \\): \\[ t = \\frac{-18.0}{24.0 / 4} = -3.00 \\]</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 7.C — Rate of Change & Tangent Slope",
-          "ar": "مثال محلول 7.C — معدل التغير وميل المماس"
+          "en": "Worked Example 7.3 — Two-Sample t-Standard Error & Zero-in-Interval Check",
+          "ar": "مثال محلول 7.3 — الخطأ المعياري لعينتين مستقلتين وتفسير وجود الصفر في الفترة"
         },
         "problem": {
-          "en": "Find the instantaneous rate of change of \\( g(x) = x^3 - 24x^2 + 192x + 7 \\) at \\( x = 10 \\).",
-          "ar": "أوجد معدل التغير اللحظي للدالة \\(g(x) = x^3 - 24x^2 + 192x + 7\\) عند \\(x = 10\\)."
+          "en": "A \\( 95\\% \\) two-sample \\( t \\)-interval for \\( \\mu_1 - \\mu_2 \\) is \\( (-1.8, 4.6) \\). At \\( \\alpha = 0.05 \\), what conclusion follows for the two-sided test \\( H_0: \\mu_1 - \\mu_2 = 0 \\) vs. \\( H_a: \\mu_1 - \\mu_2 \\neq 0 \\)?",
+          "ar": "فترة ثقة \\( t \\) بنسبة \\( 95\\% \\) للفرق \\( \\mu_1 - \\mu_2 \\) هي \\( (-1.8, 4.6) \\). عند \\( \\alpha = 0.05 \\)، ما القرار المقابل لاختبار الطرفين \\( H_0: \\mu_1 - \\mu_2 = 0 \\)؟"
         },
         "solution": {
-          "en": "<p>\\( g'(x) = 3(x - 8)^2 \\), so \\( g'(10) = 3(2)^2 = 12 \\).</p>",
-          "ar": null
+          "en": "<p>Because \\( 0 \\) lies inside \\( (-1.8, 4.6) \\), zero is a plausible value for \\( \\mu_1 - \\mu_2 \\) at the \\( 95\\% \\) level; therefore the two-sided \\( p\\text{-value} > 0.05 \\) and we <strong>fail to reject \\( H_0 \\)</strong>.</p>",
+          "ar": "<p>بما أن القيمة \\( 0 \\) تقع داخل الفترة \\( (-1.8, 4.6) \\)، فإن الصفر قيمة معقولة للفرق \\( \\mu_1 - \\mu_2 \\)؛ لذا القيمة الاحتمالية للطرفين أكبر من \\( 0.05 \\) و<strong>لا نرفض \\( H_0 \\)</strong>.</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 7.D — Synthesis & Definite Accumulation",
-          "ar": "مثال محلول 7.D — مسألة شاملة"
+          "en": "Worked Example 7.4 — Regression Slope t-Test from Computer Output",
+          "ar": "مثال محلول 7.4 — اختبار t لميل خط الانحدار من مخرجات الحاسوب"
         },
         "problem": {
-          "en": "Evaluate \\( \\int_0^2 (3x^2 + 16x + 7)\\,\\mathrm{d}x \\).",
-          "ar": "احسب \\(\\int_0^2 (3x^2 + 16x + 7)\\,\\mathrm{d}x\\)."
+          "en": "A regression of exam score on study hours for \\( n = 22 \\) students gives slope \\( b = 4.20 \\) with \\( SE_b = 1.05 \\). Compute the \\( t \\)-statistic and degrees of freedom to test \\( H_0: \\beta = 0 \\) vs. \\( H_a: \\beta > 0 \\).",
+          "ar": "أعطى انحدار درجة الاختبار على ساعات الدراسة لعينة من \\( n = 22 \\) طالباً ميلاً \\( b = 4.20 \\) بخطأ معياري \\( SE_b = 1.05 \\). احسب إحصائية \\( t \\) ودرجات الحرية لاختبار \\( H_0: \\beta = 0 \\) مقابل \\( H_a: \\beta > 0 \\)."
         },
         "solution": {
-          "en": "<p>\\( \\left[x^3 + 8x^2 + 7x\\right]_0^2 = 8 + 32 + 14 = 54 \\).</p>",
-          "ar": null
+          "en": "<p>For simple linear regression, \\( \\text{df} = n - 2 = 20 \\) and \\[ t = \\frac{b - 0}{SE_b} = \\frac{4.20}{1.05} = 4.00 \\] With \\( \\text{df} = 20 \\), \\( P(T > 4.00) < 0.001 \\), providing strong evidence of a positive linear relationship.</p>",
+          "ar": "<p>في الانحدار الخطي البسيط تكون درجات الحرية \\( \\text{df} = n - 2 = 20 \\)، وإحصائية الاختبار: \\[ t = \\frac{4.20 - 0}{1.05} = 4.00 \\] مما يعطي دليلاً إحصائياً قوياً على وجود علاقة خطية موجبة.</p>"
         }
       },
       {
@@ -342,50 +342,64 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)"
+          "en": "Error Diagnosis — Common AP Statistics Exam Traps vs. Scoring Rubric Method",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Statistics مقابل الطريقة المعتمدة"
         },
         "columns": [
           {
-            "en": "Error Pattern",
-            "ar": "الخطأ الشائع"
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
-            "en": "Incorrect Working",
-            "ar": "الخطوة الخاطئة"
+            "en": "Why It Fails Mathematically",
+            "ar": "لماذا يفشل رياضياً"
           },
           {
-            "en": "Correct Method",
-            "ar": "الطريقة الصحيحة"
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
-              "en": "Term-by-term cancellation",
-              "ar": "اختصار حدود مجموعه"
+              "en": "Writing hypotheses using sample statistics (e.g., \\(H_0: \\hat{p} = 0.5\\) or \\(H_0: \\bar{x} = 10\\))",
+              "ar": "كتابة الفرضيات بدلالة إحصاءات العينة مثل \\(H_0: \\hat{p} = 0.5\\)"
             },
             {
-              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
-              "ar": null
+              "en": "Sample statistics are already known without testing; inference always targets unknown population parameters.",
+              "ar": "إحصاءات العينة معلومة، بينما الاستدلال يستهدف معالم المجتمع المجهولة."
             },
             {
-              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
-              "ar": "حلّل الأول: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))"
+              "en": "Always state hypotheses in terms of population parameters \\(p, \\mu, \\mu_d,\\) or \\(\\beta\\) and define them in context.",
+              "ar": "صياغة الفرضيات دائماً بدلالة معالم المجتمع \\(p, \\mu, \\mu_d, \\beta\\) وتعريفها في السياق."
             }
           ],
           [
             {
-              "en": "Sign error in completing square",
-              "ar": "خطأ إشارة عند إكمال المربع"
+              "en": "Interpreting a \\(p\\)-value as \"the probability that \\(H_0\\) is true\"",
+              "ar": "تفسير القيمة الاحتمالية على أنها احتمال صحة \\(H_0\\)"
             },
             {
-              "en": "\\( (x - h)^2 + h^2 + c \\)",
-              "ar": null
+              "en": "Frequentist \\(H_0\\) is either true or false, not random; \\(p\\)-value conditions on \\(H_0\\) being true.",
+              "ar": "القيمة الاحتمالية تُحسب بشرط صحة \\(H_0\\) وليست احتمالاً لصحتها."
             },
             {
-              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
-              "ar": "اطرح \\(h^2\\): \\((x - h)^2 - h^2 + c\\)"
+              "en": "Assuming \\(H_0\\) is true, the \\(p\\)-value is the probability of obtaining a sample statistic as extreme or more extreme by chance alone.",
+              "ar": "بفرض صحة \\(H_0\\)، هي احتمال الحصول على نتيجة عينة مماثلة أو أكثر تطرفاً بمجرد الصدفة."
+            }
+          ],
+          [
+            {
+              "en": "Claiming causation from an observational study because \\(n\\) is large",
+              "ar": "استنتاج السببية من دراسة رصدية لمجرد كبر حجم العينة"
+            },
+            {
+              "en": "Large sample size reduces random error but never removes confounding variables.",
+              "ar": "كبر العينة يقلل خطأ المعاينة لكنه لا يزيل المتغيرات المربكة."
+            },
+            {
+              "en": "Only a randomized experiment with random assignment of treatments justifies a cause-and-effect conclusion.",
+              "ar": "وحده التوزيع العشوائي للمعالجات في تجربة مضبوطة يبرر استنتاج السببية."
             }
           ]
         ]
@@ -405,126 +419,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
-          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\(f(x) = (x - 9)^2 + 8\\)، فاحسب قيمة \\(f(18)\\)."
+          "en": "<strong>[Practice 1]</strong> State the degrees of freedom for a one-sample \\( t \\)-interval based on \\( n = 19 \\) observations.",
+          "ar": "<strong>[تدريب 1]</strong> حدّد درجات الحرية لفترة ثقة \\( t \\) لعينة واحدة حجمها \\( n = 19 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
-            "ar": null
+            "en": "For a one-sample \\( t \\)-procedure, \\( \\text{df} = n - 1 \\).",
+            "ar": "لإجراءات \\( t \\) لعينة واحدة تكون درجات الحرية \\( n - 1 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
-            "ar": null
+            "en": "Substitute \\( n = 19 \\).",
+            "ar": "عوّض \\( n = 19 \\)."
           },
           {
-            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
-            "ar": "اجمع \\(81 + 8\\) للحصول على الناتج."
+            "en": "Subtract \\( 1 \\).",
+            "ar": "اطرح \\( 1 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
-          "ar": null
+          "en": "\\( \\text{df} = 19 - 1 = 18 \\).",
+          "ar": "\\( \\text{df} = 19 - 1 = 18 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 10)^2 + 9 \\), evaluate \\( f(20) \\).",
-          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\(f(x) = (x - 10)^2 + 9\\)، فاحسب قيمة \\(f(20)\\)."
+          "en": "<strong>[Practice 2]</strong> Given \\( \\bar{x} = 82 \\), \\( \\mu_0 = 75 \\), \\( s = 14 \\), and \\( n = 49 \\), compute the one-sample \\( t \\)-statistic.",
+          "ar": "<strong>[تدريب 2]</strong> إذا كان \\( \\bar{x} = 82 \\) و\\( \\mu_0 = 75 \\) و\\( s = 14 \\) و\\( n = 49 \\)، فاحسب إحصائية \\( t \\) لعينة واحدة."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 20 \\) into \\( (x - 10)^2 + 9 \\).",
-            "ar": null
+            "en": "Compute \\( SE = s / \\sqrt{n} = 14 / 7 = 2 \\).",
+            "ar": "احسب الخطأ المعياري \\( SE = 14 / \\sqrt{49} = 2 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (20 - 10)^2 = 10^2 = 100 \\).",
-            "ar": null
+            "en": "Subtract \\( \\bar{x} - \\mu_0 = 82 - 75 = 7 \\).",
+            "ar": "احسب البسط \\( 82 - 75 = 7 \\)."
           },
           {
-            "en": "Add \\( 100 + 9 \\) to obtain the final answer.",
-            "ar": "اجمع \\(100 + 9\\) للحصول على الناتج."
+            "en": "Divide \\( 7 \\) by \\( 2 \\).",
+            "ar": "اقسم \\( 7 \\) على \\( 2 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 20 \\) gives \\( f(20) = (10)^2 + 9 = 100 + 9 = 109 \\).",
-          "ar": null
+          "en": "\\( t = \\frac{82 - 75}{14 / \\sqrt{49}} = \\frac{7}{2} = 3.50 \\).",
+          "ar": "\\( t = \\frac{82 - 75}{14 / 7} = 3.50 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 11)^2 + 10 \\), evaluate \\( f(22) \\).",
-          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\(f(x) = (x - 11)^2 + 10\\)، فاحسب قيمة \\(f(22)\\)."
+          "en": "<strong>[Practice 3]</strong> Two independent samples have \\( s_1 = 6, n_1 = 9 \\) and \\( s_2 = 8, n_2 = 16 \\). Find \\( SE_{\\bar{x}_1 - \\bar{x}_2} \\).",
+          "ar": "<strong>[تدريب 3]</strong> عينتان مستقلتان فيهما \\( s_1 = 6, n_1 = 9 \\) و\\( s_2 = 8, n_2 = 16 \\). أوجد \\( SE_{\\bar{x}_1 - \\bar{x}_2} \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 22 \\) into \\( (x - 11)^2 + 10 \\).",
-            "ar": null
+            "en": "Use \\( SE = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}} \\).",
+            "ar": "استخدم \\( SE = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}} \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (22 - 11)^2 = 11^2 = 121 \\).",
-            "ar": null
+            "en": "Compute \\( \\frac{36}{9} + \\frac{64}{16} = 4 + 4 = 8 \\).",
+            "ar": "احسب \\( \\frac{36}{9} + \\frac{64}{16} = 8 \\)."
           },
           {
-            "en": "Add \\( 121 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\(121 + 10\\) للحصول على الناتج."
+            "en": "Simplify \\( \\sqrt{8} \\).",
+            "ar": "بسّط \\( \\sqrt{8} \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 22 \\) gives \\( f(22) = (11)^2 + 10 = 121 + 10 = 131 \\).",
-          "ar": null
+          "en": "\\( SE = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2} \\approx 2.828 \\).",
+          "ar": "\\( SE = \\sqrt{8} = 2\\sqrt{2} \\approx 2.828 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 12)^2 + 11 \\), evaluate \\( f(24) \\).",
-          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\(f(x) = (x - 12)^2 + 11\\)، فاحسب قيمة \\(f(24)\\)."
+          "en": "<strong>[Practice 4]</strong> How many degrees of freedom does a linear regression slope \\( t \\)-test have with \\( n = 30 \\) bivariate data points?",
+          "ar": "<strong>[تدريب 4]</strong> كم عدد درجات الحرية في اختبار \\( t \\) لميل الانحدار الخطي عند وجود \\( n = 30 \\) نقطة ثنائية؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 24 \\) into \\( (x - 12)^2 + 11 \\).",
-            "ar": null
+            "en": "Two parameters (intercept \\( \\alpha \\) and slope \\( \\beta \\)) are estimated.",
+            "ar": "يتم تقدير معلمتين هما المقطع والميل."
           },
           {
-            "en": "Simplify the squared term: \\( (24 - 12)^2 = 12^2 = 144 \\).",
-            "ar": null
+            "en": "Use \\( \\text{df} = n - 2 \\).",
+            "ar": "استخدم \\( \\text{df} = n - 2 \\)."
           },
           {
-            "en": "Add \\( 144 + 11 \\) to obtain the final answer.",
-            "ar": "اجمع \\(144 + 11\\) للحصول على الناتج."
+            "en": "Compute \\( 30 - 2 \\).",
+            "ar": "احسب \\( 30 - 2 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 24 \\) gives \\( f(24) = (12)^2 + 11 = 144 + 11 = 155 \\).",
-          "ar": null
+          "en": "\\( \\text{df} = 30 - 2 = 28 \\).",
+          "ar": "\\( \\text{df} = 30 - 2 = 28 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 13)^2 + 12 \\), evaluate \\( f(26) \\).",
-          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\(f(x) = (x - 13)^2 + 12\\)، فاحسب قيمة \\(f(26)\\)."
+          "en": "<strong>[Practice 5]</strong> Computer output reports slope \\( b = -1.50 \\) and \\( SE_b = 0.50 \\). Find the \\( t \\)-ratio for testing \\( H_0: \\beta = 0 \\).",
+          "ar": "<strong>[تدريب 5]</strong> أظهرت مخرجات الحاسوب أن الميل \\( b = -1.50 \\) والخطأ المعياري \\( SE_b = 0.50 \\). أوجد قيمة \\( t \\) لاختبار \\( H_0: \\beta = 0 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 26 \\) into \\( (x - 13)^2 + 12 \\).",
-            "ar": null
+            "en": "Use \\( t = (b - 0) / SE_b \\).",
+            "ar": "استخدم \\( t = (b - 0) / SE_b \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (26 - 13)^2 = 13^2 = 169 \\).",
-            "ar": null
+            "en": "Substitute \\( b = -1.50 \\) and \\( SE_b = 0.50 \\).",
+            "ar": "عوّض \\( b = -1.50 \\) و\\( SE_b = 0.50 \\)."
           },
           {
-            "en": "Add \\( 169 + 12 \\) to obtain the final answer.",
-            "ar": "اجمع \\(169 + 12\\) للحصول على الناتج."
+            "en": "Divide keeping the negative sign.",
+            "ar": "اقسم مع الاحتفاظ بالإشارة السالبة."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 26 \\) gives \\( f(26) = (13)^2 + 12 = 169 + 12 = 181 \\).",
-          "ar": null
+          "en": "\\( t = \\frac{-1.50}{0.50} = -3.00 \\).",
+          "ar": "\\( t = \\frac{-1.50}{0.50} = -3.00 \\)."
         }
       },
       {

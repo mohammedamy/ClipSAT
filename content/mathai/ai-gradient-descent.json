@@ -49,51 +49,55 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Deep Conceptual Intuition — Loss Functions, Gradients & Optimization",
-          "ar": "● الفهم المفاهيمي العميق — دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+          "en": "● Deep Conceptual Intuition — Loss Landscapes, Gradients & Steepest Descent",
+          "ar": "● الفهم المفاهيمي العميق — أسطح الخسارة ومتجه التدرج وأشد انحدار"
         },
         "body": {
-          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Mathematics for Artificial Intelligence & Machine Learning, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
-          "ar": null
+          "en": "<p><strong>Local Linearization &amp; Steepest Descent Geometry:</strong> By first-order Taylor expansion, \\(L(\\mathbf{w} + \\Delta\\mathbf{w}) \\approx L(\\mathbf{w}) + \\nabla L(\\mathbf{w})^T \\Delta\\mathbf{w}\\). Over all unit directions \\(\\|\\mathbf{u}\\|_2 = 1\\), Cauchy–Schwarz shows the directional derivative \\(\\nabla L(\\mathbf{w})^T \\mathbf{u}\\) is minimized when \\(\\mathbf{u} = -\\frac{\\nabla L(\\mathbf{w})}{\\|\\nabla L(\\mathbf{w})\\|_2}\\). Stepping opposite the gradient with learning rate \\(\\eta > 0\\) guarantees local loss decrease whenever \\(0 < \\eta < \\frac{2}{L_{\\text{lip}}}\\).</p>",
+          "ar": "<p><strong>التقريب الخطي المحلي وهندسة أشد انحدار:</strong> وفق مفكوك تايلور من الدرجة الأولى، \\(L(\\mathbf{w} + \\Delta\\mathbf{w}) \\approx L(\\mathbf{w}) + \\nabla L(\\mathbf{w})^T \\Delta\\mathbf{w}\\). وبتطبيق متباينة كوشي-شفارتز على جميع الاتجاهات الوحدوية \\(\\|\\mathbf{u}\\|_2 = 1\\)، تبلغ المشتقة الاتجاهية أدنى قيمة سالبة لها عندما نتحرك بعكس اتجاه التدرج \\(-\\nabla L(\\mathbf{w})\\)، مما يضمن تناقص دالة الخسارة محلياً بشرط اختيار معدل تعلم مناسب \\(0 < \\eta < \\frac{2}{L_{\\text{lip}}}\\).</p>"
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Quadratic Vertex Form f(x) = (x − 2)² − 3",
+          "title": "Convex Loss Bowl L(w) = (w − 2)² + 1 & Gradient Descent Iterates",
           "xrange": [
-            -2,
-            6
+            -1,
+            5.5
           ],
           "yrange": [
-            -4,
-            6
+            0,
+            11
           ],
           "fns": [
             {
-              "fn": "(x - 2)*(x - 2) - 3",
+              "fn": "(x - 2)*(x - 2) + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x − 2)² − 3"
-            },
-            {
-              "fn": "x - 1",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x − 1"
+              "label": "Loss L(w) = (w − 2)² + 1"
             }
           ],
           "points": [
             {
+              "x": 5,
+              "y": 10,
+              "label": "w₀ = 5"
+            },
+            {
+              "x": 3.2,
+              "y": 2.44,
+              "label": "w₁ = 3.2"
+            },
+            {
               "x": 2,
-              "y": -3,
-              "label": "V(2, −3)"
+              "y": 1,
+              "label": "w* = 2"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 2)^2 - 3\\) with vertex \\(V(2, -3)\\) intersected by secant line \\(g(x) = x - 1\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 2)^2 - 3\\) برأسه \\(V(2, -3)\\) وتقاطعه مع المستقيم \\(g(x) = x - 1\\) في دوال الخسارة والانحدار التدريجي والتحسين الرياضي."
+          "en": "Gradient descent updates \\(w_{t+1} = w_t - \\eta L'(w_t)\\) with \\(\\eta = 0.3\\) stepping down convex loss \\(L(w) = (w - 2)^2 + 1\\) toward global minimizer \\(w^* = 2\\).",
+          "ar": "خطوات الانحدار التدريجي \\(w_{t+1} = w_t - \\eta L'(w_t)\\) بمعدل تعلم \\(\\eta = 0.3\\) نزولاً على دالة الخسارة المحدبة \\(L(w) = (w - 2)^2 + 1\\) نحو القيمة المثلى \\(w^* = 2\\)."
         }
       },
       {
@@ -199,39 +203,43 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Absolute-Value V-Graph vs Parent Transformation",
+          "title": "Non-Convex Loss Landscape L(w) = 0.25w⁴ − 0.33w³ − w² + 3",
           "xrange": [
-            -4,
-            6
+            -2.2,
+            3.2
           ],
           "yrange": [
-            -3,
-            6
+            -0.5,
+            5.5
           ],
           "fns": [
             {
-              "fn": "Math.abs(x - 1) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "g(x) = |x − 1| − 2"
-            },
-            {
-              "fn": "Math.abs(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "f(x) = |x|"
+              "fn": "0.25*pow(x,4) - (1/3)*pow(x,3) - x*x + 3",
+              "color": "var(--fig-rose)",
+              "label": "Non-Convex Loss L(w)"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -2,
-              "label": "V(1, −2)"
+              "x": -1,
+              "y": 2.58,
+              "label": "Local Min (−1)"
+            },
+            {
+              "x": 0,
+              "y": 3,
+              "label": "Local Max (0)"
+            },
+            {
+              "x": 2,
+              "y": 0.33,
+              "label": "Global Min (2)"
             }
           ]
         },
         "caption": {
-          "en": "Translated modulus graph \\(g(x) = |x - 1| - 2\\) shifted right \\(1\\) unit and down \\(2\\) units from \\(f(x) = |x|\\).",
-          "ar": "التمثيل البياني لدالة القيمة المطلقة المزاحة مقارنةً بالدالة الأم في دوال الخسارة والانحدار التدريجي والتحسين الرياضي. \\(g(x) = |x - 1| - 2\\) ، \\(1\\) ، \\(2\\) ، \\(f(x) = |x|\\)"
+          "en": "Non-convex neural loss landscape exhibiting a suboptimal local minimum at \\(w = -1\\), a hill at \\(w = 0\\), and the true global minimum at \\(w = 2\\).",
+          "ar": "مشهد دالة خسارة غير محدبة يظهر نهاية صغرى محلية دون المثلى عند \\(w = -1\\)، وقمة عند \\(w = 0\\)، والنهاية الصغرى الشاملة عند \\(w = 2\\)."
         }
       },
       {
@@ -283,12 +291,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Loss Functions, Gradients & Optimization)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)"
+          "en": "◆ Why It Works — Exact Convergence Condition on Quadratic Loss",
+          "ar": "◆ لماذا تعمل القاعدة — شرط التقارب الدقيق على دالة الخسارة التربيعية"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Quadratic Convergence Analysis:</strong> Consider \\(L(w) = \\frac{1}{2}\\lambda (w - w^*)^2\\) with curvature \\(\\lambda > 0\\). One gradient step gives \\(w_{t+1} - w^* = w_t - \\eta\\lambda(w_t - w^*) - w^* = (1 - \\eta\\lambda)(w_t - w^*)\\). Iterating \\(t\\) steps yields \\(|w_t - w^*| = |1 - \\eta\\lambda|^t |w_0 - w^*|\\), which converges to \\(0\\) if and only if \\(|1 - \\eta\\lambda| < 1 \\iff 0 < \\eta < \\frac{2}{\\lambda}\\). For \\(\\eta > \\frac{2}{\\lambda}\\), iterates oscillate with Diverging amplitude!</p>",
+          "ar": "<p><strong>تحليل التقارب التربيعي:</strong> نعتبر دالة الخسارة \\(L(w) = \\frac{1}{2}\\lambda (w - w^*)^2\\) ذات التقعر \\(\\lambda > 0\\). تعطي خطوة التدرج \\(w_{t+1} - w^* = (1 - \\eta\\lambda)(w_t - w^*)\\)، وبعد \\(t\\) تكراراً نحصل على \\(|w_t - w^*| = |1 - \\eta\\lambda|^t |w_0 - w^*|\\). يتقارب المتسلسل إلى الصفر إذا وفقط إذا كان \\(|1 - \\eta\\lambda| < 1 \\iff 0 < \\eta < \\frac{2}{\\lambda}\\)، أما إذا تجاوز \\(\\eta\\) العتبة \\(\\frac{2}{\\lambda}\\) فتتباعد التحديثات بالتناوب.</p>"
         }
       },
       {
@@ -355,12 +363,12 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Loss Functions, Gradients & Optimization",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+          "en": "⚠️ Common Exam Traps — Gradient Descent & Optimization",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — الانحدار التدريجي والتحسين"
         },
         "body": {
-          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On Mathematics for Artificial Intelligence & Machine Learning, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-3x + 5 \\le 8\\), dividing by \\(-3\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
-          "ar": null
+          "en": "<p><strong>1. Adding Instead of Subtracting the Gradient:</strong> Moving in \\(+\\nabla L\\) performs gradient <em>ascent</em> (maximizing loss). Always write \\(\\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t)\\).<br><strong>2. Confusing Stationary Points with Global Minima:</strong> \\(\\nabla L(\\mathbf{w}) = \\mathbf{0}\\) also holds at saddle points and local maxima; verify positive definiteness of the Hessian \\(\\nabla^2 L(\\mathbf{w}) \\succ 0\\).</p>",
+          "ar": "<p><strong>1. جمع التدرج بدلاً من طرحه:</strong> التحرك في اتجاه \\(+\\nabla L\\) يؤدي إلى تعظيم الخسارة لا تقليلها؛ الصيغة الصحيحة للتصغير هي دائماً \\(\\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t)\\).<br><strong>2. الخلط بين النقاط الحرجة والنهاية الصغرى الشاملة:</strong> الشرط \\(\\nabla L(\\mathbf{w}) = \\mathbf{0}\\) يتحقق أيضاً عند نقاط السرج، لذا يجب التحقق من إيجابية مصفوفة هيسيان \\(\\nabla^2 L(\\mathbf{w}) \\succ 0\\).</p>"
         }
       },
       {
@@ -433,11 +441,11 @@
         "style": "tip",
         "label": {
           "en": "▲ Exam Pacing & Verification Strategy — Loss Functions, Gradients & Optimization",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+          "ar": "▲ استراتيجية الحل والتحقق السريع — دوال الخسارة والانحدار التدريجي"
         },
         "body": {
-          "en": "<p><strong>High-Speed Exam Shortcut (Mathematics for Artificial Intelligence & Machine Learning):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
-          "ar": null
+          "en": "<p><strong>Sanity-Check Every Update Step:</strong> After computing \\(\\mathbf{w}_1 = \\mathbf{w}_0 - \\eta \\nabla L(\\mathbf{w}_0)\\) for small \\(\\eta\\), verify that \\(L(\\mathbf{w}_1) < L(\\mathbf{w}_0)\\) and that \\(\\mathbf{w}_1\\) moved closer to the analytical stationary point \\(\\nabla L(\\mathbf{w}^*) = \\mathbf{0}\\).</p>",
+          "ar": "<p><strong>التحقق الفوري من صحة التحديث:</strong> بعد حساب \\(\\mathbf{w}_1 = \\mathbf{w}_0 - \\eta \\nabla L(\\mathbf{w}_0)\\) لمعدل تعلم صغير، تحقق دائماً من أن \\(L(\\mathbf{w}_1) < L(\\mathbf{w}_0)\\) وأن الوزن الجديد اقترب فعلياً من نقطة السكون \\(\\nabla L(\\mathbf{w}^*) = \\mathbf{0}\\).</p>"
         }
       },
       {

@@ -30,43 +30,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
+          "title": "Parametric Path (x(t), y(t)) Crossing Level Curves f(x, y) = c",
           "xrange": [
-            -4,
-            4
+            0,
+            3.2
           ],
           "yrange": [
-            -3,
-            3
+            0,
+            3.2
           ],
           "fns": [
             {
-              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
+              "fn": "sqrt(max(0, 4 - x*x))",
               "color": "var(--fig-indigo)",
-              "label": "c = 4"
+              "label": "Level Curve f = 4"
             },
             {
-              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)"
-            },
-            {
-              "fn": "2*x",
+              "fn": "0.5*x*x",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Normal ∇f"
+              "label": "Path r(t) = (t, 0.5t²)"
             }
           ],
           "points": [
             {
-              "x": 1,
+              "x": 1.56,
               "y": 1.22,
-              "label": "P"
+              "label": "r(t₀)"
             }
           ]
         },
         "caption": {
-          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
-          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج."
+          "en": "Along a smooth path \\(\\mathbf{r}(t) = (x(t), y(t))\\), the multivariable Chain Rule measures \\(\\frac{d}{dt}f(\\mathbf{r}(t)) = \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t)\\).",
+          "ar": "على طول المسار الأملس \\(\\mathbf{r}(t) = (x(t), y(t))\\)، تحسب قاعدة السلسلة متعددة المتغيرات معدل التغير \\(\\frac{d}{dt}f(\\mathbf{r}(t)) = \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t)\\)."
         }
       },
       {
@@ -367,7 +362,7 @@
         },
         "caption": {
           "en": "For \\( f(x, y) = x^2 + y^2 \\), the level curve \\( f(x, y) = 4 \\) is a circle of radius 2. At any point such as \\( (\\sqrt{2}, \\sqrt{2}) \\), the gradient vector \\( \\nabla f = \\langle 2x, 2y \\rangle = \\langle 2\\sqrt{2}, 2\\sqrt{2} \\rangle \\) points outward perpendicular to the tangent line, pointing in the direction of steepest ascent.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في قاعدة السلسلة متعددة المتغيرات والمشتقات الاتجاهية وهندسة التدرج. \\(f(x, y) = x^2 + y^2\\) ، \\(f(x, y) = 4\\) ، \\((\\sqrt{2}, \\sqrt{2})\\) ، \\(\\nabla f = \\langle 2x, 2y \\rangle = \\langle 2\\sqrt{2}, 2\\sqrt{2} \\rangle\\) (2)"
+          "ar": "للدالة \\(f(x, y) = x^2 + y^2\\)، يكون متجه التدرج \\(\\nabla f = \\langle 2x, 2y \\rangle\\) عمودياً دائماً على منحنى المستوى الدائري \\(x^2 + y^2 = 4\\)."
         }
       },
       {
@@ -458,7 +453,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -603,7 +598,7 @@
           {
             "trackId": "calculus",
             "chapterId": "ch-partial",
-            "label": "CALCULUS: Partial Derivatives &amp; the Gradient"
+            "label": "CALCULUS: Partial Derivatives & the Gradient"
           }
         ]
       }
@@ -612,7 +607,8 @@
   "quizWidget": {
     "domains": [
       "Chain Rule & Gradients"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",

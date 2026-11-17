@@ -39,46 +39,27 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 1 · Exploring One-Variable & Two-Variable Data — Function Curve & Symmetry Analysis",
-          "xrange": [
-            -3,
-            5
-          ],
-          "yrange": [
-            -2,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "Math.pow(1.8, x)",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = 1.8ˣ"
-            },
-            {
-              "fn": "x + 2",
-              "color": "var(--fig-amber)",
-              "label": "g(x) = x + 2"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 1,
-              "label": "(0, 1)"
-            }
+          "type": "box_plot",
+          "title": "Unit 1 · Five-Number Summary Boxplot & IQR Outlier Fence",
+          "whisker_low": 42,
+          "q1": 58,
+          "median": 71,
+          "q3": 84,
+          "whisker_high": 96,
+          "outliers": [
+            15
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 2)^{2} - 5\\) with vertex at \\((2, -5)\\) and symmetry reference line \\(y = x\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الوحدة واحد · استكشاف البيانات وحيدة وثنائية المتغير. \\(f(x) = (x - 2)^{2} - 5\\) ، \\((2, -5)\\) ، \\(y = x\\)"
+          "en": "Boxplot displaying five-number summary \\((42, 58, 71, 84, 96)\\), \\(\\text{IQR} = 26\\), and low outlier \\(15 < Q_1 - 1.5\\,\\text{IQR} = 19\\).",
+          "ar": "مخطط الصندوق والعارضتين يوضّح الملخص الخماسي والمدى الربيعي \\(\\text{IQR} = 26\\) والقيمة المتطرفة الدنيا \\(15 < 19\\)."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "histogram",
-          "title": "Grouped Frequency Distribution",
+          "title": "Grouped Frequency Distribution of Exam Scores",
           "bins": [
             "40–55",
             "55–70",
@@ -87,15 +68,14 @@
           ],
           "freqs": [
             6,
-            15,
-            19,
-            10
-          ],
-          "xlabel": "Score Interval"
+            18,
+            24,
+            12
+          ]
         },
         "caption": {
-          "en": "Grouped frequency histogram illustrating center, spread, and shape of quantitative data.",
-          "ar": "المدرج التكراري للفئات المجمعة وتوزيع البيانات الكمية في الوحدة واحد · استكشاف البيانات وحيدة وثنائية المتغير."
+          "en": "Grouped frequency histogram illustrating shape, center, and spread of quantitative one-variable data.",
+          "ar": "مدرج تكراري مجمّع يوضّح الشكل والمركز والانتشار لبيانات كمية أحادية المتغير."
         }
       },
       {
@@ -126,19 +106,19 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-          "ar": null
+          "en": "◆ Why It Works — Why Mean & SD Respond Differently to Adding vs. Multiplying",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — أثر التحويلات الخطية في مقاييس المركز والتشتت"
         },
         "body": {
-          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
-          "ar": null
+          "en": "<p><strong>Linear Rescaling \\(Y = a + bX\\):</strong> Shifting every observation by \\(+a\\) translates the entire distribution rigidly without changing pairwise distances, so \\(\\mu_Y = a + b\\mu_X\\) while spread ignores \\(a\\): \\(\\sigma_Y = |b|\\sigma_X\\) and \\(\\text{IQR}_Y = |b|\\,\\text{IQR}_X\\).</p>",
+          "ar": "<p><strong>التحويل الخطي \\(Y = a + bX\\):</strong> إضافة الثابت \\(a\\) تزيح المركز بمقدار \\(a\\) دون تغيير المسافات البينية، لذا يتأثر الوسط الحسابي بـ \\(a\\) و\\(b\\) بينما تتأثر مقاييس التشتت بـ \\(|b|\\) فقط.</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
-          "ar": "Level 1 (Foundations) — مثال محلول"
+          "ar": "المستوى ١ (التأسيس) — مثال محلول"
         },
         "problem": {
           "en": "A teacher calculates exam scores with mean \\(\\bar{x} = 68\\) and standard deviation \\(s = 10\\). The teacher applies a curve: \\(y = 1.2x + 5\\). Find the new mean, standard deviation, and variance of the curved scores.",
@@ -167,8 +147,8 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 1 · Exploring One-Variable & Two-Variable Data)",
-          "ar": null
+          "en": "Error Diagnosis — Common AP Statistics Exam Traps vs. Scoring Rubric Method",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Statistics مقابل الطريقة المعتمدة"
         },
         "columns": [
           {
@@ -187,44 +167,44 @@
         "rows": [
           [
             {
-              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
-              "ar": null
+              "en": "Writing hypotheses using sample statistics (e.g., \\(H_0: \\hat{p} = 0.5\\) or \\(H_0: \\bar{x} = 10\\))",
+              "ar": "كتابة الفرضيات بدلالة إحصاءات العينة مثل \\(H_0: \\hat{p} = 0.5\\)"
             },
             {
-              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
-              "ar": null
+              "en": "Sample statistics are already known without testing; inference always targets unknown population parameters.",
+              "ar": "إحصاءات العينة معلومة، بينما الاستدلال يستهدف معالم المجتمع المجهولة."
             },
             {
-              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
-              "ar": null
+              "en": "Always state hypotheses in terms of population parameters \\(p, \\mu, \\mu_d,\\) or \\(\\beta\\) and define them in context.",
+              "ar": "صياغة الفرضيات دائماً بدلالة معالم المجتمع \\(p, \\mu, \\mu_d, \\beta\\) وتعريفها في السياق."
             }
           ],
           [
             {
-              "en": "Keeping both roots of \\(\\sqrt{2x+7} = x - 2\\) without checking \\(x - 2 \\ge 0\\)",
-              "ar": null
+              "en": "Interpreting a \\(p\\)-value as \"the probability that \\(H_0\\) is true\"",
+              "ar": "تفسير القيمة الاحتمالية على أنها احتمال صحة \\(H_0\\)"
             },
             {
-              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
-              "ar": null
+              "en": "Frequentist \\(H_0\\) is either true or false, not random; \\(p\\)-value conditions on \\(H_0\\) being true.",
+              "ar": "القيمة الاحتمالية تُحسب بشرط صحة \\(H_0\\) وليست احتمالاً لصحتها."
             },
             {
-              "en": "Enforce the range condition \\(x \\ge 2\\) before or after squaring.",
-              "ar": null
+              "en": "Assuming \\(H_0\\) is true, the \\(p\\)-value is the probability of obtaining a sample statistic as extreme or more extreme by chance alone.",
+              "ar": "بفرض صحة \\(H_0\\)، هي احتمال الحصول على نتيجة عينة مماثلة أو أكثر تطرفاً بمجرد الصدفة."
             }
           ],
           [
             {
-              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
-              "ar": null
+              "en": "Claiming causation from an observational study because \\(n\\) is large",
+              "ar": "استنتاج السببية من دراسة رصدية لمجرد كبر حجم العينة"
             },
             {
-              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
-              "ar": null
+              "en": "Large sample size reduces random error but never removes confounding variables.",
+              "ar": "كبر العينة يقلل خطأ المعاينة لكنه لا يزيل المتغيرات المربكة."
             },
             {
-              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
-              "ar": null
+              "en": "Only a randomized experiment with random assignment of treatments justifies a cause-and-effect conclusion.",
+              "ar": "وحده التوزيع العشوائي للمعالجات في تجربة مضبوطة يبرر استنتاج السببية."
             }
           ]
         ]
@@ -327,7 +307,7 @@
             },
             "ariaLabel": {
               "en": "Outlier value",
-              "ar": "عنصر تفاعلي: Outlier value"
+              "ar": "عنصر تفاعلي: القيمة المتطرفة"
             },
             "min": 24,
             "max": 150,
@@ -376,7 +356,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Level 2 (Medium) — Worked Example",
-          "ar": "Level 2 (Medium) — مثال محلول"
+          "ar": "المستوى ٢ (المتوسط) — مثال محلول"
         },
         "problem": {
           "en": "A distribution of salaries has \\(Q_1 = \\$42,000\\) and \\(Q_3 = \\$68,000\\). A director earns \\(\\$110,000\\). Is this salary an outlier according to the 1.5 IQR rule?",
@@ -460,7 +440,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Level 3 (Advanced) — Worked Example",
-          "ar": "Level 3 (Advanced) — مثال محلول"
+          "ar": "المستوى ٣ (المتقدم) — مثال محلول"
         },
         "problem": {
           "en": "A regression model predicting used car price (\\(y\\), in thousands of dollars) from age (\\(x\\), in years) yields \\(\\hat{y} = 28.5 - 2.1x\\) with \\(r^2 = 0.72\\) and \\(s_e = 1.8\\). A 5-year-old car sells for \\(\\$16,000\\). Calculate the residual, interpret \\(r^2\\), and interpret \\(s_e\\) in context.",

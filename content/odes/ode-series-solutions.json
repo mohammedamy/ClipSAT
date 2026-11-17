@@ -2,7 +2,7 @@
   "id": "ode-series-solutions",
   "chapterNumber": "8",
   "title": {
-    "en": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+    "en": "Power Series Solutions, Ordinary Points & the Method of Frobenius",
     "ar": "الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس"
   },
   "content": {
@@ -30,32 +30,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "title": "Airy Equation y'' − xy = 0 Power Series Partial Sums Near x = 0",
           "xrange": [
-            0,
-            8
+            -2.5,
+            2.5
           ],
           "yrange": [
-            -2,
-            2.5
+            -1,
+            3.5
           ],
           "fns": [
             {
-              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
-              "color": "var(--fig-indigo)",
-              "label": "Underdamped y(t)"
+              "fn": "1 + (x*x*x)/6",
+              "color": "var(--fig-amber)",
+              "label": "S₃(x) = 1 + x³/6"
             },
             {
-              "fn": "2*Math.exp(-0.35*x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Envelope ±2e^(−0.35t)"
+              "fn": "1 + (x*x*x)/6 + pow(x,6)/180",
+              "color": "var(--fig-indigo)",
+              "label": "S₆(x) = 1 + x³/6 + x⁶/180"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "y(0) = 1"
             }
           ]
         },
         "caption": {
-          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
-          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس."
+          "en": "Power-series approximations to Airy's equation \\(y'' - xy = 0\\) with \\(y(0) = 1,\\; y'(0) = 0\\): oscillatory for \\(x < 0\\) and growing convexly for \\(x > 0\\).",
+          "ar": "المجاميع الجزئية لمتسلسلة القوى لمعادلة آيري \\(y'' - xy = 0\\) عند \\(y(0) = 1,\\; y'(0) = 0\\): سلوك متذبذب لقيم \\(x < 0\\) ونمو محدب لقيم \\(x > 0\\)."
         }
       },
       {
@@ -215,11 +221,11 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
+          "en": "◆ Why It Works — First-Principles Derivation (Power Series Solutions, Ordinary Points & the Method of Frobenius)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "en": "<p><strong>Why Integration by Parts & Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -317,7 +323,7 @@
         },
         "caption": {
           "en": "Progressive convergence of Taylor polynomials \\( P_2(x), P_4(x), P_6(x) \\) to \\( y(x) = \\cos(x) \\). Each higher degree extends the interval of high-fidelity agreement.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الحلول بمتسلسلات القوى والنقاط العادية وطريقة فروبينيوس. \\(P_2(x), P_4(x), P_6(x)\\) ، \\(y(x) = \\cos(x)\\)"
+          "ar": "التقارب التدريجي لكثيرات حدود تايلور \\(P_2(x), P_4(x), P_6(x)\\) من الحل الدقيق \\(y(x) = \\cos(x)\\) للمعادلة \\(y'' + y = 0\\)."
         }
       },
       {
@@ -335,7 +341,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(C\\) — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius (Hard Application)",
+          "en": "Worked Example \\(C\\) — Power Series Solutions, Ordinary Points & the Method of Frobenius (Hard Application)",
           "ar": null
         },
         "problem": {
@@ -350,7 +356,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(D\\) — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius (Easy Application)",
+          "en": "Worked Example \\(D\\) — Power Series Solutions, Ordinary Points & the Method of Frobenius (Easy Application)",
           "ar": null
         },
         "problem": {
@@ -365,7 +371,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Power Series Solutions, Ordinary Points & the Method of Frobenius)",
           "ar": null
         },
         "columns": [
@@ -431,7 +437,7 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+          "en": "▲ Exam Pacing & Verification Strategy — Power Series Solutions, Ordinary Points & the Method of Frobenius",
           "ar": null
         },
         "body": {
@@ -471,7 +477,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Check regular singularity at \\( x_0 = 0 \\):</strong> \\[ P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}. \\] \\[ p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}. \\] Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.</p><p><strong>Step 2: Indicial equation:</strong> \\[ r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r^2 - 3r - 5 = 0. \\] Factoring: \\[ (2r - 5)(r + 1) = 0 \\implies r_1 = \\frac{5}{2}, \\quad r_2 = -1. \\]</p><p><strong>Step 3: Root difference:</strong> \\[ r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2}\notin \\mathbb{Z}. \\] Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: \\[ y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0\neq 0). \\]</p>",
+          "en": "<p><strong>Step 1: Check regular singularity at \\( x_0 = 0 \\):</strong> \\[ P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}. \\] \\[ p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}. \\] Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.</p><p><strong>Step 2: Indicial equation:</strong> \\[ r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r^2 - 3r - 5 = 0. \\] Factoring: \\[ (2r - 5)(r + 1) = 0 \\implies r_1 = \\frac{5}{2}, \\quad r_2 = -1. \\]</p><p><strong>Step 3: Root difference:</strong> \\[ r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2}\notin \\mathbb{Z}. \\] Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: \\[ y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0\\neq 0). \\]</p>",
           "ar": null
         },
         "hints": [
@@ -568,12 +574,12 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability",
+            "label": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
             "chapterId": "ode-numerical-methods",
             "trackId": "odes"
           },
           {
-            "label": "Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials",
+            "label": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
             "chapterId": "ode-systems",
             "trackId": "odes"
           },
@@ -590,18 +596,18 @@
     "domains": [
       "Power Series Solutions",
       "Power Series Solutions, Ordinary Points & the Method of Frobenius"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",
     "className": "la-tag",
     "badgeClassName": "la-wt",
     "emoji": "📌",
-    "category": "Differential Equations · Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+    "category": "Differential Equations · Power Series Solutions, Ordinary Points & the Method of Frobenius",
     "weightBadge": "ODE Core · 8",
     "topics": [
-      "Power Series Solutions",
-      "Power Series Solutions, Ordinary Points & the Method of Frobenius"
+      "Power Series Solutions"
     ]
   }
 }

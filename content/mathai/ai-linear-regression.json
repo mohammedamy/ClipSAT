@@ -49,50 +49,55 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Deep Conceptual Intuition — Linear Regression & Ordinary Least Squares",
-          "ar": "● الفهم المفاهيمي العميق — الانحدار الخطي وطريقة المربعات الصغرى (OLS)"
+          "en": "● Deep Conceptual Intuition — Column-Space Projection & Normal Equations",
+          "ar": "● الفهم المفاهيمي العميق — الإسقاط العمودي على فضاء الأعمدة والمعادلات الطبيعية"
         },
         "body": {
-          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Mathematics for Artificial Intelligence & Machine Learning, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
-          "ar": null
+          "en": "<p><strong>Geometric Orthogonality of OLS Residuals:</strong> Fitting \\(\\hat{\\mathbf{y}} = X\\hat{\\mathbf{w}}\\) chooses the closest vector in \\(\\operatorname{Col}(X)\\) to target \\(\\mathbf{y}\\). The residual \\(\\mathbf{e} = \\mathbf{y} - X\\hat{\\mathbf{w}}\\) must be orthogonal to every column of \\(X\\): \\(X^T(\\mathbf{y} - X\\hat{\\mathbf{w}}) = \\mathbf{0} \\implies X^T X\\hat{\\mathbf{w}} = X^T\\mathbf{y}\\).</p>",
+          "ar": "<p><strong>التعامد الهندسي لبواقي المربعات الصغرى:</strong> يختار نموذج \\(\\hat{\\mathbf{y}} = X\\hat{\\mathbf{w}}\\) أقرب متجه داخل فضاء الأعمدة \\(\\operatorname{Col}(X)\\) إلى المتجه \\(\\mathbf{y}\\). لذا يكون متجه الباقي \\(\\mathbf{e} = \\mathbf{y} - X\\hat{\\mathbf{w}}\\) عمودياً على جميع أعمدة \\(X\\)، أي \\(X^T(\\mathbf{y} - X\\hat{\\mathbf{w}}) = \\mathbf{0}\\) ومنها المعادلة الطبيعية \\(X^T X\\hat{\\mathbf{w}} = X^T\\mathbf{y}\\).</p>"
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Linear Regression & Ordinary Least Squares — Linear System Intersection & Equilibrium",
+          "title": "OLS Fitted Line ŷ = 1.5x + 1 Minimizing Squared Vertical Residuals",
           "xrange": [
-            -2,
-            6
+            0,
+            5.5
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            10
           ],
           "fns": [
             {
-              "fn": "2.5*x - 1",
+              "fn": "1.5*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = 2.5x − 1"
-            },
-            {
-              "fn": "-0.5*x + 5",
-              "color": "var(--fig-amber)",
-              "label": "y = −0.5x + 5"
+              "label": "OLS Fit ŷ = 1.5x + 1"
             }
           ],
           "points": [
             {
+              "x": 1,
+              "y": 3,
+              "label": "(1, 3)"
+            },
+            {
               "x": 2,
-              "y": 4,
-              "label": "(2, 4)"
+              "y": 3.5,
+              "label": "(2, 3.5)"
+            },
+            {
+              "x": 4,
+              "y": 7.5,
+              "label": "(4, 7.5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate intersection of linear system \\(y = 2x + 1\\) and \\(y = -x + 7\\) at unique equilibrium point \\((2, 5)\\).",
-          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس الانحدار الخطي وطريقة المربعات الصغرى (OLS). \\(y = 2x + 1\\) ، \\(y = -x + 7\\) ، \\((2, 5)\\)"
+          "en": "Ordinary Least Squares selects parameters \\((w_0, w_1)\\) minimizing the vertical sum of squared residuals \\(\\operatorname{SSE} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\).",
+          "ar": "تختار طريقة المربعات الصغرى العادية المعلمتين \\((w_0, w_1)\\) اللتين تصغّران مجموع مربعات البواقي الرأسية \\(\\operatorname{SSE} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\)."
         }
       },
       {
@@ -223,7 +228,7 @@
         },
         "caption": {
           "en": "Regression Line and Observations — illustrating key geometric and analytical relationships in Linear Regression & Ordinary Least Squares.",
-          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس الانحدار الخطي وطريقة المربعات الصغرى (OLS)."
+          "ar": "سحابة البيانات ثنائية المتغير مع خط الانحدار الخطي بالمربعات الصغرى الذي يلتقط الاتجاه العام للعلاقة."
         }
       },
       {
@@ -275,12 +280,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Linear Regression & Ordinary Least Squares)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الانحدار الخطي وطريقة المربعات الصغرى (OLS))"
+          "en": "◆ Why It Works — Matrix Calculus Derivation of the Normal Equation",
+          "ar": "◆ لماذا تعمل القاعدة — اشتقاق المعادلة الطبيعية بحساب تفاضل المصفوفات"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Expanding the Quadratic Objective:</strong> Let \\(J(\\mathbf{w}) = \\|\\mathbf{y} - X\\mathbf{w}\\|_2^2 = \\mathbf{y}^T\\mathbf{y} - 2\\mathbf{w}^T X^T\\mathbf{y} + \\mathbf{w}^T X^T X\\mathbf{w}\\). Taking the gradient with respect to \\(\\mathbf{w}\\) yields \\(\\nabla_{\\mathbf{w}} J = -2X^T\\mathbf{y} + 2X^T X\\mathbf{w} = \\mathbf{0}\\). When \\(X\\) has full column rank, \\(X^T X\\) is symmetric positive definite and \\(\\hat{\\mathbf{w}} = (X^T X)^{-1}X^T\\mathbf{y}\\).</p>",
+          "ar": "<p><strong>فك دالة الهدف التربيعية:</strong> نكتب \\(J(\\mathbf{w}) = \\|\\mathbf{y} - X\\mathbf{w}\\|_2^2 = \\mathbf{y}^T\\mathbf{y} - 2\\mathbf{w}^T X^T\\mathbf{y} + \\mathbf{w}^T X^T X\\mathbf{w}\\). بأخذ التدرج بالنسبة إلى \\(\\mathbf{w}\\) ومساواته بالصفر نجد \\(\\nabla_{\\mathbf{w}} J = -2X^T\\mathbf{y} + 2X^T X\\mathbf{w} = \\mathbf{0}\\)، وعندما تكون أعمدة \\(X\\) مستقلة خطياً تكون \\(X^T X\\) قابلة للقلب ويكون \\(\\hat{\\mathbf{w}} = (X^T X)^{-1}X^T\\mathbf{y}\\).</p>"
         }
       },
       {
@@ -347,12 +352,12 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Linear Regression & Ordinary Least Squares",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — الانحدار الخطي وطريقة المربعات الصغرى (OLS)"
+          "en": "⚠️ Common Exam Traps — Intercept Column, Collinearity & R² Bounds",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — عمود القاطع والتعدد الخطي وحدود معامل التحديد"
         },
         "body": {
-          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On Mathematics for Artificial Intelligence & Machine Learning, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-2x + 5 \\le 7\\), dividing by \\(-2\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
-          "ar": null
+          "en": "<p><strong>1. Omitting the Column of Ones in \\(X\\):</strong> Without prepending \\(\\mathbf{1}_n\\) to design matrix \\(X\\), the hyperplane is forced through the origin \\((b_0 = 0)\\) and residuals need not sum to zero.<br><strong>2. Singular \\(X^T X\\) under Collinearity:</strong> If two features are linearly dependent, \\(X^T X\\) is non-invertible; Ridge regression \\((X^T X + \\lambda I)^{-1}X^T\\mathbf{y}\\) restores invertibility for any \\(\\lambda > 0\\).</p>",
+          "ar": "<p><strong>1. إغفال عمود الآحاد في مصفوفة التصميم \\(X\\):</strong> بدون إضافة العمود \\(\\mathbf{1}_n\\) يُجبر خط الانحدار على المرور بنقطة الأصل \\((b_0 = 0)\\) ولا يكون مجموع البواقي صفراً بالضرورة.<br><strong>2. شذوذ \\(X^T X\\) عند الارتباط الخطي التام:</strong> إذا ارتبطت ميزتان خطياً تصبح \\(X^T X\\) غير قابلة للقلب، ويعالج انحدار ريدج \\((X^T X + \\lambda I)^{-1}X^T\\mathbf{y}\\) ذلك لأي \\(\\lambda > 0\\).</p>"
         }
       },
       {
@@ -424,12 +429,12 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Linear Regression & Ordinary Least Squares",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — الانحدار الخطي وطريقة المربعات الصغرى (OLS)"
+          "en": "▲ Exam Pacing & Verification Strategy — Linear Regression & OLS",
+          "ar": "▲ استراتيجية الحل والتحقق السريع — الانحدار الخطي والمربعات الصغرى"
         },
         "body": {
-          "en": "<p><strong>High-Speed Exam Shortcut (Mathematics for Artificial Intelligence & Machine Learning):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
-          "ar": null
+          "en": "<p><strong>Centroid &amp; Zero-Sum Residual Checks:</strong> Every simple OLS line with an intercept passes strictly through the sample centroid \\((\\bar{x}, \\bar{y})\\) and satisfies \\(\\sum_{i=1}^n e_i = 0\\) and \\(\\sum_{i=1}^n x_i e_i = 0\\)—verify both in 5 seconds!</p>",
+          "ar": "<p><strong>اختبار مركز البيانات ومجموع البواقي الصفري:</strong> كل خط انحدار بسيط يتضمن قاطعاً يمر حتماً بالنقطة المتوسطة \\((\\bar{x}, \\bar{y})\\) ويحقق \\(\\sum_{i=1}^n e_i = 0\\) و\\(\\sum_{i=1}^n x_i e_i = 0\\)، فتحقق منهما فوراً!</p>"
         }
       },
       {
@@ -503,7 +508,7 @@
           }
         ],
         "solution": {
-          "en": "By the complement rule of probability: \\( P(\neg C_1) = 1 - P(C_1) = 1 - 0.10 = 0.90 \\).",
+          "en": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.10 = 0.90 \\).",
           "ar": null
         }
       },
@@ -553,7 +558,7 @@
           }
         ],
         "solution": {
-          "en": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\neg A)P(\neg A)} = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)} = \\frac{0.0950}{0.1400} = 0.679 \\).",
+          "en": "By Bayes' Rule: \\( P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.10}{0.95(0.10) + 0.05(0.90)} = \\frac{0.0950}{0.1400} = 0.679 \\).",
           "ar": null
         }
       },

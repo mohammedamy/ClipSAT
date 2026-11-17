@@ -49,28 +49,59 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Deep Conceptual Intuition — Conditional Probability, Bayes' Rule & Classifiers",
-          "ar": "● الفهم المفاهيمي العميق — الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي"
+          "en": "● Deep Conceptual Intuition — Prior Beliefs, Evidence & Posterior Updating",
+          "ar": "● الفهم المفاهيمي العميق — الاحتمال القبلي والدليل وتحديث الاحتمال البعدي"
         },
         "body": {
-          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Mathematics for Artificial Intelligence & Machine Learning, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
-          "ar": null
+          "en": "<p><strong>Bayesian Belief Updating:</strong> In statistical AI, Bayes' Rule \\(P(y \\mid \\mathbf{x}) = \\frac{P(\\mathbf{x} \\mid y)P(y)}{P(\\mathbf{x})}\\) updates the class prior \\(P(y)\\) using the generative likelihood \\(P(\\mathbf{x} \\mid y)\\), normalized by total evidence \\(P(\\mathbf{x}) = \\sum_{c} P(\\mathbf{x} \\mid c)P(c)\\).</p>",
+          "ar": "<p><strong>التحديث البايزي للمعتقدات الاحتمالية:</strong> في نماذج الذكاء الاصطناعي الإحصائية، تحدّث قاعدة بايز \\(P(y \\mid \\mathbf{x}) = \\frac{P(\\mathbf{x} \\mid y)P(y)}{P(\\mathbf{x})}\\) الاحتمال القبلي للفئة \\(P(y)\\) في ضوء معقولية المشاهدة \\(P(\\mathbf{x} \\mid y)\\)، مقسوماً على الاحتمال الكلي للدليل \\(P(\\mathbf{x}) = \\sum_{c} P(\\mathbf{x} \\mid c)P(c)\\).</p>"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "box_plot",
-          "title": "Five-Number Summary & Interquartile Spread",
-          "min": 38,
-          "q1": 54,
-          "med": 68,
-          "q3": 82,
-          "max": 96
+          "type": "tree_diagram",
+          "title": "Bayesian Diagnostic Screening Tree: Prior P(D) & Likelihood P(+|D)",
+          "firstLabel": "Disease Status",
+          "secondLabel": "Classifier Output",
+          "branches": [
+            {
+              "label": "D",
+              "prob": "0.02",
+              "branches": [
+                {
+                  "label": "+ | D",
+                  "prob": "0.95",
+                  "outcome": "TP: 0.019"
+                },
+                {
+                  "label": "− | D",
+                  "prob": "0.05",
+                  "outcome": "FN: 0.001"
+                }
+              ]
+            },
+            {
+              "label": "¬D",
+              "prob": "0.98",
+              "branches": [
+                {
+                  "label": "+ | ¬D",
+                  "prob": "0.05",
+                  "outcome": "FP: 0.049"
+                },
+                {
+                  "label": "− | ¬D",
+                  "prob": "0.95",
+                  "outcome": "TN: 0.931"
+                }
+              ]
+            }
+          ]
         },
         "caption": {
-          "en": "Box-and-whisker plot displaying minimum, first quartile \\(Q_1\\), median, third quartile \\(Q_3\\), and maximum.",
-          "ar": "مخطط الصندوق والعارضتين الموضح للقيم الخمس الملخصة والمدى الربيعي في الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي. \\(Q_1\\) ، \\(Q_3\\)"
+          "en": "Two-stage Bayesian probability tree showing how rare base rate \\(P(D) = 0.02\\) yields posterior \\(P(D \\mid +) = \\frac{0.019}{0.019 + 0.049} \\approx 0.279\\).",
+          "ar": "شجرة احتمالات بايزية من مرحلتين توضح كيف يؤدي انخفاض الاحتمال القبلي \\(P(D) = 0.02\\) إلى احتمال بعدي \\(P(D \\mid +) = \\frac{0.019}{0.019 + 0.049} \\approx 0.279\\)."
         }
       },
       {
@@ -175,25 +206,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "histogram",
-          "title": "Grouped Frequency Distribution",
-          "bins": [
-            "40–55",
-            "55–70",
-            "70–85",
-            "85–100"
+          "type": "two_way_table",
+          "title": "Naive Bayes Spam Filter Joint Token Contingency Counts",
+          "rows": [
+            "Spam (y = 1)",
+            "Ham (y = 0)"
           ],
-          "freqs": [
-            6,
-            15,
-            19,
-            10
+          "cols": [
+            "Contains 'free'",
+            "No 'free'",
+            "Total"
           ],
-          "xlabel": "Score Interval"
+          "cells": [
+            [
+              160,
+              40,
+              200
+            ],
+            [
+              80,
+              720,
+              800
+            ]
+          ]
         },
         "caption": {
-          "en": "Grouped frequency histogram illustrating center, spread, and shape of quantitative data.",
-          "ar": "المدرج التكراري للفئات المجمعة وتوزيع البيانات الكمية في الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي."
+          "en": "Empirical contingency counts across \\(N = 1000\\) emails yielding class-conditional likelihoods \\(P(\\text{'free'}\\mid \\text{Spam}) = 0.80\\) vs \\(P(\\text{'free'}\\mid \\text{Ham}) = 0.10\\).",
+          "ar": "جدول التوافق التجريبي لـ \\(N = 1000\\) رسالة بريدية يعطي الاحتمالات الشرطية \\(P(\\text{'free'}\\mid \\text{Spam}) = 0.80\\) مقابل \\(P(\\text{'free'}\\mid \\text{Ham}) = 0.10\\)."
         }
       },
       {
@@ -245,12 +284,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Conditional Probability, Bayes' Rule & Classifiers)",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي)"
+          "en": "◆ Why It Works — Derivation from Joint Probability & Total Probability",
+          "ar": "◆ لماذا تعمل القاعدة — الاشتقاق من الاحتمال المشترك والاحتمال الكلي"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Symmetry of Joint Probability:</strong> By definition of conditional probability, \\(P(A \\cap B) = P(A \\mid B)P(B) = P(B \\mid A)P(A)\\). Dividing by \\(P(B) > 0\\) and expanding the partition \\(B = (B \\cap A) \\cup (B \\cap \\neg A)\\) yields \\[ P(A \\mid B) = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid \\neg A)P(\\neg A)}. \\]</p>",
+          "ar": "<p><strong>تماثل الاحتمال المشترك:</strong> من تعريف الاحتمال الشرطي لدينا \\(P(A \\cap B) = P(A \\mid B)P(B) = P(B \\mid A)P(A)\\). وبقسمة الطرفين على \\(P(B) > 0\\) وفك المقام بقانون الاحتمال الكلي \\(B = (B \\cap A) \\cup (B \\cap \\neg A)\\) نحصل على \\[ P(A \\mid B) = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid \\neg A)P(\\neg A)}. \\]</p>"
         }
       },
       {
@@ -317,12 +356,12 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Conditional Probability, Bayes' Rule & Classifiers",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي"
+          "en": "⚠️ Common Exam Traps — Base-Rate Neglect & Conditional Reversal",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — إهمال المعدل الأساسي وعكس الشرط"
         },
         "body": {
-          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On Mathematics for Artificial Intelligence & Machine Learning, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-5x + 7 \\le 12\\), dividing by \\(-5\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
-          "ar": null
+          "en": "<p><strong>1. Confusing \\(P(+ \\mid D)\\) with \\(P(D \\mid +)\\):</strong> A sensitivity of \\(99\\%\\) does <em>not</em> mean a positive test implies \\(99\\%\\) disease probability when \\(P(D)\\) is small (base-rate fallacy).<br><strong>2. Forgetting False Positives in the Denominator:</strong> Always compute \\(P(+) = P(+\\mid D)P(D) + P(+\\mid \\neg D)(1 - P(D))\\), noting \\(P(+\\mid \\neg D) = 1 - \\text{Specificity}\\).</p>",
+          "ar": "<p><strong>1. الخلط بين \\(P(+ \\mid D)\\) و\\(P(D \\mid +)\\):</strong> حساسية الاختبار البالغة \\(99\\%\\) لا تعني أن احتمال الإصابة عند ظهور نتيجة موجبة هو \\(99\\%\\) إذا كان انتشار المرض \\(P(D)\\) نادراً.<br><strong>2. نسيان حد الإيجابيات الكاذبة في المقام:</strong> احسب المقام الكلي دائماً \\(P(+) = P(+\\mid D)P(D) + P(+\\mid \\neg D)(1 - P(D))\\) مع الانتباه إلى أن \\(P(+\\mid \\neg D) = 1 - \\text{Specificity}\\).</p>"
         }
       },
       {
@@ -394,12 +433,12 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Conditional Probability, Bayes' Rule & Classifiers",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي"
+          "en": "▲ Exam Pacing & Verification Strategy — Conditional Probability & Bayes' Rule",
+          "ar": "▲ استراتيجية الحل والتحقق السريع — الاحتمال الشرطي وقاعدة بايز"
         },
         "body": {
-          "en": "<p><strong>High-Speed Exam Shortcut (Mathematics for Artificial Intelligence & Machine Learning):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
-          "ar": null
+          "en": "<p><strong>Natural Frequency Shortcut (10,000-Sample Table):</strong> Convert percentages into counts out of \\(10{,}000\\) samples first: compute \\(\\text{TP}\\) and \\(\\text{FP}\\) as integers, then form \\(P(D \\mid +) = \\frac{\\text{TP}}{\\text{TP} + \\text{FP}}\\) to eliminate decimal arithmetic slips.</p>",
+          "ar": "<p><strong>طريقة التكرارات الطبيعية (عينة من 10,000):</strong> حوّل النسب المئوية إلى أعداد صحيحة من أصل \\(10{,}000\\) حالة لحساب \\(\\text{TP}\\) و\\(\\text{FP}\\) مباشرة، ثم احسب \\(P(D \\mid +) = \\frac{\\text{TP}}{\\text{TP} + \\text{FP}}\\) لتجنب أخطاء الفواصل العشرية.</p>"
         }
       },
       {

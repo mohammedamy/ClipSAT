@@ -40,8 +40,28 @@
         "kind": "figure",
         "figure": {
           "type": "slope_field",
-          "title": "Unit 7 · Differential Equations — Slope Field & Particular Solution Trajectory",
-          "fn": "sin(x) - 0.4*y",
+          "title": "Unit 7 · Slope Field & Solution Curve for dy/dx = x − y",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
+        },
+        "caption": {
+          "en": "Slope field for \\(\\frac{dy}{dx} = x - y\\) showing zero-slope isocline along \\(y = x\\) and the particular solution passing through \\((0, 1)\\).",
+          "ar": "حقل الميول للمعادلة التفاضلية \\(\\frac{dy}{dx} = x - y\\) مع منحنى الحل الخاص المار بالنقطة الابتدائية \\((0, 1)\\)."
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "slope_field",
+          "title": "Autonomous Exponential Growth Field dy/dx = 0.5y",
+          "fn": "0.5*y",
           "xmin": -3,
           "xmax": 3,
           "ymin": -3,
@@ -52,24 +72,8 @@
           }
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في الوحدة سبعة · المعادلات التفاضلية وحقول الميل. \\(\\frac{dy}{dx} = x -y\\) ، \\((0, 1)\\)"
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "slope_field",
-          "fn": "0.5*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
-          "title": "Slope Field for dy/dx = ky"
-        },
-        "caption": {
-          "en": "Slope Field for \\(\\frac{dy}{dx}\\) = ky — illustrating key geometric and analytical relationships in Unit 7 · Differential Equations.",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في الوحدة ٧ · المعادلات التفاضلية وحقول الميل. \\(\\frac{dy}{dx}\\)"
+          "en": "Autonomous differential equation \\(\\frac{dy}{dx} = 0.5y\\): slopes depend solely on \\(y\\) (constant across horizontal rows) with equilibrium \\(y = 0\\).",
+          "ar": "حقل الميول للمعادلة الذاتية \\(\\frac{dy}{dx} = 0.5y\\) حيث تتساوى الميول أفقياً ويكون \\(y = 0\\) حل اتزان."
         }
       },
       {
@@ -89,7 +93,7 @@
         "canvasId": "apabSlopeCanvas",
         "title": {
           "en": "⊙ Explorer · Slope fields & solution curves",
-          "ar": "⊙ مستكشف تفاعلي · الميل fields & الحل curves"
+          "ar": "⊙ مستكشف تفاعلي · حقول الميول ومنحنيات الحلول"
         },
         "ariaLabel": {
           "en": "A slope field grid with interactive tangent segments and a dynamic solution curve flowing through an initial point",
@@ -119,7 +123,7 @@
             },
             {
               "en": "Solution Status",
-              "ar": "الحل Status"
+              "ar": "حالة الحل"
             }
           ]
         },
@@ -137,7 +141,7 @@
             "valueDisplayId": "apabSlopeY0V",
             "ariaLabel": {
               "en": "Initial condition y-coordinate",
-              "ar": "Initial condition y-الإحداثي"
+              "ar": "الإحداثي الصادي الابتدائي y₀"
             }
           },
           {
@@ -163,7 +167,7 @@
             "value": "linear",
             "ariaLabel": {
               "en": "Differential equation selector",
-              "ar": "المعادلة التفاضلية selector"
+              "ar": "اختيار المعادلة التفاضلية"
             }
           }
         ],
@@ -190,7 +194,7 @@
             "id": "apabSlopeAsymp",
             "label": {
               "en": "Slant Asymptote",
-              "ar": "Slant خط التقارب"
+              "ar": "خط التقارب المائل"
             },
             "value": "\\(y = x - 1\\)"
           }
@@ -204,12 +208,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 7 · Differential Equations)",
-          "ar": null
+          "en": "◆ Why It Works — Chain Rule Justification for Separation of Variables",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — تبرير فصل المتغيرات عبر قاعدة السلسلة"
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Separating \\(dy\\) and \\(dx\\) Is Rigorous:</strong> If \\(\\frac{dy}{dx} = f(x)g(y)\\) with \\(g(y) \\neq 0\\), dividing by \\(g(y)\\) and integrating both sides with respect to \\(x\\) gives \\[ \\int \\frac{1}{g(y(x))} y'(x)\\,dx = \\int f(x)\\,dx \\] By substitution \\(u = y(x), du = y'(x)\\,dx\\), the left side equals \\(\\int \\frac{1}{g(y)}\\,dy\\), validating separation of variables.</p>",
+          "ar": "<p><strong>الأساس الرياضي لفصل المتغيرات:</strong> بقسمة \\(\\frac{dy}{dx} = f(x)g(y)\\) على \\(g(y)\\) والمكاملة بالنسبة إلى \\(x\\)، تحوّل قاعدة السلسلة \\(y'(x)\\,dx\\) إلى \\(dy\\)، مما يبرر \\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx\\).</p>"
         }
       },
       {

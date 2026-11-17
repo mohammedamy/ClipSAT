@@ -40,7 +40,7 @@ window.printCQ = function(btn) {
   var chapterEl   = btn.closest('.chapter') || btn.closest('section');
   var chapterName = '';
   if (chapterEl) {
-    var h2 = chapterEl.querySelector('.chead h2');
+    var h2 = chapterEl.querySelector('.chead h1, .chead h2');
     if (h2) chapterName = h2.textContent.trim();
   }
   var metaEl  = paper.querySelector('.cq-meta');
@@ -90,24 +90,16 @@ window.printCQ = function(btn) {
   var lang = isRtl ? 'ar' : 'en';
   var dir = isRtl ? 'rtl' : 'ltr';
 
-  /* ── open print window via Blob URL (fixes blank MathJax in popup) ── */
+  var _origin = (window.location && window.location.origin) || '';
+  /* ── open print window via Blob URL (self-hosted KaTeX + light print figure vars) ── */
   var _cqHtml = '<!DOCTYPE html><html lang="' + lang + '" dir="' + dir + '"><head>' +
     '<meta charset="utf-8">' +
     '<title>ClipSAT Quiz — ' + courseLabel + '</title>' +
-    /* stem/opts below are copied in as .innerHTML — i.e. already KaTeX-rendered
-       markup (<span class="katex">…</span>), not raw "\(…\)" source. This popup
-       is its own blank document with none of the main page's <head>, so without
-       KaTeX's own stylesheet here too, the screen-reader-only .katex-mathml
-       annotation inside that markup — normally hidden only by a rule in
-       katex.min.css — has nothing hiding it and renders as a second, plain-text
-       copy of every formula right next to the properly-styled one. (The MathJax
-       script below is a separate, harmless no-op for this content — it's kept
-       only because other print windows in this file share this build and do
-       need it; it finds no "\(…\)"-delimited raw text left to typeset here.) */
-    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">' +
-    '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>' +
-    '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>' +
+    '<link rel="stylesheet" href="' + _origin + '/vendor/katex/katex.min.css">' +
+    '<script defer src="' + _origin + '/vendor/katex/katex.min.js"><\/script>' +
+    '<script defer src="' + _origin + '/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>' +
     '<style>' +
+    ':root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}' +
     '@page{margin:18mm 18mm 22mm 18mm}' +
     'body{margin:0;padding:0;font-family:Georgia,"Times New Roman",serif;font-size:11pt;line-height:1.6;color:#000;background:#fff}' +
     '.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}' +
@@ -119,7 +111,7 @@ window.printCQ = function(btn) {
     'body[dir="rtl"] .info-bar{direction:rtl}' +
     'body[dir="rtl"] .instr{border-left:none;border-right:3pt solid #1a1a2e;text-align:right}' +
     'body[dir="rtl"] .pq-footer{direction:rtl}' +
-    'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}' +
+    'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex,body[dir="rtl"] svg{direction:ltr!important;unicode-bidi:isolate}' +
     /* ── Branded header ── */
     '.ph{display:flex;align-items:flex-start;justify-content:space-between;gap:16pt;border-bottom:2pt solid #1a1a2e;padding-bottom:10pt;margin-bottom:14pt}' +
     '.ph-brand{display:flex;align-items:center;gap:10pt}' +
@@ -145,7 +137,7 @@ window.printCQ = function(btn) {
     '.pq-body{flex:1;min-width:0}' +
     '.pq-stem{margin-bottom:8pt}' +
     '.pq-fig{margin:6pt 0 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid}' +
-    '.pq-fig svg{max-width:220pt;height:auto;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.pq-fig svg{width:100%;max-width:220pt;height:auto;direction:ltr!important;unicode-bidi:isolate;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     '.pq-fig .exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto}' +
     'table, .exam-table, table.exam-table, .pq-stem table, .pq-fig table, .pq-body table, .pq-stem-table table{border-collapse:collapse;margin:8pt auto;font-size:9.5pt;font-family:sans-serif;width:auto!important;max-width:100%;break-inside:avoid;page-break-inside:avoid}' +
     'table th, table td, .exam-table th,.exam-table td,.pq-stem table th,.pq-stem table td,.pq-fig table th,.pq-fig table td,.pq-body table th,.pq-body table td,.pq-stem-table table th,.pq-stem-table table td{border:1pt solid #999;padding:4pt 10pt;text-align:center}' +
@@ -195,8 +187,8 @@ window.printCQ = function(btn) {
       '<span>ClipSAT · clipsat.org · Mr. Mohamed Abdallah</span>' +
       '<span>' + courseLabel + ' · ' + today + '</span>' +
     '</div>' +
+    '<script>window.addEventListener("load",function(){setTimeout(window.print,350);});<\/script>' +
     '</body>' +
-    '<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(window.print,400);}).catch(function(){setTimeout(window.print,400);});}else{setTimeout(window.print,800);}<\/script>' +
     '</html>';
   var _cqBlob=new Blob([_cqHtml],{type:'text/html;charset=utf-8'});
   var _cqUrl=URL.createObjectURL(_cqBlob);

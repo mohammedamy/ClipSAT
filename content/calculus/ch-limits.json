@@ -2,7 +2,7 @@
   "id": "ch-limits",
   "chapterNumber": "1",
   "title": {
-    "en": "Limits &amp; Continuity",
+    "en": "Limits & Continuity",
     "ar": "النهايات والاتصال"
   },
   "content": {
@@ -156,39 +156,35 @@
         "id": "fig-continuity-case-1",
         "title": {
           "en": "Case 1 · Continuous at an Interior Point \\((c = 1)\\)",
-          "ar": null
+          "ar": "الحالة 1 · الاتصال عند نقطة داخلية \\((c = 1)\\)"
         },
         "caption": {
-          "en": "All three conditions hold: (1) \\(f(1) = 1.5\\) is defined; (2) \\(\\lim_{x\\to 1} f(x) = 1.5\\) exists; (3) \\(\\lim_{x\\to 1} f(x) = f(1)\\). The parabola \\(f(x) = 0.5(x-1)^2 + 1.5\\) passes through \\((1, 1.5)\\) unbroken.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(f(1) = 1.5\\) ، \\(\\lim_{x\\to 1} f(x) = 1.5\\) ، \\(\\lim_{x\\to 1} f(x) = f(1)\\) ، \\(f(x) = 0.5(x-1)^2 + 1.5\\) ، \\((1, 1.5)\\) (1, 2, 3)"
+          "en": "All three continuity conditions hold at \\(c = 1\\): \\(f(1) = 1.5\\) is defined, \\(\\lim_{x\\to 1} f(x) = 1.5\\) exists, and \\(\\lim_{x\\to 1} f(x) = f(1)\\).",
+          "ar": "تتحقق شروط الاتصال الثلاثة عند \\(c = 1\\): القيمة \\(f(1) = 1.5\\) معرّفة، والنهاية \\(\\lim_{x\\to 1} f(x) = 1.5\\) موجودة، و\\(\\lim_{x\\to 1} f(x) = f(1)\\)."
         },
         "figure": {
           "type": "fn",
+          "title": "Continuous at x = 1: lim f(x) = f(1) = 1.5",
           "xrange": [
-            -3,
-            5
+            -1,
+            3.5
           ],
           "yrange": [
-            -2,
-            9
+            0,
+            4.5
           ],
           "fns": [
             {
-              "fn": "2*x + 3",
+              "fn": "0.5*(x - 1)*(x - 1) + 1.5",
               "color": "var(--fig-indigo)",
-              "label": "y = 2x + 3"
-            },
-            {
-              "fn": "-x + 6",
-              "color": "var(--fig-amber)",
-              "label": "y = −x + 6"
+              "label": "f(x) = 0.5(x − 1)² + 1.5"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": 5,
-              "label": "(1, 5)"
+              "y": 1.5,
+              "label": "(1, 1.5)"
             }
           ]
         }
@@ -198,39 +194,36 @@
         "id": "fig-continuity-case-2",
         "title": {
           "en": "Case 2 · Removable Discontinuity — Missing Point (Hole)",
-          "ar": null
+          "ar": "الحالة 2 · انقطاع قابل للإزالة — نقطة مفقودة (فجوة)"
         },
         "caption": {
-          "en": "Condition 1 fails because \\(f(1)\\) is undefined (a hole at \\((1, 2)\\)). However, Condition 2 passes because \\(\\lim_{x\\to 1^-} f(x) = \\lim_{x\\to 1^+} f(x) = 2.0\\). The discontinuity is 'removable' by defining \\(f(1) = 2\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(f(1)\\) ، \\((1, 2)\\) ، \\(\\lim_{x\\to 1^-} f(x) = \\lim_{x\\to 1^+} f(x) = 2.0\\) ، \\(f(1) = 2\\) (1, 2)"
+          "en": "Condition 1 fails because \\(f(1)\\) is undefined (an open hole at \\((1, 2)\\)), while \\(\\lim_{x\\to 1} f(x) = 2\\) exists. Defining \\(f(1) = 2\\) removes the discontinuity.",
+          "ar": "يختل الشرط الأول لأن \\(f(1)\\) غير معرّفة (فجوة مفتوحة عند \\((1, 2)\\))، بينما النهاية \\(\\lim_{x\\to 1} f(x) = 2\\) موجودة، ويمكن إزالة الانقطاع بتعريف \\(f(1) = 2\\)."
         },
         "figure": {
           "type": "fn",
+          "title": "Removable Hole at (1, 2): f(1) Undefined",
           "xrange": [
-            -2,
-            6
+            -1,
+            3.5
           ],
           "yrange": [
-            -2,
-            10
+            0,
+            4.5
           ],
           "fns": [
             {
-              "fn": "3*x - 2",
+              "fn": "x + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = 3x − 2"
-            },
-            {
-              "fn": "-x + 6",
-              "color": "var(--fig-amber)",
-              "label": "y = −x + 6"
+              "label": "f(x) = (x² − 1)/(x − 1)"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": 4,
-              "label": "(2, 4)"
+              "x": 1,
+              "y": 2,
+              "open": true,
+              "label": "Hole (1, 2)"
             }
           ]
         }
@@ -240,39 +233,41 @@
         "id": "fig-continuity-case-3",
         "title": {
           "en": "Case 3 · Removable Discontinuity — Displaced Point",
-          "ar": null
+          "ar": "الحالة 3 · انقطاع قابل للإزالة — نقطة مزاحة"
         },
         "caption": {
-          "en": "Conditions 1 & 2 pass (\\(f(1) = 3.5\\) is defined and \\(\\lim_{x\\to 1} f(x) = 2.0\\) exists), but Condition 3 fails because \\(\\lim_{x\\to 1} f(x) \\neq f(1)\\). The isolated point at \\((1, 3.5)\\) is detached from the continuous line.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(f(1) = 3.5\\) ، \\(\\lim_{x\\to 1} f(x) = 2.0\\) ، \\(\\lim_{x\\to 1} f(x) \\neq f(1)\\) ، \\((1, 3.5)\\) (1, 2, 3)"
+          "en": "Both \\(f(1) = 3.5\\) and \\(\\lim_{x\\to 1} f(x) = 2\\) exist, but Condition 3 fails because \\(\\lim_{x\\to 1} f(x) \\neq f(1)\\).",
+          "ar": "كلٌّ من \\(f(1) = 3.5\\) والنهاية \\(\\lim_{x\\to 1} f(x) = 2\\) موجودان، غير أن الشرط الثالث يختل لأن \\(\\lim_{x\\to 1} f(x) \\neq f(1)\\)."
         },
         "figure": {
           "type": "fn",
+          "title": "Displaced Value: lim f(x) = 2 ≠ f(1) = 3.5",
           "xrange": [
-            -2,
-            7
+            -1,
+            3.5
           ],
           "yrange": [
-            -2,
-            10
+            0,
+            4.5
           ],
           "fns": [
             {
               "fn": "x + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = x + 1"
-            },
-            {
-              "fn": "-x + 7",
-              "color": "var(--fig-amber)",
-              "label": "y = −x + 7"
+              "label": "y = x + 1 (x ≠ 1)"
             }
           ],
           "points": [
             {
-              "x": 3,
-              "y": 4,
-              "label": "(3, 4)"
+              "x": 1,
+              "y": 2,
+              "open": true,
+              "label": "lim = 2"
+            },
+            {
+              "x": 1,
+              "y": 3.5,
+              "label": "f(1) = 3.5"
             }
           ]
         }
@@ -282,39 +277,41 @@
         "id": "fig-continuity-case-4",
         "title": {
           "en": "Case 4 · Jump Discontinuity (Finite Jump)",
-          "ar": null
+          "ar": "الحالة 4 · انقطاع قفزي (قفزة منتهية)"
         },
         "caption": {
-          "en": "Condition 2 fails because the one-sided limits are finite but unequal: \\(\\lim_{x\\to 1^-} f(x) = 1.5\\) while \\(\\lim_{x\\to 1^+} f(x) = 3.0\\). The branches fail to meet, leaving an unavoidable jump gap of \\(|3.0 - 1.5| = 1.5\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(\\lim_{x\\to 1^-} f(x) = 1.5\\) ، \\(\\lim_{x\\to 1^+} f(x) = 3.0\\) ، \\(|3.0 - 1.5| = 1.5\\) (2)"
+          "en": "One-sided limits are finite but unequal: \\(\\lim_{x\\to 1^-} f(x) = 1.5\\) whereas \\(\\lim_{x\\to 1^+} f(x) = 3.0\\), creating a finite jump of \\(1.5\\).",
+          "ar": "النهايتان من اليمين واليسار منتهيتان لكنهما غير متساويتين: \\(\\lim_{x\\to 1^-} f(x) = 1.5\\) بينما \\(\\lim_{x\\to 1^+} f(x) = 3.0\\)، مما يولّد قفزة قدرها \\(1.5\\)."
         },
         "figure": {
           "type": "fn",
+          "title": "Jump Discontinuity at x = 1: Left 1.5 vs Right 3.0",
           "xrange": [
-            -3,
-            5
+            -1,
+            3.5
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            4.5
           ],
           "fns": [
             {
-              "fn": "2*x + 2",
+              "fn": "x < 1 ? 0.5*x + 1 : 0.4*(x - 1) + 3",
               "color": "var(--fig-indigo)",
-              "label": "y = 2x + 2"
-            },
-            {
-              "fn": "-x + 5",
-              "color": "var(--fig-amber)",
-              "label": "y = −x + 5"
+              "label": "Piecewise f(x)"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": 4,
-              "label": "(1, 4)"
+              "y": 1.5,
+              "open": true,
+              "label": "(1, 1.5)"
+            },
+            {
+              "x": 1,
+              "y": 3.0,
+              "label": "(1, 3.0)"
             }
           ]
         }
@@ -324,32 +321,29 @@
         "id": "fig-continuity-case-5",
         "title": {
           "en": "Case 5 · Infinite Discontinuity (Vertical Asymptote)",
-          "ar": null
+          "ar": "الحالة 5 · انقطاع لانهائي (مقارب رأسي)"
         },
         "caption": {
-          "en": "Condition 2 fails because outputs grow without bound: \\(\\lim_{x\\to 1^-} f(x) = -\\infty\\) and \\(\\lim_{x\\to 1^+} f(x) = +\\infty\\). The line \\(x = 1\\) is a vertical asymptote that the curve approaches indefinitely without ever crossing.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(\\lim_{x\\to 1^-} f(x) = -\\infty\\) ، \\(\\lim_{x\\to 1^+} f(x) = +\\infty\\) ، \\(x = 1\\) (2)"
+          "en": "Function values diverge unboundedly near \\(x = 1\\): \\(\\lim_{x\\to 1^-} \\frac{1}{x-1} = -\\infty\\) and \\(\\lim_{x\\to 1^+} \\frac{1}{x-1} = +\\infty\\) along the vertical asymptote \\(x = 1\\).",
+          "ar": "تتباعد قيم الدالة بلا حدود قرب \\(x = 1\\): \\(\\lim_{x\\to 1^-} \\frac{1}{x-1} = -\\infty\\) و\\(\\lim_{x\\to 1^+} \\frac{1}{x-1} = +\\infty\\) بمحاذاة المقارب الرأسي \\(x = 1\\)."
         },
         "figure": {
           "type": "fn",
+          "title": "Infinite Discontinuity at Vertical Asymptote x = 1",
           "xrange": [
             -2,
-            6
+            4
           ],
           "yrange": [
-            -2,
-            11
+            -6,
+            6
           ],
+          "asymptoteX": 1,
           "fns": [
             {
-              "fn": "2*x + 3",
+              "fn": "1/(x - 1)",
               "color": "var(--fig-indigo)",
-              "label": "y = 2x + 3"
-            },
-            {
-              "fn": "-0.5*x + 8",
-              "color": "var(--fig-amber)",
-              "label": "y = −0.5x + 8"
+              "label": "f(x) = 1/(x − 1)"
             }
           ],
           "vlines": [
@@ -357,14 +351,7 @@
               "x": 1,
               "color": "var(--fig-rose)",
               "dash": "4,3",
-              "label": "Asymptote x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 2,
-              "y": 7,
-              "label": "(2, 7)"
+              "label": "x = 1"
             }
           ]
         }
@@ -374,39 +361,36 @@
         "id": "fig-continuity-case-6",
         "title": {
           "en": "Case 6 · Essential / Oscillating Discontinuity",
-          "ar": null
+          "ar": "الحالة 6 · انقطاع جوهري تذبذبي"
         },
         "caption": {
-          "en": "Condition 2 fails because \\(f(x) = \\sin(2/(x-1))\\) oscillates infinitely many times between \\(-1\\) and \\(+1\\) as \\(x \\to 1\\). Because the function values never settle upon any single finite value, no two-sided limit exists.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(f(x) = \\sin(2/(x-1))\\) ، \\(-1\\) ، \\(+1\\) ، \\(x \\to 1\\) (2)"
+          "en": "Near \\(x = 1\\), \\(f(x) = \\sin\\!\\left(\\frac{4}{x-1}\\right)\\) oscillates infinitely often between \\(-1\\) and \\(+1\\), failing to approach any single limit.",
+          "ar": "بالقرب من \\(x = 1\\)، تتذبذب الدالة \\(f(x) = \\sin\\!\\left(\\frac{4}{x-1}\\right)\\) عدداً لا نهائياً من المرات بين \\(-1\\) و\\(+1\\)، فلا تقترب من أي نهاية وحيدة."
         },
         "figure": {
           "type": "fn",
+          "title": "Oscillating Behavior of sin(4/(x − 1)) Near x = 1",
           "xrange": [
-            -3,
-            6
+            -1,
+            3
           ],
           "yrange": [
-            -3,
-            9
+            -1.5,
+            1.5
           ],
           "fns": [
             {
-              "fn": "1.5*x + 1",
+              "fn": "abs(x - 1) > 0.04 ? sin(4/(x - 1)) : 0",
               "color": "var(--fig-indigo)",
-              "label": "y = 1.5x + 1"
-            },
-            {
-              "fn": "-0.5*x + 5",
-              "color": "var(--fig-amber)",
-              "label": "y = −0.5x + 5"
+              "label": "y = sin(4/(x − 1))"
             }
           ],
-          "points": [
+          "vlines": [
             {
-              "x": 2,
-              "y": 4,
-              "label": "(2, 4)"
+              "x": 1,
+              "color": "var(--fig-amber)",
+              "dash": "3,3",
+              "label": "x = 1"
             }
           ]
         }
@@ -416,44 +400,35 @@
         "id": "fig-continuity-case-7",
         "title": {
           "en": "Case 7 · One-Sided / Endpoint Continuity (Domain Boundary)",
-          "ar": null
+          "ar": "الحالة 7 · الاتصال من جهة واحدة عند طرف المجال"
         },
         "caption": {
-          "en": "For \\(f(x) = \\sqrt{x - 1} + 1.5\\) on domain \\([1, \\infty)\\), the two-sided limit at \\(x = 1\\) does not exist because \\(x < 1\\) is outside the domain. However, \\(f\\) is continuous from the right because \\(\\lim_{x\\to 1^+} f(x) = f(1) = 1.5\\). By standard mathematical definition, \\(f\\) is continuous on \\([1, \\infty)\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(f(x) = \\sqrt{x - 1} + 1.5\\) ، \\([1, \\infty)\\) ، \\(x = 1\\) ، \\(x < 1\\) ، \\(f\\) ، \\(\\lim_{x\\to 1^+} f(x) = f(1) = 1.5\\) ، \\(f\\) ، \\([1, \\infty)\\)"
+          "en": "On domain \\([1, \\infty)\\), \\(f(x) = \\sqrt{x - 1} + 1.5\\) is right-continuous at boundary \\(x = 1\\) since \\(\\lim_{x\\to 1^+} f(x) = f(1) = 1.5\\).",
+          "ar": "على المجال \\([1, \\infty)\\)، تكون الدالة \\(f(x) = \\sqrt{x - 1} + 1.5\\) متصلة من اليمين عند طرف المجال \\(x = 1\\) لأن \\(\\lim_{x\\to 1^+} f(x) = f(1) = 1.5\\)."
         },
         "figure": {
           "type": "fn",
+          "title": "Right-Continuous Endpoint at x = 1: f(x) = √(x − 1) + 1.5",
           "xrange": [
-            -4,
-            4
+            0,
+            5
           ],
           "yrange": [
-            -3,
-            7
+            0,
+            4.2
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "x >= 1 ? sqrt(max(0, x - 1)) + 1.5 : NaN",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² − 2"
-            },
-            {
-              "fn": "x",
-              "color": "var(--fig-amber)",
-              "label": "g(x) = x"
+              "label": "f(x) = √(x − 1) + 1.5"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": 2,
-              "label": "(2, 2)"
-            },
-            {
-              "x": -1,
-              "y": -1,
-              "label": "(−1, −1)"
+              "x": 1,
+              "y": 1.5,
+              "label": "Endpoint (1, 1.5)"
             }
           ]
         }
@@ -615,12 +590,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Limits &amp; Continuity)",
+          "en": "◆ Why It Works — First-Principles Derivation (Limits & Continuity)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Conjugate Rationalization &amp; Factor Cancellation Are Valid:</strong> The limit \\(\\lim_{x\\to c} f(x)\\) inspects arbitrarily small punctured neighborhoods \\(0 < |x - c| < \\delta\\) where \\(x \\neq c\\). Because \\(x - c \\neq 0\\) everywhere inside the punctured neighborhood, dividing numerator and denominator by \\((x - c)\\) produces an identical function on \\(x \\neq c\\) whose continuous extension reveals the exact limit.</p>",
+          "ar": "<p><strong>لماذا يصح الاختزال الجبري والضرب بالمرافق عند حساب النهايات:</strong> يفحص الرمز \\(\\lim_{x\\to c} f(x)\\) الجوار المثقوب \\(0 < |x - c| < \\delta\\) حيث \\(x \\neq c\\) دائماً. ولأن العامل \\((x - c)\\) لا يساوي صفراً داخل هذا الجوار المثقوب، فإن اختصاره من البسط والمقام يعطي دالة مطابقة تماماً لكل \\(x \\neq c\\) وتكشف قيمتها المتصلة عند \\(c\\) عن النهاية الدقيقة.</p>"
         }
       },
       {
@@ -641,7 +616,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(B\\) — Limits &amp; Continuity (Medium Application)",
+          "en": "Worked Example \\(B\\) — Limits & Continuity (Medium Application)",
           "ar": null
         },
         "problem": {
@@ -656,7 +631,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Limits &amp; Continuity)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Limits & Continuity)",
           "ar": null
         },
         "columns": [
@@ -722,8 +697,8 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Limits &amp; Continuity",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — النهايات &amp; Continuity"
+          "en": "▲ Exam Pacing & Verification Strategy — Limits & Continuity",
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — النهايات & Continuity"
         },
         "body": {
           "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
@@ -1013,7 +988,7 @@
         "kind": "figure",
         "caption": {
           "en": "Plot of rational function \\(f(x) = \\frac{x^2 - 9}{x - 3}\\) showing a removable discontinuity (hole) at \\((3, 6)\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النهايات والاتصال. \\(f(x) = \\frac{x^2 - 9}{x - 3}\\) ، \\((3, 6)\\)"
+          "ar": "التمثيل البياني للدالة الكسرية \\(f(x) = \\frac{x^2 - 9}{x - 3}\\) ويوضح فجوة الانقطاع القابل للإزالة عند \\((3, 6)\\)."
         },
         "figure": {
           "type": "fn",
@@ -1352,7 +1327,7 @@
             "trackId": "calculus"
           },
           {
-            "label": "Foundations &amp; Precalculus Review",
+            "label": "Foundations & Precalculus Review",
             "chapterId": "ch-foundations",
             "trackId": "calculus"
           },
@@ -1368,6 +1343,7 @@
   "quizWidget": {
     "enabled": true,
     "domains": [
+      "Limits & Continuity",
       "Limits",
       "Continuity",
       "Limits and Continuity"
@@ -1378,12 +1354,10 @@
     "className": "ap-tag",
     "badgeClassName": "ap-wt",
     "emoji": "∫",
-    "category": "Calculus I–III · Limits &amp; Continuity",
+    "category": "Calculus I–III · Limits & Continuity",
     "weightBadge": "University Core · 1",
     "topics": [
-      "Limits",
-      "Continuity",
-      "Limits and Continuity"
+      "Limits & Continuity"
     ]
   }
 }

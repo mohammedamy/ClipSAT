@@ -599,7 +599,7 @@
   .chapter > .chead{display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--ink);
     padding-bottom:10px; margin-bottom:8px}
   .chapter > .chead .cn{font-family:var(--mono); font-size:1rem; color:var(--indigo-2)}
-  .chapter > .chead h2{font-family:var(--serif-display); font-size:1.7rem; font-weight:600; margin:0}
+  .chapter > .chead h1, .chapter > .chead h2{font-family:var(--serif-display); font-size:1.7rem; font-weight:600; margin:0}
   .chapter p{margin:1rem 0}
   .chapter h3{font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:1.8rem 0 .3rem}
 
@@ -1028,6 +1028,23 @@
 
   /* ---------- Print / Save as PDF (full-page) ---------- */
   @media print{
+    /* ── Force crisp light-mode print tokens even when body.dark / body.hc is active ── */
+    :root, body, body.dark, body.hc, body.dark.hc {
+      color-scheme: light !important;
+      --paper: #ffffff !important; --paper-2: #f8fafc !important; --panel: #f8fafc !important;
+      --ink: #0E1726 !important; --ink-2: #1e293b !important; --muted: #475569 !important; --faint: #64748b !important;
+      --line: #cbd5e1 !important; --grid: #e2e8f0 !important;
+      --indigo: #1E3A6E !important; --indigo-2: #2B5BA8 !important; --indigo-soft: rgba(30,58,110,.09) !important;
+      --amber: #B8801F !important; --amber-2: #C8902A !important; --amber-soft: rgba(184,128,31,.12) !important; --amber-text: #784F08 !important;
+      --teal: #0e7490 !important; --ok: #15803d !important;
+      --fig-bg: #ffffff !important; --fig-border: #cbd5e1 !important; --fig-ink: #0E1726 !important;
+      --fig-muted: #475569 !important; --fig-grid: #cbd5e1 !important; --fig-indigo: #1E3A6E !important;
+      --fig-indigo-2: #2B5BA8 !important; --fig-indigo-soft: rgba(30,58,110,.09) !important;
+      --fig-indigo-fill2: rgba(30,62,112,.14) !important; --fig-amber: #B8801F !important;
+      --fig-amber-text: #784F08 !important; --fig-amber-soft: rgba(184,128,31,.12) !important;
+      --fig-teal: #0e7490 !important; --fig-purple: #7C3AED !important; --fig-rose: #D94656 !important;
+      --bg-page: #ffffff !important; --bg-surface: #ffffff !important; --bg-subtle: #f8fafc !important;
+    }
     /* ── Hide all interactive chrome ── */
     header.site, footer.site, .connect, .rail, .explorer, .hero,
     .sol-toggle, .btn, .dl-grid, .menu-btn, .nav-links, .nav-select,
@@ -1037,26 +1054,37 @@
     .chapter-objectives, #cs-breadcrumb, #topic-search-wrap,
     #rail-toggle-btn, .rail-overlay, .tm-toolbar,
     #formula-sidebar, .formula-sidebar-toggle,
-    .ai-modal, .ai-fab, .daily-banner { display: none !important; }
+    .ai-modal, .ai-fab, .daily-banner, .cs-chapter-pager, .cs-voice-btn { display: none !important; }
+    /* ── Interactive slope-field: swap live canvas chrome back to clean static SVG ── */
+    figure[data-cs-interactive-slopefield="1"] .cs-live-slopefield { display: none !important; }
+    figure[data-cs-interactive-slopefield="1"] .lesson-figure-svg > div,
+    figure[data-cs-interactive-slopefield="1"] svg { display: block !important; }
     /* ── Show only active view ── */
     .view { display: none !important; }
     .view.active { display: block !important; }
-    /* ── Base typography ── */
-    body { font-size: 11.5pt; background: #fff; color: #000; }
+    /* ── Base typography & dark-card overrides ── */
+    body, body.dark { font-size: 11.5pt; background: #fff !important; color: #000 !important; }
+    body.dark .card, body.dark .fcard, body.dark .problem, body.dark .callout, body.dark .example,
+    body.dark .mfig, body.dark .lesson-figure, body.dark .full-exam-paper, body.dark .fep-header,
+    body.dark .fep-anssheet, body.dark .fep-ref-section, body.dark .fep-ref-card, body.dark .fep-qc-card,
+    body.dark .fep-work-space, body.dark .cq-item, body.dark .cq-opt {
+      background: #fff !important; color: #000 !important; border-color: #cbd5e1 !important; box-shadow: none !important;
+    }
+    body.dark .chapter h1, body.dark .chapter h2, body.dark .chapter h3, body.dark .chead h1, body.dark .chead h2 { color: #0E1726 !important; }
     .calc-body { display: block; padding: 0; }
     .subject-head { padding: 16pt 0 10pt; border-bottom: 2pt solid #000; }
     .subject-head::after { display: none; }
     /* ── Chapters: allow multi-page flow ── */
     .chapter { margin-bottom: 20pt; page-break-inside: auto; break-inside: auto; }
     .chapter.ch-active { display: block !important; }
-    .chead h2 { font-size: 13pt; margin: 0 0 6pt; }
+    .chead h1, .chead h2 { font-size: 13pt; margin: 0 0 6pt; }
     /* ── Small units: avoid mid-element breaks ── */
     .problem { break-inside: avoid; page-break-inside: avoid;
       box-shadow: none; border: 1pt solid #ccc; padding: 8pt; margin-bottom: 8pt; }
-    .callout, .fcard, .example {
+    .callout, .fcard, .example, .lesson-figure {
       box-shadow: none; break-inside: avoid; page-break-inside: avoid;
-      border: 1pt solid #ddd; }
-    h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+      border: 1pt solid #ddd; max-width: 100% !important; }
+    h1, h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
     /* ── Always show solutions ── */
     .solution { display: block !important; border: 0; background: #f8faff;
       border: 1pt solid #d0d9f0; padding: 4pt 6pt; margin-top: 4pt; }
@@ -1103,12 +1131,19 @@
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
-    /* ── Figures, diagrams & charts: avoid splitting across pages and preserve colors ── */
-    .cq-figure, .fep-figure, .mfig, .exam-fig, .exam-table, .exam-barchart, .cq-qt table, .problem table, .cq-item table, .pq-stem-table table {
+    /* ── Figures, diagrams & charts: avoid splitting across pages, keep LTR axes, fit A4, and preserve colors ── */
+    .lesson-figure, .cq-figure, .fep-figure, .mfig, .exam-fig, .exam-table, .exam-barchart, .cq-qt table, .problem table, .cq-item table, .pq-stem-table table {
       break-inside: avoid !important;
       page-break-inside: avoid !important;
+      max-width: 100% !important;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
+    }
+    svg.mfig-svg, .mfig svg, .lesson-figure-svg svg, .cq-figure svg, .fep-figure svg {
+      max-width: 100% !important;
+      height: auto !important;
+      direction: ltr !important;
+      unicode-bidi: isolate;
     }
   }
 
@@ -1787,6 +1822,8 @@
   .mfig-wide .mfig-svg{max-width:440px}
   svg.mfig-svg,.mfig .mfig-svg,.cq-figure svg,.fep-figure svg,.cs-diag-figure svg{max-width:460px;max-height:360px}
   .lesson-figure-svg svg,.lesson-figure-svg .mfig-svg{max-width:520px;max-height:420px;width:100%;height:auto}
+  /* Mathematical coordinates, number lines, and axes must stay strictly LTR even inside /ar/ RTL pages */
+  svg.mfig-svg,.mfig svg,.lesson-figure-svg svg,.cq-figure svg,.fep-figure svg,.pq-fig svg,.cs-diag-figure svg,.exam-fig,.explorer canvas,.cs-live-slopefield canvas{direction:ltr !important;unicode-bidi:isolate}
 
   /* Figure Data Inspection Tooltip (Pillar 2.2) */
   .mfig-inspect-pt, .mfig-inspect-bar {
@@ -3868,7 +3905,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
 /* ── Chapter content — more breathing room for math ── */
 .chead       { padding-bottom: 8px; margin-bottom: 6px; }
-.chead h2    { font-size: 1.45rem; }
+.chead h1, .chead h2 { font-size: 1.45rem; }
 .callout     { padding: 14px 18px; margin: .9rem 0; }
 .callout .lab{ font-size: .68rem; }
 
@@ -3968,7 +4005,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   .wr-all-btn         { display: none; }           /* just the chips on phone */
 
   /* Chapter content */
-  .chead h2    { font-size: 1.25rem; }
+  .chead h1, .chead h2 { font-size: 1.25rem; }
   .callout     { padding: 11px 13px; margin: .7rem 0; }
   .fcard       { padding: 9px 11px; font-size: .88rem; }
   .formula-cards { grid-template-columns: 1fr; }
@@ -4258,7 +4295,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     color:var(--indigo-500);
     font-weight:600;
   }
-  .chapter > .chead h2 {
+  .chapter > .chead h1, .chapter > .chead h2 {
     font-size:1.82rem;
     font-weight:600;
     letter-spacing:-.02em;
@@ -4650,11 +4687,11 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
   /* ── 26. Responsive overlay: fix table readability ───────────── */
   @media (max-width:960px) {
-    .chapter > .chead h2 { font-size:1.55rem; }
+    .chapter > .chead h1, .chapter > .chead h2 { font-size:1.55rem; }
     .formula-cards { grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); }
   }
   @media (max-width:640px) {
-    .chapter > .chead h2 { font-size:1.32rem; }
+    .chapter > .chead h1, .chapter > .chead h2 { font-size:1.32rem; }
     .chapter h3 { font-size:1.12rem; }
     .callout { padding:16px 18px 16px 20px; }
     .fcard { padding:12px 14px; }
@@ -5136,7 +5173,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
       border-left-color:var(--indigo); border-bottom:0;
     }
     .wrap.calc-body { grid-template-columns:1fr!important; padding-left:var(--sp-4); padding-right:var(--sp-4); }
-    .chapter > .chead h2 { font-size:1.28rem; }
+    .chapter > .chead h1, .chapter > .chead h2 { font-size:1.28rem; }
     .formula-cards { grid-template-columns:1fr; }
     .callout { padding:var(--sp-3) var(--sp-4); }
     #topic-search { width:140px; }
@@ -5147,7 +5184,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   @media (min-width:761px) and (max-width:768px){ #topic-search { width:90px; } #topic-search:focus { width:110px; } }
   @media (max-width:480px) {
     body { font-size:.9375rem; } /* =15px; rem so the text-size toggle applies */
-    .chapter > .chead h2 { font-size:1.12rem; }
+    .chapter > .chead h1, .chapter > .chead h2 { font-size:1.12rem; }
     .chapter-objectives { padding:var(--sp-3) var(--sp-4); }
   }
 
@@ -7426,11 +7463,11 @@ body.dark .cookie-consent-accept:hover {
 }
 
 @media print {
-  body * {
+  body:has(#cs-diagnostic-overlay) * {
     visibility: hidden;
   }
-  #cs-diagnostic-overlay,
-  #cs-diagnostic-overlay * {
+  body:has(#cs-diagnostic-overlay) #cs-diagnostic-overlay,
+  body:has(#cs-diagnostic-overlay) #cs-diagnostic-overlay * {
     visibility: visible;
   }
   #cs-diagnostic-overlay {

@@ -32,8 +32,12 @@ assert.ok(proxy.includes('withSupabase({ auth: "user" }'), 'proxy requires a sig
 ok('tts-proxy: server-side secret, correct model/endpoint, signed-in users only');
 
 const cfg = fs.readFileSync(path.join(ROOT, 'supabase/config.toml'), 'utf8');
-assert.ok(/\[functions\.tts-proxy\][\s\S]*?verify_jwt\s*=\s*true/.test(cfg), 'config.toml registers tts-proxy with verify_jwt = true');
-ok('config.toml: tts-proxy registered with verify_jwt = true');
+assert.ok(
+  /\[functions\.tts-proxy\][\s\S]*?enabled\s*=\s*true[\s\S]*?verify_jwt\s*=\s*false/.test(cfg) &&
+    proxy.includes('withSupabase({ auth: "user" }'),
+  'config.toml registers tts-proxy with ES256/JWKS gateway pass-through and user auth inside index.ts'
+);
+ok('config.toml: tts-proxy registered for ES256/JWKS user auth');
 
 const clientSrc = fs.readFileSync(path.join(ROOT, 'src/scripts/modules/03d-voice-tutor.js'), 'utf8');
 assert.ok(!/sk-or-[A-Za-z0-9-]{8,}/.test(clientSrc) && !/Deno\.env/.test(clientSrc), 'browser code holds no OpenRouter secret');

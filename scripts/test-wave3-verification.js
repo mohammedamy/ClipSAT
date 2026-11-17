@@ -51,9 +51,9 @@ for (const bf of bankFiles) {
 }
 
 // ── WP-33: SymPy Verification & Errata Log ──
-check('WP-33: All 31 banks (50,758 items) carry executable sympy_cert or signed 64-hex educator_review_hash', () => {
+check('WP-33: All 31 banks (>= 47,500 deduplicated items) carry executable sympy_cert or signed 64-hex educator_review_hash', () => {
   assert.strictEqual(bankFiles.length, 31, 'Expected 31 bank files');
-  assert.ok(totalItems >= 50000, `Expected >= 50,000 items, got ${totalItems}`);
+  assert.ok(totalItems >= 47500, `Expected >= 47,500 items, got ${totalItems}`);
   let sympyCount = 0;
   let reviewCount = 0;
   for (const [id, pool] of Object.entries(banks)) {

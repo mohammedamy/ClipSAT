@@ -29,45 +29,52 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Multiple Integrals — Linear Transformation & Basis Action",
-          "original": [
-            [
-              1,
-              1
-            ],
-            [
-              3,
-              1
-            ],
-            [
-              3,
-              3
-            ]
+          "type": "fn",
+          "title": "Non-Rectangular Region D Bounded by y = x and y = x²",
+          "xrange": [
+            -0.2,
+            1.4
           ],
-          "transformed": [
-            [
-              2,
-              1
-            ],
-            [
-              4,
-              1
-            ],
-            [
-              6,
-              3
-            ]
+          "yrange": [
+            -0.2,
+            1.4
           ],
-          "labels": [
-            "A",
-            "B",
-            "C"
+          "fns": [
+            {
+              "fn": "x",
+              "color": "var(--fig-indigo)",
+              "label": "Upper: y = x"
+            },
+            {
+              "fn": "x*x",
+              "color": "var(--fig-amber)",
+              "label": "Lower: y = x²"
+            }
+          ],
+          "shade": [
+            {
+              "x1": 0,
+              "x2": 1,
+              "fn": "x",
+              "fn2": "x*x"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "label": "(1, 1)"
+            }
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في التكاملات الثنائية والثلاثية."
+          "en": "Iterated double-integral domain \\(D = \\{(x, y) : 0 \\le x \\le 1,\\; x^2 \\le y \\le x\\}\\) bounded between \\(y = x^2\\) and \\(y = x\\).",
+          "ar": "منطقة التكامل الثنائي المتكرر \\(D = \\{(x, y) : 0 \\le x \\le 1,\\; x^2 \\le y \\le x\\}\\) المحصورة بين المنحنيين \\(y = x^2\\) و\\(y = x\\)."
         }
       },
       {
@@ -90,8 +97,8 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Polar &amp; Curvilinear Area Elements Scale by the Jacobian:</strong> Under \\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\), an infinitesimal polar sector \\([r, r+dr]\\times[\\theta, \\theta+d\\theta]\\) has radial thickness \\(dr\\) and arc width \\(r\\,d\\theta\\), giving area \\(dA = r\\,dr\\,d\\theta = \\left|\\frac{\\partial(x,y)}{\\partial(r,\\theta)}\\right|dr\\,d\\theta\\).</p>",
+          "ar": "<p><strong>لماذا يُضرب عنصر المساحة في محدد جاكوبي عند تغيير المتغيرات:</strong> تحت التحويل القطبي \\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\)، يمتلك القطاع الصغير سماكة شعاعية \\(dr\\) وعرضاً قوسياً \\(r\\,d\\theta\\)، فتكون مساحته \\(dA = r\\,dr\\,d\\theta = \\left|\\frac{\\partial(x,y)}{\\partial(r,\\theta)}\\right|dr\\,d\\theta\\).</p>"
         }
       },
       {
@@ -197,7 +204,7 @@
           "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Multiple التكاملات"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -334,7 +341,7 @@
         "kind": "figure",
         "caption": {
           "en": "Rectangular region of integration \\(R = [0, 2] \\times [0, 1]\\) in the \\(xy\\)-plane for double integral evaluation.",
-          "ar": "تمثيل هندسي لمضلع رباعي وأبعاده الأساسية في التكاملات الثنائية والثلاثية. \\(R = [0, 2] \\times [0, 1]\\) ، \\(xy\\)"
+          "ar": "منطقة التكامل المستطيلة \\(R = [0, 2] \\times [0, 1]\\) في المستوى \\(xy\\) لتطبيق نظرية فوبيني بتبديل ترتيب التكامل."
         },
         "figure": {
           "type": "rect",
@@ -578,7 +585,7 @@
             "trackId": "calculus"
           },
           {
-            "label": "Partial Derivatives &amp; the Gradient",
+            "label": "Partial Derivatives & the Gradient",
             "chapterId": "ch-partial",
             "trackId": "calculus"
           },

@@ -39,88 +39,65 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "title": "Unit 6BC · Improper Integral p-Test: 1/x² (Convergent) vs 1/x (Divergent)",
           "xrange": [
-            -1,
-            5
+            1,
+            6
           ],
           "yrange": [
-            -1,
-            5
+            0,
+            1.2
           ],
           "fns": [
             {
-              "fn": "4 - 0.25*x*x",
+              "fn": "1/(x*x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = 4 − x²/4"
+              "label": "1/x² (converges to 1)"
             },
             {
-              "fn": "0",
+              "fn": "1/x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "y = 0"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 4,
-              "label": "a = 0"
-            },
-            {
-              "x": 4,
-              "y": 0,
-              "label": "b = 4"
+              "label": "1/x (diverges)"
             }
           ]
         },
         "caption": {
-          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
-          "ar": "منحنى المكامل غير السالب على الفترة لحساب المساحة المتراكمة في الوحدة ستة BC · طرق التكامل المتقدمة والتكاملات المعتلة. \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) ، \\([0, 4]\\) ، \\(\\int_0^4 f(x)\\,dx\\)"
+          "en": "Comparison on \\([1, \\infty)\\): \\(1/x^2\\) decays fast enough for finite area \\(\\int_1^\\infty x^{-2}\\,dx = 1\\), whereas \\(\\int_1^\\infty x^{-1}\\,dx = \\infty\\).",
+          "ar": "مقارنة التكامل المعتل على \\([1, \\infty)\\) بين \\(1/x^2\\) المتقارب و\\(1/x\\) المتباعد."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Area Enclosed Between Intersecting Curves f(x) and g(x)",
+          "title": "Integration by Parts Integrand f(x) = x·e⁻ˣ on [0, 5]",
           "xrange": [
-            -1,
+            0,
             5
           ],
           "yrange": [
-            -1,
-            7
+            0,
+            0.5
           ],
           "fns": [
             {
-              "fn": "4*x - 0.8*x*x",
-              "color": "var(--fig-indigo)",
-              "label": "Upper f(x)"
-            },
-            {
-              "fn": "0.8*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Lower g(x)"
+              "fn": "x*exp(-x)",
+              "color": "var(--fig-emerald)",
+              "label": "f(x) = x·e⁻ˣ"
             }
           ],
           "points": [
             {
-              "x": 0,
-              "y": 0,
-              "label": "(0, 0)"
-            },
-            {
-              "x": 4,
-              "y": 3.2,
-              "label": "(4, 3.2)"
+              "x": 1,
+              "y": 0.368,
+              "label": "Peak (1, 1/e)"
             }
           ]
         },
         "caption": {
-          "en": "Region bounded between upper curve \\(f(x)\\) and lower line \\(g(x)\\) from \\(x = 0\\) to \\(x = 4\\).",
-          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x)\\) والمستقيم السفلي \\(g(x)\\) من \\(x = 0\\) إلى \\(x = 4\\) في الوحدة ستة BC · طرق التكامل المتقدمة والتكاملات المعتلة."
+          "en": "Product integrand \\(x e^{-x}\\) integrated via \\(u = x, dv = e^{-x}dx\\) to accumulate \\(\\int_0^\\infty x e^{-x}\\,dx = 1\\).",
+          "ar": "مكاملة حاصل الضرب \\(x e^{-x}\\) بالتجزئة لحساب المساحة المتقاربة على \\([0, \\infty)\\)."
         }
       },
       {
@@ -283,7 +260,7 @@
           },
           {
             "en": "For the second integral, let \\(w = 1+x^2 \\implies dw = 2x\\,dx\\): \\(\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2)\\).",
-            "ar": "For the second integral, ليكن \\(w = 1+x^2 \\implies dw = 2x\\,dx\\): \\(\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2)\\)."
+            "ar": "بالنسبة للتكامل الثاني، ليكن \\(w = 1+x^2 \\implies dw = 2x\\,dx\\): \\(\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2)\\)."
           },
           {
             "en": "Thus: \\(\\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}\\).",
@@ -453,7 +430,7 @@
           },
           {
             "en": "Therefore, the area is \\(\\frac{1}{2} \\times 4 \\times 6\\).",
-            "ar": "وبالتالي، the area is \\(\\frac{1}{2} \\times 4 \\times 6\\)."
+            "ar": "وبالتالي، تكون المساحة \\(\\frac{1}{2} \\times 4 \\times 6\\)."
           }
         ],
         "solution": {

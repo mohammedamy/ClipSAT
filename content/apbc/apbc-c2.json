@@ -39,27 +39,27 @@
         "kind": "figure",
         "figure": {
           "type": "slope_field",
-          "title": "Unit 7BC · Logistic Models & Euler's Method — Slope Field & Particular Solution Trajectory",
-          "fn": "0.4*y*(2 - y)",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
+          "title": "Unit 7BC · Logistic Slope Field dP/dt = 0.5P(1 − P/4)",
+          "fn": "0.5*y*(1 - y/4)",
+          "xmin": 0,
+          "xmax": 6,
+          "ymin": 0,
+          "ymax": 5,
           "solution": {
-            "x0": -1,
-            "y0": 0.6
+            "x0": 0,
+            "y0": 0.5
           }
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في الوحدة سبعة BC · النماذج اللوجستية وطريقة أويلر العددية. \\(\\frac{dy}{dx} = x -y\\) ، \\((0, 1)\\)"
+          "en": "Logistic slope field \\(\\frac{dP}{dt} = 0.5P(1 - P/4)\\) showing equilibrium carrying capacity \\(M = 4\\) and fastest growth at inflection \\(P = 2\\).",
+          "ar": "حقل الميول اللوجستي \\(\\frac{dP}{dt} = 0.5P(1 - P/4)\\) مع سعة استيعابية \\(M = 4\\) وأقصى معدل نمو عند \\(P = 2\\)."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Logistic Carrying-Capacity Trajectory P(t)",
+          "title": "Logistic Carrying-Capacity Trajectory P(t) = 10 / (1 + 4e⁻⁰·⁸ᵗ)",
           "xrange": [
             0,
             8
@@ -70,7 +70,7 @@
           ],
           "fns": [
             {
-              "fn": "10/(1 + 4*Math.exp(-0.8*x))",
+              "fn": "10/(1 + 4*exp(-0.8*x))",
               "color": "var(--fig-indigo)",
               "label": "P(t)"
             },
@@ -78,13 +78,20 @@
               "fn": "10",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "K = 10"
+              "label": "Carrying capacity M = 10"
+            }
+          ],
+          "points": [
+            {
+              "x": 1.73,
+              "y": 5,
+              "label": "Inflection P = 5"
             }
           ]
         },
         "caption": {
-          "en": "Sigmoidal logistic solution \\(P(t) = \\dfrac{10}{1 + 4e^{-0.8t}}\\) approaching carrying capacity \\(K = 10\\).",
-          "ar": "منحنى النمو اللوجستي \\(P(t) = \\dfrac{10}{1 + 4e^{-0.8t}}\\) واقترابه من السعة الاستيعابية \\(K = 10\\) في الوحدة سبعة BC · النماذج اللوجستية وطريقة أويلر العددية."
+          "en": "Sigmoidal logistic solution \\(P(t) = \\dfrac{10}{1 + 4e^{-0.8t}}\\) inflecting at \\(P = M/2 = 5\\) and approaching \\(M = 10\\).",
+          "ar": "منحنى النمو اللوجستي المقترب من السعة الاستيعابية \\(M = 10\\) مع نقطة انعطاف عند \\(P = 5\\)."
         }
       },
       {
@@ -144,7 +151,7 @@
             "valueDisplayId": "apbcoverviewExCanvas_v0",
             "ariaLabel": {
               "en": "Growth Rate k =",
-              "ar": "عنصر تفاعلي: Growth Rate k ="
+              "ar": "عنصر تفاعلي: معدل النمو k ="
             }
           },
           {
@@ -202,12 +209,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 7BC · Logistic Models & Euler's Method)",
-          "ar": null
+          "en": "◆ Why It Works — Why Logistic Growth Peaks Exactly at Half Carrying Capacity",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — لماذا يبلغ معدل النمو اللوجستي ذروته عند نصف السعة الاستيعابية"
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
-          "ar": null
+          "en": "<p><strong>Quadratic Rate Optimization:</strong> In \\(\\frac{dP}{dt} = kP\\left(1 - \\frac{P}{M}\\right)\\), the growth rate \\(R(P) = kP - \\frac{k}{M}P^2\\) is a downward-opening parabola in \\(P\\) with roots at \\(P = 0\\) and \\(P = M\\). Its vertex lies midway at \\(P = \\frac{M}{2}\\), where \\(\\frac{d^2P}{dt^2} = 0\\) marks the logistic inflection point.</p>",
+          "ar": "<p><strong>تحليل ذروة النمو اللوجستي:</strong> يمثّل معدل النمو \\(R(P) = kP(1 - P/M)\\) قطعاً مكافئاً مقعراً للأسفل جذراه \\(0\\) و\\(M\\)، فيقع رأسه عند \\(P = M/2\\) حيث نقطة الانعطاف وأقصى سرعة نمو.</p>"
         }
       },
       {

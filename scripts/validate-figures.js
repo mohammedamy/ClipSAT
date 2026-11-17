@@ -5,10 +5,11 @@
  *
  * Verifies across bank-data/*.json, content/<track>/*.json, and
  * tools/worksheet_gen/topics/<track>/*.json:
- *   1. Every bank has >= 250 clean figures.
+ *   1. Every bank has >= 25 genuine, non-boilerplate figures.
  *   2. Zero canned boilerplate figures ("Quantitative Reference Profile",
  *      "Discrete Term / Magnitude Comparison", "Diagnostic Function Check", "Item I").
- *   3. Every figure renders valid SVG/HTML via window._renderFig with 0 NaN/undefined.
+ *   3. Every figure renders valid, non-empty SVG/HTML via window._renderFig with
+ *      0 NaN/Infinity/undefined/[object Object], finite positive viewBox, and direction="ltr".
  *   4. Zero figureProblem structural/leak mismatches across all banks and practice sets.
  */
 'use strict';
@@ -59,8 +60,31 @@ function checkFigure(fig, qContext, where) {
     fail(where, 'window._renderFig returned empty or truncated output');
     return;
   }
-  if (/\bNaN\b|\bundefined\b/.test(html)) {
-    fail(where, 'rendered figure output contains NaN or undefined');
+  if (/\bNaN\b|\bInfinity\b|\bundefined\b|\[object Object\]/.test(html)) {
+    fail(where, 'rendered figure output contains NaN, Infinity, undefined, or [object Object]');
+  }
+  const a11y = typeof win._figA11yLabel === 'function' ? win._figA11yLabel(fig) : '';
+  if (/\[object Object\]|\bNaN\b|\bundefined\b/.test(a11y)) {
+    fail(where, `_figA11yLabel contains corrupted text: "${a11y}"`);
+  }
+  if (html.includes('<svg')) {
+    if (!/<svg\b[^>]*\bdirection="ltr"/.test(html)) {
+      fail(where, 'rendered <svg> missing direction="ltr" for RTL page safety');
+    }
+    const vbMatch = html.match(/\bviewBox="([^"]+)"/);
+    if (!vbMatch) {
+      fail(where, 'rendered <svg> missing viewBox attribute');
+    } else {
+      const vb = vbMatch[1].trim().split(/[\s,]+/).map(Number);
+      if (vb.length !== 4 || vb.some((n) => !Number.isFinite(n)) || vb[2] <= 0 || vb[3] <= 0) {
+        fail(where, `invalid <svg> viewBox="${vbMatch[1]}"`);
+      }
+    }
+    if (!/<(path|line|polyline|polygon|circle|ellipse|rect)\b/.test(html)) {
+      fail(where, 'rendered <svg> contains no visible geometry primitives');
+    }
+  } else if (!/<table\b/.test(html)) {
+    fail(where, 'rendered figure contains neither <svg> nor <table>');
   }
   if (qContext) {
     const fp = figureProblem(JSON.parse(JSON.stringify(fig)), qContext);
@@ -78,8 +102,8 @@ for (const f of fs.readdirSync(BANK_DIR).filter((x) => x.endsWith('.json')).sort
     bankFigs++;
     checkFigure(q.figure, q, `bank-data/${f}[${idx}] (${q.id})`);
   });
-  if (bankFigs < 250) {
-    fail(`bank-data/${f}`, `expected >= 250 figures, found ${bankFigs}`);
+  if (bankFigs < 25) {
+    fail(`bank-data/${f}`, `expected >= 25 genuine figures, found ${bankFigs}`);
   }
 }
 

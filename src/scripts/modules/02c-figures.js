@@ -214,9 +214,22 @@
     } else if(t === 'polygon' || t === 'rect'){
       var isRect = t === 'rect' || (fig.w2 && fig.h2);
       var polyName = isRect ? 'Rectangle' : 'Polygon';
-      if(Array.isArray(fig.labels) && fig.labels.length) polyName += ' ' + fig.labels.filter(Boolean).join('');
+      var polyVertLbls = [], polyDimLbls = [];
+      if(Array.isArray(fig.labels) && fig.labels.length){
+        fig.labels.forEach(function(l){
+          if(!l) return;
+          if(typeof l === 'object'){
+            var lt = l.text != null ? String(l.text) : (l.label != null ? String(l.label) : '');
+            if(lt) polyDimLbls.push(lt);
+          } else {
+            polyVertLbls.push(String(l));
+          }
+        });
+      }
+      if(polyVertLbls.length) polyName += ' ' + polyVertLbls.join('');
       res = polyName;
       if(Array.isArray(fig.sides) && fig.sides.some(Boolean)) res += ' with sides ' + fig.sides.filter(Boolean).join(', ');
+      if(polyDimLbls.length) res += ' with labels ' + polyDimLbls.join(', ');
       if(fig.semicircle) res += ' and attached semicircle';
       if(fig.inner) res += ' with inner region';
     } else if(t === 'circle'){
@@ -232,10 +245,10 @@
       if(fig.rings && fig.rings.length) res += ' with concentric circles';
     } else if(t === 'nested_triangles' || t === 'thales' || t === 'triangle_transversal'){
       res = 'Triangle with parallel transversal line segment';
-      if(Array.isArray(fig.labels) && fig.labels.length) res += ' ' + fig.labels.join('');
+      if(Array.isArray(fig.labels) && fig.labels.length) res += ' ' + fig.labels.map(function(l){ return typeof l === 'object' ? (l.text || l.label || '') : l; }).filter(Boolean).join('');
     } else if(t === 'bowtie' || t === 'hourglass'){
       res = 'Hourglass or bowtie similar triangles with vertical angles';
-      if(Array.isArray(fig.labels) && fig.labels.length) res += ' ' + fig.labels.join('');
+      if(Array.isArray(fig.labels) && fig.labels.length) res += ' ' + fig.labels.map(function(l){ return typeof l === 'object' ? (l.text || l.label || '') : l; }).filter(Boolean).join('');
     } else if(t === 'right_triangle_altitude' || t === 'altitude_hypotenuse' || t === 'geometric_mean'){
       res = 'Right triangle with altitude drawn to hypotenuse';
     } else if(t === 'shadow_similarity' || t === 'indirect_measurement'){
@@ -313,8 +326,9 @@
     } else if(t === 'normal_curve' || t === 'normal_dist'){
       res = 'Normal distribution bell curve (mean ' + (fig.mean!=null?fig.mean:0) + ', sd ' + (fig.sd!=null?fig.sd:1) + ')' + (fig.title ? ': ' + fig.title : '');
       if(fig.shade) res += ' showing shaded probability region';
-    } else if(t === 'slope_field'){
-      res = 'Slope field for differential equation dy/dx = ' + (fig.fn || fig.expr || 'f(x,y)') + (fig.title ? ': ' + fig.title : '');
+    } else if(t === 'slope_field' || t === 'slopeField' || t === 'direction_field'){
+      var sfEq = fig.fn || fig.expr || fig.f || (fig.dy && fig.dx ? '(' + fig.dy + ')/(' + fig.dx + ')' : (fig.eq ? String(fig.eq).replace(/^.*=\s*/, '') : 'f(x,y)'));
+      res = 'Slope field for differential equation dy/dx = ' + sfEq + (fig.title ? ': ' + fig.title : '');
     } else if(t === 'two_way_table'){
       res = 'Two-way frequency table' + (fig.title ? ': ' + fig.title : '');
     } else if(t === 'cumulative_frequency'){
@@ -906,6 +920,14 @@
       }
     } else if(t === 'polygon' || t === 'rect'){
       if(!fig.sides && Array.isArray(fig.side_labels)) fig.sides = fig.side_labels.slice();
+    } else if(t === 'slope_field' || t === 'slopeField' || t === 'direction_field'){
+      fig.type = 'slope_field';
+      if(!fig.fn && !fig.expr){
+        fig.fn = fig.f || (fig.dy && fig.dx ? '(' + fig.dy + ')/(' + fig.dx + ')' : (fig.eq ? String(fig.eq).replace(/^.*=\s*/, '') : 'x - y'));
+      }
+    } else if(t === 'geometry_3d' || t === 'geom3d'){
+      fig.type = 'geometry_3d';
+      if(!fig.solid && fig.shape) fig.solid = fig.shape;
     } else if(t === 'boxplot' || t === 'box_plot' || t === 'boxPlot' || t === 'box'){
       if(Array.isArray(fig.groups) && fig.groups.length && Array.isArray(fig.groups[0].stats) && !fig.fiveNum){
         fig.fiveNum = fig.groups[0].stats.slice();
@@ -1079,7 +1101,7 @@
       if(legendRows.length > 0) H = baseH + legendRows.length * 18 + 10;
     }
     var a11y=_figA11yLabel(fig);
-    var s='<svg class="mfig-svg" shape-rendering="geometricPrecision" role="img" aria-label="'+esc(a11y)+'" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:var(--font-sans, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif);background:'+FIG_BG+';border-radius:8px;border:1px solid '+FIG_BORDER+';box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
+    var s='<svg direction="ltr" class="mfig-svg" shape-rendering="geometricPrecision" role="img" aria-label="'+esc(a11y)+'" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:var(--font-sans, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif);background:'+FIG_BG+';border-radius:8px;border:1px solid '+FIG_BORDER+';box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
     s+='<title>'+esc(a11y)+'</title>';
     /* ── coordinate axes + function plots ── */
     if(isCoordGraph){
@@ -2833,7 +2855,7 @@ function renderGeom2D(s){
   function norm2(v){var l=Math.sqrt(v[0]*v[0]+v[1]*v[1])||1;return [v[0]/l,v[1]/l];}
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg+='<title>'+esc(a11y)+'</title>';
   svg+='<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
 
@@ -2955,9 +2977,12 @@ function renderGeom2D(s){
 /* ── 3D Geometry (isometric projection) ─────────────── */
 function renderGeom3D(s){
   var W=340,H=240;
-  var solid=s.solid||'rectangular_prism';
-  var dims=s.dims||[4,3,2];
-  var lw=+dims[0]||4, dw=+dims[1]||3, ht=+dims[2]||2;
+  var solid=s.solid||s.shape||'rectangular_prism';
+  var hasDims=Array.isArray(s.dims)&&s.dims.length>0;
+  var dims=hasDims?s.dims:[4,3,2];
+  var lw=+(s.baseLength!=null?s.baseLength:(s.length!=null?s.length:(s.l!=null?s.l:dims[0])))||4;
+  var dw=+(s.baseWidth!=null?s.baseWidth:(s.width!=null?s.width:(s.w!=null?s.w:(hasDims?dims[1]:((solid==='cube'||solid==='square_pyramid'||solid==='pyramid')?lw:3)))))||3;
+  var ht=+(s.height!=null?s.height:(s.h!=null?s.h:(hasDims?dims[2]:2)))||2;
   var sc=Math.min(42,Math.min((W-90)/((lw+dw)*0.866||1),(H-72)/(ht+(lw+dw)*0.5||1)));
   var midX3=(lw-dw)*sc*0.866*0.5;
   var midY3=(-ht*sc+(lw+dw)*sc*0.5)*0.5;
@@ -2966,7 +2991,7 @@ function renderGeom3D(s){
     return{x:cx+(ix-iz)*sc*0.866,y:cy-iy*sc+(ix+iz)*sc*0.5};
   }
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg+='<title>'+esc(a11y)+'</title>';
   svg+='<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
 
@@ -3071,22 +3096,40 @@ function renderGeom3D(s){
     if(L3.l) svg+=lbl(g.cx+g.rx/2+10,(g.top+g.bot)/2,L3.l,'start');
   }
 
-  if(solid==='square_pyramid'){
-    /* Honors dims[1] as the base depth, so a rectangular base (e.g. a 2x12
+  if(solid==='square_pyramid'||solid==='pyramid'||solid==='rectangular_pyramid'||solid==='tetrahedron'){
+    /* Honors dims[1] / baseWidth as the base depth, so a rectangular base (e.g. a 6x8 or 2x12
        pyramid) draws truthfully instead of silently squaring off and
-       contradicting its own "2 x 12" label. dims[0]===dims[1] still gives the
-       square pyramid the name implies. */
+       contradicting its own label. dims[0]===dims[1] still gives a square pyramid. */
     var l4=lw,d4=dw,h4=ht;
-    var apex4=iso(l4/2,h4,d4/2);
-    var bases=[[0,0,0],[l4,0,0],[l4,0,d4],[0,0,d4]];
+    var isTet=(solid==='tetrahedron');
+    var apex4=isTet?iso(l4/2,h4,d4/3):iso(l4/2,h4,d4/2);
+    var bases=isTet?[[0,0,0],[l4,0,0],[l4/2,0,d4]]:[[0,0,0],[l4,0,0],[l4,0,d4],[0,0,d4]];
     var faceColors=[FACE_FRONT,FACE_SIDE,FACE_FRONT,FACE_SIDE];
-    for(var fi=0;fi<4;fi++){
-      var b1=bases[fi],b2=bases[(fi+1)%4];
+    for(var fi=0;fi<bases.length;fi++){
+      var b1=bases[fi],b2=bases[(fi+1)%bases.length];
       svg+=face([pt(b1[0],b1[1],b1[2]),pt(b2[0],b2[1],b2[2]),apex4.x.toFixed(1)+','+apex4.y.toFixed(1)],faceColors[fi]);
     }
     var lbs4=s.labels||{};
-    if(lbs4.base){var mb=iso(l4/2,0,d4+0.5);svg+='<text x="'+mb.x+'" y="'+(mb.y+12)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="middle" font-weight="600">'+esc(lbs4.base)+'</text>';}
-    if(lbs4.h){svg+='<line x1="'+iso(l4/2,0,d4/2).x+'" y1="'+iso(l4/2,0,d4/2).y+'" x2="'+apex4.x+'" y2="'+apex4.y+'" stroke="'+FIG_INK+'" stroke-width="1.2" stroke-dasharray="4 2"/><text x="'+(apex4.x+12)+'" y="'+(apex4.y+4)+'" font-size="11" fill="'+FIG_INDIGO+'" font-weight="600">'+esc(lbs4.h)+'</text>';}
+    var pLblBase = lbs4.base || lbs4.l || (s.baseLength!=null ? String(s.baseLength) : '');
+    var pLblDepth = lbs4.w || (s.baseWidth!=null ? String(s.baseWidth) : '');
+    var pLblH = lbs4.h || (s.height!=null && !s.labels ? ('h = '+s.height) : '');
+    if(pLblBase){
+      var mb=iso(l4/2,0,d4);
+      var bxP=_clampLabelX(mb.x-4, String(pLblBase), 10.5, 'middle', 8, W-8);
+      svg+='<text x="'+bxP.toFixed(1)+'" y="'+Math.min(H-6, mb.y+14).toFixed(1)+'" font-size="10.5" fill="'+FIG_INDIGO+'" text-anchor="middle" font-weight="600" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(pLblBase)+'</text>';
+    }
+    if(pLblDepth){
+      var md4=iso(l4,0,d4/2);
+      var dxP=_clampLabelX(md4.x+8, String(pLblDepth), 10.5, 'start', 8, W-8);
+      svg+='<text x="'+dxP.toFixed(1)+'" y="'+Math.min(H-6, md4.y+10).toFixed(1)+'" font-size="10.5" fill="'+FIG_INDIGO+'" text-anchor="start" font-weight="600" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(pLblDepth)+'</text>';
+    }
+    if(pLblH){
+      var foot4=isTet?iso(l4/2,0,d4/3):iso(l4/2,0,d4/2);
+      svg+='<line x1="'+foot4.x.toFixed(1)+'" y1="'+foot4.y.toFixed(1)+'" x2="'+apex4.x.toFixed(1)+'" y2="'+apex4.y.toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.2" stroke-dasharray="4 2"/>';
+      var hxP=_clampLabelX(apex4.x+10, String(pLblH), 10.5, 'start', 8, W-8);
+      var hyP=Math.max(22, Math.min(H-16, (foot4.y+apex4.y)/2));
+      svg+='<text x="'+hxP.toFixed(1)+'" y="'+hyP.toFixed(1)+'" font-size="10.5" fill="'+FIG_INDIGO+'" font-weight="600" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(pLblH)+'</text>';
+    }
   }
 
   if(solid==='triangular_prism'){
@@ -3158,7 +3201,7 @@ function renderBarChart(s){
   var gap=(pw-bw*bars.length)/(bars.length+1);
   var colors=FIG_SERIES;
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg+='<title>'+esc(a11y)+'</title>';
   svg+='<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
   // Title
@@ -3228,7 +3271,7 @@ function renderScatter(s){
   function sx2(x){return ml+(x-xmin2)/(xmax2-xmin2)*pw;}
   function sy2(y){return mt+ph-(y-ymin2)/(ymax2-ymin2)*ph;}
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg+='<title>'+esc(a11y)+'</title>';
   svg+='<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
   if(s.title) svg+=_svgTitle(s.title, W, 14, 10.5, FIG_INK);
@@ -3276,7 +3319,7 @@ function renderPie(s){
   var total=slices.reduce(function(a,sl){return a+(+(sl.val!=null?sl.val:sl.value)||0);},0)||1;
   var colors=FIG_SERIES;
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg+='<title>'+esc(a11y)+'</title>';
   svg+='<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
   if(s.title) svg+=_svgTitle(s.title, W, 14, 10.5, FIG_INK);
@@ -3316,7 +3359,7 @@ function renderNumberLine(s){
   if(Math.abs(mx-mn)<1e-6){ mn-=5; mx+=5; }
   function sx3(v){return ml+(v-mn)/(mx-mn)*pw;}
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg+='<title>'+esc(a11y)+'</title>';
   svg+='<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
   // Line
@@ -3381,7 +3424,7 @@ function renderBoxPlot(s){
     var gPw = W - gMl - gMr;
     var gSx = function(v){ return gMl + ((v - gAxMin) / gSpan) * gPw; };
     var a11yG = _figA11yLabel(s);
-    var svgG = '<svg role="img" aria-label="'+esc(a11yG)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+    var svgG = '<svg direction="ltr" role="img" aria-label="'+esc(a11yG)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
     svgG += '<title>'+esc(a11yG)+'</title>';
     if(s.title) svgG += _svgTitle(s.title, W, 16, 10.5, FIG_INK);
 
@@ -3455,7 +3498,7 @@ function renderBoxPlot(s){
   function sx(v){ return ml+((v-axMin)/span)*pw; }
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3548,7 +3591,7 @@ function renderHistogram(s){
   var bw=pw/freqs.length;
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3610,7 +3653,7 @@ function renderDotPlot(s){
   function sx(k){ return ml+((k-axMin)/(axMax-axMin))*pw; }
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3659,7 +3702,7 @@ function renderUnitCircle(s){
   var ox=W/2, oy=H/2+6, R=Math.min(W,H)*0.33;
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3749,7 +3792,7 @@ function renderSinusoid(s){
   function sy(y){ return mt+ph-((y-ymin)/(ymax-ymin))*ph; }
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3812,7 +3855,7 @@ function renderNormalCurve(s){
   function gauss(z){ return (1/Math.sqrt(2*Math.PI))*Math.exp(-0.5*z*z); }
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3865,7 +3908,7 @@ function renderNormalCurve(s){
 /* ── Slope Field ──────────────────────────────────────── */
 function renderSlopeField(s){
   var W=s.w||s.width||280, H=s.h||s.height||240;
-  var expr=s.fn||s.expr||'x - y';
+  var expr=s.fn||s.expr||s.f||(s.dy&&s.dx?'('+s.dy+')/('+s.dx+')':(s.eq?String(s.eq).replace(/^.*=\s*/,''):'x - y'));
   var xr=s.xrange||s.xlim||[s.xmin!=null?s.xmin:-3, s.xmax!=null?s.xmax:3];
   var yr=s.yrange||s.ylim||[s.ymin!=null?s.ymin:-3, s.ymax!=null?s.ymax:3];
 
@@ -3881,7 +3924,7 @@ function renderSlopeField(s){
   }
 
   var a11y=_figA11yLabel(s);
-  var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg='<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg+='<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -3930,34 +3973,51 @@ function renderSlopeField(s){
       svg += '<polyline points="'+sfPts.join(' ')+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
     }
   }
-  // Optional integral solution curve (backward + forward Euler approximation)
-  if(s.solution && s.solution.x0!=null && s.solution.y0!=null){
+  // Optional integral solution curve(s) (backward + forward Euler approximation)
+  function drawSlopeTrajectory(x0, y0, strokeCol, markPt){
+    if(x0==null||y0==null||!isFinite(+x0)||!isFinite(+y0)) return;
+    var ix=+x0, iy=+y0;
     var solPts=[], backPts=[];
-    var curX=s.solution.x0, curY=s.solution.y0;
-    var dt=0.04;
-    for(var sb=0; sb<80; sb++){
+    var curX=ix, curY=iy;
+    var dt=Math.min(0.04, Math.max(0.01, (xr[1]-xr[0])/160));
+    for(var sb=0; sb<120; sb++){
       if(curX>xr[1]||curX<xr[0]||curY>yr[1]||curY<yr[0]) break;
       backPts.push(sx(curX).toFixed(1)+','+sy(curY).toFixed(1));
       var mb1=slopeEval(curX, curY);
       if(isNaN(mb1)) break;
-      curX -= dt;
-      curY -= mb1*dt;
+      var stepB = dt / Math.max(1, Math.abs(mb1)*0.35);
+      curX -= stepB;
+      curY -= mb1*stepB;
     }
     backPts.reverse();
-    curX=s.solution.x0; curY=s.solution.y0;
-    for(var st=0; st<80; st++){
+    curX=ix; curY=iy;
+    for(var st=0; st<120; st++){
       if(curX>xr[1]||curX<xr[0]||curY>yr[1]||curY<yr[0]) break;
       if(st>0) solPts.push(sx(curX).toFixed(1)+','+sy(curY).toFixed(1));
       var m1=slopeEval(curX, curY);
       if(isNaN(m1)) break;
-      curX += dt;
-      curY += m1*dt;
+      var stepF = dt / Math.max(1, Math.abs(m1)*0.35);
+      curX += stepF;
+      curY += m1*stepF;
     }
     var fullSol = backPts.concat(solPts);
     if(fullSol.length>1){
-      svg+='<polyline points="'+fullSol.join(' ')+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+      svg+='<polyline points="'+fullSol.join(' ')+'" fill="none" stroke="'+(strokeCol||FIG_AMBER)+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
     }
-    svg+='<circle cx="'+sx(s.solution.x0).toFixed(1)+'" cy="'+sy(s.solution.y0).toFixed(1)+'" r="3.5" fill="'+FIG_AMBER+'" stroke="'+FIG_BG+'" stroke-width="1.2"/>';
+    if(markPt && ix>=xr[0] && ix<=xr[1] && iy>=yr[0] && iy<=yr[1]){
+      svg+='<circle cx="'+sx(ix).toFixed(1)+'" cy="'+sy(iy).toFixed(1)+'" r="3.5" fill="'+(strokeCol||FIG_AMBER)+'" stroke="'+FIG_BG+'" stroke-width="1.2"/>';
+    }
+  }
+  if(s.solution && s.solution.x0!=null && s.solution.y0!=null){
+    drawSlopeTrajectory(s.solution.x0, s.solution.y0, s.solution.color||FIG_AMBER, true);
+  }
+  if(Array.isArray(s.curves) && s.curves.length){
+    s.curves.forEach(function(cv){
+      if(!cv) return;
+      var cx0 = cv.x0!=null ? cv.x0 : (Array.isArray(cv) ? cv[0] : null);
+      var cy0 = cv.y0!=null ? cv.y0 : (Array.isArray(cv) ? cv[1] : null);
+      drawSlopeTrajectory(cx0, cy0, cv.color||FIG_AMBER, cv.showPoint!==false);
+    });
   }
 
   svg+='</svg>';
@@ -4105,7 +4165,7 @@ function renderCumulativeFrequency(s){
   function sy(y){ return mt + ph - ((y - ymin) / yspan) * ph; }
 
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg += '<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -4231,7 +4291,7 @@ function renderCumulativeFrequency(s){
 function renderTreeDiagram(s){
   var W = s.w || s.width || 380, H = s.h || s.height || 235;
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg += '<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -4307,7 +4367,7 @@ function renderTreeDiagram(s){
 function renderBearings(s){
   var W = s.w || s.width || 320, H = s.h || s.height || 250;
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg += '<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -4429,7 +4489,7 @@ function renderBearings(s){
 function renderSignChart(s){
   var W = s.w || s.width || 360, H = s.h || s.height || 145;
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg += '<title>'+esc(a11y)+'</title>';
 
   if(s.title){
@@ -4534,7 +4594,7 @@ function renderSignChart(s){
 function renderTransformationGrid(s){
   var W = s.w || s.width || 320, H = s.h || s.height || 270;
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg += '<title>'+esc(a11y)+'</title>';
 
   var pad = 28, topPad = s.title ? 30 : 22;
@@ -4576,7 +4636,7 @@ function renderTransformationGrid(s){
 
   var tgBoxes = [];
   function tgOverlaps(cx, cy, w, h){
-    var x1 = cx - w/2, x2 = cx + w/2, y1 = cy - h*0.8, y2 = cy + h*0.2;
+    var x1 = cx - w/2 - 1.5, x2 = cx + w/2 + 1.5, y1 = cy - h*0.8 - 1, y2 = cy + h*0.2 + 1;
     for(var k = 0; k < tgBoxes.length; k++){
       var b = tgBoxes[k];
       if(Math.min(x2, b.x2) - Math.max(x1, b.x1) > 0 && Math.min(y2, b.y2) - Math.max(y1, b.y1) > 0) return true;
@@ -4584,7 +4644,7 @@ function renderTransformationGrid(s){
     return false;
   }
   function tgRecord(cx, cy, w, h){
-    tgBoxes.push({ x1: cx - w/2, x2: cx + w/2, y1: cy - h*0.8, y2: cy + h*0.2 });
+    tgBoxes.push({ x1: cx - w/2 - 1.5, x2: cx + w/2 + 1.5, y1: cy - h*0.8 - 1, y2: cy + h*0.2 + 1 });
   }
 
   svg += '<g font-size="8" fill="'+FIG_MUTED+'" text-anchor="middle">';
@@ -4633,22 +4693,25 @@ function renderTransformationGrid(s){
   }
 
   function placeTgVertLabel(vx, vy, cx0, cy0, lbl){
-    var dx = vx - cx0, dy = vy - cy0, dl = Math.hypot(dx, dy) || 1;
-    var baseAng = Math.atan2(dy, dx);
-    var lw = Math.max(10, String(lbl).length * 6.2), lh = 11;
-    var cands = [0, 0.5, -0.5, 1.0, -1.0, 1.5, -1.5, 2.2, -2.2, Math.PI];
-    for(var ci = 0; ci < cands.length; ci++){
-      var ang = baseAng + cands[ci];
-      var dist = ci < 3 ? 12 : 14;
-      var lx = _clampLabelX(vx + Math.cos(ang)*dist, lbl, 9.5, 'middle', pad+4, W-pad-4);
-      var ly = Math.max(topPad+9, Math.min(H-pad-4, vy + Math.sin(ang)*dist + 3));
-      if(!tgOverlaps(lx, ly, lw, lh)){
-        tgRecord(lx, ly, lw, lh);
-        return [lx, ly];
+    var dx = vx - cx0, dy = vy - cy0, dl = Math.hypot(dx, dy);
+    var baseAng = dl > 0.5 ? Math.atan2(dy, dx) : -Math.PI * 0.75;
+    var lw = Math.max(11, String(lbl).length * 6.4), lh = 11.5;
+    var cands = [0, 0.42, -0.42, 0.84, -0.84, 1.26, -1.26, 1.68, -1.68, 2.1, -2.1, 2.52, -2.52, 2.9, -2.9, Math.PI];
+    var radii = [12, 19, 27, 35];
+    for(var ri = 0; ri < radii.length; ri++){
+      var dist = radii[ri];
+      for(var ci = 0; ci < cands.length; ci++){
+        var ang = baseAng + cands[ci];
+        var lx = _clampLabelX(vx + Math.cos(ang)*dist, lbl, 9.5, 'middle', pad+4, W-pad-4);
+        var ly = Math.max(topPad+9, Math.min(H-pad-4, vy + Math.sin(ang)*dist + 3));
+        if(!tgOverlaps(lx, ly, lw, lh)){
+          tgRecord(lx, ly, lw, lh);
+          return [lx, ly];
+        }
       }
     }
-    var flx = _clampLabelX(vx + (dx/dl)*12, lbl, 9.5, 'middle', pad+4, W-pad-4);
-    var fly = Math.max(topPad+9, Math.min(H-pad-4, vy + (dy/dl)*12 + 3));
+    var flx = _clampLabelX(vx + Math.cos(baseAng)*14, lbl, 9.5, 'middle', pad+4, W-pad-4);
+    var fly = Math.max(topPad+9, Math.min(H-pad-4, vy + Math.sin(baseAng)*14 + 3));
     tgRecord(flx, fly, lw, lh);
     return [flx, fly];
   }
@@ -4699,7 +4762,7 @@ function renderTransformationGrid(s){
 function renderVoronoi(s){
   var W = s.w || s.width || 360, H = s.h || s.height || 280;
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
   svg += '<title>'+esc(a11y)+'</title>';
 
   var pad = 28, topPad = s.title ? 30 : 24;
@@ -4937,7 +5000,7 @@ function renderArgand(s){
   function sy(y){ return mt + ph - (y - ymin) / ((ymax - ymin)||1) * ph; }
   var ox = sx(0), oy = sy(0);
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg += '<title>'+esc(a11y)+'</title>';
   svg += '<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
 
@@ -4953,6 +5016,31 @@ function renderArgand(s){
   }
 
   var argPlaced = [];
+  function argBoxHits(b){
+    for(var k = 0; k < argPlaced.length; k++){
+      var p = argPlaced[k];
+      if(Math.min(b.x2, p.x2) - Math.max(b.x1, p.x1) > 0 && Math.min(b.y2, p.y2) - Math.max(b.y1, p.y1) > 0) return true;
+    }
+    return false;
+  }
+  function argMakeBox(x, y, txt, fs, anc){
+    var w = Math.max(10, String(txt).length * (fs * 0.58) + 4);
+    var x1 = anc === 'end' ? x - w : (anc === 'middle' ? x - w/2 : x);
+    return { x1: x1 - 1, x2: x1 + w + 1, y1: y - fs * 0.85 - 1, y2: y + fs * 0.22 + 1 };
+  }
+  // Reserve complex point markers so circle/tick labels stay clear of roots
+  var argPtScreen = pts.map(function(pt){
+    var re = pt.re!=null?pt.re:(pt.x!=null?pt.x:0);
+    var im = pt.im!=null?pt.im:(pt.y!=null?pt.y:0);
+    return { px: sx(re), py: sy(im) };
+  });
+  argPtScreen.forEach(function(ps){
+    argPlaced.push({ x1: ps.px - 6, x2: ps.px + 6, y1: ps.py - 6, y2: ps.py + 6 });
+  });
+  argPlaced.push(argMakeBox(ml+pw+10, oy+4, 'Re', 10, 'start'));
+  argPlaced.push(argMakeBox(ox+6, mt+9, 'Im', 10, 'start'));
+  argPlaced.push(argMakeBox(ox-8, oy+12, 'O', 9, 'start'));
+
   // Optional modulus circles: s.circles = [{x, y, r, label, dashed, fill}]
   circles.forEach(function(c){
     var cx = sx(c.x||0), cy = sy(c.y||0);
@@ -4960,11 +5048,27 @@ function renderArgand(s){
     var ry = Math.abs(sy((c.y||0)+(c.r||1)) - cy);
     svg += '<ellipse cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" rx="'+rx.toFixed(1)+'" ry="'+ry.toFixed(1)+'" fill="'+(c.fill||FIG_INDIGO_FILL)+'" stroke="'+(c.color||FIG_INDIGO2)+'" stroke-width="1.5"'+(c.dashed?' stroke-dasharray="5,3"':'')+'/>';
     if(c.label){
-      var clx = _clampLabelX(cx-rx*0.5, c.label, 9.5, 'end', 6, W-6);
-      var cly = Math.min(H-8, cy+ry+13);
-      var cw = String(c.label).length * 5.2 + 6;
-      argPlaced.push({ x1: clx - cw, x2: clx, y1: cly - 9, y2: cly + 3 });
-      svg += '<text x="'+clx.toFixed(1)+'" y="'+cly.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+(c.color||FIG_INDIGO)+'" text-anchor="end" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(c.label)+'</text>';
+      var cAngs = [-Math.PI*0.75, Math.PI*0.75, -Math.PI*0.25, Math.PI*0.25, -Math.PI*0.6, Math.PI*0.6];
+      var chosenC = null;
+      for(var cai = 0; cai < cAngs.length; cai++){
+        var ca = cAngs[cai];
+        var cAnc = Math.cos(ca) < 0 ? 'end' : 'start';
+        var rawCx = cx + Math.cos(ca) * (rx + 6);
+        var rawCy = Math.max(mt + 11, Math.min(H - 8, cy + Math.sin(ca) * (ry + 8) + 3));
+        var clxC = _clampLabelX(rawCx, c.label, 9.5, cAnc, 6, W - 6);
+        var cBox = argMakeBox(clxC, rawCy, c.label, 9.5, cAnc);
+        if(!argBoxHits(cBox)){
+          chosenC = { x: clxC, y: rawCy, anc: cAnc, box: cBox };
+          break;
+        }
+      }
+      if(!chosenC){
+        var fbX = _clampLabelX(cx - rx * 0.72 - 4, c.label, 9.5, 'end', 6, W - 6);
+        var fbY = Math.max(mt + 11, cy - ry * 0.72);
+        chosenC = { x: fbX, y: fbY, anc: 'end', box: argMakeBox(fbX, fbY, c.label, 9.5, 'end') };
+      }
+      argPlaced.push(chosenC.box);
+      svg += '<text x="'+chosenC.x.toFixed(1)+'" y="'+chosenC.y.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+(c.color||FIG_INDIGO)+'" text-anchor="'+chosenC.anc+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(c.label)+'</text>';
     }
   });
 
@@ -5004,13 +5108,21 @@ function renderArgand(s){
     if(xi === 0) continue;
     var tx = sx(xi);
     svg += '<line x1="'+tx.toFixed(1)+'" y1="'+(oy-2.5).toFixed(1)+'" x2="'+tx.toFixed(1)+'" y2="'+(oy+2.5).toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1"/>';
-    svg += '<text x="'+tx.toFixed(1)+'" y="'+(oy+12).toFixed(1)+'" font-size="8.5" fill="'+FIG_MUTED+'" text-anchor="middle">'+xi+'</text>';
+    var xTickBox = argMakeBox(tx, oy+12, String(xi), 8.5, 'middle');
+    if(!argBoxHits(xTickBox)){
+      argPlaced.push(xTickBox);
+      svg += '<text x="'+tx.toFixed(1)+'" y="'+(oy+12).toFixed(1)+'" font-size="8.5" fill="'+FIG_MUTED+'" text-anchor="middle">'+xi+'</text>';
+    }
   }
   for(yi = Math.ceil(ymin / yStep) * yStep; yi <= Math.floor(ymax); yi += yStep){
     if(yi === 0) continue;
     var ty = sy(yi);
     svg += '<line x1="'+(ox-2.5).toFixed(1)+'" y1="'+ty.toFixed(1)+'" x2="'+(ox+2.5).toFixed(1)+'" y2="'+ty.toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1"/>';
-    svg += '<text x="'+(ox-5).toFixed(1)+'" y="'+(ty+3).toFixed(1)+'" font-size="8.5" fill="'+FIG_MUTED+'" text-anchor="end">'+yi+'i</text>';
+    var yTickBox = argMakeBox(ox-5, ty+3, yi+'i', 8.5, 'end');
+    if(!argBoxHits(yTickBox)){
+      argPlaced.push(yTickBox);
+      svg += '<text x="'+(ox-5).toFixed(1)+'" y="'+(ty+3).toFixed(1)+'" font-size="8.5" fill="'+FIG_MUTED+'" text-anchor="end">'+yi+'i</text>';
+    }
   }
 
   // Complex vectors and points
@@ -5034,12 +5146,34 @@ function renderArgand(s){
     }
     svg += '<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="4" fill="'+col+'" stroke="'+FIG_BG+'" stroke-width="1.2" data-inspect="'+esc((pt.label||'z')+' = '+re+(im>=0?' + '+im+'i':' - '+Math.abs(im)+'i'))+'"/>';
     if(pt.label){
-      var anc = px >= ox ? 'start' : 'end';
-      var dx = px >= ox ? 8 : -8;
-      var dy = py <= oy ? -7 : 13;
-      var lx = _clampLabelX(px + dx, pt.label, 9.5, anc, 6, W - 6);
-      var ly = Math.max(mt + 10, Math.min(H - 6, py + dy));
-      svg += '<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" font-size="9.5" font-weight="bold" fill="'+FIG_INK+'" text-anchor="'+anc+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3" stroke-linejoin="round">'+esc(pt.label)+'</text>';
+      var prefRight = px >= ox, prefUp = py <= oy;
+      var pCands = [
+        [prefRight ? 8 : -8, prefUp ? -7 : 14, prefRight ? 'start' : 'end'],
+        [prefRight ? 8 : -8, prefUp ? 14 : -7, prefRight ? 'start' : 'end'],
+        [prefRight ? -8 : 8, prefUp ? -7 : 14, prefRight ? 'end' : 'start'],
+        [0, prefUp ? -10 : 16, 'middle'],
+        [prefRight ? 12 : -12, 3, prefRight ? 'start' : 'end'],
+        [prefRight ? -8 : 8, prefUp ? 14 : -7, prefRight ? 'end' : 'start']
+      ];
+      var chosenP = null;
+      for(var pci = 0; pci < pCands.length; pci++){
+        var pc = pCands[pci];
+        var plx = _clampLabelX(px + pc[0], pt.label, 9.5, pc[2], 6, W - 6);
+        var ply = Math.max(mt + 10, Math.min(H - 6, py + pc[1]));
+        var pBox = argMakeBox(plx, ply, pt.label, 9.5, pc[2]);
+        if(!argBoxHits(pBox)){
+          chosenP = { x: plx, y: ply, anc: pc[2], box: pBox };
+          break;
+        }
+      }
+      if(!chosenP){
+        var anc0 = prefRight ? 'start' : 'end';
+        var lx0 = _clampLabelX(px + (prefRight ? 8 : -8), pt.label, 9.5, anc0, 6, W - 6);
+        var ly0 = Math.max(mt + 10, Math.min(H - 6, py + (prefUp ? -7 : 14)));
+        chosenP = { x: lx0, y: ly0, anc: anc0, box: argMakeBox(lx0, ly0, pt.label, 9.5, anc0) };
+      }
+      argPlaced.push(chosenP.box);
+      svg += '<text x="'+chosenP.x.toFixed(1)+'" y="'+chosenP.y.toFixed(1)+'" font-size="9.5" font-weight="bold" fill="'+FIG_INK+'" text-anchor="'+chosenP.anc+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3" stroke-linejoin="round">'+esc(pt.label)+'</text>';
     }
   });
 
@@ -5055,11 +5189,32 @@ window.renderArgand = renderArgand;
 function renderNetworkGraph(s){
   var W=350, H=250;
   var a11y = _figA11yLabel(s);
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg += '<title>'+esc(a11y)+'</title>';
   svg += '<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
 
-  var nodes = s.nodes || [];
+  var rawNodes = s.nodes || [];
+  var minNX = Infinity, maxNX = -Infinity, minNY = Infinity, maxNY = -Infinity;
+  rawNodes.forEach(function(n){
+    var nx = +n.x || 0, ny = +n.y || 0;
+    if(nx < minNX) minNX = nx;
+    if(nx > maxNX) maxNX = nx;
+    if(ny < minNY) minNY = ny;
+    if(ny > maxNY) maxNY = ny;
+  });
+  var isNorm100 = rawNodes.length > 0 && minNX >= 0 && maxNX <= 105 && minNY >= 0 && maxNY <= 105 && (maxNX <= 100 || maxNY <= 100);
+  var topSafe = s.title ? 44 : 26;
+  var nodes = rawNodes.map(function(n){
+    var nx = +n.x || 0, ny = +n.y || 0;
+    if(isNorm100){
+      var spX = (maxNX - minNX) || 1, spY = (maxNY - minNY) || 1;
+      nx = 46 + ((nx - minNX) / spX) * (W - 92);
+      ny = topSafe + ((ny - minNY) / spY) * (H - topSafe - 26);
+    } else if(s.title && minNY < topSafe){
+      ny = Math.min(H - 22, ny + (topSafe - minNY));
+    }
+    return { id: n.id, label: n.label, highlight: n.highlight, x: nx, y: ny };
+  });
   var nodeMap = {};
   nodes.forEach(function(n){ nodeMap[n.id || n.label] = n; });
 
@@ -5140,7 +5295,7 @@ window.renderNetworkGraph = renderNetworkGraph;
 function renderShadedRegion(s){
   var W=340, H=245;
   var a11y = s.title || 'Shaded region geometric figure';
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg += '<title>'+esc(a11y)+'</title>';
   svg += '<defs><pattern id="qudHatch" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="'+FIG_AMBER+'" stroke-width="1.6" opacity="0.55"/></pattern></defs>';
   svg += '<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
@@ -5240,7 +5395,7 @@ function renderConicSection(s){
   function sy(y){ return mt + ph - (y - ymin)/((ymax - ymin)||1)*ph; }
   var ox=sx(0), oy=sy(0);
   var a11y = s.title || 'Conic section coordinate graph';
-  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
+  var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg += '<title>'+esc(a11y)+'</title>';
   svg += '<rect width="'+W+'" height="'+H+'" fill="'+FIG_BG+'" rx="8"/>';
 

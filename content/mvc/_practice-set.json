@@ -11,23 +11,6 @@
       "solution": {
         "en": "<p><strong>1. Partial Derivative with respect to \\(x\\) (treating \\(y\\) as constant):</strong>\\[f_x(x,y) = \\frac{\\partial}{\\partial x}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial x}[y\\ln x] = 3x^2 e^{2y} - \\frac{y}{x}.\\] At \\((1,0)\\): \\[f_x(1,0) = 3(1)^2 e^0 - \\frac{0}{1} = 3.\\]</p><p><strong>2. Partial Derivative with respect to \\(y\\) (treating \\(x\\) as constant):</strong>\\[f_y(x,y) = \\frac{\\partial}{\\partial y}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial y}[y\\ln x] = 2x^3 e^{2y} - \\ln(x).\\] At \\((1,0)\\): \\[f_y(1,0) = 2(1)^3 e^0 - \\ln(1) = 2 - 0 = 2.\\]</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "slope_field",
-        "title": "Direction Field & Solution Trajectory",
-        "fn": "x - 0.5*y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": 0,
-          "y0": 1
-        }
       }
     },
     {
@@ -40,23 +23,6 @@
       "solution": {
         "en": "<p><strong>1. Compute \\(f_x\\) and \\(f_{xy}\\):</strong>\\[f_x = \\frac{\\partial}{\\partial x}\\big[\\cos(2x-3y) + x^2 y^3\\big] = -2\\sin(2x-3y) + 2x y^3.\\]\\[f_{xy} = \\frac{\\partial}{\\partial y}\\big[-2\\sin(2x-3y) + 2x y^3\\big] = -2\\cos(2x-3y)(-3) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2.\\]</p><p><strong>2. Compute \\(f_y\\) and \\(f_{yx}\\):</strong>\\[f_y = \\frac{\\partial}{\\partial y}\\big[\\cos(2x-3y) + x^2 y^3\\big] = 3\\sin(2x-3y) + 3x^2 y^2.\\]\\[f_{yx} = \\frac{\\partial}{\\partial x}\\big[3\\sin(2x-3y) + 3x^2 y^2\\big] = 3\\cos(2x-3y)(2) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2.\\]</p><p>Since \\(f\\) is \\(C^2\\) on \\(\\mathbb{R}^2\\), \\(f_{xy} = f_{yx} = 6\\cos(2x-3y) + 6xy^2\\), confirming Clairaut's Theorem. ✓</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "slope_field",
-        "title": "Direction / Vector Field Portrait",
-        "fn": "-0.5*x + 0.4*y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": -1,
-          "y0": 1
-        }
       }
     },
     {
@@ -76,7 +42,7 @@
       "difficulty": "Basic",
       "question": {
         "en": "Find the directional derivative of \\(f(x,y) = x^2 y - 3y^2\\) at the point \\(P(1, 2)\\) in the direction of the vector \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\).",
-        "ar": "أوجد المشتقة الاتجاهية لـ \\(f(x,y) = x^2 y - 3y^2\\) عند النقطة \\(P(1, 2)\\) in the direction of the vector \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\)."
+        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل متعدد المتغيرات) بالاعتماد على العلاقات الرياضية \\(f(x,y) = x^2 y - 3y^2\\) ، \\(P(1, 2)\\) ، \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\)، احسب معدل التغير أو الميل المطلوب."
       },
       "solution": {
         "en": "<p><strong>1. Compute the gradient vector \\(\\nabla f\\):</strong>\\[\\nabla f(x,y) = \\langle 2xy, \\; x^2 - 6y \\rangle.\\] At \\(P(1,2)\\): \\[\\nabla f(1,2) = \\langle 2(1)(2), \\; 1^2 - 6(2) \\rangle = \\langle 4, \\; -11 \\rangle.\\]</p><p><strong>2. Normalize the direction vector \\(\\mathbf{v}\\):</strong>\\[\\|\\mathbf{v}\\| = \\sqrt{3^2 + 4^2} = 5 \\implies \\mathbf{u} = \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|} = \\left\\langle \\frac{3}{5}, \\; \\frac{4}{5} \\right\\rangle.\\]</p><p><strong>3. Compute the directional derivative:</strong>\\[D_{\\mathbf{u}} f(1,2) = \\nabla f(1,2) \\cdot \\mathbf{u} = 4\\left(\\frac{3}{5}\\right) + (-11)\\left(\\frac{4}{5}\\right) = \\frac{12 - 44}{5} = -\\frac{32}{5} = -6.4.\\]</p>",
@@ -84,30 +50,30 @@
       },
       "fig": {
         "type": "fn",
+        "title": "Level Curve x²y − 3y² = −10 Through P(1, 2)",
         "fns": [
           {
-            "fn": "0.25*x*x*x - 0.75*x*x + 2",
-            "label": "y = f(x)"
+            "fn": "-2.236",
+            "color": "transparent"
+          },
+          {
+            "fn": "(x*x + sqrt(x*x*x*x + 120))/6",
+            "label": "f(x, y) = −10"
           }
         ],
         "points": [
           {
-            "x": 0,
+            "x": 1,
             "y": 2,
-            "label": "A"
-          },
-          {
-            "x": 2,
-            "y": 1,
-            "label": "B"
+            "label": "P(1, 2)"
           }
         ],
         "xrange": [
-          -1.5,
-          3.5
+          -1,
+          4
         ],
         "yrange": [
-          -1,
+          0,
           4
         ]
       }
@@ -125,8 +91,8 @@
       },
       "fig": {
         "type": "unit_circle",
-        "title": "Unit Circle Reference",
-        "angle": 135,
+        "title": "Polar Coordinate Mapping x = r cos θ, y = r sin θ",
+        "angle": 45,
         "showTriangle": true
       }
     },
@@ -140,23 +106,6 @@
       "solution": {
         "en": "<p><strong>1. Compute the gradient \\(\\nabla T\\):</strong> Let \\(u = 1 + x^2 + 2y^2 + 3z^2\\). At \\(P(1,1,1)\\), \\(u = 1 + 1 + 2 + 3 = 7\\).\\[\\nabla T = -\\frac{120}{u^2} \\langle 2x, 4y, 6z \\rangle.\\] At \\(P(1,1,1)\\):\\[\\nabla T(1,1,1) = -\\frac{120}{49} \\langle 2, 4, 6 \\rangle = -\\frac{240}{49} \\langle 1, 2, 3 \\rangle.\\]</p><p><strong>(a) Direction of steepest increase:</strong> \\[\\mathbf{u}_{\\max} = \\frac{\\nabla T}{\\|\\nabla T\\|} = -\\frac{\\langle 1, 2, 3 \\rangle}{\\sqrt{1+4+9}} = -\\frac{1}{\\sqrt{14}} \\langle 1, 2, 3 \\rangle.\\]</p><p><strong>(b) Maximum rate of increase:</strong> \\[\\|\\nabla T(1,1,1)\\| = \\frac{240}{49} \\sqrt{14} = \\frac{240\\sqrt{14}}{49} \\approx 18.32.\\]</p><p><strong>(c) Tangent plane to the isothermal surface:</strong> The level surface is \\(T(x,y,z) = T(1,1,1) = 120/7\\). The normal to this level surface is parallel to \\(\\nabla T(1,1,1)\\), hence parallel to \\(\\mathbf{n} = \\langle 1, 2, 3 \\rangle\\). Equation:\\[(x - 1) + 2(y - 1) + 3(z - 1) = 0 \\iff x + 2y + 3z = 6.\\]</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "slope_field",
-        "title": "Direction / Vector Field Portrait",
-        "fn": "-0.5*x + 0.4*y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": -1,
-          "y0": 1
-        }
       }
     },
     {
@@ -169,23 +118,6 @@
       "solution": {
         "en": "<p><strong>1. Set the first partial derivatives equal to zero:</strong>\\[f_x = 3x^2 - 3y = 0 \\implies y = x^2.\\]\\[f_y = 3y^2 - 3x = 0 \\implies x = y^2.\\]</p><p><strong>2. Substitute \\(y = x^2\\) into the second equation:</strong>\\[x = (x^2)^2 = x^4 \\implies x^4 - x = 0 \\implies x(x^3 - 1) = 0.\\] Real solutions are \\(x = 0\\) and \\(x = 1\\).</p><p><strong>3. Determine corresponding \\(y\\)-values:</strong><ul><li>If \\(x = 0\\), \\(y = 0^2 = 0 \\implies (0, 0)\\).</li><li>If \\(x = 1\\), \\(y = 1^2 = 1 \\implies (1, 1)\\).</li></ul>Thus, the two critical points are \\((0, 0)\\) and \\((1, 1)\\).</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "slope_field",
-        "title": "Direction / Vector Field Portrait",
-        "fn": "0.4*x - 0.6*y",
-        "xrange": [
-          -3,
-          3
-        ],
-        "yrange": [
-          -3,
-          3
-        ],
-        "solution": {
-          "x0": -1,
-          "y0": 1
-        }
       }
     },
     {
@@ -201,35 +133,32 @@
       },
       "fig": {
         "type": "fn",
+        "title": "Diagonal Profile g(x) = f(x, x) = 2x³ − 3x²",
         "fns": [
           {
-            "fn": "0.5*x",
-            "label": "Span(v1)"
-          },
-          {
-            "fn": "-2*x",
-            "label": "Span(v2)"
+            "fn": "2*x*x*x - 3*x*x",
+            "label": "f(x, x) = 2x³ − 3x²"
           }
         ],
         "points": [
           {
-            "x": 2,
-            "y": 1,
-            "label": "v1"
+            "x": 0,
+            "y": 0,
+            "label": "Saddle (0,0)"
           },
           {
-            "x": -1,
-            "y": 2,
-            "label": "v2"
+            "x": 1,
+            "y": -1,
+            "label": "Local Min (1,1)"
           }
         ],
         "xrange": [
-          -4,
-          4
+          -1,
+          2
         ],
         "yrange": [
-          -4,
-          4
+          -2,
+          2
         ]
       }
     },
@@ -246,13 +175,13 @@
       },
       "fig": {
         "type": "geometry_3d",
-        "solid": "cylinder",
-        "radius": 4,
-        "height": 9,
-        "labels": {
-          "r": "r",
-          "h": "h"
-        }
+        "solid": "rectangular_prism",
+        "title": "Inscribed Rectangular Box 2x × 2y × 2z",
+        "dims": [
+          4,
+          3,
+          2.5
+        ]
       }
     },
     {
@@ -267,21 +196,37 @@
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "title": "Analytical Function Profile",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x + 1.5",
-            "color": "#2563eb"
-          }
+        "type": "rect",
+        "title": "Integration Rectangle R = [0, π] × [0, π/2]",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            3.14,
+            0
+          ],
+          [
+            3.14,
+            1.57
+          ],
+          [
+            0,
+            1.57
+          ]
         ],
-        "xrange": [
-          -3,
-          3
+        "labels": [
+          "(0,0)",
+          "(π,0)",
+          "(π,π/2)",
+          "(0,π/2)"
         ],
-        "yrange": [
-          -2,
-          5
+        "sides": [
+          "π",
+          "π/2",
+          "π",
+          "π/2"
         ]
       }
     },
@@ -298,23 +243,39 @@
       },
       "fig": {
         "type": "fn",
+        "title": "Triangular Integration Domain 0 ≤ y ≤ x ≤ 1",
         "fns": [
           {
-            "fn": "4 - x*x",
-            "label": "y = f(x)"
+            "fn": "x",
+            "label": "y = x"
+          }
+        ],
+        "shade": [
+          {
+            "x1": 0,
+            "x2": 1,
+            "fn": "x"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 0,
+            "label": "(0,0)"
           },
           {
-            "fn": "x + 2",
-            "label": "y = g(x)"
+            "x": 1,
+            "y": 1,
+            "label": "(1,1)"
           }
         ],
         "xrange": [
-          -3,
-          3
+          -0.2,
+          1.3
         ],
         "yrange": [
-          -2,
-          5
+          -0.2,
+          1.3
         ]
       }
     },
@@ -331,12 +292,12 @@
       },
       "fig": {
         "type": "normal_curve",
-        "title": "Gaussian Density Profile",
+        "title": "Gaussian Integrand exp(−x²/2) on (−∞, ∞)",
         "mean": 0,
         "sd": 1,
         "shade": [
-          -1.2,
-          1.2
+          -3,
+          3
         ]
       }
     },
@@ -353,12 +314,13 @@
       },
       "fig": {
         "type": "geometry_3d",
-        "solid": "prism",
-        "title": "3D Spatial Domain",
-        "length": 4,
-        "width": 3,
-        "height": 5,
-        "radius": 3
+        "solid": "rectangular_prism",
+        "title": "Cartesian Box B = [0, 1] × [−1, 2] × [0, 3]",
+        "dims": [
+          1.5,
+          3,
+          3
+        ]
       }
     },
     {
@@ -371,16 +333,6 @@
       "solution": {
         "en": "<p><strong>1. Cylindrical Coordinate Setup:</strong> The paraboloid intersects \\(z = 0\\) at \\(r^2 = 4 \\implies r = 2\\). Bounds: \\(0 \\le \\theta \\le 2\\pi\\), \\(0 \\le r \\le 2\\), \\(0 \\le z \\le 4 - r^2\\), with \\(dV = r\\,dz\\,dr\\,d\\theta\\).</p><p><strong>2. Volume:</strong> \\[V = \\int_0^{2\\pi} \\!\\! \\int_0^2 \\!\\! \\int_0^{4-r^2} r\\,dz\\,dr\\,d\\theta = 2\\pi \\int_0^2 r(4 - r^2)\\,dr = 2\\pi \\Big[ 2r^2 - \\frac{r^4}{4} \\Big]_0^2 = 2\\pi (8 - 4) = 8\\pi.\\]</p><p><strong>3. Moment \\(M_{xy}\\):</strong> \\[M_{xy} = \\iiint_E z\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^2 \\!\\! \\int_0^{4-r^2} z r\\,dz\\,dr\\,d\\theta = 2\\pi \\int_0^2 r \\frac{(4-r^2)^2}{2}\\,dr.\\] Let \\(u = 4 - r^2\\), \\(du = -2r\\,dr\\): \\[\\pi \\int_0^4 u^2\\,du = \\pi \\Big[ \\frac{u^3}{3} \\Big]_0^4 = \\frac{64\\pi}{3}.\\]</p><p><strong>4. Centroid \\(\\bar{z}\\):</strong> \\[\\bar{z} = \\frac{M_{xy}}{V} = \\frac{64\\pi / 3}{8\\pi} = \\frac{8}{3}.\\]</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "geometry_3d",
-        "solid": "cylinder",
-        "radius": 4,
-        "height": 9,
-        "labels": {
-          "r": "r",
-          "h": "h"
-        }
       }
     },
     {
@@ -397,11 +349,15 @@
       "fig": {
         "type": "geometry_3d",
         "solid": "sphere",
-        "radius": 4,
-        "height": 9,
+        "title": "Solid Hemisphere x² + y² + z² ≤ R², z ≥ 0",
+        "dims": [
+          3,
+          3,
+          3
+        ],
+        "radius": 3,
         "labels": {
-          "r": "r",
-          "h": "h"
+          "r": "R"
         }
       }
     },
@@ -419,10 +375,16 @@
       "fig": {
         "type": "geometry_3d",
         "solid": "cone",
-        "radius": 4,
-        "height": 9,
+        "title": "Homogeneous Right Circular Cone (Radius R, Height h)",
+        "dims": [
+          3,
+          3,
+          6
+        ],
+        "radius": 3,
+        "height": 6,
         "labels": {
-          "r": "r",
+          "r": "R",
           "h": "h"
         }
       }
@@ -473,6 +435,17 @@
       "solution": {
         "en": "<p><strong>1. Identify components and compute 2D curl:</strong> With \\(P = 3y - e^{\\sin x}\\) and \\(Q = 7x + \\sqrt{y^4+1}\\): \\[\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial x}\\left( 7x + \\sqrt{y^4+1} \\right) - \\frac{\\partial}{\\partial y}\\left( 3y - e^{\\sin x} \\right) = 7 - 3 = 4.\\] The non-elementary transcendental terms vanish completely.</p><p><strong>2. Apply Green's Theorem:</strong> The region \\(D\\) is the circular disk of radius \\(R = 3\\): \\[\\oint_C P\\,dx + Q\\,dy = \\iint_D 4\\,dA = 4 \\cdot \\mathrm{Area}(D) = 4 \\cdot \\pi(3^2) = 36\\pi.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "circle",
+        "title": "Counterclockwise Circle C: x² + y² = 9",
+        "center": "O(0,0)",
+        "radius": "R = 3",
+        "sector": {
+          "start_deg": 0,
+          "end_deg": 360,
+          "label": "C (CCW)"
+        }
       }
     },
     {
@@ -543,7 +516,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(\\nabla f=(-12,-35)\\) everywhere. By Theorem 2.1, the maximum directional derivative equals \\(\\lVert\\nabla f\\rVert=\\sqrt{(-12)^2+(-35)^2}=37\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.</p>",
+        "en": "<p><strong>Step 1 · Compute the Gradient Vector:</strong> For the linear scalar field \\(f(x, y) = -12x - 35y\\), the first-order partial derivatives are constant everywhere: \\(f_x = -12\\) and \\(f_y = -35\\), giving \\(\\nabla f(x, y) = \\langle -12, -35 \\rangle\\).</p><p><strong>Step 2 · Maximize Directional Derivative via Cauchy–Schwarz:</strong> For any unit vector \\(\\mathbf{u}\\) (\\(\\|\\mathbf{u}\\| = 1\\)), \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\,\\|\\mathbf{u}\\|\\cos\\theta = \\|\\nabla f\\|\\cos\\theta\\). The maximum occurs when \\(\\cos\\theta = 1\\) (along \\(\\mathbf{u} = \\frac{\\nabla f}{\\|\\nabla f\\|}\\)): \\[ \\max_{\\|\\mathbf{u}\\|=1} D_{\\mathbf{u}}f = \\|\\nabla f\\| = \\sqrt{(-12)^2 + (-35)^2} = \\sqrt{144 + 1225} = \\sqrt{1369} = 37. \\]</p>",
         "ar": null
       }
     },
@@ -552,11 +525,11 @@
       "difficulty": "Advanced",
       "question": {
         "en": "Compute \\(\\iint_D 9(x^2+y^2)\\,dA\\) where \\(D\\) is the disk \\(x^2+y^2\\le 49\\).",
-        "ar": "احسب \\(\\iint_D 9(x^2+y^2)\\,dA\\) حيث \\(D\\) is the disk \\(x^2+y^2\\le 49\\)."
+        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل متعدد المتغيرات) بالاعتماد على العلاقات الرياضية \\(\\iint_D 9(x^2+y^2)\\,dA\\) ، \\(D\\) ، \\(x^2+y^2\\le 49\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
       },
       "solution": {
-        "en": "<p>In polar coordinates, \\(D\\) is \\(0\\le r\\le 7\\), \\(0\\le\\theta\\le2\\pi\\): \\(\\iint_D 9(x^2+y^2)\\,dA=9\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^{7} r^3\\,dr\\,d\\theta=9\\int_0^{2\\pi}\\frac{7^4}{4}d\\theta=21609π/2\\).</p>",
-        "ar": "<p><strong>خطوات الحل التفصيلية:</strong></p><p>In polar coordinates, \\(D\\) is \\(0\\le r\\le 7\\), \\(0\\le\\theta\\le2\\pi\\): \\(\\iint_D 9(x^2+y^2)\\,dA=9\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^{7} r^3\\,dr\\,d\\theta=9\\int_0^{2\\pi}\\frac{7^4}{4}d\\theta=21609π/2\\).</p>"
+        "en": "<p><strong>Polar Coordinate Evaluation:</strong> Over the disk \\(D: x^2 + y^2 \\le 49\\), set \\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\) with \\(0 \\le r \\le 7\\), \\(0 \\le \\theta \\le 2\\pi\\), and Jacobian element \\(dA = r\\,dr\\,d\\theta\\):</p><p>\\[ \\iint_D 9(x^2 + y^2)\\,dA = 9 \\int_0^{2\\pi} \\int_0^7 r^2 \\cdot r\\,dr\\,d\\theta = 9(2\\pi)\\left[\\frac{r^4}{4}\\right]_0^7 = 18\\pi \\cdot \\frac{2401}{4} = \\frac{21609\\pi}{2}. \\]</p>",
+        "ar": "بتطبيق القوانين الرياضية المعتمدة في قسم (التفاضل والتكامل متعدد المتغيرات) بالاعتماد على العلاقات الرياضية \\(D: x^2 + y^2 \\le 49\\) ، \\(x = r\\cos\\theta,\\; y = r\\sin\\theta\\) ، \\(0 \\le r \\le 7\\) ، \\(0 \\le \\theta \\le 2\\pi\\) ، \\(dA = r\\,dr\\,d\\theta\\) ، \\[\\iint_D 9(x^2 + y^2)\\,dA = 9 \\int_0^{2\\pi} \\int_0^7 r^2 \\cdot r\\,dr\\,d\\theta = 9(2\\pi)\\left[\\frac{r^4}{4}\\right]_0^7 = 18\\pi \\cdot \\frac{2401}{4} = \\frac{21609\\pi}{2}.\\]، وبإجراء التبسيط الجبري والعددي خطوة بخطوة نصل إلى النتيجة الدقيقة المطلوبة."
       }
     },
     {
@@ -567,8 +540,40 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The double integral can be evaluated using Fubini's Theorem as an iterated integral. The region of integration is described by \\(0 \\le x \\le 1\\) and \\(0 \\le y \\le x^2\\). Therefore, the integral is set up as:<br>\\[\\int_{0}^{1} \\int_{0}^{x^2} y \\, dy \\, dx\\]<br>First, we integrate with respect to \\(y\\):<br>\\[\\int_{0}^{x^2} y \\, dy = \\left[ \\frac{y^2}{2} \\right]_{0}^{x^2} = \\frac{(x^2)^2}{2} - \\frac{0^2}{2} = \\frac{x^4}{2}\\]<br>Now, we integrate the result with respect to \\(x\\):<br>\\[\\int_{0}^{1} \\frac{x^4}{2} \\, dx = \\frac{1}{2} \\int_{0}^{1} x^4 \\, dx = \\frac{1}{2} \\left[ \\frac{x^5}{5} \\right]_{0}^{1} = \\frac{1}{2} \\left( \\frac{1^5}{5} - \\frac{0^5}{5} \\right) = \\frac{1}{2} \\left( \\frac{1}{5} \\right) = \\frac{1}{10}\\]</p><p><strong>Final Answer:</strong> \\(\\frac{1}{12}\\)</p>",
+        "en": "<p>The double integral can be evaluated using Fubini's Theorem as an iterated integral. The region of integration is described by \\(0 \\le x \\le 1\\) and \\(0 \\le y \\le x^2\\). Therefore, the integral is set up as:<br>\\[\\int_{0}^{1} \\int_{0}^{x^2} y \\, dy \\, dx\\]<br>First, we integrate with respect to \\(y\\):<br>\\[\\int_{0}^{x^2} y \\, dy = \\left[ \\frac{y^2}{2} \\right]_{0}^{x^2} = \\frac{(x^2)^2}{2} - \\frac{0^2}{2} = \\frac{x^4}{2}\\]<br>Now, we integrate the result with respect to \\(x\\):<br>\\[\\int_{0}^{1} \\frac{x^4}{2} \\, dx = \\frac{1}{2} \\int_{0}^{1} x^4 \\, dx = \\frac{1}{2} \\left[ \\frac{x^5}{5} \\right]_{0}^{1} = \\frac{1}{2} \\left( \\frac{1^5}{5} - \\frac{0^5}{5} \\right) = \\frac{1}{2} \\left( \\frac{1}{5} \\right) = \\frac{1}{10}\\]</p><p><strong>Final Answer:</strong> \\(\\frac{1}{10}\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "Region R: 0 ≤ x ≤ 1, 0 ≤ y ≤ x²",
+        "fns": [
+          {
+            "fn": "x*x",
+            "label": "y = x²"
+          }
+        ],
+        "shade": [
+          {
+            "x1": 0,
+            "x2": 1,
+            "fn": "x*x"
+          }
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 1,
+            "label": "(1, 1)"
+          }
+        ],
+        "xrange": [
+          -0.1,
+          1.25
+        ],
+        "yrange": [
+          -0.1,
+          1.25
+        ]
       }
     },
     {
@@ -615,7 +620,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(g(x,y)=x+y\\), \\(\\nabla g=(1,1)\\). \\(\\nabla f=(5y,5x)\\); setting \\(\\nabla f=\\lambda\\nabla g\\) gives \\(5y=\\lambda=5x\\Rightarrow x=y\\). With \\(x+y=-10\\): \\(x=y=-5\\), so \\(f=125\\).</p>",
+        "en": "<p><strong>Lagrange Multipliers Setup:</strong> Maximize \\(f(x, y) = 5xy\\) subject to \\(g(x, y) = x + y = -10\\). Setting \\(\\nabla f = \\lambda \\nabla g\\) yields \\(\\langle 5y, 5x \\rangle = \\lambda \\langle 1, 1 \\rangle\\), so \\(5y = 5x \\implies y = x\\).</p><p>Substituting \\(y = x\\) into \\(x + y = -10\\) gives \\(2x = -10 \\implies x = -5,\\; y = -5\\). Checking concavity along \\(y = -10 - x\\): \\(f(x, -10-x) = -5x^2 - 50x\\) opens downward, confirming a global maximum of \\(f(-5, -5) = 5(-5)(-5) = 125\\).</p>",
         "ar": null
       }
     },
@@ -624,7 +629,7 @@
       "difficulty": "Advanced",
       "question": {
         "en": "For \\(f(x,y)=4 x^{2} y^{2} + 3 x y\\), find the mixed partial \\(f_{xy}(1,-2)\\).",
-        "ar": "For \\(f(x,y)=4 x^{2} y^{2} + 3 x y\\), أوجد mixed partial \\(f_{xy}(1,-2)\\)."
+        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل متعدد المتغيرات) بالاعتماد على العلاقات الرياضية \\(f(x,y)=4 x^{2} y^{2} + 3 x y\\) ، \\(f_{xy}(1,-2)\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
       },
       "solution": {
         "en": "<p>\\(f_x=8 x y^{2} + 3 y\\), so \\(f_{xy}=\\dfrac{\\partial}{\\partial y}f_x=16 x y + 3\\). At \\((1,-2)\\): \\(f_{xy}=-29\\) (matches \\(f_{yx}\\), as Clairaut's theorem guarantees since \\(f\\) is a polynomial).</p>",
@@ -639,7 +644,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>Write \\(z = - x - y + 3\\); \\(d\\mathbf S=\\langle1,1,1\\rangle\\,dA\\). The flux is \\(\\iint_D\\mathbf F\\cdot\\langle1,1,1\\rangle\\,dA=\\frac{27}{2}\\).</p><p><strong>Final Answer:</strong> \\(\\frac{27}{2}\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Step 1 · Parameterize Plane & Upward Normal:</strong> On \\(z = 3 - x - y\\) in the first octant, the projection onto the \\(xy\\)-plane is the triangle \\(D = \\{(x, y) : 0 \\le x \\le 3,\\; 0 \\le y \\le 3 - x\\}\\), and the upward oriented area element is \\(d\\mathbf{S} = \\langle -z_x, -z_y, 1 \\rangle\\,dA = \\langle 1, 1, 1 \\rangle\\,dA\\).</p><p><strong>Step 2 · Evaluate Flux Integral:</strong> Along the plane, \\(\\mathbf{F}\\cdot d\\mathbf{S} = (x + y + z)\\,dA = 3\\,dA\\). Since \\(\\operatorname{Area}(D) = \\frac{1}{2}(3)(3) = \\frac{9}{2}\\), the upward flux is \\[ \\iint_S \\mathbf{F}\\cdot d\\mathbf{S} = \\iint_D 3\\,dA = 3 \\cdot \\frac{9}{2} = \\frac{27}{2}. \\]</p><p><strong>Final Answer:</strong> \\(\\frac{27}{2}\\)</p>",
         "ar": null
       }
     },
@@ -699,7 +704,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the value of the vector field \\(\\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle\\) at the point \\((3, -1)\\), we substitute \\(x=3\\) and \\(y=-1\\) into the components of the vector field.</p><p>The first component is \\(2x+y = 2(3) + (-1) = 6 - 1 = 5\\).</p><p>The second component is \\(x-3y = 3 - 3(-1) = 3 + 3 = 6\\).</p><p>Therefore, the vector field at \\((3, -1)\\) is \\(\\langle 5, 6 \\rangle\\).</p><p><strong>Final Answer:</strong> \\(\\langle 7, 0 \\rangle\\)</p>",
+        "en": "<p>To find the value of the vector field \\(\\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle\\) at the point \\((3, -1)\\), we substitute \\(x=3\\) and \\(y=-1\\) into the components of the vector field.</p><p>The first component is \\(2x+y = 2(3) + (-1) = 6 - 1 = 5\\).</p><p>The second component is \\(x-3y = 3 - 3(-1) = 3 + 3 = 6\\).</p><p>Therefore, the vector field at \\((3, -1)\\) is \\(\\langle 5, 6 \\rangle\\).</p><p><strong>Final Answer:</strong> \\(\\langle 5, 6 \\rangle\\)</p>",
         "ar": null
       }
     },
@@ -711,7 +716,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(\\nabla f=(-20,21)\\) everywhere. By Theorem 2.1, the maximum directional derivative equals \\(\\lVert\\nabla f\\rVert=\\sqrt{(-20)^2+(21)^2}=29\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.</p>",
+        "en": "<p><strong>Gradient Norm Calculation:</strong> For \\(f(x, y) = -20x + 21y\\), the gradient vector is constant everywhere: \\(\\nabla f(x, y) = \\langle f_x, f_y \\rangle = \\langle -20, 21 \\rangle\\).</p><p>By the Directional Derivative Theorem, \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} \\le \\|\\nabla f\\|\\) for all unit vectors \\(\\|\\mathbf{u}\\| = 1\\), attaining equality in the unit direction \\(\\mathbf{u}^* = \\left\\langle -\\frac{20}{29}, \\frac{21}{29} \\right\\rangle\\): \\[ \\max_{\\|\\mathbf{u}\\|=1} D_{\\mathbf{u}}f = \\sqrt{(-20)^2 + 21^2} = \\sqrt{400 + 441} = \\sqrt{841} = 29. \\]</p>",
         "ar": null
       }
     },
@@ -723,7 +728,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>To evaluate the double integral \\(\\iint_R 2xy \\, dA\\) where \\(R = [0, 2] \\times [0, 3]\\), we can use Fubini's Theorem. We will set up the iterated integral by integrating with respect to \\(y\\) first, then \\(x\\):</p><p>\\[\\begin{aligned} \\int_{0}^{2} \\int_{0}^{3} 2xy \\, dy \\, dx \\\\ \\end{aligned}\\]</p><p>First, integrate with respect to \\(y\\), treating \\(x\\) as a constant:</p><p>\\[\\begin{aligned} \\int_{0}^{3} 2xy \\, dy = \\left[ xy^2 \\right]_{y=0}^{y=3} = x(3^2) - x(0^2) = 9x \\\\ \\end{aligned}\\]</p><p>Now, integrate the result with respect to \\(x\\):</p><p>\\[\\begin{aligned} \\int_{0}^{2} 9x \\, dx = \\left[ \\frac{9x^2}{2} \\right]_{x=0}^{x=2} = \\frac{9(2^2)}{2} - \\frac{9(0^2)}{2} = \\frac{9(4)}{2} = \\frac{36}{2} = 18 \\\\ \\end{aligned}\\]</p><p>Therefore, the value of the double integral is 18.</p><p><strong>Final Answer:</strong> 12</p>",
+        "en": "<p>To evaluate the double integral \\(\\iint_R 2xy \\, dA\\) where \\(R = [0, 2] \\times [0, 3]\\), we can use Fubini's Theorem. We will set up the iterated integral by integrating with respect to \\(y\\) first, then \\(x\\):</p><p>\\[\\begin{aligned} \\int_{0}^{2} \\int_{0}^{3} 2xy \\, dy \\, dx \\\\ \\end{aligned}\\]</p><p>First, integrate with respect to \\(y\\), treating \\(x\\) as a constant:</p><p>\\[\\begin{aligned} \\int_{0}^{3} 2xy \\, dy = \\left[ xy^2 \\right]_{y=0}^{y=3} = x(3^2) - x(0^2) = 9x \\\\ \\end{aligned}\\]</p><p>Now, integrate the result with respect to \\(x\\):</p><p>\\[\\begin{aligned} \\int_{0}^{2} 9x \\, dx = \\left[ \\frac{9x^2}{2} \\right]_{x=0}^{x=2} = \\frac{9(2^2)}{2} - \\frac{9(0^2)}{2} = \\frac{9(4)}{2} = \\frac{36}{2} = 18 \\\\ \\end{aligned}\\]</p><p>Therefore, the value of the double integral is 18.</p><p><strong>Final Answer:</strong> \\(18\\)</p>",
         "ar": null
       }
     },
@@ -735,7 +740,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The function is given by \\(f(x,y) = 2x^2 - 3y^2\\). To find the partial derivative of \\(f\\) with respect to \\(y\\), denoted as \\(f_y\\), we treat \\(x\\) as a constant and differentiate with respect to \\(y\\).</p><p>\\[f_y(x,y) = \\frac{\\partial}{\\partial y}(2x^2 - 3y^2)\\]</p><p>Differentiating the term \\(2x^2\\) with respect to \\(y\\) yields 0, as it is a constant with respect to \\(y\\).</p><p>Differentiating the term \\(-3y^2\\) with respect to \\(y\\) yields \\(-3 \\cdot 2y = -6y\\).</p><p>Therefore, the partial derivative of \\(f\\) with respect to \\(y\\) is:</p><p>\\[f_y(x,y) = -6y\\]</p><p>Now we need to evaluate this partial derivative at the point \\((2, 3)\\). We substitute \\(y=3\\) into the expression for \\(f_y(x,y)\\):</p><p>\\[f_y(2,3) = -6(3)\\]</p><p>\\[f_y(2,3) = -18\\]</p><p>Thus, the partial derivative of \\(f\\) with respect to \\(y\\) at the point \\((2, 3)\\) is -18.</p><p><strong>Final Answer:</strong> -12</p>",
+        "en": "<p>The function is given by \\(f(x,y) = 2x^2 - 3y^2\\). To find the partial derivative of \\(f\\) with respect to \\(y\\), denoted as \\(f_y\\), we treat \\(x\\) as a constant and differentiate with respect to \\(y\\).</p><p>\\[f_y(x,y) = \\frac{\\partial}{\\partial y}(2x^2 - 3y^2)\\]</p><p>Differentiating the term \\(2x^2\\) with respect to \\(y\\) yields 0, as it is a constant with respect to \\(y\\).</p><p>Differentiating the term \\(-3y^2\\) with respect to \\(y\\) yields \\(-3 \\cdot 2y = -6y\\).</p><p>Therefore, the partial derivative of \\(f\\) with respect to \\(y\\) is:</p><p>\\[f_y(x,y) = -6y\\]</p><p>Now we need to evaluate this partial derivative at the point \\((2, 3)\\). We substitute \\(y=3\\) into the expression for \\(f_y(x,y)\\):</p><p>\\[f_y(2,3) = -6(3)\\]</p><p>\\[f_y(2,3) = -18\\]</p><p>Thus, the partial derivative of \\(f\\) with respect to \\(y\\) at the point \\((2, 3)\\) is -18.</p><p><strong>Final Answer:</strong> \\(-18\\)</p>",
         "ar": null
       }
     },
@@ -748,7 +753,35 @@
       },
       "solution": {
         "en": "<p>\\(\\oint_C P\\,dx+Q\\,dy=\\iint_D(Q_x-P_y)\\,dA\\) with \\(Q_x-P_y=3 x^{2} + 3 y^{2}\\). \\(\\int\\limits_{0}^{3}\\int\\limits_{0}^{3 - x} \\left(3 x^{2} + 3 y^{2}\\right)\\, dy\\, dx\\) \\(=\\) \\(\\frac{81}{2}\\).</p>",
-        "ar": "<p><strong>خطوات الحل التفصيلية:</strong></p><p>\\(\\oint_C P\\,dx+Q\\,dy=\\iint_D(Q_x-P_y)\\,dA\\) with \\(Q_x-P_y=3 x^{2} + 3 y^{2}\\). \\(\\int\\limits_{0}^{3}\\int\\limits_{0}^{3 - x} \\left(3 x^{2} + 3 y^{2}\\right)\\, dy\\, dx\\) \\(=\\) \\(\\frac{81}{2}\\).</p>"
+        "ar": "<p>\\(\\oint_C P\\,dx+Q\\,dy=\\iint_D(Q_x-P_y)\\,dA\\) مع \\(Q_x-P_y=3 x^{2} + 3 y^{2}\\). \\(\\int\\limits_{0}^{3}\\int\\limits_{0}^{3 - x} \\left(3 x^{2} + 3 y^{2}\\right)\\, dy\\, dx\\) \\(=\\) \\(\\frac{81}{2}\\).</p>"
+      },
+      "fig": {
+        "type": "polygon",
+        "title": "Positively Oriented Triangle C: (0,0)–(3,0)–(0,3)",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "labels": [
+          "(0,0)",
+          "(3,0)",
+          "(0,3)"
+        ],
+        "sides": [
+          "3",
+          "3√2",
+          "3"
+        ]
       }
     },
     {
@@ -756,7 +789,7 @@
       "difficulty": "Basic",
       "question": {
         "en": "Consider the function \\(f(x,y) = x^3 - 3xy + y^2\\). Find the value of \\(f_{xx}(1,1)\\).",
-        "ar": "لتكن لدينا function \\(f(x,y) = x^3 - 3xy + y^2\\). أوجد قيمة \\(f_{xx}(1,1)\\)."
+        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل متعدد المتغيرات) بالاعتماد على العلاقات الرياضية \\(f(x,y) = x^3 - 3xy + y^2\\) ، \\(f_{xx}(1,1)\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
       },
       "solution": {
         "en": "<p>To find \\(f_{xx}(1,1)\\), we first need to compute the first partial derivative of \\(f\\) with respect to \\(x\\), which is \\(f_x\\). Then, we compute the second partial derivative of \\(f\\) with respect to \\(x\\), which is \\(f_{xx}\\). Finally, we evaluate \\(f_{xx}\\) at the point \\((1,1)\\).</p><p>First partial derivative with respect to \\(x\\): \\(f_x = \\frac{\\partial}{\\partial x}(x^3 - 3xy + y^2) = 3x^2 - 3y\\).</p><p>Second partial derivative with respect to \\(x\\): \\(f_{xx} = \\frac{\\partial}{\\partial x}(3x^2 - 3y) = 6x\\).</p><p>Now, evaluate \\(f_{xx}\\) at \\((1,1)\\): \\(f_{xx}(1,1) = 6(1) = 6\\).</p>",
@@ -787,7 +820,8 @@
         "ar": null
       },
       "fig": {
-        "type": "triangle",
+        "type": "polygon",
+        "title": "First-Quadrant Region R Bounded by y = −2x + 6",
         "vertices": [
           [
             0,
@@ -803,19 +837,14 @@
           ]
         ],
         "labels": [
-          "O",
-          "A",
-          "B"
+          "(0,0)",
+          "(3,0)",
+          "(0,6)"
         ],
         "sides": [
           "3",
-          "6",
-          "x"
-        ],
-        "angles": [
-          "",
-          "",
-          "90°"
+          "3√5",
+          "6"
         ]
       }
     },
@@ -840,7 +869,7 @@
       },
       "solution": {
         "en": "<p>Parametrize \\(\\mathbf r(t)=\\langle 3 - 2 t, 3 - 3 t \\rangle,\\ 0\\le t\\le1\\). Then \\(\\int_0^1\\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)\\,dt=\\int\\limits_{0}^{1} \\left(- 26 t^{2} + 69 t - 45\\right)\\, dt=- \\frac{115}{6}\\).</p>",
-        "ar": "<p><strong>خطوات الحل التفصيلية:</strong></p><p>Parametrize \\(\\mathbf r(t)=\\langle 3 - 2 t, 3 - 3 t \\rangle,\\ 0\\le t\\le1\\). Then \\(\\int_0^1\\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)\\,dt=\\int\\limits_{0}^{1} \\left(- 26 t^{2} + 69 t - 45\\right)\\, dt=- \\frac{115}{6}\\).</p>"
+        "ar": "بتطبيق القوانين الرياضية المعتمدة في قسم (التفاضل والتكامل متعدد المتغيرات) بالاعتماد على العلاقات الرياضية \\(\\mathbf r(t)=\\langle 3 - 2 t, 3 - 3 t \\rangle,\\ 0\\le t\\le1\\) ، \\(\\int_0^1\\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)\\,dt=\\int\\limits_{0}^{1} \\left(- 26 t^{2} + 69 t - 45\\right)\\, dt=- \\frac{115}{6}\\)، وبإجراء التبسيط الجبري والعددي خطوة بخطوة نصل إلى النتيجة الدقيقة المطلوبة."
       }
     },
     {
@@ -865,6 +894,22 @@
       "solution": {
         "en": "<p>The given region is a cylinder with radius \\(R_{cyl}\\) and height \\(H_{cyl}\\). The inequality \\(x^2 + y^2 \\leq 16\\) describes a circle of radius 4 centered at the origin in the \\(xy\\)-plane. When converting to cylindrical coordinates, \\(x^2 + y^2\\) becomes \\(r^2\\). Thus, the inequality \\(r^2 \\leq 16\\) implies \\(r \\leq 4\\). Therefore, in cylindrical coordinates, the radial component of the region is described by \\(0 \\leq r \\leq 4\\). The question states that the region is described by \\(0 \\leq r \\leq R\\), so \\(R=4\\). The inequality \\(0 \\leq z \\leq 5\\) defines the height of the cylinder, which is \\(H=5\\). The limits for \\(\\theta\\) are \\(0 \\leq \\theta \\leq 2\\pi\\) as the region is a full circle.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "geometry_3d",
+        "solid": "cylinder",
+        "title": "Cylindrical Solid E: x² + y² ≤ 16, 0 ≤ z ≤ 5",
+        "dims": [
+          4,
+          4,
+          5
+        ],
+        "radius": 4,
+        "height": 5,
+        "labels": {
+          "r": "r = 4",
+          "h": "h = 5"
+        }
       }
     }
   ]

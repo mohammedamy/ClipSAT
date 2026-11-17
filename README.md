@@ -11,23 +11,23 @@ Live at: **[https://clipsat.org](https://clipsat.org)** (and **[https://mohammed
 <!-- @AUTOGEN:STATS_START -->
 - **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
 - **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
-- **Verified Question Bank (Schema v2):** **50,758** items (**34,578** executable SymPy certificates + **16,180** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
+- **Verified Question Bank (Schema v2):** **48,056** items (**34,235** executable SymPy certificates + **13,821** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
 - **Interactive Learning & Exports:** **2,816** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
 <!-- @AUTOGEN:STATS_END -->
 
 <!-- @AUTOGEN:TRACKS_START -->
-### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 50,758 Bank Questions)
+### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 48,056 Bank Questions)
 
 | Category | Tracks (Slug, Chapters, Verified Bank Items) |
 | :--- | :--- |
-| **US & Regional Standardized Testing** | Digital SAT Math (`sat`, 11 ch, 1,605 Qs) · ACT Math (`act`, 9 ch, 1,261 Qs) · ACT 2 Math Level 1 (`act2`, 9 ch, 1,715 Qs) · ACT 2 Math Level 2 (`act2l2`, 8 ch, 1,200 Qs) · EST Math (`est`, 9 ch, 1,280 Qs) · EST 2 Math Level 1 (`est2`, 9 ch, 1,416 Qs) · EST 2 Math Level 2 (`est2l2`, 8 ch, 1,200 Qs) |
-| **Saudi National Exams (ETEC / Qiyas)** | GAT Qudrat (`qudrat`, 9 ch, 1,350 Qs) · SAAT Tahsili (`tahsili`, 10 ch, 1,500 Qs) · English GAT & SAAT (Qiyas) (`gaten`, 8 ch, 1,280 Qs) |
-| **Advanced Placement (College Board AP)** | AP Calculus AB (`apab`, 11 ch, 1,650 Qs) · AP Calculus BC (`apbc`, 9 ch, 1,350 Qs) · AP Precalculus (`appc`, 8 ch, 1,200 Qs) · AP Statistics (`apstats`, 8 ch, 1,200 Qs) |
-| **Cambridge & Pearson Edexcel (IGCSE / A-Level)** | IGCSE 0580 (`igcse`, 10 ch, 1,500 Qs) · Pearson Edexcel IGCSE (4MA1) (`edexcel`, 8 ch, 1,240 Qs) · Additional Mathematics (`addmath`, 8 ch, 1,246 Qs) · AS Level Mathematics (`aslevel`, 20 ch, 2,894 Qs) · A2 Level Mathematics (`a2level`, 16 ch, 2,894 Qs) |
+| **US & Regional Standardized Testing** | Digital SAT Math (`sat`, 11 ch, 1,605 Qs) · ACT Math (`act`, 9 ch, 1,247 Qs) · ACT 2 Math Level 1 (`act2`, 9 ch, 1,422 Qs) · ACT 2 Math Level 2 (`act2l2`, 8 ch, 1,218 Qs) · EST Math (`est`, 9 ch, 1,248 Qs) · EST 2 Math Level 1 (`est2`, 9 ch, 1,296 Qs) · EST 2 Math Level 2 (`est2l2`, 8 ch, 1,218 Qs) |
+| **Saudi National Exams (ETEC / Qiyas)** | GAT Qudrat (`qudrat`, 9 ch, 1,350 Qs) · SAAT Tahsili (`tahsili`, 10 ch, 1,675 Qs) · English GAT & SAAT (Qiyas) (`gaten`, 8 ch, 1,200 Qs) |
+| **Advanced Placement (College Board AP)** | AP Calculus AB (`apab`, 11 ch, 1,393 Qs) · AP Calculus BC (`apbc`, 9 ch, 1,200 Qs) · AP Precalculus (`appc`, 8 ch, 1,200 Qs) · AP Statistics (`apstats`, 8 ch, 1,200 Qs) |
+| **Cambridge & Pearson Edexcel (IGCSE / A-Level)** | IGCSE 0580 (`igcse`, 10 ch, 1,431 Qs) · Pearson Edexcel IGCSE (4MA1) (`edexcel`, 8 ch, 1,200 Qs) · Additional Mathematics (`addmath`, 8 ch, 1,200 Qs) · AS Level Mathematics (`aslevel`, 20 ch, 2,807 Qs) · A2 Level Mathematics (`a2level`, 16 ch, 2,763 Qs) |
 | **International Baccalaureate (IBO)** | IB Math SL (AA/AI) (`ibsl`, 8 ch, 1,200 Qs) · IB Math HL (AA/AI) (`ibhl`, 8 ch, 1,200 Qs) |
 | **Mathematical Olympiad & Competitions** | Mathematical Olympiad · NSMO of KSA & KAUST (`olympiad`, 12 ch, 1,440 Qs) |
-| **Secondary Mathematics Foundations** | Algebra (`algebra`, 11 ch, 1,815 Qs) · Algebra 2 (`alg2`, 11 ch, 1,654 Qs) · Geometry (`geo`, 11 ch, 2,683 Qs) · Pre-Calculus (`precalc`, 8 ch, 3,438 Qs) |
-| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,311 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,200 Qs) · Linear Algebra (`linalg`, 8 ch, 1,200 Qs) · Differential Equations (`odes`, 9 ch, 1,350 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,286 Qs) |
+| **Secondary Mathematics Foundations** | Algebra (`algebra`, 11 ch, 1,686 Qs) · Algebra 2 (`alg2`, 11 ch, 1,619 Qs) · Geometry (`geo`, 11 ch, 1,831 Qs) · Pre-Calculus (`precalc`, 8 ch, 2,957 Qs) |
+| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,262 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,286 Qs) · Linear Algebra (`linalg`, 8 ch, 1,200 Qs) · Differential Equations (`odes`, 9 ch, 1,302 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,200 Qs) |
 <!-- @AUTOGEN:TRACKS_END -->
 
 ---

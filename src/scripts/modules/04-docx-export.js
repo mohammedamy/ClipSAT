@@ -300,9 +300,10 @@ window.CSExport=(function(){
         /* SVG element */
         var svgEl=el.tagName==='svg'||el.tagName==='SVG'?el:el.querySelector('svg');
         if(!svgEl){resolve(null);return;}
-        /* Serialize SVG with namespace */
+        /* Serialize SVG with namespace and crisp light-mode print colors */
         var svgClone=svgEl.cloneNode(true);
         if(!svgClone.getAttribute('xmlns')) svgClone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+        svgClone.setAttribute('direction','ltr');
         /* Ensure width/height */
         var vb=svgClone.getAttribute('viewBox');
         if(vb&&(!svgClone.getAttribute('width')||!svgClone.getAttribute('height'))){
@@ -311,7 +312,8 @@ window.CSExport=(function(){
         }
         var w=parseInt(svgClone.getAttribute('width')||'400',10)||400;
         var h=parseInt(svgClone.getAttribute('height')||'300',10)||300;
-        var svgStr=new XMLSerializer().serializeToString(svgClone);
+        var svgStr=new XMLSerializer().serializeToString(svgClone)
+          .replace(/var\(--fig-[a-z0-9-]+\s*,\s*([^)]+)\)/gi, '$1');
         var blob=new Blob([svgStr],{type:'image/svg+xml;charset=utf-8'});
         var url=URL.createObjectURL(blob);
         var img=new Image();
@@ -523,17 +525,20 @@ window.CSExport=(function(){
      _derender() simply returns that saved string.  The popup loads tex-svg.js
      and re-renders from LaTeX to self-contained SVG — no font dependency.       */
   function _derender(el){
-    /* Fast path: chapter element has its entire pre-typeset HTML stored */
-    var raw=el.getAttribute('data-raw');
-    if(raw) return raw;
-    /* Fallback (non-chapter element): clone, restore fine-grained data-raw on
-       descendants, then strip any leftover CHTML containers */
     var clone=el.cloneNode(true);
+    /* Preserve hydrated SVG diagrams while restoring pre-typeset math on leaf nodes */
     clone.querySelectorAll('[data-raw]').forEach(function(x){
+      if(x.querySelector && (x.querySelector('svg') || x.querySelector('.lesson-figure-svg'))) return;
       x.innerHTML=x.getAttribute('data-raw');
     });
     clone.querySelectorAll('mjx-container').forEach(function(mjx){
       mjx.parentNode.removeChild(mjx);
+    });
+    clone.querySelectorAll('.cs-live-slopefield,.cs-voice-btn,.cs-chapter-pager').forEach(function(n){
+      if(n.parentNode) n.parentNode.removeChild(n);
+    });
+    clone.querySelectorAll('figure[data-cs-interactive-slopefield="1"] .lesson-figure-svg > div, figure[data-cs-interactive-slopefield="1"] svg').forEach(function(s){
+      s.style.display='block';
     });
     return clone.innerHTML;
   }
@@ -542,7 +547,8 @@ window.CSExport=(function(){
 
   /* \u2500\u2500 Shared popup CSS (for print popups) \u2500\u2500 */
   function _popupCSS(){
-    return '@page{margin:20mm 18mm 24mm 18mm;@bottom-right{content:"Page " counter(page) " of " counter(pages);font-family:Calibri,Arial,sans-serif;font-size:7.5pt;color:#888}}'
+    return ':root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}'
+      +'@page{margin:20mm 18mm 24mm 18mm;@bottom-right{content:"Page " counter(page) " of " counter(pages);font-family:Calibri,Arial,sans-serif;font-size:7.5pt;color:#888}}'
       +'*{box-sizing:border-box}'
       +'body{margin:0;padding:0;font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.6;color:#111;background:#fff}'
       /* Header: single row, fixed height, fits exactly within the page printable width */
@@ -578,23 +584,21 @@ window.CSExport=(function(){
       +'.problem{border:1pt solid #ccc;border-radius:4pt;padding:8pt;margin-bottom:8pt;break-inside:avoid}'
       +'.fcard{border:1pt solid #dde2ec;border-radius:4pt;padding:8pt 10pt;margin:6pt 0;break-inside:avoid}'
       +'.chead{border-bottom:1.5pt solid #1a1a2e;padding-bottom:6pt;margin-bottom:12pt}'
-      +'.chead h2{font-size:13pt;font-weight:700;color:#1a1a2e;margin:0}'
+      +'.chead h1,.chead h2{font-size:13pt;font-weight:700;color:#1a1a2e;margin:0}'
       +'h1,h2,h3,h4{page-break-after:avoid;break-after:avoid}'
-      +'table{border-collapse:collapse;width:100%;margin:8pt 0}'
+      +'table{border-collapse:collapse;width:100%;margin:8pt 0;break-inside:avoid;page-break-inside:avoid}'
       +'td,th{border:1pt solid #dde2ec;padding:5pt 7pt;vertical-align:top}'
       +'th{background:#e8edf8;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+      +'.lesson-figure,.mfig{margin:8pt auto;text-align:center;max-width:100%;break-inside:avoid;page-break-inside:avoid}'
       +'img{max-width:100%;height:auto}'
-      +'svg{max-width:100%}'
-      /* Qudrat/Tahsili + Arabic mode only \u2014 see _ttAr(). Math stays LTR
-         (mjx-container/.katex), matching the site's own established RTL
-         convention (main.css "Equations stay LTR ... regardless of the
-         surrounding RTL prose"). */
+      +'svg{max-width:100%;height:auto;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+      /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math & SVG coordinates stay LTR. */
       +'body[dir="rtl"]{direction:rtl;text-align:right}'
       +'body[dir="rtl"] .cs-hdr{direction:rtl}'
       +'body[dir="rtl"] .cs-meta{text-align:left}'
       +'body[dir="rtl"] .cs-footer{direction:rtl}'
       +'body[dir="rtl"] th{text-align:right}'
-      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}';
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex,body[dir="rtl"] svg{direction:ltr!important;unicode-bidi:isolate}';
   }
 
   /* \u2500\u2500 Build branded header block (HTML string) \u2500\u2500 */
@@ -627,41 +631,39 @@ window.CSExport=(function(){
     setTimeout(function(){URL.revokeObjectURL(url);},120000);
   }
 
-  /* \u2500\u2500 Print a content element in a branded popup \u2500\u2500 */
-  function printChapter(opts){
-    /*  opts: { element, title, chapter, track, docLabel, teacherMode } */
-    var el=typeof opts.element==='string'?document.querySelector(opts.element):opts.element;
-    if(!el){alert(_tt('noContentToPrint'));return;}
-
-    /* \u2500\u2500 Restore original LaTeX source from data-raw attributes.
-       The site uses MathJax CHTML output (tex-mml-chtml.js). CHTML math
-       renders as <mjx-container> custom elements that depend on CSS rules
-       injected by MathJax into the main page. Those rules don't exist in the
-       popup blob, so copied innerHTML shows blank math.
-       _derender() replaces rendered elements with original \(...\) LaTeX
-       (saved before typesetting by startup.pageReady), then MathJax in the
-       popup re-renders from scratch. \u2500\u2500 */
+  /* ── Print a content element in a branded popup ── */
+  function _doPrintChapter(el, opts){
     var contentHtml=_derender(el);
-
     var _dir=_ttDir();
+    var _origin=(window.location&&window.location.origin)||'';
     var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head>'
       +'<meta charset="utf-8"><title>'+_esc(opts.title||'ClipSAT')+'</title>'
-      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
+      +'<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'
       +'<style>'+_popupCSS()+'</style>'
-      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
-      +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
+      +'<script defer src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'
+      +'<script defer src="'+_origin+'/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'
       +'</head><body dir="'+_dir+'">'
       +_brandHeader(opts)
       +'<div class="cs-body">'+contentHtml+'</div>'
       +'<div class="cs-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah</span>'
         +'<span>'+_esc(opts.title||'')+(opts.chapter?' \u2014 '+_esc(opts.chapter):'')+'</span>'
         +'<span>'+_today()+'</span></div>'
-      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(window.print,400);}).catch(function(){setTimeout(window.print,400);});}else{setTimeout(window.print,800);}<\/script>'
+      +'<script>window.addEventListener("load",function(){setTimeout(window.print,450);});<\/script>'
       +'</body></html>';
     _openBlob(html);
   }
+  function printChapter(opts){
+    /*  opts: { element, title, chapter, track, docLabel, teacherMode } */
+    var el=typeof opts.element==='string'?document.querySelector(opts.element):opts.element;
+    if(!el){alert(_tt('noContentToPrint'));return;}
+    if(el.querySelector && el.querySelector('[data-lazy-fig]') && window.CSHydrateAllFigures){
+      window.CSHydrateAllFigures(el).then(function(){ _doPrintChapter(el, opts); });
+      return;
+    }
+    _doPrintChapter(el, opts);
+  }
 
-  /* \u2500\u2500 Print the currently active chapter \u2500\u2500 */
+  /* ── Print the currently active chapter ── */
   function printActiveChapter(opts){
     opts=opts||{};
     var view=document.querySelector('.view.active');
@@ -672,7 +674,7 @@ window.CSExport=(function(){
     var track=eyebrow?eyebrow.textContent.trim():'';
     var chapter=view.querySelector('.chapter.ch-active')||view.querySelector('.chapter:not(.testgen,.testgen *)');
     var chTitle='';
-    if(chapter){var chH=chapter.querySelector('.chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();}
+    if(chapter){var chH=chapter.querySelector('.chead h1, .chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();}
     printChapter({
       element:chapter||view.querySelector('.content'),
       title:title,
@@ -683,7 +685,7 @@ window.CSExport=(function(){
     });
   }
 
-  /* \u2500\u2500 Download chapter as proper .docx \u2500\u2500 */
+  /* ── Download chapter as proper .docx ── */
   function downloadChapterDocx(btn){
     var view=btn?btn.closest('main[id^="view-"]'):document.querySelector('.view.active');
     if(!view){alert(_tt('couldNotFindLesson'));return;}
@@ -693,20 +695,24 @@ window.CSExport=(function(){
     var track=eyebrow?eyebrow.textContent.trim():'';
     var chapter=view.querySelector('.chapter.ch-active')||view.querySelector('.chapter:not(.testgen,.testgen *)');
     var chTitle='';
-    if(chapter){var chH=chapter.querySelector('.chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();}
+    if(chapter){var chH=chapter.querySelector('.chead h1, .chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();}
     var probs=(chapter||view).querySelectorAll('.problem');
     if(!probs.length){alert(_tt('noProblemsFound'));return;}
     if(typeof JSZip==='undefined'){alert(_tt('docxLoading'));return;}
 
-    /* \u2500\u2500 Pre-capture images per element, then build body with inline figures \u2500\u2500 */
+    var _hydrate = window.CSHydrateAllFigures ? window.CSHydrateAllFigures(chapter||view) : Promise.resolve();
+    _hydrate.then(function(){
+    /* ── Pre-capture images per element, then build body with inline figures ── */
+    var _standaloneFigs=Array.from((chapter||view).querySelectorAll('.lesson-figure')).filter(function(f){return !f.closest('.example,.problem');});
     var _allEx=Array.from((chapter||view).querySelectorAll('.example'));
     var _allPr=Array.from(probs);
-    Promise.all([
+    return Promise.all([
       Promise.all(_allEx.map(function(ex){return captureContainerImages(ex);})),
       Promise.all(_allPr.map(function(p){return captureContainerImages(p);})),
-      _fetchLogoBase64()
+      _fetchLogoBase64(),
+      Promise.all(_standaloneFigs.map(function(f){return captureContainerImages(f);}))
     ]).then(function(_cap){
-      var _exI=_cap[0], _prI=_cap[1], _logoB64=_cap[2];
+      var _exI=_cap[0], _prI=_cap[1], _logoB64=_cap[2], _figI=_cap[3];
       var _ii=0, _iRels='';
       var zip=new JSZip();
       var _letterhead=_buildLetterhead(zip,{title:title,chapter:chTitle,track:track},_logoB64);
@@ -744,7 +750,17 @@ window.CSExport=(function(){
         body+=para('',{spaceAfter:160});
       }
 
-      /* \u2500\u2500 Examples with inline figures \u2500\u2500 */
+      /* ── Standalone Lesson Diagrams ── */
+      if(_figI && _figI.length){
+        _figI.forEach(function(imgs, fi){
+          if(!imgs || !imgs.length) return;
+          var capEl=_standaloneFigs[fi]&&_standaloneFigs[fi].querySelector('.lesson-figure-caption,.lesson-figure-title');
+          if(capEl){var ct=rawEl(capEl);if(ct)body+=paraMath(ct,{italic:true,size:20,color:'475569',spaceAfter:30});}
+          body+=_imgBlock(imgs);
+        });
+      }
+
+      /* ── Examples with inline figures ── */
       if(_allEx.length){
         body+=para(_tt('workedExamplesCaps'),{bold:true,size:26,color:'1A1A2E',spaceAfter:80});
         _allEx.forEach(function(ex,ei){
@@ -822,6 +838,7 @@ window.CSExport=(function(){
       var wRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+_iRels+'</Relationships>';
       zip.folder('word').folder('_rels').file('document.xml.rels',wRels);
       return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+    });
     }).then(function(blob){
       var fname=(chTitle||title).replace(/[^A-Za-z0-9\u0600-\u06FF]+/g,'_').replace(/^_+|_+$/g,'')+'_Chapter.docx';
       var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();

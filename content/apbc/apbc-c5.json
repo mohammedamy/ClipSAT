@@ -39,76 +39,64 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 10 · Infinite Sequences & Series — Convergence Tests — Geometric Partial Sums & Asymptotic Limit",
+          "title": "Unit 10 · Geometric Partial Sums Sₙ = 4(1 − (1/2)ⁿ) → 4",
           "xrange": [
             0,
-            6
+            8
           ],
           "yrange": [
             0,
-            11
+            5
           ],
           "fns": [
             {
-              "fn": "10*(1 - Math.pow(0.6, x))",
+              "fn": "4*(1 - pow(0.5, x))",
               "color": "var(--fig-indigo)",
-              "label": "S(x) = 10(1 − 0.6ˣ)"
+              "label": "Partial sum profile Sₙ"
             },
             {
-              "fn": "10",
+              "fn": "4",
               "color": "var(--fig-amber)",
-              "dash": "4,3",
-              "label": "S∞ = 10"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 4,
-              "label": "(1, 4)"
-            },
-            {
-              "x": 2,
-              "y": 6.4,
-              "label": "(2, 6.4)"
+              "dash": "4,4",
+              "label": "Sum S = 4"
             }
           ]
         },
         "caption": {
-          "en": "Convergence of geometric partial sums \\(S_{n} = 4(1 - (1/2)^{n})\\) toward the horizontal asymptote S∞ = 4.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الوحدة عشرة · المتتابعات والمتسلسلات اللانهائية واختبارات التقارب. \\(S_{n} = 4(1 - (1/2)^{n})\\) (4)"
+          "en": "Sequence of partial sums \\(S_n\\) converging monotonically toward \\(S = \\frac{a}{1 - r} = 4\\) for \\(|r| = \\frac{1}{2} < 1\\).",
+          "ar": "تقارب المجاميع الجزئية \\(S_n\\) نحو المجموع اللانهائي \\(S = 4\\) عندما \\(|r| < 1\\)."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Maclaurin Polynomial Approximation P₃(x) vs sin(x)",
+          "title": "Integral Test Comparison: f(x) = 1/x² vs g(x) = 1/√x on [1, 8]",
           "xrange": [
-            -3.5,
-            3.5
+            1,
+            8
           ],
           "yrange": [
-            -2,
-            2
+            0,
+            1.2
           ],
           "fns": [
             {
-              "fn": "Math.sin(x)",
-              "color": "var(--fig-indigo)",
-              "label": "sin(x)"
+              "fn": "1/(x*x)",
+              "color": "var(--fig-emerald)",
+              "label": "1/x² (p = 2 > 1)"
             },
             {
-              "fn": "x - (x*x*x)/6",
+              "fn": "1/sqrt(x)",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "P₃(x) = x − x³/6"
+              "label": "1/√x (p = 0.5 ≤ 1)"
             }
           ]
         },
         "caption": {
-          "en": "Third-degree Maclaurin polynomial \\(P_3(x) = x - \\tfrac{x^3}{6}\\) closely hugging \\(\\sin(x)\\) near \\(x = 0\\).",
-          "ar": "تقريب كثيرة حدود ماكلورين من الدرجة الثالثة \\(P_3(x) = x - \\tfrac{x^3}{6}\\) للدالة \\(\\sin(x)\\) قرب \\(x = 0\\) في الوحدة عشرة · المتتابعات والمتسلسلات اللانهائية واختبارات التقارب."
+          "en": "Integral & \\(p\\)-series benchmark: positive, continuous, decreasing \\(f(x) = x^{-p}\\) converges if and only if \\(p > 1\\).",
+          "ar": "اختبار التكامل ومتسلسلة \\(p\\): تتقارب \\(\\sum n^{-p}\\) إذا وفقط إذا كان \\(p > 1\\)."
         }
       },
       {
@@ -176,7 +164,7 @@
             "valueDisplayId": "apbcSeqEpsV",
             "ariaLabel": {
               "en": "Epsilon tolerance",
-              "ar": "عنصر تفاعلي: Epsilon tolerance"
+              "ar": "عنصر تفاعلي: هامش الدقة ε"
             }
           },
           {
@@ -192,7 +180,7 @@
             "valueDisplayId": "apbcSeqNV",
             "ariaLabel": {
               "en": "Index cutoff N",
-              "ar": "عنصر تفاعلي: Index cutoff N"
+              "ar": "عنصر تفاعلي: حد الدليل N"
             }
           }
         ],
@@ -317,7 +305,7 @@
             },
             {
               "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
-              "ar": "The harmonic المتسلسلة \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\)."
+              "ar": "المتسلسلة التوافقية \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) ومع ذلك تتباعد إلى \\(\\infty\\)."
             },
             {
               "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
@@ -438,7 +426,7 @@
             },
             "ariaLabel": {
               "en": "Terms N",
-              "ar": "عنصر تفاعلي: Terms N"
+              "ar": "عنصر تفاعلي: عدد الحدود N"
             },
             "min": 1,
             "max": 12,

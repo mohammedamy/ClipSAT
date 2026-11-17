@@ -38,84 +38,71 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Unit 9 · Parametric Equations & Vector-Valued Functions — Linear Transformation & Basis Action",
-          "original": [
-            [
-              1,
-              1
-            ],
-            [
-              4,
-              2
-            ],
-            [
-              2,
-              4
-            ]
+          "type": "fn",
+          "title": "Unit 9 · Parametric Trajectory y = 4 − 0.25(x − 1)² & Velocity Tangent",
+          "xrange": [
+            -1,
+            6
           ],
-          "transformed": [
-            [
-              -1,
-              1
-            ],
-            [
-              -4,
-              2
-            ],
-            [
-              -2,
-              4
-            ]
+          "yrange": [
+            -1,
+            5
           ],
-          "labels": [
-            "A",
-            "B",
-            "C"
+          "fns": [
+            {
+              "fn": "4 - 0.25*(x - 1)*(x - 1)",
+              "color": "var(--fig-indigo)",
+              "label": "Path (x(t), y(t))"
+            },
+            {
+              "fn": "3 - (x - 3)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at (3, 3)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 4,
+              "label": "Apex (1, 4)"
+            },
+            {
+              "x": 3,
+              "y": 3,
+              "label": "(3, 3)"
+            }
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في الوحدة تسعة · المعادلات البارامترية والدوال المتجهة."
+          "en": "Parametric path slope \\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)}\\) determines tangent direction while speed is \\(\\|\\mathbf{v}(t)\\| = \\sqrt{(x')^2 + (y')^2}\\).",
+          "ar": "مسار حركة جسيم في المستوى مع متجه السرعة المماسي وميل المسار \\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)}\\)."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Parametric Trajectory & Velocity Tangent Vector",
+          "title": "Particle Speed Profile ||v(t)|| = √(4 + t²) Along Planar Curve",
           "xrange": [
-            -1,
-            7
+            0,
+            5
           ],
           "yrange": [
-            -1,
+            0,
             6
           ],
           "fns": [
             {
-              "fn": "4 - 0.25*(x - 3)*(x - 3)",
-              "color": "var(--fig-indigo)",
-              "label": "r(t) path"
-            },
-            {
-              "fn": "0.5*x + 2.25",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "r'(t) tangent"
-            }
-          ],
-          "points": [
-            {
-              "x": 2,
-              "y": 3.75,
-              "label": "P(t₀)"
+              "fn": "sqrt(4 + x*x)",
+              "color": "var(--fig-emerald)",
+              "label": "Speed s(t) = √(4 + t²)"
             }
           ]
         },
         "caption": {
-          "en": "Planar parametric trajectory \\(\\mathbf{r}(t)\\) with instantaneous velocity tangent vector \\(\\mathbf{r}'(t_0)\\).",
-          "ar": "المسار الوسيطي المستوي \\(\\mathbf{r}(t)\\) ومتجه السرعة المماسي اللحظي \\(\\mathbf{r}'(t_0)\\) في الوحدة تسعة · المعادلات البارامترية والدوال المتجهة."
+          "en": "Integrating speed \\(s(t) = \\sqrt{(x'(t))^2 + (y'(t))^2}\\) over \\([a, b]\\) computes exact total distance traveled (arc length).",
+          "ar": "تكامل مقدار السرعة \\(s(t) = \\sqrt{(x'(t))^2 + (y'(t))^2}\\) يعطي المسافة الكلية المقطوعة (طول القوس)."
         }
       },
       {
@@ -134,12 +121,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 9 · Parametric Equations & Vector-Valued Functions)",
-          "ar": null
+          "en": "◆ Why It Works — Pythagorean Arc Length & Parametric Second Derivative",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — صيغة طول القوس البارامتري والمشتقة الثانية"
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": null
+          "en": "<p><strong>Infinitesimal Displacement \\(ds\\):</strong> Over time step \\(dt\\), a particle moves \\(dx = x'(t)\\,dt\\) horizontally and \\(dy = y'(t)\\,dt\\) vertically, covering distance \\(ds = \\sqrt{(dx)^2 + (dy)^2} = \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt\\). Meanwhile, by the Chain Rule on \\(m(t) = \\frac{dy}{dx}\\), \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} \\]</p>",
+          "ar": "<p><strong>الإزاحة التفاضلية والمشتقة الثانية البارامترية:</strong> خلال \\(dt\\) يقطع الجسيم مسافة \\(ds = \\sqrt{(x')^2 + (y')^2}\\,dt\\)، وبتطبيق قاعدة السلسلة نحصل على \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\).</p>"
         }
       },
       {
@@ -208,7 +195,7 @@
           [
             {
               "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
-              "ar": "Computing الزاوية at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)"
+              "ar": "حساب الزاوية عند \\(B\\) باستخدام \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)"
             },
             {
               "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
@@ -354,7 +341,7 @@
             "id": "apbcParamT",
             "label": {
               "en": "Time parameter \\(t\\) (rad):",
-              "ar": "Time المعامل \\(t\\) (rad):"
+              "ar": "معامل الزمن \\(t\\) (rad):"
             },
             "min": 0,
             "max": 6.28,
@@ -363,7 +350,7 @@
             "valueDisplayId": "apbcParamTV",
             "ariaLabel": {
               "en": "Time parameter t",
-              "ar": "Time المعامل t"
+              "ar": "معامل الزمن t"
             }
           }
         ],

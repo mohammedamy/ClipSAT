@@ -29,44 +29,22 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
+          "type": "geometry_3d",
+          "solid": "sphere",
+          "title": "Closed Spherical Boundary S = ∂E with Outward Unit Normal n",
+          "dims": [
+            3,
+            3,
             3
           ],
-          "fns": [
-            {
-              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)",
-              "label": "c = 4"
-            },
-            {
-              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)"
-            },
-            {
-              "fn": "2*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Normal ∇f"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 1.22,
-              "label": "P"
-            }
-          ]
+          "radius": 3,
+          "labels": {
+            "r": "R = 3"
+          }
         },
         "caption": {
-          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
-          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس."
+          "en": "Gauss's Divergence Theorem equates outward flux \\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS\\) across sphere \\(x^2 + y^2 + z^2 = 9\\) to \\(\\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\).",
+          "ar": "تساوي نظرية التباعد لغاوس التدفق الخارجي \\(\\iint_{\\partial E} \\mathbf{F}\\cdot \\mathbf{n}\\,dS\\) عبر سطح الكرة \\(x^2 + y^2 + z^2 = 9\\) بالتكامل الثلاثي \\(\\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)."
         }
       },
       {
@@ -246,7 +224,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -367,7 +345,7 @@
         },
         "caption": {
           "en": "Stokes' theorem relates the circulation along the closed boundary curve \\( C = \\partial S \\) to the surface integral of the curl \\( \\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S} \\). Any two surfaces sharing the same oriented boundary curve have identical flux of curl.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التكاملات السطحية ونظرية التباعد (غاوس) ونظرية ستوكس. \\(C = \\partial S\\) ، \\(\\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S}\\)"
+          "ar": "تربط نظرية ستوكس الدوران حول المنحنى الحدودي المغلق \\(C = \\partial S\\) بتكامل التدوير \\(\\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S}\\) عبر السطح \\(S\\)."
         }
       },
       {
@@ -500,7 +478,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -654,7 +632,8 @@
   "quizWidget": {
     "domains": [
       "Surface Integrals, Divergence & Stokes"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",

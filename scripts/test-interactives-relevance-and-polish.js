@@ -49,7 +49,7 @@ const chapterIdsByTrack = {};
 
 const coreAppSrc = fs.readFileSync(path.join(ROOT, 'src', 'scripts', 'modules', '02-core-app.js'), 'utf8');
 const BAD_LATEX_RE = /\\\(A\\\)\s+function|e\^\(\\\(|S_∞|∫₀|division\s+\\\(by/i;
-const GENUINE_ODE_SLUGS_RE = /^(?:.*diffeq.*|apab-u7|apbc-c2|ode-separable|ode-linear|ode-numerical.*|ode-overview|ibhl-t5)$/;
+const GENUINE_ODE_SLUGS_RE = /^(?:.*diffeq.*|apab-u7|apab-frq|apbc-c2|apbc-frq|ode-.*|ch-vectorcalc|mvc-vector-fields|ibhl-t5)$/;
 
 for (const track of tracks) {
   const tDir = path.join(CONTENT_DIR, track);

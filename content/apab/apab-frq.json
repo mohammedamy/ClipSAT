@@ -26,29 +26,29 @@
         "kind": "figure",
         "figure": {
           "type": "bar",
-          "title": "Syllabus Topic Weight Distribution (%)",
+          "title": "Typical 9-Point AP FRQ Point Allocation",
           "data": [
             {
-              "label": "Core I",
-              "val": 30
+              "label": "Part (a)",
+              "val": 2
             },
             {
-              "label": "Core II",
-              "val": 28
+              "label": "Part (b)",
+              "val": 2
             },
             {
-              "label": "Applied III",
-              "val": 24
+              "label": "Part (c)",
+              "val": 3
             },
             {
-              "label": "Synthesis IV",
-              "val": 18
+              "label": "Part (d)",
+              "val": 2
             }
           ]
         },
         "caption": {
-          "en": "Relative exam domain weightings across core syllabus units in AP Calculus AB Free-Response Questions (FRQs).",
-          "ar": "تمثيل بياني بالأعمدة لمقارنة القيم والتكرارات عبر الفئات في الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus AB."
+          "en": "Standard 9-point scoring rubric distribution across subparts (a)–(d) on an AP Calculus AB Free-Response Question.",
+          "ar": "توزيع الدرجات التسع المعتاد على الفروع من (a) إلى (d) في السؤال المقالي لاختبار AP Calculus AB."
         }
       },
       {
@@ -153,30 +153,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bar",
-          "title": "Recommended Time Allocation per Exam Section (min)",
-          "data": [
+          "type": "fn",
+          "title": "Rate-In vs. Rate-Out Accumulation Model E(t) and L(t)",
+          "xrange": [
+            0,
+            8
+          ],
+          "yrange": [
+            0,
+            10
+          ],
+          "fns": [
             {
-              "label": "Warm-up",
-              "val": 15
+              "fn": "6 + 2*sin(0.8*x)",
+              "color": "var(--fig-indigo)",
+              "label": "E(t) entry rate"
             },
             {
-              "label": "Core MCQ",
-              "val": 35
-            },
-            {
-              "label": "Multi-Step",
-              "val": 30
-            },
-            {
-              "label": "Review",
-              "val": 10
+              "fn": "0.9*x + 1",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "L(t) exit rate"
             }
           ]
         },
         "caption": {
-          "en": "Target pacing allocation (in minutes) across question tiers and final verification for AP Calculus AB Free-Response Questions (FRQs).",
-          "ar": "تمثيل بياني بالأعمدة لمقارنة القيم والتكرارات عبر الفئات في الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus AB."
+          "en": "Canonical AP FRQ #1 Rate-In / Rate-Out setup: total amount attains an interior extremum where \\(E(t) = L(t)\\).",
+          "ar": "نموذج معدل الدخول ومعدل الخروج القياسي في الأسئلة المقالية حيث تتحقق القيمة القصوى عند تقاطع المعدلين \\(E(t) = L(t)\\)."
         }
       },
       {
@@ -228,12 +231,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (AP Calculus AB Free-Response Questions (FRQs))",
-          "ar": null
+          "en": "◆ Why It Works — Net Change & Accumulation as the Unifying Thread of AP Calculus",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — التغير الصافي والتراكم كمحور موحّد لاختبار التفاضل والتكامل"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Net Change Unifies MCQ and FRQ Calculus:</strong> By the Fundamental Theorem of Calculus, any differentiable quantity \\(Q(t)\\) satisfies \\[ Q(b) = Q(a) + \\int_a^b Q'(t)\\,dt \\] Rearranging this single identity powers Rate-In/Rate-Out FRQs (\\(Q(t) = Q(0) + \\int_0^t [E(s) - L(s)]\\,ds\\)), particle position from velocity, tabular Riemann approximations, and Taylor remainder bounds in BC.</p>",
+          "ar": "<p><strong>كيف توحّد نظرية التغير الصافي أسئلة الاختبار:</strong> بموجب النظرية الأساسية للتفاضل والتكامل تحقق أي كمية قابلة للاشتقاق \\(Q(t)\\) العلاقة \\[ Q(b) = Q(a) + \\int_a^b Q'(t)\\,dt \\] وهي الهوية الجوهرية التي تحكم مسائل معدل الدخول والخروج، وحركة الجسيمات، ومجاميع ريمان الجدولية.</p>"
         }
       },
       {
@@ -498,7 +501,7 @@
         ],
         "solution": {
           "en": "Intersections at \\( x = 0 \\) and \\( x = 11 \\). Area \\( = \\int_0^{11} (11x - x^2)\\,dx = \\left[\\frac{11}{2}x^2 - \\frac{x^3}{3}\\right]_0^{11} = \\frac{1331}{6} \\).",
-          "ar": "خطوات الحل التفصيلية: Intersections at \\(x = 0\\) and \\(x = 11\\). Area \\(= \\int_0^{11} (11x - x^2)\\,dx = \\left[\\frac{11}{2}x^2 - \\frac{x^3}{3}\\right]_0^{11} = \\frac{1331}{6}\\)."
+          "ar": "خطوات الحل التفصيلية: Intersections at \\(x = 0\\) و \\(x = 11\\). Area \\(= \\int_0^{11} (11x - x^2)\\,dx = \\left[\\frac{11}{2}x^2 - \\frac{x^3}{3}\\right]_0^{11} = \\frac{1331}{6}\\)."
         }
       },
       {
@@ -514,7 +517,7 @@
           },
           {
             "en": "Set \\( a(t) = 0 \\) and solve for \\( t \\): \\(12t - 18 = 0\\). Apply the next algebraic step: \\(12t = 18\\).",
-            "ar": "Set \\(a(t) = 0\\) and أوجد قيمة \\(t\\): \\(12t - 18 = 0\\). طبّق الخطوة الجبرية التالية: \\(12t = 18\\)."
+            "ar": "Set \\(a(t) = 0\\) و أوجد قيمة \\(t\\): \\(12t - 18 = 0\\). طبّق الخطوة الجبرية التالية: \\(12t = 18\\)."
           },
           {
             "en": "Use the simplified form: \\(t = \\frac{18}{12}\\).",

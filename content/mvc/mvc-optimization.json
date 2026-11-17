@@ -30,43 +30,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
+          "title": "Hyperbolic Saddle Traces of f(x, y) = x² − y² at Origin",
           "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
             -3,
             3
           ],
+          "yrange": [
+            -4.5,
+            4.5
+          ],
           "fns": [
             {
-              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
+              "fn": "x*x",
               "color": "var(--fig-indigo)",
-              "label": "c = 4"
+              "label": "f(x, 0) = x² (concave up)"
             },
             {
-              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)"
-            },
-            {
-              "fn": "2*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Normal ∇f"
+              "fn": "-x*x",
+              "color": "var(--fig-rose)",
+              "label": "f(0, y) = −y² (concave down)"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": 1.22,
-              "label": "P"
+              "x": 0,
+              "y": 0,
+              "label": "Saddle (0, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
-          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج."
+          "en": "Opposite principal curvatures along orthogonal coordinate slices produce a negative Hessian determinant \\(D = f_{xx}f_{yy} - f_{xy}^2 = -4 < 0\\) (saddle point at \\((0,0)\\)).",
+          "ar": "تعاكس تقعر المقاطع الإحداثية المتعامدة يعطي محدد هيسيان سالباً \\(D = f_{xx}f_{yy} - f_{xy}^2 = -4 < 0\\)، أي نقطة سرج عند \\((0,0)\\)."
         }
       },
       {
@@ -322,7 +317,7 @@
         },
         "caption": {
           "en": "Lagrange multiplier geometric condition: the maximum of \\( f(x, y) = x + y \\) on the constraint circle \\( g(x, y) = x^2 + y^2 = 4 \\) occurs at \\( (\\sqrt{2}, \\sqrt{2}) \\), where the level line of \\( f \\) is tangent to the constraint curve, meaning \\( \\nabla f = \\lambda \\nabla g \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التحسين متعدد المتغيرات: النقاط الحرجة ومصفوفة هيس ومضاعفات لاغرانج. \\(f(x, y) = x + y\\) ، \\(g(x, y) = x^2 + y^2 = 4\\) ، \\((\\sqrt{2}, \\sqrt{2})\\) ، \\(f\\) ، \\(\\nabla f = \\lambda \\nabla g\\)"
+          "ar": "شرط التماس الهندسي لمضاعفات لاغرانج \\(\\nabla f = \\lambda \\nabla g\\) لتعظيم \\(f(x, y) = x + y\\) على دائرة القيد \\(x^2 + y^2 = 2\\)."
         }
       },
       {
@@ -486,7 +481,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -640,7 +635,8 @@
   "quizWidget": {
     "domains": [
       "Optimization"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",

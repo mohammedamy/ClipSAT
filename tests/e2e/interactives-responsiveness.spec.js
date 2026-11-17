@@ -18,7 +18,7 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
 
     try {
       // 1. Olympiad lab drag (verifies chApi.check fix + 2x DPR coordinates)
-      await page.goto('/olympiad/', { waitUntil: 'load' });
+      await page.goto('/olympiad/ol-algebraic-techniques/', { waitUntil: 'load' });
       const olyCanvas = page.locator('#olalgebraictechniquesExCanvas');
       await olyCanvas.scrollIntoViewIfNeeded();
       await page.waitForTimeout(250);
@@ -35,7 +35,7 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
       expect(errors, 'Zero pageerrors during Olympiad drag').toEqual([]);
 
       // 2. Tahsili Weighted Admission Composite lab (tahScoreCanvas on tah-about)
-      await page.goto('/tahsili/', { waitUntil: 'load' });
+      await page.goto('/tahsili/tah-about/', { waitUntil: 'load' });
       const tahCanvas = page.locator('#tahScoreCanvas');
       await expect(tahCanvas).toBeVisible();
       await tahCanvas.scrollIntoViewIfNeeded();
@@ -54,7 +54,10 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
 
       // 3. Algebra lineCanvas High-DPR drag on y-intercept (0, 1) -> (0, -2) updates canvas & readout
       await page.goto('/algebra/', { waitUntil: 'load' });
-      await page.locator('aside.rail a[data-target="ag-linear"]').click();
+      await Promise.all([
+        page.waitForURL('**/algebra/ag-linear/', { waitUntil: 'load' }),
+        page.locator('aside.rail a[data-target="ag-linear"]').click()
+      ]);
       await page.waitForTimeout(200);
       const lineCanvas = page.locator('#lineCanvas');
       await lineCanvas.scrollIntoViewIfNeeded();
@@ -84,9 +87,12 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
 
-    // 1. SAT -> switch to hidden chapter sat-quad
+    // 1. SAT -> navigate to per-chapter route sat-quad via rail
     await page.goto('/sat/', { waitUntil: 'load' });
-    await page.locator('aside.rail a[data-target="sat-quad"]').click();
+    await Promise.all([
+      page.waitForURL('**/sat/sat-quad/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="sat-quad"]').click()
+    ]);
     await page.waitForTimeout(250);
 
     // Check mainfn <select> defaults to quadratic (not exponential)
@@ -94,6 +100,7 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
     expect(satMainFnVal).toBe('quadratic');
 
     // Check all IX canvases inside #sat-quad have non-zero clientWidth/width after becoming visible
+    await expect.poll(() => page.locator('#sat-quad .ix-box canvas').count(), { timeout: 10000 }).toBeGreaterThan(0);
     const satIxCanvases = await page.evaluate(async () => {
       const sec = document.getElementById('sat-quad');
       const cvs = Array.from(sec.querySelectorAll('.ix-box canvas'));
@@ -107,17 +114,23 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
       expect(dim.w).toBeGreaterThan(120);
     }
 
-    // 2. Alg2 -> switch to hidden chapter a2-rational and verify rational default
+    // 2. Alg2 -> navigate to per-chapter route a2-rational and verify rational default
     await page.goto('/alg2/', { waitUntil: 'load' });
-    await page.locator('aside.rail a[data-target="a2-rational"]').click();
+    await Promise.all([
+      page.waitForURL('**/alg2/a2-rational/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="a2-rational"]').click()
+    ]);
     await page.waitForTimeout(200);
     const alg2MainFnVal = await page.locator('#uge_a2rational_mainfnFn').inputValue();
     expect(alg2MainFnVal).toBe('rational');
 
-    // 3. AP Precalculus -> switch to appc-u4 and verify Parametric Projectile Trajectory FN activity renders
+    // 3. AP Precalculus -> navigate to appc-u4 and verify Parametric Projectile Trajectory FN activity renders
     await page.goto('/appc/', { waitUntil: 'load' });
-    await page.locator('aside.rail a[data-target="appc-u4"]').click();
-    await page.waitForTimeout(250);
+    await Promise.all([
+      page.waitForURL('**/appc/appc-u4/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="appc-u4"]').click()
+    ]);
+    await expect.poll(() => page.locator('#appc-u4 .ix-box canvas').count(), { timeout: 10000 }).toBeGreaterThan(0);
     const hasParametricFn = await page.evaluate(async () => {
       const sec = document.getElementById('appc-u4');
       const cvs = Array.from(sec.querySelectorAll('.ix-box canvas'));
@@ -140,7 +153,10 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
 
     // 1. IBHL Topic 3: ibhlCrossCanvas visible + dynamic sliders + Data Table toggle
     await page.goto('/ibhl/', { waitUntil: 'load' });
-    await page.locator('aside.rail a[data-target="ibhl-t3"]').click();
+    await Promise.all([
+      page.waitForURL('**/ibhl/ibhl-t3/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="ibhl-t3"]').click()
+    ]);
     await page.waitForTimeout(250);
     const crossCanvas = page.locator('#ibhlCrossCanvas');
     await expect(crossCanvas).toBeVisible();
@@ -155,7 +171,10 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
 
     // 2. SAT Linear / Quadratic / Exponential secondary sliders auto-switch mode & update readouts
     await page.goto('/sat/', { waitUntil: 'load' });
-    await page.locator('aside.rail a[data-target="sat-linfun"]').click();
+    await Promise.all([
+      page.waitForURL('**/sat/sat-linfun/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="sat-linfun"]').click()
+    ]);
     await page.waitForTimeout(200);
     const satLinBefore = await page.locator('#satLinFormsActiveEq').textContent();
     await page.evaluate(() => {
@@ -165,7 +184,10 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
     });
     expect(await page.locator('#satLinFormsActiveEq').textContent()).not.toEqual(satLinBefore);
 
-    await page.locator('aside.rail a[data-target="sat-expoly"]').click();
+    await Promise.all([
+      page.waitForURL('**/sat/sat-expoly/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="sat-expoly"]').click()
+    ]);
     await page.waitForTimeout(200);
     const satExpBefore = await page.locator('#satExpFormsActiveEq').textContent();
     await page.evaluate(() => {
@@ -177,7 +199,10 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
 
     // 3. Edexcel Kinematics s1 slider & Geo Foundations s1 slider update canvas & readouts
     await page.goto('/edexcel/', { waitUntil: 'load' });
-    await page.locator('aside.rail a[data-target="edx-calculus-kinematics"]').click();
+    await Promise.all([
+      page.waitForURL('**/edexcel/edx-calculus-kinematics/', { waitUntil: 'load' }),
+      page.locator('aside.rail a[data-target="edx-calculus-kinematics"]').click()
+    ]);
     await page.waitForTimeout(200);
     const edxBefore = await page.locator('#edxcalculuskinematicsExCanvas_r0').textContent();
     await page.evaluate(() => {
@@ -187,7 +212,7 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
     });
     expect(await page.locator('#edxcalculuskinematicsExCanvas_r0').textContent()).not.toEqual(edxBefore);
 
-    await page.goto('/geo/', { waitUntil: 'load' });
+    await page.goto('/geo/geo-foundations/', { waitUntil: 'load' });
     const geoBefore = await page.locator('#geofoundationsExCanvas_r0').textContent();
     await page.evaluate(() => {
       const sl = document.getElementById('geofoundationsExCanvas_s1');
@@ -246,13 +271,13 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
   });
 
   const wcagRoutes = [
-    { url: '/tahsili/', target: 'tah-about' },
-    { url: '/tahsili/', target: 'tah-geometry' },
-    { url: '/olympiad/', target: 'ol-algebraic-techniques' },
-    { url: '/appc/', target: 'appc-u2b' },
-    { url: '/appc/', target: 'appc-u4' },
-    { url: '/sat/', target: 'sat-quad' },
-    { url: '/algebra/', target: 'ag-linear' }
+    { url: '/tahsili/tah-about/', target: 'tah-about' },
+    { url: '/tahsili/tah-geometry/', target: 'tah-geometry' },
+    { url: '/olympiad/ol-algebraic-techniques/', target: 'ol-algebraic-techniques' },
+    { url: '/appc/appc-u2b/', target: 'appc-u2b' },
+    { url: '/appc/appc-u4/', target: 'appc-u4' },
+    { url: '/sat/sat-quad/', target: 'sat-quad' },
+    { url: '/algebra/ag-linear/', target: 'ag-linear' }
   ];
 
   for (const scheme of ['light', 'dark']) {
@@ -263,15 +288,9 @@ test.describe('interactives: High-DPR drag, hidden chapters, relevance & mobile 
         const page = await context.newPage();
         try {
           await page.goto(r.url, { waitUntil: 'load' });
-          const link = page.locator(`aside.rail a[data-target="${r.target}"]`);
-          if (await link.count()) await link.click();
-          await page.evaluate((activeId) => {
+          await page.evaluate(() => {
             if (window.CS_syncScrollFocus) window.CS_syncScrollFocus();
-            // Prune display:none chapters so axe-core builds its virtual tree only on visible UI + active chapter
-            document.querySelectorAll('.chapter').forEach((ch) => {
-              if (ch.id !== activeId) ch.remove();
-            });
-          }, r.target);
+          });
           const results = await new AxeBuilder({ page })
             .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();

@@ -49,29 +49,38 @@
         "kind": "figure",
         "figure": {
           "type": "two_way_table",
-          "title": "Stratified Sample / Contingency Counts",
+          "title": "Chi-Square Contingency Counts Across 3 Age Groups",
           "rows": [
-            "Treatment Group",
-            "Control Group"
+            "18–29",
+            "30–49",
+            "50+"
           ],
           "cols": [
-            "Improved",
-            "No Change"
+            "Streaming",
+            "Cable",
+            "Broadcast"
           ],
           "data": [
             [
-              68,
-              32
+              64,
+              16,
+              20
             ],
             [
-              41,
-              59
+              48,
+              32,
+              20
+            ],
+            [
+              28,
+              52,
+              20
             ]
           ]
         },
         "caption": {
-          "en": "Two-way contingency table comparing outcomes across randomized treatment and control groups.",
-          "ar": "جدول توافقي ثنائي يقارن النتائج بين المجموعة التجريبية والمجموعة الضابطة في الوحدة ستة · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي."
+          "en": "Observed counts \\(O_{ij}\\) in a \\(3 \\times 3\\) contingency table (\\(\\text{df} = 4\\)) tested via \\(\\chi^2 = \\sum \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\).",
+          "ar": "التكرارات المشاهدة \\(O_{ij}\\) في جدول توافقي \\(3 \\times 3\\) لاختبار كاي تربيع للاستقلالية أو التجانس."
         }
       },
       {
@@ -180,28 +189,15 @@
           "title": "95% Confidence Capture Between z* = ±1.96",
           "mean": 0,
           "sd": 1,
-          "shade": {
-            "from": -1.96,
-            "to": 1.96
-          },
-          "vlines": [
-            {
-              "x": -1.96,
-              "label": "-z* = -1.96"
-            },
-            {
-              "x": 1.96,
-              "label": "+z* = +1.96"
-            }
-          ]
+          "shade": [
+            -1.96,
+            1.96
+          ],
+          "label": "95% capture"
         },
         "caption": {
-          "en": "Central \\(95\\%\\) capture area bounded by critical values \\(z^* = \\pm 1.96\\) for a one-sample proportion interval \\(\\hat{p} \\pm z^*\\sqrt{\\hat{p}(1-\\hat{p})/n}\\).",
-          "ar": "منطقة الثقة المركزية بنسبة المحصورة بين القيمتين الحرجتين لبناء فترة الثقة لنسبة المجتمع. \\(95\\%\\) ، \\(z^* = \\pm 1.96\\) ، \\(\\hat{p} \\pm z^*\\sqrt{\\hat{p}(1-\\hat{p})/n}\\)"
-        },
-        "title": {
-          "en": "95% Two-Sided Confidence Interval Critical Region for p̂",
-          "ar": "المنطقة الحرجة لفترة الثقة 95% لنسبة العينة p̂"
+          "en": "Central \\(95\\%\\) capture area bounded by critical values \\(z^* = \\pm 1.96\\) for a one-sample or two-sample proportion interval.",
+          "ar": "منطقة الثقة الوسطى بنسبة \\(95\\%\\) المحصورة بين القيمتين الحرجتين \\(z^* = \\pm 1.96\\)."
         }
       },
       {
@@ -253,72 +249,72 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)"
+          "en": "◆ Why It Works — Pooling in Two-Proportion z-Tests vs. Unpooled Intervals",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — متى ندمج النسبتين ومتى نبقي الخطأ المعياري غير مدمج"
         },
         "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
-          "ar": null
+          "en": "<p><strong>Null Hypothesis Dictates Variance:</strong> In a two-proportion <em>significance test</em> of \\(H_0: p_1 = p_2\\), both samples come from a common proportion \\(p\\) under \\(H_0\\), so pooling \\(\\hat{p}_c = \\frac{x_1+x_2}{n_1+n_2}\\) yields the best variance estimate. In a <em>confidence interval</em>, no null equality is assumed, so \\(\\hat{p}_1\\) and \\(\\hat{p}_2\\) remain separate.</p>",
+          "ar": "<p><strong>فرضية العدم تحدد صيغة الخطأ المعياري:</strong> في اختبار تساوي نسبتين \\(H_0: p_1 = p_2\\) نفترض نسبة مشتركة واحدة فنستخدم النسبة المجمّعة \\(\\hat{p}_c\\)، أما في فترة الثقة فلا نفترض التساوي فنستخدم \\(\\hat{p}_1\\) و\\(\\hat{p}_2\\) منفصلتين.</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 6.A — Foundational Formulation",
-          "ar": "مثال محلول 6.A — تطبيق أساسي"
+          "en": "Worked Example 6.1 — One-Sample z-Interval & Sample Size Planning",
+          "ar": "مثال محلول 6.1 — فترة ثقة z لنسبة واحدة وتحديد حجم العينة"
         },
         "problem": {
-          "en": "Express \\( f(x) = x^2 - 14x + 55 \\) in completed-square vertex form and find its minimum value.",
-          "ar": "أوجد صيغة إكمال المربع للدالة \\(f(x) = x^2 - 14x + 55\\)."
+          "en": "In an SRS of \\( n = 400 \\) residents, \\( 240 \\) favor a municipal bond. Construct a \\( 95\\% \\) confidence interval for \\( p \\), and find the conservative sample size needed for margin of error at most \\( 0.03 \\) at \\( 95\\% \\) confidence.",
+          "ar": "في عينة عشوائية بسيطة من \\( n = 400 \\) مقيم، أيّد \\( 240 \\) منهم مشروع سندات بلدية. أنشئ فترة ثقة بنسبة \\( 95\\% \\) للنسبة \\( p \\)، وأوجد حجم العينة التحفظي اللازم ليكون هامش الخطأ \\( 0.03 \\) على الأكثر."
         },
         "solution": {
-          "en": "<p>Halving \\( -14 \\) gives \\( -7 \\), so \\( f(x) = (x - 7)^2 - 49 + 55 = (x - 7)^2 + 6 \\). Minimum value is \\( 6 \\) at \\( x = 7 \\).</p>",
-          "ar": null
+          "en": "<p>Here \\( \\hat{p} = \\frac{240}{400} = 0.60 \\) and \\( SE = \\sqrt{\\frac{0.60(0.40)}{400}} = \\frac{0.4899}{20} \\approx 0.0245 \\). Using \\( z^* = 1.96 \\): \\[ 0.60 \\pm 1.96(0.0245) = 0.60 \\pm 0.048 = (0.552, 0.648) \\] For conservative planning (\\( p^* = 0.5 \\)): \\[ 1.96\\sqrt{\\frac{0.25}{n}} \\le 0.03 \\implies \\sqrt{n} \\ge \\frac{1.96(0.5)}{0.03} = 32.67 \\implies n \\ge 1068 \\]</p>",
+          "ar": "<p>لدينا \\( \\hat{p} = 0.60 \\) و\\( SE \\approx 0.0245 \\). وعند \\( z^* = 1.96 \\): \\[ 0.60 \\pm 1.96(0.0245) = (0.552, 0.648) \\] ولتحديد حجم العينة التحفظي بوضع \\( p^* = 0.5 \\): \\[ 1.96\\sqrt{\\frac{0.25}{n}} \\le 0.03 \\implies n \\ge 1068 \\]</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 6.B — Multi-Step Tangency & Discriminant",
-          "ar": "مثال محلول 6.B — شرط التماس والمميز"
+          "en": "Worked Example 6.2 — One-Sample z-Test for a Population Proportion",
+          "ar": "مثال محلول 6.2 — اختبار z لنسبة مجتمع واحد"
         },
         "problem": {
-          "en": "Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 14x + 54 \\).",
-          "ar": "أوجد قيمة \\(k\\) التي تجعل المستقيم \\(y = 2x + k\\) مماساً للمنحنى \\(y = x^2 - 14x + 54\\)."
+          "en": "A seed supplier claims \\( 90\\% \\) germination. A botanist plants an SRS of \\( 225 \\) seeds and observes \\( 189 \\) germinate. Test \\( H_0: p = 0.90 \\) vs. \\( H_a: p < 0.90 \\) at \\( \\alpha = 0.05 \\).",
+          "ar": "يدّعي مورّد بذور أن نسبة الإنبات \\( 90\\% \\). زرع عالم نبات عينة عشوائية بسيطة من \\( 225 \\) بذرة فنبتت \\( 189 \\) منها. اختبر \\( H_0: p = 0.90 \\) مقابل \\( H_a: p < 0.90 \\) عند \\( \\alpha = 0.05 \\)."
         },
         "solution": {
-          "en": "<p>Equating gives \\( x^2 - 16x + (54 - k) = 0 \\). Setting \\( \\Delta = (-16)^2 - 4(54 - k) = 0 \\) yields \\( k = -10 \\).</p>",
-          "ar": null
+          "en": "<p>Sample proportion \\( \\hat{p} = \\frac{189}{225} = 0.84 \\). Under \\( H_0 \\), \\( np_0 = 202.5 \\ge 10 \\), \\( n(1-p_0) = 22.5 \\ge 10 \\), and \\( \\sigma_0 = \\sqrt{\\frac{0.90(0.10)}{225}} = \\frac{0.30}{15} = 0.02 \\). Test statistic: \\[ z = \\frac{0.84 - 0.90}{0.02} = -3.00 \\] Left-tail \\( p\\text{-value} = P(Z \\le -3.00) \\approx 0.0013 < 0.05 \\), so we <strong>reject \\( H_0 \\)</strong>: there is convincing evidence the true germination rate is below \\( 90\\% \\).</p>",
+          "ar": "<p>نسبة العينة \\( \\hat{p} = \\frac{189}{225} = 0.84 \\)، وتحت \\( H_0 \\) يكون الخطأ المعياري \\( \\sqrt{\\frac{0.90(0.10)}{225}} = 0.02 \\). إحصائية الاختبار: \\[ z = \\frac{0.84 - 0.90}{0.02} = -3.00 \\] القيمة الاحتمالية \\( p\\text{-value} \\approx 0.0013 < 0.05 \\)؛ لذا <strong>نرفض \\( H_0 \\)</strong> لوجود دليل مقنع على أن نسبة الإنبات أقل من \\( 90\\% \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 6.C — Rate of Change & Tangent Slope",
-          "ar": "مثال محلول 6.C — معدل التغير وميل المماس"
+          "en": "Worked Example 6.3 — Pooled Two-Proportion z-Test",
+          "ar": "مثال محلول 6.3 — اختبار z المجمّع للفرق بين نسبتين"
         },
         "problem": {
-          "en": "Find the instantaneous rate of change of \\( g(x) = x^3 - 21x^2 + 147x + 6 \\) at \\( x = 9 \\).",
-          "ar": "أوجد معدل التغير اللحظي للدالة \\(g(x) = x^3 - 21x^2 + 147x + 6\\) عند \\(x = 9\\)."
+          "en": "In two independent SRSs, \\( 48 \\) of \\( 100 \\) patients on Regimen A improved versus \\( 32 \\) of \\( 100 \\) on Regimen B. Compute the pooled proportion \\( \\hat{p}_c \\) and the test statistic \\( z \\) for \\( H_0: p_A - p_B = 0 \\).",
+          "ar": "في عينتين عشوائيتين مستقلتين، تحسّن \\( 48 \\) من أصل \\( 100 \\) مريض في النظام A مقابل \\( 32 \\) من أصل \\( 100 \\) في النظام B. احسب النسبة المجمّعة \\( \\hat{p}_c \\) وإحصائية الاختبار \\( z \\) لاختبار \\( H_0: p_A - p_B = 0 \\)."
         },
         "solution": {
-          "en": "<p>\\( g'(x) = 3(x - 7)^2 \\), so \\( g'(9) = 3(2)^2 = 12 \\).</p>",
-          "ar": null
+          "en": "<p>Pooled proportion: \\( \\hat{p}_c = \\frac{48 + 32}{100 + 100} = 0.40 \\). Pooled standard error: \\[ SE_c = \\sqrt{0.40(0.60)\\left(\\frac{1}{100} + \\frac{1}{100}\\right)} = \\sqrt{0.0048} \\approx 0.0693 \\] Thus \\( z = \\frac{0.48 - 0.32}{0.0693} \\approx 2.31 \\).</p>",
+          "ar": "<p>النسبة المجمّعة \\( \\hat{p}_c = \\frac{48 + 32}{200} = 0.40 \\)، والخطأ المعياري المجمّع \\( SE_c = \\sqrt{0.40(0.60)(0.02)} \\approx 0.0693 \\)، ومنه \\( z = \\frac{0.16}{0.0693} \\approx 2.31 \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 6.D — Synthesis & Definite Accumulation",
-          "ar": "مثال محلول 6.D — مسألة شاملة"
+          "en": "Worked Example 6.4 — Chi-Square Test of Independence: Expected Counts & df",
+          "ar": "مثال محلول 6.4 — اختبار كاي تربيع للاستقلالية: التكرارات المتوقعة ودرجات الحرية"
         },
         "problem": {
-          "en": "Evaluate \\( \\int_0^2 (3x^2 + 14x + 6)\\,\\mathrm{d}x \\).",
-          "ar": "احسب \\(\\int_0^2 (3x^2 + 14x + 6)\\,\\mathrm{d}x\\)."
+          "en": "A \\( 3 \\times 4 \\) contingency table classifies \\( N = 200 \\) respondents by age bracket (3 rows) and transit mode (4 columns). If Row 1 total is \\( 50 \\) and Column 2 total is \\( 80 \\), find the expected count \\( E_{12} \\) and degrees of freedom.",
+          "ar": "يصنّف جدول توافقي من الرتبة \\( 3 \\times 4 \\) عدداً قدره \\( N = 200 \\) مشارك حسب الفئة العمرية (3 صفوف) ووسيلة النقل (4 أعمدة). إذا كان مجموع الصف الأول \\( 50 \\) ومجموع العمود الثاني \\( 80 \\)، فأوجد التكرار المتوقع \\( E_{12} \\) ودرجات الحرية."
         },
         "solution": {
-          "en": "<p>\\( \\left[x^3 + 7x^2 + 6x\\right]_0^2 = 8 + 28 + 12 = 48 \\).</p>",
-          "ar": null
+          "en": "<p>Under independence, \\[ E_{12} = \\frac{\\text{Row 1 Total} \\times \\text{Column 2 Total}}{N} = \\frac{50 \\times 80}{200} = 20 \\] Degrees of freedom: \\( \\text{df} = (r - 1)(c - 1) = (3 - 1)(4 - 1) = 6 \\).</p>",
+          "ar": "<p>تحت فرضية الاستقلالية: \\[ E_{12} = \\frac{50 \\times 80}{200} = 20 \\] ودرجات الحرية \\( \\text{df} = (3 - 1)(4 - 1) = 6 \\).</p>"
         }
       },
       {
@@ -336,50 +332,64 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)"
+          "en": "Error Diagnosis — Common AP Statistics Exam Traps vs. Scoring Rubric Method",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Statistics مقابل الطريقة المعتمدة"
         },
         "columns": [
           {
-            "en": "Error Pattern",
-            "ar": "الخطأ الشائع"
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
-            "en": "Incorrect Working",
-            "ar": "الخطوة الخاطئة"
+            "en": "Why It Fails Mathematically",
+            "ar": "لماذا يفشل رياضياً"
           },
           {
-            "en": "Correct Method",
-            "ar": "الطريقة الصحيحة"
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
-              "en": "Term-by-term cancellation",
-              "ar": "اختصار حدود مجموعه"
+              "en": "Writing hypotheses using sample statistics (e.g., \\(H_0: \\hat{p} = 0.5\\) or \\(H_0: \\bar{x} = 10\\))",
+              "ar": "كتابة الفرضيات بدلالة إحصاءات العينة مثل \\(H_0: \\hat{p} = 0.5\\)"
             },
             {
-              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
-              "ar": null
+              "en": "Sample statistics are already known without testing; inference always targets unknown population parameters.",
+              "ar": "إحصاءات العينة معلومة، بينما الاستدلال يستهدف معالم المجتمع المجهولة."
             },
             {
-              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
-              "ar": "حلّل الأول: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))"
+              "en": "Always state hypotheses in terms of population parameters \\(p, \\mu, \\mu_d,\\) or \\(\\beta\\) and define them in context.",
+              "ar": "صياغة الفرضيات دائماً بدلالة معالم المجتمع \\(p, \\mu, \\mu_d, \\beta\\) وتعريفها في السياق."
             }
           ],
           [
             {
-              "en": "Sign error in completing square",
-              "ar": "خطأ إشارة عند إكمال المربع"
+              "en": "Interpreting a \\(p\\)-value as \"the probability that \\(H_0\\) is true\"",
+              "ar": "تفسير القيمة الاحتمالية على أنها احتمال صحة \\(H_0\\)"
             },
             {
-              "en": "\\( (x - h)^2 + h^2 + c \\)",
-              "ar": null
+              "en": "Frequentist \\(H_0\\) is either true or false, not random; \\(p\\)-value conditions on \\(H_0\\) being true.",
+              "ar": "القيمة الاحتمالية تُحسب بشرط صحة \\(H_0\\) وليست احتمالاً لصحتها."
             },
             {
-              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
-              "ar": "اطرح \\(h^2\\): \\((x - h)^2 - h^2 + c\\)"
+              "en": "Assuming \\(H_0\\) is true, the \\(p\\)-value is the probability of obtaining a sample statistic as extreme or more extreme by chance alone.",
+              "ar": "بفرض صحة \\(H_0\\)، هي احتمال الحصول على نتيجة عينة مماثلة أو أكثر تطرفاً بمجرد الصدفة."
+            }
+          ],
+          [
+            {
+              "en": "Claiming causation from an observational study because \\(n\\) is large",
+              "ar": "استنتاج السببية من دراسة رصدية لمجرد كبر حجم العينة"
+            },
+            {
+              "en": "Large sample size reduces random error but never removes confounding variables.",
+              "ar": "كبر العينة يقلل خطأ المعاينة لكنه لا يزيل المتغيرات المربكة."
+            },
+            {
+              "en": "Only a randomized experiment with random assignment of treatments justifies a cause-and-effect conclusion.",
+              "ar": "وحده التوزيع العشوائي للمعالجات في تجربة مضبوطة يبرر استنتاج السببية."
             }
           ]
         ]
@@ -399,126 +409,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 8)^2 + 7 \\), evaluate \\( f(16) \\).",
-          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\(f(x) = (x - 8)^2 + 7\\)، فاحسب قيمة \\(f(16)\\)."
+          "en": "<strong>[Practice 1]</strong> If \\( \\hat{p} = 0.50 \\) and \\( n = 100 \\), find the standard error \\( SE_{\\hat{p}} \\) for a confidence interval.",
+          "ar": "<strong>[تدريب 1]</strong> إذا كان \\( \\hat{p} = 0.50 \\) و\\( n = 100 \\)، فأوجد الخطأ المعياري \\( SE_{\\hat{p}} \\) لفترة الثقة."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 16 \\) into \\( (x - 8)^2 + 7 \\).",
-            "ar": null
+            "en": "Use \\( SE_{\\hat{p}} = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\).",
+            "ar": "استخدم \\( SE_{\\hat{p}} = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (16 - 8)^2 = 8^2 = 64 \\).",
-            "ar": null
+            "en": "Compute \\( 0.50(0.50)/100 = 0.0025 \\).",
+            "ar": "احسب \\( 0.50(0.50)/100 = 0.0025 \\)."
           },
           {
-            "en": "Add \\( 64 + 7 \\) to obtain the final answer.",
-            "ar": "اجمع \\(64 + 7\\) للحصول على الناتج."
+            "en": "Take the square root of \\( 0.0025 \\).",
+            "ar": "خذ الجذر التربيعي للعدد \\( 0.0025 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 16 \\) gives \\( f(16) = (8)^2 + 7 = 64 + 7 = 71 \\).",
-          "ar": null
+          "en": "\\( SE_{\\hat{p}} = \\sqrt{0.0025} = 0.05 \\).",
+          "ar": "\\( SE_{\\hat{p}} = \\sqrt{0.0025} = 0.05 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
-          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\(f(x) = (x - 9)^2 + 8\\)، فاحسب قيمة \\(f(18)\\)."
+          "en": "<strong>[Practice 2]</strong> A hypothesis test yields \\( p\\text{-value} = 0.018 \\) at significance level \\( \\alpha = 0.05 \\). State the decision regarding \\( H_0 \\).",
+          "ar": "<strong>[تدريب 2]</strong> أعطى اختبار فرضيات \\( p\\text{-value} = 0.018 \\) عند مستوى معنوية \\( \\alpha = 0.05 \\). ما القرار بشأن \\( H_0 \\)؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
-            "ar": null
+            "en": "Compare the \\( p\\text{-value} \\) directly with \\( \\alpha \\).",
+            "ar": "قارن القيمة الاحتمالية بمستوى المعنوية \\( \\alpha \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
-            "ar": null
+            "en": "Here \\( 0.018 < 0.05 \\).",
+            "ar": "هنا \\( 0.018 < 0.05 \\)."
           },
           {
-            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
-            "ar": "اجمع \\(81 + 8\\) للحصول على الناتج."
+            "en": "When \\( p\\text{-value} < \\alpha \\), reject \\( H_0 \\).",
+            "ar": "عندما تكون القيمة الاحتمالية أصغر من \\( \\alpha \\)، نرفض \\( H_0 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
-          "ar": null
+          "en": "Since \\( 0.018 < 0.05 \\), we <strong>reject \\( H_0 \\)</strong>.",
+          "ar": "بما أن \\( 0.018 < 0.05 \\)، فإننا <strong>نرفض \\( H_0 \\)</strong>."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 10)^2 + 9 \\), evaluate \\( f(20) \\).",
-          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\(f(x) = (x - 10)^2 + 9\\)، فاحسب قيمة \\(f(20)\\)."
+          "en": "<strong>[Practice 3]</strong> Find the degrees of freedom for a chi-square test of homogeneity on a \\( 4 \\times 3 \\) two-way table.",
+          "ar": "<strong>[تدريب 3]</strong> أوجد درجات الحرية لاختبار كاي تربيع للتجانس في جدول ثنائي أبعاده \\( 4 \\times 3 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 20 \\) into \\( (x - 10)^2 + 9 \\).",
-            "ar": null
+            "en": "Use \\( \\text{df} = (r - 1)(c - 1) \\).",
+            "ar": "استخدم القاعدة \\( \\text{df} = (r - 1)(c - 1) \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (20 - 10)^2 = 10^2 = 100 \\).",
-            "ar": null
+            "en": "Substitute \\( r = 4 \\) and \\( c = 3 \\).",
+            "ar": "عوّض \\( r = 4 \\) و\\( c = 3 \\)."
           },
           {
-            "en": "Add \\( 100 + 9 \\) to obtain the final answer.",
-            "ar": "اجمع \\(100 + 9\\) للحصول على الناتج."
+            "en": "Multiply \\( 3 \\times 2 \\).",
+            "ar": "اضرب \\( 3 \\times 2 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 20 \\) gives \\( f(20) = (10)^2 + 9 = 100 + 9 = 109 \\).",
-          "ar": null
+          "en": "\\( \\text{df} = (4 - 1)(3 - 1) = 3 \\times 2 = 6 \\).",
+          "ar": "\\( \\text{df} = (4 - 1)(3 - 1) = 6 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 11)^2 + 10 \\), evaluate \\( f(22) \\).",
-          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\(f(x) = (x - 11)^2 + 10\\)، فاحسب قيمة \\(f(22)\\)."
+          "en": "<strong>[Practice 4]</strong> Rejecting a true null hypothesis \\( H_0 \\) is which type of error, and what equals its probability?",
+          "ar": "<strong>[تدريب 4]</strong> رفض فرضية عدم \\( H_0 \\) صحيحة يُسمّى أي نوع من الأخطاء، وما احتمال وقوعه؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 22 \\) into \\( (x - 11)^2 + 10 \\).",
-            "ar": null
+            "en": "Distinguish Type I (false positive, \\( H_0 \\) true) from Type II (false negative, \\( H_0 \\) false).",
+            "ar": "ميّز بين الخطأ من النوع الأول (رفض \\( H_0 \\) وهي صحيحة) والنوع الثاني (عدم رفض \\( H_0 \\) وهي خاطئة)."
           },
           {
-            "en": "Simplify the squared term: \\( (22 - 11)^2 = 11^2 = 121 \\).",
-            "ar": null
+            "en": "Rejecting \\( H_0 \\) when \\( H_0 \\) is true is a Type I error.",
+            "ar": "رفض \\( H_0 \\) عندما تكون صحيحة هو خطأ من النوع الأول."
           },
           {
-            "en": "Add \\( 121 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\(121 + 10\\) للحصول على الناتج."
+            "en": "Its probability equals the significance level \\( \\alpha \\).",
+            "ar": "احتماله يساوي مستوى المعنوية \\( \\alpha \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 22 \\) gives \\( f(22) = (11)^2 + 10 = 121 + 10 = 131 \\).",
-          "ar": null
+          "en": "It is a <strong>Type I error</strong>, and its probability equals the significance level \\( \\alpha \\).",
+          "ar": "هو <strong>خطأ من النوع الأول (Type I)</strong>، واحتماله يساوي مستوى المعنوية \\( \\alpha \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 12)^2 + 11 \\), evaluate \\( f(24) \\).",
-          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\(f(x) = (x - 12)^2 + 11\\)، فاحسب قيمة \\(f(24)\\)."
+          "en": "<strong>[Practice 5]</strong> If the probability of a Type II error is \\( \\beta = 0.18 \\), what is the power of the test?",
+          "ar": "<strong>[تدريب 5]</strong> إذا كان احتمال الخطأ من النوع الثاني \\( \\beta = 0.18 \\)، فما قوة الاختبار الإحصائي؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 24 \\) into \\( (x - 12)^2 + 11 \\).",
-            "ar": null
+            "en": "Recall \\( \\text{Power} = 1 - \\beta \\).",
+            "ar": "تذكّر أن قوة الاختبار تساوي \\( 1 - \\beta \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (24 - 12)^2 = 12^2 = 144 \\).",
-            "ar": null
+            "en": "Substitute \\( \\beta = 0.18 \\).",
+            "ar": "عوّض \\( \\beta = 0.18 \\)."
           },
           {
-            "en": "Add \\( 144 + 11 \\) to obtain the final answer.",
-            "ar": "اجمع \\(144 + 11\\) للحصول على الناتج."
+            "en": "Subtract from \\( 1 \\).",
+            "ar": "اطرح من \\( 1 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 24 \\) gives \\( f(24) = (12)^2 + 11 = 144 + 11 = 155 \\).",
-          "ar": null
+          "en": "\\( \\text{Power} = 1 - 0.18 = 0.82 \\) (or \\( 82\\% \\)).",
+          "ar": "قوة الاختبار \\( = 1 - 0.18 = 0.82 \\) (أو \\( 82\\% \\))."
         }
       },
       {

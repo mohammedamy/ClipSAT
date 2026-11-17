@@ -38,54 +38,39 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Vector Parallelogram & Linear Action in R²",
-          "object": [
-            [
-              0,
-              0
-            ],
-            [
-              3,
-              0
-            ],
-            [
-              3,
-              2
-            ],
-            [
-              0,
-              2
-            ]
+          "type": "fn",
+          "title": "Column Space Line Col(A) & Orthogonal Null Space Null(Aᵀ)",
+          "xrange": [
+            -4,
+            4
           ],
-          "image": [
-            [
-              0,
-              0
-            ],
-            [
-              3,
-              1
-            ],
-            [
-              4,
-              4
-            ],
-            [
-              1,
-              3
-            ]
+          "yrange": [
+            -4,
+            4
           ],
-          "objectLabels": [
-            "O",
-            "u",
-            "u+v",
-            "v"
+          "fns": [
+            {
+              "fn": "2*x",
+              "color": "var(--fig-indigo)",
+              "label": "Col(A): y = 2x (dim = 1)"
+            },
+            {
+              "fn": "-0.5*x",
+              "color": "var(--fig-amber)",
+              "label": "Null(Aᵀ): y = −0.5x (dim = 1)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "0 ∈ R²"
+            }
           ]
         },
         "caption": {
-          "en": "Geometric action of vectors and linear mappings transforming basis grid cells into parallelograms.",
-          "ar": "التمثيل الهندسي لجمع المتجهات والتحويلات الخطية لمتوازي الأضلاع في المستوى الإحداثي ضمن الفضاءات المتجهة والفضاءات الجزئية الأربعة الأساسية."
+          "en": "Fundamental Subspaces Orthogonality in \\(\\mathbb{R}^2\\): for a rank-1 matrix \\(A\\), \\(\\operatorname{Col}(A)\\) and \\(\\operatorname{Null}(A^T)\\) are orthogonal lines intersecting at \\(\\mathbf{0}\\).",
+          "ar": "تعامد الفضاءات الجزئية الأساسية في \\(\\mathbb{R}^2\\): لمصفوفة \\(A\\) من الرتبة \\(1\\)، يكون \\(\\operatorname{Col}(A)\\) و\\(\\operatorname{Null}(A^T)\\) مستقيمين متعامدين يتقاطعان عند \\(\\mathbf{0}\\)."
         }
       },
       {
@@ -120,7 +105,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -227,7 +212,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -444,7 +429,7 @@
         },
         "caption": {
           "en": "Comparison of a linear subspace and an affine line in \\( \\mathbb{R}^2 \\). The line through the origin \\( y = 0.5x \\) contains the zero vector and is closed under addition and scalar multiplication; the shifted line \\( y = 0.5x + 2 \\) fails the zero vector axiom.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الفضاءات المتجهة والفضاءات الجزئية الأربعة الأساسية. \\(\\mathbb{R}^2\\) ، \\(y = 0.5x\\) ، \\(y = 0.5x + 2\\)"
+          "ar": "مقارنة فضاء جزئي خطي يمر بنقطة الأصل \\((0,0)\\) مع مستقيم تآلفي مزاح لا يحتوي المتجه الصفري فلا يشكل فضاءً جزئياً."
         }
       },
       {
@@ -469,7 +454,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1 · Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\[ [p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Test independence via determinant:</strong> \\[ \\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2\neq 0. \\] Since the determinant is non-zero, the three coordinate vectors are linearly independent. Because \\( \\dim(\\mathcal{P}_2) = 3 \\), any three linearly independent vectors form a basis. <strong>Yes, \\( \\{ p_1, p_2, p_3 \\} \\) is a basis for \\( \\mathcal{P}_2 \\)</strong>.</p>",
+          "en": "<p><strong>Step 1 · Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\[ [p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Test independence via determinant:</strong> \\[ \\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2\\neq 0. \\] Since the determinant is non-zero, the three coordinate vectors are linearly independent. Because \\( \\dim(\\mathcal{P}_2) = 3 \\), any three linearly independent vectors form a basis. <strong>Yes, \\( \\{ p_1, p_2, p_3 \\} \\) is a basis for \\( \\mathcal{P}_2 \\)</strong>.</p>",
           "ar": null
         },
         "hints": [
@@ -646,6 +631,7 @@
   "quizWidget": {
     "domains": [
       "Vector Spaces & Linear Independence"
-    ]
+    ],
+    "enabled": true
   }
 }

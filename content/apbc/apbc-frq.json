@@ -43,29 +43,29 @@
         "kind": "figure",
         "figure": {
           "type": "bar",
-          "title": "Syllabus Topic Weight Distribution (%)",
+          "title": "Recurring BC-Specific FRQ Archetypes (Points)",
           "data": [
             {
-              "label": "Core I",
-              "val": 30
+              "label": "Polar / Param",
+              "val": 9
             },
             {
-              "label": "Core II",
-              "val": 28
+              "label": "Euler / ODE",
+              "val": 9
             },
             {
-              "label": "Applied III",
-              "val": 24
+              "label": "IBP / Improper",
+              "val": 9
             },
             {
-              "label": "Synthesis IV",
-              "val": 18
+              "label": "FRQ 6 Taylor",
+              "val": 9
             }
           ]
         },
         "caption": {
-          "en": "Relative exam domain weightings across core syllabus units in AP Calculus BC Free-Response Questions (FRQs).",
-          "ar": "تمثيل بياني بالأعمدة لمقارنة القيم والتكرارات عبر الفئات في الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus BC."
+          "en": "Every AP Calculus BC Section II includes 9-point FRQs testing parametric/polar motion or area, Euler/logistic models, and FRQ #6 Taylor series.",
+          "ar": "الأنماط المتكررة للأسئلة المقالية ذات التسع درجات في القسم الثاني من اختبار AP Calculus BC."
         }
       },
       {
@@ -104,7 +104,7 @@
             "id": "apbcfrqExCanvas_s0",
             "label": {
               "en": "Time Parameter <b>\\(t_{0} =\\)</b>",
-              "ar": "Time المعامل <b>\\(t_{0} =\\)</b>"
+              "ar": "معامل الزمن <b>\\(t_{0} =\\)</b>"
             },
             "min": 0.2,
             "max": 5.8,
@@ -113,7 +113,7 @@
             "valueDisplayId": "apbcfrqExCanvas_v0",
             "ariaLabel": {
               "en": "Time Parameter t₀ =",
-              "ar": "Time المعامل t₀ ="
+              "ar": "معامل الزمن t₀ ="
             }
           },
           {
@@ -170,30 +170,21 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bar",
-          "title": "Recommended Time Allocation per Exam Section (min)",
-          "data": [
-            {
-              "label": "Warm-up",
-              "val": 15
-            },
-            {
-              "label": "Core MCQ",
-              "val": 35
-            },
-            {
-              "label": "Multi-Step",
-              "val": 30
-            },
-            {
-              "label": "Review",
-              "val": 10
-            }
-          ]
+          "type": "slope_field",
+          "title": "BC FRQ Slope Field & Euler Tangent Steps for dy/dx = 0.5x − y",
+          "fn": "0.5*x - y",
+          "xmin": -2,
+          "xmax": 3,
+          "ymin": -2,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 2
+          }
         },
         "caption": {
-          "en": "Target pacing allocation (in minutes) across question tiers and final verification for AP Calculus BC Free-Response Questions (FRQs).",
-          "ar": "تمثيل بياني بالأعمدة لمقارنة القيم والتكرارات عبر الفئات في الأسئلة المقالية الحرة (FRQs) في اختبار AP Calculus BC."
+          "en": "Slope field visualization paired with initial-value trajectory \\(y(0) = 2\\) on a classic BC Differential Equations FRQ.",
+          "ar": "حقل الميول ومنحنى الحل الخاص المار بالنقطة \\((0, 2)\\) في أسئلة المعادلات التفاضلية المقالية."
         }
       },
       {
@@ -208,12 +199,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (AP Calculus BC Free-Response Questions (FRQs))",
-          "ar": null
+          "en": "◆ Why It Works — Net Change & Accumulation as the Unifying Thread of AP Calculus",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — التغير الصافي والتراكم كمحور موحّد لاختبار التفاضل والتكامل"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Net Change Unifies MCQ and FRQ Calculus:</strong> By the Fundamental Theorem of Calculus, any differentiable quantity \\(Q(t)\\) satisfies \\[ Q(b) = Q(a) + \\int_a^b Q'(t)\\,dt \\] Rearranging this single identity powers Rate-In/Rate-Out FRQs (\\(Q(t) = Q(0) + \\int_0^t [E(s) - L(s)]\\,ds\\)), particle position from velocity, tabular Riemann approximations, and Taylor remainder bounds in BC.</p>",
+          "ar": "<p><strong>كيف توحّد نظرية التغير الصافي أسئلة الاختبار:</strong> بموجب النظرية الأساسية للتفاضل والتكامل تحقق أي كمية قابلة للاشتقاق \\(Q(t)\\) العلاقة \\[ Q(b) = Q(a) + \\int_a^b Q'(t)\\,dt \\] وهي الهوية الجوهرية التي تحكم مسائل معدل الدخول والخروج، وحركة الجسيمات، ومجاميع ريمان الجدولية.</p>"
         }
       },
       {

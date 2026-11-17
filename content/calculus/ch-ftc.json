@@ -26,39 +26,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Quadratic Vertex Form f(x) = (x − 2)² − 3",
+          "title": "FTC Part 1: Rate of Area Accumulation d/dx ∫₀ˣ (3 − t) dt",
           "xrange": [
-            -2,
-            6
+            -0.5,
+            4.5
           ],
           "yrange": [
-            -4,
-            6
+            -1.5,
+            5.5
           ],
           "fns": [
             {
-              "fn": "(x - 2)*(x - 2) - 3",
+              "fn": "3 - x",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (x − 2)² − 3"
+              "label": "Integrand f(t) = 3 − t"
             },
             {
-              "fn": "x - 1",
+              "fn": "3*x - 0.5*x*x",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "g(x) = x − 1"
+              "label": "Accumulation A(x) = 3x − 0.5x²"
             }
           ],
           "points": [
             {
-              "x": 2,
-              "y": -3,
-              "label": "V(2, −3)"
+              "x": 3,
+              "y": 4.5,
+              "label": "Max Area (3, 4.5)"
             }
           ]
         },
         "caption": {
-          "en": "Parabola \\(f(x) = (x - 2)^2 - 3\\) with vertex \\(V(2, -3)\\) intersected by secant line \\(g(x) = x - 1\\).",
-          "ar": "القطع المكافئ \\(f(x) = (x - 2)^2 - 3\\) برأسه \\(V(2, -3)\\) وتقاطعه مع المستقيم \\(g(x) = x - 1\\) في النظرية الأساسية للتفاضل والتكامل."
+          "en": "Where the integrand \\(f(t) = 3 - t\\) crosses zero at \\(t = 3\\), the accumulation function \\(A(x) = \\int_0^x (3 - t)\\,dt = 3x - \\tfrac{1}{2}x^2\\) attains its maximum \\(A(3) = 4.5\\).",
+          "ar": "عندما تقطع الدالة المكامَلة \\(f(t) = 3 - t\\) المحور الأفقي عند \\(t = 3\\)، تبلغ دالة التراكم \\(A(x) = \\int_0^x (3 - t)\\,dt = 3x - \\tfrac{1}{2}x^2\\) قيمتها العظمى \\(A(3) = 4.5\\)."
         }
       },
       {
@@ -226,7 +225,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "en": "<p><strong>Why Integration by Parts & Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -473,7 +472,7 @@
         "kind": "figure",
         "caption": {
           "en": "Accumulation function \\(g(x) = \\int_0^x f(t)\\,dt\\) measuring net area under \\(f(t)\\), illustrating the Fundamental Theorem of Calculus \\(g'(x) = f(x)\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في النظرية الأساسية للتفاضل والتكامل. \\(g(x) = \\int_0^x f(t)\\,dt\\) ، \\(f(t)\\) ، \\(g'(x) = f(x)\\)"
+          "ar": "دالة التراكم \\(g(x) = \\int_0^x \\cos(t)\\,dt = \\sin(x)\\) التي تقيس المساحة الموجهة الصافية تحت منحنى \\(f(t) = \\cos(t)\\)."
         },
         "figure": {
           "type": "fn",
@@ -621,8 +620,8 @@
   "quizWidget": {
     "enabled": true,
     "domains": [
-      "Fundamental Theorem",
-      "Fundamental Theorem of Calculus"
+      "Fundamental Theorem of Calculus",
+      "Fundamental Theorem"
     ]
   },
   "chapterTag": {
@@ -633,7 +632,6 @@
     "category": "Calculus I–III · The Fundamental Theorem",
     "weightBadge": "University Core · 4",
     "topics": [
-      "Fundamental Theorem",
       "Fundamental Theorem of Calculus"
     ]
   }

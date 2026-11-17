@@ -39,44 +39,51 @@
         "kind": "figure",
         "figure": {
           "type": "transformation_grid",
-          "title": "Matrices, Matrix Algebra & Inverses — Linear Transformation & Basis Action",
-          "original": [
+          "title": "Horizontal Shear Matrix A = [[1, 1.5], [0, 1]] on Unit Square",
+          "xmin": -1,
+          "xmax": 4,
+          "ymin": -1,
+          "ymax": 3,
+          "object": [
             [
-              2,
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
               1
             ],
             [
-              5,
+              0,
+              1
+            ]
+          ],
+          "image": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2.5,
               1
             ],
             [
-              3,
-              4
+              1.5,
+              1
             ]
-          ],
-          "transformed": [
-            [
-              -1,
-              2
-            ],
-            [
-              -1,
-              5
-            ],
-            [
-              -4,
-              3
-            ]
-          ],
-          "labels": [
-            "A",
-            "B",
-            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في المصفوفات وجبر المصفوفات والمصفوفة العكسية."
+          "en": "Horizontal shear \\(A = \\begin{pmatrix} 1 & 1.5 \\\\ 0 & 1 \\end{pmatrix}\\) fixes \\(\\mathbf{e}_1 = (1,0)\\) while tilting \\(\\mathbf{e}_2 = (0,1)\\) to \\((1.5, 1)\\), preserving area \\(\\det(A) = 1\\).",
+          "ar": "تحويل القص الأفقي \\(A = \\begin{pmatrix} 1 & 1.5 \\\\ 0 & 1 \\end{pmatrix}\\) يثبّت \\(\\mathbf{e}_1 = (1,0)\\) ويميل \\(\\mathbf{e}_2 = (0,1)\\) إلى \\((1.5, 1)\\) مع حفظ المساحة \\(\\det(A) = 1\\)."
         }
       },
       {
@@ -111,7 +118,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -218,7 +225,7 @@
           "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — المصفوفات, المصفوفة الجبر & Inverses"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -464,7 +471,7 @@
         },
         "caption": {
           "en": "Action of matrix \\( A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix} \\) on standard basis vectors \\( \\mathbf{e}_1 = \\langle 1, 0 \\rangle \\) and \\( \\mathbf{e}_2 = \\langle 0, 1 \\rangle \\). The columns of \\( A \\) define the transformed coordinate axes.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المصفوفات وجبر المصفوفات والمصفوفة العكسية. \\(A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix}\\) ، \\(\\mathbf{e}_1 = \\langle 1, 0 \\rangle\\) ، \\(\\mathbf{e}_2 = \\langle 0, 1 \\rangle\\) ، \\(A\\)"
+          "ar": "أثر المصفوفة \\(A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix}\\) في إرسال متجهي الأساس القياسي إلى عمودي المصفوفة \\((3, 1)\\) و\\((1, 2)\\)."
         }
       },
       {
@@ -666,6 +673,7 @@
   "quizWidget": {
     "domains": [
       "Matrices & Matrix Algebra"
-    ]
+    ],
+    "enabled": true
   }
 }

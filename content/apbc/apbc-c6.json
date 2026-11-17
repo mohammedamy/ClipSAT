@@ -39,51 +39,7 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 10 · Power Series, Taylor & Maclaurin Series — Geometric Partial Sums & Asymptotic Limit",
-          "xrange": [
-            0,
-            6
-          ],
-          "yrange": [
-            0,
-            4
-          ],
-          "fns": [
-            {
-              "fn": "3*(1 - Math.pow(0.5, x))",
-              "color": "var(--fig-indigo)",
-              "label": "S(x) = 3(1 − 0.5ˣ)"
-            },
-            {
-              "fn": "3",
-              "color": "var(--fig-amber)",
-              "dash": "4,3",
-              "label": "S∞ = 3"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 1.5,
-              "label": "(1, 1.5)"
-            },
-            {
-              "x": 2,
-              "y": 2.25,
-              "label": "(2, 2.25)"
-            }
-          ]
-        },
-        "caption": {
-          "en": "Convergence of geometric partial sums \\(S_{n} = 4(1 - (1/2)^{n})\\) toward the horizontal asymptote S∞ = 4.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الوحدة عشرة · متسلسلات القوى ومتسلسلات تايلور وماكلورين. \\(S_{n} = 4(1 - (1/2)^{n})\\) (4)"
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Maclaurin Polynomial Approximation P₃(x) vs sin(x)",
+          "title": "Unit 10 · Maclaurin Approximations P₁(x) & P₃(x) vs sin(x)",
           "xrange": [
             -3.5,
             3.5
@@ -94,21 +50,59 @@
           ],
           "fns": [
             {
-              "fn": "Math.sin(x)",
+              "fn": "sin(x)",
               "color": "var(--fig-indigo)",
               "label": "sin(x)"
             },
             {
-              "fn": "x - (x*x*x)/6",
+              "fn": "x",
+              "color": "var(--fig-emerald)",
+              "dash": "2,3",
+              "label": "P₁(x) = x"
+            },
+            {
+              "fn": "x - x*x*x/6",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
+              "dash": "5,3",
               "label": "P₃(x) = x − x³/6"
             }
           ]
         },
         "caption": {
-          "en": "Third-degree Maclaurin polynomial \\(P_3(x) = x - \\tfrac{x^3}{6}\\) closely hugging \\(\\sin(x)\\) near \\(x = 0\\).",
-          "ar": "تقريب كثيرة حدود ماكلورين من الدرجة الثالثة \\(P_3(x) = x - \\tfrac{x^3}{6}\\) للدالة \\(\\sin(x)\\) قرب \\(x = 0\\) في الوحدة عشرة · متسلسلات القوى ومتسلسلات تايلور وماكلورين."
+          "en": "Successive Maclaurin polynomials \\(P_1(x)\\) and \\(P_3(x)\\) matching higher derivatives of \\(\\sin(x)\\) at center \\(x = 0\\).",
+          "ar": "كثيرات حدود ماكلورين المتتالية \\(P_1(x)\\) و\\(P_3(x)\\) وتقريبها لدالة \\(\\sin(x)\\) حول \\(x = 0\\)."
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Geometric Power Series 1/(1 − x) vs Partial Polynomial 1 + x + x² on (−1, 1)",
+          "xrange": [
+            -1.2,
+            0.9
+          ],
+          "yrange": [
+            -0.5,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "1/(1 - x)",
+              "color": "var(--fig-indigo)",
+              "label": "1/(1 − x)"
+            },
+            {
+              "fn": "1 + x + x*x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "1 + x + x²"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Power series \\(\\sum_{n=0}^\\infty x^n = \\frac{1}{1-x}\\) converges strictly inside its radius of convergence \\(R = 1\\) on \\((-1, 1)\\).",
+          "ar": "متسلسلة القوى الهندسية \\(\\sum x^n = \\frac{1}{1-x}\\) تتقارب داخل نصف قطر التقارب \\(R = 1\\)."
         }
       },
       {
@@ -219,7 +213,7 @@
             },
             {
               "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
-              "ar": "The harmonic المتسلسلة \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\)."
+              "ar": "المتسلسلة التوافقية \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) ومع ذلك تتباعد إلى \\(\\infty\\)."
             },
             {
               "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
@@ -303,7 +297,7 @@
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Taylor polynomial",
-          "ar": "⊙ مستكشف تفاعلي · Taylor كثيرة الحدود"
+          "ar": "⊙ مستكشف تفاعلي · كثيرة حدود تايلور"
         },
         "canvasId": "bcTaylorCanvas",
         "ariaLabel": {
@@ -344,7 +338,7 @@
             },
             "ariaLabel": {
               "en": "Terms N",
-              "ar": "عنصر تفاعلي: Terms N"
+              "ar": "عنصر تفاعلي: عدد الحدود N"
             },
             "min": 1,
             "max": 6,

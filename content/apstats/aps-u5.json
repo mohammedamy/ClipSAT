@@ -48,30 +48,30 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "two_way_table",
-          "title": "Stratified Sample / Contingency Counts",
-          "rows": [
-            "Treatment Group",
-            "Control Group"
-          ],
-          "cols": [
-            "Improved",
-            "No Change"
-          ],
+          "type": "bar",
+          "title": "Standard Error σ/√n Contraction as Sample Size n Quadruples (σ = 16)",
           "data": [
-            [
-              68,
-              32
-            ],
-            [
-              41,
-              59
-            ]
+            {
+              "label": "n = 4",
+              "val": 8.0
+            },
+            {
+              "label": "n = 16",
+              "val": 4.0
+            },
+            {
+              "label": "n = 64",
+              "val": 2.0
+            },
+            {
+              "label": "n = 256",
+              "val": 1.0
+            }
           ]
         },
         "caption": {
-          "en": "Two-way contingency table comparing outcomes across randomized treatment and control groups.",
-          "ar": "جدول توافقي ثنائي يقارن النتائج بين المجموعة التجريبية والمجموعة الضابطة في الوحدة خمسة · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية."
+          "en": "Inverse square-root law \\(\\sigma_{\\bar{x}} = \\sigma/\\sqrt{n}\\): quadrupling sample size halves sampling variability.",
+          "ar": "قانون الجذر التربيعي العكسي \\(\\sigma_{\\bar{x}} = \\sigma/\\sqrt{n}\\): مضاعفة حجم العينة أربع مرات تخفّض تشتت المعاينة إلى النصف."
         }
       },
       {
@@ -177,27 +177,18 @@
         "kind": "figure",
         "figure": {
           "type": "normal_curve",
-          "title": "Sampling Distribution x̄ ~ N(μ, σ/√n)",
+          "title": "Sampling Distribution x̄ ~ N(μ, σ/√n) Upper Tail Z ≥ 1.96",
           "mean": 0,
           "sd": 1,
-          "shade": {
-            "from": 1.96,
-            "to": 3.5
-          },
-          "vlines": [
-            {
-              "x": 1.96,
-              "label": "z = 1.96"
-            }
-          ]
+          "shade": [
+            1.96,
+            3.5
+          ],
+          "label": "Z ≥ 1.96"
         },
         "caption": {
-          "en": "By the Central Limit Theorem, for large \\(n\\), standardized sample means \\(Z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}\\) follow \\(N(0,1)\\) with upper tail \\(P(Z \\ge 1.96) \\approx 0.025\\).",
-          "ar": "وفق نظرية النهاية المركزية، تتبع المتوسطات المعيارية للعينات الكبيرة التوزيع الطبيعي القياسي . \\(n\\) ، \\(Z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}\\) ، \\(N(0,1)\\) ، \\(P(Z \\ge 1.96) \\approx 0.025\\)"
-        },
-        "title": {
-          "en": "Central Limit Theorem: Sampling Distribution of x̄",
-          "ar": "نظرية النهاية المركزية: توزيع المعاينة للمتوسط الحسابي x̄"
+          "en": "By the Central Limit Theorem, standardized sample means \\(Z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}\\) follow \\(N(0, 1)\\) for large \\(n\\).",
+          "ar": "وفق نظرية النهاية المركزية، يتبع المتوسط المعياري \\(Z\\) التوزيع الطبيعي المعياري \\(N(0, 1)\\) للعينات الكبيرة."
         }
       },
       {
@@ -249,72 +240,72 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)"
+          "en": "◆ Why It Works — Why Averaging n Independent Observations Divides Variance by n",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — لماذا يقسم أخذ متوسط n مشاهدة مستقلة التباين على n"
         },
         "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
-          "ar": null
+          "en": "<p><strong>Variance of \\(\\bar{X}\\):</strong> For independent \\(X_1, \\dots, X_n\\) each with variance \\(\\sigma^2\\): \\[ \\operatorname{Var}(\\bar{X}) = \\operatorname{Var}\\!\\left(\\frac{1}{n}\\sum_{i=1}^n X_i\\right) = \\frac{1}{n^2}\\sum_{i=1}^n \\sigma^2 = \\frac{n\\sigma^2}{n^2} = \\frac{\\sigma^2}{n} \\implies \\sigma_{\\bar{X}} = \\frac{\\sigma}{\\sqrt{n}} \\]</p>",
+          "ar": "<p><strong>تباين متوسط العينة:</strong> للمتغيرات المستقلة \\(X_1, \\dots, X_n\\) ذات التباين \\(\\sigma^2\\): \\[ \\operatorname{Var}(\\bar{X}) = \\frac{1}{n^2}(n\\sigma^2) = \\frac{\\sigma^2}{n} \\implies \\sigma_{\\bar{X}} = \\frac{\\sigma}{\\sqrt{n}} \\]</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.A — Foundational Formulation",
-          "ar": "مثال محلول 5.A — تطبيق أساسي"
+          "en": "Worked Example 5.1 — Sampling Distribution of a Sample Proportion p̂",
+          "ar": "مثال محلول 5.1 — توزيع المعاينة لنسبة العينة p̂"
         },
         "problem": {
-          "en": "Express \\( f(x) = x^2 - 12x + 41 \\) in completed-square vertex form and find its minimum value.",
-          "ar": "أوجد صيغة إكمال المربع للدالة \\(f(x) = x^2 - 12x + 41\\)."
+          "en": "Suppose \\( 60\\% \\) of all commuters in a large metropolis support expanding light rail. In an SRS of \\( n = 150 \\) commuters, verify conditions for normality and find the mean, standard deviation, and \\( P(\\hat{p} > 0.66) \\).",
+          "ar": "افترض أن \\( 60\\% \\) من المسافرين في مدينة كبرى يؤيدون توسعة القطار الخفيف. في عينة عشوائية بسيطة حجمها \\( n = 150 \\)، تحقق من شروط التقريب الطبيعي وأوجد المتوسط والانحراف المعياري واحتمال \\( P(\\hat{p} > 0.66) \\)."
         },
         "solution": {
-          "en": "<p>Halving \\( -12 \\) gives \\( -6 \\), so \\( f(x) = (x - 6)^2 - 36 + 41 = (x - 6)^2 + 5 \\). Minimum value is \\( 5 \\) at \\( x = 6 \\).</p>",
-          "ar": null
+          "en": "<p>1. <strong>Conditions:</strong> Random SRS; \\( 150 < 10\\% \\) of all metropolis commuters (10% condition); Large Counts \\( np = 150(0.60) = 90 \\ge 10 \\) and \\( n(1-p) = 150(0.40) = 60 \\ge 10 \\).<br>2. <strong>Parameters:</strong> \\( \\mu_{\\hat{p}} = 0.60 \\), \\( \\sigma_{\\hat{p}} = \\sqrt{\\frac{0.60(0.40)}{150}} = \\sqrt{0.0016} = 0.04 \\).<br>3. <strong>Probability:</strong> \\( z = \\frac{0.66 - 0.60}{0.04} = 1.50 \\implies P(Z > 1.50) \\approx 0.0668 \\).</p>",
+          "ar": "<p>١. <strong>الشروط:</strong> عينة عشوائية بسيطة؛ \\( 150 \\) أقل من \\( 10\\% \\) من المجتمع؛ وشرط الأعداد الكبيرة متحقق لأن \\( np = 90 \\ge 10 \\) و\\( n(1-p) = 60 \\ge 10 \\).<br>٢. <strong>المعالم:</strong> \\( \\mu_{\\hat{p}} = 0.60 \\) و\\( \\sigma_{\\hat{p}} = \\sqrt{\\frac{0.60(0.40)}{150}} = 0.04 \\).<br>٣. <strong>الاحتمال:</strong> \\( z = \\frac{0.66 - 0.60}{0.04} = 1.50 \\implies P(Z > 1.50) \\approx 0.0668 \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.B — Multi-Step Tangency & Discriminant",
-          "ar": "مثال محلول 5.B — شرط التماس والمميز"
+          "en": "Worked Example 5.2 — Central Limit Theorem for Sample Means x̄",
+          "ar": "مثال محلول 5.2 — نظرية النهاية المركزية لمتوسط العينة x̄"
         },
         "problem": {
-          "en": "Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 12x + 41 \\).",
-          "ar": "أوجد قيمة \\(k\\) التي تجعل المستقيم \\(y = 2x + k\\) مماساً للمنحنى \\(y = x^2 - 12x + 41\\)."
+          "en": "Customer wait times at a call center are strongly right-skewed with \\( \\mu = 8.0\\text{ min} \\) and \\( \\sigma = 4.5\\text{ min} \\). Describe the sampling distribution of \\( \\bar{x} \\) for an SRS of \\( n = 81 \\) calls and find \\( P(\\bar{x} > 9.0) \\).",
+          "ar": "أزمنة انتظار العملاء في مركز اتصال ملتوية بشدة نحو اليمين بمتوسط \\( \\mu = 8.0\\text{ min} \\) وانحراف معياري \\( \\sigma = 4.5\\text{ min} \\). صِف توزيع المعاينة للمتوسط \\( \\bar{x} \\) لعينة عشوائية بسيطة حجمها \\( n = 81 \\) وأوجد \\( P(\\bar{x} > 9.0) \\)."
         },
         "solution": {
-          "en": "<p>Equating gives \\( x^2 - 14x + (41 - k) = 0 \\). Setting \\( \\Delta = (-14)^2 - 4(41 - k) = 0 \\) yields \\( k = -8 \\).</p>",
-          "ar": null
+          "en": "<p>Because \\( n = 81 \\ge 30 \\), the <strong>Central Limit Theorem</strong> guarantees that \\( \\bar{x} \\) is approximately Normal despite the skewed population, with \\( \\mu_{\\bar{x}} = 8.0\\text{ min} \\) and \\( \\sigma_{\\bar{x}} = \\frac{4.5}{\\sqrt{81}} = 0.50\\text{ min} \\). Standardizing gives \\( z = \\frac{9.0 - 8.0}{0.50} = 2.00 \\), so \\( P(\\bar{x} > 9.0) \\approx P(Z > 2.00) \\approx 0.0228 \\).</p>",
+          "ar": "<p>بما أن \\( n = 81 \\ge 30 \\)، تضمن <strong>نظرية النهاية المركزية</strong> أن توزيع \\( \\bar{x} \\) طبيعي تقريباً رغم التواء المجتمع، بمتوسط \\( \\mu_{\\bar{x}} = 8.0 \\) وانحراف معياري \\( \\sigma_{\\bar{x}} = \\frac{4.5}{\\sqrt{81}} = 0.50 \\). ومنه \\( z = \\frac{9.0 - 8.0}{0.50} = 2.00 \\)، فيكون \\( P(\\bar{x} > 9.0) \\approx 0.0228 \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.C — Rate of Change & Tangent Slope",
-          "ar": "مثال محلول 5.C — معدل التغير وميل المماس"
+          "en": "Worked Example 5.3 — Difference in Sample Means x̄₁ − x̄₂",
+          "ar": "مثال محلول 5.3 — توزيع الفرق بين متوسطي عينتين مستقلتين"
         },
         "problem": {
-          "en": "Find the instantaneous rate of change of \\( g(x) = x^3 - 18x^2 + 108x + 5 \\) at \\( x = 8 \\).",
-          "ar": "أوجد معدل التغير اللحظي للدالة \\(g(x) = x^3 - 18x^2 + 108x + 5\\) عند \\(x = 8\\)."
+          "en": "Independent Normal populations have \\( \\mu_1 = 105, \\sigma_1 = 12 \\) and \\( \\mu_2 = 100, \\sigma_2 = 9 \\). For independent SRSs of sizes \\( n_1 = 16 \\) and \\( n_2 = 9 \\), find \\( \\mu_{\\bar{x}_1 - \\bar{x}_2} \\) and \\( \\sigma_{\\bar{x}_1 - \\bar{x}_2} \\).",
+          "ar": "مجتمعان طبيعيان مستقلان معالمهما \\( \\mu_1 = 105, \\sigma_1 = 12 \\) و\\( \\mu_2 = 100, \\sigma_2 = 9 \\). لعينتين عشوائيتين مستقلتين حجمهما \\( n_1 = 16 \\) و\\( n_2 = 9 \\)، أوجد متوسط وانحراف توزيع \\( \\bar{x}_1 - \\bar{x}_2 \\)."
         },
         "solution": {
-          "en": "<p>\\( g'(x) = 3(x - 6)^2 \\), so \\( g'(8) = 3(2)^2 = 12 \\).</p>",
-          "ar": null
+          "en": "<p>Mean: \\( \\mu_{\\bar{x}_1 - \\bar{x}_2} = 105 - 100 = 5 \\). Because the samples are independent, variances add: \\[ \\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{12^2}{16} + \\frac{9^2}{9}} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2} \\approx 4.243 \\]</p>",
+          "ar": "<p>المتوسط: \\( \\mu_{\\bar{x}_1 - \\bar{x}_2} = 105 - 100 = 5 \\). وبما أن العينتين مستقلتان فإن التباينات تُجمع: \\[ \\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{144}{16} + \\frac{81}{9}} = \\sqrt{18} = 3\\sqrt{2} \\approx 4.243 \\]</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.D — Synthesis & Definite Accumulation",
-          "ar": "مثال محلول 5.D — مسألة شاملة"
+          "en": "Worked Example 5.4 — Sample Size Scaling & Standard Error Reduction",
+          "ar": "مثال محلول 5.4 — أثر مضاعفة حجم العينة في تقليل الخطأ المعياري"
         },
         "problem": {
-          "en": "Evaluate \\( \\int_0^2 (3x^2 + 12x + 5)\\,\\mathrm{d}x \\).",
-          "ar": "احسب \\(\\int_0^2 (3x^2 + 12x + 5)\\,\\mathrm{d}x\\)."
+          "en": "By what factor must a researcher multiply the sample size \\( n \\) to cut the standard deviation of \\( \\bar{x} \\) to one-third of its original value?",
+          "ar": "في أي معامل يجب ضرب حجم العينة \\( n \\) لتقليص الانحراف المعياري للمتوسط \\( \\bar{x} \\) إلى ثلث قيمته الأصلية؟"
         },
         "solution": {
-          "en": "<p>\\( \\left[x^3 + 6x^2 + 5x\\right]_0^2 = 8 + 24 + 10 = 42 \\).</p>",
-          "ar": null
+          "en": "<p>Since \\( \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} \\), replacing \\( n \\) by \\( k n \\) scales \\( \\sigma_{\\bar{x}} \\) by \\( \\frac{1}{\\sqrt{k}} \\). Setting \\( \\frac{1}{\\sqrt{k}} = \\frac{1}{3} \\) gives \\( k = 9 \\): the sample size must be multiplied by \\( 9 \\).</p>",
+          "ar": "<p>بما أن \\( \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} \\)، فإن ضرب \\( n \\) في \\( k \\) يضرب الانحراف المعياري في \\( \\frac{1}{\\sqrt{k}} \\). وبوضع \\( \\frac{1}{\\sqrt{k}} = \\frac{1}{3} \\) نحصل على \\( k = 9 \\).</p>"
         }
       },
       {
@@ -332,50 +323,64 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)"
+          "en": "Error Diagnosis — Common AP Statistics Exam Traps vs. Scoring Rubric Method",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Statistics مقابل الطريقة المعتمدة"
         },
         "columns": [
           {
-            "en": "Error Pattern",
-            "ar": "الخطأ الشائع"
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
-            "en": "Incorrect Working",
-            "ar": "الخطوة الخاطئة"
+            "en": "Why It Fails Mathematically",
+            "ar": "لماذا يفشل رياضياً"
           },
           {
-            "en": "Correct Method",
-            "ar": "الطريقة الصحيحة"
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
-              "en": "Term-by-term cancellation",
-              "ar": "اختصار حدود مجموعه"
+              "en": "Writing hypotheses using sample statistics (e.g., \\(H_0: \\hat{p} = 0.5\\) or \\(H_0: \\bar{x} = 10\\))",
+              "ar": "كتابة الفرضيات بدلالة إحصاءات العينة مثل \\(H_0: \\hat{p} = 0.5\\)"
             },
             {
-              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
-              "ar": null
+              "en": "Sample statistics are already known without testing; inference always targets unknown population parameters.",
+              "ar": "إحصاءات العينة معلومة، بينما الاستدلال يستهدف معالم المجتمع المجهولة."
             },
             {
-              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
-              "ar": "حلّل الأول: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))"
+              "en": "Always state hypotheses in terms of population parameters \\(p, \\mu, \\mu_d,\\) or \\(\\beta\\) and define them in context.",
+              "ar": "صياغة الفرضيات دائماً بدلالة معالم المجتمع \\(p, \\mu, \\mu_d, \\beta\\) وتعريفها في السياق."
             }
           ],
           [
             {
-              "en": "Sign error in completing square",
-              "ar": "خطأ إشارة عند إكمال المربع"
+              "en": "Interpreting a \\(p\\)-value as \"the probability that \\(H_0\\) is true\"",
+              "ar": "تفسير القيمة الاحتمالية على أنها احتمال صحة \\(H_0\\)"
             },
             {
-              "en": "\\( (x - h)^2 + h^2 + c \\)",
-              "ar": null
+              "en": "Frequentist \\(H_0\\) is either true or false, not random; \\(p\\)-value conditions on \\(H_0\\) being true.",
+              "ar": "القيمة الاحتمالية تُحسب بشرط صحة \\(H_0\\) وليست احتمالاً لصحتها."
             },
             {
-              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
-              "ar": "اطرح \\(h^2\\): \\((x - h)^2 - h^2 + c\\)"
+              "en": "Assuming \\(H_0\\) is true, the \\(p\\)-value is the probability of obtaining a sample statistic as extreme or more extreme by chance alone.",
+              "ar": "بفرض صحة \\(H_0\\)، هي احتمال الحصول على نتيجة عينة مماثلة أو أكثر تطرفاً بمجرد الصدفة."
+            }
+          ],
+          [
+            {
+              "en": "Claiming causation from an observational study because \\(n\\) is large",
+              "ar": "استنتاج السببية من دراسة رصدية لمجرد كبر حجم العينة"
+            },
+            {
+              "en": "Large sample size reduces random error but never removes confounding variables.",
+              "ar": "كبر العينة يقلل خطأ المعاينة لكنه لا يزيل المتغيرات المربكة."
+            },
+            {
+              "en": "Only a randomized experiment with random assignment of treatments justifies a cause-and-effect conclusion.",
+              "ar": "وحده التوزيع العشوائي للمعالجات في تجربة مضبوطة يبرر استنتاج السببية."
             }
           ]
         ]
@@ -395,126 +400,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 7)^2 + 6 \\), evaluate \\( f(14) \\).",
-          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\(f(x) = (x - 7)^2 + 6\\)، فاحسب قيمة \\(f(14)\\)."
+          "en": "<strong>[Practice 1]</strong> A population has \\( p = 0.20 \\). Find the standard deviation \\( \\sigma_{\\hat{p}} \\) for an SRS of size \\( n = 64 \\).",
+          "ar": "<strong>[تدريب 1]</strong> مجتمع نسبة النجاح فيه \\( p = 0.20 \\). أوجد الانحراف المعياري \\( \\sigma_{\\hat{p}} \\) لعينة عشوائية بسيطة حجمها \\( n = 64 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 14 \\) into \\( (x - 7)^2 + 6 \\).",
-            "ar": null
+            "en": "Use \\( \\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1-p)}{n}} \\).",
+            "ar": "استخدم الصيغة \\( \\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1-p)}{n}} \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (14 - 7)^2 = 7^2 = 49 \\).",
-            "ar": null
+            "en": "Compute \\( p(1-p) = 0.20 \\times 0.80 = 0.16 \\).",
+            "ar": "احسب \\( p(1-p) = 0.20 \\times 0.80 = 0.16 \\)."
           },
           {
-            "en": "Add \\( 49 + 6 \\) to obtain the final answer.",
-            "ar": "اجمع \\(49 + 6\\) للحصول على الناتج."
+            "en": "Divide by \\( 64 \\) and take the square root.",
+            "ar": "اقسم على \\( 64 \\) وخذ الجذر التربيعي."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 14 \\) gives \\( f(14) = (7)^2 + 6 = 49 + 6 = 55 \\).",
-          "ar": null
+          "en": "\\( \\sigma_{\\hat{p}} = \\sqrt{\\frac{0.16}{64}} = \\frac{0.4}{8} = 0.05 \\).",
+          "ar": "\\( \\sigma_{\\hat{p}} = \\sqrt{\\frac{0.16}{64}} = 0.05 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 8)^2 + 7 \\), evaluate \\( f(16) \\).",
-          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\(f(x) = (x - 8)^2 + 7\\)، فاحسب قيمة \\(f(16)\\)."
+          "en": "<strong>[Practice 2]</strong> What is the minimum integer sample size \\( n \\) needed for the Large Counts condition to hold when \\( p = 0.05 \\)?",
+          "ar": "<strong>[تدريب 2]</strong> ما أصغر حجم عينة صحيح \\( n \\) يحقق شرط الأعداد الكبيرة عندما \\( p = 0.05 \\)؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 16 \\) into \\( (x - 8)^2 + 7 \\).",
-            "ar": null
+            "en": "Both \\( np \\ge 10 \\) and \\( n(1-p) \\ge 10 \\) must hold.",
+            "ar": "يلزم تحقق الشرطين \\( np \\ge 10 \\) و\\( n(1-p) \\ge 10 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (16 - 8)^2 = 8^2 = 64 \\).",
-            "ar": null
+            "en": "The smaller probability \\( p = 0.05 \\) is the binding constraint: \\( 0.05n \\ge 10 \\).",
+            "ar": "القيمة الأصغر \\( p = 0.05 \\) هي القيد الحاسم: \\( 0.05n \\ge 10 \\)."
           },
           {
-            "en": "Add \\( 64 + 7 \\) to obtain the final answer.",
-            "ar": "اجمع \\(64 + 7\\) للحصول على الناتج."
+            "en": "Divide \\( 10 \\) by \\( 0.05 \\).",
+            "ar": "اقسم \\( 10 \\) على \\( 0.05 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 16 \\) gives \\( f(16) = (8)^2 + 7 = 64 + 7 = 71 \\).",
-          "ar": null
+          "en": "Solving \\( 0.05n \\ge 10 \\) gives \\( n \\ge 200 \\), so the minimum sample size is \\( 200 \\).",
+          "ar": "حل \\( 0.05n \\ge 10 \\) يعطي \\( n \\ge 200 \\)، فأصغر حجم عينة هو \\( 200 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
-          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\(f(x) = (x - 9)^2 + 8\\)، فاحسب قيمة \\(f(18)\\)."
+          "en": "<strong>[Practice 3]</strong> If \\( \\sigma = 24 \\) and \\( n = 36 \\) (with \\( n < 0.10N \\)), find \\( \\sigma_{\\bar{x}} \\).",
+          "ar": "<strong>[تدريب 3]</strong> إذا كان \\( \\sigma = 24 \\) و\\( n = 36 \\) (مع \\( n < 0.10N \\))، فأوجد \\( \\sigma_{\\bar{x}} \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
-            "ar": null
+            "en": "Use \\( \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} \\).",
+            "ar": "استخدم \\( \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
-            "ar": null
+            "en": "Evaluate \\( \\sqrt{36} = 6 \\).",
+            "ar": "احسب \\( \\sqrt{36} = 6 \\)."
           },
           {
-            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
-            "ar": "اجمع \\(81 + 8\\) للحصول على الناتج."
+            "en": "Divide \\( 24 \\) by \\( 6 \\).",
+            "ar": "اقسم \\( 24 \\) على \\( 6 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
-          "ar": null
+          "en": "\\( \\sigma_{\\bar{x}} = \\frac{24}{\\sqrt{36}} = \\frac{24}{6} = 4 \\).",
+          "ar": "\\( \\sigma_{\\bar{x}} = \\frac{24}{6} = 4 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 10)^2 + 9 \\), evaluate \\( f(20) \\).",
-          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\(f(x) = (x - 10)^2 + 9\\)، فاحسب قيمة \\(f(20)\\)."
+          "en": "<strong>[Practice 4]</strong> An estimator \\( T \\) of parameter \\( \\theta = 50 \\) has \\( E(T) = 50 \\). Is \\( T \\) biased or unbiased?",
+          "ar": "<strong>[تدريب 4]</strong> مقدّر إحصائي \\( T \\) للمعلمة \\( \\theta = 50 \\) يحقق \\( E(T) = 50 \\). هل \\( T \\) متحيّز أم غير متحيّز؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 20 \\) into \\( (x - 10)^2 + 9 \\).",
-            "ar": null
+            "en": "Recall the definition of bias: \\( \\text{Bias}(T) = E(T) - \\theta \\).",
+            "ar": "تذكّر تعريف التحيّز: \\( E(T) - \\theta \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (20 - 10)^2 = 10^2 = 100 \\).",
-            "ar": null
+            "en": "Compare \\( E(T) = 50 \\) against \\( \\theta = 50 \\).",
+            "ar": "قارن \\( E(T) = 50 \\) مع \\( \\theta = 50 \\)."
           },
           {
-            "en": "Add \\( 100 + 9 \\) to obtain the final answer.",
-            "ar": "اجمع \\(100 + 9\\) للحصول على الناتج."
+            "en": "Zero bias defines an unbiased estimator.",
+            "ar": "انعدام الفرق يعني أن المقدّر غير متحيّز."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 20 \\) gives \\( f(20) = (10)^2 + 9 = 100 + 9 = 109 \\).",
-          "ar": null
+          "en": "Because the mean of its sampling distribution equals the true parameter (\\( E(T) = 50 = \\theta \\)), \\( T \\) is <strong>unbiased</strong>.",
+          "ar": "بما أن متوسط توزيع المعاينة يساوي المعلمة الحقيقية (\\( E(T) = 50 \\))، فإن \\( T \\) <strong>غير متحيّز</strong>."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 11)^2 + 10 \\), evaluate \\( f(22) \\).",
-          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\(f(x) = (x - 11)^2 + 10\\)، فاحسب قيمة \\(f(22)\\)."
+          "en": "<strong>[Practice 5]</strong> Quadrupling sample size \\( n \\) multiplies the standard error of \\( \\hat{p} \\) by what factor?",
+          "ar": "<strong>[تدريب 5]</strong> مضاعفة حجم العينة \\( n \\) أربع مرات تضرب الخطأ المعياري للنسبة \\( \\hat{p} \\) في أي معامل؟"
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 22 \\) into \\( (x - 11)^2 + 10 \\).",
-            "ar": null
+            "en": "Notice \\( n \\) sits inside the denominator under a square root.",
+            "ar": "لاحظ أن \\( n \\) يقع في المقام تحت الجذر التربيعي."
           },
           {
-            "en": "Simplify the squared term: \\( (22 - 11)^2 = 11^2 = 121 \\).",
-            "ar": null
+            "en": "Replace \\( n \\) by \\( 4n \\) in \\( \\sqrt{\\frac{p(1-p)}{n}} \\).",
+            "ar": "استبدل \\( n \\) بـ \\( 4n \\) في الصيغة."
           },
           {
-            "en": "Add \\( 121 + 10 \\) to obtain the final answer.",
-            "ar": "اجمع \\(121 + 10\\) للحصول على الناتج."
+            "en": "Factor out \\( \\frac{1}{\\sqrt{4}} \\).",
+            "ar": "أخرج المعامل \\( \\frac{1}{\\sqrt{4}} \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 22 \\) gives \\( f(22) = (11)^2 + 10 = 121 + 10 = 131 \\).",
-          "ar": null
+          "en": "Replacing \\( n \\) with \\( 4n \\) multiplies the standard error by \\( \\frac{1}{\\sqrt{4}} = \\frac{1}{2} \\) (cuts it in half).",
+          "ar": "استبدال \\( n \\) بـ \\( 4n \\) يضرب الخطأ المعياري في \\( \\frac{1}{2} \\) (يخفّضه إلى النصف)."
         }
       },
       {

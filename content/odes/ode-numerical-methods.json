@@ -2,7 +2,7 @@
   "id": "ode-numerical-methods",
   "chapterNumber": "9",
   "title": {
-    "en": "Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability",
+    "en": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
     "ar": "الطرق العددية: طريقة أويلر وأويلر المحسنة (RK2) ورونج-كوتا (RK4)"
   },
   "content": {
@@ -30,20 +30,20 @@
         "kind": "figure",
         "figure": {
           "type": "slope_field",
-          "title": "Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability — Slope Field & Particular Solution Trajectory",
-          "fn": "0.5*cos(x) - 0.3*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
+          "title": "Slope Field dy/dx = x + y Guiding Discrete Numerical Steps",
+          "fn": "x + y",
+          "xmin": 0,
+          "xmax": 2,
+          "ymin": 0,
+          "ymax": 6,
           "solution": {
             "x0": 0,
-            "y0": 1.4
+            "y0": 1
           }
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في الطرق العددية: طريقة أويلر وأويلر المحسنة (RK اثنان) ورونج-كوتا (RK أربعة). \\(\\frac{dy}{dx} = x -y\\) ، \\((0, 1)\\)"
+          "en": "Direction field \\(y' = x + y\\) with exact trajectory \\(y(x) = 2e^x - x - 1\\) from \\(y(0) = 1\\); positive concavity causes Forward Euler tangent steps to underestimate \\(y(x)\\).",
+          "ar": "حقل الاتجاهات \\(y' = x + y\\) مع الحل الدقيق \\(y(x) = 2e^x - x - 1\\) من \\(y(0) = 1\\)؛ التقعر للأعلى يجعل خطوات أويلر المماسية أقل من القيمة الفعلية."
         }
       },
       {
@@ -116,11 +116,11 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
+          "en": "◆ Why It Works — First-Principles Derivation (Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "en": "<p><strong>Why Integration by Parts & Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -307,7 +307,7 @@
         },
         "caption": {
           "en": "Tangent extrapolation in Forward Euler for \\( y' = y, y(0) = 1 \\). A single large step \\( h = 1 \\) yields \\( y(1) \\approx 2 \\) (error \\( \\approx 0.718 \\)); refining to \\( h = 0.5 \\) brings the polyline closer to the true exponential curve.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في الطرق العددية: طريقة أويلر وأويلر المحسنة (RK اثنان) ورونج-كوتا (RK أربعة). \\(y' = y, y(0) = 1\\) ، \\(h = 1\\) ، \\(y(1) \\approx 2\\) ، \\(\\approx 0.718\\) ، \\(h = 0.5\\)"
+          "ar": "مقارنة استكمال المماس في طريقة أويلر الأمامية لمعادلة \\(y' = y,\\; y(0) = 1\\) مع منحنى الحل الأسي الحقيقي \\(y(x) = e^x\\)."
         }
       },
       {
@@ -325,7 +325,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(B\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Medium Application)",
+          "en": "Worked Example \\(B\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability (Medium Application)",
           "ar": null
         },
         "problem": {
@@ -340,7 +340,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(C\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Hard Application)",
+          "en": "Worked Example \\(C\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability (Hard Application)",
           "ar": null
         },
         "problem": {
@@ -355,7 +355,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(D\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability (Easy Application)",
+          "en": "Worked Example \\(D\\) — Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability (Easy Application)",
           "ar": null
         },
         "problem": {
@@ -370,7 +370,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability)",
           "ar": null
         },
         "columns": [
@@ -436,7 +436,7 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability",
+          "en": "▲ Exam Pacing & Verification Strategy — Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
           "ar": null
         },
         "body": {
@@ -573,12 +573,12 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+            "label": "Power Series Solutions, Ordinary Points & the Method of Frobenius",
             "chapterId": "ode-series-solutions",
             "trackId": "odes"
           },
           {
-            "label": "Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions",
+            "label": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions",
             "chapterId": "ode-linear",
             "trackId": "odes"
           },
@@ -594,14 +594,15 @@
   "quizWidget": {
     "domains": [
       "Numerical Methods"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",
     "className": "la-tag",
     "badgeClassName": "la-wt",
     "emoji": "📌",
-    "category": "Differential Equations · Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability",
+    "category": "Differential Equations · Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
     "weightBadge": "ODE Core · 9",
     "topics": [
       "Numerical Methods"

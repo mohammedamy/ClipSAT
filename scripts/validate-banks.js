@@ -23,9 +23,32 @@ const katex = require('katex');
 
 const ROOT = path.join(__dirname, '..');
 const BANK_DIR = path.join(ROOT, 'bank-data');
+const CONTENT_DIR = path.join(ROOT, 'content');
 const args = process.argv.slice(2);
 const verbose = args.includes('--verbose');
+const strictChapters = args.includes('--strict-chapters') || process.env.CLIPSAT_STRICT_50E50M50H === '1';
 const only = args.filter((a) => !a.startsWith('--'));
+
+function loadTrackChapterDomains(trackSlug) {
+  const trackDir = path.join(CONTENT_DIR, trackSlug);
+  const metaPath = path.join(trackDir, '_meta.json');
+  if (!fs.existsSync(metaPath)) return null;
+  const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+  const order = Array.isArray(meta.chapterOrder) ? meta.chapterOrder : [];
+  const chapters = [];
+  const allDomains = new Set();
+  for (const chSlug of order) {
+    const chPath = path.join(trackDir, `${chSlug}.json`);
+    if (!fs.existsSync(chPath)) continue;
+    const ch = JSON.parse(fs.readFileSync(chPath, 'utf8'));
+    const qw = ch.quizWidget;
+    if (qw && qw.enabled === false) continue;
+    const domains = qw && Array.isArray(qw.domains) ? qw.domains.filter(Boolean) : [];
+    domains.forEach((d) => allDomains.add(d));
+    chapters.push({ id: ch.id || chSlug, slug: chSlug, domains });
+  }
+  return { chapters, allDomains };
+}
 
 const SHADOW_FIELDS = ['correct', 'ans', 'q', 'fig', 'solution', 'exp', 'expl', 'explanation', 'diff', 'ch', 'topic', 'letters'];
 
@@ -386,6 +409,51 @@ function main() {
       const chi2 = ansCounts.reduce((acc, c) => acc + ((c - exp) * (c - exp)) / exp, 0);
       if (chi2 >= 4.0) {
         pushBankErr(`MCQ answer-key distribution [${ansCounts.join(',')}] fails chi^2 < 4.0 (chi^2 = ${chi2.toFixed(2)})`);
+      }
+    }
+
+    // Chapter 50E/50M/50H balance & orphaned q.domain check
+    const chMap = loadTrackChapterDomains(trackSlug);
+    if (chMap && chMap.allDomains.size > 0) {
+      const orphanDomains = new Map();
+      for (const q of pool) {
+        if (!chMap.allDomains.has(q.domain)) {
+          orphanDomains.set(q.domain, (orphanDomains.get(q.domain) || 0) + 1);
+        }
+      }
+      if (orphanDomains.size > 0) {
+        const detail = [...orphanDomains.entries()].map(([d, n]) => `"${d}" (${n})`).join(', ');
+        if (strictChapters) {
+          pushBankErr(`orphaned q.domain not mapped to any chapter quizWidget.domains: ${detail}`);
+        } else {
+          warns++;
+          warnKinds['orphaned q.domain not mapped to any chapter quizWidget.domains'] =
+            (warnKinds['orphaned q.domain not mapped to any chapter quizWidget.domains'] || 0) + 1;
+          if (verbose) console.log(`  ⚠ ${f}: orphaned q.domain: ${detail}`);
+        }
+      }
+
+      for (const ch of chMap.chapters) {
+        if (!ch.domains.length) continue;
+        const domSet = new Set(ch.domains);
+        let cEasy = 0, cMed = 0, cHard = 0;
+        for (const q of pool) {
+          if (!domSet.has(q.domain)) continue;
+          if (q.difficulty === 'easy') cEasy++;
+          else if (q.difficulty === 'medium') cMed++;
+          else if (q.difficulty === 'hard') cHard++;
+        }
+        if (cEasy < 50 || cMed < 50 || cHard < 50) {
+          const msg = `chapter ${ch.slug} below 50E/50M/50H quota (found ${cEasy}E/${cMed}M/${cHard}H across [${ch.domains.join(', ')}])`;
+          if (strictChapters) {
+            pushBankErr(msg);
+          } else {
+            warns++;
+            warnKinds['chapter below 50E/50M/50H quota (pass --strict-chapters to fail)'] =
+              (warnKinds['chapter below 50E/50M/50H quota (pass --strict-chapters to fail)'] || 0) + 1;
+            if (verbose) console.log(`  ⚠ ${f}: ${msg}`);
+          }
+        }
       }
     }
 

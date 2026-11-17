@@ -164,7 +164,10 @@ window.CSAssign = {
     /* The chosen course's bank may not be the current page's track, so it may
        not be loaded yet — fetch it on demand (CS_loadTrackBank caches, so this
        is a no-op if it's already loaded). */
-    window.CS_loadTrackBank(viewId).then(function(){
+    Promise.all([
+      window.CS_loadTrackBank(viewId),
+      window._ensureFigures ? window._ensureFigures().catch(function(){}) : Promise.resolve()
+    ]).then(function(){
     /* fullExamBank entries are objects: {pool:[...], letters:[], sections:[]}
        NOT plain arrays — must extract .pool to get the question array */
     /* Gated by the CHOSEN course (viewId), not the current page — see _ttAr()'s
@@ -220,7 +223,9 @@ window.CSAssign = {
     });
     var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
-    var css='@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0;padding-left:24pt}'
+    var _origin=(window.location&&window.location.origin)||'';
+    var css=':root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}'
+      +'@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;background:#fff;margin:0;padding-left:24pt}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:space-between;padding:8pt 0 10pt;margin-bottom:18pt}'
       +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
       +'.hdr-logo-img{height:34pt;width:auto;object-fit:contain;flex-shrink:0}'
@@ -232,19 +237,21 @@ window.CSAssign = {
       +'h2.sect{color:#1a1a2e;font-size:12pt;border-bottom:2pt solid #e2e8f0;padding-bottom:4pt;margin:16pt 0 12pt}'
       +'table{width:100%;border-collapse:collapse;font-size:10pt}'
       +'th{background:#1a1a2e;color:#fff;padding:7px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
-      +'.exam-table, .fep-figure table{width:auto!important;margin:8pt auto!important;border-collapse:collapse;font-size:9.5pt}'
+      +'.fep-figure{break-inside:avoid;page-break-inside:avoid}'
+      +'.fep-figure svg{width:100%!important;max-width:240pt!important;height:auto!important;display:block;margin:0 auto;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+      +'.exam-table, .fep-figure table{width:auto!important;max-width:100%;margin:8pt auto!important;border-collapse:collapse;font-size:9.5pt;break-inside:avoid;page-break-inside:avoid}'
       +'.exam-table th, .exam-table td, .fep-figure table th, .fep-figure table td{border:1pt solid #999!important;padding:4pt 8pt!important;text-align:center!important}'
       +'.exam-table th, .fep-figure table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
       +'@media print{.no-print{display:none!important}}'
-      /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math stays LTR. */
+      /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math & SVG stay LTR. */
       +'body[dir="rtl"]{direction:rtl;text-align:right;padding-left:0;padding-right:24pt}'
       +'body[dir="rtl"] .hdr{direction:rtl}'
       +'body[dir="rtl"] th{text-align:right}'
-      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}';
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex,body[dir="rtl"] svg{direction:ltr!important;unicode-bidi:isolate}';
     var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head><meta charset="UTF-8"><title>'+_tt('assignmentDocTitle',viewId)+'</title><style>'+css+'</style>'
-      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
-      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
-      +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
+      +'<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'
+      +'<script defer src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'
+      +'<script defer src="'+_origin+'/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'
       +'</head><body dir="'+_dir+'">'
       +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>'+_tt('assignmentWord',viewId)+' — '+viewId.toUpperCase()+'</span></div></div>'
       +'<div style="text-align:right;font-size:8.5pt;color:#566173">'+_tt('dateLabel',viewId)+' <strong>'+today+'</strong></div></div>'
@@ -261,7 +268,7 @@ window.CSAssign = {
         +'<table><tr><th style="width:40px">'+_tt('colNum',viewId)+'</th><th style="width:60px">'+_tt('colAnswer',viewId)+'</th><th>'+_tt('colQuestionExcerpt',viewId)+'</th></tr>'+keyHtml+'</table>';
     }
     html+='<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">'+_tt('printPdf',viewId)+'</button></div>'
-      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);}).catch(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});}else{setTimeout(function(){try{window.print();}catch(e){}},800);}<\/script>'
+      +'<script>window.addEventListener("load",function(){setTimeout(function(){try{window.print();}catch(e){}},350);});<\/script>'
       +'</body></html>';
     document.getElementById('cs-assign-modal').remove();
     var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);
@@ -277,7 +284,10 @@ window.CSAssign = {
     var courseEl=document.getElementById('ca-course'), countEl=document.getElementById('ca-count'), diffEl=document.getElementById('ca-diff');
     if(!courseEl||!countEl) return;
     var viewId=courseEl.value, n=Math.min(40,Math.max(3,parseInt(countEl.value,10)||10)), diff=diffEl?diffEl.value:'all';
-    window.CS_loadTrackBank(viewId).then(function(){
+    Promise.all([
+      window.CS_loadTrackBank(viewId),
+      window._ensureFigures ? window._ensureFigures().catch(function(){}) : Promise.resolve()
+    ]).then(function(){
       var selected=pick(viewId,n,diff);
       if(!selected) return;
       var keys=[];
@@ -389,11 +399,12 @@ window.CSReport = {
     var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
     var _dir=_ttDir();
+    var _origin=(window.location&&window.location.origin)||'';
     var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head><meta charset="UTF-8"><title>'+_tt('progressReportDocTitle')+'</title>'
-      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
-      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
-      +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
-      +'<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
+      +'<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'
+      +'<script defer src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'
+      +'<script defer src="'+_origin+'/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'
+      +'<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;background:#fff;margin:0}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:space-between;padding:8pt 0 10pt;margin-bottom:18pt}'
       +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
       +'.hdr-logo-img{height:34pt;width:auto;object-fit:contain;flex-shrink:0}'
@@ -434,7 +445,7 @@ window.CSReport = {
       +'<table><tr><th style="width:56%">'+_tt('colQuestion')+'</th><th style="width:22%;text-align:center">'+_tt('colYourAnswer')+'</th><th style="width:22%;text-align:center">'+_tt('colCorrectAnswer')+'</th></tr>'+mistakeRows+'</table>'
       +'<div class="footer">'+_tt('reportFooter')+today+'</div>'
       +'<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">'+_tt('printPdf')+'</button></div>'
-      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);}).catch(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});}else{setTimeout(function(){try{window.print();}catch(e){}},800);}<\/script>'
+      +'<script>window.addEventListener("load",function(){setTimeout(function(){try{window.print();}catch(e){}},350);});<\/script>'
       +'</body></html>';
     html=_ie(html);
     var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);
@@ -896,8 +907,11 @@ window.CSCustomCart = (function(){
       alert(_ttAr() ? 'أضف سؤالًا واحدًا على الأقل إلى السلة أولًا.' : 'Please add at least 1 question to your custom cart first.');
       return;
     }
+    var ensureFigs = window._ensureFigures ? window._ensureFigures().catch(function(){}) : Promise.resolve();
+    ensureFigs.then(function(){
     var viewId = _currentTrack || 'sat';
     var _ar = _ttAr(viewId), _dir = _ar ? 'rtl' : 'ltr';
+    var _origin = (window.location && window.location.origin) || '';
     var today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     function optLetter(i){ return String.fromCharCode(65 + i); }
     var qHtml = '', keyHtml = '';
@@ -925,19 +939,22 @@ window.CSCustomCart = (function(){
         + '<td style="padding:5px 9px;border:1px solid #e2e8f0">' + _safeExcerpt(rawStem, 80) + '</td></tr>';
     });
     var html = '<!DOCTYPE html><html lang="' + (_dir === 'rtl' ? 'ar' : 'en') + '" dir="' + _dir + '"><head><meta charset="UTF-8"><title>Custom Worksheet — ClipSAT</title>'
-      + '<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0;padding:0 16pt}.hdr{border-bottom:2pt solid #1a1a2e;display:flex;justify-content:space-between;padding:8pt 0;margin-bottom:14pt}table{width:100%;border-collapse:collapse;font-size:10pt}th{background:#1a1a2e;color:#fff;padding:6px;text-align:left}@media print{.no-print{display:none!important}}</style>'
-      + '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]]},svg:{fontCache:"global"}};<\/script>'
-      + '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
-      + '</head><body>'
+      + '<link rel="stylesheet" href="' + _origin + '/vendor/katex/katex.min.css">'
+      + '<script defer src="' + _origin + '/vendor/katex/katex.min.js"><\/script>'
+      + '<script defer src="' + _origin + '/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'
+      + '<style>:root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;background:#fff;margin:0;padding:0 16pt}.hdr{border-bottom:2pt solid #1a1a2e;display:flex;justify-content:space-between;padding:8pt 0;margin-bottom:14pt}table{width:100%;border-collapse:collapse;font-size:10pt}th{background:#1a1a2e;color:#fff;padding:6px;text-align:left}.fep-figure svg{width:100%!important;max-width:240pt!important;height:auto!important;display:block;margin:0 auto;direction:ltr!important;unicode-bidi:isolate}body[dir="rtl"]{direction:rtl;text-align:right}body[dir="rtl"] .katex,body[dir="rtl"] svg{direction:ltr!important;unicode-bidi:isolate}@media print{.no-print{display:none!important}}</style>'
+      + '</head><body dir="' + _dir + '">'
       + '<div class="hdr"><div><strong style="font-size:15pt">ClipSAT Custom Worksheet</strong><div style="font-size:9pt;color:#566173">' + _cart.length + ' Selected Questions</div></div><div style="font-size:9pt;color:#566173">' + today + '</div></div>'
       + qHtml
       + (withKey ? '<div style="page-break-before:always"></div><h3>Answer Key</h3><table><tr><th>#</th><th>Answer</th><th>Question</th></tr>' + keyHtml + '</table>' : '')
       + '<div class="no-print" style="margin-top:16pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:6pt;padding:8pt 20pt;cursor:pointer">🖨️ Print / Save PDF</button></div>'
+      + '<script>window.addEventListener("load",function(){setTimeout(function(){try{window.print();}catch(e){}},350);});<\/script>'
       + '</body></html>';
     var blob = new Blob([html], { type: 'text/html' });
     var url = URL.createObjectURL(blob);
     window.open(url, '_blank', 'width=850,height=750');
     setTimeout(function(){ URL.revokeObjectURL(url); }, 60000);
+    });
   }
 
   function copyAssignmentLink(){

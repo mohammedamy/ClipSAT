@@ -2,7 +2,7 @@
   "id": "ch-partial",
   "chapterNumber": "13",
   "title": {
-    "en": "Partial Derivatives &amp; the Gradient",
+    "en": "Partial Derivatives & the Gradient",
     "ar": "المشتقات الجزئية ومتجه التدرج (Gradient)"
   },
   "content": {
@@ -29,45 +29,39 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Partial Derivatives &amp; the Gradient — Linear Transformation & Basis Action",
-          "original": [
-            [
-              1,
-              2
-            ],
-            [
-              4,
-              1
-            ],
-            [
-              3,
-              4
-            ]
+          "type": "fn",
+          "title": "Cross-Section Trace z = f(x, 1) & Partial Slope fx(1, 1)",
+          "xrange": [
+            -2,
+            3
           ],
-          "transformed": [
-            [
-              -2,
-              1
-            ],
-            [
-              -1,
-              4
-            ],
-            [
-              -4,
-              3
-            ]
+          "yrange": [
+            -1,
+            5
           ],
-          "labels": [
-            "P",
-            "Q",
-            "R"
+          "fns": [
+            {
+              "fn": "4 - x*x - 1",
+              "color": "var(--fig-indigo)",
+              "label": "Slice z = f(x, 1) = 3 − x²"
+            },
+            {
+              "fn": "2 - 2*(x - 1)",
+              "color": "var(--fig-amber)",
+              "label": "Tangent Slope fx(1,1) = −2"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 2,
+              "label": "P(1, 2)"
+            }
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في المشتقات الجزئية ومتجه التدرج (Gradient)."
+          "en": "Holding \\(y = 1\\) fixed slices \\(f(x, y) = 4 - x^2 - y^2\\) along the parabola \\(z = 3 - x^2\\), whose tangent line at \\(x = 1\\) has slope \\(f_x(1, 1) = -2\\).",
+          "ar": "تثبيت \\(y = 1\\) يقطع السطح \\(f(x, y) = 4 - x^2 - y^2\\) وفق القطع المكافئ \\(z = 3 - x^2\\)، وميل مماسه عند \\(x = 1\\) يساوي \\(f_x(1, 1) = -2\\)."
         }
       },
       {
@@ -86,12 +80,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Partial Derivatives &amp; the Gradient)",
+          "en": "◆ Why It Works — First-Principles Derivation (Partial Derivatives & the Gradient)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Differentiability Implies the Directional Derivative Formula:</strong> If \\(f(x, y)\\) is differentiable at \\((a, b)\\), then \\(f(a + hu_1, b + hu_2) - f(a, b) = f_x(a, b)hu_1 + f_y(a, b)hu_2 + o(h)\\). Dividing by \\(h\\) and letting \\(h \\to 0\\) yields \\(D_{\\mathbf{u}}f(a, b) = \\nabla f(a, b)\\cdot \\mathbf{u}\\), maximized when \\(\\mathbf{u}\\) aligns with \\(\\nabla f\\).</p>",
+          "ar": "<p><strong>لماذا تقتضي القابلية للتفاضل قانون المشتقة الاتجاهية:</strong> إذا كانت \\(f(x, y)\\) قابلة للتفاضل عند \\((a, b)\\)، فإن \\(f(a + hu_1, b + hu_2) - f(a, b) = f_x(a, b)hu_1 + f_y(a, b)hu_2 + o(h)\\). وبقسمة الطرفين على \\(h\\) وأخذ النهاية عندما \\(h \\to 0\\) نحصل على \\(D_{\\mathbf{u}}f(a, b) = \\nabla f(a, b)\\cdot \\mathbf{u}\\).</p>"
         }
       },
       {
@@ -112,7 +106,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(B\\) — Partial Derivatives &amp; the Gradient (Medium Application)",
+          "en": "Worked Example \\(B\\) — Partial Derivatives & the Gradient (Medium Application)",
           "ar": null
         },
         "problem": {
@@ -127,7 +121,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Partial Derivatives &amp; the Gradient)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Partial Derivatives & the Gradient)",
           "ar": null
         },
         "columns": [
@@ -193,11 +187,11 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Partial Derivatives &amp; the Gradient",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Partial المشتقات &amp; the Gradient"
+          "en": "▲ Exam Pacing & Verification Strategy — Partial Derivatives & the Gradient",
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Partial المشتقات & the Gradient"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -330,7 +324,7 @@
         "kind": "figure",
         "caption": {
           "en": "Level curves of paraboloid \\(z = x^2 + y^2\\) showing concentric circular contours and gradient vector \\(\\nabla f = \\langle 2, 4\\rangle\\) orthogonal to the contour at \\((1, 2)\\).",
-          "ar": "شكل هندسي للدائرة وعناصرها من نصف القطر والوتر والقطاع الدائري في المشتقات الجزئية ومتجه التدرج (Gradient). \\(z = x^2 + y^2\\) ، \\(\\nabla f = \\langle 2, 4\\rangle\\) ، \\((1, 2)\\)"
+          "ar": "منحنيات المستوى الدائرية متحدة المركز للسطح \\(z = x^2 + y^2\\) مع اتجاه متجه التدرج \\(\\nabla f\\) العمودي عليها."
         },
         "figure": {
           "type": "circle",
@@ -551,7 +545,7 @@
             "trackId": "calculus"
           },
           {
-            "label": "Vectors &amp; Vector-Valued Functions",
+            "label": "Vectors & Vector-Valued Functions",
             "chapterId": "ch-vectors",
             "trackId": "calculus"
           },
@@ -575,7 +569,7 @@
     "className": "ap-tag",
     "badgeClassName": "ap-wt",
     "emoji": "∫",
-    "category": "Calculus I–III · Partial Derivatives &amp; the Gradient",
+    "category": "Calculus I–III · Partial Derivatives & the Gradient",
     "weightBadge": "University Core · 13",
     "topics": [
       "Partial Derivatives and Gradient"

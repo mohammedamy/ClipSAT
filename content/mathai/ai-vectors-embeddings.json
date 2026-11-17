@@ -108,52 +108,51 @@
           "ar": "● الفهم المفاهيمي العميق — المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)"
         },
         "body": {
-          "en": "<p><strong>Linear Structure, Inner Products &amp; Geometric Transformations:</strong> In \\(\\mathbb{R}^n\\), the dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta = \\sum_{i=1}^n u_i v_i\\) encodes orthogonality (\\(\\mathbf{u}\\perp\\mathbf{v} \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0\\)) and orthogonal projection \\(\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\). For a matrix transformation \\(A \\in \\mathbb{R}^{n\\times n}\\), \\(|\\det(A)|\\) measures the local volume scaling factor, and \\(A\\) is invertible if and only if \\(\\det(A) \\ne 0\\) (equivalently, all eigenvalues \\(\\lambda_i \\ne 0\\)).</p>",
+          "en": "<p><strong>Linear Structure, Inner Products & Geometric Transformations:</strong> In \\(\\mathbb{R}^n\\), the dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta = \\sum_{i=1}^n u_i v_i\\) encodes orthogonality (\\(\\mathbf{u}\\perp\\mathbf{v} \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0\\)) and orthogonal projection \\(\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\). For a matrix transformation \\(A \\in \\mathbb{R}^{n\\times n}\\), \\(|\\det(A)|\\) measures the local volume scaling factor, and \\(A\\) is invertible if and only if \\(\\det(A) \\ne 0\\) (equivalently, all eigenvalues \\(\\lambda_i \\ne 0\\)).</p>",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Vectors, Norms & High-Dimensional Embeddings — Linear Transformation & Basis Action",
-          "original": [
-            [
-              2,
-              2
-            ],
-            [
-              4,
-              1
-            ],
-            [
-              3,
-              4
-            ]
+          "type": "fn",
+          "title": "2D Token Embeddings & Cosine Similarity Angle θ",
+          "xrange": [
+            -0.5,
+            5.5
           ],
-          "transformed": [
-            [
-              -2,
-              -2
-            ],
-            [
-              -4,
-              -1
-            ],
-            [
-              -3,
-              -4
-            ]
+          "yrange": [
+            -0.5,
+            5.5
           ],
-          "labels": [
-            "A",
-            "B",
-            "C"
+          "fns": [
+            {
+              "fn": "0.5*x",
+              "color": "var(--fig-indigo)",
+              "label": "Query Ray q = [4, 2]ᵀ"
+            },
+            {
+              "fn": "2*x",
+              "color": "var(--fig-amber)",
+              "label": "Doc Ray d = [2, 4]ᵀ"
+            }
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 2,
+              "label": "q(4, 2)"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "label": "d(2, 4)"
+            }
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)."
+          "en": "Document and query embedding vectors \\(\\mathbf{q} = [4, 2]^T\\) and \\(\\mathbf{d} = [2, 4]^T\\) with cosine similarity \\(\\cos\\theta = \\frac{16}{20} = 0.80\\).",
+          "ar": "متجها التضمين للاستعلام \\(\\mathbf{q} = [4, 2]^T\\) والوثيقة \\(\\mathbf{d} = [2, 4]^T\\) بتشابه جيب تمام \\(\\cos\\theta = \\frac{16}{20} = 0.80\\)."
         }
       },
       {
@@ -268,40 +267,42 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Parametric Trajectory & Velocity Tangent Vector",
-          "xrange": [
-            -1,
-            7
+          "type": "polygon",
+          "title": "L₁ Manhattan Diamond Ball |x₁| + |x₂| ≤ 1 Supporting Sparse Corners",
+          "vertices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              -1,
+              0
+            ],
+            [
+              0,
+              -1
+            ]
           ],
-          "yrange": [
-            -1,
-            6
+          "labels": [
+            "(1,0)",
+            "(0,1)",
+            "(−1,0)",
+            "(0,−1)"
           ],
-          "fns": [
-            {
-              "fn": "4 - 0.25*(x - 3)*(x - 3)",
-              "color": "var(--fig-indigo)",
-              "label": "r(t) path"
-            },
-            {
-              "fn": "0.5*x + 2.25",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "r'(t) tangent"
-            }
-          ],
-          "points": [
-            {
-              "x": 2,
-              "y": 3.75,
-              "label": "P(t₀)"
-            }
+          "sides": [
+            "√2",
+            "√2",
+            "√2",
+            "√2"
           ]
         },
         "caption": {
-          "en": "Planar parametric trajectory \\(\\mathbf{r}(t)\\) with instantaneous velocity tangent vector \\(\\mathbf{r}'(t_0)\\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings). \\(\\mathbf{r}(t)\\) ، \\(\\mathbf{r}'(t_0)\\)"
+          "en": "Unit \\(L_1\\) norm ball \\(\\{\\mathbf{x} \\in \\mathbb{R}^2 : |x_1| + |x_2| \\le 1\\}\\), whose sharp axial vertices induce feature sparsity in Lasso regularization.",
+          "ar": "كرة المعيار \\(L_1\\) الوحدوية \\(\\{\\mathbf{x} \\in \\mathbb{R}^2 : |x_1| + |x_2| \\le 1\\}\\)، حيث تدفع الرؤوس الواقعة على المحاور نحو التناثر في تنظيم لاسو."
         }
       },
       {
@@ -357,7 +358,7 @@
           "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))"
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -429,7 +430,7 @@
           "ar": "⚠️ أخطاء شائعة في الاختبار — المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)"
         },
         "body": {
-          "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication &amp; Cross Products:</strong> On Mathematics for Artificial Intelligence & Machine Learning, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
+          "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication & Cross Products:</strong> On Mathematics for Artificial Intelligence & Machine Learning, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
           "ar": null
         }
       },
@@ -506,7 +507,7 @@
           "ar": "▲ استراتيجية الحل السريع والتحقق — المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings)"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (Mathematics for Artificial Intelligence & Machine Learning):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (Mathematics for Artificial Intelligence & Machine Learning):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },

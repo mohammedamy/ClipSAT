@@ -17,12 +17,13 @@ test.describe('canvas explorers: non-visual equivalents', () => {
       test.setTimeout(track === 'calculus' ? 180000 : 120000);
       const errors = [];
       page.on('pageerror', (e) => errors.push(e.message));
-      await page.goto(`/${track}/`);
-      const targets = await page.locator('aside.rail a[data-target]').evaluateAll((as) => as.map((a) => a.getAttribute('data-target')));
+      const meta = JSON.parse(fs.readFileSync(path.join(CONTENT, track, '_meta.json'), 'utf8'));
+      const targets = meta.chapterOrder || [];
       const results = [];
       for (const target of targets) {
-        // Open the chapter from the rail, then press "View as data" WITHOUT scrolling to the canvas.
-        await page.evaluate((tg) => { const a = document.querySelector(`aside.rail a[data-target="${tg}"]`); if (a) a.click(); window.scrollTo(0, 0); }, target);
+        // Open the per-chapter SSG route, then press "View as data" WITHOUT scrolling to the canvas.
+        await page.goto(`/${track}/${target}/`, { waitUntil: 'load' });
+        await page.evaluate(() => window.scrollTo(0, 0));
         const found = await page.evaluate(async (tg) => {
           const out = [];
           const sec = document.getElementById(tg);
@@ -111,7 +112,7 @@ test.describe('canvas explorers: per-track files (Phase 5.015, ADR 0039)', () =>
   });
 
   test('a moved explorer repaints in the new theme colours', async ({ page }) => {
-    await page.goto('/algebra/');
+    await page.goto('/algebra/ag-linear/');
     const cv = page.locator('canvas').first();
     await cv.scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);

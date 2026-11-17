@@ -2,8 +2,8 @@
   "id": "ibsl-t4",
   "chapterNumber": "4",
   "title": {
-    "en": "Statistics &amp; Probability",
-    "ar": "الإحصاء &amp; الاحتمالات"
+    "en": "Statistics & Probability",
+    "ar": "الإحصاء والاحتمالات"
   },
   "chapterTag": {
     "variant": "pill",
@@ -37,7 +37,7 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Level 1 Foundation — Descriptive Statistics &amp; Probability Axioms",
+          "en": "● Level 1 Foundation — Descriptive Statistics & Probability Axioms",
           "ar": null
         },
         "body": {
@@ -307,8 +307,8 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Statistics &amp; Probability)",
-          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (الإحصاء &amp; الاحتمال)"
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics & Probability)",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — اشتقاق من المبادئ الأولى (الإحصاء والاحتمالات)"
         },
         "body": {
           "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
@@ -399,22 +399,22 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — Topic 4 (Statistics & Probability)",
-          "ar": null
+          "en": "Worked Example 4.4 — Standardizing Normal Percentiles to Find μ and σ",
+          "ar": "مثال محلول 4.4 — إيجاد المتوسط والانحراف المعياري من المئينات الطبيعية"
         },
         "problem": {
-          "en": "<strong>High-Frequency IB Past-Paper Ideas (SL 4.1–4.9):</strong>",
-          "ar": null
+          "en": "Let \\( X \\sim N(\\mu, \\sigma^2) \\) with \\( P(X < 40) = 0.1587 \\) and \\( P(X > 70) = 0.0228 \\). Find \\( \\mu \\) and \\( \\sigma \\).",
+          "ar": "إذا كان \\( X \\sim N(\\mu, \\sigma^2) \\) وكان \\( P(X < 40) = 0.1587 \\) و\\( P(X > 70) = 0.0228 \\)، فأوجد \\( \\mu \\) و\\( \\sigma \\)."
         },
         "solution": {
-          "en": "<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>Subtopic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>SL 4.2–4.3 Cumulative Frequency &amp; Linear Scaling</strong></td><td>Reading percentiles, IQR, and outlier fences \\([Q_1 - 1.5\\text{IQR}, Q_3 + 1.5\\text{IQR}]\\); transforming data \\(y = ax + b \\implies \\bar{y} = a\\bar{x} + b\\), \\(s_y = |a|s_x\\), \\(s_y^2 = a^2 s_x^2\\).</td><td>Adding \\(+b\\) to standard deviation or variance! Translation \\(b\\) shifts only measures of position, never spread.</td></tr>\n<tr><td><strong>SL 4.4 Linear Regression</strong></td><td>Using \\(y\\)-on-\\(x\\) line to estimate \\(y\\) given \\(x\\), and \\(x\\)-on-\\(y\\) line to estimate \\(x\\) given \\(y\\); passing through \\((\\bar{x}, \\bar{y})\\).</td><td>Extrapolating outside the sample domain without noting it is unreliable.</td></tr>\n<tr><td><strong>SL 4.7–4.9 Binomial &amp; Normal</strong></td><td>Two-stage probability: finding \\(p = P(X > c)\\) from a Normal distribution, then substituting \\(p\\) into a Binomial \\(Y \\sim \\text{B}(n, p)\\) (\"at least 2 out of 5 items\").</td><td>Rounding the intermediate probability \\(p\\) to 2 s.f. before running <code>binomcdf</code> (always keep 5+ digits internally!).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA/AI SL Paper 2 — 7 marks):</strong><br>\nThe masses of apples from an orchard follow \\(M \\sim \\text{N}(180, \\sigma^2)\\) grams. Given that \\(15\\%\\) of apples have mass greater than \\(195\\text{ g}\\):<br>\n(a) Find the value of \\(\\sigma\\). <strong>[3]</strong><br>\n(b) Twelve apples are chosen at random. Find the probability that at least three of them have a mass greater than \\(195\\text{ g}\\). <strong>[4]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) \\(P(M > 195) = 0.15 \\implies P(Z < z) = 0.85 \\implies z = \\text{invNorm}(0.85) = 1.03643\\) <strong>[M1] [A1]</strong><br>\n\\(\\frac{195 - 180}{\\sigma} = 1.03643 \\implies \\sigma = \\frac{15}{1.03643} = 14.5\\text{ g}\\) (3 s.f.) <strong>[A1]</strong><br>\n(b) Let \\(Y \\sim \\text{B}(12, 0.15)\\) be the number of apples heavier than \\(195\\text{ g}\\) <strong>[M1]</strong><br>\n\\(P(Y \\ge 3) = 1 - P(Y \\le 2) = 1 - \\text{binomcdf}(12, 0.15, 2)\\) <strong>[M1]</strong><br>\n\\(= 1 - 0.7358 = 0.264\\) (3 s.f.) <strong>[A1] [A1]</strong></p>",
-          "ar": null
+          "en": "<p>Inverse normal gives \\( \\frac{40 - \\mu}{\\sigma} = -1.00 \\) and \\( \\frac{70 - \\mu}{\\sigma} = 2.00 \\). Subtracting gives \\( 3\\sigma = 30 \\implies \\sigma = 10 \\) and \\( \\mu = 50 \\).</p>",
+          "ar": "<p>من التوزيع المعياري العكسي: \\( 40 - \\mu = -\\sigma \\) و\\( 70 - \\mu = 2\\sigma \\)، وبالطرح \\( 3\\sigma = 30 \\implies \\sigma = 10 \\) و\\( \\mu = 50 \\).</p>"
         }
       },
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics &amp; Probability)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics & Probability)",
           "ar": null
         },
         "columns": [
@@ -480,8 +480,8 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Statistics &amp; Probability",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — الإحصاء &amp; الاحتمال"
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics & Probability",
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — الإحصاء والاحتمالات"
         },
         "body": {
           "en": "<p><strong>Exam Strategy (IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
@@ -638,6 +638,7 @@
   "quizWidget": {
     "domains": [
       "Statistics & Probability"
-    ]
+    ],
+    "enabled": true
   }
 }

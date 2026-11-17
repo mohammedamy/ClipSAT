@@ -789,7 +789,7 @@ window.launchPracticeQuiz=function(mistake){
 
       /* ── Chapter keyword extraction — heading + definitions + example titles ── */
       var chEl=btn.closest('.chapter');
-      var chH2=chEl&&chEl.querySelector('.chead h2');
+      var chH2=chEl&&chEl.querySelector('.chead h1, .chead h2');
       var chTitle=chH2?chH2.textContent.trim():'';
       var _kSet={};
       var _stopWords={the:1,and:1,with:1,that:1,this:1,from:1,into:1,their:1,will:1,

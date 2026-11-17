@@ -2,8 +2,8 @@
   "id": "ibhl-t4",
   "chapterNumber": "4",
   "title": {
-    "en": "Statistics &amp; Probability (HL)",
-    "ar": "الإحصاء &amp; الاحتمالات (HL)"
+    "en": "Statistics & Probability (HL)",
+    "ar": "الإحصاء والاحتمالات (HL)"
   },
   "chapterTag": {
     "variant": "pill",
@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "HL Statistics &amp; Probability establishes formal measure-theoretic foundations for continuous random variables, calculus of expectation and variance, Poisson processes, linear combinations of independent normals, and Bessel-corrected unbiased estimators.",
+          "en": "HL Statistics & Probability establishes formal measure-theoretic foundations for continuous random variables, calculus of expectation and variance, Poisson processes, linear combinations of independent normals, and Bessel-corrected unbiased estimators.",
           "ar": null
         }
       },
@@ -50,33 +50,31 @@
         "figure": {
           "type": "tree_diagram",
           "title": "Topic 4 HL — Bayes' Theorem Diagnostic Screening Tree",
-          "firstLabel": "Prevalence",
-          "secondLabel": "Test Outcome",
           "branches": [
             {
-              "label": "D (Disease)",
+              "label": "D (0.02)",
               "prob": "0.02",
-              "children": [
+              "branches": [
                 {
-                  "label": "+ (True Pos)",
+                  "label": "+ (0.95)",
                   "prob": "0.95"
                 },
                 {
-                  "label": "− (False Neg)",
+                  "label": "− (0.05)",
                   "prob": "0.05"
                 }
               ]
             },
             {
-              "label": "D' (Healthy)",
+              "label": "D' (0.98)",
               "prob": "0.98",
-              "children": [
+              "branches": [
                 {
-                  "label": "+ (False Pos)",
+                  "label": "+ (0.04)",
                   "prob": "0.04"
                 },
                 {
-                  "label": "− (True Neg)",
+                  "label": "− (0.96)",
                   "prob": "0.96"
                 }
               ]
@@ -84,15 +82,15 @@
           ]
         },
         "caption": {
-          "en": "Conditional probability tree diagram for Bayes' Theorem \\(P(D | +) = (0.02 \\times 0.95) / (0.02 \\times 0.95 + 0.98 \\times 0.04) = 19 / 58 \\approx 0.328\\).",
-          "ar": "شجرة الاحتمالات لتوضيح الفضاء العيني والاحتمالات المشروطة في الموضوع أربعة · الإحصاء والاحتمالات (توسعات المستوى العالي HL). \\(P(D | +) = (0.02 \\times 0.95) / (0.02 \\times 0.95 + 0.98 \\times 0.04) = 19 / 58 \\approx 0.328\\)"
+          "en": "Conditional probability tree for Bayes' Theorem \\(P(D \\mid +) = \\dfrac{0.02 \\times 0.95}{0.02 \\times 0.95 + 0.98 \\times 0.04} \\approx 0.326\\).",
+          "ar": "شجرة الاحتمالات الشرطية لمبرهنة بايز لحساب الاحتمال البعدي \\(P(D \\mid +)\\)."
         }
       },
       {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Confidence interval for the mean",
-          "ar": "⊙ مستكشف تفاعلي · فترة الثقة for the mean"
+          "ar": "⊙ مستكشف تفاعلي · فترة الثقة للمتوسط الحسابي"
         },
         "canvasId": "ibhlCICanvas",
         "ariaLabel": {
@@ -133,7 +131,7 @@
             "valueDisplayId": "ibhlCIXbarVal",
             "ariaLabel": {
               "en": "Sample mean x-bar",
-              "ar": "عنصر تفاعلي: Sample mean x-bar"
+              "ar": "عنصر تفاعلي: متوسط العينة x̄"
             }
           },
           {
@@ -165,7 +163,7 @@
             "valueDisplayId": "ibhlCINVal",
             "ariaLabel": {
               "en": "Sample size n",
-              "ar": "عنصر تفاعلي: Sample size n"
+              "ar": "عنصر تفاعلي: حجم العينة n"
             }
           },
           {
@@ -343,8 +341,8 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Statistics &amp; Probability (HL))",
-          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (الإحصاء &amp; الاحتمال (HL))"
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics & Probability (HL))",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — اشتقاق من المبادئ الأولى (الإحصاء والاحتمالات (HL))"
         },
         "body": {
           "en": "<p><strong>Why Variance Scales as \\(a^2\\) and Independent Variances Always Add:</strong> By definition, \\(\\operatorname{Var}(Y) = \\mathbb{E}[(Y - \\mu_Y)^2]\\). For \\(Y = aX - bW\\) with independent \\(X, W\\), subtracting its mean \\(\\mu_Y = a\\mu_X - b\\mu_W\\) gives:</p>\\[ \\operatorname{Var}(aX - bW) = \\mathbb{E}\\!\\left[(a(X - \\mu_X) - b(W - \\mu_W))^2\\right] = a^2\\mathbb{E}[(X-\\mu_X)^2] - 2ab\\,\\operatorname{Cov}(X,W) + b^2\\mathbb{E}[(W-\\mu_W)^2] \\]<p>Because independence implies \\(\\operatorname{Cov}(X, W) = 0\\), the cross term vanishes and \\((-b)^2 = +b^2\\), proving \\(\\operatorname{Var}(aX - bW) = a^2\\operatorname{Var}(X) + b^2\\operatorname{Var}(W)\\). Uncertainty compounds whether random variables are added or subtracted.</p>",
@@ -444,25 +442,27 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "histogram",
-          "title": "Grouped Frequency Distribution",
-          "bins": [
-            "40–55",
-            "55–70",
-            "70–85",
-            "85–100"
+          "type": "fn",
+          "title": "Continuous Random Variable PDF f(x) = 0.75(1 − x²) on [−1, 1]",
+          "xrange": [
+            -1.5,
+            1.5
           ],
-          "freqs": [
-            6,
-            15,
-            19,
-            10
+          "yrange": [
+            -0.1,
+            1.0
           ],
-          "xlabel": "Score Interval"
+          "fns": [
+            {
+              "fn": "abs(x) <= 1 ? 0.75*(1 - x*x) : 0",
+              "color": "var(--fig-indigo)",
+              "label": "PDF f(x) = 0.75(1 − x²)"
+            }
+          ]
         },
         "caption": {
-          "en": "Grouped frequency histogram illustrating center, spread, and shape of quantitative data.",
-          "ar": "المدرج التكراري للفئات المجمعة وتوزيع البيانات الكمية في الموضوع أربعة · الإحصاء والاحتمالات (توسعات المستوى العالي HL)."
+          "en": "Valid continuous density function \\(f(x) = \\frac{3}{4}(1 - x^2)\\) on \\([-1, 1]\\) satisfying \\(\\int_{-1}^1 f(x)\\,dx = 1\\) and \\(\\operatorname{Var}(X) = \\frac{1}{5}\\).",
+          "ar": "دالة كثافة الاحتمال المتصلة \\(f(x) = \\frac{3}{4}(1 - x^2)\\) على الفترة \\([-1, 1]\\) حيث تبلغ المساحة الكلية \\(1\\)."
         }
       },
       {
@@ -480,22 +480,22 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — Topic 4 HL (Bayes, Continuous RVs & Hypothesis Testing)",
-          "ar": null
+          "en": "Worked Example 4.4 — Variance of Linear Combinations of Independent Normals",
+          "ar": "مثال محلول 4.4 — تباين التركيبات الخطية للمتغيرات العشوائية المستقلة"
         },
         "problem": {
-          "en": "<strong>High-Frequency IB HL Past-Paper Ideas (AHL 4.13–4.19):</strong>",
-          "ar": null
+          "en": "Coffee mug mass \\( M \\sim N(320, 12^2) \\) and liquid coffee mass \\( C \\sim N(250, 9^2) \\) are independent (in grams). Find the distribution of \\( M - C \\).",
+          "ar": "كتلة الكوب \\( M \\sim N(320, 12^2) \\) وكتلة القهوة \\( C \\sim N(250, 9^2) \\) مستقلتان (بالغرام). أوجد توزيع \\( M - C \\)."
         },
         "solution": {
-          "en": "<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>Subtopic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>AHL 4.13 Bayes' Theorem</strong></td><td>Three-branch partition \\(B_1, B_2, B_3\\) with conditional event \\(A\\): \\(P(B_1|A) = \\frac{P(B_1)P(A|B_1)}{\\sum_i P(B_i)P(A|B_i)}\\).</td><td>Confusing \\(P(A|B)\\) (\"given \\(B\\)\") with \\(P(A \\cap B)\\) (\"both \\(A\\) and \\(B\\)\").</td></tr>\n<tr><td><strong>AHL 4.14 Continuous Random Variables (AA HL)</strong></td><td>Finding constant \\(k\\) via \\(\\int_a^b f(x)\\,dx = 1\\); median \\(m\\) via \\(\\int_a^m f(x)\\,dx = 0.5\\); mode at max of \\(f(x)\\); \\(\\text{Var}(X) = \\int x^2 f(x)\\,dx - \\mu^2\\).</td><td>Setting \\(f'(m) = 0\\) to find the <em>median</em>! \\(f'(x)=0\\) checks for a local maximum (mode); the median always solves \\(\\int_a^m f(x)\\,dx = 0.5\\).</td></tr>\n<tr><td><strong>AHL 4.17–4.19 Poisson &amp; Linear Combinations (AI HL)</strong></td><td>Scaling Poisson rate \\(\\lambda\\) proportionally to time/area; for independent \\(X_1, X_2\\): \\(\\text{Var}(aX_1 - bX_2) = a^2\\text{Var}(X_1) + b^2\\text{Var}(X_2)\\).</td><td>Subtracting variances when finding \\(\\text{Var}(X - Y)\\) — variances of independent random variables <strong>always add</strong> (\\(+b^2\\text{Var}(Y)\\)), and distinguishing \\(2X\\) (\\(\\text{Var}=4\\sigma^2\\)) from \\(X_1 + X_2\\) (\\(\\text{Var}=2\\sigma^2\\)).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA HL Paper 1 — 8 marks):</strong><br>\nA continuous random variable \\(X\\) has probability density function \\(f(x) = kx(2 - x)\\) for \\(0 \\le x \\le 2\\), and \\(f(x) = 0\\) otherwise.<br>\n(a) Show that \\(k = \\frac{3}{4}\\). <strong>[3]</strong><br>\n(b) Find \\(\\text{E}(X)\\) and \\(\\text{Var}(X)\\). <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) Total probability \\(= 1\\): \\(\\int_0^2 k(2x - x^2)\\,dx = 1 \\implies k\\left[x^2 - \\frac{x^3}{3}\\right]_0^2 = 1\\) <strong>[M1] [A1]</strong><br>\n\\(k\\left(4 - \\frac{8}{3}\\right) = \\frac{4}{3}k = 1 \\implies k = \\frac{3}{4}\\) <strong>[A1] [AG]</strong><br>\n(b) By symmetry of \\(f(x) = \\frac{3}{4}x(2-x)\\) about \\(x = 1\\) (or integration), \\(\\text{E}(X) = 1\\) <strong>[A1]</strong><br>\n\\(\\text{E}(X^2) = \\frac{3}{4}\\int_0^2 (2x^3 - x^4)\\,dx = \\frac{3}{4}\\left[\\frac{x^4}{2} - \\frac{x^5}{5}\\right]_0^2 = \\frac{3}{4}\\left(8 - \\frac{32}{5}\\right) = \\frac{3}{4}\\left(\\frac{8}{5}\\right) = \\frac{6}{5}\\) <strong>[M1] [A1]</strong><br>\n\\(\\text{Var}(X) = \\text{E}(X^2) - [\\text{E}(X)]^2 = \\frac{6}{5} - 1^2 = \\frac{1}{5} = 0.2\\) <strong>[M1] [A1]</strong></p>",
-          "ar": null
+          "en": "<p>\\( E(M - C) = 320 - 250 = 70 \\), and by independence variances add: \\( \\operatorname{Var}(M - C) = 12^2 + (-1)^2 9^2 = 144 + 81 = 225 = 15^2 \\), so \\( M - C \\sim N(70, 15^2) \\).</p>",
+          "ar": "<p>المتوسط \\( 320 - 250 = 70 \\)، وبما أنهما مستقلان فإن التباين \\( 144 + 81 = 225 = 15^2 \\)، أي \\( M - C \\sim N(70, 15^2) \\).</p>"
         }
       },
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics &amp; Probability (HL))",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics & Probability (HL))",
           "ar": null
         },
         "columns": [
@@ -561,8 +561,8 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Statistics &amp; Probability (HL)",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — الإحصاء &amp; الاحتمال (HL)"
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics & Probability (HL)",
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — الإحصاء والاحتمالات (HL)"
         },
         "body": {
           "en": "<p><strong>Exam Marking Tip (IB Diploma Mathematics: AA / AI Higher Level (Papers 1, 2 & 3)):</strong> Always state the distribution parameters explicitly (e.g., \\(X \\sim \\operatorname{N}(\\mu, \\sigma^2)\\) or \\(\\bar{X} \\sim \\operatorname{N}(\\mu, \\sigma^2/n)\\)) and sketch a quick shaded bell curve before standardizing to \\(z = \\dfrac{x - \\mu}{\\sigma}\\). This secures the method mark even if a rounding slip occurs later.</p>",
@@ -719,6 +719,7 @@
   "quizWidget": {
     "domains": [
       "Statistics & Probability (HL)"
-    ]
+    ],
+    "enabled": true
   }
 }

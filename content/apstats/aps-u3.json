@@ -40,58 +40,66 @@
         "kind": "figure",
         "figure": {
           "type": "two_way_table",
-          "title": "Stratified Sample / Contingency Counts",
+          "title": "Joint & Marginal Counts for Conditional Probability P(A | B)",
           "rows": [
-            "Treatment Group",
-            "Control Group"
+            "Varsity Athlete",
+            "Non-Athlete"
           ],
           "cols": [
-            "Improved",
-            "No Change"
+            "Honor Roll",
+            "Not Honor Roll"
           ],
           "data": [
             [
-              68,
-              32
+              45,
+              35
             ],
             [
-              41,
-              59
+              75,
+              145
             ]
           ]
         },
         "caption": {
-          "en": "Two-way contingency table comparing outcomes across randomized treatment and control groups.",
-          "ar": "جدول توافقي ثنائي يقارن النتائج بين المجموعة التجريبية والمجموعة الضابطة في الوحدة ثلاثة · الاحتمالات والمتغيرات العشوائية والتوزيعات."
+          "en": "Two-way table of \\(N = 300\\) students used to compute joint, marginal, and conditional probabilities \\(P(\\text{Honor} \\mid \\text{Athlete}) = 45/80\\).",
+          "ar": "جدول توافقي لحساب الاحتمالات المشتركة والهامشية والشرطية لعينة من \\(300\\) طالب."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "bar",
-          "title": "Response Rate Comparison by Stratum (%)",
+          "title": "Binomial Distribution B(n = 5, p = 0.40) Probabilities (%)",
           "data": [
             {
-              "label": "Stratum A",
-              "val": 68
+              "label": "X=0",
+              "val": 7.8
             },
             {
-              "label": "Stratum B",
-              "val": 54
+              "label": "X=1",
+              "val": 25.9
             },
             {
-              "label": "Stratum C",
-              "val": 72
+              "label": "X=2",
+              "val": 34.6
             },
             {
-              "label": "Control",
-              "val": 41
+              "label": "X=3",
+              "val": 23.0
+            },
+            {
+              "label": "X=4",
+              "val": 7.7
+            },
+            {
+              "label": "X=5",
+              "val": 1.0
             }
           ]
         },
         "caption": {
-          "en": "Comparative bar chart of outcome percentages across experimental strata.",
-          "ar": "تمثيل بالأعمدة لمقارنة نسب الاستجابة عبر الطبقات الإحصائية في الوحدة ثلاثة · الاحتمالات والمتغيرات العشوائية والتوزيعات."
+          "en": "Probability distribution of \\(X \\sim \\text{Binomial}(5, 0.40)\\) with mean \\(\\mu_X = np = 2.0\\) and \\(\\sigma_X = \\sqrt{1.2} \\approx 1.095\\).",
+          "ar": "التوزيع الاحتمالي لمتغير ذات الحدين \\(X \\sim B(5, 0.40)\\) بمتوسط \\(\\mu_X = 2.0\\)."
         }
       },
       {
@@ -99,7 +107,7 @@
         "style": "def",
         "label": {
           "en": "● Fundamental Probability Rules & Formulas",
-          "ar": "● Fundamental الاحتمال Rules & الصيغ"
+          "ar": "● القواعد والصيغ الأساسية للاحتمالات"
         },
         "body": {
           "en": "<p><strong>Complement Rule:</strong> \\(P(A^c) = 1 - P(A)\\).</p><p><strong>General Addition Rule:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B). \\]<p>If events \\(A\\) and \\(B\\) are <strong>mutually exclusive (disjoint)</strong>, then \\(P(A \\cap B) = 0\\), and \\(P(A \\cup B) = P(A) + P(B)\\).</p><p><strong>Conditional Probability:</strong> \\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} \\quad (\\text{provided } P(B) > 0). \\]</p><p><strong>General Multiplication Rule:</strong> \\[ P(A \\cap B) = P(A) \\cdot P(B \\mid A) = P(B) \\cdot P(A \\mid B). \\]</p><p><strong>Statistical Independence:</strong> Events \\(A\\) and \\(B\\) are independent if knowing that \\(B\\) has occurred does not change the probability that \\(A\\) occurs: \\[ P(A \\mid B) = P(A) \\quad \\iff \\quad P(A \\cap B) = P(A) \\cdot P(B). \\]</p>",
@@ -134,7 +142,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
-          "ar": "Level 1 (Foundations) — مثال محلول"
+          "ar": "المستوى ١ (التأسيس) — مثال محلول"
         },
         "problem": {
           "en": "In a school, 60% of students take art (\\(A\\)), 40% take music (\\(M\\)), and 20% take both art and music. (a) What is the probability that a randomly chosen student takes art, given that they take music? (b) Are taking art and taking music independent events?",
@@ -373,7 +381,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Level 2 (Medium) — Worked Example",
-          "ar": "Level 2 (Medium) — مثال محلول"
+          "ar": "المستوى ٢ (المتوسط) — مثال محلول"
         },
         "problem": {
           "en": "A company packages gift boxes containing 2 mugs (\\(M\\)) and 1 teapot (\\(T\\)). Mug weights have \\(\\mu_M = 300\\text{ g}, \\sigma_M = 15\\text{ g}\\). Teapot weights have \\(\\mu_T = 800\\text{ g}, \\sigma_T = 40\\text{ g}\\). Assume the weights of individual items are independent. Find the mean and standard deviation of the total contents weight \\(W = M_1 + M_2 + T\\).",
@@ -457,7 +465,7 @@
         "kind": "workedExampleCard",
         "label": {
           "en": "Level 3 (Advanced) — Worked Example",
-          "ar": "Level 3 (Advanced) — مثال محلول"
+          "ar": "المستوى ٣ (المتقدم) — مثال محلول"
         },
         "problem": {
           "en": "A fair 6-sided die is rolled until the first 6 appears. (a) What is the probability that the first 6 appears on the 4th roll? (b) What is the probability that it takes more than 5 rolls to get the first 6? (c) What is the expected number of rolls?",

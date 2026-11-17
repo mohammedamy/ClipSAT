@@ -29,44 +29,19 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            3
-          ],
-          "fns": [
-            {
-              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)",
-              "label": "c = 4"
-            },
-            {
-              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)"
-            },
-            {
-              "fn": "2*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Normal ∇f"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 1.22,
-              "label": "P"
-            }
-          ]
+          "type": "circle",
+          "title": "Polar Integration Sector D: 0 ≤ r ≤ 3, 0 ≤ θ ≤ π/3",
+          "center": "O(0,0)",
+          "radius": "r = 3",
+          "sector": {
+            "start_deg": 0,
+            "end_deg": 60,
+            "label": "dA = r dr dθ"
+          }
         },
         "caption": {
-          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
-          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في التكاملات الثنائية ونظرية فوبيني والإحداثيات القطبية والجاكوبيان."
+          "en": "Polar domain \\(D = \\{(r, \\theta) : 0 \\le r \\le 3,\\; 0 \\le \\theta \\le \\pi/3\\}\\) where the area Jacobian contributes the radial factor \\(dA = r\\,dr\\,d\\theta\\).",
+          "ar": "المنطقة القطبية \\(D = \\{(r, \\theta) : 0 \\le r \\le 3,\\; 0 \\le \\theta \\le \\pi/3\\}\\) حيث يضيف جاكوبي التحويل العامل الشعاعي \\(dA = r\\,dr\\,d\\theta\\)."
         }
       },
       {
@@ -291,7 +266,7 @@
         },
         "caption": {
           "en": "Region \\( D \\) between \\( y = x^2 \\) and \\( y = 2x \\). Integrating vertically (Type I) uses \\( \\int_0^2 \\int_{x^2}^{2x} f(x, y) \\, dy \\, dx \\). Integrating horizontally (Type II) uses \\( \\int_0^4 \\int_{y/2}^{\\sqrt{y}} f(x, y) \\, dx \\, dy \\). Fubini's theorem guarantees both orders give identical results.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التكاملات الثنائية ونظرية فوبيني والإحداثيات القطبية والجاكوبيان. \\(D\\) ، \\(y = x^2\\) ، \\(y = 2x\\) ، \\(\\int_0^2 \\int_{x^2}^{2x} f(x, y) \\, dy \\, dx\\) ، \\(\\int_0^4 \\int_{y/2}^{\\sqrt{y}} f(x, y) \\, dx \\, dy\\)"
+          "ar": "منطقة التكامل المستوية \\(D\\) المحصورة بين \\(y = x^2\\) و\\(y = 2x\\) على \\([0, 2]\\) وتكافؤ الترتيبين الرأسي والأفقي."
         }
       },
       {
@@ -455,7 +430,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -609,7 +584,8 @@
   "quizWidget": {
     "domains": [
       "Double Integrals"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",

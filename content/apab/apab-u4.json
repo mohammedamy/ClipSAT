@@ -39,69 +39,78 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "sign_chart",
-          "title": "Unit 4 · Contextual Applications of Differentiation — First Derivative Sign Chart & Extrema",
-          "ticks": [
+          "type": "fn",
+          "title": "Unit 4 · Tangent-Line Linearization L(x) of √x at a = 4",
+          "xrange": [
+            0,
+            9
+          ],
+          "yrange": [
+            0,
+            3.5
+          ],
+          "fns": [
             {
-              "x": -4,
-              "label": "x = -4"
+              "fn": "x >= 0 ? sqrt(x) : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = √x"
             },
             {
-              "x": 6,
-              "label": "x = 6"
+              "fn": "2 + 0.25*(x - 4)",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "L(x) = 2 + 0.25(x − 4)"
             }
           ],
-          "signs": [
-            "+",
-            "−",
-            "+"
-          ],
-          "behaviors": [
-            "↗ Increasing",
-            "↘ Decreasing",
-            "↗ Increasing"
+          "points": [
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
+            }
           ]
         },
         "caption": {
-          "en": "Derivative sign chart for f'(\\(x\\)) showing local maximum at \\(x = -4\\) (+ to −) and local minimum at \\(x = 6\\) (− to +).",
-          "ar": "جدول دراسة إشارة المشتقة وفترات التزايد والتناقص والقيم القصوى في الوحدة أربعة · التطبيقات السياقية والفيزيائية للاشتقاق. \\(x\\) ، \\(x = -4\\) ، \\(x = 6\\)"
+          "en": "Local linear approximation \\(L(x) = 2 + \\frac{1}{4}(x - 4)\\) overestimates \\(\\sqrt{x}\\) near \\(x = 4\\) because \\(f''(x) < 0\\) (concave down).",
+          "ar": "التقريب الخطي المحلي \\(L(x) = 2 + \\frac{1}{4}(x - 4)\\) يقدّر \\(\\sqrt{x}\\) بأعلى من قيمتها الحقيقية لأن الدالة مقعرة للأسفل."
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "sign_chart",
-          "title": "First Derivative Sign Chart & Local Extrema",
-          "points": [
-            -1,
-            3
+          "type": "fn",
+          "title": "Particle Velocity Profile v(t) = t² − 4t + 3 on [0, 5]",
+          "xrange": [
+            0,
+            5
           ],
-          "rows": [
+          "yrange": [
+            -2,
+            8
+          ],
+          "fns": [
             {
-              "label": "f'(x)",
-              "signs": [
-                "+",
-                "0",
-                "-",
-                "0",
-                "+"
-              ]
+              "fn": "x*x - 4*x + 3",
+              "color": "var(--fig-indigo)",
+              "label": "v(t) = t² − 4t + 3"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "t = 1"
             },
             {
-              "label": "f(x)",
-              "shape": [
-                "↗",
-                "Max",
-                "↘",
-                "Min",
-                "↗"
-              ]
+              "x": 3,
+              "y": 0,
+              "label": "t = 3"
             }
           ]
         },
         "caption": {
-          "en": "First-derivative sign analysis identifying intervals of increase/decrease, local maximum at \\(x = -1\\), and local minimum at \\(x = 3\\).",
-          "ar": "جدول إشارة المشتقة الأولى لتحديد فترات التزايد والتناقص والقيم القصوى المحلية في الوحدة أربعة · التطبيقات السياقية والفيزيائية للاشتقاق. \\(x = -1\\) ، \\(x = 3\\)"
+          "en": "Particle reverses direction where \\(v(t) = 0\\) with a sign change (\\(t = 1\\) and \\(t = 3\\)) and speeds up when \\(v(t)\\) and \\(a(t)\\) share the same sign.",
+          "ar": "يغيّر الجسيم اتجاه حركته عندما تنعدم السرعة \\(v(t)\\) مع تغيّر إشارتها عند \\(t = 1\\) و\\(t = 3\\)."
         }
       },
       {
@@ -238,7 +247,7 @@
             },
             {
               "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
-              "ar": "Treats \\(y\\) as a الثابت instead of \\(y(x)\\)."
+              "ar": "يتعامل مع \\(y\\) كثابت بدلاً من \\(y(x)\\)."
             },
             {
               "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
@@ -272,7 +281,7 @@
         "hints": [
           {
             "en": "Find \\(v(t)\\) and \\(a(t)\\): \\(v(t) = 6t^2 - 30t + 24 = 6(t^2 - 5t + 4) = 6(t - 1)(t - 4)\\).",
-            "ar": "أوجد \\(v(t)\\) and \\(a(t)\\): \\(v(t) = 6t^2 - 30t + 24 = 6(t^2 - 5t + 4) = 6(t - 1)(t - 4)\\)."
+            "ar": "أوجد \\(v(t)\\) و \\(a(t)\\): \\(v(t) = 6t^2 - 30t + 24 = 6(t^2 - 5t + 4) = 6(t - 1)(t - 4)\\)."
           },
           {
             "en": "Rewrite and simplify to obtain: \\(a(t) = 12t - 30 = 6(2t - 5)\\) Critical time points: \\(t = 1\\), \\(t = 2.5\\), \\(t = 4\\). Construct sign chart: On \\((0, 1)\\): \\(v(t) > 0\\), \\(a(t) < 0\\) (opposite signs \\(\\implies\\) slowing down).",
@@ -513,7 +522,7 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the limit: \\[ \\lim_{x \\to 0^+} (\\cos x)^{1/x^2} \\]</p>",
-          "ar": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>احسب قيمة النهاية: \\[\\lim_{x \\to 0^+} (\\cos x)^{1/x^2}\\]</p>"
+          "ar": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">المستوى ٣ · المتقدم</span><p>احسب قيمة النهاية: \\[\\lim_{x \\to 0^+} (\\cos x)^{1/x^2}\\]</p>"
         },
         "solution": {
           "en": "<p>This is an indeterminate power form of type \\(1^\\infty\\). Let \\(y = (\\cos x)^{1/x^2}\\). Take the natural logarithm: \\[ \\ln y = \\ln\\left((\\cos x)^{1/x^2}\\right) = \\frac{\\ln(\\cos x)}{x^2} \\] Evaluate \\(\\lim_{x\\to 0^+} \\ln y = \\lim_{x\\to 0^+} \\frac{\\ln(\\cos x)}{x^2}\\). Check limits separately: \\(\\lim_{x\\to 0^+}\\ln(\\cos x) = \\ln 1 = 0\\) and \\(\\lim_{x\\to 0^+} x^2 = 0\\). Apply L'Hôpital's Rule: \\[ \\lim_{x\\to 0^+} \\frac{\\frac{-\\sin x}{\\cos x}}{2x} = \\lim_{x\\to 0^+} \\frac{-\\tan x}{2x} = -\\frac{1}{2}\\lim_{x\\to 0^+}\\frac{\\tan x}{x} = -\\frac{1}{2}(1) = -\\frac{1}{2}. \\] Since \\(\\lim_{x\\to 0^+} \\ln y = -\\frac{1}{2}\\), exponentiate to obtain the original limit: \\[ \\lim_{x\\to 0^+} y = e^{-1/2} = \\mathbf{\\frac{1}{\\sqrt{e}}} \\approx 0.6065. \\]</p>",

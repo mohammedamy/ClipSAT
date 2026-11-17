@@ -2,7 +2,7 @@
   "id": "ode-second-order",
   "chapterNumber": "3",
   "title": {
-    "en": "Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory",
+    "en": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
     "ar": "المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي"
   },
   "content": {
@@ -30,32 +30,36 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "title": "Damping Regimes: Overdamped vs Critically Damped vs Underdamped",
           "xrange": [
             0,
-            8
+            6
           ],
           "yrange": [
-            -2,
-            2.5
+            -1.2,
+            2.2
           ],
           "fns": [
             {
-              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
+              "fn": "2*exp(-0.4*x)*cos(2.5*x)",
               "color": "var(--fig-indigo)",
-              "label": "Underdamped y(t)"
+              "label": "Underdamped (Δ < 0)"
             },
             {
-              "fn": "2*Math.exp(-0.35*x)",
+              "fn": "2*(1 + 1.5*x)*exp(-1.5*x)",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Envelope ±2e^(−0.35t)"
+              "label": "Critically Damped (Δ = 0)"
+            },
+            {
+              "fn": "2.4*exp(-0.5*x) - 0.4*exp(-3*x)",
+              "color": "var(--fig-emerald)",
+              "label": "Overdamped (Δ > 0)"
             }
           ]
         },
         "caption": {
-          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
-          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي."
+          "en": "Comparison of second-order homogeneous responses \\(my'' + cy' + ky = 0\\) governed by discriminant \\(\\Delta = c^2 - 4mk\\).",
+          "ar": "مقارنة استجابات المعادلة المتجانسة من الرتبة الثانية \\(my'' + cy' + ky = 0\\) تبعاً لإشارة المميز \\(\\Delta = c^2 - 4mk\\)."
         }
       },
       {
@@ -349,7 +353,7 @@
         },
         "caption": {
           "en": "Underdamped harmonic oscillator \\( y(x) = 2e^{-0.7x}\\cos(3x) \\). The solution oscillates with quasi-frequency \\( \\omega_d = 3 \\text{ rad/s} \\) strictly bounded within the exponential envelope \\( \\pm 2e^{-0.7x} \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المعادلات التفاضلية الخطية المتجانسة من الرتبة الثانية ومحدد فرونسكي. \\(y(x) = 2e^{-0.7x}\\cos(3x)\\) ، \\(\\omega_d = 3\\) ، \\(\\pm 2e^{-0.7x}\\)"
+          "ar": "اهتزاز توافقي ناقص التخميد \\(y(x) = 2e^{-0.7x}\\cos(3x)\\) محصور داخل غلاف التضاؤل الأسي \\(\\pm 2e^{-0.7x}\\)."
         }
       },
       {
@@ -367,7 +371,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(D\\) — Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory (Easy Application)",
+          "en": "Worked Example \\(D\\) — Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory (Easy Application)",
           "ar": null
         },
         "problem": {
@@ -382,7 +386,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory)",
           "ar": null
         },
         "columns": [
@@ -448,7 +452,7 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory",
+          "en": "▲ Exam Pacing & Verification Strategy — Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
           "ar": null
         },
         "body": {
@@ -590,7 +594,7 @@
           "ar": "● الدوال الزائدية وعكسها في التفاضل والتكامل — التعاريف والمتطابقات والمشتقات"
         },
         "body": {
-          "en": "<p>Just as circular trigonometric functions parameterize the unit circle \\(x^2 + y^2 = 1\\), the <strong>six hyperbolic functions</strong> parameterize the right branch of the unit hyperbola \\(x^2 - y^2 = 1\\) using combinations of \\(e^x\\) and \\(e^{-x}\\):</p>\\[ \\sinh x = \\frac{e^x - e^{-x}}{2}, \\qquad \\cosh x = \\frac{e^x + e^{-x}}{2}, \\qquad \\tanh x = \\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}} \\]\\[ \\operatorname{csch} x = \\frac{1}{\\sinh x}\\;(x\\neq 0), \\qquad \\operatorname{sech} x = \\frac{1}{\\cosh x}, \\qquad \\coth x = \\frac{\\cosh x}{\\sinh x}\\;(x\\neq 0) \\]<table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>Function</th><th>Domain &amp; Range</th><th>Derivative \\(\\frac{d}{dx}\\)</th><th>Logarithmic Inverse &amp; Derivative</th></tr></thead><tbody><tr><td>\\(\\sinh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\(\\mathbb{R}\\)</td><td>\\(\\cosh x\\)</td><td>\\(\\operatorname{arsinh} x = \\ln\\!\\big(x + \\sqrt{x^2+1}\\big)\\), \\(\\frac{1}{\\sqrt{x^2+1}}\\)</td></tr><tr><td>\\(\\cosh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\([1, \\infty)\\)</td><td>\\(\\sinh x\\)</td><td>\\(\\operatorname{arcosh} x = \\ln\\!\\big(x + \\sqrt{x^2-1}\\big)\\;(x\\ge 1)\\), \\(\\frac{1}{\\sqrt{x^2-1}}\\)</td></tr><tr><td>\\(\\tanh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\((-1, 1)\\)</td><td>\\(\\operatorname{sech}^2 x\\)</td><td>\\(\\operatorname{artanh} x = \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right)\\;(|x|<1)\\), \\(\\frac{1}{1-x^2}\\)</td></tr><tr><td>\\(\\operatorname{csch} x\\)</td><td>Dom \\(x\\neq 0\\), Rng \\(y\\neq 0\\)</td><td>\\(-\\operatorname{csch} x\\coth x\\)</td><td>Odd reciprocal of \\(\\sinh x\\)</td></tr><tr><td>\\(\\operatorname{sech} x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\((0, 1]\\)</td><td>\\(-\\operatorname{sech} x\\tanh x\\)</td><td>Bell-shaped reciprocal of \\(\\cosh x\\)</td></tr><tr><td>\\(\\coth x\\)</td><td>Dom \\(x\\neq 0\\), Rng \\(|y|>1\\)</td><td>\\(-\\operatorname{csch}^2 x\\)</td><td>Horizontal asymptotes \\(y = \\pm 1\\)</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Fundamental Hyperbolic Identity:</strong> \\(\\cosh^2 x - \\sinh^2 x = 1\\), \\(1 - \\tanh^2 x = \\operatorname{sech}^2 x\\), and \\(\\sinh(2x) = 2\\sinh x\\cosh x\\). Physically, a flexible uniform cable hanging under gravity forms the catenary curve \\(y = a\\cosh(x/a)\\).</p>",
+          "en": "<p>Just as circular trigonometric functions parameterize the unit circle \\(x^2 + y^2 = 1\\), the <strong>six hyperbolic functions</strong> parameterize the right branch of the unit hyperbola \\(x^2 - y^2 = 1\\) using combinations of \\(e^x\\) and \\(e^{-x}\\):</p>\\[ \\sinh x = \\frac{e^x - e^{-x}}{2}, \\qquad \\cosh x = \\frac{e^x + e^{-x}}{2}, \\qquad \\tanh x = \\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}} \\]\\[ \\operatorname{csch} x = \\frac{1}{\\sinh x}\\;(x\\neq 0), \\qquad \\operatorname{sech} x = \\frac{1}{\\cosh x}, \\qquad \\coth x = \\frac{\\cosh x}{\\sinh x}\\;(x\\neq 0) \\]<table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>Function</th><th>Domain & Range</th><th>Derivative \\(\\frac{d}{dx}\\)</th><th>Logarithmic Inverse & Derivative</th></tr></thead><tbody><tr><td>\\(\\sinh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\(\\mathbb{R}\\)</td><td>\\(\\cosh x\\)</td><td>\\(\\operatorname{arsinh} x = \\ln\\!\\big(x + \\sqrt{x^2+1}\\big)\\), \\(\\frac{1}{\\sqrt{x^2+1}}\\)</td></tr><tr><td>\\(\\cosh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\([1, \\infty)\\)</td><td>\\(\\sinh x\\)</td><td>\\(\\operatorname{arcosh} x = \\ln\\!\\big(x + \\sqrt{x^2-1}\\big)\\;(x\\ge 1)\\), \\(\\frac{1}{\\sqrt{x^2-1}}\\)</td></tr><tr><td>\\(\\tanh x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\((-1, 1)\\)</td><td>\\(\\operatorname{sech}^2 x\\)</td><td>\\(\\operatorname{artanh} x = \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right)\\;(|x|<1)\\), \\(\\frac{1}{1-x^2}\\)</td></tr><tr><td>\\(\\operatorname{csch} x\\)</td><td>Dom \\(x\\neq 0\\), Rng \\(y\\neq 0\\)</td><td>\\(-\\operatorname{csch} x\\coth x\\)</td><td>Odd reciprocal of \\(\\sinh x\\)</td></tr><tr><td>\\(\\operatorname{sech} x\\)</td><td>Dom \\(\\mathbb{R}\\), Rng \\((0, 1]\\)</td><td>\\(-\\operatorname{sech} x\\tanh x\\)</td><td>Bell-shaped reciprocal of \\(\\cosh x\\)</td></tr><tr><td>\\(\\coth x\\)</td><td>Dom \\(x\\neq 0\\), Rng \\(|y|>1\\)</td><td>\\(-\\operatorname{csch}^2 x\\)</td><td>Horizontal asymptotes \\(y = \\pm 1\\)</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Fundamental Hyperbolic Identity:</strong> \\(\\cosh^2 x - \\sinh^2 x = 1\\), \\(1 - \\tanh^2 x = \\operatorname{sech}^2 x\\), and \\(\\sinh(2x) = 2\\sinh x\\cosh x\\). Physically, a flexible uniform cable hanging under gravity forms the catenary curve \\(y = a\\cosh(x/a)\\).</p>",
           "ar": "<p>كما تُمثّل الدوال المثلثية الدائرية دائرة الوحدة \\(x^2 + y^2 = 1\\)، فإن <strong>الدوال الزائدية الست</strong> تُوسِّط الفرع الأيمن للقطع الزائد الواحدي \\(x^2 - y^2 = 1\\) بدلالة الدالتين الأسيتين \\(e^x\\) و\\(e^{-x}\\):</p>\\[\\sinh x = \\frac{e^x - e^{-x}}{2}, \\qquad \\cosh x = \\frac{e^x + e^{-x}}{2}, \\qquad \\tanh x = \\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}}\\]\\[\\operatorname{csch} x = \\frac{1}{\\sinh x}\\;(x\\neq 0), \\qquad \\operatorname{sech} x = \\frac{1}{\\cosh x}, \\qquad \\coth x = \\frac{\\cosh x}{\\sinh x}\\;(x\\neq 0)\\]<table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>الدالة</th><th>المجال والمدى</th><th>المشتقة \\(\\frac{d}{dx}\\)</th><th>الصيغة اللوغاريتمية للعكس ومشتقتها</th></tr></thead><tbody><tr><td>\\(\\sinh x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\(\\mathbb{R}\\)</td><td>\\(\\cosh x\\)</td><td>\\(\\operatorname{arsinh} x = \\ln\\!\\big(x + \\sqrt{x^2+1}\\big)\\)، \\(\\frac{1}{\\sqrt{x^2+1}}\\)</td></tr><tr><td>\\(\\cosh x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\([1, \\infty)\\)</td><td>\\(\\sinh x\\)</td><td>\\(\\operatorname{arcosh} x = \\ln\\!\\big(x + \\sqrt{x^2-1}\\big)\\;(x\\ge 1)\\)، \\(\\frac{1}{\\sqrt{x^2-1}}\\)</td></tr><tr><td>\\(\\tanh x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\((-1, 1)\\)</td><td>\\(\\operatorname{sech}^2 x\\)</td><td>\\(\\operatorname{artanh} x = \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right)\\;(|x|<1)\\)، \\(\\frac{1}{1-x^2}\\)</td></tr><tr><td>\\(\\operatorname{csch} x\\)</td><td>المجال \\(x\\neq 0\\)، المدى \\(y\\neq 0\\)</td><td>\\(-\\operatorname{csch} x\\coth x\\)</td><td>دالة فردية مقلوبة لـ \\(\\sinh x\\)</td></tr><tr><td>\\(\\operatorname{sech} x\\)</td><td>المجال \\(\\mathbb{R}\\)، المدى \\((0, 1]\\)</td><td>\\(-\\operatorname{sech} x\\tanh x\\)</td><td>منحنى جرسي متماثل مقلوب لـ \\(\\cosh x\\)</td></tr><tr><td>\\(\\coth x\\)</td><td>المجال \\(x\\neq 0\\)، المدى \\(|y|>1\\)</td><td>\\(-\\operatorname{csch}^2 x\\)</td><td>خطا تقارب أفقيان \\(y = \\pm 1\\)</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>المتطابقة الزائدية الأساسية:</strong> \\(\\cosh^2 x - \\sinh^2 x = 1\\)، و\\(1 - \\tanh^2 x = \\operatorname{sech}^2 x\\)، و\\(\\sinh(2x) = 2\\sinh x\\cosh x\\). فيزيائياً، يتخذ الكابل المتجانس المعلّق تحت تأثير الجاذبية شكل منحنى السلسلة \\(y = a\\cosh(x/a)\\).</p>"
         }
       },
@@ -721,7 +725,7 @@
             "checkbox": true,
             "checked": true,
             "label": {
-              "en": "Show \\(\\frac{1}{2}e^x, \\pm\\frac{1}{2}e^{-x}\\) decomposition &amp; tangent line",
+              "en": "Show \\(\\frac{1}{2}e^x, \\pm\\frac{1}{2}e^{-x}\\) decomposition & tangent line",
               "ar": "إظهار التحليل الأسي \\(\\frac{1}{2}e^x, \\pm\\frac{1}{2}e^{-x}\\) ومستقيم المماس"
             },
             "ariaLabel": {
@@ -734,7 +738,7 @@
           {
             "id": "uge_odesecondorder_hyperEq",
             "label": {
-              "en": "Definition &amp; Derivative",
+              "en": "Definition & Derivative",
               "ar": "التعريف والمشتقة"
             },
             "colorClass": "indigo",
@@ -743,7 +747,7 @@
           {
             "id": "uge_odesecondorder_hyperVal",
             "label": {
-              "en": "Value &amp; Slope at \\(x_0\\)",
+              "en": "Value & Slope at \\(x_0\\)",
               "ar": "القيمة والميل عند \\(x_0\\)"
             },
             "colorClass": "amber",
@@ -752,7 +756,7 @@
           {
             "id": "uge_odesecondorder_hyperDomRng",
             "label": {
-              "en": "Domain &amp; Range",
+              "en": "Domain & Range",
               "ar": "المجال والمدى"
             },
             "value": "Domain (−∞, ∞), Range [1.00, ∞)"
@@ -760,7 +764,7 @@
           {
             "id": "uge_odesecondorder_hyperAsym",
             "label": {
-              "en": "Asymptotes &amp; Symmetry",
+              "en": "Asymptotes & Symmetry",
               "ar": "خطوط التقارب والتماثل"
             },
             "value": "Minimum (0, 1.00) · Even symmetry"
@@ -783,12 +787,12 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+            "label": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
             "chapterId": "ode-undetermined-coefficients",
             "trackId": "odes"
           },
           {
-            "label": "Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions",
+            "label": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions",
             "chapterId": "ode-linear",
             "trackId": "odes"
           },
@@ -805,18 +809,18 @@
     "domains": [
       "Second-Order Linear Equations (Constant Coefficients)",
       "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",
     "className": "la-tag",
     "badgeClassName": "la-wt",
     "emoji": "📌",
-    "category": "Differential Equations · Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory",
+    "category": "Differential Equations · Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
     "weightBadge": "ODE Core · 3",
     "topics": [
-      "Second-Order Linear Equations (Constant Coefficients)",
-      "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory"
+      "Second-Order Linear Equations (Constant Coefficients)"
     ]
   }
 }

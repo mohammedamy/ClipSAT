@@ -61,7 +61,7 @@
         "kind": "figure",
         "figure": {
           "type": "voronoi",
-          "title": "AI SL — Voronoi Diagram for 3 Emergency Stations & Toxic Dump Point P",
+          "title": "AI SL — Voronoi Diagram for 3 Monitoring Stations A, B, C",
           "xlim": [
             0,
             10
@@ -86,16 +86,11 @@
               "y": 8,
               "label": "C(5,8)"
             }
-          ],
-          "queryPoint": {
-            "x": 4.9,
-            "y": 4.4,
-            "label": "V(4.9, 4.4)"
-          }
+          ]
         },
         "caption": {
-          "en": "Voronoi tessellation for sites \\(A(2,3)\\), \\(B(8,2)\\), and \\(C(5,8)\\) showing perpendicular bisector edges and the Voronoi vertex \\(V\\) equidistant from all three sites (the \"Largest Empty Circle\" solution).",
-          "ar": "مخطط فورونوي لتقسيم المستوى الإحداثي حسب القرب إلى المواقع المرجعية في مسار التطبيقات والتفسير (AI SL) — الموضوعات الخاصة. \\(A(2,3)\\) ، \\(B(8,2)\\) ، \\(C(5,8)\\) ، \\(V\\)"
+          "en": "Voronoi tessellation for sites \\(A(2,3)\\), \\(B(8,2)\\), and \\(C(5,8)\\) bounded by perpendicular bisectors.",
+          "ar": "مخطط فورونوي للمواقع الثلاثة \\(A(2,3)\\) و\\(B(8,2)\\) و\\(C(5,8)\\) المحدّد بالمنصّفات العمودية."
         }
       },
       {
@@ -220,12 +215,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (AI SL — Specific Topics)",
-          "ar": null
+          "en": "◆ Why It Works — Perpendicular Bisectors Partition Nearest-Site Regions",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — كيف تقسّم المنصّفات العمودية خلايا فورونوي"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Geometric Locus Principle:</strong> A point \\(P(x,y)\\) satisfies \\(PA = PB\\) if and only if \\(P\\) lies on the perpendicular bisector of segment \\([AB]\\). Each half-plane contains all points strictly closer to one site, so intersecting half-planes constructs convex Voronoi cells.</p>",
+          "ar": "<p><strong>مبدأ المحل الهندسي لمخطط فورونوي:</strong> تتساوى المسافتان \\(PA = PB\\) إذا وفقط إذا وقعت \\(P\\) على المنصّف العمودي للقطعة \\([AB]\\)؛ وتقاطع أنصاف المستويات يولّد خلايا فورونوي المحدبة.</p>"
         }
       },
       {
@@ -261,40 +256,15 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Absolute-Value V-Graph vs Parent Transformation",
-          "xrange": [
-            -4,
-            6
-          ],
-          "yrange": [
-            -3,
-            6
-          ],
-          "fns": [
-            {
-              "fn": "Math.abs(x - 1) - 2",
-              "color": "var(--fig-indigo)",
-              "label": "g(x) = |x − 1| − 2"
-            },
-            {
-              "fn": "Math.abs(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "f(x) = |x|"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -2,
-              "label": "V(1, −2)"
-            }
-          ]
+          "type": "sinusoid",
+          "title": "AI SL Periodic Modeling: Tidal Depth h(t) = 3.2 sin(πt/6) + 5.0",
+          "amp": 3.2,
+          "period": 12,
+          "midline": 5.0
         },
         "caption": {
-          "en": "Translated modulus graph \\(g(x) = |x - 1| - 2\\) shifted right \\(1\\) unit and down \\(2\\) units from \\(f(x) = |x|\\).",
-          "ar": "التمثيل البياني لدالة القيمة المطلقة المزاحة مقارنةً بالدالة الأم في مسار التطبيقات والتفسير (AI SL) — الموضوعات الخاصة. \\(g(x) = |x - 1| - 2\\) ، \\(1\\) ، \\(2\\) ، \\(f(x) = |x|\\)"
+          "en": "Sinusoidal GDC model \\(h(t) = 3.2\\sin(\\frac{\\pi}{6}t) + 5.0\\) with amplitude \\(3.2\\text{ m}\\), period \\(12\\text{ h}\\), and principal axis \\(y = 5.0\\text{ m}\\).",
+          "ar": "نموذج جيبي لارتفاع المدّ والجزْر بسعة \\(3.2\\text{ m}\\) ودورة \\(12\\text{ h}\\) ومحور رئيسي \\(y = 5.0\\text{ m}\\)."
         }
       },
       {
@@ -327,16 +297,16 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — AI SL Exclusive Topics",
-          "ar": null
+          "en": "Worked Example AI.4 — Spearman's Rank Correlation vs. Pearson's r",
+          "ar": "مثال محلول AI.4 — معامل ارتباط الرتب لسبيرمان مقابل معامل بيرسون"
         },
         "problem": {
-          "en": "<strong>High-Frequency IB AI SL Past-Paper Ideas:</strong>",
-          "ar": null
+          "en": "Four judges' scores \\( (x, y) \\) are \\( (10, 12), (20, 25), (30, 40), (80, 95) \\). Compute Spearman's rank correlation \\( r_s \\) and explain why \\( r_s = 1 \\) even if \\( y \\) is nonlinear in \\( x \\).",
+          "ar": "نقاط أربع عينات هي \\( (10, 12), (20, 25), (30, 40), (80, 95) \\). احسب معامل ارتباط الرتب لسبيرمان \\( r_s \\) وفسّر النتيجة."
         },
         "solution": {
-          "en": "<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>AI SL Topic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>SL 3.6 Voronoi Diagrams</strong></td><td>Finding the equation of a perpendicular bisector edge between sites \\(A\\) and \\(B\\); incremental site addition; \"Toxic Waste Dump\" problem (evaluating distances from Voronoi vertices to their defining 3 sites).</td><td>Finding the gradient of segment \\(AB\\) instead of the negative reciprocal \\(-1/m_{AB}\\) for the perpendicular bisector!</td></tr>\n<tr><td><strong>SL 4.10 Spearman's \\(r_s\\) vs Pearson's \\(r\\)</strong></td><td>Converting raw scores to ranks (using average rank for ties) and computing \\(r_s\\); explaining why \\(r_s = 1\\) for any strictly monotonic non-linear curve (e.g. \\(y = e^x\\)) where \\(r < 1\\).</td><td>Ranking one variable ascending and the other descending, reversing the sign of \\(r_s\\).</td></tr>\n<tr><td><strong>SL 4.11 \\(\\chi^2\\) Independence &amp; Goodness of Fit</strong></td><td>Stating \\(H_0\\) and \\(H_1\\); checking expected frequencies \\(E_{ij} = \\frac{R_i C_j}{N} > 5\\); comparing \\(p\\)-value to \\(\\alpha\\) AND \\(\\chi^2_{\\text{calc}}\\) to \\(\\chi^2_{\\text{crit}}\\).</td><td>Writing \\(H_0\\) as \"the variables are correlated\" instead of \"Variable A and Variable B are <strong>independent</strong>\".</td></tr>\n<tr><td><strong>SL 5.8 Trapezoidal Rule</strong></td><td>Approximating \\(\\int_a^b f(x)\\,dx\\) using \\(n\\) subintervals of width \\(h = \\frac{b-a}{n}\\) and calculating percentage error \\(\\left|\\frac{v_A - v_E}{v_E}\\right| \\times 100\\%\\).</td><td>Confusing the number of ordinates (\\(n+1\\)) with the number of subintervals/trapezoids (\\(n\\)).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AI SL Paper 2 — 8 marks):</strong><br>\nThree mobile towers are located at \\(A(1, 5)\\), \\(B(7, 3)\\), and \\(C(5, 9)\\) on a coordinate grid (\\(1\\text{ unit} = 1\\text{ km}\\)).<br>\n(a) Find the equation of the perpendicular bisector of \\([AB]\\) in the form \\(y = mx + c\\). <strong>[4]</strong><br>\n(b) The Voronoi vertex is \\(V(4.5, 5.5)\\). A fourth tower is to be placed at \\(V\\). Calculate the distance from \\(V\\) to tower \\(A\\) and explain the significance of this distance. <strong>[4]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) Midpoint of \\([AB]\\): \\(M = \\left(\\frac{1+7}{2}, \\frac{5+3}{2}\\right) = (4, 4)\\) <strong>[A1]</strong><br>\nGradient \\(m_{AB} = \\frac{3 - 5}{7 - 1} = -\\frac{2}{6} = -\\frac{1}{3} \\implies m_\\perp = 3\\) <strong>[M1] [A1]</strong><br>\nLine equation: \\(y - 4 = 3(x - 4) \\implies y = 3x - 8\\) <strong>[A1]</strong><br>\n(b) Distance \\(VA = \\sqrt{(4.5 - 1)^2 + (5.5 - 5)^2} = \\sqrt{12.25 + 0.25} = \\sqrt{12.5} \\approx 3.54\\text{ km}\\) <strong>[M1] [A1]</strong><br>\nSignificance: \\(V\\) is equidistant (\\(3.54\\text{ km}\\) from \\(A\\), \\(B\\), and \\(C\\), representing the centre of the largest empty circle (the point furthest from any existing tower where signal coverage is weakest) <strong>[R1] [A1]</strong></p>",
-          "ar": null
+          "en": "<p>Both \\( x \\) and \\( y \\) have identical ranks \\( (1, 2, 3, 4) \\), so rank differences are \\( 0 \\) and \\( r_s = 1 \\), reflecting a strictly monotonic increasing relationship regardless of curvature.</p>",
+          "ar": "<p>تتطابق رتب \\( x \\) و\\( y \\) تماماً \\( (1, 2, 3, 4) \\)، لذا \\( r_s = 1 \\) لأن العلاقة رتيبة متزايدة تماماً بغض النظر عن الخطية.</p>"
         }
       },
       {
@@ -566,6 +536,7 @@
   "quizWidget": {
     "domains": [
       "AI SL — Specific Topics"
-    ]
+    ],
+    "enabled": true
   }
 }

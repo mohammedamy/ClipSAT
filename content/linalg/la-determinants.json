@@ -39,44 +39,51 @@
         "kind": "figure",
         "figure": {
           "type": "transformation_grid",
-          "title": "Determinants & Geometric Volume — Linear Transformation & Basis Action",
-          "original": [
+          "title": "Area Scaling Factor |det(A)| = 5 from Unit Square to Parallelogram",
+          "xmin": -1,
+          "xmax": 5,
+          "ymin": -1,
+          "ymax": 5,
+          "object": [
+            [
+              0,
+              0
+            ],
             [
               1,
-              2
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "image": [
+            [
+              0,
+              0
             ],
             [
               3,
+              1
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              1,
               2
-            ],
-            [
-              2,
-              4
             ]
-          ],
-          "transformed": [
-            [
-              -1,
-              -2
-            ],
-            [
-              -3,
-              -2
-            ],
-            [
-              -2,
-              -4
-            ]
-          ],
-          "labels": [
-            "A",
-            "B",
-            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في المحددات وخصائصها والتفسير الهندسي للحجم."
+          "en": "Under \\(A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix}\\), the unit square of area \\(1\\) maps to a parallelogram of area \\(|\\det(A)| = |6 - 1| = 5\\).",
+          "ar": "تحت تأثير المصفوفة \\(A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 2 \\end{pmatrix}\\)، يتحول مربع الوحدة ذو المساحة \\(1\\) إلى متوازي أضلاع مساحته \\(|\\det(A)| = |6 - 1| = 5\\)."
         }
       },
       {
@@ -99,7 +106,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -125,11 +132,11 @@
           "ar": null
         },
         "problem": {
-          "en": "Consider a parallelepiped in \\( \\mathbb{R}^3 \\) formed by the origin and the three vectors \\( \\mathbf{u} = \\begin{pmatrix} 2 \\ 1 \\ k \\end{pmatrix} \\), \\( \\mathbf{v} = \\begin{pmatrix} 1 \\ 3 \\ 0 \\end{pmatrix} \\), and \\( \\mathbf{w} = \\begin{pmatrix} 0 \\ 2 \\ 4 \\end{pmatrix} \\). The volume of this parallelepiped is given as 24 cubic units. Find the value of \\( k \\) if \\( k > 0 \\).",
+          "en": "Consider a parallelepiped in \\( \\mathbb{R}^3 \\) formed by the origin and the three vectors \\( \\mathbf{u} = \\begin{pmatrix} 2 \\\\ 1 \\\\ k \\end{pmatrix} \\), \\( \\mathbf{v} = \\begin{pmatrix} 1 \\\\ 3 \\\\ 0 \\end{pmatrix} \\), and \\( \\mathbf{w} = \\begin{pmatrix} 0 \\\\ 2 \\\\ 4 \\end{pmatrix} \\). The volume of this parallelepiped is given as 24 cubic units. Find the value of \\( k \\) if \\( k > 0 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>The volume of a parallelepiped formed by three vectors \\( \\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\) is given by the absolute value of their scalar triple product, which can be computed as the absolute value of the determinant of the matrix formed by these vectors as columns (or rows).\n\nLet the matrix be \\( M = \\begin{pmatrix} 2 & 1 & 0 \\ 1 & 3 & 2 \\ k & 0 & 4 \\end{pmatrix} \\).\n\nThe determinant of \\( M \\) is calculated as:\n\\( \\det(M) = 2 \\begin{vmatrix} 3 & 2 \\ 0 & 4 \\end{vmatrix} - 1 \\begin{vmatrix} 1 & 2 \\ k & 4 \\end{vmatrix} + 0 \\begin{vmatrix} 1 & 3 \\ k & 0 \\end{vmatrix} \\)\n\\( \\det(M) = 2((3)(4) - (2)(0)) - 1((1)(4) - (2)(k)) + 0 \\)\n\\( \\det(M) = 2(12) - (4 - 2k) \\)\n\\( \\det(M) = 24 - 4 + 2k \\)\n\\( \\det(M) = 20 + 2k \\)\n\nThe volume of the parallelepiped is given as 24 cubic units. Therefore, \\( |\\det(M)| = 24 \\).\n\\( |20 + 2k| = 24 \\).\n\nThis gives two possibilities:\n1. \\( 20 + 2k = 24 \\)\n   \\( 2k = 4 \\)\n   \\( k = 2 \\)\n\n2. \\( 20 + 2k = -24 \\)\n   \\( 2k = -44 \\)\n   \\( k = -22 \\)\n\nSince the problem states that \\( k > 0 \\), the correct value for \\( k \\) is 2.\n\nCommon Algebraic Trap: Students might forget to take the absolute value of the determinant, or they might make errors in the cofactor expansion. If \\( k=-22 \\) was chosen, it would be incorrect due to the condition \\( k>0 \\).</p>",
+          "en": "<p>The volume of a parallelepiped formed by three vectors \\( \\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\) is given by the absolute value of their scalar triple product, which can be computed as the absolute value of the determinant of the matrix formed by these vectors as columns (or rows).\n\nLet the matrix be \\( M = \\begin{pmatrix} 2 & 1 & 0 \\\\ 1 & 3 & 2 \\\\ k & 0 & 4 \\end{pmatrix} \\).\n\nThe determinant of \\( M \\) is calculated as:\n\\( \\det(M) = 2 \\begin{vmatrix} 3 & 2 \\\\ 0 & 4 \\end{vmatrix} - 1 \\begin{vmatrix} 1 & 2 \\\\ k & 4 \\end{vmatrix} + 0 \\begin{vmatrix} 1 & 3 \\\\ k & 0 \\end{vmatrix} \\)\n\\( \\det(M) = 2((3)(4) - (2)(0)) - 1((1)(4) - (2)(k)) + 0 \\)\n\\( \\det(M) = 2(12) - (4 - 2k) \\)\n\\( \\det(M) = 24 - 4 + 2k \\)\n\\( \\det(M) = 20 + 2k \\)\n\nThe volume of the parallelepiped is given as 24 cubic units. Therefore, \\( |\\det(M)| = 24 \\).\n\\( |20 + 2k| = 24 \\).\n\nThis gives two possibilities:\n1. \\( 20 + 2k = 24 \\)\n   \\( 2k = 4 \\)\n   \\( k = 2 \\)\n\n2. \\( 20 + 2k = -24 \\)\n   \\( 2k = -44 \\)\n   \\( k = -22 \\)\n\nSince the problem states that \\( k > 0 \\), the correct value for \\( k \\) is 2.\n\nCommon Algebraic Trap: Students might forget to take the absolute value of the determinant, or they might make errors in the cofactor expansion. If \\( k=-22 \\) was chosen, it would be incorrect due to the condition \\( k>0 \\).</p>",
           "ar": null
         }
       },
@@ -206,7 +213,7 @@
           "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Determinants & Geometric الحجم"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -434,7 +441,7 @@
         },
         "caption": {
           "en": "Parallelogram in \\( \\mathbb{R}^2 \\) spanned by vectors \\( \\mathbf{u} = \\langle 3, 0 \\rangle \\) and \\( \\mathbf{v} = \\langle 1, 2 \\rangle \\). The determinant \\( \\det\\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix} = (3)(2) - (1)(0) = 6 \\) represents the exact geometric area of the parallelogram.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المحددات وخصائصها والتفسير الهندسي للحجم. \\(\\mathbb{R}^2\\) ، \\(\\mathbf{u} = \\langle 3, 0 \\rangle\\) ، \\(\\mathbf{v} = \\langle 1, 2 \\rangle\\) ، \\(\\det\\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix} = (3)(2) - (1)(0) = 6\\)"
+          "ar": "متوازي الأضلاع المولَّد بالمتجهين \\(\\mathbf{u} = \\langle 3, 0 \\rangle\\) و\\(\\mathbf{v} = \\langle 1, 2 \\rangle\\) ومساحته الموجهة تساوي \\(\\det(A) = 6\\)."
         }
       },
       {
@@ -543,7 +550,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1 · Use the Fundamental Adjugate Identity:</strong> \\[ A \\operatorname{adj}(A) = \\det(A) I_n. \\]</p><p><strong>Step 2 · Take determinants of both sides:</strong> Using the multiplicative property \\( \\det(M_1 M_2) = \\det(M_1) \\det(M_2) \\): \\[ \\det(A \\operatorname{adj}(A)) = \\det(\\det(A) I_n). \\] \\[ \\det(A) \\cdot \\det(\\operatorname{adj}(A)) = [\\det(A)]^n \\det(I_n) = [\\det(A)]^n (1) = [\\det(A)]^n. \\]</p><p><strong>Step 3 · Divide by \\( \\det(A) \\):</strong> Since \\( A \\) is invertible, \\( \\det(A)\neq 0 \\). Dividing both sides by \\( \\det(A) \\) yields: \\[ \\mathbf{\\det(\\operatorname{adj}(A)) = [\\det(A)]^{n-1}}. \\quad \\blacksquare \\]</p>",
+          "en": "<p><strong>Step 1 · Use the Fundamental Adjugate Identity:</strong> \\[ A \\operatorname{adj}(A) = \\det(A) I_n. \\]</p><p><strong>Step 2 · Take determinants of both sides:</strong> Using the multiplicative property \\( \\det(M_1 M_2) = \\det(M_1) \\det(M_2) \\): \\[ \\det(A \\operatorname{adj}(A)) = \\det(\\det(A) I_n). \\] \\[ \\det(A) \\cdot \\det(\\operatorname{adj}(A)) = [\\det(A)]^n \\det(I_n) = [\\det(A)]^n (1) = [\\det(A)]^n. \\]</p><p><strong>Step 3 · Divide by \\( \\det(A) \\):</strong> Since \\( A \\) is invertible, \\( \\det(A)\\neq 0 \\). Dividing both sides by \\( \\det(A) \\) yields: \\[ \\mathbf{\\det(\\operatorname{adj}(A)) = [\\det(A)]^{n-1}}. \\quad \\blacksquare \\]</p>",
           "ar": null
         },
         "hints": [
@@ -589,7 +596,7 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Consider a parallelepiped in \\( \\mathbb{R}^3 \\) formed by the origin and the three vectors \\( \\mathbf{u} = \\begin{pmatrix} 2 \\ 1 \\ k \\end{pmatrix} \\), \\( \\mathbf{v} = \\begin{pmatrix} 1 \\ 3 \\ 0 \\end{pmatrix} \\), and \\( \\mathbf{w} = \\begin{pmatrix} 0 \\ 2 \\ 4 \\end{pmatrix} \\). The volume of this parallelepiped is given as 24 cubic units. Find the value of \\( k \\) if \\( k > 0 \\).",
+          "en": "Consider a parallelepiped in \\( \\mathbb{R}^3 \\) formed by the origin and the three vectors \\( \\mathbf{u} = \\begin{pmatrix} 2 \\\\ 1 \\\\ k \\end{pmatrix} \\), \\( \\mathbf{v} = \\begin{pmatrix} 1 \\\\ 3 \\\\ 0 \\end{pmatrix} \\), and \\( \\mathbf{w} = \\begin{pmatrix} 0 \\\\ 2 \\\\ 4 \\end{pmatrix} \\). The volume of this parallelepiped is given as 24 cubic units. Find the value of \\( k \\) if \\( k > 0 \\).",
           "ar": null
         },
         "hints": [
@@ -607,7 +614,7 @@
           }
         ],
         "solution": {
-          "en": "The volume of a parallelepiped formed by three vectors \\( \\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\) is given by the absolute value of their scalar triple product, which can be computed as the absolute value of the determinant of the matrix formed by these vectors as columns (or rows).\n\nLet the matrix be \\( M = \\begin{pmatrix} 2 & 1 & 0 \\ 1 & 3 & 2 \\ k & 0 & 4 \\end{pmatrix} \\).\n\nThe determinant of \\( M \\) is calculated as:\n\\( \\det(M) = 2 \\begin{vmatrix} 3 & 2 \\ 0 & 4 \\end{vmatrix} - 1 \\begin{vmatrix} 1 & 2 \\ k & 4 \\end{vmatrix} + 0 \\begin{vmatrix} 1 & 3 \\ k & 0 \\end{vmatrix} \\)\n\\( \\det(M) = 2((3)(4) - (2)(0)) - 1((1)(4) - (2)(k)) + 0 \\)\n\\( \\det(M) = 2(12) - (4 - 2k) \\)\n\\( \\det(M) = 24 - 4 + 2k \\)\n\\( \\det(M) = 20 + 2k \\)\n\nThe volume of the parallelepiped is given as 24 cubic units. Therefore, \\( |\\det(M)| = 24 \\).\n\\( |20 + 2k| = 24 \\).\n\nThis gives two possibilities:\n1. \\( 20 + 2k = 24 \\)\n   \\( 2k = 4 \\)\n   \\( k = 2 \\)\n\n2. \\( 20 + 2k = -24 \\)\n   \\( 2k = -44 \\)\n   \\( k = -22 \\)\n\nSince the problem states that \\( k > 0 \\), the correct value for \\( k \\) is 2.\n\nCommon Algebraic Trap: Students might forget to take the absolute value of the determinant, or they might make errors in the cofactor expansion. If \\( k=-22 \\) was chosen, it would be incorrect due to the condition \\( k>0 \\).",
+          "en": "The volume of a parallelepiped formed by three vectors \\( \\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\) is given by the absolute value of their scalar triple product, which can be computed as the absolute value of the determinant of the matrix formed by these vectors as columns (or rows).\n\nLet the matrix be \\( M = \\begin{pmatrix} 2 & 1 & 0 \\\\ 1 & 3 & 2 \\\\ k & 0 & 4 \\end{pmatrix} \\).\n\nThe determinant of \\( M \\) is calculated as:\n\\( \\det(M) = 2 \\begin{vmatrix} 3 & 2 \\\\ 0 & 4 \\end{vmatrix} - 1 \\begin{vmatrix} 1 & 2 \\\\ k & 4 \\end{vmatrix} + 0 \\begin{vmatrix} 1 & 3 \\\\ k & 0 \\end{vmatrix} \\)\n\\( \\det(M) = 2((3)(4) - (2)(0)) - 1((1)(4) - (2)(k)) + 0 \\)\n\\( \\det(M) = 2(12) - (4 - 2k) \\)\n\\( \\det(M) = 24 - 4 + 2k \\)\n\\( \\det(M) = 20 + 2k \\)\n\nThe volume of the parallelepiped is given as 24 cubic units. Therefore, \\( |\\det(M)| = 24 \\).\n\\( |20 + 2k| = 24 \\).\n\nThis gives two possibilities:\n1. \\( 20 + 2k = 24 \\)\n   \\( 2k = 4 \\)\n   \\( k = 2 \\)\n\n2. \\( 20 + 2k = -24 \\)\n   \\( 2k = -44 \\)\n   \\( k = -22 \\)\n\nSince the problem states that \\( k > 0 \\), the correct value for \\( k \\) is 2.\n\nCommon Algebraic Trap: Students might forget to take the absolute value of the determinant, or they might make errors in the cofactor expansion. If \\( k=-22 \\) was chosen, it would be incorrect due to the condition \\( k>0 \\).",
           "ar": null
         }
       },
@@ -636,6 +643,7 @@
   "quizWidget": {
     "domains": [
       "Determinants"
-    ]
+    ],
+    "enabled": true
   }
 }

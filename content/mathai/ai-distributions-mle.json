@@ -49,28 +49,29 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Deep Conceptual Intuition — Probability Distributions & Maximum Likelihood (MLE)",
-          "ar": "● الفهم المفاهيمي العميق — التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE)"
+          "en": "● Deep Conceptual Intuition — Likelihood vs Probability & Log-Transformations",
+          "ar": "● الفهم المفاهيمي العميق — دالة الإمكان مقابل الاحتمال والتحويل اللوغاريتمي"
         },
         "body": {
-          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Mathematics for Artificial Intelligence & Machine Learning, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
-          "ar": null
+          "en": "<p><strong>Parameter Estimation via Log-Likelihood:</strong> For i.i.d. observations \\(\\{x_i\\}_{i=1}^n\\), the likelihood \\(L(\\theta) = \\prod_{i=1}^n p(x_i \\mid \\theta)\\) views data as fixed and \\(\\theta\\) as variable. Because \\(\\ln(\\cdot)\\) is strictly increasing, maximizing \\(\\ell(\\theta) = \\sum_{i=1}^n \\ln p(x_i \\mid \\theta)\\) converts products into sums and prevents numerical underflow.</p>",
+          "ar": "<p><strong>تقدير المعلمات عبر الإمكان اللوغاريتمي:</strong> للمشاهدات المستقلة والمتماثلة توزيعاً \\(\\{x_i\\}_{i=1}^n\\)، تعامل دالة الإمكان \\(L(\\theta) = \\prod_{i=1}^n p(x_i \\mid \\theta)\\) البيانات كقيم ثابتة والمعلمة \\(\\theta\\) كمتغير. ولأن دالة اللوغاريتم الطبيعي متزايدة قطعاً، فإن تعظيم \\(\\ell(\\theta) = \\sum_{i=1}^n \\ln p(x_i \\mid \\theta)\\) يحوّل الضرب إلى جمع ويحافظ على نفس نقطة النهاية العظمى.</p>"
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "box_plot",
-          "title": "Five-Number Summary & Interquartile Spread",
-          "min": 38,
-          "q1": 54,
-          "med": 68,
-          "q3": 82,
-          "max": 96
+          "type": "normal_curve",
+          "title": "Gaussian Density N(μ, σ²) & ±1σ High-Likelihood Region",
+          "mean": 0,
+          "sd": 1,
+          "shade": [
+            -1,
+            1
+          ]
         },
         "caption": {
-          "en": "Box-and-whisker plot displaying minimum, first quartile \\(Q_1\\), median, third quartile \\(Q_3\\), and maximum.",
-          "ar": "مخطط الصندوق والعارضتين الموضح للقيم الخمس الملخصة والمدى الربيعي في التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE). \\(Q_1\\) ، \\(Q_3\\)"
+          "en": "Standard Gaussian density \\(\\mathcal{N}(0, 1)\\); maximizing Gaussian log-likelihood \\(\\ell(\\mu, \\sigma^2)\\) yields sample mean \\(\\hat{\\mu} = \\bar{x}\\) and variance \\(\\hat{\\sigma}^2 = \\frac{1}{n}\\sum(x_i - \\bar{x})^2\\).",
+          "ar": "كثافة التوزيع الطبيعي المعياري \\(\\mathcal{N}(0, 1)\\)؛ تعظيم دالة الإمكان اللوغاريتمية يعطي المتوسط \\(\\hat{\\mu} = \\bar{x}\\) والتباين \\(\\hat{\\sigma}^2 = \\frac{1}{n}\\sum(x_i - \\bar{x})^2\\)."
         }
       },
       {
@@ -175,25 +176,34 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "histogram",
-          "title": "Grouped Frequency Distribution",
-          "bins": [
-            "40–55",
-            "55–70",
-            "70–85",
-            "85–100"
+          "type": "fn",
+          "title": "Bernoulli Log-Likelihood ℓ(p) = 7 ln(p) + 3 ln(1 − p) Peaking at p̂ = 0.7",
+          "xrange": [
+            0.08,
+            0.95
           ],
-          "freqs": [
-            6,
-            15,
-            19,
-            10
+          "yrange": [
+            -14,
+            -5.5
           ],
-          "xlabel": "Score Interval"
+          "fns": [
+            {
+              "fn": "7*ln(x) + 3*ln(1 - x)",
+              "color": "var(--fig-indigo)",
+              "label": "ℓ(p) for k = 7, n = 10"
+            }
+          ],
+          "points": [
+            {
+              "x": 0.7,
+              "y": -6.109,
+              "label": "MLE p̂ = 0.7"
+            }
+          ]
         },
         "caption": {
-          "en": "Grouped frequency histogram illustrating center, spread, and shape of quantitative data.",
-          "ar": "المدرج التكراري للفئات المجمعة وتوزيع البيانات الكمية في التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE)."
+          "en": "Concave Bernoulli log-likelihood \\(\\ell(p) = 7\\ln p + 3\\ln(1 - p)\\) achieving its unique global maximum where \\(\\ell'(p) = \\frac{7}{p} - \\frac{3}{1-p} = 0 \\implies \\hat{p} = 0.7\\).",
+          "ar": "دالة الإمكان اللوغاريتمية المقعرة لبرنولي \\(\\ell(p) = 7\\ln p + 3\\ln(1 - p)\\) تبلغ قيمتها العظمى الوحيدة عندما \\(\\ell'(p) = \\frac{7}{p} - \\frac{3}{1-p} = 0 \\implies \\hat{p} = 0.7\\)."
         }
       },
       {
@@ -245,12 +255,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Probability Distributions & Maximum Likelihood (MLE))",
-          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))"
+          "en": "◆ Why It Works — Equivalence of Gaussian MLE & Minimizing MSE",
+          "ar": "◆ لماذا تعمل القاعدة — تكافؤ تقدير الإمكان الأعظم الطبيعي وتصغير متوسط مربعات الخطأ"
         },
         "body": {
-          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
-          "ar": null
+          "en": "<p><strong>From Gaussian Noise to Squared Error:</strong> If targets satisfy \\(y_i = f_{\\mathbf{w}}(\\mathbf{x}_i) + \\varepsilon_i\\) with \\(\\varepsilon_i \\sim \\mathcal{N}(0, \\sigma^2)\\), then \\[ \\ell(\\mathbf{w}) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum_{i=1}^n \\big(y_i - f_{\\mathbf{w}}(\\mathbf{x}_i)\\big)^2. \\] Maximizing \\(\\ell(\\mathbf{w})\\) with respect to \\(\\mathbf{w}\\) is algebraically identical to minimizing \\(\\sum_{i=1}^n (y_i - f_{\\mathbf{w}}(\\mathbf{x}_i))^2\\)!</p>",
+          "ar": "<p><strong>من الضوضاء الطبيعية إلى مربعات الأخطاء:</strong> إذا كانت القيم المستهدفة تحقق \\(y_i = f_{\\mathbf{w}}(\\mathbf{x}_i) + \\varepsilon_i\\) مع خطأ طبيعي \\(\\varepsilon_i \\sim \\mathcal{N}(0, \\sigma^2)\\)، فإن \\[ \\ell(\\mathbf{w}) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum_{i=1}^n \\big(y_i - f_{\\mathbf{w}}(\\mathbf{x}_i)\\big)^2. \\] وعليه فإن تعظيم \\(\\ell(\\mathbf{w})\\) بالنسبة للأوزان \\(\\mathbf{w}\\) يكافئ تماماً تصغير مجموع مربعات الأخطاء!</p>"
         }
       },
       {
@@ -317,12 +327,12 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Exam Traps — Probability Distributions & Maximum Likelihood (MLE)",
-          "ar": "⚠️ أخطاء شائعة في الاختبار — التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE)"
+          "en": "⚠️ Common Exam Traps — MLE Divisors & Boundary Constraints",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — مقام التباين في MLE وقيود المجال"
         },
         "body": {
-          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On Mathematics for Artificial Intelligence & Machine Learning, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-3x + 3 \\le 6\\), dividing by \\(-3\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
-          "ar": null
+          "en": "<p><strong>1. Dividing by \\(n - 1\\) Instead of \\(n\\) in Gaussian Variance MLE:</strong> The unrestricted Gaussian MLE is \\(\\hat{\\sigma}^2_{\\text{MLE}} = \\frac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2\\) (biased), whereas \\(s^2 = \\frac{1}{n-1}\\sum (x_i - \\bar{x})^2\\) is Bessel's unbiased estimator.<br><strong>2. Support Dependent on \\(\\theta\\):</strong> For \\(\\text{Uniform}(0, \\theta)\\), setting \\(\\frac{d}{d\\theta}\\ell(\\theta) = 0\\) fails; since \\(L(\\theta) = \\theta^{-n}\\) for \\(\\theta \\ge \\max_i x_i\\), \\(\\hat{\\theta}_{\\text{MLE}} = \\max_i x_i\\).</p>",
+          "ar": "<p><strong>1. القسمة على \\(n - 1\\) بدلاً من \\(n\\) في MLE للتباين الطبيعي:</strong> مقدّر الإمكان الأعظم للتباين يقسم على \\(n\\): \\(\\hat{\\sigma}^2_{\\text{MLE}} = \\frac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2\\)، بينما القسمة على \\(n - 1\\) تعطي تباين العينة غير المتحيز.<br><strong>2. اعتماد المجال على المعلمة \\(\\theta\\):</strong> في التوزيع المنتظم \\(\\text{Uniform}(0, \\theta)\\) لا ينعدم المشتق، بل يتحقق الإمكان الأعظم عند حد المجال \\(\\hat{\\theta}_{\\text{MLE}} = \\max_i x_i\\).</p>"
         }
       },
       {
@@ -394,12 +404,12 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Probability Distributions & Maximum Likelihood (MLE)",
-          "ar": "▲ استراتيجية الحل السريع والتحقق — التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE)"
+          "en": "▲ Exam Pacing & Verification Strategy — Distributions & Maximum Likelihood",
+          "ar": "▲ استراتيجية الحل والتحقق السريع — التوزيعات الاحتمالية وتقدير الإمكان الأعظم"
         },
         "body": {
-          "en": "<p><strong>High-Speed Exam Shortcut (Mathematics for Artificial Intelligence & Machine Learning):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
-          "ar": null
+          "en": "<p><strong>Second-Derivative Concavity Check:</strong> After solving the score equation \\(\\ell'(\\hat{\\theta}) = 0\\), confirm \\(\\ell''(\\hat{\\theta}) < 0\\) and verify that \\(\\hat{\\theta}\\) lies strictly inside the valid parameter space (e.g., \\(\\hat{p} \\in [0, 1]\\), \\(\\hat{\\lambda} > 0\\)).</p>",
+          "ar": "<p><strong>اختبار التقعر بالمشتقة الثانية:</strong> بعد حل معادلة الإمكان \\(\\ell'(\\hat{\\theta}) = 0\\)، تأكد من أن \\(\\ell''(\\hat{\\theta}) < 0\\) وأن التقدير \\(\\hat{\\theta}\\) ينتمي إلى فضاء المعلمات المسموح به مثل \\(\\hat{p} \\in [0, 1]\\) و\\(\\hat{\\lambda} > 0\\).</p>"
         }
       },
       {

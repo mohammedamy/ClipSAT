@@ -1274,7 +1274,7 @@
       ? window._ensureFigures().catch(function(){})
       : Promise.resolve();
 
-    Promise.all([_ensureBank(trackId), loadFigures]).then(function(res){
+    return Promise.all([_ensureBank(trackId), loadFigures]).then(function(res){
       var bank = res[0];
       if(!bank){
         if(body){

@@ -2,7 +2,7 @@
   "id": "ch-parametric",
   "chapterNumber": "9",
   "title": {
-    "en": "Parametric &amp; Polar",
+    "en": "Parametric & Polar",
     "ar": "المعادلات البارامترية والإحداثيات القطبية"
   },
   "content": {
@@ -29,14 +29,17 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "unit_circle",
-          "title": "Unit Circle Reference Angle & Projections (cos θ, sin θ)",
-          "angle": 60,
-          "showTriangle": true
+          "type": "conic",
+          "conic": "ellipse",
+          "title": "Parametric Ellipse x(t) = 4 cos t, y(t) = 3 sin t",
+          "a": 4,
+          "b": 3,
+          "h": 0,
+          "k": 0
         },
         "caption": {
-          "en": "Unit circle reference triangle at \\(\\theta = 60^\\circ = \\tfrac{\\pi}{3}\\) showing \\(\\cos\\theta = \\tfrac{1}{2}\\) and \\(\\sin\\theta = \\tfrac{\\sqrt{3}}{2}\\).",
-          "ar": "مثلث الزاوية المرجعية على دائرة الوحدة عند \\(\\theta = 60^\\circ = \\tfrac{\\pi}{3}\\) لإيجاد \\(\\cos\\theta = \\tfrac{1}{2}\\) و\\(\\sin\\theta = \\tfrac{\\sqrt{3}}{2}\\) في المعادلات البارامترية والإحداثيات القطبية."
+          "en": "Smooth parametric curve \\(\\mathbf{r}(t) = \\langle 4\\cos t, 3\\sin t \\rangle\\) tracing the ellipse \\(\\frac{x^2}{16} + \\frac{y^2}{9} = 1\\) counterclockwise.",
+          "ar": "المنحنى الوسيطي الأملس \\(\\mathbf{r}(t) = \\langle 4\\cos t, 3\\sin t \\rangle\\) الذي يرسم القطع الناقص \\(\\frac{x^2}{16} + \\frac{y^2}{9} = 1\\) عكس عقارب الساعة."
         }
       },
       {
@@ -55,12 +58,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Parametric &amp; Polar)",
+          "en": "◆ Why It Works — First-Principles Derivation (Parametric & Polar)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Parametric Slope &amp; Arc Length Follow from Chain Rule:</strong> Along \\(x = x(t),\\; y = y(t)\\), the Chain Rule gives \\(\\frac{dy}{dt} = \\frac{dy}{dx}\\frac{dx}{dt}\\), yielding \\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)}\\) whenever \\(x'(t) \\neq 0\\). Over \\(\\Delta t\\), the infinitesimal secant chord satisfies \\(\\Delta s = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{x'(t)^2 + y'(t)^2}\\,\\Delta t\\), which integrates to exact arc length.</p>",
+          "ar": "<p><strong>لماذا تنتج صيغ الميل وطول القوس الوسيطي من قاعدة السلسلة:</strong> على المنحنى \\(x = x(t),\\; y = y(t)\\) تعطي قاعدة السلسلة \\(\\frac{dy}{dt} = \\frac{dy}{dx}\\frac{dx}{dt}\\) ومنها \\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)}\\) متى كان \\(x'(t) \\neq 0\\). كما أن عنصر الوتر الموضعي يحقق \\(ds = \\sqrt{(dx)^2 + (dy)^2} = \\sqrt{x'(t)^2 + y'(t)^2}\\,dt\\) فيعطي تكامله طول القوس الدقيق.</p>"
         }
       },
       {
@@ -81,7 +84,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(B\\) — Parametric &amp; Polar (Medium Application)",
+          "en": "Worked Example \\(B\\) — Parametric & Polar (Medium Application)",
           "ar": null
         },
         "problem": {
@@ -96,7 +99,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Parametric &amp; Polar)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Parametric & Polar)",
           "ar": null
         },
         "columns": [
@@ -162,8 +165,8 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Parametric &amp; Polar",
-          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Parametric &amp; Polar"
+          "en": "▲ Exam Pacing & Verification Strategy — Parametric & Polar",
+          "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — Parametric & Polar"
         },
         "body": {
           "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
@@ -205,7 +208,7 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Tracing parametric &amp; polar curves",
+          "en": "⊙ Explorer · Tracing parametric & polar curves",
           "ar": "في مسألة رياضية ضمن (الرياضيات)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
         },
         "canvasId": "paramCanvas",
@@ -307,7 +310,7 @@
         "kind": "figure",
         "caption": {
           "en": "Unit circle reference with terminal point \\((\\cos\\theta, \\sin\\theta)\\) and angle \\(\\theta = 45°\\) (\\(\\frac{\\pi}{4}\\) rad).",
-          "ar": "دائرة الوحدة والزاوية المرجعية وإحداثيات الجيب وجيب التمام في المعادلات البارامترية والإحداثيات القطبية. \\((\\cos\\theta, \\sin\\theta)\\) ، \\(\\theta = 45°\\) ، \\(\\frac{\\pi}{4}\\)"
+          "ar": "مرجع دائرة الوحدة والإحداثيات القطبية للنقطة \\((\\cos\\theta, \\sin\\theta)\\) عند الزاوية \\(\\theta = 45^\\circ = \\frac{\\pi}{4}\\)."
         },
         "figure": {
           "type": "unit_circle",
@@ -520,7 +523,7 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Sequences &amp; Series",
+            "label": "Sequences & Series",
             "chapterId": "ch-series",
             "trackId": "calculus"
           },
@@ -549,7 +552,7 @@
     "className": "ap-tag",
     "badgeClassName": "ap-wt",
     "emoji": "∫",
-    "category": "Calculus I–III · Parametric &amp; Polar",
+    "category": "Calculus I–III · Parametric & Polar",
     "weightBadge": "University Core · 9",
     "topics": [
       "Parametric and Polar"

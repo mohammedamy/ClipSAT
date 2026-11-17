@@ -12,41 +12,41 @@
       },
       "solution": {
         "en": "<p>By Bayes' Rule: \\(P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.02}{0.95(0.02) + 0.05(0.98)} = \\frac{0.0190}{0.0680} = 0.279\\).</p><p><strong>Final Answer:</strong> \\(0.279\\)</p>",
-        "ar": "<p>By Bayes' Rule: \\(P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.02}{0.95(0.02) + 0.05(0.98)} = \\frac{0.0190}{0.0680} = 0.279\\).</p><p><strong>الإجابة النهائية:</strong> \\(0.279\\)</p>"
+        "ar": "بتطبيق القوانين الرياضية المعتمدة في قسم (رياضيات الذكاء الاصطناعي وعلوم البيانات) بالاعتماد على العلاقات الرياضية \\(P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+|\\neg A)P(\\neg A)} = \\frac{0.95 \\times 0.02}{0.95(0.02) + 0.05(0.98)} = \\frac{0.0190}{0.0680} = 0.279\\) ، \\(0.279\\)، وبإجراء التبسيط الجبري والعددي خطوة بخطوة نصل إلى النتيجة الدقيقة المطلوبة."
       },
       "fig": {
         "type": "tree_diagram",
-        "title": "Two-Stage Probability Tree",
+        "title": "Anomaly Screening Tree (Prior 0.02, Sensitivity 0.95)",
         "branches": [
           {
             "label": "A",
-            "prob": "p",
+            "prob": "0.02",
             "branches": [
               {
-                "label": "B | A",
-                "prob": "q",
-                "outcome": "A ∩ B"
+                "label": "+ | A",
+                "prob": "0.95",
+                "outcome": "0.019"
               },
               {
-                "label": "B' | A",
-                "prob": "1-q",
-                "outcome": "A ∩ B'"
+                "label": "− | A",
+                "prob": "0.05",
+                "outcome": "0.001"
               }
             ]
           },
           {
-            "label": "A'",
-            "prob": "1-p",
+            "label": "¬A",
+            "prob": "0.98",
             "branches": [
               {
-                "label": "B | A'",
-                "prob": "r",
-                "outcome": "A' ∩ B"
+                "label": "+ | ¬A",
+                "prob": "0.05",
+                "outcome": "0.049"
               },
               {
-                "label": "B' | A'",
-                "prob": "1-r",
-                "outcome": "A' ∩ B'"
+                "label": "− | ¬A",
+                "prob": "0.95",
+                "outcome": "0.931"
               }
             ]
           }
@@ -63,34 +63,6 @@
       "solution": {
         "en": "<p>The problem requires us to find the minimum number of principal components such that the cumulative explained variance is at least \\(90\\%\\). The provided information states:</p><p>- The first 3 principal components capture \\(70\\%\\) of the variance.<br>- The first 6 principal components capture \\(85\\%\\) of the variance.<br>- The first 10 principal components capture \\(92\\%\\) of the variance.</p><p>We need to find the smallest \\(k\\) such that the cumulative variance captured by the first \\(k\\) principal components is \\(\\ge 90\\%\\).</p><p>Checking the given values:<br>- For \\(k = 3\\), variance captured = \\(70\\%\\), which is less than \\(90\\%\\).<br>- For \\(k = 6\\), variance captured = \\(85\\%\\), which is less than \\(90\\%\\).<br>- For \\(k = 10\\), variance captured = \\(92\\%\\), which is greater than or equal to \\(90\\%\\).</p><p>Therefore, the minimum number of principal components required to retain at least \\(90\\%\\) of the variance is 10. When PCA reduces the dimensionality of data from \\(\\mathbb{R}^D\\) to \\(\\mathbb{R}^k\\) using the top \\(k\\) principal components, the dimension of each transformed data point is \\(k\\). In this case, \\(k=10\\).</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "scatter",
-        "title": "Bivariate Feature Cloud & Linear Fit",
-        "pts": [
-          [
-            1,
-            2.2
-          ],
-          [
-            2,
-            3.6
-          ],
-          [
-            3,
-            5.1
-          ],
-          [
-            4,
-            6.4
-          ],
-          [
-            5,
-            8.1
-          ]
-        ],
-        "xlabel": "Predictor x",
-        "ylabel": "Response y"
       }
     },
     {
@@ -123,7 +95,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>Differentiate with respect to \\(w\\): \\(\\frac{dL}{dw} = 2(6)w - 8 = 12w - 8\\). At \\(w = 10\\): \\(\\nabla L = 12(10) - 8 = 120 - 8 = 112\\).</p><p><strong>Final Answer:</strong> \\(\\nabla L(10) = 112\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Analytical Gradient Calculation:</strong> Differentiating the quadratic scalar loss \\(L(w) = 6w^2 - 8w + 5\\) with respect to \\(w\\) gives \\(L'(w) = 12w - 8\\). Notice \\(L''(w) = 12 > 0\\), confirming strict convexity with global minimizer \\(w^* = \\frac{2}{3}\\).</p><p>Evaluating at \\(w = 10\\) yields \\(\\nabla L(10) = 12(10) - 8 = 120 - 8 = 112\\) (indicating \\(L\\) increases steeply to the right, so gradient descent steps in the negative direction toward \\(w^* = \\frac{2}{3}\\)).</p><p><strong>Final Answer:</strong> \\(\\nabla L(10) = 112\\)</p>",
         "ar": null
       },
       "fig": {
@@ -154,7 +126,7 @@
       },
       "solution": {
         "en": "<p>The OLS slope is \\(\\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{36}{12} = 3\\). The intercept is \\(\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 35 - (3)(5) = 35 - 15 = 20\\).</p><p><strong>Final Answer:</strong> \\(\\hat{\\beta}_1 = 3, \\; \\hat{\\beta}_0 = 20\\)</p>",
-        "ar": "<p>The OLS slope is \\(\\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{36}{12} = 3\\). The intercept is \\(\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 35 - (3)(5) = 35 - 15 = 20\\).</p><p><strong>الإجابة النهائية:</strong> \\(\\hat{\\beta}_1 = 3, \\; \\hat{\\beta}_0 = 20\\)</p>"
+        "ar": "<p> OLS الميل يساوي \\(\\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{36}{12} = 3\\). المقطع يساوي \\(\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 35 - (3)(5) = 35 - 15 = 20\\).</p><p><strong>النهائي الإجابة:</strong> \\(\\hat{\\beta}_1 = 3, \\; \\hat{\\beta}_0 = 20\\)</p>"
       },
       "fig": {
         "type": "scatter",
@@ -248,36 +220,49 @@
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "fns": [
-          {
-            "fn": "0.5*x",
-            "label": "Span(v1)"
-          },
-          {
-            "fn": "-2*x",
-            "label": "Span(v2)"
-          }
+        "type": "transformation_grid",
+        "title": "Action of M = [[3, 1], [1, 3]] on Triangle ABC",
+        "xmin": -0.5,
+        "xmax": 5,
+        "ymin": -0.5,
+        "ymax": 5,
+        "object": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ],
-        "points": [
-          {
-            "x": 2,
-            "y": 1,
-            "label": "v1"
-          },
-          {
-            "x": -1,
-            "y": 2,
-            "label": "v2"
-          }
+        "objectLabels": [
+          "A",
+          "B",
+          "C"
         ],
-        "xrange": [
-          -4,
-          4
+        "image": [
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            4,
+            4
+          ]
         ],
-        "yrange": [
-          -4,
-          4
+        "imageLabels": [
+          "A'",
+          "B'",
+          "C'"
         ]
       }
     },
@@ -285,41 +270,36 @@
       "number": 9,
       "difficulty": "Advanced",
       "question": {
-        "en": "The sigmoid activation function is \\(\\sigma(z) = \\frac{1}{1 + e^{-z}}\\). If \\(\\sigma(z_0) = 1.20\\), what is the value of the derivative \\(\\sigma'(z_0)\\)?",
+        "en": "The logistic sigmoid activation function is \\(\\sigma(z) = \\frac{1}{1 + e^{-z}}\\), whose range lies strictly in \\((0, 1)\\). If \\(\\sigma(z_0) = 0.80\\), what is the exact value of the derivative \\(\\sigma'(z_0)\\)?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The derivative of sigmoid satisfies \\(\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))\\). Substituting \\(\\sigma(z_0) = 1.20\\): \\(\\sigma'(z_0) = (1.20)(1 - 1.20) = (1.20)(-0.20) = -0.2400\\).</p><p><strong>Final Answer:</strong> \\(-0.2400\\)</p>",
+        "en": "<p><strong>Self-Referential Sigmoid Derivative Identity:</strong> Differentiating \\(\\sigma(z) = (1 + e^{-z})^{-1}\\) by the Chain Rule gives \\[ \\sigma'(z) = \\frac{e^{-z}}{(1 + e^{-z})^2} = \\frac{1}{1 + e^{-z}} \\cdot \\frac{e^{-z}}{1 + e^{-z}} = \\sigma(z)\\big(1 - \\sigma(z)\\big). \\]</p><p>Substituting \\(\\sigma(z_0) = 0.80 \\in (0, 1)\\) yields \\(\\sigma'(z_0) = 0.80(1 - 0.80) = 0.80 \\times 0.20 = 0.1600\\).</p><p><strong>Final Answer:</strong> \\(0.1600\\)</p>",
         "ar": null
       },
       "fig": {
-        "type": "sign_chart",
-        "title": "Derivative Sign & Monotonicity Analysis",
-        "points": [
-          "c₁",
-          "c₂"
-        ],
-        "rows": [
+        "type": "fn",
+        "title": "Logistic Sigmoid σ(z) = 1/(1 + e⁻ᶻ) Passing Through σ(z₀) = 0.80",
+        "fns": [
           {
-            "label": "f'(x)",
-            "signs": [
-              "+",
-              "0",
-              "-",
-              "0",
-              "+"
-            ]
-          },
-          {
-            "label": "f(x)",
-            "shape": [
-              "↗",
-              "Max",
-              "↘",
-              "Min",
-              "↗"
-            ]
+            "fn": "1/(1 + exp(-x))",
+            "label": "σ(z)"
           }
+        ],
+        "points": [
+          {
+            "x": 1.386,
+            "y": 0.8,
+            "label": "(z₀, 0.80)"
+          }
+        ],
+        "xrange": [
+          -4,
+          4
+        ],
+        "yrange": [
+          -0.1,
+          1.15
         ]
       }
     },
@@ -335,61 +315,22 @@
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "title": "Linear Operator Action on Unit Square",
-        "xmin": -3,
-        "xmax": 4,
-        "ymin": -3,
-        "ymax": 4,
-        "object": [
-          [
-            0,
-            0
-          ],
-          [
-            1,
-            0
-          ],
-          [
-            1,
-            1
-          ],
-          [
-            0,
-            1
-          ]
-        ],
-        "objectLabels": [
-          "O",
-          "e₁",
-          "e₁+e₂",
-          "e₂"
-        ],
-        "image": [
-          [
-            0,
-            0
-          ],
-          [
-            2,
-            1
-          ],
-          [
-            1,
-            3
-          ],
-          [
-            -1,
-            2
-          ]
-        ],
-        "imageLabels": [
-          "O'",
-          "Ae₁",
-          "A(e₁+e₂)",
-          "Ae₂"
-        ],
-        "mirrorLine": null
+        "type": "bar",
+        "title": "Covariance Eigenvalues (λ₁ = 62, λ₂ = 24, λ₃ = 14)",
+        "bars": [
+          {
+            "label": "λ₁",
+            "val": 62
+          },
+          {
+            "label": "λ₂",
+            "val": 24
+          },
+          {
+            "label": "λ₃",
+            "val": 14
+          }
+        ]
       }
     },
     {
@@ -402,50 +343,6 @@
       "solution": {
         "en": "<p>Dot product \\(\\mathbf{a} \\cdot \\mathbf{b} = (5)(10) + (10)(5) = 100\\). Product of norms \\(\\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 125\\). Cosine similarity = \\(\\frac{100}{125} = 0.800\\).</p><p><strong>Final Answer:</strong> \\(0.800\\)</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "similar",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            6,
-            0
-          ],
-          [
-            2.5,
-            4
-          ]
-        ],
-        "ratio": 0.65,
-        "left": {
-          "labels": [
-            "A",
-            "B",
-            "C"
-          ],
-          "sides": [
-            "6",
-            "5",
-            "5"
-          ],
-          "caption": "△ABC"
-        },
-        "right": {
-          "labels": [
-            "D",
-            "E",
-            "F"
-          ],
-          "sides": [
-            "9",
-            "s",
-            "t"
-          ],
-          "caption": "△DEF"
-        }
       }
     },
     {
@@ -458,34 +355,6 @@
       "solution": {
         "en": "<p>The feature map is defined as \\(\\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T\\), where \\(\\mathbf{x} \\in \\mathbb{R}^{10}\\). The term \\(\\mathbf{x}^T \\mathbf{x}\\) is the squared Euclidean norm of \\(\\mathbf{x}\\), denoted as \\(\\|\\mathbf{x}\\|^2\\). This is a scalar value. Thus, the mapping \\(\\phi\\) produces a vector where each component is the same scalar value, \\(\\|\\mathbf{x}\\|^2\\). Let \\(k = \\|\\mathbf{x}\\|^2\\). Then \\(\\phi(\\mathbf{x}) = [k, k, \\dots, k]^T\\) in \\(\\mathbb{R}^{d}\\). This means that the image of the mapping \\(\\phi\\) is a subspace spanned by a single vector. For example, if \\(d=15\\), then \\(\\phi(\\mathbf{x}) = [k, k, \\dots, k]^T\\) which can be written as \\(k \\cdot [1, 1, \\dots, 1]^T\\). The vector \\([1, 1, \\dots, 1]^T\\) forms a basis for the image space. Therefore, the dimension of the image space, which is equivalent to its rank, is 1, regardless of the value of \\(d\\) (as long as \\(d \\ge 1\\)). The problem states that \\(d=15\\), but the effective rank of the image of this specific feature map is always 1, as all output vectors lie on a single line passing through the origin.</p>",
         "ar": null
-      },
-      "fig": {
-        "type": "scatter",
-        "title": "Bivariate Data & Trend",
-        "pts": [
-          [
-            1,
-            2.1
-          ],
-          [
-            2,
-            3.8
-          ],
-          [
-            3,
-            5.2
-          ],
-          [
-            4,
-            6.9
-          ],
-          [
-            5,
-            8.4
-          ]
-        ],
-        "xlabel": "Predictor (x)",
-        "ylabel": "Response (y)"
       }
     },
     {
@@ -501,37 +370,37 @@
       },
       "fig": {
         "type": "tree_diagram",
-        "title": "Two-Stage Probability Tree",
+        "title": "Rare Disease Test (Prevalence 0.5%, TPR 99%, TNR 95%)",
         "branches": [
           {
-            "label": "A",
-            "prob": "p",
+            "label": "D",
+            "prob": "0.005",
             "branches": [
               {
-                "label": "B | A",
-                "prob": "q",
-                "outcome": "A ∩ B"
+                "label": "+ | D",
+                "prob": "0.99",
+                "outcome": "TP"
               },
               {
-                "label": "B' | A",
-                "prob": "1-q",
-                "outcome": "A ∩ B'"
+                "label": "− | D",
+                "prob": "0.01",
+                "outcome": "FN"
               }
             ]
           },
           {
-            "label": "A'",
-            "prob": "1-p",
+            "label": "¬D",
+            "prob": "0.995",
             "branches": [
               {
-                "label": "B | A'",
-                "prob": "r",
-                "outcome": "A' ∩ B"
+                "label": "+ | ¬D",
+                "prob": "0.05",
+                "outcome": "FP"
               },
               {
-                "label": "B' | A'",
-                "prob": "1-r",
-                "outcome": "A' ∩ B'"
+                "label": "− | ¬D",
+                "prob": "0.95",
+                "outcome": "TN"
               }
             ]
           }
@@ -570,7 +439,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The logistic sigmoid function is \\(\\sigma(z) = \\frac{1}{1 + e^{-z}}\\). The decision boundary is where \\(\\sigma(z) = 0.5\\). Setting \\(\\sigma(z) = 0.5\\) gives \\(\\frac{1}{1 + e^{-z}} = 0.5\\), which implies \\(1 = 0.5(1 + e^{-z})\\), so \\(2 = 1 + e^{-z}\\), and \\(e^{-z} = 1\\). This occurs when \\(-z = 0\\), or \\(z = 0\\). Therefore, the decision boundary is defined by \\(z = 0\\).</p><p>The linear component of the model is given by \\(z = w_1 x_1 + w_2 x_2 + b\\). In this problem, \\(z = 2x_1 - x_2 + b\\).</p><p>Since the decision boundary is \\(z = 0\\), we have \\(2x_1 - x_2 + b = 0\\).</p><p>The classification boundary passes through the point \\((x_1, x_2) = (3, 1)\\). Substituting these values into the equation for the decision boundary:<br>\\(2(3) - 1 + b = 0\\)<br>\\(6 - 1 + b = 0\\)<br>\\(5 + b = 0\\)<br>\\(b = -5\\)</p><p><strong>Final Answer:</strong> \\(b = -7\\)</p>",
+        "en": "<p>The logistic sigmoid function is \\(\\sigma(z) = \\frac{1}{1 + e^{-z}}\\). The decision boundary is where \\(\\sigma(z) = 0.5\\). Setting \\(\\sigma(z) = 0.5\\) gives \\(\\frac{1}{1 + e^{-z}} = 0.5\\), which implies \\(1 = 0.5(1 + e^{-z})\\), so \\(2 = 1 + e^{-z}\\), and \\(e^{-z} = 1\\). This occurs when \\(-z = 0\\), or \\(z = 0\\). Therefore, the decision boundary is defined by \\(z = 0\\).</p><p>The linear component of the model is given by \\(z = w_1 x_1 + w_2 x_2 + b\\). In this problem, \\(z = 2x_1 - x_2 + b\\).</p><p>Since the decision boundary is \\(z = 0\\), we have \\(2x_1 - x_2 + b = 0\\).</p><p>The classification boundary passes through the point \\((x_1, x_2) = (3, 1)\\). Substituting these values into the equation for the decision boundary:<br>\\(2(3) - 1 + b = 0\\)<br>\\(6 - 1 + b = 0\\)<br>\\(5 + b = 0\\)<br>\\(b = -5\\)</p><p><strong>Final Answer:</strong> \\(b = -5\\)</p>",
         "ar": null
       }
     },
@@ -614,11 +483,11 @@
       "number": 20,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A vector \\(\\mathbf{v}\\) is transformed into a new vector \\(\\mathbf{v}'\\) by a linear transformation represented by the matrix \\(\\mathbf{M}\\).  We are given that \\(\\mathbf{v} = \\begin{pmatrix} 2 \\ 3 \\end{pmatrix}\\) and \\(\\mathbf{v}' = \\begin{pmatrix} 7 \\ 11 \\end{pmatrix}\\).  The transformation matrix is of the form \\(\\mathbf{M} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix}\\). Determine the value of \\(a\\) and \\(b\\).",
+        "en": "A vector \\(\\mathbf{v}\\) is transformed into a new vector \\(\\mathbf{v}'\\) by a linear transformation represented by the matrix \\(\\mathbf{M}\\).  We are given that \\(\\mathbf{v} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}\\) and \\(\\mathbf{v}' = \\begin{pmatrix} 7 \\\\ 11 \\end{pmatrix}\\).  The transformation matrix is of the form \\(\\mathbf{M} = \\begin{pmatrix} a & 1 \\\\ 4 & b \\end{pmatrix}\\). Determine the value of \\(a\\) and \\(b\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The transformation is defined by \\(\\mathbf{v}' = \\mathbf{M}\\mathbf{v}\\). Substituting the given vectors and matrix form:</p><p>\\(\\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\ 3 \\end{pmatrix}\\)</p><p>Performing the matrix multiplication:</p><p>\\(\\begin{pmatrix} 7 \\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\ 8 + 3b \\end{pmatrix}\\)</p><p>Equating the corresponding components, we get a system of two linear equations:</p><p>1) \\(2a + 3 = 7\\)<br>2) \\(8 + 3b = 11\\)</p><p>Solving the first equation for \\(a\\):</p><p>\\(2a = 7 - 3\\)<br>\\(2a = 4\\)<br>\\(a = 2\\)</p><p>Solving the second equation for \\(b\\):</p><p>\\(3b = 11 - 8\\)<br>\\(3b = 3\\)<br>\\(b = 1\\)</p><p>Thus, \\(a = 2\\) and \\(b = 1\\).</p><p><strong>Final Answer:</strong> a = 2, b = 1</p>",
+        "en": "<p>The transformation is defined by \\(\\mathbf{v}' = \\mathbf{M}\\mathbf{v}\\). Substituting the given vectors and matrix form:</p><p>\\(\\begin{pmatrix} 7 \\\\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\\\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}\\)</p><p>Performing the matrix multiplication:</p><p>\\(\\begin{pmatrix} 7 \\\\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\\\ 8 + 3b \\end{pmatrix}\\)</p><p>Equating the corresponding components, we get a system of two linear equations:</p><p>1) \\(2a + 3 = 7\\)<br>2) \\(8 + 3b = 11\\)</p><p>Solving the first equation for \\(a\\):</p><p>\\(2a = 7 - 3\\)<br>\\(2a = 4\\)<br>\\(a = 2\\)</p><p>Solving the second equation for \\(b\\):</p><p>\\(3b = 11 - 8\\)<br>\\(3b = 3\\)<br>\\(b = 1\\)</p><p>Thus, \\(a = 2\\) and \\(b = 1\\).</p><p><strong>Final Answer:</strong> a = 2, b = 1</p>",
         "ar": null
       }
     },
@@ -666,7 +535,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The loss function is \\(L(w) = w^2 - 4w + 5\\). The gradient is \\(\\frac{dL}{dw} = 2w - 4\\). We are given an initial weight \\(w_0 = 5\\) and a learning rate \\(\\alpha = 0.5\\). The gradient at \\(w_0\\) is \\(\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6\\). The update rule for gradient descent is \\(w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)\\). Substituting the values, we get \\(w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2\\).</p><p><strong>Final Answer:</strong> \\(4\\)</p>",
+        "en": "<p>The loss function is \\(L(w) = w^2 - 4w + 5\\). The gradient is \\(\\frac{dL}{dw} = 2w - 4\\). We are given an initial weight \\(w_0 = 5\\) and a learning rate \\(\\alpha = 0.5\\). The gradient at \\(w_0\\) is \\(\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6\\). The update rule for gradient descent is \\(w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)\\). Substituting the values, we get \\(w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2\\).</p><p><strong>Final Answer:</strong> \\(w_1 = 2\\)</p>",
         "ar": null
       }
     },
@@ -731,17 +600,20 @@
       },
       "fig": {
         "type": "fn",
+        "title": "Quadratic Loss Curve L(w) = w² − 4w + 3",
         "fns": [
-          "w*w - 4*w + 3"
+          {
+            "fn": "x*x - 4*x + 3",
+            "label": "L(w) = w² − 4w + 3"
+          }
         ],
-        "points": [],
         "xrange": [
           -1,
           5
         ],
         "yrange": [
           -2,
-          4
+          6
         ]
       }
     },
@@ -796,9 +668,10 @@
       },
       "fig": {
         "type": "transformation_grid",
-        "xmin": -6,
-        "xmax": 6,
-        "ymin": -6,
+        "title": "Horizontal Stretch M = [[2, 0], [0, 1]] on Dataset ABC",
+        "xmin": 0,
+        "xmax": 9,
+        "ymin": 0,
         "ymax": 6,
         "object": [
           [
@@ -837,8 +710,7 @@
           "A'",
           "B'",
           "C'"
-        ],
-        "mirrorLine": null
+        ]
       }
     },
     {
@@ -897,7 +769,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The output vector \\(\\mathbf{y}\\) is computed by multiplying the weight matrix \\(W\\) by the input vector \\(\\mathbf{x}\\). This is a standard matrix-vector multiplication. \\\\ \\\\ \\(\\mathbf{y} = W\\mathbf{x} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix}\\)\\\\\\ \\\\ To compute the first element of \\(\\mathbf{y}\\), we take the dot product of the first row of \\(W\\) with \\(\\mathbf{x}\\): \\((1)(5) + (2)(6) = 5 + 12 = 17\\).\\\\ \\\\ To compute the second element of \\(\\mathbf{y}\\), we take the dot product of the second row of \\(W\\) with \\(\\mathbf{x}\\): \\((3)(5) + (4)(6) = 15 + 24 = 39\\).\\\\ \\\\ Therefore, the output vector is \\(\\mathbf{y} = \\begin{pmatrix} 17 \\\\ 39 \\end{pmatrix}\\).</p>",
+        "en": "<p>The output vector \\(\\mathbf{y}\\) is computed by multiplying the weight matrix \\(W\\) by the input vector \\(\\mathbf{x}\\). This is a standard matrix-vector multiplication. <br><br>\\(\\mathbf{y} = W\\mathbf{x} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix}\\)<br><br>To compute the first element of \\(\\mathbf{y}\\), we take the dot product of the first row of \\(W\\) with \\(\\mathbf{x}\\): \\((1)(5) + (2)(6) = 5 + 12 = 17\\).<br><br>To compute the second element of \\(\\mathbf{y}\\), we take the dot product of the second row of \\(W\\) with \\(\\mathbf{x}\\): \\((3)(5) + (4)(6) = 15 + 24 = 39\\).<br><br>Therefore, the output vector is \\(\\mathbf{y} = \\begin{pmatrix} 17 \\\\ 39 \\end{pmatrix}\\).</p>",
         "ar": null
       }
     },
@@ -982,7 +854,7 @@
       },
       "solution": {
         "en": "<p>Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8\\); \\(\\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6\\). Therefore, \\(\\nabla L = [8, -6]^T\\).</p>",
-        "ar": "<p>احسب partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8\\); \\(\\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6\\). وبالتالي، \\(\\nabla L = [8, -6]^T\\).</p>"
+        "ar": "بتطبيق القوانين الرياضية المعتمدة في قسم (رياضيات الذكاء الاصطناعي وعلوم البيانات) بالاعتماد على العلاقات الرياضية \\(\\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8\\) ، \\(\\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6\\) ، \\(\\nabla L = [8, -6]^T\\)، وبإجراء التبسيط الجبري والعددي خطوة بخطوة نصل إلى النتيجة الدقيقة المطلوبة."
       }
     },
     {
@@ -1005,7 +877,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(L_1\\) norm is the sum of absolute values: \\(|10| + |-15| = 25\\). \\(L_2\\) norm is the square root of sum of squares: \\(\\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325}\\).</p>",
+        "en": "<p><strong>Step 1 · Manhattan (\\(L_1\\)) Norm:</strong> Summing absolute coordinate magnitudes of \\(\\mathbf{w} = [10, -15]^T\\) gives \\(\\|\\mathbf{w}\\|_1 = |10| + |-15| = 10 + 15 = 25\\).</p><p><strong>Step 2 · Euclidean (\\(L_2\\)) Norm:</strong> Taking the square root of the sum of squared components yields \\(\\|\\mathbf{w}\\|_2 = \\sqrt{10^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325} = 5\\sqrt{13} \\approx 18.03\\) (confirming the universal norm inequality \\(\\|\\mathbf{w}\\|_2 \\le \\|\\mathbf{w}\\|_1\\)).</p>",
         "ar": null
       }
     },
@@ -1017,7 +889,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The coefficient of determination measures the proportion of variance explained: \\(R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Variance Decomposition & \\(R^2\\):</strong> In ordinary least-squares regression with an intercept, \\(\\text{SST} = \\text{SSR} + \\text{SSE}\\), where \\(\\text{SSE} = \\sum (y_i - \\hat{y}_i)^2 = 20\\) and \\(\\text{SST} = \\sum (y_i - \\bar{y})^2 = 100\\).</p><p>The coefficient of determination measures the proportion of total target variance captured by the linear predictors: \\[ R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 \\; (80\\%). \\]</p>",
         "ar": null
       }
     },
@@ -1029,8 +901,30 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>Accuracy is the ratio of correct predictions to total samples: \\(\\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 40}{130} = \\frac{110}{130} = 84.6\\%\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Confusion Matrix Evaluation:</strong> Total evaluated instances equal \\(N = TP + TN + FP + FN = 70 + 40 + 10 + 10 = 130\\), of which \\(TP + TN = 70 + 40 = 110\\) are classified into their true ground-truth label.</p><p>Therefore, overall classification accuracy is \\[ \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{110}{130} = \\frac{11}{13} \\approx 0.8462 \\; (84.6\\%). \\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "title": "Binary Classifier Confusion Matrix (N = 130)",
+        "rows": [
+          "Actual Positive",
+          "Actual Negative"
+        ],
+        "cols": [
+          "Pred Positive",
+          "Pred Negative"
+        ],
+        "cells": [
+          [
+            70,
+            10
+          ],
+          [
+            10,
+            40
+          ]
+        ]
       }
     },
     {
@@ -1041,7 +935,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>The weight matrix \\(\\mathbf{W}\\) has shape \\(25 \\times 50\\), giving \\(1250\\) weights. The bias vector \\(\\mathbf{b}\\) has \\(25\\) parameters. Total = \\(1250 + 25 = 1275\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Affine Dense Layer Parameter Count:</strong> For \\(\\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b}\\) mapping \\(\\mathbf{x} \\in \\mathbb{R}^{50}\\) to \\(\\mathbf{y} \\in \\mathbb{R}^{25}\\), each of the \\(25\\) output neurons connects to all \\(50\\) inputs, giving \\(\\mathbf{W} \\in \\mathbb{R}^{25 \\times 50}\\) with \\(25 \\times 50 = 1250\\) scalar weights.</p><p>Adding one independent bias parameter per output unit (\\(\\mathbf{b} \\in \\mathbb{R}^{25}\\)) yields \\(1250 + 25 = 1275\\) total learnable parameters.</p>",
         "ar": null
       }
     },
@@ -1053,7 +947,7 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>Odds are \\(\\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286\\). Taking natural logarithm: \\(\\ln(0.4286) = -0.847\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Inverse Sigmoid (Logit) Transformation:</strong> Given \\(p = \\sigma(z) = 0.30\\), the complementary probability is \\(1 - p = 0.70\\), so the odds of class \\(y = 1\\) are \\(\\frac{p}{1 - p} = \\frac{0.30}{0.70} = \\frac{3}{7} \\approx 0.4286\\).</p><p>Taking the natural logarithm recovers the linear logit \\(z\\): \\[ z = \\operatorname{logit}(0.30) = \\ln\\!\\left(\\frac{3}{7}\\right) = \\ln 3 - \\ln 7 \\approx -0.8473 \\] (negative because \\(p = 0.30 < 0.50\\)).</p>",
         "ar": null
       }
     },
@@ -1065,8 +959,33 @@
         "ar": null
       },
       "solution": {
-        "en": "<p>By definition of the Rectified Linear Unit: \\(\\text{ReLU}(z) = z\\) if \\(z \\gt 0\\), and \\(0\\) if \\(z \\le 0\\). Thus \\(f(-4) = 0\\) and \\(f(6) = 6\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p><strong>Piecewise-Linear ReLU Evaluation:</strong> The Rectified Linear Unit \\(f(z) = \\max(0, z)\\) suppresses negative pre-activations to zero while passing positive pre-activations unchanged with unit slope.</p><p>Evaluating each input independently: since \\(z_1 = -4 < 0\\), \\(f(-4) = \\max(0, -4) = 0\\) (inactive neuron); since \\(z_2 = 6 > 0\\), \\(f(6) = \\max(0, 6) = 6\\) (active linear regime).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "title": "ReLU Activation Function f(z) = max(0, z)",
+        "fns": [
+          {
+            "fn": "x > 0 ? x : 0",
+            "label": "ReLU(z)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 0,
+            "label": "Hinge (0,0)"
+          }
+        ],
+        "xrange": [
+          -6,
+          8
+        ],
+        "yrange": [
+          -1,
+          8
+        ]
       }
     }
   ]

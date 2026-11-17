@@ -29,44 +29,24 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Elliptic Level Curves x² + 2y² = c & Steepest Ascent",
-          "xrange": [
-            -4,
-            4
+          "type": "geometry_3d",
+          "solid": "cylinder",
+          "title": "Cylindrical Coordinate Solid: 0 ≤ r ≤ 2, 0 ≤ z ≤ 5",
+          "dims": [
+            2,
+            2,
+            5
           ],
-          "yrange": [
-            -3,
-            3
-          ],
-          "fns": [
-            {
-              "fn": "Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)",
-              "label": "c = 4"
-            },
-            {
-              "fn": "-Math.sqrt(Math.max(0, (4 - x*x)/2))",
-              "color": "var(--fig-indigo)"
-            },
-            {
-              "fn": "2*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Normal ∇f"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 1.22,
-              "label": "P"
-            }
-          ]
+          "radius": 2,
+          "height": 5,
+          "labels": {
+            "r": "r = 2",
+            "h": "z = 5"
+          }
         },
         "caption": {
-          "en": "Contour level curve \\(f(x, y) = c\\) with orthogonal gradient direction \\(\\nabla f(P)\\).",
-          "ar": "منحنى المستوى \\(f(x, y) = c\\) واتجاه متجه التدرج العمودي \\(\\nabla f(P)\\) في التكاملات الثلاثية والإحداثيات الأسطوانية والكروية."
+          "en": "Cylindrical coordinate volume element \\(dV = r\\,dz\\,dr\\,d\\theta\\) over a right circular cylinder of radius \\(R = 2\\) and height \\(H = 5\\).",
+          "ar": "عنصر الحجم في الإحداثيات الأسطوانية \\(dV = r\\,dz\\,dr\\,d\\theta\\) عبر أسطوانة دائرية قائمة نصف قطرها \\(R = 2\\) وارتفاعها \\(H = 5\\)."
         }
       },
       {
@@ -210,7 +190,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "en": "<p><strong>Why Orthogonal Projection & Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -385,7 +365,7 @@
         },
         "caption": {
           "en": "Cross section in cylindrical coordinates for the solid enclosed between \\( z = r^2 \\) and \\( z = 4 \\). Cylindrical coordinates are ideal here: \\( r \\) ranges from \\( 0 \\) to \\( 2 \\), \\( \\theta \\) from \\( 0 \\) to \\( 2\\pi \\), and \\( z \\) from \\( r^2 \\) to \\( 4 \\), with volume element \\( dV = r \\, dz \\, dr \\, d\\theta \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في التكاملات الثلاثية والإحداثيات الأسطوانية والكروية. \\(z = r^2\\) ، \\(z = 4\\) ، \\(r\\) ، \\(0\\) ، \\(2\\) ، \\(\\theta\\) ، \\(0\\) ، \\(2\\pi\\) ، \\(z\\) ، \\(r^2\\) ، \\(4\\) ، \\(dV = r \\, dz \\, dr \\, d\\theta\\)"
+          "ar": "المقطع الطولي في الإحداثيات الأسطوانية للمجسم المحصور بين السطح المكافئ \\(z = r^2\\) والمستوي العلوي \\(z = 4\\)."
         }
       },
       {
@@ -488,7 +468,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -563,7 +543,7 @@
           }
         ],
         "solution": {
-          "en": "The region \\( E \\) is a spherical cone. The upper bound is a sphere of radius 4 centered at the origin, so \\( \\rho \\) ranges from 0 to 4. The lower bound is the cone \\( z = \\sqrt{x^2 + y^2} \\). In spherical coordinates, \\( z = \\rho \\cos{\\phi} \\) and \\( \\sqrt{x^2 + y^2} = \\rho \\sin{\\phi} \\). Thus, the cone equation becomes \\( \\rho \\cos{\\phi} = \\rho \\sin{\\phi} \\). For \\( \\rho\neq 0 \\), this simplifies to \\( \\cos{\\phi} = \\sin{\\phi} \\), which means \\( \\tan{\\phi} = 1 \\). In the range \\( 0 \\le \\phi \\le \\pi \\), this occurs at \\( \\phi = \\frac{\\pi}{4} \\). Therefore, \\( \\phi \\) ranges from 0 to \\( \\frac{\\pi}{4} \\). Since the solid region is symmetric about the z-axis and covers the entire 'spiky' part of the cone and sphere, \\( \\theta \\) ranges from 0 to \\( 2\\pi \\). Thus, \\( \\alpha = 0 \\), \\( \\beta = 2\\pi \\), \\( \\gamma = 0 \\), \\( \\delta = \\frac{\\pi}{4} \\), and \\( \\rho_1 = 0 \\), \\( \\rho_2 = 4 \\). The lower limit of integration for \\( \\theta \\) is \\( \\alpha = 0 \\).",
+          "en": "The region \\( E \\) is a spherical cone. The upper bound is a sphere of radius 4 centered at the origin, so \\( \\rho \\) ranges from 0 to 4. The lower bound is the cone \\( z = \\sqrt{x^2 + y^2} \\). In spherical coordinates, \\( z = \\rho \\cos{\\phi} \\) and \\( \\sqrt{x^2 + y^2} = \\rho \\sin{\\phi} \\). Thus, the cone equation becomes \\( \\rho \\cos{\\phi} = \\rho \\sin{\\phi} \\). For \\( \\rho\\neq 0 \\), this simplifies to \\( \\cos{\\phi} = \\sin{\\phi} \\), which means \\( \\tan{\\phi} = 1 \\). In the range \\( 0 \\le \\phi \\le \\pi \\), this occurs at \\( \\phi = \\frac{\\pi}{4} \\). Therefore, \\( \\phi \\) ranges from 0 to \\( \\frac{\\pi}{4} \\). Since the solid region is symmetric about the z-axis and covers the entire 'spiky' part of the cone and sphere, \\( \\theta \\) ranges from 0 to \\( 2\\pi \\). Thus, \\( \\alpha = 0 \\), \\( \\beta = 2\\pi \\), \\( \\gamma = 0 \\), \\( \\delta = \\frac{\\pi}{4} \\), and \\( \\rho_1 = 0 \\), \\( \\rho_2 = 4 \\). The lower limit of integration for \\( \\theta \\) is \\( \\alpha = 0 \\).",
           "ar": null
         }
       },
@@ -642,7 +622,8 @@
   "quizWidget": {
     "domains": [
       "Triple Integrals"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",

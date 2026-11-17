@@ -791,6 +791,91 @@ it('Statistical and plot SVGs include coordinate inspection attributes and acces
   assert.ok(cfSvg.includes('Cumulative F ='), 'Cumulative frequency quartiles must tag cumulative projection');
 });
 
+it('Every SVG renderer enforces direction="ltr" so math axes never mirror on /ar/ RTL pages', () => {
+  fixtures.forEach(({ type, fig }) => {
+    if (type === 'two_way_table' || type === 'table') return;
+    const out = window._renderFig(fig);
+    assert.ok(/<svg\b[^>]*\bdirection="ltr"/.test(out), `SVG for ${type} must carry direction="ltr"`);
+  });
+});
+
+it('Handles bank/content edge-case figure schemas cleanly (pyramid solid, object polygon labels, slope_field f/curves, coinciding transformation vertices, Argand roots, normalized network_graph)', () => {
+  // 1. geometry_3d with solid:"pyramid" and baseLength/baseWidth/height
+  const pyr = window._renderFig({
+    type: 'geometry_3d',
+    solid: 'pyramid',
+    baseLength: 6,
+    baseWidth: 4,
+    height: 9
+  });
+  assert.ok(pyr.includes('<polygon') && pyr.includes('h = 9'), 'Pyramid solid must render polygon faces and height label');
+  assert.ok(!/\bNaN\b|\bundefined\b/.test(pyr), 'Pyramid SVG must be NaN/undefined-free');
+
+  // 2. polygon with object vertex labels [{text, x, y}]
+  const polySpec = {
+    type: 'polygon',
+    vertices: [[0, 0], [4, 0], [2, 3]],
+    labels: [{ text: 'A', x: 0, y: 0 }, { text: 'B', x: 4, y: 0 }, { text: 'C', x: 2, y: 3 }]
+  };
+  const polySvg = window._renderFig(polySpec);
+  const polyA11y = window._figA11yLabel(polySpec);
+  assert.ok(!polySvg.includes('[object Object]') && !polyA11y.includes('[object Object]'), 'Object vertex labels must never serialize to [object Object]');
+  assert.ok(polyA11y.includes('A, B, C'), '_figA11yLabel should extract text from object labels');
+
+  // 3. slope_field using f + curves[] array
+  const sfSvg = window._renderFig({
+    type: 'slope_field',
+    f: 'x - y',
+    xrange: [-3, 3],
+    yrange: [-3, 3],
+    curves: [{ x0: 0, y0: 1 }, { x0: -1, y0: -1 }]
+  });
+  const polyMatches = sfSvg.match(/<polyline\b/g) || [];
+  assert.ok(polyMatches.length >= 2, 'slope_field with curves[] must render solution trajectory polylines');
+  assert.ok(!/\bNaN\b|\bundefined\b/.test(sfSvg), 'slope_field SVG must be NaN/undefined-free');
+
+  // 4. transformation_grid with coinciding vertex at origin
+  const tgSvg = window._renderFig({
+    type: 'transformation_grid',
+    object: [[0, 0], [3, 0], [0, 2]],
+    image: [[0, 0], [0, 3], [-2, 0]],
+    objectLabels: ['A', 'B', 'C'],
+    imageLabels: ["A'", "B'", "C'"]
+  });
+  assert.ok(tgSvg.includes('>A<') && tgSvg.includes("&apos;") || tgSvg.includes("A'"), 'transformation_grid must render both A and A\'');
+  assert.ok(!/\bNaN\b|\bundefined\b/.test(tgSvg), 'transformation_grid SVG must be NaN/undefined-free');
+
+  // 5. Argand diagram with unit circle + cube roots of unity
+  const argSvg = window._renderFig({
+    type: 'argand',
+    points: [
+      { re: 1, im: 0, label: '1' },
+      { re: -0.5, im: 0.866, label: 'ω' },
+      { re: -0.5, im: -0.866, label: 'ω²' }
+    ],
+    circles: [{ re: 0, im: 0, r: 1, label: '|z| = 1' }]
+  });
+  assert.ok(argSvg.includes('<circle') && argSvg.includes('|z| = 1'), 'Argand diagram must render circle and modulus label');
+  assert.ok(!/\bNaN\b|\bundefined\b/.test(argSvg), 'Argand SVG must be NaN/undefined-free');
+
+  // 6. network_graph with normalized 0..100 coordinates
+  const netSvg = window._renderFig({
+    type: 'network_graph',
+    title: 'Shortest Path Network',
+    nodes: [
+      { id: 'S', x: 10, y: 50 },
+      { id: 'A', x: 50, y: 15 },
+      { id: 'T', x: 90, y: 85 }
+    ],
+    edges: [
+      { from: 'S', to: 'A', weight: 4 },
+      { from: 'A', to: 'T', weight: 7 }
+    ]
+  });
+  const cxVals = [...netSvg.matchAll(/<circle cx="([0-9.]+)"/g)].map((m) => Number(m[1]));
+  assert.ok(cxVals.length === 3 && Math.max(...cxVals) - Math.min(...cxVals) > 140, 'Normalized 0..100 network_graph coordinates must scale across the SVG canvas');
+});
+
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) {
   process.exit(1);

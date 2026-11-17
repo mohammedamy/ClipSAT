@@ -48,34 +48,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bar",
-          "title": "Discrete Probability Mass Function P(X = k)",
-          "data": [
+          "type": "fn",
+          "title": "Rational Function f(x) = (x² − 1)/(x − 2) & Slant Asymptote y = x + 2",
+          "xrange": [
+            -4,
+            7
+          ],
+          "yrange": [
+            -6,
+            12
+          ],
+          "fns": [
             {
-              "label": "k=0",
-              "val": 12
+              "fn": "abs(x - 2) > 0.08 ? (x*x - 1)/(x - 2) : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x² − 1)/(x − 2)"
             },
             {
-              "label": "k=1",
-              "val": 27
-            },
-            {
-              "label": "k=2",
-              "val": 31
-            },
-            {
-              "label": "k=3",
-              "val": 20
-            },
-            {
-              "label": "k=4",
-              "val": 10
+              "fn": "x + 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Slant y = x + 2"
             }
           ]
         },
         "caption": {
-          "en": "Discrete probability mass bars \\(P(X = k)\\) summing to \\(100\\%\\) across integer counts \\(k\\).",
-          "ar": "أعمدة دالة الكتلة الاحتمالية المنفصلة عبر القيم الصحيحة في الوحدة واحد B · الدوال النسبية وسلوك الأطراف وخطوط التقارب ونظرية ذات الحدين. \\(P(X = k)\\) ، \\(100\\%\\) ، \\(k\\)"
+          "en": "When numerator degree exceeds denominator degree by 1, polynomial division reveals the slant asymptote \\(y = x + 2\\) alongside vertical asymptote \\(x = 2\\).",
+          "ar": "عندما تزيد درجة البسط بواحد عن درجة المقام، تكشف القسمة المطوّلة عن خط التقارب المائل \\(y = x + 2\\) مع خط التقارب الرأسي \\(x = 2\\)."
         }
       },
       {
@@ -181,7 +180,7 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Rational Graph: f(x) = (2x - 1) / (x - 2)",
+          "title": "Rational Hyperbola g(x) = (2x − 1)/(x − 2) & Horizontal Asymptote y = 2",
           "xrange": [
             -4,
             7
@@ -192,38 +191,21 @@
           ],
           "fns": [
             {
-              "fn": "(2*x - 1)/(x - 2)",
+              "fn": "abs(x - 2) > 0.08 ? (2*x - 1)/(x - 2) : NaN",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = (2x-1)/(x-2)"
+              "label": "g(x) = (2x − 1)/(x − 2)"
             },
             {
               "fn": "2",
-              "color": "var(--fig-amber)",
+              "color": "var(--fig-emerald)",
               "dash": "4,4",
-              "label": "HA: y = 2"
-            }
-          ],
-          "vlines": [
-            {
-              "x": 2,
-              "label": "VA: x = 2"
-            }
-          ],
-          "points": [
-            {
-              "x": 0.5,
-              "y": 0,
-              "label": "Zero (0.5, 0)"
+              "label": "HA y = 2"
             }
           ]
         },
         "caption": {
-          "en": "Rational function \\(f(x) = \\frac{2x - 1}{x - 2}\\) exhibiting a vertical asymptote at \\(x = 2\\) and horizontal end-behavior asymptote \\(y = 2\\).",
-          "ar": "الدالة النسبية \\(f(x) = \\frac{2x - 1}{x - 2}\\) مع خط تقارب رأسي عند \\(x = 2\\) وخط تقارب أفقي لسلوك الأطراف عند \\(y = 2\\)."
-        },
-        "title": {
-          "en": "Rational Function Asymptotes & End Behavior",
-          "ar": "الدالة النسبية وخطوط التقارب الرأسية والأفقية"
+          "en": "Equal-degree rational function \\(g(x) = \\frac{2x - 1}{x - 2}\\) approaching horizontal asymptote \\(y = 2\\) as \\(x \\to \\pm\\infty\\).",
+          "ar": "الدالة النسبية \\(g(x) = \\frac{2x - 1}{x - 2}\\) تقترب من خط التقارب الأفقي \\(y = 2\\) عند اللانهاية."
         }
       },
       {
@@ -275,72 +257,72 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 1B · Rational Functions, End Behavior, Asymptotes & Binomial Theorem)",
-          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 1B · الدوال النسبية وسلوك الأطراف وخطوط التقارب ونظرية ذات الحدين)"
+          "en": "◆ Why It Works — Why Common Factors Create Holes While Uncanceled Zeros Create Asymptotes",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — الفرق الجبري بين الفجوة وخط التقارب الرأسي"
         },
         "body": {
-          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
-          "ar": null
+          "en": "<p><strong>Limit Behavior Near \\(x = a\\):</strong> If \\((x - a)^m\\) appears in the numerator and \\((x - a)^n\\) in the denominator: when \\(m \\ge n\\), canceling \\((x - a)^n\\) leaves a finite limit (a <strong>hole</strong>); when \\(m < n\\), \\((x - a)^{n-m}\\) stays in the denominator and drives \\(|r(x)| \\to \\infty\\) (a <strong>vertical asymptote</strong>).</p>",
+          "ar": "<p><strong>سلوك النهاية قرب أصفار المقام:</strong> إذا اختُصر العامل \\((x - a)\\) بالكامل من المقام تبقى النهاية محدودة فتنشأ <strong>فجوة</strong>، أما إذا بقي في المقام فإن \\(|r(x)| \\to \\infty\\) فينشأ <strong>خط تقارب رأسي</strong>.</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 1B.A — Foundational Formulation",
-          "ar": "مثال محلول 1B.A — تطبيق أساسي"
+          "en": "Worked Example 1B.1 — Removable Discontinuities (Holes) vs. Vertical Asymptotes",
+          "ar": "مثال محلول 1B.1 — نقاط الانفصال القابلة للإزالة مقابل خطوط التقارب الرأسية"
         },
         "problem": {
-          "en": "Express \\( f(x) = x^2 - 6x + 11 \\) in completed-square vertex form and find its minimum value.",
-          "ar": "أوجد صيغة إكمال المربع للدالة \\(f(x) = x^2 - 6x + 11\\)."
+          "en": "Let \\( r(x) = \\dfrac{x^2 - 9}{x^2 - x - 6} \\). Identify all holes (with exact coordinates) and vertical or horizontal asymptotes of the graph of \\( r \\).",
+          "ar": "لتكن \\( r(x) = \\dfrac{x^2 - 9}{x^2 - x - 6} \\). حدّد جميع الفجوات (بإحداثياتها الدقيقة) وخطوط التقارب الرأسية والأفقية لمنحنى \\( r \\)."
         },
         "solution": {
-          "en": "<p>Halving \\( -6 \\) gives \\( -3 \\), so \\( f(x) = (x - 3)^2 - 9 + 11 = (x - 3)^2 + 2 \\). Minimum value is \\( 2 \\) at \\( x = 3 \\).</p>",
-          "ar": null
+          "en": "<p>Factor numerator and denominator: \\[ r(x) = \\frac{(x - 3)(x + 3)}{(x - 3)(x + 2)} \\] Because \\( (x - 3) \\) cancels for \\( x \\neq 3 \\), there is a <strong>hole</strong> at \\( x = 3 \\) with \\( y = \\lim_{x \\to 3} \\frac{x + 3}{x + 2} = \\frac{6}{5} \\), i.e. \\( \\left(3, \\frac{6}{5}\\right) \\). The remaining zero in the denominator gives a <strong>vertical asymptote</strong> at \\( x = -2 \\). Since numerator and denominator share degree 2, the <strong>horizontal asymptote</strong> is \\( y = \\frac{1}{1} = 1 \\).</p>",
+          "ar": "<p>نحلّل البسط والمقام: \\[ r(x) = \\frac{(x - 3)(x + 3)}{(x - 3)(x + 2)} \\] بما أن العامل \\( (x - 3) \\) يُختصر عند \\( x \\neq 3 \\)، توجد <strong>فجوة</strong> عند \\( x = 3 \\) إحداثيها الصادي \\( \\lim_{x \\to 3} \\frac{x + 3}{x + 2} = \\frac{6}{5} \\)، أي \\( \\left(3, \\frac{6}{5}\\right) \\). ويعطي العامل المتبقي في المقام <strong>خط تقارب رأسي</strong> عند \\( x = -2 \\)، وبما أن درجتي البسط والمقام متساويتان فإن <strong>خط التقارب الأفقي</strong> هو \\( y = 1 \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 1B.B — Multi-Step Tangency & Discriminant",
-          "ar": "مثال محلول 1B.B — شرط التماس والمميز"
+          "en": "Worked Example 1B.2 — Slant (Oblique) Asymptote via Polynomial Division",
+          "ar": "مثال محلول 1B.2 — خط التقارب المائل بالقسمة المطوّلة لكثيرات الحدود"
         },
         "problem": {
-          "en": "Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 6x + 14 \\).",
-          "ar": "أوجد قيمة \\(k\\) التي تجعل المستقيم \\(y = 2x + k\\) مماساً للمنحنى \\(y = x^2 - 6x + 14\\)."
+          "en": "Find the slant asymptote of \\( f(x) = \\dfrac{2x^2 - 5x + 7}{x - 3} \\) and describe the end behavior as \\( x \\to \\pm\\infty \\).",
+          "ar": "أوجد معادلة خط التقارب المائل للدالة \\( f(x) = \\dfrac{2x^2 - 5x + 7}{x - 3} \\) وصِف سلوك الطرفين عندما \\( x \\to \\pm\\infty \\)."
         },
         "solution": {
-          "en": "<p>Equating gives \\( x^2 - 8x + (14 - k) = 0 \\). Setting \\( \\Delta = (-8)^2 - 4(14 - k) = 0 \\) yields \\( k = -2 \\).</p>",
-          "ar": null
+          "en": "<p>Dividing \\( 2x^2 - 5x + 7 \\) by \\( x - 3 \\): \\( 2x^2 - 5x + 7 = (2x + 1)(x - 3) + 10 \\), so \\[ f(x) = 2x + 1 + \\frac{10}{x - 3} \\] As \\( x \\to \\pm\\infty \\), \\( \\frac{10}{x - 3} \\to 0 \\), so the <strong>slant asymptote</strong> is \\( y = 2x + 1 \\), with \\( \\lim_{x \\to \\infty} f(x) = \\infty \\) and \\( \\lim_{x \\to -\\infty} f(x) = -\\infty \\).</p>",
+          "ar": "<p>بقسمة \\( 2x^2 - 5x + 7 \\) على \\( x - 3 \\) نحصل على \\[ f(x) = 2x + 1 + \\frac{10}{x - 3} \\] وعندما \\( x \\to \\pm\\infty \\) فإن \\( \\frac{10}{x - 3} \\to 0 \\)؛ لذا فإن <strong>خط التقارب المائل</strong> هو \\( y = 2x + 1 \\)، مع \\( \\lim_{x \\to \\infty} f(x) = \\infty \\) و\\( \\lim_{x \\to -\\infty} f(x) = -\\infty \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 1B.C — Rate of Change & Tangent Slope",
-          "ar": "مثال محلول 1B.C — معدل التغير وميل المماس"
+          "en": "Worked Example 1B.3 — Solving Rational Inequalities by Sign Analysis",
+          "ar": "مثال محلول 1B.3 — حل المتباينات النسبية بدراسة الإشارة"
         },
         "problem": {
-          "en": "Find the instantaneous rate of change of \\( g(x) = x^3 - 9x^2 + 27x + 2 \\) at \\( x = 5 \\).",
-          "ar": "أوجد معدل التغير اللحظي للدالة \\(g(x) = x^3 - 9x^2 + 27x + 2\\) عند \\(x = 5\\)."
+          "en": "Solve the inequality \\( \\dfrac{x + 4}{x - 2} \\le 0 \\) and express the solution set in interval notation.",
+          "ar": "حل المتباينة \\( \\dfrac{x + 4}{x - 2} \\le 0 \\) واكتب مجموعة الحل على صورة فترة."
         },
         "solution": {
-          "en": "<p>\\( g'(x) = 3(x - 3)^2 \\), so \\( g'(5) = 3(2)^2 = 12 \\).</p>",
-          "ar": null
+          "en": "<p>Boundary values occur at the numerator zero \\( x = -4 \\) (included) and denominator zero \\( x = 2 \\) (excluded). Testing intervals \\( (-\\infty, -4) \\), \\( (-4, 2) \\), and \\( (2, \\infty) \\) yields signs \\( (+), (-), (+) \\). Thus the quotient is non-positive on \\( [-4, 2) \\).</p>",
+          "ar": "<p>قيم الحدود هي صفر البسط \\( x = -4 \\) (داخلة في الحل) وصفر المقام \\( x = 2 \\) (مستبعدة). باختبار الفترات \\( (-\\infty, -4) \\) و\\( (-4, 2) \\) و\\( (2, \\infty) \\) نحصل على الإشارات \\( (+) \\) ثم \\( (-) \\) ثم \\( (+) \\)؛ وبالتالي مجموعة الحل هي \\( [-4, 2) \\).</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 1B.D — Synthesis & Definite Accumulation",
-          "ar": "مثال محلول 1B.D — مسألة شاملة"
+          "en": "Worked Example 1B.4 — Binomial Theorem Term Extraction",
+          "ar": "مثال محلول 1B.4 — استخراج حد معيّن باستخدام نظرية ذات الحدين"
         },
         "problem": {
-          "en": "Evaluate \\( \\int_0^2 (3x^2 + 6x + 2)\\,\\mathrm{d}x \\).",
-          "ar": "احسب \\(\\int_0^2 (3x^2 + 6x + 2)\\,\\mathrm{d}x\\)."
+          "en": "Find the coefficient of \\( x^3 y^2 \\) in the expansion of \\( (2x - 3y)^5 \\).",
+          "ar": "أوجد معامل الحد \\( x^3 y^2 \\) في مفكوك \\( (2x - 3y)^5 \\)."
         },
         "solution": {
-          "en": "<p>\\( \\left[x^3 + 3x^2 + 2x\\right]_0^2 = 8 + 12 + 4 = 24 \\).</p>",
-          "ar": null
+          "en": "<p>Using the general term \\( \\binom{5}{r}(2x)^{5-r}(-3y)^r \\) with \\( r = 2 \\): \\[ \\binom{5}{2}(2x)^3(-3y)^2 = 10 \\cdot 8x^3 \\cdot 9y^2 = 720x^3 y^2 \\] The required coefficient is \\( 720 \\).</p>",
+          "ar": "<p>باستخدام الحد العام \\( \\binom{5}{r}(2x)^{5-r}(-3y)^r \\) عند \\( r = 2 \\): \\[ \\binom{5}{2}(2x)^3(-3y)^2 = 10 \\cdot 8x^3 \\cdot 9y^2 = 720x^3 y^2 \\] إذن المعامل المطلوب هو \\( 720 \\).</p>"
         }
       },
       {
@@ -358,50 +340,64 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 1B · Rational Functions, End Behavior, Asymptotes & Binomial Theorem)",
-          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 1B · الدوال النسبية وسلوك الأطراف وخطوط التقارب ونظرية ذات الحدين)"
+          "en": "Error Diagnosis — Common AP Precalculus Modeling & Algebraic Traps",
+          "ar": "تشخيص الأخطاء — الأخطاء الشائعة في اختبار AP Precalculus"
         },
         "columns": [
           {
-            "en": "Error Pattern",
-            "ar": "الخطأ الشائع"
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع لدى الطلاب"
           },
           {
-            "en": "Incorrect Working",
-            "ar": "الخطوة الخاطئة"
+            "en": "Why It Fails Mathematically",
+            "ar": "لماذا يفشل رياضياً"
           },
           {
-            "en": "Correct Method",
-            "ar": "الطريقة الصحيحة"
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة في الاختبار"
           }
         ],
         "rows": [
           [
             {
-              "en": "Term-by-term cancellation",
-              "ar": "اختصار حدود مجموعه"
+              "en": "Canceling individual terms across sums: \\(\\frac{x^2 - 9}{x - 3} \\to x - 3\\)",
+              "ar": "اختصار الحدود عبر الجمع أو الطرح دون تحليل"
             },
             {
-              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
-              "ar": null
+              "en": "Division distributes over sums only after factoring common multiplicative factors.",
+              "ar": "لا يجوز الاختصار إلا لعوامل مضروبة في كامل البسط والمقام."
             },
             {
-              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
-              "ar": "حلّل الأول: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))"
+              "en": "Factor completely first: \\(\\frac{(x-3)(x+3)}{x-3} = x + 3\\) for \\(x \\neq 3\\) (hole at \\(x = 3\\)).",
+              "ar": "التحليل إلى عوامل أولاً مع تسجيل قيود المجال والفجوات."
             }
           ],
           [
             {
-              "en": "Sign error in completing square",
-              "ar": "خطأ إشارة عند إكمال المربع"
+              "en": "Using degree mode instead of radian mode on AP Precalculus trigonometric models",
+              "ar": "استخدام نظام الدرجات بدلاً من الراديان في النماذج الجيبية"
             },
             {
-              "en": "\\( (x - h)^2 + h^2 + c \\)",
-              "ar": null
+              "en": "All AP Precalculus sinusoidal functions \\(A\\sin(B(x-C))+D\\) assume radian measure unless ° is printed.",
+              "ar": "تُفترض وحدة الراديان في جميع الدوال المثلثية في الاختبار ما لم يُنص على الدرجات."
             },
             {
-              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
-              "ar": "اطرح \\(h^2\\): \\((x - h)^2 - h^2 + c\\)"
+              "en": "Keep calculator in RADIAN mode and compute period as \\(P = \\frac{2\\pi}{|B|}\\) (or \\(\\frac{\\pi}{|B|}\\) for tangent).",
+              "ar": "ضبط الآلة على وضع الراديان وحساب الدورة عبر \\(2\\pi/|B|\\)."
+            }
+          ],
+          [
+            {
+              "en": "Omitting domain checks after solving \\(\\log_b(f(x)) + \\log_b(g(x)) = k\\)",
+              "ar": "إغفال فحص المجال بعد حل المعادلات اللوغاريتمية"
+            },
+            {
+              "en": "Multiplying \\(f(x)g(x) > 0\\) admits negative pairs \\(f(x) < 0, g(x) < 0\\) where individual logs are undefined.",
+              "ar": "حاصل الضرب الموجب قد ينتج عن عاملين سالبين يجعل كل لوغاريتم غير معرّف."
+            },
+            {
+              "en": "Substitute every algebraic root back into each original logarithm argument to verify positivity.",
+              "ar": "التعويض بكل جذر في المعادلة الأصلية للتحقق من كون ما داخل كل لوغاريتم موجباً."
             }
           ]
         ]
@@ -421,126 +417,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 4)^2 + 3 \\), evaluate \\( f(8) \\).",
-          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\(f(x) = (x - 4)^2 + 3\\)، فاحسب قيمة \\(f(8)\\)."
+          "en": "<strong>[Practice 1]</strong> Find the horizontal asymptote of \\( f(x) = \\dfrac{6x^2 - 5x + 1}{3x^2 + 4} \\).",
+          "ar": "<strong>[تدريب 1]</strong> أوجد خط التقارب الأفقي للدالة \\( f(x) = \\dfrac{6x^2 - 5x + 1}{3x^2 + 4} \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 8 \\) into \\( (x - 4)^2 + 3 \\).",
-            "ar": null
+            "en": "Compare the degrees of the numerator and denominator.",
+            "ar": "قارن بين درجتي البسط والمقام."
           },
           {
-            "en": "Simplify the squared term: \\( (8 - 4)^2 = 4^2 = 16 \\).",
-            "ar": null
+            "en": "Both have degree \\( 2 \\), so take the ratio of leading coefficients.",
+            "ar": "كلتاهما من الدرجة \\( 2 \\)، لذا خذ نسبة المعاملين الرئيسيين."
           },
           {
-            "en": "Add \\( 16 + 3 \\) to obtain the final answer.",
-            "ar": "اجمع \\(16 + 3\\) للحصول على الناتج."
+            "en": "Divide \\( 6 \\) by \\( 3 \\) and write the horizontal line equation.",
+            "ar": "اقسم \\( 6 \\) على \\( 3 \\) واكتب معادلة المستقيم الأفقي."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 8 \\) gives \\( f(8) = (4)^2 + 3 = 16 + 3 = 19 \\).",
-          "ar": null
+          "en": "Both numerator and denominator have degree 2, so the horizontal asymptote is \\( y = \\frac{6}{3} = 2 \\).",
+          "ar": "بما أن البسط والمقام من الدرجة الثانية، فإن خط التقارب الأفقي هو \\( y = \\frac{6}{3} = 2 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 5)^2 + 4 \\), evaluate \\( f(10) \\).",
-          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\(f(x) = (x - 5)^2 + 4\\)، فاحسب قيمة \\(f(10)\\)."
+          "en": "<strong>[Practice 2]</strong> Find the coordinates of the hole in the graph of \\( g(x) = \\dfrac{x^2 - 16}{x - 4} \\).",
+          "ar": "<strong>[تدريب 2]</strong> أوجد إحداثيي الفجوة في منحنى الدالة \\( g(x) = \\dfrac{x^2 - 16}{x - 4} \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 10 \\) into \\( (x - 5)^2 + 4 \\).",
-            "ar": null
+            "en": "Factor the difference of squares \\( x^2 - 16 \\).",
+            "ar": "حلّل فرق المربعين \\( x^2 - 16 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (10 - 5)^2 = 5^2 = 25 \\).",
-            "ar": null
+            "en": "Cancel the common factor \\( (x - 4) \\) for \\( x \\neq 4 \\).",
+            "ar": "اختصر العامل المشترك \\( (x - 4) \\) عند \\( x \\neq 4 \\)."
           },
           {
-            "en": "Add \\( 25 + 4 \\) to obtain the final answer.",
-            "ar": "اجمع \\(25 + 4\\) للحصول على الناتج."
+            "en": "Evaluate \\( \\lim_{x \\to 4} (x + 4) \\) to get the \\( y \\)-coordinate.",
+            "ar": "احسب \\( \\lim_{x \\to 4} (x + 4) \\) لإيجاد الإحداثي الصادي."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 10 \\) gives \\( f(10) = (5)^2 + 4 = 25 + 4 = 29 \\).",
-          "ar": null
+          "en": "Since \\( g(x) = \\frac{(x-4)(x+4)}{x-4} = x + 4 \\) for \\( x \\neq 4 \\), the hole is at \\( (4, 8) \\).",
+          "ar": "بما أن \\( g(x) = \\frac{(x-4)(x+4)}{x-4} = x + 4 \\) عند \\( x \\neq 4 \\)، فإن الفجوة تقع عند \\( (4, 8) \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 6)^2 + 5 \\), evaluate \\( f(12) \\).",
-          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\(f(x) = (x - 6)^2 + 5\\)، فاحسب قيمة \\(f(12)\\)."
+          "en": "<strong>[Practice 3]</strong> Find the slant asymptote of \\( h(x) = \\dfrac{x^2 + 3x - 5}{x + 1} \\).",
+          "ar": "<strong>[تدريب 3]</strong> أوجد خط التقارب المائل للدالة \\( h(x) = \\dfrac{x^2 + 3x - 5}{x + 1} \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 12 \\) into \\( (x - 6)^2 + 5 \\).",
-            "ar": null
+            "en": "Divide \\( x^2 + 3x - 5 \\) by \\( x + 1 \\).",
+            "ar": "اقسم \\( x^2 + 3x - 5 \\) على \\( x + 1 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (12 - 6)^2 = 6^2 = 36 \\).",
-            "ar": null
+            "en": "Rewrite \\( x^2 + 3x - 5 = (x + 1)(x + 2) - 7 \\).",
+            "ar": "أعد الكتابة على الصورة \\( x^2 + 3x - 5 = (x + 1)(x + 2) - 7 \\)."
           },
           {
-            "en": "Add \\( 36 + 5 \\) to obtain the final answer.",
-            "ar": "اجمع \\(36 + 5\\) للحصول على الناتج."
+            "en": "Drop the remainder term \\( \\frac{-7}{x + 1} \\) as \\( |x| \\to \\infty \\).",
+            "ar": "أهمل حد الباقي \\( \\frac{-7}{x + 1} \\) عندما \\( |x| \\to \\infty \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 12 \\) gives \\( f(12) = (6)^2 + 5 = 36 + 5 = 41 \\).",
-          "ar": null
+          "en": "Division gives \\( h(x) = x + 2 - \\frac{7}{x + 1} \\), so the slant asymptote is \\( y = x + 2 \\).",
+          "ar": "تعطي القسمة \\( h(x) = x + 2 - \\frac{7}{x + 1} \\)، وبالتالي خط التقارب المائل هو \\( y = x + 2 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 7)^2 + 6 \\), evaluate \\( f(14) \\).",
-          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\(f(x) = (x - 7)^2 + 6\\)، فاحسب قيمة \\(f(14)\\)."
+          "en": "<strong>[Practice 4]</strong> Solve \\( (x - 1)(x + 3)^2 < 0 \\) in interval notation.",
+          "ar": "<strong>[تدريب 4]</strong> حل المتباينة \\( (x - 1)(x + 3)^2 < 0 \\) واكتب الحل على صورة اتحاد فترات."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 14 \\) into \\( (x - 7)^2 + 6 \\).",
-            "ar": null
+            "en": "Identify zeros \\( x = -3 \\) (even multiplicity 2) and \\( x = 1 \\) (odd multiplicity 1).",
+            "ar": "عيّن الأصفار \\( x = -3 \\) (تعدد زوجي 2) و\\( x = 1 \\) (تعدد فردي 1)."
           },
           {
-            "en": "Simplify the squared term: \\( (14 - 7)^2 = 7^2 = 49 \\).",
-            "ar": null
+            "en": "Notice \\( (x + 3)^2 > 0 \\) for all \\( x \\neq -3 \\), but equals \\( 0 \\) at \\( x = -3 \\).",
+            "ar": "لاحظ أن \\( (x + 3)^2 > 0 \\) لكل \\( x \\neq -3 \\)، ويساوي \\( 0 \\) عند \\( x = -3 \\)."
           },
           {
-            "en": "Add \\( 49 + 6 \\) to obtain the final answer.",
-            "ar": "اجمع \\(49 + 6\\) للحصول على الناتج."
+            "en": "Exclude \\( x = -3 \\) from \\( (-\\infty, 1) \\) because the inequality is strict.",
+            "ar": "استبعد \\( x = -3 \\) من الفترة \\( (-\\infty, 1) \\) لأن المتباينة قطعية."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 14 \\) gives \\( f(14) = (7)^2 + 6 = 49 + 6 = 55 \\).",
-          "ar": null
+          "en": "We need \\( x - 1 < 0 \\) and \\( x \\neq -3 \\), giving \\( (-\\infty, -3) \\cup (-3, 1) \\).",
+          "ar": "يلزم \\( x - 1 < 0 \\) مع \\( x \\neq -3 \\)، فتكون مجموعة الحل \\( (-\\infty, -3) \\cup (-3, 1) \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 8)^2 + 7 \\), evaluate \\( f(16) \\).",
-          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\(f(x) = (x - 8)^2 + 7\\)، فاحسب قيمة \\(f(16)\\)."
+          "en": "<strong>[Practice 5]</strong> Find the coefficient of \\( x^4 \\) in the expansion of \\( (x + 2)^6 \\).",
+          "ar": "<strong>[تدريب 5]</strong> أوجد معامل \\( x^4 \\) في مفكوك \\( (x + 2)^6 \\)."
         },
         "hints": [
           {
-            "en": "Substitute \\( x = 16 \\) into \\( (x - 8)^2 + 7 \\).",
-            "ar": null
+            "en": "Use the binomial term \\( \\binom{6}{r} x^{6-r} 2^r \\) with \\( 6 - r = 4 \\).",
+            "ar": "استخدم الحد العام \\( \\binom{6}{r} x^{6-r} 2^r \\) بحيث \\( 6 - r = 4 \\)."
           },
           {
-            "en": "Simplify the squared term: \\( (16 - 8)^2 = 8^2 = 64 \\).",
-            "ar": null
+            "en": "Set \\( r = 2 \\) and compute \\( \\binom{6}{2} = 15 \\).",
+            "ar": "ضع \\( r = 2 \\) واحسب \\( \\binom{6}{2} = 15 \\)."
           },
           {
-            "en": "Add \\( 64 + 7 \\) to obtain the final answer.",
-            "ar": "اجمع \\(64 + 7\\) للحصول على الناتج."
+            "en": "Multiply \\( 15 \\times 2^2 \\).",
+            "ar": "اضرب \\( 15 \\times 2^2 \\)."
           }
         ],
         "solution": {
-          "en": "Substituting \\( x = 16 \\) gives \\( f(16) = (8)^2 + 7 = 64 + 7 = 71 \\).",
-          "ar": null
+          "en": "For \\( r = 2 \\), \\( \\binom{6}{2} x^4 (2)^2 = 15 \\cdot 4 x^4 = 60x^4 \\), so the coefficient is \\( 60 \\).",
+          "ar": "عند \\( r = 2 \\)، يكون الحد \\( \\binom{6}{2} x^4 (2)^2 = 15 \\cdot 4 x^4 = 60x^4 \\)، فالمعامل هو \\( 60 \\)."
         }
       },
       {

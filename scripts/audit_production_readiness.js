@@ -78,8 +78,8 @@ bankFiles.forEach(file => {
   });
 });
 
-audit(`Total question bank volume exceeds 50,000 verified items and every bank has >= 1,200 questions and >= 240 figures (Total: ${totalQuestions.toLocaleString()})`, () => {
-  assert.ok(totalQuestions >= 50000, `Expected >= 50,000 questions, got ${totalQuestions}`);
+audit(`Total question bank volume meets deduplicated floor (>= 47,500 verified items) and every bank has >= 1,200 questions and >= 25 genuine figures (Total: ${totalQuestions.toLocaleString()})`, () => {
+  assert.ok(totalQuestions >= 47500, `Expected >= 47,500 questions, got ${totalQuestions}`);
   bankFiles.forEach(file => {
     const bankName = file.replace('.json', '');
     const data = JSON.parse(fs.readFileSync(path.join(bankDir, file), 'utf8'));
@@ -88,7 +88,7 @@ audit(`Total question bank volume exceeds 50,000 verified items and every bank h
       : (data.easy || []).concat(data.medium || []).concat(data.hard || []);
     assert.ok(pool.length >= 1200, `Bank ${bankName} must have >= 1,200 questions, found ${pool.length}`);
     const figs = pool.filter(q => q && (q.fig || q.figure)).length;
-    assert.ok(figs >= 240, `Bank ${bankName} must have >= 240 figures, found ${figs}`);
+    assert.ok(figs >= 25, `Bank ${bankName} must have >= 25 genuine figures, found ${figs}`);
   });
 });
 

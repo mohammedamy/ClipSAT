@@ -2,7 +2,7 @@
   "id": "ode-undetermined-coefficients",
   "chapterNumber": "4",
   "title": {
-    "en": "Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+    "en": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
     "ar": "المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين"
   },
   "content": {
@@ -30,32 +30,31 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "title": "Acoustic Beats Near Resonance: y(t) = cos(4t) − cos(5t)",
           "xrange": [
             0,
-            8
+            12.6
           ],
           "yrange": [
-            -2,
-            2.5
+            -2.3,
+            2.3
           ],
           "fns": [
             {
-              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
+              "fn": "cos(4*x) - cos(5*x)",
               "color": "var(--fig-indigo)",
-              "label": "Underdamped y(t)"
+              "label": "Beats y(t)"
             },
             {
-              "fn": "2*Math.exp(-0.35*x)",
+              "fn": "2*sin(0.5*x)",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Envelope ±2e^(−0.35t)"
+              "label": "Slow Envelope ±2 sin(0.5t)"
             }
           ]
         },
         "caption": {
-          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
-          "ar": "استجابة التذبذب المتخامد \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) ضمن غلاف الاضمحلال الأسي في المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين."
+          "en": "When forcing frequency \\(\\omega = 5\\) is close to natural frequency \\(\\omega_0 = 4\\), superposition produces rapid oscillations modulated by slow beat envelope \\(2\\sin(0.5t)\\).",
+          "ar": "عندما يقترب تردد القوة الخارجية \\(\\omega = 5\\) من التردد الطبيعي \\(\\omega_0 = 4\\)، ينشأ تذبذب سريع محكوم بغلاف نبضات بطيء \\(2\\sin(0.5t)\\)."
         }
       },
       {
@@ -403,7 +402,7 @@
         },
         "caption": {
           "en": "Pure resonance in \\( y'' + 4y = 4\\cos(2t) \\). The particular solution \\( y_p(t) = t\\sin(2t) \\) displays an amplitude expanding proportionally to \\( t \\), bounded by the linear envelopes \\( \\pm t \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في المعادلات غير المتجانسة وطريقة المعاملات غير المحددة والرنين. \\(y'' + 4y = 4\\cos(2t)\\) ، \\(y_p(t) = t\\sin(2t)\\) ، \\(t\\) ، \\(\\pm t\\)"
+          "ar": "الرنين التام غير المخمد في \\(y'' + 4y = 4\\cos(2t)\\) حيث ينمو اتساع الحل الخاص \\(y_p(t) = t\\sin(2t)\\) خطياً مع الزمن."
         }
       },
       {
@@ -421,7 +420,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(D\\) — Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance (Hard Application)",
+          "en": "Worked Example \\(D\\) — Nonhomogeneous Equations, Undetermined Coefficients & Resonance (Hard Application)",
           "ar": null
         },
         "problem": {
@@ -437,7 +436,7 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+          "en": "▲ Exam Pacing & Verification Strategy — Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
           "ar": null
         },
         "body": {
@@ -574,12 +573,12 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Variation of Parameters, Wronskian Systems &amp; Green's Kernel",
+            "label": "Variation of Parameters, Wronskian Systems & Green's Kernel",
             "chapterId": "ode-variation-of-parameters",
             "trackId": "odes"
           },
           {
-            "label": "Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory",
+            "label": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
             "chapterId": "ode-second-order",
             "trackId": "odes"
           },
@@ -596,18 +595,18 @@
     "domains": [
       "Nonhomogeneous Equations (Undetermined Coefficients)",
       "Nonhomogeneous Equations, Undetermined Coefficients & Resonance"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",
     "className": "la-tag",
     "badgeClassName": "la-wt",
     "emoji": "📌",
-    "category": "Differential Equations · Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+    "category": "Differential Equations · Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
     "weightBadge": "ODE Core · 4",
     "topics": [
-      "Nonhomogeneous Equations (Undetermined Coefficients)",
-      "Nonhomogeneous Equations, Undetermined Coefficients & Resonance"
+      "Nonhomogeneous Equations (Undetermined Coefficients)"
     ]
   }
 }

@@ -30,20 +30,20 @@
         "kind": "figure",
         "figure": {
           "type": "slope_field",
-          "title": "Differential Equations — Slope Field & Particular Solution Trajectory",
-          "fn": "0.3*x*x - 0.6*y",
-          "xmin": -3,
-          "xmax": 3,
-          "ymin": -3,
-          "ymax": 3,
+          "title": "Logistic Growth Field dy/dt = 0.5y(4 − y) & Carrying Capacity",
+          "fn": "0.5*y*(4 - y)",
+          "xmin": 0,
+          "xmax": 5,
+          "ymin": 0,
+          "ymax": 5,
           "solution": {
             "x0": 0,
-            "y0": 1.8
+            "y0": 0.5
           }
         },
         "caption": {
-          "en": "Slope field for \\(\\frac{dy}{dx} = x -y\\) with the integral curve passing through initial condition \\((0, 1)\\).",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في المعادلات التفاضلية والنمذجة الرياضية. \\(\\frac{dy}{dx} = x -y\\) ، \\((0, 1)\\)"
+          "en": "Autonomous logistic slope field \\(\\frac{dy}{dt} = 0.5y(4 - y)\\) showing the sigmoid trajectory from \\(y(0) = 0.5\\) approaching stable equilibrium \\(y = 4\\).",
+          "ar": "حقل الميول اللوجستي المستقل ذاتياً \\(\\frac{dy}{dt} = 0.5y(4 - y)\\) ويوضح اقتراب مسار الحل المنطلق من \\(y(0) = 0.5\\) نحو الاتزان المستقر \\(y = 4\\)."
         }
       },
       {
@@ -78,7 +78,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "en": "<p><strong>Why Integration by Parts & Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -390,7 +390,7 @@
           {
             "id": "slopePt",
             "label": {
-              "en": "Initial point &amp; slope",
+              "en": "Initial point & slope",
               "ar": "النقطة الابتدائية والميل"
             },
             "colorClass": "indigo",
@@ -447,7 +447,7 @@
         "kind": "figure",
         "caption": {
           "en": "Slope field for first-order differential equation \\(\\frac{dy}{dx} = x - y\\) with particular solution curve passing through \\((0, 1)\\).",
-          "ar": "حقل الميول ومنحنى الحل الخاص للمعادلة التفاضلية في المستوى الإحداثي في المعادلات التفاضلية والنمذجة الرياضية. \\(\\frac{dy}{dx} = x - y\\) ، \\((0, 1)\\)"
+          "ar": "حقل الميول للمعادلة التفاضلية الخطية \\(\\frac{dy}{dx} = x - y\\) مع منحنى الحل الخاص المار بالنقطة الابتدائية \\((0, 1)\\)."
         },
         "figure": {
           "type": "slope_field",
@@ -672,7 +672,7 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Parametric &amp; Polar",
+            "label": "Parametric & Polar",
             "chapterId": "ch-parametric",
             "trackId": "calculus"
           },

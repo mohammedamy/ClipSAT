@@ -29,45 +29,21 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "transformation_grid",
-          "title": "Vector Calculus — Linear Transformation & Basis Action",
-          "original": [
-            [
-              2,
-              1
-            ],
-            [
-              4,
-              1
-            ],
-            [
-              3,
-              3
-            ]
-          ],
-          "transformed": [
-            [
-              2,
-              -1
-            ],
-            [
-              4,
-              -1
-            ],
-            [
-              3,
-              -3
-            ]
-          ],
-          "labels": [
-            "A",
-            "B",
-            "C"
-          ]
+          "type": "slope_field",
+          "title": "Planar Flow Field dy/dx = y / x (Radial Divergence)",
+          "fn": "x != 0 ? y / (abs(x) < 0.25 ? 0.25 : x) : 0",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 1,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
-          "ar": "تمثيل التحويل الهندسي والخطي وتأثيره على الشبكة الإحداثية في تفاضل وتكامل المتجهات ونظريات غرين وستوكس."
+          "en": "Streamlines of the radial source field \\(\\mathbf{F}(x, y) = \\langle x, y \\rangle\\) with positive divergence \\(\\nabla \\cdot \\mathbf{F} = 2 > 0\\) everywhere.",
+          "ar": "خطوط انسياب حقل المصدر الشعاعي \\(\\mathbf{F}(x, y) = \\langle x, y \\rangle\\) ذي التباعد الموجب \\(\\nabla \\cdot \\mathbf{F} = 2 > 0\\) عند كل نقطة."
         }
       },
       {
@@ -90,8 +66,8 @@
           "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — First-Principles اشتقاق (المتجه التفاضل والتكامل)"
         },
         "body": {
-          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Green's Theorem Unifies Boundary Circulation &amp; Interior Curl:</strong> Partitioning planar domain \\(D\\) into infinitesimal rectangles \\(\\Delta x \\times \\Delta y\\) causes shared interior edge integrals to cancel in opposite directions, leaving boundary circulation \\(\\oint_{\\partial D} (P\\,dx + Q\\,dy)\\) equal to the sum of microscopic curls \\(\\iint_D (Q_x - P_y)\\,dA\\).</p>",
+          "ar": "<p><strong>لماذا توحّد نظرية غرين الدوران الحدودي والتدوير الداخلي:</strong> عند تجزئة المنطقة \\(D\\) إلى مستطيلات متناهية الصغر \\(\\Delta x \\times \\Delta y\\)، تتلاشى التكاملات على الأضلاع الداخلية المشتركة لتعاكس اتجاهاتها، فيتبقى الدوران على الحدود الخارجية مساوياً لمجموع كثافة التدوير الداخلي \\(\\iint_D (Q_x - P_y)\\,dA\\).</p>"
         }
       },
       {
@@ -197,7 +173,7 @@
           "ar": "▲ استراتيجية إدارة الوقت والتحقق في الاختبار — المتجه التفاضل والتكامل"
         },
         "body": {
-          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
+          "en": "<p><strong>Fast Matrix & Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -229,8 +205,8 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Vector field — divergence &amp; curl",
-          "ar": "⊙ مستكشف تفاعلي · المتجه field — divergence &amp; curl"
+          "en": "⊙ Explorer · Vector field — divergence & curl",
+          "ar": "⊙ مستكشف تفاعلي · المتجه field — divergence & curl"
         },
         "canvasId": "fieldCanvas",
         "ariaLabel": {
@@ -334,7 +310,7 @@
         "kind": "figure",
         "caption": {
           "en": "Positively oriented (counterclockwise) closed boundary curve \\(C\\) enclosing planar region \\(R\\) for Green's Theorem.",
-          "ar": "شكل هندسي للدائرة وعناصرها من نصف القطر والوتر والقطاع الدائري في تفاضل وتكامل المتجهات ونظريات غرين وستوكس. \\(C\\) ، \\(R\\)"
+          "ar": "المنحنى الحدودي المغلق \\(C\\) الموجه إيجابياً (عكس عقارب الساعة) والمحيط بالمنطقة المستوية \\(D\\) في نظرية غرين."
         },
         "figure": {
           "type": "circle",
@@ -557,7 +533,7 @@
             "trackId": "calculus"
           },
           {
-            "label": "Limits &amp; Continuity",
+            "label": "Limits & Continuity",
             "chapterId": "ch-limits",
             "trackId": "calculus"
           },

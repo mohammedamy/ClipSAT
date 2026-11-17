@@ -2,7 +2,7 @@
   "id": "ode-laplace-transforms",
   "chapterNumber": "6",
   "title": {
-    "en": "The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
+    "en": "The Laplace Transform, Discontinuous Forcing & Convolution Theory",
     "ar": "تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution)"
   },
   "content": {
@@ -30,32 +30,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Underdamped vs Overdamped Second-Order Response y(t)",
+          "title": "Delayed Heaviside Step Forcing u(t − 2) & First-Order Response",
           "xrange": [
             0,
-            8
+            7
           ],
           "yrange": [
-            -2,
-            2.5
+            -0.2,
+            1.4
           ],
           "fns": [
             {
-              "fn": "2*Math.exp(-0.35*x)*Math.cos(2.5*x)",
-              "color": "var(--fig-indigo)",
-              "label": "Underdamped y(t)"
+              "fn": "x >= 2 ? 1 : 0",
+              "color": "var(--fig-amber)",
+              "label": "Step Input u(t − 2)"
             },
             {
-              "fn": "2*Math.exp(-0.35*x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Envelope ±2e^(−0.35t)"
+              "fn": "x >= 2 ? 1 - exp(-(x - 2)) : 0",
+              "color": "var(--fig-indigo)",
+              "label": "Response y(t) = u(t−2)(1 − e⁻⁽ᵗ⁻²⁾)"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 0,
+              "label": "Switch t = 2"
             }
           ]
         },
         "caption": {
-          "en": "Underdamped oscillatory solution \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\) bounded within its exponential decay envelope.",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution). \\(y(t) = 2e^{-0.35t}\\cos(2.5t)\\)"
+          "en": "By the Second Shifting Theorem, step input \\(u(t - 2)\\) keeps the zero-state system dormant until \\(t = 2\\), then triggers exponential rise \\(1 - e^{-(t-2)}\\).",
+          "ar": "وفق نظرية الإزاحة الثانية، يبقى النظام الساكن صفرياً حتى لحظة التفعيل \\(t = 2\\) لدالة الخطوة \\(u(t - 2)\\)، ثم ينمو أسياً وفق \\(1 - e^{-(t-2)}\\)."
         }
       },
       {
@@ -353,7 +359,7 @@
         },
         "caption": {
           "en": "Exponential decay of the Laplace kernel \\( e^{-st} \\) for \\( s = 1, 2, 3 \\). Higher values of \\( s \\) induce faster damping, guaranteeing absolute convergence for all functions of exponential order \\( c < s \\).",
-          "ar": "تمثيل بياني إحداثي يوضح سلوك الدالة والخصائص التحليلية المحورية في تحويل لابلاس ودوال الخطوة ونبضة ديراك ونظرية الالتفاف (Convolution). \\(e^{-st}\\) ، \\(s = 1, 2, 3\\) ، \\(s\\) ، \\(c < s\\)"
+          "ar": "التضاؤل الأسي لنواة تحويل لابلاس \\(e^{-st}\\) لقيم \\(s = 1, 2\\) والذي يضمن تقارب التكامل المعتل للدوال ذات الرتبة الأسية."
         }
       },
       {
@@ -371,7 +377,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(C\\) — The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory (Hard Application)",
+          "en": "Worked Example \\(C\\) — The Laplace Transform, Discontinuous Forcing & Convolution Theory (Hard Application)",
           "ar": null
         },
         "problem": {
@@ -386,7 +392,7 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example \\(D\\) — The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory (Easy Application)",
+          "en": "Worked Example \\(D\\) — The Laplace Transform, Discontinuous Forcing & Convolution Theory (Easy Application)",
           "ar": null
         },
         "problem": {
@@ -401,7 +407,7 @@
       {
         "kind": "table",
         "caption": {
-          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (The Laplace Transform, Discontinuous Forcing & Convolution Theory)",
           "ar": null
         },
         "columns": [
@@ -467,7 +473,7 @@
         "kind": "callout",
         "style": "tip",
         "label": {
-          "en": "▲ Exam Pacing & Verification Strategy — The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
+          "en": "▲ Exam Pacing & Verification Strategy — The Laplace Transform, Discontinuous Forcing & Convolution Theory",
           "ar": null
         },
         "body": {
@@ -604,19 +610,19 @@
         "kind": "seeAlso",
         "links": [
           {
-            "label": "Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials",
+            "label": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
             "chapterId": "ode-systems",
             "trackId": "odes"
           },
           {
-            "label": "Variation of Parameters, Wronskian Systems &amp; Green's Kernel",
+            "label": "Variation of Parameters, Wronskian Systems & Green's Kernel",
             "chapterId": "ode-variation-of-parameters",
             "trackId": "odes"
           },
           {
             "trackId": "calculus",
             "chapterId": "ch-foundations",
-            "label": "CALCULUS: Foundations &amp; Precalculus Review"
+            "label": "CALCULUS: Foundations & Precalculus Review"
           }
         ]
       }
@@ -625,14 +631,15 @@
   "quizWidget": {
     "domains": [
       "Laplace Transforms"
-    ]
+    ],
+    "enabled": true
   },
   "chapterTag": {
     "variant": "category",
     "className": "la-tag",
     "badgeClassName": "la-wt",
     "emoji": "📌",
-    "category": "Differential Equations · The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
+    "category": "Differential Equations · The Laplace Transform, Discontinuous Forcing & Convolution Theory",
     "weightBadge": "ODE Core · 6",
     "topics": [
       "Laplace Transforms"

@@ -41,88 +41,71 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Definite Integral Accumulation Curve y = 4 − 0.25x²",
+          "title": "Unit 6 · Definite Integral Accumulation Curve f(x) = 4 − 0.25x²",
           "xrange": [
             -1,
             5
           ],
           "yrange": [
-            -1,
+            -2,
             5
           ],
           "fns": [
             {
               "fn": "4 - 0.25*x*x",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = 4 − x²/4"
-            },
-            {
-              "fn": "0",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 0"
+              "label": "f(x) = 4 − 0.25x²"
             }
           ],
           "points": [
             {
               "x": 0,
               "y": 4,
-              "label": "a = 0"
+              "label": "(0, 4)"
             },
             {
               "x": 4,
               "y": 0,
-              "label": "b = 4"
+              "label": "(4, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Non-negative integrand \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) representing net accumulated area \\(\\int_0^4 f(x)\\,dx\\).",
-          "ar": "منحنى المكامل غير السالب على الفترة لحساب المساحة المتراكمة في الوحدة ستة · التكامل وتراكم التغير. \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) ، \\([0, 4]\\) ، \\(\\int_0^4 f(x)\\,dx\\)"
+          "en": "Non-negative rate \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) over \\([0, 4]\\) accumulating area \\(\\int_0^4 f(x)\\,dx = \\tfrac{32}{3}\\).",
+          "ar": "منحنى التراكم غير السالب \\(f(x) = 4 - \\tfrac{1}{4}x^2\\) على الفترة \\([0, 4]\\) لتوضيح التكامل المحدود."
         }
       },
       {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Area Enclosed Between Intersecting Curves f(x) and g(x)",
+          "title": "FTC Accumulation g(x) = ∫₀ˣ f(t) dt from Signed Rate f(t)",
           "xrange": [
-            -1,
-            5
+            0,
+            6
           ],
           "yrange": [
-            -1,
-            7
+            -3,
+            4
           ],
           "fns": [
             {
-              "fn": "4*x - 0.8*x*x",
-              "color": "var(--fig-indigo)",
-              "label": "Upper f(x)"
-            },
-            {
-              "fn": "0.8*x",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Lower g(x)"
+              "fn": "3 - x",
+              "color": "var(--fig-emerald)",
+              "label": "f(t) = 3 − t"
             }
           ],
           "points": [
             {
-              "x": 0,
+              "x": 3,
               "y": 0,
-              "label": "(0, 0)"
-            },
-            {
-              "x": 4,
-              "y": 3.2,
-              "label": "(4, 3.2)"
+              "label": "Local max of g at x = 3"
             }
           ]
         },
         "caption": {
-          "en": "Region bounded between upper curve \\(f(x)\\) and lower line \\(g(x)\\) from \\(x = 0\\) to \\(x = 4\\).",
-          "ar": "المنطقة المحصورة بين المنحنى العلوي \\(f(x)\\) والمستقيم السفلي \\(g(x)\\) من \\(x = 0\\) إلى \\(x = 4\\) في الوحدة ستة · التكامل وتراكم التغير."
+          "en": "By FTC Part 1, \\(g'(x) = f(x) = 3 - x\\), so \\(g\\) increases on \\([0, 3]\\), attains its maximum at \\(x = 3\\), and decreases on \\([3, 6]\\).",
+          "ar": "وفق النظرية الأساسية للتفاضل والتكامل \\(g'(x) = f(x)\\)، تبلغ دالة التراكم \\(g\\) قيمتها العظمى عند \\(x = 3\\)."
         }
       },
       {
@@ -153,12 +136,12 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "◆ Why It Works — First-Principles Derivation (Unit 6 · Integration and Accumulation of Change)",
-          "ar": null
+          "en": "◆ Why It Works — First-Principles Proof Sketch of FTC Part 1",
+          "ar": "◆ لماذا تعمل هذه الطريقة رياضياً — البرهان المبدئي للنظرية الأساسية للتفاضل والتكامل"
         },
         "body": {
-          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
-          "ar": null
+          "en": "<p><strong>Why Differentiating Area Recovers the Integrand:</strong> For \\(g(x) = \\int_a^x f(t)\\,dt\\) with continuous \\(f\\), the difference quotient is \\[ \\frac{g(x+h) - g(x)}{h} = \\frac{1}{h}\\int_x^{x+h} f(t)\\,dt = f(c_h) \\] for some \\(c_h \\in [x, x+h]\\) by the Mean Value Theorem for Integrals. Letting \\(h \\to 0\\) forces \\(c_h \\to x\\), proving \\(g'(x) = f(x)\\).</p>",
+          "ar": "<p><strong>لماذا يعيد اشتقاق دالة التراكم الدالة المكامَلة نفسها:</strong> لمقدار التغير \\(\\frac{g(x+h)-g(x)}{h} = \\frac{1}{h}\\int_x^{x+h} f(t)\\,dt = f(c_h)\\)، عندما \\(h \\to 0\\) تقترب \\(c_h \\to x\\) فينتج \\(g'(x) = f(x)\\).</p>"
         }
       },
       {
@@ -318,7 +301,7 @@
         "canvasId": "apRiemCanvas",
         "title": {
           "en": "⊙ Explorer · Riemann sums",
-          "ar": "⊙ مستكشف تفاعلي · Riemann sums"
+          "ar": "⊙ مستكشف تفاعلي · مجاميع ريمان"
         },
         "ariaLabel": {
           "en": "Riemann-sum rectangles approximating the area under a curve",
@@ -370,7 +353,7 @@
             "valueDisplayId": "apRiemNV",
             "ariaLabel": {
               "en": "Number of rectangles",
-              "ar": "عنصر تفاعلي: Number of rectangles"
+              "ar": "عنصر تفاعلي: عدد المستطيلات"
             }
           },
           {
@@ -414,7 +397,7 @@
             "id": "apRiemExact",
             "label": {
               "en": "Exact integral",
-              "ar": "Exact التكامل"
+              "ar": "قيمة التكامل الدقيقة"
             },
             "value": "\\(12.533\\)",
             "colorClass": "indigo"

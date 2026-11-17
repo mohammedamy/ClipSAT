@@ -348,7 +348,7 @@
          is the testgen chapter which has no definitions or practice problems */
       var chapter=view.querySelector('.chapter.ch-active:not(.testgen)')||view.querySelector('.chapter:not(.testgen)');
       var chTitle='';
-      if(chapter){var chH=chapter.querySelector('.chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z؀-ۿ]+/,'').trim();}
+      if(chapter){var chH=chapter.querySelector('.chead h1, .chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z؀-ۿ]+/,'').trim();}
       var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
 
       function esc(t){return t?t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):''; }
@@ -382,8 +382,10 @@
       }
       if(!objectives.length)objectives.push(_tt('understandKeyConcepts')+subject);
 
-      var css='@page{margin:20mm 18mm 24mm 18mm}'
+      var css=':root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}'
+        +'@page{margin:20mm 18mm 24mm 18mm}'
         +'*{box-sizing:border-box}'
+        +'svg{max-width:100%;height:auto;direction:ltr!important;unicode-bidi:isolate}'
         +'body{margin:0;padding:0 0 0 24pt;font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.55;color:#111;background:#fff}'
         +'.lp-header{display:flex;align-items:center;justify-content:space-between;gap:8pt;border-bottom:2.5pt solid #1a1a2e;padding:6pt 0 6pt;margin-bottom:14pt;width:100%;box-sizing:border-box;overflow:hidden}'
         +'.lp-brand{display:flex;align-items:center;gap:7pt;flex-shrink:0;min-width:0}'

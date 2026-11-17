@@ -38,7 +38,7 @@
         "kind": "text",
         "body": {
           "en": "The most memorable problems on the IMO, Saudi NSMO Stage 3, and KAUST Campus Finals ask whether a multi-step process can reach a target state, whether a board can be tiled, or which player has a forced win. None of these yield to routine calculation—they fall to <strong>invariants</strong>, <strong>monovariants</strong>, <strong>coloring obstructions</strong>, the <strong>Extremal Principle</strong>, and <strong>Nim-sum XOR game theory</strong>.",
-          "ar": null
+          "ar": "تتميز أجمل مسائل الأولمبياد الدولي IMO ، والمرحلة النهائية لأولمبياد «نسما»، ونهائيات جامعة كاوست بأسئلة حول إمكانية الوصول إلى حالة مستهدفة عبر عمليات متكررة، أو إمكانية تبليط رقعة، أو تحديد اللاعب صاحب الاستراتيجية الفائزة حتماً. وهذه المسائل تُحسم بأدوات البرهان الأولمبي الخالصة: <strong>اللامتغيرات</strong>، و<strong>شبه اللامتغيرات</strong>، و<strong>التلوين المعياري</strong>، و<strong>المبدأ التطرفي</strong>، و<strong>نظرية ألعاب نيم (XOR)</strong>."
         }
       },
       {
@@ -50,7 +50,7 @@
         },
         "body": {
           "en": "<p><strong>1. Invariant:</strong> A function \\( \\Phi(S) \\) of the system state \\( S \\) such that every legal move \\( S \\to S' \\) satisfies \\( \\Phi(S') = \\Phi(S) \\). If \\( \\Phi(S_{\\text{start}}) \\ne \\Phi(S_{\\text{target}}) \\), then \\( S_{\\text{target}} \\) is <strong>strictly unreachable</strong>!</p><p><strong>2. Monovariant:</strong> A discrete-valued function \\( M(S) \\) bounded below (e.g., \\( M(S) \\in \\mathbb{Z}_{\\ge 0} \\)) that strictly decreases \\( M(S') \\le M(S) - 1 \\) on every move. This guarantees the process <strong>must terminate in at most \\( M(S_0) \\) steps</strong>.</p><p><strong>3. Extremal Principle:</strong> Among all configurations (or putative counterexamples), select the one minimizing or maximizing a well-founded quantity (e.g., minimum perimeter, minimum sum, shortest distance) to force an immediate local contradiction or constructive step.</p>",
-          "ar": null
+          "ar": "<p><strong>1. اللامتغير (Invariant):</strong> دالة \\( \\Phi(S) \\) على حالات النظام تظل ثابتة تماماً تحت أي خطوة مسموحة \\( \\Phi(S') = \\Phi(S) \\). فإذا كان \\( \\Phi(S_{}) \\ne \\Phi(S_{}) \\)، استحال الوصول إلى الهدف قطعياً!</p><p><strong>2. شبه اللامتغير (Monovariant):</strong> مقدار متقطع محدود من الأدنى (مثلاً عدد صحيح غير سالب) يتناقص فعلياً في كل خطوة \\( M(S') \\le M(S) - 1 \\)، مما يبرهن حتمية <strong>انتهاء العملية في عدد خطوات لا يتجاوز \\( M(S_0) \\)</strong>.</p><p><strong>3. المبدأ التطرفي (Extremal Principle):</strong> اختيار العنصر أو التشكيل ذي القيمة الصغرى أو العظمى (أصغر محيط، أقصر مسافة، أصغر مثال مضاد) لاستنتاج تناقض فوري أو بناء مباشر.</p>"
         }
       },
       {
@@ -62,7 +62,7 @@
         },
         "body": {
           "en": "<p><strong>1. Pick's Theorem:</strong> Every simple polygon \\( \\mathcal{P} \\) whose vertices lie on the integer lattice \\( \\mathbb{Z}^2 \\) with \\( I \\) strictly interior lattice points and \\( B \\) boundary lattice points has exact area:</p>\\[ \\operatorname{Area}(\\mathcal{P}) = I + \\frac{B}{2} - 1. \\]<p><strong>2. Bouton's Theorem for Normal-Play Nim:</strong> In Nim with heap sizes \\( (a_1, a_2, \\dots, a_k) \\) where each turn removes \\( \\ge 1 \\) stone from a single heap and the player taking the last stone wins, define the bitwise XOR <strong>Nim-sum</strong> \\( X = a_1 \\oplus a_2 \\oplus \\cdots \\oplus a_k \\). A state is a <strong>losing P-position</strong> (second player wins) iff \\( X = 0 \\), and a <strong>winning N-position</strong> (first player wins) iff \\( X \\ne 0 \\)!</p>",
-          "ar": null
+          "ar": "<p><strong>1. مبرهنة بيك (Pick’s Theorem):</strong> لأي مضلع بسيط \\( \\mathcal{P} \\) تقع رؤوسه على شبكة الأعداد الصحيحة \\( \\mathbb{Z}^2 \\)، إذا حوى \\( I \\) نقطة شبكية داخلية تماماً و\\( B \\) نقطة شبكية على محيطه، فإن مساحته الدقيقة هي:</p>\\[ \\operatorname{Area}(\\mathcal{P}) = I + \\frac{B}{2} - 1. \\]<p><strong>2. مبرهنة بوتون للعبة نيم (Nim XOR):</strong> في لعبة نيم بأكوام أحجار \\( (a_1, a_2, \\dots, a_k) \\) حيث يسحب اللاعب حجراً أو أكثر من كومة واحدة ويفوز من يأخذ الحجر الأخير، نعرّف المجموع الثنائي \\( X = a_1 \\oplus a_2 \\oplus \\cdots \\oplus a_k \\). تكون الوضعية <strong>خاسرة للمبادر (P-position)</strong> إذا وفقط إذا كان \\( X = 0 \\)، و<strong>رابحة للمبادر (N-position)</strong> إذا وفقط إذا كان \\( X \\ne 0 \\)!</p>"
         }
       },
       {
@@ -74,7 +74,7 @@
         },
         "body": {
           "en": "<p>Partition all Nim states into \\( \\mathcal{Z} = \\{S : X = 0\\} \\) and \\( \\mathcal{N} = \\{S : X \\ne 0\\} \\).<br>1. <strong>Terminal state:</strong> \\( (0, 0, \\dots, 0) \\) has \\( X = 0 \\in \\mathcal{Z} \\).<br>2. <strong>Every move from \\( \\mathcal{Z} \\) lands in \\( \\mathcal{N} \\):</strong> Changing a single heap \\( a_i \\to a_i' < a_i \\) changes at least one binary bit of \\( a_i \\) while all other \\( a_j \\) stay fixed, so \\( X' = X \\oplus a_i \\oplus a_i' = a_i \\oplus a_i' \\ne 0 \\)!<br>3. <strong>From any state in \\( \\mathcal{N} \\), there exists a move into \\( \\mathcal{Z} \\):</strong> Let \\( 2^d \\) be the highest-value \\( 1 \\)-bit of \\( X \\ne 0 \\). At least one heap \\( a_i \\) must have bit \\( 2^d \\) equal to \\( 1 \\). Set \\( a_i' = a_i \\oplus X \\): since \\( a_i \\) and \\( a_i' \\) agree above \\( 2^d \\) while bit \\( 2^d \\) flips \\( 1 \\to 0 \\), strictly \\( a_i' < a_i \\), and the new Nim-sum is \\( X \\oplus a_i \\oplus (a_i \\oplus X) = 0 \\)! Thus Player 1 maintains \\( X = 0 \\) after every turn until taking the final stone. \\( \\blacksquare \\)</p>",
-          "ar": null
+          "ar": "<p>نقسّم جميع وضعيات نيم إلى \\( \\mathcal{Z} = \\{X = 0\\} \\) و\\( \\mathcal{N} = \\{X \\ne 0\\} \\):<br>1. <strong>النهاية:</strong> \\( (0,\\dots,0) \\) تحقق \\( X = 0 \\in \\mathcal{Z} \\).<br>2. <strong>أي نقلة من \\( \\mathcal{Z} \\) تخرج حتماً إلى \\( \\mathcal{N} \\):</strong> لأن إنقاص كومة واحدة \\( a_i \\to a_i' < a_i \\) يغيّر خانة ثنائية واحدة على الأقل، فيصبح \\( X' = a_i \\oplus a_i' \\ne 0 \\).<br>3. <strong>من أي وضعية في \\( \\mathcal{N} \\) توجد نقلة تعيد \\( X \\) إلى الصفر:</strong> لتكن \\( 2^d \\) أعلى خانة ثنائية قيمتها \\( 1 \\) في \\( X \\)؛ لا بد أن تمتلك إحدى الأكوام \\( a_i \\) الرقم \\( 1 \\) في الخانة \\( 2^d \\). باستبدال \\( a_i \\) بـ \\( a_i' = a_i \\oplus X \\) تنقلب الخانة \\( 2^d \\) من \\( 1 \\) إلى \\( 0 \\) فيتحقق \\( a_i' < a_i \\) ويصبح المجموع الجديد \\( 0 \\)! وهكذا يحافظ اللاعب الفائز على \\( X = 0 \\) حتى النهاية. \\( \\blacksquare \\)</p>"
         }
       },
       {
@@ -105,11 +105,11 @@
             },
             {
               "en": "Sum modulo \\(2\\): \\(\\sum x_i \\pmod 2\\)",
-              "ar": null
+              "ar": "زوجية المجموع الكلي \\(\\sum x_i \\pmod 2\\)"
             },
             {
               "en": "\\(a + b \\equiv a - b \\equiv |a - b| \\pmod 2\\)",
-              "ar": null
+              "ar": "لأن \\(a+b\\) و\\(|a-b|\\) لهما الزوجية نفسها دائماً"
             }
           ],
           [
@@ -123,7 +123,7 @@
             },
             {
               "en": "\\((ab+a+b) + 1 = (a+1)(b+1)\\)!",
-              "ar": null
+              "ar": "لأن \\(ab+a+b+1 = (a+1)(b+1)\\) تماماً!"
             }
           ],
           [
@@ -133,17 +133,17 @@
             },
             {
               "en": "2-coloring \\((i+j) \\bmod 2\\) (Black vs White)",
-              "ar": null
+              "ar": "تلوين الشطرنج الثنائي \\((i+j) \\bmod 2\\)"
             },
             {
               "en": "Every \\(1 \\times 2\\) domino covers 1 black + 1 white cell",
-              "ar": null
+              "ar": "كل قطعة دومينو تغطي مربعاً أسود ومربعاً أبيض"
             }
           ],
           [
             {
               "en": "\\(1 \\times k\\) straight tile on \\(m \\times n\\) grid",
-              "ar": null
+              "ar": "تبليط بشرائط مستقيمة \\(1 \\times k\\)"
             },
             {
               "en": "Cyclic coloring \\((i + j) \\bmod k\\)",
@@ -151,7 +151,7 @@
             },
             {
               "en": "Every \\(1 \\times k\\) bar covers one cell of each residue \\(0,\\dots,k-1\\)",
-              "ar": null
+              "ar": "كل شريط يغطي خلية واحدة من كل لون من الألوان \\(k\\)"
             }
           ]
         ]
@@ -166,17 +166,17 @@
             },
             "value": {
               "en": "Segment from \\((x_1,y_1)\\) to \\((x_2,y_2)\\) contains \\(\\gcd(|\\Delta x|, |\\Delta y|) + 1\\) lattice points",
-              "ar": null
+              "ar": "تحوي القطعة \\(\\gcd(|x_2-x_1|, |y_2-y_1|) + 1\\) نقطة شبكية"
             }
           },
           {
             "label": {
               "en": "Subtraction Game \\(\\{1, 2, \\dots, k\\}\\)",
-              "ar": null
+              "ar": "لعبة الطرح المقيّد \\(\\{1,\\dots,k\\}\\)"
             },
             "value": {
               "en": "Removing \\(1\\dots k\\) stones from \\(N\\): P-positions are \\(N \\equiv 0 \\pmod{k+1}\\)!",
-              "ar": null
+              "ar": "مواضع الخسارة للمبادر هي مضاعفات \\(k + 1\\) فقط!"
             }
           },
           {
@@ -196,7 +196,7 @@
             },
             "value": {
               "en": "Player 1 wins Chomp on any \\(m \\times n\\) bar (\\(mn > 1\\)) by top-right corner contradiction!",
-              "ar": null
+              "ar": "اللاعب الأول يملك استراتيجية فوز دائماً على أي لوح أكبر من \\(1 \\times 1\\)"
             }
           }
         ]
@@ -292,19 +292,19 @@
         },
         "caption": {
           "en": "Directed game DAG for removing \\(1\\) or \\(2\\) stones: amber arrows show winning moves from \\(N\\)-states (\\(n \\not\\equiv 0 \\pmod 3\\)) into \\(P\\)-states (\\(n \\equiv 0 \\pmod 3\\)), while every move out of \\(6\\) or \\(3\\) hands an \\(N\\)-state to the opponent.",
-          "ar": "مخطط الحالات الموجه للعبة سحب أو حجر: الأسهم الكهرمانية تمثل النقلات الرابحة من مواضع إلى مواضع (مضاعفات ). \\(1\\) ، \\(2\\) ، \\(N\\) ، \\(n \\not\\equiv 0 \\pmod 3\\) ، \\(P\\) ، \\(n \\equiv 0 \\pmod 3\\) ، \\(6\\) ، \\(3\\) ، \\(N\\)"
+          "ar": "مخطط الحالات الموجه للعبة سحب \\(1\\) أو \\(2\\) حجر: الأسهم الكهرمانية تمثل النقلات الرابحة من مواضع \\(N\\) إلى مواضع \\(P\\) (مضاعفات \\(3\\))."
         }
       },
       {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · 3-Heap Nim XOR Binary Engine & Winning Move Finder",
-          "ar": "⊙ مستكشف تفاعلي · محرك لعبة نيم الثنائي (XOR) واكتشاف النقلة الرابحة (3)"
+          "ar": "⊙ مستكشف تفاعلي · محرك لعبة نيم الثنائي (XOR) واكتشاف النقلة الرابحة"
         },
         "canvasId": "olinvariantsextremalExCanvas",
         "ariaLabel": {
           "en": "Interactive 3-heap Nim game explorer showing binary bit decomposition and bitwise XOR Nim-sum.",
-          "ar": null
+          "ar": "مستكشف تفاعلي للعبة نيم بثلاث أكوام يعرض التمثيل الثنائي ومجموع XOR والنقلة الرابحة."
         },
         "dataPanel": {
           "btnId": "olinvariantsextremalExCanvas_dataBtn",
@@ -313,7 +313,7 @@
           "rowsId": "olinvariantsextremalExCanvas_dataRows",
           "caption": {
             "en": "Bitwise binary decomposition of heaps \\((A, B, C = 10)\\) and live Nim-sum \\(A \\oplus B \\oplus C\\)",
-            "ar": null
+            "ar": "التحليل الثنائي لأكوام الأحجار \\((A, B, C=10)\\) وحساب مجموع XOR الحي"
           },
           "columns": [
             {
@@ -331,7 +331,7 @@
             "id": "olinvariantsextremalExCanvas_s0",
             "label": {
               "en": "Heap 1 <b>\\(A =\\)</b>",
-              "ar": null
+              "ar": "الكومة الأولى <b>\\(A =\\)</b>"
             },
             "min": 1,
             "max": 15,
@@ -347,7 +347,7 @@
             "id": "olinvariantsextremalExCanvas_s1",
             "label": {
               "en": "Heap 2 <b>\\(B =\\)</b>",
-              "ar": null
+              "ar": "الكومة الثانية <b>\\(B =\\)</b>"
             },
             "min": 1,
             "max": 15,
@@ -365,7 +365,7 @@
             "id": "olinvariantsextremalExCanvas_r0",
             "label": {
               "en": "Nim-Sum \\(A \\oplus B \\oplus 10\\)",
-              "ar": "Nim-مجموع \\(A \\oplus B \\oplus 10\\)"
+              "ar": "مجموع XOR لـ \\((A, B, 10)\\)"
             },
             "colorClass": "indigo",
             "value": "7 ⊕ 12 ⊕ 10 = 1"
@@ -391,7 +391,7 @@
         ],
         "note": {
           "en": "Heap \\(C = 10 = 1010_2\\) is fixed. Adjust \\(A\\) and \\(B\\) to see when every binary column has an EVEN number of 1-bits (\\(X = 0\\), P-position, e.g. \\(A=6, B=12, C=10\\))!",
-          "ar": null
+          "ar": "الكومة الثالثة مثبتة عند \\(C = 10 = 1010_2\\). حرّك \\(A\\) و\\(B\\) لترى متى يصبح عدد الآحاد زوجياً في كل عمود ثنائي (\\(X = 0\\)، مثل \\(A=6, B=12, C=10\\))!"
         }
       },
       {
@@ -432,7 +432,7 @@
         },
         "caption": {
           "en": "Right trapezoid with vertices \\((0,0), (4,0), (3,2), (0,2)\\) on \\(\\mathbb{Z}^2\\): boundary points \\(B = 4 + 1 + 3 + 2 = 10\\) and interior points \\(I = 3\\) give \\(A = 3 + \\frac{10}{2} - 1 = 7\\), matching \\(\\frac{4+3}{2} \\times 2 = 7\\)!",
-          "ar": "شبه منحرف قائم رؤوسه على الشبكة الصحيحة : عدد نقاط المحيط والنقاط الداخلية ، فتعطي صيغة بيك تماماً! \\((0,0), (4,0), (3,2), (0,2)\\) ، \\(\\mathbb{Z}^2\\) ، \\(B = 4 + 1 + 3 + 2 = 10\\) ، \\(I = 3\\) ، \\(A = 3 + \\frac{10}{2} - 1 = 7\\) ، \\(\\frac{4+3}{2} \\times 2 = 7\\)"
+          "ar": "شبه منحرف قائم رؤوسه على الشبكة الصحيحة \\((0,0), (4,0), (3,2), (0,2)\\): عدد نقاط المحيط \\(B = 10\\) والنقاط الداخلية \\(I = 3\\)، فتعطي صيغة بيك \\(A = 3 + 5 - 1 = 7\\) تماماً!"
         }
       },
       {
@@ -443,26 +443,26 @@
         },
         "problem": {
           "en": "The numbers \\( 1, 2, 3, 4, 5 \\) are written on a whiteboard. Repeatedly, a student erases any two numbers \\( a, b \\) and writes \\( ab + a + b \\) in their place until a single number remains. Prove that the final number is independent of the sequence of choices, and find its exact value.",
-          "ar": "كُتبت الأعداد \\(1, 2, 3, 4, 5\\) على سبورة. في كل خطوة يمسح الطالب أي عددين \\(a, b\\) ويكتب مكانهما \\(ab + a + b\\) حتى يتبقى عدد واحد فقط. أثبت أن العدد النهائي ثابت لا يعتمد على ترتيب الاختيارات، وأوجد قيمته."
+          "ar": "كُتبت الأعداد \\( 1, 2, 3, 4, 5 \\) على سبورة. في كل خطوة يمسح الطالب أي عددين \\( a, b \\) ويكتب مكانهما \\( ab + a + b \\) حتى يتبقى عدد واحد فقط. أثبت أن العدد النهائي ثابت لا يعتمد على ترتيب الاختيارات، وأوجد قيمته."
         },
         "solution": {
           "en": "<p>Notice the shifted factorization \\( (ab + a + b) + 1 = (a + 1)(b + 1) \\)! Define the state function \\( \\Phi(x_1, \\dots, x_k) = \\prod_{i=1}^k (x_i + 1) \\). Replacing \\( a, b \\) with \\( c = ab + a + b \\) replaces the factors \\( (a+1)(b+1) \\) with \\( c + 1 = (a+1)(b+1) \\), leaving \\( \\Phi \\) <strong>strictly invariant</strong>!<br>Initially, \\( \\Phi_{\\text{start}} = (1+1)(2+1)(3+1)(4+1)(5+1) = 2 \\cdot 3 \\cdot 4 \\cdot 5 \\cdot 6 = 720 \\).<br>When a single number \\( F \\) remains, \\( F + 1 = \\Phi_{\\text{final}} = 720 \\implies F = 719 \\) regardless of move order!</p>",
-          "ar": null
+          "ar": "<p><strong>الحل الأولمبي:</strong> نلاحظ التحليل \\( (ab + a + b) + 1 = (a + 1)(b + 1) \\)! نعرّف الدالة \\( \\Phi = \\prod (x_i + 1) \\)؛ في كل خطوة يُستبدل العاملان \\( (a+1)(b+1) \\) بالعامل المساوي لهما \\( c + 1 \\)، فيظل \\( \\Phi \\) <strong>لامتغيراً تاماً</strong>!<br>في البداية \\( \\Phi = 2 \\times 3 \\times 4 \\times 5 \\times 6 = 720 \\)، وعند بقاء عدد وحيد \\( F \\) يكون \\( F + 1 = 720 \\implies F = 719 \\) دائماً!</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.B — 4-Color Modular Obstruction on a 10×10 Board (NSMO Finals / IMO Style)",
-          "ar": null
+          "ar": "مثال محلول 8.B — استحالة التبليط عبر التلوين الرباعي المعياري للوحة 10×10 (نهائيات نسما)"
         },
         "problem": {
           "en": "Prove that a \\( 10 \\times 10 \\) grid of \\( 100 \\) unit squares CANNOT be tiled by \\( 25 \\) straight \\( 1 \\times 4 \\) tetrominoes (even though \\( 25 \\times 4 = 100 \\)).",
-          "ar": null
+          "ar": "أثبت استحالة تبليط رقعة \\( 10 \\times 10 \\) باستخدام \\( 25 \\) قطعة مستقيمة من مقاس \\( 1 \\times 4 \\) (رغم أن المساحة الكلية \\( 25 \\times 4 = 100 \\))."
         },
         "solution": {
           "en": "<p>Assign each cell \\( (i, j) \\) (\\( 0 \\le i, j \\le 9 \\)) the color \\( c(i, j) = (i + j) \\bmod 4 \\in \\{0, 1, 2, 3\\} \\).<br>1. Any horizontal or vertical \\( 1 \\times 4 \\) tile covers \\( 4 \\) consecutive sums \\( s, s+1, s+2, s+3 \\), hence <strong>exactly one cell of each color \\( 0, 1, 2, 3 \\)</strong>. Thus \\( 25 \\) tiles would cover \\( (25, 25, 25, 25) \\) cells of the four colors.<br>2. Count color \\( 2 \\) on the \\( 10 \\times 10 \\) board! In row \\( 0 \\), colors are \\( 0,1,2,3,0,1,2,3,0,1 \\) (three \\( 0 \\)s, three \\( 1 \\)s, two \\( 2 \\)s, two \\( 3 \\)s). Across the \\( 10 \\) rows (two full \\( 4 \\)-row blocks + rows \\( 8, 9 \\)), the exact counts of colors \\( (0, 1, 2, 3) \\) are \\( (25, 26, 25, 24) \\)!<br>Since \\( 26 \\ne 25 \\), no tiling can exist! \\( \\blacksquare \\)</p>",
-          "ar": null
+          "ar": "<p><strong>البرهان الأولمبي:</strong> نلوّن كل خلية \\( (i, j) \\) باللون الدوري \\( (i + j) \\bmod 4 \\in \\{0, 1, 2, 3\\} \\).<br>1. أي قطعة مستقيمة \\( 1 \\times 4 \\) (أفقية أو رأسية) تغطي أربع خلايا متتالية المجموع، أي خلية واحدة بالضبط من كل لون؛ فلو أمكن التبليط لتساوى عدد خلايا كل لون عند \\( 25 \\).<br>2. بحساب أعداد الألوان \\( (0, 1, 2, 3) \\) فعلياً على لوحة \\( 10 \\times 10 \\) نجدها \\( (25, 26, 25, 24) \\)! وبما أن \\( 26 \\ne 25 \\)، فالتبليط مستحيل قطعاً! \\( \\blacksquare \\)</p>"
         }
       },
       {
@@ -473,26 +473,26 @@
         },
         "problem": {
           "en": "Triangle \\( OAB \\) has vertices \\( O(0,0),\\; A(6, 4), \\) and \\( B(2, 8) \\). How many integer lattice points \\( (x, y) \\in \\mathbb{Z}^2 \\) lie <strong>strictly inside</strong> \\( \\triangle OAB \\)?",
-          "ar": null
+          "ar": "رؤوس المثلث \\( OAB \\) هي \\( O(0,0),\\; A(6, 4),\\; B(2, 8) \\). كم نقطة شبكية صحيحة \\( (x, y) \\in \\mathbb{Z}^2 \\) تقع <strong>داخل</strong> المثلث تماماً (دون الأضلاع)؟"
         },
         "solution": {
           "en": "<p><br>1. <strong>Exact Area via Shoelace / Determinant:</strong> \\( \\operatorname{Area}(OAB) = \\frac{1}{2}|6(8) - 4(2)| = \\frac{1}{2}(48 - 8) = 20 \\).<br>2. <strong>Boundary Lattice Points \\( B \\):</strong> On each side, interior edge points equal \\( \\gcd(|\\Delta x|, |\\Delta y|) - 1 \\), so summing \\( \\gcd(|\\Delta x|, |\\Delta y|) \\) over all three edges counts every boundary point once:<br>\\[ B = \\gcd(6, 4) + \\gcd(4, 4) + \\gcd(2, 8) = 2 + 4 + 2 = 8. \\]<br>3. <strong>Pick’s Theorem \\( A = I + \\frac{B}{2} - 1 \\):</strong><br>\\[ 20 = I + \\frac{8}{2} - 1 = I + 3 \\implies I = 17 \\text{ strictly interior lattice points!} \\]</p>",
-          "ar": null
+          "ar": "<p><strong>الحل الأولمبي:</strong><br>1. <strong>المساحة بالمحدد:</strong> \\( \\operatorname{Area}(OAB) = \\frac{1}{2}|6(8) - 4(2)| = 20 \\).<br>2. <strong>نقاط المحيط \\( B \\):</strong> مجموع القواسم المشتركة لفروق الإحداثيات للأضلاع الثلاثة:<br>\\[ B = \\gcd(6, 4) + \\gcd(4, 4) + \\gcd(2, 8) = 2 + 4 + 2 = 8. \\]<br>3. <strong>بتطبيق مبرهنة بيك \\( A = I + \\frac{B}{2} - 1 \\):</strong> \\( 20 = I + 4 - 1 \\implies I = 17 \\) نقطة داخلية!</p>"
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 8.D — Finding All Winning First Moves in 3-Heap Nim (Olympiad Games)",
-          "ar": null
+          "ar": "مثال محلول 8.D — تحديد جميع النقلات الافتتاحية الرابحة في لعبة نيم (ألعاب الأولمبياد)"
         },
         "problem": {
           "en": "Three heaps of stones contain \\( (9, 12, 15) \\) stones in standard Nim. Determine which player has a winning strategy, and find the exact winning first move(s).",
-          "ar": "ثلاث أكوام في لعبة نيم تحوي \\((9, 12, 15)\\) حجراً. حدد اللاعب الفائز بملعب مثالي، وأوجد جميع النقلات الأولى الرابحة."
+          "ar": "ثلاث أكوام في لعبة نيم تحوي \\( (9, 12, 15) \\) حجراً. حدد اللاعب الفائز بملعب مثالي، وأوجد جميع النقلات الأولى الرابحة."
         },
         "solution": {
           "en": "<p>Convert each heap to 4-bit binary and compute the bitwise XOR \\( X = 9 \\oplus 12 \\oplus 15 \\):<br>• \\( 9 = 1001_2 \\)<br>• \\( 12 = 1100_2 \\)<br>• \\( 15 = 1111_2 \\)<br>Adding mod 2 column-by-column: \\( X = 1010_2 = 10 \\ne 0 \\). Thus the <strong>first player wins</strong>!<br>The highest \\( 1 \\)-bit of \\( X = 1010_2 \\) is \\( 2^3 = 8 \\). Which heaps have bit \\( 2^3 \\) set to \\( 1 \\)? All three (\\( 9, 12, 15 \\))! Compute \\( a_i' = a_i \\oplus 10 \\) for each:<br>• Heap 1: \\( 9 \\oplus 10 = 1001_2 \\oplus 1010_2 = 0011_2 = 3 < 9 \\) (valid: remove \\( 6 \\) from \\( 9 \\));<br>• Heap 2: \\( 12 \\oplus 10 = 1100_2 \\oplus 1010_2 = 0110_2 = 6 < 12 \\) (valid: remove \\( 6 \\) from \\( 12 \\));<br>• Heap 3: \\( 15 \\oplus 10 = 1111_2 \\oplus 1010_2 = 0101_2 = 5 < 15 \\) (valid: remove \\( 10 \\) from \\( 15 \\)).<br>All <strong>3</strong> moves leave a zero-XOR state (\\( (3,12,15),\\; (9,6,15), \\) or \\( (9,12,5) \\))!</p>",
-          "ar": null
+          "ar": "<p><strong>الحل الأولمبي:</strong> نحسب المجموع الثنائي \\( X = 9 \\oplus 12 \\oplus 15 \\):<br>\\( 9 = 1001_2 \\)، \\( 12 = 1100_2 \\)، \\( 15 = 1111_2 \\implies X = 1010_2 = 10 \\ne 0 \\)، إذن <strong>اللاعب الأول يفوز</strong>!<br>نحسب القيمة المستهدفة \\( a_i \\oplus 10 \\) لكل كومة:<br>• الكومة الأولى: \\( 9 \\oplus 10 = 3 < 9 \\) (إنقاصها إلى \\( 3 \\))؛<br>• الكومة الثانية: \\( 12 \\oplus 10 = 6 < 12 \\) (إنقاصها إلى \\( 6 \\))؛<br>• الكومة الثالثة: \\( 15 \\oplus 10 = 5 < 15 \\) (إنقاصها إلى \\( 5 \\)).<br>توجد إذن <strong>3 نقلات افتتاحية رابحة</strong> تجعل مجموع XOR مساوياً للصفر!</p>"
         }
       },
       {
@@ -504,7 +504,7 @@
         },
         "body": {
           "en": "<p>An invariant mismatch \\( \\Phi(S_0) \\ne \\Phi(S_{\\text{target}}) \\) is a <strong>100% proof of impossibility</strong>. However, if \\( \\Phi(S_0) = \\Phi(S_{\\text{target}}) \\), you MUST still exhibit an explicit sequence of moves (or inductive construction) to prove \\( S_{\\text{target}} \\) is reachable!</p>",
-          "ar": null
+          "ar": "<p>اختلاف قيمة اللامتغير \\( \\Phi(S_0) \\ne \\Phi(S_{}) \\) برهان قاطع على الاستحالة؛ أما تساويهما فهو <strong>شرط ضروري فقط</strong>، ولا يكتمل إثبات الإمكانية إلا ببناء صريح لخطوات الوصول!</p>"
         }
       },
       {
@@ -516,132 +516,132 @@
         },
         "body": {
           "en": "<p>When an operation splits an integer \\( n = a + b \\) and records \\( ab \\), test the quadratic potential \\( \\Phi = \\sum x_i^2 \\): since \\( (a+b)^2 - (a^2 + b^2) = 2ab \\), the sum of all recorded products across ANY sequence of splits down to \\( 1 \\)s is <strong>always</strong> \\( \\frac{N^2 - N}{2} = \\binom{N}{2} \\)!</p>",
-          "ar": null
+          "ar": "<p>عند تقسيم عدد \\( n = a + b \\) وتسجيل حاصل الضرب \\( ab \\)، اختبر مجموع المربعات \\( \\sum x_i^2 \\): بما أن \\( (a+b)^2 - (a^2+b^2) = 2ab \\)، فإن مجموع جميع الجداءات المسجلة حتى الوصول للواحدات يساوي دائماً \\( \\binom{N}{2} \\) مهما كانت طريقة التقسيم!</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 8.1 · NSMO Stage 1 / Easy]</strong> A pile starts with \\( 100 \\) stones. Players alternate removing \\( 1, 2, 3, \\) or \\( 4 \\) stones; whoever takes the last stone wins. How many stones must Player 1 remove on the very first turn to guarantee victory?",
-          "ar": null
+          "ar": "<strong>[تدريب 8.1 · نسما المرحلة 1 / سهل]</strong> كومة فيها \\( 100 \\) حجر، يتناوب لاعبان على سحب \\( 1 \\) أو \\( 2 \\) أو \\( 3 \\) أو \\( 4 \\) أحجار، ويفوز من يأخذ الحجر الأخير. كم حجراً يجب أن يسحب اللاعب الأول في الدور الأول ليضمن الفوز؟ (إن كانت الوضعية خاسرة فاكتب 0)"
         },
         "hints": [
           {
             "en": "In subtraction game \\( \\{1, 2, 3, 4\\} \\), the losing P-positions are multiples of \\( 4 + 1 = 5 \\).",
-            "ar": null
+            "ar": "في لعبة سحب \\( 1\\dots 4 \\)، مواضع الخسارة للمبادر هي مضاعفات \\( 4 + 1 = 5 \\)."
           },
           {
             "en": "Check whether \\( 100 \\) is already divisible by \\( 5 \\)!",
-            "ar": "اختبر هل \\(100\\) يقبل القسمة على \\(5\\)!"
+            "ar": "اختبر هل \\( 100 \\) يقبل القسمة على \\( 5 \\)!"
           },
           {
             "en": "What happens if Player 1 removes \\( m \\in \\{1,2,3,4\\} \\) stones from \\( 100 \\)? Player 2 replies with \\( 5 - m \\)!",
-            "ar": null
+            "ar": "إذا سحب الأول \\( m \\) حجراً، يسحب الثاني \\( 5 - m \\) في كل دور!"
           }
         ],
         "solution": {
           "en": "Since \\( 100 \\equiv 0 \\pmod 5 \\), \\( 100 \\) is ALREADY a losing P-position! Whatever \\( m \\in \\{1,2,3,4\\} \\) Player 1 removes, Player 2 removes \\( 5 - m \\) stones to maintain multiples of \\( 5 \\) down to \\( 0 \\). Thus Player 2 wins (Player 1 has \\( 0 \\) winning moves).",
-          "ar": null
+          "ar": "بما أن \\( 100 \\) من مضاعفات \\( 5 \\)، فإن الوضعية الابتدائية \\( P \\)-position خاسرة للمبادر! مهما سحب الأول \\( m \\in \\{1,2,3,4\\} \\) سيرد الثاني بسحب \\( 5 - m \\) حتى يأخذ الحجر الأخير (عدد النقلات الرابحة للأول = \\( 0 \\))."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 8.2 · KAUST KMC Regional / Easy]</strong> Start with a single pile of \\( 15 \\) coins. At each step you split any pile of size \\( > 1 \\) into two smaller piles \\( a \\) and \\( b \\) and add \\( ab \\) points to your score, stopping when \\( 15 \\) piles of size \\( 1 \\) remain. What is your final score?",
-          "ar": null
+          "ar": "<strong>[تدريب 8.2 · تصفيات كاوست / سهل]</strong> تبدأ بكومة واحدة من \\( 15 \\) قطعة نقدية. في كل خطوة تقسم أي كومة حجمها \\( > 1 \\) إلى كومتين \\( a \\) و\\( b \\) وتضيف \\( ab \\) نقطة إلى رصيدك حتى تصبح جميع الأكوام من قطعة واحدة. كم يكون مجموع نقاطك النهائي؟"
         },
         "hints": [
           {
             "en": "Track the invariant \\( \\text{Score} + \\frac{1}{2}\\sum x_i^2 \\)!",
-            "ar": "تتبّع اللامتغير الرصيد \\(+ \\frac{1}{2}\\sum x_i^2\\)!"
+            "ar": "تتبّع اللامتغير \\(  + \\frac{1}{2}\\sum x_i^2 \\)!"
           },
           {
             "en": "Check one split \\( (a+b) \\to a, b \\): \\( ab + \\frac{a^2+b^2}{2} = \\frac{(a+b)^2}{2} \\).",
-            "ar": null
+            "ar": "لاحظ أن \\( ab + \\frac{a^2+b^2}{2} = \\frac{(a+b)^2}{2} \\) ثابت لا يتغير!"
           },
           {
             "en": "Equate initial \\( 0 + \\frac{15^2}{2} \\) to final \\( S + 15 \\cdot \\frac{1^2}{2} \\) (equivalently \\( \\binom{15}{2} \\)).",
-            "ar": null
+            "ar": "ساوِ البداية بالنهاية: \\( S = \\frac{15^2 - 15}{2} = \\binom{15}{2} \\)."
           }
         ],
         "solution": {
           "en": "Every pair of coins is separated on exactly one split (or via the invariant \\( S + \\frac{1}{2}\\sum x_i^2 = \\frac{15^2}{2} \\)), so the final score is always \\( \\binom{15}{2} = \\frac{15 \\times 14}{2} = 105 \\).",
-          "ar": null
+          "ar": "بما أن كل زوج من القطع ينفصل في خطوة واحدة بالضبط (أو من اللامتغير \\( S + \\frac{1}{2}\\sum x_i^2 \\))، فإن المجموع النهائي ثابت ويساوي \\( \\binom{15}{2} = 105 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 8.3 · NSMO Stage 2 / Medium]</strong> A lattice polygon has area \\( 29 \\) and exactly \\( 12 \\) lattice points on its boundary. How many lattice points lie strictly in its interior?",
-          "ar": "<strong>[تدريب 8.3 · نسما المرحلة 2 / متوسط]</strong> مضلع بسيط رؤوسه شبكية مساحته \\(29\\) ويقع على محيطه \\(12\\) نقطة شبكية بالضبط. كم نقطة شبكية تقع داخله تماماً؟"
+          "ar": "<strong>[تدريب 8.3 · نسما المرحلة 2 / متوسط]</strong> مضلع بسيط رؤوسه شبكية مساحته \\( 29 \\) ويقع على محيطه \\( 12 \\) نقطة شبكية بالضبط. كم نقطة شبكية تقع داخله تماماً؟"
         },
         "hints": [
           {
             "en": "Apply Pick’s Theorem \\( A = I + \\frac{B}{2} - 1 \\).",
-            "ar": "طبّق مبرهنة بيك \\(A = I + \\frac{B}{2} - 1\\)."
+            "ar": "طبّق مبرهنة بيك \\( A = I + \\frac{B}{2} - 1 \\)."
           },
           {
             "en": "Substitute \\( A = 29 \\) and \\( B = 12 \\).",
-            "ar": "عوّض بـ \\(A = 29\\) و\\(B = 12\\)."
+            "ar": "عوّض بـ \\( A = 29 \\) و\\( B = 12 \\)."
           },
           {
             "en": "Solve \\( 29 = I + 6 - 1 \\) for \\( I \\).",
-            "ar": "حل \\( 29 = I + 6 - 1 \\) لـ \\( I \\)."
+            "ar": "احسب \\( I \\) من المعادلة \\( 29 = I + 5 \\)."
           }
         ],
         "solution": {
           "en": "By Pick’s Theorem, \\( 29 = I + \\frac{12}{2} - 1 = I + 5 \\implies I = 24 \\) interior lattice points.",
-          "ar": null
+          "ar": "من مبرهنة بيك: \\( 29 = I + 6 - 1 = I + 5 \\implies I = 24 \\) نقطة شبكية داخلية."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 8.4 · AMC 12 / KAUST KMC / Hard]</strong> In 3-heap Nim with initial heaps \\( (6, 11, 14) \\), how many stones must Player 1 remove, and from which heap, to guarantee a win?",
-          "ar": null
+          "ar": "<strong>[تدريب 8.4 · AMC 12 / مسابقة كاوست / متقدم]</strong> في لعبة نيم بثلاث أكوام أحجامها \\( (6, 11, 14) \\)، كم حجراً يجب أن يسحب اللاعب الأول ومن أي كومة ليضمن الفوز؟"
         },
         "hints": [
           {
             "en": "Compute \\( X = 6 \\oplus 11 \\oplus 14 \\) in 4-bit binary (\\( 0110_2 \\oplus 1011_2 \\oplus 1110_2 \\)).",
-            "ar": null
+            "ar": "احسب \\( X = 6 \\oplus 11 \\oplus 14 \\) بالتمثيل الثنائي \\( 0110_2 \\oplus 1011_2 \\oplus 1110_2 \\)."
           },
           {
             "en": "Find \\( X = 0011_2 = 3 \\), whose highest \\( 1 \\)-bit is \\( 2^1 = 2 \\).",
-            "ar": "ستجد \\(X = 0011_2 = 3\\)، وأعلى خانة فيها \\(1\\) هي \\(2^1 = 2\\)."
+            "ar": "ستجد \\( X = 0011_2 = 3 \\)، وأعلى خانة فيها \\( 1 \\) هي \\( 2^1 = 2 \\)."
           },
           {
             "en": "Compute \\( a_i \\oplus 3 \\) for each heap and pick the unique one with \\( a_i \\oplus 3 < a_i \\)? Check all three: \\( 6 \\oplus 3 = 5 < 6 \\), \\( 11 \\oplus 3 = 8 < 11 \\), \\( 14 \\oplus 3 = 13 < 14 \\)! All three have bit \\( 2^1 \\) set!",
-            "ar": null
+            "ar": "جميع الأكوام الثلاث تحوي الخانة \\( 2^1 = 1 \\)! احسب \\( 6 \\oplus 3 = 5 \\)، و\\( 11 \\oplus 3 = 8 \\)، و\\( 14 \\oplus 3 = 13 \\)."
           }
         ],
         "solution": {
           "en": "Here \\( X = 0110_2 \\oplus 1011_2 \\oplus 1110_2 = 0011_2 = 3 \\). Since bit \\( 2^1 \\) is \\( 1 \\) in all three heaps, Player 1 has three winning options: remove \\( 1 \\) from \\( 6 \\) (leaving \\( 5,11,14 \\)), remove \\( 3 \\) from \\( 11 \\) (leaving \\( 6,8,14 \\)), or remove \\( 1 \\) from \\( 14 \\) (leaving \\( 6,11,13 \\)).",
-          "ar": null
+          "ar": "بما أن \\( X = 6 \\oplus 11 \\oplus 14 = 3 \\)، والخانة \\( 2^1 \\) موجودة في الأكوام الثلاث، يملك اللاعب الأول ثلاث نقلات رابحة: سحب \\( 1 \\) من \\( 6 \\) (لتصبح \\( 5 \\))، أو سحب \\( 3 \\) من \\( 11 \\) (لتصبح \\( 8 \\))، أو سحب \\( 1 \\) من \\( 14 \\) (لتصبح \\( 13 \\))."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 8.5 · NSMO National Finals / IMO Classic]</strong> A chameleon island has \\( 13 \\) red, \\( 15 \\) green, and \\( 17 \\) blue chameleons. Whenever two chameleons of DIFFERENT colors meet, both change to the third color. Can all \\( 45 \\) chameleons ever become the same color?",
-          "ar": "<strong>[تدريب 8.5 · نهائيات نسما / كلاسيكيات IMO]</strong> جزيرة عليها \\(13\\) حرباء حمراء، و\\(15\\) خضراء، و\\(17\\) زرقاء. كلما التقت حرباءان من لونين مختلفين تحولتا معاً إلى اللون الثالث. هل يمكن أن تصبح جميع الحرابي الـ \\(45\\) بلون واحد؟"
+          "ar": "<strong>[تدريب 8.5 · نهائيات نسما / كلاسيكيات IMO]</strong> جزيرة عليها \\( 13 \\) حرباء حمراء، و\\( 15 \\) خضراء، و\\( 17 \\) زرقاء. كلما التقت حرباءان من لونين مختلفين تحولتا معاً إلى اللون الثالث. هل يمكن أن تصبح جميع الحرابي الـ \\( 45 \\) بلون واحد؟"
         },
         "hints": [
           {
             "en": "Track the pairwise differences \\( (R - G, G - B, B - R) \\) modulo \\( 3 \\)!",
-            "ar": null
+            "ar": "تتبّع فروق الأعداد مثنى مثنى بترديد \\( 3 \\)!"
           },
           {
             "en": "On a meeting of Red + Green \\( \\to 2 \\) Blue: \\( (R, G, B) \\to (R-1, G-1, B+2) \\). How does \\( G - R \\pmod 3 \\) or \\( B - G \\pmod 3 \\) change?",
-            "ar": null
+            "ar": "عند تحول \\( (R, G, B) \\to (R-1, G-1, B+2) \\)، يتغير \\( B - G \\) بمقدار \\( +3 \\equiv 0 \\pmod 3 \\)!"
           },
           {
             "en": "Compare initial residues \\( (13, 15, 17) \\equiv (1, 0, 2) \\pmod 3 \\) with monochromatic \\( (45, 0, 0) \\equiv (0, 0, 0) \\pmod 3 \\).",
-            "ar": null
+            "ar": "قارن البواقي الابتدائية \\( (1, 0, 2) \\pmod 3 \\) بالحالة وحيدة اللون \\( (0, 0, 0) \\pmod 3 \\)."
           }
         ],
         "solution": {
           "en": "Every meeting shifts \\( (R, G, B) \\) by a permutation of \\( (-1, -1, +2) \\), so all pairwise differences \\( R - G,\\; G - B,\\; B - R \\pmod 3 \\) are <strong>strictly invariant</strong>! Initially \\( (13, 15, 17) \\equiv (1, 0, 2) \\pmod 3 \\) (no two counts are congruent mod 3), whereas a monochromatic state \\( (45, 0, 0) \\) has two equal counts \\( 0 \\equiv 0 \\pmod 3 \\). Contradiction—so it is <strong>impossible</strong>!",
-          "ar": null
+          "ar": "كل لقاء يغيّر الأعداد بمقدار \\( (-1, -1, +2) \\)، فتظل الفروق \\( R - G \\) و\\( G - B \\) بترديد \\( 3 \\) <strong>ثابتة تماماً</strong>! في البداية البواقي \\( (1, 0, 2) \\pmod 3 \\) مختلفة مثنى مثنى، بينما توحيد اللون يتطلب \\( (0, 0) \\) بترديد \\( 3 \\) للونين المختفيين، وهذا مستحيل!"
         }
       },
       {
