@@ -15,22 +15,25 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const FN_DIR = path.join(ROOT, 'supabase', 'functions');
 
-// 1. Run `deno test` when deno binary is available on PATH
+const requiredFunctions = ['ai-proxy', 'tts-proxy', 'google-token', 'billing-webhook'];
+
+// 1. Run `deno test` per Edge Function directory when deno binary is available on PATH
 const whichDeno = spawnSync('which', ['deno'], { encoding: 'utf8' });
 if (whichDeno.status === 0) {
   console.log('→ Running native `deno test` across supabase/functions/*...');
-  const denoRes = spawnSync('deno', ['test', '--allow-env', 'supabase/functions/'], {
-    cwd: ROOT,
-    stdio: 'inherit'
-  });
-  if (denoRes.status !== 0) {
-    console.error('❌ CI Gate #9 FAILED: `deno test supabase/functions/` exited non-zero.');
-    process.exit(denoRes.status || 1);
+  for (const fn of requiredFunctions) {
+    const denoRes = spawnSync('deno', ['test', '--allow-env', '--config', 'deno.json', 'index_test.ts'], {
+      cwd: path.join(FN_DIR, fn),
+      stdio: 'inherit'
+    });
+    if (denoRes.status !== 0) {
+      console.error(`❌ CI Gate #9 FAILED: \`deno test\` in supabase/functions/${fn} exited non-zero.`);
+      process.exit(denoRes.status || 1);
+    }
   }
 }
 
 // 2. Verify all 4 Edge Functions & their Deno test suites exist and enforce mandatory security guards
-const requiredFunctions = ['ai-proxy', 'tts-proxy', 'google-token', 'billing-webhook'];
 for (const fn of requiredFunctions) {
   const indexTs = path.join(FN_DIR, fn, 'index.ts');
   const testTs = path.join(FN_DIR, fn, 'index_test.ts');

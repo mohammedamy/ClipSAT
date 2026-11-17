@@ -40,10 +40,12 @@ const tokenHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
 
   // Read decrypted Google refresh token from Supabase Vault (pgsodium AEAD) via service_role RPC,
   // with fallback to legacy column only if migration 20261101120000 has not yet been applied.
+  const userId = ctx.userClaims?.id;
+  if (!userId) return jsonError("Authentication required", 401);
   let refreshToken: string | null = null;
   const { data: vaultToken, error: vaultErr } = await ctx.supabaseAdmin.rpc(
     "get_google_refresh_token_admin",
-    { p_user_id: ctx.userClaims.id },
+    { p_user_id: userId },
   );
 
   if (!vaultErr && typeof vaultToken === "string" && vaultToken.length > 0) {
@@ -52,7 +54,7 @@ const tokenHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     const { data: row, error: readErr } = await ctx.supabaseAdmin
       .from("google_oauth_tokens")
       .select("refresh_token")
-      .eq("user_id", ctx.userClaims.id)
+      .eq("user_id", userId)
       .maybeSingle();
 
     if (readErr) {
@@ -93,9 +95,13 @@ const tokenHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
 
   if (!upstream.ok) {
     if ((data as any)?.error === "invalid_grant") {
-      await ctx.supabaseAdmin
-        .rpc("delete_google_refresh_token_admin", { p_user_id: ctx.userClaims.id })
-        .catch(() => ctx.supabaseAdmin.from("google_oauth_tokens").delete().eq("user_id", ctx.userClaims.id));
+      const { error: delErr } = await ctx.supabaseAdmin.rpc(
+        "delete_google_refresh_token_admin",
+        { p_user_id: userId },
+      );
+      if (delErr) {
+        await ctx.supabaseAdmin.from("google_oauth_tokens").delete().eq("user_id", userId);
+      }
     }
     console.error("Google token refresh failed:", upstream.status, data);
     return jsonError((data as any)?.error_description || (data as any)?.error || "Google token refresh failed", 502);

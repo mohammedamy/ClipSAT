@@ -62,8 +62,10 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   }
 
   // Enforce daily quota cap per authenticated user to bound upstream TTS spend
+  const userId = ctx.userClaims?.id;
+  if (!userId) return jsonError("Authentication required", 401);
   const { data: quotaRows, error: quotaErr } = await ctx.supabaseAdmin.rpc("use_ai_quota", {
-    p_user_id: ctx.userClaims.id,
+    p_user_id: userId,
     p_base_cap: DAILY_TTS_BASE_CAP,
     p_cost: 1,
     p_paid_multiplier: PAID_MULTIPLIER,

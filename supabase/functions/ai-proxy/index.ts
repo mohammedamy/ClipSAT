@@ -247,9 +247,11 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     ? Math.max(0, Math.min(1, payload.temperature))
     : 0.4;
 
+  const userId = ctx.userClaims?.id;
+  if (!userId) return jsonError("Authentication required", 401);
   const cost = attachment ? ATTACHMENT_CREDIT_COST : TEXT_CREDIT_COST;
   const { data: quotaRows, error: quotaErr } = await ctx.supabaseAdmin.rpc("use_ai_quota", {
-    p_user_id: ctx.userClaims.id,
+    p_user_id: userId,
     p_base_cap: DAILY_CREDIT_CAP,
     p_cost: cost,
     p_paid_multiplier: PAID_MULTIPLIER,
