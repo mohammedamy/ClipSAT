@@ -22,6 +22,7 @@ if (!fs.existsSync(SITE_DIR)) {
 }
 
 const errors = [];
+let coreSiteBytes = 0;
 let totalSiteBytes = 0;
 let htmlCount = 0;
 let maxHtmlBytes = 0;
@@ -39,6 +40,10 @@ function walkSite(dir) {
     const sz = fs.statSync(abs).size;
     totalSiteBytes += sz;
     const rel = path.relative(SITE_DIR, abs);
+    const topDir = rel.split(path.sep)[0];
+    if (topDir !== 'bank-shards' && topDir !== 'worksheet-data') {
+      coreSiteBytes += sz;
+    }
 
     if (ent.name.endsWith('.js.map')) {
       errors.push(`Private source map leaked into _site/: ${rel}`);
@@ -70,9 +75,24 @@ function walkSite(dir) {
 
 walkSite(SITE_DIR);
 
-const maxSiteBytes = 70 * 1024 * 1024;
-if (totalSiteBytes >= maxSiteBytes) {
-  errors.push(`_site/ total size ${(totalSiteBytes / (1024 * 1024)).toFixed(2)} MiB exceeds 70 MiB budget`);
+const maxCoreBytes = 70 * 1024 * 1024;
+const maxTotalBytes = 160 * 1024 * 1024;
+if (coreSiteBytes >= maxCoreBytes) {
+  errors.push(`_site/ core shell size ${(coreSiteBytes / (1024 * 1024)).toFixed(2)} MiB exceeds 70 MiB budget`);
+}
+if (totalSiteBytes >= maxTotalBytes) {
+  errors.push(`_site/ total size ${(totalSiteBytes / (1024 * 1024)).toFixed(2)} MiB exceeds 160 MiB budget`);
+}
+if (!process.env.CLIPSAT_CDN_BASE && process.env.CLIPSAT_SKIP_LOCAL_SHARDS !== '1') {
+  if (!fs.existsSync(path.join(SITE_DIR, 'bank-shards', 'sat', '_index.json'))) {
+    errors.push('Missing _site/bank-shards/sat/_index.json when CLIPSAT_CDN_BASE is unset');
+  }
+  if (!fs.existsSync(path.join(SITE_DIR, 'worksheet-data'))) {
+    errors.push('Missing _site/worksheet-data/ when CLIPSAT_CDN_BASE is unset');
+  }
+  if (!fs.existsSync(path.join(SITE_DIR, 'downloads', 'sat', 'manifest.json'))) {
+    errors.push('Missing _site/downloads/sat/manifest.json when CLIPSAT_CDN_BASE is unset');
+  }
 }
 if (htmlCount < 670) {
   errors.push(`Expected >= 670 built HTML routes (612 chapters + 62 EN/AR track hubs + core pages), found ${htmlCount}`);
@@ -101,7 +121,7 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `✅ CI Gate #12 PASSED: _site/ = ${(totalSiteBytes / (1024 * 1024)).toFixed(2)} MiB (< 70 MiB) | ` +
+  `✅ CI Gate #12 PASSED: _site/ core = ${(coreSiteBytes / (1024 * 1024)).toFixed(2)} MiB (< 70 MiB), total = ${(totalSiteBytes / (1024 * 1024)).toFixed(2)} MiB (< 160 MiB) | ` +
     `${htmlCount} HTML routes (peak ${(maxHtmlBytes / 1024).toFixed(1)} KB on ${maxHtmlRel}, peak ${maxDomTags} DOM nodes on ${maxDomRel}) | ` +
     `engine.js = ${(engineBytes / 1024).toFixed(1)} KB | 02-core-app.js = ${coreLines} LOC.`
 );

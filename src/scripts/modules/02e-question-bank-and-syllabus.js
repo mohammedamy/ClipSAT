@@ -57,7 +57,7 @@
   function _fetchRawShard(trackId, cleanTid){
     var key = trackId + ':' + cleanTid;
     if(window.CS_SHARD_CACHE[key]) return Promise.resolve(window.CS_SHARD_CACHE[key]);
-    return fetch(_cdnUrl('/bank-shards/' + trackId + '/' + cleanTid + '.json?v=20261104a'))
+    return fetch(_cdnUrl('/bank-shards/' + trackId + '/' + cleanTid + '.json?v=20261117a'))
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(shard){
         if(shard) window.CS_SHARD_CACHE[key] = shard;
@@ -69,7 +69,7 @@
   window.CS_loadTrackBank = function(trackId){
     if(!trackId || !VALID_BANK_TRACKS[trackId]) return Promise.resolve(null);
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch(_cdnUrl('/bank-shards/' + trackId + '/_index.json?v=20261104a'))
+    var p = fetch(_cdnUrl('/bank-shards/' + trackId + '/_index.json?v=20261117a'))
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(idx){
         if(idx && Array.isArray(idx.canonicalTopics) && idx.canonicalTopics.length){
@@ -98,18 +98,25 @@
             };
           });
         }
-        return fetch(_cdnUrl('/bank-data/' + trackId + '.json?v=20261104a'))
+        return fetch(_cdnUrl('/bank-data/' + trackId + '.json?v=20261117a'))
           .then(function(r2){ return r2.ok ? r2.json() : null; });
       })
       .then(function(data){
         if(data){
           _normalizePool(data);
-          window.fullExamBank[trackId] = data;
-          if(typeof window.QB_migrate === 'function') window.QB_migrate(trackId);
+          if(Array.isArray(data.pool) && data.pool.length){
+            window.fullExamBank[trackId] = data;
+            if(typeof window.QB_migrate === 'function') window.QB_migrate(trackId);
+            return data;
+          }
         }
-        return data;
+        delete window.CS_BANK_LOADED[trackId];
+        return null;
       })
-      .catch(function(){ return null; });
+      .catch(function(){
+        delete window.CS_BANK_LOADED[trackId];
+        return null;
+      });
     window.CS_BANK_LOADED[trackId] = p;
     return p;
   };

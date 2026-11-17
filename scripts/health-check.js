@@ -31,7 +31,8 @@ function checkLocalBuild() {
     '_site/ar/sat/index.html',
     '_site/qudrat/index.html',
     '_site/ar/qudrat/index.html',
-    'public/bank-shards/sat/_index.json',
+    '_site/bank-shards/sat/_index.json',
+    '_site/downloads/sat/manifest.json',
     '_headers',
   ];
 
@@ -73,7 +74,7 @@ async function checkLiveEndpoints(baseUrl) {
   const siteBase = String(baseUrl || 'https://clipsat.org').replace(/\/+$/, '');
   const failures = [];
 
-  for (const route of ['/', '/sat/', '/qudrat/', '/pricing/']) {
+  for (const route of ['/', '/sat/', '/qudrat/', '/pricing/', '/bank-shards/sat/_index.json', '/bank-shards/qudrat/_index.json', '/downloads/sat/manifest.json']) {
     try {
       const res = await fetchWithTimeout(`${siteBase}${route}`);
       if (res.status !== 200) {

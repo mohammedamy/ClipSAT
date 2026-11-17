@@ -23,10 +23,11 @@ function exists(rel) {
   return fs.existsSync(path.join(ROOT, rel));
 }
 
-function dirSizeBytes(dir) {
+function dirSizeBytes(dir, excludeTopDirs = []) {
   let total = 0;
   if (!fs.existsSync(dir)) return 0;
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (excludeTopDirs.includes(ent.name)) continue;
     const full = path.join(dir, ent.name);
     if (ent.isDirectory()) total += dirSizeBytes(full);
     else if (ent.isFile()) total += fs.statSync(full).size;
@@ -151,10 +152,16 @@ assert.strictEqual(tracks.length, 31, `Expected 31 tracks in content/, found ${t
   const gitignore = read('.gitignore');
   assert(gitignore.includes('public/bank-shards/') && gitignore.includes('artifacts/sourcemaps/'), 'WP-23: .gitignore must exclude generated shards & sourcemaps');
 
-  const siteBytes = dirSizeBytes(path.join(ROOT, '_site'));
-  const siteMiB = siteBytes / (1024 * 1024);
-  assert(siteMiB < 70, `WP-23: _site/ size is ${siteMiB.toFixed(1)} MiB (>= 70 MiB ceiling)`);
-  console.log(`  ✓ WP-23: R2 CDN prefixing & _site/ size (${siteMiB.toFixed(1)} MiB < 70 MiB) verified`);
+  const coreBytes = dirSizeBytes(path.join(ROOT, '_site'), ['bank-shards', 'worksheet-data']);
+  const totalBytes = dirSizeBytes(path.join(ROOT, '_site'));
+  const coreMiB = coreBytes / (1024 * 1024);
+  const totalMiB = totalBytes / (1024 * 1024);
+  assert(coreMiB < 70, `WP-23: _site/ core shell size is ${coreMiB.toFixed(1)} MiB (>= 70 MiB ceiling)`);
+  assert(totalMiB < 160, `WP-23: _site/ total size is ${totalMiB.toFixed(1)} MiB (>= 160 MiB ceiling)`);
+  if (!process.env.CLIPSAT_CDN_BASE) {
+    assert(exists('_site/bank-shards/sat/_index.json'), 'WP-23: _site/bank-shards/sat/_index.json must be bundled when CLIPSAT_CDN_BASE is unset');
+  }
+  console.log(`  ✓ WP-23: R2 CDN prefixing & _site/ size (core ${coreMiB.toFixed(1)} MiB < 70 MiB, total ${totalMiB.toFixed(1)} MiB < 160 MiB) verified`);
 }
 
 // ── WP-24: Modular Shell, Standalone Eleventy Pages & CustomEvent Bus

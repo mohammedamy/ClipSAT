@@ -61,7 +61,10 @@
           var safeAk = _safeSlug(d.answerkey);
           var safeLang = (d.lang === 'ar') ? 'ar' : 'en';
           var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
-          var base = cdnPrefix + '/downloads/' + safeTrack + '/';
+          var isProdNoCdn = !cdnPrefix && typeof location !== 'undefined' && /(?:^|\.)clipsat\.org$/i.test(location.hostname || '');
+          var base = isProdNoCdn
+            ? ('https://raw.githubusercontent.com/mohammedamy/ClipSAT/main/public/downloads/' + safeTrack + '/')
+            : (cdnPrefix + '/downloads/' + safeTrack + '/');
           var isExam = Boolean(d.isFullExam);
           var wsLabel = d.wsLabel || (isExam ? t.exam : t.ws);
           var akLabel = d.akLabel || (isExam ? t.examAk : t.ak);

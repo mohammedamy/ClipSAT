@@ -339,7 +339,7 @@ self.addEventListener('message', function(event) {
       './' + courseId + '/index.html',
       './js/ix/' + courseId + '.js',
       './js/ex/' + courseId + '.js',
-      './bank-data/' + courseId + '.json',
+      './bank-shards/' + courseId + '/_index.json',
       './downloads/' + courseId + '/manifest.json',
       './js/figures.js',
       './js/bank-exam.js',

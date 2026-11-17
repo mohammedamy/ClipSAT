@@ -92,9 +92,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("og-image.png");
   eleventyConfig.addPassthroughCopy("robots.txt");
   // WP-23: Offload heavy static data directories (downloads, bank-shards, worksheet-data)
-  // to Cloudflare R2 CDN (cdn.clipsat.org) so _site/ stays < 70 MB.
-  // Local dev/E2E overlays public/ via tests/e2e/static-server.js or CLIPSAT_INCLUDE_LOCAL_SHARDS=1.
-  if (process.env.CLIPSAT_INCLUDE_LOCAL_SHARDS === "1") {
+  // to Cloudflare R2 CDN (cdn.clipsat.org) when CLIPSAT_CDN_BASE is set.
+  // When no external CDN is configured, bundle bank-shards + worksheet-data + downloads/*/manifest.json
+  // directly into _site/ so same-origin fetches succeed on GitHub Pages & local builds.
+  const includeLocalShards =
+    process.env.CLIPSAT_INCLUDE_LOCAL_SHARDS === "1" ||
+    (!process.env.CLIPSAT_CDN_BASE && process.env.CLIPSAT_SKIP_LOCAL_SHARDS !== "1");
+  if (includeLocalShards) {
     eleventyConfig.addPassthroughCopy({ "public/bank-shards": "bank-shards" });
     eleventyConfig.addPassthroughCopy({ "public/worksheet-data": "worksheet-data" });
   }
@@ -112,6 +116,22 @@ module.exports = function (eleventyConfig) {
   // ADR 0046; scripts/stamp-sw-version.js).
   eleventyConfig.on("eleventy.after", ({ dir }) => {
     renderSiteMathSequential(dir.output);
+    if (!process.env.CLIPSAT_CDN_BASE && process.env.CLIPSAT_INCLUDE_LOCAL_DOWNLOADS !== "1") {
+      const fsMod = require("fs");
+      const pathMod = require("path");
+      const dlSrc = pathMod.join(__dirname, "public", "downloads");
+      if (fsMod.existsSync(dlSrc)) {
+        for (const ent of fsMod.readdirSync(dlSrc, { withFileTypes: true })) {
+          if (!ent.isDirectory()) continue;
+          const mf = pathMod.join(dlSrc, ent.name, "manifest.json");
+          if (fsMod.existsSync(mf)) {
+            const destDir = pathMod.join(dir.output, "downloads", ent.name);
+            fsMod.mkdirSync(destDir, { recursive: true });
+            fsMod.copyFileSync(mf, pathMod.join(destDir, "manifest.json"));
+          }
+        }
+      }
+    }
     stampSwVersion(dir.output);
   });
 
