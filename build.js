@@ -632,6 +632,28 @@ const combinedShellSrc = [
         state.expGrps['us-exams'] = true;
       }
     }
+    function expandAllBranches(){
+      for (var ci = 0; ci < TREE_DATA.length; ci++) {
+        var cat = TREE_DATA[ci];
+        state.expCats[cat.id] = true;
+        for (var gi = 0; gi < cat.groups.length; gi++) {
+          state.expGrps[cat.groups[gi].id] = true;
+        }
+      }
+      state.allExpanded = true;
+    }
+    function _syncAllExpandedFlag(){
+      var allOn = true;
+      for (var ci = 0; ci < TREE_DATA.length; ci++) {
+        var cat = TREE_DATA[ci];
+        if (!state.expCats[cat.id]) { allOn = false; break; }
+        for (var gi = 0; gi < cat.groups.length; gi++) {
+          if (!state.expGrps[cat.groups[gi].id]) { allOn = false; break; }
+        }
+        if (!allOn) break;
+      }
+      state.allExpanded = allOn;
+    }
     seedExpansion(state.activeTrack);
 
     function trackUrl(trackId){
@@ -857,8 +879,8 @@ const combinedShellSrc = [
         var expAll = e.target.closest && e.target.closest('.nav-tree-expall');
         if (expAll) {
           e.stopPropagation();
-          state.allExpanded = !state.allExpanded;
-          if (!state.allExpanded) seedExpansion(state.activeTrack);
+          if (state.allExpanded) seedExpansion(state.activeTrack);
+          else expandAllBranches();
           renderAll();
           return;
         }
@@ -867,8 +889,8 @@ const combinedShellSrc = [
           e.stopPropagation();
           var cid = catBtn.getAttribute('data-cat');
           var nextCat = catBtn.getAttribute('aria-expanded') !== 'true';
-          state.allExpanded = false;
           state.expCats[cid] = nextCat;
+          _syncAllExpandedFlag();
           renderAll();
           return;
         }
@@ -877,8 +899,8 @@ const combinedShellSrc = [
           e.stopPropagation();
           var gid = subBtn.getAttribute('data-grp');
           var nextGrp = subBtn.getAttribute('aria-expanded') !== 'true';
-          state.allExpanded = false;
           state.expGrps[gid] = nextGrp;
+          _syncAllExpandedFlag();
           renderAll();
           return;
         }

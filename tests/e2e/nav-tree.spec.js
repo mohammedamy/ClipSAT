@@ -31,9 +31,12 @@ test.describe('Header Collapsible Curriculum Menu Tree', () => {
     await expect(intlBtn).toHaveAttribute('aria-expanded', 'false');
     await expect(panel.locator('[data-track="sat"]')).toHaveAttribute('aria-current', 'page');
 
-    // Expand all shows all 31 leaves
+    // Expand all shows all 31 leaves; clicking Collapse restores only the active branch
     await panel.locator('.nav-tree-expall').click();
     await expect(panel.locator('.nav-tree-leaf')).toHaveCount(31);
+    await panel.locator('.nav-tree-expall').click();
+    await expect(intlBtn).toHaveAttribute('aria-expanded', 'false');
+    await expect(panel.locator('[data-cat="university"]')).toHaveAttribute('aria-expanded', 'false');
 
     // Filter narrows live across English and Arabic labels
     const filter = page.locator('#navTreeFilter');
@@ -85,6 +88,8 @@ test.describe('Header Collapsible Curriculum Menu Tree', () => {
       await expect(mobPanel).toBeVisible();
       await expect(mobPanel.locator('[data-track="qudrat"]')).toHaveAttribute('aria-current', 'page');
 
+      // Expand Digital SAT & ACT subgroup (starts collapsed when viewing Qudrat) before clicking SAT
+      await mobPanel.locator('[data-grp="us-exams"]').click();
       await Promise.all([
         page.waitForURL(/\/ar\/sat\/$/),
         mobPanel.locator('[data-track="sat"]').click(),
