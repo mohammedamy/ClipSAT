@@ -11,6 +11,7 @@
     if(!btn||!panel) return;
     function closePanel(){ panel.hidden=true; btn.setAttribute('aria-expanded','false'); }
     function openPanel(){
+      if (window.CSNavTree && typeof window.CSNavTree.close === 'function') window.CSNavTree.close();
       panel.hidden=false; btn.setAttribute('aria-expanded','true');
       if (window._ensureTeacherMode) window._ensureTeacherMode();
     }

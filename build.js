@@ -424,9 +424,140 @@ const combinedShellSrc = [
   }
   const modalsHtml = extractSection('modals');
   const studyChromeHtml = extractSection('studyChrome');
-  const navSelectHtml = extractSection('navSelect');
   const navMoreHtml = extractSection('navMore');
   const overlaysHtml = extractSection('overlays');
+
+  const NAV_TREE_DATA = [
+    {
+      id: 'exams',
+      en: 'Standardized & National Exams',
+      ar: 'الاختبارات المعيارية والوطنية',
+      groups: [
+        {
+          id: 'us-exams',
+          en: 'Digital SAT & ACT',
+          ar: 'اختبارات SAT و ACT',
+          tracks: [
+            { id: 'sat', code: 'SAT', en: 'Digital SAT Math', ar: 'اختبار SAT الرقمي' },
+            { id: 'act', code: 'ACT', en: 'ACT Math', ar: 'اختبار ACT للرياضيات' },
+            { id: 'act2', code: 'ACT-L1', en: 'ACT II Math Level 1', ar: 'اختبار ACT II المستوى 1' },
+            { id: 'act2l2', code: 'ACT-L2', en: 'ACT II Math Level 2', ar: 'اختبار ACT II المستوى 2' }
+          ]
+        },
+        {
+          id: 'est-exams',
+          en: 'Egyptian Scholastic Test (EST)',
+          ar: 'الدبلومة الأمريكية (EST)',
+          tracks: [
+            { id: 'est', code: 'EST', en: 'EST I Math', ar: 'اختبار EST I للرياضيات' },
+            { id: 'est2', code: 'EST-L1', en: 'EST II Math Level 1', ar: 'اختبار EST II المستوى 1' },
+            { id: 'est2l2', code: 'EST-L2', en: 'EST II Math Level 2', ar: 'اختبار EST II المستوى 2' }
+          ]
+        },
+        {
+          id: 'saudi-qiyas',
+          en: 'Saudi ETEC / Qiyas',
+          ar: 'اختبارات قياس الوطنية',
+          tracks: [
+            { id: 'qudrat', code: 'QUDRAT', en: 'GAT Qudrat', ar: 'اختبار القدرات العامة' },
+            { id: 'tahsili', code: 'TAHSILI', en: 'SAAT Tahsili', ar: 'الاختبار التحصيلي' },
+            { id: 'gaten', code: 'QIYAS-EN', en: 'English GAT & SAAT', ar: 'قدرات وتحصيلي بالإنجليزية' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'intl',
+      en: 'International Curricula',
+      ar: 'المناهج الدولية',
+      groups: [
+        {
+          id: 'ap-courses',
+          en: 'College Board AP®',
+          ar: 'مقررات AP المتقدمة',
+          tracks: [
+            { id: 'apab', code: 'AP-AB', en: 'AP Calculus AB', ar: 'تفاضل وتكامل AP AB' },
+            { id: 'apbc', code: 'AP-BC', en: 'AP Calculus BC', ar: 'تفاضل وتكامل AP BC' },
+            { id: 'appc', code: 'AP-PC', en: 'AP Precalculus', ar: 'ما قبل التفاضل AP' },
+            { id: 'apstats', code: 'AP-STAT', en: 'AP Statistics', ar: 'الإحصاء المتقدم AP' }
+          ]
+        },
+        {
+          id: 'uk-cambridge',
+          en: 'Cambridge & Pearson Edexcel',
+          ar: 'مناهج كامبريدج وإدكسل',
+          tracks: [
+            { id: 'igcse', code: '0580', en: 'Cambridge IGCSE 0580', ar: 'كامبريدج IGCSE 0580' },
+            { id: 'edexcel', code: '4MA1', en: 'Pearson Edexcel 4MA1', ar: 'إدكسل IGCSE 4MA1' },
+            { id: 'addmath', code: '0606', en: 'Additional Maths', ar: 'الرياضيات الإضافية 0606' },
+            { id: 'aslevel', code: 'AS', en: 'Cambridge AS Level', ar: 'مستوى كامبريدج AS' },
+            { id: 'a2level', code: 'A2', en: 'Cambridge A2 Level', ar: 'مستوى كامبريدج A2' }
+          ]
+        },
+        {
+          id: 'ib-diploma',
+          en: 'IB Diploma Programme',
+          ar: 'البكالوريا الدولية (IB)',
+          tracks: [
+            { id: 'ibsl', code: 'IB-SL', en: 'IB Math SL (AA/AI)', ar: 'رياضيات IB المستوى القياسي SL' },
+            { id: 'ibhl', code: 'IB-HL', en: 'IB Math HL (AA/AI)', ar: 'رياضيات IB المستوى العالي HL' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'secondary',
+      en: 'Secondary & Olympiad',
+      ar: 'المرحلة الثانوية والأولمبياد',
+      groups: [
+        {
+          id: 'sec-foundations',
+          en: 'Secondary Foundations',
+          ar: 'تأسيس المرحلة الثانوية',
+          tracks: [
+            { id: 'algebra', code: 'ALG-1', en: 'Algebra 1', ar: 'الجبر 1' },
+            { id: 'geo', code: 'GEO', en: 'Geometry', ar: 'الهندسة' },
+            { id: 'alg2', code: 'ALG-2', en: 'Algebra 2', ar: 'الجبر 2' },
+            { id: 'precalc', code: 'PRECALC', en: 'Pre-Calculus', ar: 'ما قبل التفاضل والتكامل' }
+          ]
+        },
+        {
+          id: 'contest-olympiad',
+          en: 'Olympiad & Competitions',
+          ar: 'المسابقات والأولمبياد',
+          tracks: [
+            { id: 'olympiad', code: 'NSMO', en: 'Olympiad · NSMO & KAUST', ar: 'الأولمبياد · نسما وكاوست' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'university',
+      en: 'University & Applied STEM',
+      ar: 'الرياضيات الجامعية والتطبيقية',
+      groups: [
+        {
+          id: 'univ-calc',
+          en: 'Calculus & Differential Equations',
+          ar: 'التفاضل والمعادلات التفاضلية',
+          tracks: [
+            { id: 'calculus', code: 'CALC', en: 'Calculus', ar: 'التفاضل والتكامل' },
+            { id: 'mvc', code: 'MVC', en: 'Multivariable Calculus', ar: 'تفاضل متعدد المتغيرات' },
+            { id: 'odes', code: 'ODEs', en: 'Differential Equations', ar: 'المعادلات التفاضلية' }
+          ]
+        },
+        {
+          id: 'univ-linear-ai',
+          en: 'Linear Algebra & AI Math',
+          ar: 'الجبر الخطي والذكاء الاصطناعي',
+          tracks: [
+            { id: 'linalg', code: 'LINALG', en: 'Linear Algebra', ar: 'الجبر الخطي' },
+            { id: 'mathai', code: 'MATH-AI', en: 'Math for AI & Data Science', ar: 'رياضيات الذكاء الاصطناعي' }
+          ]
+        }
+      ]
+    }
+  ];
 
   const shellModalsSrc = `(function(){
   var m = document.getElementById('cs-study-modals-mount');
@@ -437,8 +568,496 @@ const combinedShellSrc = [
   if (ov) ov.outerHTML = ${JSON.stringify(overlaysHtml)};
   var nm = document.getElementById('navMorePanel');
   if (nm && !nm.firstChild) nm.innerHTML = ${JSON.stringify(navMoreHtml)};
-  var ns = document.getElementById('navSelect');
-  if (ns && ns.children.length <= 1) ns.insertAdjacentHTML('beforeend', ${JSON.stringify(navSelectHtml)});
+
+  var TREE_DATA = ${JSON.stringify(NAV_TREE_DATA)};
+  var TRACK_IDX = {};
+  (function(){
+    for (var ci = 0; ci < TREE_DATA.length; ci++) {
+      var cat = TREE_DATA[ci];
+      for (var gi = 0; gi < cat.groups.length; gi++) {
+        var grp = cat.groups[gi];
+        for (var ti = 0; ti < grp.tracks.length; ti++) {
+          var tr = grp.tracks[ti];
+          TRACK_IDX[tr.id] = { catId: cat.id, grpId: grp.id, track: tr };
+        }
+      }
+    }
+  })();
+
+  function _escHtml(s){
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function _isArLocale(){
+    if (window.i18n && typeof window.i18n.getLocale === 'function') {
+      return window.i18n.getLocale() === 'ar';
+    }
+    return window.CLIPSAT_LOCALE === 'ar' || (document.body && document.body.classList.contains('rtl'));
+  }
+
+  function _chevSvg(){
+    return '<svg class="nav-tree-chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M4.2 2.2L8.4 6l-4.2 3.8-.9-1L6.3 6 3.3 3.2z"/></svg>';
+  }
+
+  function _initNavTree(){
+    var wrap = document.getElementById('navTreeWrap');
+    var btn = document.getElementById('navTreeBtn');
+    var panel = document.getElementById('navTreePanel');
+    var codeEl = document.getElementById('navTreeCode');
+    var labelEl = document.getElementById('navTreeLabel');
+    if (!wrap || !btn || !panel) return null;
+
+    var state = {
+      activeTrack: window.CLIPSAT_TRACK || 'home',
+      expCats: {},
+      expGrps: {},
+      allExpanded: false,
+      query: ''
+    };
+
+    function seedExpansion(trackId){
+      state.expCats = {};
+      state.expGrps = {};
+      state.allExpanded = false;
+      var meta = TRACK_IDX[trackId];
+      if (meta) {
+        state.expCats[meta.catId] = true;
+        state.expGrps[meta.grpId] = true;
+      } else {
+        state.expCats.exams = true;
+        state.expGrps['us-exams'] = true;
+      }
+    }
+    seedExpansion(state.activeTrack);
+
+    function trackUrl(trackId){
+      var ar = _isArLocale();
+      if (!trackId || trackId === 'home') return ar ? '/ar/' : '/';
+      return (ar ? '/ar/' : '/') + encodeURIComponent(trackId) + '/';
+    }
+
+    function updateTrigger(){
+      var ar = _isArLocale();
+      var meta = TRACK_IDX[state.activeTrack];
+      btn.setAttribute('aria-label', ar ? 'اختر المسار الدراسي' : 'Choose course track');
+      panel.setAttribute('aria-label', ar ? 'شجرة المسارات الدراسية' : 'Curriculum tracks tree');
+      if (meta) {
+        if (codeEl) {
+          codeEl.textContent = meta.track.code;
+          codeEl.hidden = false;
+        }
+        if (labelEl) {
+          labelEl.removeAttribute('data-i18n');
+          labelEl.textContent = ar ? meta.track.ar : meta.track.en;
+        }
+      } else {
+        if (codeEl) {
+          codeEl.textContent = '';
+          codeEl.hidden = true;
+        }
+        if (labelEl) {
+          labelEl.setAttribute('data-i18n', 'nav.overview');
+          labelEl.textContent = ar ? 'نظرة عامة' : 'Overview';
+        }
+      }
+    }
+
+    function buildTreeShell(prefix, filterId){
+      var ar = _isArLocale();
+      var filterLbl = ar ? 'تصفية المسارات في الشجرة' : 'Filter courses in menu tree';
+      var filterPh = ar ? 'تصفية الـ 31 مسارًا…' : 'Filter all 31 courses…';
+      var expText = state.allExpanded ? (ar ? 'طي الكل' : 'Collapse') : (ar ? 'توسيع الكل' : 'Expand all');
+      return ''
+        + '<div class="nav-tree-toolbar">'
+        +   '<label class="sr-only" for="' + filterId + '">' + _escHtml(filterLbl) + '</label>'
+        +   '<div class="nav-tree-search-wrap">'
+        +     '<svg class="nav-tree-search-ico" width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>'
+        +     '<input id="' + filterId + '" type="search" class="nav-tree-filter" autocomplete="off" value="' + _escHtml(state.query) + '" placeholder="' + _escHtml(filterPh) + '">'
+        +   '</div>'
+        +   '<button type="button" class="nav-tree-expall">' + _escHtml(expText) + '</button>'
+        + '</div>'
+        + '<div class="nav-tree-scroll" data-tree-prefix="' + prefix + '"></div>';
+    }
+
+    function matchesQuery(q, fields){
+      if (!q) return true;
+      for (var i = 0; i < fields.length; i++) {
+        if (String(fields[i] || '').toLowerCase().indexOf(q) !== -1) return true;
+      }
+      return false;
+    }
+
+    function renderTreeBody(container){
+      if (!container) return;
+      var ar = _isArLocale();
+      var q = String(state.query || '').trim().toLowerCase();
+      var isHome = !TRACK_IDX[state.activeTrack];
+      var homeLabel = ar ? 'الصفحة الرئيسية · نظرة عامة (31 مسارًا)' : 'Overview · All 31 Tracks';
+
+      var html = '<a href="' + _escHtml(trackUrl('home')) + '" data-track="home" class="nav-tree-overview"'
+        + (isHome ? ' aria-current="page"' : '') + '>'
+        + '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.7 2.3a1 1 0 00-1.4 0l-7 7a1 1 0 001.4 1.4L4 10.4V17a1 1 0 001 1h3.5v-4.5h3V18H15a1 1 0 001-1v-6.6l.3.3a1 1 0 001.4-1.4l-7-7z"/></svg>'
+        + '<span>' + _escHtml(homeLabel) + '</span>'
+        + '</a>';
+
+      html += '<ul class="nav-tree-root">';
+      var totalMatches = 0;
+
+      for (var ci = 0; ci < TREE_DATA.length; ci++) {
+        var cat = TREE_DATA[ci];
+        var catMatchesDirect = matchesQuery(q, [cat.en, cat.ar, cat.id]);
+        var catHtml = '';
+        var catTrackCount = 0;
+        var catVisTracks = 0;
+
+        for (var gi = 0; gi < cat.groups.length; gi++) {
+          var grp = cat.groups[gi];
+          catTrackCount += grp.tracks.length;
+          var grpMatchesDirect = catMatchesDirect || matchesQuery(q, [grp.en, grp.ar, grp.id]);
+          var leavesHtml = '';
+          var visLeaves = 0;
+
+          for (var ti = 0; ti < grp.tracks.length; ti++) {
+            var tr = grp.tracks[ti];
+            var hit = grpMatchesDirect || matchesQuery(q, [tr.id, tr.code, tr.en, tr.ar]);
+            if (!hit) continue;
+            visLeaves++;
+            catVisTracks++;
+            totalMatches++;
+            var isCur = state.activeTrack === tr.id;
+            leavesHtml += '<li class="nav-tree-item">'
+              + '<a href="' + _escHtml(trackUrl(tr.id)) + '" data-track="' + _escHtml(tr.id) + '" data-prefetch="1" class="nav-tree-leaf"'
+              + (isCur ? ' aria-current="page"' : '') + '>'
+              + '<span class="nav-tree-leaf-code">' + _escHtml(tr.code) + '</span>'
+              + '<span class="nav-tree-leaf-title">' + _escHtml(ar ? tr.ar : tr.en) + '</span>'
+              + '</a>'
+              + '</li>';
+          }
+
+          if (!visLeaves) continue;
+          var grpExpanded = q ? true : Boolean(state.allExpanded || state.expGrps[grp.id]);
+          catHtml += '<li class="nav-tree-sub">'
+            + '<button type="button" class="nav-tree-sub-btn" data-grp="' + _escHtml(grp.id) + '" aria-expanded="' + (grpExpanded ? 'true' : 'false') + '">'
+            + _chevSvg()
+            + '<span class="nav-tree-sub-title">' + _escHtml(ar ? grp.ar : grp.en) + '</span>'
+            + '<span class="nav-tree-count">' + visLeaves + '</span>'
+            + '</button>'
+            + '<ul class="nav-tree-leaves"' + (grpExpanded ? '' : ' hidden') + '>'
+            + leavesHtml
+            + '</ul>'
+            + '</li>';
+        }
+
+        if (!catVisTracks) continue;
+        var catExpanded = q ? true : Boolean(state.allExpanded || state.expCats[cat.id]);
+        html += '<li class="nav-tree-cat">'
+          + '<button type="button" class="nav-tree-cat-btn" data-cat="' + _escHtml(cat.id) + '" aria-expanded="' + (catExpanded ? 'true' : 'false') + '">'
+          + _chevSvg()
+          + '<span class="nav-tree-cat-title">' + _escHtml(ar ? cat.ar : cat.en) + '</span>'
+          + '<span class="nav-tree-count">' + (q ? catVisTracks : catTrackCount) + '</span>'
+          + '</button>'
+          + '<ul class="nav-tree-sublist"' + (catExpanded ? '' : ' hidden') + '>'
+          + catHtml
+          + '</ul>'
+          + '</li>';
+      }
+
+      html += '</ul>';
+      if (!totalMatches && q) {
+        html += '<p class="nav-tree-empty" role="status">' + _escHtml(ar ? 'لا توجد مسارات مطابقة.' : 'No matching tracks found.') + '</p>';
+      }
+      container.innerHTML = html;
+    }
+
+    function renderPanel(){
+      var hadScroll = panel.querySelector('.nav-tree-scroll');
+      if (!hadScroll) {
+        panel.innerHTML = buildTreeShell('desk', 'navTreeFilter');
+      } else {
+        var ar = _isArLocale();
+        var expBtn = panel.querySelector('.nav-tree-expall');
+        if (expBtn) expBtn.textContent = state.allExpanded ? (ar ? 'طي الكل' : 'Collapse') : (ar ? 'توسيع الكل' : 'Expand all');
+        var flt = panel.querySelector('.nav-tree-filter');
+        if (flt) {
+          flt.setAttribute('placeholder', ar ? 'تصفية الـ 31 مسارًا…' : 'Filter all 31 courses…');
+        }
+      }
+      renderTreeBody(panel.querySelector('.nav-tree-scroll'));
+    }
+
+    function syncMobileTree(){
+      var mobileWrap = document.getElementById('navTreeMobile');
+      if (!mobileWrap) return;
+      var ar = _isArLocale();
+      var mobBtn = mobileWrap.querySelector('.nav-tree-mobile-btn');
+      var mobPanel = mobileWrap.querySelector('.nav-tree-mobile-body');
+      var meta = TRACK_IDX[state.activeTrack];
+      if (mobBtn) {
+        var lblEl = mobBtn.querySelector('.nav-tree-mobile-lbl');
+        if (lblEl) {
+          lblEl.textContent = (ar ? 'المسار: ' : 'Course: ') + (meta ? (ar ? meta.track.ar : meta.track.en) : (ar ? 'نظرة عامة' : 'Overview'));
+        }
+      }
+      if (mobPanel) {
+        if (!mobPanel.querySelector('.nav-tree-scroll')) {
+          mobPanel.innerHTML = buildTreeShell('mob', 'navTreeMobileFilter');
+        } else {
+          var expBtn = mobPanel.querySelector('.nav-tree-expall');
+          if (expBtn) expBtn.textContent = state.allExpanded ? (ar ? 'طي الكل' : 'Collapse') : (ar ? 'توسيع الكل' : 'Expand all');
+          var flt = mobPanel.querySelector('.nav-tree-filter');
+          if (flt) flt.setAttribute('placeholder', ar ? 'تصفية الـ 31 مسارًا…' : 'Filter all 31 courses…');
+        }
+        renderTreeBody(mobPanel.querySelector('.nav-tree-scroll'));
+      }
+    }
+
+    function renderAll(){
+      updateTrigger();
+      renderPanel();
+      syncMobileTree();
+    }
+
+    function closePanel(restoreFocus){
+      if (panel.hidden) return;
+      panel.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) {
+        try { btn.focus(); } catch(e){}
+      }
+    }
+
+    function openPanel(){
+      if (typeof window.closeNavMorePanel === 'function') window.closeNavMorePanel();
+      renderPanel();
+      panel.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      var curLeaf = panel.querySelector('[aria-current="page"]');
+      if (curLeaf && typeof curLeaf.scrollIntoView === 'function') {
+        try { curLeaf.scrollIntoView({ block: 'nearest' }); } catch(e){}
+      }
+      var inp = document.getElementById('navTreeFilter');
+      if (inp && window.innerWidth > 760) {
+        setTimeout(function(){ try { inp.focus(); } catch(e){} }, 10);
+      }
+    }
+
+    function handleTreeInteraction(rootEl, isMobile){
+      rootEl.addEventListener('input', function(e){
+        var flt = e.target.closest && e.target.closest('.nav-tree-filter');
+        if (!flt) return;
+        state.query = flt.value || '';
+        renderTreeBody(rootEl.querySelector('.nav-tree-scroll'));
+      });
+
+      rootEl.addEventListener('click', function(e){
+        var expAll = e.target.closest && e.target.closest('.nav-tree-expall');
+        if (expAll) {
+          e.stopPropagation();
+          state.allExpanded = !state.allExpanded;
+          if (!state.allExpanded) seedExpansion(state.activeTrack);
+          renderAll();
+          return;
+        }
+        var catBtn = e.target.closest && e.target.closest('.nav-tree-cat-btn');
+        if (catBtn) {
+          e.stopPropagation();
+          var cid = catBtn.getAttribute('data-cat');
+          var nextCat = catBtn.getAttribute('aria-expanded') !== 'true';
+          state.allExpanded = false;
+          state.expCats[cid] = nextCat;
+          renderAll();
+          return;
+        }
+        var subBtn = e.target.closest && e.target.closest('.nav-tree-sub-btn');
+        if (subBtn) {
+          e.stopPropagation();
+          var gid = subBtn.getAttribute('data-grp');
+          var nextGrp = subBtn.getAttribute('aria-expanded') !== 'true';
+          state.allExpanded = false;
+          state.expGrps[gid] = nextGrp;
+          renderAll();
+          return;
+        }
+        var leaf = e.target.closest && e.target.closest('a[data-track]');
+        if (leaf) {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1) return;
+          var tid = leaf.getAttribute('data-track');
+          if (!tid) return;
+          e.preventDefault();
+          closePanel(false);
+          if (isMobile) {
+            var nl = document.getElementById('navlinks');
+            var mb = document.getElementById('menuBtn');
+            if (nl) nl.classList.remove('open');
+            if (mb) mb.setAttribute('aria-expanded', 'false');
+          }
+          if (window.showView) window.showView(tid);
+          else window.location.href = leaf.getAttribute('href') || trackUrl(tid);
+        }
+      });
+
+      rootEl.addEventListener('keydown', function(e){
+        var focusables = Array.prototype.slice.call(
+          rootEl.querySelectorAll('input.nav-tree-filter, button.nav-tree-expall, a.nav-tree-overview, button.nav-tree-cat-btn, button.nav-tree-sub-btn, a.nav-tree-leaf')
+        ).filter(function(el){ return el.offsetParent !== null; });
+        var cur = document.activeElement;
+        var idx = focusables.indexOf(cur);
+        if (e.key === 'Escape') {
+          var flt = rootEl.querySelector('.nav-tree-filter');
+          if (flt && flt.value) {
+            e.preventDefault();
+            e.stopPropagation();
+            state.query = '';
+            flt.value = '';
+            renderTreeBody(rootEl.querySelector('.nav-tree-scroll'));
+            return;
+          }
+          if (!isMobile) {
+            e.preventDefault();
+            e.stopPropagation();
+            closePanel(true);
+          }
+          return;
+        }
+        if (e.key === 'ArrowDown' && focusables.length) {
+          e.preventDefault();
+          focusables[(idx + 1) % focusables.length].focus();
+          return;
+        }
+        if (e.key === 'ArrowUp' && focusables.length) {
+          e.preventDefault();
+          focusables[(idx - 1 + focusables.length) % focusables.length].focus();
+          return;
+        }
+        if (e.key === 'Home' && cur && cur.tagName !== 'INPUT' && focusables.length) {
+          e.preventDefault();
+          focusables[0].focus();
+          return;
+        }
+        if (e.key === 'End' && cur && cur.tagName !== 'INPUT' && focusables.length) {
+          e.preventDefault();
+          focusables[focusables.length - 1].focus();
+          return;
+        }
+        if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && cur && cur.matches && cur.matches('.nav-tree-cat-btn, .nav-tree-sub-btn')) {
+          var ar = _isArLocale();
+          var expandKey = ar ? 'ArrowLeft' : 'ArrowRight';
+          var collapseKey = ar ? 'ArrowRight' : 'ArrowLeft';
+          var isExp = cur.getAttribute('aria-expanded') === 'true';
+          var catAttr = cur.getAttribute('data-cat');
+          var grpAttr = cur.getAttribute('data-grp');
+          if (e.key === expandKey && !isExp) {
+            e.preventDefault();
+            if (catAttr) state.expCats[catAttr] = true;
+            if (grpAttr) state.expGrps[grpAttr] = true;
+            renderAll();
+            var nextBtn = rootEl.querySelector(catAttr ? '[data-cat="' + catAttr + '"]' : '[data-grp="' + grpAttr + '"]');
+            if (nextBtn) nextBtn.focus();
+          } else if (e.key === collapseKey && isExp) {
+            e.preventDefault();
+            if (catAttr) state.expCats[catAttr] = false;
+            if (grpAttr) state.expGrps[grpAttr] = false;
+            renderAll();
+            var curBtn = rootEl.querySelector(catAttr ? '[data-cat="' + catAttr + '"]' : '[data-grp="' + grpAttr + '"]');
+            if (curBtn) curBtn.focus();
+          }
+        }
+      });
+    }
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (panel.hidden) openPanel();
+      else closePanel(false);
+    });
+
+    btn.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown' && panel.hidden) {
+        e.preventDefault();
+        openPanel();
+      }
+    });
+
+    document.addEventListener('click', function(e){
+      if (!panel.hidden && !wrap.contains(e.target)) closePanel(false);
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !panel.hidden && !panel.contains(document.activeElement)) {
+        closePanel(true);
+      }
+    });
+
+    handleTreeInteraction(panel, false);
+
+    var navlinksEl = document.getElementById('navlinks');
+    if (navlinksEl && !document.getElementById('navTreeMobile')) {
+      var mobDiv = document.createElement('div');
+      mobDiv.id = 'navTreeMobile';
+      mobDiv.className = 'nav-tree-mobile';
+      mobDiv.innerHTML = ''
+        + '<button type="button" class="nav-tree-mobile-btn" id="navTreeMobileBtn" aria-expanded="false" aria-controls="navTreeMobilePanel">'
+        +   '<span class="nav-tree-mobile-lbl"></span>'
+        +   '<svg class="nav-tree-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 8.4L1.4 3.8l1-1L6 6.4l3.6-3.6 1 1z"/></svg>'
+        + '</button>'
+        + '<div class="nav-tree-mobile-body" id="navTreeMobilePanel" hidden></div>';
+      navlinksEl.insertBefore(mobDiv, navlinksEl.firstChild);
+      var mobBtnEl = document.getElementById('navTreeMobileBtn');
+      var mobPanelEl = document.getElementById('navTreeMobilePanel');
+      if (mobBtnEl && mobPanelEl) {
+        mobBtnEl.addEventListener('click', function(e){
+          e.stopPropagation();
+          var open = mobPanelEl.hidden;
+          mobPanelEl.hidden = !open;
+          mobBtnEl.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if (open) syncMobileTree();
+        });
+        handleTreeInteraction(mobPanelEl, true);
+      }
+    }
+
+    renderAll();
+
+    document.addEventListener('clipsat:view-change', function(ev){
+      var v = ev && ev.detail && ev.detail.view;
+      if (v) {
+        state.activeTrack = v;
+        seedExpansion(v);
+        renderAll();
+      }
+    });
+
+    document.addEventListener('clipsat:locale-changed', function(){
+      renderAll();
+    });
+
+    var langBtn = document.getElementById('i18n-toggle-btn');
+    if (langBtn) {
+      langBtn.addEventListener('click', function(){
+        setTimeout(renderAll, 20);
+      });
+    }
+
+    return {
+      open: openPanel,
+      close: function(){ closePanel(false); },
+      setActive: function(trackId){
+        if (trackId) {
+          state.activeTrack = trackId;
+          seedExpansion(trackId);
+          renderAll();
+        }
+      },
+      refresh: renderAll,
+      getData: function(){ return TREE_DATA; }
+    };
+  }
+
+  window.CSNavTree = _initNavTree();
 
   window.__csInitRouteNav = function(_origShowView) {
     var BASE = '';
@@ -466,7 +1085,7 @@ const combinedShellSrc = [
       if(!window._clipsatNavReady) return;
       var dest = URLS[name];
       if(dest !== undefined){
-        if(!dest){ window.location.href = BASE + '/'; return; }
+        if(!dest){ window.location.href = BASE + (IS_AR_ROUTE ? '/ar/' : '/'); return; }
         window.location.href = BASE + (IS_AR_ROUTE ? '/ar/' + dest + '/' : '/' + dest + '/');
       }
     };
@@ -477,15 +1096,8 @@ const combinedShellSrc = [
     var el = document.getElementById('view-' + CURRENT);
     if(el) el.classList.add('active');
 
-    var sel = document.getElementById('navSelect');
-    if(sel && URLS[CURRENT] !== undefined) sel.value = CURRENT;
-
-    var navlinksEl = document.getElementById('navlinks');
-    if(sel && navlinksEl && !navlinksEl.querySelector('.nav-select-mobile')){
-      var mobileSel = sel.cloneNode(true);
-      mobileSel.removeAttribute('id');
-      mobileSel.classList.add('nav-select-mobile');
-      navlinksEl.insertBefore(mobileSel, navlinksEl.firstChild);
+    if (window.CSNavTree && typeof window.CSNavTree.setActive === 'function') {
+      window.CSNavTree.setActive(CURRENT);
     }
 
     if(ACTIVE_CH && window.goChapter){

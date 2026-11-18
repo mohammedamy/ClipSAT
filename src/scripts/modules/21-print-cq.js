@@ -11,8 +11,12 @@ var _mjSrc = (function(){
 
 /* ── Retrieve course label from nav or active view ── */
 function _getCourseLabel() {
+  var treeLbl = document.getElementById('navTreeLabel');
+  if (treeLbl && treeLbl.textContent.trim() && window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home') {
+    return treeLbl.textContent.trim();
+  }
   var sel = document.querySelector('.nav-select');
-  if (sel && sel.options[sel.selectedIndex]) {
+  if (sel && sel.options && sel.options[sel.selectedIndex]) {
     return sel.options[sel.selectedIndex].text.trim();
   }
   var active = document.querySelector('.view.active');

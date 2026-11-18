@@ -10,9 +10,14 @@
         <img id="site-logo-img" class="site-logo-img" src="/clipsat-mark-header.png" alt="ClipSAT Logo" width="128" height="144">
         <span class="name">ClipSAT</span>
       </div>
-      <select class="nav-select" id="navSelect" onchange="navSelectChange(this)" aria-label="Choose category">
-        <option value="home" data-i18n="nav.overview">Overview</option>
-      </select>
+      <div class="nav-tree-wrap" id="navTreeWrap">
+        <button type="button" class="nav-tree-btn" id="navTreeBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navTreePanel" aria-label="{{ 'اختر المسار الدراسي' if _isAr else 'Choose course track' }}">
+          <span class="nav-tree-code" id="navTreeCode" hidden></span>
+          <span class="nav-tree-label" id="navTreeLabel" data-i18n="nav.overview">{{ 'نظرة عامة' if _isAr else 'Overview' }}</span>
+          <svg class="nav-tree-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 8.4L1.4 3.8l1-1L6 6.4l3.6-3.6 1 1z"/></svg>
+        </button>
+        <div class="nav-tree-panel" id="navTreePanel" role="region" aria-label="{{ 'شجرة المسارات الدراسية' if _isAr else 'Curriculum tracks tree' }}" hidden></div>
+      </div>
       <div class="spacer"></div>
       <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
       <button class="dm-toggle" id="fsToggle" title="Adjust text size" aria-label="A — Adjust text size">A</button>

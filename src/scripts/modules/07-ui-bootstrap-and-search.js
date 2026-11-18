@@ -9,8 +9,8 @@ document.addEventListener('click',function(e){
     }
   });
   window.navSelectChange = function(sel){
-      var v = sel.value;
-      if(window.showView){
+      var v = typeof sel === 'string' ? sel : (sel && sel.value);
+      if(v && window.showView){
         if(v === 'home') window.showView('home');
         else window.showView(v);
       }
