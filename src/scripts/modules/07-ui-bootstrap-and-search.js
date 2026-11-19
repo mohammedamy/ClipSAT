@@ -40,7 +40,10 @@ document.addEventListener('click',function(e){
   var btn = document.getElementById('dmToggle');
   function applyDark(on){
     document.body.classList.toggle('dark', on);
-    if(btn) btn.textContent = on ? '☀️' : '🌙';
+    if(btn){
+      btn.textContent = on ? '☀️' : '🌙';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
     localStorage.setItem('clipsat_dark', on ? '1' : '0');
     /* The canvas "Explorer" graphs (hero, polar rose, Riemann sums, …) cache
        their grid/curve colors in JS vars rather than re-reading CSS each

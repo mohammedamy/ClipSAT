@@ -19,7 +19,7 @@
 // returning visitors. It used to be bumped by hand; it was missed from v2.0.30 on, and
 // returning visitors kept a stale engine.js. Don't edit the hash. Change the 'v2.1' part only
 // to force a new version with no file change.
-const SW_VERSION = 'v2.9';
+const SW_VERSION = 'v2.10';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -56,6 +56,8 @@ var SHELL_ASSETS = [
   './js/cloud-config.js',
   './js/cloud-sync.js',
   './js/teacher-view.js',
+  './js/floating-calc.js',
+  './js/home-pathway.js',
 ];
 
 /* ── Every file under these directories is cache-first too: the site's own JS and CSS,
@@ -137,7 +139,7 @@ self.addEventListener('activate', function(event) {
     caches.keys().then(function(keys) {
       return Promise.all(
         keys
-          .filter(function(k) { return k.startsWith('clipsat-') && !validCaches.includes(k); })
+          .filter(function(k) { return k.startsWith('clipsat-') && k !== 'clipsat-offline-packs-v1' && !validCaches.includes(k); })
           .map(function(k) { return caches.delete(k); })
       );
     }).then(function() {
@@ -194,9 +196,19 @@ self.addEventListener('fetch', function(event) {
  * STRATEGIES
  * ═════════════════════════════════════════════════════════════════════════*/
 
+function matchOfflineCache(cache, request) {
+  return cache.match(request).then(function(cached) {
+    if (cached) return cached;
+    return cache.match(request, { ignoreSearch: true }).then(function(relaxed) {
+      if (relaxed) return relaxed;
+      return caches.match(request, { ignoreSearch: true });
+    });
+  });
+}
+
 function cacheFirst(request, cacheName) {
   return caches.open(cacheName).then(function(cache) {
-    return cache.match(request).then(function(cached) {
+    return matchOfflineCache(cache, request).then(function(cached) {
       if (cached) return cached;
       return fetch(request).then(function(response) {
         if (response.ok) cache.put(request, response.clone());
@@ -257,7 +269,7 @@ function networkFirst(request, cacheName) {
       }
       return response;
     }).catch(function() {
-      return cache.match(request).then(function(cached) {
+      return matchOfflineCache(cache, request).then(function(cached) {
         return cached || offlineFallback(request);
       });
     });
@@ -276,7 +288,22 @@ function offlineFallback(request) {
 
   var accept = request.headers.get('Accept') || '';
   if (accept.includes('text/html')) {
-    return new Response([
+    var isArRoute = url.pathname === '/ar' || url.pathname.indexOf('/ar/') === 0;
+    return new Response(isArRoute ? [
+      '<!doctype html><html lang="ar" dir="rtl"><head>',
+      '<meta charset="utf-8"><title>ClipSAT — وضع عدم الاتصال</title>',
+      '<meta name="viewport" content="width=device-width,initial-scale=1">',
+      '<style>body{font-family:system-ui,sans-serif;display:flex;align-items:center;',
+      'justify-content:center;height:100vh;margin:0;background:#f9fafb;direction:rtl}',
+      '.box{text-align:center;padding:40px}h1{color:#1E3A6E}p{color:#475569}</style>',
+      '</head><body><div class="box">',
+      '<h1>أنت غير متصل بالإنترنت</h1>',
+      '<p>يحتاج ClipSAT إلى اتصال بالشبكة لتحميل هذه الصفحة.</p>',
+      '<p>ملاحظاتك وتقدمك وسجل أخطائك محفوظة محليًا على جهازك.</p>',
+      '<button onclick="location.reload()" style="margin-top:20px;padding:10px 24px;',
+      'background:#1E3A6E;color:#fff;border:none;border-radius:8px;cursor:pointer">',
+      'إعادة المحاولة</button></div></body></html>'
+    ].join('') : [
       '<!doctype html><html lang="en"><head>',
       '<meta charset="utf-8"><title>ClipSAT — Offline</title>',
       '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -290,7 +317,7 @@ function offlineFallback(request) {
       '<button onclick="location.reload()" style="margin-top:20px;padding:10px 24px;',
       'background:#4f46e5;color:#fff;border:none;border-radius:8px;cursor:pointer">',
       'Try again</button></div></body></html>'
-    ].join(''), { status: 503, headers: { 'Content-Type': 'text/html' } });
+    ].join(''), { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
   }
 
   return new Response('', { status: 503 });
@@ -346,7 +373,7 @@ self.addEventListener('message', function(event) {
       './js/practice-quiz.js',
       './js/diagnostic-test.js'
     ];
-    var customUrls = Array.isArray(event.data.urls) ? event.data.urls.slice(0, 32) : defaultRelUrls;
+    var customUrls = Array.isArray(event.data.urls) ? event.data.urls.slice(0, 96) : defaultRelUrls;
     var urls = [];
     customUrls.forEach(function(u) {
       try {

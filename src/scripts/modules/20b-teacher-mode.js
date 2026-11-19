@@ -37,9 +37,11 @@
       window._teacherMode=_active;
       document.body.classList.toggle('teacher-mode',_active);
       _renderToolbar();
-      /* update checkbox if open */
+      /* update checkbox & launcher aria-pressed if present */
       var cb=document.getElementById('teacher-mode-toggle');
       if(cb) cb.checked=_active;
+      var tmBtn=document.getElementById('teacherModeBtn');
+      if(tmBtn) tmBtn.setAttribute('aria-pressed',_active?'true':'false');
       document.dispatchEvent(new CustomEvent('clipsat:teacher-mode-change',{detail:{active:_active}}));
     }
 

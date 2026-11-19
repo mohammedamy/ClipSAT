@@ -106,23 +106,27 @@ function _updateBreadcrumb(viewId, chapterId) {
   }
   document.body.classList.remove('view-home');
   bar.classList.remove('bc-hidden');
-  var meta = VIEW_META[viewId] || {label:viewId, board:''};
-  if (meta.board) {
-    bCourse.innerHTML = '<small style="opacity:.65;margin-right:5px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase">'
-      + _esc(meta.board) + ' ›</small>' + _esc(meta.label);
-  } else {
-    bCourse.textContent = meta.label;
+  var isSSRTrackLink = Boolean(bCourse && bCourse.tagName === 'A' && viewId === window.CLIPSAT_TRACK);
+  if (!isSSRTrackLink) {
+    var meta = VIEW_META[viewId] || {label:viewId, board:''};
+    if (meta.board) {
+      bCourse.innerHTML = '<small style="opacity:.65;margin-right:5px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase">'
+        + _esc(meta.board) + ' ›</small>' + _esc(meta.label);
+    } else {
+      bCourse.textContent = meta.label;
+    }
   }
   if (chapterId) {
     var chEl = document.getElementById(chapterId);
     var h2   = chEl && chEl.querySelector('.chead h1, .chead h2');
-    bChapter.textContent = h2 ? h2.textContent.trim() : '';
+    var nextTxt = h2 ? h2.textContent.trim() : '';
+    if (nextTxt) bChapter.textContent = nextTxt;
     if (bChapter.textContent) {
       bChapter.style.display = ''; if (bSep) bSep.style.display = '';
     } else {
       bChapter.style.display = 'none'; if (bSep) bSep.style.display = 'none';
     }
-  } else {
+  } else if (!(bChapter && bChapter.textContent && isSSRTrackLink)) {
     bChapter.style.display = 'none'; if (bSep) bSep.style.display = 'none';
   }
 }

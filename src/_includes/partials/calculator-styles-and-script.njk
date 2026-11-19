@@ -1,0 +1,1321 @@
+<style>
+  .calc-mode-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:20px 0 14px}
+  .calc-mode-row{display:flex;flex-wrap:wrap;gap:8px}
+  .calc-mode-btn{font:inherit;font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s}
+  .calc-mode-btn:hover{border-color:var(--indigo,#4F46E5)}
+  .calc-mode-btn[aria-selected="true"]{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-bar-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  #calc-presets-toggle{font:inherit;font-weight:600;font-size:13px;padding:8px 14px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s,border-color .15s}
+  #calc-presets-toggle:hover{border-color:var(--indigo,#4F46E5)}
+  #calc-presets-toggle[aria-expanded="true"]{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-presets-count{font-size:11px;opacity:.8}
+  #calc-external-link{font:inherit;font-size:13px;font-weight:600;color:var(--indigo,#4F46E5);text-decoration:none;white-space:nowrap}
+  #calc-external-link:hover{text-decoration:underline}
+  #calc-external-link[hidden]{display:none}
+
+  .calc-body{display:flex;gap:14px;align-items:flex-start}
+  #calc-container{flex:1;min-width:0;width:100%;height:min(78vh,720px);min-height:480px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel);position:relative}
+  #calc-container iframe{width:100%;height:100%;border:0;display:block}
+  .calc-loading{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted,#667085);font-size:14px}
+
+  #calc-presets-panel{width:320px;flex-shrink:0;max-height:min(72vh,640px);min-height:420px;display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;background:var(--panel);overflow:hidden}
+  #calc-presets-panel[hidden]{display:none}
+  .calc-presets-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border)}
+  .calc-presets-head h3{margin:0;font-size:14px;font-weight:700}
+  #calc-presets-close{border:0;background:none;color:var(--muted,#667085);font-size:14px;cursor:pointer;padding:2px 6px;border-radius:6px}
+  #calc-presets-close:hover{background:var(--border)}
+  .calc-presets-cats{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border);overflow-x:auto}
+  .calc-cat-pill{font:inherit;font-size:11px;font-weight:700;white-space:nowrap;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--paper-2,#f3f4f6);color:var(--text);cursor:pointer}
+  .calc-cat-pill.on{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-presets-note{display:flex;gap:6px;align-items:flex-start;font-size:11px;line-height:1.5;color:var(--muted,#667085);padding:10px 12px;border-bottom:1px solid var(--border)}
+  .calc-presets-list{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:10px}
+  .calc-preset-card{border:1px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px}
+  .calc-preset-head{display:flex;align-items:baseline;gap:6px}
+  .calc-preset-mode-badge{font-family:var(--mono,monospace);font-size:9px;font-weight:800;text-transform:uppercase;padding:2px 5px;border-radius:5px;background:var(--indigo-soft,rgba(79,70,229,.12));color:var(--indigo,#4F46E5);flex-shrink:0}
+  .calc-preset-head h4{margin:0;font-size:12.5px;font-weight:700}
+  .calc-preset-desc{margin:0;font-size:11.5px;line-height:1.5;color:var(--muted,#667085)}
+  .calc-preset-math{padding:6px;border-radius:8px;background:var(--paper-2,#f3f4f6);text-align:center;overflow-x:auto;font-size:13px}
+  .calc-preset-actions{display:flex;gap:6px;padding-top:2px}
+  .calc-preset-apply{flex:1;font:inherit;font-size:11.5px;font-weight:700;padding:6px 8px;border-radius:8px;border:1px solid var(--indigo,#4F46E5);background:var(--indigo,#4F46E5);color:#fff;cursor:pointer}
+  .calc-preset-apply:hover{opacity:.92}
+  .calc-preset-copy{font-size:13px;padding:6px 9px;border-radius:8px;border:1px solid var(--border);background:var(--paper-2,#f3f4f6);color:var(--text);cursor:pointer}
+  .calc-preset-copy:hover{border-color:var(--indigo,#4F46E5)}
+
+  .calc-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;background:#1f2937;color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:90vw;text-align:center}
+
+  .calc-attribution{margin-top:14px;font-size:13px;color:var(--muted,#667085)}
+  .calc-attribution a{color:inherit;text-decoration:underline}
+
+  @media (max-width:860px){
+    .calc-body{flex-direction:column}
+    #calc-presets-panel{width:100%}
+  }
+
+  /* Statistical Distributions Suite (Pillar 4.4) */
+  .calc-dist-suite{width:100%;height:100%;display:flex;flex-direction:column;background:var(--panel);color:var(--text);overflow:hidden}
+  .calc-dist-nav{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--paper-2,#f8fafc);overflow-x:auto;flex-shrink:0}
+  .calc-dist-tab{font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;white-space:nowrap;transition:all .15s}
+  .calc-dist-tab:hover{border-color:var(--indigo,#4F46E5)}
+  .calc-dist-tab.active{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-dist-body{flex:1;overflow-y:auto;display:grid;grid-template-columns:320px 1fr;gap:16px;padding:16px}
+  @media(max-width:760px){.calc-dist-body{grid-template-columns:1fr}}
+  .calc-dist-controls{display:flex;flex-direction:column;gap:12px}
+  .calc-dist-panel{background:var(--paper-2,#f8fafc);border:1px solid var(--border);border-radius:10px;padding:14px}
+  .calc-dist-panel h4{margin:0 0 10px;font-size:13px;font-weight:800;color:var(--indigo,#4F46E5)}
+  .calc-dist-field{margin-bottom:10px;display:flex;flex-direction:column;gap:4px}
+  .calc-dist-field label{font-size:11.5px;font-weight:600;color:var(--muted,#667085)}
+  .calc-dist-field input, .calc-dist-field select{font:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--panel);color:var(--text)}
+  .calc-dist-display{display:flex;flex-direction:column;gap:14px}
+  .calc-dist-result{background:var(--indigo-soft,rgba(79,70,229,0.08));border:1px solid var(--border);border-radius:10px;padding:14px}
+  .calc-dist-result-prob{font-size:1.6rem;font-weight:800;color:var(--indigo,#4F46E5);margin:4px 0}
+  .calc-dist-result-meta{font-size:12px;color:var(--muted,#667085);line-height:1.5}
+  .calc-dist-graph-card{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:220px}
+</style>
+
+<!-- Desmos setup, matching the ClipSAT for Egypt sister site
+     (mohammedamy.github.io/EGBaccalaureate): Graphing, 3D, Scientific, and
+     Geometry are plain iframe embeds of the real desmos.com web app
+     (?embed URLs) rather than the JS API — no API key needed for those four,
+     and they pick up Desmos's own feature set exactly since it IS the real
+     site, just framed. Exam Mode is the one mode that still needs the JS
+     API (calculator.js below): iframes can't apply Desmos's
+     restrictedFunctions/authorFeatures/etc. options, so the only way to get
+     a genuinely restricted skin is GraphingCalculator(container, EXAM_OPTS).
+     Trade-off versus the iframe modes: the embedded desmos.com page renders
+     in Desmos's own light UI regardless of ClipSAT's dark mode (a plain
+     iframe can't be handed our --theme), where Exam Mode's JS-API instance
+     still respects it via invertedColors. -->
+<script>
+(function () {
+  'use strict';
+  var _desmosKey = (typeof window.CLIPSAT_DESMOS_API_KEY === 'string') ? window.CLIPSAT_DESMOS_API_KEY.trim() : '';
+  if (_desmosKey) {
+    var _ds = document.createElement('script');
+    _ds.defer = true;
+    _ds.src = 'https://www.desmos.com/api/v1.11/calculator.js?apiKey=' + encodeURIComponent(_desmosKey);
+    document.head.appendChild(_ds);
+  }
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+
+  // Full Graphing Calculator configuration: enables on-screen keypad, expressions drawer,
+  // settings menu (radiant/degree, grid controls, projector mode), zoom buttons, and dark mode.
+  var GRAPHING_OPTS = {
+    keypad: true,
+    expressions: true,
+    settingsMenu: true,
+    zoomButtons: true,
+    expressionsTopbar: true,
+    pointsOfInterest: true,
+    trace: true,
+    border: false
+  };
+
+  // Exam Mode: Desmos's documented restricted-function configuration matching Digital SAT / AP
+  var EXAM_OPTS = {
+    authorFeatures: false,
+    images: false,
+    folders: false,
+    notes: false,
+    restrictedFunctions: true,
+    pasteGraphLink: false,
+    pasteTableData: false,
+    settingsMenu: false,
+    keypad: true,
+    expressions: true,
+    zoomButtons: true,
+    border: false
+  };
+
+  var EXTERNAL_LINKS = {
+    graphing:      'https://www.desmos.com/calculator',
+    threeD:        'https://www.desmos.com/3d',
+    scientific:    'https://www.desmos.com/scientific',
+    geometry:      'https://www.desmos.com/geometry',
+    exam:          null,
+    distributions: null
+  };
+
+  var IFRAME_FALLBACKS = {
+    threeD:     'https://www.desmos.com/3d?embed',
+    geometry:   'https://www.desmos.com/geometry?embed',
+    graphing:   'https://www.desmos.com/calculator?embed',
+    scientific: 'https://www.desmos.com/scientific?embed',
+    exam:       'https://www.desmos.com/calculator?embed'
+  };
+
+  var container = document.getElementById('calc-container');
+  var externalLink = document.getElementById('calc-external-link');
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.calc-mode-btn'));
+  var apiInstance = null; // live Desmos instance
+  var activeMode = 'graphing';
+  var mountToken = 0;
+
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' || document.body.classList.contains('dark');
+  }
+
+  function destroyApiInstance() {
+    if (apiInstance && typeof apiInstance.destroy === 'function') {
+      try { apiInstance.destroy(); } catch (e) {}
+    }
+    apiInstance = null;
+  }
+
+  function mountIframe(modeKey) {
+    destroyApiInstance();
+    container.innerHTML = '';
+    var src = IFRAME_FALLBACKS[modeKey] || IFRAME_FALLBACKS.graphing;
+    var frame = document.createElement('iframe');
+    frame.src = src;
+    frame.title = 'Desmos ' + modeKey + ' calculator';
+    frame.setAttribute('allow', 'clipboard-read; clipboard-write; fullscreen');
+    container.appendChild(frame);
+    if (externalLink) {
+      if (EXTERNAL_LINKS[modeKey]) {
+        externalLink.href = EXTERNAL_LINKS[modeKey];
+        externalLink.hidden = false;
+      } else {
+        externalLink.hidden = true;
+      }
+    }
+  }
+
+  function mountApiCalculator(modeKey, token, savedState) {
+    var hasApiKey = !!(typeof window.CLIPSAT_DESMOS_API_KEY === 'string' && window.CLIPSAT_DESMOS_API_KEY.trim());
+    if (!hasApiKey && (!window.Desmos || typeof window.Desmos.GraphingCalculator !== 'function')) {
+      mountIframe(modeKey);
+      if (modeKey === 'exam') {
+        var note = document.createElement('div');
+        note.className = 'calc-exam-preview-note';
+        note.style.cssText = 'padding:8px 14px;font-size:.82rem;background:var(--paper-2,#f1f5f9);color:var(--ink,#0e1726);border-bottom:1px solid var(--line,#cbd5e1);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap';
+        note.innerHTML = '<strong>' + (isAr() ? 'وضع المعاينة (غير مقيّد):' : 'Preview Mode (Unrestricted):') + '</strong> <span>' + (isAr() ? 'يُعرض الإصدار الكامل من Desmos حاليًا؛ يتطلب القفل الرسمي للاختبارات مفتاح Desmos التجاري.' : 'Showing standard Desmos embed. Restricted SAT/AP Exam Lock activates when a commercial Desmos API key is configured.') + '</span>';
+        container.insertBefore(note, container.firstChild);
+      }
+      return;
+    }
+    if (!window.Desmos || typeof window.Desmos.GraphingCalculator !== 'function') {
+      destroyApiInstance();
+      container.innerHTML = '<div class="calc-loading">' +
+        ((window.i18n && window.i18n.t) ? window.i18n.t('calc.loading') : 'Loading Desmos calculator…') +
+        '</div>';
+      if (externalLink) externalLink.hidden = true;
+      mountApiCalculator._waits = (mountApiCalculator._waits || 0) + 1;
+      if (mountApiCalculator._waits > 60) {
+        mountIframe(modeKey);
+        return;
+      }
+      setTimeout(function () {
+        if (token === mountToken) mount(modeKey, savedState);
+      }, 50);
+      return;
+    }
+    mountApiCalculator._waits = 0;
+
+    if (token !== mountToken) return;
+    destroyApiInstance();
+    container.innerHTML = '';
+
+    var dark = isDark();
+    try {
+      if (modeKey === 'graphing') {
+        apiInstance = window.Desmos.GraphingCalculator(container, Object.assign({ invertedColors: dark }, GRAPHING_OPTS));
+      } else if (modeKey === 'exam') {
+        apiInstance = window.Desmos.GraphingCalculator(container, Object.assign({ invertedColors: dark }, EXAM_OPTS));
+      } else if (modeKey === 'scientific' && typeof window.Desmos.ScientificCalculator === 'function') {
+        apiInstance = window.Desmos.ScientificCalculator(container, { invertedColors: dark });
+      } else if (modeKey === 'geometry' && typeof window.Desmos.GeometryCalculator === 'function') {
+        apiInstance = window.Desmos.GeometryCalculator(container, { invertedColors: dark });
+      } else {
+        mountIframe(modeKey);
+        return;
+      }
+
+      if (apiInstance) {
+        apiInstance._mode = modeKey;
+        apiInstance._dark = dark;
+        if (savedState && typeof apiInstance.setState === 'function') {
+          try { apiInstance.setState(savedState); } catch (e) {}
+        }
+      }
+
+      if (externalLink) {
+        if (EXTERNAL_LINKS[modeKey]) {
+          externalLink.href = EXTERNAL_LINKS[modeKey];
+          externalLink.hidden = false;
+        } else {
+          externalLink.hidden = true;
+        }
+      }
+    } catch (err) {
+      console.warn('Native Desmos init error, falling back to iframe:', err);
+      mountIframe(modeKey);
+    }
+  }
+
+  // ── Statistical Distributions Suite (Pillar 4.4) ──
+  var activeDist = 'normCdf';
+
+  function _erf(x) {
+    var sign = (x >= 0) ? 1 : -1;
+    x = Math.abs(x);
+    var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -0.145315202, a5 = 1.061405429, p = 0.3275911;
+    var t = 1.0 / (1.0 + p * x);
+    var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+    return sign * y;
+  }
+
+  function _normCdf(x, mu, sigma) {
+    if (sigma <= 0) sigma = 1;
+    var z = (x - mu) / (sigma * Math.SQRT2);
+    return 0.5 * (1 + _erf(z));
+  }
+
+  function _invNorm(p, mu, sigma) {
+    if (sigma <= 0) sigma = 1;
+    if (p <= 0) return -Infinity;
+    if (p >= 1) return Infinity;
+    var a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+    var b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01, -1.328068155288572e+01];
+    var c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+    var d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00];
+    var q, r, z;
+    if (p < 0.02425) {
+      q = Math.sqrt(-2 * Math.log(p));
+      z = (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    } else if (p <= 0.97575) {
+      q = p - 0.5;
+      r = q * q;
+      z = (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q / (((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+    } else {
+      q = Math.sqrt(-2 * Math.log(1 - p));
+      z = -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    }
+    return mu + z * sigma;
+  }
+
+  function _logGamma(x) {
+    var coef = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.001208650973866179, -0.000005395239384953];
+    var y = x, tmp = x + 5.5;
+    tmp -= (x + 0.5) * Math.log(tmp);
+    var ser = 1.000000000190015;
+    for (var j = 0; j < 6; j++) ser += coef[j] / ++y;
+    return -tmp + Math.log(2.5066282746310005 * ser / x);
+  }
+
+  function _binomPdf(n, p, k) {
+    if (k < 0 || k > n || p < 0 || p > 1) return 0;
+    if (k === 0 && p === 0) return 1;
+    if (k === n && p === 1) return 1;
+    var logComb = _logGamma(n + 1) - _logGamma(k + 1) - _logGamma(n - k + 1);
+    return Math.exp(logComb + k * Math.log(p) + (n - k) * Math.log(1 - p));
+  }
+
+  function _poissonPdf(lambda, k) {
+    if (k < 0 || lambda <= 0) return 0;
+    var logP = k * Math.log(lambda) - lambda - _logGamma(k + 1);
+    return Math.exp(logP);
+  }
+
+  function _tPdf(t, df) {
+    if (df <= 0) return 0;
+    var c = Math.exp(_logGamma((df + 1) / 2) - _logGamma(df / 2)) / Math.sqrt(Math.PI * df);
+    return c * Math.pow(1 + (t * t) / df, -(df + 1) / 2);
+  }
+
+  function _gammaP(a, x) {
+    if (x <= 0) return 0;
+    if (x < a + 1) {
+      var ap = a, sum = 1 / a, del = sum;
+      for (var n = 1; n <= 200; n++) {
+        ap += 1; del *= x / ap; sum += del;
+        if (Math.abs(del) < Math.abs(sum) * 1e-12) break;
+      }
+      return Math.min(1, Math.max(0, sum * Math.exp(-x + a * Math.log(x) - _logGamma(a))));
+    }
+    var b = x + 1 - a, c = 1 / 1e-30, d = 1 / b, h = d;
+    for (var i = 1; i <= 200; i++) {
+      var an = -i * (i - a);
+      b += 2;
+      d = an * d + b; if (Math.abs(d) < 1e-30) d = 1e-30;
+      c = b + an / c; if (Math.abs(c) < 1e-30) c = 1e-30;
+      d = 1 / d;
+      var del2 = d * c;
+      h *= del2;
+      if (Math.abs(del2 - 1) < 1e-12) break;
+    }
+    return Math.min(1, Math.max(0, 1 - Math.exp(-x + a * Math.log(x) - _logGamma(a)) * h));
+  }
+
+  function _betaCF(a, b, x) {
+    var qab = a + b, qap = a + 1, qam = a - 1;
+    var c = 1, d = 1 - qab * x / qap;
+    if (Math.abs(d) < 1e-30) d = 1e-30;
+    d = 1 / d;
+    var h = d;
+    for (var m = 1; m <= 200; m++) {
+      var m2 = 2 * m;
+      var aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+      d = 1 + aa * d; if (Math.abs(d) < 1e-30) d = 1e-30;
+      c = 1 + aa / c; if (Math.abs(c) < 1e-30) c = 1e-30;
+      d = 1 / d; h *= d * c;
+      aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+      d = 1 + aa * d; if (Math.abs(d) < 1e-30) d = 1e-30;
+      c = 1 + aa / c; if (Math.abs(c) < 1e-30) c = 1e-30;
+      d = 1 / d;
+      var del = d * c; h *= del;
+      if (Math.abs(del - 1) < 1e-12) break;
+    }
+    return h;
+  }
+
+  function _betaI(a, b, x) {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    var bt = Math.exp(_logGamma(a + b) - _logGamma(a) - _logGamma(b) + a * Math.log(x) + b * Math.log(1 - x));
+    if (x < (a + 1) / (a + b + 2)) return bt * _betaCF(a, b, x) / a;
+    return 1 - bt * _betaCF(b, a, 1 - x) / b;
+  }
+
+  function _tCdf(t, df) {
+    if (!isFinite(t) || df <= 0) return t < 0 ? 0 : 1;
+    if (t === 0) return 0.5;
+    var x = df / (df + t * t);
+    var halfI = 0.5 * _betaI(df / 2, 0.5, x);
+    return t > 0 ? (1 - halfI) : halfI;
+  }
+
+  function _chi2Pdf(x, df) {
+    if (x <= 0 || df <= 0) return 0;
+    var halfDf = df / 2;
+    var logY = (halfDf - 1) * Math.log(x) - x / 2 - halfDf * Math.LN2 - _logGamma(halfDf);
+    return Math.exp(logY);
+  }
+
+  function _chi2Cdf(k, df) {
+    if (k <= 0 || df <= 0) return 0;
+    return _gammaP(df / 2, k / 2);
+  }
+
+  function mountDistributions() {
+    var ar = isAr();
+    container.innerHTML = [
+      '<div class="calc-dist-suite">',
+      '  <div class="calc-dist-nav">',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'normCdf' ? ' active' : '') + '" data-dist="normCdf">' + (ar ? 'التوزيع الطبيعي Normal CDF' : 'Normal CDF') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'invNorm' ? ' active' : '') + '" data-dist="invNorm">' + (ar ? 'الطبيعي العكسي invNorm' : 'invNorm') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'binom' ? ' active' : '') + '" data-dist="binom">' + (ar ? 'ذو الحدين B(n, p)' : 'Binomial B(n, p)') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'poisson' ? ' active' : '') + '" data-dist="poisson">' + (ar ? 'بواسون Po(λ)' : 'Poisson Po(λ)') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'studentT' ? ' active' : '') + '" data-dist="studentT">' + (ar ? 'توزيع ستيودنت t' : "Student's t") + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'chiSquare' ? ' active' : '') + '" data-dist="chiSquare">' + (ar ? 'مربع كاي χ²' : 'Chi-Square χ²') + '</button>',
+      '  </div>',
+      '  <div class="calc-dist-body" id="calc-dist-content"></div>',
+      '</div>'
+    ].join('');
+
+    if (externalLink) externalLink.hidden = true;
+
+    container.querySelectorAll('.calc-dist-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activeDist = tab.getAttribute('data-dist');
+        container.querySelectorAll('.calc-dist-tab').forEach(function (t) {
+          t.classList.toggle('active', t.getAttribute('data-dist') === activeDist);
+        });
+        renderDistSubView();
+      });
+    });
+
+    renderDistSubView();
+  }
+
+  function renderDistSubView() {
+    var contentEl = container.querySelector('#calc-dist-content');
+    if (!contentEl) return;
+
+    if (activeDist === 'normCdf') renderNormCdfView(contentEl);
+    else if (activeDist === 'invNorm') renderInvNormView(contentEl);
+    else if (activeDist === 'binom') renderBinomView(contentEl);
+    else if (activeDist === 'poisson') renderPoissonView(contentEl);
+    else if (activeDist === 'studentT') renderStudentTView(contentEl);
+    else if (activeDist === 'chiSquare') renderChiSquareView(contentEl);
+  }
+
+  function renderNormCdfView(el) {
+    var ar = isAr();
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'التوزيع الطبيعي: X ~ N(μ, σ²)' : 'Normal Distribution: X ~ N(μ, σ²)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-norm-mu">' + (ar ? 'المتوسط الحسابي (μ):' : 'Mean (μ):') + '</label><input type="number" id="sc-norm-mu" value="0" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-norm-sigma">' + (ar ? 'الانحراف المعياري (σ):' : 'Standard Deviation (σ):') + '</label><input type="number" id="sc-norm-sigma" value="1" min="0.0001" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-norm-lower">' + (ar ? 'الحد الأدنى (a):' : 'Lower Bound (a):') + '</label><input type="number" id="sc-norm-lower" value="-1.96" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-norm-upper">' + (ar ? 'الحد الأعلى (b):' : 'Upper Bound (b):') + '</label><input type="number" id="sc-norm-upper" value="1.96" step="any"></div>',
+      '  </div>',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'قوالب سريعة' : 'Quick Presets') + '</h4>',
+      '    <div style="display:flex;flex-wrap:wrap;gap:6px">',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-68">' + (ar ? 'القاعدة التجريبية 68% (±1σ)' : 'Empirical 68% (±1σ)') + '</button>',
+      '      <button type="button" class="calc-cat-pill on" id="ps-norm-95">' + (ar ? 'فترة ثقة 95% (±1.96σ)' : '95% CI (±1.96σ)') + '</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-99">' + (ar ? 'فترة ثقة 99% (±2.576σ)' : '99% CI (±2.576σ)') + '</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-rt">' + (ar ? 'الذيل الأيمن (z ≥ 2)' : 'Right Tail (z ≥ 2)') + '</button>',
+      '    </div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-norm-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-norm-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var muIn = el.querySelector('#sc-norm-mu');
+    var sigIn = el.querySelector('#sc-norm-sigma');
+    var lowIn = el.querySelector('#sc-norm-lower');
+    var upIn = el.querySelector('#sc-norm-upper');
+    var resEl = el.querySelector('#sc-norm-res');
+    var graphEl = el.querySelector('#sc-norm-graph');
+
+    function update() {
+      var mu = parseFloat(muIn.value) || 0;
+      var sigma = parseFloat(sigIn.value) || 1;
+      var a = parseFloat(lowIn.value);
+      var b = parseFloat(upIn.value);
+      if (isNaN(a)) a = -Infinity;
+      if (isNaN(b)) b = Infinity;
+
+      var pA = (a === -Infinity) ? 0 : _normCdf(a, mu, sigma);
+      var pB = (b === Infinity) ? 1 : _normCdf(b, mu, sigma);
+      var prob = Math.max(0, pB - pA);
+
+      var za = (a === -Infinity) ? '−∞' : ((a - mu) / sigma).toFixed(3);
+      var zb = (b === Infinity) ? '+∞' : ((b - mu) / sigma).toFixed(3);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'الاحتمال التراكمي' : 'PROBABILITY MASS') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ X ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + ' (' + (prob * 100).toFixed(3) + '%)</div>' +
+        '<div class="calc-dist-result-meta">' + (ar ? 'القيم المعيارية: ' : 'Standardized: ') + 'z_a = ' + za + ', z_b = ' + zb + (ar ? ' · للاختبارات: AP Stats و Cambridge P5 و IB SL/HL' : ' · Exam: AP Stats Unit 4, Cambridge 9709 P5, IB Math SL/HL') + '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var minX = mu - 3.8 * sigma, maxX = mu + 3.8 * sigma;
+      function sx(x) { return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
+      function sy(y) { return H - pad - y * (H - 2 * pad) / 0.42; }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 0; i <= steps; i++) {
+        var curX = minX + i * (maxX - minX) / steps;
+        var z = (curX - mu) / sigma;
+        var curY = Math.exp(-0.5 * z * z) / Math.sqrt(2 * Math.PI);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 0 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        if (curX >= Math.max(minX, a) && curX <= Math.min(maxX, b)) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        } else if (inShade) {
+          dShade += ' L' + px.toFixed(1) + ',' + (H - pad);
+          inShade = false;
+        }
+      }
+      if (inShade) dShade += ' L' + sx(Math.min(maxX, b)).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (a > minX && a < maxX) {
+        svg += '<line x1="' + sx(a).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(a).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(a).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">a=' + a + '</text>';
+      }
+      if (b > minX && b < maxX) {
+        svg += '<line x1="' + sx(b).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(b).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(b).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">b=' + b + '</text>';
+      }
+      svg += '<text x="' + sx(mu).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" fill="var(--muted,#64748b)" text-anchor="middle">μ=' + mu + '</text>';
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [muIn, sigIn, lowIn, upIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    el.querySelector('#ps-norm-68').onclick = function () { lowIn.value = -1; upIn.value = 1; muIn.value = 0; sigIn.value = 1; update(); };
+    el.querySelector('#ps-norm-95').onclick = function () { lowIn.value = -1.96; upIn.value = 1.96; muIn.value = 0; sigIn.value = 1; update(); };
+    el.querySelector('#ps-norm-99').onclick = function () { lowIn.value = -2.576; upIn.value = 2.576; muIn.value = 0; sigIn.value = 1; update(); };
+    el.querySelector('#ps-norm-rt').onclick = function () { lowIn.value = 2; upIn.value = 5; muIn.value = 0; sigIn.value = 1; update(); };
+    update();
+  }
+
+  function renderInvNormView(el) {
+    var ar = isAr();
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'التوزيع الطبيعي العكسي: invNorm(p, μ, σ)' : 'Inverse Normal: invNorm(p, μ, σ)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-inv-p">' + (ar ? 'الاحتمال التراكمي (المساحة p):' : 'Cumulative Probability (Area p):') + '</label><input type="number" id="sc-inv-p" value="0.95" min="0.0001" max="0.9999" step="0.01"></div>',
+      '    <div class="calc-dist-field"><label for="sc-inv-tail">' + (ar ? 'اتجاه الذيل:' : 'Tail Direction:') + '</label><select id="sc-inv-tail"><option value="left">' + (ar ? 'الذيل الأيسر: P(X ≤ k) = p' : 'Left Tail: P(X ≤ k) = p') + '</option><option value="right">' + (ar ? 'الذيل الأيمن: P(X ≥ k) = p' : 'Right Tail: P(X ≥ k) = p') + '</option></select></div>',
+      '    <div class="calc-dist-field"><label for="sc-inv-mu">' + (ar ? 'المتوسط الحسابي (μ):' : 'Mean (μ):') + '</label><input type="number" id="sc-inv-mu" value="0" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-inv-sigma">' + (ar ? 'الانحراف المعياري (σ):' : 'Standard Deviation (σ):') + '</label><input type="number" id="sc-inv-sigma" value="1" min="0.0001" step="any"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-inv-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-inv-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var pIn = el.querySelector('#sc-inv-p');
+    var tailIn = el.querySelector('#sc-inv-tail');
+    var muIn = el.querySelector('#sc-inv-mu');
+    var sigIn = el.querySelector('#sc-inv-sigma');
+    var resEl = el.querySelector('#sc-inv-res');
+    var graphEl = el.querySelector('#sc-inv-graph');
+
+    function update() {
+      var p = parseFloat(pIn.value) || 0.5;
+      var tail = tailIn.value;
+      var mu = parseFloat(muIn.value) || 0;
+      var sigma = parseFloat(sigIn.value) || 1;
+
+      var effP = (tail === 'right') ? (1 - p) : p;
+      var k = _invNorm(effP, mu, sigma);
+      var z = (k - mu) / sigma;
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'القيمة الحرجة' : 'CRITICAL VALUE RESULT') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">' + (ar ? 'قيمة القطع ' : 'Cutoff Value ') + 'k = ' + k.toFixed(4) + '</div>' +
+        '<div class="calc-dist-result-meta">' + (ar ? 'الدرجة المعيارية: ' : 'Corresponding z-score: ') + 'z = ' + z.toFixed(3) + ' · ' + (ar ? 'الذيل: ' : 'Tail: ') + '<span dir="ltr">' + (tail === 'right' ? 'P(X ≥ ' + k.toFixed(4) + ') = ' + p : 'P(X ≤ ' + k.toFixed(4) + ') = ' + p) + '</span></div>';
+
+      var W = 520, H = 220, pad = 36;
+      var minX = mu - 3.8 * sigma, maxX = mu + 3.8 * sigma;
+      function sx(x) { return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
+      function sy(y) { return H - pad - y * (H - 2 * pad) / 0.42; }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 0; i <= steps; i++) {
+        var curX = minX + i * (maxX - minX) / steps;
+        var zCur = (curX - mu) / sigma;
+        var curY = Math.exp(-0.5 * zCur * zCur) / Math.sqrt(2 * Math.PI);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 0 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        var isInside = (tail === 'left') ? (curX <= k) : (curX >= k);
+        if (isInside) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        } else if (inShade) {
+          dShade += ' L' + px.toFixed(1) + ',' + (H - pad);
+          inShade = false;
+        }
+      }
+      if (inShade) dShade += ' L' + sx(tail === 'left' ? k : maxX).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (k > minX && k < maxX) {
+        svg += '<line x1="' + sx(k).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(k).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(k).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">k=' + k.toFixed(2) + '</text>';
+      }
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [pIn, tailIn, muIn, sigIn].forEach(function (inp) { inp.addEventListener('input', update); inp.addEventListener('change', update); });
+    update();
+  }
+
+  function renderBinomView(el) {
+    var ar = isAr();
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'توزيع ذو الحدين: X ~ B(n, p)' : 'Binomial Distribution: X ~ B(n, p)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-bn-n">' + (ar ? 'عدد المحاولات (n):' : 'Number of Trials (n):') + '</label><input type="number" id="sc-bn-n" value="10" min="1" max="200"></div>',
+      '    <div class="calc-dist-field"><label for="sc-bn-p">' + (ar ? 'احتمال النجاح (p):' : 'Probability of Success (p):') + '</label><input type="number" id="sc-bn-p" value="0.5" min="0" max="1" step="0.05"></div>',
+      '    <div class="calc-dist-field"><label for="sc-bn-k">' + (ar ? 'عدد النجاحات (k):' : 'Number of Successes (k):') + '</label><input type="number" id="sc-bn-k" value="5" min="0"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-bn-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-bn-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var nIn = el.querySelector('#sc-bn-n');
+    var pIn = el.querySelector('#sc-bn-p');
+    var kIn = el.querySelector('#sc-bn-k');
+    var resEl = el.querySelector('#sc-bn-res');
+    var graphEl = el.querySelector('#sc-bn-graph');
+
+    function update() {
+      var n = parseInt(nIn.value, 10) || 10;
+      var p = parseFloat(pIn.value);
+      if (isNaN(p)) p = 0.5;
+      var k = parseInt(kIn.value, 10);
+      if (isNaN(k)) k = 0;
+
+      var pdf = _binomPdf(n, p, k);
+      var cdfLe = 0;
+      for (var i = 0; i <= k; i++) cdfLe += _binomPdf(n, p, i);
+      var cdfGe = 1 - cdfLe + pdf;
+      var mu = n * p;
+      var variance = n * p * (1 - p);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'احتمالات ذو الحدين' : 'BINOMIAL PROBABILITIES') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">' +
+        '<span dir="ltr">P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '</span><br>' +
+        (ar ? 'القيمة المتوقعة E[X] = μ = ' : 'Expected Value: E[X] = μ = ') + mu.toFixed(2) + (ar ? ' · التباين Var(X) = σ² = ' : ' · Var(X) = σ² = ') + variance.toFixed(2) + (ar ? ' · الانحراف σ = ' : ' · SD = σ = ') + Math.sqrt(variance).toFixed(2) +
+        '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var maxVal = Math.min(n, 25);
+      var probs = [];
+      var maxP = 0;
+      for (var x = 0; x <= maxVal; x++) {
+        var px = _binomPdf(n, p, x);
+        probs.push(px);
+        if (px > maxP) maxP = px;
+      }
+      if (maxP === 0) maxP = 1;
+
+      var barW = (W - 2 * pad) / (maxVal + 1);
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      probs.forEach(function (pr, idx) {
+        var bh = (pr / maxP) * (H - 2 * pad);
+        var bx = pad + idx * barW + 2;
+        var by = (H - pad) - bh;
+        var isK = (idx === k);
+        svg += '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + Math.max(2, barW - 4).toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + (isK ? 'var(--indigo,#4F46E5)' : 'rgba(79,70,229,0.22)') + '" rx="2"/>';
+        if (maxVal <= 15 || idx % 2 === 0) {
+          svg += '<text x="' + (bx + barW / 2).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="9" fill="var(--muted,#64748b)" text-anchor="middle">' + idx + '</text>';
+        }
+      });
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [nIn, pIn, kIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function renderPoissonView(el) {
+    var ar = isAr();
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'توزيع بواسون: X ~ Po(λ)' : 'Poisson Distribution: X ~ Po(λ)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-ps-lam">' + (ar ? 'معدل التكرار (λ):' : 'Average Rate (λ):') + '</label><input type="number" id="sc-ps-lam" value="3.5" min="0.0001" step="0.5"></div>',
+      '    <div class="calc-dist-field"><label for="sc-ps-k">' + (ar ? 'عدد المرات (k):' : 'Occurrences (k):') + '</label><input type="number" id="sc-ps-k" value="3" min="0"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-ps-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-ps-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var lamIn = el.querySelector('#sc-ps-lam');
+    var kIn = el.querySelector('#sc-ps-k');
+    var resEl = el.querySelector('#sc-ps-res');
+    var graphEl = el.querySelector('#sc-ps-graph');
+
+    function update() {
+      var lam = parseFloat(lamIn.value) || 1;
+      var k = parseInt(kIn.value, 10);
+      if (isNaN(k)) k = 0;
+
+      var pdf = _poissonPdf(lam, k);
+      var cdfLe = 0;
+      for (var i = 0; i <= k; i++) cdfLe += _poissonPdf(lam, i);
+      var cdfGe = 1 - cdfLe + pdf;
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'احتمالات بواسون' : 'POISSON PROBABILITIES') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">' +
+        '<span dir="ltr">P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '</span><br>' +
+        (ar ? 'المتوسط E[X] = μ = ' : 'Expected Value: E[X] = μ = ') + lam + (ar ? ' · التباين σ² = ' : ' · Var(X) = σ² = ') + lam + (ar ? ' · الانحراف σ = ' : ' · SD = σ = ') + Math.sqrt(lam).toFixed(3) +
+        '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var maxVal = Math.max(12, Math.ceil(lam * 2.8));
+      var probs = [];
+      var maxP = 0;
+      for (var x = 0; x <= maxVal; x++) {
+        var px = _poissonPdf(lam, x);
+        probs.push(px);
+        if (px > maxP) maxP = px;
+      }
+      if (maxP === 0) maxP = 1;
+
+      var barW = (W - 2 * pad) / (maxVal + 1);
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      probs.forEach(function (pr, idx) {
+        var bh = (pr / maxP) * (H - 2 * pad);
+        var bx = pad + idx * barW + 2;
+        var by = (H - pad) - bh;
+        var isK = (idx === k);
+        svg += '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + Math.max(2, barW - 4).toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + (isK ? 'var(--indigo,#4F46E5)' : 'rgba(79,70,229,0.22)') + '" rx="2"/>';
+        if (idx % 2 === 0 || maxVal <= 12) {
+          svg += '<text x="' + (bx + barW / 2).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="9" fill="var(--muted,#64748b)" text-anchor="middle">' + idx + '</text>';
+        }
+      });
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [lamIn, kIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function renderStudentTView(el) {
+    var ar = isAr();
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'توزيع ستيودنت t: T ~ t(df)' : "Student's t-Distribution: T ~ t(df)") + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-t-df">' + (ar ? 'درجات الحرية (df):' : 'Degrees of Freedom (df):') + '</label><input type="number" id="sc-t-df" value="10" min="1" max="500"></div>',
+      '    <div class="calc-dist-field"><label for="sc-t-lower">' + (ar ? 'الحد الأدنى (a):' : 'Lower Bound (a):') + '</label><input type="number" id="sc-t-lower" value="-2.228" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-t-upper">' + (ar ? 'الحد الأعلى (b):' : 'Upper Bound (b):') + '</label><input type="number" id="sc-t-upper" value="2.228" step="any"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-t-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-t-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var dfIn = el.querySelector('#sc-t-df');
+    var lowIn = el.querySelector('#sc-t-lower');
+    var upIn = el.querySelector('#sc-t-upper');
+    var resEl = el.querySelector('#sc-t-res');
+    var graphEl = el.querySelector('#sc-t-graph');
+
+    function update() {
+      var df = parseInt(dfIn.value, 10) || 1;
+      var a = parseFloat(lowIn.value);
+      var b = parseFloat(upIn.value);
+      if (isNaN(a)) a = -Infinity;
+      if (isNaN(b)) b = Infinity;
+
+      var pA = (a === -Infinity) ? 0 : _tCdf(a, df);
+      var pB = (b === Infinity) ? 1 : _tCdf(b, df);
+      var prob = Math.max(0, pB - pA);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'احتمال توزيع ستيودنت t' : "STUDENT'S T PROBABILITY") + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ T ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">' + (ar ? 'درجات الحرية df = ' + df + ' · يستخدم للعينات الصغيرة (AP Stats و Cambridge P6)' : 'Degrees of freedom df = ' + df + ' · Heavy tails model uncertainty in small sample sizes (AP Stats / Cambridge 9709 P6)') + '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var minX = -4.5, maxX = 4.5;
+      function sx(x) { return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
+      function sy(y) { return H - pad - y * (H - 2 * pad) / 0.42; }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 0; i <= steps; i++) {
+        var curX = minX + i * (maxX - minX) / steps;
+        var curY = _tPdf(curX, df);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 0 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        if (curX >= Math.max(minX, a) && curX <= Math.min(maxX, b)) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        } else if (inShade) {
+          dShade += ' L' + px.toFixed(1) + ',' + (H - pad);
+          inShade = false;
+        }
+      }
+      if (inShade) dShade += ' L' + sx(Math.min(maxX, b)).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (a > minX && a < maxX) {
+        svg += '<line x1="' + sx(a).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(a).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(a).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">t=' + a + '</text>';
+      }
+      if (b > minX && b < maxX) {
+        svg += '<line x1="' + sx(b).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(b).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(b).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">t=' + b + '</text>';
+      }
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [dfIn, lowIn, upIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function renderChiSquareView(el) {
+    var ar = isAr();
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>' + (ar ? 'توزيع مربع كاي: χ² ~ χ²(df)' : 'Chi-Square Distribution: χ² ~ χ²(df)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-chi-df">' + (ar ? 'درجات الحرية (df):' : 'Degrees of Freedom (df):') + '</label><input type="number" id="sc-chi-df" value="4" min="1" max="100"></div>',
+      '    <div class="calc-dist-field"><label for="sc-chi-k">' + (ar ? 'القيمة الحرجة (k):' : 'Critical Value (k):') + '</label><input type="number" id="sc-chi-k" value="9.488" min="0" step="any"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-chi-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-chi-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var dfIn = el.querySelector('#sc-chi-df');
+    var kIn = el.querySelector('#sc-chi-k');
+    var resEl = el.querySelector('#sc-chi-res');
+    var graphEl = el.querySelector('#sc-chi-graph');
+
+    function update() {
+      var df = parseInt(dfIn.value, 10) || 1;
+      var k = parseFloat(kIn.value);
+      if (isNaN(k) || k < 0) k = 0;
+
+      var cdfLe = _chi2Cdf(k, df);
+      var pValue = Math.max(0, 1 - cdfLe);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'قيمة الاحتمال P لمربع كاي' : 'CHI-SQUARE P-VALUE') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(χ² ≥ ' + k.toFixed(3) + ') = ' + pValue.toFixed(5) + ' (p-value)</div>' +
+        '<div class="calc-dist-result-meta">' +
+        '<span dir="ltr">' + (ar ? 'التراكمي: ' : 'Cumulative: ') + 'P(χ² ≤ ' + k.toFixed(3) + ') = ' + cdfLe.toFixed(5) + '</span><br>' +
+        (ar ? 'المتوسط E[χ²] = df = ' + df + ' · التباين Var(χ²) = 2df = ' + (2 * df) + ' · اختبارات حسن المطابقة والاستقلال' : 'Expected Value: E[χ²] = df = ' + df + ' · Variance: Var(χ²) = 2df = ' + (2 * df) + ' · Goodness-of-Fit & Independence') +
+        '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var maxX = Math.max(16, df + 4 * Math.sqrt(2 * df));
+      function sx(x) { return pad + (x / maxX) * (W - 2 * pad); }
+
+      var maxDens = 0;
+      for (var t = 0.1; t <= maxX; t += 0.2) {
+        var yVal = _chi2Pdf(t, df);
+        if (yVal > maxDens) maxDens = yVal;
+      }
+      if (maxDens === 0) maxDens = 0.5;
+      function sy(y) { return H - pad - (y / maxDens) * (H - 2 * pad); }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 1; i <= steps; i++) {
+        var curX = (i / steps) * maxX;
+        var curY = _chi2Pdf(curX, df);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 1 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        if (curX >= k) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        }
+      }
+      if (inShade) dShade += ' L' + sx(maxX).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (k > 0 && k < maxX) {
+        svg += '<line x1="' + sx(k).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(k).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(k).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">k=' + k.toFixed(2) + '</text>';
+      }
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [dfIn, kIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function mount(modeKey, savedState) {
+    if (!container) return;
+    activeMode = modeKey;
+    mountToken += 1;
+
+    if (modeKey === 'threeD') {
+      mountIframe('threeD');
+      return;
+    }
+    if (modeKey === 'distributions') {
+      destroyApiInstance();
+      mountDistributions();
+      return;
+    }
+
+    mountApiCalculator(modeKey, mountToken, savedState);
+  }
+
+  function selectMode(modeKey) {
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-selected', String(b.dataset.mode === modeKey));
+    });
+    mount(modeKey);
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { selectMode(b.dataset.mode); });
+  });
+
+  // Watch for site theme changes to keep invertedColors matched seamlessly
+  var themeObserver = new MutationObserver(function () {
+    if (apiInstance && typeof apiInstance.getState === 'function') {
+      var dark = isDark();
+      if (apiInstance._dark !== dark) {
+        try {
+          var state = apiInstance.getState();
+          mount(activeMode, state);
+        } catch (e) {}
+      }
+    }
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+
+  selectMode('graphing');
+
+  /* ===================== Curriculum presets drawer =====================
+     Ported verbatim (titles/descriptions/LaTeX/expressions) from the
+     ClipSAT for Egypt sister site's src/data/desmosPresets.ts, with only
+     the `mode` values remapped to this page's mode keys: their '2d'/'3d'
+     become this page's 'graphing'/'threeD' ('scientific' is unchanged;
+     none of their presets use 'geometry'). */
+  var PRESETS = [
+    { id: 'calc_tangent_normal', category: 'calculus', mode: 'graphing',
+      titleEn: 'Tangent & Normal to a Cubic Curve', titleAr: 'مماس وعمودي لمنحنى دالة تكعيبية',
+      descEn: 'Dynamic tangent and normal line at point a on cubic function f(x) = x³ - 3x.',
+      descAr: 'مماس وعمودي ديناميكي عند النقطة a على منحنى الدالة التكعيبية د(س) = س³ - ٣س.',
+      latex: 'f(x) = x^3 - 3x,\\quad y - f(a) = f\'(a)(x - a)',
+      expressions: ['f(x) = x^3 - 3x', 'a = 1', '(a, f(a))', 'y - f(a) = f\'(a)(x - a)', 'y - f(a) = -\\frac{1}{f\'(a)}(x - a)'] },
+    { id: 'calc_extrema_inflection', category: 'calculus', mode: 'graphing',
+      titleEn: 'Critical Points & Point of Inflection', titleAr: 'النقاط الحرجة ونقطة الانقلاب وفترات التحدب',
+      descEn: 'Plot function alongside its first and second derivatives to analyze concavity.',
+      descAr: 'تمثيل الدالة مع المشتقة الأولى والثانية لتحليل التحدب لأعلى ولأسفل ونقط الانقلاب.',
+      latex: 'f(x) = 2x^3 - 9x^2 + 12x + 1,\\quad f\'(x),\\quad f\'\'(x)',
+      expressions: ['f(x) = 2x^3 - 9x^2 + 12x + 1', 'f\'(x)', 'f\'\'(x)', '(1, f(1))', '(2, f(2))', '(1.5, f(1.5))'] },
+    { id: 'calc_trig_reciprocals', category: 'calculus', mode: 'graphing',
+      titleEn: 'Secant & Cosecant Graphs & Asymptotes', titleAr: 'منحنيات القاطع وقاطع التمام وخطوط التقارب الرأسية',
+      descEn: 'Visualize sec(x) and csc(x) with their characteristic vertical asymptotes.',
+      descAr: 'رسم قا(س) وقتا(س) وتوضيح خطوط التقارب الرأسية ودورات الدوال.',
+      latex: 'y = \\sec(x),\\quad y = \\csc(x)',
+      expressions: ['y = \\sec(x)', 'y = \\csc(x)', 'x = \\frac{\\pi}{2} + k\\pi'] },
+    { id: 'calc_exponential_log', category: 'calculus', mode: 'graphing',
+      titleEn: 'Natural Exponential & Natural Logarithm', titleAr: 'الدالة الأسية الطبيعية واللوغاريتم الطبيعي (الأساس هـ)',
+      descEn: 'Inverse function relationship across line y = x and slope at x = 1.',
+      descAr: 'علاقة الانعكاس حول المستقيم ص = س وميل المماس عند س = ١.',
+      latex: 'y = e^x,\\quad y = \\ln(x),\\quad y = x',
+      expressions: ['y = e^x', 'y = \\ln(x)', 'y = x', '(1, 0)', '(0, 1)'] },
+    { id: 'calc_area_between_curves', category: 'calculus', mode: 'graphing',
+      titleEn: 'Area Enclosed Between Two Curves', titleAr: 'المساحة المحصورة بين منحنيين',
+      descEn: 'Region bounded by parabola y = 4 - x² and straight line y = x + 2.',
+      descAr: 'المنطقة المحصورة بين المنحنى ص = ٤ - س² والمستقيم ص = س + ٢.',
+      latex: 'y_1 = 4 - x^2,\\quad y_2 = x + 2,\\quad \\int_{-2}^1 (y_1 - y_2)\\,dx',
+      expressions: ['f(x) = 4 - x^2', 'g(x) = x + 2', 'x + 2 \\le y \\le 4 - x^2 \\left\\{-2 \\le x \\le 1\\right\\}'] },
+
+    { id: 'solid_plane_standard', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Equation of Plane & Normal Vector in R³', titleAr: 'معادلة المستوى ومتجه الاتجاه العمودي ن في الفراغ',
+      descEn: 'Plane 2x + 3y + 4z = 12 with normal vector n = (2, 3, 4) and axis intercepts.',
+      descAr: 'المستوى ٢س + ٣ص + ٤ع = ١٢ مع متجه العمودي ن = (٢، ٣، ٤) والأجزاء المقطوعة من المحاور.',
+      latex: '2x + 3y + 4z = 12,\\quad \\vec{n} = (2, 3, 4)',
+      expressions: ['2x + 3y + 4z = 12', 'x/6 + y/4 + z/3 = 1', '(6, 0, 0)', '(0, 4, 0)', '(0, 0, 3)'] },
+    { id: 'solid_sphere_shifted', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Sphere in Space with Center & Radius', titleAr: 'معادلة الكرة في الفراغ بمعلومية المركز ونصف القطر',
+      descEn: 'Sphere with center (2, -3, 4) and radius R = 4.',
+      descAr: 'كرة مركزها م(٢، -٣، ٤) ونصف قطرها نق = ٤ وحدات طول.',
+      latex: '(x - 2)^2 + (y + 3)^2 + (z - 4)^2 = 16',
+      expressions: ['(x - 2)^2 + (y + 3)^2 + (z - 4)^2 = 16', '(2, -3, 4)'] },
+    { id: 'solid_intersecting_planes', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Line of Intersection of Two Planes', titleAr: 'خط تقاطع مستويين في الفراغ ثلاثي الأبعاد',
+      descEn: 'Simultaneous intersection of x + y + z = 3 and 2x - y + z = 1.',
+      descAr: 'التقاطع المشترك للمستويين س + ص + ع = ٣ و ٢س - ص + ع = ١.',
+      latex: 'x + y + z = 3,\\quad 2x - y + z = 1',
+      expressions: ['x + y + z = 3', '2x - y + z = 1'] },
+    { id: 'solid_cone_surface', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Right Circular Cone Quadric Surface', titleAr: 'سطح المخروط الدائري القائم ثلاثي الأبعاد',
+      descEn: 'Double cone quadric surface with vertex at the origin.',
+      descAr: 'سطح المخروط المزدوج الذي رأسه عند نقطة الأصل في الفراغ.',
+      latex: 'z^2 = x^2 + y^2',
+      expressions: ['z^2 = x^2 + y^2', 'z = \\sqrt{x^2 + y^2}'] },
+    { id: 'solid_paraboloid_elliptic', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Elliptic Paraboloid Quadric Surface', titleAr: 'السطح المكافئ الدوراني (Paraboloid)',
+      descEn: 'Bowl-shaped quadric surface generated by revolving a parabola.',
+      descAr: 'السطح الناتج عن دوران قطع مكافئ حول محور تماثله.',
+      latex: 'z = x^2 + y^2',
+      expressions: ['z = x^2 + y^2', 'z = 4'] },
+    { id: 'solid_cylinder', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Circular Cylinder Along Z-Axis', titleAr: 'الأسطوانة الدائرية القائمة الموازية لمحور ع',
+      descEn: 'Infinite cylindrical shell of radius R = 3 centered along z-axis.',
+      descAr: 'أسطوانة دائرية نصف قطرها ٣ وحدات طول ممتدة على طول محور ع.',
+      latex: 'x^2 + y^2 = 9',
+      expressions: ['x^2 + y^2 = 9'] },
+
+    { id: 'dyn_projectile_trajectory', category: 'statics_dynamics', mode: 'graphing',
+      titleEn: 'Projectile Motion Trajectory with Launch Angle', titleAr: 'مسار حركة المقذوفات وزاوية الإطلاق والمدى الأفقي',
+      descEn: 'Parabolic trajectory equation under gravity g = 9.8 m/s² with adjustable angle and velocity.',
+      descAr: 'معادلة مسار المقذوف تحت تأثير الجاذبية الأرضية مع زاوية القذف والسرعة الابتدائية.',
+      latex: 'y = x\\tan(\\theta) - \\frac{g x^2}{2 v_0^2 \\cos^2(\\theta)}',
+      expressions: ['g = 9.8', 'v_0 = 25', '\\theta = 0.785', 'y = x\\tan(\\theta) - \\frac{g x^2}{2 v_0^2 \\cos^2(\\theta)} \\left\\{y \\ge 0\\right\\}'] },
+    { id: 'stat_resultant_angle', category: 'statics_dynamics', mode: 'graphing',
+      titleEn: 'Resultant of Two Concurrent Forces vs Angle', titleAr: 'محصلة قوتين متلاقيتين في نقطة بدلالة الزاوية بينهما',
+      descEn: 'Magnitude of resultant R as angle theta varies from 0 to pi.',
+      descAr: 'معيار المحصلة ح عند تغير الزاوية ي بين ٠ و ١٨٠ درجة.',
+      latex: 'R(\\theta) = \\sqrt{F_1^2 + F_2^2 + 2 F_1 F_2 \\cos(\\theta)}',
+      expressions: ['F_1 = 30', 'F_2 = 40', 'R(x) = \\sqrt{F_1^2 + F_2^2 + 2 F_1 F_2 \\cos(x)} \\left\\{0 \\le x \\le \\pi\\right\\}'] },
+    { id: 'dyn_shm_motion', category: 'statics_dynamics', mode: 'graphing',
+      titleEn: 'Simple Harmonic Motion Displacement & Velocity', titleAr: 'الحركة التوافقية البسيطة: الإزاحة والسرعة والزمن',
+      descEn: 'Sinusoidal displacement x(t) and velocity v(t) showing 90-degree phase shift.',
+      descAr: 'منحنى الإزاحة والسرعة مع فرق الطور بمقدار ٩٠ درجة.',
+      latex: 'x(t) = A\\cos(\\omega t),\\quad v(t) = -A\\omega\\sin(\\omega t)',
+      expressions: ['A = 5', 'w = 2', 'x(t) = A \\cos(w \\cdot t)', 'v(t) = -A \\cdot w \\cdot \\sin(w \\cdot t)'] },
+
+    { id: 'sci_combinatorics', category: 'scientific', mode: 'scientific',
+      titleEn: 'Combinations & Permutations (nCr & nPr)', titleAr: 'التوافيق والتباديل ومضروب العدد (ق، ل، !)',
+      descEn: 'Official high-frequency Thanaweya combinatorics operations.',
+      descAr: 'حساب التباديل والتوافيق والمضاريب لمنهج الجبر المصري.',
+      latex: 'nCr(10, 3) = 120,\\quad nPr(10, 3) = 720,\\quad 7! = 5040',
+      expressions: ['nCr(10, 3)', 'nPr(10, 3)', '7!'] },
+    { id: 'stat_linear_regression', category: 'stats_regression', mode: 'graphing',
+      titleEn: 'Linear Regression & Correlation (y ~ mx + b)', titleAr: 'الانحدار الخطي ومعامل الارتباط (ص ~ م س + ب)',
+      descEn: 'Bivariate data table with line of best fit, slope, correlation coefficient r, and residual plotting.',
+      descAr: 'جدول بيانات ثنائي المتغير مع خط أفضل مطابقة، ومعامل الارتباط، والميل، وتمثيل البواقي.',
+      latex: 'y_1 \\sim m x_1 + b,\\quad r^2,\\quad e_1 = y_1 - (m x_1 + b)',
+      expressions: ['y_1 \\sim m x_1 + b', 'e_1 = y_1 - (m x_1 + b)'] },
+    { id: 'stat_quadratic_regression', category: 'stats_regression', mode: 'graphing',
+      titleEn: 'Quadratic Parabolic Modeling (y ~ ax² + bx + c)', titleAr: 'الانحدار التربيعي ونمذجة المنحنيات (ص ~ أ س² + ب س + جـ)',
+      descEn: 'Model projectile trajectory, revenue maximization, and non-linear bivariate trends.',
+      descAr: 'نمذجة مسار المقذوفات وتعظيم الأرباح والعلاقات غير الخطية بنموذج تربيعي.',
+      latex: 'y_1 \\sim a x_1^2 + b x_1 + c',
+      expressions: ['y_1 \\sim a x_1^2 + b x_1 + c'] },
+    { id: 'stat_exponential_regression', category: 'stats_regression', mode: 'graphing',
+      titleEn: 'Exponential Growth & Decay (y ~ a · b^x)', titleAr: 'الانحدار الأسي للنمو والاضمحلال (ص ~ أ · ب^س)',
+      descEn: 'Fit exponential model for compound interest, population biology, and radioactive half-life.',
+      descAr: 'ملاءمة نموذج أسي لحساب الفائدة المركبة والنمو السكاني ونصف العمر الإشعاعي.',
+      latex: 'y_1 \\sim a \\cdot b^{x_1}',
+      expressions: ['y_1 \\sim a \\cdot b^{x_1}'] },
+    { id: 'stat_list_summary_boxplot', category: 'stats_regression', mode: 'graphing',
+      titleEn: '1-Variable Summary Statistics & Boxplot', titleAr: 'الإحصاء الوصفي لمتغير واحد والرسم الصندوقي',
+      descEn: 'Calculate mean, median, standard deviation, quartiles, and render five-number summary boxplot.',
+      descAr: 'حساب المتوسط الحسابي والوسيط والانحراف المعياري والأرباع مع رسم المخطط الصندوقي للقيم الخمس.',
+      latex: 'L = [12, 15, 18, 22, 25, 28, 35],\\quad \\operatorname{mean}(L),\\quad \\operatorname{boxplot}(L)',
+      expressions: ['L = [12, 15, 18, 22, 25, 28, 35]', '\\operatorname{mean}(L)', '\\operatorname{median}(L)', '\\operatorname{stdev}(L)', '\\operatorname{boxplot}(L)'] }
+  ];
+
+  var CATS = ['all', 'stats_regression', 'calculus', 'solid_3d', 'statics_dynamics', 'scientific'];
+
+  var presetsToggle = document.getElementById('calc-presets-toggle');
+  var presetsPanel = document.getElementById('calc-presets-panel');
+  var presetsClose = document.getElementById('calc-presets-close');
+  var presetsCatsEl = document.getElementById('calc-presets-cats');
+  var presetsListEl = document.getElementById('calc-presets-list');
+  var presetsCountEl = presetsToggle ? presetsToggle.querySelector('.calc-presets-count') : null;
+  var toastEl = document.getElementById('calc-toast');
+  var selectedCategory = 'all';
+  var presetsOpen = false;
+  var toastTimer = null;
+
+  function tt(key, vars) {
+    return (window.i18n && window.i18n.t) ? window.i18n.t(key, vars) : key;
+  }
+  function isAr() {
+    if (document.documentElement.lang === 'ar') return true;
+    return (window.i18n && window.i18n.getLocale) ? window.i18n.getLocale() === 'ar' : false;
+  }
+
+  // KaTeX is loaded `defer` site-wide (see base.njk) so it may not be ready
+  // the instant the presets panel first renders — poll briefly rather than
+  // silently leaving the raw LaTeX source (already shown as a fallback) up
+  // forever if a card renders before KaTeX finishes loading.
+  function renderMathInto(el, latex, attempt) {
+    attempt = attempt || 0;
+    if (window.katex) {
+      try {
+        el.innerHTML = window.katex.renderToString(latex, { throwOnError: false });
+      } catch (e) { /* leave the raw-text fallback already in el */ }
+      return;
+    }
+    if (attempt < 20) setTimeout(function () { renderMathInto(el, latex, attempt + 1); }, 100);
+  }
+
+  function showToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 4000);
+  }
+
+  function copyPreset(preset, btnEl) {
+    var text = preset.expressions.join('\n');
+    var onDone = function () {
+      showToast(tt('calc.presets.copiedToast', { n: preset.expressions.length }));
+      if (btnEl) {
+        var original = btnEl.textContent;
+        btnEl.textContent = '✓';
+        setTimeout(function () { btnEl.textContent = original; }, 1500);
+      }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onDone, function () {});
+    }
+  }
+
+  function applyPreset(preset) {
+    selectMode(preset.mode);
+    function inject() {
+      if (apiInstance && typeof apiInstance.setExpression === 'function') {
+        try {
+          apiInstance.setBlank();
+          preset.expressions.forEach(function (expr, idx) {
+            apiInstance.setExpression({ id: 'p_' + idx, latex: expr });
+          });
+          showToast((isAr() ? 'تم تطبيق النموذج على الآلة الحاسبة!' : 'Preset applied directly to calculator!') + ' (' + preset.expressions.length + ' ' + (isAr() ? 'معادلات' : 'equations') + ')');
+          return;
+        } catch (err) {
+          console.warn('Failed to set expressions on Desmos instance:', err);
+        }
+      }
+      copyPreset(preset);
+    }
+    setTimeout(inject, 80);
+  }
+
+  function renderCats() {
+    if (!presetsCatsEl) return;
+    presetsCatsEl.innerHTML = '';
+    CATS.forEach(function (cat) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'calc-cat-pill' + (cat === selectedCategory ? ' on' : '');
+      btn.textContent = tt('calc.presets.cat.' + cat);
+      btn.addEventListener('click', function () {
+        selectedCategory = cat;
+        renderCats();
+        renderList();
+      });
+      presetsCatsEl.appendChild(btn);
+    });
+  }
+
+  function renderList() {
+    if (!presetsListEl) return;
+    presetsListEl.innerHTML = '';
+    PRESETS
+      .filter(function (p) { return selectedCategory === 'all' || p.category === selectedCategory; })
+      .forEach(function (preset) {
+        var card = document.createElement('div');
+        card.className = 'calc-preset-card';
+
+        var head = document.createElement('div');
+        head.className = 'calc-preset-head';
+        var badge = document.createElement('span');
+        badge.className = 'calc-preset-mode-badge';
+        badge.textContent = preset.mode === 'threeD' ? '3D' : preset.mode.slice(0, 3).toUpperCase();
+        var title = document.createElement('h4');
+        title.textContent = isAr() ? preset.titleAr : preset.titleEn;
+        head.appendChild(badge);
+        head.appendChild(title);
+        card.appendChild(head);
+
+        var desc = document.createElement('p');
+        desc.className = 'calc-preset-desc';
+        desc.textContent = isAr() ? preset.descAr : preset.descEn;
+        card.appendChild(desc);
+
+        if (preset.latex) {
+          var mathBox = document.createElement('div');
+          mathBox.className = 'calc-preset-math';
+          mathBox.textContent = preset.latex; // shown as-is until KaTeX (loaded deferred site-wide) is ready
+          card.appendChild(mathBox);
+          renderMathInto(mathBox, preset.latex);
+        }
+
+        var actions = document.createElement('div');
+        actions.className = 'calc-preset-actions';
+        var applyBtn = document.createElement('button');
+        applyBtn.type = 'button';
+        applyBtn.className = 'calc-preset-apply';
+        applyBtn.textContent = tt('calc.presets.apply');
+        applyBtn.addEventListener('click', function () { applyPreset(preset); });
+        var copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'calc-preset-copy';
+        copyBtn.title = tt('calc.presets.copy');
+        copyBtn.setAttribute('aria-label', tt('calc.presets.copy'));
+        copyBtn.textContent = '📋';
+        copyBtn.addEventListener('click', function () { copyPreset(preset, copyBtn); });
+        actions.appendChild(applyBtn);
+        actions.appendChild(copyBtn);
+        card.appendChild(actions);
+
+        presetsListEl.appendChild(card);
+      });
+  }
+
+  function openPresets() {
+    presetsOpen = true;
+    presetsPanel.hidden = false;
+    presetsToggle.setAttribute('aria-expanded', 'true');
+  }
+  function closePresets() {
+    presetsOpen = false;
+    presetsPanel.hidden = true;
+    presetsToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (presetsToggle) {
+    presetsToggle.addEventListener('click', function () {
+      if (presetsOpen) closePresets(); else openPresets();
+    });
+  }
+  if (presetsClose) presetsClose.addEventListener('click', closePresets);
+
+  // The language toggle applies live (no page reload — see engine.js's
+  // setLocale) but the preset cards are plain rendered text, not
+  // [data-i18n] elements, so re-render them on every language switch to
+  // pick up the new locale's title/desc/UI strings.
+  var i18nBtn = document.getElementById('i18n-toggle-btn');
+  if (i18nBtn) {
+    i18nBtn.addEventListener('click', function () {
+      setTimeout(function () {
+        renderCats();
+        renderList();
+        if (activeMode === 'distributions') mountDistributions();
+      }, 0);
+    });
+  }
+
+  if (presetsCountEl) presetsCountEl.textContent = '(' + PRESETS.length + ')';
+
+  // window.i18n (engine.js) loads via a plain, non-deferred <script> placed
+  // AFTER this page's own content in base.njk, so it doesn't exist yet at
+  // this point in a normal top-to-bottom parse — tt()/isAr() would silently
+  // fall back to raw keys / English if the first render ran right now.
+  // Poll briefly (same technique as mountExam's wait for window.Desmos
+  // above) rather than rendering once, wrong, and only fixing it on the
+  // user's first language-toggle click.
+  function initPresetsUI(attempt) {
+    attempt = attempt || 0;
+    if (!window.i18n && attempt < 50) {
+      setTimeout(function () { initPresetsUI(attempt + 1); }, 20);
+      return;
+    }
+    renderCats();
+    renderList();
+  }
+  initPresetsUI();
+})();
+</script>

@@ -1,0 +1,52 @@
+---
+layout: base.njk
+trackId: calculator
+pageLocale: ar
+isRtl: true
+canonicalPath: "/ar/calculator/"
+enAltPath: "/calculator/"
+arAltPath: "/ar/calculator/"
+title: "الآلة الحاسبة البيانية والعلمية والهندسية ووضع الاختبار · ClipSAT"
+description: "آلة Desmos الحقيقية مدمجة بالكامل — الرسم البياني، ثلاثي الأبعاد 3D، العلمية، الهندسة، وضع الاختبار المقيّد، وحزمة التوزيعات الإحصائية."
+---
+<main class="view active" id="view-calculator">
+  <div class="wrap" style="max-width:1100px; margin:0 auto; padding:28px 20px 80px">
+    <h1 data-i18n="calc.page.h1">الآلة الحاسبة البيانية والعلمية والهندسية ووضع الاختبار</h1>
+    <p class="lu" data-i18n="calc.page.lede">هذه هي حاسبة Desmos الحقيقية وليست مجرد محاكاة — نفس المحرك المعتمد في SAT الرقمي واختبارات AP. بدّل بين الأوضاع أدناه: الرسم البياني، ثلاثي الأبعاد 3D، الهندسة، العلمية، وضع الاختبار المقيّد، وحزمة التوزيعات الإحصائية.</p>
+
+    <div class="calc-mode-bar">
+      <div class="calc-mode-row" role="tablist" aria-label="وضع الآلة الحاسبة">
+        <button type="button" class="calc-mode-btn" data-mode="graphing" role="tab" aria-selected="true">📈 <span data-i18n="calc.mode.graphing">بياني</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="threeD" role="tab" aria-selected="false">🧊 <span data-i18n="calc.mode.3d">ثلاثي الأبعاد 3D</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="scientific" role="tab" aria-selected="false">🔢 <span data-i18n="calc.mode.scientific">علمية</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="geometry" role="tab" aria-selected="false">🧭 <span data-i18n="calc.mode.geometry">هندسة</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="exam" role="tab" aria-selected="false">🎓 <span data-i18n="calc.mode.exam">وضع الاختبار</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="distributions" role="tab" aria-selected="false">📊 <span data-i18n="calc.mode.distributions">التوزيعات الإحصائية</span></button>
+      </div>
+      <div class="calc-bar-actions">
+        <button type="button" id="calc-presets-toggle" aria-expanded="false" aria-controls="calc-presets-panel">✨ <span data-i18n="calc.presets.toggle">نماذج جاهزة</span> <span class="calc-presets-count"></span></button>
+        <a id="calc-external-link" href="https://www.desmos.com/calculator" target="_blank" rel="noopener" title="فتح هذه الحاسبة في تبويب مستقل">↗ <span data-i18n="calc.openExternal">فتح في تبويب</span></a>
+      </div>
+    </div>
+
+    <div class="calc-body">
+      <div id="calc-container" role="tabpanel" aria-label="حاسبة Desmos"></div>
+
+      <aside id="calc-presets-panel" hidden aria-label="نماذج المنهج الدراسي">
+        <div class="calc-presets-head">
+          <h3>✨ <span data-i18n="calc.presets.heading">نماذج المنهج</span></h3>
+          <button type="button" id="calc-presets-close" aria-label="إغلاق النماذج" data-i18n-attr="aria-label:calc.presets.close">✕</button>
+        </div>
+        <div class="calc-presets-cats" id="calc-presets-cats"></div>
+        <div class="calc-presets-note">ℹ️ <span data-i18n="calc.presets.info">اختر أي نموذج لتبديل الوضع تلقائيًا ونسخ معادلاته الجاهزة للصق.</span></div>
+        <div class="calc-presets-list" id="calc-presets-list"></div>
+      </aside>
+    </div>
+
+    <div id="calc-toast" class="calc-toast" role="status" aria-live="polite" hidden></div>
+
+    <p class="calc-attribution">مدعوم بالتطبيق الرسمي من <a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos</a>. أوضاع الرسم البياني وثلاثي الأبعاد والعلمية والهندسية تفتح حاسبة Desmos مباشرة، بينما يوفّر وضع الاختبار نفس الخيارات المقيّدة المعتمدة في يوم الاختبار.</p>
+  </div>
+</main>
+
+{% include "partials/calculator-styles-and-script.njk" %}

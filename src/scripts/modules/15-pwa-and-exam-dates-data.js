@@ -261,6 +261,21 @@ window.CSOfflinePack = (function(){
     if(trackId === 'home') return Promise.resolve(false);
     _updateBtnUI(btnEl, 'saving');
     var urls = getUrlsForTrack(trackId);
+    if(typeof document !== 'undefined' && document.querySelectorAll){
+      var seenU = {};
+      urls.forEach(function(u){ seenU[u] = 1; });
+      document.querySelectorAll('a[data-chapter-url], a.syl-ch-card[href], .rail a[href]').forEach(function(a){
+        if(urls.length >= 90) return;
+        var raw = a.getAttribute('data-chapter-url') || a.getAttribute('href') || '';
+        if(!raw || raw.charAt(0) === '#') return;
+        var pathOnly = raw.split('#')[0].split('?')[0];
+        if(pathOnly.indexOf('/' + trackId + '/') === -1) return;
+        if(!seenU[pathOnly]){
+          seenU[pathOnly] = 1;
+          urls.push(pathOnly);
+        }
+      });
+    }
 
     /* Notify Service Worker as well */
     if(typeof navigator !== 'undefined' && navigator.serviceWorker && navigator.serviceWorker.controller){
@@ -283,7 +298,9 @@ window.CSOfflinePack = (function(){
             var cloned = res.clone();
             if(u.indexOf('/bank-shards/' + trackId + '/_index.json') !== -1){
               cloned.json().then(function(idx){
-                var tids = Object.keys((idx && idx.topics) || {});
+                var tids = (idx && Array.isArray(idx.canonicalTopics) && idx.canonicalTopics.length)
+                  ? idx.canonicalTopics
+                  : Object.keys((idx && idx.topics) || {});
                 tids.forEach(function(tid){
                   var su = cdnPrefix + '/bank-shards/' + trackId + '/' + tid + '.json';
                   fetch(su).then(function(sr){ if(sr && sr.ok) cache.put(su, sr); }).catch(function(){});
