@@ -922,7 +922,15 @@
 
   /* ---------- Shared 3D-explorer helper (Three.js + OrbitControls lazy loader) ---------- */
   window.ClipSAT3D=(function(){
-    var COLOR={INDIGO:0x1E3A6E, AMBER:0xC8902A, INK:0x0E1726, AXIS:0x8C97A8};
+    function _isDark(){
+      return typeof document !== 'undefined' && document.body && document.body.classList.contains('dark');
+    }
+    var COLOR={
+      get INDIGO(){ return _isDark() ? 0x7DA4E8 : 0x1E3A6E; },
+      get AMBER(){ return _isDark() ? 0xFBBF24 : 0xC8902A; },
+      get INK(){ return _isDark() ? 0xE2E8F0 : 0x0E1726; },
+      get AXIS(){ return _isDark() ? 0x94A3B8 : 0x8C97A8; }
+    };
     var cached=null;
     function load(){
       if(!cached){
@@ -942,6 +950,7 @@
       var renderer=new T.WebGLRenderer({antialias:true, alpha:true});
       renderer.setSize(w,h);
       renderer.setPixelRatio(Math.min(2, window.devicePixelRatio||1));
+      renderer.domElement.style.touchAction='none';
       wrapEl.appendChild(renderer.domElement);
 
       scene.add(new T.AmbientLight(0xffffff,0.85));

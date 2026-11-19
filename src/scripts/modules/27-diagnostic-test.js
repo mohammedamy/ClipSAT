@@ -576,22 +576,33 @@
     } else {
       diffBadgeHtml = '<span class="cs-diag-cat-badge medium">⚖️ Standard / Level 2</span>';
     }
+    var isArUi = (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') || document.documentElement.dir === 'rtl' || state.lang === 'ar';
+    var qStem = (window.CSItemLocale && typeof window.CSItemLocale.text === 'function')
+      ? window.CSItemLocale.text(q)
+      : (q.text || q.q || '');
+    var qChoices = (window.CSItemLocale && typeof window.CSItemLocale.choices === 'function')
+      ? window.CSItemLocale.choices(q)
+      : (q.choices || []);
+    var semLevel = (typeof state.sem === 'number')
+      ? (state.sem <= 0.38 ? (isArUi ? 'دقة عالية' : 'High Precision') : (state.sem <= 0.55 ? (isArUi ? 'قيد المعايرة' : 'Calibrating') : (isArUi ? 'استكشاف المستوى' : 'Adapting')))
+      : '';
     var semChip = (typeof state.sem === 'number' && state.currentIdx > 0)
-      ? '<span class="cs-diag-counter" title="3PL Posterior Standard Error">θ=' + (state.theta >= 0 ? '+' : '') + state.theta.toFixed(2) + ' ±' + state.sem.toFixed(2) + '</span>'
+      ? '<span class="cs-diag-counter" title="3PL IRT Posterior θ=' + (state.theta >= 0 ? '+' : '') + state.theta.toFixed(2) + ' ±' + state.sem.toFixed(2) + '">' + semLevel + '</span>'
       : '';
 
     var responseAreaHtml = '';
     if (q.type === 'spr') {
       var curSpr = userAns != null ? String(userAns) : '';
       responseAreaHtml = '<div class="cs-diag-spr-wrap" style="margin-top:14px;padding:14px;border:1.5px solid var(--border,#cbd5e1);border-radius:10px;background:var(--paper-2,#f8fafc)">'
-        + '<label style="display:block;font-size:.82rem;font-weight:700;color:var(--indigo,#1e3a8a);margin-bottom:6px">✍️ Student-Produced Response (Enter integer, fraction like 7/4, or decimal):</label>'
-        + '<input type="text" class="cs-diag-spr-input" value="' + escT(curSpr) + '" placeholder="Type exact value…" '
+        + '<label style="display:block;font-size:.82rem;font-weight:700;color:var(--indigo,#1e3a8a);margin-bottom:6px">' + (isArUi ? '✍️ إجابة مقالية قصيرة (أدخل عددًا صحيحًا أو كسرًا مثل 7/4 أو عددًا عشريًا):' : '✍️ Student-Produced Response (Enter integer, fraction like 7/4, or decimal):') + '</label>'
+        + '<input type="text" class="cs-diag-spr-input" value="' + escT(curSpr) + '" placeholder="' + (isArUi ? 'أدخل القيمة الدقيقة…' : 'Type exact value…') + '" '
         + 'oninput="window.inputDiagSpr(this.value)" '
         + 'style="width:100%;max-width:260px;padding:10px 12px;border:2px solid var(--border,#94a3b8);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem;font-weight:700">'
         + '</div>';
     } else {
-      responseAreaHtml = '<div class="cs-diag-choices">' + (q.choices || []).map(function(choice, cIdx) {
-        var letter = String.fromCharCode(65 + cIdx);
+      var LTR = isArUi ? ['أ','ب','ج','د','هـ'] : ['A','B','C','D','E'];
+      responseAreaHtml = '<div class="cs-diag-choices">' + qChoices.map(function(choice, cIdx) {
+        var letter = LTR[cIdx] || String.fromCharCode(65 + cIdx);
         var isSelected = userAns === cIdx;
         return '<button type="button" class="cs-diag-choice' + (isSelected ? ' selected' : '') + '" onclick="window.selectDiagChoice(' + cIdx + ')">'
           + '<span class="cs-diag-letter">' + letter + '</span>'
@@ -602,32 +613,43 @@
 
     var isLast = state.currentIdx === total - 1;
 
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', isArUi ? 'الاختبار التشخيصي التكيفي' : 'Diagnostic Assessment');
     overlay.innerHTML = '<div class="cs-diag-card">'
       + '<div class="cs-diag-head">'
       + '  <div class="cs-diag-meta">'
       + '    <span class="cs-diag-track-badge">🎯 ' + escT(trackLabel) + ' 3PL CAT</span>'
-      + '    <span class="cs-diag-counter">Question ' + (state.currentIdx + 1) + ' of up to ' + total + '</span>'
+      + '    <span class="cs-diag-counter">' + (isArUi ? ('السؤال ' + (state.currentIdx + 1) + ' من ' + total) : ('Question ' + (state.currentIdx + 1) + ' of up to ' + total)) + '</span>'
       + '    ' + diffBadgeHtml + semChip
       + '  </div>'
-      + '  <button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()" aria-label="Close diagnostic">✕</button>'
+      + '  <div style="display:flex;align-items:center;gap:6px">'
+      + '    <button type="button" class="cs-diag-nav-btn" style="padding:5px 9px;font-size:.78rem" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" title="Calculator">🧮</button>'
+      + '    <button type="button" class="cs-diag-nav-btn" style="padding:5px 9px;font-size:.78rem" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Formulas">📐</button>'
+      + '    <button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()" aria-label="Close diagnostic">✕</button>'
+      + '  </div>'
       + '</div>'
       + '<div class="cs-diag-progress-bar"><div class="cs-diag-progress-fill" style="width:' + progressPct + '%"></div></div>'
       + '<div class="cs-diag-body">'
       + '  <div class="cs-diag-domain-tag">' + escT(q.domain || 'Core Mathematics') + '</div>'
       + (figHtml ? '<div class="cs-diag-fig-wrap">' + figHtml + '</div>' : '')
-      + '  <div class="cs-diag-q-text">' + formatMath(q.text || q.q || '') + '</div>'
+      + '  <div class="cs-diag-q-text">' + formatMath(qStem) + '</div>'
       + '  ' + responseAreaHtml
       + '</div>'
       + '<div class="cs-diag-footer">'
-      + '  <button type="button" class="cs-diag-nav-btn" onclick="window.prevDiagQuestion()"' + (state.currentIdx === 0 ? ' disabled' : '') + '>← Previous</button>'
+      + '  <button type="button" class="cs-diag-nav-btn" onclick="window.prevDiagQuestion()"' + (state.currentIdx === 0 ? ' disabled' : '') + '>' + (isArUi ? '→ السابق' : '← Previous') + '</button>'
       + '  <div class="cs-diag-footer-spacer"></div>'
       + '  <button type="button" class="btn cs-diag-next-btn" onclick="' + (isLast ? 'window.finishDiagnosticTest()' : 'window.nextDiagQuestion()') + '">'
-      + (isLast ? 'Submit Diagnostic ✓' : 'Next Question →')
+      + (isLast ? (isArUi ? 'إنهاء التشخيص ✓' : 'Submit Diagnostic ✓') : (isArUi ? 'السؤال التالي ←' : 'Next Question →'))
       + '  </button>'
       + '</div>'
       + '</div>';
 
     typesetMath(overlay);
+    var closeBtn = overlay.querySelector('.cs-diag-close');
+    if (closeBtn && state.currentIdx === 0 && !overlay.contains(document.activeElement)) {
+      try { closeBtn.focus(); } catch(_){}
+    }
   }
 
   function getProjectedScore(trackId, pct) {
@@ -814,21 +836,28 @@
       var c2 = findChapterForDomain(d2);
       var c3 = findChapterForDomain(d3);
 
+      function resolveChapterHref(chObj) {
+        if (!chObj || !chObj.url) return (isArabic ? '/ar/' : '/') + state.trackId + '/';
+        var m = chObj.url.match(/^\/([a-z0-9_-]+)\/\?ch=([a-z0-9_-]+)$/i);
+        if (m) return (isArabic ? '/ar/' : '/') + m[1] + '/' + m[2] + '/';
+        return (isArabic && chObj.url.indexOf('/ar/') !== 0) ? ('/ar' + chObj.url) : chObj.url;
+      }
+
       var items = [
         {
           day: isArabic ? 'اليوم 1–2' : 'Days 1–2',
           task: isArabic ? ('مراجعة التأسيس والمفاهيم لـ: ' + d1) : ('Foundational review & interactive explorer: ' + d1),
-          link: c1 ? '<a href="' + c1.url + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '📖 فتح الدرس' : '📖 View Notes') + ' →</a>' : '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'المنهج' : 'Syllabus') + ' →</a>'
+          link: c1 ? '<a href="' + resolveChapterHref(c1) + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '📖 فتح الدرس' : '📖 View Notes') + ' →</a>' : '<a href="' + (isArabic ? '/ar/' : '/') + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'المنهج' : 'Syllabus') + ' →</a>'
         },
         {
           day: isArabic ? 'اليوم 3–4' : 'Days 3–4',
           task: isArabic ? ('حل تدريبات مكثفة على: ' + d2) : ('Targeted practice problems & error spotting: ' + d2),
-          link: c2 ? '<a href="' + c2.url + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '🎛️ المستكشف' : '🎛️ Explorer') + ' →</a>' : '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'التمارين' : 'Practice') + ' →</a>'
+          link: c2 ? '<a href="' + resolveChapterHref(c2) + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '🎛️ المستكشف' : '🎛️ Explorer') + ' →</a>' : '<a href="' + (isArabic ? '/ar/' : '/') + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'التمارين' : 'Practice') + ' →</a>'
         },
         {
           day: isArabic ? 'اليوم 5–6' : 'Days 5–6',
           task: isArabic ? ('تمارين متقدمة على المسائل المركبة: ' + d3) : ('Timed section drills & question bank variations: ' + d3),
-          link: c3 ? '<a href="' + c3.url + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '📝 اختبار' : '📝 Quiz') + ' →</a>' : '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'التمارين' : 'Practice') + ' →</a>'
+          link: c3 ? '<a href="' + resolveChapterHref(c3) + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '📝 اختبار' : '📝 Quiz') + ' →</a>' : '<a href="' + (isArabic ? '/ar/' : '/') + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'التمارين' : 'Practice') + ' →</a>'
         },
         {
           day: isArabic ? 'اليوم 7' : 'Day 7',
@@ -1017,11 +1046,14 @@
       + '<p>Preparing your Computerized Adaptive (CAT) ' + escT(TRACK_NAMES[trackId] || trackId) + ' diagnostic…</p>'
       + '</div>';
 
-    var loadPromise = (window.CS_loadTrackBank && typeof window.CS_loadTrackBank === 'function')
+    var loadBank = (window.CS_loadTrackBank && typeof window.CS_loadTrackBank === 'function')
       ? window.CS_loadTrackBank(trackId)
       : Promise.resolve();
+    var loadFigs = (typeof window._ensureFigures === 'function')
+      ? window._ensureFigures().catch(function(){})
+      : Promise.resolve();
 
-    loadPromise.then(function() {
+    Promise.all([loadBank, loadFigs]).then(function() {
       var bank = window.fullExamBank && window.fullExamBank[trackId];
       var rawPool = (bank && bank.pool) ? bank.pool : [];
       if (!rawPool.length) {

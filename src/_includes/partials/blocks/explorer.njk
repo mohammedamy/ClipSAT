@@ -43,7 +43,7 @@
 </div>
 {% endmacro %}
 <div class="explorer">
-  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><div style="display:inline-flex;align-items:center;gap:6px"><button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.explainExplorer(this)" title="Listen to an interactive voice walkthrough of this explorer" aria-label="Explain interactive explorer aloud"><span>🔊</span><span>Explain</span></button><span class="badge">interactive</span></div></div>
+  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><div style="display:inline-flex;align-items:center;gap:6px"><button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.explainExplorer(this)" {{ bl.attr('title', { en: 'Listen to an interactive voice walkthrough of this explorer', ar: 'استمع إلى شرح صوتي تفاعلي لهذا المستكشف' }) }} {{ bl.attr('aria-label', { en: 'Explain interactive explorer aloud', ar: 'شرح المستكشف التفاعلي صوتيًا' }) }}><span>🔊</span><span>{{ bl.text({ en: 'Explain', ar: 'اشرح صوتيًا' }) }}</span></button><span class="badge">{{ bl.text({ en: 'interactive', ar: 'تفاعلي' }) }}</span></div></div>
   <div class="ex-body"{% if block.bodyStyle %} style="{{ block.bodyStyle }}"{% endif %}>
     <div class="ex-canvas"{% if block.canvasStyle %} style="{{ block.canvasStyle }}"{% endif %}>
       {% if block.canvasId %}
@@ -55,10 +55,10 @@
       {% if not block.canvasId and block.canvas3d %}
       <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
       <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
-      {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
+      {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>{{ bl.text({ en: 'Drag to rotate, scroll to zoom · loads a small 3D library on first use', ar: 'اسحب للتدوير ومرّر للتكبير · تُحمَّل مكتبة ثلاثية الأبعاد صغيرة عند أول استخدام' }) }}</p>{% endif %}
       {% endif %}
       {% if block.dataPanel %}
-      <button type="button" id="{{ block.dataPanel.btnId }}" class="ex-data-btn" aria-expanded="false" aria-controls="{{ block.dataPanel.panelId }}">📊 View as data (non-visual equivalent)</button>
+      <button type="button" id="{{ block.dataPanel.btnId }}" class="ex-data-btn" aria-expanded="false" aria-controls="{{ block.dataPanel.panelId }}">{{ bl.text({ en: '📊 View as data (non-visual equivalent)', ar: '📊 عرض كبيانات (بديل غير مرئي)' }) }}</button>
       <div id="{{ block.dataPanel.panelId }}" class="ex-data-panel" hidden>
         <p id="{{ block.dataPanel.descId }}"></p>
         <table class="ex-data-table">
@@ -71,7 +71,7 @@
       {% if block.canvasId and block.canvas3d %}
       <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
       <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
-      {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
+      {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>{{ bl.text({ en: 'Drag to rotate, scroll to zoom · loads a small 3D library on first use', ar: 'اسحب للتدوير ومرّر للتكبير · تُحمَّل مكتبة ثلاثية الأبعاد صغيرة عند أول استخدام' }) }}</p>{% endif %}
       {% endif %}
     </div>
     <div class="ex-controls"{% if block.controlsStyle %} style="{{ block.controlsStyle }}"{% endif %}>
@@ -86,7 +86,7 @@
     </div>
   </div>
   <div class="ex-footer" style="padding:6px 14px; font-size:.74rem; color:var(--muted); border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; background:var(--panel, #fff)">
-    <span>Interactive visualizer · AI-assisted, human-reviewed</span>
-    <a href="/contact/" style="color:var(--indigo); text-decoration:underline">Report errors here ↗</a>
+    <span>{{ bl.text({ en: 'Interactive visualizer · AI-assisted, human-reviewed', ar: 'عارض تفاعلي · مدعوم بالذكاء الاصطناعي ومُراجع تربويًا' }) }}</span>
+    <a href="/contact/" style="color:var(--indigo); text-decoration:underline">{{ bl.text({ en: 'Report errors here ↗', ar: 'الإبلاغ عن خطأ ↗' }) }}</a>
   </div>
 </div>

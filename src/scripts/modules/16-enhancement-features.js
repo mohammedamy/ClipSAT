@@ -595,10 +595,13 @@ window.CSTwinProblem = (function(){
       + (ar ? 'جاري تحميل مسألة مشابهة من بنك الأسئلة...' : 'Loading a matching problem from the verified bank...')
       + '</div>';
 
-    var loadPromise = (chapterId && typeof window.CS_loadTopicShard === 'function' && !(window.fullExamBank && window.fullExamBank[trackId]))
+    var loadBank = (chapterId && typeof window.CS_loadTopicShard === 'function' && !(window.fullExamBank && window.fullExamBank[trackId]))
       ? window.CS_loadTopicShard(trackId, chapterId)
       : ((typeof window.CS_loadTrackBank === 'function') ? window.CS_loadTrackBank(trackId) : Promise.resolve());
-    loadPromise.then(function(){
+    var loadFigs = (typeof window._ensureFigures === 'function')
+      ? window._ensureFigures().catch(function(){})
+      : Promise.resolve();
+    Promise.all([loadBank, loadFigs]).then(function(){
       _renderTwinCard(cardEl, trackId, chapterId, domains);
     }).catch(function(){
       _renderTwinCard(cardEl, trackId, chapterId, domains);

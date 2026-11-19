@@ -5546,6 +5546,76 @@ function _initFigureInspection(){
       setTimeout(function(){ hideBadge(el); }, 2500);
     }
   }, { passive: true });
+
+  document.addEventListener('focusin', function(e){
+    var el = e.target && e.target.closest && e.target.closest('[data-inspect]');
+    if(el) showBadge(el);
+  });
+
+  document.addEventListener('focusout', function(e){
+    var el = e.target && e.target.closest && e.target.closest('[data-inspect]');
+    if(el) hideBadge(el);
+  });
+}
+
+/* ── Global SVG A11y (<title> + role="img" + aria-label) & Sign-Format Polish ── */
+function _cleanFigText(s){
+  return String(s == null ? '' : s)
+    .replace(/<[^>]*>/g, '')
+    .replace(/\\\(|\\\)|\\\[|\\\]/g, '')
+    .replace(/\s*\+\s*-\s*/g, ' − ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function _autoFigDesc(spec){
+  if(!spec || typeof spec !== 'object') return 'Mathematical diagram';
+  var isAr = (typeof document !== 'undefined' && document.documentElement && document.documentElement.dir === 'rtl');
+  var explicit = (isAr && (spec.alt_ar || spec.title_ar || spec.caption_ar)) || spec.alt || spec.ariaLabel || spec.title || spec.caption || spec.label;
+  if(explicit && typeof explicit === 'string' && explicit.trim()){
+    return _cleanFigText(explicit);
+  }
+  var t = String(spec.type || 'diagram').replace(/_/g, ' ');
+  var parts = [isAr ? ('رسم رياضي: ' + t) : ('Mathematical ' + t + ' diagram')];
+  if(Array.isArray(spec.fns) && spec.fns.length){
+    var lbls = spec.fns.map(function(f){ return (f && (f.label || f.fn)) ? _cleanFigText(f.label || f.fn) : ''; }).filter(Boolean);
+    if(lbls.length) parts.push(lbls.slice(0, 2).join(', '));
+  }
+  if(spec.f && typeof spec.f === 'string') parts.push('dy/dx = ' + _cleanFigText(spec.f));
+  return parts.join(' — ').replace(/\s*\+\s*-\s*/g, ' − ').slice(0, 180);
+}
+
+function _polishRenderedSvg(html, spec){
+  if(!html || typeof html !== 'string' || html.indexOf('<svg') === -1) return html;
+  // Clean ugly "+ -k" sign strings inside SVG text & aria-label attributes
+  var out = html.replace(/(\b[a-zA-Z0-9)\]}])\s*\+\s*-\s*(\d)/g, '$1 − $2');
+  // Deduplicate adjacent identical coordinates in aria-label e.g. "(0, -3) (0, -3)"
+  out = out.replace(/(\(-?\d+(?:\.\d+)?,\s*[-−]?\d+(?:\.\d+)?\))\s+\1/g, '$1');
+  var desc = _autoFigDesc(spec).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  out = out.replace(/<svg\b([^>]*)>/i, function(full, attrs){
+    var a = attrs || '';
+    if(!/\brole\s*=/i.test(a)) a += ' role="img"';
+    if(!/\baria-label\s*=/i.test(a)) a += ' aria-label="' + desc + '"';
+    return '<svg' + a + '>';
+  });
+  if(!/<title\b/i.test(out)){
+    out = out.replace(/(<svg\b[^>]*>)/i, '$1<title>' + desc + '</title>');
+  }
+  return out;
+}
+
+if(typeof window !== 'undefined'){
+  if(typeof window._renderFig === 'function'){
+    var _origRenderFig = window._renderFig;
+    window._renderFig = function(fig){
+      return _polishRenderedSvg(_origRenderFig.apply(this, arguments), fig);
+    };
+  }
+  if(typeof window.renderMathFigure === 'function'){
+    var _origRenderMathFig = window.renderMathFigure;
+    window.renderMathFigure = function(spec){
+      return _polishRenderedSvg(_origRenderMathFig.apply(this, arguments), spec);
+    };
+  }
 }
 
 if(typeof document !== 'undefined'){
