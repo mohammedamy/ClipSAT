@@ -690,30 +690,50 @@
     if(sn) sn.addEventListener('input',upd);
   })();
 
-  /* 3D Cylinder & Inscribed Cone Visualizer (Qudrat Spatial Geometry) */
+  /* 3D Shaded-Region Slab Visualizer (Square Prism - Inscribed Circular Cutout) */
   (function(){
     var btn=document.getElementById("qudGeo3dBtn"), wrap=document.getElementById("qudGeo3dWrap"), hint=document.getElementById("qudGeo3dHint");
     if(!btn||!wrap) return;
     var sR=document.getElementById("qudShadedR");
-    var built=false, H=null, cylMesh=null, coneMesh=null;
+    var built=false, H=null, slabMesh=null, cutoutMesh=null, THREE_MOD=null;
+    function _makeSlab(rNorm){
+      var T=THREE_MOD;
+      var half=Math.max(1.2, Math.min(3.6, rNorm));
+      var rad=half*0.92;
+      var sh=new T.Shape();
+      sh.moveTo(-half,-half); sh.lineTo(half,-half); sh.lineTo(half,half); sh.lineTo(-half,half); sh.closePath();
+      var hole=new T.Path();
+      hole.absarc(0,0,rad,0,Math.PI*2,true);
+      sh.holes.push(hole);
+      var ext=new T.ExtrudeGeometry(sh,{depth:0.8,bevelEnabled:true,bevelThickness:0.06,bevelSize:0.06,bevelSegments:2,curveSegments:40});
+      ext.rotateX(-Math.PI/2);
+      return ext;
+    }
     function build(mods){
-      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
-      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.45, dist:12, target:new T.Vector3(0,2,0),
-        axisSegs:[[[-5,0,0],[5,0,0]],[[0,0,0],[0,6,0]],[[0,0,-5],[0,0,5]]]});
-      cylMesh=new T.Mesh(new T.CylinderGeometry(1,1,1,36,1,true), new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.3, side:T.DoubleSide}));
-      coneMesh=new T.Mesh(new T.ConeGeometry(1,1,36), new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.68, side:T.DoubleSide}));
-      H.scene.add(cylMesh); H.scene.add(coneMesh);
-      update();
+      THREE_MOD=mods.THREE;
+      var T=THREE_MOD, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.75, el:0.58, dist:10.5, target:new T.Vector3(0,0.4,0),
+        axisSegs:[[[-4.5,0,0],[4.5,0,0]],[[0,0,0],[0,3.2,0]],[[0,0,-4.5],[0,0,4.5]]]});
+      var rInit=sR?Math.max(1.2,Math.min(3.4,(parseFloat(sR.value)||6)*0.32)):2.1;
+      slabMesh=new T.Mesh(_makeSlab(rInit), new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.82, side:T.DoubleSide}));
+      cutoutMesh=new T.Mesh(new T.CylinderGeometry(1,1,0.82,40), new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.22, wireframe:false}));
+      cutoutMesh.position.set(0,0.41,0);
+      cutoutMesh.scale.set(rInit*0.92,1,rInit*0.92);
+      H.scene.add(slabMesh); H.scene.add(cutoutMesh);
+      H.render();
     }
     function update(){
-      if(!H) return;
-      var r=sR?(parseFloat(sR.value)/2.5):3, h=4;
-      cylMesh.scale.set(r,h,r); cylMesh.position.set(0,h/2,0);
-      coneMesh.scale.set(r,h,r); coneMesh.position.set(0,h/2,0);
+      if(!H||!THREE_MOD) return;
+      var rNorm=sR?Math.max(1.2,Math.min(3.4,(parseFloat(sR.value)||6)*0.32)):2.1;
+      if(slabMesh){
+        if(slabMesh.geometry) slabMesh.geometry.dispose();
+        slabMesh.geometry=_makeSlab(rNorm);
+      }
+      if(cutoutMesh){ cutoutMesh.scale.set(rNorm*0.92,1,rNorm*0.92); }
       H.render();
     }
     btn.addEventListener("click",function(){
-      if(!wrap.hidden){ wrap.hidden=true; if(hint) hint.hidden=true; btn.setAttribute("aria-expanded","false"); btn.textContent="🧊 عرض المجسمات الهندسية (أسطوانة ومخروط) ثلاثية الأبعاد · View in 3D"; return; }
+      if(!wrap.hidden){ wrap.hidden=true; if(hint) hint.hidden=true; btn.setAttribute("aria-expanded","false"); btn.textContent="🧊 عرض مجسم المنطقة المظللة ثلاثي الأبعاد · View 3D Shaded Slab"; return; }
       wrap.hidden=false; if(hint) hint.hidden=false; btn.setAttribute("aria-expanded","true");
       if(built){ update(); return; }
       built=true; btn.disabled=true; btn.textContent="Loading 3D…";

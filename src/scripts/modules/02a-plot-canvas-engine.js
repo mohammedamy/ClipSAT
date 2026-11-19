@@ -620,6 +620,78 @@
     _patchCanvasMathText(ctx);
     return {ctx:ctx, w:rect.width, h:rect.height};
   }
+  function _syncLiveSummary(canvas){
+    if(!canvas || !canvas.getAttribute) return;
+    var descId = canvas.getAttribute('aria-describedby');
+    if(!descId) return;
+    var descEl = document.getElementById(descId);
+    if(!descEl) return;
+    if(!descEl.hasAttribute('aria-live')) descEl.setAttribute('aria-live', 'polite');
+    if(descEl.textContent && descEl.textContent.trim()) return;
+    var ex = canvas.closest && canvas.closest('.explorer');
+    if(!ex) return;
+    var parts = [];
+    ex.querySelectorAll('.readout .readrow').forEach(function(row){
+      if(parts.length >= 4) return;
+      var spans = row.querySelectorAll('span');
+      if(spans.length < 2) return;
+      var lbl = (spans[0].textContent || '').replace(/\s+/g, ' ').trim();
+      var val = (row.querySelector('.v') && row.querySelector('.v').textContent || '').replace(/\s+/g, ' ').trim();
+      if(lbl && val && val !== '—') parts.push(lbl + ': ' + val);
+    });
+    if(parts.length){
+      var ar = _isArDoc();
+      descEl.textContent = (ar ? 'ملخص القيم الحالية — ' : 'Live values — ') + parts.join(' · ');
+    }
+  }
+  function _wireCanvasKeyboard(canvas){
+    if(!canvas || canvas._csKeyWired) return;
+    canvas._csKeyWired = true;
+    if(!canvas.hasAttribute('tabindex')) canvas.setAttribute('tabindex', '0');
+    if(!canvas.hasAttribute('role')) canvas.setAttribute('role', 'img');
+    canvas.addEventListener('keydown', function(e){
+      var ex = canvas.closest && canvas.closest('.explorer');
+      if(!ex) return;
+      var ranges = ex.querySelectorAll('.ex-controls input[type="range"]');
+      if(!ranges.length) return;
+      var target = null, dir = 0;
+      if(e.key === 'ArrowRight'){ target = ranges[0]; dir = 1; }
+      else if(e.key === 'ArrowLeft'){ target = ranges[0]; dir = -1; }
+      else if(e.key === 'ArrowUp'){ target = ranges[1] || ranges[0]; dir = 1; }
+      else if(e.key === 'ArrowDown'){ target = ranges[1] || ranges[0]; dir = -1; }
+      else if(e.key === 'Home'){ target = ranges[0]; dir = -9999; }
+      else if(e.key === 'End'){ target = ranges[0]; dir = 9999; }
+      if(!target) return;
+      e.preventDefault();
+      var step = parseFloat(target.step) || 1;
+      var min = target.min !== '' ? parseFloat(target.min) : -Infinity;
+      var max = target.max !== '' ? parseFloat(target.max) : Infinity;
+      var cur = parseFloat(target.value) || 0;
+      var next = dir === -9999 ? (isFinite(min) ? min : cur) : (dir === 9999 ? (isFinite(max) ? max : cur) : Math.min(max, Math.max(min, Math.round((cur + dir * step) * 1e6) / 1e6)));
+      target.value = String(next);
+      try {
+        target.dispatchEvent(new Event('input', { bubbles: true }));
+        target.dispatchEvent(new Event('change', { bubbles: true }));
+      } catch(_){}
+    });
+  }
+  var _roRaf = 0;
+  var _roPending = [];
+  var _ro = (typeof ResizeObserver !== 'undefined') ? new ResizeObserver(function(entries){
+    entries.forEach(function(ent){
+      if(ent.target && ent.target._cswd && _roPending.indexOf(ent.target._cswd) === -1){
+        _roPending.push(ent.target._cswd);
+      }
+    });
+    if(!_roRaf && typeof requestAnimationFrame === 'function'){
+      _roRaf = requestAnimationFrame(function(){
+        _roRaf = 0;
+        var list = _roPending.slice();
+        _roPending = [];
+        list.forEach(function(wd){ drawWidget(wd); });
+      });
+    }
+  }) : null;
   function drawWidget(wd){
     if(!wd || !wd.canvas || wd.canvas.offsetParent===null) return false;
     var s=sizeOf(wd.canvas); if(!s) return false;
@@ -629,6 +701,7 @@
       if(window.console && console.warn) console.warn('Explorer draw error:', wd.canvas.id, err);
     }
     if(wd.canvas.closest) renderExplorerContainer(wd.canvas.closest('.explorer'));
+    _syncLiveSummary(wd.canvas);
     wd.seen=true;
     if(_io){ try { _io.unobserve(wd.canvas); } catch(_){} }
     return true;
@@ -698,6 +771,8 @@
     canvas._cswd=wd;
     widgets.push(wd);
     _wireExplorerReset(canvas);
+    _wireCanvasKeyboard(canvas);
+    if(_ro){ try { _ro.observe(canvas); } catch(_){} }
     var redrawOne = function(){ drawWidget(wd); };
     if(!_io){ drawWidget(wd); return redrawOne; }
     var rect=canvas.getBoundingClientRect();
