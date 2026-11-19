@@ -5558,6 +5558,84 @@ function _initFigureInspection(){
     var el = e.target && e.target.closest && e.target.closest('[data-inspect]');
     if(el) hideBadge(el);
   });
+
+  function openFigZoomModal(svg){
+    if(!svg) return;
+    var existing = document.getElementById('cs-fig-zoom-modal');
+    if(existing) existing.remove();
+    var opener = document.activeElement;
+    var isAr = (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl');
+    var modal = document.createElement('div');
+    modal.id = 'cs-fig-zoom-modal';
+    modal.className = 'cs-fig-zoom-overlay';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', svg.getAttribute('aria-label') || (isAr ? 'تكبير الشكل الرياضي' : 'Zoomed mathematical figure'));
+
+    var card = document.createElement('div');
+    card.className = 'cs-fig-zoom-card';
+
+    var head = document.createElement('div');
+    head.className = 'cs-fig-zoom-head';
+    var titleEl = document.createElement('div');
+    titleEl.className = 'cs-fig-zoom-title';
+    titleEl.textContent = svg.getAttribute('aria-label') || (isAr ? 'الشكل التوضيحي' : 'Figure preview');
+    var closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'cs-fig-zoom-close';
+    closeBtn.setAttribute('aria-label', isAr ? 'إغلاق تكبير الشكل' : 'Close enlarged figure');
+    closeBtn.textContent = '✕';
+    head.appendChild(titleEl);
+    head.appendChild(closeBtn);
+
+    var body = document.createElement('div');
+    body.className = 'cs-fig-zoom-body';
+    var clone = svg.cloneNode(true);
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+    clone.style.width = '100%';
+    clone.style.maxWidth = '720px';
+    clone.style.height = 'auto';
+    clone.style.cursor = 'default';
+    body.appendChild(clone);
+
+    card.appendChild(head);
+    card.appendChild(body);
+    modal.appendChild(card);
+    document.body.appendChild(modal);
+
+    function closeZoom(){
+      document.removeEventListener('keydown', onKey);
+      if(modal && modal.parentNode) modal.parentNode.removeChild(modal);
+      if(opener && typeof opener.focus === 'function'){
+        try { opener.focus(); } catch(e){}
+      }
+    }
+    function onKey(ev){
+      if(ev.key === 'Escape'){ ev.preventDefault(); closeZoom(); }
+    }
+    closeBtn.addEventListener('click', closeZoom);
+    modal.addEventListener('click', function(ev){
+      if(ev.target === modal) closeZoom();
+    });
+    document.addEventListener('keydown', onKey);
+    closeBtn.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.closest && e.target.closest('.mfig-inspect-pt')) return;
+    var wrap = e.target && e.target.closest && e.target.closest('.lesson-figure-svg svg.mfig-svg, .cq-figure svg.mfig-svg, .bank-fig svg.mfig-svg, .exam-fig svg.mfig-svg, .fep-figure svg.mfig-svg');
+    if(wrap) openFigZoomModal(wrap);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var active = document.activeElement;
+    if(active && active.matches && active.matches('svg.mfig-svg')){
+      e.preventDefault();
+      openFigZoomModal(active);
+    }
+  });
 }
 
 /* ── Global SVG A11y (<title> + role="img" + aria-label) & Sign-Format Polish ── */
@@ -5597,6 +5675,7 @@ function _polishRenderedSvg(html, spec){
     var a = attrs || '';
     if(!/\brole\s*=/i.test(a)) a += ' role="img"';
     if(!/\baria-label\s*=/i.test(a)) a += ' aria-label="' + desc + '"';
+    if(!/\btabindex\s*=/i.test(a)) a += ' tabindex="0"';
     return '<svg' + a + '>';
   });
   if(!/<title\b/i.test(out)){
@@ -5605,17 +5684,49 @@ function _polishRenderedSvg(html, spec){
   return out;
 }
 
+function _localizeFigSpec(spec){
+  if(!spec || typeof spec !== 'object') return spec;
+  var isAr = (typeof document !== 'undefined' && document.documentElement && (
+    document.documentElement.lang === 'ar' ||
+    document.documentElement.dir === 'rtl' ||
+    (document.body && document.body.classList.contains('ar'))
+  ));
+  if(!isAr) return spec;
+  var out = Object.assign({}, spec);
+  if(out.title_ar) out.title = out.title_ar;
+  if(out.xlabel_ar) out.xlabel = out.xlabel_ar;
+  if(out.ylabel_ar) out.ylabel = out.ylabel_ar;
+  if(Array.isArray(out.rows_ar)) out.rows = out.rows_ar;
+  if(Array.isArray(out.cols_ar)) out.cols = out.cols_ar;
+  var arrKeys = ['points', 'curves', 'functions', 'fns', 'segments', 'bars', 'slices', 'vlines', 'hlines', 'labels', 'annotations'];
+  arrKeys.forEach(function(ak){
+    if(Array.isArray(out[ak])){
+      out[ak] = out[ak].map(function(el){
+        if(el && typeof el === 'object' && el.label_ar){
+          var c = Object.assign({}, el);
+          c.label = el.label_ar;
+          return c;
+        }
+        return el;
+      });
+    }
+  });
+  return out;
+}
+
 if(typeof window !== 'undefined'){
   if(typeof window._renderFig === 'function'){
     var _origRenderFig = window._renderFig;
     window._renderFig = function(fig){
-      return _polishRenderedSvg(_origRenderFig.apply(this, arguments), fig);
+      var locFig = _localizeFigSpec(fig);
+      return _polishRenderedSvg(_origRenderFig.call(this, locFig), locFig);
     };
   }
   if(typeof window.renderMathFigure === 'function'){
     var _origRenderMathFig = window.renderMathFigure;
     window.renderMathFigure = function(spec){
-      return _polishRenderedSvg(_origRenderMathFig.apply(this, arguments), spec);
+      var locSpec = _localizeFigSpec(spec);
+      return _polishRenderedSvg(_origRenderMathFig.call(this, locSpec), locSpec);
     };
   }
 }

@@ -426,7 +426,10 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
   }
   var letters=totalLetters||['A','B','C','D'];
   var isQC=!!(q.isQC||q.qc||(q.colA!=null&&q.colB!=null));
-  var isAr=(viewId==='qudrat'||viewId==='tahsili'||/[\u0600-\u06FF]/.test(String(q.text||'')+String(q.colA||'')));
+  var _loc=window.CSItemLocale;
+  var _locIsAr=(_loc&&_loc.isAr())||viewId==='qudrat'||viewId==='tahsili';
+  var _rawTxt=(_locIsAr&&_loc&&q.text_ar&&!_loc.isBoilerplateAr(q.text_ar))?q.text_ar:(q.text||q.q||'');
+  var isAr=_locIsAr||/[\u0600-\u06FF]/.test(String(_rawTxt)+String(q.colA||''));
 
   var html='<div class="aiq" data-idx="'+idx+'"';
   if(q.answer!=null) html+=' data-answer="'+q.answer+'"';
@@ -449,7 +452,7 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
   html+='<button type="button" class="cs-flag-btn no-print" style="margin-left:auto" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="Report an error in this question" aria-label="Report Error"><span>🚩</span><span class="cs-flag-lbl">'+(isAr?'إبلاغ عن خطأ':'Report Error')+'</span></button>';
   html+='</div>';
 
-  html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
+  html+='<div class="aiq-text">'+_maths(_rawTxt)+'</div>';
 
   // Quantitative Comparison Card
   if(isQC){
@@ -480,7 +483,7 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
   }
 
   // MCQ choices
-  var chs=q.choices;
+  var chs=(_locIsAr&&_loc?_loc.choices(q):null)||q.choices;
   if(isQC&&(!chs||!chs.length)){
     chs=isAr?[
       'القيمة في العمود الأول أكبر (أ)',
@@ -528,9 +531,10 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
     }
   }
   // Solution
-  if(q.sol){
-    html+='<button class="aiq-sol-toggle" onclick="aiqToggleSol(this)">▸ Show solution</button>';
-    html+='<div class="aiq-solution">'+_maths(q.sol)+'</div>';
+  var _rawSol=(_locIsAr&&_loc?_loc.sol(q):'')||q.sol||'';
+  if(_rawSol){
+    html+='<button class="aiq-sol-toggle" onclick="aiqToggleSol(this)">▸ '+(_locIsAr?'إظهار الحل':'Show solution')+'</button>';
+    html+='<div class="aiq-solution">'+_maths(_rawSol)+'</div>';
   }
   html+='</div>';
   return html;
@@ -1134,7 +1138,10 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
         var isQC=!!(q.isQC||q.qc||(q.colA!=null&&q.colB!=null));
-        var isAr=(viewId==='qudrat'||viewId==='tahsili'||/[\u0600-\u06FF]/.test(String(q.text||'')+String(q.colA||'')));
+        var _loc2=window.CSItemLocale;
+        var _locIsAr2=(_loc2&&_loc2.isAr())||viewId==='qudrat'||viewId==='tahsili';
+        var _pStem=(_locIsAr2&&_loc2&&q.text_ar&&!_loc2.isBoilerplateAr(q.text_ar))?q.text_ar:String(q.text||q.q||q.question||'');
+        var isAr=_locIsAr2||/[\u0600-\u06FF]/.test(_pStem+String(q.colA||''));
 
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
         html+='<div class="fep-item-head">';
@@ -1159,7 +1166,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           if(pfig) html+='<div class="mfig fep-figure">'+pfig+'</div>';
         }
 
-        html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||q.q||q.question||''))+'</div>';
+        html+='<div class="fep-qbody aiq-text">'+_maths(_pStem)+'</div>';
 
         // Quantitative Comparison Card
         if(isQC){
@@ -1171,7 +1178,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           html+='</div></div>';
         }
 
-        var chs=q.choices;
+        var chs=(isAr&&_loc2?_loc2.choices(q):null)||q.choices;
         if(isQC&&(!chs||!chs.length)){
           chs=isAr?[
             'القيمة في العمود الأول أكبر (أ)',
@@ -1227,9 +1234,10 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     html+='<div class="fep-key-section"><div style="font-weight:700;font-size:1rem;color:#1e3a6e;padding:14px 18px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.classList.toggle(\'open\')">Official Worked Solutions &amp; Marking Scheme <span>▸</span></div>';
     html+='<div style="display:none" class="fep-key-grid open">';
     qs.forEach(function(q,qi2){
-      if(q.sol){
+      var _lSol=(window.CSItemLocale&&window.CSItemLocale.isAr())?window.CSItemLocale.sol(q):(q.sol||'');
+      if(_lSol){
         var markTxt = (q.marks||q.mark)?' ['+(q.marks||q.mark)+' marks]':'';
-        html+='<div class="fep-sol-block"><strong>Q'+(qi2+1)+(q.type!=='frq'&&q.answer!=null?' ['+letters[q.answer||0]+']':' [FRQ]')+markTxt+' — '+esc(q.domain||'')+'</strong><div>'+_maths(q.sol)+'</div></div>';
+        html+='<div class="fep-sol-block"><strong>Q'+(qi2+1)+(q.type!=='frq'&&q.answer!=null?' ['+letters[q.answer||0]+']':' [FRQ]')+markTxt+' — '+esc(q.domain||'')+'</strong><div>'+_maths(_lSol)+'</div></div>';
       }
     });
     html+='</div></div>';

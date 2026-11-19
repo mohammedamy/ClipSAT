@@ -183,9 +183,11 @@ window.CSAssign = {
     function optLetter(i){return String.fromCharCode(65+i);}
     function _mesc(s){return String(s||'').replace(/&(?![a-zA-Z#])/g,'&amp;');}
     var qHtml='', keyHtml='';
+    var _loc = window.CSItemLocale;
     selected.forEach(function(q,i){
-      var stem=_wm(q.text||q.q||q.stem||q.question||'');
-      var opts=q.choices||q.options||[];
+      var rawQ=(_loc?_loc.text(q):'')||q.text||q.q||q.stem||q.question||'';
+      var stem=_wm(rawQ);
+      var opts=(_loc?_loc.choices(q):null)||q.choices||q.options||[];
       var ans=q.answer!=null?q.answer:q.correct;
       var optHtml=opts.map(function(o,j){
         var s=_wm(o);
@@ -215,7 +217,7 @@ window.CSAssign = {
         +optHtml
         +'</div>';
       var ansLabel=typeof ans==='number'?optLetter(ans):_wm(ans);
-      var rawStem=String(q.text||q.q||q.stem||q.question||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      var rawStem=String(rawQ).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
       keyHtml+='<tr>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700">'+(i+1)+'</td>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">'+ansLabel+'</td>'
@@ -926,10 +928,11 @@ window.CSCustomCart = (function(){
     var _origin = (window.location && window.location.origin) || '';
     var today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     function optLetter(i){ return String.fromCharCode(65 + i); }
-    var qHtml = '', keyHtml = '';
+    var qHtml = '', keyHtml = '', _loc = window.CSItemLocale;
     _cart.forEach(function(q, i){
-      var stem = _wm(q.text || q.q || q.stem || '');
-      var opts = q.choices || q.options || [];
+      var rawQ = (_loc ? _loc.text(q) : '') || q.text || q.q || q.stem || '';
+      var stem = _wm(rawQ);
+      var opts = (_loc ? _loc.choices(q) : null) || q.choices || q.options || [];
       var ans = q.answer != null ? q.answer : q.correct;
       var optHtml = opts.map(function(o, j){
         return '<div style="margin:3px 0 3px 12px">' + optLetter(j) + '. ' + _wm(o) + '</div>';
@@ -944,7 +947,7 @@ window.CSCustomCart = (function(){
         + '<div style="margin:0 0 6pt;font-weight:700">Q' + (i + 1) + '. ' + stem + '</div>'
         + figH + optHtml + '</div>';
       var ansLabel = typeof ans === 'number' ? optLetter(ans) : _wm(ans);
-      var rawStem = String(q.text || q.q || '').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      var rawStem = String(rawQ).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
       keyHtml += '<tr>'
         + '<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700">' + (i + 1) + '</td>'
         + '<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">' + ansLabel + '</td>'
@@ -1000,13 +1003,14 @@ window.CSCustomCart = (function(){
     ensure.then(function(){
       var today = new Date().toISOString().slice(0, 10);
       function optLetter(i){ return String.fromCharCode(65 + i); }
+      var _loc = window.CSItemLocale;
       var rowsHtml = _cart.map(function(q, i){
-        var stem = String(q.text || q.q || q.stem || '');
-        var opts = (q.choices || q.options || []).map(function(o, j){
+        var stem = String((_loc ? _loc.text(q) : '') || q.text || q.q || q.stem || '');
+        var opts = ((_loc ? _loc.choices(q) : null) || q.choices || q.options || []).map(function(o, j){
           return '<div style="margin-left:14pt">' + optLetter(j) + '. ' + String(o) + '</div>';
         }).join('');
         var ans = typeof q.answer === 'number' ? optLetter(q.answer) : String(q.answer != null ? q.answer : '');
-        var sol = String(q.sol || q.explanation || '');
+        var sol = String((_loc ? _loc.sol(q) : '') || q.sol || q.explanation || '');
         return '<div style="margin-bottom:14pt"><p><strong>Q' + (i + 1) + ' [' + esc((q._trackId || _currentTrack).toUpperCase()) + ' — ' + esc(q.difficulty || 'Medium') + ']:</strong> ' + esc(stem) + '</p>'
           + opts
           + '<p style="color:#166534;font-size:9.5pt"><em>Answer: ' + esc(ans) + (sol ? ' — ' + esc(sol) : '') + '</em></p></div>';

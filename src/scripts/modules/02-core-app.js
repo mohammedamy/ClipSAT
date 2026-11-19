@@ -112,9 +112,10 @@
   };
 
   window.toggleSol=function(btn){
-    var p=btn.closest('.problem'), open=p.classList.toggle('open');
-    btn.childNodes[1].textContent=' '+(open?'Hide solution':'Show solution');
-    if(open && window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([p.querySelector('.solution')]);
+    var p=btn.closest('.problem'), open=p&&p.classList.toggle('open'), ar=document.documentElement.lang==='ar';
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    if(btn.childNodes[1]) btn.childNodes[1].textContent=' '+(open?(ar?'إخفاء الحل':'Hide solution'):(ar?'إظهار الحل':'Show solution'));
+    if(open && p && window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([p.querySelector('.solution')]);
   };
 
   /* ---------- universal 2D square-lattice & 3D ClipSAT3D auto-explorer binder ---------- */

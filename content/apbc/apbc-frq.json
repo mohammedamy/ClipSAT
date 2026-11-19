@@ -468,8 +468,49 @@
           }
         ],
         "solution": {
-          "en": "The definite integral \\( \\int_{-2}^{2} f(x) \\, dx \\) represents the net signed area between the graph of \\( f(x) \\) and the x-axis from \\( x = -2 \\) to \\( x = 2 \\). The graph of \\( f(x) \\) for \\( -2 \\le x \\le 2 \\) forms a semicircle above the x-axis with radius 2. The area of this semicircle is \\( \\frac{1}{2} \\pi r^2 = \\frac{1}{2} \\pi (2^2) = 2\\pi \\). However, the provided figure shows a region that is a combination of triangles and a rectangle. From \\( x=-2 \\) to \\( x=0 \\), the area is a triangle with base 2 and height 2, so the area is \\( \\frac{1}{2} \\times 2 \\times 2 = 2 \\). From \\( x=0 \\) to \\( x=2 \\), the area is a triangle with base 2 and height 2, so the area is \\( \\frac{1}{2} \\times 2 \\times 2 = 2 \\). The total net signed area is \\( 2 + 2 = 4 \\).",
+          "en": "The definite integral \\( \\int_{-2}^{2} f(x) \\, dx \\) represents the net signed area between the graph of \\( f(x) \\) and the x-axis from \\( x = -2 \\) to \\( x = 2 \\). The figure forms two right triangles above the x-axis: from \\( x = -2 \\) to \\( x = 0 \\), base \\( 2 \\) and height \\( 2 \\) give area \\( \\frac{1}{2} \\times 2 \\times 2 = 2 \\); from \\( x = 0 \\) to \\( x = 2 \\), base \\( 2 \\) and height \\( 2 \\) give area \\( \\frac{1}{2} \\times 2 \\times 2 = 2 \\). Therefore, the total net signed area is \\( 2 + 2 = 4 \\).",
           "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Triangular Graph of f(x) on [-2, 2]",
+          "fns": [
+            {
+              "fn": "2 - abs(x) for x in [-2, 2]",
+              "label": "y = f(x)"
+            }
+          ],
+          "xlim": [
+            -3,
+            3
+          ],
+          "ylim": [
+            -0.5,
+            3
+          ],
+          "shade": [
+            {
+              "x1": -2,
+              "x2": 2
+            }
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": 0,
+              "label": "(-2, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2,
+              "label": "(0, 2)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
+            }
+          ]
         }
       },
       {

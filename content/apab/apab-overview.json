@@ -322,6 +322,42 @@
         "solution": {
           "en": "<p>The graph shows \\( f'(x) \\). By the Fundamental Theorem of Calculus, \\( f(6) - f(2) = \\int_{2}^{6} f'(x) \\, dx \\). The integral \\( \\int_{2}^{6} f'(x) \\, dx \\) represents the area under the curve of \\( f'(x) \\) from \\( x = 2 \\) to \\( x = 6 \\). This area is a trapezoid with parallel sides of length \\( 4 \\) (from \\( x=2 \\) to \\( x=4 \\)) and \\( 6 \\) (from \\( x=4 \\) to \\( x=6 \\)), and a height of \\( 2 \\) (the difference in x-values from 2 to 4 and 4 to 6, but looking at the graph the height from y=1 to y=5 is 4 and from y=1 to y=6 is 5, the vertical distance represents the change in y for the integral, which is the change in x on the graph.  The area is a trapezoid with heights of 4 and 5 at x=2 and x=6 respectively, and a base of 4. The area under the curve from x=2 to x=6 is the area of a trapezoid with parallel sides of length 4 (at x=2, f'(2)=4) and 5 (at x=6, f'(6)=5), and a height (width along x-axis) of 6-2=4.  The area is \\( \\frac{1}{2}(4+5) \\times 4 = \\frac{1}{2}(9) \\times 4 = 18 \\). Therefore, \\( f(6) - f(2) = 18 \\). Given \\( f(2) = 5 \\), we have \\( f(6) - 5 = 18 \\), which means \\( f(6) = 18 + 5 = 23 \\). \n\nCommon algebraic trap: Students might misinterpret the y-axis values as the length of the parallel sides of the trapezoid and the x-axis values as the height, or vice versa. They might also forget to add the initial value of \\( f(2) \\).</p>",
           "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Graph of Derivative f'(x)",
+          "fns": [
+            {
+              "fn": "0.25*x + 3.5 for x in [0, 7]",
+              "label": "y = f'(x)"
+            }
+          ],
+          "xlim": [
+            0,
+            7
+          ],
+          "ylim": [
+            0,
+            6.5
+          ],
+          "shade": [
+            {
+              "x1": 2,
+              "x2": 6
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 4,
+              "label": "(2, 4)"
+            },
+            {
+              "x": 6,
+              "y": 5,
+              "label": "(6, 5)"
+            }
+          ]
         }
       },
       {
@@ -337,6 +373,36 @@
         "solution": {
           "en": "<p>First, let's find the derivative of \\(g(x)\\): \\(g'(x) = 3x^2 - 12x + 9\\). At \\(x=1\\), the slope of the tangent line to \\(g(x)\\) is \\(g'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0\\). \n\nThe problem states that \\(f(x)\\) and \\(g(x)\\) have the same tangent line at \\(x=1\\). This means \\(f'(1) = g'(1) = 0\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Let's check: \\(f'(1) = 6(1)^2 - 12(1) + 6 = 6 - 12 + 6 = 0\\). This confirms consistency.\n\nTo find the value of \\(f''(0)\\), we first need to find the second derivative of \\(f(x)\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Therefore, \\(f''(x) = \\frac{d}{dx}(6x^2 - 12x + 6) = 12x - 12\\).\n\nNow, we can evaluate \\(f''(0)\\): \\(f''(0) = 12(0) - 12 = -12\\).\n\nCommon misconception: Students might try to integrate \\(f'(x)\\) to find \\(f(x)\\) and then differentiate, or they might confuse the derivative of \\(f(x)\\) with the derivative of \\(g(x)\\) when calculating the second derivative. The value of \\(g(x)\\) at \\(x=1\\) is \\(g(1) = 1^3 - 6(1)^2 + 9(1) - 2 = 1 - 6 + 9 - 2 = 2\\). This information is not directly needed to find \\(f''(0)\\) given the provided information about the tangent line slope.</p>",
           "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Graph of g(x) = x^3 - 6x^2 + 9x - 2",
+          "fns": [
+            {
+              "fn": "x^3 - 6*x^2 + 9*x - 2",
+              "label": "y = g(x)"
+            }
+          ],
+          "xlim": [
+            -1,
+            5
+          ],
+          "ylim": [
+            -5,
+            5
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 2,
+              "label": "(1, 2)"
+            },
+            {
+              "x": 3,
+              "y": -2,
+              "label": "(3, -2)"
+            }
+          ]
         }
       },
       {

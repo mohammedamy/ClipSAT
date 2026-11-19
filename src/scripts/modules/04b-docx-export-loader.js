@@ -14,9 +14,8 @@
    reachable through buttons Teacher Mode's own UI renders — already gated
    behind _ensureTeacherMode() — so this loader's own success handler also
    kicks off CSExport's load in parallel whenever Teacher Mode loads,
-   rather than needing a separate trigger for them. The third
-   (03's printPQResult) has no caller anywhere in the codebase today —
-   dead code, left alone, not a reason to add a trigger for it.
+   rather than needing a separate trigger for them. The dead printPQResult
+   helper has since been removed from 03b-practice-quiz.js.
 
    The real, common-case trigger is downloads-block.njk's own two buttons
    (docx download, print chapter), present on every track's downloads

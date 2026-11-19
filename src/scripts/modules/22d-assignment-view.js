@@ -56,12 +56,14 @@ function render(){
     var h='<div class="cq-paper"><div class="cq-head"><span>'+_tt('avTitle')+'</span><span class="cq-meta">'+qs.length+' · '+_tt('questionsWord')+'</span></div>'
       +'<p class="cq-msg">'+_tt('avIntro')+'</p>';
     if(missing) h+='<p class="cq-msg cs-assign-missing">'+missing+' '+_tt('avMissing')+'</p>';
+    var _loc = window.CSItemLocale;
     qs.forEach(function(q,i){
-      var choices=q.choices||[], sol=q.sol||q.explanation||'';
+      var choices=(_loc?_loc.choices(q):null)||q.choices||[], sol=(_loc?_loc.sol(q):'')||q.sol||q.explanation||'';
+      var rawStem=(_loc?_loc.text(q):'')||q.text||q.q||'';
       /* multiple choice only with a valid answer index; otherwise the student checks the solution */
       var mcq=choices.length>0&&typeof q.answer==='number'&&q.answer>=0&&q.answer<choices.length;
       if(mcq) nMcq++;
-      h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(q.text||q.q)+'">';
+      h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(rawStem)+'">';
       var _f = q.figure || q.fig || q.table;
       if(_f){
         if(typeof _f === 'string'){
@@ -81,11 +83,11 @@ function render(){
           h+='<div class="cq-figure" data-fig="'+figs.length+'"></div>'; figs.push(_f);
         }
       }
-      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+M(q.text||q.q||'')+'</div></div>';
+      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+M(rawStem)+'</div></div>';
       if(mcq){
-        h+='<ul class="cq-opts">'+choices.map(function(c,ci){
+        h+='<ul class="cq-opts" role="radiogroup" aria-label="Question '+(i+1)+' choices">'+choices.map(function(c,ci){
           var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(c):String(c||'');
-          return '<li class="cq-opt" onclick="cqPick(this)" data-raw="'+attr(c)+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+M(s)+'</span></li>';
+          return '<li><button type="button" class="cq-opt" role="radio" aria-checked="false" tabindex="'+(ci===0?'0':'-1')+'" onclick="cqPick(this)" onkeydown="if(window._cqKey)window._cqKey(event,this)" data-raw="'+attr(c)+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+M(s)+'</span></button></li>';
         }).join('')+'</ul>';
       } else if(sol){
         h+='<button type="button" class="cq-print-btn" onclick="var s=this.nextElementSibling;s.style.display=\'block\';this.remove()">'+_tt('avShowSol')+'</button>';

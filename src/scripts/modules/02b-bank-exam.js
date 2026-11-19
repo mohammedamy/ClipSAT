@@ -2359,8 +2359,10 @@
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || _isQCItem(q)))
             ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
-          var rawQText = q.text || q.q || '';
-          if(q.text_ar && !/[\u0600-\u06FF]/.test(rawQText) && _menaBiPrint[viewId] && (!spec || !spec.defaultLang)){
+          var _loc = window.CSItemLocale;
+          var _uiAr = _loc && _loc.isAr() && !(spec && spec.defaultLang === 'en');
+          var rawQText = (_uiAr ? _loc.text(q) : (q.text || q.q || '')) || '';
+          if(q.text_ar && !(_loc && _loc.isBoilerplateAr(q.text_ar)) && !/[\u0600-\u06FF]/.test(rawQText) && _menaBiPrint[viewId] && (!spec || !spec.defaultLang)){
             rawQText = q.text_ar + '<br><em>' + rawQText + '</em>';
           }
           var _qBodyHtml = _fmtBi(_maths(rawQText));
@@ -2371,9 +2373,10 @@
             ? _renderPartsFallback(q, function(s){ return _fmtBi(_maths(s)); })
             : '';
           h+='<div class="fep-qbody">'+_qBodyHtml+_qCardHtml+_subpartsHtml+'</div>';
-          if(isMCQ&&q.choices){
+          var _fepChoices = (_uiAr ? _loc.choices(q) : q.choices) || [];
+          if(isMCQ&&_fepChoices.length){
             h+='<div class="fep-choices">';
-            q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
+            _fepChoices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
             h+='</div>';
           }
           if(isFree){
@@ -2403,7 +2406,8 @@
           var _msTableHtml = (isFree && Array.isArray(q.parts) && q.parts.length)
             ? _renderMarkSchemeFallback(q, function(s){ return _fmtBi(_maths(s)); })
             : '';
-          h+='<div class="fep-sol-block" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div>'+_msTableHtml+'<div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
+          var _fepSolRaw = (_uiAr ? _loc.sol(q) : (q.sol || q.exp || '')) || '';
+          h+='<div class="fep-sol-block" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div>'+_msTableHtml+'<div style="margin-top:6px">'+_fmtBi(_maths(_fepSolRaw))+'</div></div>';
           h+='</div>';
           qNum++;
         });

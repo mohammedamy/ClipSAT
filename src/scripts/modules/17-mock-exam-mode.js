@@ -1026,8 +1026,10 @@
   };
 
   function _selectBilingualStem(q, activeLang){
+    var _loc = window.CSItemLocale;
     var enTxt = (q.text || q.q || '').trim();
     var arTxt = (q.text_ar || '').trim();
+    if(_loc && _loc.isBoilerplateAr(arTxt)) arTxt = '';
     if(!arTxt) return enTxt;
     var hasEmbeddedBi = /en-trans|<em>/i.test(enTxt) && /[\u0600-\u06FF]/.test(enTxt);
     if(activeLang === 'ar'){
@@ -1042,8 +1044,9 @@
   }
 
   function _selectBilingualChoices(q, activeLang){
+    var _loc = window.CSItemLocale;
     var enCh = Array.isArray(q.choices) ? q.choices : [];
-    var arCh = Array.isArray(q.choices_ar) && q.choices_ar.length === enCh.length ? q.choices_ar : null;
+    var arCh = Array.isArray(q.choices_ar) && q.choices_ar.length === enCh.length && !(_loc && q.choices_ar.some(_loc.isBoilerplateAr)) ? q.choices_ar : null;
     if(!arCh) return enCh;
     if(activeLang === 'ar') return arCh;
     if(activeLang === 'both'){
@@ -1189,7 +1192,9 @@
       window.CSStructuredFRQ.bindCanvases(body);
     }
     body.setAttribute('data-pool', JSON.stringify(_pool.map(function(q){
-      var solStr = (isArPaper && q.sol_ar) ? q.sol_ar : (q.sol || q.expl || '');
+      var _loc = window.CSItemLocale;
+      var _arSol = (q.sol_ar && !(_loc && _loc.isBoilerplateAr(q.sol_ar))) ? q.sol_ar : '';
+      var solStr = (isArPaper && _arSol) ? _arSol : (q.sol || q.expl || '');
       return {
         answer: q.answer,
         ans: q.sprAnswer || q.finalAnswer || q.ans || q.answer,
@@ -1198,7 +1203,7 @@
         marks: q.marks || 1,
         domain: q.domain || 'Math',
         sol: solStr,
-        sol_ar: q.sol_ar || ''
+        sol_ar: _arSol
       };
     })));
   }

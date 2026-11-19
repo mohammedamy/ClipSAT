@@ -1,6 +1,7 @@
 {% import "partials/_bilingual.njk" as bl with context %}
 <div class="problem">
   <div class="problem-q">{{ bl.text(block.question, 'div') }}</div>
+  {% if block.figure %}<div class="lesson-figure-svg" data-lazy-fig='{{ block.figure | jsonAttr | safe }}'></div>{% endif %}
   {% if block.hints and block.hints.length %}
   <div class="problem-hints">
     {% for h in block.hints %}

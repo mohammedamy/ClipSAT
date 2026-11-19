@@ -30,6 +30,35 @@
      actually existing (see _chatUIReady below). */
   var _chatUIReady = !!(fab && panel && body && input && send && closeBtn);
 
+  var _AR_BOIL_RE = /في مسألة رياضية ضمن|بتطبيق القوانين الرياضية المعتمدة|إرشاد منهجي|بالاعتماد على العلاقات الرياضية/;
+  window.CSItemLocale = window.CSItemLocale || {
+    isAr: function(){
+      return (typeof window !== 'undefined' && window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') ||
+             (typeof document !== 'undefined' && document.documentElement && (document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar'));
+    },
+    isBoilerplateAr: function(s){ return !!s && _AR_BOIL_RE.test(String(s)); },
+    text: function(q){
+      var ar = q && (q.text_ar || q.q_ar); var en = q && (q.text || q.q || q.stem || q.question);
+      return (this.isAr() && ar && !this.isBoilerplateAr(ar)) ? ar : (en || ar || '');
+    },
+    sol: function(q){
+      var ar = q && (q.sol_ar || q.explanation_ar); var en = q && (q.sol || q.explanation || q.exp || q.expl);
+      return (this.isAr() && ar && !this.isBoilerplateAr(ar)) ? ar : (en || ar || '');
+    },
+    choices: function(q){
+      var en = (q && (q.choices || q.options)) || [];
+      var ar = (q && q.choices_ar) || [];
+      if(this.isAr() && Array.isArray(ar) && ar.length === en.length && ar.length > 0 && !ar.some(this.isBoilerplateAr)) return ar;
+      return en;
+    },
+    hints: function(q){
+      var en = (q && q.hints) || [];
+      var ar = (q && q.hints_ar) || [];
+      if(this.isAr() && Array.isArray(ar) && ar.length > 0 && !ar.some(this.isBoilerplateAr)) return ar;
+      return en;
+    }
+  };
+
   var history=[], busy=false, greeted=false;
   var pendingAttachment=null, camStream=null, camFacingMode='environment';
   /* Daily CREDITS (the only limit): text question = 1 credit, photo/PDF/camera/DOCX question = 2,
@@ -1012,30 +1041,8 @@ window.launchPracticeQuiz=function(mistake){
       pick.forEach(function(q){ seen.add(_qKey(q)); });
 
     /* ── Shared locale-aware item field picker (skips corrupted boilerplate Arabic) ── */
-    var _AR_BOIL_RE = /في مسألة رياضية ضمن|بتطبيق القوانين الرياضية المعتمدة|إرشاد منهجي|بالاعتماد على العلاقات الرياضية/;
-    var _isArLocale = (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') || document.documentElement.dir === 'rtl';
-    function _pickLocText(enStr, arStr){
-      if(_isArLocale && arStr && typeof arStr === 'string' && arStr.trim() && !_AR_BOIL_RE.test(arStr)) return arStr;
-      return enStr || arStr || '';
-    }
-    window.CSItemLocale = window.CSItemLocale || {
-      isAr: function(){ return (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') || document.documentElement.dir === 'rtl'; },
-      isBoilerplateAr: function(s){ return !!s && _AR_BOIL_RE.test(String(s)); },
-      text: function(q){ var ar = q && (q.text_ar || q.q_ar); var en = q && (q.text || q.q); return (this.isAr() && ar && !this.isBoilerplateAr(ar)) ? ar : (en || ar || ''); },
-      sol: function(q){ var ar = q && (q.sol_ar || q.explanation_ar); var en = q && (q.sol || q.explanation); return (this.isAr() && ar && !this.isBoilerplateAr(ar)) ? ar : (en || ar || ''); },
-      choices: function(q){
-        var en = (q && q.choices) || [];
-        var ar = (q && q.choices_ar) || [];
-        if(this.isAr() && Array.isArray(ar) && ar.length === en.length && ar.length > 0 && !ar.some(this.isBoilerplateAr)) return ar;
-        return en;
-      },
-      hints: function(q){
-        var en = (q && q.hints) || [];
-        var ar = (q && q.hints_ar) || [];
-        if(this.isAr() && Array.isArray(ar) && ar.length > 0 && !ar.some(this.isBoilerplateAr)) return ar;
-        return en;
-      }
-    };
+    var _loc = window.CSItemLocale;
+    var _isArLocale = _loc ? _loc.isAr() : ((window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') || document.documentElement.dir === 'rtl');
 
     /* ── render ── */
     var LTR=_isArLocale?['أ','ب','ج','د','هـ']:['A','B','C','D','E'];
@@ -1045,11 +1052,9 @@ window.launchPracticeQuiz=function(mistake){
     var _csCaptureQ=[], _figs=[];
     pick.forEach(function(q,i){
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize which position holds the correct choice */
-      var rawStem = _pickLocText(q.text||q.q||'', q.text_ar||q.q_ar||'');
-      var rawChoices = (_isArLocale && Array.isArray(q.choices_ar) && q.choices_ar.length === (q.choices||[]).length && !q.choices_ar.some(function(x){return _AR_BOIL_RE.test(String(x||''));}))
-        ? q.choices_ar
-        : (q.choices||[]);
-      var rawSol = _pickLocText(q.sol||q.explanation||'', q.sol_ar||q.explanation_ar||'');
+      var rawStem = _loc ? _loc.text(q) : (q.text||q.q||'');
+      var rawChoices = _loc ? _loc.choices(q) : (q.choices||[]);
+      var rawSol = _loc ? _loc.sol(q) : (q.sol||q.explanation||'');
       var qtext=_maths(rawStem);
       var choices=rawChoices.map(function(c){
         return _maths(_autoMath(c));
@@ -1090,7 +1095,7 @@ window.launchPracticeQuiz=function(mistake){
       h+='<ul class="cq-opts" role="radiogroup" aria-label="Question '+(i+1)+' choices">';
       choices.forEach(function(c,ci){
         var rawC=rawChoices&&rawChoices[ci]?String(rawChoices[ci]).replace(/"/g,'&quot;').replace(/\n/g,' '):'';
-        h+='<li class="cq-opt" role="button" tabindex="0" onclick="cqPick(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();cqPick(this);}" data-raw="'+rawC+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+c+'</span></li>';
+        h+='<li><button type="button" class="cq-opt" role="radio" aria-checked="false" tabindex="'+(ci===0?'0':'-1')+'" onclick="cqPick(this)" onkeydown="if(window._cqKey)window._cqKey(event,this)" data-raw="'+rawC+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+c+'</span></button></li>';
       });
       h+='</ul>';
       if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
@@ -1170,6 +1175,26 @@ window.launchPracticeQuiz=function(mistake){
     });
   };
 
+  window._cqKey=function(e,el){
+    if(!e||!el) return;
+    var k=e.key;
+    var wrap=el.closest('.cq-opts');
+    if(!wrap) return;
+    var opts=Array.prototype.slice.call(wrap.querySelectorAll('.cq-opt'));
+    var idx=opts.indexOf(el);
+    if(idx===-1) return;
+    var nextIdx=-1;
+    if(k==='ArrowDown'||k==='ArrowRight') nextIdx=(idx+1)%opts.length;
+    else if(k==='ArrowUp'||k==='ArrowLeft') nextIdx=(idx-1+opts.length)%opts.length;
+    else if(k==='Home') nextIdx=0;
+    else if(k==='End') nextIdx=opts.length-1;
+    if(nextIdx!==-1){
+      e.preventDefault();
+      opts.forEach(function(o,oi){ o.setAttribute('tabindex',oi===nextIdx?'0':'-1'); });
+      opts[nextIdx].focus();
+    }
+  };
+
   window.cqPick=function(el){
     var item=el.closest('.cq-item');
     if(!item || item.classList.contains('cq-done')) return; /* already answered */
@@ -1178,9 +1203,14 @@ window.launchPracticeQuiz=function(mistake){
     var opts=item.querySelectorAll('.cq-opt');
     var chosen=Array.prototype.indexOf.call(opts,el);
     var isRight=(chosen===ans);
+    el.setAttribute('aria-checked','true');
     if(opts[ans]) opts[ans].classList.add('cq-correct');     /* always highlight correct */
     if(!isRight) el.classList.add('cq-wrong');               /* mark wrong choice */
-    item.querySelectorAll('.cq-opt').forEach(function(o){o.style.pointerEvents='none';}); /* lock */
+    item.querySelectorAll('.cq-opt').forEach(function(o){
+      o.style.pointerEvents='none';
+      o.setAttribute('aria-disabled','true');
+      if(o.tagName==='BUTTON') o.disabled=true;
+    }); /* lock */
     var sol=item.querySelector('.cq-sol-box');
     if(sol) sol.style.display='block';
     document.dispatchEvent(new CustomEvent('clipsat:cq-pick',{detail:{item:item,el:el,ans:ans,opts:Array.prototype.slice.call(opts),chosen:chosen,isRight:isRight}}));

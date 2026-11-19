@@ -27,7 +27,7 @@
       </div>
       {% if item.fig %}<div class="lesson-figure-svg" data-lazy-fig='{{ item.fig | jsonAttr | safe }}'></div>{% endif %}
       <div class="ps-item-actions">
-        <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> {{ 'إظهار الحل' if pageLocale == 'ar' else 'Show solution' }}</button>
+        <button type="button" class="sol-toggle" aria-expanded="false" onclick="toggleSol(this)"><span class="tw">▸</span> {{ 'إظهار الحل' if pageLocale == 'ar' else 'Show solution' }}</button>
         <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="{{ 'الاستماع إلى الحل المشروح' if pageLocale == 'ar' else 'Listen to worked solution' }}" aria-label="{{ 'الاستماع إلى الحل المشروح' if pageLocale == 'ar' else 'Listen to worked solution' }}"><span>🔊</span><span>{{ 'استمع' if pageLocale == 'ar' else 'Listen' }}</span></button>
         <button type="button" class="cs-flag-btn no-print" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="{{ 'الإبلاغ عن خطأ في هذا السؤال' if pageLocale == 'ar' else 'Report an error in this question' }}" aria-label="{{ 'إبلاغ عن خطأ' if pageLocale == 'ar' else 'Report Error' }}"><span>🚩</span><span class="cs-flag-lbl">{{ 'إبلاغ عن خطأ' if pageLocale == 'ar' else 'Report Error' }}</span></button>
       </div>
@@ -44,7 +44,7 @@
       </div>
       {% if item.fig %}<div class="lesson-figure-svg" data-lazy-fig='{{ item.fig | jsonAttr | safe }}'></div>{% endif %}
       <div class="ps-item-actions">
-        <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> {{ 'إظهار الحل' if pageLocale == 'ar' else 'Show solution' }}</button>
+        <button type="button" class="sol-toggle" aria-expanded="false" onclick="toggleSol(this)"><span class="tw">▸</span> {{ 'إظهار الحل' if pageLocale == 'ar' else 'Show solution' }}</button>
         <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="{{ 'الاستماع إلى الحل المشروح' if pageLocale == 'ar' else 'Listen to worked solution' }}" aria-label="{{ 'الاستماع إلى الحل المشروح' if pageLocale == 'ar' else 'Listen to worked solution' }}"><span>🔊</span><span>{{ 'استمع' if pageLocale == 'ar' else 'Listen' }}</span></button>
         <button type="button" class="cs-flag-btn no-print" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="{{ 'الإبلاغ عن خطأ في هذا السؤال' if pageLocale == 'ar' else 'Report an error in this question' }}" aria-label="{{ 'إبلاغ عن خطأ' if pageLocale == 'ar' else 'Report Error' }}"><span>🚩</span><span class="cs-flag-lbl">{{ 'إبلاغ عن خطأ' if pageLocale == 'ar' else 'Report Error' }}</span></button>
       </div>

@@ -26,6 +26,10 @@ CONTENT_DIR = os.path.join(ROOT, 'content')
 BANK_DIR = os.path.join(ROOT, 'bank-data')
 MENA_BANKS = ('qudrat', 'tahsili', 'gaten', 'sat', 'est', 'est2', 'est2l2', 'igcse')
 
+BOILERPLATE_AR_RE = re.compile(
+    r'في مسألة رياضية ضمن|بتطبيق القوانين الرياضية المعتمدة|إرشاد منهجي'
+)
+
 ARABGLISH_RE = re.compile(
     r'\b(?:solve\s+for|find\s+the\s+value|which\s+of\s+the\s+following|calculate\s+the)\b',
     re.I,
@@ -101,9 +105,15 @@ def main() -> int:
                     errors.append(f'{qid}: missing {fld}')
                 elif aat.has_midword_corruption(val):
                     errors.append(f'{qid}: mid-word corruption in {fld}')
+                elif BOILERPLATE_AR_RE.search(val):
+                    errors.append(f'{qid}: banned boilerplate Arabic in {fld}')
             hints_ar = q.get('hints_ar')
             if not isinstance(hints_ar, list) or len(hints_ar) != 3:
                 errors.append(f'{qid}: missing 3 hints_ar')
+            else:
+                for hi, hval in enumerate(hints_ar):
+                    if BOILERPLATE_AR_RE.search(hval or ''):
+                        errors.append(f'{qid}: banned boilerplate Arabic in hints_ar[{hi}]')
             if q.get('type') == 'mcq' and isinstance(q.get('choices'), list):
                 ch_ar = q.get('choices_ar')
                 if not isinstance(ch_ar, list) or len(ch_ar) != len(q['choices']):

@@ -34,6 +34,8 @@ const BANNED_TITLES = new Set([
   'Diagnostic Function Check'
 ]);
 
+const EXPLICIT_FIG_REF_RE = /\b(shown in the (figure|diagram|graph|plot|chart|image|drawing|table)|in the (figure|diagram|graph|plot|chart) (above|below|shown)|(figure|diagram|graph) (above|below) shows|as shown in the (figure|diagram|graph)|refer to the (figure|diagram|graph)|from the (figure|diagram|graph)|the (figure|diagram|graph) (above|below)|shown above|shown below)\b/i;
+
 let errors = 0;
 let checked = 0;
 
@@ -98,7 +100,13 @@ for (const f of fs.readdirSync(BANK_DIR).filter((x) => x.endsWith('.json')).sort
   const pool = bank.pool || [];
   let bankFigs = 0;
   pool.forEach((q, idx) => {
-    if (!q.figure) return;
+    const stem = String(q.text || '');
+    if (!q.figure) {
+      if (EXPLICIT_FIG_REF_RE.test(stem) && !/<table\b|<svg\b/i.test(stem)) {
+        fail(`bank-data/${f}[${idx}] (${q.id})`, 'stem references a missing figure/table/diagram');
+      }
+      return;
+    }
     bankFigs++;
     checkFigure(q.figure, q, `bank-data/${f}[${idx}] (${q.id})`);
   });
@@ -127,6 +135,26 @@ for (const tr of fs.readdirSync(CONTENT_DIR).sort()) {
         checkFigure(fg, qCtx, `content/${tr}/${fn}[${idx}]`);
       });
     } else if (!fn.startsWith('_')) {
+      const blocks = (data.content && Array.isArray(data.content.blocks)) ? data.content.blocks : [];
+      blocks.forEach((b, bIdx) => {
+        if (!b || typeof b !== 'object') return;
+        if (b.kind === 'workedExampleCard' || b.kind === 'practiceProblem') {
+          const stem = [b.problem, b.question, b.stem, b.prompt, b.title, b.setup, b.body]
+            .map((v) => (v && typeof v === 'object' ? (v.en || '') : (v || '')))
+            .join(' ');
+          const hasVisual = Boolean(
+            b.figure || b.figures || b.svg ||
+            /<table\b|<svg\b|class="fig|cs-fig/i.test(stem) ||
+            (bIdx > 0 && blocks[bIdx - 1] && (blocks[bIdx - 1].kind === 'figure' || blocks[bIdx - 1].kind === 'table' || blocks[bIdx - 1].kind === 'explorer'))
+          );
+          if (!hasVisual && EXPLICIT_FIG_REF_RE.test(stem)) {
+            fail(`content/${tr}/${fn}[${bIdx}]`, 'chapter block explicitly references a missing figure/table');
+          }
+          if (b.figure) {
+            checkFigure(b.figure, { text: stem, domain: tr }, `content/${tr}/${fn}[${bIdx}]`);
+          }
+        }
+      });
       (function scanBlocks(node) {
         if (!node || typeof node !== 'object') return;
         if (Array.isArray(node)) { node.forEach(scanBlocks); return; }

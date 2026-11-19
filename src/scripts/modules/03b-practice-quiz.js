@@ -147,16 +147,18 @@ function showPracticeQuiz(ov, questions, origMistake){
     var qo = questions[current];
       var pct = Math.round(((current+1)/total)*100);
       var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
-      var _isArUI = (typeof document !== 'undefined') && ((document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl')));
-      var rawStem = (_isArUI && qo.text_ar) ? qo.text_ar : (qo.q || qo.text || '');
-      var rawChoices = (_isArUI && Array.isArray(qo.choices_ar) && qo.choices_ar.length) ? qo.choices_ar : (qo.choices || []);
+      var _loc = window.CSItemLocale;
+      var _isArUI = _loc ? _loc.isAr() : ((typeof document !== 'undefined') && ((document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl'))));
+      var rawStem = _loc ? _loc.text(qo) : ((_isArUI && qo.text_ar) ? qo.text_ar : (qo.q || qo.text || ''));
+      var rawChoices = _loc ? _loc.choices(qo) : ((_isArUI && Array.isArray(qo.choices_ar) && qo.choices_ar.length) ? qo.choices_ar : (qo.choices || []));
+      var rawSol = _loc ? _loc.sol(qo) : ((_isArUI && qo.sol_ar) ? qo.sol_ar : (qo.sol || qo.explanation || ''));
       var qRendered = typeof window.CSQuizMath==='function'?window.CSQuizMath(rawStem):escHtml(rawStem);
       var pqHintHtml = (window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function')
         ? window.CSHintEngine.renderHintWidget({
             text: rawStem,
             domain: (origMistake && (origMistake.domain || origMistake.src)) || 'Mathematics',
-            sol: (_isArUI && qo.sol_ar) ? qo.sol_ar : (qo.sol || qo.explanation || ''),
-            hints: qo.hints,
+            sol: rawSol,
+            hints: _loc ? _loc.hints(qo) : qo.hints,
             hints_ar: qo.hints_ar
           }, 'pq-' + current)
         : '';
@@ -254,76 +256,6 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
   };
 }
 
-
-  function _pqWm(s){
-    if(s == null) return '';
-    var str = String(s);
-    if(typeof window.CSAutoMath === 'function') str = window.CSAutoMath(str);
-    else if(typeof window._autoMath === 'function') str = window._autoMath(str);
-    if(str.indexOf('\\(') === -1 && str.indexOf('\\[') === -1 && str.indexOf('$$') === -1 && str.indexOf('\\') !== -1){
-      str = '\\(' + str + '\\)';
-    }
-    if(typeof window.CSQuizMath === 'function') return window.CSQuizMath(str);
-    return str;
-  }
-
-  window.printPQResult = function(){
-    var d=window._pqData; if(!d) return;
-    var score=d.score, total=d.total, pct=Math.round(score/total*100);
-    var uas=d.userAnswers||[], qs=d.questions||[];
-    var _ie=window.CSExport && typeof window.CSExport._inlineMjxPaths==='function' ? window.CSExport._inlineMjxPaths : function(x){return x;};
-    var rows='';
-    qs.forEach(function(q,i){
-      var ua=uas[i]||{};
-      var isRight=ua.right;
-      var stem=typeof q==='object'?(q.q||q.stem||''):(q||'');
-      var chosen=ua.chosen!=null?ua.chosen:'—';
-      var correct=ua.correct!=null?ua.correct:(typeof q==='object'?q.answer:'');
-      rows+='<tr style="background:'+(isRight?'#f0fdf4':'#fff7f7')+'">'
-        +'<td style="padding:7px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700;color:'+(isRight?'#166534':'#991b1b')+'">'+(isRight?'✓':'✗')+'</td>'
-        +'<td style="padding:7px 9px;border:1px solid #e2e8f0">'+(i+1)+'. '+_pqWm(stem)+'</td>'
-        +'<td style="padding:7px 9px;border:1px solid #e2e8f0;text-align:center">'+_pqWm(chosen)+'</td>'
-        +'<td style="padding:7px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700;color:#166534">'+_pqWm(correct)+'</td>'
-        +'</tr>';
-    });
-    var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
-    var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
-    var _origin=(typeof location!=='undefined'&&location.origin)?location.origin:'https://clipsat.org';
-    var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ClipSAT Quiz Results</title>'
-      +'<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'
-      +'<script src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'
-      +'<script src="'+_origin+'/vendor/katex/auto-render.min.js"><\/script>'
-      +'<script src="'+_origin+'/js/katex-runtime.js"><\/script>'
-      +'<style>@page{margin:20mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
-      +'.hdr{border-bottom:2.5pt solid #1a1a2e;padding:8pt 0 10pt;display:flex;align-items:center;justify-content:space-between;margin-bottom:18pt}'
-      +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
-      +'.hdr-logo-img{height:34pt;width:auto;object-fit:contain;flex-shrink:0}'
-      +'.brand{font-size:17pt;font-weight:700;color:#1a1a2e;font-family:Georgia,serif}'
-      +'.brand span{font-size:8.5pt;font-weight:400;color:#566173;display:block;letter-spacing:.12em;text-transform:uppercase}'
-      +'.score-box{background:#1a1a2e;color:#fff;border-radius:8pt;padding:8pt 18pt;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
-      +'.score-big{font-size:20pt;font-weight:700}'
-      +'.score-sub{font-size:8pt;letter-spacing:.08em;text-transform:uppercase;opacity:.7}'
-      +'table{width:100%;border-collapse:collapse;font-size:10pt}'
-      +'th{background:#1a1a2e;color:#fff;padding:7px 9px;text-align:left;border:1px solid #1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
-      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}'
-      +'@media print{button{display:none!important}}</style>'
-      +'</head><body>'
-      +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>by Mr. Mohamed</span></div></div>'
-      +'<div class="score-box"><div class="score-big">'+score+' / '+total+'</div><div class="score-sub">'+pct+'% — '+(pct>=60?'Passed':'Needs Work')+'</div></div></div>'
-      +'<h2 style="margin:0 0 12pt;color:#1a1a2e">Practice Quiz Results</h2>'
-      +'<p style="font-size:9pt;color:#566173;margin:0 0 14pt">Date: '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+'</p>'
-      +'<table><tr>'
-      +'<th style="width:40px">✓/✗</th><th>Question</th><th style="width:80px">Your Answer</th><th style="width:80px">Correct</th>'
-      +'</tr>'+rows+'</table>'
-      +'<div style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">🖨 Print / Save PDF</button></div>'
-      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);}).catch(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});}else{setTimeout(function(){try{window.print();}catch(e){}},800);}<\/script>'
-      +'</body></html>';
-    html=_ie(html);
-    var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);
-    var w=window.open(url,'_blank','width=750,height=700');
-    setTimeout(function(){URL.revokeObjectURL(url);},60000);
-    if(w) setTimeout(function(){try{w.focus();}catch(e){}},400);
-  };
 
   window.CSPracticeQuiz={launch:window.launchPracticeQuiz};
 })();

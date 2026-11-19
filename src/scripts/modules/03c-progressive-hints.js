@@ -46,10 +46,17 @@
       'Substitute carefully, check signs and units, and compare with the answer choices.'
     ];
 
-    /* If Arabic UI/exam mode is active and explicit hints_ar exists, return it */
-    var preferAr = (typeof document !== 'undefined') && ((document.documentElement && document.documentElement.lang === 'ar') || (document.body && (document.body.classList.contains('rtl') || document.body.classList.contains('cs-lang-ar'))));
-    if(preferAr && Array.isArray(q.hints_ar) && q.hints_ar.length >= 3){
+    /* If Arabic UI/exam mode is active and explicit non-boilerplate hints_ar exists, return it */
+    var _loc = (typeof window !== 'undefined') ? window.CSItemLocale : null;
+    var preferAr = (_loc && _loc.isAr()) || ((typeof document !== 'undefined') && ((document.documentElement && document.documentElement.lang === 'ar') || (document.body && (document.body.classList.contains('rtl') || document.body.classList.contains('cs-lang-ar')))));
+    if(preferAr && Array.isArray(q.hints_ar) && q.hints_ar.length >= 3 && !(_loc && q.hints_ar.some(_loc.isBoilerplateAr))){
       return q.hints_ar.slice(0, 3).map(function(h){ return String(h || ''); });
+    }
+    if(_loc && typeof _loc.hints === 'function'){
+      var locHints = _loc.hints(q);
+      if(Array.isArray(locHints) && locHints.length >= 3 && !/Identify the (?:governing|mathematical|core) relationship|Tier 1 \(Conceptual Setup\)|Focus on what the question asks|Combine the steps above to directly answer/i.test(locHints.join(' '))){
+        return locHints.slice(0, 3).map(function(h){ return typeof h === 'string' ? h : (h && (h.ar || h.en)) || String(h || ''); });
+      }
     }
     /* If explicit 3-tier hints array exists on the item (and is not legacy boilerplate), normalize and return it */
     if(Array.isArray(q.hints) && q.hints.length >= 3){

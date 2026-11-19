@@ -252,6 +252,52 @@
         "solution": {
           "en": "<p>**(a)** By the Fundamental Theorem of Calculus, \\( f(2) - f(-2) = \\int_{-2}^{2} f'(x) \\, dx \\). The region from \\( x = -2 \\) to \\( x = 2 \\) is a semicircle with radius 2. The area of this semicircle is \\( \\frac{1}{2} \\pi (2)^2 = 2\\pi \\). Therefore, \\( f(2) - f(-2) = 2\\pi \\).\n\n**(b)** The graph of \\( f'(x) \\) is shown. \\( f'(c) = 0 \\) when the graph of \\( f' \\) intersects the x-axis. This occurs at \\( x = -4 \\) and \\( x = 2 \\). Since we are looking for values of \\( c \\) in the open interval \\( (-4, 4) \\), there is one such value, \\( c = 2 \\).\n\n**(c)** A local maximum of \\( f \\) occurs when \\( f' \\) changes from positive to negative. Looking at the graph of \\( f' \\), this occurs at \\( x = 2 \\), where \\( f' \\) changes from positive to negative. Therefore, \\( k = 2 \\).\n\n**(d)** An inflection point of \\( f \\) occurs when \\( f'' \\) changes sign. This means that \\( f' \\) changes from increasing to decreasing or vice versa. Looking at the graph of \\( f' \\), the slope of \\( f' \\) (which is \\( f'' \\)) changes at \\( x = -2 \\) and \\( x = 2 \\). At \\( x = -2 \\), \\( f' \\) changes from decreasing to increasing. At \\( x = 2 \\), \\( f' \\) changes from increasing to decreasing. Inflection points occur where the concavity of \\( f \\) changes, which is where \\( f'' \\) changes sign. The sign of \\( f'' \\) changes at \\( x = -2 \\) (from negative to positive) and at \\( x = 2 \\) (from positive to negative). However, the question asks for *an* inflection point. The graph of \\( f' \\) has a corner at \\( x = -2 \\), indicating a change in concavity of \\( f \\). The graph also has a point where the slope changes drastically at \\( x=2 \\) (from positive slope to zero slope for the semicircle). Looking closely at the graph, the derivative \\( f' \\) itself changes behavior at \\( x = -2 \\) and \\( x = 2 \\). The concavity of \\( f \\) changes where \\( f'' \\) changes sign.  \\( f'' \\) is the slope of \\( f' \\). The slope of \\( f' \\) is negative for \\( x < -2 \\), zero for \\( -2 < x < 2 \\), and positive for \\( x > 2 \\).  This means \\( f'' \\) changes sign at \\( x = -2 \\) (negative to zero, then zero to positive if we consider the end of the semicircle).  The graph of \\( f' \\) has a corner at \\( x = -2 \\) and the slope of \\( f' \\) is 0 for \\( x > 2 \\). The concavity of \\( f \\) changes at \\( x = -2 \\).  The rate of change of \\( f' \\) (which is \\( f'' \\)) changes from negative to positive at \\( x=-2 \\). Thus, \\( p = -2 \\).</p>",
           "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Graph of Derivative f'(x) on [-4, 4]",
+          "fns": [
+            {
+              "fn": "-2*(x + 2) for x in [-4, -2]",
+              "label": "y = f'(x)"
+            },
+            {
+              "fn": "sqrt(max(0, 4 - x^2)) for x in [-2, 2]"
+            },
+            {
+              "fn": "0 for x in [2, 4]"
+            }
+          ],
+          "xlim": [
+            -4.5,
+            4.5
+          ],
+          "ylim": [
+            -2,
+            5
+          ],
+          "points": [
+            {
+              "x": -4,
+              "y": 4,
+              "label": "(-4, 4)"
+            },
+            {
+              "x": -2,
+              "y": 0,
+              "label": "(-2, 0)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "(4, 0)"
+            }
+          ]
         }
       },
       {
@@ -267,6 +313,57 @@
         "solution": {
           "en": "<p>The function \\( f(x) \\) is defined piecewise. For \\( 0 \\le t \\le 2 \\), \\( f(t) \\) is the upper part of a circle centered at the origin with radius 2, so \\( f(t) = \\sqrt{4 - t^2} \\). For \\( 2 < t \\le 4 \\), \\( f(t) \\) is a line segment connecting \\( (2, 4) \\) and \\( (4, 0) \\). The equation of this line can be found using the two-point form: \\( y - 0 = \\frac{4 - 0}{2 - 4}(x - 4) \\), which simplifies to \\( y = -2(x - 4) \\), so \\( f(t) = -2(t - 4) \\).\n\nTo find \\( A(3) \\), we need to calculate the definite integral \\( \\int_{0}^{3} f(t) \\, dt \\). We split this integral into two parts based on the definition of \\( f(t) \\):\n\n\\( A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt \\)\n\nFor the first part, \\( \\int_{0}^{2} \\sqrt{4 - t^2} \\, dt \\), this represents the area of a quarter circle of radius 2, which is \\( \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi \\).\n\nFor the second part, \\( \\int_{2}^{3} (-2(t - 4)) \\, dt \\), we can evaluate this integral:\n\n\\( \\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3} \\)\n\nEvaluating at the limits:\n\n\\( (-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2) \\)\n\n\\( (-9 + 24) - (-4 + 16) \\)\n\n\\( 15 - 12 = 3 \\).\n\nTherefore, \\( A(3) = \\pi + 3 \\).\n\n*Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate \\( \\sqrt{4-t^2} \\) directly, which is more complex.</p>",
           "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Piecewise Graph of f(t)",
+          "fns": [
+            {
+              "fn": "sqrt(max(0, 4 - x^2)) for x in [0, 2]",
+              "label": "Quarter circle (r = 2)"
+            },
+            {
+              "fn": "-2*(x - 4) for x in [2, 4]",
+              "label": "Segment (2, 4) to (4, 0)"
+            }
+          ],
+          "xlim": [
+            -0.5,
+            4.5
+          ],
+          "ylim": [
+            -0.5,
+            4.8
+          ],
+          "shade": [
+            {
+              "x1": 0,
+              "x2": 2,
+              "fn": "sqrt(max(0, 4 - x^2))"
+            },
+            {
+              "x1": 2,
+              "x2": 3,
+              "fn": "-2*(x - 4)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 2,
+              "label": "(0, 2)"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "label": "(2, 4)"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "(4, 0)"
+            }
+          ]
         }
       },
       {

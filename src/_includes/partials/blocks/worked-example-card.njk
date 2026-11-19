@@ -2,6 +2,7 @@
 <div class="fcard we-card">
   <div class="ft">{{ bl.text(block.label) }}</div>
   <div class="we-problem"><strong>{{ bl.text({"en": "Problem.", "ar": "المسألة."}) }}</strong> {{ bl.text(block.problem) }}</div>
+  {% if block.figure %}<div class="lesson-figure-svg we-figure" data-lazy-fig='{{ block.figure | jsonAttr | safe }}'></div>{% endif %}
   <details class="we-solution-reveal">
     <summary class="we-solution-summary"><span>▸</span> {{ bl.text({"en": "Show step-by-step solution", "ar": "عرض خطوات الحل بالتفصيل"}) }}</summary>
     <div class="solution we-solution-body">{{ bl.text(block.solution, 'div') }}</div>

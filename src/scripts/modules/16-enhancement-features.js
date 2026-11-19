@@ -169,21 +169,25 @@ window.Mastery = (function(){
     var ov=document.createElement('div');
     ov.id='mistake-quiz-overlay';
     ov.style.cssText='position:fixed;inset:0;background:#0009;z-index:9999;overflow:auto;padding:24px;display:flex;align-items:flex-start;justify-content:center;';
-    var letters=['A','B','C','D','E'];
+    var _loc = window.CSItemLocale;
+    var letters=(_loc && _loc.isAr())?['أ','ب','ج','د','هـ']:['A','B','C','D','E'];
     var html=pool.map(function(q,qi){
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize correct-answer position */
       var qId=q.id||('mq-'+qi);
-      var opts=(q.choices||[]).map(function(c,ci){
+      var rawStem=(_loc?_loc.text(q):'')||q.text||q.q||'';
+      var rawChoices=(_loc?_loc.choices(q):null)||q.choices||[];
+      var rawSol=(_loc?_loc.sol(q):'')||q.sol||'';
+      var opts=rawChoices.map(function(c,ci){
         var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(c):String(c||'');
-        return '<button class="cq-opt" onclick="cqPick(this)">'
-          +'<span class="cq-lbl">'+letters[ci]+'</span>'
+        return '<li><button type="button" class="cq-opt" role="radio" aria-checked="false" tabindex="'+(ci===0?'0':'-1')+'" onclick="cqPick(this)" onkeydown="if(window._cqKey)window._cqKey(event,this)">'
+          +'<span class="cq-lt">'+letters[ci]+'.</span>'
           +'<span class="cq-ct">'+(typeof _maths==='function'?_maths(s):s)+'</span>'
-          +'</button>';
+          +'</button></li>';
       }).join('');
       return '<div class="cq-item" data-ans="'+q.answer+'" data-id="'+qId+'" data-domain="'+(q.domain||'')+'" data-src="'+(q.src||'')+'">'
-        +'<div class="cq-stem">'+(typeof _maths==='function'?_maths(q.text||q.q||''):q.text||q.q||'')+'</div>'
-        +'<div class="cq-opts">'+opts+'</div>'
-        +'<div class="cq-sol" style="display:none">'+(q.sol||'')+'</div>'
+        +'<div class="cq-qt">'+(typeof _maths==='function'?_maths(rawStem):rawStem)+'</div>'
+        +'<ul class="cq-opts" role="radiogroup" aria-label="Question '+(qi+1)+' choices">'+opts+'</ul>'
+        +'<div class="cq-sol-box" style="display:none">'+(typeof _maths==='function'?_maths(rawSol):rawSol)+'</div>'
         +'</div>';
     }).join('');
     ov.innerHTML='<div style="background:var(--panel,#fff);border-radius:16px;padding:24px;max-width:720px;width:100%;box-shadow:0 8px 40px #0003">'
@@ -864,14 +868,89 @@ window.CSExampleGrapher = (function(){
    readyState guard as engine.js's own init() above, for the same reason:
    defensive in case this ever runs after DOMContentLoaded has already
    fired. */
+function _extractPracticeShortAns(solEl){
+  if(!solEl) return '';
+  var cloned = solEl.cloneNode(true);
+  cloned.querySelectorAll('mjx-assistive-mml, .mjx-assistive-mml, svg, script, style').forEach(function(n){ n.remove(); });
+  var rawHtml = cloned.innerHTML || '';
+  var plain = (cloned.textContent || '').replace(/\s+/g, ' ').trim();
+  if(!plain) return '';
+  var m = plain.match(/(?:Final\s*Answer|Answer|الإجابة\s*النهائية|الإجابة|الجواب)\s*[:=]\s*([^\n.;،]{1,36})/i);
+  var cand = m ? m[1].trim() : '';
+  if(!cand){
+    var mBox = rawHtml.match(/\\boxed\{([^{}]{1,36})\}/);
+    if(mBox) cand = mBox[1].trim();
+  }
+  if(!cand){
+    var eqParts = plain.split('=');
+    if(eqParts.length >= 2){
+      var tail = eqParts[eqParts.length - 1].replace(/[.\s]+$/, '').trim();
+      if(tail && tail.length <= 24 && /[0-9]/.test(tail) && !/\b(?:is|are|so|the|and|then|where|since|because|فإن|إذن|حيث)\b/i.test(tail)){
+        cand = tail;
+      }
+    }
+  }
+  if(!cand) return '';
+  cand = cand.replace(/^[\\(\[\s]+|[\\)\]\s.،,;]+$/g, '').trim();
+  if(!cand || cand.length > 32 || /\s{3,}/.test(cand)) return '';
+  if(!/[0-9xXyYnNkKπ\\/]/.test(cand)) return '';
+  return cand;
+}
+
+function _initPracticeSetChecks(){
+  if(typeof document === 'undefined') return;
+  var ar = (document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl'));
+  document.querySelectorAll('.problem').forEach(function(prob){
+    if(prob.querySelector('.ps-check-row')) return;
+    var actions = prob.querySelector('.ps-item-actions');
+    var solEl = prob.querySelector('.solution');
+    if(!actions || !solEl) return;
+    var expected = prob.getAttribute('data-answer') || _extractPracticeShortAns(solEl);
+    if(!expected) return;
+    var row = document.createElement('div');
+    row.className = 'ps-check-row no-print';
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.className = 'ps-check-input';
+    inp.placeholder = ar ? 'اكتب إجابتك للتحقق…' : 'Type your answer to check…';
+    inp.setAttribute('aria-label', ar ? 'اكتب إجابتك للتحقق' : 'Type your answer to check');
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ps-check-btn';
+    btn.textContent = ar ? 'تحقّق' : 'Check answer';
+    var fb = document.createElement('span');
+    fb.className = 'ps-check-feedback';
+    fb.setAttribute('aria-live', 'polite');
+    function grade(){
+      var val = (inp.value || '').trim();
+      if(!val) return;
+      var ok = false;
+      if(window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function'){
+        ok = window.ClipSATAnswerCheck.equivalent(val, expected);
+      } else {
+        ok = val.toLowerCase().replace(/\s+/g,'') === expected.toLowerCase().replace(/\s+/g,'');
+      }
+      fb.className = 'ps-check-feedback ' + (ok ? 'is-ok' : 'is-bad');
+      fb.textContent = ok ? (ar ? '✓ إجابة صحيحة' : '✓ Correct') : (ar ? '✗ حاول مرة أخرى أو راجع الحل' : '✗ Try again or view solution');
+    }
+    btn.addEventListener('click', grade);
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); grade(); } });
+    row.appendChild(inp);
+    row.appendChild(btn);
+    row.appendChild(fb);
+    actions.parentNode.insertBefore(row, actions);
+  });
+}
+
 function _renderDeferredChrome(){
   _renderCountdown();
   _renderDailyGoal();
   _renderWeakRecs();
   _injectNoteButtons();
   _renderAccBadges();
+  _initPracticeSetChecks();
   document.addEventListener('clipsat:view-change', function(){
-    setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();},200);
+    setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();_initPracticeSetChecks();},200);
   });
 }
 if(document.readyState!=='loading') _renderDeferredChrome();

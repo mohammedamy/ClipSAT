@@ -79,7 +79,11 @@
           var ans=parseInt(item.getAttribute('data-ans'),10);
           var opts=item.querySelectorAll('.cq-opt');
           if(opts[ans]) opts[ans].classList.add('cq-correct');
-          item.querySelectorAll('.cq-opt').forEach(function(o){o.style.pointerEvents='none';});
+          item.querySelectorAll('.cq-opt').forEach(function(o){
+            o.style.pointerEvents='none';
+            o.setAttribute('aria-disabled','true');
+            if(o.tagName==='BUTTON') o.disabled=true;
+          });
           var sol=item.querySelector('.cq-sol-box');
           if(sol) sol.style.display='block';
         });
