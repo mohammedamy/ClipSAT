@@ -245,6 +245,16 @@ document.addEventListener('click',function(e){
   input.addEventListener('focus',  function(){ if(this.value) _runSearch(this.value); });
   document.addEventListener('click', function(e){ if(!input.contains(e.target)&&!_sdrop.contains(e.target)) _sdrop.style.display='none'; });
   input.addEventListener('keydown', function(e){ if(e.key==='Escape'){ _sdrop.style.display='none'; this.value=''; } });
+  document.addEventListener('keydown', function(e){
+    if(!(e.metaKey || e.ctrlKey) || (e.key !== 'k' && e.key !== 'K')) return;
+    var active = document.activeElement;
+    if(active && active !== input){
+      var tag = active.tagName;
+      if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || active.isContentEditable) return;
+    }
+    e.preventDefault();
+    try{ input.focus(); input.select(); }catch(err){}
+  });
   document.addEventListener('clipsat:view-change', function(){ input.value=''; _sdrop.style.display='none'; });
 })();
 

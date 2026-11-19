@@ -276,10 +276,10 @@ function examRefSheet(viewId){
     subtitle='قوانين معتمدة ومفاهيم أساسية للاختبار — لا يُسمح باستخدام الآلة الحاسبة';
     if(id==='qudrat'){
       cards=[
-        {title:'الهندسة والقياس',content:'محيط الدائرة = \\(2\\pi r\\) · مساحة الدائرة = \\(\\pi r^2\\)<br>مساحة المثلث = \\(\\frac{1}{2} \\times \\text{القاعدة} \\times \\text{الارتفاع}\\)<br>مجموع زوايا المثلث = \\(180^\\circ\\) · زوايا الشكل الرباعي = \\(360^\\circ\\)<br>مثلث فيثاغورس المشهور: (3, 4, 5)، (5, 12, 13)'},
+        {title:'الهندسة والقياس',content:'محيط الدائرة = \\(2\\pi r\\) · مساحة الدائرة = \\(\\pi r^2\\)<br>مساحة المثلث = \\(\\frac{1}{2} b h\\) (نصف القاعدة × الارتفاع)<br>مجموع زوايا المثلث = \\(180^\\circ\\) · زوايا الشكل الرباعي = \\(360^\\circ\\)<br>مثلث فيثاغورس المشهور: (3, 4, 5)، (5, 12, 13)'},
         {title:'المتطابقات والتحليل',content:'\\((a+b)^2 = a^2 + 2ab + b^2\\)<br>\\((a-b)^2 = a^2 - 2ab + b^2\\)<br>\\(a^2 - b^2 = (a-b)(a+b)\\)'},
-        {title:'الحركة والسرعة والمتوسط',content:'المسافة = السرعة \\(\\times\\) الزمن<br>السرعة المتوسطة = \\(\\frac{\\text{المسافة الكلية}}{\\text{الزمن الكلي}}\\)<br>المتوسط الحسابي = \\(\\frac{\\text{مجموع القيم}}{\\text{عددها}}\\)'},
-        {title:'النسبة والربح والتناسب',content:'التناسب الطردي: \\(\\frac{x_1}{y_1} = \\frac{x_2}{y_2}\\) (زيادة يقابلها زيادة)<br>التناسب العكسي: \\(x_1 y_1 = x_2 y_2\\) (زيادة يقابلها نقصان)<br>نسبة التغير = \\(\\frac{\\text{مقدار التغير}}{\\text{القيمة الأصلية}} \\times 100\\%\\)'}
+        {title:'الحركة والسرعة والمتوسط',content:'المسافة = السرعة \\(\\times\\) الزمن<br>السرعة المتوسطة = المسافة الكلية ÷ الزمن الكلي (\\(\\bar{v} = \\frac{D}{T}\\))<br>المتوسط الحسابي = مجموع القيم ÷ عددها (\\(\\bar{x} = \\frac{\\sum x}{n}\\))'},
+        {title:'النسبة والربح والتناسب',content:'التناسب الطردي: \\(\\frac{x_1}{y_1} = \\frac{x_2}{y_2}\\) (زيادة يقابلها زيادة)<br>التناسب العكسي: \\(x_1 y_1 = x_2 y_2\\) (زيادة يقابلها نقصان)<br>نسبة التغير = (مقدار التغير ÷ القيمة الأصلية) \\(\\times 100\\%\\)'}
       ];
     } else {
       cards=[
@@ -632,24 +632,12 @@ window.aiqCheckFRQ=function(el, qIdx){
    rather than silently guessing — matching the roadmap's explicit call for
    visible confidence framing rather than overclaiming reliability. ── */
 window.ClipSATSymbolicCheck=(function(){
-  var mathjsPromise=null;
-  function loadMathjs(){
-    if(!mathjsPromise) mathjsPromise=import('https://cdn.jsdelivr.net/npm/mathjs@13/+esm');
-    return mathjsPromise;
-  }
-  /* Defense in depth on top of math.js's own sandboxed expression language
-     (no DOM/network/JS-global access): reject anything outside the shape a
-     "final answer" should ever take before it's even parsed. */
+  /* Defense in depth before invoking local AST equivalence engine */
   var SAFE_RE=/^[\s0-9a-zA-Z+\-*/^().,!%]*$/;
   function isSafe(expr){
     return typeof expr==='string' && expr.length>0 && expr.length<=200 && SAFE_RE.test(expr);
   }
   var FN_NAMES=['sin','cos','tan','asin','acos','atan','sinh','cosh','tanh','sqrt','ln','log','exp','abs','cbrt'];
-  /* Normalizes implicit multiplication ("2x", "2(x+1)", "(x-1)(x+1)") into
-     explicit "*" before handing the string to math.js, so grading doesn't
-     depend on exactly which implicit-multiplication cases any given
-     math.js version happens to support. Leaves known function calls
-     ("sin(x)") alone. */
   function normalizeImplicitMult(expr){
     expr=expr.replace(/(\d)(\s*)([a-zA-Z(])/g,function(m,d,sp,next){ return d+'*'+sp+next; });
     expr=expr.replace(/(\))(\s*)([a-zA-Z0-9(])/g,function(m,close,sp,next){ return close+'*'+sp+next; });
@@ -658,32 +646,9 @@ window.ClipSATSymbolicCheck=(function(){
     });
     return expr;
   }
-  function randPoint(vars){
-    var scope={};
-    vars.forEach(function(v){
-      // [0.3,6) magnitude plus irrational-ish jitter, random sign — avoids
-      // 0/±1 and clean integers, the values most likely to sit exactly on
-      // a removable singularity or a coincidental false match.
-      var mag=0.3+Math.random()*5.7, jitter=0.11+Math.random()*0.37;
-      scope[v]=(Math.random()<0.5?-1:1)*(mag+jitter);
-    });
-    return scope;
-  }
-  function realNumberOrNull(math,v){
-    try{
-      if(v&&typeof v==='object'&&typeof v.im==='number'){
-        if(Math.abs(v.im)>1e-9) return null; // meaningfully complex → domain miss
-        v=v.re;
-      }
-      var n=(math.number?math.number(v):Number(v));
-      return (typeof n==='number'&&isFinite(n))?n:null;
-    }catch(e){ return null; }
-  }
   /* Returns Promise<'equivalent'|'different'|'unverifiable'> */
-  function check(targetExpr,givenExpr,vars){
-    vars=(vars&&vars.length)?vars:['x'];
+  function check(targetExpr,givenExpr){
     if(!isSafe(targetExpr)||!isSafe(givenExpr)) return Promise.resolve('unverifiable');
-    /* CSP-safe first-party AST equivalence fallback (zero external CDN dependency) */
     if(window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function'){
       try {
         var normT = normalizeImplicitMult(targetExpr);
@@ -694,26 +659,7 @@ window.ClipSATSymbolicCheck=(function(){
         }
       } catch(_){}
     }
-    return loadMathjs().then(function(mod){
-      var math=mod.default||mod;
-      var targetNode,givenNode;
-      try{
-        targetNode=math.compile(normalizeImplicitMult(targetExpr));
-        givenNode=math.compile(normalizeImplicitMult(givenExpr));
-      }catch(e){ return 'unverifiable'; }
-      var MAX_ATTEMPTS=25, NEEDED=6, matched=0, valid=0;
-      for(var i=0;i<MAX_ATTEMPTS&&valid<NEEDED;i++){
-        var scope=randPoint(vars), a=null, b=null;
-        try{ a=realNumberOrNull(math,targetNode.evaluate(scope)); }catch(e){}
-        try{ b=realNumberOrNull(math,givenNode.evaluate(scope)); }catch(e){}
-        if(a===null||b===null) continue; // domain miss on either side — resample
-        valid++;
-        var tol=1e-6+Math.abs(a)*1e-6;
-        if(Math.abs(a-b)<=tol) matched++;
-      }
-      if(valid<NEEDED) return 'unverifiable';
-      return (matched===valid) ? 'equivalent' : 'different';
-    }).catch(function(){ return 'unverifiable'; });
+    return Promise.resolve('unverifiable');
   }
   return {check:check};
 })();

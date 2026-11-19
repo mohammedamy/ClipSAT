@@ -225,6 +225,26 @@ function showPracticeQuiz(ov, questions, origMistake){
 }
 
 function showPQResult(ov, score, total, origMistake, userAnswers, questions){
+  if(window.CSGamify && typeof window.CSGamify.addXP === 'function'){
+    window.CSGamify.addXP(10 + score * 5);
+  }
+  if(window.ML && typeof window.ML.add === 'function' && Array.isArray(userAnswers)){
+    userAnswers.forEach(function(ua, idx){
+      if(!ua || ua.right) return;
+      var pqItem = (questions && questions[idx]) || {};
+      window.ML.add({
+        id: pqItem.id || ('pq-' + Date.now() + '-' + idx),
+        viewId: window.CLIPSAT_TRACK || (origMistake && origMistake.viewId) || 'sat',
+        q: String(ua.q || 'Practice Quiz Question').slice(0, 300),
+        wrong: String(ua.chosen || ''),
+        right: String(ua.correct || ''),
+        domain: pqItem.domain || (origMistake && origMistake.domain) || 'Practice',
+        src: 'practice-quiz',
+        sol: pqItem.sol || pqItem.exp || '',
+        choices: Array.isArray(pqItem.choices) ? pqItem.choices : []
+      });
+    });
+  }
   var pct = Math.round(score/total*100);
   var passed = pct >= 60;
   var stars = pct>=80?'&#11088;&#11088;&#11088;':pct>=60?'&#11088;&#11088;':pct>=40?'&#11088;':'';

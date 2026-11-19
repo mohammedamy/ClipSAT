@@ -180,10 +180,24 @@ window.CSExport=(function(){
           } else if(cmd==='underline'){
             var rg3=getBr(s,j);j=rg3.end;
             res.push('<m:bar><m:barPr><m:pos m:val="bot"/></m:barPr><m:e>'+proc(rg3.text)+'</m:e></m:bar>');
-          } else if(cmd==='hat'||cmd==='widehat'||cmd==='tilde'||cmd==='widetilde'||
-                    cmd==='vec'||cmd==='overrightarrow'||cmd==='overleftarrow'||
-                    cmd==='dot'||cmd==='ddot'){
-            var rg4=getBr(s,j);j=rg4.end; res.push(proc(rg4.text)); // simplified: skip decoration
+          } else if(cmd==='hat'||cmd==='widehat'){
+            var rgHat=getBr(s,j);j=rgHat.end;
+            res.push('<m:acc><m:accPr><m:chr m:val="\u0302"/></m:accPr><m:e>'+proc(rgHat.text)+'</m:e></m:acc>');
+          } else if(cmd==='tilde'||cmd==='widetilde'){
+            var rgTil=getBr(s,j);j=rgTil.end;
+            res.push('<m:acc><m:accPr><m:chr m:val="\u0303"/></m:accPr><m:e>'+proc(rgTil.text)+'</m:e></m:acc>');
+          } else if(cmd==='vec'||cmd==='overrightarrow'){
+            var rgVec=getBr(s,j);j=rgVec.end;
+            res.push('<m:acc><m:accPr><m:chr m:val="\u20d7"/></m:accPr><m:e>'+proc(rgVec.text)+'</m:e></m:acc>');
+          } else if(cmd==='overleftarrow'){
+            var rgLvec=getBr(s,j);j=rgLvec.end;
+            res.push('<m:acc><m:accPr><m:chr m:val="\u20d6"/></m:accPr><m:e>'+proc(rgLvec.text)+'</m:e></m:acc>');
+          } else if(cmd==='dot'){
+            var rgDot=getBr(s,j);j=rgDot.end;
+            res.push('<m:acc><m:accPr><m:chr m:val="\u02d9"/></m:accPr><m:e>'+proc(rgDot.text)+'</m:e></m:acc>');
+          } else if(cmd==='ddot'){
+            var rgDdot=getBr(s,j);j=rgDdot.end;
+            res.push('<m:acc><m:accPr><m:chr m:val="\u00a8"/></m:accPr><m:e>'+proc(rgDdot.text)+'</m:e></m:acc>');
           } else if(cmd==='text'||cmd==='mathrm'||cmd==='mathbf'||cmd==='mathit'||
                     cmd==='mathbb'||cmd==='mathcal'||cmd==='mathsf'||cmd==='mathtt'||
                     cmd==='operatorname'||cmd==='textrm'||cmd==='textbf'||cmd==='textit'){
@@ -193,8 +207,27 @@ window.CSExport=(function(){
                     cmd==='bigg'||cmd==='Bigg'||cmd==='biggl'||cmd==='biggr'){
             while(j<s.length&&s[j]===' ')j++;
             if(j<s.length&&s[j]!=='\\'&&s[j]!=='{')j++;
-          } else if(cmd==='begin'||cmd==='end'){
+          } else if(cmd==='begin'){
             var rgb=getBr(s,j);j=rgb.end;
+            var env=rgb.text.trim();
+            var endTag='\\end{'+env+'}';
+            var endPos=s.indexOf(endTag, j);
+            if(endPos!==-1 && (env==='pmatrix'||env==='bmatrix'||env==='vmatrix'||env==='matrix'||env==='cases')){
+              var inner=s.slice(j, endPos);
+              var rows=inner.split('\\\\').map(function(row){
+                var cols=row.split('&').map(function(cell){ return '<m:e>'+proc(cell.trim())+'</m:e>'; });
+                return '<m:mr>'+cols.join('')+'</m:mr>';
+              });
+              var mXml='<m:m>'+rows.join('')+'</m:m>';
+              if(env==='pmatrix') mXml='<m:d><m:dPr><m:begChr m:val="("/><m:endChr m:val=")"/></m:dPr><m:e>'+mXml+'</m:e></m:d>';
+              else if(env==='bmatrix') mXml='<m:d><m:dPr><m:begChr m:val="["/><m:endChr m:val="]"/></m:dPr><m:e>'+mXml+'</m:e></m:d>';
+              else if(env==='vmatrix') mXml='<m:d><m:dPr><m:begChr m:val="|"/><m:endChr m:val="|"/></m:dPr><m:e>'+mXml+'</m:e></m:d>';
+              else if(env==='cases') mXml='<m:d><m:dPr><m:begChr m:val="{"/><m:endChr m:val=""/></m:dPr><m:e>'+mXml+'</m:e></m:d>';
+              res.push(mXml);
+              j=endPos+endTag.length;
+            }
+          } else if(cmd==='end'){
+            var rge=getBr(s,j);j=rge.end;
           } else if(cmd==='not'||cmd==='color'){
             /* skip */
           } else if(GSYM[cmd]!==undefined){
@@ -908,6 +941,59 @@ window.CSExport=(function(){
     }).catch(function(){alert('Sorry \u2014 the .docx could not be generated in this browser.');});
   }
 
+  /* Shared OOXML question-packet builder (reused by hub fallback & CSCustomCart) */
+  function _buildQuestionsDocx(titleText, chapterSub, trackLabel, sample){
+    if(typeof JSZip==='undefined') return Promise.reject(new Error('JSZip unavailable'));
+    var isAr=(window.i18n&&window.i18n.getLocale&&window.i18n.getLocale()==='ar')||document.documentElement.dir==='rtl';
+    return _fetchLogoBase64().then(function(_logoB64){
+      var zip=new JSZip();
+      var _letterhead=_buildLetterhead(zip,{title:titleText||'ClipSAT Math',chapter:chapterSub||(isAr?'حزمة تدريب مختارة':'Curated Practice Packet'),track:trackLabel||''},_logoB64);
+      var body=para(_today(),{italic:true,color:'566173',size:20,spaceAfter:200});
+      body+=para(_tt('practiceProblemsCaps'),{bold:true,size:26,color:'1A1A2E',spaceAfter:100});
+      var LTR=['A','B','C','D','E'];
+      sample.forEach(function(q,qi){
+        var stem=(window.CSItemLocale?window.CSItemLocale.text(q):(q.text||q.q||q.stem||''));
+        var chs=(window.CSItemLocale?window.CSItemLocale.choices(q):(q.choices||q.options||[]));
+        body+=paraMath((qi+1)+'. '+stem,{bold:true,size:23,spaceAfter:40});
+        chs.forEach(function(c,ci){
+          body+=paraMath('    '+(LTR[ci]||String(ci+1))+'.  '+c,{size:21,spaceAfter:20});
+        });
+        body+=para('',{spaceAfter:90});
+      });
+      body+=para(isAr?'مفتاح الإجابات والحلول':'ANSWER KEY & WORKED SOLUTIONS',{bold:true,size:26,color:'1A1A2E',spaceAfter:100});
+      sample.forEach(function(q,qi){
+        var chs=(window.CSItemLocale?window.CSItemLocale.choices(q):(q.choices||q.options||[]));
+        var ansIdx=q.answer!=null?q.answer:q.correct;
+        var ansLbl=(typeof ansIdx==='number'&&LTR[ansIdx])?(LTR[ansIdx]+(chs[ansIdx]?' ('+chs[ansIdx]+')':'')):String(ansIdx!=null?ansIdx:'');
+        var sol=(window.CSItemLocale?window.CSItemLocale.sol(q):(q.sol||q.explanation||''));
+        body+=paraMath((qi+1)+'. '+ansLbl+(sol?(' — '+sol):''),{color:'1E3A6E',size:21,spaceAfter:70});
+      });
+      var wNS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
+      var mNS='xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"';
+      var rNS='xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
+      var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document '+wNS+' '+mNS+' '+rNS+'><w:body>'+body+'<w:sectPr>'+_letterhead.sectPrRefs+'<w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="709" w:footer="709"/></w:sectPr></w:body></w:document>';
+      var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'+_letterhead.contentTypesXml+'</Types>';
+      var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
+      zip.file('[Content_Types].xml',ct);
+      zip.folder('_rels').file('.rels',rels);
+      zip.folder('word').file('document.xml',doc);
+      zip.folder('word').folder('_rels').file('document.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+_letterhead.docRelsXml+'</Relationships>');
+      return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+    });
+  }
+
+  function exportQuestionsDocx(filenameBase, questions, opts){
+    opts=opts||{};
+    if(!Array.isArray(questions)||!questions.length) return Promise.reject(new Error('No questions'));
+    if(typeof JSZip==='undefined') return Promise.reject(new Error('JSZip unavailable'));
+    return _buildQuestionsDocx(opts.title||'ClipSAT Custom Worksheet', opts.chapter||('Selected Questions ('+questions.length+')'), opts.track||'', questions).then(function(blob){
+      var fname=(filenameBase||'clipsat-custom-worksheet').replace(/[^A-Za-z0-9\u0600-\u06FF_-]+/g,'_')+'.docx';
+      var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);
+      return true;
+    });
+  }
+
   /* Backward-compat alias */
   window.downloadDocx=function(btn){downloadChapterDocx(btn);};
 
@@ -915,6 +1001,7 @@ window.CSExport=(function(){
     printChapter:printChapter,
     printActiveChapter:printActiveChapter,
     downloadChapterDocx:downloadChapterDocx,
+    exportQuestionsDocx:exportQuestionsDocx,
     logoSrc:_logoSrc,
     mjxDefs:_mjxDefs,
     latexToOmml:latexToOmml,

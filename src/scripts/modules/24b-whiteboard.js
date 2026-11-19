@@ -44,6 +44,7 @@
        ══════════════════════════════════════════════════════════════════════════ */
     wbActive: false,
     wbMode: 'pen',            // 'pen' | 'highlighter' | 'eraser'
+    wbBgMode: 'none',         // 'none' | 'grid' | 'numberline'
     // Pen and highlighter keep their own separate "last color used" so
     // switching tools never loses what you had selected on the other one —
     // a teacher writing in navy pen, then flicking to the highlighter,
@@ -138,6 +139,17 @@
 
       overlay.addEventListener('pointermove', function(e) {
         if (!drawing) return;
+        if (e.shiftKey && self.wbMode !== 'eraser' && activeStroke && activeStroke.pts.length >= 1) {
+          var p0s = activeStroke.pts[0];
+          var rawPt = _wbLocalXY(e);
+          var snapped = Math.abs(rawPt.x - p0s.x) >= Math.abs(rawPt.y - p0s.y)
+            ? { x: rawPt.x, y: p0s.y, w: activeStroke.size || 3 }
+            : { x: p0s.x, y: rawPt.y, w: activeStroke.size || 3 };
+          activeStroke.pts = [p0s, snapped];
+          self._wbRedrawStrokes();
+          self._applyStrokeStyle(ctx);
+          return;
+        }
         var pts = (typeof e.getCoalescedEvents === 'function' && e.getCoalescedEvents()) || null;
         if (!pts || !pts.length) pts = [e];
         for (var i = 0; i < pts.length; i++) {
@@ -162,6 +174,7 @@
         try { if (e && e.pointerId != null) overlay.releasePointerCapture(e.pointerId); } catch (err) {}
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 1;
+        if (self.wbMode === 'eraser' && self.wbBgMode !== 'none') self._wbRedrawStrokes();
       }
       overlay.addEventListener('pointerup', stopStroke);
       overlay.addEventListener('pointercancel', stopStroke);
@@ -314,6 +327,69 @@
       }
       ctx.globalCompositeOperation = 'source-over';
       ctx.globalAlpha = 1;
+      if (this.wbBgMode && this.wbBgMode !== 'none') {
+        this._wbDrawBackdrop(ctx, entry._cssW || entry.canvas.width, entry._cssH || entry.canvas.height);
+      }
+    },
+
+    _wbDrawBackdrop: function(ctx, w, h) {
+      if (!w || !h) return;
+      var dark = !!(document.body && document.body.classList.contains('dark'));
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.globalAlpha = 1;
+      if (this.wbBgMode === 'grid') {
+        var step = 32;
+        var cx = Math.round(w / 2), cy = Math.round(h / 2);
+        ctx.strokeStyle = dark ? 'rgba(148,163,184,0.18)' : 'rgba(100,116,139,0.22)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        for (var x = cx % step; x <= w; x += step) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
+        for (var y = cy % step; y <= h; y += step) { ctx.moveTo(0, y); ctx.lineTo(w, y); }
+        ctx.stroke();
+        ctx.strokeStyle = dark ? 'rgba(129,140,248,0.55)' : 'rgba(79,70,229,0.45)';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(0, cy); ctx.lineTo(w, cy);
+        ctx.moveTo(cx, 0); ctx.lineTo(cx, h);
+        ctx.stroke();
+      } else if (this.wbBgMode === 'numberline') {
+        var pad = Math.min(48, Math.round(w * 0.08));
+        var midY = Math.round(h * 0.5);
+        var spanW = Math.max(120, w - 2 * pad);
+        var lineCol = dark ? 'rgba(226,232,240,0.8)' : 'rgba(30,41,59,0.75)';
+        ctx.strokeStyle = lineCol;
+        ctx.fillStyle = lineCol;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(pad - 12, midY); ctx.lineTo(w - pad + 12, midY);
+        ctx.stroke();
+        // Arrowheads
+        ctx.beginPath();
+        ctx.moveTo(pad - 14, midY); ctx.lineTo(pad - 4, midY - 5); ctx.lineTo(pad - 4, midY + 5); ctx.closePath(); ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(w - pad + 14, midY); ctx.lineTo(w - pad + 4, midY - 5); ctx.lineTo(w - pad + 4, midY + 5); ctx.closePath(); ctx.fill();
+        ctx.font = '600 12px system-ui,sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        for (var n = -10; n <= 10; n++) {
+          var tx = pad + ((n + 10) / 20) * spanW;
+          var isZero = n === 0;
+          ctx.lineWidth = isZero ? 2.2 : 1.3;
+          ctx.beginPath();
+          ctx.moveTo(tx, midY - (isZero ? 11 : 7));
+          ctx.lineTo(tx, midY + (isZero ? 11 : 7));
+          ctx.stroke();
+          if (w >= 480 || n % 2 === 0) ctx.fillText(String(n), tx, midY + 13);
+        }
+      }
+      ctx.restore();
+    },
+
+    setWBBgMode: function(mode) {
+      this.wbBgMode = (this.wbBgMode === mode) ? 'none' : mode;
+      this._wbRedrawStrokes();
+      this._updateToolbarState();
     },
 
     _applyStrokeStyle: function(ctx) {
@@ -442,22 +518,36 @@
       var hasUndo = !!(this._wbOverlay && this._wbOverlay.undo.length > 0);
       var undoBtn = document.getElementById('wbUndoBtn');
       if (undoBtn) undoBtn.disabled = !hasUndo;
+      var gridBtn = document.getElementById('wbGridBtn');
+      if (gridBtn) {
+        var gOn = this.wbBgMode === 'grid';
+        gridBtn.classList.toggle('on', gOn);
+        gridBtn.setAttribute('aria-pressed', gOn ? 'true' : 'false');
+      }
+      var nlBtn = document.getElementById('wbNumLineBtn');
+      if (nlBtn) {
+        var nlOn = this.wbBgMode === 'numberline';
+        nlBtn.classList.toggle('on', nlOn);
+        nlBtn.setAttribute('aria-pressed', nlOn ? 'true' : 'false');
+      }
       this._updateSizeDot();
     },
 
     _ensureToolbar: function() {
       if (document.getElementById('wbToolbar')) return;
       var self = this;
+      var ar = !!(document.documentElement && document.documentElement.lang === 'ar');
       var bar = document.createElement('div');
       bar.id = 'wbToolbar';
       bar.className = 'wb-toolbar';
+      if (ar) bar.dir = 'rtl';
       bar.setAttribute('role', 'toolbar');
-      bar.setAttribute('aria-label', 'Whiteboard tools');
+      bar.setAttribute('aria-label', ar ? 'أدوات السبورة' : 'Whiteboard tools');
 
       // Drag handle
       var dragHandle = document.createElement('div');
       dragHandle.className = 'wb-drag-handle';
-      dragHandle.title = 'Drag toolbar';
+      dragHandle.title = ar ? 'سحب شريط الأدوات' : 'Drag toolbar';
       dragHandle.textContent = '⋮⋮';
       bar.appendChild(dragHandle);
 
@@ -496,7 +586,7 @@
 
       var modeGroup = document.createElement('div');
       modeGroup.className = 'wb-group';
-      [['pen', '✏️', 'Pen'], ['highlighter', '🖍️', 'Highlighter'], ['eraser', '🧽', 'Eraser']].forEach(function(m) {
+      [['pen', '✏️', ar ? 'قلم (اضغط Shift لخط مستقيم)' : 'Pen (hold Shift for straight lines)'], ['highlighter', '🖍️', ar ? 'تظليل' : 'Highlighter'], ['eraser', '🧽', ar ? 'ممحاة' : 'Eraser']].forEach(function(m) {
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'wb-mode-btn' + (m[0] === self.wbMode ? ' on' : '');
@@ -526,31 +616,50 @@
       slider.min = '1'; slider.max = '10'; slider.step = '1';
       slider.value = String(this.wbSize);
       slider.className = 'wb-size-input';
-      slider.setAttribute('aria-label', 'Pen size');
+      slider.setAttribute('aria-label', ar ? 'سُمك القلم' : 'Pen size');
       slider.oninput = function() { self.setWBSize(parseInt(this.value, 10)); };
       sizeGroup.appendChild(dot);
       sizeGroup.appendChild(slider);
       bar.appendChild(sizeGroup);
       bar.appendChild(sep());
 
+      var bgGroup = document.createElement('div');
+      bgGroup.className = 'wb-group';
+      var gridBtn = document.createElement('button');
+      gridBtn.type = 'button'; gridBtn.className = 'wb-mode-btn wb-bg-btn'; gridBtn.id = 'wbGridBtn';
+      gridBtn.textContent = ar ? '⊞ شبكة' : '⊞ Grid';
+      gridBtn.title = ar ? 'إظهار/إخفاء شبكة الإحداثيات' : 'Toggle coordinate grid';
+      gridBtn.setAttribute('aria-pressed', 'false');
+      gridBtn.onclick = function() { self.setWBBgMode('grid'); };
+      var nlBtn = document.createElement('button');
+      nlBtn.type = 'button'; nlBtn.className = 'wb-mode-btn wb-bg-btn'; nlBtn.id = 'wbNumLineBtn';
+      nlBtn.textContent = ar ? '↔ خط الأعداد' : '↔ Line';
+      nlBtn.title = ar ? 'إظهار/إخفاء خط الأعداد' : 'Toggle number line';
+      nlBtn.setAttribute('aria-pressed', 'false');
+      nlBtn.onclick = function() { self.setWBBgMode('numberline'); };
+      bgGroup.appendChild(gridBtn);
+      bgGroup.appendChild(nlBtn);
+      bar.appendChild(bgGroup);
+      bar.appendChild(sep());
+
       var actionGroup = document.createElement('div');
       actionGroup.className = 'wb-group';
       var undoBtn = document.createElement('button');
       undoBtn.type = 'button'; undoBtn.className = 'wb-undo-btn'; undoBtn.id = 'wbUndoBtn';
-      undoBtn.textContent = '↺ Undo';
+      undoBtn.textContent = ar ? '↺ تراجع' : '↺ Undo';
       undoBtn.disabled = true;
       undoBtn.onclick = function() { self.undoLast(); };
       var clearBtn = document.createElement('button');
       clearBtn.type = 'button'; clearBtn.className = 'wb-clear-btn'; clearBtn.id = 'wbClearBtn';
-      clearBtn.textContent = '🧹 Clear';
-      clearBtn.title = 'Sweep the board clean';
+      clearBtn.textContent = ar ? '🧹 مسح' : '🧹 Clear';
+      clearBtn.title = ar ? 'مسح السبورة بالكامل' : 'Sweep the board clean';
       clearBtn.onclick = function() { self.clearAll(); };
       var closeBtn = document.createElement('button');
       closeBtn.type = 'button';
       closeBtn.className = 'wb-close-btn';
       closeBtn.id = 'wbCloseBtn';
-      closeBtn.textContent = '✕ Close';
-      closeBtn.title = 'Close scratchpad (Esc)';
+      closeBtn.textContent = ar ? '✕ إغلاق' : '✕ Close';
+      closeBtn.title = ar ? 'إغلاق المسودة (Esc)' : 'Close scratchpad (Esc)';
       closeBtn.onclick = function() { self.toggleWhiteboard(); };
       actionGroup.appendChild(undoBtn);
       actionGroup.appendChild(clearBtn);

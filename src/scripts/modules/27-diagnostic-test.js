@@ -16,7 +16,7 @@
  *   - "Export / Print Report (PDF)" & direct 1:1 WhatsApp tutoring share
  *   - Full worked solutions review
  */
-(function() {
+(function () {
   'use strict';
 
   window._diagnosticLoaded = true;
@@ -267,14 +267,14 @@
     if (/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)) return '\\(' + s + '\\)';
     if (/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return '\\(' + s + '\\)';
     var fracMatch = /^([-+]?)\s*([0-9a-zA-Z]+)\s*\/\s*([0-9a-zA-Z]+)$/.exec(s);
-    if (fracMatch) return '\\(' + (fracMatch[1]||'') + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
+    if (fracMatch) return '\\(' + (fracMatch[1] || '') + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
     if (/^\(\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*\)$/.test(s)) return '\\(' + s + '\\)';
     if (/^[(\[]\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*[)\]]$/.test(s)) return '\\(' + s + '\\)';
     if (/^[-+]?\d*[a-zA-Z]$/.test(s)) return '\\(' + s + '\\)';
-    var mathFns = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, log:1, ln:1, lim:1, exp:1, det:1, deg:1, rad:1};
+    var mathFns = { sin: 1, cos: 1, tan: 1, sec: 1, csc: 1, cot: 1, log: 1, ln: 1, lim: 1, exp: 1, det: 1, deg: 1, rad: 1 };
     var words = s.match(/[a-zA-Z]{2,}/g) || [];
-    if (words.some(function(w){ return !mathFns[w.toLowerCase()]; })){
-      if (/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
+    if (words.some(function (w) { return !mathFns[w.toLowerCase()]; })) {
+      if (/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)) {
         return '\\(' + s.replace(/\b(or|and)\b/g, '\\text{ $1 }') + '\\)';
       }
       return s;
@@ -288,7 +288,7 @@
     s = String(s);
     s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
     s = s.replace(/\\\$/g, '\uE000');
-    s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
+    s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function (m, inner) {
       if (/^\d[\d,]*(?:\.\d+)?(?:$|\s*[,.;:!?)%]|\s+[a-zA-Z\u0600-\u06FF]{2,})/.test(inner)) return m;
       var stripped = inner.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, '');
       if (/[a-zA-Z]{3,}\s+[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped) || /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(stripped)) return m;
@@ -335,10 +335,10 @@
     if (!f) return '';
     if (typeof f === 'string') return '<div class="cs-diag-figure">' + f + '</div>';
     if (f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)) {
-      var hdrs = (Array.isArray(f.headers) ? f.headers : []).map(function(th) { return '<th>' + formatMath(th != null ? String(th) : '') + '</th>'; }).join('');
+      var hdrs = (Array.isArray(f.headers) ? f.headers : []).map(function (th) { return '<th>' + formatMath(th != null ? String(th) : '') + '</th>'; }).join('');
       var rawRows = Array.isArray(f.rows) ? f.rows : (Array.isArray(f.data) ? f.data : []);
-      var rws = rawRows.map(function(r) {
-        return '<tr>' + (Array.isArray(r) ? r.map(function(c) { return '<td>' + formatMath(c != null ? String(c) : '') + '</td>'; }).join('') : '<td>' + formatMath(r != null ? String(r) : '') + '</td>') + '</tr>';
+      var rws = rawRows.map(function (r) {
+        return '<tr>' + (Array.isArray(r) ? r.map(function (c) { return '<td>' + formatMath(c != null ? String(c) : '') + '</td>'; }).join('') : '<td>' + formatMath(r != null ? String(r) : '') + '</td>') + '</tr>';
       }).join('');
       return '<div class="cs-diag-figure"><table class="exam-table">' + (hdrs ? '<thead><tr>' + hdrs + '</tr></thead>' : '') + '<tbody>' + rws + '</tbody></table></div>';
     }
@@ -449,9 +449,9 @@
       if (!val || !target) return false;
       if (val === target) return true;
       if (window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function') {
-        try { if (window.ClipSATAnswerCheck.equivalent(val, target)) return true; } catch (_e) {}
+        try { if (window.ClipSATAnswerCheck.equivalent(val, target)) return true; } catch (_e) { }
       }
-      var toNum = function(s) {
+      var toNum = function (s) {
         if (!s) return NaN;
         if (s.indexOf('/') !== -1) {
           var p = s.split('/');
@@ -485,20 +485,20 @@
 
     // Domain exposure control: prioritize least-exposed domains
     var domainCounts = {};
-    state.domains.forEach(function(d) { domainCounts[d] = 0; });
-    state.questions.forEach(function(q) {
+    state.domains.forEach(function (d) { domainCounts[d] = 0; });
+    state.questions.forEach(function (q) {
       var d = q.domain || 'General Mathematics';
       domainCounts[d] = (domainCounts[d] || 0) + 1;
     });
 
     var minCount = Infinity;
-    state.domains.forEach(function(d) {
+    state.domains.forEach(function (d) {
       var c = domainCounts[d] || 0;
       if (c < minCount) minCount = c;
     });
 
     // Candidate domains within +1 exposure of minimum
-    var eligibleDomains = state.domains.filter(function(d) {
+    var eligibleDomains = state.domains.filter(function (d) {
       return (domainCounts[d] || 0) <= minCount;
     });
     if (!eligibleDomains.length) eligibleDomains = state.domains.slice();
@@ -600,8 +600,8 @@
         + 'style="width:100%;max-width:260px;padding:10px 12px;border:2px solid var(--border,#94a3b8);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem;font-weight:700">'
         + '</div>';
     } else {
-      var LTR = isArUi ? ['أ','ب','ج','د','هـ'] : ['A','B','C','D','E'];
-      responseAreaHtml = '<div class="cs-diag-choices">' + qChoices.map(function(choice, cIdx) {
+      var LTR = isArUi ? ['أ', 'ب', 'ج', 'د', 'هـ'] : ['A', 'B', 'C', 'D', 'E'];
+      responseAreaHtml = '<div class="cs-diag-choices">' + qChoices.map(function (choice, cIdx) {
         var letter = LTR[cIdx] || String.fromCharCode(65 + cIdx);
         var isSelected = userAns === cIdx;
         return '<button type="button" class="cs-diag-choice' + (isSelected ? ' selected' : '') + '" onclick="window.selectDiagChoice(' + cIdx + ')">'
@@ -648,7 +648,7 @@
     typesetMath(overlay);
     var closeBtn = overlay.querySelector('.cs-diag-close');
     if (closeBtn && state.currentIdx === 0 && !overlay.contains(document.activeElement)) {
-      try { closeBtn.focus(); } catch(_){}
+      try { closeBtn.focus(); } catch (_) { }
     }
   }
 
@@ -705,7 +705,7 @@
     var outcomesArr = [];
     var domainStats = {};
 
-    state.questions.forEach(function(q, i) {
+    state.questions.forEach(function (q, i) {
       var d = q.domain || 'General Mathematics';
       if (!domainStats[d]) domainStats[d] = { correct: 0, total: 0 };
       domainStats[d].total++;
@@ -745,7 +745,38 @@
         projectedScore: projScore,
         domains: domainStats
       }));
-    } catch(e) {}
+    } catch (e) { }
+
+    // Unified Mastery Spine: award XP + milestone + sync wrong items into ML once per session
+    if (!state._masteryRecorded) {
+      state._masteryRecorded = true;
+      if (window.CSGamify && typeof window.CSGamify.addXP === 'function') {
+        window.CSGamify.addXP(20 + correct * 5);
+        if (typeof window.CSGamify.checkMilestones === 'function') {
+          window.CSGamify.checkMilestones('first_diag');
+        }
+      }
+      if (window.ML && typeof window.ML.add === 'function') {
+        state.questions.forEach(function(q, qi) {
+          if (outcomesArr[qi] || !q) return;
+          var ch = Array.isArray(q.choices) ? q.choices : [];
+          var ua = state.userAnswers[qi];
+          var wrongStr = (typeof ua === 'number' && ch[ua] != null) ? String(ch[ua]) : (ua != null ? String(ua) : 'Skipped');
+          var rightStr = (typeof q.answer === 'number' && ch[q.answer] != null) ? String(ch[q.answer]) : String(q.sprAnswer || q.finalAnswer || q.answer || '');
+          window.ML.add({
+            id: q.id || ('diag-' + state.trackId + '-' + qi),
+            viewId: state.trackId,
+            q: String(q.text || q.q || 'Diagnostic Question').slice(0, 300),
+            wrong: wrongStr,
+            right: rightStr,
+            domain: q.domain || 'Diagnostic',
+            src: 'diagnostic',
+            sol: q.sol || q.exp || '',
+            choices: ch
+          });
+        });
+      }
+    }
 
     // Track aggregate analytics + anonymized empirical item calibration telemetry
     if (window.ClipSATAnalytics) {
@@ -757,7 +788,7 @@
         theta: eap.theta,
         sem: eap.sem
       });
-      state.questions.forEach(function(q, qi) {
+      state.questions.forEach(function (q, qi) {
         if (q && q.id) {
           var dwell = (state.dwellMs && state.dwellMs[qi]) || 0;
           window.ClipSATAnalytics.track('item_calibration', {
@@ -775,16 +806,16 @@
     }
 
     // Identify weak domains
-    var weakDomains = Object.keys(domainStats).map(function(k) {
+    var weakDomains = Object.keys(domainStats).map(function (k) {
       var ds = domainStats[k];
       return { domain: k, correct: ds.correct, total: ds.total, pct: Math.round((ds.correct / ds.total) * 100) };
-    }).sort(function(a, b) { return a.pct - b.pct; });
+    }).sort(function (a, b) { return a.pct - b.pct; });
 
-    var topWeak = weakDomains.filter(function(d) { return d.pct < 75; }).slice(0, 3);
+    var topWeak = weakDomains.filter(function (d) { return d.pct < 75; }).slice(0, 3);
     if (!topWeak.length && weakDomains.length) topWeak = [weakDomains[0]];
 
     // WhatsApp Message
-    var weakSummaryStr = topWeak.map(function(d) { return d.domain + ' (' + d.pct + '%)'; }).join(', ');
+    var weakSummaryStr = topWeak.map(function (d) { return d.domain + ' (' + d.pct + '%)'; }).join(', ');
     var waMsg = isArabic
       ? ('مرحباً أستاذ محمد، أتممت تقييم ClipSAT التشخيصي لمادة ' + trackLabel + '.\n'
         + 'النتيجة: ' + correct + '/' + total + ' (' + catPct + '%)\n'
@@ -800,7 +831,7 @@
     var waUrl = 'https://wa.me/966597688647?text=' + encodeURIComponent(waMsg);
 
     // Domain breakdown bars
-    var domainBarsHtml = Object.keys(domainStats).map(function(d) {
+    var domainBarsHtml = Object.keys(domainStats).map(function (d) {
       var st = domainStats[d];
       var dpct = Math.round((st.correct / st.total) * 100);
       var barClass = dpct >= 75 ? 'high' : (dpct >= 50 ? 'med' : 'low');
@@ -866,7 +897,7 @@
         }
       ];
 
-      planItemsHtml = items.map(function(it) {
+      planItemsHtml = items.map(function (it) {
         return '<div class="cs-diag-schedule-item">'
           + '<span class="cs-diag-schedule-day">' + it.day + '</span>'
           + '<span class="cs-diag-schedule-task">' + it.task + '</span>'
@@ -897,7 +928,7 @@
         }
       ];
 
-      planItemsHtml = wItems.map(function(it) {
+      planItemsHtml = wItems.map(function (it) {
         return '<div class="cs-diag-schedule-item">'
           + '<span class="cs-diag-schedule-day">' + it.day + '</span>'
           + '<span class="cs-diag-schedule-task">' + it.task + '</span>'
@@ -907,7 +938,7 @@
     }
 
     // Solutions review accordion (supports both MCQ and SPR items)
-    var solutionsHtml = state.questions.map(function(q, i) {
+    var solutionsHtml = state.questions.map(function (q, i) {
       var userAns = state.userAnswers[i];
       var isCorrect = checkDiagAnswer(q, userAns);
       var userDisp = '', targetDisp = '';
@@ -963,11 +994,11 @@
       + '    </div>'
       + '    <div class="cs-diag-score-text">'
       + '      <h3>' + (isArabic
-                ? (catPct >= 80 ? 'إتقان ممتاز وتمكن أكاديمي!' : (catPct >= 60 ? 'أساس صلب مع فرص تميز' : 'فرصة تدريبية واعدة للتحسن'))
-                : (catPct >= 80 ? 'Exceptional Mastery!' : (catPct >= 60 ? 'Solid Foundation' : 'High Growth Potential'))) + '</h3>'
+        ? (catPct >= 80 ? 'إتقان ممتاز وتمكن أكاديمي!' : (catPct >= 60 ? 'أساس صلب مع فرص تميز' : 'فرصة تدريبية واعدة للتحسن'))
+        : (catPct >= 80 ? 'Exceptional Mastery!' : (catPct >= 60 ? 'Solid Foundation' : 'High Growth Potential'))) + '</h3>'
       + '      <p>' + (isArabic
-                ? ('التقدير المتوقع: <strong>' + projScore + '</strong>. ركز على المجالات ذات الأولوية الموضحة أدناه لضمان تحقيق أعلى تصنيف.')
-                : ('Projected Target: <strong>' + projScore + '</strong>. Targeting the focus areas below will yield the fastest score elevation.'))
+        ? ('التقدير المتوقع: <strong>' + projScore + '</strong>. ركز على المجالات ذات الأولوية الموضحة أدناه لضمان تحقيق أعلى تصنيف.')
+        : ('Projected Target: <strong>' + projScore + '</strong>. Targeting the focus areas below will yield the fastest score elevation.'))
       + '      </p>'
       + '    </div>'
       + '  </div>'
@@ -984,8 +1015,8 @@
       + '      <div class="cs-diag-wa-badge">1:1 Mentorship · الأستاذ محمد عبد الله</div>'
       + '      <h4>' + (isArabic ? 'مناقشة خطتك الدراسية مباشرة مع الأستاذ محمد' : 'Discuss Your Custom Prep Plan with Mr. Mohamed') + '</h4>'
       + '      <p>' + (isArabic
-                ? 'هل ترغب في توجيه مخصص لرفع درجتك؟ تواصل عبر واتساب لمراجعة نقاط قوتك وخطة المذاكرة.'
-                : 'Have questions about your diagnostic breakdown? Chat with Mr. Mohamed directly on WhatsApp to get tailored study advice and recommendations.')
+        ? 'هل ترغب في توجيه مخصص لرفع درجتك؟ تواصل عبر واتساب لمراجعة نقاط قوتك وخطة المذاكرة.'
+        : 'Have questions about your diagnostic breakdown? Chat with Mr. Mohamed directly on WhatsApp to get tailored study advice and recommendations.')
       + '      </p>'
       + '    </div>'
       + '    <div style="display:flex;gap:10px;flex-wrap:wrap">'
@@ -1026,9 +1057,9 @@
           window.renderMathInElement(el, { delimiters: delimiters, throwOnError: false });
         }
         if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-          window.MathJax.typesetPromise([el]).catch(function() {});
+          window.MathJax.typesetPromise([el]).catch(function () { });
         }
-      } catch (e) {}
+      } catch (e) { }
     }
 
     _run();
@@ -1037,7 +1068,7 @@
   }
 
   // ── Public Global Diagnostic Methods ─────────────────────────────────
-  window.openDiagnosticTest = function(trackId) {
+  window.openDiagnosticTest = function (trackId) {
     trackId = trackId || window.CLIPSAT_TRACK || 'sat';
     var overlay = getOrCreateModal();
     overlay.classList.add('show');
@@ -1050,10 +1081,10 @@
       ? window.CS_loadTrackBank(trackId)
       : Promise.resolve();
     var loadFigs = (typeof window._ensureFigures === 'function')
-      ? window._ensureFigures().catch(function(){})
+      ? window._ensureFigures().catch(function () { })
       : Promise.resolve();
 
-    Promise.all([loadBank, loadFigs]).then(function() {
+    Promise.all([loadBank, loadFigs]).then(function () {
       var bank = window.fullExamBank && window.fullExamBank[trackId];
       var rawPool = (bank && bank.pool) ? bank.pool : [];
       if (!rawPool.length) {
@@ -1081,7 +1112,7 @@
       }
 
       var allDomains = Object.keys(byDomainAndDiff);
-      allDomains.forEach(function(d) {
+      allDomains.forEach(function (d) {
         byDomainAndDiff[d].easy = shuffle(byDomainAndDiff[d].easy);
         byDomainAndDiff[d].medium = shuffle(byDomainAndDiff[d].medium);
         byDomainAndDiff[d].hard = shuffle(byDomainAndDiff[d].hard);
@@ -1111,7 +1142,7 @@
 
       pickNextAdaptiveQuestion(_diagState);
       renderQuestion();
-    }).catch(function(err) {
+    }).catch(function (err) {
       overlay.innerHTML = '<div class="cs-diag-card">'
         + '<div class="cs-diag-head"><b>Error</b><button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()">✕</button></div>'
         + '<div class="cs-diag-body"><p style="color:#dc2626">Failed to load question bank: ' + escT(err.message || 'Network error') + '</p></div>'
@@ -1119,17 +1150,17 @@
     });
   };
 
-  window.closeDiagnosticTest = function() {
+  window.closeDiagnosticTest = function () {
     var overlay = document.getElementById('cs-diagnostic-overlay');
     if (overlay) overlay.classList.remove('show');
   };
 
-  window.inputDiagSpr = function(val) {
+  window.inputDiagSpr = function (val) {
     if (!_diagState) return;
     _diagState.userAnswers[_diagState.currentIdx] = String(val == null ? '' : val);
   };
 
-  window.selectDiagChoice = function(choiceIdx) {
+  window.selectDiagChoice = function (choiceIdx) {
     if (!_diagState) return;
     _diagState.userAnswers[_diagState.currentIdx] = choiceIdx;
     var overlay = document.getElementById('cs-diagnostic-overlay');
@@ -1147,7 +1178,7 @@
     }
   };
 
-  window.nextDiagQuestion = function() {
+  window.nextDiagQuestion = function () {
     if (!_diagState) return;
     var idx = _diagState.currentIdx;
     var currentQ = _diagState.questions[idx];
@@ -1180,7 +1211,7 @@
     }
   };
 
-  window.prevDiagQuestion = function() {
+  window.prevDiagQuestion = function () {
     if (!_diagState) return;
     if (_diagState.currentIdx > 0) {
       _diagState.currentIdx--;
@@ -1188,7 +1219,7 @@
     }
   };
 
-  window.finishDiagnosticTest = function() {
+  window.finishDiagnosticTest = function () {
     if (!_diagState) return;
     var idx = _diagState.currentIdx;
     var currentQ = _diagState.questions[idx];
@@ -1199,19 +1230,19 @@
     renderResults();
   };
 
-  window.setDiagReportLang = function(lang) {
+  window.setDiagReportLang = function (lang) {
     if (!_diagState) return;
     _diagState.lang = lang;
     renderResults();
   };
 
-  window.setDiagPlanTab = function(tab) {
+  window.setDiagPlanTab = function (tab) {
     if (!_diagState) return;
     _diagState.planTab = tab;
     renderResults();
   };
 
-  window.printDiagReport = function() {
+  window.printDiagReport = function () {
     window.print();
   };
 
@@ -1233,7 +1264,7 @@
   };
 
   // Video facade global click handler
-  window.playVideoFacade = function(el) {
+  window.playVideoFacade = function (el) {
     if (!el) return;
     var vid = el.getAttribute('data-video-id');
     var label = el.getAttribute('aria-label') || 'Video lesson';

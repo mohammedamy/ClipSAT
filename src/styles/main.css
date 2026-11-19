@@ -6442,6 +6442,7 @@ body.cbt-open .wb-toolbar,
   line-height: 1;
 }
 .wb-mode-btn.on { background: var(--indigo-500); border-color: var(--indigo-500); color: #fff; }
+.wb-bg-btn { width: auto; padding: 0 8px; font-size: .74rem; font-weight: 600; white-space: nowrap; }
 .wb-mode-btn:hover, .wb-clear-btn:hover, .wb-undo-btn:hover, .wb-close-btn:hover { filter: brightness(1.08); }
 .wb-size-input { width: 76px; accent-color: var(--indigo-500); cursor: pointer; }
 .wb-size-dot { border-radius: 50%; background: var(--text-1); flex-shrink: 0; transition: width .1s, height .1s; }
@@ -8331,10 +8332,18 @@ body.dark .cs-pw-step-pill.done {
   position: absolute; inset-inline-start: 9px; color: #475569; pointer-events: none; flex-shrink: 0;
 }
 .nav-tree-filter {
-  width: 100%; min-width: 0; min-height: 32px; padding: 5px 10px; padding-inline-start: 28px;
+  width: 100%; min-width: 0; min-height: 32px; padding: 5px 10px; padding-inline-start: 28px; padding-inline-end: 26px;
   font-family: var(--sans); font-size: .82rem; color: #0f172a; background: #ffffff;
   border: 1px solid #cbd5e1; border-radius: 8px;
 }
+.nav-tree-clear {
+  position: absolute; inset-inline-end: 5px; width: 20px; height: 20px; padding: 0;
+  border: none; border-radius: 50%; background: #e2e8f0; color: #334155;
+  font-size: 13px; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.nav-tree-clear[hidden] { display: none; }
+.nav-tree-clear:hover { background: #cbd5e1; color: #0f172a; }
 .nav-tree-filter::placeholder { color: #475569; opacity: 1; }
 .nav-tree-filter:focus { outline: 2px solid var(--indigo, #1e3a6e); outline-offset: 1px; border-color: var(--indigo, #1e3a6e); }
 
@@ -8471,8 +8480,11 @@ body.hc .nav-tree-leaf[aria-current="page"] { outline: 2px solid currentColor; }
 @media print { .nav-tree-wrap, .nav-tree-panel, .nav-tree-mobile { display: none !important; } }
 
 /* ── Phase 0 & Phase 4 UI Hardening: CBT focus lock, Arabic RTL typography, Dark Mode tokens, Mobile Dock & Print KaTeX ── */
+body.cbt-open #chatFab,
+body.cbt-open #chatPanel,
 body.cbt-open #chat-fab,
 body.cbt-open #chat-panel { display: none !important; }
+.cbt-hl { background: #fef08a; color: #0f172a; padding: 0 2px; border-radius: 2px; }
 body.dark {
   --fg: #F1F5F9;
   --text: #F1F5F9;

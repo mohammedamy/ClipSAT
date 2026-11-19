@@ -759,6 +759,7 @@ const combinedShellSrc = [
         +   '<div class="nav-tree-search-wrap">'
         +     '<svg class="nav-tree-search-ico" width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>'
         +     '<input id="' + filterId + '" type="search" class="nav-tree-filter" autocomplete="off" value="' + _escHtml(state.query) + '" placeholder="' + _escHtml(filterPh) + '">'
+        +     '<button type="button" class="nav-tree-clear" aria-label="' + _escHtml(ar ? 'مسح التصفية' : 'Clear filter') + '"' + (state.query ? '' : ' hidden') + '>&times;</button>'
         +   '</div>'
         +   '<button type="button" class="nav-tree-expall">' + _escHtml(expText) + '</button>'
         + '</div>'
@@ -932,10 +933,22 @@ const combinedShellSrc = [
         var flt = e.target.closest && e.target.closest('.nav-tree-filter');
         if (!flt) return;
         state.query = flt.value || '';
+        var clr = flt.parentElement && flt.parentElement.querySelector('.nav-tree-clear');
+        if (clr) clr.hidden = !state.query;
         renderTreeBody(rootEl.querySelector('.nav-tree-scroll'));
       });
 
       rootEl.addEventListener('click', function(e){
+        var clrBtn = e.target.closest && e.target.closest('.nav-tree-clear');
+        if (clrBtn) {
+          e.stopPropagation();
+          state.query = '';
+          var fltIn = clrBtn.parentElement && clrBtn.parentElement.querySelector('.nav-tree-filter');
+          if (fltIn) { fltIn.value = ''; fltIn.focus(); }
+          clrBtn.hidden = true;
+          renderTreeBody(rootEl.querySelector('.nav-tree-scroll'));
+          return;
+        }
         var expAll = e.target.closest && e.target.closest('.nav-tree-expall');
         if (expAll) {
           e.stopPropagation();

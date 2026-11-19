@@ -10,7 +10,7 @@
  * those instead).
  *
  * Pipeline per question: render (hidden DOM + KaTeX auto-render, exactly
- * like the rest of the site) → rasterize (html2canvas, lazy-loaded) →
+ * like the rest of the site) → native SVG <foreignObject>/Canvas rasterizer →
  * upload (Drive multipart upload) → make link-viewable (Drive permission)
  * → hand back the uploaded file's thumbnailLink (Google's documented,
  * reliably-fetchable URL for this — see imageFetchUrl()'s comment for why
@@ -35,20 +35,12 @@
 (function () {
   'use strict';
 
-  var H2C_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
   var DRIVE_UPLOAD_API = 'https://www.googleapis.com/upload/drive/v3/files';
   var DRIVE_API = 'https://www.googleapis.com/drive/v3/files';
 
   // \( \)/\[ \] match the site's own KaTeX auto-render config (build.js's
-  // baseNjk) for bank-data-sourced quizzes. $ $/$$ $$ are ALSO required —
-  // discovered live: worksheet-sourced content (tools/worksheet_gen/topics/
-  // — the PDF generator's own math convention, matplotlib-mathtext style,
-  // completely separate from bank-data's \(\) convention) uses bare $ $
-  // exclusively. Without this, KaTeX's auto-render never found the math in
-  // worksheet questions at all, and html2canvas just rasterized the raw,
-  // un-typeset "$\dfrac{7}{8}\div\dfrac{7}{4}$" source as the "image." $$
-  // must be listed before single $ so a display-math $$...$$ span isn't
-  // mis-split by the single-$ matcher first.
+  // baseNjk) for bank-data-sourced quizzes. $ $/$$ $$ are ALSO required for
+  // worksheet-sourced math conventions; $$ is listed before single $.
   var KATEX_OPTS = {
     delimiters: [
       { left: '\\(', right: '\\)', display: false },
@@ -58,20 +50,6 @@
     ],
     throwOnError: false
   };
-
-  var _h2cReady = null;
-  function loadHtml2Canvas() {
-    if (_h2cReady) return _h2cReady;
-    _h2cReady = new Promise(function (resolve, reject) {
-      if (window.html2canvas) { resolve(); return; }
-      var s = document.createElement('script');
-      s.src = H2C_SRC;
-      s.onload = function () { resolve(); };
-      s.onerror = function () { reject(new Error('Failed to load the image-rendering library.')); };
-      document.head.appendChild(s);
-    });
-    return _h2cReady;
-  }
 
   function escHtml(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -462,11 +440,11 @@
       // KaTeX-rendered stem above the native SVG diagram into a single high-DPI PNG!
       if (extractedSvg) {
         return renderSvgDirect(extractedSvg, SCALE).then(function (svgRes) {
-          if (!svgRes) return renderWithHtml2Canvas(stemText, figHtml);
+          if (!svgRes) return renderHtmlNative(stemText, figHtml);
           if (!stemText || (!hasMath(stemText) && !/<table\b/i.test(stemText)) || typeof window === 'undefined') {
             return svgRes;
           }
-          return renderWithHtml2Canvas(stemText, '').then(function (txtRes) {
+          return renderHtmlNative(stemText, '').then(function (txtRes) {
             if (!txtRes || !txtRes.canvas || !svgRes.canvas) return svgRes;
             try {
               var gap = Math.round(14 * SCALE);
@@ -498,122 +476,137 @@
         });
       }
 
-      return renderWithHtml2Canvas(stemText, figHtml);
+      return renderHtmlNative(stemText, figHtml);
     });
   }
 
-  function renderWithHtml2Canvas(text, figHtml) {
-    return loadHtml2Canvas().then(function () {
-      return new Promise(function (resolve) {
-        var container = document.createElement('div');
-        // Place in off-screen viewport with valid 0,0 origins so html2canvas computes perfect matrices
-        container.style.cssText = 'position:fixed;left:0;top:0;z-index:-99999;pointer-events:none;background:#ffffff;'
-          + 'display:inline-block;padding:16px 20px;max-width:640px;box-sizing:border-box;'
-          + 'font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.5;color:#111;';
-
-        container.style.setProperty('--fig-indigo', '#1E3A6E');
-        container.style.setProperty('--fig-indigo-2', '#2B5BA8');
-        container.style.setProperty('--fig-indigo-soft', 'rgba(30,58,110,0.08)');
-        container.style.setProperty('--fig-amber', '#C8902A');
-        container.style.setProperty('--fig-amber-text', '#8A6017');
-        container.style.setProperty('--fig-amber-soft', 'rgba(200,144,42,0.16)');
-        container.style.setProperty('--fig-teal', '#0e9f8f');
-        container.style.setProperty('--fig-ink', '#0E1726');
-        container.style.setProperty('--fig-muted', '#5a6577');
-        container.style.setProperty('--fig-grid', '#c9d4e8');
-        container.style.setProperty('--fig-border', '#dde4f0');
-        container.style.setProperty('--fig-bg', '#ffffff');
-        container.style.setProperty('--paper', '#ffffff');
-
-        var cleanText = extractLatexFromKatexHtml(text);
-        var isArabic = /[\u0600-\u06FF]/.test(String(cleanText || ''));
-
-        var styles = '<style>'
-          + '.exam-table, .qiyas-qc-box { border-collapse: collapse; margin: 8px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; border: 1px solid #999; }'
-          + '.exam-table th, .exam-table td, .qiyas-qc-box th, .qiyas-qc-box td { border: 1px solid #999; padding: 6px 12px; text-align: center; }'
-          + '.exam-table th, .qiyas-qc-box th { background: #e8edf8; color: #1a1a2e; font-weight: bold; }'
-          + '.clipsat-fig-wrap { display: block; margin: 10px auto 0; text-align: center; width: 100%; }'
-          + '.clipsat-fig-wrap img, .clipsat-fig-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }'
-          + '</style>';
-
-        var inner = '';
-        if (cleanText) {
-          var hasTableInText = /<table\b/i.test(cleanText);
-          var autoMath = window.CSAutoMath || function (s) { return s; };
-          var processedText = hasTableInText ? cleanText : autoMath(cleanText);
-          var wrapped = (!hasTableInText && hasMath(processedText) && !/\\\(|\\\[|\$/.test(processedText)) ? '\\(' + processedText + '\\)' : processedText;
-          wrapped = wrapped.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
-          wrapped = wrapped.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, innerM){
-            if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(innerM)) return m;
-            return '\\(' + innerM + '\\)';
-          });
-          var textStyle = 'margin-bottom:' + (figHtml ? '14px;' : '0;')
-            + (isArabic ? 'direction:rtl;text-align:right;font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;' : 'text-align:left;');
-          var safeStemHtml = hasTableInText ? wrapped : escHtml(wrapped).replace(/\n/g, '<br>');
-          inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + safeStemHtml + '</div>';
+  function _fallbackPlainCanvas(plainText, figHtml, isArabic) {
+    return new Promise(function (resolve) {
+      try {
+        var W = 600, padX = 24, padY = 20, lineH = 30;
+        var clean = String(plainText || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+        var words = clean ? clean.split(' ') : [];
+        var lines = [], cur = '';
+        for (var i = 0; i < words.length; i++) {
+          var next = cur ? (cur + ' ' + words[i]) : words[i];
+          if (next.length > 48 && cur) { lines.push(cur); cur = words[i]; }
+          else cur = next;
         }
-
-        if (figHtml) {
-          var cleanFigHtml = figHtml;
-          var extracted = extractSvg(figHtml);
-          if (extracted) {
-            cleanFigHtml = sanitizeSvg(extracted);
-          }
-          inner += '<div class="clipsat-fig-wrap">' + cleanFigHtml + '</div>';
+        if (cur) lines.push(cur);
+        if (!lines.length) lines.push(figHtml ? 'ClipSAT Diagram' : 'Mathematics Question');
+        var H = Math.max(80, padY * 2 + lines.length * lineH);
+        var canvas = document.createElement('canvas');
+        canvas.width = W * SCALE;
+        canvas.height = H * SCALE;
+        var ctx = canvas.getContext('2d');
+        ctx.scale(SCALE, SCALE);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#0e1726';
+        ctx.font = '20px Georgia, "Times New Roman", serif';
+        ctx.textAlign = isArabic ? 'right' : 'left';
+        var tx = isArabic ? (W - padX) : padX;
+        for (var li = 0; li < lines.length; li++) {
+          ctx.fillText(lines[li], tx, padY + 22 + li * lineH, W - padX * 2);
         }
+        canvas.toBlob(function (blob) {
+          resolve(blob ? { blob: blob, width: W, canvas: canvas } : null);
+        }, 'image/png');
+      } catch (e) {
+        resolve(null);
+      }
+    });
+  }
 
-        container.innerHTML = styles + inner;
-        document.body.appendChild(container);
+  function renderHtmlNative(text, figHtml) {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return Promise.resolve(null);
+    return new Promise(function (resolve) {
+      var container = document.createElement('div');
+      container.style.cssText = 'position:fixed;left:0;top:0;z-index:-99999;pointer-events:none;background:#ffffff;'
+        + 'display:inline-block;padding:16px 20px;max-width:640px;box-sizing:border-box;'
+        + 'font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.5;color:#111;';
 
-        function cleanup() { if (container.parentNode) container.parentNode.removeChild(container); }
+      var cleanText = extractLatexFromKatexHtml(text);
+      var isArabic = /[\u0600-\u06FF]/.test(String(cleanText || ''));
 
-        try {
-          if (window.renderMathInElement) window.renderMathInElement(container, KATEX_OPTS);
-        } catch (e) {
-          warn('KaTeX render threw: ' + e.message, text);
-        }
+      var styles = '<style>'
+        + '.exam-table, .qiyas-qc-box { border-collapse: collapse; margin: 8px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; border: 1px solid #999; }'
+        + '.exam-table th, .exam-table td, .qiyas-qc-box th, .qiyas-qc-box td { border: 1px solid #999; padding: 6px 12px; text-align: center; }'
+        + '.exam-table th, .qiyas-qc-box th { background: #e8edf8; color: #1a1a2e; font-weight: bold; }'
+        + '.clipsat-fig-wrap { display: block; margin: 10px auto 0; text-align: center; width: 100%; }'
+        + '.clipsat-fig-wrap img, .clipsat-fig-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }'
+        + '</style>';
 
-        var go = function () {
-          window.html2canvas(container, {
-            backgroundColor: '#ffffff',
-            scale: SCALE,
-            scrollX: 0,
-            scrollY: 0,
-            windowWidth: 1024,
-            windowHeight: 768,
-            onclone: function (clonedDoc, clonedElement) {
-              clonedElement.style.position = 'static';
-              clonedElement.style.left = '0';
-              clonedElement.style.top = '0';
-              clonedElement.style.margin = '0';
-            }
-          }).then(function (canvas) {
-            canvas.toBlob(function (blob) {
-              cleanup();
-              if (!blob) { warn('canvas.toBlob produced no image (possibly a tainted/zero-size canvas)', text); resolve(null); return; }
-              resolve({ blob: blob, width: Math.round(canvas.width / SCALE), canvas: canvas });
-            }, 'image/png');
-          }).catch(function (err) { warn('html2canvas failed: ' + (err && err.message), text); cleanup(); resolve(null); });
-        };
-
-        function waitImgs() {
-          var imgs = Array.prototype.slice.call(container.querySelectorAll('img'));
-          if (!imgs.length) return Promise.resolve();
-          return Promise.all(imgs.map(function (im) {
-            if (im.complete && im.naturalWidth > 0) return Promise.resolve();
-            return new Promise(function (res) {
-              im.onload = im.onerror = res;
-              setTimeout(res, 500);
-            });
-          }));
-        }
-
-        var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-        Promise.all([fontsReady, waitImgs()]).then(function () {
-          setTimeout(go, 100);
+      var inner = '';
+      if (cleanText) {
+        var hasTableInText = /<table\b/i.test(cleanText);
+        var autoMath = window.CSAutoMath || function (s) { return s; };
+        var processedText = hasTableInText ? cleanText : autoMath(cleanText);
+        var wrapped = (!hasTableInText && hasMath(processedText) && !/\\\(|\\\[|\$/.test(processedText)) ? '\\(' + processedText + '\\)' : processedText;
+        wrapped = wrapped.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+        wrapped = wrapped.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function (m, innerM) {
+          if (/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(innerM)) return m;
+          return '\\(' + innerM + '\\)';
         });
+        var textStyle = 'margin-bottom:' + (figHtml ? '14px;' : '0;')
+          + (isArabic ? 'direction:rtl;text-align:right;font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;' : 'text-align:left;');
+        var safeStemHtml = hasTableInText ? wrapped : escHtml(wrapped).replace(/\n/g, '<br>');
+        inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + safeStemHtml + '</div>';
+      }
+
+      if (figHtml) {
+        var cleanFigHtml = figHtml;
+        var extracted = extractSvg(figHtml);
+        if (extracted) cleanFigHtml = sanitizeSvg(extracted);
+        inner += '<div class="clipsat-fig-wrap">' + cleanFigHtml + '</div>';
+      }
+
+      container.innerHTML = styles + inner;
+      document.body.appendChild(container);
+      function cleanup() { if (container.parentNode) container.parentNode.removeChild(container); }
+
+      try {
+        if (window.renderMathInElement) window.renderMathInElement(container, KATEX_OPTS);
+      } catch (e) {
+        warn('KaTeX render threw: ' + e.message, text);
+      }
+
+      var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      fontsReady.then(function () {
+        setTimeout(function () {
+          try {
+            var rect = container.getBoundingClientRect ? container.getBoundingClientRect() : { width: 600, height: 140 };
+            var w = Math.max(120, Math.ceil(rect.width || 600));
+            var h = Math.max(60, Math.ceil(rect.height || 140));
+            var xhtml = '';
+            try {
+              var clone = container.cloneNode(true);
+              clone.style.position = 'static';
+              clone.style.margin = '0';
+              clone.style.width = w + 'px';
+              clone.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+              xhtml = new XMLSerializer().serializeToString(clone);
+            } catch (_xe) {
+              xhtml = '<div xmlns="http://www.w3.org/1999/xhtml" style="background:#fff;padding:16px;font-family:Georgia,serif;font-size:22px;color:#111">' + container.innerHTML + '</div>';
+            }
+            var foSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">'
+              + '<rect width="' + w + '" height="' + h + '" fill="#ffffff"/>'
+              + '<foreignObject width="100%" height="100%">' + xhtml + '</foreignObject></svg>';
+            cleanup();
+            renderSvgDirect(foSvg, SCALE).then(function (res) {
+              if (res) { resolve(res); return; }
+              var plain = (window.ClipSATForms && window.ClipSATForms.mathToPlainText)
+                ? window.ClipSATForms.mathToPlainText(cleanText)
+                : cleanText;
+              _fallbackPlainCanvas(plain, figHtml, isArabic).then(resolve);
+            });
+          } catch (err) {
+            cleanup();
+            _fallbackPlainCanvas(cleanText, figHtml, isArabic).then(resolve);
+          }
+        }, 40);
       });
-    }).catch(function (err) { warn('Failed to load the image-rendering library: ' + (err && err.message), text); return null; });
+    });
   }
 
   function arrayBufferToBase64(buffer) {

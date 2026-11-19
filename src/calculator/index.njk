@@ -457,15 +457,16 @@ isRtl: false
   }
 
   function mountDistributions() {
+    var ar = isAr();
     container.innerHTML = [
       '<div class="calc-dist-suite">',
       '  <div class="calc-dist-nav">',
-      '    <button type="button" class="calc-dist-tab' + (activeDist === 'normCdf' ? ' active' : '') + '" data-dist="normCdf">Normal CDF</button>',
-      '    <button type="button" class="calc-dist-tab' + (activeDist === 'invNorm' ? ' active' : '') + '" data-dist="invNorm">invNorm</button>',
-      '    <button type="button" class="calc-dist-tab' + (activeDist === 'binom' ? ' active' : '') + '" data-dist="binom">Binomial B(n, p)</button>',
-      '    <button type="button" class="calc-dist-tab' + (activeDist === 'poisson' ? ' active' : '') + '" data-dist="poisson">Poisson Po(λ)</button>',
-      '    <button type="button" class="calc-dist-tab' + (activeDist === 'studentT' ? ' active' : '') + '" data-dist="studentT">Student\'s t</button>',
-      '    <button type="button" class="calc-dist-tab' + (activeDist === 'chiSquare' ? ' active' : '') + '" data-dist="chiSquare">Chi-Square χ²</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'normCdf' ? ' active' : '') + '" data-dist="normCdf">' + (ar ? 'التوزيع الطبيعي Normal CDF' : 'Normal CDF') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'invNorm' ? ' active' : '') + '" data-dist="invNorm">' + (ar ? 'الطبيعي العكسي invNorm' : 'invNorm') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'binom' ? ' active' : '') + '" data-dist="binom">' + (ar ? 'ذو الحدين B(n, p)' : 'Binomial B(n, p)') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'poisson' ? ' active' : '') + '" data-dist="poisson">' + (ar ? 'بواسون Po(λ)' : 'Poisson Po(λ)') + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'studentT' ? ' active' : '') + '" data-dist="studentT">' + (ar ? 'توزيع ستيودنت t' : "Student's t") + '</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'chiSquare' ? ' active' : '') + '" data-dist="chiSquare">' + (ar ? 'مربع كاي χ²' : 'Chi-Square χ²') + '</button>',
       '  </div>',
       '  <div class="calc-dist-body" id="calc-dist-content"></div>',
       '</div>'
@@ -499,22 +500,23 @@ isRtl: false
   }
 
   function renderNormCdfView(el) {
+    var ar = isAr();
     el.innerHTML = [
       '<div class="calc-dist-controls">',
       '  <div class="calc-dist-panel">',
-      '    <h4>Normal Distribution: X ~ N(μ, σ²)</h4>',
-      '    <div class="calc-dist-field"><label>Mean (μ):</label><input type="number" id="sc-norm-mu" value="0" step="any"></div>',
-      '    <div class="calc-dist-field"><label>Standard Deviation (σ):</label><input type="number" id="sc-norm-sigma" value="1" min="0.0001" step="any"></div>',
-      '    <div class="calc-dist-field"><label>Lower Bound (a):</label><input type="number" id="sc-norm-lower" value="-1.96" step="any"></div>',
-      '    <div class="calc-dist-field"><label>Upper Bound (b):</label><input type="number" id="sc-norm-upper" value="1.96" step="any"></div>',
+      '    <h4>' + (ar ? 'التوزيع الطبيعي: X ~ N(μ, σ²)' : 'Normal Distribution: X ~ N(μ, σ²)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-norm-mu">' + (ar ? 'المتوسط الحسابي (μ):' : 'Mean (μ):') + '</label><input type="number" id="sc-norm-mu" value="0" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-norm-sigma">' + (ar ? 'الانحراف المعياري (σ):' : 'Standard Deviation (σ):') + '</label><input type="number" id="sc-norm-sigma" value="1" min="0.0001" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-norm-lower">' + (ar ? 'الحد الأدنى (a):' : 'Lower Bound (a):') + '</label><input type="number" id="sc-norm-lower" value="-1.96" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-norm-upper">' + (ar ? 'الحد الأعلى (b):' : 'Upper Bound (b):') + '</label><input type="number" id="sc-norm-upper" value="1.96" step="any"></div>',
       '  </div>',
       '  <div class="calc-dist-panel">',
-      '    <h4>Quick Presets</h4>',
+      '    <h4>' + (ar ? 'قوالب سريعة' : 'Quick Presets') + '</h4>',
       '    <div style="display:flex;flex-wrap:wrap;gap:6px">',
-      '      <button type="button" class="calc-cat-pill" id="ps-norm-68">Empirical 68% (±1σ)</button>',
-      '      <button type="button" class="calc-cat-pill on" id="ps-norm-95">95% CI (±1.96σ)</button>',
-      '      <button type="button" class="calc-cat-pill" id="ps-norm-99">99% CI (±2.576σ)</button>',
-      '      <button type="button" class="calc-cat-pill" id="ps-norm-rt">Right Tail (z ≥ 2)</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-68">' + (ar ? 'القاعدة التجريبية 68% (±1σ)' : 'Empirical 68% (±1σ)') + '</button>',
+      '      <button type="button" class="calc-cat-pill on" id="ps-norm-95">' + (ar ? 'فترة ثقة 95% (±1.96σ)' : '95% CI (±1.96σ)') + '</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-99">' + (ar ? 'فترة ثقة 99% (±2.576σ)' : '99% CI (±2.576σ)') + '</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-rt">' + (ar ? 'الذيل الأيمن (z ≥ 2)' : 'Right Tail (z ≥ 2)') + '</button>',
       '    </div>',
       '  </div>',
       '</div>',
@@ -546,9 +548,9 @@ isRtl: false
       var za = (a === -Infinity) ? '−∞' : ((a - mu) / sigma).toFixed(3);
       var zb = (b === Infinity) ? '+∞' : ((b - mu) / sigma).toFixed(3);
 
-      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">PROBABILITY MASS</div>' +
-        '<div class="calc-dist-result-prob">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ X ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + ' (' + (prob * 100).toFixed(3) + '%)</div>' +
-        '<div class="calc-dist-result-meta">Standardized: z_a = ' + za + ', z_b = ' + zb + ' · Exam: AP Stats Unit 4, Cambridge 9709 P5, IB Math SL/HL</div>';
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'الاحتمال التراكمي' : 'PROBABILITY MASS') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ X ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + ' (' + (prob * 100).toFixed(3) + '%)</div>' +
+        '<div class="calc-dist-result-meta">' + (ar ? 'القيم المعيارية: ' : 'Standardized: ') + 'z_a = ' + za + ', z_b = ' + zb + (ar ? ' · للاختبارات: AP Stats و Cambridge P5 و IB SL/HL' : ' · Exam: AP Stats Unit 4, Cambridge 9709 P5, IB Math SL/HL') + '</div>';
 
       var W = 520, H = 220, pad = 36;
       var minX = mu - 3.8 * sigma, maxX = mu + 3.8 * sigma;
@@ -603,14 +605,15 @@ isRtl: false
   }
 
   function renderInvNormView(el) {
+    var ar = isAr();
     el.innerHTML = [
       '<div class="calc-dist-controls">',
       '  <div class="calc-dist-panel">',
-      '    <h4>Inverse Normal: invNorm(p, μ, σ)</h4>',
-      '    <div class="calc-dist-field"><label>Cumulative Probability (Area p):</label><input type="number" id="sc-inv-p" value="0.95" min="0.0001" max="0.9999" step="0.01"></div>',
-      '    <div class="calc-dist-field"><label>Tail Direction:</label><select id="sc-inv-tail"><option value="left">Left Tail: P(X ≤ k) = p</option><option value="right">Right Tail: P(X ≥ k) = p</option></select></div>',
-      '    <div class="calc-dist-field"><label>Mean (μ):</label><input type="number" id="sc-inv-mu" value="0" step="any"></div>',
-      '    <div class="calc-dist-field"><label>Standard Deviation (σ):</label><input type="number" id="sc-inv-sigma" value="1" min="0.0001" step="any"></div>',
+      '    <h4>' + (ar ? 'التوزيع الطبيعي العكسي: invNorm(p, μ, σ)' : 'Inverse Normal: invNorm(p, μ, σ)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-inv-p">' + (ar ? 'الاحتمال التراكمي (المساحة p):' : 'Cumulative Probability (Area p):') + '</label><input type="number" id="sc-inv-p" value="0.95" min="0.0001" max="0.9999" step="0.01"></div>',
+      '    <div class="calc-dist-field"><label for="sc-inv-tail">' + (ar ? 'اتجاه الذيل:' : 'Tail Direction:') + '</label><select id="sc-inv-tail"><option value="left">' + (ar ? 'الذيل الأيسر: P(X ≤ k) = p' : 'Left Tail: P(X ≤ k) = p') + '</option><option value="right">' + (ar ? 'الذيل الأيمن: P(X ≥ k) = p' : 'Right Tail: P(X ≥ k) = p') + '</option></select></div>',
+      '    <div class="calc-dist-field"><label for="sc-inv-mu">' + (ar ? 'المتوسط الحسابي (μ):' : 'Mean (μ):') + '</label><input type="number" id="sc-inv-mu" value="0" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-inv-sigma">' + (ar ? 'الانحراف المعياري (σ):' : 'Standard Deviation (σ):') + '</label><input type="number" id="sc-inv-sigma" value="1" min="0.0001" step="any"></div>',
       '  </div>',
       '</div>',
       '<div class="calc-dist-display">',
@@ -636,9 +639,9 @@ isRtl: false
       var k = _invNorm(effP, mu, sigma);
       var z = (k - mu) / sigma;
 
-      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">CRITICAL VALUE RESULT</div>' +
-        '<div class="calc-dist-result-prob">Cutoff Value k = ' + k.toFixed(4) + '</div>' +
-        '<div class="calc-dist-result-meta">Corresponding z-score: z = ' + z.toFixed(3) + ' · Tail: ' + (tail === 'right' ? 'P(X ≥ ' + k.toFixed(4) + ') = ' + p : 'P(X ≤ ' + k.toFixed(4) + ') = ' + p) + '</div>';
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'القيمة الحرجة' : 'CRITICAL VALUE RESULT') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">' + (ar ? 'قيمة القطع ' : 'Cutoff Value ') + 'k = ' + k.toFixed(4) + '</div>' +
+        '<div class="calc-dist-result-meta">' + (ar ? 'الدرجة المعيارية: ' : 'Corresponding z-score: ') + 'z = ' + z.toFixed(3) + ' · ' + (ar ? 'الذيل: ' : 'Tail: ') + '<span dir="ltr">' + (tail === 'right' ? 'P(X ≥ ' + k.toFixed(4) + ') = ' + p : 'P(X ≤ ' + k.toFixed(4) + ') = ' + p) + '</span></div>';
 
       var W = 520, H = 220, pad = 36;
       var minX = mu - 3.8 * sigma, maxX = mu + 3.8 * sigma;
@@ -685,13 +688,14 @@ isRtl: false
   }
 
   function renderBinomView(el) {
+    var ar = isAr();
     el.innerHTML = [
       '<div class="calc-dist-controls">',
       '  <div class="calc-dist-panel">',
-      '    <h4>Binomial Distribution: X ~ B(n, p)</h4>',
-      '    <div class="calc-dist-field"><label>Number of Trials (n):</label><input type="number" id="sc-bn-n" value="10" min="1" max="200"></div>',
-      '    <div class="calc-dist-field"><label>Probability of Success (p):</label><input type="number" id="sc-bn-p" value="0.5" min="0" max="1" step="0.05"></div>',
-      '    <div class="calc-dist-field"><label>Number of Successes (k):</label><input type="number" id="sc-bn-k" value="5" min="0"></div>',
+      '    <h4>' + (ar ? 'توزيع ذو الحدين: X ~ B(n, p)' : 'Binomial Distribution: X ~ B(n, p)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-bn-n">' + (ar ? 'عدد المحاولات (n):' : 'Number of Trials (n):') + '</label><input type="number" id="sc-bn-n" value="10" min="1" max="200"></div>',
+      '    <div class="calc-dist-field"><label for="sc-bn-p">' + (ar ? 'احتمال النجاح (p):' : 'Probability of Success (p):') + '</label><input type="number" id="sc-bn-p" value="0.5" min="0" max="1" step="0.05"></div>',
+      '    <div class="calc-dist-field"><label for="sc-bn-k">' + (ar ? 'عدد النجاحات (k):' : 'Number of Successes (k):') + '</label><input type="number" id="sc-bn-k" value="5" min="0"></div>',
       '  </div>',
       '</div>',
       '<div class="calc-dist-display">',
@@ -720,11 +724,11 @@ isRtl: false
       var mu = n * p;
       var variance = n * p * (1 - p);
 
-      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">BINOMIAL PROBABILITIES</div>' +
-        '<div class="calc-dist-result-prob">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'احتمالات ذو الحدين' : 'BINOMIAL PROBABILITIES') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
         '<div class="calc-dist-result-meta">' +
-        'P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '<br>' +
-        'Expected Value: E[X] = μ = ' + mu.toFixed(2) + ' · Var(X) = σ² = ' + variance.toFixed(2) + ' · SD = σ = ' + Math.sqrt(variance).toFixed(2) +
+        '<span dir="ltr">P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '</span><br>' +
+        (ar ? 'القيمة المتوقعة E[X] = μ = ' : 'Expected Value: E[X] = μ = ') + mu.toFixed(2) + (ar ? ' · التباين Var(X) = σ² = ' : ' · Var(X) = σ² = ') + variance.toFixed(2) + (ar ? ' · الانحراف σ = ' : ' · SD = σ = ') + Math.sqrt(variance).toFixed(2) +
         '</div>';
 
       var W = 520, H = 220, pad = 36;
@@ -760,12 +764,13 @@ isRtl: false
   }
 
   function renderPoissonView(el) {
+    var ar = isAr();
     el.innerHTML = [
       '<div class="calc-dist-controls">',
       '  <div class="calc-dist-panel">',
-      '    <h4>Poisson Distribution: X ~ Po(λ)</h4>',
-      '    <div class="calc-dist-field"><label>Average Rate (λ):</label><input type="number" id="sc-ps-lam" value="3.5" min="0.0001" step="0.5"></div>',
-      '    <div class="calc-dist-field"><label>Occurrences (k):</label><input type="number" id="sc-ps-k" value="3" min="0"></div>',
+      '    <h4>' + (ar ? 'توزيع بواسون: X ~ Po(λ)' : 'Poisson Distribution: X ~ Po(λ)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-ps-lam">' + (ar ? 'معدل التكرار (λ):' : 'Average Rate (λ):') + '</label><input type="number" id="sc-ps-lam" value="3.5" min="0.0001" step="0.5"></div>',
+      '    <div class="calc-dist-field"><label for="sc-ps-k">' + (ar ? 'عدد المرات (k):' : 'Occurrences (k):') + '</label><input type="number" id="sc-ps-k" value="3" min="0"></div>',
       '  </div>',
       '</div>',
       '<div class="calc-dist-display">',
@@ -789,11 +794,11 @@ isRtl: false
       for (var i = 0; i <= k; i++) cdfLe += _poissonPdf(lam, i);
       var cdfGe = 1 - cdfLe + pdf;
 
-      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">POISSON PROBABILITIES</div>' +
-        '<div class="calc-dist-result-prob">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'احتمالات بواسون' : 'POISSON PROBABILITIES') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
         '<div class="calc-dist-result-meta">' +
-        'P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '<br>' +
-        'Expected Value: E[X] = μ = ' + lam + ' · Var(X) = σ² = ' + lam + ' · SD = σ = ' + Math.sqrt(lam).toFixed(3) +
+        '<span dir="ltr">P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '</span><br>' +
+        (ar ? 'المتوسط E[X] = μ = ' : 'Expected Value: E[X] = μ = ') + lam + (ar ? ' · التباين σ² = ' : ' · Var(X) = σ² = ') + lam + (ar ? ' · الانحراف σ = ' : ' · SD = σ = ') + Math.sqrt(lam).toFixed(3) +
         '</div>';
 
       var W = 520, H = 220, pad = 36;
@@ -829,13 +834,14 @@ isRtl: false
   }
 
   function renderStudentTView(el) {
+    var ar = isAr();
     el.innerHTML = [
       '<div class="calc-dist-controls">',
       '  <div class="calc-dist-panel">',
-      '    <h4>Student\'s t-Distribution: T ~ t(df)</h4>',
-      '    <div class="calc-dist-field"><label>Degrees of Freedom (df):</label><input type="number" id="sc-t-df" value="10" min="1" max="500"></div>',
-      '    <div class="calc-dist-field"><label>Lower Bound (a):</label><input type="number" id="sc-t-lower" value="-2.228" step="any"></div>',
-      '    <div class="calc-dist-field"><label>Upper Bound (b):</label><input type="number" id="sc-t-upper" value="2.228" step="any"></div>',
+      '    <h4>' + (ar ? 'توزيع ستيودنت t: T ~ t(df)' : "Student's t-Distribution: T ~ t(df)") + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-t-df">' + (ar ? 'درجات الحرية (df):' : 'Degrees of Freedom (df):') + '</label><input type="number" id="sc-t-df" value="10" min="1" max="500"></div>',
+      '    <div class="calc-dist-field"><label for="sc-t-lower">' + (ar ? 'الحد الأدنى (a):' : 'Lower Bound (a):') + '</label><input type="number" id="sc-t-lower" value="-2.228" step="any"></div>',
+      '    <div class="calc-dist-field"><label for="sc-t-upper">' + (ar ? 'الحد الأعلى (b):' : 'Upper Bound (b):') + '</label><input type="number" id="sc-t-upper" value="2.228" step="any"></div>',
       '  </div>',
       '</div>',
       '<div class="calc-dist-display">',
@@ -861,9 +867,9 @@ isRtl: false
       var pB = (b === Infinity) ? 1 : _tCdf(b, df);
       var prob = Math.max(0, pB - pA);
 
-      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">STUDENT\'S T PROBABILITY</div>' +
-        '<div class="calc-dist-result-prob">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ T ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + '</div>' +
-        '<div class="calc-dist-result-meta">Degrees of freedom df = ' + df + ' · Heavy tails model uncertainty in small sample sizes (AP Stats / Cambridge 9709 P6)</div>';
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'احتمال توزيع ستيودنت t' : "STUDENT'S T PROBABILITY") + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ T ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">' + (ar ? 'درجات الحرية df = ' + df + ' · يستخدم للعينات الصغيرة (AP Stats و Cambridge P6)' : 'Degrees of freedom df = ' + df + ' · Heavy tails model uncertainty in small sample sizes (AP Stats / Cambridge 9709 P6)') + '</div>';
 
       var W = 520, H = 220, pad = 36;
       var minX = -4.5, maxX = 4.5;
@@ -912,12 +918,13 @@ isRtl: false
   }
 
   function renderChiSquareView(el) {
+    var ar = isAr();
     el.innerHTML = [
       '<div class="calc-dist-controls">',
       '  <div class="calc-dist-panel">',
-      '    <h4>Chi-Square Distribution: χ² ~ χ²(df)</h4>',
-      '    <div class="calc-dist-field"><label>Degrees of Freedom (df):</label><input type="number" id="sc-chi-df" value="4" min="1" max="100"></div>',
-      '    <div class="calc-dist-field"><label>Critical Value (k):</label><input type="number" id="sc-chi-k" value="9.488" min="0" step="any"></div>',
+      '    <h4>' + (ar ? 'توزيع مربع كاي: χ² ~ χ²(df)' : 'Chi-Square Distribution: χ² ~ χ²(df)') + '</h4>',
+      '    <div class="calc-dist-field"><label for="sc-chi-df">' + (ar ? 'درجات الحرية (df):' : 'Degrees of Freedom (df):') + '</label><input type="number" id="sc-chi-df" value="4" min="1" max="100"></div>',
+      '    <div class="calc-dist-field"><label for="sc-chi-k">' + (ar ? 'القيمة الحرجة (k):' : 'Critical Value (k):') + '</label><input type="number" id="sc-chi-k" value="9.488" min="0" step="any"></div>',
       '  </div>',
       '</div>',
       '<div class="calc-dist-display">',
@@ -939,11 +946,11 @@ isRtl: false
       var cdfLe = _chi2Cdf(k, df);
       var pValue = Math.max(0, 1 - cdfLe);
 
-      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">CHI-SQUARE P-VALUE</div>' +
-        '<div class="calc-dist-result-prob">P(χ² ≥ ' + k.toFixed(3) + ') = ' + pValue.toFixed(5) + ' (p-value)</div>' +
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">' + (ar ? 'قيمة الاحتمال P لمربع كاي' : 'CHI-SQUARE P-VALUE') + '</div>' +
+        '<div class="calc-dist-result-prob" dir="ltr">P(χ² ≥ ' + k.toFixed(3) + ') = ' + pValue.toFixed(5) + ' (p-value)</div>' +
         '<div class="calc-dist-result-meta">' +
-        'Cumulative: P(χ² ≤ ' + k.toFixed(3) + ') = ' + cdfLe.toFixed(5) + '<br>' +
-        'Expected Value: E[χ²] = df = ' + df + ' · Variance: Var(χ²) = 2df = ' + (2 * df) + ' · Goodness-of-Fit & Independence' +
+        '<span dir="ltr">' + (ar ? 'التراكمي: ' : 'Cumulative: ') + 'P(χ² ≤ ' + k.toFixed(3) + ') = ' + cdfLe.toFixed(5) + '</span><br>' +
+        (ar ? 'المتوسط E[χ²] = df = ' + df + ' · التباين Var(χ²) = 2df = ' + (2 * df) + ' · اختبارات حسن المطابقة والاستقلال' : 'Expected Value: E[χ²] = df = ' + df + ' · Variance: Var(χ²) = 2df = ' + (2 * df) + ' · Goodness-of-Fit & Independence') +
         '</div>';
 
       var W = 520, H = 220, pad = 36;
@@ -1180,6 +1187,7 @@ isRtl: false
     return (window.i18n && window.i18n.t) ? window.i18n.t(key, vars) : key;
   }
   function isAr() {
+    if (document.documentElement.lang === 'ar') return true;
     return (window.i18n && window.i18n.getLocale) ? window.i18n.getLocale() === 'ar' : false;
   }
 
@@ -1338,7 +1346,11 @@ isRtl: false
   var i18nBtn = document.getElementById('i18n-toggle-btn');
   if (i18nBtn) {
     i18nBtn.addEventListener('click', function () {
-      setTimeout(function () { renderCats(); renderList(); }, 0);
+      setTimeout(function () {
+        renderCats();
+        renderList();
+        if (activeMode === 'distributions') mountDistributions();
+      }, 0);
     });
   }
 

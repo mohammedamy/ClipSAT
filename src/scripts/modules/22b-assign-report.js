@@ -972,19 +972,183 @@ window.CSCustomCart = (function(){
     });
   }
 
+  function _buildAssignmentUrl(){
+    var tracks = {};
+    _cart.forEach(function(q){ tracks[q._trackId || _currentTrack] = 1; });
+    var multiTrack = Object.keys(tracks).length > 1;
+    var keys = [];
+    _cart.forEach(function(q){
+      if(typeof window.CSAssignKey === 'function'){
+        var k = window.CSAssignKey(q);
+        if(!k) return;
+        var tok = multiTrack ? ((q._trackId || _currentTrack) + ':' + k) : k;
+        if(keys.indexOf(tok) === -1) keys.push(tok);
+      }
+    });
+    return location.origin + '/' + _currentTrack + '/?assign=' + keys.join('.');
+  }
+
+  /* Compact pure-JS ISO 18004 QR Code (Byte mode, ECC-L, v1–v9) SVG renderer — zero external libs or eval */
+  function _qrSvg(str){
+    var bytes = [];
+    for(var i=0;i<str.length;i++){
+      var c = str.charCodeAt(i);
+      bytes.push(c < 128 ? c : 63);
+    }
+    var caps = [0, 17, 32, 53, 78, 106, 134, 154, 192, 230];
+    var ecCounts = [0, 7, 10, 15, 20, 26, 18, 20, 24, 30];
+    var ver = 1;
+    while(ver < 9 && bytes.length > caps[ver]) ver++;
+    if(bytes.length > caps[ver]) bytes = bytes.slice(0, caps[ver]);
+    var totalCodewords = [0, 26, 44, 70, 100, 134, 172, 196, 242, 292][ver];
+    var dataCap = caps[ver];
+    var ecLen = ecCounts[ver];
+    var nBlocks = (ver <= 5) ? 1 : 2;
+    var bits = [];
+    function pushBits(val, len){ for(var b=len-1;b>=0;b--) bits.push((val>>>b)&1); }
+    pushBits(4, 4); /* Byte mode */
+    pushBits(bytes.length, 8);
+    bytes.forEach(function(b){ pushBits(b, 8); });
+    var maxBits = (totalCodewords - ecLen * nBlocks) * 8;
+    for(var t=0;t<4 && bits.length<maxBits;t++) bits.push(0);
+    while(bits.length % 8 !== 0) bits.push(0);
+    var cw = [];
+    for(var k=0;k<bits.length;k+=8){
+      var v=0; for(var m=0;m<8;m++) v=(v<<1)|bits[k+m];
+      cw.push(v);
+    }
+    var pads = [0xec, 0x11], pi = 0;
+    while(cw.length < totalCodewords - ecLen * nBlocks){ cw.push(pads[pi++ % 2]); }
+
+    /* GF(256) with x^8+x^4+x^3+x^2+1 (0x11d) */
+    var gfExp = new Array(512), gfLog = new Array(256), x = 1;
+    for(var g=0;g<255;g++){ gfExp[g]=x; gfLog[x]=g; x<<=1; if(x&0x100) x^=0x11d; }
+    for(var g2=255;g2<512;g2++) gfExp[g2]=gfExp[g2-255];
+    function gfMul(a,b){ return (a===0||b===0)?0:gfExp[gfLog[a]+gfLog[b]]; }
+    var poly = [1];
+    for(var e=0;e<ecLen;e++){
+      var nextP = new Array(poly.length+1).fill(0);
+      for(var a=0;a<poly.length;a++){
+        nextP[a] ^= poly[a];
+        nextP[a+1] ^= gfMul(poly[a], gfExp[e]);
+      }
+      poly = nextP;
+    }
+    function rsEC(dataCw){
+      var msg = dataCw.concat(new Array(ecLen).fill(0));
+      for(var i0=0;i0<dataCw.length;i0++){
+        var coef = msg[i0];
+        if(coef !== 0){
+          for(var j0=1;j0<poly.length;j0++) msg[i0+j0] ^= gfMul(poly[j0], coef);
+        }
+      }
+      return msg.slice(dataCw.length);
+    }
+    var blocks = [], ecs = [], bs1 = Math.floor(cw.length / nBlocks), remB = cw.length % nBlocks, ptr = 0;
+    for(var bl=0;bl<nBlocks;bl++){
+      var len = bs1 + (bl >= nBlocks - remB ? 1 : 0);
+      var sl = cw.slice(ptr, ptr + len); ptr += len;
+      blocks.push(sl); ecs.push(rsEC(sl));
+    }
+    var stream = [];
+    var maxBL = Math.max.apply(null, blocks.map(function(b){ return b.length; }));
+    for(var c1=0;c1<maxBL;c1++) for(var b1=0;b1<nBlocks;b1++) if(c1<blocks[b1].length) stream.push(blocks[b1][c1]);
+    for(var c2=0;c2<ecLen;c2++) for(var b2=0;b2<nBlocks;b2++) stream.push(ecs[b2][c2]);
+
+    var sz = ver * 4 + 17;
+    var mod = [];
+    var res = [];
+    for(var r=0;r<sz;r++){ mod.push(new Array(sz).fill(0)); res.push(new Array(sz).fill(false)); }
+    function setFinder(r0, c0){
+      for(var dr=-1;dr<=7;dr++) for(var dc=-1;dc<=7;dc++){
+        var rr=r0+dr, cc=c0+dc;
+        if(rr<0||rr>=sz||cc<0||cc>=sz) continue;
+        var on = (dr>=0&&dr<=6&&dc>=0&&dc<=6) && (dr===0||dr===6||dc===0||dc===6||(dr>=2&&dr<=4&&dc>=2&&dc<=4));
+        mod[rr][cc] = on ? 1 : 0; res[rr][cc] = true;
+      }
+    }
+    setFinder(0,0); setFinder(0,sz-7); setFinder(sz-7,0);
+    for(var ti=8;ti<sz-8;ti++){ mod[6][ti]=(ti%2===0)?1:0; res[6][ti]=true; mod[ti][6]=(ti%2===0)?1:0; res[ti][6]=true; }
+    var alignPos = ver === 1 ? [] : (ver <= 6 ? [6, sz-7] : [6, Math.floor((sz-13)/2)+6, sz-7]);
+    for(var ar=0;ar<alignPos.length;ar++) for(var ac=0;ac<alignPos.length;ac++){
+      var cr=alignPos[ar], cc2=alignPos[ac];
+      if(res[cr][cc2]) continue;
+      for(var dr2=-2;dr2<=2;dr2++) for(var dc2=-2;dc2<=2;dc2++){
+        mod[cr+dr2][cc2+dc2] = (Math.abs(dr2)===2||Math.abs(dc2)===2||(dr2===0&&dc2===0))?1:0;
+        res[cr+dr2][cc2+dc2] = true;
+      }
+    }
+    for(var f=0;f<9;f++){ if(f!==6){ res[8][f]=true; res[f][8]=true; } }
+    for(var f2=sz-8;f2<sz;f2++){ res[8][f2]=true; if(f2!==sz-8) res[f2][8]=true; }
+    mod[sz-8][8]=1; res[sz-8][8]=true;
+    var bitIdx = 0, totalBits = stream.length * 8, up = true;
+    for(var col=sz-1;col>0;col-=2){
+      if(col===6) col--;
+      for(var ri=0;ri<sz;ri++){
+        var rr2 = up ? (sz - 1 - ri) : ri;
+        for(var dcol=0;dcol<2;dcol++){
+          var cc3 = col - dcol;
+          if(res[rr2][cc3]) continue;
+          var bit = bitIdx < totalBits ? ((stream[bitIdx>>3] >> (7 - (bitIdx & 7))) & 1) : 0;
+          bitIdx++;
+          if((rr2 + cc3) % 2 === 0) bit ^= 1; /* mask 0 */
+          mod[rr2][cc3] = bit;
+        }
+      }
+      up = !up;
+    }
+    var fmtMask0 = 0x77c4; /* ECC-L (01) + Mask 0 (000) BCH-encoded */
+    for(var k2=0;k2<15;k2++){
+      var bval = (fmtMask0 >> k2) & 1;
+      if(k2 < 6) mod[k2][8] = bval; else if(k2 < 8) mod[k2+1][8] = bval; else mod[sz-15+k2][8] = bval;
+      if(k2 < 8) mod[8][sz-1-k2] = bval; else if(k2 < 9) mod[8][15-k2] = bval; else mod[8][14-k2] = bval;
+    }
+    var rects = '';
+    for(var y=0;y<sz;y++) for(var z=0;z<sz;z++){
+      if(mod[y][z]) rects += '<rect x="'+(z+2)+'" y="'+(y+2)+'" width="1" height="1"/>';
+    }
+    var vb = sz + 4;
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+vb+' '+vb+'" width="200" height="200" shape-rendering="crispEdges"><rect width="'+vb+'" height="'+vb+'" fill="#fff"/><g fill="#111827">'+rects+'</g></svg>';
+  }
+
+  function showAssignmentQR(){
+    if(!_cart.length){
+      alert(_ttAr() ? 'أضف سؤالًا واحدًا على الأقل أولًا.' : 'Add at least 1 question to the cart first.');
+      return;
+    }
+    var ar = _ttAr();
+    var link = _buildAssignmentUrl();
+    var old = document.getElementById('cs-qr-popover');
+    if(old) old.remove();
+    var pop = document.createElement('div');
+    pop.id = 'cs-qr-popover';
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-modal', 'true');
+    pop.setAttribute('aria-label', ar ? 'رمز QR للواجب' : 'Assignment QR Code');
+    pop.style.cssText = 'position:fixed;inset:0;background:rgba(15,23,42,.62);z-index:10010;display:flex;align-items:center;justify-content:center;padding:16px;';
+    pop.innerHTML = '<div dir="'+(ar?'rtl':'ltr')+'" style="background:#fff;color:#0f172a;border-radius:14px;padding:20px 24px;max-width:340px;width:100%;text-align:center;box-shadow:0 18px 44px rgba(0,0,0,.35)">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
+      + '<strong style="font-size:15px">' + (ar ? '📱 رمز QR لرابط الطالب' : '📱 Student Assignment QR') + '</strong>'
+      + '<button type="button" id="cs-qr-close" aria-label="Close" style="background:none;border:none;font-size:18px;cursor:pointer;color:#64748b">✕</button>'
+      + '</div>'
+      + '<div style="display:flex;justify-content:center;padding:8px;background:#fff;border:1px solid #e2e8f0;border-radius:10px">' + _qrSvg(link) + '</div>'
+      + '<p style="font-size:11.5px;color:#475569;word-break:break-all;margin:10px 0 12px">' + esc(link.slice(0, 120)) + (link.length > 120 ? '…' : '') + '</p>'
+      + '<button type="button" id="cs-qr-copy" style="width:100%;padding:8px 12px;background:#4f46e5;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">' + (ar ? 'نسخ الرابط' : 'Copy Link') + '</button>'
+      + '</div>';
+    document.body.appendChild(pop);
+    function closeQr(){ pop.remove(); }
+    pop.addEventListener('click', function(ev){ if(ev.target === pop) closeQr(); });
+    pop.querySelector('#cs-qr-close').addEventListener('click', closeQr);
+    pop.querySelector('#cs-qr-copy').addEventListener('click', function(){ copyAssignmentLink(); });
+    pop.querySelector('#cs-qr-close').focus();
+  }
+
   function copyAssignmentLink(){
     if(!_cart.length){
       alert(_ttAr() ? 'أضف سؤالًا واحدًا على الأقل أولًا.' : 'Add at least 1 question to the cart first.');
       return;
     }
-    var keys = [];
-    _cart.forEach(function(q){
-      if(typeof window.CSAssignKey === 'function'){
-        var k = window.CSAssignKey(q);
-        if(k && keys.indexOf(k) === -1) keys.push(k);
-      }
-    });
-    var link = location.origin + '/' + _currentTrack + '/?assign=' + keys.join('.');
+    var link = _buildAssignmentUrl();
     if(navigator.clipboard && navigator.clipboard.writeText){
       navigator.clipboard.writeText(link).then(function(){
         alert((_ttAr() ? 'تم نسخ رابط الواجب المخصص:\n' : 'Copied custom student assignment link:\n') + link);
@@ -1002,6 +1166,16 @@ window.CSCustomCart = (function(){
     var ensure = (window._ensureCSExport ? window._ensureCSExport() : Promise.resolve());
     ensure.then(function(){
       var today = new Date().toISOString().slice(0, 10);
+      if(window.CSExport && typeof window.CSExport.exportQuestionsDocx === 'function'){
+        window.CSExport.exportQuestionsDocx('clipsat-custom-worksheet-' + _currentTrack + '-' + today, _cart, {
+          title: 'ClipSAT Custom Worksheet',
+          chapter: _cart.length + ' Selected Questions',
+          track: _currentTrack.toUpperCase()
+        }).catch(function(){
+          alert(_ttAr() ? 'تعذر إنشاء ملف Word في هذا المتصفح.' : 'Could not export .docx in this browser.');
+        });
+        return;
+      }
       function optLetter(i){ return String.fromCharCode(65 + i); }
       var _loc = window.CSItemLocale;
       var rowsHtml = _cart.map(function(q, i){
@@ -1070,8 +1244,9 @@ window.CSCustomCart = (function(){
       + '<div style="display:flex;gap:8px;flex-wrap:wrap">'
       + '<button type="button" onclick="window.CSCustomCart.printCart(false)" style="padding:8px 14px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🖨️ ' + (ar ? 'طباعة ورقة العمل (PDF)' : 'Print Worksheet (PDF)') + '</button>'
       + '<button type="button" onclick="window.CSCustomCart.printCart(true)" style="padding:8px 14px;background:#166534;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">🔑 ' + (ar ? 'طباعة مع مفتاح الإجابة' : 'Print with Answer Key') + '</button>'
-      + '<button type="button" onclick="window.CSCustomCart.exportDocx()" style="padding:8px 14px;background:#0284c7;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">📝 ' + (ar ? 'تصدير Word (.doc)' : 'Export Word (.doc)') + '</button>'
+      + '<button type="button" onclick="window.CSCustomCart.exportDocx()" style="padding:8px 14px;background:#0284c7;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer">📝 ' + (ar ? 'تصدير Word (.docx)' : 'Export Word (.docx)') + '</button>'
       + '<button type="button" onclick="window.CSCustomCart.copyAssignmentLink()" style="padding:8px 14px;background:#4f46e5;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer;margin-left:auto">🔗 ' + (ar ? 'نسخ رابط الواجب للطلاب' : 'Copy Student Assignment Link') + '</button>'
+      + '<button type="button" onclick="window.CSCustomCart.showQR()" style="padding:8px 12px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer" title="' + (ar ? 'رمز QR للطلاب' : 'Student QR Code') + '">📱 QR</button>'
       + '</div>'
       + '</div>';
     document.body.appendChild(ov);
@@ -1091,7 +1266,8 @@ window.CSCustomCart = (function(){
     refresh: _refreshUI,
     printCart: printCart,
     exportDocx: exportDocx,
-    copyAssignmentLink: copyAssignmentLink
+    copyAssignmentLink: copyAssignmentLink,
+    showQR: showAssignmentQR
   };
 })();
 

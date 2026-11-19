@@ -137,6 +137,8 @@ const katexCache = new Map();
 function sanitizeMathExpr(tex) {
   if (!tex) return '';
   let s = String(tex).trim();
+  // Strip/move any accidental Arabic text inside \text{...} so strict KaTeX passes without RTL warnings
+  s = s.replace(/\\text\{([^{}]*[\u0600-\u06FF][^{}]*)\}/g, '$1');
   // Remove redundant 1x, 1y, 1z when standalone coefficient (not 11x, 0.1x, \frac{1}{x}, etc.)
   s = s.replace(/(?<![0-9.\\a-zA-Z])1([x-z])\b/g, '$1');
   // Convert \tfrac / \dfrac safely (KaTeX supports them, keep clean)
@@ -2700,10 +2702,11 @@ for (const trackEntry of EXAM_CATALOG) {
         ? `${paperCfg.shortTitle} رقم ${examNum} (مع الحلول النموذجية الكاملة)`
         : `${paperCfg.shortTitle} #${examNum} (Full Paper & Step-by-Step Solutions)`;
 
+      const numLabel = papers.length > 1 ? `P${pIdx + 1}.${numPad}` : `EX.${numPad}`;
       newExamManifestItems.push({
         unit: 100 + pIdx,
         unitTitle: paperCfg.unitTitle,
-        num: `EX.${numPad}`,
+        num: numLabel,
         lang: lang,
         title: itemTitle,
         sub: paperCfg.sub || null,

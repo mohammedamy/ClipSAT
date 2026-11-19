@@ -161,13 +161,19 @@
     _calcEl.id = 'cs-floating-calc';
     _calcEl.setAttribute('role', 'dialog');
     _calcEl.setAttribute('aria-label', 'Floating Exam Calculator');
+    function _isArCalc(){
+      return (document.documentElement && document.documentElement.lang === 'ar') ||
+        (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
+    }
+    var ar = _isArCalc();
+
     _calcEl.style.cssText = [
       'position:fixed',
       'top:72px',
-      'right:24px',
-      'width:560px',
+      'right:8px',
+      'width:min(560px, calc(100vw - 16px))',
       'height:600px',
-      'min-width:340px',
+      'min-width:min(300px, calc(100vw - 16px))',
       'min-height:300px',
       'max-width:96vw',
       'max-height:90vh',
@@ -184,27 +190,27 @@
     ].join(';');
 
     _calcEl.innerHTML = [
-      '<div id="cs-fcalc-header" style="background:var(--indigo,#132746);color:#fff;padding:8px 12px;display:flex;align-items:center;gap:8px;cursor:move;user-select:none;flex-shrink:0">',
-        '<span style="font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:6px">🧮 <span>Calculator</span></span>',
+      '<div id="cs-fcalc-header" style="background:var(--indigo,#132746);color:#fff;padding:8px 10px;display:flex;align-items:center;gap:6px;cursor:move;user-select:none;flex-shrink:0;flex-wrap:wrap">',
+        '<span style="font-weight:700;font-size:.82rem;display:flex;align-items:center;gap:5px">🧮 <span>' + (ar ? 'الآلة الحاسبة' : 'Calculator') + '</span></span>',
         '<div style="display:flex;gap:3px;margin-left:auto;background:rgba(0,0,0,.2);padding:2px 4px;border-radius:6px">',
-          '<button type="button" class="cs-fcalc-tab" data-mode="graphing" style="background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">Graphing</button>',
-          '<button type="button" class="cs-fcalc-tab" data-mode="scientific" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">Scientific</button>',
-          '<button type="button" class="cs-fcalc-tab" data-mode="fourFunction" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">Quick</button>',
-          '<button type="button" class="cs-fcalc-tab" data-mode="distributions" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">📊 Stats</button>',
+          '<button type="button" class="cs-fcalc-tab" data-mode="graphing" style="background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">' + (ar ? 'بياني' : 'Graphing') + '</button>',
+          '<button type="button" class="cs-fcalc-tab" data-mode="scientific" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">' + (ar ? 'علمي' : 'Scientific') + '</button>',
+          '<button type="button" class="cs-fcalc-tab" data-mode="fourFunction" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">' + (ar ? 'سريع' : 'Quick') + '</button>',
+          '<button type="button" class="cs-fcalc-tab" data-mode="distributions" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">📊 ' + (ar ? 'إحصاء' : 'Stats') + '</button>',
         '</div>',
-        '<button type="button" id="cs-fcalc-max-btn" title="Expand / Restore" aria-label="Expand" style="background:transparent;border:none;color:#fff;font-size:.9rem;padding:2px 6px;cursor:pointer;opacity:.85;margin-left:4px">⛶</button>',
-        '<button type="button" id="cs-fcalc-min-btn" title="Minimize" aria-label="Minimize" style="background:transparent;border:none;color:#fff;font-size:.95rem;padding:2px 6px;cursor:pointer;opacity:.85;margin-left:2px">_</button>',
-        '<button type="button" id="cs-fcalc-close-btn" title="Close" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1.15rem;padding:2px 6px;cursor:pointer;opacity:.85">&times;</button>',
+        '<button type="button" id="cs-fcalc-max-btn" title="' + (ar ? 'توسيع / استعادة' : 'Expand / Restore') + '" aria-label="' + (ar ? 'توسيع' : 'Expand') + '" style="background:transparent;border:none;color:#fff;font-size:.9rem;padding:2px 6px;cursor:pointer;opacity:.85;margin-left:2px">⛶</button>',
+        '<button type="button" id="cs-fcalc-min-btn" title="' + (ar ? 'تصغير' : 'Minimize') + '" aria-label="' + (ar ? 'تصغير' : 'Minimize') + '" style="background:transparent;border:none;color:#fff;font-size:.95rem;padding:2px 6px;cursor:pointer;opacity:.85">_</button>',
+        '<button type="button" id="cs-fcalc-close-btn" title="' + (ar ? 'إغلاق' : 'Close') + '" aria-label="' + (ar ? 'إغلاق' : 'Close') + '" style="background:transparent;border:none;color:#fff;font-size:1.15rem;padding:2px 6px;cursor:pointer;opacity:.85">&times;</button>',
       '</div>',
       '<div id="cs-fcalc-presets-bar" style="background:var(--subtle,#f1f5f9);border-bottom:1px solid var(--border,#e2e8f0);padding:4px 10px;display:flex;align-items:center;gap:6px;font-size:.72rem;flex-shrink:0;overflow-x:auto">',
-        '<span style="font-weight:700;color:var(--text-muted,#64748b);display:flex;align-items:center;gap:3px">⚡ Presets:</span>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="linear" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#1e40af">y=mx+b</button>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="quadratic" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#6b21a8">y=ax²+bx+c</button>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="system" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#047857">System</button>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="trig" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#c026d3">sin(x)</button>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="circle" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#b45309">Circle</button>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="regression" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#0d9488">Regression</button>',
-        '<button type="button" class="cs-fcalc-preset-btn" data-preset="clear" style="margin-left:auto;background:transparent;border:1px solid #fca5a5;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:.7rem;color:#b91c1c;font-weight:600">Clear</button>',
+        '<span style="font-weight:700;color:var(--text-muted,#64748b);display:flex;align-items:center;gap:3px;white-space:nowrap">⚡ ' + (ar ? 'نماذج:' : 'Presets:') + '</span>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="linear" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#1e40af;white-space:nowrap">y=mx+b</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="quadratic" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#6b21a8;white-space:nowrap">y=ax²+bx+c</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="system" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#047857;white-space:nowrap">' + (ar ? 'معادلتان' : 'System') + '</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="trig" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#c026d3;white-space:nowrap">sin(x)</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="circle" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#b45309;white-space:nowrap">' + (ar ? 'دائرة' : 'Circle') + '</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="regression" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#0d9488;white-space:nowrap">' + (ar ? 'انحدار' : 'Regression') + '</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="clear" style="margin-left:auto;background:transparent;border:1px solid #fca5a5;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:.7rem;color:#b91c1c;font-weight:600;white-space:nowrap">' + (ar ? 'مسح' : 'Clear') + '</button>',
       '</div>',
       '<div id="cs-fcalc-body" style="flex:1;position:relative;background:#f8fafc;width:100%;height:100%;overflow:hidden">',
         '<div id="cs-fcalc-api-box" style="position:relative;width:100%;height:100%;display:none"></div>',
@@ -333,12 +339,14 @@
   }
 
   function _renderStatsUI(container){
+    var ar = (document.documentElement && document.documentElement.lang === 'ar') ||
+      (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
     var html = [
       '<div style="display:flex;gap:4px;margin-bottom:12px;border-bottom:1px solid #e2e8f0;padding-bottom:8px">',
-        '<button type="button" class="cs-sdist-btn" data-dist="normCdf" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='normCdf'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='normCdf'?'#4f46e5':'#fff')+';color:'+(_statsDist==='normCdf'?'#fff':'#334155')+'">Normal CDF</button>',
-        '<button type="button" class="cs-sdist-btn" data-dist="invNorm" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='invNorm'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='invNorm'?'#4f46e5':'#fff')+';color:'+(_statsDist==='invNorm'?'#fff':'#334155')+'">invNorm</button>',
-        '<button type="button" class="cs-sdist-btn" data-dist="binom" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='binom'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='binom'?'#4f46e5':'#fff')+';color:'+(_statsDist==='binom'?'#fff':'#334155')+'">Binomial</button>',
-        '<button type="button" class="cs-sdist-btn" data-dist="poisson" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='poisson'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='poisson'?'#4f46e5':'#fff')+';color:'+(_statsDist==='poisson'?'#fff':'#334155')+'">Poisson</button>',
+        '<button type="button" class="cs-sdist-btn" data-dist="normCdf" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='normCdf'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='normCdf'?'#4f46e5':'#fff')+';color:'+(_statsDist==='normCdf'?'#fff':'#334155')+'">'+(ar?'طبيعي CDF':'Normal CDF')+'</button>',
+        '<button type="button" class="cs-sdist-btn" data-dist="invNorm" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='invNorm'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='invNorm'?'#4f46e5':'#fff')+';color:'+(_statsDist==='invNorm'?'#fff':'#334155')+'">'+(ar?'عكسي invNorm':'invNorm')+'</button>',
+        '<button type="button" class="cs-sdist-btn" data-dist="binom" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='binom'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='binom'?'#4f46e5':'#fff')+';color:'+(_statsDist==='binom'?'#fff':'#334155')+'">'+(ar?'ذو الحدين':'Binomial')+'</button>',
+        '<button type="button" class="cs-sdist-btn" data-dist="poisson" style="flex:1;padding:5px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid '+(_statsDist==='poisson'?'#4f46e5':'#cbd5e1')+';background:'+(_statsDist==='poisson'?'#4f46e5':'#fff')+';color:'+(_statsDist==='poisson'?'#fff':'#334155')+'">'+(ar?'بواسون':'Poisson')+'</button>',
       '</div>',
       '<div id="cs-sdist-body"></div>'
     ].join('');
@@ -361,16 +369,18 @@
   }
 
   function _renderNormCdf(body){
+    var ar = (document.documentElement && document.documentElement.lang === 'ar') ||
+      (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
     body.innerHTML = [
       '<div style="background:#fff;padding:10px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:10px">',
-        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">Normal Distribution: X ~ N(μ, σ²)</div>',
+        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">' + (ar ? 'التوزيع الطبيعي: X ~ N(μ, σ²)' : 'Normal Distribution: X ~ N(μ, σ²)') + '</div>',
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">',
-          '<label style="font-size:.75rem;color:#64748b">Mean (μ):<br><input type="number" id="cs-sc-mu" value="0" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Std Dev (σ):<br><input type="number" id="cs-sc-sigma" value="1" min="0.0001" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-mu" style="font-size:.75rem;color:#64748b">' + (ar ? 'المتوسط (μ):' : 'Mean (μ):') + '<br><input type="number" id="cs-sc-mu" value="0" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-sigma" style="font-size:.75rem;color:#64748b">' + (ar ? 'الانحراف المعياري (σ):' : 'Std Dev (σ):') + '<br><input type="number" id="cs-sc-sigma" value="1" min="0.0001" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
         '</div>',
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">',
-          '<label style="font-size:.75rem;color:#64748b">Lower (a):<br><input type="number" id="cs-sc-lower" value="-1.96" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Upper (b):<br><input type="number" id="cs-sc-upper" value="1.96" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-lower" style="font-size:.75rem;color:#64748b">' + (ar ? 'الحد الأدنى (a):' : 'Lower (a):') + '<br><input type="number" id="cs-sc-lower" value="-1.96" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-upper" style="font-size:.75rem;color:#64748b">' + (ar ? 'الحد الأعلى (b):' : 'Upper (b):') + '<br><input type="number" id="cs-sc-upper" value="1.96" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
         '</div>',
       '</div>',
       '<div id="cs-sc-result" style="background:#e0e7ff;border:1px solid #c7d2fe;padding:10px;border-radius:8px;margin-bottom:10px;font-family:monospace;font-size:.9rem;font-weight:700;color:#1e1b4b;text-align:center"></div>',
@@ -454,16 +464,18 @@
   }
 
   function _renderInvNorm(body){
+    var ar = (document.documentElement && document.documentElement.lang === 'ar') ||
+      (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
     body.innerHTML = [
       '<div style="background:#fff;padding:10px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:10px">',
-        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">Inverse Normal (invNorm)</div>',
+        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">' + (ar ? 'التوزيع الطبيعي العكسي (invNorm)' : 'Inverse Normal (invNorm)') + '</div>',
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">',
-          '<label style="font-size:.75rem;color:#64748b">Area / Prob (p):<br><input type="number" id="cs-sc-in-p" value="0.95" min="0.0001" max="0.9999" step="0.01" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Tail Position:<br><select id="cs-sc-in-tail" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"><option value="left">Left (X ≤ k)</option><option value="right">Right (X ≥ k)</option></select></label>',
+          '<label for="cs-sc-in-p" style="font-size:.75rem;color:#64748b">' + (ar ? 'المساحة / الاحتمال (p):' : 'Area / Prob (p):') + '<br><input type="number" id="cs-sc-in-p" value="0.95" min="0.0001" max="0.9999" step="0.01" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-in-tail" style="font-size:.75rem;color:#64748b">' + (ar ? 'اتجاه الذيل:' : 'Tail Position:') + '<br><select id="cs-sc-in-tail" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"><option value="left">' + (ar ? 'أيسر (X ≤ k)' : 'Left (X ≤ k)') + '</option><option value="right">' + (ar ? 'أيمن (X ≥ k)' : 'Right (X ≥ k)') + '</option></select></label>',
         '</div>',
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">',
-          '<label style="font-size:.75rem;color:#64748b">Mean (μ):<br><input type="number" id="cs-sc-in-mu" value="0" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Std Dev (σ):<br><input type="number" id="cs-sc-in-sigma" value="1" min="0.0001" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-in-mu" style="font-size:.75rem;color:#64748b">' + (ar ? 'المتوسط (μ):' : 'Mean (μ):') + '<br><input type="number" id="cs-sc-in-mu" value="0" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-in-sigma" style="font-size:.75rem;color:#64748b">' + (ar ? 'الانحراف (σ):' : 'Std Dev (σ):') + '<br><input type="number" id="cs-sc-in-sigma" value="1" min="0.0001" step="any" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
         '</div>',
       '</div>',
       '<div id="cs-sc-in-res" style="background:#e0e7ff;border:1px solid #c7d2fe;padding:10px;border-radius:8px;margin-bottom:10px;font-family:monospace;font-size:.9rem;font-weight:700;color:#1e1b4b;text-align:center"></div>'
@@ -493,13 +505,15 @@
   }
 
   function _renderBinom(body){
+    var ar = (document.documentElement && document.documentElement.lang === 'ar') ||
+      (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
     body.innerHTML = [
       '<div style="background:#fff;padding:10px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:10px">',
-        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">Binomial Distribution: X ~ B(n, p)</div>',
+        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">' + (ar ? 'توزيع ذو الحدين: X ~ B(n, p)' : 'Binomial Distribution: X ~ B(n, p)') + '</div>',
         '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">',
-          '<label style="font-size:.75rem;color:#64748b">Trials (n):<br><input type="number" id="cs-sc-bn-n" value="10" min="1" max="500" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Prob (p):<br><input type="number" id="cs-sc-bn-p" value="0.5" min="0" max="1" step="0.05" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Successes (k):<br><input type="number" id="cs-sc-bn-k" value="5" min="0" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-bn-n" style="font-size:.75rem;color:#64748b">' + (ar ? 'المحاولات (n):' : 'Trials (n):') + '<br><input type="number" id="cs-sc-bn-n" value="10" min="1" max="500" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-bn-p" style="font-size:.75rem;color:#64748b">' + (ar ? 'الاحتمال (p):' : 'Prob (p):') + '<br><input type="number" id="cs-sc-bn-p" value="0.5" min="0" max="1" step="0.05" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-bn-k" style="font-size:.75rem;color:#64748b">' + (ar ? 'النجاحات (k):' : 'Successes (k):') + '<br><input type="number" id="cs-sc-bn-k" value="5" min="0" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
         '</div>',
       '</div>',
       '<div id="cs-sc-bn-res" style="background:#e0e7ff;border:1px solid #c7d2fe;padding:10px;border-radius:8px;margin-bottom:10px;font-family:monospace;font-size:.85rem;color:#1e1b4b;line-height:1.6"></div>'
@@ -535,12 +549,14 @@
   }
 
   function _renderPoisson(body){
+    var ar = (document.documentElement && document.documentElement.lang === 'ar') ||
+      (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar');
     body.innerHTML = [
       '<div style="background:#fff;padding:10px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:10px">',
-        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">Poisson Distribution: X ~ Po(λ)</div>',
+        '<div style="font-weight:700;font-size:.82rem;margin-bottom:8px;color:#1e3a8a">' + (ar ? 'توزيع بواسون: X ~ Po(λ)' : 'Poisson Distribution: X ~ Po(λ)') + '</div>',
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">',
-          '<label style="font-size:.75rem;color:#64748b">Rate (λ):<br><input type="number" id="cs-sc-ps-lam" value="2.5" min="0.0001" step="0.5" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
-          '<label style="font-size:.75rem;color:#64748b">Occurrences (k):<br><input type="number" id="cs-sc-ps-k" value="2" min="0" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-ps-lam" style="font-size:.75rem;color:#64748b">' + (ar ? 'المعدل (λ):' : 'Rate (λ):') + '<br><input type="number" id="cs-sc-ps-lam" value="2.5" min="0.0001" step="0.5" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
+          '<label for="cs-sc-ps-k" style="font-size:.75rem;color:#64748b">' + (ar ? 'التكرار (k):' : 'Occurrences (k):') + '<br><input type="number" id="cs-sc-ps-k" value="2" min="0" style="width:100%;padding:4px 6px;border:1px solid #cbd5e1;border-radius:4px;font-size:.8rem;box-sizing:border-box"></label>',
         '</div>',
       '</div>',
       '<div id="cs-sc-ps-res" style="background:#e0e7ff;border:1px solid #c7d2fe;padding:10px;border-radius:8px;margin-bottom:10px;font-family:monospace;font-size:.85rem;color:#1e1b4b;line-height:1.6"></div>'
@@ -791,8 +807,11 @@
       var dx = clientX - startX;
       var dy = clientY - startY;
 
-      var newLeft = Math.max(10, Math.min(window.innerWidth - 80, initLeft + dx));
-      var newTop = Math.max(10, Math.min(window.innerHeight - 50, initTop + dy));
+      var boxW = container.offsetWidth || 300;
+      var maxLeft = Math.max(8, window.innerWidth - Math.min(boxW, window.innerWidth - 16) - 8);
+      var maxTop = Math.max(8, window.innerHeight - 56);
+      var newLeft = Math.max(8, Math.min(maxLeft, initLeft + dx));
+      var newTop = Math.max(8, Math.min(maxTop, initTop + dy));
 
       container.style.left = newLeft + 'px';
       container.style.top = newTop + 'px';

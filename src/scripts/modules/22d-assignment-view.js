@@ -22,7 +22,7 @@ Object.assign(_TT_STR.ar,{
 });
 
 var LTR=['A','B','C','D','E','F'];
-function keys(){ var loc=typeof location!=='undefined'?location:(typeof window!=='undefined'&&window.location?window.location:{search:''}); var m=/[?&]assign=([0-9a-z.]+)/.exec(loc.search); return m?m[1].split('.').filter(Boolean):null; }
+function keys(){ var loc=typeof location!=='undefined'?location:(typeof window!=='undefined'&&window.location?window.location:{search:''}); var m=/[?&]assign=([0-9a-zA-Z_.:-]+)/.exec(loc.search); return m?m[1].split('.').filter(Boolean):null; }
 function attr(s){ return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/\n/g,' '); }
 function bankOf(viewId){
   var b=window.fullExamBank&&window.fullExamBank[viewId];
@@ -31,8 +31,14 @@ function bankOf(viewId){
 }
 
 function render(){
-  var want=keys(), viewId=window.CLIPSAT_TRACK, main=viewId&&document.getElementById('view-'+viewId);
-  if(!want||!main||!window.CS_loadTrackBank) return;
+  var rawWant=keys(), viewId=window.CLIPSAT_TRACK, main=viewId&&document.getElementById('view-'+viewId);
+  if(!rawWant||!main||!window.CS_loadTrackBank) return;
+  var specs=rawWant.map(function(tok){
+    var p=tok.indexOf(':');
+    return p!==-1 ? { track:tok.slice(0,p), key:tok.slice(p+1) } : { track:viewId, key:tok };
+  });
+  var tracksNeeded=[];
+  specs.forEach(function(sp){ if(sp.track && tracksNeeded.indexOf(sp.track)===-1) tracksNeeded.push(sp.track); });
   var M=window.CSQuizMath||function(s){ return String(s||''); };
   var box=document.getElementById('cs-assignment');
   if(!box){
@@ -45,12 +51,20 @@ function render(){
   }
   box.innerHTML='<p class="cq-msg">'+_tt('avLoading')+'</p>';
   box.scrollIntoView({block:'start'});
-  window.CS_loadTrackBank(viewId).then(function(){
-    var bank=bankOf(viewId);
-    if(!bank){ box.innerHTML='<p class="cq-msg">'+_tt('avNoBank')+'</p>'; return; }
-    var byKey={};
-    bank.forEach(function(q){ var k=window.CSAssignKey(q); if(!(k in byKey)) byKey[k]=q; });
-    var qs=want.map(function(k){ return byKey[k]; }).filter(Boolean), missing=want.length-qs.length;
+  Promise.all(tracksNeeded.map(function(tr){ return window.CS_loadTrackBank(tr).catch(function(){ return null; }); })).then(function(){
+    var mapsByTrack={};
+    var hasAnyBank=false;
+    tracksNeeded.forEach(function(tr){
+      var bank=bankOf(tr);
+      if(!bank) return;
+      hasAnyBank=true;
+      var byKey={};
+      bank.forEach(function(q){ var k=window.CSAssignKey(q); if(!(k in byKey)) byKey[k]=q; });
+      mapsByTrack[tr]=byKey;
+    });
+    if(!hasAnyBank){ box.innerHTML='<p class="cq-msg">'+_tt('avNoBank')+'</p>'; return; }
+    var qs=specs.map(function(sp){ return (mapsByTrack[sp.track] && mapsByTrack[sp.track][sp.key]) || null; }).filter(Boolean);
+    var missing=specs.length-qs.length;
     if(!qs.length){ box.innerHTML='<p class="cq-msg">'+_tt('avNone')+'</p>'; return; }
     var figs=[], nMcq=0;
     var h='<div class="cq-paper"><div class="cq-head"><span>'+_tt('avTitle')+'</span><span class="cq-meta">'+qs.length+' · '+_tt('questionsWord')+'</span></div>'

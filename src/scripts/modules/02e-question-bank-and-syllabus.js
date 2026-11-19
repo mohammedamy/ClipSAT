@@ -515,9 +515,9 @@
   });
 
   /* ===================== SHARED HELPERS ===================== */
-  window._shuffle = function(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;};
+  window._shuffle = function(arr, rng){var r=typeof rng==='function'?rng:Math.random;var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;};
 
-  window._shuffleQ = function(q){
+  window._shuffleQ = function(q, rng){
     if(!q) return q;
     var choicesKey = q.choices ? 'choices' : (q.options ? 'options' : null);
     if(!choicesKey || !q[choicesKey] || q[choicesKey].length < 2) return q;
@@ -529,7 +529,7 @@
     var answerKey = (typeof q.answer!=='undefined') ? 'answer' : (typeof q.ans!=='undefined' ? 'ans' : (typeof q.correct!=='undefined' ? 'correct' : null));
     var origAns = answerKey ? q[answerKey] : 0;
     if(typeof origAns !== 'number') return q;
-    var order = window._shuffle(q[choicesKey].map(function(_,i){return i;}));
+    var order = window._shuffle(q[choicesKey].map(function(_,i){return i;}), rng);
     var copy = {};
     for(var k in q) if(Object.prototype.hasOwnProperty.call(q,k)) copy[k]=q[k];
     copy[choicesKey] = order.map(function(i){return q[choicesKey][i];});

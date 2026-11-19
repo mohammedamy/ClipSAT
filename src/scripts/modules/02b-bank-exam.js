@@ -1738,7 +1738,28 @@
       return s;
     }
     function _mjRun(el){if(!el)return;function _t(){try{if(window.MathJax){if(typeof MathJax.typesetPromise==='function')MathJax.typesetPromise([el]).catch(function(){});else if(typeof MathJax.typeset==='function')MathJax.typeset([el]);else setTimeout(_t,400);}else{setTimeout(_t,400);}}catch(e){}}setTimeout(_t,80);setTimeout(_t,800);}
-    var shuffle=window._shuffle;
+    var formSeedEl = (btn && btn.closest && (btn.closest('.testgen') || btn.closest('.chapter') || btn.parentElement))
+      ? (btn.closest('.testgen') || btn.closest('.chapter') || btn.parentElement).querySelector('.tg-form-seed')
+      : null;
+    if(!formSeedEl && typeof document !== 'undefined') formSeedEl = document.querySelector('.tg-form-seed');
+    var formCode = formSeedEl ? String(formSeedEl.value || '').trim().toUpperCase() : '';
+    var seededRng = null;
+    if(formCode === 'A' || formCode === 'B' || formCode === 'C'){
+      var seedStr = String(viewId || '') + ':' + String(examName || '') + ':Form-' + formCode;
+      var hSeed = 2166136261;
+      for(var si = 0; si < seedStr.length; si++){
+        hSeed ^= seedStr.charCodeAt(si);
+        hSeed = Math.imul(hSeed, 16777619);
+      }
+      var _ms = hSeed >>> 0;
+      seededRng = function(){
+        _ms = (_ms + 0x6D2B79F5) >>> 0;
+        var t = Math.imul(_ms ^ (_ms >>> 15), 1 | _ms);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    var shuffle = function(arr){ return window._shuffle ? window._shuffle(arr, seededRng) : arr.slice(); };
     /* Track questions already drawn by an earlier section/part of THIS exam
        (fresh per genFullExam call) so the same question can never appear
        twice in one generated paper — previously each call re-shuffled the
@@ -1873,7 +1894,7 @@
       picked = _sortByDiffProgression(picked);
       return picked.map(function(q){
         var isFixed = q.fixedChoices || q.topic_id === 'qud-compare' || /Quantitative Comparison/i.test(q.domain||'') || /قارن بين|القيمة الأولى/.test(q.text||q.q||'');
-        return (!isFixed && window._shuffleQ) ? window._shuffleQ(q) : q;
+        return (!isFixed && window._shuffleQ) ? window._shuffleQ(q, seededRng) : q;
       });
     }
     /* A written-answer part takes the bank's free-response items first, then MCQ items that still
@@ -2078,7 +2099,8 @@
     if(!spec){
       var totalQ=sectionTitles.length*qPerSection;
       var h='<div class="full-exam-paper">';
-      h+='<div class="fep-header"><div class="fep-top-bar"><span class="fep-logo-tag">ClipSAT</span><span class="fep-badge">Practice Examination</span></div>';
+      var formBadgeHtml = formCode ? (' <span class="fep-badge fep-form-badge" style="margin-inline-start:6px;background:var(--indigo,#1e3a8a);color:#fff">Form '+esc(formCode)+'</span>') : '';
+      h+='<div class="fep-header"><div class="fep-top-bar"><span class="fep-logo-tag">ClipSAT</span><span class="fep-badge">Practice Examination</span>'+formBadgeHtml+'</div>';
       h+='<h1 class="fep-title">'+esc(examName)+'</h1>';
       if(viewId === 'qudrat' || viewId === 'tahsili'){
         var curLang = 'both';
@@ -2221,7 +2243,8 @@
     h+='<div class="fep-official-bar">'+esc(spec.org||'ClipSAT Practice')+'</div>';
     h+='<div class="fep-header">';
     h+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">'+'<img src="'+((document.getElementById('site-logo-img')||{}).src||'/clipsat-mark.png')+'" class="fep-logo-img" alt="ClipSAT Logo"></div>';
-    h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">'+(isIBExam?'IB DP Official Format Examination':'Practice Examination')+'</span></div>';
+    var formBadgeHtmlSpec = formCode ? (' <span class="fep-badge fep-form-badge" style="margin-inline-start:6px;background:var(--indigo,#1e3a8a);color:#fff">Form '+esc(formCode)+'</span>') : '';
+    h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">'+(isIBExam?'IB DP Official Format Examination':'Practice Examination')+'</span>'+formBadgeHtmlSpec+'</div>';
     h+='<h1 class="fep-title">'+esc(spec.title)+'</h1>';
     var _menaBiPrint = { qudrat:1, tahsili:1, gaten:1, 'gat-en':1, 'saat-en':1, sat:1, est:1, est2:1, est2l2:1, igcse:1 };
     if(_menaBiPrint[viewId]){

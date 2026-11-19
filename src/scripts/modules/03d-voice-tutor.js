@@ -713,10 +713,78 @@
     });
   }
 
+  var _isPaused = false;
+  function _voiceQuotaText(){
+    try {
+      var store = JSON.parse(localStorage.getItem('clipsat_ai_daily_q_v1') || '{}');
+      var today = new Date().toISOString().slice(0, 10);
+      var cap = 20;
+      try {
+        var cRaw = localStorage.getItem('clipsat_ai_cap_v1');
+        if(cRaw){ var cp = parseInt(cRaw, 10); if(cp > 0) cap = cp; }
+      } catch(_){}
+      var rec = (store && store.local && store.local.date === today) ? store.local : null;
+      var used = rec ? (rec.used || 0) : 0;
+      var rem = Math.max(0, cap - used);
+      var isAr = (document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl'));
+      return isAr ? ('رصيد الصوت: ' + rem + '/' + cap) : ('Quota: ' + rem + '/' + cap);
+    } catch(_){ return ''; }
+  }
+  function _syncVoiceBar(active){
+    if(typeof document === 'undefined' || !document.body) return;
+    var bar = document.getElementById('cs-voice-bar');
+    if(!active){
+      if(bar) bar.style.display = 'none';
+      _isPaused = false;
+      return;
+    }
+    var isAr = (document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl'));
+    if(!bar){
+      bar = document.createElement('div');
+      bar.id = 'cs-voice-bar';
+      bar.setAttribute('role', 'region');
+      bar.setAttribute('aria-label', isAr ? 'أداة التحكم في الصوت' : 'Voice Tutor Controls');
+      bar.style.cssText = 'position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9950;background:var(--indigo,#1e3a6e);color:#fff;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:6px;box-shadow:0 8px 24px rgba(0,0,0,.28);font-size:12px;flex-wrap:wrap;max-width:94vw;';
+      document.body.appendChild(bar);
+    }
+    var qTxt = _voiceQuotaText();
+    var rCur = Math.round(_speechRate * 100) / 100;
+    bar.innerHTML =
+      '<span style="font-weight:700;padding-inline:4px">🔊</span>' +
+      [0.8, 1, 1.25].map(function(rt){
+        var on = Math.abs(rCur - rt) < 0.08;
+        return '<button type="button" class="cs-vb-rate" data-rate="' + rt + '" style="border:1px solid rgba(255,255,255,.35);background:' + (on ? '#f59e0b' : 'transparent') + ';color:' + (on ? '#0f172a' : '#fff') + ';border-radius:14px;padding:2px 8px;font-size:11px;font-weight:700;cursor:pointer">' + rt + '×</button>';
+      }).join('') +
+      '<button type="button" id="cs-vb-pause" style="border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.14);color:#fff;border-radius:14px;padding:2px 9px;font-size:11px;font-weight:700;cursor:pointer">' + (_isPaused ? (isAr ? '▶ استئناف' : '▶ Resume') : (isAr ? '⏸ إيقاف مؤقت' : '⏸ Pause')) + '</button>' +
+      '<button type="button" id="cs-vb-stop" style="border:none;background:#dc2626;color:#fff;border-radius:14px;padding:2px 9px;font-size:11px;font-weight:700;cursor:pointer">' + (isAr ? '⏹ إيقاف' : '⏹ Stop') + '</button>' +
+      (qTxt ? '<span style="opacity:.9;font-size:11px;padding-inline-start:4px">' + qTxt + '</span>' : '');
+    bar.style.display = 'flex';
+    bar.querySelectorAll('.cs-vb-rate').forEach(function(rb){
+      rb.addEventListener('click', function(){
+        _speechRate = parseFloat(rb.getAttribute('data-rate')) || 1;
+        try { localStorage.setItem('clipsat_voice_rate', String(_speechRate)); } catch(_){}
+        _syncVoiceBar(true);
+      });
+    });
+    var pBtn = bar.querySelector('#cs-vb-pause');
+    if(pBtn) pBtn.addEventListener('click', function(){
+      _isPaused = !_isPaused;
+      try {
+        if(_cloudAudio){ if(_isPaused) _cloudAudio.pause(); else _cloudAudio.play(); }
+        else if(_hasSpeechSupport()){ if(_isPaused) window.speechSynthesis.pause(); else window.speechSynthesis.resume(); }
+      } catch(_){}
+      _syncVoiceBar(true);
+    });
+    var sBtn = bar.querySelector('#cs-vb-stop');
+    if(sBtn) sBtn.addEventListener('click', stop);
+  }
+
   function stop(){
     _playToken++;
     _utteranceQueue = [];
     _isSpeaking = false;
+    _isPaused = false;
+    _syncVoiceBar(false);
     if(_cloudAudio){
       try {
         _cloudAudio.onended = null;
@@ -774,8 +842,10 @@
     if(token !== _playToken) return;
     var finishedBtn = _activeBtn;
     _isSpeaking = false;
+    _isPaused = false;
     _activeBtn = null;
     _cloudAudio = null;
+    _syncVoiceBar(false);
     if(finishedBtn) _setBtnState(finishedBtn, false);
     if(typeof opts.onEnd === 'function') opts.onEnd();
   }
@@ -896,7 +966,9 @@
     var token = _playToken;
     _activeBtn = opts.btn || null;
     _isSpeaking = true;
+    _isPaused = false;
     if(_activeBtn) _setBtnState(_activeBtn, true);
+    _syncVoiceBar(true);
 
     if(useCloud) _speakCloud(spokenText, lang, opts, token);
     else _speakBrowser(spokenText, lang, opts, token);

@@ -26,7 +26,41 @@
         level = currentLevel;
         this.triggerLevelUp();
       }
+      this.checkMilestones();
       this.updateUI();
+    },
+
+    checkMilestones: function(triggerTag) {
+      var awarded = {};
+      try { awarded = JSON.parse(localStorage.getItem('clipsat_badges') || '{}'); } catch(e){ awarded = {}; }
+      var rules = [
+        { id: 'xp_100', ok: xp >= 100, label: '100 XP Scholar' },
+        { id: 'xp_500', ok: xp >= 500, label: '500 XP Problem Solver' },
+        { id: 'xp_1500', ok: xp >= 1500, label: '1500 XP Olympiad Tier' },
+        { id: 'streak_3', ok: streak >= 3, label: '3-Day Study Streak' },
+        { id: 'streak_7', ok: streak >= 7, label: '7-Day Mastery Streak' },
+        { id: 'first_diag', ok: triggerTag === 'first_diag', label: 'Diagnostic Complete' },
+        { id: 'first_mock', ok: triggerTag === 'first_mock', label: 'CBT Mock Finisher' }
+      ];
+      var newly = [];
+      for (var i = 0; i < rules.length; i++) {
+        if (rules[i].ok && !awarded[rules[i].id]) {
+          awarded[rules[i].id] = Date.now();
+          newly.push(rules[i].label);
+        }
+      }
+      if (newly.length) {
+        try { localStorage.setItem('clipsat_badges', JSON.stringify(awarded)); } catch(e){}
+        if (typeof document !== 'undefined' && document.body) {
+          var t = document.createElement('div');
+          t.className = 'level-up-toast';
+          t.textContent = '🏅 Badge Unlocked: ' + newly[0];
+          document.body.appendChild(t);
+          setTimeout(function() { t.classList.add('show'); }, 80);
+          setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 500); }, 3200);
+        }
+      }
+      return awarded;
     },
 
     updateUI: function() {
@@ -1022,23 +1056,27 @@
        C.  CURRICULUM TEXTBOOK MAPPER
        ══════════════════════════════════════════════════════════════════════════ */
     mapCurriculum: function(val) {
-      var railLinks = document.querySelectorAll('aside.rail a');
-      if (val === 'default') {
-        railLinks.forEach(function(link) { link.style.display = 'block'; });
+      var railLinks = document.querySelectorAll('aside.rail a, .nav-tree-track');
+      if (!val || val === 'default' || val === 'all') {
+        railLinks.forEach(function(link) { link.style.display = ''; });
         return;
       }
-      var allowedChapters = {
-        'reveal-precalc':    ['algebra', 'geo', 'alg2', 'precalc', 'calculus'],
-        'cambridge-igcse':   ['algebra', 'geo', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level'],
-        'collegeboard-sat':  ['algebra', 'geo', 'alg2', 'precalc', 'sat', 'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2', 'apab', 'apbc', 'appc', 'apstats'],
-        'ib-diploma':        ['algebra', 'geo', 'precalc', 'calculus', 'ibsl', 'ibhl'],
-        'mena-qiyas':        ['algebra', 'geo', 'qudrat', 'tahsili', 'gaten'],
-        'university-stem':   ['calculus', 'linalg', 'mvc', 'odes', 'mathai', 'olympiad']
+      var allowedTracks = {
+        'reveal-precalc':   ['algebra', 'geo', 'alg2', 'precalc', 'calculus'],
+        'cambridge-igcse':  ['algebra', 'geo', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level', 'olympiad'],
+        'collegeboard-sat': ['algebra', 'geo', 'alg2', 'precalc', 'sat', 'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2', 'apab', 'apbc', 'appc', 'apstats'],
+        'ib-diploma':       ['algebra', 'geo', 'alg2', 'precalc', 'calculus', 'ibsl', 'ibhl', 'olympiad'],
+        'mena-qiyas':       ['algebra', 'geo', 'alg2', 'qudrat', 'tahsili', 'gaten', 'est', 'est2', 'est2l2', 'olympiad'],
+        'university-stem':  ['precalc', 'calculus', 'mvc', 'linalg', 'odes', 'mathai', 'apab', 'apbc', 'apstats', 'olympiad']
       }[val] || [];
       railLinks.forEach(function(link) {
-        var m = (link.getAttribute('onclick') || '').match(/showView\('([^']+)'\)/);
-        var viewId = m ? m[1] : null;
-        link.style.display = (viewId && allowedChapters.indexOf(viewId) === -1) ? 'none' : 'block';
+        var viewId = link.getAttribute('data-track') || null;
+        if (!viewId) {
+          var m = (link.getAttribute('onclick') || '').match(/showView\('([^']+)'\)/);
+          if (!m) m = (link.getAttribute('href') || '').match(/^\/(?:ar\/)?([a-z0-9]+)\/?$/i);
+          viewId = m ? m[1] : null;
+        }
+        link.style.display = (viewId && allowedTracks.indexOf(viewId) === -1) ? 'none' : '';
       });
     }
   };

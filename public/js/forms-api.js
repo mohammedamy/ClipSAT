@@ -46,11 +46,19 @@
     return { 'Authorization': 'Bearer ' + t, 'Content-Type': 'application/json' };
   }
 
-  function apiFetch(url, opts) {
+  function apiFetch(url, opts, attempt) {
+    attempt = attempt || 0;
     opts = opts || {};
-    opts.headers = Object.assign({}, authHeaders(), opts.headers || {});
-    return fetch(url, opts).then(function (r) {
+    var headers = Object.assign({}, authHeaders(), opts.headers || {});
+    var reqOpts = Object.assign({}, opts, { headers: headers });
+    return fetch(url, reqOpts).then(function (r) {
       if (r.ok) return r.status === 204 ? {} : r.json();
+      if ((r.status === 429 || r.status === 503) && attempt < 3) {
+        var waitMs = Math.round(500 * Math.pow(2, attempt) + Math.random() * 250);
+        return new Promise(function (resolve) { setTimeout(resolve, waitMs); }).then(function () {
+          return apiFetch(url, opts, attempt + 1);
+        });
+      }
       return r.json().catch(function () { return {}; }).then(function (body) {
         var msg = (body && body.error && body.error.message) || ('HTTP ' + r.status);
         throw new Error('Google Forms API: ' + msg);
@@ -448,10 +456,44 @@
     });
   }
 
+  function _defaultProgressUI() {
+    var boxId = 'cs-forms-progress-toast';
+    return {
+      update: function (done, total, label) {
+        if (typeof document === 'undefined' || !document.body) return;
+        var el = document.getElementById(boxId);
+        if (!el) {
+          el = document.createElement('div');
+          el.id = boxId;
+          el.setAttribute('role', 'status');
+          el.setAttribute('aria-live', 'polite');
+          el.style.cssText = 'position:fixed;bottom:18px;right:18px;z-index:99990;background:#1e3a6e;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:12.5px;min-width:220px;max-width:300px;';
+          el.innerHTML = '<div class="cs-fp-lbl" style="font-weight:700;margin-bottom:5px"></div><div style="height:6px;background:rgba(255,255,255,.22);border-radius:4px;overflow:hidden"><div class="cs-fp-fill" style="height:100%;width:0;background:#f59e0b;transition:width .2s"></div></div>';
+          document.body.appendChild(el);
+        }
+        var pct = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 50;
+        var lblEl = el.querySelector('.cs-fp-lbl');
+        var fillEl = el.querySelector('.cs-fp-fill');
+        if (lblEl) lblEl.textContent = label || ('Preparing Google Form (' + done + '/' + total + ')…');
+        if (fillEl) fillEl.style.width = pct + '%';
+      },
+      done: function () {
+        if (typeof document === 'undefined') return;
+        var el = document.getElementById(boxId);
+        if (el) setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 900);
+      }
+    };
+  }
+
   function createFromQuiz(quizData, onProgress) {
     var title = quizData.title || 'ClipSAT Quiz';
     var questions = quizData.questions || [];
     var mathImg = window.ClipSATMathImage;
+    var uiProg = typeof onProgress === 'function' ? null : _defaultProgressUI();
+    function reportProg(done, total, stage) {
+      if (typeof onProgress === 'function') { onProgress(done, total, stage); }
+      else if (uiProg) { uiProg.update(done, total, stage); }
+    }
 
     // Google Forms' Option object genuinely does support an image
     // (Option.image, alongside the required text value) — not just the
@@ -489,10 +531,11 @@
     var imagesReady = mapLimit(jobs, 4, function (job) {
       return mathImg.renderQuestionImage(job.text, job.figure, job.figureHtml).then(function (img) {
         doneImages++;
-        if (onProgress) onProgress(doneImages, totalImages);
+        reportProg(doneImages, totalImages, 'Rendering equations & diagrams (' + doneImages + '/' + totalImages + ')…');
         return img;
       });
     }).then(function (results) {
+      reportProg(totalImages, Math.max(1, totalImages), 'Building Google Form questions…');
       // Index results back into {stemImages[qi], choiceImages[qi][ci]} so the
       // build loop below can look each one up in O(1) instead of re-scanning.
       // A job whose result is null despite needsImage() saying yes is a real
@@ -600,10 +643,17 @@
           body: JSON.stringify({ requests: requests })
         }).then(function () {
           return apiFetch(API + '/' + formId).then(function (full) {
+            if (uiProg) uiProg.done();
             return { formId: formId, responderUri: full.responderUri, editUri: 'https://docs.google.com/forms/d/' + formId + '/edit',
               failedImages: imgs.failedImages, totalImages: imgs.totalImages };
           });
+        }).catch(function (err) {
+          if (uiProg) uiProg.done();
+          throw err;
         });
+      }).catch(function (err) {
+        if (uiProg) uiProg.done();
+        throw err;
       });
     });
   }

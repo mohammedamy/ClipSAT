@@ -1,28 +1,28 @@
-(function(){
+(function () {
   /* Time options: [label, seconds] */
-  var TIME_OPTS=[
+  var TIME_OPTS = [
     ['No limit', 0],
-    ['5 min',  300],
+    ['5 min', 300],
     ['10 min', 600],
     ['15 min', 900],
-    ['20 min',1200],
-    ['30 min',1800],
-    ['45 min',2700],
-    ['1 hour',3600],
+    ['20 min', 1200],
+    ['30 min', 1800],
+    ['45 min', 2700],
+    ['1 hour', 3600],
     ['1.5 h', 5400],
-    ['2 hours',7200]
+    ['2 hours', 7200]
   ];
 
   /* Inject selector into every quiz bar */
-  function injectTimerSelectors(){
-    document.querySelectorAll('.ch-quiz-bar').forEach(function(bar){
-      if(bar.querySelector('.cq-time-sel-wrap')) return; /* already done */
+  function injectTimerSelectors() {
+    document.querySelectorAll('.ch-quiz-bar').forEach(function (bar) {
+      if (bar.querySelector('.cq-time-sel-wrap')) return; /* already done */
       var wrap = document.createElement('label');
       wrap.className = 'cq-time-sel-wrap';
       wrap.innerHTML = 'Timer ';
       var sel = document.createElement('select');
       sel.className = 'cq-timer-sel';
-      TIME_OPTS.forEach(function(o){
+      TIME_OPTS.forEach(function (o) {
         var opt = document.createElement('option');
         opt.value = o[1];
         opt.textContent = o[0];
@@ -33,23 +33,23 @@
          .ch-quiz-controls, not a direct child of bar, so insert
          relative to its real parent) */
       var btn = bar.querySelector('.cq-btn');
-      if(btn && btn.parentNode) btn.parentNode.insertBefore(wrap, btn);
+      if (btn && btn.parentNode) btn.parentNode.insertBefore(wrap, btn);
       else bar.appendChild(wrap);
     });
   }
 
   /* Active timer state */
   var _cqTimer = null;  /* interval */
-  var _cqSecs  = 0;
+  var _cqSecs = 0;
   var _cqTotal = 0;
 
-  function clearCqTimer(){
-    if(_cqTimer){ clearInterval(_cqTimer); _cqTimer=null; }
+  function clearCqTimer() {
+    if (_cqTimer) { clearInterval(_cqTimer); _cqTimer = null; }
   }
 
-  function startCqTimer(out, secs){
+  function startCqTimer(out, secs) {
     clearCqTimer();
-    _cqSecs  = secs;
+    _cqSecs = secs;
     _cqTotal = secs;
 
     /* Build timer bar at the top of the quiz output */
@@ -60,21 +60,21 @@
       + '<span class="cq-timer-digits" id="cq-tdigits"></span>'
       + '<div class="cq-timer-track"><div class="cq-timer-fill" id="cq-tfill" style="width:100%"></div></div>';
     var paper = out.querySelector('.cq-paper');
-    if(paper) paper.insertBefore(bar, paper.firstChild);
+    if (paper) paper.insertBefore(bar, paper.firstChild);
 
-    function tick(){
+    function tick() {
       _cqSecs--;
-      var m=Math.floor(Math.max(0,_cqSecs)/60), s=Math.max(0,_cqSecs)%60;
+      var m = Math.floor(Math.max(0, _cqSecs) / 60), s = Math.max(0, _cqSecs) % 60;
       var digs = document.getElementById('cq-tdigits');
       var fill = document.getElementById('cq-tfill');
       var tbar = document.getElementById('cq-active-timer');
-      if(digs) digs.textContent = (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
-      if(fill) fill.style.width = Math.max(0,(_cqSecs/_cqTotal*100))+'%';
-      if(tbar && _cqSecs <= 60) tbar.classList.add('warn');
-      if(_cqSecs <= 0){
+      if (digs) digs.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      if (fill) fill.style.width = Math.max(0, (_cqSecs / _cqTotal * 100)) + '%';
+      if (tbar && _cqSecs <= 60) tbar.classList.add('warn');
+      if (_cqSecs <= 0) {
         clearCqTimer();
         /* auto-lock: mark all unanswered items as timed-out (0 credit) */
-        out.querySelectorAll('.cq-item:not(.cq-done)').forEach(function(item){
+        out.querySelectorAll('.cq-item:not(.cq-done)').forEach(function (item) {
           item.classList.add('cq-done', 'cq-timed-out');
           var ans=parseInt(item.getAttribute('data-ans'),10);
           var opts=item.querySelectorAll('.cq-opt');
@@ -87,19 +87,19 @@
           var sol=item.querySelector('.cq-sol-box');
           if(sol) sol.style.display='block';
         });
-        if(tbar){ tbar.style.background='#7f1d1d'; tbar.innerHTML='<span>&#9201; Time\'s up! Exam auto-submitted.</span>'; }
+        if (tbar) { tbar.style.background = '#7f1d1d'; tbar.innerHTML = '<span>&#9201; Time\'s up! Exam auto-submitted.</span>'; }
         /* recalculate score — unanswered timed-out items receive 0 credit */
-        var paper2=out.querySelector('.cq-paper');
-        if(paper2){
-          var total2=paper2.querySelectorAll('.cq-item').length;
-          var correct2=0;
-          paper2.querySelectorAll('.cq-item.cq-done:not(.cq-timed-out)').forEach(function(it){
-            if(!it.querySelector('.cq-opt.cq-wrong')) correct2++;
+        var paper2 = out.querySelector('.cq-paper');
+        if (paper2) {
+          var total2 = paper2.querySelectorAll('.cq-item').length;
+          var correct2 = 0;
+          paper2.querySelectorAll('.cq-item.cq-done:not(.cq-timed-out)').forEach(function (it) {
+            if (!it.querySelector('.cq-opt.cq-wrong')) correct2++;
           });
-          var sv=paper2.querySelector('.cq-sv');
-          if(sv) sv.textContent=correct2;
-          var av=paper2.querySelector('.cq-ans-v');
-          if(av) av.textContent=total2;
+          var sv = paper2.querySelector('.cq-sv');
+          if (sv) sv.textContent = correct2;
+          var av = paper2.querySelector('.cq-ans-v');
+          if (av) av.textContent = total2;
         }
       }
     }
@@ -108,28 +108,28 @@
   }
 
   /* Subscribe to clipsat:quiz-start to start timer after rendering */
-  document.addEventListener('clipsat:quiz-start', function(ev){
+  document.addEventListener('clipsat:quiz-start', function (ev) {
     clearCqTimer();
     var d = (ev && ev.detail) || {};
     var btn = d.btn;
-    if(!btn) return;
+    if (!btn) return;
     var bar = btn.closest('.ch-quiz-bar');
     var sel = bar && bar.querySelector('.cq-timer-sel');
-    var secs = sel ? parseInt(sel.value,10) : 0;
-    if(secs > 0){
+    var secs = sel ? parseInt(sel.value, 10) : 0;
+    if (secs > 0) {
       var wrap = d.wrap || btn.closest('.ch-quiz-wrap');
-      var out  = d.out || (wrap && wrap.querySelector('.cq-out'));
-      if(out){
-        setTimeout(function(){ startCqTimer(out, secs); }, 600);
+      var out = d.out || (wrap && wrap.querySelector('.cq-out'));
+      if (out) {
+        setTimeout(function () { startCqTimer(out, secs); }, 600);
       }
     }
   });
 
   /* Ensure Chapter Quiz is always positioned at the very end of each lesson */
-  function ensureQuizAtEndOfLessons(){
-    document.querySelectorAll('section.chapter').forEach(function(sec){
+  function ensureQuizAtEndOfLessons() {
+    document.querySelectorAll('section.chapter').forEach(function (sec) {
       var qWrap = sec.querySelector('.ch-quiz-wrap');
-      if(qWrap && sec.lastElementChild !== qWrap){
+      if (qWrap && sec.lastElementChild !== qWrap) {
         sec.appendChild(qWrap);
       }
     });
@@ -137,24 +137,24 @@
   window.ensureQuizAtEndOfLessons = ensureQuizAtEndOfLessons;
 
   /* Run on load + after every showView and goChapter (navigation) */
-  function init(){
+  function init() {
     ensureQuizAtEndOfLessons();
     injectTimerSelectors();
   }
-  if(document.readyState==='loading'){
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     setTimeout(init, 300);
   }
   /* Re-inject after view and chapter changes via custom events */
-  document.addEventListener('clipsat:view-change', function(){
-    setTimeout(function(){
+  document.addEventListener('clipsat:view-change', function () {
+    setTimeout(function () {
       ensureQuizAtEndOfLessons();
       injectTimerSelectors();
     }, 300);
   });
-  document.addEventListener('clipsat:chapter-change', function(){
-    setTimeout(function(){
+  document.addEventListener('clipsat:chapter-change', function () {
+    setTimeout(function () {
       ensureQuizAtEndOfLessons();
       injectTimerSelectors();
     }, 400);

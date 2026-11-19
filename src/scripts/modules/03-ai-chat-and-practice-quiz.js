@@ -468,6 +468,9 @@
 
   function openPanel(){
     positionPanelNearFab();
+    panel.setAttribute('role','dialog');
+    panel.setAttribute('aria-modal','true');
+    if(!panel.getAttribute('aria-label')) panel.setAttribute('aria-label', (window.i18n && window.i18n.getLocale && window.i18n.getLocale()==='ar') ? 'معلم ClipSAT الذكي' : 'ClipSAT AI Math Tutor');
     panel.inert=false;
     panel.removeAttribute('inert');
     panel.classList.add('open');
@@ -1783,6 +1786,27 @@ window.launchPracticeQuiz=function(mistake){
       openPanel();
     });
     closeBtn.addEventListener('click', closePanel);
+    panel.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        e.preventDefault();
+        closePanel();
+        return;
+      }
+      if(e.key === 'Tab' && panel.classList.contains('open')){
+        var fEls = Array.prototype.slice.call(panel.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])')).filter(function(el){
+          return el.offsetParent !== null && !el.closest('[hidden]');
+        });
+        if(!fEls.length) return;
+        var first = fEls[0], last = fEls[fEls.length - 1];
+        if(e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if(!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
     send.addEventListener('click', sendMsg);
     input.addEventListener('keydown', function(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMsg(); } });
     input.addEventListener('input', function(){ input.style.height='auto'; input.style.height=Math.min(120,input.scrollHeight)+'px'; });
