@@ -1110,7 +1110,6 @@
         + '    <span style="font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;' + diffStyle + '">' + diffLabel + '</span>'
         +      marksBadge
         + '  </div>'
-        + '  <button type="button" class="cbt-flag-btn' + (isFlagged ? ' flagged' : '') + '" onclick="window.cbtToggleFlagCurrent(' + i + ')">' + (isFlagged ? '🚩 Flagged' : '🏳️ Flag') + '</button>'
         + '</div>';
 
       if(figHtml){
@@ -1167,12 +1166,16 @@
           activeChoices.forEach(function(c, ci){
             var letLabel = letters[ci] || String.fromCharCode(65 + ci);
             var chText = isPre ? String(c || '') : (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
+            var plainChoice = String(c || '').replace(/<[^>]*>/g, '').replace(/\\\(|\\\)/g, '').replace(/"/g, '&quot;').trim();
             var isChecked = (currentAns === ci);
-            h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + (isChecked ? '#3b82f6' : 'var(--border,#e2e8f0)') + ';border-radius:8px;cursor:pointer;background:' + (isChecked ? '#eff6ff' : 'var(--paper,#fff)') + ';transition:all .15s ease">'
-              + '<input type="radio" name="mq' + i + '" value="' + ci + '" ' + (isChecked ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
+            h += '<div class="mock-choice-wrap" style="display:flex;align-items:center;gap:6px">'
+              + '<label class="mock-choice-row" style="flex:1;display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + (isChecked ? '#3b82f6' : 'var(--border,#e2e8f0)') + ';border-radius:8px;cursor:pointer;background:' + (isChecked ? 'rgba(59,130,246,0.08)' : 'var(--paper,#fff)') + ';transition:all .15s ease">'
+              + '<input type="radio" name="mq' + i + '" value="' + ci + '" aria-label="' + letLabel + ': ' + plainChoice + '" ' + (isChecked ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
               + '<span style="font-weight:800;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
-              + '<span style="flex:1">' + (isPre ? chText : _fmtBi(chText)) + '</span>'
-              + '</label>';
+              + '<span class="mock-choice-text" style="flex:1">' + (isPre ? chText : _fmtBi(chText)) + '</span>'
+              + '</label>'
+              + '<button type="button" class="cbt-strike-btn" title="' + (isArPaper ? 'استبعاد الخيار (شطب)' : 'Cross out / eliminate option') + '" aria-label="' + (isArPaper ? 'استبعاد الخيار ' + letLabel : 'Cross out option ' + letLabel) + '" aria-pressed="false" onclick="window.cbtToggleStrike(' + i + ',' + ci + ',this)" style="min-width:34px;min-height:34px;border-radius:8px;border:1px solid var(--border,#cbd5e1);background:var(--paper,#fff);color:var(--muted,#64748b);font-size:.8rem;font-weight:800;cursor:pointer;flex-shrink:0"><span style="text-decoration:line-through">' + letLabel + '</span></button>'
+              + '</div>';
           });
           h += '</div>';
         }
@@ -1200,6 +1203,23 @@
     })));
   }
 
+  window.cbtToggleStrike = function(qIdx, ci, btn){
+    var wrap = btn && btn.closest('.mock-choice-wrap');
+    if(!wrap) return;
+    var row = wrap.querySelector('.mock-choice-row');
+    var struck = !wrap.classList.contains('cbt-struck');
+    wrap.classList.toggle('cbt-struck', struck);
+    if(btn){
+      btn.setAttribute('aria-pressed', struck ? 'true' : 'false');
+      btn.style.background = struck ? 'var(--indigo,#1e3e70)' : 'var(--paper,#fff)';
+      btn.style.color = struck ? '#fff' : 'var(--muted,#64748b)';
+    }
+    if(row){
+      row.style.opacity = struck ? '0.45' : '1';
+      row.style.textDecoration = struck ? 'line-through' : 'none';
+    }
+  };
+
   window.cbtRecordAnswer = function(qIdx, val){
     _answers[qIdx] = val;
     // Highlight choice row if radio
@@ -1209,7 +1229,7 @@
       rows.forEach(function(r, ci){
         var checked = (val === ci);
         r.style.borderColor = checked ? '#3b82f6' : 'var(--border,#e2e8f0)';
-        r.style.background = checked ? '#eff6ff' : 'var(--paper,#fff)';
+        r.style.background = checked ? 'rgba(59,130,246,0.08)' : 'var(--paper,#fff)';
       });
     }
     _updateFooterNav();

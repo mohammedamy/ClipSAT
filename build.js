@@ -311,20 +311,20 @@ function collectKeywords(chapter) {
   (function walk(node) {
     if (!node || typeof node !== 'object') return;
     if (Array.isArray(node)) { node.forEach(walk); return; }
-    if (node.kind === 'callout' && node.label && node.label.en) push(node.label.en);
-    if (node.kind === 'cards' && Array.isArray(node.items)) {
-      node.items.forEach((it) => { if (it.label && it.label.en) push(it.label.en); });
+    if (node.kind === 'callout' && node.label) {
+      if (node.label.en) push(node.label.en);
+      if (node.label.ar) push(node.label.ar);
     }
-    // "text" blocks' own heading (a plain string, not a {en,ar} field like
-    // label) name a concept mid-chapter — e.g. calculus's Applications of
-    // Derivatives chapter has a "L'Hôpital's Rule" text heading right next
-    // to its Theorem 5.3 callout; only the callout's own label used to get
-    // harvested here, so a search for the rule's name by itself only half-
-    // worked (found via the theorem's label, missed via the heading).
+    if (node.kind === 'cards' && Array.isArray(node.items)) {
+      node.items.forEach((it) => {
+        if (it.label && it.label.en) push(it.label.en);
+        if (it.label && it.label.ar) push(it.label.ar);
+      });
+    }
     if (node.kind === 'text' && typeof node.heading === 'string') push(node.heading);
     Object.keys(node).forEach((k) => walk(node[k]));
   }(chapter.content));
-  return out.slice(0, 12); // cap payload per chapter
+  return out.slice(0, 18); // cap bilingual payload per chapter
 }
 
 const UTILITY_CHAPTERS = [
@@ -375,6 +375,60 @@ if (jsMinified.error) {
 // The index ships on its own (ADR 0044): only the topic search reads it, and it loads it the
 // first time the search box is used, instead of every page carrying it inside engine.js.
 write(path.join(ROOT, 'public', 'js', 'search-index.js'), searchIndexJs);
+
+// Emit lightweight per-track Flashcard JSON packs (public/data/flashcards/{track}.json)
+// so Flashcards work on both Track Syllabus Hubs and single-chapter SSG routes ("All Lessons").
+const FLASHCARDS_DIR = path.join(ROOT, 'public', 'data', 'flashcards');
+fs.mkdirSync(FLASHCARDS_DIR, { recursive: true });
+let fcTrackCount = 0, fcCardTotal = 0;
+const _metaFrontRe = /^(?:format|calculator|delivery|questions|duration|scoring|sections|time|papers?|marks?|grade|exam\s*code|المدة|الأسئلة|الآلة\s*الحاسبة|التسليم|التصحيح|الأقسام|النمط|نظام\s*الاختبار)\b/i;
+Object.keys(migratedContent).sort().forEach((view) => {
+  const mc = migratedContent[view];
+  const deck = [];
+  const seen = new Set();
+  mc.chapters.forEach((ch) => {
+    const chId = ch.id || '';
+    const chTitleEn = (ch.title && ch.title.en) || chId;
+    const chTitleAr = (ch.title && ch.title.ar) || chTitleEn;
+    const blocks = (ch.content && Array.isArray(ch.content.blocks)) ? ch.content.blocks : [];
+    function pushCard(frontEn, frontAr, backEn, backAr, tag) {
+      const fEn = String(frontEn || '').trim();
+      const bEn = String(backEn || '').trim();
+      if (!fEn || !bEn || _metaFrontRe.test(fEn.replace(/<[^>]*>/g, '').trim())) return;
+      const key = `${chId}:${tag}:${fEn.slice(0, 48)}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      deck.push({
+        id: `${view}:${chId}:${tag}:${deck.length}`,
+        ch: chId,
+        chEn: chTitleEn,
+        chAr: chTitleAr,
+        tag,
+        f: fEn,
+        f_ar: String(frontAr || fEn).trim(),
+        b: bEn,
+        b_ar: String(backAr || bEn).trim(),
+      });
+    }
+    blocks.forEach((bl) => {
+      if (!bl || typeof bl !== 'object') return;
+      if (bl.kind === 'cards' && Array.isArray(bl.items)) {
+        bl.items.forEach((it) => {
+          if (!it || !it.label || !it.body) return;
+          pushCard(it.label.en, it.label.ar, it.body.en, it.body.ar, 'Formula');
+        });
+      } else if (bl.kind === 'callout' && bl.label && bl.body) {
+        const v = String(bl.variant || '').toLowerCase();
+        const tag = v === 'def' ? 'Definition' : (v === 'thm' || v === 'law' || v === 'rule' || v === 'formula' ? 'Theorem' : '');
+        if (tag) pushCard(bl.label.en, bl.label.ar, bl.body.en, bl.body.ar, tag);
+      }
+    });
+  });
+  write(path.join(FLASHCARDS_DIR, `${view}.json`), JSON.stringify(deck));
+  fcTrackCount++;
+  fcCardTotal += deck.length;
+});
+console.log(`  ✓  public/data/flashcards/  (${fcCardTotal} cards across ${fcTrackCount} tracks)`);
 
 // ─── 3–5. Verify canonical Eleventy templates & modular shell (WP-24) ───────
 // Templates in src/index.njk, src/404.html, src/_includes/base.njk, and

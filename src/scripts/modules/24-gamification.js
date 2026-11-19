@@ -398,6 +398,54 @@
       this.updateCounters();
     },
 
+    _coursePackCache: {},
+    _coursePackFetching: {},
+    _ensureCourseDeck: function() {
+      var track = window.CLIPSAT_TRACK || '';
+      if (!track || track === 'home' || track === 'calculator' || track === 'pricing' || track === 'account') return;
+      if (this._coursePackCache[track]) {
+        this._mergeCoursePack(track, this._coursePackCache[track]);
+        return;
+      }
+      if (this._coursePackFetching[track]) return;
+      var self = this;
+      this._coursePackFetching[track] = true;
+      fetch('/data/flashcards/' + encodeURIComponent(track) + '.json')
+        .then(function(r) { return r.ok ? r.json() : []; })
+        .then(function(list) {
+          self._coursePackFetching[track] = false;
+          if (!Array.isArray(list) || !list.length) return;
+          self._coursePackCache[track] = list;
+          self._mergeCoursePack(track, list);
+          self.loadFlashcard();
+        })
+        .catch(function() { self._coursePackFetching[track] = false; });
+    },
+    _mergeCoursePack: function(track, list) {
+      if (this._deckTrack !== track) return;
+      var isAr = (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') ||
+                 (document.documentElement && document.documentElement.dir === 'rtl');
+      var existingIds = {};
+      this.srsDeck.forEach(function(c) { existingIds[c.id] = 1; existingIds[c.chapterId + ':' + c.tag + ':' + String(c.f).slice(0, 32)] = 1; });
+      list.forEach(function(item) {
+        var f = isAr && item.f_ar ? item.f_ar : item.f;
+        var b = isAr && item.b_ar ? item.b_ar : item.b;
+        var dupKey = (item.ch || '') + ':' + (item.tag || 'Formula') + ':' + String(f).slice(0, 32);
+        if (existingIds[item.id] || existingIds[dupKey]) return;
+        existingIds[item.id] = 1;
+        existingIds[dupKey] = 1;
+        this.srsDeck.push({
+          id: item.id,
+          f: f,
+          b: b,
+          tag: item.tag || 'Formula',
+          chapterId: item.ch || '',
+          chapterTitle: isAr ? (item.chAr || item.chEn || item.ch || '') : (item.chEn || item.ch || ''),
+          custom: false
+        });
+      }, this);
+    },
+
     _srsState: function() {
       try { return JSON.parse(localStorage.getItem('clipsat_srs_state') || '{}'); }
       catch (e) { return {}; }
@@ -492,6 +540,9 @@
     updateQueue: function() {
       if (this._deckTrack !== (window.CLIPSAT_TRACK || 'home') || !this.srsDeck.length) {
         this.buildDeckFromPage();
+      }
+      if (this.scope === 'all' || this.srsDeck.length < 4) {
+        this._ensureCourseDeck();
       }
       var state = this._srsState();
       var now = Date.now();

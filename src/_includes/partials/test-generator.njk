@@ -45,14 +45,17 @@
   {% if ib %}
   <div class="testgen">
     <div class="tg-controls">
-      <div class="ctrl"><label>Questions</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
-      <div class="ctrl"><label>Level</label><select class="tg-level" aria-label="Difficulty level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
-      <div class="ctrl"><label>Source</label><select class="tg-source" aria-label="Question source"><option value="ai" selected>AI-generated (reviewed)</option><option value="bank">Question bank</option></select></div>
+      <div class="ctrl"><label>{{ bl.text({"en":"Questions","ar":"الأسئلة"}) }}</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+      <div class="ctrl"><label>{{ bl.text({"en":"Level","ar":"المستوى"}) }}</label><select class="tg-level" aria-label="Difficulty level"><option value="all">{{ bl.text({"en":"All","ar":"الكل"}) }}</option><option value="Easy">{{ bl.text({"en":"Easy","ar":"سهل"}) }}</option><option value="Medium">{{ bl.text({"en":"Medium","ar":"متوسط"}) }}</option><option value="Hard">{{ bl.text({"en":"Hard","ar":"صعب"}) }}</option></select></div>
+      <div class="ctrl"><label>{{ bl.text({"en":"Source","ar":"المصدر"}) }}</label><select class="tg-source" aria-label="Question source"><option value="ai" selected>{{ bl.text({"en":"AI-generated (reviewed)","ar":"ذكاء اصطناعي (مُراجع)"}) }}</option><option value="bank">{{ bl.text({"en":"Question bank","ar":"بنك الأسئلة"}) }}</option></select></div>
+      {% if testGenerator.exams and testGenerator.exams.length > 1 %}
+      <div class="ctrl"><label>{{ bl.text({"en":"CBT Paper","ar":"ورقة المحاكاة"}) }}</label><select class="tg-cbt-paper" aria-label="Select CBT exam paper">{% for e in testGenerator.exams %}<option value="{{ loop.index0 }}">{{ e.examTitle }}</option>{% endfor %}</select></div>
+      {% endif %}
     </div>
-    <button class="btn primary tg-go" onclick="genTest(this,'{{ trackId }}')">Generate Practice Test ↻</button>
-    <button class="btn tg-cbt" type="button" onclick="openMockExam('{{ trackId }}',0)">💻 Launch CBT Simulator ↗</button>
-    <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
-    <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+    <button class="btn primary tg-go" onclick="genTest(this,'{{ trackId }}')">{{ bl.text({"en":"Generate Practice Test ↻","ar":"إنشاء اختبار تدريبي ↻"}) }}</button>
+    <button class="btn tg-cbt" type="button" onclick="var p=this.closest('.testgen,.chapter');var s=p&&p.querySelector('.tg-cbt-paper');openMockExam('{{ trackId }}',s?parseInt(s.value,10)||0:0)">{{ bl.text({"en":"💻 Launch CBT Simulator ↗","ar":"💻 تشغيل محاكي الاختبار ↗"}) }}</button>
+    <button class="btn tg-ans" onclick="tgReveal(this)">{{ bl.text({"en":"Show all answers","ar":"إظهار جميع الإجابات"}) }}</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">{{ bl.text({"en":"Print test ↓","ar":"طباعة الاختبار ↓"}) }}</button>
     <div class="tg-out"></div>
   </div>
   <div class="callout note" style="margin-top:24px"><span class="lab">{{ bl.text(testGenerator.examIntroLabel) }}</span>
@@ -62,28 +65,34 @@
     {% for e in testGenerator.exams %}
     <button class="btn amber" onclick="genFullExam(this,'{{ e.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ bl.text(e.examButtonLabel) }}</button>
     {% endfor %}
-    <button class="btn tg-cbt" type="button" onclick="openMockExam('{{ trackId }}',0)">💻 Launch CBT Simulator ↗</button>
-    <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+    <button class="btn tg-cbt" type="button" onclick="var p=this.closest('.chapter');var s=p&&p.querySelector('.tg-cbt-paper');openMockExam('{{ trackId }}',s?parseInt(s.value,10)||0:0)">{{ bl.text({"en":"💻 Launch CBT Simulator ↗","ar":"💻 تشغيل محاكي الاختبار ↗"}) }}</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">{{ bl.text({"en":"Print paper ↓","ar":"طباعة الورقة ↓"}) }}</button>
   </div>
   <div class="tg-out" id="{{ trackId }}-exam-out"></div>
   {% else %}
   <div class="tg-controls">
     {% if compact %}
-    <div class="ctrl"><label>Questions</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
-    <div class="ctrl"><label>Level</label><select class="tg-level" aria-label="Difficulty level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
-      <div class="ctrl"><label>Source</label><select class="tg-source" aria-label="Question source"><option value="ai" selected>AI-generated (reviewed)</option><option value="bank">Question bank</option></select></div>
-    <button class="btn primary" onclick="genTest(this)">Generate test ↻</button>
-    <button class="btn tg-cbt" type="button" onclick="openMockExam('{{ trackId }}',0)">💻 Launch CBT Simulator ↗</button>
-    <button class="btn ghost tg-ans" data-state="hidden" onclick="tgReveal(this)">Show all answers</button>
-    <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+    <div class="ctrl"><label>{{ bl.text({"en":"Questions","ar":"الأسئلة"}) }}</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+    <div class="ctrl"><label>{{ bl.text({"en":"Level","ar":"المستوى"}) }}</label><select class="tg-level" aria-label="Difficulty level"><option value="all">{{ bl.text({"en":"All","ar":"الكل"}) }}</option><option value="Easy">{{ bl.text({"en":"Easy","ar":"سهل"}) }}</option><option value="Medium">{{ bl.text({"en":"Medium","ar":"متوسط"}) }}</option><option value="Hard">{{ bl.text({"en":"Hard","ar":"صعب"}) }}</option></select></div>
+      <div class="ctrl"><label>{{ bl.text({"en":"Source","ar":"المصدر"}) }}</label><select class="tg-source" aria-label="Question source"><option value="ai" selected>{{ bl.text({"en":"AI-generated (reviewed)","ar":"ذكاء اصطناعي (مُراجع)"}) }}</option><option value="bank">{{ bl.text({"en":"Question bank","ar":"بنك الأسئلة"}) }}</option></select></div>
+    {% if testGenerator.exams and testGenerator.exams.length > 1 %}
+    <div class="ctrl"><label>{{ bl.text({"en":"CBT Paper","ar":"ورقة المحاكاة"}) }}</label><select class="tg-cbt-paper" aria-label="Select CBT exam paper">{% for e in testGenerator.exams %}<option value="{{ loop.index0 }}">{{ e.examTitle }}</option>{% endfor %}</select></div>
+    {% endif %}
+    <button class="btn primary" onclick="genTest(this)">{{ bl.text({"en":"Generate test ↻","ar":"إنشاء اختبار ↻"}) }}</button>
+    <button class="btn tg-cbt" type="button" onclick="var p=this.closest('.chapter');var s=p&&p.querySelector('.tg-cbt-paper');openMockExam('{{ trackId }}',s?parseInt(s.value,10)||0:0)">{{ bl.text({"en":"💻 Launch CBT Simulator ↗","ar":"💻 تشغيل محاكي الاختبار ↗"}) }}</button>
+    <button class="btn ghost tg-ans" data-state="hidden" onclick="tgReveal(this)">{{ bl.text({"en":"Show all answers","ar":"إظهار جميع الإجابات"}) }}</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">{{ bl.text({"en":"Print test ↓","ar":"طباعة الاختبار ↓"}) }}</button>
     {% else %}
-    <div class="tg-field"><label>Questions</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
-    <div class="tg-field"><label>Difficulty</label><select class="tg-level" aria-label="Difficulty level"><option value="all" selected>All levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
-    <div class="tg-field"><label>Source</label><select class="tg-source" aria-label="Question source"><option value="ai" selected>AI-generated (reviewed)</option><option value="bank">Question bank</option></select></div>
-    <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
-    <button class="btn tg-cbt" type="button" onclick="openMockExam('{{ trackId }}',0)">💻 Launch CBT Simulator ↗</button>
-    <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
-    <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+    <div class="tg-field"><label>{{ bl.text({"en":"Questions","ar":"الأسئلة"}) }}</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+    <div class="tg-field"><label>{{ bl.text({"en":"Difficulty","ar":"الصعوبة"}) }}</label><select class="tg-level" aria-label="Difficulty level"><option value="all" selected>{{ bl.text({"en":"All levels","ar":"جميع المستويات"}) }}</option><option value="Easy">{{ bl.text({"en":"Easy","ar":"سهل"}) }}</option><option value="Medium">{{ bl.text({"en":"Medium","ar":"متوسط"}) }}</option><option value="Hard">{{ bl.text({"en":"Hard","ar":"صعب"}) }}</option></select></div>
+    <div class="tg-field"><label>{{ bl.text({"en":"Source","ar":"المصدر"}) }}</label><select class="tg-source" aria-label="Question source"><option value="ai" selected>{{ bl.text({"en":"AI-generated (reviewed)","ar":"ذكاء اصطناعي (مُراجع)"}) }}</option><option value="bank">{{ bl.text({"en":"Question bank","ar":"بنك الأسئلة"}) }}</option></select></div>
+    {% if testGenerator.exams and testGenerator.exams.length > 1 %}
+    <div class="tg-field"><label>{{ bl.text({"en":"CBT Paper","ar":"ورقة المحاكاة"}) }}</label><select class="tg-cbt-paper" aria-label="Select CBT exam paper">{% for e in testGenerator.exams %}<option value="{{ loop.index0 }}">{{ e.examTitle }}</option>{% endfor %}</select></div>
+    {% endif %}
+    <button class="btn primary tg-go" onclick="genTest(this)">{{ bl.text({"en":"Generate test ↻","ar":"إنشاء اختبار ↻"}) }}</button>
+    <button class="btn tg-cbt" type="button" onclick="var p=this.closest('.chapter');var s=p&&p.querySelector('.tg-cbt-paper');openMockExam('{{ trackId }}',s?parseInt(s.value,10)||0:0)">{{ bl.text({"en":"💻 Launch CBT Simulator ↗","ar":"💻 تشغيل محاكي الاختبار ↗"}) }}</button>
+    <button class="btn tg-ans" onclick="tgReveal(this)">{{ bl.text({"en":"Show all answers","ar":"إظهار جميع الإجابات"}) }}</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">{{ bl.text({"en":"Print test ↓","ar":"طباعة الاختبار ↓"}) }}</button>
     {% endif %}
   </div>
   {% if testGenerator.hasFullExam == false %}
@@ -104,8 +113,8 @@
     {% else %}
       <button class="btn amber" onclick="genFullExam(this,'{{ testGenerator.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ bl.text(testGenerator.examButtonLabel) }}</button>
     {% endif %}
-    <button class="btn tg-cbt" type="button" onclick="openMockExam('{{ trackId }}',0)">💻 Launch CBT Simulator ↗</button>
-    <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+    <button class="btn tg-cbt" type="button" onclick="var p=this.closest('.chapter');var s=p&&p.querySelector('.tg-cbt-paper');openMockExam('{{ trackId }}',s?parseInt(s.value,10)||0:0)">{{ bl.text({"en":"💻 Launch CBT Simulator ↗","ar":"💻 تشغيل محاكي الاختبار ↗"}) }}</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">{{ bl.text({"en":"Print paper ↓","ar":"طباعة الورقة ↓"}) }}</button>
   </div>
   <div class="tg-out" aria-live="polite"></div>
   {% endif %}

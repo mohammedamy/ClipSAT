@@ -16,8 +16,28 @@ function _renderCountdown(){
     +'<button onclick="openExamDateModal()">Edit</button>'
     +'<button onclick="clearExamDate()" style="opacity:.6">\xd7</button>';
 }
-function openExamDateModal(){var m=document.getElementById('exam-date-modal');var inp=document.getElementById('exam-date-input');if(inp){var ex=localStorage.getItem(EXAM_KEY);if(ex)inp.value=ex;}if(m)m.classList.add('show');}
-function closeExamDateModal(){var m=document.getElementById('exam-date-modal');if(m)m.classList.remove('show');}
+function openExamDateModal(){
+  var m=document.getElementById('exam-date-modal');
+  if(m){
+    var inp=document.getElementById('exam-date-input');
+    if(inp){var ex=localStorage.getItem(EXAM_KEY);if(ex)inp.value=ex;}
+    m.classList.add('show');
+    return;
+  }
+  if(window.CSDailyPlan && typeof window.CSDailyPlan.open === 'function'){
+    window.CSDailyPlan.open();
+    setTimeout(function(){
+      var dpInp = document.getElementById('cs-dp-exam-date');
+      if(dpInp && dpInp.focus) dpInp.focus();
+    }, 60);
+  }
+}
+function closeExamDateModal(){
+  var m=document.getElementById('exam-date-modal');
+  if(m) m.classList.remove('show');
+  var dp=document.getElementById('cs-daily-plan-modal');
+  if(dp) dp.remove();
+}
 window.openExamDateModal=openExamDateModal;
 window.closeExamDateModal=closeExamDateModal;
 window.saveExamDate=function(){var inp=document.getElementById('exam-date-input');if(inp&&inp.value){localStorage.setItem(EXAM_KEY,inp.value);_renderCountdown();}closeExamDateModal();};

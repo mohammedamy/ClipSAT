@@ -2519,11 +2519,11 @@
     if(!/\[M1\]|\[A1\]|\[R1\]/i.test(rawSol)){
       var steps = rawSol.split(/(?<=\.)\s+/).filter(Boolean);
       if(steps.length >= 2){
-        rawSol = '**(a)** ' + steps[0] + ' **[M1][A1]**\n'
-          + '**(b)** ' + steps.slice(1).join(' ') + (ansVal ? ' Final Answer: ' + _balanceMathDelims(ansVal) + '.' : '') + ' **[M1][A1]**';
+        rawSol = '<strong>(a)</strong> ' + steps[0] + ' <strong>[M1][A1]</strong><br>'
+          + '<strong>(b)</strong> ' + steps.slice(1).join(' ') + (ansVal ? ' Final Answer: ' + _balanceMathDelims(ansVal) + '.' : '') + ' <strong>[M1][A1]</strong>';
       } else {
-        rawSol = '**Method & Working:** ' + (rawSol || 'Apply the relevant IB syllabus formula and substitute the given parameters.') + ' **[M1][A1]**'
-          + (ansVal ? '\n**Final Answer:** ' + _balanceMathDelims(ansVal) + ' **[A1]**' : '');
+        rawSol = '<strong>Method &amp; Working:</strong> ' + (rawSol || 'Apply the relevant IB syllabus formula and substitute the given parameters.') + ' <strong>[M1][A1]</strong>'
+          + (ansVal ? '<br><strong>Final Answer:</strong> ' + _balanceMathDelims(ansVal) + ' <strong>[A1]</strong>' : '');
       }
     }
     item.sol = rawSol;
@@ -2626,7 +2626,7 @@
         cand.q = cand.text;
         cand.sol = _balanceMathDelims(cand.sol || cand.exp || '');
         /* Enforce fixed ETEC/Qiyas Quantitative Comparison choice order */
-        if(cand.fixedChoices || cand.topic_id === 'qud-compare' || /domain/i.test(cand.domain || '') && /Quantitative Comparison/i.test(cand.domain || '') || /قارن بين|القيمة الأولى/.test(cand.text || '')){
+        if(cand.fixedChoices || cand.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنة الكمية/i.test(cand.domain || '') || /قارن بين|القيمة الأولى/.test(cand.text || '')){
           cand.fixedChoices = true;
         }
       }

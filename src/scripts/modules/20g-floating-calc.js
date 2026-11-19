@@ -582,6 +582,12 @@
         attributes: true,
         attributeFilter: ['data-theme', 'class']
       });
+      if(document.body){
+        _themeObserver.observe(document.body, {
+          attributes: true,
+          attributeFilter: ['class', 'data-theme']
+        });
+      }
     } catch(e){}
   }
 

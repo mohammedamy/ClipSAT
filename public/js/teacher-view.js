@@ -321,12 +321,17 @@
             + '<div class="tv-assign-form">'
             + '<select id="tv-assign-track-' + cid + '">' + trackOptionsHtml() + '</select>'
             + '<input type="text" id="tv-assign-label-' + cid + '" placeholder="e.g. Chapter 3: Derivatives">'
+            + '<input type="url" id="tv-assign-url-' + cid + '" placeholder="Optional ?assign=… link (from Custom Test Cart)">'
             + '<input type="date" id="tv-assign-due-' + cid + '" title="Due date (optional)">'
             + '<button type="button" class="tv-assign-btn" onclick="window.tvCreateAssignment(\'' + cid + '\')">Assign</button>'
             + '</div></div>'
             + '</div>';
         }).join('');
-        r.data.forEach(function (c) { loadRoster(c.id); loadAssignmentsForTeacher(c.id); });
+        r.data.forEach(function (c) {
+          var sel = document.getElementById('tv-assign-track-' + safeId(c.id));
+          if (sel && c.track) sel.value = c.track;
+          loadAssignmentsForTeacher(c.id).then(function () { loadRoster(c.id); });
+        });
       });
   }
 
@@ -345,7 +350,7 @@
         Promise.all([
           sb.from('accuracy').select('user_id,track,domain,correct,total').in('user_id', ids),
           sb.from('chapter_visits').select('user_id,track,count,updated_at').in('user_id', ids),
-          sb.from('mistakes').select('user_id,id,view_id,q,wrong,correct,domain,ts').is('deleted_at', null).in('user_id', ids).order('ts', { ascending: false }).limit(200)
+          sb.from('mistakes').select('user_id,id,view_id,q,wrong,correct,domain,ts').is('deleted_at', null).in('user_id', ids).order('ts', { ascending: false }).limit(Math.max(200, ids.length * 12))
         ]).then(function (results) {
           var ar = results[0], vr = results[1], mr = results[2];
           // Scope roster client-side to class track + assigned tracks (matches RLS policy)
@@ -430,14 +435,17 @@
 
                 var mistakesHtml = mlist.length
                   ? '<div class="tv-mistakes-list">' + mlist.slice(0, 4).map(function (mk) {
-                      var cleanQ = escT(mk.q || 'Question');
-                      if (cleanQ.length > 80) cleanQ = cleanQ.substring(0, 80) + '…';
+                      var rawQ = String(mk.q || 'Question');
+                      if (rawQ.length > 140) rawQ = rawQ.substring(0, 140) + '…';
+                      var cleanQ = typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(escT(rawQ)) : escT(rawQ);
+                      var cleanWrong = typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(escT(mk.wrong || 'Incorrect')) : escT(mk.wrong || 'Incorrect');
+                      var cleanRight = typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(escT(mk.correct || 'Correct')) : escT(mk.correct || 'Correct');
                       var tAgo = mk.ts ? timeAgo(mk.ts) : '';
                       return '<div class="tv-mistake-card">'
                         + '<span class="tv-mistake-q">' + cleanQ + '</span>'
                         + '<div class="tv-mistake-answers">'
-                        + '<span class="tv-mistake-wrong">❌ ' + escT(mk.wrong || 'Incorrect') + '</span> '
-                        + '<span class="tv-mistake-right">✅ ' + escT(mk.correct || 'Correct') + '</span>'
+                        + '<span class="tv-mistake-wrong">❌ ' + cleanWrong + '</span> '
+                        + '<span class="tv-mistake-right">✅ ' + cleanRight + '</span>'
                         + (tAgo ? ' <span class="tv-frac">(' + tAgo + ')</span>' : '')
                         + '</div></div>';
                     }).join('') + '</div>'
@@ -587,12 +595,21 @@
     }
   };
 
+  function _splitAssignLabel(raw) {
+    var s = String(raw || '');
+    var idx = s.indexOf(' || ');
+    if (idx === -1) return { text: s, url: '' };
+    var url = s.slice(idx + 4).trim();
+    if (!/^(https:\/\/|\/|\?assign=)/i.test(url)) return { text: s, url: '' };
+    return { text: s.slice(0, idx).trim(), url: url };
+  }
+
   // ── Assignments: "assign a chapter/mock exam to a roster" ────────────
   function loadAssignmentsForTeacher(classId) {
     var sb = getClient();
     var el = document.getElementById('tv-assign-' + classId);
-    if (!sb || !el) return;
-    Promise.all([
+    if (!sb || !el) return Promise.resolve();
+    return Promise.all([
       sb.from('assignments').select('id,track,label,due_date').eq('class_id', classId).order('created_at', { ascending: false }),
       sb.from('class_members').select('student_id').eq('class_id', classId)
     ]).then(function (results) {
@@ -604,7 +621,7 @@
       var total = (mr.data || []).length;
       if (!assignments.length) { el.innerHTML = '<p class="tv-empty">No assignments yet.</p>'; return; }
       var ids = assignments.map(function (a) { return a.id; });
-      Promise.all([
+      return Promise.all([
         sb.from('assignment_completions').select('assignment_id').in('assignment_id', ids),
         sb.from('assignment_submissions').select('assignment_id,score,total').in('assignment_id', ids).then(function (sr) { return sr; }, function () { return { data: [] }; })
       ]).then(function (subResults) {
@@ -621,14 +638,16 @@
           var cid = safeId(classId);
           el.innerHTML = '<ul class="tv-assign-list">' + assignments.map(function (a) {
             var aid = safeId(a.id);
+            var parsed = _splitAssignLabel(a.label);
             var n = doneCount[a.id] || 0;
             var vst = verStats[a.id];
             var verBadge = vst && vst.count
               ? ' <span class="tv-frac" style="color:#15803d;font-weight:700">· 🔐 ' + vst.count + ' verified (' + Math.round(vst.pctSum / vst.count) + '% avg)</span>'
               : '';
             var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
+            var linkHtml = parsed.url ? ' <a href="' + escT(parsed.url) + '" target="_blank" rel="noopener" class="tv-frac" style="color:var(--indigo);font-weight:700;text-decoration:underline">↗ Open</a>' : '';
             return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
-              + escT(a.label) + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>' + verBadge
+              + escT(parsed.text) + linkHtml + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>' + verBadge
               + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + aid + '\',\'' + cid + '\')" title="Delete assignment" aria-label="Delete assignment">🗑</button></li>';
           }).join('') + '</ul>';
         });
@@ -639,16 +658,23 @@
     var sb = getClient();
     var trackSel = document.getElementById('tv-assign-track-' + classId);
     var labelInput = document.getElementById('tv-assign-label-' + classId);
+    var urlInput = document.getElementById('tv-assign-url-' + classId);
     var dueInput = document.getElementById('tv-assign-due-' + classId);
     var track = trackSel && trackSel.value;
     var label = labelInput && labelInput.value.trim();
+    var rawUrl = urlInput && urlInput.value.trim();
     if (!sb || !track || !label) return;
-    sb.from('assignments').insert({ class_id: classId, track: track, label: label, due_date: (dueInput && dueInput.value) || null })
+    var storedLabel = label;
+    if (rawUrl && /^(https:\/\/|\/|\?assign=)/i.test(rawUrl)) {
+      storedLabel = label + ' || ' + rawUrl;
+    }
+    sb.from('assignments').insert({ class_id: classId, track: track, label: storedLabel, due_date: (dueInput && dueInput.value) || null })
       .then(function (r) {
         if (r.error) { window.alert(r.error.message); return; }
         if (labelInput) labelInput.value = '';
+        if (urlInput) urlInput.value = '';
         if (dueInput) dueInput.value = '';
-        loadAssignmentsForTeacher(classId);
+        loadAssignmentsForTeacher(classId).then(function () { loadRoster(classId); });
       });
   };
 
@@ -683,10 +709,13 @@
             var assignHtml = assigns.length
               ? '<ul class="tv-assign-list">' + assigns.map(function (a) {
                   var aid = safeId(a.id);
+                  var parsed = _splitAssignLabel(a.label);
+                  var targetHref = parsed.url || ('/' + encodeURIComponent(a.track || 'sat') + '/');
                   var done = !!doneSet[a.id];
                   var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
                   return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
-                    + escT(a.label) + due
+                    + escT(parsed.text) + due
+                    + ' <a href="' + escT(targetHref) + '" class="tv-done" style="text-decoration:none;margin-inline-end:6px">▶ Open</a>'
                     + '<button type="button" class="' + (done ? 'tv-done tv-done-yes' : 'tv-done') + '" onclick="window.tvToggleCompletion(\'' + aid + '\',' + (!done) + ',this)">' + (done ? '✓ Done' : 'Mark done') + '</button></li>';
                 }).join('') + '</ul>'
               : '';
@@ -720,21 +749,36 @@
     refreshMyMemberships();
   }
 
-  // ── Reveal the nav button once cloud-sync is configured + signed in.
-  //    Polls briefly rather than hooking cloud-sync.js's internals — the
-  //    typical sign-in flow (magic link) reloads the page anyway, so this
-  //    just needs to catch the already-signed-in case on page load. ──
+  function syncTeacherBtnVisibility() {
+    var btn = document.getElementById('teacherViewBtn');
+    if (btn) btn.style.display = isReady() ? '' : 'none';
+  }
+  document.addEventListener('clipsat:auth-changed', function () {
+    syncTeacherBtnVisibility();
+    var m = document.getElementById('teacherViewModal');
+    if (m && m.classList.contains('open') && isReady()) refreshAll();
+  });
   var tries = 0;
   var poll = setInterval(function () {
     tries++;
-    var btn = document.getElementById('teacherViewBtn');
     if (isReady()) {
-      if (btn) btn.style.display = '';
+      syncTeacherBtnVisibility();
       clearInterval(poll);
-    } else if (tries > 40) { // ~10s ceiling — stay hidden (not configured, or signed out)
+    } else if (tries > 20) {
       clearInterval(poll);
     }
   }, 250);
+  if (window.ClipSATCloud && window.ClipSATCloud.ready && typeof window.ClipSATCloud.ready.then === 'function') {
+    window.ClipSATCloud.ready.then(function () {
+      syncTeacherBtnVisibility();
+      var client = getClient();
+      if (client && client.auth && typeof client.auth.onAuthStateChange === 'function') {
+        client.auth.onAuthStateChange(function () {
+          setTimeout(syncTeacherBtnVisibility, 50);
+        });
+      }
+    });
+  }
 
   window.TeacherView = {
     openModal: window.openTeacherView,

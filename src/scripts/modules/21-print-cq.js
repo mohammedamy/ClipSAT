@@ -169,26 +169,26 @@ window.printCQ = function(btn) {
         (chapterName ? '<div class="ph-chapter">' + chapterName + '</div>' : '') +
       '</div>' +
       '<div class="ph-meta">' +
-        '<div>Date: <strong>' + today + '</strong></div>' +
+        '<div>' + (isRtl ? 'التاريخ: ' : 'Date: ') + '<strong>' + today + '</strong></div>' +
         '<div>' + metaTxt + '</div>' +
-        '<div>Score: _____ / ' + items.length + '</div>' +
+        '<div>' + (isRtl ? 'الدرجة: _____ / ' : 'Score: _____ / ') + items.length + '</div>' +
       '</div>' +
     '</div>' +
     /* Student info */
     '<div class="info-bar">' +
-      '<div><label>Student Name</label><div class="info-line"></div></div>' +
-      '<div><label>Class / Grade</label><div class="info-line"></div></div>' +
-      '<div><label>Score</label><div class="info-line"></div></div>' +
+      '<div><label>' + (isRtl ? 'اسم الطالب' : 'Student Name') + '</label><div class="info-line"></div></div>' +
+      '<div><label>' + (isRtl ? 'الصف / الشعبة' : 'Class / Grade') + '</label><div class="info-line"></div></div>' +
+      '<div><label>' + (isRtl ? 'الدرجة' : 'Score') + '</label><div class="info-line"></div></div>' +
     '</div>' +
     /* Instructions */
-    '<div class="instr"><strong>Instructions</strong>' +
+    '<div class="instr"><strong>' + (isRtl ? 'تعليمات الاختبار' : 'Instructions') + '</strong>' +
       (isRtl ? 'اختر الإجابة الصحيحة لكل سؤال وضع دائرة حول رمز الإجابة. أظهر خطوات حلك في المساحة المخصصة.' : 'Choose the best answer for each question. Circle the letter of your choice. Show any working in the space provided.') +
     '</div>' +
     /* Questions */
     qHTML +
     /* Footer */
     '<div class="pq-footer">' +
-      '<span>ClipSAT · clipsat.org · Mr. Mohamed Abdallah</span>' +
+      '<span>ClipSAT · clipsat.org · ' + (isRtl ? 'الأستاذ محمد عبدالله' : 'Mr. Mohamed Abdallah') + '</span>' +
       '<span>' + courseLabel + ' · ' + today + '</span>' +
     '</div>' +
     '<script>window.addEventListener("load",function(){setTimeout(window.print,350);});<\/script>' +
@@ -197,7 +197,7 @@ window.printCQ = function(btn) {
   var _cqBlob=new Blob([_cqHtml],{type:'text/html;charset=utf-8'});
   var _cqUrl=URL.createObjectURL(_cqBlob);
   var pw=window.open(_cqUrl,'_blank','width=860,height=720');
-  if(!pw){alert('Please allow pop-ups to print the quiz.');URL.revokeObjectURL(_cqUrl);return;}
+  if(!pw){alert(isRtl ? 'يرجى السماح بالنوافذ المنبثقة لطباعة الاختبار.' : 'Please allow pop-ups to print the quiz.');URL.revokeObjectURL(_cqUrl);return;}
   setTimeout(function(){URL.revokeObjectURL(_cqUrl);},120000);
 };
 

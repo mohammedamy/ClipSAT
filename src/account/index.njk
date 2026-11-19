@@ -2,25 +2,144 @@
 layout: base.njk
 trackId: account
 title: "My Account · ClipSAT"
-description: "Your ClipSAT account and cloud-sync status."
+description: "Manage your ClipSAT account, daily AI and voice credits, joined classes, cloud sync, and personal data exports."
 isRtl: false
 ---
 <main class="view active" id="view-account">
-  <div class="wrap" style="max-width:760px; margin:0 auto; padding:40px 20px 80px">
-    <h1>My Account</h1>
+  <div class="wrap" style="max-width:860px; margin:0 auto; padding:36px 20px 80px">
+    <h1 data-bilingual style="font-size:2rem; font-weight:800; color:var(--ink); margin:0 0 8px">
+      <span class="i18n-en">My Account</span>
+      <span class="i18n-ar" dir="rtl" hidden>حسابي</span>
+    </h1>
+    <p data-bilingual style="color:var(--muted); margin:0 0 28px; font-size:.96rem">
+      <span class="i18n-en">Manage your cloud sync, daily AI &amp; voice allowances, joined classes, and data exports.</span>
+      <span class="i18n-ar" dir="rtl" hidden>إدارة المزامنة السحابية، ورصيد المعلم الذكي والصوت اليومي، والفصول المنضم إليها، وتصدير بياناتك.</span>
+    </p>
 
     <!-- Shown to signed-out visitors. Client-side gate only: the data itself
          is protected by RLS (supabase/schema.sql), not by hiding this page. -->
-    <div id="account-gate">
-      <p id="account-gate-msg">Checking your session…</p>
-      <button class="cloud-auth-send" id="account-signin-btn" style="max-width:240px" hidden
-              onclick="window.openCloudAuthModal && window.openCloudAuthModal()">Sign in or create account</button>
+    <div id="account-gate" style="background:var(--panel, #fff); border:1px solid var(--line, #d6dce6); border-radius:14px; padding:28px 24px">
+      <p id="account-gate-msg" style="margin:0 0 16px; color:var(--ink)">Checking your session…</p>
+      <button class="btn primary" id="account-signin-btn" style="min-height:44px; padding:10px 20px" hidden
+              onclick="window.openCloudAuthModal && window.openCloudAuthModal()">
+        <span data-bilingual>
+          <span class="i18n-en">Sign in or create account</span>
+          <span class="i18n-ar" dir="rtl" hidden>تسجيل الدخول أو إنشاء حساب</span>
+        </span>
+      </button>
     </div>
 
     <div id="account-content" hidden>
-      <p>Signed in as <strong id="account-email"></strong> (<span id="account-provider"></span>).</p>
-      <p>Your mistake log, flashcards, streaks and accuracy are synced to this account.</p>
-      <button class="cloud-auth-send" style="max-width:240px" id="account-signout-btn">Sign out</button>
+      <!-- Profile & Plan Summary -->
+      <section style="background:var(--panel, #fff); border:1px solid var(--line, #d6dce6); border-radius:14px; padding:24px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px">
+            <strong id="account-email" style="font-size:1.1rem; color:var(--ink)"></strong>
+            <span id="account-plan-badge" style="font-size:.76rem; font-weight:700; padding:3px 10px; border-radius:999px; background:var(--paper-2, #f1f5f9); color:var(--indigo); border:1px solid var(--line)">ClipSAT Free</span>
+          </div>
+          <p style="margin:0; font-size:.88rem; color:var(--muted)">
+            <span data-bilingual>
+              <span class="i18n-en">Provider:</span>
+              <span class="i18n-ar" dir="rtl" hidden>طريقة الدخول:</span>
+            </span>
+            <span id="account-provider" style="font-weight:600; color:var(--ink)"></span>
+            <span id="account-plan-expiry" style="margin-inline-start:10px"></span>
+          </p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a href="/pricing/" class="btn" style="min-height:44px; display:inline-flex; align-items:center; text-decoration:none">
+            <span data-bilingual>
+              <span class="i18n-en">Plan &amp; Billing</span>
+              <span class="i18n-ar" dir="rtl" hidden>الخطة والفواتير</span>
+            </span>
+          </a>
+          <button type="button" class="btn ghost" style="min-height:44px" id="account-signout-btn">
+            <span data-bilingual>
+              <span class="i18n-en">Sign out</span>
+              <span class="i18n-ar" dir="rtl" hidden>تسجيل الخروج</span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Live Daily AI & Voice Usage -->
+      <section style="background:var(--panel, #fff); border:1px solid var(--line, #d6dce6); border-radius:14px; padding:24px; margin-bottom:20px">
+        <h2 data-bilingual style="font-size:1.1rem; font-weight:700; margin:0 0 16px; color:var(--ink)">
+          <span class="i18n-en">Today’s AI &amp; Voice Allowance (UTC)</span>
+          <span class="i18n-ar" dir="rtl" hidden>الاستهلاك اليومي للمعلم الذكي والصوت</span>
+        </h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px">
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:.88rem; margin-bottom:6px">
+              <span data-bilingual style="font-weight:600; color:var(--ink)">
+                <span class="i18n-en">AI Tutor Credits</span>
+                <span class="i18n-ar" dir="rtl" hidden>نقاط المعلم الذكي</span>
+              </span>
+              <span id="acct-ai-usage-label" style="font-family:var(--mono); color:var(--muted)">—</span>
+            </div>
+            <div style="height:8px; background:var(--paper-2, #e2e8f0); border-radius:999px; overflow:hidden">
+              <div id="acct-ai-usage-bar" style="height:100%; width:0%; background:var(--indigo); transition:width .25s ease"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:.88rem; margin-bottom:6px">
+              <span data-bilingual style="font-weight:600; color:var(--ink)">
+                <span class="i18n-en">Voice Tutor (TTS)</span>
+                <span class="i18n-ar" dir="rtl" hidden>المعلم الصوتي (TTS)</span>
+              </span>
+              <span id="acct-tts-usage-label" style="font-family:var(--mono); color:var(--muted)">—</span>
+            </div>
+            <div style="height:8px; background:var(--paper-2, #e2e8f0); border-radius:999px; overflow:hidden">
+              <div id="acct-tts-usage-bar" style="height:100%; width:0%; background:var(--amber-2, #c8902a); transition:width .25s ease"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Joined Classes & Integrations -->
+      <section style="background:var(--panel, #fff); border:1px solid var(--line, #d6dce6); border-radius:14px; padding:24px; margin-bottom:20px">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px">
+          <h2 data-bilingual style="font-size:1.1rem; font-weight:700; margin:0; color:var(--ink)">
+            <span class="i18n-en">Classes &amp; Sync</span>
+            <span class="i18n-ar" dir="rtl" hidden>الفصول الدراسية والمزامنة</span>
+          </h2>
+          <button type="button" class="btn ghost" style="min-height:40px" onclick="window.openTeacherView && window.openTeacherView()">
+            <span data-bilingual>
+              <span class="i18n-en">Open Classroom Hub</span>
+              <span class="i18n-ar" dir="rtl" hidden>فتح بوابة الفصول</span>
+            </span>
+          </button>
+        </div>
+        <div id="acct-classes-list" style="font-size:.9rem; color:var(--muted)">Loading classes…</div>
+        <p id="acct-google-status" style="margin:14px 0 0; font-size:.86rem; color:var(--muted)"></p>
+      </section>
+
+      <!-- Privacy & Data Portability -->
+      <section style="background:var(--panel, #fff); border:1px solid var(--line, #d6dce6); border-radius:14px; padding:24px">
+        <h2 data-bilingual style="font-size:1.1rem; font-weight:700; margin:0 0 8px; color:var(--ink)">
+          <span class="i18n-en">Your Data &amp; Privacy</span>
+          <span class="i18n-ar" dir="rtl" hidden>بياناتك والخصوصية</span>
+        </h2>
+        <p data-bilingual style="font-size:.88rem; color:var(--muted); margin:0 0 16px">
+          <span class="i18n-en">Your mistake log, flashcards, streaks, and accuracy sync securely via Row-Level Security. Export a complete copy anytime.</span>
+          <span class="i18n-ar" dir="rtl" hidden>تتم مزامنة سجل الأخطاء والبطاقات وسلاسل الدراسة بدقة وأمان. يمكنك تنزيل نسخة كاملة من بياناتك في أي وقت.</span>
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+          <button type="button" class="btn" id="acct-export-btn" style="min-height:44px">
+            <span data-bilingual>
+              <span class="i18n-en">Download My Study Data (JSON)</span>
+              <span class="i18n-ar" dir="rtl" hidden>تنزيل بياناتي الدراسية (JSON)</span>
+            </span>
+          </button>
+          <a href="/contact/?topic=account-deletion" class="btn ghost" style="min-height:44px; display:inline-flex; align-items:center; text-decoration:none">
+            <span data-bilingual>
+              <span class="i18n-en">Request Account Deletion</span>
+              <span class="i18n-ar" dir="rtl" hidden>طلب حذف الحساب</span>
+            </span>
+          </a>
+        </div>
+        <p id="acct-action-status" role="status" aria-live="polite" style="margin:10px 0 0; font-size:.84rem; color:var(--muted)"></p>
+      </section>
     </div>
   </div>
 </main>
@@ -32,6 +151,106 @@ isRtl: false
   var signinBtn = document.getElementById('account-signin-btn');
   var content = document.getElementById('account-content');
 
+  function isAr() {
+    return (window.i18n && typeof window.i18n.getLocale === 'function' && window.i18n.getLocale() === 'ar') ||
+           (document.documentElement && document.documentElement.dir === 'rtl');
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function loadAccountTelemetry(cloud, user) {
+    var sb = typeof cloud.getClient === 'function' ? cloud.getClient() : null;
+    if (!sb) return;
+
+    // 1. Live daily usage & tier via RPC (graceful fallback to ai_plans table)
+    sb.rpc('get_my_daily_usage').then(function (res) {
+      var d = res && res.data;
+      if (d && typeof d === 'object') {
+        var isPaid = d.tier === 'paid';
+        var badge = document.getElementById('account-plan-badge');
+        if (badge) {
+          badge.textContent = isPaid ? 'ClipSAT Plus' : (isAr() ? 'ClipSAT المجاني' : 'ClipSAT Free');
+          badge.style.background = isPaid ? 'var(--indigo)' : 'var(--paper-2, #f1f5f9)';
+          badge.style.color = isPaid ? '#fff' : 'var(--indigo)';
+        }
+        var expEl = document.getElementById('account-plan-expiry');
+        if (expEl && isPaid && d.paid_until) {
+          expEl.textContent = (isAr() ? '· سارٍ حتى ' : '· Active through ') + new Date(d.paid_until).toLocaleDateString();
+        }
+        var aiUsed = Number(d.ai_used || 0), aiLim = Math.max(1, Number(d.ai_limit || 20));
+        var ttsUsed = Number(d.tts_used || 0), ttsLim = Math.max(1, Number(d.tts_limit || 20));
+        var aiLbl = document.getElementById('acct-ai-usage-label');
+        var ttsLbl = document.getElementById('acct-tts-usage-label');
+        var aiBar = document.getElementById('acct-ai-usage-bar');
+        var ttsBar = document.getElementById('acct-tts-usage-bar');
+        if (aiLbl) aiLbl.textContent = aiUsed + ' / ' + aiLim;
+        if (ttsLbl) ttsLbl.textContent = ttsUsed + ' / ' + ttsLim;
+        if (aiBar) aiBar.style.width = Math.min(100, Math.round((aiUsed / aiLim) * 100)) + '%';
+        if (ttsBar) ttsBar.style.width = Math.min(100, Math.round((ttsUsed / ttsLim) * 100)) + '%';
+      }
+    }, function () {});
+
+    // 2. Joined classes
+    var clsEl = document.getElementById('acct-classes-list');
+    sb.from('class_members').select('class_id,classes(name,track)').eq('student_id', user.id).then(function (r) {
+      if (!clsEl) return;
+      var rows = (r && r.data) || [];
+      if (!rows.length) {
+        clsEl.textContent = isAr() ? 'لم تنضم إلى أي فصل بعد.' : 'No joined classes yet.';
+        return;
+      }
+      clsEl.innerHTML = '<ul style="margin:0; padding-inline-start:18px; display:flex; flex-direction:column; gap:6px">'
+        + rows.map(function (m) {
+            var nm = (m.classes && m.classes.name) || 'Class';
+            var trk = (m.classes && m.classes.track) ? (' (' + esc(m.classes.track.toUpperCase()) + ')') : '';
+            return '<li style="color:var(--ink)"><strong>' + esc(nm) + '</strong>' + trk + '</li>';
+          }).join('')
+        + '</ul>';
+    }, function () {
+      if (clsEl) clsEl.textContent = isAr() ? 'تعذّر تحميل الفصول.' : 'Could not load classes.';
+    });
+
+    // 3. Google Forms connection indicator
+    var gEl = document.getElementById('acct-google-status');
+    if (gEl) {
+      var connected = !!(window.ClipSATGoogle && typeof window.ClipSATGoogle.isConnected === 'function' && window.ClipSATGoogle.isConnected());
+      gEl.textContent = connected
+        ? (isAr() ? '✓ حساب Google Forms متصل لتصدير الاختبارات.' : '✓ Google Forms connected for quiz export.')
+        : (isAr() ? 'Google Forms غير متصل (اختياري للمعلمين).' : 'Google Forms not connected (optional, for teachers).');
+    }
+  }
+
+  function bindExport(cloud) {
+    var btn = document.getElementById('acct-export-btn');
+    var status = document.getElementById('acct-action-status');
+    if (!btn || btn._bound) return;
+    btn._bound = true;
+    btn.addEventListener('click', function () {
+      var dump = { exported_at: new Date().toISOString(), local_data: {} };
+      try {
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (k && (k.indexOf('clipsat_') === 0 || k === 'cs_accuracy_log')) {
+            try { dump.local_data[k] = JSON.parse(localStorage.getItem(k)); }
+            catch (_) { dump.local_data[k] = localStorage.getItem(k); }
+          }
+        }
+      } catch (_) {}
+      var blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'clipsat-study-data-' + new Date().toISOString().slice(0, 10) + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+      if (status) status.textContent = isAr() ? '✓ تم تنزيل ملف بياناتك الدراسية.' : '✓ Your study data export has been downloaded.';
+    });
+  }
+
   function render(user) {
     if (user) {
       document.getElementById('account-email').textContent = user.email || 'your account';
@@ -39,21 +258,20 @@ isRtl: false
         (window.ClipSATCloud.currentProvider && window.ClipSATCloud.currentProvider()) || 'email';
       gate.hidden = true;
       content.hidden = false;
+      loadAccountTelemetry(window.ClipSATCloud, user);
+      bindExport(window.ClipSATCloud);
     } else {
       content.hidden = true;
       gate.hidden = false;
-      msg.textContent = 'Please sign in to view your account.';
+      msg.textContent = isAr() ? 'يرجى تسجيل الدخول لعرض حسابك.' : 'Please sign in to view your account.';
       signinBtn.hidden = false;
     }
   }
 
   function start() {
     var cloud = window.ClipSATCloud;
-    if (!cloud || !cloud.configured) { msg.textContent = 'Accounts are not available right now.'; return; }
-    // requireAuth() uses the cached session and opens the sign-in modal when
-    // signed out. Client-side gate only; RLS protects the data.
+    if (!cloud || !cloud.configured) { msg.textContent = isAr() ? 'الحسابات غير متاحة حاليًا.' : 'Accounts are not available right now.'; return; }
     cloud.requireAuth().then(render);
-    // Re-render after sign-in / sign-out without a page reload.
     cloud.ready.then(function () {
       var client = cloud.getClient();
       if (!client) return;
@@ -66,11 +284,10 @@ isRtl: false
     document.getElementById('account-signout-btn').onclick = function () { cloud.signOut(); };
   }
 
-  // cloud-sync.js is deferred and loads the Supabase SDK asynchronously.
   var tries = 0;
   (function wait() {
     if (window.ClipSATCloud && (window.ClipSATCloud.requireAuth || window.ClipSATCloud.configured === false)) return start();
-    if (++tries > 100) { msg.textContent = 'Could not load sign-in. Check your connection or browser extensions.'; return; }
+    if (++tries > 100) { msg.textContent = isAr() ? 'تعذّر تحميل بوابة الحساب.' : 'Could not load sign-in. Check your connection or browser extensions.'; return; }
     setTimeout(wait, 100);
   })();
 })();

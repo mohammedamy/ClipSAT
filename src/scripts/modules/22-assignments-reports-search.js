@@ -437,6 +437,7 @@ window.CSSearch = {
     var results=[];
     SEARCH_INDEX.forEach(function(item){
       var words = norm(item.title).split(/[^a-z0-9\u0600-\u06FF]+/).filter(Boolean);
+      if (item.titleAr) words = words.concat(norm(item.titleAr).split(/[^a-z0-9\u0600-\u06FF]+/).filter(Boolean));
       (item.keywords||[]).forEach(function(k){
         words = words.concat(norm(k).split(/[^a-z0-9\u0600-\u06FF]+/).filter(Boolean));
       });

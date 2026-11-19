@@ -71,11 +71,11 @@
       overlay.className = 'wb-overlay';
       document.body.appendChild(overlay);
       var ctx = overlay.getContext('2d');
-      var entry = { canvas: overlay, ctx: ctx, undo: [] };
+      var entry = { canvas: overlay, ctx: ctx, undo: [], strokes: [] };
       this._wbOverlay = entry;
       this._sizeOverlay();
 
-      var drawing = false, rectCache = null;
+      var drawing = false, rectCache = null, activeStroke = null;
       // Precisely map clientX/clientY into canvas 2D context logical units.
       // Because ctx has setTransform(curDpr, 0, 0, curDpr, 0, 0), any coordinate
       // passed to ctx is multiplied by curDpr into buffer pixels. The browser
@@ -111,12 +111,23 @@
         try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
         drawing = true;
         rectCache = overlay.getBoundingClientRect();
-        self._wbSnapshot(entry);
         self._applyStrokeStyle(ctx);
+        var w0 = ctx.lineWidth;
         if (self.wbMode === 'pen' && e.pointerType === 'pen' && e.pressure) {
-          ctx.lineWidth = self.wbSize * (0.5 + e.pressure);
+          w0 = self.wbSize * (0.5 + e.pressure);
+          ctx.lineWidth = w0;
         }
         var pt = _wbLocalXY(e);
+        activeStroke = {
+          mode: self.wbMode,
+          color: self._activeColor(),
+          size: self.wbSize,
+          pts: [{ x: pt.x, y: pt.y, w: w0 }]
+        };
+        entry.strokes.push(activeStroke);
+        if (entry.strokes.length > 200) entry.strokes.shift();
+        entry.undo = entry.strokes;
+        self._updateToolbarState();
         ctx.beginPath();
         ctx.moveTo(pt.x, pt.y);
         ctx.lineTo(pt.x + 0.1, pt.y + 0.1);
@@ -127,31 +138,18 @@
 
       overlay.addEventListener('pointermove', function(e) {
         if (!drawing) return;
-        // getCoalescedEvents() replays every raw sample the OS captured
-        // since the last pointermove (a fast stroke, or a high-sampling-
-        // rate stylus/finger, can generate several per animation frame)
-        // instead of only the single most-recent point. Without this, a
-        // quick stroke degrades into a handful of long straight segments
-        // rather than a smooth curve — that gap is what actually reads as
-        // "low resolution"/laggy pen input, not the rendering itself.
         var pts = (typeof e.getCoalescedEvents === 'function' && e.getCoalescedEvents()) || null;
         if (!pts || !pts.length) pts = [e];
         for (var i = 0; i < pts.length; i++) {
           var ev = pts[i], pt = _wbLocalXY(ev);
-          // Real pressure-sensitive input (stylus/Apple Pencil/S Pen) varies
-          // the stroke width like an actual pen, instead of the flat width
-          // every mouse/touch/software pointer reports. Mouse pointers
-          // always report pressure 0 or the Pointer Events spec's software
-          // default of .5, and untouched fingers report .5 too, so this
-          // only ever engages for a genuine pressure-capable device.
+          var wi = ctx.lineWidth;
           if (self.wbMode === 'pen' && ev.pointerType === 'pen' && ev.pressure) {
-            ctx.lineWidth = self.wbSize * (0.5 + ev.pressure);
+            wi = self.wbSize * (0.5 + ev.pressure);
+            ctx.lineWidth = wi;
           }
+          if (activeStroke) activeStroke.pts.push({ x: pt.x, y: pt.y, w: wi });
           ctx.lineTo(pt.x, pt.y);
           ctx.stroke();
-          // Restart the subpath at the current point each move, so each
-          // stroke() call only re-renders the newest segment instead of
-          // the whole path-so-far (matters once a stroke has many points).
           ctx.beginPath();
           ctx.moveTo(pt.x, pt.y);
         }
@@ -160,6 +158,7 @@
       function stopStroke(e) {
         if (!drawing) return;
         drawing = false;
+        activeStroke = null;
         try { if (e && e.pointerId != null) overlay.releasePointerCapture(e.pointerId); } catch (err) {}
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 1;
@@ -177,11 +176,17 @@
         }
       }, { passive: false });
 
-      // Esc key closes the scratchpad
+      // Esc key closes the scratchpad; Alt+S toggles it when Teacher Mode or Mock Exam is open
       window.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && self.wbActive) {
           self.toggleWhiteboard();
           e.stopPropagation();
+        } else if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 's' || e.key === 'S')) {
+          var mockOpen = document.body.classList.contains('cbt-open') || document.body.classList.contains('teacher-mode');
+          if (mockOpen || self.wbActive) {
+            e.preventDefault();
+            self.toggleWhiteboard();
+          }
         }
       });
 
@@ -250,19 +255,65 @@
       var w = (r && r.width > 0) ? Math.round(r.width) : (document.documentElement.clientWidth || window.innerWidth || 100);
       var h = (r && r.height > 0) ? Math.round(r.height) : Math.max(100, (window.innerHeight || document.documentElement.clientHeight || 100) - topOffset);
       if (entry._cssW === w && entry._cssH === h && entry._dpr === dpr && overlay.width && overlay.height) return;
-      var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
       overlay.width = Math.round(w * dpr);
       overlay.height = Math.round(h * dpr);
-      // Setting width/height above resets the canvas's own transform to
-      // identity, so putImageData (which always works in raw backing-store
-      // pixels regardless of the transform) is unaffected by ordering —
-      // but the CSS-pixel transform below must be (re)applied after, for
-      // every draw call that follows.
-      if (prev) {
-        try { ctx.putImageData(prev, 0, 0); } catch (e) {}
-      }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       entry._cssW = w; entry._cssH = h; entry._dpr = dpr;
+      this._wbRedrawStrokes();
+    },
+
+    _wbRedrawStrokes: function() {
+      var entry = this._wbOverlay;
+      if (!entry) return;
+      var ctx = entry.ctx;
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
+      ctx.restore();
+      var strokes = entry.strokes || [];
+      for (var i = 0; i < strokes.length; i++) {
+        var st = strokes[i];
+        if (!st || !st.pts || !st.pts.length) continue;
+        ctx.save();
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        if (st.mode === 'eraser') {
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.strokeStyle = 'rgba(0,0,0,1)';
+          ctx.globalAlpha = 1;
+          ctx.lineWidth = (st.size || 3) * 4;
+        } else if (st.mode === 'highlighter') {
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.strokeStyle = st.color || this.wbHighlighterColor;
+          ctx.globalAlpha = 0.42;
+          ctx.lineWidth = (st.size || 3) * 5;
+        } else {
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.strokeStyle = st.color || this.wbPenColor;
+          ctx.globalAlpha = 1;
+          ctx.lineWidth = st.size || 3;
+        }
+        var p0 = st.pts[0];
+        if (st.pts.length === 1) {
+          ctx.lineWidth = p0.w || ctx.lineWidth;
+          ctx.beginPath();
+          ctx.moveTo(p0.x, p0.y);
+          ctx.lineTo(p0.x + 0.1, p0.y + 0.1);
+          ctx.stroke();
+        } else {
+          for (var j = 1; j < st.pts.length; j++) {
+            var a = st.pts[j - 1], b = st.pts[j];
+            if (b.w) ctx.lineWidth = b.w;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+        ctx.restore();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 1;
     },
 
     _applyStrokeStyle: function(ctx) {
@@ -276,10 +327,6 @@
       } else if (this.wbMode === 'highlighter') {
         ctx.globalCompositeOperation = 'source-over';
         ctx.strokeStyle = this.wbHighlighterColor;
-        // A bit more opaque than before (.35 → .42) — paired with the
-        // brighter _wbHighlighterColors palette above, this is what
-        // actually reads as a real highlighter instead of a washed-out,
-        // half-visible version of the pen.
         ctx.globalAlpha = 0.42;
         ctx.lineWidth = this.wbSize * 5;
       } else {
@@ -290,36 +337,25 @@
       }
     },
 
-    _wbSnapshot: function(entry) {
-      try {
-        entry.undo.push(entry.ctx.getImageData(0, 0, entry.canvas.width, entry.canvas.height));
-        if (entry.undo.length > 25) entry.undo.shift();
-      } catch (e) {}
+    _wbSnapshot: function() {
       this._updateToolbarState();
     },
 
     undoLast: function() {
       var entry = this._wbOverlay;
-      if (!entry || !entry.undo.length) return;
-      entry.ctx.putImageData(entry.undo.pop(), 0, 0);
+      if (!entry || !entry.strokes || !entry.strokes.length) return;
+      entry.strokes.pop();
+      entry.undo = entry.strokes;
+      this._wbRedrawStrokes();
       this._updateToolbarState();
     },
 
     clearAll: function() {
       var entry = this._wbOverlay;
       if (!entry) return;
-      // clearRect (like every other draw call) is subject to the dpr
-      // ctx.setTransform() applied in _sizeOverlay — clearing (0,0,
-      // canvas.width, canvas.height) through that transform would only
-      // reach the top-left 1/dpr slice of the actual backing store on a
-      // HiDPI screen, leaving the rest of the ink behind. Clear in raw
-      // device pixels instead, then restore the CSS-pixel transform for
-      // whatever draws next.
-      entry.ctx.save();
-      entry.ctx.setTransform(1, 0, 0, 1, 0, 0);
-      entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
-      entry.ctx.restore();
+      entry.strokes = [];
       entry.undo = [];
+      this._wbRedrawStrokes();
       this._updateToolbarState();
     },
 

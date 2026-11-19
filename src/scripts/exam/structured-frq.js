@@ -138,7 +138,10 @@
     return enText || arText || '';
   }
 
+  var _renderedQuestions = {};
+
   function renderCBTWidget(q, qIdx, savedState, opts) {
+    _renderedQuestions[qIdx] = q;
     opts = opts || {};
     var langMode = opts.lang || 'en';
     var fmtFn = opts.formatMath || function (s) { return s; };
@@ -335,12 +338,28 @@
     if (typeof document === 'undefined') return;
     var fb = document.getElementById('cs-sfrq-ai-feedback-' + qIdx);
     var st = getState(qIdx);
+    var q = _renderedQuestions[qIdx] || null;
+    var stemCtx = q ? String(q.text || q.q || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 400) : '';
+    var schemeCtx = '';
+    if (q && Array.isArray(q.parts)) {
+      schemeCtx = q.parts.map(function (pt, idx) {
+        var lbl = pt.label || '(' + String.fromCharCode(97 + idx) + ')';
+        var crits = Array.isArray(pt.markScheme) ? pt.markScheme.map(function (c) {
+          return '[' + c.code + '] ' + (c.criterion || '');
+        }).join('; ') : '';
+        return lbl + ' ' + String(pt.prompt || '').slice(0, 140) + (crits ? ' | Rubric: ' + crits : '');
+      }).join(' || ').slice(0, 700);
+    }
     var summaryParts = Object.keys(st.partInputs || {}).map(function (k) {
       return 'Part ' + (Number(k) + 1) + ': ' + st.partInputs[k];
     }).join('; ');
     toggleRubric(qIdx, true);
     if (typeof root.openChatWith === 'function') {
-      root.openChatWith('Please grade my multi-part structured working against [M1]/[A1]/[B1] criteria: ' + (summaryParts || '(see my steps)'));
+      var prompt = 'Please grade my multi-part structured working against [M1]/[A1]/[B1] criteria.'
+        + (stemCtx ? '\nQuestion: ' + stemCtx : '')
+        + (schemeCtx ? '\nParts & Mark Scheme: ' + schemeCtx : '')
+        + '\nMy working: ' + (summaryParts || '(see my steps)');
+      root.openChatWith(prompt);
       return;
     }
     if (fb) {

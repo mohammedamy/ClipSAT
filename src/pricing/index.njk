@@ -64,7 +64,7 @@ isRtl: false
           <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">All 31 national, international, olympiad &amp; university math tracks</span><span class="i18n-ar" dir="rtl" hidden>جميع مسارات الرياضيات والاختبارات الـ 31 الوطنية والدولية والأولمبياد والجامعية</span></span></li>
           <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">Every single chapter, proof, formula, and explanation (306 chapters)</span><span class="i18n-ar" dir="rtl" hidden>كل الفصول والبراهين والقوانين والشروحات (306 فصول)</span></span></li>
           <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">All 300+ interactive canvas math explorers</span><span class="i18n-ar" dir="rtl" hidden>جميع المستكشفات الرياضية التفاعلية الـ 300+</span></span></li>
-          <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">Full verified question bank (50,500+ items) and chapter quiz generators</span><span class="i18n-ar" dir="rtl" hidden>بنك الأسئلة الموثق بالكامل (+50,500 سؤال) ومولد الاختبارات الفصلية</span></span></li>
+          <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">Full verified question bank (49,151 items) and chapter quiz generators</span><span class="i18n-ar" dir="rtl" hidden>بنك الأسئلة الموثق بالكامل (49,151 سؤالاً) ومولد الاختبارات الفصلية</span></span></li>
           <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">Local device mistake log and flashcards</span><span class="i18n-ar" dir="rtl" hidden>سجل الأخطاء والبطاقات على جهازك المحلي</span></span></li>
           <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">Full exam timer &amp; downloadable worksheets</span><span class="i18n-ar" dir="rtl" hidden>مؤقت الاختبار الكامل وأوراق العمل القابلة للتنزيل</span></span></li>
           <li style="display:flex; gap:10px; font-size:.92rem; color:var(--text)"><span style="color:var(--green, #15803d); font-weight:900">✓</span><span data-bilingual><span class="i18n-en">ClipSAT AI Tutor (20 daily credits: 20 questions or 10 photo/PDF solves per day)</span><span class="i18n-ar" dir="rtl" hidden>معلم ClipSAT الذكي (20 نقطة يوميًا: 20 سؤالاً نصيًا أو 10 صور/PDF يوميًا)</span></span></li>
@@ -323,8 +323,8 @@ isRtl: false
             <span class="i18n-ar" dir="rtl" hidden>هل يمكنني الاستعداد لاختباري مجانًا تمامًا؟</span>
           </b>
           <p data-bilingual style="margin:0; font-size:.88rem; color:var(--muted); line-height:1.5">
-            <span class="i18n-en">Yes, 100%. All 31 curriculum tracks, all worked proofs, formulas, canvas visualizers, full question banks (50,500+ verified items), and mistake tracking are entirely free without any time limits or hidden fees.</span>
-            <span class="i18n-ar" dir="rtl" hidden>نعم، 100%. جميع المسارات التعليمية الـ 31، والبراهين المحلولة، والقوانين، والمستكشفات التفاعلية، وبنوك الأسئلة (أكثر من 50,500 سؤال موثق)، وسجل الأخطاء مجانية تمامًا بلا حدود زمنية أو رسوم خفية.</span>
+            <span class="i18n-en">Yes, 100%. All 31 curriculum tracks, all worked proofs, formulas, canvas visualizers, full question banks (49,151 verified items), and mistake tracking are entirely free without any time limits or hidden fees.</span>
+            <span class="i18n-ar" dir="rtl" hidden>نعم، 100%. جميع المسارات التعليمية الـ 31، والبراهين المحلولة، والقوانين، والمستكشفات التفاعلية، وبنوك الأسئلة (49,151 سؤالاً موثقاً)، وسجل الأخطاء مجانية تمامًا بلا حدود زمنية أو رسوم خفية.</span>
           </p>
         </div>
         <div style="background:var(--panel, #fff); border:1.5px solid var(--line, #e2e8f0); border-radius:10px; padding:18px 20px">
@@ -460,13 +460,13 @@ isRtl: false
       }
       if (d.configured === false) {
         var waLink = document.getElementById('plus-wa-assist-link');
+        var opened = (waLink && waLink.href) ? window.open(waLink.href, '_blank', 'noopener') : null;
         setCheckoutStatus(
           isAr
-            ? 'بوابة الدفع قيد التفعيل النهائي للتاجر — تم فتح التفعيل الفوري للتجربة المجانية (30 يومًا) عبر واتساب.'
-            : 'Merchant gateway keys pending activation — opening instant 30-day Plus activation via WhatsApp.',
+            ? (opened ? 'بوابة الدفع قيد التفعيل النهائي — تم فتح التفعيل الفوري عبر واتساب.' : 'بوابة الدفع قيد التفعيل النهائي — استخدم رابط واتساب أعلاه للتفعيل الفوري.')
+            : (opened ? 'Merchant gateway keys pending activation — opening instant 30-day Plus activation via WhatsApp.' : 'Merchant gateway keys pending activation — click the WhatsApp link above (popup was blocked).'),
           false
         );
-        if (waLink && waLink.href) window.open(waLink.href, '_blank', 'noopener');
         return;
       }
       setCheckoutStatus(d.error || (isAr ? 'تعذّر بدء جلسة الدفع.' : 'Could not start checkout session.'), true);
