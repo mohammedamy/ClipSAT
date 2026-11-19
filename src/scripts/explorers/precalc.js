@@ -7,8 +7,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
@@ -47,7 +47,7 @@
       var c=P.ctx, N=120, i, a, px, py;
       c.beginPath();
       for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
-      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle=LINE; c.stroke();
       c.strokeStyle=AXIS; c.lineWidth=1;
       c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
       c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
@@ -131,8 +131,8 @@
         c.beginPath();
         for(i=0;i<=N;i++){ t=-Tmax+2*Tmax*i/N; var hx2=P.X(-A*Math.cosh(t)), hy2=P.Y(b2*Math.sinh(t)); if(i===0) c.moveTo(hx2,hy2); else c.lineTo(hx2,hy2); }
         c.stroke(); c.restore();
-        P.segment(view.xmin,(b2/A)*view.xmin,view.xmax,(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
-        P.segment(view.xmin,-(b2/A)*view.xmin,view.xmax,-(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
+        P.segment(view.xmin,(b2/A)*view.xmin,view.xmax,(b2/A)*view.xmax,AXIS,1.2,[4,4]);
+        P.segment(view.xmin,-(b2/A)*view.xmin,view.xmax,-(b2/A)*view.xmax,AXIS,1.2,[4,4]);
         var cc2=A*e;
         if(cLab) cLab.textContent='c (focus distance)';
         P.dot(cc2,0,AMBER2,4); P.dot(-cc2,0,AMBER2,4);
@@ -176,7 +176,7 @@
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       var f=function(t){ return Math.exp(r*t); };
       P.curve(f, INDIGO, 2.6);
-      P.segment(view.xmin,1,view.xmax,1,'#AEB8C7',1,[3,3]);
+      P.segment(view.xmin,1,view.xmax,1,AXIS,1,[3,3]);
       P.dot(0,1,INK,4.5);
       document.getElementById('gdP10').textContent=fmt(f(10),3);
       var model = r>0.001?'growth': r<-0.001?'decay':'constant';
@@ -565,7 +565,7 @@
         P.ring(cVal, 1.5, INDIGO, 5.5);
         P.dot(cVal, 3.0, INDIGO, 5.5);
       } else if(currCase === 'inf'){
-        P.vline(cVal, '#e11d48', [5, 4]);
+        P.vline(cVal, ROSE, [5, 4]);
         var cLInf = ctx; cLInf.save(); cLInf.beginPath();
         cLInf.rect(P.pad.l, P.pad.t, P.X(cVal) - P.pad.l, P.h - P.pad.t - P.pad.b); cLInf.clip();
         P.curve(function(x){ return 1/(x-cVal); }, INDIGO, 2.4);
@@ -670,8 +670,8 @@
       ctx.fillStyle = isValid ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)';
       ctx.fillRect(P.pad.l, Ytop, P.w - P.pad.l - P.pad.r, Ybot - Ytop);
 
-      P.segment(0, LVal + epsVal, view.xmax, LVal + epsVal, isValid ? '#10b981' : '#ef4444', 1.2, [4, 4]);
-      P.segment(0, LVal - epsVal, view.xmax, LVal - epsVal, isValid ? '#10b981' : '#ef4444', 1.2, [4, 4]);
+      P.segment(0, LVal + epsVal, view.xmax, LVal + epsVal, isValid ? GREEN : RED, 1.2, [4, 4]);
+      P.segment(0, LVal - epsVal, view.xmax, LVal - epsVal, isValid ? GREEN : RED, 1.2, [4, 4]);
 
       P.segment(0, LVal, view.xmax, LVal, AMBER2, 1.4, [6, 4]);
       P.vline(nCutoff, INDIGO2, [5, 4]);
@@ -682,9 +682,9 @@
         var inCorridor = diff < epsVal;
 
         if(n <= nCutoff){
-          P.dot(n, val, '#94a3b8', 3.5);
+          P.dot(n, val, AXIS, 3.5);
         } else {
-          P.dot(n, val, inCorridor ? '#10b981' : '#ef4444', 5.0);
+          P.dot(n, val, inCorridor ? GREEN : RED, 5.0);
         }
       }
 
@@ -722,7 +722,7 @@
     wireDataToggle(dataBtn, dataPanel);
 
     var fnKey = 'sin', thetaDeg = 60;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    
 
     function evalSix(rad){
       var s = Math.sin(rad), c = Math.cos(rad);
@@ -793,7 +793,7 @@
       }
       c.closePath();
       c.lineWidth = 1.6;
-      c.strokeStyle = '#94a3b8';
+      c.strokeStyle = AXIS;
       c.stroke();
 
       var rad = thetaDeg * Math.PI / 180;
@@ -829,7 +829,7 @@
       c.fillStyle = MUTED;
       c.textAlign = 'left';
       c.textBaseline = 'top';
-      c.fillText('Unit Circle P(cos θ, sin θ)', padL.l + 2, 4);
+      c.fillText((K.t ? K.t('Unit Circle P(cos θ, sin θ)', 'دائرة الوحدة P(cos θ, sin θ)') : 'Unit Circle P(cos θ, sin θ)'), padL.l + 2, 4);
 
       /* Divider line between panes */
       c.save();
@@ -863,9 +863,9 @@
 
       /* Reciprocal guide curve for csc (sin) or sec (cos) */
       if(fnKey === 'csc'){
-        Pw.curve(function(x){ return Math.sin(x); }, '#94a3b8', 1.4, [4, 4]);
+        Pw.curve(function(x){ return Math.sin(x); }, AXIS, 1.4, [4, 4]);
       } else if(fnKey === 'sec'){
-        Pw.curve(function(x){ return Math.cos(x); }, '#94a3b8', 1.4, [4, 4]);
+        Pw.curve(function(x){ return Math.cos(x); }, AXIS, 1.4, [4, 4]);
       }
 
       /* Vertical asymptotes for tan, sec, csc, cot */
@@ -961,7 +961,7 @@
     wireDataToggle(dataBtn, dataPanel);
 
     var fnKey = 'arcsin', xVal = 0.5;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    
 
     var SPECS = {
       arcsin: {
@@ -1074,7 +1074,7 @@
       c.clip();
 
       /* Mirror line y = x */
-      Pg.segment(-5, -5, 5, 5, '#94a3b8', 1.3, [5, 4]);
+      Pg.segment(-5, -5, 5, 5, AXIS, 1.3, [5, 4]);
 
       /* Horizontal asymptotes / principal range bounds for f^-1(x) */
       if(fnKey === 'arctan'){
@@ -1144,7 +1144,7 @@
       }
       c.closePath();
       c.lineWidth = 1.3;
-      c.strokeStyle = '#cbd5e1';
+      c.strokeStyle = LINE;
       c.stroke();
 
       /* Highlight Principal Range Arc on Unit Circle */

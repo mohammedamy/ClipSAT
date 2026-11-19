@@ -8,24 +8,38 @@
 (function(){
   "use strict";
   var INK='#0E1726', INDIGO='#1E3A6E', INDIGO2='#2B5BA8', AMBER='#B8801F', AMBER2='#C8902A',
-      LINE='#D6DCE6', GRID='#E9EDF3', MUTED='#566173', PAPER='#FFFFFF', WHITE='#FFFFFF', AXIS='#AEB8C7';
+      LINE='#D6DCE6', GRID='#E9EDF3', MUTED='#566173', PAPER='#FFFFFF', WHITE='#FFFFFF', AXIS='#AEB8C7',
+      TEAL='#0D9488', ROSE='#E11D48', GREEN='#059669', RED='#DC2626', PURPLE='#7C3AED', SLATE='#64748B';
   var FONT='13px ui-sans-serif, system-ui, -apple-system, sans-serif';
 
   function refreshPlotColors(){
     var cs = getComputedStyle(document.body);
+    var dark = document.body && document.body.classList && document.body.classList.contains('dark');
     function v(name, fallback){ var x = cs.getPropertyValue(name); return x && x.trim() ? x.trim() : fallback; }
-    INK    = v('--ink', '#0E1726');
-    INDIGO = v('--indigo', '#1E3A6E');
-    INDIGO2= v('--indigo-2', '#2B5BA8');
-    AMBER  = v('--amber-text', v('--amber', '#B8801F'));
-    AMBER2 = v('--amber-2', '#C8902A');
-    LINE   = v('--line', '#D6DCE6');
-    GRID   = v('--grid', '#E9EDF3');
-    MUTED  = v('--muted', '#566173');
-    PAPER  = v('--paper', '#FFFFFF');
+    INK    = v('--ink', dark ? '#E2E8F0' : '#0E1726');
+    INDIGO = v('--indigo', dark ? '#7DA4E8' : '#1E3A6E');
+    INDIGO2= v('--indigo-2', dark ? '#60A5FA' : '#2B5BA8');
+    AMBER  = v('--amber-text', v('--amber', dark ? '#FBBF24' : '#B8801F'));
+    AMBER2 = v('--amber-2', dark ? '#F59E0B' : '#C8902A');
+    LINE   = v('--line', dark ? '#334155' : '#D6DCE6');
+    GRID   = v('--grid', dark ? '#1E293B' : '#E9EDF3');
+    MUTED  = v('--muted', dark ? '#94A3B8' : '#566173');
+    PAPER  = v('--paper', dark ? '#0F172A' : '#FFFFFF');
     WHITE  = PAPER;
-    AXIS   = v('--faint', '#AEB8C7');
+    AXIS   = v('--faint', dark ? '#64748B' : '#AEB8C7');
+    TEAL   = v('--fig-teal', dark ? '#2DD4BF' : '#0D9488');
+    ROSE   = v('--fig-rose', dark ? '#FB7185' : '#E11D48');
+    GREEN  = v('--fig-green', dark ? '#34D399' : '#059669');
+    RED    = v('--fig-red', dark ? '#F87171' : '#DC2626');
+    PURPLE = v('--fig-purple', dark ? '#C084FC' : '#7C3AED');
+    SLATE  = v('--muted', dark ? '#94A3B8' : '#64748B');
   }
+  function isArLocale(){
+    return (window.i18n && typeof window.i18n.getLocale === 'function' && window.i18n.getLocale() === 'ar') ||
+           (document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl')) ||
+           (document.body && document.body.classList && document.body.classList.contains('rtl'));
+  }
+  function tr(en, ar){ return (isArLocale() && ar) ? ar : en; }
   refreshPlotColors();
   window.CSPlotRefresh = function(){ refreshPlotColors(); if(typeof redrawAll==='function') redrawAll(); };
   window.esc = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
@@ -1004,7 +1018,7 @@
 
   /* ---------- Export shared ExplorerKit for per-track explorer files & router ---------- */
   window.CSExplorerKit={
-    register:register, reduceMotion:reduceMotion, drawExplorerOf:drawExplorerOf, fmt:fmt, Plot:Plot, redrawAll:redrawAll, wireDataToggle:wireDataToggle, renderDataRows:renderDataRows, dfdx:dfdx, integrate:integrate, arrow:arrow, _deg:_deg, _fitView:_fitView, _clip:_clip, _set:_set, _slider:_slider, _num:_num, makeDraggable:makeDraggable, attachChallenge:attachChallenge,
-    colors:function(){ return {INK:INK, INDIGO:INDIGO, INDIGO2:INDIGO2, AMBER:AMBER, AMBER2:AMBER2, LINE:LINE, GRID:GRID, MUTED:MUTED, PAPER:PAPER, WHITE:WHITE, AXIS:AXIS, FONT:FONT}; }
+    register:register, reduceMotion:reduceMotion, drawExplorerOf:drawExplorerOf, fmt:fmt, Plot:Plot, redrawAll:redrawAll, wireDataToggle:wireDataToggle, renderDataRows:renderDataRows, dfdx:dfdx, integrate:integrate, arrow:arrow, _deg:_deg, _fitView:_fitView, _clip:_clip, _set:_set, _slider:_slider, _num:_num, makeDraggable:makeDraggable, attachChallenge:attachChallenge, isAr:isArLocale, t:tr,
+    colors:function(){ return {INK:INK, INDIGO:INDIGO, INDIGO2:INDIGO2, AMBER:AMBER, AMBER2:AMBER2, LINE:LINE, GRID:GRID, MUTED:MUTED, PAPER:PAPER, WHITE:WHITE, AXIS:AXIS, FONT:FONT, TEAL:TEAL, ROSE:ROSE, GREEN:GREEN, RED:RED, PURPLE:PURPLE, SLATE:SLATE}; }
   };
 })();

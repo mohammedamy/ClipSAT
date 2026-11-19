@@ -5390,4 +5390,80 @@ D["ch-vectorcalc"] = [
     ]
   }
 ];
+
+if(Array.isArray(D["ch-derivatives"])) D["ch-derivatives"].push({
+  "t": "gp",
+  "ti": "Interactive Graph Plotter: Stationary Points of a Cubic",
+  "ti_ar": "مخطط الدوال التفاعلي: النقاط الحرجة للدالة التكعيبية",
+  "q": "Plot the local maximum and local minimum of \\(f(x) = x^3 - 3x\\) where \\(f'(x) = 0\\).",
+  "q_ar": "عيّن القيمة العظمى المحلية والصغرى المحلية للدالة \\(f(x) = x^3 - 3x\\) حيث \\(f'(x) = 0\\).",
+  "xrange": [
+    -4,
+    4
+  ],
+  "yrange": [
+    -4,
+    4
+  ],
+  "targets": [
+    {
+      "label": "Local Max (-1, 2)",
+      "label_ar": "عظمى محلية (-1, 2)",
+      "target": [
+        -1,
+        2
+      ],
+      "tol": 0.45
+    },
+    {
+      "label": "Local Min (1, -2)",
+      "label_ar": "صغرى محلية (1, -2)",
+      "target": [
+        1,
+        -2
+      ],
+      "tol": 0.45
+    }
+  ],
+  "sol": "Since \\(f'(x)=3x^2-3=0\\), \\(x=\\pm 1\\). Evaluating gives local max \\((-1,2)\\) and local min \\((1,-2)\\).",
+  "sol_ar": "بما أن \\(f'(x)=3x^2-3=0\\)، فإن \\(x=\\pm 1\\)، ومنه العظمى المحلية \\((-1,2)\\) والصغرى المحلية \\((1,-2)\\)."
+});
+if(Array.isArray(D["ch-limits"])) D["ch-limits"].push({
+  "t": "fn",
+  "ti": "Function Lab: Secant Slope & Tangent Limit",
+  "ti_ar": "مختبر الدوال: ميل القاطع ونهاية المماس",
+  "fns": [
+    {
+      "expr": "a*x^2 + c",
+      "color": "#1E3A6E",
+      "label": "ax² + c"
+    }
+  ],
+  "xrange": [
+    -5,
+    5
+  ],
+  "yrange": [
+    -4,
+    8
+  ],
+  "params": [
+    {
+      "name": "a",
+      "label": "Curvature a",
+      "min": -1.5,
+      "max": 2,
+      "step": 0.5,
+      "default": 1
+    },
+    {
+      "name": "c",
+      "label": "Vertical shift c",
+      "min": -3,
+      "max": 3,
+      "step": 1,
+      "default": 0
+    }
+  ]
+});
 });

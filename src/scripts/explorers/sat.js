@@ -7,8 +7,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
@@ -585,7 +585,7 @@
     wireDataToggle(dataBtn, dataPanel);
 
     var mode = 'ymxc', p1 = 1.5, p2 = 3.0, p3 = -6.0;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    
 
     function sgnTerm(v){
       return v >= 0 ? (' + ' + _num(v)) : (' − ' + _num(Math.abs(v)));
@@ -710,7 +710,11 @@
       if(sMode) mode = sMode.value;
       if(sP1) p1 = parseFloat(sP1.value);
       if(sP2) p2 = parseFloat(sP2.value);
-      if(sP3) p3 = parseFloat(sP3.value);
+      if(sP3){
+        p3 = parseFloat(sP3.value);
+        var p3Wrap = sP3.closest && sP3.closest('.ctrl');
+        if(p3Wrap) p3Wrap.hidden = (mode !== 'gen');
+      }
       redrawAll();
     }
     if(sMode) sMode.addEventListener('change', sync);
@@ -741,7 +745,7 @@
     wireDataToggle(dataBtn, dataPanel);
 
     var mode = 'std', a = 1.0, p1 = -4.0, p2 = 3.0, p3 = 2.0;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    
 
     function sgnTerm(v){
       return v >= 0 ? (' + ' + _num(v)) : (' − ' + _num(Math.abs(v)));
@@ -915,7 +919,11 @@
       }
       if(sP1) p1 = parseFloat(sP1.value);
       if(sP2) p2 = parseFloat(sP2.value);
-      if(sP3) p3 = parseFloat(sP3.value);
+      if(sP3){
+        p3 = parseFloat(sP3.value);
+        var p3Wrap = sP3.closest && sP3.closest('.ctrl');
+        if(p3Wrap) p3Wrap.hidden = (mode !== 'chd');
+      }
       redrawAll();
     }
     if(sMode) sMode.addEventListener('change', sync);
@@ -950,7 +958,7 @@
     wireDataToggle(dataBtn, dataPanel);
 
     var mode = 'std', a = 2.0, b = 1.5, kh = 2.0, d = 1.0;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    
 
     function solveExp(){
       var aa = Math.abs(a) < 0.1 ? 1.0 : a;

@@ -25,6 +25,8 @@
   window.FIG_AMBER_TEXT='var(--fig-amber-text, var(--amber-text, #8A6017))';
   window.FIG_AMBER_FILL='var(--fig-amber-soft, var(--amber-soft, rgba(200,144,42,0.16)))';
   window.FIG_TEAL='var(--fig-teal, var(--teal, #0e9f8f))';
+  window.FIG_GREEN='var(--fig-green, #059669)';
+  window.FIG_RED='var(--fig-red, #dc2626)';
   window.FIG_INK='var(--fig-ink, var(--ink, #0E1726))';
   window.FIG_MUTED='var(--fig-muted, var(--muted, #5a6577))';
   window.FIG_GRID='var(--fig-grid, var(--grid, #c9d4e8))';
@@ -33,7 +35,7 @@
   window.FIG_SERIES=[window.FIG_INDIGO2,window.FIG_AMBER,window.FIG_TEAL,'var(--fig-purple, #8B5CF6)','var(--fig-rose, #DB5C6B)'];
   var FIG_INDIGO=window.FIG_INDIGO, FIG_INDIGO2=window.FIG_INDIGO2, FIG_INDIGO_FILL=window.FIG_INDIGO_FILL,
       FIG_INDIGO_FILL2=window.FIG_INDIGO_FILL2, FIG_AMBER=window.FIG_AMBER, FIG_AMBER_TEXT=window.FIG_AMBER_TEXT,
-      FIG_AMBER_FILL=window.FIG_AMBER_FILL, FIG_TEAL=window.FIG_TEAL, FIG_INK=window.FIG_INK,
+      FIG_AMBER_FILL=window.FIG_AMBER_FILL, FIG_TEAL=window.FIG_TEAL, FIG_GREEN=window.FIG_GREEN, FIG_RED=window.FIG_RED, FIG_INK=window.FIG_INK,
       FIG_MUTED=window.FIG_MUTED, FIG_GRID=window.FIG_GRID, FIG_BORDER=window.FIG_BORDER, FIG_BG=window.FIG_BG,
       FIG_SERIES=window.FIG_SERIES;
 
@@ -4569,19 +4571,19 @@ function renderSignChart(s){
       var weight = 'normal';
       var fontSize = 9.5;
       if(val === '+' || val === 'pos' || val === 'positive'){
-        val = '+'; color = '#16a34a'; weight = 'bold'; fontSize = 12;
+        val = '+'; color = window.FIG_GREEN; weight = 'bold'; fontSize = 12;
       } else if(val === '-' || val === '−' || val === 'neg' || val === 'negative'){
-        val = '−'; color = '#dc2626'; weight = 'bold'; fontSize = 12;
+        val = '−'; color = window.FIG_RED; weight = 'bold'; fontSize = 12;
       } else if(val === '0' || val === 'zero'){
         val = '0'; color = FIG_MUTED; weight = 'bold';
       } else if(val === '↗' || val === 'inc' || val === 'increasing' || val.indexOf('Increasing') !== -1){
-        val = '↗'; color = '#16a34a'; weight = 'bold'; fontSize = 12;
+        val = '↗'; color = window.FIG_GREEN; weight = 'bold'; fontSize = 12;
       } else if(val === '↘' || val === 'dec' || val === 'decreasing' || val.indexOf('Decreasing') !== -1){
-        val = '↘'; color = '#dc2626'; weight = 'bold'; fontSize = 12;
+        val = '↘'; color = window.FIG_RED; weight = 'bold'; fontSize = 12;
       } else if(val.toLowerCase().indexOf('max') !== -1){
-        color = '#d97706'; weight = 'bold'; fontSize = 8.5;
+        color = window.FIG_AMBER; weight = 'bold'; fontSize = 8.5;
       } else if(val.toLowerCase().indexOf('min') !== -1){
-        color = '#2563eb'; weight = 'bold'; fontSize = 8.5;
+        color = window.FIG_INDIGO2; weight = 'bold'; fontSize = 8.5;
       }
       svg += '<text x="'+cellX.toFixed(1)+'" y="'+cellY.toFixed(1)+'" font-size="'+fontSize+'" font-weight="'+weight+'" fill="'+color+'" text-anchor="middle">'+esc(val)+'</text>';
     }
@@ -4735,7 +4737,7 @@ function renderTransformationGrid(s){
 
   if(imgVerts.length){
     var imgPointsStr = imgVerts.map(function(v){ return sx(v[0]).toFixed(1) + ',' + sy(v[1]).toFixed(1); }).join(' ');
-    svg += '<polygon points="'+imgPointsStr+'" fill="rgba(16,185,129,0.22)" stroke="#059669" stroke-width="2"/>';
+    svg += '<polygon points="'+imgPointsStr+'" fill="rgba(16,185,129,0.22)" stroke="'+window.FIG_GREEN+'" stroke-width="2"/>';
 
     var imgLabels = s.imageLabels || objLabels.map(function(l){ return l + "′"; });
     var tgCx2 = imgVerts.reduce(function(a,v){return a+sx(v[0]);},0)/Math.max(1,imgVerts.length);
@@ -4745,8 +4747,8 @@ function renderTransformationGrid(s){
       if(lbl){
         var vx = sx(v[0]), vy = sy(v[1]);
         var pos2 = placeTgVertLabel(vx, vy, tgCx2, tgCy2, lbl);
-        svg += '<circle cx="'+vx.toFixed(1)+'" cy="'+vy.toFixed(1)+'" r="2.5" fill="#059669"/>';
-        svg += '<text x="'+pos2[0].toFixed(1)+'" y="'+pos2[1].toFixed(1)+'" font-size="9.5" font-weight="bold" fill="#059669" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(lbl)+'</text>';
+        svg += '<circle cx="'+vx.toFixed(1)+'" cy="'+vy.toFixed(1)+'" r="2.5" fill="'+window.FIG_GREEN+'"/>';
+        svg += '<text x="'+pos2[0].toFixed(1)+'" y="'+pos2[1].toFixed(1)+'" font-size="9.5" font-weight="bold" fill="'+window.FIG_GREEN+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(lbl)+'</text>';
       }
     });
   }
@@ -4877,15 +4879,15 @@ function renderVoronoi(s){
     var ecx = sx(ec.cx || ec.x || 0), ecy = sy(ec.cy || ec.y || 0);
     var ecr = (ec.r || 1) / ((xmax - xmin)||1) * gw;
     svg += '<circle cx="'+ecx.toFixed(1)+'" cy="'+ecy.toFixed(1)+'" r="'+ecr.toFixed(1)+'" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,4"/>';
-    svg += '<circle cx="'+ecx.toFixed(1)+'" cy="'+ecy.toFixed(1)+'" r="3.5" fill="#ef4444"/>';
+    svg += '<circle cx="'+ecx.toFixed(1)+'" cy="'+ecy.toFixed(1)+'" r="3.5" fill="'+window.FIG_RED+'"/>';
     if(ec.label){
       var ecLx = _clampLabelX(ecx + 6, ec.label, 9, 'start', pad+4, W-pad-4);
-      svg += '<text x="'+ecLx.toFixed(1)+'" y="'+(ecy-6).toFixed(1)+'" font-size="9" font-weight="bold" fill="#dc2626" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(ec.label)+'</text>';
+      svg += '<text x="'+ecLx.toFixed(1)+'" y="'+(ecy-6).toFixed(1)+'" font-size="9" font-weight="bold" fill="'+window.FIG_RED+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(ec.label)+'</text>';
     }
   }
 
   // 4. Sites (Generators) — do not repeat coordinates if label already contains '(' and avoid site label overlaps
-  var siteColors = [FIG_INDIGO, '#d97706', '#0284c7', '#059669', '#db2777'];
+  var siteColors = [FIG_INDIGO, FIG_AMBER, FIG_INDIGO2, window.FIG_GREEN, 'var(--fig-rose, #db2777)'];
   var vorPlaced = [];
   sites.forEach(function(st, idx){
     var x = st.x != null ? st.x : (Array.isArray(st) ? st[0] : 0);

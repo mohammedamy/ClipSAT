@@ -7,8 +7,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
@@ -61,7 +61,7 @@
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:22,r:12,t:12,b:18}); P.clear(); P.grid();
       var base=function(x){return Math.abs(x-0)+0;};
-      P.curve(base, '#C2CCDA', 1.6);
+      P.curve(base, LINE, 1.6);
       var g=function(x){return Math.abs(x-hh)+kk;};
       P.curve(g, INDIGO, 2.6);
       P.dot(hh,kk,AMBER2,5);
@@ -93,7 +93,7 @@
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:18}); P.clear(); P.grid();
       P.curve(f, INDIGO, 2.6);
       // tangent at x=1 (slope 2) for reference
-      P.segment(view.xmin, 1+2*(view.xmin-1), view.xmax, 1+2*(view.xmax-1), '#C2CCDA', 1.4, [5,4]);
+      P.segment(view.xmin, 1+2*(view.xmin-1), view.xmax, 1+2*(view.xmax-1), LINE, 1.4, [5,4]);
       var a=1, b=a+dh, m=(f(b)-f(a))/dh;
       // secant line through (a,f(a)) and (b,f(b))
       P.segment(view.xmin, f(a)+m*(view.xmin-a), view.xmax, f(a)+m*(view.xmax-a), INK, 2);
@@ -186,7 +186,7 @@
       var P=new Plot(ctx,w,h,view,{l:24,r:14,t:18,b:20}); P.clear(); P.grid();
       var det = a*d - b*c;
       /* Draw parallelogram spanned by u=(a,c) and v=(b,d) */
-      P.polygon([[0,0],[a,c],[a+b,c+d],[b,d]], det===0?'rgba(220,38,38,0.18)':'rgba(43,91,168,0.16)', det===0?'#dc2626':INDIGO, 2);
+      P.polygon([[0,0],[a,c],[a+b,c+d],[b,d]], det===0?'rgba(220,38,38,0.18)':'rgba(43,91,168,0.16)', det===0?RED:INDIGO, 2);
       P.arrow(0,0,a,c,INDIGO,2.4);
       P.arrow(0,0,b,d,AMBER2,2.4);
       P.label(a,c+0.35,'col₁('+a+','+c+')',INDIGO);
@@ -249,7 +249,7 @@
       ctx.textAlign='center'; ctx.font='600 11px ui-sans-serif, system-ui, sans-serif';
       for(var k=-3;k<=3;k++){
         var tx=zToX(k), ty=zToY(k);
-        ctx.strokeStyle=GRID||'#cbd5e1'; ctx.setLineDash([3,3]);
+        ctx.strokeStyle=GRID||LINE; ctx.setLineDash([3,3]);
         ctx.beginPath(); ctx.moveTo(tx,bot); ctx.lineTo(tx,ty); ctx.stroke(); ctx.setLineDash([]);
         ctx.fillStyle=INK; ctx.fillText(String(mu + k*sig), tx, bot+15);
       }
@@ -327,13 +327,13 @@
         var bx = 18 + c*(cw+18), by = 36 + r*(ch+14);
         var ok = cards[i].val === 1;
         ctx.fillStyle = ok ? 'rgba(16,185,129,0.16)' : 'rgba(239,68,68,0.16)';
-        ctx.strokeStyle = ok ? '#10b981' : '#ef4444';
+        ctx.strokeStyle = ok ? GREEN : RED;
         ctx.lineWidth = 2;
         ctx.fillRect(bx, by, cw, ch);
         ctx.strokeRect(bx, by, cw, ch);
         ctx.fillStyle = INK; ctx.font='700 11.5px ui-sans-serif, system-ui, sans-serif';
         ctx.fillText(cards[i].title, bx+cw/2, by+18);
-        ctx.fillStyle = ok ? '#047857' : '#b91c1c'; ctx.font='700 14px ui-sans-serif, system-ui, sans-serif';
+        ctx.fillStyle = ok ? GREEN : RED; ctx.font='700 14px ui-sans-serif, system-ui, sans-serif';
         ctx.fillText(cards[i].expr+' : '+tf(cards[i].val), bx+cw/2, by+ch/2+6);
         ctx.fillStyle = MUTED; ctx.font='500 10.5px ui-sans-serif, system-ui, sans-serif';
         ctx.fillText(cards[i].note, bx+cw/2, by+ch-8);
@@ -453,7 +453,7 @@
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:14,t:18,b:20}); P.clear(); P.grid();
       /* y = x symmetry line */
-      P.segment(-4,-4,9,9,GRID||'#94a3b8',1.4,[5,4]);
+      P.segment(-4,-4,9,9,GRID||AXIS,1.4,[5,4]);
       /* f(x) = b^x */
       P.curve(function(t){ return Math.pow(base,t); }, INDIGO, 2.5);
       /* f^-1(x) = log_b(x) */
@@ -573,8 +573,8 @@
         ctx.fillText(yv+'%', P.X(0.35), P.Y(yv)+3);
       });
       var bars=[
-        {x:1.6, val:gpa, col:'#64748b', lbl:'GPA (30%)'},
-        {x:3.9, val:qud, col:INDIGO2||'#3b82f6', lbl:'Qudrat (30%)'},
+        {x:1.6, val:gpa, col:SLATE, lbl:'GPA (30%)'},
+        {x:3.9, val:qud, col:INDIGO2||INDIGO2, lbl:'Qudrat (30%)'},
         {x:6.2, val:tah, col:INDIGO, lbl:'Tahsili (40%)'},
         {x:8.5, val:comp, col:AMBER2, lbl:'Composite'}
       ];

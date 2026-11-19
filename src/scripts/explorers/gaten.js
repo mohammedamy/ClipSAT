@@ -4,8 +4,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
@@ -87,7 +87,7 @@
       if(_elV1) _elV1.textContent = fmt(b, cfg.s1Step < 0.1 ? 2 : (cfg.s1Step < 1 ? 1 : 0));
 
       var out0 = '—', out1 = '—', out2 = '—', rows = [];
-      var TEAL = '#0E9F8F';
+      var TEAL = TEAL;
 
       if(mode === 'pacing_score'){
         var tot = a + b, maxTot = (_elS0 && parseFloat(_elS0.max) > 40) ? 125 : ((_elS0 && parseFloat(_elS0.max) === 45) ? 108 : 50);
@@ -157,7 +157,7 @@
           for(var gy=0.25; gy<=4.75; gy+=0.5){
             var sl = a * gy * (1 - gy/4.0);
             var L = 0.16 / Math.sqrt(1 + sl*sl);
-            P.segment(gx-L, gy-sl*L, gx+L, gy+sl*L, '#94A3B8', 1.3);
+            P.segment(gx-L, gy-sl*L, gx+L, gy+sl*L, AXIS, 1.3);
           }
         }
         P.hline(4.0, TEAL, [4,4]); P.hline(0.0, AXIS, [2,2]);
@@ -176,7 +176,7 @@
         rows.push(['Growth Rate k', fmt(a,2)], ['Initial Value y(0)', fmt(b,2)], ['Initial Slope dy/dx(0)', out0], ['Value y(3.0)', out1]);
       } else if(mode === 'modulus'){
         var vx = Math.abs(a)>1e-5 ? -b/a : 0;
-        P.curve(function(x){return a*x + b;}, '#94A3B8', 1.6, [4,4]);
+        P.curve(function(x){return a*x + b;}, AXIS, 1.6, [4,4]);
         P.curve(function(x){return Math.abs(a*x + b);}, INDIGO, 2.7);
         P.hline(2.0, AMBER2, [4,4]);
         var x1 = (2.0 - b)/a, x2 = (-2.0 - b)/a;
@@ -408,7 +408,7 @@
         rows.push(['n', String(nB)], ['Selected r', String(rSel)], ['Combinations nCr', String(cVal)]);
       } else if(mode === 'inv_func'){
         var fI = function(x){ return 0.35*Math.pow(x - a, 3) + b; };
-        P.curve(function(x){return x;}, '#94A3B8', 1.6, [4,4]);
+        P.curve(function(x){return x;}, AXIS, 1.6, [4,4]);
         P.curve(fI, INDIGO, 2.6);
         P.parametric(function(t){return fI(t);}, function(t){return t;}, -4.5, 4.5, AMBER2, 2.6);
         var x0 = a + 1.2, y0 = fI(x0);
@@ -530,7 +530,7 @@
         var fCub = function(x){ return x*x*x - 3*x + b; };
         var rem = fCub(a);
         P.curve(fCub, INDIGO, 2.6);
-        P.vline(a, '#94A3B8', [3,3]);
+        P.vline(a, AXIS, [3,3]);
         P.segment(a, 0, a, rem, AMBER2, 3.2);
         P.dot(a, rem, AMBER2, 6);
         P.label(a+0.15, rem, 'P('+fmt(a,1)+') = '+fmt(rem,2), AMBER2);
@@ -568,7 +568,7 @@
         rows.push(['Heading Velocity v_b', fmt(a,2)], ['Current Velocity v_c', fmt(b,2)], ['Resultant Speed', out0], ['Drift Angle', out1]);
       } else if(mode === 'mat_2d' || mode === 'change_basis'){
         var a11 = a, a12 = b, a21 = 0.5, a22 = 1.5;
-        P.polygon([[0,0],[1,0],[1,1],[0,1]], 'rgba(148,163,184,0.18)', '#94A3B8', 1.5);
+        P.polygon([[0,0],[1,0],[1,1],[0,1]], 'rgba(148,163,184,0.18)', AXIS, 1.5);
         P.polygon([[0,0],[a11,a21],[a11+a12,a21+a22],[a12,a22]], 'rgba(200,144,42,0.26)', AMBER2, 2.4);
         P.arrow(0, 0, a11, a21, INDIGO, 2.6);
         P.arrow(0, 0, a12, a22, TEAL, 2.6);
@@ -581,7 +581,7 @@
         rows.push(['Column 1 Ae₁', '⟨'+fmt(a11,1)+', 0.5⟩'], ['Column 2 Ae₂', '⟨'+fmt(a12,1)+', 1.5⟩'], ['Determinant det(A)', fmt(det,2)]);
       } else if(mode === 'radical_ext'){
         P.curve(function(x){return x + a >= 0 ? Math.sqrt(x + a) : NaN;}, INDIGO, 2.7);
-        P.curve(function(x){return x + a >= 0 ? -Math.sqrt(x + a) : NaN;}, '#94A3B8', 1.8, [4,4]);
+        P.curve(function(x){return x + a >= 0 ? -Math.sqrt(x + a) : NaN;}, AXIS, 1.8, [4,4]);
         P.curve(function(x){return x - b;}, AMBER2, 2.2);
         P.dot(-a, 0, INDIGO, 5.5);
         var B = -(2*b + 1), C = b*b - a, disc = B*B - 4*C;
@@ -676,7 +676,7 @@
       } else if(mode === 'parametric'){
         var fxP = function(t){ return 3.2*Math.cos(t); };
         var fyP = function(t){ return 2.6*Math.sin(b*t); };
-        P.parametric(fxP, fyP, 0, 2*Math.PI, '#94A3B8', 1.5, [3,3]);
+        P.parametric(fxP, fyP, 0, 2*Math.PI, AXIS, 1.5, [3,3]);
         P.parametric(fxP, fyP, 0, a, INDIGO, 2.7);
         var xP = fxP(a), yP = fyP(a);
         var vx = -3.2*Math.sin(a), vy = 2.6*b*Math.cos(b*a);
@@ -931,7 +931,7 @@
           var xOrig = basePts[di], xTrans = a*xOrig + b;
           P.dot(xOrig, 2.8, INDIGO, 5);
           P.dot(xTrans, 1.2, AMBER2, 5.5);
-          P.segment(xOrig, 2.8, xTrans, 1.2, '#94A3B8', 1.2, [3,3]);
+          P.segment(xOrig, 2.8, xTrans, 1.2, AXIS, 1.2, [3,3]);
         }
         P.label(-5.5, 3.2, 'Original X (μ=0, σ=1.41)', INDIGO);
         P.label(-5.5, 0.6, 'Transformed Y = aX + b', AMBER2);
@@ -967,7 +967,7 @@
           var angP = 0.5*Math.PI + 2*Math.PI*kP/nP;
           var vxP = RP*Math.cos(angP), vyP = RP*Math.sin(angP);
           ptsP.push([vxP, vyP]);
-          P.segment(0, 0, vxP, vyP, '#94A3B8', 1.3, [3,3]);
+          P.segment(0, 0, vxP, vyP, AXIS, 1.3, [3,3]);
         }
         P.polygon(ptsP, 'rgba(30,58,110,0.18)', INDIGO, 2.5);
         for(var jP=0; jP<nP; jP++) P.dot(ptsP[jP][0], ptsP[jP][1], AMBER2, 5);
@@ -989,8 +989,8 @@
       } else if(mode === 'coord_seg'){
         var x1 = -2, y1 = -1, x2 = a, y2 = b;
         var mx = 0.5*(x1+x2), my = 0.5*(y1+y2), dx = x2-x1, dy = y2-y1;
-        P.segment(x1, y1, x2, y1, '#94A3B8', 1.5, [3,3]);
-        P.segment(x2, y1, x2, y2, '#94A3B8', 1.5, [3,3]);
+        P.segment(x1, y1, x2, y1, AXIS, 1.5, [3,3]);
+        P.segment(x2, y1, x2, y2, AXIS, 1.5, [3,3]);
         P.segment(x1, y1, x2, y2, INDIGO, 2.7);
         if(Math.abs(dy) > 0.08){
           var mp = -dx / dy;
@@ -1007,7 +1007,7 @@
         var gComp = function(x){ return 0.5*x*x - 1; };
         var fgComp = function(x){ return fComp(gComp(x)); };
         var gfComp = function(x){ return gComp(fComp(x)); };
-        P.curve(fComp, '#94A3B8', 1.6, [4,4]);
+        P.curve(fComp, AXIS, 1.6, [4,4]);
         P.curve(fgComp, INDIGO, 2.6);
         P.curve(gfComp, AMBER2, 2.4);
         P.dot(1, fgComp(1), INDIGO, 5.5); P.dot(1, gfComp(1), AMBER2, 5.5);
@@ -1075,7 +1075,7 @@
         rows.push(['Learning Rate η', fmt(a,2)], ['Initial Weight w₀', fmt(b,2)], ['Iterate w₆', out1], ['Regime', out2]);
       } else if(mode === 'ols_reg'){
         var xsO = [-2, -1, 0, 1, 2], ysO = [-1.6, -0.5, 0.4, 1.7, 2.5];
-        P.curve(function(x){return 1.04*x + 0.50;}, '#94A3B8', 1.6, [4,4]);
+        P.curve(function(x){return 1.04*x + 0.50;}, AXIS, 1.6, [4,4]);
         P.curve(function(x){return a*x + b;}, INDIGO, 2.6);
         var sse = 0;
         for(var oi=0; oi<5; oi++){
@@ -1091,7 +1091,7 @@
         rows.push(['Slope w', fmt(a,2)], ['Intercept b', fmt(b,2)], ['Mean Squared Error', out0], ['R² Score', out2]);
       } else if(mode === 'sigmoid_log'){
         var sig = function(x){ return 1 / (1 + Math.exp(-(a*x + b))); };
-        P.hline(0.5, '#94A3B8', [3,3]);
+        P.hline(0.5, AXIS, [3,3]);
         var xStar = Math.abs(a)>1e-4 ? -b/a : 0;
         P.vline(xStar, AMBER2, [4,4]);
         P.curve(sig, INDIGO, 2.7);
@@ -1135,7 +1135,7 @@
         rows.push(['Axis Angle θ', fmt(a,0)+'°'], ['Projected Variance', out0], ['Explained Variance Ratio', out2]);
       } else if(mode === 'cosine_embed'){
         P.parametric(function(t){return Math.cos(t);}, function(t){return Math.sin(t);}, 0, 2*Math.PI, LINE, 1.6);
-        P.polygon([[1,0],[0,1],[-1,0],[0,-1]], 'rgba(148,163,184,0.08)', '#94A3B8', 1.4);
+        P.polygon([[1,0],[0,1],[-1,0],[0,-1]], 'rgba(148,163,184,0.08)', AXIS, 1.4);
         var ru = a*Math.PI/180, rv = b*Math.PI/180;
         var uxE = Math.cos(ru), uyE = Math.sin(ru), vxE = Math.cos(rv), vyE = Math.sin(rv);
         P.arrow(0, 0, uxE, uyE, INDIGO, 2.7);
@@ -1227,7 +1227,7 @@
         out2 = det < 0.05 ? 'Pure Secular Resonance!' : 'Periodic Beats';
         rows.push(['Driving Freq ω', fmt(a,2)], ['Natural Freq ω₀', fmt(b,2)], ['Regime', out2]);
       } else if(mode === 'wronskian_green'){
-        P.curve(function(t){return Math.cos(b*t);}, '#94A3B8', 1.4, [3,3]);
+        P.curve(function(t){return Math.cos(b*t);}, AXIS, 1.4, [3,3]);
         P.curve(function(t){return Math.sin(b*t);}, TEAL, 1.4, [3,3]);
         var gKer = function(t){ return t < a ? 0 : Math.sin(b*(t - a)) / b; };
         P.curve(gKer, AMBER2, 2.8);

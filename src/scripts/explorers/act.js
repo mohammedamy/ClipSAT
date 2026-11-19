@@ -7,8 +7,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
@@ -30,7 +30,7 @@
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       var f=function(x){return (x-h)*(x-h)+k;};
       P.curve(f, INDIGO, 2.6);
-      P.vline(h,'#C2CCDA',[4,4]); P.dot(h,k,AMBER2,5.5);
+      P.vline(h,LINE,[4,4]); P.dot(h,k,AMBER2,5.5);
       document.getElementById('actFuncVertex').textContent='('+h+', '+k+')';
       document.getElementById('actFuncAxis').textContent='x = '+h;
       updateDataView(f);
@@ -85,7 +85,7 @@
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:30,r:12,t:12,b:22}); P.clear(); P.grid();
       P.curve(function(x){return Math.sin(x*Math.PI/180);}, INDIGO, 2.4);
       var y=Math.sin(deg*Math.PI/180);
-      P.vline(deg,'#C2CCDA',[4,4]); P.dot(deg,y,AMBER2,5.5);
+      P.vline(deg,LINE,[4,4]); P.dot(deg,y,AMBER2,5.5);
       document.getElementById('actSin').textContent=y.toFixed(3);
       document.getElementById('actCos').textContent=Math.cos(deg*Math.PI/180).toFixed(3);
       updateDataView(y);
@@ -109,7 +109,7 @@
     }
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:32,r:14,t:12,b:22}); P.clear(); P.grid();
-      P.curve(function(x){return x;}, '#94A3B8', 1.8);
+      P.curve(function(x){return x;}, AXIS, 1.8);
       P.curve(cumMin, INDIGO, 2.6);
       var t=cumMin(q);
       P.vline(q, AMBER2, [4,4]); P.dot(q, t, AMBER2, 5.5);
@@ -199,7 +199,7 @@
       P.parametric(function(t){return r*Math.cos(t);}, function(t){return r*Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.2);
       P.segment(0,0,r,0,AMBER2,2.2);
       P.segment(0,0,r*Math.cos(rad),r*Math.sin(rad),AMBER2,2.2);
-      P.segment(r,0,r*Math.cos(rad),r*Math.sin(rad),'#0E9F8F',2.2);
+      P.segment(r,0,r*Math.cos(rad),r*Math.sin(rad),TEAL,2.2);
       P.dot(0,0,INK,4); P.dot(r,0,AMBER2,4.5); P.dot(r*Math.cos(rad),r*Math.sin(rad),AMBER2,4.5);
       var arc=(deg/360)*2*Math.PI*r;
       var area=(deg/360)*Math.PI*r*r;
@@ -293,7 +293,7 @@
       }
       var mean=sum/vals.length, med=vals[3];
       P.hline(mean, AMBER2, [4,4]);
-      P.hline(med, '#0E9F8F', [2,2]);
+      P.hline(med, TEAL, [2,2]);
       _set('actStatsMean', mean.toFixed(2));
       _set('actStatsMed', med.toFixed(1));
       _set('actStatsRange', (vals[6]-vals[0]).toFixed(0));

@@ -2407,4 +2407,97 @@ D["pc-sequences"] = [
     ]
   }
 ];
+
+if(Array.isArray(D["pc-trig"])) D["pc-trig"].push({
+  "t": "gp",
+  "ti": "Interactive Graph Plotter: Sine Wave Key Features",
+  "ti_ar": "مخطط الدوال التفاعلي: النقاط الأساسية لموجة الجيب",
+  "q": "Plot the origin intercept, first peak at \\(x = \\pi/2 \\approx 1.57\\), and zero at \\(x = \\pi \\approx 3.14\\) for \\(y = 2\\sin(x)\\).",
+  "q_ar": "عيّن نقطة الأصل، وأول قمة عند \\(x = \\pi/2 \\approx 1.57\\)، والصفر عند \\(x = \\pi \\approx 3.14\\) للدالة \\(y = 2\\sin(x)\\).",
+  "xrange": [
+    -1,
+    5
+  ],
+  "yrange": [
+    -3,
+    3
+  ],
+  "targets": [
+    {
+      "label": "Origin (0, 0)",
+      "label_ar": "الأصل (0, 0)",
+      "target": [
+        0,
+        0
+      ],
+      "tol": 0.45
+    },
+    {
+      "label": "Peak (1.57, 2)",
+      "label_ar": "القمة (1.57, 2)",
+      "target": [
+        1.57,
+        2
+      ],
+      "tol": 0.5
+    },
+    {
+      "label": "Zero (3.14, 0)",
+      "label_ar": "الصفر (3.14, 0)",
+      "target": [
+        3.14,
+        0
+      ],
+      "tol": 0.5
+    }
+  ],
+  "sol": "For \\(y=2\\sin(x)\\): \\(y(0)=0\\), maximum \\(y(\\pi/2)=2\\), and \\(y(\\pi)=0\\).",
+  "sol_ar": "للدالة \\(y=2\\sin(x)\\): لدينا \\(y(0)=0\\)، والقيمة العظمى \\(y(\\pi/2)=2\\)، و\\(y(\\pi)=0\\)."
+});
+if(Array.isArray(D["pc-rational"])) D["pc-rational"].push({
+  "t": "fn",
+  "ti": "Function Lab: Rational Hyperbola \\(y = \\frac{a}{x - h} + k\\)",
+  "ti_ar": "مختبر الدوال: القطع الزائد النسبي \\(y = \\frac{a}{x - h} + k\\)",
+  "fns": [
+    {
+      "expr": "a/(x - h) + k",
+      "color": "#1E3A6E",
+      "label": "a/(x−h) + k"
+    }
+  ],
+  "xrange": [
+    -6,
+    6
+  ],
+  "yrange": [
+    -6,
+    6
+  ],
+  "params": [
+    {
+      "name": "a",
+      "label": "Scale a",
+      "min": -3,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "name": "h",
+      "label": "Vertical Asym h",
+      "min": -3,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "name": "k",
+      "label": "Horizontal Asym k",
+      "min": -3,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    }
+  ]
+});
 });

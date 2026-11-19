@@ -3564,4 +3564,80 @@ D["ag-stats"] = [
     ]
   }
 ];
+
+if(Array.isArray(D["ag-linear"])) D["ag-linear"].push({
+  "t": "gp",
+  "ti": "Interactive Graph Plotter: Slope-Intercept Line",
+  "ti_ar": "مخطط الدوال التفاعلي: المستقيم بدلالة الميل والمقطع",
+  "q": "Plot the y-intercept and the point at \\(x = 2\\) for \\(y = 2x - 1\\).",
+  "q_ar": "عيّن المقطع الصادي والنقطة عند \\(x = 2\\) للدالة \\(y = 2x - 1\\).",
+  "xrange": [
+    -5,
+    5
+  ],
+  "yrange": [
+    -5,
+    5
+  ],
+  "targets": [
+    {
+      "label": "y-intercept (0, -1)",
+      "label_ar": "المقطع الصادي (0, -1)",
+      "target": [
+        0,
+        -1
+      ],
+      "tol": 0.45
+    },
+    {
+      "label": "Point (2, 3)",
+      "label_ar": "النقطة (2, 3)",
+      "target": [
+        2,
+        3
+      ],
+      "tol": 0.45
+    }
+  ],
+  "sol": "At \\(x=0\\), \\(y=-1\\) giving \\((0,-1)\\). At \\(x=2\\), \\(y=2(2)-1=3\\) giving \\((2,3)\\).",
+  "sol_ar": "عند \\(x=0\\) تكون \\(y=-1\\) أي \\((0,-1)\\)، وعند \\(x=2\\) تكون \\(y=2(2)-1=3\\) أي \\((2,3)\\)."
+});
+if(Array.isArray(D["ag-quadratics"])) D["ag-quadratics"].push({
+  "t": "fn",
+  "ti": "Function Lab: Quadratic Roots & Shift \\(y = x^2 + bx + c\\)",
+  "ti_ar": "مختبر الدوال: جذور وإزاحة الدالة التربيعية \\(y = x^2 + bx + c\\)",
+  "fns": [
+    {
+      "expr": "x^2 + b*x + c",
+      "color": "#1E3A6E",
+      "label": "x² + bx + c"
+    }
+  ],
+  "xrange": [
+    -6,
+    6
+  ],
+  "yrange": [
+    -6,
+    8
+  ],
+  "params": [
+    {
+      "name": "b",
+      "label": "Linear coeff b",
+      "min": -4,
+      "max": 4,
+      "step": 1,
+      "default": -2
+    },
+    {
+      "name": "c",
+      "label": "y-intercept c",
+      "min": -4,
+      "max": 4,
+      "step": 1,
+      "default": -3
+    }
+  ]
+});
 });

@@ -6,8 +6,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, reduceMotion=K.reduceMotion, drawExplorerOf=K.drawExplorerOf, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
   /* ===================== HERO ===================== */
@@ -39,6 +39,7 @@
       if(p<1) requestAnimationFrame(loop); else animating=false;
     }
     // interaction
+    canvas.style.touchAction='none';
     function setFromEvent(e){
       var rect=canvas.getBoundingClientRect();
       var cx=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
@@ -133,7 +134,7 @@
 
       faOut.textContent=fmt(fa);
       dOut.textContent=fmt(m);
-      eqOut.innerHTML='Tangent at \\(a='+fmt(a)+'\\): \\( y = '+fmt(fa)+' + ('+fmt(m)+')(x - '+fmt(a)+') \\)';
+      eqOut.innerHTML=(K.t ? K.t('Tangent at','المماس عند') : 'Tangent at')+' \\(a='+fmt(a)+'\\): \\( y = '+fmt(fa)+' + ('+fmt(m)+')(x - '+fmt(a)+') \\)';
       typesetIfReady(eqOut);
       updateDataView(f,view,fa,m,hasSecant,ms,a2);
     }
@@ -142,12 +143,17 @@
 
     function applyPresetRange(){
       var view=cur().view, pad=(view.xmax-view.xmin)*0.08;
-      aRange.min=view.xmin+pad; aRange.max=view.xmax-pad;
+      var mn = Number((view.xmin+pad).toFixed(2)), mx = Number((view.xmax-pad).toFixed(2));
+      aRange.min=mn; aRange.max=mx; aRange.step='0.05';
+      aNum.min=mn; aNum.max=mx; aNum.step='0.1';
     }
     function syncFromRange(){ a=clampA(parseFloat(aRange.value)); aNum.value=fmt(a,2); aVal.textContent=fmt(a,2); redrawAll(); }
     function syncFromNum(){ var v=parseFloat(aNum.value); if(isFinite(v)){ a=clampA(v); aRange.value=a; aVal.textContent=fmt(a,2); redrawAll(); } }
+    function clampNumDisplay(){ a=clampA(parseFloat(aNum.value)); if(!isFinite(a)) a=DEFAULTS.a; aRange.value=a; aNum.value=fmt(a,2); aVal.textContent=fmt(a,2); redrawAll(); }
     aRange.addEventListener('input',syncFromRange);
     aNum.addEventListener('input',syncFromNum);
+    aNum.addEventListener('change',clampNumDisplay);
+    aNum.addEventListener('blur',clampNumDisplay);
     hRange.addEventListener('input',function(){ hOff=parseFloat(hRange.value); hVal.textContent=fmt(hOff,2); redrawAll(); });
 
     presetWrap.querySelectorAll('button').forEach(function(btn){
@@ -280,6 +286,13 @@
       return view.xmin+(cx-P.pad.l)/(rect.width-P.pad.l-P.pad.r)*(view.xmax-view.xmin);
     }
     var dragging=null;
+    canvas.style.touchAction='none';
+    function syncRiemannBounds(){
+      var v = cur().view;
+      aNum.min = v.xmin; aNum.max = v.xmax; aNum.step = '0.1';
+      bNum.min = v.xmin; bNum.max = v.xmax; bNum.step = '0.1';
+      nNum.min = '1'; nNum.max = '80'; nNum.step = '1';
+    }
     canvas.addEventListener('pointerdown',function(e){
       var x=xToData(e.clientX);
       dragging = Math.abs(x-a)<=Math.abs(x-b) ? 'a' : 'b';
@@ -299,8 +312,16 @@
       if(isFinite(av)) a=av; if(isFinite(bv)) b=bv;
       clampAB(); redrawAll();
     }
+    function clampNumsDisplay(){
+      syncFromNums();
+      aNum.value=fmt(a,2); bNum.value=fmt(b,2);
+    }
     aNum.addEventListener('input',syncFromNums);
     bNum.addEventListener('input',syncFromNums);
+    aNum.addEventListener('change',clampNumsDisplay);
+    bNum.addEventListener('change',clampNumsDisplay);
+    aNum.addEventListener('blur',clampNumsDisplay);
+    bNum.addEventListener('blur',clampNumsDisplay);
 
     function syncN(v){
       v=Math.max(1,Math.min(80,Math.round(v)));
@@ -321,6 +342,7 @@
         presetWrap.querySelectorAll('button').forEach(function(b){ b.classList.remove('on'); });
         btn.classList.add('on'); key=btn.getAttribute('data-fn');
         var view=cur().view;
+        syncRiemannBounds();
         a=view.xmin+(view.xmax-view.xmin)*0.15; b=view.xmin+(view.xmax-view.xmin)*0.65;
         clampAB(); aNum.value=fmt(a,2); bNum.value=fmt(b,2);
         redrawAll();
@@ -331,11 +353,13 @@
       key=DEFAULTS.key; a=DEFAULTS.a; b=DEFAULTS.b; n=DEFAULTS.n; rule=DEFAULTS.rule;
       presetWrap.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-fn')===key); });
       methodWrap.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-rule')===rule); });
+      syncRiemannBounds();
       aNum.value=fmt(a,2); bNum.value=fmt(b,2);
       nRange.value=n; nNum.value=n; nVal.textContent=n;
       redrawAll();
     });
 
+    syncRiemannBounds();
     aNum.value=fmt(a,2); bNum.value=fmt(b,2); nRange.value=n; nNum.value=n;
     redrawAll();
   })();

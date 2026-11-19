@@ -76,7 +76,7 @@
     var thetaDeg = sTheta ? parseFloat(sTheta.value) : 60;
     var amp = sAmp ? parseFloat(sAmp.value) : 1;
     var freq = sFreq ? parseFloat(sFreq.value) : 1;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    function _C(){ return K.colors(); }
     var lastSplitX = 220, lastSplitY = 160, lastStacked = false, lastPuc = null, lastPw = null;
 
     var chApi = K.attachChallenge(canvas, {
@@ -166,7 +166,7 @@
       }
       ctx.closePath();
       ctx.lineWidth = 1.6;
-      ctx.strokeStyle = '#94a3b8';
+      ctx.strokeStyle = K.colors().AXIS;
       ctx.stroke();
 
       var rad = thetaDeg * Math.PI / 180;
@@ -183,16 +183,16 @@
         var sgnX = cx >= 0 ? 1 : -1;
         var ty = ucVals.tan * sgnX;
         Puc.segment(sgnX, -3, sgnX, 3, C.LINE, 1, [3, 3]);
-        Puc.segment(sgnX, 0, sgnX, ty, TEAL, 3.0);
+        Puc.segment(sgnX, 0, sgnX, ty, K.colors().TEAL, 3.0);
         Puc.segment(0, 0, sgnX, ty, C.INDIGO2, 1.8, [4, 3]);
-        Puc.dot(sgnX, ty, TEAL, 4.5);
+        Puc.dot(sgnX, ty, K.colors().TEAL, 4.5);
       } else if((fnKey === 'cot' || fnKey === 'csc') && isFinite(ucVals.cot)){
         var sgnY = cy >= 0 ? 1 : -1;
         var cotX = ucVals.cot * sgnY;
         Puc.segment(-3, sgnY, 3, sgnY, C.LINE, 1, [3, 3]);
-        Puc.segment(0, sgnY, cotX, sgnY, TEAL, 3.0);
+        Puc.segment(0, sgnY, cotX, sgnY, K.colors().TEAL, 3.0);
         Puc.segment(0, 0, cotX, sgnY, C.AMBER2, 1.8, [4, 3]);
-        Puc.dot(cotX, sgnY, TEAL, 4.5);
+        Puc.dot(cotX, sgnY, K.colors().TEAL, 4.5);
       }
 
       Puc.dot(cx, cy, C.INK, 5.2);
@@ -241,9 +241,9 @@
       }
 
       if(fnKey === 'csc'){
-        Pw.curve(function(x){ return amp * Math.sin(freq * x); }, '#94a3b8', 1.4, [4, 4]);
+        Pw.curve(function(x){ return amp * Math.sin(freq * x); }, K.colors().AXIS, 1.4, [4, 4]);
       } else if(fnKey === 'sec'){
-        Pw.curve(function(x){ return amp * Math.cos(freq * x); }, '#94a3b8', 1.4, [4, 4]);
+        Pw.curve(function(x){ return amp * Math.cos(freq * x); }, K.colors().AXIS, 1.4, [4, 4]);
       }
 
       /* Vertical asymptotes for tan, sec, csc, cot */
@@ -251,12 +251,12 @@
       if(fnKey === 'tan' || fnKey === 'sec'){
         for(var m1 = -9; m1 <= 9; m1 += 2){
           var ax1 = (m1 * Math.PI / 2) / bf;
-          if(ax1 >= viewW.xmin && ax1 <= viewW.xmax) Pw.vline(ax1, ROSE, [5, 4]);
+          if(ax1 >= viewW.xmin && ax1 <= viewW.xmax) Pw.vline(ax1, K.colors().ROSE, [5, 4]);
         }
       } else if(fnKey === 'csc' || fnKey === 'cot'){
         for(var m2 = -8; m2 <= 8; m2 += 2){
           var ax2 = (m2 * Math.PI / 2) / bf;
-          if(ax2 >= viewW.xmin && ax2 <= viewW.xmax) Pw.vline(ax2, ROSE, [5, 4]);
+          if(ax2 >= viewW.xmin && ax2 <= viewW.xmax) Pw.vline(ax2, K.colors().ROSE, [5, 4]);
         }
       }
 
@@ -371,7 +371,7 @@
 
     var fnKey = (sFn && sFn.value) || cfg.defaultFn || 'arcsin';
     var xVal = sX ? parseFloat(sX.value) : 0.5;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    function _C(){ return K.colors(); }
     var lastSplitX = 320, lastSplitY = 190, lastStacked = false, lastPg = null;
 
     var chApi = K.attachChallenge(canvas, {
@@ -503,18 +503,18 @@
         ctx.fillRect(xl, padL.t, xr - xl, h - padL.t - padL.b);
       }
 
-      Pg.segment(-5, -5, 5, 5, '#94a3b8', 1.3, [5, 4]);
+      Pg.segment(-5, -5, 5, 5, K.colors().AXIS, 1.3, [5, 4]);
 
       if(fnKey === 'arctan'){
-        Pg.hline(Math.PI / 2, ROSE, [4, 4]);
-        Pg.hline(-Math.PI / 2, ROSE, [4, 4]);
+        Pg.hline(Math.PI / 2, K.colors().ROSE, [4, 4]);
+        Pg.hline(-Math.PI / 2, K.colors().ROSE, [4, 4]);
       } else if(fnKey === 'arccot'){
-        Pg.hline(Math.PI, ROSE, [4, 4]);
-        Pg.hline(0, ROSE, [4, 4]);
+        Pg.hline(Math.PI, K.colors().ROSE, [4, 4]);
+        Pg.hline(0, K.colors().ROSE, [4, 4]);
       } else if(fnKey === 'arccsc'){
-        Pg.hline(0, ROSE, [4, 4]);
+        Pg.hline(0, K.colors().ROSE, [4, 4]);
       } else if(fnKey === 'arcsec'){
-        Pg.hline(Math.PI / 2, ROSE, [4, 4]);
+        Pg.hline(Math.PI / 2, K.colors().ROSE, [4, 4]);
       }
 
       Pg.curve(S.evalFwd, C.INDIGO2 || 'rgba(30,58,110,0.6)', 1.9, [4, 3]);
@@ -530,7 +530,7 @@
       var ok = isFinite(yVal);
       Pg.vline(xVal, ok ? 'rgba(200,144,42,0.45)' : 'rgba(225,29,72,0.55)', [3, 3]);
       if(ok){
-        Pg.segment(xVal, yVal, yVal, xVal, TEAL, 1.5, [3, 3]);
+        Pg.segment(xVal, yVal, yVal, xVal, K.colors().TEAL, 1.5, [3, 3]);
         Pg.dot(yVal, xVal, C.INDIGO, 4.8);
         Pg.dot(xVal, yVal, C.AMBER2, 5.8);
       }
@@ -577,7 +577,7 @@
       }
       ctx.closePath();
       ctx.lineWidth = 1.3;
-      ctx.strokeStyle = '#94a3b8';
+      ctx.strokeStyle = K.colors().AXIS;
       ctx.stroke();
 
       var aStart = (S.arcType.indexOf('right') === 0) ? -Math.PI / 2 : 0;
@@ -592,8 +592,8 @@
       ctx.strokeStyle = C.AMBER2;
       ctx.stroke();
 
-      if(S.arcType === 'right_no_zero') Puc.ring(1, 0, ROSE, 4.2);
-      if(S.arcType === 'top_no_halfpi') Puc.ring(0, 1, ROSE, 4.2);
+      if(S.arcType === 'right_no_zero') Puc.ring(1, 0, K.colors().ROSE, 4.2);
+      if(S.arcType === 'top_no_halfpi') Puc.ring(0, 1, K.colors().ROSE, 4.2);
 
       if(ok){
         var rcx = Math.cos(yVal), rcy = Math.sin(yVal);
@@ -607,7 +607,7 @@
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       ctx.fillText('Principal Range Arc', ucMidX, stacked ? (splitY + 4) : 4);
-      ctx.fillStyle = ok ? C.INDIGO : ROSE;
+      ctx.fillStyle = ok ? C.INDIGO : K.colors().ROSE;
       ctx.fillText(ok ? ('θ = ' + K.fmt(yVal * 180 / Math.PI, 1) + '°') : 'Outside Domain ' + S.domTxt, ucMidX, h - 18);
 
       var dVal = S.derivFn(xVal);
@@ -749,7 +749,7 @@
     var view = {xmin: -4, xmax: 4, ymin: -4, ymax: 4};
     var pinned = [];
     var lastP = null;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    function _C(){ return K.colors(); }
 
     var chApi = K.attachChallenge(canvas, {
       prompt: cfg.challengePrompt || {
@@ -807,7 +807,7 @@
           if(!isFinite(slp)) continue;
           var ang = Math.atan(slp), dx = L * Math.cos(ang), dy = L * Math.sin(ang);
           var isZero = Math.abs(slp) < 0.06;
-          P.segment(gx - dx, gy - dy, gx + dx, gy + dy, isZero ? ROSE : '#94a3b8', isZero ? 1.8 : 1.25);
+          P.segment(gx - dx, gy - dy, gx + dx, gy + dy, isZero ? K.colors().ROSE : K.colors().AXIS, isZero ? 1.8 : 1.25);
         }
       }
 
@@ -833,10 +833,10 @@
       var euPts = null;
       if(showEuler){
         euPts = traceEuler(ode.f, x0, y0, view.xmax, hStep);
-        drawPolyline(P, ctx, euPts, TEAL, 2.0, [5, 3]);
+        drawPolyline(P, ctx, euPts, K.colors().TEAL, 2.0, [5, 3]);
         for(var ei = 1; ei < euPts.length; ei++){
           if(euPts[ei][1] >= view.ymin && euPts[ei][1] <= view.ymax){
-            P.dot(euPts[ei][0], euPts[ei][1], TEAL, 3.4);
+            P.dot(euPts[ei][0], euPts[ei][1], K.colors().TEAL, 3.4);
           }
         }
       }
@@ -1062,7 +1062,7 @@
               var s = curF(gx, gy);
               if(!isFinite(s)) continue;
               var a = Math.atan(s), dx = segL * Math.cos(a), dy = segL * Math.sin(a);
-              P.segment(gx - dx, gy - dy, gx + dx, gy + dy, Math.abs(s) < 0.06 ? '#e11d48' : '#94a3b8', 1.25);
+              P.segment(gx - dx, gy - dy, gx + dx, gy + dy, Math.abs(s) < 0.06 ? K.colors().ROSE : K.colors().AXIS, 1.25);
             }
           }
 
@@ -1089,8 +1089,8 @@
 
           if(showEuler){
             var eu = traceEuler(curF, x0, y0, xmax, 0.5);
-            poly(eu, '#0d9488', 2.0, [5, 3]);
-            for(var e = 1; e < eu.length; e++) P.dot(eu[e][0], eu[e][1], '#0d9488', 3.2);
+            poly(eu, K.colors().TEAL, 2.0, [5, 3]);
+            for(var e = 1; e < eu.length; e++) P.dot(eu[e][0], eu[e][1], K.colors().TEAL, 3.2);
           }
 
           P.dot(x0, y0, C.AMBER2, 5.8);
@@ -1314,7 +1314,7 @@
     var showGhost = cGhost ? cGhost.checked : true;
     var view = {xmin: -6, xmax: 6, ymin: -5, ymax: 5};
     var lastP = null;
-    var TEAL = '#0d9488', ROSE = '#e11d48', EMERALD = '#10b981';
+    function _C(){ return K.colors(); }
 
     var chApi = K.attachChallenge(canvas, {
       prompt: cfg.challengePrompt || {
@@ -1382,8 +1382,8 @@
         }
       }
 
-      if(spec.va) P.vline(spec.va(h), ROSE, [5, 4], 1.6);
-      if(spec.ha) P.hline(spec.ha(k), TEAL, [5, 4], 1.6);
+      if(spec.va) P.vline(spec.va(h), K.colors().ROSE, [5, 4], 1.6);
+      if(spec.ha) P.hline(spec.ha(k), K.colors().TEAL, [5, 4], 1.6);
 
       if(fnKey === 'rational'){
         P.curve(function(x){ return x < h - 0.04 ? spec.evalFn(x, a, h, k) : NaN; }, C.INDIGO, 2.8);
@@ -1394,7 +1394,7 @@
 
       var ints = computeIntercepts(spec);
       if(isFinite(ints.yInt) && ints.yInt >= view.ymin && ints.yInt <= view.ymax){
-        P.dot(0, ints.yInt, EMERALD, 4.2);
+        P.dot(0, ints.yInt, K.colors().GREEN, 4.2);
       }
 
       /* Anchor / vertex / asymptote intersection marker */
@@ -1404,7 +1404,7 @@
       else if(fnKey === 'constant') ay = a + k;
 
       if(fnKey === 'rational'){
-        P.ring(h, k, ROSE, 5.0);
+        P.ring(h, k, K.colors().ROSE, 5.0);
       } else if(ax >= view.xmin && ax <= view.xmax && ay >= view.ymin && ay <= view.ymax){
         P.dot(ax, ay, C.AMBER2, 5.8);
       }
@@ -1582,7 +1582,7 @@
     var showDecomp = cDec ? cDec.checked : true;
     var view = {xmin: -3.5, xmax: 3.5, ymin: -3.8, ymax: 3.8};
     var lastP = null;
-    var TEAL = '#0d9488', ROSE = '#e11d48';
+    var interacted = false;
 
     var chApi = K.attachChallenge(canvas, {
       prompt: cfg.challengePrompt || {
@@ -1590,27 +1590,28 @@
         ar: 'استكشف الدوال الزائدية: قارن منحنى السلسلة المعلقة cosh(x) بمركّبتيه الأسيتين ½eˣ و½e⁻ˣ، ثم انتقل إلى tanh(x) أو artanh(x) لملاحظة خطوط التقارب عند ±1!'
       },
       check: function(st){
-        return st.fnKey === 'tanh' || st.fnKey === 'artanh' || st.fnKey === 'arcosh' || Math.abs(st.x0) > 1.2;
+        return !!st.interacted && (st.fnKey === 'tanh' || st.fnKey === 'artanh' || st.fnKey === 'arcosh' || Math.abs(st.x0) > 1.2);
       }
     });
 
     function draw(ctx, w, h){
       var C = K.colors();
+      
       var S = HYPER_SPECS[fnKey] || HYPER_SPECS.cosh;
       var P = new K.Plot(ctx, w, h, view, {l: 34, r: 14, t: 22, b: 26});
       lastP = P;
       P.clear(); P.grid();
 
       if(S.va){
-        for(var vi = 0; vi < S.va.length; vi++) P.vline(S.va[vi], ROSE, [5, 4], 1.5);
+        for(var vi = 0; vi < S.va.length; vi++) P.vline(S.va[vi], K.colors().ROSE, [5, 4], 1.5);
       }
       if(S.ha){
-        for(var hi = 0; hi < S.ha.length; hi++) P.hline(aScale * S.ha[hi], ROSE, [5, 4], 1.5);
+        for(var hi = 0; hi < S.ha.length; hi++) P.hline(aScale * S.ha[hi], K.colors().ROSE, [5, 4], 1.5);
       }
 
       if(showDecomp && S.hasDecomp){
-        P.curve(function(x){ return 0.5 * aScale * Math.exp(x); }, TEAL, 1.5, [4, 4]);
-        P.curve(function(x){ return (fnKey === 'cosh' ? 0.5 : -0.5) * aScale * Math.exp(-x); }, '#94a3b8', 1.5, [4, 4]);
+        P.curve(function(x){ return 0.5 * aScale * Math.exp(x); }, K.colors().TEAL, 1.5, [4, 4]);
+        P.curve(function(x){ return (fnKey === 'cosh' ? 0.5 : -0.5) * aScale * Math.exp(-x); }, C.AXIS, 1.5, [4, 4]);
       }
 
       var fCur = function(x){ return aScale * S.evalFn(x); };
@@ -1665,12 +1666,13 @@
         }
         K.renderDataRows(dataRows, rows);
       }
-      if(chApi) chApi.check({fnKey: fnKey, x0: x0, aScale: aScale});
+      if(chApi) chApi.check({interacted: interacted, fnKey: fnKey, x0: x0, aScale: aScale});
     }
 
     K.register(canvas, draw);
 
-    function sync(){
+    function sync(fromUser){
+      if(fromUser) interacted = true;
       if(sFn && HYPER_SPECS[sFn.value]){
         var nf = sFn.value;
         if(nf !== fnKey){
@@ -1685,18 +1687,20 @@
       if(cDec) showDecomp = cDec.checked;
       K.redrawAll();
     }
-    if(sFn) sFn.addEventListener('change', sync);
-    if(sA){ sA.addEventListener('input', sync); sA.addEventListener('change', sync); }
-    if(sX){ sX.addEventListener('input', sync); sX.addEventListener('change', sync); }
-    if(cDec) cDec.addEventListener('change', sync);
+    var onUserSync = function(){ sync(true); };
+    if(sFn) sFn.addEventListener('change', onUserSync);
+    if(sA){ sA.addEventListener('input', onUserSync); sA.addEventListener('change', onUserSync); }
+    if(sX){ sX.addEventListener('input', onUserSync); sX.addEventListener('change', onUserSync); }
+    if(cDec) cDec.addEventListener('change', onUserSync);
 
     bindCssDrag(canvas, function(px){
       if(!lastP) return;
+      interacted = true;
       var wx = Math.round(Math.max(-3, Math.min(3, lastP.invX(px))) * 20) / 20;
       x0 = wx;
       if(sX) sX.value = x0;
       K.redrawAll();
     });
-    sync();
+    sync(false);
   };
 })();

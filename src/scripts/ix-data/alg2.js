@@ -3311,4 +3311,97 @@ D["a2-stats"] = [
     "ex_ar": "الدرجة \\(700 = \\mu + 2\\sigma\\). بما أن \\(95\\%\\) تقع ضمن \\(\\pm 2\\sigma\\)، تتوزع \\(5\\%\\) بالتساوي على الذيلين، فيقع \\(2.5\\%\\) فوق \\(700\\)."
   }
 ];
+
+if(Array.isArray(D["a2-quadratics"])) D["a2-quadratics"].push({
+  "t": "gp",
+  "ti": "Interactive Graph Plotter: Parabola Vertex & Roots",
+  "ti_ar": "مخطط الدوال التفاعلي: رأس وجذور القطع المكافئ",
+  "q": "Plot the vertex and both x-intercepts of \\(f(x) = (x - 1)^2 - 4\\).",
+  "q_ar": "عيّن الرأس وكلا المقطعين السينيين للدالة \\(f(x) = (x - 1)^2 - 4\\).",
+  "xrange": [
+    -5,
+    5
+  ],
+  "yrange": [
+    -5,
+    5
+  ],
+  "targets": [
+    {
+      "label": "Vertex (1, -4)",
+      "label_ar": "الرأس (1, -4)",
+      "target": [
+        1,
+        -4
+      ],
+      "tol": 0.45
+    },
+    {
+      "label": "Root (-1, 0)",
+      "label_ar": "الجذر (-1, 0)",
+      "target": [
+        -1,
+        0
+      ],
+      "tol": 0.45
+    },
+    {
+      "label": "Root (3, 0)",
+      "label_ar": "الجذر (3, 0)",
+      "target": [
+        3,
+        0
+      ],
+      "tol": 0.45
+    }
+  ],
+  "sol": "The vertex is \\((1,-4)\\). Solving \\((x-1)^2=4\\) gives \\(x-1=\\pm 2\\), so roots are \\((-1,0)\\) and \\((3,0)\\).",
+  "sol_ar": "الرأس هو \\((1,-4)\\). وبحل \\((x-1)^2=4\\) نحصل على \\(x-1=\\pm 2\\)، إذن الجذران هما \\((-1,0)\\) و\\((3,0)\\)."
+});
+if(Array.isArray(D["a2-exponential"])) D["a2-exponential"].push({
+  "t": "fn",
+  "ti": "Function Lab: Exponential Growth & Decay \\(y = a \\cdot b^x + k\\)",
+  "ti_ar": "مختبر الدوال: النمو والاضمحلال الأسي \\(y = a \\cdot b^x + k\\)",
+  "fns": [
+    {
+      "expr": "a*b^x + k",
+      "color": "#1E3A6E",
+      "label": "a·bˣ + k"
+    }
+  ],
+  "xrange": [
+    -4,
+    4
+  ],
+  "yrange": [
+    -3,
+    10
+  ],
+  "params": [
+    {
+      "name": "a",
+      "label": "Initial a",
+      "min": 0.5,
+      "max": 3,
+      "step": 0.5,
+      "default": 1
+    },
+    {
+      "name": "b",
+      "label": "Base b",
+      "min": 0.5,
+      "max": 2.5,
+      "step": 0.25,
+      "default": 2
+    },
+    {
+      "name": "k",
+      "label": "Asymptote k",
+      "min": -2,
+      "max": 3,
+      "step": 1,
+      "default": 0
+    }
+  ]
+});
 });

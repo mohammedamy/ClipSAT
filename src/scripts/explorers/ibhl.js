@@ -7,8 +7,8 @@
   "use strict";
   if(!K) return;
   var makeDraggable=K.makeDraggable, attachChallenge=K.attachChallenge, fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
-  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
-  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT, TEAL, ROSE, GREEN, RED, PURPLE, SLATE;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; TEAL=c.TEAL; ROSE=c.ROSE; GREEN=c.GREEN; RED=c.RED; PURPLE=c.PURPLE; SLATE=c.SLATE; }
   _colors();
   function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
 
@@ -65,7 +65,7 @@
       /* Spanned parallelogram (area = |u x v|) */
       P.polygon([o, pu, puv, pv], 'rgba(200,144,42,0.16)', 'rgba(200,144,42,0.45)', 1.3);
 
-      var GREEN='#16a34a';
+      var GREEN=GREEN;
       P.arrow(o[0],o[1],pu[0],pu[1],INDIGO,2.8);
       P.arrow(o[0],o[1],pv[0],pv[1],AMBER2,2.8);
       if(wMag > 1e-4){
@@ -77,7 +77,7 @@
       P.dot(o[0],o[1],INK,3.5);
 
       ctx.font=FONT; ctx.fillStyle=INDIGO; ctx.textAlign='left'; ctx.textBaseline='top';
-      ctx.fillText('Parallelogram Area |u × v| = '+fmt(wMag,3)+'   |   u · (u × v) = 0,  v · (u × v) = 0', pad.l, 4);
+      ctx.fillText((K.t ? K.t('Parallelogram Area |u × v| = ', 'مساحة متوازي الأضلاع |u × v| = ') : 'Parallelogram Area |u × v| = ')+fmt(wMag,3)+'   |   u · (u × v) = 0,  v · (u × v) = 0', pad.l, 4);
     }
 
     if(canvas) register(canvas, draw2d);
@@ -293,7 +293,7 @@
       updateReadouts(st);
 
       // Axes
-      ctx.lineWidth=1; ctx.strokeStyle=GRID||'#8C97A8'; ctx.fillStyle=MUTED||'#6B7280';
+      ctx.lineWidth=1; ctx.strokeStyle=GRID||MUTED; ctx.fillStyle=MUTED||MUTED;
       ctx.font='11px sans-serif';
       var o=projectIso(0,0,0,cx,cy,sc);
       var axX=projectIso(3.8,0,0,cx,cy,sc), axY=projectIso(0,3.8,0,cx,cy,sc), axZ=projectIso(0,0,3.8,cx,cy,sc);
@@ -308,14 +308,14 @@
       for(var i=1;i<4;i++) ctx.lineTo(cp1[i][0],cp1[i][1]);
       ctx.closePath();
       ctx.fillStyle='rgba(30, 58, 110, 0.28)'; ctx.fill();
-      ctx.strokeStyle=INDIGO||'#1E3A6E'; ctx.lineWidth=1.8; ctx.stroke();
+      ctx.strokeStyle=INDIGO||INDIGO; ctx.lineWidth=1.8; ctx.stroke();
 
       // Normal 1
       var c1=projectIso(q1.c[0],q1.c[1],q1.c[2],cx,cy,sc);
       var n1Tip=projectIso(q1.c[0]+1.8*q1.nu[0], q1.c[1]+1.8*q1.nu[1], q1.c[2]+1.8*q1.nu[2], cx,cy,sc);
       ctx.beginPath(); ctx.moveTo(c1[0],c1[1]); ctx.lineTo(n1Tip[0],n1Tip[1]);
-      ctx.strokeStyle=INDIGO||'#1E3A6E'; ctx.lineWidth=2.2; ctx.stroke();
-      arrow(ctx, c1[0], c1[1], n1Tip[0], n1Tip[1], 7, INDIGO||'#1E3A6E');
+      ctx.strokeStyle=INDIGO||INDIGO; ctx.lineWidth=2.2; ctx.stroke();
+      arrow(ctx, c1[0], c1[1], n1Tip[0], n1Tip[1], 7, INDIGO||INDIGO);
 
       // Plane 2 (user, amber)
       var q2=getPlaneQuad(st.n2, st.d2, 2.5);
@@ -324,14 +324,14 @@
       for(var j=1;j<4;j++) ctx.lineTo(cp2[j][0],cp2[j][1]);
       ctx.closePath();
       ctx.fillStyle='rgba(200, 144, 42, 0.28)'; ctx.fill();
-      ctx.strokeStyle=AMBER2||'#C8902A'; ctx.lineWidth=1.8; ctx.stroke();
+      ctx.strokeStyle=AMBER2||AMBER2; ctx.lineWidth=1.8; ctx.stroke();
 
       // Normal 2
       var c2=projectIso(q2.c[0],q2.c[1],q2.c[2],cx,cy,sc);
       var n2Tip=projectIso(q2.c[0]+1.8*q2.nu[0], q2.c[1]+1.8*q2.nu[1], q2.c[2]+1.8*q2.nu[2], cx,cy,sc);
       ctx.beginPath(); ctx.moveTo(c2[0],c2[1]); ctx.lineTo(n2Tip[0],n2Tip[1]);
-      ctx.strokeStyle=AMBER2||'#C8902A'; ctx.lineWidth=2.2; ctx.stroke();
-      arrow(ctx, c2[0], c2[1], n2Tip[0], n2Tip[1], 7, AMBER2||'#C8902A');
+      ctx.strokeStyle=AMBER2||AMBER2; ctx.lineWidth=2.2; ctx.stroke();
+      arrow(ctx, c2[0], c2[1], n2Tip[0], n2Tip[1], 7, AMBER2||AMBER2);
 
       // Intersection Line (green)
       if(!st.isParallel){
@@ -339,8 +339,8 @@
         var lA=projectIso(st.p0[0]-3.2*dirUnit[0], st.p0[1]-3.2*dirUnit[1], st.p0[2]-3.2*dirUnit[2], cx,cy,sc);
         var lB=projectIso(st.p0[0]+3.2*dirUnit[0], st.p0[1]+3.2*dirUnit[1], st.p0[2]+3.2*dirUnit[2], cx,cy,sc);
         ctx.beginPath(); ctx.moveTo(lA[0],lA[1]); ctx.lineTo(lB[0],lB[1]);
-        ctx.strokeStyle='#10B981'; ctx.lineWidth=3; ctx.stroke();
-        ctx.fillStyle='#10B981'; ctx.font='bold 12px sans-serif';
+        ctx.strokeStyle=GREEN; ctx.lineWidth=3; ctx.stroke();
+        ctx.fillStyle=GREEN; ctx.font='bold 12px sans-serif';
         ctx.fillText('Line d', lB[0]+6, lB[1]);
       }
     }
@@ -482,7 +482,7 @@
       P.areaUnder(fn,st.lo,st.hi,'rgba(30,58,110,0.16)');
       P.curve(fn,INDIGO,2.4);
       P.vline(st.lo,AMBER2,[5,4]); P.vline(st.hi,AMBER2,[5,4]);
-      P.vline(xbar,'#AEB8C7',[3,3]);
+      P.vline(xbar,AXIS,[3,3]);
       _set('ibhlCIMargin', fmt(st.margin,3));
       _set('ibhlCIBounds', '('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')');
       _set('ibhlCIInterval', '('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')');
@@ -695,7 +695,7 @@
       var c=P.ctx, N=120, i, a, px, py;
       c.beginPath();
       for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
-      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle=LINE; c.stroke();
       c.strokeStyle=AXIS; c.lineWidth=1;
       c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
       c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
@@ -759,7 +759,7 @@
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
-      if(absMode){ P.curve(f,'#B8C3D6',1.6,[3,3]); }
+      if(absMode){ P.curve(f,LINE,1.6,[3,3]); }
       P.curve(g,INDIGO,2.4);
       P.segment(view.xmin,k,view.xmax,k,AMBER2,2.2,[6,4]);
       var count=countSolutions();
@@ -927,7 +927,7 @@
       for(i=0;i<edges.length;i++){
         e=edges[i]; res=r.results[i];
         pa=verts[e.a]; pb=verts[e.b];
-        color = res.decision==='add' ? '#1a9e5c' : (res.decision==='skip' ? '#AEB8C7' : '#E4E8EE');
+        color = res.decision==='add' ? GREEN : (res.decision==='skip' ? AXIS : GRID);
         dash = res.decision==='add' ? null : (res.decision==='skip' ? [5,4] : null);
         lw = res.decision==='add' ? 3 : (res.decision==='skip' ? 1.6 : 1.2);
         P.segment(pa[0],pa[1],pb[0],pb[1],color,lw,dash);
@@ -1072,7 +1072,7 @@
         P.ring(cVal, 1.5, INDIGO, 5.5);
         P.dot(cVal, 3.0, INDIGO, 5.5);
       } else if(currCase === 'inf'){
-        P.vline(cVal, '#e11d48', [5, 4]);
+        P.vline(cVal, ROSE, [5, 4]);
         var cLInf = ctx; cLInf.save(); cLInf.beginPath();
         cLInf.rect(P.pad.l, P.pad.t, P.X(cVal) - P.pad.l, P.h - P.pad.t - P.pad.b); cLInf.clip();
         P.curve(function(x){ return 1/(x-cVal); }, INDIGO, 2.4);
@@ -1174,8 +1174,8 @@
       ctx.fillStyle = isValid ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)';
       ctx.fillRect(P.pad.l, Ytop, P.w - P.pad.l - P.pad.r, Ybot - Ytop);
 
-      P.segment(view.xmin, LVal + epsVal, view.xmax, LVal + epsVal, isValid ? '#10b981' : '#ef4444', 1.2, [4, 4]);
-      P.segment(view.xmin, LVal - epsVal, view.xmax, LVal - epsVal, isValid ? '#10b981' : '#ef4444', 1.2, [4, 4]);
+      P.segment(view.xmin, LVal + epsVal, view.xmax, LVal + epsVal, isValid ? GREEN : RED, 1.2, [4, 4]);
+      P.segment(view.xmin, LVal - epsVal, view.xmax, LVal - epsVal, isValid ? GREEN : RED, 1.2, [4, 4]);
 
       var Xleft = P.X(cVal - deltaVal), Xright = P.X(cVal + deltaVal);
       ctx.fillStyle = 'rgba(99, 102, 241, 0.10)';
@@ -1185,7 +1185,7 @@
       P.vline(cVal + deltaVal, INDIGO2, [5, 4]);
 
       P.curve(f, INDIGO, 2.2);
-      P.segment(cVal - deltaVal, f(cVal - deltaVal), cVal + deltaVal, f(cVal + deltaVal), isValid ? '#10b981' : '#ef4444', 3.4);
+      P.segment(cVal - deltaVal, f(cVal - deltaVal), cVal + deltaVal, f(cVal + deltaVal), isValid ? GREEN : RED, 3.4);
       P.ring(cVal, LVal, AMBER2, 6);
 
       if(elEpsV) elEpsV.textContent = fmt(epsVal, 2);
@@ -1250,7 +1250,7 @@
         for(var gy=0.4; gy<=3.8; gy+=0.45){
           var m=fSlope(gx,gy);
           var dl=0.11 / Math.sqrt(1+m*m);
-          P.segment(gx-dl, gy-m*dl, gx+dl, gy+m*dl, '#CBD5E1', 1.2);
+          P.segment(gx-dl, gy-m*dl, gx+dl, gy+m*dl, LINE, 1.2);
         }
       }
       // Exact curve
@@ -1323,12 +1323,12 @@
           var vx = a11*gx + a12*gy, vy = a21*gx + a22*gy;
           var mag = Math.hypot(vx, vy) || 1;
           var sc = 0.28 / mag;
-          P.segment(gx, gy, gx+vx*sc, gy+vy*sc, '#94A3B8', 1.3);
+          P.segment(gx, gy, gx+vx*sc, gy+vy*sc, AXIS, 1.3);
         }
       }
       // Sample trajectories via RK2 steps
       var seeds = [[2.8, 0.5], [-2.8, -0.5], [0.5, 2.8], [-0.5, -2.8]];
-      var cols = [INDIGO, AMBER2, '#0e9f8f', '#8B5CF6'];
+      var cols = [INDIGO, AMBER2, TEAL, PURPLE];
       seeds.forEach(function(sd, idx){
         var x=sd[0], y=sd[1], dt=0.04;
         for(var step=0; step<95; step++){

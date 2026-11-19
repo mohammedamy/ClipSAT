@@ -9,7 +9,7 @@
       wireDataToggle = K.wireDataToggle,
       renderDataRows = K.renderDataRows;
   var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS;
-  var TEAL = '#0E9F8F', RED = '#DC2626';
+  var TEAL = TEAL, RED = RED;
 
   function _colors(){
     var c = K.colors();

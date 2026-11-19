@@ -12,7 +12,7 @@ Live at: **[https://clipsat.org](https://clipsat.org)** (and **[https://mohammed
 - **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
 - **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
 - **Verified Question Bank (Schema v2):** **49,151** items (**35,283** executable SymPy certificates + **13,868** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
-- **Interactive Learning & Exports:** **2,816** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
+- **Interactive Learning & Exports:** **2,826** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
 <!-- @AUTOGEN:STATS_END -->
 
 <!-- @AUTOGEN:TRACKS_START -->

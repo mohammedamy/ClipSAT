@@ -3768,4 +3768,88 @@ D["sat-condprob"] = [
     ]
   }
 ];
+
+if(Array.isArray(D["sat-linear"])) D["sat-linear"].push({
+  "t": "gp",
+  "ti": "Interactive Graph Plotter: Line Intercepts",
+  "ti_ar": "مخطط الدوال التفاعلي: مقاطع المستقيم",
+  "q": "Plot the x-intercept and y-intercept of the line \\(2x + 3y = 6\\) on the coordinate grid.",
+  "q_ar": "عيّن المقطع السيني والمقطع الصادي للمستقيم \\(2x + 3y = 6\\) على الشبكة الإحداثية.",
+  "xrange": [
+    -5,
+    5
+  ],
+  "yrange": [
+    -5,
+    5
+  ],
+  "targets": [
+    {
+      "label": "x-intercept (3, 0)",
+      "label_ar": "المقطع السيني (3, 0)",
+      "target": [
+        3,
+        0
+      ],
+      "tol": 0.45
+    },
+    {
+      "label": "y-intercept (0, 2)",
+      "label_ar": "المقطع الصادي (0, 2)",
+      "target": [
+        0,
+        2
+      ],
+      "tol": 0.45
+    }
+  ],
+  "sol": "Set \\(y=0\\) to get \\(2x=6 \\Rightarrow x=3\\), giving \\((3,0)\\). Set \\(x=0\\) to get \\(3y=6 \\Rightarrow y=2\\), giving \\((0,2)\\).",
+  "sol_ar": "بوضع \\(y=0\\) نجد \\(2x=6 \\Rightarrow x=3\\) أي \\((3,0)\\)، وبوضع \\(x=0\\) نجد \\(3y=6 \\Rightarrow y=2\\) أي \\((0,2)\\)."
+});
+if(Array.isArray(D["sat-quad"])) D["sat-quad"].push({
+  "t": "fn",
+  "ti": "Function Lab: Vertex Form Parabola \\(y = a(x - h)^2 + k\\)",
+  "ti_ar": "مختبر الدوال: القطع المكافئ بصيغة الرأس \\(y = a(x - h)^2 + k\\)",
+  "fns": [
+    {
+      "expr": "a*(x - h)^2 + k",
+      "color": "#1E3A6E",
+      "label": "a(x−h)² + k"
+    }
+  ],
+  "xrange": [
+    -6,
+    6
+  ],
+  "yrange": [
+    -6,
+    8
+  ],
+  "params": [
+    {
+      "name": "a",
+      "label": "Stretch a",
+      "min": -2,
+      "max": 2,
+      "step": 0.5,
+      "default": 1
+    },
+    {
+      "name": "h",
+      "label": "Vertex x (h)",
+      "min": -3,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "name": "k",
+      "label": "Vertex y (k)",
+      "min": -4,
+      "max": 4,
+      "step": 1,
+      "default": -2
+    }
+  ]
+});
 });

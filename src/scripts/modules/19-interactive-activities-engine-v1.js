@@ -111,7 +111,7 @@ var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
   'ix.sb.allCorrect':'✓ All {n} steps correct!','ix.sb.someCorrect':'{ok}/{total} correct. Hints: ','ix.sb.stepN':'Step {n}: ',
   'ix.badge.num':'Numeric Entry','ix.num.check':'Check Answer','ix.num.showSol':'Show Solution','ix.num.hintPrefix':'Hint: ','ix.num.correct':'✓ Correct!','ix.num.incorrect':'✗ Incorrect. ','ix.num.close':'Almost! Check precision or rounding. ',
   'ix.badge.ord':'Order the Steps','ix.ord.check':'Check Order','ix.ord.allCorrect':'✓ Steps are in the correct sequence!','ix.ord.someCorrect':'{n} of {total} steps in the correct position.','ix.ord.showCorrect':'Show Correct Order','ix.ord.moveUp':'Move Up','ix.ord.moveDown':'Move Down',
-  'ix.badge.cat':'Categorize','ix.cat.check':'Check Categories','ix.cat.allCorrect':'✓ All items correctly categorized!','ix.cat.someCorrect':'{n} of {total} items correctly placed.','ix.cat.showCorrect':'Show Correct Placement',
+  'ix.badge.cat':'Categorize','ix.cat.check':'Check Categories','ix.cat.allCorrect':'✓ All items correctly categorized!','ix.cat.someCorrect':'{n} of {total} items correctly placed.','ix.cat.showCorrect':'Show Correct Placement','ix.cat.incomplete':'Please categorize all items before checking.',
   'ix.mp.toggle':'Math Keyboard','ix.mp.hide':'Hide Keyboard',
   'ix.mp.tab123':'123 & Algebra','ix.mp.tabFunc':'Functions & Trig','ix.mp.tabSym':'Symbols & Calculus',
   'ix.mp.preview':'Math Preview:','ix.mp.previewEmpty':'Type or tap keys below',
@@ -164,14 +164,48 @@ function _syncSectionProgress(secWrap){
     fill.style.width=Math.round((doneCount/total)*100)+'%';
   }
 }
+function _stripHtml(s){
+  return String(s==null?'':s)
+    .replace(/<annotation\b[^>]*>[\s\S]*?<\/annotation>/gi,'')
+    .replace(/<[^>]*>/g,' ')
+    .replace(/\\\(|\\\)|\\\[|\\\]/g,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+var _IX_DONE_KEY='clipsat_ix_done_v1';
+function _loadIxDone(){
+  try{ return JSON.parse(localStorage.getItem(_IX_DONE_KEY)||'{}')||{}; }catch(_){ return {}; }
+}
+function _saveIxDone(map){
+  try{ localStorage.setItem(_IX_DONE_KEY,JSON.stringify(map)); }catch(_){}
+}
 function _markDone(box){
   if(!box||!box.classList)return;
+  var already=box.classList.contains('ix-done');
   box.classList.add('ix-done');
   var p=box.parentNode;
   while(p&&(!p.classList||!p.classList.contains('ix-section'))){
     p=p.parentNode;
   }
   if(p)_syncSectionProgress(p);
+  if(!already && box.dataset && box.dataset.ixKey){
+    var map=_loadIxDone();
+    if(!map[box.dataset.ixKey]){
+      map[box.dataset.ixKey]=1;
+      _saveIxDone(map);
+      try{
+        if(window.CSGamify && typeof window.CSGamify.addXP==='function'){
+          window.CSGamify.addXP(10, 'Interactive Activity');
+        }
+        var m=/(?:^|\s)track-([\w-]+)/.exec((document.body&&document.body.className)||'');
+        var trk=m?m[1]:'';
+        var dom=box.dataset.ixChapter||'Interactive';
+        if(trk && window.AccuracyLog && typeof window.AccuracyLog.record==='function'){
+          window.AccuracyLog.record(trk, dom, true);
+        }
+      }catch(_){}
+    }
+  }
 }
 function _makeRetryBtn(cfg,box,buildFn){
   var rb=document.createElement('button');
@@ -778,9 +812,9 @@ function _buildSB(cfg,box){
     var labelSpan=document.createElement('span');labelSpan.innerHTML=step.l+' ';
     var inp=document.createElement('input');inp.className='ix-sb-inp';inp.type='text';
     inp.placeholder='?';
-    var plainLabel=String(step.l).replace(/<[^>]*>/g,'').trim();
+    var plainLabel=_stripHtml(step.l);
     inp.setAttribute('aria-label',plainLabel||('Step '+(i+1)));
-    inp.title=_t('ix.sb.hintPrefix')+step.h;
+    inp.title=_t('ix.sb.hintPrefix')+_stripHtml(step.h);
     inp.addEventListener('keydown',function(e){if(e.key==='Enter')go.click();});
     inp.addEventListener('focus',function(){activeInp=inp;});
 
@@ -1087,6 +1121,21 @@ function _buildORD(cfg,box){
     items.forEach(function(item,idx){
       var li=document.createElement('li');li.className='ix-ord-item';li.dataset.origIdx=item.origIdx;
       li.draggable=!isFinished;
+      if(!isFinished) li.setAttribute('tabindex','0');
+      li.addEventListener('keydown',function(e){
+        if(isFinished)return;
+        if((e.altKey||e.ctrlKey)&&e.key==='ArrowUp'&&idx>0){
+          e.preventDefault();
+          var t=items[idx];items[idx]=items[idx-1];items[idx-1]=t;
+          renderList();
+          var lis=list.querySelectorAll('.ix-ord-item');if(lis[idx-1])lis[idx-1].focus();
+        } else if((e.altKey||e.ctrlKey)&&e.key==='ArrowDown'&&idx<items.length-1){
+          e.preventDefault();
+          var t2=items[idx];items[idx]=items[idx+1];items[idx+1]=t2;
+          renderList();
+          var lis2=list.querySelectorAll('.ix-ord-item');if(lis2[idx+1])lis2[idx+1].focus();
+        }
+      });
       li.addEventListener('dragstart',function(e){
         if(isFinished)return;
         dragIdx=idx;li.classList.add('dragging');
@@ -1261,7 +1310,7 @@ function _buildCAT(cfg,box){
     var allAnswered=items.every(function(it){return it.selectedCat!=null;});
     if(!allAnswered){
       res.style.display='block';res.className='ix-fb no';
-      res.textContent='Please categorize all items before checking.';
+      res.textContent=_isArLocale()?'يرجى تصنيف جميع العناصر قبل التحقق.':_t('ix.cat.incomplete');
       return;
     }
     attempts++;
@@ -1594,6 +1643,7 @@ function _buildGP(cfg,box){
   // Canvas wrap + canvas
   var wrap=document.createElement('div');wrap.className='ix-gp-wrap';
   var canvas=document.createElement('canvas');canvas.className='ix-gp-canvas';
+  canvas.style.touchAction='none';
   canvas.setAttribute('role','img');canvas.setAttribute('tabindex','0');
   var gpAria=String(cfg.ti||'Interactive Coordinate Grid').replace(/<[^>]*>/g,'').trim();
   canvas.setAttribute('aria-label',gpAria||'Interactive Coordinate Grid');
@@ -2306,8 +2356,12 @@ function _inject(chId){
   hd.appendChild(hdRow);
   hd.appendChild(progTrack);
   wrap.appendChild(hd);
-  list.forEach(function(c){
+  var savedDone=_loadIxDone();
+  list.forEach(function(c,idx){
     var box=document.createElement('div');box.className='ix-box';
+    var ixKey=chId+':'+idx;
+    box.dataset.ixKey=ixKey;
+    box.dataset.ixChapter=chId;
     box._csDecorate=function(){ _decorateIxBox(box, window.i18n?window.i18n.getLocale():loc); };
     if(c.t==='qc')_buildQC(c,box);
     else if(c.t==='mt')_buildMT(c,box);
@@ -2321,9 +2375,11 @@ function _inject(chId){
     else if(c.t==='gp')_buildGP(c,box);
     else if(c.t==='se')_buildSE(c,box);
     else if(c.t==='ms')_buildMS(c,box);
+    if(savedDone[ixKey]) box.classList.add('ix-done');
     _decorateIxBox(box,loc);
     wrap.appendChild(box);
   });
+  _syncSectionProgress(wrap);
   var qWrap = sec.querySelector('.ch-quiz-wrap');
   if (qWrap) sec.insertBefore(wrap, qWrap);
   else sec.appendChild(wrap);
@@ -2388,7 +2444,7 @@ function _loadTrackData(){
 }
 function _onDomReady(){
   _loadTrackData();
-  setTimeout(function(){_domReady=true;_go();},800);
+  setTimeout(function(){_domReady=true;_go();},50);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',_onDomReady);
 else _onDomReady();
