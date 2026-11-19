@@ -392,12 +392,16 @@ Object.keys(migratedContent).sort().forEach((view) => {
     const chTitleAr = (ch.title && ch.title.ar) || chTitleEn;
     const blocks = (ch.content && Array.isArray(ch.content.blocks)) ? ch.content.blocks : [];
     function pushCard(frontEn, frontAr, backEn, backAr, tag) {
-      const fEn = String(frontEn || '').trim();
+      if (deck.length >= 45) return;
+      const fEn = String(frontEn || '').replace(/^[●▲◆■\s]+/, '').trim();
       const bEn = String(backEn || '').trim();
       if (!fEn || !bEn || _metaFrontRe.test(fEn.replace(/<[^>]*>/g, '').trim())) return;
+      if (bEn.length > 480) return;
       const key = `${chId}:${tag}:${fEn.slice(0, 48)}`;
       if (seen.has(key)) return;
       seen.add(key);
+      const fAr = String(frontAr || fEn).replace(/^[●▲◆■\s]+/, '').trim();
+      const bAr = String(backAr || bEn).trim();
       deck.push({
         id: `${view}:${chId}:${tag}:${deck.length}`,
         ch: chId,
@@ -405,20 +409,22 @@ Object.keys(migratedContent).sort().forEach((view) => {
         chAr: chTitleAr,
         tag,
         f: fEn,
-        f_ar: String(frontAr || fEn).trim(),
+        f_ar: fAr,
         b: bEn,
-        b_ar: String(backAr || bEn).trim(),
+        b_ar: bAr.length <= 540 ? bAr : bEn,
       });
     }
     blocks.forEach((bl) => {
       if (!bl || typeof bl !== 'object') return;
       if (bl.kind === 'cards' && Array.isArray(bl.items)) {
         bl.items.forEach((it) => {
-          if (!it || !it.label || !it.body) return;
-          pushCard(it.label.en, it.label.ar, it.body.en, it.body.ar, 'Formula');
+          if (!it || !it.label) return;
+          const val = it.value || it.body;
+          if (!val) return;
+          pushCard(it.label.en, it.label.ar, val.en, val.ar, 'Formula');
         });
       } else if (bl.kind === 'callout' && bl.label && bl.body) {
-        const v = String(bl.variant || '').toLowerCase();
+        const v = String(bl.style || bl.variant || '').toLowerCase();
         const tag = v === 'def' ? 'Definition' : (v === 'thm' || v === 'law' || v === 'rule' || v === 'formula' ? 'Theorem' : '');
         if (tag) pushCard(bl.label.en, bl.label.ar, bl.body.en, bl.body.ar, tag);
       }
