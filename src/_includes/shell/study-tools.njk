@@ -1,4 +1,4 @@
-{% set _nonSubjectPages = ['home','privacy','terms','contact','cookies','calculator','about','trust','pricing','changelog','rigor-standard','free-tier-promise'] %}
+{% set _nonSubjectPages = ['home','account','privacy','terms','contact','cookies','calculator','about','trust','pricing','changelog','rigor-standard','free-tier-promise'] %}
   <div role="region" aria-label="Study tools" style="display:contents">
   <nav id="cs-breadcrumb" class="{% if trackId in _nonSubjectPages %}bc-hidden{% endif %}" aria-label="You are here">
     {% if isChapterPage %}
@@ -11,11 +11,13 @@
     <span class="bc-chapter" id="bc-chapter"></span>
     {% endif %}
   </nav>
-  <div id="cs-study-chrome-mount"></div>
+  <div id="cs-study-chrome-mount"{% if trackId in _nonSubjectPages %} hidden{% endif %}></div>
   <div id="cs-study-modals-mount"></div>
+  {% if trackId not in _nonSubjectPages %}
   <button id="fc-toggle-btn" class="fc-side-trigger" type="button" onclick="window.CSGamify&&window.CSGamify.toggleFlashcards()" aria-label="CARDS — Open Flashcards" title="Active recall flashcards">
     <span class="fc-trigger-text" data-i18n="fc.btnText">CARDS</span>
     <span id="fc-due-badge" class="fc-due-badge empty" title="Cards due for review">{{ flashcardCount if flashcardCount is defined else 0 }}</span>
     <span id="fc-due-count" style="display:none">{{ flashcardCount if flashcardCount is defined else 0 }}</span>
   </button>
+  {% endif %}
   </div>

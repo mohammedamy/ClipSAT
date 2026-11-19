@@ -219,7 +219,7 @@ window.CSOfflinePack = (function(){
   function getUrlsForTrack(trackId){
     if(!trackId || trackId === 'home') return [];
     var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
-    return [
+    var urls = [
       '/' + trackId + '/',
       '/' + trackId + '/index.html',
       '/js/study-hub-extras.js',
@@ -227,6 +227,7 @@ window.CSOfflinePack = (function(){
       '/js/universal-graph-explorers.js',
       '/js/ix/' + trackId + '.js',
       '/js/ex/' + trackId + '.js',
+      '/data/flashcards/' + trackId + '.json',
       cdnPrefix + '/bank-shards/' + trackId + '/_index.json',
       cdnPrefix + '/downloads/' + trackId + '/manifest.json',
       '/js/figures.js',
@@ -236,6 +237,8 @@ window.CSOfflinePack = (function(){
       '/js/mock-exam.js',
       '/js/formula-modal.js'
     ];
+    if(_isAr()) urls.unshift('/ar/' + trackId + '/');
+    return urls;
   }
 
   function _updateBtnUI(btn, state){

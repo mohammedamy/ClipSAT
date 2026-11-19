@@ -37,9 +37,9 @@
 {% import "partials/_bilingual.njk" as bl with context %}
 {% set info = courseMeta.downloadsInfo %}
 {% macro ppCard() %}<div class="dl pp-card">
-      <div class="di">Official · Past Papers</div>
-      <h4>Past Papers &amp; Official Tests</h4>
-      <p>Officially released exams and mark schemes from the examining body.</p>
+      <div class="di">{{ bl.text({"en": "Official · Past Papers", "ar": "رسمي · اختبارات سابقة"}) }}</div>
+      <h4>{{ bl.text({"en": "Past Papers &amp; Official Tests", "ar": "الاختبارات الرسمية ونماذج السنوات السابقة"}) }}</h4>
+      <p>{{ bl.text({"en": "Officially released exams and mark schemes from the examining body.", "ar": "اختبارات ونماذج تصحيح صادرة رسميًا عن الجهة المنظمة للاختبار."}) }}</p>
       <div class="pp-links">
         {% for link in courseMeta.officialLinks %}
         <a href="{{ link.url }}" target="_blank" rel="noopener" class="pp-link">
@@ -69,18 +69,18 @@
 
   <div class="dl-grid">
     <div class="dl">
-      <div class="di">PDF · ready now</div>
+      <div class="di">{{ bl.text({"en": "PDF · ready now", "ar": "ملف PDF · جاهز الآن"}) }}</div>
       <h4>{{ bl.text(info.pdfCardTitle) }}</h4>
       <p>{{ bl.text(info.pdfCardDescription) }}</p>
-      <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+      <button class="btn primary" onclick="window.print()">{{ bl.text({"en": "Print / Save as PDF ↓", "ar": "طباعة / حفظ كـ PDF ↓"}) }}</button>
     </div>
 
     <div class="dl">
-      <div class="di">{% if info.docxCardLabel %}{{ bl.text(info.docxCardLabel) }}{% else %}DOCX · on request{% endif %}</div>
-      <h4>{% if info.docxCardTitle %}{{ bl.text(info.docxCardTitle) }}{% else %}Native Word packet{% endif %}</h4>
+      <div class="di">{% if info.docxCardLabel %}{{ bl.text(info.docxCardLabel) }}{% else %}{{ bl.text({"en": "DOCX · on request", "ar": "ملف وورد DOCX"}) }}{% endif %}</div>
+      <h4>{% if info.docxCardTitle %}{{ bl.text(info.docxCardTitle) }}{% else %}{{ bl.text({"en": "Native Word packet", "ar": "ملزمة Word قابلة للتعديل"}) }}{% endif %}</h4>
       <p>{{ bl.text(info.docxCardDescription) }}</p>
-      <button class="btn amber" onclick="var b=this;window._ensureCSExport().then(function(){window.CSExport.downloadChapterDocx(b)})">📄 Download .docx ↓</button>
-      <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window._ensureCSExport().then(function(){window.CSExport.printActiveChapter()}).catch(function(){window.print()})">🖨 Print Chapter</button>
+      <button class="btn amber" onclick="var b=this;window._ensureCSExport().then(function(){window.CSExport.downloadChapterDocx(b)})">{{ bl.text({"en": "📄 Download .docx ↓", "ar": "📄 تنزيل ملف .docx ↓"}) }}</button>
+      <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window._ensureCSExport().then(function(){window.CSExport.printActiveChapter()}).catch(function(){window.print()})">{{ bl.text({"en": "🖨 Print Chapter", "ar": "🖨 طباعة الفصل"}) }}</button>
     </div>
 
     {% if info.plannedCard %}

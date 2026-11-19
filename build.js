@@ -25,7 +25,7 @@
 
 'use strict';
 
-const fs   = require('fs');
+const fs = require('fs');
 const path = require('path');
 const UglifyJS = require('uglify-js');
 const csso = require('csso');
@@ -38,10 +38,10 @@ const csso = require('csso');
 const BASE_PATH = '';
 
 // ─── Paths ────────────────────────────────────────────────────────────────────
-const ROOT      = __dirname;
-const PUBLIC_CSS   = path.join(ROOT, 'public', 'css', 'main.css');
-const PUBLIC_JS    = path.join(ROOT, 'public', 'js', 'engine.js');
-const SRC_DIR      = path.join(ROOT, 'src');
+const ROOT = __dirname;
+const PUBLIC_CSS = path.join(ROOT, 'public', 'css', 'main.css');
+const PUBLIC_JS = path.join(ROOT, 'public', 'js', 'engine.js');
+const SRC_DIR = path.join(ROOT, 'src');
 const INCLUDES_DIR = path.join(SRC_DIR, '_includes');
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

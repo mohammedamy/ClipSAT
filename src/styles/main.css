@@ -49,7 +49,7 @@
       fully custom-styled below; iOS Safari's picker doesn't have this gap, which is
       why the low-contrast text only showed up on Windows). */
     --paper:#FAF7F2; --paper-2:#F2ECE1; --panel:#FFFFFF;
-    --ink:#111622; --ink-2:#334155; --muted:#4B5668; --faint:#64748B;
+    --ink:#111622; --ink-2:#334155; --muted:#475569; --faint:#4B5668; --accent:#1E3A6E;
     --line:#DFD7CB; --grid:#E8E1D5;
     --indigo:#132746; --indigo-2:#1E3E70; --indigo-soft:rgba(19,39,70,.06);
     --amber:#9E6515; --amber-2:#B8781B; --amber-soft:rgba(158,101,21,.10);
@@ -8459,10 +8459,38 @@ body.hc .nav-tree-leaf[aria-current="page"] { outline: 2px solid currentColor; }
 @media (max-width: 520px) { .nav .nav-tree-wrap { display: none; } }
 @media print { .nav-tree-wrap, .nav-tree-panel, .nav-tree-mobile { display: none !important; } }
 
-/* ── Phase 0 Critical UI Hardening: CBT focus lock, Arabic RTL typography, Dark Mode token parity ── */
+/* ── Phase 0 & Phase 4 UI Hardening: CBT focus lock, Arabic RTL typography, Dark Mode tokens, Mobile Dock & Print KaTeX ── */
 body.cbt-open #chat-fab,
 body.cbt-open #chat-panel { display: none !important; }
-body.dark { --fg: #F1F5F9; --text: #F1F5F9; --bg: #0B0E14; --bg-page: #0B0E14; --green: #22C55E; }
+body.dark {
+  --fg: #F1F5F9;
+  --text: #F1F5F9;
+  --bg: #0B0E14;
+  --bg-page: #0B0E14;
+  --accent: #1D4ED8;
+  --green: #22C55E;
+  --fig-green: #34D399;
+  --fig-red: #F87171;
+  --fig-teal: #2DD4BF;
+  --fig-rose: #FB7185;
+  --fig-purple: #C084FC;
+}
+body.dark .ix-sb-show-ans,
+body.dark .ix-sr-all-btn {
+  color: #93C5FD;
+  border-color: #93C5FD;
+}
+body.dark header.site {
+  background: rgba(11, 14, 20, .92);
+  border-bottom-color: var(--border, #2A3548);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .04), 0 6px 20px rgba(0, 0, 0, .45);
+}
+a.card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] .hero h1,
@@ -8473,4 +8501,116 @@ body.dark { --fg: #F1F5F9; --text: #F1F5F9; --bg: #0B0E14; --bg-page: #0B0E14; -
   letter-spacing: 0 !important;
   line-height: 1.38;
 }
-.cq-opt:focus-visible { outline: 2px solid var(--indigo, #2563EB); outline-offset: 2px; }
+.cq-opt:focus-visible,
+a.card:focus-visible { outline: 2px solid var(--indigo, #2563EB); outline-offset: 2px; }
+
+/* Hide floating study overlays on non-study legal/marketing/account pages */
+body.track-home #formula-fab,
+body.track-home .formula-fab,
+body.track-privacy #formula-fab,
+body.track-privacy .formula-fab,
+body.track-terms #formula-fab,
+body.track-terms .formula-fab,
+body.track-cookies #formula-fab,
+body.track-cookies .formula-fab,
+body.track-pricing #formula-fab,
+body.track-pricing .formula-fab,
+body.track-account #formula-fab,
+body.track-account .formula-fab,
+body.track-about #formula-fab,
+body.track-about .formula-fab,
+body.track-contact #formula-fab,
+body.track-contact .formula-fab,
+body.track-trust #formula-fab,
+body.track-trust .formula-fab { display: none !important; }
+
+/* Mobile (390×844) ergonomic polish: touch targets, non-sticky rail, horizontal tables, non-overlapping bottom study dock */
+@media (max-width: 767px) {
+  .rail,
+  [id^="rail-"] {
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="url"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+  .btn,
+  .cat-pill,
+  .cq-opt,
+  .ix-opt,
+  .menu-btn,
+  .sol-toggle,
+  .ex-data-btn,
+  .ex-3d-btn {
+    min-height: 44px;
+  }
+  .chapter table,
+  .exam-table,
+  .ex-data-table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Compact non-overlapping bottom study dock for floating triggers on mobile */
+  #fc-toggle-btn.fc-side-trigger,
+  #fc-toggle-btn {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 12px !important;
+    inset-inline-start: 12px !important;
+    inset-inline-end: auto !important;
+    transform: none !important;
+    writing-mode: horizontal-tb !important;
+    min-height: 44px !important;
+    padding: 0 12px !important;
+    border-radius: 999px !important;
+    z-index: 940 !important;
+  }
+  #formula-fab,
+  .formula-fab {
+    top: auto !important;
+    bottom: 12px !important;
+    inset-inline-start: 118px !important;
+    inset-inline-end: auto !important;
+    transform: none !important;
+    writing-mode: horizontal-tb !important;
+    min-height: 44px !important;
+    padding: 0 12px !important;
+    border-radius: 999px !important;
+    z-index: 940 !important;
+  }
+  .chat-fab,
+  #chat-fab {
+    bottom: 12px !important;
+    inset-inline-end: 12px !important;
+    inset-inline-start: auto !important;
+    min-height: 44px !important;
+    z-index: 945 !important;
+  }
+  body:not(.track-home) main {
+    padding-bottom: 72px;
+  }
+}
+
+@media print {
+  .katex { display: inline !important; color: #000 !important; }
+  .katex-display { display: block !important; overflow: visible !important; break-inside: avoid; }
+  .cs-offline-pack-btn,
+  .cs-voice-btn,
+  .cs-flag-btn,
+  #fc-toggle-btn,
+  #formula-fab,
+  .formula-fab,
+  .chat-fab,
+  #chat-fab { display: none !important; }
+}
