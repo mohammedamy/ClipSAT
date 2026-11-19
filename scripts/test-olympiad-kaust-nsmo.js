@@ -231,8 +231,9 @@ check('Cross-module wiring: CBT Mock Papers, Full Bank Specs, Diagnostic Map & H
   assert.ok(diagSrc.includes('/olympiad/?ch=ol-nsmo-stage1-2') && diagSrc.includes('/olympiad/?ch=ol-kaust-kmc-qualifier'), '27-diagnostic-test.js must link to reconstructed NSMO & KAUST chapters');
   assert.ok(!diagSrc.includes('?ch=oly-'), '27-diagnostic-test.js must have zero dead ?ch=oly-* links');
 
-  const homeHtml = fs.readFileSync(path.join(ROOT, 'src/_includes/tracks/home.html'), 'utf8');
-  assert.ok(homeHtml.includes("{ id: 'olympiad', code: 'OLYMP'"), 'home.html STEM pathway must open olympiad track (not ibhl)');
+  const homeHtml = fs.readFileSync(path.join(ROOT, 'src/_includes/tracks/home.html'), 'utf8')
+    + '\n' + fs.readFileSync(path.join(ROOT, 'public/js/home-pathway.js'), 'utf8');
+  assert.ok(homeHtml.includes("{ id: 'olympiad', code: 'OLYMP'"), 'home STEM pathway must open olympiad track (not ibhl)');
 });
 
 check('Printable Downloads: 12 typeset PDF worksheets + keys and 40 full exams + keys match manifest.json', () => {

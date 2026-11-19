@@ -9,8 +9,8 @@
 {% import "partials/_bilingual.njk" as bl with context %}
 {% set _locPrefix = '/ar' if pageLocale == 'ar' else '' %}
 <aside class="rail"{% if not railNoTrackId %} id="rail-{{ trackId }}"{% else %} id="rail"{% endif %}>
-  <div class="cs-diagnostic-rail-cta" style="margin:0 4px 14px">
-    <button type="button" class="cs-diagnostic-btn" onclick="window.openDiagnosticTest('{{ trackId }}')" style="width:100%; justify-content:center">
+  <div class="cs-diagnostic-rail-cta">
+    <button type="button" class="cs-diagnostic-btn cs-diagnostic-btn-full" onclick="window.openDiagnosticTest('{{ trackId }}')">
       <span>🎯</span> <span data-i18n="diagnostic.btn">{% if pageLocale == 'ar' %}ابدأ الاختبار التشخيصي المجاني{% else %}Free Diagnostic{% endif %}</span>
     </button>
   </div>

@@ -813,8 +813,9 @@
     handle.addEventListener('touchstart', onPointerDown, { passive: false });
   }
 
-  var _calcLocked = false;
-  var _calcLockReason = '';
+  var _calcLocked = !!(window.__csPendingCalcLock && window.__csPendingCalcLock.locked);
+  var _calcLockReason = (window.__csPendingCalcLock && window.__csPendingCalcLock.reason) || '';
+  window.__csFloatingCalcLoaded = true;
 
   function _showCalcLockedToast(reason){
     var isAr = document.documentElement.lang === 'ar';

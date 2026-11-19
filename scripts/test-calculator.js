@@ -66,12 +66,17 @@ simulatedWindow.setFloatingCalcLocked(false);
 assert.strictEqual(simulatedWindow.isFloatingCalcLocked(), false, 'Calculator must be unlocked when setFloatingCalcLocked(false)');
 console.log('  ✓ Functional test: setFloatingCalcLocked accurately toggles exam lock state');
 
-// 5. Verify public/js/engine.js bundle
+// 5. Verify public/js/engine.js stub + deferred public/js/floating-calc.js bundle
 const enginePath = path.join(__dirname, '..', 'public', 'js', 'engine.js');
 const engineContent = fs.readFileSync(enginePath, 'utf8');
-assert(engineContent.includes('cs-fcalc-max-btn'), 'engine.js must contain floating calculator maximize button');
-assert(engineContent.includes('cs-fcalc-presets-bar'), 'engine.js must contain presets bar');
-assert(engineContent.includes('setFloatingCalcExpression'), 'engine.js must contain setFloatingCalcExpression');
-console.log('  ✓ public/js/engine.js bundle contains full floating calculator implementation');
+assert(engineContent.includes('_ensureFloatingCalc'), 'engine.js must contain deferred floating calculator loader');
+assert(engineContent.includes('setFloatingCalcExpression'), 'engine.js must contain setFloatingCalcExpression stub');
+
+const floatingBundlePath = path.join(__dirname, '..', 'public', 'js', 'floating-calc.js');
+const floatingBundleContent = fs.readFileSync(floatingBundlePath, 'utf8');
+assert(floatingBundleContent.includes('cs-fcalc-max-btn'), 'floating-calc.js must contain floating calculator maximize button');
+assert(floatingBundleContent.includes('cs-fcalc-presets-bar'), 'floating-calc.js must contain presets bar');
+assert(floatingBundleContent.includes('setFloatingCalcExpression'), 'floating-calc.js must contain setFloatingCalcExpression');
+console.log('  ✓ public/js/engine.js loader stub + public/js/floating-calc.js bundle verified');
 
 console.log('\n✅ All Calculator unit tests passed successfully!\n');

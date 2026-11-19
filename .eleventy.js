@@ -31,7 +31,7 @@ module.exports = function (eleventyConfig) {
       .replace(/<!--(?!\[if)[\s\S]*?-->/g, "")
       .replace(/\n[ \t]+/g, "\n")
       .replace(/\n{2,}/g, "\n")
-      .replace(/>\n<(?:\/?(?:div|section|aside|nav|header|footer|main|ul|ol|li|table|thead|tbody|tr|th|td|figure|figcaption|details|summary|p|h[1-6])\b)/gi, (m) => m.replace("\n", ""));
+      .replace(/>\n<(?:\/?(?:div|section|aside|nav|header|footer|main|ul|ol|li|table|thead|tbody|tr|th|td|figure|figcaption|details|summary|p|h[1-6]|span|button|a|svg|path|rect|circle|line|polyline|polygon|g|label|input|select|option|blockquote|header)\b)/gi, (m) => m.replace("\n", ""));
     return compacted.replace(/\u0000CSPRESERVE_(\d+)\u0000/g, (_, i) => preserved[Number(i)]);
   }
 

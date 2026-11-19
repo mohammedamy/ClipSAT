@@ -43,7 +43,7 @@
 </div>
 {% endmacro %}
 <div class="explorer">
-  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><div style="display:inline-flex;align-items:center;gap:6px"><button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.explainExplorer(this)" {{ bl.attr('title', { en: 'Listen to an interactive voice walkthrough of this explorer', ar: 'استمع إلى شرح صوتي تفاعلي لهذا المستكشف' }) }} {{ bl.attr('aria-label', { en: 'Explain interactive explorer aloud', ar: 'شرح المستكشف التفاعلي صوتيًا' }) }}><span>🔊</span><span>{{ bl.text({ en: 'Explain', ar: 'اشرح صوتيًا' }) }}</span></button><span class="badge">{{ bl.text({ en: 'interactive', ar: 'تفاعلي' }) }}</span></div></div>
+  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><div class="ex-top-actions"><button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.explainExplorer(this)" {{ bl.attr('title', { en: 'Listen to an interactive voice walkthrough of this explorer', ar: 'استمع إلى شرح صوتي تفاعلي لهذا المستكشف' }) }} {{ bl.attr('aria-label', { en: 'Explain interactive explorer aloud', ar: 'شرح المستكشف التفاعلي صوتيًا' }) }}><span>🔊</span><span>{{ bl.text({ en: 'Explain', ar: 'اشرح صوتيًا' }) }}</span></button><span class="badge">{{ bl.text({ en: 'interactive', ar: 'تفاعلي' }) }}</span></div></div>
   <div class="ex-body"{% if block.bodyStyle %} style="{{ block.bodyStyle }}"{% endif %}>
     <div class="ex-canvas"{% if block.canvasStyle %} style="{{ block.canvasStyle }}"{% endif %}>
       {% if block.canvasId %}
@@ -79,14 +79,14 @@
       {% if block.equationDisplay %}<div class="mono" id="{{ block.equationDisplay.id }}"{% if block.equationDisplay.style %} style="{{ block.equationDisplay.style }}"{% endif %}>{{ block.equationDisplay.value }}</div>{% endif %}
       {% if block.readouts and block.readouts.length %}{{ renderReadouts(block.readouts, block.readoutStyle) }}{% endif %}
       {% if block.note %}
-      <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">{{ bl.text(block.note) }}</p></div>
+      <div class="callout note ex-note"><p>{{ bl.text(block.note) }}</p></div>
       {% endif %}
       {% for ctrl in block.extraControls %}{{ renderControl(ctrl) }}{% endfor %}
       {% if block.extraReadouts and block.extraReadouts.length %}{{ renderReadouts(block.extraReadouts) }}{% endif %}
     </div>
   </div>
-  <div class="ex-footer" style="padding:6px 14px; font-size:.74rem; color:var(--muted); border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; background:var(--panel, #fff)">
+  <div class="ex-footer">
     <span>{{ bl.text({ en: 'Interactive visualizer · AI-assisted, human-reviewed', ar: 'عارض تفاعلي · مدعوم بالذكاء الاصطناعي ومُراجع تربويًا' }) }}</span>
-    <a href="/contact/" style="color:var(--indigo); text-decoration:underline">{{ bl.text({ en: 'Report errors here ↗', ar: 'الإبلاغ عن خطأ ↗' }) }}</a>
+    <a href="/contact/" class="ex-footer-link">{{ bl.text({ en: 'Report errors here ↗', ar: 'الإبلاغ عن خطأ ↗' }) }}</a>
   </div>
 </div>
