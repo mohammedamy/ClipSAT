@@ -9,12 +9,16 @@ function computeProgress(){
   var srs = _progressSrsState();
   var visited = _progressVisited();
   var names = window.VIEW_NAMES || {};
+  var canonical = window.CLIPSAT_CANONICAL_TRACKS || names;
   var byTrack = {};
   function row(id){
     if(!byTrack[id]) byTrack[id] = {id:id, name:names[id]||id, visits:0, mistakes:0, mistakesReviewed:0, cardsTouched:0, cardsMastered:0};
     return byTrack[id];
   }
-  Object.keys(visited).forEach(function(id){ row(id).visits = visited[id]||0; });
+  Object.keys(visited).forEach(function(id){
+    if(Object.keys(canonical).length && !canonical[id]) return;
+    row(id).visits = visited[id]||0;
+  });
   mistakes.forEach(function(m){
     if(!m.viewId) return;
     var r = row(m.viewId);

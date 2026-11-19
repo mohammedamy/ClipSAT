@@ -112,7 +112,8 @@
     if(p&&!p.contains(e.target)) p.classList.remove('open');
   });
 
-  // Init
+  // Init only when legacy #themePicker UI is mounted (avoids clobbering body.dark CSS tokens)
+  if(!document.getElementById('themePicker')) return;
   buildDropdown();
   var saved=localStorage.getItem('clip_theme')||'classic';
   applyTheme(saved);

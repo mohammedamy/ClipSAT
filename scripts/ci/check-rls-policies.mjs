@@ -74,10 +74,12 @@ if (errors.length === 0) {
     errors.push('public.billing_webhook_events must remain service-role only (no client RLS policies)');
   }
 
-  // 4. Verify pgTAP suite structure & >= 20 assertions
-  const tapAssertions = (pgTap.match(/\b(?:ok|is|throws_ok|results_eq|is_empty)\s*\(/g) || []).length;
-  if (!/select\s+plan\s*\(\s*24\s*\)/i.test(pgTap) || tapAssertions < 20) {
-    errors.push(`pgTAP suite supabase/tests/rls_security.test.sql expected plan(24) & >=20 assertions, found ${tapAssertions}`);
+  // 4. Verify pgTAP suite structure & >= 24 assertions matching select plan(N)
+  const tapAssertions = (pgTap.match(/\b(?:ok|is|throws_ok|lives_ok|results_eq|is_empty)\s*\(/g) || []).length;
+  const planMatch = pgTap.match(/select\s+plan\s*\(\s*(\d+)\s*\)/i);
+  const planN = planMatch ? Number(planMatch[1]) : 0;
+  if (planN < 24 || tapAssertions < 24 || planN !== tapAssertions) {
+    errors.push(`pgTAP suite supabase/tests/rls_security.test.sql expected plan(N>=24) matching assertion count, found plan(${planN}) & ${tapAssertions} assertions`);
   }
 }
 

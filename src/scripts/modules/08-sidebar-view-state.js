@@ -5,13 +5,16 @@ var _currentChapterId = window.CLIPSAT_CHAPTER_ID || '';
 // Subscribe to chapter/view events to track current chapter and refresh sidebar
 document.addEventListener('clipsat:chapter-change', function(e){
   var d = (e && e.detail) || {};
-  if(d.chapterId) _currentChapterId = d.chapterId;
-  if(d.viewId) _currentViewName = d.viewId;
+  var cid = d.chapterId || d.id;
+  var vid = d.viewId || d.view;
+  if(cid) _currentChapterId = cid;
+  if(vid) _currentViewName = vid;
   if(_sidebarOpen) setTimeout(_renderSidebar, 120);
 });
 document.addEventListener('clipsat:view-change', function(e){
   var d = (e && e.detail) || {};
-  if(d.viewId) loadSidebarForView(d.viewId);
+  var vid = d.viewId || d.view;
+  if(vid) loadSidebarForView(vid);
 });
 
 function _renderSidebar(){

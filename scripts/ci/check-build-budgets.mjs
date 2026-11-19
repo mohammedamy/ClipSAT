@@ -51,8 +51,9 @@ function walkSite(dir) {
 
     if (ent.name.endsWith('.html')) {
       htmlCount++;
-      const htmlCapBytes = rel === 'index.html' ? 125 * 1024 : 95 * 1024;
-      if (rel !== 'index.html' && sz > maxHtmlBytes) {
+      const isHomeHtml = rel === 'index.html' || rel === path.join('ar', 'index.html');
+      const htmlCapBytes = isHomeHtml ? 125 * 1024 : 95 * 1024;
+      if (!isHomeHtml && sz > maxHtmlBytes) {
         maxHtmlBytes = sz;
         maxHtmlRel = rel;
       }

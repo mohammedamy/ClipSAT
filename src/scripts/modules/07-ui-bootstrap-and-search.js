@@ -117,8 +117,15 @@ document.addEventListener('click',function(e){
 (function(){
   var visited = {};
   try { visited = JSON.parse(localStorage.getItem('clipsat_visited')||'{}') || {}; } catch(e){}
+  var CANONICAL_TRACKS = {
+    calculus:1,algebra:1,apab:1,apbc:1,igcse:1,alg2:1,geo:1,qudrat:1,tahsili:1,
+    sat:1,act:1,aslevel:1,a2level:1,est:1,est2:1,est2l2:1,act2:1,act2l2:1,
+    precalc:1,appc:1,apstats:1,ibsl:1,ibhl:1,linalg:1,mvc:1,odes:1,
+    addmath:1,mathai:1,edexcel:1,gaten:1,olympiad:1
+  };
+  window.CLIPSAT_CANONICAL_TRACKS = CANONICAL_TRACKS;
   function markVisited(name){
-    if(!name || name==='home') return;
+    if(!name || !CANONICAL_TRACKS[name]) return;
     visited[name] = (visited[name]||0)+1;
     try { localStorage.setItem('clipsat_visited', JSON.stringify(visited)); } catch(e){}
     var card = document.querySelector('.card[onclick*="\'' + name + '\'"]');
@@ -139,9 +146,9 @@ document.addEventListener('click',function(e){
     if(tid && visited[tid]) card.classList.add('cs-visited');
   });
   // Record visit on current SSG track page and subscribe to clipsat:view-change
-  if(window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home') markVisited(window.CLIPSAT_TRACK);
+  if(window.CLIPSAT_TRACK && CANONICAL_TRACKS[window.CLIPSAT_TRACK]) markVisited(window.CLIPSAT_TRACK);
   document.addEventListener('clipsat:view-change', function(ev){
-    var name = ev && ev.detail && ev.detail.viewId;
+    var name = ev && ev.detail && (ev.detail.viewId || ev.detail.view);
     if(name){
       markVisited(name);
       if(typeof loadSidebarForView === 'function') loadSidebarForView(name);
@@ -150,16 +157,8 @@ document.addEventListener('click',function(e){
   window._trackVisit = markVisited;
 })();
 
-/* ── SEARCH ── */
+/* ── SEARCH (canonical VIEW_NAMES registry; #csSearch handled securely with escaped DOM) ── */
 (function(){
-  var input = document.getElementById('csSearch');
-  if(!input) return;
-  var noRes = document.createElement('div');
-  noRes.className = 'cs-no-results';
-  noRes.textContent = 'No matching topics found.';
-
-  /* ── Global live search: build index across all views ── */
-  var _searchIndex = [];
   var VIEW_NAMES = {
     'calculus':'Calculus','algebra':'Algebra','apab':'AP Calculus AB','apbc':'AP Calculus BC',
     'igcse':'IGCSE 0580','alg2':'Algebra 2','geo':'Geometry','qudrat':'GAT Qudrat',
@@ -171,6 +170,10 @@ document.addEventListener('click',function(e){
     'edexcel':'Pearson Edexcel IGCSE (4MA1)','gaten':'English GAT & SAAT (Qiyas)','olympiad':'Olympiad Math (NSMO & KAUST)'
   };
   window.VIEW_NAMES = VIEW_NAMES;
+  var input = document.getElementById('csSearch');
+  if(!input || window.CSSearch) return;
+  function escS(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  var _searchIndex = [];
   function _buildSearchIndex(){
     if(window.CLIPSAT_CHAPTER_ID) return;
     document.querySelectorAll('main[id^="view-"]').forEach(function(view){
@@ -186,14 +189,11 @@ document.addEventListener('click',function(e){
     });
   }
   if(!window.CLIPSAT_CHAPTER_ID) setTimeout(_buildSearchIndex, 1200);
-
-  /* ── Dropdown panel ── */
   var _sdrop = document.createElement('div');
   _sdrop.id = 'cs-search-drop';
-  _sdrop.style.cssText = 'display:none;position:absolute;top:calc(100% + 6px);right:0;width:380px;max-height:400px;overflow-y:auto;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.15);z-index:9999;padding:6px 0';
+  _sdrop.style.cssText = 'display:none;position:absolute;top:calc(100% + 6px);inset-inline-end:0;width:380px;max-height:400px;overflow-y:auto;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.15);z-index:9999;padding:6px 0';
   input.parentElement.style.position = 'relative';
   input.parentElement.appendChild(_sdrop);
-
   function _runSearch(q){
     var terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
     _sdrop.innerHTML = '';
@@ -202,11 +202,13 @@ document.addEventListener('click',function(e){
       return terms.every(function(t){ return r.body.includes(t) || r.title.toLowerCase().includes(t); });
     }).slice(0, 30);
     if(!hits.length){
-      _sdrop.innerHTML = '<div style="padding:14px 16px;color:var(--muted);font-size:.85rem;text-align:center">No results for &ldquo;'+q+'&rdquo;</div>';
+      var empty = document.createElement('div');
+      empty.style.cssText = 'padding:14px 16px;color:var(--muted);font-size:.85rem;text-align:center';
+      empty.textContent = 'No results for \u201C' + q + '\u201D';
+      _sdrop.appendChild(empty);
       _sdrop.style.display = 'block';
       return;
     }
-    /* Group by view */
     var groups = {};
     hits.forEach(function(h){
       if(!groups[h.viewId]) groups[h.viewId] = {name:h.viewName, items:[]};
@@ -220,10 +222,11 @@ document.addEventListener('click',function(e){
       _sdrop.appendChild(hdr);
       g.items.forEach(function(item){
         var row = document.createElement('button');
-        row.style.cssText = 'display:block;width:100%;text-align:left;padding:8px 16px;background:none;border:none;cursor:pointer;font-size:.85rem;color:var(--ink);border-bottom:1px solid var(--line);transition:background .12s';
+        row.type = 'button';
+        row.style.cssText = 'display:block;width:100%;text-align:start;padding:8px 16px;background:none;border:none;cursor:pointer;font-size:.85rem;color:var(--ink);border-bottom:1px solid var(--line);transition:background .12s';
         row.onmouseover = function(){ this.style.background='var(--surface-2,#f1f5f9)'; };
         row.onmouseout  = function(){ this.style.background='none'; };
-        row.innerHTML = '<span style="font-size:.78rem;color:var(--muted)">' + item.viewName + ' &rsaquo;</span> ' + item.title;
+        row.innerHTML = '<span style="font-size:.78rem;color:var(--muted)">' + escS(item.viewName) + ' &rsaquo;</span> ' + escS(item.title);
         row.onclick = function(){
           _sdrop.style.display='none';
           input.value = '';
@@ -231,10 +234,6 @@ document.addEventListener('click',function(e){
             window.goChapter(item.secId, item.viewId);
           } else if(window.showView){
             window.showView(item.viewId);
-            setTimeout(function(){
-              var el=document.getElementById(item.secId);
-              if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-            }, 300);
           }
         };
         _sdrop.appendChild(row);
@@ -242,17 +241,11 @@ document.addEventListener('click',function(e){
     });
     _sdrop.style.display = 'block';
   }
-
   input.addEventListener('input', function(){ _runSearch(this.value); });
   input.addEventListener('focus',  function(){ if(this.value) _runSearch(this.value); });
   document.addEventListener('click', function(e){ if(!input.contains(e.target)&&!_sdrop.contains(e.target)) _sdrop.style.display='none'; });
   input.addEventListener('keydown', function(e){ if(e.key==='Escape'){ _sdrop.style.display='none'; this.value=''; } });
-
-  // Clear search when changing views via custom event
-  document.addEventListener('clipsat:view-change', function(){
-    input.value = '';
-    _sdrop.style.display = 'none';
-  });
+  document.addEventListener('clipsat:view-change', function(){ input.value=''; _sdrop.style.display='none'; });
 })();
 
 /* ── FORMULA SIDEBAR ── */

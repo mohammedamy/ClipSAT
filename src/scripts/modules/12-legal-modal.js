@@ -71,10 +71,16 @@
           var cbtBtn = isExam
             ? '<button type="button" class="wl-link cbt" data-track="' + _esc(safeTrack) + '" data-ws="' + _esc(safeWs) + '" data-title="' + _esc(d.title) + '" data-lang="' + safeLang + '" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(this.dataset.track,this.dataset.ws,this.dataset.title,this.dataset.lang)">' + _esc(t.cbt) + '</button>'
             : '';
-          var gformBtn = '<button type="button" class="wl-link gform" data-track="' + _esc(safeTrack) + '" data-num="' + _esc(d.num) + '" data-lang="' + safeLang + '" data-title="' + _esc(d.title) + '" data-ws="' + _esc(safeWs) + '" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(this.dataset.track,this.dataset.num,this.dataset.lang,this.dataset.title,this.dataset.ws)" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
+          var gformBtn = isExam ? '' : '<button type="button" class="wl-link gform" data-track="' + _esc(safeTrack) + '" data-num="' + _esc(d.num) + '" data-lang="' + safeLang + '" data-title="' + _esc(d.title) + '" data-ws="' + _esc(safeWs) + '" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(this.dataset.track,this.dataset.num,this.dataset.lang,this.dataset.title,this.dataset.ws)" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
+          var wsHtmlClick = (isProdNoCdn && /\.html$/i.test(safeWs))
+            ? ' onclick="return window._openRawHtmlExam(event,this.href)"'
+            : '';
+          var akHtmlClick = (isProdNoCdn && /\.html$/i.test(safeAk))
+            ? ' onclick="return window._openRawHtmlExam(event,this.href)"'
+            : '';
           html += '<div class="wl-row' + (isExam ? ' wl-row-exam' : '') + '"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
-            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + _esc(base + safeWs) + '" target="_blank" rel="noopener">' + _esc(wsLabel) + '</a>'
-            + '<a class="wl-link ak" href="' + _esc(base + safeAk) + '" target="_blank" rel="noopener">' + _esc(akLabel) + '</a>'
+            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + _esc(base + safeWs) + '" target="_blank" rel="noopener"' + wsHtmlClick + '>' + _esc(wsLabel) + '</a>'
+            + '<a class="wl-link ak" href="' + _esc(base + safeAk) + '" target="_blank" rel="noopener"' + akHtmlClick + '>' + _esc(akLabel) + '</a>'
             + gformBtn + '</span></div>';
         });
         html += '</div>';
@@ -96,6 +102,38 @@
       });
     }
   }
+
+  window._openRawHtmlExam = function(ev, rawUrl){
+    if(ev && (ev.metaKey || ev.ctrlKey || ev.shiftKey)) return true;
+    if(ev) ev.preventDefault();
+    var win = window.open('', '_blank');
+    if(win){
+      win.document.open();
+      win.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Loading ClipSAT Exam…</title></head><body style="font-family:system-ui,sans-serif;padding:40px;text-align:center;color:#334155"><p>Loading printable exam…</p></body></html>');
+      win.document.close();
+    }
+    fetch(rawUrl).then(function(r){
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    }).then(function(html){
+      var origin = (typeof location !== 'undefined' && location.origin) ? location.origin : 'https://clipsat.org';
+      var patched = html
+        .replace(/((?:href|src)=["'])\/(?!\/)/gi, '$1' + origin + '/')
+        .replace(/<head([^>]*)>/i, '<head$1><base href="' + origin + '/">');
+      var blob = new Blob([patched], { type: 'text/html;charset=utf-8' });
+      var blobUrl = URL.createObjectURL(blob);
+      if(win && !win.closed){
+        win.location.replace(blobUrl);
+      } else {
+        window.open(blobUrl, '_blank', 'noopener');
+      }
+      setTimeout(function(){ try { URL.revokeObjectURL(blobUrl); } catch(_){} }, 60000);
+    }).catch(function(){
+      if(win && !win.closed) win.location.href = rawUrl;
+      else window.open(rawUrl, '_blank', 'noopener');
+    });
+    return false;
+  };
 
   function initLibraries(){
     var containers = document.querySelectorAll('.worksheet-library');

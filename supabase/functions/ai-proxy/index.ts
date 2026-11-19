@@ -5,8 +5,8 @@
 // with gemini-2.5-flash + gemini-flash-latest fallbacks, plus GROQ_API_KEY and OPENAI_API_KEY).
 // Enforces:
 // - Allowlisted Origin CORS (clipsat.org + localhost dev)
-// - Strict request body & base64 attachment size caps (<= 4.5 MB)
-// - Clamped maxTokens ([64, 8192]) and message count/length bounds
+// - Daily credit cap via use_ai_quota with automatic refund on upstream provider failure
+// - Clamped maxTokens ([64, 8192])
 // - Immutable server-side Mathematics Exclusivity system preamble
 // - Prompt-injection & XSS scanning across ALL message roles (including system/assistant)
 import "@supabase/functions-js/edge-runtime.d.ts";
@@ -272,6 +272,14 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     );
   }
 
+  const refundCredit = async (): Promise<void> => {
+    try {
+      await ctx.supabaseAdmin.rpc("refund_ai_quota", { p_user_id: userId, p_cost: cost });
+    } catch (refundErr) {
+      console.error("Failed to refund AI quota after upstream error:", refundErr);
+    }
+  };
+
   const rawAiKey = Deno.env.get("AI_API_KEY") || "";
   const geminiKey =
     Deno.env.get("GEMINI_API_KEY") ||
@@ -445,6 +453,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     }
 
     console.error("Gemini API error:", lastStatus, lastErrorMsg);
+    await refundCredit();
     return jsonError(lastErrorMsg || "Gemini API request failed", lastStatus >= 500 ? 502 : lastStatus);
   }
 
@@ -452,10 +461,12 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   const aiKey = groqKey || rawAiKey || Deno.env.get("OPENAI_API_KEY");
   if (!aiKey) {
     console.error("No AI API key secret configured (GEMINI_API_KEY, GROQ_API_KEY, or AI_API_KEY)");
+    await refundCredit();
     return jsonError("AI is not configured on the server. Please set GEMINI_API_KEY in Supabase secrets.", 500);
   }
 
   if (attachment && attachment.type === "document") {
+    await refundCredit();
     return jsonError(
       "Direct 1-page PDF reading requires GEMINI_API_KEY in Supabase secrets. Please set GEMINI_API_KEY or upload an image/screenshot of the question.",
       400,
@@ -537,6 +548,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     });
   } catch (err) {
     console.error("AI provider request failed:", err);
+    await refundCredit();
     return jsonError("AI provider request failed", 502);
   }
 
@@ -544,11 +556,16 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     const errBody = await upstream.json().catch(() => ({}));
     const message = (errBody as any)?.error?.message || `Upstream HTTP ${upstream.status}`;
     console.error("AI provider returned error:", upstream.status, message);
+    await refundCredit();
     return jsonError(message, upstream.status >= 500 ? 502 : upstream.status);
   }
 
   const data = await upstream.json();
   const content = data?.choices?.[0]?.message?.content || "";
+  if (!content) {
+    await refundCredit();
+    return jsonError("AI provider returned an empty response", 502);
+  }
   return Response.json({ quota, content, model: targetModel });
 });
 
@@ -575,4 +592,5 @@ export {
   MAX_OUTPUT_TOKENS,
   PAID_MULTIPLIER,
   resolveAllowedOrigin,
+  validateAttachment,
 };

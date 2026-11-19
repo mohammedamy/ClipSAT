@@ -80,7 +80,7 @@
         <p>Sign in to save your mistake log, flashcard schedule, and streaks across every device — and to use the AI tutor and question generator.</p>
         <div id="cloud-auth-health-warning" class="cloud-auth-warn" hidden></div>
         <label class="cloud-auth-consent" style="display:flex;align-items:flex-start;gap:8px;margin:10px 0 12px;font-size:.78rem;line-height:1.45;color:var(--ink-soft,#475569);cursor:pointer;text-align:left">
-          <input type="checkbox" id="cloud-auth-age-consent" checked style="margin-top:2px;flex-shrink:0">
+          <input type="checkbox" id="cloud-auth-age-consent" style="margin-top:2px;flex-shrink:0">
           <span>I am 13 or older, or have parent/guardian permission to sync study progress (<a href="/privacy/" style="color:inherit;text-decoration:underline">Privacy Policy</a>).</span>
         </label>
         <button class="cloud-auth-google" onclick="window.cloudSignInGoogle&&window.cloudSignInGoogle()">
@@ -89,9 +89,11 @@
         </button>
         <p class="cloud-auth-google-note">Google Forms export uses a separate opt-in popup only when you click Export to Google Forms.</p>
         <div class="cloud-auth-divider"><span>or use email</span></div>
-        <input type="email" id="cloud-auth-email" aria-label="Email address" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudSendCode&&window.cloudSendCode();}">
-        <input type="password" id="cloud-auth-password" aria-label="Password" placeholder="Password (min 8 characters)" autocomplete="current-password" minlength="8" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudSignInPassword&&window.cloudSignInPassword();}">
-        <button class="cloud-auth-send" onclick="window.cloudSignInPassword&&window.cloudSignInPassword()">Sign in with password</button>
+        <form onsubmit="event.preventDefault();window.cloudSignInPassword&&window.cloudSignInPassword();" novalidate>
+          <input type="email" id="cloud-auth-email" aria-label="Email address" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudSendCode&&window.cloudSendCode();}">
+          <input type="password" id="cloud-auth-password" aria-label="Password" placeholder="Password (min 8 characters)" autocomplete="current-password" minlength="8">
+          <button type="submit" class="cloud-auth-send">Sign in with password</button>
+        </form>
         <button type="button" class="cloud-auth-resend" onclick="window.cloudSignUpPassword&&window.cloudSignUpPassword()">Create account with this email &amp; password</button>
         <button type="button" class="cloud-auth-resend" onclick="window.cloudSendCode&&window.cloudSendCode()">Or email me a one-time code instead</button>
         <div id="cloud-auth-code-step" hidden>
@@ -103,6 +105,7 @@
       <div id="cloud-auth-account-view" hidden>
         <p style="margin-bottom:12px">Signed in as <strong id="cloud-auth-account-email"></strong>. Your mistakes, flashcards, and streaks sync automatically across devices.</p>
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+          <a href="/account/" class="cloud-auth-send" style="display:block;text-align:center;text-decoration:none;background:transparent;color:inherit;border:1px solid rgba(148,163,184,.45)">⚙️ My Account, Quotas &amp; Billing</a>
           <button type="button" class="cloud-auth-send" onclick="window.cloudSyncNow&&window.cloudSyncNow()">🔄 Sync Progress Now</button>
           <button type="button" class="cloud-auth-send" style="background:transparent;color:inherit;border:1px solid rgba(148,163,184,.45)" onclick="window.cloudSignOut&&window.cloudSignOut()">Sign Out (Keep Local Progress)</button>
           <button type="button" class="cloud-auth-send" style="background:#fee2e2;color:#b91c1c;border:1px solid #fca5a5" onclick="window.cloudDeleteMyAccount&&window.cloudDeleteMyAccount()">🗑 Delete My Account &amp; Cloud Data</button>
@@ -601,7 +604,7 @@
       </div>
     </div>
     <div id="chatAttachBar" class="chat-attach-bar" style="display:none" aria-live="polite">
-      <img id="chatAttachThumb" class="chat-attach-thumb" alt="Attached question preview" style="display:none">
+      <img id="chatAttachThumb" class="chat-attach-thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E" width="44" height="44" alt="Attached question preview" style="display:none">
       <span id="chatAttachIcon" class="chat-attach-icon" aria-hidden="true">📄</span>
       <div id="chatAttachName" class="chat-attach-name"></div>
       <div class="chat-attach-meta" style="display:none"><div id="chatAttachSub" class="chat-attach-sub"></div></div>

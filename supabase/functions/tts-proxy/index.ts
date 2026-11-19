@@ -39,6 +39,15 @@ function jsonError(message: string, status: number): Response {
   return Response.json({ error: message }, { status });
 }
 
+function resolveVoiceConfig(rawLang: unknown, envVoice?: string, envVoiceAr?: string): { lang: string; voice: string; isArabic: boolean } {
+  const norm = typeof rawLang === "string" ? rawLang.trim().toLowerCase() : "en";
+  const isArabic = norm === "ar" || norm.startsWith("ar-") || norm.startsWith("ar_");
+  const voice = isArabic
+    ? (envVoiceAr || envVoice || "alloy")
+    : (envVoice || "default");
+  return { lang: isArabic ? "ar" : "en", voice, isArabic };
+}
+
 const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   if (req.method !== "POST") return jsonError("POST only", 405);
 
@@ -61,15 +70,28 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError(`"text" is too long (max ${MAX_INPUT_CHARS} characters per request)`, 413);
   }
 
-  // Enforce daily quota cap per authenticated user to bound upstream TTS spend
+  // Enforce dedicated TTS daily quota cap (separate from AI Tutor calls)
   const userId = ctx.userClaims?.id;
   if (!userId) return jsonError("Authentication required", 401);
-  const { data: quotaRows, error: quotaErr } = await ctx.supabaseAdmin.rpc("use_ai_quota", {
+  let usedDedicatedTtsRpc = true;
+  let { data: quotaRows, error: quotaErr } = await ctx.supabaseAdmin.rpc("use_tts_quota", {
     p_user_id: userId,
     p_base_cap: DAILY_TTS_BASE_CAP,
     p_cost: 1,
     p_paid_multiplier: PAID_MULTIPLIER,
   });
+  if (quotaErr && /use_tts_quota/i.test(String(quotaErr.message || ""))) {
+    // Graceful fallback only if Phase 0 migration has not been applied yet
+    usedDedicatedTtsRpc = false;
+    const fb = await ctx.supabaseAdmin.rpc("use_ai_quota", {
+      p_user_id: userId,
+      p_base_cap: DAILY_TTS_BASE_CAP,
+      p_cost: 1,
+      p_paid_multiplier: PAID_MULTIPLIER,
+    });
+    quotaRows = fb.data;
+    quotaErr = fb.error;
+  }
   const q = Array.isArray(quotaRows) ? quotaRows[0] : quotaRows;
   if (quotaErr || !q) {
     console.error("TTS quota check failed:", quotaErr);
@@ -79,13 +101,25 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError("Daily cloud voice limit reached; falling back to device voice.", 429);
   }
 
+  const refundTts = async (): Promise<void> => {
+    try {
+      await ctx.supabaseAdmin.rpc(usedDedicatedTtsRpc ? "refund_tts_quota" : "refund_ai_quota", {
+        p_user_id: userId,
+        p_cost: 1,
+      });
+    } catch (refundErr) {
+      console.error("Failed to refund TTS quota:", refundErr);
+    }
+  };
+
+  const voiceCfg = resolveVoiceConfig(payload.lang, Deno.env.get("TTS_VOICE"), Deno.env.get("TTS_VOICE_AR"));
   const body: Record<string, unknown> = {
-    model: Deno.env.get("TTS_MODEL") || DEFAULT_MODEL,
+    model: (voiceCfg.isArabic && Deno.env.get("TTS_MODEL_AR")) || Deno.env.get("TTS_MODEL") || DEFAULT_MODEL,
     input: text,
     response_format: "mp3",
+    language: voiceCfg.lang,
   };
-  const voice = Deno.env.get("TTS_VOICE") || "default";
-  if (voice !== "none") body.voice = voice;
+  if (voiceCfg.voice !== "none") body.voice = voiceCfg.voice;
 
   let upstream: Response;
   try {
@@ -100,6 +134,7 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     });
   } catch (err) {
     console.error("OpenRouter TTS request failed:", err);
+    await refundTts();
     return jsonError("Text-to-speech provider unreachable", 502);
   }
 
@@ -107,17 +142,24 @@ const ttsHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     const errBody = await upstream.json().catch(() => ({}));
     const message = (errBody as any)?.error?.message || `Upstream HTTP ${upstream.status}`;
     console.error("OpenRouter TTS error:", upstream.status, message);
+    await refundTts();
     const status = upstream.status === 429 || upstream.status === 402 ? upstream.status : 502;
     return jsonError(message, status);
   }
 
   const contentType = upstream.headers.get("content-type") || "audio/mpeg";
   if (!contentType.startsWith("audio/") && !contentType.startsWith("application/octet-stream")) {
+    await refundTts();
     return jsonError("Unexpected response from text-to-speech provider", 502);
   }
   return new Response(upstream.body, {
     status: 200,
-    headers: { "Content-Type": contentType, "Cache-Control": "private, max-age=86400" },
+    headers: {
+      "Content-Type": contentType,
+      "Cache-Control": "private, max-age=86400",
+      "X-ClipSAT-TTS-Used": String(q.used ?? ""),
+      "X-ClipSAT-TTS-Cap": String(q.cap ?? ""),
+    },
   });
 });
 
@@ -136,4 +178,4 @@ export default {
   },
 };
 
-export { DAILY_TTS_BASE_CAP, MAX_INPUT_CHARS, PAID_MULTIPLIER, resolveAllowedOrigin };
+export { DAILY_TTS_BASE_CAP, MAX_INPUT_CHARS, PAID_MULTIPLIER, resolveAllowedOrigin, resolveVoiceConfig };

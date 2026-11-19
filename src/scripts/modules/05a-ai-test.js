@@ -679,6 +679,17 @@ window.ClipSATSymbolicCheck=(function(){
   function check(targetExpr,givenExpr,vars){
     vars=(vars&&vars.length)?vars:['x'];
     if(!isSafe(targetExpr)||!isSafe(givenExpr)) return Promise.resolve('unverifiable');
+    /* CSP-safe first-party AST equivalence fallback (zero external CDN dependency) */
+    if(window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function'){
+      try {
+        var normT = normalizeImplicitMult(targetExpr);
+        var normG = normalizeImplicitMult(givenExpr);
+        if(window.ClipSATAnswerCheck.equivalent(normG, normT)) return Promise.resolve('equivalent');
+        if(window.ClipSATAnswerCheck.equivalent(normG, normG) && window.ClipSATAnswerCheck.equivalent(normT, normT)){
+          return Promise.resolve('different');
+        }
+      } catch(_){}
+    }
     return loadMathjs().then(function(mod){
       var math=mod.default||mod;
       var targetNode,givenNode;

@@ -128,7 +128,7 @@ function _updateBreadcrumb(viewId, chapterId) {
 }
 
 document.addEventListener('clipsat:view-change', function(ev) {
-  var name = ev && ev.detail && ev.detail.viewId;
+  var name = ev && ev.detail && (ev.detail.viewId || ev.detail.view);
   if (!name) return;
   _currentView = name; window._csCurrentView = name; _currentChapter = '';
   _updateBreadcrumb(name, '');
@@ -139,7 +139,7 @@ document.addEventListener('clipsat:view-change', function(ev) {
 
 document.addEventListener('clipsat:chapter-change', function(ev) {
   var d = (ev && ev.detail) || {};
-  var chId = d.chapterId, view = d.viewId;
+  var chId = d.chapterId || d.id, view = d.viewId || d.view;
   if (!chId) return;
   _currentChapter = chId;
   if (view) { _currentView = view; window._csCurrentView = view; }
@@ -436,9 +436,9 @@ window.CSSearch = {
     var maxDist = q.length<=5 ? 1 : 2;
     var results=[];
     SEARCH_INDEX.forEach(function(item){
-      var words = norm(item.title).split(/[^a-z0-9]+/).filter(Boolean);
+      var words = norm(item.title).split(/[^a-z0-9\u0600-\u06FF]+/).filter(Boolean);
       (item.keywords||[]).forEach(function(k){
-        words = words.concat(norm(k).split(/[^a-z0-9]+/).filter(Boolean));
+        words = words.concat(norm(k).split(/[^a-z0-9\u0600-\u06FF]+/).filter(Boolean));
       });
       var best = null;
       words.forEach(function(w){

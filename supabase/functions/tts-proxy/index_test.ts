@@ -6,15 +6,20 @@ import app, {
   MAX_INPUT_CHARS,
   PAID_MULTIPLIER,
   resolveAllowedOrigin,
+  resolveVoiceConfig,
 } from "./index.ts";
 
 function assert(cond: unknown, msg: string): void {
   if (!cond) throw new Error(msg);
 }
 
-Deno.test("tts-proxy: enforces 1200-char ceiling and metered quota constants", () => {
+Deno.test("tts-proxy: enforces 1200-char ceiling, metered quota constants, and Arabic voice routing", () => {
   assert(MAX_INPUT_CHARS === 1200, "TTS input limit must be 1,200 chars");
-  assert(DAILY_TTS_BASE_CAP === 60 && PAID_MULTIPLIER === 10, "TTS must be metered via use_ai_quota");
+  assert(DAILY_TTS_BASE_CAP === 60 && PAID_MULTIPLIER === 10, "TTS must be metered via dedicated quota");
+  const arCfg = resolveVoiceConfig("ar-SA", "en_voice", "ar_voice");
+  assert(arCfg.isArabic === true && arCfg.lang === "ar" && arCfg.voice === "ar_voice", "ar-SA must route to Arabic voice");
+  const enCfg = resolveVoiceConfig("en-US", "en_voice", "ar_voice");
+  assert(enCfg.isArabic === false && enCfg.lang === "en" && enCfg.voice === "en_voice", "en-US must route to English voice");
 });
 
 Deno.test("tts-proxy: rejects untrusted origins with HTTP 403", async () => {

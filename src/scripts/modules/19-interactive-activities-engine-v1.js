@@ -2395,7 +2395,7 @@ else _onDomReady();
 
 /* Subscribe to clipsat:chapter-change */
 document.addEventListener('clipsat:chapter-change', function(ev){
-  var chId = ev && ev.detail && ev.detail.chapterId;
+  var chId = ev && ev.detail && (ev.detail.chapterId || ev.detail.id);
   if(chId) setTimeout(function(){_inject(chId);},600);
 });
 

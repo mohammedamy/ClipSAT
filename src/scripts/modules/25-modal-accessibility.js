@@ -60,8 +60,9 @@
 (function(){
   var MODALS=[
     'mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal',
-    'cookie-consent-overlay','teacher-view-modal','google-auth-modal','gform-panel-modal',
-    'glossaryOverlay','formulaOverlay','flashcards-sidebar'
+    'cookieConsentBanner','teacher-view-modal','google-auth-modal','gform-panel-modal',
+    'glossaryOverlay','formulaOverlay','flashcards-sidebar','mock-exam-overlay',
+    'pq-overlay','mq-review-overlay'
   ];
   var FOCUSABLE_SEL='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
   function isOverlayVisible(el){

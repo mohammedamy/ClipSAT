@@ -9,6 +9,7 @@ import app, {
   MAX_OUTPUT_TOKENS,
   PAID_MULTIPLIER,
   resolveAllowedOrigin,
+  validateAttachment,
 } from "./index.ts";
 
 function assert(cond: unknown, msg: string): void {
@@ -49,5 +50,9 @@ Deno.test("ai-proxy: enforces immutable math guard, 20 base / 200 Plus daily cre
   assert(
     checkContentSafety([{ role: "hacker", content: "hi" }]) !== null,
     "unknown message role must be rejected",
+  );
+  assert(
+    validateAttachment({ type: "image", mime_type: "image/svg+xml", data: "abc" }) !== null,
+    "disallowed image mime type must be rejected",
   );
 });

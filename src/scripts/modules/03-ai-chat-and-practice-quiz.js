@@ -401,7 +401,7 @@
   }
   function greet(){
     if(greeted) return; greeted=true;
-    addMsg('bot',"Hi, I'm the **ClipSAT AI Tutor** \u2014 your interactive AI math assistant (" + _aiLimitSummary(false).toLowerCase() + "). Ask me about any problem, or attach/snap a photo, PDF, or DOCX question and I'll walk you through it step by step.\n\n_Notice: AI-generated; may contain errors; not a substitute for teacher instruction._");
+    addMsg('bot',"Hi, I'm the **ClipSAT AI Tutor** \u2014 your interactive AI math assistant (" + _aiLimitSummary(false).toLowerCase() + "). Ask me about any problem, or attach/snap a photo, PDF, or DOCX question and I'll walk you through it step by step.");
     var chips=document.createElement('div'); chips.className='chat-chips';
     ["Solve x\u00B2 \u2212 5x + 6 = 0","Explain the chain rule","How do I find a line of best fit?"].forEach(function(q){
       var c=document.createElement('button'); c.type='button'; c.className='chat-chip'; c.textContent=q;
@@ -1011,16 +1011,47 @@ window.launchPracticeQuiz=function(mistake){
       /* mark picked as seen */
       pick.forEach(function(q){ seen.add(_qKey(q)); });
 
+    /* ── Shared locale-aware item field picker (skips corrupted boilerplate Arabic) ── */
+    var _AR_BOIL_RE = /في مسألة رياضية ضمن|بتطبيق القوانين الرياضية المعتمدة|إرشاد منهجي|بالاعتماد على العلاقات الرياضية/;
+    var _isArLocale = (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') || document.documentElement.dir === 'rtl';
+    function _pickLocText(enStr, arStr){
+      if(_isArLocale && arStr && typeof arStr === 'string' && arStr.trim() && !_AR_BOIL_RE.test(arStr)) return arStr;
+      return enStr || arStr || '';
+    }
+    window.CSItemLocale = window.CSItemLocale || {
+      isAr: function(){ return (window.i18n && window.i18n.getLocale && window.i18n.getLocale() === 'ar') || document.documentElement.dir === 'rtl'; },
+      isBoilerplateAr: function(s){ return !!s && _AR_BOIL_RE.test(String(s)); },
+      text: function(q){ var ar = q && (q.text_ar || q.q_ar); var en = q && (q.text || q.q); return (this.isAr() && ar && !this.isBoilerplateAr(ar)) ? ar : (en || ar || ''); },
+      sol: function(q){ var ar = q && (q.sol_ar || q.explanation_ar); var en = q && (q.sol || q.explanation); return (this.isAr() && ar && !this.isBoilerplateAr(ar)) ? ar : (en || ar || ''); },
+      choices: function(q){
+        var en = (q && q.choices) || [];
+        var ar = (q && q.choices_ar) || [];
+        if(this.isAr() && Array.isArray(ar) && ar.length === en.length && ar.length > 0 && !ar.some(this.isBoilerplateAr)) return ar;
+        return en;
+      },
+      hints: function(q){
+        var en = (q && q.hints) || [];
+        var ar = (q && q.hints_ar) || [];
+        if(this.isAr() && Array.isArray(ar) && ar.length > 0 && !ar.some(this.isBoilerplateAr)) return ar;
+        return en;
+      }
+    };
+
     /* ── render ── */
-    var LTR=['A','B','C','D','E'];
-    var lvlLabel=lvl==='all'?'All Levels':lvl;
+    var LTR=_isArLocale?['أ','ب','ج','د','هـ']:['A','B','C','D','E'];
+    var lvlLabel=lvl==='all'?(_isArLocale?'كل المستويات':'All Levels'):lvl;
     var h='<div class="cq-paper">';
-    h+='<div class="cq-head"><span>Chapter Quiz</span><span class="cq-meta">'+pick.length+' questions &middot; '+lvlLabel+'</span><div style="display:flex;gap:6px;align-items:center;flex-shrink:0"><button class="cq-print-btn" onclick="printCQ(this)" title="Print this quiz">&#128424; Print</button><button class="cq-close-btn" onclick="this.closest(\'.cq-paper\').parentNode.innerHTML=\'\'" title="Close quiz">&times;</button></div></div>';
+    h+='<div class="cq-head"><span>'+(_isArLocale?'اختبار الفصل':'Chapter Quiz')+'</span><span class="cq-meta">'+pick.length+' '+(_isArLocale?'سؤال':'questions')+' &middot; '+lvlLabel+'</span><div style="display:flex;gap:6px;align-items:center;flex-shrink:0"><button class="cq-print-btn" onclick="printCQ(this)" title="Print this quiz">&#128424; '+(_isArLocale?'طباعة':'Print')+'</button><button class="cq-close-btn" onclick="this.closest(\'.cq-paper\').parentNode.innerHTML=\'\'" title="Close quiz">&times;</button></div></div>';
     var _csCaptureQ=[], _figs=[];
     pick.forEach(function(q,i){
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize which position holds the correct choice */
-      var qtext=_maths(q.text||q.q||'');
-      var choices=(q.choices||[]).map(function(c){
+      var rawStem = _pickLocText(q.text||q.q||'', q.text_ar||q.q_ar||'');
+      var rawChoices = (_isArLocale && Array.isArray(q.choices_ar) && q.choices_ar.length === (q.choices||[]).length && !q.choices_ar.some(function(x){return _AR_BOIL_RE.test(String(x||''));}))
+        ? q.choices_ar
+        : (q.choices||[]);
+      var rawSol = _pickLocText(q.sol||q.explanation||'', q.sol_ar||q.explanation_ar||'');
+      var qtext=_maths(rawStem);
+      var choices=rawChoices.map(function(c){
         return _maths(_autoMath(c));
       });
       var ans=typeof q.answer!=='undefined'?q.answer:(typeof q.ans!=='undefined'?q.ans:0);
@@ -1043,30 +1074,30 @@ window.launchPracticeQuiz=function(mistake){
         }
       }
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
-      var _isCqMcq = Array.isArray(q.choices) && q.choices.length > 0 && q.type !== 'frq' && q.type !== 'spr';
-      _csCaptureQ.push({text:q.text||q.q||'',choices:_isCqMcq?(q.choices||[]).slice():[],correctIndex:_isCqMcq?ans:null,type:_isCqMcq?'mcq':(q.type==='spr'?'spr':'frq'),points:Number(q.marks)||1,ans:!_isCqMcq?(q.sprAnswer!=null?String(q.sprAnswer):(q.finalAnswer!=null?String(q.finalAnswer):(q.ans!=null?String(q.ans):(q.answer!=null?String(q.answer):'')))):'' ,sol:q.sol||q.explanation||'',figure:_f||null,figureHtml:_fHtml||null});
+      var _isCqMcq = Array.isArray(rawChoices) && rawChoices.length > 0 && q.type !== 'frq' && q.type !== 'spr';
+      _csCaptureQ.push({text:rawStem,choices:_isCqMcq?rawChoices.slice():[],correctIndex:_isCqMcq?ans:null,type:_isCqMcq?'mcq':(q.type==='spr'?'spr':'frq'),points:Number(q.marks)||1,ans:!_isCqMcq?(q.sprAnswer!=null?String(q.sprAnswer):(q.finalAnswer!=null?String(q.finalAnswer):(q.ans!=null?String(q.ans):(q.answer!=null?String(q.answer):'')))):'' ,sol:rawSol,figure:_f||null,figureHtml:_fHtml||null});
       var _qDom=(q.domain||q.topic||'').replace(/"/g,'&quot;');
       var _qId=(q.id||(viewId||'tr')+'-cq-'+(i+1)).replace(/"/g,'&quot;');
       var _choicesJson='';
-      try{ _choicesJson=encodeURIComponent(JSON.stringify(q.choices||[])); }catch(e){}
-      h+='<div class="cq-item" data-id="'+_qId+'" data-domain="'+_qDom+'" data-src="'+(chTitle||'Chapter Quiz').replace(/"/g,'&quot;')+'" data-choices="'+_choicesJson+'" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
+      try{ _choicesJson=encodeURIComponent(JSON.stringify(rawChoices||[])); }catch(e){}
+      h+='<div class="cq-item" data-id="'+_qId+'" data-domain="'+_qDom+'" data-src="'+(chTitle||'Chapter Quiz').replace(/"/g,'&quot;')+'" data-choices="'+_choicesJson+'" data-ans="'+ans+'" data-raw="'+rawStem.replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
       if(_fHtml){
         h+='<div class="cq-figure">'+_fHtml+'</div>';
       } else if(_f){
         h+='<div class="cq-figure" data-fig="'+_figs.length+'" data-q-idx="'+i+'"></div>'; _figs.push(_f);
       }
       h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+qtext+'</div></div>';
-      h+='<ul class="cq-opts">';
+      h+='<ul class="cq-opts" role="radiogroup" aria-label="Question '+(i+1)+' choices">';
       choices.forEach(function(c,ci){
-        var rawC=q.choices&&q.choices[ci]?String(q.choices[ci]).replace(/"/g,'&quot;').replace(/\n/g,' '):'';
-        h+='<li class="cq-opt" onclick="cqPick(this)" data-raw="'+rawC+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+c+'</span></li>';
+        var rawC=rawChoices&&rawChoices[ci]?String(rawChoices[ci]).replace(/"/g,'&quot;').replace(/\n/g,' '):'';
+        h+='<li class="cq-opt" role="button" tabindex="0" onclick="cqPick(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();cqPick(this);}" data-raw="'+rawC+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+c+'</span></li>';
       });
       h+='</ul>';
       if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
         h+=window.CSHintEngine.renderHintWidget(q, _qId);
       }
-      var _solRaw=(q.sol||q.explanation||'').replace(/"/g,'&quot;').replace(/\n/g,' ');
-      if(q.sol||q.explanation) h+='<div class="cq-sol-box" data-raw="'+_solRaw+'"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px"><strong>Solution:</strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div class="cq-sol-body">'+_maths(q.sol||q.explanation||'')+'</div></div>';
+      var _solRaw=rawSol.replace(/"/g,'&quot;').replace(/\n/g,' ');
+      if(rawSol) h+='<div class="cq-sol-box" data-raw="'+_solRaw+'"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px"><strong>'+(_isArLocale?'الحل:':'Solution:')+'</strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div class="cq-sol-body">'+_maths(rawSol)+'</div></div>';
       h+='</div>';
     });
     h+='<div class="cq-score-bar">Answered: <strong class="cq-ans-v">0</strong> / '+pick.length+' &nbsp;|&nbsp; Score: <strong class="cq-sv">0</strong> / '+pick.length+'</div>';
@@ -1157,7 +1188,7 @@ window.launchPracticeQuiz=function(mistake){
     var paper=el.closest('.cq-paper');
     var answered=paper.querySelectorAll('.cq-item.cq-done').length;
     var correct=0;
-    paper.querySelectorAll('.cq-item.cq-done').forEach(function(it){
+    paper.querySelectorAll('.cq-item.cq-done:not(.cq-timed-out)').forEach(function(it){
       if(!it.querySelector('.cq-opt.cq-wrong')) correct++;
     });
     var av=paper.querySelector('.cq-ans-v'); if(av) av.textContent=answered;

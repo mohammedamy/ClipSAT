@@ -73,9 +73,9 @@
       if(tbar && _cqSecs <= 60) tbar.classList.add('warn');
       if(_cqSecs <= 0){
         clearCqTimer();
-        /* auto-lock: mark all unanswered items */
+        /* auto-lock: mark all unanswered items as timed-out (0 credit) */
         out.querySelectorAll('.cq-item:not(.cq-done)').forEach(function(item){
-          item.classList.add('cq-done');
+          item.classList.add('cq-done', 'cq-timed-out');
           var ans=parseInt(item.getAttribute('data-ans'),10);
           var opts=item.querySelectorAll('.cq-opt');
           if(opts[ans]) opts[ans].classList.add('cq-correct');
@@ -84,11 +84,14 @@
           if(sol) sol.style.display='block';
         });
         if(tbar){ tbar.style.background='#7f1d1d'; tbar.innerHTML='<span>&#9201; Time\'s up! Exam auto-submitted.</span>'; }
-        /* recalculate score */
+        /* recalculate score — unanswered timed-out items receive 0 credit */
         var paper2=out.querySelector('.cq-paper');
         if(paper2){
           var total2=paper2.querySelectorAll('.cq-item').length;
-          var correct2=paper2.querySelectorAll('.cq-item.cq-done .cq-correct:not(.cq-wrong)').length;
+          var correct2=0;
+          paper2.querySelectorAll('.cq-item.cq-done:not(.cq-timed-out)').forEach(function(it){
+            if(!it.querySelector('.cq-opt.cq-wrong')) correct2++;
+          });
           var sv=paper2.querySelector('.cq-sv');
           if(sv) sv.textContent=correct2;
           var av=paper2.querySelector('.cq-ans-v');

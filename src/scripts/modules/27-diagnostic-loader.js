@@ -40,7 +40,8 @@
     var vid = el.getAttribute('data-video-id');
     var label = el.getAttribute('aria-label') || 'Video lesson';
     if (!vid) return;
-    el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(vid) + '?autoplay=1&rel=0" title="' + encodeURIComponent(label) + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    var safeLabel = String(label).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(vid) + '?autoplay=1&rel=0" title="' + safeLabel + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     el.classList.add('cs-video-playing');
     if (window.ClipSATAnalytics) {
       window.ClipSATAnalytics.track('video_play', { video_id: vid });

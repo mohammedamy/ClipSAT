@@ -1216,6 +1216,7 @@
   };
 
   window.cbtToggleFlagCurrent = function(idx){
+    if(typeof idx !== 'number' || isNaN(idx)) idx = _curIdx;
     _flags[idx] = !_flags[idx];
     var qEl = document.getElementById('mock-q-' + idx);
     if(qEl){
@@ -1267,6 +1268,9 @@
         + '<p style="font-size:.85rem;color:var(--muted,#64748b)">Loading question bank & rendering engine for ' + trackId.toUpperCase() + '</p>'
         + '</div>';
     }
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Computer-Based Mock Exam Simulator');
     overlay.classList.add('show');
     document.body.classList.add('cbt-open');
 
@@ -1382,7 +1386,7 @@
         toolsDiv.innerHTML = langToggleHtml + calcBtnHtml
           + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Reference Formulas">📐 Formulas</button>'
           + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" title="Open Scratchpad (Alt+S)">✏️ Scratchpad</button>'
-          + '<button type="button" class="cbt-flag-btn" id="cbt-flag-btn" onclick="window.cbtToggleFlagCurrent(' + _curIdx + ')">🏳️ Flag for Review</button>'
+          + '<button type="button" class="cbt-flag-btn" id="cbt-flag-btn" onclick="window.cbtToggleFlagCurrent()">🏳️ Flag for Review</button>'
           + '<button type="button" class="hdr-btn" onclick="window.cbtToggleFullscreen()" title="Toggle Fullscreen">⛶</button>';
       }
 
@@ -1452,6 +1456,9 @@
         + '<p style="font-size:.85rem;color:var(--muted,#64748b)">' + (examTitle || examFilename) + '</p>'
         + '</div>';
     }
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Computer-Based Mock Exam Simulator');
     overlay.classList.add('show');
     document.body.classList.add('cbt-open');
 
@@ -1552,7 +1559,7 @@
           toolsDiv.innerHTML = printLinkHtml + calcBtnHtml
             + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Reference Formulas">📐 Formulas</button>'
             + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" title="Open Scratchpad (Alt+S)">✏️ Scratchpad</button>'
-            + '<button type="button" class="cbt-flag-btn" id="cbt-flag-btn" onclick="window.cbtToggleFlagCurrent(' + _curIdx + ')">🏳️ Flag for Review</button>'
+            + '<button type="button" class="cbt-flag-btn" id="cbt-flag-btn" onclick="window.cbtToggleFlagCurrent()">🏳️ Flag for Review</button>'
             + '<button type="button" class="hdr-btn" onclick="window.cbtToggleFullscreen()" title="Toggle Fullscreen">⛶</button>';
         }
 
@@ -1870,6 +1877,61 @@
     if(title){
       title.innerHTML = 'Examination Completed — <strong>Score: ' + correctDisp + '/' + totalGraded + ' (' + pct + '%)</strong>';
     }
+
+    // Persist CBT attempt to local history, AccuracyLog, MistakeLog (ML), Gamify XP & Analytics
+    try {
+      var hist = JSON.parse(localStorage.getItem('clipsat_cbt_history') || '[]');
+      if(!Array.isArray(hist)) hist = [];
+      hist.unshift({
+        track: _trackId,
+        paper: (_paper && _paper.name) ? _paper.name : (_trackId.toUpperCase() + ' CBT'),
+        score: Number(correctDisp) || 0,
+        total: totalGraded,
+        pct: pct,
+        scaled: scaled ? scaled.value : '',
+        ts: Date.now()
+      });
+      localStorage.setItem('clipsat_cbt_history', JSON.stringify(hist.slice(0, 30)));
+    } catch(_){}
+    try {
+      if(window.AccuracyLog && typeof window.AccuracyLog.record === 'function'){
+        Object.keys(domainStats).forEach(function(dn){
+          var st = domainStats[dn];
+          var cInt = Math.round(st.correct || 0);
+          var wInt = Math.max(0, Math.round((st.total || 0) - (st.correct || 0)));
+          for(var ci = 0; ci < cInt; ci++) window.AccuracyLog.record(_trackId, dn, true);
+          for(var wi = 0; wi < wInt; wi++) window.AccuracyLog.record(_trackId, dn, false);
+        });
+      }
+      if(window.ML && typeof window.ML.add === 'function' && Array.isArray(_pool)){
+        _pool.forEach(function(q, qi){
+          if(!q || !Array.isArray(q.choices) || typeof q.answer !== 'number') return;
+          var chosen = _answers[qi];
+          if(chosen !== undefined && chosen !== q.answer){
+            window.ML.add({
+              id: q.id || (_trackId + '-cbt-' + qi),
+              viewId: _trackId,
+              domain: q.domain || 'General',
+              q: q.text || q.q || '',
+              wrong: q.choices[chosen] != null ? String(q.choices[chosen]) : String(chosen),
+              right: q.choices[q.answer] != null ? String(q.choices[q.answer]) : String(q.answer)
+            });
+          }
+        });
+      }
+      if(window.CSGamify && typeof window.CSGamify.addXP === 'function'){
+        window.CSGamify.addXP(Math.max(15, Math.round(pct * 0.5)));
+      }
+      if(window.ClipSATAnalytics && typeof window.ClipSATAnalytics.track === 'function'){
+        window.ClipSATAnalytics.track('mock_exam_complete', {
+          track: _trackId,
+          paper: (_paper && _paper.name) || '',
+          score: Number(correctDisp) || 0,
+          total: totalGraded,
+          pct: pct
+        });
+      }
+    } catch(_){}
 
     // Build Domain Breakdown HTML
     var domainBarsHtml = '';

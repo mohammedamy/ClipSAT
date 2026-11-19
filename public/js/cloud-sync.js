@@ -1128,9 +1128,9 @@
 
   function pullAndMerge() {
     var uid = _cachedUser && _cachedUser.id;
-    if (!uid || !sb) return;
+    if (!uid || !sb) return Promise.resolve();
 
-    Promise.all([
+    return Promise.all([
       sb.from('profiles').select('*').eq('user_id', uid).maybeSingle(),
       fetchActiveMistakes(uid),
       sb.from('srs_state').select('*').eq('user_id', uid),

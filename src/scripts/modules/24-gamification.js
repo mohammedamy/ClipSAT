@@ -79,7 +79,15 @@
     activeQueue: [],
 
     _slugify: function(s) {
-      return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+      var str = String(s || '').trim();
+      var ascii = str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
+      var h = 2166136261;
+      for (var i = 0; i < str.length; i++) {
+        h ^= str.charCodeAt(i);
+        h = (h + (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24)) >>> 0;
+      }
+      var hex = h.toString(36);
+      return ascii ? (ascii + '-' + hex) : ('u-' + hex);
     },
 
     _starredMap: function() {
@@ -1065,22 +1073,23 @@
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-  /* Daily streak tracking */
+  /* Daily streak tracking (awards daily streak bonus at most once per calendar day) */
   (function trackStreak() {
     var today = new Date().toDateString();
     var lastVisit = null;
     try { lastVisit = localStorage.getItem('clipsat_last_visit'); } catch(e){}
+    if (lastVisit === today) return;
     var yesterday = new Date(Date.now() - 86400000).toDateString();
     if (lastVisit === yesterday) {
       streak++;
-    } else if (lastVisit !== today) {
+    } else {
       streak = 1;
     }
     try {
       localStorage.setItem('clipsat_streak', String(streak));
       localStorage.setItem('clipsat_last_visit', today);
     } catch(e){}
-    if (streak >= 3) window.CSGamify.addXP(20); // streak bonus
+    if (streak >= 3) window.CSGamify.addXP(20); // streak bonus once per day
   })();
 
   /* WP-22: Paint due-card badge from build-time count & hydrate [data-lazy-fig] lesson figures via IntersectionObserver */

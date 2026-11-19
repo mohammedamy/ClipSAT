@@ -697,8 +697,70 @@ window.CSExport=(function(){
     var chTitle='';
     if(chapter){var chH=chapter.querySelector('.chead h1, .chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();}
     var probs=(chapter||view).querySelectorAll('.problem');
-    if(!probs.length){alert(_tt('noProblemsFound'));return;}
     if(typeof JSZip==='undefined'){alert(_tt('docxLoading'));return;}
+    if(!probs.length){
+      /* Syllabus hub fallback: build a curated 15-question Word packet from the track's verified bank */
+      var trackSlug=(view.id||'').replace(/^view-/,'')||window.CLIPSAT_TRACK||'';
+      if(trackSlug && typeof window.CS_loadTrackBank==='function'){
+        var origTxt=btn?btn.textContent:'';
+        if(btn){btn.disabled=true;btn.textContent='⏳ Building .docx…';}
+        window.CS_loadTrackBank(trackSlug).then(function(bank){
+          var pool=Array.isArray(bank)?bank:(bank&&Array.isArray(bank.pool)?bank.pool:(window.fullExamBank&&window.fullExamBank[trackSlug])||[]);
+          if(!pool.length){
+            if(btn){btn.disabled=false;btn.textContent=origTxt;}
+            alert(_tt('noProblemsFound'));
+            return;
+          }
+          var sample=pool.slice(0,15);
+          var isAr=(window.i18n&&window.i18n.getLocale&&window.i18n.getLocale()==='ar')||document.documentElement.dir==='rtl';
+          return _fetchLogoBase64().then(function(_logoB64){
+            var zip=new JSZip();
+            var _letterhead=_buildLetterhead(zip,{title:title,chapter:(isAr?'حزمة تدريب مختارة':'Curated Practice Packet'),track:track},_logoB64);
+            var body=para(_today(),{italic:true,color:'566173',size:20,spaceAfter:200});
+            body+=para(_tt('practiceProblemsCaps'),{bold:true,size:26,color:'1A1A2E',spaceAfter:100});
+            var LTR=['A','B','C','D','E'];
+            sample.forEach(function(q,qi){
+              var stem=(window.CSItemLocale?window.CSItemLocale.text(q):(q.text||q.q||''));
+              var chs=(window.CSItemLocale?window.CSItemLocale.choices(q):(q.choices||[]));
+              body+=paraMath((qi+1)+'. '+stem,{bold:true,size:23,spaceAfter:40});
+              chs.forEach(function(c,ci){
+                body+=paraMath('    '+(LTR[ci]||String(ci+1))+'.  '+c,{size:21,spaceAfter:20});
+              });
+              body+=para('',{spaceAfter:90});
+            });
+            body+=para(isAr?'مفتاح الإجابات والحلول':'ANSWER KEY & WORKED SOLUTIONS',{bold:true,size:26,color:'1A1A2E',spaceAfter:100});
+            sample.forEach(function(q,qi){
+              var chs=(window.CSItemLocale?window.CSItemLocale.choices(q):(q.choices||[]));
+              var ansLbl=(typeof q.answer==='number'&&LTR[q.answer])?(LTR[q.answer]+(chs[q.answer]?' ('+chs[q.answer]+')':'')):String(q.answer!=null?q.answer:'');
+              var sol=(window.CSItemLocale?window.CSItemLocale.sol(q):(q.sol||q.explanation||''));
+              body+=paraMath((qi+1)+'. '+ansLbl+(sol?(' — '+sol):''),{color:'1E3A6E',size:21,spaceAfter:70});
+            });
+            var wNS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
+            var mNS='xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"';
+            var rNS='xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
+            var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document '+wNS+' '+mNS+' '+rNS+'><w:body>'+body+'<w:sectPr>'+_letterhead.sectPrRefs+'<w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="709" w:footer="709"/></w:sectPr></w:body></w:document>';
+            var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'+_letterhead.contentTypesXml+'</Types>';
+            var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
+            zip.file('[Content_Types].xml',ct);
+            zip.folder('_rels').file('.rels',rels);
+            zip.folder('word').file('document.xml',doc);
+            zip.folder('word').folder('_rels').file('document.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+_letterhead.docRelsXml+'</Relationships>');
+            return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+          }).then(function(blob){
+            if(!blob) return;
+            var fname=(title||trackSlug).replace(/[^A-Za-z0-9\u0600-\u06FF]+/g,'_').replace(/^_+|_+$/g,'')+'_Practice_Packet.docx';
+            var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();
+            setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);
+          });
+        }).catch(function(){
+          alert(_tt('noProblemsFound'));
+        }).finally(function(){
+          if(btn){btn.disabled=false;btn.textContent=origTxt;}
+        });
+        return;
+      }
+      alert(_tt('noProblemsFound'));return;
+    }
 
     var _hydrate = window.CSHydrateAllFigures ? window.CSHydrateAllFigures(chapter||view) : Promise.resolve();
     _hydrate.then(function(){

@@ -132,7 +132,7 @@ function parse(str){
   try{var fn=expr();if(p!==t.length)return null;return {fn:fn,vars:vars};}catch(e){return null;}
 }
 
-var POINTS=[0.37,0.81,1.23,1.71,2.29,2.83];
+var POINTS=[-2.31,-1.17,-0.43,0.37,0.81,1.23,1.71,2.29,2.83];
 function numEqual(u,a){
   var pu=parse(u),pa=parse(a);
   if(!pu||!pa) return false;

@@ -463,7 +463,7 @@
       if (extractedSvg) {
         return renderSvgDirect(extractedSvg, SCALE).then(function (svgRes) {
           if (!svgRes) return renderWithHtml2Canvas(stemText, figHtml);
-          if (!stemText || (!hasMath(stemText) && !/<table\b/i.test(stemText)) || typeof window === 'undefined' || !window.html2canvas) {
+          if (!stemText || (!hasMath(stemText) && !/<table\b/i.test(stemText)) || typeof window === 'undefined') {
             return svgRes;
           }
           return renderWithHtml2Canvas(stemText, '').then(function (txtRes) {

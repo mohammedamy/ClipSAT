@@ -18,6 +18,9 @@ function createInMemoryDb(): { db: BillingDbAdapter; plans: Map<string, PlanMuta
   const events = new Set<string>();
   const plans = new Map<string, PlanMutation>();
   const db: BillingDbAdapter = {
+    async hasProcessedWebhookEvent(eventId: string): Promise<boolean> {
+      return events.has(eventId);
+    },
     async recordWebhookEventIfNew(m: PlanMutation): Promise<boolean> {
       if (events.has(m.eventId)) return false;
       events.add(m.eventId);
@@ -25,6 +28,14 @@ function createInMemoryDb(): { db: BillingDbAdapter; plans: Map<string, PlanMuta
     },
     async upsertUserPlan(m: PlanMutation): Promise<void> {
       plans.set(m.userId, m);
+    },
+    async findUserIdByExternalRef(customerId: string | null, subId: string | null): Promise<string | null> {
+      for (const [uid, m] of plans.entries()) {
+        if ((subId && m.externalSubId === subId) || (customerId && m.externalCustomerId === customerId)) {
+          return uid;
+        }
+      }
+      return null;
     },
     async getUserFromJwt(jwt: string) {
       return jwt === "valid-user-jwt" ? { id: "11111111-2222-4333-8444-555555555555", email: "student@clipsat.org" } : null;
@@ -187,4 +198,114 @@ Deno.test("billing-webhook: blocks untrusted browser origins on checkout actions
     db,
   );
   assert(unauth.status === 401, "unauthenticated checkout session creation must return HTTP 401");
+});
+
+Deno.test("billing-webhook: retries succeed after transient upsert failure and recurring Stripe events resolve by customer", async () => {
+  const stripeSecret = "whsec_stripe_retry_789";
+  const { db, plans } = createInMemoryDb();
+  const uid = "11111111-2222-4333-8444-555555555555";
+  const nowSec = Math.floor(Date.now() / 1000);
+
+  // 1. Simulate transient DB failure on first upsertUserPlan call
+  let failOnce = true;
+  const origUpsert = db.upsertUserPlan.bind(db);
+  db.upsertUserPlan = async (m: PlanMutation) => {
+    if (failOnce) {
+      failOnce = false;
+      throw new Error("Transient DB timeout");
+    }
+    return origUpsert(m);
+  };
+
+  const actBody = JSON.stringify({
+    id: "evt_stripe_retry_1",
+    type: "checkout.session.completed",
+    data: {
+      object: {
+        id: "cs_retry",
+        client_reference_id: uid,
+        customer: "cus_recurring_1",
+        subscription: "sub_recurring_1",
+        amount_total: 7500,
+        currency: "sar",
+        status: "complete",
+        metadata: { user_id: uid, billing_cycle: "annual" },
+      },
+    },
+  });
+  const sig1 = await hmacSha256Hex(stripeSecret, `${nowSec}.${actBody}`);
+  let threw = false;
+  try {
+    await handleBillingRequest(
+      new Request("https://clipsat.org/functions/v1/billing-webhook", {
+        method: "POST",
+        headers: { "stripe-signature": `t=${nowSec},v1=${sig1}` },
+        body: actBody,
+      }),
+      { STRIPE_WEBHOOK_SECRET: stripeSecret },
+      db,
+    );
+  } catch {
+    threw = true;
+  }
+  assert(threw, "first delivery with transient upsert error must throw so Stripe retries");
+
+  // Retry of the EXACT SAME eventId must now succeed (not be swallowed as duplicate!)
+  const retryRes = await handleBillingRequest(
+    new Request("https://clipsat.org/functions/v1/billing-webhook", {
+      method: "POST",
+      headers: { "stripe-signature": `t=${nowSec},v1=${sig1}` },
+      body: actBody,
+    }),
+    { STRIPE_WEBHOOK_SECRET: stripeSecret },
+    db,
+  );
+  const retryJson = await retryRes.json();
+  assert(retryRes.status === 200 && retryJson.provisioned === true && plans.get(uid)?.tier === "paid", "retry after transient failure must provision Plus");
+
+  // 2. Recurring invoice.paid WITHOUT top-level client_reference_id or metadata must resolve via customer ID
+  const invBody = JSON.stringify({
+    id: "evt_stripe_inv_2",
+    type: "invoice.paid",
+    data: {
+      object: {
+        id: "in_123",
+        customer: "cus_recurring_1",
+        subscription: "sub_recurring_1",
+        amount_paid: 7500,
+        currency: "sar",
+        status: "paid",
+      },
+    },
+  });
+  const sig2 = await hmacSha256Hex(stripeSecret, `${nowSec}.${invBody}`);
+  const invRes = await handleBillingRequest(
+    new Request("https://clipsat.org/functions/v1/billing-webhook", {
+      method: "POST",
+      headers: { "stripe-signature": `t=${nowSec},v1=${sig2}` },
+      body: invBody,
+    }),
+    { STRIPE_WEBHOOK_SECRET: stripeSecret },
+    db,
+  );
+  const invJson = await invRes.json();
+  assert(invRes.status === 200 && invJson.provisioned === true && invJson.userId === uid, "recurring invoice.paid must resolve userId by customer/sub lookup");
+
+  // 3. charge.refunded WITHOUT metadata must revert user to free via customer ID
+  const refBody = JSON.stringify({
+    id: "evt_stripe_ref_3",
+    type: "charge.refunded",
+    data: { object: { id: "ch_123", customer: "cus_recurring_1", amount_paid: 7500, currency: "sar" } },
+  });
+  const sig3 = await hmacSha256Hex(stripeSecret, `${nowSec}.${refBody}`);
+  const refRes = await handleBillingRequest(
+    new Request("https://clipsat.org/functions/v1/billing-webhook", {
+      method: "POST",
+      headers: { "stripe-signature": `t=${nowSec},v1=${sig3}` },
+      body: refBody,
+    }),
+    { STRIPE_WEBHOOK_SECRET: stripeSecret },
+    db,
+  );
+  assert(refRes.status === 200 && plans.get(uid)?.tier === "free", "charge.refunded must revert user to free via customer lookup");
 });

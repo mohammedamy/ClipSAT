@@ -240,8 +240,9 @@
           /* 2. MCQ choices */
           var choiceParas='';
           item.querySelectorAll('.cq-opt').forEach(function(opt,j){
-            var ct=opt.getAttribute('data-raw')||opt.querySelector('.cq-ct')?opt.querySelector('.cq-ct').textContent:'';
-            if(!ct)ct=opt.getAttribute('data-raw')||'';
+            var rawAttr=opt.getAttribute('data-raw')||'';
+            var ctEl=opt.querySelector('.cq-ct');
+            var ct=rawAttr||(ctEl?ctEl.textContent:'');
             var letter=String.fromCharCode(65+j);
             var chRpr=rpr(false,false,'444444','20');
             choiceParas+='<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:ind w:left="240"/><w:spacing w:after="30"/></w:pPr>'+_mrun(letter+'.  '+ct,chRpr)+'</w:p>';

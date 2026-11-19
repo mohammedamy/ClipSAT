@@ -8458,3 +8458,19 @@ body.hc .nav-tree-leaf[aria-current="page"] { outline: 2px solid currentColor; }
 }
 @media (max-width: 520px) { .nav .nav-tree-wrap { display: none; } }
 @media print { .nav-tree-wrap, .nav-tree-panel, .nav-tree-mobile { display: none !important; } }
+
+/* ── Phase 0 Critical UI Hardening: CBT focus lock, Arabic RTL typography, Dark Mode token parity ── */
+body.cbt-open #chat-fab,
+body.cbt-open #chat-panel { display: none !important; }
+body.dark { --fg: #F1F5F9; --text: #F1F5F9; --bg: #0B0E14; --bg-page: #0B0E14; --green: #22C55E; }
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] .hero h1,
+[dir="rtl"] .sec-head h2,
+[dir="rtl"] .nav-tree-leaf,
+[dir="rtl"] .nav-tree-sub-btn {
+  font-family: "Noto Sans Arabic", var(--sans), system-ui, sans-serif;
+  letter-spacing: 0 !important;
+  line-height: 1.38;
+}
+.cq-opt:focus-visible { outline: 2px solid var(--indigo, #2563EB); outline-offset: 2px; }

@@ -8,7 +8,7 @@
       { left: '\\(', right: '\\)', display: false }
     ],
     ignoredClasses: ['katex', 'katex-display', 'katex-html', 'katex-mathml', 'sr-only'],
-    output: 'html',
+    output: 'htmlAndMathml',
     throwOnError: false
   };
 
@@ -42,7 +42,7 @@
       if (end === -1) { out += str.slice(next); break; }
       var rawTex = decodeEntities(str.slice(next + 2, end));
       try {
-        out += window.katex.renderToString(rawTex, { displayMode: mode !== 1, output: 'html', throwOnError: false });
+        out += window.katex.renderToString(rawTex, { displayMode: mode !== 1, output: 'htmlAndMathml', throwOnError: false });
       } catch (e) {
         out += str.slice(next, end + 2);
       }

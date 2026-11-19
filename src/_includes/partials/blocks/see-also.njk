@@ -5,4 +5,5 @@
   English-only in every real instance found — no bilingual macro needed.
   Expects: block (the seeAlso object)
 #}
-<div class="see-also"><strong>&#128279; See also:</strong> {% for link in block.links %}<a href="#" onclick="goChapter('{{ link.chapterId }}','{{ link.trackId }}');return false">{{ link.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</div>
+{% set _saAr = (pageLocale == 'ar') or isRtl %}
+<div class="see-also"><strong>&#128279; {{ 'انظر أيضًا:' if _saAr else 'See also:' }}</strong> {% for link in block.links %}<a href="{{ ('/ar/' if _saAr else '/') + link.trackId + '/' + link.chapterId + '/' }}">{{ link.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</div>

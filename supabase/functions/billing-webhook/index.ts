@@ -143,14 +143,29 @@ export interface PlanMutation {
   currency: string;
 }
 
-export function normalizeStripeEvent(evt: Record<string, unknown>, nowMs = Date.now()): PlanMutation | null {
+export function normalizeStripeEvent(
+  evt: Record<string, unknown>,
+  nowMs = Date.now(),
+  fallbackUserId?: string | null,
+): PlanMutation | null {
   const eventId = String(evt.id || "").trim();
   const eventType = String(evt.type || "").trim();
   const dataObj = ((evt.data as Record<string, unknown>)?.object || {}) as Record<string, unknown>;
   if (!eventId || !eventType) return null;
 
   const meta = (dataObj.metadata || {}) as Record<string, unknown>;
-  const rawUid = String(dataObj.client_reference_id || meta.user_id || "").trim();
+  const subDetailsMeta = ((dataObj.subscription_details as Record<string, unknown>)?.metadata || {}) as Record<string, unknown>;
+  const parentSubMeta = (((dataObj.parent as Record<string, unknown>)?.subscription_details as Record<string, unknown>)?.metadata || {}) as Record<string, unknown>;
+  const firstLineMeta = ((((dataObj.lines as Record<string, unknown>)?.data as Array<Record<string, unknown>>)?.[0]?.metadata) || {}) as Record<string, unknown>;
+  const rawUid = String(
+    dataObj.client_reference_id ||
+    meta.user_id ||
+    subDetailsMeta.user_id ||
+    parentSubMeta.user_id ||
+    firstLineMeta.user_id ||
+    fallbackUserId ||
+    "",
+  ).trim();
   if (!UUID_RE.test(rawUid)) return null;
 
   const customerId = typeof dataObj.customer === "string" ? dataObj.customer : null;
@@ -290,8 +305,10 @@ export function normalizeMoyasarEvent(evt: Record<string, unknown>, nowMs = Date
 }
 
 export interface BillingDbAdapter {
+  hasProcessedWebhookEvent?(eventId: string): Promise<boolean>;
   recordWebhookEventIfNew(mutation: PlanMutation): Promise<boolean>;
   upsertUserPlan(mutation: PlanMutation): Promise<void>;
+  findUserIdByExternalRef?(customerId: string | null, subId: string | null): Promise<string | null>;
   getUserFromJwt(jwt: string): Promise<{ id: string; email?: string } | null>;
   getUserPlan(userId: string): Promise<Record<string, unknown> | null>;
 }
@@ -305,6 +322,16 @@ function createSupabaseRestAdapter(supabaseUrl: string, serviceRoleKey: string):
   };
 
   return {
+    async hasProcessedWebhookEvent(eventId: string): Promise<boolean> {
+      const res = await fetch(
+        `${baseUrl}/rest/v1/billing_webhook_events?event_id=eq.${encodeURIComponent(eventId)}&select=event_id&limit=1`,
+        { headers: adminHeaders },
+      );
+      if (!res.ok) return false;
+      const rows = await res.json();
+      return Array.isArray(rows) && rows.length > 0;
+    },
+
     async recordWebhookEventIfNew(m: PlanMutation): Promise<boolean> {
       const res = await fetch(`${baseUrl}/rest/v1/billing_webhook_events`, {
         method: "POST",
@@ -367,6 +394,30 @@ function createSupabaseRestAdapter(supabaseUrl: string, serviceRoleKey: string):
       if (!res.ok) return null;
       const rows = await res.json();
       return Array.isArray(rows) && rows[0] ? rows[0] : null;
+    },
+
+    async findUserIdByExternalRef(customerId: string | null, subId: string | null): Promise<string | null> {
+      if (subId) {
+        const res = await fetch(
+          `${baseUrl}/rest/v1/ai_plans?external_sub_id=eq.${encodeURIComponent(subId)}&select=user_id&limit=1`,
+          { headers: adminHeaders },
+        );
+        if (res.ok) {
+          const rows = await res.json();
+          if (Array.isArray(rows) && rows[0]?.user_id) return String(rows[0].user_id);
+        }
+      }
+      if (customerId) {
+        const res = await fetch(
+          `${baseUrl}/rest/v1/ai_plans?external_customer_id=eq.${encodeURIComponent(customerId)}&select=user_id&limit=1`,
+          { headers: adminHeaders },
+        );
+        if (res.ok) {
+          const rows = await res.json();
+          if (Array.isArray(rows) && rows[0]?.user_id) return String(rows[0].user_id);
+        }
+      }
+      return null;
     },
   };
 }
@@ -549,6 +600,19 @@ export async function handleBillingRequest(
       return jsonResp(400, { error: "Malformed JSON webhook body" });
     }
     mutation = normalizeStripeEvent(parsed);
+    if (!mutation && db.findUserIdByExternalRef) {
+      const dataObj = ((parsed.data as Record<string, unknown>)?.object || {}) as Record<string, unknown>;
+      const customerId = typeof dataObj.customer === "string" ? dataObj.customer : null;
+      const subId = typeof dataObj.subscription === "string"
+        ? dataObj.subscription
+        : (typeof dataObj.id === "string" && String(parsed.type || "").startsWith("customer.subscription.") ? dataObj.id : null);
+      if (customerId || subId) {
+        const lookedUpUid = await db.findUserIdByExternalRef(customerId, subId);
+        if (lookedUpUid) {
+          mutation = normalizeStripeEvent(parsed, Date.now(), lookedUpUid);
+        }
+      }
+    }
   } else if (moyasarSig || queryProvider === "moyasar") {
     const check = await verifyMoyasarSignature(rawBody, moyasarSig, env.MOYASAR_WEBHOOK_SECRET || "");
     if (!check.valid) {
@@ -569,12 +633,23 @@ export async function handleBillingRequest(
     return jsonResp(200, { ok: true, ignored: true });
   }
 
-  const isNew = await db.recordWebhookEventIfNew(mutation);
-  if (!isNew) {
-    return jsonResp(200, { ok: true, duplicate: true, eventId: mutation.eventId });
+  // Check prior processing BEFORE mutating; record idempotency marker AFTER
+  // upsertUserPlan succeeds so transient DB errors are safely retried by Stripe/Moyasar.
+  if (db.hasProcessedWebhookEvent) {
+    const alreadyDone = await db.hasProcessedWebhookEvent(mutation.eventId);
+    if (alreadyDone) {
+      return jsonResp(200, { ok: true, duplicate: true, eventId: mutation.eventId });
+    }
+    await db.upsertUserPlan(mutation);
+    await db.recordWebhookEventIfNew(mutation);
+  } else {
+    await db.upsertUserPlan(mutation);
+    const isNew = await db.recordWebhookEventIfNew(mutation);
+    if (!isNew) {
+      return jsonResp(200, { ok: true, duplicate: true, eventId: mutation.eventId });
+    }
   }
 
-  await db.upsertUserPlan(mutation);
   return jsonResp(200, {
     ok: true,
     provisioned: true,

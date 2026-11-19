@@ -124,7 +124,7 @@
   var FORMS_EXPLAIN = '<p>ClipSAT will ask Google for permission to create a Google Form in your account with these questions, and to save the rendered question images it generates to your Google Drive (only files ClipSAT itself creates — nothing else in your Drive is touched). ClipSAT never sees or stores your Google password, and everything happens directly from your browser — nothing passes through a ClipSAT server.</p>'
     + '<div style="margin-top:14px; padding:12px; background:var(--panel, #f8fafc); border:1px solid var(--line, #e2e8f0); border-radius:8px;">'
     + '<label style="display:flex; align-items:flex-start; gap:8px; font-size:0.86rem; cursor:pointer; user-select:none; line-height:1.4;">'
-    + '<input type="checkbox" id="cs-gform-consent-check" style="margin-top:2px" checked>'
+    + '<input type="checkbox" id="cs-gform-consent-check" style="margin-top:2px">'
     + '<span><strong>Image Visibility Consent:</strong> Google Forms requires math diagrams stored in your Drive to be link-viewable so Google Forms can display them to students. Check this to allow setting generated math images to link-viewable. If unchecked, files remain strictly private/restricted to your account (forms may not display diagrams to students).</span>'
     + '</label></div>';
 

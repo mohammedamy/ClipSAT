@@ -288,10 +288,12 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
     });
     var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
+    var _origin=(typeof location!=='undefined'&&location.origin)?location.origin:'https://clipsat.org';
     var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ClipSAT Quiz Results</title>'
-      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
-      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
-      +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
+      +'<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'
+      +'<script src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'
+      +'<script src="'+_origin+'/vendor/katex/auto-render.min.js"><\/script>'
+      +'<script src="'+_origin+'/js/katex-runtime.js"><\/script>'
       +'<style>@page{margin:20mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;padding:8pt 0 10pt;display:flex;align-items:center;justify-content:space-between;margin-bottom:18pt}'
       +'.hdr-brand{display:flex;align-items:center;gap:9pt}'

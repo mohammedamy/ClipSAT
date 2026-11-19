@@ -737,11 +737,15 @@
       });
       state.questions.forEach(function(q, qi) {
         if (q && q.id) {
+          var dwell = (state.dwellMs && state.dwellMs[qi]) || 0;
           window.ClipSATAnalytics.track('item_calibration', {
             item_id: q.id,
             track: state.trackId,
+            correct: !!outcomesArr[qi],
             is_correct: outcomesArr[qi] ? 1 : 0,
-            dwell_ms: (state.dwellMs && state.dwellMs[qi]) || 0,
+            dwell_ms: dwell,
+            rapid_guess: dwell > 0 && dwell < 3500,
+            theta_est: eap.theta,
             theta_bucket: Math.round(eap.theta * 2) / 2
           });
         }

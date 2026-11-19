@@ -498,38 +498,46 @@ window.CSGradebook = (function(){
     lines.forEach(function(line){
       var trimmed = line.trim();
       if(!trimmed) return;
-      var codeMatch = /(CLIP-[A-Z0-9]+-\d+OF\d+-[A-F0-9]{4})/i.exec(trimmed);
+      var verifiedMatch = /(CS-VERIFIED-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-[A-F0-9]{16})/i.exec(trimmed);
+      var codeMatch = verifiedMatch || /(CLIP-[A-Z0-9]+-\d+OF\d+-[A-F0-9]{4})/i.exec(trimmed);
       if(!codeMatch) return;
       idx++;
       var code = codeMatch[1].toUpperCase();
-      var v = verifyCode(code);
+      var v;
+      if(verifiedMatch){
+        var scoreM = /(\d+)\s*\/\s*(\d+)/.exec(trimmed);
+        var sc = scoreM ? parseInt(scoreM[1], 10) : 0;
+        var tot = scoreM ? parseInt(scoreM[2], 10) : 0;
+        var trM = /\b(SAT|ACT2L2|ACT2|ACT|EST2L2|EST2|EST|QUDRAT|TAHSILI|GATEN|APAB|APBC|APPC|APSTATS|IGCSE|EDEXCEL|ADDMATH|ASLEVEL|A2LEVEL|IBSL|IBHL|OLYMPIAD|ALGEBRA|ALG2|GEO|PRECALC|CALCULUS|MVC|LINALG|ODES|MATHAI)\b/i.exec(trimmed);
+        v = {
+          valid: true,
+          serverVerified: true,
+          track: trM ? trM[1].toLowerCase() : (window.CLIPSAT_TRACK || 'math'),
+          score: sc,
+          total: tot || 10,
+          pct: tot > 0 ? Math.round((sc / tot) * 100) : 0
+        };
+      } else {
+        v = verifyCode(code);
+      }
       /* Extract student name before code or pipe */
       var before = trimmed.slice(0, codeMatch.index).replace(/[\s|,\-:]+$/, '').trim();
       var after = trimmed.slice(codeMatch.index + code.length).replace(/^[\s|,\-:]+/, '').trim();
       var name = before || ('Student #' + idx);
-      /* Extract missed questions e.g. Q2, Q5 or Missed: 2, 5 */
+      /* Extract ONLY explicitly reported missed questions (never fabricate misses from name hashes) */
       var missed = [];
-      var qMatches = after.match(/Q?\d+/gi) || [];
+      var missedPart = /missed\s*:?\s*([^|;\n]+)/i.exec(after);
+      var qMatches = (missedPart ? missedPart[1] : after).match(/Q\d+/gi) || (missedPart ? (missedPart[1].match(/\d+/g) || []) : []);
       qMatches.forEach(function(qm){
         var qNum = parseInt(qm.replace(/^Q/i, ''), 10);
         if(qNum >= 1 && qNum <= (v.total || 50) && missed.indexOf(qNum) === -1) missed.push(qNum);
       });
-      /* If student missed questions but didn't list specific Q numbers, infer deterministic slots from name+code for item heatmap */
-      var missCount = Math.max(0, (v.total || 0) - (v.score || 0));
-      if(missed.length === 0 && missCount > 0 && v.total > 0){
-        var seed = 0;
-        for(var c = 0; c < name.length; c++) seed = (seed * 31 + name.charCodeAt(c)) % 997;
-        for(var mIdx = 0; mIdx < missCount; mIdx++){
-          var qSlot = ((seed + mIdx * 3 + 1) % v.total) + 1;
-          if(missed.indexOf(qSlot) !== -1) qSlot = (qSlot % v.total) + 1;
-          missed.push(qSlot);
-        }
-        missed.sort(function(a,b){ return a - b; });
-      }
+      missed.sort(function(a,b){ return a - b; });
       out.push({
         name: name,
         code: code,
         valid: !!v.valid,
+        serverVerified: !!v.serverVerified,
         track: (v.track || 'math').toUpperCase(),
         score: v.score || 0,
         total: v.total || 10,
@@ -721,8 +729,12 @@ window.CSGradebook = (function(){
       + '<div id="cs-gb-results"></div>'
       + '</div>';
     document.body.appendChild(ov);
-    document.getElementById('cs-gb-input').value = generateSampleRoster();
-    _renderAnalysis();
+    var resEl = document.getElementById('cs-gb-results');
+    if (resEl) {
+      resEl.innerHTML = '<p style="font-size:13px;color:var(--muted,#64748b);text-align:center;padding:18px 8px">'
+        + (ar ? 'الصق رموز طلابك أعلاه ثم اضغط «تحليل درجات الفصل»، أو اضغط «تحميل فصل تجريبي» للمعاينة.' : 'Paste student codes above and click "Analyze Class Roster", or click "Load Sample Class" to preview.')
+        + '</p>';
+    }
   }
 
   return {

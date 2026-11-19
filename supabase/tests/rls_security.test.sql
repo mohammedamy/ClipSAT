@@ -14,7 +14,7 @@
 
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(24);
+select plan(28);
 
 -- ── 1. Structural RLS assertion across all public tables ──────────────────────
 select is(
@@ -69,6 +69,18 @@ select throws_ok(
 );
 
 select throws_ok(
+  $$select public.use_tts_quota('aaaaaaaa-0000-4000-8000-000000000001'::uuid, 60, 1, 10)$$,
+  null,
+  'anon cannot execute internal use_tts_quota RPC'
+);
+
+select throws_ok(
+  $$select public.refund_ai_quota('aaaaaaaa-0000-4000-8000-000000000001'::uuid, 1)$$,
+  null,
+  'anon cannot execute internal refund_ai_quota RPC'
+);
+
+select throws_ok(
   $$select public.report_question_error('flag-1', 'sat')$$,
   null,
   'anon cannot execute report_question_error RPC'
@@ -116,6 +128,23 @@ select lives_ok(
   $$select * from public.join_class_by_code('SAT99A', 'Ali', true)$$,
   'join_class_by_code succeeds when student grants explicit consent'
 );
+
+select is(
+  (select count(*)::int from public.classes where id = 'dddddddd-0000-4000-8000-000000000004'),
+  1,
+  'enrolled student_a CAN read joined class row in public.classes (zero RLS recursion)'
+);
+
+-- Verify non-member student_b CANNOT read SAT Prep Sec 1
+select set_config('request.jwt.claim.sub', 'bbbbbbbb-0000-4000-8000-000000000002', true);
+select set_config('request.jwt.claims', '{"sub":"bbbbbbbb-0000-4000-8000-000000000002","role":"authenticated"}', true);
+select is(
+  (select count(*)::int from public.classes where id = 'dddddddd-0000-4000-8000-000000000004'),
+  0,
+  'non-member student_b CANNOT read classes they have not joined'
+);
+select set_config('request.jwt.claim.sub', 'aaaaaaaa-0000-4000-8000-000000000001', true);
+select set_config('request.jwt.claims', '{"sub":"aaaaaaaa-0000-4000-8000-000000000001","role":"authenticated"}', true);
 
 -- Student submits verified assignment via RPC; direct forged INSERT must fail
 select throws_ok(

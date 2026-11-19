@@ -302,8 +302,8 @@ window.CSDailyPlan = (function(){
     }
     if(window.Mastery && typeof window.Mastery.startMistakeQuiz === 'function' && window.ML && window.ML.getAll().length){
       window.Mastery.startMistakeQuiz();
-    } else if(typeof window.startAdaptiveDiagnostic === 'function'){
-      window.startAdaptiveDiagnostic(window.CLIPSAT_TRACK || 'sat');
+    } else if(typeof window.openDiagnosticTest === 'function'){
+      window.openDiagnosticTest(window.CLIPSAT_TRACK || 'sat');
     }
   }
 
@@ -504,8 +504,8 @@ window.CSTwinProblem = (function(){
       return;
     }
     var uid = 'twin-' + (++_seq);
-    var hints = (window.CSHintEngine && typeof window.CSHintEngine.getHints === 'function')
-      ? window.CSHintEngine.getHints(q)
+    var hints = (window.CSHintEngine && typeof window.CSHintEngine.buildHints === 'function')
+      ? window.CSHintEngine.buildHints(q)
       : (Array.isArray(q.hints) && q.hints.length ? q.hints : [
           ar ? 'حدد المعطيات والمطلوب في المسألة أولًا.' : 'Identify the given quantities and target expression first.',
           ar ? 'طبّق نفس القاعدة المستخدمة في المثال المحلول أعلاه.' : 'Apply the same formula or method shown in the worked example above.',
@@ -704,7 +704,9 @@ window.CSTwinProblem = (function(){
     if(!val) return;
     var expected = String(st.q.answer != null ? st.q.answer : (st.q.correct || '')).trim();
     var isCorrect = false;
-    if(window.CSAnswerCheck && typeof window.CSAnswerCheck.check === 'function'){
+    if(window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function'){
+      isCorrect = window.ClipSATAnswerCheck.equivalent(val, expected);
+    } else if(window.CSAnswerCheck && typeof window.CSAnswerCheck.check === 'function'){
       isCorrect = window.CSAnswerCheck.check(val, expected);
     } else {
       isCorrect = (val === expected || parseFloat(val) === parseFloat(expected));
