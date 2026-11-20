@@ -202,6 +202,13 @@ function checkItem(q, push) {
       push('error', `legacy shadow field "${sf}" present`);
     }
   }
+  if (q.topic_id) {
+    if (!q.subskill_id || !String(q.subskill_id).trim()) {
+      push('error', `missing subskill_id for topic_id "${q.topic_id}"`);
+    } else if (!String(q.subskill_id).startsWith(`${q.topic_id}-`)) {
+      push('error', `subskill_id "${q.subskill_id}" does not match topic_id "${q.topic_id}"`);
+    }
+  }
   const stem = q.text;
   const isFrq = q.type === 'frq' || q.type === 'spr' || q.type === 'structured' || q.type === 'proof';
   if (!stem || !String(stem).trim()) push('error', 'missing stem');

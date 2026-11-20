@@ -3,12 +3,6 @@
    ══════════════════════════════════════════════════════════════════ */
 (function(){
 
-/* ── Get MathJax CDN src ── */
-var _mjSrc = (function(){
-  var scripts = document.querySelectorAll('script[src*="mathjax"]');
-  return scripts.length ? scripts[0].src : 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js';
-})();
-
 /* ── Retrieve course label from nav or active view ── */
 function _getCourseLabel() {
   var treeLbl = document.getElementById('navTreeLabel');

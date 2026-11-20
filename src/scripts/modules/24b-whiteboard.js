@@ -516,6 +516,8 @@
 
     _updateToolbarState: function() {
       var hasUndo = !!(this._wbOverlay && this._wbOverlay.undo.length > 0);
+      var aiBtn = document.getElementById('wbAiCheckBtn');
+      if (aiBtn) aiBtn.disabled = !hasUndo;
       var undoBtn = document.getElementById('wbUndoBtn');
       if (undoBtn) undoBtn.disabled = !hasUndo;
       var gridBtn = document.getElementById('wbGridBtn');
@@ -531,6 +533,48 @@
         nlBtn.setAttribute('aria-pressed', nlOn ? 'true' : 'false');
       }
       this._updateSizeDot();
+    },
+
+    captureScratchpadDataUrl: function() {
+      var entry = this._wbOverlay;
+      if (!entry || !entry.canvas || !entry.strokes || !entry.strokes.length) return null;
+      var src = entry.canvas;
+      var w = src.width || src.clientWidth || 1200;
+      var h = src.height || src.clientHeight || 800;
+      if (w <= 0 || h <= 0) return null;
+      var maxDim = 1600;
+      if (w > maxDim || h > maxDim) {
+        if (w >= h) { h = Math.max(1, Math.round(h * (maxDim / w))); w = maxDim; }
+        else { w = Math.max(1, Math.round(w * (maxDim / h))); h = maxDim; }
+      }
+      var off = document.createElement('canvas');
+      off.width = w;
+      off.height = h;
+      var ctx = off.getContext('2d');
+      if (!ctx) return null;
+      var isDark = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+      ctx.fillStyle = isDark ? '#0f172a' : '#ffffff';
+      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(src, 0, 0, w, h);
+      return off.toDataURL('image/jpeg', 0.88);
+    },
+
+    checkScratchpadWithAI: function() {
+      var dataUrl = this.captureScratchpadDataUrl();
+      if (!dataUrl) return false;
+      if (this.wbActive) this.toggleWhiteboard();
+      var ar = !!(document.documentElement && (document.documentElement.lang === 'ar' || document.body.classList.contains('rtl')));
+      var prompt = ar
+        ? 'راجع خطوات حلي المكتوبة على السبورة في هذه الصورة، واذكر ما أصبتُ فيه وأرشدني بلطف لأي خطأ أو الخطوة التالية.'
+        : 'Please review my handwritten math work from the scratchpad image. Tell me what I got right and gently guide me through any mistake or next step.';
+      if (typeof window.openChatWithImage === 'function') {
+        return window.openChatWithImage(prompt, dataUrl, 'scratchpad-work.jpg');
+      }
+      if (typeof window.openChatWith === 'function') {
+        window.openChatWith(prompt);
+        return true;
+      }
+      return false;
     },
 
     _ensureToolbar: function() {
@@ -644,6 +688,12 @@
 
       var actionGroup = document.createElement('div');
       actionGroup.className = 'wb-group';
+      var aiBtn = document.createElement('button');
+      aiBtn.type = 'button'; aiBtn.className = 'wb-mode-btn wb-ai-btn'; aiBtn.id = 'wbAiCheckBtn';
+      aiBtn.textContent = ar ? '🤖 راجع حلي' : '🤖 Check work';
+      aiBtn.title = ar ? 'إرسال السبورة للمعلم الذكي لمراجعة خطواتك' : 'Send scratchpad to AI Tutor to check your work';
+      aiBtn.disabled = true;
+      aiBtn.onclick = function() { self.checkScratchpadWithAI(); };
       var undoBtn = document.createElement('button');
       undoBtn.type = 'button'; undoBtn.className = 'wb-undo-btn'; undoBtn.id = 'wbUndoBtn';
       undoBtn.textContent = ar ? '↺ تراجع' : '↺ Undo';
@@ -661,6 +711,7 @@
       closeBtn.textContent = ar ? '✕ إغلاق' : '✕ Close';
       closeBtn.title = ar ? 'إغلاق المسودة (Esc)' : 'Close scratchpad (Esc)';
       closeBtn.onclick = function() { self.toggleWhiteboard(); };
+      actionGroup.appendChild(aiBtn);
       actionGroup.appendChild(undoBtn);
       actionGroup.appendChild(clearBtn);
       actionGroup.appendChild(closeBtn);

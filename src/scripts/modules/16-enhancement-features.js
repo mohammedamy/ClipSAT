@@ -86,6 +86,12 @@
       item.classList.add('_dg_counted');
       _recordAnswer(Boolean(ev.detail.isRight));
     }
+    if (item) {
+      var solBox = item.querySelector('.cq-sol-box');
+      if (solBox && !solBox.querySelector('.btn-ai-explain')) {
+        solBox.appendChild(_buildExplainStepBtn());
+      }
+    }
   });
 
   /* ── 62: MASTERY MODULE (window.Mastery) ── */
@@ -944,6 +950,32 @@ function _initPracticeSetChecks(){
   });
 }
 
+function _buildExplainStepBtn(){
+  var ar = (document.documentElement && document.documentElement.lang === 'ar') || (document.body && document.body.classList.contains('rtl'));
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'btn-ai-explain no-print';
+  b.textContent = ar ? '🤖 اشرح هذه الخطوة' : '🤖 Explain this step';
+  b.title = ar ? 'اطلب من المعلم الذكي شرح خطوات الحل' : 'Ask ClipSAT AI Tutor to explain why this step works';
+  b.setAttribute('aria-label', ar ? 'اشرح هذه الخطوة بالذكاء الاصطناعي' : 'Ask AI Tutor to explain this step');
+  b.addEventListener('click', function () {
+    if (typeof window.askAiExplainStep === 'function') {
+      window.askAiExplainStep(b);
+    } else if (typeof window.openChatWith === 'function') {
+      window.openChatWith(ar ? 'اشرح لي خطوات هذا الحل.' : 'Explain why each step of this solution works.');
+    }
+  });
+  return b;
+}
+
+function _injectExplainStepButtons(){
+  if(typeof document === 'undefined') return;
+  document.querySelectorAll('.we-card .we-actions, .problem .ps-item-actions').forEach(function(actions){
+    if(actions.querySelector('.btn-ai-explain')) return;
+    actions.appendChild(_buildExplainStepBtn());
+  });
+}
+
 function _renderDeferredChrome(){
   _renderCountdown();
   _renderDailyGoal();
@@ -951,8 +983,9 @@ function _renderDeferredChrome(){
   _injectNoteButtons();
   _renderAccBadges();
   _initPracticeSetChecks();
+  _injectExplainStepButtons();
   document.addEventListener('clipsat:view-change', function(){
-    setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();_initPracticeSetChecks();},200);
+    setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();_initPracticeSetChecks();_injectExplainStepButtons();},200);
   });
 }
 if(document.readyState!=='loading') _renderDeferredChrome();

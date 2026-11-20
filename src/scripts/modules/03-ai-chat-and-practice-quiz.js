@@ -596,6 +596,76 @@
       window.openChatWith(prompt);
     }
   };
+
+  window.openChatWithImage=function(prompt, dataUrl, filename, opts){
+    if(!_chatUIReady || !dataUrl || typeof dataUrl !== 'string') return false;
+    var m = /^data:(image\/[a-z0-9.+-]+);base64,(.+)$/i.exec(dataUrl.trim());
+    if(!m) return false;
+    var mime = m[1].toLowerCase();
+    var b64 = m[2];
+    if(!b64) return false;
+    var isAr = !!(window.CSItemLocale && window.CSItemLocale.isAr());
+    openPanel();
+    setAttachment({
+      type: 'image',
+      mime_type: mime,
+      data: b64,
+      filename: filename || 'scratchpad.jpg',
+      subtitle: isAr
+        ? 'لقطة السبورة جاهزة — اضغط إرسال أو أضف ملاحظة'
+        : 'Scratchpad snapshot ready — press Send or add a note',
+      previewUrl: dataUrl
+    });
+    if(input){
+      input.value = prompt || (isAr
+        ? 'راجع خطوات حلي في هذه الصورة، واذكر ما أصبتُ فيه وأرشدني بلطف لأي خطأ أو خطوة تالية.'
+        : 'Please review my handwritten math work in this image. Tell me what is right and gently guide me on any mistake or next step.');
+      input.style.height = 'auto';
+      input.style.height = Math.min(120, input.scrollHeight) + 'px';
+      input.focus();
+    }
+    if(opts && opts.autoSend === true){
+      setTimeout(function(){ sendMsg(); }, 150);
+    }
+    return true;
+  };
+
+  function _extractCleanMathText(el){
+    if(!el) return '';
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll('.btn-ai-explain, .btn-twin-prob, .btn-ex-graph, .cs-flag-btn, .cs-voice-btn, svg, mjx-assistive-mml, .mjx-assistive-mml, script, style').forEach(function(n){
+      n.remove();
+    });
+    return (clone.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  window.askAiExplainStep=function(btn){
+    var card = btn ? (btn.closest('.we-card') || btn.closest('.fcard') || btn.closest('.problem') || btn.closest('.cq-item') || btn.closest('.mock-q')) : null;
+    var isAr = !!(window.CSItemLocale && window.CSItemLocale.isAr());
+    var prompt = '';
+    if(card){
+      var probEl = card.querySelector('.we-problem, .problem-q, .cq-qt, .mq-text, p') || card;
+      var probText = _extractCleanMathText(probEl).replace(/Show solution|Problem\.|المسألة\./g, '').trim();
+      var solEl = card.querySelector('.we-solution-body, .solution, .cq-sol-box, .fep-sol-block, .quiz-sol');
+      var solText = _extractCleanMathText(solEl).replace(/Answer:|Mathematical Explanation:/g, '').trim();
+      if(isAr){
+        prompt = 'اشرح خطوات هذا الحل خطوة بخطوة، ووضّح لماذا ننتقل من كل خطوة إلى التي تليها وما القاعدة الرياضية المستخدمة:\n'
+          + 'المسألة: ' + probText.slice(0, 400)
+          + (solText ? '\nالحل: ' + solText.slice(0, 400) : '');
+      } else {
+        prompt = 'Explain why each step of this solution works and highlight the core mathematical rule used:\n'
+          + 'Problem: ' + probText.slice(0, 400)
+          + (solText ? '\nSolution: ' + solText.slice(0, 400) : '');
+      }
+    } else {
+      prompt = isAr
+        ? 'اشرح لي خطوات حل هذه المسألة خطوة بخطوة والقاعدة الرياضية المستخدمة.'
+        : 'Explain why each step of this solution works and highlight the core mathematical rule used.';
+    }
+    if(typeof window.openChatWith === 'function'){
+      window.openChatWith(prompt);
+    }
+  };
 /* ═══════════════════════════════════════════════════════════════
    PRACTICE QUIZ — AI-generated questions on the same trick, triggered by
    "Still unsure" in the mistakes review. The quiz itself lives in

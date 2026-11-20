@@ -37,7 +37,8 @@
     'clipsat_mistakes_v2', 'clipsat_srs_state', 'clipsat_visited', 'clipsat_accuracy_v1',
     'clipsat_xp', 'clipsat_streak', 'clipsat_exam_date',
     'clipsat_daily_goal', 'clipsat_dg_today', 'clipsat_dg_streak', 'clipsat_dg_last',
-    'clipsat_cbt_history', 'clipsat_custom_cards', 'clipsat_starred_cards', 'clipsat_badges'
+    'clipsat_cbt_history', 'clipsat_custom_cards', 'clipsat_starred_cards', 'clipsat_badges',
+    'clipsat_notes'
   ];
   var DELETED_MISTAKES_KEY = 'clipsat_mistakes_deleted_v1';
   var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
@@ -1142,9 +1143,17 @@
   }
 
   function fetchStudyData(uid) {
-    return sb.from('user_study_data').select('custom_cards,starred_cards,badges,updated_at')
+    return sb.from('user_study_data').select('custom_cards,starred_cards,badges,notes,updated_at')
       .eq('user_id', uid).maybeSingle()
       .then(function (res) {
+        if (res && res.error && /notes|column|42703|PGRST204/i.test(String(res.error.message || res.error.code || ''))) {
+          return sb.from('user_study_data').select('custom_cards,starred_cards,badges,updated_at')
+            .eq('user_id', uid).maybeSingle()
+            .then(function (fallbackRes) {
+              if (isMissingRelationError(fallbackRes)) return { data: null };
+              return fallbackRes;
+            });
+        }
         if (isMissingRelationError(res)) return { data: null };
         return res;
       }, function () { return { data: null }; });
@@ -1335,6 +1344,19 @@
       }
       if (changedBadges) safeSetItem(null, 'clipsat_badges', JSON.stringify(localBadges));
     }
+    if (row.notes && typeof row.notes === 'object' && !Array.isArray(row.notes)) {
+      var localNotes = safeParse('clipsat_notes', {});
+      if (!localNotes || typeof localNotes !== 'object' || Array.isArray(localNotes)) localNotes = {};
+      var changedNotes = false;
+      Object.keys(row.notes).forEach(function (chId) {
+        var cloudNote = row.notes[chId];
+        if (typeof cloudNote === 'string' && cloudNote.trim() && !localNotes[chId]) {
+          localNotes[chId] = cloudNote;
+          changedNotes = true;
+        }
+      });
+      if (changedNotes) safeSetItem(null, 'clipsat_notes', JSON.stringify(localNotes));
+    }
   }
 
   /* ── Delta Queue & Soft-Delete Mistake Tombstones (WP-26) ──────────────── */
@@ -1460,7 +1482,7 @@
         });
       } else if (key === 'clipsat_cbt_history') {
         _dirtyDelta.mockAttempts = true;
-      } else if (key === 'clipsat_custom_cards' || key === 'clipsat_starred_cards' || key === 'clipsat_badges') {
+      } else if (key === 'clipsat_custom_cards' || key === 'clipsat_starred_cards' || key === 'clipsat_badges' || key === 'clipsat_notes') {
         _dirtyDelta.studyData = true;
       } else if (WATCHED_KEYS.indexOf(key) !== -1) {
         _dirtyDelta.profiles = true;
@@ -1475,7 +1497,7 @@
         recordMistakeDiff(prevMistakes, []);
       } else if (key === 'clipsat_cbt_history') {
         _dirtyDelta.mockAttempts = true;
-      } else if (key === 'clipsat_custom_cards' || key === 'clipsat_starred_cards' || key === 'clipsat_badges') {
+      } else if (key === 'clipsat_custom_cards' || key === 'clipsat_starred_cards' || key === 'clipsat_badges' || key === 'clipsat_notes') {
         _dirtyDelta.studyData = true;
       } else if (WATCHED_KEYS.indexOf(key) !== -1) {
         _dirtyDelta.profiles = true;
@@ -1522,13 +1544,29 @@
     if (!starredCards || typeof starredCards !== 'object' || Array.isArray(starredCards)) starredCards = {};
     var badges = safeParse('clipsat_badges', {});
     if (!badges || typeof badges !== 'object') badges = {};
-    if (!customCards.length && !Object.keys(starredCards).length && !Object.keys(badges).length) return;
-    sb.from('user_study_data').upsert({
+    var notes = safeParse('clipsat_notes', {});
+    if (!notes || typeof notes !== 'object' || Array.isArray(notes)) notes = {};
+    if (!customCards.length && !Object.keys(starredCards).length && !Object.keys(badges).length && !Object.keys(notes).length) return;
+    var payload = {
       user_id: uid,
       custom_cards: customCards,
       starred_cards: starredCards,
       badges: badges,
+      notes: notes,
       updated_at: nowIso
+    };
+    sb.from('user_study_data').upsert(payload).then(function (res) {
+      if (res && res.error && /notes|column|42703|PGRST204/i.test(String(res.error.message || res.error.code || ''))) {
+        var legacyPayload = {
+          user_id: uid,
+          custom_cards: customCards,
+          starred_cards: starredCards,
+          badges: badges,
+          updated_at: nowIso
+        };
+        return sb.from('user_study_data').upsert(legacyPayload);
+      }
+      return res;
     }).then(function (res) {
       if (res && res.error && !isMissingRelationError(res)) {
         log('user_study_data push failed: ' + res.error.message);

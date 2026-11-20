@@ -1148,6 +1148,7 @@ create table if not exists public.user_study_data (
   custom_cards  jsonb not null default '[]'::jsonb check (octet_length(custom_cards::text) <= 262144),
   starred_cards jsonb not null default '{}'::jsonb check (octet_length(starred_cards::text) <= 65536),
   badges        jsonb not null default '[]'::jsonb check (octet_length(badges::text) <= 32768),
+  notes         jsonb not null default '{}'::jsonb constraint user_study_data_notes_size_chk check (octet_length(notes::text) <= 131072),
   updated_at    timestamptz not null default now()
 );
 alter table public.user_study_data enable row level security;
