@@ -36,7 +36,8 @@
   var WATCHED_KEYS = [
     'clipsat_mistakes_v2', 'clipsat_srs_state', 'clipsat_visited', 'clipsat_accuracy_v1',
     'clipsat_xp', 'clipsat_streak', 'clipsat_exam_date',
-    'clipsat_daily_goal', 'clipsat_dg_today', 'clipsat_dg_streak', 'clipsat_dg_last'
+    'clipsat_daily_goal', 'clipsat_dg_today', 'clipsat_dg_streak', 'clipsat_dg_last',
+    'clipsat_cbt_history', 'clipsat_custom_cards', 'clipsat_starred_cards', 'clipsat_badges'
   ];
   var DELETED_MISTAKES_KEY = 'clipsat_mistakes_deleted_v1';
   var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
@@ -1116,6 +1117,11 @@
   }
 
   /* ── Pull Cloud Data & Merge into localStorage (Tombstone-Aware) ───────── */
+  function isMissingRelationError(res) {
+    var msg = String((res && res.error && (res.error.message || res.error.code)) || '');
+    return /42P01|PGRST205|does not exist|schema cache/i.test(msg);
+  }
+
   function fetchActiveMistakes(uid) {
     return sb.from('mistakes').select('*').eq('user_id', uid).is('deleted_at', null)
       .then(function (res) {
@@ -1124,6 +1130,24 @@
         }
         return res;
       });
+  }
+
+  function fetchMockAttempts(uid) {
+    return sb.from('mock_exam_attempts').select('track,paper,score,total,pct,scaled,attempt_ts')
+      .eq('user_id', uid).order('attempt_ts', { ascending: false }).limit(30)
+      .then(function (res) {
+        if (isMissingRelationError(res)) return { data: [] };
+        return res;
+      }, function () { return { data: [] }; });
+  }
+
+  function fetchStudyData(uid) {
+    return sb.from('user_study_data').select('custom_cards,starred_cards,badges,updated_at')
+      .eq('user_id', uid).maybeSingle()
+      .then(function (res) {
+        if (isMissingRelationError(res)) return { data: null };
+        return res;
+      }, function () { return { data: null }; });
   }
 
   function pullAndMerge() {
@@ -1135,13 +1159,17 @@
       fetchActiveMistakes(uid),
       sb.from('srs_state').select('*').eq('user_id', uid),
       sb.from('chapter_visits').select('*').eq('user_id', uid),
-      sb.from('accuracy').select('*').eq('user_id', uid)
+      sb.from('accuracy').select('*').eq('user_id', uid),
+      fetchMockAttempts(uid),
+      fetchStudyData(uid)
     ]).then(function (results) {
       mergeProfile(results[0] && results[0].data);
       mergeMistakes((results[1] && results[1].data) || []);
       mergeSrsState((results[2] && results[2].data) || []);
       mergeVisits((results[3] && results[3].data) || []);
       mergeAccuracy((results[4] && results[4].data) || []);
+      mergeMockAttempts((results[5] && results[5].data) || []);
+      mergeStudyData(results[6] && results[6].data);
       log('pulled + merged cloud data for ' + uid);
     })['catch'](function (e) { log('pull failed: ' + (e && e.message)); });
   }
@@ -1222,6 +1250,93 @@
     safeSetItem(null, 'clipsat_accuracy_v1', JSON.stringify(local));
   }
 
+  function mergeMockAttempts(rows) {
+    if (!rows || !rows.length) return;
+    var local = safeParse('clipsat_cbt_history', []);
+    if (!Array.isArray(local)) local = [];
+    var byKey = {};
+    local.forEach(function (h) {
+      if (!h || !h.track || !h.ts) return;
+      byKey[String(h.track) + '|' + String(h.ts)] = h;
+    });
+    rows.forEach(function (r) {
+      if (!r || !r.track || !r.attempt_ts) return;
+      var k = String(r.track) + '|' + String(r.attempt_ts);
+      if (!byKey[k]) {
+        byKey[k] = {
+          track: r.track,
+          paper: r.paper || '',
+          score: Number(r.score || 0),
+          total: Number(r.total || 0),
+          pct: Number(r.pct || 0),
+          scaled: r.scaled || '',
+          ts: Number(r.attempt_ts)
+        };
+      }
+    });
+    var merged = objectValues(byKey).sort(function (a, b) {
+      return Number(b.ts || 0) - Number(a.ts || 0);
+    }).slice(0, 30);
+    safeSetItem(null, 'clipsat_cbt_history', JSON.stringify(merged));
+  }
+
+  function mergeStudyData(row) {
+    if (!row || typeof row !== 'object') return;
+    if (Array.isArray(row.custom_cards) && row.custom_cards.length) {
+      var localCards = safeParse('clipsat_custom_cards', []);
+      if (!Array.isArray(localCards)) localCards = [];
+      var cardMap = {};
+      localCards.forEach(function (c) { if (c && c.id) cardMap[c.id] = c; });
+      row.custom_cards.forEach(function (c) {
+        if (!c || !c.id) return;
+        var cur = cardMap[c.id];
+        if (!cur || Number(c.createdAt || 0) > Number(cur.createdAt || 0)) {
+          cardMap[c.id] = c;
+        }
+      });
+      safeSetItem(null, 'clipsat_custom_cards', JSON.stringify(objectValues(cardMap)));
+    }
+    if (row.starred_cards && typeof row.starred_cards === 'object' && !Array.isArray(row.starred_cards)) {
+      var localStars = safeParse('clipsat_starred_cards', {});
+      if (!localStars || typeof localStars !== 'object' || Array.isArray(localStars)) localStars = {};
+      var starKeys = Object.keys(row.starred_cards);
+      if (starKeys.length) {
+        starKeys.forEach(function (k) {
+          if (row.starred_cards[k]) localStars[k] = true;
+        });
+        safeSetItem(null, 'clipsat_starred_cards', JSON.stringify(localStars));
+      }
+    }
+    if (row.badges) {
+      var localBadges = safeParse('clipsat_badges', {});
+      if (Array.isArray(localBadges)) {
+        var normLocal = {};
+        localBadges.forEach(function (b) { if (typeof b === 'string' && b) normLocal[b] = Date.now(); });
+        localBadges = normLocal;
+      } else if (!localBadges || typeof localBadges !== 'object') {
+        localBadges = {};
+      }
+      var changedBadges = false;
+      if (Array.isArray(row.badges)) {
+        row.badges.forEach(function (b) {
+          var bid = typeof b === 'string' ? b : (b && b.id);
+          if (bid && !localBadges[bid]) {
+            localBadges[bid] = Date.now();
+            changedBadges = true;
+          }
+        });
+      } else if (typeof row.badges === 'object') {
+        Object.keys(row.badges).forEach(function (bid) {
+          if (row.badges[bid] && !localBadges[bid]) {
+            localBadges[bid] = row.badges[bid];
+            changedBadges = true;
+          }
+        });
+      }
+      if (changedBadges) safeSetItem(null, 'clipsat_badges', JSON.stringify(localBadges));
+    }
+  }
+
   /* ── Delta Queue & Soft-Delete Mistake Tombstones (WP-26) ──────────────── */
   var _dirtyDelta = {
     profiles: false,
@@ -1229,7 +1344,9 @@
     deletedMistakeIds: {},
     srsIds: {},
     visitTracks: {},
-    accuracyBuckets: {}
+    accuracyBuckets: {},
+    mockAttempts: false,
+    studyData: false
   };
 
   function _resetDeltaQueue() {
@@ -1239,6 +1356,8 @@
     _dirtyDelta.srsIds = {};
     _dirtyDelta.visitTracks = {};
     _dirtyDelta.accuracyBuckets = {};
+    _dirtyDelta.mockAttempts = false;
+    _dirtyDelta.studyData = false;
   }
 
   function _upsertMistakeTombstones(uid, idsToDelete, deletedMap, currentIds, nowIso) {
@@ -1339,6 +1458,10 @@
             });
           });
         });
+      } else if (key === 'clipsat_cbt_history') {
+        _dirtyDelta.mockAttempts = true;
+      } else if (key === 'clipsat_custom_cards' || key === 'clipsat_starred_cards' || key === 'clipsat_badges') {
+        _dirtyDelta.studyData = true;
       } else if (WATCHED_KEYS.indexOf(key) !== -1) {
         _dirtyDelta.profiles = true;
       }
@@ -1350,6 +1473,10 @@
       if (key === 'clipsat_mistakes_v2') {
         var prevMistakes = safeParse('clipsat_mistakes_v2', []);
         recordMistakeDiff(prevMistakes, []);
+      } else if (key === 'clipsat_cbt_history') {
+        _dirtyDelta.mockAttempts = true;
+      } else if (key === 'clipsat_custom_cards' || key === 'clipsat_starred_cards' || key === 'clipsat_badges') {
+        _dirtyDelta.studyData = true;
       } else if (WATCHED_KEYS.indexOf(key) !== -1) {
         _dirtyDelta.profiles = true;
       }
@@ -1363,6 +1490,52 @@
     pushTimer = setTimeout(pushDelta, 4000);
   }
 
+  function pushMockAttempts(uid) {
+    var hist = safeParse('clipsat_cbt_history', []);
+    if (!Array.isArray(hist) || !hist.length) return;
+    var rows = [];
+    hist.slice(0, 30).forEach(function (h) {
+      if (!h || !h.track || !h.total || h.total <= 0 || h.total > 500 || !h.ts) return;
+      rows.push({
+        user_id: uid,
+        attempt_ts: Number(h.ts),
+        track: String(h.track),
+        paper: String(h.paper || ''),
+        score: Number(h.score || 0),
+        total: Math.round(Number(h.total)),
+        pct: Math.min(100, Math.max(0, Math.round(Number(h.pct || 0)))),
+        scaled: h.scaled != null ? String(h.scaled) : ''
+      });
+    });
+    if (!rows.length) return;
+    sb.from('mock_exam_attempts').upsert(rows).then(function (res) {
+      if (res && res.error && !isMissingRelationError(res)) {
+        log('mock_exam_attempts push failed: ' + res.error.message);
+      }
+    }, function (e) { log('mock_exam_attempts push failed: ' + (e && e.message)); });
+  }
+
+  function pushStudyData(uid, nowIso) {
+    var customCards = safeParse('clipsat_custom_cards', []);
+    if (!Array.isArray(customCards)) customCards = [];
+    var starredCards = safeParse('clipsat_starred_cards', {});
+    if (!starredCards || typeof starredCards !== 'object' || Array.isArray(starredCards)) starredCards = {};
+    var badges = safeParse('clipsat_badges', {});
+    if (!badges || typeof badges !== 'object') badges = {};
+    if (!customCards.length && !Object.keys(starredCards).length && !Object.keys(badges).length) return;
+    sb.from('user_study_data').upsert({
+      user_id: uid,
+      custom_cards: customCards,
+      starred_cards: starredCards,
+      badges: badges,
+      updated_at: nowIso
+    }).then(function (res) {
+      if (res && res.error && !isMissingRelationError(res)) {
+        log('user_study_data push failed: ' + res.error.message);
+      }
+    }, function (e) { log('user_study_data push failed: ' + (e && e.message)); });
+  }
+
   function pushDelta() {
     var uid = _cachedUser && _cachedUser.id;
     if (!uid || !sb) return;
@@ -1373,7 +1546,9 @@
       deletedMistakeIds: Object.keys(_dirtyDelta.deletedMistakeIds),
       srsIds: Object.keys(_dirtyDelta.srsIds),
       visitTracks: Object.keys(_dirtyDelta.visitTracks),
-      accuracyBuckets: objectValues(_dirtyDelta.accuracyBuckets)
+      accuracyBuckets: objectValues(_dirtyDelta.accuracyBuckets),
+      mockAttempts: _dirtyDelta.mockAttempts,
+      studyData: _dirtyDelta.studyData
     };
     _resetDeltaQueue();
 
@@ -1452,6 +1627,9 @@
       sb.from('accuracy').upsert(accRows).then(noop, function (e) { log('accuracy delta push failed: ' + (e && e.message)); });
     }
 
+    if (snap.mockAttempts) pushMockAttempts(uid);
+    if (snap.studyData) pushStudyData(uid, nowIso);
+
     log('pushed delta to cloud');
   }
 
@@ -1518,6 +1696,9 @@
     });
     if (accRows.length) sb.from('accuracy').upsert(accRows).then(noop, function (e) { log('accuracy push failed: ' + (e && e.message)); });
 
+    pushMockAttempts(uid);
+    pushStudyData(uid, nowIso);
+
     log('pushed to cloud');
   }
 
@@ -1566,10 +1747,13 @@
     var accountView = document.getElementById('cloud-auth-account-view');
     var emailSpan = document.getElementById('cloud-auth-account-email');
     var titleEl = document.getElementById('cloud-auth-modal-title');
+    var isAr = (document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl'));
+    var accountLink = accountView ? accountView.querySelector('a[href$="/account/"]') : null;
+    if (accountLink) accountLink.setAttribute('href', isAr ? '/ar/account/' : '/account/');
     if (signInView) signInView.hidden = !!_cachedUser;
     if (accountView) accountView.hidden = !_cachedUser;
-    if (emailSpan && _cachedUser) emailSpan.textContent = _cachedUser.email || 'Signed-in student';
-    if (titleEl) titleEl.textContent = _cachedUser ? '☁️ Cloud Account & Privacy' : '☁️ Sync Your Progress';
+    if (emailSpan && _cachedUser) emailSpan.textContent = _cachedUser.email || (isAr ? 'طالب مسجّل' : 'Signed-in student');
+    if (titleEl) titleEl.textContent = _cachedUser ? (isAr ? '☁️ الحساب السحابي والخصوصية' : '☁️ Cloud Account & Privacy') : (isAr ? '☁️ مزامنة التقدم' : '☁️ Sync Your Progress');
   }
 
   /* ── Browser Health Check (No Synthetic Popup Canary on Google Sign-In) ── */

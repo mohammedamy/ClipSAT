@@ -98,11 +98,11 @@ drop policy if exists "own srs state"      on public.srs_state;
 drop policy if exists "own chapter visits" on public.chapter_visits;
 drop policy if exists "own accuracy"       on public.accuracy;
 
-create policy "own profile"        on public.profiles       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own mistakes"       on public.mistakes       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own srs state"      on public.srs_state      for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own chapter visits" on public.chapter_visits for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own accuracy"       on public.accuracy       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "own profile"        on public.profiles       for all to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "own mistakes"       on public.mistakes       for all to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "own srs state"      on public.srs_state      for all to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "own chapter visits" on public.chapter_visits for all to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "own accuracy"       on public.accuracy       for all to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 
 -- ── Auto-create an empty profile row the moment someone signs up ──────────
 create or replace function public.handle_new_user()
@@ -112,6 +112,7 @@ begin
   return new;
 end;
 $$ language plpgsql security definer set search_path = public;
+revoke all on function public.handle_new_user() from public, anon, authenticated;
 
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
@@ -186,21 +187,21 @@ revoke all on function public.is_enrolled_in_class(uuid) from public, anon;
 grant execute on function public.is_enrolled_in_class(uuid) to authenticated, service_role;
 
 -- Teacher manages their own classes (create/rename/delete/see the code)
-create policy "own classes" on public.classes for all
-  using (auth.uid() = owner_id) with check (auth.uid() = owner_id);
+create policy "own classes" on public.classes for all to authenticated
+  using ((select auth.uid()) = owner_id) with check ((select auth.uid()) = owner_id);
 -- Enrolled students can read metadata of classes they joined (enables class name + assignments join)
 create policy "enrolled students see joined classes" on public.classes for select
   to authenticated using (public.is_enrolled_in_class(id));
 
 -- A student sees and can leave their own membership row
-create policy "own membership" on public.class_members for select using (auth.uid() = student_id);
-create policy "leave class"    on public.class_members for delete using (auth.uid() = student_id);
+create policy "own membership" on public.class_members for select to authenticated using ((select auth.uid()) = student_id);
+create policy "leave class"    on public.class_members for delete to authenticated using ((select auth.uid()) = student_id);
 -- The teacher sees (and can remove) rows in classes they own
-create policy "teacher sees roster" on public.class_members for select using (
-  exists (select 1 from public.classes c where c.id = class_id and c.owner_id = auth.uid())
+create policy "teacher sees roster" on public.class_members for select to authenticated using (
+  exists (select 1 from public.classes c where c.id = class_id and c.owner_id = (select auth.uid()))
 );
-create policy "teacher removes member" on public.class_members for delete using (
-  exists (select 1 from public.classes c where c.id = class_id and c.owner_id = auth.uid())
+create policy "teacher removes member" on public.class_members for delete to authenticated using (
+  exists (select 1 from public.classes c where c.id = class_id and c.owner_id = (select auth.uid()))
 );
 
 -- Joining goes through this function only — never a direct table write.
@@ -283,32 +284,32 @@ drop policy if exists "student manages own completion" on public.assignment_comp
 drop policy if exists "teacher reads roster completions" on public.assignment_completions;
 
 -- Teacher creates/renames/deletes assignments only for classes they own.
-create policy "teacher manages own assignments" on public.assignments for all using (
-  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+create policy "teacher manages own assignments" on public.assignments for all to authenticated using (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = (select auth.uid()))
 ) with check (
-  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = (select auth.uid()))
 );
 -- A student sees assignments for any class they're a member of.
-create policy "student reads class assignments" on public.assignments for select using (
-  exists (select 1 from public.class_members cm where cm.class_id = assignments.class_id and cm.student_id = auth.uid())
+create policy "student reads class assignments" on public.assignments for select to authenticated using (
+  exists (select 1 from public.class_members cm where cm.class_id = assignments.class_id and cm.student_id = (select auth.uid()))
 );
 
 -- A student manages only their own completion row, and only for an
 -- assignment in a class they're actually a member of.
-create policy "student manages own completion" on public.assignment_completions for all using (
-  auth.uid() = student_id
+create policy "student manages own completion" on public.assignment_completions for all to authenticated using (
+  (select auth.uid()) = student_id
 ) with check (
-  auth.uid() = student_id
+  (select auth.uid()) = student_id
   and exists (
     select 1 from public.assignments a join public.class_members cm on cm.class_id = a.class_id
-    where a.id = assignment_completions.assignment_id and cm.student_id = auth.uid()
+    where a.id = assignment_completions.assignment_id and cm.student_id = (select auth.uid())
   )
 );
 -- The teacher sees who's done, for aggregate counts — never write access.
-create policy "teacher reads roster completions" on public.assignment_completions for select using (
+create policy "teacher reads roster completions" on public.assignment_completions for select to authenticated using (
   exists (
     select 1 from public.assignments a join public.classes c on c.id = a.class_id
-    where a.id = assignment_completions.assignment_id and c.owner_id = auth.uid()
+    where a.id = assignment_completions.assignment_id and c.owner_id = (select auth.uid())
   )
 );
 
@@ -325,28 +326,28 @@ drop policy if exists "teachers_read_scoped_class_visits"   on public.chapter_vi
 create policy "teachers_read_scoped_class_accuracy" on public.accuracy for select to authenticated using (
   exists (
     select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
-    where cm.student_id = accuracy.user_id and cm.consent_given = true and c.owner_id = auth.uid()
+    where cm.student_id = accuracy.user_id and cm.consent_given = true and c.owner_id = (select auth.uid())
       and (c.track = accuracy.track or exists (select 1 from public.assignments a where a.class_id = c.id and a.track = accuracy.track))
   )
 );
 create policy "teachers_read_scoped_class_mistakes" on public.mistakes for select to authenticated using (
   mistakes.deleted_at is null and exists (
     select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
-    where cm.student_id = mistakes.user_id and cm.consent_given = true and c.owner_id = auth.uid()
+    where cm.student_id = mistakes.user_id and cm.consent_given = true and c.owner_id = (select auth.uid())
       and (c.track = mistakes.view_id or exists (select 1 from public.assignments a where a.class_id = c.id and a.track = mistakes.view_id))
   )
 );
 create policy "teachers_read_scoped_class_visits" on public.chapter_visits for select to authenticated using (
   exists (
     select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
-    where cm.student_id = chapter_visits.user_id and cm.consent_given = true and c.owner_id = auth.uid()
+    where cm.student_id = chapter_visits.user_id and cm.consent_given = true and c.owner_id = (select auth.uid())
       and (c.track = chapter_visits.track or exists (select 1 from public.assignments a where a.class_id = c.id and a.track = chapter_visits.track))
   )
 );
-create policy "teacher reads roster profile" on public.profiles for select using (
+create policy "teacher reads roster profile" on public.profiles for select to authenticated using (
   exists (
     select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
-    where cm.student_id = profiles.user_id and cm.consent_given = true and c.owner_id = auth.uid()
+    where cm.student_id = profiles.user_id and cm.consent_given = true and c.owner_id = (select auth.uid())
   )
 );
 
@@ -393,7 +394,7 @@ create table if not exists public.ai_plans (
 );
 alter table public.ai_plans enable row level security;
 drop policy if exists "own ai plan" on public.ai_plans;
-create policy "own ai plan" on public.ai_plans for select to authenticated using (auth.uid() = user_id);
+create policy "own ai plan" on public.ai_plans for select to authenticated using ((select auth.uid()) = user_id);
 
 create or replace function public.use_ai_quota(
   p_user_id uuid,
@@ -508,7 +509,7 @@ begin
   if v_uid is null then raise exception 'Authentication required'; end if;
   select * into v_plan from public.ai_plans where user_id = v_uid;
   select * into v_usage from public.ai_usage where user_id = v_uid and day = current_date;
-  v_paid := (v_plan.tier = 'paid' and (v_plan.paid_until is null or v_plan.paid_until > now()));
+  v_paid := coalesce(v_plan.tier = 'paid' and (v_plan.paid_until is null or v_plan.paid_until > now()), false);
   v_aicap := case when v_paid then greatest(200, coalesce(v_plan.daily_credits, 200)) else greatest(20, coalesce(v_plan.daily_credits, 20)) end;
   return query select
     coalesce(v_plan.tier, 'free'), v_paid, v_plan.paid_until, v_plan.trial_ends_at,
@@ -912,13 +913,13 @@ drop policy if exists "student reads own submissions"   on public.assignment_sub
 drop policy if exists "teacher reads class submissions" on public.assignment_submissions;
 
 create policy "student reads own submissions" on public.assignment_submissions
-  for select to authenticated using (auth.uid() = student_id);
+  for select to authenticated using ((select auth.uid()) = student_id);
 
 create policy "teacher reads class submissions" on public.assignment_submissions
   for select to authenticated using (
     exists (
       select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
-      where cm.student_id = assignment_submissions.student_id and cm.consent_given = true and c.owner_id = auth.uid()
+      where cm.student_id = assignment_submissions.student_id and cm.consent_given = true and c.owner_id = (select auth.uid())
         and (
           c.id = assignment_submissions.class_id
           or c.track = assignment_submissions.track
@@ -1095,5 +1096,67 @@ $$ language plpgsql security definer set search_path = public;
 
 revoke all on function public.prune_old_telemetry() from public, anon, authenticated;
 grant execute on function public.prune_old_telemetry() to service_role;
+
+-- ── Wave 5: Cross-Device Mock Exam Attempts & User Study Data ─────────────
+create table if not exists public.mock_exam_attempts (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  attempt_ts bigint not null,
+  track      text not null,
+  paper      text not null default '',
+  score      real not null default 0,
+  total      integer not null check (total > 0 and total <= 500),
+  pct        integer not null check (pct >= 0 and pct <= 100),
+  scaled     text not null default '',
+  created_at timestamptz not null default now(),
+  primary key (user_id, attempt_ts, track)
+);
+alter table public.mock_exam_attempts enable row level security;
+
+create index if not exists idx_mock_exam_attempts_user_ts
+  on public.mock_exam_attempts (user_id, attempt_ts desc);
+
+drop policy if exists "own mock exam attempts" on public.mock_exam_attempts;
+drop policy if exists "teachers_read_scoped_mock_attempts" on public.mock_exam_attempts;
+
+create policy "own mock exam attempts" on public.mock_exam_attempts
+  for all to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+create policy "teachers_read_scoped_mock_attempts" on public.mock_exam_attempts
+  for select to authenticated
+  using (
+    exists (
+      select 1
+        from public.class_members cm
+        join public.classes c on c.id = cm.class_id
+       where cm.student_id = mock_exam_attempts.user_id
+         and cm.consent_given = true
+         and c.owner_id = (select auth.uid())
+         and (
+           c.track = mock_exam_attempts.track
+           or exists (
+             select 1 from public.assignments a
+              where a.class_id = c.id and a.track = mock_exam_attempts.track
+           )
+         )
+    )
+  );
+
+create table if not exists public.user_study_data (
+  user_id       uuid primary key references auth.users(id) on delete cascade,
+  custom_cards  jsonb not null default '[]'::jsonb check (octet_length(custom_cards::text) <= 262144),
+  starred_cards jsonb not null default '{}'::jsonb check (octet_length(starred_cards::text) <= 65536),
+  badges        jsonb not null default '[]'::jsonb check (octet_length(badges::text) <= 32768),
+  updated_at    timestamptz not null default now()
+);
+alter table public.user_study_data enable row level security;
+
+drop policy if exists "own study data" on public.user_study_data;
+create policy "own study data" on public.user_study_data
+  for all to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
 
 

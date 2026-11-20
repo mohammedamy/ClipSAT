@@ -185,7 +185,7 @@ begin
   select * into v_plan from public.ai_plans where user_id = v_uid;
   select * into v_usage from public.ai_usage where user_id = v_uid and day = current_date;
 
-  v_paid := (v_plan.tier = 'paid' and (v_plan.paid_until is null or v_plan.paid_until > now()));
+  v_paid := coalesce(v_plan.tier = 'paid' and (v_plan.paid_until is null or v_plan.paid_until > now()), false);
   if v_paid then
     v_aicap := greatest(200, coalesce(v_plan.daily_credits, 200));
   else

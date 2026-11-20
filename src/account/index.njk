@@ -129,10 +129,22 @@ isRtl: false
           <span class="i18n-ar" dir="rtl" hidden>تتم مزامنة سجل الأخطاء والبطاقات وسلاسل الدراسة بدقة وأمان. يمكنك تنزيل نسخة كاملة من بياناتك في أي وقت.</span>
         </p>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+          <button type="button" class="btn" id="acct-sync-btn" style="min-height:44px">
+            <span data-bilingual>
+              <span class="i18n-en">Sync Progress Now</span>
+              <span class="i18n-ar" dir="rtl" hidden>مزامنة التقدم الآن</span>
+            </span>
+          </button>
           <button type="button" class="btn" id="acct-export-btn" style="min-height:44px">
             <span data-bilingual>
               <span class="i18n-en">Download My Study Data (JSON)</span>
               <span class="i18n-ar" dir="rtl" hidden>تنزيل بياناتي الدراسية (JSON)</span>
+            </span>
+          </button>
+          <button type="button" class="btn" id="acct-delete-btn" style="min-height:44px; background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5">
+            <span data-bilingual>
+              <span class="i18n-en">Delete My Cloud Account</span>
+              <span class="i18n-ar" dir="rtl" hidden>حذف حسابي السحابي</span>
             </span>
           </button>
           <a href="/contact/?topic=account-deletion" class="btn ghost" style="min-height:44px; display:inline-flex; align-items:center; text-decoration:none">
@@ -164,37 +176,62 @@ isRtl: false
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  function renderUsageRow(d) {
+    if (!d || typeof d !== 'object') return;
+    var isPaid = !!(d.paid || (d.tier === 'paid' && (!d.paid_until || Date.parse(d.paid_until) > Date.now())));
+    var badge = document.getElementById('account-plan-badge');
+    if (badge) {
+      badge.textContent = isPaid ? 'ClipSAT Plus' : (isAr() ? 'ClipSAT المجاني' : 'ClipSAT Free');
+      badge.style.background = isPaid ? 'var(--indigo)' : 'var(--paper-2, #f1f5f9)';
+      badge.style.color = isPaid ? '#fff' : 'var(--indigo)';
+    }
+    var expEl = document.getElementById('account-plan-expiry');
+    if (expEl) {
+      var parts = [];
+      if (isPaid && d.trial_ends_at && Date.parse(d.trial_ends_at) > Date.now()) {
+        parts.push((isAr() ? 'تجربة مجانية حتى ' : 'Trial through ') + new Date(d.trial_ends_at).toLocaleDateString());
+      } else if (isPaid && d.paid_until) {
+        parts.push((isAr() ? 'سارٍ حتى ' : 'Active through ') + new Date(d.paid_until).toLocaleDateString());
+      }
+      if (isPaid && d.cancel_at_period_end) {
+        parts.push(isAr() ? 'يُلغى بنهاية الفترة' : 'Cancels at period end');
+      }
+      expEl.textContent = parts.length ? ('· ' + parts.join(' · ')) : '';
+    }
+    var aiUsed = Number(d.ai_used || 0);
+    var aiLim = Math.max(1, Number(d.ai_cap != null ? d.ai_cap : (d.ai_limit != null ? d.ai_limit : (isPaid ? Math.max(200, Number(d.daily_credits || 200)) : 20))));
+    var ttsUsed = Number(d.tts_used || 0);
+    var ttsLim = Math.max(1, Number(d.tts_cap != null ? d.tts_cap : (d.tts_limit != null ? d.tts_limit : (isPaid ? 600 : 60))));
+    var aiLbl = document.getElementById('acct-ai-usage-label');
+    var ttsLbl = document.getElementById('acct-tts-usage-label');
+    var aiBar = document.getElementById('acct-ai-usage-bar');
+    var ttsBar = document.getElementById('acct-tts-usage-bar');
+    if (aiLbl) aiLbl.textContent = aiUsed + ' / ' + aiLim;
+    if (ttsLbl) ttsLbl.textContent = ttsUsed + ' / ' + ttsLim;
+    if (aiBar) aiBar.style.width = Math.min(100, Math.round((aiUsed / aiLim) * 100)) + '%';
+    if (ttsBar) ttsBar.style.width = Math.min(100, Math.round((ttsUsed / ttsLim) * 100)) + '%';
+  }
+
   function loadAccountTelemetry(cloud, user) {
     var sb = typeof cloud.getClient === 'function' ? cloud.getClient() : null;
     if (!sb) return;
 
+    function loadAiPlansFallback() {
+      return sb.from('ai_plans').select('tier,paid_until,trial_ends_at,cancel_at_period_end,daily_credits').maybeSingle().then(function (r2) {
+        renderUsageRow((r2 && r2.data) || { tier: 'free', ai_used: 0, ai_cap: 20, tts_used: 0, tts_cap: 60 });
+      }, function () {});
+    }
+
     // 1. Live daily usage & tier via RPC (graceful fallback to ai_plans table)
     sb.rpc('get_my_daily_usage').then(function (res) {
-      var d = res && res.data;
-      if (d && typeof d === 'object') {
-        var isPaid = d.tier === 'paid';
-        var badge = document.getElementById('account-plan-badge');
-        if (badge) {
-          badge.textContent = isPaid ? 'ClipSAT Plus' : (isAr() ? 'ClipSAT المجاني' : 'ClipSAT Free');
-          badge.style.background = isPaid ? 'var(--indigo)' : 'var(--paper-2, #f1f5f9)';
-          badge.style.color = isPaid ? '#fff' : 'var(--indigo)';
-        }
-        var expEl = document.getElementById('account-plan-expiry');
-        if (expEl && isPaid && d.paid_until) {
-          expEl.textContent = (isAr() ? '· سارٍ حتى ' : '· Active through ') + new Date(d.paid_until).toLocaleDateString();
-        }
-        var aiUsed = Number(d.ai_used || 0), aiLim = Math.max(1, Number(d.ai_limit || 20));
-        var ttsUsed = Number(d.tts_used || 0), ttsLim = Math.max(1, Number(d.tts_limit || 20));
-        var aiLbl = document.getElementById('acct-ai-usage-label');
-        var ttsLbl = document.getElementById('acct-tts-usage-label');
-        var aiBar = document.getElementById('acct-ai-usage-bar');
-        var ttsBar = document.getElementById('acct-tts-usage-bar');
-        if (aiLbl) aiLbl.textContent = aiUsed + ' / ' + aiLim;
-        if (ttsLbl) ttsLbl.textContent = ttsUsed + ' / ' + ttsLim;
-        if (aiBar) aiBar.style.width = Math.min(100, Math.round((aiUsed / aiLim) * 100)) + '%';
-        if (ttsBar) ttsBar.style.width = Math.min(100, Math.round((ttsUsed / ttsLim) * 100)) + '%';
+      var raw = res && res.data;
+      var d = Array.isArray(raw) ? raw[0] : raw;
+      if (res && !res.error && d && typeof d === 'object') {
+        renderUsageRow(d);
+      } else {
+        loadAiPlansFallback();
       }
-    }, function () {});
+    }, loadAiPlansFallback);
 
     // 2. Joined classes
     var clsEl = document.getElementById('acct-classes-list');
@@ -226,12 +263,46 @@ isRtl: false
     }
   }
 
-  function bindExport(cloud) {
-    var btn = document.getElementById('acct-export-btn');
+  function bindActions(cloud) {
+    var syncBtn = document.getElementById('acct-sync-btn');
+    var expBtn = document.getElementById('acct-export-btn');
+    var delBtn = document.getElementById('acct-delete-btn');
     var status = document.getElementById('acct-action-status');
-    if (!btn || btn._bound) return;
-    btn._bound = true;
-    btn.addEventListener('click', function () {
+    if (syncBtn && !syncBtn._bound) {
+      syncBtn._bound = true;
+      syncBtn.addEventListener('click', function () {
+        if (status) status.textContent = isAr() ? 'جاري مزامنة بياناتك…' : 'Syncing your progress…';
+        try { if (typeof cloud.syncNow === 'function') cloud.syncNow(); } catch (_) {}
+        var p = (typeof cloud.pullAndMerge === 'function') ? cloud.pullAndMerge() : Promise.resolve();
+        Promise.resolve(p).then(function () {
+          if (status) status.textContent = isAr() ? '✓ تمت مزامنة التقدم عبر الأجهزة.' : '✓ Progress synced across devices.';
+        }, function () {
+          if (status) status.textContent = isAr() ? 'تم الحفظ محليًا — ستتم المزامنة تلقائيًا.' : 'Saved locally — cloud sync will retry automatically.';
+        });
+      });
+    }
+    if (delBtn && !delBtn._bound) {
+      delBtn._bound = true;
+      delBtn.addEventListener('click', function () {
+        if (typeof window.cloudDeleteMyAccount === 'function') {
+          window.cloudDeleteMyAccount();
+          return;
+        }
+        var msgConfirm = isAr()
+          ? 'هل تريد حذف حسابك السحابي وبياناته نهائيًا؟ ستبقى بيانات المتصفح المحلي ما لم تمسحها.'
+          : 'Permanently delete your ClipSAT cloud account and synced data? This cannot be undone.';
+        if (!window.confirm(msgConfirm)) return;
+        if (status) status.textContent = isAr() ? 'جاري حذف الحساب السحابي…' : 'Deleting cloud account…';
+        cloud.deleteMyAccount().then(function () {
+          if (status) status.textContent = isAr() ? '✓ تم حذف حسابك وبياناتك السحابية نهائيًا.' : '✓ Your cloud account and synced data have been deleted.';
+        }, function (err) {
+          if (status) status.textContent = (isAr() ? 'تعذّر حذف الحساب: ' : 'Could not delete account: ') + ((err && err.message) || 'error');
+        });
+      });
+    }
+    if (!expBtn || expBtn._bound) return;
+    expBtn._bound = true;
+    expBtn.addEventListener('click', function () {
       var dump = { exported_at: new Date().toISOString(), local_data: {} };
       try {
         for (var i = 0; i < localStorage.length; i++) {
@@ -255,6 +326,7 @@ isRtl: false
     });
   }
 
+  var _renderedUid = null;
   function render(user) {
     if (user) {
       document.getElementById('account-email').textContent = user.email || 'your account';
@@ -262,9 +334,13 @@ isRtl: false
         (window.ClipSATCloud.currentProvider && window.ClipSATCloud.currentProvider()) || 'email';
       gate.hidden = true;
       content.hidden = false;
-      loadAccountTelemetry(window.ClipSATCloud, user);
-      bindExport(window.ClipSATCloud);
+      if (_renderedUid !== user.id) {
+        _renderedUid = user.id;
+        loadAccountTelemetry(window.ClipSATCloud, user);
+      }
+      bindActions(window.ClipSATCloud);
     } else {
+      _renderedUid = null;
       content.hidden = true;
       gate.hidden = false;
       msg.textContent = isAr() ? 'يرجى تسجيل الدخول لعرض حسابك.' : 'Please sign in to view your account.';
@@ -275,12 +351,18 @@ isRtl: false
   function start() {
     var cloud = window.ClipSATCloud;
     if (!cloud || !cloud.configured) { msg.textContent = isAr() ? 'الحسابات غير متاحة حاليًا.' : 'Accounts are not available right now.'; return; }
+    document.addEventListener('clipsat:auth-changed', function () {
+      render(typeof cloud.getUser === 'function' ? cloud.getUser() : null);
+    });
+    if (typeof cloud.isSignedIn === 'function' && cloud.isSignedIn()) {
+      render(typeof cloud.getUser === 'function' ? cloud.getUser() : null);
+    }
     cloud.requireAuth().then(render);
     cloud.ready.then(function () {
       var client = cloud.getClient();
       if (!client) return;
       client.auth.onAuthStateChange(function (event, session) {
-        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'TOKEN_REFRESHED') {
           setTimeout(function () { render(session ? session.user : null); }, 0);
         }
       });

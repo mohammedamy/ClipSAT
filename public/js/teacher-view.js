@@ -82,19 +82,29 @@
     return out;
   }
 
+  function isAr() {
+    return (typeof window !== 'undefined' && window.i18n && typeof window.i18n.getLocale === 'function' && window.i18n.getLocale() === 'ar') ||
+           (typeof document !== 'undefined' && document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl'));
+  }
+
+  function tvT(en, ar) {
+    return isAr() ? ar : en;
+  }
+
   function timeAgo(ms) {
     var diff = Date.now() - ms;
     if (diff < 0) diff = 0;
     var mins = Math.floor(diff / 60000);
-    if (mins < 1) return 'just now';
-    if (mins < 60) return mins + 'm ago';
+    if (mins < 1) return tvT('just now', 'الآن');
+    if (mins < 60) return tvT(mins + 'm ago', 'منذ ' + mins + ' د');
     var hrs = Math.floor(mins / 60);
-    if (hrs < 24) return hrs + 'h ago';
+    if (hrs < 24) return tvT(hrs + 'h ago', 'منذ ' + hrs + ' س');
     var days = Math.floor(hrs / 24);
-    if (days < 30) return days + 'd ago';
+    if (days < 30) return tvT(days + 'd ago', 'منذ ' + days + ' ي');
     var months = Math.floor(days / 30);
-    if (months < 12) return months + 'mo ago';
-    return Math.floor(months / 12) + 'y ago';
+    if (months < 12) return tvT(months + 'mo ago', 'منذ ' + months + ' ش');
+    var yrs = Math.floor(months / 12);
+    return tvT(yrs + 'y ago', 'منذ ' + yrs + ' سنة');
   }
 
   // Weakest track/domain buckets for one student, worst-accuracy first —
@@ -155,11 +165,48 @@
     }).join('');
   }
 
+  function syncModalLocale() {
+    var box = document.getElementById('teacher-view-box');
+    if (!box) return;
+    var ar = isAr();
+    box.setAttribute('dir', ar ? 'rtl' : 'ltr');
+    var h3 = box.querySelector('h3');
+    if (h3) h3.textContent = ar ? '🏫 الفصول الدراسية' : '🏫 Classes';
+    var intro = box.querySelector(':scope > p');
+    if (intro) intro.textContent = ar
+      ? 'أنشئ فصلاً لتحصل على رمز مشاركة لطلابك، أو انضم إلى فصل باستخدام الرمز الذي أعطاك إياه معلمك.'
+      : 'Create a class to get a code you can share with students, or join one with a code your teacher gave you. You can do both.';
+    var secs = box.querySelectorAll('.tv-section');
+    if (secs[0]) {
+      var h40 = secs[0].querySelector('h4'); if (h40) h40.textContent = ar ? 'انضم إلى فصل' : 'Join a class';
+      var jc = document.getElementById('tv-join-code'); if (jc) jc.placeholder = ar ? 'رمز الفصل، مثل MATH7F' : 'Class code, e.g. MATH7F';
+      var jn = document.getElementById('tv-join-name'); if (jn) jn.placeholder = ar ? 'اسمك (اختياري — يظهر للمعلم)' : 'Your name (optional — shown to the teacher)';
+      var jcs = secs[0].querySelector('label[for="tv-join-consent"] span');
+      if (jcs) jcs.textContent = ar
+        ? 'أوافق على مشاركة دقة إجاباتي ودرجات واجباتي في مسار هذا الفصل فقط مع المعلم (المسارات الأخرى تبقى خاصة ويمكن سحب الموافقة بالمغادرة في أي وقت).'
+        : 'I consent to sharing my class-scoped accuracy & assignment scores with this teacher (other tracks stay private; revocable anytime by leaving).';
+      var jb = secs[0].querySelector('button.cloud-auth-send'); if (jb) jb.textContent = ar ? 'انضم للفصل' : 'Join class';
+    }
+    if (secs[1]) {
+      var h41 = secs[1].querySelector('h4'); if (h41) h41.textContent = ar ? 'إنشاء فصل جديد' : 'Create a class';
+      var cn = document.getElementById('tv-create-name'); if (cn) cn.placeholder = ar ? 'اسم الفصل، مثل: قدرات الشعبة 3' : 'Class name, e.g. Period 3 Calculus';
+      var ct0 = box.querySelector('#tv-create-track option[value=""]');
+      if (ct0) ct0.textContent = ar ? 'اختر المسار الأساسي للفصل (يحدد خصوصية الطالب)' : 'Select primary class track (scopes student privacy)';
+      var cb = secs[1].querySelector('button.cloud-auth-send'); if (cb) cb.textContent = ar ? 'إنشاء الفصل' : 'Create class';
+    }
+    if (secs[2]) {
+      var h42 = secs[2].querySelector('h4'); if (h42) h42.textContent = ar ? '🔐 التحقق من شهادة الواجب' : '🔐 Verify Assignment Certificate';
+      var vc = document.getElementById('tv-verify-code'); if (vc) vc.placeholder = ar ? 'رمز CS-VERIFIED-… أو CLIP-…' : 'CS-VERIFIED-… or CLIP-…';
+      var vb = secs[2].querySelector('button.cloud-auth-send'); if (vb) vb.textContent = ar ? 'تحقق' : 'Verify';
+    }
+  }
+
   // ── Modal open/close ───────────────────────────────────────────────
   window.openTeacherView = function () {
     var m = document.getElementById('teacher-view-modal');
     if (!m) return;
     if (m.removeAttribute) m.removeAttribute('inert');
+    syncModalLocale();
     var trSel = document.getElementById('tv-create-track');
     if (trSel && trSel.options && trSel.options.length <= 1) {
       trSel.insertAdjacentHTML('beforeend', trackOptionsHtml());
@@ -177,6 +224,20 @@
       if (m.setAttribute) m.setAttribute('inert', '');
     }
   };
+  window.tvOpenCustomCart = function () {
+    window.closeTeacherView();
+    if (window.CSCustomCart && typeof window.CSCustomCart.open === 'function') {
+      window.CSCustomCart.open();
+      return;
+    }
+    if (typeof window._ensureTeacherMode === 'function') {
+      window._ensureTeacherMode().then(function () {
+        if (window.CSCustomCart && typeof window.CSCustomCart.open === 'function') {
+          window.CSCustomCart.open();
+        }
+      }, function () {});
+    }
+  };
 
   // ── Create a class (retries once on a code collision — astronomically
   //    unlikely at this scale, but cheap to guard against) ──────────────
@@ -186,8 +247,8 @@
     var trSel = document.getElementById('tv-create-track');
     var name = input && input.value.trim();
     var trackVal = (trSel && trSel.value && TRACK_LABELS[trSel.value]) ? trSel.value : null;
-    if (!sb || !name) { setStatus('tv-create-status', 'Enter a class name first.', true); return; }
-    setStatus('tv-create-status', 'Creating…');
+    if (!sb || !name) { setStatus('tv-create-status', tvT('Enter a class name first.', 'أدخل اسم الفصل أولاً.'), true); return; }
+    setStatus('tv-create-status', tvT('Creating…', 'جاري الإنشاء…'));
     var uid = window.ClipSATCloud.currentUserId();
     var attempt = function (triesLeft, omitTrackCol) {
       var code = randomCode();
@@ -205,7 +266,7 @@
             return;
           }
           if (input) input.value = '';
-          setStatus('tv-create-status', 'Created — share code: ' + code);
+          setStatus('tv-create-status', tvT('Created — share code: ', 'تم الإنشاء — رمز المشاركة: ') + code);
           refreshMyClasses();
         });
     };
@@ -219,12 +280,12 @@
     var nameInput = document.getElementById('tv-join-name');
     var consentBox = document.getElementById('tv-join-consent');
     var code = codeInput && codeInput.value.trim();
-    if (!sb || !code) { setStatus('tv-join-status', 'Enter a class code first.', true); return; }
+    if (!sb || !code) { setStatus('tv-join-status', tvT('Enter a class code first.', 'أدخل رمز الفصل أولاً.'), true); return; }
     if (consentBox && !consentBox.checked) {
-      setStatus('tv-join-status', 'Please confirm data-sharing consent before joining this class.', true);
+      setStatus('tv-join-status', tvT('Please confirm data-sharing consent before joining this class.', 'يرجى تأكيد الموافقة على مشاركة التقدم قبل الانضمام.'), true);
       return;
     }
-    setStatus('tv-join-status', 'Joining…');
+    setStatus('tv-join-status', tvT('Joining…', 'جاري الانضمام…'));
     var disp = nameInput ? nameInput.value.trim() : null;
     sb.rpc('join_class_by_code', { p_code: code, p_display_name: disp, p_consent: true })
       .then(function (r) {
@@ -236,7 +297,7 @@
       .then(function (r) {
         if (r.error) { setStatus('tv-join-status', r.error.message, true); return; }
         var row = r.data && r.data[0];
-        setStatus('tv-join-status', row ? ('Joined: ' + row.class_name) : 'Joined!');
+        setStatus('tv-join-status', row ? (tvT('Joined: ', 'تم الانضمام: ') + row.class_name) : tvT('Joined!', 'تم الانضمام!'));
         if (codeInput) codeInput.value = '';
         refreshMyMemberships();
       });
@@ -247,11 +308,11 @@
     var sb = getClient();
     var inp = document.getElementById('tv-verify-code');
     var raw = inp && inp.value ? inp.value.trim() : '';
-    if (!raw) { setStatus('tv-verify-status', 'Paste a CS-VERIFIED-… certificate code first.', true); return; }
+    if (!raw) { setStatus('tv-verify-status', tvT('Paste a CS-VERIFIED-… certificate code first.', 'ألصق رمز شهادة CS-VERIFIED-… أولاً.'), true); return; }
     var srvMatch = /^CS-VERIFIED-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})-([0-9a-f]{16,64})$/i.exec(raw);
     if (srvMatch) {
-      if (!sb) { setStatus('tv-verify-status', 'Sign in to verify server HMAC certificates.', true); return; }
-      setStatus('tv-verify-status', 'Verifying cryptographic HMAC signature…');
+      if (!sb) { setStatus('tv-verify-status', tvT('Sign in to verify server HMAC certificates.', 'سجّل الدخول للتحقق من شهادات الخادم المشفرة.'), true); return; }
+      setStatus('tv-verify-status', tvT('Verifying cryptographic HMAC signature…', 'جاري التحقق من التوقيع التشفيري…'));
       sb.rpc('verify_assignment_certificate', {
         p_submission_id: srvMatch[1].toLowerCase(),
         p_sig_prefix: srvMatch[2].toLowerCase()
@@ -260,9 +321,9 @@
         var row = Array.isArray(r.data) ? r.data[0] : r.data;
         if (row && row.valid) {
           var pct = row.total ? Math.round((row.score / row.total) * 100) : 0;
-          setStatus('tv-verify-status', '✅ Authentic Server HMAC Certificate · Track: ' + (TRACK_LABELS[row.track] || row.track) + ' · Score: ' + row.score + '/' + row.total + ' (' + pct + '%)', false);
+          setStatus('tv-verify-status', tvT('✅ Authentic Server HMAC Certificate · Track: ', '✅ شهادة خادم موثقة · المسار: ') + (TRACK_LABELS[row.track] || row.track) + tvT(' · Score: ', ' · الدرجة: ') + row.score + '/' + row.total + ' (' + pct + '%)', false);
         } else {
-          setStatus('tv-verify-status', '❌ Invalid or tampered certificate signature.', true);
+          setStatus('tv-verify-status', tvT('❌ Invalid or tampered certificate signature.', '❌ توقيع شهادة غير صالح أو تم التلاعب به.'), true);
         }
       });
       return;
@@ -270,24 +331,24 @@
     if (typeof window.CSVerifyCertCode === 'function') {
       var legacy = window.CSVerifyCertCode(raw);
       if (legacy && legacy.valid) {
-        setStatus('tv-verify-status', '⚠️ Offline guest code (' + legacy.score + '/' + legacy.total + ', ' + legacy.pct + '%). Ask student to sign in for an unforgeable CS-VERIFIED certificate.', false);
+        setStatus('tv-verify-status', tvT('⚠️ Offline guest code (', '⚠️ رمز زائر غير متصل (') + legacy.score + '/' + legacy.total + ', ' + legacy.pct + tvT('%). Ask student to sign in for an unforgeable CS-VERIFIED certificate.', '%). اطلب من الطالب تسجيل الدخول لإصدار شهادة CS-VERIFIED موثقة.'), false);
         return;
       }
     }
-    setStatus('tv-verify-status', '❌ Invalid or forged verification code.', true);
+    setStatus('tv-verify-status', tvT('❌ Invalid or forged verification code.', '❌ رمز تحقق غير صالح.'), true);
   };
 
   // ── Leave (as a student) / delete (as the owner) ───────────────────
   window.tvLeaveClass = function (classId) {
     var sb = getClient();
-    if (!sb || !window.confirm('Leave this class? The teacher will no longer see your progress.')) return;
+    if (!sb || !window.confirm(tvT('Leave this class? The teacher will no longer see your progress.', 'مغادرة هذا الفصل؟ لن يرى المعلم تقدمك بعد الآن.'))) return;
     var uid = window.ClipSATCloud.currentUserId();
     sb.from('class_members').delete().eq('class_id', classId).eq('student_id', uid)
       .then(function () { refreshMyMemberships(); });
   };
   window.tvDeleteClass = function (classId) {
     var sb = getClient();
-    if (!sb || !window.confirm('Delete this class? Students will lose access to it (their own progress is unaffected).')) return;
+    if (!sb || !window.confirm(tvT('Delete this class? Students will lose access to it (their own progress is unaffected).', 'حذف هذا الفصل؟ لن يؤثر هذا على تقدم الطلاب الخاص.'))) return;
     sb.from('classes').delete().eq('id', classId)
       .then(function () { refreshMyClasses(); });
   };
@@ -303,27 +364,28 @@
     sb.from('classes').select('*').eq('owner_id', uid).order('created_at', { ascending: false })
       .then(function (r) {
         if (r.error || !r.data) { out.innerHTML = ''; return; }
-        if (!r.data.length) { out.innerHTML = '<p class="tv-empty">You don’t own any classes yet — create one above.</p>'; return; }
+        if (!r.data.length) { out.innerHTML = '<p class="tv-empty">' + tvT('You don’t own any classes yet — create one above.', 'لا تملك أي فصول بعد — أنشئ فصلاً من الأعلى.') + '</p>'; return; }
         (r.data || []).forEach(function (c) { _classesById[c.id] = c; });
         out.innerHTML = r.data.map(function (c) {
           var cid = safeId(c.id);
           return '<div class="tv-class-card">'
             + '<div class="tv-class-head"><b>' + escT(c.name) + '</b>'
-            + '<span class="tv-code" title="Share this code with students">' + escT(c.code) + '</span>'
+            + '<span class="tv-code" title="' + tvT('Share this code with students', 'شارك هذا الرمز مع طلابك') + '">' + escT(c.code) + '</span>'
             + '<div class="tv-class-actions">'
-            + '<button type="button" class="tv-export-btn" onclick="window.tvExportCSV(\'' + cid + '\')" title="Export roster to CSV" aria-label="Export CSV">📄 CSV</button>'
-            + '<button type="button" class="tv-export-btn" onclick="window.tvExportExcel(\'' + cid + '\')" title="Export roster to Excel" aria-label="Export Excel">📊 Excel</button>'
-            + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + cid + '\')" title="Delete class" aria-label="Delete class">🗑</button>'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvExportCSV(\'' + cid + '\')" title="' + tvT('Export roster to CSV', 'تصدير السجل بصيغة CSV') + '" aria-label="Export CSV">📄 CSV</button>'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvExportExcel(\'' + cid + '\')" title="' + tvT('Export roster to Excel', 'تصدير السجل بصيغة Excel') + '" aria-label="Export Excel">📊 Excel</button>'
+            + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + cid + '\')" title="' + tvT('Delete class', 'حذف الفصل') + '" aria-label="Delete class">🗑</button>'
             + '</div></div>'
-            + '<div class="tv-roster" id="tv-roster-' + cid + '">Loading roster…</div>'
-            + '<div class="tv-assign-section"><h5>Assignments</h5>'
-            + '<div id="tv-assign-' + cid + '">Loading…</div>'
+            + '<div class="tv-roster" id="tv-roster-' + cid + '">' + tvT('Loading roster…', 'جاري تحميل قائمة الطلاب…') + '</div>'
+            + '<div class="tv-assign-section"><h5>' + tvT('Assignments', 'الواجبات والاختبارات') + '</h5>'
+            + '<div id="tv-assign-' + cid + '">' + tvT('Loading…', 'جاري التحميل…') + '</div>'
             + '<div class="tv-assign-form">'
             + '<select id="tv-assign-track-' + cid + '">' + trackOptionsHtml() + '</select>'
-            + '<input type="text" id="tv-assign-label-' + cid + '" placeholder="e.g. Chapter 3: Derivatives">'
-            + '<input type="url" id="tv-assign-url-' + cid + '" placeholder="Optional ?assign=… link (from Custom Test Cart)">'
-            + '<input type="date" id="tv-assign-due-' + cid + '" title="Due date (optional)">'
-            + '<button type="button" class="tv-assign-btn" onclick="window.tvCreateAssignment(\'' + cid + '\')">Assign</button>'
+            + '<input type="text" id="tv-assign-label-' + cid + '" placeholder="' + tvT('e.g. Chapter 3: Derivatives', 'مثال: الفصل 3: المشتقات') + '">'
+            + '<input type="url" id="tv-assign-url-' + cid + '" placeholder="' + tvT('Optional ?assign=… link (from Custom Test Cart)', 'رابط ?assign=… اختياري (من مصمم أوراق العمل)') + '">'
+            + '<input type="date" id="tv-assign-due-' + cid + '" title="' + tvT('Due date (optional)', 'تاريخ التسليم (اختياري)') + '">'
+            + '<button type="button" class="tv-assign-btn" onclick="window.tvCreateAssignment(\'' + cid + '\')">' + tvT('Assign', 'إرسال الواجب') + '</button>'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvOpenCustomCart()" title="' + tvT('Build custom ?assign=… link in Custom Cart', 'إنشاء رابط ?assign=… في مصمم أوراق العمل') + '">🧰 ' + tvT('Custom Cart', 'مصمم الأوراق') + '</button>'
             + '</div></div>'
             + '</div>';
         }).join('');
@@ -343,16 +405,17 @@
       .then(function (r) {
         if (r.error) { el.innerHTML = '<p class="tv-empty">' + escT(r.error.message) + '</p>'; return; }
         var members = r.data || [];
-        if (!members.length) { el.innerHTML = '<p class="tv-empty">No students yet — share the code above.</p>'; return; }
+        if (!members.length) { el.innerHTML = '<p class="tv-empty">' + tvT('No students yet — share the code above.', 'لا يوجد طلاب بعد — شارك الرمز أعلاه.') + '</p>'; return; }
         var ids = members.map(function (m) { return m.student_id; });
         // Aggregate mastery & diagnostic metrics: overall accuracy, track/domain
-        // breakdowns, chapter visits for "last active" & studied topics, and recent mistakes.
+        // breakdowns, chapter visits for "last active" & studied topics, recent mistakes, and mock attempts.
         Promise.all([
           sb.from('accuracy').select('user_id,track,domain,correct,total').in('user_id', ids),
           sb.from('chapter_visits').select('user_id,track,count,updated_at').in('user_id', ids),
-          sb.from('mistakes').select('user_id,id,view_id,q,wrong,correct,domain,ts').is('deleted_at', null).in('user_id', ids).order('ts', { ascending: false }).limit(Math.max(200, ids.length * 12))
+          sb.from('mistakes').select('user_id,id,view_id,q,wrong,correct,domain,ts').is('deleted_at', null).in('user_id', ids).order('ts', { ascending: false }).limit(Math.max(200, ids.length * 12)),
+          sb.from('mock_exam_attempts').select('user_id,track,paper,score,total,pct,scaled,attempt_ts').in('user_id', ids).order('attempt_ts', { ascending: false }).limit(Math.max(100, ids.length * 5)).then(function (r4) { return r4; }, function () { return { data: [] }; })
         ]).then(function (results) {
-          var ar = results[0], vr = results[1], mr = results[2];
+          var ar = results[0], vr = results[1], mr = results[2], mockr = results[3] || { data: [] };
           // Scope roster client-side to class track + assigned tracks (matches RLS policy)
           var cObj = _classesById[classId] || {};
           var allowedTracks = {};
@@ -391,6 +454,22 @@
               mlist.push({ id: row.id, q: row.q, wrong: row.wrong, correct: row.correct, domain: row.domain, ts: row.ts });
             }
           });
+          var mocksByUser = {};
+          (mockr.data || []).forEach(function (row) {
+            if (hasTrackScope && row.track && !allowedTracks[row.track]) return;
+            var mkl = mocksByUser[row.user_id] || (mocksByUser[row.user_id] = []);
+            if (mkl.length < 4) {
+              mkl.push({
+                track: row.track,
+                paper: row.paper || row.track.toUpperCase(),
+                score: row.score,
+                total: row.total,
+                pct: row.pct,
+                scaled: row.scaled || '',
+                ts: row.attempt_ts
+              });
+            }
+          });
 
           // Cache for export
           _rostersById[classId] = {
@@ -399,25 +478,27 @@
             bucketsByUser: bucketsByUser,
             lastActiveByUser: lastActiveByUser,
             visitsByUser: visitsByUser,
-            mistakesByUser: mistakesByUser
+            mistakesByUser: mistakesByUser,
+            mocksByUser: mocksByUser
           };
 
-          el.innerHTML = '<table class="tv-roster-table"><thead><tr><th>Student</th><th>Accuracy</th><th>Last active</th><th></th></tr></thead><tbody>'
+          el.innerHTML = '<table class="tv-roster-table"><thead><tr><th>' + tvT('Student', 'الطالب') + '</th><th>' + tvT('Accuracy', 'الدقة') + '</th><th>' + tvT('Last active', 'آخر نشاط') + '</th><th></th></tr></thead><tbody>'
             + members.map(function (m, i) {
                 var agg = byUser[m.student_id] || { c: 0, t: 0 };
                 var pct = agg.t ? Math.round(agg.c / agg.t * 100) : null;
-                var label = m.display_name ? escT(m.display_name) : ('Student ' + (i + 1) + ' <span class="tv-anon">(no name shared)</span>');
-                var pctStr = pct === null ? '<span class="tv-nodata">no data yet</span>' : (pct + '% <span class="tv-frac">(' + agg.c + '/' + agg.t + ')</span>');
+                var label = m.display_name ? escT(m.display_name) : (tvT('Student ', 'طالب ') + (i + 1) + ' <span class="tv-anon">' + tvT('(no name shared)', '(بدون اسم)') + '</span>');
+                var pctStr = pct === null ? '<span class="tv-nodata">' + tvT('no data yet', 'لا توجد بيانات بعد') + '</span>' : (pct + '% <span class="tv-frac">(' + agg.c + '/' + agg.t + ')</span>');
                 var color = pct === null ? '' : (pct >= 80 ? '#16a34a' : (pct >= 50 ? '#d97706' : '#dc2626'));
                 var lastMs = lastActiveByUser[m.student_id];
                 var lastStr = lastMs ? timeAgo(lastMs) : '<span class="tv-nodata">—</span>';
                 var weak = weakestBuckets(bucketsByUser[m.student_id]);
                 var vlist = visitsByUser[m.student_id] || [];
                 var mlist = mistakesByUser[m.student_id] || [];
+                var mklist = mocksByUser[m.student_id] || [];
                 var rowId = 'tv-detail-' + classId + '-' + i;
-                var hasDetails = weak.length || vlist.length || mlist.length;
+                var hasDetails = weak.length || vlist.length || mlist.length || mklist.length;
                 var toggle = hasDetails
-                  ? '<button type="button" class="tv-detail-toggle" onclick="document.getElementById(\'' + rowId + '\').classList.toggle(\'tv-show\')">Details ▾</button>'
+                  ? '<button type="button" class="tv-detail-toggle" onclick="document.getElementById(\'' + rowId + '\').classList.toggle(\'tv-show\')">' + tvT('Details ▾', 'التفاصيل ▾') + '</button>'
                   : '';
 
                 var weakHtml = weak.length
@@ -425,13 +506,20 @@
                       var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
                       return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[b.track] || b.track) + '</span> — ' + escT(b.domain) + ': <b>' + wp + '%</b> <span class="tv-frac">(' + b.c + '/' + b.t + ')</span></li>';
                     }).join('') + '</ul>'
-                  : '<p class="tv-nodata">No weak domains identified yet.</p>';
+                  : '<p class="tv-nodata">' + tvT('No weak domains identified yet.', 'لم تُحدد نقاط ضعف بعد.') + '</p>';
 
                 var visitedHtml = vlist.length
                   ? '<ul class="tv-track-list">' + vlist.slice(0, 5).map(function (v) {
-                      return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[v.track] || v.track) + '</span>: ' + v.count + ' visits</li>';
+                      return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[v.track] || v.track) + '</span>: ' + v.count + ' ' + tvT('visits', 'زيارات') + '</li>';
                     }).join('') + '</ul>'
-                  : '<p class="tv-nodata">No tracks visited yet.</p>';
+                  : '<p class="tv-nodata">' + tvT('No tracks visited yet.', 'لا توجد زيارات بعد.') + '</p>';
+
+                var mocksHtml = mklist.length
+                  ? '<ul class="tv-track-list">' + mklist.map(function (mk) {
+                      var sc = mk.scaled ? (' · <b>' + escT(mk.scaled) + '</b>') : '';
+                      return '<li><span class="tv-weak-track">' + escT(mk.paper) + '</span>: <b>' + mk.pct + '%</b> (' + mk.score + '/' + mk.total + ')' + sc + (mk.ts ? ' <span class="tv-frac">(' + timeAgo(mk.ts) + ')</span>' : '') + '</li>';
+                    }).join('') + '</ul>'
+                  : '<p class="tv-nodata">' + tvT('No mock exams logged yet.', 'لا توجد محاكاة مسجلة بعد.') + '</p>';
 
                 var mistakesHtml = mlist.length
                   ? '<div class="tv-mistakes-list">' + mlist.slice(0, 4).map(function (mk) {
@@ -449,13 +537,14 @@
                         + (tAgo ? ' <span class="tv-frac">(' + tAgo + ')</span>' : '')
                         + '</div></div>';
                     }).join('') + '</div>'
-                  : '<p class="tv-nodata">No recent mistakes logged.</p>';
+                  : '<p class="tv-nodata">' + tvT('No recent mistakes logged.', 'لا توجد أخطاء حديثة.') + '</p>';
 
                 var detailRow = '<tr class="tv-detail-row" id="' + rowId + '"><td colspan="4">'
                   + '<div class="tv-detail-grid">'
-                  + '<div class="tv-detail-col"><div class="tv-detail-title">Weakest Skills</div>' + weakHtml + '</div>'
-                  + '<div class="tv-detail-col"><div class="tv-detail-title">Topics Studied</div>' + visitedHtml + '</div>'
-                  + '<div class="tv-detail-col"><div class="tv-detail-title">Recent Mistakes</div>' + mistakesHtml + '</div>'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">' + tvT('Weakest Skills', 'أضعف المهارات') + '</div>' + weakHtml + '</div>'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">' + tvT('Topics Studied', 'المواضيع المدروسة') + '</div>' + visitedHtml + '</div>'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">' + tvT('Mock Exams', 'اختبارات المحاكاة') + '</div>' + mocksHtml + '</div>'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">' + tvT('Recent Mistakes', 'أحدث الأخطاء') + '</div>' + mistakesHtml + '</div>'
                   + '</div>'
                   + '</td></tr>';
                 return '<tr><td>' + label + '</td><td' + (color ? ' style="color:' + color + ';font-weight:700"' : '') + '>' + pctStr + '</td><td>' + lastStr + '</td><td>' + toggle + '</td></tr>' + detailRow;
@@ -470,11 +559,11 @@
     var c = _classesById[classId] || { name: 'Class' };
     var roster = _rostersById[classId];
     if (!roster || !roster.members || !roster.members.length) {
-      window.alert('No roster data to export yet. Please wait for the roster to load.');
+      window.alert(tvT('No roster data to export yet. Please wait for the roster to load.', 'لا توجد بيانات طلاب للتصدير بعد.'));
       return;
     }
     var rows = [
-      ['Student Name', 'Overall Accuracy (%)', 'Correct Answers', 'Total Attempted', 'Last Active', 'Tracks Studied', 'Weakest Topics', 'Recent Mistakes Count']
+      ['Student Name', 'Overall Accuracy (%)', 'Correct Answers', 'Total Attempted', 'Last Active', 'Tracks Studied', 'Weakest Topics', 'Latest Mock Score', 'Recent Mistakes Count']
     ];
     roster.members.forEach(function (m, i) {
       var agg = roster.byUser[m.student_id] || { c: 0, t: 0 };
@@ -489,6 +578,8 @@
         var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
         return (TRACK_LABELS[b.track] || b.track) + ': ' + b.domain + ' (' + wp + '%)';
       }).join('; ');
+      var latestMock = (roster.mocksByUser && roster.mocksByUser[m.student_id] && roster.mocksByUser[m.student_id][0]) || null;
+      var latestMockStr = latestMock ? (latestMock.paper + ': ' + latestMock.pct + '%' + (latestMock.scaled ? ' [' + latestMock.scaled + ']' : '')) : 'None';
       var mistakesCount = (roster.mistakesByUser[m.student_id] || []).length;
 
       rows.push([
@@ -499,6 +590,7 @@
         lastStr,
         visited || 'None',
         weak || 'None',
+        latestMockStr,
         mistakesCount
       ]);
     });
@@ -526,7 +618,7 @@
     var c = _classesById[classId] || { name: 'Class' };
     var roster = _rostersById[classId];
     if (!roster || !roster.members || !roster.members.length) {
-      window.alert('No roster data to export yet. Please wait for the roster to load.');
+      window.alert(tvT('No roster data to export yet. Please wait for the roster to load.', 'لا توجد بيانات طلاب للتصدير بعد.'));
       return;
     }
 
@@ -544,7 +636,7 @@
       + '<h2>ClipSAT — Class Roster: ' + escT(c.name) + ' (' + escT(c.code) + ')</h2>'
       + '<p>Exported: ' + new Date().toLocaleDateString() + '</p>'
       + '<table><thead><tr>'
-      + '<th>Student Name</th><th>Accuracy</th><th>Correct</th><th>Total</th><th>Last Active</th><th>Tracks Studied</th><th>Weakest Topics</th><th>Logged Mistakes</th>'
+      + '<th>Student Name</th><th>Accuracy</th><th>Correct</th><th>Total</th><th>Last Active</th><th>Tracks Studied</th><th>Weakest Topics</th><th>Latest Mock Score</th><th>Logged Mistakes</th>'
       + '</tr></thead><tbody>';
 
     roster.members.forEach(function (m, i) {
@@ -562,6 +654,8 @@
         var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
         return escT(TRACK_LABELS[b.track] || b.track) + ': ' + escT(b.domain) + ' (' + wp + '%)';
       }).join('<br>');
+      var latestMock = (roster.mocksByUser && roster.mocksByUser[m.student_id] && roster.mocksByUser[m.student_id][0]) || null;
+      var latestMockStr = latestMock ? (escT(latestMock.paper) + ': ' + latestMock.pct + '%' + (latestMock.scaled ? ' [' + escT(latestMock.scaled) + ']' : '')) : '—';
       var mistakesCount = (roster.mistakesByUser[m.student_id] || []).length;
       var pctClass = pct === null ? '' : (pct >= 80 ? 'high' : (pct >= 50 ? 'med' : 'low'));
       var pctText = pct === null ? '—' : (pct + '%');
@@ -574,6 +668,7 @@
         + '<td>' + lastStr + '</td>'
         + '<td>' + (visited || '—') + '</td>'
         + '<td>' + (weak || '—') + '</td>'
+        + '<td>' + latestMockStr + '</td>'
         + '<td>' + mistakesCount + '</td>'
         + '</tr>';
     });
@@ -619,7 +714,7 @@
         _classesById[classId]._assignedTracks = assignments.map(function (a) { return a.track; });
       }
       var total = (mr.data || []).length;
-      if (!assignments.length) { el.innerHTML = '<p class="tv-empty">No assignments yet.</p>'; return; }
+      if (!assignments.length) { el.innerHTML = '<p class="tv-empty">' + tvT('No assignments yet.', 'لا توجد واجبات بعد.') + '</p>'; return; }
       var ids = assignments.map(function (a) { return a.id; });
       return Promise.all([
         sb.from('assignment_completions').select('assignment_id').in('assignment_id', ids),
@@ -642,13 +737,13 @@
             var n = doneCount[a.id] || 0;
             var vst = verStats[a.id];
             var verBadge = vst && vst.count
-              ? ' <span class="tv-frac" style="color:#15803d;font-weight:700">· 🔐 ' + vst.count + ' verified (' + Math.round(vst.pctSum / vst.count) + '% avg)</span>'
+              ? ' <span class="tv-frac" style="color:#15803d;font-weight:700">· 🔐 ' + vst.count + tvT(' verified (', ' موثّق (') + Math.round(vst.pctSum / vst.count) + tvT('% avg)', '% متوسط)') + '</span>'
               : '';
-            var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
-            var linkHtml = parsed.url ? ' <a href="' + escT(parsed.url) + '" target="_blank" rel="noopener" class="tv-frac" style="color:var(--indigo);font-weight:700;text-decoration:underline">↗ Open</a>' : '';
+            var due = a.due_date ? ' <span class="tv-frac">(' + tvT('due ', 'الموعد: ') + escT(a.due_date) + ')</span>' : '';
+            var linkHtml = parsed.url ? ' <a href="' + escT(parsed.url) + '" target="_blank" rel="noopener" class="tv-frac" style="color:var(--indigo);font-weight:700;text-decoration:underline">' + tvT('↗ Open', '↗ فتح') + '</a>' : '';
             return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
-              + escT(parsed.text) + linkHtml + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>' + verBadge
-              + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + aid + '\',\'' + cid + '\')" title="Delete assignment" aria-label="Delete assignment">🗑</button></li>';
+              + escT(parsed.text) + linkHtml + due + ' <span class="tv-frac">(' + n + '/' + total + ' ' + tvT('done', 'أتم') + ')</span>' + verBadge
+              + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + aid + '\',\'' + cid + '\')" title="' + tvT('Delete assignment', 'حذف الواجب') + '" aria-label="Delete assignment">🗑</button></li>';
           }).join('') + '</ul>';
         });
     });
@@ -680,7 +775,7 @@
 
   window.tvDeleteAssignment = function (assignmentId, classId) {
     var sb = getClient();
-    if (!sb || !window.confirm('Delete this assignment? Students will no longer see it.')) return;
+    if (!sb || !window.confirm(tvT('Delete this assignment? Students will no longer see it.', 'حذف هذا الواجب؟ لن يظهر للطلاب بعد الآن.'))) return;
     sb.from('assignments').delete().eq('id', assignmentId)
       .then(function () { loadAssignmentsForTeacher(classId); });
   };
@@ -703,24 +798,25 @@
         donePromise.then(function (dr) {
           var doneSet = {};
           (dr.data || []).forEach(function (row) { doneSet[row.assignment_id] = true; });
-          out.innerHTML = '<div class="tv-joined-label">Classes you’ve joined</div>' + r.data.map(function (m) {
-            var cname = m.classes ? m.classes.name : 'Class';
+          out.innerHTML = '<div class="tv-joined-label">' + tvT('Classes you’ve joined', 'الفصول المنضم إليها') + '</div>' + r.data.map(function (m) {
+            var cname = m.classes ? m.classes.name : tvT('Class', 'فصل');
             var assigns = (m.classes && m.classes.assignments) || [];
             var assignHtml = assigns.length
               ? '<ul class="tv-assign-list">' + assigns.map(function (a) {
                   var aid = safeId(a.id);
                   var parsed = _splitAssignLabel(a.label);
-                  var targetHref = parsed.url || ('/' + encodeURIComponent(a.track || 'sat') + '/');
+                  var trk = encodeURIComponent(a.track || 'sat');
+                  var targetHref = parsed.url || ((isAr() ? '/ar/' : '/') + trk + '/');
                   var done = !!doneSet[a.id];
-                  var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
+                  var due = a.due_date ? ' <span class="tv-frac">(' + tvT('due ', 'الموعد: ') + escT(a.due_date) + ')</span>' : '';
                   return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
                     + escT(parsed.text) + due
-                    + ' <a href="' + escT(targetHref) + '" class="tv-done" style="text-decoration:none;margin-inline-end:6px">▶ Open</a>'
-                    + '<button type="button" class="' + (done ? 'tv-done tv-done-yes' : 'tv-done') + '" onclick="window.tvToggleCompletion(\'' + aid + '\',' + (!done) + ',this)">' + (done ? '✓ Done' : 'Mark done') + '</button></li>';
+                    + ' <a href="' + escT(targetHref) + '" class="tv-done" style="text-decoration:none;margin-inline-end:6px">' + tvT('▶ Open', '▶ فتح') + '</a>'
+                    + '<button type="button" class="' + (done ? 'tv-done tv-done-yes' : 'tv-done') + '" onclick="window.tvToggleCompletion(\'' + aid + '\',' + (!done) + ',this)">' + (done ? tvT('✓ Done', '✓ مكتمل') : tvT('Mark done', 'تم الإنجاز')) + '</button></li>';
                 }).join('') + '</ul>'
               : '';
             return '<div class="tv-joined-row"><span>' + escT(cname) + '</span>'
-              + '<button class="tv-leave" onclick="window.tvLeaveClass(\'' + safeId(m.class_id) + '\')">Leave</button></div>' + assignHtml;
+              + '<button class="tv-leave" onclick="window.tvLeaveClass(\'' + safeId(m.class_id) + '\')">' + tvT('Leave', 'مغادرة') + '</button></div>' + assignHtml;
           }).join('');
         });
       });
@@ -738,7 +834,7 @@
       : sb.from('assignment_completions').delete().eq('assignment_id', assignmentId).eq('student_id', uid);
     action.then(function (r) {
       if (r.error || !btn) return;
-      btn.textContent = markDone ? '✓ Done' : 'Mark done';
+      btn.textContent = markDone ? tvT('✓ Done', '✓ مكتمل') : tvT('Mark done', 'تم الإنجاز');
       btn.className = markDone ? 'tv-done tv-done-yes' : 'tv-done';
       btn.setAttribute('onclick', "window.tvToggleCompletion('" + assignmentId + "'," + (!markDone) + ",this)");
     });
@@ -755,8 +851,13 @@
   }
   document.addEventListener('clipsat:auth-changed', function () {
     syncTeacherBtnVisibility();
-    var m = document.getElementById('teacherViewModal');
-    if (m && m.classList.contains('open') && isReady()) refreshAll();
+    var m = document.getElementById('teacher-view-modal');
+    if (m && m.classList.contains('show') && isReady()) refreshAll();
+  });
+  document.addEventListener('clipsat:locale-changed', function () {
+    syncModalLocale();
+    var m = document.getElementById('teacher-view-modal');
+    if (m && m.classList.contains('show') && isReady()) refreshAll();
   });
   var tries = 0;
   var poll = setInterval(function () {

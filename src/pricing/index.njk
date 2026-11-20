@@ -435,7 +435,7 @@ isRtl: false
         isAr ? 'يرجى تسجيل الدخول أولاً لربط اشتراك ClipSAT Plus بحسابك السحابي.' : 'Please sign in first so ClipSAT Plus is provisioned directly onto your account.',
         false
       );
-      if (typeof window.openCloudAuth === 'function') window.openCloudAuth();
+      if (typeof window.openCloudAuthModal === 'function') window.openCloudAuthModal();
       return;
     }
 
@@ -485,7 +485,7 @@ isRtl: false
       : (document.documentElement.lang === 'ar');
     var cloud = window.ClipSATCloud;
     if (!cloud || typeof cloud.isSignedIn !== 'function' || !cloud.isSignedIn()) {
-      if (typeof window.openCloudAuth === 'function') window.openCloudAuth();
+      if (typeof window.openCloudAuthModal === 'function') window.openCloudAuthModal();
       return;
     }
     setCheckoutStatus(isAr ? 'جارٍ التحقق من حالة اشتراكك…' : 'Checking your subscription status…', false);
@@ -521,26 +521,46 @@ isRtl: false
     });
   };
 
+  function queryLiveEntitlement(cloud) {
+    var b = document.getElementById('plus-plan-active-banner');
+    if (!cloud || !cloud.configured || typeof cloud.isSignedIn !== 'function' || !cloud.isSignedIn()) {
+      if (b && window.location.search.indexOf('checkout=success') === -1) b.hidden = true;
+      return;
+    }
+    var sb = typeof cloud.getClient === 'function' ? cloud.getClient() : null;
+    if (!sb) return;
+    sb.from('ai_plans').select('tier,paid_until,daily_credits').maybeSingle().then(function(res) {
+      var active = !!(res && res.data && res.data.tier === 'paid' && (!res.data.paid_until || Date.parse(res.data.paid_until) > Date.now()));
+      if (b) b.hidden = !active && window.location.search.indexOf('checkout=success') === -1;
+    }, function() {});
+  }
+
   function checkLiveEntitlementBanner() {
     if (window.location.search.indexOf('checkout=success') !== -1) {
       var b = document.getElementById('plus-plan-active-banner');
       if (b) b.hidden = false;
       setCheckoutStatus('🎉 ClipSAT Plus activated! Your 200 daily AI credits and cloud sync are live.', false);
     }
-    var cloud = window.ClipSATCloud;
-    if (!cloud || !cloud.configured || typeof cloud.isSignedIn !== 'function' || !cloud.isSignedIn()) return;
-    var sb = typeof cloud.getClient === 'function' ? cloud.getClient() : null;
-    if (!sb) return;
-    sb.from('ai_plans').select('tier,paid_until,daily_credits').maybeSingle().then(function(res) {
-      if (res && res.data && res.data.tier === 'paid') {
-        var exp = res.data.paid_until ? Date.parse(res.data.paid_until) : Infinity;
-        if (exp > Date.now()) {
-          var b = document.getElementById('plus-plan-active-banner');
-          if (b) b.hidden = false;
+    var tries = 0;
+    function waitForCloud() {
+      var cloud = window.ClipSATCloud;
+      if (cloud) {
+        if (cloud.configured === false) return;
+        if (cloud.ready && typeof cloud.ready.then === 'function') {
+          cloud.ready.then(function() { queryLiveEntitlement(cloud); }, function() {});
+        } else {
+          queryLiveEntitlement(cloud);
         }
+        return;
       }
-    }, function() {});
+      if (++tries < 50) setTimeout(waitForCloud, 100);
+    }
+    waitForCloud();
   }
+
+  document.addEventListener('clipsat:auth-changed', function() {
+    if (window.ClipSATCloud) queryLiveEntitlement(window.ClipSATCloud);
+  });
 
   document.addEventListener('DOMContentLoaded', function() {
     window.setBilling(_currentCycle);

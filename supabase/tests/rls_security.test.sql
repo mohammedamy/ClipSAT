@@ -14,7 +14,7 @@
 
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(28);
+select plan(34);
 
 -- ── 1. Structural RLS assertion across all public tables ──────────────────────
 select is(
@@ -52,6 +52,14 @@ insert into public.ai_plans (user_id, tier, daily_credits)
 values ('aaaaaaaa-0000-4000-8000-000000000001', 'paid', 200)
 on conflict (user_id) do update set tier = 'paid', daily_credits = 200;
 
+insert into public.mock_exam_attempts (user_id, attempt_ts, track, paper, score, total, pct, scaled)
+values ('aaaaaaaa-0000-4000-8000-000000000001', 1700000005000, 'sat', 'SAT Mock 1', 38, 44, 86, '730')
+on conflict (user_id, attempt_ts, track) do nothing;
+
+insert into public.user_study_data (user_id, custom_cards, starred_cards, badges)
+values ('aaaaaaaa-0000-4000-8000-000000000001', '[{"id":"c1","f":"2+2","b":"4"}]'::jsonb, '{"c1":true}'::jsonb, '["first-step"]'::jsonb)
+on conflict (user_id) do nothing;
+
 -- ── 2. Anonymous role (`anon`) isolation & RPC revocations ────────────────────
 set local role anon;
 select set_config('request.jwt.claims', '{}', true);
@@ -61,6 +69,8 @@ select is((select count(*)::int from public.profiles), 0, 'anon sees 0 rows in p
 select is((select count(*)::int from public.question_error_flags), 0, 'anon sees 0 rows in public.question_error_flags');
 select is((select count(*)::int from public.ai_plans), 0, 'anon sees 0 rows in public.ai_plans');
 select is((select count(*)::int from public.billing_webhook_events), 0, 'anon sees 0 rows in public.billing_webhook_events');
+select is((select count(*)::int from public.mock_exam_attempts), 0, 'anon sees 0 rows in public.mock_exam_attempts');
+select is((select count(*)::int from public.user_study_data), 0, 'anon sees 0 rows in public.user_study_data');
 
 select throws_ok(
   $$select public.use_ai_quota('aaaaaaaa-0000-4000-8000-000000000001'::uuid, 20, 1, 10)$$,
@@ -92,6 +102,12 @@ select throws_ok(
   'anon cannot execute resolve_question_error RPC'
 );
 
+select throws_ok(
+  $$select * from public.get_my_daily_usage()$$,
+  null,
+  'anon cannot execute get_my_daily_usage RPC'
+);
+
 -- ── 3. Cross-student (`student_b` vs `student_a`) strict isolation ────────────
 set local role authenticated;
 select set_config('request.jwt.claim.sub', 'bbbbbbbb-0000-4000-8000-000000000002', true);
@@ -100,6 +116,8 @@ select set_config('request.jwt.claims', '{"sub":"bbbbbbbb-0000-4000-8000-0000000
 select is((select count(*)::int from public.mistakes where user_id = 'aaaaaaaa-0000-4000-8000-000000000001'), 0, 'student_b cannot read student_a mistakes');
 select is((select count(*)::int from public.accuracy where user_id = 'aaaaaaaa-0000-4000-8000-000000000001'), 0, 'student_b cannot read student_a accuracy');
 select is((select count(*)::int from public.ai_plans where user_id = 'aaaaaaaa-0000-4000-8000-000000000001'), 0, 'student_b cannot read student_a ai_plans');
+select is((select count(*)::int from public.mock_exam_attempts where user_id = 'aaaaaaaa-0000-4000-8000-000000000001'), 0, 'student_b cannot read student_a mock_exam_attempts');
+select is((select count(*)::int from public.user_study_data where user_id = 'aaaaaaaa-0000-4000-8000-000000000001'), 0, 'student_b cannot read student_a user_study_data');
 
 select throws_ok(
   $$insert into public.ai_plans (user_id, tier, daily_credits) values ('bbbbbbbb-0000-4000-8000-000000000002', 'paid', 200)$$,
@@ -160,6 +178,12 @@ create temp table _sub_out as
 select ok(
   (select verify_code like 'CS-VERIFIED-%' from _sub_out limit 1),
   'submit_verified_assignment issues CS-VERIFIED HMAC token'
+);
+
+select is(
+  (select (paid and ai_cap = 200) from public.get_my_daily_usage()),
+  true,
+  'student_a get_my_daily_usage returns paid=true and ai_cap=200'
 );
 
 -- ── 5. Teacher track-scoped visibility & certificate verification ─────────────
