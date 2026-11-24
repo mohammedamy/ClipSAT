@@ -137,6 +137,7 @@
           var shell = '<!doctype html><html><head><meta charset="utf-8"><title>' + tSafe + ' — ClipSAT PDF</title><style>' + barCss + '</style></head><body>'
             + '<div class="b"><span class="t">' + tSafe + '</span><div class="a">'
             + '<button type="button" class="btn" onclick="var f=document.getElementById(\'cs-pdf-frame\');try{f.contentWindow.focus();f.contentWindow.print()}catch(_){window.open(f.src,\'_blank\')}">🖨 Print</button>'
+            + '<a class="btn" href="' + blobUrl + '" target="_blank" rel="noopener">↗ Open Tab</a>'
             + '<a class="btn p" href="' + blobUrl + '" download="' + _esc(fileName) + '">⬇ Download PDF</a>'
             + '</div></div>'
             + '<iframe id="cs-pdf-frame" src="' + blobUrl + '" title="' + tSafe + '"></iframe></body></html>';

@@ -428,7 +428,12 @@ function testConfigsPoliciesAndBanks() {
   assert(!headers.includes("'unsafe-eval'"), "_headers must not contain 'unsafe-eval'");
   assert(headers.includes('Strict-Transport-Security:'), '_headers must include HSTS');
   assert(headers.includes("frame-ancestors 'self'"), '_headers must include frame-ancestors');
+  assert(headers.includes("frame-src 'self' blob:"), '_headers must allow blob: frames for inline PDF viewer');
+  assert(headers.includes("object-src 'self' blob:"), '_headers must allow blob: objects for inline PDF viewer');
   assert(headers.includes('https://www.desmos.com'), '_headers must allow https://www.desmos.com embeds');
+  const headNjk = fs.readFileSync(path.join(ROOT, 'src/_includes/shell/head.njk'), 'utf8');
+  assert(headNjk.includes("frame-src 'self' blob:"), 'head.njk meta CSP must allow blob: frames for inline PDF viewer');
+  assert(headNjk.includes("object-src 'self' blob:"), 'head.njk meta CSP must allow blob: objects for inline PDF viewer');
 
   // 2. Supabase SQL lockdown
   const schema = fs.readFileSync(path.join(ROOT, 'supabase/schema.sql'), 'utf8');

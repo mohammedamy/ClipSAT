@@ -1098,16 +1098,23 @@ test.describe('site-wide: print stylesheet, dark-mode print reset, and RTL figur
     expect(pqSvgBox.height).toBeLessThanOrEqual(210);
     await printPopup.close();
 
-    // 2. Verify clicking a worksheet PDF link opens inline PDF viewer tab (blob URL inside #cs-pdf-frame)
+    // 2. Verify clicking a worksheet PDF link opens inline PDF viewer tab (blob URL inside #cs-pdf-frame) with 0 CSP/framing errors
     await page.waitForSelector('.worksheet-library .wl-link.ws', { timeout: 10000 });
+    const pdfPopupErrors = [];
+    page.context().on('page', (p) => {
+      p.on('console', (m) => { if (m.type() === 'error') pdfPopupErrors.push(m.text()); });
+      p.on('pageerror', (e) => pdfPopupErrors.push(e.message));
+    });
     const pdfPopupPromise = page.waitForEvent('popup');
     await page.locator('.worksheet-library a.wl-link.ws[href$=".pdf"]').first().click();
     const pdfPopup = await pdfPopupPromise;
     await pdfPopup.waitForSelector('#cs-pdf-frame[src^="blob:"]', { timeout: 10000 });
+    await pdfPopup.waitForTimeout(800);
     const frameSrc = await pdfPopup.locator('#cs-pdf-frame').getAttribute('src');
     const dlAttr = await pdfPopup.locator('a[download$=".pdf"]').getAttribute('download');
     expect(frameSrc).toMatch(/^blob:/);
     expect(dlAttr).toMatch(/\.pdf$/);
+    expect(pdfPopupErrors, pdfPopupErrors.join('\n')).toEqual([]);
     await pdfPopup.close();
   });
 });
