@@ -1070,22 +1070,31 @@ test.describe('site-wide: print stylesheet, dark-mode print reset, and RTL figur
       { timeout: 10000 }
     );
 
-    // 1. Verify printCQ renders a compact diagram (not stretching to 1280px viewport width)
+    // 1. Verify printCQ renders balanced diagrams (neither full-viewport giant nor tiny sphere)
     const printPopupPromise = page.waitForEvent('popup');
     await page.evaluate(() => {
       const wrap = document.createElement('div');
       wrap.className = 'cq-paper';
-      const svgMarkup = window._renderFig({
+      const triSvg = window._renderFig({
         type: 'triangle',
         vertices: [[0, 0], [6, 0], [0, 8]],
         labels: ['C', 'B', 'A'],
         sides: ['60', '68', '?'],
         right: 0,
       });
+      const sphereSvg = window._renderFig({
+        type: 'geometry_3d',
+        solid: 'sphere',
+        radius: 9,
+        height: 18,
+        labels: { r: 'r = 9' },
+      });
       wrap.innerHTML =
-        '<div class="cq-head"><span class="cq-meta">1 question</span><button class="cq-print-btn" type="button">Print</button></div>'
-        + '<div class="cq-item"><div class="cq-qt">Find AC.</div><div class="cq-figure">' + svgMarkup + '</div>'
-        + '<div class="cq-opt"><span class="cq-ct">32</span></div></div>';
+        '<div class="cq-head"><span class="cq-meta">2 questions</span><button class="cq-print-btn" type="button">Print</button></div>'
+        + '<div class="cq-item"><div class="cq-qt">Find AC.</div><div class="cq-figure">' + triSvg + '</div>'
+        + '<div class="cq-opt"><span class="cq-ct">32</span></div></div>'
+        + '<div class="cq-item"><div class="cq-qt">Sphere radius 9.</div><div class="cq-figure">' + sphereSvg + '</div>'
+        + '<div class="cq-opt"><span class="cq-ct">972</span></div></div>';
       document.body.appendChild(wrap);
       window.printCQ(wrap.querySelector('.cq-print-btn'));
     });
@@ -1093,9 +1102,12 @@ test.describe('site-wide: print stylesheet, dark-mode print reset, and RTL figur
     await printPopup.waitForLoadState('domcontentloaded');
     const pqSvgBox = await printPopup.locator('.pq-fig svg').first().boundingBox();
     expect(pqSvgBox).not.toBeNull();
-    expect(pqSvgBox.width).toBeGreaterThan(80);
-    expect(pqSvgBox.width).toBeLessThanOrEqual(270);
-    expect(pqSvgBox.height).toBeLessThanOrEqual(210);
+    expect(pqSvgBox.width).toBeGreaterThanOrEqual(200);
+    expect(pqSvgBox.width).toBeLessThanOrEqual(360);
+    expect(pqSvgBox.height).toBeLessThanOrEqual(265);
+    const sphereCircleBox = await printPopup.locator('.pq-fig').nth(1).locator('svg circle').first().boundingBox();
+    expect(sphereCircleBox).not.toBeNull();
+    expect(sphereCircleBox.width).toBeGreaterThanOrEqual(110);
     await printPopup.close();
 
     // 2. Verify clicking a worksheet PDF link opens inline PDF viewer tab (blob URL inside #cs-pdf-frame) with 0 CSP/framing errors

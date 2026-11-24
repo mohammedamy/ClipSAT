@@ -1051,7 +1051,7 @@
       if(fig.type==='table'||fig.type==='two_way_table'||fig.type==='twoWayTable'||fig.type==='twowaytable') return inner;
       var isGeom3d=(fig.type==='geometry_3d'||fig.type==='geometry3d'||fig.type==='geom3d');
       var capW=(+fig.w>=120 ? +fig.w : (!isGeom3d && +fig.width>=120 ? +fig.width : 460));
-      return '<span style="display:inline-block;width:100%;max-width:'+capW+'px">'+inner+'</span>';
+      return '<span style="display:block;width:fit-content;margin:0 auto;max-width:'+capW+'px">'+inner+'</span>';
     }
     var isCoordGraph = (fig.type==='fn'||fig.type==='axes'||fig.type==='graph');
     var W = (+fig.w>40 ? (isCoordGraph ? Math.max(380, +fig.w) : +fig.w) : (isCoordGraph ? 400 : (fig.type==='similar'||fig.type==='polygon'||fig.type==='rect'?340:280)));
@@ -2848,6 +2848,9 @@ function renderGeom2D(s){
     (sh.pts||[]).forEach(function(p){allx.push(p[0]);ally.push(p[1]);});
     if(sh.cx!=null){allx.push(sh.cx-sh.r,sh.cx+sh.r);ally.push(sh.cy-sh.r,sh.cy+sh.r);}
   });
+  (s.points||[]).forEach(function(p){
+    if(p&&p.x!=null&&p.y!=null){allx.push(+p.x);ally.push(+p.y);}
+  });
   if(!allx.length){allx=[0,4];ally=[0,3];}
   var mxmin=Math.min.apply(null,allx),mxmax=Math.max.apply(null,allx);
   var mymin=Math.min.apply(null,ally),mymax=Math.max.apply(null,ally);
@@ -2971,6 +2974,44 @@ function renderGeom2D(s){
       if(sh.height_label){var hlx=_clampLabelX(rx2+rw+12,sh.height_label,11,'start',6,W-6),hly=ry2+rh/2;svg+='<text x="'+hlx.toFixed(1)+'" y="'+hly.toFixed(1)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="start" dominant-baseline="middle" font-weight="600">'+esc(sh.height_label)+'</text>';}
     }
   });
+
+  if(Array.isArray(s.points)&&s.points.length){
+    var ptMap={}, spPts=[];
+    s.points.forEach(function(p){
+      if(!p||p.x==null||p.y==null) return;
+      var k=String(p.id||p.name||p.label||'');
+      if(k) ptMap[k]=p;
+      spPts.push([sx(+p.x), sy(+p.y), p]);
+    });
+    if(spPts.length){
+      var pcx=spPts.reduce(function(a,v){return a+v[0];},0)/spPts.length;
+      var pcy=spPts.reduce(function(a,v){return a+v[1];},0)/spPts.length;
+      (s.segments||[]).forEach(function(seg){
+        var pa=ptMap[seg.from], pb=ptMap[seg.to];
+        if(!pa||!pb) return;
+        var ax=sx(+pa.x), ay=sy(+pa.y), bx=sx(+pb.x), by=sy(+pb.y);
+        svg+='<line x1="'+ax.toFixed(1)+'" y1="'+ay.toFixed(1)+'" x2="'+bx.toFixed(1)+'" y2="'+by.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linecap="round"/>';
+        if(seg.label){
+          var mx=(ax+bx)/2, my=(ay+by)/2, dxS=bx-ax, dyS=by-ay, dlen=Math.hypot(dxS,dyS)||1;
+          var nx=-dyS/dlen, ny=dxS/dlen;
+          if((mx+nx-pcx)*nx+(my+ny-pcy)*ny<0){nx=-nx;ny=-ny;}
+          var slx=_clampLabelX(mx+nx*13, seg.label, 11, 'middle', 8, W-8);
+          var sly=Math.max(15, Math.min(H-7, my+ny*13));
+          svg+='<text x="'+slx.toFixed(1)+'" y="'+sly.toFixed(1)+'" font-size="11" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" dominant-baseline="middle" font-weight="700" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(seg.label)+'</text>';
+        }
+      });
+      spPts.forEach(function(item){
+        var px=item[0], py=item[1], p=item[2];
+        svg+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="3.2" fill="'+FIG_INK+'"/>';
+        if(p.label){
+          var vx=px-pcx, vy=py-pcy, vl=Math.hypot(vx,vy)||1;
+          var lx=_clampLabelX(px+(vx/vl)*14, p.label, 12.5, 'middle', 8, W-8);
+          var ly=Math.max(15, Math.min(H-8, py+(vy/vl)*14));
+          svg+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" font-size="12.5" fill="'+FIG_INK+'" text-anchor="middle" dominant-baseline="middle" font-weight="700" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+esc(p.label)+'</text>';
+        }
+      });
+    }
+  }
 
   if(s.title) svg+=_svgTitle(s.title, W, 14, 10.5, FIG_INK);
   svg+='</svg>';
@@ -3153,15 +3194,22 @@ function renderGeom3D(s){
     if(lbs6.h){var mh6=iso(l6+0.3,h6/2,0);svg+='<text x="'+(mh6.x+6).toFixed(1)+'" y="'+mh6.y.toFixed(1)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="start" font-weight="600">'+esc(lbs6.h)+'</text>';}
   }
 
-  if(solid==='sphere'){
-    var r5=Math.min(lw,dw,ht)/2;
-    var c5=iso(0,r5,0);
-    var rp5=r5*sc;
-    svg+='<circle cx="'+c5.x.toFixed(1)+'" cy="'+c5.y.toFixed(1)+'" r="'+rp5.toFixed(1)+'" fill="url(#sphereGrad)" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
-    svg+='<defs><radialGradient id="sphereGrad" cx="38%" cy="35%"><stop offset="0%" stop-color="'+FIG_INDIGO_FILL+'"/><stop offset="100%" stop-color="'+FIG_INDIGO2+'" stop-opacity="0.55"/></radialGradient></defs>';
-    svg+='<ellipse cx="'+c5.x.toFixed(1)+'" cy="'+c5.y.toFixed(1)+'" rx="'+rp5.toFixed(1)+'" ry="'+(rp5*0.35).toFixed(1)+'" fill="none" stroke="'+FIG_INDIGO+'" stroke-width="1" stroke-dasharray="5 3"/>';
+  if(solid==='sphere'||solid==='hemisphere'){
+    var cx5=W/2, cy5=H/2+(s.title?8:0), rp5=74, ey5=rp5*0.32;
+    svg+='<defs><radialGradient id="sphereGrad" cx="36%" cy="32%"><stop offset="0%" stop-color="'+FIG_BG+'" stop-opacity="0.95"/><stop offset="45%" stop-color="'+FIG_INDIGO_FILL+'"/><stop offset="100%" stop-color="'+FIG_INDIGO2+'" stop-opacity="0.55"/></radialGradient></defs>';
+    svg+='<circle cx="'+cx5.toFixed(1)+'" cy="'+cy5.toFixed(1)+'" r="'+rp5+'" fill="url(#sphereGrad)" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+    svg+='<path d="M'+(cx5-rp5)+','+cy5+' A'+rp5+','+ey5.toFixed(1)+' 0 0,1 '+(cx5+rp5)+','+cy5+'" fill="none" stroke="'+FIG_INDIGO+'" stroke-width="1.1" stroke-dasharray="5 3"/>';
+    svg+='<path d="M'+(cx5-rp5)+','+cy5+' A'+rp5+','+ey5.toFixed(1)+' 0 0,0 '+(cx5+rp5)+','+cy5+'" fill="none" stroke="'+FIG_INDIGO+'" stroke-width="1.5"/>';
+    svg+='<circle cx="'+cx5.toFixed(1)+'" cy="'+cy5.toFixed(1)+'" r="2.6" fill="'+FIG_INDIGO+'"/>';
     var lbs5=s.labels||{};
-    if(lbs5.r) svg+='<text x="'+(c5.x+rp5/1.4)+'" y="'+(c5.y-rp5/1.4)+'" font-size="11" fill="'+FIG_INDIGO+'" font-weight="600">'+esc(lbs5.r)+'</text>';
+    if(lbs5.d){
+      svg+='<line x1="'+(cx5-rp5)+'" y1="'+cy5+'" x2="'+(cx5+rp5)+'" y2="'+cy5+'" stroke="'+FIG_INDIGO+'" stroke-width="1.5" stroke-dasharray="4 2"/>';
+      svg+='<text x="'+cx5.toFixed(1)+'" y="'+(cy5-10).toFixed(1)+'" font-size="12" fill="'+FIG_INDIGO+'" text-anchor="middle" font-weight="700" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+esc(lbs5.d)+'</text>';
+    } else {
+      svg+='<line x1="'+cx5.toFixed(1)+'" y1="'+cy5.toFixed(1)+'" x2="'+(cx5+rp5)+'" y2="'+cy5.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.5" stroke-dasharray="4 2"/>';
+      if(lbs5.r) svg+='<text x="'+(cx5+rp5*0.5).toFixed(1)+'" y="'+(cy5-9).toFixed(1)+'" font-size="12" fill="'+FIG_INDIGO+'" text-anchor="middle" font-weight="700" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+esc(lbs5.r)+'</text>';
+    }
+    if(lbs5.h&&lbs5.h!==lbs5.r) svg+=dimLine(cx5+rp5+16,cy5-rp5,cy5+rp5,lbs5.h);
   }
 
   if(solid==='cross_section'){
@@ -5726,8 +5774,8 @@ function _polishRenderedSvg(html, spec){
     if(vbM){
       var vbW = parseFloat(vbM[1]), vbH = parseFloat(vbM[2]);
       if(vbW > 0 && vbH > 0){
-        var maxW = (spec && spec.wide) ? 360 : (spec && +spec.w >= 120 ? Math.min(285, +spec.w) : 285);
-        var maxH = 200;
+        var maxW = (spec && spec.wide) ? 430 : (spec && +spec.w >= 120 ? Math.min(360, +spec.w) : 350);
+        var maxH = 245;
         var wM = a.match(/\bwidth="([\d.]+)"/i);
         var hM = a.match(/\bheight="([\d.]+)"/i);
         if(!wM || !hM){

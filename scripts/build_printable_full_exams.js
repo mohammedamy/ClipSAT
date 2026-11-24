@@ -65,10 +65,10 @@ global.document = {
   getElementById: () => ({ src: '/clipsat-mark.png' }),
   querySelectorAll: () => [],
   querySelector: () => null,
-  body: { classList: { add: () => {}, remove: () => {}, contains: () => false } },
+  body: { classList: { add: () => { }, remove: () => { }, contains: () => false } },
   documentElement: { lang: 'en' },
-  addEventListener: () => {},
-  dispatchEvent: () => {},
+  addEventListener: () => { },
+  dispatchEvent: () => { },
   readyState: 'complete'
 };
 
@@ -817,7 +817,7 @@ function normalizeWrittenItem(q, partMeta, trackId, spec, posIdx, totalInPart, r
       const m1 = Math.max(2, Math.floor(defaultMarks * 0.4));
       const m2 = defaultMarks - m1;
       stem += `\n\n(a) Write down the key mathematical relationship or initial equation required to model this problem. [${m1} marks]\n` +
-              `(b) Hence, or otherwise, find the exact required analytical solution, showing all working clearly. [${m2} marks]`;
+        `(b) Hence, or otherwise, find the exact required analytical solution, showing all working clearly. [${m2} marks]`;
     } else if (!/\[\d+\s*(marks?|m)?\]/i.test(stem)) {
       stem += ` [${defaultMarks} marks]`;
     }
@@ -1548,7 +1548,7 @@ body[dir="rtl"] .fep-marks-tag { margin-left: 0; margin-right: auto; }
 }
 body[dir="rtl"] .fep-figure { margin: 6pt 26pt 8pt 0; }
 .fep-figure svg.mfig-svg, .fep-figure > svg {
-  width: auto !important; max-width: 195pt !important; max-height: 142pt !important;
+  width: auto !important; max-width: 260pt !important; max-height: 190pt !important;
   height: auto !important; display: block !important; margin: 0 auto !important;
   direction: ltr !important; unicode-bidi: isolate;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
@@ -1771,8 +1771,8 @@ function renderPrintableDocument({
         <span><strong>ClipSAT</strong> &middot; ${escHtml(spec.org || 'Official Curriculum Examination')}</span>
       </span>
       <span class="pb-badge ${isAnswerKey ? 'pb-badge-ak' : ''}">${isAnswerKey
-        ? (isAr ? 'مفتاح الإجابة والحلول النموذجية' : 'Official Answer Key & Mark Scheme')
-        : (isAr ? `الاختبار الكامل #${examNumber}` : `Official Format Paper · Exam #${examNumber}`)}</span>
+      ? (isAr ? 'مفتاح الإجابة والحلول النموذجية' : 'Official Answer Key & Mark Scheme')
+      : (isAr ? `الاختبار الكامل #${examNumber}` : `Official Format Paper · Exam #${examNumber}`)}</span>
     </div>
 `;
 
@@ -1811,17 +1811,17 @@ function renderPrintableDocument({
     const instrList = isAr
       ? (trackId === 'qudrat'
         ? [
-            `يتكون هذا الاختبار من (${totalQ}) سؤالاً من نوع الاختيار من متعدد والمقارنات الكمية، والزمن المخصص (${spec.totalTime}).`,
-            'يُمنع منعاً باتاً استخدام الآلة الحاسبة في جميع أقسام اختبار القدرات العامة (الورقي والمحوسب).',
-            'في أسئلة المقارنات الكمية: (أ) القيمة الأولى أكبر، (ب) القيمة الثانية أكبر، (ج) القيمتان متساويتان، (د) المعطيات غير كافية.',
-            'ظلّل دائرة الإجابة الصحيحة في ورقة الإجابة المرفقة؛ لا توجد درجات سالبة للإجابات الخاطئة.'
-          ]
+          `يتكون هذا الاختبار من (${totalQ}) سؤالاً من نوع الاختيار من متعدد والمقارنات الكمية، والزمن المخصص (${spec.totalTime}).`,
+          'يُمنع منعاً باتاً استخدام الآلة الحاسبة في جميع أقسام اختبار القدرات العامة (الورقي والمحوسب).',
+          'في أسئلة المقارنات الكمية: (أ) القيمة الأولى أكبر، (ب) القيمة الثانية أكبر، (ج) القيمتان متساويتان، (د) المعطيات غير كافية.',
+          'ظلّل دائرة الإجابة الصحيحة في ورقة الإجابة المرفقة؛ لا توجد درجات سالبة للإجابات الخاطئة.'
+        ]
         : [
-            `يتكون هذا الاختبار من (${totalQ}) سؤالاً تغطي مقررات الرياضيات للمرحلة الثانوية (نظام المسارات ١، ٢، ٣)، والزمن المخصص (${spec.totalTime}).`,
-            'يُمنع استخدام الآلة الحاسبة منعاً باتاً.',
-            'اختر الإجابة الصحيحة الوحيدة من بين الخيارات الأربعة (أ، ب، ج، د) لكل سؤال.',
-            'لا يُخصم شيء مقابل الإجابات الخاطئة؛ احرص على الإجابة عن جميع الأسئلة.'
-          ])
+          `يتكون هذا الاختبار من (${totalQ}) سؤالاً تغطي مقررات الرياضيات للمرحلة الثانوية (نظام المسارات ١، ٢، ٣)، والزمن المخصص (${spec.totalTime}).`,
+          'يُمنع استخدام الآلة الحاسبة منعاً باتاً.',
+          'اختر الإجابة الصحيحة الوحيدة من بين الخيارات الأربعة (أ، ب، ج، د) لكل سؤال.',
+          'لا يُخصم شيء مقابل الإجابات الخاطئة؛ احرص على الإجابة عن جميع الأسئلة.'
+        ])
       : (spec.instructions || []);
     instrList.forEach(ins => {
       h += `<li>${escHtml(ins)}</li>`;

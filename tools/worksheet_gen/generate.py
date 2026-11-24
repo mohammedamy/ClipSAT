@@ -1051,9 +1051,9 @@ def render_figure(spec):
     with PILImage.open(path) as im:
         px_w, px_h = im.size
     is_wide = ftype in ("table", "two_way_table", "numberline")
-    max_w = 215.0 if is_wide else 170.0
-    max_h = 126.0
-    disp_w = min(float(spec.get("width", 200.0 if is_wide else 162.0)), max_w)
+    max_w = 245.0 if is_wide else 215.0
+    max_h = 160.0
+    disp_w = min(float(spec.get("width", 225.0 if is_wide else 205.0)), max_w)
     disp_h = disp_w * px_h / max(px_w, 1)
     if disp_h > max_h:
         disp_w = disp_w * (max_h / disp_h)

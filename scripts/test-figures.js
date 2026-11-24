@@ -901,8 +901,8 @@ it('Handles bank/content edge-case figure schemas cleanly (pyramid solid, object
   );
 });
 
-it('Normalizes SVG intrinsic sizing (no inline max-width:100% override) and enforces print/PDF caps + in-browser PDF viewer', () => {
-  // 1. Triangle & coordinate SVGs emit numeric width/height (<= 285x200) and never inline max-width:100%
+it('Normalizes SVG intrinsic sizing (no inline max-width:100% override) and enforces balanced print/PDF caps + sphere/point-segment schemas', () => {
+  // 1. Triangle & coordinate SVGs emit bounded width/height (<= 350x245) and never inline max-width:100%
   const triSvg = window._renderFig({
     type: 'triangle',
     vertices: [[0, 0], [4, 0], [0, 3]],
@@ -914,8 +914,8 @@ it('Normalizes SVG intrinsic sizing (no inline max-width:100% override) and enfo
   assert.ok(svgOpen, 'Triangle output must have <svg> opening tag');
   const wM = svgOpen.match(/\bwidth="(\d+(?:\.\d+)?)"/i);
   const hM = svgOpen.match(/\bheight="(\d+(?:\.\d+)?)"/i);
-  assert.ok(wM && Number(wM[1]) > 0 && Number(wM[1]) <= 285, `Triangle SVG width must be bounded <= 285 (got ${wM && wM[1]})`);
-  assert.ok(hM && Number(hM[1]) > 0 && Number(hM[1]) <= 200, `Triangle SVG height must be bounded <= 200 (got ${hM && hM[1]})`);
+  assert.ok(wM && Number(wM[1]) >= 220 && Number(wM[1]) <= 350, `Triangle SVG width must be in [220, 350] (got ${wM && wM[1]})`);
+  assert.ok(hM && Number(hM[1]) >= 140 && Number(hM[1]) <= 245, `Triangle SVG height must be in [140, 245] (got ${hM && hM[1]})`);
   assert.ok(!/style="[^"]*(?:max-width|width)\s*:\s*100%/i.test(svgOpen), 'SVG inline style must not override CSS with max-width:100% / width:100%');
 
   const plotSvg = window.renderMathFigure({
@@ -928,23 +928,60 @@ it('Normalizes SVG intrinsic sizing (no inline max-width:100% override) and enfo
   assert.ok(/\bwidth="\d+"/.test(plotOpen) && /\bheight="\d+"/.test(plotOpen), 'Plot SVGs must include numeric width/height attributes');
   assert.ok(!/style="[^"]*max-width\s*:\s*100%/i.test(plotOpen), 'Plot SVGs must not inline max-width:100%');
 
-  // 2. All print/export surfaces enforce !important pt caps on diagram SVGs
+  // 1b. Sphere 3D diagram (sat-0611) must draw a centered full-scale circle (r >= 65px) regardless of radius=9/height=18
+  const sphereSvg = window._renderFig({
+    type: 'geometry_3d',
+    solid: 'sphere',
+    radius: 9,
+    height: 18,
+    labels: { r: 'r = 9' }
+  });
+  assert.ok(sphereSvg.includes('display:block;width:fit-content;margin:0 auto;'), 'Wrapper span must center diagram cleanly');
+  const sphereCircleM = sphereSvg.match(/<circle\b[^>]*cx="([\d.]+)"[^>]*cy="([\d.]+)"[^>]*r="([\d.]+)"[^>]*stroke="/i);
+  assert.ok(sphereCircleM && Number(sphereCircleM[3]) >= 65, `Sphere circle radius must be >= 65px (got ${sphereCircleM && sphereCircleM[3]})`);
+  assert.ok(sphereSvg.includes('r = 9'), 'Sphere SVG must display radius label r = 9');
+
+  // 1c. Point-segment geometry_2d schema (geo-2687) must render segments and vertex labels
+  const ptSegSvg = window._renderFig({
+    type: 'geometry_2d',
+    xmin: -0.5,
+    xmax: 5.5,
+    ymin: -0.5,
+    ymax: 4.5,
+    points: [
+      { id: 'A', x: 2.5, y: 4, label: 'A' },
+      { id: 'B', x: 0, y: 0, label: 'B' },
+      { id: 'C', x: 5, y: 0, label: 'C' },
+      { id: 'D', x: 1, y: 1.6, label: 'D' },
+      { id: 'E', x: 4, y: 1.6, label: 'E' }
+    ],
+    segments: [
+      { from: 'A', to: 'B' },
+      { from: 'B', to: 'C', label: 'BC' },
+      { from: 'C', to: 'A' },
+      { from: 'D', to: 'E', label: '9' }
+    ]
+  });
+  assert.ok((ptSegSvg.match(/<line\b/g) || []).length >= 4, 'geometry_2d points+segments must render all segments');
+  assert.ok(ptSegSvg.includes('>A<') && ptSegSvg.includes('>BC<') && ptSegSvg.includes('>9<'), 'geometry_2d points+segments must render vertex and segment labels');
+
+  // 2. All print/export surfaces enforce balanced !important pt caps (255-260pt) on diagram SVGs
   const modDir = path.join(__dirname, '..', 'src', 'scripts', 'modules');
   const printChecks = [
-    ['21-print-cq.js', /\.pq-fig svg\.mfig-svg,.*max-width:190pt!important;max-height:140pt!important/],
-    ['04-docx-export.js', /max-width:200pt!important;max-height:145pt!important/],
-    ['20b-teacher-mode.js', /max-width:195pt!important;max-height:140pt!important/],
-    ['02d-exam-print-and-lang.js', /\.fep-figure svg\.mfig-svg,.*max-width:195pt!important;max-height:142pt!important/],
-    ['22b-assign-report.js', /\.fep-figure svg\.mfig-svg,.*max-width:195pt!important;max-height:142pt!important/]
+    ['21-print-cq.js', /\.pq-fig svg\.mfig-svg,.*max-width:260pt!important;max-height:190pt!important/],
+    ['04-docx-export.js', /max-width:260pt!important;max-height:190pt!important/],
+    ['20b-teacher-mode.js', /max-width:255pt!important;max-height:185pt!important/],
+    ['02d-exam-print-and-lang.js', /\.fep-figure svg\.mfig-svg,.*max-width:260pt!important;max-height:190pt!important/],
+    ['22b-assign-report.js', /\.fep-figure svg\.mfig-svg,.*max-width:260pt!important;max-height:190pt!important/]
   ];
   for (const [file, re] of printChecks) {
     const src = fs.readFileSync(path.join(modDir, file), 'utf8');
-    assert.ok(re.test(src), `${file} must enforce !important pt diagram bounds`);
+    assert.ok(re.test(src), `${file} must enforce balanced !important pt diagram bounds`);
   }
 
   const satExamPath = path.join(__dirname, '..', 'public', 'downloads', 'sat', 'full-exam-digital-sat-math-01-exam.html');
   const satExamHtml = fs.readFileSync(satExamPath, 'utf8');
-  assert.ok(/max-width:\s*195pt\s*!important;\s*max-height:\s*142pt\s*!important/.test(satExamHtml), 'Pre-built downloadable full exams must enforce 195pt x 142pt figure bounds');
+  assert.ok(/max-width:\s*260pt\s*!important;\s*max-height:\s*190pt\s*!important/.test(satExamHtml), 'Pre-built downloadable full exams must enforce 260pt x 190pt figure bounds');
 
   // 3. Worksheet library & mock exam wire PDFs and exams through in-browser viewer
   const legalSrc = fs.readFileSync(path.join(modDir, '12-legal-modal.js'), 'utf8');

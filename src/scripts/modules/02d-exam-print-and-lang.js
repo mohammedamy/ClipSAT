@@ -2,111 +2,111 @@
    02d-exam-print-and-lang.js — Exam Language Mode, Copy LaTeX & Print Engine
    Extracted from 02-core-app.js (Pillar 5 Modularization).
    ═══════════════════════════════════════════════════════════════════════════ */
-(function(){
+(function () {
   "use strict";
 
   /* ── Header "More" overflow menu — toggle + outside-click/Escape-to-close ── */
-  (function(){
-    var btn=document.getElementById('navMoreBtn'), panel=document.getElementById('navMorePanel');
-    if(!btn||!panel) return;
-    function closePanel(){ panel.hidden=true; btn.setAttribute('aria-expanded','false'); }
-    function openPanel(){
+  (function () {
+    var btn = document.getElementById('navMoreBtn'), panel = document.getElementById('navMorePanel');
+    if (!btn || !panel) return;
+    function closePanel() { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    function openPanel() {
       if (window.CSNavTree && typeof window.CSNavTree.close === 'function') window.CSNavTree.close();
-      panel.hidden=false; btn.setAttribute('aria-expanded','true');
+      panel.hidden = false; btn.setAttribute('aria-expanded', 'true');
       if (window._ensureTeacherMode) window._ensureTeacherMode();
     }
     window.closeNavMorePanel = closePanel;
     window.openNavMorePanel = openPanel;
-    btn.addEventListener('click',function(e){
+    btn.addEventListener('click', function (e) {
       e.stopPropagation();
-      if(panel.hidden) openPanel(); else closePanel();
+      if (panel.hidden) openPanel(); else closePanel();
     });
-    document.addEventListener('click',function(e){
-      if(!panel.hidden && !panel.contains(e.target) && e.target!==btn) closePanel();
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) closePanel();
     });
-    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !panel.hidden) closePanel(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
   })();
 
   /* ── Copy Equation as LaTeX ── */
-  document.addEventListener('click',function(e){
-    var btn=e.target.closest && e.target.closest('.copy-eq-btn');
-    if(!btn) return;
-    var latex=btn.getAttribute('data-latex')||'';
-    var restore=btn.textContent, done='✓ Copied';
-    function flash(){ btn.textContent=done; btn.classList.add('copied'); setTimeout(function(){ btn.textContent=restore; btn.classList.remove('copied'); },1400); }
-    if(navigator.clipboard&&navigator.clipboard.writeText){
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.copy-eq-btn');
+    if (!btn) return;
+    var latex = btn.getAttribute('data-latex') || '';
+    var restore = btn.textContent, done = '✓ Copied';
+    function flash() { btn.textContent = done; btn.classList.add('copied'); setTimeout(function () { btn.textContent = restore; btn.classList.remove('copied'); }, 1400); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(latex).then(flash).catch(flash);
     } else { flash(); }
   });
 
   /* ── Exam Language Mode (Arabic-only, English-only, Bilingual for Qudrat & Tahsili) ── */
-  function setExamLang(lang){
+  function setExamLang(lang) {
     var valid = ['ar', 'en', 'both'];
-    if(valid.indexOf(lang) === -1) lang = 'both';
-    try{ localStorage.setItem('clipsat_exam_lang', lang); }catch(e){}
+    if (valid.indexOf(lang) === -1) lang = 'both';
+    try { localStorage.setItem('clipsat_exam_lang', lang); } catch (e) { }
     document.body.classList.remove('cs-lang-ar', 'cs-lang-en', 'cs-lang-both');
     document.body.classList.add('cs-lang-' + lang);
 
-    document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+    document.querySelectorAll('.cs-lt-btn').forEach(function (b) {
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
   }
   window.ClipSATSetExamLang = setExamLang;
 
-  function _formatBilingualText(s){
-    if(!s && s !== 0) return '';
+  function _formatBilingualText(s) {
+    if (!s && s !== 0) return '';
     var str = String(s).trim();
     var m = /^(.*?)\s*<br\s*\/?>\s*(?:<em>|<span\s+class=["']en-trans["']>)(.*?)(?:<\/em>|<\/span>)$/is.exec(str);
-    if(m){
+    if (m) {
       var ar = m[1].trim();
       var en = m[2].trim();
       return '<span class="q-lang-wrap">'
-           + '<span class="q-lang-ar" dir="rtl">' + ar + '</span>'
-           + '<span class="q-lang-en" dir="ltr">' + en + '</span>'
-           + '</span>';
+        + '<span class="q-lang-ar" dir="rtl">' + ar + '</span>'
+        + '<span class="q-lang-en" dir="ltr">' + en + '</span>'
+        + '</span>';
     }
     return s;
   }
   window.CSFormatBilingual = _formatBilingualText;
 
-  (function(){
+  (function () {
     var saved = 'both';
-    try{ saved = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+    try { saved = localStorage.getItem('clipsat_exam_lang') || 'both'; } catch (e) { }
     document.body.classList.add('cs-lang-' + saved);
-    if(document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', function(){
-        document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.cs-lt-btn').forEach(function (b) {
           b.classList.toggle('active', b.getAttribute('data-lang') === saved);
         });
       });
     } else {
-      document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+      document.querySelectorAll('.cs-lt-btn').forEach(function (b) {
         b.classList.toggle('active', b.getAttribute('data-lang') === saved);
       });
     }
   })();
 
   /* ── Print Exam / Practice Paper (window.tgPrint) ── */
-  window.tgPrint=function(btn){
-    var sec=btn.closest('section.chapter')||btn.closest('section')||btn.closest('.testgen');
-    var box=sec||btn.closest('.testgen');
-    var out=null;
-    if(box){
-      var outs=box.querySelectorAll('.tg-out');
-      for(var _i=outs.length-1;_i>=0;_i--){
-        if(outs[_i].querySelector('.problem,.fep-item,.fep-q,.full-exam-paper')){out=outs[_i];break;}
+  window.tgPrint = function (btn) {
+    var sec = btn.closest('section.chapter') || btn.closest('section') || btn.closest('.testgen');
+    var box = sec || btn.closest('.testgen');
+    var out = null;
+    if (box) {
+      var outs = box.querySelectorAll('.tg-out');
+      for (var _i = outs.length - 1; _i >= 0; _i--) {
+        if (outs[_i].querySelector('.problem,.fep-item,.fep-q,.full-exam-paper')) { out = outs[_i]; break; }
       }
     }
-    if(!out||!out.innerHTML.trim()){alert('Generate a test or exam first, then print.');return;}
+    if (!out || !out.innerHTML.trim()) { alert('Generate a test or exam first, then print.'); return; }
 
-    var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
-    var brandLogoTag=_logoUrl?'<img class="pb-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
-    var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-    var examHTML=out.innerHTML;
-    var _titleEl=out.querySelector('.fep-title,.fep-exam-logo');
-    var examTitle=_titleEl?_titleEl.textContent.trim():'ClipSAT Practice Exam';
+    var _logoUrl = (document.getElementById('site-logo-img') || { src: '' }).src;
+    var brandLogoTag = _logoUrl ? '<img class="pb-logo-img" src="' + _logoUrl + '" alt="ClipSAT">' : '';
+    var today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    var examHTML = out.innerHTML;
+    var _titleEl = out.querySelector('.fep-title,.fep-exam-logo');
+    var examTitle = _titleEl ? _titleEl.textContent.trim() : 'ClipSAT Practice Exam';
 
-    var CSS=[
+    var CSS = [
       ':root{--fig-bg:#ffffff;--fig-border:#cbd5e1;--fig-ink:#0E1726;--fig-muted:#475569;--fig-grid:#cbd5e1;--fig-indigo:#1E3A6E;--fig-indigo-2:#2B5BA8;--fig-indigo-soft:rgba(30,58,110,.09);--fig-indigo-fill2:rgba(30,62,112,.14);--fig-amber:#B8801F;--fig-amber-text:#784F08;--fig-amber-soft:rgba(184,128,31,.12);--fig-teal:#0e7490;--fig-purple:#7C3AED;--fig-rose:#D94656}',
       '@page{margin:20mm 18mm 22mm 18mm}',
       '@page:first{margin-top:18mm}',
@@ -162,7 +162,7 @@
       '.fep-domain-tag{font-family:sans-serif;font-size:7pt;color:#888;background:#f4f4f4;padding:1pt 6pt;border-radius:2pt;text-transform:uppercase;letter-spacing:.05em}',
       '.fep-type-tag{font-family:sans-serif;font-size:6pt;padding:1pt 5pt;border-radius:2pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em}',
       '.fep-figure,.cq-figure{margin:8pt 0 10pt 28pt;break-inside:avoid;page-break-inside:avoid}',
-      '.fep-figure svg.mfig-svg,.fep-figure > svg,.cq-figure svg.mfig-svg,.cq-figure > svg{width:auto!important;max-width:195pt!important;max-height:142pt!important;height:auto!important;display:block!important;margin:0 auto!important;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.fep-figure svg.mfig-svg,.fep-figure > svg,.cq-figure svg.mfig-svg,.cq-figure > svg{width:auto!important;max-width:260pt!important;max-height:190pt!important;height:auto!important;display:block!important;margin:0 auto!important;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '.fep-figure mjx-container svg,.cq-figure mjx-container svg{display:inline-block!important;width:auto!important;max-width:none!important;max-height:none!important;margin:0!important}',
       '.exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto;break-inside:avoid;page-break-inside:avoid}',
       '.exam-barchart{font-family:sans-serif;font-size:8pt;max-width:240pt;margin:8pt auto;break-inside:avoid;page-break-inside:avoid}',
@@ -236,50 +236,50 @@
     ].join('');
 
     var isRtl = document.body.classList.contains('rtl') ||
-                (document.documentElement && document.documentElement.lang === 'ar') ||
-                (out && out.getAttribute('dir') === 'rtl') ||
-                (typeof _ttDir === 'function' && _ttDir() === 'rtl');
+      (document.documentElement && document.documentElement.lang === 'ar') ||
+      (out && out.getAttribute('dir') === 'rtl') ||
+      (typeof _ttDir === 'function' && _ttDir() === 'rtl');
     var lang = isRtl ? 'ar' : 'en';
     var dir = isRtl ? 'rtl' : 'ltr';
     var _origin = (window.location && window.location.origin) || '';
 
-    var html='<!DOCTYPE html><html lang="'+lang+'" dir="'+dir+'"><head>'+
-      '<meta charset="utf-8">'+
-      '<meta name="viewport" content="width=device-width,initial-scale=1">'+
-      '<title>'+examTitle+'<\/title>'+
-      '<link rel="stylesheet" href="'+_origin+'/vendor/katex/katex.min.css">'+
-      '<script defer src="'+_origin+'/vendor/katex/katex.min.js"><\/script>'+
-      '<script defer src="'+_origin+'/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>'+
-      '<style>'+CSS+'<\/style>'+
-      '<\/head><body dir="'+dir+'">'+
-      '<div id="print-brand"><span class="pb-left">'+brandLogoTag+'<span><strong>ClipSAT<\/strong> &middot; Mr. Mohamed Abdallah<\/span><\/span><span>'+today+'<\/span><\/div>'+
-      '<div class="content-wrap">'+examHTML+'<\/div>'+
-      '<script>window.addEventListener("load",function(){setTimeout(function(){window.print();},350);});<\/script>'+
+    var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + dir + '"><head>' +
+      '<meta charset="utf-8">' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+      '<title>' + examTitle + '<\/title>' +
+      '<link rel="stylesheet" href="' + _origin + '/vendor/katex/katex.min.css">' +
+      '<script defer src="' + _origin + '/vendor/katex/katex.min.js"><\/script>' +
+      '<script defer src="' + _origin + '/vendor/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:\'$$\',right:\'$$\',display:true},{left:\'\\\\[\',right:\'\\\\]\',display:true},{left:\'\\\\(\',right:\'\\\\)\',display:false}],throwOnError:false})"><\/script>' +
+      '<style>' + CSS + '<\/style>' +
+      '<\/head><body dir="' + dir + '">' +
+      '<div id="print-brand"><span class="pb-left">' + brandLogoTag + '<span><strong>ClipSAT<\/strong> &middot; Mr. Mohamed Abdallah<\/span><\/span><span>' + today + '<\/span><\/div>' +
+      '<div class="content-wrap">' + examHTML + '<\/div>' +
+      '<script>window.addEventListener("load",function(){setTimeout(function(){window.print();},350);});<\/script>' +
       '<\/body><\/html>';
 
-    var _blob=new Blob([html],{type:'text/html;charset=utf-8'});
-    var _burl=URL.createObjectURL(_blob);
-    var pw=window.open(_burl,'_blank','width=940,height=780');
-    if(!pw){alert('Please allow pop-ups for this site, then try again.');URL.revokeObjectURL(_burl);return;}
-    setTimeout(function(){URL.revokeObjectURL(_burl);},120000);
+    var _blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    var _burl = URL.createObjectURL(_blob);
+    var pw = window.open(_burl, '_blank', 'width=940,height=780');
+    if (!pw) { alert('Please allow pop-ups for this site, then try again.'); URL.revokeObjectURL(_burl); return; }
+    setTimeout(function () { URL.revokeObjectURL(_burl); }, 120000);
   };
 
   /* Bubble sheet & full-exam MCQ choice highlight */
-  document.addEventListener('click',function(e){
-    var b=e.target.closest('.fep-bubble');
-    if(b){
-      var row=b.closest('.fep-bubble-row');
-      row.querySelectorAll('.fep-bubble').forEach(function(x){ x.classList.remove('filled'); });
-      if(!b.classList.contains('filled-prev')) b.classList.add('filled');
-      row.querySelectorAll('.fep-bubble').forEach(function(x){ x.classList.remove('filled-prev'); });
-      if(b.classList.contains('filled')) b.classList.add('filled-prev');
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.fep-bubble');
+    if (b) {
+      var row = b.closest('.fep-bubble-row');
+      row.querySelectorAll('.fep-bubble').forEach(function (x) { x.classList.remove('filled'); });
+      if (!b.classList.contains('filled-prev')) b.classList.add('filled');
+      row.querySelectorAll('.fep-bubble').forEach(function (x) { x.classList.remove('filled-prev'); });
+      if (b.classList.contains('filled')) b.classList.add('filled-prev');
       return;
     }
-    var ch=e.target.closest('.fep-choice');
-    if(ch){
-      var choices=ch.closest('.fep-choices');
-      choices.querySelectorAll('.fep-choice').forEach(function(c){c.style.background=''; c.style.borderColor='transparent';});
-      ch.style.background='#e8eeff'; ch.style.borderColor='#3b4fc8';
+    var ch = e.target.closest('.fep-choice');
+    if (ch) {
+      var choices = ch.closest('.fep-choices');
+      choices.querySelectorAll('.fep-choice').forEach(function (c) { c.style.background = ''; c.style.borderColor = 'transparent'; });
+      ch.style.background = '#e8eeff'; ch.style.borderColor = '#3b4fc8';
     }
   });
 })();

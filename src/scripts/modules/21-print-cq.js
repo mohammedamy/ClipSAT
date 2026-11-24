@@ -1,92 +1,92 @@
 /* ══════════════════════════════════════════════════════════════════
    CLIPSAT PRINT SYSTEM — Quiz + Exam
    ══════════════════════════════════════════════════════════════════ */
-(function(){
+(function () {
 
-/* ── Retrieve course label from nav or active view ── */
-function _getCourseLabel() {
-  var treeLbl = document.getElementById('navTreeLabel');
-  if (treeLbl && treeLbl.textContent.trim() && window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home') {
-    return treeLbl.textContent.trim();
-  }
-  var sel = document.querySelector('.nav-select');
-  if (sel && sel.options && sel.options[sel.selectedIndex]) {
-    return sel.options[sel.selectedIndex].text.trim();
-  }
-  var active = document.querySelector('.view.active');
-  if (active) {
-    var id = (active.id || '').replace(/^view-/,'');
-    if (window.VIEW_META && window.VIEW_META[id] && window.VIEW_META[id].label) {
-      return window.VIEW_META[id].label;
+  /* ── Retrieve course label from nav or active view ── */
+  function _getCourseLabel() {
+    var treeLbl = document.getElementById('navTreeLabel');
+    if (treeLbl && treeLbl.textContent.trim() && window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home') {
+      return treeLbl.textContent.trim();
     }
-    return id.replace(/-/g,' ').toUpperCase();
-  }
-  return 'ClipSAT';
-}
-
-/* ═══ QUIZ PRINT ══════════════════════════════════════════════════ */
-window.printCQ = function(btn) {
-  var paper  = btn.closest('.cq-paper');
-  if (!paper) return;
-
-  /* ── meta info ── */
-  var _logoUrl = (document.getElementById('site-logo-img')||{src:''}).src;
-  var logoTag  = _logoUrl
-    ? '<img class="ph-logo-img" src="' + _logoUrl + '" alt="ClipSAT">'
-    : '<div class="ph-logo">C</div>';
-  var courseLabel = _getCourseLabel();
-  var chapterEl   = btn.closest('.chapter') || btn.closest('section');
-  var chapterName = '';
-  if (chapterEl) {
-    var h2 = chapterEl.querySelector('.chead h1, .chead h2');
-    if (h2) chapterName = h2.textContent.trim();
-  }
-  var metaEl  = paper.querySelector('.cq-meta');
-  var metaTxt = metaEl ? metaEl.textContent.trim() : '';
-  var today   = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-
-  /* ── gather questions ── */
-  var items = paper.querySelectorAll('.cq-item');
-  var LTR   = ['A','B','C','D','E'];
-
-  var qHTML = '';
-  items.forEach(function(item, qi) {
-    var stemEl = item.querySelector('.cq-qt');
-    var stem   = stemEl ? stemEl.innerHTML : '';
-    /* If a table exists inside item/row outside cq-qt/cq-figure, capture it */
-    var extraTbls = item.querySelectorAll('table');
-    extraTbls.forEach(function(tbl){
-      if((!stemEl || !stemEl.contains(tbl)) && !tbl.closest('.cq-figure')){
-        stem += '<div class="pq-stem-table">' + tbl.outerHTML + '</div>';
+    var sel = document.querySelector('.nav-select');
+    if (sel && sel.options && sel.options[sel.selectedIndex]) {
+      return sel.options[sel.selectedIndex].text.trim();
+    }
+    var active = document.querySelector('.view.active');
+    if (active) {
+      var id = (active.id || '').replace(/^view-/, '');
+      if (window.VIEW_META && window.VIEW_META[id] && window.VIEW_META[id].label) {
+        return window.VIEW_META[id].label;
       }
-    });
-    var fig    = item.querySelector('.cq-figure');
-    var figH   = fig ? '<div class="pq-fig">' + fig.innerHTML + '</div>' : '';
-    var opts   = item.querySelectorAll('.cq-opt .cq-ct');
+      return id.replace(/-/g, ' ').toUpperCase();
+    }
+    return 'ClipSAT';
+  }
 
-    var optsH = '';
-    opts.forEach(function(o, ci) {
-      optsH += '<div class="pq-opt"><span class="pq-lt">(' + LTR[ci] + ')</span><span class="pq-ct">' + o.innerHTML + '</span></div>';
-    });
+  /* ═══ QUIZ PRINT ══════════════════════════════════════════════════ */
+  window.printCQ = function (btn) {
+    var paper = btn.closest('.cq-paper');
+    if (!paper) return;
 
-    qHTML +=
-      '<div class="pq-item">' +
+    /* ── meta info ── */
+    var _logoUrl = (document.getElementById('site-logo-img') || { src: '' }).src;
+    var logoTag = _logoUrl
+      ? '<img class="ph-logo-img" src="' + _logoUrl + '" alt="ClipSAT">'
+      : '<div class="ph-logo">C</div>';
+    var courseLabel = _getCourseLabel();
+    var chapterEl = btn.closest('.chapter') || btn.closest('section');
+    var chapterName = '';
+    if (chapterEl) {
+      var h2 = chapterEl.querySelector('.chead h1, .chead h2');
+      if (h2) chapterName = h2.textContent.trim();
+    }
+    var metaEl = paper.querySelector('.cq-meta');
+    var metaTxt = metaEl ? metaEl.textContent.trim() : '';
+    var today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    /* ── gather questions ── */
+    var items = paper.querySelectorAll('.cq-item');
+    var LTR = ['A', 'B', 'C', 'D', 'E'];
+
+    var qHTML = '';
+    items.forEach(function (item, qi) {
+      var stemEl = item.querySelector('.cq-qt');
+      var stem = stemEl ? stemEl.innerHTML : '';
+      /* If a table exists inside item/row outside cq-qt/cq-figure, capture it */
+      var extraTbls = item.querySelectorAll('table');
+      extraTbls.forEach(function (tbl) {
+        if ((!stemEl || !stemEl.contains(tbl)) && !tbl.closest('.cq-figure')) {
+          stem += '<div class="pq-stem-table">' + tbl.outerHTML + '</div>';
+        }
+      });
+      var fig = item.querySelector('.cq-figure');
+      var figH = fig ? '<div class="pq-fig">' + fig.innerHTML + '</div>' : '';
+      var opts = item.querySelectorAll('.cq-opt .cq-ct');
+
+      var optsH = '';
+      opts.forEach(function (o, ci) {
+        optsH += '<div class="pq-opt"><span class="pq-lt">(' + LTR[ci] + ')</span><span class="pq-ct">' + o.innerHTML + '</span></div>';
+      });
+
+      qHTML +=
+        '<div class="pq-item">' +
         '<div class="pq-num">' + (qi + 1) + '</div>' +
         '<div class="pq-body">' +
-          figH +
-          '<div class="pq-stem">' + stem + '</div>' +
-          '<div class="pq-opts">' + optsH + '</div>' +
+        figH +
+        '<div class="pq-stem">' + stem + '</div>' +
+        '<div class="pq-opts">' + optsH + '</div>' +
         '</div>' +
-      '</div>';
-  });
+        '</div>';
+    });
 
-  /* ── RTL detection ── */
-  var isRtl = document.body.classList.contains('rtl') ||
-              (document.documentElement && document.documentElement.lang === 'ar') ||
-              (paper.getAttribute('dir') === 'rtl') ||
-              (typeof _ttDir === 'function' && _ttDir() === 'rtl');
-  var lang = isRtl ? 'ar' : 'en';
-  var dir = isRtl ? 'rtl' : 'ltr';
+    /* ── RTL detection ── */
+    var isRtl = document.body.classList.contains('rtl') ||
+      (document.documentElement && document.documentElement.lang === 'ar') ||
+      (paper.getAttribute('dir') === 'rtl') ||
+      (typeof _ttDir === 'function' && _ttDir() === 'rtl');
+    var lang = isRtl ? 'ar' : 'en';
+    var dir = isRtl ? 'rtl' : 'ltr';
 
   var _origin = (window.location && window.location.origin) || '';
   /* ── open print window via Blob URL (self-hosted KaTeX + light print figure vars) ── */
@@ -135,9 +135,10 @@ window.printCQ = function(btn) {
     '.pq-body{flex:1;min-width:0}' +
     '.pq-stem{margin-bottom:8pt}' +
     '.pq-fig{margin:6pt auto 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid;max-width:100%}' +
-    '.pq-fig svg.mfig-svg,.pq-fig > svg,.pq-fig > span > svg{width:auto!important;max-width:190pt!important;max-height:140pt!important;height:auto!important;display:block!important;margin:0 auto!important;direction:ltr!important;unicode-bidi:isolate;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.pq-fig > span{display:block!important;margin:0 auto!important}' +
+    '.pq-fig svg.mfig-svg,.pq-fig > svg,.pq-fig > span > svg{width:auto!important;max-width:260pt!important;max-height:190pt!important;height:auto!important;display:block!important;margin:0 auto!important;direction:ltr!important;unicode-bidi:isolate;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     '.pq-fig mjx-container svg{display:inline-block!important;width:auto!important;max-width:none!important;max-height:none!important;border:none!important;margin:0!important}' +
-    '.pq-fig img,.pq-fig canvas,.pq-fig .exam-fig{display:block!important;margin:0 auto!important;width:auto!important;max-width:190pt!important;max-height:140pt!important;height:auto!important}' +
+    '.pq-fig img,.pq-fig canvas,.pq-fig .exam-fig{display:block!important;margin:0 auto!important;width:auto!important;max-width:260pt!important;max-height:190pt!important;height:auto!important}' +
     'table, .exam-table, table.exam-table, .pq-stem table, .pq-fig table, .pq-body table, .pq-stem-table table{border-collapse:collapse;margin:8pt auto;font-size:9.5pt;font-family:sans-serif;width:auto!important;max-width:100%;break-inside:avoid;page-break-inside:avoid}' +
     'table th, table td, .exam-table th,.exam-table td,.pq-stem table th,.pq-stem table td,.pq-fig table th,.pq-fig table td,.pq-body table th,.pq-body table td,.pq-stem-table table th,.pq-stem-table table td{border:1pt solid #999;padding:4pt 10pt;text-align:center}' +
     'table th, .exam-table th,.pq-stem table th,.pq-fig table th,.pq-body table th,.pq-stem-table table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
@@ -156,47 +157,47 @@ window.printCQ = function(btn) {
     /* Header */
     '<div class="ph">' +
       '<div class="ph-brand">' +
-        logoTag +
-        '<div><div class="ph-name">ClipSAT</div><div class="ph-author">Mr. Mohamed Abdallah</div></div>' +
+      logoTag +
+      '<div><div class="ph-name">ClipSAT</div><div class="ph-author">Mr. Mohamed Abdallah</div></div>' +
       '</div>' +
       '<div class="ph-mid">' +
-        '<div class="ph-course">' + courseLabel + '</div>' +
-        (chapterName ? '<div class="ph-chapter">' + chapterName + '</div>' : '') +
+      '<div class="ph-course">' + courseLabel + '</div>' +
+      (chapterName ? '<div class="ph-chapter">' + chapterName + '</div>' : '') +
       '</div>' +
       '<div class="ph-meta">' +
-        '<div>' + (isRtl ? 'التاريخ: ' : 'Date: ') + '<strong>' + today + '</strong></div>' +
-        '<div>' + metaTxt + '</div>' +
-        '<div>' + (isRtl ? 'الدرجة: _____ / ' : 'Score: _____ / ') + items.length + '</div>' +
+      '<div>' + (isRtl ? 'التاريخ: ' : 'Date: ') + '<strong>' + today + '</strong></div>' +
+      '<div>' + metaTxt + '</div>' +
+      '<div>' + (isRtl ? 'الدرجة: _____ / ' : 'Score: _____ / ') + items.length + '</div>' +
       '</div>' +
-    '</div>' +
-    /* Student info */
-    '<div class="info-bar">' +
+      '</div>' +
+      /* Student info */
+      '<div class="info-bar">' +
       '<div><label>' + (isRtl ? 'اسم الطالب' : 'Student Name') + '</label><div class="info-line"></div></div>' +
       '<div><label>' + (isRtl ? 'الصف / الشعبة' : 'Class / Grade') + '</label><div class="info-line"></div></div>' +
       '<div><label>' + (isRtl ? 'الدرجة' : 'Score') + '</label><div class="info-line"></div></div>' +
-    '</div>' +
-    /* Instructions */
-    '<div class="instr"><strong>' + (isRtl ? 'تعليمات الاختبار' : 'Instructions') + '</strong>' +
+      '</div>' +
+      /* Instructions */
+      '<div class="instr"><strong>' + (isRtl ? 'تعليمات الاختبار' : 'Instructions') + '</strong>' +
       (isRtl ? 'اختر الإجابة الصحيحة لكل سؤال وضع دائرة حول رمز الإجابة. أظهر خطوات حلك في المساحة المخصصة.' : 'Choose the best answer for each question. Circle the letter of your choice. Show any working in the space provided.') +
-    '</div>' +
-    /* Questions */
-    qHTML +
-    /* Footer */
-    '<div class="pq-footer">' +
+      '</div>' +
+      /* Questions */
+      qHTML +
+      /* Footer */
+      '<div class="pq-footer">' +
       '<span>ClipSAT · clipsat.org · ' + (isRtl ? 'الأستاذ محمد عبدالله' : 'Mr. Mohamed Abdallah') + '</span>' +
       '<span>' + courseLabel + ' · ' + today + '</span>' +
-    '</div>' +
-    '<script>window.addEventListener("load",function(){setTimeout(window.print,350);});<\/script>' +
-    '</body>' +
-    '</html>';
-  var _cqBlob=new Blob([_cqHtml],{type:'text/html;charset=utf-8'});
-  var _cqUrl=URL.createObjectURL(_cqBlob);
-  var pw=window.open(_cqUrl,'_blank','width=860,height=720');
-  if(!pw){alert(isRtl ? 'يرجى السماح بالنوافذ المنبثقة لطباعة الاختبار.' : 'Please allow pop-ups to print the quiz.');URL.revokeObjectURL(_cqUrl);return;}
-  setTimeout(function(){URL.revokeObjectURL(_cqUrl);},120000);
-};
+      '</div>' +
+      '<script>window.addEventListener("load",function(){setTimeout(window.print,350);});<\/script>' +
+      '</body>' +
+      '</html>';
+    var _cqBlob = new Blob([_cqHtml], { type: 'text/html;charset=utf-8' });
+    var _cqUrl = URL.createObjectURL(_cqBlob);
+    var pw = window.open(_cqUrl, '_blank', 'width=860,height=720');
+    if (!pw) { alert(isRtl ? 'يرجى السماح بالنوافذ المنبثقة لطباعة الاختبار.' : 'Please allow pop-ups to print the quiz.'); URL.revokeObjectURL(_cqUrl); return; }
+    setTimeout(function () { URL.revokeObjectURL(_cqUrl); }, 120000);
+  };
 
-/* patchExamPrint removed — tgPrint now uses window.open() directly */
+  /* patchExamPrint removed — tgPrint now uses window.open() directly */
 
 })(); /* end ClipSAT Print System */
 

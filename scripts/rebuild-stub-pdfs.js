@@ -561,12 +561,12 @@ function buildWorksheetHtml(ws, kind, baseUrl) {
     .q-fig {
       margin: 6px auto;
       text-align: center;
-      max-width: 215px;
+      max-width: 280px;
     }
     .q-fig svg {
       width: auto !important;
-      max-width: 210px !important;
-      max-height: 145px !important;
+      max-width: 275px !important;
+      max-height: 190px !important;
       height: auto !important;
       display: block !important;
       margin: 0 auto !important;
