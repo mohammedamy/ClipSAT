@@ -283,20 +283,23 @@ def rich(text, color=INK, size=10, rtl=False):
     surrounding RTL text, exactly like the embedded math image is meant to sit.
     """
     math_specs = []
+    _ESC_DOLLAR = "\uEFFE"
 
     def _stash(m):
-        math_specs.append("$" + m.group(1) + "$")
+        math_specs.append("$" + m.group(1).replace(_ESC_DOLLAR, r"\$") + "$")
         return chr(_PLACEHOLDER_BASE + len(math_specs) - 1)
 
+    text = text.replace(r"\$", _ESC_DOLLAR)
     text = re.sub(r"\\\((.*?)\\\)", _stash, text, flags=re.S)
     text = re.sub(r"\\\[(.*?)\\\]", _stash, text, flags=re.S)
+    text = re.sub(r"\$\$(.+?)\$\$", _stash, text, flags=re.S)
     text = re.sub(r"\$([^$]+)\$", _stash, text)
     if rtl:
         text = shape_ar(text)
     out = []
     pos = 0
     for m in re.finditer(r"[-]", text):
-        out.append(html.escape(text[pos:m.start()]))
+        out.append(html.escape(text[pos:m.start()].replace(_ESC_DOLLAR, "$")))
         tex = math_specs[ord(m.group(0)) - _PLACEHOLDER_BASE]
         path, w, h, d = render_math(tex, color=color, size=size)
         if w > 210.0:
@@ -306,7 +309,7 @@ def rich(text, color=INK, size=10, rtl=False):
             f'<img src="{path}" width="{w:.2f}" height="{h:.2f}" valign="{-d:.2f}"/>'
         )
         pos = m.end()
-    out.append(html.escape(text[pos:]))
+    out.append(html.escape(text[pos:].replace(_ESC_DOLLAR, "$")))
     return "".join(out)
 
 
@@ -1047,11 +1050,14 @@ def render_figure(spec):
     from PIL import Image as PILImage
     with PILImage.open(path) as im:
         px_w, px_h = im.size
-    disp_w = spec.get("width", 240)
+    is_wide = ftype in ("table", "two_way_table", "numberline")
+    max_w = 215.0 if is_wide else 170.0
+    max_h = 126.0
+    disp_w = min(float(spec.get("width", 200.0 if is_wide else 162.0)), max_w)
     disp_h = disp_w * px_h / max(px_w, 1)
-    if disp_h > 200.0:
-        disp_w = disp_w * (200.0 / disp_h)
-        disp_h = 200.0
+    if disp_h > max_h:
+        disp_w = disp_w * (max_h / disp_h)
+        disp_h = max_h
     return path, disp_w, disp_h
 
 
@@ -1377,7 +1383,8 @@ def generate_topic(json_path, out_root, prerender_only=False):
         return None
     track_dir = os.path.join(out_root, topic["track"])
     os.makedirs(track_dir, exist_ok=True)
-    slug = topic.get("slug") or slugify(topic["title"])
+    base_slug = re.sub(r"^[0-9]+\.[0-9]+-", "", os.path.basename(json_path)).replace("-ar.json", "").replace(".json", "")
+    slug = topic.get("slug") or base_slug
     lang_suffix = f"-{topic['lang']}" if topic.get("lang") else ""
     ws = os.path.join(track_dir, f"{topic['num']}-{slug}{lang_suffix}-worksheet.pdf")
     ak = os.path.join(track_dir, f"{topic['num']}-{slug}{lang_suffix}-answerkey.pdf")

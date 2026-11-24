@@ -72,15 +72,11 @@
             ? '<button type="button" class="wl-link cbt" data-track="' + _esc(safeTrack) + '" data-ws="' + _esc(safeWs) + '" data-title="' + _esc(d.title) + '" data-lang="' + safeLang + '" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(this.dataset.track,this.dataset.ws,this.dataset.title,this.dataset.lang)">' + _esc(t.cbt) + '</button>'
             : '';
           var gformBtn = isExam ? '' : '<button type="button" class="wl-link gform" data-track="' + _esc(safeTrack) + '" data-num="' + _esc(d.num) + '" data-lang="' + safeLang + '" data-title="' + _esc(d.title) + '" data-ws="' + _esc(safeWs) + '" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(this.dataset.track,this.dataset.num,this.dataset.lang,this.dataset.title,this.dataset.ws)" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
-          var wsHtmlClick = (isProdNoCdn && /\.html$/i.test(safeWs))
-            ? ' onclick="return window._openRawHtmlExam(event,this.href)"'
-            : '';
-          var akHtmlClick = (isProdNoCdn && /\.html$/i.test(safeAk))
-            ? ' onclick="return window._openRawHtmlExam(event,this.href)"'
-            : '';
+          var wsOpenClick = ' data-dl-title="' + _esc(d.title + ' — ' + wsLabel) + '" onclick="return window._openDownloadInBrowser(event,this.href,this.dataset.dlTitle)"';
+          var akOpenClick = ' data-dl-title="' + _esc(d.title + ' — ' + akLabel) + '" onclick="return window._openDownloadInBrowser(event,this.href,this.dataset.dlTitle)"';
           html += '<div class="wl-row' + (isExam ? ' wl-row-exam' : '') + '"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
-            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + _esc(base + safeWs) + '" target="_blank" rel="noopener"' + wsHtmlClick + '>' + _esc(wsLabel) + '</a>'
-            + '<a class="wl-link ak" href="' + _esc(base + safeAk) + '" target="_blank" rel="noopener"' + akHtmlClick + '>' + _esc(akLabel) + '</a>'
+            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + _esc(base + safeWs) + '" target="_blank" rel="noopener"' + wsOpenClick + '>' + _esc(wsLabel) + '</a>'
+            + '<a class="wl-link ak" href="' + _esc(base + safeAk) + '" target="_blank" rel="noopener"' + akOpenClick + '>' + _esc(akLabel) + '</a>'
             + gformBtn + '</span></div>';
         });
         html += '</div>';
@@ -103,37 +99,71 @@
     }
   }
 
-  window._openRawHtmlExam = function(ev, rawUrl){
-    if(ev && (ev.metaKey || ev.ctrlKey || ev.shiftKey)) return true;
+  window._openDownloadInBrowser = function(ev, rawUrl, docTitle){
+    if(ev && ev.altKey) return true;
     if(ev) ev.preventDefault();
+    var isPdf = /\.pdf(?:$|[?#])/i.test(rawUrl || '');
     var win = window.open('', '_blank');
     if(win){
       win.document.open();
-      win.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Loading ClipSAT Exam…</title></head><body style="font-family:system-ui,sans-serif;padding:40px;text-align:center;color:#334155"><p>Loading printable exam…</p></body></html>');
+      win.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + _esc(docTitle || (isPdf ? 'Loading PDF…' : 'Loading Exam…')) + '</title></head><body style="font-family:system-ui,sans-serif;padding:40px;text-align:center;color:#334155"><p>' + (isPdf ? 'Loading PDF in browser…' : 'Loading printable exam…') + '</p></body></html>');
       win.document.close();
     }
-    fetch(rawUrl).then(function(r){
-      if(!r.ok) throw new Error('HTTP ' + r.status);
-      return r.text();
-    }).then(function(html){
-      var origin = (typeof location !== 'undefined' && location.origin) ? location.origin : 'https://clipsat.org';
-      var patched = html
-        .replace(/((?:href|src)=["'])\/(?!\/)/gi, '$1' + origin + '/')
-        .replace(/<head([^>]*)>/i, '<head$1><base href="' + origin + '/">');
-      var blob = new Blob([patched], { type: 'text/html;charset=utf-8' });
-      var blobUrl = URL.createObjectURL(blob);
-      if(win && !win.closed){
-        win.location.replace(blobUrl);
-      } else {
-        window.open(blobUrl, '_blank', 'noopener');
+    var m = String(rawUrl || '').match(/\/downloads\/([^?#]+)$/i);
+    var rel = m ? m[1] : '';
+    var rawGh = rel ? ('https://raw.githubusercontent.com/mohammedamy/ClipSAT/main/public/downloads/' + rel) : rawUrl;
+    var urls = (rawUrl.indexOf('raw.githubusercontent.com') !== -1 || rawGh === rawUrl) ? [rawUrl] : [rawUrl, rawGh];
+    function fetchFirst(idx){
+      return fetch(urls[idx]).then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r;
+      }).catch(function(err){
+        if(idx + 1 < urls.length) return fetchFirst(idx + 1);
+        throw err;
+      });
+    }
+    fetchFirst(0).then(function(r){
+      if(isPdf){
+        return r.arrayBuffer().then(function(buf){
+          var blob = new Blob([buf], { type: 'application/pdf' });
+          var ownerUrl = (win && !win.closed && win.URL && win.URL.createObjectURL) ? win.URL : URL;
+          var blobUrl = ownerUrl.createObjectURL(blob);
+          var fileName = (rel ? rel.split('/').pop() : 'clipsat-worksheet.pdf').replace(/[^a-zA-Z0-9._-]/g, '');
+          var isMob = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent || '');
+          if(!win || win.closed){ window.open(blobUrl, '_blank'); return; }
+          if(isMob){ win.location.replace(blobUrl); return; }
+          var tSafe = _esc(docTitle || fileName);
+          var barCss = '*{box-sizing:border-box}html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#334155;font-family:system-ui,-apple-system,sans-serif}.b{height:38px;padding:0 12px;background:#0f172a;color:#f8fafc;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}.t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.a{display:flex;gap:8px;flex-shrink:0}.btn{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#f8fafc;text-decoration:none;font-size:12px;font-weight:600;cursor:pointer}.p{background:#2563eb;border-color:#2563eb}#cs-pdf-frame{width:100%;height:calc(100vh - 38px);border:0;display:block;background:#525659}';
+          var shell = '<!doctype html><html><head><meta charset="utf-8"><title>' + tSafe + ' — ClipSAT PDF</title><style>' + barCss + '</style></head><body>'
+            + '<div class="b"><span class="t">' + tSafe + '</span><div class="a">'
+            + '<button type="button" class="btn" onclick="var f=document.getElementById(\'cs-pdf-frame\');try{f.contentWindow.focus();f.contentWindow.print()}catch(_){window.open(f.src,\'_blank\')}">🖨 Print</button>'
+            + '<a class="btn p" href="' + blobUrl + '" download="' + _esc(fileName) + '">⬇ Download PDF</a>'
+            + '</div></div>'
+            + '<iframe id="cs-pdf-frame" src="' + blobUrl + '" title="' + tSafe + '"></iframe></body></html>';
+          win.document.open();
+          win.document.write(shell);
+          win.document.close();
+          try{ win.addEventListener('beforeunload', function(){ try{ ownerUrl.revokeObjectURL(blobUrl); }catch(_){} }); }catch(_){}
+        });
       }
-      setTimeout(function(){ try { URL.revokeObjectURL(blobUrl); } catch(_){} }, 60000);
+      return r.text().then(function(html){
+        var origin = (typeof location !== 'undefined' && location.origin) ? location.origin : 'https://clipsat.org';
+        var patched = html
+          .replace(/((?:href|src)=["'])\/(?!\/)/gi, '$1' + origin + '/')
+          .replace(/<head([^>]*)>/i, '<head$1><base href="' + origin + '/">');
+        var blob = new Blob([patched], { type: 'text/html;charset=utf-8' });
+        var blobUrl = URL.createObjectURL(blob);
+        if(win && !win.closed) win.location.replace(blobUrl);
+        else window.open(blobUrl, '_blank');
+        setTimeout(function(){ try { URL.revokeObjectURL(blobUrl); } catch(_){} }, 120000);
+      });
     }).catch(function(){
-      if(win && !win.closed) win.location.href = rawUrl;
-      else window.open(rawUrl, '_blank', 'noopener');
+      if(win && !win.closed) win.location.href = rawGh;
+      else window.open(rawGh, '_blank', 'noopener');
     });
     return false;
   };
+  window._openRawHtmlExam = window._openDownloadInBrowser;
 
   function initLibraries(){
     var containers = document.querySelectorAll('.worksheet-library');

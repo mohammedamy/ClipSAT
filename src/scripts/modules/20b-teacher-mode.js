@@ -389,6 +389,7 @@
         +'@page{margin:20mm 18mm 24mm 18mm}'
         +'*{box-sizing:border-box}'
         +'svg{max-width:100%;height:auto;direction:ltr!important;unicode-bidi:isolate}'
+        +'svg.mfig-svg,.mfig > svg,.lesson-figure > svg,.lesson-figure-svg > svg,.lp-example > svg,.lp-qbody > svg{width:auto!important;max-width:195pt!important;max-height:140pt!important;height:auto!important;display:block!important;margin:6pt auto!important;direction:ltr!important;unicode-bidi:isolate}'
         +'body{margin:0;padding:0 0 0 24pt;font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.55;color:#111;background:#fff}'
         +'.lp-header{display:flex;align-items:center;justify-content:space-between;gap:8pt;border-bottom:2.5pt solid #1a1a2e;padding:6pt 0 6pt;margin-bottom:14pt;width:100%;box-sizing:border-box;overflow:hidden}'
         +'.lp-brand{display:flex;align-items:center;gap:7pt;flex-shrink:0;min-width:0}'
@@ -428,7 +429,7 @@
         +'.lp-footer{position:fixed;bottom:0;left:0;right:0;border-top:1pt solid #1a1a2e;padding:3pt 18pt;display:flex;justify-content:space-between;font-size:7.5pt;color:#888;background:#fff}'
         +'mjx-container{display:inline!important;visibility:visible!important}'
         +'mjx-container[display="true"]{display:block!important;visibility:visible!important;margin:5pt 0!important}'
-        +'mjx-container svg{display:inline-block!important;visibility:visible!important}'
+        +'mjx-container svg{display:inline-block!important;visibility:visible!important;width:auto!important;max-width:none!important;max-height:none!important;margin:0!important}'
         +'mjx-container *{visibility:visible!important}'
         +'.MathJax,.MathJax_SVG{display:inline!important;visibility:visible!important}'
         /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math stays LTR,

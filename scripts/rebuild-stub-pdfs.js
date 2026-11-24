@@ -561,12 +561,15 @@ function buildWorksheetHtml(ws, kind, baseUrl) {
     .q-fig {
       margin: 6px auto;
       text-align: center;
-      max-width: 280px;
+      max-width: 215px;
     }
     .q-fig svg {
-      max-width: 100%;
-      max-height: 165px;
-      height: auto;
+      width: auto !important;
+      max-width: 210px !important;
+      max-height: 145px !important;
+      height: auto !important;
+      display: block !important;
+      margin: 0 auto !important;
     }
     .q-parts {
       margin: 5px 0;
@@ -727,6 +730,7 @@ function startStaticServer() {
 
 async function main() {
   const rawArgs = process.argv.slice(2);
+  const rebuildChromiumFigures = rawArgs.includes('--chromium-figures');
   const forcePatterns = [];
   for (let i = 0; i < rawArgs.length; i++) {
     if (rawArgs[i] === '--force' && rawArgs[i + 1]) {
@@ -736,7 +740,7 @@ async function main() {
     }
   }
 
-  // Discover all < 35 KB PDFs (or --force matched PDFs) in public/downloads/<track>/*.pdf
+  // Discover all < 35 KB PDFs (or --force / --chromium-figures matched PDFs) in public/downloads/<track>/*.pdf
   const jobs = [];
   for (const tr of fs.readdirSync(DL_ROOT).sort()) {
     const dp = path.join(DL_ROOT, tr);
@@ -746,7 +750,6 @@ async function main() {
       const sz = fs.statSync(pdfPath).size;
       const rel = `${tr}/${f}`;
       const forced = forcePatterns.some((p) => rel.includes(p));
-      if (!forced && (forcePatterns.length > 0 || sz >= 35000)) continue;
       const m = f.match(/^(.+)-(worksheet|answerkey)\.pdf$/);
       if (!m) continue;
       const base = m[1];
@@ -761,6 +764,15 @@ async function main() {
           if (cand) jsonPath = path.join(TP_ROOT, tr, cand);
         }
       }
+      let isChromiumFig = false;
+      if (rebuildChromiumFigures && sz >= 35000 && fs.existsSync(jsonPath)) {
+        const hdr = fs.readFileSync(pdfPath).subarray(0, 2048).toString('latin1');
+        if (!hdr.includes('ReportLab')) {
+          const wsObj = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+          isChromiumFig = (wsObj.sections || []).some((s) => (s.questions || []).some((q) => Boolean(q.figure)));
+        }
+      }
+      if (!forced && !isChromiumFig && (forcePatterns.length > 0 || sz >= 35000)) continue;
       if (!fs.existsSync(jsonPath)) {
         throw new Error(`Missing topic JSON for stub PDF: ${pdfPath}`);
       }

@@ -901,6 +901,58 @@ it('Handles bank/content edge-case figure schemas cleanly (pyramid solid, object
   );
 });
 
+it('Normalizes SVG intrinsic sizing (no inline max-width:100% override) and enforces print/PDF caps + in-browser PDF viewer', () => {
+  // 1. Triangle & coordinate SVGs emit numeric width/height (<= 285x200) and never inline max-width:100%
+  const triSvg = window._renderFig({
+    type: 'triangle',
+    vertices: [[0, 0], [4, 0], [0, 3]],
+    labels: ['C', 'B', 'A'],
+    sides: ['60', '68', '?'],
+    right: 0
+  });
+  const svgOpen = (triSvg.match(/<svg\b[^>]*>/i) || [''])[0];
+  assert.ok(svgOpen, 'Triangle output must have <svg> opening tag');
+  const wM = svgOpen.match(/\bwidth="(\d+(?:\.\d+)?)"/i);
+  const hM = svgOpen.match(/\bheight="(\d+(?:\.\d+)?)"/i);
+  assert.ok(wM && Number(wM[1]) > 0 && Number(wM[1]) <= 285, `Triangle SVG width must be bounded <= 285 (got ${wM && wM[1]})`);
+  assert.ok(hM && Number(hM[1]) > 0 && Number(hM[1]) <= 200, `Triangle SVG height must be bounded <= 200 (got ${hM && hM[1]})`);
+  assert.ok(!/style="[^"]*(?:max-width|width)\s*:\s*100%/i.test(svgOpen), 'SVG inline style must not override CSS with max-width:100% / width:100%');
+
+  const plotSvg = window.renderMathFigure({
+    type: 'slope_field',
+    fn: 'x - y',
+    xrange: [-3, 3],
+    yrange: [-3, 3]
+  });
+  const plotOpen = (plotSvg.match(/<svg\b[^>]*>/i) || [''])[0];
+  assert.ok(/\bwidth="\d+"/.test(plotOpen) && /\bheight="\d+"/.test(plotOpen), 'Plot SVGs must include numeric width/height attributes');
+  assert.ok(!/style="[^"]*max-width\s*:\s*100%/i.test(plotOpen), 'Plot SVGs must not inline max-width:100%');
+
+  // 2. All print/export surfaces enforce !important pt caps on diagram SVGs
+  const modDir = path.join(__dirname, '..', 'src', 'scripts', 'modules');
+  const printChecks = [
+    ['21-print-cq.js', /\.pq-fig svg\.mfig-svg,.*max-width:190pt!important;max-height:140pt!important/],
+    ['04-docx-export.js', /max-width:200pt!important;max-height:145pt!important/],
+    ['20b-teacher-mode.js', /max-width:195pt!important;max-height:140pt!important/],
+    ['02d-exam-print-and-lang.js', /\.fep-figure svg\.mfig-svg,.*max-width:195pt!important;max-height:142pt!important/],
+    ['22b-assign-report.js', /\.fep-figure svg\.mfig-svg,.*max-width:195pt!important;max-height:142pt!important/]
+  ];
+  for (const [file, re] of printChecks) {
+    const src = fs.readFileSync(path.join(modDir, file), 'utf8');
+    assert.ok(re.test(src), `${file} must enforce !important pt diagram bounds`);
+  }
+
+  const satExamPath = path.join(__dirname, '..', 'public', 'downloads', 'sat', 'full-exam-digital-sat-math-01-exam.html');
+  const satExamHtml = fs.readFileSync(satExamPath, 'utf8');
+  assert.ok(/max-width:\s*195pt\s*!important;\s*max-height:\s*142pt\s*!important/.test(satExamHtml), 'Pre-built downloadable full exams must enforce 195pt x 142pt figure bounds');
+
+  // 3. Worksheet library & mock exam wire PDFs and exams through in-browser viewer
+  const legalSrc = fs.readFileSync(path.join(modDir, '12-legal-modal.js'), 'utf8');
+  assert.ok(legalSrc.includes('window._openDownloadInBrowser'), '12-legal-modal.js must define window._openDownloadInBrowser');
+  assert.ok(legalSrc.includes("type: 'application/pdf'") && legalSrc.includes('id="cs-pdf-frame"'), '12-legal-modal.js must render PDFs inline in browser via application/pdf Blob viewer');
+  assert.ok(legalSrc.includes('wsOpenClick') && legalSrc.includes('akOpenClick'), 'Worksheet and Answer Key links must both invoke _openDownloadInBrowser');
+});
+
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) {
   process.exit(1);

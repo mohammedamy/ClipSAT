@@ -5712,6 +5712,39 @@ function _polishRenderedSvg(html, spec){
   var desc = _autoFigDesc(spec).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   out = out.replace(/<svg\b([^>]*)>/i, function(full, attrs){
     var a = attrs || '';
+    // Strip inline max-width:100% / width:100% so CSS container & print caps always take precedence
+    a = a.replace(/\bstyle="([^"]*)"/i, function(_m, st){
+      var cleaned = st.split(';').filter(function(decl){
+        return decl.trim() && !/^(?:max-width|width)\s*:\s*100%$/i.test(decl.trim());
+      }).join(';');
+      return cleaned ? ('style="' + cleaned + '"') : '';
+    });
+    if(!/\bclass\s*=/i.test(a)) a += ' class="mfig-svg"';
+    else if(!/\bmfig-svg\b/.test(a)) a = a.replace(/\bclass="([^"]*)"/i, 'class="$1 mfig-svg"');
+    // Normalize intrinsic width/height from viewBox so SVGs never expand to 100% viewport width
+    var vbM = a.match(/\bviewBox="\s*[-\d.]+\s+[-\d.]+\s+([\d.]+)\s+([\d.]+)\s*"/i);
+    if(vbM){
+      var vbW = parseFloat(vbM[1]), vbH = parseFloat(vbM[2]);
+      if(vbW > 0 && vbH > 0){
+        var maxW = (spec && spec.wide) ? 360 : (spec && +spec.w >= 120 ? Math.min(285, +spec.w) : 285);
+        var maxH = 200;
+        var wM = a.match(/\bwidth="([\d.]+)"/i);
+        var hM = a.match(/\bheight="([\d.]+)"/i);
+        if(!wM || !hM){
+          var sc0 = Math.min(1, maxW / vbW, maxH / vbH);
+          var nw0 = Math.round(vbW * sc0), nh0 = Math.round(vbH * sc0);
+          if(!/\bwidth\s*=/i.test(a)) a += ' width="' + nw0 + '"';
+          if(!/\bheight\s*=/i.test(a)) a += ' height="' + nh0 + '"';
+        } else {
+          var curW = parseFloat(wM[1]), curH = parseFloat(hM[1]);
+          if(curW > maxW || curH > maxH){
+            var sc1 = Math.min(maxW / curW, maxH / curH);
+            a = a.replace(/\bwidth="[\d.]+"/i, 'width="' + Math.round(curW * sc1) + '"');
+            a = a.replace(/\bheight="[\d.]+"/i, 'height="' + Math.round(curH * sc1) + '"');
+          }
+        }
+      }
+    }
     if(!/\brole\s*=/i.test(a)) a += ' role="img"';
     if(!/\baria-label\s*=/i.test(a)) a += ' aria-label="' + desc + '"';
     if(!/\btabindex\s*=/i.test(a)) a += ' tabindex="0"';

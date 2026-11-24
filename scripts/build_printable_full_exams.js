@@ -1543,14 +1543,19 @@ body[dir="rtl"] .fep-sec-note { border-left: none; border-right: 3pt solid #B880
 }
 body[dir="rtl"] .fep-marks-tag { margin-left: 0; margin-right: auto; }
 .fep-figure {
-  margin: 8pt 0 10pt 26pt; text-align: center;
+  margin: 6pt 0 8pt 26pt; text-align: center;
   page-break-inside: avoid; break-inside: avoid;
 }
-body[dir="rtl"] .fep-figure { margin: 8pt 26pt 10pt 0; }
-.fep-figure svg {
-  width: auto !important; max-width: 270pt !important; max-height: 195pt !important;
-  height: auto !important; display: inline-block;
+body[dir="rtl"] .fep-figure { margin: 6pt 26pt 8pt 0; }
+.fep-figure svg.mfig-svg, .fep-figure > svg {
+  width: auto !important; max-width: 195pt !important; max-height: 142pt !important;
+  height: auto !important; display: block !important; margin: 0 auto !important;
+  direction: ltr !important; unicode-bidi: isolate;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.fep-figure mjx-container svg {
+  display: inline-block !important; width: auto !important;
+  max-width: none !important; max-height: none !important; margin: 0 !important;
 }
 .fep-qbody { margin-left: 26pt; margin-bottom: 9pt; font-size: 10pt; line-height: 1.65; }
 body[dir="rtl"] .fep-qbody { margin-left: 0; margin-right: 26pt; }

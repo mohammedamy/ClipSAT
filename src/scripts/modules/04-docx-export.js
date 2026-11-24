@@ -387,8 +387,9 @@ window.CSExport=(function(){
         var bbox=el.getBoundingClientRect();
         var wEmu=Math.round((bbox.width||200)*9144);
         var hEmu=Math.round((bbox.height||150)*9144);
-        /* Cap at 6" wide (6*914400=5486400 EMU) */
-        if(wEmu>5486400){var scale=5486400/wEmu;wEmu=5486400;hEmu=Math.round(hEmu*scale);}
+        /* Cap figures cleanly at 3.2" wide x 2.3" high (914400 EMU/in) */
+        var maxW=2926080, maxH=2103120;
+        if(wEmu>maxW||hEmu>maxH){var scale=Math.min(maxW/wEmu,maxH/hEmu);wEmu=Math.round(wEmu*scale);hEmu=Math.round(hEmu*scale);}
         return {id:'img'+(idx+1), imageData:res.imageData, ext:res.ext, widthEmu:wEmu, heightEmu:hEmu};
       });
     });
@@ -625,6 +626,8 @@ window.CSExport=(function(){
       +'.lesson-figure,.mfig{margin:8pt auto;text-align:center;max-width:100%;break-inside:avoid;page-break-inside:avoid}'
       +'img{max-width:100%;height:auto}'
       +'svg{max-width:100%;height:auto;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+      +'svg.mfig-svg,.mfig > svg,.lesson-figure > svg,.lesson-figure-svg > svg,.cq-figure > svg,.fep-figure > svg,.pq-fig > svg{width:auto!important;max-width:200pt!important;max-height:145pt!important;height:auto!important;display:block!important;margin:6pt auto!important;direction:ltr!important;unicode-bidi:isolate;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+      +'mjx-container svg{display:inline-block!important;width:auto!important;max-width:none!important;max-height:none!important;margin:0!important}'
       /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math & SVG coordinates stay LTR. */
       +'body[dir="rtl"]{direction:rtl;text-align:right}'
       +'body[dir="rtl"] .cs-hdr{direction:rtl}'

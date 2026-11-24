@@ -134,9 +134,10 @@ window.printCQ = function(btn) {
     '.pq-num{width:20pt;height:20pt;border-radius:50%;border:1.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:9pt;flex-shrink:0;margin-top:1pt}' +
     '.pq-body{flex:1;min-width:0}' +
     '.pq-stem{margin-bottom:8pt}' +
-    '.pq-fig{margin:6pt 0 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid}' +
-    '.pq-fig svg{width:100%;max-width:220pt;height:auto;direction:ltr!important;unicode-bidi:isolate;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
-    '.pq-fig .exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto}' +
+    '.pq-fig{margin:6pt auto 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid;max-width:100%}' +
+    '.pq-fig svg.mfig-svg,.pq-fig > svg,.pq-fig > span > svg{width:auto!important;max-width:190pt!important;max-height:140pt!important;height:auto!important;display:block!important;margin:0 auto!important;direction:ltr!important;unicode-bidi:isolate;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.pq-fig mjx-container svg{display:inline-block!important;width:auto!important;max-width:none!important;max-height:none!important;border:none!important;margin:0!important}' +
+    '.pq-fig img,.pq-fig canvas,.pq-fig .exam-fig{display:block!important;margin:0 auto!important;width:auto!important;max-width:190pt!important;max-height:140pt!important;height:auto!important}' +
     'table, .exam-table, table.exam-table, .pq-stem table, .pq-fig table, .pq-body table, .pq-stem-table table{border-collapse:collapse;margin:8pt auto;font-size:9.5pt;font-family:sans-serif;width:auto!important;max-width:100%;break-inside:avoid;page-break-inside:avoid}' +
     'table th, table td, .exam-table th,.exam-table td,.pq-stem table th,.pq-stem table td,.pq-fig table th,.pq-fig table td,.pq-body table th,.pq-body table td,.pq-stem-table table th,.pq-stem-table table td{border:1pt solid #999;padding:4pt 10pt;text-align:center}' +
     'table th, .exam-table th,.pq-stem table th,.pq-fig table th,.pq-body table th,.pq-stem-table table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +

@@ -1050,4 +1050,64 @@ test.describe('site-wide: print stylesheet, dark-mode print reset, and RTL figur
       expect(c.hasNaN).toBe(false);
     }
   });
+
+  test('printCQ bounds SVG diagrams compactly and worksheet PDF links open in-browser viewer', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 820 });
+    const satDlDir = path.join(__dirname, '..', '..', 'public', 'downloads', 'sat');
+    const firstSatPdf = fs.readdirSync(satDlDir).filter((f) => f.endsWith('.pdf')).sort()[0];
+    const samplePdf = fs.readFileSync(path.join(satDlDir, firstSatPdf));
+    await page.route('**/downloads/sat/*.pdf', (route) =>
+      route.fulfill({ status: 200, contentType: 'application/pdf', body: samplePdf })
+    );
+
+    await page.goto('/sat/', { waitUntil: 'networkidle' });
+    await page.evaluate(() => {
+      if (typeof window._ensureFigures === 'function') return window._ensureFigures();
+    });
+    await page.waitForFunction(
+      () => typeof window.printCQ === 'function' && typeof window._renderFig === 'function',
+      null,
+      { timeout: 10000 }
+    );
+
+    // 1. Verify printCQ renders a compact diagram (not stretching to 1280px viewport width)
+    const printPopupPromise = page.waitForEvent('popup');
+    await page.evaluate(() => {
+      const wrap = document.createElement('div');
+      wrap.className = 'cq-paper';
+      const svgMarkup = window._renderFig({
+        type: 'triangle',
+        vertices: [[0, 0], [6, 0], [0, 8]],
+        labels: ['C', 'B', 'A'],
+        sides: ['60', '68', '?'],
+        right: 0,
+      });
+      wrap.innerHTML =
+        '<div class="cq-head"><span class="cq-meta">1 question</span><button class="cq-print-btn" type="button">Print</button></div>'
+        + '<div class="cq-item"><div class="cq-qt">Find AC.</div><div class="cq-figure">' + svgMarkup + '</div>'
+        + '<div class="cq-opt"><span class="cq-ct">32</span></div></div>';
+      document.body.appendChild(wrap);
+      window.printCQ(wrap.querySelector('.cq-print-btn'));
+    });
+    const printPopup = await printPopupPromise;
+    await printPopup.waitForLoadState('domcontentloaded');
+    const pqSvgBox = await printPopup.locator('.pq-fig svg').first().boundingBox();
+    expect(pqSvgBox).not.toBeNull();
+    expect(pqSvgBox.width).toBeGreaterThan(80);
+    expect(pqSvgBox.width).toBeLessThanOrEqual(270);
+    expect(pqSvgBox.height).toBeLessThanOrEqual(210);
+    await printPopup.close();
+
+    // 2. Verify clicking a worksheet PDF link opens inline PDF viewer tab (blob URL inside #cs-pdf-frame)
+    await page.waitForSelector('.worksheet-library .wl-link.ws', { timeout: 10000 });
+    const pdfPopupPromise = page.waitForEvent('popup');
+    await page.locator('.worksheet-library a.wl-link.ws[href$=".pdf"]').first().click();
+    const pdfPopup = await pdfPopupPromise;
+    await pdfPopup.waitForSelector('#cs-pdf-frame[src^="blob:"]', { timeout: 10000 });
+    const frameSrc = await pdfPopup.locator('#cs-pdf-frame').getAttribute('src');
+    const dlAttr = await pdfPopup.locator('a[download$=".pdf"]').getAttribute('download');
+    expect(frameSrc).toMatch(/^blob:/);
+    expect(dlAttr).toMatch(/\.pdf$/);
+    await pdfPopup.close();
+  });
 });

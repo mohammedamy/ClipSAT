@@ -1550,11 +1550,15 @@
 
     var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
     var isProdNoCdn = !cdnPrefix && typeof location !== 'undefined' && /(?:^|\.)clipsat\.org$/i.test(location.hostname || '');
-    var examUrl = (isProdNoCdn ? 'https://raw.githubusercontent.com/mohammedamy/ClipSAT/main/public' : cdnPrefix)
-      + '/downloads/' + trackId + '/' + examFilename;
+    var rawGhExamUrl = 'https://raw.githubusercontent.com/mohammedamy/ClipSAT/main/public/downloads/' + trackId + '/' + examFilename;
+    var examUrl = (isProdNoCdn ? rawGhExamUrl : (cdnPrefix + '/downloads/' + trackId + '/' + examFilename));
     var overlay = document.getElementById('mock-exam-overlay');
     if (!overlay) {
-      window.open(examUrl + '?cbt=1', '_blank');
+      if (typeof window._openDownloadInBrowser === 'function') {
+        window._openDownloadInBrowser(null, examUrl, examTitle || examFilename);
+      } else {
+        window.open(examUrl + '?cbt=1', '_blank');
+      }
       return;
     }
 
@@ -1573,6 +1577,10 @@
     _enterCBTModalLock();
 
     fetch(examUrl)
+      .then(function (r) {
+        if (!r.ok && examUrl !== rawGhExamUrl) return fetch(rawGhExamUrl);
+        return r;
+      })
       .then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.text();
@@ -1664,7 +1672,7 @@
             ? '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" title="Open Desmos Graphing Calculator (Alt+C)">🧮 Calculator</button>'
             : '';
 
-          var printLinkHtml = '<a class="hdr-btn" href="/downloads/' + trackId + '/' + examFilename + '" target="_blank" rel="noopener" style="text-decoration:none" title="Open Printable Exam Paper">🖨️ Paper</a>';
+          var printLinkHtml = '<a class="hdr-btn" href="' + examUrl + '" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,document.title):true" style="text-decoration:none" title="Open Printable Exam Paper">🖨️ Paper</a>';
 
           toolsDiv.innerHTML = _buildCBTToolsHtml(printLinkHtml, calcBtnHtml);
         }
@@ -1689,7 +1697,11 @@
       })
       .catch(function (err) {
         console.error('CBT Download Exam load error:', err);
-        window.open(examUrl + '?cbt=1', '_blank');
+        if (typeof window._openDownloadInBrowser === 'function') {
+          window._openDownloadInBrowser(null, examUrl, examTitle || examFilename);
+        } else {
+          window.open(examUrl + '?cbt=1', '_blank');
+        }
       });
   };
 
