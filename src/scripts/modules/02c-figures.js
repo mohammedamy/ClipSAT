@@ -5580,23 +5580,59 @@ function _initFigureInspection(){
     var titleEl = document.createElement('div');
     titleEl.className = 'cs-fig-zoom-title';
     titleEl.textContent = svg.getAttribute('aria-label') || (isAr ? 'الشكل التوضيحي' : 'Figure preview');
+
+    var tools = document.createElement('div');
+    tools.className = 'cs-fig-zoom-tools';
+    var zoomPct = 100;
+    var zOut = document.createElement('button');
+    zOut.type = 'button'; zOut.className = 'cs-fig-zoom-btn';
+    zOut.textContent = '\u2212';
+    zOut.setAttribute('aria-label', isAr ? 'تصغير الشكل' : 'Zoom out figure');
+    var zReset = document.createElement('button');
+    zReset.type = 'button'; zReset.className = 'cs-fig-zoom-btn cs-fig-zoom-pct';
+    zReset.textContent = '100%';
+    zReset.setAttribute('aria-label', isAr ? 'إعادة التكبير إلى ١٠٠٪' : 'Reset figure zoom to 100%');
+    var zIn = document.createElement('button');
+    zIn.type = 'button'; zIn.className = 'cs-fig-zoom-btn';
+    zIn.textContent = '+';
+    zIn.setAttribute('aria-label', isAr ? 'تكبير الشكل' : 'Zoom in figure');
+
     var closeBtn = document.createElement('button');
     closeBtn.type = 'button';
     closeBtn.className = 'cs-fig-zoom-close';
     closeBtn.setAttribute('aria-label', isAr ? 'إغلاق تكبير الشكل' : 'Close enlarged figure');
     closeBtn.textContent = '✕';
+
+    tools.appendChild(zOut);
+    tools.appendChild(zReset);
+    tools.appendChild(zIn);
+    tools.appendChild(closeBtn);
     head.appendChild(titleEl);
-    head.appendChild(closeBtn);
+    head.appendChild(tools);
 
     var body = document.createElement('div');
     body.className = 'cs-fig-zoom-body';
     var clone = svg.cloneNode(true);
     clone.removeAttribute('width');
     clone.removeAttribute('height');
-    clone.style.width = '100%';
-    clone.style.maxWidth = '720px';
     clone.style.height = 'auto';
     clone.style.cursor = 'default';
+    function applyZoom(){
+      zReset.textContent = zoomPct + '%';
+      zOut.disabled = zoomPct <= 75;
+      zIn.disabled = zoomPct >= 250;
+      if(zoomPct <= 100){
+        clone.style.width = zoomPct + '%';
+        clone.style.maxWidth = '720px';
+      } else {
+        clone.style.width = zoomPct + '%';
+        clone.style.maxWidth = 'none';
+      }
+    }
+    applyZoom();
+    zOut.addEventListener('click', function(){ zoomPct = Math.max(75, zoomPct - 25); applyZoom(); });
+    zIn.addEventListener('click', function(){ zoomPct = Math.min(250, zoomPct + 25); applyZoom(); });
+    zReset.addEventListener('click', function(){ zoomPct = 100; applyZoom(); });
     body.appendChild(clone);
 
     card.appendChild(head);
@@ -5613,6 +5649,9 @@ function _initFigureInspection(){
     }
     function onKey(ev){
       if(ev.key === 'Escape'){ ev.preventDefault(); closeZoom(); }
+      else if(ev.key === '+' || ev.key === '='){ ev.preventDefault(); zIn.click(); }
+      else if(ev.key === '-' || ev.key === '\u2212'){ ev.preventDefault(); zOut.click(); }
+      else if(ev.key === '0'){ ev.preventDefault(); zReset.click(); }
     }
     closeBtn.addEventListener('click', closeZoom);
     modal.addEventListener('click', function(ev){

@@ -134,6 +134,9 @@
     } else {
       this.v = view;
     }
+    if(ctx && ctx.canvas){
+      ctx.canvas._csLastPlot = { v: this.v, pad: this.pad, w: this.w, h: this.h };
+    }
   }
   Plot.prototype.X=function(x){ var p=this.pad; return p.l+(x-this.v.xmin)/(this.v.xmax-this.v.xmin)*(this.w-p.l-p.r); };
   Plot.prototype.Y=function(y){ var p=this.pad; return this.h-p.b-(y-this.v.ymin)/(this.v.ymax-this.v.ymin)*(this.h-p.t-p.b); };
@@ -164,32 +167,60 @@
       sx = niceStep(v.xmax-v.xmin,7);
       sy = niceStep(v.ymax-v.ymin,5);
     }
+    c.save();
     c.lineWidth=1; c.font=FONT; c.strokeStyle=GRID; c.fillStyle=MUTED; c.textBaseline='middle';
-    var x0=Math.ceil(v.xmin/sx)*sx;
+    var x0=Math.ceil(v.xmin/sx)*sx, lastTx=-1e9, minPxX=this.w<380?40:28;
     for(var x=x0;x<=v.xmax+1e-9;x+=sx){ var px=this.X(x);
       c.beginPath(); c.moveTo(px,p.t); c.lineTo(px,this.h-p.b); c.stroke();
-      if(Math.abs(x)>1e-9){ c.textAlign='center'; c.textBaseline='top'; c.fillText(this._lbl(x), px, this.h-p.b+5); }
+      if(Math.abs(x)>1e-9 && px>=p.l+6 && px<=this.w-p.r-6 && (px-lastTx)>=minPxX){
+        c.textAlign='center'; c.textBaseline='top'; c.fillText(this._lbl(x), px, this.h-p.b+5);
+        lastTx=px;
+      }
     }
-    var y0=Math.ceil(v.ymin/sy)*sy;
+    var y0=Math.ceil(v.ymin/sy)*sy, lastTy=1e9, minPyY=20;
     for(var y=y0;y<=v.ymax+1e-9;y+=sy){ var py=this.Y(y);
       c.beginPath(); c.moveTo(p.l,py); c.lineTo(this.w-p.r,py); c.stroke();
-      if(Math.abs(y)>1e-9){ c.textAlign='right'; c.textBaseline='middle'; c.fillText(this._lbl(y), p.l-6, py); }
+      if(Math.abs(y)>1e-9 && py>=p.t+6 && py<=this.h-p.b-6 && Math.abs(lastTy-py)>=minPyY){
+        c.textAlign='right'; c.textBaseline='middle'; c.fillText(this._lbl(y), p.l-6, py);
+        lastTy=py;
+      }
     }
-    c.strokeStyle=AXIS; c.lineWidth=1.4;
-    if(v.ymin<0&&v.ymax>0){ var ay=this.Y(0); c.beginPath(); c.moveTo(p.l,ay); c.lineTo(this.w-p.r,ay); c.stroke(); }
-    if(v.xmin<0&&v.xmax>0){ var ax=this.X(0); c.beginPath(); c.moveTo(ax,p.t); c.lineTo(ax,this.h-p.b); c.stroke(); }
+    c.strokeStyle=AXIS; c.fillStyle=AXIS; c.lineWidth=1.5;
+    var hasOriginX = v.xmin<0 && v.xmax>0, hasOriginY = v.ymin<0 && v.ymax>0;
+    var ax = hasOriginX ? this.X(0) : -1, ay = hasOriginY ? this.Y(0) : -1;
+    if(hasOriginY){
+      c.beginPath(); c.moveTo(p.l,ay); c.lineTo(this.w-p.r,ay); c.stroke();
+      var xTip=this.w-p.r;
+      c.beginPath(); c.moveTo(xTip,ay); c.lineTo(xTip-6,ay-3.2); c.lineTo(xTip-6,ay+3.2); c.closePath(); c.fill();
+    }
+    if(hasOriginX){
+      c.beginPath(); c.moveTo(ax,p.t); c.lineTo(ax,this.h-p.b); c.stroke();
+      var yTip=p.t;
+      c.beginPath(); c.moveTo(ax,yTip); c.lineTo(ax-3.2,yTip+6); c.lineTo(ax+3.2,yTip+6); c.closePath(); c.fill();
+    }
+    if(hasOriginX && hasOriginY && ax>p.l+14 && ax<this.w-p.r-10 && ay>p.t+10 && ay<this.h-p.b-14){
+      c.fillStyle=MUTED; c.textAlign='right'; c.textBaseline='top';
+      c.fillText('0', ax-5, ay+4);
+    }
+    c.restore();
   };
-  Plot.prototype._lbl=function(n){ var r=Math.round(n*100)/100; return (Math.abs(r)<1e-9?0:r).toString(); };
+  Plot.prototype._lbl=function(n){
+    var r=Math.round(n*100)/100;
+    if(Math.abs(r)<1e-9) return '0';
+    return r<0 ? '\u2212'+Math.abs(r) : String(r);
+  };
   Plot.prototype.curve=function(f,color,width,dash){
-    var c=this.ctx,p=this.pad; c.save(); c.beginPath();
-    c.rect(p.l,p.t,this.w-p.l-p.r,this.h-p.t-p.b); c.clip();
-    c.beginPath(); var started=false, N=320;
+    var c=this.ctx,p=this.pad,ph=this.h-p.t-p.b,pw=this.w-p.l-p.r; c.save(); c.beginPath();
+    c.rect(p.l,p.t,pw,ph); c.clip();
+    c.beginPath(); var started=false, N=Math.max(320,Math.min(560,Math.round(pw*1.4))), prevPy=NaN, jumpLim=ph*1.15;
     for(var i=0;i<=N;i++){ var x=this.v.xmin+(this.v.xmax-this.v.xmin)*i/N, y=f(x);
-      if(!isFinite(y)){ started=false; continue; }
+      if(!isFinite(y)){ started=false; prevPy=NaN; continue; }
       var px=this.X(x), py=this.Y(y);
+      if(started && Math.abs(py-prevPy)>jumpLim){ started=false; prevPy=NaN; continue; }
       if(!started){ c.moveTo(px,py); started=true; } else c.lineTo(px,py);
+      prevPy=py;
     }
-    c.lineWidth=width||2.4; c.strokeStyle=color; c.lineJoin='round';
+    c.lineWidth=width||2.4; c.strokeStyle=color; c.lineJoin='round'; c.lineCap='round';
     if(dash) c.setLineDash(dash); c.stroke(); c.restore();
   };
   Plot.prototype.areaUnder=function(f,a,b,fill){
@@ -203,10 +234,12 @@
   Plot.prototype.shadedArea=Plot.prototype.areaUnder;
   Plot.prototype.segment=function(x1,y1,x2,y2,color,width,dash){
     var c=this.ctx; c.save(); c.beginPath(); c.moveTo(this.X(x1),this.Y(y1)); c.lineTo(this.X(x2),this.Y(y2));
-    c.lineWidth=width||2; c.strokeStyle=color; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
+    c.lineWidth=width||2; c.strokeStyle=color; c.lineCap='round'; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
   };
   Plot.prototype.dot=function(x,y,color,r){
-    var c=this.ctx; c.beginPath(); c.arc(this.X(x),this.Y(y),r||5,0,2*Math.PI);
+    var c=this.ctx, px=this.X(x), py=this.Y(y), rad=r||5;
+    c.save(); c.globalAlpha=0.2; c.beginPath(); c.arc(px,py,rad+4,0,2*Math.PI); c.fillStyle=color; c.fill(); c.restore();
+    c.beginPath(); c.arc(px,py,rad,0,2*Math.PI);
     c.fillStyle=color; c.fill(); c.lineWidth=2; c.strokeStyle=WHITE; c.stroke();
   };
   Plot.prototype.ring=function(x,y,color,r){
@@ -222,16 +255,18 @@
     c.lineWidth=width||1.4; c.strokeStyle=color; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
   };
   Plot.prototype.parametric=function(fx,fy,tmin,tmax,color,width,dash){
-    var c=this.ctx,p=this.pad; c.save(); c.beginPath();
-    c.rect(p.l,p.t,this.w-p.l-p.r,this.h-p.t-p.b); c.clip();
-    c.beginPath(); var started=false, N=320;
+    var c=this.ctx,p=this.pad,ph=this.h-p.t-p.b,pw=this.w-p.l-p.r; c.save(); c.beginPath();
+    c.rect(p.l,p.t,pw,ph); c.clip();
+    c.beginPath(); var started=false, N=360, prevPx=NaN, prevPy=NaN, jumpLim=Math.max(pw,ph)*1.15;
     for(var i=0;i<=N;i++){
       var t=tmin+(tmax-tmin)*i/N, x=fx(t), y=fy(t);
-      if(!isFinite(x)||!isFinite(y)){ started=false; continue; }
+      if(!isFinite(x)||!isFinite(y)){ started=false; prevPx=NaN; prevPy=NaN; continue; }
       var px=this.X(x), py=this.Y(y);
+      if(started && (Math.abs(px-prevPx)>jumpLim || Math.abs(py-prevPy)>jumpLim)){ started=false; prevPx=NaN; prevPy=NaN; continue; }
       if(!started){ c.moveTo(px,py); started=true; } else c.lineTo(px,py);
+      prevPx=px; prevPy=py;
     }
-    c.lineWidth=width||2.4; c.strokeStyle=color||INDIGO; c.lineJoin='round';
+    c.lineWidth=width||2.4; c.strokeStyle=color||INDIGO; c.lineJoin='round'; c.lineCap='round';
     if(dash) c.setLineDash(dash); c.stroke(); c.restore();
   };
   Plot.prototype.label=function(x,y,str,color,align){
@@ -239,7 +274,7 @@
     c.font='600 11.5px ui-sans-serif, system-ui, sans-serif';
     c.textAlign=align||'left'; c.textBaseline='middle';
     var px=this.X(x), py=this.Y(y);
-    c.lineWidth=3; c.strokeStyle=PAPER||WHITE; c.strokeText(String(str),px,py);
+    c.lineJoin='round'; c.lineWidth=4; c.strokeStyle=PAPER||WHITE; c.strokeText(String(str),px,py);
     c.fillStyle=color||INK; c.fillText(String(str),px,py);
     c.restore();
   };
@@ -700,7 +735,11 @@
     } catch(err) {
       if(window.console && console.warn) console.warn('Explorer draw error:', wd.canvas.id, err);
     }
-    if(wd.canvas.closest) renderExplorerContainer(wd.canvas.closest('.explorer'));
+    if(wd.canvas.closest){
+      var exEl = wd.canvas.closest('.explorer');
+      renderExplorerContainer(exEl);
+      if(exEl) _syncAllRanges(exEl);
+    }
     _syncLiveSummary(wd.canvas);
     wd.seen=true;
     if(_io){ try { _io.unobserve(wd.canvas); } catch(_){} }
@@ -717,6 +756,74 @@
     return (document.documentElement && document.documentElement.lang === 'ar') ||
            (document.body && document.body.classList && document.body.classList.contains('rtl'));
   }
+  function _syncRangeFill(el){
+    if(!el || el.type !== 'range' || !el.style) return;
+    var mn = parseFloat(el.min); if(!isFinite(mn)) mn = 0;
+    var mx = parseFloat(el.max); if(!isFinite(mx)) mx = 100;
+    var v = parseFloat(el.value); if(!isFinite(v)) v = mn;
+    var pct = mx > mn ? Math.max(0, Math.min(100, ((v - mn) / (mx - mn)) * 100)) : 0;
+    el.style.setProperty('--val-pct', pct.toFixed(2) + '%');
+  }
+  function _syncAllRanges(root){
+    if(!root || !root.querySelectorAll) return;
+    var rs = root.querySelectorAll('input[type="range"]');
+    for(var i=0;i<rs.length;i++) _syncRangeFill(rs[i]);
+  }
+  var _EX_ICONS = {
+    play: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>',
+    pause: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>',
+    reset: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>',
+    expand: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
+    close: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+    png: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+    orbit: '<svg class="ex-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/></svg>'
+  };
+  var _activeExpandedClose = null;
+  function _getFocusBackdrop(){
+    var bd = document.getElementById('cs-ex-focus-backdrop');
+    if(!bd){
+      bd = document.createElement('div');
+      bd.id = 'cs-ex-focus-backdrop';
+      bd.className = 'ex-focus-backdrop no-print';
+      bd.hidden = true;
+      bd.addEventListener('click', function(ev){ if(ev.target === bd && _activeExpandedClose) _activeExpandedClose(); });
+      if(document.body) document.body.appendChild(bd);
+    }
+    return bd;
+  }
+  function _wireCanvasInspector(canvas){
+    if(!canvas || !canvas.closest) return;
+    var wrap = canvas.closest('.canvas-wrap');
+    if(!wrap || wrap._csHudWired) return;
+    wrap._csHudWired = true;
+    var hud = document.createElement('div');
+    hud.className = 'ex-coord-hud no-print';
+    hud.setAttribute('aria-hidden', 'true');
+    wrap.appendChild(hud);
+    function fmtAxisVal(n, span){
+      var d = span < 6 ? 2 : (span < 80 ? 1 : 0);
+      var r = Number(n.toFixed(d));
+      if(Math.abs(r) < 1e-9) return '0';
+      return r < 0 ? '\u2212' + Math.abs(r).toFixed(d).replace(/\.0+$/, '') : r.toFixed(d).replace(/\.0+$/, '');
+    }
+    canvas.addEventListener('pointermove', function(e){
+      var pl = canvas._csLastPlot;
+      if(!pl || !pl.v || !pl.pad) return;
+      var rect = canvas.getBoundingClientRect();
+      var px = e.clientX - rect.left, py = e.clientY - rect.top;
+      var pw = pl.w - pl.pad.l - pl.pad.r, ph = pl.h - pl.pad.t - pl.pad.b;
+      if(pw <= 0 || ph <= 0 || px < pl.pad.l || px > pl.w - pl.pad.r || py < pl.pad.t || py > pl.h - pl.pad.b){
+        hud.classList.remove('is-visible');
+        return;
+      }
+      var wx = pl.v.xmin + ((px - pl.pad.l) / pw) * (pl.v.xmax - pl.v.xmin);
+      var wy = pl.v.ymin + ((pl.h - pl.pad.b - py) / ph) * (pl.v.ymax - pl.v.ymin);
+      hud.textContent = '(' + fmtAxisVal(wx, pl.v.xmax - pl.v.xmin) + ', ' + fmtAxisVal(wy, pl.v.ymax - pl.v.ymin) + ')';
+      hud.classList.add('is-visible');
+    });
+    canvas.addEventListener('pointerleave', function(){ hud.classList.remove('is-visible'); });
+    canvas.addEventListener('pointercancel', function(){ hud.classList.remove('is-visible'); });
+  }
   function _wireExplorerReset(canvas){
     if(!canvas || !canvas.closest) return;
     var ex = canvas.closest('.explorer');
@@ -725,8 +832,11 @@
     if(!ctrlsWrap) return;
     var inputs = Array.prototype.slice.call(ctrlsWrap.querySelectorAll('input, select'));
     var radioGroups = Array.prototype.slice.call(ctrlsWrap.querySelectorAll('.radios'));
-    if(!inputs.length && !radioGroups.length) return;
+    var ranges = Array.prototype.slice.call(ctrlsWrap.querySelectorAll('input[type="range"]'));
+    var plot2dCanvas = ex.querySelector('.canvas-wrap:not(.ex-3d-wrap) canvas');
+    if(!inputs.length && !radioGroups.length && !plot2dCanvas) return;
     ex._csResetWired = true;
+    _syncAllRanges(ex);
     var snapInputs = inputs.map(function(el){
       return { el: el, val: el.value, chk: !!el.checked };
     });
@@ -739,38 +849,243 @@
     var topBar = ex.querySelector('.ex-top');
     var actRow = topBar && topBar.querySelector('div');
     if(!actRow) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'ex-reset-btn no-print';
-    function syncLbl(){
-      var ar = _isArDoc();
-      btn.textContent = ar ? '↺ إعادة' : '↺ Reset';
-      btn.setAttribute('aria-label', ar ? 'إعادة ضبط أدوات المستكشف' : 'Reset explorer controls');
-      btn.title = ar ? 'إعادة القيم الافتراضية' : 'Reset controls to default values';
+
+    var grp = document.createElement('div');
+    grp.className = 'ex-tool-group no-print';
+
+    // Animation state (Play / Pause primary or last-adjusted slider)
+    var animId = 0, animStart = 0, activeRange = ranges[0] || null, isStepping = false, playBtn = null;
+    function setAnimCtrlHighlight(on){
+      ranges.forEach(function(r){
+        var c = r.closest && r.closest('.ctrl');
+        if(c) c.classList.toggle('is-animating', !!(on && r === activeRange));
+      });
     }
-    syncLbl();
-    btn._csSyncLbl = syncLbl;
-    btn.addEventListener('click', function(){
-      snapInputs.forEach(function(s){
-        if(s.el.type === 'checkbox') s.el.checked = s.chk;
-        else s.el.value = s.val;
+    function stopAnim(){
+      if(animId && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(animId);
+      animId = 0;
+      setAnimCtrlHighlight(false);
+      if(playBtn){
+        playBtn.classList.remove('is-playing');
+        playBtn.setAttribute('aria-pressed', 'false');
+        if(playBtn._csSyncLbl) playBtn._csSyncLbl();
+      }
+    }
+    ranges.forEach(function(r){
+      r.addEventListener('pointerdown', function(){ activeRange = r; if(animId) stopAnim(); });
+      r.addEventListener('keydown', function(){ activeRange = r; if(animId) stopAnim(); });
+      r.addEventListener('input', function(e){
+        _syncRangeFill(r);
+        if(!isStepping && e && e.isTrusted !== false) activeRange = r;
+      });
+    });
+    if(plot2dCanvas){
+      plot2dCanvas.addEventListener('pointerdown', function(){ if(animId) stopAnim(); });
+    }
+
+    if(ranges.length){
+      playBtn = document.createElement('button');
+      playBtn.type = 'button';
+      playBtn.className = 'ex-tool-btn ex-play-btn no-print';
+      playBtn.setAttribute('aria-pressed', 'false');
+      playBtn._csSyncLbl = function(){
+        var ar = _isArDoc(), playing = !!animId;
+        playBtn.innerHTML = _EX_ICONS[playing ? 'pause' : 'play'] + '<span class="ex-btn-lbl">' + (playing ? (ar ? 'إيقاف' : 'Pause') : (ar ? 'تشغيل' : 'Play')) + '</span>';
+        playBtn.setAttribute('aria-label', playing ? (ar ? 'إيقاف التحريك التلقائي' : 'Pause parameter animation') : (ar ? 'تشغيل تحريك تلقائي للمتغير' : 'Animate active parameter'));
+        playBtn.title = playBtn.getAttribute('aria-label');
+      };
+      playBtn._csSyncLbl();
+      playBtn.addEventListener('click', function(){
+        if(animId){ stopAnim(); return; }
+        var r = activeRange || ranges[0];
+        if(!r || typeof requestAnimationFrame !== 'function') return;
+        activeRange = r;
+        var mn = parseFloat(r.min); if(!isFinite(mn)) mn = 0;
+        var mx = parseFloat(r.max); if(!isFinite(mx)) mx = 100;
+        if(mx <= mn) return;
+        var step = parseFloat(r.step) || (mx - mn) / 100 || 0.01;
+        var cur = parseFloat(r.value); if(!isFinite(cur)) cur = mn;
+        var u0 = Math.max(0, Math.min(1, (cur - mn) / (mx - mn)));
+        var dur = 6800;
+        animStart = performance.now() - u0 * dur;
+        playBtn.classList.add('is-playing');
+        playBtn.setAttribute('aria-pressed', 'true');
+        setAnimCtrlHighlight(true);
+        playBtn._csSyncLbl();
+        function frame(now){
+          if(!animId) return;
+          if(document.hidden || !document.contains(ex) || ex.offsetParent === null){ stopAnim(); return; }
+          var cycle = ((now - animStart) % (2 * dur)) / dur;
+          var u = cycle <= 1 ? cycle : 2 - cycle;
+          var raw = mn + u * (mx - mn);
+          var q = mn + Math.round((raw - mn) / step) * step;
+          q = Math.max(mn, Math.min(mx, Math.round(q * 1e6) / 1e6));
+          if(Math.abs(q - parseFloat(r.value)) > 1e-9){
+            isStepping = true;
+            r.value = String(q);
+            _syncRangeFill(r);
+            try { r.dispatchEvent(new Event('input', { bubbles: true })); } catch(_){}
+            isStepping = false;
+          }
+          animId = requestAnimationFrame(frame);
+        }
+        animId = requestAnimationFrame(frame);
+      });
+      if(typeof IntersectionObserver !== 'undefined'){
+        var visObs = new IntersectionObserver(function(ents){
+          if(animId && ents[0] && !ents[0].isIntersecting) stopAnim();
+        }, { threshold: 0.02 });
+        visObs.observe(ex);
+      }
+      grp.appendChild(playBtn);
+    }
+
+    if(inputs.length || radioGroups.length){
+      var resetBtn = document.createElement('button');
+      resetBtn.type = 'button';
+      resetBtn.className = 'ex-reset-btn ex-tool-btn no-print';
+      resetBtn._csSyncLbl = function(){
+        var ar = _isArDoc();
+        resetBtn.innerHTML = _EX_ICONS.reset + '<span class="ex-btn-lbl">' + (ar ? 'إعادة' : 'Reset') + '</span>';
+        resetBtn.setAttribute('aria-label', ar ? 'إعادة ضبط أدوات المستكشف' : 'Reset explorer controls');
+        resetBtn.title = ar ? 'إعادة القيم الافتراضية' : 'Reset controls to default values';
+      };
+      resetBtn._csSyncLbl();
+      resetBtn.addEventListener('click', function(){
+        stopAnim();
+        snapInputs.forEach(function(s){
+          if(s.el.type === 'checkbox') s.el.checked = s.chk;
+          else s.el.value = s.val;
+          _syncRangeFill(s.el);
+          try {
+            s.el.dispatchEvent(new Event('input', { bubbles: true }));
+            s.el.dispatchEvent(new Event('change', { bubbles: true }));
+          } catch(_){}
+        });
+        snapRadios.forEach(function(g){
+          if(g.btns[g.activeIdx]) g.btns[g.activeIdx].click();
+        });
+        redrawAll();
+      });
+      grp.appendChild(resetBtn);
+    }
+
+    // Expand / Focus workspace mode (portal into body backdrop to bypass ancestor stacking contexts)
+    var expandBtn = document.createElement('button');
+    expandBtn.type = 'button';
+    expandBtn.className = 'ex-tool-btn ex-expand-btn no-print';
+    expandBtn.setAttribute('aria-expanded', 'false');
+    var focusPlaceholder = document.createComment('cs-ex-placeholder');
+    function closeExpanded(){
+      if(!ex.classList.contains('ex-expanded')) return;
+      ex.classList.remove('ex-expanded');
+      if(focusPlaceholder.parentNode){
+        focusPlaceholder.parentNode.insertBefore(ex, focusPlaceholder);
+        focusPlaceholder.parentNode.removeChild(focusPlaceholder);
+      }
+      if(document.body) document.body.classList.remove('cs-ex-focus-open');
+      var bd = _getFocusBackdrop();
+      if(bd){
+        bd.hidden = true;
+        bd.removeAttribute('role');
+        bd.removeAttribute('aria-modal');
+        bd.removeAttribute('aria-label');
+      }
+      expandBtn.setAttribute('aria-expanded', 'false');
+      expandBtn._csSyncLbl();
+      document.removeEventListener('keydown', onExpandKey);
+      if(_activeExpandedClose === closeExpanded) _activeExpandedClose = null;
+      if(typeof requestAnimationFrame === 'function') requestAnimationFrame(redrawAll);
+      setTimeout(redrawAll, 60);
+      try { expandBtn.focus(); } catch(_){}
+    }
+    function onExpandKey(ev){ if(ev.key === 'Escape'){ ev.preventDefault(); closeExpanded(); } }
+    expandBtn._csSyncLbl = function(){
+      var ar = _isArDoc(), open = ex.classList.contains('ex-expanded');
+      expandBtn.innerHTML = _EX_ICONS[open ? 'close' : 'expand'] + '<span class="ex-btn-lbl">' + (open ? (ar ? 'إغلاق' : 'Close') : (ar ? 'تكبير' : 'Expand')) + '</span>';
+      expandBtn.setAttribute('aria-label', open ? (ar ? 'إغلاق وضع التركيز' : 'Exit expanded view') : (ar ? 'تكبير المستكشف لملء الشاشة' : 'Expand explorer to focus view'));
+      expandBtn.title = expandBtn.getAttribute('aria-label');
+    };
+    expandBtn._csSyncLbl();
+    expandBtn.addEventListener('click', function(){
+      if(ex.classList.contains('ex-expanded')){ closeExpanded(); return; }
+      if(_activeExpandedClose) _activeExpandedClose();
+      if(!ex.parentNode) return;
+      _activeExpandedClose = closeExpanded;
+      var bd = _getFocusBackdrop();
+      var et = ex.querySelector('.ex-top .et');
+      var titleNode = et && (_isArDoc() ? et.querySelector('.i18n-ar:not([hidden])') : et.querySelector('.i18n-en:not([hidden])')) || et;
+      var focusTitle = titleNode ? titleNode.textContent.replace(/\s+/g, ' ').trim() : (_isArDoc() ? 'المستكشف التفاعلي' : 'Interactive Explorer');
+      ex.parentNode.insertBefore(focusPlaceholder, ex);
+      ex.classList.add('ex-expanded');
+      if(bd){
+        bd.appendChild(ex);
+        bd.setAttribute('role', 'dialog');
+        bd.setAttribute('aria-modal', 'true');
+        bd.setAttribute('aria-label', focusTitle);
+        bd.hidden = false;
+      }
+      if(document.body) document.body.classList.add('cs-ex-focus-open');
+      expandBtn.setAttribute('aria-expanded', 'true');
+      expandBtn._csSyncLbl();
+      document.addEventListener('keydown', onExpandKey);
+      if(typeof requestAnimationFrame === 'function') requestAnimationFrame(redrawAll);
+      setTimeout(redrawAll, 60);
+    });
+    grp.appendChild(expandBtn);
+
+    // Save PNG snapshot button (when a 2D canvas is present)
+    if(plot2dCanvas){
+      var snapBtn = document.createElement('button');
+      snapBtn.type = 'button';
+      snapBtn.className = 'ex-tool-btn ex-snap-btn no-print';
+      snapBtn._csSyncLbl = function(){
+        var ar = _isArDoc();
+        snapBtn.innerHTML = _EX_ICONS.png + '<span class="ex-btn-lbl">PNG</span>';
+        snapBtn.setAttribute('aria-label', ar ? 'حفظ الرسم كصورة PNG' : 'Save graph as PNG image');
+        snapBtn.title = snapBtn.getAttribute('aria-label');
+      };
+      snapBtn._csSyncLbl();
+      snapBtn.addEventListener('click', function(){
+        var cw = plot2dCanvas.width, ch = plot2dCanvas.height;
+        if(!cw || !ch) return;
+        var dpr = window.devicePixelRatio || 1;
+        var padTop = Math.round(34 * dpr), padBot = Math.round(24 * dpr);
+        var out = document.createElement('canvas');
+        out.width = cw; out.height = ch + padTop + padBot;
+        var ox = out.getContext('2d'); if(!ox) return;
+        ox.fillStyle = PAPER || '#FFFFFF';
+        ox.fillRect(0, 0, out.width, out.height);
+        var et = ex.querySelector('.ex-top .et');
+        var titleNode = et && (_isArDoc() ? et.querySelector('.i18n-ar:not([hidden])') : et.querySelector('.i18n-en:not([hidden])')) || et;
+        var title = titleNode ? titleNode.textContent.replace(/\s+/g, ' ').trim() : 'ClipSAT Interactive Graph';
+        ox.fillStyle = INK || '#0E1726';
+        ox.font = '600 ' + Math.round(13 * dpr) + 'px ui-sans-serif, system-ui, sans-serif';
+        ox.textAlign = 'left'; ox.textBaseline = 'middle';
+        ox.fillText(title, Math.round(14 * dpr), Math.round(padTop * 0.52));
+        ox.drawImage(plot2dCanvas, 0, padTop);
+        ox.fillStyle = MUTED || '#566173';
+        ox.font = Math.round(11 * dpr) + 'px ui-monospace, Menlo, monospace';
+        ox.textAlign = 'right';
+        ox.fillText('clipsat.org', out.width - Math.round(14 * dpr), out.height - Math.round(padBot * 0.45));
         try {
-          s.el.dispatchEvent(new Event('input', { bubbles: true }));
-          s.el.dispatchEvent(new Event('change', { bubbles: true }));
+          var a = document.createElement('a');
+          a.href = out.toDataURL('image/png');
+          a.download = (plot2dCanvas.id || 'clipsat-graph') + '.png';
+          document.body.appendChild(a); a.click(); a.remove();
         } catch(_){}
       });
-      snapRadios.forEach(function(g){
-        if(g.btns[g.activeIdx]) g.btns[g.activeIdx].click();
-      });
-      redrawAll();
-    });
-    actRow.insertBefore(btn, actRow.firstChild);
+      grp.appendChild(snapBtn);
+    }
+
+    actRow.insertBefore(grp, actRow.firstChild);
   }
   function register(canvas, drawFn){
     var wd={canvas:canvas, draw:drawFn, seen:false};
     canvas._cswd=wd;
     widgets.push(wd);
     _wireExplorerReset(canvas);
+    _wireCanvasInspector(canvas);
     _wireCanvasKeyboard(canvas);
     if(_ro){ try { _ro.observe(canvas); } catch(_){} }
     var redrawOne = function(){ drawWidget(wd); };
@@ -795,7 +1110,7 @@
     var _themeObs = new MutationObserver(function(){
       clearTimeout(_themeTimer);
       _themeTimer = setTimeout(function(){
-        Array.prototype.forEach.call(document.querySelectorAll('.ex-reset-btn'), function(b){
+        Array.prototype.forEach.call(document.querySelectorAll('.ex-reset-btn, .ex-tool-btn, .ex-challenge-card, .ex-3d-pill, .ex-drag-hint'), function(b){
           if(b._csSyncLbl) b._csSyncLbl();
         });
         redrawAll();
@@ -811,9 +1126,10 @@
   if(typeof document !== 'undefined' && document.addEventListener){
     var _exEvtHandler = function(e){
       var t = e && e.target;
+      if(t && t.type === 'range') _syncRangeFill(t);
       var ex = t && t.closest && t.closest('.explorer');
       if(ex){
-        setTimeout(function(){ renderExplorerContainer(ex); }, 0);
+        setTimeout(function(){ renderExplorerContainer(ex); _syncAllRanges(ex); }, 0);
       }
     };
     document.addEventListener('input', _exEvtHandler, true);
@@ -891,6 +1207,18 @@
     }
     opts = opts || {};
     var dragging = null;
+    var wrap = canvas.closest && canvas.closest('.canvas-wrap');
+    var dragHint = null;
+    if(wrap && wrap.parentNode && !wrap.parentNode.querySelector('.ex-drag-hint')){
+      dragHint = document.createElement('div');
+      dragHint.className = 'ex-drag-hint no-print';
+      dragHint.setAttribute('aria-hidden', 'true');
+      dragHint._csSyncLbl = function(){
+        dragHint.textContent = _isArDoc() ? '↔ اسحب على الرسم' : '↔ Drag points directly on the graph';
+      };
+      dragHint._csSyncLbl();
+      wrap.parentNode.insertBefore(dragHint, wrap.nextSibling);
+    }
     function getPos(e){
       var rect = canvas.getBoundingClientRect();
       return {
@@ -900,6 +1228,7 @@
     }
     canvas.style.touchAction = 'none';
     canvas.addEventListener('pointerdown', function(e){
+      if(dragHint && !dragHint.classList.contains('is-dismissed')) dragHint.classList.add('is-dismissed');
       var pos = getPos(e);
       if(typeof opts.hitTest === 'function'){
         dragging = opts.hitTest(pos.x, pos.y);
@@ -956,23 +1285,35 @@
     var wasSolved = false;
     try { wasSolved = localStorage.getItem(storageKey) === '1'; } catch(_) {}
 
-    var isAr = document.documentElement.lang === 'ar';
-    var promptText = (spec.prompt && typeof spec.prompt === 'object')
-      ? (isAr && spec.prompt.ar ? spec.prompt.ar : spec.prompt.en)
-      : String(spec.prompt || '');
-
-    var titleText = isAr ? 'تحدي استكشافي' : 'Discovery Challenge';
-    var statusWaiting = isAr ? '⏳ جاري الاستكشاف...' : '⏳ In Progress...';
-    var statusSuccess = isAr ? '🎉 أحسنت! تم تحقيق الهدف' : '🎉 Goal Achieved!';
+    function renderCardText(solved){
+      var isAr = _isArDoc();
+      var promptText = (spec.prompt && typeof spec.prompt === 'object')
+        ? (isAr && spec.prompt.ar ? spec.prompt.ar : spec.prompt.en)
+        : String(spec.prompt || '');
+      var titleText = isAr ? 'تحدي استكشافي' : 'Discovery Challenge';
+      var statusWaiting = isAr ? 'جاري الاستكشاف…' : 'In Progress';
+      var statusSuccess = isAr ? 'تم تحقيق الهدف ✓' : 'Goal Achieved ✓';
+      var tEl = card.querySelector('.ex-ch-title');
+      var sEl = card.querySelector('.ex-ch-status');
+      var pEl = card.querySelector('.ex-ch-prompt');
+      if(tEl) tEl.textContent = titleText;
+      if(sEl){
+        sEl.className = 'ex-ch-status' + (solved ? ' solved' : '');
+        sEl.textContent = solved ? statusSuccess : statusWaiting;
+      }
+      if(pEl && !pEl.querySelector('.katex')) pEl.textContent = promptText;
+    }
 
     card.innerHTML =
       '<div class="ex-ch-header">' +
-        '<div class="ex-ch-tag"><span class="ex-ch-icon">🎯</span> <strong class="ex-ch-title">' + titleText + '</strong></div>' +
-        '<span class="ex-ch-status' + (wasSolved ? ' solved' : '') + '">' + (wasSolved ? statusSuccess : statusWaiting) + '</span>' +
+        '<div class="ex-ch-tag"><svg class="ex-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg> <strong class="ex-ch-title"></strong></div>' +
+        '<span class="ex-ch-status"></span>' +
       '</div>' +
-      '<p class="ex-ch-prompt">' + promptText + '</p>';
+      '<p class="ex-ch-prompt"></p>';
 
     if(wasSolved) card.classList.add('is-solved');
+    renderCardText(wasSolved);
+    card._csSyncLbl = function(){ renderCardText(card.classList.contains('is-solved')); renderExplorerEl(card.querySelector('.ex-ch-prompt'), false); };
     controls.appendChild(card);
     renderExplorerEl(card.querySelector('.ex-ch-prompt'), false);
 
@@ -983,24 +1324,24 @@
         try {
           if(spec.check && spec.check(state)){
             card.classList.add('is-solved');
-            var statusEl = card.querySelector('.ex-ch-status');
-            if(statusEl){
-              statusEl.className = 'ex-ch-status solved';
-              statusEl.textContent = statusSuccess;
+            if(!reduceMotion){
+              card.classList.add('just-solved');
+              setTimeout(function(){ card.classList.remove('just-solved'); }, 900);
             }
+            renderCardText(true);
             try { localStorage.setItem(storageKey, '1'); } catch(_) {}
+            if(!wasSolved && window.CSGamify && typeof window.CSGamify.addXP === 'function'){
+              wasSolved = true;
+              window.CSGamify.addXP(15, 'Discovery Challenge');
+            }
             return true;
           }
         } catch(_) {}
         return false;
       },
       reset: function(){
-        card.classList.remove('is-solved');
-        var statusEl = card.querySelector('.ex-ch-status');
-        if(statusEl){
-          statusEl.className = 'ex-ch-status';
-          statusEl.textContent = statusWaiting;
-        }
+        card.classList.remove('is-solved', 'just-solved');
+        renderCardText(false);
         try { localStorage.removeItem(storageKey); } catch(_) {}
       },
       notify: function(state){ return api.check(state); }
@@ -1053,17 +1394,39 @@
         target.z+dist*Math.cos(el)*Math.cos(az)
       );
       camera.lookAt(target);
+      var initPos = camera.position.clone();
+      var initTarget = target.clone();
 
       var controls=new mods.OrbitControls(camera, renderer.domElement);
       controls.target.copy(target);
-      controls.enableDamping=false;
+      controls.enableDamping=!reduceMotion;
+      controls.dampingFactor=0.08;
+      controls.autoRotate=false;
+      controls.autoRotateSpeed=1.6;
       controls.enablePan=false;
       controls.minDistance=opts.minDistance||dist*0.35;
       controls.maxDistance=opts.maxDistance||dist*2.2;
       controls.update();
 
       function render(){ renderer.render(scene,camera); }
+      var raf3d=0, coastFrames=0;
+      function kickLoop(frames){
+        if(frames && frames > coastFrames) coastFrames = frames;
+        if(raf3d || typeof requestAnimationFrame !== 'function') return;
+        raf3d = requestAnimationFrame(function step3d(){
+          raf3d = 0;
+          if(wrapEl.hidden || document.hidden || !document.contains(wrapEl)){ coastFrames = 0; return; }
+          controls.update();
+          render();
+          if(coastFrames > 0) coastFrames--;
+          if(coastFrames > 0 || controls.autoRotate){
+            raf3d = requestAnimationFrame(step3d);
+          }
+        });
+      }
       controls.addEventListener('change', render);
+      controls.addEventListener('start', function(){ kickLoop(10); });
+      controls.addEventListener('end', function(){ if(controls.enableDamping) kickLoop(45); });
 
       if(opts.axisTicks!==false){
         var segs=opts.axisSegs||[[[-3.5,0,0],[3.5,0,0]],[[0,-1,0],[0,4,0]],[[0,0,-3.5],[0,0,3.5]]];
@@ -1074,17 +1437,81 @@
         });
       }
 
-      var rt3d;
-      window.addEventListener('resize',function(){
-        clearTimeout(rt3d);
-        rt3d=setTimeout(function(){
-          if(wrapEl.hidden) return;
-          var nw=wrapEl.clientWidth||w, nh=wrapEl.clientHeight||h;
-          camera.aspect=nw/nh; camera.updateProjectionMatrix();
-          renderer.setSize(nw,nh);
+      // Sibling 3D controls bar outside role="img" so buttons never nest inside an img landmark
+      if(wrapEl.parentNode && !wrapEl.parentNode.querySelector('.ex-3d-toolbar[data-for="' + (wrapEl.id || '') + '"]')){
+        var bar = document.createElement('div');
+        bar.className = 'ex-3d-toolbar no-print';
+        if(wrapEl.id) bar.setAttribute('data-for', wrapEl.id);
+        bar.hidden = !!wrapEl.hidden;
+
+        var orbBtn = document.createElement('button');
+        orbBtn.type = 'button';
+        orbBtn.className = 'ex-3d-pill';
+        orbBtn.setAttribute('aria-pressed', 'false');
+        var rstBtn = document.createElement('button');
+        rstBtn.type = 'button';
+        rstBtn.className = 'ex-3d-pill';
+
+        function sync3dLbl(){
+          var ar = _isArDoc();
+          orbBtn.innerHTML = _EX_ICONS.orbit + '<span>' + (ar ? 'تدوير تلقائي' : 'Auto-Orbit') + '</span>';
+          orbBtn.setAttribute('aria-label', ar ? 'تشغيل أو إيقاف التدوير التلقائي ثلاثي الأبعاد' : 'Toggle 3D auto-orbit');
+          rstBtn.innerHTML = _EX_ICONS.reset + '<span>' + (ar ? 'إعادة الزاوية' : 'Reset View') + '</span>';
+          rstBtn.setAttribute('aria-label', ar ? 'إعادة ضبط زاوية الكاميرا ثلاثية الأبعاد' : 'Reset 3D camera view');
+        }
+        sync3dLbl();
+        orbBtn._csSyncLbl = sync3dLbl;
+        rstBtn._csSyncLbl = sync3dLbl;
+
+        orbBtn.addEventListener('click', function(){
+          controls.autoRotate = !controls.autoRotate;
+          orbBtn.classList.toggle('is-active', controls.autoRotate);
+          orbBtn.setAttribute('aria-pressed', controls.autoRotate ? 'true' : 'false');
+          if(controls.autoRotate) kickLoop(2);
+        });
+        rstBtn.addEventListener('click', function(){
+          controls.autoRotate = false;
+          orbBtn.classList.remove('is-active');
+          orbBtn.setAttribute('aria-pressed', 'false');
+          camera.position.copy(initPos);
+          controls.target.copy(initTarget);
+          controls.update();
           render();
-        },150);
-      });
+        });
+        bar.appendChild(orbBtn);
+        bar.appendChild(rstBtn);
+        wrapEl.parentNode.insertBefore(bar, wrapEl.nextSibling);
+
+        if(typeof MutationObserver !== 'undefined'){
+          var hObs = new MutationObserver(function(){
+            bar.hidden = !!wrapEl.hidden;
+            if(!wrapEl.hidden){
+              syncSize();
+              if(controls.autoRotate) kickLoop(2);
+            }
+          });
+          hObs.observe(wrapEl, { attributes: true, attributeFilter: ['hidden'] });
+        }
+      }
+
+      function syncSize(){
+        if(wrapEl.hidden) return;
+        var nw=wrapEl.clientWidth||w, nh=wrapEl.clientHeight||h;
+        if(nw < 2 || nh < 2) return;
+        camera.aspect=nw/nh; camera.updateProjectionMatrix();
+        renderer.setSize(nw,nh);
+        render();
+      }
+      if(typeof ResizeObserver !== 'undefined'){
+        var ro3d = new ResizeObserver(function(){ syncSize(); });
+        ro3d.observe(wrapEl);
+      } else {
+        var rt3d;
+        window.addEventListener('resize',function(){
+          clearTimeout(rt3d);
+          rt3d=setTimeout(syncSize,150);
+        });
+      }
 
       return {THREE:T, scene:scene, camera:camera, renderer:renderer, controls:controls, render:render};
     }
