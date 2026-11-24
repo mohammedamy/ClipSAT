@@ -132,14 +132,15 @@ test('CSSlopeFieldRK4 integrates dy/dx = y from (0, 1) to y(1) ≈ e within 1e-4
   assert.ok(Math.abs(last[1] - Math.E) < 1e-3, `Expected y(1) ≈ ${Math.E}, got ${last[1]}`);
 });
 
-// 2. Verify all 24 trigonometry tracks have 6-trig & 6-inverse-trig explanations + explorers
+// 2. Verify all 23 full-trig tracks have 6-trig & 6-inverse-trig explanations + explorers,
+//    and Digital SAT ('sat') stays strictly scoped to right-triangle trig & geometry without csc/sec/cot or inverse trig
 const EXPECTED_TRIG_TRACKS = [
   'a2level', 'act', 'act2', 'act2l2', 'addmath', 'alg2', 'apab', 'apbc', 'appc',
   'aslevel', 'calculus', 'edexcel', 'est', 'est2', 'est2l2', 'gaten', 'geo',
-  'ibhl', 'ibsl', 'igcse', 'olympiad', 'precalc', 'sat', 'tahsili'
+  'ibhl', 'ibsl', 'igcse', 'olympiad', 'precalc', 'tahsili'
 ];
 
-test('All 24 trigonometry tracks include 6-trig & 6-inverse-trig bilingual explanations and wired explorers', () => {
+test('All 23 full-trig tracks include 6-trig & 6-inverse-trig explorers; SAT stays CB-scoped', () => {
   for (const t of EXPECTED_TRIG_TRACKS) {
     const meta = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, t, '_meta.json'), 'utf8'));
     const exJs = fs.readFileSync(path.join(EX_DIR, `${t}.js`), 'utf8');
@@ -169,10 +170,23 @@ test('All 24 trigonometry tracks include 6-trig & 6-inverse-trig bilingual expla
     assert.ok(foundTrig6, `Track "${t}" is missing the 6-trigonometric-ratios interactive explorer`);
     assert.ok(foundInv6, `Track "${t}" is missing the 6-inverse-trig interactive explorer`);
   }
+
+  // Digital SAT geometry/right-triangle trig check (no csc/sec/cot/arcsin/arccos/arctan)
+  const satGeo = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, 'sat', 'sat-geo.json'), 'utf8'));
+  const satExJs = fs.readFileSync(path.join(EX_DIR, 'sat.js'), 'utf8');
+  const satGeoExplorers = satGeo.content.blocks.filter(b => b.kind === 'explorer');
+  assert.ok(satGeoExplorers.length >= 1, 'sat-geo must have wired SAT geometry explorer(s)');
+  for (const b of satGeoExplorers) {
+    assert.ok(satExJs.includes(b.canvasId), `sat.js must wire ${b.canvasId}`);
+    const optVals = (b.controls || []).filter(c => Array.isArray(c.options)).flatMap(c => c.options.map(o => o.value));
+    for (const banned of ['csc', 'sec', 'cot', 'arcsin', 'arccos', 'arctan', 'arccsc', 'arcsec', 'arccot']) {
+      assert.ok(!optVals.includes(banned), `sat-geo explorer ${b.canvasId} must not include out-of-scope ${banned}`);
+    }
+  }
 });
 
-// 3. Verify all 31 tracks have Main Parent Functions (all 9 families) interactive explorer wired
-test('All 31 curriculum tracks include the 9-family Main Functions interactive explorer & bilingual atlas', () => {
+// 3. Verify all 31 tracks have Main Functions interactive explorers (7 CB families on SAT, all 9 elsewhere)
+test('All 31 curriculum tracks include the Main Functions interactive explorer (7 CB families on SAT, 9 elsewhere)', () => {
   const allTracks = fs.readdirSync(CONTENT_DIR).filter(d =>
     fs.statSync(path.join(CONTENT_DIR, d)).isDirectory() &&
     fs.existsSync(path.join(CONTENT_DIR, d, '_meta.json'))
@@ -183,21 +197,30 @@ test('All 31 curriculum tracks include the 9-family Main Functions interactive e
     'constant', 'linear', 'quadratic', 'cubic', 'absolute',
     'radical', 'rational', 'exponential', 'logarithmic'
   ];
+  const dsatFamilies = [
+    'constant', 'linear', 'quadratic', 'cubic', 'absolute',
+    'radical', 'exponential'
+  ];
 
   let totalMainFnExplorers = 0;
   for (const t of allTracks) {
     const meta = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, t, '_meta.json'), 'utf8'));
     const exJs = fs.readFileSync(path.join(EX_DIR, `${t}.js`), 'utf8');
+    const expectedFamilies = t === 'sat' ? dsatFamilies : nineFamilies;
     let trackCount = 0;
 
     for (const slug of meta.chapterOrder) {
       const ch = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, t, `${slug}.json`), 'utf8'));
       for (const b of ch.content.blocks) {
-        if (b.kind === 'explorer' && b.controls) {
+        if (b.kind === 'explorer' && b.controls && /mainfn/.test(b.canvasId || '')) {
           const optVals = b.controls
             .filter(c => Array.isArray(c.options))
             .flatMap(c => c.options.map(o => o.value));
-          if (nineFamilies.every(v => optVals.includes(v))) {
+          if (t === 'sat') {
+            assert.ok(!optVals.includes('logarithmic'), `SAT explorer ${b.canvasId} must not include logarithmic`);
+            assert.ok(!optVals.includes('rational'), `SAT explorer ${b.canvasId} must not include rational asymptotes`);
+          }
+          if (expectedFamilies.every(v => optVals.includes(v))) {
             trackCount++;
             totalMainFnExplorers++;
             assert.ok(exJs.includes(b.canvasId), `${t}.js must wire ${b.canvasId}`);
@@ -207,7 +230,7 @@ test('All 31 curriculum tracks include the 9-family Main Functions interactive e
     }
     assert.ok(trackCount >= 1, `Track "${t}" must have at least 1 Main Functions interactive explorer`);
   }
-  assert.ok(totalMainFnExplorers >= 70, `Expected >= 70 Main Functions explorers across all tracks, found ${totalMainFnExplorers}`);
+  assert.ok(totalMainFnExplorers >= 75, `Expected >= 75 Main Functions explorers across all tracks, found ${totalMainFnExplorers}`);
 });
 
 // 4. Verify Calculus Interactive Slope Field & Hyperbolic Explorers + Built _site HTML

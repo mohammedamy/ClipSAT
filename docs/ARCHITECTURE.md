@@ -7,7 +7,7 @@ System design, data flow, runtime module boundaries, and security invariants. Me
 <!-- @AUTOGEN:STATS_START -->
 - **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
 - **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
-- **Verified Question Bank (Schema v2):** **49,151** items (**35,283** executable SymPy certificates + **13,868** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
+- **Verified Question Bank (Schema v2):** **49,151** items (**35,347** executable SymPy certificates + **13,804** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
 - **Interactive Learning & Exports:** **3,064** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
 <!-- @AUTOGEN:STATS_END -->
 

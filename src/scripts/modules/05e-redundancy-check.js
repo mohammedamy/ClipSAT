@@ -37,16 +37,17 @@
     if(typeof f === 'string') return f.slice(0, 80);
     try {
       var t = f.type || (f.headers ? 'table' : (f.solid ? 'geometry_3d' : 'fig'));
-      if(t === 'table') return 'tbl:' + (f.headers||[]).join(',') + ':' + ((f.rows||f.data||[])[0]||[]).slice(0,2).join(',');
+      if(t === 'table') return 'tbl:' + (f.headers||[]).join(',') + ':' + JSON.stringify((f.rows||f.data||[]).slice(0,3));
+      if(t === 'two_way_table') return 'twt:' + (f.rows||[]).join(',') + ':' + (f.cols||[]).join(',') + ':' + JSON.stringify(f.data||[]);
       if(t === 'fn' || t === 'axes') return 'fn:' + (f.fns||[]).map(function(fn){return fn.fn||fn;}).join(';') + ':' + (f.points||[]).map(function(p){return p.x+','+p.y;}).join(';');
       if(t === 'triangle') return 'tri:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
-      if(t === 'circle') return 'circ:' + (f.radius||'') + ':' + (f.center||'');
+      if(t === 'circle') return 'circ:' + (f.radius!=null?f.radius:(f.r!=null?f.r:'')) + ':' + (f.center||'') + ':' + (f.sectorAngle!=null?f.sectorAngle:'');
       if(t === 'rect' || t === 'polygon') return 'poly:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
       if(t === 'transversal') return 'trans:' + (f.angle||'') + ':' + JSON.stringify(f.labels||{});
       if(t === 'geometry_3d') return '3d:' + (f.solid||'') + ':' + (f.radius||f.length||'') + ':' + (f.height||'');
-      if(t === 'bar' || t === 'bar_chart') return 'bar:' + (f.data||[]).map(function(d){return d.label+':'+d.val;}).join(',');
-      if(t === 'scatter') return 'scat:' + (f.pts||[]).slice(0,4).join(';');
-      if(t === 'numberline') return 'nl:' + (f.range||[]).join(',') + ':' + (f.points||[]).map(function(p){return p.x;}).join(',');
+      if(t === 'bar' || t === 'bar_chart') return 'bar:' + (f.data?f.data.map(function(d){return d.label+':'+(d.val!=null?d.val:d.value);}).join(','):((f.labels||[]).join(',')+':'+(f.values||[]).join(',')));
+      if(t === 'scatter') return 'scat:' + (f.pts||f.points||[]).slice(0,5).map(function(p){return Array.isArray(p)?p.join(','):(p&&p.x!=null?p.x+','+p.y:String(p));}).join(';') + ':' + (f.line?(f.line.slope+','+f.line.intercept):'');
+      if(t === 'numberline') return 'nl:' + (f.range||[f.min,f.max]).join(',') + ':' + JSON.stringify(f.points||f.intervals||[]);
       if(t === 'nested_triangles' || t === 'thales' || t === 'triangle_transversal') return 'nthales:' + (f.t||'') + ':' + JSON.stringify(f.sides||{});
       if(t === 'bowtie' || t === 'hourglass') return 'bowtie:' + (f.ratio||'') + ':' + JSON.stringify(f.sides||{});
       if(t === 'right_triangle_altitude' || t === 'altitude_hypotenuse' || t === 'geometric_mean') return 'rtalt:' + (f.t||'') + ':' + (f.altitude||'') + ':' + (f.p||'') + ':' + (f.q||'') + ':' + JSON.stringify(f.sides||{}) + ':' + JSON.stringify(f.labels||{});

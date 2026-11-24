@@ -119,7 +119,8 @@ it('SAT question bank contains authentic 25% native SPR items', () => {
   const satPath = path.join(__dirname, '..', 'bank-data', 'sat.json');
   const sat = JSON.parse(fs.readFileSync(satPath, 'utf8'));
   const sprs = sat.pool.filter(q => q.type === 'spr');
-  assert.ok(sprs.length >= 412, `Must have at least 412 native SPR questions in sat.json (found ${sprs.length})`);
+  const minSpr = Math.floor(sat.pool.length * 0.25);
+  assert.ok(sprs.length >= minSpr, `Must have at least ${minSpr} (25%) native SPR questions in sat.json (found ${sprs.length})`);
   sprs.forEach(q => {
     assert.ok(q.sprAnswer != null && String(q.sprAnswer).trim() !== '', 'SPR item must have sprAnswer');
     const canonicalAns = q.sprAnswer != null ? q.sprAnswer : q.ans;

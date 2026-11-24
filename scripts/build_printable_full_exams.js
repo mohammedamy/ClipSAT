@@ -1009,7 +1009,11 @@ function pickFromBucketWithDiagrams(bucket, count, figRatio, usedInThisExam, use
 /* Map ClipSAT's 10 study chapters onto the 4 official College Board Digital SAT
    Math content domains, which are the only domain labels printed on SAT papers. */
 function officialSatDomain(q) {
-  const d = String((q && q.domain) || '');
+  const d = String((q && q.domain) || '').trim();
+  if (/^Algebra$/i.test(d)) return 'Algebra';
+  if (/^Advanced Math$/i.test(d)) return 'Advanced Math';
+  if (/^Problem-Solving and Data Analysis$/i.test(d)) return 'Problem-Solving and Data Analysis';
+  if (/^Geometry and Trigonometry$/i.test(d)) return 'Geometry and Trigonometry';
   const t = String((q && q.text) || '');
   if (/desmos/i.test(d)) {
     if (/circle|radius/i.test(t)) return 'Geometry and Trigonometry';
@@ -1068,51 +1072,49 @@ function drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode
   function pickDomainItems(domainCat, type, count, targetDiffs, moduleFigState) {
     const rawList = domainPools[domainCat][type];
     const shuffled = seededShuffle(rawList, rng);
-    const fresh = shuffled.filter(q => !globalCrossExamTracker.has(q.id || q.text));
-    const reused = shuffled.filter(q => globalCrossExamTracker.has(q.id || q.text));
-    const candidates = fresh.concat(reused);
+    const freshPool = shuffled.filter(q => !globalCrossExamTracker.has(q.id || q.text));
+    const reusedPool = shuffled.filter(q => globalCrossExamTracker.has(q.id || q.text));
+
+    const FIG_MAX = 5, FIG_MIN = 3, PER_CAT = 2;
+    const figOk = (figCat) => moduleFigState.totalFigs < FIG_MAX && (moduleFigState.catCount[figCat] || 0) < PER_CAT;
+    const eligible = (q) => (
+      !usedInExam.has(q.id || q.text) &&
+      !usedSkeletons.has(satSkeleton(q))
+    );
+    const take = (cand) => {
+      const figCat = getFigCategory(cand);
+      if (figCat) {
+        moduleFigState.totalFigs++;
+        moduleFigState.catCount[figCat] = (moduleFigState.catCount[figCat] || 0) + 1;
+      }
+      return cand;
+    };
+    const pickFirst = (list, pred) => {
+      const found = list.find(c => eligible(c) && pred(c));
+      return found ? take(found) : null;
+    };
 
     const picked = [];
     for (const targetDiff of targetDiffs) {
       if (picked.length >= count) break;
-      const matching = candidates.filter(q => {
-        if (usedInExam.has(q.id || q.text)) return false;
-        if (usedSkeletons.has(satSkeleton(q))) return false;
-        if (picked.includes(q)) return false;
-        const diff = (q.difficulty || 'medium').toLowerCase();
-        return diff === targetDiff;
-      });
+      const isDiff = (c, d) => (c.difficulty || 'medium').toLowerCase() === d;
+      const wantFig = (c) => { const fc = getFigCategory(c); return fc && figOk(fc); };
+      const okFig = (c) => { const fc = getFigCategory(c); return !fc || figOk(fc); };
 
-      /* Real Digital SAT modules carry a handful of tables, graphs, and geometry
-         figures (roughly 3-5 per module), never the same kind of figure over and over. */
-      const FIG_MAX = 5, FIG_MIN = 3, PER_CAT = 2;
-      const figOk = (figCat) => moduleFigState.totalFigs < FIG_MAX && (moduleFigState.catCount[figCat] || 0) < PER_CAT;
-      const take = (cand) => {
-        const figCat = getFigCategory(cand);
-        if (figCat) {
-          moduleFigState.totalFigs++;
-          moduleFigState.catCount[figCat] = (moduleFigState.catCount[figCat] || 0) + 1;
-        }
-        return cand;
-      };
       let chosen = null;
-      if (moduleFigState.totalFigs < FIG_MIN) {
-        const figCand = matching.find(c => { const fc = getFigCategory(c); return fc && figOk(fc); });
-        if (figCand) chosen = take(figCand);
+      // 1. Fresh items matching exact target difficulty
+      if (moduleFigState.totalFigs < FIG_MIN) chosen = pickFirst(freshPool, c => isDiff(c, targetDiff) && wantFig(c));
+      if (!chosen) chosen = pickFirst(freshPool, c => isDiff(c, targetDiff) && okFig(c));
+      // 2. Fresh items from adjacent/any difficulty (never reuse an exam question while fresh items exist)
+      if (!chosen && moduleFigState.totalFigs < FIG_MIN) {
+        chosen = pickFirst(freshPool, c => isDiff(c, 'medium') && wantFig(c)) || pickFirst(freshPool, wantFig);
       }
       if (!chosen) {
-        const cand = matching.find(c => { const fc = getFigCategory(c); return !fc || figOk(fc); });
-        if (cand) chosen = take(cand);
+        chosen = pickFirst(freshPool, c => isDiff(c, 'medium') && okFig(c)) || pickFirst(freshPool, okFig);
       }
-
-      if (!chosen) {
-        const cand = candidates.find(c => {
-          if (usedInExam.has(c.id || c.text) || picked.includes(c) || usedSkeletons.has(satSkeleton(c))) return false;
-          const fc = getFigCategory(c);
-          return !fc || figOk(fc);
-        });
-        if (cand) chosen = take(cand);
-      }
+      if (!chosen) chosen = pickFirst(freshPool, () => true);
+      // 3. Reused fallback only if freshPool is completely exhausted
+      if (!chosen) chosen = pickFirst(reusedPool, okFig) || pickFirst(reusedPool, () => true);
 
       if (chosen) {
         picked.push(chosen);

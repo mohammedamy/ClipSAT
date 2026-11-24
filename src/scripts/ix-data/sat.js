@@ -53,7 +53,7 @@ D["sat-about"] = [
       "إكمال النموذج الأول الذي يحتوي على مزيج متوازن من الأسئلة السهلة والمتوسطة والصعبة.",
       "تحلل الخوارزمية دقة أدائك في النموذج الأول لتوجيهك إما للنموذج الثاني الأسهل أو الأصعب.",
       "إكمال النموذج الثاني (النموذج الأصعب مطلوب لفتح الدرجات التي تتجاوز ~600).",
-      "مراجعة جميع الأسئلة المؤشرة بعلامة (Flagged) قبل انتهاء الوقت المخصص للنموذج النشط."
+      "مراجعة جميع الأسئلة المؤشّرة للمراجعة قبل انتهاء الوقت المخصص للنموذج النشط."
     ],
     "ex": "Take Module 1, receive adaptive routing based on performance, complete Module 2, and review answers.",
     "ex_ar": "أداء النموذج الأول، ثم التوجيه التكيفي حسب الأداء، ثم إكمال النموذج الثاني، ومراجعة الإجابات."
@@ -152,55 +152,55 @@ D["sat-about"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Exam Pacing & Time Allocation (Digital SAT Format & Adaptive Testing Strategy)",
-    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدرجات (نظام اختبار Digital SAT واستراتيجية الاختبار التكيّفي)",
-    "q": "A student plans their timing for a 45-question, 68-minute section in SAT. Which step in their strategy introduces a flaw?",
-    "q_ar": "يخطط طالب لتوزيع وقته في قسم مكوّن من 45 سؤالاً خلال 68 دقيقة. أي خطوة تتضمن خللاً منهجياً؟",
+    "ti": "Spot the Error: Exam Pacing & Module Time Allocation (Digital SAT Adaptive Format)",
+    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدقائق (هيكل SAT الرقمي التكيفي)",
+    "q": "A student plans their timing for a single 22-question, 35-minute Digital SAT Math module. Which step in their strategy introduces a flaw?",
+    "q_ar": "يخطط طالب لتوزيع وقته في نموذج واحد للرياضيات في SAT الرقمي مكون من 22 سؤالاً خلال 35 دقيقة. أي خطوة تتضمن خللاً؟",
     "steps": [
-      "Compute average time budget per question: \\(\\frac{68\\times 60}{45} = 91\\) seconds.",
-      "Complete a first pass of straightforward items in roughly \\(64\\) seconds each to bank time.",
-      "Spend \\(9\\) minutes stuck on a single hard item before reading the remaining 23 questions.",
-      "Reserve the final \\(4\\) minutes to verify flagged items and ensure no unanswered blanks remain."
+      "Compute the average budget per question: \\(\\frac{35 \\times 60}{22} \\approx 95\\) seconds.",
+      "Solve straightforward Pass 1 items in roughly \\(65\\) seconds each to bank extra time.",
+      "Spend \\(10\\) minutes stuck on one hard question before reading the remaining \\(8\\) items.",
+      "Use the last \\(3\\) minutes to review flagged items and enter a response for every blank."
     ],
     "steps_ar": [
-      "حساب متوسط الزمن لكل سؤال: \\(\\frac{68\\times 60}{45} = 91\\) ثانية.",
-      "إنجاز الجولة الأولى للأسئلة المباشرة خلال نحو \\(64\\) ثانية للسؤال لتوفير الوقت.",
-      "قضاء \\(9\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (23 سؤالاً).",
-      "تخصيص آخر \\(4\\) دقائق لمراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي إجابة فارغة."
+      "حساب متوسط الزمن لكل سؤال: \\(\\frac{35 \\times 60}{22} \\approx 95\\) ثانية.",
+      "حل أسئلة الجولة الأولى المباشرة خلال نحو \\(65\\) ثانية لتوفير وقت إضافي.",
+      "قضاء \\(10\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (8 أسئلة).",
+      "استخدام الدقائق الثلاث الأخيرة لمراجعة الأسئلة المؤشرة والتأكد من عدم ترك فراغات."
     ],
     "errorStep": 3,
     "reasons": [
-      "Sinking 9 minutes into one question sacrifices 5–6 solvable equal-weight items later in the section; hard items should be flagged for Pass 2.",
-      "Average time per question should be computed by multiplying minutes by questions.",
-      "You should leave unanswered blanks when there is no guessing penalty."
+      "Spending 10 minutes on one question risks missing several accessible equal-weight questions later in the module; hard questions should be flagged for Pass 2.",
+      "Average time per question is computed by dividing questions by minutes.",
+      "On the Digital SAT you lose points for incorrect guesses, so blanks are best."
     ],
     "reasons_ar": [
-      "استنزاف 9 دقائق في سؤال واحد يضيع 5–6 أسئلة قابلة للحل بنفس الوزن لاحقاً؛ يجب تعليم السؤال الصعب والعودة إليه في الجولة الثانية.",
-      "يُحسب متوسط الزمن بضرب الدقائق في عدد الأسئلة.",
-      "يفضّل ترك الأسئلة الصعبة فارغة حتى عند عدم وجود خصم على التخمين."
+      "قضاء 10 دقائق في سؤال واحد يضيع أسئلة سهلة لاحقاً لها نفس الوزن؛ يجب تأشير السؤال الصعب والعودة إليه في الجولة الثانية.",
+      "يُحسب متوسط الزمن بقسمة عدد الأسئلة على الدقائق.",
+      "يوجد خصم على الإجابات الخاطئة في اختبار SAT الرقمي لذا يُفضّل ترك فراغات."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Pacing Audit & Target Score Plan (Digital SAT Format & Adaptive Testing Strategy)",
-    "ti_ar": "وضع المصحح: خطة إدارة الوقت والدرجة المستهدفة (نظام اختبار Digital SAT واستراتيجية الاختبار التكيّفي)",
-    "q": "A practice section has \\(45\\) equal-weight questions in \\(68\\) minutes with no penalty for wrong guesses. A student answers \\(42\\) correctly on Pass 1–2. (a) Find the exact seconds-per-question budget and accuracy percentage. (b) State the optimal triage rule for the remaining \\(3\\) flagged questions.",
-    "q_ar": "يتكون قسم تدريبي من \\(45\\) سؤالاً متساوية الوزن في \\(68\\) دقيقة دون خصم على الإجابات الخاطئة. أجاب طالب عن \\(42\\) سؤالاً بشكل صحيح. (أ) أوجد الزمن المخصص لكل سؤال بالثواني ونسبة الدقة المئوية. (ب) اذكر قاعدة الفرز المثلى للأسئلة المتبقية وعددها \\(3\\).",
+    "ti": "Examiner Mode: Module Time Budget & Two-Pass Review (Digital SAT Adaptive Format)",
+    "ti_ar": "وضع المصحح: ميزانية وقت النموذج والمراجعة على مرحلتين (هيكل SAT الرقمي)",
+    "q": "A Digital SAT Math module has \\(22\\) equal-weight questions in \\(35\\) minutes with no guessing penalty. A student solves \\(19\\) cleanly on Pass 1–2. (a) Find total seconds in the module and raw accuracy percentage to the nearest integer. (b) State the optimal rule for the remaining \\(3\\) flagged items.",
+    "q_ar": "يحتوي نموذج الرياضيات في SAT الرقمي على \\(22\\) سؤالاً متساوية الوزن في \\(35\\) دقيقة دون خصم على التخمين. حلّ طالب \\(19\\) سؤالاً بدقة. (أ) أوجد إجمالي الثواني في النموذج ونسبة الدقة لأقرب عدد صحيح. (ب) اذكر القاعدة المثلى للأسئلة الثلاثة المؤشرة.",
     "parts": [
       {
-        "label": "Part (a) — Time Budget & Raw Accuracy",
+        "label": "Part (a) — Total Seconds & Raw Accuracy",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Time per item: \\(\\frac{4080}{45} = 91\\text{ s}\\)."
+            "text": "Total time: \\(35 \\times 60 = 2100\\text{ s}\\) (\\(\\approx 95\\text{ s/question}\\))."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Raw score percentage: \\(\\frac{42}{45} \\times 100\\% \\approx 93\\%\\)."
+            "text": "Accuracy: \\(\\frac{19}{22} \\times 100\\% \\approx 86\\%\\)."
           }
         ]
       },
@@ -211,46 +211,46 @@ D["sat-about"] = [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Eliminate clearly invalid distractors using dimensional/sign/boundary checks."
+            "text": "Check Desmos intersection/table or test sign/size constraints to eliminate impossible choices."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select the best remaining option on all \\(3\\) items before time expires (expected gain \\(> 0\\) with no guessing penalty)."
+            "text": "Ensure every one of the \\(3\\) items has an entered answer before time expires."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — ميزانية الوقت ونسبة الدقة",
+        "label": "الجزء (أ) — إجمالي الثواني ونسبة الدقة",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "الزمن لكل سؤال: \\(\\frac{4080}{45} = 91\\) ثانية."
+            "text": "إجمالي الوقت: \\(35 \\times 60 = 2100\\) ثانية (نحو \\(95\\) ثانية للسؤال)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "النسبة المئوية للدرجة الخام: \\(\\frac{42}{45} \\times 100\\% \\approx 93\\%\\)."
+            "text": "الدقة: \\(\\frac{19}{22} \\times 100\\% \\approx 86\\%\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — استبعاد البدائل وعدم ترك فراغات",
+        "label": "الجزء (ب) — الاستبعاد وعدم ترك فراغات",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "استبعاد الخيارات المستحيلة عبر فحص الإشارة أو القيم الحدية."
+            "text": "استخدام ديسموس أو فحص الإشارة والحجم لاستبعاد البدائل المستحيلة."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "اختيار أفضل إجابة لجميع الأسئلة المتبقية (3) قبل انتهاء الوقت لعدم وجود خصم."
+            "text": "التأكد من إدخال إجابة لكل سؤال من الأسئلة الثلاثة قبل انتهاء الوقت."
           }
         ]
       }
@@ -258,64 +258,64 @@ D["sat-about"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Exam Time & Score Budget (Digital SAT Format & Adaptive Testing Strategy)",
-    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والدرجة (نظام اختبار Digital SAT واستراتيجية الاختبار التكيّفي)",
+    "ti": "Step Builder: Digital SAT Two-Module Time & Item Budget",
+    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والأسئلة في SAT الرقمي",
     "steps": [
       {
-        "l": "Convert \\(68\\) minutes into total seconds:",
-        "a": "4080",
-        "h": "Multiply 68 by 60."
+        "l": "Convert a \\(35\\)-minute math module into seconds:",
+        "a": "2100",
+        "h": "Multiply 35 by 60."
       },
       {
-        "l": "Divide by \\(45\\) questions to get seconds per question:",
-        "a": "91",
-        "h": "Compute 4080 / 45."
+        "l": "Total questions across both adaptive math modules (\\(22\\) each):",
+        "a": "44",
+        "h": "Add 22 + 22."
       },
       {
-        "l": "If you answer \\(42\\) out of \\(45\\) correctly, how many items remain for review?",
+        "l": "If \\(19\\) of \\(22\\) items in Module 1 are complete, how many remain flagged?",
         "a": "3",
-        "h": "Subtract 42 from 45."
+        "h": "Subtract 19 from 22."
       }
     ],
     "steps_ar": [
       {
-        "l": "حوّل \\(68\\) دقيقة إلى إجمالي الثواني:",
-        "a": "4080",
-        "h": "اضرب 68 في 60."
+        "l": "حوّل مدة النموذج (\\(35\\) دقيقة) إلى ثوانٍ:",
+        "a": "2100",
+        "h": "اضرب 35 في 60."
       },
       {
-        "l": "اقسم على \\(45\\) سؤالاً لإيجاد عدد الثواني لكل سؤال:",
-        "a": "91",
-        "h": "احسب 4080 ÷ 45."
+        "l": "إجمالي الأسئلة في النموذجين التكيفيين (\\(22\\) في كل نموذج):",
+        "a": "44",
+        "h": "اجمع 22 + 22."
       },
       {
-        "l": "إذا حللت \\(42\\) من أصل \\(45\\)، فكم سؤالاً يتبقى للمراجعة؟",
+        "l": "إذا أُنجز \\(19\\) من أصل \\(22\\) سؤالاً في النموذج الأول، فكم سؤالاً يتبقى للمراجعة؟",
         "a": "3",
-        "h": "اطرح 42 من 45."
+        "h": "اطرح 19 من 22."
       }
     ]
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Two-Pass Exam Triage (Digital SAT Format & Adaptive Testing Strategy)",
-    "ti_ar": "فحص سريع: استراتيجية الجولتين في الاختبار (نظام اختبار Digital SAT واستراتيجية الاختبار التكيّفي)",
-    "q": "On a timed 45-question section (68 minutes, no guessing penalty), what is the highest-yield action when an item still resists solution after 121 seconds?",
-    "q_ar": "في قسم موقوت من 45 سؤالاً (68 دقيقة دون خصم على التخمين)، ما الإجراء الأعلى كفاءة إذا استغرق سؤال أكثر من 121 ثانية دون حل؟",
+    "ti": "Quick Check: Two-Pass Exam Triage (Digital SAT Adaptive Format)",
+    "ti_ar": "فحص سريع: استراتيجية الجولتين في SAT الرقمي",
+    "q": "During a 22-question, 35-minute Digital SAT Math module (no guessing penalty), what is the best action if one item still resists solution after 2 minutes?",
+    "q_ar": "خلال نموذج SAT الرقمي (22 سؤالاً في 35 دقيقة دون خصم على التخمين)، ما أفضل تصرف إذا استغرق سؤال أكثر من دقيقتين دون حل؟",
     "o": [
-      "Record a tentative answer, flag the item for Pass 2, and advance immediately to secure easier marks",
-      "Leave the answer blank and spend another 5 minutes deriving from scratch",
-      "Restart the entire section from Question 1",
-      "Skip reading all remaining word problems"
+      "Enter a tentative best answer, flag the item for Pass 2, and move on to secure accessible marks",
+      "Leave it blank and spend 6 more minutes re-deriving algebra from scratch",
+      "Restart the module from Question 1",
+      "Close Desmos for the rest of the test"
     ],
     "o_ar": [
-      "تسجيل إجابة مبدئية وتعليم السؤال للجولة الثانية والانتقال فوراً لحصد الدرجات الأسهل",
-      "ترك السؤال فارغاً وقضاء 5 دقائق إضافية في اشتقاق مطوّل",
-      "إعادة قراءة القسم من السؤال الأول",
-      "تجاهل جميع المسائل اللفظية المتبقية دون قراءتها"
+      "إدخال أفضل إجابة مبدئية وتأشير السؤال للجولة الثانية والانتقال لحصد الدرجات السهلة",
+      "تركه فارغاً وقضاء 6 دقائق إضافية في إعادة الاشتقاق من البداية",
+      "إعادة قراءة النموذج من السؤال الأول",
+      "إغلاق حاسبة ديسموس لبقية الاختبار"
     ],
     "a": 0,
-    "ex": "Two-pass triage protects your 91 s/item pace while ensuring a tentative answer is always banked.",
-    "ex_ar": "فرز الجولتين يحمي معدل 91 ثانية للسؤال ويضمن عدم ترك أي إجابة فارغة."
+    "ex": "Protecting the ~95 seconds/question pace across 22 questions avoids losing easy points near the end of the module.",
+    "ex_ar": "الحفاظ على معدل ~95 ثانية للسؤال عبر 22 سؤالاً يحمي الدرجات السهلة في نهاية النموذج."
   }
 ];
 D["sat-linear"] = [
@@ -495,105 +495,105 @@ D["sat-linear"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Perpendicular Gradient & Inequality Sign (Linear Equations in One Variable & Systems of Equations)",
-    "ti_ar": "اكتشف الخطأ: ميل المستقيم المتعامد وإشارة المتباينة (المعادلات الخطية في متغير واحد وأنظمة المعادلات الخطية)",
-    "q": "Given \\(A(3, 3)\\) and \\(B(5, 9)\\), a student finds the gradient of the line perpendicular to \\(AB\\). Which step is wrong?",
-    "q_ar": "مُعطى النقطتان \\(A(3, 3)\\) و\\(B(5, 9)\\)، يحسب طالب ميل العمودي على \\(AB\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: No Solution vs. Infinitely Many Solutions in a System",
+    "ti_ar": "اكتشف الخطأ: التمييز بين انعدام الحلول والحلول اللانهائية في النظام الخطي",
+    "q": "For what value of \\(k\\) does the system \\(3x + ky = 8\\) and \\(6x + 15y = 12\\) have NO solution? A student evaluates \\(k\\); which step is flawed?",
+    "q_ar": "لأي قيمة للثابت \\(k\\) لا يكون للنظام \\(3x + ky = 8\\) و\\(6x + 15y = 12\\) أي حل؟ أي خطوة في حل الطالب خاطئة؟",
     "steps": [
-      "Compute gradient of \\(AB\\): \\(m_{AB} = \\frac{9 - 3}{5 - 3} = \\frac{6}{2} = 3\\).",
-      "Compute midpoint of \\(AB\\): \\(M = (4, 6)\\).",
-      "Take the perpendicular gradient as the positive reciprocal \\(m_{\\perp} = \\frac{1}{3}\\) without negating the sign.",
-      "Substitute \\(M(4, 6)\\) into point-slope form."
+      "Match the coefficient ratios on the left: \\(\\frac{3}{6} = \\frac{k}{15}\\).",
+      "Compare constants: \\(\\frac{8}{12} = \\frac{2}{3} \\neq \\frac{3}{6}\\).",
+      "Conclude no value of \\(k\\) works because \\(\\frac{8}{12} \\neq \\frac{1}{2}\\).",
+      "Set \\(k = 0\\) instead."
     ],
     "steps_ar": [
-      "حساب ميل القطعة \\(AB\\): \\(m_{AB} = \\frac{9 - 3}{5 - 3} = 3\\).",
-      "حساب نقطة المنتصف: \\(M = (4, 6)\\).",
-      "أخذ ميل العمودي كمقلوب موجب \\(m_{\\perp} = \\frac{1}{3}\\) دون عكس الإشارة.",
-      "التعويض بالنقطة \\(M(4, 6)\\) في معادلة المستقيم."
+      "مطابقة نسب معاملات الطرف الأيسر: \\(\\frac{3}{6} = \\frac{k}{15}\\).",
+      "مقارنة نسبة الثوابت: \\(\\frac{8}{12} = \\frac{2}{3} \\neq \\frac{3}{6}\\).",
+      "استنتاج أنه لا توجد قيمة للثابت \\(k\\) لأن \\(\\frac{8}{12} \\neq \\frac{1}{2}\\).",
+      "تعويض \\(k = 0\\) بدلاً من ذلك."
     ],
     "errorStep": 3,
     "reasons": [
-      "Perpendicular non-vertical lines satisfy \\(m_1 m_2 = -1\\), so \\(m_{\\perp} = -\\frac{1}{3}\\) (negative reciprocal, not positive reciprocal).",
-      "Perpendicular lines have equal slopes \\(m_1 = m_2\\).",
-      "Slope is run divided by rise."
+      "Having \\(\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}\\) is the EXACT condition for parallel lines (NO solution), so \\(\\frac{k}{15} = \\frac{1}{2} \\implies k = 7.5\\) gives zero solutions.",
+      "Infinitely many solutions require unequal ratios of constants.",
+      "Systems have no solution only when \\(k = 15\\)."
     ],
     "reasons_ar": [
-      "المستقيمان المتعامدان يحققان \\(m_1 m_2 = -1\\)، لذا ميل العمودي هو المقلوب السالب \\(m_{\\perp} = -\\frac{1}{3}\\).",
-      "المستقيمان المتعامدان لهما نفس الميل.",
-      "الميل يساوي فرق السينات على فرق الصادات."
+      "تحقق \\(\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}\\) هو بالضبط شرط المستقيمين المتوازيين (لا يوجد حل)، ومنه \\(k = 7.5\\).",
+      "الحلول اللانهائية تتطلب عدم تساوي نسب الثوابت.",
+      "لا يكون للنظام حل فقط عندما \\(k = 15\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Line Equation & Perpendicular Bisector (Linear Equations in One Variable & Systems of Equations)",
-    "ti_ar": "وضع المصحح: معادلة المستقيم والعمود المنصّف (المعادلات الخطية في متغير واحد وأنظمة المعادلات الخطية)",
-    "q": "Points \\(A(3, 3)\\) and \\(B(5, 9)\\) lie in the coordinate plane. (a) Find the equation of line \\(AB\\) in \\(y = mx + c\\) form. (b) Find the midpoint \\(M\\) and the gradient of the perpendicular bisector of \\(AB\\).",
-    "q_ar": "النقطتان \\(A(3, 3)\\) و\\(B(5, 9)\\) في المستوى الإحداثي. (أ) أوجد معادلة المستقيم \\(AB\\) بصيغة \\(y = mx + c\\). (ب) أوجد نقطة المنتصف \\(M\\) وميل العمود المنصّف للقطعة \\(AB\\).",
+    "ti": "Examiner Mode: Infinite-Solution Parameters & Target Combinations",
+    "ti_ar": "وضع المصحح: ثوابت الحلول اللانهائية وتركيب العبارات في الأنظمة",
+    "q": "(a) The system \\(4x - 6y = 10\\) and \\(kx + 9y = -15\\) has infinitely many solutions; find \\(k\\). (b) Given \\(7x + 2y = 31\\) and \\(3x + 8y = 19\\), find the exact value of \\(2x + 2y\\) without solving for \\(x\\) and \\(y\\) individually.",
+    "q_ar": "(أ) النظام \\(4x - 6y = 10\\) و\\(kx + 9y = -15\\) له عدد لا نهائي من الحلول؛ أوجد \\(k\\). (ب) إذا كان \\(7x + 2y = 31\\) و\\(3x + 8y = 19\\)، فأوجد قيمة \\(2x + 2y\\) دون إيجاد \\(x\\) و\\(y\\) منفردين.",
     "parts": [
       {
-        "label": "Part (a) — Gradient & Line Equation",
+        "label": "Part (a) — Equal Ratios Condition",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Gradient \\(m = \\frac{9 - 3}{5 - 3} = 3\\)."
+            "text": "Check constant-to-\\(y\\) ratio: \\(\\frac{9}{-6} = -\\frac{3}{2}\\) and \\(\\frac{-15}{10} = -\\frac{3}{2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Intercept \\(c = 3 - 3(3) = -6\\), giving \\(y = 3x - 6\\)."
+            "text": "Multiply the first \\(x\\)-coefficient: \\(k = 4\\left(-\\frac{3}{2}\\right) = -6\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Midpoint & Orthogonal Gradient",
+        "label": "Part (b) — Direct Equation Combination",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "Midpoint \\(M = \\left(\\frac{3+5}{2}, \\frac{3+9}{2}\\right) = (4, 6)\\)."
+            "text": "Add both equations: \\((7x + 3x) + (2y + 8y) = 31 + 19 \\implies 10x + 10y = 50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Perpendicular gradient \\(m_{\\perp} = -\\frac{1}{3}\\)."
+            "text": "Divide both sides by \\(5\\): \\(2x + 2y = 10\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الميل ومعادلة المستقيم",
+        "label": "الجزء (أ) — شرط تساوي النسب الثلاث",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "الميل \\(m = \\frac{9 - 3}{5 - 3} = 3\\)."
+            "text": "نسبة معاملَي \\(y\\) والثابتين: \\(\\frac{9}{-6} = -\\frac{3}{2}\\) و\\(\\frac{-15}{10} = -\\frac{3}{2}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "المقطع الصادي \\(c = -6\\)، والمعادلة \\(y = 3x - 6\\)."
+            "text": "بالمثل \\(k = 4\\left(-\\frac{3}{2}\\right) = -6\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — نقطة المنتصف وميل العمود المنصّف",
+        "label": "الجزء (ب) — الجمع المباشر للمعادلتين",
         "marks": 2,
         "rubric": [
           {
-            "code": "B1",
+            "code": "M1",
             "marks": 1,
-            "text": "نقطة المنتصف \\(M = (4, 6)\\)."
+            "text": "جمع المعادلتين: \\(10x + 10y = 50\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "ميل العمود المنصّف \\(m_{\\perp} = -\\frac{1}{3}\\)."
+            "text": "بالقسمة على \\(5\\) نجد \\(2x + 2y = 10\\)."
           }
         ]
       }
@@ -601,42 +601,125 @@ D["sat-linear"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Coordinate Slope, Intercept & Midpoint (Linear Equations in One Variable & Systems of Equations)",
-    "ti_ar": "بناء الخطوات: الميل والمقطع ونقطة المنتصف (المعادلات الخطية في متغير واحد وأنظمة المعادلات الخطية)",
+    "ti": "Step Builder: Direct Target Combination in a Linear System",
+    "ti_ar": "بناء الخطوات: إيجاد عبارة مركبة مباشرة من نظام خطي",
     "steps": [
       {
-        "l": "Find the slope \\(m\\) through \\((3, 3)\\) and \\((5, 9)\\): \\(m =\\)",
-        "a": "3",
-        "h": "Compute (9 − 3) / (5 − 3)."
+        "l": "Add \\(5x + 2y = 21\\) and \\(x + 4y = 15\\) to evaluate \\(6x + 6y =\\)",
+        "a": "36",
+        "h": "Add 21 and 15."
       },
       {
-        "l": "Find the \\(y\\)-intercept \\(c\\) in \\(y = mx + c\\): \\(c =\\)",
-        "a": "-6",
-        "h": "Compute 3 − 3×3."
+        "l": "Divide by \\(2\\) to obtain \\(3x + 3y =\\)",
+        "a": "18",
+        "h": "Compute 36 / 2."
       },
       {
-        "l": "Find the \\(y\\)-coordinate of the midpoint \\(M\\): \\(y_M =\\)",
+        "l": "Divide by \\(6\\) to isolate \\(x + y =\\)",
         "a": "6",
-        "h": "Average 3 and 9."
+        "h": "Compute 36 / 6."
       }
     ],
     "steps_ar": [
       {
-        "l": "أوجد الميل \\(m\\) للمستقيم المار بـ \\((3, 3)\\) و\\((5, 9)\\): \\(m =\\)",
-        "a": "3",
-        "h": "احسب (9 − 3) ÷ (5 − 3)."
+        "l": "اجمع \\(5x + 2y = 21\\) و\\(x + 4y = 15\\) لإيجاد \\(6x + 6y =\\)",
+        "a": "36",
+        "h": "اجمع 21 و15."
       },
       {
-        "l": "أوجد المقطع الصادي \\(c\\) في \\(y = mx + c\\): \\(c =\\)",
-        "a": "-6",
-        "h": "احسب 3 − 3×3."
+        "l": "اقسم على \\(2\\) لإيجاد \\(3x + 3y =\\)",
+        "a": "18",
+        "h": "احسب 36 ÷ 2."
       },
       {
-        "l": "أوجد الإحداثي الصادي لنقطة المنتصف \\(M\\): \\(y_M =\\)",
+        "l": "اقسم على \\(6\\) لإيجاد \\(x + y =\\)",
         "a": "6",
-        "h": "متوسط 3 و9."
+        "h": "احسب 36 ÷ 6."
       }
     ]
+  },
+  {
+    "t": "gp",
+    "ti": "Interactive Graph Plotter: Line Intercepts",
+    "ti_ar": "مخطط الدوال التفاعلي: مقاطع المستقيم",
+    "q": "Plot the x-intercept and y-intercept of the line \\(2x + 3y = 6\\) on the coordinate grid.",
+    "q_ar": "عيّن المقطع السيني والمقطع الصادي للمستقيم \\(2x + 3y = 6\\) على الشبكة الإحداثية.",
+    "xrange": [
+      -5,
+      5
+    ],
+    "yrange": [
+      -5,
+      5
+    ],
+    "targets": [
+      {
+        "label": "x-intercept (3, 0)",
+        "label_ar": "المقطع السيني (3, 0)",
+        "target": [
+          3,
+          0
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "y-intercept (0, 2)",
+        "label_ar": "المقطع الصادي (0, 2)",
+        "target": [
+          0,
+          2
+        ],
+        "tol": 0.45
+      }
+    ],
+    "sol": "Set \\(y=0\\) to get \\(2x=6 \\Rightarrow x=3\\), giving \\((3,0)\\). Set \\(x=0\\) to get \\(3y=6 \\Rightarrow y=2\\), giving \\((0,2)\\).",
+    "sol_ar": "بوضع \\(y=0\\) نجد \\(2x=6 \\Rightarrow x=3\\) أي \\((3,0)\\)، وبوضع \\(x=0\\) نجد \\(3y=6 \\Rightarrow y=2\\) أي \\((0,2)\\)."
+  },
+  {
+    "t": "gp",
+    "ti": "Graph Plotter: Line Intercepts & Slope (Linear Equations in One Variable & Systems of Equations)",
+    "ti_ar": "مخطط التمثيل البياني: المقاطع والميل (المعادلات الخطية وأنظمتها)",
+    "q": "Plot the x-intercept and y-intercept of \\(2x + 3y = 6\\), plus the midpoint between them.",
+    "q_ar": "عيّن المقطع السيني والمقطع الصادي للمستقيم \\(2x + 3y = 6\\)، بالإضافة إلى نقطة المنتصف بينهما.",
+    "xrange": [
+      -5,
+      5
+    ],
+    "yrange": [
+      -5,
+      5
+    ],
+    "targets": [
+      {
+        "label": "x-intercept (3, 0)",
+        "label_ar": "المقطع السيني (3, 0)",
+        "target": [
+          3,
+          0
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "y-intercept (0, 2)",
+        "label_ar": "المقطع الصادي (0, 2)",
+        "target": [
+          0,
+          2
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "Midpoint (1.5, 1)",
+        "label_ar": "نقطة المنتصف (1.5, 1)",
+        "target": [
+          1.5,
+          1
+        ],
+        "tol": 0.5
+      }
+    ],
+    "ex": "Set \\(y = 0\\) for the x-intercept and \\(x = 0\\) for the y-intercept, or substitute \\(x = 2\\) directly into the linear equation.",
+    "ex_ar": "عوّض \\(y = 0\\) لإيجاد المقطع السيني و\\(x = 0\\) للمقطع الصادي، أو عوّض \\(x = 2\\) مباشرة في المعادلة الخطية."
   }
 ];
 D["sat-linfun"] = [
@@ -801,14 +884,14 @@ D["sat-linfun"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Perpendicular Gradient & Inequality Sign (Linear Functions & Linear Inequalities)",
+    "ti": "Spot the Error: Perpendicular Slope & Inequality Sign (Linear Functions & Linear Inequalities)",
     "ti_ar": "اكتشف الخطأ: ميل المستقيم المتعامد وإشارة المتباينة (الدوال الخطية والمتباينات الخطية)",
-    "q": "Given \\(A(4, 4)\\) and \\(B(6, 12)\\), a student finds the gradient of the line perpendicular to \\(AB\\). Which step is wrong?",
+    "q": "Given \\(A(4, 4)\\) and \\(B(6, 12)\\), a student finds the slope of the line perpendicular to \\(AB\\). Which step is wrong?",
     "q_ar": "مُعطى النقطتان \\(A(4, 4)\\) و\\(B(6, 12)\\)، يحسب طالب ميل العمودي على \\(AB\\). أي خطوة خاطئة؟",
     "steps": [
-      "Compute gradient of \\(AB\\): \\(m_{AB} = \\frac{12 - 4}{6 - 4} = \\frac{8}{2} = 4\\).",
+      "Compute slope of \\(AB\\): \\(m_{AB} = \\frac{12 - 4}{6 - 4} = \\frac{8}{2} = 4\\).",
       "Compute midpoint of \\(AB\\): \\(M = (5, 8)\\).",
-      "Take the perpendicular gradient as the positive reciprocal \\(m_{\\perp} = \\frac{1}{4}\\) without negating the sign.",
+      "Take the perpendicular slope as the positive reciprocal \\(m_{\\perp} = \\frac{1}{4}\\) without negating the sign.",
       "Substitute \\(M(5, 8)\\) into point-slope form."
     ],
     "steps_ar": [
@@ -834,27 +917,27 @@ D["sat-linfun"] = [
     "t": "ms",
     "ti": "Examiner Mode: Line Equation & Perpendicular Bisector (Linear Functions & Linear Inequalities)",
     "ti_ar": "وضع المصحح: معادلة المستقيم والعمود المنصّف (الدوال الخطية والمتباينات الخطية)",
-    "q": "Points \\(A(4, 4)\\) and \\(B(6, 12)\\) lie in the coordinate plane. (a) Find the equation of line \\(AB\\) in \\(y = mx + c\\) form. (b) Find the midpoint \\(M\\) and the gradient of the perpendicular bisector of \\(AB\\).",
-    "q_ar": "النقطتان \\(A(4, 4)\\) و\\(B(6, 12)\\) في المستوى الإحداثي. (أ) أوجد معادلة المستقيم \\(AB\\) بصيغة \\(y = mx + c\\). (ب) أوجد نقطة المنتصف \\(M\\) وميل العمود المنصّف للقطعة \\(AB\\).",
+    "q": "Points \\(A(4, 4)\\) and \\(B(6, 12)\\) lie in the coordinate plane. (a) Find the equation of line \\(AB\\) in \\(y = mx + b\\) form. (b) Find the midpoint \\(M\\) and the slope of the perpendicular bisector of \\(AB\\).",
+    "q_ar": "النقطتان \\(A(4, 4)\\) و\\(B(6, 12)\\) في المستوى الإحداثي. (أ) أوجد معادلة المستقيم \\(AB\\) بصيغة \\(y = mx + b\\). (ب) أوجد نقطة المنتصف \\(M\\) وميل العمود المنصّف للقطعة \\(AB\\).",
     "parts": [
       {
-        "label": "Part (a) — Gradient & Line Equation",
+        "label": "Part (a) — Slope & Line Equation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Gradient \\(m = \\frac{12 - 4}{6 - 4} = 4\\)."
+            "text": "Slope \\(m = \\frac{12 - 4}{6 - 4} = 4\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Intercept \\(c = 4 - 4(4) = -12\\), giving \\(y = 4x - 12\\)."
+            "text": "y-Intercept \\(b = 4 - 4(4) = -12\\), giving \\(y = 4x - 12\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Midpoint & Orthogonal Gradient",
+        "label": "Part (b) — Midpoint & Perpendicular Slope",
         "marks": 2,
         "rubric": [
           {
@@ -865,7 +948,7 @@ D["sat-linfun"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "Perpendicular gradient \\(m_{\\perp} = -\\frac{1}{4}\\)."
+            "text": "Perpendicular slope \\(m_{\\perp} = -\\frac{1}{4}\\)."
           }
         ]
       }
@@ -883,7 +966,7 @@ D["sat-linfun"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "المقطع الصادي \\(c = -12\\)، والمعادلة \\(y = 4x - 12\\)."
+            "text": "المقطع الصادي \\(b = -12\\)، والمعادلة \\(y = 4x - 12\\)."
           }
         ]
       },
@@ -916,7 +999,7 @@ D["sat-linfun"] = [
         "h": "Compute (12 − 4) / (6 − 4)."
       },
       {
-        "l": "Find the \\(y\\)-intercept \\(c\\) in \\(y = mx + c\\): \\(c =\\)",
+        "l": "Find the \\(y\\)-intercept \\(b\\) in \\(y = mx + b\\): \\(c =\\)",
         "a": "-12",
         "h": "Compute 4 − 4×4."
       },
@@ -933,7 +1016,7 @@ D["sat-linfun"] = [
         "h": "احسب (12 − 4) ÷ (6 − 4)."
       },
       {
-        "l": "أوجد المقطع الصادي \\(c\\) في \\(y = mx + c\\): \\(c =\\)",
+        "l": "أوجد المقطع الصادي \\(b\\) في \\(y = mx + b\\): \\(c =\\)",
         "a": "-12",
         "h": "احسب 4 − 4×4."
       },
@@ -984,6 +1067,46 @@ D["sat-linfun"] = [
         "r": "يعكس اتجاه علامة التباين (\\(< \\;\\to\\; >\\))"
       }
     ]
+  },
+  {
+    "t": "fn",
+    "ti": "Explorer: Linear Slope & Intercept Shifts",
+    "ti_ar": "مستكشف: الميل والمقطع الصادي للدالة الخطية",
+    "fns": [
+      {
+        "expr": "M*x + B",
+        "color": "#1E3A6E",
+        "label": "f(x) = mx + b"
+      }
+    ],
+    "xrange": [
+      -5,
+      5
+    ],
+    "yrange": [
+      -6,
+      8
+    ],
+    "params": [
+      {
+        "name": "M",
+        "label": "Slope m",
+        "label_ar": "الميل m",
+        "min": -3,
+        "max": 3,
+        "step": 0.5,
+        "default": 1.5
+      },
+      {
+        "name": "B",
+        "label": "y-Intercept b",
+        "label_ar": "المقطع الصادي b",
+        "min": -4,
+        "max": 4,
+        "step": 1,
+        "default": 2
+      }
+    ]
   }
 ];
 D["sat-quad"] = [
@@ -1004,12 +1127,12 @@ D["sat-quad"] = [
     "categories": [
       "Two Distinct Real Roots",
       "One Repeated Real Root",
-      "No Real Roots (Complex)"
+      "Zero Real Solutions"
     ],
     "categories_ar": [
       "جذران حقيقيان مختلفان",
       "جذر حقيقي واحد مكرر",
-      "لا توجد جذور حقيقية (مركبة)"
+      "لا توجد حلول حقيقية"
     ],
     "items": [
       {
@@ -1063,8 +1186,8 @@ D["sat-quad"] = [
         "cat": 0
       }
     ],
-    "ex": "Positive discriminant gives 2 real roots, zero gives 1 repeated real root, and negative gives complex roots.",
-    "ex_ar": "المميز الموجب يعطي جذرين حقيقيين، والصفر يعطي جذراً مكرراً، والسالب يعطي جذوراً مركبة."
+    "ex": "Positive discriminant gives 2 distinct real solutions, zero gives 1 repeated real solution, and negative gives zero real solutions.",
+    "ex_ar": "المميز الموجب يعطي حلين حقيقيين مختلفين، والصفر يعطي حلاً حقيقياً واحداً مكرراً، والسالب لا يعطي أي حلول حقيقية."
   },
   {
     "t": "ord",
@@ -1386,6 +1509,98 @@ D["sat-quad"] = [
         ]
       }
     ]
+  },
+  {
+    "t": "fn",
+    "ti": "Function Lab: Vertex Form Parabola \\(y = a(x - h)^2 + k\\)",
+    "ti_ar": "مختبر الدوال: القطع المكافئ بصيغة الرأس \\(y = a(x - h)^2 + k\\)",
+    "fns": [
+      {
+        "expr": "a*(x - h)^2 + k",
+        "color": "#1E3A6E",
+        "label": "a(x−h)² + k"
+      }
+    ],
+    "xrange": [
+      -6,
+      6
+    ],
+    "yrange": [
+      -6,
+      8
+    ],
+    "params": [
+      {
+        "name": "a",
+        "label": "Stretch a",
+        "min": -2,
+        "max": 2,
+        "step": 0.5,
+        "default": 1
+      },
+      {
+        "name": "h",
+        "label": "Vertex x (h)",
+        "min": -3,
+        "max": 3,
+        "step": 1,
+        "default": 1
+      },
+      {
+        "name": "k",
+        "label": "Vertex y (k)",
+        "min": -4,
+        "max": 4,
+        "step": 1,
+        "default": -2
+      }
+    ]
+  },
+  {
+    "t": "gp",
+    "ti": "Graph Plotter: Parabola Vertex & x-Intercepts",
+    "ti_ar": "مخطط التمثيل البياني: رأس القطع المكافئ والمقاطع السينية",
+    "q": "Plot the vertex and both x-intercepts of \\(f(x) = -(x - 1)^2 + 4\\).",
+    "q_ar": "عيّن رأس القطع المكافئ والمقطعين السينيين للدالة \\(f(x) = -(x - 1)^2 + 4\\).",
+    "xrange": [
+      -3,
+      5
+    ],
+    "yrange": [
+      -2,
+      6
+    ],
+    "targets": [
+      {
+        "label": "Vertex (1, 4)",
+        "label_ar": "الرأس (1, 4)",
+        "target": [
+          1,
+          4
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "x-intercept (-1, 0)",
+        "label_ar": "المقطع السيني (-1, 0)",
+        "target": [
+          -1,
+          0
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "x-intercept (3, 0)",
+        "label_ar": "المقطع السيني (3, 0)",
+        "target": [
+          3,
+          0
+        ],
+        "tol": 0.45
+      }
+    ],
+    "ex": "In vertex form \\(a(x - h)^2 + k\\), the vertex is \\((1, 4)\\), and setting \\((x - 1)^2 = 4\\) yields \\(x = -1\\) and \\(x = 3\\).",
+    "ex_ar": "من صيغة الرأس يكون الرأس \\((1, 4)\\)، وحل \\((x - 1)^2 = 4\\) يعطي \\(x = -1\\) و\\(x = 3\\)."
   }
 ];
 D["sat-expoly"] = [
@@ -1550,105 +1765,105 @@ D["sat-expoly"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Logarithm Law Misapplication (Exponentials, Radicals, Polynomials & Rational Expressions)",
-    "ti_ar": "اكتشف الخطأ: التطبيق الخاطئ لقوانين اللوغاريتمات (الأسس والجذور وكثيرات الحدود والعبارات النسبية)",
-    "q": "A student attempts to solve \\(\\log_{3}(x) + \\log_{3}(3) = 4\\). Which step introduces an invalid rule?",
-    "q_ar": "يحاول طالب حل المعادلة \\(\\log_{3}(x) + \\log_{3}(3) = 4\\). أي خطوة تتضمن قانوناً خاطئاً؟",
+    "ti": "Spot the Error: Extraneous Solution in a Radical Equation",
+    "ti_ar": "اكتشف الخطأ: الحل الدخيل في المعادلة الجذرية",
+    "q": "A student solves \\(\\sqrt{x + 7} = x - 5\\). Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة الجذرية \\(\\sqrt{x + 7} = x - 5\\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
     "steps": [
-      "Note the domain requirement \\(x > 0\\).",
-      "Combine the sum of logarithms as \\(\\log_{3}(x + 3) = 4\\) instead of multiplying arguments.",
-      "Exponentiate base \\(3\\) to write \\(x + 3 = 81\\).",
-      "Subtract \\(3\\) to report \\(x = 78\\)."
+      "Square both sides cleanly: \\(x + 7 = (x - 5)^2 = x^2 - 10x + 25\\).",
+      "Rearrange into standard quadratic form: \\(x^2 - 11x + 18 = 0\\).",
+      "Factor cleanly as \\((x - 2)(x - 9) = 0\\), finding candidates \\(x = 2\\) and \\(x = 9\\).",
+      "Report both \\(x = 2\\) and \\(x = 9\\) as valid solutions without testing the original principal root."
     ],
     "steps_ar": [
-      "تحديد شرط مجال اللوغاريتم \\(x > 0\\).",
-      "دمج مجموع اللوغاريتمين في صورة \\(\\log_{3}(x + 3) = 4\\) بدلاً من ضرب ما بداخل اللوغاريتم.",
-      "التحويل للصورة الأسية: \\(x + 3 = 81\\).",
-      "طرح \\(3\\) للوصول إلى الناتج."
+      "تربيع الطرفين بدقة: \\(x + 7 = (x - 5)^2 = x^2 - 10x + 25\\).",
+      "إعادة الترتيب للصيغة القياسية: \\(x^2 - 11x + 18 = 0\\).",
+      "التحليل \\((x - 2)(x - 9) = 0\\) لإيجاد \\(x = 2\\) و\\(x = 9\\).",
+      "اعتماد \\(x = 2\\) و\\(x = 9\\) معاً دون التحقق من المعادلة الأصلية."
     ],
-    "errorStep": 2,
+    "errorStep": 4,
     "reasons": [
-      "The product rule states \\(\\log_b(M) + \\log_b(N) = \\log_b(MN)\\), NOT \\(\\log_b(M + N)\\); thus \\(\\log_{3}(3x) = 4 \\implies x = 27\\).",
-      "The domain of \\(\\log(x)\\) is all real numbers.",
-      "\\(\\log_{3}(3) = 0\\)."
+      "Principal square root \\(\\sqrt{x + 7} \\ge 0\\) requires \\(x - 5 \\ge 0\\); substituting \\(x = 2\\) gives \\(\\sqrt{9} = -3\\), which is false. Only \\(x = 9\\) is valid.",
+      "Squaring both sides is never allowed for radical equations.",
+      "\\((x - 5)^2\\) equals \\(x^2 - 25\\)."
     ],
     "reasons_ar": [
-      "قاعدة الضرب تنص على أن \\(\\log_b(M) + \\log_b(N) = \\log_b(MN)\\) وليس جمع المداخل؛ ومنه \\(x = 27\\).",
-      "مجال الدالة اللوغاريتمية هو جميع الأعداد الحقيقية.",
-      "قيمة \\(\\log_{3}(3) = 0\\)."
+      "الجذر التربيعي الموجب يشترط \\(x - 5 \\ge 0\\)؛ وعند \\(x = 2\\) ينتج \\(\\sqrt{9} = -3\\) وهو خاطئ، لذا \\(x = 9\\) فقط حل صحيح.",
+      "لا يجوز تربيع الطرفين في المعادلات الجذرية.",
+      "مفكوك \\((x - 5)^2\\) يساوي \\(x^2 - 25\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Logarithmic Equation & Continuous Growth (Exponentials, Radicals, Polynomials & Rational Expressions)",
-    "ti_ar": "وضع المصحح: المعادلات اللوغاريتمية والنمو الأسي (الأسس والجذور وكثيرات الحدود والعبارات النسبية)",
-    "q": "(a) Solve \\(\\log_{3}(x - 2) = 3\\), stating the domain restriction. (b) A culture grows via \\(P(t) = P_0 e^{rt}\\); find the exact doubling time \\(T_d\\) in terms of \\(r\\).",
-    "q_ar": "(أ) حل المعادلة \\(\\log_{3}(x - 2) = 3\\) مع ذكر شرط المجال. (ب) تنمو عينة وفق \\(P(t) = P_0 e^{rt}\\)؛ أوجد زمن التضاعف \\(T_d\\) بدلالة \\(r\\).",
+    "ti": "Examiner Mode: Exponential Time Scaling & Rational Exponents",
+    "ti_ar": "وضع المصحح: مقياس الزمن في الدوال الأسية والأسس الكسرية",
+    "q": "(a) An investment grows via \\(P(t) = 500(1.08)^{t/4}\\), where \\(t\\) is in years. Interpret \\(1.08\\) and the exponent \\(t/4\\) in context. (b) Write \\(\\dfrac{x^{5/2}\\sqrt{x}}{x^{-1}}\\) as a single power \\(x^k\\) for \\(x > 0\\).",
+    "q_ar": "(أ) ينمو استثمار وفق الدالة \\(P(t) = 500(1.08)^{t/4}\\) حيث \\(t\\) بالسنوات. فسّر العدد \\(1.08\\) والأس \\(t/4\\) في السياق. (ب) بسّط العبارة \\(\\dfrac{x^{5/2}\\sqrt{x}}{x^{-1}}\\) في صورة \\(x^k\\) حيث \\(x > 0\\).",
     "parts": [
       {
-        "label": "Part (a) — Domain & Exponential Conversion",
+        "label": "Part (a) — Exponential Compounding Period Interpretation",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Domain \\(x > 2\\); convert to \\(x - 2 = 3^{3} = 27\\)."
+            "text": "Initial amount at \\(t = 0\\) is \\(500\\); factor \\(1.08\\) corresponds to an \\(8\\%\\) increase per compounding interval."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(x = 29\\) (valid since \\(29 > 2\\))."
+            "text": "Exponent \\(t/4\\) equals \\(1\\) when \\(t = 4\\), so the value increases by \\(8\\%\\) every \\(4\\) years."
           }
         ]
       },
       {
-        "label": "Part (b) — Exact Doubling Time",
+        "label": "Part (b) — Rational Exponent Simplification",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Set \\(2P_0 = P_0 e^{r T_d} \\implies e^{r T_d} = 2\\)."
+            "text": "Rewrite \\(\\sqrt{x} = x^{1/2}\\); numerator becomes \\(x^{5/2 + 1/2} = x^3\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Take natural logs: \\(T_d = \\dfrac{\\ln 2}{r}\\)."
+            "text": "Subtract negative denominator exponent: \\(x^{3 - (-1)} = x^4\\) (\\(k = 4\\))."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — شرط المجال والتحويل للصورة الأسية",
+        "label": "الجزء (أ) — تفسير فترة التضاعف والنسبة",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "المجال \\(x > 2\\)؛ والتحويل يعطي \\(x - 2 = 3^{3} = 27\\)."
+            "text": "القيمة الابتدائية هي \\(500\\)، ومعامل النمو \\(1.08\\) يمثل زيادة بنسبة \\(8\\%\\) لكل فترة."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(x = 29\\) (يحقق شرط المجال)."
+            "text": "يصبح الأس \\(t/4 = 1\\) عندما \\(t = 4\\)، أي يزداد المبلغ بنسبة \\(8\\%\\) كل \\(4\\) سنوات."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — زمن التضاعف الدقيق",
+        "label": "الجزء (ب) — تبسيط الأسس الكسرية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "وضع \\(2P_0 = P_0 e^{r T_d} \\implies e^{r T_d} = 2\\)."
+            "text": "تحويل الجذر \\(\\sqrt{x} = x^{1/2}\\) فيصبح البسط \\(x^{5/2 + 1/2} = x^3\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "بأخذ اللوغاريتم الطبيعي: \\(T_d = \\dfrac{\\ln 2}{r}\\)."
+            "text": "طرح أس المقام السالب: \\(x^{3 - (-1)} = x^4\\)."
           }
         ]
       }
@@ -1656,81 +1871,121 @@ D["sat-expoly"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Solving Logarithmic Equations (Exponentials, Radicals, Polynomials & Rational Expressions)",
-    "ti_ar": "بناء الخطوات: حل المعادلة اللوغاريتمية (الأسس والجذور وكثيرات الحدود والعبارات النسبية)",
+    "ti": "Step Builder: Rational Exponents & Exponential Decay Factor",
+    "ti_ar": "بناء الخطوات: الأسس الكسرية ومعامل الاضمحلال الأسي",
     "steps": [
       {
-        "l": "Evaluate \\(3^{3} =\\)",
-        "a": "27",
-        "h": "Multiply 3 by itself 3 times."
+        "l": "Evaluate \\(27^{2/3} =\\)",
+        "a": "9",
+        "h": "Cube root of 27 is 3; then square 3."
       },
       {
-        "l": "Solve \\(\\log_{3}(x - 2) = 3\\) for \\(x =\\)",
-        "a": "29",
-        "h": "Add 2 to 27."
+        "l": "If a substance loses \\(15\\%\\) of its mass daily, enter the multiplier base \\(b =\\)",
+        "a": "0.85",
+        "h": "Compute 1 − 0.15."
       },
       {
-        "l": "Evaluate \\(\\log_{3}(1) =\\)",
-        "a": "0",
-        "h": "Any base raised to 0 equals 1."
+        "l": "Solve \\(x\\) in \\(x^4 \\cdot x^{-1} = 125\\) for real \\(x =\\)",
+        "a": "5",
+        "h": "Simplify to x³ = 125."
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(3^{3} =\\)",
-        "a": "27",
-        "h": "اضرب 3 في نفسه 3 مرات."
+        "l": "احسب قيمة \\(27^{2/3} =\\)",
+        "a": "9",
+        "h": "الجذر التكعيبي للعدد 27 هو 3 ثم نربع الناتج."
       },
       {
-        "l": "حل المعادلة \\(\\log_{3}(x - 2) = 3\\) لإيجاد \\(x =\\)",
-        "a": "29",
-        "h": "اجمع 2 مع 27."
+        "l": "إذا فقدت مادة \\(15\\%\\) من كتلتها يومياً، فأدخل معامل البقاء الأساسي \\(b =\\)",
+        "a": "0.85",
+        "h": "احسب 1 − 0.15."
       },
       {
-        "l": "احسب قيمة \\(\\log_{3}(1) =\\)",
-        "a": "0",
-        "h": "أي أساس مرفوع للأس صفر يساوي 1."
+        "l": "أوجد قيمة \\(x\\) الحقيقية في \\(x^4 \\cdot x^{-1} = 125\\):",
+        "a": "5",
+        "h": "بسّط إلى x³ = 125."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Logarithm Laws & Asymptotes (Exponentials, Radicals, Polynomials & Rational Expressions)",
-    "ti_ar": "مطابقة: قوانين اللوغاريتمات وخطوط التقارب (الأسس والجذور وكثيرات الحدود والعبارات النسبية)",
+    "ti": "Matching: Exponent Laws, Radicals & Exponential Models",
+    "ti_ar": "مطابقة: قوانين الأسس والجذور والنماذج الأسية",
     "p": [
       {
-        "l": "\\(\\log_b(MN)\\)",
-        "r": "\\(\\log_b M + \\log_b N\\)"
+        "l": "Fractional power \\(a^{m/n}\\)",
+        "r": "\\((\\sqrt[n]{a})^m\\)"
       },
       {
-        "l": "\\(\\log_b(M^k)\\)",
-        "r": "\\(k \\log_b M\\)"
+        "l": "Negative exponent \\(a^{-k}\\)",
+        "r": "\\(\\dfrac{1}{a^k}\\) (\\(a \\neq 0\\))"
       },
       {
-        "l": "Change of base \\(\\log_a x\\)",
-        "r": "\\(\\dfrac{\\ln x}{\\ln a}\\)"
+        "l": "Percent growth by \\(p\\%\\) per step",
+        "r": "\\(P_0\\left(1 + \\dfrac{p}{100}\\right)^t\\)"
       },
       {
-        "l": "Vertical asymptote of \\(\\ln(x - 2)\\)",
-        "r": "\\(x = 2\\)"
+        "l": "Percent decrease by \\(p\\%\\) every \\(k\\) years",
+        "r": "\\(P_0\\left(1 - \\dfrac{p}{100}\\right)^{t/k}\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "\\(\\log_b(MN)\\)",
-        "r": "\\(\\log_b M + \\log_b N\\)"
+        "l": "الأس الكسري \\(a^{m/n}\\)",
+        "r": "\\((\\sqrt[n]{a})^m\\)"
       },
       {
-        "l": "\\(\\log_b(M^k)\\)",
-        "r": "\\(k \\log_b M\\)"
+        "l": "الأس السالب \\(a^{-k}\\)",
+        "r": "\\(\\dfrac{1}{a^k}\\) (\\(a \\neq 0\\))"
       },
       {
-        "l": "تغيير الأساس \\(\\log_a x\\)",
-        "r": "\\(\\dfrac{\\ln x}{\\ln a}\\)"
+        "l": "نمو بنسبة \\(p\\%\\) كل فترة",
+        "r": "\\(P_0\\left(1 + \\dfrac{p}{100}\\right)^t\\)"
       },
       {
-        "l": "خط التقارب الرأسي للدالة \\(\\ln(x - 2)\\)",
-        "r": "\\(x = 2\\)"
+        "l": "نقصان بنسبة \\(p\\%\\) كل \\(k\\) سنوات",
+        "r": "\\(P_0\\left(1 - \\dfrac{p}{100}\\right)^{t/k}\\)"
+      }
+    ]
+  },
+  {
+    "t": "fn",
+    "ti": "Explorer: Discrete Exponential Growth & Decay",
+    "ti_ar": "مستكشف: النمو والاضمحلال الأسي",
+    "fns": [
+      {
+        "expr": "A*(B^x)",
+        "color": "#1E3A6E",
+        "label": "y = a * b^x"
+      }
+    ],
+    "xrange": [
+      -3,
+      4
+    ],
+    "yrange": [
+      -1,
+      10
+    ],
+    "params": [
+      {
+        "name": "A",
+        "label": "Initial Value a",
+        "label_ar": "القيمة الابتدائية a",
+        "min": 0.5,
+        "max": 3,
+        "step": 0.5,
+        "default": 1.5
+      },
+      {
+        "name": "B",
+        "label": "Base b (Growth/Decay)",
+        "label_ar": "الأساس b (النمو أو الاضمحلال)",
+        "min": 0.5,
+        "max": 2,
+        "step": 0.25,
+        "default": 1.5
       }
     ]
   }
@@ -2078,6 +2333,46 @@ D["sat-data"] = [
         "r": "\\(v_1 t_1 = v_2 t_2\\) عند ثبات المسافة"
       }
     ]
+  },
+  {
+    "t": "fn",
+    "ti": "Explorer: Scatterplot Line of Best Fit",
+    "ti_ar": "مستكشف: خط المطابقة الأفضل للبيانات",
+    "fns": [
+      {
+        "expr": "M*x + B",
+        "color": "#1E3A6E",
+        "label": "y = mx + b (Model)"
+      }
+    ],
+    "xrange": [
+      0,
+      8
+    ],
+    "yrange": [
+      0,
+      14
+    ],
+    "params": [
+      {
+        "name": "M",
+        "label": "Predicted Rate m",
+        "label_ar": "معدل التغير المتوقع m",
+        "min": 0.5,
+        "max": 2.5,
+        "step": 0.25,
+        "default": 1.25
+      },
+      {
+        "name": "B",
+        "label": "Baseline Intercept b",
+        "label_ar": "القيمة الابتدائية b",
+        "min": 0,
+        "max": 5,
+        "step": 0.5,
+        "default": 2
+      }
+    ]
   }
 ];
 D["sat-geo"] = [
@@ -2212,17 +2507,17 @@ D["sat-geo"] = [
   },
   {
     "t": "sr",
-    "ti": "Worked Example: Area of a Triangle Using Sine (SAS)",
-    "ti_ar": "مثال محلول: مساحة المثلث باستخدام الجيب (SAS)",
+    "ti": "Worked Example: Radian Arc Length & Circle Sector Area",
+    "ti_ar": "مثال محلول: طول القوس بالراديان ومساحة القطاع الدائري",
     "steps": [
-      "Find the area of a triangle with two sides 8 and 10 and included angle 30°. Formula: \\(\\text{Area}=\\dfrac12ab\\sin C\\).",
-      "Substitute \\(a=8\\), \\(b=10\\), \\(C=30°\\): \\(\\text{Area}=\\dfrac12(8)(10)\\sin30°\\).",
-      "\\(\\sin30°=\\dfrac12\\), so \\(\\text{Area}=\\dfrac12(80)\\left(\\dfrac12\\right)=20\\)."
+      "A circle of radius \\(r = 12\\) has a central angle of \\(\\theta = \\frac{\\pi}{3}\\) radians. Arc length: \\(s = r\\theta\\).",
+      "Substitute \\(r = 12\\) and \\(\\theta = \\frac{\\pi}{3}\\): \\(s = 12 \\cdot \\frac{\\pi}{3} = 4\\pi\\).",
+      "Sector area: \\(A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(144)\\left(\\frac{\\pi}{3}\\right) = 24\\pi\\)."
     ],
     "steps_ar": [
-      "أوجد مساحة مثلث ضلعاه 8 و10 والزاوية المحصورة 30°. القانون: \\(\\text{المساحة}=\\dfrac12ab\\sin C\\).",
-      "عوّض \\(a=8\\)، \\(b=10\\)، \\(C=30°\\): \\(\\text{المساحة}=\\dfrac12(8)(10)\\sin30°\\).",
-      "\\(\\sin30°=\\dfrac12\\)، إذن \\(\\text{المساحة}=\\dfrac12(80)\\left(\\dfrac12\\right)=20\\)."
+      "دائرة نصف قطرها \\(r = 12\\) وزاويتها المركزية \\(\\theta = \\frac{\\pi}{3}\\) راديان. طول القوس: \\(s = r\\theta\\).",
+      "عوّض \\(r = 12\\) و\\(\\theta = \\frac{\\pi}{3}\\): \\(s = 12 \\cdot \\frac{\\pi}{3} = 4\\pi\\).",
+      "مساحة القطاع: \\(A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(144)\\left(\\frac{\\pi}{3}\\right) = 24\\pi\\)."
     ]
   },
   {
@@ -2268,103 +2563,103 @@ D["sat-geo"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Quadrant Sign & Dividing by \\(\\sin\\theta\\) (Area, Volume, Triangles, Circles & Trigonometry)",
-    "ti_ar": "اكتشف الخطأ: إشارة الربع والقسمة على \\(\\sin\\theta\\) (المساحة والحجم والمثلثات والدوائر وحساب المثلثات)",
-    "q": "Solve \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\) for \\(0 \\le \\theta < 2\\pi\\). Which step loses valid roots?",
-    "q_ar": "عند حل المعادلة \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\) على الفترة \\(0 \\le \\theta < 2\\pi\\)، أي خطوة تضيع حلولاً صحيحة؟",
+    "ti": "Spot the Error: Circle Center & Radius via Completing the Square",
+    "ti_ar": "اكتشف الخطأ: إيجاد مركز الدائرة ونصف قطرها بإكمال المربع",
+    "q": "A circle has equation \\(x^2 + 6x + y^2 - 8y = 11\\). A student finds the radius; which step contains the error?",
+    "q_ar": "معادلة دائرة هي \\(x^2 + 6x + y^2 - 8y = 11\\). يحاول طالب إيجاد نصف القطر؛ أي خطوة تتضمن خطأ؟",
     "steps": [
-      "Divide both sides by \\(\\sin\\theta\\) without checking \\(\\sin\\theta = 0\\), obtaining \\(2\\cos\\theta = 1\\).",
-      "Solve \\(\\cos\\theta = \\frac{1}{2}\\) to find \\(\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\).",
-      "State \\(\\left\\{\\frac{\\pi}{3}, \\frac{5\\pi}{3}\\right\\}\\) as the complete solution set."
+      "Compute half-coefficients: \\((6/2)^2 = 9\\) and \\((-8/2)^2 = 16\\).",
+      "Rewrite left side cleanly as \\((x + 3)^2 + (y - 4)^2\\).",
+      "Keep the right-hand side unchanged at \\(11\\) and report radius \\(r = \\sqrt{11}\\)."
     ],
     "steps_ar": [
-      "قسمة الطرفين على \\(\\sin\\theta\\) دون فحص حالة \\(\\sin\\theta = 0\\) للحصول على \\(2\\cos\\theta = 1\\).",
-      "حل \\(\\cos\\theta = \\frac{1}{2}\\) لإيجاد \\(\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\).",
-      "كتابة هاتين الزاويتين فقط كمجموعة حل كاملة."
+      "حساب مربعي نصف المعاملين: \\((6/2)^2 = 9\\) و\\((-8/2)^2 = 16\\).",
+      "كتابة الطرف الأيسر في صورة \\((x + 3)^2 + (y - 4)^2\\).",
+      "إبقاء الطرف الأيمن مساوياً للعدد \\(11\\) واستنتاج أن نصف القطر \\(r = \\sqrt{11}\\)."
     ],
-    "errorStep": 1,
+    "errorStep": 3,
     "reasons": [
-      "Dividing by \\(\\sin\\theta\\) discards the roots where \\(\\sin\\theta = 0\\) (\\(\\theta = 0, \\pi\\)); instead factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
-      "\\(\\cos\\theta = \\frac{1}{2}\\) has no solutions in Quadrant IV.",
-      "\\(\\sin\\theta\\) can never equal zero."
+      "Adding \\(9 + 16 = 25\\) on the left requires adding \\(25\\) on the right too: \\(r^2 = 11 + 25 = 36\\), so \\(r = 6\\) with center \\((-3, 4)\\).",
+      "The center must always be \\((3, -4)\\).",
+      "Completing the square requires subtracting \\(25\\) from the right side."
     ],
     "reasons_ar": [
-      "القسمة على \\(\\sin\\theta\\) تحذف الجذور التي تجعل \\(\\sin\\theta = 0\\) (وهي \\(0, \\pi\\))؛ الصواب نقل الحدود والتحليل \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
-      "لا يوجد حل لمعادلة \\(\\cos\\theta = \\frac{1}{2}\\) في الربع الرابع.",
-      "لا يمكن أن يساوي \\(\\sin\\theta\\) صفراً."
+      "إضافة \\(9 + 16 = 25\\) للطرف الأيسر تستوجب إضافتها للطرف الأيمن: \\(r^2 = 11 + 25 = 36\\)، فيكون \\(r = 6\\) والمركز \\((-3, 4)\\).",
+      "يكون المركز دائماً \\((3, -4)\\).",
+      "إكمال المربع يتطلب طرح \\(25\\) من الطرف الأيمن."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Quadrant Identities & Cosine Rule (Area, Volume, Triangles, Circles & Trigonometry)",
-    "ti_ar": "وضع المصحح: المتطابقات المثلثية وقانون جيب التمام (المساحة والحجم والمثلثات والدوائر وحساب المثلثات)",
-    "q": "Suppose \\(\\sin\\theta = \\dfrac{3}{5}\\) with \\(\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\) (Quadrant II). (a) Find exact values of \\(\\cos\\theta\\) and \\(\\tan\\theta\\). (b) Evaluate \\(\\sin(2\\theta)\\).",
-    "q_ar": "إذا كان \\(\\sin\\theta = \\dfrac{3}{5}\\) حيث \\(\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\) (الربع الثاني). (أ) أوجد القيمة الدقيقة لكل من \\(\\cos\\theta\\) و\\(\\tan\\theta\\). (ب) احسب \\(\\sin(2\\theta)\\).",
+    "ti": "Examiner Mode: Right-Triangle Complementary Trig & Special Ratios",
+    "ti_ar": "وضع المصحح: الزوايا المتتامة في المثلث القائم والنسب الخاصة",
+    "q": "(a) In right triangle \\(ABC\\) with \\(\\angle C = 90^\\circ\\), \\(\\cos(A) = \\frac{5}{13}\\). Find exact values of \\(\\sin(B)\\) and \\(\\tan(A)\\). (b) A \\(30^\\circ\\text{-}60^\\circ\\text{-}90^\\circ\\) right triangle has hypotenuse \\(16\\); find its exact perimeter.",
+    "q_ar": "(أ) في المثلث القائم \\(ABC\\) حيث \\(\\angle C = 90^\\circ\\)، إذا كان \\(\\cos(A) = \\frac{5}{13}\\)، فأوجد القيمة الدقيقة لكل من \\(\\sin(B)\\) و\\(\\tan(A)\\). (ب) مثلث قائم \\(30^\\circ\\text{-}60^\\circ\\text{-}90^\\circ\\) طول وتره \\(16\\)؛ أوجد محيطه الدقيق.",
     "parts": [
       {
-        "label": "Part (a) — Quadrant II Cosine & Tangent",
+        "label": "Part (a) — Cofunction & SOHCAHTOA Ratio",
         "marks": 2,
         "rubric": [
           {
-            "code": "M1",
+            "code": "B1",
             "marks": 1,
-            "text": "\\(\\cos^2\\theta = 1 - \\frac{9}{25} = \\frac{16}{25}\\), negative in QII \\(\\implies \\cos\\theta = -\\frac{4}{5}\\)."
+            "text": "Complementary acute angles satisfy \\(A + B = 90^\\circ\\), so \\(\\sin(B) = \\cos(A) = \\frac{5}{13}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = -\\frac{3}{4}\\)."
+            "text": "By Pythagorean triple \\(5\\text{-}12\\text{-}13\\), opposite side is \\(12\\), giving \\(\\tan(A) = \\frac{12}{5}\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Double-Angle Sine",
+        "label": "Part (b) — Special Right Triangle Perimeter",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Apply \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)."
+            "text": "Short leg opposite \\(30^\\circ\\) is \\(16/2 = 8\\); long leg is \\(8\\sqrt{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sin(2\\theta) = 2\\left(\\frac{3}{5}\\right)\\left(-\\frac{4}{5}\\right) = -\\frac{24}{25}\\)."
+            "text": "Perimeter: \\(8 + 16 + 8\\sqrt{3} = 24 + 8\\sqrt{3}\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — جيب التمام والظل في الربع الثاني",
+        "label": "الجزء (أ) — الزوايا المتتامة والنسب المثلثية",
         "marks": 2,
         "rubric": [
           {
-            "code": "M1",
+            "code": "B1",
             "marks": 1,
-            "text": "في الربع الثاني \\(\\cos\\theta < 0\\) ومن متطابقة فيثاغورس \\(\\cos\\theta = -\\frac{4}{5}\\)."
+            "text": "بما أن \\(A + B = 90^\\circ\\)، فإن \\(\\sin(B) = \\cos(A) = \\frac{5}{13}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\tan\\theta = -\\frac{3}{4}\\)."
+            "text": "من ثلاثية فيثاغورس \\(5\\text{-}12\\text{-}13\\)، الضلع المقابل \\(12\\)، ومنه \\(\\tan(A) = \\frac{12}{5}\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — جيب ضعف الزاوية",
+        "label": "الجزء (ب) — محيط المثلث الخاص",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "تطبيق المتطابقة \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)."
+            "text": "الضلع المقابل للزاوية \\(30^\\circ\\) يساوي \\(8\\)، والضلع الآخر \\(8\\sqrt{3}\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(\\sin(2\\theta) = -\\frac{24}{25}\\)."
+            "text": "المحيط: \\(8 + 16 + 8\\sqrt{3} = 24 + 8\\sqrt{3}\\)."
           }
         ]
       }
@@ -2372,25 +2667,25 @@ D["sat-geo"] = [
   },
   {
     "t": "qc",
-    "ti": "Quick Check: Period of a Transformed Sinusoid (Area, Volume, Triangles, Circles & Trigonometry)",
-    "ti_ar": "فحص سريع: دورة الدالة الجيبية (المساحة والحجم والمثلثات والدوائر وحساب المثلثات)",
-    "q": "What is the fundamental period of \\(f(x) = 6\\sin(2x - \\pi) + 1\\)?",
-    "q_ar": "ما الدورة الأساسية للدالة \\(f(x) = 6\\sin(2x - \\pi) + 1\\)؟",
+    "ti": "Quick Check: Complementary Right-Triangle Identity",
+    "ti_ar": "فحص سريع: متطابقة الزاويتين المتتامتين في المثلث القائم",
+    "q": "If \\(x\\) and \\(y\\) are the measures of the two acute angles in a right triangle and \\(\\sin(x^\\circ) = \\frac{4}{7}\\), what is \\(\\cos(y^\\circ)\\)?",
+    "q_ar": "إذا كانت \\(x\\) و\\(y\\) قياسي الزاويتين الحادتين في مثلث قائم وكان \\(\\sin(x^\\circ) = \\frac{4}{7}\\)، فما قيمة \\(\\cos(y^\\circ)\\)؟",
     "o": [
-      "\\(\\dfrac{2\\pi}{2}\\)",
-      "\\(4\\pi\\)",
-      "\\(\\dfrac{\\pi}{2}\\)",
-      "\\(6\\pi\\)"
+      "\\(\\frac{4}{7}\\)",
+      "\\(\\frac{3}{7}\\)",
+      "\\(\\frac{\\sqrt{33}}{7}\\)",
+      "\\(\\frac{7}{4}\\)"
     ],
     "o_ar": [
-      "\\(\\dfrac{2\\pi}{2}\\)",
-      "\\(4\\pi\\)",
-      "\\(\\dfrac{\\pi}{2}\\)",
-      "\\(6\\pi\\)"
+      "\\(\\frac{4}{7}\\)",
+      "\\(\\frac{3}{7}\\)",
+      "\\(\\frac{\\sqrt{33}}{7}\\)",
+      "\\(\\frac{7}{4}\\)"
     ],
     "a": 0,
-    "ex": "For \\(A\\sin(Bx + C) + D\\), the period is \\(\\frac{2\\pi}{|B|} = \\frac{2\\pi}{2}\\).",
-    "ex_ar": "دورة الدالة \\(A\\sin(Bx + C) + D\\) تساوي \\(\\frac{2\\pi}{|B|} = \\frac{2\\pi}{2}\\)."
+    "ex": "Since \\(x + y = 90^\\circ\\), the side opposite \\(x\\) is adjacent to \\(y\\), so \\(\\cos(y^\\circ) = \\sin(x^\\circ) = \\frac{4}{7}\\).",
+    "ex_ar": "بما أن \\(x + y = 90^\\circ\\)، فإن الضلع المقابل للزاوية \\(x\\) هو المجاور للزاوية \\(y\\)، لذا \\(\\cos(y^\\circ) = \\sin(x^\\circ) = \\frac{4}{7}\\)."
   }
 ];
 D["sat-desmos"] = [
@@ -2521,105 +2816,103 @@ D["sat-desmos"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Exam Pacing & Time Allocation (Desmos Graphing Calculator Tactics)",
-    "ti_ar": "اكتشف الخطأ: إدارة الوقت وتوزيع الدرجات (تكتيكات حاسبة Desmos البيانية لحل مسائل SAT بسرعة)",
-    "q": "A student plans their timing for a 25-question, 38-minute section in SAT. Which step in their strategy introduces a flaw?",
-    "q_ar": "يخطط طالب لتوزيع وقته في قسم مكوّن من 25 سؤالاً خلال 38 دقيقة. أي خطوة تتضمن خللاً منهجياً؟",
+    "ti": "Spot the Error: Solving Equations via Intersection in Desmos",
+    "ti_ar": "اكتشف الخطأ: حل المعادلات عبر نقاط التقاطع في حاسبة ديسموس",
+    "q": "A student uses Desmos to find all real solutions of \\(x^2 + 12 = 16x - 43\\). Which step misses a valid solution?",
+    "q_ar": "يستخدم طالب حاسبة ديسموس لإيجاد الحلول الحقيقية للمعادلة \\(x^2 + 12 = 16x - 43\\). أي خطوة تتسبب في إغفال أحد الحلول؟",
     "steps": [
-      "Compute average time budget per question: \\(\\frac{38\\times 60}{25} = 91\\) seconds.",
-      "Complete a first pass of straightforward items in roughly \\(64\\) seconds each to bank time.",
-      "Spend \\(9\\) minutes stuck on a single hard item before reading the remaining 13 questions.",
-      "Reserve the final \\(4\\) minutes to verify flagged items and ensure no unanswered blanks remain."
+      "Enter Line 1: \\(y = x^2 + 12\\).",
+      "Enter Line 2: \\(y = 16x - 43\\).",
+      "Inspect only the default \\([-10, 10] \\times [-10, 10]\\) window, see one dot at \\(x = 5\\), and stop without zooming out."
     ],
     "steps_ar": [
-      "حساب متوسط الزمن لكل سؤال: \\(\\frac{38\\times 60}{25} = 91\\) ثانية.",
-      "إنجاز الجولة الأولى للأسئلة المباشرة خلال نحو \\(64\\) ثانية للسؤال لتوفير الوقت.",
-      "قضاء \\(9\\) دقائق متواصلة على سؤال صعب واحد قبل قراءة بقية الأسئلة (13 سؤالاً).",
-      "تخصيص آخر \\(4\\) دقائق لمراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي إجابة فارغة."
+      "إدخال السطر الأول: \\(y = x^2 + 12\\).",
+      "إدخال السطر الثاني: \\(y = 16x - 43\\).",
+      "فحص نافذة العرض الافتراضية \\([-10, 10]\\) فقط ورؤية تقاطع واحد عند \\(x = 5\\) ثم التوقف دون تصغير العرض."
     ],
     "errorStep": 3,
     "reasons": [
-      "Sinking 9 minutes into one question sacrifices 5–6 solvable equal-weight items later in the section; hard items should be flagged for Pass 2.",
-      "Average time per question should be computed by multiplying minutes by questions.",
-      "You should leave unanswered blanks when there is no guessing penalty."
+      "Solving gives \\((x - 5)(x - 11) = 0\\); the second intersection occurs at \\((11, 133)\\), which sits above the default viewport.",
+      "Desmos cannot plot linear and quadratic expressions simultaneously.",
+      "You must take the \\(y\\)-coordinate instead of the \\(x\\)-coordinate."
     ],
     "reasons_ar": [
-      "استنزاف 9 دقائق في سؤال واحد يضيع 5–6 أسئلة قابلة للحل بنفس الوزن لاحقاً؛ يجب تعليم السؤال الصعب والعودة إليه في الجولة الثانية.",
-      "يُحسب متوسط الزمن بضرب الدقائق في عدد الأسئلة.",
-      "يفضّل ترك الأسئلة الصعبة فارغة حتى عند عدم وجود خصم على التخمين."
+      "بحل المعادلة \\((x - 5)(x - 11) = 0\\) نجد نقطة تقاطع ثانية عند \\((11, 133)\\) خارج الإطار الافتراضي.",
+      "لا تستطيع ديسموس تمثيل دالة خطية وتربيعية معاً.",
+      "يجب قراءة الإحداثي الصادي بدلاً من الإحداثي السيني."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Pacing Audit & Target Score Plan (Desmos Graphing Calculator Tactics)",
-    "ti_ar": "وضع المصحح: خطة إدارة الوقت والدرجة المستهدفة (تكتيكات حاسبة Desmos البيانية لحل مسائل SAT بسرعة)",
-    "q": "A practice section has \\(25\\) equal-weight questions in \\(38\\) minutes with no penalty for wrong guesses. A student answers \\(22\\) correctly on Pass 1–2. (a) Find the exact seconds-per-question budget and accuracy percentage. (b) State the optimal triage rule for the remaining \\(3\\) flagged questions.",
-    "q_ar": "يتكون قسم تدريبي من \\(25\\) سؤالاً متساوية الوزن في \\(38\\) دقيقة دون خصم على الإجابات الخاطئة. أجاب طالب عن \\(22\\) سؤالاً بشكل صحيح. (أ) أوجد الزمن المخصص لكل سؤال بالثواني ونسبة الدقة المئوية. (ب) اذكر قاعدة الفرز المثلى للأسئلة المتبقية وعددها \\(3\\).",
+    "ti": "Examiner Mode: Desmos Linear Regression (~) & Slider Tangency",
+    "ti_ar": "وضع المصحح: الانحدار الخطي (~) وأشرطة التمرير في ديسموس",
+    "q": "(a) A table has pairs \\((2, 11)\\) and \\((6, 23)\\). Describe how to recover \\(m\\) and \\(b\\) in \\(y = mx + b\\) using Desmos regression. (b) Describe how to use a Desmos slider for \\(k\\) to find when \\(y = x^2 - 6x + k\\) intersects \\(y = 2\\) at exactly one point.",
+    "q_ar": "(أ) جدول يحتوي على النقطتين \\((2, 11)\\) و\\((6, 23)\\). صف خطوات استخراج \\(m\\) و\\(b\\) باستخدام الانحدار في ديسموس. (ب) صف استخدام شريط التمرير \\(k\\) لإيجاد قيمة التماس بين \\(y = x^2 - 6x + k\\) و\\(y = 2\\).",
     "parts": [
       {
-        "label": "Part (a) — Time Budget & Raw Accuracy",
+        "label": "Part (a) — Table & Tilde Regression Syntax",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Time per item: \\(\\frac{2280}{25} = 91\\text{ s}\\)."
+            "text": "Insert a Table (+), enter \\((2, 11)\\) and \\((6, 23)\\) into columns \\(x_1\\) and \\(y_1\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Raw score percentage: \\(\\frac{22}{25} \\times 100\\% \\approx 88\\%\\)."
+            "text": "Type \\(y_1 \\sim m x_1 + b\\); Desmos outputs \\(m = 3\\) and \\(b = 5\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Elimination & Zero-Blank Rule",
+        "label": "Part (b) — Tangency Slider Condition",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Eliminate clearly invalid distractors using dimensional/sign/boundary checks."
+            "text": "Graph \\(y = x^2 - 6x + k\\) (accepting slider \\(k\\)) alongside \\(y = 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select the best remaining option on all \\(3\\) items before time expires (expected gain \\(> 0\\) with no guessing penalty)."
+            "text": "Adjust \\(k\\) until the vertex sits directly on \\(y = 2\\), yielding \\(k = 11\\) (since vertex \\(y = 9 - 18 + 11 = 2\\))."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — ميزانية الوقت ونسبة الدقة",
+        "label": "الجزء (أ) — الجدول وصيغة الانحدار (~)",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "الزمن لكل سؤال: \\(\\frac{2280}{25} = 91\\) ثانية."
+            "text": "إدراج جدول وإدخال النقطتين \\((2, 11)\\) و\\((6, 23)\\) في العمودين \\(x_1, y_1\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "النسبة المئوية للدرجة الخام: \\(\\frac{22}{25} \\times 100\\% \\approx 88\\%\\)."
+            "text": "كتابة \\(y_1 \\sim m x_1 + b\\) فتخرج ديسموس \\(m = 3\\) و\\(b = 5\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — استبعاد البدائل وعدم ترك فراغات",
+        "label": "الجزء (ب) — التماس عبر شريط التمرير",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "استبعاد الخيارات المستحيلة عبر فحص الإشارة أو القيم الحدية."
+            "text": "تمثيل \\(y = x^2 - 6x + k\\) مع شريط تمرير \\(k\\) بجانب \\(y = 2\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "اختيار أفضل إجابة لجميع الأسئلة المتبقية (3) قبل انتهاء الوقت لعدم وجود خصم."
+            "text": "ضبط \\(k\\) حتى يلامس الرأس المستقيم \\(y = 2\\)، فتنتج القيمة \\(k = 11\\)."
           }
         ]
       }
@@ -2627,81 +2920,81 @@ D["sat-desmos"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Exam Time & Score Budget (Desmos Graphing Calculator Tactics)",
-    "ti_ar": "بناء الخطوات: حساب ميزانية الوقت والدرجة (تكتيكات حاسبة Desmos البيانية لحل مسائل SAT بسرعة)",
+    "ti": "Step Builder: Desmos System Intersection & Expression Check",
+    "ti_ar": "بناء الخطوات: تقاطع الأنظمة والتحقق من العبارات في ديسموس",
     "steps": [
       {
-        "l": "Convert \\(38\\) minutes into total seconds:",
-        "a": "2280",
-        "h": "Multiply 38 by 60."
+        "l": "In \\(y = x^2 - 6x + k\\), enter slider value \\(k\\) so the vertex touches \\(y = 2\\): \\(k =\\)",
+        "a": "11",
+        "h": "Vertex occurs at x = 3: 3² − 6(3) + k = 2."
       },
       {
-        "l": "Divide by \\(25\\) questions to get seconds per question:",
-        "a": "91",
-        "h": "Compute 2280 / 25."
-      },
-      {
-        "l": "If you answer \\(22\\) out of \\(25\\) correctly, how many items remain for review?",
+        "l": "Using regression \\(y_1 \\sim m x_1 + b\\) on \\((2, 11)\\) and \\((6, 23)\\), find \\(m =\\)",
         "a": "3",
-        "h": "Subtract 22 from 25."
+        "h": "Slope = (23 − 11) / (6 − 2)."
+      },
+      {
+        "l": "Using the same regression line, find \\(y\\)-intercept \\(b =\\)",
+        "a": "5",
+        "h": "Compute 11 − 3(2)."
       }
     ],
     "steps_ar": [
       {
-        "l": "حوّل \\(38\\) دقيقة إلى إجمالي الثواني:",
-        "a": "2280",
-        "h": "اضرب 38 في 60."
+        "l": "في \\(y = x^2 - 6x + k\\)، أدخل قيمة \\(k\\) التي تجعل الرأس يلامس \\(y = 2\\): \\(k =\\)",
+        "a": "11",
+        "h": "الرأس عند x = 3: عوّض 9 − 18 + k = 2."
       },
       {
-        "l": "اقسم على \\(25\\) سؤالاً لإيجاد عدد الثواني لكل سؤال:",
-        "a": "91",
-        "h": "احسب 2280 ÷ 25."
-      },
-      {
-        "l": "إذا حللت \\(22\\) من أصل \\(25\\)، فكم سؤالاً يتبقى للمراجعة؟",
+        "l": "باستخدام الانحدار \\(y_1 \\sim m x_1 + b\\) على \\((2, 11)\\) و\\((6, 23)\\)، أوجد \\(m =\\)",
         "a": "3",
-        "h": "اطرح 22 من 25."
+        "h": "الميل = (23 − 11) ÷ (6 − 2)."
+      },
+      {
+        "l": "من نفس خط الانحدار، أوجد المقطع الصادي \\(b =\\)",
+        "a": "5",
+        "h": "احسب 11 − 3(2)."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: High-Yield Exam Tactics (Desmos Graphing Calculator Tactics)",
-    "ti_ar": "مطابقة: تكتيكات الحل السريع والتحقق (تكتيكات حاسبة Desmos البيانية لحل مسائل SAT بسرعة)",
+    "ti": "Matching: High-Yield Desmos Tactics for Digital SAT",
+    "ti_ar": "مطابقة: تكتيكات ديسموس الأساسية لاختبار SAT الرقمي",
     "p": [
       {
-        "l": "Pass 1 (64 s/item)",
-        "r": "Solve direct items immediately to bank guaranteed marks"
+        "l": "System of equations in \\(x, y\\)",
+        "r": "Graph both equations and click the gray intersection dot"
       },
       {
-        "l": "Boundary / Sign Sanity Check",
-        "r": "Eliminate options with impossible signs, units, or limiting values"
+        "l": "Table of 2 or 3 points",
+        "r": "Enter table and run \\(y_1 \\sim m x_1 + b\\) or quadratic regression"
       },
       {
-        "l": "Back-Solving from Choices",
-        "r": "Substitute middle option first when algebraic setup is slow"
+        "l": "Unknown constant \\(k\\) in no-solution system",
+        "r": "Graph with slider \\(k\\) and adjust until lines are parallel"
       },
       {
-        "l": "Final 3-Minute Sweep",
-        "r": "Verify flagged items and confirm zero unanswered questions"
+        "l": "Equivalent expression check",
+        "r": "Evaluate target and answer options at a non-special test value like \\(x = 1.7\\)"
       }
     ],
     "p_ar": [
       {
-        "l": "الجولة الأولى (64 ث/سؤال)",
-        "r": "حل الأسئلة المباشرة فوراً لتأمين الدرجات المضمونة"
+        "l": "نظام معادلتين بمتغيرين \\(x, y\\)",
+        "r": "مثّل المعادلتين والنقر على نقطة التقاطع الرمادية"
       },
       {
-        "l": "فحص الإشارة والقيم الحدية",
-        "r": "استبعاد الخيارات ذات الإشارات أو الوحدات المستحيلة رياضياً"
+        "l": "جدول من نقطتين أو 3 نقاط",
+        "r": "إدخال الجدول وتشغيل الانحدار \\(y_1 \\sim m x_1 + b\\) أو التربيعي"
       },
       {
-        "l": "التجريب العكسي للخيارات",
-        "r": "تعويض الخيار الأوسط أولاً عندما يكون البناء الجبري طويلاً"
+        "l": "ثابت مجهول \\(k\\) في نظام بلا حلول",
+        "r": "استخدام شريط التمرير \\(k\\) وضبطه حتى يتوازى المستقيمان"
       },
       {
-        "l": "مراجعة الدقائق الثلاث الأخيرة",
-        "r": "مراجعة الأسئلة المعلّمة والتأكد من عدم ترك أي فراغ"
+        "l": "التحقق من العبارات المكافئة",
+        "r": "مقارنة القيمة عند عدد غير خاص مثل \\(x = 1.7\\)"
       }
     ]
   }
@@ -2876,8 +3169,8 @@ D["sat-functions"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Composite Order & Inverse Domain (Nonlinear Functions & Function Notation)",
-    "ti_ar": "اكتشف الخطأ: ترتيب تركيب الدوال ومجال المعكوس (الدوال غير الخطية وترميز الدوال والتحويلات)",
+    "ti": "Spot the Error: Composite Function Evaluation Order (Nonlinear Functions & Transformations)",
+    "ti_ar": "اكتشف الخطأ: ترتيب تركيب الدوال (الدوال غير الخطية والتحويلات)",
     "q": "Let \\(f(x) = 4x + 1\\) and \\(g(x) = x^2 + 1\\). A student evaluates \\((f \\circ g)(4)\\). Which step is wrong?",
     "q_ar": "لتكن \\(f(x) = 4x + 1\\) و\\(g(x) = x^2 + 1\\). يحسب طالب \\((f \\circ g)(4)\\). أي خطوة خاطئة؟",
     "steps": [
@@ -2905,74 +3198,74 @@ D["sat-functions"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: One-to-One Domain Restriction & Inverse (Nonlinear Functions & Function Notation)",
-    "ti_ar": "وضع المصحح: تقييد المجال وإيجاد الدالة العكسية (الدوال غير الخطية وترميز الدوال والتحويلات)",
-    "q": "Let \\(h(x) = (x - 4)^2 + 1\\) for \\(x \\ge 4\\). (a) State the range of \\(h\\) and explain why \\(h^{-1}\\) exists on \\(x \\ge 4\\). (b) Find \\(h^{-1}(x)\\) and state its domain.",
-    "q_ar": "لتكن \\(h(x) = (x - 4)^2 + 1\\) حيث \\(x \\ge 4\\). (أ) اذكر مدى \\(h\\) وفسّر سبب وجود معكوس لها. (ب) أوجد \\(h^{-1}(x)\\) وحدد مجالها.",
+    "ti": "Examiner Mode: Vertex Transformations & Horizontal/Vertical Shifts",
+    "ti_ar": "وضع المصحح: تحويلات الرأس والإزاحة الأفقية والرأسية",
+    "q": "(a) State the vertex and range of \\(g(x) = 2(x - 3)^2 - 8\\). (b) If the graph of \\(f\\) passes through \\((6, 9)\\), what point must lie on the graph of \\(h(x) = f(x + 4) - 5\\)?",
+    "q_ar": "(أ) حدد الرأس ومدى الدالة \\(g(x) = 2(x - 3)^2 - 8\\). (ب) إذا مرّ منحنى \\(f\\) بالنقطة \\((6, 9)\\)، فما النقطة الواقعة على منحنى \\(h(x) = f(x + 4) - 5\\)؟",
     "parts": [
       {
-        "label": "Part (a) — Range & Injectivity",
+        "label": "Part (a) — Vertex & Range",
         "marks": 2,
         "rubric": [
           {
             "code": "B1",
             "marks": 1,
-            "text": "Range of \\(h\\) is \\([ 1, \\infty )\\) since \\((x - 4)^2 \\ge 0\\)."
+            "text": "From \\(a(x - h)^2 + k\\), vertex is \\((3, -8)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "For \\(x \\ge 4\\), \\(h\\) is strictly increasing (one-to-one / passes horizontal line test)."
+            "text": "Since \\(a = 2 > 0\\), parabola opens upward so range is \\(g(x) \\ge -8\\), or \\([-8, \\infty)\\)."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Formula & Domain",
+        "label": "Part (b) — Coordinate Transformation Rule",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Solve \\(y = (x - 4)^2 + 1 \\implies x = 4 + \\sqrt{y - 1}\\) (choosing \\(+\\) branch for \\(x \\ge 4\\))."
+            "text": "Set inner input \\(x + 4 = 6 \\implies x = 2\\) (shift left \\(4\\) units)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(h^{-1}(x) = 4 + \\sqrt{x - 1}\\) with domain \\(x \\ge 1\\)."
+            "text": "Compute \\(h(2) = f(6) - 5 = 9 - 5 = 4\\), giving point \\((2, 4)\\)."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — المدى وشرط التباين (واحد لواحد)",
+        "label": "الجزء (أ) — الرأس والمدى",
         "marks": 2,
         "rubric": [
           {
             "code": "B1",
             "marks": 1,
-            "text": "مدى الدالة \\(h\\) هو \\([ 1, \\infty )\\) لأن \\((x - 4)^2 \\ge 0\\)."
+            "text": "من صيغة الرأس يكون الرأس \\((3, -8)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "على الفترة \\(x \\ge 4\\) الدالة متزايدة تماماً (واحد لواحد)."
+            "text": "بما أن \\(a = 2 > 0\\)، يفتح القطع لأعلى والمدى \\(g(x) \\ge -8\\)."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — قاعدة المعكوس ومجاله",
+        "label": "الجزء (ب) — قاعدة تحويل الإحداثيات",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "حل المعادلة بدلالة \\(x\\) مع اختيار الفرع الموجب: \\(x = 4 + \\sqrt{y - 1}\\)."
+            "text": "وضع المدخل الداخلي \\(x + 4 = 6 \\implies x = 2\\) (إزاحة لليسار 4 وحدات)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(h^{-1}(x) = 4 + \\sqrt{x - 1}\\) ومجالها \\(x \\ge 1\\)."
+            "text": "حساب \\(h(2) = f(6) - 5 = 4\\)، فتكون النقطة \\((2, 4)\\)."
           }
         ]
       }
@@ -2980,8 +3273,8 @@ D["sat-functions"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Composite & Inverse Function Evaluation (Nonlinear Functions & Function Notation)",
-    "ti_ar": "بناء الخطوات: حساب التركيب والمعكوس (الدوال غير الخطية وترميز الدوال والتحويلات)",
+    "ti": "Step Builder: Composite Function Evaluation (Nonlinear Functions & Transformations)",
+    "ti_ar": "بناء الخطوات: حساب قيم الدوال المركبة (الدوال غير الخطية والتحويلات)",
     "steps": [
       {
         "l": "For \\(f(x) = 4x + 1\\) and \\(g(x) = x^2 + 1\\), find \\(g(4) =\\)",
@@ -2991,12 +3284,12 @@ D["sat-functions"] = [
       {
         "l": "Now evaluate \\(f(g(4)) = f(17) =\\)",
         "a": "69",
-        "h": "Compute 4×17 + 1."
+        "h": "Compute 4 × 17 + 1."
       },
       {
-        "l": "Evaluate \\(f^{-1}(13) =\\)",
-        "a": "3",
-        "h": "Solve 4x + 1 = 13."
+        "l": "Evaluate the reverse order \\(g(f(1)) = g(5) =\\)",
+        "a": "26",
+        "h": "First f(1) = 5, then 5² + 1."
       }
     ],
     "steps_ar": [
@@ -3008,55 +3301,101 @@ D["sat-functions"] = [
       {
         "l": "الآن احسب \\(f(g(4)) = f(17) =\\)",
         "a": "69",
-        "h": "احسب 4×17 + 1."
+        "h": "احسب 4 × 17 + 1."
       },
       {
-        "l": "أوجد قيمة المعكوس \\(f^{-1}(13) =\\)",
-        "a": "3",
-        "h": "حل المعادلة 4x + 1 = 13."
+        "l": "احسب التركيب العكسي \\(g(f(1)) = g(5) =\\)",
+        "a": "26",
+        "h": "أولاً f(1) = 5 ثم 5² + 1."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Function Transformations & Inverse Rules (Nonlinear Functions & Function Notation)",
-    "ti_ar": "مطابقة: تحويلات الدوال وقواعد المعكوس (الدوال غير الخطية وترميز الدوال والتحويلات)",
+    "ti": "Matching: Coordinate Graph Transformations (Nonlinear Functions & Transformations)",
+    "ti_ar": "مطابقة: قواعد التحويلات الهندسية للدوال (الدوال غير الخطية والتحويلات)",
     "p": [
       {
-        "l": "Graph of \\(y = f^{-1}(x)\\)",
-        "r": "Reflection of \\(y = f(x)\\) across \\(y = x\\)"
+        "l": "Vertical shift \\(y = f(x) + 5\\)",
+        "r": "Shifts the entire graph \\(5\\) units upward"
       },
       {
-        "l": "Domain of \\(f^{-1}\\)",
-        "r": "Exact range of \\(f\\)"
+        "l": "Horizontal shift \\(y = f(x - 4)\\)",
+        "r": "Shifts the entire graph \\(4\\) units to the right"
       },
       {
-        "l": "Transformation \\(y = f(x - 4) + 1\\)",
-        "r": "Shift right \\(4\\) units and up \\(1\\) units"
+        "l": "Horizontal shift \\(y = f(x + 3)\\)",
+        "r": "Shifts the entire graph \\(3\\) units to the left"
       },
       {
-        "l": "Modulus graph \\(y = |f(x)|\\)",
-        "r": "Reflects portions where \\(f(x) < 0\\) above the \\(x\\)-axis"
+        "l": "Reflection \\(y = -f(x)\\)",
+        "r": "Reflects the graph across the \\(x\\)-axis"
       }
     ],
     "p_ar": [
       {
-        "l": "منحنى المعكوس \\(y = f^{-1}(x)\\)",
-        "r": "انعكاس منحنى \\(y = f(x)\\) حول المستقيم \\(y = x\\)"
+        "l": "الإزاحة الرأسية \\(y = f(x) + 5\\)",
+        "r": "تزيح المنحنى \\(5\\) وحدات لأعلى"
       },
       {
-        "l": "مجال الدالة العكسية \\(f^{-1}\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(f\\) تماماً"
+        "l": "الإزاحة الأفقية \\(y = f(x - 4)\\)",
+        "r": "تزيح المنحنى \\(4\\) وحدات لليمين"
       },
       {
-        "l": "التحويل \\(y = f(x - 4) + 1\\)",
-        "r": "إزاحة لليمين \\(4\\) وحدات ولأعلى \\(1\\) وحدات"
+        "l": "الإزاحة الأفقية \\(y = f(x + 3)\\)",
+        "r": "تزيح المنحنى \\(3\\) وحدات لليسار"
       },
       {
-        "l": "منحنى القيمة المطلقة \\(y = |f(x)|\\)",
-        "r": "يعكس الأجزاء السالبة \\(f(x) < 0\\) فوق محور السينات"
+        "l": "الانعكاس \\(y = -f(x)\\)",
+        "r": "يعكس المنحنى حول محور السينات"
       }
     ]
+  },
+  {
+    "t": "gp",
+    "ti": "Graph Plotter: Parabola Vertex & Zeros (Nonlinear Functions & Function Notation)",
+    "ti_ar": "مخطط التمثيل البياني: الرأس والأصفار (الدوال غير الخطية والتحويلات)",
+    "q": "Plot the vertex and both zeros of \\(f(x) = (x - 2)^2 - 4\\).",
+    "q_ar": "عيّن رأس القطع المكافئ وجذريه للدالة \\(f(x) = (x - 2)^2 - 4\\).",
+    "xrange": [
+      -4,
+      6
+    ],
+    "yrange": [
+      -5,
+      5
+    ],
+    "targets": [
+      {
+        "label": "Vertex (2, -4)",
+        "label_ar": "الرأس (2, -4)",
+        "target": [
+          2,
+          -4
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "Zero (0, 0)",
+        "label_ar": "الجذر الأول (0, 0)",
+        "target": [
+          0,
+          0
+        ],
+        "tol": 0.45
+      },
+      {
+        "label": "Zero (4, 0)",
+        "label_ar": "الجذر الثاني (4, 0)",
+        "target": [
+          4,
+          0
+        ],
+        "tol": 0.45
+      }
+    ],
+    "ex": "In vertex form \\((x - h)^2 + k\\), the vertex is \\((2, -4)\\), and \\((x - 2)^2 = 4\\) yields roots \\(x = 0\\) and \\(x = 4\\).",
+    "ex_ar": "في صيغة الرأس \\((x - h)^2 + k\\)، يكون الرأس \\((2, -4)\\)، وحل \\((x - 2)^2 = 4\\) يعطي الجذرين \\(x = 0\\) و\\(x = 4\\)."
   }
 ];
 D["sat-stats"] = [
@@ -3072,7 +3411,7 @@ D["sat-stats"] = [
   },
   {
     "t": "cat",
-    "ti": "Categorize: Center vs Spread Measures",
+    "ti": "Categorize: Center vs. Spread Measures",
     "ti_ar": "تصنيف: مقاييس النزعة المركزية ومقاييس التشتت",
     "categories": [
       "Measures of Center",
@@ -3080,62 +3419,54 @@ D["sat-stats"] = [
     ],
     "categories_ar": [
       "مقاييس النزعة المركزية",
-      "مقاييس التشتت والتباين"
+      "مقاييس التشتت"
     ],
     "items": [
       {
-        "s": "Mean",
+        "s": "Mean (Arithmetic Average)",
         "cat": 0
       },
       {
-        "s": "Median",
+        "s": "Median (Middle Value)",
         "cat": 0
       },
       {
-        "s": "Standard Deviation",
+        "s": "Standard Deviation (Spread Around Mean)",
         "cat": 1
       },
       {
-        "s": "Variance (\\(\\sigma^2\\))",
+        "s": "Range (Max − Min)",
         "cat": 1
       },
       {
-        "s": "Range (Max - Min)",
-        "cat": 1
-      },
-      {
-        "s": "Mode",
+        "s": "Mode (Most Frequent Value)",
         "cat": 0
       }
     ],
     "items_ar": [
       {
-        "s": "المتوسط الحسابي (Mean)",
+        "s": "المتوسط الحسابي",
         "cat": 0
       },
       {
-        "s": "الوسيط (Median)",
+        "s": "الوسيط",
         "cat": 0
       },
       {
-        "s": "الانحراف المعياري (Standard Deviation)",
+        "s": "الانحراف المعياري",
         "cat": 1
       },
       {
-        "s": "التباين (\\(\\sigma^2\\))",
+        "s": "المدى (الأكبر − الأصغر)",
         "cat": 1
       },
       {
-        "s": "المدى (الأكبر - الأصغر)",
-        "cat": 1
-      },
-      {
-        "s": "المنوال (Mode)",
+        "s": "المنوال",
         "cat": 0
       }
     ],
-    "ex": "Mean, median, and mode measure center/typical value; standard deviation, variance, and range measure spread/variability.",
-    "ex_ar": "المتوسط والوسيط والمنوال تقيس المركز؛ بينما الانحراف المعياري والتباين والمدى تقيس التشتت."
+    "ex": "Mean, median, and mode describe typical center; range and standard deviation measure variability or spread.",
+    "ex_ar": "المتوسط والوسيط والمنوال تقيس النزعة المركزية؛ بينما المدى والانحراف المعياري يقيسان التشتت."
   },
   {
     "t": "ord",
@@ -3248,103 +3579,103 @@ D["sat-stats"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Variance of Difference of Independent Variables (One-Variable Statistics, Distributions & Margin of Error)",
-    "ti_ar": "اكتشف الخطأ: تباين الفرق بين متغيرين عشوائيين مستقلين (إحصاء المتغير الواحد والتوزيعات وهامش الخطأ)",
-    "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\operatorname{Var}(X) = 6\\) and \\(\\operatorname{Var}(Y) = 3\\). A student computes \\(\\operatorname{Var}(X - Y)\\). Which step is invalid?",
-    "q_ar": "متغيران عشوائيان مستقلان \\(X\\) و\\(Y\\) تبايناهما \\(\\operatorname{Var}(X) = 6\\) و\\(\\operatorname{Var}(Y) = 3\\). يحسب طالب \\(\\operatorname{Var}(X - Y)\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Sample Generalizability & Causation Claims",
+    "ti_ar": "اكتشف الخطأ: تعميم العينات المتحيزة وادعاء السببية",
+    "q": "A researcher surveys \\(300\\) randomly selected members of one fitness club and finds regular swimmers report lower stress. Which conclusion is invalid?",
+    "q_ar": "استطلع باحث آراء \\(300\\) عضو مختارين عشوائياً من نادٍ رياضي واحد، ووجد أن السباحين المنتظمين أقل توتراً. أي استنتاج غير صحيح؟",
     "steps": [
-      "Verify that \\(X\\) and \\(Y\\) are statistically independent (\\(\\operatorname{Cov}(X,Y) = 0\\)).",
-      "Subtract the variances directly: \\(\\operatorname{Var}(X - Y) = 6 - 3 = 3\\).",
-      "Take square root for standard deviation."
+      "Restrict generalization to members of that fitness club.",
+      "Treat the survey as an observational study because members were not randomly assigned to swim.",
+      "Conclude that swimming causes lower stress among all residents in the entire city."
     ],
     "steps_ar": [
-      "التحقق من استقلال \\(X\\) و\\(Y\\) إحصائياً.",
-      "طرح التباينين مباشرة: \\(\\operatorname{Var}(X - Y) = 6 - 3 = 3\\).",
-      "أخذ الجذر التربيعي لإيجاد الانحراف المعياري."
+      "قصر تعميم النتيجة على أعضاء ذلك النادي الرياضي فقط.",
+      "تصنيف الدراسة كدراسة قائمة على الملاحظة لعدم وجود توزيع عشوائي للمعالجة.",
+      "الاستنتاج أن السباحة تسبب انخفاض التوتر لدى جميع سكان المدينة بأكملها."
     ],
-    "errorStep": 2,
+    "errorStep": 3,
     "reasons": [
-      "Because coefficients square in variance, \\(\\operatorname{Var}(X - Y) = 1^2\\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 6 + 3 = 9\\) — independent variances ALWAYS add.",
-      "\\(\\operatorname{Var}(X - Y)\\) equals \\(\\operatorname{Var}(X) \\cdot \\operatorname{Var}(Y)\\).",
-      "Expected values cannot be subtracted."
+      "Results from a single club sample cannot generalize to all city residents, and observational studies without random assignment cannot prove causation.",
+      "A sample of 300 is always sufficient for citywide causal claims.",
+      "Observational studies prove causation whenever sample size exceeds 100."
     ],
     "reasons_ar": [
-      "لأن المعاملات تُربَّع في التباين: \\(\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2\\operatorname{Var}(Y) = 9\\) — التباينات المستقلة تُجمع دائماً.",
-      "التباين يساوي حاصل ضرب التباينين.",
-      "لا يجوز طرح التوقعات الرياضية."
+      "عينة من نادٍ واحد لا تُعمم على جميع سكان المدينة، والدراسات القائمة على الملاحظة دون توزيع عشوائي لا تثبت السببية.",
+      "حجم العينة 300 يكفي دائماً لإثبات السببية على مستوى المدينة.",
+      "الدراسات القائمة على الملاحظة تثبت السببية عندما تتجاوز العينة 100 مشارك."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Standard Error, Variance & Conditional Probability (One-Variable Statistics, Distributions & Margin of Error)",
-    "ti_ar": "وضع المصحح: الخطأ المعياري والتباين والاحتمال الشرطي (إحصاء المتغير الواحد والتوزيعات وهامش الخطأ)",
-    "q": "(a) A population has standard deviation \\(\\sigma = 12\\). For a simple random sample of size \\(n = 16\\), find the standard error \\(\\sigma_{\\bar{x}}\\) and state what happens to \\(\\sigma_{\\bar{x}}\\) if \\(n\\) quadruples. (b) Independent \\(X, Y\\) have \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 3\\); compute \\(\\operatorname{Var}(2X - Y)\\).",
-    "q_ar": "(أ) مجتمع انحرافه المعياري \\(\\sigma = 12\\). لعينة عشوائية حجمها \\(n = 16\\)، احسب الخطأ المعياري \\(\\sigma_{\\bar{x}}\\) واذكر ماذا يحدث له عند مضاعفة \\(n\\) أربع مرات. (ب) للمتغيرين المستقلين \\(X, Y\\) حيث \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(2X - Y)\\).",
+    "ti": "Examiner Mode: Outlier Effect on Mean/Median & Plausible Values Interval",
+    "ti_ar": "وضع المصحح: أثر القيم المتطرفة وتفسير هامش الخطأ",
+    "q": "(a) Dataset A is \\(\\{10, 12, 14, 15, 19\\}\\) and Dataset B replaces \\(19\\) with outlier \\(69\\). Compute both medians and state which center changes more. (b) A random poll reports \\(58\\%\\) support with a \\(4\\%\\) margin of error; find the plausible interval for the population proportion and state how doubling sample size affects margin of error.",
+    "q_ar": "(أ) المجموعة الأولى \\(\\{10, 12, 14, 15, 19\\}\\) والثانية تستبدل \\(19\\) بالقيمة المتطرفة \\(69\\). أوجد الوسيط لكل منهما واذكر أي مقياس مركز يتأثر أكثر. (ب) أفاد استطلاع عشوائي بتأييد \\(58\\%\\) بهامش خطأ \\(4\\%\\)؛ أوجد الفترة المعقولة لنسبة المجتمع وأثر مضاعفة حجم العينة على هامش الخطأ.",
     "parts": [
       {
-        "label": "Part (a) — Sampling Distribution Standard Error",
+        "label": "Part (a) — Median Resistance vs. Mean Sensitivity",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{16}} = \\dfrac{12}{4} = 3\\)."
-          },
-          {
             "code": "B1",
             "marks": 1,
-            "text": "Quadrupling \\(n\\) divides \\(\\sigma_{\\bar{x}}\\) by \\(\\sqrt{4} = 2\\) (halves the standard error)."
+            "text": "Both datasets have median \\(14\\) (unchanged by the upper outlier)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "The mean increases substantially from \\(14\\) to \\(24\\); thus the mean shifts while the median resists the outlier."
           }
         ]
       },
       {
-        "label": "Part (b) — Linear Combination Variance",
+        "label": "Part (b) — Plausible Population Range & Sample Size",
         "marks": 2,
         "rubric": [
           {
-            "code": "M1",
+            "code": "B1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 2^2 \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y)\\)."
+            "text": "Plausible population percentage lies between \\(58\\% - 4\\% = 54\\%\\) and \\(58\\% + 4\\% = 62\\%\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "\\(4(6) + 3 = 27\\)."
+            "text": "Increasing (doubling) sample size decreases the margin of error."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — الخطأ المعياري لتوزيع المعاينة",
+        "label": "الجزء (أ) — مقاومة الوسيط مقابل تأثر المتوسط",
         "marks": 2,
         "rubric": [
           {
-            "code": "A1",
-            "marks": 1,
-            "text": "\\(\\sigma_{\\bar{x}} = \\dfrac{12}{\\sqrt{16}} = 3\\)."
-          },
-          {
             "code": "B1",
             "marks": 1,
-            "text": "مضاعفة \\(n\\) أربع مرات تقسم الخطأ المعياري على \\(\\sqrt{4} = 2\\) (ينصفه)."
+            "text": "وسيط كلتا المجموعتين هو \\(14\\) دون تغيير رغم القيمة المتطرفة."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "يرتفع المتوسط الحسابي من \\(14\\) إلى \\(24\\)، لذا يتأثر المتوسط أكثر بكثير."
           }
         ]
       },
       {
-        "label": "الجزء (ب) — تباين التركيبة الخطية",
+        "label": "الجزء (ب) — الفترة المعقولة وحجم العينة",
         "marks": 2,
         "rubric": [
           {
-            "code": "M1",
+            "code": "B1",
             "marks": 1,
-            "text": "\\(\\operatorname{Var}(2X - Y) = 4\\operatorname{Var}(X) + \\operatorname{Var}(Y)\\)."
+            "text": "الفترة المعقولة لنسبة المجتمع هي من \\(54\\%\\) إلى \\(62\\%\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "الناتج: \\(4(6) + 3 = 27\\)."
+            "text": "زيادة حجم العينة تقلل هامش الخطأ وتزيد الدقة."
           }
         ]
       }
@@ -3352,81 +3683,81 @@ D["sat-stats"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Standard Error & Independent Variance (One-Variable Statistics, Distributions & Margin of Error)",
-    "ti_ar": "بناء الخطوات: الخطأ المعياري وتباين المتغيرات المستقلة (إحصاء المتغير الواحد والتوزيعات وهامش الخطأ)",
+    "ti": "Step Builder: Mean, Median & Range with an Extreme Value",
+    "ti_ar": "بناء الخطوات: المتوسط والوسيط والمدى مع قيمة متطرفة",
     "steps": [
       {
-        "l": "Compute \\(\\sqrt{n}\\) for sample size \\(n = 16\\):",
-        "a": "4",
-        "h": "Square root of 16."
+        "l": "Find the median of \\(\\{4, 6, 6, 8, 26\\}\\):",
+        "a": "6",
+        "h": "Pick the middle (3rd) ordered value."
       },
       {
-        "l": "Find standard error \\(\\sigma / \\sqrt{n}\\) when \\(\\sigma = 12\\):",
-        "a": "3",
-        "h": "Divide 12 by 4."
+        "l": "Compute the arithmetic mean of \\(\\{4, 6, 6, 8, 26\\}\\):",
+        "a": "10",
+        "h": "Sum = 50; divide by 5."
       },
       {
-        "l": "For independent \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 3\\), find \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "9",
-        "h": "Add 6 + 3."
+        "l": "Compute the range of \\(\\{4, 6, 6, 8, 26\\}\\):",
+        "a": "22",
+        "h": "Subtract minimum 4 from maximum 26."
       }
     ],
     "steps_ar": [
       {
-        "l": "احسب \\(\\sqrt{n}\\) لحجم العينة \\(n = 16\\):",
-        "a": "4",
-        "h": "الجذر التربيعي للعدد 16."
+        "l": "أوجد الوسيط للمجموعة \\(\\{4, 6, 6, 8, 26\\}\\):",
+        "a": "6",
+        "h": "اختر القيمة الوسطى (الثالثة)."
       },
       {
-        "l": "أوجد الخطأ المعياري \\(\\sigma / \\sqrt{n}\\) عندما \\(\\sigma = 12\\):",
-        "a": "3",
-        "h": "اقسم 12 على 4."
+        "l": "احسب المتوسط الحسابي للمجموعة \\(\\{4, 6, 6, 8, 26\\}\\):",
+        "a": "10",
+        "h": "المجموع 50 مقسوماً على 5."
       },
       {
-        "l": "للمتغيرين المستقلين \\(\\operatorname{Var}(X) = 6,\\; \\operatorname{Var}(Y) = 3\\)، احسب \\(\\operatorname{Var}(X - Y) =\\)",
-        "a": "9",
-        "h": "اجمع 6 + 3."
+        "l": "احسب المدى للمجموعة \\(\\{4, 6, 6, 8, 26\\}\\):",
+        "a": "22",
+        "h": "اطرح القيمة الصغرى 4 من العظمى 26."
       }
     ]
   },
   {
     "t": "mt",
-    "ti": "Matching: Probability, Distributions & Inference Rules (One-Variable Statistics, Distributions & Margin of Error)",
-    "ti_ar": "مطابقة: قوانين الاحتمالات والتوزيعات والاستدلال (إحصاء المتغير الواحد والتوزيعات وهامش الخطأ)",
+    "ti": "Matching: Digital SAT Sampling, Spread & Margin of Error Rules",
+    "ti_ar": "مطابقة: قواعد المعاينة والتشتت وهامش الخطأ في SAT الرقمي",
     "p": [
       {
-        "l": "Conditional probability \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "Random sample from target population",
+        "r": "Allows generalizing conclusions to that sampled population"
       },
       {
-        "l": "Binomial variance \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "Random assignment to treatment/control",
+        "r": "Allows drawing a cause-and-effect conclusion"
       },
       {
-        "l": "Standard \\(z\\)-score of observation \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "Larger sample size \\(n\\)",
+        "r": "Produces a smaller margin of error"
       },
       {
-        "l": "Reject \\(H_0\\) at significance \\(\\alpha\\)",
-        "r": "When \\(p\\text{-value} < \\alpha\\)"
+        "l": "Values clustered tightly near the mean",
+        "r": "Produces a smaller standard deviation"
       }
     ],
     "p_ar": [
       {
-        "l": "الاحتمال الشرطي \\(P(A \\mid B)\\)",
-        "r": "\\(\\dfrac{P(A \\cap B)}{P(B)}\\)"
+        "l": "عينة عشوائية من المجتمع المستهدف",
+        "r": "تسمح بتعميم النتائج على ذلك المجتمع فقط"
       },
       {
-        "l": "تباين التوزيع ذي الحدين \\(X \\sim B(n, p)\\)",
-        "r": "\\(np(1 - p)\\)"
+        "l": "توزيع عشوائي لمجموعتي التجربة والضبط",
+        "r": "يتيح استنتاج علاقة سبب ونتيجة"
       },
       {
-        "l": "الدرجة المعيارية \\(z\\) للمفردة \\(x\\)",
-        "r": "\\(\\dfrac{x - \\mu}{\\sigma}\\)"
+        "l": "زيادة حجم العينة \\(n\\)",
+        "r": "تؤدي إلى هامش خطأ أصغر"
       },
       {
-        "l": "رفض فرض العدم \\(H_0\\) عند مستوى \\(\\alpha\\)",
-        "r": "عندما تكون \\(p\\text{-value} < \\alpha\\)"
+        "l": "قيم متقاربة ومتركزة حول المتوسط",
+        "r": "تؤدي إلى انحراف معياري أصغر"
       }
     ]
   }
@@ -3445,23 +3776,23 @@ D["sat-condprob"] = [
   {
     "t": "ord",
     "ti": "Order the Steps: Computing Conditional Probability from a Table",
-    "ti_ar": "ترتيب الخطوات: حساب الاحتمال المشروط من جدول",
-    "prompt": "Arrange the steps to compute \\(P(\\text{Junior} \\mid \\text{Pass})\\) from a two-way table:",
-    "prompt_ar": "رتّب خطوات حساب \\(P(\\text{Junior} \\mid \\text{Pass})\\) من جدول التوافق المزدوج:",
+    "ti_ar": "ترتيب الخطوات: حساب الاحتمال المشروط من جدول توافقي",
+    "prompt": "Arrange the steps to compute \\(P(J \\mid P)\\), the probability a passing student (\\(P\\)) is a junior (\\(J\\)), from a two-way table:",
+    "prompt_ar": "رتّب خطوات حساب \\(P(J \\mid P)\\)، أي احتمال أن يكون الطالب من الصف الحادي عشر (\\(J\\)) بشرط أنه ناجح (\\(P\\)):",
     "items": [
-      "Identify the given condition: restrict attention only to the column or row for \"Pass\".",
-      "Find the total count for the condition: \\(\\text{Total Pass}\\) serves as the denominator.",
-      "Find the joint count: number of students who are BOTH \"Junior\" and \"Pass\" for the numerator.",
-      "Divide: \\(P = \\frac{\\text{Junior and Pass}}{\\text{Total Pass}}\\)."
+      "Restrict attention strictly to the row or column for condition \\(P\\) (passing students).",
+      "Use the marginal subtotal of condition \\(P\\) as the denominator.",
+      "Read the joint cell count of individuals who are in BOTH \\(J\\) and \\(P\\) as the numerator.",
+      "Divide the joint cell count by the marginal condition subtotal."
     ],
     "items_ar": [
-      "تحديد الشرط المعطى: حصر الانتباه في عمود أو صف \"Pass\" فقط.",
-      "إيجاد المجموع الكلي للشرط: يصبح \\(\\text{Total Pass}\\) هو المقام.",
-      "إيجاد العدد المشترك: عدد الطلاب الذين يجمعون بين \"Junior\" و \"Pass\" ليكون البسط.",
-      "القسمة: \\(P = \\frac{\\text{Junior and Pass}}{\\text{Total Pass}}\\)."
+      "حصر الانتباه تماماً في صف أو عمود الشرط \\(P\\) (الطلاب الناجحون).",
+      "اعتماد المجموع الفرعي لصف أو عمود الشرط \\(P\\) مقاماً للكسر.",
+      "قراءة الخلية المشتركة للأفراد الذين يحققون \\(J\\) و\\(P\\) معاً كبسط للكسر.",
+      "قسمة عدد الخلية المشتركة على المجموع الفرعي للشرط المعطى."
     ],
-    "ex": "Restrict to the condition subtotal for the denominator, count matching individuals for the numerator, and divide.",
-    "ex_ar": "احصر المقام في المجموع الفرعي للشرط، وضع في البسط عدد الحالات المطابقة، واقسم."
+    "ex": "Restrict to the given condition subtotal for the denominator and use the matching joint cell for the numerator.",
+    "ex_ar": "اجعل المجموع الفرعي للشرط مقاماً والخلية المشتركة بسطاً ثم اقسم."
   },
   {
     "t": "cat",
@@ -3612,115 +3943,103 @@ D["sat-condprob"] = [
   },
   {
     "t": "se",
-    "ti": "Spot the Error: Treating Without-Replacement Draws as Independent",
-    "ti_ar": "اكتشف الخطأ: افتراض الاستقلال عند السحب بدون إرجاع",
-    "q": "A bag contains \\(5\\) red and \\(3\\) blue marbles (\\(8\\) total). Two marbles are drawn WITHOUT replacement. A student computes \\(P(\\text{both red})\\). Which step is wrong?",
-    "q_ar": "يحتوي كيس على \\(5\\) كرات حمراء و\\(3\\) زرقاء (المجموع \\(8\\)). سُحبت كرتان بدون إرجاع لحساب \\(P(\\text{حمراوان})\\). أي خطوة خاطئة؟",
+    "ti": "Spot the Error: Wrong Denominator in Two-Way Table Conditional Probability",
+    "ti_ar": "اكتشف الخطأ: اختيار مقام خاطئ في جدول التوافق المزدوج",
+    "q": "A survey of \\(200\\) students shows \\(80\\) study Biology, and of those \\(80\\), \\(32\\) prefer Lab Work. A student calculates the probability that a randomly selected Biology student prefers Lab Work. Which step is wrong?",
+    "q_ar": "شمل مسح \\(200\\) طالب، يدرس منهم \\(80\\) مادة الأحياء، ويفضّل \\(32\\) من دارسي الأحياء العمل المخبري. يحسب طالب احتمال أن يفضّل طالب أحياء مختار عشوائياً العمل المخبري. أي خطوة خاطئة؟",
     "steps": [
-      "Find the probability the first marble is red: \\(P(R_1) = \\dfrac{5}{8}\\).",
-      "Assume the second draw has the same denominator and numerator: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
-      "Multiply \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
-      "Report \\(\\dfrac{25}{64}\\) as the without-replacement probability."
+      "Identify the numerator as the \\(32\\) students who study Biology AND prefer Lab Work.",
+      "Divide \\(32\\) by the grand total \\(200\\) to report \\(0.16\\).",
+      "Conclude \\(16\\%\\) of Biology students prefer Lab Work."
     ],
     "steps_ar": [
-      "حساب احتمال أن تكون الكرة الأولى حمراء: \\(P(R_1) = \\dfrac{5}{8}\\).",
-      "افتراض بقاء البسط والمقام كما هما في السحبة الثانية: \\(P(R_2 \\mid R_1) = \\dfrac{5}{8}\\).",
-      "ضرب \\(\\dfrac{5}{8} \\times \\dfrac{5}{8} = \\dfrac{25}{64}\\).",
-      "كتابة الناتج \\(\\dfrac{25}{64}\\)."
+      "تحديد البسط بعدد الطلاب المشتركين \\(32\\) طالباً (أحياء ومخبري).",
+      "قسمة \\(32\\) على المجموع الكلي \\(200\\) للحصول على \\(0.16\\).",
+      "الاستنتاج أن \\(16\\%\\) من طلاب الأحياء يفضلون العمل المخبري."
     ],
     "errorStep": 2,
     "reasons": [
-      "Without replacement, after drawing one red marble only \\(4\\) red marbles remain out of \\(7\\), so \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) and \\(P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
-      "Probabilities on consecutive branches of a tree diagram should be added, not multiplied.",
-      "Without replacement reduces the denominator to \\(7\\) while keeping \\(5\\) red marbles."
+      "The given condition restricts the sample space to the \\(80\\) Biology students, so the true conditional probability is \\(\\frac{32}{80} = 0.40\\) (\\(40\\%\\)), NOT \\(\\frac{32}{200}\\).",
+      "You must add \\(32 + 80\\) for the denominator.",
+      "Grand total \\(200\\) should always be multiplied by \\(32\\)."
     ],
     "reasons_ar": [
-      "بدون إرجاع يتبقى \\(4\\) كرات حمراء من أصل \\(7\\)، لذا \\(P(R_2 \\mid R_1) = \\dfrac{4}{7}\\) ويكون الاحتمال \\(\\dfrac{5}{8} \\times \\dfrac{4}{7} = \\dfrac{5}{14}\\).",
-      "تُجمع احتمالات الفروع المتتالية في الشجرة ولا تُضرب.",
-      "ينقص المقام إلى \\(7\\) مع بقاء \\(5\\) كرات حمراء."
+      "الشرط يقصر المقام على طلاب الأحياء فقط (\\(80\\))، لذا الاحتمال الشرطي هو \\(\\frac{32}{80} = 0.40\\) أي \\(40\\%\\) وليس \\(\\frac{32}{200}\\).",
+      "يجب جمع \\(32 + 80\\) في المقام.",
+      "يجب ضرب المجموع الكلي في \\(32\\)."
     ],
     "correctReason": 0
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Tree Diagrams Without Replacement & Two-Way Conditional Probability",
-    "ti_ar": "وضع المصحح: الشجرة الاحتمالية بدون إرجاع والاحتمال الشرطي",
-    "q": "(a) A box holds \\(6\\) green and \\(4\\) yellow counters. Two are chosen at random without replacement; find \\(P(\\text{one of each color})\\). (b) Events \\(A, B\\) satisfy \\(P(A) = 0.5\\), \\(P(B) = 0.4\\), and \\(P(A \\cup B) = 0.7\\); find \\(P(A \\mid B)\\) and test independence.",
-    "q_ar": "(أ) صندوق به \\(6\\) أقراص خضراء و\\(4\\) صفراء. سُحب قرصان بدون إرجاع؛ أوجد احتمال اختلاف اللونين. (ب) إذا كان \\(P(A)=0.5\\) و\\(P(B)=0.4\\) و\\(P(A \\cup B)=0.7\\)، فأوجد \\(P(A \\mid B)\\) واختبر الاستقلال.",
+    "ti": "Examiner Mode: Two-Way Frequency Table Conditional Probability & Scaling",
+    "ti_ar": "وضع المصحح: الاحتمال الشرطي من جدول التوافق وتقدير أعداد المجتمع",
+    "q": "A random sample of \\(120\\) eleventh graders includes \\(75\\) on-campus students, of whom \\(45\\) ride the school bus (the other \\(45\\) students study remotely). (a) If one on-campus student is chosen at random, find the exact probability they ride the bus. (b) If the school district has \\(1,500\\) similar on-campus eleventh graders, predict how many ride the bus.",
+    "q_ar": "تضم عينة عشوائية من \\(120\\) طالباً في الصف الحادي عشر \\(75\\) طالباً بالحضور الشخصي، منهم \\(45\\) يستخدمون الحافلة المدرسية. (أ) إذا اختير طالب حضور شخصي عشوائياً، فأوجد احتمال استخدامه للحافلة. (ب) إذا كان بالمنطقة \\(1500\\) طالب حضور شخصي مماثل، فتوقّع عدد مستخدمي الحافلة.",
     "parts": [
       {
-        "label": "Part (a) — Both Mutually Exclusive Orderings (GY + YG)",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Compute \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Include reverse order \\(P(Y_1 \\cap G_2) = \\dfrac{4}{10} \\times \\dfrac{6}{9} = \\dfrac{24}{90}\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "Add disjoint paths: \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
-          }
-        ]
-      },
-      {
-        "label": "Part (b) — Conditional Probability & Independence Check",
+        "label": "Part (a) — Conditional Probability on Subgroup",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "Find \\(P(A \\cap B) = 0.5 + 0.4 - 0.7 = 0.20\\), so \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
+            "text": "Restrict denominator to the \\(75\\) on-campus students; numerator is \\(45\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Since \\(P(A \\mid B) = 0.50 = P(A)\\) (equivalently \\(P(A)P(B) = 0.20\\)), \\(A\\) and \\(B\\) ARE independent."
+            "text": "Compute \\(\\frac{45}{75} = \\frac{3}{5} = 0.60\\) (\\(60\\%\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Expected Count in Target Population",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Multiply the conditional proportion \\(0.60\\) by \\(1,500\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Expected number riding the bus: \\(0.60 \\times 1500 = 900\\) students."
           }
         ]
       }
     ],
     "parts_ar": [
       {
-        "label": "الجزء (أ) — جمع المسارين المتنافيين (أخضر ثم أصفر + أصفر ثم أخضر)",
-        "marks": 3,
-        "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "حساب \\(P(G_1 \\cap Y_2) = \\dfrac{6}{10} \\times \\dfrac{4}{9} = \\dfrac{24}{90}\\)."
-          },
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "إضافة الترتيب العكسي \\(P(Y_1 \\cap G_2) = \\dfrac{24}{90}\\)."
-          },
-          {
-            "code": "A1",
-            "marks": 1,
-            "text": "المجموع \\(\\dfrac{48}{90} = \\dfrac{8}{15}\\)."
-          }
-        ]
-      },
-      {
-        "label": "الجزء (ب) — الاحتمال الشرطي واختبار الاستقلال",
+        "label": "الجزء (أ) — الاحتمال الشرطي للمجموعة الفرعية",
         "marks": 2,
         "rubric": [
           {
             "code": "M1",
             "marks": 1,
-            "text": "حساب \\(P(A \\cap B) = 0.20\\) ومنه \\(P(A \\mid B) = \\dfrac{0.20}{0.40} = 0.50\\)."
+            "text": "حصر المقام في طلاب الحضور الشخصي (\\(75\\)) والبسط \\(45\\)."
           },
           {
             "code": "A1",
             "marks": 1,
-            "text": "بما أن \\(P(A \\mid B) = P(A) = 0.50\\)، فالحدثان مستقلان."
+            "text": "الناتج: \\(\\frac{45}{75} = \\frac{3}{5} = 0.60\\)."
+          }
+        ]
+      },
+      {
+        "label": "الجزء (ب) — العدد المتوقع في المجتمع",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "ضرب النسبة الشرطية \\(0.60\\) في \\(1500\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "العدد المتوقع: \\(0.60 \\times 1500 = 900\\) طالباً."
           }
         ]
       }
@@ -3768,95 +4087,4 @@ D["sat-condprob"] = [
     ]
   }
 ];
-
-if(Array.isArray(D["sat-linear"])) D["sat-linear"].push({
-  "t": "gp",
-  "ti": "Interactive Graph Plotter: Line Intercepts",
-  "ti_ar": "مخطط الدوال التفاعلي: مقاطع المستقيم",
-  "q": "Plot the x-intercept and y-intercept of the line \\(2x + 3y = 6\\) on the coordinate grid.",
-  "q_ar": "عيّن المقطع السيني والمقطع الصادي للمستقيم \\(2x + 3y = 6\\) على الشبكة الإحداثية.",
-  "xrange": [
-    -5,
-    5
-  ],
-  "yrange": [
-    -5,
-    5
-  ],
-  "targets": [
-    {
-      "label": "x-intercept (3, 0)",
-      "label_ar": "المقطع السيني (3, 0)",
-      "target": [
-        3,
-        0
-      ],
-      "tol": 0.45
-    },
-    {
-      "label": "y-intercept (0, 2)",
-      "label_ar": "المقطع الصادي (0, 2)",
-      "target": [
-        0,
-        2
-      ],
-      "tol": 0.45
-    }
-  ],
-  "sol": "Set \\(y=0\\) to get \\(2x=6 \\Rightarrow x=3\\), giving \\((3,0)\\). Set \\(x=0\\) to get \\(3y=6 \\Rightarrow y=2\\), giving \\((0,2)\\).",
-  "sol_ar": "بوضع \\(y=0\\) نجد \\(2x=6 \\Rightarrow x=3\\) أي \\((3,0)\\)، وبوضع \\(x=0\\) نجد \\(3y=6 \\Rightarrow y=2\\) أي \\((0,2)\\)."
-});
-if(Array.isArray(D["sat-quad"])) D["sat-quad"].push({
-  "t": "fn",
-  "ti": "Function Lab: Vertex Form Parabola \\(y = a(x - h)^2 + k\\)",
-  "ti_ar": "مختبر الدوال: القطع المكافئ بصيغة الرأس \\(y = a(x - h)^2 + k\\)",
-  "fns": [
-    {
-      "expr": "a*(x - h)^2 + k",
-      "color": "#1E3A6E",
-      "label": "a(x−h)² + k"
-    }
-  ],
-  "xrange": [
-    -6,
-    6
-  ],
-  "yrange": [
-    -6,
-    8
-  ],
-  "params": [
-    {
-      "name": "a",
-      "label": "Stretch a",
-      "min": -2,
-      "max": 2,
-      "step": 0.5,
-      "default": 1
-    },
-    {
-      "name": "h",
-      "label": "Vertex x (h)",
-      "min": -3,
-      "max": 3,
-      "step": 1,
-      "default": 1
-    },
-    {
-      "name": "k",
-      "label": "Vertex y (k)",
-      "min": -4,
-      "max": 4,
-      "step": 1,
-      "default": -2
-    }
-  ]
-});
-
-(D["sat-linear"] = D["sat-linear"] || []).push({"t": "gp", "ti": "Graph Plotter: Line Intercepts & Slope (Linear Equations in One Variable & Systems of Equations)", "ti_ar": "مخطط التمثيل البياني: المقاطع والميل (Linear Equations in One Variable & Systems of Equations)", "q": "Plot the x-intercept and y-intercept of \\(2x + 3y = 6\\), plus the midpoint between them.", "q_ar": "عيّن المقطع السيني والمقطع الصادي للمستقيم \\(2x + 3y = 6\\)، بالإضافة إلى نقطة المنتصف بينهما.", "xrange": [-5, 5], "yrange": [-5, 5], "targets": [{"label": "x-intercept (3, 0)", "label_ar": "المقطع السيني (3, 0)", "target": [3, 0], "tol": 0.45}, {"label": "y-intercept (0, 2)", "label_ar": "المقطع الصادي (0, 2)", "target": [0, 2], "tol": 0.45}, {"label": "Midpoint (1.5, 1)", "label_ar": "نقطة المنتصف (1.5, 1)", "target": [1.5, 1], "tol": 0.5}], "ex": "Set \\(y = 0\\) for the x-intercept and \\(x = 0\\) for the y-intercept, or substitute \\(x = 2\\) directly into the linear equation.", "ex_ar": "عوّض \\(y = 0\\) لإيجاد المقطع السيني و\\(x = 0\\) للمقطع الصادي، أو عوّض \\(x = 2\\) مباشرة في المعادلة الخطية."});
-(D["sat-quad"] = D["sat-quad"] || []).push({"t": "gp", "ti": "Graph Plotter: Exponential & Log Anchors (Equivalent Expressions & Quadratic Equations)", "ti_ar": "مخطط التمثيل البياني: نقاط الارتكاز الأسية واللوغاريتمية (Equivalent Expressions & Quadratic Equations)", "q": "Plot three key points on \\(y = 2^x\\): at \\(x = 0\\), \\(x = 1\\), and \\(x = 2\\).", "q_ar": "عيّن ثلاث نقاط أساسية على منحنى \\(y = 2^x\\): عند \\(x = 0\\) و\\(x = 1\\) و\\(x = 2\\).", "xrange": [-2, 4], "yrange": [-1, 6], "targets": [{"label": "y-intercept (0, 1)", "label_ar": "المقطع الصادي (0, 1)", "target": [0, 1], "tol": 0.4}, {"label": "Point (1, 2)", "label_ar": "النقطة (1, 2)", "target": [1, 2], "tol": 0.4}, {"label": "Point (2, 4)", "label_ar": "النقطة (2, 4)", "target": [2, 4], "tol": 0.4}], "ex": "For base \\(b = 2\\): \\(2^0 = 1\\), \\(2^1 = 2\\), and \\(2^2 = 4\\).", "ex_ar": "عند الأساس \\(2\\): \\(2^0 = 1\\)، و\\(2^1 = 2\\)، و\\(2^2 = 4\\)."});
-(D["sat-functions"] = D["sat-functions"] || []).push({"t": "gp", "ti": "Graph Plotter: Parabola Vertex & Zeros (Nonlinear Functions & Function Notation)", "ti_ar": "مخطط التمثيل البياني: الرأس والأصفار (Nonlinear Functions & Function Notation)", "q": "Plot the vertex and both zeros of \\(f(x) = (x - 2)^2 - 4\\).", "q_ar": "عيّن رأس القطع المكافئ وجذريه للدالة \\(f(x) = (x - 2)^2 - 4\\).", "xrange": [-4, 6], "yrange": [-5, 5], "targets": [{"label": "Vertex (2, -4)", "label_ar": "الرأس (2, -4)", "target": [2, -4], "tol": 0.45}, {"label": "Zero (0, 0)", "label_ar": "الجذر الأول (0, 0)", "target": [0, 0], "tol": 0.45}, {"label": "Zero (4, 0)", "label_ar": "الجذر الثاني (4, 0)", "target": [4, 0], "tol": 0.45}], "ex": "In vertex form \\((x - h)^2 + k\\), the vertex is \\((2, -4)\\), and \\((x - 2)^2 = 4\\) yields roots \\(x = 0\\) and \\(x = 4\\).", "ex_ar": "في صيغة الرأس \\((x - h)^2 + k\\)، يكون الرأس \\((2, -4)\\)، وحل \\((x - 2)^2 = 4\\) يعطي الجذرين \\(x = 0\\) و\\(x = 4\\)."});
-(D["sat-linfun"] = D["sat-linfun"] || []).push({"t": "fn", "ti": "Explorer: Cubic Roots & Vertical Shift (Linear Functions & Linear Inequalities)", "ti_ar": "مستكشف: جذور التكعيبية والإزاحة (Linear Functions & Linear Inequalities)", "fns": [{"expr": "A*(x^3 - B*x) + K", "color": "#1E3A6E", "label": "p(x)"}], "xrange": [-4, 4], "yrange": [-6, 6], "params": [{"name": "A", "label": "Leading Scale A", "label_ar": "المعامل الرئيس A", "min": 0.5, "max": 2, "step": 0.5, "default": 1}, {"name": "B", "label": "Linear Term B", "label_ar": "الحد الخطي B", "min": 0, "max": 4, "step": 0.5, "default": 3}, {"name": "K", "label": "Shift K", "label_ar": "الإزاحة K", "min": -3, "max": 3, "step": 0.5, "default": 0}]});
-(D["sat-expoly"] = D["sat-expoly"] || []).push({"t": "fn", "ti": "Explorer: Exponential Growth & Damping (Exponentials, Radicals, Polynomials & Rational Expressions)", "ti_ar": "مستكشف: النمو والاضمحلال الأسي (Exponentials, Radicals, Polynomials & Rational Expressions)", "fns": [{"expr": "A*exp(R*x)", "color": "#1E3A6E", "label": "A e^(Rx)"}, {"expr": "A*(1+R*x)", "color": "#B8801F", "label": "Tangent at x=0"}], "xrange": [-3, 3], "yrange": [-1, 8], "params": [{"name": "A", "label": "Initial Value A", "label_ar": "القيمة الابتدائية A", "min": 0.5, "max": 3, "step": 0.5, "default": 1.5}, {"name": "R", "label": "Rate R", "label_ar": "المعدل R", "min": -1, "max": 1, "step": 0.25, "default": 0.5}]});
-(D["sat-data"] = D["sat-data"] || []).push({"t": "fn", "ti": "Explorer: Function vs Its Tangent Secant (Ratios, Rates, Proportions, Percentages & Scatterplots)", "ti_ar": "مستكشف: الدالة وخط المماس (Ratios, Rates, Proportions, Percentages & Scatterplots)", "fns": [{"expr": "0.5*A*x^2", "color": "#1E3A6E", "label": "f(x) = 0.5 A x^2"}, {"expr": "A*H*(x-H)+0.5*A*H^2", "color": "#B8801F", "label": "Tangent at H"}], "xrange": [-4, 4], "yrange": [-4, 6], "params": [{"name": "A", "label": "Curvature A", "label_ar": "الانحناء A", "min": 0.5, "max": 2, "step": 0.5, "default": 1}, {"name": "H", "label": "Point H", "label_ar": "نقطة التماس H", "min": -2.5, "max": 2.5, "step": 0.5, "default": 1}]});
 });
