@@ -96,6 +96,10 @@
     if (!m) return;
     var body = document.getElementById('google-auth-explain');
     if (body) body.innerHTML = explainHtml;
+    var consentCheck = document.getElementById('cs-gform-consent-check');
+    if (consentCheck && window.ClipSATGoogleFormsConsent === true) {
+      consentCheck.checked = true;
+    }
     var status = document.getElementById('google-auth-status');
     if (status) status.textContent = '';
     _pendingConnect = { scopes: scopes, onDone: onDone };
@@ -180,31 +184,34 @@
 
   function beginCreateFlow(quizData) {
     function proceed() {
-      // Mirrors forms-api.js's own job list (stem + every choice, each
-      // independently checked) so this estimate matches the real progress
-      // count that createFromQuiz's onProgress callback reports below.
+      // Mirrors forms-api.js's own job list so this estimate matches the real
+      // progress count that createFromQuiz's onProgress callback reports below.
       var mi = window.ClipSATMathImage;
       var mathCount = 0;
-      (quizData.questions || []).forEach(function (q) {
-        var fig = q.figure || q.fig || q.table || null;
-        var fHtml = q.figureHtml || null;
-        if (mi && mi.needsImage(q.text, fig, fHtml)) mathCount++;
-        if (q.choices && q.choices.length) {
-          q.choices.forEach(function (c, ci) {
-            var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
-            var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && (c.figureHtml || c.svg)) ? (c.figureHtml || c.svg) : null);
-            var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
-            if (cFig || cHtml) mathCount++;
-            else if (mi && (mi.needsChoiceImage ? mi.needsChoiceImage(cRaw) : mi.needsImage(cRaw))) mathCount++;
-          });
-        }
-      });
+      if (window.ClipSATForms && typeof window.ClipSATForms.countImageJobs === 'function') {
+        mathCount = window.ClipSATForms.countImageJobs(quizData);
+      } else {
+        (quizData.questions || []).forEach(function (q) {
+          var fig = q.figure || q.fig || q.table || null;
+          var fHtml = q.figureHtml || null;
+          if (mi && mi.needsImage(q.text, fig, fHtml)) mathCount++;
+          if (q.choices && q.choices.length) {
+            q.choices.forEach(function (c, ci) {
+              var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
+              var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && (c.figureHtml || c.svg)) ? (c.figureHtml || c.svg) : null);
+              var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
+              if (cFig || cHtml) mathCount++;
+              else if (mi && (mi.needsChoiceImage ? mi.needsChoiceImage(cRaw) : mi.needsImage(cRaw))) mathCount++;
+            });
+          }
+        });
+      }
       openPanel('<h3>Creating your form…</h3><p class="cs-gform-note" id="cs-gform-progress">'
-        + (mathCount ? ('Rendering ' + mathCount + ' question image' + (mathCount === 1 ? '' : 's') + ' — this can take a minute for longer quizzes.')
-                     : 'This usually takes a few seconds.') + '</p>');
-      window.ClipSATForms.createFromQuiz(quizData, function (done, total) {
+        + (mathCount ? ('Preparing ' + mathCount + ' diagram' + (mathCount === 1 ? '' : 's') + ' &amp; equations…')
+                     : 'Creating Google Form…') + '</p>');
+      window.ClipSATForms.createFromQuiz(quizData, function (done, total, stage) {
         var p = document.getElementById('cs-gform-progress');
-        if (p && total) p.textContent = 'Rendering question images… ' + done + ' / ' + total;
+        if (p) p.textContent = stage || (total ? ('Uploading diagrams & equations… ' + done + ' / ' + total) : 'Creating Google Form…');
       }).then(function (res) {
         var entry = {
           formId: res.formId, responderUri: res.responderUri, editUri: res.editUri,

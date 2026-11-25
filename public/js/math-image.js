@@ -96,13 +96,15 @@
       }
       var block = s.slice(kIdx, endIdx);
       var annMatch = block.match(/<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/i);
-      if (annMatch) {
-        var tex = annMatch[1]
-          .replace(/&amp;/g, '&')
+      var dtMatch = !annMatch && block.match(/\bdata-tex=(?:"([^"]*)"|'([^']*)')/i);
+      var rawTex = annMatch ? annMatch[1] : (dtMatch ? (dtMatch[1] !== undefined ? dtMatch[1] : dtMatch[2]) : null);
+      if (rawTex !== null) {
+        var tex = rawTex
           .replace(/&lt;/g, '<')
           .replace(/&gt;/g, '>')
           .replace(/&quot;/g, '"')
-          .replace(/&#39;/g, "'");
+          .replace(/&#39;/g, "'")
+          .replace(/&amp;/g, '&');
         out += isDisplay ? ('\\[' + tex + '\\]') : ('\\(' + tex + '\\)');
       }
       idx = endIdx;
@@ -113,11 +115,11 @@
         .replace(/<\/(?:div|p|li)\s*>/gi, '\n')
         .replace(/<\/?(?:span|div|p|em|strong|b|i|u|ul|ol|li|small)(?:\s+[^>]*)?>/gi, '')
         .replace(/&nbsp;/gi, ' ')
-        .replace(/&amp;/gi, '&')
         .replace(/&lt;/gi, '<')
         .replace(/&gt;/gi, '>')
         .replace(/&quot;/gi, '"')
-        .replace(/&#39;/g, "'")
+        .replace(/&#39;/gi, "'")
+        .replace(/&amp;/gi, '&')
         .replace(/\n{3,}/g, '\n\n')
         .trim();
     }
@@ -134,20 +136,29 @@
     return false;
   }
 
-  var HARD_COMMANDS = /\\(d?frac|tfrac|cfrac|sqrt|int|iint|iiint|oint|sum|prod|lim|binom|vec|hat|bar|overline|underline|overrightarrow|overleftarrow|begin)(?![a-zA-Z])/;
-  var COMPLEX_SCRIPT = /[\^_]\{[^{}]{2,}\}/;
+  var COMPLEX_MATH = /\\(d?frac|tfrac|cfrac|sqrt|int|iint|iiint|oint|oiiint|oiint|sum|prod|lim|binom|vec|hat|widehat|bar|overline|underline|overrightarrow|overleftarrow|begin|matrix|pmatrix|bmatrix|vmatrix|cases)(?![a-zA-Z])/;
+  // Treat single-digit/letter/degree scripts (x^2, 10^{12}, 10^{-4}, a_n, 30^{\circ}) as simple
+  // since forms-api.js converts them cleanly to Unicode superscripts/subscripts; flag multi-term
+  // or nested algebraic scripts (^{2x+1}, ^{n-1}, _{k+1}, ^{1/2}) for image rendering.
+  var COMPLEX_SCRIPT = /[\^_]\{(?!(?:\\circ|\\degree|\s*[0-9+\-()∞]+\s*|\s*[a-zA-Z]\s*)\})/;
+
+  function hasComplexMath(text) {
+    if (!text) return false;
+    var s = extractLatexFromKatexHtml(String(text));
+    return COMPLEX_MATH.test(s) || COMPLEX_SCRIPT.test(s) || /√\s*\(/.test(s);
+  }
 
   function needsImage(text, figure, figureHtml) {
     if (figure || figureHtml) return true;
     var s = String(text || '');
-    if (/<(?:svg|table)\b/i.test(s)) return true;
-    return hasMath(s);
+    if (/<(?:svg|table|img)\b/i.test(s)) return true;
+    return hasComplexMath(s);
   }
 
   function needsChoiceImage(text) {
     var raw = String(text || '').trim();
     if (!raw) return false;
-    if (/<(?:svg|table)\b/i.test(raw)) return true;
+    if (/<(?:svg|table|img)\b/i.test(raw)) return true;
     var s = extractLatexFromKatexHtml(raw).trim();
     if (!s) return false;
     if ((s.startsWith('\\(') && s.endsWith('\\)')) || (s.startsWith('\\[') && s.endsWith('\\]'))) {
@@ -158,12 +169,9 @@
     if (/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return false;
     if (/^[-+]?[a-zA-Z]$/.test(s)) return false;
     if (/^\(\s*[-+]?[0-9.]+\s*,\s*[-+]?[0-9.]+\s*\)$/.test(s)) return false;
-    var words = s.match(/[a-zA-Z]{2,}/g) || [];
-    var mathFns = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, log:1, ln:1, lim:1, exp:1, frac:1, sqrt:1};
-    if (words.length >= 2 && words.every(function(w){ return !mathFns[w.toLowerCase()]; }) && !/[\\^_{}√±≤≥≠≈πθ∞×÷]/.test(s)) {
-      return false;
-    }
-    return /\\(frac|sqrt|int|sum|prod|lim|begin|vec|overline)|[\^_]|\\[a-zA-Z]|[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s);
+    // Simple numeric fractions like \frac{3}{5} or -\dfrac{12}{7} render crisply as "3/5" via mathToPlainText.
+    if (/^[-+]?\s*\\(?:d?frac|tfrac)\{\s*\d+\s*\}\{\s*\d+\s*\}$/.test(s)) return false;
+    return hasComplexMath(s);
   }
 
   // Always-on (not gated behind CLIPSAT_GOOGLE_DEBUG) — every failure here
@@ -176,14 +184,31 @@
     try { console.warn('[ClipSATMathImage] ' + msg + (text != null ? ' — text: ' + text : '')); } catch (e) {}
   }
 
-  var SCALE = 3; // extra resolution headroom in case Forms downscales further
+  var SCALE = 2; // 2x Retina exceeds Forms' 740px max width while cutting PNG size/encode time by ~56%
 
-  var COMPLEX_MATH = /\\(d?frac|tfrac|cfrac|sqrt|int|iint|iiint|oint|sum|prod|lim|binom|vec|hat|bar|overline|underline|overrightarrow|overleftarrow|begin|matrix|pmatrix|bmatrix|cases)(?![a-zA-Z])/;
-
-  function hasComplexMath(text) {
-    if (!text) return false;
-    var s = String(text);
-    return COMPLEX_MATH.test(s) || COMPLEX_SCRIPT.test(s);
+  function withTimeout(promise, ms, fallbackVal) {
+    var hasFallback = arguments.length >= 3;
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      var timer = setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        if (hasFallback) resolve(fallbackVal);
+        else reject(new Error('Operation timed out after ' + ms + 'ms'));
+      }, ms);
+      Promise.resolve(promise).then(function (val) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        resolve(val);
+      }, function (err) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        if (hasFallback) resolve(fallbackVal);
+        else reject(err);
+      });
+    });
   }
 
   var colorMap = {
@@ -321,6 +346,20 @@
         }
 
         var img = new Image();
+        var finished = false;
+        var svgTimer = setTimeout(function () {
+          if (finished) return;
+          finished = true;
+          if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
+          warn('SVG rasterization timed out');
+          resolve(null);
+        }, 4000);
+        function finish(val) {
+          if (finished) return;
+          finished = true;
+          clearTimeout(svgTimer);
+          resolve(val);
+        }
 
         function dataUrlToBlob(canvas) {
           try {
@@ -359,12 +398,12 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             tryExtractBlob(canvas).then(function (pngBlob) {
-              if (!pngBlob) { resolve(null); return; }
-              resolve({ blob: pngBlob, width: w, canvas: canvas });
-            }).catch(function () { resolve(null); });
+              if (!pngBlob) { finish(null); return; }
+              finish({ blob: pngBlob, width: w, canvas: canvas });
+            }).catch(function () { finish(null); });
           } catch (e) {
             if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
-            resolve(null);
+            finish(null);
           }
         };
 
@@ -376,7 +415,7 @@
             return;
           }
           if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
-          resolve(null);
+          finish(null);
         };
 
         // Prefer data URI with charset=utf-8 for cross-platform image canvas rasterization
@@ -387,21 +426,26 @@
     });
   }
 
+  var _figuresReadyPromise = null;
   function ensureFiguresReady() {
     if (window._renderFig && window.renderMathFigure) return Promise.resolve();
+    if (_figuresReadyPromise) return _figuresReadyPromise;
+    var p;
     if (typeof window._ensureFigures === 'function') {
-      return window._ensureFigures().catch(function () {});
-    }
-    if (typeof document !== 'undefined') {
-      return new Promise(function (resolve) {
+      p = window._ensureFigures().catch(function () {});
+    } else if (typeof document !== 'undefined') {
+      p = new Promise(function (resolve) {
         var s = document.createElement('script');
         s.src = '/js/figures.js';
         s.onload = function () { resolve(); };
         s.onerror = function () { resolve(); };
         document.head.appendChild(s);
       });
+    } else {
+      p = Promise.resolve();
     }
-    return Promise.resolve();
+    _figuresReadyPromise = withTimeout(p, 5000, undefined);
+    return _figuresReadyPromise;
   }
 
   function renderToPngBlob(text, figure, figureHtml) {
@@ -436,43 +480,48 @@
       }
 
       // When an SVG diagram is present, rasterize it natively for 100% vector crispness.
-      // If the question/choice ALSO has math or a table in its stem text, composite the
-      // KaTeX-rendered stem above the native SVG diagram into a single high-DPI PNG!
+      // Only composite stem text above the SVG if the stem actually contains complex 2D math or
+      // a table (simple math already reads cleanly in Forms' item.title plain text).
       if (extractedSvg) {
-        return renderSvgDirect(extractedSvg, SCALE).then(function (svgRes) {
+        var needStemComp = !!(stemText && typeof window !== 'undefined' && (hasComplexMath(stemText) || /<table\b/i.test(stemText)));
+        if (!needStemComp) {
+          return renderSvgDirect(extractedSvg, SCALE).then(function (svgRes) {
+            return svgRes || renderHtmlNative(stemText, figHtml);
+          });
+        }
+        return Promise.all([
+          renderSvgDirect(extractedSvg, SCALE),
+          renderHtmlNative(stemText, '').catch(function () { return null; })
+        ]).then(function (pair) {
+          var svgRes = pair[0], txtRes = pair[1];
           if (!svgRes) return renderHtmlNative(stemText, figHtml);
-          if (!stemText || (!hasMath(stemText) && !/<table\b/i.test(stemText)) || typeof window === 'undefined') {
+          if (!txtRes || !txtRes.canvas || !svgRes.canvas) return svgRes;
+          try {
+            var gap = Math.round(14 * SCALE);
+            var pad = Math.round(12 * SCALE);
+            var compW = Math.max(txtRes.canvas.width, svgRes.canvas.width + pad * 2);
+            var compH = txtRes.canvas.height + gap + svgRes.canvas.height + pad;
+            var compCanvas = document.createElement('canvas');
+            compCanvas.width = compW;
+            compCanvas.height = compH;
+            var ctx = compCanvas.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, compW, compH);
+            ctx.drawImage(txtRes.canvas, 0, 0);
+            var svgX = Math.max(0, Math.round((compW - svgRes.canvas.width) / 2));
+            ctx.drawImage(svgRes.canvas, svgX, txtRes.canvas.height + gap);
+            return new Promise(function (done) {
+              if (compCanvas.toBlob) {
+                compCanvas.toBlob(function (b) {
+                  done(b ? { blob: b, width: Math.round(compW / SCALE), canvas: compCanvas } : svgRes);
+                }, 'image/png');
+              } else {
+                done(svgRes);
+              }
+            });
+          } catch (e) {
             return svgRes;
           }
-          return renderHtmlNative(stemText, '').then(function (txtRes) {
-            if (!txtRes || !txtRes.canvas || !svgRes.canvas) return svgRes;
-            try {
-              var gap = Math.round(14 * SCALE);
-              var pad = Math.round(12 * SCALE);
-              var compW = Math.max(txtRes.canvas.width, svgRes.canvas.width + pad * 2);
-              var compH = txtRes.canvas.height + gap + svgRes.canvas.height + pad;
-              var compCanvas = document.createElement('canvas');
-              compCanvas.width = compW;
-              compCanvas.height = compH;
-              var ctx = compCanvas.getContext('2d');
-              ctx.fillStyle = '#ffffff';
-              ctx.fillRect(0, 0, compW, compH);
-              ctx.drawImage(txtRes.canvas, 0, 0);
-              var svgX = Math.max(0, Math.round((compW - svgRes.canvas.width) / 2));
-              ctx.drawImage(svgRes.canvas, svgX, txtRes.canvas.height + gap);
-              return new Promise(function (done) {
-                if (compCanvas.toBlob) {
-                  compCanvas.toBlob(function (b) {
-                    done(b ? { blob: b, width: Math.round(compW / SCALE), canvas: compCanvas } : svgRes);
-                  }, 'image/png');
-                } else {
-                  done(svgRes);
-                }
-              });
-            } catch (e) {
-              return svgRes;
-            }
-          }).catch(function () { return svgRes; });
         });
       }
 
@@ -571,9 +620,25 @@
         warn('KaTeX render threw: ' + e.message, text);
       }
 
-      var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      var fontsReady = (document.fonts && document.fonts.ready)
+        ? withTimeout(document.fonts.ready, 800, null)
+        : Promise.resolve();
+      function nextPaint(fn) {
+        var fired = false;
+        function run() {
+          if (fired) return;
+          fired = true;
+          fn();
+        }
+        if (typeof requestAnimationFrame === 'function' && (!document || document.visibilityState !== 'hidden')) {
+          requestAnimationFrame(run);
+          setTimeout(run, 50);
+        } else {
+          setTimeout(run, 8);
+        }
+      }
       fontsReady.then(function () {
-        setTimeout(function () {
+        nextPaint(function () {
           try {
             var rect = container.getBoundingClientRect ? container.getBoundingClientRect() : { width: 600, height: 140 };
             var w = Math.max(120, Math.ceil(rect.width || 600));
@@ -604,14 +669,16 @@
             cleanup();
             _fallbackPlainCanvas(cleanText, figHtml, isArabic).then(resolve);
           }
-        }, 40);
+        });
       });
     });
   }
 
   function arrayBufferToBase64(buffer) {
-    var binary = '', bytes = new Uint8Array(buffer);
-    for (var i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+    var binary = '', bytes = new Uint8Array(buffer), chunk = 0x8000;
+    for (var i = 0; i < bytes.byteLength; i += chunk) {
+      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
     return btoa(binary);
   }
 
@@ -625,43 +692,111 @@
     return (body && body.error && body.error.message) || ('HTTP ' + r.status);
   }
 
-  function uploadToDrive(blob, filename) {
+  function fetchWithTimeout(url, opts, timeoutMs) {
+    opts = opts || {};
+    var ms = timeoutMs || 15000;
+    if (typeof AbortController === 'undefined') return fetch(url, opts);
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { try { ctrl.abort(); } catch (e) {} }, ms);
+    var reqOpts = Object.assign({}, opts, { signal: ctrl.signal });
+    return fetch(url, reqOpts).then(function (r) {
+      clearTimeout(timer);
+      return r;
+    }, function (err) {
+      clearTimeout(timer);
+      throw err;
+    });
+  }
+
+  function shouldRetryDrive(status, json, err) {
+    if (err) return true;
+    if (status === 429 || status === 500 || status === 502 || status === 503 || status === 504) return true;
+    if (status === 403 && json && json.error && /rateLimitExceeded|userRateLimitExceeded|quota/i.test(JSON.stringify(json.error))) return true;
+    return false;
+  }
+
+  function buildMultipartBody(blob, filename) {
+    var boundary = 'clipsat-' + Math.random().toString(36).slice(2);
+    var delimiter = '\r\n--' + boundary + '\r\n';
+    var closeDelim = '\r\n--' + boundary + '--';
+    var metadata = { name: filename, mimeType: 'image/png' };
+    var metaPart = delimiter + 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata);
+    if (typeof Blob !== 'undefined' && blob instanceof Blob) {
+      var binPart = delimiter + 'Content-Type: image/png\r\n\r\n';
+      return Promise.resolve({
+        boundary: boundary,
+        body: new Blob([metaPart, binPart, blob, closeDelim], { type: 'multipart/related; boundary="' + boundary + '"' })
+      });
+    }
     return blob.arrayBuffer().then(function (buf) {
-      var boundary = 'clipsat-' + Math.random().toString(36).slice(2);
-      var delimiter = '\r\n--' + boundary + '\r\n';
-      var closeDelim = '\r\n--' + boundary + '--';
-      var metadata = { name: filename, mimeType: 'image/png' };
-      var body = delimiter
-        + 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata)
-        + delimiter
-        + 'Content-Type: image/png\r\nContent-Transfer-Encoding: base64\r\n\r\n' + arrayBufferToBase64(buf)
-        + closeDelim;
+      return {
+        boundary: boundary,
+        body: metaPart
+          + delimiter
+          + 'Content-Type: image/png\r\nContent-Transfer-Encoding: base64\r\n\r\n' + arrayBufferToBase64(buf)
+          + closeDelim
+      };
+    });
+  }
+
+  function uploadToDrive(blob, filename, attempt) {
+    attempt = attempt || 0;
+    return buildMultipartBody(blob, filename).then(function (part) {
       // Also request thumbnailLink here (not just id) so renderQuestionImage
       // doesn't need a second round-trip to fetch it — see makePublic's
       // comment for why this, not id alone, is what Forms actually needs.
-      return fetch(DRIVE_UPLOAD_API + '?uploadType=multipart&fields=id,thumbnailLink', {
+      return fetchWithTimeout(DRIVE_UPLOAD_API + '?uploadType=multipart&fields=id,thumbnailLink', {
         method: 'POST',
-        headers: { 'Authorization': authHeader(), 'Content-Type': 'multipart/related; boundary="' + boundary + '"' },
-        body: body
-      }).then(function (r) {
+        headers: { 'Authorization': authHeader(), 'Content-Type': 'multipart/related; boundary="' + part.boundary + '"' },
+        body: part.body
+      }, 15000).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (json) {
-          if (!r.ok || !json.id) throw new Error('Drive upload failed: ' + driveErrorMessage(r, json));
-          return { fileId: json.id, thumbnailLink: json.thumbnailLink || null };
+          if (r.ok && json.id) return { fileId: json.id, thumbnailLink: json.thumbnailLink || null };
+          if (attempt < 2 && shouldRetryDrive(r.status, json, null)) {
+            var waitMs = Math.round(400 * Math.pow(2, attempt) + Math.random() * 200);
+            return new Promise(function (resolve) { setTimeout(resolve, waitMs); }).then(function () {
+              return uploadToDrive(blob, filename, attempt + 1);
+            });
+          }
+          throw new Error('Drive upload failed: ' + driveErrorMessage(r, json));
         });
+      }, function (err) {
+        if (attempt < 2) {
+          var waitMs = Math.round(400 * Math.pow(2, attempt) + Math.random() * 200);
+          return new Promise(function (resolve) { setTimeout(resolve, waitMs); }).then(function () {
+            return uploadToDrive(blob, filename, attempt + 1);
+          });
+        }
+        throw err;
       });
     });
   }
 
-  function makePublic(upload) {
-    return fetch(DRIVE_API + '/' + upload.fileId + '/permissions', {
+  function makePublic(upload, attempt) {
+    attempt = attempt || 0;
+    return fetchWithTimeout(DRIVE_API + '/' + upload.fileId + '/permissions', {
       method: 'POST',
       headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
       body: JSON.stringify({ role: 'reader', type: 'anyone' })
-    }).then(function (r) {
+    }, 15000).then(function (r) {
       if (r.ok) return upload;
       return r.json().catch(function () { return {}; }).then(function (json) {
+        if (attempt < 2 && shouldRetryDrive(r.status, json, null)) {
+          var waitMs = Math.round(400 * Math.pow(2, attempt) + Math.random() * 200);
+          return new Promise(function (resolve) { setTimeout(resolve, waitMs); }).then(function () {
+            return makePublic(upload, attempt + 1);
+          });
+        }
         throw new Error('Could not make the uploaded image link-viewable: ' + driveErrorMessage(r, json));
       });
+    }, function (err) {
+      if (attempt < 2) {
+        var waitMs = Math.round(400 * Math.pow(2, attempt) + Math.random() * 200);
+        return new Promise(function (resolve) { setTimeout(resolve, waitMs); }).then(function () {
+          return makePublic(upload, attempt + 1);
+        });
+      }
+      throw err;
     });
   }
 
@@ -683,12 +818,26 @@
     return 'https://lh3.googleusercontent.com/d/' + upload.fileId;
   }
 
+  var _imageCache = {};
+  var _imageCacheKeys = [];
+  function makeCacheKey(text, figure, figureHtml) {
+    var t = (window.ClipSATGoogle && window.ClipSATGoogle.getToken) ? String(window.ClipSATGoogle.getToken() || '') : '';
+    var tokKey = t.slice(-12);
+    var consentKey = (window.ClipSATGoogleFormsConsent === true) ? '1' : '0';
+    var figKey = '';
+    if (figure) {
+      try { figKey = typeof figure === 'string' ? figure : JSON.stringify(figure); } catch (e) { figKey = String(figure); }
+    }
+    return tokKey + '|' + consentKey + '|' + String(text || '') + '|' + figKey + '|' + String(figureHtml || '');
+  }
+
   // Full pipeline for one question/choice. Never rejects — resolves null on
-  // any failure so the caller can fall back to plain text for just that one
-  // item, but every failure is logged (see warn()) so it's diagnosable
-  // instead of being indistinguishable from "this math didn't need an image."
+  // any failure or timeout so the caller falls back cleanly to plain text.
   function renderQuestionImage(text, figure, figureHtml) {
-    return renderToPngBlob(text, figure, figureHtml).then(function (rendered) {
+    var key = makeCacheKey(text, figure, figureHtml);
+    if (_imageCache[key]) return _imageCache[key];
+
+    var pipeline = renderToPngBlob(text, figure, figureHtml).then(function (rendered) {
       if (!rendered) return null; // renderToPngBlob already warned about the specific cause
       return uploadToDrive(rendered.blob, 'clipsat-question-' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.png')
         .then(function (upload) {
@@ -703,6 +852,18 @@
         .then(function (upload) { return { sourceUri: imageFetchUrl(upload), width: rendered.width }; })
         .catch(function (err) { warn(err && err.message, text); return null; });
     }).catch(function (err) { warn('Unexpected error: ' + (err && err.message), text); return null; });
+
+    var bounded = withTimeout(pipeline, 22000, null).then(function (res) {
+      if (!res) delete _imageCache[key];
+      return res;
+    });
+    if (_imageCacheKeys.length >= 250) {
+      var oldest = _imageCacheKeys.shift();
+      if (oldest) delete _imageCache[oldest];
+    }
+    _imageCache[key] = bounded;
+    _imageCacheKeys.push(key);
+    return bounded;
   }
 
   window.ClipSATMathImage = {

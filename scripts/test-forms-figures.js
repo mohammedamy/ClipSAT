@@ -115,5 +115,158 @@ assert.strictEqual(ptKatexSsrHtmlOnly, 'Evaluate x²/3 now.', 'mathToPlainText m
 const ptBinom = formsApi.mathToPlainText('Find \\(\\binom{n}{2}\\) and \\(\\$50\\).');
 assert.strictEqual(ptBinom, 'Find C(n, 2) and $50.', 'mathToPlainText must convert \\binom and preserve escaped \\$');
 
+// 4. Verify HTML-only SSR KaTeX (data-tex) extraction in ClipSATMathImage
+const ssrComplex = '<span class="katex" data-tex="\\frac{x+1}{x-1}"><span class="katex-html" aria-hidden="true">x+1/x-1</span></span>';
+const ssrSimple = '<span class="katex" data-tex="30^\\circ"><span class="katex-html" aria-hidden="true">30°</span></span>';
+assert.strictEqual(mi.hasComplexMath(ssrComplex), true, 'hasComplexMath should extract SSR data-tex complex math');
+assert.strictEqual(mi.needsImage(ssrComplex, null, null), true, 'needsImage should flag SSR data-tex complex math');
+assert.strictEqual(mi.hasComplexMath(ssrSimple), false, 'hasComplexMath should treat SSR degree angle as simple');
+assert.strictEqual(mi.needsChoiceImage('\\(\\frac{3}{5}\\)'), false, 'needsChoiceImage should leave simple numeric fractions as fast plain text');
+assert.strictEqual(mi.needsChoiceImage('\\(\\frac{x+1}{x-1}\\)'), true, 'needsChoiceImage should flag algebraic fractions for image rendering');
+
 console.log('  ✓ All quiz modules properly capture figures, FRQs, and full exams in Google Forms');
-console.log('✅ All Google Forms figure export tests passed successfully!');
+
+// 5. End-to-end mocked createFromQuiz tests: alignment === LEFT & batchUpdate fallback
+(async function runMockedFormsCreateTests() {
+  const sampleQuiz = {
+    title: 'ClipSAT Forms Alignment & Speed Test',
+    questions: [
+      {
+        text: 'In right triangle \\(ABC\\) with \\(\\angle C = 90^\\circ\\), find \\(BC\\).',
+        figure: { type: 'right_triangle', labels: ['A', 'B', 'C'] },
+        choices: ['32', '\\(\\frac{3}{5}\\)', '34', '8'],
+        correctIndex: 0,
+        type: 'mcq'
+      },
+      {
+        text: 'Solve \\(2x + 3 = 11\\).',
+        choices: ['\\(\\frac{x+1}{x-1}\\)', '\\(x^2 + 1\\)', '4', '5'],
+        correctIndex: 2,
+        type: 'mcq'
+      },
+      {
+        text: 'Which graph shows a line of positive slope?',
+        choices: ['<svg viewBox="0 0 100 100"><line x1="10" y1="90" x2="90" y2="10"/></svg>', 'None'],
+        correctIndex: 0,
+        type: 'mcq'
+      }
+    ]
+  };
+
+  assert.strictEqual(formsApi.countImageJobs(sampleQuiz), 3,
+    'countImageJobs should queue only stem SVG, complex algebraic choice, and SVG choice (3 total, skipping trivial text & numeric fraction)');
+
+  let capturedBatchBody = null;
+  let renderedJobs = 0;
+
+  sandbox.window.ClipSATGoogle = {
+    configured: true,
+    isSignedIn: () => true,
+    getToken: () => 'mock-oauth-token-123456'
+  };
+  const origRender = sandbox.window.ClipSATMathImage.renderQuestionImage;
+  sandbox.window.ClipSATMathImage.renderQuestionImage = async (text) => {
+    renderedJobs++;
+    return { sourceUri: 'https://lh3.googleusercontent.com/d/mock-' + renderedJobs + '=s1200', width: 320, _text: text };
+  };
+  sandbox.fetch = async (url, opts) => {
+    if (url === 'https://forms.googleapis.com/v1/forms') {
+      return { ok: true, status: 200, json: async () => ({ formId: 'form-123' }) };
+    }
+    if (url.endsWith(':batchUpdate')) {
+      capturedBatchBody = JSON.parse(opts.body);
+      return { ok: true, status: 200, json: async () => ({}) };
+    }
+    if (url.endsWith('/form-123')) {
+      return { ok: true, status: 200, json: async () => ({ formId: 'form-123', responderUri: 'https://docs.google.com/forms/d/e/form-123/viewform' }) };
+    }
+    throw new Error('Unexpected fetch URL: ' + url);
+  };
+
+  const progressStages = [];
+  const res1 = await formsApi.createFromQuiz(sampleQuiz, (done, total, stage) => {
+    progressStages.push({ done, total, stage });
+  });
+  assert.strictEqual(res1.formId, 'form-123');
+  assert.strictEqual(renderedJobs, 3, 'createFromQuiz should render exact 3 complex/diagram jobs');
+  assert(progressStages.some(p => /Uploading|Preparing|Creating Google Form|Adding/.test(p.stage || '')),
+    'createFromQuiz should emit informative stage progress updates');
+  assert(capturedBatchBody && Array.isArray(capturedBatchBody.requests), 'batchUpdate requests must be captured');
+
+  let foundStemLeft = 0;
+  let foundOptionLeft = 0;
+  capturedBatchBody.requests.forEach((req) => {
+    const item = req.createItem && req.createItem.item;
+    if (!item || !item.questionItem) return;
+    if (item.questionItem.image) {
+      assert.strictEqual(item.questionItem.image.properties.alignment, 'LEFT',
+        'Stem questionItem.image alignment must be LEFT');
+      foundStemLeft++;
+    }
+    const opts = item.questionItem.question && item.questionItem.question.choiceQuestion && item.questionItem.question.choiceQuestion.options;
+    if (opts) {
+      opts.forEach((opt) => {
+        if (opt.image) {
+          assert.strictEqual(opt.image.properties.alignment, 'LEFT',
+            'Choice Option.image alignment must NEVER be CENTER (must be LEFT)');
+          assert(opt.image.properties.width <= 360, 'Choice Option.image width must stay bounded');
+          foundOptionLeft++;
+        }
+      });
+    }
+  });
+  assert.strictEqual(foundStemLeft, 1, 'Expected 1 left-aligned stem image');
+  assert.strictEqual(foundOptionLeft, 2, 'Expected 2 left-aligned choice images');
+  console.log('  ✓ batchUpdate uses alignment: LEFT on both stem and choice images and avoids excessive uploads');
+
+  // Test automatic fallback when Forms API returns HTTP 400 "Drawing must be left aligned"
+  let batchAttempts = 0;
+  let retryBatchBody = null;
+  sandbox.fetch = async (url, opts) => {
+    if (url === 'https://forms.googleapis.com/v1/forms') {
+      return { ok: true, status: 200, json: async () => ({ formId: 'form-retry' }) };
+    }
+    if (url.endsWith(':batchUpdate')) {
+      batchAttempts++;
+      const parsed = JSON.parse(opts.body);
+      if (batchAttempts === 1) {
+        return {
+          ok: false,
+          status: 400,
+          json: async () => ({ error: { message: 'Drawing must be left aligned' } })
+        };
+      }
+      retryBatchBody = parsed;
+      return { ok: true, status: 200, json: async () => ({}) };
+    }
+    if (url.endsWith('/form-retry')) {
+      return { ok: true, status: 200, json: async () => ({ formId: 'form-retry', responderUri: 'https://docs.google.com/forms/d/e/form-retry/viewform' }) };
+    }
+    throw new Error('Unexpected fetch URL: ' + url);
+  };
+
+  const res2 = await formsApi.createFromQuiz(sampleQuiz);
+  assert.strictEqual(batchAttempts, 2, 'Should retry batchUpdate once after stripping properties on alignment error');
+  assert.strictEqual(res2.formId, 'form-retry', 'Retry should succeed and return formId');
+  retryBatchBody.requests.forEach((req) => {
+    const item = req.createItem && req.createItem.item;
+    if (!item || !item.questionItem) return;
+    if (item.questionItem.image) {
+      assert.strictEqual(item.questionItem.image.properties, undefined, 'Fallback should omit image.properties on stem');
+    }
+    const opts = item.questionItem.question && item.questionItem.question.choiceQuestion && item.questionItem.question.choiceQuestion.options;
+    if (opts) {
+      opts.forEach((opt) => {
+        if (opt.image) {
+          assert.strictEqual(opt.image.properties, undefined, 'Fallback should omit image.properties on choice option');
+        }
+      });
+    }
+  });
+  sandbox.window.ClipSATMathImage.renderQuestionImage = origRender;
+  console.log('  ✓ batchUpdate self-heals automatically if Forms API ever rejects image alignment properties');
+  console.log('✅ All Google Forms figure export tests passed successfully!');
+})().catch((err) => {
+  console.error('❌ Google Forms test failed:', err);
+  process.exit(1);
+});

@@ -49,19 +49,34 @@
   function apiFetch(url, opts, attempt) {
     attempt = attempt || 0;
     opts = opts || {};
-    var headers = Object.assign({}, authHeaders(), opts.headers || {});
-    var reqOpts = Object.assign({}, opts, { headers: headers });
-    return fetch(url, reqOpts).then(function (r) {
-      if (r.ok) return r.status === 204 ? {} : r.json();
-      if ((r.status === 429 || r.status === 503) && attempt < 3) {
-        var waitMs = Math.round(500 * Math.pow(2, attempt) + Math.random() * 250);
-        return new Promise(function (resolve) { setTimeout(resolve, waitMs); }).then(function () {
-          return apiFetch(url, opts, attempt + 1);
+    return new Promise(function (resolve, reject) {
+      var headers = Object.assign({}, authHeaders(), opts.headers || {});
+      var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      var timeoutMs = opts.timeoutMs || 25000;
+      var timer = ctrl ? setTimeout(function () { try { ctrl.abort(); } catch (e) {} }, timeoutMs) : null;
+      var reqOpts = Object.assign({}, opts, { headers: headers });
+      if (ctrl && !reqOpts.signal) reqOpts.signal = ctrl.signal;
+      fetch(url, reqOpts).then(function (r) {
+        if (timer) clearTimeout(timer);
+        if (r.ok) { resolve(r.status === 204 ? {} : r.json()); return; }
+        if ((r.status === 429 || r.status === 503) && attempt < 3) {
+          var waitMs = Math.round(500 * Math.pow(2, attempt) + Math.random() * 250);
+          setTimeout(function () {
+            apiFetch(url, opts, attempt + 1).then(resolve, reject);
+          }, waitMs);
+          return;
+        }
+        r.json().catch(function () { return {}; }).then(function (body) {
+          var msg = (body && body.error && body.error.message) || ('HTTP ' + r.status);
+          reject(new Error('Google Forms API: ' + msg));
         });
-      }
-      return r.json().catch(function () { return {}; }).then(function (body) {
-        var msg = (body && body.error && body.error.message) || ('HTTP ' + r.status);
-        throw new Error('Google Forms API: ' + msg);
+      }, function (err) {
+        if (timer) clearTimeout(timer);
+        if (err && err.name === 'AbortError') {
+          reject(new Error('Google Forms API request timed out — please try again.'));
+          return;
+        }
+        reject(err);
       });
     });
   }
@@ -417,17 +432,121 @@
   }
 
   // Builds the Image object Forms expects, explicitly telling it what
-  // width to display the image at (math-image.js hands back the rendered
-  // content's own natural pixel width, since the container shrink-wraps to
-  // its content). Without this, a short answer choice's image — mostly
-  // whitespace-free but still just one small element among a page of UI —
-  // could get displayed far smaller than its own content warrants; asking
-  // for it explicitly avoids leaving that entirely up to Forms' own
-  // default sizing. 740 is the API's documented max; a small floor keeps a
-  // render that came back oddly tiny from being unreadably small anyway.
-  function imageObj(img, altText) {
-    var width = Math.max(80, Math.min(740, img.width || 400));
-    return { sourceUri: img.sourceUri, altText: altText, properties: { width: width, alignment: 'CENTER' } };
+  // width to display the image at. Google Forms API requires Drawings and
+  // Choice Option images to be left-aligned (`alignment: 'LEFT'`); passing
+  // 'CENTER' triggers HTTP 400 "Drawing must be left aligned".
+  function stemImageObj(img, altText) {
+    var width = Math.max(120, Math.min(740, Math.round(img.width || 480)));
+    return { sourceUri: img.sourceUri, altText: altText, properties: { width: width, alignment: 'LEFT' } };
+  }
+
+  function choiceImageObj(img, altText) {
+    var width = Math.max(80, Math.min(360, Math.round(img.width || 220)));
+    return { sourceUri: img.sourceUri, altText: altText, properties: { width: width, alignment: 'LEFT' } };
+  }
+
+  function buildImageJobs(quizData) {
+    var mathImg = window.ClipSATMathImage;
+    var autoMath = window.CSAutoMath || function (s) { return s; };
+    var questions = (quizData && quizData.questions) || [];
+    var jobs = [];
+    questions.forEach(function (q, qi) {
+      var fig = q.figure || q.fig || q.table || null;
+      var fHtml = q.figureHtml || null;
+      var rawStem = q.text || q.q || '';
+      if (Array.isArray(q.parts) && q.parts.length && rawStem.indexOf('(a)') === -1) {
+        rawStem = rawStem + '\n' + q.parts.join('\n');
+      }
+      var qText = autoMath(rawStem);
+      if (mathImg && mathImg.needsImage(qText, fig, fHtml)) {
+        jobs.push({ qi: qi, ci: null, text: qText, figure: fig, figureHtml: fHtml });
+      }
+      if (q.choices && q.choices.length) {
+        q.choices.forEach(function (c, ci) {
+          var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
+          var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && (c.figureHtml || c.svg)) ? (c.figureHtml || c.svg) : null);
+          var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
+          var cText = autoMath(cRaw);
+          var needsC = (cFig || cHtml) ? true : (mathImg ? (typeof mathImg.needsChoiceImage === 'function' ? mathImg.needsChoiceImage(cText) : mathImg.needsImage(cText)) : false);
+          if (needsC) jobs.push({ qi: qi, ci: ci, text: cText, figure: cFig, figureHtml: cHtml });
+        });
+      }
+    });
+    return jobs;
+  }
+
+  function countImageJobs(quizData) {
+    return buildImageJobs(quizData).length;
+  }
+
+  function cloneWithoutImageProps(requests, stripAllImages) {
+    var cloned = JSON.parse(JSON.stringify(requests));
+    var strippedCount = 0;
+    cloned.forEach(function (req) {
+      var item = req && req.createItem && req.createItem.item;
+      if (!item || !item.questionItem) return;
+      if (item.questionItem.image) {
+        if (stripAllImages) {
+          delete item.questionItem.image;
+          strippedCount++;
+        } else {
+          delete item.questionItem.image.properties;
+        }
+      }
+      var cq = item.questionItem.question && item.questionItem.question.choiceQuestion;
+      if (cq && Array.isArray(cq.options)) {
+        cq.options.forEach(function (opt) {
+          if (!opt || !opt.image) return;
+          if (stripAllImages) {
+            delete opt.image;
+            strippedCount++;
+          } else {
+            delete opt.image.properties;
+          }
+        });
+      }
+    });
+    return { requests: cloned, strippedCount: strippedCount };
+  }
+
+  function runBatchUpdateSafely(formId, requests, imgs) {
+    var url = API + '/' + formId + ':batchUpdate';
+    return apiFetch(url, {
+      method: 'POST',
+      body: JSON.stringify({ requests: requests })
+    }).catch(function (err) {
+      var msg = String(err && err.message || '');
+      if (/align|drawing|width|properties|media/i.test(msg)) {
+        log('batchUpdate image properties rejected (' + msg + '); retrying without image properties');
+        var noProps = cloneWithoutImageProps(requests, false);
+        return apiFetch(url, {
+          method: 'POST',
+          body: JSON.stringify({ requests: noProps.requests })
+        }).catch(function (err2) {
+          var msg2 = String(err2 && err2.message || '');
+          if (/failed to add image|sourceuri|image|media|align|drawing/i.test(msg2)) {
+            log('batchUpdate still rejected image (' + msg2 + '); retrying without images');
+            var stripped = cloneWithoutImageProps(requests, true);
+            imgs.failedImages = (imgs.failedImages || 0) + stripped.strippedCount;
+            return apiFetch(url, {
+              method: 'POST',
+              body: JSON.stringify({ requests: stripped.requests })
+            });
+          }
+          throw err2;
+        });
+      }
+      if (/failed to add image|sourceuri|\bimage\b/i.test(msg)) {
+        log('batchUpdate rejected image URL (' + msg + '); retrying without images');
+        var stripped2 = cloneWithoutImageProps(requests, true);
+        imgs.failedImages = (imgs.failedImages || 0) + stripped2.strippedCount;
+        return apiFetch(url, {
+          method: 'POST',
+          body: JSON.stringify({ requests: stripped2.requests })
+        });
+      }
+      throw err;
+    });
   }
 
   // quizData: { title, questions: [{text, choices:[], correctIndex, type:'mcq'|'frq', points}] }
@@ -460,7 +579,7 @@
     var boxId = 'cs-forms-progress-toast';
     return {
       update: function (done, total, label) {
-        if (typeof document === 'undefined' || !document.body) return;
+        if (typeof document === 'undefined' || !document.body || typeof document.getElementById !== 'function') return;
         var el = document.getElementById(boxId);
         if (!el) {
           el = document.createElement('div');
@@ -478,7 +597,7 @@
         if (fillEl) fillEl.style.width = pct + '%';
       },
       done: function () {
-        if (typeof document === 'undefined') return;
+        if (typeof document === 'undefined' || typeof document.getElementById !== 'function') return;
         var el = document.getElementById(boxId);
         if (el) setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 900);
       }
@@ -495,47 +614,22 @@
       else if (uiProg) { uiProg.update(done, total, stage); }
     }
 
-    // Google Forms' Option object genuinely does support an image
-    // (Option.image, alongside the required text value) — not just the
-    // question stem. So the render pipeline runs over BOTH: every
-    // question's stem text AND every individual choice, each independently
-    // checked with needsImage() (only truly complex math gets an image;
-    // "x²" or "2x+3" is left as the already-good plain text). One flat job
-    // list keeps this one bounded-concurrency pass instead of two.
-    var autoMath = window.CSAutoMath || function (s) { return s; };
-    var jobs = [];
-    questions.forEach(function (q, qi) {
-      var fig = q.figure || q.fig || q.table || null;
-      var fHtml = q.figureHtml || null;
-      var rawStem = q.text || q.q || '';
-      if (Array.isArray(q.parts) && q.parts.length && rawStem.indexOf('(a)') === -1) {
-        rawStem = rawStem + '\n' + q.parts.join('\n');
-      }
-      var qText = autoMath(rawStem);
-      if (mathImg && mathImg.needsImage(qText, fig, fHtml)) {
-        jobs.push({ qi: qi, ci: null, text: qText, figure: fig, figureHtml: fHtml });
-      }
-      if (q.choices && q.choices.length) {
-        q.choices.forEach(function (c, ci) {
-          var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
-          var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && (c.figureHtml || c.svg)) ? (c.figureHtml || c.svg) : null);
-          var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
-          var cText = autoMath(cRaw);
-          var needsC = (cFig || cHtml) ? true : (mathImg ? (typeof mathImg.needsChoiceImage === 'function' ? mathImg.needsChoiceImage(cText) : mathImg.needsImage(cText)) : false);
-          if (needsC) jobs.push({ qi: qi, ci: ci, text: cText, figure: cFig, figureHtml: cHtml });
-        });
-      }
-    });
+    var jobs = buildImageJobs(quizData);
     var totalImages = jobs.length, doneImages = 0;
+    if (totalImages > 0) {
+      reportProg(0, totalImages, 'Preparing ' + totalImages + ' diagram' + (totalImages === 1 ? '' : 's') + ' & equations…');
+    } else {
+      reportProg(0, 1, 'Creating Google Form…');
+    }
 
-    var imagesReady = mapLimit(jobs, 4, function (job) {
+    var imagesReady = mapLimit(jobs, 6, function (job) {
       return mathImg.renderQuestionImage(job.text, job.figure, job.figureHtml).then(function (img) {
         doneImages++;
-        reportProg(doneImages, totalImages, 'Rendering equations & diagrams (' + doneImages + '/' + totalImages + ')…');
+        reportProg(doneImages, totalImages, 'Uploading diagrams & equations (' + doneImages + '/' + totalImages + ')…');
         return img;
       });
     }).then(function (results) {
-      reportProg(totalImages, Math.max(1, totalImages), 'Building Google Form questions…');
+      reportProg(totalImages, Math.max(1, totalImages), 'Creating Google Form…');
       // Index results back into {stemImages[qi], choiceImages[qi][ci]} so the
       // build loop below can look each one up in O(1) instead of re-scanning.
       // A job whose result is null despite needsImage() saying yes is a real
@@ -558,6 +652,7 @@
         body: JSON.stringify({ info: { title: title, documentTitle: title } })
       }).then(function (form) {
         var formId = form.formId;
+        reportProg(totalImages, Math.max(1, totalImages), 'Adding ' + questions.length + ' questions to Google Form…');
         var requests = [];
         // Turn on quiz mode so per-question `grading` blocks (correct answers
         // + point values, added below) are accepted by batchUpdate at all.
@@ -585,7 +680,7 @@
             dedupeOptionValues(options);
             var qChoiceImages = imgs.choiceImages[i] || {};
             options.forEach(function (opt, ci) {
-              if (qChoiceImages[ci]) opt.image = imageObj(qChoiceImages[ci], opt.value);
+              if (qChoiceImages[ci]) opt.image = choiceImageObj(qChoiceImages[ci], opt.value);
             });
             question = {
               required: false,
@@ -634,14 +729,11 @@
             }
           }
           var item = { title: qText, questionItem: { question: question } };
-          if (imgs.stemImages[i]) item.questionItem.image = imageObj(imgs.stemImages[i], qText);
+          if (imgs.stemImages[i]) item.questionItem.image = stemImageObj(imgs.stemImages[i], qText);
           requests.push({ createItem: { item: item, location: { index: i } } });
         });
 
-        return apiFetch(API + '/' + formId + ':batchUpdate', {
-          method: 'POST',
-          body: JSON.stringify({ requests: requests })
-        }).then(function () {
+        return runBatchUpdateSafely(formId, requests, imgs).then(function () {
           return apiFetch(API + '/' + formId).then(function (full) {
             if (uiProg) uiProg.done();
             return { formId: formId, responderUri: full.responderUri, editUri: 'https://docs.google.com/forms/d/' + formId + '/edit',
@@ -667,6 +759,7 @@
   window.ClipSATForms = {
     SCOPES: SCOPES,
     createFromQuiz: createFromQuiz,
+    countImageJobs: countImageJobs,
     getResponses: getResponses,
     mathToPlainText: mathToPlainText
   };
