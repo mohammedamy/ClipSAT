@@ -22,7 +22,12 @@ const require = createRequire(import.meta.url);
 const { validateFigureSpec } = require('./lib/exam-diagrams');
 
 const ROOT = path.join(__dirname, '..');
-const TARGET_TRACKS = ['sat', 'qudrat', 'tahsili', 'gaten', 'apab', 'apbc', 'precalc', 'appc'];
+const TARGET_TRACKS = [
+  'sat', 'qudrat', 'tahsili', 'gaten', 'apab', 'apbc', 'precalc', 'appc',
+  'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2',
+  'apstats', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level', 'ibsl', 'ibhl',
+  'olympiad', 'algebra', 'alg2', 'geo', 'calculus', 'mvc', 'linalg', 'odes', 'mathai',
+];
 
 const args = process.argv.slice(2);
 const reportOnly = args.includes('--report') || args.includes('--dry-run');
@@ -189,7 +194,7 @@ function auditTrack(track) {
     }
 
     if (q.type === 'spr') sprCount++;
-    if (q.type === 'structured') { structuredCount++; cStat.structured++; }
+    if (q.type === 'structured' || q.type === 'proof') { structuredCount++; cStat.structured++; }
     if (q.type === 'frq') legacyFrqCount++;
 
     const stemAll = `${q.text || ''} ${q.text_ar || ''}`;
@@ -346,6 +351,42 @@ function auditTrack(track) {
         if (cnt < 100) errors.push(`APPC chapter ${ch} has only ${cnt} items (expected >= 100, zero empty buckets)`);
       }
     }
+  }
+
+  const NEW_ROLLOUT_SET = new Set([
+    'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2',
+    'apstats', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level', 'ibsl', 'ibhl',
+    'olympiad', 'algebra', 'alg2', 'geo', 'calculus', 'mvc', 'linalg', 'odes', 'mathai',
+  ]);
+  const STRUCT_MINS = {
+    apstats: 66, igcse: 98, edexcel: 120, addmath: 96, aslevel: 88, a2level: 60,
+    ibsl: 157, ibhl: 150, olympiad: 120, mathai: 58, calculus: 32, mvc: 24, linalg: 24, odes: 27,
+  };
+  if (NEW_ROLLOUT_SET.has(track)) {
+    if (legacyFrqCount > 0) errors.push(`${track} still contains ${legacyFrqCount} legacy 'frq' items instead of 'structured'`);
+    const minSvg = track === 'geo' ? 45.0 : 35.0;
+    if (svgPct < minSvg) errors.push(`${track} SVG figure ratio ${svgPct.toFixed(1)}% < ${minSvg.toFixed(1)}%`);
+    const minTbl = (track === 'act' || track === 'est' || track === 'apstats') ? 20.0 : 15.0;
+    if (tablePct < minTbl) errors.push(`${track} Table ratio ${tablePct.toFixed(1)}% < ${minTbl.toFixed(1)}%`);
+    if (STRUCT_MINS[track] !== undefined) {
+      if (structuredCount < STRUCT_MINS[track]) {
+        errors.push(`${track} structured/proof FRQs expected >= ${STRUCT_MINS[track]}, got ${structuredCount}`);
+      }
+      const badFrqs = pool.filter((q) => {
+        if (q.type !== 'structured' && q.type !== 'proof') return false;
+        const parts = Array.isArray(q.parts) ? q.parts : [];
+        const sumP = parts.reduce((acc, p) => acc + (Number(p.marks) || 0), 0);
+        return typeof q.marks !== 'number' || parts.length < 3 || sumP !== q.marks;
+      });
+      if (badFrqs.length > 0) errors.push(`${track} has ${badFrqs.length} invalid multi-part FRQs (e.g. ${badFrqs[0].id})`);
+    }
+    if (psetSvg < 18 || psetTable < 10) {
+      errors.push(`${track} _practice-set.json visuals ${psetSvg} SVGs / ${psetTable} tables below 18/10 floor`);
+    }
+    if (ws.files === 0 || ws.qCount === 0) errors.push(`${track} missing worksheet topic JSON files`);
+    if (ws.rawDollarHits > 0) errors.push(`${track} worksheets have ${ws.rawDollarHits} unescaped '$' + digit tokens`);
+    const wsVisPct = ws.qCount ? ((ws.svgCount + ws.tableCount) / ws.qCount) * 100 : 0;
+    if (wsVisPct < 30) errors.push(`${track} worksheet visual+table density ${wsVisPct.toFixed(1)}% < 30%`);
   }
 
   return {

@@ -78,6 +78,25 @@
       "solution": {
         "en": "<p>Decompose \\(\\frac{1}{\\left(x + 1\\right) \\left(x + 4\\right)} = - \\frac{1}{3 \\left(x + 4\\right)} + \\frac{1}{3 \\left(x + 1\\right)}\\), integrate to logarithms, and evaluate: \\(- \\frac{\\ln{\\left(3 \\right)}}{3} + \\frac{\\ln{\\left(5 \\right)}}{3}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#3)"
       }
     },
     {
@@ -127,6 +146,33 @@
       "solution": {
         "en": "<p>The radius is 3 (ratio test). At \\(x = 6\\) the series is \\(\\sum_{n=1}^{\\infty} \\frac{1}{n}\\); at \\(x = 0\\) it is \\(\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n}\\). Checking each endpoint gives \\(\\left[0, 6\\right)\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -6,
+        "max": 6,
+        "step": 1,
+        "intervals": [
+          {
+            "from": -3,
+            "to": 5,
+            "openLeft": true,
+            "openRight": false
+          }
+        ],
+        "pts": [
+          {
+            "x": -3,
+            "open": true,
+            "label": "a"
+          },
+          {
+            "x": 5,
+            "open": false,
+            "label": "b"
+          }
+        ],
+        "caption": "Number Line Interval (#5)"
       }
     },
     {
@@ -176,6 +222,44 @@
       "solution": {
         "en": "<p><strong>Step 1 · Compute the Curl:</strong> For \\(\\mathbf{F} = \\langle -y^2, x, z^2 \\rangle\\), we compute \\(\\nabla \\times \\mathbf{F} = \\left\\langle \\frac{\\partial(z^2)}{\\partial y} - \\frac{\\partial x}{\\partial z},\\; \\frac{\\partial(-y^2)}{\\partial z} - \\frac{\\partial(z^2)}{\\partial x},\\; \\frac{\\partial x}{\\partial x} - \\frac{\\partial(-y^2)}{\\partial y} \\right\\rangle = \\langle 0, 0, 1 + 2y \\rangle\\).</p><p><strong>Step 2 · Surface Element & Orientation:</strong> Let \\(S\\) be the elliptic planar disk \\(z = y\\) above the unit disk \\(D: x^2 + y^2 \\le 1\\), oriented upward to match counterclockwise traversal of \\(C\\) from above. Using \\(g(x,y) = y\\), the oriented area vector is \\(d\\mathbf{S} = \\langle -g_x, -g_y, 1 \\rangle\\,dA = \\langle 0, -1, 1 \\rangle\\,dA\\).</p><p><strong>Step 3 · Evaluate the Surface Integral:</strong> By Stokes' Theorem, \\[ \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S} = \\iint_D (1 + 2y)\\,dA = \\iint_D 1\\,dA + 2\\iint_D y\\,dA = \\pi(1)^2 + 0 = \\pi. \\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "2",
+            "4",
+            "6",
+            "8"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#7)",
+        "caption_ar": "جدول نمط مرجعي (#7)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "2",
+            "4",
+            "6",
+            "8"
+          ]
+        ]
       }
     },
     {
@@ -304,6 +388,57 @@
       "solution": {
         "en": "<p>To find the Cartesian equation, we need to eliminate the parameter \\(t\\) from the given parametric equations.</p><p>Given:<br>\\(x(t) = 2t + 1\\)<br>\\(y(t) = t^2 - 3\\)</p><p>From the first equation, we can solve for \\(t\\) in terms of \\(x\\):<br>\\(x - 1 = 2t\\)<br>\\(t = \\frac{x-1}{2}\\)</p><p>Now, substitute this expression for \\(t\\) into the second equation:<br>\\(y = \\left(\\frac{x-1}{2}\\right)^2 - 3\\)</p><p>This is the Cartesian equation of the path traced by the particle.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "triangle",
+        "verts": [
+          "C",
+          "B",
+          "A"
+        ],
+        "labels": [
+          "C",
+          "B",
+          "A"
+        ],
+        "rightAngle": "C",
+        "rightAt": "C",
+        "sides": [
+          "R",
+          "F_y",
+          "F_x"
+        ],
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "coords": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "notToScale": true,
+        "caption": "Component Triangle (not drawn to scale).",
+        "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
       }
     },
     {
@@ -390,6 +525,20 @@
       "solution": {
         "en": "<p>To find the components of a vector \\(\\mathbf{v}\\) with initial point \\((x_1, y_1)\\) and terminal point \\((x_2, y_2)\\), we subtract the coordinates of the initial point from the coordinates of the terminal point.  That is, \\(\\mathbf{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, the initial point is \\(P = (1, 2)\\) and the terminal point is \\(Q = (4, 6)\\). Therefore, the components of \\(\\mathbf{v}\\) are \\(\\langle 4 - 1, 6 - 2 \\rangle = \\langle 3, 4 \\rangle\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#14)"
       }
     },
     {
@@ -481,6 +630,27 @@
       "solution": {
         "en": "<p>\\(\\nabla f\\left( 1, \\ 3\\right)=\\langle \\frac{\\sqrt{14}}{14}, \\frac{3 \\sqrt{14}}{14} \\rangle\\) and the unit vector is \\(\\langle \\frac{4}{5}, - \\frac{3}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{\\sqrt{14}}{14}\\).</p>",
         "ar": "<p>\\(\\nabla f\\left( 1, \\ 3\\right)=\\langle \\frac{\\sqrt{14}}{14}, \\frac{3 \\sqrt{14}}{14} \\rangle\\) و الوحدة المتجه يساوي \\(\\langle \\frac{4}{5}, - \\frac{3}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{\\sqrt{14}}{14}\\).</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          -4,
+          4
+        ],
+        "yl": [
+          -5,
+          7
+        ],
+        "xStep": 2,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "1.5*x + 1",
+            "label": "y = f(x)"
+          }
+        ],
+        "title": "Coordinate Graph (#17)",
+        "caption": "Reference graph y = f(x)"
       }
     },
     {
@@ -534,6 +704,44 @@
       "solution": {
         "en": "<p>\\(T - 20 = 50 e^{- k t}\\) with \\(k = \\frac{\\ln{\\left(\\frac{5}{4} \\right)}}{10}\\). Solve \\(50 e^{- k t} = 20\\): \\(t = \\frac{10 \\ln{\\left(\\frac{5}{2} \\right)}}{\\ln{\\left(\\frac{5}{4} \\right)}}\\).</p>",
         "ar": "<p>\\(T - 20 = 50 e^{- k t}\\) مع \\(k = \\frac{\\ln{\\left(\\frac{5}{4} \\right)}}{10}\\). حل \\(50 e^{- k t} = 20\\): \\(t = \\frac{10 \\ln{\\left(\\frac{5}{2} \\right)}}{\\ln{\\left(\\frac{5}{4} \\right)}}\\).</p>"
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "20",
+            "29",
+            "38",
+            "47"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#19)",
+        "caption_ar": "جدول نمط مرجعي (#19)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "20",
+            "29",
+            "38",
+            "47"
+          ]
+        ]
       }
     },
     {
@@ -546,6 +754,25 @@
       "solution": {
         "en": "<p>Decompose \\(\\frac{2 x + 1}{\\left(x - 1\\right) \\left(x + 4\\right)} = \\frac{7}{5 \\left(x + 4\\right)} + \\frac{3}{5 \\left(x - 1\\right)}\\), integrate to logarithms, and evaluate: \\(- \\frac{\\ln{\\left(2 \\right)}}{5} + \\frac{7 \\ln{\\left(3 \\right)}}{5}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#20)"
       }
     },
     {
@@ -558,6 +785,58 @@
       "solution": {
         "en": "<p>\\(\\nabla f\\left( -2, \\ -2\\right)=\\langle \\cos{\\left(2 \\right)}, - 2 \\sin{\\left(2 \\right)} - 1 \\rangle\\) and the unit vector is \\(\\langle - \\frac{3}{5}, \\frac{4}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{8 \\sin{\\left(2 \\right)}}{5} - \\frac{4}{5} - \\frac{3 \\cos{\\left(2 \\right)}}{5}\\).</p>",
         "ar": "<p>\\(\\nabla f\\left( -2, \\ -2\\right)=\\langle \\cos{\\left(2 \\right)}, - 2 \\sin{\\left(2 \\right)} - 1 \\rangle\\) و الوحدة المتجه يساوي \\(\\langle - \\frac{3}{5}, \\frac{4}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{8 \\sin{\\left(2 \\right)}}{5} - \\frac{4}{5} - \\frac{3 \\cos{\\left(2 \\right)}}{5}\\).</p>"
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          [
+            "f'(x)",
+            "2",
+            "0",
+            "2",
+            "0"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#21)",
+        "caption_ar": "جدول القيم المختارة (#21)",
+        "headers_ar": [
+          "x",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          [
+            "f'(x)",
+            "2",
+            "0",
+            "2",
+            "0"
+          ]
+        ]
       }
     },
     {
@@ -607,6 +886,44 @@
       "solution": {
         "en": "<p>Take logs: \\(\\ln{\\left(y \\right)} = \\ln{\\left(x \\right)} \\sin{\\left(x \\right)}\\), differentiate, and multiply by \\(y\\). Substituting \\(x = 4\\) gives \\(\\frac{8 \\ln{\\left(2 \\right)} \\cos{\\left(4 \\right)} + \\sin{\\left(4 \\right)}}{2^{2 - 2 \\sin{\\left(4 \\right)}}}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "4",
+            "9",
+            "14",
+            "19"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#23)",
+        "caption_ar": "جدول نمط مرجعي (#23)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "4",
+            "9",
+            "14",
+            "19"
+          ]
+        ]
       }
     },
     {
@@ -619,6 +936,44 @@
       "solution": {
         "en": "<p>To find the coordinates of the particle at a specific time \\(t\\), substitute the value of \\(t\\) into the parametric equations for \\(x\\) and \\(y\\).</p><p>Given \\(x(t) = 3t + 1\\) and \\(y(t) = 2t - 2\\).<br>We need to find the coordinates when \\(t=3\\).</p><p>For the x-coordinate:<br>\\(x(3) = 3(3) + 1 = 9 + 1 = 10\\)</p><p>For the y-coordinate:<br>\\(y(3) = 2(3) - 2 = 6 - 2 = 4\\)</p><p>Therefore, the coordinates of the particle when \\(t=3\\) are (10, 4).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "3",
+            "5",
+            "7",
+            "9"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#24)",
+        "caption_ar": "جدول نمط مرجعي (#24)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "3",
+            "5",
+            "7",
+            "9"
+          ]
+        ]
       }
     },
     {
@@ -631,6 +986,58 @@
       "solution": {
         "en": "<p>To find the partial derivative of \\(f(x, y) = x^2 - 3xy + 2y^2\\) with respect to \\(y\\), we treat \\(x\\) as a constant. <br><br>The derivative of \\(x^2\\) with respect to \\(y\\) is 0, as \\(x\\) is considered constant. <br><br>The derivative of \\(-3xy\\) with respect to \\(y\\) is \\(-3x \\cdot 1 = -3x\\). <br><br>The derivative of \\(2y^2\\) with respect to \\(y\\) is \\(2 \\cdot 2y = 4y\\). <br><br>Therefore, the partial derivative \\(\\frac{{\\partial f}}{{\\partial y}}\\) is \\(0 - 3x + 4y = -3x + 4y\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "5",
+            "9",
+            "13",
+            "17"
+          ],
+          [
+            "f'(x)",
+            "5",
+            "3",
+            "5",
+            "3"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#25)",
+        "caption_ar": "جدول القيم المختارة (#25)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "5",
+            "9",
+            "13",
+            "17"
+          ],
+          [
+            "f'(x)",
+            "5",
+            "3",
+            "5",
+            "3"
+          ]
+        ]
       }
     },
     {
@@ -643,6 +1050,44 @@
       "solution": {
         "en": "<p>First, \\(\\frac{dy}{dx} = \\frac{\\sin t+\\cos t}{\\cos t-\\sin t}\\). Then \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{2}{(\\cos t-\\sin t)^2}\\). Dividing by \\(\\frac{dx}{dt}=e^t(\\cos t-\\sin t)\\) at \\(t=0\\) gives \\(\\frac{d^2y}{dx^2}\\big|_{t=0} = 2\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "2",
+            "7",
+            "12",
+            "17"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#26)",
+        "caption_ar": "جدول نمط مرجعي (#26)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "2",
+            "7",
+            "12",
+            "17"
+          ]
+        ]
       }
     },
     {
@@ -655,6 +1100,44 @@
       "solution": {
         "en": "<p>In quadrant III, \\(\\cos{\\left(\\theta \\right)} = - \\frac{7}{25}\\) (from \\(\\sin^2\\theta+\\cos^2\\theta=1\\) with the quadrant's sign). Then \\(\\sin 2\\theta\\) \\(=\\) \\(\\frac{336}{625}\\) using the double-angle formula.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "20",
+            "29",
+            "38",
+            "47"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#27)",
+        "caption_ar": "جدول نمط مرجعي (#27)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "20",
+            "29",
+            "38",
+            "47"
+          ]
+        ]
       }
     },
     {
@@ -667,6 +1150,58 @@
       "solution": {
         "en": "<p>The error after summing up to \\(n=6\\) is at most the next term, \\(\\frac{1}{5040}\\) \\(\\lt\\) \\(\\frac{1}{1000}\\), while stopping one term earlier leaves a bound \\(\\frac{1}{720}\\) \\(\\ge\\) \\(\\frac{1}{1000}\\). So 7 terms are needed.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          [
+            "f'(x)",
+            "2",
+            "0",
+            "2",
+            "0"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#28)",
+        "caption_ar": "جدول القيم المختارة (#28)",
+        "headers_ar": [
+          "x",
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          [
+            "f'(x)",
+            "2",
+            "0",
+            "2",
+            "0"
+          ]
+        ]
       }
     },
     {
@@ -679,6 +1214,44 @@
       "solution": {
         "en": "<p>Wallis: \\(\\frac{5}{6}\\cdot\\frac{3}{4}\\cdot\\frac{1}{2}\\cdot\\frac{\\pi}{2}=\\frac{5\\pi\\cdot3}{6\\cdot4\\cdot2\\cdot2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}\\). Actually Wallis: \\(\\int_0^{\\pi/2}\\sin^{2n}x\\,dx=\\frac{(2n-1)!!}{(2n)!!}\\frac{\\pi}{2}\\). For \\(n=3\\): \\(\\frac{5\\cdot3\\cdot1}{6\\cdot4\\cdot2}\\frac{\\pi}{2}=\\frac{15}{48}\\frac{\\pi}{2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "1",
+            "3",
+            "5",
+            "7"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#29)",
+        "caption_ar": "جدول نمط مرجعي (#29)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "1",
+            "3",
+            "5",
+            "7"
+          ]
+        ]
       }
     },
     {
@@ -691,6 +1264,58 @@
       "solution": {
         "en": "<p>Multiply known Maclaurin series: \\(\\sin(x) = x - \\dfrac{x^3}{6} + \\cdot s\\) and \\(\\dfrac{1}{1-x} = 1 + x + x^2 + \\cdot s\\). Collecting terms up to degree 3: \\(x(1 + x + x^2) - \\dfrac{x^3}{6}(1) = x + x^2 + \\left(1 - \\dfrac{1}{6}\\right)x^3 = x + x^2 + \\dfrac{5}{6}x^3\\). The coefficient of \\(x^3\\) is \\(\\dfrac{5}{6}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "2",
+          "4",
+          "6",
+          "8"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "5",
+            "7",
+            "9",
+            "11"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#30)",
+        "caption_ar": "جدول القيم المختارة (#30)",
+        "headers_ar": [
+          "x",
+          "2",
+          "4",
+          "6",
+          "8"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "5",
+            "7",
+            "9",
+            "11"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ]
       }
     },
     {
@@ -761,6 +1386,58 @@
       "solution": {
         "en": "<p>The Fundamental Theorem of Calculus, Part 1, states that if \\(F(x) = \\int_{a}^{x} f(t) dt\\), then \\(F'(x) = f(x)\\). In this problem, \\(f(t) = t^2 - 1\\) and the lower limit of integration is \\(a=2\\). Therefore, \\(F'(x) = x^2 - 1\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#33)",
+        "caption_ar": "جدول القيم المختارة (#33)",
+        "headers_ar": [
+          "x",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ]
       }
     },
     {

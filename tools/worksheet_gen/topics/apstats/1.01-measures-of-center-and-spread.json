@@ -85,7 +85,51 @@
             "\\( 24 \\)",
             "\\( 64 \\)"
           ],
-          "correct": 0
+          "correct": 0,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "25",
+                "15",
+                40
+              ],
+              [
+                "11",
+                "21",
+                32
+              ],
+              [
+                36,
+                36,
+                72
+              ]
+            ],
+            "caption": "Reference Summary Table (#3)",
+            "caption_ar": "جدول ملخص البيانات (#3)",
+            "_totals": {
+              "rowTotals": [
+                40,
+                32
+              ],
+              "colTotals": [
+                36,
+                36
+              ],
+              "grandTotal": 72
+            }
+          }
         },
         {
           "qtype": "MCQ",
@@ -98,7 +142,26 @@
             "\\(\\frac{1}{2}\\)",
             "\\(\\frac{11}{15}\\)"
           ],
-          "correct": 0
+          "correct": 0,
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#4)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -162,7 +225,26 @@
             "6",
             "13"
           ],
-          "correct": 2
+          "correct": 2,
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#6)"
+          }
         },
         {
           "q": "Explain why the standard deviation is always non-negative, and why it equals \\(0\\) only in one specific case.",
@@ -170,7 +252,45 @@
           "question_type": "FRQ",
           "target": "Standard deviation and variance",
           "answer": "The standard deviation is the square root of an average of squared deviations, and squares are always non-negative, so their average and its square root are also non-negative. It equals \\(0\\) only when every data value is identical (no spread at all), since that is the only case where every deviation from the mean is \\(0\\).",
-          "explanation": "The standard deviation is the square root of an average of squared deviations, and squares are always non-negative, so their average and its square root are also non-negative. It equals \\(0\\) only when every data value is identical (no spread at all), since that is the only case where every deviation from the mean is \\(0\\)."
+          "explanation": "The standard deviation is the square root of an average of squared deviations, and squares are always non-negative, so their average and its square root are also non-negative. It equals \\(0\\) only when every data value is identical (no spread at all), since that is the only case where every deviation from the mean is \\(0\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#7)",
+            "caption_ar": "جدول نمط مرجعي (#7)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "q": "The graph shows a bell-shaped distribution of exam scores with mean \\(75\\) and standard deviation \\(8\\).",
@@ -211,7 +331,18 @@
           "question_type": "FRQ",
           "target": "Comparing distributions using measures of spread",
           "answer": "Both classes have the same average performance (mean \\(80\\)), but Class A's scores are tightly clustered around the mean (small spread, standard deviation \\(4\\)), meaning most students scored similarly, while Class B's scores are much more spread out (standard deviation \\(12\\)), meaning there is far more variability — some students scored well above or below the average.",
-          "explanation": "Both classes have the same average performance (mean \\(80\\)), but Class A's scores are tightly clustered around the mean (small spread, standard deviation \\(4\\)), meaning most students scored similarly, while Class B's scores are much more spread out (standard deviation \\(12\\)), meaning there is far more variability — some students scored well above or below the average."
+          "explanation": "Both classes have the same average performance (mean \\(80\\)), but Class A's scores are tightly clustered around the mean (small spread, standard deviation \\(4\\)), meaning most students scored similarly, while Class B's scores are much more spread out (standard deviation \\(12\\)), meaning there is far more variability — some students scored well above or below the average.",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 80,
+            "sd": 4,
+            "shadeRange": [
+              76,
+              84
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#9)"
+          }
         },
         {
           "q": "Explain why the median and IQR are described as \"resistant\" measures, while the mean and standard deviation are not, using the outlier example from earlier in this worksheet as a reference.",
@@ -219,7 +350,18 @@
           "question_type": "FRQ",
           "target": "Resistant vs. non-resistant statistics",
           "answer": "A resistant measure is one that is not strongly affected by extreme values or outliers. The median and IQR depend only on the position (ranking) of data values, not their exact size, so a single extreme value has little effect on them. The mean and standard deviation, in contrast, use every data value's actual size in their calculation, so one extreme outlier (like the \\(40\\) added earlier) can shift them substantially.",
-          "explanation": "A resistant measure is one that is not strongly affected by extreme values or outliers. The median and IQR depend only on the position (ranking) of data values, not their exact size, so a single extreme value has little effect on them. The mean and standard deviation, in contrast, use every data value's actual size in their calculation, so one extreme outlier (like the \\(40\\) added earlier) can shift them substantially."
+          "explanation": "A resistant measure is one that is not strongly affected by extreme values or outliers. The median and IQR depend only on the position (ranking) of data values, not their exact size, so a single extreme value has little effect on them. The mean and standard deviation, in contrast, use every data value's actual size in their calculation, so one extreme outlier (like the \\(40\\) added earlier) can shift them substantially.",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 3,
+            "sd": 4,
+            "shadeRange": [
+              -1,
+              7
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#10)"
+          }
         },
         {
           "q": "A data set of home prices in a neighborhood is strongly skewed right due to a few very expensive mansions. Recommend which pair of summary statistics (mean/standard deviation or median/IQR) should be reported, and justify your choice.",
@@ -227,7 +369,45 @@
           "question_type": "FRQ",
           "target": "Choosing appropriate summary statistics",
           "answer": "The median and IQR should be reported, since they are resistant to the effect of the few extremely expensive mansions. Reporting the mean would give a misleadingly high sense of a \"typical\" home price, since the mean is pulled upward by the small number of very high values.",
-          "explanation": "The median and IQR should be reported, since they are resistant to the effect of the few extremely expensive mansions. Reporting the mean would give a misleadingly high sense of a \"typical\" home price, since the mean is pulled upward by the small number of very high values."
+          "explanation": "The median and IQR should be reported, since they are resistant to the effect of the few extremely expensive mansions. Reporting the mean would give a misleadingly high sense of a \"typical\" home price, since the mean is pulled upward by the small number of very high values.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#11)",
+            "caption_ar": "جدول نمط مرجعي (#11)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "q": "A quality-control process measures the diameter of manufactured bolts, which are expected to be very consistent (low variability) and roughly symmetric. Recommend which pair of summary statistics is more appropriate here, and explain why.",
@@ -235,7 +415,16 @@
           "question_type": "FRQ",
           "target": "Choosing appropriate summary statistics",
           "answer": "The mean and standard deviation are appropriate here, since the data is roughly symmetric with no extreme outliers expected — in this case, the mean and standard deviation use all the data efficiently and are the standard choice when a distribution is not skewed.",
-          "explanation": "The mean and standard deviation are appropriate here, since the data is roughly symmetric with no extreme outliers expected — in this case, the mean and standard deviation use all the data efficiently and are the standard choice when a distribution is not skewed."
+          "explanation": "The mean and standard deviation are appropriate here, since the data is roughly symmetric with no extreme outliers expected — in this case, the mean and standard deviation use all the data efficiently and are the standard choice when a distribution is not skewed.",
+          "figure": {
+            "type": "circle",
+            "r": 5,
+            "radius": "r",
+            "radiusLabel": "r",
+            "notToScale": true,
+            "caption": "Note: Figure not drawn to scale.",
+            "caption_ar": "ملاحظة: الرسم ليس على القياس."
+          }
         },
         {
           "q": "A survey of families records number of children per household: 0 children (8 families), 1 child (15 families), 2 children (20 families), 3 children (7 families). Find the mean number of children per household.",
@@ -243,7 +432,26 @@
           "question_type": "FRQ",
           "target": "Computing summary statistics from a frequency table",
           "answer": "Total families: \\(8+15+20+7=50\\). Total children: \\(0(8)+1(15)+2(20)+3(7)=0+15+40+21=76\\). Mean \\(=\\frac{76}{50}=1.52\\) children per household.",
-          "explanation": "Total families: \\(8+15+20+7=50\\). Total children: \\(0(8)+1(15)+2(20)+3(7)=0+15+40+21=76\\). Mean \\(=\\frac{76}{50}=1.52\\) children per household."
+          "explanation": "Total families: \\(8+15+20+7=50\\). Total children: \\(0(8)+1(15)+2(20)+3(7)=0+15+40+21=76\\). Mean \\(=\\frac{76}{50}=1.52\\) children per household.",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#13)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -256,7 +464,51 @@
             "3",
             "2"
           ],
-          "correct": 3
+          "correct": 3,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "28",
+                "24",
+                52
+              ],
+              [
+                "15",
+                "17",
+                32
+              ],
+              [
+                43,
+                41,
+                84
+              ]
+            ],
+            "caption": "Reference Summary Table (#14)",
+            "caption_ar": "جدول ملخص البيانات (#14)",
+            "_totals": {
+              "rowTotals": [
+                52,
+                32
+              ],
+              "colTotals": [
+                43,
+                41
+              ],
+              "grandTotal": 84
+            }
+          }
         },
         {
           "q": "Two data sets both represent quiz scores out of 20 for two different classes of the same size, and both have the same mean of 15. Class A has a standard deviation of 1.2, while Class B has a standard deviation of 4.5. Without doing any further calculation, describe what a dotplot of each class's scores would likely look like, and explain how you can tell just from the two standard deviations.",
@@ -264,7 +516,18 @@
           "question_type": "FRQ",
           "target": "Computing summary statistics from a frequency table",
           "answer": "Class A's dotplot would show scores tightly clustered close to 15 (most students scoring similarly, in a narrow band), since a small standard deviation of 1.2 indicates little spread around the mean. Class B's dotplot would show scores much more spread out around 15, with a substantial number of students scoring noticeably above or below the mean, since a standard deviation of 4.5 indicates far greater variability.",
-          "explanation": "Class A's dotplot would show scores tightly clustered close to 15 (most students scoring similarly, in a narrow band), since a small standard deviation of 1.2 indicates little spread around the mean. Class B's dotplot would show scores much more spread out around 15, with a substantial number of students scoring noticeably above or below the mean, since a standard deviation of 4.5 indicates far greater variability."
+          "explanation": "Class A's dotplot would show scores tightly clustered close to 15 (most students scoring similarly, in a narrow band), since a small standard deviation of 1.2 indicates little spread around the mean. Class B's dotplot would show scores much more spread out around 15, with a substantial number of students scoring noticeably above or below the mean, since a standard deviation of 4.5 indicates far greater variability.",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 20,
+            "sd": 15,
+            "shadeRange": [
+              5,
+              35
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#15)"
+          }
         }
       ]
     },
@@ -282,7 +545,26 @@
             "5",
             "4"
           ],
-          "correct": 3
+          "correct": 3,
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#16)"
+          }
         },
         {
           "qtype": "MCQ",

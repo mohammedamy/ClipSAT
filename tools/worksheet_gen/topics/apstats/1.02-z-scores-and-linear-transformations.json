@@ -37,7 +37,51 @@
             "0.4",
             "0.6"
           ],
-          "correct": 2
+          "correct": 2,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "25",
+                "15",
+                40
+              ],
+              [
+                "11",
+                "21",
+                32
+              ],
+              [
+                36,
+                36,
+                72
+              ]
+            ],
+            "caption": "Reference Summary Table (#3)",
+            "caption_ar": "جدول ملخص البيانات (#3)",
+            "_totals": {
+              "rowTotals": [
+                40,
+                32
+              ],
+              "colTotals": [
+                36,
+                36
+              ],
+              "grandTotal": 72
+            }
+          }
         },
         {
           "q": "On Test A (mean \\(75\\), standard deviation \\(6\\)), a student scores \\(87\\). On Test B (mean \\(70\\), standard deviation \\(4\\)), a different student scores \\(77\\). Compare the two students' relative performance using \\(z\\)-scores.",
@@ -45,7 +89,18 @@
           "question_type": "FRQ",
           "target": "Comparing values across different distributions",
           "answer": "Test A: \\(z=\\frac{87-75}{6}=\\frac{12}{6}=2\\). Test B: \\(z=\\frac{77-70}{4}=\\frac{7}{4}=1.75\\). Since \\(2>1.75\\), the student on Test A performed better relative to their own test's distribution, even though the raw score gap (\\(12\\) vs. \\(7\\)) might suggest otherwise.",
-          "explanation": "Test A: \\(z=\\frac{87-75}{6}=\\frac{12}{6}=2\\). Test B: \\(z=\\frac{77-70}{4}=\\frac{7}{4}=1.75\\). Since \\(2>1.75\\), the student on Test A performed better relative to their own test's distribution, even though the raw score gap (\\(12\\) vs. \\(7\\)) might suggest otherwise."
+          "explanation": "Test A: \\(z=\\frac{87-75}{6}=\\frac{12}{6}=2\\). Test B: \\(z=\\frac{77-70}{4}=\\frac{7}{4}=1.75\\). Since \\(2>1.75\\), the student on Test A performed better relative to their own test's distribution, even though the raw score gap (\\(12\\) vs. \\(7\\)) might suggest otherwise.",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 75,
+            "sd": 6,
+            "shadeRange": [
+              69,
+              81
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#4)"
+          }
         },
         {
           "q": "A data set has mean \\(50\\) and standard deviation \\(8\\). If \\(10\\) is added to every value, find the new mean and new standard deviation.",
@@ -53,7 +108,18 @@
           "question_type": "FRQ",
           "target": "Effect of adding a constant to every data value",
           "answer": "Adding a constant shifts the mean by that constant but does not change the spread: new mean \\(=50+10=60\\); standard deviation stays \\(8\\).",
-          "explanation": "Adding a constant shifts the mean by that constant but does not change the spread: new mean \\(=50+10=60\\); standard deviation stays \\(8\\)."
+          "explanation": "Adding a constant shifts the mean by that constant but does not change the spread: new mean \\(=50+10=60\\); standard deviation stays \\(8\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 50,
+            "sd": 8,
+            "shadeRange": [
+              42,
+              58
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#5)"
+          }
         },
         {
           "q": "Explain, without doing a full calculation, why adding a constant to every data value does not change the standard deviation.",
@@ -61,7 +127,45 @@
           "question_type": "FRQ",
           "target": "Effect of adding a constant to every data value",
           "answer": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected.",
-          "explanation": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected."
+          "explanation": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#6)",
+            "caption_ar": "جدول نمط مرجعي (#6)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "q": "A data set has mean \\(20\\) and standard deviation \\(3\\). If every value is multiplied by \\(4\\), find the new mean and new standard deviation.",
@@ -69,7 +173,18 @@
           "question_type": "FRQ",
           "target": "Effect of multiplying every data value by a constant",
           "answer": "Multiplying by a constant scales both the mean and the standard deviation by that constant (standard deviation uses the absolute value of the constant): new mean \\(=20\\times4=80\\); new standard deviation \\(=3\\times4=12\\).",
-          "explanation": "Multiplying by a constant scales both the mean and the standard deviation by that constant (standard deviation uses the absolute value of the constant): new mean \\(=20\\times4=80\\); new standard deviation \\(=3\\times4=12\\)."
+          "explanation": "Multiplying by a constant scales both the mean and the standard deviation by that constant (standard deviation uses the absolute value of the constant): new mean \\(=20\\times4=80\\); new standard deviation \\(=3\\times4=12\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 20,
+            "sd": 3,
+            "shadeRange": [
+              17,
+              23
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#7)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -82,7 +197,18 @@
             "\\( \\sqrt{\\frac{19(15^2) + 179(12^2)}{198}} \\)",
             "\\( \\sqrt{\\frac{20(15^2) + 180(12^2)}{200}} \\)"
           ],
-          "correct": 3
+          "correct": 3,
+          "figure": {
+            "type": "normal_curve",
+            "mean": 200,
+            "sd": 12,
+            "shadeRange": [
+              188,
+              212
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#8)"
+          }
         }
       ]
     },
@@ -123,7 +249,45 @@
           "question_type": "FRQ",
           "target": "Applying linear transformations in context",
           "answer": "Adding \\(50\\): new mean \\(=550\\), standard deviation stays \\(30\\). Dividing by \\(12\\): new mean \\(=\\frac{550}{12}\\approx45.83\\) dozens, new standard deviation \\(=\\frac{30}{12}=2.5\\) dozens.",
-          "explanation": "Adding \\(50\\): new mean \\(=550\\), standard deviation stays \\(30\\). Dividing by \\(12\\): new mean \\(=\\frac{550}{12}\\approx45.83\\) dozens, new standard deviation \\(=\\frac{30}{12}=2.5\\) dozens."
+          "explanation": "Adding \\(50\\): new mean \\(=550\\), standard deviation stays \\(30\\). Dividing by \\(12\\): new mean \\(=\\frac{550}{12}\\approx45.83\\) dozens, new standard deviation \\(=\\frac{30}{12}=2.5\\) dozens.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "20",
+                "29",
+                "38",
+                "47"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#10)",
+            "caption_ar": "جدول نمط مرجعي (#10)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "20",
+                "29",
+                "38",
+                "47"
+              ]
+            ]
+          }
         },
         {
           "q": "A distribution has mean \\(\\mu=64\\) and standard deviation \\(\\sigma=5\\). Find the data value corresponding to a \\(z\\)-score of \\(z=-1.8\\).",
@@ -131,7 +295,18 @@
           "question_type": "FRQ",
           "target": "Finding a raw value from a z-score",
           "answer": "\\(x=\\mu+z\\sigma=64+(-1.8)(5)=64-9=55\\).",
-          "explanation": "\\(x=\\mu+z\\sigma=64+(-1.8)(5)=64-9=55\\)."
+          "explanation": "\\(x=\\mu+z\\sigma=64+(-1.8)(5)=64-9=55\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 64,
+            "sd": 5,
+            "shadeRange": [
+              59,
+              69
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#11)"
+          }
         },
         {
           "q": "A distribution has mean \\(\\mu=200\\) and standard deviation \\(\\sigma=15\\). If a data value has \\(z=2.2\\), find the data value.",
@@ -139,7 +314,18 @@
           "question_type": "FRQ",
           "target": "Finding a raw value from a z-score",
           "answer": "\\(x=\\mu+z\\sigma=200+2.2(15)=200+33=233\\).",
-          "explanation": "\\(x=\\mu+z\\sigma=200+2.2(15)=200+33=233\\)."
+          "explanation": "\\(x=\\mu+z\\sigma=200+2.2(15)=200+33=233\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 200,
+            "sd": 15,
+            "shadeRange": [
+              185,
+              215
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#12)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -152,7 +338,51 @@
             "12",
             "9"
           ],
-          "correct": 1
+          "correct": 1,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "29",
+                "23",
+                52
+              ],
+              [
+                "19",
+                "27",
+                46
+              ],
+              [
+                48,
+                50,
+                98
+              ]
+            ],
+            "caption": "Reference Summary Table (#13)",
+            "caption_ar": "جدول ملخص البيانات (#13)",
+            "_totals": {
+              "rowTotals": [
+                52,
+                46
+              ],
+              "colTotals": [
+                48,
+                50
+              ],
+              "grandTotal": 98
+            }
+          }
         },
         {
           "q": "A weight distribution has mean \\(\\mu=68\\) kg and standard deviation \\(\\sigma=9\\) kg. Find the \\(z\\)-scores for weights of \\(77\\) kg and \\(50\\) kg.",
@@ -160,7 +390,18 @@
           "question_type": "FRQ",
           "target": "Combined shift-and-scale transformations",
           "answer": "\\(z_{77}=\\frac{77-68}{9}=\\frac{9}{9}=1\\). \\(z_{50}=\\frac{50-68}{9}=\\frac{-18}{9}=-2\\).",
-          "explanation": "\\(z_{77}=\\frac{77-68}{9}=\\frac{9}{9}=1\\). \\(z_{50}=\\frac{50-68}{9}=\\frac{-18}{9}=-2\\)."
+          "explanation": "\\(z_{77}=\\frac{77-68}{9}=\\frac{9}{9}=1\\). \\(z_{50}=\\frac{50-68}{9}=\\frac{-18}{9}=-2\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 68,
+            "sd": 9,
+            "shadeRange": [
+              59,
+              77
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#14)"
+          }
         },
         {
           "qtype": "MCQ",

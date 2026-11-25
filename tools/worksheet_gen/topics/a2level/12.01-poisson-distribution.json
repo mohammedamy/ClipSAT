@@ -14,7 +14,51 @@
           "question_type": "FRQ",
           "target": "Conditions for a Poisson distribution",
           "answer": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent.",
-          "explanation": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent."
+          "explanation": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent.",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "30",
+                "14",
+                44
+              ],
+              [
+                "18",
+                "20",
+                38
+              ],
+              [
+                48,
+                34,
+                82
+              ]
+            ],
+            "caption": "Reference Summary Table (#2)",
+            "caption_ar": "جدول ملخص البيانات (#2)",
+            "_totals": {
+              "rowTotals": [
+                44,
+                38
+              ],
+              "colTotals": [
+                48,
+                34
+              ],
+              "grandTotal": 82
+            }
+          }
         },
         {
           "q": "Explain why the number of texts a person receives in a randomly chosen hour might reasonably be modeled by a Poisson distribution, but the number of texts received right around a pre-arranged deadline might not.",
@@ -22,7 +66,28 @@
           "question_type": "FRQ",
           "target": "Conditions for a Poisson distribution",
           "answer": "Texts received during a typical hour occur independently and at a roughly constant average rate, satisfying the Poisson conditions. Texts clustered around a pre-arranged deadline (e.g. everyone replying just before a cutoff) violate the constant-rate and independence assumptions, since there is a systematic surge rather than random, uniform occurrence.",
-          "explanation": "Texts received during a typical hour occur independently and at a roughly constant average rate, satisfying the Poisson conditions. Texts clustered around a pre-arranged deadline (e.g. everyone replying just before a cutoff) violate the constant-rate and independence assumptions, since there is a systematic surge rather than random, uniform occurrence."
+          "explanation": "Texts received during a typical hour occur independently and at a roughly constant average rate, satisfying the Poisson conditions. Texts clustered around a pre-arranged deadline (e.g. everyone replying just before a cutoff) violate the constant-rate and independence assumptions, since there is a systematic surge rather than random, uniform occurrence.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              4
+            ],
+            "yl": [
+              -5,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1.5*x + 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#3)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "A shop receives an average of \\(3\\) customers per minute, modeled by \\(X\\sim\\mathrm{Po}(3)\\). Find \\(P(X=5)\\), to three decimal places.",
@@ -30,7 +95,28 @@
           "question_type": "FRQ",
           "target": "Computing Poisson probabilities",
           "answer": "\\(P(X=5)=\\frac{e^{-3}3^5}{5!}=\\frac{(0.049787)(243)}{120}\\approx0.101\\).",
-          "explanation": "\\(P(X=5)=\\frac{e^{-3}3^5}{5!}=\\frac{(0.049787)(243)}{120}\\approx0.101\\)."
+          "explanation": "\\(P(X=5)=\\frac{e^{-3}3^5}{5!}=\\frac{(0.049787)(243)}{120}\\approx0.101\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -4,
+              4
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "x^3 - 3*x",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#4)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Using the same shop, find \\(P(X=1)\\), to three decimal places.",
@@ -38,7 +124,45 @@
           "question_type": "FRQ",
           "target": "Computing Poisson probabilities",
           "answer": "\\(P(X=1)=3e^{-3}\\approx3(0.049787)\\approx0.149\\).",
-          "explanation": "\\(P(X=1)=3e^{-3}\\approx3(0.049787)\\approx0.149\\)."
+          "explanation": "\\(P(X=1)=3e^{-3}\\approx3(0.049787)\\approx0.149\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "1",
+                "6",
+                "11",
+                "16"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#5)",
+            "caption_ar": "جدول نمط مرجعي (#5)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "1",
+                "6",
+                "11",
+                "16"
+              ]
+            ]
+          }
         },
         {
           "q": "Using the same shop, find \\(P(X\\leq2)\\).",
@@ -46,7 +170,26 @@
           "question_type": "FRQ",
           "target": "Computing Poisson probabilities",
           "answer": "\\(P(X=0)=e^{-3}\\approx0.0498\\). \\(P(X=1)\\approx0.1494\\). \\(P(X=2)=\\frac{9e^{-3}}{2}\\approx0.2240\\). Sum: \\(P(X\\leq2)\\approx0.423\\).",
-          "explanation": "\\(P(X=0)=e^{-3}\\approx0.0498\\). \\(P(X=1)\\approx0.1494\\). \\(P(X=2)=\\frac{9e^{-3}}{2}\\approx0.2240\\). Sum: \\(P(X\\leq2)\\approx0.423\\)."
+          "explanation": "\\(P(X=0)=e^{-3}\\approx0.0498\\). \\(P(X=1)\\approx0.1494\\). \\(P(X=2)=\\frac{9e^{-3}}{2}\\approx0.2240\\). Sum: \\(P(X\\leq2)\\approx0.423\\).",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#6)"
+          }
         },
         {
           "q": "State the mean and variance of \\(X\\sim\\mathrm{Po}(\\lambda)\\), and find the standard deviation when \\(\\lambda=9\\).",
@@ -54,7 +197,18 @@
           "question_type": "FRQ",
           "target": "Mean and variance of a Poisson distribution",
           "answer": "\\(E(X)=\\lambda\\) and \\(\\mathrm{Var}(X)=\\lambda\\) — both equal \\(\\lambda\\), unlike most other distributions where mean and variance are independent parameters. When \\(\\lambda=9\\): standard deviation \\(=\\sqrt{9}=3\\).",
-          "explanation": "\\(E(X)=\\lambda\\) and \\(\\mathrm{Var}(X)=\\lambda\\) — both equal \\(\\lambda\\), unlike most other distributions where mean and variance are independent parameters. When \\(\\lambda=9\\): standard deviation \\(=\\sqrt{9}=3\\)."
+          "explanation": "\\(E(X)=\\lambda\\) and \\(\\mathrm{Var}(X)=\\lambda\\) — both equal \\(\\lambda\\), unlike most other distributions where mean and variance are independent parameters. When \\(\\lambda=9\\): standard deviation \\(=\\sqrt{9}=3\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 9,
+            "sd": 4,
+            "shadeRange": [
+              5,
+              13
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#7)"
+          }
         },
         {
           "q": "A random variable \\(X\\sim\\mathrm{Po}(7)\\). State \\(E(X)\\), \\(\\mathrm{Var}(X)\\), and the standard deviation, to three decimal places.",
@@ -62,7 +216,51 @@
           "question_type": "FRQ",
           "target": "Mean and variance of a Poisson distribution",
           "answer": "\\(E(X)=7\\), \\(\\mathrm{Var}(X)=7\\), standard deviation \\(=\\sqrt{7}\\approx2.646\\).",
-          "explanation": "\\(E(X)=7\\), \\(\\mathrm{Var}(X)=7\\), standard deviation \\(=\\sqrt{7}\\approx2.646\\)."
+          "explanation": "\\(E(X)=7\\), \\(\\mathrm{Var}(X)=7\\), standard deviation \\(=\\sqrt{7}\\approx2.646\\).",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "13",
+                "22",
+                35
+              ],
+              [
+                "12",
+                "16",
+                28
+              ],
+              [
+                25,
+                38,
+                63
+              ]
+            ],
+            "caption": "Reference Summary Table (#8)",
+            "caption_ar": "جدول ملخص البيانات (#8)",
+            "_totals": {
+              "rowTotals": [
+                35,
+                28
+              ],
+              "colTotals": [
+                25,
+                38
+              ],
+              "grandTotal": 63
+            }
+          }
         }
       ]
     },
@@ -75,7 +273,26 @@
           "question_type": "FRQ",
           "target": "Sums of independent Poisson variables",
           "answer": "The sum of independent Poisson variables is itself Poisson: total \\(\\sim\\mathrm{Po}(4+6)=\\mathrm{Po}(10)\\). Mean \\(=10\\); variance \\(=10\\).",
-          "explanation": "The sum of independent Poisson variables is itself Poisson: total \\(\\sim\\mathrm{Po}(4+6)=\\mathrm{Po}(10)\\). Mean \\(=10\\); variance \\(=10\\)."
+          "explanation": "The sum of independent Poisson variables is itself Poisson: total \\(\\sim\\mathrm{Po}(4+6)=\\mathrm{Po}(10)\\). Mean \\(=10\\); variance \\(=10\\).",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#9)"
+          }
         },
         {
           "q": "Three independent Poisson processes have rates \\(\\lambda_1=2\\), \\(\\lambda_2=4\\), \\(\\lambda_3=5\\) per hour. Find the mean and variance of the total number of events across all three processes in one hour.",
@@ -83,7 +300,26 @@
           "question_type": "FRQ",
           "target": "Sums of independent Poisson variables",
           "answer": "Total \\(\\sim\\mathrm{Po}(2+4+5)=\\mathrm{Po}(11)\\). Mean \\(=11\\); variance \\(=11\\).",
-          "explanation": "Total \\(\\sim\\mathrm{Po}(2+4+5)=\\mathrm{Po}(11)\\). Mean \\(=11\\); variance \\(=11\\)."
+          "explanation": "Total \\(\\sim\\mathrm{Po}(2+4+5)=\\mathrm{Po}(11)\\). Mean \\(=11\\); variance \\(=11\\).",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#10)"
+          }
         },
         {
           "q": "Explain the conditions under which a binomial distribution \\(X\\sim B(n,p)\\) can be well-approximated by a Poisson distribution, and state the value of \\(\\lambda\\) to use.",
@@ -91,7 +327,45 @@
           "question_type": "FRQ",
           "target": "Poisson as an approximation to the binomial",
           "answer": "The approximation is appropriate when \\(n\\) is large and \\(p\\) is small (a common guideline: \\(n>50\\) and \\(np<5\\)), so events are rare relative to the number of trials. Then \\(X\\) is approximately \\(\\mathrm{Po}(\\lambda)\\) with \\(\\lambda=np\\).",
-          "explanation": "The approximation is appropriate when \\(n\\) is large and \\(p\\) is small (a common guideline: \\(n>50\\) and \\(np<5\\)), so events are rare relative to the number of trials. Then \\(X\\) is approximately \\(\\mathrm{Po}(\\lambda)\\) with \\(\\lambda=np\\)."
+          "explanation": "The approximation is appropriate when \\(n\\) is large and \\(p\\) is small (a common guideline: \\(n>50\\) and \\(np<5\\)), so events are rare relative to the number of trials. Then \\(X\\) is approximately \\(\\mathrm{Po}(\\lambda)\\) with \\(\\lambda=np\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#11)",
+            "caption_ar": "جدول نمط مرجعي (#11)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "qtype": "MCQ",
@@ -104,7 +378,26 @@
             "7",
             "9"
           ],
-          "correct": 0
+          "correct": 0,
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#12)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -117,7 +410,26 @@
             "12",
             "13"
           ],
-          "correct": 2
+          "correct": 2,
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#13)"
+          }
         },
         {
           "q": "A call center receives calls at \\(\\lambda=6\\) per 10-minute interval. Find the probability of receiving more than \\(3\\) calls, given \\(P(X=0)\\approx0.00248\\), \\(P(X=1)\\approx0.01487\\), \\(P(X=2)\\approx0.04462\\), \\(P(X=3)\\approx0.08924\\).",
@@ -125,7 +437,51 @@
           "question_type": "FRQ",
           "target": "Using cumulative Poisson probabilities",
           "answer": "\\(P(X>3)=1-\\left[P(X=0)+P(X=1)+P(X=2)+P(X=3)\\right]=1-0.15121\\approx0.849\\).",
-          "explanation": "\\(P(X>3)=1-\\left[P(X=0)+P(X=1)+P(X=2)+P(X=3)\\right]=1-0.15121\\approx0.849\\)."
+          "explanation": "\\(P(X>3)=1-\\left[P(X=0)+P(X=1)+P(X=2)+P(X=3)\\right]=1-0.15121\\approx0.849\\).",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "26",
+                "22",
+                48
+              ],
+              [
+                "15",
+                "30",
+                45
+              ],
+              [
+                41,
+                52,
+                93
+              ]
+            ],
+            "caption": "Reference Summary Table (#14)",
+            "caption_ar": "جدول ملخص البيانات (#14)",
+            "_totals": {
+              "rowTotals": [
+                48,
+                45
+              ],
+              "colTotals": [
+                41,
+                52
+              ],
+              "grandTotal": 93
+            }
+          }
         },
         {
           "q": "A website receives visitors at \\(\\lambda=4\\) per minute. Find \\(P(1\\leq X\\leq3)\\), given \\(P(X=0)\\approx0.0183\\), \\(P(X=1)\\approx0.0733\\), \\(P(X=2)\\approx0.1465\\), \\(P(X=3)\\approx0.1954\\).",
@@ -133,7 +489,28 @@
           "question_type": "FRQ",
           "target": "Using cumulative Poisson probabilities",
           "answer": "\\(P(1\\leq X\\leq3)=P(X=1)+P(X=2)+P(X=3)=0.0733+0.1465+0.1954\\approx0.415\\).",
-          "explanation": "\\(P(1\\leq X\\leq3)=P(X=1)+P(X=2)+P(X=3)=0.0733+0.1465+0.1954\\approx0.415\\)."
+          "explanation": "\\(P(1\\leq X\\leq3)=P(X=1)+P(X=2)+P(X=3)=0.0733+0.1465+0.1954\\approx0.415\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              4
+            ],
+            "yl": [
+              -5,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1.5*x + 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#15)",
+            "caption": "Reference graph y = f(x)"
+          }
         }
       ]
     },
@@ -147,7 +524,28 @@
           "target": "Finding an unknown parameter",
           "cross_lesson": "13.01 Continuous Random Variables",
           "answer": "\\(e^{-\\lambda}=0.0498\\Rightarrow-\\lambda=\\ln(0.0498)\\approx-3.00\\Rightarrow\\lambda\\approx3\\).",
-          "explanation": "\\(e^{-\\lambda}=0.0498\\Rightarrow-\\lambda=\\ln(0.0498)\\approx-3.00\\Rightarrow\\lambda\\approx3\\)."
+          "explanation": "\\(e^{-\\lambda}=0.0498\\Rightarrow-\\lambda=\\ln(0.0498)\\approx-3.00\\Rightarrow\\lambda\\approx3\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -4,
+              4
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "x^3 - 3*x",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#16)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "A random variable \\(X\\sim\\mathrm{Po}(\\lambda)\\) has standard deviation \\(2\\). Find \\(\\lambda\\), and then find \\(P(X=\\lambda)\\), to three decimal places.",
@@ -156,7 +554,51 @@
           "target": "Finding an unknown parameter",
           "cross_lesson": "14.01 Sampling & Estimation",
           "answer": "Since variance \\(=\\lambda\\) and standard deviation \\(=\\sqrt{\\lambda}=2\\), \\(\\lambda=4\\). \\(P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195\\).",
-          "explanation": "Since variance \\(=\\lambda\\) and standard deviation \\(=\\sqrt{\\lambda}=2\\), \\(\\lambda=4\\). \\(P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195\\)."
+          "explanation": "Since variance \\(=\\lambda\\) and standard deviation \\(=\\sqrt{\\lambda}=2\\), \\(\\lambda=4\\). \\(P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195\\).",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "12",
+                "16",
+                28
+              ],
+              [
+                "10",
+                "14",
+                24
+              ],
+              [
+                22,
+                30,
+                52
+              ]
+            ],
+            "caption": "Reference Summary Table (#17)",
+            "caption_ar": "جدول ملخص البيانات (#17)",
+            "_totals": {
+              "rowTotals": [
+                28,
+                24
+              ],
+              "colTotals": [
+                22,
+                30
+              ],
+              "grandTotal": 52
+            }
+          }
         },
         {
           "q": "A random variable \\(X\\sim\\mathrm{Po}(\\lambda)\\) satisfies \\(P(X=1)=0.1494\\), where \\(\\lambda\\) is a whole number less than \\(5\\). Using \\(P(X=1)=\\lambda e^{-\\lambda}\\), determine \\(\\lambda\\) by trial.",
@@ -165,7 +607,28 @@
           "target": "Finding an unknown parameter",
           "cross_lesson": "15.01 Hypothesis Testing",
           "answer": "Testing \\(\\lambda=3\\): \\(3e^{-3}=3(0.049787)\\approx0.1494\\) ✓, matching the given probability. So \\(\\lambda=3\\).",
-          "explanation": "Testing \\(\\lambda=3\\): \\(3e^{-3}=3(0.049787)\\approx0.1494\\) ✓, matching the given probability. So \\(\\lambda=3\\)."
+          "explanation": "Testing \\(\\lambda=3\\): \\(3e^{-3}=3(0.049787)\\approx0.1494\\) ✓, matching the given probability. So \\(\\lambda=3\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              4
+            ],
+            "yl": [
+              -5,
+              5
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "-0.5*x^2 + 3",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#18)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Machine faults occur at an average rate of \\(\\lambda=2\\) per day. Find the probability that exactly \\(2\\) faults occur today, given that at least one fault occurs today, to three decimal places, using \\(P(X=0)\\approx0.1353\\) and \\(P(X=2)\\approx0.2707\\).",

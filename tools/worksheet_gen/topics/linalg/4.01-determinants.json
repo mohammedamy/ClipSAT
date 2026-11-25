@@ -14,7 +14,47 @@
           "question_type": "FRQ",
           "target": "2x2 determinants",
           "answer": "\\(4(5)-3(2)=20-6=14\\).",
-          "explanation": "\\(4(5)-3(2)=20-6=14\\)."
+          "explanation": "\\(4(5)-3(2)=20-6=14\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Basis Vector",
+              "e₁",
+              "e₂"
+            ],
+            "rows": [
+              [
+                "x-comp",
+                "4",
+                "2"
+              ],
+              [
+                "y-comp",
+                "1",
+                "4"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Component & Basis Table (#2)",
+            "caption_ar": "جدول المركبات والمتجهات (#2)",
+            "headers_ar": [
+              "متجه الأساس",
+              "e₁",
+              "e₂"
+            ],
+            "rows_ar": [
+              [
+                "المركبة x",
+                "4",
+                "2"
+              ],
+              [
+                "المركبة y",
+                "1",
+                "4"
+              ]
+            ]
+          }
         },
         {
           "q": "Find the determinant of the matrix with rows \\(\\langle1,2,3\\rangle,\\langle0,1,4\\rangle,\\langle5,6,0\\rangle\\) by cofactor expansion along the first row.",
@@ -22,7 +62,40 @@
           "question_type": "FRQ",
           "target": "3x3 determinants via cofactor expansion",
           "answer": "\\(1\\det(\\langle1,4\\rangle,\\langle6,0\\rangle)-2\\det(\\langle0,4\\rangle,\\langle5,0\\rangle)+3\\det(\\langle0,1\\rangle,\\langle5,6\\rangle) = 1(0-24)-2(0-20)+3(0-5) = -24+40-15=1\\).",
-          "explanation": "\\(1\\det(\\langle1,4\\rangle,\\langle6,0\\rangle)-2\\det(\\langle0,4\\rangle,\\langle5,0\\rangle)+3\\det(\\langle0,1\\rangle,\\langle5,6\\rangle) = 1(0-24)-2(0-20)+3(0-5) = -24+40-15=1\\)."
+          "explanation": "\\(1\\det(\\langle1,4\\rangle,\\langle6,0\\rangle)-2\\det(\\langle0,4\\rangle,\\langle5,0\\rangle)+3\\det(\\langle0,1\\rangle,\\langle5,6\\rangle) = 1(0-24)-2(0-20)+3(0-5) = -24+40-15=1\\).",
+          "figure": {
+            "type": "polygon",
+            "shape": "rectangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "w": 4,
+            "h": 3,
+            "sides": [
+              "a",
+              "b",
+              "a",
+              "b"
+            ],
+            "notToScale": true,
+            "caption": "Planar Region Schematic (#3)",
+            "caption_ar": "مخطط المنطقة المستوية (#3)"
+          }
         },
         {
           "q": "Recompute the determinant of the matrix with rows \\(\\langle1,2,3\\rangle,\\langle0,1,4\\rangle,\\langle5,6,0\\rangle\\) by expanding along the SECOND row instead, to confirm the answer matches.",
@@ -30,7 +103,25 @@
           "question_type": "FRQ",
           "target": "3x3 determinants via cofactor expansion",
           "answer": "Expanding along row 2 (with alternating signs \\(-,+,-\\)): \\(-0\\det(\\langle2,3\\rangle,\\langle6,0\\rangle)+1\\det(\\langle1,3\\rangle,\\langle5,0\\rangle)-4\\det(\\langle1,2\\rangle,\\langle5,6\\rangle) = 0+1(0-15)-4(6-10) = -15+16=1\\). Matches the earlier result of \\(1\\).",
-          "explanation": "Expanding along row 2 (with alternating signs \\(-,+,-\\)): \\(-0\\det(\\langle2,3\\rangle,\\langle6,0\\rangle)+1\\det(\\langle1,3\\rangle,\\langle5,0\\rangle)-4\\det(\\langle1,2\\rangle,\\langle5,6\\rangle) = 0+1(0-15)-4(6-10) = -15+16=1\\). Matches the earlier result of \\(1\\)."
+          "explanation": "Expanding along row 2 (with alternating signs \\(-,+,-\\)): \\(-0\\det(\\langle2,3\\rangle,\\langle6,0\\rangle)+1\\det(\\langle1,3\\rangle,\\langle5,0\\rangle)-4\\det(\\langle1,2\\rangle,\\langle5,6\\rangle) = 0+1(0-15)-4(6-10) = -15+16=1\\). Matches the earlier result of \\(1\\).",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              4,
+              6,
+              9,
+              13
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#4)"
+          }
         },
         {
           "q": "For \\(A\\) with rows \\(\\langle1,2\\rangle,\\langle3,4\\rangle\\) and \\(B\\) with rows \\(\\langle2,1\\rangle,\\langle0,3\\rangle\\), verify \\(\\det(AB)=\\det(A)\\det(B)\\).",
@@ -38,7 +129,47 @@
           "question_type": "FRQ",
           "target": "The determinant product rule",
           "answer": "\\(\\det A=4-6=-2\\), \\(\\det B=6-0=6\\), so \\(\\det A\\det B=-12\\). \\(AB\\) has rows \\(\\langle2,7\\rangle,\\langle6,15\\rangle\\) (computed as usual matrix multiplication), and \\(\\det(AB)=2(15)-7(6)=30-42=-12\\). They match.",
-          "explanation": "\\(\\det A=4-6=-2\\), \\(\\det B=6-0=6\\), so \\(\\det A\\det B=-12\\). \\(AB\\) has rows \\(\\langle2,7\\rangle,\\langle6,15\\rangle\\) (computed as usual matrix multiplication), and \\(\\det(AB)=2(15)-7(6)=30-42=-12\\). They match."
+          "explanation": "\\(\\det A=4-6=-2\\), \\(\\det B=6-0=6\\), so \\(\\det A\\det B=-12\\). \\(AB\\) has rows \\(\\langle2,7\\rangle,\\langle6,15\\rangle\\) (computed as usual matrix multiplication), and \\(\\det(AB)=2(15)-7(6)=30-42=-12\\). They match.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Basis Vector",
+              "e₁",
+              "e₂"
+            ],
+            "rows": [
+              [
+                "x-comp",
+                "2",
+                "-1"
+              ],
+              [
+                "y-comp",
+                "4",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Component & Basis Table (#5)",
+            "caption_ar": "جدول المركبات والمتجهات (#5)",
+            "headers_ar": [
+              "متجه الأساس",
+              "e₁",
+              "e₂"
+            ],
+            "rows_ar": [
+              [
+                "المركبة x",
+                "2",
+                "-1"
+              ],
+              [
+                "المركبة y",
+                "4",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "q": "Using the product rule \\(\\det(AB)=\\det(A)\\det(B)\\), explain why \\(\\det(A^{-1})=\\frac{1}{\\det A}\\) for an invertible matrix \\(A\\).",
@@ -46,7 +177,25 @@
           "question_type": "FRQ",
           "target": "The determinant product rule",
           "answer": "Since \\(AA^{-1}=I\\) and \\(\\det I=1\\), the product rule gives \\(\\det(A)\\det(A^{-1})=1\\). Dividing both sides by \\(\\det A\\) (nonzero since \\(A\\) is invertible) gives \\(\\det(A^{-1})=\\frac{1}{\\det A}\\).",
-          "explanation": "Since \\(AA^{-1}=I\\) and \\(\\det I=1\\), the product rule gives \\(\\det(A)\\det(A^{-1})=1\\). Dividing both sides by \\(\\det A\\) (nonzero since \\(A\\) is invertible) gives \\(\\det(A^{-1})=\\frac{1}{\\det A}\\)."
+          "explanation": "Since \\(AA^{-1}=I\\) and \\(\\det I=1\\), the product rule gives \\(\\det(A)\\det(A^{-1})=1\\). Dividing both sides by \\(\\det A\\) (nonzero since \\(A\\) is invertible) gives \\(\\det(A^{-1})=\\frac{1}{\\det A}\\).",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              4,
+              6,
+              9,
+              15
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#6)"
+          }
         },
         {
           "q": "If \\(A\\) is a \\(2\\times2\\) matrix with \\(\\det A=5\\), find \\(\\det(2A)\\) (scaling EVERY entry of \\(A\\) by \\(2\\)).",
@@ -54,7 +203,25 @@
           "question_type": "FRQ",
           "target": "Determinants and scalar multiples / row operations",
           "answer": "For an \\(n\\times n\\) matrix, \\(\\det(cA)=c^n\\det A\\). For \\(n=2\\): \\(\\det(2A)=2^2(5)=20\\).",
-          "explanation": "For an \\(n\\times n\\) matrix, \\(\\det(cA)=c^n\\det A\\). For \\(n=2\\): \\(\\det(2A)=2^2(5)=20\\)."
+          "explanation": "For an \\(n\\times n\\) matrix, \\(\\det(cA)=c^n\\det A\\). For \\(n=2\\): \\(\\det(2A)=2^2(5)=20\\).",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              4,
+              6,
+              9,
+              15
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#7)"
+          }
         },
         {
           "q": "If \\(A\\) is a \\(3\\times3\\) matrix with \\(\\det A=5\\), find \\(\\det(2A)\\).",
@@ -62,7 +229,47 @@
           "question_type": "FRQ",
           "target": "Determinants and scalar multiples / row operations",
           "answer": "\\(\\det(2A)=2^3(5)=40\\) (note this is different from the \\(2\\times2\\) case — the exponent depends on the matrix's size).",
-          "explanation": "\\(\\det(2A)=2^3(5)=40\\) (note this is different from the \\(2\\times2\\) case — the exponent depends on the matrix's size)."
+          "explanation": "\\(\\det(2A)=2^3(5)=40\\) (note this is different from the \\(2\\times2\\) case — the exponent depends on the matrix's size).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Basis Vector",
+              "e₁",
+              "e₂"
+            ],
+            "rows": [
+              [
+                "x-comp",
+                "3",
+                "1"
+              ],
+              [
+                "y-comp",
+                "1",
+                "6"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Component & Basis Table (#8)",
+            "caption_ar": "جدول المركبات والمتجهات (#8)",
+            "headers_ar": [
+              "متجه الأساس",
+              "e₁",
+              "e₂"
+            ],
+            "rows_ar": [
+              [
+                "المركبة x",
+                "3",
+                "1"
+              ],
+              [
+                "المركبة y",
+                "1",
+                "6"
+              ]
+            ]
+          }
         }
       ]
     },
@@ -75,7 +282,25 @@
           "question_type": "FRQ",
           "target": "Determinants and scalar multiples / row operations",
           "answer": "Swapping rows negates the determinant: \\(\\det=-(-2)=2\\). (Direct check: \\(3(2)-4(1)=6-4=2\\).)",
-          "explanation": "Swapping rows negates the determinant: \\(\\det=-(-2)=2\\). (Direct check: \\(3(2)-4(1)=6-4=2\\).)"
+          "explanation": "Swapping rows negates the determinant: \\(\\det=-(-2)=2\\). (Direct check: \\(3(2)-4(1)=6-4=2\\).)",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              4,
+              6,
+              9,
+              12
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#9)"
+          }
         },
         {
           "q": "State the invertibility criterion in terms of the determinant.",
@@ -83,7 +308,25 @@
           "question_type": "FRQ",
           "target": "The invertibility criterion",
           "answer": "A square matrix \\(A\\) is invertible if and only if \\(\\det A\\neq0\\).",
-          "explanation": "A square matrix \\(A\\) is invertible if and only if \\(\\det A\\neq0\\)."
+          "explanation": "A square matrix \\(A\\) is invertible if and only if \\(\\det A\\neq0\\).",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              4,
+              6,
+              9,
+              15
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#10)"
+          }
         },
         {
           "q": "Is the matrix with rows \\(\\langle2,4\\rangle,\\langle1,2\\rangle\\) invertible? Justify using the determinant.",
@@ -91,7 +334,47 @@
           "question_type": "FRQ",
           "target": "The invertibility criterion",
           "answer": "\\(\\det=2(2)-4(1)=0\\). Since the determinant is \\(0\\), the matrix is NOT invertible (singular).",
-          "explanation": "\\(\\det=2(2)-4(1)=0\\). Since the determinant is \\(0\\), the matrix is NOT invertible (singular)."
+          "explanation": "\\(\\det=2(2)-4(1)=0\\). Since the determinant is \\(0\\), the matrix is NOT invertible (singular).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Basis Vector",
+              "e₁",
+              "e₂"
+            ],
+            "rows": [
+              [
+                "x-comp",
+                "1",
+                "-1"
+              ],
+              [
+                "y-comp",
+                "3",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Component & Basis Table (#11)",
+            "caption_ar": "جدول المركبات والمتجهات (#11)",
+            "headers_ar": [
+              "متجه الأساس",
+              "e₁",
+              "e₂"
+            ],
+            "rows_ar": [
+              [
+                "المركبة x",
+                "1",
+                "-1"
+              ],
+              [
+                "المركبة y",
+                "3",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "q": "For what value(s) of \\(k\\) is the matrix with rows \\(\\langle k,2\\rangle,\\langle3,k\\rangle\\) NOT invertible?",
@@ -99,7 +382,25 @@
           "question_type": "FRQ",
           "target": "Applying the invertibility criterion",
           "answer": "\\(\\det=k^2-6\\). Setting \\(k^2-6=0\\) gives \\(k=\\pm\\sqrt{6}\\). The matrix fails to be invertible exactly when \\(k=\\sqrt{6}\\) or \\(k=-\\sqrt{6}\\).",
-          "explanation": "\\(\\det=k^2-6\\). Setting \\(k^2-6=0\\) gives \\(k=\\pm\\sqrt{6}\\). The matrix fails to be invertible exactly when \\(k=\\sqrt{6}\\) or \\(k=-\\sqrt{6}\\)."
+          "explanation": "\\(\\det=k^2-6\\). Setting \\(k^2-6=0\\) gives \\(k=\\pm\\sqrt{6}\\). The matrix fails to be invertible exactly when \\(k=\\sqrt{6}\\) or \\(k=-\\sqrt{6}\\).",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              3,
+              4,
+              7,
+              12
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#12)"
+          }
         },
         {
           "q": "For a \\(2\\times2\\) matrix \\(A\\) with rows \\(\\mathbf{r}_1,\\mathbf{r}_2\\), \\(|\\det A|\\) gives the area of the parallelogram spanned by \\(\\mathbf{r}_1\\) and \\(\\mathbf{r}_2\\). Find this area for \\(\\mathbf{r}_1=\\langle3,0\\rangle\\), \\(\\mathbf{r}_2=\\langle1,4\\rangle\\).",
@@ -107,7 +408,26 @@
           "question_type": "FRQ",
           "target": "Geometric meaning of the determinant",
           "answer": "\\(\\det=3(4)-0(1)=12\\). Area \\(=|12|=12\\).",
-          "explanation": "\\(\\det=3(4)-0(1)=12\\). Area \\(=|12|=12\\)."
+          "explanation": "\\(\\det=3(4)-0(1)=12\\). Area \\(=|12|=12\\).",
+          "figure": {
+            "type": "transversal",
+            "angle": 58,
+            "angleDeg": 58,
+            "angle1": "α",
+            "angle2": "β",
+            "rel": "cointerior",
+            "labels": {
+              "2": "α",
+              "5": "β"
+            },
+            "lineLabels": [
+              "l",
+              "m"
+            ],
+            "notToScale": true,
+            "caption": "Note: Figure not drawn to scale.",
+            "caption_ar": "ملاحظة: الرسم ليس على القياس."
+          }
         },
         {
           "q": "Explain, using the geometric meaning of the determinant, why a matrix with two identical rows always has determinant \\(0\\).",
@@ -115,7 +435,47 @@
           "question_type": "FRQ",
           "target": "Geometric meaning of the determinant",
           "answer": "Two identical rows span a degenerate \"parallelogram\" with zero area (the two vectors are parallel, in fact equal, so they don't sweep out any two-dimensional region) — matching \\(\\det=0\\).",
-          "explanation": "Two identical rows span a degenerate \"parallelogram\" with zero area (the two vectors are parallel, in fact equal, so they don't sweep out any two-dimensional region) — matching \\(\\det=0\\)."
+          "explanation": "Two identical rows span a degenerate \"parallelogram\" with zero area (the two vectors are parallel, in fact equal, so they don't sweep out any two-dimensional region) — matching \\(\\det=0\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Basis Vector",
+              "e₁",
+              "e₂"
+            ],
+            "rows": [
+              [
+                "x-comp",
+                "5",
+                "1"
+              ],
+              [
+                "y-comp",
+                "4",
+                "5"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Component & Basis Table (#14)",
+            "caption_ar": "جدول المركبات والمتجهات (#14)",
+            "headers_ar": [
+              "متجه الأساس",
+              "e₁",
+              "e₂"
+            ],
+            "rows_ar": [
+              [
+                "المركبة x",
+                "5",
+                "1"
+              ],
+              [
+                "المركبة y",
+                "4",
+                "5"
+              ]
+            ]
+          }
         },
         {
           "q": "Find the determinant of the identity matrix \\(I_3\\) (rows \\(\\langle1,0,0\\rangle,\\langle0,1,0\\rangle,\\langle0,0,1\\rangle\\)).",
@@ -123,7 +483,25 @@
           "question_type": "FRQ",
           "target": "Determinants of special matrices",
           "answer": "\\(\\det I_3=1\\) (expanding along any row/column, the product of the diagonal entries, all \\(1\\)'s, with every off-diagonal cofactor contributing \\(0\\)).",
-          "explanation": "\\(\\det I_3=1\\) (expanding along any row/column, the product of the diagonal entries, all \\(1\\)'s, with every off-diagonal cofactor contributing \\(0\\))."
+          "explanation": "\\(\\det I_3=1\\) (expanding along any row/column, the product of the diagonal entries, all \\(1\\)'s, with every off-diagonal cofactor contributing \\(0\\)).",
+          "figure": {
+            "type": "bars",
+            "labels": [
+              "k1",
+              "k2",
+              "k3",
+              "k4"
+            ],
+            "values": [
+              2,
+              6,
+              9,
+              12
+            ],
+            "xLabel": "Index n",
+            "yLabel": "Magnitude",
+            "caption": "Discrete Sequence Profile (#15)"
+          }
         }
       ]
     },

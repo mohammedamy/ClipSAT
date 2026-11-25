@@ -166,13 +166,16 @@ def _conv_env_mathtext(m):
 
 def _normalize_mathtext(tex):
     """Normalize standard LaTeX shorthands into matplotlib mathtext equivalents."""
+    tex = re.sub(r"\s*\n+\s*", " ", tex)
     tex = re.sub(
         r"\\begin\{(pmatrix|bmatrix|vmatrix|Bmatrix|matrix|cases|aligned|align\*?|array)\}(?:\{[^{}]*\})?(.*?)\\end\{\1\}",
         _conv_env_mathtext,
         tex,
         flags=re.S,
     )
+    tex = re.sub(r"\\\\\s*(?:\[[^\]]*\])?", "; ", tex)
     tex = re.sub(r"\\(?:d|t|c)frac(?![a-zA-Z])", r"\\frac", tex)
+    tex = re.sub(r"\\(?:d|t)binom(?![a-zA-Z])", r"\\binom", tex)
     tex = re.sub(r"\\sqrt\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\sqrt{\1}", tex)
     tex = re.sub(r"\\frac\s*([0-9])\s*([0-9])", r"\\frac{\1}{\2}", tex)
     tex = re.sub(r"\\frac\s*([0-9a-zA-Z])\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\frac{\1}{\2}", tex)
@@ -205,11 +208,12 @@ def _normalize_mathtext(tex):
     tex = re.sub(r"\\degree(?![a-zA-Z])", r"^\\circ", tex)
     tex = re.sub(r"\\triangle(?![a-zA-Z])", r"\\Delta ", tex)
     tex = re.sub(r"\\newline(?![a-zA-Z])", "; ", tex)
-    tex = re.sub(r"\\\|", r"||", tex)
-    tex = re.sub(r"\\mathbf\s+([a-zA-Z0-9])(?![a-zA-Z0-9])", r"\\mathbf{\1}", tex)
+    tex = re.sub(r"\\(?:lVert|rVert|Vert|\|)", r"||", tex)
+    tex = re.sub(r"\\(?:lvert|rvert)(?![a-zA-Z])", r"|", tex)
+    tex = re.sub(r"\\(mathbf|mathcal|mathbb|mathrm|mathit|mathscr)\s+([a-zA-Z0-9])(?![a-zA-Z0-9])", r"\\\1{\2}", tex)
     tex = re.sub(r"\\boxed\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}", r"\1", tex)
-    tex = re.sub(r"\\textbf\{([^{}]*)\}", r"\\mathbf{\1}", tex)
-    tex = re.sub(r"\\textit\{([^{}]*)\}", r"\\mathit{\1}", tex)
+    tex = re.sub(r"\\textbf\{([^{}]*)\}", lambda m: r"\mathbf{" + m.group(1).replace(" ", r"\ ") + "}", tex)
+    tex = re.sub(r"\\textit\{([^{}]*)\}", lambda m: r"\mathit{" + m.group(1).replace(" ", r"\ ") + "}", tex)
     # Map any Arabic unit/label tokens inside math mode to Latin math symbols
     _ar_math_map = {
         "كم/س": "km/h",
@@ -243,8 +247,8 @@ def _normalize_mathtext(tex):
     tex = re.sub(r"\\frac\s*\{\s*\}\s*\{\s*\}", r"\\frac{\\mathrm{A}}{\\mathrm{B}}", tex)
     tex = re.sub(r"\\frac\s*\{\s*\}", r"\\frac{\\mathrm{A}}", tex)
     tex = re.sub(r"\\frac\s*(\{[^{}]+\})\s*\{\s*\}", r"\\frac\1{\\mathrm{B}}", tex)
-    tex = re.sub(r"\\text\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
-    tex = re.sub(r"\\operatorname\*?\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
+    tex = re.sub(r"\\text\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace('"', "").replace(":", "").strip().replace(" ", r"\ ") + "}", tex)
+    tex = re.sub(r"\\operatorname\*?\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).strip().replace(" ", r"\ ") + "}", tex)
     return tex
 
 
@@ -596,16 +600,21 @@ def _draw_numberline(ax, spec):
         ax.annotate("", xy=(tip, y), xytext=(tip - 0.001 if tip > 0 else tip + 0.001, y),
                     arrowprops=dict(arrowstyle="-|>", color=INK, linewidth=1.4,
                                      mutation_scale=11))
-    for t in range(int(np.ceil(lo)), int(np.floor(hi)) + 1):
+    tstep = max(1, int(round((hi - lo) / 10))) if (hi - lo) > 16 else 1
+    for t in range(int(np.ceil(lo)), int(np.floor(hi)) + 1, tstep):
         ax.plot([t, t], [-0.07, 0.07], color=INK, linewidth=1)
         ax.text(t, -0.26, str(t), fontsize=8.5, color=INK, ha="center", va="top")
-    for m in spec.get("marks", []):
-        xv, open_ = m["x"], m.get("open", False)
+    raw_marks = spec.get("marks") if spec.get("marks") is not None else spec.get("pts", [])
+    for m in raw_marks:
+        if isinstance(m, (int, float)):
+            xv, open_, lbl = float(m), False, None
+        else:
+            xv, open_, lbl = float(m["x"]), m.get("open", False), m.get("label")
         ax.plot([xv], [y], marker="o", markersize=7.5,
                 markerfacecolor="white" if open_ else AMBER,
                 markeredgecolor=AMBER, markeredgewidth=1.7, zorder=3)
-        if m.get("label"):
-            ax.text(xv, 0.26, m["label"], fontsize=8.5, color=AMBER_TEXT,
+        if lbl:
+            ax.text(xv, 0.26, lbl, fontsize=8.5, color=AMBER_TEXT,
                     ha="center", va="bottom")
     ax.set_xlim(lo - 0.65, hi + 0.65)
     ax.set_ylim(-0.55, 0.55)
@@ -960,9 +969,11 @@ def _shape_if_ar(txt):
 
 def _py_expr(expr):
     s = str(expr or "0").strip()
+    s = re.sub(r"\s+for\s+[a-zA-Z_]\w*\s+in\s+.*$", "", s)
     s = re.sub(r"\bMath\.PI\b", "pi", s)
     s = re.sub(r"\bMath\.E\b", "e", s)
     s = re.sub(r"\bMath\.", "", s)
+    s = re.sub(r"\blog\(\s*([^,()]+)\s*,\s*([^,()]+)\s*\)", r"(log(\1)/log(\2))", s)
     s = s.replace("^", "**")
     s = re.sub(r"\bln\s*\(", "log(", s)
     s = re.sub(r"(\d)([a-zA-Z(])", r"\1*\2", s)
@@ -992,15 +1003,23 @@ def _normalize_fig_spec(raw):
     if isinstance(s.get("xl"), (list, tuple)) and len(s["xl"]) == 2:
         s.setdefault("xmin", s["xl"][0])
         s.setdefault("xmax", s["xl"][1])
+    elif isinstance(s.get("xlim"), (list, tuple)) and len(s["xlim"]) == 2:
+        s.setdefault("xmin", s["xlim"][0])
+        s.setdefault("xmax", s["xlim"][1])
     elif isinstance(s.get("xrange"), (list, tuple)) and len(s["xrange"]) == 2:
         s.setdefault("xmin", s["xrange"][0])
         s.setdefault("xmax", s["xrange"][1])
     if isinstance(s.get("yl"), (list, tuple)) and len(s["yl"]) == 2:
         s.setdefault("ymin", s["yl"][0])
         s.setdefault("ymax", s["yl"][1])
+    elif isinstance(s.get("ylim"), (list, tuple)) and len(s["ylim"]) == 2:
+        s.setdefault("ymin", s["ylim"][0])
+        s.setdefault("ymax", s["ylim"][1])
     elif isinstance(s.get("yrange"), (list, tuple)) and len(s["yrange"]) == 2:
         s.setdefault("ymin", s["yrange"][0])
         s.setdefault("ymax", s["yrange"][1])
+    if s["type"] == "scatter" and not s.get("pts") and isinstance(s.get("points"), list):
+        s["pts"] = s["points"]
     if s["type"] == "plot":
         fns_norm = []
         for f in s.get("fns", []):

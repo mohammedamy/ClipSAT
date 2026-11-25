@@ -89,7 +89,7 @@
               "label": "x⁽¹⁾"
             },
             {
-              "x": -2.0,
+              "x": -2,
               "y": -2.3,
               "label": "x⁽²⁾"
             },
@@ -562,6 +562,130 @@
         "solution": {
           "en": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.10 \\times 0.90 = 0.0900 \\).",
           "ar": null
+        }
+      },
+      {
+        "kind": "structuredQuestion",
+        "id": "mathai-ch-frq-ai-pca-dimensionality-1",
+        "title": {
+          "en": "Dimensionality Reduction, Covariance & PCA — 6-Mark Structured Problem",
+          "ar": "تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA) — مسألة مهيكلة من ٦ درجات"
+        },
+        "marks": 6,
+        "calc": true,
+        "difficulty": "medium",
+        "archetype": "STEM Multi-Part Extended Problem",
+        "figure": {
+          "type": "fn",
+          "xl": [
+            -1,
+            4
+          ],
+          "yl": [
+            -3,
+            12
+          ],
+          "xStep": 1,
+          "yStep": 2,
+          "fns": [
+            {
+              "fn": "5*x^2 - 5*x",
+              "label": "y = f(x)"
+            }
+          ],
+          "caption": "Reference Curve (ai-pca-dimensionality)",
+          "caption_ar": "تمثيل بياني مرجعي (ai-pca-dimensionality)"
+        },
+        "stem": {
+          "en": "For Dimensionality Reduction, Covariance & PCA, examine the quadratic-rate model \\(f(x) = 5x^2 - 5x + 1\\) on \\(x \\in [0, 3]\\).",
+          "ar": "في موضوع تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA)، ادرس الدالة \\(f(x) = 5x^2 - 5x + 1\\) على الفترة \\([0, 3]\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Compute \\(f(0)\\) and \\(f(2)\\).",
+              "ar": "احسب قيمتي \\(f(0)\\) و \\(f(2)\\)."
+            },
+            "marks": 2,
+            "answer": "1 and 11",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Substitutes x=0 and x=2",
+                  "ar": "يعوّض القيمتين في الدالة"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains 1 and 11",
+                  "ar": "يحصل على 1 و 11"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Find the derivative/rate \\(f'(x)\\) and critical point \\(x_c\\).",
+              "ar": "أوجد المشتقة \\(f'(x)\\) والنقطة الحرجة \\(x_c\\)."
+            },
+            "marks": 2,
+            "answer": "10x - 5; x_c = 5/10",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Differentiates to 10x - 5",
+                  "ar": "يشتق الدالة التربيعية"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Solves x_c = 5/10",
+                  "ar": "يحل لإيجاد النقطة الحرجة"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Calculate the average rate of change from \\(x = 0\\) to \\(x = 2\\).",
+              "ar": "احسب متوسط معدل التغيّر من \\(x = 0\\) إلى \\(x = 2\\)."
+            },
+            "marks": 2,
+            "answer": "5",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Applies (f(2) - f(0)) / 2",
+                  "ar": "يطبّق قانون متوسط معدل التغيّر"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 5",
+                  "ar": "يبسّط الناتج إلى 5"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ],
+        "solution": {
+          "en": "(a) \\(f(0)=1, f(2)=11\\). (b) \\(f'(x)=10x-5 \\implies x_c = \\frac{5}{10}\\). (c) Average rate \\(= \\frac{10}{2} = 5\\).",
+          "ar": "(أ) \\(f(0)=1\\) و \\(f(2)=11\\). (ب) \\(f'(x)=10x-5\\). (ج) متوسط معدل التغيّر يساوي \\(5\\)."
         }
       },
       {

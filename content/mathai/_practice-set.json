@@ -63,6 +63,22 @@
       "solution": {
         "en": "<p>The problem requires us to find the minimum number of principal components such that the cumulative explained variance is at least \\(90\\%\\). The provided information states:</p><p>- The first 3 principal components capture \\(70\\%\\) of the variance.<br>- The first 6 principal components capture \\(85\\%\\) of the variance.<br>- The first 10 principal components capture \\(92\\%\\) of the variance.</p><p>We need to find the smallest \\(k\\) such that the cumulative variance captured by the first \\(k\\) principal components is \\(\\ge 90\\%\\).</p><p>Checking the given values:<br>- For \\(k = 3\\), variance captured = \\(70\\%\\), which is less than \\(90\\%\\).<br>- For \\(k = 6\\), variance captured = \\(85\\%\\), which is less than \\(90\\%\\).<br>- For \\(k = 10\\), variance captured = \\(92\\%\\), which is greater than or equal to \\(90\\%\\).</p><p>Therefore, the minimum number of principal components required to retain at least \\(90\\%\\) of the variance is 10. When PCA reduces the dimensionality of data from \\(\\mathbb{R}^D\\) to \\(\\mathbb{R}^k\\) using the top \\(k\\) principal components, the dimension of each transformed data point is \\(k\\). In this case, \\(k=10\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "venn",
+        "sets": [
+          {
+            "label": "A",
+            "only": 15
+          },
+          {
+            "label": "B",
+            "only": 13
+          }
+        ],
+        "both": 5,
+        "outside": 5,
+        "caption": "Set Relationship Diagram (#2)"
       }
     },
     {
@@ -343,6 +359,26 @@
       "solution": {
         "en": "<p>Dot product \\(\\mathbf{a} \\cdot \\mathbf{b} = (5)(10) + (10)(5) = 100\\). Product of norms \\(\\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 125\\). Cosine similarity = \\(\\frac{100}{125} = 0.800\\).</p><p><strong>Final Answer:</strong> \\(0.800\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "triangle",
+        "verts": [
+          "A",
+          "B",
+          "C"
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sides": [
+          "a",
+          "b",
+          "c"
+        ],
+        "notToScale": true,
+        "caption": "Similar figures (not drawn to scale)."
       }
     },
     {
@@ -355,6 +391,20 @@
       "solution": {
         "en": "<p>The feature map is defined as \\(\\phi(\\mathbf{x}) = [\\mathbf{x}^T \\mathbf{x}, \\mathbf{x}^T \\mathbf{x}, \\dots, \\mathbf{x}^T \\mathbf{x}]^T\\), where \\(\\mathbf{x} \\in \\mathbb{R}^{10}\\). The term \\(\\mathbf{x}^T \\mathbf{x}\\) is the squared Euclidean norm of \\(\\mathbf{x}\\), denoted as \\(\\|\\mathbf{x}\\|^2\\). This is a scalar value. Thus, the mapping \\(\\phi\\) produces a vector where each component is the same scalar value, \\(\\|\\mathbf{x}\\|^2\\). Let \\(k = \\|\\mathbf{x}\\|^2\\). Then \\(\\phi(\\mathbf{x}) = [k, k, \\dots, k]^T\\) in \\(\\mathbb{R}^{d}\\). This means that the image of the mapping \\(\\phi\\) is a subspace spanned by a single vector. For example, if \\(d=15\\), then \\(\\phi(\\mathbf{x}) = [k, k, \\dots, k]^T\\) which can be written as \\(k \\cdot [1, 1, \\dots, 1]^T\\). The vector \\([1, 1, \\dots, 1]^T\\) forms a basis for the image space. Therefore, the dimension of the image space, which is equivalent to its rank, is 1, regardless of the value of \\(d\\) (as long as \\(d \\ge 1\\)). The problem states that \\(d=15\\), but the effective rank of the image of this specific feature map is always 1, as all output vectors lie on a single line passing through the origin.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#12)"
       }
     },
     {
@@ -417,6 +467,20 @@
       "solution": {
         "en": "<p>The total variance in the dataset is the sum of all eigenvalues: \\(\\sum_{i=1}^p \\lambda_i = 10.5 + 5.2 + 2.1 + 0.8 + 0.4 = 19.0\\).</p><p>We need to find the minimum \\(k\\) such that \\(\\frac{\\sum_{i=1}^k \\lambda_i}{\\sum_{i=1}^p \\lambda_i} \\ge 0.90\\).</p><p>Let's check for different values of \\(k\\):</p><p>For \\(k=1\\): The variance retained is \\(\\frac{10.5}{19.0} \\approx 0.553\\), which is less than 0.90.</p><p>For \\(k=2\\): The variance retained is \\(\\frac{10.5 + 5.2}{19.0} = \\frac{15.7}{19.0} \\approx 0.826\\), which is less than 0.90.</p><p>For \\(k=3\\): The variance retained is \\(\\frac{10.5 + 5.2 + 2.1}{19.0} = \\frac{17.8}{19.0} \\approx 0.937\\), which is greater than or equal to 0.90.</p><p>Therefore, a minimum of 3 principal components are required to retain at least 90% of the total variance.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#14)"
       }
     },
     {
@@ -429,6 +493,38 @@
       "solution": {
         "en": "<p>The problem provides a simple linear regression equation \\(\\hat{y} = b_0 + b_1 x\\) and specific values for the intercept \\(b_0 = 1\\) and the slope \\(b_1 = 2\\). We are asked to find the predicted value \\(\\hat{y}\\) for a given value of \\(x\\). \n\\nWe substitute \\(x = 3\\) into the regression equation: \n\\(\\hat{y} = 1 + 2(3)\\) \n\\(\\hat{y} = 1 + 6\\) \n\\(\\hat{y} = 7\\) \n\\nTherefore, the predicted value \\(\\hat{y}\\) for \\(x = 3\\) is 7. The data points \\((2, 5)\\) and \\((4, 9)\\) are consistent with this regression line: for \\(x=2\\), \\(\\hat{y} = 1 + 2(2) = 5\\), and for \\(x=4\\), \\(\\hat{y} = 1 + 2(4) = 9\\).</p><p><strong>Final Answer:</strong> \\(7\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "scatter",
+        "pts": [
+          [
+            1,
+            11
+          ],
+          [
+            2,
+            9
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            6,
+            2
+          ]
+        ],
+        "xLabel": "x",
+        "yLabel": "y",
+        "caption": "Scatterplot Data (#15)"
       }
     },
     {
@@ -441,6 +537,58 @@
       "solution": {
         "en": "<p>The logistic sigmoid function is \\(\\sigma(z) = \\frac{1}{1 + e^{-z}}\\). The decision boundary is where \\(\\sigma(z) = 0.5\\). Setting \\(\\sigma(z) = 0.5\\) gives \\(\\frac{1}{1 + e^{-z}} = 0.5\\), which implies \\(1 = 0.5(1 + e^{-z})\\), so \\(2 = 1 + e^{-z}\\), and \\(e^{-z} = 1\\). This occurs when \\(-z = 0\\), or \\(z = 0\\). Therefore, the decision boundary is defined by \\(z = 0\\).</p><p>The linear component of the model is given by \\(z = w_1 x_1 + w_2 x_2 + b\\). In this problem, \\(z = 2x_1 - x_2 + b\\).</p><p>Since the decision boundary is \\(z = 0\\), we have \\(2x_1 - x_2 + b = 0\\).</p><p>The classification boundary passes through the point \\((x_1, x_2) = (3, 1)\\). Substituting these values into the equation for the decision boundary:<br>\\(2(3) - 1 + b = 0\\)<br>\\(6 - 1 + b = 0\\)<br>\\(5 + b = 0\\)<br>\\(b = -5\\)</p><p><strong>Final Answer:</strong> \\(b = -5\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "2",
+          "4",
+          "6"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "4",
+            "8",
+            "12",
+            "16"
+          ],
+          [
+            "f'(x)",
+            "5",
+            "3",
+            "5",
+            "3"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#16)",
+        "caption_ar": "جدول القيم المختارة (#16)",
+        "headers_ar": [
+          "x",
+          "0",
+          "2",
+          "4",
+          "6"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "4",
+            "8",
+            "12",
+            "16"
+          ],
+          [
+            "f'(x)",
+            "5",
+            "3",
+            "5",
+            "3"
+          ]
+        ]
       }
     },
     {
@@ -453,6 +601,27 @@
       "solution": {
         "en": "<p>To find the minimum of the quadratic loss function \\(L(w) = 3w^2 - 12w + 10\\), we can find the derivative with respect to \\(w\\) and set it to zero. The derivative of \\(L(w)\\) with respect to \\(w\\) is: \\(\\frac{dL}{dw} = 6w - 12\\). Setting the derivative to zero to find the critical point: \\(6w - 12 = 0\\) \\(6w = 12\\) \\(w = \\frac{12}{6}\\) \\(w = 2\\).  The second derivative is \\(\\frac{d^2L}{dw^2} = 6\\), which is positive, confirming that \\(w=2\\) corresponds to a minimum.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          -4,
+          4
+        ],
+        "yl": [
+          -5,
+          5
+        ],
+        "xStep": 2,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "-0.5*x^2 + 3",
+            "label": "y = f(x)"
+          }
+        ],
+        "title": "Coordinate Graph (#17)",
+        "caption": "Reference graph y = f(x)"
       }
     },
     {
@@ -465,6 +634,20 @@
       "solution": {
         "en": "<p>The problem involves a matrix-vector multiplication. We are given the matrix \\(M = \\begin{bmatrix} 2 & k \\\\ 1 & 3 \\end{bmatrix}\\) and the vectors \\(\\mathbf{v} = \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix}\\) and \\(\\mathbf{v'} = \\begin{bmatrix} 8 \\\\ 7 \\end{bmatrix}\\). The transformation is defined by \\(\\mathbf{v'} = M\\mathbf{v}\\). Let's perform the matrix-vector multiplication:</p><p>\\[\\begin{bmatrix} 8 \\\\ 7 \\end{bmatrix} = \\begin{bmatrix} 2 & k \\\\ 1 & 3 \\end{bmatrix} \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix}\\]</p><p>This expands to two equations:</p><p>1. \\(8 = (2)(1) + (k)(2)\\)<br>2. \\(7 = (1)(1) + (3)(2)\\)</p><p>Let's solve the first equation for \\(k\\):</p><p>\\[8 = 2 + 2k\\]</p><p>Subtract 2 from both sides:</p><p>\\[6 = 2k\\]</p><p>Divide by 2:</p><p>\\[k = 3\\]</p><p>Now, let's verify this with the second equation. The second equation is \\(7 = 1 + 6\\), which simplifies to \\(7 = 7\\). This confirms our value of \\(k = 3\\) is consistent.</p><p>Therefore, the unknown parameter \\(k\\) is 3.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#18)"
       }
     },
     {
@@ -477,6 +660,50 @@
       "solution": {
         "en": "<p>The log-likelihood function for \\(n=3\\) observations is \\(\\ell(\\lambda) = (x_1 \\log(\\lambda) - \\log(x_1!) - \\lambda) + (x_2 \\log(\\lambda) - \\log(x_2!) - \\lambda) + (x_3 \\log(\\lambda) - \\log(x_3!) - \\lambda)\\).</p><p>Part 1: The derivative of the log-likelihood function with respect to \\(\\lambda\\) is:<br>\\(\\frac{d\\ell}{d\\lambda} = \\sum_{i=1}^{3} \\left( \\frac{x_i}{\\lambda} - 1 \\right) = \\left( \\frac{x_1}{\\lambda} - 1 \\right) + \\left( \\frac{x_2}{\\lambda} - 1 \\right) + \\left( \\frac{x_3}{\\lambda} - 1 \\right)\\).</p><p>Part 2: To find the MLE, we set the derivative to zero:<br>\\(\\frac{x_1}{\\lambda} - 1 + \\frac{x_2}{\\lambda} - 1 + \\frac{x_3}{\\lambda} - 1 = 0\\)<br>\\(\\frac{x_1 + x_2 + x_3}{\\lambda} - 3 = 0\\)<br>\\(\\frac{x_1 + x_2 + x_3}{\\lambda} = 3\\)<br>\\(\\hat{\\lambda} = \\frac{x_1 + x_2 + x_3}{3}\\).<br>Substituting the observed values \\(x_1 = 3, x_2 = 5, x_3 = 4\\):<br>\\(\\hat{\\lambda} = \\frac{3+5+4}{3} = \\frac{12}{3} = 4\\).</p><p><strong>Final Answer:</strong> \\(\\hat{\\lambda} = \\frac{3+5+4}{3} = 4\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "21",
+            "10",
+            31
+          ],
+          [
+            "17",
+            "16",
+            33
+          ],
+          [
+            38,
+            26,
+            64
+          ]
+        ],
+        "caption": "Reference Summary Table (#19)",
+        "caption_ar": "جدول ملخص البيانات (#19)",
+        "_totals": {
+          "rowTotals": [
+            31,
+            33
+          ],
+          "colTotals": [
+            38,
+            26
+          ],
+          "grandTotal": 64
+        }
       }
     },
     {
@@ -489,6 +716,20 @@
       "solution": {
         "en": "<p>The transformation is defined by \\(\\mathbf{v}' = \\mathbf{M}\\mathbf{v}\\). Substituting the given vectors and matrix form:</p><p>\\(\\begin{pmatrix} 7 \\\\ 11 \\end{pmatrix} = \\begin{pmatrix} a & 1 \\\\ 4 & b \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}\\)</p><p>Performing the matrix multiplication:</p><p>\\(\\begin{pmatrix} 7 \\\\ 11 \\end{pmatrix} = \\begin{pmatrix} 2a + 3 \\\\ 8 + 3b \\end{pmatrix}\\)</p><p>Equating the corresponding components, we get a system of two linear equations:</p><p>1) \\(2a + 3 = 7\\)<br>2) \\(8 + 3b = 11\\)</p><p>Solving the first equation for \\(a\\):</p><p>\\(2a = 7 - 3\\)<br>\\(2a = 4\\)<br>\\(a = 2\\)</p><p>Solving the second equation for \\(b\\):</p><p>\\(3b = 11 - 8\\)<br>\\(3b = 3\\)<br>\\(b = 1\\)</p><p>Thus, \\(a = 2\\) and \\(b = 1\\).</p><p><strong>Final Answer:</strong> a = 2, b = 1</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#20)"
       }
     },
     {
@@ -501,6 +742,50 @@
       "solution": {
         "en": "<p>The formula for conditional probability is \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\). Given \\(P(A \\cap B) = 0.2\\) and \\(P(B) = 0.5\\), we can substitute these values into the formula: \\(P(A|B) = \\frac{0.2}{0.5} = 0.4\\). Therefore, the conditional probability of A given B is 0.4.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "15",
+            "20",
+            35
+          ],
+          [
+            "18",
+            "20",
+            38
+          ],
+          [
+            33,
+            40,
+            73
+          ]
+        ],
+        "caption": "Reference Summary Table (#21)",
+        "caption_ar": "جدول ملخص البيانات (#21)",
+        "_totals": {
+          "rowTotals": [
+            35,
+            38
+          ],
+          "colTotals": [
+            33,
+            40
+          ],
+          "grandTotal": 73
+        }
       }
     },
     {
@@ -513,6 +798,46 @@
       "solution": {
         "en": "<p>The covariance matrix \\(\\Sigma\\) for a dataset with two features \\(X_1\\) and \\(X_2\\) is structured as follows:<br>\\[\\Sigma = \\begin{pmatrix}  Cov(X_1, X_1) & Cov(X_1, X_2) \\\\  Cov(X_2, X_1) & Cov(X_2, X_2)  \\end{pmatrix}\\]<br>By definition, the variance of a random variable is the covariance of the variable with itself. Therefore, \\(Var(X_1) = Cov(X_1, X_1)\\) and \\(Var(X_2) = Cov(X_2, X_2)\\).</p><p>In the given covariance matrix:<br>\\[\\Sigma = \\begin{pmatrix}  10 & 5 \\\\  5 & 20  \\end{pmatrix}\\]<br>The element in the first row and first column represents \\(Cov(X_1, X_1)\\), which is the variance of \\(X_1\\).</p><p>Thus, the variance of \\(X_1\\) is 10. The covariance between \\(X_1\\) and \\(X_2\\) is 5, and the variance of \\(X_2\\) is 20.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "4",
+            "0"
+          ],
+          [
+            "y-comp",
+            "1",
+            "4"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#22)",
+        "caption_ar": "جدول المركبات والمتجهات (#22)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "4",
+            "0"
+          ],
+          [
+            "المركبة y",
+            "1",
+            "4"
+          ]
+        ]
       }
     },
     {
@@ -525,6 +850,58 @@
       "solution": {
         "en": "<p>The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p><p><strong>Final Answer:</strong> \\(2x_1 + 3x_2 - 7 = 0\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "2",
+          "4",
+          "6",
+          "8"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "4",
+            "7",
+            "10",
+            "13"
+          ],
+          [
+            "f'(x)",
+            "4",
+            "2",
+            "4",
+            "2"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#23)",
+        "caption_ar": "جدول القيم المختارة (#23)",
+        "headers_ar": [
+          "x",
+          "2",
+          "4",
+          "6",
+          "8"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "4",
+            "7",
+            "10",
+            "13"
+          ],
+          [
+            "f'(x)",
+            "4",
+            "2",
+            "4",
+            "2"
+          ]
+        ]
       }
     },
     {
@@ -537,6 +914,58 @@
       "solution": {
         "en": "<p>The loss function is \\(L(w) = w^2 - 4w + 5\\). The gradient is \\(\\frac{dL}{dw} = 2w - 4\\). We are given an initial weight \\(w_0 = 5\\) and a learning rate \\(\\alpha = 0.5\\). The gradient at \\(w_0\\) is \\(\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6\\). The update rule for gradient descent is \\(w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)\\). Substituting the values, we get \\(w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2\\).</p><p><strong>Final Answer:</strong> \\(w_1 = 2\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#24)",
+        "caption_ar": "جدول القيم المختارة (#24)",
+        "headers_ar": [
+          "x",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ]
       }
     },
     {
@@ -549,6 +978,46 @@
       "solution": {
         "en": "<p>The linear transformation is given by \\(w = Mv\\). Substituting the given matrices and vectors, we have:<br>\\[\\begin{pmatrix} 3 \\\\ 7 \\end{pmatrix} = \\begin{pmatrix} 2 & 1 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} x \\\\ 1 \\end{pmatrix}\\] <br>Performing the matrix multiplication on the right side gives:<br>\\[\\begin{pmatrix} 3 \\\\ 7 \\end{pmatrix} = \\begin{pmatrix} 2x + 1(1) \\\\ 3x + 4(1) \\end{pmatrix} = \\begin{pmatrix} 2x + 1 \\\\ 3x + 4 \\end{pmatrix}\\] <br>Equating the corresponding components of the vectors, we get two equations:<br>1. \\(3 = 2x + 1\\)<br>2. \\(7 = 3x + 4\\)</p><p>Solving the first equation for \\(x\\):<br>\\(3 - 1 = 2x\\)<br>\\(2 = 2x\\)<br>\\(x = \\frac{2}{2}\\)<br>\\(x = 1\\)</p><p>Solving the second equation for \\(x\\):<br>\\(7 - 4 = 3x\\)<br>\\(3 = 3x\\)<br>\\(x = \\frac{3}{3}\\)<br>\\(x = 1\\)</p><p>Both equations yield \\(x=1\\). Therefore, the value of \\(x\\) is 1.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "3",
+            "2"
+          ],
+          [
+            "y-comp",
+            "2",
+            "6"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#25)",
+        "caption_ar": "جدول المركبات والمتجهات (#25)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "3",
+            "2"
+          ],
+          [
+            "المركبة y",
+            "2",
+            "6"
+          ]
+        ]
       }
     },
     {
@@ -561,6 +1030,50 @@
       "solution": {
         "en": "<p>The likelihood function \\(L(p)\\) is the product of the probabilities of observing each data point given the parameter \\(p\\). For i.i.d. Bernoulli trials, \\(L(p) = \\prod_{i=1}^{n} P(X=x_i; p)\\). Given \\(n=100\\) observations, with \\(k=60\\) successes (where \\(x_i=1\\)) and \\(n-k=40\\) failures (where \\(x_i=0\\)), the likelihood function can be written as:</p><p>\\(L(p) = \\left( \\prod_{i: x_i=1} p^1 (1-p)^{1-1} \\right) \\times \\left( \\prod_{i: x_i=0} p^0 (1-p)^{1-0} \\right)\\)</p><p>\\(L(p) = \\left( \\prod_{i: x_i=1} p \\right) \\times \\left( \\prod_{i: x_i=0} (1-p) \\right)\\)</p><p>Since there are \\(k=60\\) terms of \\(p\\) and \\(n-k=40\\) terms of \\((1-p)\\), the likelihood function simplifies to:</p><p>\\(L(p) = p^{60} (1-p)^{40}\\)</p><p><strong>Final Answer:</strong> \\(p^{60} (1-p)^{40}\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "15",
+            "22",
+            37
+          ],
+          [
+            "8",
+            "30",
+            38
+          ],
+          [
+            23,
+            52,
+            75
+          ]
+        ],
+        "caption": "Reference Summary Table (#26)",
+        "caption_ar": "جدول ملخص البيانات (#26)",
+        "_totals": {
+          "rowTotals": [
+            37,
+            38
+          ],
+          "colTotals": [
+            23,
+            52
+          ],
+          "grandTotal": 75
+        }
       }
     },
     {
@@ -573,6 +1086,46 @@
       "solution": {
         "en": "<p>To find the vector \\(2\\mathbf{u} - \\mathbf{v}\\), we first compute \\(2\\mathbf{u}\\) and then subtract \\(\\mathbf{v}\\) from the result.</p><p>\\(2\\mathbf{u} = 2 \\times \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix} = \\begin{bmatrix} 2 \\times 3 \\\\ 2 \\times 4 \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix}\\).</p><p>Now, we subtract \\(\\mathbf{v}\\) from \\(2\\mathbf{u}\\):</p><p>\\(2\\mathbf{u} - \\mathbf{v} = \\begin{bmatrix} 6 \\\\ 8 \\end{bmatrix} - \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix} = \\begin{bmatrix} 6 - 1 \\\\ 8 - (-2) \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 8 + 2 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix}\\).</p><p>Therefore, the resulting vector is \\(\\begin{bmatrix} 5 \\\\ 10 \\end{bmatrix}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "2",
+            "-1"
+          ],
+          [
+            "y-comp",
+            "4",
+            "2"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#27)",
+        "caption_ar": "جدول المركبات والمتجهات (#27)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "2",
+            "-1"
+          ],
+          [
+            "المركبة y",
+            "4",
+            "2"
+          ]
+        ]
       }
     },
     {
@@ -585,6 +1138,50 @@
       "solution": {
         "en": "<p>The first principal component direction vector \\(\\mathbf{v}_1\\) is an eigenvector of the covariance matrix \\(S\\). The variance explained by this component is the corresponding eigenvalue \\(\\lambda_1\\). The problem states that \\(\\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix}\\) is a unit vector. By definition, a unit vector has a magnitude of 1. The squared magnitude of a vector \\(\\begin{pmatrix} a \\\\ b \\end{pmatrix}\\) is \\(a^2 + b^2\\). Therefore, if \\(\\mathbf{v}_1\\) is a unit vector, its squared magnitude must be 1, which means \\(a^2 + b^2 = 1\\). The specific values of \\(a\\) and \\(b\\) and the eigenvalues of \\(S\\) are not needed to answer this question, as it directly asks for the property of a unit vector.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "26",
+            "15",
+            41
+          ],
+          [
+            "11",
+            "18",
+            29
+          ],
+          [
+            37,
+            33,
+            70
+          ]
+        ],
+        "caption": "Reference Summary Table (#28)",
+        "caption_ar": "جدول ملخص البيانات (#28)",
+        "_totals": {
+          "rowTotals": [
+            41,
+            29
+          ],
+          "colTotals": [
+            37,
+            33
+          ],
+          "grandTotal": 70
+        }
       }
     },
     {
@@ -723,6 +1320,50 @@
       "solution": {
         "en": "<p>The probability mass function is given by \\(P(X=x) = \\frac{x}{10}\\) for \\(x \\in \\{1, 2, 3, 4\\}\\). We need to find \\(P(X \\le 2)\\). This is the sum of probabilities for \\(X=1\\) and \\(X=2\\). \\(P(X \\le 2) = P(X=1) + P(X=2)\\). \\(P(X=1) = \\frac{1}{10}\\) and \\(P(X=2) = \\frac{2}{10}\\). Therefore, \\(P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "12",
+            "17",
+            29
+          ],
+          [
+            "12",
+            "21",
+            33
+          ],
+          [
+            24,
+            38,
+            62
+          ]
+        ],
+        "caption": "Reference Summary Table (#32)",
+        "caption_ar": "جدول ملخص البيانات (#32)",
+        "_totals": {
+          "rowTotals": [
+            29,
+            33
+          ],
+          "colTotals": [
+            24,
+            38
+          ],
+          "grandTotal": 62
+        }
       }
     },
     {

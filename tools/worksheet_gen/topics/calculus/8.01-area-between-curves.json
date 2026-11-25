@@ -14,7 +14,45 @@
           "question_type": "FRQ",
           "target": "Area between two curves",
           "answer": "Intersections: \\(x^2 = x+2\\), so \\(x^2-x-2=0\\), \\((x-2)(x+1)=0\\): \\(x=-1,2\\). Area \\(= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}\\).",
-          "explanation": "Intersections: \\(x^2 = x+2\\), so \\(x^2-x-2=0\\), \\((x-2)(x+1)=0\\): \\(x=-1,2\\). Area \\(= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}\\)."
+          "explanation": "Intersections: \\(x^2 = x+2\\), so \\(x^2-x-2=0\\), \\((x-2)(x+1)=0\\): \\(x=-1,2\\). Area \\(= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#2)",
+            "caption_ar": "جدول نمط مرجعي (#2)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "q": "The region bounded by \\(y = \\sqrt{x}\\), \\(y = 0\\), and \\(x = 4\\) is shown. Find its area.",
@@ -41,7 +79,28 @@
           "question_type": "FRQ",
           "target": "Setting up with respect to y, and total area",
           "answer": "Intersections: \\(y^2=2y\\) gives \\(y=0,2\\). Area \\(= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}\\).",
-          "explanation": "Intersections: \\(y^2=2y\\) gives \\(y=0,2\\). Area \\(= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}\\)."
+          "explanation": "Intersections: \\(y^2=2y\\) gives \\(y=0,2\\). Area \\(= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -4,
+              4
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "x^3 - 3*x",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#4)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Find the total area between \\(f(x) = \\sin x\\) and the \\(x\\)-axis on \\([0, 2\\pi]\\) (note the curve is below the axis on part of this interval).",
@@ -133,7 +192,18 @@
           "question_type": "FRQ",
           "target": "Areas involving trigonometric and exponential curves",
           "answer": "Area \\(=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1\\).",
-          "explanation": "Area \\(=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1\\)."
+          "explanation": "Area \\(=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1\\).",
+          "figure": {
+            "type": "unit_circle",
+            "angles": [
+              {
+                "deg": 225,
+                "label": "θ"
+              }
+            ],
+            "showQuadrants": true,
+            "caption": "Unit Circle Reference (#9)"
+          }
         },
         {
           "q": "Find the area between \\(y=e^x\\) and \\(y=e^{-x}\\) on \\([0,1]\\) (note \\(e^x\\geq e^{-x}\\) on this interval).",
@@ -141,7 +211,45 @@
           "question_type": "FRQ",
           "target": "Areas involving trigonometric and exponential curves",
           "answer": "Area \\(=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2\\).",
-          "explanation": "Area \\(=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2\\)."
+          "explanation": "Area \\(=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "1",
+                "6",
+                "11",
+                "16"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#10)",
+            "caption_ar": "جدول نمط مرجعي (#10)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "1",
+                "6",
+                "11",
+                "16"
+              ]
+            ]
+          }
         },
         {
           "q": "The graphs of \\(f(x)=x^2-4\\) and \\(g(x)=4-x^2\\) from an earlier problem are shown together. Confirm from the picture that the region is symmetric about the \\(y\\)-axis, and use this to verify the earlier area answer \\(\\frac{64}{3}\\) using \\(2\\int_0^2(8-2x^2)\\,dx\\).",
@@ -169,7 +277,28 @@
           "question_type": "FRQ",
           "target": "Area between a curve and a horizontal line",
           "answer": "Intersections: \\(6-x^2=2\\) gives \\(x=\\pm2\\). Area \\(=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}\\).",
-          "explanation": "Intersections: \\(6-x^2=2\\) gives \\(x=\\pm2\\). Area \\(=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}\\)."
+          "explanation": "Intersections: \\(6-x^2=2\\) gives \\(x=\\pm2\\). Area \\(=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2^(x) - 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#12)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Two runners' velocities (m/s) over a 10-second race are \\(v_1(t)=2t\\) and \\(v_2(t)=t+3\\). The area between these curves represents the gap in distance traveled. Find this gap over \\([0,10]\\).",
@@ -177,7 +306,28 @@
           "question_type": "FRQ",
           "target": "Area between curves in applied contexts",
           "answer": "Intersection: \\(2t=t+3\\) gives \\(t=3\\). For \\(t<3\\), \\(v_2>v_1\\); for \\(t>3\\), \\(v_1>v_2\\). Gap \\(=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|\\). \\(\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5\\). \\(\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5\\). Total gap \\(=4.5+24.5=29\\) m.",
-          "explanation": "Intersection: \\(2t=t+3\\) gives \\(t=3\\). For \\(t<3\\), \\(v_2>v_1\\); for \\(t>3\\), \\(v_1>v_2\\). Gap \\(=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|\\). \\(\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5\\). \\(\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5\\). Total gap \\(=4.5+24.5=29\\) m."
+          "explanation": "Intersection: \\(2t=t+3\\) gives \\(t=3\\). For \\(t<3\\), \\(v_2>v_1\\); for \\(t>3\\), \\(v_1>v_2\\). Gap \\(=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|\\). \\(\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5\\). \\(\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5\\). Total gap \\(=4.5+24.5=29\\) m.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2^(x) - 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#13)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Find the area of the region bounded by \\(y=x^2-2x\\) and the \\(x\\)-axis on \\([0,2]\\) (note the curve dips below the axis on this interval).",

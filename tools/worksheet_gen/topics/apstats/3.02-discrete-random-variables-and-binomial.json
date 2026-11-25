@@ -19,7 +19,51 @@
             "Mean",
             "Median"
           ],
-          "correct": 1
+          "correct": 1,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "22",
+                "21",
+                43
+              ],
+              [
+                "8",
+                "27",
+                35
+              ],
+              [
+                30,
+                48,
+                78
+              ]
+            ],
+            "caption": "Reference Summary Table (#2)",
+            "caption_ar": "جدول ملخص البيانات (#2)",
+            "_totals": {
+              "rowTotals": [
+                43,
+                35
+              ],
+              "colTotals": [
+                30,
+                48
+              ],
+              "grandTotal": 78
+            }
+          }
         },
         {
           "q": "Find the standard deviation of the profit \\(X\\) from the previous problem, to two decimal places.",
@@ -27,7 +71,18 @@
           "question_type": "FRQ",
           "target": "Probability distributions and expected value",
           "answer": "Variance \\(=\\sum(x-\\mu)^2P(x)=(8-(-1))^2(0.1)+(-2-(-1))^2(0.9)=(81)(0.1)+(1)(0.9)=8.1+0.9=9\\). Standard deviation \\(=\\sqrt{9}=3\\).",
-          "explanation": "Variance \\(=\\sum(x-\\mu)^2P(x)=(8-(-1))^2(0.1)+(-2-(-1))^2(0.9)=(81)(0.1)+(1)(0.9)=8.1+0.9=9\\). Standard deviation \\(=\\sqrt{9}=3\\)."
+          "explanation": "Variance \\(=\\sum(x-\\mu)^2P(x)=(8-(-1))^2(0.1)+(-2-(-1))^2(0.9)=(81)(0.1)+(1)(0.9)=8.1+0.9=9\\). Standard deviation \\(=\\sqrt{9}=3\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 3,
+            "sd": 4,
+            "shadeRange": [
+              -1,
+              7
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#3)"
+          }
         },
         {
           "q": "State the four conditions required for a random variable to follow a binomial distribution (sometimes remembered as BINS: Binary, Independent, Number fixed, Same probability).",
@@ -35,7 +90,31 @@
           "question_type": "FRQ",
           "target": "Binomial setting and conditions",
           "answer": "(1) Each trial has only two possible outcomes (success/failure). (2) Trials are independent. (3) There is a fixed number of trials, \\(n\\). (4) The probability of success, \\(p\\), is the same for every trial.",
-          "explanation": "(1) Each trial has only two possible outcomes (success/failure). (2) Trials are independent. (3) There is a fixed number of trials, \\(n\\). (4) The probability of success, \\(p\\), is the same for every trial."
+          "explanation": "(1) Each trial has only two possible outcomes (success/failure). (2) Trials are independent. (3) There is a fixed number of trials, \\(n\\). (4) The probability of success, \\(p\\), is the same for every trial.",
+          "figure": {
+            "type": "scatter",
+            "pts": [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                3,
+                12
+              ],
+              [
+                4,
+                17
+              ]
+            ],
+            "xLabel": "n",
+            "yLabel": "u_n",
+            "caption": "Discrete Term Plot (#4)"
+          }
         },
         {
           "q": "A survey randomly selects 20 people (without replacement) from a small town of 50 people and records how many support a proposal. Explain why this technically violates the independence condition, and why it is often still treated as approximately binomial.",
@@ -43,7 +122,51 @@
           "question_type": "FRQ",
           "target": "Binomial setting and conditions",
           "answer": "Sampling without replacement from a small population means each selection slightly changes the probabilities for the next draw, violating strict independence. However, when the sample size is small relative to the population (a common guideline is the sample being less than 10% of the population), the effect is negligible, and the situation is treated as approximately binomial — though here \\(20\\) out of \\(50\\) is \\(40\\%\\), so this would NOT satisfy the 10% condition and should be treated with caution.",
-          "explanation": "Sampling without replacement from a small population means each selection slightly changes the probabilities for the next draw, violating strict independence. However, when the sample size is small relative to the population (a common guideline is the sample being less than 10% of the population), the effect is negligible, and the situation is treated as approximately binomial — though here \\(20\\) out of \\(50\\) is \\(40\\%\\), so this would NOT satisfy the 10% condition and should be treated with caution."
+          "explanation": "Sampling without replacement from a small population means each selection slightly changes the probabilities for the next draw, violating strict independence. However, when the sample size is small relative to the population (a common guideline is the sample being less than 10% of the population), the effect is negligible, and the situation is treated as approximately binomial — though here \\(20\\) out of \\(50\\) is \\(40\\%\\), so this would NOT satisfy the 10% condition and should be treated with caution.",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "12",
+                "21",
+                33
+              ],
+              [
+                "15",
+                "24",
+                39
+              ],
+              [
+                27,
+                45,
+                72
+              ]
+            ],
+            "caption": "Reference Summary Table (#5)",
+            "caption_ar": "جدول ملخص البيانات (#5)",
+            "_totals": {
+              "rowTotals": [
+                33,
+                39
+              ],
+              "colTotals": [
+                27,
+                45
+              ],
+              "grandTotal": 72
+            }
+          }
         },
         {
           "q": "A basketball player makes 70% of free throws. Find the probability she makes exactly 4 out of 6 attempts, using \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).",
@@ -51,7 +174,28 @@
           "question_type": "FRQ",
           "target": "Binomial probability formula",
           "answer": "\\(P(X=4)=\\binom{6}{4}(0.7)^4(0.3)^2=15(0.2401)(0.09)\\approx0.324\\).",
-          "explanation": "\\(P(X=4)=\\binom{6}{4}(0.7)^4(0.3)^2=15(0.2401)(0.09)\\approx0.324\\)."
+          "explanation": "\\(P(X=4)=\\binom{6}{4}(0.7)^4(0.3)^2=15(0.2401)(0.09)\\approx0.324\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "0.5*x^2 - 2*x + 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#6)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Using the same free-throw shooter, find the mean and standard deviation of the number of makes out of 6 attempts, using \\(\\mu=np\\) and \\(\\sigma=\\sqrt{np(1-p)}\\).",
@@ -59,7 +203,18 @@
           "question_type": "FRQ",
           "target": "Binomial probability formula",
           "answer": "\\(\\mu=np=6(0.7)=4.2\\) makes. \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{6(0.7)(0.3)}=\\sqrt{1.26}\\approx1.12\\) makes.",
-          "explanation": "\\(\\mu=np=6(0.7)=4.2\\) makes. \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{6(0.7)(0.3)}=\\sqrt{1.26}\\approx1.12\\) makes."
+          "explanation": "\\(\\mu=np=6(0.7)=4.2\\) makes. \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{6(0.7)(0.3)}=\\sqrt{1.26}\\approx1.12\\) makes.",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 6,
+            "sd": 1,
+            "shadeRange": [
+              5,
+              7
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#7)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -72,7 +227,51 @@
             "\\(\\sqrt{np}\\)",
             "n+p"
           ],
-          "correct": 0
+          "correct": 0,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "17",
+                "22",
+                39
+              ],
+              [
+                "8",
+                "23",
+                31
+              ],
+              [
+                25,
+                45,
+                70
+              ]
+            ],
+            "caption": "Reference Summary Table (#8)",
+            "caption_ar": "جدول ملخص البيانات (#8)",
+            "_totals": {
+              "rowTotals": [
+                39,
+                31
+              ],
+              "colTotals": [
+                25,
+                45
+              ],
+              "grandTotal": 70
+            }
+          }
         }
       ]
     },
@@ -90,7 +289,18 @@
             "\\(np(1-p)\\)",
             "\\(\\sqrt{np}\\)"
           ],
-          "correct": 1
+          "correct": 1,
+          "figure": {
+            "type": "normal_curve",
+            "mean": 3,
+            "sd": 4,
+            "shadeRange": [
+              -1,
+              7
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#9)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -103,7 +313,31 @@
             "The median",
             "\\(n\\cdot p\\) always"
           ],
-          "correct": 1
+          "correct": 1,
+          "figure": {
+            "type": "scatter",
+            "pts": [
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                3,
+                12
+              ],
+              [
+                4,
+                17
+              ]
+            ],
+            "xLabel": "n",
+            "yLabel": "u_n",
+            "caption": "Discrete Term Plot (#10)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -116,7 +350,51 @@
             "\\(\\frac{x}{\\sigma}\\)",
             "\\(\\frac{x-\\mu}{\\sigma}\\)"
           ],
-          "correct": 3
+          "correct": 3,
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "29",
+                "16",
+                45
+              ],
+              [
+                "17",
+                "22",
+                39
+              ],
+              [
+                46,
+                38,
+                84
+              ]
+            ],
+            "caption": "Reference Summary Table (#11)",
+            "caption_ar": "جدول ملخص البيانات (#11)",
+            "_totals": {
+              "rowTotals": [
+                45,
+                39
+              ],
+              "colTotals": [
+                46,
+                38
+              ],
+              "grandTotal": 84
+            }
+          }
         },
         {
           "q": "Using the mean and standard deviation formulas \\(\\mu=np\\) and \\(\\sigma=\\sqrt{np(1-p)}\\), find the mean and standard deviation of the number of defective items in a batch of 20, with \\(p=0.05\\).",
@@ -124,7 +402,18 @@
           "question_type": "FRQ",
           "target": "Binomial probability of at least one success",
           "answer": "\\(\\mu=np=20(0.05)=1\\). \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{20(0.05)(0.95)}=\\sqrt{0.95}\\approx0.975\\).",
-          "explanation": "\\(\\mu=np=20(0.05)=1\\). \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{20(0.05)(0.95)}=\\sqrt{0.95}\\approx0.975\\)."
+          "explanation": "\\(\\mu=np=20(0.05)=1\\). \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{20(0.05)(0.95)}=\\sqrt{0.95}\\approx0.975\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 1,
+            "sd": 20,
+            "shadeRange": [
+              -19,
+              21
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#12)"
+          }
         },
         {
           "q": "Explain why a binomial model would NOT be appropriate for counting the number of aces dealt when drawing 5 cards without replacement from a standard 52-card deck, and name the distribution that would be more appropriate instead.",
@@ -132,7 +421,23 @@
           "question_type": "FRQ",
           "target": "Comparing binomial scenarios",
           "answer": "Drawing without replacement means each draw changes the composition of the remaining deck, so the probability of drawing an ace changes from draw to draw — violating the binomial requirement of a constant probability of success on every trial. This scenario is better modeled by the hypergeometric distribution, which accounts for sampling without replacement from a finite population.",
-          "explanation": "Drawing without replacement means each draw changes the composition of the remaining deck, so the probability of drawing an ace changes from draw to draw — violating the binomial requirement of a constant probability of success on every trial. This scenario is better modeled by the hypergeometric distribution, which accounts for sampling without replacement from a finite population."
+          "explanation": "Drawing without replacement means each draw changes the composition of the remaining deck, so the probability of drawing an ace changes from draw to draw — violating the binomial requirement of a constant probability of success on every trial. This scenario is better modeled by the hypergeometric distribution, which accounts for sampling without replacement from a finite population.",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 16
+              },
+              {
+                "label": "B",
+                "only": 12
+              }
+            ],
+            "both": 4,
+            "outside": 5,
+            "caption": "Set Relationship Diagram (#13)"
+          }
         },
         {
           "q": "A discrete random variable \\(X\\) has probability distribution: \\(P(X = 0) = 0.1\\), \\(P(X = 1) = 0.3\\), \\(P(X = 2) = 0.4\\), \\(P(X = 3) = 0.2\\). Calculate: (a) \\(E(X)\\), (b) \\(E(X^2)\\), and (c) \\(\\mathrm{Var}(X)\\) and \\(\\sigma_X\\).",
@@ -140,7 +445,51 @@
           "question_type": "FRQ",
           "target": "Geometric distribution (brief introduction)",
           "answer": "(a) Expected Value: \\(E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\) (b) Expected Value of \\(X^2\\): \\(E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\) (c) Variance & SD: \\(\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\) \\(\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\)",
-          "explanation": "(a) Expected Value: \\(E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\) (b) Expected Value of \\(X^2\\): \\(E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\) (c) Variance & SD: \\(\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\) \\(\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\)"
+          "explanation": "(a) Expected Value: \\(E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\) (b) Expected Value of \\(X^2\\): \\(E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\) (c) Variance & SD: \\(\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\) \\(\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\)",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "28",
+                "24",
+                52
+              ],
+              [
+                "15",
+                "17",
+                32
+              ],
+              [
+                43,
+                41,
+                84
+              ]
+            ],
+            "caption": "Reference Summary Table (#14)",
+            "caption_ar": "جدول ملخص البيانات (#14)",
+            "_totals": {
+              "rowTotals": [
+                52,
+                32
+              ],
+              "colTotals": [
+                43,
+                41
+              ],
+              "grandTotal": 84
+            }
+          }
         },
         {
           "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\mu_X = 50, \\sigma_X = 6\\) and \\(\\mu_Y = 30, \\sigma_Y = 8\\). Define \\(W = 3X - 2Y + 10\\). Find the mean \\(\\mu_W\\) and standard deviation \\(\\sigma_W\\).",
@@ -148,7 +497,18 @@
           "question_type": "FRQ",
           "target": "Applying the binomial distribution in context",
           "answer": "Mean: \\(\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\) Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: \\(\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\) Standard Deviation: \\(\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\)",
-          "explanation": "Mean: \\(\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\) Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: \\(\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\) Standard Deviation: \\(\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\)"
+          "explanation": "Mean: \\(\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\) Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: \\(\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\) Standard Deviation: \\(\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\)",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 50,
+            "sd": 6,
+            "shadeRange": [
+              44,
+              56
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#15)"
+          }
         }
       ]
     },
@@ -162,7 +522,21 @@
           "target": "Binomial probability of at least one success",
           "cross_lesson": "1.01 Measures of Center & Spread",
           "answer": "Median in °F: Scaled by 1.8 and shifted by 32: \\(M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.\\) IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\(\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.\\)",
-          "explanation": "Median in °F: Scaled by 1.8 and shifted by 32: \\(M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.\\) IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\(\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.\\)"
+          "explanation": "Median in °F: Scaled by 1.8 and shifted by 32: \\(M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.\\) IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\(\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.\\)",
+          "figure": {
+            "type": "boxplot",
+            "boxes": [
+              {
+                "label": "Data",
+                "min": 23,
+                "q1": 29,
+                "med": 35,
+                "q3": 42,
+                "max": 50
+              }
+            ],
+            "caption": "Distribution Box Plot (#16)"
+          }
         },
         {
           "q": "The number of accidents on a highway follows a Poisson distribution with mean 1.6 per week. (a) Find the probability of at least 3 accidents in a 2-week period. (b) Given that at least one accident occurs in a week, find the probability that there are exactly 2 accidents in that week.",
@@ -171,7 +545,51 @@
           "target": "Comparing binomial scenarios",
           "cross_lesson": "1.02 Z-Scores & Linear Transformations",
           "answer": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)",
-          "explanation": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)"
+          "explanation": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "16",
+                "22",
+                38
+              ],
+              [
+                "8",
+                "28",
+                36
+              ],
+              [
+                24,
+                50,
+                74
+              ]
+            ],
+            "caption": "Reference Summary Table (#17)",
+            "caption_ar": "جدول ملخص البيانات (#17)",
+            "_totals": {
+              "rowTotals": [
+                38,
+                36
+              ],
+              "colTotals": [
+                24,
+                50
+              ],
+              "grandTotal": 74
+            }
+          }
         },
         {
           "q": "A discrete random variable \\(X\\) follows a binomial distribution \\(X \\sim B(15, 0.35)\\). (a) Find \\(P(X = 5)\\). (b) Find \\(P(X \\geq 4)\\). (c) Calculate the mean \\(E(X)\\) and standard deviation \\(\\sigma\\) of \\(X\\).",
@@ -180,7 +598,18 @@
           "target": "Probability distributions and expected value",
           "cross_lesson": "1.03 Describing Distributions & Linear Regression",
           "answer": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
-          "explanation": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\)."
+          "explanation": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 15,
+            "sd": 10,
+            "shadeRange": [
+              5,
+              25
+            ],
+            "showRule": true,
+            "caption": "Normal Distribution Model (#18)"
+          }
         },
         {
           "q": "A quality control engineer is monitoring the number of defects produced by two different machines, Machine A and Machine B. Let \\(X\\) be the number of defects produced by Machine A in a given hour, and \\(Y\\) be the number of defects produced by Machine B in the same hour. The joint probability distribution of \\(X\\) and \\(Y\\) is given in the table below: What is the expected value of the total number of defects produced by both machines in a given hour, \\(E(X+Y)\\)? Show your complete algebraic work.",

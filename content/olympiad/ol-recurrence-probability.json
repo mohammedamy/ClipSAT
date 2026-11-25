@@ -600,6 +600,130 @@
         }
       },
       {
+        "kind": "structuredQuestion",
+        "id": "olympiad-ch-frq-ol-recurrence-probability-1",
+        "title": {
+          "en": "Combinatorics II: Recurrence Relations, Catalan Numbers & Olympiad Probability — Competition Proof Benchmark",
+          "ar": "التوافيق (2): العلاقات التراجعية وأعداد كاتالان والاحتمالات الأولمبية — مسألة أولمبياد برهانية"
+        },
+        "marks": 6,
+        "calc": false,
+        "difficulty": "hard",
+        "archetype": "Mathematical Olympiad Multi-Part Proof",
+        "figure": {
+          "type": "fn",
+          "xl": [
+            -4,
+            2
+          ],
+          "yl": [
+            -4,
+            8
+          ],
+          "xStep": 1,
+          "yStep": 2,
+          "fns": [
+            {
+              "fn": "x^2 + 2*x + 1",
+              "label": "y = P(x)"
+            }
+          ],
+          "caption": "Polynomial Graph (ol-recurrence-probability)",
+          "caption_ar": "تمثيل كثير الحدود (ol-recurrence-probability)"
+        },
+        "stem": {
+          "en": "For positive integer \\(n\\) and quadratic \\(P(x) = x^2 + 2x + 5\\) in Combinatorics II: Recurrence Relations, Catalan Numbers & Olympiad Probability, examine algebraic invariants below.",
+          "ar": "للعدد الصحيح الموجب \\(n\\) وكثير الحدود \\(P(x) = x^2 + 2x + 5\\) في التوافيق (2): العلاقات التراجعية وأعداد كاتالان والاحتمالات الأولمبية، أجب عن الأجزاء التالية."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Express \\(4P(x)\\) as a square plus a positive constant.",
+              "ar": "اكتب \\(4P(x)\\) على صورة مربع كامل مضافاً إليه ثابت موجب."
+            },
+            "marks": 2,
+            "answer": "(2x + 2)^2 + 16",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Completes square on 4x^2 + 8x",
+                  "ar": "يكمل المربع في المقدار التربيعي"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains (2x + 2)^2 + 16",
+                  "ar": "يحصل على مجموع مربعين موجبين"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Deduce why \\(P(n)\\) has no real roots for any \\(n\\in\\mathbb{R}\\).",
+              "ar": "استنتج عدم وجود جذور حقيقية للمعادلة \\(P(n) = 0\\)."
+            },
+            "marks": 2,
+            "answer": "4P(n) >= 16 > 0",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Bounds squared term >= 0",
+                  "ar": "يثبت أن المربع الكامل غير سالب"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Proves strict positivity for all real x",
+                  "ar": "يستنتج أن المقدار موجب دوماً"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Find the remainder when \\(P(10) - P(0)\\) is divided by \\(10\\).",
+              "ar": "أوجد باقي قسمة \\(P(10) - P(0)\\) على \\(10\\)."
+            },
+            "marks": 2,
+            "answer": "0",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Computes 100 + 10k = 10(10 + k)",
+                  "ar": "يحسب الفرق بدلالة 10"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "States remainder is 0",
+                  "ar": "يستنتج أن الباقي يساوي 0"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ],
+        "solution": {
+          "en": "(a) \\(4P(x) = (2x+2)^2 + 16\\). (b) Strictly positive discriminant check: \\(4P(x) > 0\\). (c) \\(P(10)-P(0) = 10(10+2) \\equiv 0 \\pmod{10}\\).",
+          "ar": "(أ) \\(4P(x) = (2x+2)^2 + 16\\). (ب) القيمة موجبة دوماً. (ج) الباقي يساوي صفر."
+        }
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

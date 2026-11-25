@@ -14,9 +14,9 @@ const KNOWN_TYPES = new Set([
   'polar_graph', 'polarGraph', 'polar',
   'conic_section', 'conic', 'sinusoid', 'shaded_region', 'qudrat_shaded',
   'unit_circle', 'unitCircle', 'unitcircle',
-  'triangle', 'circle', 'circle_chord', 'circle_chords_similarity', 'polygon', 'rect',
+  'triangle', 'circle', 'circle_sector', 'circle_chord', 'circle_chords_similarity', 'circle_tangent_segment', 'circle_inscribed_rect', 'square_circumscribed_circle', 'polygon', 'rect',
   'transversal', 'lines', 'vertex_angles', 'geometry_2d', 'geometry2d', 'geom2d',
-  'solid', 'geometry_3d', 'geometry3d', 'geom3d',
+  'solid', '3d_solid', 'geometry_3d', 'geometry3d', 'geom3d',
   'nested_triangles', 'thales', 'triangle_transversal', 'bowtie', 'hourglass',
   'right_triangle_altitude', 'altitude_hypotenuse', 'geometric_mean',
   'shadow_similarity', 'indirect_measurement', 'angle_bisector',
@@ -26,7 +26,7 @@ const KNOWN_TYPES = new Set([
   'histogram', 'boxplot', 'box_plot', 'boxPlot', 'box', 'dot_plot', 'dotPlot', 'dotplot', 'dots',
   'scatter', 'scatter_plot', 'scatterPlot', 'scatterplot',
   'normal_curve', 'normalCurve', 'normal_dist', 'normalDist', 'normal',
-  'pie', 'pie_chart', 'pieChart', 'numberline', 'number_line', 'numberLine', 'venn',
+  'pie', 'pie_chart', 'pieChart', 'numberline', 'number_line', 'numberLine', 'venn', 'venn_populated',
   'cumulative_frequency', 'cumulativeFrequency', 'cumulative_freq', 'cumulativeFreq', 'ogive',
   'tree_diagram', 'treeDiagram', 'tree', 'bearings', 'bearing', 'bearingDiagram', 'bearing_diagram',
   'sign_chart', 'signChart', 'transformation_grid', 'transformationGrid', 'transformation',
@@ -70,7 +70,7 @@ function validateFigureSpec(spec) {
     }
   }
 
-  if (spec.type === 'table' || spec.type === 'two_way_table') {
+  if (spec.type === 'table' || spec.type === 'two_way_table' || spec.type === 'twoWayTable' || spec.type === 'twowaytable') {
     if (Array.isArray(spec.data) && Array.isArray(spec.rows) && Array.isArray(spec.cols)) {
       if (!spec.rows.length || !spec.cols.length || spec.data.length !== spec.rows.length) {
         errs.push('two_way_table rows/cols/data mismatch');
@@ -79,8 +79,12 @@ function validateFigureSpec(spec) {
     }
     const hLen = Array.isArray(spec.headers) ? spec.headers.length : 0;
     const rows = Array.isArray(spec.rows) ? spec.rows : [];
-    const altColLen = Array.isArray(spec.col_headers) ? spec.col_headers.length : 0;
-    if (!hLen && !altColLen && !rows.length && !Array.isArray(spec.row_headers)) errs.push('Table has empty headers and empty rows');
+    const dataLen = Array.isArray(spec.data) ? spec.data.length : 0;
+    const altColLen = (spec.col_headers || spec.colLabels || spec.col_labels || spec.columnLabels || spec.labels || []).length || 0;
+    const altRowLen = (spec.row_headers || spec.rowLabels || spec.row_labels || spec.categories || []).length || 0;
+    if (!hLen && !altColLen && !rows.length && !altRowLen && !dataLen) {
+      errs.push('Table has empty headers and empty rows');
+    }
     if (hLen && rows.some((r) => Array.isArray(r) && r.length !== hLen)) {
       errs.push('Table row column count does not match headers length');
     }

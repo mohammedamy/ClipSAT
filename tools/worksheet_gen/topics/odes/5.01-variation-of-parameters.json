@@ -41,7 +41,45 @@
           "question_type": "FRQ",
           "target": "The Wronskian",
           "answer": "\\(y_1'=3e^{3x}\\), \\(y_2'=e^{3x}+3xe^{3x}\\). \\(W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}\\).",
-          "explanation": "\\(y_1'=3e^{3x}\\), \\(y_2'=e^{3x}+3xe^{3x}\\). \\(W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}\\)."
+          "explanation": "\\(y_1'=3e^{3x}\\), \\(y_2'=e^{3x}+3xe^{3x}\\). \\(W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "1",
+                "4",
+                "7",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#3)",
+            "caption_ar": "جدول نمط مرجعي (#3)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "1",
+                "4",
+                "7",
+                "10"
+              ]
+            ]
+          }
         },
         {
           "q": "State the variation of parameters formula for a particular solution of \\(y'' + p(x)y' + q(x)y = g(x)\\), given independent solutions \\(y_1,y_2\\) of the homogeneous equation with Wronskian \\(W\\).",
@@ -49,7 +87,28 @@
           "question_type": "FRQ",
           "target": "The variation of parameters formula",
           "answer": "\\(y_p = -y_1\\int \\frac{y_2\\,g}{W}\\,dx + y_2\\int \\frac{y_1\\,g}{W}\\,dx\\).",
-          "explanation": "\\(y_p = -y_1\\int \\frac{y_2\\,g}{W}\\,dx + y_2\\int \\frac{y_1\\,g}{W}\\,dx\\)."
+          "explanation": "\\(y_p = -y_1\\int \\frac{y_2\\,g}{W}\\,dx + y_2\\int \\frac{y_1\\,g}{W}\\,dx\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              4
+            ],
+            "yl": [
+              -5,
+              5
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "-0.5*x^2 + 3",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#4)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Explain why the ODE must first be written in standard form \\(y''+p(x)y'+q(x)y=g(x)\\) (leading coefficient \\(1\\)) before applying the variation of parameters formula.",
@@ -57,7 +116,21 @@
           "question_type": "FRQ",
           "target": "The variation of parameters formula",
           "answer": "The formula's Wronskian and integrals are derived under the assumption that \\(g(x)\\) is exactly the right side once the leading coefficient of \\(y''\\) is \\(1\\). If the equation is given as \\(a(x)y''+b(x)y'+c(x)y=f(x)\\) with \\(a(x)\\neq1\\), using \\(f(x)\\) directly in place of \\(g(x)\\) would introduce an extra factor of \\(a(x)\\) and give a wrong particular solution — the equation must first be divided by \\(a(x)\\), giving \\(g(x)=f(x)/a(x)\\).",
-          "explanation": "The formula's Wronskian and integrals are derived under the assumption that \\(g(x)\\) is exactly the right side once the leading coefficient of \\(y''\\) is \\(1\\). If the equation is given as \\(a(x)y''+b(x)y'+c(x)y=f(x)\\) with \\(a(x)\\neq1\\), using \\(f(x)\\) directly in place of \\(g(x)\\) would introduce an extra factor of \\(a(x)\\) and give a wrong particular solution — the equation must first be divided by \\(a(x)\\), giving \\(g(x)=f(x)/a(x)\\)."
+          "explanation": "The formula's Wronskian and integrals are derived under the assumption that \\(g(x)\\) is exactly the right side once the leading coefficient of \\(y''\\) is \\(1\\). If the equation is given as \\(a(x)y''+b(x)y'+c(x)y=f(x)\\) with \\(a(x)\\neq1\\), using \\(f(x)\\) directly in place of \\(g(x)\\) would introduce an extra factor of \\(a(x)\\) and give a wrong particular solution — the equation must first be divided by \\(a(x)\\), giving \\(g(x)=f(x)/a(x)\\).",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "-x/y",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              3
+            ],
+            "step": 1,
+            "caption": "Slope field dy/dx = -x/y (#5)"
+          }
         },
         {
           "q": "Solve \\(y'' + y = \\tan x\\) for \\(-\\frac{\\pi}{2}<x<\\frac{\\pi}{2}\\) using variation of parameters.",
@@ -65,7 +138,45 @@
           "question_type": "FRQ",
           "target": "A forcing term with no undetermined-coefficients trial form",
           "answer": "Here \\(y_1=\\cos x\\), \\(y_2=\\sin x\\), \\(W=1\\), \\(g=\\tan x\\). Since \\(\\int\\cos x\\tan x\\,dx=\\int\\sin x\\,dx=-\\cos x\\) and \\(\\int\\sin x\\tan x\\,dx=\\int\\sec x\\,dx-\\int\\cos x\\,dx=\\ln|\\sec x+\\tan x|-\\sin x\\), we get \\(y_p=-\\cos x\\left[\\ln|\\sec x+\\tan x|-\\sin x\\right]+\\sin x(-\\cos x)=-\\cos x\\ln|\\sec x+\\tan x|\\). General solution: \\(y = C_1\\cos x + C_2\\sin x - \\cos x\\ln|\\sec x+\\tan x|\\).",
-          "explanation": "Here \\(y_1=\\cos x\\), \\(y_2=\\sin x\\), \\(W=1\\), \\(g=\\tan x\\). Since \\(\\int\\cos x\\tan x\\,dx=\\int\\sin x\\,dx=-\\cos x\\) and \\(\\int\\sin x\\tan x\\,dx=\\int\\sec x\\,dx-\\int\\cos x\\,dx=\\ln|\\sec x+\\tan x|-\\sin x\\), we get \\(y_p=-\\cos x\\left[\\ln|\\sec x+\\tan x|-\\sin x\\right]+\\sin x(-\\cos x)=-\\cos x\\ln|\\sec x+\\tan x|\\). General solution: \\(y = C_1\\cos x + C_2\\sin x - \\cos x\\ln|\\sec x+\\tan x|\\)."
+          "explanation": "Here \\(y_1=\\cos x\\), \\(y_2=\\sin x\\), \\(W=1\\), \\(g=\\tan x\\). Since \\(\\int\\cos x\\tan x\\,dx=\\int\\sin x\\,dx=-\\cos x\\) and \\(\\int\\sin x\\tan x\\,dx=\\int\\sec x\\,dx-\\int\\cos x\\,dx=\\ln|\\sec x+\\tan x|-\\sin x\\), we get \\(y_p=-\\cos x\\left[\\ln|\\sec x+\\tan x|-\\sin x\\right]+\\sin x(-\\cos x)=-\\cos x\\ln|\\sec x+\\tan x|\\). General solution: \\(y = C_1\\cos x + C_2\\sin x - \\cos x\\ln|\\sec x+\\tan x|\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#6)",
+            "caption_ar": "جدول نمط مرجعي (#6)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "q": "Solve \\(y'' - y = e^{2x}\\) by variation of parameters, then check the particular solution using undetermined coefficients.",
@@ -73,7 +184,28 @@
           "question_type": "FRQ",
           "target": "Comparing with undetermined coefficients",
           "answer": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\). With \\(g=e^{2x}\\): \\(\\frac{y_2g}{W}=-\\frac{1}{2}e^x\\), integral \\(-\\frac{1}{2}e^x\\); \\(\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}\\), integral \\(-\\frac{1}{6}e^{3x}\\). So \\(y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}\\). Check by undetermined coefficients: try \\(Ae^{2x}\\) (no resonance, since \\(2\\) is not a root of \\(r^2-1=0\\)): \\(4A-A=1 \\Rightarrow A=\\frac{1}{3}\\). Matches. General solution: \\(y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}\\).",
-          "explanation": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\). With \\(g=e^{2x}\\): \\(\\frac{y_2g}{W}=-\\frac{1}{2}e^x\\), integral \\(-\\frac{1}{2}e^x\\); \\(\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}\\), integral \\(-\\frac{1}{6}e^{3x}\\). So \\(y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}\\). Check by undetermined coefficients: try \\(Ae^{2x}\\) (no resonance, since \\(2\\) is not a root of \\(r^2-1=0\\)): \\(4A-A=1 \\Rightarrow A=\\frac{1}{3}\\). Matches. General solution: \\(y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}\\)."
+          "explanation": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\). With \\(g=e^{2x}\\): \\(\\frac{y_2g}{W}=-\\frac{1}{2}e^x\\), integral \\(-\\frac{1}{2}e^x\\); \\(\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}\\), integral \\(-\\frac{1}{6}e^{3x}\\). So \\(y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}\\). Check by undetermined coefficients: try \\(Ae^{2x}\\) (no resonance, since \\(2\\) is not a root of \\(r^2-1=0\\)): \\(4A-A=1 \\Rightarrow A=\\frac{1}{3}\\). Matches. General solution: \\(y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              4
+            ],
+            "yl": [
+              -5,
+              5
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "-0.5*x^2 + 3",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#7)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Solve \\(y''-y=4\\) (a constant forcing) by variation of parameters, and check against the obvious undetermined-coefficients guess \\(y_p=A\\).",
@@ -81,7 +213,28 @@
           "question_type": "FRQ",
           "target": "Comparing with undetermined coefficients",
           "answer": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\), \\(g=4\\). \\(\\frac{y_2g}{W}=-2e^{-x}\\), integral \\(2e^{-x}\\); \\(\\frac{y_1g}{W}=-2e^{x}\\), integral \\(-2e^{x}\\). So \\(y_p=-e^x(2e^{-x})+e^{-x}(-2e^{x})=-2-2=-4\\). Undetermined coefficients: try \\(y_p=A\\), giving \\(-A=4 \\Rightarrow A=-4\\). Matches. General solution: \\(y=C_1e^x+C_2e^{-x}-4\\).",
-          "explanation": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\), \\(g=4\\). \\(\\frac{y_2g}{W}=-2e^{-x}\\), integral \\(2e^{-x}\\); \\(\\frac{y_1g}{W}=-2e^{x}\\), integral \\(-2e^{x}\\). So \\(y_p=-e^x(2e^{-x})+e^{-x}(-2e^{x})=-2-2=-4\\). Undetermined coefficients: try \\(y_p=A\\), giving \\(-A=4 \\Rightarrow A=-4\\). Matches. General solution: \\(y=C_1e^x+C_2e^{-x}-4\\)."
+          "explanation": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\), \\(g=4\\). \\(\\frac{y_2g}{W}=-2e^{-x}\\), integral \\(2e^{-x}\\); \\(\\frac{y_1g}{W}=-2e^{x}\\), integral \\(-2e^{x}\\). So \\(y_p=-e^x(2e^{-x})+e^{-x}(-2e^{x})=-2-2=-4\\). Undetermined coefficients: try \\(y_p=A\\), giving \\(-A=4 \\Rightarrow A=-4\\). Matches. General solution: \\(y=C_1e^x+C_2e^{-x}-4\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              4
+            ],
+            "yl": [
+              -5,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1.5*x + 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#8)",
+            "caption": "Reference graph y = f(x)"
+          }
         }
       ]
     },
@@ -94,7 +247,51 @@
           "question_type": "FRQ",
           "target": "When to prefer each method",
           "answer": "Undetermined coefficients is far more efficient here: the forcing is a plain polynomial (no resonance issues), so a simple trial \\(y_p=Ax^3+Bx^2+Cx+D\\) solves it by matching coefficients — no integration required. Variation of parameters would work too, but requires computing \\(W\\) and two integrals unnecessarily.",
-          "explanation": "Undetermined coefficients is far more efficient here: the forcing is a plain polynomial (no resonance issues), so a simple trial \\(y_p=Ax^3+Bx^2+Cx+D\\) solves it by matching coefficients — no integration required. Variation of parameters would work too, but requires computing \\(W\\) and two integrals unnecessarily."
+          "explanation": "Undetermined coefficients is far more efficient here: the forcing is a plain polynomial (no resonance issues), so a simple trial \\(y_p=Ax^3+Bx^2+Cx+D\\) solves it by matching coefficients — no integration required. Variation of parameters would work too, but requires computing \\(W\\) and two integrals unnecessarily.",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Group I",
+              "Group II",
+              "Total"
+            ],
+            "cols": [
+              "Outcome A",
+              "Outcome B",
+              "Total"
+            ],
+            "data": [
+              [
+                "13",
+                "16",
+                29
+              ],
+              [
+                "19",
+                "26",
+                45
+              ],
+              [
+                32,
+                42,
+                74
+              ]
+            ],
+            "caption": "Reference Summary Table (#9)",
+            "caption_ar": "جدول ملخص البيانات (#9)",
+            "_totals": {
+              "rowTotals": [
+                29,
+                45
+              ],
+              "colTotals": [
+                32,
+                42
+              ],
+              "grandTotal": 74
+            }
+          }
         },
         {
           "q": "For \\(y''+y=\\csc x\\) (for \\(0<x<\\pi\\)), which method must be used, and why?",
@@ -102,7 +299,17 @@
           "question_type": "FRQ",
           "target": "When to prefer each method",
           "answer": "Variation of parameters is required. \\(\\csc x=1/\\sin x\\) is not a polynomial, exponential, sine/cosine, or a finite product of these, so undetermined coefficients has no valid trial form; only variation of parameters, which places no restriction on the forcing term, can produce a particular solution.",
-          "explanation": "Variation of parameters is required. \\(\\csc x=1/\\sin x\\) is not a polynomial, exponential, sine/cosine, or a finite product of these, so undetermined coefficients has no valid trial form; only variation of parameters, which places no restriction on the forcing term, can produce a particular solution."
+          "explanation": "Variation of parameters is required. \\(\\csc x=1/\\sin x\\) is not a polynomial, exponential, sine/cosine, or a finite product of these, so undetermined coefficients has no valid trial form; only variation of parameters, which places no restriction on the forcing term, can produce a particular solution.",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 4,
+            "freq": 2,
+            "phase": 0,
+            "midline": 1,
+            "fnType": "sin",
+            "showMidline": true,
+            "caption": "Periodic Model (#10)"
+          }
         },
         {
           "q": "Complete the solution of \\(y''+y=\\csc x\\) (\\(0<x<\\pi\\)) started above, using \\(y_1=\\cos x\\), \\(y_2=\\sin x\\), \\(W=1\\).",
@@ -128,7 +335,17 @@
           "question_type": "FRQ",
           "target": "Solving \\(y''+y=\\csc x\\) in full",
           "answer": "For \\(y_p=-x\\cos x\\): \\(y_p'=-\\cos x+x\\sin x\\), \\(y_p''=\\sin x+\\sin x+x\\cos x=2\\sin x+x\\cos x\\). So \\(y_p''+y_p=2\\sin x+x\\cos x-x\\cos x=2\\sin x\\) — this piece alone contributes \\(2\\sin x\\), which combines with the contribution from \\(\\sin x\\ln|\\sin x|\\) to produce the required \\(\\csc x\\) on the right side (a full check of the second piece is a longer computation, but this confirms the \\(-x\\cos x\\) term is doing real work, not just decoration).",
-          "explanation": "For \\(y_p=-x\\cos x\\): \\(y_p'=-\\cos x+x\\sin x\\), \\(y_p''=\\sin x+\\sin x+x\\cos x=2\\sin x+x\\cos x\\). So \\(y_p''+y_p=2\\sin x+x\\cos x-x\\cos x=2\\sin x\\) — this piece alone contributes \\(2\\sin x\\), which combines with the contribution from \\(\\sin x\\ln|\\sin x|\\) to produce the required \\(\\csc x\\) on the right side (a full check of the second piece is a longer computation, but this confirms the \\(-x\\cos x\\) term is doing real work, not just decoration)."
+          "explanation": "For \\(y_p=-x\\cos x\\): \\(y_p'=-\\cos x+x\\sin x\\), \\(y_p''=\\sin x+\\sin x+x\\cos x=2\\sin x+x\\cos x\\). So \\(y_p''+y_p=2\\sin x+x\\cos x-x\\cos x=2\\sin x\\) — this piece alone contributes \\(2\\sin x\\), which combines with the contribution from \\(\\sin x\\ln|\\sin x|\\) to produce the required \\(\\csc x\\) on the right side (a full check of the second piece is a longer computation, but this confirms the \\(-x\\cos x\\) term is doing real work, not just decoration).",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 3,
+            "freq": 2,
+            "phase": 0,
+            "midline": 1,
+            "fnType": "sin",
+            "showMidline": true,
+            "caption": "Periodic Model (#12)"
+          }
         },
         {
           "q": "For the Cauchy–Euler-type substitution used in some ODE courses, \\(y_1=x\\), \\(y_2=x^{-1}\\) solve \\(x^2y''+xy'-y=0\\) for \\(x>0\\). Rewrite this equation in the standard form \\(y''+p(x)y'+q(x)y=g(x)\\) needed for variation of parameters when the right side is \\(x^2\\cdot 3x=3x^3\\) (i.e., solve \\(x^2y''+xy'-y=3x^3\\)).",
@@ -136,7 +353,59 @@
           "question_type": "FRQ",
           "target": "Variation of parameters with a shifted independent variable",
           "answer": "Dividing by \\(x^2\\): \\(y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=3x\\), so \\(g(x)=3x\\) (NOT \\(3x^3\\) — the division by the leading coefficient \\(x^2\\) is exactly the step the earlier question about standard form warns about).",
-          "explanation": "Dividing by \\(x^2\\): \\(y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=3x\\), so \\(g(x)=3x\\) (NOT \\(3x^3\\) — the division by the leading coefficient \\(x^2\\) is exactly the step the earlier question about standard form warns about)."
+          "explanation": "Dividing by \\(x^2\\): \\(y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=3x\\), so \\(g(x)=3x\\) (NOT \\(3x^3\\) — the division by the leading coefficient \\(x^2\\) is exactly the step the earlier question about standard form warns about).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "2",
+              "4",
+              "6",
+              "8"
+            ],
+            "rows": [
+              [
+                "f(x)",
+                "5",
+                "6",
+                "7",
+                "8"
+              ],
+              [
+                "f'(x)",
+                "2",
+                "0",
+                "2",
+                "0"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected Values Table (#13)",
+            "caption_ar": "جدول القيم المختارة (#13)",
+            "headers_ar": [
+              "x",
+              "2",
+              "4",
+              "6",
+              "8"
+            ],
+            "rows_ar": [
+              [
+                "f(x)",
+                "5",
+                "6",
+                "7",
+                "8"
+              ],
+              [
+                "f'(x)",
+                "2",
+                "0",
+                "2",
+                "0"
+              ]
+            ]
+          }
         },
         {
           "q": "Continue the problem above: with \\(y_1=x\\), \\(y_2=x^{-1}\\), compute \\(W=y_1y_2'-y_1'y_2\\).",
@@ -144,7 +413,26 @@
           "question_type": "FRQ",
           "target": "Variation of parameters with a shifted independent variable",
           "answer": "\\(y_1'=1\\), \\(y_2'=-x^{-2}\\). \\(W=x(-x^{-2})-1(x^{-1})=-x^{-1}-x^{-1}=-2x^{-1}\\).",
-          "explanation": "\\(y_1'=1\\), \\(y_2'=-x^{-2}\\). \\(W=x(-x^{-2})-1(x^{-1})=-x^{-1}-x^{-1}=-2x^{-1}\\)."
+          "explanation": "\\(y_1'=1\\), \\(y_2'=-x^{-2}\\). \\(W=x(-x^{-2})-1(x^{-1})=-x^{-1}-x^{-1}=-2x^{-1}\\).",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#14)"
+          }
         },
         {
           "q": "Finish solving \\(x^2y''+xy'-y=3x^3\\) (\\(x>0\\)) using \\(y_1=x\\), \\(y_2=x^{-1}\\), \\(W=-2x^{-1}\\), and \\(g(x)=3x\\) (from the two questions above).",
@@ -152,7 +440,28 @@
           "question_type": "FRQ",
           "target": "Variation of parameters with a shifted independent variable",
           "answer": "\\(\\frac{y_2g}{W}=\\frac{x^{-1}(3x)}{-2x^{-1}}=-\\frac{3x}{2}\\), so \\(\\int=-\\frac{3x^2}{4}\\). \\(\\frac{y_1g}{W}=\\frac{x(3x)}{-2x^{-1}}=-\\frac{3x^3}{2}\\), so \\(\\int=-\\frac{3x^4}{8}\\). Then \\(y_p=-x\\left(-\\frac{3x^2}{4}\\right)+x^{-1}\\left(-\\frac{3x^4}{8}\\right)=\\frac{3x^3}{4}-\\frac{3x^3}{8}=\\frac{3x^3}{8}\\). General solution: \\(y=C_1x+C_2x^{-1}+\\frac{3x^3}{8}\\).",
-          "explanation": "\\(\\frac{y_2g}{W}=\\frac{x^{-1}(3x)}{-2x^{-1}}=-\\frac{3x}{2}\\), so \\(\\int=-\\frac{3x^2}{4}\\). \\(\\frac{y_1g}{W}=\\frac{x(3x)}{-2x^{-1}}=-\\frac{3x^3}{2}\\), so \\(\\int=-\\frac{3x^4}{8}\\). Then \\(y_p=-x\\left(-\\frac{3x^2}{4}\\right)+x^{-1}\\left(-\\frac{3x^4}{8}\\right)=\\frac{3x^3}{4}-\\frac{3x^3}{8}=\\frac{3x^3}{8}\\). General solution: \\(y=C_1x+C_2x^{-1}+\\frac{3x^3}{8}\\)."
+          "explanation": "\\(\\frac{y_2g}{W}=\\frac{x^{-1}(3x)}{-2x^{-1}}=-\\frac{3x}{2}\\), so \\(\\int=-\\frac{3x^2}{4}\\). \\(\\frac{y_1g}{W}=\\frac{x(3x)}{-2x^{-1}}=-\\frac{3x^3}{2}\\), so \\(\\int=-\\frac{3x^4}{8}\\). Then \\(y_p=-x\\left(-\\frac{3x^2}{4}\\right)+x^{-1}\\left(-\\frac{3x^4}{8}\\right)=\\frac{3x^3}{4}-\\frac{3x^3}{8}=\\frac{3x^3}{8}\\). General solution: \\(y=C_1x+C_2x^{-1}+\\frac{3x^3}{8}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2^(x) - 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#15)",
+            "caption": "Reference graph y = f(x)"
+          }
         }
       ]
     },
@@ -166,7 +475,45 @@
           "target": "Variation of parameters with a shifted independent variable",
           "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations",
           "answer": "\\(y_p'=\\frac{9}{8}x^2\\), \\(y_p''=\\frac{9}{4}x\\). Then \\(x^2y_p''+xy_p'-y_p = x^2\\left(\\frac{9}{4}x\\right)+x\\left(\\frac{9}{8}x^2\\right)-\\frac{3}{8}x^3 = \\frac{9}{4}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3 = \\frac{18}{8}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3=\\frac{24}{8}x^3=3x^3\\). Matches.",
-          "explanation": "\\(y_p'=\\frac{9}{8}x^2\\), \\(y_p''=\\frac{9}{4}x\\). Then \\(x^2y_p''+xy_p'-y_p = x^2\\left(\\frac{9}{4}x\\right)+x\\left(\\frac{9}{8}x^2\\right)-\\frac{3}{8}x^3 = \\frac{9}{4}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3 = \\frac{18}{8}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3=\\frac{24}{8}x^3=3x^3\\). Matches."
+          "explanation": "\\(y_p'=\\frac{9}{8}x^2\\), \\(y_p''=\\frac{9}{4}x\\). Then \\(x^2y_p''+xy_p'-y_p = x^2\\left(\\frac{9}{4}x\\right)+x\\left(\\frac{9}{8}x^2\\right)-\\frac{3}{8}x^3 = \\frac{9}{4}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3 = \\frac{18}{8}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3=\\frac{24}{8}x^3=3x^3\\). Matches.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "3",
+                "11",
+                "19",
+                "27"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#16)",
+            "caption_ar": "جدول نمط مرجعي (#16)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "3",
+                "11",
+                "19",
+                "27"
+              ]
+            ]
+          }
         },
         {
           "q": "List two advantages of variation of parameters over undetermined coefficients.",

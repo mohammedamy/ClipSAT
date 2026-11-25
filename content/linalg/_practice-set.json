@@ -11,6 +11,44 @@
       "solution": {
         "en": "<p><strong>1. Norms:</strong><br>\\[\\|\\mathbf{u}\\| = \\sqrt{1^2 + (-2)^2 + 2^2 + 0^2} = \\sqrt{1 + 4 + 4 + 0} = \\sqrt{9} = 3.\\]\\[\\|\\mathbf{v}\\| = \\sqrt{2^2 + 1^2 + 0^2 + (-2)^2} = \\sqrt{4 + 1 + 0 + 4} = \\sqrt{9} = 3.\\]</p><p><strong>2. Inner Product:</strong><br>\\[\\mathbf{u} \\cdot \\mathbf{v} = (1)(2) + (-2)(1) + (2)(0) + (0)(-2) = 2 - 2 + 0 + 0 = 0.\\]</p><p><strong>3. Angle:</strong><br>\\[\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\| \\|\\mathbf{v}\\|} = \\frac{0}{3 \\cdot 3} = 0 \\implies \\theta = \\frac{\\pi}{2} \\text{ rad } (90^\\circ).\\]</p><p><strong>4. Cauchy–Schwarz Verification:</strong><br>\\(|\\mathbf{u} \\cdot \\mathbf{v}| = 0 \\le \\|\\mathbf{u}\\| \\|\\mathbf{v}\\| = 3 \\cdot 3 = 9\\). The vectors are orthogonal, satisfying the inequality strictly. ✓</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Trial",
+          "#1",
+          "#2",
+          "#3",
+          "#4"
+        ],
+        "rows": [
+          [
+            "Value",
+            "1",
+            "-2",
+            "2",
+            "0"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Recorded Sample Observations (#1)",
+        "caption_ar": "قيم العينة المسجلة (#1)",
+        "headers_ar": [
+          "المحاولة",
+          "#1",
+          "#2",
+          "#3",
+          "#4"
+        ],
+        "rows_ar": [
+          [
+            "القيمة",
+            "1",
+            "-2",
+            "2",
+            "0"
+          ]
+        ]
       }
     },
     {
@@ -23,6 +61,25 @@
       "solution": {
         "en": "<p><strong>Hyperplane Distance Formula:</strong> For \\(\\mathcal{H}: \\mathbf{n} \\cdot \\mathbf{x} = d\\), the perpendicular distance from \\(\\mathbf{x}_0\\) is: \\[D = \\frac{|\\mathbf{n} \\cdot \\mathbf{x}_0 - d|}{\\|\\mathbf{n}\\|}.\\] Here \\(\\mathbf{n} = (2, -1, 2)^T\\), \\(d = 5\\), and \\(\\mathbf{x}_0 = (3, -1, 4)^T\\).</p><p><strong>1. Norm of normal vector:</strong> \\[\\|\\mathbf{n}\\| = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{4 + 1 + 4} = \\sqrt{9} = 3.\\]</p><p><strong>2. Value at point \\(P\\):</strong> \\[\\mathbf{n} \\cdot \\mathbf{x}_0 = 2(3) - 1(-1) + 2(4) = 6 + 1 + 8 = 15.\\]</p><p><strong>3. Distance:</strong> \\[D = \\frac{|15 - 5|}{3} = \\frac{10}{3}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#2)"
       }
     },
     {
@@ -35,6 +92,20 @@
       "solution": {
         "en": "<p><strong>Algebraic Proof:</strong> Expand each squared Euclidean norm using the inner product: \\[\\|\\mathbf{u} + \\mathbf{v}\\|^2 = (\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} + \\mathbf{v}) = \\|\\mathbf{u}\\|^2 + 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2.\\] \\[\\|\\mathbf{u} - \\mathbf{v}\\|^2 = (\\mathbf{u} - \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v}) = \\|\\mathbf{u}\\|^2 - 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2.\\] Adding the two equations directly cancels the cross terms \\(2(\\mathbf{u} \\cdot \\mathbf{v})\\) and \\(-2(\\mathbf{u} \\cdot \\mathbf{v})\\): \\[\\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\quad \\blacksquare\\]</p><p><strong>Geometric Meaning:</strong> In any parallelogram formed by vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\), the sum of the squares of the lengths of the two diagonals (\\(\\mathbf{u} + \\mathbf{v}\\) and \\(\\mathbf{u} - \\mathbf{v}\\)) equals the sum of the squares of the lengths of all four sides.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#3)"
       }
     },
     {
@@ -47,6 +118,46 @@
       "solution": {
         "en": "<p><strong>Step 1: Set up augmented matrix and row reduce:</strong> \\[\\left(\\begin{array}{cccc|c} 1 & 2 & -1 & 3 & 4 \\\\ 2 & 4 & -1 & 8 & 11 \\\\ -1 & -2 & 2 & -1 & -1 \\end{array}\\right) \\xrightarrow{R_2 - 2R_1,\\, R_3 + R_1} \\left(\\begin{array}{cccc|c} 1 & 2 & -1 & 3 & 4 \\\\ 0 & 0 & 1 & 2 & 3 \\\\ 0 & 0 & 1 & 2 & 3 \\end{array}\\right)\\] \\[\\xrightarrow{R_3 - R_2,\\, R_1 + R_2} \\left(\\begin{array}{cccc|c} 1 & 2 & 0 & 5 & 7 \\\\ 0 & 0 & 1 & 2 & 3 \\\\ 0 & 0 & 0 & 0 & 0 \\end{array}\\right).\\]</p><p><strong>Step 2: Identify pivot and free variables:</strong><br>Pivots in columns 1 and 3 (\\(x_1, x_3\\)). Free variables are \\(x_2 = s\\), \\(x_4 = t\\).<br>From RREF: \\(x_1 = 7 - 2s - 5t\\), \\(x_3 = 3 - 2t\\).</p><p><strong>Step 3: Parametric vector decomposition \\(\\mathbf{x} = \\mathbf{x}_p + s\\mathbf{v}_1 + t\\mathbf{v}_2\\):</strong> \\[\\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 0 \\\\ 3 \\\\ 0 \\end{pmatrix} + s \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t \\begin{pmatrix} -5 \\\\ 0 \\\\ -2 \\\\ 1 \\end{pmatrix}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "4",
+            "-1"
+          ],
+          [
+            "y-comp",
+            "2",
+            "5"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#4)",
+        "caption_ar": "جدول المركبات والمتجهات (#4)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "4",
+            "-1"
+          ],
+          [
+            "المركبة y",
+            "2",
+            "5"
+          ]
+        ]
       }
     },
     {
@@ -59,6 +170,24 @@
       "solution": {
         "en": "<p><strong>Step 1: Compute determinant of coefficient matrix \\(A\\):</strong> \\[\\det(A) = \\begin{vmatrix} 1 & 1 & k \\\\ 3 & 4 & 2 \\\\ 2 & 3 & -1 \\end{vmatrix}.\\] Expanding along row 1: \\[\\det(A) = 1(4(-1) - 2(3)) - 1(3(-1) - 2(2)) + k(3(3) - 4(2)) = 1(-10) - 1(-7) + k(1) = k - 3.\\]</p><p><strong>Step 2: Classify cases:</strong><ul><li><strong>(a) Unique Solution:</strong> If \\(k \\neq 3\\), \\(\\det(A) \\neq 0\\); the system has full rank 3 and possesses a <strong>unique solution</strong>.</li><li><strong>Critical Case \\(k = 3\\):</strong> Substitute \\(k = 3\\) into the augmented matrix: \\[\\left(\\begin{array}{ccc|c} 1 & 1 & 3 & 2 \\\\ 3 & 4 & 2 & 3 \\\\ 2 & 3 & -1 & 1 \\end{array}\\right) \\xrightarrow{R_2 - 3R_1,\\, R_3 - 2R_1} \\left(\\begin{array}{ccc|c} 1 & 1 & 3 & 2 \\\\ 0 & 1 & -7 & -3 \\\\ 0 & 1 & -7 & -3 \\end{array}\\right) \\xrightarrow{R_3 - R_2} \\left(\\begin{array}{ccc|c} 1 & 1 & 3 & 2 \\\\ 0 & 1 & -7 & -3 \\\\ 0 & 0 & 0 & 0 \\end{array}\\right).\\] The bottom row is \\(0 = 0\\), so \\(\\operatorname{rank}(A) = \\operatorname{rank}([A|\\mathbf{b}]) = 2 \\lt 3\\).<br>Therefore, for \\(k = 3\\), there are <strong>infinitely many solutions</strong> (1 free variable).</li><li><strong>(c) No Solution:</strong> There are <strong>no values</strong> of \\(k\\) for which the system is inconsistent.</li></ul></p>",
         "ar": null
+      },
+      "fig": {
+        "type": "bars",
+        "labels": [
+          "k1",
+          "k2",
+          "k3",
+          "k4"
+        ],
+        "values": [
+          3,
+          4,
+          7,
+          14
+        ],
+        "xLabel": "Index n",
+        "yLabel": "Magnitude",
+        "caption": "Discrete Sequence Profile (#5)"
       }
     },
     {
@@ -71,6 +200,24 @@
       "solution": {
         "en": "<p><strong>Two-part set inclusion proof:</strong></p><p><strong>1. Show \\(S \\subseteq \\text{Solution Set}:\\)</strong> Let \\(\\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_h\\) where \\(A\\mathbf{x}_p = \\mathbf{b}\\) and \\(A\\mathbf{x}_h = \\mathbf{0}\\). Applying matrix multiplication: \\[A\\mathbf{x} = A(\\mathbf{x}_p + \\mathbf{x}_h) = A\\mathbf{x}_p + A\\mathbf{x}_h = \\mathbf{b} + \\mathbf{0} = \\mathbf{b}.\\] Thus every vector in \\(S\\) is indeed a valid solution.</p><p><strong>2. Show \\(\\text{Solution Set} \\subseteq S:\\)</strong> Let \\(\\mathbf{y}\\) be an arbitrary solution to \\(A\\mathbf{x} = \\mathbf{b}\\), so \\(A\\mathbf{y} = \\mathbf{b}\\). Define \\(\\mathbf{w} = \\mathbf{y} - \\mathbf{x}_p\\). Then: \\[A\\mathbf{w} = A(\\mathbf{y} - \\mathbf{x}_p) = A\\mathbf{y} - A\\mathbf{x}_p = \\mathbf{b} - \\mathbf{b} = \\mathbf{0}.\\] This proves \\(\\mathbf{w} \\in \\operatorname{Null}(A)\\). Hence \\(\\mathbf{y} = \\mathbf{x}_p + \\mathbf{w} \\in S\\). Therefore the complete solution set is precisely \\(\\mathbf{x}_p + \\operatorname{Null}(A)\\). \\(\\blacksquare\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "bars",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "values": [
+          3,
+          6,
+          5,
+          8
+        ],
+        "xLabel": "Component",
+        "yLabel": "Value",
+        "caption": "Quantity Comparison Chart (#6)"
       }
     },
     {
@@ -83,6 +230,44 @@
       "solution": {
         "en": "<p><strong>(a) Transpose Proof:</strong> The \\((i, j)\\)-entry of \\((AB)^T\\) is the \\((j, i)\\)-entry of \\(AB\\): \\[[(AB)^T]_{ij} = [AB]_{ji} = \\sum_{k=1}^n A_{jk} B_{ki} = \\sum_{k=1}^n B_{ki} A_{jk}.\\] Using the definition of matrix transpose, \\(B_{ki} = [B^T]_{ik}\\) and \\(A_{jk} = [A^T]_{kj}\\): \\[[(AB)^T]_{ij} = \\sum_{k=1}^n [B^T]_{ik} [A^T]_{kj} = [B^T A^T]_{ij}.\\] Since entries match for all \\(i, j\\), \\((AB)^T = B^T A^T\\). \\(\\blacksquare\\)</p><p><strong>(b) Inverse Proof:</strong> A matrix \\(C\\) is the inverse of \\(AB\\) if and only if \\((AB)C = I_n\\) and \\(C(AB) = I_n\\). Test \\(C = B^{-1} A^{-1}\\): \\[(AB)(B^{-1} A^{-1}) = A (B B^{-1}) A^{-1} = A I_n A^{-1} = A A^{-1} = I_n.\\] Check reverse order: \\[(B^{-1} A^{-1})(AB) = B^{-1} (A^{-1} A) B = B^{-1} I_n B = B^{-1} B = I_n.\\] By uniqueness of matrix inverses, \\((AB)^{-1} = B^{-1} A^{-1}\\). \\(\\blacksquare\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "1",
+            "6",
+            "11",
+            "16"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#7)",
+        "caption_ar": "جدول نمط مرجعي (#7)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "1",
+            "6",
+            "11",
+            "16"
+          ]
+        ]
       }
     },
     {
@@ -95,6 +280,20 @@
       "solution": {
         "en": "<p><strong>Step 1: Set up \\([A \\mid I]\\):</strong> \\[\\left(\\begin{array}{ccc|ccc} 1 & 0 & 2 & 1 & 0 & 0 \\\\ 2 & -1 & 3 & 0 & 1 & 0 \\\\ 4 & 1 & 8 & 0 & 0 & 1 \\end{array}\\right) \\xrightarrow{R_2 - 2R_1,\\, R_3 - 4R_1} \\left(\\begin{array}{ccc|ccc} 1 & 0 & 2 & 1 & 0 & 0 \\\\ 0 & -1 & -1 & -2 & 1 & 0 \\\\ 0 & 1 & 0 & -4 & 0 & 1 \\end{array}\\right).\\]</p><p><strong>Step 2: Row swap and scaling:</strong> \\[\\xrightarrow{R_2 \\leftrightarrow R_3} \\left(\\begin{array}{ccc|ccc} 1 & 0 & 2 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & -4 & 0 & 1 \\\\ 0 & -1 & -1 & -2 & 1 & 0 \\end{array}\\right) \\xrightarrow{R_3 + R_2} \\left(\\begin{array}{ccc|ccc} 1 & 0 & 2 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & -4 & 0 & 1 \\\\ 0 & 0 & -1 & -6 & 1 & 1 \\end{array}\\right).\\]</p><p><strong>Step 3: Clear column 3 to reach reduced row echelon form:</strong> \\[\\xrightarrow{-R_3} \\left(\\begin{array}{ccc|ccc} 1 & 0 & 2 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & -4 & 0 & 1 \\\\ 0 & 0 & 1 & 6 & -1 & -1 \\end{array}\\right) \\xrightarrow{R_1 - 2R_3} \\left(\\begin{array}{ccc|ccc} 1 & 0 & 0 & -11 & 2 & 2 \\\\ 0 & 1 & 0 & -4 & 0 & 1 \\\\ 0 & 0 & 1 & 6 & -1 & -1 \\end{array}\\right).\\] Therefore: \\[A^{-1} = \\begin{pmatrix} -11 & 2 & 2 \\\\ -4 & 0 & 1 \\\\ 6 & -1 & -1 \\end{pmatrix}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#8)"
       }
     },
     {
@@ -163,6 +362,46 @@
       "solution": {
         "en": "<p><strong>Step 1: Choose row with maximum zeros:</strong><br>Row 2 has three zero entries: \\(a_{21}=0, a_{22}=5, a_{23}=0, a_{24}=0\\).<br>Expanding along Row 2: \\[\\det(A) = (-1)^{2+2} (5) \\begin{vmatrix} 2 & -1 & 3 \\\\ 1 & 3 & 1 \\\\ 4 & 1 & 2 \\end{vmatrix} = 5 \\begin{vmatrix} 2 & -1 & 3 \\\\ 1 & 3 & 1 \\\\ 4 & 1 & 2 \\end{vmatrix}.\\]</p><p><strong>Step 2: Evaluate \\(3 \\times 3\\) determinant:</strong> \\[\\begin{vmatrix} 2 & -1 & 3 \\\\ 1 & 3 & 1 \\\\ 4 & 1 & 2 \\end{vmatrix} = 2(3(2) - 1(1)) - (-1)(1(2) - 1(4)) + 3(1(1) - 3(4))\\] \\[= 2(6 - 1) + 1(2 - 4) + 3(1 - 12) = 2(5) + 1(-2) + 3(-11) = 10 - 2 - 33 = -25.\\]</p><p><strong>Step 3: Multiply by coefficient:</strong> \\[\\det(A) = 5(-25) = -125.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "3",
+            "0"
+          ],
+          [
+            "y-comp",
+            "3",
+            "6"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#10)",
+        "caption_ar": "جدول المركبات والمتجهات (#10)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "3",
+            "0"
+          ],
+          [
+            "المركبة y",
+            "3",
+            "6"
+          ]
+        ]
       }
     },
     {
@@ -175,6 +414,20 @@
       "solution": {
         "en": "<p><strong>Step 1: Compute \\(\\det(A)\\):</strong> Expanding along row 1: \\[\\det(A) = 1(3(4) - 1(1)) - 2(0(4) - 1(2)) + 0 = 1(11) - 2(-2) = 11 + 4 = 15.\\]</p><p><strong>Step 2: Compute Cofactor Matrix \\(C\\):</strong> \\[C_{11} = +(12-1) = 11, \\quad C_{12} = -(0-2) = 2, \\quad C_{13} = +(0-6) = -6\\] \\[C_{21} = -(8-0) = -8, \\quad C_{22} = +(4-0) = 4, \\quad C_{23} = -(1-4) = 3\\] \\[C_{31} = +(2-0) = 2, \\quad C_{32} = -(1-0) = -1, \\quad C_{33} = +(3-0) = 3\\] The adjugate matrix is the transpose \\(\\operatorname{adj}(A) = C^T\\): \\[\\operatorname{adj}(A) = \\begin{pmatrix} 11 & -8 & 2 \\\\ 2 & 4 & -1 \\\\ -6 & 3 & 3 \\end{pmatrix}.\\]</p><p><strong>Step 3: Multiply \\(A \\operatorname{adj}(A)\\):</strong> \\[\\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 3 & 1 \\\\ 2 & 1 & 4 \\end{pmatrix} \\begin{pmatrix} 11 & -8 & 2 \\\\ 2 & 4 & -1 \\\\ -6 & 3 & 3 \\end{pmatrix} = \\begin{pmatrix} 11+4+0 & -8+8+0 & 2-2+0 \\\\ 0+6-6 & 0+12+3 & 0-3+3 \\\\ 22+2-24 & -16+4+12 & 4-1+12 \\end{pmatrix} = \\begin{pmatrix} 15 & 0 & 0 \\\\ 0 & 15 & 0 \\\\ 0 & 0 & 15 \\end{pmatrix} = 15 I_3. \\;\\checkmark\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#11)"
       }
     },
     {
@@ -187,6 +440,24 @@
       "solution": {
         "en": "<p><strong>Step 1: Compute main determinant \\(\\det(A)\\):</strong> \\[\\det(A) = \\begin{vmatrix} 2 & 1 & 1 \\\\ 1 & -1 & 2 \\\\ 3 & 2 & -1 \\end{vmatrix} = 2((-1)(-1) - 2(2)) - 1(1(-1) - 2(3)) + 1(1(2) - (-1)(3))\\] \\[= 2(1 - 4) - 1(-1 - 6) + 1(2 + 3) = 2(-3) - 1(-7) + 1(5) = -6 + 7 + 5 = 6.\\]</p><p><strong>Step 2: Replace column 2 with \\(\\mathbf{b} = (4, 1, 7)^T\\):</strong> \\[\\det(A_2(\\mathbf{b})) = \\begin{vmatrix} 2 & 4 & 1 \\\\ 1 & 1 & 2 \\\\ 3 & 7 & -1 \\end{vmatrix}.\\] Expanding along row 1: \\[= 2(1(-1) - 2(7)) - 4(1(-1) - 2(3)) + 1(1(7) - 1(3)) = 2(-15) - 4(-7) + 1(4) = -30 + 28 + 4 = 2.\\]</p><p><strong>Step 3: Evaluate \\(x_2\\):</strong> \\[x_2 = \\frac{\\det(A_2(\\mathbf{b}))}{\\det(A)} = \\frac{2}{6} = \\frac{1}{3}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "bars",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "values": [
+          5,
+          8,
+          5,
+          8
+        ],
+        "xLabel": "Component",
+        "yLabel": "Value",
+        "caption": "Quantity Comparison Chart (#12)"
       }
     },
     {
@@ -199,6 +470,46 @@
       "solution": {
         "en": "<p><strong>Subspace Test Verification:</strong></p><ol><li><strong>Non-emptiness:</strong> The zero matrix \\(O\\) satisfies \\(O^T = O = -O\\), so \\(O \\in W\\).</li><li><strong>Additivity:</strong> Let \\(A, B \\in W\\). Then \\((A + B)^T = A^T + B^T = (-A) + (-B) = -(A + B)\\). Thus \\(A + B \\in W\\).</li><li><strong>Scalar Closure:</strong> Let \\(A \\in W\\) and \\(c \\in \\mathbb{R}\\). Then \\((cA)^T = c(A^T) = c(-A) = -(cA)\\). Thus \\(cA \\in W\\).</li></ol><p>Since all 3 axioms hold, \\(W\\) is a vector subspace of \\(M_2(\\mathbb{R})\\).</p><p><strong>General form and basis:</strong> A matrix \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\) satisfies \\(A^T = -A \\iff \\begin{pmatrix} a & c \\\\ b & d \\end{pmatrix} = \\begin{pmatrix} -a & -b \\\\ -c & -d \\end{pmatrix}\\). This requires \\(a = -a \\implies a = 0\\), \\(d = -d \\implies d = 0\\), and \\(c = -b\\). Thus: \\[A = \\begin{pmatrix} 0 & b \\\\ -b & 0 \\end{pmatrix} = b \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}.\\] A basis for \\(W\\) is \\(\\left\\{ \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix} \\right\\}\\), and \\(\\dim(W) = 1\\).</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "4",
+            "-1"
+          ],
+          [
+            "y-comp",
+            "4",
+            "2"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#13)",
+        "caption_ar": "جدول المركبات والمتجهات (#13)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "4",
+            "-1"
+          ],
+          [
+            "المركبة y",
+            "4",
+            "2"
+          ]
+        ]
       }
     },
     {
@@ -211,6 +522,20 @@
       "solution": {
         "en": "<p><strong>Step 1: Row reduction to RREF:</strong> \\[\\begin{pmatrix} 1 & 2 & 0 & 1 \\\\ 2 & 4 & 1 & 4 \\\\ 3 & 6 & 1 & 5 \\end{pmatrix} \\xrightarrow{R_2 - 2R_1,\\, R_3 - 3R_1} \\begin{pmatrix} 1 & 2 & 0 & 1 \\\\ 0 & 0 & 1 & 2 \\\\ 0 & 0 & 1 & 2 \\end{pmatrix} \\xrightarrow{R_3 - R_2} \\begin{pmatrix} 1 & 2 & 0 & 1 \\\\ 0 & 0 & 1 & 2 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix}.\\]</p><p><strong>Step 2: Subspace Bases:</strong><ul><li><strong>Basis for \\(\\operatorname{Row}(A)\\):</strong> Non-zero rows of RREF: \\(\\{ (1, 2, 0, 1), (0, 0, 1, 2) \\}\\).</li><li><strong>Basis for \\(\\operatorname{Col}(A)\\):</strong> Pivot columns of original matrix \\(A\\) (columns 1 and 3): \\(\\left\\{ \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix} \\right\\}\\).</li><li><strong>Basis for \\(\\operatorname{Null}(A)\\):</strong> Free variables \\(x_2 = s, x_4 = t\\). From RREF: \\(x_1 = -2s - t\\), \\(x_3 = -2t\\). \\[\\mathbf{x} = s \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\\\ 1 \\end{pmatrix} \\implies \\text{Basis} = \\left\\{ \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\\\ 1 \\end{pmatrix} \\right\\}.\\]</li></ul></p><p><strong>Verification:</strong> \\(\\operatorname{rank}(A) = 2\\), \\(\\operatorname{nullity}(A) = 2\\). Total columns \\(n = 4\\).<br>\\(\\operatorname{rank}(A) + \\operatorname{nullity}(A) = 2 + 2 = 4 = n\\). ✓</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#14)"
       }
     },
     {
@@ -223,6 +548,20 @@
       "solution": {
         "en": "<p><strong>Set up the coordinate equation:</strong> \\[p(x) = c_1(1) + c_2(1+x) + c_3(1+x+x^2) = (c_1 + c_2 + c_3) + (c_2 + c_3)x + c_3 x^2.\\] Equating coefficients of like powers with \\(3 - 2x + 5x^2\\):</p><ol><li>Coefficient of \\(x^2\\): \\(c_3 = 5\\)</li><li>Coefficient of \\(x\\): \\(c_2 + c_3 = -2 \\implies c_2 + 5 = -2 \\implies c_2 = -7\\)</li><li>Constant term: \\(c_1 + c_2 + c_3 = 3 \\implies c_1 - 7 + 5 = 3 \\implies c_1 = 5\\)</li></ol><p>Therefore, the coordinate vector is: \\[[p(x)]_\\mathcal{B} = \\begin{pmatrix} 5 \\\\ -7 \\\\ 5 \\end{pmatrix}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#15)"
       }
     },
     {
@@ -235,6 +574,46 @@
       "solution": {
         "en": "<p><strong>Step 1: Show \\(\\lambda \\neq 0\\):</strong><br>By definition of an eigenvalue, there exists a nonzero vector \\(\\mathbf{v} \\neq \\mathbf{0}\\) such that \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\). If \\(\\lambda = 0\\), then \\(A\\mathbf{v} = \\mathbf{0}\\), which means \\(\\mathbf{v} \\in \\operatorname{Null}(A)\\), contradicting the assumption that \\(A\\) is invertible. Thus \\(\\lambda \\neq 0\\).</p><p><strong>Step 2: Show \\(\\lambda^{-1}\\) is an eigenvalue of \\(A^{-1}\\):</strong><br>Multiply both sides of \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) by \\(A^{-1}\\) from the left: \\[A^{-1}(A\\mathbf{v}) = A^{-1}(\\lambda\\mathbf{v}) \\implies (A^{-1}A)\\mathbf{v} = \\lambda(A^{-1}\\mathbf{v}) \\implies \\mathbf{v} = \\lambda(A^{-1}\\mathbf{v}).\\] Dividing both sides by the nonzero scalar \\(\\lambda\\): \\[A^{-1}\\mathbf{v} = \\frac{1}{\\lambda}\\mathbf{v} = \\lambda^{-1}\\mathbf{v}.\\] Since \\(\\mathbf{v} \\neq \\mathbf{0}\\), this equation precisely states that \\(\\lambda^{-1}\\) is an eigenvalue of \\(A^{-1}\\) with the identical eigenvector \\(\\mathbf{v}\\). \\(\\blacksquare\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "2",
+            "1"
+          ],
+          [
+            "y-comp",
+            "1",
+            "6"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#16)",
+        "caption_ar": "جدول المركبات والمتجهات (#16)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "2",
+            "1"
+          ],
+          [
+            "المركبة y",
+            "1",
+            "6"
+          ]
+        ]
       }
     },
     {
@@ -247,6 +626,46 @@
       "solution": {
         "en": "<p><strong>Step 1: Characteristic equation:</strong> Since \\(A\\) is upper triangular, its eigenvalues are the diagonal entries: \\[\\det(A - \\lambda I) = (3 - \\lambda)^2 (2 - \\lambda) = 0.\\] Distinct eigenvalues: \\(\\lambda_1 = 3\\) (algebraic multiplicity \\(\\alpha_1 = 2\\)), and \\(\\lambda_2 = 2\\) (algebraic multiplicity \\(\\alpha_2 = 1\\)).</p><p><strong>Step 2: Eigenspace for \\(\\lambda = 3\\):</strong> \\[(A - 3I)\\mathbf{v} = \\begin{pmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix} \\begin{pmatrix} v_1 \\\\ v_2 \\\\ v_3 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\end{pmatrix}.\\] We obtain \\(v_2 = 0\\) and \\(-v_3 = 0 \\implies v_3 = 0\\), while \\(v_1\\) is free. Thus: \\[E_3 = \\operatorname{span}\\left\\{ \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix} \\right\\} \\implies \\text{geometric multiplicity } \\gamma_1 = 1.\\]</p><p><strong>Step 3: Eigenspace for \\(\\lambda = 2\\):</strong> \\[(A - 2I)\\mathbf{v} = \\begin{pmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 0 \\end{pmatrix} \\begin{pmatrix} v_1 \\\\ v_2 \\\\ v_3 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\end{pmatrix} \\implies v_1 = 0, \\, v_2 = 0, \\, v_3 \\text{ free} \\implies E_2 = \\operatorname{span}\\left\\{ \\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix} \\right\\}.\\]</p><p><strong>Conclusion:</strong> For \\(\\lambda = 3\\), \\(\\gamma_1 = 1 \\lt \\alpha_1 = 2\\). Because the geometric multiplicity falls strictly below the algebraic multiplicity, \\(A\\) is <strong>defective and NOT diagonalizable</strong>.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "5",
+            "-1"
+          ],
+          [
+            "y-comp",
+            "1",
+            "3"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#17)",
+        "caption_ar": "جدول المركبات والمتجهات (#17)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "5",
+            "-1"
+          ],
+          [
+            "المركبة y",
+            "1",
+            "3"
+          ]
+        ]
       }
     },
     {
@@ -259,6 +678,46 @@
       "solution": {
         "en": "<p><strong>Step 1: Eigenvalues of \\(A\\):</strong> \\[\\det(A - \\lambda I) = (1 - \\lambda)^2 - 4 = \\lambda^2 - 2\\lambda - 3 = (\\lambda - 3)(\\lambda + 1) = 0 \\implies \\lambda_1 = 3, \\, \\lambda_2 = -1.\\]</p><p><strong>Step 2: Eigenvectors:</strong><ul><li>For \\(\\lambda_1 = 3\\): \\(\\begin{pmatrix} -2 & 2 \\\\ 2 & -2 \\end{pmatrix} \\mathbf{v}_1 = \\mathbf{0} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\\).</li><li>For \\(\\lambda_2 = -1\\): \\(\\begin{pmatrix} 2 & 2 \\\\ 2 & 2 \\end{pmatrix} \\mathbf{v}_2 = \\mathbf{0} \\implies \\mathbf{v}_2 = \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}\\).</li></ul></p><p><strong>Step 3: Construct \\(P\\), \\(D\\), and \\(P^{-1}\\):</strong> \\[P = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}, \\quad D = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}, \\quad P^{-1} = \\frac{1}{2}\\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix}.\\]</p><p><strong>Step 4: Compute \\(A^k = P D^k P^{-1}\\):</strong> \\[A^k = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} \\begin{pmatrix} 3^k & 0 \\\\ 0 & (-1)^k \\end{pmatrix} \\frac{1}{2}\\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix} = \\frac{1}{2}\\begin{pmatrix} 3^k & -(-1)^k \\\\ 3^k & (-1)^k \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix}\\] \\[= \\frac{1}{2}\\begin{pmatrix} 3^k + (-1)^k & 3^k - (-1)^k \\\\ 3^k - (-1)^k & 3^k + (-1)^k \\end{pmatrix}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "2",
+            "0"
+          ],
+          [
+            "y-comp",
+            "1",
+            "2"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#18)",
+        "caption_ar": "جدول المركبات والمتجهات (#18)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "2",
+            "0"
+          ],
+          [
+            "المركبة y",
+            "1",
+            "2"
+          ]
+        ]
       }
     },
     {
@@ -271,6 +730,58 @@
       "solution": {
         "en": "<p><strong>Step 1: Eigenvalues of coefficient matrix:</strong> \\[\\det(A - \\lambda I) = (1 - \\lambda)(3 - \\lambda) - 8 = \\lambda^2 - 4\\lambda - 5 = (\\lambda - 5)(\\lambda + 1) = 0 \\implies \\lambda_1 = 5, \\, \\lambda_2 = -1.\\]</p><p><strong>Step 2: Eigenvectors:</strong><ul><li>For \\(\\lambda_1 = 5\\): \\((A - 5I) = \\begin{pmatrix} -4 & 4 \\\\ 2 & -2 \\end{pmatrix} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\\).</li><li>For \\(\\lambda_2 = -1\\): \\((A + I) = \\begin{pmatrix} 2 & 4 \\\\ 2 & 4 \\end{pmatrix} \\implies \\mathbf{v}_2 = \\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix}\\).</li></ul></p><p><strong>Step 3: General solution and initial conditions:</strong> \\[\\mathbf{x}(t) = c_1 e^{5t} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + c_2 e^{-t} \\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix}.\\] At \\(t = 0\\): \\[c_1 \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + c_2 \\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 1 \\end{pmatrix} \\iff \\begin{pmatrix} 1 & -2 \\\\ 1 & 1 \\end{pmatrix} \\begin{pmatrix} c_1 \\\\ c_2 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 1 \\end{pmatrix}.\\] Subtracting rows: \\(3c_2 = -4 \\implies c_2 = -4/3\\); then \\(c_1 = 5 + 2(-4/3) = 7/3\\).<br>Therefore: \\[\\mathbf{x}(t) = \\frac{7}{3} e^{5t} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} - \\frac{4}{3} e^{-t} \\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} \\frac{7}{3}e^{5t} + \\frac{8}{3}e^{-t} \\\\ \\frac{7}{3}e^{5t} - \\frac{4}{3}e^{-t} \\end{pmatrix}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "3",
+            "6",
+            "9",
+            "12"
+          ],
+          [
+            "f'(x)",
+            "4",
+            "2",
+            "4",
+            "2"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#19)",
+        "caption_ar": "جدول القيم المختارة (#19)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "3",
+            "6",
+            "9",
+            "12"
+          ],
+          [
+            "f'(x)",
+            "4",
+            "2",
+            "4",
+            "2"
+          ]
+        ]
       }
     },
     {
@@ -395,6 +906,44 @@
       "solution": {
         "en": "<p><strong>Step 1: Standard matrix \\(A\\):</strong> \\[A = \\begin{pmatrix} 1 & 2 & -1 \\\\ 2 & 5 & 0 \\\\ 3 & 7 & -1 \\end{pmatrix}.\\]</p><p><strong>Step 2: Row reduce to RREF:</strong> \\[\\begin{pmatrix} 1 & 2 & -1 \\\\ 2 & 5 & 0 \\\\ 3 & 7 & -1 \\end{pmatrix} \\xrightarrow{R_2 - 2R_1,\\, R_3 - 3R_1} \\begin{pmatrix} 1 & 2 & -1 \\\\ 0 & 1 & 2 \\\\ 0 & 1 & 2 \\end{pmatrix} \\xrightarrow{R_3 - R_2,\\, R_1 - 2R_2} \\begin{pmatrix} 1 & 0 & -5 \\\\ 0 & 1 & 2 \\\\ 0 & 0 & 0 \\end{pmatrix}.\\]</p><p><strong>Step 3: Kernel and Image:</strong><ul><li>\\(\\ker(T)\\): Free variable \\(z = t\\). \\(x = 5t\\), \\(y = -2t\\). Basis = \\(\\left\\{ \\begin{pmatrix} 5 \\\\ -2 \\\\ 1 \\end{pmatrix} \\right\\}\\), nullity = 1.</li><li>\\(\\operatorname{im}(T)\\): Pivot columns 1 and 2 of \\(A\\). Basis = \\(\\left\\{ \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}, \\begin{pmatrix} 2 \\\\ 5 \\\\ 7 \\end{pmatrix} \\right\\}\\), rank = 2.</li></ul></p><p><strong>Isomorphism check:</strong> Since \\(\\ker(T) \\neq \\{\\mathbf{0}\\}\\), \\(T\\) is not injective (and \\(\\operatorname{rank}(T) = 2 \\lt 3\\) means not surjective). Therefore, \\(T\\) is <strong>not an isomorphism</strong>.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows": [
+          [
+            "g(x)",
+            "3",
+            "5",
+            "7",
+            "9"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Reference Pattern Table (#22)",
+        "caption_ar": "جدول نمط مرجعي (#22)",
+        "headers_ar": [
+          "x",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "rows_ar": [
+          [
+            "g(x)",
+            "3",
+            "5",
+            "7",
+            "9"
+          ]
+        ]
       }
     },
     {
@@ -463,6 +1012,46 @@
       "solution": {
         "en": "<p><strong>Step 1: Orthogonalize \\(\\mathbf{x}_1 = (1, 2, -2)^T\\) and \\(\\mathbf{x}_2 = (2, 1, 2)^T\\):</strong><br>First vector: \\(\\mathbf{v}_1 = \\mathbf{x}_1 = \\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix}\\).<br>Norm: \\(\\|\\mathbf{v}_1\\| = \\sqrt{1^2 + 2^2 + (-2)^2} = \\sqrt{9} = 3\\).<br>Subtract projection of \\(\\mathbf{x}_2\\) onto \\(\\mathbf{v}_1\\): \\[\\mathbf{x}_2 \\cdot \\mathbf{v}_1 = 2(1) + 1(2) + 2(-2) = 2 + 2 - 4 = 0.\\] Since \\(\\mathbf{x}_2 \\cdot \\mathbf{v}_1 = 0\\), the columns were already orthogonal! Thus \\(\\mathbf{v}_2 = \\mathbf{x}_2 = \\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}\\).<br>Norm: \\(\\|\\mathbf{v}_2\\| = \\sqrt{2^2 + 1^2 + 2^2} = \\sqrt{9} = 3\\).</p><p><strong>Step 2: Normalize to construct \\(Q\\):</strong> \\[\\mathbf{q}_1 = \\frac{1}{3}\\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix}, \\quad \\mathbf{q}_2 = \\frac{1}{3}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix} \\implies Q = \\begin{pmatrix} 1/3 & 2/3 \\\\ 2/3 & 1/3 \\\\ -2/3 & 2/3 \\end{pmatrix}.\\]</p><p><strong>Step 3: Construct \\(R = Q^T A\\):</strong> \\[R = \\begin{pmatrix} \\|\\mathbf{v}_1\\| & \\mathbf{q}_1 \\cdot \\mathbf{x}_2 \\\\ 0 & \\|\\mathbf{v}_2\\| \\end{pmatrix} = \\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}.\\] Check: \\(QR = \\begin{pmatrix} 1/3 & 2/3 \\\\ 2/3 & 1/3 \\\\ -2/3 & 2/3 \\end{pmatrix} \\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\\\ -2 & 2 \\end{pmatrix} = A\\). ✓</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "2",
+            "1"
+          ],
+          [
+            "y-comp",
+            "3",
+            "6"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#24)",
+        "caption_ar": "جدول المركبات والمتجهات (#24)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "2",
+            "1"
+          ],
+          [
+            "المركبة y",
+            "3",
+            "6"
+          ]
+        ]
       }
     },
     {
@@ -475,6 +1064,46 @@
       "solution": {
         "en": "<p><strong>Step 1 · Determinant Formulation:</strong> The volume of the parallelepiped spanned by \\(\\mathbf{u} = (2, 1, -1)\\), \\(\\mathbf{v} = (1, k, 2)\\), and \\(\\mathbf{w} = (3, 4, 1)\\) equals \\(|\\det(M)|\\), where</p><p>\\[ M = \\begin{bmatrix} 2 & 1 & -1 \\\\ 1 & k & 2 \\\\ 3 & 4 & 1 \\end{bmatrix}. \\]</p><p><strong>Step 2 · Cofactor Expansion Along Row 1:</strong> \\[ \\det(M) = 2(k - 8) - 1(1 - 6) - 1(4 - 3k) = 2k - 16 + 5 - 4 + 3k = 5k - 15. \\]</p><p><strong>Step 3 · Solve Volume Equation:</strong> Setting \\(|5k - 15| = 15\\) gives two valid cases: \\(5k - 15 = 15 \\implies k = 6\\), and \\(5k - 15 = -15 \\implies k = 0\\).</p><p><strong>Final Answer:</strong> \\(k = 0\\) or \\(k = 6\\)</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Basis Vector",
+          "e₁",
+          "e₂"
+        ],
+        "rows": [
+          [
+            "x-comp",
+            "3",
+            "-1"
+          ],
+          [
+            "y-comp",
+            "3",
+            "4"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Component & Basis Table (#25)",
+        "caption_ar": "جدول المركبات والمتجهات (#25)",
+        "headers_ar": [
+          "متجه الأساس",
+          "e₁",
+          "e₂"
+        ],
+        "rows_ar": [
+          [
+            "المركبة x",
+            "3",
+            "-1"
+          ],
+          [
+            "المركبة y",
+            "3",
+            "4"
+          ]
+        ]
       }
     },
     {

@@ -16,7 +16,45 @@
             "\\( n = 8 \\)"
           ],
           "correct": 0,
-          "answer": "Using the algebraic definitions of permutations and combinations:\n\\[ {}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n - 3)!} = n(n - 1)(n - 2) \\]\n\\[ {}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n - 2)!} = \\frac{n(n - 1)}{2} \\]\n\nSubstitute these into the given equation:\n\\[ n(n - 1)(n - 2) = 10 \\times \\frac{n(n - 1)}{2} \\]\n\\[ n(n - 1)(n - 2) = 5n(n - 1) \\]\n\nSince \\( n \\ge 3 \\), we have \\( n(n - 1) \\ne 0 \\). Dividing both sides by \\( n(n - 1) \\) gives:\n\\[ n - 2 = 5 \\implies n = 7 \\]\n\nCommon misconceptions:\n- Forgetting the \\( 2! \\) denominator in \\( {}^{n}\\mathrm{C}_{2} \\) (treating it as \\( {}^{n}\\mathrm{P}_{2} \\)) gives \\( n - 2 = 10 \\implies n = 12 \\).\n- Dividing by \\( n(n - 1) \\) and erroneously writing \\( n = 5 \\) instead of \\( n - 2 = 5 \\) gives \\( n = 5 \\).\n- Confusing the factorial simplification to set \\( n - 3 = 5 \\) leads to \\( n = 8 \\). [M1][A1]"
+          "answer": "Using the algebraic definitions of permutations and combinations:\n\\[ {}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n - 3)!} = n(n - 1)(n - 2) \\]\n\\[ {}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n - 2)!} = \\frac{n(n - 1)}{2} \\]\n\nSubstitute these into the given equation:\n\\[ n(n - 1)(n - 2) = 10 \\times \\frac{n(n - 1)}{2} \\]\n\\[ n(n - 1)(n - 2) = 5n(n - 1) \\]\n\nSince \\( n \\ge 3 \\), we have \\( n(n - 1) \\ne 0 \\). Dividing both sides by \\( n(n - 1) \\) gives:\n\\[ n - 2 = 5 \\implies n = 7 \\]\n\nCommon misconceptions:\n- Forgetting the \\( 2! \\) denominator in \\( {}^{n}\\mathrm{C}_{2} \\) (treating it as \\( {}^{n}\\mathrm{P}_{2} \\)) gives \\( n - 2 = 10 \\implies n = 12 \\).\n- Dividing by \\( n(n - 1) \\) and erroneously writing \\( n = 5 \\) instead of \\( n - 2 = 5 \\) gives \\( n = 5 \\).\n- Confusing the factorial simplification to set \\( n - 3 = 5 \\) leads to \\( n = 8 \\). [M1][A1]",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "3",
+                "12",
+                "21",
+                "30"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#2)",
+            "caption_ar": "جدول نمط مرجعي (#2)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "3",
+                "12",
+                "21",
+                "30"
+              ]
+            ]
+          }
         },
         {
           "q": "A committee of 5 members is to be selected from a group consisting of \\( n \\) men and 6 women, where \\( n \\ge 4 \\).\n\nGiven that the number of possible committees containing exactly 3 men is equal to the number of possible committees containing exactly 4 men, find the value of \\( n \\).",
@@ -27,7 +65,23 @@
             "7"
           ],
           "correct": 0,
-          "answer": "To form a committee of 5 members:\n\n1. **Committees with exactly 3 men:**\nSince there are 5 members in total, the committee must contain 3 men and \\( 5 - 3 = 2 \\) women.\n\\[\n\\text{Number of ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}\n\\]\n\n2. **Committees with exactly 4 men:**\nThe committee must contain 4 men and \\( 5 - 4 = 1 \\) woman.\n\\[\n\\text{Number of ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}\n\\]\n\n3. **Equating the two expressions:**\n\\[\n15\\binom{n}{3} = 6\\binom{n}{4}\n\\]\nDivide both sides by 3:\n\\[\n5\\binom{n}{3} = 2\\binom{n}{4}\n\\]\nUsing the relation \\( \\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3} \\):\n\\[\n5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}\n\\]\nSince \\( n \\ge 4 \\), \\( \\binom{n}{3} \\neq 0 \\), so we can divide both sides by \\( \\binom{n}{3} \\):\n\\[\n5 = \\frac{n - 3}{2} \\implies 10 = n - 3 \\implies n = 13\n\\]\n\n**Common Traps:**\n- Setting \\( \\binom{n}{3} = \\binom{n}{4} \\) ignores the selection of the women needed to complete the 5-member committee, giving \\( \\frac{n-3}{4} = 1 \\implies n = 7 \\).\n- Forgetting to add 3 after solving \\( n - 3 = 10 \\) leads to the distractor 10. [M1][A1]"
+          "answer": "To form a committee of 5 members:\n\n1. **Committees with exactly 3 men:**\nSince there are 5 members in total, the committee must contain 3 men and \\( 5 - 3 = 2 \\) women.\n\\[\n\\text{Number of ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}\n\\]\n\n2. **Committees with exactly 4 men:**\nThe committee must contain 4 men and \\( 5 - 4 = 1 \\) woman.\n\\[\n\\text{Number of ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}\n\\]\n\n3. **Equating the two expressions:**\n\\[\n15\\binom{n}{3} = 6\\binom{n}{4}\n\\]\nDivide both sides by 3:\n\\[\n5\\binom{n}{3} = 2\\binom{n}{4}\n\\]\nUsing the relation \\( \\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3} \\):\n\\[\n5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}\n\\]\nSince \\( n \\ge 4 \\), \\( \\binom{n}{3} \\neq 0 \\), so we can divide both sides by \\( \\binom{n}{3} \\):\n\\[\n5 = \\frac{n - 3}{2} \\implies 10 = n - 3 \\implies n = 13\n\\]\n\n**Common Traps:**\n- Setting \\( \\binom{n}{3} = \\binom{n}{4} \\) ignores the selection of the women needed to complete the 5-member committee, giving \\( \\frac{n-3}{4} = 1 \\implies n = 7 \\).\n- Forgetting to add 3 after solving \\( n - 3 = 10 \\) leads to the distractor 10. [M1][A1]",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 13
+              },
+              {
+                "label": "B",
+                "only": 13
+              }
+            ],
+            "both": 7,
+            "outside": 5,
+            "caption": "Set Relationship Diagram (#3)"
+          }
         },
         {
           "q": "Six-digit numbers are formed using digits chosen from the set \\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\), with no digit repeated in any number.\n\nFind the number of different six-digit odd numbers that can be formed such that the digits \\(2\\) and \\(4\\) are not adjacent.",
@@ -57,7 +111,23 @@
             "\\( 12 \\)"
           ],
           "correct": 0,
-          "answer": "By definition of permutations and combinations:\n\\[\n{}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n-3)!} = n(n-1)(n-2)\n\\]\nand\n\\[\n{}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n-2)!} = \\frac{n(n-1)}{2}.\n\\]\n\nSubstitute these expressions into the given equation:\n\\[\nn(n-1)(n-2) = 8 \\left(\\frac{n(n-1)}{2}\\right) = 4n(n-1).\n\\]\n\nSince \\( n \\ge 3 \\), \\( n(n-1) \\neq 0 \\). Dividing both sides by \\( n(n-1) \\) gives:\n\\[\nn - 2 = 4 \\implies n = 6.\n\\]\n\nCommon error:\nOmitting the factor of \\( 2! \\) in the denominator of \\( {}^{n}\\mathrm{C}_{2} \\) leads to \\( n - 2 = 8 \\implies n = 10 \\). [M1][A1]"
+          "answer": "By definition of permutations and combinations:\n\\[\n{}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n-3)!} = n(n-1)(n-2)\n\\]\nand\n\\[\n{}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n-2)!} = \\frac{n(n-1)}{2}.\n\\]\n\nSubstitute these expressions into the given equation:\n\\[\nn(n-1)(n-2) = 8 \\left(\\frac{n(n-1)}{2}\\right) = 4n(n-1).\n\\]\n\nSince \\( n \\ge 3 \\), \\( n(n-1) \\neq 0 \\). Dividing both sides by \\( n(n-1) \\) gives:\n\\[\nn - 2 = 4 \\implies n = 6.\n\\]\n\nCommon error:\nOmitting the factor of \\( 2! \\) in the denominator of \\( {}^{n}\\mathrm{C}_{2} \\) leads to \\( n - 2 = 8 \\implies n = 10 \\). [M1][A1]",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 13
+              },
+              {
+                "label": "B",
+                "only": 11
+              }
+            ],
+            "both": 7,
+            "outside": 5,
+            "caption": "Set Relationship Diagram (#5)"
+          }
         },
         {
           "q": "A group of \\( n \\) students, which includes Ali and Priya, are to be arranged in a straight line for a photograph. The number of different arrangements in which Ali and Priya are not standing next to each other is \\( 3600 \\). Find the value of the integer \\( n \\).",
@@ -68,7 +138,59 @@
             "9"
           ],
           "correct": 1,
-          "answer": "We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method.\n\n**Method 1: Complementary Counting**\n1. The total number of unrestricted arrangements of the \\( n \\) students in a straight line is \\( n! \\).\n2. Consider the arrangements in which Ali and Priya *do* stand next to each other:\n   - Treat Ali and Priya as a single block. There are now \\( (n - 1) \\) entities to arrange, which can be done in \\( (n - 1)! \\) ways.\n   - Within the block, Ali and Priya can arrange themselves in \\( 2! = 2 \\) ways.\n   - So, the number of arrangements where they are together is \\( 2(n - 1)! \\).\n3. Subtracting this from the total gives the number of arrangements where they are separated:\n   \\[\n   n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!\n   \\]\n\n**Method 2: Gap Method**\n1. Arrange the other \\( n - 2 \\) students first, which gives \\( (n - 2)! \\) ways.\n2. This creates \\( (n - 2) + 1 = n - 1 \\) available spaces (including the ends).\n3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: \\( {}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2) \\) ways.\n4. Total arrangements: \\( (n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)! \\).\n\nEquating this to \\( 3600 \\):\n\\[\n(n - 2)(n - 1)! = 3600\n\\]\nTesting integer values for \\( n \\ge 3 \\):\n- For \\( n = 6 \\): \\( (6 - 2)(5!) = 4 \\times 120 = 480 \\)\n- For \\( n = 7 \\): \\( (7 - 2)(6!) = 5 \\times 720 = 3600 \\)\n- For \\( n = 8 \\): \\( (8 - 2)(7!) = 6 \\times 5040 = 30240 \\)\n\nThus, \\( n = 7 \\).\n\n*Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives \\( n! - (n - 1)! = (n - 1)(n - 1)! \\), which fails to produce an integer solution among the options. [M1][A1]"
+          "answer": "We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method.\n\n**Method 1: Complementary Counting**\n1. The total number of unrestricted arrangements of the \\( n \\) students in a straight line is \\( n! \\).\n2. Consider the arrangements in which Ali and Priya *do* stand next to each other:\n   - Treat Ali and Priya as a single block. There are now \\( (n - 1) \\) entities to arrange, which can be done in \\( (n - 1)! \\) ways.\n   - Within the block, Ali and Priya can arrange themselves in \\( 2! = 2 \\) ways.\n   - So, the number of arrangements where they are together is \\( 2(n - 1)! \\).\n3. Subtracting this from the total gives the number of arrangements where they are separated:\n   \\[\n   n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!\n   \\]\n\n**Method 2: Gap Method**\n1. Arrange the other \\( n - 2 \\) students first, which gives \\( (n - 2)! \\) ways.\n2. This creates \\( (n - 2) + 1 = n - 1 \\) available spaces (including the ends).\n3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: \\( {}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2) \\) ways.\n4. Total arrangements: \\( (n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)! \\).\n\nEquating this to \\( 3600 \\):\n\\[\n(n - 2)(n - 1)! = 3600\n\\]\nTesting integer values for \\( n \\ge 3 \\):\n- For \\( n = 6 \\): \\( (6 - 2)(5!) = 4 \\times 120 = 480 \\)\n- For \\( n = 7 \\): \\( (7 - 2)(6!) = 5 \\times 720 = 3600 \\)\n- For \\( n = 8 \\): \\( (8 - 2)(7!) = 6 \\times 5040 = 30240 \\)\n\nThus, \\( n = 7 \\).\n\n*Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives \\( n! - (n - 1)! = (n - 1)(n - 1)! \\), which fails to produce an integer solution among the options. [M1][A1]",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "f(x)",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              [
+                "f'(x)",
+                "2",
+                "0",
+                "2",
+                "0"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected Values Table (#6)",
+            "caption_ar": "جدول القيم المختارة (#6)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "f(x)",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              [
+                "f'(x)",
+                "2",
+                "0",
+                "2",
+                "0"
+              ]
+            ]
+          }
         },
         {
           "q": "Two parallel lines, \\( L_1 \\) and \\( L_2 \\), have \\( n \\) and \\( n + 2 \\) distinct points marked on them respectively, where \\( n \\) is an integer with \\( n \\ge 2 \\).\n\nTriangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear.\n\nGiven that the ratio of the number of quadrilaterals to the number of triangles that can be formed is \\( 6 : 5 \\), find the total number of triangles that can be formed.",
@@ -79,7 +201,23 @@
             "\\( 96 \\)"
           ],
           "correct": 0,
-          "answer": "1. **Determine the number of triangles, \\( T \\):**\nThree points form a triangle if and only if they are not all on the same straight line.\n- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):\n  \\[\n  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}\n  \\]\n- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):\n  \\[\n  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)\n  \\]\nSumming both cases:\n\\[\nT = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)\n\\]\n\n2. **Determine the number of quadrilaterals, \\( Q \\):**\nTo ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):\n\\[\nQ = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}\n\\]\n\n3. **Use the given ratio to find \\( n \\):**\n\\[\n\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}\n\\]\nSetting this equal to \\( \\frac{6}{5} \\):\n\\[\n\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0\n\\]\nFactoring the quadratic:\n\\[\n(5n + 1)(n - 5) = 0\n\\]\nSince \\( n \\) must be a positive integer, \\( n = 5 \\).\n\n4. **Calculate the total number of triangles:**\n\\[\nT = 5^2(5 + 2) = 25 \\times 7 = 175\n\\]\n\n**Distractor Analysis:**\n- \\( 210 \\) is the number of quadrilaterals, \\( Q = \\frac{6}{5} \\times 175 = 210 \\).\n- \\( 220 \\) is \\( \\binom{12}{3} \\), which erroneously counts sets of 3 collinear points.\n- \\( 96 \\) is obtained from substituting \\( n = 4 \\) into \\( T \\). [M1][A1]"
+          "answer": "1. **Determine the number of triangles, \\( T \\):**\nThree points form a triangle if and only if they are not all on the same straight line.\n- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):\n  \\[\n  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}\n  \\]\n- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):\n  \\[\n  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)\n  \\]\nSumming both cases:\n\\[\nT = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)\n\\]\n\n2. **Determine the number of quadrilaterals, \\( Q \\):**\nTo ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):\n\\[\nQ = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}\n\\]\n\n3. **Use the given ratio to find \\( n \\):**\n\\[\n\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}\n\\]\nSetting this equal to \\( \\frac{6}{5} \\):\n\\[\n\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0\n\\]\nFactoring the quadratic:\n\\[\n(5n + 1)(n - 5) = 0\n\\]\nSince \\( n \\) must be a positive integer, \\( n = 5 \\).\n\n4. **Calculate the total number of triangles:**\n\\[\nT = 5^2(5 + 2) = 25 \\times 7 = 175\n\\]\n\n**Distractor Analysis:**\n- \\( 210 \\) is the number of quadrilaterals, \\( Q = \\frac{6}{5} \\times 175 = 210 \\).\n- \\( 220 \\) is \\( \\binom{12}{3} \\), which erroneously counts sets of 3 collinear points.\n- \\( 96 \\) is obtained from substituting \\( n = 4 \\) into \\( T \\). [M1][A1]",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 13
+              },
+              {
+                "label": "B",
+                "only": 13
+              }
+            ],
+            "both": 7,
+            "outside": 5,
+            "caption": "Set Relationship Diagram (#7)"
+          }
         },
         {
           "q": "Given that \\({}^n\\text{P}_2 = \\dbinom{n}{3}\\), where \\(n\\) is an integer such that \\(n \\ge 3\\), find the value of \\(n\\).",
@@ -90,7 +228,23 @@
             "\\(6\\)"
           ],
           "correct": 0,
-          "answer": "Using the algebraic definitions of permutations and combinations:\n\\[\n{}^n\\text{P}_2 = \\frac{n!}{(n-2)!} = n(n-1)\n\\]\nand\n\\[\n\\binom{n}{3} = \\frac{n!}{3!(n-3)!} = \\frac{n(n-1)(n-2)}{3!} = \\frac{n(n-1)(n-2)}{6}\n\\]\nSetting them equal gives:\n\\[\nn(n-1) = \\frac{n(n-1)(n-2)}{6}\n\\]\nSince \\(n \\ge 3\\), \\(n(n-1) \\ne 0\\). Dividing both sides by \\(n(n-1)\\):\n\\[\n1 = \\frac{n-2}{6}\n\\]\nMultiplying by \\(6\\):\n\\[\n6 = n - 2 \\implies n = 8\n\\]\n\nCommon misconceptions:\n- Confusing \\(3!\\) with \\(3\\) leads to \\(n - 2 = 3 \\implies n = 5\\).\n- Forgetting the division by \\(3!\\) entirely treats the combination as a permutation \\({}^n\\text{P}_3\\), yielding \\(n - 2 = 1 \\implies n = 3\\).\n- Misinterpreting \\(n - 2 = 6\\) by taking the coefficient directly yields \\(n = 6\\). [M1][A1]"
+          "answer": "Using the algebraic definitions of permutations and combinations:\n\\[\n{}^n\\text{P}_2 = \\frac{n!}{(n-2)!} = n(n-1)\n\\]\nand\n\\[\n\\binom{n}{3} = \\frac{n!}{3!(n-3)!} = \\frac{n(n-1)(n-2)}{3!} = \\frac{n(n-1)(n-2)}{6}\n\\]\nSetting them equal gives:\n\\[\nn(n-1) = \\frac{n(n-1)(n-2)}{6}\n\\]\nSince \\(n \\ge 3\\), \\(n(n-1) \\ne 0\\). Dividing both sides by \\(n(n-1)\\):\n\\[\n1 = \\frac{n-2}{6}\n\\]\nMultiplying by \\(6\\):\n\\[\n6 = n - 2 \\implies n = 8\n\\]\n\nCommon misconceptions:\n- Confusing \\(3!\\) with \\(3\\) leads to \\(n - 2 = 3 \\implies n = 5\\).\n- Forgetting the division by \\(3!\\) entirely treats the combination as a permutation \\({}^n\\text{P}_3\\), yielding \\(n - 2 = 1 \\implies n = 3\\).\n- Misinterpreting \\(n - 2 = 6\\) by taking the coefficient directly yields \\(n = 6\\). [M1][A1]",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 13
+              },
+              {
+                "label": "B",
+                "only": 10
+              }
+            ],
+            "both": 7,
+            "outside": 5,
+            "caption": "Set Relationship Diagram (#8)"
+          }
         },
         {
           "q": "A committee of 4 people is to be chosen from \\( 5 \\) men and \\( 4 \\) women. How many committees consist of exactly 2 men and 2 women?",
@@ -101,7 +255,45 @@
             "36"
           ],
           "correct": 0,
-          "answer": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\). [M1][A1]"
+          "answer": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\). [M1][A1]",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "4",
+                "9",
+                "14",
+                "19"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#9)",
+            "caption_ar": "جدول نمط مرجعي (#9)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "4",
+                "9",
+                "14",
+                "19"
+              ]
+            ]
+          }
         },
         {
           "q": "The polynomial \\( P(x) = 2x^2 + ax - 4 \\) is exactly divisible by \\( (x - 4) \\). What is the value of the constant \\( a \\)?",

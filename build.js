@@ -79,18 +79,24 @@ const KATEX_SRC = path.join(ROOT, 'node_modules', 'katex', 'dist');
 const KATEX_DEST = path.join(ROOT, 'public', 'vendor', 'katex');
 if (fs.existsSync(KATEX_SRC)) {
   mkdirp(path.join(KATEX_DEST, 'contrib'));
-  mkdirp(path.join(KATEX_DEST, 'fonts'));
-  for (const f of ['katex.min.css', 'katex.min.js']) {
-    fs.copyFileSync(path.join(KATEX_SRC, f), path.join(KATEX_DEST, f));
+  const KATEX_FONTS_DEST = path.join(KATEX_DEST, 'fonts');
+  mkdirp(KATEX_FONTS_DEST);
+  for (const existingFont of fs.readdirSync(KATEX_FONTS_DEST)) {
+    if (!existingFont.endsWith('.woff2')) {
+      fs.rmSync(path.join(KATEX_FONTS_DEST, existingFont), { force: true });
+    }
   }
+  fs.copyFileSync(path.join(KATEX_SRC, 'katex.min.css'), path.join(KATEX_DEST, 'katex.min.css'));
+  fs.copyFileSync(path.join(KATEX_SRC, 'katex.min.js'), path.join(KATEX_DEST, 'katex.min.js'));
   fs.copyFileSync(
     path.join(KATEX_SRC, 'contrib', 'auto-render.min.js'),
     path.join(KATEX_DEST, 'contrib', 'auto-render.min.js')
   );
   for (const fontFile of fs.readdirSync(path.join(KATEX_SRC, 'fonts'))) {
-    fs.copyFileSync(path.join(KATEX_SRC, 'fonts', fontFile), path.join(KATEX_DEST, 'fonts', fontFile));
+    if (!fontFile.endsWith('.woff2')) continue;
+    fs.copyFileSync(path.join(KATEX_SRC, 'fonts', fontFile), path.join(KATEX_FONTS_DEST, fontFile));
   }
-  console.log('  ✓  public/vendor/katex (self-hosted KaTeX 0.16.11 + fonts)');
+  console.log('  ✓  public/vendor/katex (self-hosted KaTeX 0.16.11 + woff2 fonts)');
 }
 
 // ─── 2. Read JS ─────────────────────────────────────────────────────────────

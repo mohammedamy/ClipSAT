@@ -58,6 +58,25 @@
       "solution": {
         "en": "<p><strong>(a) Proportion Above 226:</strong> Standardize: \\[z = \\frac{226 - 190}{24} = \\frac{36}{24} = 1.50.\\] Using standard normal tables: \\[P(Z  \\gt  1.50) = 1 - 0.9332 = \\mathbf{0.0668} \\quad (6.68\\%).\\]</p><p><strong>(b) 90th Percentile:</strong> Find \\(z^*\\) such that \\(P(Z \\lt z^*) = 0.90\\), which gives \\(z^* \\approx 1.282\\). Unstandardize: \\[x = \\mu + z^* \\sigma = 190 + 1.282(24) = 190 + 30.77 = \\mathbf{220.77\\text{ mg/dL}}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#3)"
       }
     },
     {
@@ -153,6 +172,20 @@
       "solution": {
         "en": "<p><strong>(a) Stratified Sampling:</strong> Guarantees representation from every high school. Because schools may have differing cultures and student demographics (homogeneous within schools, heterogeneous between schools), stratifying reduces sampling variability between strata, providing a more precise district-wide estimate.</p><p><strong>(b) Cluster Sampling:</strong> Highly practical and cost-effective because surveyors only visit 2 physical campuses. However, if individual schools differ substantially from one another, cluster sampling introduces much higher sampling variability and may yield a non-representative sample if the two chosen schools happen to be atypical.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "slope_field",
+        "dydx": "x + y",
+        "xl": [
+          -3,
+          3
+        ],
+        "yl": [
+          -3,
+          3
+        ],
+        "step": 1,
+        "caption": "Slope field dy/dx = x + y (#6)"
       }
     },
     {
@@ -166,6 +199,50 @@
       "solution": {
         "en": "<p><strong>1. Comparison:</strong> Use two treatment groups (organic fertilizer vs. standard fertilizer control) grown concurrently under the same environmental conditions.</p><p><strong>2. Random Assignment:</strong> Assign tomato plants to fertilizer treatments using a random number generator to balance unmeasured variables (e.g. baseline soil nutrient variations, microclimates).</p><p><strong>3. Control:</strong> Keep all extraneous variables identical for both groups: sunlight exposure, watering schedule, soil volume, and pest control.</p><p><strong>4. Replication:</strong> Apply each fertilizer to a large number of plants (e.g. 50 plants per treatment) so that genuine yield differences can be distinguished from natural plant-to-plant variation.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "14",
+            "12",
+            26
+          ],
+          [
+            "16",
+            "26",
+            42
+          ],
+          [
+            30,
+            38,
+            68
+          ]
+        ],
+        "caption": "Reference Summary Table (#7)",
+        "caption_ar": "جدول ملخص البيانات (#7)",
+        "_totals": {
+          "rowTotals": [
+            26,
+            42
+          ],
+          "colTotals": [
+            30,
+            38
+          ],
+          "grandTotal": 68
+        }
       }
     },
     {
@@ -179,6 +256,25 @@
       "solution": {
         "en": "<p><strong>(a) Superiority of Blocking:</strong> Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power.</p><p><strong>(b) Blocking Protocol:</strong> Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#8)"
       }
     },
     {
@@ -192,6 +288,20 @@
       "solution": {
         "en": "<p><strong>(a) Causal Inference:</strong> <strong>No</strong>, cause-and-effect cannot be established because this is an observational study where sleep duration was not randomly assigned. Plausible confounding variables (e.g. job stress, diet, exercise) are associated with sleep duration and independently affect blood pressure.</p><p><strong>(b) Scope of Inference:</strong></p><ul><li>Were individuals randomly selected from the adult population? Yes \\(\\implies\\) Inferences can be generalized to the broader adult population.</li><li>Were treatments randomly assigned? No \\(\\implies\\) Inferences are strictly limited to association, NOT causation.</li></ul>",
         "ar": null
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "matrix": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "title": "Linear Transformation Action (#9)"
       }
     },
     {
@@ -205,6 +315,50 @@
       "solution": {
         "en": "<p><strong>1. Assign Digits:</strong> Assign single digits proportional to probabilities: Digits 0–1 represent Card A (20%); digits 2–4 represent Card B (30%); digits 5–9 represent Card C (50%).</p><p><strong>2. Describe One Trial:</strong> Read random digits one at a time. Record which card type is obtained on each digit. Continue reading digits until all three card types (A, B, and C) have appeared at least once. Count the total number of digits (boxes) required.</p><p><strong>3. Record Statistic:</strong> Record whether the total number of boxes opened is \\(\\ge 6\\) (Yes/No).</p><p><strong>4. Replicate & Estimate:</strong> Repeat this trial 100 times. Estimate the probability as the fraction of trials in which 6 or more boxes were required.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "18",
+            "18",
+            36
+          ],
+          [
+            "14",
+            "29",
+            43
+          ],
+          [
+            32,
+            47,
+            79
+          ]
+        ],
+        "caption": "Reference Summary Table (#10)",
+        "caption_ar": "جدول ملخص البيانات (#10)",
+        "_totals": {
+          "rowTotals": [
+            36,
+            43
+          ],
+          "colTotals": [
+            32,
+            47
+          ],
+          "grandTotal": 79
+        }
       }
     },
     {
@@ -218,6 +372,25 @@
       "solution": {
         "en": "<p>Let \\(D\\) = disease present, \\(T^+\\) = positive test. \\(P(D) = 0.02\\), \\(P(D^c) = 0.98\\).<br>Sensitivity: \\(P(T^+ \\mid D) = 0.95\\). Specificity: \\(P(T^- \\mid D^c) = 0.90 \\implies P(T^+ \\mid D^c) = 0.10\\).</p><p>By the Law of Total Probability: \\[P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117.\\]</p><p>By Bayes' Theorem: \\[P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%).\\]</p><p>Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#11)"
       }
     },
     {
@@ -231,6 +404,30 @@
       "solution": {
         "en": "<p><strong>(a) Intersection:</strong> \\[P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.40 + 0.50 - 0.70 = \\mathbf{0.20}.\\]</p><p><strong>(b) Independence:</strong> Test whether \\(P(A \\cap B) = P(A)P(B)\\): \\[P(A)P(B) = (0.40)(0.50) = 0.20.\\] Because \\(P(A \\cap B) = P(A)P(B) = 0.20\\), events \\(A\\) and \\(B\\) are <strong>independent</strong>.</p><p><strong>(c) Mutually Exclusive:</strong> Because \\(P(A \\cap B) = 0.20 \\neq 0\\), events \\(A\\) and \\(B\\) can occur simultaneously and are therefore <strong>not mutually exclusive</strong>.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "scatter",
+        "pts": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            12
+          ],
+          [
+            4,
+            17
+          ]
+        ],
+        "xLabel": "n",
+        "yLabel": "u_n",
+        "caption": "Discrete Term Plot (#12)"
       }
     },
     {
@@ -244,6 +441,50 @@
       "solution": {
         "en": "<p><strong>(a) Expected Value:</strong> \\[E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\]</p><p><strong>(b) Expected Value of \\(X^2\\):</strong> \\[E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\]</p><p><strong>(c) Variance & SD:</strong> \\[\\text{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\] \\[\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "22",
+            "16",
+            38
+          ],
+          [
+            "11",
+            "14",
+            25
+          ],
+          [
+            33,
+            30,
+            63
+          ]
+        ],
+        "caption": "Reference Summary Table (#13)",
+        "caption_ar": "جدول ملخص البيانات (#13)",
+        "_totals": {
+          "rowTotals": [
+            38,
+            25
+          ],
+          "colTotals": [
+            33,
+            30
+          ],
+          "grandTotal": 63
+        }
       }
     },
     {
@@ -257,6 +498,17 @@
       "solution": {
         "en": "<p><strong>Mean:</strong> \\[\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\]</p><p><strong>Variance (Variances Always Add!):</strong> Adding constants adds zero variance. Coefficients are squared: \\[\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\]</p><p><strong>Standard Deviation:</strong> \\[\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "normal_curve",
+        "mean": 50,
+        "sd": 6,
+        "shadeRange": [
+          44,
+          56
+        ],
+        "showRule": true,
+        "caption": "Normal Distribution Model (#14)"
       }
     },
     {
@@ -270,6 +522,17 @@
       "solution": {
         "en": "<p><strong>(a) Binomial PMF:</strong> \\(X \\sim B(n = 12, p = 0.75)\\), \\(k = 9\\): \\[P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}.\\]</p><p><strong>(b) Mean & Standard Deviation:</strong> \\[\\mu = np = 12(0.75) = \\mathbf{9.0\\text{ free throws}}.\\] \\[\\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\text{ free throws}}.\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "normal_curve",
+        "mean": 75,
+        "sd": 12,
+        "shadeRange": [
+          63,
+          87
+        ],
+        "showRule": true,
+        "caption": "Normal Distribution Model (#15)"
       }
     },
     {
@@ -283,6 +546,50 @@
       "solution": {
         "en": "<p><strong>(a) Sampling Distribution Characteristics:</strong></p><ul><li><strong>Shape:</strong> By the Central Limit Theorem, since \\(n = 49 \\ge 30\\), the sampling distribution of \\(\\bar{x}\\) is <strong>approximately normal</strong>, despite the right skewness of the population.</li><li><strong>Mean:</strong> \\(\\mu_{\\bar{x}} = \\mu = \\mathbf{38\\text{ minutes}}\\).</li><li><strong>Standard Error:</strong> \\(\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{49}} = \\frac{15}{7} \\approx \\mathbf{2.143\\text{ minutes}}\\).</li></ul><p><strong>(b) Probability Calculation:</strong> Standardize: \\[z = \\frac{42 - 38}{2.143} = \\frac{4}{2.143} \\approx 1.87.\\] \\[P(\\bar{x}  \\gt  42) = P(Z  \\gt  1.87) = 1 - 0.9693 = \\mathbf{0.0307} \\quad (3.07\\%).\\]</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Group I",
+          "Group II",
+          "Total"
+        ],
+        "cols": [
+          "Outcome A",
+          "Outcome B",
+          "Total"
+        ],
+        "data": [
+          [
+            "19",
+            "13",
+            32
+          ],
+          [
+            "13",
+            "28",
+            41
+          ],
+          [
+            32,
+            41,
+            73
+          ]
+        ],
+        "caption": "Reference Summary Table (#16)",
+        "caption_ar": "جدول ملخص البيانات (#16)",
+        "_totals": {
+          "rowTotals": [
+            32,
+            41
+          ],
+          "colTotals": [
+            32,
+            41
+          ],
+          "grandTotal": 73
+        }
       }
     },
     {
@@ -296,6 +603,17 @@
       "solution": {
         "en": "<p><strong>(a) Condition Checks:</strong></p><ul><li><strong>Random:</strong> Stated as an SRS of 200 registered voters. (Satisfied).</li><li><strong>10% Condition:</strong> 200 voters is less than 10% of all registered voters (\\(N \\ge 2,000\\)). (Satisfied).</li><li><strong>Large Counts:</strong> \\(n\\hat{p} = 116 \\ge 10\\) and \\(n(1-\\hat{p}) = 84 \\ge 10\\). (Satisfied; normal approximation is valid).</li></ul><p><strong>(b) 95% Confidence Interval:</strong> \\(\\hat{p} = 116/200 = 0.58\\), \\(z^* = 1.96\\). \\[\\text{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349.\\] Margin of error: \\[\\text{ME} = 1.96(0.0349) \\approx 0.0684.\\] Interval: \\[0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\text{or } (51.2\\%, 64.8\\%).\\]</p><p><strong>(c) Interpretation:</strong> We are 95% confident that the interval from <strong>51.2% to 64.8%</strong> captures the true proportion of all registered voters who favor the new regulation.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "normal_curve",
+        "mean": 200,
+        "sd": 20,
+        "shadeRange": [
+          180,
+          220
+        ],
+        "showRule": true,
+        "caption": "Normal Distribution Model (#17)"
       }
     },
     {
@@ -309,6 +627,25 @@
       "solution": {
         "en": "<p><strong>1. State:</strong> Test \\(H_0: \\mu = 200\\text{ g}\\) vs \\(H_a: \\mu \\lt 200\\text{ g}\\) at \\(\\alpha = 0.05\\), where \\(\\mu\\) is the true mean weight of all coffee jars.</p><p><strong>2. Plan:</strong> 1-sample \\(t\\)-test for mean. Random sample stated; \\(16 \\lt 10\\%\\) of all jars; population stated as approximately normal.</p><p><strong>3. Do:</strong> \\[t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{197.5 - 200}{4.0 / \\sqrt{16}} = \\frac{-2.5}{1.0} = -2.50 \\quad (df = n - 1 = 15).\\] From \\(t\\)-distribution table with \\(df = 15\\): \\[\\text{p-value} = P(T  \\lt  -2.50) \\approx 0.0123.\\]</p><p><strong>4. Conclude:</strong> Because \\(\\text{p-value} = 0.0123 \\lt \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the true mean weight of coffee jars is less than 200 grams.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#18)"
       }
     },
     {
@@ -322,6 +659,58 @@
       "solution": {
         "en": "<p><strong>1. Method Choice:</strong> Paired data measured on the same 8 patients \\(\\implies\\) <strong>Paired \\(t\\)-test on differences</strong>.</p><p><strong>2. Hypotheses:</strong> \\[H_0: \\mu_d = 0 \\quad \\text{vs.} \\quad H_a: \\mu_d  \\gt  0 \\quad (\\alpha = 0.01),\\] where \\(\\mu_d\\) is the true mean difference in sleep duration (After minus Before).</p><p><strong>3. Test Statistic & p-value:</strong> \\[t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7).\\] With \\(df = 7\\), \\(P(T \\gt 4.42) \\approx 0.0015\\).</p><p><strong>4. Conclusion:</strong> Because \\(\\text{p-value} = 0.0015 \\lt \\alpha = 0.01\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "x",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "rows": [
+          [
+            "f(x)",
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected Values Table (#19)",
+        "caption_ar": "جدول القيم المختارة (#19)",
+        "headers_ar": [
+          "x",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "rows_ar": [
+          [
+            "f(x)",
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          [
+            "f'(x)",
+            "3",
+            "1",
+            "3",
+            "1"
+          ]
+        ]
       }
     },
     {
@@ -335,6 +724,25 @@
       "solution": {
         "en": "<p><strong>(a) Expected Count:</strong> Total iOS = 120, Total Android = 80, Grand Total = 200. \\[E_{1,1} = \\frac{(\\text{Row 1 Total}) \\times (\\text{Col 1 Total})}{\\text{Grand Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}.\\] All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All \\(E \\ge 5\\)).</p><p><strong>(b) Chi-Square Statistic:</strong> \\[\\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40}\\] \\[= \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}.\\]</p><p><strong>(c) Conclusion:</strong> With \\(df = (2-1)(2-1) = 1\\), the p-value is \\(P(\\chi^2 \\gt 8.333) \\approx 0.0039\\). Because \\(\\chi^2 = 8.333 \\gt 3.84\\) (or \\(\\text{p-value} = 0.0039 \\lt 0.05\\)), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#20)"
       }
     },
     {
@@ -348,6 +756,25 @@
       "solution": {
         "en": "<p>The problem describes a chi-square test for homogeneity, which is used to compare the distribution of a categorical variable across different populations or groups. In this case, the categorical variable is the number of defects (No Defects, 1-2 Defects, More than 2 Defects), and the populations/groups are the two types of raw materials (Material A and Material B).</p><p>The structure of the data can be represented by a contingency table. The number of rows in the contingency table corresponds to the number of populations/groups being compared, and the number of columns corresponds to the number of categories for the variable being measured.</p><p>In this scenario:<br>- Number of rows (groups/materials) = 2 (Material A, Material B)<br>- Number of columns (categories of defects) = 3 (No Defects, 1-2 Defects, More than 2 Defects)</p><p>The degrees of freedom (df) for a chi-square test for homogeneity is calculated using the formula: \\(\\text{df} = (r - 1)(c - 1)\\), where \\(r\\) is the number of rows and \\(c\\) is the number of columns.</p><p>Plugging in the values:<br>\\(\\text{df} = (2 - 1)(3 - 1)\\)<br>\\(\\text{df} = (1)(2)\\)<br>\\(\\text{df} = 2\\)</p><p>Therefore, the degrees of freedom for this chi-square test is 2. This means that once 2 of the cell values in the 2x3 table are determined, the remaining cell values are fixed given the marginal totals, which are derived from the data.</p><p><strong>Final Answer:</strong> 4</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#21)"
       }
     },
     {
@@ -361,6 +788,25 @@
       "solution": {
         "en": "<p>The mean of the x-coordinates is given by \\(\\frac{2 + 4 + 6 + 8 + 10}{5} = \\frac{30}{5} = 6\\). This matches the information given in the problem.</p><p>The mean of the y-coordinates is given by \\(\\frac{3 + y + 7 + 9 + 11}{5}\\). We are told that the mean of the y-coordinates is \\(7\\). Therefore, we can set up the equation:</p><p>\\(\\frac{3 + y + 7 + 9 + 11}{5} = 7\\)</p><p>Combine the constant terms in the numerator:</p><p>\\(\\frac{30 + y}{5} = 7\\)</p><p>Multiply both sides by 5:</p><p>\\(30 + y = 35\\)</p><p>Subtract 30 from both sides:</p><p>\\(y = 5\\)</p><p>Therefore, the value of \\(y\\) is 5.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 5,
+        "step": 1,
+        "pts": [
+          {
+            "x": -2,
+            "open": false,
+            "label": "p"
+          },
+          {
+            "x": 3,
+            "open": false,
+            "label": "q"
+          }
+        ],
+        "caption": "Real-Line Scale (#22)"
       }
     },
     {
@@ -374,6 +820,17 @@
       "solution": {
         "en": "<p>The problem asks for two pieces of information: the number of participants per group in a completely randomized design and the number of blocks in a blocked design.</p><p>Part 1: Participants per group in a completely randomized design.</p><p>Total number of participants \\(N = 240\\).<br>Number of treatment groups \\(k = 3\\).</p><p>Since the participants are to be equally divided among the groups, the number of participants per group \\(n\\) is calculated as:<br>\\(n = \\frac{N}{k} = \\frac{240}{3} = 80\\).</p><p>Part 2: Number of blocks in a blocked design.</p><p>The problem states that participants are blocked by age, with three categories: Young, Middle-aged, and Senior.</p><p>The number of blocks is equal to the number of levels in the blocking variable. Therefore, there are 3 blocks.</p><p>Combining both parts, the experiment would have 80 participants per group and would require 3 blocks if a blocked design were used.</p><p><strong>Final Answer:</strong> 80 participants per group; 3 blocks</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "normal_curve",
+        "mean": 240,
+        "sd": 1,
+        "shadeRange": [
+          239,
+          241
+        ],
+        "showRule": true,
+        "caption": "Normal Distribution Model (#23)"
       }
     },
     {

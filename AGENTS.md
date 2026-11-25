@@ -9,12 +9,12 @@ ClipSAT (`https://clipsat.org`) is a free, bilingual (English LTR + Arabic RTL) 
 <!-- @AUTOGEN:STATS_START -->
 - **Curriculum Tracks:** **31** tracks (`content/{track}/_meta.json`)
 - **Chapters & Locale-Split SSG Routes:** **306** chapters → **612** indexable EN (`/{track}/{chapter}/`) & AR (`/ar/{track}/{chapter}/`) pages
-- **Verified Question Bank (Schema v2):** **49,215** items (**36,950** executable SymPy certificates + **12,265** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
+- **Verified Question Bank (Schema v2):** **49,322** items (**36,950** executable SymPy certificates + **12,372** SHA-256 educator review hashes; 100% 3PL IRT calibrated)
 - **Interactive Learning & Exports:** **3,064** bilingual interactive activities, **1,550** chapter practice-set items, **384** topic worksheets, and **768** printable PDFs
 <!-- @AUTOGEN:STATS_END -->
 
 <!-- @AUTOGEN:TRACKS_START -->
-### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 49,215 Bank Questions)
+### Supported Curriculum Tracks (31 Tracks · 306 Chapters · 49,322 Bank Questions)
 
 | Category | Tracks (Slug, Chapters, Verified Bank Items) |
 | :--- | :--- |
@@ -25,7 +25,7 @@ ClipSAT (`https://clipsat.org`) is a free, bilingual (English LTR + Arabic RTL) 
 | **International Baccalaureate (IBO)** | IB Math SL (AA/AI) (`ibsl`, 8 ch, 1,212 Qs) · IB Math HL (AA/AI) (`ibhl`, 8 ch, 1,201 Qs) |
 | **Mathematical Olympiad & Competitions** | Mathematical Olympiad · NSMO of KSA & KAUST (`olympiad`, 12 ch, 1,910 Qs) |
 | **Secondary Mathematics Foundations** | Algebra (`algebra`, 11 ch, 1,686 Qs) · Algebra 2 (`alg2`, 11 ch, 1,732 Qs) · Geometry (`geo`, 11 ch, 1,831 Qs) · Pre-Calculus (`precalc`, 8 ch, 3,021 Qs) |
-| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,262 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,286 Qs) · Linear Algebra (`linalg`, 8 ch, 1,252 Qs) · Differential Equations (`odes`, 9 ch, 1,376 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,200 Qs) |
+| **University & Applied STEM Mathematics** | Calculus (`calculus`, 16 ch, 3,294 Qs) · Multivariable Calculus (`mvc`, 8 ch, 1,310 Qs) · Linear Algebra (`linalg`, 8 ch, 1,276 Qs) · Differential Equations (`odes`, 9 ch, 1,403 Qs) · Math for AI & Data Science (`mathai`, 8 ch, 1,200 Qs) |
 <!-- @AUTOGEN:TRACKS_END -->
 
 ## Current Architecture (ClipSAT 2.0)

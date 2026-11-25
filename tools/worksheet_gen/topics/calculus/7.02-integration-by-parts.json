@@ -30,7 +30,45 @@
           "question_type": "FRQ",
           "target": "Repeated and definite applications",
           "answer": "First pass (\\(u=x^2\\)): \\(x^2e^x - 2\\int xe^x\\,dx\\). Second pass gives \\(\\int xe^x\\,dx = xe^x - e^x\\). Total: \\(x^2e^x - 2xe^x + 2e^x + C\\).",
-          "explanation": "First pass (\\(u=x^2\\)): \\(x^2e^x - 2\\int xe^x\\,dx\\). Second pass gives \\(\\int xe^x\\,dx = xe^x - e^x\\). Total: \\(x^2e^x - 2xe^x + 2e^x + C\\)."
+          "explanation": "First pass (\\(u=x^2\\)): \\(x^2e^x - 2\\int xe^x\\,dx\\). Second pass gives \\(\\int xe^x\\,dx = xe^x - e^x\\). Total: \\(x^2e^x - 2xe^x + 2e^x + C\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#3)",
+            "caption_ar": "جدول نمط مرجعي (#3)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "q": "Evaluate \\(\\int_0^1 xe^{2x}\\,dx\\) exactly.",
@@ -38,7 +76,26 @@
           "question_type": "FRQ",
           "target": "Repeated and definite applications",
           "answer": "Let \\(u=x\\), \\(dv = e^{2x}dx\\): \\(\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}\\).",
-          "explanation": "Let \\(u=x\\), \\(dv = e^{2x}dx\\): \\(\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}\\)."
+          "explanation": "Let \\(u=x\\), \\(dv = e^{2x}dx\\): \\(\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}\\).",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#4)"
+          }
         },
         {
           "q": "Evaluate \\(\\int x\\ln x\\,dx\\), choosing \\(u=\\ln x\\) (logarithmic functions are prioritized as \\(u\\) under the LIATE rule).",
@@ -46,7 +103,28 @@
           "question_type": "FRQ",
           "target": "Choosing u and dv wisely (LIATE)",
           "answer": "\\(u=\\ln x\\), \\(dv=x\\,dx\\), so \\(du=\\frac{1}{x}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C\\).",
-          "explanation": "\\(u=\\ln x\\), \\(dv=x\\,dx\\), so \\(du=\\frac{1}{x}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C\\)."
+          "explanation": "\\(u=\\ln x\\), \\(dv=x\\,dx\\), so \\(du=\\frac{1}{x}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2^(x) - 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#5)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Evaluate \\(\\int e^x\\sin x\\,dx\\) using the technique of applying integration by parts twice and solving algebraically for the original integral.",
@@ -54,7 +132,59 @@
           "question_type": "FRQ",
           "target": "The recurring-integral trick",
           "answer": "Let \\(I=\\int e^x\\sin x\\,dx\\). First pass (\\(u=\\sin x\\), \\(dv=e^x dx\\)): \\(I = e^x\\sin x - \\int e^x\\cos x\\,dx\\). Second pass on the new integral (\\(u=\\cos x\\)): \\(\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I\\). So \\(I = e^x\\sin x - e^x\\cos x - I\\), giving \\(2I = e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x(\\sin x-\\cos x)}{2}+C\\).",
-          "explanation": "Let \\(I=\\int e^x\\sin x\\,dx\\). First pass (\\(u=\\sin x\\), \\(dv=e^x dx\\)): \\(I = e^x\\sin x - \\int e^x\\cos x\\,dx\\). Second pass on the new integral (\\(u=\\cos x\\)): \\(\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I\\). So \\(I = e^x\\sin x - e^x\\cos x - I\\), giving \\(2I = e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x(\\sin x-\\cos x)}{2}+C\\)."
+          "explanation": "Let \\(I=\\int e^x\\sin x\\,dx\\). First pass (\\(u=\\sin x\\), \\(dv=e^x dx\\)): \\(I = e^x\\sin x - \\int e^x\\cos x\\,dx\\). Second pass on the new integral (\\(u=\\cos x\\)): \\(\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I\\). So \\(I = e^x\\sin x - e^x\\cos x - I\\), giving \\(2I = e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x(\\sin x-\\cos x)}{2}+C\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "1",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "f(x)",
+                "4",
+                "8",
+                "12",
+                "16"
+              ],
+              [
+                "f'(x)",
+                "5",
+                "3",
+                "5",
+                "3"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected Values Table (#6)",
+            "caption_ar": "جدول القيم المختارة (#6)",
+            "headers_ar": [
+              "x",
+              "1",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows_ar": [
+              [
+                "f(x)",
+                "4",
+                "8",
+                "12",
+                "16"
+              ],
+              [
+                "f'(x)",
+                "5",
+                "3",
+                "5",
+                "3"
+              ]
+            ]
+          }
         },
         {
           "q": "Use integration by parts with \\(u=x^n\\), \\(dv=e^x dx\\) to derive the reduction formula \\(\\int x^ne^x\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\).",
@@ -62,7 +192,28 @@
           "question_type": "FRQ",
           "target": "Reduction formulas",
           "answer": "\\(du=nx^{n-1}dx\\), \\(v=e^x\\): \\(\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\).",
-          "explanation": "\\(du=nx^{n-1}dx\\), \\(v=e^x\\): \\(\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\)."
+          "explanation": "\\(du=nx^{n-1}dx\\), \\(v=e^x\\): \\(\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2^(x) - 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#7)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Use the reduction formula above (applied twice) to evaluate \\(\\int x^2e^x\\,dx\\), confirming it matches an earlier result.",
@@ -70,7 +221,26 @@
           "question_type": "FRQ",
           "target": "Reduction formulas",
           "answer": "\\(\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx\\). Applying again: \\(\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x\\). Total: \\(x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C\\), matching the earlier double-integration-by-parts result.",
-          "explanation": "\\(\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx\\). Applying again: \\(\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x\\). Total: \\(x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C\\), matching the earlier double-integration-by-parts result."
+          "explanation": "\\(\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx\\). Applying again: \\(\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x\\). Total: \\(x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C\\), matching the earlier double-integration-by-parts result.",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#8)"
+          }
         }
       ]
     },
@@ -83,7 +253,59 @@
           "question_type": "FRQ",
           "target": "Integration by parts with inverse trig functions",
           "answer": "\\(du=\\frac{1}{\\sqrt{1-x^2}}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx\\), which requires a further trigonometric substitution to complete.",
-          "explanation": "\\(du=\\frac{1}{\\sqrt{1-x^2}}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx\\), which requires a further trigonometric substitution to complete."
+          "explanation": "\\(du=\\frac{1}{\\sqrt{1-x^2}}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx\\), which requires a further trigonometric substitution to complete.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "f(x)",
+                "5",
+                "8",
+                "11",
+                "14"
+              ],
+              [
+                "f'(x)",
+                "4",
+                "2",
+                "4",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected Values Table (#9)",
+            "caption_ar": "جدول القيم المختارة (#9)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "f(x)",
+                "5",
+                "8",
+                "11",
+                "14"
+              ],
+              [
+                "f'(x)",
+                "4",
+                "2",
+                "4",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "q": "Evaluate \\(\\int_0^{\\pi/2}x\\cos(2x)\\,dx\\) exactly, using integration by parts.",
@@ -91,7 +313,18 @@
           "question_type": "FRQ",
           "target": "A capstone mixed-technique problem",
           "answer": "\\(u=x\\), \\(dv=\\cos(2x)dx\\), \\(v=\\frac{1}{2}\\sin(2x)\\): \\(\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}\\).",
-          "explanation": "\\(u=x\\), \\(dv=\\cos(2x)dx\\), \\(v=\\frac{1}{2}\\sin(2x)\\): \\(\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}\\)."
+          "explanation": "\\(u=x\\), \\(dv=\\cos(2x)dx\\), \\(v=\\frac{1}{2}\\sin(2x)\\): \\(\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}\\).",
+          "figure": {
+            "type": "unit_circle",
+            "angles": [
+              {
+                "deg": 150,
+                "label": "θ"
+              }
+            ],
+            "showQuadrants": true,
+            "caption": "Unit Circle Reference (#10)"
+          }
         },
         {
           "q": "The graph shows \\(f(x)=xe^{-x}\\) on \\([0,3]\\). Find the exact area under the curve on this interval using integration by parts.",
@@ -118,7 +351,28 @@
           "question_type": "FRQ",
           "target": "Choosing between substitution and parts",
           "answer": "(a) Substitution — \\(u=x^2\\) makes \\(du=2x\\,dx\\) appear directly, no product rule needed. (b) Integration by parts — \\(x\\) and \\(e^{2x}\\) are genuinely different function types with no simplifying substitution; use \\(u=x\\), \\(dv=e^{2x}dx\\).",
-          "explanation": "(a) Substitution — \\(u=x^2\\) makes \\(du=2x\\,dx\\) appear directly, no product rule needed. (b) Integration by parts — \\(x\\) and \\(e^{2x}\\) are genuinely different function types with no simplifying substitution; use \\(u=x\\), \\(dv=e^{2x}dx\\)."
+          "explanation": "(a) Substitution — \\(u=x^2\\) makes \\(du=2x\\,dx\\) appear directly, no product rule needed. (b) Integration by parts — \\(x\\) and \\(e^{2x}\\) are genuinely different function types with no simplifying substitution; use \\(u=x\\), \\(dv=e^{2x}dx\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2^(x) - 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#12)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "q": "Evaluate \\(\\int \\sec^3x\\,dx\\) using integration by parts with \\(u=\\sec x\\), \\(dv=\\sec^2x\\,dx\\), and the identity \\(\\tan^2x=\\sec^2x-1\\) to solve the resulting equation for the original integral.",
@@ -126,7 +380,59 @@
           "question_type": "FRQ",
           "target": "Choosing between substitution and parts",
           "answer": "\\(du=\\sec x\\tan x\\,dx\\), \\(v=\\tan x\\): \\(I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx\\). So \\(2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\), giving \\(I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C\\).",
-          "explanation": "\\(du=\\sec x\\tan x\\,dx\\), \\(v=\\tan x\\): \\(I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx\\). So \\(2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\), giving \\(I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C\\)."
+          "explanation": "\\(du=\\sec x\\tan x\\,dx\\), \\(v=\\tan x\\): \\(I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx\\). So \\(2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\), giving \\(I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "f(x)",
+                "2",
+                "5",
+                "8",
+                "11"
+              ],
+              [
+                "f'(x)",
+                "4",
+                "2",
+                "4",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected Values Table (#13)",
+            "caption_ar": "جدول القيم المختارة (#13)",
+            "headers_ar": [
+              "x",
+              "0",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows_ar": [
+              [
+                "f(x)",
+                "2",
+                "5",
+                "8",
+                "11"
+              ],
+              [
+                "f'(x)",
+                "4",
+                "2",
+                "4",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "q": "A city's population growth rate is modeled by \\(r(t)=t\\ln(t+1)\\) thousand people per year, for \\(0\\leq t\\leq5\\). Set up and evaluate the definite integral for the total population growth over these 5 years using integration by parts, giving your answer to two decimal places.",
@@ -134,7 +440,28 @@
           "question_type": "FRQ",
           "target": "Choosing between substitution and parts",
           "answer": "Total growth \\(=\\int_0^5 t\\ln(t+1)\\,dt\\). This does not integrate cleanly with \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\) alone; using \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\), \\(v=\\frac{t^2}{2}\\): \\(\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt\\). Dividing \\(\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}\\): \\(\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65\\). So total growth \\(\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76\\) thousand people.",
-          "explanation": "Total growth \\(=\\int_0^5 t\\ln(t+1)\\,dt\\). This does not integrate cleanly with \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\) alone; using \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\), \\(v=\\frac{t^2}{2}\\): \\(\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt\\). Dividing \\(\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}\\): \\(\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65\\). So total growth \\(\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76\\) thousand people."
+          "explanation": "Total growth \\(=\\int_0^5 t\\ln(t+1)\\,dt\\). This does not integrate cleanly with \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\) alone; using \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\), \\(v=\\frac{t^2}{2}\\): \\(\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt\\). Dividing \\(\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}\\): \\(\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65\\). So total growth \\(\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76\\) thousand people.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "0.5*x^2 - 2*x + 1",
+                "label": "y = f(x)"
+              }
+            ],
+            "title": "Coordinate Graph (#14)",
+            "caption": "Reference graph y = f(x)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -178,7 +505,26 @@
             "partial fractions",
             "u-sub"
           ],
-          "correct": 1
+          "correct": 1,
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "pts": [
+              {
+                "x": -2,
+                "open": false,
+                "label": "p"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "q"
+              }
+            ],
+            "caption": "Real-Line Scale (#16)"
+          }
         },
         {
           "q": "\\(\\int e^x\\cos x\\,dx\\) requires IBP:",
@@ -187,7 +533,45 @@
           "target": "Reduction formulas",
           "cross_lesson": "3.01 The Derivative from First Principles",
           "answer": "Final Answer: twice, then solve for the integral. After two IBP applications, solve algebraically.",
-          "explanation": "After two IBP applications, solve algebraically."
+          "explanation": "After two IBP applications, solve algebraically.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference Pattern Table (#17)",
+            "caption_ar": "جدول نمط مرجعي (#17)",
+            "headers_ar": [
+              "x",
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows_ar": [
+              [
+                "g(x)",
+                "2",
+                "7",
+                "12",
+                "17"
+              ]
+            ]
+          }
         },
         {
           "qtype": "MCQ",

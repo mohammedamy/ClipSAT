@@ -85,7 +85,7 @@
             },
             {
               "label": "X=3",
-              "val": 23.0
+              "val": 23
             },
             {
               "label": "X=4",
@@ -93,7 +93,7 @@
             },
             {
               "label": "X=5",
-              "val": 1.0
+              "val": 1
             }
           ]
         },
@@ -549,6 +549,121 @@
         "solution": {
           "en": "Since the draws are independent, the probability of two independent events occurring in sequence is the product of their individual probabilities.\n\nLet R be the event of drawing a red marble and B be the event of drawing a blue marble.\nWe are given:\n\\( P(R) = \\frac{2}{5} \\)\n\\( P(B) = \\frac{1}{3} \\)\n\nThe probability of drawing a red marble followed by a blue marble is \\( P(R \\text{ and } B) = P(R) \\times P(B) \\).\n\n\\( P(R \\text{ and } B) = \\frac{2}{5} \\times \\frac{1}{3} = \\frac{2 \\times 1}{5 \\times 3} = \\frac{2}{15} \\).\n\nTherefore, the probability of drawing a red marble followed by a blue marble is \\( \\frac{2}{15} \\).",
           "ar": null
+        }
+      },
+      {
+        "kind": "structuredQuestion",
+        "id": "apstats-ch-frq-aps-u3-1",
+        "title": {
+          "en": "Unit 3 · Probability, Random Variables & Distributions — 9-Point Investigative Task",
+          "ar": "الوحدة ٣ · الاحتمالات والمتغيرات العشوائية والتوزيعات — مهمة استقصائية من ٩ نقاط"
+        },
+        "marks": 9,
+        "calc": true,
+        "difficulty": "medium",
+        "archetype": "AP Statistics Free-Response Investigative Task",
+        "figure": {
+          "type": "normal_curve",
+          "mean": 54,
+          "sd": 10,
+          "shadeRange": [
+            44,
+            64
+          ],
+          "showRule": true,
+          "caption": "Sampling Distribution Model (aps-u3)",
+          "caption_ar": "نموذج التوزيع الاحتمالي (aps-u3)"
+        },
+        "stem": {
+          "en": "In a quality-control investigation (Unit 3 · Probability, Random Variables & Distributions), a random sample of \\(n = 50\\) observations yields mean \\(\\bar{x} = 54\\) and standard deviation \\(s = 10\\), with approximately normal population distribution.",
+          "ar": "في دراسة ضبط الجودة (الوحدة ٣ · الاحتمالات والمتغيرات العشوائية والتوزيعات)، أعطت عينة عشوائية حجمها \\(n = 50\\) متوسطاً \\(\\bar{x} = 54\\) وانحرافاً معيارياً \\(s = 10\\) من مجتمع يتبع تقريباً التوزيع الطبيعي."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Check the conditions for inference regarding the population mean \\(\\mu\\).",
+              "ar": "تحقّق من شروط الاستدلال الإحصائي حول متوسط المجتمع \\(\\mu\\)."
+            },
+            "marks": 3,
+            "answer": "Random sample checked, 10% independence assumed, and n >= 30 CLT/normal holds",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Verifies Random & 10% independence condition",
+                  "ar": "يتحقّق من العشوائية وشرط الاستقلالية 10%"
+                },
+                "marks": 2
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Cites Central Limit Theorem since n = 50 >= 30",
+                  "ar": "يطبّق مبرهنة النهاية المركزية لأن n = 50 >= 30"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Compute the standard error \\(\\mathrm{SE} = \\dfrac{s}{\\sqrt{n}}\\) rounded to 3 decimal places.",
+              "ar": "احسب الخطأ المعياري \\(\\mathrm{SE} = \\dfrac{s}{\\sqrt{n}}\\) مقرباً إلى ٣ منازل عشرية."
+            },
+            "marks": 3,
+            "answer": "1.414",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Substitutes s = 10 and n = 50 into s/sqrt(n)",
+                  "ar": "يعوّض القيم في قانون الخطأ المعياري"
+                },
+                "marks": 2
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains SE = 1.414",
+                  "ar": "يحصل على الخطأ المعياري 1.414"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Using the Empirical Rule, state the approximate percentage of population values within \\(\\pm 1\\) standard deviation of \\(\\mu = 54\\).",
+              "ar": "باستخدام القاعدة التجريبية، اذكر النسبة التقريبية للقيم ضمن انحراف معياري واحد عن \\(\\mu = 54\\)."
+            },
+            "marks": 3,
+            "answer": "68%",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Uses shaded 1-sigma band [44, 64]",
+                  "ar": "يستخدم النطاق المظلل ضمن انحراف معياري واحد"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "States approximately 68%",
+                  "ar": "يستنتج النسبة 68% تقريباً"
+                },
+                "marks": 2
+              }
+            ]
+          }
+        ],
+        "solution": {
+          "en": "(a) Randomization given; CLT holds since \\(n = 50 \\ge 30\\). (b) \\(\\mathrm{SE} = \\frac{10}{\\sqrt{50}} \\approx 1.414\\). (c) By the Empirical Rule, approximately \\(68\\%\\) falls within \\([44, 64]\\).",
+          "ar": "(أ) العينة عشوائية وحجمها \\(n = 50 \\ge 30\\). (ب) \\(\\mathrm{SE} = \\frac{10}{\\sqrt{50}} \\approx 1.414\\). (ج) تقع قرابة \\(68\\%\\) من القيم ضمن \\([44, 64]\\)."
         }
       },
       {
