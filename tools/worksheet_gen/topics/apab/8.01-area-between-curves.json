@@ -9,12 +9,36 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the area of the region bounded by \\(y=4-x^2\\) and the \\(x\\)-axis.",
+          "q": "For a real-valued relationship on its natural domain, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(1)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Area between a curve and the x-axis",
-          "answer": "Roots at \\(x=\\pm2\\). Area \\(=\\int_{-2}^{2}(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^{2}=\\left(8-\\frac{8}{3}\\right)-\\left(-8+\\frac{8}{3}\\right)=\\frac{16}{3}+\\frac{16}{3}=\\frac{32}{3}\\).",
-          "explanation": "Roots at \\(x=\\pm2\\). Area \\(=\\int_{-2}^{2}(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^{2}=\\left(8-\\frac{8}{3}\\right)-\\left(-8+\\frac{8}{3}\\right)=\\frac{16}{3}+\\frac{16}{3}=\\frac{32}{3}\\)."
+          "answer": "By the Chain Rule, \\(H'(1) = f'(g(1)) \\cdot g'(1) = f'(3) \\cdot (3) = (4)(3) = 12\\).",
+          "explanation": "By the Chain Rule, \\(H'(1) = f'(g(1)) \\cdot g'(1) = f'(3) \\cdot (3) = (4)(3) = 12\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "1",
+                "3",
+                "3",
+                "5"
+              ],
+              [
+                "3",
+                "4",
+                "2",
+                "4"
+              ]
+            ]
+          }
         },
         {
           "q": "Find the area between \\(y=x^2\\) and \\(y=x+2\\).",
@@ -33,12 +57,47 @@
           "explanation": "On \\([0,1]\\), \\(\\sqrt{x}\\geq x^2\\). Area \\(=\\int_0^1\\left(\\sqrt{x}-x^2\\right)dx=\\left[\\frac{2}{3}x^{3/2}-\\frac{x^3}{3}\\right]_0^1=\\frac{2}{3}-\\frac{1}{3}=\\frac{1}{3}\\)."
         },
         {
-          "q": "Find the area of the region bounded by \\(x=y^2\\) and \\(x=y+2\\), integrating with respect to \\(y\\).",
+          "q": "In orbital telemetry pass experiment #45, a particle moves along the \\(x\\)-axis with velocity \\(v(t) = 6t^2 - 36t + 48\\) m/s for \\(0 \\le t \\le 5\\), as shown.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Regions requiring horizontal strips",
-          "answer": "Intersect: \\(y^2=y+2 \\Rightarrow y^2-y-2=0 \\Rightarrow (y-2)(y+1)=0\\): \\(y=-1,2\\). On this interval \\(y+2\\geq y^2\\). Area \\(=\\int_{-1}^{2}\\left[(y+2)-y^2\\right]dy=\\left[\\frac{y^2}{2}+2y-\\frac{y^3}{3}\\right]_{-1}^{2}=\\left(2+4-\\frac{8}{3}\\right)-\\left(\\frac{1}{2}-2+\\frac{1}{3}\\right)=\\frac{9}{2}\\).",
-          "explanation": "Intersect: \\(y^2=y+2 \\Rightarrow y^2-y-2=0 \\Rightarrow (y-2)(y+1)=0\\): \\(y=-1,2\\). On this interval \\(y+2\\geq y^2\\). Area \\(=\\int_{-1}^{2}\\left[(y+2)-y^2\\right]dy=\\left[\\frac{y^2}{2}+2y-\\frac{y^3}{3}\\right]_{-1}^{2}=\\left(2+4-\\frac{8}{3}\\right)-\\left(\\frac{1}{2}-2+\\frac{1}{3}\\right)=\\frac{9}{2}\\)."
+          "answer": "(a) \\(a(t) = 12t - 36\\), so \\(a(1) = -24\\). (b) \\(a(t) = 0 \\implies t = 3\\). (c) \\(\\int_0^3 v(t)\\,dt = \\left[2t^3 - \\frac{36}{2}t^2 + 48t\\right]_0^3 = 36\\). (d) Average velocity \\(= \\frac{1}{3}\\int_0^3 v(t)\\,dt = 12\\).",
+          "explanation": "(a) \\(a(t) = 12t - 36\\), so \\(a(1) = -24\\). (b) \\(a(t) = 0 \\implies t = 3\\). (c) \\(\\int_0^3 v(t)\\,dt = \\left[2t^3 - \\frac{36}{2}t^2 + 48t\\right]_0^3 = 36\\). (d) Average velocity \\(= \\frac{1}{3}\\int_0^3 v(t)\\,dt = 12\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              5
+            ],
+            "yl": [
+              -9,
+              51
+            ],
+            "xStep": 1,
+            "yStep": 10,
+            "fns": [
+              {
+                "fn": "6*(x - 2)*(x - 4)",
+                "color": "#2563eb",
+                "label": "v(t)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "t=2"
+              },
+              {
+                "x": 4,
+                "y": 0,
+                "label": "t=4"
+              }
+            ],
+            "xlabel": "t (s)",
+            "ylabel": "v(t) (m/s)",
+            "caption": "Velocity profile v(t) for particle #45"
+          }
         },
         {
           "q": "Find the total area between \\(y=\\sin x\\) and \\(y=\\cos x\\) on \\([0,\\pi]\\), accounting for the curves crossing at \\(x=\\frac{\\pi}{4}\\).",
@@ -57,12 +116,36 @@
           "explanation": "Solving for \\(x\\): \\(x=4-y^2\\), bounded by \\(x=0\\) (i.e. \\(y=\\pm2\\)). Integrating with respect to \\(y\\) is easier: Area \\(=\\int_{-2}^{2}(4-y^2)\\,dy=\\left[4y-\\frac{y^3}{3}\\right]_{-2}^{2}=\\left(8-\\frac{8}{3}\\right)-\\left(-8+\\frac{8}{3}\\right)=\\frac{16}{3}+\\frac{16}{3}=\\frac{32}{3}\\)."
         },
         {
-          "q": "Set up (but do not evaluate) the integral expression for the area of the region enclosed by \\(y=e^x\\), \\(y=\\ln x\\), and the lines \\(x=1\\) and \\(x=2\\).",
+          "q": "Working without decimal rounding, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(3)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Setting up but not evaluating (AP-style)",
-          "answer": "On \\([1,2]\\), \\(e^x\\geq\\ln x\\) (since \\(e^x\\) grows much faster). Area \\(=\\int_1^2\\left(e^x-\\ln x\\right)dx\\).",
-          "explanation": "On \\([1,2]\\), \\(e^x\\geq\\ln x\\) (since \\(e^x\\) grows much faster). Area \\(=\\int_1^2\\left(e^x-\\ln x\\right)dx\\)."
+          "answer": "By the Chain Rule, \\(H'(3) = f'(g(3)) \\cdot g'(3) = f'(5) \\cdot (2) = (5)(2) = 10\\).",
+          "explanation": "By the Chain Rule, \\(H'(3) = f'(g(3)) \\cdot g'(3) = f'(5) \\cdot (2) = (5)(2) = 10\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "3",
+                "5",
+                "2",
+                "6"
+              ],
+              [
+                "5",
+                "6",
+                "1",
+                "5"
+              ]
+            ]
+          }
         }
       ]
     },
@@ -86,23 +169,51 @@
           "explanation": "Let \\(h(x)=f(x)-g(x)\\): \\(h(0)=7\\), \\(h(2)=4\\), \\(h(4)=4\\), \\(h(6)=6\\). Trapezoidal Rule with width \\(2\\): \\(T=2\\left[\\frac{7+4}{2}+\\frac{4+4}{2}+\\frac{4+6}{2}\\right]=2\\left[5.5+4+5\\right]=2(14.5)=29\\)."
         },
         {
-          "q": "The graph shows \\(y=x^2\\) and \\(y=x+2\\) from an earlier problem, together with the region between them.",
+          "q": "In heat exchanger test analysis #47, a twice-differentiable polynomial \\(f\\) satisfies \\(f(0) = 7\\) and has first derivative \\(f'(x) = 3(x + 3)(x - 3)\\), graphed above.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Visualizing area between two curves",
-          "answer": "The line \\(y=x+2\\) lies above the parabola \\(y=x^2\\) throughout \\((-1,2)\\), matching the earlier setup \\(\\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx=\\frac{9}{2}\\).",
-          "explanation": "The line \\(y=x+2\\) lies above the parabola \\(y=x^2\\) throughout \\((-1,2)\\), matching the earlier setup \\(\\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx=\\frac{9}{2}\\).",
+          "answer": "(a) \\(f''(x) = 6x = 0\\) changes sign at \\(x = 0\\). (b) \\(f(x) = x^3 - 27x + 7\\), so relative max \\(f(-3) = 61\\). (c) Relative min \\(f(3) = -47\\). (d) MVT guarantees \\(f'(c) = \\frac{-47 - 61}{6} = -18\\).",
+          "explanation": "(a) \\(f''(x) = 6x = 0\\) changes sign at \\(x = 0\\). (b) \\(f(x) = x^3 - 27x + 7\\), so relative max \\(f(-3) = 61\\). (c) Relative min \\(f(3) = -47\\). (d) MVT guarantees \\(f'(c) = \\frac{-47 - 61}{6} = -18\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x**2",
-              "x + 2"
+            "type": "fn",
+            "xl": [
+              -5,
+              5
             ],
-            "xmin": -2,
-            "xmax": 3,
-            "ymin": -1,
-            "ymax": 6,
-            "width": 220
+            "yl": [
+              -29,
+              56
+            ],
+            "xStep": 2,
+            "yStep": 20,
+            "fns": [
+              {
+                "fn": "3*(x + 3)*(x - 3)",
+                "color": "#2563eb",
+                "label": "f'(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": -3,
+                "y": 0,
+                "label": "(-3, 0)"
+              },
+              {
+                "x": 0,
+                "y": -27,
+                "label": "(0, -27)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "f'(x)",
+            "caption": "Graph of first derivative f'(x) for study #47"
           }
         },
         {
@@ -122,12 +233,36 @@
           "explanation": "Area \\(=\\int_0^2\\left[e^x-(x+1)\\right]dx=\\left[e^x-\\frac{x^2}{2}-x\\right]_0^2=\\left(e^2-2-2\\right)-(1-0-0)=e^2-5\\)."
         },
         {
-          "q": "Two competing companies' profit rates (in thousands of dollars per year) are \\(P_1(t)=50-2t\\) and \\(P_2(t)=30+t\\) over the first 10 years. Find the total difference in cumulative profit between the two companies over this period, using the area between the curves.",
+          "q": "Given the following conditions, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(1)\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "An applied area-between-curves problem",
-          "answer": "Intersection: \\(50-2t=30+t \\Rightarrow 20=3t \\Rightarrow t=\\frac{20}{3}\\approx6.67\\). For \\(t<\\frac{20}{3}\\), \\(P_1>P_2\\); for \\(t>\\frac{20}{3}\\), \\(P_2>P_1\\). Total absolute difference \\(=\\left|\\int_0^{20/3}(P_1-P_2)\\,dt\\right|+\\left|\\int_{20/3}^{10}(P_2-P_1)\\,dt\\right|\\), which can be computed piecewise using \\(P_1-P_2=20-3t\\).",
-          "explanation": "Intersection: \\(50-2t=30+t \\Rightarrow 20=3t \\Rightarrow t=\\frac{20}{3}\\approx6.67\\). For \\(t<\\frac{20}{3}\\), \\(P_1>P_2\\); for \\(t>\\frac{20}{3}\\), \\(P_2>P_1\\). Total absolute difference \\(=\\left|\\int_0^{20/3}(P_1-P_2)\\,dt\\right|+\\left|\\int_{20/3}^{10}(P_2-P_1)\\,dt\\right|\\), which can be computed piecewise using \\(P_1-P_2=20-3t\\)."
+          "answer": "By the Chain Rule, \\(H'(1) = f'(g(1)) \\cdot g'(1) = f'(3) \\cdot (4) = (5)(4) = 20\\).",
+          "explanation": "By the Chain Rule, \\(H'(1) = f'(g(1)) \\cdot g'(1) = f'(3) \\cdot (4) = (5)(4) = 20\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "1",
+                "3",
+                "4",
+                "6"
+              ],
+              [
+                "3",
+                "4",
+                "3",
+                "5"
+              ]
+            ]
+          }
         },
         {
           "q": "Level 2 · Medium Use the method of cylindrical shells to find the volume generated by revolving the region bounded by \\(y = 3x - x^2\\) and \\(y = 0\\) about the \\(y\\)-axis.",
@@ -152,37 +287,52 @@
           "explanation": "Find intersection points: \\(x^2 = 2x - x^2 \\Rightarrow 2x^2 - 2x = 0 \\Rightarrow 2x(x - 1) = 0\\), so \\(x = 0\\) and \\(x = 1\\). On \\([0, 1]\\), test \\(x = 0.5\\): \\(2(0.5) - (0.5)^2 = 0.75 > (0.5)^2 = 0.25\\), so \\(y = 2x - x^2\\) is the upper curve. \\(A = \\int_0^1 [(2x - x^2) - x^2]\\,dx = \\int_0^1 (2x - 2x^2)\\,dx = \\left[ x^2 - \\frac{2x^3}{3} \\right]_0^1 = 1 - \\frac{2}{3} = \\frac{1}{3}\\)"
         },
         {
-          "q": "The region bounded by \\(y = \\ln x\\), the line \\(y = 0\\), the line \\(y = 1\\), and the \\(y\\)-axis is rotated \\(2\\pi\\) radians about the \\(y\\)-axis. Find the exact volume of the resulting solid.",
+          "q": "In bio-reactor temperature analysis #49, a twice-differentiable polynomial \\(f\\) satisfies \\(f(0) = 2\\) and has first derivative \\(f'(x) = 3(x + 2)(x - 2)\\), graphed above.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Area using the more efficient variable of integration",
           "cross_lesson": "1.01 Limits Graphically and Numerically",
-          "answer": "1. Express \\(x\\) as a function of \\(y\\): \\(y = \\ln x \\Rightarrow x = e^y\\). 2. Apply the volume of revolution about the \\(y\\)-axis formula: \\(V = \\pi \\int_{c}^d [x(y)]^2\\,dy = \\pi \\int_0^1 (e^y)^2\\,dy = \\pi \\int_0^1 e^{2y}\\,dy.\\) 3. Integrate: \\(V = \\pi \\left[ \\frac{e^{2y}}{2} \\right]_0^1 = \\frac{\\pi}{2}(e^2 - e^0) = \\frac{\\pi(e^2 - 1)}{2}.\\)",
-          "explanation": "1. Express \\(x\\) as a function of \\(y\\): \\(y = \\ln x \\Rightarrow x = e^y\\). 2. Apply the volume of revolution about the \\(y\\)-axis formula: \\(V = \\pi \\int_{c}^d [x(y)]^2\\,dy = \\pi \\int_0^1 (e^y)^2\\,dy = \\pi \\int_0^1 e^{2y}\\,dy.\\) 3. Integrate: \\(V = \\pi \\left[ \\frac{e^{2y}}{2} \\right]_0^1 = \\frac{\\pi}{2}(e^2 - e^0) = \\frac{\\pi(e^2 - 1)}{2}.\\)",
+          "answer": "(a) \\(f''(x) = 6x = 0\\) changes sign at \\(x = 0\\). (b) \\(f(x) = x^3 - 12x + 2\\), so relative max \\(f(-2) = 18\\). (c) Relative min \\(f(2) = -14\\). (d) MVT guarantees \\(f'(c) = \\frac{-14 - 18}{4} = -8\\).",
+          "explanation": "(a) \\(f''(x) = 6x = 0\\) changes sign at \\(x = 0\\). (b) \\(f(x) = x^3 - 12x + 2\\), so relative max \\(f(-2) = 18\\). (c) Relative min \\(f(2) = -14\\). (d) MVT guarantees \\(f'(c) = \\frac{-14 - 18}{4} = -8\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.27*x**2 + 1.25*x + 2.4",
-              "0.4*x + 0.3"
+            "type": "fn",
+            "xl": [
+              -4,
+              4
             ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5.5,
-            "shade": {
-              "fn1": "-0.27*x**2 + 1.25*x + 2.4",
-              "fn2": "0.4*x + 0.3",
-              "x0": 0,
-              "x1": 3.3
-            },
-            "point_labels": [
+            "yl": [
+              -14,
+              26
+            ],
+            "xStep": 2,
+            "yStep": 10,
+            "fns": [
               {
-                "x": 1.5,
-                "y": 3.67,
-                "label": "\\(y=f(x)\\)"
+                "fn": "3*(x + 2)*(x - 2)",
+                "color": "#2563eb",
+                "label": "f'(x)"
               }
             ],
-            "width": 230
+            "pts": [
+              {
+                "x": -2,
+                "y": 0,
+                "label": "(-2, 0)"
+              },
+              {
+                "x": 0,
+                "y": -12,
+                "label": "(0, -12)"
+              },
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "f'(x)",
+            "caption": "Graph of first derivative f'(x) for study #49"
           }
         },
         {
@@ -208,13 +358,37 @@
           "correct": 2
         },
         {
-          "q": "Level 1 · FoundationsEvaluate the indefinite integral \\(\\int \\arctan(x)\\,dx\\).",
+          "q": "Under standard differentiability and continuity assumptions, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(3)\\)?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing area between two curves",
           "cross_lesson": "2.02 Product, Quotient, and Trigonometric Derivatives",
-          "answer": "Use LIATE: \\(u = \\arctan(x) \\Rightarrow du = \\frac{1}{1+x^2}\\,dx\\), and \\(dv = dx \\Rightarrow v = x\\). Applying parts: \\(\\int \\arctan(x)\\,dx = x\\arctan(x) - \\int \\frac{x}{1+x^2}\\,dx.\\) For the second integral, let \\(w = 1+x^2 \\Rightarrow dw = 2x\\,dx\\): \\(\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2).\\) Thus: \\(\\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}.\\)",
-          "explanation": "Use LIATE: \\(u = \\arctan(x) \\Rightarrow du = \\frac{1}{1+x^2}\\,dx\\), and \\(dv = dx \\Rightarrow v = x\\). Applying parts: \\(\\int \\arctan(x)\\,dx = x\\arctan(x) - \\int \\frac{x}{1+x^2}\\,dx.\\) For the second integral, let \\(w = 1+x^2 \\Rightarrow dw = 2x\\,dx\\): \\(\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2).\\) Thus: \\(\\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}.\\)"
+          "answer": "By the Chain Rule, \\(H'(3) = f'(g(3)) \\cdot g'(3) = f'(5) \\cdot (3) = (6)(3) = 18\\).",
+          "explanation": "By the Chain Rule, \\(H'(3) = f'(g(3)) \\cdot g'(3) = f'(5) \\cdot (3) = (6)(3) = 18\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "3",
+                "5",
+                "3",
+                "7"
+              ],
+              [
+                "5",
+                "6",
+                "2",
+                "6"
+              ]
+            ]
+          }
         },
         {
           "q": "Find the volume of the solid generated when the region bounded by \\(y = \\sqrt{x}\\), the \\(x\\)-axis, and \\(x = 4\\) is revolved \\(2\\pi\\) radians about the \\(x\\)-axis.",
@@ -246,19 +420,50 @@
           "explanation": "By symmetry, total area \\(=2\\int_0^{6}\\left(6^2x-x^3\\right)dx=2\\left[\\frac{6^2x^2}{2}-\\frac{x^4}{4}\\right]_0^{6}=2\\left(\\frac{1296}{2}-\\frac{1296}{4}\\right)=2\\left(\\frac{1296}{4}\\right)=\\frac{1296}{2}=648\\)."
         },
         {
-          "q": "Functions \\(f\\) and \\(g\\) satisfy \\(f(x)\\geq g(x)\\) on \\([0,3]\\), with \\(h(x)=f(x)-g(x)\\) given by \\(h(0)=8\\), \\(h(1)=15\\), \\(h(2)=6\\), \\(h(3)=10\\). Use the Trapezoidal Rule with these 3 equal subintervals (width \\(1\\)) to approximate the area between the curves.",
+          "q": "Riemann Plot (reservoir inflow #504): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Area between two curves (vertical strips)",
           "choices": [
-            "\\(39\\)",
-            "\\(29\\)",
-            "\\(31\\)",
-            "\\(30\\)"
+            "\\(10\\)",
+            "\\(14\\)",
+            "\\(6\\)",
+            "\\(12\\)"
           ],
-          "correct": 3,
-          "answer": "\\(T=1\\left[\\frac{8+15}{2}+\\frac{15+6}{2}+\\frac{6+10}{2}\\right]=1\\left[\\frac{8+10}{2}+15+6\\right]=1(9+15+6)=30\\).",
-          "explanation": "\\(T=1\\left[\\frac{8+15}{2}+\\frac{15+6}{2}+\\frac{6+10}{2}\\right]=1\\left[\\frac{8+10}{2}+15+6\\right]=1(9+15+6)=30\\)."
+          "correct": 0,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
+          "explanation": "\\(T=1\\left[\\frac{8+15}{2}+\\frac{15+6}{2}+\\frac{6+10}{2}\\right]=1\\left[\\frac{8+10}{2}+15+6\\right]=1(9+15+6)=30\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #504)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -331,19 +536,43 @@
           }
         },
         {
-          "q": "Consider the region bounded by the curve \\(y = x^2\\), the x-axis, and the vertical lines \\(x = 1\\) and \\(x = 3\\). What is the area of this region?",
+          "q": "In a quantitative modeling task, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(1)\\)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Area using the more efficient variable of integration",
           "choices": [
-            "\\(\\frac{26}{3}\\)",
-            "\\(\\frac{28}{3}\\)",
-            "\\(\\frac{25}{3}\\)",
-            "\\(\\frac{27}{3}\\)"
+            "\\(14\\)",
+            "\\(6\\)",
+            "\\(-6\\)",
+            "\\(9\\)"
           ],
-          "correct": 0,
-          "answer": "The area of a region bounded by a curve \\(y=f(x)\\), the x-axis, and the vertical lines \\(x=a\\) and \\(x=b\\) is given by the definite integral \\(\\int_{a}^{b} f(x) \\, dx\\). In this case, \\(f(x) = x^2\\), \\(a = 1\\), and \\(b = 3\\). The area \\(A\\) is given by: \\(A = \\int_{1}^{3} x^2 \\, dx\\) To evaluate this integral, we find the antiderivative of \\(x^2\\), which is \\(\\frac{x^3}{3}\\). Now, we apply the Fundamental Theorem of Calculus: \\(A = \\left[ \\frac{x^3}{3} \\right]_{1}^{3} = \\frac{3^3}{3} - \\frac{1^3}{3} = \\frac{27}{3} - \\frac{1}{3} = \\frac{26}{3}\\)",
-          "explanation": "The area of a region bounded by a curve \\(y=f(x)\\), the x-axis, and the vertical lines \\(x=a\\) and \\(x=b\\) is given by the definite integral \\(\\int_{a}^{b} f(x) \\, dx\\). In this case, \\(f(x) = x^2\\), \\(a = 1\\), and \\(b = 3\\). The area \\(A\\) is given by: \\(A = \\int_{1}^{3} x^2 \\, dx\\) To evaluate this integral, we find the antiderivative of \\(x^2\\), which is \\(\\frac{x^3}{3}\\). Now, we apply the Fundamental Theorem of Calculus: \\(A = \\left[ \\frac{x^3}{3} \\right]_{1}^{3} = \\frac{3^3}{3} - \\frac{1^3}{3} = \\frac{27}{3} - \\frac{1}{3} = \\frac{26}{3}\\)"
+          "correct": 1,
+          "answer": "By the Chain Rule, \\(H'(1) = f'(g(1)) \\cdot g'(1) = f'(3) \\cdot (2) = (3)(2) = 6\\).",
+          "explanation": "The area of a region bounded by a curve \\(y=f(x)\\), the x-axis, and the vertical lines \\(x=a\\) and \\(x=b\\) is given by the definite integral \\(\\int_{a}^{b} f(x) \\, dx\\). In this case, \\(f(x) = x^2\\), \\(a = 1\\), and \\(b = 3\\). The area \\(A\\) is given by: \\(A = \\int_{1}^{3} x^2 \\, dx\\) To evaluate this integral, we find the antiderivative of \\(x^2\\), which is \\(\\frac{x^3}{3}\\). Now, we apply the Fundamental Theorem of Calculus: \\(A = \\left[ \\frac{x^3}{3} \\right]_{1}^{3} = \\frac{3^3}{3} - \\frac{1^3}{3} = \\frac{27}{3} - \\frac{1}{3} = \\frac{26}{3}\\)",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "1",
+                "3",
+                "2",
+                "4"
+              ],
+              [
+                "3",
+                "4",
+                "1",
+                "3"
+              ]
+            ]
+          }
         },
         {
           "qtype": "MCQ",
@@ -374,19 +603,50 @@
           "explanation": "The region \\(R\\) is bounded by \\(y = \\sqrt{x}\\), \\(y = 0\\), and \\(x = 4\\). We are revolving this region about the vertical line \\(x = 5\\). We will use the method of cylindrical shells. The radius of a cylindrical shell at a given \\(x\\) is the distance from the axis of revolution \\(x=5\\) to \\(x\\), which is $5 - x\\(. The height of the shell is the difference in the y-values of the bounding curves, which is \\)\\sqrt{x} - 0 = \\sqrt{x}\\(. The thickness of the shell is \\)dx\\(. The volume of a single cylindrical shell is \\)dV = 2\\pi \\times \\mathrm{radius} \\times \\mathrm{height} \\times \\mathrm{thickness} = 2\\pi (5 - x) \\sqrt{x} \\, dx\\(. The region extends from \\)x = 0\\( to \\)x = 4\\(. Therefore, the total volume is given by the integral: \\)V = \\int_0^4 2\\pi (5 - x) \\sqrt{x} \\, dx\\( The problem states the volume can be expressed in the form \\)V = k\\pi \\int_a^b (5 - x) \\sqrt{x} \\, dx\\(. Comparing this to our integral, we have \\)a=0\\(, \\)b=4\\(, and \\)k=2\\(. Thus, the value of \\)k$ is 2."
         },
         {
-          "q": "\\(\\int_a^b[f(x)-g(x)]dx\\) gives area between curves when:",
+          "q": "Riemann Plot (autonomous rover motion #506): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Visualizing area between two curves",
           "choices": [
-            "\\(f>g\\) and \\(f<g\\) alternates",
-            "\\(f>0\\) and \\(g<0\\)",
-            "\\(f(x)\\geq g(x)\\) on \\([a,b]\\)",
-            "always"
+            "\\(34\\)",
+            "\\(18\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
           "correct": 2,
-          "answer": "Applying Applications of Integration principles, Area when \\(f\\geq g\\). Therefore, the verified correct option is \\(f(x)\\geq g(x)\\) on \\([a,b]\\).",
-          "explanation": "Applying Applications of Integration principles, Area when \\(f\\geq g\\). Therefore, the verified correct option is \\(f(x)\\geq g(x)\\) on \\([a,b]\\)."
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).",
+          "explanation": "Applying Applications of Integration principles, Area when \\(f\\geq g\\). Therefore, the verified correct option is \\(f(x)\\geq g(x)\\) on \\([a,b]\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "3*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #506)"
+          }
         }
       ]
     },
@@ -424,19 +684,43 @@
           "explanation": "\\(A=\\frac{1}{2}\\int(r_2^2-r_1^2)d\\theta\\)."
         },
         {
-          "q": "Area between \\(y=f(x)\\) and x-axis on \\([a,b]\\) equals:",
+          "q": "Using exact symbolic methods, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(3)\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "An applied area-between-curves problem",
           "choices": [
-            "\\(\\int_a^b|f(x)|\\,dx\\)",
-            "\\(\\int_a^b f(x)\\,dx\\) only when \\(f\\geq0\\)",
-            "\\(f(b)-f(a)\\)",
-            "\\(\\int_a^bf(x)^2\\,dx\\)"
+            "\\(28\\)",
+            "\\(-12\\)",
+            "\\(15\\)",
+            "\\(12\\)"
           ],
-          "correct": 0,
-          "answer": "Always use absolute value for area.",
-          "explanation": "Always use absolute value for area."
+          "correct": 3,
+          "answer": "By the Chain Rule, \\(H'(3) = f'(g(3)) \\cdot g'(3) = f'(5) \\cdot (4) = (3)(4) = 12\\).",
+          "explanation": "Always use absolute value for area.",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "3",
+                "5",
+                "4",
+                "4"
+              ],
+              [
+                "5",
+                "6",
+                "3",
+                "3"
+              ]
+            ]
+          }
         },
         {
           "q": "The region bounded by the curve \\(y = x^2 - 4\\) and the x-axis is rotated about the x-axis. If the volume of the resulting solid is \\(V = \\pi \\int_{a}^{b} (x^2 - 4)^2 dx\\), find the value of \\(b-a\\).",
@@ -480,19 +764,50 @@
           "explanation": "Since \\(x^2-4 \\leq 0\\) on \\([-2,0]\\), the area is \\(\\int_{-2}^0 (4 - x^2)\\,dx = \\left[4x - \\frac{x^3}{3}\\right]_{-2}^0 = 0 - \\left(-8 + \\frac{8}{3}\\right) = \\frac{16}{3}\\)."
         },
         {
-          "q": "Tangent line to parametric curve is horizontal when:",
+          "q": "Riemann Plot (solar array output #508): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Regions requiring horizontal strips",
           "choices": [
-            "\\(dx/dt=0\\)",
-            "\\(dy/dt=0\\) and \\(dx/dt e0\\)",
-            "\\(t=0\\)",
-            "\\(dy/dt=dx/dt\\)"
+            "\\(16\\)",
+            "\\(24\\)",
+            "\\(12\\)",
+            "\\(20\\)"
           ],
-          "correct": 1,
-          "answer": "Applying Parametric and Polar principles, Horizontal tangent: \\(dy/dt=0\\). Therefore, the verified correct option is \\(dy/dt=0\\) and \\(dx/dt e0\\).",
-          "explanation": "Applying Parametric and Polar principles, Horizontal tangent: \\(dy/dt=0\\). Therefore, the verified correct option is \\(dy/dt=0\\) and \\(dx/dt e0\\)."
+          "correct": 0,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).",
+          "explanation": "Applying Parametric and Polar principles, Horizontal tangent: \\(dy/dt=0\\). Therefore, the verified correct option is \\(dy/dt=0\\) and \\(dx/dt e0\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "2*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #508)"
+          }
         },
         {
           "q": "Tangent line to parametric curve is vertical when:",
@@ -525,19 +840,43 @@
           "explanation": "Applying Applications of Integration principles, \\(x=x^2\\Rightarrow x(x-1)=0\\). Therefore, the verified correct option is \\(0\\) and \\(1\\)."
         },
         {
-          "q": "Signed area and winding number: the winding number of curve \\(C\\) around origin is \\(\\frac{1}{2\\pi}\\oint_C\\frac{x\\,dy-y\\,dx}{x^2+y^2}=\\)",
+          "q": "Examine the relationship below: Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(1)\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Setting up but not evaluating (AP-style)",
           "choices": [
-            "always 1",
-            "an integer",
-            "always 0",
-            "always \\(\\pi\\)"
+            "\\(27\\)",
+            "\\(12\\)",
+            "\\(-12\\)",
+            "\\(16\\)"
           ],
           "correct": 1,
-          "answer": "Applying Applications of Integration principles, Winding number is an integer. Therefore, the verified correct option is an integer.",
-          "explanation": "Applying Applications of Integration principles, Winding number is an integer. Therefore, the verified correct option is an integer."
+          "answer": "By the Chain Rule, \\(H'(1) = f'(g(1)) \\cdot g'(1) = f'(3) \\cdot (3) = (4)(3) = 12\\).",
+          "explanation": "Applying Applications of Integration principles, Winding number is an integer. Therefore, the verified correct option is an integer.",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "1",
+                "3",
+                "3",
+                "5"
+              ],
+              [
+                "3",
+                "4",
+                "2",
+                "4"
+              ]
+            ]
+          }
         }
       ]
     },
@@ -577,20 +916,51 @@
           "cross_lesson": "2.02 Product, Quotient, and Trigonometric Derivatives"
         },
         {
-          "q": "Area of triangle with vertices at origin, \\((3,0)\\), \\((0,4)\\) using integration:",
+          "q": "Riemann Plot (aquifer recharge curve #510): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A capstone area problem",
           "choices": [
-            "\\(3\\)",
-            "\\(12\\)",
+            "\\(14\\)",
             "\\(6\\)",
-            "\\(\\pi\\)"
+            "\\(10\\)",
+            "\\(12\\)"
           ],
           "correct": 2,
-          "answer": "Applying Applications of Integration principles, \\(A=\\frac{1}{2}(3)(4)=6\\). Therefore, the verified correct option is \\(6\\).",
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
           "explanation": "Applying Applications of Integration principles, \\(A=\\frac{1}{2}(3)(4)=6\\). Therefore, the verified correct option is \\(6\\).",
-          "cross_lesson": "3.01 The Chain Rule"
+          "cross_lesson": "3.01 The Chain Rule",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #510)"
+          }
         },
         {
           "q": "Total area between \\(y=x\\) and \\(x\\)-axis on \\([-2,2]\\):",
@@ -625,20 +995,44 @@
           "cross_lesson": "4.01 Rates of Change and Rectilinear Motion"
         },
         {
-          "q": "Surface area of \\(y=\\sqrt{x}\\) revolved about the x-axis from 0 to 4:",
+          "q": "Compute the exact numerical or algebraic value: Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(3)\\)?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Area between a curve and the x-axis",
           "choices": [
-            "\\(\\frac{\\pi}{3}(17\\sqrt{17}-1)\\)",
-            "\\(\\pi(\\sqrt{17}-1)\\)",
-            "\\(8\\pi\\)",
-            "\\(\\frac{\\pi}{6}(17\\sqrt{17}-1)\\)"
+            "\\(22\\)",
+            "\\(-10\\)",
+            "\\(15\\)",
+            "\\(10\\)"
           ],
           "correct": 3,
-          "answer": "\\(S=2\\pi\\int_0^4\\sqrt{x}\\sqrt{1+1/(4x)}dx=\\pi\\int_0^4\\sqrt{4x+1}\\,d(x)\\rightarrow\\frac{\\pi}{6}(17\\sqrt{17}-1)\\).",
+          "answer": "By the Chain Rule, \\(H'(3) = f'(g(3)) \\cdot g'(3) = f'(5) \\cdot (2) = (5)(2) = 10\\).",
           "explanation": "\\(S=2\\pi\\int_0^4\\sqrt{x}\\sqrt{1+1/(4x)}dx=\\pi\\int_0^4\\sqrt{4x+1}\\,d(x)\\rightarrow\\frac{\\pi}{6}(17\\sqrt{17}-1)\\).",
-          "cross_lesson": "4.02 Linear Approximation and L'Hôpital's Rule"
+          "cross_lesson": "4.02 Linear Approximation and L'Hôpital's Rule",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "3",
+                "5",
+                "2",
+                "6"
+              ],
+              [
+                "5",
+                "6",
+                "1",
+                "5"
+              ]
+            ]
+          }
         },
         {
           "q": "For polar curve \\(r=e^\\theta\\), \\(\\theta\\in[0,2\\pi]\\), the area swept is:",

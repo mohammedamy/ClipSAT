@@ -72,16 +72,21 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Evaluate \\(\\tan^{-1}\\left(-1\\right)\\).",
-          "answer": "**Answer:** D. \\(\\tan^{-1}\\) returns the principal angle whose trig ratio is \\(-1\\): \\(-45^\\circ\\).",
+          "q": "Find the result corresponding to the amplitude and period of \\(y=2\\sin(3x)+2\\)?",
+          "answer": "Amplitude \\(=|A|=2\\). Period \\(=\\dfrac{2\\pi}{3}=\\frac{2}{3}\\pi\\).",
           "explanation": "\\(\\tan^{-1}\\) returns the principal angle whose trig ratio is \\(-1\\): \\(-45^\\circ\\).",
           "choices": [
-            "\\(180^\\circ\\)",
-            "\\(-30^\\circ\\)",
-            "\\(60^\\circ\\)",
-            "\\(-45^\\circ\\)"
+            "Amplitude 2, period \\(\\frac{3}{2}\\pi\\)",
+            "Amplitude 2, period \\(2\\pi\\)",
+            "Amplitude 2, period \\(\\frac{2}{3}\\pi\\)",
+            "Amplitude 3, period \\(\\frac{2}{3}\\pi\\)"
           ],
-          "correct": 3
+          "correct": 2,
+          "figure": {
+            "type": "unit_circle",
+            "angle": 150,
+            "showCoords": true
+          }
         },
         {
           "q": "Newton's law of cooling: coffee at \\(90°\\)C cools in a \\(20°\\)C room following \\(T(t) = 20 + 70e^{-0.1t}\\) (\\(t\\) in minutes). Find the temperature after 10 minutes, to one decimal place.",
@@ -111,12 +116,33 @@
           "explanation": "(a) \\(P(0) = \\frac{5000}{1+9} = 500\\).; (b) As \\(t\\rightarrow\\infty\\), \\(e^{-0.4t}\\rightarrow0\\), so \\(P\\rightarrow\\frac{5000}{1}=5000\\).; (c) \\(P(10) = \\frac{5000}{1+9e^{-4}} \\approx \\frac{5000}{1.1648} \\approx 4292\\)."
         },
         {
-          "q": "Two towns start with 10,000 people. Town A grows at a constant rate of 300 people/year (linear); Town B grows at 3% per year (exponential). Find each town's population after 15 years, to the nearest person, and state which is larger.",
+          "q": "Inverse Function Table (tidal gauge #834): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(21)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Comparing models",
-          "answer": "Town A: \\(10000+300(15)=14{,}500\\). Town B: \\(10000(1.03)^{15}\\approx10000(1.5580)\\approx15{,}580\\). Town B is larger.",
-          "explanation": "Town A: \\(10000+300(15)=14{,}500\\). Town B: \\(10000(1.03)^{15}\\approx10000(1.5580)\\approx15{,}580\\). Town B is larger."
+          "answer": "Looking up output \\(f(3) = 21\\) yields \\(f^{-1}(21) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 21\\) yields \\(f^{-1}(21) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "15",
+                "21",
+                "27"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (834)"
+          }
         }
       ]
     },
@@ -151,12 +177,21 @@
           }
         },
         {
-          "q": "Derive a general formula for the doubling time \\(T\\) of a quantity growing as \\(A(t)=A_0e^{kt}\\), in terms of \\(k\\).",
+          "q": "Wave Graph (capacitor charge #697): The cosine curve \\(y = 4\\cos(x) + 4\\) is plotted above with peak at \\(y = 8\\) and trough at \\(y = 0\\). State its amplitude.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Doubling time and half-life formulas",
-          "answer": "Set \\(2A_0=A_0e^{kT}\\): \\(2=e^{kT} \\Rightarrow \\ln2=kT \\Rightarrow T=\\frac{\\ln2}{k}\\).",
-          "explanation": "Set \\(2A_0=A_0e^{kT}\\): \\(2=e^{kT} \\Rightarrow \\ln2=kT \\Rightarrow T=\\frac{\\ln2}{k}\\)."
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 4\\).",
+          "explanation": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 4\\).",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 4,
+            "freq": 1,
+            "phase": 0,
+            "midline": 4,
+            "fnType": "cos",
+            "caption": "منحنى دوري (697)"
+          }
         },
         {
           "q": "Using the doubling-time formula derived above, find the doubling time for a population growing at a continuous rate of \\(k=0.025\\) per year, to one decimal place.",
@@ -175,12 +210,33 @@
           "explanation": "Set \\(\\frac{A_0}{2}=A_0e^{kT_{1/2}}\\): \\(\\frac{1}{2}=e^{kT_{1/2}} \\Rightarrow \\ln\\left(\\frac{1}{2}\\right)=kT_{1/2} \\Rightarrow T_{1/2}=\\frac{-\\ln2}{k}\\) (positive since \\(k<0\\))."
         },
         {
-          "q": "A radioactive isotope has decay constant \\(k=-0.023\\) per year. Use the formula above to find its half-life, to one decimal place.",
+          "q": "Inverse Function Table (fluid pressure #838): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(22)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Half-life formula derivation",
-          "answer": "\\(T_{1/2}=\\frac{-\\ln2}{-0.023}=\\frac{0.6931}{0.023}\\approx30.1\\) years.",
-          "explanation": "\\(T_{1/2}=\\frac{-\\ln2}{-0.023}=\\frac{0.6931}{0.023}\\approx30.1\\) years."
+          "answer": "Looking up output \\(f(3) = 22\\) yields \\(f^{-1}(22) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 22\\) yields \\(f^{-1}(22) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "12",
+                "17",
+                "22",
+                "27"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (838)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -218,13 +274,21 @@
           "explanation": "(a) Exponential Decay Function: \\(A(t) = 200\\left(\\frac{1}{2}\\right)^{t/5730}.\\) (b) Mass Remaining at \\(t = 11{,}460\\) years: Notice that \\(\\frac{11{,}460}{5730} = 2\\) half-lives: \\(A(11{,}460) = 200\\left(\\frac{1}{2}\\right)^2 = 200\\left(\\frac{1}{4}\\right) = \\mathbf{50\\mathrm{\\ g}}.\\) (c) Time to Reach 10% of Initial Mass: Set \\(\\frac{A(t)}{200} = 0.10\\): \\(\\left(\\frac{1}{2}\\right)^{t/5730} = 0.10 \\Rightarrow \\frac{t}{5730}\\ln(0.5) = \\ln(0.10) \\Rightarrow t = 5730\\frac{\\ln(0.10)}{\\ln(0.5)} \\approx \\mathbf{19{,}035\\mathrm{\\ years}}.\\)"
         },
         {
-          "q": "Level 2 · MediumA table of values for a positive function \\(g(x)\\) over equally spaced inputs \\(x = 0, 1, 2, 3\\) produces outputs \\(g(0) = 4, g(1) = 12, g(2) = 36, g(3) = 108\\). Which function family best models \\(g(x)\\), and what is the constant growth factor per unit increase in \\(x\\)?",
+          "q": "What are the maximum and minimum values of \\(y=3\\sin(x)\\)?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Combining growth models with rates",
           "cross_lesson": "3.03 Sum and Difference Formulas",
-          "answer": "Calculate the consecutive ratios of consecutive outputs: \\(\\frac{g(1)}{g(0)} = \\frac{12}{4} = 3, \\quad \\frac{g(2)}{g(1)} = \\frac{36}{12} = 3, \\quad \\frac{g(3)}{g(2)} = \\frac{108}{36} = 3.\\) Because the ratio of outputs is constant for equal-length input intervals, \\(g(x)\\) is an exponential function with a constant growth factor of 3.",
-          "explanation": "Calculate the consecutive ratios of consecutive outputs: \\(\\frac{g(1)}{g(0)} = \\frac{12}{4} = 3, \\quad \\frac{g(2)}{g(1)} = \\frac{36}{12} = 3, \\quad \\frac{g(3)}{g(2)} = \\frac{108}{36} = 3.\\) Because the ratio of outputs is constant for equal-length input intervals, \\(g(x)\\) is an exponential function with a constant growth factor of 3."
+          "answer": "Since \\(-1\\leq\\sin(x)\\leq1\\), \\(y\\) ranges from \\(-3=-3\\) to \\(3=3\\).",
+          "explanation": "Since \\(-1\\leq\\sin(x)\\leq1\\), \\(y\\) ranges from \\(-3=-3\\) to \\(3=3\\).",
+          "figure": {
+            "type": "sinusoid",
+            "a": 3,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "label": "y = 3sin(x)"
+          }
         },
         {
           "q": "A stone is thrown vertically upwards with speed \\(15\\mathrm{\\ m/s}\\) from the top of a cliff \\(40\\mathrm{\\ m}\\) above sea level. Taking \\(g = 9.8\\mathrm{\\ m/s}^2\\) and upwards as positive: (a) find the maximum height reached above the cliff, (b) calculate the time taken for the stone to reach the sea.",
@@ -245,13 +309,34 @@
           "explanation": "Rewrite in index form: \\(y = 4x^{-1/2} + 2x\\). At \\(x = 4\\): \\(y = 4(4^{-1/2}) + 2(4) = 4\\left(\\frac{1}{2}\\right) + 8 = 2 + 8 = 10\\). Point of contact is \\((4, 10)\\). Differentiate: \\(\\frac{dy}{dx} = 4\\left(-\\frac{1}{2}x^{-3/2}\\right) + 2 = -2x^{-3/2} + 2 = -\\frac{2}{x^{3/2}} + 2\\) At \\(x = 4\\): \\(x^{3/2} = (\\sqrt{4})^3 = 8\\). Thus: \\(m_{\\mathrm{tan}} = -\\frac{2}{8} + 2 = -\\frac{1}{4} + 2 = \\frac{7}{4}\\) The normal has gradient \\(m_{\\mathrm{norm}} = -\\frac{1}{7/4} = -\\frac{4}{7}\\). Using point \\((4, 10)\\): \\(y - 10 = -\\frac{4}{7}(x - 4) \\Rightarrow 7(y - 10) = -4(x - 4) \\Rightarrow 7y - 70 = -4x + 16 \\Rightarrow 4x + 7y - 86 = 0\\)"
         },
         {
-          "q": "A Ferris wheel has a diameter of \\(40\\mathrm{\\ meters}\\) and its lowest point is \\(4\\mathrm{\\ meters}\\) above the ground. Passengers board at the lowest point at \\(t = 0\\), and the wheel completes one full revolution every \\(8\\mathrm{\\ minutes}\\). Write a cosine model \\(h(t)\\) for a passenger's height at time \\(t\\), and find the times during the first revolution when \\(h(t) = 34\\mathrm{\\ meters}\\).",
+          "q": "Inverse Function Table (battery voltage #842): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(17)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Logistic growth (an introduction)",
           "cross_lesson": "4.02 Ellipses",
-          "answer": "Step 1: Determine sinusoidal parameters: Radius (amplitude) \\(= 20\\mathrm{\\ m}\\); midline \\(D = 4 + 20 = 24\\mathrm{\\ m}\\); angular frequency \\(B = \\frac{2\\pi}{8} = \\frac{\\pi}{4}\\). Starting at the minimum gives a negative cosine: \\(\\mathbf{h(t) = -20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24}.\\) Step 2: Solve \\(h(t) = 34\\) on \\([0, 8]\\): \\(-20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24 = 34 \\Rightarrow \\cos\\left(\\frac{\\pi}{4}t\\right) = -\\frac{1}{2}.\\) \\(\\frac{\\pi}{4}t = \\frac{2\\pi}{3}, \\frac{4\\pi}{3} \\Rightarrow \\mathbf{t = \\frac{8}{3}\\mathrm{\\ min} \\quad\\mathrm{and}\\quad t = \\frac{16}{3}\\mathrm{\\ min}}.\\)",
-          "explanation": "Step 1: Determine sinusoidal parameters: Radius (amplitude) \\(= 20\\mathrm{\\ m}\\); midline \\(D = 4 + 20 = 24\\mathrm{\\ m}\\); angular frequency \\(B = \\frac{2\\pi}{8} = \\frac{\\pi}{4}\\). Starting at the minimum gives a negative cosine: \\(\\mathbf{h(t) = -20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24}.\\) Step 2: Solve \\(h(t) = 34\\) on \\([0, 8]\\): \\(-20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24 = 34 \\Rightarrow \\cos\\left(\\frac{\\pi}{4}t\\right) = -\\frac{1}{2}.\\) \\(\\frac{\\pi}{4}t = \\frac{2\\pi}{3}, \\frac{4\\pi}{3} \\Rightarrow \\mathbf{t = \\frac{8}{3}\\mathrm{\\ min} \\quad\\mathrm{and}\\quad t = \\frac{16}{3}\\mathrm{\\ min}}.\\)"
+          "answer": "Looking up output \\(f(3) = 17\\) yields \\(f^{-1}(17) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 17\\) yields \\(f^{-1}(17) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "13",
+                "17",
+                "21"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (842)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -287,19 +372,28 @@
           "explanation": "Applying Exponential & Logarithmic Functions principles, \\(2^{10/5}=2^2=4\\). Therefore, the verified correct option is \\(4\\)."
         },
         {
-          "q": "For \\(A=A_0 e^{-kt}\\), find the half-life \\(t_{1/2}\\) in terms of \\(k\\).",
+          "q": "Wave Graph (fluid pressure #703): The cosine curve \\(y = 6\\cos(x) + 5\\) is plotted above with peak at \\(y = 11\\) and trough at \\(y = -1\\). State its amplitude.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Decay models",
           "choices": [
-            "\\(\\frac{k}{\\ln2}\\)",
-            "\\(\\frac{\\ln2}{k}\\)",
-            "\\(\\frac{1}{k}\\)",
-            "\\(e^k\\)"
+            "\\(6\\)",
+            "\\(5\\)",
+            "\\(11\\)",
+            "\\(12\\)"
           ],
-          "correct": 1,
-          "answer": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\).",
-          "explanation": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\)."
+          "correct": 0,
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 6\\).",
+          "explanation": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\).",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 6,
+            "freq": 1,
+            "phase": 0,
+            "midline": 5,
+            "fnType": "cos",
+            "caption": "منحنى دوري (703)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -330,19 +424,40 @@
           "explanation": "The recursive formula for the sequence is \\(a_n = 2a_{n-1} + 1\\), and the first term is \\(a_1 = 3\\). To find the second term, \\(a_2\\), we substitute \\(n=2\\) into the formula: \\(a_2 = 2a_{2-1} + 1 = 2a_1 + 1\\) Since \\(a_1 = 3\\), we have: \\(a_2 = 2(3) + 1 = 6 + 1 = 7\\) To find the third term, \\(a_3\\), we substitute \\(n=3\\) into the formula: \\(a_3 = 2a_{3-1} + 1 = 2a_2 + 1\\) Since \\(a_2 = 7\\), we have: \\(a_3 = 2(7) + 1 = 14 + 1 = 15\\)"
         },
         {
-          "q": "Consider the arithmetic sequence where the first term \\(a_1 = 7\\) and the common difference \\(d = -3\\). Which of the following is the explicit formula for the nth term of this sequence?",
+          "q": "Inverse Function Table (antenna signal #846): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(12)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Visualizing the logistic curve",
           "choices": [
-            "\\(a_n = 7 + 3(n-1)\\)",
-            "\\(a_n = 7 - 3(n-1)\\)",
-            "\\(a_n = 3 - 7(n-1)\\)",
-            "\\(a_n = -3 + 7(n-1)\\)"
+            "\\(12\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
-          "correct": 1,
-          "answer": "An arithmetic sequence is defined by the formula \\(a_n = a_1 + (n-1)d\\), where \\(a_n\\) is the nth term, \\(a_1\\) is the first term, and \\(d\\) is the common difference. In this problem, we are given that the first term \\(a_1 = 7\\) and the common difference \\(d = -3\\). Substituting these values into the formula, we get \\(a_n = 7 + (n-1)(-3)\\), which can be rewritten as \\(a_n = 7 - 3(n-1)\\).",
-          "explanation": "An arithmetic sequence is defined by the formula \\(a_n = a_1 + (n-1)d\\), where \\(a_n\\) is the nth term, \\(a_1\\) is the first term, and \\(d\\) is the common difference. In this problem, we are given that the first term \\(a_1 = 7\\) and the common difference \\(d = -3\\). Substituting these values into the formula, we get \\(a_n = 7 + (n-1)(-3)\\), which can be rewritten as \\(a_n = 7 - 3(n-1)\\)."
+          "correct": 3,
+          "answer": "Looking up output \\(f(3) = 12\\) yields \\(f^{-1}(12) = 3\\).",
+          "explanation": "An arithmetic sequence is defined by the formula \\(a_n = a_1 + (n-1)d\\), where \\(a_n\\) is the nth term, \\(a_1\\) is the first term, and \\(d\\) is the common difference. In this problem, we are given that the first term \\(a_1 = 7\\) and the common difference \\(d = -3\\). Substituting these values into the formula, we get \\(a_n = 7 + (n-1)(-3)\\), which can be rewritten as \\(a_n = 7 - 3(n-1)\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "6",
+                "9",
+                "12",
+                "15"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (846)"
+          }
         },
         {
           "q": "Prove \\(\\sum_{k=1}^{n}k^3=\\left(\\frac{n(n+1)}{2}\\right)^2\\) using the formula for arithmetic sums.",
@@ -375,19 +490,28 @@
           "explanation": "Applying Sequences & Series principles, Binet's formula. Therefore, the verified correct option is \\(F_n=\\frac{\\phi^n-\\psi^n}{\\sqrt{5}}\\) where \\(=1+52,=1-52\\)."
         },
         {
-          "q": "The binomial probability formula is:",
+          "q": "Wave Graph (battery voltage #707): The cosine curve \\(y = 6\\cos(x) + 4\\) is plotted above with peak at \\(y = 10\\) and trough at \\(y = -2\\). State its amplitude.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Combining growth models with rates",
           "choices": [
-            "\\(P(X=k)=np^k\\)",
-            "\\(P(X=k)=p^k(1-p)^{n-k}\\)",
-            "\\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\)",
-            "\\(P(X=k)=\\binom{n}{k}p^n\\)"
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(10\\)",
+            "\\(12\\)"
           ],
-          "correct": 2,
-          "answer": "Applying Probability & Statistics principles, Binomial distribution formula. Therefore, the verified correct option is \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).",
-          "explanation": "Applying Probability & Statistics principles, Binomial distribution formula. Therefore, the verified correct option is \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\)."
+          "correct": 0,
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 6\\).",
+          "explanation": "Applying Probability & Statistics principles, Binomial distribution formula. Therefore, the verified correct option is \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 6,
+            "freq": 1,
+            "phase": 0,
+            "midline": 4,
+            "fnType": "cos",
+            "caption": "منحنى دوري (707)"
+          }
         }
       ]
     },
@@ -425,19 +549,40 @@
           "explanation": "Applying Sequences & Series principles, Arithmetic sum formula. Therefore, the verified correct option is \\(S_n=\\frac{n}{2}(a_1+a_n)\\)."
         },
         {
-          "q": "Formulate the null and alternative hypotheses for the following scenario: \"A company claims its average delivery time is 3 days. A customer believes it takes longer.\"",
+          "q": "Inverse Function Table (laser interferometer #850): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(13)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Logistic growth (an introduction)",
           "choices": [
-            "\\(H_0:\\mu=10,\\ H_1:\\mu<10\\)",
-            "\\(H_0:\\mu=70,\\ H_1:\\mu>70\\)",
-            "\\(H_0:\\mu=500,\\ H_1:\\mu<500\\)",
-            "\\(H_0:\\mu=3,\\ H_1:\\mu>3\\)"
+            "\\(13\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
           "correct": 3,
-          "answer": "Applying Hypothesis Testing principles, \\(H_0:\\mu=3,\\ H_1:\\mu>3\\). Therefore, the verified correct option is \\(H_0:\\mu=3,\\ H_1:\\mu>3\\).",
-          "explanation": "Applying Hypothesis Testing principles, \\(H_0:\\mu=3,\\ H_1:\\mu>3\\). Therefore, the verified correct option is \\(H_0:\\mu=3,\\ H_1:\\mu>3\\)."
+          "answer": "Looking up output \\(f(3) = 13\\) yields \\(f^{-1}(13) = 3\\).",
+          "explanation": "Applying Hypothesis Testing principles, \\(H_0:\\mu=3,\\ H_1:\\mu>3\\). Therefore, the verified correct option is \\(H_0:\\mu=3,\\ H_1:\\mu>3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "11",
+                "13",
+                "15"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (850)"
+          }
         },
         {
           "q": "Balls are drawn one at a time, without replacement, from a bag of 20 balls; \\(X\\) is the number of red balls drawn. Is \\(X\\) binomially distributed?",
@@ -497,19 +642,28 @@
           }
         },
         {
-          "q": "The formula for the \\(n\\)th term of an arithmetic sequence with first term \\(a\\) and common difference \\(d\\) is:",
+          "q": "Wave Graph (antenna signal #711): The cosine curve \\(y = 6\\cos(x) + 3\\) is plotted above with peak at \\(y = 9\\) and trough at \\(y = -3\\). State its amplitude.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Doubling time and half-life formulas",
           "choices": [
-            "\\(a_n=a+(n-1)d\\)",
-            "\\(a_n=nd\\)",
-            "\\(a_n=a\\cdot d^{n-1}\\)",
-            "\\(a_n=a+nd\\)"
+            "\\(6\\)",
+            "\\(3\\)",
+            "\\(9\\)",
+            "\\(12\\)"
           ],
           "correct": 0,
-          "answer": "Applying Sequences & Series principles, Standard formula. Therefore, the verified correct option is \\(a_n=a+(n-1)d\\).",
-          "explanation": "Applying Sequences & Series principles, Standard formula. Therefore, the verified correct option is \\(a_n=a+(n-1)d\\)."
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 6\\).",
+          "explanation": "Applying Sequences & Series principles, Standard formula. Therefore, the verified correct option is \\(a_n=a+(n-1)d\\).",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 6,
+            "freq": 1,
+            "phase": 0,
+            "midline": 3,
+            "fnType": "cos",
+            "caption": "منحنى دوري (711)"
+          }
         },
         {
           "q": "From a cumulative frequency curve with \\(n=80\\), the median is read at cumulative frequency:",
@@ -542,19 +696,40 @@
           "explanation": "\\(\\frac{dx}{dt}=4t\\), \\(\\frac{dy}{dt}=9t^2\\). \\(\\frac{dy}{dx}=\\frac{9t^2}{4t}=\\frac{9t}{4}\\). At \\(t=1\\): \\(\\frac{9}{4}\\)."
         },
         {
-          "q": "A particle moves so that its velocity at time \\(t\\) s (\\(t\\geq0\\)) is \\(v=t^{2}-4t\\) m/s. Find when the particle is momentarily at rest.",
+          "q": "Inverse Function Table (seismic pulse #854): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(23)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Growth models",
           "choices": [
-            "\\(t=3\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}\\)",
-            "\\(t=5\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}\\)",
-            "\\(t=0\\mathrm{\\ s\\ only}\\)",
-            "\\(t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}\\)"
+            "\\(23\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
           "correct": 3,
-          "answer": "Setting \\(v=0\\): \\(t^{2}-4t=0 \\Rightarrow t(t-4)=0 \\Rightarrow t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}\\)",
-          "explanation": "Setting \\(v=0\\): \\(t^{2}-4t=0 \\Rightarrow t(t-4)=0 \\Rightarrow t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}\\)"
+          "answer": "Looking up output \\(f(3) = 23\\) yields \\(f^{-1}(23) = 3\\).",
+          "explanation": "Setting \\(v=0\\): \\(t^{2}-4t=0 \\Rightarrow t(t-4)=0 \\Rightarrow t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}\\)",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "11",
+                "17",
+                "23",
+                "29"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (854)"
+          }
         }
       ]
     },
@@ -594,20 +769,29 @@
           "cross_lesson": "4.02 Ellipses"
         },
         {
-          "q": "Does the point \\((4,0)\\) satisfy the implicitly defined curve \\(x^2+y^2=16\\)?",
+          "q": "Wave Graph (laser interferometer #715): The cosine curve \\(y = 6\\cos(x) + 2\\) is plotted above with peak at \\(y = 8\\) and trough at \\(y = -4\\). State its amplitude.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Comparing models",
           "choices": [
-            "No, the point does not lie on the curve",
-            "The equation does not define a curve",
-            "Yes, the point lies on the curve",
-            "Only if r is negative"
+            "\\(6\\)",
+            "\\(2\\)",
+            "\\(8\\)",
+            "\\(12\\)"
           ],
-          "correct": 2,
-          "answer": "Substitute: \\((4)^2+(0)^2=16\\), compare to \\(16\\): equal, so it is on the curve.",
+          "correct": 0,
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 6\\).",
           "explanation": "Substitute: \\((4)^2+(0)^2=16\\), compare to \\(16\\): equal, so it is on the curve.",
-          "cross_lesson": "4.03 Hyperbolas"
+          "cross_lesson": "4.03 Hyperbolas",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 6,
+            "freq": 1,
+            "phase": 0,
+            "midline": 2,
+            "fnType": "cos",
+            "caption": "منحنى دوري (715)"
+          }
         },
         {
           "q": "Show that \\(e^{i\\pi}+1=0\\) using Euler's formula.",
@@ -642,20 +826,41 @@
           "cross_lesson": "5.02 The Dot Product"
         },
         {
-          "q": "State and apply Vieta's formulas to find \\(\\sum r_i^2\\) if \\(r_1,r_2,r_3\\) are roots of \\(x^3-4x+1=0\\).",
+          "q": "Inverse Function Table (thermal decay #858): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(18)\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Half-life formula derivation",
           "choices": [
-            "\\(\\sum r_i^2=4\\)",
-            "\\(\\sum r_i^2=16\\)",
-            "\\(\\sum r_i^2=1\\)",
-            "\\(\\sum r_i^2=(\\sum r_i)^2-2\\sum_{i<j}r_ir_j=0-2(-4)=8\\)"
+            "\\(18\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
           "correct": 3,
-          "answer": "Vieta: \\(\\sum r_i=0\\), \\(\\sum_{i<j}r_ir_j=-4\\). \\(\\sum r_i^2=0-2(-4)=8\\).",
+          "answer": "Looking up output \\(f(3) = 18\\) yields \\(f^{-1}(18) = 3\\).",
           "explanation": "Vieta: \\(\\sum r_i=0\\), \\(\\sum_{i<j}r_ir_j=-4\\). \\(\\sum r_i^2=0-2(-4)=8\\).",
-          "cross_lesson": "5.03 Parametric Equations"
+          "cross_lesson": "5.03 Parametric Equations",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "8",
+                "13",
+                "18",
+                "23"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (858)"
+          }
         },
         {
           "q": "The quadratic formula gives: \\(x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}\\). For \\(a=1,b=-6,c=8\\), find \\(x\\).",

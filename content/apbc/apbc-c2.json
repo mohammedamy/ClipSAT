@@ -849,6 +849,158 @@
         "id": "cs-uge-apbc-c2-sf-exp"
       },
       {
+        "kind": "structuredQuestion",
+        "id": "apbc-ch-frq-apbc-c2-1",
+        "title": {
+          "en": "Unit 7BC · Logistic Models & Euler's Method — 9-Point 4-Part FRQ",
+          "ar": "الوحدة 7BC · النماذج اللوجستية وطريقة أويلر — سؤال مقالي من ٩ نقاط (٤ أجزاء)"
+        },
+        "marks": 9,
+        "calc": false,
+        "difficulty": "easy",
+        "archetype": "AP Section II · 9-Point Rule-of-Four FRQ",
+        "figure": {
+          "type": "slope_field",
+          "dydx": "0.5*y*(1 - y/200)",
+          "xl": [
+            0,
+            6
+          ],
+          "yl": [
+            0,
+            220
+          ],
+          "step": 50,
+          "caption": "Logistic slope field dP/dt = 0.5P(1 - P/200) (Run #212)"
+        },
+        "stem": {
+          "en": "In chemical titration run logistic study #212, a population \\(P(t)\\) obeys \\(\\dfrac{dP}{dt} = \\frac{1}{2}P\\left(1 - \\dfrac{P}{200}\\right)\\) with \\(P(0) = 50\\), shown qualitatively in the slope field.",
+          "ar": "يتبع عدد السكان \\(P(t)\\) المعادلة اللوجستية \\(\\dfrac{dP}{dt} = \\frac{1}{2}P\\left(1 - \\dfrac{P}{200}\\right)\\) مع \\(P(0) = 50\\) كما في حقل الميل."
+        },
+        "solution": {
+          "en": "(a) Fastest growth occurs at \\(L/2 = 100\\). (b) \\(\\frac{1}{2}(100)(1 - 0.5) = 25\\). (c) \\(y_1 = 3 + 0.5(3) = \\frac{9}{2}\\); \\(y_2 = \\frac{9}{2} + 0.5(0.5 + \\frac{9}{2}) = 7\\). (d) Logistic curves with \\(0 < P(0) < L\\) satisfy \\(\\lim_{t\\to\\infty} P(t) = 200\\).",
+          "ar": "(أ) أسرع نمو عند \\(L/2=100\\). (ب) \\(\\frac{1}{2}(100)(1-0.5)=25\\). (ج) \\(y_1=3+0.5(3)=\\frac{9}{2}\\) و \\(y_2=\\frac{9}{2}+0.5(0.5+\\frac{9}{2})=7\\). (د) \\(\\lim_{t\\to\\infty}P(t)=200\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Find the population size \\(P\\) at which the population is growing fastest.",
+              "ar": "أوجد حجم السكان \\(P\\) الذي ينمو عنده السكان بأقصى سرعة."
+            },
+            "marks": 2,
+            "answer": "100",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Uses half of carrying capacity L/2",
+                  "ar": "يستخدم نصف السعة الاستيعابية \\(L/2\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Identifies P = 100",
+                  "ar": "يحدّد \\(P = 100\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Compute the maximum growth rate \\(\\dfrac{dP}{dt}\\) corresponding to part (a).",
+              "ar": "احسب أقصى معدل نمو \\(\\dfrac{dP}{dt}\\) المقابل للجزء (أ)."
+            },
+            "marks": 2,
+            "answer": "25",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Substitutes P = 100 into logistic equation",
+                  "ar": "يعوّض \\(P = 100\\) في المعادلة اللوجستية"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Computes 25",
+                  "ar": "يحسب الناتج \\(25\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Separately, for \\(\\dfrac{dy}{dx} = x + y\\) with \\(y(0) = 3\\), use Euler's method with two equal steps of \\(\\Delta x = \\frac{1}{2}\\) to approximate \\(y(1)\\).",
+              "ar": "بشكل منفصل، للمعادلة \\(\\dfrac{dy}{dx} = x + y\\) مع \\(y(0) = 3\\)، استخدم طريقة أويلر بخطوتين متساويتين \\(\\Delta x = \\frac{1}{2}\\) لتقريب \\(y(1)\\)."
+            },
+            "marks": 3,
+            "answer": "7",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Step 1 gives y(0.5) = 9/2",
+                  "ar": "الخطوة الأولى تعطي \\(y(0.5) = 9/2\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Computes second slope at (0.5, y(0.5))",
+                  "ar": "يحسب الميل الثاني عند \\((0.5, y(0.5))\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains y(1) approx 7",
+                  "ar": "يحصل على \\(y(1) \\approx 7\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(d)",
+            "prompt": {
+              "en": "Evaluate \\(\\lim_{t \\to \\infty} P(t)\\) for the logistic population.",
+              "ar": "أوجد النهاية \\(\\lim_{t \\to \\infty} P(t)\\) للنموذج اللوجستي."
+            },
+            "marks": 2,
+            "answer": "200",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Identifies carrying capacity since P(0) > 0",
+                  "ar": "يحدّد السعة الاستيعابية بما أن \\(P(0) > 0\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "States 200",
+                  "ar": "يستنتج \\(200\\)"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

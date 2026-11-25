@@ -516,7 +516,8 @@
       { name: 'Algebra II — Comprehensive End-of-Course Assessment', minutes: 60, qCount: 30, calc: true, domains: ['functions', 'complex', 'polynomials', 'rational', 'exponential', 'logarithmic', 'sequences', 'conics'] }
     ],
     precalc: [
-      { name: 'Pre-Calculus — Comprehensive Examination', minutes: 60, qCount: 30, calc: true, domains: ['functions', 'trigonometry', 'identities', 'vectors', 'polar', 'conics', 'matrices', 'limits'] }
+      { name: 'Pre-Calculus — Comprehensive Examination (Section I MCQ)', minutes: 60, qCount: 30, calc: true, domains: ['functions', 'trigonometry', 'identities', 'vectors', 'polar', 'conics', 'matrices', 'limits'] },
+      { name: 'Pre-Calculus Honors — Section II Multi-Part Free Response (6-pt FRQ)', minutes: 45, qCount: 4, calc: true, structuredOnly: true }
     ],
     calculus: [
       { name: 'Differential & Integral Calculus — Part A (Non-Calculator)', minutes: 50, qCount: 22, calc: false, domains: ['limits', 'derivatives', 'applications', 'integrals'] },

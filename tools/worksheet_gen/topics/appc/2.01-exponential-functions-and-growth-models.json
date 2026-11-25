@@ -10,16 +10,37 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "\\(f(x)=-x^2+2x-4\\). Find the average rate of change of \\(f\\) on \\([0,2]\\).",
-          "answer": "**Answer:** C. \\(\\text{AROC}=\\dfrac{f(2)-f(0)}{2-(0)}=\\dfrac{-4-(-4)}{2}=0.\\)",
+          "q": "Periodic Table Analysis (structural arch #2048): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 6]\\), with key quarter-period samples tabulated. What is \\(h(7.5)\\)?",
+          "answer": "Because \\(h\\) has period \\(T = 6\\), \\(h(6 + 1.5) = h(1.5) = 8\\).",
           "explanation": "\\(\\text{AROC}=\\dfrac{f(2)-f(0)}{2-(0)}=\\dfrac{-4-(-4)}{2}=0.\\)",
           "choices": [
-            "\\(1\\)",
-            "\\(-4\\)",
-            "\\(0\\)",
-            "\\(-1\\)"
+            "\\(4\\)",
+            "\\(8\\)",
+            "\\(6\\)",
+            "\\(11\\)"
           ],
-          "correct": 2
+          "correct": 1,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(1.5\\)",
+              "\\(3\\)",
+              "\\(4.5\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "6",
+                "8",
+                "6",
+                "4"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (structural arch #2048)"
+          }
         },
         {
           "q": "A population of bacteria is modeled by \\(P(t)=1000(2)^{t/3}\\), where \\(t\\) is in hours. Interpret the meaning of the exponent's structure, and find the population after 9 hours.",
@@ -59,12 +80,54 @@
           }
         },
         {
-          "q": "An investment grows from 2000 dollars to 2420 dollars in 2 years under exponential growth \\(A(t)=A_0(1+r)^t\\). Find the annual growth rate \\(r\\).",
+          "q": "Rational Asymptote Graph (thermal decay #2133): A rational curve \\(r(x) = \\dfrac{3}{x - 2} + 5\\) has vertical asymptote \\(x = 2\\) and horizontal asymptote \\(y = 5\\) as graphed. Evaluate \\(r(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Finding an exponential model from data",
-          "answer": "\\(2420=2000(1+r)^2\\): \\((1+r)^2=1.21\\), so \\(1+r=\\sqrt{1.21}=1.1\\), giving \\(r=0.10=10\\%\\).",
-          "explanation": "\\(2420=2000(1+r)^2\\): \\((1+r)^2=1.21\\), so \\(1+r=\\sqrt{1.21}=1.1\\), giving \\(r=0.10=10\\%\\)."
+          "answer": "Substituting \\(x = 4\\) gives \\(r(4) = \\frac{3}{2} + 5 = \\frac{13}{2}\\).",
+          "explanation": "Substituting \\(x = 4\\) gives \\(r(4) = \\frac{3}{2} + 5 = \\frac{13}{2}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3/(x - 2) + 5",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 8,
+                "label": "(3, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 2, y = 5 (#2133)"
+          }
         },
         {
           "q": "A radioactive sample decays from 80 g to 45 g over 6 years. Find the annual decay factor \\(b\\) in the model \\(A(t)=80\\,b^t\\), to four decimal places.",
@@ -83,12 +146,33 @@
           "explanation": "\\(A(20)=500e^{0.03(20)}=500e^{0.6}\\approx500(1.8221)\\approx911\\)."
         },
         {
-          "q": "Explain the difference between the discrete growth model \\(A(t)=A_0(1+r)^t\\) and the continuous growth model \\(A(t)=A_0e^{kt}\\), and state how \\(r\\) and \\(k\\) are related when both models describe the same annual growth rate \\(r\\).",
+          "q": "Periodic Table Analysis (laser interferometer #2050): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 10]\\), with key quarter-period samples tabulated. What is \\(h(12.5)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Continuous growth and the number e",
-          "answer": "The discrete model compounds growth once per period (e.g. once a year), while the continuous model compounds growth constantly at every instant. They're related by \\(e^k=1+r\\), i.e. \\(k=\\ln(1+r)\\) — the continuous rate \\(k\\) is slightly less than the discrete rate \\(r\\) for positive growth, since continuous compounding reaches the same total growth with a slightly lower nominal rate.",
-          "explanation": "The discrete model compounds growth once per period (e.g. once a year), while the continuous model compounds growth constantly at every instant. They're related by \\(e^k=1+r\\), i.e. \\(k=\\ln(1+r)\\) — the continuous rate \\(k\\) is slightly less than the discrete rate \\(r\\) for positive growth, since continuous compounding reaches the same total growth with a slightly lower nominal rate."
+          "answer": "Because \\(h\\) has period \\(T = 10\\), \\(h(10 + 2.5) = h(2.5) = 7\\).",
+          "explanation": "Because \\(h\\) has period \\(T = 10\\), \\(h(10 + 2.5) = h(2.5) = 7\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(2.5\\)",
+              "\\(5\\)",
+              "\\(7.5\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "3",
+                "7",
+                "3",
+                "-1"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (laser interferometer #2050)"
+          }
         }
       ]
     },
@@ -122,12 +206,54 @@
           "correct": 2
         },
         {
-          "q": "A city's population doubles every 15 years and currently stands at 40{,}000. Write an exponential model \\(P(t)\\) and predict the population after 45 years.",
+          "q": "Rational Asymptote Graph (harmonic spring #2135): A rational curve \\(r(x) = \\dfrac{4}{x - 4} + 2\\) has vertical asymptote \\(x = 4\\) and horizontal asymptote \\(y = 2\\) as graphed. Evaluate \\(r(6)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Applications: half-life and doubling time",
-          "answer": "\\(P(t)=40000(2)^{t/15}\\). After 45 years (\\(t/15=3\\) doubling periods): \\(P(45)=40000(2)^3=40000(8)=320{,}000\\).",
-          "explanation": "\\(P(t)=40000(2)^{t/15}\\). After 45 years (\\(t/15=3\\) doubling periods): \\(P(45)=40000(2)^3=40000(8)=320{,}000\\)."
+          "answer": "Substituting \\(x = 6\\) gives \\(r(6) = \\frac{4}{2} + 2 = 4\\).",
+          "explanation": "Substituting \\(x = 6\\) gives \\(r(6) = \\frac{4}{2} + 2 = 4\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              8
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 4) + 2",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 5,
+                "y": 6,
+                "label": "(5, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 4,
+                "label": "x = 4"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 4, y = 2 (#2135)"
+          }
         },
         {
           "q": "Describe how the graph of \\(g(x)=2^{x-3}+4\\) is transformed from the parent function \\(f(x)=2^x\\), and state the new horizontal asymptote.",
@@ -158,12 +284,33 @@
           "explanation": "The negative coefficient reflects the graph over the horizontal asymptote line; as \\(x\\rightarrow\\infty\\), \\(-3(2)^x\\rightarrow-\\infty\\), so \\(h(x)\\rightarrow-\\infty\\), while as \\(x\\rightarrow-\\infty\\), \\(-3(2)^x\\rightarrow0\\), giving horizontal asymptote \\(y=6\\). \\(y\\)-intercept: \\(h(0)=-3(1)+6=3\\), so \\((0,3)\\)."
         },
         {
-          "q": "A savings account earns 4% annual interest compounded quarterly, modeled by \\(A(t)=A_0\\left(1+\\frac{0.04}{4}\\right)^{4t}\\). If 5000 dollars is deposited, find the balance after 3 years, to the nearest dollar.",
+          "q": "Semi-Log Linearization (pendulum swing #2052): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Compound interest and financial models",
-          "answer": "\\(A(3)=5000(1.01)^{12}\\approx5000(1.1268)\\approx5634\\) dollars.",
-          "explanation": "\\(A(3)=5000(1.01)^{12}\\approx5000(1.1268)\\approx5634\\) dollars."
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 9 + 2 = 11\\).",
+          "explanation": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 9 + 2 = 11\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "3",
+                "5",
+                "7",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for pendulum swing #2052"
+          }
         },
         {
           "q": "Explain, without computing exact values, why compounding more frequently (e.g. daily instead of quarterly) at the same nominal annual rate produces a slightly larger balance after the same number of years.",
@@ -259,13 +406,34 @@
           "correct": 2
         },
         {
-          "q": "In the plane, a parabola is given by \\(f(x) = 3(x - 5)^2 + 15\\). What is the vertical intercept \\(f(0)\\)? Show your complete algebraic work.",
+          "q": "Periodic Table Analysis (fluid pressure #2053): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 8]\\), with key quarter-period samples tabulated. What is \\(h(10)\\)?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Finding an exponential model from data",
           "cross_lesson": "2.02 Logarithmic Functions & Properties",
-          "answer": "Final Answer: 90. Setting \\(x = 0\\) gives \\(f(0) = 3(-5)^2 + 15 = 90\\).",
-          "explanation": "Setting \\(x = 0\\) gives \\(f(0) = 3(-5)^2 + 15 = 90\\)."
+          "answer": "Because \\(h\\) has period \\(T = 8\\), \\(h(8 + 2) = h(2) = 9\\).",
+          "explanation": "Because \\(h\\) has period \\(T = 8\\), \\(h(8 + 2) = h(2) = 9\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(4\\)",
+              "\\(6\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "6",
+                "9",
+                "6",
+                "3"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (fluid pressure #2053)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -301,19 +469,61 @@
           "explanation": "Since \\(t/3=2\\): \\(P(6)=900(3)^{2}=900(9)=8100\\)."
         },
         {
-          "q": "A substance has a half-life of \\(6\\) days. What fraction of the original amount remains after \\(18\\) days?",
+          "q": "Rational Asymptote Graph (structural arch #2138): A rational curve \\(r(x) = \\dfrac{3}{x - 3} + 5\\) has vertical asymptote \\(x = 3\\) and horizontal asymptote \\(y = 5\\) as graphed. Evaluate \\(r(5)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Visualizing exponential growth",
           "choices": [
-            "\\(\\frac{1}{4}\\)",
-            "\\(\\frac{1}{16}\\)",
-            "\\(\\frac{3}{8}\\)",
-            "\\(\\frac{1}{8}\\)"
+            "\\(8\\)",
+            "\\(5\\)",
+            "\\(\\frac{135}{140}\\)",
+            "\\(\\frac{13}{2}\\)"
           ],
           "correct": 3,
-          "answer": "Since \\(t/6=3\\) half-lives have passed: fraction remaining \\(=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}\\).",
-          "explanation": "Since \\(t/6=3\\) half-lives have passed: fraction remaining \\(=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}\\)."
+          "answer": "Substituting \\(x = 5\\) gives \\(r(5) = \\frac{3}{2} + 5 = \\frac{13}{2}\\).",
+          "explanation": "Since \\(t/6=3\\) half-lives have passed: fraction remaining \\(=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 8,
+                "label": "(4, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 3, y = 5 (#2138)"
+          }
         },
         {
           "q": "An investment grows from 300 dollars to 507 dollars in 2 years under \\(A(t)=A_0(1+r)^t\\). Find the annual growth rate \\(r\\).",
@@ -346,19 +556,38 @@
           "explanation": "\\(A=2000(1+\\frac{1}{20})^{15}\\approx2000(2.0789)\\approx4158\\) dollars."
         },
         {
-          "q": "Which is an exponential decay?",
+          "q": "Exponential Covariation Table (acoustic wave #2055): Function \\(g(x) = a \\cdot b^x\\) exhibits proportional outputs over equal input steps of \\(1\\) in the table. Determine \\(g(4)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Comparing growth rates: exponential vs. polynomial",
           "choices": [
-            "\\(y=3^x\\)",
-            "\\(y=0.4^x\\)",
-            "\\(y=e^x\\)",
-            "\\(y=10^x\\)"
+            "\\(32\\)",
+            "\\(24\\)",
+            "\\(38\\)",
+            "\\(35\\)"
           ],
-          "correct": 1,
-          "answer": "Applying Unit 2 · Exponential and Logarithmic Functions principles, Base < 1 \\(\\Rightarrow\\) decay. Therefore, the verified correct option is \\(y=0.4^x\\).",
-          "explanation": "Applying Unit 2 · Exponential and Logarithmic Functions principles, Base < 1 \\(\\Rightarrow\\) decay. Therefore, the verified correct option is \\(y=0.4^x\\)."
+          "correct": 0,
+          "answer": "Over equal intervals \\(\\Delta x = 1\\), constant ratio is \\(b = \\frac{8}{4} = 2\\), so \\(g(4) = 16 \\cdot 2 = 32\\).",
+          "explanation": "Applying Unit 2 · Exponential and Logarithmic Functions principles, Base < 1 \\(\\Rightarrow\\) decay. Therefore, the verified correct option is \\(y=0.4^x\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "\\(g(x)\\)",
+                "4",
+                "8",
+                "16"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Exponential covariation table for acoustic wave #2055"
+          }
         },
         {
           "q": "What is the half-life formula for exponential decay?",
@@ -391,19 +620,61 @@
           "explanation": "Applying Exponential & Logarithmic Functions principles, As \\(n\\rightarrow\\infty\\): \\(A=Pe^{rt}\\). Therefore, the verified correct option is \\(A=Pe^{rt}\\)."
         },
         {
-          "q": "The doubling time model is: \\(A=A_0\\cdot2^{t/d}\\). If \\(d=5\\), find \\(A/A_0\\) at \\(t=10\\).",
+          "q": "Rational Asymptote Graph (laser interferometer #2140): A rational curve \\(r(x) = \\dfrac{4}{x - 1} + 2\\) has vertical asymptote \\(x = 1\\) and horizontal asymptote \\(y = 2\\) as graphed. Evaluate \\(r(3)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Compound interest and financial models",
           "choices": [
-            "\\(8\\)",
-            "\\(2\\)",
+            "\\(6\\)",
             "\\(4\\)",
-            "\\(10\\)"
+            "\\(2\\)",
+            "\\(7\\)"
           ],
-          "correct": 2,
-          "answer": "Applying Exponential & Logarithmic Functions principles, \\(2^{10/5}=2^2=4\\). Therefore, the verified correct option is \\(4\\).",
-          "explanation": "Applying Exponential & Logarithmic Functions principles, \\(2^{10/5}=2^2=4\\). Therefore, the verified correct option is \\(4\\)."
+          "correct": 1,
+          "answer": "Substituting \\(x = 3\\) gives \\(r(3) = \\frac{4}{2} + 2 = 4\\).",
+          "explanation": "Applying Exponential & Logarithmic Functions principles, \\(2^{10/5}=2^2=4\\). Therefore, the verified correct option is \\(4\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 1) + 2",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 6,
+                "label": "(2, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 1, y = 2 (#2140)"
+          }
         }
       ]
     },
@@ -441,19 +712,40 @@
           "explanation": "Take \\(\\log\\) of both sides: \\(x\\log 5=\\log 15\\), so \\(x=\\frac{\\log 15}{\\log 5}\\approx1.683.\\)"
         },
         {
-          "q": "By the Remainder Theorem, what is the remainder when \\(f(x)=1x^3+5x^2-4x+4\\) is divided by \\((x+4)\\)?",
+          "q": "Periodic Table Analysis (battery voltage #2057): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 8]\\), with key quarter-period samples tabulated. What is \\(h(10)\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Finding an exponential model from data",
           "choices": [
-            "34",
-            "-36",
-            "72",
-            "36"
+            "\\(2\\)",
+            "\\(5\\)",
+            "\\(8\\)",
+            "\\(6\\)"
           ],
-          "correct": 3,
-          "answer": "By the Remainder Theorem, the remainder equals \\(f(-4)=1(-4)^3+5(-4)^2-4(-4)+4=36.\\)",
-          "explanation": "By the Remainder Theorem, the remainder equals \\(f(-4)=1(-4)^3+5(-4)^2-4(-4)+4=36.\\)"
+          "correct": 2,
+          "answer": "Because \\(h\\) has period \\(T = 8\\), \\(h(8 + 2) = h(2) = 8\\).",
+          "explanation": "By the Remainder Theorem, the remainder equals \\(f(-4)=1(-4)^3+5(-4)^2-4(-4)+4=36.\\)",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(4\\)",
+              "\\(6\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "5",
+                "8",
+                "5",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (battery voltage #2057)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -484,19 +776,61 @@
           "explanation": "\\(p(2)=8-4+1=5\\) by Remainder Theorem."
         },
         {
-          "q": "\\(A=P(1+r/n)^{nt}\\). Find \\(A\\) (to the nearest cent) when \\(2000\\),\\(r=0.04\\),\\(n=2\\),$t=2.",
+          "q": "Rational Asymptote Graph (pendulum swing #2142): A rational curve \\(r(x) = \\dfrac{2}{x - 3} + 4\\) has vertical asymptote \\(x = 3\\) and horizontal asymptote \\(y = 4\\) as graphed. Evaluate \\(r(5)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Applications: half-life and doubling time",
           "choices": [
-            "2154.86",
-            "2174.86",
-            "\\2164.86",
-            "2163.20"
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(8\\)",
+            "\\(5\\)"
           ],
-          "correct": 2,
-          "answer": "$2164.86.",
-          "explanation": "$2164.86."
+          "correct": 3,
+          "answer": "Substituting \\(x = 5\\) gives \\(r(5) = \\frac{2}{2} + 4 = 5\\).",
+          "explanation": "$2164.86.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 3, y = 4 (#2142)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -525,19 +859,40 @@
           "correct": 0
         },
         {
-          "q": "For \\(A=A_0 e^{-kt}\\), find the half-life \\(t_{1/2}\\) in terms of \\(k\\).",
+          "q": "Periodic Table Analysis (optical lens #2059): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 12]\\), with key quarter-period samples tabulated. What is \\(h(15)\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Exponential growth and decay basics",
           "choices": [
-            "\\(\\frac{k}{\\ln2}\\)",
-            "\\(\\frac{\\ln2}{k}\\)",
-            "\\(\\frac{1}{k}\\)",
-            "\\(e^k\\)"
+            "\\(12\\)",
+            "\\(2\\)",
+            "\\(7\\)",
+            "\\(10\\)"
           ],
-          "correct": 1,
-          "answer": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\).",
-          "explanation": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\)."
+          "correct": 0,
+          "answer": "Because \\(h\\) has period \\(T = 12\\), \\(h(12 + 3) = h(3) = 12\\).",
+          "explanation": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(3\\)",
+              "\\(6\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "7",
+                "12",
+                "7",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (optical lens #2059)"
+          }
         }
       ]
     },
@@ -577,20 +932,62 @@
           "cross_lesson": "2.02 Logarithmic Functions & Properties"
         },
         {
-          "q": "Convert the rectangular point \\((-1,1)\\) to polar form; give \\(r\\) and \\(\\theta\\) (in degrees, \\(0\\leq\\theta<360\\)).",
+          "q": "Rational Asymptote Graph (seismic pulse #2144): A rational curve \\(r(x) = \\dfrac{3}{x - 1} + 6\\) has vertical asymptote \\(x = 1\\) and horizontal asymptote \\(y = 6\\) as graphed. Evaluate \\(r(3)\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Continuous growth and the number e",
           "choices": [
-            "\\(r=1.414,\\ \\theta=225°\\)",
-            "\\(r=2.414,\\ \\theta=135°\\)",
-            "\\(r=1.414,\\ \\theta=315°\\)",
-            "\\(r=1.414,\\ \\theta=135°\\)"
+            "\\(9\\)",
+            "\\(\\frac{15}{2}\\)",
+            "\\(6\\)",
+            "\\(5\\)"
           ],
-          "correct": 3,
-          "answer": "\\(r=\\sqrt{x^2+y^2}=\\sqrt{(-1)^2+(1)^2}\\approx1.414\\), \\(\\theta=\\tan^{-1}(y/x)\\) adjusted for quadrant \\(\\approx135°.\\)",
+          "correct": 1,
+          "answer": "Substituting \\(x = 3\\) gives \\(r(3) = \\frac{3}{2} + 6 = \\frac{15}{2}\\).",
           "explanation": "\\(r=\\sqrt{x^2+y^2}=\\sqrt{(-1)^2+(1)^2}\\approx1.414\\), \\(\\theta=\\tan^{-1}(y/x)\\) adjusted for quadrant \\(\\approx135°.\\)",
-          "cross_lesson": "3.01 Trigonometric Functions & the Unit Circle"
+          "cross_lesson": "3.01 Trigonometric Functions & the Unit Circle",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              1,
+              11
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3/(x - 1) + 6",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 9,
+                "label": "(2, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 6,
+                "label": "y = 6"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 1, y = 6 (#2144)"
+          }
         },
         {
           "q": "Eliminate the parameter to find \\(y\\) as a function of \\(x\\): \\(x=1t-2\\), \\(y=-2t^2\\).",
@@ -625,20 +1022,41 @@
           "cross_lesson": "4.01 Inverse & Composite Functions"
         },
         {
-          "q": "Identify the polar curve \\(r=5+3\\cos\\theta\\).",
+          "q": "Periodic Table Analysis (harmonic spring #2060): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 6]\\), with key quarter-period samples tabulated. What is \\(h(7.5)\\)?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Transformations of exponential functions",
           "choices": [
-            "a cardioid",
-            "a circle",
-            "a dimpled limaçon",
-            "a rose with 3 petals"
+            "\\(1\\)",
+            "\\(5\\)",
+            "\\(3\\)",
+            "\\(4\\)"
           ],
-          "correct": 2,
-          "answer": "The equation \\(r=5+3\\cos\\theta\\) has the standard polar form matching: a dimpled limaçon.",
+          "correct": 1,
+          "answer": "Because \\(h\\) has period \\(T = 6\\), \\(h(6 + 1.5) = h(1.5) = 5\\).",
           "explanation": "The equation \\(r=5+3\\cos\\theta\\) has the standard polar form matching: a dimpled limaçon.",
-          "cross_lesson": "4.02 Piecewise-Defined & Implicit Functions"
+          "cross_lesson": "4.02 Piecewise-Defined & Implicit Functions",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(1.5\\)",
+              "\\(3\\)",
+              "\\(4.5\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "3",
+                "5",
+                "3",
+                "1"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (harmonic spring #2060)"
+          }
         },
         {
           "q": "Find the component form of vector \\(\\mathbf{u}\\) directed from \\((9, 12)\\) to \\((20, -2)\\).",

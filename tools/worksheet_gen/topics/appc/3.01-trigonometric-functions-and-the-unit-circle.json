@@ -9,12 +9,33 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A terminal ray in standard position passes through the point \\(P(-8, 15)\\). Find the exact values of \\(\\sin\\theta\\), \\(\\cos\\theta\\), and \\(\\tan\\theta\\).",
+          "q": "Semi-Log Linearization (antenna signal #2076): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Compute the radial distance \\(r = \\sqrt{x^2 + y^2}\\): \\(r = \\sqrt{(-8)^2 + 15^2} = \\sqrt{64 + 225} = \\sqrt{289} = 17.\\) Step 2: Apply circular trigonometric definitions: \\(\\mathbf{\\sin\\theta = \\frac{y}{r} = \\frac{15}{17}, \\qquad \\cos\\theta = \\frac{x}{r} = -\\frac{8}{17}, \\qquad \\tan\\theta = \\frac{y}{x} = -\\frac{15}{8}}.\\)",
-          "explanation": "Step 1: Compute the radial distance \\(r = \\sqrt{x^2 + y^2}\\): \\(r = \\sqrt{(-8)^2 + 15^2} = \\sqrt{64 + 225} = \\sqrt{289} = 17.\\) Step 2: Apply circular trigonometric definitions: \\(\\mathbf{\\sin\\theta = \\frac{y}{r} = \\frac{15}{17}, \\qquad \\cos\\theta = \\frac{x}{r} = -\\frac{8}{17}, \\qquad \\tan\\theta = \\frac{y}{x} = -\\frac{15}{8}}.\\)"
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 8 + 2 = 10\\).",
+          "explanation": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 8 + 2 = 10\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "2",
+                "4",
+                "6",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for antenna signal #2076"
+          }
         },
         {
           "q": "Given vectors \\(\\mathbf{u} = \\langle 4, -3 \\rangle\\) and \\(\\mathbf{v} = \\langle -1, 5 \\rangle\\), compute: (a) \\(2\\mathbf{u} - 3\\mathbf{v}\\), (b) the magnitude \\(||\\mathbf{u}||\\) and unit vector in the direction of \\(\\mathbf{u}\\), and (c) the dot product \\(\\mathbf{u} \\cdot \\mathbf{v}\\).",
@@ -34,16 +55,58 @@
         },
         {
           "qtype": "MCQ",
-          "q": "For the polynomial \\(f(x)=-3x^{2}+2x-1\\), describe the end behavior of \\(f\\).",
-          "answer": "**Answer:** B. The leading term is \\(-3x^{2}\\), degree even, leading coefficient negative, so the end behavior is: down on both ends (as \\(x\\to-\\infty, f(x)\\to-\\infty\\); as \\(x\\to+\\infty, f(x)\\to-\\infty\\)).",
+          "q": "Rational Asymptote Graph (orbital radar #2161): A rational curve \\(r(x) = \\dfrac{2}{x - 2} + 3\\) has vertical asymptote \\(x = 2\\) and horizontal asymptote \\(y = 3\\) as graphed. Evaluate \\(r(4)\\).",
+          "answer": "Substituting \\(x = 4\\) gives \\(r(4) = \\frac{2}{2} + 3 = 4\\).",
           "explanation": "The leading term is \\(-3x^{2}\\), degree even, leading coefficient negative, so the end behavior is: down on both ends (as \\(x\\to-\\infty, f(x)\\to-\\infty\\); as \\(x\\to+\\infty, f(x)\\to-\\infty\\)).",
           "choices": [
-            "up on the left, down on the right (as \\(x\\to-\\infty, f(x)\\to+\\infty\\); as \\(x\\to+\\infty, f(x)\\to-\\infty\\))",
-            "down on both ends (as \\(x\\to-\\infty, f(x)\\to-\\infty\\); as \\(x\\to+\\infty, f(x)\\to-\\infty\\))",
-            "up on both ends (as \\(x\\to-\\infty, f(x)\\to+\\infty\\); as \\(x\\to+\\infty, f(x)\\to+\\infty\\))",
-            "down on the left, up on the right (as \\(x\\to-\\infty, f(x)\\to-\\infty\\); as \\(x\\to+\\infty, f(x)\\to+\\infty\\))"
+            "\\(5\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(7\\)"
           ],
-          "correct": 1
+          "correct": 2,
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              -2,
+              8
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 2) + 3",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 5,
+                "label": "(3, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 2, y = 3 (#2161)"
+          }
         },
         {
           "q": "Convert the polar equation \\(r = 6\\cos\\theta - 8\\sin\\theta\\) to Cartesian rectangular form, and identify the geometric curve, its center, and its radius.",
@@ -67,12 +130,33 @@
           "correct": 3
         },
         {
-          "q": "A particle moves along \\(x(t)=2t+1,\\;y(t)=t^2-3.\\) Find the Cartesian equation of the path.",
+          "q": "Periodic Table Analysis (structural arch #2078): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 10]\\), with key quarter-period samples tabulated. What is \\(h(12.5)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Solve the horizontal parametric equation for parameter \\(t\\): \\(x = 2t + 1 \\Rightarrow 2t = x - 1 \\Rightarrow t = \\frac{x - 1}{2}.\\) Step 2: Substitute \\(t\\) into the vertical equation \\(y(t)\\): \\(y = \\left(\\frac{x - 1}{2}\\right)^2 - 3 = \\mathbf{\\frac{(x - 1)^2}{4} - 3}.\\) The trajectory is an upward-opening parabola with vertex at \\((1, -3)\\).",
-          "explanation": "Step 1: Solve the horizontal parametric equation for parameter \\(t\\): \\(x = 2t + 1 \\Rightarrow 2t = x - 1 \\Rightarrow t = \\frac{x - 1}{2}.\\) Step 2: Substitute \\(t\\) into the vertical equation \\(y(t)\\): \\(y = \\left(\\frac{x - 1}{2}\\right)^2 - 3 = \\mathbf{\\frac{(x - 1)^2}{4} - 3}.\\) The trajectory is an upward-opening parabola with vertex at \\((1, -3)\\)."
+          "answer": "Because \\(h\\) has period \\(T = 10\\), \\(h(10 + 2.5) = h(2.5) = 10\\).",
+          "explanation": "Because \\(h\\) has period \\(T = 10\\), \\(h(10 + 2.5) = h(2.5) = 10\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(2.5\\)",
+              "\\(5\\)",
+              "\\(7.5\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "6",
+                "10",
+                "6",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (structural arch #2078)"
+          }
         }
       ]
     },
@@ -96,12 +180,54 @@
           "explanation": "Step 1 (Find Pole Crossings where r = 0): \\(4\\sin(3\\theta) = 0 \\Rightarrow \\sin(3\\theta) = 0.\\) For \\(\\theta \\in [0, 2\\pi)\\), the argument \\(3\\theta \\in [0, 6\\pi)\\). The sine function equals zero at integer multiples of \\(\\pi\\): \\(3\\theta = 0, \\pi, 2\\pi, 3\\pi, 4\\pi, 5\\pi.\\) \\(\\theta = 0, \\frac{\\pi}{3}, \\frac{2\\pi}{3}, \\pi, \\frac{4\\pi}{3}, \\frac{5\\pi}{3}.\\) Step 2 (Find Maximum Distance from Pole): Distance from pole is \\(|r| = |4\\sin(3\\theta)|\\). The maximum value of \\(|\\sin(3\\theta)|\\) is 1. Therefore, the maximum distance from the origin is \\(|r| = 4\\)."
         },
         {
-          "q": "Period of \\(y=\\sin(2x)\\) is:",
+          "q": "Rational Asymptote Graph (thermal decay #2163): A rational curve \\(r(x) = \\dfrac{3}{x - 4} + 5\\) has vertical asymptote \\(x = 4\\) and horizontal asymptote \\(y = 5\\) as graphed. Evaluate \\(r(6)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
-          "answer": "Final Answer: \\(\\pi\\). Period \\(=\\frac{2\\pi}{b}=\\frac{2\\pi}{2}=\\pi\\)",
-          "explanation": "Period \\(=\\frac{2\\pi}{b}=\\frac{2\\pi}{2}=\\pi\\)"
+          "answer": "Substituting \\(x = 6\\) gives \\(r(6) = \\frac{3}{2} + 5 = \\frac{13}{2}\\).",
+          "explanation": "Substituting \\(x = 6\\) gives \\(r(6) = \\frac{3}{2} + 5 = \\frac{13}{2}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              8
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3/(x - 4) + 5",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 5,
+                "y": 8,
+                "label": "(5, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 4,
+                "label": "x = 4"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 4, y = 5 (#2163)"
+          }
         },
         {
           "q": "Level 3 · AdvancedFind the matrix \\(R\\) that rotates vectors by \\(\\theta = \\frac{2\\pi}{3}\\) radians counterclockwise, and use it to find the image of the vector \\(\\vec{w} = \\left(4 ; -2\\right)\\). Verify that the magnitude of \\(\\vec{w}\\) is preserved under the transformation.",
@@ -120,12 +246,33 @@
           "explanation": "Magnitudes: \\(|\\vec{u}| = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5.\\) \\(|\\vec{v}| = \\sqrt{1^2 + 7^2} = \\sqrt{1 + 49} = \\sqrt{50} = 5\\sqrt{2}.\\) Dot Product: \\(\\vec{u} \\cdot \\vec{v} = (4)(1) + (-3)(7) = 4 - 21 = -17.\\) Angle Between Vectors: Use \\(\\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{u}||\\vec{v}|}\\): \\(\\cos\\theta = \\frac{-17}{(5)(5\\sqrt{2})} = \\frac{-17}{25\\sqrt{2}} = \\frac{-17\\sqrt{2}}{50} \\approx -0.48083.\\) \\(\\theta = \\arccos\\left(\\frac{-17\\sqrt{2}}{50}\\right) \\approx \\mathbf{2.072}\\mathrm{\\ radians} \\quad (\\approx 118.7^\\circ).\\)"
         },
         {
-          "q": "Solve the trigonometric equation \\(2\\cos^2 x - \\sin x - 1 = 0\\) for all \\(x\\) in the interval \\([0, 2\\pi)\\).",
+          "q": "AP Precalculus Section II Modeling FRQ (Section II Part A (Graphing Calculator)): Consider the quadratic-rational model \\( g(x) = 11(x - 2)^2 + (-33) \\) defined on \\( x \\in \\mathbb{R} \\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Apply the Pythagorean identity \\(\\cos^2 x = 1 - \\sin^2 x\\): \\(2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\Rightarrow 2\\sin^2 x + \\sin x - 1 = 0.\\) Step 2: Factor the quadratic in \\(\\sin x\\): \\((2\\sin x - 1)(\\sin x + 1) = 0 \\Rightarrow \\sin x = \\frac{1}{2} \\quad\\mathrm{or}\\quad \\sin x = -1.\\) Step 3: Extract all solutions in \\([0, 2\\pi)\\): \\(\\mathbf{x \\in \\left\\{\\frac{\\pi}{6}, \\; \\frac{5\\pi}{6}, \\; \\frac{3\\pi}{2}\\right\\}}.\\)",
-          "explanation": "Step 1: Apply the Pythagorean identity \\(\\cos^2 x = 1 - \\sin^2 x\\): \\(2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\Rightarrow 2\\sin^2 x + \\sin x - 1 = 0.\\) Step 2: Factor the quadratic in \\(\\sin x\\): \\((2\\sin x - 1)(\\sin x + 1) = 0 \\Rightarrow \\sin x = \\frac{1}{2} \\quad\\mathrm{or}\\quad \\sin x = -1.\\) Step 3: Extract all solutions in \\([0, 2\\pi)\\): \\(\\mathbf{x \\in \\left\\{\\frac{\\pi}{6}, \\; \\frac{5\\pi}{6}, \\; \\frac{3\\pi}{2}\\right\\}}.\\)"
+          "answer": "(a) \\( g(0) = 11 \\). (b) Vertex minimum \\( = -33 \\) since \\( 11 > 0 \\). (c) \\( (x-2)^2 = 9 \\) with \\( x \\ge 2 \\) gives \\( x = 5 \\).",
+          "explanation": "(a) \\( g(0) = 11 \\). (b) Vertex minimum \\( = -33 \\) since \\( 11 > 0 \\). (c) \\( (x-2)^2 = 9 \\) with \\( x \\ge 2 \\) gives \\( x = 5 \\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "2",
+                "6",
+                "18",
+                "54"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Reference covariation table (FRQ #18)"
+          }
         },
         {
           "q": "Prove the trigonometric identity \\(\\frac{\\sin(2x)}{1 + \\cos(2x)} = \\tan x\\) and state the domain exclusions.",
@@ -150,13 +297,55 @@
           "explanation": "Setup: Write the equation before numerical solving: \\(120(1.15)^t = 500 \\Rightarrow (1.15)^t = \\frac{500}{120} = \\frac{25}{6}.\\) Solve: Take the natural logarithm: \\(t\\ln(1.15) = \\ln\\left(\\frac{25}{6}\\right) \\Rightarrow t = \\frac{\\ln(25/6)}{\\ln(1.15)}.\\) Evaluating on the calculator: \\(t \\approx \\frac{1.427116}{0.139762} \\approx 10.211\\mathrm{\\ weeks}.\\) Final answer: 10.211 weeks."
         },
         {
-          "q": "Amplitude of \\(y=3\\sin x\\) is:",
+          "q": "Rational Asymptote Graph (harmonic spring #2165): A rational curve \\(r(x) = \\dfrac{4}{x - 2} + 2\\) has vertical asymptote \\(x = 2\\) and horizontal asymptote \\(y = 2\\) as graphed. Evaluate \\(r(4)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "1.03 Rates of Change & Concavity",
-          "answer": "Final Answer: 3. Amplitude = |coefficient of sin|.",
-          "explanation": "Amplitude = |coefficient of sin|."
+          "answer": "Substituting \\(x = 4\\) gives \\(r(4) = \\frac{4}{2} + 2 = 4\\).",
+          "explanation": "Substituting \\(x = 4\\) gives \\(r(4) = \\frac{4}{2} + 2 = 4\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 2) + 2",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 6,
+                "label": "(3, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 2, y = 2 (#2165)"
+          }
         },
         {
           "q": "Law of Cosines: \\(c^2=\\)",
@@ -177,13 +366,34 @@
           "explanation": "Substitute \\(\\cos(2\\theta) = 1 - 2\\sin^2\\theta\\) to express the entire equation in terms of \\(\\sin\\theta\\): \\((1 - 2\\sin^2\\theta) + 3\\sin\\theta = 2.\\) \\(-2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\Rightarrow 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0.\\) Factor the quadratic in \\(\\sin\\theta\\): \\((2\\sin\\theta - 1)(\\sin\\theta - 1) = 0.\\) Case 1: \\(2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{6}\\) or \\(\\theta = \\frac{5\\pi}{6}\\). Case 2: \\(\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = 1\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{2}\\). Combining all solutions: \\(\\theta \\in \\left\\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\right\\}\\)."
         },
         {
-          "q": "Verify the trigonometric identity: \\(\\frac{\\sin(2x)}{\\sin x} - \\frac{\\cos(2x)}{\\cos x} = \\sec x.\\)",
+          "q": "Periodic Table Analysis (turbine blade #2081): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 8]\\), with key quarter-period samples tabulated. What is \\(h(10)\\)?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "3.02 Polar Coordinates & Polar Graphs",
-          "answer": "Expand the double-angle expressions on the left-hand side: \\(\\mathrm{LHS} = \\frac{2\\sin x\\cos x}{\\sin x} - \\frac{2\\cos^2 x - 1}{\\cos x}.\\) Cancel \\(\\sin x\\) in the first term and combine over a common denominator of \\(\\cos x\\): \\(= 2\\cos x - \\frac{2\\cos^2 x - 1}{\\cos x} = \\frac{2\\cos^2 x - (2\\cos^2 x - 1)}{\\cos x}.\\) \\(= \\frac{2\\cos^2 x - 2\\cos^2 x + 1}{\\cos x} = \\frac{1}{\\cos x} = \\sec x = \\mathrm{RHS}. \\quad \\checkmark\\)",
-          "explanation": "Expand the double-angle expressions on the left-hand side: \\(\\mathrm{LHS} = \\frac{2\\sin x\\cos x}{\\sin x} - \\frac{2\\cos^2 x - 1}{\\cos x}.\\) Cancel \\(\\sin x\\) in the first term and combine over a common denominator of \\(\\cos x\\): \\(= 2\\cos x - \\frac{2\\cos^2 x - 1}{\\cos x} = \\frac{2\\cos^2 x - (2\\cos^2 x - 1)}{\\cos x}.\\) \\(= \\frac{2\\cos^2 x - 2\\cos^2 x + 1}{\\cos x} = \\frac{1}{\\cos x} = \\sec x = \\mathrm{RHS}. \\quad \\checkmark\\)"
+          "answer": "Because \\(h\\) has period \\(T = 8\\), \\(h(8 + 2) = h(2) = 7\\).",
+          "explanation": "Because \\(h\\) has period \\(T = 8\\), \\(h(8 + 2) = h(2) = 7\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(4\\)",
+              "\\(6\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "4",
+                "7",
+                "4",
+                "1"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (turbine blade #2081)"
+          }
         },
         {
           "q": "Convert \\(45°\\) to radians.",
@@ -215,19 +425,61 @@
           "explanation": "Angle \\(\\frac{5\\pi}{6}\\) lies in Quadrant II with reference angle \\(\\frac{\\pi}{6}\\). Therefore, \\(\\cos\\left(\\frac{5\\pi}{6}\\right) = -\\frac{\\sqrt{3}}{2}\\) and \\(\\sin\\left(\\frac{5\\pi}{6}\\right) = \\frac{1}{2}\\), giving coordinates \\(\\left(-\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)\\)."
         },
         {
-          "q": "Convert an angle of \\(\\frac{7\\pi}{4}\\) radians into degree measure.",
+          "q": "Rational Asymptote Graph (capacitor charge #2167): A rational curve \\(r(x) = \\dfrac{2}{x - 4} + 4\\) has vertical asymptote \\(x = 4\\) and horizontal asymptote \\(y = 4\\) as graphed. Evaluate \\(r(6)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "\\(315^{\\circ}\\)",
-            "\\(225^{\\circ}\\)",
-            "\\(300^{\\circ}\\)",
-            "\\(135^{\\circ}\\)"
+            "\\(5\\)",
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(8\\)"
           ],
           "correct": 0,
-          "answer": "Multiply by \\(\\frac{180^{\\circ}}{\\pi}\\): \\(\\frac{7\\pi}{4} \\times \\frac{180^{\\circ}}{\\pi} = 7 \\times 45^{\\circ} = 315^{\\circ}\\).",
-          "explanation": "Multiply by \\(\\frac{180^{\\circ}}{\\pi}\\): \\(\\frac{7\\pi}{4} \\times \\frac{180^{\\circ}}{\\pi} = 7 \\times 45^{\\circ} = 315^{\\circ}\\)."
+          "answer": "Substituting \\(x = 6\\) gives \\(r(6) = \\frac{2}{2} + 4 = 5\\).",
+          "explanation": "Multiply by \\(\\frac{180^{\\circ}}{\\pi}\\): \\(\\frac{7\\pi}{4} \\times \\frac{180^{\\circ}}{\\pi} = 7 \\times 45^{\\circ} = 315^{\\circ}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              8
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 4) + 4",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 5,
+                "y": 6,
+                "label": "(5, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 4,
+                "label": "x = 4"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 4, y = 4 (#2167)"
+          }
         },
         {
           "q": "If the terminal ray of angle \\(\\alpha\\) passes through the point \\((-3, -4)\\), what is \\(\\sin\\alpha\\)?",
@@ -260,19 +512,40 @@
           "explanation": "Cosine is an even function: \\(\\cos(-\\pi/4) = \\cos(\\pi/4) = \\frac{\\sqrt{2}}{2}\\). Thus \\(\\sec(-\\pi/4) = \\frac{1}{\\cos(\\pi/4)} = \\frac{2}{\\sqrt{2}} = \\sqrt{2}\\)."
         },
         {
-          "q": "Find the amplitude and period of the sinusoidal function \\(f(x) = -4\\cos(3x - \\pi) + 2\\).",
+          "q": "Periodic Table Analysis (fluid pressure #2083): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 12]\\), with key quarter-period samples tabulated. What is \\(h(15)\\)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "Amplitude \\(= 4\\), Period \\(= \\frac{2\\pi}{3}\\)",
-            "Amplitude \\(= -4\\), Period \\(= 3\\)",
-            "Amplitude \\(= 4\\), Period \\(= 3\\pi\\)",
-            "Amplitude \\(= 2\\), Period \\(= \\frac{2\\pi}{3}\\)"
+            "\\(11\\)",
+            "\\(1\\)",
+            "\\(6\\)",
+            "\\(10\\)"
           ],
           "correct": 0,
-          "answer": "Amplitude is \\(|A| = |-4| = 4\\). For \\(B = 3\\), the period is \\(\\frac{2\\pi}{B} = \\frac{2\\pi}{3}\\).",
-          "explanation": "Amplitude is \\(|A| = |-4| = 4\\). For \\(B = 3\\), the period is \\(\\frac{2\\pi}{B} = \\frac{2\\pi}{3}\\)."
+          "answer": "Because \\(h\\) has period \\(T = 12\\), \\(h(12 + 3) = h(3) = 11\\).",
+          "explanation": "Amplitude is \\(|A| = |-4| = 4\\). For \\(B = 3\\), the period is \\(\\frac{2\\pi}{B} = \\frac{2\\pi}{3}\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(3\\)",
+              "\\(6\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "6",
+                "11",
+                "6",
+                "1"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (fluid pressure #2083)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -303,19 +576,61 @@
           "explanation": "Factor out \\(4\\): \\(g(x) = 2\\sin\\left(4\\left(x + \\frac{\\pi}{8}\\right)\\right)\\). The phase shift is \\(\\frac{\\pi}{8}\\) units to the left."
         },
         {
-          "q": "Simplify the trigonometric expression \\(\\frac{\\tan x}{\\sec x}\\).",
+          "q": "Rational Asymptote Graph (tidal gauge #2169): A rational curve \\(r(x) = \\dfrac{3}{x - 2} + 6\\) has vertical asymptote \\(x = 2\\) and horizontal asymptote \\(y = 6\\) as graphed. Evaluate \\(r(4)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "\\(\\sin x\\)",
-            "\\(\\cos x\\)",
-            "\\(\\csc x\\)",
-            "\\(\\cot x\\)"
+            "\\(9\\)",
+            "\\(6\\)",
+            "\\(\\frac{15}{2}\\)",
+            "\\(5\\)"
           ],
-          "correct": 0,
-          "answer": "Rewrite in terms of sine and cosine: \\(\\frac{\\sin x / \\cos x}{1 / \\cos x} = \\frac{\\sin x}{\\cos x} \\cdot \\cos x = \\sin x\\).",
-          "explanation": "Rewrite in terms of sine and cosine: \\(\\frac{\\sin x / \\cos x}{1 / \\cos x} = \\frac{\\sin x}{\\cos x} \\cdot \\cos x = \\sin x\\)."
+          "correct": 2,
+          "answer": "Substituting \\(x = 4\\) gives \\(r(4) = \\frac{3}{2} + 6 = \\frac{15}{2}\\).",
+          "explanation": "Rewrite in terms of sine and cosine: \\(\\frac{\\sin x / \\cos x}{1 / \\cos x} = \\frac{\\sin x}{\\cos x} \\cdot \\cos x = \\sin x\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              1,
+              11
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3/(x - 2) + 6",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 9,
+                "label": "(3, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 6,
+                "label": "y = 6"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 2, y = 6 (#2169)"
+          }
         }
       ]
     },
@@ -351,19 +666,38 @@
           "explanation": "\\(s=r\\theta=5\\cdot\\frac{1\\pi}{2}=5/2\\pi.\\)"
         },
         {
-          "q": "Eliminate the parameter: \\(x=3t\\), \\(y=3t\\).",
+          "q": "Exponential Covariation Table (acoustic wave #2085): Function \\(g(x) = a \\cdot b^x\\) exhibits proportional outputs over equal input steps of \\(1\\) in the table. Determine \\(g(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "\\(y=1x\\)",
-            "\\(y=1x+1\\)",
-            "\\(y=2x\\)",
-            "\\(y=-1x\\)"
+            "\\(24\\)",
+            "\\(38\\)",
+            "\\(32\\)",
+            "\\(35\\)"
           ],
-          "correct": 0,
-          "answer": "Solve \\(x=3t\\) for \\(t\\): \\(t=\\frac{x}{3}\\). Substitute into \\(y\\): \\(y=1x.\\)",
-          "explanation": "Solve \\(x=3t\\) for \\(t\\): \\(t=\\frac{x}{3}\\). Substitute into \\(y\\): \\(y=1x.\\)"
+          "correct": 2,
+          "answer": "Over equal intervals \\(\\Delta x = 1\\), constant ratio is \\(b = \\frac{8}{4} = 2\\), so \\(g(4) = 16 \\cdot 2 = 32\\).",
+          "explanation": "Solve \\(x=3t\\) for \\(t\\): \\(t=\\frac{x}{3}\\). Substitute into \\(y\\): \\(y=1x.\\)",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "\\(g(x)\\)",
+                "4",
+                "8",
+                "16"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Exponential covariation table for acoustic wave #2085"
+          }
         },
         {
           "q": "Let \\(f(x)=3x+2\\) and \\(g(x)=1/3x-2/3\\). Are \\(f\\) and \\(g\\) inverse functions?",
@@ -397,16 +731,58 @@
         },
         {
           "qtype": "MCQ",
-          "q": "\\(f(x)=(x-1)^{2}(x-4)^{1}\\). At \\(x=1\\), the graph of \\(f\\):",
-          "answer": "**Answer:** B. The multiplicity of the zero at \\(x=1\\) is 2, which is even, so the graph touches and turns around.",
+          "q": "Rational Asymptote Graph (laser interferometer #2170): A rational curve \\(r(x) = \\dfrac{4}{x - 3} + 2\\) has vertical asymptote \\(x = 3\\) and horizontal asymptote \\(y = 2\\) as graphed. Evaluate \\(r(5)\\).",
+          "answer": "Substituting \\(x = 5\\) gives \\(r(5) = \\frac{4}{2} + 2 = 4\\).",
           "explanation": "The multiplicity of the zero at \\(x=1\\) is 2, which is even, so the graph touches and turns around.",
           "choices": [
-            "crosses",
-            "touches (bounces off)",
-            "is undefined",
-            "has a hole"
+            "\\(6\\)",
+            "\\(2\\)",
+            "\\(7\\)",
+            "\\(4\\)"
           ],
-          "correct": 1
+          "correct": 3,
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 3, y = 2 (#2170)"
+          }
         },
         {
           "q": "Which transformation shifts \\(f(x)\\) right by 3?",
@@ -452,19 +828,40 @@
           }
         },
         {
-          "q": "Consider the vector \\(\\mathbf{v}\\) directed from the point \\(P = (2, 5)\\) to the point \\(Q = (7, 1)\\). What is the component form of \\(\\mathbf{v}\\)?",
+          "q": "Periodic Table Analysis (battery voltage #2087): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 12]\\), with key quarter-period samples tabulated. What is \\(h(15)\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "\\(\\langle -5, -4 \\rangle\\)",
-            "\\(\\langle 5, 4 \\rangle\\)",
-            "\\(\\langle 5, -4 \\rangle\\)",
-            "\\(\\langle -5, 4 \\rangle\\)"
+            "\\(10\\)",
+            "\\(0\\)",
+            "\\(5\\)",
+            "\\(13\\)"
           ],
-          "correct": 2,
-          "answer": "The component form of a vector directed from point \\(P = (x_1, y_1)\\) to point \\(Q = (x_2, y_2)\\) is given by \\(\\mathbf{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, \\(P = (2, 5)\\) and \\(Q = (7, 1)\\). Therefore, the component form of \\(\\mathbf{v}\\) is \\(\\langle 7 - 2, 1 - 5 \\rangle = \\langle 5, -4 \\rangle\\).",
-          "explanation": "The component form of a vector directed from point \\(P = (x_1, y_1)\\) to point \\(Q = (x_2, y_2)\\) is given by \\(\\mathbf{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, \\(P = (2, 5)\\) and \\(Q = (7, 1)\\). Therefore, the component form of \\(\\mathbf{v}\\) is \\(\\langle 7 - 2, 1 - 5 \\rangle = \\langle 5, -4 \\rangle\\)."
+          "correct": 0,
+          "answer": "Because \\(h\\) has period \\(T = 12\\), \\(h(12 + 3) = h(3) = 10\\).",
+          "explanation": "The component form of a vector directed from point \\(P = (x_1, y_1)\\) to point \\(Q = (x_2, y_2)\\) is given by \\(\\mathbf{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, \\(P = (2, 5)\\) and \\(Q = (7, 1)\\). Therefore, the component form of \\(\\mathbf{v}\\) is \\(\\langle 7 - 2, 1 - 5 \\rangle = \\langle 5, -4 \\rangle\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(3\\)",
+              "\\(6\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "5",
+                "10",
+                "5",
+                "0"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (battery voltage #2087)"
+          }
         }
       ]
     },
@@ -530,20 +927,62 @@
           "cross_lesson": "3.02 Polar Coordinates & Polar Graphs"
         },
         {
-          "q": "Consider a unit circle centered at the origin. A point \\(P(x, y)\\) lies on the unit circle in the second quadrant such that the angle formed by the positive x-axis and the line segment OP is \\(\\theta\\). If \\(\\sin(\\theta) = \\frac{3}{5}\\) and the y-coordinate of \\(P\\) is \\(y = \\frac{3}{5}\\), determine the x-coordinate of \\(P\\).",
+          "q": "Rational Asymptote Graph (pendulum swing #2172): A rational curve \\(r(x) = \\dfrac{2}{x - 1} + 4\\) has vertical asymptote \\(x = 1\\) and horizontal asymptote \\(y = 4\\) as graphed. Evaluate \\(r(3)\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "\\(-\\frac{4}{5}\\)",
-            "\\(\\frac{4}{5}\\)",
-            "\\(-\\frac{3}{5}\\)",
-            "\\(-\\frac{25}{16}\\)"
+            "\\(6\\)",
+            "\\(5\\)",
+            "\\(4\\)",
+            "\\(8\\)"
           ],
-          "correct": 0,
-          "answer": "The problem states that point \\(P(x, y)\\) lies on the unit circle, meaning \\(x^2 + y^2 = 1\\). We are given that the y-coordinate of \\(P\\) is \\(y = \\frac{3}{5}\\). Substituting this into the unit circle equation, we get \\(x^2 + (\\frac{3}{5})^2 = 1\\). This simplifies to \\(x^2 + \\frac{9}{25} = 1\\). Subtracting \\(\\frac{9}{25}\\) from both sides gives \\(x^2 = 1 - \\frac{9}{25} = \\frac{16}{25}\\). Taking the square root of both sides, we get \\(x = \\pm\\frac{4}{5}\\). The problem also states that point \\(P\\) is in the second quadrant, where the x-coordinates are negative. Therefore, the x-coordinate of \\(P\\) must be \\(x = -\\frac{4}{5}\\). Note that the given \\(\\sin(\\theta) = \\frac{3}{5}\\) is consistent with the y-coordinate of \\(P\\) being \\(\\frac{3}{5}\\) on the unit circle, as \\(\\sin(\\theta)\\) represents the y-coordinate of a point on the unit circle.",
+          "correct": 1,
+          "answer": "Substituting \\(x = 3\\) gives \\(r(3) = \\frac{2}{2} + 4 = 5\\).",
           "explanation": "The problem states that point \\(P(x, y)\\) lies on the unit circle, meaning \\(x^2 + y^2 = 1\\). We are given that the y-coordinate of \\(P\\) is \\(y = \\frac{3}{5}\\). Substituting this into the unit circle equation, we get \\(x^2 + (\\frac{3}{5})^2 = 1\\). This simplifies to \\(x^2 + \\frac{9}{25} = 1\\). Subtracting \\(\\frac{9}{25}\\) from both sides gives \\(x^2 = 1 - \\frac{9}{25} = \\frac{16}{25}\\). Taking the square root of both sides, we get \\(x = \\pm\\frac{4}{5}\\). The problem also states that point \\(P\\) is in the second quadrant, where the x-coordinates are negative. Therefore, the x-coordinate of \\(P\\) must be \\(x = -\\frac{4}{5}\\). Note that the given \\(\\sin(\\theta) = \\frac{3}{5}\\) is consistent with the y-coordinate of \\(P\\) being \\(\\frac{3}{5}\\) on the unit circle, as \\(\\sin(\\theta)\\) represents the y-coordinate of a point on the unit circle.",
-          "cross_lesson": "4.01 Inverse & Composite Functions"
+          "cross_lesson": "4.01 Inverse & Composite Functions",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 1) + 4",
+                "color": "#2563eb",
+                "label": "y = r(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 6,
+                "label": "(2, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational graph with asymptotes x = 1, y = 4 (#2172)"
+          }
         },
         {
           "q": "Consider a point P on the unit circle in the second quadrant such that the y-coordinate of P is \\(\\frac{3}{5}\\). Let \\(\\theta\\) be the angle in standard position whose terminal side passes through P. Find the value of \\(\\cos \\theta\\).",
@@ -579,16 +1018,37 @@
         },
         {
           "qtype": "MCQ",
-          "q": "\\(f(x)=(x+2)^{2}(x-2)^{2}\\). At \\(x=-2\\), the graph of \\(f\\):",
-          "answer": "**Answer:** C. The multiplicity of the zero at \\(x=-2\\) is 2, which is even, so the graph touches and turns around.",
+          "q": "Periodic Table Analysis (optical lens #2089): The periodic function \\(h(t)\\) completes one full cycle over \\([0, 8]\\), with key quarter-period samples tabulated. What is \\(h(10)\\)?",
+          "answer": "Because \\(h\\) has period \\(T = 8\\), \\(h(8 + 2) = h(2) = 10\\).",
           "explanation": "The multiplicity of the zero at \\(x=-2\\) is 2, which is even, so the graph touches and turns around.",
           "choices": [
-            "has a hole",
-            "crosses",
-            "touches (bounces off)",
-            "is undefined"
+            "\\(4\\)",
+            "\\(7\\)",
+            "\\(10\\)",
+            "\\(6\\)"
           ],
-          "correct": 2
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(4\\)",
+              "\\(6\\)"
+            ],
+            "rows": [
+              [
+                "\\(h(t)\\)",
+                "7",
+                "10",
+                "7",
+                "4"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Periodic cycle table of h(t) (optical lens #2089)"
+          }
         },
         {
           "q": "On the unit circle, a point \\(P(x, y)\\) corresponds to an angle \\(\\theta\\) in standard position. If the angle \\(\\theta = \\frac{\\pi}{3}\\), what is the value of the y-coordinate of point P?",

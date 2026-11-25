@@ -601,6 +601,175 @@
         }
       },
       {
+        "kind": "structuredQuestion",
+        "id": "apbc-ch-frq-apbc-c5-1",
+        "title": {
+          "en": "Unit 10 · Infinite Sequences & Series — Convergence Tests — 9-Point 4-Part FRQ",
+          "ar": "الوحدة ١٠ · المتتابعات والمتسلسلات اللانهائية — سؤال مقالي من ٩ نقاط (٤ أجزاء)"
+        },
+        "marks": 9,
+        "calc": false,
+        "difficulty": "easy",
+        "archetype": "AP Section II · 9-Point Rule-of-Four FRQ",
+        "figure": {
+          "type": "fn",
+          "xl": [
+            1,
+            5.5
+          ],
+          "yl": [
+            0,
+            1.3
+          ],
+          "xStep": 1,
+          "yStep": 0.2,
+          "fns": [
+            {
+              "fn": "1/(x*x)",
+              "color": "#2563eb",
+              "label": "f(x) = 1/x²"
+            }
+          ],
+          "riemann": {
+            "expr": "1/(x*x)",
+            "a": 1,
+            "b": 5,
+            "n": 4,
+            "rule": "right",
+            "color": "#3b82f6"
+          },
+          "xlabel": "x",
+          "ylabel": "a_n",
+          "caption": "Integral Test comparison rectangles vs continuous tail (Run #248)"
+        },
+        "stem": {
+          "en": "In chemical titration run infinite series investigation #248, consider \\(S = \\sum_{n=0}^{\\infty} 5\\left(-\\dfrac{1}{4}\\right)^n\\) and the convergent alternating series \\(T = \\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n^2 + 1}\\), along with the Integral Test diagram shown.",
+          "ar": "ادرس المتسلسلة الهندسية اللانهائية \\(S = \\sum_{n=0}^{\\infty} 5\\left(-\\dfrac{1}{4}\\right)^n\\) والمتسلسلة المتناوبة المتقاربة \\(T = \\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n^2 + 1}\\) مع مخطط اختبار التكامل."
+        },
+        "solution": {
+          "en": "(a) \\(S = \\frac{5}{1 - (-1/4)} = 4\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 1} = \\frac{1}{17}\\). (c) \\(L = \\frac{1}{4} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "ar": "(أ) \\(S=\\frac{5}{1-(-1/4)}=4\\). (ب) حد الخطأ \\(|a_4|=\\frac{1}{17}\\). (ج) \\(L=\\frac{1}{4}<1\\). (د) \\(\\lim_{b\\to\\infty}[-\\frac{1}{x}]_3^b=\\frac{1}{3}\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Find the exact sum \\(S\\) of the infinite geometric series.",
+              "ar": "أوجد المجموع الدقيق \\(S\\) للمتسلسلة الهندسية اللانهائية."
+            },
+            "marks": 2,
+            "answer": "4",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Identifies a = 5 and r = -1/4",
+                  "ar": "يحدّد \\(a = 5\\) و \\(r = -1/4\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates S = 4",
+                  "ar": "يحسب \\(S = 4\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Compute the Alternating Series Error Bound for \\(|T - T_3|\\), where \\(T_3\\) is the sum of the first three terms.",
+              "ar": "احسب حد الخطأ للمتسلسلة المتناوبة \\(|T - T_3|\\) حيث \\(T_3\\) مجموع أول ثلاثة حدود."
+            },
+            "marks": 3,
+            "answer": "1/17",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "States |T - T_3| <= |a_4| because |a_n| is positive decreasing to 0",
+                  "ar": "ينص على \\(|T-T_3| \\le |a_4|\\) لتناقص \\(|a_n|\\) إلى الصفر"
+                },
+                "marks": 1
+              },
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Substitutes n = 4 into 1/(n^2 + 1)",
+                  "ar": "يعوّض \\(n = 4\\) في \\(\\frac{1}{n^2+1}\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains 1/17",
+                  "ar": "يحصل على \\(1/17\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Find the Ratio Test limit \\(L = \\lim_{n\\to\\infty} \\left|\\dfrac{a_{n+1}}{a_n}\\right|\\) for \\(\\sum_{n=0}^{\\infty} 5\\left(-\\dfrac{1}{4}\\right)^n\\).",
+              "ar": "أوجد نهاية اختبار النسبة \\(L = \\lim_{n\\to\\infty} \\left|\\dfrac{a_{n+1}}{a_n}\\right|\\) للمتسلسلة \\(S\\)."
+            },
+            "marks": 2,
+            "answer": "1/4",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Sets up absolute ratio of consecutive terms",
+                  "ar": "يكوّن القيمة المطلقة لنسبة حدّين متتاليين"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates L = 1/4",
+                  "ar": "يحسب \\(L = 1/4\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(d)",
+            "prompt": {
+              "en": "Evaluate the improper integral tail bound \\(\\int_3^{\\infty} \\dfrac{1}{x^2}\\,dx\\) shown in the comparison model.",
+              "ar": "احسب قيمة التكامل المعتل \\(\\int_3^{\\infty} \\dfrac{1}{x^2}\\,dx\\) المبيّن في نموذج المقارنة."
+            },
+            "marks": 2,
+            "answer": "1/3",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Integrates x^(-2) to -1/x from 3 to b -> infinity",
+                  "ar": "يكامل \\(x^{-2}\\) إلى \\(-1/x\\) من \\(3\\) إلى \\(\\infty\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 1/3",
+                  "ar": "يحسب الناتج \\(1/3\\)"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

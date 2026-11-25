@@ -539,6 +539,173 @@
         }
       },
       {
+        "kind": "structuredQuestion",
+        "id": "apbc-ch-frq-apbc-frq-1",
+        "title": {
+          "en": "AP Calculus BC Free-Response Questions (FRQs) — 9-Point 4-Part FRQ",
+          "ar": "أسئلة الإجابة الحرة لتفاضل وتكامل AP BC — سؤال مقالي من ٩ نقاط (٤ أجزاء)"
+        },
+        "marks": 9,
+        "calc": false,
+        "difficulty": "easy",
+        "archetype": "AP Section II · 9-Point Rule-of-Four FRQ",
+        "figure": {
+          "type": "fn",
+          "xl": [
+            -0.8,
+            1.8
+          ],
+          "yl": [
+            -1.5,
+            1.5
+          ],
+          "xStep": 0.5,
+          "yStep": 0.5,
+          "fns": [
+            {
+              "fn": "x*exp(-1*x)",
+              "color": "#2563eb",
+              "label": "g(x) = x e^(-1x)"
+            },
+            {
+              "fn": "x - 1*x*x + 0.5*x^3",
+              "color": "#d97706",
+              "dash": "4,4",
+              "label": "P_3(x)"
+            }
+          ],
+          "xlabel": "x",
+          "ylabel": "y",
+          "caption": "BC FRQ #272: Curve g(x) = x e^(-1x) vs Maclaurin P_3(x)"
+        },
+        "stem": {
+          "en": "In chemical titration run BC Section II synthesis #272, consider the graph of \\(g(x) = x e^{-1x}\\) and its third-degree Maclaurin polynomial \\(P_3(x)\\) centered at \\(x = 0\\), shown in the figure.",
+          "ar": "ادرس منحنى الدالة \\(g(x) = x e^{-x}\\) وكثيرة حدود ماكلورين من الدرجة الثالثة \\(P_3(x)\\) المتمركزة عند \\(x = 0\\) كما في الشكل."
+        },
+        "solution": {
+          "en": "(a) \\(g(x) = x\\left(1 - 1x + \\frac{1}{2}x^2 - \\frac{1}{6}x^3 + \\frac{1}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(\\frac{1}{2}\\). (b) \\(g'''(0) = 3!\\cdot(\\frac{1}{2}) = 3\\). (c) \\(\\int_0^1 (x - 1x^2 + \\frac{1}{2}x^3)\\,dx = \\frac{1}{2} - \\frac{1}{3} + \\frac{1}{8} = \\frac{7}{24}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{1}{24}\\).",
+          "ar": "(أ) \\(g(x)=x(1-x+\\frac{1}{2}x^2-\\frac{1}{6}x^3+\\frac{1}{24}x^4-\\dots)\\)، فمعامل \\(x^3\\) هو \\(\\frac{1}{2}\\). (ب) \\(g'''(0)=3!(\\frac{1}{2})=3\\). (ج) التكامل \\(=\\frac{1}{2}-\\frac{1}{3}+\\frac{1}{8}=\\frac{7}{24}\\). (د) معامل \\(x^5\\) هو \\(\\frac{1}{24}\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Find the exact coefficient of \\(x^3\\) in the Maclaurin series for \\(g(x)\\).",
+              "ar": "أوجد المعامل الدقيق للحد \\(x^3\\) في متسلسلة ماكلورين للدالة \\(g(x)\\)."
+            },
+            "marks": 2,
+            "answer": "1/2",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Expands e^(-1x) = 1 - 1x + (1x)^2/2! - ...",
+                  "ar": "يفك \\(e^{-x}=1-x+x^2/2!-\\dots\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Multiplies by x to get 1/2",
+                  "ar": "يضرب في \\(x\\) ليحصل على \\(1/2\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Using part (a), determine the exact value of the third derivative \\(g'''(0)\\).",
+              "ar": "باستخدام الجزء (أ)، أوجد القيمة الدقيقة للمشتقة الثالثة \\(g'''(0)\\)."
+            },
+            "marks": 2,
+            "answer": "3",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Uses c_3 = g'''(0) / 3!",
+                  "ar": "يستخدم \\(c_3 = g'''(0)/3!\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Multiplies by 6 to get 3",
+                  "ar": "يضرب في \\(6\\) لينتج \\(3\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Evaluate \\(\\int_0^1 P_3(x)\\,dx\\), where \\(P_3(x)\\) is the degree-3 Maclaurin polynomial for \\(g(x)\\).",
+              "ar": "احسب \\(\\int_0^1 P_3(x)\\,dx\\) حيث \\(P_3(x)\\) كثيرة حدود ماكلورين من الدرجة الثالثة للدالة \\(g(x)\\)."
+            },
+            "marks": 3,
+            "answer": "7/24",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Sets up int_0^1 (x - 1x^2 + (1/2)x^3) dx",
+                  "ar": "يكتب \\(\\int_0^1(x - x^2 + \\frac{1}{2}x^3)\\,dx\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Antidifferentiates term-by-term",
+                  "ar": "يكامل حداً بحد"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 7/24",
+                  "ar": "يحسب الناتج \\(7/24\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(d)",
+            "prompt": {
+              "en": "State the exact coefficient of \\(x^5\\) in the Maclaurin series for \\(g(x)\\).",
+              "ar": "اذكر المعامل الدقيق للحد \\(x^5\\) في متسلسلة ماكلورين للدالة \\(g(x)\\)."
+            },
+            "marks": 2,
+            "answer": "1/24",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Takes (1x)^4 / 4! term multiplied by x",
+                  "ar": "يأخذ حد \\(x^4/4!\\) مضروباً في \\(x\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Simplifies to 1/24",
+                  "ar": "يبسّط إلى \\(1/24\\)"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

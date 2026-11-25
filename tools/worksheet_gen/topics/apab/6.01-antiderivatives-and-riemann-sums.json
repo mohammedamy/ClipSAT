@@ -9,7 +9,7 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the general antiderivative of each function:",
+          "q": "Rate Table (autonomous rover motion #398): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Basic antiderivatives",
@@ -26,8 +26,27 @@
             "\\(=e^x+C\\)",
             "\\(=\\tan x+C\\)"
           ],
-          "answer": "(a) \\(=\\frac{x^5}{5}+C\\); (b) \\(=\\ln|x|+C\\); (c) \\(=e^x+C\\); (d) \\(=\\tan x+C\\)",
-          "explanation": "(a) \\(=\\frac{x^5}{5}+C\\); (b) \\(=\\ln|x|+C\\); (c) \\(=e^x+C\\); (d) \\(=\\tan x+C\\)"
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #398)"
+          }
         },
         {
           "q": "Find the particular antiderivative \\(F(x)\\) of \\(f(x)=6x^2-4\\) satisfying \\(F(1)=5\\).",
@@ -46,12 +65,33 @@
           "explanation": "\\(\\Delta x=1\\); left endpoints \\(x=0,1,2,3\\): \\(L_4=1[0^2+1^2+2^2+3^2]=1[0+1+4+9]=14\\)."
         },
         {
-          "q": "Approximate \\(\\int_0^4 x^2\\,dx\\) using a Right Riemann Sum with \\(n=4\\) equal subintervals.",
+          "q": "In hydroelectric sluice differential model #70, consider the separable differential equation \\(\\dfrac{dy}{dx} = 4xy\\) whose slope field is shown, with particular solution \\(y = f(x)\\) satisfying \\(f(0) = 4\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Riemann sums: left, right, and midpoint",
-          "answer": "\\(\\Delta x=1\\); right endpoints \\(x=1,2,3,4\\): \\(R_4=1[1+4+9+16]=30\\).",
-          "explanation": "\\(\\Delta x=1\\); right endpoints \\(x=1,2,3,4\\): \\(R_4=1[1+4+9+16]=30\\)."
+          "answer": "(a) \\(4(1)(4) = 16\\). (b) \\(y'' = 4y + 4xy'\\), so at \\((0,4)\\), \\(y'' = 16\\). (c) \\(\\ln|y| = 2x^2 + \\ln 4\\), hence \\(\\ln(f(1)/4) = 2\\). (d) Since \\(f'(0) = 0\\), the tangent line is \\(y = 4\\), giving \\(f(0.5) \\approx 4\\).",
+          "explanation": "(a) \\(4(1)(4) = 16\\). (b) \\(y'' = 4y + 4xy'\\), so at \\((0,4)\\), \\(y'' = 16\\). (c) \\(\\ln|y| = 2x^2 + \\ln 4\\), hence \\(\\ln(f(1)/4) = 2\\). (d) Since \\(f'(0) = 0\\), the tangent line is \\(y = 4\\), giving \\(f(0.5) \\approx 4\\).",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "4*x*y",
+            "xl": [
+              -2,
+              2
+            ],
+            "yl": [
+              0,
+              6
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "caption": "Slope field dy/dx = 4xy (Model #70)"
+          }
         },
         {
           "q": "Approximate \\(\\int_0^4 x^2\\,dx\\) using a Midpoint Riemann Sum with \\(n=4\\) equal subintervals.",
@@ -70,40 +110,30 @@
           "explanation": "\\(T_4=\\frac{L_4+R_4}{2}=\\frac{14+30}{2}=22\\)."
         },
         {
-          "q": "A table gives \\(f(0)=2\\), \\(f(2)=5\\), \\(f(4)=9\\), \\(f(6)=8\\). Use the Trapezoidal Rule with these unequal-width data (widths of 2 each) to approximate \\(\\int_0^6 f(x)\\,dx\\).",
+          "q": "Rate Table (aquifer recharge curve #402): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The Trapezoidal Rule",
-          "answer": "With 3 equal subintervals of width 2: \\(T=2\\left[\\frac{f(0)+f(2)}{2}+\\frac{f(2)+f(4)}{2}+\\frac{f(4)+f(6)}{2}\\right]=2\\left[\\frac{7}{2}+\\frac{14}{2}+\\frac{17}{2}\\right]=7+14+17=38\\).",
-          "explanation": "With 3 equal subintervals of width 2: \\(T=2\\left[\\frac{f(0)+f(2)}{2}+\\frac{f(2)+f(4)}{2}+\\frac{f(4)+f(6)}{2}\\right]=2\\left[\\frac{7}{2}+\\frac{14}{2}+\\frac{17}{2}\\right]=7+14+17=38\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "np.interp(x, [0, 2, 4, 6], [2, 5, 9, 8])"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
             ],
-            "xmin": -0.5,
-            "xmax": 6.5,
-            "ymin": 0,
-            "ymax": 11,
-            "points": [
+            "rows": [
               [
-                0,
-                2
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                4,
-                9
-              ],
-              [
-                6,
-                8
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
               ]
             ],
-            "width": 220
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #402)"
           }
         }
       ]
@@ -128,36 +158,32 @@
           "explanation": "Since \\(f(x)=x^2\\) is increasing on \\([0,4]\\), the left endpoint of each subinterval gives the smallest function value on that subinterval, so the Left Riemann Sum UNDERESTIMATES the true area (confirmed: \\(L_4=14 < \\frac{64}{3}\\approx21.33\\))."
         },
         {
-          "q": "A table gives \\(f(0)=3\\), \\(f(1)=5\\), \\(f(2)=8\\), \\(f(3)=10\\), \\(f(4)=9\\). Use a Right Riemann Sum with 4 subintervals of width 1 to approximate \\(\\int_0^4f(x)\\,dx\\).",
+          "q": "In reservoir inflow differential model #72, consider the separable differential equation \\(\\dfrac{dy}{dx} = 2xy\\) whose slope field is shown, with particular solution \\(y = f(x)\\) satisfying \\(f(0) = 2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Riemann sums from a table of values",
-          "answer": "\\(R_4=1[f(1)+f(2)+f(3)+f(4)]=5+8+10+9=32\\).",
-          "explanation": "\\(R_4=1[f(1)+f(2)+f(3)+f(4)]=5+8+10+9=32\\).",
+          "answer": "(a) \\(2(1)(2) = 4\\). (b) \\(y'' = 2y + 2xy'\\), so at \\((0,2)\\), \\(y'' = 4\\). (c) \\(\\ln|y| = 1x^2 + \\ln 2\\), hence \\(\\ln(f(1)/2) = 1\\). (d) Since \\(f'(0) = 0\\), the tangent line is \\(y = 2\\), giving \\(f(0.5) \\approx 2\\).",
+          "explanation": "(a) \\(2(1)(2) = 4\\). (b) \\(y'' = 2y + 2xy'\\), so at \\((0,2)\\), \\(y'' = 4\\). (c) \\(\\ln|y| = 1x^2 + \\ln 2\\), hence \\(\\ln(f(1)/2) = 1\\). (d) Since \\(f'(0) = 0\\), the tangent line is \\(y = 2\\), giving \\(f(0.5) \\approx 2\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.41*x**2 + 1.5*x + 2.1",
-              "0.4*x + 0.3"
+            "type": "slope_field",
+            "dydx": "2*x*y",
+            "xl": [
+              -2,
+              2
             ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5.5,
-            "shade": {
-              "fn1": "-0.41*x**2 + 1.5*x + 2.1",
-              "fn2": "0.4*x + 0.3",
-              "x0": 0,
-              "x1": 3.3
-            },
-            "point_labels": [
+            "yl": [
+              0,
+              4
+            ],
+            "step": 1,
+            "pts": [
               {
-                "x": 1.5,
-                "y": 3.43,
-                "label": "\\(y=f(x)\\)"
+                "x": 0,
+                "y": 2,
+                "label": "(0, 2)"
               }
             ],
-            "width": 230
+            "caption": "Slope field dy/dx = 2xy (Model #72)"
           }
         },
         {
@@ -188,12 +214,31 @@
           "explanation": "\\(P(t)=\\int r(t)\\,dt=100t+10t^2+C\\). Using \\(P(0)=0\\): \\(C=0\\). \\(P(t)=100t+10t^2\\). \\(P(10)=1000+1000=2000\\) units."
         },
         {
-          "q": "Find the general antiderivative of \\(f(x)=4x^3-\\frac{2}{x^2}+\\cos x\\).",
+          "q": "Rate Table (hydroelectric sluice #406): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "More antiderivative practice",
-          "answer": "\\(=x^4+\\frac{2}{x}+\\sin x+C\\).",
-          "explanation": "\\(=x^4+\\frac{2}{x}+\\sin x+C\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #406)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -223,13 +268,41 @@
           "explanation": "Identify the first term and ratio: When \\(n = 1\\), \\(a = 3\\left(-\\frac{2}{5}\\right)^1 = -\\frac{6}{5}\\). The common ratio is \\(r = -\\frac{2}{5}\\). Since \\(|r| = \\frac{2}{5} < 1\\), the series converges. Using the sum formula \\(S = \\frac{a}{1 - r}\\): \\(S = \\frac{-6/5}{1 - (-2/5)} = \\frac{-6/5}{7/5} = -\\frac{6}{7}\\)"
         },
         {
-          "q": "Level 1 · FoundationsExpress the infinite summation limit as a definite integral on the interval \\([0, 1]\\) and evaluate it: \\(\\lim_{n\\rightarrow\\infty} \\sum_{i=1}^n \\frac{i^3}{n^4}.\\)",
+          "q": "In autonomous rover motion region #74, let \\(R\\) be the region in the first quadrant bounded by \\(y = 3x - x^2\\) and the \\(x\\)-axis, shaded above.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Antiderivatives of trigonometric and exponential functions",
           "cross_lesson": "7.01 Differential Equations and Slope Fields",
-          "answer": "Factor \\(\\frac{1}{n} = \\Delta x\\): \\(\\sum_{i=1}^n \\frac{i^3}{n^4} = \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\cdot \\frac{1}{n}.\\) Here \\(x_i = \\frac{i}{n} = 0 + i\\Delta x\\) with \\(\\Delta x = \\frac{1}{n}\\), matching the right Riemann sum of \\(f(x) = x^3\\) on \\([0, 1]\\): \\(\\lim_{n\\rightarrow\\infty} \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\frac{1}{n} = \\int_0^1 x^3\\,dx = \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1^4}{4} - 0 = \\mathbf{\\frac{1}{4}}.\\)",
-          "explanation": "Factor \\(\\frac{1}{n} = \\Delta x\\): \\(\\sum_{i=1}^n \\frac{i^3}{n^4} = \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\cdot \\frac{1}{n}.\\) Here \\(x_i = \\frac{i}{n} = 0 + i\\Delta x\\) with \\(\\Delta x = \\frac{1}{n}\\), matching the right Riemann sum of \\(f(x) = x^3\\) on \\([0, 1]\\): \\(\\lim_{n\\rightarrow\\infty} \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\frac{1}{n} = \\int_0^1 x^3\\,dx = \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1^4}{4} - 0 = \\mathbf{\\frac{1}{4}}.\\)"
+          "answer": "(a) \\(x = 3\\). (b) \\(\\int_0^{3}(3x-x^2)\\,dx = \\frac{9}{2}\\). (c) \\(\\int_0^{3}(3x-x^2)^2\\,dx = \\frac{81}{10}\\). (d) Semicircles have \\(A = \\frac{\\pi}{8}s^2\\), so \\(\\frac{V}{\\pi} = \\frac{1}{8}\\cdot \\frac{81}{10} = \\frac{81}{80}\\).",
+          "explanation": "(a) \\(x = 3\\). (b) \\(\\int_0^{3}(3x-x^2)\\,dx = \\frac{9}{2}\\). (c) \\(\\int_0^{3}(3x-x^2)^2\\,dx = \\frac{81}{10}\\). (d) Semicircles have \\(A = \\frac{\\pi}{8}s^2\\), so \\(\\frac{V}{\\pi} = \\frac{1}{8}\\cdot \\frac{81}{10} = \\frac{81}{80}\\).",
+          "figure": {
+            "type": "shaded_region",
+            "upper": "x",
+            "lower": "0",
+            "a": 0,
+            "b": 3,
+            "xl": [
+              -0.5,
+              3.8
+            ],
+            "yl": [
+              -0.4,
+              2.85
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "caption": "Bounded region R under y = 3x - x² (Model #74)"
+          }
         },
         {
           "q": "A ladder 10 ft long rests against a vertical wall. If the bottom slides away at 2 ft/s, how fast is the top sliding down when the bottom is 6 ft from the wall? Show your complete algebraic work.",
@@ -251,43 +324,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Consider the function \\( f(x) \\) whose graph is shown below. The graph consists of a line segment and a quarter circle. The line segment connects the points \\( (2, 4) \\) and \\( (4, 0) \\). The quarter circle is in the second quadrant and is centered at \\( (0, 0) \\) with radius 2. Let \\( A(x) \\) be the area of the region bounded by the graph of \\( f(t) \\), the \\( t \\)-axis, and the lines \\( t = 0 \\) and \\( t = x \\).\n\n(a) Find \\( A(3) \\).",
-          "answer": "**Answer:** B. The function \\( f(x) \\) is defined piecewise. For \\( 0 \\le t \\le 2 \\), \\( f(t) \\) is the upper part of a circle centered at the origin with radius 2, so \\( f(t) = \\sqrt{4 - t^2} \\). For \\( 2 < t \\le 4 \\), \\( f(t) \\) is a line segment connecting \\( (2, 4) \\) and \\( (4, 0) \\). The equation of this line can be found using the two-point form: \\( y - 0 = \\frac{4 - 0}{2 - 4}(x - 4) \\), which simplifies to \\( y = -2(x - 4) \\), so \\( f(t) = -2(t - 4) \\).\n\nTo find \\( A(3) \\), we need to calculate the definite integral \\( \\int_{0}^{3} f(t) \\, dt \\). We split this integral into two parts based on the definition of \\( f(t) \\):\n\n\\( A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt \\)\n\nFor the first part, \\( \\int_{0}^{2} \\sqrt{4 - t^2} \\, dt \\), this represents the area of a quarter circle of radius 2, which is \\( \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi \\).\n\nFor the second part, \\( \\int_{2}^{3} (-2(t - 4)) \\, dt \\), we can evaluate this integral:\n\n\\( \\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3} \\)\n\nEvaluating at the limits:\n\n\\( (-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2) \\)\n\n\\( (-9 + 24) - (-4 + 16) \\)\n\n\\( 15 - 12 = 3 \\).\n\nTherefore, \\( A(3) = \\pi + 3 \\).\n\n*Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate \\( \\sqrt{4-t^2} \\) directly, which is more complex.",
+          "q": "Rate Table (autonomous rover motion #410): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
           "explanation": "The function \\( f(x) \\) is defined piecewise. For \\( 0 \\le t \\le 2 \\), \\( f(t) \\) is the upper part of a circle centered at the origin with radius 2, so \\( f(t) = \\sqrt{4 - t^2} \\). For \\( 2 < t \\le 4 \\), \\( f(t) \\) is a line segment connecting \\( (2, 4) \\) and \\( (4, 0) \\). The equation of this line can be found using the two-point form: \\( y - 0 = \\frac{4 - 0}{2 - 4}(x - 4) \\), which simplifies to \\( y = -2(x - 4) \\), so \\( f(t) = -2(t - 4) \\).\n\nTo find \\( A(3) \\), we need to calculate the definite integral \\( \\int_{0}^{3} f(t) \\, dt \\). We split this integral into two parts based on the definition of \\( f(t) \\):\n\n\\( A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt \\)\n\nFor the first part, \\( \\int_{0}^{2} \\sqrt{4 - t^2} \\, dt \\), this represents the area of a quarter circle of radius 2, which is \\( \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi \\).\n\nFor the second part, \\( \\int_{2}^{3} (-2(t - 4)) \\, dt \\), we can evaluate this integral:\n\n\\( \\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3} \\)\n\nEvaluating at the limits:\n\n\\( (-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2) \\)\n\n\\( (-9 + 24) - (-4 + 16) \\)\n\n\\( 15 - 12 = 3 \\).\n\nTherefore, \\( A(3) = \\pi + 3 \\).\n\n*Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate \\( \\sqrt{4-t^2} \\) directly, which is more complex.",
           "figure": {
-            "type": "fn",
-            "fns": [
-              "sqrt(4 - x*x)",
-              "-2*(x - 4)"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
             ],
-            "xlim": [
-              -0.5,
-              4.5
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
             ],
-            "ylim": [
-              -0.5,
-              4.5
-            ],
-            "points": [
-              {
-                "x": 2,
-                "y": 4,
-                "label": "(2, 4)"
-              },
-              {
-                "x": 4,
-                "y": 0,
-                "label": "(4, 0)"
-              }
-            ]
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #410)"
           },
           "choices": [
-            "6",
-            "4",
-            "5",
-            "7"
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(24\\)"
           ],
-          "correct": 1
+          "correct": 2
         },
         {
           "q": "Does \\(\\sum_{n=0}^{\\infty}(0.9)^{n}\\) converge, and to what?",
@@ -319,19 +384,50 @@
           "explanation": "\\(F(-1)=(-1)^3-7(-1)+C=6+C=-8\\), so \\(C=-14\\)."
         },
         {
-          "q": "Approximate \\(\\int_{0}^{6}f(x)\\,dx\\) using the Trapezoidal Rule (equal width \\(2\\)), given \\(f(0)=7\\), \\(f(2)=12\\), \\(f(4)=9\\), \\(f(6)=3\\).",
+          "q": "Riemann Plot (battery charging session #413): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Riemann sums: left, right, and midpoint",
           "choices": [
-            "\\(54\\)",
-            "\\(52\\)",
-            "\\(62\\)",
-            "\\(50\\)"
+            "\\(34\\)",
+            "\\(22\\)",
+            "\\(18\\)",
+            "\\(28\\)"
           ],
           "correct": 1,
-          "answer": "\\(T=2\\left[\\frac{7+12}{2}+\\frac{12+9}{2}+\\frac{9+3}{2}\\right]=2\\left[\\frac{7+3}{2}+12+9\\right]=2(5+12+9)=52\\).",
-          "explanation": "\\(T=2\\left[\\frac{7+12}{2}+\\frac{12+9}{2}+\\frac{9+3}{2}\\right]=2\\left[\\frac{7+3}{2}+12+9\\right]=2(5+12+9)=52\\)."
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).",
+          "explanation": "\\(T=2\\left[\\frac{7+12}{2}+\\frac{12+9}{2}+\\frac{9+3}{2}\\right]=2\\left[\\frac{7+3}{2}+12+9\\right]=2(5+12+9)=52\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "3*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #413)"
+          }
         },
         {
           "q": "For \\(f(x)=4x^2\\) on \\([0,5]\\), determine whether the Left and Right Riemann Sums overestimate or underestimate \\(\\int_0^{5}f(x)\\,dx\\).",
@@ -364,19 +460,38 @@
           "explanation": "\\(P(t)=\\int r(t)\\,dt=80t+13t^2+C\\). Using \\(P(0)=0\\): \\(C=0\\). \\(P(2)=80(2)+13(2)^2=160+52=212\\) units."
         },
         {
-          "q": "For \\(f\\geq0\\) continuous on \\([a,b]\\), FTC connects \\(\\int_a^bf(x)dx\\) to the area under the curve because Riemann sums \\(\\sum f(x_i^*)\\Delta x\\) converge to the integral as:",
+          "q": "Rate Table (aquifer recharge curve #414): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Riemann sums from a table of values",
           "choices": [
-            "\\(n\\rightarrow\\infty\\mathrm{\\ (partition\\ width}\\rightarrow0\\mathrm{)}\\)",
-            "\\(b\\rightarrow\\infty\\)",
-            "\\(f\\rightarrow0\\)",
-            "\\(x\\rightarrow a\\)"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(37\\)"
           ],
-          "correct": 0,
-          "answer": "The definite integral is defined as the limit of Riemann sums as the number of subintervals \\(n\\rightarrow\\infty\\).",
-          "explanation": "The definite integral is defined as the limit of Riemann sums as the number of subintervals \\(n\\rightarrow\\infty\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "The definite integral is defined as the limit of Riemann sums as the number of subintervals \\(n\\rightarrow\\infty\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #414)"
+          }
         },
         {
           "q": "Write \\(z = 4\\left(\\cos 180^\\circ + i\\sin 180^\\circ\\right)\\) in the form \\(x+yi\\) (exact values).",
@@ -409,19 +524,50 @@
           "explanation": "First, we simplify the function \\(f(x)\\). Using the double angle identity for sine, \\(\\sin(2x) = 2\\sin(x)\\cos(x)\\). Therefore, \\(f(x) = \\frac{2\\sin(x)\\cos(x)}{\\cos(x)}\\). For \\(\\cos(x) eq 0\\), we can cancel the \\(\\cos(x)\\) terms, so \\(f(x) = 2\\sin(x)\\). Now we need to evaluate the definite integral: \\(\\int_{0}^{\\pi/2} 2\\sin(x) dx\\). The antiderivative of \\(2\\sin(x)\\) is \\(-2\\cos(x)\\). Evaluating the definite integral using the Fundamental Theorem of Calculus: \\([-2\\cos(x)]_{0}^{\\pi/2} = -2\\cos(\\pi/2) - (-2\\cos(0))\\) \\(= -2(0) - (-2(1))\\) \\(= 0 - (-2)\\) \\(= 2\\) Thus, the exact value of the definite integral is 2."
         },
         {
-          "q": "Which is an equation of the plane through \\(\\left( -3, \\ 1, \\ 4\\right)\\), \\(\\left( -2, \\ 2, \\ 4\\right)\\) and \\(\\left( 1, \\ -1, \\ 1\\right)\\)?",
+          "q": "Riemann Plot (orbital telemetry pass #417): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "An applied antiderivative problem",
           "choices": [
-            "\\(x - y + 2 z = -4\\)",
-            "\\(x + y + 2 z = 6\\)",
-            "\\(x - y + 2 z = 4\\)",
-            "\\(x + y = -2\\)"
+            "\\(14\\)",
+            "\\(10\\)",
+            "\\(6\\)",
+            "\\(12\\)"
           ],
-          "correct": 2,
-          "answer": "A normal vector is \\(\\overrightarrow{PQ}\\times\\overrightarrow{PR}\\), a multiple of \\(\\langle 1, -1, 2 \\rangle\\). Using the point \\(\\left( -3, \\ 1, \\ 4\\right)\\) gives \\(x - y + 2 z = 4\\).",
-          "explanation": "A normal vector is \\(\\overrightarrow{PQ}\\times\\overrightarrow{PR}\\), a multiple of \\(\\langle 1, -1, 2 \\rangle\\). Using the point \\(\\left( -3, \\ 1, \\ 4\\right)\\) gives \\(x - y + 2 z = 4\\)."
+          "correct": 1,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
+          "explanation": "A normal vector is \\(\\overrightarrow{PQ}\\times\\overrightarrow{PR}\\), a multiple of \\(\\langle 1, -1, 2 \\rangle\\). Using the point \\(\\left( -3, \\ 1, \\ 4\\right)\\) gives \\(x - y + 2 z = 4\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #417)"
+          }
         }
       ]
     },
@@ -459,19 +605,38 @@
           "explanation": "\\(\\overrightarrow{PQ}\\times\\overrightarrow{PR}=\\langle -5, 0, 4 \\rangle\\), whose length is \\(\\sqrt{41}\\). The area is half of that: \\(\\frac{\\sqrt{41}}{2}\\)."
         },
         {
-          "q": "Apply the ratio test to \\(\\sum_{n=1}^{\\infty} \\frac{6^{n}}{n!}\\). What is \\(L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|\\)?",
+          "q": "Rate Table (hydroelectric sluice #418): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Basic antiderivatives",
           "choices": [
-            "0",
-            "\\(\\infty\\)",
-            "1",
-            "6"
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(30\\)",
+            "\\(36\\)"
           ],
-          "correct": 0,
-          "answer": "\\(\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0\\) as \\(n\\rightarrow\\infty\\). Since \\(L=0<1\\), the series converges (for every \\(x\\)).",
-          "explanation": "\\(\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0\\) as \\(n\\rightarrow\\infty\\). Since \\(L=0<1\\), the series converges (for every \\(x\\))."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "\\(\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0\\) as \\(n\\rightarrow\\infty\\). Since \\(L=0<1\\), the series converges (for every \\(x\\)).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #418)"
+          }
         },
         {
           "q": "Gradient vector \\(abla f=\\left(\\frac{\\partial f}{\\partial x},\\frac{\\partial f}{\\partial y},\\frac{\\partial f}{\\partial z}\\right)\\). For \\(f=x^2+y^2\\) at \\((1,1,0)\\):",
@@ -504,19 +669,50 @@
           "explanation": "Applying Limits and Continuity principles, \\(2k=4-2=2\\Rightarrow k=1\\). Therefore, the verified correct option is \\(1\\)."
         },
         {
-          "q": "Let \\(f{\\left(x \\right)} = x^{3} + 3 x - 6\\), which is one-to-one. Find \\((f^{-1})'(-6)\\).",
+          "q": "Riemann Plot (bio-reactor temperature #421): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Sums as limits: the definite integral",
           "choices": [
-            "\\(\\frac{1}{3}\\)",
-            "\\(3\\)",
-            "\\(\\frac{1}{111}\\)",
-            "\\(- \\frac{1}{6}\\)"
+            "\\(24\\)",
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(20\\)"
           ],
-          "correct": 0,
-          "answer": "\\(f{\\left(0 \\right)} = -6\\), so \\((f^{-1})'(-6)=\\frac{1}{f'(0)}\\) \\(=\\) \\(\\frac{1}{3}\\) since \\(f' = 3 x^{2} + 3\\).",
-          "explanation": "\\(f{\\left(0 \\right)} = -6\\), so \\((f^{-1})'(-6)=\\frac{1}{f'(0)}\\) \\(=\\) \\(\\frac{1}{3}\\) since \\(f' = 3 x^{2} + 3\\)."
+          "correct": 1,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).",
+          "explanation": "\\(f{\\left(0 \\right)} = -6\\), so \\((f^{-1})'(-6)=\\frac{1}{f'(0)}\\) \\(=\\) \\(\\frac{1}{3}\\) since \\(f' = 3 x^{2} + 3\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "2*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #421)"
+          }
         },
         {
           "q": "Find the radius of convergence of \\(\\sum_{n=0}^{\\infty} \\frac{\\left(2 x\\right)^{n}}{n!}\\).",
@@ -549,19 +745,38 @@
           "explanation": "\\(D=\\frac{|ax_0+by_0+cz_0-d|}{\\sqrt{a^2+b^2+c^2}}=\\frac{10}{\\sqrt{10}}=\\sqrt{10}\\)."
         },
         {
-          "q": "For the Dirichlet function \\(f(x)=\\left\\{ 1, x\\in\\mathbb{Q} ; 0, x otin\\mathbb{Q} \\right.\\), \\(\\lim_{x\\rightarrow 0}f(x)\\):",
+          "q": "Rate Table (autonomous rover motion #422): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing a Riemann sum approximation",
           "choices": [
-            "equals 0",
-            "equals 1",
-            "equals \\(\\frac{1}{2}\\)",
-            "does not exist"
+            "\\(22\\)",
+            "\\(20\\)",
+            "\\(26\\)",
+            "\\(32\\)"
           ],
-          "correct": 3,
-          "answer": "In every interval around 0, \\(f\\) takes both values 0 and 1, so no limit exists.",
-          "explanation": "In every interval around 0, \\(f\\) takes both values 0 and 1, so no limit exists."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "In every interval around 0, \\(f\\) takes both values 0 and 1, so no limit exists.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #422)"
+          }
         }
       ]
     },
@@ -601,20 +816,51 @@
           "cross_lesson": "1.01 Limits Graphically and Numerically"
         },
         {
-          "q": "Bessel function \\(J_0(x)=\\sum_{m=0}^\\infty\\frac{(-1)^m}{(m!)^2}\\left(\\frac{x}{2}\\right)^{2m}\\). Radius of convergence:",
+          "q": "Riemann Plot (battery charging session #425): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Comparing Riemann sums to the exact integral",
           "choices": [
-            "\\(1\\)",
-            "\\(\\infty\\)",
-            "\\(\\pi\\)",
-            "\\(2\\)"
+            "\\(34\\)",
+            "\\(22\\)",
+            "\\(18\\)",
+            "\\(28\\)"
           ],
           "correct": 1,
-          "answer": "Ratio test: \\(L=0\\Rightarrow R=\\infty\\).",
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).",
           "explanation": "Ratio test: \\(L=0\\Rightarrow R=\\infty\\).",
-          "cross_lesson": "1.02 Continuity and the Intermediate Value Theorem"
+          "cross_lesson": "1.02 Continuity and the Intermediate Value Theorem",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "3*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #425)"
+          }
         },
         {
           "q": "For iterated integral \\(\\int_a^b\\left(\\int_{g_1(x)}^{g_2(x)}f(x,y)dy\\right)dx\\): the inner integral is done first, then the outer. True or false?",
@@ -649,43 +895,38 @@
           "cross_lesson": "2.02 Product, Quotient, and Trigonometric Derivatives"
         },
         {
-          "q": "Consider the region bounded by the curves \\(y = x^2\\) and \\(y = 4\\). This region is revolved around the line \\(y = 5\\) to form a solid. A cylindrical hole is drilled through the center of this solid, perpendicular to the axis of revolution. The radius of the cylindrical hole is \\(r\\). The volume of the material removed by the cylindrical hole is given by \\(V_{\\mathrm{hole}} = \\pi \\int_a^b (R(x)^2 - r^2) dx\\), where \\(R(x)\\) is the outer radius of the solid at a given \\(x\\) and \\(a, b\\) are the limits of integration. Find the value of \\(a\\) and \\(b\\), and the expression for \\(V_{\\mathrm{hole}}\\) in terms of \\(r\\). The question asks for the setup of the integral representing the volume of the material removed.",
+          "q": "Rate Table (aquifer recharge curve #426): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "The Trapezoidal Rule",
           "choices": [
-            "Limits of integration are -2 and 2; \\(V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx\\)",
-            "Limits of integration are 0 and 4; \\(V_{\\mathrm{hole}} = \\pi \\int_{0}^4 ((4 - x^2)^2 - r^2) dx\\)",
-            "Limits of integration are 1 and 4; \\(V_{\\mathrm{hole}} = \\pi \\int_{1}^4 ((5 - x^2)^2 - r^2) dx\\)",
-            "Limits of integration are -2 and 2; \\(V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((4 - x^2)^2 - r^2) dx\\)"
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
-          "correct": 0,
-          "answer": "The region is bounded by \\(y = x^2\\) and \\(y = 4\\). To find the intersection points, we set \\(x^2 = 4\\), which gives \\(x = \\pm 2\\). These are our limits of integration, \\(a = -2\\) and \\(b = 2\\). The region is revolved around the line \\(y = 5\\). The outer radius \\(R(x)\\) is the distance from the axis of revolution (\\(y=5\\)) to the outer boundary of the region. The outer boundary is the curve \\(y = x^2\\). So, \\(R(x) = 5 - x^2\\). The inner radius of the cylindrical hole is given as \\(r\\). The volume of the material removed by the cylindrical hole is the integral of the area of the annular cross-section, which is \\(\\pi (R(x)^2 - r^2)\\). Therefore, \\(V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx\\).",
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
           "explanation": "The region is bounded by \\(y = x^2\\) and \\(y = 4\\). To find the intersection points, we set \\(x^2 = 4\\), which gives \\(x = \\pm 2\\). These are our limits of integration, \\(a = -2\\) and \\(b = 2\\). The region is revolved around the line \\(y = 5\\). The outer radius \\(R(x)\\) is the distance from the axis of revolution (\\(y=5\\)) to the outer boundary of the region. The outer boundary is the curve \\(y = x^2\\). So, \\(R(x) = 5 - x^2\\). The inner radius of the cylindrical hole is given as \\(r\\). The volume of the material removed by the cylindrical hole is the integral of the area of the annular cross-section, which is \\(\\pi (R(x)^2 - r^2)\\). Therefore, \\(V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx\\).",
           "cross_lesson": "3.01 The Chain Rule",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x**2"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
             ],
-            "xmin": -4.5,
-            "xmax": 4.5,
-            "ymin": -2,
-            "ymax": 18,
-            "width": 225,
-            "point_labels": [
-              {
-                "x": 0,
-                "y": 0,
-                "label": "\\((0, 0)\\)"
-              }
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
             ],
-            "shade": {
-              "fn1": "x**2",
-              "fn2": "0",
-              "x0": 0,
-              "x1": 2.5
-            }
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #426)"
           }
         },
         {

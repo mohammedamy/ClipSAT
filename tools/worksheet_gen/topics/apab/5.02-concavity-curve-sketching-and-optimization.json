@@ -9,12 +9,31 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "For \\(f(x)=x^3-6x^2+9x\\), find the intervals where \\(f\\) is increasing and decreasing, and classify each critical point using the First Derivative Test.",
+          "q": "Rate Table (chemical titration run #368): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Increasing/decreasing and the first derivative test",
-          "answer": "\\(f'(x)=3x^2-12x+9=3(x-1)(x-3)\\). \\(f'>0\\) on \\((-\\infty,1)\\), \\(f'<0\\) on \\((1,3)\\), \\(f'>0\\) on \\((3,\\infty)\\). So \\(f\\) is increasing on \\((-\\infty,1)\\cup(3,\\infty)\\), decreasing on \\((1,3)\\). \\(x=1\\) is a local max (sign \\(+\\rightarrow-\\)); \\(x=3\\) is a local min (sign \\(-\\rightarrow+\\)).",
-          "explanation": "\\(f'(x)=3x^2-12x+9=3(x-1)(x-3)\\). \\(f'>0\\) on \\((-\\infty,1)\\), \\(f'<0\\) on \\((1,3)\\), \\(f'>0\\) on \\((3,\\infty)\\). So \\(f\\) is increasing on \\((-\\infty,1)\\cup(3,\\infty)\\), decreasing on \\((1,3)\\). \\(x=1\\) is a local max (sign \\(+\\rightarrow-\\)); \\(x=3\\) is a local min (sign \\(-\\rightarrow+\\))."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #368)"
+          }
         },
         {
           "q": "For \\(f(x)=x^4-4x^3\\), find the intervals of concavity and any inflection points.",
@@ -33,12 +52,33 @@
           "explanation": "\\(f'(x)=3x^2-6x=3x(x-2)\\): critical points \\(x=0,2\\). \\(f''(x)=6x-6\\): zero at \\(x=1\\). Sign chart: \\(f'>0\\) on \\((-\\infty,0)\\), \\(f'<0\\) on \\((0,2)\\), \\(f'>0\\) on \\((2,\\infty)\\) — local max at \\(x=0\\) (\\(f(0)=0\\)), local min at \\(x=2\\) (\\(f(2)=-4\\)). \\(f''<0\\) on \\((-\\infty,1)\\) (concave down), \\(f''>0\\) on \\((1,\\infty)\\) (concave up) — inflection point at \\(x=1\\) (\\(f(1)=-2\\))."
         },
         {
-          "q": "A farmer has 200 m of fencing to enclose a rectangular field bordering a river (no fence needed along the river). Find the dimensions that maximize the enclosed area.",
+          "q": "In wind turbine telemetry facility #55, water flows into a tank holding \\(50\\) L at \\(t = 0\\) at a differentiable rate \\(R(t)\\) L/min, with values recorded in the table over \\(0 \\le t \\le 9\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Optimization problems",
-          "answer": "Let \\(x\\) = side parallel to river, \\(y\\) = each perpendicular side. Constraint: \\(x+2y=200\\), so \\(x=200-2y\\). Area \\(A=xy=(200-2y)y=200y-2y^2\\). \\(A'(y)=200-4y=0 \\Rightarrow y=50\\). \\(x=200-100=100\\). Maximum area occurs at \\(x=100\\) m, \\(y=50\\) m (verified max since \\(A''=-4<0\\)).",
-          "explanation": "Let \\(x\\) = side parallel to river, \\(y\\) = each perpendicular side. Constraint: \\(x+2y=200\\), so \\(x=200-2y\\). Area \\(A=xy=(200-2y)y=200y-2y^2\\). \\(A'(y)=200-4y=0 \\Rightarrow y=50\\). \\(x=200-100=100\\). Maximum area occurs at \\(x=100\\) m, \\(y=50\\) m (verified max since \\(A''=-4<0\\))."
+          "answer": "(a) Trap \\(= \\frac{2}{2}(6+10) + \\frac{3}{2}(10+16) + \\frac{4}{2}(16+18) = 123\\). (b) Left Riemann \\(= 2(6) + 3(10) + 4(16) = 106\\). (c) Average rate of change \\(= \\frac{18-6}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(50 + 123 = 173\\).",
+          "explanation": "(a) Trap \\(= \\frac{2}{2}(6+10) + \\frac{3}{2}(10+16) + \\frac{4}{2}(16+18) = 123\\). (b) Left Riemann \\(= 2(6) + 3(10) + 4(16) = 106\\). (c) Average rate of change \\(= \\frac{18-6}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(50 + 123 = 173\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\) (min)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(5\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\) (L/min)",
+                "6",
+                "10",
+                "16",
+                "18"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected inflow rates R(t) on [0, 9] (Trial #55)"
+          }
         },
         {
           "q": "An open-top box is made from a 12 in by 12 in square sheet by cutting equal squares of side \\(x\\) from each corner and folding up the sides. Find \\(x\\) that maximizes the volume.",
@@ -57,12 +97,31 @@
           "explanation": "\\(D(x)=x^2+(2x-3)^2=x^2+4x^2-12x+9=5x^2-12x+9\\). \\(D'(x)=10x-12=0 \\Rightarrow x=\\frac{6}{5}\\). \\(y=2\\left(\\frac{6}{5}\\right)-3=\\frac{12}{5}-3=-\\frac{3}{5}\\). Closest point: \\(\\left(\\frac{6}{5},-\\frac{3}{5}\\right)\\) (confirmed min since \\(D''=10>0\\))."
         },
         {
-          "q": "A closed cylindrical can must have volume \\(16\\pi\\) cm\\(^3\\). Using \\(V=\\pi r^2h\\) and surface area \\(S=2\\pi r^2+2\\pi rh\\), find the radius that minimizes surface area.",
+          "q": "Rate Table (reservoir inflow #372): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Optimization: minimizing cost or distance",
-          "answer": "From \\(V\\): \\(h=\\frac{16}{r^2}\\). \\(S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{16}{r^2}=2\\pi r^2+\\frac{32\\pi}{r}\\). \\(S'(r)=4\\pi r-\\frac{32\\pi}{r^2}=0 \\Rightarrow 4\\pi r=\\frac{32\\pi}{r^2} \\Rightarrow r^3=8 \\Rightarrow r=2\\) cm.",
-          "explanation": "From \\(V\\): \\(h=\\frac{16}{r^2}\\). \\(S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{16}{r^2}=2\\pi r^2+\\frac{32\\pi}{r}\\). \\(S'(r)=4\\pi r-\\frac{32\\pi}{r^2}=0 \\Rightarrow 4\\pi r=\\frac{32\\pi}{r^2} \\Rightarrow r^3=8 \\Rightarrow r=2\\) cm."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #372)"
+          }
         }
       ]
     },
@@ -97,12 +156,33 @@
           }
         },
         {
-          "q": "A rectangular box with a square base and no top must have volume \\(500\\) cm\\(^3\\). Using \\(V=x^2h=500\\) (so \\(h=\\frac{500}{x^2}\\)) and surface area \\(S=x^2+4xh\\), find the base side length \\(x\\) that minimizes the surface area.",
+          "q": "In orbital telemetry pass facility #57, water flows into a tank holding \\(25\\) L at \\(t = 0\\) at a differentiable rate \\(R(t)\\) L/min, with values recorded in the table over \\(0 \\le t \\le 9\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A capstone optimization problem",
-          "answer": "\\(S(x)=x^2+4x\\cdot\\frac{500}{x^2}=x^2+\\frac{2000}{x}\\). \\(S'(x)=2x-\\frac{2000}{x^2}=0 \\Rightarrow 2x^3=2000 \\Rightarrow x^3=1000 \\Rightarrow x=10\\) cm.",
-          "explanation": "\\(S(x)=x^2+4x\\cdot\\frac{500}{x^2}=x^2+\\frac{2000}{x}\\). \\(S'(x)=2x-\\frac{2000}{x^2}=0 \\Rightarrow 2x^3=2000 \\Rightarrow x^3=1000 \\Rightarrow x=10\\) cm."
+          "answer": "(a) Trap \\(= \\frac{2}{2}(10+14) + \\frac{3}{2}(14+20) + \\frac{4}{2}(20+22) = 159\\). (b) Left Riemann \\(= 2(10) + 3(14) + 4(20) = 142\\). (c) Average rate of change \\(= \\frac{22-10}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(25 + 159 = 184\\).",
+          "explanation": "(a) Trap \\(= \\frac{2}{2}(10+14) + \\frac{3}{2}(14+20) + \\frac{4}{2}(20+22) = 159\\). (b) Left Riemann \\(= 2(10) + 3(14) + 4(20) = 142\\). (c) Average rate of change \\(= \\frac{22-10}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(25 + 159 = 184\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\) (min)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(5\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\) (L/min)",
+                "10",
+                "14",
+                "20",
+                "22"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected inflow rates R(t) on [0, 9] (Trial #57)"
+          }
         },
         {
           "q": "For \\(f(x)=x^4\\), show that the Second Derivative Test is inconclusive at the critical point \\(x=0\\), then use the First Derivative Test to correctly classify it.",
@@ -122,37 +202,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "The graph of a differentiable function \\(f(x)\\) is shown below. The tangent line to the graph at \\(x=a\\) has the equation \\(y = 2x - 5\\). If \\(f(a) = -1\\) and \\(f'(a) = 2\\), find the value of \\(a\\).",
-          "answer": "**Answer:** C. The tangent line to \\( f(x) \\) at \\( x = a \\) is \\( y = 2x - 5 \\), which has slope \\( f'(a) = 2 \\). Since the point of tangency \\( (a, f(a)) = (a, -1) \\) lies on the tangent line, substituting \\( x = a \\) and \\( y = -1 \\) gives:\n\\[ -1 = 2a - 5 \\implies 2a = 4 \\implies a = 2. \\]",
+          "q": "Rate Table (solar array output #376): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
           "explanation": "The tangent line to \\( f(x) \\) at \\( x = a \\) is \\( y = 2x - 5 \\), which has slope \\( f'(a) = 2 \\). Since the point of tangency \\( (a, f(a)) = (a, -1) \\) lies on the tangent line, substituting \\( x = a \\) and \\( y = -1 \\) gives:\n\\[ -1 = 2a - 5 \\implies 2a = 4 \\implies a = 2. \\]",
           "figure": {
-            "type": "fn",
-            "fns": [
-              "2*x - 5"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
             ],
-            "xlim": [
-              -1,
-              5
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
             ],
-            "ylim": [
-              -3,
-              6
-            ],
-            "points": [
-              {
-                "x": 2,
-                "y": -1,
-                "label": "(a, f(a))"
-              }
-            ]
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #376)"
           },
           "choices": [
-            "\\(-2\\)",
-            "\\(-1\\)",
-            "\\(2\\)",
-            "\\(1\\)"
+            "\\(22\\)",
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(28\\)"
           ],
-          "correct": 2
+          "correct": 0
         },
         {
           "qtype": "MCQ",
@@ -198,13 +276,34 @@
           "explanation": "The field is conservative with potential function \\(f(x, y, z) = x^3 y + 2z\\). By the Fundamental Theorem for Line Integrals: \\(\\int_C abla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1)\\) Evaluate at endpoints: \\(f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14\\) \\(f(0, 0, 1) = 0^3(0) + 2(1) = 2\\) Therefore: \\(\\int_C \\mathbf{F} \\cdot d\\mathbf{r} = 14 - 2 = 12\\)"
         },
         {
-          "q": "Level 1 · Foundations Use the Divergence Test to determine whether \\(\\sum_{n=1}^\\infty \\cos\\left(\\frac{1}{n}\\right)\\) converges or diverges.",
+          "q": "In heat exchanger test facility #59, water flows into a tank holding \\(35\\) L at \\(t = 0\\) at a differentiable rate \\(R(t)\\) L/min, with values recorded in the table over \\(0 \\le t \\le 9\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Points of inflection and graph behavior",
           "cross_lesson": "6.02 The Fundamental Theorem of Calculus",
-          "answer": "Compute the limit of the general term as \\(n \\rightarrow \\infty\\): \\(\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\rightarrow\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1\\) Because \\(\\lim_{n \\rightarrow \\infty} a_n = 1 e 0\\), the series diverges by the Divergence Test.",
-          "explanation": "Compute the limit of the general term as \\(n \\rightarrow \\infty\\): \\(\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\rightarrow\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1\\) Because \\(\\lim_{n \\rightarrow \\infty} a_n = 1 e 0\\), the series diverges by the Divergence Test."
+          "answer": "(a) Trap \\(= \\frac{2}{2}(14+18) + \\frac{3}{2}(18+24) + \\frac{4}{2}(24+26) = 195\\). (b) Left Riemann \\(= 2(14) + 3(18) + 4(24) = 178\\). (c) Average rate of change \\(= \\frac{26-14}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(35 + 195 = 230\\).",
+          "explanation": "(a) Trap \\(= \\frac{2}{2}(14+18) + \\frac{3}{2}(18+24) + \\frac{4}{2}(24+26) = 195\\). (b) Left Riemann \\(= 2(14) + 3(18) + 4(24) = 178\\). (c) Average rate of change \\(= \\frac{26-14}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(35 + 195 = 230\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\) (min)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(5\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\) (L/min)",
+                "14",
+                "18",
+                "24",
+                "26"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected inflow rates R(t) on [0, 9] (Trial #59)"
+          }
         },
         {
           "q": "Level 2 · MediumFind the angle(s) \\(\\theta \\in [0, \\pi]\\) at which the polar curve \\(r = 3\\cos\\theta\\) passes through the origin, and determine the equation of the tangent line at that point.",
@@ -225,13 +324,32 @@
           "explanation": "Apply the point-to-plane distance formula: \\(D = \\frac{|aP_x + bP_y + cP_z - d|}{\\sqrt{a^2 + b^2 + c^2}} = \\frac{|2(3) - 2(1) + 1(-2) - 5|}{\\sqrt{2^2 + (-2)^2 + 1^2}} = \\frac{|6 - 2 - 2 - 5|}{\\sqrt{4 + 4 + 1}} = \\frac{|-3|}{3} = 1.\\)"
         },
         {
-          "q": "Level 1 · Foundations Find \\(\\frac{dy}{dx}\\) in terms of \\(t\\) for the parametric curve \\(x = 2\\cos t\\), \\(y = 5\\sin t\\) for \\(t \\in (0, \\pi)\\).",
+          "q": "Rate Table (chemical titration run #380): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Second derivative test failures",
           "cross_lesson": "8.02 Volumes by the Disc and Washer Methods",
-          "answer": "Compute derivatives with respect to \\(t\\): \\(\\frac{dx}{dt} = -2\\sin t\\) \\(\\frac{dy}{dt} = 5\\cos t\\) By Theorem 9.1: \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{5\\cos t}{-2\\sin t} = -\\frac{5}{2}\\cot t\\)",
-          "explanation": "Compute derivatives with respect to \\(t\\): \\(\\frac{dx}{dt} = -2\\sin t\\) \\(\\frac{dy}{dt} = 5\\cos t\\) By Theorem 9.1: \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{5\\cos t}{-2\\sin t} = -\\frac{5}{2}\\cot t\\)"
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #380)"
+          }
         },
         {
           "q": "Level 3 · Advanced Find the exact surface area generated by revolving the line segment \\(y = 2x\\) on \\([0, 3]\\) about the \\(x\\)-axis.",
@@ -263,19 +381,49 @@
           "explanation": "\\(f''(x)=6x+12\\), so \\(f''(-1)=-6+12=6\\), which is positive: \\(x=-1\\) is a local minimum."
         },
         {
-          "q": "Find the nonzero inflection point of \\(f(x)=x^4+6x^3\\).",
+          "q": "Derivative Curve (heat exchanger test #383): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(4)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Concavity and the second derivative test",
           "choices": [
-            "\\(-3\\)",
-            "\\(-6\\)",
-            "\\(-2\\)",
-            "\\(6\\)"
+            "\\(48\\)",
+            "\\(26\\)",
+            "\\(12\\)",
+            "\\(24\\)"
           ],
-          "correct": 0,
-          "answer": "\\(f''(x)=12x^2+36x=6x(2x+6)\\). Zero at \\(x=0\\) and \\(x=-3\\); the nonzero inflection point is \\(x=-3\\).",
-          "explanation": "\\(f''(x)=12x^2+36x=6x(2x+6)\\). Zero at \\(x=0\\) and \\(x=-3\\); the nonzero inflection point is \\(x=-3\\)."
+          "correct": 3,
+          "answer": "Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 4\\) is \\(6(4) = 24\\).",
+          "explanation": "\\(f''(x)=12x^2+36x=6x(2x+6)\\). Zero at \\(x=0\\) and \\(x=-3\\); the nonzero inflection point is \\(x=-3\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              6
+            ],
+            "yl": [
+              0,
+              77
+            ],
+            "xStep": 1,
+            "yStep": 20,
+            "fns": [
+              {
+                "fn": "3*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 48,
+                "label": "(4, 48)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 3x² with marked point (#383)"
+          }
         },
         {
           "q": "A farmer has 100 m of fencing to enclose a rectangular field with \\(x+2y=100\\) (one side of length \\(x\\) needs no fence, the other 2 side(s) of length \\(y\\) each do). Find \\(y\\) that maximizes the enclosed area \\(A=xy\\).",
@@ -308,29 +456,37 @@
           "explanation": "\\(D(x)=x^2+(-5x-4)^2=(26)x^2+40x+16\\). \\(D'(x)=52x+40=0 \\Rightarrow x=\\frac{-20}{26}=-\\frac{10}{13}\\)."
         },
         {
-          "q": "Consider the function \\(f(x) = x^2 - 4x + 3\\). The graph of \\(y = f(x)\\) is shown below. The graph intersects the x-axis at points A and B. Determine the distance between A and B.",
+          "q": "Rate Table (reservoir inflow #384): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Optimization: minimizing cost or distance",
           "choices": [
-            "2",
-            "3",
-            "4",
-            "5"
+            "\\(34\\)",
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(37\\)"
           ],
           "correct": 0,
-          "answer": "To find the x-intercepts, we set \\(f(x) = 0\\). Thus, we solve the quadratic equation \\(x^2 - 4x + 3 = 0\\). This can be factored as \\((x - 1)(x - 3) = 0\\). The solutions are \\(x = 1\\) and \\(x = 3\\). These are the x-coordinates of points A and B. Therefore, the points are (1, 0) and (3, 0). The distance between these two points on the x-axis is the absolute difference of their x-coordinates: \\(|3 - 1| = 2\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
           "explanation": "To find the x-intercepts, we set \\(f(x) = 0\\). Thus, we solve the quadratic equation \\(x^2 - 4x + 3 = 0\\). This can be factored as \\((x - 1)(x - 3) = 0\\). The solutions are \\(x = 1\\) and \\(x = 3\\). These are the x-coordinates of points A and B. Therefore, the points are (1, 0) and (3, 0). The distance between these two points on the x-axis is the absolute difference of their x-coordinates: \\(|3 - 1| = 2\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 4*x + 3"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
             ],
-            "xmin": -2,
-            "xmax": 6,
-            "ymin": -3,
-            "ymax": 6,
-            "width": 230
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #384)"
           }
         },
         {
@@ -364,19 +520,49 @@
           "explanation": "Applying Partial Derivatives and Gradient principles, \\(D<0\\Rightarrow\\) saddle. Therefore, the verified correct option is saddle point."
         },
         {
-          "q": "If \\(f'(x)=0\\) and \\(f''(x)=0\\) at \\(x=c\\), the Second Derivative Test is:",
+          "q": "Derivative Curve (coastal tide flux #387): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(4)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "A capstone optimization problem",
           "choices": [
-            "guaranteed a maximum",
-            "guaranteed an inflection point",
-            "guaranteed a minimum",
-            "inconclusive"
+            "\\(16\\)",
+            "\\(10\\)",
+            "\\(4\\)",
+            "\\(8\\)"
           ],
           "correct": 3,
-          "answer": "When \\(f''(c)=0\\) too, the test gives no information; another method is needed.",
-          "explanation": "When \\(f''(c)=0\\) too, the test gives no information; another method is needed."
+          "answer": "Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 4\\) is \\(2(4) = 8\\).",
+          "explanation": "When \\(f''(c)=0\\) too, the test gives no information; another method is needed.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              6
+            ],
+            "yl": [
+              0,
+              27
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "1*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 16,
+                "label": "(4, 16)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 1x² with marked point (#387)"
+          }
         }
       ]
     },
@@ -414,19 +600,38 @@
           "explanation": "Concave down (\\(f''(c)<0\\)) at a critical point means a local maximum."
         },
         {
-          "q": "If \\(f'(x)=0\\) and \\(f''(x)=0\\), the Second Derivative Test is:",
+          "q": "Rate Table (solar array output #388): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Increasing/decreasing and the first derivative test",
           "choices": [
-            "inconclusive",
-            "proves local min",
-            "proves local max",
-            "proves inflection"
+            "\\(30\\)",
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(36\\)"
           ],
           "correct": 0,
-          "answer": "Test fails; need higher derivatives or sign analysis.",
-          "explanation": "Test fails; need higher derivatives or sign analysis."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Test fails; need higher derivatives or sign analysis.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #388)"
+          }
         },
         {
           "q": "Second Derivative Test: \\(f'(c)=0\\) and \\(f''(c)>0\\Rightarrow x=c\\) is a:",
@@ -459,19 +664,50 @@
           "explanation": "\\(D=0\\): inconclusive — need higher-order analysis."
         },
         {
-          "q": "Second derivative test: \\(f''(c)>0\\) implies \\(x=c\\) is:",
+          "q": "Riemann Plot (wind turbine telemetry #391): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Optimization problems",
           "choices": [
-            "local min",
-            "local max",
-            "inflection",
-            "saddle"
+            "\\(24\\)",
+            "\\(12\\)",
+            "\\(20\\)",
+            "\\(16\\)"
           ],
-          "correct": 0,
-          "answer": "\\(f''>0\\): concave up \\(\\Rightarrow\\) local min.",
-          "explanation": "\\(f''>0\\): concave up \\(\\Rightarrow\\) local min."
+          "correct": 3,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).",
+          "explanation": "\\(f''>0\\): concave up \\(\\Rightarrow\\) local min.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "2*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #391)"
+          }
         },
         {
           "q": "The second derivative test: \\(D=f_{xx}f_{yy}-f_{xy}^2\\). If \\(D>0\\) and \\(f_{xx}>0\\), the point is a:",
@@ -522,36 +758,37 @@
           }
         },
         {
-          "q": "The diagram shows the graph of the function \\(f(x) = 2x^2 - 8x + k\\). The graph intersects the x-axis at points A and B, and the vertex of the parabola is at point V. Given that the x-coordinate of the vertex is 2, and the y-coordinate of the vertex is -6, find the value of \\(k\\).",
+          "q": "Rate Table (chemical titration run #392): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing extrema and concavity together",
           "choices": [
-            "1",
-            "-2",
-            "2",
-            "-1"
+            "\\(26\\)",
+            "\\(22\\)",
+            "\\(20\\)",
+            "\\(32\\)"
           ],
-          "correct": 2,
-          "answer": "The vertex of a parabola given by \\(f(x) = ax^2 + bx + c\\) occurs at \\(x = -\\frac{b}{2a}\\). In this case, \\(f(x) = 2x^2 - 8x + k\\), so \\(a=2\\) and \\(b=-8\\). The x-coordinate of the vertex is given as 2, which is consistent: \\(x = -\\frac{-8}{2(2)} = \\frac{8}{4} = 2\\). The y-coordinate of the vertex is \\(f(2)\\). We are given that the y-coordinate of the vertex is -6. Therefore, \\(f(2) = -6\\). Substitute \\(x=2\\) into the function: \\(f(2) = 2(2)^2 - 8(2) + k\\). \\(f(2) = 2(4) - 16 + k\\) \\(f(2) = 8 - 16 + k\\) \\(f(2) = -8 + k\\). Since \\(f(2) = -6\\), we have: \\(-8 + k = -6\\) \\(k = -6 + 8\\) \\(k = 2\\).",
+          "correct": 0,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
           "explanation": "The vertex of a parabola given by \\(f(x) = ax^2 + bx + c\\) occurs at \\(x = -\\frac{b}{2a}\\). In this case, \\(f(x) = 2x^2 - 8x + k\\), so \\(a=2\\) and \\(b=-8\\). The x-coordinate of the vertex is given as 2, which is consistent: \\(x = -\\frac{-8}{2(2)} = \\frac{8}{4} = 2\\). The y-coordinate of the vertex is \\(f(2)\\). We are given that the y-coordinate of the vertex is -6. Therefore, \\(f(2) = -6\\). Substitute \\(x=2\\) into the function: \\(f(2) = 2(2)^2 - 8(2) + k\\). \\(f(2) = 2(4) - 16 + k\\) \\(f(2) = 8 - 16 + k\\) \\(f(2) = -8 + k\\). Since \\(f(2) = -6\\), we have: \\(-8 + k = -6\\) \\(k = -6 + 8\\) \\(k = 2\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "2*x*x - 8*x + 2"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
             ],
-            "xmin": -2,
-            "xmax": 6,
-            "ymin": -10,
-            "ymax": 10,
-            "width": 230,
-            "point_labels": [
-              {
-                "x": 2,
-                "y": -6,
-                "label": "V(2, -6)"
-              }
-            ]
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #392)"
           }
         }
       ]
@@ -628,30 +865,50 @@
           }
         },
         {
-          "q": "Consider the function \\(f(x) = x^2 - 6x + 8\\). The graph of \\(y = f(x)\\) intersects the x-axis at points A and B, and the y-axis at point C. Find the length of the line segment AB.",
+          "q": "Riemann Plot (heat exchanger test #395): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A capstone curve-sketching problem",
           "choices": [
-            "2 units",
-            "3 units",
-            "4 units",
-            "6 units"
+            "\\(34\\)",
+            "\\(18\\)",
+            "\\(28\\)",
+            "\\(22\\)"
           ],
-          "correct": 0,
-          "answer": "To find the points where the graph intersects the x-axis, we set \\(f(x) = 0\\). \\(x^2 - 6x + 8 = 0\\). Factoring the quadratic equation, we get \\((x-2)(x-4) = 0\\). Thus, the x-intercepts are \\(x=2\\) and \\(x=4\\). Let these points be A and B. The distance between A and B is \\(|4-2| = 2\\) units. To find the y-intercept, we set \\(x=0\\). \\(f(0) = 0^2 - 6(0) + 8 = 8\\). So, point C is (0, 8). The question asks for the length of the line segment AB, which is the distance between the x-intercepts.",
+          "correct": 3,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).",
           "explanation": "To find the points where the graph intersects the x-axis, we set \\(f(x) = 0\\). \\(x^2 - 6x + 8 = 0\\). Factoring the quadratic equation, we get \\((x-2)(x-4) = 0\\). Thus, the x-intercepts are \\(x=2\\) and \\(x=4\\). Let these points be A and B. The distance between A and B is \\(|4-2| = 2\\) units. To find the y-intercept, we set \\(x=0\\). \\(f(0) = 0^2 - 6(0) + 8 = 8\\). So, point C is (0, 8). The question asks for the length of the line segment AB, which is the distance between the x-intercepts.",
           "cross_lesson": "1.01 Limits Graphically and Numerically",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 6*x + 8"
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
             ],
-            "xmin": -1,
-            "xmax": 7,
-            "ymin": -3,
-            "ymax": 10,
-            "width": 230
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "3*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #395)"
           }
         },
         {
@@ -717,42 +974,38 @@
           }
         },
         {
-          "q": "The graph of the quadratic function \\(f(x) = x^2 - 4x + 3\\) is shown below. The graph intersects the x-axis at points where \\(f(x) = 0\\). Determine the sum of the x-coordinates of these intersection points.",
+          "q": "Rate Table (reservoir inflow #396): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Curve sketching",
           "choices": [
-            "1",
-            "3",
-            "4",
-            "-3"
+            "\\(22\\)",
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(28\\)"
           ],
-          "correct": 2,
-          "answer": "The x-intercepts of the graph of \\(y = f(x)\\) are the roots of the equation \\(f(x) = 0\\). For a quadratic equation of the form \\(ax^2 + bx + c = 0\\), the sum of the roots is given by \\(-\\frac{b}{a}\\). In this case, \\(f(x) = x^2 - 4x + 3\\), so \\(a = 1\\), \\(b = -4\\), and \\(c = 3\\). The sum of the x-coordinates of the intersection points is \\(-\\frac{-4}{1} = 4\\).",
+          "correct": 0,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
           "explanation": "The x-intercepts of the graph of \\(y = f(x)\\) are the roots of the equation \\(f(x) = 0\\). For a quadratic equation of the form \\(ax^2 + bx + c = 0\\), the sum of the roots is given by \\(-\\frac{b}{a}\\). In this case, \\(f(x) = x^2 - 4x + 3\\), so \\(a = 1\\), \\(b = -4\\), and \\(c = 3\\). The sum of the x-coordinates of the intersection points is \\(-\\frac{-4}{1} = 4\\).",
           "cross_lesson": "2.02 Product, Quotient, and Trigonometric Derivatives",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 4*x + 3"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
             ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -2,
-            "ymax": 4,
-            "width": 230,
-            "point_labels": [
-              {
-                "x": 1,
-                "y": 0,
-                "label": "(1, 0)"
-              },
-              {
-                "x": 3,
-                "y": 0,
-                "label": "(3, 0)"
-              }
-            ]
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #396)"
           }
         },
         {

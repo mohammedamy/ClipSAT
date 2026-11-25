@@ -65,12 +65,40 @@
           "explanation": "(a) \\(= \\frac{\\sin^2 x}{\\sin x} = \\sin x\\); (b) \\(= \\frac{1}{\\cos x}\\cdot\\frac{\\cos x}{\\sin x} = \\csc x\\); (c) \\(= \\frac{\\sin x}{\\cos x}\\cdot\\frac{1}{\\sin x} = \\sec x\\)"
         },
         {
-          "q": "Verify the identity \\((1 + \\tan^2 x)\\cos^2 x = 1\\).",
+          "q": "In this problem, the graph of \\(g(x)=f(x-4)-2\\) is obtained from \\(f(x)\\) by:",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Simplifying and verifying",
-          "answer": "\\((1 + \\tan^2 x)\\cos^2 x = \\sec^2 x \\cos^2 x = \\frac{1}{\\cos^2 x}\\cos^2 x = 1\\).",
-          "explanation": "\\((1 + \\tan^2 x)\\cos^2 x = \\sec^2 x \\cos^2 x = \\frac{1}{\\cos^2 x}\\cos^2 x = 1\\)."
+          "answer": "Replacing \\(x\\) with \\(x+4\\) shifts horizontally by -4 (right if positive); adding -2 shifts vertically by -2.",
+          "explanation": "Replacing \\(x\\) with \\(x+4\\) shifts horizontally by -4 (right if positive); adding -2 shifts vertically by -2.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              0,
+              8
+            ],
+            "yrange": [
+              -6,
+              8
+            ],
+            "fns": [
+              {
+                "fn": "1*(x - 4)**2 + -2",
+                "label": "g(x)",
+                "color": "#1E3A6E"
+              }
+            ],
+            "points": [
+              {
+                "x": 4,
+                "y": -2,
+                "label": "vertex (4,-2)",
+                "color": "#C8902A"
+              }
+            ],
+            "w": 260,
+            "h": 200
+          }
         },
         {
           "qtype": "MCQ",
@@ -100,16 +128,37 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Consider a point \\(P\\) on the unit circle in standard position. If the angle \\(\\theta\\) in standard position has a terminal side passing through \\(P\\) such that \\(\\cos(\\theta) = \\frac{1}{2}\\) and \\(\\sin(\\theta) > 0\\), find the value of \\(\\sin(\\theta)\\).",
-          "answer": "**Answer:** C. For any point on the unit circle, the coordinates are \\((\\cos(\\theta), \\sin(\\theta))\\). The equation of the unit circle is \\(x^2 + y^2 = 1\\). Substituting the coordinates, we get \\(\\cos^2(\\theta) + \\sin^2(\\theta) = 1\\). We are given that \\(\\cos(\\theta) = \\frac{1}{2}\\). So, \\(\\left(\\frac{1}{2}\\right)^2 + \\sin^2(\\theta) = 1\\).\nThis simplifies to \\(\\frac{1}{4} + \\sin^2(\\theta) = 1\\).\nSubtracting \\(\\frac{1}{4}\\) from both sides gives \\(\\sin^2(\\theta) = 1 - \\frac{1}{4} = \\frac{3}{4}\\).\nTaking the square root of both sides, we get \\(\\sin(\\theta) = \\pm\\sqrt{\\frac{3}{4}} = \\pm\\frac{\\sqrt{3}}{2}\\).\nSince we are given that \\(\\sin(\\theta) > 0\\), we choose the positive value.\nTherefore, \\(\\sin(\\theta) = \\frac{\\sqrt{3}}{2}\\).",
+          "q": "Inverse Function Table (harmonic spring #470): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(11)\\).",
+          "answer": "Looking up output \\(f(3) = 11\\) yields \\(f^{-1}(11) = 3\\).",
           "explanation": "For any point on the unit circle, the coordinates are \\((\\cos(\\theta), \\sin(\\theta))\\). The equation of the unit circle is \\(x^2 + y^2 = 1\\). Substituting the coordinates, we get \\(\\cos^2(\\theta) + \\sin^2(\\theta) = 1\\). We are given that \\(\\cos(\\theta) = \\frac{1}{2}\\). So, \\(\\left(\\frac{1}{2}\\right)^2 + \\sin^2(\\theta) = 1\\).\nThis simplifies to \\(\\frac{1}{4} + \\sin^2(\\theta) = 1\\).\nSubtracting \\(\\frac{1}{4}\\) from both sides gives \\(\\sin^2(\\theta) = 1 - \\frac{1}{4} = \\frac{3}{4}\\).\nTaking the square root of both sides, we get \\(\\sin(\\theta) = \\pm\\sqrt{\\frac{3}{4}} = \\pm\\frac{\\sqrt{3}}{2}\\).\nSince we are given that \\(\\sin(\\theta) > 0\\), we choose the positive value.\nTherefore, \\(\\sin(\\theta) = \\frac{\\sqrt{3}}{2}\\).",
           "choices": [
-            "\\(\\frac{1}{2}\\)",
-            "\\(-\\frac{\\sqrt{3}}{2}\\)",
-            "\\(\\frac{\\sqrt{3}}{2}\\)",
-            "\\(-1\\)"
+            "\\(11\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
-          "correct": 2
+          "correct": 3,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "11",
+                "13"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (470)"
+          }
         }
       ]
     },
@@ -133,12 +182,43 @@
           "explanation": "\\(\\sin^2x+\\cos^2x=1\\); \\(1+\\tan^2x=\\sec^2x\\); \\(1+\\cot^2x=\\csc^2x\\)."
         },
         {
-          "q": "Given \\(\\cot\\theta=\\frac{5}{12}\\) and \\(\\theta\\) in Quadrant I, find \\(\\csc\\theta\\) and \\(\\sin\\theta\\) using the cotangent-cosecant identity.",
+          "q": "For what value of \\(k\\) is \\(f(x)=4x+k\\) (for \\(x<5\\)) and \\(f(x)=x^2\\) (for \\(x\\geq 5\\)) continuous at \\(x=5\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Identities involving all three Pythagorean forms",
-          "answer": "\\(\\csc^2\\theta=1+\\frac{25}{144}=\\frac{169}{144}\\), and in QI \\(\\csc\\theta>0\\): \\(\\csc\\theta=\\frac{13}{12}\\). \\(\\sin\\theta=\\frac{1}{\\csc\\theta}=\\frac{12}{13}\\).",
-          "explanation": "\\(\\csc^2\\theta=1+\\frac{25}{144}=\\frac{169}{144}\\), and in QI \\(\\csc\\theta>0\\): \\(\\csc\\theta=\\frac{13}{12}\\). \\(\\sin\\theta=\\frac{1}{\\csc\\theta}=\\frac{12}{13}\\)."
+          "answer": "Continuity requires \\(4x+k\\) at \\(x=5\\) to equal \\((5)^2\\): \\(20+k=25\\), so \\(k=5\\).",
+          "explanation": "Continuity requires \\(4x+k\\) at \\(x=5\\) to equal \\((5)^2\\): \\(20+k=25\\), so \\(k=5\\).",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (1))*(x - (1)) + (-3)",
+                "color": "var(--fig-indigo)",
+                "label": "y = (x − (1))(x − (1)) + (-3)"
+              },
+              {
+                "fn": "3*x - 3",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": -3,
+                "label": "V(1, -3)"
+              }
+            ]
+          }
         },
         {
           "q": "Simplify \\(\\frac{\\sin^3x+\\cos^3x}{\\sin x+\\cos x}\\) using the sum-of-cubes factoring pattern.",
@@ -157,12 +237,33 @@
           "explanation": "\\(\\tan\\frac{\\pi}{6}=\\frac{1}{\\sqrt{3}}\\): LHS \\(=1+\\frac{1}{3}=\\frac{4}{3}\\). \\(\\sec\\frac{\\pi}{6}=\\frac{1}{\\cos(\\pi/6)}=\\frac{2}{\\sqrt{3}}\\): RHS \\(=\\frac{4}{3}\\). Both sides match, confirming the identity at this angle (though this alone doesn't prove it for all \\(x\\))."
         },
         {
-          "q": "Given that \\(\\sec\\theta=-\\frac{13}{5}\\) and \\(\\theta\\) lies in Quadrant II, use the Pythagorean identity \\(1+\\tan^2\\theta=\\sec^2\\theta\\) to find \\(\\tan\\theta\\) exactly, and then find \\(\\sin\\theta\\) using the quotient identity.",
+          "q": "Inverse Function Table (tidal gauge #474): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(21)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Identities with squared expressions",
-          "answer": "\\(\\tan^2\\theta=\\sec^2\\theta-1=\\frac{169}{25}-1=\\frac{144}{25}\\), and in QII \\(\\tan\\theta<0\\): \\(\\tan\\theta=-\\frac{12}{5}\\). Since \\(\\cos\\theta=\\frac{1}{\\sec\\theta}=-\\frac{5}{13}\\): \\(\\sin\\theta=\\tan\\theta\\cos\\theta=\\left(-\\frac{12}{5}\\right)\\left(-\\frac{5}{13}\\right)=\\frac{12}{13}\\).",
-          "explanation": "\\(\\tan^2\\theta=\\sec^2\\theta-1=\\frac{169}{25}-1=\\frac{144}{25}\\), and in QII \\(\\tan\\theta<0\\): \\(\\tan\\theta=-\\frac{12}{5}\\). Since \\(\\cos\\theta=\\frac{1}{\\sec\\theta}=-\\frac{5}{13}\\): \\(\\sin\\theta=\\tan\\theta\\cos\\theta=\\left(-\\frac{12}{5}\\right)\\left(-\\frac{5}{13}\\right)=\\frac{12}{13}\\)."
+          "answer": "Looking up output \\(f(3) = 21\\) yields \\(f^{-1}(21) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 21\\) yields \\(f^{-1}(21) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "15",
+                "21",
+                "27"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (474)"
+          }
         },
         {
           "q": "Verify the identity \\(\\frac{\\csc x-1}{\\cot x}=\\frac{\\cot x}{\\csc x+1}\\) by cross-multiplying and using the Pythagorean identity.",
@@ -230,13 +331,34 @@
           "correct": 3
         },
         {
-          "q": "Solve the logarithmic equation \\(\\log_2(x + 3) + \\log_2(x - 3) = 4\\) for all real solutions \\(x\\). State any extraneous roots.",
+          "q": "Inverse Function Table (turbine blade #476): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(14)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Numeric identity verification (checking a specific angle)",
           "cross_lesson": "9.02 Geometric Sequences and Series",
-          "answer": "Step 1: State domain restrictions: \\(x + 3 > 0 \\Rightarrow x > -3\\) and \\(x - 3 > 0 \\Rightarrow x > 3\\), so \\(x > 3\\). Step 2: Combine logarithms: \\(\\log_2[(x + 3)(x - 3)] = 4 \\Rightarrow \\log_2(x^2 - 9) = 4.\\) \\(x^2 - 9 = 2^4 = 16 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm 5.\\) Step 3: Eliminate extraneous solutions: \\(x = -5\\) violates \\(x > 3\\) (producing negative arguments), so it is extraneous. The unique valid solution is \\(x = 5\\).",
-          "explanation": "Step 1: State domain restrictions: \\(x + 3 > 0 \\Rightarrow x > -3\\) and \\(x - 3 > 0 \\Rightarrow x > 3\\), so \\(x > 3\\). Step 2: Combine logarithms: \\(\\log_2[(x + 3)(x - 3)] = 4 \\Rightarrow \\log_2(x^2 - 9) = 4.\\) \\(x^2 - 9 = 2^4 = 16 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm 5.\\) Step 3: Eliminate extraneous solutions: \\(x = -5\\) violates \\(x > 3\\) (producing negative arguments), so it is extraneous. The unique valid solution is \\(x = 5\\)."
+          "answer": "Looking up output \\(f(3) = 14\\) yields \\(f^{-1}(14) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 14\\) yields \\(f^{-1}(14) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "8",
+                "11",
+                "14",
+                "17"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (476)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -319,19 +441,40 @@
           "correct": 0
         },
         {
-          "q": "Find all real roots of \\(f(x)=x^{3}-4x^{2}-36x+144\\).",
+          "q": "Inverse Function Table (fluid pressure #478): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(22)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Identities with sums and products",
           "choices": [
-            "x=-6",
-            "x=-6,4",
-            "x=-5,4,6",
-            "x=-6,4,6"
+            "\\(22\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
           "correct": 3,
-          "answer": "Factoring: \\(f(x)=(x+6)(x-4)(x-6)\\Rightarrow x=-6,4,6\\).",
-          "explanation": "Factoring: \\(f(x)=(x+6)(x-4)(x-6)\\Rightarrow x=-6,4,6\\)."
+          "answer": "Looking up output \\(f(3) = 22\\) yields \\(f^{-1}(22) = 3\\).",
+          "explanation": "Factoring: \\(f(x)=(x+6)(x-4)(x-6)\\Rightarrow x=-6,4,6\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "12",
+                "17",
+                "22",
+                "27"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (478)"
+          }
         },
         {
           "q": "Find the common difference of the arithmetic sequence: -1, -2, -3, -4, ...",
@@ -364,19 +507,28 @@
           "explanation": "\\(a_n=a_1r^{n-1}=2\\cdot(2)^{3}=16\\)."
         },
         {
-          "q": "Let \\((a_n)_{n \\geq 1}\\) be an arithmetic sequence of real numbers with first term \\(a_1 > 0\\) and non-zero common difference \\(d\\). The terms \\(a_1\\), \\(a_3\\), and \\(a_4\\) form the first three terms of a convergent geometric sequence \\((g_k)_{k \\geq 1}\\), such that \\(g_1 = a_1\\), \\(g_2 = a_3\\), and \\(g_3 = a_4\\). Let \\(S_\\infty = \\sum_{k=1}^\\infty g_k\\) denote the sum to infinity of the geometric sequence, and let \\(S_n = \\sum_{j=1}^n a_j\\) denote the \\(n\\)-th partial sum of the arithmetic sequence. If \\(M = \\max_{n \\geq 1} S_n\\) is the maximum value attained by the partial sums of the arithmetic sequence, what is the value of \\(\\frac{M}{S_\\infty}\\)?",
+          "q": "Wave Graph (tidal gauge #399): The cosine curve \\(y = 6\\cos(x) + 6\\) is plotted above with peak at \\(y = 12\\) and trough at \\(y = 0\\). State its amplitude.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Verifying identities with a common denominator strategy",
           "choices": [
-            "\\(\\frac{5}{4}\\)",
-            "\\(\\frac{81}{64}\\)",
-            "\\(\\frac{9}{8}\\)",
-            "\\(\\frac{5}{8}\\)"
+            "\\(6\\)",
+            "\\(12\\)",
+            "\\(9\\)",
+            "\\(11\\)"
           ],
           "correct": 0,
-          "answer": "1. **Determine the relation between \\(d\\) and \\(a_1\\):** The terms of the arithmetic sequence are \\(a_n = a_1 + (n - 1)d\\). Therefore: \\(g_1 = a_1, \\quad g_2 = a_3 = a_1 + 2d, \\quad g_3 = a_4 = a_1 + 3d\\) Since \\(g_1, g_2, g_3\\) form a geometric progression, the geometric mean property requires: \\(g_2^2 = g_1 g_3 \\Rightarrow (a_1 + 2d)^2 = a_1(a_1 + 3d)\\) Expanding both sides: \\(a_1^2 + 4a_1 d + 4d^2 = a_1^2 + 3a_1 d\\) \\(a_1 d + 4d^2 = 0 \\Rightarrow d(a_1 + 4d) = 0\\) Since \\(d e 0\\), we have \\(a_1 + 4d = 0\\), which gives: \\(d = -\\frac{1}{4}a_1\\) 2. **Find the common ratio \\(r\\) and sum to infinity \\(S_\\infty\\):** The common ratio is: \\(r = \\frac{g_2}{g_1} = \\frac{a_1 + 2\\left(-\\frac{1}{4}a_1\\right)}{a_1} = \\frac{\\frac{1}{2}a_1}{a_1} = \\frac{1}{2}\\) Because \\(|r| = \\frac{1}{2} 0\\) - \\(a_2 = \\frac{3}{4}a_1 > 0\\) - \\(a_3 = \\frac{1}{2}a_1 > 0\\) - \\(a_4 = \\frac{1}{4}a_1 > 0\\) - \\(a_5 = 0\\) - \\(a_n < 0\\) for all \\(n \\geq 6\\) Since the terms are positive for \\(n \\leq 4\\), zero at \\(n = 5\\), and negative thereafter, the partial sum \\(S_n\\) increases up to \\(n = 4\\), remains unchanged at \\(n = 5\\), and strictly decreases for \\(n \\geq 6\\). Thus, the maximum integer partial sum occurs at \\(n = 4\\) (or \\(n = 5\\)): \\(M = S_4 = a_1\\left(1 + \\frac{3}{4} + \\frac{1}{2} + \\frac{1}{4}\\right) = \\frac{5}{2}a_1\\) 4. **Compute the ratio \\(\\frac{M}{S_\\infty}\\):** \\(\\frac{M}{S_\\infty} = \\frac{\\frac{5}{2}a_1}{2a_1} = \\frac{5}{4}\\) **Distractor Analysis:** - Choice B (\\(\\frac{81}{64}\\)) results from treating \\(n\\) as a continuous real variable and evaluating the quadratic vertex at \\(n = 4.5\\), yielding \\(S(4.5) = \\frac{81}{32}a_1\\), ignoring that the number of terms \\(n\\) must be an integer. - Choice C (\\(\\frac{9}{8}\\)) prematurely stops the sum at \\(n = 3\\), giving \\(S_3 = \\frac{9}{4}a_1\\). - Choice D (\\(\\frac{5}{8}\\)) misses the factor of \\(2\\) in the numerator of the sum formula, computing \\(M = \\frac{5}{4}a_1\\).",
-          "explanation": "1. **Determine the relation between \\(d\\) and \\(a_1\\):** The terms of the arithmetic sequence are \\(a_n = a_1 + (n - 1)d\\). Therefore: \\(g_1 = a_1, \\quad g_2 = a_3 = a_1 + 2d, \\quad g_3 = a_4 = a_1 + 3d\\) Since \\(g_1, g_2, g_3\\) form a geometric progression, the geometric mean property requires: \\(g_2^2 = g_1 g_3 \\Rightarrow (a_1 + 2d)^2 = a_1(a_1 + 3d)\\) Expanding both sides: \\(a_1^2 + 4a_1 d + 4d^2 = a_1^2 + 3a_1 d\\) \\(a_1 d + 4d^2 = 0 \\Rightarrow d(a_1 + 4d) = 0\\) Since \\(d e 0\\), we have \\(a_1 + 4d = 0\\), which gives: \\(d = -\\frac{1}{4}a_1\\) 2. **Find the common ratio \\(r\\) and sum to infinity \\(S_\\infty\\):** The common ratio is: \\(r = \\frac{g_2}{g_1} = \\frac{a_1 + 2\\left(-\\frac{1}{4}a_1\\right)}{a_1} = \\frac{\\frac{1}{2}a_1}{a_1} = \\frac{1}{2}\\) Because \\(|r| = \\frac{1}{2} 0\\) - \\(a_2 = \\frac{3}{4}a_1 > 0\\) - \\(a_3 = \\frac{1}{2}a_1 > 0\\) - \\(a_4 = \\frac{1}{4}a_1 > 0\\) - \\(a_5 = 0\\) - \\(a_n < 0\\) for all \\(n \\geq 6\\) Since the terms are positive for \\(n \\leq 4\\), zero at \\(n = 5\\), and negative thereafter, the partial sum \\(S_n\\) increases up to \\(n = 4\\), remains unchanged at \\(n = 5\\), and strictly decreases for \\(n \\geq 6\\). Thus, the maximum integer partial sum occurs at \\(n = 4\\) (or \\(n = 5\\)): \\(M = S_4 = a_1\\left(1 + \\frac{3}{4} + \\frac{1}{2} + \\frac{1}{4}\\right) = \\frac{5}{2}a_1\\) 4. **Compute the ratio \\(\\frac{M}{S_\\infty}\\):** \\(\\frac{M}{S_\\infty} = \\frac{\\frac{5}{2}a_1}{2a_1} = \\frac{5}{4}\\) **Distractor Analysis:** - Choice B (\\(\\frac{81}{64}\\)) results from treating \\(n\\) as a continuous real variable and evaluating the quadratic vertex at \\(n = 4.5\\), yielding \\(S(4.5) = \\frac{81}{32}a_1\\), ignoring that the number of terms \\(n\\) must be an integer. - Choice C (\\(\\frac{9}{8}\\)) prematurely stops the sum at \\(n = 3\\), giving \\(S_3 = \\frac{9}{4}a_1\\). - Choice D (\\(\\frac{5}{8}\\)) misses the factor of \\(2\\) in the numerator of the sum formula, computing \\(M = \\frac{5}{4}a_1\\)."
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 6\\).",
+          "explanation": "1. **Determine the relation between \\(d\\) and \\(a_1\\):** The terms of the arithmetic sequence are \\(a_n = a_1 + (n - 1)d\\). Therefore: \\(g_1 = a_1, \\quad g_2 = a_3 = a_1 + 2d, \\quad g_3 = a_4 = a_1 + 3d\\) Since \\(g_1, g_2, g_3\\) form a geometric progression, the geometric mean property requires: \\(g_2^2 = g_1 g_3 \\Rightarrow (a_1 + 2d)^2 = a_1(a_1 + 3d)\\) Expanding both sides: \\(a_1^2 + 4a_1 d + 4d^2 = a_1^2 + 3a_1 d\\) \\(a_1 d + 4d^2 = 0 \\Rightarrow d(a_1 + 4d) = 0\\) Since \\(d e 0\\), we have \\(a_1 + 4d = 0\\), which gives: \\(d = -\\frac{1}{4}a_1\\) 2. **Find the common ratio \\(r\\) and sum to infinity \\(S_\\infty\\):** The common ratio is: \\(r = \\frac{g_2}{g_1} = \\frac{a_1 + 2\\left(-\\frac{1}{4}a_1\\right)}{a_1} = \\frac{\\frac{1}{2}a_1}{a_1} = \\frac{1}{2}\\) Because \\(|r| = \\frac{1}{2} 0\\) - \\(a_2 = \\frac{3}{4}a_1 > 0\\) - \\(a_3 = \\frac{1}{2}a_1 > 0\\) - \\(a_4 = \\frac{1}{4}a_1 > 0\\) - \\(a_5 = 0\\) - \\(a_n < 0\\) for all \\(n \\geq 6\\) Since the terms are positive for \\(n \\leq 4\\), zero at \\(n = 5\\), and negative thereafter, the partial sum \\(S_n\\) increases up to \\(n = 4\\), remains unchanged at \\(n = 5\\), and strictly decreases for \\(n \\geq 6\\). Thus, the maximum integer partial sum occurs at \\(n = 4\\) (or \\(n = 5\\)): \\(M = S_4 = a_1\\left(1 + \\frac{3}{4} + \\frac{1}{2} + \\frac{1}{4}\\right) = \\frac{5}{2}a_1\\) 4. **Compute the ratio \\(\\frac{M}{S_\\infty}\\):** \\(\\frac{M}{S_\\infty} = \\frac{\\frac{5}{2}a_1}{2a_1} = \\frac{5}{4}\\) **Distractor Analysis:** - Choice B (\\(\\frac{81}{64}\\)) results from treating \\(n\\) as a continuous real variable and evaluating the quadratic vertex at \\(n = 4.5\\), yielding \\(S(4.5) = \\frac{81}{32}a_1\\), ignoring that the number of terms \\(n\\) must be an integer. - Choice C (\\(\\frac{9}{8}\\)) prematurely stops the sum at \\(n = 3\\), giving \\(S_3 = \\frac{9}{4}a_1\\). - Choice D (\\(\\frac{5}{8}\\)) misses the factor of \\(2\\) in the numerator of the sum formula, computing \\(M = \\frac{5}{4}a_1\\).",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 6,
+            "freq": 1,
+            "phase": 0,
+            "midline": 6,
+            "fnType": "cos",
+            "caption": "منحنى دوري (399)"
+          }
         }
       ]
     },
@@ -414,19 +566,40 @@
           "explanation": "Standard form \\((x-h)^2+(y-k)^2=r^2\\) gives center \\((h,k)=(-6,1)\\) and \\(r^2=25\\), so \\(r=5\\)."
         },
         {
-          "q": "Using complex numbers, find \\(\\cos^4\\theta\\) as a sum of cosines.",
+          "q": "Inverse Function Table (battery voltage #482): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(17)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Using the Pythagorean identities",
           "choices": [
-            "\\(\\frac{3+4\\cos2\\theta+\\cos4\\theta}{8}\\)",
-            "\\(\\frac{1+\\cos4\\theta}{2}\\)",
-            "\\(3/8\\)",
-            "\\(\\cos4\\theta/8\\)"
+            "\\(17\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
-          "correct": 0,
-          "answer": "\\(\\cos^4\\theta=\\left(\\frac{e^{i\\theta}+e^{-i\\theta}}{2}\\right)^4\\). Expand binomially.",
-          "explanation": "\\(\\cos^4\\theta=\\left(\\frac{e^{i\\theta}+e^{-i\\theta}}{2}\\right)^4\\). Expand binomially."
+          "correct": 3,
+          "answer": "Looking up output \\(f(3) = 17\\) yields \\(f^{-1}(17) = 3\\).",
+          "explanation": "\\(\\cos^4\\theta=\\left(\\frac{e^{i\\theta}+e^{-i\\theta}}{2}\\right)^4\\). Expand binomially.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "13",
+                "17",
+                "21"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (482)"
+          }
         },
         {
           "q": "What is the center of the circle \\((x-3)^2+(y+2)^2=16\\)?",
@@ -469,19 +642,50 @@
           "explanation": "\\(z^3=r^3e^{3i\\theta}\\). \\(\\mathrm{Re}(z^3)=r^3\\cos3\\theta\\)."
         },
         {
-          "q": "Evaluate \\(\\sum_{k=1}^{n}\\cos k\\theta\\) using complex exponentials.",
+          "q": "For what value of \\(k\\) is \\(f(x)=-2x+k\\) (for \\(x<2\\)) and \\(f(x)=x^2\\) (for \\(x\\geq 2\\)) continuous at \\(x=2\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "More identity verifications",
           "choices": [
-            "\\(0\\)",
-            "\\(n\\cos\\theta\\)",
-            "\\(\\frac{\\sin(n\\theta/2)}{\\sin(\\theta/2)}\\cos\\frac{(n+1)\\theta}{2}\\)",
-            "\\(\\cos(n\\theta)\\)"
+            "9",
+            "7",
+            "-8",
+            "8"
           ],
-          "correct": 2,
-          "answer": "Geometric series of \\(e^{ik\\theta}\\), take real part.",
-          "explanation": "Geometric series of \\(e^{ik\\theta}\\), take real part."
+          "correct": 3,
+          "answer": "Continuity requires \\(-2x+k\\) at \\(x=2\\) to equal \\((2)^2\\): \\(-4+k=4\\), so \\(k=8\\).",
+          "explanation": "Geometric series of \\(e^{ik\\theta}\\), take real part.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -5,
+              5
+            ],
+            "yrange": [
+              -5,
+              7
+            ],
+            "fns": [
+              {
+                "fn": "(x - (0))*(x - (0)) + (-2)",
+                "color": "var(--fig-indigo)",
+                "label": "y = (x − (0))(x − (0)) + (-2)"
+              },
+              {
+                "fn": "1*x - 5",
+                "color": "var(--fig-amber)",
+                "dash": "4,4",
+                "label": "y = g(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": -2,
+                "label": "V(0, -2)"
+              }
+            ]
+          }
         },
         {
           "q": "State \\(\\cos 2\\theta\\) in three equivalent forms.",
@@ -515,16 +719,37 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Convert \\(150^\\circ\\) to radians.",
-          "answer": "**Answer:** B. \\(150^\\circ \\times \\dfrac{\\pi}{180^\\circ} = \\frac{5\\pi}{6}\\).",
+          "q": "Inverse Function Table (antenna signal #486): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(12)\\).",
+          "answer": "Looking up output \\(f(3) = 12\\) yields \\(f^{-1}(12) = 3\\).",
           "explanation": "\\(150^\\circ \\times \\dfrac{\\pi}{180^\\circ} = \\frac{5\\pi}{6}\\).",
           "choices": [
-            "\\(\\frac{\\pi}{6}\\)",
-            "\\(\\frac{5\\pi}{6}\\)",
-            "\\(\\frac{7\\pi}{4}\\)",
-            "\\(\\frac{2\\pi}{3}\\)"
+            "\\(12\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
-          "correct": 1
+          "correct": 3,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "6",
+                "9",
+                "12",
+                "15"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (486)"
+          }
         }
       ]
     },
@@ -564,20 +789,29 @@
           "cross_lesson": "9.02 Geometric Sequences and Series"
         },
         {
-          "q": "Find the vector projection of \\(\\mathbf{u}=\\langle3,4\\rangle\\) onto \\(\\mathbf{v}=\\langle2,0\\rangle\\).",
+          "q": "Wave Graph (acoustic wave #405): The cosine curve \\(y = 4\\cos(x) + 2\\) is plotted above with peak at \\(y = 6\\) and trough at \\(y = -2\\). State its amplitude.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Identities with squared expressions",
           "choices": [
-            "\\(\\langle0,3\\rangle\\)",
-            "\\(\\langle4,0\\rangle\\)",
-            "\\(\\langle3,0\\rangle\\)",
-            "\\(\\langle3,4\\rangle\\)"
+            "\\(2\\)",
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(8\\)"
           ],
           "correct": 2,
-          "answer": "\\(\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\mathbf{v}\\cdot\\mathbf{v}}\\mathbf{v}=\\frac{3}{2}\\,\\langle2,0\\rangle=\\langle3,0\\rangle\\).",
+          "answer": "Amplitude equals \\(\\frac{y_{\\max} - y_{\\min}}{2} = 4\\).",
           "explanation": "\\(\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\mathbf{v}\\cdot\\mathbf{v}}\\mathbf{v}=\\frac{3}{2}\\,\\langle2,0\\rangle=\\langle3,0\\rangle\\).",
-          "cross_lesson": "9.03 The Binomial Theorem"
+          "cross_lesson": "9.03 The Binomial Theorem",
+          "figure": {
+            "type": "sinusoid",
+            "amp": 4,
+            "freq": 1,
+            "phase": 0,
+            "midline": 2,
+            "fnType": "cos",
+            "caption": "منحنى دوري (405)"
+          }
         },
         {
           "q": "For \\(f(x)=\\frac{x^2-25}{x-5}\\) when \\(x eq 5\\), and \\(f(5)=k\\), find \\(k\\) so that \\(f\\) is continuous at \\(x=5\\).",
@@ -612,20 +846,41 @@
           "cross_lesson": "1.02 Domain and Range"
         },
         {
-          "q": "Solve for the larger value of \\(x\\): \\(2^{2x}-10\\cdot2^{x}+16=0\\).",
+          "q": "Inverse Function Table (laser interferometer #490): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(13)\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Quotient and reciprocal identities",
           "choices": [
-            "5",
-            "3",
-            "1",
-            "4"
+            "\\(13\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
-          "correct": 1,
-          "answer": "Let \\(u=2^x\\): \\(u^2-10u+16=0\\Rightarrow(u-2^{1})(u-2^{3})=0\\Rightarrow x=1\\mathrm{\\ or\\ }3\\). Larger: \\(x=3\\).",
+          "correct": 3,
+          "answer": "Looking up output \\(f(3) = 13\\) yields \\(f^{-1}(13) = 3\\).",
           "explanation": "Let \\(u=2^x\\): \\(u^2-10u+16=0\\Rightarrow(u-2^{1})(u-2^{3})=0\\Rightarrow x=1\\mathrm{\\ or\\ }3\\). Larger: \\(x=3\\).",
-          "cross_lesson": "1.03 Average Rate of Change"
+          "cross_lesson": "1.03 Average Rate of Change",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "11",
+                "13",
+                "15"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (490)"
+          }
         },
         {
           "q": "For the parabola \\(y^2=-20x\\), find the vertex, focus, and directrix.",

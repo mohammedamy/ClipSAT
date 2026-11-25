@@ -9,12 +9,33 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Given \\(x(t)=t^2-1\\) and \\(y(t)=2t+3\\), find the point on the curve at \\(t=2\\).",
+          "q": "Semi-Log Linearization (battery voltage #542): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Evaluating parametric equations",
-          "answer": "\\(x(2)=4-1=3\\). \\(y(2)=4+3=7\\). Point: \\((3,7)\\).",
-          "explanation": "\\(x(2)=4-1=3\\). \\(y(2)=4+3=7\\). Point: \\((3,7)\\)."
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(4\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 15 + 4 = 19\\).",
+          "explanation": "Since \\(\\ln y\\) increases by constant step \\(4\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 15 + 4 = 19\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "3",
+                "7",
+                "11",
+                "15"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for battery voltage #542"
+          }
         },
         {
           "q": "Given \\(x(t)=3\\cos t\\) and \\(y(t)=3\\sin t\\), find the point at \\(t=\\frac{\\pi}{3}\\), and identify the shape traced by the curve.",
@@ -80,12 +101,49 @@
           }
         },
         {
-          "q": "Eliminate the parameter from \\(x(t)=2t-3\\), \\(y(t)=4t+1\\) to find the rectangular equation.",
+          "q": "Exponential Function Graph (harmonic spring #545): Using the plotted exponential function \\(g(x) = 3\\cdot 2^x + 3\\) with horizontal asymptote \\(y = 3\\), evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Eliminating the parameter",
-          "answer": "From \\(x=2t-3\\): \\(t=\\frac{x+3}{2}\\). Substitute: \\(y=4\\left(\\frac{x+3}{2}\\right)+1=2(x+3)+1=2x+7\\). This is a line: \\(y=2x+7\\).",
-          "explanation": "From \\(x=2t-3\\): \\(t=\\frac{x+3}{2}\\). Substitute: \\(y=4\\left(\\frac{x+3}{2}\\right)+1=2(x+3)+1=2x+7\\). This is a line: \\(y=2x+7\\)."
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 3(2^2) + 3 = 12 + 3 = 15\\).",
+          "explanation": "Substituting \\(x = 2\\) gives \\(g(2) = 3(2^2) + 3 = 12 + 3 = 15\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              17
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "g(x) = 3·2^x + 3"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 3·2^x + 3 (#545)"
+          }
         },
         {
           "q": "The graph shows the two component functions \\(x(t)=t^2\\) (upper curve) and \\(y(t)=2t\\) (lower, straight line) for the parametric curve \\(x(t)=t^2\\), \\(y(t)=2t\\), plotted separately against \\(t\\) on the horizontal axis.",
@@ -125,12 +183,33 @@
           "explanation": "\\(x(t)=1+4t\\), \\(y(t)=2+8t\\) for \\(0\\leq t\\leq1\\) (since the change in \\(x\\) is \\(5-1=4\\) and the change in \\(y\\) is \\(10-2=8\\)). Check: at \\(t=0\\), \\((1,2)\\); at \\(t=1\\), \\((5,10)\\) ✓."
         },
         {
-          "q": "Write parametric equations for an ellipse with semi-major axis 5 (horizontal) and semi-minor axis 3 (vertical), centered at the origin.",
+          "q": "Semi-Log Linearization (antenna signal #546): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Parametric equations for lines and conics",
-          "answer": "\\(x(t)=5\\cos t\\), \\(y(t)=3\\sin t\\), for \\(0\\leq t<2\\pi\\). Check: \\(\\left(\\frac{x}{5}\\right)^2+\\left(\\frac{y}{3}\\right)^2=\\cos^2t+\\sin^2t=1\\), matching the standard ellipse equation.",
-          "explanation": "\\(x(t)=5\\cos t\\), \\(y(t)=3\\sin t\\), for \\(0\\leq t<2\\pi\\). Check: \\(\\left(\\frac{x}{5}\\right)^2+\\left(\\frac{y}{3}\\right)^2=\\cos^2t+\\sin^2t=1\\), matching the standard ellipse equation."
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(4\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 14 + 4 = 18\\).",
+          "explanation": "Since \\(\\ln y\\) increases by constant step \\(4\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 14 + 4 = 18\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "2",
+                "6",
+                "10",
+                "14"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for antenna signal #546"
+          }
         }
       ]
     },
@@ -154,12 +233,49 @@
           "explanation": "Set \\(y(t)=0\\): \\(20t-4.9t^2=0\\), so \\(t(20-4.9t)=0\\), giving \\(t=0\\) or \\(t=\\frac{20}{4.9}\\approx4.08\\) seconds. The ball lands at \\(t\\approx4.08\\) s."
         },
         {
-          "q": "Two objects follow the same path \\(y=x^2\\), but object A uses \\(x(t)=t\\), \\(y(t)=t^2\\) while object B uses \\(x(t)=2t\\), \\(y(t)=4t^2\\). Explain why they trace the same curve but do not move through it at the same rate.",
+          "q": "Exponential Function Graph (tidal gauge #549): Using the plotted exponential function \\(g(x) = 3\\cdot 2^x + 1\\) with horizontal asymptote \\(y = 1\\), evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparing parametric speed and direction",
-          "answer": "Both satisfy \\(y=x^2\\) (for B: \\(y=4t^2=(2t)^2=x^2\\) ✓), so they trace identical curves. But object B's \\(x\\)-coordinate changes twice as fast per unit of \\(t\\) as object A's, meaning B moves through the same path twice as fast — the parametrization encodes speed and direction of travel, which the rectangular equation \\(y=x^2\\) alone does not capture.",
-          "explanation": "Both satisfy \\(y=x^2\\) (for B: \\(y=4t^2=(2t)^2=x^2\\) ✓), so they trace identical curves. But object B's \\(x\\)-coordinate changes twice as fast per unit of \\(t\\) as object A's, meaning B moves through the same path twice as fast — the parametrization encodes speed and direction of travel, which the rectangular equation \\(y=x^2\\) alone does not capture."
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 3(2^2) + 1 = 12 + 1 = 13\\).",
+          "explanation": "Substituting \\(x = 2\\) gives \\(g(2) = 3(2^2) + 1 = 12 + 1 = 13\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 1",
+                "color": "#2563eb",
+                "label": "g(x) = 3·2^x + 1"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 3·2^x + 1 (#549)"
+          }
         },
         {
           "q": "The parametric equations \\(x(t)=\\cos t\\), \\(y(t)=\\sin t\\) trace the full unit circle for \\(t\\in[0,2\\pi)\\). Describe the portion of the circle traced when the domain is restricted to \\(t\\in\\left[0,\\frac{\\pi}{2}\\right]\\).",
@@ -238,13 +354,50 @@
           "explanation": "Calculate the dot product: \\(\\mathbf{a}\\cdot\\mathbf{b} = (2)(-3) + (-5)(4) = -6 - 20 = -26.\\) Calculate the magnitudes: \\(|\\mathbf{a}| = \\sqrt{2^2 + (-5)^2} = \\sqrt{4 + 25} = \\sqrt{29} \\approx 5.385,\\) \\(|\\mathbf{b}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5.\\) Scalar projection of \\(\\mathbf{a}\\) onto \\(\\mathbf{b}\\): \\(\\mathrm{comp}_{\\mathbf{b}}\\mathbf{a} = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{b}|} = \\frac{-26}{5} = -5.2.\\) Angle \\(\\theta\\) between vectors: \\(\\cos\\theta = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|} = \\frac{-26}{5\\sqrt{29}} \\approx -0.9656 \\Rightarrow \\theta = \\arccos(-0.9656) \\approx 164.9°.\\)"
         },
         {
-          "q": "Let \\(\\mathbf{f} = \\langle 9, 16 \\rangle\\) and \\(\\mathbf{g} = \\langle 9, 16 \\rangle\\) be vectors in \\(\\mathbb{R}^2\\). What is the dot product \\(x = \\mathbf{f} \\cdot \\mathbf{g}\\)? Show your complete algebraic work.",
+          "q": "Exponential Function Graph (turbine blade #551): Using the plotted exponential function \\(g(x) = 5\\cdot 2^x + 3\\) with horizontal asymptote \\(y = 3\\), evaluate \\(g(2)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Parametric equations for circular motion with a phase shift",
           "cross_lesson": "3.02 Polar Coordinates & Polar Graphs",
-          "answer": "Final Answer: 337. The dot product is \\((9)(9) + (16)(16) = 337\\).",
-          "explanation": "The dot product is \\((9)(9) + (16)(16) = 337\\)."
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 5(2^2) + 3 = 20 + 3 = 23\\).",
+          "explanation": "Substituting \\(x = 2\\) gives \\(g(2) = 5(2^2) + 3 = 20 + 3 = 23\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              25
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "5*2^x + 3",
+                "color": "#2563eb",
+                "label": "g(x) = 5·2^x + 3"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 8,
+                "label": "(0, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 5·2^x + 3 (#551)"
+          }
         },
         {
           "q": "Decompose the vector \\(\\mathbf{u} = \\langle 6, 2 \\rangle\\) into components parallel and orthogonal to \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\).",
@@ -265,13 +418,34 @@
           "explanation": "(a) Vertical height: Using the Pythagorean relation \\(l^2 = r^2 + h^2\\): \\(h = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = \\mathbf{8\\mathrm{\\ cm}}\\) (b) Volume: \\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (6^2)(8) = \\frac{1}{3}\\pi (36)(8) = 12 \\times 8\\pi = \\mathbf{96\\pi\\mathrm{\\ cm}^3} \\approx 301.59\\mathrm{\\ cm}^3\\) (c) Total surface area: \\(\\mathrm{TSA} = \\pi r^2 + \\pi r l = \\pi (6^2) + \\pi(6)(10) = 36\\pi + 60\\pi = \\mathbf{96\\pi\\mathrm{\\ cm}^2} \\approx 301.59\\mathrm{\\ cm}^2\\)"
         },
         {
-          "q": "Find all solutions to the trigonometric equation \\(2\\sin^2 x - 3\\sin x + 1 = 0\\) on the domain \\(x \\in [0, 2\\pi)\\).",
+          "q": "Semi-Log Linearization (pendulum swing #552): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing a parametric curve's components",
           "cross_lesson": "1.01 Polynomial End Behavior & Zeros",
-          "answer": "Step 1: Factor the quadratic in \\(\\sin x\\): \\((2\\sin x - 1)(\\sin x - 1) = 0.\\) Step 2: Solve each factor branch:Branch 1: \\(2\\sin x - 1 = 0 \\Rightarrow \\sin x = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), \\(x = \\frac{\\pi}{6}\\) (Quadrant I) or \\(x = \\frac{5\\pi}{6}\\) (Quadrant II).Branch 2: \\(\\sin x - 1 = 0 \\Rightarrow \\sin x = 1\\). On \\([0, 2\\pi)\\), \\(x = \\frac{\\pi}{2}\\).The complete solution set is \\(x \\in \\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}\\).",
-          "explanation": "Step 1: Factor the quadratic in \\(\\sin x\\): \\((2\\sin x - 1)(\\sin x - 1) = 0.\\) Step 2: Solve each factor branch:Branch 1: \\(2\\sin x - 1 = 0 \\Rightarrow \\sin x = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), \\(x = \\frac{\\pi}{6}\\) (Quadrant I) or \\(x = \\frac{5\\pi}{6}\\) (Quadrant II).Branch 2: \\(\\sin x - 1 = 0 \\Rightarrow \\sin x = 1\\). On \\([0, 2\\pi)\\), \\(x = \\frac{\\pi}{2}\\).The complete solution set is \\(x \\in \\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}\\)."
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 9 + 2 = 11\\).",
+          "explanation": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 9 + 2 = 11\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "3",
+                "5",
+                "7",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for pendulum swing #552"
+          }
         },
         {
           "q": "Find the volume of a right circular cone with base radius 6 and height 8.",
@@ -303,19 +477,56 @@
           "explanation": "From \\(x=t-2\\): \\(t=x+2\\). Substitute: \\(y=-3\\left(x+2\\right)+4=-3x-2\\)."
         },
         {
-          "q": "A curve is given by \\(x(t)=4\\cos t\\), \\(y(t)=4\\sin t\\). Find the exact point on the curve at \\(t=\\frac{11\\pi}{6}\\) (\\(330^\\circ\\)).",
+          "q": "Exponential Function Graph (acoustic wave #555): Using the plotted exponential function \\(g(x) = 5\\cdot 2^x + 1\\) with horizontal asymptote \\(y = 1\\), evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Eliminating the parameter",
           "choices": [
-            "\\(\\left(2\\sqrt{3},2\\right)\\)",
-            "\\(\\left(2\\sqrt{3},-2\\right)\\)",
-            "\\(\\left(-2,2\\sqrt{3}\\right)\\)",
-            "\\(\\left(-2\\sqrt{3},-2\\right)\\)"
+            "\\(11\\)",
+            "\\(20\\)",
+            "\\(24\\)",
+            "\\(21\\)"
           ],
-          "correct": 1,
-          "answer": "\\(x=4\\cos\\left(\\frac{11\\pi}{6}\\right)=2\\sqrt{3}\\). \\(y=4\\sin\\left(\\frac{11\\pi}{6}\\right)=-2\\). Point: \\(\\left(2\\sqrt{3},-2\\right)\\).",
-          "explanation": "\\(x=4\\cos\\left(\\frac{11\\pi}{6}\\right)=2\\sqrt{3}\\). \\(y=4\\sin\\left(\\frac{11\\pi}{6}\\right)=-2\\). Point: \\(\\left(2\\sqrt{3},-2\\right)\\)."
+          "correct": 3,
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 5(2^2) + 1 = 20 + 1 = 21\\).",
+          "explanation": "\\(x=4\\cos\\left(\\frac{11\\pi}{6}\\right)=2\\sqrt{3}\\). \\(y=4\\sin\\left(\\frac{11\\pi}{6}\\right)=-2\\). Point: \\(\\left(2\\sqrt{3},-2\\right)\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              0,
+              23
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "5*2^x + 1",
+                "color": "#2563eb",
+                "label": "g(x) = 5·2^x + 1"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 5·2^x + 1 (#555)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -361,28 +572,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Considering Polynomial, Rational, Logarithmic & Trigonometric Modeling (problem set #752), consider the function \\( f_{752}(x) = x^2 - 8x + 20 \\) illustrated on the coordinate axes. Express \\( f_{752}(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and evaluate \\( k + f_{752}(7) \\).",
-          "answer": "**Answer:** A. **Mark Scheme & Examiner Solution (Polynomial, Rational, Logarithmic & Trigonometric Modeling):**\n1. Complete the square: \\( f_{752}(x) = (x - 4)^2 + 4 \\), so \\( k = 4 \\). **[M1]**\n2. Evaluate \\( f_{752}(7) = (7 - 4)^2 + 4 = 9 + 4 = 13 \\). **[M1]**\n3. Sum: \\( k + f_{752}(7) = 4 + 13 = 17 \\). **[A1]**",
+          "q": "Semi-Log Linearization (orbital radar #556): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 8 + 2 = 10\\).",
           "explanation": "**Mark Scheme & Examiner Solution (Polynomial, Rational, Logarithmic & Trigonometric Modeling):**\n1. Complete the square: \\( f_{752}(x) = (x - 4)^2 + 4 \\), so \\( k = 4 \\). **[M1]**\n2. Evaluate \\( f_{752}(7) = (7 - 4)^2 + 4 = 9 + 4 = 13 \\). **[M1]**\n3. Sum: \\( k + f_{752}(7) = 4 + 13 = 17 \\). **[A1]**",
           "figure": {
-            "type": "fn",
-            "fns": [
-              "(x - 4)*(x - 4) + 4"
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
             ],
-            "xlim": [
-              -1,
-              9
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "2",
+                "4",
+                "6",
+                "8"
+              ]
             ],
-            "ylim": [
-              0,
-              35
-            ]
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for orbital radar #556"
           },
           "choices": [
-            "\\( 17 \\)",
-            "\\( 21 \\)",
-            "\\( 13 \\)",
-            "\\( 14 \\)"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(12\\)",
+            "\\(13\\)"
           ],
           "correct": 0
         },
@@ -417,19 +635,56 @@
           "explanation": "The components of a vector from point \\(P = (x_1, y_1)\\) to point \\(Q = (x_2, y_2)\\) are given by \\(\\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, \\(P = (2, 3)\\) and \\(Q = (5, 7)\\). Therefore, the components of vector \\(\\mathbf{v}\\) are \\(\\langle 5 - 2, 7 - 3 \\rangle = \\langle 3, 4 \\rangle\\)."
         },
         {
-          "q": "Find the unit vector in the direction of \\(\\mathbf{v}=\\langle -8,15\\rangle\\).",
+          "q": "Exponential Function Graph (optical lens #559): Using the plotted exponential function \\(g(x) = 5\\cdot 2^x + 2\\) with horizontal asymptote \\(y = 2\\), evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Parametric equations for circular motion with a phase shift",
           "choices": [
-            "\\(\\left\\langle \\frac{9}{17},\\frac{15}{17}\\right\\rangle\\)",
-            "\\(\\left\\langle \\frac{15}{17},-\\frac{8}{17}\\right\\rangle\\)",
-            "\\(\\left\\langle -\\frac{8}{17},\\frac{15}{17}\\right\\rangle\\)",
-            "\\(\\langle -8,15\\rangle\\)"
+            "\\(12\\)",
+            "\\(20\\)",
+            "\\(25\\)",
+            "\\(22\\)"
           ],
-          "correct": 2,
-          "answer": "\\(|\\mathbf{v}|=17\\). Unit vector \\(=\\frac{\\mathbf{v}}{|\\mathbf{v}|}=\\left\\langle \\frac{-8}{17},\\frac{15}{17}\\right\\rangle\\).",
-          "explanation": "\\(|\\mathbf{v}|=17\\). Unit vector \\(=\\frac{\\mathbf{v}}{|\\mathbf{v}|}=\\left\\langle \\frac{-8}{17},\\frac{15}{17}\\right\\rangle\\)."
+          "correct": 3,
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 5(2^2) + 2 = 20 + 2 = 22\\).",
+          "explanation": "\\(|\\mathbf{v}|=17\\). Unit vector \\(=\\frac{\\mathbf{v}}{|\\mathbf{v}|}=\\left\\langle \\frac{-8}{17},\\frac{15}{17}\\right\\rangle\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              1,
+              24
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "5*2^x + 2",
+                "color": "#2563eb",
+                "label": "g(x) = 5·2^x + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 5·2^x + 2 (#559)"
+          }
         }
       ]
     },
@@ -479,19 +734,40 @@
           "explanation": "To find the component form of a vector \\(\\vec{PQ}\\) from point \\(P(x_1, y_1)\\) to point \\(Q(x_2, y_2)\\), we subtract the coordinates of the initial point \\(P\\) from the coordinates of the terminal point \\(Q\\). The formula is \\(\\vec{PQ} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). Given \\(P = (2, 3)\\) and \\(Q = (5, 7)\\), we have \\(x_1 = 2\\), \\(y_1 = 3\\), \\(x_2 = 5\\), and \\(y_2 = 7\\). Applying the formula: \\(\\vec{PQ} = \\langle 5 - 2, 7 - 3 \\rangle\\) \\(\\vec{PQ} = \\langle 3, 4 \\rangle\\) Therefore, the component form of the vector \\(\\vec{PQ}\\) is \\(\\langle 3, 4 \\rangle\\)."
         },
         {
-          "q": "Consider the vector \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\). What is the magnitude of this vector?",
+          "q": "Semi-Log Linearization (harmonic spring #560): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing a parametric curve's components",
           "choices": [
-            "5",
-            "7",
-            "12",
-            "25"
+            "\\(9\\)",
+            "\\(7\\)",
+            "\\(11\\)",
+            "\\(6\\)"
           ],
           "correct": 0,
-          "answer": "The magnitude of a vector \\(\\mathbf{v} = \\langle x, y \\rangle\\) is given by the formula \\(|\\mathbf{v}| = \\sqrt{x^2 + y^2}\\). For the given vector \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\), we have x = 3 and y = 4. Substituting these values into the formula: \\(|\\mathbf{v}| = \\sqrt{3^2 + 4^2}\\) \\(|\\mathbf{v}| = \\sqrt{9 + 16}\\) \\(|\\mathbf{v}| = \\sqrt{25}\\) \\(|\\mathbf{v}| = 5\\) Therefore, the magnitude of the vector \\(\\mathbf{v}\\) is 5.",
-          "explanation": "The magnitude of a vector \\(\\mathbf{v} = \\langle x, y \\rangle\\) is given by the formula \\(|\\mathbf{v}| = \\sqrt{x^2 + y^2}\\). For the given vector \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\), we have x = 3 and y = 4. Substituting these values into the formula: \\(|\\mathbf{v}| = \\sqrt{3^2 + 4^2}\\) \\(|\\mathbf{v}| = \\sqrt{9 + 16}\\) \\(|\\mathbf{v}| = \\sqrt{25}\\) \\(|\\mathbf{v}| = 5\\) Therefore, the magnitude of the vector \\(\\mathbf{v}\\) is 5."
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 7 + 2 = 9\\).",
+          "explanation": "The magnitude of a vector \\(\\mathbf{v} = \\langle x, y \\rangle\\) is given by the formula \\(|\\mathbf{v}| = \\sqrt{x^2 + y^2}\\). For the given vector \\(\\mathbf{v} = \\langle 3, 4 \\rangle\\), we have x = 3 and y = 4. Substituting these values into the formula: \\(|\\mathbf{v}| = \\sqrt{3^2 + 4^2}\\) \\(|\\mathbf{v}| = \\sqrt{9 + 16}\\) \\(|\\mathbf{v}| = \\sqrt{25}\\) \\(|\\mathbf{v}| = 5\\) Therefore, the magnitude of the vector \\(\\mathbf{v}\\) is 5.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "1",
+                "3",
+                "5",
+                "7"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for harmonic spring #560"
+          }
         },
         {
           "q": "Two lines have slopes \\(m_1=-1\\), \\(m_2=-1\\) and y-intercepts \\(b_1=-2\\), \\(b_2=-2\\). Classify the system.",
@@ -524,19 +800,56 @@
           "explanation": "\\(\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{10}{8}\\langle 2,2\\rangle=\\left\\langle \\frac{5}{2},\\frac{5}{2}\\right\\rangle\\)."
         },
         {
-          "q": "Find the angle between \\(\\mathbf{u}=\\langle 2,1\\rangle\\) and \\(\\mathbf{v}=\\langle 4,2\\rangle\\) (to one decimal place).",
+          "q": "Exponential Function Graph (structural arch #563): Using the plotted exponential function \\(g(x) = 5\\cdot 2^x + 3\\) with horizontal asymptote \\(y = 3\\), evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Comparing parametric speed and direction",
           "choices": [
-            "0.0\\(^\\circ\\)",
-            "20.0\\(^\\circ\\)",
-            "180.0\\(^\\circ\\)",
-            "10.0\\(^\\circ\\)"
+            "\\(13\\)",
+            "\\(20\\)",
+            "\\(26\\)",
+            "\\(23\\)"
           ],
-          "correct": 0,
-          "answer": "\\(\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}=\\frac{10}{2.24\\times4.47}\\approx1.0\\), so \\(\\theta\\approx0.0^\\circ\\).",
-          "explanation": "\\(\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}=\\frac{10}{2.24\\times4.47}\\approx1.0\\), so \\(\\theta\\approx0.0^\\circ\\)."
+          "correct": 3,
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 5(2^2) + 3 = 20 + 3 = 23\\).",
+          "explanation": "\\(\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}=\\frac{10}{2.24\\times4.47}\\approx1.0\\), so \\(\\theta\\approx0.0^\\circ\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              25
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "5*2^x + 3",
+                "color": "#2563eb",
+                "label": "g(x) = 5·2^x + 3"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 8,
+                "label": "(0, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 5·2^x + 3 (#563)"
+          }
         },
         {
           "q": "Find the parametric equations for the ellipse \\(\\frac{x^2}{16}+\\frac{y^2}{9}=1\\).",
@@ -569,19 +882,40 @@
           "explanation": "Asymptotes of \\(\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1\\) are \\(y=\\pm\\frac{b}{a}x=\\pm \\frac{3}{2} x\\)."
         },
         {
-          "q": "Find the period and phase shift of \\(y=\\tan(1/2x-1)\\).",
+          "q": "Semi-Log Linearization (tidal gauge #564): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Evaluating parametric equations",
           "choices": [
-            "Period \\(2\\pi\\), phase shift 0",
-            "Period \\(2\\pi\\), phase shift \\(2\\) units left",
-            "Period \\(\\pi\\), phase shift \\(2\\) units right",
-            "Period \\(2\\pi\\), phase shift \\(2\\) units right"
+            "\\(13\\)",
+            "\\(11\\)",
+            "\\(15\\)",
+            "\\(22\\)"
           ],
-          "correct": 3,
-          "answer": "For \\(\\tan(Bx-C)\\): period \\(=\\frac{\\pi}{B}=2\\pi\\), phase shift \\(=\\frac{C}{B}=2\\) units right.",
-          "explanation": "For \\(\\tan(Bx-C)\\): period \\(=\\frac{\\pi}{B}=2\\pi\\), phase shift \\(=\\frac{C}{B}=2\\) units right."
+          "correct": 0,
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 11 + 2 = 13\\).",
+          "explanation": "For \\(\\tan(Bx-C)\\): period \\(=\\frac{\\pi}{B}=2\\pi\\), phase shift \\(=\\frac{C}{B}=2\\) units right.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "5",
+                "7",
+                "9",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for tidal gauge #564"
+          }
         }
       ]
     },
@@ -631,20 +965,57 @@
           }
         },
         {
-          "q": "Let \\(m\\) be a real parameter. Consider the quadratic equation \\(z^2 - 2mz + (m^2 + 3m - 6) = 0\\) with complex roots \\(z_1\\) and \\(z_2\\). In the complex plane, the origin \\(O(0)\\) and the points representing \\(z_1\\) and \\(z_2\\) form the vertices of a non-degenerate equilateral triangle. What is the sum of the areas of all possible equilateral triangles that can be formed in this way?",
+          "q": "Exponential Function Graph (pendulum swing #567): Using the plotted exponential function \\(g(x) = 5\\cdot 2^x + 1\\) with horizontal asymptote \\(y = 1\\), evaluate \\(g(2)\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Parametric equations for lines and conics",
           "choices": [
-            "\\(15\\sqrt{3}\\)",
-            "\\(12\\sqrt{3}\\)",
-            "\\(\\frac{15\\sqrt{3}}{2}\\)",
-            "\\(9\\sqrt{3}\\)"
+            "\\(11\\)",
+            "\\(20\\)",
+            "\\(24\\)",
+            "\\(21\\)"
           ],
-          "correct": 0,
-          "answer": "We solve the problem by synthesizing Vieta's formulas with the geometric properties of complex numbers. **Step 1: Condition for an Equilateral Triangle with the Origin** In the complex plane, three points \\(0\\), \\(z_1\\), and \\(z_2\\) form the vertices of an equilateral triangle if and only if one non-zero vertex is obtained by rotating the other about the origin by \\(\\pm \\frac{\\pi}{3}\\): \\(\\frac{z_2}{z_1} = e^{\\pm i\\pi/3} = \\frac{1 \\pm i\\sqrt{3}}{2}\\) This is equivalent to the quadratic in \\(\\frac{z_2}{z_1}\\): \\(\\left(\\frac{z_2}{z_1}\\right)^2 - \\frac{z_2}{z_1} + 1 = 0 \\Leftrightarrow z_1^2 - z_1 z_2 + z_2^2 = 0\\) Rewriting in terms of the elementary symmetric polynomials \\(z_1 + z_2\\) and \\(z_1 z_2\\): \\((z_1 + z_2)^2 - 3z_1 z_2 = 0\\) **Step 2: Apply Vieta's Formulas** From the given equation \\(z^2 - 2mz + (m^2 + 3m - 6) = 0\\): \\(z_1 + z_2 = 2m\\) \\(z_1 z_2 = m^2 + 3m - 6\\) Substituting these into the equilateral condition: \\((2m)^2 - 3(m^2 + 3m - 6) = 0\\) \\(4m^2 - 3m^2 - 9m + 18 = 0\\) \\(m^2 - 9m + 18 = 0\\) Factoring gives: \\((m - 3)(m - 6) = 0 \\Rightarrow m = 3 \\quad \\mathrm{or} \\quad m = 6\\) **Step 3: Verify the Roots are Non-Real (Non-Degenerate Triangle)** The discriminant of the quadratic in \\(z\\) is: \\(\\Delta = (-2m)^2 - 4(1)(m^2 + 3m - 6) = 4m^2 - 4m^2 - 12m + 24 = 24 - 12m\\) For \\(m = 3\\), \\(\\Delta = 24 - 36 = -12 < 0\\), so the roots are distinct non-real complex numbers. For \\(m = 6\\), \\(\\Delta = 24 - 72 = -48 < 0\\), so the roots are also distinct non-real complex numbers. Thus, both values yield valid, non-degenerate triangles. **Step 4: Compute the Areas of the Triangles** Because the origin is a vertex of each equilateral triangle, the side length \\(s\\) satisfies: \\(s^2 = |z_1 - 0|^2 = |z_1|^2 = z_1 \\overline{z_1}\\) Since the coefficients of the quadratic in \\(z\\) are real and the roots are non-real, \\(z_1\\) and \\(z_2\\) are complex conjugates (\\(z_2 = \\overline{z_1}\\)). Thus: \\(s^2 = z_1 z_2 = m^2 + 3m - 6\\) The area of an equilateral triangle with side length \\(s\\) is: \\(\\mathrm{Area} = \\frac{\\sqrt{3}}{4} s^2 = \\frac{\\sqrt{3}}{4}(m^2 + 3m - 6)\\) - For \\(m = 3\\): \\(s_1^2 = 3^2 + 3(3) - 6 = 12 \\Rightarrow \\mathrm{Area}_1 = \\frac{\\sqrt{3}}{4}(12) = 3\\sqrt{3}\\) - For \\(m = 6\\): \\(s_2^2 = 6^2 + 3(6) - 6 = 48 \\Rightarrow \\mathrm{Area}_2 = \\frac{\\sqrt{3}}{4}(48) = 12\\sqrt{3}\\) The sum of the possible areas is: \\(3\\sqrt{3} + 12\\sqrt{3} = 15\\sqrt{3}\\) **Common Misconceptions:** - Choice B (\\(12\\sqrt{3}\\)) considers only the maximum area from \\(m = 6\\), failing to sum both valid configurations. - Choice C (\\(\\frac{15\\sqrt{3}}{2}\\)) occurs if one calculates the area using \\(\\frac{1}{2} b h\\) with base \\(b = \\mathrm{Im}(z_1) = \\sqrt{3m-6}\\) instead of the full segment \\(|z_1 - z_2| = 2\\sqrt{3m-6}\\). - Choice D (\\(9\\sqrt{3}\\)) results from an arithmetic error when evaluating \\(s^2\\) or confusing the side length with the real part \\(m\\).",
+          "correct": 3,
+          "answer": "Substituting \\(x = 2\\) gives \\(g(2) = 5(2^2) + 1 = 20 + 1 = 21\\).",
           "explanation": "We solve the problem by synthesizing Vieta's formulas with the geometric properties of complex numbers. **Step 1: Condition for an Equilateral Triangle with the Origin** In the complex plane, three points \\(0\\), \\(z_1\\), and \\(z_2\\) form the vertices of an equilateral triangle if and only if one non-zero vertex is obtained by rotating the other about the origin by \\(\\pm \\frac{\\pi}{3}\\): \\(\\frac{z_2}{z_1} = e^{\\pm i\\pi/3} = \\frac{1 \\pm i\\sqrt{3}}{2}\\) This is equivalent to the quadratic in \\(\\frac{z_2}{z_1}\\): \\(\\left(\\frac{z_2}{z_1}\\right)^2 - \\frac{z_2}{z_1} + 1 = 0 \\Leftrightarrow z_1^2 - z_1 z_2 + z_2^2 = 0\\) Rewriting in terms of the elementary symmetric polynomials \\(z_1 + z_2\\) and \\(z_1 z_2\\): \\((z_1 + z_2)^2 - 3z_1 z_2 = 0\\) **Step 2: Apply Vieta's Formulas** From the given equation \\(z^2 - 2mz + (m^2 + 3m - 6) = 0\\): \\(z_1 + z_2 = 2m\\) \\(z_1 z_2 = m^2 + 3m - 6\\) Substituting these into the equilateral condition: \\((2m)^2 - 3(m^2 + 3m - 6) = 0\\) \\(4m^2 - 3m^2 - 9m + 18 = 0\\) \\(m^2 - 9m + 18 = 0\\) Factoring gives: \\((m - 3)(m - 6) = 0 \\Rightarrow m = 3 \\quad \\mathrm{or} \\quad m = 6\\) **Step 3: Verify the Roots are Non-Real (Non-Degenerate Triangle)** The discriminant of the quadratic in \\(z\\) is: \\(\\Delta = (-2m)^2 - 4(1)(m^2 + 3m - 6) = 4m^2 - 4m^2 - 12m + 24 = 24 - 12m\\) For \\(m = 3\\), \\(\\Delta = 24 - 36 = -12 < 0\\), so the roots are distinct non-real complex numbers. For \\(m = 6\\), \\(\\Delta = 24 - 72 = -48 < 0\\), so the roots are also distinct non-real complex numbers. Thus, both values yield valid, non-degenerate triangles. **Step 4: Compute the Areas of the Triangles** Because the origin is a vertex of each equilateral triangle, the side length \\(s\\) satisfies: \\(s^2 = |z_1 - 0|^2 = |z_1|^2 = z_1 \\overline{z_1}\\) Since the coefficients of the quadratic in \\(z\\) are real and the roots are non-real, \\(z_1\\) and \\(z_2\\) are complex conjugates (\\(z_2 = \\overline{z_1}\\)). Thus: \\(s^2 = z_1 z_2 = m^2 + 3m - 6\\) The area of an equilateral triangle with side length \\(s\\) is: \\(\\mathrm{Area} = \\frac{\\sqrt{3}}{4} s^2 = \\frac{\\sqrt{3}}{4}(m^2 + 3m - 6)\\) - For \\(m = 3\\): \\(s_1^2 = 3^2 + 3(3) - 6 = 12 \\Rightarrow \\mathrm{Area}_1 = \\frac{\\sqrt{3}}{4}(12) = 3\\sqrt{3}\\) - For \\(m = 6\\): \\(s_2^2 = 6^2 + 3(6) - 6 = 48 \\Rightarrow \\mathrm{Area}_2 = \\frac{\\sqrt{3}}{4}(48) = 12\\sqrt{3}\\) The sum of the possible areas is: \\(3\\sqrt{3} + 12\\sqrt{3} = 15\\sqrt{3}\\) **Common Misconceptions:** - Choice B (\\(12\\sqrt{3}\\)) considers only the maximum area from \\(m = 6\\), failing to sum both valid configurations. - Choice C (\\(\\frac{15\\sqrt{3}}{2}\\)) occurs if one calculates the area using \\(\\frac{1}{2} b h\\) with base \\(b = \\mathrm{Im}(z_1) = \\sqrt{3m-6}\\) instead of the full segment \\(|z_1 - z_2| = 2\\sqrt{3m-6}\\). - Choice D (\\(9\\sqrt{3}\\)) results from an arithmetic error when evaluating \\(s^2\\) or confusing the side length with the real part \\(m\\).",
-          "cross_lesson": "1.02 Rational Functions & Asymptotes"
+          "cross_lesson": "1.02 Rational Functions & Asymptotes",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              0,
+              23
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "5*2^x + 1",
+                "color": "#2563eb",
+                "label": "g(x) = 5·2^x + 1"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential curve g(x) = 5·2^x + 1 (#567)"
+          }
         },
         {
           "q": "Consider the system of linear equations represented by the matrix equation \\(\\left(1, 1, 1 ; 1, 2, 3 ; 3, 5, k\\right) \\left(x ; y ; z\\right) = \\left(6 ; 14 ; m\\right)\\) where \\(k\\) and \\(m\\) are real constants. Suppose the system is consistent and has infinitely many solutions. Let \\(P(x, y, z)\\) be the unique solution that minimizes the squared Euclidean distance from the origin, \\(d^2 = x^2 + y^2 + z^2\\). What is the value of \\(k + m + d^2\\)?",
@@ -690,20 +1061,41 @@
           "correct": 2
         },
         {
-          "q": "If the real numbers \\(x\\) and \\(y\\) satisfy the system of equations \\(x^3 - 3xy^2, = 10 ; 3x^2y - y^3, = 5\\) what is the value of \\(x^2 + y^2\\)?",
+          "q": "Semi-Log Linearization (fluid pressure #568): The semi-log values table shows linear relationship between \\(x\\) and \\(\\ln y\\). Using constant additive rate of change, predict \\(\\ln y\\) at \\(x = 4\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Restricting the parameter's domain",
           "choices": [
-            "\\(\\sqrt{5}\\)",
-            "\\(5\\)",
-            "\\(5\\sqrt{5}\\)",
-            "\\(25\\)"
+            "\\(12\\)",
+            "\\(10\\)",
+            "\\(14\\)",
+            "\\(18\\)"
           ],
-          "correct": 1,
-          "answer": "We can solve this system using algebraic expansion or complex numbers. **Method 1: Squaring and Adding** Square both equations and add them together: \\((x^3 - 3xy^2)^2 + (3x^2y - y^3)^2 = 10^2 + 5^2 = 100 + 25 = 125\\) Expanding the left-hand side: \\((x^6 - 6x^4y^2 + 9x^2y^4) + (9x^4y^2 - 6x^2y^4 + y^6) = x^6 + 3x^4y^2 + 3x^2y^4 + y^6\\) Notice that this expression is the binomial expansion of \\((x^2 + y^2)^3\\): \\((x^2 + y^2)^3 = 125\\) Taking the real cube root of both sides gives: \\(x^2 + y^2 = \\sqrt[3]{125} = 5\\) **Method 2: Complex Numbers** Let \\(z = x + iy\\). By De Moivre's formula / binomial expansion: \\(z^3 = (x + iy)^3 = (x^3 - 3xy^2) + i(3x^2y - y^3) = 10 + 5i\\) Taking the modulus of both sides: \\(|z^3| = |z|^3 = |10 + 5i| = \\sqrt{10^2 + 5^2} = \\sqrt{125} = 5\\sqrt{5}\\) Since \\(|z| = \\sqrt{x^2 + y^2}\\), we have: \\((x^2 + y^2)^{3/2} = 5^{3/2} \\Rightarrow x^2 + y^2 = 5\\) **Misconception Traps:** - Choice C, \\(5\\sqrt{5}\\), occurs if one incorrectly assumes the sum of squares yields \\((x^2 + y^2)^2\\) instead of \\((x^2 + y^2)^3\\), computing \\(\\sqrt{125}\\). - Choice D, \\(25\\), arises from mistakenly dividing \\(125\\) by \\(5\\) rather than taking the cube root. - Choice A, \\(\\sqrt{5}\\), results from erroneously taking the fourth root or an extra square root.",
+          "correct": 0,
+          "answer": "Since \\(\\ln y\\) increases by constant step \\(2\\) per unit increase in \\(x\\), at \\(x = 4\\) we have \\(\\ln y = 10 + 2 = 12\\).",
           "explanation": "We can solve this system using algebraic expansion or complex numbers. **Method 1: Squaring and Adding** Square both equations and add them together: \\((x^3 - 3xy^2)^2 + (3x^2y - y^3)^2 = 10^2 + 5^2 = 100 + 25 = 125\\) Expanding the left-hand side: \\((x^6 - 6x^4y^2 + 9x^2y^4) + (9x^4y^2 - 6x^2y^4 + y^6) = x^6 + 3x^4y^2 + 3x^2y^4 + y^6\\) Notice that this expression is the binomial expansion of \\((x^2 + y^2)^3\\): \\((x^2 + y^2)^3 = 125\\) Taking the real cube root of both sides gives: \\(x^2 + y^2 = \\sqrt[3]{125} = 5\\) **Method 2: Complex Numbers** Let \\(z = x + iy\\). By De Moivre's formula / binomial expansion: \\(z^3 = (x + iy)^3 = (x^3 - 3xy^2) + i(3x^2y - y^3) = 10 + 5i\\) Taking the modulus of both sides: \\(|z^3| = |z|^3 = |10 + 5i| = \\sqrt{10^2 + 5^2} = \\sqrt{125} = 5\\sqrt{5}\\) Since \\(|z| = \\sqrt{x^2 + y^2}\\), we have: \\((x^2 + y^2)^{3/2} = 5^{3/2} \\Rightarrow x^2 + y^2 = 5\\) **Misconception Traps:** - Choice C, \\(5\\sqrt{5}\\), occurs if one incorrectly assumes the sum of squares yields \\((x^2 + y^2)^2\\) instead of \\((x^2 + y^2)^3\\), computing \\(\\sqrt{125}\\). - Choice D, \\(25\\), arises from mistakenly dividing \\(125\\) by \\(5\\) rather than taking the cube root. - Choice A, \\(\\sqrt{5}\\), results from erroneously taking the fourth root or an extra square root.",
-          "cross_lesson": "2.02 Logarithmic Functions & Properties"
+          "cross_lesson": "2.02 Logarithmic Functions & Properties",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(\\ln y\\)",
+                "4",
+                "6",
+                "8",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Semi-log dataset (x, ln y) for fluid pressure #568"
+          }
         },
         {
           "q": "In the system of linear equations below, \\(k\\) is a real constant. \\((k - 1)x + 6y, = 18 ; 2x + ky, = 12\\) For which value of \\(k\\) does the system have infinitely many solutions \\((x, y)\\)?",

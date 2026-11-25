@@ -1014,6 +1014,11 @@
     if(!fig) return '';
     if(typeof fig==='string') return _sanitizeSvgString(fig);
     fig = _normalizeFigSpec(fig);
+    var _figIsAr = Boolean((fig && fig._lang === 'ar') || (typeof document !== 'undefined' && document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl')));
+    if(_figIsAr && fig && typeof fig === 'object'){
+      if(fig.title_ar) fig.title = fig.title_ar;
+      if(fig.caption_ar) fig.caption = fig.caption_ar;
+    }
     /* one shared entry point: figures authored in the richer renderMathFigure schema
        (function_graph / geometry_2d / geometry_3d / bar_chart / pie / number_line / table /
         box_plot / histogram / dot_plot / unit_circle / sinusoid / normal_curve / slope_field / two_way_table)
@@ -1045,7 +1050,9 @@
         fig.type==='argand'||fig.type==='argand_diagram'||fig.type==='complex_plane'||
         fig.type==='network_graph'||fig.type==='weighted_graph'||fig.type==='graph_network'||
         fig.type==='shaded_region'||fig.type==='qudrat_shaded'||
-        fig.type==='conic_section'||fig.type==='conic')){
+        fig.type==='conic_section'||fig.type==='conic'||
+        fig.type==='polar_graph'||fig.type==='polarGraph'||fig.type==='polar'||
+        fig.type==='grouped_bar'||fig.type==='groupedBar'||fig.type==='multi_line'||fig.type==='multiLine')){
       var inner=window.renderMathFigure(fig);
       if(!inner) return '';
       if(fig.type==='table'||fig.type==='two_way_table'||fig.type==='twoWayTable'||fig.type==='twowaytable') return inner;
@@ -1242,13 +1249,61 @@
         }
       }
       s+='</g>';
-      s+='<text x="'+(W-padR+8)+'" y="'+(oy+4).toFixed(1)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2">x</text>';
-      s+='<text x="'+(ox+6).toFixed(1)+'" y="'+(padT-6)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2">y</text>';
+      s+='<text x="'+(W-padR+8)+'" y="'+(oy+4).toFixed(1)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2">'+esc(fig.xlabel||'x')+'</text>';
+      s+='<text x="'+(ox+6).toFixed(1)+'" y="'+(padT-6)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2">'+esc(fig.ylabel||'y')+'</text>';
       /* 5. Reference lines & asymptotes (lines drawn before curves/labels) */
       if(fig.asymptoteX!=null){
         var axPx=padL+(fig.asymptoteX-xl[0])*sx;
         if(axPx>=padL && axPx<=W-padR){
           s+='<line x1="'+axPx.toFixed(1)+'" y1="'+padT+'" x2="'+axPx.toFixed(1)+'" y2="'+(plotH-padB)+'" stroke="'+FIG_AMBER+'" stroke-width="1.3" stroke-dasharray="4,3"/>';
+        }
+      }
+      if(Array.isArray(fig.asymptotes)){
+        fig.asymptotes.forEach(function(am){
+          if(!am) return;
+          if(am.type==='h'){
+            var apy=padT+(yl[1]-Number(am.v))*sy;
+            if(apy>=padT-2 && apy<=plotH-padB+2){
+              s+='<line x1="'+padL+'" y1="'+apy.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+apy.toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="1.3" stroke-dasharray="4,3"/>';
+            }
+          } else if(am.type==='s'){
+            var mm=Number(am.m||0), bb=Number(am.b||0);
+            var yL=mm*xl[0]+bb, yR=mm*xl[1]+bb;
+            s+='<line x1="'+padL+'" y1="'+(padT+(yl[1]-yL)*sy).toFixed(1)+'" x2="'+(W-padR)+'" y2="'+(padT+(yl[1]-yR)*sy).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="1.25" stroke-dasharray="5,3"/>';
+          } else {
+            var apx=padL+(Number(am.v)-xl[0])*sx;
+            if(apx>=padL-2 && apx<=W-padR+2){
+              s+='<line x1="'+apx.toFixed(1)+'" y1="'+padT+'" x2="'+apx.toFixed(1)+'" y2="'+(plotH-padB)+'" stroke="'+FIG_AMBER+'" stroke-width="1.3" stroke-dasharray="4,3"/>';
+            }
+          }
+        });
+      }
+      if(fig.riemann && fig.riemann.a != null && fig.riemann.b != null){
+        var rm = fig.riemann;
+        var rN = Math.max(1, Math.min(24, Math.round(Number(rm.n || 4))));
+        var ra = Number(rm.a), rb = Number(rm.b);
+        var rDx = (rb - ra) / rN;
+        var rFn = rm.expr || rm.fn || (normFns[0] && normFns[0].fn) || '0';
+        var rCol = rm.color || FIG_INDIGO2;
+        var pyZero = padT + (yl[1] - 0) * sy;
+        for(var ri=0; ri<rN; ri++){
+          var rx1 = ra + ri * rDx, rx2 = rx1 + rDx;
+          var px1 = padL + (rx1 - xl[0]) * sx, px2 = padL + (rx2 - xl[0]) * sx;
+          if(rm.rule === 'trap'){
+            var ry1 = _safeEval(rFn, rx1), ry2 = _safeEval(rFn, rx2);
+            if(isFinite(ry1) && isFinite(ry2)){
+              var pyT1 = padT + (yl[1] - ry1) * sy, pyT2 = padT + (yl[1] - ry2) * sy;
+              s += '<polygon points="'+px1.toFixed(1)+','+pyZero.toFixed(1)+' '+px1.toFixed(1)+','+pyT1.toFixed(1)+' '+px2.toFixed(1)+','+pyT2.toFixed(1)+' '+px2.toFixed(1)+','+pyZero.toFixed(1)+'" fill="'+rCol+'" fill-opacity="0.18" stroke="'+rCol+'" stroke-width="1.2"/>';
+            }
+          } else {
+            var rSample = (rm.rule === 'right') ? rx2 : (rm.rule === 'midpoint' ? (rx1 + rx2) / 2 : rx1);
+            var ry = _safeEval(rFn, rSample);
+            if(isFinite(ry)){
+              var pyR = padT + (yl[1] - ry) * sy;
+              var topY = Math.min(pyZero, pyR), hBar = Math.abs(pyZero - pyR);
+              s += '<rect x="'+px1.toFixed(1)+'" y="'+topY.toFixed(1)+'" width="'+Math.max(1, px2 - px1).toFixed(1)+'" height="'+hBar.toFixed(1)+'" fill="'+rCol+'" fill-opacity="0.18" stroke="'+rCol+'" stroke-width="1.2"/>';
+            }
+          }
         }
       }
       (fig.hlines||[]).forEach(function(hl){
@@ -1308,6 +1363,30 @@
         }
         if(pts.length>1)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'+(fDash?' stroke-dasharray="'+(typeof fDash==='string'?fDash:'4,3')+'"':'')+'/>';
       });
+      if(Array.isArray(fig.segments)){
+        fig.segments.forEach(function(sg){
+          if(!sg) return;
+          var x1=padL+(Number(sg.x1)-xl[0])*sx, y1=padT+(yl[1]-Number(sg.y1))*sy;
+          var x2=padL+(Number(sg.x2)-xl[0])*sx, y2=padT+(yl[1]-Number(sg.y2))*sy;
+          var sgCol=sg.color||FIG_INDIGO2;
+          var dAttr=sg.dash?(' stroke-dasharray="'+(typeof sg.dash==='string'?sg.dash:'4,3')+'"'):'';
+          var mAttr=sg.arrow?' marker-end="url(#arr)"':'';
+          s+='<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="'+sgCol+'" stroke-width="2.2" stroke-linecap="round"'+dAttr+mAttr+'/>';
+        });
+      }
+      if(Array.isArray(fig.semicircles)){
+        fig.semicircles.forEach(function(sc){
+          if(!sc || !(Number(sc.r) > 0)) return;
+          var cx=Number(sc.cx||0), cy=Number(sc.cy||0), rad=Number(sc.r);
+          var rxPx=rad*sx, ryPx=rad*sy;
+          var pStart=padL+((cx-rad)-xl[0])*sx, pEnd=padL+((cx+rad)-xl[0])*sx, pyC=padT+(yl[1]-cy)*sy;
+          var sweep=(sc.upper===false)?0:1;
+          var scCol=sc.color||FIG_INDIGO2;
+          var dPath='M '+pStart.toFixed(1)+' '+pyC.toFixed(1)+' A '+rxPx.toFixed(1)+' '+ryPx.toFixed(1)+' 0 0 '+sweep+' '+pEnd.toFixed(1)+' '+pyC.toFixed(1);
+          if(sc.shade) s+='<path d="'+dPath+' Z" fill="'+scCol+'" fill-opacity="0.14"/>';
+          s+='<path d="'+dPath+'" fill="none" stroke="'+scCol+'" stroke-width="2.2" stroke-linecap="round"/>';
+        });
+      }
       /* 7. Point circles */
       cleanPts.forEach(function(p){
         var px=padL+(p.x-xl[0])*sx,py=padT+(yl[1]-p.y)*sy;
@@ -2637,14 +2716,29 @@ function evalFn(expr,x){
   return NaN;
 }
 
+function _figIsAr(spec){
+  return Boolean((spec && spec._lang === 'ar') || (typeof document !== 'undefined' && document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl')));
+}
+function _figPickTitle(spec){
+  if(!spec) return '';
+  return (_figIsAr(spec) && spec.title_ar) ? spec.title_ar : (spec.title || '');
+}
+function _figPickCaption(spec){
+  if(!spec) return '';
+  return (_figIsAr(spec) && spec.caption_ar) ? spec.caption_ar : (spec.caption || '');
+}
+
 function renderTableFigure(spec){
   if(!spec) return '';
   if(typeof spec==='string') return spec;
-  var headers = spec.headers || [];
-  var rows = spec.rows || spec.data || [];
-  var caption = spec.caption || '';
+  var isAr = _figIsAr(spec) && spec.dir !== 'ltr';
+  var headers = (isAr && Array.isArray(spec.headers_ar)) ? spec.headers_ar : (spec.headers || []);
+  var rows = (isAr && Array.isArray(spec.rows_ar)) ? spec.rows_ar : (spec.rows || spec.data || []);
+  var caption = _figPickCaption(spec);
   var cls = spec.cls || 'exam-table';
-  var h = '<table class="' + cls + '">';
+  if(spec.orientation === 'horizontal') cls += ' exam-table-horiz';
+  var dirAttr = spec.dir ? ' dir="'+spec.dir+'"' : (isAr ? ' dir="rtl"' : '');
+  var h = '<div class="exam-table-wrap"'+dirAttr+'><table class="' + cls + '">';
   if(caption) h += '<caption>' + caption + '</caption>';
   if(headers && headers.length){
     h += '<thead><tr>';
@@ -2670,7 +2764,7 @@ function renderTableFigure(spec){
     }
     h += '</tbody>';
   }
-  h += '</table>';
+  h += '</table></div>';
   return h;
 }
 window.renderTableFigure = renderTableFigure;
@@ -2680,6 +2774,11 @@ function renderMathFigure(spec){
   if(typeof spec==='string') return spec;
   if(spec.svg) return spec.svg;
   if(typeof window._normalizeFigSpec === 'function') spec = window._normalizeFigSpec(spec);
+  if(_figIsAr(spec) && spec && typeof spec === 'object'){
+    if(spec.title_ar || spec.caption_ar){
+      spec = Object.assign({}, spec, spec.title_ar ? { title: spec.title_ar } : null, spec.caption_ar ? { caption: spec.caption_ar } : null);
+    }
+  }
   if(!spec.type) return '';
   switch(spec.type){
     case 'function_graph':
@@ -2783,6 +2882,15 @@ function renderMathFigure(spec){
     case 'conic_section':
     case 'conic':
       return renderConicSection(spec);
+    case 'polar_graph':
+    case 'polarGraph':
+    case 'polar':
+      return renderPolarGraph(spec);
+    case 'grouped_bar':
+    case 'groupedBar':
+    case 'multi_line':
+    case 'multiLine':
+      return renderGroupedBarOrLine(spec);
     case 'nested_triangles':
     case 'thales':
     case 'triangle_transversal':
@@ -2810,6 +2918,137 @@ function renderMathFigure(spec){
   }
 }
 window.renderMathFigure = renderMathFigure; // expose to _renderFig, which lives in a separate scope
+
+/* ── Polar Coordinate Graph ─────────────────────────────── */
+function renderPolarGraph(s){
+  var W = (+s.w > 120 ? +s.w : 280), H = (+s.h > 120 ? +s.h : 265);
+  var cap = _figPickCaption(s);
+  var cx = W / 2, cy = (H - (cap ? 18 : 0)) / 2;
+  var rMax = (+s.rMax > 0 ? +s.rMax : 4);
+  var R = Math.min(W, cy * 2) * 0.38;
+  var rings = Math.min(6, Math.max(2, Math.round(rMax)));
+  var html = '<svg direction="ltr" class="mfig-svg" viewBox="0 0 '+W+' '+H+'" width="'+W+'" role="img" aria-label="'+esc(_figA11yLabel(s))+'" style="display:block;margin:4px auto;max-width:100%;height:auto">';
+  for(var ri=1; ri<=rings; ri++){
+    var rr = R * ri / rings;
+    html += '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+rr.toFixed(1)+'" fill="none" stroke="'+FIG_GRID+'" stroke-width="0.9"/>';
+  }
+  var stepDeg = (+s.thetaStepDeg >= 15 && +s.thetaStepDeg <= 90) ? +s.thetaStepDeg : 30;
+  for(var ang=0; ang<360; ang+=stepDeg){
+    var rad = ang * Math.PI / 180;
+    var x2 = cx + R * Math.cos(rad), y2 = cy - R * Math.sin(rad);
+    html += '<line x1="'+cx.toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="'+FIG_GRID+'" stroke-width="0.75"/>';
+  }
+  html += '<line x1="'+(cx-R-14).toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+(cx+R+14).toFixed(1)+'" y2="'+cy.toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.2"/>';
+  html += '<line x1="'+cx.toFixed(1)+'" y1="'+(cy+R+12).toFixed(1)+'" x2="'+cx.toFixed(1)+'" y2="'+(cy-R-12).toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.2"/>';
+  html += '<text x="'+(cx+R+16).toFixed(1)+'" y="'+(cy+4).toFixed(1)+'" font-size="9.5" fill="'+FIG_MUTED+'">0</text>';
+  html += '<text x="'+(cx+4).toFixed(1)+'" y="'+(cy-R-5).toFixed(1)+'" font-size="9.5" fill="'+FIG_MUTED+'">π/2</text>';
+  var cols = [FIG_INDIGO2, FIG_AMBER, '#0e9f8f'];
+  var curves = Array.isArray(s.curves) ? s.curves : (s.rExpr ? [{ rExpr: s.rExpr }] : []);
+  var _safePolarEval = function(expr, t){
+    var e = String(expr || '').trim().replace(/\btheta\b/gi, 't');
+    var swapped = e.replace(/\bt\b/g, 'x');
+    var sf = (typeof _safeEval === 'function') ? _safeEval : (typeof window !== 'undefined' && typeof window._safeEval === 'function' ? window._safeEval : null);
+    if(sf) return sf(swapped, t);
+    return evalFn(swapped, t);
+  };
+  curves.forEach(function(cv, idx){
+    var col = cv.color || cols[idx % cols.length];
+    var t0 = cv.tMin != null ? +cv.tMin : 0;
+    var t1 = cv.tMax != null ? +cv.tMax : Math.PI * 2;
+    var pts = [];
+    var steps = 260;
+    for(var k=0; k<=steps; k++){
+      var tt = t0 + (t1 - t0) * k / steps;
+      var rv = _safePolarEval(cv.rExpr || cv.expr, tt);
+      if(!isFinite(rv)) continue;
+      var xx = cx + (rv / rMax) * R * Math.cos(tt);
+      var yy = cy - (rv / rMax) * R * Math.sin(tt);
+      pts.push(xx.toFixed(1) + ',' + yy.toFixed(1));
+    }
+    if(pts.length > 1){
+      html += '<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.1" stroke-linejoin="round"'+(cv.dash?' stroke-dasharray="'+cv.dash+'"':'')+'/>';
+    }
+  });
+  if(Array.isArray(s.pts)){
+    s.pts.forEach(function(pt){
+      var rr = +pt.r, th = +pt.theta;
+      var px = cx + (rr / rMax) * R * Math.cos(th), py = cy - (rr / rMax) * R * Math.sin(th);
+      html += '<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="3.6" fill="'+FIG_AMBER+'"/>';
+      if(pt.label) html += '<text x="'+(px+6).toFixed(1)+'" y="'+(py-4).toFixed(1)+'" font-size="9" font-weight="600" fill="'+FIG_INK+'">'+esc(pt.label)+'</text>';
+    });
+  }
+  if(cap) html += '<text x="'+(W/2)+'" y="'+(H-5)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="middle">'+esc(cap)+'</text>';
+  html += '</svg>';
+  return html;
+}
+
+/* ── Grouped Bar & Multi-Series Line Chart ──────────────── */
+function renderGroupedBarOrLine(s){
+  var W = (+s.w > 120 ? +s.w : 340), H = (+s.h > 120 ? +s.h : 225);
+  var cats = Array.isArray(s.categories) ? s.categories : [];
+  var series = Array.isArray(s.series) ? s.series : [];
+  var ml = 46, mr = 16, mt = s.title ? 30 : 18, mb = 48;
+  var pw = W - ml - mr, ph = H - mt - mb;
+  var allV = [];
+  series.forEach(function(sr){ (sr.values||[]).forEach(function(v){ if(isFinite(+v)) allV.push(+v); }); });
+  var yMax = Math.max(1, Math.max.apply(null, allV.length ? allV : [10])) * 1.15;
+  var yMin = 0;
+  var cols = [FIG_INDIGO2, FIG_AMBER, '#0e9f8f', '#9333ea'];
+  var html = '<svg direction="ltr" class="mfig-svg" viewBox="0 0 '+W+' '+H+'" width="'+W+'" role="img" aria-label="'+esc(_figA11yLabel(s))+'" style="display:block;margin:4px auto;max-width:100%;height:auto">';
+  if(s.title) html += _svgTitle(s.title, W, 16, 10.5, FIG_INK);
+  for(var g=0; g<=4; g++){
+    var gy = mt + ph - (ph * g / 4);
+    var yv = Math.round(yMin + (yMax - yMin) * g / 4);
+    html += '<line x1="'+ml+'" y1="'+gy.toFixed(1)+'" x2="'+(W-mr)+'" y2="'+gy.toFixed(1)+'" stroke="'+FIG_GRID+'" stroke-width="0.7"/>';
+    html += '<text x="'+(ml-5)+'" y="'+(gy+3).toFixed(1)+'" font-size="8.5" fill="'+FIG_MUTED+'" text-anchor="end">'+yv+'</text>';
+  }
+  html += '<line x1="'+ml+'" y1="'+mt+'" x2="'+ml+'" y2="'+(mt+ph)+'" stroke="'+FIG_INK+'" stroke-width="1.2"/>';
+  html += '<line x1="'+ml+'" y1="'+(mt+ph)+'" x2="'+(W-mr)+'" y2="'+(mt+ph)+'" stroke="'+FIG_INK+'" stroke-width="1.2"/>';
+  var nC = Math.max(1, cats.length), nS = Math.max(1, series.length);
+  var slotW = pw / nC;
+  if(s.type === 'multi_line' || s.type === 'multiLine'){
+    series.forEach(function(sr, si){
+      var col = sr.color || cols[si % cols.length];
+      var pts = [];
+      cats.forEach(function(_, ci){
+        var v = +(sr.values[ci] || 0);
+        var px = ml + slotW * (ci + 0.5), py = mt + ph - (v / yMax) * ph;
+        pts.push(px.toFixed(1)+','+py.toFixed(1));
+      });
+      if(pts.length > 1) html += '<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.1"/>';
+      cats.forEach(function(_, ci){
+        var v = +(sr.values[ci] || 0);
+        var px = ml + slotW * (ci + 0.5), py = mt + ph - (v / yMax) * ph;
+        html += '<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="3.2" fill="'+col+'"/>';
+      });
+    });
+  } else {
+    var grpW = slotW * 0.72, bw = grpW / nS;
+    cats.forEach(function(_, ci){
+      var gx0 = ml + slotW * ci + (slotW - grpW) / 2;
+      series.forEach(function(sr, si){
+        var col = sr.color || cols[si % cols.length];
+        var v = Math.max(0, +(sr.values[ci] || 0));
+        var bh = (v / yMax) * ph;
+        var bx = gx0 + si * bw, by = mt + ph - bh;
+        html += '<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+Math.max(2, bw - 2).toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+col+'" fill-opacity="0.82"/>';
+      });
+    });
+  }
+  cats.forEach(function(c, ci){
+    var cxLbl = ml + slotW * (ci + 0.5);
+    html += '<text x="'+cxLbl.toFixed(1)+'" y="'+(mt+ph+14).toFixed(1)+'" font-size="8.5" fill="'+FIG_INK+'" text-anchor="middle">'+esc(c)+'</text>';
+  });
+  var legX = ml;
+  series.forEach(function(sr, si){
+    var col = sr.color || cols[si % cols.length];
+    html += '<rect x="'+legX+'" y="'+(H-18)+'" width="9" height="9" fill="'+col+'"/>';
+    html += '<text x="'+(legX+13)+'" y="'+(H-10)+'" font-size="8.5" fill="'+FIG_INK+'">'+esc(sr.name||'')+'</text>';
+    legX += 24 + String(sr.name||'').length * 5.2;
+  });
+  html += '</svg>';
+  return html;
+}
 
 /* ── Function Graph ─────────────────────────────────── */
 function renderFnGraph(s){
@@ -4158,7 +4397,7 @@ function renderTwoWayTable(s){
   }
 
   var title = s.title || s.caption || '';
-  var h = '<table class="mfig-table" role="table" aria-label="'+esc(a11y)+'" style="margin:8px auto;border-collapse:collapse;font-size:12px;font-family:sans-serif;color:'+FIG_INK+';background:'+FIG_BG+';border:1px solid '+FIG_BORDER+';border-radius:6px;overflow:hidden">';
+  var h = '<div class="exam-table-wrap"'+(s.dir?' dir="'+s.dir+'"':'')+'><table class="mfig-table" role="table" aria-label="'+esc(a11y)+'" style="margin:8px auto;border-collapse:collapse;font-size:12px;font-family:sans-serif;color:'+FIG_INK+';background:'+FIG_BG+';border:1px solid '+FIG_BORDER+';border-radius:6px;overflow:hidden">';
   if(title) h += '<caption>' + esc(title) + '</caption>';
   h += '<thead><tr style="background:'+FIG_INDIGO_FILL+'">';
   h += '<th style="padding:6px 12px;border:1px solid '+FIG_BORDER+'">' + esc(corner) + '</th>';
@@ -4175,7 +4414,7 @@ function renderTwoWayTable(s){
     });
     h += '</tr>';
   });
-  h += '</tbody></table>';
+  h += '</tbody></table></div>';
   return h;
 }
 
@@ -5334,8 +5573,9 @@ function renderNetworkGraph(s){
     svg += '<text x="'+n.x.toFixed(1)+'" y="'+(n.y+4).toFixed(1)+'" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(id)+'</text>';
   });
 
-  if(s.title){
-    svg += _svgTitle(s.title, W, 16, 10.5, FIG_INK);
+  var _figTitle = _figPickTitle(s);
+  if(_figTitle){
+    svg += _svgTitle(_figTitle, W, 16, 10.5, FIG_INK);
   }
   svg += '</svg>';
   return svg;
@@ -5345,7 +5585,8 @@ window.renderNetworkGraph = renderNetworkGraph;
 /* ── Qiyas / Qudrat Shaded Region Geometry Renderer (مساحة الجزء المظلل) ─────── */
 function renderShadedRegion(s){
   var W=340, H=245;
-  var a11y = s.title || 'Shaded region geometric figure';
+  var titleTxt = _figPickTitle(s);
+  var a11y = titleTxt || 'Shaded region geometric figure';
   var svg = '<svg direction="ltr" role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
   svg += '<title>'+esc(a11y)+'</title>';
   svg += '<defs><pattern id="qudHatch" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="'+FIG_AMBER+'" stroke-width="1.6" opacity="0.55"/></pattern></defs>';
@@ -5423,8 +5664,9 @@ function renderShadedRegion(s){
     svg += '<text x="'+(cx-18)+'" y="'+(cy-rIn/2)+'" font-size="9.5" font-weight="bold" fill="'+FIG_TEAL+'">'+esc(s.rInLabel || ('r = '+rVal))+'</text>';
   }
 
-  if(s.title){
-    svg += _svgTitle(s.title, W, 16, 10.5, FIG_INK);
+  var _figTitle = _figPickTitle(s);
+  if(_figTitle){
+    svg += _svgTitle(_figTitle, W, 16, 10.5, FIG_INK);
   }
   svg += '</svg>';
   return svg;
@@ -5529,8 +5771,9 @@ function renderConicSection(s){
     svg += '<text x="'+(sx(h)-8).toFixed(1)+'" y="'+(sy(k)+14).toFixed(1)+'" font-size="9" font-weight="bold" fill="'+FIG_INDIGO+'" text-anchor="end" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">V('+h+', '+k+')</text>';
   }
 
-  if(s.title){
-    svg += _svgTitle(s.title, W, 16, 10.5, FIG_INK);
+  var _figTitle = _figPickTitle(s);
+  if(_figTitle){
+    svg += _svgTitle(_figTitle, W, 16, 10.5, FIG_INK);
   }
   svg += '</svg>';
   return svg;

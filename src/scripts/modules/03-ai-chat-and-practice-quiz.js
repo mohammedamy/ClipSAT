@@ -1144,7 +1144,8 @@ window.launchPracticeQuiz=function(mistake){
           var _rws=_rawRows.map(function(r){
             return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
           }).join('');
-          _fHtml = '<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';
+          var _tCls='exam-table'+(_f.orientation==='horizontal'?' exam-table-horiz':'');
+          _fHtml = '<div class="exam-table-wrap"><table class="'+_tCls+'">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
         } else if(window._renderFig){
           _fHtml = window._renderFig(_f);
         } else if(window.renderMathFigure){
@@ -1195,7 +1196,8 @@ window.launchPracticeQuiz=function(mistake){
             var _rws=_rawRows.map(function(r){
               return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
             }).join('');
-            _rendered = '<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';
+            var _tCls='exam-table'+(_fItem.orientation==='horizontal'?' exam-table-horiz':'');
+            _rendered = '<div class="exam-table-wrap"><table class="'+_tCls+'">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
           } else if(window._renderFig){
             _rendered = window._renderFig(_fItem);
           }

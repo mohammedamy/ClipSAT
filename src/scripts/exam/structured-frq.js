@@ -152,11 +152,18 @@
     var totalM = computeTotalMarks(q);
     var isAr = (langMode === 'ar');
 
+    var isAP = /^ap(ab|bc|pc|stats)\b/i.test(String(q.id || '')) || /\bAP\b/i.test(String(q.course || ''));
+    var unitSing = isAr ? ' نقطة' : (isAP ? ' pt' : ' mark');
+    var unitPlur = isAr ? ' نقاط' : (isAP ? ' pts' : ' marks');
+    var calcPill = (typeof q.calc === 'boolean')
+      ? '<span style="font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;background:' + (q.calc ? '#ecfdf5;color:#065f46' : '#fef2f2;color:#991b1b') + '">'
+        + (q.calc ? (isAr ? '🖩 آلة حاسبة' : '🖩 Calculator') : (isAr ? '🚫 بدون حاسبة' : '🚫 No Calc')) + '</span>'
+      : '';
     var html = '<div class="cs-sfrq-widget" data-qidx="' + qIdx + '" data-total-marks="' + totalM + '" style="margin-top:12px;border:1.5px solid var(--border,#cbd5e1);border-radius:10px;padding:14px;background:var(--paper-2,#f8fafc)">';
     html += '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border,#e2e8f0)">'
-      + '<span style="font-size:.82rem;font-weight:800;color:var(--indigo,#1e3e70);text-transform:uppercase;letter-spacing:.03em">'
+      + '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:.82rem;font-weight:800;color:var(--indigo,#1e3e70);text-transform:uppercase;letter-spacing:.03em">'
       + (q.type === 'proof' ? (isAr ? 'برهان رياضي مهيكل متعدد الأجزاء' : 'Structured Mathematical Proof') : (isAr ? 'سؤال مقالي مهيكل متعدد الفقرات' : 'Multi-Part Structured Question'))
-      + ' · [' + totalM + (isAr ? ' درجات' : ' marks') + ']</span>'
+      + ' · [' + totalM + (totalM === 1 ? unitSing : unitPlur) + ']</span>' + calcPill + '</div>'
       + '<div style="display:flex;gap:6px;flex-wrap:wrap">'
       + '<button type="button" class="cbt-nav-btn cs-sfrq-toggle-ms" onclick="window.CSStructuredFRQ&&window.CSStructuredFRQ.toggleRubric(' + qIdx + ')" style="padding:4px 10px;font-size:.76rem">'
       + (isAr ? '📋 سلم التصحيح [M1/A1/B1]' : '📋 Self-Score Rubric [M1/A1/B1]') + '</button>'

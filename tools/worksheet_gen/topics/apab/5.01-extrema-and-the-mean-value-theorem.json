@@ -9,12 +9,31 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the critical points of \\(f(x)=2x^3-3x^2-12x+5\\).",
+          "q": "Rate Table (autonomous rover motion #338): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Critical points and extrema",
-          "answer": "\\(f'(x)=6x^2-6x-12=6(x^2-x-2)=6(x-2)(x+1)\\). Critical points: \\(x=2\\) and \\(x=-1\\).",
-          "explanation": "\\(f'(x)=6x^2-6x-12=6(x^2-x-2)=6(x-2)(x+1)\\). Critical points: \\(x=2\\) and \\(x=-1\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #338)"
+          }
         },
         {
           "q": "Find the absolute maximum and minimum of \\(f(x)=x^3-3x\\) on \\([-2,3]\\), checking critical points and endpoints.",
@@ -33,12 +52,47 @@
           "explanation": "The EVT states that a continuous function on a closed interval \\([a,b]\\) attains both an absolute maximum and an absolute minimum on that interval. Since \\(f(x)=x^2-4x\\) is continuous (a polynomial) and \\([0,5]\\) is closed, the EVT guarantees both extrema exist."
         },
         {
-          "q": "Verify that Rolle's Theorem applies to \\(f(x)=x^2-4x+3\\) on \\([1,3]\\), and find the value(s) of \\(c\\) guaranteed by the theorem.",
+          "q": "In solar array output experiment #40, a particle moves along the \\(x\\)-axis with velocity \\(v(t) = 3t^2 - 12t + 9\\) m/s for \\(0 \\le t \\le 4\\), as shown.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Rolle's Theorem",
-          "answer": "\\(f(1)=0\\) and \\(f(3)=0\\): equal endpoint values, and \\(f\\) is continuous and differentiable everywhere, so Rolle's Theorem applies. \\(f'(x)=2x-4=0\\) gives \\(c=2\\), which lies in \\((1,3)\\).",
-          "explanation": "\\(f(1)=0\\) and \\(f(3)=0\\): equal endpoint values, and \\(f\\) is continuous and differentiable everywhere, so Rolle's Theorem applies. \\(f'(x)=2x-4=0\\) gives \\(c=2\\), which lies in \\((1,3)\\)."
+          "answer": "(a) \\(a(t) = 6t - 12\\), so \\(a(1) = -6\\). (b) \\(a(t) = 0 \\implies t = 2\\). (c) \\(\\int_0^3 v(t)\\,dt = \\left[1t^3 - \\frac{12}{2}t^2 + 9t\\right]_0^3 = 0\\). (d) Average velocity \\(= \\frac{1}{3}\\int_0^3 v(t)\\,dt = 0\\).",
+          "explanation": "(a) \\(a(t) = 6t - 12\\), so \\(a(1) = -6\\). (b) \\(a(t) = 0 \\implies t = 2\\). (c) \\(\\int_0^3 v(t)\\,dt = \\left[1t^3 - \\frac{12}{2}t^2 + 9t\\right]_0^3 = 0\\). (d) Average velocity \\(= \\frac{1}{3}\\int_0^3 v(t)\\,dt = 0\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              -5,
+              12
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - 1)*(x - 3)",
+                "color": "#2563eb",
+                "label": "v(t)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 1,
+                "y": 0,
+                "label": "t=1"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "t=3"
+              }
+            ],
+            "xlabel": "t (s)",
+            "ylabel": "v(t) (m/s)",
+            "caption": "Velocity profile v(t) for particle #40"
+          }
         },
         {
           "q": "Explain why Rolle's Theorem does NOT apply to \\(f(x)=|x-2|\\) on \\([0,4]\\), even though \\(f(0)=f(4)=2\\).",
@@ -57,12 +111,31 @@
           "explanation": "Average rate of change: \\(\\frac{f(2)-f(0)}{2-0}=\\frac{8}{2}=4\\). Need \\(f'(c)=3c^2=4\\): \\(c^2=\\frac{4}{3}\\), \\(c=\\frac{2}{\\sqrt{3}}\\approx1.15\\) (taking the positive root within \\([0,2]\\))."
         },
         {
-          "q": "A car travels 180 km in 2 hours. Using the Mean Value Theorem, explain why the car must have been traveling at exactly 90 km/h at some instant.",
+          "q": "Rate Table (aquifer recharge curve #342): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The Mean Value Theorem",
-          "answer": "Average velocity \\(=\\frac{180}{2}=90\\) km/h. Since position is a differentiable function of time, the MVT guarantees some instant \\(c\\) where the instantaneous velocity \\(v(c)=90\\) km/h exactly.",
-          "explanation": "Average velocity \\(=\\frac{180}{2}=90\\) km/h. Since position is a differentiable function of time, the MVT guarantees some instant \\(c\\) where the instantaneous velocity \\(v(c)=90\\) km/h exactly."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #342)"
+          }
         }
       ]
     },
@@ -86,12 +159,47 @@
           "explanation": "For any \\(a<b\\) in the interval, the MVT gives \\(\\frac{f(b)-f(a)}{b-a}=f'(c)\\) for some \\(c\\in(a,b)\\). Since \\(f'(c)>0\\) and \\(b-a>0\\), we get \\(f(b)-f(a)>0\\), i.e. \\(f(b)>f(a)\\) — so \\(f\\) is strictly increasing."
         },
         {
-          "q": "Explain why two functions \\(f\\) and \\(g\\) with \\(f'(x)=g'(x)\\) for all \\(x\\) must differ by a constant, using the MVT.",
+          "q": "In aquifer recharge curve experiment #42, a particle moves along the \\(x\\)-axis with velocity \\(v(t) = 3t^2 - 12t + 9\\) m/s for \\(0 \\le t \\le 4\\), as shown.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Consequences of the MVT: monotonicity",
-          "answer": "Let \\(h(x)=f(x)-g(x)\\). Then \\(h'(x)=f'(x)-g'(x)=0\\) for all \\(x\\). If \\(h\\) were not constant, the MVT applied between any two points where \\(h\\) differs would give \\(h'(c)\\neq0\\) for some \\(c\\), a contradiction. So \\(h(x)=C\\) for some constant \\(C\\), i.e. \\(f(x)=g(x)+C\\).",
-          "explanation": "Let \\(h(x)=f(x)-g(x)\\). Then \\(h'(x)=f'(x)-g'(x)=0\\) for all \\(x\\). If \\(h\\) were not constant, the MVT applied between any two points where \\(h\\) differs would give \\(h'(c)\\neq0\\) for some \\(c\\), a contradiction. So \\(h(x)=C\\) for some constant \\(C\\), i.e. \\(f(x)=g(x)+C\\)."
+          "answer": "(a) \\(a(t) = 6t - 12\\), so \\(a(1) = -6\\). (b) \\(a(t) = 0 \\implies t = 2\\). (c) \\(\\int_0^3 v(t)\\,dt = \\left[1t^3 - \\frac{12}{2}t^2 + 9t\\right]_0^3 = 0\\). (d) Average velocity \\(= \\frac{1}{3}\\int_0^3 v(t)\\,dt = 0\\).",
+          "explanation": "(a) \\(a(t) = 6t - 12\\), so \\(a(1) = -6\\). (b) \\(a(t) = 0 \\implies t = 2\\). (c) \\(\\int_0^3 v(t)\\,dt = \\left[1t^3 - \\frac{12}{2}t^2 + 9t\\right]_0^3 = 0\\). (d) Average velocity \\(= \\frac{1}{3}\\int_0^3 v(t)\\,dt = 0\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              -5,
+              12
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - 1)*(x - 3)",
+                "color": "#2563eb",
+                "label": "v(t)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 1,
+                "y": 0,
+                "label": "t=1"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "t=3"
+              }
+            ],
+            "xlabel": "t (s)",
+            "ylabel": "v(t) (m/s)",
+            "caption": "Velocity profile v(t) for particle #42"
+          }
         },
         {
           "q": "The graph shows \\(f(x)=x^3\\) on \\([0,2]\\) together with the secant line through the endpoints and the tangent line at \\(x=\\frac{2}{\\sqrt{3}}\\) (found earlier).",
@@ -122,12 +230,31 @@
           "explanation": "\\(f'(x)=4x^3-8x=4x(x^2-2)=0\\) gives \\(x=0,\\pm\\sqrt{2}\\), all within \\([-2,2]\\). Values: \\(f(-2)=16-16+3=3\\), \\(f(-\\sqrt{2})=4-8+3=-1\\), \\(f(0)=3\\), \\(f(\\sqrt{2})=-1\\), \\(f(2)=3\\). Absolute max: \\(3\\) (at \\(x=-2,0,2\\)). Absolute min: \\(-1\\) (at \\(x=\\pm\\sqrt{2}\\))."
         },
         {
-          "q": "Verify that Rolle's Theorem applies to \\(f(x)=\\sin x\\) on \\([0,\\pi]\\), and find the value of \\(c\\) guaranteed by the theorem.",
+          "q": "Rate Table (hydroelectric sluice #346): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Rolle's Theorem with trigonometric functions",
-          "answer": "\\(f(0)=0\\) and \\(f(\\pi)=0\\): equal endpoint values, and \\(\\sin x\\) is continuous and differentiable everywhere, so Rolle's Theorem applies. \\(f'(x)=\\cos x=0\\) gives \\(c=\\frac{\\pi}{2}\\), which lies in \\((0,\\pi)\\).",
-          "explanation": "\\(f(0)=0\\) and \\(f(\\pi)=0\\): equal endpoint values, and \\(\\sin x\\) is continuous and differentiable everywhere, so Rolle's Theorem applies. \\(f'(x)=\\cos x=0\\) gives \\(c=\\frac{\\pi}{2}\\), which lies in \\((0,\\pi)\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #346)"
+          }
         },
         {
           "q": "A runner completes a 10 km race in 40 minutes. Using the Mean Value Theorem, find the runner's average speed, and explain why there must be some instant during the race when the runner's instantaneous speed equals this average.",
@@ -153,16 +280,46 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Evaluate the definite integral of the constant function: \\( \\int_{8}^{11} 21 \\, dx \\).",
-          "answer": "**Answer:** A. The antiderivative is \\( 21x \\). Evaluating from \\( 8 \\) to \\( 11 \\) gives \\( 21(11 - 8) = 63 \\).",
+          "q": "Derivative Curve (bio-reactor temperature #349): For the plotted parabola \\(f(x) = 2x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
+          "answer": "Since \\(f'(x) = 4x\\), the instantaneous rate at \\(x = 2\\) is \\(4(2) = 8\\).",
           "explanation": "The antiderivative is \\( 21x \\). Evaluating from \\( 8 \\) to \\( 11 \\) gives \\( 21(11 - 8) = 63 \\).",
           "choices": [
-            "63",
-            "21",
-            "84",
-            "42"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(4\\)",
+            "\\(11\\)"
           ],
-          "correct": 0
+          "correct": 1,
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              20
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "2*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 2x² with marked point (#349)"
+          }
         },
         {
           "q": "Level 1 · FoundationsFind \\(h'(2)\\) given the accumulation function \\(h(x) = \\int_0^{x^2} \\frac{t}{t + 1}\\,dt\\).",
@@ -184,16 +341,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Determine the numerical value of the definite integral of the constant function: \\( \\int_{14}^{17} 33 \\, dx \\).",
-          "answer": "**Answer:** A. The antiderivative is \\( 33x \\). Evaluating from \\( 14 \\) to \\( 17 \\) gives \\( 33(17 - 14) = 99 \\).",
+          "q": "Rate Table (autonomous rover motion #350): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
           "explanation": "The antiderivative is \\( 33x \\). Evaluating from \\( 14 \\) to \\( 17 \\) gives \\( 33(17 - 14) = 99 \\).",
           "choices": [
-            "99",
-            "66",
-            "33",
-            "132"
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(24\\)"
           ],
-          "correct": 0
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #350)"
+          }
         },
         {
           "q": "Level 2 · MediumSolve the transcendental equation analytically for \\(x\\) in exact form using natural logarithms: \\(3^{2x+1} = 5^{x-2}.\\)",
@@ -225,19 +401,49 @@
           "explanation": "By the MVT, \\(f(3)-f(-3)=f'(c)(6)\\) for some \\(c\\in(-3,3)\\). The largest value occurs when \\(f'(c)=6\\): \\(f(3)=-2+6(6)=34\\)."
         },
         {
-          "q": "Find the larger critical point of \\(f(x)=x^3-9x^2+24x\\).",
+          "q": "Derivative Curve (battery charging session #353): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "The Extreme Value Theorem",
           "choices": [
-            "\\(4\\)",
-            "\\(2\\)",
+            "\\(14\\)",
+            "\\(12\\)",
             "\\(6\\)",
-            "\\(8\\)"
+            "\\(15\\)"
           ],
-          "correct": 0,
-          "answer": "\\(f'(x)=3x^2-18x+24=3(x-(2))(x-(4))\\). Critical points: \\(x=2\\) and \\(x=4\\); the larger is \\(4\\).",
-          "explanation": "\\(f'(x)=3x^2-18x+24=3(x-(2))(x-(4))\\). Critical points: \\(x=2\\) and \\(x=4\\); the larger is \\(4\\)."
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 2\\) is \\(6(2) = 12\\).",
+          "explanation": "\\(f'(x)=3x^2-18x+24=3(x-(2))(x-(4))\\). Critical points: \\(x=2\\) and \\(x=4\\); the larger is \\(4\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              29
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 12,
+                "label": "(2, 12)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 3x² with marked point (#353)"
+          }
         },
         {
           "q": "Given \\(-3\\leq f'(x)\\leq2\\) for all \\(x\\), use the MVT to find the width of the range of possible values for \\(f(9)-f(2)\\).",
@@ -270,19 +476,38 @@
           "explanation": "Yes — \\(f(-4)=f(6)=25\\), and \\(f\\) is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here \\(c=1\\)."
         },
         {
-          "q": "A continuous function on a closed, bounded interval \\([a,b]\\) is guaranteed (Extreme Value Theorem) to be:",
+          "q": "Rate Table (aquifer recharge curve #354): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Using the MVT to bound function values",
           "choices": [
-            "\\(\\mathrm{bounded\\ and\\ to\\ attain\\ its\\ max\\ and\\ min}\\)",
-            "monotonic",
-            "unbounded",
-            "differentiable"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(37\\)"
           ],
-          "correct": 0,
-          "answer": "The Extreme Value Theorem: continuity on a compact interval guarantees both boundedness and attained extrema.",
-          "explanation": "The Extreme Value Theorem: continuity on a compact interval guarantees both boundedness and attained extrema."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "The Extreme Value Theorem: continuity on a compact interval guarantees both boundedness and attained extrema.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #354)"
+          }
         },
         {
           "q": "Global extrema on closed interval: Extreme Value Theorem guarantees max and min are attained. Find them by checking:",
@@ -315,47 +540,48 @@
           "explanation": "Define \\(h=f(x)-[f(a)+\\frac{f(b)-f(a)}{b-a}(x-a)]\\); apply Rolle."
         },
         {
-          "q": "The figure shows the graph of a continuous function \\(f(x)\\) on the interval \\([a, d]\\). The shaded region represents the definite integral \\(\\int_{a}^{c} f(x) \\, dx\\). If the area of the shaded region is 12 square units and the area of the unshaded region between \\(x=c\\) and \\(x=d\\) is 5 square units, what is the value of \\(\\int_{a}^{d} f(x) \\, dx\\)?",
+          "q": "Derivative Curve (orbital telemetry pass #357): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Absolute extrema on a closed interval — a capstone problem",
           "choices": [
-            "17",
-            "7",
-            "2.4",
-            "-7"
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(7\\)"
           ],
-          "correct": 0,
-          "answer": "The Fundamental Theorem of Calculus relates the definite integral of a function to its antiderivative. Geometrically, the definite integral \\(\\int_{a}^{b} f(x) \\, dx\\) represents the net signed area between the curve \\(f(x)\\) and the x-axis from \\(x=a\\) to \\(x=b\\). Areas above the x-axis are positive, and areas below the x-axis are negative. The problem states that the area of the shaded region, representing \\(\\int_{a}^{c} f(x) \\, dx\\), is 12 square units. This implies that this region contributes positively to the net signed area. The area of the unshaded region between \\(x=c\\) and \\(x=d\\) is 5 square units. This means that \\(\\int_{c}^{d} f(x) \\, dx = 5\\). We are asked to find \\(\\int_{a}^{d} f(x) \\, dx\\). Using the property of definite integrals that \\(\\int_{a}^{d} f(x) \\, dx = \\int_{a}^{c} f(x) \\, dx + \\int_{c}^{d} f(x) \\, dx\\), we can substitute the given values. \\(\\int_{a}^{d} f(x) \\, dx = 12 + 5 = 17\\). Therefore, the value of the definite integral from \\(a\\) to \\(d\\) is 17.",
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 2\\) is \\(2(2) = 4\\).",
           "explanation": "The Fundamental Theorem of Calculus relates the definite integral of a function to its antiderivative. Geometrically, the definite integral \\(\\int_{a}^{b} f(x) \\, dx\\) represents the net signed area between the curve \\(f(x)\\) and the x-axis from \\(x=a\\) to \\(x=b\\). Areas above the x-axis are positive, and areas below the x-axis are negative. The problem states that the area of the shaded region, representing \\(\\int_{a}^{c} f(x) \\, dx\\), is 12 square units. This implies that this region contributes positively to the net signed area. The area of the unshaded region between \\(x=c\\) and \\(x=d\\) is 5 square units. This means that \\(\\int_{c}^{d} f(x) \\, dx = 5\\). We are asked to find \\(\\int_{a}^{d} f(x) \\, dx\\). Using the property of definite integrals that \\(\\int_{a}^{d} f(x) \\, dx = \\int_{a}^{c} f(x) \\, dx + \\int_{c}^{d} f(x) \\, dx\\), we can substitute the given values. \\(\\int_{a}^{d} f(x) \\, dx = 12 + 5 = 17\\). Therefore, the value of the definite integral from \\(a\\) to \\(d\\) is 17.",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x + 2",
-              "x - 2"
+            "type": "fn",
+            "xl": [
+              0,
+              4
             ],
-            "xmin": -2,
-            "xmax": 6,
-            "ymin": -3,
-            "ymax": 6,
-            "width": 230,
-            "point_labels": [
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": 0,
-                "y": 2,
-                "label": "(0, 2)"
-              },
+                "fn": "1*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
               {
                 "x": 2,
-                "y": 0,
-                "label": "(2, 0)"
-              },
-              {
-                "x": 4,
-                "y": -2,
-                "label": "(4, -2)"
+                "y": 4,
+                "label": "(2, 4)"
               }
-            ]
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 1x² with marked point (#357)"
           }
         }
       ]
@@ -403,37 +629,37 @@
           }
         },
         {
-          "q": "The graph of the function \\(f(x) = x^2 - 4x + 3\\) is shown below. The graph intersects the x-axis at points A and B. The vertex of the parabola is at point C. Determine the coordinates of the point where the graph intersects the y-axis.",
+          "q": "Rate Table (hydroelectric sluice #358): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Critical points and extrema",
           "choices": [
-            "(0, 3)",
-            "(3, 0)",
-            "(0, -1)",
-            "(-1, 0)"
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(30\\)",
+            "\\(36\\)"
           ],
-          "correct": 0,
-          "answer": "To find the y-intercept of the graph of a function, we set \\(x = 0\\) in the function's equation. For the function \\(f(x) = x^2 - 4x + 3\\), substituting \\(x = 0\\) gives: \\(f(0) = (0)^2 - 4(0) + 3\\) \\(f(0) = 0 - 0 + 3\\) \\(f(0) = 3\\) Therefore, the graph intersects the y-axis at the point (0, 3).",
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
           "explanation": "To find the y-intercept of the graph of a function, we set \\(x = 0\\) in the function's equation. For the function \\(f(x) = x^2 - 4x + 3\\), substituting \\(x = 0\\) gives: \\(f(0) = (0)^2 - 4(0) + 3\\) \\(f(0) = 0 - 0 + 3\\) \\(f(0) = 3\\) Therefore, the graph intersects the y-axis at the point (0, 3).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 4*x + 3",
-              "x - 1"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
             ],
-            "xmin": -2,
-            "xmax": 6,
-            "ymin": -3,
-            "ymax": 6,
-            "width": 230,
-            "point_labels": [
-              {
-                "x": 1,
-                "y": 0,
-                "label": "(1, 0)"
-              }
-            ]
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #358)"
           }
         },
         {
@@ -467,19 +693,49 @@
           "explanation": "The vertical asymptote at \\(x=3\\) implies that the denominator is zero at \\(x=3\\), so \\(d=3\\). The horizontal asymptote \\(y=2\\) for a rational function where the degree of the numerator is equal to the degree of the denominator is the ratio of the leading coefficients. Therefore, \\(\\frac{a}{1} = 2\\), which means \\(a=2\\). Now we have \\(f(x) = \\frac{2x^2 + bx + c}{x - 3}\\). The function passes through \\((1, -8)\\): \\(-8 = \\frac{2(1)^2 + b(1) + c}{1 - 3} = \\frac{2 + b + c}{-2}\\) $16 = 2 + b + c \\Rightarrow b + c = 14\\(. Next, we find the derivative of \\)f(x)\\( using the quotient rule: \\)f'(x) = \\frac{(4x + b)(x - 3) - (2x^2 + bx + c)(1)}{(x - 3)^2}\\( \\)f'(x) = \\frac{4x^2 - 12x + bx - 3b - 2x^2 - bx - c}{(x - 3)^2}\\( \\)f'(x) = \\frac{2x^2 - 12x - 3b - c}{(x - 3)^2}\\( We are given that \\)f'(x)\\( has a critical point at \\)x=5\\(. This means \\)f''(5) = 0\\( or \\)f'(5)\\( is undefined. Since \\)x=5 e 3\\(, \\)f'(5)\\( is defined. We need to find \\)f''(x)\\( and set \\)f''(5) = 0\\(. Let \\)N(x) = 2x^2 - 12x - 3b - c\\( and \\)D(x) = (x - 3)^2\\(. \\)f'(x) = \\frac{N(x)}{D(x)}\\(. \\)f''(x) = \\frac{N'(x)D(x) - N(x)D'(x)}{[D(x)]^2}\\( \\)N'(x) = 4x - 12\\( \\)D'(x) = 2(x - 3)\\( \\)f''(x) = \\frac{(4x - 12)(x - 3)^2 - (2x^2 - 12x - 3b - c)2(x - 3)}{(x - 3)^4}\\( \\)f''(x) = \\frac{(4x - 12)(x - 3) - 2(2x^2 - 12x - 3b - c)}{(x - 3)^3}\\( Set \\)f''(5) = 0\\(: \\)(4(5) - 12)(5 - 3) - 2(2(5)^2 - 12(5) - 3b - c) = 0\\( \\)(20 - 12)(2) - 2(50 - 60 - 3b - c) = 0\\( \\)(8)(2) - 2(-10 - 3b - c) = 0\\( \\)16 + 20 + 6b + 2c = 0\\( \\)36 + 6b + 2c = 0\\( \\)18 + 3b + c = 0\\( We have a system of two equations with \\)b\\( and \\)c\\(: 1) \\)b + c = 14\\( 2) \\)3b + c = -18\\( Subtracting equation (1) from equation (2): \\)(3b + c) - (b + c) = -18 - 14\\( \\)2b = -32 \\Rightarrow b = -16\\( Substitute \\)b = -16\\( into \\)b + c = 14\\(: \\)-16 + c = 14 \\Rightarrow c = 30\\( So \\)a=2, b=-16, c=30, d=3\\(. The question asks for \\)d$."
         },
         {
-          "q": "If \\(|f^{(4+1)}(c)|\\leq 1\\) on the relevant interval, bound the Lagrange error \\(|R_{4}(x)|\\) for approximating \\(f\\) at \\(x=0.1\\) using a Taylor polynomial centred at \\(a=1\\).",
+          "q": "Derivative Curve (bio-reactor temperature #361): For the plotted parabola \\(f(x) = 2x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "The Mean Value Theorem",
           "choices": [
-            "0.0098415",
-            "0.00492075",
-            "0.00246038",
-            "0.0273375"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(4\\)",
+            "\\(11\\)"
           ],
           "correct": 1,
-          "answer": "Lagrange error bound: \\(|R_{4}(x)|\\leq\\frac{M|x-a|^{4+1}}{(4+1)!}=\\frac{1\\cdot0.9^{5}}{5!}\\approx0.00492075.\\)",
-          "explanation": "Lagrange error bound: \\(|R_{4}(x)|\\leq\\frac{M|x-a|^{4+1}}{(4+1)!}=\\frac{1\\cdot0.9^{5}}{5!}\\approx0.00492075.\\)"
+          "answer": "Since \\(f'(x) = 4x\\), the instantaneous rate at \\(x = 2\\) is \\(4(2) = 8\\).",
+          "explanation": "Lagrange error bound: \\(|R_{4}(x)|\\leq\\frac{M|x-a|^{4+1}}{(4+1)!}=\\frac{1\\cdot0.9^{5}}{5!}\\approx0.00492075.\\)",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              20
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "2*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 2x² with marked point (#361)"
+          }
         },
         {
           "q": "Find the flux of \\(\\mathbf{F}=\\langle x,y,z\\rangle\\) through the closed unit sphere using the Divergence Theorem.",
@@ -512,19 +768,38 @@
           "explanation": "Global extrema on closed bounded region: check interior critical points and boundary."
         },
         {
-          "q": "The divergence theorem applied to \\(\\mathbf{F}=(x^3,y^3,z^3)\\) over unit ball gives \\(\\oiint_S\\mathbf{F}\\cdot\\hat{n}\\,dS=\\iiint_V 3(x^2+y^2+z^2)dV=\\)",
+          "q": "Rate Table (autonomous rover motion #362): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing the Mean Value Theorem",
           "choices": [
-            "\\(4\\pi/3\\)",
-            "\\(3\\pi\\)",
-            "\\(12\\pi/5\\)",
-            "\\(\\pi\\)"
+            "\\(22\\)",
+            "\\(20\\)",
+            "\\(26\\)",
+            "\\(32\\)"
           ],
           "correct": 2,
-          "answer": "\\(\\int_0^1 3r^2\\cdot4\\pi r^2dr=12\\pi\\int_0^1r^4dr=12\\pi/5\\).",
-          "explanation": "\\(\\int_0^1 3r^2\\cdot4\\pi r^2dr=12\\pi\\int_0^1r^4dr=12\\pi/5\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "\\(\\int_0^1 3r^2\\cdot4\\pi r^2dr=12\\pi\\int_0^1r^4dr=12\\pi/5\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #362)"
+          }
         }
       ]
     },
@@ -564,20 +839,50 @@
           "cross_lesson": "8.01 Area Between Curves"
         },
         {
-          "q": "Closed interval method: candidates for abs extrema are:",
+          "q": "Derivative Curve (battery charging session #365): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "An applied Mean Value Theorem problem",
           "choices": [
-            "only critical points",
-            "only endpoints",
-            "critical points and endpoints",
-            "inflection points"
+            "\\(14\\)",
+            "\\(12\\)",
+            "\\(6\\)",
+            "\\(15\\)"
           ],
-          "correct": 2,
-          "answer": "All critical points interior + endpoints.",
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 2\\) is \\(6(2) = 12\\).",
           "explanation": "All critical points interior + endpoints.",
-          "cross_lesson": "8.02 Volumes by the Disc and Washer Methods"
+          "cross_lesson": "8.02 Volumes by the Disc and Washer Methods",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              29
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 12,
+                "label": "(2, 12)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 3x² with marked point (#365)"
+          }
         },
         {
           "q": "Analytic function: uniqueness theorem — if \\(f,g\\) analytic on connected open set, and \\(f=g\\) on a sequence of points converging to an interior point, then \\(f=g\\):",
@@ -609,38 +914,38 @@
           "correct": 2
         },
         {
-          "q": "The diagram shows the graph of the function \\(f(x) = x^2 - 4x + 3\\) and a line \\(y = g(x)\\). The line \\(y = g(x)\\) intersects the parabola \\(y = f(x)\\) at points A and B. Point A is given as \\((1, 0)\\). Find the x-coordinate of point B.",
+          "q": "Rate Table (aquifer recharge curve #366): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Rolle's Theorem",
           "choices": [
-            "3",
-            "4",
-            "5",
-            "2"
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
-          "correct": 0,
-          "answer": "The points of intersection A and B are found by setting the two functions equal to each other: \\(f(x) = g(x)\\). We are given \\(f(x) = x^2 - 4x + 3\\) and from the diagram, the line is \\(y = x - 1\\), so \\(g(x) = x - 1\\). Setting them equal: \\(x^2 - 4x + 3 = x - 1\\). Rearranging the equation to form a quadratic equation: \\(x^2 - 4x - x + 3 + 1 = 0\\), which simplifies to \\(x^2 - 5x + 4 = 0\\). We can factor this quadratic equation: \\((x - 1)(x - 4) = 0\\). The solutions for x are \\(x = 1\\) and \\(x = 4\\). We are given that point A has an x-coordinate of 1. Therefore, point B must have the other x-coordinate, which is 4. Common algebraic trap: Students might forget to rearrange the equation into the standard quadratic form \\(ax^2 + bx + c = 0\\) before solving, or make sign errors during rearrangement.",
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
           "explanation": "The points of intersection A and B are found by setting the two functions equal to each other: \\(f(x) = g(x)\\). We are given \\(f(x) = x^2 - 4x + 3\\) and from the diagram, the line is \\(y = x - 1\\), so \\(g(x) = x - 1\\). Setting them equal: \\(x^2 - 4x + 3 = x - 1\\). Rearranging the equation to form a quadratic equation: \\(x^2 - 4x - x + 3 + 1 = 0\\), which simplifies to \\(x^2 - 5x + 4 = 0\\). We can factor this quadratic equation: \\((x - 1)(x - 4) = 0\\). The solutions for x are \\(x = 1\\) and \\(x = 4\\). We are given that point A has an x-coordinate of 1. Therefore, point B must have the other x-coordinate, which is 4. Common algebraic trap: Students might forget to rearrange the equation into the standard quadratic form \\(ax^2 + bx + c = 0\\) before solving, or make sign errors during rearrangement.",
           "cross_lesson": "2.01 The Definition of the Derivative",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 4*x + 3",
-              "x - 1"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
             ],
-            "xmin": -2,
-            "xmax": 6,
-            "ymin": -3,
-            "ymax": 6,
-            "width": 230,
-            "point_labels": [
-              {
-                "x": 1,
-                "y": 0,
-                "label": "A (1, 0)"
-              }
-            ]
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #366)"
           }
         },
         {

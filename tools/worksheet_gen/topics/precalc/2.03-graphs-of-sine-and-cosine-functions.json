@@ -57,22 +57,39 @@
           "explanation": "Phase shift: \\(\\frac{\\pi}{3}\\) to the right. Period: \\(2\\pi\\)."
         },
         {
-          "q": "The graph below shows one sinusoidal function. State its amplitude and period, then write an equation for the function.",
+          "q": "The graph of \\(g(x)=f(x-4)-5\\) is obtained from \\(f(x)\\) by:",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Reading and writing equations from graphs",
-          "answer": "Amplitude 2, period \\(2\\pi\\). Equation: \\(y = 2\\sin x\\).",
-          "explanation": "Amplitude 2, period \\(2\\pi\\). Equation: \\(y = 2\\sin x\\).",
+          "answer": "Replacing \\(x\\) with \\(x+4\\) shifts horizontally by -4 (right if positive); adding -5 shifts vertically by -5.",
+          "explanation": "Replacing \\(x\\) with \\(x+4\\) shifts horizontally by -4 (right if positive); adding -5 shifts vertically by -5.",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "2*sin(x)"
+            "type": "fn",
+            "xrange": [
+              0,
+              8
             ],
-            "xmin": -7,
-            "xmax": 7,
-            "ymin": -3,
-            "ymax": 3,
-            "width": 250
+            "yrange": [
+              -9,
+              6
+            ],
+            "fns": [
+              {
+                "fn": "1*(x - 4)**2 + -5",
+                "label": "g(x)",
+                "color": "#1E3A6E"
+              }
+            ],
+            "points": [
+              {
+                "x": 4,
+                "y": -5,
+                "label": "vertex (4,-5)",
+                "color": "#C8902A"
+              }
+            ],
+            "w": 260,
+            "h": 200
           }
         },
         {
@@ -97,22 +114,32 @@
           "correct": 1
         },
         {
-          "q": "The graph below shows \\(y = \\cos(x) + 1\\), a cosine curve with a vertical shift. Identify the midline and the maximum and minimum values shown.",
+          "q": "Inverse Function Table (harmonic spring #410): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(11)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Graphing with transformations",
-          "answer": "Midline \\(y=1\\); maximum value \\(2\\); minimum value \\(0\\).",
-          "explanation": "Midline \\(y=1\\); maximum value \\(2\\); minimum value \\(0\\).",
+          "answer": "Looking up output \\(f(3) = 11\\) yields \\(f^{-1}(11) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 11\\) yields \\(f^{-1}(11) = 3\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "cos(x) + 1"
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
             ],
-            "xmin": -7,
-            "xmax": 7,
-            "ymin": -1,
-            "ymax": 3,
-            "width": 250
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "11",
+                "13"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (410)"
           }
         }
       ]
@@ -184,12 +211,33 @@
           }
         },
         {
-          "q": "Find all zeros of \\(y=\\sin(2x)\\) on the interval \\([0,2\\pi]\\).",
+          "q": "Inverse Function Table (capacitor charge #412): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(19)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Finding zeros and extrema from an equation",
-          "answer": "\\(2x=0,\\pi,2\\pi,3\\pi,4\\pi \\Rightarrow x=0,\\frac{\\pi}{2},\\pi,\\frac{3\\pi}{2},2\\pi\\).",
-          "explanation": "\\(2x=0,\\pi,2\\pi,3\\pi,4\\pi \\Rightarrow x=0,\\frac{\\pi}{2},\\pi,\\frac{3\\pi}{2},2\\pi\\)."
+          "answer": "Looking up output \\(f(3) = 19\\) yields \\(f^{-1}(19) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 19\\) yields \\(f^{-1}(19) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "11",
+                "15",
+                "19",
+                "23"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (412)"
+          }
         },
         {
           "q": "Find the \\(x\\)-value(s) in \\([0,2\\pi]\\) where \\(y=3\\cos(x)\\) attains its maximum and minimum values.",
@@ -283,13 +331,34 @@
           "explanation": "Step 1: Form vectors \\(\\vec{AB}\\) and \\(\\vec{AC}\\): \\(\\vec{AB} = \\langle 2 - 1, 4 - 2, 1 - 3 \\rangle = \\langle 1, 2, -2 \\rangle.\\) \\(\\vec{AC} = \\langle -1 - 1, 0 - 2, 5 - 3 \\rangle = \\langle -2, -2, 2 \\rangle.\\) Step 2: Compute normal vector via cross product: \\(\\mathbf{n} = \\vec{AB} \\times \\vec{AC} = \\left|\\mathbf{i}, \\mathbf{j}, \\mathbf{k} ; 1, 2, -2 ; -2, -2, 2\\right| = \\mathbf{i}(4 - 4) - \\mathbf{j}(2 - 4) + \\mathbf{k}(-2 - (-4)) = 0\\mathbf{i} + 2\\mathbf{j} + 2\\mathbf{k} = \\langle 0, 2, 2 \\rangle.\\) Simplifying by scalar factor 2 gives normal \\(\\mathbf{n}' = \\langle 0, 1, 1 \\rangle\\). Step 3: Formulate plane equation using point \\(A(1, 2, 3)\\): \\(0(x - 1) + 1(y - 2) + 1(z - 3) = 0 \\Rightarrow y - 2 + z - 3 = 0 \\Rightarrow y + z = 5. \\quad \\blacksquare\\)"
         },
         {
-          "q": "Solve the trigonometric equation \\(\\cos(2\\theta) + 3\\sin\\theta = 2\\) for all solutions \\(\\theta \\in [0, 2\\pi)\\).",
+          "q": "Inverse Function Table (tidal gauge #414): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(21)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Comparing sine and cosine graphs",
           "cross_lesson": "8.02 Graphing Rational Functions",
-          "answer": "Substitute \\(\\cos(2\\theta) = 1 - 2\\sin^2\\theta\\) to express the entire equation in terms of \\(\\sin\\theta\\): \\((1 - 2\\sin^2\\theta) + 3\\sin\\theta = 2.\\) \\(-2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\Rightarrow 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0.\\) Factor the quadratic in \\(\\sin\\theta\\): \\((2\\sin\\theta - 1)(\\sin\\theta - 1) = 0.\\) Case 1: \\(2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{6}\\) or \\(\\theta = \\frac{5\\pi}{6}\\). Case 2: \\(\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = 1\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{2}\\). Combining all solutions: \\(\\theta \\in \\left\\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\right\\}\\).",
-          "explanation": "Substitute \\(\\cos(2\\theta) = 1 - 2\\sin^2\\theta\\) to express the entire equation in terms of \\(\\sin\\theta\\): \\((1 - 2\\sin^2\\theta) + 3\\sin\\theta = 2.\\) \\(-2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\Rightarrow 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0.\\) Factor the quadratic in \\(\\sin\\theta\\): \\((2\\sin\\theta - 1)(\\sin\\theta - 1) = 0.\\) Case 1: \\(2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{6}\\) or \\(\\theta = \\frac{5\\pi}{6}\\). Case 2: \\(\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = 1\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{2}\\). Combining all solutions: \\(\\theta \\in \\left\\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\right\\}\\)."
+          "answer": "Looking up output \\(f(3) = 21\\) yields \\(f^{-1}(21) = 3\\).",
+          "explanation": "Looking up output \\(f(3) = 21\\) yields \\(f^{-1}(21) = 3\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "9",
+                "15",
+                "21",
+                "27"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (414)"
+          }
         },
         {
           "q": "Convert the Cartesian equation \\((x^2 + y^2)^2 = 4(x^2 - y^2)\\) into polar form and identify the name and key features of the resulting curve.",
@@ -321,19 +390,47 @@
           "explanation": "Amplitude \\(=A=5\\); period \\(=2\\pi/B=4\\pi\\Rightarrow B=1/2\\); midline \\(D=-3\\). So \\(f(x)=5\\cos(1/2x)-3.\\)"
         },
         {
-          "q": "The function \\(f(x) = -2\\cos\\!\\left(\\frac{\\pi}{3}x\\right) + 5\\) has amplitude, period, and midline",
+          "q": "Observe that the graph of \\(g(x)=f(x-5)-4\\) is obtained from \\(f(x)\\) by:",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Reading and writing equations from graphs",
           "choices": [
-            "2, 6, y=5",
-            "2, 3, y=5",
-            "−2, 6, y=5",
-            "2, 6, y=0"
+            "Shifting 5 units left and 4 units up",
+            "Shifting 5 units right and 4 units down",
+            "Reflecting over the x-axis",
+            "Shifting 5 units left and 4 units down"
           ],
-          "correct": 0,
-          "answer": "Amplitude |A|=2, period = 2π/(π/3) = 6, midline y = 5.",
-          "explanation": "Amplitude |A|=2, period = 2π/(π/3) = 6, midline y = 5."
+          "correct": 3,
+          "answer": "Replacing \\(x\\) with \\(x+5\\) shifts horizontally by -5 (right if positive); adding -4 shifts vertically by -4.",
+          "explanation": "Amplitude |A|=2, period = 2π/(π/3) = 6, midline y = 5.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              1,
+              9
+            ],
+            "yrange": [
+              -8,
+              6
+            ],
+            "fns": [
+              {
+                "fn": "1*(x - 5)**2 + -4",
+                "label": "g(x)",
+                "color": "#1E3A6E"
+              }
+            ],
+            "points": [
+              {
+                "x": 5,
+                "y": -4,
+                "label": "vertex (5,-4)",
+                "color": "#C8902A"
+              }
+            ],
+            "w": 260,
+            "h": 200
+          }
         },
         {
           "q": "A sinusoidal function has period \\(\\frac{2\\pi}{3}\\), midline \\(y=3\\), and minimum value \\(-1\\). Find its amplitude.",
@@ -411,19 +508,47 @@
           "correct": 2
         },
         {
-          "q": "What is the radius of the circle with the equation \\((x-3)^2 + (y+5)^2 = 36\\)?",
+          "q": "Suppose the graph of \\(g(x)=f(x-1)-5\\) is obtained from \\(f(x)\\) by:",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Amplitude, period, and midline",
           "choices": [
-            "6",
-            "36",
-            "3",
-            "5"
+            "Reflecting over the x-axis",
+            "Shifting 1 units left and 5 units down",
+            "Shifting 1 units left and 5 units up",
+            "Shifting 1 units right and 5 units down"
           ],
-          "correct": 0,
-          "answer": "The standard equation of a circle is \\((x-h)^2 + (y-k)^2 = r^2\\), where \\((h,k)\\) is the center of the circle and \\(r\\) is the radius. In the given equation \\((x-3)^2 + (y+5)^2 = 36\\), we can see that \\(r^2 = 36\\). To find the radius \\(r\\), we take the square root of both sides: \\(r = \\sqrt{36} = 6\\). Therefore, the radius of the circle is 6.",
-          "explanation": "The standard equation of a circle is \\((x-h)^2 + (y-k)^2 = r^2\\), where \\((h,k)\\) is the center of the circle and \\(r\\) is the radius. In the given equation \\((x-3)^2 + (y+5)^2 = 36\\), we can see that \\(r^2 = 36\\). To find the radius \\(r\\), we take the square root of both sides: \\(r = \\sqrt{36} = 6\\). Therefore, the radius of the circle is 6."
+          "correct": 1,
+          "answer": "Replacing \\(x\\) with \\(x+1\\) shifts horizontally by -1 (right if positive); adding -5 shifts vertically by -5.",
+          "explanation": "The standard equation of a circle is \\((x-h)^2 + (y-k)^2 = r^2\\), where \\((h,k)\\) is the center of the circle and \\(r\\) is the radius. In the given equation \\((x-3)^2 + (y+5)^2 = 36\\), we can see that \\(r^2 = 36\\). To find the radius \\(r\\), we take the square root of both sides: \\(r = \\sqrt{36} = 6\\). Therefore, the radius of the circle is 6.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -3,
+              5
+            ],
+            "yrange": [
+              -9,
+              6
+            ],
+            "fns": [
+              {
+                "fn": "1*(x - 1)**2 + -5",
+                "label": "g(x)",
+                "color": "#1E3A6E"
+              }
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": -5,
+                "label": "vertex (1,-5)",
+                "color": "#C8902A"
+              }
+            ],
+            "w": 260,
+            "h": 200
+          }
         }
       ]
     },
@@ -461,19 +586,40 @@
           "explanation": "\\(|\\mathbf{v}|=17\\). Unit vector \\(=\\frac{\\mathbf{v}}{|\\mathbf{v}|}=\\left\\langle \\frac{-8}{17},\\frac{15}{17}\\right\\rangle\\)."
         },
         {
-          "q": "A quantity starts at \\(100\\) and grows by \\(10\\%\\) each period. Find its value after \\(2\\) periods.",
+          "q": "Inverse Function Table (acoustic wave #420): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(9)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Modeling periodic phenomena",
           "choices": [
-            "121",
-            "100",
-            "126",
-            "120"
+            "\\(9\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(2\\)"
           ],
-          "correct": 0,
-          "answer": "Applying Exponential principles, \\(100(1+\\frac{1}{10})^{2}=121\\). Therefore, the verified correct option is 121.",
-          "explanation": "Applying Exponential principles, \\(100(1+\\frac{1}{10})^{2}=121\\). Therefore, the verified correct option is 121."
+          "correct": 1,
+          "answer": "Looking up output \\(f(3) = 9\\) yields \\(f^{-1}(9) = 3\\).",
+          "explanation": "Applying Exponential principles, \\(100(1+\\frac{1}{10})^{2}=121\\). Therefore, the verified correct option is 121.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "5",
+                "7",
+                "9",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (420)"
+          }
         },
         {
           "q": "A quantity starts at \\(100\\) and decays by \\(10\\%\\) each period. Find its value after \\(2\\) periods.",
@@ -506,19 +652,47 @@
           "explanation": "Applying Exponential principles, \\(\\frac{1600}{2^{4}}=100\\). Therefore, the verified correct option is 100."
         },
         {
-          "q": "A quantity starts at \\(50\\) and multiplies by \\(3\\) every period. Find its value after \\(3\\) periods.",
+          "q": "Observe that the graph of \\(g(x)=f(x-0)+3\\) is obtained from \\(f(x)\\) by:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Solving basic sinusoidal equations",
           "choices": [
-            "1353",
-            "1350",
-            "150",
-            "50"
+            "Shifting 0 units right and 3 units up",
+            "Reflecting over the x-axis",
+            "Shifting 0 units no horizontal shift and 3 units down",
+            "Shifting 3 units up"
           ],
-          "correct": 1,
-          "answer": "Applying Exponential principles, \\(50\\times3^{3}=1350\\). Therefore, the verified correct option is 1350.",
-          "explanation": "Applying Exponential principles, \\(50\\times3^{3}=1350\\). Therefore, the verified correct option is 1350."
+          "correct": 3,
+          "answer": "Replacing \\(x\\) with \\(x-0\\) shifts horizontally by 0 (right if positive); adding 3 shifts vertically by 3.",
+          "explanation": "Applying Exponential principles, \\(50\\times3^{3}=1350\\). Therefore, the verified correct option is 1350.",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -4,
+              4
+            ],
+            "yrange": [
+              -2,
+              13
+            ],
+            "fns": [
+              {
+                "fn": "1*(x - 0)**2 + 3",
+                "label": "g(x)",
+                "color": "#1E3A6E"
+              }
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 3,
+                "label": "vertex (0,3)",
+                "color": "#C8902A"
+              }
+            ],
+            "w": 260,
+            "h": 200
+          }
         },
         {
           "q": "A population starts at \\(100\\) and doubles every period. Find its value after \\(3\\) periods.",
@@ -551,19 +725,40 @@
           "explanation": "Applying Exponential principles, \\(3\\times3^{3}=81\\). Therefore, the verified correct option is 81."
         },
         {
-          "q": "For the hyperbola \\(\\frac{x^2}{4}-\\frac{y^2}{9}=1\\), what are the equations of the asymptotes?",
+          "q": "Inverse Function Table (optical lens #424): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(25)\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Graphing with transformations",
           "choices": [
-            "\\(y=\\pm \\frac{3}{2} x\\)",
-            "\\(y=\\pm \\frac{2}{3} x\\)",
-            "\\(y=\\pm 6x\\)",
-            "\\(y=\\pm \\frac{5}{2} x\\)"
+            "\\(25\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(2\\)"
           ],
-          "correct": 0,
-          "answer": "Asymptotes of \\(\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1\\) are \\(y=\\pm\\frac{b}{a}x=\\pm \\frac{3}{2} x\\).",
-          "explanation": "Asymptotes of \\(\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1\\) are \\(y=\\pm\\frac{b}{a}x=\\pm \\frac{3}{2} x\\)."
+          "correct": 1,
+          "answer": "Looking up output \\(f(3) = 25\\) yields \\(f^{-1}(25) = 3\\).",
+          "explanation": "Asymptotes of \\(\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1\\) are \\(y=\\pm\\frac{b}{a}x=\\pm \\frac{3}{2} x\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "13",
+                "19",
+                "25",
+                "31"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (424)"
+          }
         }
       ]
     },
@@ -603,20 +798,48 @@
           "cross_lesson": "8.02 Graphing Rational Functions"
         },
         {
-          "q": "Use Cramer's Rule to solve: \\(5x-3y=14\\), \\(-3x+4y=-4\\).",
+          "q": "Consider the graph of \\(g(x)=f(x-2)-4\\) is obtained from \\(f(x)\\) by:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Finding zeros and extrema from an equation",
           "choices": [
-            "\\(x=4, y=3\\)",
-            "\\(x=4, y=2\\)",
-            "\\(x=5, y=2\\)",
-            "\\(x=2, y=4\\)"
+            "Shifting 2 units left and 4 units up",
+            "Shifting 2 units right and 4 units down",
+            "Reflecting over the x-axis",
+            "Shifting 2 units left and 4 units down"
           ],
-          "correct": 1,
-          "answer": "\\(D=11\\). \\(D_x=44\\), so \\(x=D_x/D=4\\). \\(D_y=22\\), so \\(y=D_y/D=2\\).",
+          "correct": 3,
+          "answer": "Replacing \\(x\\) with \\(x+2\\) shifts horizontally by -2 (right if positive); adding -4 shifts vertically by -4.",
           "explanation": "\\(D=11\\). \\(D_x=44\\), so \\(x=D_x/D=4\\). \\(D_y=22\\), so \\(y=D_y/D=2\\).",
-          "cross_lesson": "8.03 Introduction to Limits"
+          "cross_lesson": "8.03 Introduction to Limits",
+          "figure": {
+            "type": "fn",
+            "xrange": [
+              -2,
+              6
+            ],
+            "yrange": [
+              -8,
+              6
+            ],
+            "fns": [
+              {
+                "fn": "1*(x - 2)**2 + -4",
+                "label": "g(x)",
+                "color": "#1E3A6E"
+              }
+            ],
+            "points": [
+              {
+                "x": 2,
+                "y": -4,
+                "label": "vertex (2,-4)",
+                "color": "#C8902A"
+              }
+            ],
+            "w": 260,
+            "h": 200
+          }
         },
         {
           "q": "Eliminate the parameter: \\(x=t\\), \\(y=-1t+5\\).",
@@ -652,16 +875,37 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Calculate the simplified result of \\(\\tan\\left(\\sin^{-1}\\left(\\dfrac{9}{41}\\right)\\right)\\).",
-          "answer": "**Answer:** C. Draw a right triangle with the given ratio; using the Pythagorean theorem, the third side is found, and \\(\\tan\\) of the resulting angle is \\(\\frac{9}{40}\\).",
+          "q": "Inverse Function Table (structural arch #428): For the strictly increasing function \\(f\\) tabulated above, evaluate \\(f^{-1}(20)\\).",
+          "answer": "Looking up output \\(f(3) = 20\\) yields \\(f^{-1}(20) = 3\\).",
           "explanation": "Draw a right triangle with the given ratio; using the Pythagorean theorem, the third side is found, and \\(\\tan\\) of the resulting angle is \\(\\frac{9}{40}\\).",
           "choices": [
-            "\\(\\frac{49}{40}\\)",
-            "\\(\\frac{9}{41}\\)",
-            "\\(\\frac{9}{40}\\)",
-            "\\(\\frac{40}{9}\\)"
+            "\\(20\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(2\\)"
           ],
-          "correct": 2
+          "correct": 1,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(1\\)",
+              "\\(2\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "10",
+                "15",
+                "20",
+                "25"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "جدول قيم الدالة (428)"
+          }
         },
         {
           "qtype": "MCQ",

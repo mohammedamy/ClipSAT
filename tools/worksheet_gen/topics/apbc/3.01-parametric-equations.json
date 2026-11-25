@@ -9,12 +9,31 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "For \\(x(t)=t^2\\), \\(y(t)=t^3\\), find \\(\\frac{dy}{dx}\\) in terms of \\(t\\).",
+          "q": "Rate Table (aquifer recharge curve #894): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Derivatives of parametric equations",
-          "answer": "\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{2t}=\\frac{3t}{2}\\).",
-          "explanation": "\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{2t}=\\frac{3t}{2}\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #894)"
+          }
         },
         {
           "q": "For \\(x(t)=\\cos t\\), \\(y(t)=\\sin t\\), find \\(\\frac{dy}{dx}\\) and evaluate it at \\(t=\\frac{\\pi}{4}\\).",
@@ -33,12 +52,43 @@
           "explanation": "At \\(t=2\\): \\(x=3\\), \\(y=6\\). \\(\\frac{dx}{dt}=2t=4\\); \\(\\frac{dy}{dt}=3t^2-1=11\\). \\(\\frac{dy}{dx}=\\frac{11}{4}\\). Tangent: \\(y-6=\\frac{11}{4}(x-3)\\)."
         },
         {
-          "q": "State the arc length formula for a parametric curve \\(x(t)\\), \\(y(t)\\) on \\([a,b]\\).",
+          "q": "In chemical titration run infinite series investigation #248, consider \\(S = \\sum_{n=0}^{\\infty} 5\\left(-\\dfrac{1}{4}\\right)^n\\) and the convergent alternating series \\(T = \\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n^2 + 1}\\), along with the Integral Test diagram shown.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Arc length of parametric curves",
-          "answer": "\\(L=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt\\).",
-          "explanation": "\\(L=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt\\)."
+          "answer": "(a) \\(S = \\frac{5}{1 - (-1/4)} = 4\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 1} = \\frac{1}{17}\\). (c) \\(L = \\frac{1}{4} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "explanation": "(a) \\(S = \\frac{5}{1 - (-1/4)} = 4\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 1} = \\frac{1}{17}\\). (c) \\(L = \\frac{1}{4} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              1,
+              5.5
+            ],
+            "yl": [
+              0,
+              1.3
+            ],
+            "xStep": 1,
+            "yStep": 0.2,
+            "fns": [
+              {
+                "fn": "1/(x*x)",
+                "color": "#2563eb",
+                "label": "f(x) = 1/x²"
+              }
+            ],
+            "riemann": {
+              "expr": "1/(x*x)",
+              "a": 1,
+              "b": 5,
+              "n": 4,
+              "rule": "right",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "a_n",
+            "caption": "Integral Test comparison rectangles vs continuous tail (Run #248)"
+          }
         },
         {
           "q": "Find the arc length of \\(x(t)=3t\\), \\(y(t)=4t\\) for \\(t\\in[0,2]\\).",
@@ -82,12 +132,31 @@
           }
         },
         {
-          "q": "A particle moves with position \\(x(t)=t^2\\), \\(y(t)=2t\\). Find its speed at \\(t=1\\).",
+          "q": "Rate Table (hydroelectric sluice #898): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Speed as a vector quantity",
-          "answer": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=2\\). At \\(t=1\\): \\(\\frac{dx}{dt}=2\\), \\(\\frac{dy}{dt}=2\\). Speed \\(=\\sqrt{2^2+2^2}=\\sqrt{8}=2\\sqrt{2}\\).",
-          "explanation": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=2\\). At \\(t=1\\): \\(\\frac{dx}{dt}=2\\), \\(\\frac{dy}{dt}=2\\). Speed \\(=\\sqrt{2^2+2^2}=\\sqrt{8}=2\\sqrt{2}\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #898)"
+          }
         }
       ]
     },
@@ -111,12 +180,43 @@
           "explanation": "Since \\(x=t\\), substitute directly: \\(y=x^2-1\\), an upward parabola shifted down \\(1\\) unit."
         },
         {
-          "q": "Eliminate the parameter from \\(x(t)=2t+1\\), \\(y(t)=4t-3\\) to find the Cartesian equation.",
+          "q": "In hydroelectric sluice infinite series investigation #250, consider \\(S = \\sum_{n=0}^{\\infty} 2\\left(-\\dfrac{1}{3}\\right)^n\\) and the convergent alternating series \\(T = \\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n^2 + 3}\\), along with the Integral Test diagram shown.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Eliminating the parameter",
-          "answer": "From \\(x=2t+1\\): \\(t=\\frac{x-1}{2}\\). Substitute: \\(y=4\\left(\\frac{x-1}{2}\\right)-3=2(x-1)-3=2x-5\\). A line with slope \\(2\\).",
-          "explanation": "From \\(x=2t+1\\): \\(t=\\frac{x-1}{2}\\). Substitute: \\(y=4\\left(\\frac{x-1}{2}\\right)-3=2(x-1)-3=2x-5\\). A line with slope \\(2\\)."
+          "answer": "(a) \\(S = \\frac{2}{1 - (-1/3)} = \\frac{3}{2}\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 3} = \\frac{1}{19}\\). (c) \\(L = \\frac{1}{3} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "explanation": "(a) \\(S = \\frac{2}{1 - (-1/3)} = \\frac{3}{2}\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 3} = \\frac{1}{19}\\). (c) \\(L = \\frac{1}{3} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              1,
+              5.5
+            ],
+            "yl": [
+              0,
+              1.3
+            ],
+            "xStep": 1,
+            "yStep": 0.2,
+            "fns": [
+              {
+                "fn": "1/(x*x)",
+                "color": "#2563eb",
+                "label": "f(x) = 1/x²"
+              }
+            ],
+            "riemann": {
+              "expr": "1/(x*x)",
+              "a": 1,
+              "b": 5,
+              "n": 4,
+              "rule": "right",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "a_n",
+            "caption": "Integral Test comparison rectangles vs continuous tail (Run #250)"
+          }
         },
         {
           "q": "Explain why eliminating the parameter from \\(x(t)=\\cos t\\), \\(y(t)=\\sin t\\) using the identity \\(\\sin^2t+\\cos^2t=1\\) gives a relation that is NOT a function \\(y=f(x)\\).",
@@ -135,12 +235,31 @@
           "explanation": "For \\(t>0\\): \\(\\frac{d^2y}{dx^2}=\\frac{3}{4t}>0\\), so the curve is concave up. For \\(t<0\\): \\(\\frac{3}{4t}<0\\), so the curve is concave down."
         },
         {
-          "q": "For \\(x(t)=t^2-4\\), \\(y(t)=t^3-3t\\), find the value(s) of \\(t\\) where the tangent line is horizontal (where \\(\\frac{dy}{dt}=0\\), provided \\(\\frac{dx}{dt}\\neq0\\)).",
+          "q": "Rate Table (autonomous rover motion #902): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Horizontal and vertical tangents",
-          "answer": "\\(\\frac{dy}{dt}=3t^2-3=0 \\Rightarrow t=\\pm1\\). Check \\(\\frac{dx}{dt}=2t\\): at \\(t=\\pm1\\), \\(\\frac{dx}{dt}=\\pm2\\neq0\\), so both give valid horizontal tangents.",
-          "explanation": "\\(\\frac{dy}{dt}=3t^2-3=0 \\Rightarrow t=\\pm1\\). Check \\(\\frac{dx}{dt}=2t\\): at \\(t=\\pm1\\), \\(\\frac{dx}{dt}=\\pm2\\neq0\\), so both give valid horizontal tangents."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #902)"
+          }
         },
         {
           "q": "For the same curve, find the value(s) of \\(t\\) where the tangent line is vertical (where \\(\\frac{dx}{dt}=0\\), provided \\(\\frac{dy}{dt}\\neq0\\)).",
@@ -165,13 +284,44 @@
           "explanation": "\\(\\frac{dx}{dt}=2t=0 \\Rightarrow t=0\\). At \\(t=0\\): position is \\((0,0)\\), and the particle is momentarily moving purely vertically (since horizontal velocity is \\(0\\) there)."
         },
         {
-          "q": "For the particle above, find the speed at \\(t=2\\).",
+          "q": "In reservoir inflow infinite series investigation #252, consider \\(S = \\sum_{n=0}^{\\infty} 4\\left(-\\dfrac{1}{2}\\right)^n\\) and the convergent alternating series \\(T = \\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n^2 + 1}\\), along with the Integral Test diagram shown.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Motion along a parametric path (particle interpretation)",
           "cross_lesson": "6.01 Power Series and Interval of Convergence",
-          "answer": "\\(\\frac{dx}{dt}=2t=4\\); \\(\\frac{dy}{dt}=3t^2-3=9\\). Speed \\(=\\sqrt{4^2+9^2}=\\sqrt{16+81}=\\sqrt{97}\\approx9.85\\).",
-          "explanation": "\\(\\frac{dx}{dt}=2t=4\\); \\(\\frac{dy}{dt}=3t^2-3=9\\). Speed \\(=\\sqrt{4^2+9^2}=\\sqrt{16+81}=\\sqrt{97}\\approx9.85\\)."
+          "answer": "(a) \\(S = \\frac{4}{1 - (-1/2)} = \\frac{8}{3}\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 1} = \\frac{1}{17}\\). (c) \\(L = \\frac{1}{2} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "explanation": "(a) \\(S = \\frac{4}{1 - (-1/2)} = \\frac{8}{3}\\). (b) Alternating error bound \\(|a_4| = \\frac{1}{4^2 + 1} = \\frac{1}{17}\\). (c) \\(L = \\frac{1}{2} < 1\\). (d) \\(\\lim_{b\\to\\infty}[-1/x]_3^b = \\frac{1}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              1,
+              5.5
+            ],
+            "yl": [
+              0,
+              1.3
+            ],
+            "xStep": 1,
+            "yStep": 0.2,
+            "fns": [
+              {
+                "fn": "1/(x*x)",
+                "color": "#2563eb",
+                "label": "f(x) = 1/x²"
+              }
+            ],
+            "riemann": {
+              "expr": "1/(x*x)",
+              "a": 1,
+              "b": 5,
+              "n": 4,
+              "rule": "right",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "a_n",
+            "caption": "Integral Test comparison rectangles vs continuous tail (Run #252)"
+          }
         },
         {
           "q": "Use the parametric arc length formula to verify that the circumference of a circle \\(x(t)=r\\cos t\\), \\(y(t)=r\\sin t\\) for \\(t\\in[0,2\\pi]\\) is \\(2\\pi r\\).",
@@ -243,19 +393,49 @@
           "explanation": "From \\(x=-2t-3\\): \\(t=\\frac{x+3}{-2}\\). Substituting into \\(y=7t-9\\) gives a line of slope \\(\\frac{7}{-2}=-\\frac{7}{2}\\)."
         },
         {
-          "q": "For \\(x(t)=t^2+2t\\), \\(y(t)=t^3+6t^2\\), find the larger value of \\(t\\) where the tangent line is horizontal.",
+          "q": "Derivative Curve (wind turbine telemetry #907): For the plotted parabola \\(f(x) = 2x^2\\), determine the instantaneous rate of change \\(f'(4)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Second derivatives of parametric equations",
           "choices": [
-            "\\(-4\\)",
-            "\\(0\\)",
-            "\\(-3\\)",
-            "\\(3\\)"
+            "\\(32\\)",
+            "\\(18\\)",
+            "\\(8\\)",
+            "\\(16\\)"
           ],
-          "correct": 1,
-          "answer": "\\(\\frac{dy}{dt}=3t^2+12t=3(t-(-4))(t-(0))=0\\) gives \\(t=-4\\) and \\(t=0\\); the larger is \\(0\\).",
-          "explanation": "\\(\\frac{dy}{dt}=3t^2+12t=3(t-(-4))(t-(0))=0\\) gives \\(t=-4\\) and \\(t=0\\); the larger is \\(0\\)."
+          "correct": 3,
+          "answer": "Since \\(f'(x) = 4x\\), the instantaneous rate at \\(x = 4\\) is \\(4(4) = 16\\).",
+          "explanation": "\\(\\frac{dy}{dt}=3t^2+12t=3(t-(-4))(t-(0))=0\\) gives \\(t=-4\\) and \\(t=0\\); the larger is \\(0\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              6
+            ],
+            "yl": [
+              0,
+              52
+            ],
+            "xStep": 1,
+            "yStep": 10,
+            "fns": [
+              {
+                "fn": "2*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 32,
+                "label": "(4, 32)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 2x² with marked point (#907)"
+          }
         },
         {
           "q": "A particle's motion is described by the parametric equations \\(x(t) = e^{2t} - 2t\\) and \\(y(t) = 4e^t\\) for \\(t \\geq 0\\). Find the value of \\(\\frac{dy}{dx}\\) at the point where the tangent line to the curve is horizontal.",
@@ -322,19 +502,38 @@
           "correct": 1
         },
         {
-          "q": "A particle moves along parametric path \\(x(t) = 3t^2\\), \\(y(t) = 5t\\). What is the velocity vector \\(\\mathbf{v}(t) = \\langle x'(t), y'(t) \\rangle\\)?",
+          "q": "Rate Table (chemical titration run #908): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Speed as a vector quantity",
           "choices": [
-            "\\(\\langle 6t, 5 \\rangle\\)",
-            "\\(\\langle 3t, 5 \\rangle\\)",
-            "\\(\\langle 6t, 0 \\rangle\\)",
-            "\\(\\langle 3t^2, 5t \\rangle\\)"
+            "\\(30\\)",
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(36\\)"
           ],
           "correct": 0,
-          "answer": "Differentiating component-wise gives \\(x'(t) = 6t\\) and \\(y'(t) = 5\\).",
-          "explanation": "Differentiating component-wise gives \\(x'(t) = 6t\\) and \\(y'(t) = 5\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Differentiating component-wise gives \\(x'(t) = 6t\\) and \\(y'(t) = 5\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #908)"
+          }
         },
         {
           "q": "Find the arc length of \\(x=3t^{2},\\ y=\\frac{6}{3}t^{3}\\) from \\(t=0\\) to \\(t=2\\).",
@@ -441,19 +640,38 @@
           "explanation": "To find the velocity vector, we need to find the derivatives of the parametric equations with respect to \\(t\\). The derivative of \\(x(t) = 3t + 5\\) is \\(x'(t) = \\frac{d}{dt}(3t + 5) = 3\\). The derivative of \\(y(t) = t^2 - 2\\) is \\(y'(t) = \\frac{d}{dt}(t^2 - 2) = 2t\\). Therefore, the velocity vector is \\(\\mathbf{v}(t) = \\langle x'(t), y'(t) \\rangle = \\langle 3, 2t \\rangle\\)."
         },
         {
-          "q": "Consider a particle whose position is described by the parametric equations \\(x(t) = 3t + 5\\) and \\(y(t) = 2t^2 - 1\\) for \\(t \\geq 0\\). What is the velocity vector \\(\\mathbf{v}(t) = \\langle x'(t), y'(t) \\rangle\\)?",
+          "q": "Rate Table (hydroelectric sluice #910): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Parametric equations from real motion",
           "choices": [
-            "\\(\\langle 3, 4t \\rangle\\)",
-            "\\(\\langle 3t, 4t \\rangle\\)",
-            "\\(\\langle 3, 2t \\rangle\\)",
-            "\\(\\langle 3, 4t - 1 \\rangle\\)"
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(24\\)"
           ],
-          "correct": 0,
-          "answer": "The velocity vector is found by differentiating the parametric equations with respect to \\(t\\). The derivative of \\(x(t) = 3t + 5\\) is \\(x'(t) = 3\\). The derivative of \\(y(t) = 2t^2 - 1\\) is \\(y'(t) = 4t\\). Therefore, the velocity vector is \\(\\mathbf{v}(t) = \\langle x'(t), y'(t) \\rangle = \\langle 3, 4t \\rangle\\).",
-          "explanation": "The velocity vector is found by differentiating the parametric equations with respect to \\(t\\). The derivative of \\(x(t) = 3t + 5\\) is \\(x'(t) = 3\\). The derivative of \\(y(t) = 2t^2 - 1\\) is \\(y'(t) = 4t\\). Therefore, the velocity vector is \\(\\mathbf{v}(t) = \\langle x'(t), y'(t) \\rangle = \\langle 3, 4t \\rangle\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "explanation": "The velocity vector is found by differentiating the parametric equations with respect to \\(t\\). The derivative of \\(x(t) = 3t + 5\\) is \\(x'(t) = 3\\). The derivative of \\(y(t) = 2t^2 - 1\\) is \\(y'(t) = 4t\\). Therefore, the velocity vector is \\(\\mathbf{v}(t) = \\langle x'(t), y'(t) \\rangle = \\langle 3, 4t \\rangle\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #910)"
+          }
         },
         {
           "q": "A particle has velocity \\(\\mathbf{r}'(t)=\\langle 1,\\,3t\\rangle\\) and position \\(\\mathbf{r}(0)=\\langle 2,\\,1\\rangle\\). Find \\(\\mathbf{r}(1)\\).",
@@ -484,19 +702,49 @@
           "correct": 0
         },
         {
-          "q": "A particle moves with \\(x(t)=3t^{3},\\ y(t)=2t^{2}\\). Find the acceleration vector at \\(t=1\\).",
+          "q": "Derivative Curve (bio-reactor temperature #913): For the plotted parabola \\(f(x) = 2x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Tangent lines to parametric curves",
           "choices": [
-            "\\(\\langle 18,\\,5 \\rangle\\)",
-            "\\(\\langle 19,\\,4 \\rangle\\)",
-            "\\(\\langle 4,\\,18 \\rangle\\)",
-            "\\(\\langle 18,\\,4 \\rangle\\)"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(4\\)",
+            "\\(11\\)"
           ],
-          "correct": 3,
-          "answer": "\\(x''(t)=18t,\\ y''(t)=4\\). At \\(t=1\\): \\(\\langle 18,4\\rangle.\\)",
-          "explanation": "\\(x''(t)=18t,\\ y''(t)=4\\). At \\(t=1\\): \\(\\langle 18,4\\rangle.\\)"
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 4x\\), the instantaneous rate at \\(x = 2\\) is \\(4(2) = 8\\).",
+          "explanation": "\\(x''(t)=18t,\\ y''(t)=4\\). At \\(t=1\\): \\(\\langle 18,4\\rangle.\\)",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              20
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "2*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 2x² with marked point (#913)"
+          }
         },
         {
           "q": "A particle moves with \\(x(t)=1t^{2},\\ y(t)=2t\\). Find the velocity vector at \\(t=1\\).",
@@ -527,19 +775,38 @@
           "correct": 3
         },
         {
-          "q": "Find the slope of the tangent line \\(\\frac{dy}{dx}\\) to the parametric curve \\(x(t) = t^2 + 1\\), \\(y(t) = t^3 - 3t\\) at \\(t = 2\\).",
+          "q": "Rate Table (autonomous rover motion #914): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Eliminating the parameter",
           "choices": [
-            "\\(\\frac{9}{4}\\)",
-            "\\(\\frac{11}{4}\\)",
-            "\\(\\frac{4}{9}\\)",
-            "\\(\\frac{8}{4}\\)"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(37\\)"
           ],
-          "correct": 0,
-          "answer": "\\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 3}{2t}\\). At \\(t=2\\), \\(\\frac{3(4) - 3}{2(2)} = \\frac{9}{4}\\).",
-          "explanation": "\\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 3}{2t}\\). At \\(t=2\\), \\(\\frac{3(4) - 3}{2(2)} = \\frac{9}{4}\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "\\(\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{3t^2 - 3}{2t}\\). At \\(t=2\\), \\(\\frac{3(4) - 3}{2(2)} = \\frac{9}{4}\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #914)"
+          }
         }
       ]
     },
@@ -580,16 +847,46 @@
         },
         {
           "qtype": "MCQ",
-          "q": "A particle moves with \\( x(t)=t^{2},\\ y(t)=2t \\). Find the velocity vector at \\(t=1\\).",
-          "answer": "**Answer:** D. \\(x'(t)=2t,\\ y'(t)=2\\). At \\(t=1\\): \\(\\langle 2,2\\rangle.\\)",
+          "q": "Derivative Curve (battery charging session #917): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
+          "answer": "Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 2\\) is \\(6(2) = 12\\).",
           "explanation": "\\(x'(t)=2t,\\ y'(t)=2\\). At \\(t=1\\): \\(\\langle 2,2\\rangle.\\)",
           "choices": [
-            "\\(\\langle 4,\\,2 \\rangle\\)",
-            "\\(\\langle 3,\\,2 \\rangle\\)",
-            "\\(\\langle 1,\\,2 \\rangle\\)",
-            "\\(\\langle 2,\\,2 \\rangle\\)"
+            "\\(14\\)",
+            "\\(12\\)",
+            "\\(6\\)",
+            "\\(15\\)"
           ],
-          "correct": 3
+          "correct": 1,
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              29
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 12,
+                "label": "(2, 12)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 3x² with marked point (#917)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -618,20 +915,39 @@
           "correct": 1
         },
         {
-          "q": "A particle's position in the xy-plane is given by the parametric equations \\(x(t) = 2t + 1\\) and \\(y(t) = t^2 - 3\\), where \\(t\\) is time. What is the Cartesian equation of the path traced by the particle?",
+          "q": "Rate Table (aquifer recharge curve #918): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Derivatives of parametric equations",
           "choices": [
-            "\\(y = \\frac{1}{2}x^2 - 3\\)",
-            "\\(y = \\left(\\frac{x-1}{2}\\right)^2 - 3\\)",
-            "\\(y = x^2 - 3\\)",
-            "\\(y = 2\\left(\\frac{x-1}{2}\\right) + 1\\)"
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(30\\)",
+            "\\(36\\)"
           ],
-          "correct": 1,
-          "answer": "To find the Cartesian equation, we need to eliminate the parameter \\(t\\) from the given parametric equations. Given: \\(x(t) = 2t + 1\\) \\(y(t) = t^2 - 3\\) From the first equation, we can solve for \\(t\\) in terms of \\(x\\): \\(x - 1 = 2t\\) \\(t = \\frac{x-1}{2}\\) Now, substitute this expression for \\(t\\) into the second equation: \\(y = \\left(\\frac{x-1}{2}\\right)^2 - 3\\) This is the Cartesian equation of the path traced by the particle.",
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
           "explanation": "To find the Cartesian equation, we need to eliminate the parameter \\(t\\) from the given parametric equations. Given: \\(x(t) = 2t + 1\\) \\(y(t) = t^2 - 3\\) From the first equation, we can solve for \\(t\\) in terms of \\(x\\): \\(x - 1 = 2t\\) \\(t = \\frac{x-1}{2}\\) Now, substitute this expression for \\(t\\) into the second equation: \\(y = \\left(\\frac{x-1}{2}\\right)^2 - 3\\) This is the Cartesian equation of the path traced by the particle.",
-          "cross_lesson": "4.02 Area in Polar Coordinates"
+          "cross_lesson": "4.02 Area in Polar Coordinates",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #918)"
+          }
         },
         {
           "q": "Epicycloid with \\(n\\) cusps (outer radius \\(R\\), small circle radius \\(r=R/n\\)) has arc length:",

@@ -171,11 +171,12 @@ module.exports = function (eleventyConfig) {
       console.warn("Could not load figures.js for SSR:", e.message);
     }
   }
-  eleventyConfig.addNunjucksFilter("renderFig", function (spec) {
+  eleventyConfig.addNunjucksFilter("renderFig", function (spec, lang) {
     if (!spec || typeof spec !== "object") return "";
     if (_renderFigFn) {
       try {
-        return _renderFigFn(spec);
+        var figInput = lang === "ar" ? Object.assign({}, spec, { _lang: "ar" }) : spec;
+        return _renderFigFn(figInput);
       } catch (err) {
         console.warn("renderFig error:", err.message);
       }

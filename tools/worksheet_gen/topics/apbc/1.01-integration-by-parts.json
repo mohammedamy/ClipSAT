@@ -9,12 +9,31 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "State the integration by parts formula, and explain the LIATE guideline for choosing \\(u\\).",
+          "q": "BC Series Table (aquifer recharge curve #810): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The integration by parts formula",
-          "answer": "\\(\\int u\\,dv = uv-\\int v\\,du\\). LIATE suggests choosing \\(u\\) in the priority order: Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential — the function type listed first should typically be \\(u\\).",
-          "explanation": "\\(\\int u\\,dv = uv-\\int v\\,du\\). LIATE suggests choosing \\(u\\) in the priority order: Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential — the function type listed first should typically be \\(u\\)."
+          "answer": "\\(P_2(x) = 1 + 5x + \\frac{4}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 2 = 8\\).",
+          "explanation": "\\(P_2(x) = 1 + 5x + \\frac{4}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 2 = 8\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "5",
+                "4"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #810)"
+          }
         },
         {
           "q": "Derive the integration by parts formula starting from the product rule \\(\\frac{d}{dx}[uv]=u'v+uv'\\).",
@@ -33,12 +52,33 @@
           "explanation": "First: \\(u=x^2\\), \\(dv=e^x\\,dx\\): \\(\\int x^2e^x\\,dx = x^2e^x-2\\int xe^x\\,dx\\). Using the earlier result \\(\\int xe^x\\,dx=xe^x-e^x\\): \\(=x^2e^x-2(xe^x-e^x)+C = x^2e^x-2xe^x+2e^x+C\\)."
         },
         {
-          "q": "Set up (do not evaluate fully) the reduction needed to find \\(\\int x^3e^x\\,dx\\), identifying how many times integration by parts must be applied.",
+          "q": "In autonomous rover motion BC analysis #206, a twice-differentiable function \\(f\\) satisfies the exact table values above on \\([0, 2]\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Repeated integration by parts",
-          "answer": "Each application of IBP with \\(u=x^n\\) reduces the power of \\(x\\) by \\(1\\) while \\(v\\) stays an antiderivative of \\(e^x\\). Since the power starts at \\(3\\), integration by parts must be applied \\(3\\) times to eliminate the polynomial factor entirely.",
-          "explanation": "Each application of IBP with \\(u=x^n\\) reduces the power of \\(x\\) by \\(1\\) while \\(v\\) stays an antiderivative of \\(e^x\\). Since the power starts at \\(3\\), integration by parts must be applied \\(3\\) times to eliminate the polynomial factor entirely."
+          "answer": "(a) \\([xf(x)]_0^2 - \\int_0^2 f = 2(5) - 5 = 5\\). (b) \\(\\lim_{b\\to\\infty}\\left[-\\frac{1}{3x^{3}}\\right]_1^b = \\frac{1}{3}\\). (c) Setting \\(x = 0\\) yields \\(3A = 6 \\implies A = 2\\). (d) \\(f(2) + 2f'(2) = 5 + 2(4) = 13\\).",
+          "explanation": "(a) \\([xf(x)]_0^2 - \\int_0^2 f = 2(5) - 5 = 5\\). (b) \\(\\lim_{b\\to\\infty}\\left[-\\frac{1}{3x^{3}}\\right]_1^b = \\frac{1}{3}\\). (c) Setting \\(x = 0\\) yields \\(3A = 6 \\implies A = 2\\). (d) \\(f(2) + 2f'(2) = 5 + 2(4) = 13\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Quantity",
+              "\\(f(0)\\)",
+              "\\(f(2)\\)",
+              "\\(f'(2)\\)",
+              "\\(\\int_0^2 f(x)\\,dx\\)"
+            ],
+            "rows": [
+              [
+                "Value",
+                "3",
+                "5",
+                "4",
+                "5"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Boundary conditions & integral table on [0, 2] (Model #206)"
+          }
         },
         {
           "q": "Evaluate \\(\\int e^x\\sin x\\,dx\\) using the cyclic (solve-for-the-integral) technique.",
@@ -57,12 +97,31 @@
           "explanation": "Let \\(I=\\int e^{2x}\\cos x\\,dx\\). IBP (\\(u=\\cos x\\), \\(dv=e^{2x}dx\\)): \\(I=\\frac{1}{2}e^{2x}\\cos x+\\frac{1}{2}\\int e^{2x}\\sin x\\,dx\\). IBP again on that integral (\\(u=\\sin x\\), \\(dv=e^{2x}dx\\)): \\(\\int e^{2x}\\sin x\\,dx=\\frac{1}{2}e^{2x}\\sin x-\\frac{1}{2}I\\). Substituting: \\(I=\\frac{1}{2}e^{2x}\\cos x+\\frac{1}{4}e^{2x}\\sin x-\\frac{1}{4}I \\Rightarrow \\frac{5}{4}I=\\frac{1}{2}e^{2x}\\cos x+\\frac{1}{4}e^{2x}\\sin x \\Rightarrow I=\\frac{e^{2x}(2\\cos x+\\sin x)}{5}+C\\)."
         },
         {
-          "q": "Evaluate \\(\\int_0^1 xe^x\\,dx\\) using the antiderivative found earlier.",
+          "q": "Rate Table (hydroelectric sluice #814): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Definite integrals using integration by parts",
-          "answer": "\\(\\left[xe^x-e^x\\right]_0^1 = (e-e)-(0-1) = 0-(-1) = 1\\).",
-          "explanation": "\\(\\left[xe^x-e^x\\right]_0^1 = (e-e)-(0-1) = 0-(-1) = 1\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #814)"
+          }
         }
       ]
     },
@@ -99,12 +158,33 @@
           "explanation": "(a) \\(u=\\ln x\\) (Logarithmic beats Algebraic); (b) \\(u=x\\) (Algebraic beats Exponential); (c) \\(u=\\tan^{-1}x\\) (Inverse trig beats Algebraic); (d) \\(u=x^2\\) (Algebraic beats Trigonometric)"
         },
         {
-          "q": "Explain what goes wrong if you attempt \\(\\int xe^x\\,dx\\) with the reversed choice \\(u=e^x\\), \\(dv=x\\,dx\\).",
+          "q": "In solar array output BC analysis #208, a twice-differentiable function \\(f\\) satisfies the exact table values above on \\([0, 2]\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Choosing u and dv wisely",
-          "answer": "Then \\(du=e^x\\,dx\\), \\(v=\\frac{x^2}{2}\\), giving \\(\\int xe^x\\,dx=\\frac{x^2}{2}e^x-\\int\\frac{x^2}{2}e^x\\,dx\\). The remaining integral is MORE complicated than the original (higher power of \\(x\\) under the same exponential), so this choice makes the problem worse rather than simpler — LIATE's algebraic-before-exponential guidance avoids this trap.",
-          "explanation": "Then \\(du=e^x\\,dx\\), \\(v=\\frac{x^2}{2}\\), giving \\(\\int xe^x\\,dx=\\frac{x^2}{2}e^x-\\int\\frac{x^2}{2}e^x\\,dx\\). The remaining integral is MORE complicated than the original (higher power of \\(x\\) under the same exponential), so this choice makes the problem worse rather than simpler — LIATE's algebraic-before-exponential guidance avoids this trap."
+          "answer": "(a) \\([xf(x)]_0^2 - \\int_0^2 f = 2(7) - 3 = 11\\). (b) \\(\\lim_{b\\to\\infty}\\left[-\\frac{1}{2x^{2}}\\right]_1^b = \\frac{1}{2}\\). (c) Setting \\(x = 0\\) yields \\(3A = 6 \\implies A = 2\\). (d) \\(f(2) + 2f'(2) = 7 + 2(3) = 13\\).",
+          "explanation": "(a) \\([xf(x)]_0^2 - \\int_0^2 f = 2(7) - 3 = 11\\). (b) \\(\\lim_{b\\to\\infty}\\left[-\\frac{1}{2x^{2}}\\right]_1^b = \\frac{1}{2}\\). (c) Setting \\(x = 0\\) yields \\(3A = 6 \\implies A = 2\\). (d) \\(f(2) + 2f'(2) = 7 + 2(3) = 13\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Quantity",
+              "\\(f(0)\\)",
+              "\\(f(2)\\)",
+              "\\(f'(2)\\)",
+              "\\(\\int_0^2 f(x)\\,dx\\)"
+            ],
+            "rows": [
+              [
+                "Value",
+                "1",
+                "7",
+                "3",
+                "3"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Boundary conditions & integral table on [0, 2] (Model #208)"
+          }
         },
         {
           "q": "Find the exact area under \\(y=xe^{-x}\\) on \\([0,3]\\), using \\(\\int xe^{-x}\\,dx=-xe^{-x}-e^{-x}+C\\) (verify this antiderivative first by differentiating).",
@@ -137,42 +217,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Consider the function represented by the graph of \\( f(x) \\) below. What is the value of the definite integral \\( \\int_{0}^{4} f(x) \\, dx \\)?",
-          "answer": "**Answer:** A. The definite integral \\( \\int_{0}^{4} f(x) \\, dx \\) represents the area under the curve \\( f(x) \\) from \\( x=0 \\) to \\( x=4 \\). The graph of \\( f(x) \\) from \\( x=0 \\) to \\( x=4 \\) forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of \\( f(x) \\) at \\( x=0 \\)). The area of a triangle is given by \\( \\frac{1}{2} \\times \\text{base} \\times \\text{height} \\). Therefore, the area is \\( \\frac{1}{2} \\times 4 \\times 6 = 12 \\).",
+          "q": "Rate Table (autonomous rover motion #818): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
           "explanation": "The definite integral \\( \\int_{0}^{4} f(x) \\, dx \\) represents the area under the curve \\( f(x) \\) from \\( x=0 \\) to \\( x=4 \\). The graph of \\( f(x) \\) from \\( x=0 \\) to \\( x=4 \\) forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of \\( f(x) \\) at \\( x=0 \\)). The area of a triangle is given by \\( \\frac{1}{2} \\times \\text{base} \\times \\text{height} \\). Therefore, the area is \\( \\frac{1}{2} \\times 4 \\times 6 = 12 \\).",
           "figure": {
-            "type": "fn",
-            "fns": [
-              "3 - 0.75*x"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
             ],
-            "xlim": [
-              -2,
-              6
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
             ],
-            "ylim": [
-              -1,
-              7
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": 3,
-                "label": "(0, 3)"
-              },
-              {
-                "x": 4,
-                "y": 0,
-                "label": "(4, 0)"
-              }
-            ]
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #818)"
           },
           "choices": [
-            "12",
-            "10",
-            "8",
-            "6"
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(30\\)",
+            "\\(36\\)"
           ],
-          "correct": 0
+          "correct": 2
         },
         {
           "q": "Use repeated integration by parts to evaluate the exact definite integral \\(\\int_0^{\\pi/2} x^2 \\cos x\\,dx\\).",
@@ -243,42 +316,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "The graph of the function \\( f(x) = x^2 - 4x + 3 \\) is shown below. What is the definite integral of \\( f(x) \\) from \\( x=1 \\) to \\( x=3 \\)?",
-          "answer": "**Answer:** B. To find the definite integral of \\( f(x) = x^2 - 4x + 3 \\) from \\( x=1 \\) to \\( x=3 \\), we evaluate \\( \\int_{1}^{3} (x^2 - 4x + 3) \\, dx \\).\n\nFirst, find the antiderivative of \\( f(x) \\): \\( F(x) = \\frac{x^3}{3} - \\frac{4x^2}{2} + 3x = \\frac{x^3}{3} - 2x^2 + 3x \\).\n\nNext, apply the Fundamental Theorem of Calculus: \\( F(3) - F(1) \\).\n\nCalculate \\( F(3) \\): \\( F(3) = \\frac{3^3}{3} - 2(3)^2 + 3(3) = \\frac{27}{3} - 2(9) + 9 = 9 - 18 + 9 = 0 \\).\n\nCalculate \\( F(1) \\): \\( F(1) = \\frac{1^3}{3} - 2(1)^2 + 3(1) = \\frac{1}{3} - 2 + 3 = \\frac{1}{3} + 1 = \\frac{4}{3} \\).\n\nFinally, subtract \\( F(1) \\) from \\( F(3) \\): \\( F(3) - F(1) = 0 - \\frac{4}{3} = -\\frac{4}{3} \\).",
+          "q": "Rate Table (solar array output #820): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
           "explanation": "To find the definite integral of \\( f(x) = x^2 - 4x + 3 \\) from \\( x=1 \\) to \\( x=3 \\), we evaluate \\( \\int_{1}^{3} (x^2 - 4x + 3) \\, dx \\).\n\nFirst, find the antiderivative of \\( f(x) \\): \\( F(x) = \\frac{x^3}{3} - \\frac{4x^2}{2} + 3x = \\frac{x^3}{3} - 2x^2 + 3x \\).\n\nNext, apply the Fundamental Theorem of Calculus: \\( F(3) - F(1) \\).\n\nCalculate \\( F(3) \\): \\( F(3) = \\frac{3^3}{3} - 2(3)^2 + 3(3) = \\frac{27}{3} - 2(9) + 9 = 9 - 18 + 9 = 0 \\).\n\nCalculate \\( F(1) \\): \\( F(1) = \\frac{1^3}{3} - 2(1)^2 + 3(1) = \\frac{1}{3} - 2 + 3 = \\frac{1}{3} + 1 = \\frac{4}{3} \\).\n\nFinally, subtract \\( F(1) \\) from \\( F(3) \\): \\( F(3) - F(1) = 0 - \\frac{4}{3} = -\\frac{4}{3} \\).",
           "figure": {
-            "type": "fn",
-            "fns": [
-              "x*x - 4*x + 3"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
             ],
-            "xlim": [
-              0,
-              4
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
             ],
-            "ylim": [
-              -2,
-              3
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": 0,
-                "label": "(1, 0)"
-              },
-              {
-                "x": 3,
-                "y": 0,
-                "label": "(3, 0)"
-              }
-            ]
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #820)"
           },
           "choices": [
-            "\\( 0 \\)",
-            "\\( -\\frac{4}{3} \\)",
-            "\\( \\frac{4}{3} \\)",
-            "\\( 2 \\)"
+            "\\(18\\)",
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(24\\)"
           ],
-          "correct": 1
+          "correct": 0
         },
         {
           "qtype": "MCQ",
@@ -314,19 +380,50 @@
           "explanation": "Let \\(u=-2x\\), \\(dv=\\cos x\\,dx\\): \\(du=-2\\,dx\\), \\(v=\\sin x\\). \\(\\int -2x\\cos x\\,dx=-2x\\sin x-2\\cos x+C\\). Evaluating: \\(\\left[-2x\\sin x-2\\cos x\\right]_0^{\\pi}=(0+2)-(0-2)=4\\)."
         },
         {
-          "q": "Given \\(f(0)=0\\), \\(f(3)=2\\), \\(g(0)=2\\), \\(g(3)=2\\), and \\(\\int_{0}^{3}f'(x)g(x)\\,dx=-2\\), use integration by parts to find \\(\\int_{0}^{3}f(x)g'(x)\\,dx\\).",
+          "q": "Riemann Plot (wind turbine telemetry #823): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Integration by parts with logarithms and inverse trig",
           "choices": [
-            "\\(10\\)",
-            "\\(-6\\)",
-            "\\(2\\)",
-            "\\(6\\)"
+            "\\(24\\)",
+            "\\(12\\)",
+            "\\(20\\)",
+            "\\(16\\)"
           ],
           "correct": 3,
-          "answer": "\\(\\int_{0}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{3}-\\int_{0}^{3}f'(x)g(x)\\,dx=\\left[(2)(2)-(0)(2)\\right]-(-2)=4-(-2)=6\\).",
-          "explanation": "\\(\\int_{0}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{3}-\\int_{0}^{3}f'(x)g(x)\\,dx=\\left[(2)(2)-(0)(2)\\right]-(-2)=4-(-2)=6\\)."
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).",
+          "explanation": "\\(\\int_{0}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{3}-\\int_{0}^{3}f'(x)g(x)\\,dx=\\left[(2)(2)-(0)(2)\\right]-(-2)=4-(-2)=6\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "2*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #823)"
+          }
         },
         {
           "q": "Using the cyclic technique, \\(\\int e^{x}\\cos(2x)\\,dx=\\frac{e^{x}(\\cos(2x)+C_1\\sin(2x))}{5}+C\\). Find the coefficient \\(C_1\\).",
@@ -467,29 +564,49 @@
           }
         },
         {
-          "q": "A region in the first quadrant is bounded by the graph of \\(f(x) = 3x^2 + 1\\), the x-axis, and the vertical lines \\(x=1\\) and \\(x=2\\). What is the area of this region?",
+          "q": "Riemann Plot (orbital telemetry pass #825): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Integration by parts with algebraic-trigonometric products",
           "choices": [
-            "\\(10\\)",
-            "\\(12\\)",
             "\\(14\\)",
-            "\\(16\\)"
+            "\\(10\\)",
+            "\\(6\\)",
+            "\\(12\\)"
           ],
-          "correct": 0,
-          "answer": "The area of the region is given by the definite integral of \\(f(x)\\) from \\(x=1\\) to \\(x=2\\). Area \\(= \\int_{1}^{2} (3x^2 + 1) \\, dx\\) First, find the antiderivative of \\(3x^2 + 1\\): Antiderivative \\(= \\frac{3x^3}{3} + x = x^3 + x\\) Now, evaluate the definite integral using the Fundamental Theorem of Calculus: Area \\(= [x^3 + x]_{1}^{2}\\) Area \\(= (2^3 + 2) - (1^3 + 1)\\) Area \\(= (8 + 2) - (1 + 1)\\) Area \\(= 10 - 2\\) Area \\(= 8\\)",
+          "correct": 1,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
           "explanation": "The area of the region is given by the definite integral of \\(f(x)\\) from \\(x=1\\) to \\(x=2\\). Area \\(= \\int_{1}^{2} (3x^2 + 1) \\, dx\\) First, find the antiderivative of \\(3x^2 + 1\\): Antiderivative \\(= \\frac{3x^3}{3} + x = x^3 + x\\) Now, evaluate the definite integral using the Fundamental Theorem of Calculus: Area \\(= [x^3 + x]_{1}^{2}\\) Area \\(= (2^3 + 2) - (1^3 + 1)\\) Area \\(= (8 + 2) - (1 + 1)\\) Area \\(= 10 - 2\\) Area \\(= 8\\)",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "3*x*x + 1"
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
             ],
-            "xmin": 0,
-            "xmax": 3,
-            "ymin": 0,
-            "ymax": 15,
-            "width": 230
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #825)"
           }
         }
       ]
@@ -552,19 +669,38 @@
           }
         },
         {
-          "q": "Consider the function represented by the graph of \\(f(x)\\) below. What is the value of the definite integral \\(\\int_{0}^{4} f(x) \\, dx\\)?",
+          "q": "Rate Table (hydroelectric sluice #826): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "The integration by parts formula",
           "choices": [
-            "12",
-            "10",
-            "8",
-            "6"
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
-          "correct": 0,
-          "answer": "The definite integral \\(\\int_{0}^{4} f(x) \\, dx\\) represents the area under the curve \\(f(x)\\) from \\(x=0\\) to \\(x=4\\). The graph of \\(f(x)\\) from \\(x=0\\) to \\(x=4\\) forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of \\(f(x)\\) at \\(x=0\\)). The area of a triangle is given by \\(\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height}\\). Therefore, the area is \\(\\frac{1}{2} \\times 4 \\times 6 = 12\\).",
-          "explanation": "The definite integral \\(\\int_{0}^{4} f(x) \\, dx\\) represents the area under the curve \\(f(x)\\) from \\(x=0\\) to \\(x=4\\). The graph of \\(f(x)\\) from \\(x=0\\) to \\(x=4\\) forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of \\(f(x)\\) at \\(x=0\\)). The area of a triangle is given by \\(\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height}\\). Therefore, the area is \\(\\frac{1}{2} \\times 4 \\times 6 = 12\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "explanation": "The definite integral \\(\\int_{0}^{4} f(x) \\, dx\\) represents the area under the curve \\(f(x)\\) from \\(x=0\\) to \\(x=4\\). The graph of \\(f(x)\\) from \\(x=0\\) to \\(x=4\\) forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of \\(f(x)\\) at \\(x=0\\)). The area of a triangle is given by \\(\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height}\\). Therefore, the area is \\(\\frac{1}{2} \\times 4 \\times 6 = 12\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #826)"
+          }
         },
         {
           "q": "Evaluate \\(\\int x^{2} e^{2x}\\,dx\\) (apply integration by parts twice).",
@@ -597,19 +733,50 @@
           "explanation": "Applying Unit 6BC · Advanced Integration Techniques principles, IBP formula: \\(uv-\\int v\\,du\\). Therefore, the verified correct option is \\(uv-\\int v\\,du\\)."
         },
         {
-          "q": "For \\(\\frac{1}{(x-2)^{2}(x-6)}=\\frac{A}{x-2}+\\frac{B}{(x-2)^{2}}+\\frac{D}{x-6}\\), find \\(B\\) (coefficient of the repeated-factor term).",
+          "q": "Riemann Plot (bio-reactor temperature #829): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "The cyclic case",
           "choices": [
-            "\\(- \\frac{1}{2}\\)",
-            "\\(- \\frac{1}{4}\\)",
-            "\\(- \\frac{3}{20}\\)",
-            "\\(\\frac{1}{4}\\)"
+            "\\(24\\)",
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(20\\)"
           ],
           "correct": 1,
-          "answer": "Multiply through by \\((x-2)^2(x-6)\\) and set \\(x=2\\): \\(1=B(2-6)\\Rightarrow B=\\frac{1}{2-6}=- \\frac{1}{4}.\\)",
-          "explanation": "Multiply through by \\((x-2)^2(x-6)\\) and set \\(x=2\\): \\(1=B(2-6)\\Rightarrow B=\\frac{1}{2-6}=- \\frac{1}{4}.\\)"
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).",
+          "explanation": "Multiply through by \\((x-2)^2(x-6)\\) and set \\(x=2\\): \\(1=B(2-6)\\Rightarrow B=\\frac{1}{2-6}=- \\frac{1}{4}.\\)",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "2*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #829)"
+          }
         },
         {
           "q": "Convert the polar point \\(\\left(4,\\ \\pi/4\\right)\\) to rectangular coordinates.",
@@ -642,19 +809,38 @@
           "explanation": "The conversion formulas from polar coordinates \\((r, \\theta)\\) to Cartesian coordinates \\((x, y)\\) are \\(x = r \\cos(\\theta)\\) and \\(y = r \\sin(\\theta)\\). Given \\(r = 5\\) and \\(\\theta = \\frac{\\pi}{4}\\), we have: \\(x = 5 \\cos(\\frac{\\pi}{4}) = 5 \\cdot \\frac{\\sqrt{2}}{2} = \\frac{5\\sqrt{2}}{2}\\) \\(y = 5 \\sin(\\frac{\\pi}{4}) = 5 \\cdot \\frac{\\sqrt{2}}{2} = \\frac{5\\sqrt{2}}{2}\\) Therefore, the Cartesian coordinates are \\((\\frac{5\\sqrt{2}}{2}, \\frac{5\\sqrt{2}}{2})\\)."
         },
         {
-          "q": "\\(\\int\\sin^4x\\,dx\\) using reduction formula:",
+          "q": "Rate Table (autonomous rover motion #830): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Choosing u and dv wisely",
           "choices": [
-            "\\(\\frac{3x}{4}+\\frac{\\sin2x}{4}+C\\)",
-            "\\(\\frac{3x}{8}-\\frac{\\sin2x}{4}+\\frac{\\sin4x}{32}+C\\)",
-            "\\(\\frac{x}{2}-\\frac{\\sin4x}{8}+C\\)",
-            "\\(\\frac{\\sin^3x\\cos x}{4}+\\frac{\\sin x\\cos x}{4}+\\frac{x}{8}+C\\)"
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(24\\)"
           ],
-          "correct": 1,
-          "answer": "Double application of half-angle.",
-          "explanation": "Double application of half-angle."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "explanation": "Double application of half-angle.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #830)"
+          }
         }
       ]
     },
@@ -707,32 +893,45 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Consider the region \\(R\\) in the first quadrant bounded by the curve \\( y = e^{-x^2} \\), the x-axis, and the line \\( x = a \\), where \\( a > 0 \\). A solid is generated by revolving this region \\(R\\) about the y-axis. If the volume of this solid is \\( \\frac{\\pi}{2} \\), determine the value of \\( a \\).",
-          "answer": "**Answer:** B. The volume of the solid generated by revolving the region bounded by \\( y = f(x) \\), the x-axis, and the lines \\( x = a \\) and \\( x = b \\) about the y-axis can be found using the shell method. The formula for the volume \\( V \\) is given by \\( V = \\int_{a}^{b} 2\\pi x f(x) dx \\).\n\nIn this problem, \\( f(x) = e^{-x^2} \\), and the region is bounded by \\( y = e^{-x^2} \\), the x-axis, and the line \\( x = a \\) in the first quadrant. Thus, the limits of integration are from \\( x = 0 \\) to \\( x = a \\).\n\nThe volume of the solid is given by:\n\n\\( V = \\int_{0}^{a} 2\\pi x e^{-x^2} dx \\)\n\nWe are given that the volume \\( V = \\frac{\\pi}{2} \\).\n\nLet's evaluate the integral. We can use a substitution: let \\( u = -x^2 \\). Then \\( du = -2x dx \\), so \\( x dx = -\\frac{1}{2} du \\).\n\nWhen \\( x = 0 \\), \\( u = -(0)^2 = 0 \\).\nWhen \\( x = a \\), \\( u = -(a)^2 = -a^2 \\).\n\nSubstituting these into the integral:\n\n\\( V = \\int_{0}^{-a^2} 2\\pi e^{u} \\left( -\\frac{1}{2} du \\right) \\)\n\n\\( V = -\\pi \\int_{0}^{-a^2} e^{u} du \\)\n\nNow, we can switch the limits of integration by changing the sign:\n\n\\( V = \\pi \\int_{-a^2}^{0} e^{u} du \\)\n\nEvaluating the integral:\n\n\\( V = \\pi [e^{u}]_{-a^2}^{0} \\)\n\n\\( V = \\pi (e^{0} - e^{-a^2}) \\)\n\n\\( V = \\pi (1 - e^{-a^2}) \\)\n\nWe are given that \\( V = \\frac{\\pi}{2} \\). So, we set the two expressions for \\( V \\) equal:\n\n\\( \\pi (1 - e^{-a^2}) = \\frac{\\pi}{2} \\)\n\nDivide both sides by \\( \\pi \\):\n\n\\( 1 - e^{-a^2} = \\frac{1}{2} \\)\n\nNow, solve for \\( a \\):\n\n\\( e^{-a^2} = 1 - \\frac{1}{2} \\)\n\n\\( e^{-a^2} = \\frac{1}{2} \\)\n\nTake the natural logarithm of both sides:\n\n\\( -a^2 = \\ln\\left(\\frac{1}{2}\\right) \\)\n\n\\( -a^2 = -\\ln(2) \\)\n\n\\( a^2 = \\ln(2) \\)\n\nSince \\( a > 0 \\), we take the positive square root:\n\n\\( a = \\sqrt{\\ln(2)} \\)",
+          "q": "Riemann Plot (battery charging session #833): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).",
           "explanation": "The volume of the solid generated by revolving the region bounded by \\( y = f(x) \\), the x-axis, and the lines \\( x = a \\) and \\( x = b \\) about the y-axis can be found using the shell method. The formula for the volume \\( V \\) is given by \\( V = \\int_{a}^{b} 2\\pi x f(x) dx \\).\n\nIn this problem, \\( f(x) = e^{-x^2} \\), and the region is bounded by \\( y = e^{-x^2} \\), the x-axis, and the line \\( x = a \\) in the first quadrant. Thus, the limits of integration are from \\( x = 0 \\) to \\( x = a \\).\n\nThe volume of the solid is given by:\n\n\\( V = \\int_{0}^{a} 2\\pi x e^{-x^2} dx \\)\n\nWe are given that the volume \\( V = \\frac{\\pi}{2} \\).\n\nLet's evaluate the integral. We can use a substitution: let \\( u = -x^2 \\). Then \\( du = -2x dx \\), so \\( x dx = -\\frac{1}{2} du \\).\n\nWhen \\( x = 0 \\), \\( u = -(0)^2 = 0 \\).\nWhen \\( x = a \\), \\( u = -(a)^2 = -a^2 \\).\n\nSubstituting these into the integral:\n\n\\( V = \\int_{0}^{-a^2} 2\\pi e^{u} \\left( -\\frac{1}{2} du \\right) \\)\n\n\\( V = -\\pi \\int_{0}^{-a^2} e^{u} du \\)\n\nNow, we can switch the limits of integration by changing the sign:\n\n\\( V = \\pi \\int_{-a^2}^{0} e^{u} du \\)\n\nEvaluating the integral:\n\n\\( V = \\pi [e^{u}]_{-a^2}^{0} \\)\n\n\\( V = \\pi (e^{0} - e^{-a^2}) \\)\n\n\\( V = \\pi (1 - e^{-a^2}) \\)\n\nWe are given that \\( V = \\frac{\\pi}{2} \\). So, we set the two expressions for \\( V \\) equal:\n\n\\( \\pi (1 - e^{-a^2}) = \\frac{\\pi}{2} \\)\n\nDivide both sides by \\( \\pi \\):\n\n\\( 1 - e^{-a^2} = \\frac{1}{2} \\)\n\nNow, solve for \\( a \\):\n\n\\( e^{-a^2} = 1 - \\frac{1}{2} \\)\n\n\\( e^{-a^2} = \\frac{1}{2} \\)\n\nTake the natural logarithm of both sides:\n\n\\( -a^2 = \\ln\\left(\\frac{1}{2}\\right) \\)\n\n\\( -a^2 = -\\ln(2) \\)\n\n\\( a^2 = \\ln(2) \\)\n\nSince \\( a > 0 \\), we take the positive square root:\n\n\\( a = \\sqrt{\\ln(2)} \\)",
           "figure": {
             "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "xl": [
+              0,
+              4.5
             ],
-            "yrange": [
-              -2,
-              4
+            "yl": [
+              0,
+              15
             ],
+            "xStep": 1,
+            "yStep": 2,
             "fns": [
               {
-                "fn": "e^(-x^2)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
+                "fn": "3*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 1"
               }
-            ]
+            ],
+            "riemann": {
+              "expr": "3*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #833)"
           },
           "choices": [
-            "\\( \\ln(2) \\)",
-            "\\( \\sqrt{\\ln(2)} \\)",
-            "\\( e^{\\sqrt{2}} \\)",
-            "\\( \\sqrt{2} \\)"
+            "\\(34\\)",
+            "\\(22\\)",
+            "\\(18\\)",
+            "\\(28\\)"
           ],
           "correct": 1
         },
@@ -764,16 +963,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Evaluate \\( \\displaystyle\\int \\ln(6x)\\,dx \\).",
-          "answer": "**Answer:** D. By parts, \\(u=\\ln(6x),\\,dv=dx\\Rightarrow du=\\tfrac1x dx,\\,v=x\\). \\(\\int\\ln(6x)dx=x\\ln(6x)-\\int dx=x\\ln(6x)-x+C.\\)",
+          "q": "Rate Table (aquifer recharge curve #834): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
           "explanation": "By parts, \\(u=\\ln(6x),\\,dv=dx\\Rightarrow du=\\tfrac1x dx,\\,v=x\\). \\(\\int\\ln(6x)dx=x\\ln(6x)-\\int dx=x\\ln(6x)-x+C.\\)",
           "choices": [
-            "\\(x\\ln(6x)+x+C\\)",
-            "\\(\\ln(6x)-x+C\\)",
-            "\\(\\dfrac{1}{x}+C\\)",
-            "\\(x\\ln(6x)-x+C\\)"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(37\\)"
           ],
-          "correct": 3
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #834)"
+          }
         },
         {
           "q": "A population of bacteria follows a logistic growth model where \\(P(t)\\) is the population at time \\(t\\) (in hours). The differential equation governing the population growth is \\(\\frac{dP}{dt} = 0.05P \\left( 1 - \\frac{P}{1000} \\right)\\). If the initial population is \\(P(0) = 200\\), use Euler's method with a step size of \\(\\Delta t = 1\\) hour to approximate the population after 1 hour, \\(P(1)\\).",

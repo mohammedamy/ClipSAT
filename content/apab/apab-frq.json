@@ -627,6 +627,381 @@
         }
       },
       {
+        "kind": "structuredQuestion",
+        "id": "apab-ch-frq-apab-frq-1",
+        "title": {
+          "en": "AP Calculus AB Free-Response Questions (FRQs) — 9-Point 4-Part FRQ",
+          "ar": "أسئلة الإجابة الحرة لتفاضل وتكامل AP AB — سؤال مقالي من ٩ نقاط (٤ أجزاء)"
+        },
+        "marks": 9,
+        "calc": false,
+        "difficulty": "easy",
+        "archetype": "AP Section II · 9-Point Rule-of-Four FRQ",
+        "figure": {
+          "type": "fn",
+          "xl": [
+            -0.5,
+            6.5
+          ],
+          "yl": [
+            -4.5,
+            3.2
+          ],
+          "xStep": 1,
+          "yStep": 1,
+          "pts": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 2,
+              "y": 2,
+              "label": "(2, 2)"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "(4, 0)"
+            },
+            {
+              "x": 6,
+              "y": -4,
+              "label": "(6, -4)"
+            }
+          ],
+          "segments": [
+            {
+              "x1": 4,
+              "y1": 0,
+              "x2": 6,
+              "y2": -4,
+              "color": "#2563eb"
+            }
+          ],
+          "semicircles": [
+            {
+              "cx": 2,
+              "cy": 0,
+              "r": 2,
+              "upper": true,
+              "color": "#2563eb",
+              "shade": true
+            }
+          ],
+          "xlabel": "x",
+          "ylabel": "f(t)",
+          "caption": "Piecewise graph of f on [0, 6] with semicircle & line segment (FRQ #82)"
+        },
+        "stem": {
+          "en": "In hydroelectric sluice College Board synthesis #82, the continuous function \\(f\\) on \\([0, 6]\\) consists of an upper semicircle of radius \\(2\\) centered at \\((2, 0)\\) on \\([0, 4]\\) and a line segment from \\((4, 0)\\) to \\((6, -4)\\), as shown. Define \\(g(x) = 7 + \\int_0^x f(t)\\,dt\\) for \\(0 \\le x \\le 6\\).",
+          "ar": "تتكوّن الدالة المتصلة \\(f\\) على الفترة \\([0, 6]\\) من نصف دائرة علوي نصف قطره \\(2\\) ومركزه \\((2, 0)\\) على \\([0, 4]\\)، وقطعة مستقيمة من \\((4, 0)\\) إلى \\((6, -4)\\) كما هو موضّح. عرّف \\(g(x) = 7 + \\int_0^x f(t)\\,dt\\) على \\(0 \\le x \\le 6\\)."
+        },
+        "solution": {
+          "en": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 7 + \\frac{1}{2}\\pi(2^2) = 7 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (7+2\\pi) - \\frac{1}{2}(2)(4) = 3 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "ar": "(أ) بما أن \\(g'(x)=f(x)\\ge 0\\) على \\([0,4]\\) و \\(\\le 0\\) على \\([4,6]\\)، فإن القيمة العظمى هي \\(g(4) = 7 + \\frac{1}{2}\\pi(2^2) = 7 + 2\\pi\\). (ب) \\(g'(2)=f(2)=2\\) و \\(g''(5)=f'(5)=-2\\)، ومجموعهما \\(0\\). (ج) \\(g(6)=(7+2\\pi)-\\frac{1}{2}(2)(4)=3+2\\pi\\). (د) تتغيّر \\(f\\) من تزايدية إلى تناقصية عند \\(x=2\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Find the absolute maximum value of \\(g\\) on \\([0, 6]\\) in terms of \\(\\pi\\) (in exact form).",
+              "ar": "أوجد القيمة العظمى المطلقة للدالة \\(g\\) على \\([0, 6]\\) بدلالة \\(\\pi\\)."
+            },
+            "marks": 2,
+            "answer": "7 + 2*pi",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Identifies sign change of g' = f from + to - at x = 4",
+                  "ar": "يحدّد تغيّر إشارة \\(g' = f\\) من موجب إلى سالب عند \\(x = 4\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Computes g(4) = 7 + 2*pi",
+                  "ar": "يحسب \\(g(4) = 7 + 2\\pi\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Evaluate \\(g'(2) + g''(5)\\).",
+              "ar": "احسب قيمة \\(g'(2) + g''(5)\\)."
+            },
+            "marks": 2,
+            "answer": "0",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Reads g'(2) = f(2) = 2 and slope g''(5) = f'(5) = -2",
+                  "ar": "يقرأ \\(g'(2) = f(2) = 2\\) والميل \\(g''(5) = f'(5) = -2\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Sums 2 + (-2) = 0",
+                  "ar": "يجمع \\(2 + (-2) = 0\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Evaluate \\(g(6)\\) in exact form.",
+              "ar": "أوجد قيمة \\(g(6)\\) بالصورة الدقيقة."
+            },
+            "marks": 3,
+            "answer": "3 + 2*pi",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Uses g(6) = g(4) + int_4^6 f(t) dt",
+                  "ar": "يستخدم \\(g(6) = g(4) + \\int_4^6 f(t)\\,dt\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Finds signed triangle area -4 on [4, 6]",
+                  "ar": "يحسب المساحة الموقّعة للمثلث على \\([4, 6]\\) وهي \\(-4\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains 3 + 2*pi",
+                  "ar": "يحصل على \\(3 + 2\\pi\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(d)",
+            "prompt": {
+              "en": "State the \\(x\\)-coordinate of the point of inflection of the graph of \\(g\\) on \\((0, 6)\\).",
+              "ar": "اذكر الإحداثي \\(x\\) لنقطة الانقلاب لمنحنى \\(g\\) على \\((0, 6)\\)."
+            },
+            "marks": 2,
+            "answer": "2",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Identifies where f = g' changes from increasing to decreasing",
+                  "ar": "يحدّد موضع تغيّر \\(f = g'\\) من التزايد إلى التناقص"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Identifies x = 2",
+                  "ar": "يحدّد \\(x = 2\\)"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "structuredQuestion",
+        "id": "apab-ch-frq-apab-frq-2",
+        "title": {
+          "en": "AP Calculus AB Free-Response Questions (FRQs) — 9-Point 4-Part FRQ",
+          "ar": "أسئلة الإجابة الحرة لتفاضل وتكامل AP AB — سؤال مقالي من ٩ نقاط (٤ أجزاء)"
+        },
+        "marks": 9,
+        "calc": false,
+        "difficulty": "easy",
+        "archetype": "AP Section II · 9-Point Rule-of-Four FRQ",
+        "figure": {
+          "type": "fn",
+          "xl": [
+            -0.5,
+            4.5
+          ],
+          "yl": [
+            -7,
+            7
+          ],
+          "xStep": 1,
+          "yStep": 1,
+          "pts": [
+            {
+              "x": 0,
+              "y": 6,
+              "label": "(0, 6)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
+            },
+            {
+              "x": 4,
+              "y": -6,
+              "label": "(4, -6)"
+            }
+          ],
+          "segments": [
+            {
+              "x1": 0,
+              "y1": 6,
+              "x2": 4,
+              "y2": -6,
+              "color": "#2563eb"
+            }
+          ],
+          "xlabel": "x",
+          "ylabel": "f(t)",
+          "caption": "Linear piecewise graph of f on [0, 4] (FRQ #83)"
+        },
+        "stem": {
+          "en": "In heat exchanger test College Board synthesis #83, the continuous graph of \\(f\\) on \\([0, 4]\\) is the line segment shown from \\((0, 6)\\) through \\((2, 0)\\) to \\((4, -6)\\). Define \\(g(x) = 8 + \\int_0^x f(t)\\,dt\\) on \\([0, 4]\\).",
+          "ar": "يمثل المنحنى المتصل للدالة \\(f\\) على \\([0, 4]\\) قطعة مستقيمة تمر بالنقاط من \\((0, 6)\\) عبر \\((2, 0)\\) إلى \\((4, -6)\\). عرّف \\(g(x) = 8 + \\int_0^x f(t)\\,dt\\) على \\([0, 4]\\)."
+        },
+        "solution": {
+          "en": "(a) Triangle area on \\([0,2]\\) is \\(+6\\), so max \\(g(2) = 8 + 6 = 14\\). (b) \\(g''(2) = f'(2) = \\frac{-6 - 6}{4} = -3\\). (c) Areas on \\([0,2]\\) and \\([2,4]\\) cancel, so \\(g(4) = 8\\). (d) Average value \\(= \\frac{6}{2} = 3\\).",
+          "ar": "(أ) مساحة المثلث على \\([0,2]\\) هي \\(+6\\)، لذا العظمى \\(g(2) = 8 + 6 = 14\\). (ب) \\(g''(2) = f'(2) = \\frac{-6-6}{4} = -3\\). (ج) المساحتان على \\([0,2]\\) و \\([2,4]\\) متساويتان ومتعاكستان، إذن \\(g(4) = 8\\). (د) القيمة المتوسطة \\(= \\frac{6}{2} = 3\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Find the absolute maximum value of \\(g\\) on \\([0, 4]\\).",
+              "ar": "أوجد القيمة العظمى المطلقة للدالة \\(g\\) على \\([0, 4]\\)."
+            },
+            "marks": 2,
+            "answer": "14",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Justifies maximum occurs at x = 2 where f crosses from + to -",
+                  "ar": "يبرّر أن القيمة العظمى تقع عند \\(x = 2\\) حيث تعبر \\(f\\) من الموجب إلى السالب"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Computes 8 + (1/2)(2)(6) = 14",
+                  "ar": "يحسب \\(8 + \\frac{1}{2}(2)(6) = 14\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Evaluate \\(g''(2)\\).",
+              "ar": "احسب قيمة \\(g''(2)\\)."
+            },
+            "marks": 2,
+            "answer": "-3",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Uses g''(2) = f'(2), slope of segment",
+                  "ar": "يستخدم \\(g''(2) = f'(2)\\)، أي ميل القطعة المستقيمة"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates -3",
+                  "ar": "يحسب الناتج \\(-3\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Evaluate \\(g(4)\\).",
+              "ar": "احسب قيمة \\(g(4)\\)."
+            },
+            "marks": 3,
+            "answer": "8",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Adds signed triangle areas on [0,2] and [2,4]",
+                  "ar": "يجمع المساحتين المثلثيتين الموقّعتين على \\([0,2]\\) و \\([2,4]\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Recognizes +6 and -6 cancel",
+                  "ar": "يلاحظ أن \\(+6\\) و \\(-6\\) يلغي أحدهما الآخر"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Obtains 8",
+                  "ar": "يحصل على \\(8\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(d)",
+            "prompt": {
+              "en": "Compute the average value of \\(f\\) on \\([0, 2]\\).",
+              "ar": "أوجد القيمة المتوسطة للدالة \\(f\\) على الفترة \\([0, 2]\\)."
+            },
+            "marks": 2,
+            "answer": "3",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Applies (1/2) * int_0^2 f(t) dt",
+                  "ar": "يطبّق \\(\\frac{1}{2}\\int_0^2 f(t)\\,dt\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 3",
+                  "ar": "يحسب الناتج \\(3\\)"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

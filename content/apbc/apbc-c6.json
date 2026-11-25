@@ -513,6 +513,165 @@
         }
       },
       {
+        "kind": "structuredQuestion",
+        "id": "apbc-ch-frq-apbc-c6-1",
+        "title": {
+          "en": "Unit 10 · Power Series, Taylor & Maclaurin Series — 9-Point 4-Part FRQ",
+          "ar": "الوحدة ١٠ · متسلسلات القوى وتايلور وماكلورين — سؤال مقالي من ٩ نقاط (٤ أجزاء)"
+        },
+        "marks": 9,
+        "calc": false,
+        "difficulty": "easy",
+        "archetype": "AP Section II · 9-Point Rule-of-Four FRQ",
+        "figure": {
+          "type": "table",
+          "headers": [
+            "Derivative Info",
+            "\\(f(0)\\)",
+            "\\(f'(0)\\)",
+            "\\(f''(0)\\)",
+            "\\(\\max_{t \\in [0, 0.5]} |f'''(t)|\\)"
+          ],
+          "rows": [
+            [
+              "Value",
+              "3",
+              "2",
+              "6",
+              "6"
+            ]
+          ],
+          "orientation": "horizontal",
+          "caption": "Maclaurin derivatives & third-derivative bound on [0, 0.5] (Model #260)"
+        },
+        "stem": {
+          "en": "In chemical titration run Taylor series model #260, a smooth function \\(f\\) has the exact derivatives at \\(x = 0\\) and third-derivative upper bound on \\([0, 0.5]\\) listed in the table.",
+          "ar": "دالة ملساء \\(f\\) لها المشتقات الدقيقة عند \\(x = 0\\) والحد الأعلى للمشتقة الثالثة على \\([0, 0.5]\\) المبيّنة في الجدول."
+        },
+        "solution": {
+          "en": "(a) \\(P_2(x) = 3 + 2x + 3x^2\\), so \\(P_2(1/2) = \\frac{19}{4}\\). (b) Lagrange bound \\(= \\frac{6(1/2)^3}{3!} = \\frac{1}{8}\\). (c) \\(P_2'(1/2) = 2 + 3 = 5\\). (d) \\(a_2 = \\frac{6}{2!} = 3\\).",
+          "ar": "(أ) \\(P_2(x)=3+2x+3x^2\\) إذن \\(P_2(1/2)=\\frac{19}{4}\\). (ب) حد لاغرانج \\(=\\frac{6(1/2)^3}{3!}=\\frac{1}{8}\\). (ج) \\(P_2'(1/2)=5\\). (د) \\(a_2=\\frac{6}{2!}=3\\)."
+        },
+        "parts": [
+          {
+            "label": "(a)",
+            "prompt": {
+              "en": "Write the second-degree Maclaurin polynomial \\(P_2(x)\\) and compute \\(P_2\\!\\left(\\frac{1}{2}\\right)\\).",
+              "ar": "اكتب كثيرة حدود ماكلورين من الدرجة الثانية \\(P_2(x)\\) واحسب \\(P_2\\!\\left(\\frac{1}{2}\\right)\\)."
+            },
+            "marks": 3,
+            "answer": "19/4",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Divides second derivative by 2!",
+                  "ar": "يقسم المشتقة الثانية على \\(2!\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Evaluates P_2 at x = 1/2",
+                  "ar": "يعوّض \\(x = 1/2\\) في \\(P_2\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Computes 19/4",
+                  "ar": "يحسب الناتج \\(19/4\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(b)",
+            "prompt": {
+              "en": "Compute the Lagrange error bound for \\(\\left|f\\!\\left(\\frac{1}{2}\\right) - P_2\\!\\left(\\frac{1}{2}\\right)\\right|\\).",
+              "ar": "احسب حد خطأ لاغرانج للمقدار \\(\\left|f\\!\\left(\\frac{1}{2}\\right) - P_2\\!\\left(\\frac{1}{2}\\right)\\right|\\)."
+            },
+            "marks": 2,
+            "answer": "1/8",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Sets up M * |0.5|^3 / 3!",
+                  "ar": "يكتب \\(M\\cdot |0.5|^3/3!\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 1/8",
+                  "ar": "يحسب الناتج \\(1/8\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(c)",
+            "prompt": {
+              "en": "Using \\(P_2'(x)\\), approximate \\(f'\\!\\left(\\frac{1}{2}\\right)\\).",
+              "ar": "باستخدام \\(P_2'(x)\\)، قرّب قيمة \\(f'\\!\\left(\\frac{1}{2}\\right)\\)."
+            },
+            "marks": 2,
+            "answer": "5",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Differentiates P_2(x) to 2 + 6x",
+                  "ar": "يشتق \\(P_2(x)\\) ليحصل على \\(2 + 6x\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 5",
+                  "ar": "يحسب الناتج \\(5\\)"
+                },
+                "marks": 1
+              }
+            ]
+          },
+          {
+            "label": "(d)",
+            "prompt": {
+              "en": "State the coefficient of \\(x^2\\) in the Maclaurin series for \\(f(x)\\).",
+              "ar": "اذكر معامل \\(x^2\\) في متسلسلة ماكلورين للدالة \\(f(x)\\)."
+            },
+            "marks": 2,
+            "answer": "3",
+            "markScheme": [
+              {
+                "code": "M1",
+                "criterion": {
+                  "en": "Uses a_2 = f''(0) / 2!",
+                  "ar": "يستخدم \\(a_2 = f''(0)/2!\\)"
+                },
+                "marks": 1
+              },
+              {
+                "code": "A1",
+                "criterion": {
+                  "en": "Evaluates 3",
+                  "ar": "يحسب الناتج \\(3\\)"
+                },
+                "marks": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

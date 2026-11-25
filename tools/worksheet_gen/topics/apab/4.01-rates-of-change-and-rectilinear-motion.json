@@ -9,42 +9,30 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Level 2 · Medium Find the maximum rate of change of \\(f(x, y) = 3x^2y - y^3\\) at the point \\((1, 2)\\), and determine the unit vector in which it occurs.",
+          "q": "Rate Table (chemical titration run #284): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Compute gradient: \\(abla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle\\). At \\((1, 2)\\): \\(abla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle\\). Maximum rate of change is the gradient magnitude: \\(| abla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15\\) The direction of maximum increase is the normalized gradient: \\(\\mathbf{u} = \\frac{ abla f}{| abla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle\\)",
-          "explanation": "Compute gradient: \\(abla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle\\). At \\((1, 2)\\): \\(abla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle\\). Maximum rate of change is the gradient magnitude: \\(| abla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15\\) The direction of maximum increase is the normalized gradient: \\(\\mathbf{u} = \\frac{ abla f}{| abla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle\\)",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
           "figure": {
-            "type": "fn",
-            "xrange": [
-              -5,
-              5
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
             ],
-            "yrange": [
-              -5,
-              7
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
             ],
-            "fns": [
-              {
-                "fn": "(x - (0))*(x - (0)) + (-1)",
-                "color": "var(--fig-indigo)",
-                "label": "y = f(x)"
-              },
-              {
-                "fn": "2*x - 4",
-                "color": "var(--fig-amber)",
-                "dash": "4,4",
-                "label": "y = g(x)"
-              }
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -1,
-                "label": "(0, -1)"
-              }
-            ]
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #284)"
           }
         },
         {
@@ -69,12 +57,33 @@
           "explanation": "1. Modulus: \\(r = |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2\\). Argument: since \\(z\\) lies in Quadrant II, \\(\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\). Polar form: \\(z = 2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)\\); Exponential form: \\(z = 2e^{i 2\\pi/3}\\). 2. Compute \\(z^6\\) via De Moivre's Theorem: \\(z^6 = 2^6 e^{i \\cdot 6(2\\pi/3)} = 64 e^{i 4\\pi} = 64(\\cos 4\\pi + i\\sin 4\\pi) = 64(1 + 0i) = 64.\\) 3. Solve \\(w^3 = z = 2e^{i 2\\pi/3}\\): \\(w_k = 2^{1/3} \\exp\\left( i \\frac{2\\pi/3 + 2\\pi k}{3} \\right) = \\sqrt[3]{2} e^{i(2\\pi/9 + 2\\pi k/3)} \\quad \\mathrm{for\\ } k = 0, 1, 2.\\) For \\(k = 0\\): \\(w_0 = \\sqrt[3]{2} e^{i 2\\pi/9}\\). For \\(k = 1\\): \\(w_1 = \\sqrt[3]{2} e^{i 8\\pi/9}\\). For \\(k = 2\\): \\(w_2 = \\sqrt[3]{2} e^{i 14\\pi/9} = \\sqrt[3]{2} e^{-i 4\\pi/9}\\)."
         },
         {
-          "q": "Use repeated integration by parts to evaluate the exact definite integral \\(\\int_0^{\\pi/2} x^2 \\cos x\\,dx\\).",
+          "q": "In bio-reactor temperature trial #13, examine the piecewise function \\(f(x) = 2x^2 - 2\\) for \\(x < 3\\) and \\(f(x) = 4x + b\\) for \\(x \\ge 3\\), summarized in the values table shown.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
-          "answer": "1. First IBP: Let \\(u = x^2 \\Rightarrow du = 2x\\,dx\\). Let \\(dv = \\cos x\\,dx \\Rightarrow v = \\sin x\\). \\(\\int_0^{\\pi/2} x^2 \\cos x\\,dx = \\left[ x^2 \\sin x \\right]_0^{\\pi/2} - 2 \\int_0^{\\pi/2} x \\sin x\\,dx = \\left(\\left(\\frac{\\pi}{2}\\right)^2(1) - 0\\right) - 2 \\int_0^{\\pi/2} x \\sin x\\,dx = \\frac{\\pi^2}{4} - 2 J.\\) 2. Second IBP on \\(J = \\int_0^{\\pi/2} x \\sin x\\,dx\\): Let \\(u = x \\Rightarrow du = dx\\). Let \\(dv = \\sin x\\,dx \\Rightarrow v = -\\cos x\\). \\(J = \\left[ -x \\cos x \\right]_0^{\\pi/2} - \\int_0^{\\pi/2} (-\\cos x)\\,dx = (0 - 0) + \\int_0^{\\pi/2} \\cos x\\,dx = \\left[ \\sin x \\right]_0^{\\pi/2} = 1 - 0 = 1.\\) 3. Combine results: \\(\\int_0^{\\pi/2} x^2 \\cos x\\,dx = \\frac{\\pi^2}{4} - 2(1) = \\frac{\\pi^2}{4} - 2 = \\frac{\\pi^2 - 8}{4}.\\)",
-          "explanation": "1. First IBP: Let \\(u = x^2 \\Rightarrow du = 2x\\,dx\\). Let \\(dv = \\cos x\\,dx \\Rightarrow v = \\sin x\\). \\(\\int_0^{\\pi/2} x^2 \\cos x\\,dx = \\left[ x^2 \\sin x \\right]_0^{\\pi/2} - 2 \\int_0^{\\pi/2} x \\sin x\\,dx = \\left(\\left(\\frac{\\pi}{2}\\right)^2(1) - 0\\right) - 2 \\int_0^{\\pi/2} x \\sin x\\,dx = \\frac{\\pi^2}{4} - 2 J.\\) 2. Second IBP on \\(J = \\int_0^{\\pi/2} x \\sin x\\,dx\\): Let \\(u = x \\Rightarrow du = dx\\). Let \\(dv = \\sin x\\,dx \\Rightarrow v = -\\cos x\\). \\(J = \\left[ -x \\cos x \\right]_0^{\\pi/2} - \\int_0^{\\pi/2} (-\\cos x)\\,dx = (0 - 0) + \\int_0^{\\pi/2} \\cos x\\,dx = \\left[ \\sin x \\right]_0^{\\pi/2} = 1 - 0 = 1.\\) 3. Combine results: \\(\\int_0^{\\pi/2} x^2 \\cos x\\,dx = \\frac{\\pi^2}{4} - 2(1) = \\frac{\\pi^2}{4} - 2 = \\frac{\\pi^2 - 8}{4}.\\)"
+          "answer": "(a) \\(\\lim_{x\\to 3^-} (2x^2 - 2) = 16\\). (b) Continuity at \\(x=3\\) requires \\(12 + b = 16\\), so \\(b = 4\\). (c) \\(f(0)+f(4) = -2 + 20 = 18\\). (d) Average rate \\(= \\frac{20-(-2)}{4} = \\frac{11}{2}\\).",
+          "explanation": "(a) \\(\\lim_{x\\to 3^-} (2x^2 - 2) = 16\\). (b) Continuity at \\(x=3\\) requires \\(12 + b = 16\\), so \\(b = 4\\). (c) \\(f(0)+f(4) = -2 + 20 = 18\\). (d) Average rate \\(= \\frac{20-(-2)}{4} = \\frac{11}{2}\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(3^-\\)",
+              "\\(3\\)",
+              "\\(4\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "\\(-2\\)",
+                "\\(16\\)",
+                "\\(12+b\\)",
+                "\\(16+b\\)"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected piecewise values around transition x = 3 (Run #13)"
+          }
         },
         {
           "q": "Give the first three nonzero terms of the Maclaurin series for \\(\\sin x\\).",
@@ -93,12 +102,31 @@
           "explanation": "Theorem (Maclaurin Series for Cosine): The cosine function is even, so its Maclaurin series consists exclusively of even powers of \\(x\\) with alternating signs. Step 1 · General Maclaurin formula for \\(\\cos x\\): \\(\\cos x = \\sum_{n=0}^{\\infty} (-1)^n \\frac{x^{2n}}{(2n)!}.\\) Step 2 · Write out the terms for \\(n = 0, 1, 2\\): \\(n = 0 \\Rightarrow (-1)^0 \\frac{x^0}{0!} = 1\\) \\(n = 1 \\Rightarrow (-1)^1 \\frac{x^2}{2!} = -\\frac{x^2}{2}\\) \\(n = 2 \\Rightarrow (-1)^2 \\frac{x^4}{4!} = +\\frac{x^4}{24}\\) Conclusion: The first three terms are: \\(\\mathbf{1 - \\frac{x^2}{2!} + \\frac{x^4}{4!}} = \\mathbf{1 - \\frac{x^2}{2} + \\frac{x^4}{24}}.\\)"
         },
         {
-          "q": "(Paper 3 Extended Investigation) Consider the recursive Babylonian sequence defined by \\(x_0 = 3\\) and \\(x_{n+1} = \\frac{1}{2}\\left(x_n + \\frac{5}{x_n}\\right)\\) for \\(n \\geq 0\\). (a) Use the AM-GM inequality to prove that \\(x_n \\geq \\sqrt{5}\\) for all \\(n \\geq 1\\). (b) Show that the sequence is strictly decreasing for \\(n \\geq 1\\), and deduce that \\(\\lim_{n\\rightarrow\\infty} x_n = \\sqrt{5}\\). (c) Prove the quadratic error relationship \\(|x_{n+1} - \\sqrt{5}| = \\frac{(x_n - \\sqrt{5})^2}{2x_n}\\).",
+          "q": "Rate Table (reservoir inflow #288): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "(a) Lower bound via AM-GM: For any positive real number \\(x_n > 0\\), the Arithmetic Mean-Geometric Mean inequality states that \\(\\frac{a + b}{2} \\geq \\sqrt{ab}\\). With \\(a = x_n\\) and \\(b = \\frac{5}{x_n}\\): \\(x_{n+1} = \\frac{x_n + 5/x_n}{2} \\geq \\sqrt{x_n \\cdot \\frac{5}{x_n}} = \\sqrt{5}.\\) Thus \\(x_n \\geq \\sqrt{5}\\) for all \\(n \\geq 1\\). (b) Monotonicity & Convergence: Compute the difference: \\(x_{n+1} - x_n = \\frac{1}{2}x_n + \\frac{5}{2x_n} - x_n = \\frac{5 - x_n^2}{2x_n}.\\) Since \\(x_n \\geq \\sqrt{5}\\) for \\(n \\geq 1\\), \\(x_n^2 \\geq 5 \\Rightarrow 5 - x_n^2 \\leq 0\\). Therefore \\(x_{n+1} \\leq x_n\\), proving the sequence is non-increasing and bounded below by \\(\\sqrt{5}\\). By the Monotone Convergence Theorem, the limit \\(L = \\lim_{n\\rightarrow\\infty} x_n\\) exists and is positive. Taking limits on both sides of the recurrence: \\(L = \\frac{1}{2}\\left(L + \\frac{5}{L}\\right) \\Rightarrow 2L = L + \\frac{5}{L} \\Rightarrow L = \\frac{5}{L} \\Rightarrow L^2 = 5 \\Rightarrow L = \\sqrt{5}.\\) (c) Quadratic Error Law: Compute the error at step \\(n+1\\): \\(x_{n+1} - \\sqrt{5} = \\frac{x_n^2 + 5}{2x_n} - \\sqrt{5} = \\frac{x_n^2 - 2\\sqrt{5}x_n + 5}{2x_n} = \\frac{(x_n - \\sqrt{5})^2}{2x_n}. \\quad \\blacksquare\\) This proves that the number of correct significant figures approximately doubles at every iteration (quadratic convergence).",
-          "explanation": "(a) Lower bound via AM-GM: For any positive real number \\(x_n > 0\\), the Arithmetic Mean-Geometric Mean inequality states that \\(\\frac{a + b}{2} \\geq \\sqrt{ab}\\). With \\(a = x_n\\) and \\(b = \\frac{5}{x_n}\\): \\(x_{n+1} = \\frac{x_n + 5/x_n}{2} \\geq \\sqrt{x_n \\cdot \\frac{5}{x_n}} = \\sqrt{5}.\\) Thus \\(x_n \\geq \\sqrt{5}\\) for all \\(n \\geq 1\\). (b) Monotonicity & Convergence: Compute the difference: \\(x_{n+1} - x_n = \\frac{1}{2}x_n + \\frac{5}{2x_n} - x_n = \\frac{5 - x_n^2}{2x_n}.\\) Since \\(x_n \\geq \\sqrt{5}\\) for \\(n \\geq 1\\), \\(x_n^2 \\geq 5 \\Rightarrow 5 - x_n^2 \\leq 0\\). Therefore \\(x_{n+1} \\leq x_n\\), proving the sequence is non-increasing and bounded below by \\(\\sqrt{5}\\). By the Monotone Convergence Theorem, the limit \\(L = \\lim_{n\\rightarrow\\infty} x_n\\) exists and is positive. Taking limits on both sides of the recurrence: \\(L = \\frac{1}{2}\\left(L + \\frac{5}{L}\\right) \\Rightarrow 2L = L + \\frac{5}{L} \\Rightarrow L = \\frac{5}{L} \\Rightarrow L^2 = 5 \\Rightarrow L = \\sqrt{5}.\\) (c) Quadratic Error Law: Compute the error at step \\(n+1\\): \\(x_{n+1} - \\sqrt{5} = \\frac{x_n^2 + 5}{2x_n} - \\sqrt{5} = \\frac{x_n^2 - 2\\sqrt{5}x_n + 5}{2x_n} = \\frac{(x_n - \\sqrt{5})^2}{2x_n}. \\quad \\blacksquare\\) This proves that the number of correct significant figures approximately doubles at every iteration (quadratic convergence)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #288)"
+          }
         }
       ]
     },
@@ -122,12 +150,33 @@
           "explanation": "Theorem (Ratio Test for Absolute Convergence): For an infinite series \\(\\sum a_n\\), evaluate \\(L = \\lim_{n\\rightarrow\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|\\). The series converges absolutely when \\(L < 1\\). Step 1 · Set up the ratio for \\(a_n = \\frac{x^n}{n!}\\): \\(L = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x^{n+1}}{(n+1)!} \\cdot \\frac{n!}{x^n} \\right| = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x \\cdot x^n}{(n+1) \\cdot n!} \\cdot \\frac{n!}{x^n} \\right| = \\lim_{n\\rightarrow\\infty}\\frac{|x|}{n + 1}.\\) Step 2 · Evaluate the limit for any real number \\(x\\): For any fixed \\(x \\in \\mathbb{R}\\), \\(|x|\\) is a finite constant, whereas \\(n + 1 \\rightarrow \\infty\\): \\(L = |x| \\lim_{n\\rightarrow\\infty}\\frac{1}{n + 1} = |x| \\cdot 0 = 0.\\) Step 3 · Conclude interval and radius of convergence: Since \\(L = 0 < 1\\) for every real value of \\(x\\), the series converges absolutely for all real numbers: \\(\\mathbf{x \\in (-\\infty, \\infty)}, \\quad \\mathrm{Radius\\ of\\ Convergence:\\ } \\mathbf{R = \\infty}.\\) Identity: This is the Maclaurin series representation of \\(e^x\\)."
         },
         {
-          "q": "The polar curve \\(r=2\\cos\\theta\\) is a circle. Find its enclosed area.",
+          "q": "In coastal tide flux trial #15, examine the piecewise function \\(f(x) = 1x^2 - 2\\) for \\(x < 5\\) and \\(f(x) = 5x + b\\) for \\(x \\ge 5\\), summarized in the values table shown.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
-          "answer": "Theorem (Area of Circle in Polar Coordinates): The curve \\(r = 2\\cos\\theta\\) is a circle passing through the pole. Multiplying by \\(r\\) yields \\(r^2 = 2r\\cos\\theta \\Rightarrow x^2 + y^2 = 2x \\Rightarrow (x - 1)^2 + y^2 = 1\\), which is a circle of radius \\(R = 1\\) centered at \\((1, 0)\\). Step 1 · Identify integration bounds: The circle is completely traced as \\(\\theta\\) goes from \\(-\\frac{\\pi}{2}\\) to \\(\\frac{\\pi}{2}\\) (or from \\(0\\) to \\(\\pi\\)). Step 2 · Set up and evaluate the polar integral: \\(A = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2} (2\\cos\\theta)^2\\,d\\theta = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2} 4\\cos^2\\theta\\,d\\theta = 2\\int_{-\\pi/2}^{\\pi/2} \\cos^2\\theta\\,d\\theta.\\) By symmetry: \\(A = 4\\int_0^{\\pi/2}\\frac{1 + \\cos(2\\theta)}{2}\\,d\\theta = 2\\int_0^{\\pi/2}(1 + \\cos(2\\theta))\\,d\\theta = 2\\left[ \\theta + \\frac{1}{2}\\sin(2\\theta) \\right]_0^{\\pi/2}.\\) \\(A = 2\\left( \\frac{\\pi}{2} + 0 - (0 + 0) \\right) = \\mathbf{\\pi}.\\) Verification: By Cartesian geometry, radius is \\(R = 1 \\Rightarrow A = \\pi R^2 = \\pi(1)^2 = \\pi\\).",
-          "explanation": "Theorem (Area of Circle in Polar Coordinates): The curve \\(r = 2\\cos\\theta\\) is a circle passing through the pole. Multiplying by \\(r\\) yields \\(r^2 = 2r\\cos\\theta \\Rightarrow x^2 + y^2 = 2x \\Rightarrow (x - 1)^2 + y^2 = 1\\), which is a circle of radius \\(R = 1\\) centered at \\((1, 0)\\). Step 1 · Identify integration bounds: The circle is completely traced as \\(\\theta\\) goes from \\(-\\frac{\\pi}{2}\\) to \\(\\frac{\\pi}{2}\\) (or from \\(0\\) to \\(\\pi\\)). Step 2 · Set up and evaluate the polar integral: \\(A = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2} (2\\cos\\theta)^2\\,d\\theta = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2} 4\\cos^2\\theta\\,d\\theta = 2\\int_{-\\pi/2}^{\\pi/2} \\cos^2\\theta\\,d\\theta.\\) By symmetry: \\(A = 4\\int_0^{\\pi/2}\\frac{1 + \\cos(2\\theta)}{2}\\,d\\theta = 2\\int_0^{\\pi/2}(1 + \\cos(2\\theta))\\,d\\theta = 2\\left[ \\theta + \\frac{1}{2}\\sin(2\\theta) \\right]_0^{\\pi/2}.\\) \\(A = 2\\left( \\frac{\\pi}{2} + 0 - (0 + 0) \\right) = \\mathbf{\\pi}.\\) Verification: By Cartesian geometry, radius is \\(R = 1 \\Rightarrow A = \\pi R^2 = \\pi(1)^2 = \\pi\\)."
+          "answer": "(a) \\(\\lim_{x\\to 5^-} (1x^2 - 2) = 23\\). (b) Continuity at \\(x=5\\) requires \\(25 + b = 23\\), so \\(b = -2\\). (c) \\(f(0)+f(6) = -2 + 28 = 26\\). (d) Average rate \\(= \\frac{28-(-2)}{6} = 5\\).",
+          "explanation": "(a) \\(\\lim_{x\\to 5^-} (1x^2 - 2) = 23\\). (b) Continuity at \\(x=5\\) requires \\(25 + b = 23\\), so \\(b = -2\\). (c) \\(f(0)+f(6) = -2 + 28 = 26\\). (d) Average rate \\(= \\frac{28-(-2)}{6} = 5\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(5^-\\)",
+              "\\(5\\)",
+              "\\(6\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "\\(-2\\)",
+                "\\(23\\)",
+                "\\(25+b\\)",
+                "\\(30+b\\)"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected piecewise values around transition x = 5 (Run #15)"
+          }
         },
         {
           "q": "Level 3 · AdvancedFind the coordinates of all points on the curve \\(x^2 - xy + y^2 = 9\\) where the tangent line is horizontal.",
@@ -194,13 +243,34 @@
           "explanation": "1. Substitute \\(x = 2\\sin\\theta \\Rightarrow dx = 2\\cos\\theta\\,d\\theta\\). When \\(x = 0\\), \\(\\theta = 0\\). When \\(x = 1\\), \\(2\\sin\\theta = 1 \\Rightarrow \\sin\\theta = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{6}\\). 2. Rewrite integrand: \\(\\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\mathrm{since\\ } \\cos\\theta > 0 \\mathrm{\\ on\\ } [0, \\pi/6]).\\) 3. Substitute into the integral: \\(\\int_0^1 \\sqrt{4 - x^2}\\,dx = \\int_0^{\\pi/6} (2\\cos\\theta)(2\\cos\\theta\\,d\\theta) = 4 \\int_0^{\\pi/6} \\cos^2\\theta\\,d\\theta.\\) 4. Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\(= 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right) = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}.\\)"
         },
         {
-          "q": "(IB AI HL) A market transition matrix \\(T = \\left(0.7, 0.2 ; 0.3, 0.8\\right)\\) represents weekly customer movement between Brand A and Brand B. Find: (a) the probability that a customer initially with Brand A is with Brand B after 2 weeks; (b) the long-term steady-state market distribution.",
+          "q": "In solar array output trial #16, examine the piecewise function \\(f(x) = 2x^2 - 2\\) for \\(x < 2\\) and \\(f(x) = 2x + b\\) for \\(x \\ge 2\\), summarized in the values table shown.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "5.01 Extrema and the Mean Value Theorem",
-          "answer": "(a) State distribution after 2 weeks is \\(\\mathbf{p}_2 = T^2 \\mathbf{p}_0\\). With \\(\\mathbf{p}_0 = \\left(1 ; 0\\right)\\): \\(T^2 = \\left(0.7, 0.2 ; 0.3, 0.8\\right)\\left(0.7, 0.2 ; 0.3, 0.8\\right) = \\left(0.49 + 0.06, 0.14 + 0.16 ; 0.21 + 0.24, 0.06 + 0.64\\right) = \\left(0.55, 0.30 ; 0.45, 0.70\\right).\\) Thus \\(\\mathbf{p}_2 = \\left(0.55 ; 0.45\\right)\\), so the probability of being with Brand B after 2 weeks is 0.45 (45%). (b) Steady-state vector \\(\\mathbf{s} = \\left(s_1 ; s_2\\right)\\) satisfies \\((T - I)\\mathbf{s} = \\mathbf{0}\\): \\(\\left(-0.3, 0.2 ; 0.3, -0.2\\right)\\left(s_1 ; s_2\\right) = \\left(0 ; 0\\right) \\Rightarrow -0.3s_1 + 0.2s_2 = 0 \\Rightarrow s_2 = 1.5s_1.\\) Normalize \\(s_1 + s_2 = 1 \\Rightarrow 2.5s_1 = 1 \\Rightarrow s_1 = 0.40\\), so \\(s_2 = 0.60\\). Steady state: Brand A = 40%, Brand B = 60%.",
-          "explanation": "(a) State distribution after 2 weeks is \\(\\mathbf{p}_2 = T^2 \\mathbf{p}_0\\). With \\(\\mathbf{p}_0 = \\left(1 ; 0\\right)\\): \\(T^2 = \\left(0.7, 0.2 ; 0.3, 0.8\\right)\\left(0.7, 0.2 ; 0.3, 0.8\\right) = \\left(0.49 + 0.06, 0.14 + 0.16 ; 0.21 + 0.24, 0.06 + 0.64\\right) = \\left(0.55, 0.30 ; 0.45, 0.70\\right).\\) Thus \\(\\mathbf{p}_2 = \\left(0.55 ; 0.45\\right)\\), so the probability of being with Brand B after 2 weeks is 0.45 (45%). (b) Steady-state vector \\(\\mathbf{s} = \\left(s_1 ; s_2\\right)\\) satisfies \\((T - I)\\mathbf{s} = \\mathbf{0}\\): \\(\\left(-0.3, 0.2 ; 0.3, -0.2\\right)\\left(s_1 ; s_2\\right) = \\left(0 ; 0\\right) \\Rightarrow -0.3s_1 + 0.2s_2 = 0 \\Rightarrow s_2 = 1.5s_1.\\) Normalize \\(s_1 + s_2 = 1 \\Rightarrow 2.5s_1 = 1 \\Rightarrow s_1 = 0.40\\), so \\(s_2 = 0.60\\). Steady state: Brand A = 40%, Brand B = 60%."
+          "answer": "(a) \\(\\lim_{x\\to 2^-} (2x^2 - 2) = 6\\). (b) Continuity at \\(x=2\\) requires \\(4 + b = 6\\), so \\(b = 2\\). (c) \\(f(0)+f(3) = -2 + 8 = 6\\). (d) Average rate \\(= \\frac{8-(-2)}{3} = \\frac{10}{3}\\).",
+          "explanation": "(a) \\(\\lim_{x\\to 2^-} (2x^2 - 2) = 6\\). (b) Continuity at \\(x=2\\) requires \\(4 + b = 6\\), so \\(b = 2\\). (c) \\(f(0)+f(3) = -2 + 8 = 6\\). (d) Average rate \\(= \\frac{8-(-2)}{3} = \\frac{10}{3}\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "\\(0\\)",
+              "\\(2^-\\)",
+              "\\(2\\)",
+              "\\(3\\)"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "\\(-2\\)",
+                "\\(6\\)",
+                "\\(4+b\\)",
+                "\\(6+b\\)"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected piecewise values around transition x = 2 (Run #16)"
+          }
         },
         {
           "q": "Level 2 · MediumFind the point \\((x, y)\\) on the parabola \\(y = x^2\\) that is closest to the point \\((0, 2)\\).",
@@ -221,13 +291,32 @@
           "explanation": "1. Write \\(-32 = 32 e^{i\\pi}\\). By De Moivre's Theorem: \\(z_k = 32^{1/5} \\exp\\left( i \\frac{\\pi + 2\\pi k}{5} \\right) = 2 e^{i(\\pi + 2\\pi k)/5} \\quad \\mathrm{for\\ } k = 0, 1, 2, 3, 4.\\) Evaluating the arguments in \\((-\\pi, \\pi]\\): - \\(k = 0\\): \\(z_0 = 2e^{i\\pi/5}\\) - \\(k = 1\\): \\(z_1 = 2e^{i 3\\pi/5}\\) - \\(k = 2\\): \\(z_2 = 2e^{i 5\\pi/5} = 2e^{i\\pi} = -2\\) - \\(k = 3\\): \\(z_3 = 2e^{i 7\\pi/5} = 2e^{-i 3\\pi/5}\\) - \\(k = 4\\): \\(z_4 = 2e^{i 9\\pi/5} = 2e^{-i\\pi/5}\\) 2. Sum of the roots: Notice that \\(z_0 + z_4 = 2(e^{i\\pi/5} + e^{-i\\pi/5}) = 4\\cos(\\pi/5)\\), \\(z_1 + z_3 = 2(e^{i 3\\pi/5} + e^{-i 3\\pi/5}) = 4\\cos(3\\pi/5)\\), and \\(z_2 = -2\\). Alternatively, factor \\(z^5 + 32 = 0\\): the coefficient of \\(z^4\\) is 0, so by Vieta's formulas: \\(\\sum_{k=0}^4 z_k = -\\frac{a_4}{a_5} = -\\frac{0}{1} = 0. \\quad \\blacksquare\\)"
         },
         {
-          "q": "Prove by mathematical induction that \\(5^n - 1\\) is divisible by 4 for all positive integers \\(n \\in \\mathbb{Z}^+\\).",
+          "q": "Rate Table (aquifer recharge curve #294): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "6.02 The Fundamental Theorem of Calculus",
-          "answer": "Base Step: For \\(n = 1\\): \\(5^1 - 1 = 4 = 4(1).\\) Since 4 is divisible by 4, the statement \\(P(1)\\) is true. Inductive Hypothesis: Assume \\(P(k)\\) is true for some positive integer \\(k \\geq 1\\), meaning: \\(5^k - 1 = 4m \\quad \\mathrm{for\\ some\\ integer\\ } m \\in \\mathbb{Z} \\Rightarrow 5^k = 4m + 1.\\) Inductive Step: Consider \\(n = k + 1\\): \\(5^{k+1} - 1 = 5\\cdot 5^k - 1.\\) Substitute the inductive hypothesis \\(5^k = 4m + 1\\): \\(5(4m + 1) - 1 = 20m + 5 - 1 = 20m + 4 = 4(5m + 1).\\) Since \\(m \\in \\mathbb{Z}\\), \\(5m + 1\\) is an integer, so \\(5^{k+1} - 1\\) is divisible by 4. Thus \\(P(k) \\Rightarrow P(k+1)\\). Conclusion: Since true for \\(n = 1\\), and if true for \\(n = k\\) then true for \\(n = k + 1\\), by the principle of mathematical induction the statement is true for all \\(n \\in \\mathbb{Z}^+\\).",
-          "explanation": "Base Step: For \\(n = 1\\): \\(5^1 - 1 = 4 = 4(1).\\) Since 4 is divisible by 4, the statement \\(P(1)\\) is true. Inductive Hypothesis: Assume \\(P(k)\\) is true for some positive integer \\(k \\geq 1\\), meaning: \\(5^k - 1 = 4m \\quad \\mathrm{for\\ some\\ integer\\ } m \\in \\mathbb{Z} \\Rightarrow 5^k = 4m + 1.\\) Inductive Step: Consider \\(n = k + 1\\): \\(5^{k+1} - 1 = 5\\cdot 5^k - 1.\\) Substitute the inductive hypothesis \\(5^k = 4m + 1\\): \\(5(4m + 1) - 1 = 20m + 5 - 1 = 20m + 4 = 4(5m + 1).\\) Since \\(m \\in \\mathbb{Z}\\), \\(5m + 1\\) is an integer, so \\(5^{k+1} - 1\\) is divisible by 4. Thus \\(P(k) \\Rightarrow P(k+1)\\). Conclusion: Since true for \\(n = 1\\), and if true for \\(n = k\\) then true for \\(n = k + 1\\), by the principle of mathematical induction the statement is true for all \\(n \\in \\mathbb{Z}^+\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #294)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -263,19 +352,49 @@
           "explanation": "At rest means velocity \\(v(t) = x'(t) = 0\\): \\(3t^2 - 12t + 9 = 0 \\Rightarrow 3(t - 1)(t - 3) = 0 \\Rightarrow t = 1, 3\\)."
         },
         {
-          "q": "What is the speed of the particle when \\(v(t) = -8\\) and \\(a(t) = 3\\)?",
+          "q": "Derivative Curve (orbital telemetry pass #297): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "\\(8\\)",
-            "\\(-8\\)",
-            "\\(5\\)",
-            "\\(\\sqrt{73}\\)"
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(7\\)"
           ],
-          "correct": 0,
-          "answer": "Speed is defined as the absolute value of velocity: \\(|v(t)| = |-8| = 8\\).",
-          "explanation": "Speed is defined as the absolute value of velocity: \\(|v(t)| = |-8| = 8\\)."
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 2\\) is \\(2(2) = 4\\).",
+          "explanation": "Speed is defined as the absolute value of velocity: \\(|v(t)| = |-8| = 8\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 1x² with marked point (#297)"
+          }
         },
         {
           "q": "When is a particle's speed increasing?",
@@ -308,19 +427,38 @@
           "explanation": "Displacement \\(= s(3) - s(0) = (9 - 12) - 0 = -3\\)."
         },
         {
-          "q": "For the above particle with \\(s(t) = t^2 - 4t\\) on \\([0, 3]\\), what is the total distance traveled?",
+          "q": "Rate Table (hydroelectric sluice #298): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "\\(5\\)",
-            "\\(3\\)",
-            "\\(4\\)",
-            "\\(7\\)"
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(30\\)",
+            "\\(36\\)"
           ],
-          "correct": 0,
-          "answer": "\\(v(t) = 2t - 4 = 0 \\Rightarrow t = 2\\). From \\(t = 0\\) to \\(2\\): \\(|s(2) - s(0)| = |-4 - 0| = 4\\). From \\(t = 2\\) to \\(3\\): \\(|s(3) - s(2)| = |-3 - (-4)| = 1\\). Total distance \\(= 4 + 1 = 5\\).",
-          "explanation": "\\(v(t) = 2t - 4 = 0 \\Rightarrow t = 2\\). From \\(t = 0\\) to \\(2\\): \\(|s(2) - s(0)| = |-4 - 0| = 4\\). From \\(t = 2\\) to \\(3\\): \\(|s(3) - s(2)| = |-3 - (-4)| = 1\\). Total distance \\(= 4 + 1 = 5\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
+          "explanation": "\\(v(t) = 2t - 4 = 0 \\Rightarrow t = 2\\). From \\(t = 0\\) to \\(2\\): \\(|s(2) - s(0)| = |-4 - 0| = 4\\). From \\(t = 2\\) to \\(3\\): \\(|s(3) - s(2)| = |-3 - (-4)| = 1\\). Total distance \\(= 4 + 1 = 5\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #298)"
+          }
         },
         {
           "q": "Which integral represents the total distance traveled by a particle from \\(t = a\\) to \\(t = b\\)?",
@@ -353,19 +491,49 @@
           "explanation": "\\(A = \\pi r^2 \\Rightarrow \\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt} = 2\\pi(10)(3) = 60\\pi\\) cm\\(^2\\)/s."
         },
         {
-          "q": "A \\(13\\)-foot ladder leans against a vertical wall. If the bottom slides away from the wall at \\(2\\) ft/s, how fast is the top sliding down when the bottom is \\(5\\) feet from the wall?",
+          "q": "Derivative Curve (bio-reactor temperature #301): For the plotted parabola \\(f(x) = 2x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "\\(-\\frac{5}{6}\\) ft/s",
-            "\\(-\\frac{12}{5}\\) ft/s",
-            "\\(-2\\) ft/s",
-            "\\(-\\frac{5}{12}\\) ft/s"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(4\\)",
+            "\\(11\\)"
           ],
-          "correct": 0,
-          "answer": "\\(x^2 + y^2 = 13^2 = 169\\). When \\(x = 5\\), \\(y = 12\\). Differentiating: \\(2x \\frac{dx}{dt} + 2y \\frac{dy}{dt} = 0 \\Rightarrow 5(2) + 12 \\frac{dy}{dt} = 0 \\Rightarrow \\frac{dy}{dt} = -\\frac{10}{12} = -\\frac{5}{6}\\) ft/s.",
-          "explanation": "\\(x^2 + y^2 = 13^2 = 169\\). When \\(x = 5\\), \\(y = 12\\). Differentiating: \\(2x \\frac{dx}{dt} + 2y \\frac{dy}{dt} = 0 \\Rightarrow 5(2) + 12 \\frac{dy}{dt} = 0 \\Rightarrow \\frac{dy}{dt} = -\\frac{10}{12} = -\\frac{5}{6}\\) ft/s."
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 4x\\), the instantaneous rate at \\(x = 2\\) is \\(4(2) = 8\\).",
+          "explanation": "\\(x^2 + y^2 = 13^2 = 169\\). When \\(x = 5\\), \\(y = 12\\). Differentiating: \\(2x \\frac{dx}{dt} + 2y \\frac{dy}{dt} = 0 \\Rightarrow 5(2) + 12 \\frac{dy}{dt} = 0 \\Rightarrow \\frac{dy}{dt} = -\\frac{10}{12} = -\\frac{5}{6}\\) ft/s.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              20
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "2*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 2x² with marked point (#301)"
+          }
         }
       ]
     },
@@ -403,19 +571,38 @@
           "explanation": "By similar triangles in the cross-section: \\(\\frac{r}{h} = \\frac{4}{10} = \\frac{2}{5} \\Rightarrow r = \\frac{2}{5} h\\)."
         },
         {
-          "q": "Using \\(V = \\frac{1}{3}\\pi r^2 h = \\frac{4}{75}\\pi h^3\\), how fast is the water level rising when \\(h = 5\\) m and \\(\\frac{dV}{dt} = 2\\) m\\(^3\\)/min?",
+          "q": "Rate Table (autonomous rover motion #302): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "\\(\\frac{1}{2\\pi}\\) m/min",
-            "\\(\\frac{2}{\\pi}\\) m/min",
-            "\\(\\frac{1}{4\\pi}\\) m/min",
-            "\\(\\frac{4}{25\\pi}\\) m/min"
+            "\\(22\\)",
+            "\\(20\\)",
+            "\\(26\\)",
+            "\\(32\\)"
           ],
-          "correct": 0,
-          "answer": "\\(\\frac{dV}{dt} = \\frac{4}{25}\\pi h^2 \\frac{dh}{dt} \\Rightarrow 2 = \\frac{4}{25}\\pi (25) \\frac{dh}{dt} = 4\\pi \\frac{dh}{dt} \\Rightarrow \\frac{dh}{dt} = \\frac{2}{4\\pi} = \\frac{1}{2\\pi}\\) m/min.",
-          "explanation": "\\(\\frac{dV}{dt} = \\frac{4}{25}\\pi h^2 \\frac{dh}{dt} \\Rightarrow 2 = \\frac{4}{25}\\pi (25) \\frac{dh}{dt} = 4\\pi \\frac{dh}{dt} \\Rightarrow \\frac{dh}{dt} = \\frac{2}{4\\pi} = \\frac{1}{2\\pi}\\) m/min."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "\\(\\frac{dV}{dt} = \\frac{4}{25}\\pi h^2 \\frac{dh}{dt} \\Rightarrow 2 = \\frac{4}{25}\\pi (25) \\frac{dh}{dt} = 4\\pi \\frac{dh}{dt} \\Rightarrow \\frac{dh}{dt} = \\frac{2}{4\\pi} = \\frac{1}{2\\pi}\\) m/min.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #302)"
+          }
         },
         {
           "q": "A street light is mounted at the top of a \\(15\\)-foot pole. A \\(6\\)-foot man walks away from the pole at \\(5\\) ft/s. How fast is the tip of his shadow moving?",
@@ -448,19 +635,49 @@
           "explanation": "\\(\\left|\\frac{\\partial(x,y)}{\\partial(u,v)}\\right|=|8|\\), so \\(\\mathrm{Area}(R)=|J|\\cdot\\mathrm{Area}(S)=16\\)."
         },
         {
-          "q": "Related rates: a balloon radius expands at 2 cm/s. Rate of volume change when \\(r=5\\) cm is:",
+          "q": "Derivative Curve (battery charging session #305): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "\\(40\\pi\\) cm³/s",
-            "\\(100\\pi\\) cm³/s",
-            "\\(200\\pi\\) cm³/s",
-            "\\(300\\pi\\) cm³/s"
+            "\\(14\\)",
+            "\\(12\\)",
+            "\\(6\\)",
+            "\\(15\\)"
           ],
-          "correct": 2,
-          "answer": "\\(V=\\frac{4}{3}\\pi r^3\\Rightarrow\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(25)(2)=200\\pi\\) cm³/s.",
-          "explanation": "\\(V=\\frac{4}{3}\\pi r^3\\Rightarrow\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(25)(2)=200\\pi\\) cm³/s."
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 2\\) is \\(6(2) = 12\\).",
+          "explanation": "\\(V=\\frac{4}{3}\\pi r^3\\Rightarrow\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(25)(2)=200\\pi\\) cm³/s.",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              29
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 12,
+                "label": "(2, 12)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 3x² with marked point (#305)"
+          }
         },
         {
           "q": "Related rates: ladder 10 m against wall. Base slides at 1 m/s when base is 6 m. Rate of top:",
@@ -493,19 +710,38 @@
           "explanation": "Region \\(0\\leq x\\leq y\\leq2\\Leftrightarrow0\\leq x\\leq2, x\\leq y\\leq2\\)."
         },
         {
-          "q": "The change-of-variables formula \\(\\iint_D f\\,dA=\\iint_{D^*}f(g)\\,|J|\\,du\\,dv\\) requires \\(J e0\\) (injective map). The factor \\(|J|\\) is the:",
+          "q": "Rate Table (aquifer recharge curve #306): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "Laplacian",
-            "Hessian",
-            "Jacobian determinant",
-            "divergence"
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
           "correct": 2,
-          "answer": "Jacobian: area scaling factor in change of variables.",
-          "explanation": "Jacobian: area scaling factor in change of variables."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "explanation": "Jacobian: area scaling factor in change of variables.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #306)"
+          }
         }
       ]
     },
@@ -545,43 +781,49 @@
           "cross_lesson": "6.02 The Fundamental Theorem of Calculus"
         },
         {
-          "q": "The figure shows the region \\(R\\) bounded by the curves \\(y = x^2\\) and \\(y = 4\\). Which of the following double integrals represents the area of region \\(R\\) using the order of integration \\(dy dx\\)?",
+          "q": "Derivative Curve (orbital telemetry pass #309): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "\\(\\int_{-2}^{2} \\int_{x^2}^{4} dy dx\\)",
-            "\\(\\int_{-2}^{2} \\int_{4}^{x^2} dy dx\\)",
-            "\\(\\int_{0}^{4} \\int_{-\\sqrt{y}}^{\\sqrt{y}} dy dx\\)",
-            "\\(\\int_{0}^{4} \\int_{-\\sqrt{y}}^{\\sqrt{y}} dx dy\\)"
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(7\\)"
           ],
-          "correct": 0,
-          "answer": "The region \\(R\\) is bounded above by \\(y=4\\) and below by \\(y=x^2\\). To find the limits for \\(x\\), we find the intersection points of the two curves: \\(x^2 = 4 \\Rightarrow x = \\pm 2\\). Thus, the region is defined for \\(x\\) from \\(-2\\) to \\(2\\). When integrating with respect to \\(y\\) first (\\(dy dx\\)), the inner integral goes from the lower curve to the upper curve, so from \\(y=x^2\\) to \\(y=4\\). The outer integral is over the range of \\(x\\), which is \\(-2\\) to \\(2\\). Therefore, the double integral representing the area is \\(\\int_{-2}^{2} \\int_{x^2}^{4} dy dx\\).",
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 2\\) is \\(2(2) = 4\\).",
           "explanation": "The region \\(R\\) is bounded above by \\(y=4\\) and below by \\(y=x^2\\). To find the limits for \\(x\\), we find the intersection points of the two curves: \\(x^2 = 4 \\Rightarrow x = \\pm 2\\). Thus, the region is defined for \\(x\\) from \\(-2\\) to \\(2\\). When integrating with respect to \\(y\\) first (\\(dy dx\\)), the inner integral goes from the lower curve to the upper curve, so from \\(y=x^2\\) to \\(y=4\\). The outer integral is over the range of \\(x\\), which is \\(-2\\) to \\(2\\). Therefore, the double integral representing the area is \\(\\int_{-2}^{2} \\int_{x^2}^{4} dy dx\\).",
           "cross_lesson": "7.01 Differential Equations and Slope Fields",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x",
-              "4"
+            "type": "fn",
+            "xl": [
+              0,
+              4
             ],
-            "xmin": -3,
-            "xmax": 3,
-            "ymin": -1,
-            "ymax": 5,
-            "width": 230,
-            "point_labels": [
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "y": 4,
-                "label": "(-2, 4)"
-              },
+                "fn": "1*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
               {
                 "x": 2,
                 "y": 4,
                 "label": "(2, 4)"
               }
-            ]
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 1x² with marked point (#309)"
           }
         },
         {
@@ -618,16 +860,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "\\(\\int e^x\\,dx= \\)",
-          "answer": "**Answer:** C. Applying Unit 6 · Integration and Accumulation of Change principles, \\(e^x\\) is its own antiderivative. Therefore, the verified correct option is \\(e^x+C\\).",
+          "q": "Rate Table (hydroelectric sluice #310): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
           "explanation": "Applying Unit 6 · Integration and Accumulation of Change principles, \\(e^x\\) is its own antiderivative. Therefore, the verified correct option is \\(e^x+C\\).",
           "choices": [
-            "\\(xe^x+C\\)",
-            "\\(\\frac{e^x}{x}+C\\)",
-            "\\(e^x+C\\)",
-            "\\(e^{x+1}+C\\)"
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(24\\)"
           ],
-          "correct": 2
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #310)"
+          }
         },
         {
           "q": "A population of bacteria follows a logistic growth model where \\(P(t)\\) is the population at time \\(t\\) (in hours). The differential equation governing the population growth is \\(\\frac{dP}{dt} = 0.05P \\left( 1 - \\frac{P}{1000} \\right)\\). If the initial population is \\(P(0) = 200\\), use Euler's method with a step size of \\(\\Delta t = 1\\) hour to approximate the population after 1 hour, \\(P(1)\\).",

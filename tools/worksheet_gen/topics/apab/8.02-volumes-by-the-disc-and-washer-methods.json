@@ -9,12 +9,36 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Decompose the rational expression \\(\\frac{5x^2 - 3x + 2}{(x - 1)(x^2 + 1)}\\) into partial fractions.",
+          "q": "From the mathematical information provided, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(4)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "1. Set up the partial fraction template with irreducible quadratic: \\(\\frac{5x^2 - 3x + 2}{(x - 1)(x^2 + 1)} = \\frac{A}{x - 1} + \\frac{Bx + C}{x^2 + 1}.\\) 2. Multiply through by \\((x - 1)(x^2 + 1)\\): \\(5x^2 - 3x + 2 = A(x^2 + 1) + (Bx + C)(x - 1).\\) 3. Substitute \\(x = 1\\) (cover-up): \\(5(1)^2 - 3(1) + 2 = A(1 + 1) + 0 \\Rightarrow 4 = 2A \\Rightarrow A = 2.\\) 4. Compare coefficients: Coefficient of \\(x^2\\): \\(A + B = 5 \\Rightarrow 2 + B = 5 \\Rightarrow B = 3\\). Constant term: \\(A - C = 2 \\Rightarrow 2 - C = 2 \\Rightarrow C = 0\\). Decomposition: \\(\\frac{2}{x - 1} + \\frac{3x}{x^2 + 1}.\\)",
-          "explanation": "1. Set up the partial fraction template with irreducible quadratic: \\(\\frac{5x^2 - 3x + 2}{(x - 1)(x^2 + 1)} = \\frac{A}{x - 1} + \\frac{Bx + C}{x^2 + 1}.\\) 2. Multiply through by \\((x - 1)(x^2 + 1)\\): \\(5x^2 - 3x + 2 = A(x^2 + 1) + (Bx + C)(x - 1).\\) 3. Substitute \\(x = 1\\) (cover-up): \\(5(1)^2 - 3(1) + 2 = A(1 + 1) + 0 \\Rightarrow 4 = 2A \\Rightarrow A = 2.\\) 4. Compare coefficients: Coefficient of \\(x^2\\): \\(A + B = 5 \\Rightarrow 2 + B = 5 \\Rightarrow B = 3\\). Constant term: \\(A - C = 2 \\Rightarrow 2 - C = 2 \\Rightarrow C = 0\\). Decomposition: \\(\\frac{2}{x - 1} + \\frac{3x}{x^2 + 1}.\\)"
+          "answer": "By the Chain Rule, \\(H'(4) = f'(g(4)) \\cdot g'(4) = f'(2) \\cdot (-3) = (5)(-3) = -15\\).",
+          "explanation": "By the Chain Rule, \\(H'(4) = f'(g(4)) \\cdot g'(4) = f'(2) \\cdot (-3) = (5)(-3) = -15\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "4",
+                "2",
+                "-3",
+                "6"
+              ],
+              [
+                "2",
+                "7",
+                "-4",
+                "5"
+              ]
+            ]
+          }
         },
         {
           "q": "Level 2 · MediumFind the third-degree Taylor polynomial \\(P_3(x)\\) for \\(f(x) = \\sqrt{x}\\) centered at \\(c = 4\\).",
@@ -34,16 +58,47 @@
         },
         {
           "qtype": "MCQ",
-          "q": "For the differential equation \\(\\dfrac{dy}{dx} = x -2y\\), find the slope of the solution curve at the point \\((2, 1)\\).",
-          "answer": "**Answer:** B. Substitute \\(x=2\\), \\(y=1\\): \\(\\dfrac{dy}{dx} = 1(2) -2(1) = 0\\).",
+          "q": "Riemann Plot (orbital telemetry pass #513): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
           "explanation": "Substitute \\(x=2\\), \\(y=1\\): \\(\\dfrac{dy}{dx} = 1(2) -2(1) = 0\\).",
           "choices": [
-            "2",
-            "0",
-            "3",
-            "-2"
+            "\\(14\\)",
+            "\\(10\\)",
+            "\\(6\\)",
+            "\\(12\\)"
           ],
-          "correct": 1
+          "correct": 1,
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #513)"
+          }
         },
         {
           "q": "Level 3 · Advanced / AP FRQThe alternating series \\(\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^4}\\) converges to sum \\(S\\). If the sum is approximated by the fourth partial sum \\(S_4\\), use the Alternating Series Error Bound to find an upper bound for the error \\(|S - S_4|\\).",
@@ -62,12 +117,36 @@
           "explanation": "Apply the Ratio Test: \\(L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(n+1)! (2x - 1)^{n+1}}{n! (2x - 1)^n} \\right| = |2x - 1| \\lim_{n\\rightarrow\\infty} (n+1).\\) For any \\(x eq \\frac{1}{2}\\), this limit is \\(\\infty\\). The series converges only at its center \\(x = \\frac{1}{2}\\). Thus, the radius of convergence is \\(\\mathbf{R = 0}\\)."
         },
         {
-          "q": "Level 2 · Medium Find the third-degree Maclaurin polynomial \\(P_3(x)\\) for \\(f(x) = \\cos x\\).",
+          "q": "In an applied STEM setting, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(2)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Compute derivatives at \\(x = 0\\): • \\(f(0) = \\cos(0) = 1\\) • \\(f'(0) = -\\sin(0) = 0\\) • \\(f''(0) = -\\cos(0) = -1\\) • \\(f'''(0) = \\sin(0) = 0\\) Applying the Maclaurin formula: \\(P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 1 - \\frac{x^2}{2}\\). (Notice the cubic term has coefficient 0).",
-          "explanation": "Compute derivatives at \\(x = 0\\): • \\(f(0) = \\cos(0) = 1\\) • \\(f'(0) = -\\sin(0) = 0\\) • \\(f''(0) = -\\cos(0) = -1\\) • \\(f'''(0) = \\sin(0) = 0\\) Applying the Maclaurin formula: \\(P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 1 - \\frac{x^2}{2}\\). (Notice the cubic term has coefficient 0)."
+          "answer": "By the Chain Rule, \\(H'(2) = f'(g(2)) \\cdot g'(2) = f'(4) \\cdot (-2) = (6)(-2) = -12\\).",
+          "explanation": "By the Chain Rule, \\(H'(2) = f'(g(2)) \\cdot g'(2) = f'(4) \\cdot (-2) = (6)(-2) = -12\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "2",
+                "4",
+                "-2",
+                "7"
+              ],
+              [
+                "4",
+                "5",
+                "-3",
+                "6"
+              ]
+            ]
+          }
         }
       ]
     },
@@ -96,12 +175,33 @@
           "correct": 3
         },
         {
-          "q": "Level 1 · Foundations Evaluate the indefinite integral \\(\\int \\frac{\\cos(\\ln x)}{x}\\,dx\\) for \\(x > 0\\).",
+          "q": "In autonomous rover motion facility #62, water flows into a tank holding \\(50\\) L at \\(t = 0\\) at a differentiable rate \\(R(t)\\) L/min, with values recorded in the table over \\(0 \\le t \\le 9\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
-          "answer": "Substitute \\(u = \\ln x\\). The derivative is \\(du = \\frac{1}{x}\\,dx\\). The integral simplifies directly to: \\(\\int \\cos(u)\\,du = \\sin(u) + C = \\sin(\\ln x) + C\\)",
-          "explanation": "Substitute \\(u = \\ln x\\). The derivative is \\(du = \\frac{1}{x}\\,dx\\). The integral simplifies directly to: \\(\\int \\cos(u)\\,du = \\sin(u) + C = \\sin(\\ln x) + C\\)"
+          "answer": "(a) Trap \\(= \\frac{2}{2}(10+14) + \\frac{3}{2}(14+20) + \\frac{4}{2}(20+22) = 159\\). (b) Left Riemann \\(= 2(10) + 3(14) + 4(20) = 142\\). (c) Average rate of change \\(= \\frac{22-10}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(50 + 159 = 209\\).",
+          "explanation": "(a) Trap \\(= \\frac{2}{2}(10+14) + \\frac{3}{2}(14+20) + \\frac{4}{2}(20+22) = 159\\). (b) Left Riemann \\(= 2(10) + 3(14) + 4(20) = 142\\). (c) Average rate of change \\(= \\frac{22-10}{9} = \\frac{4}{3}\\). (d) Volume at \\(t=9\\): \\(50 + 159 = 209\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\) (min)",
+              "\\(0\\)",
+              "\\(2\\)",
+              "\\(5\\)",
+              "\\(9\\)"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\) (L/min)",
+                "10",
+                "14",
+                "20",
+                "22"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected inflow rates R(t) on [0, 9] (Trial #62)"
+          }
         },
         {
           "q": "If \\(f'(c)=0\\) and \\(f''(c)>0\\), then \\(x=c\\) is a:",
@@ -120,12 +220,36 @@
           "explanation": "\\(f'(x)=6x^2-6x-12=6(x-2)(x+1)=0\\) \\(f''(-1)=-18<0\\) so local max at \\(x=-1\\)."
         },
         {
-          "q": "\\(\\displaystyle\\int_0^2 (3x^2 + 1)\\,dx\\) equals",
+          "q": "Assess the behavior of the following model: Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(4)\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Final Answer: 10. \\([x^3 + x]_0^2 = (8+2) - 0 = 10\\)",
-          "explanation": "\\([x^3 + x]_0^2 = (8+2) - 0 = 10\\)"
+          "answer": "By the Chain Rule, \\(H'(4) = f'(g(4)) \\cdot g'(4) = f'(2) \\cdot (-4) = (6)(-4) = -24\\).",
+          "explanation": "By the Chain Rule, \\(H'(4) = f'(g(4)) \\cdot g'(4) = f'(2) \\cdot (-4) = (6)(-4) = -24\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "4",
+                "2",
+                "-4",
+                "7"
+              ],
+              [
+                "2",
+                "7",
+                "-5",
+                "6"
+              ]
+            ]
+          }
         },
         {
           "q": "Let \\(h(x) = \\displaystyle\\int_0^x f(t)\\,dt\\) where \\(f\\) is piecewise linear with \\(f(0)=0, f(2)=4, f(4)=0, f(6)=-2\\). (a) Find \\(h(4)\\). (b) Where does \\(h\\) attain a local maximum on \\((0,6)\\)? Show your complete algebraic work.",
@@ -150,13 +274,34 @@
           "explanation": "By additivity of the definite integral: \\(\\displaystyle\\int_{-1}^{5} = \\displaystyle\\int_{-1}^{1} + \\displaystyle\\int_{1}^{5} = \\frac{4}{3} + \\frac{248}{3} = 84\\)."
         },
         {
-          "q": "(a) Given \\(\\frac{dy}{dx} = 2xy\\) with \\(y(0)=3\\), solve the separable ODE for \\(y(x)\\). (b) What is \\(y(1)\\)? Show your complete algebraic work.",
+          "q": "In solar array output differential model #64, consider the separable differential equation \\(\\dfrac{dy}{dx} = 4xy\\) whose slope field is shown, with particular solution \\(y = f(x)\\) satisfying \\(f(0) = 2\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "1.02 Continuity and the Intermediate Value Theorem",
-          "answer": "(a) \\(\\frac{dy}{y} = 2x\\,dx \\Rightarrow \\ln|y| = x^2 + C \\Rightarrow y = Ae^{x^2}\\) \\(y(0)=3 \\Rightarrow A=3\\), so \\(y = 3e^{x^2}\\). (b) \\(y(1) = 3e\\)",
-          "explanation": "(a) \\(\\frac{dy}{y} = 2x\\,dx \\Rightarrow \\ln|y| = x^2 + C \\Rightarrow y = Ae^{x^2}\\) \\(y(0)=3 \\Rightarrow A=3\\), so \\(y = 3e^{x^2}\\). (b) \\(y(1) = 3e\\)"
+          "answer": "(a) \\(4(1)(2) = 8\\). (b) \\(y'' = 4y + 4xy'\\), so at \\((0,2)\\), \\(y'' = 8\\). (c) \\(\\ln|y| = 2x^2 + \\ln 2\\), hence \\(\\ln(f(1)/2) = 2\\). (d) Since \\(f'(0) = 0\\), the tangent line is \\(y = 2\\), giving \\(f(0.5) \\approx 2\\).",
+          "explanation": "(a) \\(4(1)(2) = 8\\). (b) \\(y'' = 4y + 4xy'\\), so at \\((0,2)\\), \\(y'' = 8\\). (c) \\(\\ln|y| = 2x^2 + \\ln 2\\), hence \\(\\ln(f(1)/2) = 2\\). (d) Since \\(f'(0) = 0\\), the tangent line is \\(y = 2\\), giving \\(f(0.5) \\approx 2\\).",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "4*x*y",
+            "xl": [
+              -2,
+              2
+            ],
+            "yl": [
+              0,
+              4
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 0,
+                "y": 2,
+                "label": "(0, 2)"
+              }
+            ],
+            "caption": "Slope field dy/dx = 4xy (Model #64)"
+          }
         },
         {
           "q": "The area enclosed by \\(y=x^2\\) and \\(y=2x\\) is",
@@ -177,13 +322,37 @@
           "explanation": "\\(V = \\pi\\int_0^4 x\\,dx = \\pi\\cdot 8 = 8\\pi\\)"
         },
         {
-          "q": "A particle moves along a straight line so that its velocity at time \\(t \\ge 0\\) is modeled by \\(v(t) = 6t^2 - 18t + 12\\). At what time \\(t\\) is the acceleration of the particle equal to \\(0\\)? Show your complete algebraic work.",
+          "q": "Given smooth functions where required, Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(2)\\)?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "3.01 The Chain Rule",
-          "answer": "Final Answer: \\(t = \\frac{3}{2}\\). To find the acceleration \\(a(t)\\), take the derivative of the velocity function \\(v(t)\\) with respect to time \\(t\\): \\(a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.\\) Set \\(a(t) = 0\\) and solve for \\(t\\): \\(12t - 18 = 0 \\implies 12t = 18 \\implies t = \\frac{18}{12} = \\frac{3}{2}.\\) Common Misconceptions: - Solving \\(v(t) = 0\\) yields \\(6(t - 1)(t - 2) = 0 \\implies t = 1\\) or \\(t = 2\\). These are the times when the particle is at rest, not when its acceleration is zero. - Omitting the factor of 2 when applying the power rule gives \\(6t - 18 = 0 \\implies t = 3\\).",
-          "explanation": "To find the acceleration \\(a(t)\\), take the derivative of the velocity function \\(v(t)\\) with respect to time \\(t\\): \\(a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.\\) Set \\(a(t) = 0\\) and solve for \\(t\\): \\(12t - 18 = 0 \\implies 12t = 18 \\implies t = \\frac{18}{12} = \\frac{3}{2}.\\) Common Misconceptions: - Solving \\(v(t) = 0\\) yields \\(6(t - 1)(t - 2) = 0 \\implies t = 1\\) or \\(t = 2\\). These are the times when the particle is at rest, not when its acceleration is zero. - Omitting the factor of 2 when applying the power rule gives \\(6t - 18 = 0 \\implies t = 3\\)."
+          "answer": "By the Chain Rule, \\(H'(2) = f'(g(2)) \\cdot g'(2) = f'(4) \\cdot (-3) = (3)(-3) = -9\\).",
+          "explanation": "By the Chain Rule, \\(H'(2) = f'(g(2)) \\cdot g'(2) = f'(4) \\cdot (-3) = (3)(-3) = -9\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "2",
+                "4",
+                "-3",
+                "4"
+              ],
+              [
+                "4",
+                "5",
+                "-4",
+                "3"
+              ]
+            ]
+          }
         },
         {
           "q": "Classify the discontinuity of \\(f(x) = \\frac{(x-2)(x-4)}{x-2}\\) at \\(x = 2\\).",
@@ -217,19 +386,50 @@
           "explanation": "Disc formula: \\(V = \\pi \\int_0^4 [R(x)]^2 dx = \\pi \\int_0^4 (\\sqrt{x})^2 dx = \\pi \\int_0^4 x dx = \\pi [\\frac{x^2}{2}]_0^4 = 8\\pi\\)."
         },
         {
-          "q": "Find the volume when the region bounded by \\(y = x^2, x = 0,\\) and \\(y = 4\\) is revolved about the \\(y\\)-axis.",
+          "q": "Riemann Plot (coastal tide flux #519): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "\\(8\\pi\\)",
-            "\\(16\\pi\\)",
-            "\\(4\\pi\\)",
-            "\\(\\frac{32\\pi}{5}\\)"
+            "\\(14\\)",
+            "\\(6\\)",
+            "\\(12\\)",
+            "\\(10\\)"
           ],
-          "correct": 0,
-          "answer": "Revolving about \\(y\\)-axis: \\(x = \\sqrt{y}\\). \\(V = \\pi \\int_0^4 (\\sqrt{y})^2 dy = \\pi \\int_0^4 y dy = \\pi [\\frac{y^2}{2}]_0^4 = 8\\pi\\).",
-          "explanation": "Revolving about \\(y\\)-axis: \\(x = \\sqrt{y}\\). \\(V = \\pi \\int_0^4 (\\sqrt{y})^2 dy = \\pi \\int_0^4 y dy = \\pi [\\frac{y^2}{2}]_0^4 = 8\\pi\\)."
+          "correct": 3,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
+          "explanation": "Revolving about \\(y\\)-axis: \\(x = \\sqrt{y}\\). \\(V = \\pi \\int_0^4 (\\sqrt{y})^2 dy = \\pi \\int_0^4 y dy = \\pi [\\frac{y^2}{2}]_0^4 = 8\\pi\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #519)"
+          }
         },
         {
           "q": "What is the cross-sectional shape of a solid formed by the disc method?",
@@ -278,19 +478,43 @@
           "explanation": "Intersections at \\(x = 0, 1\\). Outer radius \\(R(x) = x\\), inner radius \\(r(x) = x^2\\). \\(V = \\pi \\int_0^1 (x^2 - x^4) dx = \\pi [\\frac{x^3}{3} - \\frac{x^5}{5}]_0^1 = \\pi(\\frac{1}{3} - \\frac{1}{5}) = \\frac{2\\pi}{15}\\)."
         },
         {
-          "q": "Write the integral for the volume when the region between \\(y = 2x\\) and \\(y = x^2\\) is revolved about the \\(x\\)-axis.",
+          "q": "Carry out the exact calculation: Using the values in the table shown, if \\(H(x) = f(g(x))\\), what is \\(H'(4)\\)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "\\(\\pi \\int_0^2 (4x^2 - x^4) dx\\)",
-            "\\(\\pi \\int_0^2 (2x - x^2)^2 dx\\)",
-            "\\(\\pi \\int_0^2 (x^4 - 4x^2) dx\\)",
-            "\\(2\\pi \\int_0^2 (2x - x^2) dx\\)"
+            "\\(-8\\)",
+            "\\(-4\\)",
+            "\\(-18\\)",
+            "\\(8\\)"
           ],
           "correct": 0,
-          "answer": "Outer radius is \\(2x\\), inner radius is \\(x^2\\). Washer area is \\(\\pi[(2x)^2 - (x^2)^2] = \\pi(4x^2 - x^4)\\).",
-          "explanation": "Outer radius is \\(2x\\), inner radius is \\(x^2\\). Washer area is \\(\\pi[(2x)^2 - (x^2)^2] = \\pi(4x^2 - x^4)\\)."
+          "answer": "By the Chain Rule, \\(H'(4) = f'(g(4)) \\cdot g'(4) = f'(2) \\cdot (-2) = (4)(-2) = -8\\).",
+          "explanation": "Outer radius is \\(2x\\), inner radius is \\(x^2\\). Washer area is \\(\\pi[(2x)^2 - (x^2)^2] = \\pi(4x^2 - x^4)\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Selected Function & Derivative Values",
+            "headers": [
+              "\\(x\\)",
+              "\\(g(x)\\)",
+              "\\(g'(x)\\)",
+              "\\(f'(x)\\)"
+            ],
+            "rows": [
+              [
+                "4",
+                "2",
+                "-2",
+                "5"
+              ],
+              [
+                "2",
+                "7",
+                "-3",
+                "4"
+              ]
+            ]
+          }
         },
         {
           "q": "Why is \\(\\pi \\int (R - r)^2 dx\\) INCORRECT for the washer method?",
@@ -385,19 +609,39 @@
           "explanation": "Side of square is \\(s(x) = 1 - x^2\\). Area \\(A(x) = (1 - x^2)^2 = 1 - 2x^2 + x^4\\). \\(V = \\int_{-1}^1 (1 - 2x^2 + x^4) dx = 2[x - \\frac{2x^3}{3} + \\frac{x^5}{5}]_0^1 = 2(1 - \\frac{2}{3} + \\frac{1}{5}) = 2(\\frac{8}{15}) = \\frac{16}{15}\\)."
         },
         {
-          "q": "If cross-sections perpendicular to the \\(x\\)-axis are semicircles with diameter on the base, what is the cross-sectional area formula?",
+          "q": "Using the three subintervals indicated by the table shown, compute the left Riemann sum approximation to \\(\\int_0^{7} f(x)\\,dx\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "\\(A(x) = \\frac{\\pi}{8} [s(x)]^2\\)",
-            "\\(A(x) = \\frac{\\pi}{2} [s(x)]^2\\)",
-            "\\(A(x) = \\frac{\\pi}{4} [s(x)]^2\\)",
-            "\\(A(x) = \\pi [s(x)]^2\\)"
+            "\\(36\\)",
+            "\\(-25\\)",
+            "\\(44\\)",
+            "\\(25\\)"
           ],
-          "correct": 0,
-          "answer": "Radius is \\(r = \\frac{s(x)}{2}\\). Semicircle area is \\(\\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi (\\frac{s}{2})^2 = \\frac{\\pi}{8} s^2\\).",
-          "explanation": "Radius is \\(r = \\frac{s(x)}{2}\\). Semicircle area is \\(\\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi (\\frac{s}{2})^2 = \\frac{\\pi}{8} s^2\\)."
+          "correct": 3,
+          "answer": "Subinterval widths are \\(2, 2, 3\\). The left Riemann sum is \\(25\\).",
+          "explanation": "Radius is \\(r = \\frac{s(x)}{2}\\). Semicircle area is \\(\\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi (\\frac{s}{2})^2 = \\frac{\\pi}{8} s^2\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Values of Continuous Function f on [0, 7]",
+            "headers": [
+              "\\(x\\)",
+              "0",
+              "2",
+              "4",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "2",
+                "6",
+                "3",
+                "10"
+              ]
+            ]
+          }
         },
         {
           "q": "If cross-sections are equilateral triangles with side length \\(s(x)\\), what is the cross-sectional area formula?",
@@ -430,19 +674,50 @@
           "explanation": "Both methods give the same volume for the same solid."
         },
         {
-          "q": "Washer method: volume when \\(R(x)\\) is outer and \\(r(x)\\) inner radius:",
+          "q": "Riemann Plot (aquifer recharge curve #522): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "\\(\\pi\\int(R-r)^2dx\\)",
-            "\\(\\pi\\int(R^2-r^2)dx\\)",
-            "\\(2\\pi\\int(R-r)dx\\)",
-            "\\(\\pi\\int R^2dx-\\pi\\int r^2dx\\) (same)"
+            "\\(14\\)",
+            "\\(6\\)",
+            "\\(10\\)",
+            "\\(12\\)"
           ],
-          "correct": 3,
-          "answer": "Applying Applications of Integration principles, Washer: \\(\\pi\\int(R^2-r^2)dx\\). Therefore, the verified correct option is \\(\\pi\\int R^2dx-\\pi\\int r^2dx\\) (same).",
-          "explanation": "Applying Applications of Integration principles, Washer: \\(\\pi\\int(R^2-r^2)dx\\). Therefore, the verified correct option is \\(\\pi\\int R^2dx-\\pi\\int r^2dx\\) (same)."
+          "correct": 2,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
+          "explanation": "Applying Applications of Integration principles, Washer: \\(\\pi\\int(R^2-r^2)dx\\). Therefore, the verified correct option is \\(\\pi\\int R^2dx-\\pi\\int r^2dx\\) (same).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #522)"
+          }
         },
         {
           "q": "Volume of cone: radius \\(r\\), height \\(h\\), using disc method:",
@@ -475,19 +750,39 @@
           "explanation": "Applying Multiple Integrals principles, \\(V=(4\\pi/3)(2^3-1^3)=28\\pi/3\\). Therefore, the verified correct option is \\(4\\pi(8-1)/3=28\\pi/3\\)."
         },
         {
-          "q": "Use spherical coordinates to find the volume of the first-octant part of the ball \\(x^{2} + y^{2} + z^{2} \\leq 16\\).",
+          "q": "During a calculus diagnostic assessment, Using the three subintervals indicated by the table shown, compute the left Riemann sum approximation to \\(\\int_0^{9} f(x)\\,dx\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "\\(\\frac{256 \\pi}{3}\\)",
-            "\\(\\frac{64 \\pi}{3}\\)",
-            "\\(\\frac{32 \\pi}{3}\\)",
-            "\\(\\frac{16 \\pi}{3}\\)"
+            "\\(88\\)",
+            "\\(67\\)",
+            "\\(-67\\)",
+            "\\(91\\)"
           ],
-          "correct": 2,
-          "answer": "\\(dV=\\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\); integrating over the region gives \\(\\frac{1}{8}\\cdot\\frac{4}{3}\\pi(4)^3=\\frac{32 \\pi}{3}\\).",
-          "explanation": "\\(dV=\\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\); integrating over the region gives \\(\\frac{1}{8}\\cdot\\frac{4}{3}\\pi(4)^3=\\frac{32 \\pi}{3}\\)."
+          "correct": 1,
+          "answer": "Subinterval widths are \\(2, 4, 3\\). The left Riemann sum is \\(67\\).",
+          "explanation": "\\(dV=\\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\); integrating over the region gives \\(\\frac{1}{8}\\cdot\\frac{4}{3}\\pi(4)^3=\\frac{32 \\pi}{3}\\).",
+          "figure": {
+            "type": "table",
+            "caption": "Values of Continuous Function f on [0, 9]",
+            "headers": [
+              "\\(x\\)",
+              "0",
+              "2",
+              "6",
+              "9"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "4",
+                "8",
+                "9",
+                "7"
+              ]
+            ]
+          }
         }
       ]
     },
@@ -543,20 +838,51 @@
           "cross_lesson": "3.01 The Chain Rule"
         },
         {
-          "q": "Centre of mass of lamina \\(D=[0,1]\\times[0,1]\\) with density \\(\\delta=xy\\):",
+          "q": "Riemann Plot (chemical titration run #524): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "\\((1/2,1/2)\\)",
-            "\\((2/3,2/3)\\)",
-            "\\((3/4,3/4)\\)",
-            "\\((1,1)\\)"
+            "\\(22\\)",
+            "\\(34\\)",
+            "\\(18\\)",
+            "\\(28\\)"
           ],
-          "correct": 1,
-          "answer": "\\(m=\\int_0^1\\int_0^1 xy\\,dy\\,dx=1/4\\); \\(M_y=\\int_0^1\\int_0^1 x^2y\\,dy\\,dx=1/6\\); \\(\\bar{x}=(1/6)/(1/4)=2/3\\); similarly \\(\\bar{y}=2/3\\).",
+          "correct": 0,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).",
           "explanation": "\\(m=\\int_0^1\\int_0^1 xy\\,dy\\,dx=1/4\\); \\(M_y=\\int_0^1\\int_0^1 x^2y\\,dy\\,dx=1/6\\); \\(\\bar{x}=(1/6)/(1/4)=2/3\\); similarly \\(\\bar{y}=2/3\\).",
-          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions"
+          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "3*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #524)"
+          }
         },
         {
           "q": "Use polar coordinates to evaluate \\(\\iint_R \\left(x^{2} + y^{2}\\right)^{3}\\,dA\\), where \\(R\\) is the disk \\(x^{2} + y^{2} \\leq 9\\).",
@@ -591,20 +917,40 @@
           "cross_lesson": "4.02 Linear Approximation and L'Hôpital's Rule"
         },
         {
-          "q": "Triple integral \\(\\iiint_V 1\\,dV\\) gives:",
+          "q": "For a real-valued relationship on its natural domain, Using the three subintervals indicated by the table shown, compute the left Riemann sum approximation to \\(\\int_0^{8} f(x)\\,dx\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "volume of \\(V\\)",
-            "0",
-            "surface area",
-            "1"
+            "\\(66\\)",
+            "\\(-48\\)",
+            "\\(69\\)",
+            "\\(48\\)"
           ],
-          "correct": 0,
-          "answer": "Applying Multiple Integrals principles, Triple integral of 1 = volume. Therefore, the verified correct option is volume of \\(V\\).",
+          "correct": 3,
+          "answer": "Subinterval widths are \\(2, 3, 3\\). The left Riemann sum is \\(48\\).",
           "explanation": "Applying Multiple Integrals principles, Triple integral of 1 = volume. Therefore, the verified correct option is volume of \\(V\\).",
-          "cross_lesson": "5.01 Extrema and the Mean Value Theorem"
+          "cross_lesson": "5.01 Extrema and the Mean Value Theorem",
+          "figure": {
+            "type": "table",
+            "caption": "Values of Continuous Function f on [0, 8]",
+            "headers": [
+              "\\(x\\)",
+              "0",
+              "2",
+              "5",
+              "8"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "6",
+                "4",
+                "8",
+                "9"
+              ]
+            ]
+          }
         },
         {
           "q": "Use polar coordinates to evaluate \\(\\iint_R \\sqrt{x^{2} + y^{2}}\\,dA\\), where \\(R\\) is the annulus \\(1\\leq x^2+y^2\\leq 4\\).",

@@ -41,12 +41,34 @@
           "explanation": "\\(\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n=1+x+x^2+x^3+\\cdots\\), valid for \\(|x|<1\\), i.e. interval of convergence \\((-1,1)\\)."
         },
         {
-          "q": "Use the geometric series for \\(\\frac{1}{1-x}\\) to find a power series for \\(\\frac{1}{1+x^2}\\).",
+          "q": "In solar array output polar analysis #244, consider the polar rose \\(r(\\theta) = 2\\sin(2\\theta)\\) for \\(0 \\le \\theta \\le 2\\pi\\), graphed on the polar grid above.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Representing functions as power series",
-          "answer": "Substitute \\(x\\rightarrow-x^2\\): \\(\\frac{1}{1-(-x^2)}=\\frac{1}{1+x^2}=\\sum_{n=0}^{\\infty}(-x^2)^n=\\sum_{n=0}^{\\infty}(-1)^nx^{2n}=1-x^2+x^4-x^6+\\cdots\\).",
-          "explanation": "Substitute \\(x\\rightarrow-x^2\\): \\(\\frac{1}{1-(-x^2)}=\\frac{1}{1+x^2}=\\sum_{n=0}^{\\infty}(-x^2)^n=\\sum_{n=0}^{\\infty}(-1)^nx^{2n}=1-x^2+x^4-x^6+\\cdots\\)."
+          "answer": "(a) \\(r'(0) = 4\\cos(0) = 4\\). (b) At \\(\\theta=0\\), \\(x'(0) = r'(0)\\cos 0 - r(0)\\sin 0 = 4\\). (c) \\(A = \\frac{1}{2}\\int_0^{\\pi/2} 4\\sin^2(2\\theta)\\,d\\theta = \\frac{4\\pi}{8}\\), so \\(\\frac{A}{\\pi} = \\frac{1}{2}\\). (d) At \\(\\theta = \\pi/4\\), \\(r'(\\pi/4)=0\\) gives \\(\\frac{dy}{dx} = \\frac{r\\cos(\\pi/4)}{-r\\sin(\\pi/4)} = -1\\).",
+          "explanation": "(a) \\(r'(0) = 4\\cos(0) = 4\\). (b) At \\(\\theta=0\\), \\(x'(0) = r'(0)\\cos 0 - r(0)\\sin 0 = 4\\). (c) \\(A = \\frac{1}{2}\\int_0^{\\pi/2} 4\\sin^2(2\\theta)\\,d\\theta = \\frac{4\\pi}{8}\\), so \\(\\frac{A}{\\pi} = \\frac{1}{2}\\). (d) At \\(\\theta = \\pi/4\\), \\(r'(\\pi/4)=0\\) gives \\(\\frac{dy}{dx} = \\frac{r\\cos(\\pi/4)}{-r\\sin(\\pi/4)} = -1\\).",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "2*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 2sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 3,
+            "thetaStepDeg": 30,
+            "pts": [
+              {
+                "r": 2,
+                "theta": 0.7853981633974483,
+                "label": "(2, π/4)"
+              }
+            ],
+            "caption": "Polar rose r = 2sin(2θ) (Model #244)"
+          }
         },
         {
           "q": "Using \\(\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n\\), find a power series for \\(\\frac{1}{(1-x)^2}\\) by differentiating term by term.",
@@ -65,12 +87,31 @@
           "explanation": "\\(\\tan^{-1}x=\\int\\frac{1}{1+x^2}\\,dx=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n+1}}{2n+1}+C\\). Since \\(\\tan^{-1}0=0\\), \\(C=0\\): \\(\\tan^{-1}x=x-\\frac{x^3}{3}+\\frac{x^5}{5}-\\cdots\\)."
         },
         {
-          "q": "Find the radius and interval of convergence of \\(\\sum_{n=0}^{\\infty}n!\\,x^n\\).",
+          "q": "BC Series Table (chemical titration run #1064): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "More radius/interval of convergence practice",
-          "answer": "\\(\\lim_{n\\rightarrow\\infty}\\left|\\frac{(n+1)!x^{n+1}}{n!x^n}\\right|=\\lim_{n\\rightarrow\\infty}(n+1)|x|=\\infty\\) for any \\(x\\neq0\\). Converges only at \\(x=0\\): \\(R=0\\), interval \\(\\{0\\}\\).",
-          "explanation": "\\(\\lim_{n\\rightarrow\\infty}\\left|\\frac{(n+1)!x^{n+1}}{n!x^n}\\right|=\\lim_{n\\rightarrow\\infty}(n+1)|x|=\\infty\\) for any \\(x\\neq0\\). Converges only at \\(x=0\\): \\(R=0\\), interval \\(\\{0\\}\\)."
+          "answer": "\\(P_2(x) = 1 + 3x + \\frac{12}{2!}x^2\\), so \\(P_2(1) = 1 + 3 + 6 = 10\\).",
+          "explanation": "\\(P_2(x) = 1 + 3x + \\frac{12}{2!}x^2\\), so \\(P_2(1) = 1 + 3 + 6 = 10\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "3",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #1064)"
+          }
         }
       ]
     },
@@ -106,12 +147,34 @@
           "explanation": "Differentiating or integrating a power series term by term does not change its radius of convergence \\(R\\) (though convergence AT the endpoints \\(x=\\pm R\\) may change)."
         },
         {
-          "q": "Given that \\(\\sum_{n=1}^{\\infty}\\frac{x^n}{n}\\) has radius of convergence \\(R=1\\), state the radius of convergence of its derivative \\(\\sum_{n=1}^{\\infty}x^{n-1}\\) without recomputing.",
+          "q": "In aquifer recharge curve polar analysis #246, consider the polar rose \\(r(\\theta) = 4\\sin(2\\theta)\\) for \\(0 \\le \\theta \\le 2\\pi\\), graphed on the polar grid above.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Term-by-term operations preserve the radius of convergence",
-          "answer": "By the term-by-term differentiation theorem, the radius of convergence is unchanged: \\(R=1\\).",
-          "explanation": "By the term-by-term differentiation theorem, the radius of convergence is unchanged: \\(R=1\\)."
+          "answer": "(a) \\(r'(0) = 8\\cos(0) = 8\\). (b) At \\(\\theta=0\\), \\(x'(0) = r'(0)\\cos 0 - r(0)\\sin 0 = 8\\). (c) \\(A = \\frac{1}{2}\\int_0^{\\pi/2} 16\\sin^2(2\\theta)\\,d\\theta = \\frac{16\\pi}{8}\\), so \\(\\frac{A}{\\pi} = 2\\). (d) At \\(\\theta = \\pi/4\\), \\(r'(\\pi/4)=0\\) gives \\(\\frac{dy}{dx} = \\frac{r\\cos(\\pi/4)}{-r\\sin(\\pi/4)} = -1\\).",
+          "explanation": "(a) \\(r'(0) = 8\\cos(0) = 8\\). (b) At \\(\\theta=0\\), \\(x'(0) = r'(0)\\cos 0 - r(0)\\sin 0 = 8\\). (c) \\(A = \\frac{1}{2}\\int_0^{\\pi/2} 16\\sin^2(2\\theta)\\,d\\theta = \\frac{16\\pi}{8}\\), so \\(\\frac{A}{\\pi} = 2\\). (d) At \\(\\theta = \\pi/4\\), \\(r'(\\pi/4)=0\\) gives \\(\\frac{dy}{dx} = \\frac{r\\cos(\\pi/4)}{-r\\sin(\\pi/4)} = -1\\).",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "4*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 4sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 5,
+            "thetaStepDeg": 30,
+            "pts": [
+              {
+                "r": 4,
+                "theta": 0.7853981633974483,
+                "label": "(4, π/4)"
+              }
+            ],
+            "caption": "Polar rose r = 4sin(2θ) (Model #246)"
+          }
         },
         {
           "q": "Using \\(\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n\\) and \\(\\frac{1}{1+x}=\\sum_{n=0}^{\\infty}(-1)^nx^n\\), find the power series for \\(\\frac{2}{1-x^2}\\) by adding the two series.",
@@ -130,12 +193,31 @@
           "explanation": "At \\(x=\\frac{1}{2}\\): \\(\\sum\\frac{2^n(1/2)^n}{n^2}=\\sum\\frac{1}{n^2}\\), converges (p-series, \\(p=2\\)). At \\(x=-\\frac{1}{2}\\): \\(\\sum\\frac{(-1)^n}{n^2}\\), converges absolutely. Interval: \\(\\left[-\\frac{1}{2},\\frac{1}{2}\\right]\\)."
         },
         {
-          "q": "Using the power series \\(\\tan^{-1}x=x-\\frac{x^3}{3}+\\frac{x^5}{5}-\\cdots\\) found earlier, estimate \\(\\tan^{-1}(0.5)\\) using the first three terms.",
+          "q": "BC Series Table (reservoir inflow #1068): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Using a power series to approximate a definite integral",
-          "answer": "\\(\\tan^{-1}(0.5)\\approx0.5-\\frac{(0.5)^3}{3}+\\frac{(0.5)^5}{5}=0.5-0.04167+0.00625\\approx0.4646\\) (true value \\(\\approx0.4636\\), a close match).",
-          "explanation": "\\(\\tan^{-1}(0.5)\\approx0.5-\\frac{(0.5)^3}{3}+\\frac{(0.5)^5}{5}=0.5-0.04167+0.00625\\approx0.4646\\) (true value \\(\\approx0.4636\\), a close match)."
+          "answer": "\\(P_2(x) = 1 + 3x + \\frac{10}{2!}x^2\\), so \\(P_2(1) = 1 + 3 + 5 = 9\\).",
+          "explanation": "\\(P_2(x) = 1 + 3x + \\frac{10}{2!}x^2\\), so \\(P_2(1) = 1 + 3 + 5 = 9\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "3",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #1068)"
+          }
         },
         {
           "q": "Using the binomial series for \\((1 - x^2)^{-1/2}\\), derive the Maclaurin series expansion for \\(f(x) = \\arcsin x\\) up to and including the \\(x^5\\) term. State its radius of convergence.",
@@ -196,16 +278,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Find \\( \\displaystyle\\lim_{n\\to\\infty} \\dfrac{4n+3}{2n+1} \\).",
-          "answer": "**Answer:** B. Divide numerator and denominator by \\(n\\): \\(\\dfrac{4+3/n}{2+1/n}\\to\\dfrac{4}{2}=2\\) as \\(n\\to\\infty.\\)",
+          "q": "BC Series Table (autonomous rover motion #1070): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
+          "answer": "\\(P_2(x) = 1 + 5x + \\frac{4}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 2 = 8\\).",
           "explanation": "Divide numerator and denominator by \\(n\\): \\(\\dfrac{4+3/n}{2+1/n}\\to\\dfrac{4}{2}=2\\) as \\(n\\to\\infty.\\)",
           "choices": [
-            "\\(\\infty\\)",
-            "2",
-            "3",
-            "0"
+            "\\(10\\)",
+            "\\(7\\)",
+            "\\(8\\)",
+            "\\(12\\)"
           ],
-          "correct": 1
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "5",
+                "4"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #1070)"
+          }
         },
         {
           "q": "Level 2 · Medium Evaluate the indefinite integral using partial fraction decomposition: \\(\\int \\frac{5x - 3}{x^2 - 2x - 3}\\,dx\\)",
@@ -237,19 +338,49 @@
           "explanation": "Ratio Test gives \\(\\left|x+7\\right|<3\\), so \\(-10<x<-4\\) (\\(R=3\\)). Testing endpoints: the terms don't approach \\(0\\) at either endpoint, so both diverge (by the \\(n\\)th-term test). Interval: \\((-10,-4)\\)."
         },
         {
-          "q": "Using \\(\\frac{1}{1-3x}=\\sum_{n=0}^{\\infty}3^nx^n\\), find the coefficient of \\(x^{3}\\).",
+          "q": "Derivative Curve (battery charging session #1073): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Finding the interval of convergence (testing endpoints)",
           "choices": [
-            "\\(27\\)",
-            "\\(26\\)",
-            "\\(81\\)",
-            "\\(9\\)"
+            "\\(14\\)",
+            "\\(12\\)",
+            "\\(6\\)",
+            "\\(15\\)"
           ],
-          "correct": 0,
-          "answer": "The coefficient of \\(x^n\\) is \\(3^n\\), so the coefficient of \\(x^{3}\\) is \\(3^{3}=27\\).",
-          "explanation": "The coefficient of \\(x^n\\) is \\(3^n\\), so the coefficient of \\(x^{3}\\) is \\(3^{3}=27\\)."
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 2\\) is \\(6(2) = 12\\).",
+          "explanation": "The coefficient of \\(x^n\\) is \\(3^n\\), so the coefficient of \\(x^{3}\\) is \\(3^{3}=27\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              29
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 12,
+                "label": "(2, 12)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 3x² with marked point (#1073)"
+          }
         },
         {
           "q": "Integrating \\(\\frac{1}{1+x^{2}}=\\sum_{k=0}^{\\infty}(-1)^kx^{2k}\\) term-by-term gives the Maclaurin series for \\(\\arctan x\\). Find the coefficient of \\(x^{21}\\).",
@@ -282,19 +413,38 @@
           "explanation": "\\(\\frac{d}{dx}\\sum x^k=\\sum kx^{k-1}=\\frac{1}{(1-x)^2}=\\sum_{n=0}^\\infty(n+1)x^n\\). Coefficient of \\(x^{3}\\) is \\(3+1=4.\\)"
         },
         {
-          "q": "Interval of convergence of \\(\\sum\\frac{(-3)^n(x-2)^n}{\\sqrt{n}}\\): centre, radius, and endpoints:",
+          "q": "BC Series Table (aquifer recharge curve #1074): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "More radius/interval of convergence practice",
           "choices": [
-            "\\(R=1/3\\), interval \\((5/3,7/3]\\)",
-            "\\(R=1/3\\), interval \\([5/3,7/3)\\)",
-            "\\(R=1/3\\), interval \\([5/3,7/3]\\)",
-            "\\(R=3\\), interval \\((-1,5]\\)"
+            "\\(18\\)",
+            "\\(11\\)",
+            "\\(12\\)",
+            "\\(16\\)"
           ],
-          "correct": 0,
-          "answer": "\\(|{-3}(x-2)|<1\\Rightarrow|x-2|<1/3\\). At \\(x=7/3\\): \\(\\sum(-1)^n/\\sqrt{n}\\) converges (Leibniz). At \\(x=5/3\\): \\(\\sum 1/\\sqrt{n}\\) diverges.",
-          "explanation": "\\(|{-3}(x-2)|<1\\Rightarrow|x-2|<1/3\\). At \\(x=7/3\\): \\(\\sum(-1)^n/\\sqrt{n}\\) converges (Leibniz). At \\(x=5/3\\): \\(\\sum 1/\\sqrt{n}\\) diverges."
+          "correct": 2,
+          "answer": "\\(P_2(x) = 1 + 5x + \\frac{12}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 6 = 12\\).",
+          "explanation": "\\(|{-3}(x-2)|<1\\Rightarrow|x-2|<1/3\\). At \\(x=7/3\\): \\(\\sum(-1)^n/\\sqrt{n}\\) converges (Leibniz). At \\(x=5/3\\): \\(\\sum 1/\\sqrt{n}\\) diverges.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "5",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #1074)"
+          }
         },
         {
           "q": "The function \\(f(x)\\) is represented by the power series \\(f(x) = \\sum_{n=0}^{\\infty} a_n (x-c)^n\\). It is known that \\(f(0) = 2\\), \\(f'(0) = 3\\), and \\(f''(0) = 12\\). If the Taylor series expansion of \\(f(x)\\) around \\(x=0\\) is given by \\(f(x) = 2 + 3x + bx^2 + \\dots\\), find the value of the coefficient \\(b\\) and the center \\(c\\).",
@@ -327,19 +477,34 @@
           "explanation": "The Maclaurin series for \\(e^u\\) is given by \\(\\sum_{n=0}^{\\infty} \\frac{u^n}{n!} = 1 + u + \\frac{u^2}{2!} + \\frac{u^3}{3!} + \\dots\\). For the function \\(f(x) = e^{kx}\\), we substitute \\(u = kx\\) into the Maclaurin series: \\(f(x) = e^{kx} = 1 + (kx) + \\frac{(kx)^2}{2!} + \\frac{(kx)^3}{3!} + \\dots\\) \\(f(x) = 1 + kx + \\frac{k^2 x^2}{2} + \\frac{k^3 x^3}{6} + \\dots\\) The coefficient of the \\(x^3\\) term is \\(\\frac{k^3}{6}\\). We are given that the coefficient of the \\(x^3\\) term is \\(\\frac{4}{3}\\). Therefore, we can set up the equation: \\(\\frac{k^3}{6} = \\frac{4}{3}\\) To solve for \\(k\\), we multiply both sides by 6: \\(k^3 = \\frac{4}{3} \\times 6\\) \\(k^3 = 8\\) Taking the cube root of both sides: \\(k = \\sqrt[3]{8}\\) \\(k = 2\\) Thus, the value of the constant \\(k\\) is 2."
         },
         {
-          "q": "Consider the function \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}\\). What is the value of the coefficient of the \\(x^3\\) term in the Maclaurin series for \\(f(x)\\)?",
+          "q": "Polar Graph (orbital telemetry pass #1077): The polar rose \\(r = 4\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Building a new series by combining known ones",
           "choices": [
-            "\\(\\frac{1}{3!}\\)",
-            "\\(\\frac{1}{3}\\)",
-            "\\(\\frac{1}{6}\\)",
-            "\\(1\\)"
+            "\\(16\\pi\\)",
+            "\\(8\\pi\\)",
+            "\\(19\\pi\\)",
+            "\\(11\\)"
           ],
-          "correct": 2,
-          "answer": "The Maclaurin series for a function \\(f(x)\\) is given by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!} x^n\\). The given function is \\(f(x) = e^x\\), which has the known Maclaurin series \\(e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots\\). The coefficient of the \\(x^3\\) term is \\(\\frac{1}{3!}\\). Since \\(3! = 3 \\times 2 \\times 1 = 6\\), the coefficient is \\(\\frac{1}{6}\\).",
-          "explanation": "The Maclaurin series for a function \\(f(x)\\) is given by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!} x^n\\). The given function is \\(f(x) = e^x\\), which has the known Maclaurin series \\(e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots\\). The coefficient of the \\(x^3\\) term is \\(\\frac{1}{3!}\\). Since \\(3! = 3 \\times 2 \\times 1 = 6\\), the coefficient is \\(\\frac{1}{6}\\)."
+          "correct": 1,
+          "answer": "Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 16\\sin^2(2\\theta)\\,d\\theta = 8\\pi\\).",
+          "explanation": "The Maclaurin series for a function \\(f(x)\\) is given by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!} x^n\\). The given function is \\(f(x) = e^x\\), which has the known Maclaurin series \\(e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots\\). The coefficient of the \\(x^3\\) term is \\(\\frac{1}{3!}\\). Since \\(3! = 3 \\times 2 \\times 1 = 6\\), the coefficient is \\(\\frac{1}{6}\\).",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "4*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 4sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 5,
+            "thetaStepDeg": 30,
+            "caption": "Four-petal polar rose (Exhibit #1077)"
+          }
         }
       ]
     },
@@ -375,19 +540,38 @@
           "explanation": "We use the Ratio Test to find the radius of convergence. Let \\(a_n = \\frac{(x-2)^n}{n^2 3^n}\\). Then, \\(L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(x-2)^{n+1}}{(n+1)^2 3^{n+1}} \\cdot \\frac{n^2 3^n}{(x-2)^n} \\right|\\) \\(L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{x-2}{3} \\cdot \\frac{n^2}{(n+1)^2} \\right| = \\left| \\frac{x-2}{3} \\right| \\lim_{n\\rightarrow\\infty} \\left( \\frac{n}{n+1} \\right)^2 = \\left| \\frac{x-2}{3} \\right| \\cdot 1\\) For convergence, we need \\(L 1\\). At \\(x = -1\\): The series becomes \\(\\sum_{n=1}^{\\infty} \\frac{(-1-2)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n 3^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}\\). This is an alternating series. We can check for absolute convergence by considering \\(\\sum_{n=1}^{\\infty} \\left| \\frac{(-1)^n}{n^2} \\right| = \\sum_{n=1}^{\\infty} \\frac{1}{n^2}\\), which we already established converges. Therefore, the series converges absolutely at \\(x=-1\\). Since the series converges at both endpoints, the interval of convergence is \\([-1, 5]\\). The radius of convergence is 3. Therefore, the statement that the radius of convergence is 3 and the series converges at both endpoints is true."
         },
         {
-          "q": "Term-by-term differentiation is valid inside the radius of convergence. The derivative of \\(\\sum_{n=0}^\\infty x^n/(n+1)\\) is:",
+          "q": "BC Series Table (hydroelectric sluice #1078): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Finding the radius of convergence",
           "choices": [
-            "\\(\\sum x^n/n\\)",
-            "\\(\\sum nx^{n-1}/(n+1)\\)",
-            "\\(1/(1-x)\\)",
-            "\\(\\ln(1-x)\\)"
+            "\\(16\\)",
+            "\\(10\\)",
+            "\\(11\\)",
+            "\\(15\\)"
           ],
           "correct": 2,
-          "answer": "Recognise \\(\\int\\frac{1}{1-x}dx=-\\ln(1-x)=\\sum x^n/(n+1)\\); differentiate \\(\\rightarrow1/(1-x)\\).",
-          "explanation": "Recognise \\(\\int\\frac{1}{1-x}dx=-\\ln(1-x)=\\sum x^n/(n+1)\\); differentiate \\(\\rightarrow1/(1-x)\\)."
+          "answer": "\\(P_2(x) = 1 + 5x + \\frac{10}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 5 = 11\\).",
+          "explanation": "Recognise \\(\\int\\frac{1}{1-x}dx=-\\ln(1-x)=\\sum x^n/(n+1)\\); differentiate \\(\\rightarrow1/(1-x)\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "5",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #1078)"
+          }
         },
         {
           "q": "Consider the power series \\(\\sum_{n=0}^{\\infty} c_n (x-a)^n\\). If the radius of convergence is \\(R=3\\) and the center of the series is \\(a=2\\), which of the following intervals represents the values of \\(x\\) for which the series converges?",
@@ -420,19 +604,34 @@
           "explanation": "The Maclaurin series for \\(f(x)\\) is a Taylor series expansion around \\(x=0\\). We are given the series \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!}\\). Expanding this series, we get: For \\(n=0\\): \\(\\frac{(-1)^0 x^{2(0)}}{(2(0))!} = \\frac{1 \\cdot x^0}{0!} = \\frac{1}{1} = 1\\) For \\(n=1\\): \\(\\frac{(-1)^1 x^{2(1)}}{(2(1))!} = \\frac{-1 \\cdot x^2}{2!} = -\\frac{x^2}{2}\\) For \\(n=2\\): \\(\\frac{(-1)^2 x^{2(2)}}{(2(2))!} = \\frac{1 \\cdot x^4}{4!} = \\frac{x^4}{24}\\) So, \\(f(x) = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\cdots\\). This is the well-known Maclaurin series for \\(\\cos(x)\\). Therefore, the given series is the Maclaurin series for \\(\\cos(x)\\)."
         },
         {
-          "q": "What is the Maclaurin series expansion for \\(f(x) = e^{3x}\\)?",
+          "q": "Polar Graph (bio-reactor temperature #1081): The polar rose \\(r = 3\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Differentiating and integrating power series",
           "choices": [
-            "\\(\\sum_{n=1}^{\\infty} \\frac{(3x)^n}{n}\\)",
-            "\\(\\sum_{n=0}^{\\infty} (-1)^n \\frac{(3x)^n}{n!}\\)",
-            "\\(\\sum_{n=0}^{\\infty} \\frac{3x^n}{n!}\\)",
-            "\\(\\sum_{n=0}^{\\infty} \\frac{(3x)^n}{n!}\\)"
+            "\\(9\\pi\\)",
+            "\\(\\frac{9\\pi}{2}\\)",
+            "\\(6\\pi\\)",
+            "\\(12\\pi\\)"
           ],
-          "correct": 3,
-          "answer": "Substitute \\(u = 3x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(3x)^n}{n!}\\).",
-          "explanation": "Substitute \\(u = 3x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(3x)^n}{n!}\\)."
+          "correct": 1,
+          "answer": "Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 9\\sin^2(2\\theta)\\,d\\theta = \\frac{9}{2}\\pi\\).",
+          "explanation": "Substitute \\(u = 3x\\) into \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!}\\) to obtain \\(\\sum_{n=0}^\\infty \\frac{(3x)^n}{n!}\\).",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "3*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 3sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 4,
+            "thetaStepDeg": 30,
+            "caption": "Four-petal polar rose (Exhibit #1081)"
+          }
         },
         {
           "q": "Find the coefficient of \\(x^{4}\\) in the Maclaurin series of \\(e^{2x}\\).",
@@ -465,19 +664,38 @@
           "explanation": "Taylor coefficient formula: \\(\\frac{f^{(3)}(a)}{3!}=\\frac{4}{3!}=\\frac{2}{3}.\\)"
         },
         {
-          "q": "Maclaurin series for \\(\\sin x\\) is:",
+          "q": "BC Series Table (autonomous rover motion #1082): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Term-by-term operations preserve the radius of convergence",
           "choices": [
-            "\\(\\sum\\frac{x^{2n}}{(2n)!}\\)",
-            "\\(\\sum(-1)^n\\frac{x^{2n+1}}{(2n+1)!}\\)",
-            "\\(\\sum(-1)^n\\frac{x^{2n}}{(2n)!}\\)",
-            "\\(\\sum\\frac{x^n}{n!}\\)"
+            "\\(14\\)",
+            "\\(9\\)",
+            "\\(10\\)",
+            "\\(13\\)"
           ],
-          "correct": 1,
-          "answer": "\\(\\sin x=x-\\frac{x^3}{6}+\\frac{x^5}{120}-\\ldots\\)",
-          "explanation": "\\(\\sin x=x-\\frac{x^3}{6}+\\frac{x^5}{120}-\\ldots\\)"
+          "correct": 2,
+          "answer": "\\(P_2(x) = 1 + 5x + \\frac{8}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 4 = 10\\).",
+          "explanation": "\\(\\sin x=x-\\frac{x^3}{6}+\\frac{x^5}{120}-\\ldots\\)",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Order \\(n\\)",
+              "\\(0\\)",
+              "\\(1\\)",
+              "\\(2\\)"
+            ],
+            "rows": [
+              [
+                "\\(f^{(n)}(0)\\)",
+                "1",
+                "5",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Maclaurin derivatives at x = 0 (Table #1082)"
+          }
         }
       ]
     },
@@ -514,20 +732,51 @@
           "correct": 2
         },
         {
-          "q": "For a power series \\(\\sum c_n x^n\\), the radius of convergence \\(R\\) satisfies \\(1/R=\\)",
+          "q": "Riemann Plot (coastal tide flux #1083): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Using a power series to approximate a definite integral",
           "choices": [
-            "\\(\\limsup|c_n|^{1/n}\\)",
-            "\\(\\limsup|c_{n+1}/c_n|\\)",
-            "\\(\\sup|c_n|\\)",
-            "\\(|c_0|\\)"
+            "\\(14\\)",
+            "\\(6\\)",
+            "\\(12\\)",
+            "\\(10\\)"
           ],
-          "correct": 0,
-          "answer": "Applying Convergence Tests and Power Series principles, Cauchy-Hadamard formula. Therefore, the verified correct option is \\(\\limsup|c_n|^{1/n}\\).",
+          "correct": 3,
+          "answer": "Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).",
           "explanation": "Applying Convergence Tests and Power Series principles, Cauchy-Hadamard formula. Therefore, the verified correct option is \\(\\limsup|c_n|^{1/n}\\).",
-          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests"
+          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann approximation on [0, 4] (n = 4, #1083)"
+          }
         },
         {
           "q": "Using the power series \\(1/(1-x)=\\sum x^n\\), find \\(\\sum n x^{n-1}=\\)",
@@ -562,20 +811,39 @@
           "cross_lesson": "1.01 Integration by Parts"
         },
         {
-          "q": "A power series \\(\\sum c_n x^n\\) with radius of convergence \\(R\\) converges absolutely for:",
+          "q": "Rate Table (solar array output #1084): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Representing functions as power series",
           "choices": [
-            "no \\(x\\)",
-            "all \\(x\\)",
-            "|x|<R",
-            "\\(|x|>R\\)"
+            "\\(34\\)",
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(37\\)"
           ],
-          "correct": 2,
-          "answer": "By definition of the radius of convergence, the series converges absolutely inside \\((-R,R)\\) and diverges outside \\([-R,R]\\).",
+          "correct": 0,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
           "explanation": "By definition of the radius of convergence, the series converges absolutely inside \\((-R,R)\\) and diverges outside \\([-R,R]\\).",
-          "cross_lesson": "1.02 Partial Fractions and Improper Integrals"
+          "cross_lesson": "1.02 Partial Fractions and Improper Integrals",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #1084)"
+          }
         },
         {
           "q": "Find radius of convergence: \\(\\sum_{n=1}^\\infty\\frac{(2n)!}{(n!)^2}x^n\\):",

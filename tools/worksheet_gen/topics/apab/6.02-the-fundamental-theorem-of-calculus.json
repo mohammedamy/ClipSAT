@@ -41,12 +41,69 @@
           "explanation": "\\(g'(x)=e^{-x^2}\\cdot\\frac{d}{dx}(x^2)=2xe^{-x^2}\\)."
         },
         {
-          "q": "A particle's velocity is \\(v(t)=3-2t\\) (m/s). Let \\(s(t)=\\int_0^t v(\\tau)\\,d\\tau\\) be its displacement from \\(t=0\\). Find \\(s(4)\\) and interpret its meaning.",
+          "q": "In reservoir inflow College Board synthesis #84, the continuous function \\(f\\) on \\([0, 6]\\) consists of an upper semicircle of radius \\(2\\) centered at \\((2, 0)\\) on \\([0, 4]\\) and a line segment from \\((4, 0)\\) to \\((6, -4)\\), as shown. Define \\(g(x) = 3 + \\int_0^x f(t)\\,dt\\) for \\(0 \\le x \\le 6\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Interpreting accumulation functions",
-          "answer": "\\(s(4)=\\int_0^4(3-2\\tau)\\,d\\tau=[3\\tau-\\tau^2]_0^4=(12-16)-0=-4\\). This means the particle's net displacement from \\(t=0\\) to \\(t=4\\) is \\(-4\\) m (it ends up 4 m to the left/behind its starting point).",
-          "explanation": "\\(s(4)=\\int_0^4(3-2\\tau)\\,d\\tau=[3\\tau-\\tau^2]_0^4=(12-16)-0=-4\\). This means the particle's net displacement from \\(t=0\\) to \\(t=4\\) is \\(-4\\) m (it ends up 4 m to the left/behind its starting point)."
+          "answer": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 3 + \\frac{1}{2}\\pi(2^2) = 3 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (3+2\\pi) - \\frac{1}{2}(2)(4) = -1 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "explanation": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 3 + \\frac{1}{2}\\pi(2^2) = 3 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (3+2\\pi) - \\frac{1}{2}(2)(4) = -1 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -0.5,
+              6.5
+            ],
+            "yl": [
+              -4.5,
+              3.2
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 2,
+                "y": 2,
+                "label": "(2, 2)"
+              },
+              {
+                "x": 4,
+                "y": 0,
+                "label": "(4, 0)"
+              },
+              {
+                "x": 6,
+                "y": -4,
+                "label": "(6, -4)"
+              }
+            ],
+            "segments": [
+              {
+                "x1": 4,
+                "y1": 0,
+                "x2": 6,
+                "y2": -4,
+                "color": "#2563eb"
+              }
+            ],
+            "semicircles": [
+              {
+                "cx": 2,
+                "cy": 0,
+                "r": 2,
+                "upper": true,
+                "color": "#2563eb",
+                "shade": true
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "f(t)",
+            "caption": "Piecewise graph of f on [0, 6] with semicircle & line segment (FRQ #84)"
+          }
         },
         {
           "q": "Given the graph of \\(f\\) consists of straight-line segments with \\(f(0)=0\\), and \\(g(x)=\\int_0^x f(t)\\,dt\\), explain what feature of \\(g\\)'s graph occurs where \\(f\\) crosses the \\(x\\)-axis, and where \\(f\\) has a local max.",
@@ -65,12 +122,31 @@
           "explanation": "Average \\(=\\frac{1}{24}\\int_0^{24}\\left[70+10\\sin\\left(\\frac{\\pi t}{12}\\right)\\right]dt\\). The sine term integrates to \\(0\\) over a full period (\\(24\\) hours \\(=2\\) full cycles), so the average \\(=70°\\)."
         },
         {
-          "q": "Evaluate \\(\\int_0^1 2x(x^2+1)^3\\,dx\\) using \\(u=x^2+1\\).",
+          "q": "Rate Table (hydroelectric sluice #430): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Definite integrals with substitution-friendly integrands",
-          "answer": "\\(du=2x\\,dx\\). When \\(x=0\\), \\(u=1\\); when \\(x=1\\), \\(u=2\\). \\(\\int_1^2u^3\\,du=\\left[\\frac{u^4}{4}\\right]_1^2=\\frac{16}{4}-\\frac{1}{4}=\\frac{15}{4}\\).",
-          "explanation": "\\(du=2x\\,dx\\). When \\(x=0\\), \\(u=1\\); when \\(x=1\\), \\(u=2\\). \\(\\int_1^2u^3\\,du=\\left[\\frac{u^4}{4}\\right]_1^2=\\frac{16}{4}-\\frac{1}{4}=\\frac{15}{4}\\)."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #430)"
+          }
         }
       ]
     },
@@ -105,12 +181,69 @@
           }
         },
         {
-          "q": "Water flows into a tank at rate \\(r(t)=8-t\\) liters/minute for \\(0\\leq t\\leq8\\) (the rate decreases as the tank fills). Using FTC, find the total volume of water added during the first 6 minutes, and explain why the rate being zero at \\(t=8\\) is consistent with the tank reaching capacity.",
+          "q": "In autonomous rover motion College Board synthesis #86, the continuous function \\(f\\) on \\([0, 6]\\) consists of an upper semicircle of radius \\(2\\) centered at \\((2, 0)\\) on \\([0, 4]\\) and a line segment from \\((4, 0)\\) to \\((6, -4)\\), as shown. Define \\(g(x) = 5 + \\int_0^x f(t)\\,dt\\) for \\(0 \\le x \\le 6\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A capstone FTC application",
-          "answer": "Volume \\(=\\int_0^6(8-t)\\,dt=\\left[8t-\\frac{t^2}{2}\\right]_0^6=48-18=30\\) liters. Since \\(r(t)=8-t=0\\) at \\(t=8\\), the inflow rate drops to zero exactly when the tank presumably reaches capacity, consistent with the water level leveling off.",
-          "explanation": "Volume \\(=\\int_0^6(8-t)\\,dt=\\left[8t-\\frac{t^2}{2}\\right]_0^6=48-18=30\\) liters. Since \\(r(t)=8-t=0\\) at \\(t=8\\), the inflow rate drops to zero exactly when the tank presumably reaches capacity, consistent with the water level leveling off."
+          "answer": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 5 + \\frac{1}{2}\\pi(2^2) = 5 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (5+2\\pi) - \\frac{1}{2}(2)(4) = 1 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "explanation": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 5 + \\frac{1}{2}\\pi(2^2) = 5 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (5+2\\pi) - \\frac{1}{2}(2)(4) = 1 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -0.5,
+              6.5
+            ],
+            "yl": [
+              -4.5,
+              3.2
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 2,
+                "y": 2,
+                "label": "(2, 2)"
+              },
+              {
+                "x": 4,
+                "y": 0,
+                "label": "(4, 0)"
+              },
+              {
+                "x": 6,
+                "y": -4,
+                "label": "(6, -4)"
+              }
+            ],
+            "segments": [
+              {
+                "x1": 4,
+                "y1": 0,
+                "x2": 6,
+                "y2": -4,
+                "color": "#2563eb"
+              }
+            ],
+            "semicircles": [
+              {
+                "cx": 2,
+                "cy": 0,
+                "r": 2,
+                "upper": true,
+                "color": "#2563eb",
+                "shade": true
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "f(t)",
+            "caption": "Piecewise graph of f on [0, 6] with semicircle & line segment (FRQ #86)"
+          }
         },
         {
           "q": "Let \\(g(x)=\\int_3^{2x}\\ln(t+1)\\,dt\\). Find \\(g'(x)\\) using FTC Part 1 and the Chain Rule.",
@@ -129,12 +262,31 @@
           "explanation": "Average \\(=\\frac{1}{8}\\int_0^8(50+10t-t^2)\\,dt=\\frac{1}{8}\\left[50t+5t^2-\\frac{t^3}{3}\\right]_0^8=\\frac{1}{8}\\left(400+320-\\frac{512}{3}\\right)=\\frac{1}{8}\\left(\\frac{2160-512}{3}\\right)=\\frac{1648}{24}\\approx68.67\\) units/hour."
         },
         {
-          "q": "Level 2 · Medium Use Green's Theorem to evaluate \\(\\oint_C (3y\\,dx + 5x\\,dy)\\) where \\(C\\) is the counterclockwise circle \\(x^2 + y^2 = 4\\).",
+          "q": "Rate Table (autonomous rover motion #434): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Interpreting accumulation functions",
-          "answer": "Identify components: \\(P = 3y\\) and \\(Q = 5x\\). Compute partial derivatives: \\(\\frac{\\partial Q}{\\partial x} = 5\\) and \\(\\frac{\\partial P}{\\partial y} = 3\\). Apply Green's Theorem: \\(\\oint_C (3y\\,dx + 5x\\,dy) = \\iint_R \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right)\\,dA = \\iint_R (5 - 3)\\,dA = 2 \\iint_R dA.\\) The region \\(R\\) is a disk of radius \\(r = 2\\), so its area is \\(\\pi(2^2) = 4\\pi\\). Therefore, $2 \\iint_R dA = 2(4\\pi) = 8\\pi$.",
-          "explanation": "Identify components: \\(P = 3y\\) and \\(Q = 5x\\). Compute partial derivatives: \\(\\frac{\\partial Q}{\\partial x} = 5\\) and \\(\\frac{\\partial P}{\\partial y} = 3\\). Apply Green's Theorem: \\(\\oint_C (3y\\,dx + 5x\\,dy) = \\iint_R \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right)\\,dA = \\iint_R (5 - 3)\\,dA = 2 \\iint_R dA.\\) The region \\(R\\) is a disk of radius \\(r = 2\\), so its area is \\(\\pi(2^2) = 4\\pi\\). Therefore, $2 \\iint_R dA = 2(4\\pi) = 8\\pi$."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #434)"
+          }
         },
         {
           "q": "The table shows values of \\(g(x)\\). Using a left Riemann sum with 3 subintervals of equal width on \\([0,6]\\), approximate \\(\\int_0^6 g(x)\\,dx\\).",
@@ -163,13 +315,70 @@
           "correct": 0
         },
         {
-          "q": "Phone calls arrive at an emergency center according to a Poisson process with an average rate of 3 calls per minute. Find: (a) the probability that at least 2 calls arrive in a 1-minute period; (b) the probability that exactly 5 calls arrive in a 2-minute period.",
+          "q": "In solar array output College Board synthesis #88, the continuous function \\(f\\) on \\([0, 6]\\) consists of an upper semicircle of radius \\(2\\) centered at \\((2, 0)\\) on \\([0, 4]\\) and a line segment from \\((4, 0)\\) to \\((6, -4)\\), as shown. Define \\(g(x) = 7 + \\int_0^x f(t)\\,dt\\) for \\(0 \\le x \\le 6\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "The Mean Value Theorem for integrals",
           "cross_lesson": "8.01 Area Between Curves",
-          "answer": "(a) For 1 minute, \\(X \\sim \\mathrm{Po}(3)\\): \\(P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.\\) (b) For 2 minutes, the rate scales linearly: \\(\\lambda = 3 \\times 2 = 6\\), so \\(Y \\sim \\mathrm{Po}(6)\\): \\(P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.\\)",
-          "explanation": "(a) For 1 minute, \\(X \\sim \\mathrm{Po}(3)\\): \\(P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.\\) (b) For 2 minutes, the rate scales linearly: \\(\\lambda = 3 \\times 2 = 6\\), so \\(Y \\sim \\mathrm{Po}(6)\\): \\(P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.\\)"
+          "answer": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 7 + \\frac{1}{2}\\pi(2^2) = 7 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (7+2\\pi) - \\frac{1}{2}(2)(4) = 3 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "explanation": "(a) \\(g'(x) = f(x) \\ge 0\\) on \\([0,4]\\) and \\(\\le 0\\) on \\([4,6]\\), so max is \\(g(4) = 7 + \\frac{1}{2}\\pi(2^2) = 7 + 2\\pi\\). (b) \\(g'(2) = f(2) = 2\\) and \\(g''(5) = f'(5) = -2\\), summing to \\(0\\). (c) \\(g(6) = (7+2\\pi) - \\frac{1}{2}(2)(4) = 3 + 2\\pi\\). (d) \\(f\\) shifts from increasing to decreasing at \\(x = 2\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -0.5,
+              6.5
+            ],
+            "yl": [
+              -4.5,
+              3.2
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 2,
+                "y": 2,
+                "label": "(2, 2)"
+              },
+              {
+                "x": 4,
+                "y": 0,
+                "label": "(4, 0)"
+              },
+              {
+                "x": 6,
+                "y": -4,
+                "label": "(6, -4)"
+              }
+            ],
+            "segments": [
+              {
+                "x1": 4,
+                "y1": 0,
+                "x2": 6,
+                "y2": -4,
+                "color": "#2563eb"
+              }
+            ],
+            "semicircles": [
+              {
+                "cx": 2,
+                "cy": 0,
+                "r": 2,
+                "upper": true,
+                "color": "#2563eb",
+                "shade": true
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "f(t)",
+            "caption": "Piecewise graph of f on [0, 6] with semicircle & line segment (FRQ #88)"
+          }
         },
         {
           "q": "Level 3 · Advanced Let \\(f(x)\\) be a function with \\(f(2) = 3\\), \\(f'(2) = -1\\), \\(f''(2) = 4\\), and \\(f'''(2) = -12\\). Write the third-degree Taylor polynomial \\(P_3(x)\\) for \\(f\\) centered at \\(x = 2\\), and use it to approximate \\(f(2.1)\\).",
@@ -191,16 +400,35 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Ascertain the exact result of the definite integral of the constant function: \\( \\int_{50}^{53} 105 \\, dx \\).",
-          "answer": "**Answer:** A. The antiderivative is \\( 105x \\). Evaluating from \\( 50 \\) to \\( 53 \\) gives \\( 105(53 - 50) = 315 \\).",
+          "q": "Rate Table (aquifer recharge curve #438): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
           "explanation": "The antiderivative is \\( 105x \\). Evaluating from \\( 50 \\) to \\( 53 \\) gives \\( 105(53 - 50) = 315 \\).",
           "choices": [
-            "315",
-            "105",
-            "420",
-            "210"
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(30\\)",
+            "\\(36\\)"
           ],
-          "correct": 0
+          "correct": 2,
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #438)"
+          }
         },
         {
           "q": "Level 1 · Foundations Determine whether the vectors \\(\\mathbf{u} = \\langle 2, -3, 4 \\rangle\\) and \\(\\mathbf{v} = \\langle 6, 8, 3 \\rangle\\) are orthogonal, parallel, or neither.",
@@ -232,19 +460,40 @@
           "explanation": "By FTC Part 1, \\(g'(x)=f(x)\\). A local minimum, since \\(f\\) changes sign from negative to positive at \\(t=-2\\), so \\(g'=f\\) changes from \\(-\\) to \\(+\\)."
         },
         {
-          "q": "Let \\(g(x)=\\int_0^x f(t)\\,dt\\), where \\(f\\) is continuous and positive for \\(t<1\\) and negative for \\(t>1\\). What feature does \\(g\\) have at \\(x=1\\)?",
+          "q": "Slope Field (orbital telemetry pass #441): The slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) is plotted above. What slope is drawn at point \\((1, 3)\\)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "FTC Part 1: accumulation functions",
           "choices": [
-            "Neither -- accumulation functions never have local extrema.",
-            "A local minimum, since \\(f\\) changes sign from positive to negative at \\(t=1\\), so \\(g'=f\\) changes from \\(+\\) to \\(-\\).",
-            "A local maximum, since \\(f\\) changes sign from positive to negative at \\(t=1\\), so \\(g'=f\\) changes from \\(+\\) to \\(-\\).",
-            "An inflection point, since g is always increasing when its integrand is positive."
+            "\\(-2\\)",
+            "\\(-4\\)",
+            "\\(5\\)",
+            "\\(8\\)"
           ],
-          "correct": 2,
-          "answer": "By FTC Part 1, \\(g'(x)=f(x)\\). A local maximum, since \\(f\\) changes sign from positive to negative at \\(t=1\\), so \\(g'=f\\) changes from \\(+\\) to \\(-\\).",
-          "explanation": "By FTC Part 1, \\(g'(x)=f(x)\\). A local maximum, since \\(f\\) changes sign from positive to negative at \\(t=1\\), so \\(g'=f\\) changes from \\(+\\) to \\(-\\)."
+          "correct": 1,
+          "answer": "Substituting \\((x, y) = (1, 3)\\) gives \\(\\frac{dy}{dx} = 2(1 - 3) = -4\\).",
+          "explanation": "By FTC Part 1, \\(g'(x)=f(x)\\). A local maximum, since \\(f\\) changes sign from positive to negative at \\(t=1\\), so \\(g'=f\\) changes from \\(+\\) to \\(-\\).",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 1,
+                "y": 3,
+                "label": "(1, 3)"
+              }
+            ],
+            "caption": "Slope field dy/dx = 2(x - y) (Plot #441)"
+          }
         },
         {
           "q": "For \\(F(x)=\\int_a^x f(t)dt\\) with \\(f\\) continuous, the proof of FTC Part 1 uses the Mean Value Theorem for Integrals to write \\(F(x+h)-F(x)\\) as:",
@@ -277,19 +526,38 @@
           "explanation": "Integrating a bounded (even discontinuous) function always yields a continuous accumulation function; differentiability can fail at the jump."
         },
         {
-          "q": "FTC Part 2: \\(\\int_a^b f(x)dx=F(b)-F(a)\\) where \\(F'=f\\). Evaluate \\(\\int_0^\\pi\\cos x\\,dx\\):",
+          "q": "Rate Table (hydroelectric sluice #442): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Definite integrals with substitution-friendly integrands",
           "choices": [
-            "\\(0\\)",
-            "\\(2\\)",
-            "\\(-2\\)",
-            "\\(1\\)"
+            "\\(22\\)",
+            "\\(20\\)",
+            "\\(26\\)",
+            "\\(32\\)"
           ],
-          "correct": 0,
-          "answer": "Applying Fundamental Theorem of Calculus principles, \\([\\sin x]_0^\\pi=0-0=0\\). Therefore, the verified correct option is \\(0\\).",
-          "explanation": "Applying Fundamental Theorem of Calculus principles, \\([\\sin x]_0^\\pi=0-0=0\\). Therefore, the verified correct option is \\(0\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "Applying Fundamental Theorem of Calculus principles, \\([\\sin x]_0^\\pi=0-0=0\\). Therefore, the verified correct option is \\(0\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #442)"
+          }
         },
         {
           "q": "If \\(f\\) is continuous on \\([a,b]\\) and \\(F\\) is any antiderivative, FTC Part 2 requires no assumption that \\(F\\) is:",
@@ -322,19 +590,40 @@
           "explanation": "Constructs antiderivative \\(G(x)=\\int_a^xf\\,dt\\)."
         },
         {
-          "q": "Mean value theorem for integrals: \\(\\int_a^b f\\,dx=f(c)(b-a)\\) for some \\(c\\in(a,b)\\). Requires \\(f\\) to be:",
+          "q": "Slope Field (bio-reactor temperature #445): The slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) is plotted above. What slope is drawn at point \\((2, 2)\\)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "A capstone FTC application",
           "choices": [
-            "positive",
-            "integrable and bounded",
-            "continuous",
-            "analytic"
+            "\\(2\\)",
+            "\\(0\\)",
+            "\\(1\\)",
+            "\\(8\\)"
           ],
-          "correct": 2,
-          "answer": "MVT for integrals: \\(f\\) continuous on \\([a,b]\\).",
-          "explanation": "MVT for integrals: \\(f\\) continuous on \\([a,b]\\)."
+          "correct": 1,
+          "answer": "Substituting \\((x, y) = (2, 2)\\) gives \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "explanation": "MVT for integrals: \\(f\\) continuous on \\([a,b]\\).",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 2,
+                "y": 2,
+                "label": "(2, 2)"
+              }
+            ],
+            "caption": "Slope field dy/dx = 2(x - y) (Plot #445)"
+          }
         }
       ]
     },
@@ -372,19 +661,38 @@
           "explanation": "FTC Part 1 guarantees \\(F\\) is differentiable wherever \\(f\\) is continuous, with \\(F'(x)=f(x)\\)."
         },
         {
-          "q": "Proof of FTC: \\(F(x)=\\int_a^x f\\). Key step: \\(F(x+h)-F(x)=\\int_x^{x+h}f(t)dt\\approx f(x)\\cdot h\\) by:",
+          "q": "Rate Table (autonomous rover motion #446): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "FTC Part 2: evaluating definite integrals",
           "choices": [
-            "MVT for integrals",
-            "L'Hôpital",
-            "product rule",
-            "chain rule"
+            "\\(19\\)",
+            "\\(16\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
-          "correct": 0,
-          "answer": "MVT for integrals gives \\(\\approx f(\\xi)\\cdot h\\rightarrow f(x)\\cdot h\\).",
-          "explanation": "MVT for integrals gives \\(\\approx f(\\xi)\\cdot h\\rightarrow f(x)\\cdot h\\)."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "explanation": "MVT for integrals gives \\(\\approx f(\\xi)\\cdot h\\rightarrow f(x)\\cdot h\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #446)"
+          }
         },
         {
           "q": "FTC Part 1 is proved by constructing:",
@@ -417,19 +725,40 @@
           "explanation": "FTC for line integrals: valid for gradient fields."
         },
         {
-          "q": "Gradient theorem (FTC for line integrals): \\(\\int_C abla f\\cdot d\\mathbf{r}=\\)",
+          "q": "Slope Field (battery charging session #449): The slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) is plotted above. What slope is drawn at point \\((3, 4)\\)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Average value of a function",
           "choices": [
-            "\\(\\iint f\\,dA\\)",
-            "\\(f(\\mathbf{r}(b))-f(\\mathbf{r}(a))\\)",
-            "\\(\\oint f\\,ds\\)",
-            "\\(abla^2 f\\)"
+            "\\(0\\)",
+            "\\(-2\\)",
+            "\\(3\\)",
+            "\\(14\\)"
           ],
           "correct": 1,
-          "answer": "Path-independence for gradient fields.",
-          "explanation": "Path-independence for gradient fields."
+          "answer": "Substituting \\((x, y) = (3, 4)\\) gives \\(\\frac{dy}{dx} = 2(3 - 4) = -2\\).",
+          "explanation": "Path-independence for gradient fields.",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "caption": "Slope field dy/dx = 2(x - y) (Plot #449)"
+          }
         },
         {
           "q": "Let \\(F(x) = \\int_{2}^{x} (t^2 - 1) dt\\). According to the Fundamental Theorem of Calculus, what is the derivative of \\(F(x)\\) with respect to \\(x\\)?",
@@ -462,19 +791,38 @@
           "explanation": "Applying Fundamental Theorem principles, Product rule + FTC Part 2. Therefore, the verified correct option is Differentiating \\(fg\\) and applying FTC Part 2."
         },
         {
-          "q": "FTC allows computing \\(\\int_0^1 x^{100}\\,dx\\) via:",
+          "q": "Rate Table (aquifer recharge curve #450): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing FTC Part 1 as an accumulation function",
           "choices": [
-            "L'Hôpital",
-            "power rule antiderivative",
-            "IBP",
-            "squeeze theorem"
+            "\\(16\\)",
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(24\\)"
           ],
-          "correct": 1,
-          "answer": "Applying Fundamental Theorem principles, Antiderivative \\(x^{101}/101\\). Therefore, the verified correct option is power rule antiderivative.",
-          "explanation": "Applying Fundamental Theorem principles, Antiderivative \\(x^{101}/101\\). Therefore, the verified correct option is power rule antiderivative."
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "explanation": "Applying Fundamental Theorem principles, Antiderivative \\(x^{101}/101\\). Therefore, the verified correct option is power rule antiderivative.",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #450)"
+          }
         }
       ]
     },
@@ -514,20 +862,50 @@
           "cross_lesson": "1.02 Continuity and the Intermediate Value Theorem"
         },
         {
-          "q": "Net change theorem: \\(\\int_1^4 v(t)dt\\) gives the net displacement if \\(v(t)\\) is velocity. For \\(v=2t\\):",
+          "q": "Derivative Curve (orbital telemetry pass #453): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A second average-value application",
           "choices": [
-            "\\(15\\)",
-            "\\(8\\)",
-            "\\(30\\)",
-            "\\(4\\)"
+            "\\(6\\)",
+            "\\(4\\)",
+            "\\(2\\)",
+            "\\(7\\)"
           ],
-          "correct": 0,
-          "answer": "Applying Fundamental Theorem of Calculus principles, \\([t^2]_1^4=16-1=15\\). Therefore, the verified correct option is \\(15\\).",
+          "correct": 1,
+          "answer": "Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 2\\) is \\(2(2) = 4\\).",
           "explanation": "Applying Fundamental Theorem of Calculus principles, \\([t^2]_1^4=16-1=15\\). Therefore, the verified correct option is \\(15\\).",
-          "cross_lesson": "2.01 The Definition of the Derivative"
+          "cross_lesson": "2.01 The Definition of the Derivative",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4
+            ],
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*x*x",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Curve f(x) = 1x² with marked point (#453)"
+          }
         },
         {
           "q": "Stokes' theorem \\(\\iint_S( abla\\times\\mathbf{F})\\cdot d\\mathbf{S}=\\oint_C\\mathbf{F}\\cdot d\\mathbf{r}\\) generalises FTC to:",
@@ -562,20 +940,39 @@
           "cross_lesson": "3.01 The Chain Rule"
         },
         {
-          "q": "A continuous function \\(f\\) and a constant \\(a\\) satisfy \\(\\int_{a}^{x} f{\\left(t \\right)}\\, dt = e^{x} - e^{5}\\) for all \\(x\\), with \\(a>0\\). Find \\(a\\).",
+          "q": "Rate Table (hydroelectric sluice #454): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Interpreting accumulation functions",
           "choices": [
-            "\\(25\\)",
-            "\\(-5\\)",
-            "\\(10\\)",
-            "\\(5\\)"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(37\\)"
           ],
-          "correct": 3,
-          "answer": "Setting \\(x = a\\) makes the integral 0, so \\(e^{a} - e^{5} = 0\\), giving \\(a = 5\\).",
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
           "explanation": "Setting \\(x = a\\) makes the integral 0, so \\(e^{a} - e^{5} = 0\\), giving \\(a = 5\\).",
-          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions"
+          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #454)"
+          }
         },
         {
           "q": "MVT for integrals: \\(f(x)=x^2\\) on \\([0,3]\\). Value of \\(c\\):",

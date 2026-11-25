@@ -1,0 +1,74 @@
+<article class="cs-chapter-frq" id="{{ block.id | default('') }}" dir="{{ 'rtl' if lang == 'ar' else 'ltr' }}">
+  <header class="cs-chapter-frq-hdr">
+    <div class="cs-chapter-frq-title-wrap">
+      {% set _frqTitle = block.title.ar if (lang == 'ar' and block.title and block.title.ar) else (block.title.en if (block.title and block.title.en) else '') %}
+      {% if _frqTitle %}
+        <h4 class="cs-chapter-frq-title">{{ _frqTitle | safe }}</h4>
+      {% else %}
+        <h4 class="cs-chapter-frq-title">{{ 'سؤال مقالي مهيكل' if lang == 'ar' else 'Structured Free-Response Question' }}</h4>
+      {% endif %}
+    </div>
+    <div class="cs-chapter-frq-badges">
+      {% if block.marks %}
+        <span class="cs-frq-badge cs-frq-marks">{{ block.marks }} {{ 'نقاط' if lang == 'ar' else 'pts' }}</span>
+      {% endif %}
+      {% if block.calc is defined %}
+        <span class="cs-frq-badge {{ 'cs-frq-calc' if block.calc else 'cs-frq-nocalc' }}">
+          {% if lang == 'ar' %}
+            {{ 'الآلة الحاسبة مسموحة' if block.calc else 'بدون آلة حاسبة' }}
+          {% else %}
+            {{ 'Calculator Active' if block.calc else 'No Calculator' }}
+          {% endif %}
+        </span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% set _frqStem = block.stem.ar if (lang == 'ar' and block.stem and block.stem.ar) else (block.stem.en if (block.stem and block.stem.en) else '') %}
+  {% if _frqStem %}
+    <div class="cs-chapter-frq-stem">{{ _frqStem | safe }}</div>
+  {% endif %}
+
+  {% if block.figure %}
+    <div class="cs-chapter-frq-fig">
+      {{ block.figure | renderFig(lang) | safe }}
+    </div>
+  {% endif %}
+
+  {% if block.parts and block.parts.length %}
+    <ol class="cs-chapter-frq-parts">
+      {% for pt in block.parts %}
+        <li class="cs-chapter-frq-part">
+          <div class="cs-chapter-frq-part-hdr">
+            <span class="cs-chapter-frq-part-label">{{ pt.label }}</span>
+            <span class="cs-chapter-frq-part-pts">{{ pt.marks }} {{ 'نقطة' if lang == 'ar' else ('pt' if pt.marks == 1 else 'pts') }}</span>
+          </div>
+          {% set _ptPrompt = pt.prompt.ar if (lang == 'ar' and pt.prompt and pt.prompt.ar) else (pt.prompt.en if (pt.prompt and pt.prompt.en) else '') %}
+          <div class="cs-chapter-frq-part-prompt">{{ _ptPrompt | safe }}</div>
+          {% if pt.markScheme and pt.markScheme.length %}
+            <details class="cs-chapter-frq-rubric">
+              <summary>{{ 'معيار التصحيح والإجابة النموذجية' if lang == 'ar' else 'Scoring Guideline & Justification' }}</summary>
+              <ul class="cs-chapter-frq-scheme">
+                {% for ms in pt.markScheme %}
+                  <li>
+                    <span class="cs-ms-code">[{{ ms.code | default('M1') }}]</span>
+                    <span class="cs-ms-crit">{{ ms.criterion.ar if (lang == 'ar' and ms.criterion and ms.criterion.ar) else (ms.criterion.en if (ms.criterion and ms.criterion.en) else '') | safe }}</span>
+                    <span class="cs-ms-pts">({{ ms.marks }} {{ 'نقطة' if lang == 'ar' else 'pt' }})</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </details>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+
+  {% set _frqSol = block.solution.ar if (lang == 'ar' and block.solution and block.solution.ar) else (block.solution.en if (block.solution and block.solution.en) else '') %}
+  {% if _frqSol %}
+    <details class="cs-chapter-frq-solution">
+      <summary>{{ 'الحل الكامل التفصيلي' if lang == 'ar' else 'Complete Worked Solution' }}</summary>
+      <div class="cs-chapter-frq-sol-body">{{ _frqSol | safe }}</div>
+    </details>
+  {% endif %}
+</article>

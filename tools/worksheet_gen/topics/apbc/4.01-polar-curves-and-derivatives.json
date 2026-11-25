@@ -46,12 +46,41 @@
           "explanation": "This is a rose curve with \\(3\\) petals (odd \\(n\\) in \\(r=\\cos(n\\theta)\\) gives \\(n\\) petals)."
         },
         {
-          "q": "State the formula for \\(\\frac{dy}{dx}\\) of a polar curve \\(r=f(\\theta)\\), using \\(x=r\\cos\\theta\\) and \\(y=r\\sin\\theta\\).",
+          "q": "In heat exchanger test BC Section II synthesis #275, consider the graph of \\(g(x) = x e^{-4x}\\) and its third-degree Maclaurin polynomial \\(P_3(x)\\) centered at \\(x = 0\\), shown in the figure.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The slope of a polar curve",
-          "answer": "\\(\\frac{dy}{dx}=\\frac{dy/d\\theta}{dx/d\\theta}=\\frac{\\frac{dr}{d\\theta}\\sin\\theta+r\\cos\\theta}{\\frac{dr}{d\\theta}\\cos\\theta-r\\sin\\theta}\\).",
-          "explanation": "\\(\\frac{dy}{dx}=\\frac{dy/d\\theta}{dx/d\\theta}=\\frac{\\frac{dr}{d\\theta}\\sin\\theta+r\\cos\\theta}{\\frac{dr}{d\\theta}\\cos\\theta-r\\sin\\theta}\\)."
+          "answer": "(a) \\(g(x) = x\\left(1 - 4x + \\frac{16}{2}x^2 - \\frac{64}{6}x^3 + \\frac{256}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(8\\). (b) \\(g'''(0) = 3!\\cdot(8) = 48\\). (c) \\(\\int_0^1 (x - 4x^2 + 8x^3)\\,dx = \\frac{1}{2} - \\frac{4}{3} + \\frac{16}{8} = \\frac{7}{6}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{32}{3}\\).",
+          "explanation": "(a) \\(g(x) = x\\left(1 - 4x + \\frac{16}{2}x^2 - \\frac{64}{6}x^3 + \\frac{256}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(8\\). (b) \\(g'''(0) = 3!\\cdot(8) = 48\\). (c) \\(\\int_0^1 (x - 4x^2 + 8x^3)\\,dx = \\frac{1}{2} - \\frac{4}{3} + \\frac{16}{8} = \\frac{7}{6}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{32}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -0.8,
+              1.8
+            ],
+            "yl": [
+              -1.5,
+              1.5
+            ],
+            "xStep": 0.5,
+            "yStep": 0.5,
+            "fns": [
+              {
+                "fn": "x*exp(-4*x)",
+                "color": "#2563eb",
+                "label": "g(x) = x e^(-4x)"
+              },
+              {
+                "fn": "x - 4*x*x + 8*x^3",
+                "color": "#d97706",
+                "dash": "4,4",
+                "label": "P_3(x)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "BC FRQ #275: Curve g(x) = x e^(-4x) vs Maclaurin P_3(x)"
+          }
         },
         {
           "q": "For the circle \\(r=4\\cos\\theta\\), find the value(s) of \\(\\theta\\) in \\([0,\\pi]\\) where the tangent line is horizontal (where \\(y=r\\sin\\theta\\) has a critical point).",
@@ -70,12 +99,31 @@
           "explanation": "Replace \\(\\theta\\) with \\(-\\theta\\) in the equation. If the equation is unchanged (or yields the same curve), the curve is symmetric about the polar axis. For example, \\(r=2+2\\cos\\theta\\) satisfies \\(f(-\\theta)=2+2\\cos(-\\theta)=2+2\\cos\\theta=f(\\theta)\\), confirming symmetry."
         },
         {
-          "q": "Test whether \\(r=3\\sin\\theta\\) is symmetric about the \\(y\\)-axis (replace \\(\\theta\\) with \\(\\pi-\\theta\\)).",
+          "q": "Rate Table (solar array output #952): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Symmetry of polar curves",
-          "answer": "\\(f(\\pi-\\theta)=3\\sin(\\pi-\\theta)=3\\sin\\theta=f(\\theta)\\) (using \\(\\sin(\\pi-\\theta)=\\sin\\theta\\)). Symmetric about the \\(y\\)-axis.",
-          "explanation": "\\(f(\\pi-\\theta)=3\\sin(\\pi-\\theta)=3\\sin\\theta=f(\\theta)\\) (using \\(\\sin(\\pi-\\theta)=\\sin\\theta\\)). Symmetric about the \\(y\\)-axis."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #952)"
+          }
         }
       ]
     },
@@ -99,12 +147,41 @@
           "explanation": "\\(r\\sin\\theta=r\\cos\\theta \\Rightarrow \\tan\\theta=1 \\Rightarrow \\theta=\\frac{\\pi}{4}\\) (a constant-\\(\\theta\\) ray, i.e. a straight line through the pole)."
         },
         {
-          "q": "Find \\(\\frac{dy}{dx}\\) for the cardioid \\(r=1+\\sin\\theta\\) at \\(\\theta=0\\).",
+          "q": "In bio-reactor temperature BC Section II synthesis #277, consider the graph of \\(g(x) = x e^{-2x}\\) and its third-degree Maclaurin polynomial \\(P_3(x)\\) centered at \\(x = 0\\), shown in the figure.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "More slope-of-a-polar-curve practice",
-          "answer": "\\(\\frac{dr}{d\\theta}=\\cos\\theta\\). \\(\\frac{dy}{dx}=\\frac{\\cos\\theta\\sin\\theta+r\\cos\\theta}{\\cos\\theta\\cos\\theta-r\\sin\\theta}\\). At \\(\\theta=0\\): \\(r=1\\), \\(\\frac{dr}{d\\theta}=1\\). Numerator: \\(1(0)+1(1)=1\\). Denominator: \\(1(1)-1(0)=1\\). \\(\\frac{dy}{dx}=\\frac{1}{1}=1\\).",
-          "explanation": "\\(\\frac{dr}{d\\theta}=\\cos\\theta\\). \\(\\frac{dy}{dx}=\\frac{\\cos\\theta\\sin\\theta+r\\cos\\theta}{\\cos\\theta\\cos\\theta-r\\sin\\theta}\\). At \\(\\theta=0\\): \\(r=1\\), \\(\\frac{dr}{d\\theta}=1\\). Numerator: \\(1(0)+1(1)=1\\). Denominator: \\(1(1)-1(0)=1\\). \\(\\frac{dy}{dx}=\\frac{1}{1}=1\\)."
+          "answer": "(a) \\(g(x) = x\\left(1 - 2x + \\frac{4}{2}x^2 - \\frac{8}{6}x^3 + \\frac{16}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(2\\). (b) \\(g'''(0) = 3!\\cdot(2) = 12\\). (c) \\(\\int_0^1 (x - 2x^2 + 2x^3)\\,dx = \\frac{1}{2} - \\frac{2}{3} + \\frac{4}{8} = \\frac{1}{3}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{2}{3}\\).",
+          "explanation": "(a) \\(g(x) = x\\left(1 - 2x + \\frac{4}{2}x^2 - \\frac{8}{6}x^3 + \\frac{16}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(2\\). (b) \\(g'''(0) = 3!\\cdot(2) = 12\\). (c) \\(\\int_0^1 (x - 2x^2 + 2x^3)\\,dx = \\frac{1}{2} - \\frac{2}{3} + \\frac{4}{8} = \\frac{1}{3}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{2}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -0.8,
+              1.8
+            ],
+            "yl": [
+              -1.5,
+              1.5
+            ],
+            "xStep": 0.5,
+            "yStep": 0.5,
+            "fns": [
+              {
+                "fn": "x*exp(-2*x)",
+                "color": "#2563eb",
+                "label": "g(x) = x e^(-2x)"
+              },
+              {
+                "fn": "x - 2*x*x + 2*x^3",
+                "color": "#d97706",
+                "dash": "4,4",
+                "label": "P_3(x)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "BC FRQ #277: Curve g(x) = x e^(-2x) vs Maclaurin P_3(x)"
+          }
         },
         {
           "q": "Find \\(\\frac{dy}{dx}\\) for the circle \\(r=5\\) (constant) at any angle \\(\\theta\\), and interpret the result using the fact that a circle centered at the origin has radial symmetry.",
@@ -123,12 +200,31 @@
           "explanation": "\\(1-\\cos\\theta=0 \\Rightarrow \\cos\\theta=1 \\Rightarrow \\theta=0\\). At the single angle where \\(r=0\\), the curve touches the pole; the tangent line there is along \\(\\theta=0\\) (the polar axis), since that's the direction the curve approaches the origin from."
         },
         {
-          "q": "Find the values of \\(\\theta\\in[0,2\\pi)\\) where the rose \\(r=\\cos(2\\theta)\\) passes through the pole.",
+          "q": "Rate Table (chemical titration run #956): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Tangent lines at the pole",
-          "answer": "\\(\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2},\\frac{7\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}\\) — these are the four tangent-line directions at the pole for this 4-petaled rose.",
-          "explanation": "\\(\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2},\\frac{7\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}\\) — these are the four tangent-line directions at the pole for this 4-petaled rose."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "3",
+                "5",
+                "9"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #956)"
+          }
         },
         {
           "q": "Classify each polar equation by curve type (circle, cardioid, limaçon with inner loop, rose, or line):",
@@ -166,13 +262,42 @@
           "explanation": "If \\(n\\) is odd, the rose has exactly \\(n\\) petals (traced over \\([0,\\pi]\\)). If \\(n\\) is even, the rose has \\(2n\\) petals (requires the full \\([0,2\\pi]\\) to trace, since each petal is retraced with opposite sign after \\(\\pi\\))."
         },
         {
-          "q": "How many petals does \\(r=2\\sin(4\\theta)\\) have? How many does \\(r=5\\cos(7\\theta)\\) have?",
+          "q": "In coastal tide flux BC Section II synthesis #279, consider the graph of \\(g(x) = x e^{-4x}\\) and its third-degree Maclaurin polynomial \\(P_3(x)\\) centered at \\(x = 0\\), shown in the figure.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Number of petals in rose curves",
           "cross_lesson": "1.01 Integration by Parts",
-          "answer": "\\(r=2\\sin(4\\theta)\\): \\(n=4\\) (even) \\(\\Rightarrow 2(4)=8\\) petals. \\(r=5\\cos(7\\theta)\\): \\(n=7\\) (odd) \\(\\Rightarrow 7\\) petals.",
-          "explanation": "\\(r=2\\sin(4\\theta)\\): \\(n=4\\) (even) \\(\\Rightarrow 2(4)=8\\) petals. \\(r=5\\cos(7\\theta)\\): \\(n=7\\) (odd) \\(\\Rightarrow 7\\) petals."
+          "answer": "(a) \\(g(x) = x\\left(1 - 4x + \\frac{16}{2}x^2 - \\frac{64}{6}x^3 + \\frac{256}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(8\\). (b) \\(g'''(0) = 3!\\cdot(8) = 48\\). (c) \\(\\int_0^1 (x - 4x^2 + 8x^3)\\,dx = \\frac{1}{2} - \\frac{4}{3} + \\frac{16}{8} = \\frac{7}{6}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{32}{3}\\).",
+          "explanation": "(a) \\(g(x) = x\\left(1 - 4x + \\frac{16}{2}x^2 - \\frac{64}{6}x^3 + \\frac{256}{24}x^4 - \\cdots\\right)\\), so coefficient of \\(x^3\\) is \\(8\\). (b) \\(g'''(0) = 3!\\cdot(8) = 48\\). (c) \\(\\int_0^1 (x - 4x^2 + 8x^3)\\,dx = \\frac{1}{2} - \\frac{4}{3} + \\frac{16}{8} = \\frac{7}{6}\\). (d) Coefficient of \\(x^5\\) is \\(\\frac{32}{3}\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -0.8,
+              1.8
+            ],
+            "yl": [
+              -1.5,
+              1.5
+            ],
+            "xStep": 0.5,
+            "yStep": 0.5,
+            "fns": [
+              {
+                "fn": "x*exp(-4*x)",
+                "color": "#2563eb",
+                "label": "g(x) = x e^(-4x)"
+              },
+              {
+                "fn": "x - 4*x*x + 8*x^3",
+                "color": "#d97706",
+                "dash": "4,4",
+                "label": "P_3(x)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "BC FRQ #279: Curve g(x) = x e^(-4x) vs Maclaurin P_3(x)"
+          }
         },
         {
           "q": "Complete a short table of \\((\\theta,r)\\) values for \\(r=2+2\\cos\\theta\\) at \\(\\theta=0,\\frac{\\pi}{2},\\pi,\\frac{3\\pi}{2}\\), and use it to describe the cardioid's shape.",
@@ -193,13 +318,32 @@
           "explanation": "A vertical tangent means the slope \\(\\frac{dy}{dx}\\) is undefined (infinite) — since \\(\\frac{dy}{dx}=\\frac{dy/d\\theta}{dx/d\\theta}\\), this happens exactly when the denominator \\(\\frac{dx}{d\\theta}=0\\) while the numerator stays nonzero, making the ratio blow up."
         },
         {
-          "q": "Level 2 · MediumFind the angle(s) \\(\\theta \\in [0, \\pi]\\) at which the polar curve \\(r = 3\\cos\\theta\\) passes through the origin, and determine the equation of the tangent line at that point.",
+          "q": "Rate Table (reservoir inflow #960): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "More slope-of-a-polar-curve practice",
           "cross_lesson": "3.01 Parametric Equations",
-          "answer": "Set \\(r = 0\\): \\(3\\cos\\theta = 0 \\Rightarrow \\theta = \\frac{\\pi}{2}.\\) By the Tangents at the Pole Theorem, when \\(r(\\theta_0) = 0\\) and \\(r'(\\theta_0) eq 0\\), the line \\(\\theta = \\theta_0\\) is the tangent line. Thus, the tangent line at the pole is \\(\\mathbf{\\theta = \\frac{\\pi}{2}}\\) (the vertical line \\(x = 0\\)).",
-          "explanation": "Set \\(r = 0\\): \\(3\\cos\\theta = 0 \\Rightarrow \\theta = \\frac{\\pi}{2}.\\) By the Tangents at the Pole Theorem, when \\(r(\\theta_0) = 0\\) and \\(r'(\\theta_0) eq 0\\), the line \\(\\theta = \\theta_0\\) is the tangent line. Thus, the tangent line at the pole is \\(\\mathbf{\\theta = \\frac{\\pi}{2}}\\) (the vertical line \\(x = 0\\))."
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "explanation": "Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "2",
+                "4",
+                "8"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [1, 5] (Table #960)"
+          }
         },
         {
           "q": "Level 2 · MediumFind the slope of the tangent line \\(\\frac{dy}{dx}\\) to the polar cardioid \\(r = 1 - \\cos\\theta\\) at \\(\\theta = \\frac{\\pi}{2}\\).",
@@ -231,19 +375,34 @@
           "explanation": "Here \\(n=2\\), which is even, so the rose has \\(2n\\) petals: \\(4\\) petals."
         },
         {
-          "q": "Find the smallest positive \\(\\theta\\) where the rose \\(r=3\\sin(4\\theta)\\) passes through the pole.",
+          "q": "Polar Graph (coastal tide flux #963): The polar rose \\(r = 5\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Identifying and sketching common polar curves",
           "choices": [
-            "\\(\\frac{\\pi}{4}\\)",
-            "\\(\\frac{\\pi}{16}\\)",
-            "\\(\\frac{3\\pi}{4}\\)",
-            "\\(\\frac{\\pi}{8}\\)"
+            "\\(25\\pi\\)",
+            "\\(10\\pi\\)",
+            "\\(28\\pi\\)",
+            "\\(\\frac{25\\pi}{2}\\)"
           ],
-          "correct": 0,
-          "answer": "Set \\(3\\sin(4\\theta)=0 \\Rightarrow \\sin(4\\theta)=0\\). The smallest positive solution is \\(4\\theta=\\pi\\), so \\(\\theta=\\frac{\\pi}{4}\\).",
-          "explanation": "Set \\(3\\sin(4\\theta)=0 \\Rightarrow \\sin(4\\theta)=0\\). The smallest positive solution is \\(4\\theta=\\pi\\), so \\(\\theta=\\frac{\\pi}{4}\\)."
+          "correct": 3,
+          "answer": "Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 25\\sin^2(2\\theta)\\,d\\theta = \\frac{25}{2}\\pi\\).",
+          "explanation": "Set \\(3\\sin(4\\theta)=0 \\Rightarrow \\sin(4\\theta)=0\\). The smallest positive solution is \\(4\\theta=\\pi\\), so \\(\\theta=\\frac{\\pi}{4}\\).",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "5*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 5sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 6,
+            "thetaStepDeg": 30,
+            "caption": "Four-petal polar rose (Exhibit #963)"
+          }
         },
         {
           "q": "The limaçon \\(r=7+14\\cos\\theta\\) has an inner loop. Find the smaller positive \\(\\theta\\in[0,2\\pi)\\) where \\(r=0\\).",
@@ -276,19 +435,38 @@
           "explanation": "\\(\\theta=\\pi/6\\) is the ray/line through the origin with slope \\(\\tan(\\pi/6)=\\frac{\\sqrt{3}}{3}.\\)"
         },
         {
-          "q": "Find \\(r\\) for the rectangular point \\((20,\\ 21)\\).",
+          "q": "Rate Table (solar array output #964): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Symmetry of polar curves",
           "choices": [
-            "41",
-            "841",
-            "29",
-            "1"
+            "\\(34\\)",
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(37\\)"
           ],
-          "correct": 2,
-          "answer": "\\(r=\\sqrt{x^2+y^2}=\\sqrt{20^2+21^2}=29.\\)",
-          "explanation": "\\(r=\\sqrt{x^2+y^2}=\\sqrt{20^2+21^2}=29.\\)"
+          "correct": 0,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
+          "explanation": "\\(r=\\sqrt{x^2+y^2}=\\sqrt{20^2+21^2}=29.\\)",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [2, 6] (Table #964)"
+          }
         },
         {
           "q": "The figure shows the graph of the function \\(f(x) = x^2 - 2x - 1\\) and the point \\(P(3, 2)\\) on the curve. What is the slope of the tangent line to the graph of \\(f\\) at point \\(P\\)?",
@@ -340,16 +518,31 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Convert \\(r=3\\) to Cartesian:",
-          "answer": "**Answer:** D. \\(r=3\\Rightarrow r^2=9\\Rightarrow x^2+y^2=9\\)",
+          "q": "Polar Graph (wind turbine telemetry #967): The polar rose \\(r = 4\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
+          "answer": "Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 16\\sin^2(2\\theta)\\,d\\theta = 8\\pi\\).",
           "explanation": "\\(r=3\\Rightarrow r^2=9\\Rightarrow x^2+y^2=9\\)",
           "choices": [
-            "\\(x^2+y^2=3\\)",
-            "\\(x+y=3\\)",
-            "\\(x=3\\)",
-            "\\(x^2+y^2=9\\)"
+            "\\(16\\pi\\)",
+            "\\(19\\pi\\)",
+            "\\(11\\)",
+            "\\(8\\pi\\)"
           ],
-          "correct": 3
+          "correct": 3,
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "4*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 4sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 5,
+            "thetaStepDeg": 30,
+            "caption": "Four-petal polar rose (Exhibit #967)"
+          }
         }
       ]
     },
@@ -387,41 +580,37 @@
           "explanation": "Applying Parametric and Polar principles, Odd \\(n\\): \\(n\\) petals. Therefore, the verified correct option is \\(n\\)."
         },
         {
-          "q": "The graph of a function \\(f'(x)\\) is shown below. It is given that \\(f(x)\\) is a function such that \\(f(1) = 5\\). The area between the curve \\(y = f'(x)\\), the x-axis, and the vertical lines \\(x = 1\\) and \\(x = 5\\) is represented by the shaded region. If the area of the shaded region is 16 square units, determine the value of \\(f(5)\\).",
+          "q": "Rate Table (chemical titration run #968): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Graphing polar curves point-by-point",
           "choices": [
-            "17",
-            "21",
-            "9",
-            "11"
+            "\\(30\\)",
+            "\\(25\\)",
+            "\\(24\\)",
+            "\\(36\\)"
           ],
-          "correct": 1,
-          "answer": "The area of the shaded region is given by the definite integral of \\(f'(x)\\) from \\(x = 1\\) to \\(x = 5\\). This area is also equal to the change in the function \\(f(x)\\) over this interval: \\(\\int_{1}^{5} f'(x) \\, dx = f(5) - f(1)\\). The graph shows that the function \\(f'(x)\\) is a constant function, represented by the horizontal line \\(y = 4\\). Therefore, \\(f'(x) = 4\\). The area of the shaded region is given as 16 square units. Using the definite integral: \\(\\int_{1}^{5} 4 \\, dx = [4x]_{1}^{5} = 4(5) - 4(1) = 20 - 4 = 16\\). This confirms the given area. Now we use the relationship \\(f(5) - f(1) = 16\\). We are given that \\(f(1) = 5\\). Substituting this value, we get \\(f(5) - 5 = 16\\). Solving for \\(f(5)\\): \\(f(5) = 16 + 5 = 21\\).",
+          "correct": 0,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).",
           "explanation": "The area of the shaded region is given by the definite integral of \\(f'(x)\\) from \\(x = 1\\) to \\(x = 5\\). This area is also equal to the change in the function \\(f(x)\\) over this interval: \\(\\int_{1}^{5} f'(x) \\, dx = f(5) - f(1)\\). The graph shows that the function \\(f'(x)\\) is a constant function, represented by the horizontal line \\(y = 4\\). Therefore, \\(f'(x) = 4\\). The area of the shaded region is given as 16 square units. Using the definite integral: \\(\\int_{1}^{5} 4 \\, dx = [4x]_{1}^{5} = 4(5) - 4(1) = 20 - 4 = 16\\). This confirms the given area. Now we use the relationship \\(f(5) - f(1) = 16\\). We are given that \\(f(1) = 5\\). Substituting this value, we get \\(f(5) - 5 = 16\\). Solving for \\(f(5)\\): \\(f(5) = 16 + 5 = 21\\).",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "4"
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
             ],
-            "xmin": 0,
-            "xmax": 6,
-            "ymin": 0,
-            "ymax": 6,
-            "width": 230,
-            "point_labels": [
-              {
-                "x": 1,
-                "y": 4,
-                "label": "(1, 4)"
-              },
-              {
-                "x": 5,
-                "y": 4,
-                "label": "(5, 4)"
-              }
-            ]
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #968)"
           }
         },
         {
@@ -455,19 +644,34 @@
           "explanation": "Area \\(=\\frac{1}{2}\\int_0^{\\pi/6} 10^{2}\\,d\\theta=\\frac{1}{2}\\cdot100\\cdot\\pi/6=\\frac{25 \\pi}{3}.\\)"
         },
         {
-          "q": "Find the area of the sector of \\(r=3\\) from \\(\\theta=0\\) to \\(\\theta=\\pi/4\\).",
+          "q": "Polar Graph (heat exchanger test #971): The polar rose \\(r = 3\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Identifying and sketching common polar curves",
           "choices": [
-            "\\(\\frac{31 \\pi}{24}\\)",
-            "\\(\\frac{9 \\pi}{4}\\)",
-            "\\(\\frac{9 \\pi}{8}\\)",
-            "\\(\\frac{9 \\pi}{16}\\)"
+            "\\(9\\pi\\)",
+            "\\(6\\pi\\)",
+            "\\(12\\pi\\)",
+            "\\(\\frac{9\\pi}{2}\\)"
           ],
-          "correct": 2,
-          "answer": "Area \\(=\\frac{1}{2}\\int_0^{\\pi/4} 3^{2}\\,d\\theta=\\frac{1}{2}\\cdot9\\cdot\\pi/4=\\frac{9 \\pi}{8}.\\)",
-          "explanation": "Area \\(=\\frac{1}{2}\\int_0^{\\pi/4} 3^{2}\\,d\\theta=\\frac{1}{2}\\cdot9\\cdot\\pi/4=\\frac{9 \\pi}{8}.\\)"
+          "correct": 3,
+          "answer": "Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 9\\sin^2(2\\theta)\\,d\\theta = \\frac{9}{2}\\pi\\).",
+          "explanation": "Area \\(=\\frac{1}{2}\\int_0^{\\pi/4} 3^{2}\\,d\\theta=\\frac{1}{2}\\cdot9\\cdot\\pi/4=\\frac{9 \\pi}{8}.\\)",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "3*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 3sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 4,
+            "thetaStepDeg": 30,
+            "caption": "Four-petal polar rose (Exhibit #971)"
+          }
         },
         {
           "qtype": "MCQ",
@@ -554,20 +758,35 @@
           "cross_lesson": "3.01 Parametric Equations"
         },
         {
-          "q": "Tangent line to parametric curve is vertical when:",
+          "q": "Polar Graph (bio-reactor temperature #973): The polar rose \\(r = 5\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Tangent lines at the pole",
           "choices": [
-            "\\(dy/dt=0\\)",
-            "\\(dx/dt=0\\) and \\(dy/dt e0\\)",
-            "\\(dx/dt=dy/dt\\)",
-            "\\(t=0\\)"
+            "\\(25\\pi\\)",
+            "\\(\\frac{25\\pi}{2}\\)",
+            "\\(10\\pi\\)",
+            "\\(28\\pi\\)"
           ],
           "correct": 1,
-          "answer": "Applying Parametric and Polar principles, Vertical tangent: \\(dx/dt=0\\). Therefore, the verified correct option is \\(dx/dt=0\\) and \\(dy/dt e0\\).",
+          "answer": "Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 25\\sin^2(2\\theta)\\,d\\theta = \\frac{25}{2}\\pi\\).",
           "explanation": "Applying Parametric and Polar principles, Vertical tangent: \\(dx/dt=0\\). Therefore, the verified correct option is \\(dx/dt=0\\) and \\(dy/dt e0\\).",
-          "cross_lesson": "3.02 Vector-Valued Functions"
+          "cross_lesson": "3.02 Vector-Valued Functions",
+          "figure": {
+            "type": "polar_graph",
+            "curves": [
+              {
+                "rExpr": "5*sin(2*t)",
+                "color": "#2563eb",
+                "label": "r = 5sin(2θ)",
+                "tMin": 0,
+                "tMax": 6.2832
+              }
+            ],
+            "rMax": 6,
+            "thetaStepDeg": 30,
+            "caption": "Four-petal polar rose (Exhibit #973)"
+          }
         },
         {
           "q": "At which point does \\(f(x)=x^2-4x\\) have a horizontal tangent?",
@@ -602,20 +821,39 @@
           "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests"
         },
         {
-          "q": "For the differential equation \\(\\frac{dy}{dx} = 1x -5y\\), find the slope of the solution curve at the point \\((3, 2)\\).",
+          "q": "Rate Table (autonomous rover motion #974): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Graphing polar curves point-by-point",
           "choices": [
-            "-9",
-            "-5",
-            "7",
-            "-7"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(37\\)"
           ],
-          "correct": 3,
-          "answer": "Substitute \\(x=3\\), \\(y=2\\): \\(\\frac{dy}{dx} = 1(3) -5(2) = -7\\).",
+          "correct": 2,
+          "answer": "Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).",
           "explanation": "Substitute \\(x=3\\), \\(y=2\\): \\(\\frac{dy}{dx} = 1(3) -5(2) = -7\\).",
-          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests"
+          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "3",
+              "5",
+              "7"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected rate table R(t) on [3, 7] (Table #974)"
+          }
         },
         {
           "qtype": "MCQ",

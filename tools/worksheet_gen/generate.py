@@ -173,6 +173,8 @@ def _normalize_mathtext(tex):
         flags=re.S,
     )
     tex = re.sub(r"\\(?:d|t|c)frac(?![a-zA-Z])", r"\\frac", tex)
+    tex = re.sub(r"\\sqrt\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\sqrt{\1}", tex)
+    tex = re.sub(r"\\frac\s*([0-9])\s*([0-9])", r"\\frac{\1}{\2}", tex)
     tex = re.sub(r"\\frac\s*([0-9a-zA-Z])\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\frac{\1}{\2}", tex)
     tex = re.sub(r"\\frac\s*([0-9a-zA-Z])\s*\{", r"\\frac{\1}{", tex)
     tex = re.sub(r"\\frac\s*\{([^{}]+)\}\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\frac{\1}{\2}", tex)
@@ -238,6 +240,9 @@ def _normalize_mathtext(tex):
     # Strip any remaining Arabic characters inside math mode so mathtext never substitutes dummy boxes
     tex = re.sub(r"\\text\{\s*[\u0600-\u06FF\s]+\s*\}", "", tex)
     tex = re.sub(r"[\u0600-\u06FF]+", "", tex)
+    tex = re.sub(r"\\frac\s*\{\s*\}\s*\{\s*\}", r"\\frac{\\mathrm{A}}{\\mathrm{B}}", tex)
+    tex = re.sub(r"\\frac\s*\{\s*\}", r"\\frac{\\mathrm{A}}", tex)
+    tex = re.sub(r"\\frac\s*(\{[^{}]+\})\s*\{\s*\}", r"\\frac\1{\\mathrm{B}}", tex)
     tex = re.sub(r"\\text\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
     tex = re.sub(r"\\operatorname\*?\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
     return tex
@@ -286,14 +291,17 @@ def rich(text, color=INK, size=10, rtl=False):
     _ESC_DOLLAR = "\uEFFE"
 
     def _stash(m):
-        math_specs.append("$" + m.group(1).replace(_ESC_DOLLAR, r"\$") + "$")
+        inner = m.group(1).replace(_ESC_DOLLAR, r"\$")
+        if not inner.strip():
+            return inner
+        math_specs.append("$" + inner + "$")
         return chr(_PLACEHOLDER_BASE + len(math_specs) - 1)
 
     text = text.replace(r"\$", _ESC_DOLLAR)
     text = re.sub(r"\\\((.*?)\\\)", _stash, text, flags=re.S)
     text = re.sub(r"\\\[(.*?)\\\]", _stash, text, flags=re.S)
     text = re.sub(r"\$\$(.+?)\$\$", _stash, text, flags=re.S)
-    text = re.sub(r"\$([^$]+)\$", _stash, text)
+    text = re.sub(r"\$([^$\uE000-\uEFFF]+)\$", _stash, text)
     if rtl:
         text = shape_ar(text)
     out = []
@@ -301,6 +309,9 @@ def rich(text, color=INK, size=10, rtl=False):
     for m in re.finditer(r"[-]", text):
         out.append(html.escape(text[pos:m.start()].replace(_ESC_DOLLAR, "$")))
         tex = math_specs[ord(m.group(0)) - _PLACEHOLDER_BASE]
+        if not re.sub(r"[\s$]+", "", _normalize_mathtext(tex)):
+            pos = m.end()
+            continue
         path, w, h, d = render_math(tex, color=color, size=size)
         if w > 210.0:
             scale = 210.0 / w
@@ -940,8 +951,359 @@ def _draw_transversal(ax, spec):
     ax.axis("off")
 
 
-def render_figure(spec):
+def _shape_if_ar(txt):
+    s = str(txt)
+    if re.search(r"[\u0600-\u06FF]", s) and "$" not in s and r"\(" not in s:
+        return shape_ar(s)
+    return s
+
+
+def _py_expr(expr):
+    s = str(expr or "0").strip()
+    s = re.sub(r"\bMath\.PI\b", "pi", s)
+    s = re.sub(r"\bMath\.E\b", "e", s)
+    s = re.sub(r"\bMath\.", "", s)
+    s = s.replace("^", "**")
+    s = re.sub(r"\bln\s*\(", "log(", s)
+    s = re.sub(r"(\d)([a-zA-Z(])", r"\1*\2", s)
+    return s
+
+
+def _normalize_fig_spec(raw):
+    if not isinstance(raw, dict):
+        return {}
+    s = dict(raw)
+    t = s.get("type", "plot")
+    alias = {
+        "fn": "plot", "function_graph": "plot", "axes": "plot", "graph": "plot",
+        "functionGraph": "plot", "fn_graph": "plot",
+        "bar": "bars", "bar_chart": "bars", "barChart": "bars",
+        "box_plot": "boxplot", "boxPlot": "boxplot",
+        "geometry_2d": "polygon", "geometry_3d": "solid", "geom3d": "solid",
+        "number_line": "numberline", "numberLine": "numberline",
+        "polarGraph": "polar_graph", "polar": "polar_graph",
+        "groupedBar": "grouped_bar", "multiLine": "multi_line",
+        "normalCurve": "normal_curve", "normal": "normal_curve",
+        "dotPlot": "dot_plot", "scatter_plot": "scatter",
+        "conic": "conic_section", "qudrat_shaded": "shaded_region",
+        "twoWayTable": "two_way_table",
+    }
+    s["type"] = alias.get(t, t)
+    if isinstance(s.get("xl"), (list, tuple)) and len(s["xl"]) == 2:
+        s.setdefault("xmin", s["xl"][0])
+        s.setdefault("xmax", s["xl"][1])
+    elif isinstance(s.get("xrange"), (list, tuple)) and len(s["xrange"]) == 2:
+        s.setdefault("xmin", s["xrange"][0])
+        s.setdefault("xmax", s["xrange"][1])
+    if isinstance(s.get("yl"), (list, tuple)) and len(s["yl"]) == 2:
+        s.setdefault("ymin", s["yl"][0])
+        s.setdefault("ymax", s["yl"][1])
+    elif isinstance(s.get("yrange"), (list, tuple)) and len(s["yrange"]) == 2:
+        s.setdefault("ymin", s["yrange"][0])
+        s.setdefault("ymax", s["yrange"][1])
+    if s["type"] == "plot":
+        fns_norm = []
+        for f in s.get("fns", []):
+            if isinstance(f, dict):
+                fns_norm.append(_py_expr(f.get("expr") or f.get("fn") or "x"))
+            else:
+                fns_norm.append(_py_expr(f))
+        s["fns"] = fns_norm
+        raw_pts = []
+        if isinstance(s.get("points"), list):
+            raw_pts.extend(s["points"])
+        if isinstance(s.get("pts"), list):
+            raw_pts.extend(s["pts"])
+        pts_plain = []
+        pt_lbls = list(s.get("point_labels") or [])
+        for p in raw_pts:
+            if isinstance(p, dict):
+                px = float(p.get("x", 0))
+                py = float(p.get("y", 0))
+                if p.get("label"):
+                    pt_lbls.append({"x": px, "y": py, "label": p["label"]})
+                else:
+                    pts_plain.append([px, py])
+            elif isinstance(p, (list, tuple)) and len(p) >= 2:
+                pts_plain.append([float(p[0]), float(p[1])])
+        s["points"] = pts_plain
+        s["point_labels"] = pt_lbls
+        if isinstance(s.get("asymptotes"), list):
+            vx, hy, sl = [], [], []
+            for a in s["asymptotes"]:
+                if isinstance(a, dict):
+                    if a.get("type") == "h":
+                        hy.append(a["v"])
+                    elif a.get("type") == "s":
+                        sl.append((a.get("m", 0), a.get("b", 0)))
+                    else:
+                        vx.append(a["v"])
+            s["asymptotes"] = {"x": vx, "y": hy, "slant": sl}
+    elif s["type"] == "triangle" and not s.get("vertices"):
+        coords = s.get("coords")
+        if not coords:
+            coords = [[0, 0], [4, 0], [0, 3] if s.get("rightAngle") else [1.6, 3.2]]
+        s["vertices"] = coords
+        if s.get("verts") and not s.get("labels"):
+            s["labels"] = s["verts"]
+        if s.get("sides") and not s.get("side_labels"):
+            s["side_labels"] = s["sides"]
+        if s.get("rightAngle") and s.get("right_angle_at") is None:
+            verts = s.get("labels") or ["A", "B", "C"]
+            s["right_angle_at"] = verts.index(s["rightAngle"]) if s["rightAngle"] in verts else 0
+    elif s["type"] == "circle":
+        if s.get("r") is not None and s.get("radius") is None:
+            s["radius"] = s["r"]
+        if s.get("centerLabel") and not s.get("center_label"):
+            s["center_label"] = s["centerLabel"]
+        if s.get("radiusLabel") and not s.get("radius_label"):
+            s["radius_label"] = s["radiusLabel"]
+        if s.get("centralDeg") is not None and not s.get("sector"):
+            s["sector"] = {"start_deg": 0, "end_deg": float(s["centralDeg"]), "label": s.get("angleLabel", "")}
+    elif s["type"] == "bars":
+        if s.get("labels") and not s.get("categories"):
+            s["categories"] = s["labels"]
+        if isinstance(s.get("data"), list):
+            if s["data"] and isinstance(s["data"][0], dict):
+                if not s.get("categories"):
+                    s["categories"] = [str(d.get("label", "")) for d in s["data"]]
+                if s.get("values") is None:
+                    s["values"] = [float(d.get("val") if d.get("val") is not None else d.get("value", 0)) for d in s["data"]]
+            elif s.get("values") is None:
+                s["values"] = [
+                    float(v) if isinstance(v, (int, float)) or str(v).replace(".", "", 1).lstrip("-").isdigit() else 0.0
+                    for v in s["data"]
+                ]
+        if not s.get("categories") and isinstance(s.get("values"), list):
+            s["categories"] = [f"C{i + 1}" for i in range(len(s["values"]))]
+        if s.get("values") is None:
+            s["values"] = [0.0 for _ in s.get("categories", [])]
+    elif s["type"] == "boxplot" and s.get("boxes") and not s.get("groups"):
+        s["groups"] = [
+            {"label": b.get("label", ""), "stats": [b["min"], b["q1"], b["med"], b["q3"], b["max"]]}
+            for b in s["boxes"]
+        ]
+    elif s["type"] == "solid" and s.get("shape") and not s.get("solid"):
+        sh = s["shape"]
+        s["solid"] = {"prism": "rectangular_prism", "pyramid": "square_pyramid"}.get(sh, sh)
+        if not s.get("dims"):
+            r = s.get("r")
+            l = s.get("w") or ((2 * r) if r else 4)
+            w = s.get("d") or l
+            h = s.get("h") or l
+            s["dims"] = [l, w, h]
+    elif s["type"] in ("polygon", "rect"):
+        if isinstance(s.get("sides"), int) and s["sides"] >= 3:
+            n_sides = s.pop("sides")
+            if not s.get("vertices"):
+                s["vertices"] = [
+                    [round(2.2 * float(np.cos(2 * np.pi * kk / n_sides + np.pi / 2)), 4),
+                     round(2.2 * float(np.sin(2 * np.pi * kk / n_sides + np.pi / 2)), 4)]
+                    for kk in range(n_sides)
+                ]
+            if not isinstance(s.get("side_labels"), list):
+                s["side_labels"] = []
+        elif not s.get("vertices"):
+            w = float(s.get("w") or 5)
+            h = float(s.get("h") or 3)
+            s["vertices"] = [[0, 0], [w, 0], [w, h], [0, h]]
+            if isinstance(s.get("sides"), list) and not s.get("side_labels"):
+                s["side_labels"] = s["sides"]
+    elif s["type"] == "slope_field" and s.get("dydx") and not s.get("expr"):
+        s["expr"] = _py_expr(s["dydx"])
+    return s
+
+
+def _draw_polar_graph(ax, spec):
+    rmax = float(spec.get("rMax") or 4)
+    ax.set_xlim(-rmax * 1.18, rmax * 1.18)
+    ax.set_ylim(-rmax * 1.18, rmax * 1.18)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    for r in range(1, max(2, int(round(rmax))) + 1):
+        rr = rmax * r / max(2, int(round(rmax)))
+        ax.add_patch(plt.Circle((0, 0), rr, fill=False, edgecolor=GRID, linewidth=0.8))
+    for deg in range(0, 360, int(spec.get("thetaStepDeg") or 30)):
+        rad = np.radians(deg)
+        ax.plot([0, rmax * np.cos(rad)], [0, rmax * np.sin(rad)], color=GRID, linewidth=0.7)
+    ax.plot([-rmax * 1.1, rmax * 1.1], [0, 0], color=INK, linewidth=1.1)
+    ax.plot([0, 0], [-rmax * 1.1, rmax * 1.1], color=INK, linewidth=1.1)
+    cols = [INDIGO2, AMBER, CURVE]
+    curves = spec.get("curves") or [{"rExpr": spec.get("rExpr", "2")}]
+    for i, cv in enumerate(curves):
+        t0, t1 = float(cv.get("tMin", 0)), float(cv.get("tMax", 2 * np.pi))
+        t = np.linspace(t0, t1, 360)
+        expr = _py_expr(cv.get("rExpr") or cv.get("expr") or "2").replace("theta", "t")
+        env = {"t": t, "np": np, "sin": np.sin, "cos": np.cos, "tan": np.tan, "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi, "e": np.e}
+        with np.errstate(all="ignore"):
+            rv = np.broadcast_to(np.asarray(eval(expr, {"__builtins__": {}}, env), dtype=float), t.shape)
+        ax.plot(rv * np.cos(t), rv * np.sin(t), color=cols[i % len(cols)], linewidth=1.8)
+
+
+def _draw_normal_curve(ax, spec):
+    mu = float(spec.get("mean", spec.get("mu", 0)))
+    sd = max(1e-6, float(spec.get("sd", spec.get("sigma", 1))))
+    xs = np.linspace(mu - 3.6 * sd, mu + 3.6 * sd, 320)
+    ys = np.exp(-0.5 * ((xs - mu) / sd) ** 2) / (sd * np.sqrt(2 * np.pi))
+    ax.plot(xs, ys, color=INDIGO, linewidth=1.8)
+    sr = spec.get("shadeRange")
+    if isinstance(sr, (list, tuple)) and len(sr) == 2:
+        mask = (xs >= float(sr[0])) & (xs <= float(sr[1]))
+        ax.fill_between(xs[mask], 0, ys[mask], color=AMBER, alpha=0.28)
+    ax.set_yticks([])
+    xticks = [mu + k * sd for k in (-3, -2, -1, 0, 1, 2, 3)]
+    ax.set_xticks(xticks)
+    ax.set_xticklabels([f"{v:g}" for v in xticks], fontsize=7.5, color=INK)
+    for sp in ("top", "right", "left"):
+        ax.spines[sp].set_visible(False)
+    ax.spines["bottom"].set_color(INK)
+
+
+def _draw_histogram(ax, spec):
+    bins = spec.get("bins", [])
+    labels = [_shape_if_ar(b.get("label", "")) for b in bins]
+    counts = [float(b.get("count", 0)) for b in bins]
+    xs = np.arange(len(labels))
+    ax.bar(xs, counts, width=0.96, color=INDIGO2, alpha=0.82, edgecolor=INDIGO, linewidth=1.1, zorder=3)
+    ax.set_xticks(xs)
+    ax.set_xticklabels(labels, fontsize=8, color=INK)
+    ax.grid(axis="y", color=GRID, linewidth=0.6, zorder=0)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+
+
+def _draw_dot_plot(ax, spec):
+    counts = spec.get("counts", {})
+    if not counts and isinstance(spec.get("data"), list):
+        counts = {}
+        for v in spec["data"]:
+            counts[v] = counts.get(v, 0) + 1
+    vals = sorted((float(k), int(v)) for k, v in counts.items())
+    for xv, cnt in vals:
+        for k in range(1, cnt + 1):
+            ax.plot([xv], [k], "o", color=INDIGO2, markersize=6)
+    ax.set_xticks([v[0] for v in vals])
+    ax.set_yticks([])
+    max_c = max([v[1] for v in vals] or [3])
+    ax.set_ylim(0.2, max_c + 1.0)
+    for sp in ("top", "right", "left"):
+        ax.spines[sp].set_visible(False)
+
+
+def _draw_scatter(ax, spec):
+    pts = spec.get("pts", [])
+    xs = [float(p[0]) for p in pts]
+    ys = [float(p[1]) for p in pts]
+    ax.scatter(xs, ys, color=INDIGO2, s=22, zorder=4)
+    line = spec.get("line")
+    if isinstance(line, dict) and line.get("m") is not None:
+        x0, x1 = min(xs), max(xs)
+        m, b = float(line["m"]), float(line.get("b", 0))
+        ax.plot([x0, x1], [m * x0 + b, m * x1 + b], color=AMBER, linewidth=1.6, zorder=5)
+    ax.grid(True, color=GRID, linewidth=0.6)
+    if spec.get("xLabel"):
+        ax.set_xlabel(_shape_if_ar(spec["xLabel"]), fontsize=8.5, color=INK)
+    if spec.get("yLabel"):
+        ax.set_ylabel(_shape_if_ar(spec["yLabel"]), fontsize=8.5, color=INK)
+
+
+def _draw_pie(ax, spec):
+    slices = spec.get("slices", [])
+    vals = [max(0.0, float(sl.get("value", 0))) for sl in slices]
+    lbls = [_shape_if_ar(sl.get("label", "")) for sl in slices]
+    cols = [INDIGO2, AMBER, CURVE, "#6366f1", "#64748b"]
+    ax.pie(vals, labels=lbls, autopct="%1.0f%%", colors=[cols[i % len(cols)] for i in range(len(vals))],
+           textprops={"fontsize": 8, "color": INK}, startangle=90)
+    ax.set_aspect("equal")
+
+
+def _draw_grouped_bar(ax, spec):
+    cats = [_shape_if_ar(c) for c in spec.get("categories", [])]
+    series = spec.get("series", [])
+    xs = np.arange(len(cats))
+    cols = [INDIGO2, AMBER, CURVE]
+    if spec.get("type") == "multi_line":
+        for i, sr in enumerate(series):
+            ax.plot(xs, sr.get("values", []), marker="o", color=cols[i % len(cols)], linewidth=1.8, label=_shape_if_ar(sr.get("name", "")))
+    else:
+        n = max(1, len(series))
+        bw = 0.72 / n
+        for i, sr in enumerate(series):
+            offset = (i - (n - 1) / 2.0) * bw
+            ax.bar(xs + offset, sr.get("values", []), width=bw * 0.92, color=cols[i % len(cols)], label=_shape_if_ar(sr.get("name", "")), zorder=3)
+    ax.set_xticks(xs)
+    ax.set_xticklabels(cats, fontsize=8, color=INK)
+    ax.grid(axis="y", color=GRID, linewidth=0.6, zorder=0)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    ax.legend(fontsize=7.5, frameon=False)
+
+
+def _draw_sinusoid(ax, spec):
+    A = float(spec.get("amp", 1))
+    B = float(spec.get("freq", 1))
+    C = float(spec.get("phase", 0))
+    D = float(spec.get("midline", 0))
+    xmin, xmax = spec.get("xmin", 0), spec.get("xmax", 2 * np.pi / max(abs(B), 1e-3))
+    ymin = D - abs(A) * 1.4 - 0.5
+    ymax = D + abs(A) * 1.4 + 0.5
+    ax.set_xlim(xmin, xmax)
+    ax.set_ylim(ymin, ymax)
+    x = np.linspace(xmin, xmax, 360)
+    y = D + A * (np.cos(B * (x - C)) if spec.get("fnType") == "cos" else np.sin(B * (x - C)))
+    ax.plot(x, y, color=CURVE, linewidth=1.9)
+    ax.axhline(D, color=AMBER, linewidth=1.0, linestyle="--")
+    ax.axhline(0, color=INK, linewidth=0.9)
+    ax.axvline(0, color=INK, linewidth=0.9)
+    ax.grid(True, color=GRID, linewidth=0.6)
+
+
+def _draw_conic_section(ax, spec):
+    conic = spec.get("conic", "parabola")
+    h, k = float(spec.get("h", 0)), float(spec.get("k", 0))
+    a, b = float(spec.get("a", 3)), float(spec.get("b", 2))
+    p = float(spec.get("p", 1))
+    if conic == "ellipse":
+        t = np.linspace(0, 2 * np.pi, 320)
+        ax.plot(h + a * np.cos(t), k + b * np.sin(t), color=CURVE, linewidth=1.9)
+    elif conic == "circle":
+        t = np.linspace(0, 2 * np.pi, 320)
+        ax.plot(h + a * np.cos(t), k + a * np.sin(t), color=CURVE, linewidth=1.9)
+    elif conic == "hyperbola":
+        t = np.linspace(-1.4, 1.4, 200)
+        ax.plot(h + a * np.cosh(t), k + b * np.sinh(t), color=CURVE, linewidth=1.9)
+        ax.plot(h - a * np.cosh(t), k + b * np.sinh(t), color=CURVE, linewidth=1.9)
+    else:
+        t = np.linspace(-3, 3, 240)
+        if spec.get("orientation") == "horizontal":
+            ax.plot(h + t ** 2 / (4 * p), k + t, color=CURVE, linewidth=1.9)
+        else:
+            ax.plot(h + t, k + t ** 2 / (4 * p), color=CURVE, linewidth=1.9)
+    ax.axhline(0, color=INK, linewidth=0.9)
+    ax.axvline(0, color=INK, linewidth=0.9)
+    ax.grid(True, color=GRID, linewidth=0.6)
+    ax.set_aspect("equal")
+
+
+def _draw_unit_circle(ax, spec):
+    t = np.linspace(0, 2 * np.pi, 300)
+    ax.plot(np.cos(t), np.sin(t), color=INDIGO, linewidth=1.6)
+    ax.axhline(0, color=INK, linewidth=0.9)
+    ax.axvline(0, color=INK, linewidth=0.9)
+    for ang in spec.get("angles", []):
+        deg = float(ang.get("deg", 30)) if isinstance(ang, dict) else float(ang)
+        rad = np.radians(deg)
+        cx, cy = np.cos(rad), np.sin(rad)
+        ax.plot([0, cx], [0, cy], color=AMBER, linewidth=1.6)
+        ax.plot([cx], [cy], "o", color=AMBER, markersize=4.5)
+    ax.set_xlim(-1.3, 1.3)
+    ax.set_ylim(-1.3, 1.3)
+    ax.set_aspect("equal")
+
+
+def render_figure(raw_spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
+    spec = _normalize_fig_spec(raw_spec)
     os.makedirs(CACHE_DIR, exist_ok=True)
     key = hashlib.sha1(json.dumps(spec, sort_keys=True).encode()).hexdigest()[:16]
     path = os.path.join(CACHE_DIR, "fig_" + key + ".png")
@@ -957,8 +1319,28 @@ def render_figure(spec):
                 x = np.linspace(xmin, xmax, 600)
                 eval_env = {"x": x, "np": np, "sin": np.sin, "cos": np.cos,
                             "tan": np.tan, "exp": np.exp, "log": np.log,
-                            "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi,
-                            "e": np.e}
+                            "sqrt": np.sqrt, "abs": np.abs, "pow": np.power,
+                            "pi": np.pi, "e": np.e,
+                            "a": 1.0, "b": 1.0, "c": 1.0, "C": 5.0, "k": 1.0, "m": 1.0}
+                if spec.get("setup"):
+                    for var_k, var_v in re.findall(r"\b([A-Za-z_]\w*)\s*=\s*(-?\d+(?:\.\d+)?)", str(spec["setup"])):
+                        eval_env[var_k] = float(var_v)
+                if spec.get("riemann"):
+                    rm = spec["riemann"]
+                    ra, rb, rn = float(rm.get("a", 0)), float(rm.get("b", 4)), max(1, int(rm.get("n", 4)))
+                    dx = (rb - ra) / rn
+                    rfn = _py_expr(rm.get("expr") or (spec.get("fns")[0] if spec.get("fns") else "0"))
+                    rule = rm.get("rule", "left")
+                    for ri in range(rn):
+                        rx1, rx2 = ra + ri * dx, ra + (ri + 1) * dx
+                        if rule == "trap":
+                            y1 = float(eval(rfn, {"__builtins__": {}}, dict(eval_env, x=rx1)))
+                            y2 = float(eval(rfn, {"__builtins__": {}}, dict(eval_env, x=rx2)))
+                            ax.add_patch(plt.Polygon([(rx1, 0), (rx1, y1), (rx2, y2), (rx2, 0)], closed=True, facecolor=INDIGO2, alpha=0.18, edgecolor=INDIGO2, linewidth=1.1, zorder=2))
+                        else:
+                            xsamp = rx2 if rule == "right" else (0.5 * (rx1 + rx2) if rule == "midpoint" else rx1)
+                            yh = float(eval(rfn, {"__builtins__": {}}, dict(eval_env, x=xsamp)))
+                            ax.add_patch(mpatches.Rectangle((rx1, min(0, yh)), dx, abs(yh), facecolor=INDIGO2, alpha=0.18, edgecolor=INDIGO2, linewidth=1.1, zorder=2))
                 for i, fn in enumerate(spec.get("fns", [])):
                     with np.errstate(all="ignore"):
                         y = eval(fn, {"__builtins__": {}}, eval_env)
@@ -966,6 +1348,18 @@ def render_figure(spec):
                     y = np.where((y > ymin - 2) & (y < ymax + 2), y, np.nan)
                     style = "--" if i >= 2 and spec.get("dashed_last") else "-"
                     ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8, linestyle=style)
+                for seg in spec.get("segments", []):
+                    ax.plot([seg["x1"], seg["x2"]], [seg["y1"], seg["y2"]],
+                            color=seg.get("color", INDIGO2), linewidth=1.9,
+                            linestyle="--" if seg.get("dash") else "-")
+                for sc in spec.get("semicircles", []):
+                    cx_sc, cy_sc, r_sc = float(sc["cx"]), float(sc["cy"]), float(sc["r"])
+                    tx = np.linspace(cx_sc - r_sc, cx_sc + r_sc, 200)
+                    dy_sc = np.sqrt(np.maximum(0.0, r_sc ** 2 - (tx - cx_sc) ** 2))
+                    ty = cy_sc + dy_sc if sc.get("upper", True) else cy_sc - dy_sc
+                    ax.plot(tx, ty, color=sc.get("color", INDIGO2), linewidth=1.9)
+                    if sc.get("shade"):
+                        ax.fill_between(tx, cy_sc, ty, color=sc.get("color", INDIGO2), alpha=0.14)
                 if spec.get("shade"):
                     sh = spec["shade"]
                     xs = np.linspace(sh.get("x0", xmin), sh.get("x1", xmax), 300)
@@ -980,9 +1374,13 @@ def render_figure(spec):
                         ax.axvline(vx, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
                     for hy in asym.get("y", []):
                         ax.axhline(hy, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
-                for sx, sy in spec.get("scatter_pts", []):
+                    for mm, bb in asym.get("slant", []):
+                        ax.plot([xmin, xmax], [mm * xmin + bb, mm * xmax + bb], color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
+                for pt in spec.get("scatter_pts", []):
+                    sx, sy = (pt["x"], pt["y"]) if isinstance(pt, dict) else (pt[0], pt[1])
                     ax.plot([sx], [sy], "o", color=AMBER, markersize=4.2, alpha=0.88, zorder=4)
-                for px, py in spec.get("points", []):
+                for pt in spec.get("points", []):
+                    px, py = (pt["x"], pt["y"]) if isinstance(pt, dict) else (pt[0], pt[1])
                     ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
                 for pl in spec.get("point_labels", []):
                     px, py = pl["x"], pl["y"]
@@ -991,6 +1389,49 @@ def render_figure(spec):
                     ax.text(px + dx, py + dy, pl["label"], fontsize=8, color=INK,
                             ha="left" if dx >= 0 else "right", va="bottom" if dy >= 0 else "top",
                             bbox=dict(boxstyle="round,pad=0.15", facecolor="white", edgecolor="none", alpha=0.8))
+            elif ftype == "shaded_region":
+                sh_spec = dict(spec)
+                sh_spec["fns"] = [_py_expr(spec.get("upper", "x")), _py_expr(spec.get("lower", "0"))]
+                fig, ax = _fig_axes(sh_spec)
+                xmin, xmax = sh_spec.get("xmin", -1), sh_spec.get("xmax", 5)
+                x = np.linspace(xmin, xmax, 400)
+                env = {"x": x, "np": np, "sin": np.sin, "cos": np.cos, "exp": np.exp, "log": np.log, "sqrt": np.sqrt}
+                y1 = np.broadcast_to(np.asarray(eval(sh_spec["fns"][0], {"__builtins__": {}}, env), dtype=float), x.shape)
+                y2 = np.broadcast_to(np.asarray(eval(sh_spec["fns"][1], {"__builtins__": {}}, env), dtype=float), x.shape)
+                ax.plot(x, y1, color=CURVE, linewidth=1.8)
+                ax.plot(x, y2, color=INDIGO2, linewidth=1.6)
+                mask = (x >= float(spec.get("a", 0))) & (x <= float(spec.get("b", 2)))
+                ax.fill_between(x[mask], y1[mask], y2[mask], color=AMBER, alpha=0.22)
+            elif ftype == "polar_graph":
+                fig, ax = plt.subplots(figsize=(3.0, 3.0))
+                _draw_polar_graph(ax, spec)
+            elif ftype == "sinusoid":
+                fig, ax = plt.subplots(figsize=(3.4, 2.3))
+                _draw_sinusoid(ax, spec)
+            elif ftype == "conic_section":
+                fig, ax = plt.subplots(figsize=(3.0, 2.8))
+                _draw_conic_section(ax, spec)
+            elif ftype == "unit_circle":
+                fig, ax = plt.subplots(figsize=(2.8, 2.8))
+                _draw_unit_circle(ax, spec)
+            elif ftype == "normal_curve":
+                fig, ax = plt.subplots(figsize=(3.5, 2.1))
+                _draw_normal_curve(ax, spec)
+            elif ftype == "histogram":
+                fig, ax = plt.subplots(figsize=(3.5, 2.4))
+                _draw_histogram(ax, spec)
+            elif ftype == "dot_plot":
+                fig, ax = plt.subplots(figsize=(3.5, 1.9))
+                _draw_dot_plot(ax, spec)
+            elif ftype == "scatter":
+                fig, ax = plt.subplots(figsize=(3.3, 2.4))
+                _draw_scatter(ax, spec)
+            elif ftype == "pie":
+                fig, ax = plt.subplots(figsize=(3.0, 2.6))
+                _draw_pie(ax, spec)
+            elif ftype in ("grouped_bar", "multi_line"):
+                fig, ax = plt.subplots(figsize=(3.6, 2.4))
+                _draw_grouped_bar(ax, spec)
             elif ftype == "triangle":
                 fig, ax = _geom_fig(spec["vertices"])
                 _draw_triangle(ax, spec)
@@ -1012,6 +1453,7 @@ def render_figure(spec):
                 _draw_numberline(ax, spec)
             elif ftype == "bars":
                 fig, ax = plt.subplots(figsize=(3.5, 2.5))
+                spec["categories"] = [_shape_if_ar(c) for c in spec.get("categories", [])]
                 _draw_bars(ax, spec)
             elif ftype == "boxplot":
                 n_g = len(spec.get("groups", [1]))
@@ -1026,22 +1468,29 @@ def render_figure(spec):
                 fig, ax = plt.subplots(figsize=(3.2, 2.1))
                 _draw_venn(ax, spec)
             elif ftype in ("table", "two_way_table"):
-                n_r = len(spec.get("rows", spec.get("row_headers", [1, 2, 3]))) + (2 if spec.get("col_totals") else 1)
-                n_c = len(spec.get("headers", spec.get("col_headers", [1, 2]))) + (2 if spec.get("cells") is not None else 0)
-                fig, ax = plt.subplots(figsize=(max(2.6, min(4.6, 0.95 * n_c)), max(1.3, 0.34 * n_r + 0.35)))
-                _draw_table(ax, spec)
+                norm_tbl = dict(spec)
+                if ftype == "two_way_table" and isinstance(norm_tbl.get("data"), list) and isinstance(norm_tbl.get("rows"), list) and isinstance(norm_tbl.get("cols"), list):
+                    norm_tbl["headers"] = [_shape_if_ar(norm_tbl.get("corner", ""))] + [_shape_if_ar(c) for c in norm_tbl["cols"]]
+                    norm_tbl["rows"] = [[_shape_if_ar(norm_tbl["rows"][ri])] + [_shape_if_ar(v) for v in norm_tbl["data"][ri]] for ri in range(len(norm_tbl["rows"]))]
+                    norm_tbl["type"] = "table"
+                else:
+                    if norm_tbl.get("headers"):
+                        norm_tbl["headers"] = [_shape_if_ar(h) for h in norm_tbl["headers"]]
+                    if norm_tbl.get("rows"):
+                        norm_tbl["rows"] = [[_shape_if_ar(c) for c in r] for r in norm_tbl["rows"]]
+                n_r = len(norm_tbl.get("rows", norm_tbl.get("row_headers", [1, 2, 3]))) + (2 if norm_tbl.get("col_totals") else 1)
+                n_c = len(norm_tbl.get("headers", norm_tbl.get("col_headers", [1, 2]))) + (2 if norm_tbl.get("cells") is not None else 0)
+                fig, ax = plt.subplots(figsize=(max(2.6, min(4.8, 0.95 * n_c)), max(1.3, 0.34 * n_r + 0.35)))
+                _draw_table(ax, norm_tbl)
             elif ftype == "transversal":
                 fig, ax = plt.subplots(figsize=(3.4, 2.15))
                 _draw_transversal(ax, spec)
             else:
                 fig, ax = _fig_axes(spec)
-        except Exception:
+        except Exception as err:
             if fig is not None:
                 plt.close(fig)
-            fig, ax = _fig_axes({"xmin": -5, "xmax": 5, "ymin": -5, "ymax": 5})
-            xs = np.linspace(-5, 5, 300)
-            ax.plot(xs, 0.35 * xs**2 - 1.5, color=CURVE, linewidth=1.8)
-            ax.plot(xs, 0.5 * xs + 1.0, color=INDIGO2, linewidth=1.6)
+            raise RuntimeError(f"Figure rendering failed for type='{ftype}': {err}") from err
         tmp_fig = os.path.join(CACHE_DIR, f"fig_{key}.{os.getpid()}.png")
         fig.savefig(tmp_fig, dpi=200, bbox_inches="tight",
                     facecolor="white", pad_inches=0.05, format="png")

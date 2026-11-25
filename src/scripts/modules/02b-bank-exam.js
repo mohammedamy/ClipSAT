@@ -1536,22 +1536,25 @@
       bankId:'precalc',
       board:'Honors Precalculus & Analytical Trigonometry',
       code:'PRECALC',
-      title:'Precalculus — Comprehensive Final Examination',
-      totalTime:'100 minutes',
-      totalMarks:'40 marks (Section A: 20 marks · Section B: 20 marks)',
+      title:'Precalculus — Comprehensive Examination (MCQ & Structured FRQ)',
+      totalTime:'145 minutes',
+      totalMarks:'64 marks (Section I MCQ: 40 marks · Section II FRQ: 24 marks)',
       letters:['A','B','C','D'],
       instructions:[
-        'This examination consists of two 50-minute sections totaling 40 questions (40 marks).',
-        'Section A (Questions 1–20) assesses function analysis, polynomials, rational asymptotes, exponentials, and logarithms.',
-        'Section B (Questions 21–40) assesses analytical trigonometry, polar coordinates, complex numbers, vectors, matrices, and conics.'
+        'This examination consists of two sections totaling 64 marks.',
+        'Section I (Questions 1–40, Non-Calc Part A + Calc Part B) assesses functions, polynomials, rational asymptotes, exponentials, logarithms, trigonometry, polar, vectors, matrices, and conics.',
+        'Section II (Free Response 1–4, 6 points each) assesses covariation tables, modeling, and multi-step justifications.'
       ],
       sections:[
-        {title:'Section A — Functions, Polynomials, Rational & Exponential/Logarithmic Analysis',time:'50 min',
+        {title:'Section I Part A — Functions, Polynomials, Rational & Exponential/Logarithmic Analysis',time:'50 min',
          note:'20 questions · 1 mark each · Non-Calculator',
          parts:[{label:'Questions 1–20',q:20,time:'50 min',calc:false,type:'mcq'}]},
-        {title:'Section B — Analytical Trigonometry, Polar, Vectors, Matrices & Conics',time:'50 min',
+        {title:'Section I Part B — Analytical Trigonometry, Polar, Vectors, Matrices & Conics',time:'50 min',
          note:'20 questions · 1 mark each · Graphing Calculator Permitted',
-         parts:[{label:'Questions 21–40',q:20,time:'50 min',calc:true,type:'mcq'}]}]},
+         parts:[{label:'Questions 21–40',q:20,time:'50 min',calc:true,type:'mcq'}]},
+        {title:'Section II — Structured Free-Response (6-pt FRQ)',time:'45 min',
+         note:'4 questions · 6 points each · Show all algebraic justifications',
+         parts:[{label:'FRQ 1–4',q:4,time:'45 min',calc:true,type:'frq',structuredOnly:true,defaultMarks:6}]}]},
 
     calculus: {
       bankId:'calculus',
@@ -2014,7 +2017,8 @@
         var rws = rawRows.map(function(r){
           return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
         }).join('');
-        return '<table class="exam-table">'+(hdrs?'<thead><tr>'+hdrs+'</tr></thead>':'')+'<tbody>'+rws+'</tbody></table>';
+        var tCls = 'exam-table' + (f.orientation === 'horizontal' ? ' exam-table-horiz' : '');
+        return '<div class="exam-table-wrap"><table class="'+tCls+'">'+(hdrs?'<thead><tr>'+hdrs+'</tr></thead>':'')+'<tbody>'+rws+'</tbody></table></div>';
       }
       if(window._renderFig) return window._renderFig(f);
       if(window.renderMathFigure) return window.renderMathFigure(f);

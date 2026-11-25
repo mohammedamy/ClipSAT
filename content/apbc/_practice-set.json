@@ -8,7 +8,7 @@
       "levelLabel": "FRQ",
       "question": {
         "en": "For \\(x=\\cos t,\\ y=\\sin t\\), find \\(\\dfrac{dy}{dx}\\) at \\(t=\\tfrac{\\pi}{2}\\).",
-        "ar": "للدالة \\(x=\\cos t,\\ y=\\sin t\\), أوجد \\(\\dfrac{dy}{dx}\\) at \\(t=\\tfrac{\\pi}{2}\\)."
+        "ar": null
       },
       "solution": {
         "en": "<p><strong>Theorem (Parametric Derivatives):</strong> If \\(x(t)\\) and \\(y(t)\\) are differentiable functions of \\(t\\) and \\(x'(t) \\ne 0\\), the first derivative of \\(y\\) with respect to \\(x\\) is given by: \\[\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{dy/dt}{dx/dt}.\\]</p><p><strong>Step 1 · Differentiate both parametric components with respect to \\(t\\):</strong> \\[\\frac{dx}{dt} = \\frac{d}{dt}[\\cos t] = -\\sin t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[\\sin t] = \\cos t.\\]</p><p><strong>Step 2 · Form the derivative ratio:</strong> \\[\\frac{dy}{dx} = \\frac{\\cos t}{-\\sin t} = -\\cot t.\\]</p><p><strong>Step 3 · Evaluate at \\(t = \\tfrac{\\pi}{2}\\):</strong> \\[\\left.\\frac{dy}{dx}\\right|_{t=\\pi/2} = -\\cot\\left(\\frac{\\pi}{2}\\right) = -\\frac{\\cos(\\pi/2)}{\\sin(\\pi/2)} = -\\frac{0}{1} = \\mathbf{0}.\\]</p><p><em>Geometric Interpretation:</em> At \\(t = \\tfrac{\\pi}{2}\\), the point on the unit circle is \\((x, y) = (0, 1)\\). Since \\(x'(\\pi/2) = -1 \\ne 0\\) and \\(y'(\\pi/2) = 0\\), the curve has a horizontal tangent line \\(y = 1\\).</p>",
@@ -26,12 +26,31 @@
       "difficulty": "Basic",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Does \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^2}\\) converge or diverge?",
+        "en": "Rate Table (chemical titration run #800): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (\\(p\\)-Series Convergence Test):</strong> The infinite series \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^p}\\) converges if and only if \\(p \\gt 1\\), and diverges if \\(p \\le 1\\).</p><p><strong>Step 1 · Identify the series parameter \\(p\\):</strong><br>The general term is \\(a_n = \\frac{1}{n^2}\\), which is a \\(p\\)-series with exponent \\(p = 2\\).</p><p><strong>Step 2 · Test against convergence condition:</strong><br>Because \\(p = 2 \\gt 1\\), the series <strong>converges</strong> by the \\(p\\)-Series Test.</p><p><em>Analytical Note:</em> By Euler's classical Basel solution, this series converges to the exact sum: \\[\\sum_{n=1}^{\\infty}\\frac{1}{n^2} = \\frac{\\pi^2}{6} \\approx 1.64493.\\]</p><p><strong>Conclusion:</strong> \\(\\mathbf{\\text{Converges by the } p\\text{-Series Test } (p = 2 \\gt 1)}\\).</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "3",
+          "5",
+          "7"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "2",
+            "4",
+            "8"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [3, 7] (Table #800)"
       }
     },
     {
@@ -58,12 +77,31 @@
       "difficulty": "Basic",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int_0^{2} 6x^2\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int_0^{2} 6x^2\\,dx\\)."
+        "en": "Rate Table (hydroelectric sluice #802): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Fundamental Theorem of Calculus, Part 2):</strong> If \\(f\\) is continuous on \\([a, b]\\) and \\(F\\) is any antiderivative of \\(f\\) such that \\(F'(x) = f(x)\\), then: \\[\\int_a^b f(x)\\,dx = F(b) - F(a) = \\Big[ F(x) \\Big]_a^b.\\]</p><p><strong>Step 1 · Find the indefinite antiderivative \\(F(x)\\):</strong><br>Using the power rule of integration \\(\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C\\): \\[F(x) = \\int 6x^2\\,dx = 6 \\cdot \\frac{x^3}{3} = 2x^3.\\]</p><p><strong>Step 2 · Evaluate at the upper and lower limits:</strong> \\[\\int_0^2 6x^2\\,dx = \\Big[ 2x^3 \\Big]_0^2 = 2(2)^3 - 2(0)^3 = 2(8) - 0 = \\mathbf{16}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "6"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "4",
+            "6",
+            "10"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [2, 6] (Table #802)"
       }
     },
     {
@@ -72,7 +110,7 @@
       "levelLabel": "MCQ",
       "question": {
         "en": "Evaluate \\(\\displaystyle\\lim_{x\\to 0}\\frac{\\tan x}{x}\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\lim_{x\\to 0}\\frac{\\tan x}{x}\\)."
+        "ar": null
       },
       "solution": {
         "en": "<p><strong>Method 1 · Trigonometric Limit Decomposition:</strong><br>Express \\(\\tan x\\) in terms of sine and cosine: \\[\\frac{\\tan x}{x} = \\frac{\\sin x}{x \\cos x} = \\left(\\frac{\\sin x}{x}\\right) \\cdot \\left(\\frac{1}{\\cos x}\\right).\\] Applying limit product laws and the fundamental trigonometric limit \\(\\lim_{x\\to 0}\\frac{\\sin x}{x} = 1\\): \\[\\lim_{x\\to 0}\\frac{\\tan x}{x} = \\left(\\lim_{x\\to 0}\\frac{\\sin x}{x}\\right) \\cdot \\left(\\lim_{x\\to 0}\\frac{1}{\\cos x}\\right) = (1) \\cdot \\left(\\frac{1}{\\cos 0}\\right) = (1) \\cdot (1) = \\mathbf{1}.\\]</p><p><strong>Method 2 · L'H&ocirc;pital's Rule (Indeterminate Form \\(\\tfrac{0}{0}\\)):</strong><br>Direct substitution yields \\(\\frac{\\tan 0}{0} = \\frac{0}{0}\\). Since both numerator and denominator are differentiable near \\(x = 0\\): \\[\\lim_{x\\to 0}\\frac{\\tan x}{x} \\stackrel{\\text{H}}{=} \\lim_{x\\to 0}\\frac{\\frac{d}{dx}[\\tan x]}{\\frac{d}{dx}[x]} = \\lim_{x\\to 0}\\frac{\\sec^2 x}{1} = \\sec^2(0) = \\mathbf{1}.\\]</p>",
@@ -90,12 +128,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int x\\,e^{x^2}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int x\\,e^{x^2}\\,dx\\)."
+        "en": "Rate Table (reservoir inflow #804): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Integration by Substitution (\\(u\\)-Substitution):</strong></p><p><strong>Step 1 · Identify inner function and differential:</strong><br>Notice that the derivative of \\(x^2\\) is \\(2x\\), and the integrand contains the factor \\(x\\,dx\\). Let: \\[u = x^2 \\implies du = 2x\\,dx \\implies x\\,dx = \\frac{1}{2}\\,du.\\]</p><p><strong>Step 2 · Substitute into the integral:</strong> \\[\\int x e^{x^2}\\,dx = \\int e^{x^2} (x\\,dx) = \\int e^u \\left(\\frac{1}{2}\\,du\\right) = \\frac{1}{2}\\int e^u\\,du.\\]</p><p><strong>Step 3 · Integrate and substitute back \\(u = x^2\\):</strong> \\[\\frac{1}{2} e^u + C = \\mathbf{\\frac{1}{2} e^{x^2} + C}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "1",
+          "3",
+          "5"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "6",
+            "8",
+            "12"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [1, 5] (Table #804)"
       }
     },
     {
@@ -103,12 +160,42 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int \\frac{1}{1+x^2}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int \\frac{1}{1+x^2}\\,dx\\)."
+        "en": "Derivative Curve (orbital telemetry pass #801): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Standard Inverse Trigonometric Antiderivative):</strong><br>By the Fundamental Theorem of Calculus, integration is the reverse operation of differentiation. Since \\(\\frac{d}{dx}[\\arctan x] = \\frac{1}{1+x^2}\\), we have: \\[\\int \\frac{1}{1+x^2}\\,dx = \\mathbf{\\arctan(x) + C}.\\]</p><p><em>General Form:</em> More broadly, for any nonzero real constant \\(a\\): \\[\\int \\frac{1}{a^2 + x^2}\\,dx = \\frac{1}{a}\\arctan\\left(\\frac{x}{a}\\right) + C.\\]</p>",
+        "en": "<p>Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 2\\) is \\(2(2) = 4\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "1*x*x",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 2,
+            "y": 4,
+            "label": "(2, 4)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Curve f(x) = 1x² with marked point (#801)"
       }
     },
     {
@@ -116,12 +203,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int x\\,e^{x}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int x\\,e^{x}\\,dx\\)."
+        "en": "BC Series Table (autonomous rover motion #806): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Integration by Parts Formula):</strong> For continuously differentiable functions \\(u(x)\\) and \\(v(x)\\): \\[\\int u\\,dv = uv - \\int v\\,du.\\]</p><p><strong>Step 1 · Choose \\(u\\) and \\(dv\\) via LIATE protocol:</strong><br>Algebraic (\\(x\\)) precedes Exponential (\\(e^x\\)), so set: \\[u = x \\implies du = dx, \\quad dv = e^x\\,dx \\implies v = \\int e^x\\,dx = e^x.\\]</p><p><strong>Step 2 · Apply the formula:</strong> \\[\\int x e^x\\,dx = x e^x - \\int e^x\\,dx.\\]</p><p><strong>Step 3 · Integrate the remaining term:</strong> \\[x e^x - e^x + C = \\mathbf{(x - 1)e^x + C}.\\]</p>",
+        "en": "<p>\\(P_2(x) = 1 + 5x + \\frac{6}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 3 = 9\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Order \\(n\\)",
+          "\\(0\\)",
+          "\\(1\\)",
+          "\\(2\\)"
+        ],
+        "rows": [
+          [
+            "\\(f^{(n)}(0)\\)",
+            "1",
+            "5",
+            "6"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Maclaurin derivatives at x = 0 (Table #806)"
       }
     },
     {
@@ -129,12 +235,27 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int x\\sin x\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int x\\sin x\\,dx\\)."
+        "en": "Polar Graph (heat exchanger test #803): The polar rose \\(r = 5\\sin(2\\theta)\\) traces four equal petals over \\(0 \\le \\theta \\le 2\\pi\\). Find the total area enclosed by all four petals.",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Integration by Parts (LIATE Selection):</strong></p><p><strong>Step 1 · Assign \\(u\\) and \\(dv\\):</strong><br>Algebraic (\\(x\\)) precedes Trigonometric (\\(\\sin x\\)), so set: \\[u = x \\implies du = dx, \\quad dv = \\sin x\\,dx \\implies v = -\\cos x.\\]</p><p><strong>Step 2 · Apply \\(\\int u\\,dv = uv - \\int v\\,du\\):</strong> \\[\\int x\\sin x\\,dx = x(-\\cos x) - \\int (-\\cos x)\\,dx = -x\\cos x + \\int \\cos x\\,dx.\\]</p><p><strong>Step 3 · Integrate:</strong> \\[-x\\cos x + \\sin x + C = \\mathbf{\\sin x - x\\cos x + C}.\\]</p>",
+        "en": "<p>Total enclosed area across \\([0, 2\\pi]\\) is \\(\\frac{1}{2}\\int_0^{2\\pi} 25\\sin^2(2\\theta)\\,d\\theta = \\frac{25}{2}\\pi\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "polar_graph",
+        "curves": [
+          {
+            "rExpr": "5*sin(2*t)",
+            "color": "#2563eb",
+            "label": "r = 5sin(2θ)",
+            "tMin": 0,
+            "tMax": 6.2832
+          }
+        ],
+        "rMax": 6,
+        "thetaStepDeg": 30,
+        "caption": "Four-petal polar rose (Exhibit #803)"
       }
     },
     {
@@ -142,12 +263,31 @@
       "difficulty": "Advanced",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int \\frac{1}{x^2-1}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int \\frac{1}{x^2-1}\\,dx\\)."
+        "en": "BC Series Table (solar array output #808): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Partial Fraction Decomposition (Distinct Linear Factors):</strong></p><p><strong>Step 1 · Factor the denominator:</strong> \\[\\frac{1}{x^2 - 1} = \\frac{1}{(x - 1)(x + 1)} = \\frac{A}{x - 1} + \\frac{B}{x + 1}.\\]</p><p><strong>Step 2 · Solve for coefficients via Heaviside Cover-Up:</strong> \\[A = \\left.\\frac{1}{x + 1}\\right|_{x=1} = \\frac{1}{1 + 1} = \\frac{1}{2}, \\quad B = \\left.\\frac{1}{x - 1}\\right|_{x=-1} = \\frac{1}{-1 - 1} = -\\frac{1}{2}.\\]</p><p><strong>Step 3 · Integrate term by term:</strong> \\[\\int \\frac{1}{x^2-1}\\,dx = \\frac{1}{2}\\int \\frac{1}{x-1}\\,dx - \\frac{1}{2}\\int \\frac{1}{x+1}\\,dx = \\frac{1}{2}\\ln|x-1| - \\frac{1}{2}\\ln|x+1| + C.\\]</p><p><strong>Step 4 · Combine logarithms:</strong> \\[\\mathbf{\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right| + C}.\\]</p>",
+        "en": "<p>\\(P_2(x) = 1 + 3x + \\frac{10}{2!}x^2\\), so \\(P_2(1) = 1 + 3 + 5 = 9\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Order \\(n\\)",
+          "\\(0\\)",
+          "\\(1\\)",
+          "\\(2\\)"
+        ],
+        "rows": [
+          [
+            "\\(f^{(n)}(0)\\)",
+            "1",
+            "3",
+            "10"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Maclaurin derivatives at x = 0 (Table #808)"
       }
     },
     {
@@ -155,12 +295,42 @@
       "difficulty": "Advanced",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int_1^{\\infty}\\frac{1}{x^2}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int_1^{\\infty}\\frac{1}{x^2}\\,dx\\)."
+        "en": "Derivative Curve (bio-reactor temperature #805): For the plotted parabola \\(f(x) = 2x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Improper Integral with Infinite Limit):</strong> An improper integral with an infinite upper limit is formally defined as the limit of proper definite integrals: \\[\\int_a^{\\infty} f(x)\\,dx = \\lim_{b\\to\\infty}\\int_a^b f(x)\\,dx.\\]</p><p><strong>Step 1 · Express as a formal limit:</strong> \\[\\int_1^{\\infty}\\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx.\\]</p><p><strong>Step 2 · Apply the Fundamental Theorem of Calculus:</strong> \\[\\int_1^b x^{-2}\\,dx = \\Big[ -x^{-1} \\Big]_1^b = \\Big[ -\\frac{1}{x} \\Big]_1^b = \\left(-\\frac{1}{b}\\right) - \\left(-\\frac{1}{1}\\right) = 1 - \\frac{1}{b}.\\]</p><p><strong>Step 3 · Evaluate the limit as \\(b \\to \\infty\\):</strong> \\[\\lim_{b\\to\\infty}\\left(1 - \\frac{1}{b}\\right) = 1 - 0 = \\mathbf{1}.\\]</p><p><strong>Conclusion:</strong> The improper integral converges to \\(\\mathbf{1}\\) (consistent with the \\(p\\)-integral test with \\(p = 2 \\gt 1\\)).</p>",
+        "en": "<p>Since \\(f'(x) = 4x\\), the instantaneous rate at \\(x = 2\\) is \\(4(2) = 8\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4
+        ],
+        "yl": [
+          0,
+          20
+        ],
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "2*x*x",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 2,
+            "y": 8,
+            "label": "(2, 8)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Curve f(x) = 2x² with marked point (#805)"
       }
     },
     {
@@ -168,12 +338,31 @@
       "difficulty": "Advanced",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\int_0^{\\infty} e^{-x}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\int_0^{\\infty} e^{-x}\\,dx\\)."
+        "en": "BC Series Table (aquifer recharge curve #810): The table lists derivatives of \\(f\\) at \\(x = 0\\). What is \\(P_2(1)\\), where \\(P_2\\) is the second-degree Maclaurin polynomial for \\(f\\)?",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Improper Exponential Integral):</strong> Formulate the integral as the limit of proper definite integrals: \\[\\int_0^{\\infty} e^{-x}\\,dx = \\lim_{b\\to\\infty}\\int_0^b e^{-x}\\,dx.\\]</p><p><strong>Step 1 · Antidifferentiate:</strong> \\[\\int_0^b e^{-x}\\,dx = \\Big[ -e^{-x} \\Big]_0^b = (-e^{-b}) - (-e^0) = 1 - e^{-b} = 1 - \\frac{1}{e^b}.\\]</p><p><strong>Step 2 · Evaluate the limit:</strong><br>Since \\(\\lim_{b\\to\\infty} e^b = \\infty\\), we have \\(\\lim_{b\\to\\infty} \\frac{1}{e^b} = 0\\): \\[\\lim_{b\\to\\infty}\\left(1 - \\frac{1}{e^b}\\right) = 1 - 0 = \\mathbf{1}.\\]</p><p><strong>Conclusion:</strong> The improper integral converges to \\(\\mathbf{1}\\).</p>",
+        "en": "<p>\\(P_2(x) = 1 + 5x + \\frac{4}{2!}x^2\\), so \\(P_2(1) = 1 + 5 + 2 = 8\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "Order \\(n\\)",
+          "\\(0\\)",
+          "\\(1\\)",
+          "\\(2\\)"
+        ],
+        "rows": [
+          [
+            "\\(f^{(n)}(0)\\)",
+            "1",
+            "5",
+            "4"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Maclaurin derivatives at x = 0 (Table #810)"
       }
     },
     {
@@ -181,30 +370,42 @@
       "difficulty": "Basic",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\sum_{n=0}^{\\infty}\\Big(\\tfrac12\\Big)^{n}\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\sum_{n=0}^{\\infty}\\Big(\\tfrac12\\Big)^{n}\\)."
+        "en": "Derivative Curve (coastal tide flux #807): For the plotted parabola \\(f(x) = 1x^2\\), determine the instantaneous rate of change \\(f'(4)\\) at the marked point.",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Geometric Series Sum Formula):</strong> For an infinite geometric series \\(\\displaystyle\\sum_{n=0}^{\\infty} a r^n\\), the series converges if and only if \\(|r| \\lt 1\\), and its sum is given by: \\[S = \\frac{a}{1 - r}.\\]</p><p><strong>Step 1 · Identify parameters:</strong><br>Initial term (\\(n = 0\\)): \\(a = \\left(\\tfrac{1}{2}\\right)^0 = 1\\).<br>Common ratio: \\(r = \\frac{1}{2}\\).</p><p><strong>Step 2 · Check convergence criterion:</strong><br>\\(|r| = |1/2| = 0.5 \\lt 1\\), so the series converges.</p><p><strong>Step 3 · Compute the sum:</strong> \\[S = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = \\mathbf{2}.\\]</p>",
+        "en": "<p>Since \\(f'(x) = 2x\\), the instantaneous rate at \\(x = 4\\) is \\(2(4) = 8\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
       },
       "fig": {
         "type": "fn",
-        "title": "Analytical Function Profile",
+        "xl": [
+          0,
+          6
+        ],
+        "yl": [
+          0,
+          27
+        ],
+        "xStep": 1,
+        "yStep": 5,
         "fns": [
           {
-            "fn": "0.25*x*x*x - 0.75*x + 1.5",
-            "color": "#2563eb"
+            "fn": "1*x*x",
+            "color": "#2563eb",
+            "label": "y = f(x)"
           }
         ],
-        "xrange": [
-          -3,
-          3
+        "pts": [
+          {
+            "x": 4,
+            "y": 16,
+            "label": "(4, 16)"
+          }
         ],
-        "yrange": [
-          -2,
-          5
-        ]
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Curve f(x) = 1x² with marked point (#807)"
       }
     },
     {
@@ -212,12 +413,31 @@
       "difficulty": "Basic",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Does \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac1n\\) converge?",
+        "en": "Rate Table (chemical titration run #812): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Divergence of the Harmonic Series):</strong> The series \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n}\\) is the fundamental <strong>Harmonic Series</strong>.</p><p><strong>Proof via \\(p\\)-Series Test:</strong><br>A \\(p\\)-series \\(\\sum \\frac{1}{n^p}\\) converges if and only if \\(p \\gt 1\\). Here, \\(p = 1 \\le 1\\), so the series <strong>diverges</strong>.</p><p><strong>Alternative Proof via Integral Test:</strong><br>The function \\(f(x) = \\frac{1}{x}\\) is positive, continuous, and strictly decreasing on \\([1, \\infty)\\): \\[\\int_1^{\\infty}\\frac{1}{x}\\,dx = \\lim_{b\\to\\infty}\\Big[ \\ln x \\Big]_1^b = \\lim_{b\\to\\infty}(\\ln b - 0) = \\infty.\\] Because the improper integral diverges, the series \\(\\sum_{n=1}^{\\infty}\\frac{1}{n}\\) diverges.</p><p><strong>Conclusion:</strong> \\(\\mathbf{\\text{Diverges}}\\).</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "3",
+          "5",
+          "7"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "4",
+            "6",
+            "10"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [3, 7] (Table #812)"
       }
     },
     {
@@ -225,12 +445,42 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Does \\(\\displaystyle\\sum_{n=0}^{\\infty}(0.9)^{n}\\) converge, and to what?",
+        "en": "Derivative Curve (battery charging session #809): For the plotted parabola \\(f(x) = 3x^2\\), determine the instantaneous rate of change \\(f'(2)\\) at the marked point.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Geometric Series Convergence & Sum:</strong></p><p><strong>Step 1 · Identify series parameters:</strong><br>Initial term: \\(a = (0.9)^0 = 1\\).<br>Common ratio: \\(r = 0.9 = \\frac{9}{10}\\).</p><p><strong>Step 2 · Test convergence:</strong><br>\\(|r| = 0.9 \\lt 1\\), therefore the series <strong>converges</strong>.</p><p><strong>Step 3 · Calculate exact sum:</strong> \\[S = \\frac{a}{1 - r} = \\frac{1}{1 - 0.9} = \\frac{1}{0.1} = \\mathbf{10}.\\]</p><p><strong>Conclusion:</strong> \\(\\mathbf{\\text{Converges to } 10}\\).</p>",
+        "en": "<p>Since \\(f'(x) = 6x\\), the instantaneous rate at \\(x = 2\\) is \\(6(2) = 12\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4
+        ],
+        "yl": [
+          0,
+          29
+        ],
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "3*x*x",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 2,
+            "y": 12,
+            "label": "(2, 12)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Curve f(x) = 3x² with marked point (#809)"
       }
     },
     {
@@ -238,12 +488,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Does \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{\\sqrt{n}}\\) converge?",
+        "en": "Rate Table (hydroelectric sluice #814): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (\\(p\\)-Series Test with Fractional Exponents):</strong></p><p><strong>Step 1 · Rewrite general term as a power of \\(n\\):</strong> \\[a_n = \\frac{1}{\\sqrt{n}} = \\frac{1}{n^{1/2}}.\\]</p><p><strong>Step 2 · Apply \\(p\\)-series criteria:</strong><br>The series is of the form \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^p}\\) with exponent \\(p = \\frac{1}{2} = 0.5\\).<br>Because \\(p = 0.5 \\le 1\\), the series diverges.</p><p><strong>Conclusion:</strong> \\(\\mathbf{\\text{Diverges by the } p\\text{-Series Test } (p = 0.5 \\le 1)}\\).</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "6"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "6",
+            "8",
+            "12"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [2, 6] (Table #814)"
       }
     },
     {
@@ -251,12 +520,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Does \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{n}{n+1}\\) converge?",
+        "en": "Riemann Plot (wind turbine telemetry #811): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (\\(n\\)th-Term Divergence Test):</strong> If \\(\\lim_{n\\to\\infty} a_n \\ne 0\\) or does not exist, then the infinite series \\(\\displaystyle\\sum_{n=1}^{\\infty} a_n\\) diverges.</p><p><strong>Step 1 · Evaluate the limit of the general term as \\(n \\to \\infty\\):</strong> \\[\\lim_{n\\to\\infty} a_n = \\lim_{n\\to\\infty}\\frac{n}{n + 1} = \\lim_{n\\to\\infty}\\frac{1}{1 + \\frac{1}{n}} = \\frac{1}{1 + 0} = 1.\\]</p><p><strong>Step 2 · Apply the test:</strong><br>Since \\(\\lim_{n\\to\\infty} a_n = 1 \\ne 0\\), the sequence of terms does not approach zero. Therefore, the series cannot converge.</p><p><strong>Conclusion:</strong> \\(\\mathbf{\\text{Diverges by the } n\\text{th-Term Divergence Test}}\\).</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 2x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "2*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #811)"
       }
     },
     {
@@ -264,30 +564,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\sum_{n=0}^{\\infty} 3\\Big(\\tfrac14\\Big)^{n}\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\sum_{n=0}^{\\infty} 3\\Big(\\tfrac14\\Big)^{n}\\)."
+        "en": "Rate Table (reservoir inflow #816): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Geometric Series Sum Evaluation:</strong></p><p><strong>Step 1 · Identify series parameters:</strong><br>Initial term (\\(n = 0\\)): \\(a = 3 \\cdot \\left(\\tfrac{1}{4}\\right)^0 = 3 \\cdot 1 = 3\\).<br>Common ratio: \\(r = \\frac{1}{4}\\).</p><p><strong>Step 2 · Check convergence condition:</strong><br>\\(|r| = \\frac{1}{4} \\lt 1\\), so the series converges absolutely.</p><p><strong>Step 3 · Compute the sum:</strong> \\[S = \\frac{a}{1 - r} = \\frac{3}{1 - 1/4} = \\frac{3}{3/4} = 3 \\cdot \\frac{4}{3} = \\mathbf{4}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "title": "Analytical Function Profile",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x + 1.5",
-            "color": "#2563eb"
-          }
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "1",
+          "3",
+          "5"
         ],
-        "xrange": [
-          -3,
-          3
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "3",
+            "5",
+            "9"
+          ]
         ],
-        "yrange": [
-          -2,
-          5
-        ]
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [1, 5] (Table #816)"
       }
     },
     {
@@ -295,12 +596,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "For what \\(x\\) does \\(\\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^n}{n!}\\) converge?",
+        "en": "Riemann Plot (orbital telemetry pass #813): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Ratio Test for Absolute Convergence):</strong> For an infinite series \\(\\displaystyle\\sum a_n\\), evaluate \\(L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|\\). The series converges absolutely when \\(L \\lt 1\\).</p><p><strong>Step 1 · Set up the ratio for \\(a_n = \\frac{x^n}{n!}\\):</strong> \\[L = \\lim_{n\\to\\infty}\\left| \\frac{x^{n+1}}{(n+1)!} \\cdot \\frac{n!}{x^n} \\right| = \\lim_{n\\to\\infty}\\left| \\frac{x \\cdot x^n}{(n+1) \\cdot n!} \\cdot \\frac{n!}{x^n} \\right| = \\lim_{n\\to\\infty}\\frac{|x|}{n + 1}.\\]</p><p><strong>Step 2 · Evaluate the limit for any real number \\(x\\):</strong><br>For any fixed \\(x \\in \\mathbb{R}\\), \\(|x|\\) is a finite constant, whereas \\(n + 1 \\to \\infty\\): \\[L = |x| \\lim_{n\\to\\infty}\\frac{1}{n + 1} = |x| \\cdot 0 = 0.\\]</p><p><strong>Step 3 · Conclude interval and radius of convergence:</strong><br>Since \\(L = 0 \\lt 1\\) for every real value of \\(x\\), the series converges absolutely for <strong>all real numbers</strong>: \\[\\mathbf{x \\in (-\\infty, \\infty)}, \\quad \\text{Radius of Convergence: } \\mathbf{R = \\infty}.\\]</p><p><em>Identity:</em> This is the Maclaurin series representation of \\(e^x\\).</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          7
+        ],
+        "xStep": 1,
+        "yStep": 1,
+        "fns": [
+          {
+            "fn": "1*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 1x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "1*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #813)"
       }
     },
     {
@@ -308,12 +640,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Give the first three nonzero terms of the Maclaurin series for \\(\\sin x\\).",
+        "en": "Rate Table (autonomous rover motion #818): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Maclaurin Series for Sine):</strong> The sine function is odd, so its Maclaurin series contains exclusively odd powers of \\(x\\) with alternating signs.</p><p><strong>Step 1 · Compute successive derivatives at \\(x = 0\\):</strong><br>\\(f(x) = \\sin x \\implies f(0) = 0\\)<br>\\(f'(x) = \\cos x \\implies f'(0) = 1\\)<br>\\(f''(x) = -\\sin x \\implies f''(0) = 0\\)<br>\\(f'''(x) = -\\cos x \\implies f'''(0) = -1\\)<br>\\(f^{(4)}(x) = \\sin x \\implies f^{(4)}(0) = 0\\)<br>\\(f^{(5)}(x) = \\cos x \\implies f^{(5)}(0) = 1\\)</p><p><strong>Step 2 · Form the first three nonzero terms:</strong> \\[\\frac{f'(0)}{1!}x + \\frac{f'''(0)}{3!}x^3 + \\frac{f^{(5)}(0)}{5!}x^5 = \\mathbf{x - \\frac{x^3}{3!} + \\frac{x^5}{5!}} = \\mathbf{x - \\frac{x^3}{6} + \\frac{x^5}{120}}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 30\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "3",
+          "5",
+          "7"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "5",
+            "7",
+            "11"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [3, 7] (Table #818)"
       }
     },
     {
@@ -321,12 +672,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Give the first three terms of the Maclaurin series for \\(\\cos x\\).",
+        "en": "Riemann Plot (heat exchanger test #815): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Maclaurin Series for Cosine):</strong> The cosine function is even, so its Maclaurin series consists exclusively of even powers of \\(x\\) with alternating signs.</p><p><strong>Step 1 · General Maclaurin formula for \\(\\cos x\\):</strong> \\[\\cos x = \\sum_{n=0}^{\\infty} (-1)^n \\frac{x^{2n}}{(2n)!}.\\]</p><p><strong>Step 2 · Write out the terms for \\(n = 0, 1, 2\\):</strong><br>\\(n = 0 \\implies (-1)^0 \\frac{x^0}{0!} = 1\\)<br>\\(n = 1 \\implies (-1)^1 \\frac{x^2}{2!} = -\\frac{x^2}{2}\\)<br>\\(n = 2 \\implies (-1)^2 \\frac{x^4}{4!} = +\\frac{x^4}{24}\\)</p><p><strong>Conclusion:</strong> The first three terms are: \\[\\mathbf{1 - \\frac{x^2}{2!} + \\frac{x^4}{4!}} = \\mathbf{1 - \\frac{x^2}{2} + \\frac{x^4}{24}}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "3*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 3x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "3*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #815)"
       }
     },
     {
@@ -334,30 +716,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Use a two-term Maclaurin polynomial for \\(e^{x}\\) to approximate \\(e^{0.1}\\).",
+        "en": "Rate Table (solar array output #820): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Taylor/Maclaurin Polynomial Approximation:</strong></p><p><strong>Step 1 · Define the two-term (degree 1) Maclaurin polynomial for \\(e^x\\):</strong> \\[P_1(x) = 1 + x.\\]</p><p><strong>Step 2 · Evaluate at \\(x = 0.1\\):</strong> \\[P_1(0.1) = 1 + 0.1 = \\mathbf{1.1}.\\]</p><p><strong>Step 3 · Error analysis via Lagrange Remainder:</strong><br>By Taylor's Theorem: \\[|R_1(0.1)| = \\left| \\frac{f''(c)}{2!} (0.1)^2 \\right| = \\frac{e^c}{2}(0.01) \\quad \\text{for some } c \\in (0, 0.1).\\] Since \\(e^c \\lt e^{0.1} \\lt 1.2\\), \\(|R_1(0.1)| \\lt \\frac{1.2}{2}(0.01) = 0.006\\).<br>Exact value: \\(e^{0.1} \\approx 1.10517\\). The two-term approximation \\(\\mathbf{1.1}\\) captures the true value within \\(0.47\\%\\).</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(2 + 4) + \\frac{2}{2}(4 + 8) = 18\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "title": "Analytical Function Profile",
-        "fns": [
-          {
-            "fn": "0.25*x*x*x - 0.75*x + 1.5",
-            "color": "#2563eb"
-          }
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "6"
         ],
-        "xrange": [
-          -3,
-          3
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "2",
+            "4",
+            "8"
+          ]
         ],
-        "yrange": [
-          -2,
-          5
-        ]
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [2, 6] (Table #820)"
       }
     },
     {
@@ -365,12 +748,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Find the interval of convergence of \\(\\displaystyle\\sum_{n=0}^{\\infty} x^{n}\\).",
-        "ar": "أوجد فترة التقارب of \\(\\displaystyle\\sum_{n=0}^{\\infty} x^{n}\\)."
+        "en": "Riemann Plot (bio-reactor temperature #817): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Interval of Convergence for Geometric Power Series):</strong> The series \\(\\displaystyle\\sum_{n=0}^{\\infty} x^n\\) is a geometric series with common ratio \\(r = x\\).</p><p><strong>Step 1 · Apply Geometric Convergence Criterion:</strong><br>An infinite geometric series converges if and only if \\(|r| \\lt 1\\). Therefore: \\[|x|  \\lt  1 \\implies -1  \\lt  x  \\lt  1.\\] Radius of convergence is \\(R = 1\\), centered at \\(c = 0\\).</p><p><strong>Step 2 · Test the boundary endpoints:</strong><br>At \\(x = 1\\): \\(\\sum 1^n = 1 + 1 + 1 + \\dots\\) diverges by the \\(n\\)th-term test (\\(\\lim_{n\\to\\infty} 1 = 1 \\ne 0\\)).<br>At \\(x = -1\\): \\(\\sum (-1)^n = 1 - 1 + 1 - 1 + \\dots\\) diverges by oscillation (\\(\\lim_{n\\to\\infty} (-1)^n\\) DNE).</p><p><strong>Conclusion:</strong> Neither endpoint is included. The interval of convergence is strictly: \\[\\mathbf{(-1, 1)}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 2x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "2*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #817)"
       }
     },
     {
@@ -378,12 +792,31 @@
       "difficulty": "Advanced",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Evaluate \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}\\).",
-        "ar": "احسب قيمة \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}\\)."
+        "en": "Rate Table (aquifer recharge curve #822): A continuous rate \\(R(t)\\) is sampled in the table over \\([1, 5]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{1}^{5} R(t)\\,dt\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Telescoping Series Evaluation via Partial Fractions:</strong></p><p><strong>Step 1 · Decompose general term:</strong> \\[\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}.\\]</p><p><strong>Step 2 · Write out the \\(N\\)th partial sum \\(S_N\\):</strong> \\[S_N = \\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) = \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\dots + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right).\\]</p><p><strong>Step 3 · Cancel intermediate terms:</strong><br>Every internal term cancels symmetrically, leaving only the first and last components: \\[S_N = 1 - \\frac{1}{N+1}.\\]</p><p><strong>Step 4 · Take the limit as \\(N \\to \\infty\\):</strong> \\[S = \\lim_{N\\to\\infty} S_N = \\lim_{N\\to\\infty}\\left(1 - \\frac{1}{N+1}\\right) = 1 - 0 = \\mathbf{1}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 26\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "1",
+          "3",
+          "5"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "4",
+            "6",
+            "10"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [1, 5] (Table #822)"
       }
     },
     {
@@ -391,12 +824,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Does \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^n}{n}\\) converge?",
+        "en": "Riemann Plot (coastal tide flux #819): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Alternating Series Test / Leibniz's Theorem):</strong> An alternating series of the form \\(\\displaystyle\\sum_{n=1}^{\\infty} (-1)^n b_n\\) or \\(\\sum_{n=1}^{\\infty} (-1)^{n+1} b_n\\) converges if all three conditions are satisfied:<br>1. \\(b_n \\gt 0\\) for all \\(n\\);<br>2. \\(b_{n+1} \\le b_n\\) for all \\(n \\ge N\\) (sequence of magnitudes is monotonically decreasing);<br>3. \\(\\lim_{n\\to\\infty} b_n = 0\\).</p><p><strong>Verification for \\(b_n = \\frac{1}{n}\\):</strong><br>1. \\(b_n = \\frac{1}{n} \\gt 0\\) for all integers \\(n \\ge 1\\).<br>2. \\(b_{n+1} = \\frac{1}{n+1} \\lt \\frac{1}{n} = b_n\\) holds for all \\(n \\ge 1\\).<br>3. \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\).</p><p><strong>Conclusion:</strong> All three hypotheses are met, so the series <strong>converges</strong> (conditionally, with exact sum \\(-\\ln 2\\)).</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          7
+        ],
+        "xStep": 1,
+        "yStep": 1,
+        "fns": [
+          {
+            "fn": "1*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 1x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "1*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #819)"
       }
     },
     {
@@ -404,12 +868,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Find the radius of convergence of \\(\\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^n}{2^n}\\).",
-        "ar": "أوجد نصف قطر التقارب of \\(\\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^n}{2^n}\\)."
+        "en": "Rate Table (chemical titration run #824): A continuous rate \\(R(t)\\) is sampled in the table over \\([3, 7]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{3}^{7} R(t)\\,dt\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Ratio Test for Radius of Convergence):</strong></p><p><strong>Step 1 · Set up ratio limit for \\(a_n = \\frac{x^n}{2^n}\\):</strong> \\[L = \\lim_{n\\to\\infty}\\left| \\frac{x^{n+1}}{2^{n+1}} \\cdot \\frac{2^n}{x^n} \\right| = \\lim_{n\\to\\infty}\\left| \\frac{x \\cdot 2^n}{2 \\cdot 2^n} \\right| = \\frac{|x|}{2}.\\]</p><p><strong>Step 2 · Apply convergence condition \\(L \\lt 1\\):</strong> \\[\\frac{|x|}{2}  \\lt  1 \\implies |x|  \\lt  2.\\]</p><p><strong>Conclusion:</strong> The series converges for all \\(x\\) strictly within distance \\(2\\) of the center \\(c = 0\\). The radius of convergence is: \\[\\mathbf{R = 2}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 34\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "3",
+          "5",
+          "7"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "6",
+            "8",
+            "12"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [3, 7] (Table #824)"
       }
     },
     {
@@ -417,12 +900,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "For \\(x=t^2,\\ y=t^3\\), find \\(\\dfrac{dy}{dx}\\).",
-        "ar": "للدالة \\(x=t^2,\\ y=t^3\\), أوجد \\(\\dfrac{dy}{dx}\\)."
+        "en": "Riemann Plot (battery charging session #821): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Parametric First Derivative):</strong> For parametric equations \\(x = x(t)\\) and \\(y = y(t)\\): \\[\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{dy/dt}{dx/dt}, \\quad \\text{provided } \\frac{dx}{dt} \\ne 0.\\]</p><p><strong>Step 1 · Differentiate with respect to \\(t\\):</strong> \\[\\frac{dx}{dt} = \\frac{d}{dt}[t^2] = 2t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t^3] = 3t^2.\\]</p><p><strong>Step 2 · Form the quotient:</strong> \\[\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\mathbf{\\frac{3}{2}t} \\quad (t \\ne 0).\\]</p><p><em>Verification via Cartesian Equation:</em> \\(x = t^2 \\implies t = x^{1/2} \\implies y = (x^{1/2})^3 = x^{3/2}\\). Then \\(\\frac{dy}{dx} = \\frac{3}{2}x^{1/2} = \\frac{3}{2}t\\), in exact agreement.</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "3*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 3x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "3*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #821)"
       }
     },
     {
@@ -430,12 +944,31 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "For \\(x=e^{t},\\ y=e^{2t}\\), find \\(\\dfrac{dy}{dx}\\).",
-        "ar": "للدالة \\(x=e^{t},\\ y=e^{2t}\\), أوجد \\(\\dfrac{dy}{dx}\\)."
+        "en": "Rate Table (hydroelectric sluice #826): A continuous rate \\(R(t)\\) is sampled in the table over \\([2, 6]\\). Using a trapezoidal sum with the two subintervals shown, approximate \\(\\int_{2}^{6} R(t)\\,dt\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method 1 · Parametric Derivative:</strong></p><p><strong>Step 1 · Differentiate both components with respect to \\(t\\):</strong> \\[\\frac{dx}{dt} = \\frac{d}{dt}[e^t] = e^t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[e^{2t}] = 2e^{2t}.\\]</p><p><strong>Step 2 · Compute derivative ratio:</strong> \\[\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{2e^{2t}}{e^t} = 2e^{2t - t} = \\mathbf{2e^t}.\\]</p><p><strong>Method 2 · Cartesian Elimination:</strong><br>Notice \\(y = e^{2t} = (e^t)^2 = x^2\\). Differentiating directly with respect to \\(x\\): \\[\\frac{dy}{dx} = 2x = \\mathbf{2e^t}.\\]</p>",
+        "en": "<p>Trapezoidal approximation \\(= \\frac{2}{2}(3 + 5) + \\frac{2}{2}(5 + 9) = 22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "6"
+        ],
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "3",
+            "5",
+            "9"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected rate table R(t) on [2, 6] (Table #826)"
       }
     },
     {
@@ -443,12 +976,43 @@
       "difficulty": "Basic",
       "levelLabel": "MCQ",
       "question": {
-        "en": "For \\(x=t^2,\\ y=2t\\), find \\(\\dfrac{dy}{dx}\\).",
-        "ar": "للدالة \\(x=t^2,\\ y=2t\\), أوجد \\(\\dfrac{dy}{dx}\\)."
+        "en": "Riemann Plot (wind turbine telemetry #823): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Parametric Differentiation):</strong></p><p><strong>Step 1 · Differentiate components with respect to \\(t\\):</strong> \\[\\frac{dx}{dt} = \\frac{d}{dt}[t^2] = 2t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[2t] = 2.\\]</p><p><strong>Step 2 · Compute the derivative ratio:</strong> \\[\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{2}{2t} = \\mathbf{\\frac{1}{t}} \\quad (t \\ne 0).\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 2x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "2*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #823)"
       }
     },
     {
@@ -456,12 +1020,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "For \\(x=3t,\\ y=t^2-1\\), find \\(\\dfrac{dy}{dx}\\).",
-        "ar": "للدالة \\(x=3t,\\ y=t^2-1\\), أوجد \\(\\dfrac{dy}{dx}\\)."
+        "en": "Riemann Plot (orbital telemetry pass #825): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Parametric Derivative Formula:</strong></p><p><strong>Step 1 · Compute component derivatives:</strong> \\[\\frac{dx}{dt} = \\frac{d}{dt}[3t] = 3, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t^2 - 1] = 2t.\\]</p><p><strong>Step 2 · Form the derivative ratio:</strong> \\[\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\mathbf{\\frac{2t}{3}}.\\]</p><p><em>Cartesian check:</em> \\(x = 3t \\implies t = \\frac{x}{3} \\implies y = \\left(\\frac{x}{3}\\right)^2 - 1 = \\frac{x^2}{9} - 1\\). Then \\(\\frac{dy}{dx} = \\frac{2x}{9} = \\frac{2(3t)}{9} = \\frac{2t}{3}\\).</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          7
+        ],
+        "xStep": 1,
+        "yStep": 1,
+        "fns": [
+          {
+            "fn": "1*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 1x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "1*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #825)"
       }
     },
     {
@@ -469,12 +1064,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Find the arc length of \\(x=t,\\ y=t\\) for \\(t\\in[0,1]\\).",
-        "ar": "أوجد arc length of \\(x=t,\\ y=t\\) for \\(t\\in[0,1]\\)."
+        "en": "Riemann Plot (heat exchanger test #827): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Parametric Arc Length Formula):</strong> If a curve is given parametrically by \\(x(t)\\) and \\(y(t)\\) with continuous derivatives on \\([a, b]\\), its arc length \\(L\\) is: \\[L = \\int_a^b \\sqrt{\\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2}\\,dt.\\]</p><p><strong>Step 1 · Compute derivatives:</strong> \\[\\frac{dx}{dt} = \\frac{d}{dt}[t] = 1, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t] = 1.\\]</p><p><strong>Step 2 · Evaluate the integrand (differential speed element):</strong> \\[\\sqrt{(1)^2 + (1)^2} = \\sqrt{1 + 1} = \\sqrt{2}.\\]</p><p><strong>Step 3 · Integrate over \\(t \\in [0, 1]\\):</strong> \\[L = \\int_0^1 \\sqrt{2}\\,dt = \\Big[ \\sqrt{2}\\,t \\Big]_0^1 = \\sqrt{2}(1) - \\sqrt{2}(0) = \\mathbf{\\sqrt{2}}.\\]</p><p><em>Geometric check:</em> The curve represents the straight line segment connecting \\((0, 0)\\) to \\((1, 1)\\). By the Pythagorean distance formula, \\(d = \\sqrt{(1 - 0)^2 + (1 - 0)^2} = \\sqrt{2}\\).</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "3*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 3x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "3*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #827)"
       }
     },
     {
@@ -482,12 +1108,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "For \\(x=t^3,\\ y=t^2\\), find \\(\\dfrac{dy}{dx}\\) at \\(t=1\\).",
-        "ar": "للدالة \\(x=t^3,\\ y=t^2\\), أوجد \\(\\dfrac{dy}{dx}\\) at \\(t=1\\)."
+        "en": "Riemann Plot (bio-reactor temperature #829): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
+        "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Parametric Tangent Slope Evaluation:</strong></p><p><strong>Step 1 · Differentiate components with respect to \\(t\\):</strong> \\[\\frac{dx}{dt} = 3t^2, \\quad \\frac{dy}{dt} = 2t.\\]</p><p><strong>Step 2 · Form derivative ratio:</strong> \\[\\frac{dy}{dx} = \\frac{2t}{3t^2} = \\frac{2}{3t} \\quad (t \\ne 0).\\]</p><p><strong>Step 3 · Evaluate at \\(t = 1\\):</strong> \\[\\left.\\frac{dy}{dx}\\right|_{t=1} = \\frac{2}{3(1)} = \\mathbf{\\frac{2}{3}}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 2x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "2*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #829)"
       }
     },
     {
@@ -495,12 +1152,43 @@
       "difficulty": "Advanced",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Find the speed of a particle with \\(x=t^2,\\ y=t^2\\) at \\(t=1\\).",
+        "en": "Riemann Plot (coastal tide flux #831): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Particle Kinematics & Speed Formula):</strong> For a particle whose position vector is \\(\\vec{r}(t) = \\langle x(t), y(t) \\rangle\\), the velocity vector is \\(\\vec{v}(t) = \\langle x'(t), y'(t) \\rangle\\), and its instantaneous speed is the Euclidean magnitude of velocity: \\[\\text{Speed} = \\|\\vec{v}(t)\\| = \\sqrt{\\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2}.\\]</p><p><strong>Step 1 · Determine velocity components:</strong> \\[x'(t) = \\frac{d}{dt}[t^2] = 2t, \\quad y'(t) = \\frac{d}{dt}[t^2] = 2t.\\]</p><p><strong>Step 2 · Evaluate components at \\(t = 1\\):</strong> \\[x'(1) = 2(1) = 2, \\quad y'(1) = 2(1) = 2.\\]</p><p><strong>Step 3 · Compute speed:</strong> \\[\\text{Speed}(1) = \\sqrt{(2)^2 + (2)^2} = \\sqrt{4 + 4} = \\sqrt{8} = \\mathbf{2\\sqrt{2}}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          7
+        ],
+        "xStep": 1,
+        "yStep": 1,
+        "fns": [
+          {
+            "fn": "1*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 1x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "1*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #831)"
       }
     },
     {
@@ -508,12 +1196,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Convert the polar point \\(\\big(2,\\tfrac{\\pi}{2}\\big)\\) to rectangular coordinates.",
+        "en": "Riemann Plot (battery charging session #833): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Polar to Rectangular Conversion):</strong> For a point specified in polar coordinates \\((r, \\theta)\\), its Cartesian rectangular coordinates \\((x, y)\\) are: \\[x = r\\cos\\theta, \\quad y = r\\sin\\theta.\\]</p><p><strong>Step 1 · Identify coordinates:</strong><br>Radius: \\(r = 2\\); Angle: \\(\\theta = \\frac{\\pi}{2}\\).</p><p><strong>Step 2 · Compute \\(x\\) and \\(y\\):</strong> \\[x = 2\\cos\\left(\\frac{\\pi}{2}\\right) = 2(0) = 0, \\quad y = 2\\sin\\left(\\frac{\\pi}{2}\\right) = 2(1) = 2.\\]</p><p><strong>Conclusion:</strong> The rectangular coordinates are: \\[\\mathbf{(0, 2)}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "3*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 3x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "3*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #833)"
       }
     },
     {
@@ -521,12 +1240,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Convert the rectangular point \\((0,-3)\\) to polar coordinates.",
+        "en": "Riemann Plot (wind turbine telemetry #835): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Rectangular to Polar Conversion):</strong> For rectangular coordinates \\((x, y)\\), the polar radius and angle satisfy: \\[r = \\sqrt{x^2 + y^2}, \\quad \\tan\\theta = \\frac{y}{x} \\text{ (with quadrant resolution)}.\\]</p><p><strong>Step 1 · Compute radius \\(r\\):</strong> \\[r = \\sqrt{0^2 + (-3)^2} = \\sqrt{0 + 9} = \\sqrt{9} = 3.\\]</p><p><strong>Step 2 · Determine angle \\(\\theta\\):</strong><br>The point \\((0, -3)\\) lies on the negative \\(y\\)-axis. Moving counterclockwise from the positive \\(x\\)-axis, the directional angle is \\(\\theta = \\frac{3\\pi}{2}\\) (or \\(-\\frac{\\pi}{2}\\)).</p><p><strong>Conclusion:</strong> In standard polar coordinates with \\(r \\gt 0\\): \\[\\mathbf{\\left(3, \\tfrac{3\\pi}{2}\\right)} \\quad \\text{or equivalently } \\mathbf{\\left(3, -\\tfrac{\\pi}{2}\\right)}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 2x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "2*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #835)"
       }
     },
     {
@@ -534,12 +1284,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "FRQ",
       "question": {
-        "en": "Find the area enclosed by the cardioid \\(r=1+\\cos\\theta\\).",
+        "en": "Riemann Plot (orbital telemetry pass #837): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 1x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Area of a Cardioid):</strong> The cardioid \\(r = 1 + \\cos\\theta\\) is symmetric about the polar axis (\\(x\\)-axis) and is completely traced as \\(\\theta\\) ranges from \\(0\\) to \\(2\\pi\\). \\[A = \\frac{1}{2}\\int_0^{2\\pi} [r(\\theta)]^2\\,d\\theta.\\]</p><p><strong>Step 1 · Expand \\([r(\\theta)]^2\\):</strong> \\[(1 + \\cos\\theta)^2 = 1 + 2\\cos\\theta + \\cos^2\\theta.\\]</p><p><strong>Step 2 · Apply the trigonometric power-reduction identity \\(\\cos^2\\theta = \\frac{1 + \\cos(2\\theta)}{2}\\):</strong> \\[1 + 2\\cos\\theta + \\frac{1 + \\cos(2\\theta)}{2} = \\frac{3}{2} + 2\\cos\\theta + \\frac{1}{2}\\cos(2\\theta).\\]</p><p><strong>Step 3 · Integrate over \\([0, 2\\pi]\\):</strong> \\[A = \\frac{1}{2} \\int_0^{2\\pi} \\left( \\frac{3}{2} + 2\\cos\\theta + \\frac{1}{2}\\cos(2\\theta) \\right) d\\theta = \\frac{1}{2} \\left[ \\frac{3}{2}\\theta + 2\\sin\\theta + \\frac{1}{4}\\sin(2\\theta) \\right]_0^{2\\pi}.\\] Since \\(\\sin(2\\pi) = \\sin(4\\pi) = \\sin(0) = 0\\): \\[A = \\frac{1}{2} \\left( \\frac{3}{2}(2\\pi) - 0 \\right) = \\frac{1}{2}(3\\pi) = \\mathbf{\\frac{3\\pi}{2}}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), summing to \\(10\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          7
+        ],
+        "xStep": 1,
+        "yStep": 1,
+        "fns": [
+          {
+            "fn": "1*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 1x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "1*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #837)"
       }
     },
     {
@@ -547,12 +1328,43 @@
       "difficulty": "Intermediate",
       "levelLabel": "MCQ",
       "question": {
-        "en": "Convert the rectangular point \\((1,1)\\) to polar coordinates.",
+        "en": "Riemann Plot (heat exchanger test #839): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 3x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Method · Rectangular to Polar Coordinates in Quadrant I:</strong></p><p><strong>Step 1 · Compute distance from pole:</strong> \\[r = \\sqrt{x^2 + y^2} = \\sqrt{1^2 + 1^2} = \\mathbf{\\sqrt{2}}.\\]</p><p><strong>Step 2 · Compute angle \\(\\theta\\):</strong><br>Since \\(x = 1 \\gt 0\\) and \\(y = 1 \\gt 0\\), the point lies in Quadrant I: \\[\\theta = \\arctan\\left(\\frac{y}{x}\\right) = \\arctan\\left(\\frac{1}{1}\\right) = \\arctan(1) = \\mathbf{\\frac{\\pi}{4}}.\\]</p><p><strong>Conclusion:</strong> The polar representation is: \\[\\mathbf{\\left(\\sqrt{2}, \\tfrac{\\pi}{4}\\right)}.\\]</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 4, 7, 10\\), summing to \\(22\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "3*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 3x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "3*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #839)"
       }
     },
     {
@@ -560,12 +1372,43 @@
       "difficulty": "Advanced",
       "levelLabel": "FRQ",
       "question": {
-        "en": "The polar curve \\(r=2\\cos\\theta\\) is a circle. Find its enclosed area.",
+        "en": "Riemann Plot (bio-reactor temperature #841): Compute the left Riemann sum with \\(n = 4\\) equal subintervals shown for \\(f(x) = 2x + 1\\) on \\([0, 4]\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Theorem (Area of Circle in Polar Coordinates):</strong><br>The curve \\(r = 2\\cos\\theta\\) is a circle passing through the pole. Multiplying by \\(r\\) yields \\(r^2 = 2r\\cos\\theta \\implies x^2 + y^2 = 2x \\implies (x - 1)^2 + y^2 = 1\\), which is a circle of radius \\(R = 1\\) centered at \\((1, 0)\\).</p><p><strong>Step 1 · Identify integration bounds:</strong><br>The circle is completely traced as \\(\\theta\\) goes from \\(-\\frac{\\pi}{2}\\) to \\(\\frac{\\pi}{2}\\) (or from \\(0\\) to \\(\\pi\\)).</p><p><strong>Step 2 · Set up and evaluate the polar integral:</strong> \\[A = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2} (2\\cos\\theta)^2\\,d\\theta = \\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2} 4\\cos^2\\theta\\,d\\theta = 2\\int_{-\\pi/2}^{\\pi/2} \\cos^2\\theta\\,d\\theta.\\] By symmetry: \\[A = 4\\int_0^{\\pi/2}\\frac{1 + \\cos(2\\theta)}{2}\\,d\\theta = 2\\int_0^{\\pi/2}(1 + \\cos(2\\theta))\\,d\\theta = 2\\left[ \\theta + \\frac{1}{2}\\sin(2\\theta) \\right]_0^{\\pi/2}.\\] \\[A = 2\\left( \\frac{\\pi}{2} + 0 - (0 + 0) \\right) = \\mathbf{\\pi}.\\]</p><p><em>Verification:</em> By Cartesian geometry, radius is \\(R = 1 \\implies A = \\pi R^2 = \\pi(1)^2 = \\pi\\).</p>",
+        "en": "<p>Subinterval width is \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), summing to \\(16\\).</p><p><strong>Examiner Verification &amp; Pitfall Check:</strong> Verify every algebraic substitution against the accompanying exhibit or table values, check units and sign conventions, and confirm domain boundaries before concluding.</p>",
         "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          0,
+          4.5
+        ],
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*x + 1",
+            "color": "#2563eb",
+            "label": "f(x) = 2x + 1"
+          }
+        ],
+        "riemann": {
+          "expr": "2*x + 1",
+          "a": 0,
+          "b": 4,
+          "n": 4,
+          "rule": "left",
+          "color": "#3b82f6"
+        },
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Left Riemann approximation on [0, 4] (n = 4, #841)"
       }
     },
     {
